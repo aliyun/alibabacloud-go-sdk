@@ -53,7 +53,12 @@ func (s *UpdateApplicationResponseBody) SetRequestId(v string) *UpdateApplicatio
 }
 
 func (s *UpdateApplicationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Application != nil {
+		if err := s.Application.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateApplicationResponseBodyApplication struct {
@@ -265,7 +270,17 @@ func (s *UpdateApplicationResponseBodyApplication) SetUpdateDate(v string) *Upda
 }
 
 func (s *UpdateApplicationResponseBodyApplication) Validate() error {
-	return dara.Validate(s)
+	if s.DelegatedScope != nil {
+		if err := s.DelegatedScope.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RedirectUris != nil {
+		if err := s.RedirectUris.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateApplicationResponseBodyApplicationDelegatedScope struct {
@@ -291,7 +306,12 @@ func (s *UpdateApplicationResponseBodyApplicationDelegatedScope) SetPredefinedSc
 }
 
 func (s *UpdateApplicationResponseBodyApplicationDelegatedScope) Validate() error {
-	return dara.Validate(s)
+	if s.PredefinedScopes != nil {
+		if err := s.PredefinedScopes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateApplicationResponseBodyApplicationDelegatedScopePredefinedScopes struct {
@@ -316,7 +336,16 @@ func (s *UpdateApplicationResponseBodyApplicationDelegatedScopePredefinedScopes)
 }
 
 func (s *UpdateApplicationResponseBodyApplicationDelegatedScopePredefinedScopes) Validate() error {
-	return dara.Validate(s)
+	if s.PredefinedScope != nil {
+		for _, item := range s.PredefinedScope {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefinedScope struct {

@@ -53,7 +53,12 @@ func (s *UnbindMFADeviceResponseBody) SetRequestId(v string) *UnbindMFADeviceRes
 }
 
 func (s *UnbindMFADeviceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MFADevice != nil {
+		if err := s.MFADevice.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UnbindMFADeviceResponseBodyMFADevice struct {

@@ -53,7 +53,12 @@ func (s *CreateSAMLProviderResponseBody) SetSAMLProvider(v *CreateSAMLProviderRe
 }
 
 func (s *CreateSAMLProviderResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SAMLProvider != nil {
+		if err := s.SAMLProvider.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateSAMLProviderResponseBodySAMLProvider struct {

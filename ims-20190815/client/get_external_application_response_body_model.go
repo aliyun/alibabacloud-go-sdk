@@ -53,7 +53,12 @@ func (s *GetExternalApplicationResponseBody) SetRequestId(v string) *GetExternal
 }
 
 func (s *GetExternalApplicationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ExternalApplication != nil {
+		if err := s.ExternalApplication.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetExternalApplicationResponseBodyExternalApplication struct {
@@ -169,7 +174,12 @@ func (s *GetExternalApplicationResponseBodyExternalApplication) SetUpdateDate(v 
 }
 
 func (s *GetExternalApplicationResponseBodyExternalApplication) Validate() error {
-	return dara.Validate(s)
+	if s.DelegatedScope != nil {
+		if err := s.DelegatedScope.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetExternalApplicationResponseBodyExternalApplicationDelegatedScope struct {
@@ -195,7 +205,12 @@ func (s *GetExternalApplicationResponseBodyExternalApplicationDelegatedScope) Se
 }
 
 func (s *GetExternalApplicationResponseBodyExternalApplicationDelegatedScope) Validate() error {
-	return dara.Validate(s)
+	if s.PredefinedScopes != nil {
+		if err := s.PredefinedScopes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopes struct {
@@ -220,7 +235,16 @@ func (s *GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePred
 }
 
 func (s *GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopes) Validate() error {
-	return dara.Validate(s)
+	if s.PredefinedScope != nil {
+		for _, item := range s.PredefinedScope {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope struct {

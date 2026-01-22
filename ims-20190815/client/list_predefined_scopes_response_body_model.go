@@ -53,7 +53,12 @@ func (s *ListPredefinedScopesResponseBody) SetRequestId(v string) *ListPredefine
 }
 
 func (s *ListPredefinedScopesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PredefinedScopes != nil {
+		if err := s.PredefinedScopes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPredefinedScopesResponseBodyPredefinedScopes struct {
@@ -78,7 +83,16 @@ func (s *ListPredefinedScopesResponseBodyPredefinedScopes) SetPredefinedScope(v 
 }
 
 func (s *ListPredefinedScopesResponseBodyPredefinedScopes) Validate() error {
-	return dara.Validate(s)
+	if s.PredefinedScope != nil {
+		for _, item := range s.PredefinedScope {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPredefinedScopesResponseBodyPredefinedScopesPredefinedScope struct {

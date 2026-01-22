@@ -91,7 +91,12 @@ func (s *ListUsersInRecycleBinResponseBody) SetUsers(v *ListUsersInRecycleBinRes
 }
 
 func (s *ListUsersInRecycleBinResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Users != nil {
+		if err := s.Users.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUsersInRecycleBinResponseBodyUsers struct {
@@ -116,7 +121,16 @@ func (s *ListUsersInRecycleBinResponseBodyUsers) SetUser(v []*ListUsersInRecycle
 }
 
 func (s *ListUsersInRecycleBinResponseBodyUsers) Validate() error {
-	return dara.Validate(s)
+	if s.User != nil {
+		for _, item := range s.User {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUsersInRecycleBinResponseBodyUsersUser struct {

@@ -74,7 +74,12 @@ func (s *GetUserMFAInfoResponseBody) SetRequestId(v string) *GetUserMFAInfoRespo
 }
 
 func (s *GetUserMFAInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MFADevice != nil {
+		if err := s.MFADevice.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserMFAInfoResponseBodyMFADevice struct {

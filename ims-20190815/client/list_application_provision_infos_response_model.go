@@ -59,5 +59,10 @@ func (s *ListApplicationProvisionInfosResponse) SetBody(v *ListApplicationProvis
 }
 
 func (s *ListApplicationProvisionInfosResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

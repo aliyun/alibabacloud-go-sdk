@@ -53,7 +53,12 @@ func (s *GetAccountSecurityPracticeReportResponseBody) SetRequestId(v string) *G
 }
 
 func (s *GetAccountSecurityPracticeReportResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AccountSecurityPracticeInfo != nil {
+		if err := s.AccountSecurityPracticeInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfo struct {
@@ -94,7 +99,12 @@ func (s *GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfo
 }
 
 func (s *GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfo) Validate() error {
-	return dara.Validate(s)
+	if s.AccountSecurityPracticeUserInfo != nil {
+		if err := s.AccountSecurityPracticeUserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfoAccountSecurityPracticeUserInfo struct {

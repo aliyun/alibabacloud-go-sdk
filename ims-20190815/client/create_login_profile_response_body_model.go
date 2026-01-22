@@ -53,7 +53,12 @@ func (s *CreateLoginProfileResponseBody) SetRequestId(v string) *CreateLoginProf
 }
 
 func (s *CreateLoginProfileResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LoginProfile != nil {
+		if err := s.LoginProfile.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateLoginProfileResponseBodyLoginProfile struct {
@@ -68,7 +73,8 @@ type CreateLoginProfileResponseBodyLoginProfile struct {
 	// example:
 	//
 	// false
-	PasswordResetRequired *bool `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
+	PasswordResetRequired *bool   `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
+	PasswordStatus        *string `json:"PasswordStatus,omitempty" xml:"PasswordStatus,omitempty"`
 	// Indicates whether to enable password-based logons to the console.
 	//
 	// example:
@@ -105,6 +111,10 @@ func (s *CreateLoginProfileResponseBodyLoginProfile) GetPasswordResetRequired() 
 	return s.PasswordResetRequired
 }
 
+func (s *CreateLoginProfileResponseBodyLoginProfile) GetPasswordStatus() *string {
+	return s.PasswordStatus
+}
+
 func (s *CreateLoginProfileResponseBodyLoginProfile) GetStatus() *string {
 	return s.Status
 }
@@ -124,6 +134,11 @@ func (s *CreateLoginProfileResponseBodyLoginProfile) SetMFABindRequired(v bool) 
 
 func (s *CreateLoginProfileResponseBodyLoginProfile) SetPasswordResetRequired(v bool) *CreateLoginProfileResponseBodyLoginProfile {
 	s.PasswordResetRequired = &v
+	return s
+}
+
+func (s *CreateLoginProfileResponseBodyLoginProfile) SetPasswordStatus(v string) *CreateLoginProfileResponseBodyLoginProfile {
+	s.PasswordStatus = &v
 	return s
 }
 

@@ -59,5 +59,10 @@ func (s *ListAppSecretIdsResponse) SetBody(v *ListAppSecretIdsResponseBody) *Lis
 }
 
 func (s *ListAppSecretIdsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

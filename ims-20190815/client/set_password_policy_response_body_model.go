@@ -53,7 +53,12 @@ func (s *SetPasswordPolicyResponseBody) SetRequestId(v string) *SetPasswordPolic
 }
 
 func (s *SetPasswordPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PasswordPolicy != nil {
+		if err := s.PasswordPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SetPasswordPolicyResponseBodyPasswordPolicy struct {
@@ -62,7 +67,8 @@ type SetPasswordPolicyResponseBodyPasswordPolicy struct {
 	// example:
 	//
 	// false
-	HardExpire *bool `json:"HardExpire,omitempty" xml:"HardExpire,omitempty"`
+	HardExpire         *bool  `json:"HardExpire,omitempty" xml:"HardExpire,omitempty"`
+	InitialPasswordAge *int32 `json:"InitialPasswordAge,omitempty" xml:"InitialPasswordAge,omitempty"`
 	// The maximum number of password retries.
 	//
 	// example:
@@ -137,6 +143,10 @@ func (s *SetPasswordPolicyResponseBodyPasswordPolicy) GetHardExpire() *bool {
 	return s.HardExpire
 }
 
+func (s *SetPasswordPolicyResponseBodyPasswordPolicy) GetInitialPasswordAge() *int32 {
+	return s.InitialPasswordAge
+}
+
 func (s *SetPasswordPolicyResponseBodyPasswordPolicy) GetMaxLoginAttemps() *int32 {
 	return s.MaxLoginAttemps
 }
@@ -179,6 +189,11 @@ func (s *SetPasswordPolicyResponseBodyPasswordPolicy) GetRequireUppercaseCharact
 
 func (s *SetPasswordPolicyResponseBodyPasswordPolicy) SetHardExpire(v bool) *SetPasswordPolicyResponseBodyPasswordPolicy {
 	s.HardExpire = &v
+	return s
+}
+
+func (s *SetPasswordPolicyResponseBodyPasswordPolicy) SetInitialPasswordAge(v int32) *SetPasswordPolicyResponseBodyPasswordPolicy {
+	s.InitialPasswordAge = &v
 	return s
 }
 

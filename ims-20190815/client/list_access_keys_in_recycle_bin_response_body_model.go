@@ -53,7 +53,12 @@ func (s *ListAccessKeysInRecycleBinResponseBody) SetRequestId(v string) *ListAcc
 }
 
 func (s *ListAccessKeysInRecycleBinResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AccessKeys != nil {
+		if err := s.AccessKeys.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAccessKeysInRecycleBinResponseBodyAccessKeys struct {
@@ -78,7 +83,16 @@ func (s *ListAccessKeysInRecycleBinResponseBodyAccessKeys) SetAccessKey(v []*Lis
 }
 
 func (s *ListAccessKeysInRecycleBinResponseBodyAccessKeys) Validate() error {
-	return dara.Validate(s)
+	if s.AccessKey != nil {
+		for _, item := range s.AccessKey {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAccessKeysInRecycleBinResponseBodyAccessKeysAccessKey struct {

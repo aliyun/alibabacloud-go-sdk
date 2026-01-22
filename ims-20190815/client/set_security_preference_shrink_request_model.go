@@ -27,6 +27,10 @@ type iSetSecurityPreferenceShrinkRequest interface {
 	GetLoginSessionDuration() *int32
 	SetMFAOperationForLogin(v string) *SetSecurityPreferenceShrinkRequest
 	GetMFAOperationForLogin() *string
+	SetMaxIdleDaysForAccessKeys(v int32) *SetSecurityPreferenceShrinkRequest
+	GetMaxIdleDaysForAccessKeys() *int32
+	SetMaxIdleDaysForUsers(v int32) *SetSecurityPreferenceShrinkRequest
+	GetMaxIdleDaysForUsers() *int32
 	SetOperationForRiskLogin(v string) *SetSecurityPreferenceShrinkRequest
 	GetOperationForRiskLogin() *string
 	SetVerificationTypesShrink(v string) *SetSecurityPreferenceShrinkRequest
@@ -129,7 +133,9 @@ type SetSecurityPreferenceShrinkRequest struct {
 	// example:
 	//
 	// adaptive
-	MFAOperationForLogin *string `json:"MFAOperationForLogin,omitempty" xml:"MFAOperationForLogin,omitempty"`
+	MFAOperationForLogin     *string `json:"MFAOperationForLogin,omitempty" xml:"MFAOperationForLogin,omitempty"`
+	MaxIdleDaysForAccessKeys *int32  `json:"MaxIdleDaysForAccessKeys,omitempty" xml:"MaxIdleDaysForAccessKeys,omitempty"`
+	MaxIdleDaysForUsers      *int32  `json:"MaxIdleDaysForUsers,omitempty" xml:"MaxIdleDaysForUsers,omitempty"`
 	// Deprecated
 	//
 	// Specifies whether to enable MFA for RAM users who initiated unusual logons. Valid values:
@@ -190,6 +196,14 @@ func (s *SetSecurityPreferenceShrinkRequest) GetMFAOperationForLogin() *string {
 	return s.MFAOperationForLogin
 }
 
+func (s *SetSecurityPreferenceShrinkRequest) GetMaxIdleDaysForAccessKeys() *int32 {
+	return s.MaxIdleDaysForAccessKeys
+}
+
+func (s *SetSecurityPreferenceShrinkRequest) GetMaxIdleDaysForUsers() *int32 {
+	return s.MaxIdleDaysForUsers
+}
+
 func (s *SetSecurityPreferenceShrinkRequest) GetOperationForRiskLogin() *string {
 	return s.OperationForRiskLogin
 }
@@ -240,6 +254,16 @@ func (s *SetSecurityPreferenceShrinkRequest) SetLoginSessionDuration(v int32) *S
 
 func (s *SetSecurityPreferenceShrinkRequest) SetMFAOperationForLogin(v string) *SetSecurityPreferenceShrinkRequest {
 	s.MFAOperationForLogin = &v
+	return s
+}
+
+func (s *SetSecurityPreferenceShrinkRequest) SetMaxIdleDaysForAccessKeys(v int32) *SetSecurityPreferenceShrinkRequest {
+	s.MaxIdleDaysForAccessKeys = &v
+	return s
+}
+
+func (s *SetSecurityPreferenceShrinkRequest) SetMaxIdleDaysForUsers(v int32) *SetSecurityPreferenceShrinkRequest {
+	s.MaxIdleDaysForUsers = &v
 	return s
 }
 

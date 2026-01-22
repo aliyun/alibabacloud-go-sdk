@@ -53,7 +53,12 @@ func (s *UpdateSAMLProviderResponseBody) SetSAMLProvider(v *UpdateSAMLProviderRe
 }
 
 func (s *UpdateSAMLProviderResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SAMLProvider != nil {
+		if err := s.SAMLProvider.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateSAMLProviderResponseBodySAMLProvider struct {

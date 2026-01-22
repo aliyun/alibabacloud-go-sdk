@@ -66,7 +66,17 @@ func (s *GetVerificationInfoResponseBody) SetSecurityPhoneDevice(v *GetVerificat
 }
 
 func (s *GetVerificationInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityEmailDevice != nil {
+		if err := s.SecurityEmailDevice.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityPhoneDevice != nil {
+		if err := s.SecurityPhoneDevice.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetVerificationInfoResponseBodySecurityEmailDevice struct {

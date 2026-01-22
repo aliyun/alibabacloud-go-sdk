@@ -91,7 +91,12 @@ func (s *ListSAMLProvidersResponseBody) SetSAMLProviders(v *ListSAMLProvidersRes
 }
 
 func (s *ListSAMLProvidersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SAMLProviders != nil {
+		if err := s.SAMLProviders.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSAMLProvidersResponseBodySAMLProviders struct {
@@ -116,7 +121,16 @@ func (s *ListSAMLProvidersResponseBodySAMLProviders) SetSAMLProvider(v []*ListSA
 }
 
 func (s *ListSAMLProvidersResponseBodySAMLProviders) Validate() error {
-	return dara.Validate(s)
+	if s.SAMLProvider != nil {
+		for _, item := range s.SAMLProvider {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSAMLProvidersResponseBodySAMLProvidersSAMLProvider struct {

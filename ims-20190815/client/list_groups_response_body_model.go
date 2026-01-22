@@ -91,7 +91,12 @@ func (s *ListGroupsResponseBody) SetRequestId(v string) *ListGroupsResponseBody 
 }
 
 func (s *ListGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Groups != nil {
+		if err := s.Groups.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListGroupsResponseBodyGroups struct {
@@ -116,7 +121,16 @@ func (s *ListGroupsResponseBodyGroups) SetGroup(v []*ListGroupsResponseBodyGroup
 }
 
 func (s *ListGroupsResponseBodyGroups) Validate() error {
-	return dara.Validate(s)
+	if s.Group != nil {
+		for _, item := range s.Group {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGroupsResponseBodyGroupsGroup struct {

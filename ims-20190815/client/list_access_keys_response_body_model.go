@@ -53,7 +53,12 @@ func (s *ListAccessKeysResponseBody) SetRequestId(v string) *ListAccessKeysRespo
 }
 
 func (s *ListAccessKeysResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AccessKeys != nil {
+		if err := s.AccessKeys.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAccessKeysResponseBodyAccessKeys struct {
@@ -78,7 +83,16 @@ func (s *ListAccessKeysResponseBodyAccessKeys) SetAccessKey(v []*ListAccessKeysR
 }
 
 func (s *ListAccessKeysResponseBodyAccessKeys) Validate() error {
-	return dara.Validate(s)
+	if s.AccessKey != nil {
+		for _, item := range s.AccessKey {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAccessKeysResponseBodyAccessKeysAccessKey struct {

@@ -59,5 +59,10 @@ func (s *ListAccessKeysResponse) SetBody(v *ListAccessKeysResponseBody) *ListAcc
 }
 
 func (s *ListAccessKeysResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

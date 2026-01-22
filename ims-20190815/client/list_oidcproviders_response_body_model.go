@@ -91,7 +91,12 @@ func (s *ListOIDCProvidersResponseBody) SetRequestId(v string) *ListOIDCProvider
 }
 
 func (s *ListOIDCProvidersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OIDCProviders != nil {
+		if err := s.OIDCProviders.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListOIDCProvidersResponseBodyOIDCProviders struct {
@@ -116,7 +121,16 @@ func (s *ListOIDCProvidersResponseBodyOIDCProviders) SetOIDCProvider(v []*ListOI
 }
 
 func (s *ListOIDCProvidersResponseBodyOIDCProviders) Validate() error {
-	return dara.Validate(s)
+	if s.OIDCProvider != nil {
+		for _, item := range s.OIDCProvider {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListOIDCProvidersResponseBodyOIDCProvidersOIDCProvider struct {

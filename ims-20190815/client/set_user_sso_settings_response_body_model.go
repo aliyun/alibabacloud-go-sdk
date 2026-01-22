@@ -53,7 +53,12 @@ func (s *SetUserSsoSettingsResponseBody) SetUserSsoSettings(v *SetUserSsoSetting
 }
 
 func (s *SetUserSsoSettingsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserSsoSettings != nil {
+		if err := s.UserSsoSettings.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SetUserSsoSettingsResponseBodyUserSsoSettings struct {

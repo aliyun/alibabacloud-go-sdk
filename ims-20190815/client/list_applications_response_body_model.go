@@ -53,7 +53,12 @@ func (s *ListApplicationsResponseBody) SetRequestId(v string) *ListApplicationsR
 }
 
 func (s *ListApplicationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Applications != nil {
+		if err := s.Applications.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListApplicationsResponseBodyApplications struct {
@@ -78,7 +83,16 @@ func (s *ListApplicationsResponseBodyApplications) SetApplication(v []*ListAppli
 }
 
 func (s *ListApplicationsResponseBodyApplications) Validate() error {
-	return dara.Validate(s)
+	if s.Application != nil {
+		for _, item := range s.Application {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApplicationsResponseBodyApplicationsApplication struct {
@@ -296,7 +310,17 @@ func (s *ListApplicationsResponseBodyApplicationsApplication) SetUpdateDate(v st
 }
 
 func (s *ListApplicationsResponseBodyApplicationsApplication) Validate() error {
-	return dara.Validate(s)
+	if s.DelegatedScope != nil {
+		if err := s.DelegatedScope.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RedirectUris != nil {
+		if err := s.RedirectUris.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListApplicationsResponseBodyApplicationsApplicationDelegatedScope struct {
@@ -322,7 +346,12 @@ func (s *ListApplicationsResponseBodyApplicationsApplicationDelegatedScope) SetP
 }
 
 func (s *ListApplicationsResponseBodyApplicationsApplicationDelegatedScope) Validate() error {
-	return dara.Validate(s)
+	if s.PredefinedScopes != nil {
+		if err := s.PredefinedScopes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListApplicationsResponseBodyApplicationsApplicationDelegatedScopePredefinedScopes struct {
@@ -347,7 +376,16 @@ func (s *ListApplicationsResponseBodyApplicationsApplicationDelegatedScopePredef
 }
 
 func (s *ListApplicationsResponseBodyApplicationsApplicationDelegatedScopePredefinedScopes) Validate() error {
-	return dara.Validate(s)
+	if s.PredefinedScope != nil {
+		for _, item := range s.PredefinedScope {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApplicationsResponseBodyApplicationsApplicationDelegatedScopePredefinedScopesPredefinedScope struct {

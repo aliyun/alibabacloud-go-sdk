@@ -59,5 +59,10 @@ func (s *GetAccountSecurityPracticeReportResponse) SetBody(v *GetAccountSecurity
 }
 
 func (s *GetAccountSecurityPracticeReportResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

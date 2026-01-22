@@ -59,5 +59,10 @@ func (s *BindMFADeviceResponse) SetBody(v *BindMFADeviceResponseBody) *BindMFADe
 }
 
 func (s *BindMFADeviceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

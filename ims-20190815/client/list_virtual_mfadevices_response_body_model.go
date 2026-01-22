@@ -93,7 +93,12 @@ func (s *ListVirtualMFADevicesResponseBody) SetVirtualMFADevices(v *ListVirtualM
 }
 
 func (s *ListVirtualMFADevicesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VirtualMFADevices != nil {
+		if err := s.VirtualMFADevices.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListVirtualMFADevicesResponseBodyVirtualMFADevices struct {
@@ -118,7 +123,16 @@ func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevices) SetVirtualMFADevice
 }
 
 func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevices) Validate() error {
-	return dara.Validate(s)
+	if s.VirtualMFADevice != nil {
+		for _, item := range s.VirtualMFADevice {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice struct {
@@ -174,7 +188,12 @@ func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice) Set
 }
 
 func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice) Validate() error {
-	return dara.Validate(s)
+	if s.User != nil {
+		if err := s.User.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser struct {

@@ -53,7 +53,12 @@ func (s *CreateAccessKeyResponseBody) SetRequestId(v string) *CreateAccessKeyRes
 }
 
 func (s *CreateAccessKeyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AccessKey != nil {
+		if err := s.AccessKey.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAccessKeyResponseBodyAccessKey struct {

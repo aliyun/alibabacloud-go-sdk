@@ -53,7 +53,12 @@ func (s *GetAppSecretResponseBody) SetRequestId(v string) *GetAppSecretResponseB
 }
 
 func (s *GetAppSecretResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AppSecret != nil {
+		if err := s.AppSecret.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAppSecretResponseBodyAppSecret struct {

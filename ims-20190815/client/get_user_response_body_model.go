@@ -53,7 +53,12 @@ func (s *GetUserResponseBody) SetUser(v *GetUserResponseBodyUser) *GetUserRespon
 }
 
 func (s *GetUserResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.User != nil {
+		if err := s.User.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserResponseBodyUser struct {
@@ -254,7 +259,12 @@ func (s *GetUserResponseBodyUser) SetUserPrincipalName(v string) *GetUserRespons
 }
 
 func (s *GetUserResponseBodyUser) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserResponseBodyUserTags struct {
@@ -279,7 +289,16 @@ func (s *GetUserResponseBodyUserTags) SetTag(v []*GetUserResponseBodyUserTagsTag
 }
 
 func (s *GetUserResponseBodyUserTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetUserResponseBodyUserTagsTag struct {

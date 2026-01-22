@@ -53,7 +53,12 @@ func (s *ListApplicationProvisionInfosResponseBody) SetRequestId(v string) *List
 }
 
 func (s *ListApplicationProvisionInfosResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApplicationProvisionInfos != nil {
+		if err := s.ApplicationProvisionInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListApplicationProvisionInfosResponseBodyApplicationProvisionInfos struct {
@@ -78,7 +83,16 @@ func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfos) Set
 }
 
 func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfos) Validate() error {
-	return dara.Validate(s)
+	if s.ApplicationProvisionInfo != nil {
+		for _, item := range s.ApplicationProvisionInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo struct {
@@ -194,7 +208,12 @@ func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosAppli
 }
 
 func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DelegatedScope != nil {
+		if err := s.DelegatedScope.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScope struct {
@@ -220,7 +239,12 @@ func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosAppli
 }
 
 func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScope) Validate() error {
-	return dara.Validate(s)
+	if s.PredefinedScopes != nil {
+		if err := s.PredefinedScopes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopes struct {
@@ -245,7 +269,16 @@ func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosAppli
 }
 
 func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopes) Validate() error {
-	return dara.Validate(s)
+	if s.PredefinedScope != nil {
+		for _, item := range s.PredefinedScope {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope struct {

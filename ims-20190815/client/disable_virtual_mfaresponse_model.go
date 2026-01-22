@@ -59,5 +59,10 @@ func (s *DisableVirtualMFAResponse) SetBody(v *DisableVirtualMFAResponseBody) *D
 }
 
 func (s *DisableVirtualMFAResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

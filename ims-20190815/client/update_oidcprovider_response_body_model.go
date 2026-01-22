@@ -53,7 +53,12 @@ func (s *UpdateOIDCProviderResponseBody) SetRequestId(v string) *UpdateOIDCProvi
 }
 
 func (s *UpdateOIDCProviderResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OIDCProvider != nil {
+		if err := s.OIDCProvider.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateOIDCProviderResponseBodyOIDCProvider struct {

@@ -59,5 +59,10 @@ func (s *GetOIDCProviderResponse) SetBody(v *GetOIDCProviderResponseBody) *GetOI
 }
 
 func (s *GetOIDCProviderResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

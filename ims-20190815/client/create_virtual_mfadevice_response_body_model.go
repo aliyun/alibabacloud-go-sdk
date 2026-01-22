@@ -53,7 +53,12 @@ func (s *CreateVirtualMFADeviceResponseBody) SetVirtualMFADevice(v *CreateVirtua
 }
 
 func (s *CreateVirtualMFADeviceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VirtualMFADevice != nil {
+		if err := s.VirtualMFADevice.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateVirtualMFADeviceResponseBodyVirtualMFADevice struct {

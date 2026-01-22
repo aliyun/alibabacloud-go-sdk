@@ -65,7 +65,12 @@ func (s *GetGovernanceReportStatusResponseBody) SetWholeReportStatus(v string) *
 }
 
 func (s *GetGovernanceReportStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GovernanceItemsStatus != nil {
+		if err := s.GovernanceItemsStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGovernanceReportStatusResponseBodyGovernanceItemsStatus struct {
@@ -90,7 +95,16 @@ func (s *GetGovernanceReportStatusResponseBodyGovernanceItemsStatus) SetGovernan
 }
 
 func (s *GetGovernanceReportStatusResponseBodyGovernanceItemsStatus) Validate() error {
-	return dara.Validate(s)
+	if s.GovernanceItemStatus != nil {
+		for _, item := range s.GovernanceItemStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetGovernanceReportStatusResponseBodyGovernanceItemsStatusGovernanceItemStatus struct {

@@ -70,7 +70,12 @@ func (s *ListRecentGovernanceMetricsResponseBody) SetRequestId(v string) *ListRe
 }
 
 func (s *ListRecentGovernanceMetricsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GovernanceMetrics != nil {
+		if err := s.GovernanceMetrics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRecentGovernanceMetricsResponseBodyGovernanceMetrics struct {
@@ -95,7 +100,16 @@ func (s *ListRecentGovernanceMetricsResponseBodyGovernanceMetrics) SetGovernance
 }
 
 func (s *ListRecentGovernanceMetricsResponseBodyGovernanceMetrics) Validate() error {
-	return dara.Validate(s)
+	if s.GovernanceMetric != nil {
+		for _, item := range s.GovernanceMetric {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRecentGovernanceMetricsResponseBodyGovernanceMetricsGovernanceMetric struct {

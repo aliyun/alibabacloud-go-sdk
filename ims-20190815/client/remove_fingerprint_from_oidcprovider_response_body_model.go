@@ -53,7 +53,12 @@ func (s *RemoveFingerprintFromOIDCProviderResponseBody) SetRequestId(v string) *
 }
 
 func (s *RemoveFingerprintFromOIDCProviderResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OIDCProvider != nil {
+		if err := s.OIDCProvider.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RemoveFingerprintFromOIDCProviderResponseBodyOIDCProvider struct {

@@ -91,7 +91,12 @@ func (s *ListUsersResponseBody) SetUsers(v *ListUsersResponseBodyUsers) *ListUse
 }
 
 func (s *ListUsersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Users != nil {
+		if err := s.Users.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUsersResponseBodyUsers struct {
@@ -116,7 +121,16 @@ func (s *ListUsersResponseBodyUsers) SetUser(v []*ListUsersResponseBodyUsersUser
 }
 
 func (s *ListUsersResponseBodyUsers) Validate() error {
-	return dara.Validate(s)
+	if s.User != nil {
+		for _, item := range s.User {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUsersResponseBodyUsersUser struct {
@@ -317,7 +331,12 @@ func (s *ListUsersResponseBodyUsersUser) SetUserPrincipalName(v string) *ListUse
 }
 
 func (s *ListUsersResponseBodyUsersUser) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUsersResponseBodyUsersUserTags struct {
@@ -342,7 +361,16 @@ func (s *ListUsersResponseBodyUsersUserTags) SetTag(v []*ListUsersResponseBodyUs
 }
 
 func (s *ListUsersResponseBodyUsersUserTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUsersResponseBodyUsersUserTagsTag struct {

@@ -53,7 +53,12 @@ func (s *GetAccessKeyInfoInRecycleBinResponseBody) SetRequestId(v string) *GetAc
 }
 
 func (s *GetAccessKeyInfoInRecycleBinResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AccessKey != nil {
+		if err := s.AccessKey.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAccessKeyInfoInRecycleBinResponseBodyAccessKey struct {

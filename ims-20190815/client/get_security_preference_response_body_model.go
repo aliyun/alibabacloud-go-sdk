@@ -53,7 +53,12 @@ func (s *GetSecurityPreferenceResponseBody) SetSecurityPreference(v *GetSecurity
 }
 
 func (s *GetSecurityPreferenceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityPreference != nil {
+		if err := s.SecurityPreference.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSecurityPreferenceResponseBodySecurityPreference struct {
@@ -134,7 +139,37 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreference) SetVerificationPre
 }
 
 func (s *GetSecurityPreferenceResponseBodySecurityPreference) Validate() error {
-	return dara.Validate(s)
+	if s.AccessKeyPreference != nil {
+		if err := s.AccessKeyPreference.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LoginProfilePreference != nil {
+		if err := s.LoginProfilePreference.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MFAPreference != nil {
+		if err := s.MFAPreference.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MaxIdleDays != nil {
+		if err := s.MaxIdleDays.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PersonalInfoPreference != nil {
+		if err := s.PersonalInfoPreference.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VerificationPreference != nil {
+		if err := s.VerificationPreference.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference struct {

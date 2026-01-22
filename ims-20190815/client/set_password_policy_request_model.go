@@ -11,6 +11,8 @@ type iSetPasswordPolicyRequest interface {
 	GoString() string
 	SetHardExpire(v bool) *SetPasswordPolicyRequest
 	GetHardExpire() *bool
+	SetInitialPasswordAge(v int32) *SetPasswordPolicyRequest
+	GetInitialPasswordAge() *int32
 	SetMaxLoginAttemps(v int32) *SetPasswordPolicyRequest
 	GetMaxLoginAttemps() *int32
 	SetMaxPasswordAge(v int32) *SetPasswordPolicyRequest
@@ -43,7 +45,8 @@ type SetPasswordPolicyRequest struct {
 	// example:
 	//
 	// false
-	HardExpire *bool `json:"HardExpire,omitempty" xml:"HardExpire,omitempty"`
+	HardExpire         *bool  `json:"HardExpire,omitempty" xml:"HardExpire,omitempty"`
+	InitialPasswordAge *int32 `json:"InitialPasswordAge,omitempty" xml:"InitialPasswordAge,omitempty"`
 	// The maximum number of password retries. If you enter the wrong passwords for the specified consecutive times, the account is locked for one hour.
 	//
 	// Valid values: 0 to 32.
@@ -156,6 +159,10 @@ func (s *SetPasswordPolicyRequest) GetHardExpire() *bool {
 	return s.HardExpire
 }
 
+func (s *SetPasswordPolicyRequest) GetInitialPasswordAge() *int32 {
+	return s.InitialPasswordAge
+}
+
 func (s *SetPasswordPolicyRequest) GetMaxLoginAttemps() *int32 {
 	return s.MaxLoginAttemps
 }
@@ -198,6 +205,11 @@ func (s *SetPasswordPolicyRequest) GetRequireUppercaseCharacters() *bool {
 
 func (s *SetPasswordPolicyRequest) SetHardExpire(v bool) *SetPasswordPolicyRequest {
 	s.HardExpire = &v
+	return s
+}
+
+func (s *SetPasswordPolicyRequest) SetInitialPasswordAge(v int32) *SetPasswordPolicyRequest {
+	s.InitialPasswordAge = &v
 	return s
 }
 

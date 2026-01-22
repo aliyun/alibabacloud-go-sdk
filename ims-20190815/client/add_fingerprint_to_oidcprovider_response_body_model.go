@@ -53,7 +53,12 @@ func (s *AddFingerprintToOIDCProviderResponseBody) SetRequestId(v string) *AddFi
 }
 
 func (s *AddFingerprintToOIDCProviderResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OIDCProvider != nil {
+		if err := s.OIDCProvider.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddFingerprintToOIDCProviderResponseBodyOIDCProvider struct {

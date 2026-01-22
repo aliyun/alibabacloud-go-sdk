@@ -53,7 +53,12 @@ func (s *GetAccessKeyLastUsedResponseBody) SetRequestId(v string) *GetAccessKeyL
 }
 
 func (s *GetAccessKeyLastUsedResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AccessKeyLastUsed != nil {
+		if err := s.AccessKeyLastUsed.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed struct {

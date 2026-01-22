@@ -53,7 +53,12 @@ func (s *GetAccountSummaryResponseBody) SetSummaryMap(v *GetAccountSummaryRespon
 }
 
 func (s *GetAccountSummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SummaryMap != nil {
+		if err := s.SummaryMap.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAccountSummaryResponseBodySummaryMap struct {

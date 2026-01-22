@@ -53,7 +53,12 @@ func (s *RemoveClientIdFromOIDCProviderResponseBody) SetRequestId(v string) *Rem
 }
 
 func (s *RemoveClientIdFromOIDCProviderResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OIDCProvider != nil {
+		if err := s.OIDCProvider.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider struct {

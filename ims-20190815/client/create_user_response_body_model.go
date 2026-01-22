@@ -53,7 +53,12 @@ func (s *CreateUserResponseBody) SetUser(v *CreateUserResponseBodyUser) *CreateU
 }
 
 func (s *CreateUserResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.User != nil {
+		if err := s.User.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateUserResponseBodyUser struct {
@@ -239,7 +244,12 @@ func (s *CreateUserResponseBodyUser) SetUserPrincipalName(v string) *CreateUserR
 }
 
 func (s *CreateUserResponseBodyUser) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateUserResponseBodyUserTags struct {
@@ -264,7 +274,16 @@ func (s *CreateUserResponseBodyUserTags) SetTag(v []*CreateUserResponseBodyUserT
 }
 
 func (s *CreateUserResponseBodyUserTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateUserResponseBodyUserTagsTag struct {

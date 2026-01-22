@@ -59,5 +59,10 @@ func (s *CreateAccessKeyResponse) SetBody(v *CreateAccessKeyResponseBody) *Creat
 }
 
 func (s *CreateAccessKeyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

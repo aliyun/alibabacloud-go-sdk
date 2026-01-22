@@ -137,7 +137,17 @@ func (s *GetGovernanceItemReportResponseBody) SetRequestId(v string) *GetGoverna
 }
 
 func (s *GetGovernanceItemReportResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ColumnsSchema != nil {
+		if err := s.ColumnsSchema.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ColumnsValue != nil {
+		if err := s.ColumnsValue.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGovernanceItemReportResponseBodyColumnsSchema struct {
@@ -162,7 +172,16 @@ func (s *GetGovernanceItemReportResponseBodyColumnsSchema) SetColumnSchema(v []*
 }
 
 func (s *GetGovernanceItemReportResponseBodyColumnsSchema) Validate() error {
-	return dara.Validate(s)
+	if s.ColumnSchema != nil {
+		for _, item := range s.ColumnSchema {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetGovernanceItemReportResponseBodyColumnsSchemaColumnSchema struct {
@@ -228,7 +247,16 @@ func (s *GetGovernanceItemReportResponseBodyColumnsValue) SetColumnRow(v []*GetG
 }
 
 func (s *GetGovernanceItemReportResponseBodyColumnsValue) Validate() error {
-	return dara.Validate(s)
+	if s.ColumnRow != nil {
+		for _, item := range s.ColumnRow {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetGovernanceItemReportResponseBodyColumnsValueColumnRow struct {

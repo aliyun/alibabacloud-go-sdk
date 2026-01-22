@@ -53,7 +53,12 @@ func (s *GetApplicationProvisionInfoResponseBody) SetRequestId(v string) *GetApp
 }
 
 func (s *GetApplicationProvisionInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApplicationProvisionInfo != nil {
+		if err := s.ApplicationProvisionInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo struct {
@@ -169,7 +174,12 @@ func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) SetUpd
 }
 
 func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DelegatedScope != nil {
+		if err := s.DelegatedScope.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScope struct {
@@ -195,7 +205,12 @@ func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegate
 }
 
 func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScope) Validate() error {
-	return dara.Validate(s)
+	if s.PredefinedScopes != nil {
+		if err := s.PredefinedScopes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopes struct {
@@ -220,7 +235,16 @@ func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegate
 }
 
 func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopes) Validate() error {
-	return dara.Validate(s)
+	if s.PredefinedScope != nil {
+		for _, item := range s.PredefinedScope {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope struct {

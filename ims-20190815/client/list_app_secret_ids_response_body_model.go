@@ -53,7 +53,12 @@ func (s *ListAppSecretIdsResponseBody) SetRequestId(v string) *ListAppSecretIdsR
 }
 
 func (s *ListAppSecretIdsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AppSecrets != nil {
+		if err := s.AppSecrets.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAppSecretIdsResponseBodyAppSecrets struct {
@@ -78,7 +83,16 @@ func (s *ListAppSecretIdsResponseBodyAppSecrets) SetAppSecret(v []*ListAppSecret
 }
 
 func (s *ListAppSecretIdsResponseBodyAppSecrets) Validate() error {
-	return dara.Validate(s)
+	if s.AppSecret != nil {
+		for _, item := range s.AppSecret {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAppSecretIdsResponseBodyAppSecretsAppSecret struct {

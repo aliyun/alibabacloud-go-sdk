@@ -53,7 +53,16 @@ func (s *ListPasskeysResponseBody) SetRequestId(v string) *ListPasskeysResponseB
 }
 
 func (s *ListPasskeysResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Passkeys != nil {
+		for _, item := range s.Passkeys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPasskeysResponseBodyPasskeys struct {

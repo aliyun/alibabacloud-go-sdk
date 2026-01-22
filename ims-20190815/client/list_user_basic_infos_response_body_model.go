@@ -91,7 +91,12 @@ func (s *ListUserBasicInfosResponseBody) SetUserBasicInfos(v *ListUserBasicInfos
 }
 
 func (s *ListUserBasicInfosResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserBasicInfos != nil {
+		if err := s.UserBasicInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUserBasicInfosResponseBodyUserBasicInfos struct {
@@ -116,7 +121,16 @@ func (s *ListUserBasicInfosResponseBodyUserBasicInfos) SetUserBasicInfo(v []*Lis
 }
 
 func (s *ListUserBasicInfosResponseBodyUserBasicInfos) Validate() error {
-	return dara.Validate(s)
+	if s.UserBasicInfo != nil {
+		for _, item := range s.UserBasicInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo struct {

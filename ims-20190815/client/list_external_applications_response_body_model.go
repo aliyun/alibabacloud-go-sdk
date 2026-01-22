@@ -93,7 +93,12 @@ func (s *ListExternalApplicationsResponseBody) SetRequestId(v string) *ListExter
 }
 
 func (s *ListExternalApplicationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ExternalApplications != nil {
+		if err := s.ExternalApplications.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListExternalApplicationsResponseBodyExternalApplications struct {
@@ -118,7 +123,16 @@ func (s *ListExternalApplicationsResponseBodyExternalApplications) SetExternalAp
 }
 
 func (s *ListExternalApplicationsResponseBodyExternalApplications) Validate() error {
-	return dara.Validate(s)
+	if s.ExternalApplication != nil {
+		for _, item := range s.ExternalApplication {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication struct {
@@ -234,7 +248,12 @@ func (s *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplica
 }
 
 func (s *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication) Validate() error {
-	return dara.Validate(s)
+	if s.DelegatedScope != nil {
+		if err := s.DelegatedScope.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScope struct {
@@ -260,7 +279,12 @@ func (s *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplica
 }
 
 func (s *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScope) Validate() error {
-	return dara.Validate(s)
+	if s.PredefinedScopes != nil {
+		if err := s.PredefinedScopes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopes struct {
@@ -285,7 +309,16 @@ func (s *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplica
 }
 
 func (s *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopes) Validate() error {
-	return dara.Validate(s)
+	if s.PredefinedScope != nil {
+		for _, item := range s.PredefinedScope {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopesPredefinedScope struct {
