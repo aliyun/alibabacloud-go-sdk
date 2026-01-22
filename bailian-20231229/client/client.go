@@ -4152,6 +4152,100 @@ func (client *Client) UpdateFileTag(WorkspaceId *string, FileId *string, request
 
 // Summary:
 //
+// 更新索引任务
+//
+// @param request - UpdateIndexRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateIndexResponse
+func (client *Client) UpdateIndexWithOptions(WorkspaceId *string, request *UpdateIndexRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateIndexResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DenseSimilarityTopK) {
+		query["DenseSimilarityTopK"] = request.DenseSimilarityTopK
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PipelineCommercialCu) {
+		query["PipelineCommercialCu"] = request.PipelineCommercialCu
+	}
+
+	if !dara.IsNil(request.PipelineCommercialType) {
+		query["PipelineCommercialType"] = request.PipelineCommercialType
+	}
+
+	if !dara.IsNil(request.RerankMinScore) {
+		query["RerankMinScore"] = request.RerankMinScore
+	}
+
+	if !dara.IsNil(request.SparseSimilarityTopK) {
+		query["SparseSimilarityTopK"] = request.SparseSimilarityTopK
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateIndex"),
+		Version:     dara.String("2023-12-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/index/update"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateIndexResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新索引任务
+//
+// @param request - UpdateIndexRequest
+//
+// @return UpdateIndexResponse
+func (client *Client) UpdateIndex(WorkspaceId *string, request *UpdateIndexRequest) (_result *UpdateIndexResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateIndexResponse{}
+	_body, _err := client.UpdateIndexWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新memory
 //
 // @param request - UpdateMemoryRequest
