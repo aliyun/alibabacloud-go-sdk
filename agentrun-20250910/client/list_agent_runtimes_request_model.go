@@ -15,6 +15,8 @@ type iListAgentRuntimesRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListAgentRuntimesRequest
 	GetPageSize() *int32
+	SetResourceGroupId(v string) *ListAgentRuntimesRequest
+	GetResourceGroupId() *string
 	SetSearchMode(v string) *ListAgentRuntimesRequest
 	GetSearchMode() *string
 	SetStatus(v string) *ListAgentRuntimesRequest
@@ -39,7 +41,8 @@ type ListAgentRuntimesRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// 查询模式，支持精确查询和模糊查询
 	//
 	// example:
@@ -74,6 +77,10 @@ func (s *ListAgentRuntimesRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListAgentRuntimesRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *ListAgentRuntimesRequest) GetSearchMode() *string {
 	return s.SearchMode
 }
@@ -94,6 +101,11 @@ func (s *ListAgentRuntimesRequest) SetPageNumber(v int32) *ListAgentRuntimesRequ
 
 func (s *ListAgentRuntimesRequest) SetPageSize(v int32) *ListAgentRuntimesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListAgentRuntimesRequest) SetResourceGroupId(v string) *ListAgentRuntimesRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 

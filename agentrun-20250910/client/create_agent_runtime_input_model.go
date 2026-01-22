@@ -41,6 +41,8 @@ type iCreateAgentRuntimeInput interface {
 	GetPort() *int32
 	SetProtocolConfiguration(v *ProtocolConfiguration) *CreateAgentRuntimeInput
 	GetProtocolConfiguration() *ProtocolConfiguration
+	SetResourceGroupId(v string) *CreateAgentRuntimeInput
+	GetResourceGroupId() *string
 	SetSessionConcurrencyLimitPerInstance(v int32) *CreateAgentRuntimeInput
 	GetSessionConcurrencyLimitPerInstance() *int32
 	SetSessionIdleTimeoutSeconds(v int32) *CreateAgentRuntimeInput
@@ -158,6 +160,7 @@ type CreateAgentRuntimeInput struct {
 	//
 	// {}
 	ProtocolConfiguration *ProtocolConfiguration `json:"protocolConfiguration,omitempty" xml:"protocolConfiguration,omitempty"`
+	ResourceGroupId       *string                `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// 每个运行时实例允许的最大并发会话数
 	//
 	// example:
@@ -242,6 +245,10 @@ func (s *CreateAgentRuntimeInput) GetPort() *int32 {
 
 func (s *CreateAgentRuntimeInput) GetProtocolConfiguration() *ProtocolConfiguration {
 	return s.ProtocolConfiguration
+}
+
+func (s *CreateAgentRuntimeInput) GetResourceGroupId() *string {
+	return s.ResourceGroupId
 }
 
 func (s *CreateAgentRuntimeInput) GetSessionConcurrencyLimitPerInstance() *int32 {
@@ -329,6 +336,11 @@ func (s *CreateAgentRuntimeInput) SetPort(v int32) *CreateAgentRuntimeInput {
 
 func (s *CreateAgentRuntimeInput) SetProtocolConfiguration(v *ProtocolConfiguration) *CreateAgentRuntimeInput {
 	s.ProtocolConfiguration = v
+	return s
+}
+
+func (s *CreateAgentRuntimeInput) SetResourceGroupId(v string) *CreateAgentRuntimeInput {
+	s.ResourceGroupId = &v
 	return s
 }
 

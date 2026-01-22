@@ -1632,6 +1632,10 @@ func (client *Client) ListAgentRuntimesWithContext(ctx context.Context, request 
 		query["pageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["resourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !dara.IsNil(request.SearchMode) {
 		query["searchMode"] = request.SearchMode
 	}
