@@ -33,6 +33,10 @@ type iGetLindormV2InstanceResponseBody interface {
 	GetDiskUsage() *string
 	SetEnableCompute(v bool) *GetLindormV2InstanceResponseBody
 	GetEnableCompute() *bool
+	SetEnableFS(v bool) *GetLindormV2InstanceResponseBody
+	GetEnableFS() *bool
+	SetEnableStoreTDE(v bool) *GetLindormV2InstanceResponseBody
+	GetEnableStoreTDE() *bool
 	SetEngineList(v []*GetLindormV2InstanceResponseBodyEngineList) *GetLindormV2InstanceResponseBody
 	GetEngineList() []*GetLindormV2InstanceResponseBodyEngineList
 	SetExpiredMilliseconds(v int64) *GetLindormV2InstanceResponseBody
@@ -98,6 +102,8 @@ type GetLindormV2InstanceResponseBody struct {
 	DiskThreshold       *string                                        `json:"DiskThreshold,omitempty" xml:"DiskThreshold,omitempty"`
 	DiskUsage           *string                                        `json:"DiskUsage,omitempty" xml:"DiskUsage,omitempty"`
 	EnableCompute       *bool                                          `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
+	EnableFS            *bool                                          `json:"EnableFS,omitempty" xml:"EnableFS,omitempty"`
+	EnableStoreTDE      *bool                                          `json:"EnableStoreTDE,omitempty" xml:"EnableStoreTDE,omitempty"`
 	EngineList          []*GetLindormV2InstanceResponseBodyEngineList  `json:"EngineList,omitempty" xml:"EngineList,omitempty" type:"Repeated"`
 	ExpiredMilliseconds *int64                                         `json:"ExpiredMilliseconds,omitempty" xml:"ExpiredMilliseconds,omitempty"`
 	InitialRootPassword *string                                        `json:"InitialRootPassword,omitempty" xml:"InitialRootPassword,omitempty"`
@@ -179,6 +185,14 @@ func (s *GetLindormV2InstanceResponseBody) GetDiskUsage() *string {
 
 func (s *GetLindormV2InstanceResponseBody) GetEnableCompute() *bool {
 	return s.EnableCompute
+}
+
+func (s *GetLindormV2InstanceResponseBody) GetEnableFS() *bool {
+	return s.EnableFS
+}
+
+func (s *GetLindormV2InstanceResponseBody) GetEnableStoreTDE() *bool {
+	return s.EnableStoreTDE
 }
 
 func (s *GetLindormV2InstanceResponseBody) GetEngineList() []*GetLindormV2InstanceResponseBodyEngineList {
@@ -338,6 +352,16 @@ func (s *GetLindormV2InstanceResponseBody) SetDiskUsage(v string) *GetLindormV2I
 
 func (s *GetLindormV2InstanceResponseBody) SetEnableCompute(v bool) *GetLindormV2InstanceResponseBody {
 	s.EnableCompute = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetEnableFS(v bool) *GetLindormV2InstanceResponseBody {
+	s.EnableFS = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetEnableStoreTDE(v bool) *GetLindormV2InstanceResponseBody {
+	s.EnableStoreTDE = &v
 	return s
 }
 

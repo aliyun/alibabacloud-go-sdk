@@ -33,6 +33,10 @@ type iGetLindormV2InstanceDetailsResponseBody interface {
 	GetDiskUsage() *string
 	SetEnableCompute(v bool) *GetLindormV2InstanceDetailsResponseBody
 	GetEnableCompute() *bool
+	SetEnableFs(v string) *GetLindormV2InstanceDetailsResponseBody
+	GetEnableFs() *string
+	SetEnableStoreTDE(v string) *GetLindormV2InstanceDetailsResponseBody
+	GetEnableStoreTDE() *string
 	SetEngineList(v []*GetLindormV2InstanceDetailsResponseBodyEngineList) *GetLindormV2InstanceDetailsResponseBody
 	GetEngineList() []*GetLindormV2InstanceDetailsResponseBodyEngineList
 	SetExpiredMilliseconds(v int64) *GetLindormV2InstanceDetailsResponseBody
@@ -133,8 +137,10 @@ type GetLindormV2InstanceDetailsResponseBody struct {
 	// example:
 	//
 	// true
-	EnableCompute *bool                                                `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
-	EngineList    []*GetLindormV2InstanceDetailsResponseBodyEngineList `json:"EngineList,omitempty" xml:"EngineList,omitempty" type:"Repeated"`
+	EnableCompute  *bool                                                `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
+	EnableFs       *string                                              `json:"EnableFs,omitempty" xml:"EnableFs,omitempty"`
+	EnableStoreTDE *string                                              `json:"EnableStoreTDE,omitempty" xml:"EnableStoreTDE,omitempty"`
+	EngineList     []*GetLindormV2InstanceDetailsResponseBodyEngineList `json:"EngineList,omitempty" xml:"EngineList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1629993600000
@@ -278,6 +284,14 @@ func (s *GetLindormV2InstanceDetailsResponseBody) GetDiskUsage() *string {
 
 func (s *GetLindormV2InstanceDetailsResponseBody) GetEnableCompute() *bool {
 	return s.EnableCompute
+}
+
+func (s *GetLindormV2InstanceDetailsResponseBody) GetEnableFs() *string {
+	return s.EnableFs
+}
+
+func (s *GetLindormV2InstanceDetailsResponseBody) GetEnableStoreTDE() *string {
+	return s.EnableStoreTDE
 }
 
 func (s *GetLindormV2InstanceDetailsResponseBody) GetEngineList() []*GetLindormV2InstanceDetailsResponseBodyEngineList {
@@ -437,6 +451,16 @@ func (s *GetLindormV2InstanceDetailsResponseBody) SetDiskUsage(v string) *GetLin
 
 func (s *GetLindormV2InstanceDetailsResponseBody) SetEnableCompute(v bool) *GetLindormV2InstanceDetailsResponseBody {
 	s.EnableCompute = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceDetailsResponseBody) SetEnableFs(v string) *GetLindormV2InstanceDetailsResponseBody {
+	s.EnableFs = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceDetailsResponseBody) SetEnableStoreTDE(v string) *GetLindormV2InstanceDetailsResponseBody {
+	s.EnableStoreTDE = &v
 	return s
 }
 
