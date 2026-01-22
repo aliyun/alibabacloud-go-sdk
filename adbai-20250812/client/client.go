@@ -317,3 +317,155 @@ func (client *Client) DescribeEmbodiedAIPlatforms(request *DescribeEmbodiedAIPla
 	_result = _body
 	return _result, _err
 }
+
+// Summary:
+//
+// 查询具身智能平台资源用量
+//
+// @param request - GetEmbodiedAIPlatformResourceUsageInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEmbodiedAIPlatformResourceUsageInfoResponse
+func (client *Client) GetEmbodiedAIPlatformResourceUsageInfoWithOptions(request *GetEmbodiedAIPlatformResourceUsageInfoRequest, runtime *dara.RuntimeOptions) (_result *GetEmbodiedAIPlatformResourceUsageInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.PlatformName) {
+		query["PlatformName"] = request.PlatformName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetEmbodiedAIPlatformResourceUsageInfo"),
+		Version:     dara.String("2025-08-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetEmbodiedAIPlatformResourceUsageInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询具身智能平台资源用量
+//
+// @param request - GetEmbodiedAIPlatformResourceUsageInfoRequest
+//
+// @return GetEmbodiedAIPlatformResourceUsageInfoResponse
+func (client *Client) GetEmbodiedAIPlatformResourceUsageInfo(request *GetEmbodiedAIPlatformResourceUsageInfoRequest) (_result *GetEmbodiedAIPlatformResourceUsageInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetEmbodiedAIPlatformResourceUsageInfoResponse{}
+	_body, _err := client.GetEmbodiedAIPlatformResourceUsageInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 重置具身智能平台密码
+//
+// @param request - ResetEmbodiedAIPlatformPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetEmbodiedAIPlatformPasswordResponse
+func (client *Client) ResetEmbodiedAIPlatformPasswordWithOptions(request *ResetEmbodiedAIPlatformPasswordRequest, runtime *dara.RuntimeOptions) (_result *ResetEmbodiedAIPlatformPasswordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.Password) {
+		query["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.PlatformName) {
+		query["PlatformName"] = request.PlatformName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResetEmbodiedAIPlatformPassword"),
+		Version:     dara.String("2025-08-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResetEmbodiedAIPlatformPasswordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重置具身智能平台密码
+//
+// @param request - ResetEmbodiedAIPlatformPasswordRequest
+//
+// @return ResetEmbodiedAIPlatformPasswordResponse
+func (client *Client) ResetEmbodiedAIPlatformPassword(request *ResetEmbodiedAIPlatformPasswordRequest) (_result *ResetEmbodiedAIPlatformPasswordResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ResetEmbodiedAIPlatformPasswordResponse{}
+	_body, _err := client.ResetEmbodiedAIPlatformPasswordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
