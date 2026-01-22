@@ -27,6 +27,8 @@ type iCreateMcpServerRequest interface {
 	GetGrayMcpServerConfigs() []*CreateMcpServerRequestGrayMcpServerConfigs
 	SetMatch(v *HttpRouteMatch) *CreateMcpServerRequest
 	GetMatch() *HttpRouteMatch
+	SetMcpServerConfig(v *CreateMcpServerRequestMcpServerConfig) *CreateMcpServerRequest
+	GetMcpServerConfig() *CreateMcpServerRequestMcpServerConfig
 	SetMcpStatisticsEnable(v bool) *CreateMcpServerRequest
 	GetMcpStatisticsEnable() *bool
 	SetName(v string) *CreateMcpServerRequest
@@ -68,7 +70,8 @@ type CreateMcpServerRequest struct {
 	GatewayId            *string                                       `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
 	GrayMcpServerConfigs []*CreateMcpServerRequestGrayMcpServerConfigs `json:"grayMcpServerConfigs,omitempty" xml:"grayMcpServerConfigs,omitempty" type:"Repeated"`
 	// The route match rule.
-	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
+	Match           *HttpRouteMatch                        `json:"match,omitempty" xml:"match,omitempty"`
+	McpServerConfig *CreateMcpServerRequestMcpServerConfig `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty" type:"Struct"`
 	// Specifies whether MCP observability is enabled. Default: false.
 	//
 	// example:
@@ -145,6 +148,10 @@ func (s *CreateMcpServerRequest) GetMatch() *HttpRouteMatch {
 	return s.Match
 }
 
+func (s *CreateMcpServerRequest) GetMcpServerConfig() *CreateMcpServerRequestMcpServerConfig {
+	return s.McpServerConfig
+}
+
 func (s *CreateMcpServerRequest) GetMcpStatisticsEnable() *bool {
 	return s.McpStatisticsEnable
 }
@@ -206,6 +213,11 @@ func (s *CreateMcpServerRequest) SetMatch(v *HttpRouteMatch) *CreateMcpServerReq
 	return s
 }
 
+func (s *CreateMcpServerRequest) SetMcpServerConfig(v *CreateMcpServerRequestMcpServerConfig) *CreateMcpServerRequest {
+	s.McpServerConfig = v
+	return s
+}
+
 func (s *CreateMcpServerRequest) SetMcpStatisticsEnable(v bool) *CreateMcpServerRequest {
 	s.McpStatisticsEnable = &v
 	return s
@@ -252,6 +264,11 @@ func (s *CreateMcpServerRequest) Validate() error {
 	}
 	if s.Match != nil {
 		if err := s.Match.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.McpServerConfig != nil {
+		if err := s.McpServerConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -619,5 +636,40 @@ func (s *CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) SetWei
 }
 
 func (s *CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateMcpServerRequestMcpServerConfig struct {
+	McpServerSpec *string `json:"mcpServerSpec,omitempty" xml:"mcpServerSpec,omitempty"`
+	SwaggerConfig *string `json:"swaggerConfig,omitempty" xml:"swaggerConfig,omitempty"`
+}
+
+func (s CreateMcpServerRequestMcpServerConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateMcpServerRequestMcpServerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMcpServerRequestMcpServerConfig) GetMcpServerSpec() *string {
+	return s.McpServerSpec
+}
+
+func (s *CreateMcpServerRequestMcpServerConfig) GetSwaggerConfig() *string {
+	return s.SwaggerConfig
+}
+
+func (s *CreateMcpServerRequestMcpServerConfig) SetMcpServerSpec(v string) *CreateMcpServerRequestMcpServerConfig {
+	s.McpServerSpec = &v
+	return s
+}
+
+func (s *CreateMcpServerRequestMcpServerConfig) SetSwaggerConfig(v string) *CreateMcpServerRequestMcpServerConfig {
+	s.SwaggerConfig = &v
+	return s
+}
+
+func (s *CreateMcpServerRequestMcpServerConfig) Validate() error {
 	return dara.Validate(s)
 }

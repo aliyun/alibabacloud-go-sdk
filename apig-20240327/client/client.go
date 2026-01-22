@@ -1270,6 +1270,10 @@ func (client *Client) CreateMcpServerWithOptions(request *CreateMcpServerRequest
 		body["match"] = request.Match
 	}
 
+	if !dara.IsNil(request.McpServerConfig) {
+		body["mcpServerConfig"] = request.McpServerConfig
+	}
+
 	if !dara.IsNil(request.McpStatisticsEnable) {
 		body["mcpStatisticsEnable"] = request.McpStatisticsEnable
 	}
@@ -7364,6 +7368,10 @@ func (client *Client) UpdateMcpServerWithOptions(mcpServerId *string, request *U
 
 	if !dara.IsNil(request.Match) {
 		body["match"] = request.Match
+	}
+
+	if !dara.IsNil(request.McpServerConfig) {
+		body["mcpServerConfig"] = request.McpServerConfig
 	}
 
 	if !dara.IsNil(request.McpStatisticsEnable) {

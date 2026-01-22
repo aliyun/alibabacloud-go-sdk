@@ -25,6 +25,8 @@ type iUpdateMcpServerRequest interface {
 	GetGrayMcpServerConfigs() []*UpdateMcpServerRequestGrayMcpServerConfigs
 	SetMatch(v *HttpRouteMatch) *UpdateMcpServerRequest
 	GetMatch() *HttpRouteMatch
+	SetMcpServerConfig(v *UpdateMcpServerRequestMcpServerConfig) *UpdateMcpServerRequest
+	GetMcpServerConfig() *UpdateMcpServerRequestMcpServerConfig
 	SetMcpStatisticsEnable(v bool) *UpdateMcpServerRequest
 	GetMcpStatisticsEnable() *bool
 	SetProtocol(v string) *UpdateMcpServerRequest
@@ -52,7 +54,8 @@ type UpdateMcpServerRequest struct {
 	ExposedUriPath       *string                                       `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
 	GrayMcpServerConfigs []*UpdateMcpServerRequestGrayMcpServerConfigs `json:"grayMcpServerConfigs,omitempty" xml:"grayMcpServerConfigs,omitempty" type:"Repeated"`
 	// The route match rule.
-	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
+	Match           *HttpRouteMatch                        `json:"match,omitempty" xml:"match,omitempty"`
+	McpServerConfig *UpdateMcpServerRequestMcpServerConfig `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty" type:"Struct"`
 	// Specifies if MCP observability is enabled. Default value: false.
 	//
 	// example:
@@ -117,6 +120,10 @@ func (s *UpdateMcpServerRequest) GetMatch() *HttpRouteMatch {
 	return s.Match
 }
 
+func (s *UpdateMcpServerRequest) GetMcpServerConfig() *UpdateMcpServerRequestMcpServerConfig {
+	return s.McpServerConfig
+}
+
 func (s *UpdateMcpServerRequest) GetMcpStatisticsEnable() *bool {
 	return s.McpStatisticsEnable
 }
@@ -169,6 +176,11 @@ func (s *UpdateMcpServerRequest) SetMatch(v *HttpRouteMatch) *UpdateMcpServerReq
 	return s
 }
 
+func (s *UpdateMcpServerRequest) SetMcpServerConfig(v *UpdateMcpServerRequestMcpServerConfig) *UpdateMcpServerRequest {
+	s.McpServerConfig = v
+	return s
+}
+
 func (s *UpdateMcpServerRequest) SetMcpStatisticsEnable(v bool) *UpdateMcpServerRequest {
 	s.McpStatisticsEnable = &v
 	return s
@@ -210,6 +222,11 @@ func (s *UpdateMcpServerRequest) Validate() error {
 	}
 	if s.Match != nil {
 		if err := s.Match.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.McpServerConfig != nil {
+		if err := s.McpServerConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -579,5 +596,40 @@ func (s *UpdateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) SetWei
 }
 
 func (s *UpdateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) Validate() error {
+	return dara.Validate(s)
+}
+
+type UpdateMcpServerRequestMcpServerConfig struct {
+	McpServerSpec *string `json:"mcpServerSpec,omitempty" xml:"mcpServerSpec,omitempty"`
+	SwaggerConfig *string `json:"swaggerConfig,omitempty" xml:"swaggerConfig,omitempty"`
+}
+
+func (s UpdateMcpServerRequestMcpServerConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateMcpServerRequestMcpServerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMcpServerRequestMcpServerConfig) GetMcpServerSpec() *string {
+	return s.McpServerSpec
+}
+
+func (s *UpdateMcpServerRequestMcpServerConfig) GetSwaggerConfig() *string {
+	return s.SwaggerConfig
+}
+
+func (s *UpdateMcpServerRequestMcpServerConfig) SetMcpServerSpec(v string) *UpdateMcpServerRequestMcpServerConfig {
+	s.McpServerSpec = &v
+	return s
+}
+
+func (s *UpdateMcpServerRequestMcpServerConfig) SetSwaggerConfig(v string) *UpdateMcpServerRequestMcpServerConfig {
+	s.SwaggerConfig = &v
+	return s
+}
+
+func (s *UpdateMcpServerRequestMcpServerConfig) Validate() error {
 	return dara.Validate(s)
 }
