@@ -666,6 +666,80 @@ func (client *Client) ApplyDataServiceApp(request *ApplyDataServiceAppRequest) (
 
 // Summary:
 //
+// 指定质量规则和调度设置进行绑定。
+//
+// @param tmpReq - AssignQualityRuleOfAllRuleScopeSchedulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssignQualityRuleOfAllRuleScopeSchedulesResponse
+func (client *Client) AssignQualityRuleOfAllRuleScopeSchedulesWithOptions(tmpReq *AssignQualityRuleOfAllRuleScopeSchedulesRequest, runtime *dara.RuntimeOptions) (_result *AssignQualityRuleOfAllRuleScopeSchedulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AssignQualityRuleOfAllRuleScopeSchedulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AssignCommand) {
+		request.AssignCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AssignCommand, dara.String("AssignCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AssignCommandShrink) {
+		body["AssignCommand"] = request.AssignCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AssignQualityRuleOfAllRuleScopeSchedules"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AssignQualityRuleOfAllRuleScopeSchedulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 指定质量规则和调度设置进行绑定。
+//
+// @param request - AssignQualityRuleOfAllRuleScopeSchedulesRequest
+//
+// @return AssignQualityRuleOfAllRuleScopeSchedulesResponse
+func (client *Client) AssignQualityRuleOfAllRuleScopeSchedules(request *AssignQualityRuleOfAllRuleScopeSchedulesRequest) (_result *AssignQualityRuleOfAllRuleScopeSchedulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AssignQualityRuleOfAllRuleScopeSchedulesResponse{}
+	_body, _err := client.AssignQualityRuleOfAllRuleScopeSchedulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 项目计算源连通性检查。
 //
 // @param tmpReq - CheckComputeSourceConnectivityRequest
@@ -2290,6 +2364,820 @@ func (client *Client) CreateRowPermission(request *CreateRowPermissionRequest) (
 
 // Summary:
 //
+// 新建数据分类。
+//
+// @param tmpReq - CreateSecurityClassifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSecurityClassifyResponse
+func (client *Client) CreateSecurityClassifyWithOptions(tmpReq *CreateSecurityClassifyRequest, runtime *dara.RuntimeOptions) (_result *CreateSecurityClassifyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateSecurityClassifyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSecurityClassify"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSecurityClassifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建数据分类。
+//
+// @param request - CreateSecurityClassifyRequest
+//
+// @return CreateSecurityClassifyResponse
+func (client *Client) CreateSecurityClassify(request *CreateSecurityClassifyRequest) (_result *CreateSecurityClassifyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateSecurityClassifyResponse{}
+	_body, _err := client.CreateSecurityClassifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建数据分类目录。
+//
+// @param tmpReq - CreateSecurityClassifyCatalogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSecurityClassifyCatalogResponse
+func (client *Client) CreateSecurityClassifyCatalogWithOptions(tmpReq *CreateSecurityClassifyCatalogRequest, runtime *dara.RuntimeOptions) (_result *CreateSecurityClassifyCatalogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateSecurityClassifyCatalogShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSecurityClassifyCatalog"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSecurityClassifyCatalogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建数据分类目录。
+//
+// @param request - CreateSecurityClassifyCatalogRequest
+//
+// @return CreateSecurityClassifyCatalogResponse
+func (client *Client) CreateSecurityClassifyCatalog(request *CreateSecurityClassifyCatalogRequest) (_result *CreateSecurityClassifyCatalogResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateSecurityClassifyCatalogResponse{}
+	_body, _err := client.CreateSecurityClassifyCatalogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建安全识别结果。
+//
+// @param tmpReq - CreateSecurityIdentifyResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSecurityIdentifyResultResponse
+func (client *Client) CreateSecurityIdentifyResultWithOptions(tmpReq *CreateSecurityIdentifyResultRequest, runtime *dara.RuntimeOptions) (_result *CreateSecurityIdentifyResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateSecurityIdentifyResultShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSecurityIdentifyResult"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSecurityIdentifyResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建安全识别结果。
+//
+// @param request - CreateSecurityIdentifyResultRequest
+//
+// @return CreateSecurityIdentifyResultResponse
+func (client *Client) CreateSecurityIdentifyResult(request *CreateSecurityIdentifyResultRequest) (_result *CreateSecurityIdentifyResultResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateSecurityIdentifyResultResponse{}
+	_body, _err := client.CreateSecurityIdentifyResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建数据分级。
+//
+// @param tmpReq - CreateSecurityLevelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSecurityLevelResponse
+func (client *Client) CreateSecurityLevelWithOptions(tmpReq *CreateSecurityLevelRequest, runtime *dara.RuntimeOptions) (_result *CreateSecurityLevelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateSecurityLevelShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSecurityLevel"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSecurityLevelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建数据分级。
+//
+// @param request - CreateSecurityLevelRequest
+//
+// @return CreateSecurityLevelResponse
+func (client *Client) CreateSecurityLevel(request *CreateSecurityLevelRequest) (_result *CreateSecurityLevelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateSecurityLevelResponse{}
+	_body, _err := client.CreateSecurityLevelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建标准。
+//
+// @param tmpReq - CreateStandardRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateStandardResponse
+func (client *Client) CreateStandardWithOptions(tmpReq *CreateStandardRequest, runtime *dara.RuntimeOptions) (_result *CreateStandardResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateStandardShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateStandard"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateStandardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建标准。
+//
+// @param request - CreateStandardRequest
+//
+// @return CreateStandardResponse
+func (client *Client) CreateStandard(request *CreateStandardRequest) (_result *CreateStandardResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateStandardResponse{}
+	_body, _err := client.CreateStandardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据标准码表。
+//
+// @param tmpReq - CreateStandardLookupTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateStandardLookupTableResponse
+func (client *Client) CreateStandardLookupTableWithOptions(tmpReq *CreateStandardLookupTableRequest, runtime *dara.RuntimeOptions) (_result *CreateStandardLookupTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateStandardLookupTableShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateStandardLookupTable"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateStandardLookupTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据标准码表。
+//
+// @param request - CreateStandardLookupTableRequest
+//
+// @return CreateStandardLookupTableResponse
+func (client *Client) CreateStandardLookupTable(request *CreateStandardLookupTableRequest) (_result *CreateStandardLookupTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateStandardLookupTableResponse{}
+	_body, _err := client.CreateStandardLookupTableWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建标准映射关系, 包括有效映射和无效映射。
+//
+// @param tmpReq - CreateStandardMappingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateStandardMappingResponse
+func (client *Client) CreateStandardMappingWithOptions(tmpReq *CreateStandardMappingRequest, runtime *dara.RuntimeOptions) (_result *CreateStandardMappingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateStandardMappingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateStandardMapping"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateStandardMappingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建标准映射关系, 包括有效映射和无效映射。
+//
+// @param request - CreateStandardMappingRequest
+//
+// @return CreateStandardMappingResponse
+func (client *Client) CreateStandardMapping(request *CreateStandardMappingRequest) (_result *CreateStandardMappingResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateStandardMappingResponse{}
+	_body, _err := client.CreateStandardMappingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建标准关联关系。
+//
+// @param tmpReq - CreateStandardRelationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateStandardRelationsResponse
+func (client *Client) CreateStandardRelationsWithOptions(tmpReq *CreateStandardRelationsRequest, runtime *dara.RuntimeOptions) (_result *CreateStandardRelationsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateStandardRelationsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateStandardRelations"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateStandardRelationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建标准关联关系。
+//
+// @param request - CreateStandardRelationsRequest
+//
+// @return CreateStandardRelationsResponse
+func (client *Client) CreateStandardRelations(request *CreateStandardRelationsRequest) (_result *CreateStandardRelationsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateStandardRelationsResponse{}
+	_body, _err := client.CreateStandardRelationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建标准集。
+//
+// @param tmpReq - CreateStandardSetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateStandardSetResponse
+func (client *Client) CreateStandardSetWithOptions(tmpReq *CreateStandardSetRequest, runtime *dara.RuntimeOptions) (_result *CreateStandardSetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateStandardSetShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateStandardSet"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateStandardSetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建标准集。
+//
+// @param request - CreateStandardSetRequest
+//
+// @return CreateStandardSetResponse
+func (client *Client) CreateStandardSet(request *CreateStandardSetRequest) (_result *CreateStandardSetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateStandardSetResponse{}
+	_body, _err := client.CreateStandardSetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据标准模板。
+//
+// @param tmpReq - CreateStandardTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateStandardTemplateResponse
+func (client *Client) CreateStandardTemplateWithOptions(tmpReq *CreateStandardTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateStandardTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateStandardTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateStandardTemplate"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateStandardTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据标准模板。
+//
+// @param request - CreateStandardTemplateRequest
+//
+// @return CreateStandardTemplateResponse
+func (client *Client) CreateStandardTemplate(request *CreateStandardTemplateRequest) (_result *CreateStandardTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateStandardTemplateResponse{}
+	_body, _err := client.CreateStandardTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据标准词根。
+//
+// @param tmpReq - CreateStandardWordRootRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateStandardWordRootResponse
+func (client *Client) CreateStandardWordRootWithOptions(tmpReq *CreateStandardWordRootRequest, runtime *dara.RuntimeOptions) (_result *CreateStandardWordRootResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateStandardWordRootShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateStandardWordRoot"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateStandardWordRootResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据标准词根。
+//
+// @param request - CreateStandardWordRootRequest
+//
+// @return CreateStandardWordRootResponse
+func (client *Client) CreateStandardWordRoot(request *CreateStandardWordRootRequest) (_result *CreateStandardWordRootResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateStandardWordRootResponse{}
+	_body, _err := client.CreateStandardWordRootWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建流批一体任务
 //
 // @param tmpReq - CreateStreamBatchJobMappingRequest
@@ -3150,6 +4038,302 @@ func (client *Client) DeleteDirectory(request *DeleteDirectoryRequest) (_result 
 
 // Summary:
 //
+// 批量删除质量规则对象。
+//
+// @param tmpReq - DeleteQualityRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteQualityRulesResponse
+func (client *Client) DeleteQualityRulesWithOptions(tmpReq *DeleteQualityRulesRequest, runtime *dara.RuntimeOptions) (_result *DeleteQualityRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteQualityRulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DeleteCommand) {
+		request.DeleteCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeleteCommand, dara.String("DeleteCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DeleteCommandShrink) {
+		body["DeleteCommand"] = request.DeleteCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteQualityRules"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteQualityRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除质量规则对象。
+//
+// @param request - DeleteQualityRulesRequest
+//
+// @return DeleteQualityRulesResponse
+func (client *Client) DeleteQualityRules(request *DeleteQualityRulesRequest) (_result *DeleteQualityRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteQualityRulesResponse{}
+	_body, _err := client.DeleteQualityRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除质量调度对象。
+//
+// @param tmpReq - DeleteQualitySchedulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteQualitySchedulesResponse
+func (client *Client) DeleteQualitySchedulesWithOptions(tmpReq *DeleteQualitySchedulesRequest, runtime *dara.RuntimeOptions) (_result *DeleteQualitySchedulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteQualitySchedulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DeleteCommand) {
+		request.DeleteCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeleteCommand, dara.String("DeleteCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DeleteCommandShrink) {
+		body["DeleteCommand"] = request.DeleteCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteQualitySchedules"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteQualitySchedulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除质量调度对象。
+//
+// @param request - DeleteQualitySchedulesRequest
+//
+// @return DeleteQualitySchedulesResponse
+func (client *Client) DeleteQualitySchedules(request *DeleteQualitySchedulesRequest) (_result *DeleteQualitySchedulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteQualitySchedulesResponse{}
+	_body, _err := client.DeleteQualitySchedulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除质量模板对象。
+//
+// @param tmpReq - DeleteQualityTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteQualityTemplatesResponse
+func (client *Client) DeleteQualityTemplatesWithOptions(tmpReq *DeleteQualityTemplatesRequest, runtime *dara.RuntimeOptions) (_result *DeleteQualityTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteQualityTemplatesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DeleteCommand) {
+		request.DeleteCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeleteCommand, dara.String("DeleteCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DeleteCommandShrink) {
+		body["DeleteCommand"] = request.DeleteCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteQualityTemplates"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteQualityTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除质量模板对象。
+//
+// @param request - DeleteQualityTemplatesRequest
+//
+// @return DeleteQualityTemplatesResponse
+func (client *Client) DeleteQualityTemplates(request *DeleteQualityTemplatesRequest) (_result *DeleteQualityTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteQualityTemplatesResponse{}
+	_body, _err := client.DeleteQualityTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除质量监控对象。
+//
+// @param tmpReq - DeleteQualityWatchesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteQualityWatchesResponse
+func (client *Client) DeleteQualityWatchesWithOptions(tmpReq *DeleteQualityWatchesRequest, runtime *dara.RuntimeOptions) (_result *DeleteQualityWatchesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteQualityWatchesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DeleteCommand) {
+		request.DeleteCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeleteCommand, dara.String("DeleteCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DeleteCommandShrink) {
+		body["DeleteCommand"] = request.DeleteCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteQualityWatches"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteQualityWatchesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除质量监控对象。
+//
+// @param request - DeleteQualityWatchesRequest
+//
+// @return DeleteQualityWatchesResponse
+func (client *Client) DeleteQualityWatches(request *DeleteQualityWatchesRequest) (_result *DeleteQualityWatchesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteQualityWatchesResponse{}
+	_body, _err := client.DeleteQualityWatchesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除注册血缘。
 //
 // @param tmpReq - DeleteRegisterLineageRequest
@@ -3363,6 +4547,796 @@ func (client *Client) DeleteRowPermission(request *DeleteRowPermissionRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteRowPermissionResponse{}
 	_body, _err := client.DeleteRowPermissionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据分类。
+//
+// @param tmpReq - DeleteSecurityClassifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSecurityClassifyResponse
+func (client *Client) DeleteSecurityClassifyWithOptions(tmpReq *DeleteSecurityClassifyRequest, runtime *dara.RuntimeOptions) (_result *DeleteSecurityClassifyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteSecurityClassifyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DeleteCommand) {
+		request.DeleteCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeleteCommand, dara.String("DeleteCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DeleteCommandShrink) {
+		body["DeleteCommand"] = request.DeleteCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSecurityClassify"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSecurityClassifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据分类。
+//
+// @param request - DeleteSecurityClassifyRequest
+//
+// @return DeleteSecurityClassifyResponse
+func (client *Client) DeleteSecurityClassify(request *DeleteSecurityClassifyRequest) (_result *DeleteSecurityClassifyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteSecurityClassifyResponse{}
+	_body, _err := client.DeleteSecurityClassifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据分类目录。
+//
+// @param tmpReq - DeleteSecurityClassifyCatalogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSecurityClassifyCatalogResponse
+func (client *Client) DeleteSecurityClassifyCatalogWithOptions(tmpReq *DeleteSecurityClassifyCatalogRequest, runtime *dara.RuntimeOptions) (_result *DeleteSecurityClassifyCatalogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteSecurityClassifyCatalogShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DeleteCommand) {
+		request.DeleteCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeleteCommand, dara.String("DeleteCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DeleteCommandShrink) {
+		body["DeleteCommand"] = request.DeleteCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSecurityClassifyCatalog"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSecurityClassifyCatalogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据分类目录。
+//
+// @param request - DeleteSecurityClassifyCatalogRequest
+//
+// @return DeleteSecurityClassifyCatalogResponse
+func (client *Client) DeleteSecurityClassifyCatalog(request *DeleteSecurityClassifyCatalogRequest) (_result *DeleteSecurityClassifyCatalogResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteSecurityClassifyCatalogResponse{}
+	_body, _err := client.DeleteSecurityClassifyCatalogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除安全识别结果。
+//
+// @param tmpReq - DeleteSecurityIdentifyResultsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSecurityIdentifyResultsResponse
+func (client *Client) DeleteSecurityIdentifyResultsWithOptions(tmpReq *DeleteSecurityIdentifyResultsRequest, runtime *dara.RuntimeOptions) (_result *DeleteSecurityIdentifyResultsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteSecurityIdentifyResultsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DeleteCommand) {
+		request.DeleteCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeleteCommand, dara.String("DeleteCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DeleteCommandShrink) {
+		body["DeleteCommand"] = request.DeleteCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSecurityIdentifyResults"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSecurityIdentifyResultsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除安全识别结果。
+//
+// @param request - DeleteSecurityIdentifyResultsRequest
+//
+// @return DeleteSecurityIdentifyResultsResponse
+func (client *Client) DeleteSecurityIdentifyResults(request *DeleteSecurityIdentifyResultsRequest) (_result *DeleteSecurityIdentifyResultsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteSecurityIdentifyResultsResponse{}
+	_body, _err := client.DeleteSecurityIdentifyResultsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据分级。
+//
+// @param tmpReq - DeleteSecurityLevelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSecurityLevelResponse
+func (client *Client) DeleteSecurityLevelWithOptions(tmpReq *DeleteSecurityLevelRequest, runtime *dara.RuntimeOptions) (_result *DeleteSecurityLevelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteSecurityLevelShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DeleteCommand) {
+		request.DeleteCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeleteCommand, dara.String("DeleteCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DeleteCommandShrink) {
+		body["DeleteCommand"] = request.DeleteCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSecurityLevel"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSecurityLevelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据分级。
+//
+// @param request - DeleteSecurityLevelRequest
+//
+// @return DeleteSecurityLevelResponse
+func (client *Client) DeleteSecurityLevel(request *DeleteSecurityLevelRequest) (_result *DeleteSecurityLevelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteSecurityLevelResponse{}
+	_body, _err := client.DeleteSecurityLevelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除标准。
+//
+// @param tmpReq - DeleteStandardRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteStandardResponse
+func (client *Client) DeleteStandardWithOptions(tmpReq *DeleteStandardRequest, runtime *dara.RuntimeOptions) (_result *DeleteStandardResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteStandardShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DeleteCommand) {
+		request.DeleteCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeleteCommand, dara.String("DeleteCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DeleteCommandShrink) {
+		body["DeleteCommand"] = request.DeleteCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteStandard"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteStandardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除标准。
+//
+// @param request - DeleteStandardRequest
+//
+// @return DeleteStandardResponse
+func (client *Client) DeleteStandard(request *DeleteStandardRequest) (_result *DeleteStandardResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteStandardResponse{}
+	_body, _err := client.DeleteStandardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除无效映射关系。
+//
+// @param tmpReq - DeleteStandardInValidMappingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteStandardInValidMappingResponse
+func (client *Client) DeleteStandardInValidMappingWithOptions(tmpReq *DeleteStandardInValidMappingRequest, runtime *dara.RuntimeOptions) (_result *DeleteStandardInValidMappingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteStandardInValidMappingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DeleteCommand) {
+		request.DeleteCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeleteCommand, dara.String("DeleteCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DeleteCommandShrink) {
+		body["DeleteCommand"] = request.DeleteCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteStandardInValidMapping"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteStandardInValidMappingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除无效映射关系。
+//
+// @param request - DeleteStandardInValidMappingRequest
+//
+// @return DeleteStandardInValidMappingResponse
+func (client *Client) DeleteStandardInValidMapping(request *DeleteStandardInValidMappingRequest) (_result *DeleteStandardInValidMappingResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteStandardInValidMappingResponse{}
+	_body, _err := client.DeleteStandardInValidMappingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据标准码表。
+//
+// @param request - DeleteStandardLookupTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteStandardLookupTableResponse
+func (client *Client) DeleteStandardLookupTableWithOptions(request *DeleteStandardLookupTableRequest, runtime *dara.RuntimeOptions) (_result *DeleteStandardLookupTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteStandardLookupTable"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteStandardLookupTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据标准码表。
+//
+// @param request - DeleteStandardLookupTableRequest
+//
+// @return DeleteStandardLookupTableResponse
+func (client *Client) DeleteStandardLookupTable(request *DeleteStandardLookupTableRequest) (_result *DeleteStandardLookupTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteStandardLookupTableResponse{}
+	_body, _err := client.DeleteStandardLookupTableWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除标准关联关系。
+//
+// @param tmpReq - DeleteStandardRelationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteStandardRelationsResponse
+func (client *Client) DeleteStandardRelationsWithOptions(tmpReq *DeleteStandardRelationsRequest, runtime *dara.RuntimeOptions) (_result *DeleteStandardRelationsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteStandardRelationsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DeleteCommand) {
+		request.DeleteCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeleteCommand, dara.String("DeleteCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DeleteCommandShrink) {
+		body["DeleteCommand"] = request.DeleteCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteStandardRelations"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteStandardRelationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除标准关联关系。
+//
+// @param request - DeleteStandardRelationsRequest
+//
+// @return DeleteStandardRelationsResponse
+func (client *Client) DeleteStandardRelations(request *DeleteStandardRelationsRequest) (_result *DeleteStandardRelationsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteStandardRelationsResponse{}
+	_body, _err := client.DeleteStandardRelationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除标准集。
+//
+// @param request - DeleteStandardSetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteStandardSetResponse
+func (client *Client) DeleteStandardSetWithOptions(request *DeleteStandardSetRequest, runtime *dara.RuntimeOptions) (_result *DeleteStandardSetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteStandardSet"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteStandardSetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除标准集。
+//
+// @param request - DeleteStandardSetRequest
+//
+// @return DeleteStandardSetResponse
+func (client *Client) DeleteStandardSet(request *DeleteStandardSetRequest) (_result *DeleteStandardSetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteStandardSetResponse{}
+	_body, _err := client.DeleteStandardSetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除有效映射关系。
+//
+// @param tmpReq - DeleteStandardValidMappingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteStandardValidMappingResponse
+func (client *Client) DeleteStandardValidMappingWithOptions(tmpReq *DeleteStandardValidMappingRequest, runtime *dara.RuntimeOptions) (_result *DeleteStandardValidMappingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteStandardValidMappingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DeleteCommand) {
+		request.DeleteCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeleteCommand, dara.String("DeleteCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DeleteCommandShrink) {
+		body["DeleteCommand"] = request.DeleteCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteStandardValidMapping"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteStandardValidMappingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除有效映射关系。
+//
+// @param request - DeleteStandardValidMappingRequest
+//
+// @return DeleteStandardValidMappingResponse
+func (client *Client) DeleteStandardValidMapping(request *DeleteStandardValidMappingRequest) (_result *DeleteStandardValidMappingResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteStandardValidMappingResponse{}
+	_body, _err := client.DeleteStandardValidMappingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据标准词根。
+//
+// @param request - DeleteStandardWordRootRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteStandardWordRootResponse
+func (client *Client) DeleteStandardWordRootWithOptions(request *DeleteStandardWordRootRequest, runtime *dara.RuntimeOptions) (_result *DeleteStandardWordRootResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteStandardWordRoot"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteStandardWordRootResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据标准词根。
+//
+// @param request - DeleteStandardWordRootRequest
+//
+// @return DeleteStandardWordRootResponse
+func (client *Client) DeleteStandardWordRoot(request *DeleteStandardWordRootRequest) (_result *DeleteStandardWordRootResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteStandardWordRootResponse{}
+	_body, _err := client.DeleteStandardWordRootWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3655,6 +5629,88 @@ func (client *Client) ExecuteManualNode(request *ExecuteManualNodeRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &ExecuteManualNodeResponse{}
 	_body, _err := client.ExecuteManualNodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 运行触发式节点。
+//
+// @param request - ExecuteTriggerNodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteTriggerNodeResponse
+func (client *Client) ExecuteTriggerNodeWithOptions(request *ExecuteTriggerNodeRequest, runtime *dara.RuntimeOptions) (_result *ExecuteTriggerNodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizDate) {
+		query["BizDate"] = request.BizDate
+	}
+
+	if !dara.IsNil(request.Env) {
+		query["Env"] = request.Env
+	}
+
+	if !dara.IsNil(request.Index) {
+		query["Index"] = request.Index
+	}
+
+	if !dara.IsNil(request.NodeId) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExecuteTriggerNode"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExecuteTriggerNodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 运行触发式节点。
+//
+// @param request - ExecuteTriggerNodeRequest
+//
+// @return ExecuteTriggerNodeResponse
+func (client *Client) ExecuteTriggerNode(request *ExecuteTriggerNodeRequest) (_result *ExecuteTriggerNodeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ExecuteTriggerNodeResponse{}
+	_body, _err := client.ExecuteTriggerNodeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4104,6 +6160,80 @@ func (client *Client) GetAlertEvent(request *GetAlertEventRequest) (_result *Get
 
 // Summary:
 //
+// 根据资产对象GUID查询映射关系。
+//
+// @param tmpReq - GetAssetMappingRelationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAssetMappingRelationsResponse
+func (client *Client) GetAssetMappingRelationsWithOptions(tmpReq *GetAssetMappingRelationsRequest, runtime *dara.RuntimeOptions) (_result *GetAssetMappingRelationsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetAssetMappingRelationsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AssetMappingQuery) {
+		request.AssetMappingQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AssetMappingQuery, dara.String("AssetMappingQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AssetMappingQueryShrink) {
+		body["AssetMappingQuery"] = request.AssetMappingQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAssetMappingRelations"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAssetMappingRelationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据资产对象GUID查询映射关系。
+//
+// @param request - GetAssetMappingRelationsRequest
+//
+// @return GetAssetMappingRelationsResponse
+func (client *Client) GetAssetMappingRelations(request *GetAssetMappingRelationsRequest) (_result *GetAssetMappingRelationsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAssetMappingRelationsResponse{}
+	_body, _err := client.GetAssetMappingRelationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取离线计算任务详情。
 //
 // @param request - GetBatchTaskInfoRequest
@@ -4387,6 +6517,80 @@ func (client *Client) GetBatchTaskVersions(request *GetBatchTaskVersionsRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetBatchTaskVersionsResponse{}
 	_body, _err := client.GetBatchTaskVersionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据归属资产GUID查询映射关系。
+//
+// @param tmpReq - GetBelongAssetMappingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBelongAssetMappingResponse
+func (client *Client) GetBelongAssetMappingWithOptions(tmpReq *GetBelongAssetMappingRequest, runtime *dara.RuntimeOptions) (_result *GetBelongAssetMappingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetBelongAssetMappingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AssetMappingQuery) {
+		request.AssetMappingQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AssetMappingQuery, dara.String("AssetMappingQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AssetMappingQueryShrink) {
+		body["AssetMappingQuery"] = request.AssetMappingQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetBelongAssetMapping"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetBelongAssetMappingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据归属资产GUID查询映射关系。
+//
+// @param request - GetBelongAssetMappingRequest
+//
+// @return GetBelongAssetMappingResponse
+func (client *Client) GetBelongAssetMapping(request *GetBelongAssetMappingRequest) (_result *GetBelongAssetMappingResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetBelongAssetMappingResponse{}
+	_body, _err := client.GetBelongAssetMappingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7466,6 +9670,736 @@ func (client *Client) GetProjectWhiteLists(request *GetProjectWhiteListsRequest)
 
 // Summary:
 //
+// 通过监控对象ID获取告警设置。
+//
+// @param request - GetQualityAlertOfAllRuleScopeByWatchIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQualityAlertOfAllRuleScopeByWatchIdResponse
+func (client *Client) GetQualityAlertOfAllRuleScopeByWatchIdWithOptions(request *GetQualityAlertOfAllRuleScopeByWatchIdRequest, runtime *dara.RuntimeOptions) (_result *GetQualityAlertOfAllRuleScopeByWatchIdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.WatchId) {
+		query["WatchId"] = request.WatchId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetQualityAlertOfAllRuleScopeByWatchId"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetQualityAlertOfAllRuleScopeByWatchIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过监控对象ID获取告警设置。
+//
+// @param request - GetQualityAlertOfAllRuleScopeByWatchIdRequest
+//
+// @return GetQualityAlertOfAllRuleScopeByWatchIdResponse
+func (client *Client) GetQualityAlertOfAllRuleScopeByWatchId(request *GetQualityAlertOfAllRuleScopeByWatchIdRequest) (_result *GetQualityAlertOfAllRuleScopeByWatchIdResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetQualityAlertOfAllRuleScopeByWatchIdResponse{}
+	_body, _err := client.GetQualityAlertOfAllRuleScopeByWatchIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取质量规则对象。
+//
+// @param request - GetQualityRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQualityRuleResponse
+func (client *Client) GetQualityRuleWithOptions(request *GetQualityRuleRequest, runtime *dara.RuntimeOptions) (_result *GetQualityRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetQualityRule"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetQualityRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取质量规则对象。
+//
+// @param request - GetQualityRuleRequest
+//
+// @return GetQualityRuleResponse
+func (client *Client) GetQualityRule(request *GetQualityRuleRequest) (_result *GetQualityRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetQualityRuleResponse{}
+	_body, _err := client.GetQualityRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取质量任务对象详情。
+//
+// @param request - GetQualityRuleTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQualityRuleTaskResponse
+func (client *Client) GetQualityRuleTaskWithOptions(request *GetQualityRuleTaskRequest, runtime *dara.RuntimeOptions) (_result *GetQualityRuleTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.RuleTaskId) {
+		query["RuleTaskId"] = request.RuleTaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetQualityRuleTask"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetQualityRuleTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取质量任务对象详情。
+//
+// @param request - GetQualityRuleTaskRequest
+//
+// @return GetQualityRuleTaskResponse
+func (client *Client) GetQualityRuleTask(request *GetQualityRuleTaskRequest) (_result *GetQualityRuleTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetQualityRuleTaskResponse{}
+	_body, _err := client.GetQualityRuleTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取质量任务对象日志内容。
+//
+// @param request - GetQualityRuleTaskLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQualityRuleTaskLogResponse
+func (client *Client) GetQualityRuleTaskLogWithOptions(request *GetQualityRuleTaskLogRequest, runtime *dara.RuntimeOptions) (_result *GetQualityRuleTaskLogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.RuleTaskId) {
+		query["RuleTaskId"] = request.RuleTaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetQualityRuleTaskLog"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetQualityRuleTaskLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取质量任务对象日志内容。
+//
+// @param request - GetQualityRuleTaskLogRequest
+//
+// @return GetQualityRuleTaskLogResponse
+func (client *Client) GetQualityRuleTaskLog(request *GetQualityRuleTaskLogRequest) (_result *GetQualityRuleTaskLogResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetQualityRuleTaskLogResponse{}
+	_body, _err := client.GetQualityRuleTaskLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取质量调度对象。
+//
+// @param request - GetQualityScheduleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQualityScheduleResponse
+func (client *Client) GetQualityScheduleWithOptions(request *GetQualityScheduleRequest, runtime *dara.RuntimeOptions) (_result *GetQualityScheduleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetQualitySchedule"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetQualityScheduleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取质量调度对象。
+//
+// @param request - GetQualityScheduleRequest
+//
+// @return GetQualityScheduleResponse
+func (client *Client) GetQualitySchedule(request *GetQualityScheduleRequest) (_result *GetQualityScheduleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetQualityScheduleResponse{}
+	_body, _err := client.GetQualityScheduleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过监控对象ID获取调度设置列表。
+//
+// @param request - GetQualitySchedulesByWatchIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQualitySchedulesByWatchIdResponse
+func (client *Client) GetQualitySchedulesByWatchIdWithOptions(request *GetQualitySchedulesByWatchIdRequest, runtime *dara.RuntimeOptions) (_result *GetQualitySchedulesByWatchIdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.WatchId) {
+		query["WatchId"] = request.WatchId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetQualitySchedulesByWatchId"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetQualitySchedulesByWatchIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过监控对象ID获取调度设置列表。
+//
+// @param request - GetQualitySchedulesByWatchIdRequest
+//
+// @return GetQualitySchedulesByWatchIdResponse
+func (client *Client) GetQualitySchedulesByWatchId(request *GetQualitySchedulesByWatchIdRequest) (_result *GetQualitySchedulesByWatchIdResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetQualitySchedulesByWatchIdResponse{}
+	_body, _err := client.GetQualitySchedulesByWatchIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取质量模板对象。
+//
+// @param request - GetQualityTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQualityTemplateResponse
+func (client *Client) GetQualityTemplateWithOptions(request *GetQualityTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetQualityTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetQualityTemplate"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetQualityTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取质量模板对象。
+//
+// @param request - GetQualityTemplateRequest
+//
+// @return GetQualityTemplateResponse
+func (client *Client) GetQualityTemplate(request *GetQualityTemplateRequest) (_result *GetQualityTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetQualityTemplateResponse{}
+	_body, _err := client.GetQualityTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取质量监控对象。
+//
+// @param request - GetQualityWatchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQualityWatchResponse
+func (client *Client) GetQualityWatchWithOptions(request *GetQualityWatchRequest, runtime *dara.RuntimeOptions) (_result *GetQualityWatchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetQualityWatch"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetQualityWatchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取质量监控对象。
+//
+// @param request - GetQualityWatchRequest
+//
+// @return GetQualityWatchResponse
+func (client *Client) GetQualityWatch(request *GetQualityWatchRequest) (_result *GetQualityWatchResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetQualityWatchResponse{}
+	_body, _err := client.GetQualityWatchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过监控对象原始ID获取监控对象记录，例如：数据源、表、指标等的ID。
+//
+// @param request - GetQualityWatchByObjectIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQualityWatchByObjectIdResponse
+func (client *Client) GetQualityWatchByObjectIdWithOptions(request *GetQualityWatchByObjectIdRequest, runtime *dara.RuntimeOptions) (_result *GetQualityWatchByObjectIdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.WatchObjectId) {
+		query["WatchObjectId"] = request.WatchObjectId
+	}
+
+	if !dara.IsNil(request.WatchType) {
+		query["WatchType"] = request.WatchType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetQualityWatchByObjectId"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetQualityWatchByObjectIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过监控对象原始ID获取监控对象记录，例如：数据源、表、指标等的ID。
+//
+// @param request - GetQualityWatchByObjectIdRequest
+//
+// @return GetQualityWatchByObjectIdResponse
+func (client *Client) GetQualityWatchByObjectId(request *GetQualityWatchByObjectIdRequest) (_result *GetQualityWatchByObjectIdResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetQualityWatchByObjectIdResponse{}
+	_body, _err := client.GetQualityWatchByObjectIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取监控任务对象。
+//
+// @param request - GetQualityWatchTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQualityWatchTaskResponse
+func (client *Client) GetQualityWatchTaskWithOptions(request *GetQualityWatchTaskRequest, runtime *dara.RuntimeOptions) (_result *GetQualityWatchTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.WatchTaskId) {
+		query["WatchTaskId"] = request.WatchTaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetQualityWatchTask"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetQualityWatchTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取监控任务对象。
+//
+// @param request - GetQualityWatchTaskRequest
+//
+// @return GetQualityWatchTaskResponse
+func (client *Client) GetQualityWatchTask(request *GetQualityWatchTaskRequest) (_result *GetQualityWatchTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetQualityWatchTaskResponse{}
+	_body, _err := client.GetQualityWatchTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取监控任务对象的日志内容。
+//
+// @param request - GetQualityWatchTaskLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQualityWatchTaskLogResponse
+func (client *Client) GetQualityWatchTaskLogWithOptions(request *GetQualityWatchTaskLogRequest, runtime *dara.RuntimeOptions) (_result *GetQualityWatchTaskLogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.WatchTaskId) {
+		query["WatchTaskId"] = request.WatchTaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetQualityWatchTaskLog"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetQualityWatchTaskLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取监控任务对象的日志内容。
+//
+// @param request - GetQualityWatchTaskLogRequest
+//
+// @return GetQualityWatchTaskLogResponse
+func (client *Client) GetQualityWatchTaskLog(request *GetQualityWatchTaskLogRequest) (_result *GetQualityWatchTaskLogResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetQualityWatchTaskLogResponse{}
+	_body, _err := client.GetQualityWatchTaskLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 根据集群ID获取集群版本
 //
 // @param request - GetQueueEngineVersionByEnvRequest
@@ -7692,6 +10626,270 @@ func (client *Client) GetResourceByVersion(request *GetResourceByVersionRequest)
 
 // Summary:
 //
+// 获取数据分类详情。
+//
+// @param request - GetSecurityClassifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSecurityClassifyResponse
+func (client *Client) GetSecurityClassifyWithOptions(request *GetSecurityClassifyRequest, runtime *dara.RuntimeOptions) (_result *GetSecurityClassifyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSecurityClassify"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSecurityClassifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据分类详情。
+//
+// @param request - GetSecurityClassifyRequest
+//
+// @return GetSecurityClassifyResponse
+func (client *Client) GetSecurityClassify(request *GetSecurityClassifyRequest) (_result *GetSecurityClassifyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetSecurityClassifyResponse{}
+	_body, _err := client.GetSecurityClassifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取识别结果详情。
+//
+// @param request - GetSecurityIdentifyResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSecurityIdentifyResultResponse
+func (client *Client) GetSecurityIdentifyResultWithOptions(request *GetSecurityIdentifyResultRequest, runtime *dara.RuntimeOptions) (_result *GetSecurityIdentifyResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSecurityIdentifyResult"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSecurityIdentifyResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取识别结果详情。
+//
+// @param request - GetSecurityIdentifyResultRequest
+//
+// @return GetSecurityIdentifyResultResponse
+func (client *Client) GetSecurityIdentifyResult(request *GetSecurityIdentifyResultRequest) (_result *GetSecurityIdentifyResultResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetSecurityIdentifyResultResponse{}
+	_body, _err := client.GetSecurityIdentifyResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据分级详情。
+//
+// @param request - GetSecurityLevelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSecurityLevelResponse
+func (client *Client) GetSecurityLevelWithOptions(request *GetSecurityLevelRequest, runtime *dara.RuntimeOptions) (_result *GetSecurityLevelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Index) {
+		query["Index"] = request.Index
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSecurityLevel"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSecurityLevelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据分级详情。
+//
+// @param request - GetSecurityLevelRequest
+//
+// @return GetSecurityLevelResponse
+func (client *Client) GetSecurityLevel(request *GetSecurityLevelRequest) (_result *GetSecurityLevelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetSecurityLevelResponse{}
+	_body, _err := client.GetSecurityLevelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过密钥名称获取密钥值。
+//
+// @param request - GetSecuritySecretKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSecuritySecretKeyResponse
+func (client *Client) GetSecuritySecretKeyWithOptions(request *GetSecuritySecretKeyRequest, runtime *dara.RuntimeOptions) (_result *GetSecuritySecretKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSecuritySecretKey"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSecuritySecretKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过密钥名称获取密钥值。
+//
+// @param request - GetSecuritySecretKeyRequest
+//
+// @return GetSecuritySecretKeyResponse
+func (client *Client) GetSecuritySecretKey(request *GetSecuritySecretKeyRequest) (_result *GetSecuritySecretKeyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetSecuritySecretKeyResponse{}
+	_body, _err := client.GetSecuritySecretKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取计算源对应集群的spark客户信息
 //
 // @param request - GetSparkLocalClientInfoRequest
@@ -7753,6 +10951,446 @@ func (client *Client) GetSparkLocalClientInfo(request *GetSparkLocalClientInfoRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetSparkLocalClientInfoResponse{}
 	_body, _err := client.GetSparkLocalClientInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取标准详情。
+//
+// @param tmpReq - GetStandardRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetStandardResponse
+func (client *Client) GetStandardWithOptions(tmpReq *GetStandardRequest, runtime *dara.RuntimeOptions) (_result *GetStandardResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetStandardShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.StandardGetQuery) {
+		request.StandardGetQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StandardGetQuery, dara.String("StandardGetQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.StandardGetQueryShrink) {
+		body["StandardGetQuery"] = request.StandardGetQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetStandard"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetStandardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取标准详情。
+//
+// @param request - GetStandardRequest
+//
+// @return GetStandardResponse
+func (client *Client) GetStandard(request *GetStandardRequest) (_result *GetStandardResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetStandardResponse{}
+	_body, _err := client.GetStandardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据标准码表详情。
+//
+// @param request - GetStandardLookupTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetStandardLookupTableResponse
+func (client *Client) GetStandardLookupTableWithOptions(request *GetStandardLookupTableRequest, runtime *dara.RuntimeOptions) (_result *GetStandardLookupTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Nullable) {
+		query["Nullable"] = request.Nullable
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetStandardLookupTable"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetStandardLookupTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据标准码表详情。
+//
+// @param request - GetStandardLookupTableRequest
+//
+// @return GetStandardLookupTableResponse
+func (client *Client) GetStandardLookupTable(request *GetStandardLookupTableRequest) (_result *GetStandardLookupTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetStandardLookupTableResponse{}
+	_body, _err := client.GetStandardLookupTableWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取标准集详情。
+//
+// @param request - GetStandardSetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetStandardSetResponse
+func (client *Client) GetStandardSetWithOptions(request *GetStandardSetRequest, runtime *dara.RuntimeOptions) (_result *GetStandardSetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Nullable) {
+		query["Nullable"] = request.Nullable
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetStandardSet"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetStandardSetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取标准集详情。
+//
+// @param request - GetStandardSetRequest
+//
+// @return GetStandardSetResponse
+func (client *Client) GetStandardSet(request *GetStandardSetRequest) (_result *GetStandardSetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetStandardSetResponse{}
+	_body, _err := client.GetStandardSetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询目录下按照标准类型统计标准数目。
+//
+// @param tmpReq - GetStandardStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetStandardStatisticsResponse
+func (client *Client) GetStandardStatisticsWithOptions(tmpReq *GetStandardStatisticsRequest, runtime *dara.RuntimeOptions) (_result *GetStandardStatisticsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetStandardStatisticsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.StatisticsQuery) {
+		request.StatisticsQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StatisticsQuery, dara.String("StatisticsQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.StatisticsQueryShrink) {
+		body["StatisticsQuery"] = request.StatisticsQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetStandardStatistics"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetStandardStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询目录下按照标准类型统计标准数目。
+//
+// @param request - GetStandardStatisticsRequest
+//
+// @return GetStandardStatisticsResponse
+func (client *Client) GetStandardStatistics(request *GetStandardStatisticsRequest) (_result *GetStandardStatisticsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetStandardStatisticsResponse{}
+	_body, _err := client.GetStandardStatisticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据标准模板详情。
+//
+// @param tmpReq - GetStandardTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetStandardTemplateResponse
+func (client *Client) GetStandardTemplateWithOptions(tmpReq *GetStandardTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetStandardTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetStandardTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.FilterQuery) {
+		request.FilterQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterQuery, dara.String("FilterQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Nullable) {
+		query["Nullable"] = request.Nullable
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FilterQueryShrink) {
+		body["FilterQuery"] = request.FilterQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetStandardTemplate"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetStandardTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据标准模板详情。
+//
+// @param request - GetStandardTemplateRequest
+//
+// @return GetStandardTemplateResponse
+func (client *Client) GetStandardTemplate(request *GetStandardTemplateRequest) (_result *GetStandardTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetStandardTemplateResponse{}
+	_body, _err := client.GetStandardTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据标准词根详情。
+//
+// @param request - GetStandardWordRootRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetStandardWordRootResponse
+func (client *Client) GetStandardWordRootWithOptions(request *GetStandardWordRootRequest, runtime *dara.RuntimeOptions) (_result *GetStandardWordRootResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Nullable) {
+		query["Nullable"] = request.Nullable
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetStandardWordRoot"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetStandardWordRootResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据标准词根详情。
+//
+// @param request - GetStandardWordRootRequest
+//
+// @return GetStandardWordRootResponse
+func (client *Client) GetStandardWordRoot(request *GetStandardWordRootRequest) (_result *GetStandardWordRootResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetStandardWordRootResponse{}
+	_body, _err := client.GetStandardWordRootWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8046,6 +11684,154 @@ func (client *Client) GetTableColumnLineageByTaskId(request *GetTableColumnLinea
 
 // Summary:
 //
+// 查询资产表字段血缘信息。
+//
+// @param tmpReq - GetTableColumnLineagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableColumnLineagesResponse
+func (client *Client) GetTableColumnLineagesWithOptions(tmpReq *GetTableColumnLineagesRequest, runtime *dara.RuntimeOptions) (_result *GetTableColumnLineagesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetTableColumnLineagesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.FilterQuery) {
+		request.FilterQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterQuery, dara.String("FilterQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.TableGuid) {
+		query["TableGuid"] = request.TableGuid
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FilterQueryShrink) {
+		body["FilterQuery"] = request.FilterQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTableColumnLineages"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTableColumnLineagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资产表字段血缘信息。
+//
+// @param request - GetTableColumnLineagesRequest
+//
+// @return GetTableColumnLineagesResponse
+func (client *Client) GetTableColumnLineages(request *GetTableColumnLineagesRequest) (_result *GetTableColumnLineagesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetTableColumnLineagesResponse{}
+	_body, _err := client.GetTableColumnLineagesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资产清单中Dataphin表的字段。
+//
+// @param request - GetTableColumnsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableColumnsResponse
+func (client *Client) GetTableColumnsWithOptions(request *GetTableColumnsRequest, runtime *dara.RuntimeOptions) (_result *GetTableColumnsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Catalog) {
+		query["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.TableName) {
+		query["TableName"] = request.TableName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTableColumns"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTableColumnsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资产清单中Dataphin表的字段。
+//
+// @param request - GetTableColumnsRequest
+//
+// @return GetTableColumnsResponse
+func (client *Client) GetTableColumns(request *GetTableColumnsRequest) (_result *GetTableColumnsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetTableColumnsResponse{}
+	_body, _err := client.GetTableColumnsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询表血缘信息
 //
 // @param tmpReq - GetTableLineageByTaskIdRequest
@@ -8111,6 +11897,84 @@ func (client *Client) GetTableLineageByTaskId(request *GetTableLineageByTaskIdRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetTableLineageByTaskIdResponse{}
 	_body, _err := client.GetTableLineageByTaskIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资产表血缘信息。
+//
+// @param tmpReq - GetTableLineagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableLineagesResponse
+func (client *Client) GetTableLineagesWithOptions(tmpReq *GetTableLineagesRequest, runtime *dara.RuntimeOptions) (_result *GetTableLineagesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetTableLineagesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.FilterQuery) {
+		request.FilterQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterQuery, dara.String("FilterQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.TableGuid) {
+		query["TableGuid"] = request.TableGuid
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FilterQueryShrink) {
+		body["FilterQuery"] = request.FilterQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTableLineages"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTableLineagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资产表血缘信息。
+//
+// @param request - GetTableLineagesRequest
+//
+// @return GetTableLineagesResponse
+func (client *Client) GetTableLineages(request *GetTableLineagesRequest) (_result *GetTableLineagesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetTableLineagesResponse{}
+	_body, _err := client.GetTableLineagesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10558,6 +14422,376 @@ func (client *Client) ListPublishRecords(request *ListPublishRecordsRequest) (_r
 
 // Summary:
 //
+// 分页查询质量规则任务。
+//
+// @param tmpReq - ListQualityRuleTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListQualityRuleTasksResponse
+func (client *Client) ListQualityRuleTasksWithOptions(tmpReq *ListQualityRuleTasksRequest, runtime *dara.RuntimeOptions) (_result *ListQualityRuleTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListQualityRuleTasksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListQualityRuleTasks"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListQualityRuleTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询质量规则任务。
+//
+// @param request - ListQualityRuleTasksRequest
+//
+// @return ListQualityRuleTasksResponse
+func (client *Client) ListQualityRuleTasks(request *ListQualityRuleTasksRequest) (_result *ListQualityRuleTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListQualityRuleTasksResponse{}
+	_body, _err := client.ListQualityRuleTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询质量规则。
+//
+// @param tmpReq - ListQualityRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListQualityRulesResponse
+func (client *Client) ListQualityRulesWithOptions(tmpReq *ListQualityRulesRequest, runtime *dara.RuntimeOptions) (_result *ListQualityRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListQualityRulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListQualityRules"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListQualityRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询质量规则。
+//
+// @param request - ListQualityRulesRequest
+//
+// @return ListQualityRulesResponse
+func (client *Client) ListQualityRules(request *ListQualityRulesRequest) (_result *ListQualityRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListQualityRulesResponse{}
+	_body, _err := client.ListQualityRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询质量模板。
+//
+// @param tmpReq - ListQualityTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListQualityTemplatesResponse
+func (client *Client) ListQualityTemplatesWithOptions(tmpReq *ListQualityTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListQualityTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListQualityTemplatesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListQualityTemplates"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListQualityTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询质量模板。
+//
+// @param request - ListQualityTemplatesRequest
+//
+// @return ListQualityTemplatesResponse
+func (client *Client) ListQualityTemplates(request *ListQualityTemplatesRequest) (_result *ListQualityTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListQualityTemplatesResponse{}
+	_body, _err := client.ListQualityTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询质量监控任务。
+//
+// @param tmpReq - ListQualityWatchTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListQualityWatchTasksResponse
+func (client *Client) ListQualityWatchTasksWithOptions(tmpReq *ListQualityWatchTasksRequest, runtime *dara.RuntimeOptions) (_result *ListQualityWatchTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListQualityWatchTasksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListQualityWatchTasks"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListQualityWatchTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询质量监控任务。
+//
+// @param request - ListQualityWatchTasksRequest
+//
+// @return ListQualityWatchTasksResponse
+func (client *Client) ListQualityWatchTasks(request *ListQualityWatchTasksRequest) (_result *ListQualityWatchTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListQualityWatchTasksResponse{}
+	_body, _err := client.ListQualityWatchTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询质量监控对象。
+//
+// @param tmpReq - ListQualityWatchesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListQualityWatchesResponse
+func (client *Client) ListQualityWatchesWithOptions(tmpReq *ListQualityWatchesRequest, runtime *dara.RuntimeOptions) (_result *ListQualityWatchesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListQualityWatchesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListQualityWatches"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListQualityWatchesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询质量监控对象。
+//
+// @param request - ListQualityWatchesRequest
+//
+// @return ListQualityWatchesResponse
+func (client *Client) ListQualityWatches(request *ListQualityWatchesRequest) (_result *ListQualityWatchesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListQualityWatchesResponse{}
+	_body, _err := client.ListQualityWatchesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 分页获取权限操作列表
 //
 // @param tmpReq - ListResourcePermissionOperationLogRequest
@@ -10854,6 +15088,228 @@ func (client *Client) ListRowPermissionByUserId(request *ListRowPermissionByUser
 
 // Summary:
 //
+// 分页查询安全识别结果的识别记录。
+//
+// @param tmpReq - ListSecurityIdentifyRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSecurityIdentifyRecordsResponse
+func (client *Client) ListSecurityIdentifyRecordsWithOptions(tmpReq *ListSecurityIdentifyRecordsRequest, runtime *dara.RuntimeOptions) (_result *ListSecurityIdentifyRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListSecurityIdentifyRecordsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSecurityIdentifyRecords"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSecurityIdentifyRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询安全识别结果的识别记录。
+//
+// @param request - ListSecurityIdentifyRecordsRequest
+//
+// @return ListSecurityIdentifyRecordsResponse
+func (client *Client) ListSecurityIdentifyRecords(request *ListSecurityIdentifyRecordsRequest) (_result *ListSecurityIdentifyRecordsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListSecurityIdentifyRecordsResponse{}
+	_body, _err := client.ListSecurityIdentifyRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询安全识别结果。
+//
+// @param tmpReq - ListSecurityIdentifyResultsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSecurityIdentifyResultsResponse
+func (client *Client) ListSecurityIdentifyResultsWithOptions(tmpReq *ListSecurityIdentifyResultsRequest, runtime *dara.RuntimeOptions) (_result *ListSecurityIdentifyResultsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListSecurityIdentifyResultsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSecurityIdentifyResults"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSecurityIdentifyResultsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询安全识别结果。
+//
+// @param request - ListSecurityIdentifyResultsRequest
+//
+// @return ListSecurityIdentifyResultsResponse
+func (client *Client) ListSecurityIdentifyResults(request *ListSecurityIdentifyResultsRequest) (_result *ListSecurityIdentifyResultsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListSecurityIdentifyResultsResponse{}
+	_body, _err := client.ListSecurityIdentifyResultsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询标准列表。
+//
+// @param tmpReq - ListStandardsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListStandardsResponse
+func (client *Client) ListStandardsWithOptions(tmpReq *ListStandardsRequest, runtime *dara.RuntimeOptions) (_result *ListStandardsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListStandardsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListStandards"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListStandardsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询标准列表。
+//
+// @param request - ListStandardsRequest
+//
+// @return ListStandardsResponse
+func (client *Client) ListStandards(request *ListStandardsRequest) (_result *ListStandardsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListStandardsResponse{}
+	_body, _err := client.ListStandardsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 分页获取待发布记录列表
 //
 // @param tmpReq - ListSubmitRecordsRequest
@@ -10919,6 +15375,80 @@ func (client *Client) ListSubmitRecords(request *ListSubmitRecordsRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListSubmitRecordsResponse{}
 	_body, _err := client.ListSubmitRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询查询资产表元数据。
+//
+// @param tmpReq - ListTablesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTablesResponse
+func (client *Client) ListTablesWithOptions(tmpReq *ListTablesRequest, runtime *dara.RuntimeOptions) (_result *ListTablesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListTablesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTables"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTablesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询查询资产表元数据。
+//
+// @param request - ListTablesRequest
+//
+// @return ListTablesResponse
+func (client *Client) ListTables(request *ListTablesRequest) (_result *ListTablesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListTablesResponse{}
+	_body, _err := client.ListTablesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11462,6 +15992,80 @@ func (client *Client) OfflinePipelineByAsync(request *OfflinePipelineByAsyncRequ
 
 // Summary:
 //
+// 下线标准。
+//
+// @param tmpReq - OfflineStandardRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OfflineStandardResponse
+func (client *Client) OfflineStandardWithOptions(tmpReq *OfflineStandardRequest, runtime *dara.RuntimeOptions) (_result *OfflineStandardResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &OfflineStandardShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.OfflineCommand) {
+		request.OfflineCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OfflineCommand, dara.String("OfflineCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.OfflineCommandShrink) {
+		body["OfflineCommand"] = request.OfflineCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OfflineStandard"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OfflineStandardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 下线标准。
+//
+// @param request - OfflineStandardRequest
+//
+// @return OfflineStandardResponse
+func (client *Client) OfflineStandard(request *OfflineStandardRequest) (_result *OfflineStandardResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &OfflineStandardResponse{}
+	_body, _err := client.OfflineStandardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 上线业务实体。
 //
 // @param tmpReq - OnlineBizEntityRequest
@@ -11914,6 +16518,80 @@ func (client *Client) PublishObjectList(request *PublishObjectListRequest) (_res
 
 // Summary:
 //
+// 发布标准。
+//
+// @param tmpReq - PublishStandardRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PublishStandardResponse
+func (client *Client) PublishStandardWithOptions(tmpReq *PublishStandardRequest, runtime *dara.RuntimeOptions) (_result *PublishStandardResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &PublishStandardShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.PublishCommand) {
+		request.PublishCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PublishCommand, dara.String("PublishCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PublishCommandShrink) {
+		body["PublishCommand"] = request.PublishCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PublishStandard"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PublishStandardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 发布标准。
+//
+// @param request - PublishStandardRequest
+//
+// @return PublishStandardResponse
+func (client *Client) PublishStandard(request *PublishStandardRequest) (_result *PublishStandardResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &PublishStandardResponse{}
+	_body, _err := client.PublishStandardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除项目成员。
 //
 // @param tmpReq - RemoveProjectMemberRequest
@@ -11983,6 +16661,80 @@ func (client *Client) RemoveProjectMember(request *RemoveProjectMemberRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &RemoveProjectMemberResponse{}
 	_body, _err := client.RemoveProjectMemberWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除质量规则和调度的绑定关系。
+//
+// @param tmpReq - RemoveQualityRuleSchedulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveQualityRuleSchedulesResponse
+func (client *Client) RemoveQualityRuleSchedulesWithOptions(tmpReq *RemoveQualityRuleSchedulesRequest, runtime *dara.RuntimeOptions) (_result *RemoveQualityRuleSchedulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &RemoveQualityRuleSchedulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RemoveCommand) {
+		request.RemoveCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RemoveCommand, dara.String("RemoveCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.RemoveCommandShrink) {
+		body["RemoveCommand"] = request.RemoveCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveQualityRuleSchedules"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveQualityRuleSchedulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除质量规则和调度的绑定关系。
+//
+// @param request - RemoveQualityRuleSchedulesRequest
+//
+// @return RemoveQualityRuleSchedulesResponse
+func (client *Client) RemoveQualityRuleSchedules(request *RemoveQualityRuleSchedulesRequest) (_result *RemoveQualityRuleSchedulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RemoveQualityRuleSchedulesResponse{}
+	_body, _err := client.RemoveQualityRuleSchedulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12657,6 +17409,154 @@ func (client *Client) SubmitBatchTask(request *SubmitBatchTaskRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitBatchTaskResponse{}
 	_body, _err := client.SubmitBatchTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量提交规则任务,支持试跑。
+//
+// @param tmpReq - SubmitQualityRuleTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitQualityRuleTasksResponse
+func (client *Client) SubmitQualityRuleTasksWithOptions(tmpReq *SubmitQualityRuleTasksRequest, runtime *dara.RuntimeOptions) (_result *SubmitQualityRuleTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SubmitQualityRuleTasksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SubmitCommand) {
+		request.SubmitCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SubmitCommand, dara.String("SubmitCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SubmitCommandShrink) {
+		body["SubmitCommand"] = request.SubmitCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitQualityRuleTasks"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitQualityRuleTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量提交规则任务,支持试跑。
+//
+// @param request - SubmitQualityRuleTasksRequest
+//
+// @return SubmitQualityRuleTasksResponse
+func (client *Client) SubmitQualityRuleTasks(request *SubmitQualityRuleTasksRequest) (_result *SubmitQualityRuleTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitQualityRuleTasksResponse{}
+	_body, _err := client.SubmitQualityRuleTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量提交监控对象校验任务。
+//
+// @param tmpReq - SubmitQualityWatchTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitQualityWatchTasksResponse
+func (client *Client) SubmitQualityWatchTasksWithOptions(tmpReq *SubmitQualityWatchTasksRequest, runtime *dara.RuntimeOptions) (_result *SubmitQualityWatchTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SubmitQualityWatchTasksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SubmitCommand) {
+		request.SubmitCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SubmitCommand, dara.String("SubmitCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SubmitCommandShrink) {
+		body["SubmitCommand"] = request.SubmitCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitQualityWatchTasks"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitQualityWatchTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量提交监控对象校验任务。
+//
+// @param request - SubmitQualityWatchTasksRequest
+//
+// @return SubmitQualityWatchTasksResponse
+func (client *Client) SubmitQualityWatchTasks(request *SubmitQualityWatchTasksRequest) (_result *SubmitQualityWatchTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitQualityWatchTasksResponse{}
+	_body, _err := client.SubmitQualityWatchTasksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14018,6 +18918,154 @@ func (client *Client) UpdateProjectMember(request *UpdateProjectMemberRequest) (
 
 // Summary:
 //
+// 批量开启或关闭质量规则。
+//
+// @param tmpReq - UpdateQualityRuleSwitchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateQualityRuleSwitchResponse
+func (client *Client) UpdateQualityRuleSwitchWithOptions(tmpReq *UpdateQualityRuleSwitchRequest, runtime *dara.RuntimeOptions) (_result *UpdateQualityRuleSwitchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateQualityRuleSwitchShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateQualityRuleSwitch"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateQualityRuleSwitchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量开启或关闭质量规则。
+//
+// @param request - UpdateQualityRuleSwitchRequest
+//
+// @return UpdateQualityRuleSwitchResponse
+func (client *Client) UpdateQualityRuleSwitch(request *UpdateQualityRuleSwitchRequest) (_result *UpdateQualityRuleSwitchResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateQualityRuleSwitchResponse{}
+	_body, _err := client.UpdateQualityRuleSwitchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量开启或关闭质量监控对象。
+//
+// @param tmpReq - UpdateQualityWatchSwitchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateQualityWatchSwitchResponse
+func (client *Client) UpdateQualityWatchSwitchWithOptions(tmpReq *UpdateQualityWatchSwitchRequest, runtime *dara.RuntimeOptions) (_result *UpdateQualityWatchSwitchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateQualityWatchSwitchShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateQualityWatchSwitch"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateQualityWatchSwitchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量开启或关闭质量监控对象。
+//
+// @param request - UpdateQualityWatchSwitchRequest
+//
+// @return UpdateQualityWatchSwitchResponse
+func (client *Client) UpdateQualityWatchSwitch(request *UpdateQualityWatchSwitchRequest) (_result *UpdateQualityWatchSwitchResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateQualityWatchSwitchResponse{}
+	_body, _err := client.UpdateQualityWatchSwitchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 编辑资源文件。
 //
 // @param tmpReq - UpdateResourceRequest
@@ -14157,6 +19205,746 @@ func (client *Client) UpdateRowPermission(request *UpdateRowPermissionRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateRowPermissionResponse{}
 	_body, _err := client.UpdateRowPermissionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据分类。
+//
+// @param tmpReq - UpdateSecurityClassifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSecurityClassifyResponse
+func (client *Client) UpdateSecurityClassifyWithOptions(tmpReq *UpdateSecurityClassifyRequest, runtime *dara.RuntimeOptions) (_result *UpdateSecurityClassifyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateSecurityClassifyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateSecurityClassify"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateSecurityClassifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据分类。
+//
+// @param request - UpdateSecurityClassifyRequest
+//
+// @return UpdateSecurityClassifyResponse
+func (client *Client) UpdateSecurityClassify(request *UpdateSecurityClassifyRequest) (_result *UpdateSecurityClassifyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateSecurityClassifyResponse{}
+	_body, _err := client.UpdateSecurityClassifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据分类目录。
+//
+// @param tmpReq - UpdateSecurityClassifyCatalogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSecurityClassifyCatalogResponse
+func (client *Client) UpdateSecurityClassifyCatalogWithOptions(tmpReq *UpdateSecurityClassifyCatalogRequest, runtime *dara.RuntimeOptions) (_result *UpdateSecurityClassifyCatalogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateSecurityClassifyCatalogShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateSecurityClassifyCatalog"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateSecurityClassifyCatalogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据分类目录。
+//
+// @param request - UpdateSecurityClassifyCatalogRequest
+//
+// @return UpdateSecurityClassifyCatalogResponse
+func (client *Client) UpdateSecurityClassifyCatalog(request *UpdateSecurityClassifyCatalogRequest) (_result *UpdateSecurityClassifyCatalogResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateSecurityClassifyCatalogResponse{}
+	_body, _err := client.UpdateSecurityClassifyCatalogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新安全识别结果的生效状态。
+//
+// @param tmpReq - UpdateSecurityIdentifyResultStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSecurityIdentifyResultStatusResponse
+func (client *Client) UpdateSecurityIdentifyResultStatusWithOptions(tmpReq *UpdateSecurityIdentifyResultStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateSecurityIdentifyResultStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateSecurityIdentifyResultStatusShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateSecurityIdentifyResultStatus"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateSecurityIdentifyResultStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新安全识别结果的生效状态。
+//
+// @param request - UpdateSecurityIdentifyResultStatusRequest
+//
+// @return UpdateSecurityIdentifyResultStatusResponse
+func (client *Client) UpdateSecurityIdentifyResultStatus(request *UpdateSecurityIdentifyResultStatusRequest) (_result *UpdateSecurityIdentifyResultStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateSecurityIdentifyResultStatusResponse{}
+	_body, _err := client.UpdateSecurityIdentifyResultStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过分级顺序更新数据分级。
+//
+// @param tmpReq - UpdateSecurityLevelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSecurityLevelResponse
+func (client *Client) UpdateSecurityLevelWithOptions(tmpReq *UpdateSecurityLevelRequest, runtime *dara.RuntimeOptions) (_result *UpdateSecurityLevelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateSecurityLevelShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateSecurityLevel"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateSecurityLevelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过分级顺序更新数据分级。
+//
+// @param request - UpdateSecurityLevelRequest
+//
+// @return UpdateSecurityLevelResponse
+func (client *Client) UpdateSecurityLevel(request *UpdateSecurityLevelRequest) (_result *UpdateSecurityLevelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateSecurityLevelResponse{}
+	_body, _err := client.UpdateSecurityLevelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新标准。
+//
+// @param tmpReq - UpdateStandardRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateStandardResponse
+func (client *Client) UpdateStandardWithOptions(tmpReq *UpdateStandardRequest, runtime *dara.RuntimeOptions) (_result *UpdateStandardResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateStandardShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateStandard"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateStandardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新标准。
+//
+// @param request - UpdateStandardRequest
+//
+// @return UpdateStandardResponse
+func (client *Client) UpdateStandard(request *UpdateStandardRequest) (_result *UpdateStandardResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateStandardResponse{}
+	_body, _err := client.UpdateStandardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据标准码表。
+//
+// @param tmpReq - UpdateStandardLookupTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateStandardLookupTableResponse
+func (client *Client) UpdateStandardLookupTableWithOptions(tmpReq *UpdateStandardLookupTableRequest, runtime *dara.RuntimeOptions) (_result *UpdateStandardLookupTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateStandardLookupTableShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateStandardLookupTable"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateStandardLookupTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据标准码表。
+//
+// @param request - UpdateStandardLookupTableRequest
+//
+// @return UpdateStandardLookupTableResponse
+func (client *Client) UpdateStandardLookupTable(request *UpdateStandardLookupTableRequest) (_result *UpdateStandardLookupTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateStandardLookupTableResponse{}
+	_body, _err := client.UpdateStandardLookupTableWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 将标准映射关系置为无效映射。
+//
+// @param tmpReq - UpdateStandardMappingToInvalidRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateStandardMappingToInvalidResponse
+func (client *Client) UpdateStandardMappingToInvalidWithOptions(tmpReq *UpdateStandardMappingToInvalidRequest, runtime *dara.RuntimeOptions) (_result *UpdateStandardMappingToInvalidResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateStandardMappingToInvalidShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateStandardMappingToInvalid"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateStandardMappingToInvalidResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将标准映射关系置为无效映射。
+//
+// @param request - UpdateStandardMappingToInvalidRequest
+//
+// @return UpdateStandardMappingToInvalidResponse
+func (client *Client) UpdateStandardMappingToInvalid(request *UpdateStandardMappingToInvalidRequest) (_result *UpdateStandardMappingToInvalidResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateStandardMappingToInvalidResponse{}
+	_body, _err := client.UpdateStandardMappingToInvalidWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新标准集。
+//
+// @param tmpReq - UpdateStandardSetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateStandardSetResponse
+func (client *Client) UpdateStandardSetWithOptions(tmpReq *UpdateStandardSetRequest, runtime *dara.RuntimeOptions) (_result *UpdateStandardSetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateStandardSetShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateStandardSet"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateStandardSetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新标准集。
+//
+// @param request - UpdateStandardSetRequest
+//
+// @return UpdateStandardSetResponse
+func (client *Client) UpdateStandardSet(request *UpdateStandardSetRequest) (_result *UpdateStandardSetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateStandardSetResponse{}
+	_body, _err := client.UpdateStandardSetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据标准模板。
+//
+// @param tmpReq - UpdateStandardTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateStandardTemplateResponse
+func (client *Client) UpdateStandardTemplateWithOptions(tmpReq *UpdateStandardTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateStandardTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateStandardTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateStandardTemplate"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateStandardTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据标准模板。
+//
+// @param request - UpdateStandardTemplateRequest
+//
+// @return UpdateStandardTemplateResponse
+func (client *Client) UpdateStandardTemplate(request *UpdateStandardTemplateRequest) (_result *UpdateStandardTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateStandardTemplateResponse{}
+	_body, _err := client.UpdateStandardTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据标准词根。
+//
+// @param tmpReq - UpdateStandardWordRootRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateStandardWordRootResponse
+func (client *Client) UpdateStandardWordRootWithOptions(tmpReq *UpdateStandardWordRootRequest, runtime *dara.RuntimeOptions) (_result *UpdateStandardWordRootResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateStandardWordRootShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateStandardWordRoot"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateStandardWordRootResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据标准词根。
+//
+// @param request - UpdateStandardWordRootRequest
+//
+// @return UpdateStandardWordRootResponse
+func (client *Client) UpdateStandardWordRoot(request *UpdateStandardWordRootRequest) (_result *UpdateStandardWordRootResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateStandardWordRootResponse{}
+	_body, _err := client.UpdateStandardWordRootWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14523,6 +20311,376 @@ func (client *Client) UpdateUserGroupSwitch(request *UpdateUserGroupSwitchReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateUserGroupSwitchResponse{}
 	_body, _err := client.UpdateUserGroupSwitchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建或者修改质量规则。
+//
+// @param tmpReq - UpsertQualityRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpsertQualityRuleResponse
+func (client *Client) UpsertQualityRuleWithOptions(tmpReq *UpsertQualityRuleRequest, runtime *dara.RuntimeOptions) (_result *UpsertQualityRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpsertQualityRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpsertCommand) {
+		request.UpsertCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpsertCommand, dara.String("UpsertCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpsertCommandShrink) {
+		body["UpsertCommand"] = request.UpsertCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpsertQualityRule"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpsertQualityRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建或者修改质量规则。
+//
+// @param request - UpsertQualityRuleRequest
+//
+// @return UpsertQualityRuleResponse
+func (client *Client) UpsertQualityRule(request *UpsertQualityRuleRequest) (_result *UpsertQualityRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpsertQualityRuleResponse{}
+	_body, _err := client.UpsertQualityRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建或者修改调度设置。
+//
+// @param tmpReq - UpsertQualityScheduleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpsertQualityScheduleResponse
+func (client *Client) UpsertQualityScheduleWithOptions(tmpReq *UpsertQualityScheduleRequest, runtime *dara.RuntimeOptions) (_result *UpsertQualityScheduleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpsertQualityScheduleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpsertCommand) {
+		request.UpsertCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpsertCommand, dara.String("UpsertCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpsertCommandShrink) {
+		body["UpsertCommand"] = request.UpsertCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpsertQualitySchedule"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpsertQualityScheduleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建或者修改调度设置。
+//
+// @param request - UpsertQualityScheduleRequest
+//
+// @return UpsertQualityScheduleResponse
+func (client *Client) UpsertQualitySchedule(request *UpsertQualityScheduleRequest) (_result *UpsertQualityScheduleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpsertQualityScheduleResponse{}
+	_body, _err := client.UpsertQualityScheduleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建或者修改质量模板。
+//
+// @param tmpReq - UpsertQualityTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpsertQualityTemplateResponse
+func (client *Client) UpsertQualityTemplateWithOptions(tmpReq *UpsertQualityTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpsertQualityTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpsertQualityTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpsertCommand) {
+		request.UpsertCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpsertCommand, dara.String("UpsertCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpsertCommandShrink) {
+		body["UpsertCommand"] = request.UpsertCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpsertQualityTemplate"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpsertQualityTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建或者修改质量模板。
+//
+// @param request - UpsertQualityTemplateRequest
+//
+// @return UpsertQualityTemplateResponse
+func (client *Client) UpsertQualityTemplate(request *UpsertQualityTemplateRequest) (_result *UpsertQualityTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpsertQualityTemplateResponse{}
+	_body, _err := client.UpsertQualityTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建或更改质量监控对象, 支持添加多种类型的质量监控对象，包括：Dataphin表，全域表，数据源，指标，实时元表。
+//
+// @param tmpReq - UpsertQualityWatchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpsertQualityWatchResponse
+func (client *Client) UpsertQualityWatchWithOptions(tmpReq *UpsertQualityWatchRequest, runtime *dara.RuntimeOptions) (_result *UpsertQualityWatchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpsertQualityWatchShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpsertCommand) {
+		request.UpsertCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpsertCommand, dara.String("UpsertCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpsertCommandShrink) {
+		body["UpsertCommand"] = request.UpsertCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpsertQualityWatch"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpsertQualityWatchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建或更改质量监控对象, 支持添加多种类型的质量监控对象，包括：Dataphin表，全域表，数据源，指标，实时元表。
+//
+// @param request - UpsertQualityWatchRequest
+//
+// @return UpsertQualityWatchResponse
+func (client *Client) UpsertQualityWatch(request *UpsertQualityWatchRequest) (_result *UpsertQualityWatchResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpsertQualityWatchResponse{}
+	_body, _err := client.UpsertQualityWatchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建或者修改监控对象告警设置。
+//
+// @param tmpReq - UpsertQualityWatchAlertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpsertQualityWatchAlertResponse
+func (client *Client) UpsertQualityWatchAlertWithOptions(tmpReq *UpsertQualityWatchAlertRequest, runtime *dara.RuntimeOptions) (_result *UpsertQualityWatchAlertResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpsertQualityWatchAlertShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpsertCommand) {
+		request.UpsertCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpsertCommand, dara.String("UpsertCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpsertCommandShrink) {
+		body["UpsertCommand"] = request.UpsertCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpsertQualityWatchAlert"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpsertQualityWatchAlertResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建或者修改监控对象告警设置。
+//
+// @param request - UpsertQualityWatchAlertRequest
+//
+// @return UpsertQualityWatchAlertResponse
+func (client *Client) UpsertQualityWatchAlert(request *UpsertQualityWatchAlertRequest) (_result *UpsertQualityWatchAlertResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpsertQualityWatchAlertResponse{}
+	_body, _err := client.UpsertQualityWatchAlertWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
