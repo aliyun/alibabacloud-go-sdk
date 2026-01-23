@@ -175,8 +175,6 @@ type ListIntegrationPoliciesResponseBodyPolicies struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// Number of sub-releases
 	SubAddonRelease *ListIntegrationPoliciesResponseBodyPoliciesSubAddonRelease `json:"subAddonRelease,omitempty" xml:"subAddonRelease,omitempty" type:"Struct"`
-	// Resource tag key values.
-	Tags []*ListIntegrationPoliciesResponseBodyPoliciesTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// User ID
 	//
 	// example:
@@ -243,10 +241,6 @@ func (s *ListIntegrationPoliciesResponseBodyPolicies) GetSubAddonRelease() *List
 	return s.SubAddonRelease
 }
 
-func (s *ListIntegrationPoliciesResponseBodyPolicies) GetTags() []*ListIntegrationPoliciesResponseBodyPoliciesTags {
-	return s.Tags
-}
-
 func (s *ListIntegrationPoliciesResponseBodyPolicies) GetUserId() *string {
 	return s.UserId
 }
@@ -310,11 +304,6 @@ func (s *ListIntegrationPoliciesResponseBodyPolicies) SetSubAddonRelease(v *List
 	return s
 }
 
-func (s *ListIntegrationPoliciesResponseBodyPolicies) SetTags(v []*ListIntegrationPoliciesResponseBodyPoliciesTags) *ListIntegrationPoliciesResponseBodyPolicies {
-	s.Tags = v
-	return s
-}
-
 func (s *ListIntegrationPoliciesResponseBodyPolicies) SetUserId(v string) *ListIntegrationPoliciesResponseBodyPolicies {
 	s.UserId = &v
 	return s
@@ -344,15 +333,6 @@ func (s *ListIntegrationPoliciesResponseBodyPolicies) Validate() error {
 	if s.SubAddonRelease != nil {
 		if err := s.SubAddonRelease.Validate(); err != nil {
 			return err
-		}
-	}
-	if s.Tags != nil {
-		for _, item := range s.Tags {
-			if item != nil {
-				if err := item.Validate(); err != nil {
-					return err
-				}
-			}
 		}
 	}
 	return nil
@@ -1099,50 +1079,5 @@ func (s *ListIntegrationPoliciesResponseBodyPoliciesSubAddonRelease) SetTotal(v 
 }
 
 func (s *ListIntegrationPoliciesResponseBodyPoliciesSubAddonRelease) Validate() error {
-	return dara.Validate(s)
-}
-
-type ListIntegrationPoliciesResponseBodyPoliciesTags struct {
-	// Tag key
-	//
-	// example:
-	//
-	// key
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// Match value.
-	//
-	// example:
-	//
-	// value
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s ListIntegrationPoliciesResponseBodyPoliciesTags) String() string {
-	return dara.Prettify(s)
-}
-
-func (s ListIntegrationPoliciesResponseBodyPoliciesTags) GoString() string {
-	return s.String()
-}
-
-func (s *ListIntegrationPoliciesResponseBodyPoliciesTags) GetKey() *string {
-	return s.Key
-}
-
-func (s *ListIntegrationPoliciesResponseBodyPoliciesTags) GetValue() *string {
-	return s.Value
-}
-
-func (s *ListIntegrationPoliciesResponseBodyPoliciesTags) SetKey(v string) *ListIntegrationPoliciesResponseBodyPoliciesTags {
-	s.Key = &v
-	return s
-}
-
-func (s *ListIntegrationPoliciesResponseBodyPoliciesTags) SetValue(v string) *ListIntegrationPoliciesResponseBodyPoliciesTags {
-	s.Value = &v
-	return s
-}
-
-func (s *ListIntegrationPoliciesResponseBodyPoliciesTags) Validate() error {
 	return dara.Validate(s)
 }

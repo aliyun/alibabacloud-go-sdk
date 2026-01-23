@@ -176,12 +176,6 @@ type ListPrometheusInstancesResponseBodyPrometheusInstances struct {
 	//
 	// cn-nanjing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Resource group ID.
-	//
-	// example:
-	//
-	// rg-aek2bhocin5e2na
-	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// Resource type.
 	//
 	// example:
@@ -196,8 +190,6 @@ type ListPrometheusInstancesResponseBodyPrometheusInstances struct {
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// Supported authentication types.
 	SupportAuthTypes []*string `json:"supportAuthTypes,omitempty" xml:"supportAuthTypes,omitempty" type:"Repeated"`
-	// Tags key.
-	Tags []*ListPrometheusInstancesResponseBodyPrometheusInstancesTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// User ID.
 	//
 	// example:
@@ -258,10 +250,6 @@ func (s *ListPrometheusInstancesResponseBodyPrometheusInstances) GetRegionId() *
 	return s.RegionId
 }
 
-func (s *ListPrometheusInstancesResponseBodyPrometheusInstances) GetResourceGroupId() *string {
-	return s.ResourceGroupId
-}
-
 func (s *ListPrometheusInstancesResponseBodyPrometheusInstances) GetResourceType() *string {
 	return s.ResourceType
 }
@@ -272,10 +260,6 @@ func (s *ListPrometheusInstancesResponseBodyPrometheusInstances) GetStatus() *st
 
 func (s *ListPrometheusInstancesResponseBodyPrometheusInstances) GetSupportAuthTypes() []*string {
 	return s.SupportAuthTypes
-}
-
-func (s *ListPrometheusInstancesResponseBodyPrometheusInstances) GetTags() []*ListPrometheusInstancesResponseBodyPrometheusInstancesTags {
-	return s.Tags
 }
 
 func (s *ListPrometheusInstancesResponseBodyPrometheusInstances) GetUserId() *string {
@@ -330,11 +314,6 @@ func (s *ListPrometheusInstancesResponseBodyPrometheusInstances) SetRegionId(v s
 	return s
 }
 
-func (s *ListPrometheusInstancesResponseBodyPrometheusInstances) SetResourceGroupId(v string) *ListPrometheusInstancesResponseBodyPrometheusInstances {
-	s.ResourceGroupId = &v
-	return s
-}
-
 func (s *ListPrometheusInstancesResponseBodyPrometheusInstances) SetResourceType(v string) *ListPrometheusInstancesResponseBodyPrometheusInstances {
 	s.ResourceType = &v
 	return s
@@ -347,11 +326,6 @@ func (s *ListPrometheusInstancesResponseBodyPrometheusInstances) SetStatus(v str
 
 func (s *ListPrometheusInstancesResponseBodyPrometheusInstances) SetSupportAuthTypes(v []*string) *ListPrometheusInstancesResponseBodyPrometheusInstances {
 	s.SupportAuthTypes = v
-	return s
-}
-
-func (s *ListPrometheusInstancesResponseBodyPrometheusInstances) SetTags(v []*ListPrometheusInstancesResponseBodyPrometheusInstancesTags) *ListPrometheusInstancesResponseBodyPrometheusInstances {
-	s.Tags = v
 	return s
 }
 
@@ -371,59 +345,5 @@ func (s *ListPrometheusInstancesResponseBodyPrometheusInstances) SetWorkspace(v 
 }
 
 func (s *ListPrometheusInstancesResponseBodyPrometheusInstances) Validate() error {
-	if s.Tags != nil {
-		for _, item := range s.Tags {
-			if item != nil {
-				if err := item.Validate(); err != nil {
-					return err
-				}
-			}
-		}
-	}
-	return nil
-}
-
-type ListPrometheusInstancesResponseBodyPrometheusInstancesTags struct {
-	// Tag key
-	//
-	// example:
-	//
-	// testKey
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// Tag value.
-	//
-	// example:
-	//
-	// testValue
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s ListPrometheusInstancesResponseBodyPrometheusInstancesTags) String() string {
-	return dara.Prettify(s)
-}
-
-func (s ListPrometheusInstancesResponseBodyPrometheusInstancesTags) GoString() string {
-	return s.String()
-}
-
-func (s *ListPrometheusInstancesResponseBodyPrometheusInstancesTags) GetKey() *string {
-	return s.Key
-}
-
-func (s *ListPrometheusInstancesResponseBodyPrometheusInstancesTags) GetValue() *string {
-	return s.Value
-}
-
-func (s *ListPrometheusInstancesResponseBodyPrometheusInstancesTags) SetKey(v string) *ListPrometheusInstancesResponseBodyPrometheusInstancesTags {
-	s.Key = &v
-	return s
-}
-
-func (s *ListPrometheusInstancesResponseBodyPrometheusInstancesTags) SetValue(v string) *ListPrometheusInstancesResponseBodyPrometheusInstancesTags {
-	s.Value = &v
-	return s
-}
-
-func (s *ListPrometheusInstancesResponseBodyPrometheusInstancesTags) Validate() error {
 	return dara.Validate(s)
 }

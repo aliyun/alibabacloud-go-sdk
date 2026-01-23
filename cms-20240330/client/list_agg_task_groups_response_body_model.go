@@ -207,8 +207,6 @@ type ListAggTaskGroupsResponseBodyAggTaskGroups struct {
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Resource group tags
-	Tags []*ListAggTaskGroupsResponseBodyAggTaskGroupsTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The target Prometheus instance ID of the aggregation task group.
 	//
 	// example:
@@ -295,10 +293,6 @@ func (s *ListAggTaskGroupsResponseBodyAggTaskGroups) GetSourcePrometheusId() *st
 
 func (s *ListAggTaskGroupsResponseBodyAggTaskGroups) GetStatus() *string {
 	return s.Status
-}
-
-func (s *ListAggTaskGroupsResponseBodyAggTaskGroups) GetTags() []*ListAggTaskGroupsResponseBodyAggTaskGroupsTags {
-	return s.Tags
 }
 
 func (s *ListAggTaskGroupsResponseBodyAggTaskGroups) GetTargetPrometheusId() *string {
@@ -388,11 +382,6 @@ func (s *ListAggTaskGroupsResponseBodyAggTaskGroups) SetStatus(v string) *ListAg
 	return s
 }
 
-func (s *ListAggTaskGroupsResponseBodyAggTaskGroups) SetTags(v []*ListAggTaskGroupsResponseBodyAggTaskGroupsTags) *ListAggTaskGroupsResponseBodyAggTaskGroups {
-	s.Tags = v
-	return s
-}
-
 func (s *ListAggTaskGroupsResponseBodyAggTaskGroups) SetTargetPrometheusId(v string) *ListAggTaskGroupsResponseBodyAggTaskGroups {
 	s.TargetPrometheusId = &v
 	return s
@@ -409,59 +398,5 @@ func (s *ListAggTaskGroupsResponseBodyAggTaskGroups) SetUpdateTime(v string) *Li
 }
 
 func (s *ListAggTaskGroupsResponseBodyAggTaskGroups) Validate() error {
-	if s.Tags != nil {
-		for _, item := range s.Tags {
-			if item != nil {
-				if err := item.Validate(); err != nil {
-					return err
-				}
-			}
-		}
-	}
-	return nil
-}
-
-type ListAggTaskGroupsResponseBodyAggTaskGroupsTags struct {
-	// Key of the resource group tag.
-	//
-	// example:
-	//
-	// key1
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// Value of the resource group tag.
-	//
-	// example:
-	//
-	// value1
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s ListAggTaskGroupsResponseBodyAggTaskGroupsTags) String() string {
-	return dara.Prettify(s)
-}
-
-func (s ListAggTaskGroupsResponseBodyAggTaskGroupsTags) GoString() string {
-	return s.String()
-}
-
-func (s *ListAggTaskGroupsResponseBodyAggTaskGroupsTags) GetKey() *string {
-	return s.Key
-}
-
-func (s *ListAggTaskGroupsResponseBodyAggTaskGroupsTags) GetValue() *string {
-	return s.Value
-}
-
-func (s *ListAggTaskGroupsResponseBodyAggTaskGroupsTags) SetKey(v string) *ListAggTaskGroupsResponseBodyAggTaskGroupsTags {
-	s.Key = &v
-	return s
-}
-
-func (s *ListAggTaskGroupsResponseBodyAggTaskGroupsTags) SetValue(v string) *ListAggTaskGroupsResponseBodyAggTaskGroupsTags {
-	s.Value = &v
-	return s
-}
-
-func (s *ListAggTaskGroupsResponseBodyAggTaskGroupsTags) Validate() error {
 	return dara.Validate(s)
 }

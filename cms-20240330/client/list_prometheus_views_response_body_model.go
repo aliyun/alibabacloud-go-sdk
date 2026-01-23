@@ -172,12 +172,6 @@ type ListPrometheusViewsResponseBodyPrometheusViews struct {
 	//
 	// cn-zhangjiakou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Resource group ID.
-	//
-	// example:
-	//
-	// rg-acfm3gn5i6bigbi
-	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// Fixed value: PrometheusView.
 	//
 	// example:
@@ -190,8 +184,6 @@ type ListPrometheusViewsResponseBodyPrometheusViews struct {
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Tag values.
-	Tags []*ListPrometheusViewsResponseBodyPrometheusViewsTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// User ID.
 	//
 	// example:
@@ -252,20 +244,12 @@ func (s *ListPrometheusViewsResponseBodyPrometheusViews) GetRegionId() *string {
 	return s.RegionId
 }
 
-func (s *ListPrometheusViewsResponseBodyPrometheusViews) GetResourceGroupId() *string {
-	return s.ResourceGroupId
-}
-
 func (s *ListPrometheusViewsResponseBodyPrometheusViews) GetResourceType() *string {
 	return s.ResourceType
 }
 
 func (s *ListPrometheusViewsResponseBodyPrometheusViews) GetStatus() *string {
 	return s.Status
-}
-
-func (s *ListPrometheusViewsResponseBodyPrometheusViews) GetTags() []*ListPrometheusViewsResponseBodyPrometheusViewsTags {
-	return s.Tags
 }
 
 func (s *ListPrometheusViewsResponseBodyPrometheusViews) GetUserId() *string {
@@ -320,11 +304,6 @@ func (s *ListPrometheusViewsResponseBodyPrometheusViews) SetRegionId(v string) *
 	return s
 }
 
-func (s *ListPrometheusViewsResponseBodyPrometheusViews) SetResourceGroupId(v string) *ListPrometheusViewsResponseBodyPrometheusViews {
-	s.ResourceGroupId = &v
-	return s
-}
-
 func (s *ListPrometheusViewsResponseBodyPrometheusViews) SetResourceType(v string) *ListPrometheusViewsResponseBodyPrometheusViews {
 	s.ResourceType = &v
 	return s
@@ -332,11 +311,6 @@ func (s *ListPrometheusViewsResponseBodyPrometheusViews) SetResourceType(v strin
 
 func (s *ListPrometheusViewsResponseBodyPrometheusViews) SetStatus(v string) *ListPrometheusViewsResponseBodyPrometheusViews {
 	s.Status = &v
-	return s
-}
-
-func (s *ListPrometheusViewsResponseBodyPrometheusViews) SetTags(v []*ListPrometheusViewsResponseBodyPrometheusViewsTags) *ListPrometheusViewsResponseBodyPrometheusViews {
-	s.Tags = v
 	return s
 }
 
@@ -356,59 +330,5 @@ func (s *ListPrometheusViewsResponseBodyPrometheusViews) SetWorkspace(v string) 
 }
 
 func (s *ListPrometheusViewsResponseBodyPrometheusViews) Validate() error {
-	if s.Tags != nil {
-		for _, item := range s.Tags {
-			if item != nil {
-				if err := item.Validate(); err != nil {
-					return err
-				}
-			}
-		}
-	}
-	return nil
-}
-
-type ListPrometheusViewsResponseBodyPrometheusViewsTags struct {
-	// Tag key
-	//
-	// example:
-	//
-	// key1
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// Match value.
-	//
-	// example:
-	//
-	// value1
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s ListPrometheusViewsResponseBodyPrometheusViewsTags) String() string {
-	return dara.Prettify(s)
-}
-
-func (s ListPrometheusViewsResponseBodyPrometheusViewsTags) GoString() string {
-	return s.String()
-}
-
-func (s *ListPrometheusViewsResponseBodyPrometheusViewsTags) GetKey() *string {
-	return s.Key
-}
-
-func (s *ListPrometheusViewsResponseBodyPrometheusViewsTags) GetValue() *string {
-	return s.Value
-}
-
-func (s *ListPrometheusViewsResponseBodyPrometheusViewsTags) SetKey(v string) *ListPrometheusViewsResponseBodyPrometheusViewsTags {
-	s.Key = &v
-	return s
-}
-
-func (s *ListPrometheusViewsResponseBodyPrometheusViewsTags) SetValue(v string) *ListPrometheusViewsResponseBodyPrometheusViewsTags {
-	s.Value = &v
-	return s
-}
-
-func (s *ListPrometheusViewsResponseBodyPrometheusViewsTags) Validate() error {
 	return dara.Validate(s)
 }

@@ -3991,6 +3991,10 @@ func (client *Client) ListPrometheusInstancesWithContext(ctx context.Context, tm
 		query["version"] = request.Version
 	}
 
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),

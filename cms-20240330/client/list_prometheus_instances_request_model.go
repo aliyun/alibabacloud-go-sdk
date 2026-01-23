@@ -27,6 +27,8 @@ type iListPrometheusInstancesRequest interface {
 	GetTag() []*ListPrometheusInstancesRequestTag
 	SetVersion(v string) *ListPrometheusInstancesRequest
 	GetVersion() *string
+	SetWorkspace(v string) *ListPrometheusInstancesRequest
+	GetWorkspace() *string
 }
 
 type ListPrometheusInstancesRequest struct {
@@ -101,6 +103,9 @@ type ListPrometheusInstancesRequest struct {
 	//
 	// V2
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// if can be null:
+	// true
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s ListPrometheusInstancesRequest) String() string {
@@ -147,6 +152,10 @@ func (s *ListPrometheusInstancesRequest) GetVersion() *string {
 	return s.Version
 }
 
+func (s *ListPrometheusInstancesRequest) GetWorkspace() *string {
+	return s.Workspace
+}
+
 func (s *ListPrometheusInstancesRequest) SetFilterRegionIds(v string) *ListPrometheusInstancesRequest {
 	s.FilterRegionIds = &v
 	return s
@@ -189,6 +198,11 @@ func (s *ListPrometheusInstancesRequest) SetTag(v []*ListPrometheusInstancesRequ
 
 func (s *ListPrometheusInstancesRequest) SetVersion(v string) *ListPrometheusInstancesRequest {
 	s.Version = &v
+	return s
+}
+
+func (s *ListPrometheusInstancesRequest) SetWorkspace(v string) *ListPrometheusInstancesRequest {
+	s.Workspace = &v
 	return s
 }
 

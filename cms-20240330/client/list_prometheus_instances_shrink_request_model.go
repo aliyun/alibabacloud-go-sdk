@@ -27,6 +27,8 @@ type iListPrometheusInstancesShrinkRequest interface {
 	GetTagShrink() *string
 	SetVersion(v string) *ListPrometheusInstancesShrinkRequest
 	GetVersion() *string
+	SetWorkspace(v string) *ListPrometheusInstancesShrinkRequest
+	GetWorkspace() *string
 }
 
 type ListPrometheusInstancesShrinkRequest struct {
@@ -101,6 +103,9 @@ type ListPrometheusInstancesShrinkRequest struct {
 	//
 	// V2
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// if can be null:
+	// true
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s ListPrometheusInstancesShrinkRequest) String() string {
@@ -147,6 +152,10 @@ func (s *ListPrometheusInstancesShrinkRequest) GetVersion() *string {
 	return s.Version
 }
 
+func (s *ListPrometheusInstancesShrinkRequest) GetWorkspace() *string {
+	return s.Workspace
+}
+
 func (s *ListPrometheusInstancesShrinkRequest) SetFilterRegionIds(v string) *ListPrometheusInstancesShrinkRequest {
 	s.FilterRegionIds = &v
 	return s
@@ -189,6 +198,11 @@ func (s *ListPrometheusInstancesShrinkRequest) SetTagShrink(v string) *ListProme
 
 func (s *ListPrometheusInstancesShrinkRequest) SetVersion(v string) *ListPrometheusInstancesShrinkRequest {
 	s.Version = &v
+	return s
+}
+
+func (s *ListPrometheusInstancesShrinkRequest) SetWorkspace(v string) *ListPrometheusInstancesShrinkRequest {
+	s.Workspace = &v
 	return s
 }
 
