@@ -256,6 +256,80 @@ func (client *Client) GetProject(request *GetProjectRequest) (_result *GetProjec
 
 // Summary:
 //
+// 读取Topic数据
+//
+// @param request - GetRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRecordsResponse
+func (client *Client) GetRecordsWithOptions(request *GetRecordsRequest, runtime *dara.RuntimeOptions) (_result *GetRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectName) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !dara.IsNil(request.ShardId) {
+		query["ShardId"] = request.ShardId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TopicName) {
+		query["TopicName"] = request.TopicName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRecords"),
+		Version:     dara.String("2024-06-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 读取Topic数据
+//
+// @param request - GetRecordsRequest
+//
+// @return GetRecordsResponse
+func (client *Client) GetRecords(request *GetRecordsRequest) (_result *GetRecordsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetRecordsResponse{}
+	_body, _err := client.GetRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询Schema信息
 //
 // @param request - GetSchemaRequest
@@ -941,6 +1015,86 @@ func (client *Client) ListTopics(request *ListTopicsRequest) (_result *ListTopic
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListTopicsResponse{}
 	_body, _err := client.ListTopicsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 写入数据
+//
+// @param tmpReq - PutRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PutRecordsResponse
+func (client *Client) PutRecordsWithOptions(tmpReq *PutRecordsRequest, runtime *dara.RuntimeOptions) (_result *PutRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &PutRecordsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Records) {
+		request.RecordsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Records, dara.String("Records"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectName) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !dara.IsNil(request.RecordsShrink) {
+		query["Records"] = request.RecordsShrink
+	}
+
+	if !dara.IsNil(request.ShardId) {
+		query["ShardId"] = request.ShardId
+	}
+
+	if !dara.IsNil(request.TopicName) {
+		query["TopicName"] = request.TopicName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PutRecords"),
+		Version:     dara.String("2024-06-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PutRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 写入数据
+//
+// @param request - PutRecordsRequest
+//
+// @return PutRecordsResponse
+func (client *Client) PutRecords(request *PutRecordsRequest) (_result *PutRecordsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &PutRecordsResponse{}
+	_body, _err := client.PutRecordsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
