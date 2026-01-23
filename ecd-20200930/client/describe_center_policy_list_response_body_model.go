@@ -228,6 +228,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	//
 	// off
 	GpuAcceleration *string `json:"GpuAcceleration,omitempty" xml:"GpuAcceleration,omitempty"`
+	HoverConfigMsg  *string `json:"HoverConfigMsg,omitempty" xml:"HoverConfigMsg,omitempty"`
 	// The web client access policy.
 	//
 	// example:
@@ -449,6 +450,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	//
 	// fullControl
 	RemoteCoordinate *string `json:"RemoteCoordinate,omitempty" xml:"RemoteCoordinate,omitempty"`
+	ResolutionDpi    *int32  `json:"ResolutionDpi,omitempty" xml:"ResolutionDpi,omitempty"`
 	// The height of the resolution. Unit: pixel.
 	//
 	// example:
@@ -782,6 +784,10 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetGpuAcceler
 	return s.GpuAcceleration
 }
 
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetHoverConfigMsg() *string {
+	return s.HoverConfigMsg
+}
+
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetHtml5Access() *string {
 	return s.Html5Access
 }
@@ -936,6 +942,10 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetRecordingU
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetRemoteCoordinate() *string {
 	return s.RemoteCoordinate
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetResolutionDpi() *int32 {
+	return s.ResolutionDpi
 }
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetResolutionHeight() *int32 {
@@ -1242,6 +1252,11 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetGpuAcceler
 	return s
 }
 
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetHoverConfigMsg(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.HoverConfigMsg = &v
+	return s
+}
+
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetHtml5Access(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.Html5Access = &v
 	return s
@@ -1434,6 +1449,11 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetRecordingU
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetRemoteCoordinate(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.RemoteCoordinate = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetResolutionDpi(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.ResolutionDpi = &v
 	return s
 }
 

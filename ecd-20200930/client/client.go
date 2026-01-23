@@ -3417,6 +3417,10 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 		query["GpuAcceleration"] = request.GpuAcceleration
 	}
 
+	if !dara.IsNil(request.HoverConfigMsg) {
+		query["HoverConfigMsg"] = request.HoverConfigMsg
+	}
+
 	if !dara.IsNil(request.Html5FileTransfer) {
 		query["Html5FileTransfer"] = request.Html5FileTransfer
 	}
@@ -3487,6 +3491,10 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 
 	if !dara.IsNil(request.ModelLibrary) {
 		query["ModelLibrary"] = request.ModelLibrary
+	}
+
+	if !dara.IsNil(request.MultiScreen) {
+		query["MultiScreen"] = request.MultiScreen
 	}
 
 	if !dara.IsNil(request.Name) {
@@ -3591,6 +3599,10 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 
 	if !dara.IsNil(request.ResetDesktop) {
 		query["ResetDesktop"] = request.ResetDesktop
+	}
+
+	if !dara.IsNil(request.ResolutionDpi) {
+		query["ResolutionDpi"] = request.ResolutionDpi
 	}
 
 	if !dara.IsNil(request.ResolutionHeight) {
@@ -18970,6 +18982,10 @@ func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyR
 		query["GpuAcceleration"] = request.GpuAcceleration
 	}
 
+	if !dara.IsNil(request.HoverConfigMsg) {
+		query["HoverConfigMsg"] = request.HoverConfigMsg
+	}
+
 	if !dara.IsNil(request.Html5FileTransfer) {
 		query["Html5FileTransfer"] = request.Html5FileTransfer
 	}
@@ -19040,6 +19056,10 @@ func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyR
 
 	if !dara.IsNil(request.ModelLibrary) {
 		query["ModelLibrary"] = request.ModelLibrary
+	}
+
+	if !dara.IsNil(request.MultiScreen) {
+		query["MultiScreen"] = request.MultiScreen
 	}
 
 	if !dara.IsNil(request.Name) {
@@ -19148,6 +19168,10 @@ func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyR
 
 	if !dara.IsNil(request.ResetDesktop) {
 		query["ResetDesktop"] = request.ResetDesktop
+	}
+
+	if !dara.IsNil(request.ResolutionDpi) {
+		query["ResolutionDpi"] = request.ResolutionDpi
 	}
 
 	if !dara.IsNil(request.ResolutionHeight) {

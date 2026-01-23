@@ -93,6 +93,8 @@ type iCreateCenterPolicyRequest interface {
 	GetFileTransferSpeedLocation() *string
 	SetGpuAcceleration(v string) *CreateCenterPolicyRequest
 	GetGpuAcceleration() *string
+	SetHoverConfigMsg(v string) *CreateCenterPolicyRequest
+	GetHoverConfigMsg() *string
 	SetHtml5FileTransfer(v string) *CreateCenterPolicyRequest
 	GetHtml5FileTransfer() *string
 	SetInternetCommunicationProtocol(v string) *CreateCenterPolicyRequest
@@ -129,6 +131,8 @@ type iCreateCenterPolicyRequest interface {
 	GetMobileWyAssistant() *string
 	SetModelLibrary(v string) *CreateCenterPolicyRequest
 	GetModelLibrary() *string
+	SetMultiScreen(v string) *CreateCenterPolicyRequest
+	GetMultiScreen() *string
 	SetName(v string) *CreateCenterPolicyRequest
 	GetName() *string
 	SetNetRedirect(v string) *CreateCenterPolicyRequest
@@ -181,6 +185,8 @@ type iCreateCenterPolicyRequest interface {
 	GetRemoteCoordinate() *string
 	SetResetDesktop(v string) *CreateCenterPolicyRequest
 	GetResetDesktop() *string
+	SetResolutionDpi(v int32) *CreateCenterPolicyRequest
+	GetResolutionDpi() *int32
 	SetResolutionHeight(v int32) *CreateCenterPolicyRequest
 	GetResolutionHeight() *int32
 	SetResolutionModel(v string) *CreateCenterPolicyRequest
@@ -526,6 +532,7 @@ type CreateCenterPolicyRequest struct {
 	//
 	// off
 	GpuAcceleration *string `json:"GpuAcceleration,omitempty" xml:"GpuAcceleration,omitempty"`
+	HoverConfigMsg  *string `json:"HoverConfigMsg,omitempty" xml:"HoverConfigMsg,omitempty"`
 	// The file transfer feature on the web client.
 	//
 	// Valid values:
@@ -659,6 +666,7 @@ type CreateCenterPolicyRequest struct {
 	// off
 	MobileWyAssistant *string `json:"MobileWyAssistant,omitempty" xml:"MobileWyAssistant,omitempty"`
 	ModelLibrary      *string `json:"ModelLibrary,omitempty" xml:"ModelLibrary,omitempty"`
+	MultiScreen       *string `json:"MultiScreen,omitempty" xml:"MultiScreen,omitempty"`
 	// The policy name.
 	//
 	// This parameter is required.
@@ -849,7 +857,8 @@ type CreateCenterPolicyRequest struct {
 	// example:
 	//
 	// off
-	ResetDesktop *string `json:"ResetDesktop,omitempty" xml:"ResetDesktop,omitempty"`
+	ResetDesktop  *string `json:"ResetDesktop,omitempty" xml:"ResetDesktop,omitempty"`
+	ResolutionDpi *int32  `json:"ResolutionDpi,omitempty" xml:"ResolutionDpi,omitempty"`
 	// The resolution height. Unit: pixel. Valid values for cloud applications: 500 to 50000. Valid values for cloud computers: 480 to 4096.
 	//
 	// example:
@@ -1372,6 +1381,10 @@ func (s *CreateCenterPolicyRequest) GetGpuAcceleration() *string {
 	return s.GpuAcceleration
 }
 
+func (s *CreateCenterPolicyRequest) GetHoverConfigMsg() *string {
+	return s.HoverConfigMsg
+}
+
 func (s *CreateCenterPolicyRequest) GetHtml5FileTransfer() *string {
 	return s.Html5FileTransfer
 }
@@ -1442,6 +1455,10 @@ func (s *CreateCenterPolicyRequest) GetMobileWyAssistant() *string {
 
 func (s *CreateCenterPolicyRequest) GetModelLibrary() *string {
 	return s.ModelLibrary
+}
+
+func (s *CreateCenterPolicyRequest) GetMultiScreen() *string {
+	return s.MultiScreen
 }
 
 func (s *CreateCenterPolicyRequest) GetName() *string {
@@ -1546,6 +1563,10 @@ func (s *CreateCenterPolicyRequest) GetRemoteCoordinate() *string {
 
 func (s *CreateCenterPolicyRequest) GetResetDesktop() *string {
 	return s.ResetDesktop
+}
+
+func (s *CreateCenterPolicyRequest) GetResolutionDpi() *int32 {
+	return s.ResolutionDpi
 }
 
 func (s *CreateCenterPolicyRequest) GetResolutionHeight() *int32 {
@@ -1918,6 +1939,11 @@ func (s *CreateCenterPolicyRequest) SetGpuAcceleration(v string) *CreateCenterPo
 	return s
 }
 
+func (s *CreateCenterPolicyRequest) SetHoverConfigMsg(v string) *CreateCenterPolicyRequest {
+	s.HoverConfigMsg = &v
+	return s
+}
+
 func (s *CreateCenterPolicyRequest) SetHtml5FileTransfer(v string) *CreateCenterPolicyRequest {
 	s.Html5FileTransfer = &v
 	return s
@@ -2005,6 +2031,11 @@ func (s *CreateCenterPolicyRequest) SetMobileWyAssistant(v string) *CreateCenter
 
 func (s *CreateCenterPolicyRequest) SetModelLibrary(v string) *CreateCenterPolicyRequest {
 	s.ModelLibrary = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetMultiScreen(v string) *CreateCenterPolicyRequest {
+	s.MultiScreen = &v
 	return s
 }
 
@@ -2135,6 +2166,11 @@ func (s *CreateCenterPolicyRequest) SetRemoteCoordinate(v string) *CreateCenterP
 
 func (s *CreateCenterPolicyRequest) SetResetDesktop(v string) *CreateCenterPolicyRequest {
 	s.ResetDesktop = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetResolutionDpi(v int32) *CreateCenterPolicyRequest {
+	s.ResolutionDpi = &v
 	return s
 }
 
@@ -2701,10 +2737,14 @@ func (s *CreateCenterPolicyRequestClientType) Validate() error {
 }
 
 type CreateCenterPolicyRequestClipboardGraineds struct {
-	ClipboardSize     *int32  `json:"ClipboardSize,omitempty" xml:"ClipboardSize,omitempty"`
-	ClipboardSizeUnit *string `json:"ClipboardSizeUnit,omitempty" xml:"ClipboardSizeUnit,omitempty"`
-	ClipboardType     *string `json:"ClipboardType,omitempty" xml:"ClipboardType,omitempty"`
-	GrainedType       *string `json:"GrainedType,omitempty" xml:"GrainedType,omitempty"`
+	ClipboardSize        *int32  `json:"ClipboardSize,omitempty" xml:"ClipboardSize,omitempty"`
+	ClipboardSizeUnit    *string `json:"ClipboardSizeUnit,omitempty" xml:"ClipboardSizeUnit,omitempty"`
+	ClipboardType        *string `json:"ClipboardType,omitempty" xml:"ClipboardType,omitempty"`
+	GrainedType          *string `json:"GrainedType,omitempty" xml:"GrainedType,omitempty"`
+	InClipboardSize      *int32  `json:"InClipboardSize,omitempty" xml:"InClipboardSize,omitempty"`
+	InClipboardSizeUnit  *string `json:"InClipboardSizeUnit,omitempty" xml:"InClipboardSizeUnit,omitempty"`
+	OutClipboardSize     *int32  `json:"OutClipboardSize,omitempty" xml:"OutClipboardSize,omitempty"`
+	OutClipboardSizeUnit *string `json:"OutClipboardSizeUnit,omitempty" xml:"OutClipboardSizeUnit,omitempty"`
 }
 
 func (s CreateCenterPolicyRequestClipboardGraineds) String() string {
@@ -2731,6 +2771,22 @@ func (s *CreateCenterPolicyRequestClipboardGraineds) GetGrainedType() *string {
 	return s.GrainedType
 }
 
+func (s *CreateCenterPolicyRequestClipboardGraineds) GetInClipboardSize() *int32 {
+	return s.InClipboardSize
+}
+
+func (s *CreateCenterPolicyRequestClipboardGraineds) GetInClipboardSizeUnit() *string {
+	return s.InClipboardSizeUnit
+}
+
+func (s *CreateCenterPolicyRequestClipboardGraineds) GetOutClipboardSize() *int32 {
+	return s.OutClipboardSize
+}
+
+func (s *CreateCenterPolicyRequestClipboardGraineds) GetOutClipboardSizeUnit() *string {
+	return s.OutClipboardSizeUnit
+}
+
 func (s *CreateCenterPolicyRequestClipboardGraineds) SetClipboardSize(v int32) *CreateCenterPolicyRequestClipboardGraineds {
 	s.ClipboardSize = &v
 	return s
@@ -2748,6 +2804,26 @@ func (s *CreateCenterPolicyRequestClipboardGraineds) SetClipboardType(v string) 
 
 func (s *CreateCenterPolicyRequestClipboardGraineds) SetGrainedType(v string) *CreateCenterPolicyRequestClipboardGraineds {
 	s.GrainedType = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestClipboardGraineds) SetInClipboardSize(v int32) *CreateCenterPolicyRequestClipboardGraineds {
+	s.InClipboardSize = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestClipboardGraineds) SetInClipboardSizeUnit(v string) *CreateCenterPolicyRequestClipboardGraineds {
+	s.InClipboardSizeUnit = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestClipboardGraineds) SetOutClipboardSize(v int32) *CreateCenterPolicyRequestClipboardGraineds {
+	s.OutClipboardSize = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestClipboardGraineds) SetOutClipboardSizeUnit(v string) *CreateCenterPolicyRequestClipboardGraineds {
+	s.OutClipboardSizeUnit = &v
 	return s
 }
 

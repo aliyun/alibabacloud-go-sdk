@@ -347,6 +347,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// off
 	GpuAcceleration *string `json:"GpuAcceleration,omitempty" xml:"GpuAcceleration,omitempty"`
+	HoverConfigMsg  *string `json:"HoverConfigMsg,omitempty" xml:"HoverConfigMsg,omitempty"`
 	// Specifies whether to allow web client access.
 	//
 	// Valid values:
@@ -494,6 +495,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	// off
 	MobileWyAssistant *string `json:"MobileWyAssistant,omitempty" xml:"MobileWyAssistant,omitempty"`
 	ModelLibrary      *string `json:"ModelLibrary,omitempty" xml:"ModelLibrary,omitempty"`
+	MultiScreen       *string `json:"MultiScreen,omitempty" xml:"MultiScreen,omitempty"`
 	// The name of the cloud computer policy.
 	//
 	// example:
@@ -739,6 +741,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// null
 	ResetDesktop     *string `json:"ResetDesktop,omitempty" xml:"ResetDesktop,omitempty"`
+	ResolutionDpi    *int32  `json:"ResolutionDpi,omitempty" xml:"ResolutionDpi,omitempty"`
 	ResolutionHeight *int32  `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
 	ResolutionModel  *string `json:"ResolutionModel,omitempty" xml:"ResolutionModel,omitempty"`
 	ResolutionWidth  *int32  `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
@@ -1213,6 +1216,10 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetGpuAcceleratio
 	return s.GpuAcceleration
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetHoverConfigMsg() *string {
+	return s.HoverConfigMsg
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetHtml5Access() *string {
 	return s.Html5Access
 }
@@ -1287,6 +1294,10 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetMobileWyAssist
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetModelLibrary() *string {
 	return s.ModelLibrary
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetMultiScreen() *string {
+	return s.MultiScreen
 }
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetName() *string {
@@ -1403,6 +1414,10 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetRemoteCoordina
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetResetDesktop() *string {
 	return s.ResetDesktop
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetResolutionDpi() *int32 {
+	return s.ResolutionDpi
 }
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetResolutionHeight() *int32 {
@@ -1761,6 +1776,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetGpuAcceleratio
 	return s
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetHoverConfigMsg(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.HoverConfigMsg = &v
+	return s
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetHtml5Access(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.Html5Access = &v
 	return s
@@ -1853,6 +1873,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetMobileWyAssist
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetModelLibrary(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.ModelLibrary = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetMultiScreen(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.MultiScreen = &v
 	return s
 }
 
@@ -1998,6 +2023,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetRemoteCoordina
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetResetDesktop(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.ResetDesktop = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetResolutionDpi(v int32) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.ResolutionDpi = &v
 	return s
 }
 
