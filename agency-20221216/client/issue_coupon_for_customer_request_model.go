@@ -11,6 +11,8 @@ type iIssueCouponForCustomerRequest interface {
 	GoString() string
 	SetAcceptLanguage(v string) *IssueCouponForCustomerRequest
 	GetAcceptLanguage() *string
+	SetApplicationReason(v string) *IssueCouponForCustomerRequest
+	GetApplicationReason() *string
 	SetCouponTemplateId(v int64) *IssueCouponForCustomerRequest
 	GetCouponTemplateId() *int64
 	SetIsUseBenefit(v bool) *IssueCouponForCustomerRequest
@@ -24,13 +26,18 @@ type IssueCouponForCustomerRequest struct {
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 为客户XXX审批优惠券，该客户是XXXX
+	ApplicationReason *string `json:"ApplicationReason,omitempty" xml:"ApplicationReason,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5075915
 	CouponTemplateId *int64 `json:"CouponTemplateId,omitempty" xml:"CouponTemplateId,omitempty"`
-	IsUseBenefit     *bool  `json:"IsUseBenefit,omitempty" xml:"IsUseBenefit,omitempty"`
+	// Deprecated
+	IsUseBenefit *bool `json:"IsUseBenefit,omitempty" xml:"IsUseBenefit,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -51,6 +58,10 @@ func (s *IssueCouponForCustomerRequest) GetAcceptLanguage() *string {
 	return s.AcceptLanguage
 }
 
+func (s *IssueCouponForCustomerRequest) GetApplicationReason() *string {
+	return s.ApplicationReason
+}
+
 func (s *IssueCouponForCustomerRequest) GetCouponTemplateId() *int64 {
 	return s.CouponTemplateId
 }
@@ -65,6 +76,11 @@ func (s *IssueCouponForCustomerRequest) GetUidlist() *string {
 
 func (s *IssueCouponForCustomerRequest) SetAcceptLanguage(v string) *IssueCouponForCustomerRequest {
 	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *IssueCouponForCustomerRequest) SetApplicationReason(v string) *IssueCouponForCustomerRequest {
+	s.ApplicationReason = &v
 	return s
 }
 

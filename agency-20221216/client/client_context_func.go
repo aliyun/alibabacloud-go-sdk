@@ -1390,6 +1390,10 @@ func (client *Client) IssueCouponForCustomerWithContext(ctx context.Context, req
 		query["AcceptLanguage"] = request.AcceptLanguage
 	}
 
+	if !dara.IsNil(request.ApplicationReason) {
+		query["ApplicationReason"] = request.ApplicationReason
+	}
+
 	if !dara.IsNil(request.CouponTemplateId) {
 		query["CouponTemplateId"] = request.CouponTemplateId
 	}
@@ -1460,6 +1464,10 @@ func (client *Client) ListCouponUsageWithContext(ctx context.Context, request *L
 
 	if !dara.IsNil(request.Status) {
 		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.T2PartnerUid) {
+		query["T2PartnerUid"] = request.T2PartnerUid
 	}
 
 	if !dara.IsNil(request.Uid) {

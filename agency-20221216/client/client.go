@@ -2007,6 +2007,10 @@ func (client *Client) IssueCouponForCustomerWithOptions(request *IssueCouponForC
 		query["AcceptLanguage"] = request.AcceptLanguage
 	}
 
+	if !dara.IsNil(request.ApplicationReason) {
+		query["ApplicationReason"] = request.ApplicationReason
+	}
+
 	if !dara.IsNil(request.CouponTemplateId) {
 		query["CouponTemplateId"] = request.CouponTemplateId
 	}
@@ -2150,6 +2154,10 @@ func (client *Client) ListCouponUsageWithOptions(request *ListCouponUsageRequest
 
 	if !dara.IsNil(request.Status) {
 		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.T2PartnerUid) {
+		query["T2PartnerUid"] = request.T2PartnerUid
 	}
 
 	if !dara.IsNil(request.Uid) {

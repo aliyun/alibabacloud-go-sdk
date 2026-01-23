@@ -19,6 +19,8 @@ type iListCouponUsageRequest interface {
 	GetPageSize() *int32
 	SetStatus(v string) *ListCouponUsageRequest
 	GetStatus() *string
+	SetT2PartnerUid(v int64) *ListCouponUsageRequest
+	GetT2PartnerUid() *int64
 	SetUid(v int64) *ListCouponUsageRequest
 	GetUid() *int64
 }
@@ -44,6 +46,10 @@ type ListCouponUsageRequest struct {
 	//
 	// AVAILABLE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 123456768
+	T2PartnerUid *int64 `json:"T2PartnerUid,omitempty" xml:"T2PartnerUid,omitempty"`
 	// example:
 	//
 	// 1133166938931507
@@ -78,6 +84,10 @@ func (s *ListCouponUsageRequest) GetStatus() *string {
 	return s.Status
 }
 
+func (s *ListCouponUsageRequest) GetT2PartnerUid() *int64 {
+	return s.T2PartnerUid
+}
+
 func (s *ListCouponUsageRequest) GetUid() *int64 {
 	return s.Uid
 }
@@ -104,6 +114,11 @@ func (s *ListCouponUsageRequest) SetPageSize(v int32) *ListCouponUsageRequest {
 
 func (s *ListCouponUsageRequest) SetStatus(v string) *ListCouponUsageRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListCouponUsageRequest) SetT2PartnerUid(v int64) *ListCouponUsageRequest {
+	s.T2PartnerUid = &v
 	return s
 }
 
