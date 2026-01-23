@@ -65,8 +65,8 @@ type iRuleInfo interface {
 	GetName() *string
 	SetOperationMode(v int32) *RuleInfo
 	GetOperationMode() *int32
-	SetPreqRule(v []*RuleInfoPreqRule) *RuleInfo
-	GetPreqRule() []*RuleInfoPreqRule
+	SetPreqRule(v *RuleInfoPreqRule) *RuleInfo
+	GetPreqRule() *RuleInfoPreqRule
 	SetQualityCheckType(v int32) *RuleInfo
 	GetQualityCheckType() *int32
 	SetRid(v string) *RuleInfo
@@ -152,7 +152,7 @@ type RuleInfo struct {
 	ModifyType               *int32              `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
 	Name                     *string             `json:"Name,omitempty" xml:"Name,omitempty"`
 	OperationMode            *int32              `json:"OperationMode,omitempty" xml:"OperationMode,omitempty"`
-	PreqRule                 []*RuleInfoPreqRule `json:"PreqRule,omitempty" xml:"PreqRule,omitempty" type:"Repeated"`
+	PreqRule                 *RuleInfoPreqRule   `json:"PreqRule,omitempty" xml:"PreqRule,omitempty" type:"Struct"`
 	QualityCheckType         *int32              `json:"QualityCheckType,omitempty" xml:"QualityCheckType,omitempty"`
 	Rid                      *string             `json:"Rid,omitempty" xml:"Rid,omitempty"`
 	RuleCategoryName         *string             `json:"RuleCategoryName,omitempty" xml:"RuleCategoryName,omitempty"`
@@ -302,7 +302,7 @@ func (s *RuleInfo) GetOperationMode() *int32 {
 	return s.OperationMode
 }
 
-func (s *RuleInfo) GetPreqRule() []*RuleInfoPreqRule {
+func (s *RuleInfo) GetPreqRule() *RuleInfoPreqRule {
 	return s.PreqRule
 }
 
@@ -554,7 +554,7 @@ func (s *RuleInfo) SetOperationMode(v int32) *RuleInfo {
 	return s
 }
 
-func (s *RuleInfo) SetPreqRule(v []*RuleInfoPreqRule) *RuleInfo {
+func (s *RuleInfo) SetPreqRule(v *RuleInfoPreqRule) *RuleInfo {
 	s.PreqRule = v
 	return s
 }
@@ -705,12 +705,8 @@ func (s *RuleInfo) Validate() error {
 		}
 	}
 	if s.PreqRule != nil {
-		for _, item := range s.PreqRule {
-			if item != nil {
-				if err := item.Validate(); err != nil {
-					return err
-				}
-			}
+		if err := s.PreqRule.Validate(); err != nil {
+			return err
 		}
 	}
 	if s.SchemeCheckType != nil {
