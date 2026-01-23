@@ -9,6 +9,8 @@ type iModifyDBClusterAndNodesParametersRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClearBinlog(v bool) *ModifyDBClusterAndNodesParametersRequest
+	GetClearBinlog() *bool
 	SetDBClusterId(v string) *ModifyDBClusterAndNodesParametersRequest
 	GetDBClusterId() *string
 	SetDBNodeIds(v string) *ModifyDBClusterAndNodesParametersRequest
@@ -36,6 +38,7 @@ type iModifyDBClusterAndNodesParametersRequest interface {
 }
 
 type ModifyDBClusterAndNodesParametersRequest struct {
+	ClearBinlog *bool `json:"ClearBinlog,omitempty" xml:"ClearBinlog,omitempty"`
 	// The ID of the cluster.
 	//
 	// This parameter is required.
@@ -118,6 +121,10 @@ func (s ModifyDBClusterAndNodesParametersRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyDBClusterAndNodesParametersRequest) GetClearBinlog() *bool {
+	return s.ClearBinlog
+}
+
 func (s *ModifyDBClusterAndNodesParametersRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
@@ -164,6 +171,11 @@ func (s *ModifyDBClusterAndNodesParametersRequest) GetResourceOwnerId() *int64 {
 
 func (s *ModifyDBClusterAndNodesParametersRequest) GetStandbyClusterIdListNeedToSync() *string {
 	return s.StandbyClusterIdListNeedToSync
+}
+
+func (s *ModifyDBClusterAndNodesParametersRequest) SetClearBinlog(v bool) *ModifyDBClusterAndNodesParametersRequest {
+	s.ClearBinlog = &v
+	return s
 }
 
 func (s *ModifyDBClusterAndNodesParametersRequest) SetDBClusterId(v string) *ModifyDBClusterAndNodesParametersRequest {

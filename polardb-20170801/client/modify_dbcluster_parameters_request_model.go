@@ -9,6 +9,8 @@ type iModifyDBClusterParametersRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClearBinlog(v bool) *ModifyDBClusterParametersRequest
+	GetClearBinlog() *bool
 	SetDBClusterId(v string) *ModifyDBClusterParametersRequest
 	GetDBClusterId() *string
 	SetFromTimeService(v bool) *ModifyDBClusterParametersRequest
@@ -32,6 +34,7 @@ type iModifyDBClusterParametersRequest interface {
 }
 
 type ModifyDBClusterParametersRequest struct {
+	ClearBinlog *bool `json:"ClearBinlog,omitempty" xml:"ClearBinlog,omitempty"`
 	// The ID of the cluster.
 	//
 	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
@@ -118,6 +121,10 @@ func (s ModifyDBClusterParametersRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyDBClusterParametersRequest) GetClearBinlog() *bool {
+	return s.ClearBinlog
+}
+
 func (s *ModifyDBClusterParametersRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
@@ -156,6 +163,11 @@ func (s *ModifyDBClusterParametersRequest) GetResourceOwnerAccount() *string {
 
 func (s *ModifyDBClusterParametersRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
+}
+
+func (s *ModifyDBClusterParametersRequest) SetClearBinlog(v bool) *ModifyDBClusterParametersRequest {
+	s.ClearBinlog = &v
+	return s
 }
 
 func (s *ModifyDBClusterParametersRequest) SetDBClusterId(v string) *ModifyDBClusterParametersRequest {

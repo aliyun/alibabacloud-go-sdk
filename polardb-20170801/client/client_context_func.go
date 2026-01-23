@@ -16066,6 +16066,10 @@ func (client *Client) ModifyDBClusterAndNodesParametersWithContext(ctx context.C
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClearBinlog) {
+		query["ClearBinlog"] = request.ClearBinlog
+	}
+
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
 	}
@@ -16990,6 +16994,10 @@ func (client *Client) ModifyDBClusterParametersWithContext(ctx context.Context, 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClearBinlog) {
+		query["ClearBinlog"] = request.ClearBinlog
+	}
+
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
 	}
