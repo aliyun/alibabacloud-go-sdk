@@ -23,6 +23,8 @@ type iDescribeCloudPhoneNodesRequest interface {
 	GetNodeIds() []*string
 	SetNodeName(v string) *DescribeCloudPhoneNodesRequest
 	GetNodeName() *string
+	SetNodeNameList(v []*string) *DescribeCloudPhoneNodesRequest
+	GetNodeNameList() []*string
 	SetServerType(v string) *DescribeCloudPhoneNodesRequest
 	GetServerType() *string
 	SetStatus(v string) *DescribeCloudPhoneNodesRequest
@@ -62,7 +64,8 @@ type DescribeCloudPhoneNodesRequest struct {
 	// example:
 	//
 	// node_name
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeName     *string   `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeNameList []*string `json:"NodeNameList,omitempty" xml:"NodeNameList,omitempty" type:"Repeated"`
 	// The matrix specification.
 	//
 	// Valid values:
@@ -131,6 +134,10 @@ func (s *DescribeCloudPhoneNodesRequest) GetNodeName() *string {
 	return s.NodeName
 }
 
+func (s *DescribeCloudPhoneNodesRequest) GetNodeNameList() []*string {
+	return s.NodeNameList
+}
+
 func (s *DescribeCloudPhoneNodesRequest) GetServerType() *string {
 	return s.ServerType
 }
@@ -171,6 +178,11 @@ func (s *DescribeCloudPhoneNodesRequest) SetNodeIds(v []*string) *DescribeCloudP
 
 func (s *DescribeCloudPhoneNodesRequest) SetNodeName(v string) *DescribeCloudPhoneNodesRequest {
 	s.NodeName = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesRequest) SetNodeNameList(v []*string) *DescribeCloudPhoneNodesRequest {
+	s.NodeNameList = v
 	return s
 }
 

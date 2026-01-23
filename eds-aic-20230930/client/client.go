@@ -2797,6 +2797,10 @@ func (client *Client) DescribeCloudPhoneNodesWithOptions(request *DescribeCloudP
 		query["NodeName"] = request.NodeName
 	}
 
+	if !dara.IsNil(request.NodeNameList) {
+		query["NodeNameList"] = request.NodeNameList
+	}
+
 	if !dara.IsNil(request.ServerType) {
 		query["ServerType"] = request.ServerType
 	}
@@ -4529,6 +4533,68 @@ func (client *Client) GetInstanceProperties(request *GetInstancePropertiesReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetInstancePropertiesResponse{}
 	_body, _err := client.GetInstancePropertiesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 网络黑名单列表查询
+//
+// @param request - GetNetworkBlacklistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNetworkBlacklistResponse
+func (client *Client) GetNetworkBlacklistWithOptions(request *GetNetworkBlacklistRequest, runtime *dara.RuntimeOptions) (_result *GetNetworkBlacklistResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetNetworkBlacklist"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetNetworkBlacklistResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 网络黑名单列表查询
+//
+// @param request - GetNetworkBlacklistRequest
+//
+// @return GetNetworkBlacklistResponse
+func (client *Client) GetNetworkBlacklist(request *GetNetworkBlacklistRequest) (_result *GetNetworkBlacklistResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetNetworkBlacklistResponse{}
+	_body, _err := client.GetNetworkBlacklistWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6817,6 +6883,72 @@ func (client *Client) SetAdbSecure(request *SetAdbSecureRequest) (_result *SetAd
 	runtime := &dara.RuntimeOptions{}
 	_result = &SetAdbSecureResponse{}
 	_body, _err := client.SetAdbSecureWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置网络黑名单
+//
+// @param request - SetNetworkBlacklistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetNetworkBlacklistResponse
+func (client *Client) SetNetworkBlacklistWithOptions(request *SetNetworkBlacklistRequest, runtime *dara.RuntimeOptions) (_result *SetNetworkBlacklistResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DomainBlacklist) {
+		query["DomainBlacklist"] = request.DomainBlacklist
+	}
+
+	if !dara.IsNil(request.IpBlacklist) {
+		query["IpBlacklist"] = request.IpBlacklist
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetNetworkBlacklist"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetNetworkBlacklistResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置网络黑名单
+//
+// @param request - SetNetworkBlacklistRequest
+//
+// @return SetNetworkBlacklistResponse
+func (client *Client) SetNetworkBlacklist(request *SetNetworkBlacklistRequest) (_result *SetNetworkBlacklistResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SetNetworkBlacklistResponse{}
+	_body, _err := client.SetNetworkBlacklistWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
