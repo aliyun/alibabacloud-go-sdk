@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/apig-20240327/v5
+module github.com/alibabacloud-go/apig-20240327/v6
 
 go 1.14
 

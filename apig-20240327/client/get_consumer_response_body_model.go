@@ -97,7 +97,7 @@ func (s *GetConsumerResponseBody) Validate() error {
 
 type GetConsumerResponseBodyData struct {
 	// The AK/SK authentication configurations.
-	AkSkIdentityConfigs *AkSkIdentityConfig `json:"akSkIdentityConfigs,omitempty" xml:"akSkIdentityConfigs,omitempty"`
+	AkSkIdentityConfigs []*AkSkIdentityConfig `json:"akSkIdentityConfigs,omitempty" xml:"akSkIdentityConfigs,omitempty" type:"Repeated"`
 	// The API key authentication configurations.
 	ApiKeyIdentityConfig *ApiKeyIdentityConfig `json:"apiKeyIdentityConfig,omitempty" xml:"apiKeyIdentityConfig,omitempty"`
 	// The consumer ID.
@@ -154,7 +154,7 @@ func (s GetConsumerResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetConsumerResponseBodyData) GetAkSkIdentityConfigs() *AkSkIdentityConfig {
+func (s *GetConsumerResponseBodyData) GetAkSkIdentityConfigs() []*AkSkIdentityConfig {
 	return s.AkSkIdentityConfigs
 }
 
@@ -194,7 +194,7 @@ func (s *GetConsumerResponseBodyData) GetUpdateTimestamp() *int64 {
 	return s.UpdateTimestamp
 }
 
-func (s *GetConsumerResponseBodyData) SetAkSkIdentityConfigs(v *AkSkIdentityConfig) *GetConsumerResponseBodyData {
+func (s *GetConsumerResponseBodyData) SetAkSkIdentityConfigs(v []*AkSkIdentityConfig) *GetConsumerResponseBodyData {
 	s.AkSkIdentityConfigs = v
 	return s
 }
@@ -246,8 +246,12 @@ func (s *GetConsumerResponseBodyData) SetUpdateTimestamp(v int64) *GetConsumerRe
 
 func (s *GetConsumerResponseBodyData) Validate() error {
 	if s.AkSkIdentityConfigs != nil {
-		if err := s.AkSkIdentityConfigs.Validate(); err != nil {
-			return err
+		for _, item := range s.AkSkIdentityConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	if s.ApiKeyIdentityConfig != nil {
