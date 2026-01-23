@@ -3673,6 +3673,10 @@ func (client *Client) ListDatasetFileMetasWithContext(ctx context.Context, Datas
 	}
 	request := &ListDatasetFileMetasShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DatasetFileMetaIds) {
+		request.DatasetFileMetaIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DatasetFileMetaIds, dara.String("DatasetFileMetaIds"), dara.String("simple"))
+	}
+
 	if !dara.IsNil(tmpReq.QueryContentTypeIncludeAny) {
 		request.QueryContentTypeIncludeAnyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryContentTypeIncludeAny, dara.String("QueryContentTypeIncludeAny"), dara.String("simple"))
 	}
@@ -3694,6 +3698,10 @@ func (client *Client) ListDatasetFileMetasWithContext(ctx context.Context, Datas
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DatasetFileMetaIdsShrink) {
+		query["DatasetFileMetaIds"] = request.DatasetFileMetaIdsShrink
+	}
+
 	if !dara.IsNil(request.DatasetVersion) {
 		query["DatasetVersion"] = request.DatasetVersion
 	}

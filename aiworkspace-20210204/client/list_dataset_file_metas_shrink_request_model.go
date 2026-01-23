@@ -9,6 +9,8 @@ type iListDatasetFileMetasShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDatasetFileMetaIdsShrink(v string) *ListDatasetFileMetasShrinkRequest
+	GetDatasetFileMetaIdsShrink() *string
 	SetDatasetVersion(v string) *ListDatasetFileMetasShrinkRequest
 	GetDatasetVersion() *string
 	SetEndFileUpdateTime(v string) *ListDatasetFileMetasShrinkRequest
@@ -66,6 +68,7 @@ type iListDatasetFileMetasShrinkRequest interface {
 }
 
 type ListDatasetFileMetasShrinkRequest struct {
+	DatasetFileMetaIdsShrink *string `json:"DatasetFileMetaIds,omitempty" xml:"DatasetFileMetaIds,omitempty"`
 	// The dataset version.
 	//
 	// This parameter is required.
@@ -208,6 +211,10 @@ func (s ListDatasetFileMetasShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListDatasetFileMetasShrinkRequest) GetDatasetFileMetaIdsShrink() *string {
+	return s.DatasetFileMetaIdsShrink
+}
+
 func (s *ListDatasetFileMetasShrinkRequest) GetDatasetVersion() *string {
 	return s.DatasetVersion
 }
@@ -314,6 +321,11 @@ func (s *ListDatasetFileMetasShrinkRequest) GetTopK() *int32 {
 
 func (s *ListDatasetFileMetasShrinkRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetDatasetFileMetaIdsShrink(v string) *ListDatasetFileMetasShrinkRequest {
+	s.DatasetFileMetaIdsShrink = &v
+	return s
 }
 
 func (s *ListDatasetFileMetasShrinkRequest) SetDatasetVersion(v string) *ListDatasetFileMetasShrinkRequest {

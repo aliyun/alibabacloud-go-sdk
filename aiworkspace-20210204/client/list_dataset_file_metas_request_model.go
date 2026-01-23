@@ -9,6 +9,8 @@ type iListDatasetFileMetasRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDatasetFileMetaIds(v []*string) *ListDatasetFileMetasRequest
+	GetDatasetFileMetaIds() []*string
 	SetDatasetVersion(v string) *ListDatasetFileMetasRequest
 	GetDatasetVersion() *string
 	SetEndFileUpdateTime(v string) *ListDatasetFileMetasRequest
@@ -66,6 +68,7 @@ type iListDatasetFileMetasRequest interface {
 }
 
 type ListDatasetFileMetasRequest struct {
+	DatasetFileMetaIds []*string `json:"DatasetFileMetaIds,omitempty" xml:"DatasetFileMetaIds,omitempty" type:"Repeated"`
 	// The dataset version.
 	//
 	// This parameter is required.
@@ -208,6 +211,10 @@ func (s ListDatasetFileMetasRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListDatasetFileMetasRequest) GetDatasetFileMetaIds() []*string {
+	return s.DatasetFileMetaIds
+}
+
 func (s *ListDatasetFileMetasRequest) GetDatasetVersion() *string {
 	return s.DatasetVersion
 }
@@ -314,6 +321,11 @@ func (s *ListDatasetFileMetasRequest) GetTopK() *int32 {
 
 func (s *ListDatasetFileMetasRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *ListDatasetFileMetasRequest) SetDatasetFileMetaIds(v []*string) *ListDatasetFileMetasRequest {
+	s.DatasetFileMetaIds = v
+	return s
 }
 
 func (s *ListDatasetFileMetasRequest) SetDatasetVersion(v string) *ListDatasetFileMetasRequest {
