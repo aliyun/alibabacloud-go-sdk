@@ -16,12 +16,16 @@ type iCreateStorageDomainRoutingRuleRequest interface {
 }
 
 type CreateStorageDomainRoutingRuleRequest struct {
+	// The instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The route list
+	//
 	// This parameter is required.
 	Routes []*RouteItem `json:"Routes,omitempty" xml:"Routes,omitempty" type:"Repeated"`
 }

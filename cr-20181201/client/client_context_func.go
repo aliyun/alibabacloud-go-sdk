@@ -1595,7 +1595,11 @@ func (client *Client) CreateRepositoryWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 创建扫描规则
+// Creates a scan or content analysis rule.
+//
+// Description:
+//
+// Creates a scan or content analysis rule.
 //
 // @param tmpReq - CreateScanRuleRequest
 //
@@ -1677,7 +1681,11 @@ func (client *Client) CreateScanRuleWithContext(ctx context.Context, tmpReq *Cre
 
 // Summary:
 //
-// 创建实例域名路由规则
+// Creates an instance store domain name routing rule.
+//
+// Description:
+//
+// The whitelist of this API operation is available. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
 //
 // @param tmpReq - CreateStorageDomainRoutingRuleRequest
 //
@@ -2515,7 +2523,11 @@ func (client *Client) DeleteRepositoryWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除扫描规则
+// Deletes a scan rule.
+//
+// Description:
+//
+// Deletes a scan rule.
 //
 // @param request - DeleteScanRuleRequest
 //
@@ -2563,7 +2575,11 @@ func (client *Client) DeleteScanRuleWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// 删除实例存储域名映射规则
+// Deletes an instance store domain name routing rule.
+//
+// Description:
+//
+// The whitelist of this API operation is available. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
 //
 // @param request - DeleteStorageDomainRoutingRuleRequest
 //
@@ -2847,11 +2863,17 @@ func (client *Client) GetArtifactSubscriptionTaskResultWithContext(ctx context.C
 
 // Summary:
 //
-// Queries a temporary username and a token that you can use to log on to a Container Registry instance.
+// Queries a pair of temporary username and password that you use to log on to a Container Registry instance.
 //
 // Description:
 //
-// The ID of the Container Registry instance.
+// The validity period of the temporary password is 1 hour. If you use STS to request a token, the validity period of the temporary password is the same as the validity period of the STS token.
+//
+//   - If you log on to an instance by using the temporary password obtained through an Alibaba Cloud account, you have the same permissions on resources as the user of the Alibaba Cloud account.
+//
+//   - If you log on to an instance by using the temporary password obtained through a RAM user, you have the same permissions as the RAM user.
+//
+//   - If you log on to an instance by using the temporary password obtained through STS, you have the same permissions as the STS token.
 //
 // @param request - GetAuthorizationTokenRequest
 //
@@ -3699,7 +3721,11 @@ func (client *Client) GetRepositoryWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// 查询扫描规则
+// Obtains a scan rule.
+//
+// Description:
+//
+// Get scan rule.
 //
 // @param request - GetScanRuleRequest
 //
@@ -3747,7 +3773,11 @@ func (client *Client) GetScanRuleWithContext(ctx context.Context, request *GetSc
 
 // Summary:
 //
-// 查询实例存储域名路由规则
+// # Queries instance storage domain routing rules
+//
+// Description:
+//
+// This API is open to a whitelist. Please [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket) for support.
 //
 // @param request - GetStorageDomainRoutingRuleRequest
 //
@@ -5203,7 +5233,11 @@ func (client *Client) ListScanMaliciousFileByTaskWithContext(ctx context.Context
 
 // Summary:
 //
-// 查询扫描规则
+// Lists the scan rules.
+//
+// Description:
+//
+// Lists the scan rules.
 //
 // @param request - ListScanRuleRequest
 //
@@ -6323,7 +6357,11 @@ func (client *Client) UpdateRepositoryWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 更新扫描规则
+// Updates a scan rule.
+//
+// Description:
+//
+// The whitelist of this API operation is available. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
 //
 // @param tmpReq - UpdateScanRuleRequest
 //
@@ -6405,7 +6443,11 @@ func (client *Client) UpdateScanRuleWithContext(ctx context.Context, tmpReq *Upd
 
 // Summary:
 //
-// 更新实例域名路由规则
+// Updates a routing rule for an instance store domain name.
+//
+// Description:
+//
+// The whitelist of this API operation is available. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
 //
 // @param tmpReq - UpdateStorageDomainRoutingRuleRequest
 //

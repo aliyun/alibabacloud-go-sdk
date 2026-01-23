@@ -16,12 +16,16 @@ type iDeleteStorageDomainRoutingRuleRequest interface {
 }
 
 type DeleteStorageDomainRoutingRuleRequest struct {
+	// The instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cri-4cdrlqmhn4gm****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The rule ID.
+	//
 	// This parameter is required.
 	//
 	// example:

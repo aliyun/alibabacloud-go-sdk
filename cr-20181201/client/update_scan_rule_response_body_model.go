@@ -18,6 +18,8 @@ type iUpdateScanRuleResponseBody interface {
 }
 
 type UpdateScanRuleResponseBody struct {
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// success
@@ -28,6 +30,8 @@ type UpdateScanRuleResponseBody struct {
 	//
 	// 33EF1695-E2B7-5D57-B4E1-3D655FE1EBD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// crscnr-3qmkeiuggfpjkfrq

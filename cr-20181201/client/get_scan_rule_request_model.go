@@ -16,12 +16,16 @@ type iGetScanRuleRequest interface {
 }
 
 type GetScanRuleRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The scan rule ID.
+	//
 	// This parameter is required.
 	//
 	// example:

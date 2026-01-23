@@ -18,14 +18,20 @@ type iUpdateStorageDomainRoutingRuleShrinkRequest interface {
 }
 
 type UpdateStorageDomainRoutingRuleShrinkRequest struct {
+	// The instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The route list
+	//
 	// This parameter is required.
 	RoutesShrink *string `json:"Routes,omitempty" xml:"Routes,omitempty"`
+	// The rule ID.
+	//
 	// This parameter is required.
 	//
 	// example:

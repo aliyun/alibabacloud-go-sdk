@@ -20,18 +20,32 @@ type iListScanRuleRequest interface {
 }
 
 type ListScanRuleRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// cri-upoulewerx*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the vulnerability. Valid values:
+	//
+	// 	- `VUL`: Products Cloud Security Scanner.
+	//
+	// 	- `SBOM`: Product Content Analysis.
+	//
+	// Default value: `VUL`
+	//
 	// example:
 	//
 	// SBOM

@@ -28,42 +28,78 @@ type iUpdateScanRuleRequest interface {
 }
 
 type UpdateScanRuleRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cri-4abntrj42twd****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The list of namespaces.
+	//
+	// 	- When the scan scope is NAMESPACE, this parameter cannot be empty.
+	//
+	// 	- If the scan scope is REPO, you must specify a unique Namespace for this parameter.
+	//
 	// if can be null:
 	// true
 	Namespaces []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
+	// The list of repositories.
+	//
+	// 	- When the scan scope is NAMESPACE, this parameter must be empty.
+	//
+	// 	- When the scan scope is REPO, this parameter cannot be empty.
+	//
 	// if can be null:
 	// true
 	RepoNames []*string `json:"RepoNames,omitempty" xml:"RepoNames,omitempty" type:"Repeated"`
+	// The tag filtering rules.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// prod-.*
 	RepoTagFilterPattern *string `json:"RepoTagFilterPattern,omitempty" xml:"RepoTagFilterPattern,omitempty"`
+	// The rule name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// scan-test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The rule ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// crscnr-3qmkeiuggfpjkfrq
 	ScanRuleId *string `json:"ScanRuleId,omitempty" xml:"ScanRuleId,omitempty"`
+	// The scan scope.
+	//
+	// Valid values:
+	//
+	// 	- NAMESPACE: namespace.
+	//
+	// 	- REPO: repository.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// REPO
 	ScanScope *string `json:"ScanScope,omitempty" xml:"ScanScope,omitempty"`
+	// The trigger type.
+	//
+	// Valid values:
+	//
+	// 	- AUTO: automatically triggers.
+	//
+	// 	- MANUAL: manually triggers.
+	//
 	// This parameter is required.
 	//
 	// example:

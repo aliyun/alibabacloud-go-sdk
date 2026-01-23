@@ -24,47 +24,37 @@ type iGetAuthorizationTokenResponseBody interface {
 }
 
 type GetAuthorizationTokenResponseBody struct {
-	// The temporary password returned after you call this API operation is a Security Token Service (STS) token whose validity period is 1 hour. Take note of the following items when you log on to Container Registry instances by using an STS token:
-	//
-	// 	- If the STS token belongs to an Alibaba Cloud account, you can use the STS token to log on to all Container Registry instances that belong to the Alibaba Cloud account.
-	//
-	// 	- If the STS token belongs to a Resource Access Management (RAM) user, you can use the STS token to log on to all Container Registry instances that belong to the RAM user.
-	//
-	// 	- You can use an STS token to access only Container Registry instances to which the STS token is scoped.
+	// The password that you use to log on to the registry.
 	//
 	// example:
 	//
 	// shaunadadakks:uuczxnjcyeyhdjadkkajsjdjadhyucb
 	AuthorizationToken *string `json:"AuthorizationToken,omitempty" xml:"AuthorizationToken,omitempty"`
-	// Indicates whether the API call is successful.
-	//
-	// 	- `true`: successful
-	//
-	// 	- `false`: failed
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return value.
+	// The timestamp when the temporary token expired. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1571242083000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The username that is used to log on to the Container Registry instance.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The timestamp when the temporary password expires. Unit: milliseconds.
+	// The request ID
 	//
 	// example:
 	//
 	// E069EB86-E6AD-4A98-ADDE-0E993390239A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The password that is used to log on to the Container Registry instance.
+	// The username that you use to log on to the registry.
 	//
 	// example:
 	//

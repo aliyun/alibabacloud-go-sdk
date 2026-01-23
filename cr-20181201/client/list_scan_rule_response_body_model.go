@@ -26,18 +26,26 @@ type iListScanRuleResponseBody interface {
 }
 
 type ListScanRuleResponseBody struct {
+	// The HTTP status code
+	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// True
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
@@ -47,8 +55,11 @@ type ListScanRuleResponseBody struct {
 	// example:
 	//
 	// 2CB62B5E-605B-5A23-9110-728B8207A25C
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of scan rules.
 	ScanRules []*ListScanRuleResponseBodyScanRules `json:"ScanRules,omitempty" xml:"ScanRules,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -140,36 +151,58 @@ func (s *ListScanRuleResponseBody) Validate() error {
 }
 
 type ListScanRuleResponseBodyScanRules struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 1702361810000
-	CreateTime *int64    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The list of namespaces.
 	Namespaces []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
-	RepoNames  []*string `json:"RepoNames,omitempty" xml:"RepoNames,omitempty" type:"Repeated"`
+	// The repository name.
+	RepoNames []*string `json:"RepoNames,omitempty" xml:"RepoNames,omitempty" type:"Repeated"`
+	// The tag that triggers the scan matches the regular expression.
+	//
 	// example:
 	//
 	// .*
 	RepoTagFilterPattern *string `json:"RepoTagFilterPattern,omitempty" xml:"RepoTagFilterPattern,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// cicd-prod
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The scan rule id.
+	//
 	// example:
 	//
 	// crscnr-2sdveqjhpzd****
 	ScanRuleId *string `json:"ScanRuleId,omitempty" xml:"ScanRuleId,omitempty"`
+	// The scan scope.
+	//
 	// example:
 	//
 	// REPO
 	ScanScope *string `json:"ScanScope,omitempty" xml:"ScanScope,omitempty"`
+	// The scan type. Valid values:
+	//
+	// 	- `VUL`: Products Cloud Security Scanner
+	//
+	// 	- `SBOM`: Product Content Analysis
+	//
 	// example:
 	//
 	// SBOM
 	ScanType *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
+	// The trigger type.
+	//
 	// example:
 	//
 	// AUTO
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 1764122725000

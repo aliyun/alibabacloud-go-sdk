@@ -20,19 +20,30 @@ type iGetScanRuleResponseBody interface {
 }
 
 type GetScanRuleResponseBody struct {
+	// Return value
+	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the API call was successful, valid values:
+	//
+	// - `true`: The API call was successful
+	//
+	// - `false`: The API call failed
+	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C87993B5-7D61-5CAC-8D64-1AC732DD69FF
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ScanRule  *GetScanRuleResponseBodyScanRule `json:"ScanRule,omitempty" xml:"ScanRule,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The scan rule.
+	ScanRule *GetScanRuleResponseBodyScanRule `json:"ScanRule,omitempty" xml:"ScanRule,omitempty" type:"Struct"`
 }
 
 func (s GetScanRuleResponseBody) String() string {
@@ -89,37 +100,70 @@ func (s *GetScanRuleResponseBody) Validate() error {
 }
 
 type GetScanRuleResponseBodyScanRule struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2018-03-15T17:08Z
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// cri-szw6f6bhrky0c8jk
-	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Names of namespaces where the event is effective.
 	Namespaces []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
-	RepoNames  []*string `json:"RepoNames,omitempty" xml:"RepoNames,omitempty" type:"Repeated"`
+	// Names of repositories where the event is effective.
+	RepoNames []*string `json:"RepoNames,omitempty" xml:"RepoNames,omitempty" type:"Repeated"`
+	// Tag filter pattern for event triggering.
+	//
 	// example:
 	//
 	// .*
 	RepoTagFilterPattern *string `json:"RepoTagFilterPattern,omitempty" xml:"RepoTagFilterPattern,omitempty"`
+	// The event rule name.
+	//
 	// example:
 	//
 	// protection
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The scan rule ID.
+	//
 	// example:
 	//
 	// crscnr-aemytkwad2h7fyhb
 	ScanRuleId *string `json:"ScanRuleId,omitempty" xml:"ScanRuleId,omitempty"`
-	ScanScope  *string `json:"ScanScope,omitempty" xml:"ScanScope,omitempty"`
+	// The scan scope.
+	//
+	// example:
+	//
+	// REPO
+	ScanScope *string `json:"ScanScope,omitempty" xml:"ScanScope,omitempty"`
+	// The vulnerability type:
+	//
+	// - `cve`: System vulnerability
+	//
+	// - `sca`: Application vulnerability
+	//
 	// example:
 	//
 	// SBOM
 	ScanType *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
+	// The trigger type, valid values:
+	//
+	// - `ALL`: All triggers
+	//
+	// - `TAG_LISTTAG`: Trigger
+	//
+	// - `TAG_REG_EXP`: Expression trigger
+	//
 	// example:
 	//
 	// AUTO
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2025-08-28T20:07:33.164

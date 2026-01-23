@@ -26,27 +26,40 @@ type iGetStorageDomainRoutingRuleResponseBody interface {
 }
 
 type GetStorageDomainRoutingRuleResponseBody struct {
+	// The return value.
+	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1571926439000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 1571926439000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D4978DCC-ECBD-40B0-A714-EE695******
-	RequestId *string      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Routes    []*RouteItem `json:"Routes,omitempty" xml:"Routes,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The routing list.
+	Routes []*RouteItem `json:"Routes,omitempty" xml:"Routes,omitempty" type:"Repeated"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// crsdr-luq6qiegzvx****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// True

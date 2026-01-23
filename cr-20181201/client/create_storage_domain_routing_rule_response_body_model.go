@@ -20,18 +20,26 @@ type iCreateStorageDomainRoutingRuleResponseBody interface {
 }
 
 type CreateStorageDomainRoutingRuleResponseBody struct {
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The request ID
+	//
 	// example:
 	//
 	// C8E90AB5-0A96-5D12-9E59-11EE463*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// crsdr-n6pbhgjx*****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// Identification of whether the request is successful or not
+	//
 	// example:
 	//
 	// true

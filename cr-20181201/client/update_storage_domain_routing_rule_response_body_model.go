@@ -18,14 +18,20 @@ type iUpdateStorageDomainRoutingRuleResponseBody interface {
 }
 
 type UpdateStorageDomainRoutingRuleResponseBody struct {
+	// The returned HTTP status code.
+	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// D4978DCC-ECBD-40B0-A714-EE6959*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Request status ID
+	//
 	// example:
 	//
 	// true

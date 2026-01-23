@@ -16,6 +16,8 @@ type iDeleteScanRuleResponseBody interface {
 }
 
 type DeleteScanRuleResponseBody struct {
+	// The HTTP status code
+	//
 	// example:
 	//
 	// success

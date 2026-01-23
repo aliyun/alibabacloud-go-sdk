@@ -18,14 +18,20 @@ type iDeleteStorageDomainRoutingRuleResponseBody interface {
 }
 
 type DeleteStorageDomainRoutingRuleResponseBody struct {
+	// The HTTP status code
+	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The request ID
+	//
 	// example:
 	//
 	// D4978DCC-ECBD-40B0-A714-EE6959B*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Request status ID
+	//
 	// example:
 	//
 	// true

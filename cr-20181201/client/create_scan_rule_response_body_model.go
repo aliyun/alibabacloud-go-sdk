@@ -18,6 +18,8 @@ type iCreateScanRuleResponseBody interface {
 }
 
 type CreateScanRuleResponseBody struct {
+	// The returned HTTP or HTTPS status code.
+	//
 	// example:
 	//
 	// success
@@ -28,6 +30,8 @@ type CreateScanRuleResponseBody struct {
 	//
 	// EAEAB520-2456-5BF2-BCB5-AC998DFA3A51
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// crscnr-k3gdm5vrn2nzf5hw

@@ -16,10 +16,14 @@ type iDeleteScanRuleRequest interface {
 }
 
 type DeleteScanRuleRequest struct {
+	// The instance ID
+	//
 	// example:
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The rule ID
+	//
 	// example:
 	//
 	// crscnr-aemytkwad2h7fyhb

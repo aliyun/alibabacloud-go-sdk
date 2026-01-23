@@ -161,7 +161,8 @@ type ListRepoBuildRuleResponseBodyBuildRules struct {
 	// example:
 	//
 	// crbr-khys0nd3asbe****
-	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
+	BuildRuleId      *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
+	DestArtifactType *string `json:"DestArtifactType,omitempty" xml:"DestArtifactType,omitempty"`
 	// The directory of the Dockerfile.
 	//
 	// example:
@@ -215,6 +216,10 @@ func (s *ListRepoBuildRuleResponseBodyBuildRules) GetBuildRuleId() *string {
 	return s.BuildRuleId
 }
 
+func (s *ListRepoBuildRuleResponseBodyBuildRules) GetDestArtifactType() *string {
+	return s.DestArtifactType
+}
+
 func (s *ListRepoBuildRuleResponseBodyBuildRules) GetDockerfileLocation() *string {
 	return s.DockerfileLocation
 }
@@ -246,6 +251,11 @@ func (s *ListRepoBuildRuleResponseBodyBuildRules) SetBuildArgs(v []*string) *Lis
 
 func (s *ListRepoBuildRuleResponseBodyBuildRules) SetBuildRuleId(v string) *ListRepoBuildRuleResponseBodyBuildRules {
 	s.BuildRuleId = &v
+	return s
+}
+
+func (s *ListRepoBuildRuleResponseBodyBuildRules) SetDestArtifactType(v string) *ListRepoBuildRuleResponseBodyBuildRules {
+	s.DestArtifactType = &v
 	return s
 }
 

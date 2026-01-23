@@ -16,12 +16,16 @@ type iGetStorageDomainRoutingRuleRequest interface {
 }
 
 type GetStorageDomainRoutingRuleRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// crasr-mdbpung4i1rm****
