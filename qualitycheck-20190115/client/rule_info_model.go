@@ -65,6 +65,8 @@ type iRuleInfo interface {
 	GetName() *string
 	SetOperationMode(v int32) *RuleInfo
 	GetOperationMode() *int32
+	SetPreqRule(v []*RuleInfoPreqRule) *RuleInfo
+	GetPreqRule() []*RuleInfoPreqRule
 	SetQualityCheckType(v int32) *RuleInfo
 	GetQualityCheckType() *int32
 	SetRid(v string) *RuleInfo
@@ -150,6 +152,7 @@ type RuleInfo struct {
 	ModifyType               *int32              `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
 	Name                     *string             `json:"Name,omitempty" xml:"Name,omitempty"`
 	OperationMode            *int32              `json:"OperationMode,omitempty" xml:"OperationMode,omitempty"`
+	PreqRule                 []*RuleInfoPreqRule `json:"PreqRule,omitempty" xml:"PreqRule,omitempty" type:"Repeated"`
 	QualityCheckType         *int32              `json:"QualityCheckType,omitempty" xml:"QualityCheckType,omitempty"`
 	Rid                      *string             `json:"Rid,omitempty" xml:"Rid,omitempty"`
 	RuleCategoryName         *string             `json:"RuleCategoryName,omitempty" xml:"RuleCategoryName,omitempty"`
@@ -297,6 +300,10 @@ func (s *RuleInfo) GetName() *string {
 
 func (s *RuleInfo) GetOperationMode() *int32 {
 	return s.OperationMode
+}
+
+func (s *RuleInfo) GetPreqRule() []*RuleInfoPreqRule {
+	return s.PreqRule
 }
 
 func (s *RuleInfo) GetQualityCheckType() *int32 {
@@ -547,6 +554,11 @@ func (s *RuleInfo) SetOperationMode(v int32) *RuleInfo {
 	return s
 }
 
+func (s *RuleInfo) SetPreqRule(v []*RuleInfoPreqRule) *RuleInfo {
+	s.PreqRule = v
+	return s
+}
+
 func (s *RuleInfo) SetQualityCheckType(v int32) *RuleInfo {
 	s.QualityCheckType = &v
 	return s
@@ -692,10 +704,44 @@ func (s *RuleInfo) Validate() error {
 			}
 		}
 	}
+	if s.PreqRule != nil {
+		for _, item := range s.PreqRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.SchemeCheckType != nil {
 		if err := s.SchemeCheckType.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type RuleInfoPreqRule struct {
+	Rid *string `json:"Rid,omitempty" xml:"Rid,omitempty"`
+}
+
+func (s RuleInfoPreqRule) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RuleInfoPreqRule) GoString() string {
+	return s.String()
+}
+
+func (s *RuleInfoPreqRule) GetRid() *string {
+	return s.Rid
+}
+
+func (s *RuleInfoPreqRule) SetRid(v string) *RuleInfoPreqRule {
+	s.Rid = &v
+	return s
+}
+
+func (s *RuleInfoPreqRule) Validate() error {
+	return dara.Validate(s)
 }
