@@ -98,6 +98,10 @@ func (client *Client) ChatMessagesWithOptions(tmpReq *ChatMessagesRequest, runti
 		query["ConversationId"] = request.ConversationId
 	}
 
+	if !dara.IsNil(request.EventMode) {
+		query["EventMode"] = request.EventMode
+	}
+
 	if !dara.IsNil(request.InputsShrink) {
 		query["Inputs"] = request.InputsShrink
 	}
@@ -1528,6 +1532,10 @@ func (client *Client) GetMessagesWithOptions(request *GetMessagesRequest, runtim
 		query["ConversationId"] = request.ConversationId
 	}
 
+	if !dara.IsNil(request.EventMode) {
+		query["EventMode"] = request.EventMode
+	}
+
 	if !dara.IsNil(request.FirstId) {
 		query["FirstId"] = request.FirstId
 	}
@@ -2258,6 +2266,94 @@ func (client *Client) ModifyInstanceStorageConfig(request *ModifyInstanceStorage
 
 // Summary:
 //
+// 批量修改实例的SSL配置
+//
+// @param tmpReq - ModifyInstancesSSLRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstancesSSLResponse
+func (client *Client) ModifyInstancesSSLWithOptions(tmpReq *ModifyInstancesSSLRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstancesSSLResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ModifyInstancesSSLShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.InstanceNames) {
+		request.InstanceNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceNames, dara.String("InstanceNames"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CAType) {
+		query["CAType"] = request.CAType
+	}
+
+	if !dara.IsNil(request.InstanceNamesShrink) {
+		query["InstanceNames"] = request.InstanceNamesShrink
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SSLEnabled) {
+		query["SSLEnabled"] = request.SSLEnabled
+	}
+
+	if !dara.IsNil(request.ServerCert) {
+		query["ServerCert"] = request.ServerCert
+	}
+
+	if !dara.IsNil(request.ServerKey) {
+		query["ServerKey"] = request.ServerKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyInstancesSSL"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyInstancesSSLResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量修改实例的SSL配置
+//
+// @param request - ModifyInstancesSSLRequest
+//
+// @return ModifyInstancesSSLResponse
+func (client *Client) ModifyInstancesSSL(request *ModifyInstancesSSLRequest) (_result *ModifyInstancesSSLResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyInstancesSSLResponse{}
+	_body, _err := client.ModifyInstancesSSLWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the returned messages.
 //
 // @param request - ModifyMessagesFeedbacksRequest
@@ -2783,6 +2879,10 @@ func (client *Client) chatMessagesWithSSE_opYieldFunc(_yield chan *ChatMessagesR
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConversationId) {
 		query["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.EventMode) {
+		query["EventMode"] = request.EventMode
 	}
 
 	if !dara.IsNil(request.InputsShrink) {

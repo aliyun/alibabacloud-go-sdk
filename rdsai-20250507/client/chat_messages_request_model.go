@@ -11,6 +11,8 @@ type iChatMessagesRequest interface {
 	GoString() string
 	SetConversationId(v string) *ChatMessagesRequest
 	GetConversationId() *string
+	SetEventMode(v string) *ChatMessagesRequest
+	GetEventMode() *string
 	SetInputs(v *ChatMessagesRequestInputs) *ChatMessagesRequest
 	GetInputs() *ChatMessagesRequestInputs
 	SetParentMessageId(v string) *ChatMessagesRequest
@@ -26,6 +28,7 @@ type ChatMessagesRequest struct {
 	//
 	// fea7bdca-e848-44dd-b1ae-852472b8****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	EventMode      *string `json:"EventMode,omitempty" xml:"EventMode,omitempty"`
 	// The ID of the parent message.
 	Inputs *ChatMessagesRequestInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
 	// The ID of the conversation.
@@ -52,6 +55,10 @@ func (s *ChatMessagesRequest) GetConversationId() *string {
 	return s.ConversationId
 }
 
+func (s *ChatMessagesRequest) GetEventMode() *string {
+	return s.EventMode
+}
+
 func (s *ChatMessagesRequest) GetInputs() *ChatMessagesRequestInputs {
 	return s.Inputs
 }
@@ -66,6 +73,11 @@ func (s *ChatMessagesRequest) GetQuery() *string {
 
 func (s *ChatMessagesRequest) SetConversationId(v string) *ChatMessagesRequest {
 	s.ConversationId = &v
+	return s
+}
+
+func (s *ChatMessagesRequest) SetEventMode(v string) *ChatMessagesRequest {
+	s.EventMode = &v
 	return s
 }
 

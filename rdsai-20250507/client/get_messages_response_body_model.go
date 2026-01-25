@@ -113,7 +113,8 @@ type GetMessagesResponseBodyData struct {
 	// example:
 	//
 	// 1763986004
-	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	CreatedAt *string                              `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	Events    []*GetMessagesResponseBodyDataEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
 	// The feedback.
 	//
 	// example:
@@ -152,6 +153,10 @@ func (s *GetMessagesResponseBodyData) GetCreatedAt() *string {
 	return s.CreatedAt
 }
 
+func (s *GetMessagesResponseBodyData) GetEvents() []*GetMessagesResponseBodyDataEvents {
+	return s.Events
+}
+
 func (s *GetMessagesResponseBodyData) GetFeedback() *string {
 	return s.Feedback
 }
@@ -183,6 +188,11 @@ func (s *GetMessagesResponseBodyData) SetCreatedAt(v string) *GetMessagesRespons
 	return s
 }
 
+func (s *GetMessagesResponseBodyData) SetEvents(v []*GetMessagesResponseBodyDataEvents) *GetMessagesResponseBodyData {
+	s.Events = v
+	return s
+}
+
 func (s *GetMessagesResponseBodyData) SetFeedback(v string) *GetMessagesResponseBodyData {
 	s.Feedback = &v
 	return s
@@ -204,5 +214,49 @@ func (s *GetMessagesResponseBodyData) SetRetrieverResources(v []interface{}) *Ge
 }
 
 func (s *GetMessagesResponseBodyData) Validate() error {
+	if s.Events != nil {
+		for _, item := range s.Events {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetMessagesResponseBodyDataEvents struct {
+	Answer *string `json:"answer,omitempty" xml:"answer,omitempty"`
+	Event  *string `json:"event,omitempty" xml:"event,omitempty"`
+}
+
+func (s GetMessagesResponseBodyDataEvents) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetMessagesResponseBodyDataEvents) GoString() string {
+	return s.String()
+}
+
+func (s *GetMessagesResponseBodyDataEvents) GetAnswer() *string {
+	return s.Answer
+}
+
+func (s *GetMessagesResponseBodyDataEvents) GetEvent() *string {
+	return s.Event
+}
+
+func (s *GetMessagesResponseBodyDataEvents) SetAnswer(v string) *GetMessagesResponseBodyDataEvents {
+	s.Answer = &v
+	return s
+}
+
+func (s *GetMessagesResponseBodyDataEvents) SetEvent(v string) *GetMessagesResponseBodyDataEvents {
+	s.Event = &v
+	return s
+}
+
+func (s *GetMessagesResponseBodyDataEvents) Validate() error {
 	return dara.Validate(s)
 }

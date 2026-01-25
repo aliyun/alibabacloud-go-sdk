@@ -11,6 +11,8 @@ type iChatMessagesShrinkRequest interface {
 	GoString() string
 	SetConversationId(v string) *ChatMessagesShrinkRequest
 	GetConversationId() *string
+	SetEventMode(v string) *ChatMessagesShrinkRequest
+	GetEventMode() *string
 	SetInputsShrink(v string) *ChatMessagesShrinkRequest
 	GetInputsShrink() *string
 	SetParentMessageId(v string) *ChatMessagesShrinkRequest
@@ -26,6 +28,7 @@ type ChatMessagesShrinkRequest struct {
 	//
 	// fea7bdca-e848-44dd-b1ae-852472b8****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	EventMode      *string `json:"EventMode,omitempty" xml:"EventMode,omitempty"`
 	// The ID of the parent message.
 	InputsShrink *string `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
 	// The ID of the conversation.
@@ -52,6 +55,10 @@ func (s *ChatMessagesShrinkRequest) GetConversationId() *string {
 	return s.ConversationId
 }
 
+func (s *ChatMessagesShrinkRequest) GetEventMode() *string {
+	return s.EventMode
+}
+
 func (s *ChatMessagesShrinkRequest) GetInputsShrink() *string {
 	return s.InputsShrink
 }
@@ -66,6 +73,11 @@ func (s *ChatMessagesShrinkRequest) GetQuery() *string {
 
 func (s *ChatMessagesShrinkRequest) SetConversationId(v string) *ChatMessagesShrinkRequest {
 	s.ConversationId = &v
+	return s
+}
+
+func (s *ChatMessagesShrinkRequest) SetEventMode(v string) *ChatMessagesShrinkRequest {
+	s.EventMode = &v
 	return s
 }
 

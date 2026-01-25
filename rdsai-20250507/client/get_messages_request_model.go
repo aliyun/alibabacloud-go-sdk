@@ -11,6 +11,8 @@ type iGetMessagesRequest interface {
 	GoString() string
 	SetConversationId(v string) *GetMessagesRequest
 	GetConversationId() *string
+	SetEventMode(v string) *GetMessagesRequest
+	GetEventMode() *string
 	SetFirstId(v string) *GetMessagesRequest
 	GetFirstId() *string
 	SetLimit(v int64) *GetMessagesRequest
@@ -24,6 +26,7 @@ type GetMessagesRequest struct {
 	//
 	// 941c6f59-acf5-4e11-9adc-31e52e1f****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	EventMode      *string `json:"EventMode,omitempty" xml:"EventMode,omitempty"`
 	// The ID of the conversation.
 	//
 	// example:
@@ -50,6 +53,10 @@ func (s *GetMessagesRequest) GetConversationId() *string {
 	return s.ConversationId
 }
 
+func (s *GetMessagesRequest) GetEventMode() *string {
+	return s.EventMode
+}
+
 func (s *GetMessagesRequest) GetFirstId() *string {
 	return s.FirstId
 }
@@ -60,6 +67,11 @@ func (s *GetMessagesRequest) GetLimit() *int64 {
 
 func (s *GetMessagesRequest) SetConversationId(v string) *GetMessagesRequest {
 	s.ConversationId = &v
+	return s
+}
+
+func (s *GetMessagesRequest) SetEventMode(v string) *GetMessagesRequest {
+	s.EventMode = &v
 	return s
 }
 
