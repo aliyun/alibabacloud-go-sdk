@@ -703,6 +703,10 @@ func (s *ModifyClusterNodePoolRequestManagement) Validate() error {
 
 type ModifyClusterNodePoolRequestManagementAutoRepairPolicy struct {
 	ApprovalRequired *bool `json:"approval_required,omitempty" xml:"approval_required,omitempty"`
+	// example:
+	//
+	// r-xxxxxxxxxx
+	AutoRepairPolicyId *string `json:"auto_repair_policy_id,omitempty" xml:"auto_repair_policy_id,omitempty"`
 	// Specifies whether ACK is allowed to automatically restart nodes after repairing the nodes. Valid values:
 	//
 	// 	- `true`: yes.
@@ -727,12 +731,21 @@ func (s *ModifyClusterNodePoolRequestManagementAutoRepairPolicy) GetApprovalRequ
 	return s.ApprovalRequired
 }
 
+func (s *ModifyClusterNodePoolRequestManagementAutoRepairPolicy) GetAutoRepairPolicyId() *string {
+	return s.AutoRepairPolicyId
+}
+
 func (s *ModifyClusterNodePoolRequestManagementAutoRepairPolicy) GetRestartNode() *bool {
 	return s.RestartNode
 }
 
 func (s *ModifyClusterNodePoolRequestManagementAutoRepairPolicy) SetApprovalRequired(v bool) *ModifyClusterNodePoolRequestManagementAutoRepairPolicy {
 	s.ApprovalRequired = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestManagementAutoRepairPolicy) SetAutoRepairPolicyId(v string) *ModifyClusterNodePoolRequestManagementAutoRepairPolicy {
+	s.AutoRepairPolicyId = &v
 	return s
 }
 

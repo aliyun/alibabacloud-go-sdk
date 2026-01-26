@@ -3616,6 +3616,61 @@ func (client *Client) DescribePolicyInstancesStatusWithContext(ctx context.Conte
 
 // Summary:
 //
+// 查询地域列表
+//
+// @param request - DescribeRegionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
+func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcceptLanguage) {
+		query["acceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !dara.IsNil(request.ClusterType) {
+		query["clusterType"] = request.ClusterType
+	}
+
+	if !dara.IsNil(request.Profile) {
+		query["profile"] = request.Profile
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRegions"),
+		Version:     dara.String("2015-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/regions"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries whether the deletion protection feature is enabled for the specified resources in the cluster. The resources that you can query include namespaces and Services.
 //
 // @param request - DescribeResourcesDeleteProtectionRequest

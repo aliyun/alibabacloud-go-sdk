@@ -904,6 +904,10 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsManagement) Validate() err
 
 type DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoRepairPolicy struct {
 	ApprovalRequired *bool `json:"approval_required,omitempty" xml:"approval_required,omitempty"`
+	// example:
+	//
+	// r-xxxxxxxxx
+	AutoRepairPolicyId *string `json:"auto_repair_policy_id,omitempty" xml:"auto_repair_policy_id,omitempty"`
 	// Specifies whether to allow node restart. This parameter takes effect only when `auto_repair=true` is specified.
 	//
 	// 	- `true`: allows node restart.
@@ -928,12 +932,21 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoRepairPolicy
 	return s.ApprovalRequired
 }
 
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoRepairPolicy) GetAutoRepairPolicyId() *string {
+	return s.AutoRepairPolicyId
+}
+
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoRepairPolicy) GetRestartNode() *bool {
 	return s.RestartNode
 }
 
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoRepairPolicy) SetApprovalRequired(v bool) *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoRepairPolicy {
 	s.ApprovalRequired = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoRepairPolicy) SetAutoRepairPolicyId(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoRepairPolicy {
+	s.AutoRepairPolicyId = &v
 	return s
 }
 
