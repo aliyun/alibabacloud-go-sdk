@@ -55,6 +55,8 @@ type iRunVideoAnalysisShrinkRequest interface {
 	GetVideoShotFaceIdentityCount() *int32
 	SetVideoUrl(v string) *RunVideoAnalysisShrinkRequest
 	GetVideoUrl() *string
+	SetVideoUrlsShrink(v string) *RunVideoAnalysisShrinkRequest
+	GetVideoUrlsShrink() *string
 }
 
 type RunVideoAnalysisShrinkRequest struct {
@@ -107,7 +109,8 @@ type RunVideoAnalysisShrinkRequest struct {
 	// example:
 	//
 	// http://xxxx.mp4
-	VideoUrl *string `json:"videoUrl,omitempty" xml:"videoUrl,omitempty"`
+	VideoUrl        *string `json:"videoUrl,omitempty" xml:"videoUrl,omitempty"`
+	VideoUrlsShrink *string `json:"videoUrls,omitempty" xml:"videoUrls,omitempty"`
 }
 
 func (s RunVideoAnalysisShrinkRequest) String() string {
@@ -208,6 +211,10 @@ func (s *RunVideoAnalysisShrinkRequest) GetVideoShotFaceIdentityCount() *int32 {
 
 func (s *RunVideoAnalysisShrinkRequest) GetVideoUrl() *string {
 	return s.VideoUrl
+}
+
+func (s *RunVideoAnalysisShrinkRequest) GetVideoUrlsShrink() *string {
+	return s.VideoUrlsShrink
 }
 
 func (s *RunVideoAnalysisShrinkRequest) SetAddDocumentParamShrink(v string) *RunVideoAnalysisShrinkRequest {
@@ -322,6 +329,11 @@ func (s *RunVideoAnalysisShrinkRequest) SetVideoShotFaceIdentityCount(v int32) *
 
 func (s *RunVideoAnalysisShrinkRequest) SetVideoUrl(v string) *RunVideoAnalysisShrinkRequest {
 	s.VideoUrl = &v
+	return s
+}
+
+func (s *RunVideoAnalysisShrinkRequest) SetVideoUrlsShrink(v string) *RunVideoAnalysisShrinkRequest {
+	s.VideoUrlsShrink = &v
 	return s
 }
 

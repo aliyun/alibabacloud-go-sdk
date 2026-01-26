@@ -55,6 +55,8 @@ type iRunVideoAnalysisRequest interface {
 	GetVideoShotFaceIdentityCount() *int32
 	SetVideoUrl(v string) *RunVideoAnalysisRequest
 	GetVideoUrl() *string
+	SetVideoUrls(v []*string) *RunVideoAnalysisRequest
+	GetVideoUrls() []*string
 }
 
 type RunVideoAnalysisRequest struct {
@@ -107,7 +109,8 @@ type RunVideoAnalysisRequest struct {
 	// example:
 	//
 	// http://xxxx.mp4
-	VideoUrl *string `json:"videoUrl,omitempty" xml:"videoUrl,omitempty"`
+	VideoUrl  *string   `json:"videoUrl,omitempty" xml:"videoUrl,omitempty"`
+	VideoUrls []*string `json:"videoUrls,omitempty" xml:"videoUrls,omitempty" type:"Repeated"`
 }
 
 func (s RunVideoAnalysisRequest) String() string {
@@ -208,6 +211,10 @@ func (s *RunVideoAnalysisRequest) GetVideoShotFaceIdentityCount() *int32 {
 
 func (s *RunVideoAnalysisRequest) GetVideoUrl() *string {
 	return s.VideoUrl
+}
+
+func (s *RunVideoAnalysisRequest) GetVideoUrls() []*string {
+	return s.VideoUrls
 }
 
 func (s *RunVideoAnalysisRequest) SetAddDocumentParam(v *RunVideoAnalysisRequestAddDocumentParam) *RunVideoAnalysisRequest {
@@ -322,6 +329,11 @@ func (s *RunVideoAnalysisRequest) SetVideoShotFaceIdentityCount(v int32) *RunVid
 
 func (s *RunVideoAnalysisRequest) SetVideoUrl(v string) *RunVideoAnalysisRequest {
 	s.VideoUrl = &v
+	return s
+}
+
+func (s *RunVideoAnalysisRequest) SetVideoUrls(v []*string) *RunVideoAnalysisRequest {
+	s.VideoUrls = v
 	return s
 }
 

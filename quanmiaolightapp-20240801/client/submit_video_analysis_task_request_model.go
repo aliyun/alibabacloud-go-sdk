@@ -53,6 +53,8 @@ type iSubmitVideoAnalysisTaskRequest interface {
 	GetVideoShotFaceIdentityCount() *int32
 	SetVideoUrl(v string) *SubmitVideoAnalysisTaskRequest
 	GetVideoUrl() *string
+	SetVideoUrls(v []*string) *SubmitVideoAnalysisTaskRequest
+	GetVideoUrls() []*string
 }
 
 type SubmitVideoAnalysisTaskRequest struct {
@@ -101,12 +103,11 @@ type SubmitVideoAnalysisTaskRequest struct {
 	VideoModelId               *string                                     `json:"videoModelId,omitempty" xml:"videoModelId,omitempty"`
 	VideoRoles                 []*SubmitVideoAnalysisTaskRequestVideoRoles `json:"videoRoles,omitempty" xml:"videoRoles,omitempty" type:"Repeated"`
 	VideoShotFaceIdentityCount *int32                                      `json:"videoShotFaceIdentityCount,omitempty" xml:"videoShotFaceIdentityCount,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// http://xxxx.mp4
-	VideoUrl *string `json:"videoUrl,omitempty" xml:"videoUrl,omitempty"`
+	VideoUrl  *string   `json:"videoUrl,omitempty" xml:"videoUrl,omitempty"`
+	VideoUrls []*string `json:"videoUrls,omitempty" xml:"videoUrls,omitempty" type:"Repeated"`
 }
 
 func (s SubmitVideoAnalysisTaskRequest) String() string {
@@ -203,6 +204,10 @@ func (s *SubmitVideoAnalysisTaskRequest) GetVideoShotFaceIdentityCount() *int32 
 
 func (s *SubmitVideoAnalysisTaskRequest) GetVideoUrl() *string {
 	return s.VideoUrl
+}
+
+func (s *SubmitVideoAnalysisTaskRequest) GetVideoUrls() []*string {
+	return s.VideoUrls
 }
 
 func (s *SubmitVideoAnalysisTaskRequest) SetAddDocumentParam(v *SubmitVideoAnalysisTaskRequestAddDocumentParam) *SubmitVideoAnalysisTaskRequest {
@@ -312,6 +317,11 @@ func (s *SubmitVideoAnalysisTaskRequest) SetVideoShotFaceIdentityCount(v int32) 
 
 func (s *SubmitVideoAnalysisTaskRequest) SetVideoUrl(v string) *SubmitVideoAnalysisTaskRequest {
 	s.VideoUrl = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequest) SetVideoUrls(v []*string) *SubmitVideoAnalysisTaskRequest {
+	s.VideoUrls = v
 	return s
 }
 

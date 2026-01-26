@@ -2044,6 +2044,10 @@ func (client *Client) RunVideoAnalysisWithContext(ctx context.Context, workspace
 		request.VideoRolesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VideoRoles, dara.String("videoRoles"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.VideoUrls) {
+		request.VideoUrlsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VideoUrls, dara.String("videoUrls"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AddDocumentParamShrink) {
 		body["addDocumentParam"] = request.AddDocumentParamShrink
@@ -2135,6 +2139,10 @@ func (client *Client) RunVideoAnalysisWithContext(ctx context.Context, workspace
 
 	if !dara.IsNil(request.VideoUrl) {
 		body["videoUrl"] = request.VideoUrl
+	}
+
+	if !dara.IsNil(request.VideoUrlsShrink) {
+		body["videoUrls"] = request.VideoUrlsShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2602,6 +2610,10 @@ func (client *Client) SubmitVideoAnalysisTaskWithContext(ctx context.Context, wo
 		request.VideoRolesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VideoRoles, dara.String("videoRoles"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.VideoUrls) {
+		request.VideoUrlsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VideoUrls, dara.String("videoUrls"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AddDocumentParamShrink) {
 		body["addDocumentParam"] = request.AddDocumentParamShrink
@@ -2689,6 +2701,10 @@ func (client *Client) SubmitVideoAnalysisTaskWithContext(ctx context.Context, wo
 
 	if !dara.IsNil(request.VideoUrl) {
 		body["videoUrl"] = request.VideoUrl
+	}
+
+	if !dara.IsNil(request.VideoUrlsShrink) {
+		body["videoUrls"] = request.VideoUrlsShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4115,6 +4131,10 @@ func (client *Client) runVideoAnalysisWithSSECtx_opYieldFunc(_yield chan *RunVid
 		request.VideoRolesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VideoRoles, dara.String("videoRoles"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.VideoUrls) {
+		request.VideoUrlsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VideoUrls, dara.String("videoUrls"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AddDocumentParamShrink) {
 		body["addDocumentParam"] = request.AddDocumentParamShrink
@@ -4206,6 +4226,10 @@ func (client *Client) runVideoAnalysisWithSSECtx_opYieldFunc(_yield chan *RunVid
 
 	if !dara.IsNil(request.VideoUrl) {
 		body["videoUrl"] = request.VideoUrl
+	}
+
+	if !dara.IsNil(request.VideoUrlsShrink) {
+		body["videoUrls"] = request.VideoUrlsShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{

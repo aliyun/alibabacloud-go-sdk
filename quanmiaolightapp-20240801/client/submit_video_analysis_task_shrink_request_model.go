@@ -53,6 +53,8 @@ type iSubmitVideoAnalysisTaskShrinkRequest interface {
 	GetVideoShotFaceIdentityCount() *int32
 	SetVideoUrl(v string) *SubmitVideoAnalysisTaskShrinkRequest
 	GetVideoUrl() *string
+	SetVideoUrlsShrink(v string) *SubmitVideoAnalysisTaskShrinkRequest
+	GetVideoUrlsShrink() *string
 }
 
 type SubmitVideoAnalysisTaskShrinkRequest struct {
@@ -101,12 +103,11 @@ type SubmitVideoAnalysisTaskShrinkRequest struct {
 	VideoModelId               *string `json:"videoModelId,omitempty" xml:"videoModelId,omitempty"`
 	VideoRolesShrink           *string `json:"videoRoles,omitempty" xml:"videoRoles,omitempty"`
 	VideoShotFaceIdentityCount *int32  `json:"videoShotFaceIdentityCount,omitempty" xml:"videoShotFaceIdentityCount,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// http://xxxx.mp4
-	VideoUrl *string `json:"videoUrl,omitempty" xml:"videoUrl,omitempty"`
+	VideoUrl        *string `json:"videoUrl,omitempty" xml:"videoUrl,omitempty"`
+	VideoUrlsShrink *string `json:"videoUrls,omitempty" xml:"videoUrls,omitempty"`
 }
 
 func (s SubmitVideoAnalysisTaskShrinkRequest) String() string {
@@ -203,6 +204,10 @@ func (s *SubmitVideoAnalysisTaskShrinkRequest) GetVideoShotFaceIdentityCount() *
 
 func (s *SubmitVideoAnalysisTaskShrinkRequest) GetVideoUrl() *string {
 	return s.VideoUrl
+}
+
+func (s *SubmitVideoAnalysisTaskShrinkRequest) GetVideoUrlsShrink() *string {
+	return s.VideoUrlsShrink
 }
 
 func (s *SubmitVideoAnalysisTaskShrinkRequest) SetAddDocumentParamShrink(v string) *SubmitVideoAnalysisTaskShrinkRequest {
@@ -312,6 +317,11 @@ func (s *SubmitVideoAnalysisTaskShrinkRequest) SetVideoShotFaceIdentityCount(v i
 
 func (s *SubmitVideoAnalysisTaskShrinkRequest) SetVideoUrl(v string) *SubmitVideoAnalysisTaskShrinkRequest {
 	s.VideoUrl = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskShrinkRequest) SetVideoUrlsShrink(v string) *SubmitVideoAnalysisTaskShrinkRequest {
+	s.VideoUrlsShrink = &v
 	return s
 }
 
