@@ -53,7 +53,16 @@ func (s *GetSourceMapInfoResponseBody) SetSourceMapList(v []*GetSourceMapInfoRes
 }
 
 func (s *GetSourceMapInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SourceMapList != nil {
+		for _, item := range s.SourceMapList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSourceMapInfoResponseBodySourceMapList struct {

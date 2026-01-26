@@ -108,7 +108,12 @@ func (s *ListEnvironmentDashboardsResponseBody) SetSuccess(v bool) *ListEnvironm
 }
 
 func (s *ListEnvironmentDashboardsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEnvironmentDashboardsResponseBodyData struct {
@@ -149,7 +154,16 @@ func (s *ListEnvironmentDashboardsResponseBodyData) SetTotal(v int64) *ListEnvir
 }
 
 func (s *ListEnvironmentDashboardsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Dashboards != nil {
+		for _, item := range s.Dashboards {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEnvironmentDashboardsResponseBodyDataDashboards struct {

@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -102,9 +103,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AddAliClusterIdsToPrometheusGlobalViewResponse
 func (client *Client) AddAliClusterIdsToPrometheusGlobalViewWithOptions(request *AddAliClusterIdsToPrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *AddAliClusterIdsToPrometheusGlobalViewResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterIds) {
@@ -179,9 +182,11 @@ func (client *Client) AddAliClusterIdsToPrometheusGlobalView(request *AddAliClus
 //
 // @return AddGrafanaResponse
 func (client *Client) AddGrafanaWithOptions(request *AddGrafanaRequest, runtime *dara.RuntimeOptions) (_result *AddGrafanaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -252,9 +257,11 @@ func (client *Client) AddGrafana(request *AddGrafanaRequest) (_result *AddGrafan
 //
 // @return AddIntegrationResponse
 func (client *Client) AddIntegrationWithOptions(request *AddIntegrationRequest, runtime *dara.RuntimeOptions) (_result *AddIntegrationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -325,9 +332,11 @@ func (client *Client) AddIntegration(request *AddIntegrationRequest) (_result *A
 //
 // @return AddPrometheusGlobalViewResponse
 func (client *Client) AddPrometheusGlobalViewWithOptions(request *AddPrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *AddPrometheusGlobalViewResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Clusters) {
@@ -406,9 +415,11 @@ func (client *Client) AddPrometheusGlobalView(request *AddPrometheusGlobalViewRe
 //
 // @return AddPrometheusGlobalViewByAliClusterIdsResponse
 func (client *Client) AddPrometheusGlobalViewByAliClusterIdsWithOptions(request *AddPrometheusGlobalViewByAliClusterIdsRequest, runtime *dara.RuntimeOptions) (_result *AddPrometheusGlobalViewByAliClusterIdsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterIds) {
@@ -483,9 +494,11 @@ func (client *Client) AddPrometheusGlobalViewByAliClusterIds(request *AddPrometh
 //
 // @return AddPrometheusInstanceResponse
 func (client *Client) AddPrometheusInstanceWithOptions(request *AddPrometheusInstanceRequest, runtime *dara.RuntimeOptions) (_result *AddPrometheusInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -556,9 +569,11 @@ func (client *Client) AddPrometheusInstance(request *AddPrometheusInstanceReques
 //
 // @return AddPrometheusIntegrationResponse
 func (client *Client) AddPrometheusIntegrationWithOptions(request *AddPrometheusIntegrationRequest, runtime *dara.RuntimeOptions) (_result *AddPrometheusIntegrationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -633,9 +648,11 @@ func (client *Client) AddPrometheusIntegration(request *AddPrometheusIntegration
 //
 // @return AddRecordingRuleResponse
 func (client *Client) AddRecordingRuleWithOptions(request *AddRecordingRuleRequest, runtime *dara.RuntimeOptions) (_result *AddRecordingRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -706,9 +723,11 @@ func (client *Client) AddRecordingRule(request *AddRecordingRuleRequest) (_resul
 //
 // @return AddTagToFlinkClusterResponse
 func (client *Client) AddTagToFlinkClusterWithOptions(request *AddTagToFlinkClusterRequest, runtime *dara.RuntimeOptions) (_result *AddTagToFlinkClusterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -791,9 +810,11 @@ func (client *Client) AddTagToFlinkCluster(request *AddTagToFlinkClusterRequest)
 //
 // @return AppendInstancesToPrometheusGlobalViewResponse
 func (client *Client) AppendInstancesToPrometheusGlobalViewWithOptions(request *AppendInstancesToPrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *AppendInstancesToPrometheusGlobalViewResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Clusters) {
@@ -862,9 +883,11 @@ func (client *Client) AppendInstancesToPrometheusGlobalView(request *AppendInsta
 //
 // @return ApplyScenarioResponse
 func (client *Client) ApplyScenarioWithOptions(tmpReq *ApplyScenarioRequest, runtime *dara.RuntimeOptions) (_result *ApplyScenarioResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ApplyScenarioShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -966,9 +989,11 @@ func (client *Client) ApplyScenario(request *ApplyScenarioRequest) (_result *App
 //
 // @return BindPrometheusGrafanaInstanceResponse
 func (client *Client) BindPrometheusGrafanaInstanceWithOptions(request *BindPrometheusGrafanaInstanceRequest, runtime *dara.RuntimeOptions) (_result *BindPrometheusGrafanaInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -1041,9 +1066,11 @@ func (client *Client) BindPrometheusGrafanaInstance(request *BindPrometheusGrafa
 //
 // @return BlockAlarmNotificationResponse
 func (client *Client) BlockAlarmNotificationWithOptions(request *BlockAlarmNotificationRequest, runtime *dara.RuntimeOptions) (_result *BlockAlarmNotificationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlarmId) {
@@ -1113,9 +1140,11 @@ func (client *Client) BlockAlarmNotification(request *BlockAlarmNotificationRequ
 //
 // @return ChangeAlarmSeverityResponse
 func (client *Client) ChangeAlarmSeverityWithOptions(request *ChangeAlarmSeverityRequest, runtime *dara.RuntimeOptions) (_result *ChangeAlarmSeverityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlarmId) {
@@ -1185,9 +1214,11 @@ func (client *Client) ChangeAlarmSeverity(request *ChangeAlarmSeverityRequest) (
 //
 // @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NewResourceGroupId) {
@@ -1261,9 +1292,11 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 //
 // @return CheckCommercialStatusResponse
 func (client *Client) CheckCommercialStatusWithOptions(request *CheckCommercialStatusRequest, runtime *dara.RuntimeOptions) (_result *CheckCommercialStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1321,9 +1354,11 @@ func (client *Client) CheckCommercialStatus(request *CheckCommercialStatusReques
 //
 // @return CheckServiceStatusResponse
 func (client *Client) CheckServiceStatusWithOptions(request *CheckServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *CheckServiceStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1385,9 +1420,11 @@ func (client *Client) CheckServiceStatus(request *CheckServiceStatusRequest) (_r
 //
 // @return ClaimAlarmResponse
 func (client *Client) ClaimAlarmWithOptions(request *ClaimAlarmRequest, runtime *dara.RuntimeOptions) (_result *ClaimAlarmResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlarmId) {
@@ -1453,9 +1490,11 @@ func (client *Client) ClaimAlarm(request *ClaimAlarmRequest) (_result *ClaimAlar
 //
 // @return CloseAlarmResponse
 func (client *Client) CloseAlarmWithOptions(request *CloseAlarmRequest, runtime *dara.RuntimeOptions) (_result *CloseAlarmResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlarmId) {
@@ -1529,9 +1568,11 @@ func (client *Client) CloseAlarm(request *CloseAlarmRequest) (_result *CloseAlar
 //
 // @return ConfigAppResponse
 func (client *Client) ConfigAppWithOptions(request *ConfigAppRequest, runtime *dara.RuntimeOptions) (_result *ConfigAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppIds) {
@@ -1609,9 +1650,11 @@ func (client *Client) ConfigApp(request *ConfigAppRequest) (_result *ConfigAppRe
 //
 // @return CreateAlertContactResponse
 func (client *Client) CreateAlertContactWithOptions(request *CreateAlertContactRequest, runtime *dara.RuntimeOptions) (_result *CreateAlertContactResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContactName) {
@@ -1701,9 +1744,11 @@ func (client *Client) CreateAlertContact(request *CreateAlertContactRequest) (_r
 //
 // @return CreateAlertContactGroupResponse
 func (client *Client) CreateAlertContactGroupWithOptions(request *CreateAlertContactGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateAlertContactGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContactGroupName) {
@@ -1773,9 +1818,11 @@ func (client *Client) CreateAlertContactGroup(request *CreateAlertContactGroupRe
 //
 // @return CreateDispatchRuleResponse
 func (client *Client) CreateDispatchRuleWithOptions(request *CreateDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateDispatchRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DispatchRule) {
@@ -1837,9 +1884,11 @@ func (client *Client) CreateDispatchRule(request *CreateDispatchRuleRequest) (_r
 //
 // @return CreateEnvCustomJobResponse
 func (client *Client) CreateEnvCustomJobWithOptions(request *CreateEnvCustomJobRequest, runtime *dara.RuntimeOptions) (_result *CreateEnvCustomJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunLang) {
@@ -1915,9 +1964,11 @@ func (client *Client) CreateEnvCustomJob(request *CreateEnvCustomJobRequest) (_r
 //
 // @return CreateEnvPodMonitorResponse
 func (client *Client) CreateEnvPodMonitorWithOptions(request *CreateEnvPodMonitorRequest, runtime *dara.RuntimeOptions) (_result *CreateEnvPodMonitorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunLang) {
@@ -1993,9 +2044,11 @@ func (client *Client) CreateEnvPodMonitor(request *CreateEnvPodMonitorRequest) (
 //
 // @return CreateEnvServiceMonitorResponse
 func (client *Client) CreateEnvServiceMonitorWithOptions(request *CreateEnvServiceMonitorRequest, runtime *dara.RuntimeOptions) (_result *CreateEnvServiceMonitorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunLang) {
@@ -2071,9 +2124,11 @@ func (client *Client) CreateEnvServiceMonitor(request *CreateEnvServiceMonitorRe
 //
 // @return CreateEnvironmentResponse
 func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentRequest, runtime *dara.RuntimeOptions) (_result *CreateEnvironmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunLang) {
@@ -2191,9 +2246,11 @@ func (client *Client) CreateEnvironment(request *CreateEnvironmentRequest) (_res
 //
 // @return CreateGrafanaWorkspaceResponse
 func (client *Client) CreateGrafanaWorkspaceWithOptions(tmpReq *CreateGrafanaWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *CreateGrafanaWorkspaceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateGrafanaWorkspaceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2321,9 +2378,11 @@ func (client *Client) CreateGrafanaWorkspace(request *CreateGrafanaWorkspaceRequ
 //
 // @return CreateIntegrationResponse
 func (client *Client) CreateIntegrationWithOptions(request *CreateIntegrationRequest, runtime *dara.RuntimeOptions) (_result *CreateIntegrationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2403,9 +2462,11 @@ func (client *Client) CreateIntegration(request *CreateIntegrationRequest) (_res
 //
 // @return CreateOrUpdateAlertRuleResponse
 func (client *Client) CreateOrUpdateAlertRuleWithOptions(request *CreateOrUpdateAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateAlertRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AlertCheckType) {
@@ -2528,6 +2589,10 @@ func (client *Client) CreateOrUpdateAlertRuleWithOptions(request *CreateOrUpdate
 		body["Tags"] = request.Tags
 	}
 
+	if !dara.IsNil(request.AliyunLang) {
+		body["aliyunLang"] = request.AliyunLang
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -2579,9 +2644,11 @@ func (client *Client) CreateOrUpdateAlertRule(request *CreateOrUpdateAlertRuleRe
 //
 // @return CreateOrUpdateContactResponse
 func (client *Client) CreateOrUpdateContactWithOptions(request *CreateOrUpdateContactRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateContactResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DingRobotUrl) {
@@ -2673,9 +2740,11 @@ func (client *Client) CreateOrUpdateContact(request *CreateOrUpdateContactReques
 //
 // @return CreateOrUpdateContactGroupResponse
 func (client *Client) CreateOrUpdateContactGroupWithOptions(request *CreateOrUpdateContactGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateContactGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ContactGroupId) {
@@ -2741,9 +2810,11 @@ func (client *Client) CreateOrUpdateContactGroup(request *CreateOrUpdateContactG
 //
 // @return CreateOrUpdateEventBridgeIntegrationResponse
 func (client *Client) CreateOrUpdateEventBridgeIntegrationWithOptions(request *CreateOrUpdateEventBridgeIntegrationRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateEventBridgeIntegrationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AccessKey) {
@@ -2833,9 +2904,11 @@ func (client *Client) CreateOrUpdateEventBridgeIntegration(request *CreateOrUpda
 //
 // @return CreateOrUpdateIMRobotResponse
 func (client *Client) CreateOrUpdateIMRobotWithOptions(request *CreateOrUpdateIMRobotRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateIMRobotResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CardTemplate) {
@@ -2929,9 +3002,11 @@ func (client *Client) CreateOrUpdateIMRobot(request *CreateOrUpdateIMRobotReques
 //
 // @return CreateOrUpdateNotificationPolicyResponse
 func (client *Client) CreateOrUpdateNotificationPolicyWithOptions(request *CreateOrUpdateNotificationPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateNotificationPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DirectedMode) {
@@ -3041,9 +3116,11 @@ func (client *Client) CreateOrUpdateNotificationPolicy(request *CreateOrUpdateNo
 //
 // @return CreateOrUpdateSilencePolicyResponse
 func (client *Client) CreateOrUpdateSilencePolicyWithOptions(request *CreateOrUpdateSilencePolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateSilencePolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EffectiveTimeType) {
@@ -3131,9 +3208,11 @@ func (client *Client) CreateOrUpdateSilencePolicy(request *CreateOrUpdateSilence
 //
 // @return CreateOrUpdateWebhookContactResponse
 func (client *Client) CreateOrUpdateWebhookContactWithOptions(request *CreateOrUpdateWebhookContactRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateWebhookContactResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BizHeaders) {
@@ -3219,9 +3298,11 @@ func (client *Client) CreateOrUpdateWebhookContact(request *CreateOrUpdateWebhoo
 //
 // @return CreatePrometheusAlertRuleResponse
 func (client *Client) CreatePrometheusAlertRuleWithOptions(request *CreatePrometheusAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *CreatePrometheusAlertRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlertName) {
@@ -3323,9 +3404,11 @@ func (client *Client) CreatePrometheusAlertRule(request *CreatePrometheusAlertRu
 //
 // @return CreatePrometheusInstanceResponse
 func (client *Client) CreatePrometheusInstanceWithOptions(request *CreatePrometheusInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreatePrometheusInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllSubClustersSuccess) {
@@ -3441,9 +3524,11 @@ func (client *Client) CreatePrometheusInstance(request *CreatePrometheusInstance
 //
 // @return CreatePrometheusMonitoringResponse
 func (client *Client) CreatePrometheusMonitoringWithOptions(request *CreatePrometheusMonitoringRequest, runtime *dara.RuntimeOptions) (_result *CreatePrometheusMonitoringResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -3522,9 +3607,11 @@ func (client *Client) CreatePrometheusMonitoring(request *CreatePrometheusMonito
 //
 // @return CreateRetcodeAppResponse
 func (client *Client) CreateRetcodeAppWithOptions(request *CreateRetcodeAppRequest, runtime *dara.RuntimeOptions) (_result *CreateRetcodeAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3598,9 +3685,11 @@ func (client *Client) CreateRetcodeApp(request *CreateRetcodeAppRequest) (_resul
 //
 // @return CreateRumAppResponse
 func (client *Client) CreateRumAppWithOptions(tmpReq *CreateRumAppRequest, runtime *dara.RuntimeOptions) (_result *CreateRumAppResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateRumAppShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3712,9 +3801,11 @@ func (client *Client) CreateRumApp(request *CreateRumAppRequest) (_result *Creat
 //
 // @return CreateRumUploadFileUrlResponse
 func (client *Client) CreateRumUploadFileUrlWithOptions(request *CreateRumUploadFileUrlRequest, runtime *dara.RuntimeOptions) (_result *CreateRumUploadFileUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -3812,9 +3903,11 @@ func (client *Client) CreateRumUploadFileUrl(request *CreateRumUploadFileUrlRequ
 //
 // @return CreateSyntheticTaskResponse
 func (client *Client) CreateSyntheticTaskWithOptions(tmpReq *CreateSyntheticTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateSyntheticTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateSyntheticTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3958,9 +4051,11 @@ func (client *Client) CreateSyntheticTask(request *CreateSyntheticTaskRequest) (
 //
 // @return CreateTimingSyntheticTaskResponse
 func (client *Client) CreateTimingSyntheticTaskWithOptions(tmpReq *CreateTimingSyntheticTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateTimingSyntheticTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateTimingSyntheticTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4088,9 +4183,11 @@ func (client *Client) CreateTimingSyntheticTask(request *CreateTimingSyntheticTa
 //
 // @return CreateWebhookResponse
 func (client *Client) CreateWebhookWithOptions(request *CreateWebhookRequest, runtime *dara.RuntimeOptions) (_result *CreateWebhookResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Body) {
@@ -4176,9 +4273,11 @@ func (client *Client) CreateWebhook(request *CreateWebhookRequest) (_result *Cre
 //
 // @return DelAuthTokenResponse
 func (client *Client) DelAuthTokenWithOptions(request *DelAuthTokenRequest, runtime *dara.RuntimeOptions) (_result *DelAuthTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -4240,9 +4339,11 @@ func (client *Client) DelAuthToken(request *DelAuthTokenRequest) (_result *DelAu
 //
 // @return DeleteAddonReleaseResponse
 func (client *Client) DeleteAddonReleaseWithOptions(request *DeleteAddonReleaseRequest, runtime *dara.RuntimeOptions) (_result *DeleteAddonReleaseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddonName) {
@@ -4320,9 +4421,11 @@ func (client *Client) DeleteAddonRelease(request *DeleteAddonReleaseRequest) (_r
 //
 // @return DeleteAlertContactResponse
 func (client *Client) DeleteAlertContactWithOptions(request *DeleteAlertContactRequest, runtime *dara.RuntimeOptions) (_result *DeleteAlertContactResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContactId) {
@@ -4388,9 +4491,11 @@ func (client *Client) DeleteAlertContact(request *DeleteAlertContactRequest) (_r
 //
 // @return DeleteAlertContactGroupResponse
 func (client *Client) DeleteAlertContactGroupWithOptions(request *DeleteAlertContactGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteAlertContactGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContactGroupId) {
@@ -4452,9 +4557,11 @@ func (client *Client) DeleteAlertContactGroup(request *DeleteAlertContactGroupRe
 //
 // @return DeleteAlertRuleResponse
 func (client *Client) DeleteAlertRuleWithOptions(request *DeleteAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteAlertRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlertId) {
@@ -4516,9 +4623,11 @@ func (client *Client) DeleteAlertRule(request *DeleteAlertRuleRequest) (_result 
 //
 // @return DeleteAlertRulesResponse
 func (client *Client) DeleteAlertRulesWithOptions(request *DeleteAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *DeleteAlertRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlertIds) {
@@ -4584,9 +4693,11 @@ func (client *Client) DeleteAlertRules(request *DeleteAlertRulesRequest) (_resul
 //
 // @return DeleteAppListResponse
 func (client *Client) DeleteAppListWithOptions(request *DeleteAppListRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Pids) {
@@ -4650,9 +4761,11 @@ func (client *Client) DeleteAppList(request *DeleteAppListRequest) (_result *Del
 //
 // @return DeleteCmsExporterResponse
 func (client *Client) DeleteCmsExporterWithOptions(request *DeleteCmsExporterRequest, runtime *dara.RuntimeOptions) (_result *DeleteCmsExporterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -4717,9 +4830,11 @@ func (client *Client) DeleteCmsExporter(request *DeleteCmsExporterRequest) (_res
 //
 // @return DeleteContactResponse
 func (client *Client) DeleteContactWithOptions(request *DeleteContactRequest, runtime *dara.RuntimeOptions) (_result *DeleteContactResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContactId) {
@@ -4777,9 +4892,11 @@ func (client *Client) DeleteContact(request *DeleteContactRequest) (_result *Del
 //
 // @return DeleteContactGroupResponse
 func (client *Client) DeleteContactGroupWithOptions(request *DeleteContactGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteContactGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContactGroupId) {
@@ -4837,9 +4954,11 @@ func (client *Client) DeleteContactGroup(request *DeleteContactGroupRequest) (_r
 //
 // @return DeleteDispatchRuleResponse
 func (client *Client) DeleteDispatchRuleWithOptions(request *DeleteDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteDispatchRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -4901,9 +5020,11 @@ func (client *Client) DeleteDispatchRule(request *DeleteDispatchRuleRequest) (_r
 //
 // @return DeleteEnvCustomJobResponse
 func (client *Client) DeleteEnvCustomJobWithOptions(request *DeleteEnvCustomJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteEnvCustomJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustomJobName) {
@@ -4969,9 +5090,11 @@ func (client *Client) DeleteEnvCustomJob(request *DeleteEnvCustomJobRequest) (_r
 //
 // @return DeleteEnvPodMonitorResponse
 func (client *Client) DeleteEnvPodMonitorWithOptions(request *DeleteEnvPodMonitorRequest, runtime *dara.RuntimeOptions) (_result *DeleteEnvPodMonitorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EnvironmentId) {
@@ -5041,9 +5164,11 @@ func (client *Client) DeleteEnvPodMonitor(request *DeleteEnvPodMonitorRequest) (
 //
 // @return DeleteEnvServiceMonitorResponse
 func (client *Client) DeleteEnvServiceMonitorWithOptions(request *DeleteEnvServiceMonitorRequest, runtime *dara.RuntimeOptions) (_result *DeleteEnvServiceMonitorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EnvironmentId) {
@@ -5113,9 +5238,11 @@ func (client *Client) DeleteEnvServiceMonitor(request *DeleteEnvServiceMonitorRe
 //
 // @return DeleteEnvironmentResponse
 func (client *Client) DeleteEnvironmentWithOptions(request *DeleteEnvironmentRequest, runtime *dara.RuntimeOptions) (_result *DeleteEnvironmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeletePromInstance) {
@@ -5181,9 +5308,11 @@ func (client *Client) DeleteEnvironment(request *DeleteEnvironmentRequest) (_res
 //
 // @return DeleteEnvironmentFeatureResponse
 func (client *Client) DeleteEnvironmentFeatureWithOptions(request *DeleteEnvironmentFeatureRequest, runtime *dara.RuntimeOptions) (_result *DeleteEnvironmentFeatureResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EnvironmentId) {
@@ -5249,9 +5378,11 @@ func (client *Client) DeleteEnvironmentFeature(request *DeleteEnvironmentFeature
 //
 // @return DeleteEventBridgeIntegrationResponse
 func (client *Client) DeleteEventBridgeIntegrationWithOptions(request *DeleteEventBridgeIntegrationRequest, runtime *dara.RuntimeOptions) (_result *DeleteEventBridgeIntegrationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -5311,9 +5442,11 @@ func (client *Client) DeleteEventBridgeIntegration(request *DeleteEventBridgeInt
 //
 // @return DeleteGrafanaResourceResponse
 func (client *Client) DeleteGrafanaResourceWithOptions(request *DeleteGrafanaResourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteGrafanaResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -5390,9 +5523,11 @@ func (client *Client) DeleteGrafanaResource(request *DeleteGrafanaResourceReques
 //
 // @return DeleteGrafanaWorkspaceResponse
 func (client *Client) DeleteGrafanaWorkspaceWithOptions(request *DeleteGrafanaWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteGrafanaWorkspaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GrafanaWorkspaceId) {
@@ -5460,9 +5595,11 @@ func (client *Client) DeleteGrafanaWorkspace(request *DeleteGrafanaWorkspaceRequ
 //
 // @return DeleteIMRobotResponse
 func (client *Client) DeleteIMRobotWithOptions(request *DeleteIMRobotRequest, runtime *dara.RuntimeOptions) (_result *DeleteIMRobotResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RobotId) {
@@ -5522,9 +5659,11 @@ func (client *Client) DeleteIMRobot(request *DeleteIMRobotRequest) (_result *Del
 //
 // @return DeleteIntegrationResponse
 func (client *Client) DeleteIntegrationWithOptions(request *DeleteIntegrationRequest, runtime *dara.RuntimeOptions) (_result *DeleteIntegrationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -5593,9 +5732,11 @@ func (client *Client) DeleteIntegration(request *DeleteIntegrationRequest) (_res
 //
 // @return DeleteIntegrationsResponse
 func (client *Client) DeleteIntegrationsWithOptions(request *DeleteIntegrationsRequest, runtime *dara.RuntimeOptions) (_result *DeleteIntegrationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -5649,9 +5790,11 @@ func (client *Client) DeleteIntegrations(request *DeleteIntegrationsRequest) (_r
 //
 // @return DeleteNotificationPolicyResponse
 func (client *Client) DeleteNotificationPolicyWithOptions(request *DeleteNotificationPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteNotificationPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -5709,9 +5852,11 @@ func (client *Client) DeleteNotificationPolicy(request *DeleteNotificationPolicy
 //
 // @return DeletePrometheusAlertRuleResponse
 func (client *Client) DeletePrometheusAlertRuleWithOptions(request *DeletePrometheusAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *DeletePrometheusAlertRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlertId) {
@@ -5775,9 +5920,11 @@ func (client *Client) DeletePrometheusAlertRule(request *DeletePrometheusAlertRu
 //
 // @return DeletePrometheusGlobalViewResponse
 func (client *Client) DeletePrometheusGlobalViewWithOptions(request *DeletePrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *DeletePrometheusGlobalViewResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GlobalViewClusterId) {
@@ -5844,9 +5991,11 @@ func (client *Client) DeletePrometheusGlobalView(request *DeletePrometheusGlobal
 //
 // @return DeletePrometheusIntegrationResponse
 func (client *Client) DeletePrometheusIntegrationWithOptions(request *DeletePrometheusIntegrationRequest, runtime *dara.RuntimeOptions) (_result *DeletePrometheusIntegrationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -5921,9 +6070,11 @@ func (client *Client) DeletePrometheusIntegration(request *DeletePrometheusInteg
 //
 // @return DeletePrometheusMonitoringResponse
 func (client *Client) DeletePrometheusMonitoringWithOptions(request *DeletePrometheusMonitoringRequest, runtime *dara.RuntimeOptions) (_result *DeletePrometheusMonitoringResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -5996,9 +6147,11 @@ func (client *Client) DeletePrometheusMonitoring(request *DeletePrometheusMonito
 //
 // @return DeleteRetcodeAppResponse
 func (client *Client) DeleteRetcodeAppWithOptions(request *DeleteRetcodeAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteRetcodeAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -6068,9 +6221,11 @@ func (client *Client) DeleteRetcodeApp(request *DeleteRetcodeAppRequest) (_resul
 //
 // @return DeleteRumAppResponse
 func (client *Client) DeleteRumAppWithOptions(request *DeleteRumAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteRumAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppGroup) {
@@ -6144,9 +6299,11 @@ func (client *Client) DeleteRumApp(request *DeleteRumAppRequest) (_result *Delet
 //
 // @return DeleteRumUploadFileResponse
 func (client *Client) DeleteRumUploadFileWithOptions(request *DeleteRumUploadFileRequest, runtime *dara.RuntimeOptions) (_result *DeleteRumUploadFileResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BatchItems) {
@@ -6232,9 +6389,11 @@ func (client *Client) DeleteRumUploadFile(request *DeleteRumUploadFileRequest) (
 //
 // @return DeleteScenarioResponse
 func (client *Client) DeleteScenarioWithOptions(request *DeleteScenarioRequest, runtime *dara.RuntimeOptions) (_result *DeleteScenarioResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -6292,9 +6451,11 @@ func (client *Client) DeleteScenario(request *DeleteScenarioRequest) (_result *D
 //
 // @return DeleteSilencePolicyResponse
 func (client *Client) DeleteSilencePolicyWithOptions(request *DeleteSilencePolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteSilencePolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -6352,9 +6513,11 @@ func (client *Client) DeleteSilencePolicy(request *DeleteSilencePolicyRequest) (
 //
 // @return DeleteSourceMapResponse
 func (client *Client) DeleteSourceMapWithOptions(tmpReq *DeleteSourceMapRequest, runtime *dara.RuntimeOptions) (_result *DeleteSourceMapResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteSourceMapShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6426,9 +6589,11 @@ func (client *Client) DeleteSourceMap(request *DeleteSourceMapRequest) (_result 
 //
 // @return DeleteSyntheticTaskResponse
 func (client *Client) DeleteSyntheticTaskWithOptions(request *DeleteSyntheticTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteSyntheticTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -6490,9 +6655,11 @@ func (client *Client) DeleteSyntheticTask(request *DeleteSyntheticTaskRequest) (
 //
 // @return DeleteTimingSyntheticTaskResponse
 func (client *Client) DeleteTimingSyntheticTaskWithOptions(request *DeleteTimingSyntheticTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteTimingSyntheticTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -6558,9 +6725,11 @@ func (client *Client) DeleteTimingSyntheticTask(request *DeleteTimingSyntheticTa
 //
 // @return DeleteTraceAppResponse
 func (client *Client) DeleteTraceAppWithOptions(tmpReq *DeleteTraceAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteTraceAppResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteTraceAppShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6640,9 +6809,11 @@ func (client *Client) DeleteTraceApp(request *DeleteTraceAppRequest) (_result *D
 //
 // @return DeleteWebhookContactResponse
 func (client *Client) DeleteWebhookContactWithOptions(request *DeleteWebhookContactRequest, runtime *dara.RuntimeOptions) (_result *DeleteWebhookContactResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.WebhookId) {
@@ -6700,9 +6871,11 @@ func (client *Client) DeleteWebhookContact(request *DeleteWebhookContactRequest)
 //
 // @return DescribeAddonMetricsResponse
 func (client *Client) DescribeAddonMetricsWithOptions(request *DescribeAddonMetricsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAddonMetricsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddonVersion) {
@@ -6776,9 +6949,11 @@ func (client *Client) DescribeAddonMetrics(request *DescribeAddonMetricsRequest)
 //
 // @return DescribeAddonReleaseResponse
 func (client *Client) DescribeAddonReleaseWithOptions(request *DescribeAddonReleaseRequest, runtime *dara.RuntimeOptions) (_result *DescribeAddonReleaseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EnvironmentId) {
@@ -6844,9 +7019,11 @@ func (client *Client) DescribeAddonRelease(request *DescribeAddonReleaseRequest)
 //
 // @return DescribeContactGroupsResponse
 func (client *Client) DescribeContactGroupsWithOptions(request *DescribeContactGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeContactGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContactGroupName) {
@@ -6924,9 +7101,11 @@ func (client *Client) DescribeContactGroups(request *DescribeContactGroupsReques
 //
 // @return DescribeContactsResponse
 func (client *Client) DescribeContactsWithOptions(request *DescribeContactsRequest, runtime *dara.RuntimeOptions) (_result *DescribeContactsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContactIds) {
@@ -7012,9 +7191,11 @@ func (client *Client) DescribeContacts(request *DescribeContactsRequest) (_resul
 //
 // @return DescribeDispatchRuleResponse
 func (client *Client) DescribeDispatchRuleWithOptions(request *DescribeDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *DescribeDispatchRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -7076,9 +7257,11 @@ func (client *Client) DescribeDispatchRule(request *DescribeDispatchRuleRequest)
 //
 // @return DescribeEnvCustomJobResponse
 func (client *Client) DescribeEnvCustomJobWithOptions(request *DescribeEnvCustomJobRequest, runtime *dara.RuntimeOptions) (_result *DescribeEnvCustomJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustomJobName) {
@@ -7140,7 +7323,7 @@ func (client *Client) DescribeEnvCustomJob(request *DescribeEnvCustomJobRequest)
 
 // Summary:
 //
-// 查询指定环境实例的废弃指标列表
+// Queries the list of discarded metrics of a specified environment instance.
 //
 // @param request - DescribeEnvDropMetricsRuleRequest
 //
@@ -7148,9 +7331,11 @@ func (client *Client) DescribeEnvCustomJob(request *DescribeEnvCustomJobRequest)
 //
 // @return DescribeEnvDropMetricsRuleResponse
 func (client *Client) DescribeEnvDropMetricsRuleWithOptions(request *DescribeEnvDropMetricsRuleRequest, runtime *dara.RuntimeOptions) (_result *DescribeEnvDropMetricsRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EnvironmentId) {
@@ -7186,7 +7371,7 @@ func (client *Client) DescribeEnvDropMetricsRuleWithOptions(request *DescribeEnv
 
 // Summary:
 //
-// 查询指定环境实例的废弃指标列表
+// Queries the list of discarded metrics of a specified environment instance.
 //
 // @param request - DescribeEnvDropMetricsRuleRequest
 //
@@ -7212,9 +7397,11 @@ func (client *Client) DescribeEnvDropMetricsRule(request *DescribeEnvDropMetrics
 //
 // @return DescribeEnvPodMonitorResponse
 func (client *Client) DescribeEnvPodMonitorWithOptions(request *DescribeEnvPodMonitorRequest, runtime *dara.RuntimeOptions) (_result *DescribeEnvPodMonitorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EnvironmentId) {
@@ -7284,9 +7471,11 @@ func (client *Client) DescribeEnvPodMonitor(request *DescribeEnvPodMonitorReques
 //
 // @return DescribeEnvServiceMonitorResponse
 func (client *Client) DescribeEnvServiceMonitorWithOptions(request *DescribeEnvServiceMonitorRequest, runtime *dara.RuntimeOptions) (_result *DescribeEnvServiceMonitorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EnvironmentId) {
@@ -7356,9 +7545,11 @@ func (client *Client) DescribeEnvServiceMonitor(request *DescribeEnvServiceMonit
 //
 // @return DescribeEnvironmentResponse
 func (client *Client) DescribeEnvironmentWithOptions(request *DescribeEnvironmentRequest, runtime *dara.RuntimeOptions) (_result *DescribeEnvironmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EnvironmentId) {
@@ -7420,9 +7611,11 @@ func (client *Client) DescribeEnvironment(request *DescribeEnvironmentRequest) (
 //
 // @return DescribeEnvironmentFeatureResponse
 func (client *Client) DescribeEnvironmentFeatureWithOptions(request *DescribeEnvironmentFeatureRequest, runtime *dara.RuntimeOptions) (_result *DescribeEnvironmentFeatureResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunLang) {
@@ -7492,9 +7685,11 @@ func (client *Client) DescribeEnvironmentFeature(request *DescribeEnvironmentFea
 //
 // @return DescribeIMRobotsResponse
 func (client *Client) DescribeIMRobotsWithOptions(request *DescribeIMRobotsRequest, runtime *dara.RuntimeOptions) (_result *DescribeIMRobotsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Page) {
@@ -7564,9 +7759,11 @@ func (client *Client) DescribeIMRobots(request *DescribeIMRobotsRequest) (_resul
 //
 // @return DescribePrometheusAlertRuleResponse
 func (client *Client) DescribePrometheusAlertRuleWithOptions(request *DescribePrometheusAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *DescribePrometheusAlertRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlertId) {
@@ -7628,9 +7825,11 @@ func (client *Client) DescribePrometheusAlertRule(request *DescribePrometheusAle
 //
 // @return DescribeTraceLicenseKeyResponse
 func (client *Client) DescribeTraceLicenseKeyWithOptions(request *DescribeTraceLicenseKeyRequest, runtime *dara.RuntimeOptions) (_result *DescribeTraceLicenseKeyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -7688,9 +7887,11 @@ func (client *Client) DescribeTraceLicenseKey(request *DescribeTraceLicenseKeyRe
 //
 // @return DescribeWebhookContactsResponse
 func (client *Client) DescribeWebhookContactsWithOptions(request *DescribeWebhookContactsRequest, runtime *dara.RuntimeOptions) (_result *DescribeWebhookContactsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -7744,9 +7945,11 @@ func (client *Client) DescribeWebhookContacts(request *DescribeWebhookContactsRe
 //
 // @return DoInsightsActionResponse
 func (client *Client) DoInsightsActionWithOptions(request *DoInsightsActionRequest, runtime *dara.RuntimeOptions) (_result *DoInsightsActionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -7816,9 +8019,11 @@ func (client *Client) DoInsightsAction(request *DoInsightsActionRequest) (_resul
 //
 // @return EnableMetricResponse
 func (client *Client) EnableMetricWithOptions(request *EnableMetricRequest, runtime *dara.RuntimeOptions) (_result *EnableMetricResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -7887,9 +8092,11 @@ func (client *Client) EnableMetric(request *EnableMetricRequest) (_result *Enabl
 //
 // @return GetAgentDownloadUrlResponse
 func (client *Client) GetAgentDownloadUrlWithOptions(request *GetAgentDownloadUrlRequest, runtime *dara.RuntimeOptions) (_result *GetAgentDownloadUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -7943,9 +8150,11 @@ func (client *Client) GetAgentDownloadUrl(request *GetAgentDownloadUrlRequest) (
 //
 // @return GetAgentDownloadUrlV2Response
 func (client *Client) GetAgentDownloadUrlV2WithOptions(request *GetAgentDownloadUrlV2Request, runtime *dara.RuntimeOptions) (_result *GetAgentDownloadUrlV2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentType) {
@@ -8011,9 +8220,11 @@ func (client *Client) GetAgentDownloadUrlV2(request *GetAgentDownloadUrlV2Reques
 //
 // @return GetAlertRulesResponse
 func (client *Client) GetAlertRulesWithOptions(request *GetAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *GetAlertRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlertIds) {
@@ -8111,9 +8322,11 @@ func (client *Client) GetAlertRules(request *GetAlertRulesRequest) (_result *Get
 //
 // @return GetAppApiByPageResponse
 func (client *Client) GetAppApiByPageWithOptions(request *GetAppApiByPageRequest, runtime *dara.RuntimeOptions) (_result *GetAppApiByPageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -8195,9 +8408,11 @@ func (client *Client) GetAppApiByPage(request *GetAppApiByPageRequest) (_result 
 //
 // @return GetAppJVMConfigResponse
 func (client *Client) GetAppJVMConfigWithOptions(request *GetAppJVMConfigRequest, runtime *dara.RuntimeOptions) (_result *GetAppJVMConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -8251,9 +8466,11 @@ func (client *Client) GetAppJVMConfig(request *GetAppJVMConfigRequest) (_result 
 //
 // @return GetAuthTokenResponse
 func (client *Client) GetAuthTokenWithOptions(request *GetAuthTokenRequest, runtime *dara.RuntimeOptions) (_result *GetAuthTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -8317,9 +8534,11 @@ func (client *Client) GetAuthToken(request *GetAuthTokenRequest) (_result *GetAu
 //
 // @return GetCloudClusterAllUrlResponse
 func (client *Client) GetCloudClusterAllUrlWithOptions(request *GetCloudClusterAllUrlRequest, runtime *dara.RuntimeOptions) (_result *GetCloudClusterAllUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -8386,9 +8605,11 @@ func (client *Client) GetCloudClusterAllUrl(request *GetCloudClusterAllUrlReques
 //
 // @return GetClusterAllUrlResponse
 func (client *Client) GetClusterAllUrlWithOptions(request *GetClusterAllUrlRequest, runtime *dara.RuntimeOptions) (_result *GetClusterAllUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -8453,9 +8674,11 @@ func (client *Client) GetClusterAllUrl(request *GetClusterAllUrlRequest) (_resul
 //
 // @return GetCommercialStatusResponse
 func (client *Client) GetCommercialStatusWithOptions(request *GetCommercialStatusRequest, runtime *dara.RuntimeOptions) (_result *GetCommercialStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CommodityCode) {
@@ -8519,9 +8742,11 @@ func (client *Client) GetCommercialStatus(request *GetCommercialStatusRequest) (
 //
 // @return GetExploreUrlResponse
 func (client *Client) GetExploreUrlWithOptions(request *GetExploreUrlRequest, runtime *dara.RuntimeOptions) (_result *GetExploreUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -8598,9 +8823,11 @@ func (client *Client) GetExploreUrl(request *GetExploreUrlRequest) (_result *Get
 //
 // @return GetGrafanaWorkspaceResponse
 func (client *Client) GetGrafanaWorkspaceWithOptions(request *GetGrafanaWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *GetGrafanaWorkspaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunLang) {
@@ -8672,9 +8899,11 @@ func (client *Client) GetGrafanaWorkspace(request *GetGrafanaWorkspaceRequest) (
 //
 // @return GetIntegrationStateResponse
 func (client *Client) GetIntegrationStateWithOptions(request *GetIntegrationStateRequest, runtime *dara.RuntimeOptions) (_result *GetIntegrationStateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -8745,9 +8974,11 @@ func (client *Client) GetIntegrationState(request *GetIntegrationStateRequest) (
 //
 // @return GetManagedPrometheusStatusResponse
 func (client *Client) GetManagedPrometheusStatusWithOptions(request *GetManagedPrometheusStatusRequest, runtime *dara.RuntimeOptions) (_result *GetManagedPrometheusStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -8824,9 +9055,11 @@ func (client *Client) GetManagedPrometheusStatus(request *GetManagedPrometheusSt
 //
 // @return GetMultipleTraceResponse
 func (client *Client) GetMultipleTraceWithOptions(request *GetMultipleTraceRequest, runtime *dara.RuntimeOptions) (_result *GetMultipleTraceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -8904,9 +9137,11 @@ func (client *Client) GetMultipleTrace(request *GetMultipleTraceRequest) (_resul
 //
 // @return GetOnCallSchedulesDetailResponse
 func (client *Client) GetOnCallSchedulesDetailWithOptions(request *GetOnCallSchedulesDetailRequest, runtime *dara.RuntimeOptions) (_result *GetOnCallSchedulesDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -8964,9 +9199,11 @@ func (client *Client) GetOnCallSchedulesDetail(request *GetOnCallSchedulesDetail
 //
 // @return GetPrometheusApiTokenResponse
 func (client *Client) GetPrometheusApiTokenWithOptions(request *GetPrometheusApiTokenRequest, runtime *dara.RuntimeOptions) (_result *GetPrometheusApiTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -9028,9 +9265,11 @@ func (client *Client) GetPrometheusApiToken(request *GetPrometheusApiTokenReques
 //
 // @return GetPrometheusGlobalViewResponse
 func (client *Client) GetPrometheusGlobalViewWithOptions(request *GetPrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *GetPrometheusGlobalViewResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GlobalViewClusterId) {
@@ -9092,9 +9331,11 @@ func (client *Client) GetPrometheusGlobalView(request *GetPrometheusGlobalViewRe
 //
 // @return GetPrometheusInstanceResponse
 func (client *Client) GetPrometheusInstanceWithOptions(request *GetPrometheusInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetPrometheusInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -9158,9 +9399,11 @@ func (client *Client) GetPrometheusInstance(request *GetPrometheusInstanceReques
 //
 // @return GetPrometheusIntegrationResponse
 func (client *Client) GetPrometheusIntegrationWithOptions(request *GetPrometheusIntegrationRequest, runtime *dara.RuntimeOptions) (_result *GetPrometheusIntegrationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -9235,9 +9478,11 @@ func (client *Client) GetPrometheusIntegration(request *GetPrometheusIntegration
 //
 // @return GetPrometheusMonitoringResponse
 func (client *Client) GetPrometheusMonitoringWithOptions(request *GetPrometheusMonitoringRequest, runtime *dara.RuntimeOptions) (_result *GetPrometheusMonitoringResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -9312,9 +9557,11 @@ func (client *Client) GetPrometheusMonitoring(request *GetPrometheusMonitoringRe
 //
 // @return GetRecordingRuleResponse
 func (client *Client) GetRecordingRuleWithOptions(request *GetRecordingRuleRequest, runtime *dara.RuntimeOptions) (_result *GetRecordingRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -9379,9 +9626,11 @@ func (client *Client) GetRecordingRule(request *GetRecordingRuleRequest) (_resul
 //
 // @return GetRetcodeAppByPidResponse
 func (client *Client) GetRetcodeAppByPidWithOptions(request *GetRetcodeAppByPidRequest, runtime *dara.RuntimeOptions) (_result *GetRetcodeAppByPidResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -9435,9 +9684,11 @@ func (client *Client) GetRetcodeAppByPid(request *GetRetcodeAppByPidRequest) (_r
 //
 // @return GetRetcodeDataByQueryResponse
 func (client *Client) GetRetcodeDataByQueryWithOptions(request *GetRetcodeDataByQueryRequest, runtime *dara.RuntimeOptions) (_result *GetRetcodeDataByQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -9511,9 +9762,11 @@ func (client *Client) GetRetcodeDataByQuery(request *GetRetcodeDataByQueryReques
 //
 // @return GetRetcodeLogstoreResponse
 func (client *Client) GetRetcodeLogstoreWithOptions(request *GetRetcodeLogstoreRequest, runtime *dara.RuntimeOptions) (_result *GetRetcodeLogstoreResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Pid) {
@@ -9575,9 +9828,11 @@ func (client *Client) GetRetcodeLogstore(request *GetRetcodeLogstoreRequest) (_r
 //
 // @return GetRetcodeShareUrlResponse
 func (client *Client) GetRetcodeShareUrlWithOptions(request *GetRetcodeShareUrlRequest, runtime *dara.RuntimeOptions) (_result *GetRetcodeShareUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Pid) {
@@ -9639,9 +9894,11 @@ func (client *Client) GetRetcodeShareUrl(request *GetRetcodeShareUrlRequest) (_r
 //
 // @return GetRumAppInfoResponse
 func (client *Client) GetRumAppInfoWithOptions(request *GetRumAppInfoRequest, runtime *dara.RuntimeOptions) (_result *GetRumAppInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppGroup) {
@@ -9715,9 +9972,11 @@ func (client *Client) GetRumAppInfo(request *GetRumAppInfoRequest) (_result *Get
 //
 // @return GetRumAppsResponse
 func (client *Client) GetRumAppsWithOptions(tmpReq *GetRumAppsRequest, runtime *dara.RuntimeOptions) (_result *GetRumAppsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetRumAppsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9813,9 +10072,11 @@ func (client *Client) GetRumApps(request *GetRumAppsRequest) (_result *GetRumApp
 //
 // @return GetRumDataForPageResponse
 func (client *Client) GetRumDataForPageWithOptions(request *GetRumDataForPageRequest, runtime *dara.RuntimeOptions) (_result *GetRumDataForPageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppGroup) {
@@ -9909,9 +10170,11 @@ func (client *Client) GetRumDataForPage(request *GetRumDataForPageRequest) (_res
 //
 // @return GetRumExceptionStackResponse
 func (client *Client) GetRumExceptionStackWithOptions(request *GetRumExceptionStackRequest, runtime *dara.RuntimeOptions) (_result *GetRumExceptionStackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExceptionBinaryImages) {
@@ -10009,9 +10272,11 @@ func (client *Client) GetRumExceptionStack(request *GetRumExceptionStackRequest)
 //
 // @return GetRumOcuStatisticDataResponse
 func (client *Client) GetRumOcuStatisticDataWithOptions(tmpReq *GetRumOcuStatisticDataRequest, runtime *dara.RuntimeOptions) (_result *GetRumOcuStatisticDataResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetRumOcuStatisticDataShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -10083,9 +10348,11 @@ func (client *Client) GetRumOcuStatisticData(request *GetRumOcuStatisticDataRequ
 //
 // @return GetRumUploadFilesResponse
 func (client *Client) GetRumUploadFilesWithOptions(request *GetRumUploadFilesRequest, runtime *dara.RuntimeOptions) (_result *GetRumUploadFilesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppType) {
@@ -10179,9 +10446,11 @@ func (client *Client) GetRumUploadFiles(request *GetRumUploadFilesRequest) (_res
 //
 // @return GetSourceMapInfoResponse
 func (client *Client) GetSourceMapInfoWithOptions(request *GetSourceMapInfoRequest, runtime *dara.RuntimeOptions) (_result *GetSourceMapInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AscendingSequence) {
@@ -10259,9 +10528,11 @@ func (client *Client) GetSourceMapInfo(request *GetSourceMapInfoRequest) (_resul
 //
 // @return GetStackResponse
 func (client *Client) GetStackWithOptions(request *GetStackRequest, runtime *dara.RuntimeOptions) (_result *GetStackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -10343,9 +10614,11 @@ func (client *Client) GetStack(request *GetStackRequest) (_result *GetStackRespo
 //
 // @return GetSyntheticMonitorsResponse
 func (client *Client) GetSyntheticMonitorsWithOptions(tmpReq *GetSyntheticMonitorsRequest, runtime *dara.RuntimeOptions) (_result *GetSyntheticMonitorsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetSyntheticMonitorsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -10405,9 +10678,11 @@ func (client *Client) GetSyntheticMonitors(request *GetSyntheticMonitorsRequest)
 //
 // @return GetSyntheticTaskDetailResponse
 func (client *Client) GetSyntheticTaskDetailWithOptions(request *GetSyntheticTaskDetailRequest, runtime *dara.RuntimeOptions) (_result *GetSyntheticTaskDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -10469,9 +10744,11 @@ func (client *Client) GetSyntheticTaskDetail(request *GetSyntheticTaskDetailRequ
 //
 // @return GetSyntheticTaskListResponse
 func (client *Client) GetSyntheticTaskListWithOptions(request *GetSyntheticTaskListRequest, runtime *dara.RuntimeOptions) (_result *GetSyntheticTaskListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Direction) {
@@ -10561,9 +10838,11 @@ func (client *Client) GetSyntheticTaskList(request *GetSyntheticTaskListRequest)
 //
 // @return GetSyntheticTaskMonitorsResponse
 func (client *Client) GetSyntheticTaskMonitorsWithOptions(request *GetSyntheticTaskMonitorsRequest, runtime *dara.RuntimeOptions) (_result *GetSyntheticTaskMonitorsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -10621,9 +10900,11 @@ func (client *Client) GetSyntheticTaskMonitors(request *GetSyntheticTaskMonitors
 //
 // @return GetTimingSyntheticTaskResponse
 func (client *Client) GetTimingSyntheticTaskWithOptions(request *GetTimingSyntheticTaskRequest, runtime *dara.RuntimeOptions) (_result *GetTimingSyntheticTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -10681,9 +10962,11 @@ func (client *Client) GetTimingSyntheticTask(request *GetTimingSyntheticTaskRequ
 //
 // @return GetTraceResponse
 func (client *Client) GetTraceWithOptions(request *GetTraceRequest, runtime *dara.RuntimeOptions) (_result *GetTraceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -10765,9 +11048,11 @@ func (client *Client) GetTrace(request *GetTraceRequest) (_result *GetTraceRespo
 //
 // @return GetTraceAppResponse
 func (client *Client) GetTraceAppWithOptions(request *GetTraceAppRequest, runtime *dara.RuntimeOptions) (_result *GetTraceAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Pid) {
@@ -10833,9 +11118,11 @@ func (client *Client) GetTraceApp(request *GetTraceAppRequest) (_result *GetTrac
 //
 // @return GetTraceAppConfigResponse
 func (client *Client) GetTraceAppConfigWithOptions(request *GetTraceAppConfigRequest, runtime *dara.RuntimeOptions) (_result *GetTraceAppConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Pid) {
@@ -10897,9 +11184,11 @@ func (client *Client) GetTraceAppConfig(request *GetTraceAppConfigRequest) (_res
 //
 // @return ImportAppAlertRulesResponse
 func (client *Client) ImportAppAlertRulesWithOptions(request *ImportAppAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *ImportAppAlertRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContactGroupIds) {
@@ -10985,9 +11274,11 @@ func (client *Client) ImportAppAlertRules(request *ImportAppAlertRulesRequest) (
 //
 // @return InitEnvironmentResponse
 func (client *Client) InitEnvironmentWithOptions(request *InitEnvironmentRequest, runtime *dara.RuntimeOptions) (_result *InitEnvironmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunLang) {
@@ -11061,9 +11352,11 @@ func (client *Client) InitEnvironment(request *InitEnvironmentRequest) (_result 
 //
 // @return InstallAddonResponse
 func (client *Client) InstallAddonWithOptions(request *InstallAddonRequest, runtime *dara.RuntimeOptions) (_result *InstallAddonResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddonVersion) {
@@ -11151,9 +11444,11 @@ func (client *Client) InstallAddon(request *InstallAddonRequest) (_result *Insta
 //
 // @return InstallCmsExporterResponse
 func (client *Client) InstallCmsExporterWithOptions(request *InstallCmsExporterRequest, runtime *dara.RuntimeOptions) (_result *InstallCmsExporterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -11230,9 +11525,11 @@ func (client *Client) InstallCmsExporter(request *InstallCmsExporterRequest) (_r
 //
 // @return InstallEnvironmentFeatureResponse
 func (client *Client) InstallEnvironmentFeatureWithOptions(request *InstallEnvironmentFeatureRequest, runtime *dara.RuntimeOptions) (_result *InstallEnvironmentFeatureResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunLang) {
@@ -11320,9 +11617,11 @@ func (client *Client) InstallEnvironmentFeature(request *InstallEnvironmentFeatu
 //
 // @return InstallManagedPrometheusResponse
 func (client *Client) InstallManagedPrometheusWithOptions(request *InstallManagedPrometheusRequest, runtime *dara.RuntimeOptions) (_result *InstallManagedPrometheusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -11427,9 +11726,11 @@ func (client *Client) InstallManagedPrometheus(request *InstallManagedPrometheus
 //
 // @return ListActivatedAlertsResponse
 func (client *Client) ListActivatedAlertsWithOptions(request *ListActivatedAlertsRequest, runtime *dara.RuntimeOptions) (_result *ListActivatedAlertsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -11499,9 +11800,11 @@ func (client *Client) ListActivatedAlerts(request *ListActivatedAlertsRequest) (
 //
 // @return ListAddonReleasesResponse
 func (client *Client) ListAddonReleasesWithOptions(request *ListAddonReleasesRequest, runtime *dara.RuntimeOptions) (_result *ListAddonReleasesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddonName) {
@@ -11567,9 +11870,11 @@ func (client *Client) ListAddonReleases(request *ListAddonReleasesRequest) (_res
 //
 // @return ListAddonsResponse
 func (client *Client) ListAddonsWithOptions(request *ListAddonsRequest, runtime *dara.RuntimeOptions) (_result *ListAddonsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunLang) {
@@ -11643,9 +11948,11 @@ func (client *Client) ListAddons(request *ListAddonsRequest) (_result *ListAddon
 //
 // @return ListAlertEventsResponse
 func (client *Client) ListAlertEventsWithOptions(request *ListAlertEventsRequest, runtime *dara.RuntimeOptions) (_result *ListAlertEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlertName) {
@@ -11731,9 +12038,11 @@ func (client *Client) ListAlertEvents(request *ListAlertEventsRequest) (_result 
 //
 // @return ListAlertsResponse
 func (client *Client) ListAlertsWithOptions(request *ListAlertsRequest, runtime *dara.RuntimeOptions) (_result *ListAlertsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlertName) {
@@ -11841,9 +12150,11 @@ func (client *Client) ListAlerts(request *ListAlertsRequest) (_result *ListAlert
 //
 // @return ListClusterFromGrafanaResponse
 func (client *Client) ListClusterFromGrafanaWithOptions(request *ListClusterFromGrafanaRequest, runtime *dara.RuntimeOptions) (_result *ListClusterFromGrafanaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -11906,9 +12217,11 @@ func (client *Client) ListClusterFromGrafana(request *ListClusterFromGrafanaRequ
 //
 // @return ListCmsInstancesResponse
 func (client *Client) ListCmsInstancesWithOptions(request *ListCmsInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListCmsInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -11981,9 +12294,11 @@ func (client *Client) ListCmsInstances(request *ListCmsInstancesRequest) (_resul
 //
 // @return ListDashboardsResponse
 func (client *Client) ListDashboardsWithOptions(request *ListDashboardsRequest, runtime *dara.RuntimeOptions) (_result *ListDashboardsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -12075,9 +12390,11 @@ func (client *Client) ListDashboards(request *ListDashboardsRequest) (_result *L
 //
 // @return ListDashboardsByNameResponse
 func (client *Client) ListDashboardsByNameWithOptions(request *ListDashboardsByNameRequest, runtime *dara.RuntimeOptions) (_result *ListDashboardsByNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -12174,9 +12491,11 @@ func (client *Client) ListDashboardsByName(request *ListDashboardsByNameRequest)
 //
 // @return ListDispatchRuleResponse
 func (client *Client) ListDispatchRuleWithOptions(request *ListDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *ListDispatchRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -12246,9 +12565,11 @@ func (client *Client) ListDispatchRule(request *ListDispatchRuleRequest) (_resul
 //
 // @return ListEnvCustomJobsResponse
 func (client *Client) ListEnvCustomJobsWithOptions(request *ListEnvCustomJobsRequest, runtime *dara.RuntimeOptions) (_result *ListEnvCustomJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EncryptYaml) {
@@ -12314,9 +12635,11 @@ func (client *Client) ListEnvCustomJobs(request *ListEnvCustomJobsRequest) (_res
 //
 // @return ListEnvPodMonitorsResponse
 func (client *Client) ListEnvPodMonitorsWithOptions(request *ListEnvPodMonitorsRequest, runtime *dara.RuntimeOptions) (_result *ListEnvPodMonitorsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EnvironmentId) {
@@ -12378,9 +12701,11 @@ func (client *Client) ListEnvPodMonitors(request *ListEnvPodMonitorsRequest) (_r
 //
 // @return ListEnvServiceMonitorsResponse
 func (client *Client) ListEnvServiceMonitorsWithOptions(request *ListEnvServiceMonitorsRequest, runtime *dara.RuntimeOptions) (_result *ListEnvServiceMonitorsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EnvironmentId) {
@@ -12442,9 +12767,11 @@ func (client *Client) ListEnvServiceMonitors(request *ListEnvServiceMonitorsRequ
 //
 // @return ListEnvironmentAddonsResponse
 func (client *Client) ListEnvironmentAddonsWithOptions(request *ListEnvironmentAddonsRequest, runtime *dara.RuntimeOptions) (_result *ListEnvironmentAddonsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EnvironmentId) {
@@ -12506,9 +12833,11 @@ func (client *Client) ListEnvironmentAddons(request *ListEnvironmentAddonsReques
 //
 // @return ListEnvironmentAlertRulesResponse
 func (client *Client) ListEnvironmentAlertRulesWithOptions(request *ListEnvironmentAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *ListEnvironmentAlertRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddonName) {
@@ -12578,9 +12907,11 @@ func (client *Client) ListEnvironmentAlertRules(request *ListEnvironmentAlertRul
 //
 // @return ListEnvironmentDashboardsResponse
 func (client *Client) ListEnvironmentDashboardsWithOptions(request *ListEnvironmentDashboardsRequest, runtime *dara.RuntimeOptions) (_result *ListEnvironmentDashboardsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddonName) {
@@ -12650,9 +12981,11 @@ func (client *Client) ListEnvironmentDashboards(request *ListEnvironmentDashboar
 //
 // @return ListEnvironmentFeaturesResponse
 func (client *Client) ListEnvironmentFeaturesWithOptions(request *ListEnvironmentFeaturesRequest, runtime *dara.RuntimeOptions) (_result *ListEnvironmentFeaturesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunLang) {
@@ -12718,9 +13051,11 @@ func (client *Client) ListEnvironmentFeatures(request *ListEnvironmentFeaturesRe
 //
 // @return ListEnvironmentKubeResourcesResponse
 func (client *Client) ListEnvironmentKubeResourcesWithOptions(tmpReq *ListEnvironmentKubeResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListEnvironmentKubeResourcesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListEnvironmentKubeResourcesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12800,9 +13135,11 @@ func (client *Client) ListEnvironmentKubeResources(request *ListEnvironmentKubeR
 //
 // @return ListEnvironmentMetricTargetsResponse
 func (client *Client) ListEnvironmentMetricTargetsWithOptions(request *ListEnvironmentMetricTargetsRequest, runtime *dara.RuntimeOptions) (_result *ListEnvironmentMetricTargetsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EnvironmentId) {
@@ -12868,9 +13205,11 @@ func (client *Client) ListEnvironmentMetricTargets(request *ListEnvironmentMetri
 //
 // @return ListEnvironmentsResponse
 func (client *Client) ListEnvironmentsWithOptions(tmpReq *ListEnvironmentsRequest, runtime *dara.RuntimeOptions) (_result *ListEnvironmentsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListEnvironmentsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12962,9 +13301,11 @@ func (client *Client) ListEnvironments(request *ListEnvironmentsRequest) (_resul
 //
 // @return ListEscalationPoliciesResponse
 func (client *Client) ListEscalationPoliciesWithOptions(request *ListEscalationPoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListEscalationPoliciesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -13018,9 +13359,11 @@ func (client *Client) ListEscalationPolicies(request *ListEscalationPoliciesRequ
 //
 // @return ListEventBridgeIntegrationsResponse
 func (client *Client) ListEventBridgeIntegrationsWithOptions(request *ListEventBridgeIntegrationsRequest, runtime *dara.RuntimeOptions) (_result *ListEventBridgeIntegrationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -13078,9 +13421,11 @@ func (client *Client) ListEventBridgeIntegrations(request *ListEventBridgeIntegr
 //
 // @return ListGrafanaWorkspaceResponse
 func (client *Client) ListGrafanaWorkspaceWithOptions(tmpReq *ListGrafanaWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *ListGrafanaWorkspaceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListGrafanaWorkspaceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -13160,9 +13505,11 @@ func (client *Client) ListGrafanaWorkspace(request *ListGrafanaWorkspaceRequest)
 //
 // @return ListInsightsEventsResponse
 func (client *Client) ListInsightsEventsWithOptions(request *ListInsightsEventsRequest, runtime *dara.RuntimeOptions) (_result *ListInsightsEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -13236,9 +13583,11 @@ func (client *Client) ListInsightsEvents(request *ListInsightsEventsRequest) (_r
 //
 // @return ListIntegrationResponse
 func (client *Client) ListIntegrationWithOptions(request *ListIntegrationRequest, runtime *dara.RuntimeOptions) (_result *ListIntegrationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -13292,9 +13641,11 @@ func (client *Client) ListIntegration(request *ListIntegrationRequest) (_result 
 //
 // @return ListNotificationPoliciesResponse
 func (client *Client) ListNotificationPoliciesWithOptions(request *ListNotificationPoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListNotificationPoliciesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DirectedMode) {
@@ -13376,9 +13727,11 @@ func (client *Client) ListNotificationPolicies(request *ListNotificationPolicies
 //
 // @return ListOnCallSchedulesResponse
 func (client *Client) ListOnCallSchedulesWithOptions(request *ListOnCallSchedulesRequest, runtime *dara.RuntimeOptions) (_result *ListOnCallSchedulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -13432,9 +13785,11 @@ func (client *Client) ListOnCallSchedules(request *ListOnCallSchedulesRequest) (
 //
 // @return ListPrometheusAlertRulesResponse
 func (client *Client) ListPrometheusAlertRulesWithOptions(request *ListPrometheusAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusAlertRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -13516,9 +13871,11 @@ func (client *Client) ListPrometheusAlertRules(request *ListPrometheusAlertRules
 //
 // @return ListPrometheusAlertTemplatesResponse
 func (client *Client) ListPrometheusAlertTemplatesWithOptions(request *ListPrometheusAlertTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusAlertTemplatesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -13580,9 +13937,11 @@ func (client *Client) ListPrometheusAlertTemplates(request *ListPrometheusAlertT
 //
 // @return ListPrometheusGlobalViewResponse
 func (client *Client) ListPrometheusGlobalViewWithOptions(request *ListPrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusGlobalViewResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -13640,9 +13999,11 @@ func (client *Client) ListPrometheusGlobalView(request *ListPrometheusGlobalView
 //
 // @return ListPrometheusInstanceByTagAndResourceGroupIdResponse
 func (client *Client) ListPrometheusInstanceByTagAndResourceGroupIdWithOptions(request *ListPrometheusInstanceByTagAndResourceGroupIdRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusInstanceByTagAndResourceGroupIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -13708,9 +14069,11 @@ func (client *Client) ListPrometheusInstanceByTagAndResourceGroupId(request *Lis
 //
 // @return ListPrometheusInstancesResponse
 func (client *Client) ListPrometheusInstancesWithOptions(request *ListPrometheusInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterType) {
@@ -13778,9 +14141,11 @@ func (client *Client) ListPrometheusInstances(request *ListPrometheusInstancesRe
 //
 // @return ListPrometheusIntegrationResponse
 func (client *Client) ListPrometheusIntegrationWithOptions(request *ListPrometheusIntegrationRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusIntegrationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -13851,9 +14216,11 @@ func (client *Client) ListPrometheusIntegration(request *ListPrometheusIntegrati
 //
 // @return ListPrometheusMonitoringResponse
 func (client *Client) ListPrometheusMonitoringWithOptions(request *ListPrometheusMonitoringRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusMonitoringResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -13926,9 +14293,11 @@ func (client *Client) ListPrometheusMonitoring(request *ListPrometheusMonitoring
 //
 // @return ListRetcodeAppsResponse
 func (client *Client) ListRetcodeAppsWithOptions(request *ListRetcodeAppsRequest, runtime *dara.RuntimeOptions) (_result *ListRetcodeAppsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -13994,9 +14363,11 @@ func (client *Client) ListRetcodeApps(request *ListRetcodeAppsRequest) (_result 
 //
 // @return ListScenarioResponse
 func (client *Client) ListScenarioWithOptions(request *ListScenarioRequest, runtime *dara.RuntimeOptions) (_result *ListScenarioResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -14066,9 +14437,11 @@ func (client *Client) ListScenario(request *ListScenarioRequest) (_result *ListS
 //
 // @return ListSilencePoliciesResponse
 func (client *Client) ListSilencePoliciesWithOptions(request *ListSilencePoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListSilencePoliciesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsDetail) {
@@ -14142,9 +14515,11 @@ func (client *Client) ListSilencePolicies(request *ListSilencePoliciesRequest) (
 //
 // @return ListSyntheticDetailResponse
 func (client *Client) ListSyntheticDetailWithOptions(tmpReq *ListSyntheticDetailRequest, runtime *dara.RuntimeOptions) (_result *ListSyntheticDetailResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListSyntheticDetailShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14212,9 +14587,11 @@ func (client *Client) ListSyntheticDetail(request *ListSyntheticDetailRequest) (
 //
 // @return ListTimingSyntheticTasksResponse
 func (client *Client) ListTimingSyntheticTasksWithOptions(tmpReq *ListTimingSyntheticTasksRequest, runtime *dara.RuntimeOptions) (_result *ListTimingSyntheticTasksResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListTimingSyntheticTasksShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14278,9 +14655,11 @@ func (client *Client) ListTimingSyntheticTasks(request *ListTimingSyntheticTasks
 //
 // @return ListTraceAppsResponse
 func (client *Client) ListTraceAppsWithOptions(request *ListTraceAppsRequest, runtime *dara.RuntimeOptions) (_result *ListTraceAppsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppType) {
@@ -14354,9 +14733,11 @@ func (client *Client) ListTraceApps(request *ListTraceAppsRequest) (_result *Lis
 //
 // @return OpenArmsDefaultSLRResponse
 func (client *Client) OpenArmsDefaultSLRWithOptions(request *OpenArmsDefaultSLRRequest, runtime *dara.RuntimeOptions) (_result *OpenArmsDefaultSLRResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -14426,9 +14807,11 @@ func (client *Client) OpenArmsDefaultSLR(request *OpenArmsDefaultSLRRequest) (_r
 //
 // @return OpenArmsServiceSecondVersionResponse
 func (client *Client) OpenArmsServiceSecondVersionWithOptions(request *OpenArmsServiceSecondVersionRequest, runtime *dara.RuntimeOptions) (_result *OpenArmsServiceSecondVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -14504,9 +14887,11 @@ func (client *Client) OpenArmsServiceSecondVersion(request *OpenArmsServiceSecon
 //
 // @return OpenVClusterResponse
 func (client *Client) OpenVClusterWithOptions(request *OpenVClusterRequest, runtime *dara.RuntimeOptions) (_result *OpenVClusterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterType) {
@@ -14583,9 +14968,11 @@ func (client *Client) OpenVCluster(request *OpenVClusterRequest) (_result *OpenV
 //
 // @return OpenXtraceDefaultSLRResponse
 func (client *Client) OpenXtraceDefaultSLRWithOptions(request *OpenXtraceDefaultSLRRequest, runtime *dara.RuntimeOptions) (_result *OpenXtraceDefaultSLRResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -14643,9 +15030,11 @@ func (client *Client) OpenXtraceDefaultSLR(request *OpenXtraceDefaultSLRRequest)
 //
 // @return QueryAppMetadataResponse
 func (client *Client) QueryAppMetadataWithOptions(request *QueryAppMetadataRequest, runtime *dara.RuntimeOptions) (_result *QueryAppMetadataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -14699,9 +15088,11 @@ func (client *Client) QueryAppMetadata(request *QueryAppMetadataRequest) (_resul
 //
 // @return QueryAppTopologyResponse
 func (client *Client) QueryAppTopologyWithOptions(tmpReq *QueryAppTopologyRequest, runtime *dara.RuntimeOptions) (_result *QueryAppTopologyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryAppTopologyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14801,9 +15192,11 @@ func (client *Client) QueryAppTopology(request *QueryAppTopologyRequest) (_resul
 //
 // @return QueryCommercialUsageResponse
 func (client *Client) QueryCommercialUsageWithOptions(request *QueryCommercialUsageRequest, runtime *dara.RuntimeOptions) (_result *QueryCommercialUsageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AdvancedFilters) {
@@ -14897,9 +15290,11 @@ func (client *Client) QueryCommercialUsage(request *QueryCommercialUsageRequest)
 //
 // @return QueryMetricByPageResponse
 func (client *Client) QueryMetricByPageWithOptions(request *QueryMetricByPageRequest, runtime *dara.RuntimeOptions) (_result *QueryMetricByPageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -15003,9 +15398,11 @@ func (client *Client) QueryMetricByPage(request *QueryMetricByPageRequest) (_res
 //
 // @return QueryPromInstallStatusResponse
 func (client *Client) QueryPromInstallStatusWithOptions(request *QueryPromInstallStatusRequest, runtime *dara.RuntimeOptions) (_result *QueryPromInstallStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -15070,9 +15467,11 @@ func (client *Client) QueryPromInstallStatus(request *QueryPromInstallStatusRequ
 //
 // @return QueryReleaseMetricResponse
 func (client *Client) QueryReleaseMetricWithOptions(request *QueryReleaseMetricRequest, runtime *dara.RuntimeOptions) (_result *QueryReleaseMetricResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChangeOrderId) {
@@ -15160,9 +15559,11 @@ func (client *Client) QueryReleaseMetric(request *QueryReleaseMetricRequest) (_r
 //
 // @return RemoveAliClusterIdsFromPrometheusGlobalViewResponse
 func (client *Client) RemoveAliClusterIdsFromPrometheusGlobalViewWithOptions(request *RemoveAliClusterIdsFromPrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *RemoveAliClusterIdsFromPrometheusGlobalViewResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterIds) {
@@ -15237,9 +15638,11 @@ func (client *Client) RemoveAliClusterIdsFromPrometheusGlobalView(request *Remov
 //
 // @return RemoveSourcesFromPrometheusGlobalViewResponse
 func (client *Client) RemoveSourcesFromPrometheusGlobalViewWithOptions(request *RemoveSourcesFromPrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *RemoveSourcesFromPrometheusGlobalViewResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GlobalViewClusterId) {
@@ -15312,9 +15715,11 @@ func (client *Client) RemoveSourcesFromPrometheusGlobalView(request *RemoveSourc
 //
 // @return RestartEnvironmentFeatureResponse
 func (client *Client) RestartEnvironmentFeatureWithOptions(request *RestartEnvironmentFeatureRequest, runtime *dara.RuntimeOptions) (_result *RestartEnvironmentFeatureResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EnvironmentId) {
@@ -15380,9 +15785,11 @@ func (client *Client) RestartEnvironmentFeature(request *RestartEnvironmentFeatu
 //
 // @return SaveTraceAppConfigResponse
 func (client *Client) SaveTraceAppConfigWithOptions(request *SaveTraceAppConfigRequest, runtime *dara.RuntimeOptions) (_result *SaveTraceAppConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Pid) {
@@ -15448,9 +15855,11 @@ func (client *Client) SaveTraceAppConfig(request *SaveTraceAppConfigRequest) (_r
 //
 // @return SearchAlertContactResponse
 func (client *Client) SearchAlertContactWithOptions(request *SearchAlertContactRequest, runtime *dara.RuntimeOptions) (_result *SearchAlertContactResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContactIds) {
@@ -15540,9 +15949,11 @@ func (client *Client) SearchAlertContact(request *SearchAlertContactRequest) (_r
 //
 // @return SearchAlertContactGroupResponse
 func (client *Client) SearchAlertContactGroupWithOptions(request *SearchAlertContactGroupRequest, runtime *dara.RuntimeOptions) (_result *SearchAlertContactGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContactGroupIds) {
@@ -15628,9 +16039,11 @@ func (client *Client) SearchAlertContactGroup(request *SearchAlertContactGroupRe
 //
 // @return SearchAlertHistoriesResponse
 func (client *Client) SearchAlertHistoriesWithOptions(request *SearchAlertHistoriesRequest, runtime *dara.RuntimeOptions) (_result *SearchAlertHistoriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlertId) {
@@ -15720,9 +16133,11 @@ func (client *Client) SearchAlertHistories(request *SearchAlertHistoriesRequest)
 //
 // @return SearchAlertRulesResponse
 func (client *Client) SearchAlertRulesWithOptions(request *SearchAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *SearchAlertRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlertRuleId) {
@@ -15828,9 +16243,11 @@ func (client *Client) SearchAlertRules(request *SearchAlertRulesRequest) (_resul
 //
 // @return SearchEventsResponse
 func (client *Client) SearchEventsWithOptions(request *SearchEventsRequest, runtime *dara.RuntimeOptions) (_result *SearchEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlertId) {
@@ -15928,9 +16345,11 @@ func (client *Client) SearchEvents(request *SearchEventsRequest) (_result *Searc
 //
 // @return SearchRetcodeAppByPageResponse
 func (client *Client) SearchRetcodeAppByPageWithOptions(request *SearchRetcodeAppByPageRequest, runtime *dara.RuntimeOptions) (_result *SearchRetcodeAppByPageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -16012,9 +16431,11 @@ func (client *Client) SearchRetcodeAppByPage(request *SearchRetcodeAppByPageRequ
 //
 // @return SearchTraceAppByNameResponse
 func (client *Client) SearchTraceAppByNameWithOptions(request *SearchTraceAppByNameRequest, runtime *dara.RuntimeOptions) (_result *SearchTraceAppByNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -16080,9 +16501,11 @@ func (client *Client) SearchTraceAppByName(request *SearchTraceAppByNameRequest)
 //
 // @return SearchTraceAppByPageResponse
 func (client *Client) SearchTraceAppByPageWithOptions(request *SearchTraceAppByPageRequest, runtime *dara.RuntimeOptions) (_result *SearchTraceAppByPageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -16164,9 +16587,11 @@ func (client *Client) SearchTraceAppByPage(request *SearchTraceAppByPageRequest)
 //
 // @return SearchTracesResponse
 func (client *Client) SearchTracesWithOptions(request *SearchTracesRequest, runtime *dara.RuntimeOptions) (_result *SearchTracesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -16268,9 +16693,11 @@ func (client *Client) SearchTraces(request *SearchTracesRequest) (_result *Searc
 //
 // @return SearchTracesByPageResponse
 func (client *Client) SearchTracesByPageWithOptions(request *SearchTracesByPageRequest, runtime *dara.RuntimeOptions) (_result *SearchTracesByPageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -16384,9 +16811,11 @@ func (client *Client) SearchTracesByPage(request *SearchTracesByPageRequest) (_r
 //
 // @return SendTTSVerifyLinkResponse
 func (client *Client) SendTTSVerifyLinkWithOptions(request *SendTTSVerifyLinkRequest, runtime *dara.RuntimeOptions) (_result *SendTTSVerifyLinkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ContactId) {
@@ -16452,9 +16881,11 @@ func (client *Client) SendTTSVerifyLink(request *SendTTSVerifyLinkRequest) (_res
 //
 // @return SetRetcodeShareStatusResponse
 func (client *Client) SetRetcodeShareStatusWithOptions(request *SetRetcodeShareStatusRequest, runtime *dara.RuntimeOptions) (_result *SetRetcodeShareStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -16510,15 +16941,21 @@ func (client *Client) SetRetcodeShareStatus(request *SetRetcodeShareStatusReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 启动报警
+//
 // @param request - StartAlertRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartAlertResponse
 func (client *Client) StartAlertWithOptions(request *StartAlertRequest, runtime *dara.RuntimeOptions) (_result *StartAlertResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlertId) {
@@ -16552,6 +16989,10 @@ func (client *Client) StartAlertWithOptions(request *StartAlertRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 启动报警
+//
 // @param request - StartAlertRequest
 //
 // @return StartAlertResponse
@@ -16576,9 +17017,11 @@ func (client *Client) StartAlert(request *StartAlertRequest) (_result *StartAler
 //
 // @return StartTimingSyntheticTaskResponse
 func (client *Client) StartTimingSyntheticTaskWithOptions(tmpReq *StartTimingSyntheticTaskRequest, runtime *dara.RuntimeOptions) (_result *StartTimingSyntheticTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &StartTimingSyntheticTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -16646,9 +17089,11 @@ func (client *Client) StartTimingSyntheticTask(request *StartTimingSyntheticTask
 //
 // @return StopAlertResponse
 func (client *Client) StopAlertWithOptions(request *StopAlertRequest, runtime *dara.RuntimeOptions) (_result *StopAlertResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlertId) {
@@ -16710,9 +17155,11 @@ func (client *Client) StopAlert(request *StopAlertRequest) (_result *StopAlertRe
 //
 // @return StopTimingSyntheticTaskResponse
 func (client *Client) StopTimingSyntheticTaskWithOptions(tmpReq *StopTimingSyntheticTaskRequest, runtime *dara.RuntimeOptions) (_result *StopTimingSyntheticTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &StopTimingSyntheticTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -16780,9 +17227,11 @@ func (client *Client) StopTimingSyntheticTask(request *StopTimingSyntheticTaskRe
 //
 // @return SwitchSyntheticTaskStatusResponse
 func (client *Client) SwitchSyntheticTaskStatusWithOptions(request *SwitchSyntheticTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *SwitchSyntheticTaskStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SwitchStatus) {
@@ -16846,9 +17295,11 @@ func (client *Client) SwitchSyntheticTaskStatus(request *SwitchSyntheticTaskStat
 //
 // @return SyncRecordingRulesResponse
 func (client *Client) SyncRecordingRulesWithOptions(request *SyncRecordingRulesRequest, runtime *dara.RuntimeOptions) (_result *SyncRecordingRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -16917,9 +17368,11 @@ func (client *Client) SyncRecordingRules(request *SyncRecordingRulesRequest) (_r
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceId) {
@@ -16991,9 +17444,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 //
 // @return UninstallManagedPrometheusResponse
 func (client *Client) UninstallManagedPrometheusWithOptions(request *UninstallManagedPrometheusRequest, runtime *dara.RuntimeOptions) (_result *UninstallManagedPrometheusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -17074,9 +17529,11 @@ func (client *Client) UninstallManagedPrometheus(request *UninstallManagedPromet
 //
 // @return UninstallPromClusterResponse
 func (client *Client) UninstallPromClusterWithOptions(request *UninstallPromClusterRequest, runtime *dara.RuntimeOptions) (_result *UninstallPromClusterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunLang) {
@@ -17142,9 +17599,11 @@ func (client *Client) UninstallPromCluster(request *UninstallPromClusterRequest)
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -17222,9 +17681,11 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 //
 // @return UpdateAlertContactResponse
 func (client *Client) UpdateAlertContactWithOptions(request *UpdateAlertContactRequest, runtime *dara.RuntimeOptions) (_result *UpdateAlertContactResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContactId) {
@@ -17310,9 +17771,11 @@ func (client *Client) UpdateAlertContact(request *UpdateAlertContactRequest) (_r
 //
 // @return UpdateAlertContactGroupResponse
 func (client *Client) UpdateAlertContactGroupWithOptions(request *UpdateAlertContactGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateAlertContactGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContactGroupId) {
@@ -17378,9 +17841,11 @@ func (client *Client) UpdateAlertContactGroup(request *UpdateAlertContactGroupRe
 //
 // @return UpdateAlertRuleResponse
 func (client *Client) UpdateAlertRuleWithOptions(request *UpdateAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateAlertRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlertId) {
@@ -17450,9 +17915,11 @@ func (client *Client) UpdateAlertRule(request *UpdateAlertRuleRequest) (_result 
 //
 // @return UpdateDispatchRuleResponse
 func (client *Client) UpdateDispatchRuleWithOptions(request *UpdateDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateDispatchRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DispatchRule) {
@@ -17514,9 +17981,11 @@ func (client *Client) UpdateDispatchRule(request *UpdateDispatchRuleRequest) (_r
 //
 // @return UpdateEnvCustomJobResponse
 func (client *Client) UpdateEnvCustomJobWithOptions(request *UpdateEnvCustomJobRequest, runtime *dara.RuntimeOptions) (_result *UpdateEnvCustomJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunLang) {
@@ -17588,7 +18057,7 @@ func (client *Client) UpdateEnvCustomJob(request *UpdateEnvCustomJobRequest) (_r
 
 // Summary:
 //
-// 更新环境实例的废弃指标列表
+// Updates a discarded metric rule in the environment.
 //
 // @param request - UpdateEnvDropMetricsRuleRequest
 //
@@ -17596,9 +18065,11 @@ func (client *Client) UpdateEnvCustomJob(request *UpdateEnvCustomJobRequest) (_r
 //
 // @return UpdateEnvDropMetricsRuleResponse
 func (client *Client) UpdateEnvDropMetricsRuleWithOptions(request *UpdateEnvDropMetricsRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateEnvDropMetricsRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunLang) {
@@ -17644,7 +18115,7 @@ func (client *Client) UpdateEnvDropMetricsRuleWithOptions(request *UpdateEnvDrop
 
 // Summary:
 //
-// 更新环境实例的废弃指标列表
+// Updates a discarded metric rule in the environment.
 //
 // @param request - UpdateEnvDropMetricsRuleRequest
 //
@@ -17670,9 +18141,11 @@ func (client *Client) UpdateEnvDropMetricsRule(request *UpdateEnvDropMetricsRule
 //
 // @return UpdateEnvPodMonitorResponse
 func (client *Client) UpdateEnvPodMonitorWithOptions(request *UpdateEnvPodMonitorRequest, runtime *dara.RuntimeOptions) (_result *UpdateEnvPodMonitorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunLang) {
@@ -17756,9 +18229,11 @@ func (client *Client) UpdateEnvPodMonitor(request *UpdateEnvPodMonitorRequest) (
 //
 // @return UpdateEnvServiceMonitorResponse
 func (client *Client) UpdateEnvServiceMonitorWithOptions(request *UpdateEnvServiceMonitorRequest, runtime *dara.RuntimeOptions) (_result *UpdateEnvServiceMonitorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunLang) {
@@ -17842,9 +18317,11 @@ func (client *Client) UpdateEnvServiceMonitor(request *UpdateEnvServiceMonitorRe
 //
 // @return UpdateEnvironmentResponse
 func (client *Client) UpdateEnvironmentWithOptions(request *UpdateEnvironmentRequest, runtime *dara.RuntimeOptions) (_result *UpdateEnvironmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunLang) {
@@ -17918,9 +18395,11 @@ func (client *Client) UpdateEnvironment(request *UpdateEnvironmentRequest) (_res
 //
 // @return UpdateGrafanaWorkspaceResponse
 func (client *Client) UpdateGrafanaWorkspaceWithOptions(request *UpdateGrafanaWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *UpdateGrafanaWorkspaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunLang) {
@@ -17998,9 +18477,11 @@ func (client *Client) UpdateGrafanaWorkspace(request *UpdateGrafanaWorkspaceRequ
 //
 // @return UpdateGrafanaWorkspaceVersionResponse
 func (client *Client) UpdateGrafanaWorkspaceVersionWithOptions(request *UpdateGrafanaWorkspaceVersionRequest, runtime *dara.RuntimeOptions) (_result *UpdateGrafanaWorkspaceVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunLang) {
@@ -18074,9 +18555,11 @@ func (client *Client) UpdateGrafanaWorkspaceVersion(request *UpdateGrafanaWorksp
 //
 // @return UpdateIntegrationResponse
 func (client *Client) UpdateIntegrationWithOptions(request *UpdateIntegrationRequest, runtime *dara.RuntimeOptions) (_result *UpdateIntegrationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoRecover) {
@@ -18188,9 +18671,11 @@ func (client *Client) UpdateIntegration(request *UpdateIntegrationRequest) (_res
 //
 // @return UpdateMetricDropResponse
 func (client *Client) UpdateMetricDropWithOptions(request *UpdateMetricDropRequest, runtime *dara.RuntimeOptions) (_result *UpdateMetricDropResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -18251,7 +18736,7 @@ func (client *Client) UpdateMetricDrop(request *UpdateMetricDropRequest) (_resul
 
 // Summary:
 //
-// 更新Prometheus告警规则
+// Updates a Prometheus alert rule.
 //
 // @param request - UpdatePrometheusAlertRuleRequest
 //
@@ -18259,9 +18744,11 @@ func (client *Client) UpdateMetricDrop(request *UpdateMetricDropRequest) (_resul
 //
 // @return UpdatePrometheusAlertRuleResponse
 func (client *Client) UpdatePrometheusAlertRuleWithOptions(request *UpdatePrometheusAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdatePrometheusAlertRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlertId) {
@@ -18341,7 +18828,7 @@ func (client *Client) UpdatePrometheusAlertRuleWithOptions(request *UpdatePromet
 
 // Summary:
 //
-// 更新Prometheus告警规则
+// Updates a Prometheus alert rule.
 //
 // @param request - UpdatePrometheusAlertRuleRequest
 //
@@ -18369,9 +18856,11 @@ func (client *Client) UpdatePrometheusAlertRule(request *UpdatePrometheusAlertRu
 //
 // @return UpdatePrometheusGlobalViewResponse
 func (client *Client) UpdatePrometheusGlobalViewWithOptions(request *UpdatePrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *UpdatePrometheusGlobalViewResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllSubClustersSuccess) {
@@ -18456,9 +18945,11 @@ func (client *Client) UpdatePrometheusGlobalView(request *UpdatePrometheusGlobal
 //
 // @return UpdatePrometheusInstanceResponse
 func (client *Client) UpdatePrometheusInstanceWithOptions(request *UpdatePrometheusInstanceRequest, runtime *dara.RuntimeOptions) (_result *UpdatePrometheusInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ArchiveDuration) {
@@ -18558,9 +19049,11 @@ func (client *Client) UpdatePrometheusInstance(request *UpdatePrometheusInstance
 //
 // @return UpdatePrometheusIntegrationResponse
 func (client *Client) UpdatePrometheusIntegrationWithOptions(request *UpdatePrometheusIntegrationRequest, runtime *dara.RuntimeOptions) (_result *UpdatePrometheusIntegrationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -18639,9 +19132,11 @@ func (client *Client) UpdatePrometheusIntegration(request *UpdatePrometheusInteg
 //
 // @return UpdatePrometheusMonitoringResponse
 func (client *Client) UpdatePrometheusMonitoringWithOptions(request *UpdatePrometheusMonitoringRequest, runtime *dara.RuntimeOptions) (_result *UpdatePrometheusMonitoringResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -18722,9 +19217,11 @@ func (client *Client) UpdatePrometheusMonitoring(request *UpdatePrometheusMonito
 //
 // @return UpdatePrometheusMonitoringStatusResponse
 func (client *Client) UpdatePrometheusMonitoringStatusWithOptions(request *UpdatePrometheusMonitoringStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdatePrometheusMonitoringStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -18805,9 +19302,11 @@ func (client *Client) UpdatePrometheusMonitoringStatus(request *UpdatePrometheus
 //
 // @return UpdateRumAppResponse
 func (client *Client) UpdateRumAppWithOptions(request *UpdateRumAppRequest, runtime *dara.RuntimeOptions) (_result *UpdateRumAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppConfig) {
@@ -18925,9 +19424,11 @@ func (client *Client) UpdateRumApp(request *UpdateRumAppRequest) (_result *Updat
 //
 // @return UpdateRumFileStatusResponse
 func (client *Client) UpdateRumFileStatusWithOptions(request *UpdateRumFileStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateRumFileStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileName) {
@@ -19013,9 +19514,11 @@ func (client *Client) UpdateRumFileStatus(request *UpdateRumFileStatusRequest) (
 //
 // @return UpdateTimingSyntheticTaskResponse
 func (client *Client) UpdateTimingSyntheticTaskWithOptions(tmpReq *UpdateTimingSyntheticTaskRequest, runtime *dara.RuntimeOptions) (_result *UpdateTimingSyntheticTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateTimingSyntheticTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19143,9 +19646,11 @@ func (client *Client) UpdateTimingSyntheticTask(request *UpdateTimingSyntheticTa
 //
 // @return UpdateWebhookResponse
 func (client *Client) UpdateWebhookWithOptions(request *UpdateWebhookRequest, runtime *dara.RuntimeOptions) (_result *UpdateWebhookResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Body) {
@@ -19239,9 +19744,11 @@ func (client *Client) UpdateWebhook(request *UpdateWebhookRequest) (_result *Upd
 //
 // @return UpgradeAddonReleaseResponse
 func (client *Client) UpgradeAddonReleaseWithOptions(request *UpgradeAddonReleaseRequest, runtime *dara.RuntimeOptions) (_result *UpgradeAddonReleaseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddonVersion) {
@@ -19319,9 +19826,11 @@ func (client *Client) UpgradeAddonRelease(request *UpgradeAddonReleaseRequest) (
 //
 // @return UpgradeEnvironmentFeatureResponse
 func (client *Client) UpgradeEnvironmentFeatureWithOptions(request *UpgradeEnvironmentFeatureRequest, runtime *dara.RuntimeOptions) (_result *UpgradeEnvironmentFeatureResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunLang) {
@@ -19399,9 +19908,11 @@ func (client *Client) UpgradeEnvironmentFeature(request *UpgradeEnvironmentFeatu
 //
 // @return UploadResponse
 func (client *Client) UploadWithOptions(request *UploadRequest, runtime *dara.RuntimeOptions) (_result *UploadResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Edition) {

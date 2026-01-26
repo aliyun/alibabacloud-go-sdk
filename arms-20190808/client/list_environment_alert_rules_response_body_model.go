@@ -108,7 +108,12 @@ func (s *ListEnvironmentAlertRulesResponseBody) SetSuccess(v bool) *ListEnvironm
 }
 
 func (s *ListEnvironmentAlertRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEnvironmentAlertRulesResponseBodyData struct {
@@ -160,7 +165,16 @@ func (s *ListEnvironmentAlertRulesResponseBodyData) SetTotal(v int64) *ListEnvir
 }
 
 func (s *ListEnvironmentAlertRulesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEnvironmentAlertRulesResponseBodyDataRules struct {

@@ -53,7 +53,12 @@ func (s *DescribeContactsResponseBody) SetRequestId(v string) *DescribeContactsR
 }
 
 func (s *DescribeContactsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageBean != nil {
+		if err := s.PageBean.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeContactsResponseBodyPageBean struct {
@@ -124,7 +129,16 @@ func (s *DescribeContactsResponseBodyPageBean) SetTotal(v int64) *DescribeContac
 }
 
 func (s *DescribeContactsResponseBodyPageBean) Validate() error {
-	return dara.Validate(s)
+	if s.AlertContacts != nil {
+		for _, item := range s.AlertContacts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeContactsResponseBodyPageBeanAlertContacts struct {

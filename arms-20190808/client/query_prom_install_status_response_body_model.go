@@ -53,7 +53,12 @@ func (s *QueryPromInstallStatusResponseBody) SetRequestId(v string) *QueryPromIn
 }
 
 func (s *QueryPromInstallStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryPromInstallStatusResponseBodyData struct {

@@ -59,5 +59,10 @@ func (s *SearchAlertRulesResponse) SetBody(v *SearchAlertRulesResponseBody) *Sea
 }
 
 func (s *SearchAlertRulesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

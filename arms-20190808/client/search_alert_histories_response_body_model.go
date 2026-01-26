@@ -53,7 +53,12 @@ func (s *SearchAlertHistoriesResponseBody) SetRequestId(v string) *SearchAlertHi
 }
 
 func (s *SearchAlertHistoriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageBean != nil {
+		if err := s.PageBean.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchAlertHistoriesResponseBodyPageBean struct {
@@ -124,7 +129,16 @@ func (s *SearchAlertHistoriesResponseBodyPageBean) SetTotalCount(v int32) *Searc
 }
 
 func (s *SearchAlertHistoriesResponseBodyPageBean) Validate() error {
-	return dara.Validate(s)
+	if s.AlarmHistories != nil {
+		for _, item := range s.AlarmHistories {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchAlertHistoriesResponseBodyPageBeanAlarmHistories struct {

@@ -104,7 +104,16 @@ func (s *DescribeAddonMetricsResponseBody) SetSuccess(v bool) *DescribeAddonMetr
 }
 
 func (s *DescribeAddonMetricsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAddonMetricsResponseBodyData struct {
@@ -156,7 +165,25 @@ func (s *DescribeAddonMetricsResponseBodyData) SetMetrics(v []*DescribeAddonMetr
 }
 
 func (s *DescribeAddonMetricsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Metrics != nil {
+		for _, item := range s.Metrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAddonMetricsResponseBodyDataLabels struct {
@@ -302,7 +329,16 @@ func (s *DescribeAddonMetricsResponseBodyDataMetrics) SetUnit(v string) *Describ
 }
 
 func (s *DescribeAddonMetricsResponseBodyDataMetrics) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAddonMetricsResponseBodyDataMetricsLabels struct {

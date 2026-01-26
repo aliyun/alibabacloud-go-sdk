@@ -69,6 +69,8 @@ type iCreateOrUpdateAlertRuleRequest interface {
 	GetRegionId() *string
 	SetTags(v []*CreateOrUpdateAlertRuleRequestTags) *CreateOrUpdateAlertRuleRequest
 	GetTags() []*CreateOrUpdateAlertRuleRequestTags
+	SetAliyunLang(v string) *CreateOrUpdateAlertRuleRequest
+	GetAliyunLang() *string
 }
 
 type CreateOrUpdateAlertRuleRequest struct {
@@ -391,7 +393,8 @@ type CreateOrUpdateAlertRuleRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The list of tags.
-	Tags []*CreateOrUpdateAlertRuleRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Tags       []*CreateOrUpdateAlertRuleRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	AliyunLang *string                               `json:"aliyunLang,omitempty" xml:"aliyunLang,omitempty"`
 }
 
 func (s CreateOrUpdateAlertRuleRequest) String() string {
@@ -520,6 +523,10 @@ func (s *CreateOrUpdateAlertRuleRequest) GetRegionId() *string {
 
 func (s *CreateOrUpdateAlertRuleRequest) GetTags() []*CreateOrUpdateAlertRuleRequestTags {
 	return s.Tags
+}
+
+func (s *CreateOrUpdateAlertRuleRequest) GetAliyunLang() *string {
+	return s.AliyunLang
 }
 
 func (s *CreateOrUpdateAlertRuleRequest) SetAlertCheckType(v string) *CreateOrUpdateAlertRuleRequest {
@@ -672,8 +679,31 @@ func (s *CreateOrUpdateAlertRuleRequest) SetTags(v []*CreateOrUpdateAlertRuleReq
 	return s
 }
 
+func (s *CreateOrUpdateAlertRuleRequest) SetAliyunLang(v string) *CreateOrUpdateAlertRuleRequest {
+	s.AliyunLang = &v
+	return s
+}
+
 func (s *CreateOrUpdateAlertRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.MarkTags != nil {
+		for _, item := range s.MarkTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateAlertRuleRequestMarkTags struct {

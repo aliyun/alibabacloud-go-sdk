@@ -87,7 +87,12 @@ func (s *ListTimingSyntheticTasksResponseBody) SetRequestId(v string) *ListTimin
 }
 
 func (s *ListTimingSyntheticTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTimingSyntheticTasksResponseBodyData struct {
@@ -158,7 +163,16 @@ func (s *ListTimingSyntheticTasksResponseBodyData) SetTotal(v int32) *ListTiming
 }
 
 func (s *ListTimingSyntheticTasksResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTimingSyntheticTasksResponseBodyDataItems struct {
@@ -377,7 +391,21 @@ func (s *ListTimingSyntheticTasksResponseBodyDataItems) SetUrl(v string) *ListTi
 }
 
 func (s *ListTimingSyntheticTasksResponseBodyDataItems) Validate() error {
-	return dara.Validate(s)
+	if s.CommonSetting != nil {
+		if err := s.CommonSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting struct {
@@ -516,7 +544,22 @@ func (s *ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting) SetXtraceRe
 }
 
 func (s *ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting) Validate() error {
-	return dara.Validate(s)
+	if s.CustomHost != nil {
+		if err := s.CustomHost.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomPrometheusSetting != nil {
+		if err := s.CustomPrometheusSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomVPCSetting != nil {
+		if err := s.CustomVPCSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHost struct {
@@ -561,7 +604,16 @@ func (s *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHost) S
 }
 
 func (s *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHost) Validate() error {
-	return dara.Validate(s)
+	if s.Hosts != nil {
+		for _, item := range s.Hosts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHostHosts struct {

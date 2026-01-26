@@ -53,7 +53,12 @@ func (s *CreateIntegrationResponseBody) SetRequestId(v string) *CreateIntegratio
 }
 
 func (s *CreateIntegrationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Integration != nil {
+		if err := s.Integration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateIntegrationResponseBodyIntegration struct {

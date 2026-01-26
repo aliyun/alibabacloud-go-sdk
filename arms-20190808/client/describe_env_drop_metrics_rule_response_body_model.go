@@ -20,16 +20,21 @@ type iDescribeEnvDropMetricsRuleResponseBody interface {
 }
 
 type DescribeEnvDropMetricsRuleResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned struct.
 	Data *DescribeEnvDropMetricsRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -82,14 +87,23 @@ func (s *DescribeEnvDropMetricsRuleResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeEnvDropMetricsRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEnvDropMetricsRuleResponseBodyData struct {
+	// The list of discarded metrics. Separate multiple metrics with line feeds.
+	//
 	// example:
 	//
 	// kube_pod_created
 	DropMetrics *string `json:"DropMetrics,omitempty" xml:"DropMetrics,omitempty"`
+	// The name of the discarded metric rule.
+	//
 	// example:
 	//
 	// ruleName1

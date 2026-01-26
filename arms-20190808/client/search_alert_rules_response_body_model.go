@@ -53,7 +53,12 @@ func (s *SearchAlertRulesResponseBody) SetRequestId(v string) *SearchAlertRulesR
 }
 
 func (s *SearchAlertRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageBean != nil {
+		if err := s.PageBean.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchAlertRulesResponseBodyPageBean struct {
@@ -124,7 +129,16 @@ func (s *SearchAlertRulesResponseBodyPageBean) SetTotalCount(v int32) *SearchAle
 }
 
 func (s *SearchAlertRulesResponseBodyPageBean) Validate() error {
-	return dara.Validate(s)
+	if s.AlertRules != nil {
+		for _, item := range s.AlertRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchAlertRulesResponseBodyPageBeanAlertRules struct {
@@ -498,7 +512,27 @@ func (s *SearchAlertRulesResponseBodyPageBeanAlertRules) SetUserId(v string) *Se
 }
 
 func (s *SearchAlertRulesResponseBodyPageBeanAlertRules) Validate() error {
-	return dara.Validate(s)
+	if s.AlarmContext != nil {
+		if err := s.AlarmContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AlertRule != nil {
+		if err := s.AlertRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MetricParam != nil {
+		if err := s.MetricParam.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Notice != nil {
+		if err := s.Notice.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchAlertRulesResponseBodyPageBeanAlertRulesAlarmContext struct {
@@ -614,7 +648,16 @@ func (s *SearchAlertRulesResponseBodyPageBeanAlertRulesAlertRule) SetRules(v []*
 }
 
 func (s *SearchAlertRulesResponseBodyPageBeanAlertRulesAlertRule) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchAlertRulesResponseBodyPageBeanAlertRulesAlertRuleRules struct {
@@ -841,7 +884,16 @@ func (s *SearchAlertRulesResponseBodyPageBeanAlertRulesMetricParam) SetType(v st
 }
 
 func (s *SearchAlertRulesResponseBodyPageBeanAlertRulesMetricParam) Validate() error {
-	return dara.Validate(s)
+	if s.Dimensions != nil {
+		for _, item := range s.Dimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchAlertRulesResponseBodyPageBeanAlertRulesMetricParamDimensions struct {

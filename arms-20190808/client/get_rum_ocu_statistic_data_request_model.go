@@ -175,7 +175,16 @@ func (s *GetRumOcuStatisticDataRequest) SetStartTime(v int64) *GetRumOcuStatisti
 }
 
 func (s *GetRumOcuStatisticDataRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		for _, item := range s.Filter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRumOcuStatisticDataRequestFilter struct {

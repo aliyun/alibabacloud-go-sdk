@@ -223,7 +223,49 @@ func (s *CreateTimingSyntheticTaskRequest) SetTaskType(v int32) *CreateTimingSyn
 }
 
 func (s *CreateTimingSyntheticTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableAssertions != nil {
+		for _, item := range s.AvailableAssertions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.CommonSetting != nil {
+		if err := s.CommonSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomPeriod != nil {
+		if err := s.CustomPeriod.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MonitorConf != nil {
+		if err := s.MonitorConf.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Monitors != nil {
+		for _, item := range s.Monitors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateTimingSyntheticTaskRequestAvailableAssertions struct {
@@ -443,7 +485,22 @@ func (s *CreateTimingSyntheticTaskRequestCommonSetting) SetXtraceRegion(v string
 }
 
 func (s *CreateTimingSyntheticTaskRequestCommonSetting) Validate() error {
-	return dara.Validate(s)
+	if s.CustomHost != nil {
+		if err := s.CustomHost.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomPrometheusSetting != nil {
+		if err := s.CustomPrometheusSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomVPCSetting != nil {
+		if err := s.CustomVPCSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateTimingSyntheticTaskRequestCommonSettingCustomHost struct {
@@ -492,7 +549,16 @@ func (s *CreateTimingSyntheticTaskRequestCommonSettingCustomHost) SetSelectType(
 }
 
 func (s *CreateTimingSyntheticTaskRequestCommonSettingCustomHost) Validate() error {
-	return dara.Validate(s)
+	if s.Hosts != nil {
+		for _, item := range s.Hosts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts struct {
@@ -832,7 +898,42 @@ func (s *CreateTimingSyntheticTaskRequestMonitorConf) SetWebsite(v *CreateTiming
 }
 
 func (s *CreateTimingSyntheticTaskRequestMonitorConf) Validate() error {
-	return dara.Validate(s)
+	if s.ApiHTTP != nil {
+		if err := s.ApiHTTP.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FileDownload != nil {
+		if err := s.FileDownload.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetDNS != nil {
+		if err := s.NetDNS.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetICMP != nil {
+		if err := s.NetICMP.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetTCP != nil {
+		if err := s.NetTCP.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Stream != nil {
+		if err := s.Stream.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Website != nil {
+		if err := s.Website.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateTimingSyntheticTaskRequestMonitorConfApiHTTP struct {
@@ -969,7 +1070,12 @@ func (s *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP) SetTimeout(v int64)
 }
 
 func (s *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP) Validate() error {
-	return dara.Validate(s)
+	if s.RequestBody != nil {
+		if err := s.RequestBody.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody struct {

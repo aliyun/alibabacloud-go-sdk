@@ -53,7 +53,12 @@ func (s *CreateOrUpdateNotificationPolicyResponseBody) SetRequestId(v string) *C
 }
 
 func (s *CreateOrUpdateNotificationPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NotificationPolicy != nil {
+		if err := s.NotificationPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy struct {
@@ -255,7 +260,31 @@ func (s *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy) SetStat
 }
 
 func (s *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.GroupRule != nil {
+		if err := s.GroupRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MatchingRules != nil {
+		for _, item := range s.MatchingRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NotifyRule != nil {
+		if err := s.NotifyRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NotifyTemplate != nil {
+		if err := s.NotifyTemplate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyGroupRule struct {
@@ -341,7 +370,16 @@ func (s *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyMatchingR
 }
 
 func (s *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyMatchingRules) Validate() error {
-	return dara.Validate(s)
+	if s.MatchingConditions != nil {
+		for _, item := range s.MatchingConditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyMatchingRulesMatchingConditions struct {
@@ -480,7 +518,16 @@ func (s *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRul
 }
 
 func (s *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRule) Validate() error {
-	return dara.Validate(s)
+	if s.NotifyObjects != nil {
+		for _, item := range s.NotifyObjects {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRuleNotifyObjects struct {

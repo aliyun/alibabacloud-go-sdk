@@ -87,7 +87,12 @@ func (s *GetPrometheusMonitoringResponseBody) SetRequestId(v string) *GetPrometh
 }
 
 func (s *GetPrometheusMonitoringResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPrometheusMonitoringResponseBodyData struct {

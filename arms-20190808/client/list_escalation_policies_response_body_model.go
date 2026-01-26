@@ -53,7 +53,12 @@ func (s *ListEscalationPoliciesResponseBody) SetRequestId(v string) *ListEscalat
 }
 
 func (s *ListEscalationPoliciesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageBean != nil {
+		if err := s.PageBean.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEscalationPoliciesResponseBodyPageBean struct {
@@ -124,7 +129,16 @@ func (s *ListEscalationPoliciesResponseBodyPageBean) SetTotal(v int64) *ListEsca
 }
 
 func (s *ListEscalationPoliciesResponseBodyPageBean) Validate() error {
-	return dara.Validate(s)
+	if s.EscalationPolicies != nil {
+		for _, item := range s.EscalationPolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEscalationPoliciesResponseBodyPageBeanEscalationPolicies struct {

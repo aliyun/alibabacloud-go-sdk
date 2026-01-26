@@ -53,7 +53,16 @@ func (s *GetTraceResponseBody) SetSpans(v []*GetTraceResponseBodySpans) *GetTrac
 }
 
 func (s *GetTraceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Spans != nil {
+		for _, item := range s.Spans {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTraceResponseBodySpans struct {
@@ -329,7 +338,25 @@ func (s *GetTraceResponseBodySpans) SetTraceID(v string) *GetTraceResponseBodySp
 }
 
 func (s *GetTraceResponseBodySpans) Validate() error {
-	return dara.Validate(s)
+	if s.LogEventList != nil {
+		for _, item := range s.LogEventList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TagEntryList != nil {
+		for _, item := range s.TagEntryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTraceResponseBodySpansLogEventList struct {
@@ -370,7 +397,16 @@ func (s *GetTraceResponseBodySpansLogEventList) SetTimestamp(v int64) *GetTraceR
 }
 
 func (s *GetTraceResponseBodySpansLogEventList) Validate() error {
-	return dara.Validate(s)
+	if s.TagEntryList != nil {
+		for _, item := range s.TagEntryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTraceResponseBodySpansLogEventListTagEntryList struct {

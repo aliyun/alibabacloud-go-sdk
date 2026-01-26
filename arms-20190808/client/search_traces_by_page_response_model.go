@@ -59,5 +59,10 @@ func (s *SearchTracesByPageResponse) SetBody(v *SearchTracesByPageResponseBody) 
 }
 
 func (s *SearchTracesByPageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

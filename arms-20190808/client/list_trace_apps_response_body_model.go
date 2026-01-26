@@ -116,7 +116,16 @@ func (s *ListTraceAppsResponseBody) SetTraceApps(v []*ListTraceAppsResponseBodyT
 }
 
 func (s *ListTraceAppsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TraceApps != nil {
+		for _, item := range s.TraceApps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTraceAppsResponseBodyTraceApps struct {
@@ -401,7 +410,16 @@ func (s *ListTraceAppsResponseBodyTraceApps) SetWorkloadName(v string) *ListTrac
 }
 
 func (s *ListTraceAppsResponseBodyTraceApps) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTraceAppsResponseBodyTraceAppsTags struct {

@@ -108,7 +108,16 @@ func (s *ListEnvironmentKubeResourcesResponseBody) SetSuccess(v bool) *ListEnvir
 }
 
 func (s *ListEnvironmentKubeResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEnvironmentKubeResourcesResponseBodyData struct {
@@ -220,7 +229,12 @@ func (s *ListEnvironmentKubeResourcesResponseBodyData) SetStatus(v interface{}) 
 }
 
 func (s *ListEnvironmentKubeResourcesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Metadata != nil {
+		if err := s.Metadata.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEnvironmentKubeResourcesResponseBodyDataMetadata struct {

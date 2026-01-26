@@ -53,7 +53,12 @@ func (s *CreateOrUpdateIMRobotResponseBody) SetRequestId(v string) *CreateOrUpda
 }
 
 func (s *CreateOrUpdateIMRobotResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AlertRobot != nil {
+		if err := s.AlertRobot.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateIMRobotResponseBodyAlertRobot struct {

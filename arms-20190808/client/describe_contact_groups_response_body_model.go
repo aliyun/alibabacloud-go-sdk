@@ -53,7 +53,12 @@ func (s *DescribeContactGroupsResponseBody) SetRequestId(v string) *DescribeCont
 }
 
 func (s *DescribeContactGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageBean != nil {
+		if err := s.PageBean.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeContactGroupsResponseBodyPageBean struct {
@@ -124,7 +129,16 @@ func (s *DescribeContactGroupsResponseBodyPageBean) SetTotal(v int64) *DescribeC
 }
 
 func (s *DescribeContactGroupsResponseBodyPageBean) Validate() error {
-	return dara.Validate(s)
+	if s.AlertContactGroups != nil {
+		for _, item := range s.AlertContactGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeContactGroupsResponseBodyPageBeanAlertContactGroups struct {
@@ -195,7 +209,16 @@ func (s *DescribeContactGroupsResponseBodyPageBeanAlertContactGroups) SetContact
 }
 
 func (s *DescribeContactGroupsResponseBodyPageBeanAlertContactGroups) Validate() error {
-	return dara.Validate(s)
+	if s.Contacts != nil {
+		for _, item := range s.Contacts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeContactGroupsResponseBodyPageBeanAlertContactGroupsContacts struct {

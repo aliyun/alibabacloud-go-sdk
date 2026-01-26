@@ -212,7 +212,25 @@ func (s *SearchTracesRequest) SetTag(v []*SearchTracesRequestTag) *SearchTracesR
 }
 
 func (s *SearchTracesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ExclusionFilters != nil {
+		for _, item := range s.ExclusionFilters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchTracesRequestExclusionFilters struct {

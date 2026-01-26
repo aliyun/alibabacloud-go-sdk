@@ -59,5 +59,10 @@ func (s *AddIntegrationResponse) SetBody(v *AddIntegrationResponseBody) *AddInte
 }
 
 func (s *AddIntegrationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

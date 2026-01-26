@@ -104,7 +104,12 @@ func (s *InstallAddonResponseBody) SetSuccess(v bool) *InstallAddonResponseBody 
 }
 
 func (s *InstallAddonResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InstallAddonResponseBodyData struct {
@@ -400,7 +405,16 @@ func (s *InstallAddonResponseBodyData) SetVersion(v string) *InstallAddonRespons
 }
 
 func (s *InstallAddonResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InstallAddonResponseBodyDataConditions struct {

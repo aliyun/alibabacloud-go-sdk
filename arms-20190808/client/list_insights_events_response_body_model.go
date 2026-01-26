@@ -53,7 +53,16 @@ func (s *ListInsightsEventsResponseBody) SetRequestId(v string) *ListInsightsEve
 }
 
 func (s *ListInsightsEventsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InsightsEvents != nil {
+		for _, item := range s.InsightsEvents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInsightsEventsResponseBodyInsightsEvents struct {

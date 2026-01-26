@@ -59,5 +59,10 @@ func (s *GetGrafanaWorkspaceResponse) SetBody(v *GetGrafanaWorkspaceResponseBody
 }
 
 func (s *GetGrafanaWorkspaceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

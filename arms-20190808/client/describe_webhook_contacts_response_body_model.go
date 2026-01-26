@@ -53,7 +53,12 @@ func (s *DescribeWebhookContactsResponseBody) SetRequestId(v string) *DescribeWe
 }
 
 func (s *DescribeWebhookContactsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageBean != nil {
+		if err := s.PageBean.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeWebhookContactsResponseBodyPageBean struct {
@@ -124,7 +129,16 @@ func (s *DescribeWebhookContactsResponseBodyPageBean) SetWebhookContacts(v []*De
 }
 
 func (s *DescribeWebhookContactsResponseBodyPageBean) Validate() error {
-	return dara.Validate(s)
+	if s.WebhookContacts != nil {
+		for _, item := range s.WebhookContacts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWebhookContactsResponseBodyPageBeanWebhookContacts struct {
@@ -180,7 +194,12 @@ func (s *DescribeWebhookContactsResponseBodyPageBeanWebhookContacts) SetWebhookN
 }
 
 func (s *DescribeWebhookContactsResponseBodyPageBeanWebhookContacts) Validate() error {
-	return dara.Validate(s)
+	if s.Webhook != nil {
+		if err := s.Webhook.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeWebhookContactsResponseBodyPageBeanWebhookContactsWebhook struct {

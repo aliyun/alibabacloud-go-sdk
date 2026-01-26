@@ -59,5 +59,10 @@ func (s *ListTraceAppsResponse) SetBody(v *ListTraceAppsResponseBody) *ListTrace
 }
 
 func (s *ListTraceAppsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

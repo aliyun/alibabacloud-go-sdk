@@ -59,5 +59,10 @@ func (s *CreateRumUploadFileUrlResponse) SetBody(v *CreateRumUploadFileUrlRespon
 }
 
 func (s *CreateRumUploadFileUrlResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

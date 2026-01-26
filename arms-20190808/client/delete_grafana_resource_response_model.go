@@ -59,5 +59,10 @@ func (s *DeleteGrafanaResourceResponse) SetBody(v *DeleteGrafanaResourceResponse
 }
 
 func (s *DeleteGrafanaResourceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

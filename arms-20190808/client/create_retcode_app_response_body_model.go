@@ -125,7 +125,12 @@ func (s *CreateRetcodeAppResponseBody) SetSuccess(v bool) *CreateRetcodeAppRespo
 }
 
 func (s *CreateRetcodeAppResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RetcodeAppDataBean != nil {
+		if err := s.RetcodeAppDataBean.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateRetcodeAppResponseBodyRetcodeAppDataBean struct {
@@ -196,7 +201,12 @@ func (s *CreateRetcodeAppResponseBodyRetcodeAppDataBean) SetTags(v *CreateRetcod
 }
 
 func (s *CreateRetcodeAppResponseBodyRetcodeAppDataBean) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateRetcodeAppResponseBodyRetcodeAppDataBeanTags struct {
@@ -221,7 +231,16 @@ func (s *CreateRetcodeAppResponseBodyRetcodeAppDataBeanTags) SetTags(v []*Create
 }
 
 func (s *CreateRetcodeAppResponseBodyRetcodeAppDataBeanTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateRetcodeAppResponseBodyRetcodeAppDataBeanTagsTags struct {

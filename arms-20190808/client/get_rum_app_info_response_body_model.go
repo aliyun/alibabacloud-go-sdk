@@ -125,7 +125,12 @@ func (s *GetRumAppInfoResponseBody) SetSuccess(v bool) *GetRumAppInfoResponseBod
 }
 
 func (s *GetRumAppInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRumAppInfoResponseBodyData struct {
@@ -468,7 +473,30 @@ func (s *GetRumAppInfoResponseBodyData) SetWebSDKConfigJson(v string) *GetRumApp
 }
 
 func (s *GetRumAppInfoResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.BonreeSDKConfig != nil {
+		if err := s.BonreeSDKConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServiceDomainConfigs != nil {
+		for _, item := range s.ServiceDomainConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRumAppInfoResponseBodyDataBonreeSDKConfig struct {
@@ -505,7 +533,17 @@ func (s *GetRumAppInfoResponseBodyDataBonreeSDKConfig) SetSamplingConfig(v *GetR
 }
 
 func (s *GetRumAppInfoResponseBodyDataBonreeSDKConfig) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleConfig != nil {
+		if err := s.ModuleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SamplingConfig != nil {
+		if err := s.SamplingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRumAppInfoResponseBodyDataBonreeSDKConfigModuleConfig struct {

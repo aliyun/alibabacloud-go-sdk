@@ -116,7 +116,12 @@ func (s *GetAgentDownloadUrlV2ResponseBody) SetSuccess(v bool) *GetAgentDownload
 }
 
 func (s *GetAgentDownloadUrlV2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAgentDownloadUrlV2ResponseBodyData struct {

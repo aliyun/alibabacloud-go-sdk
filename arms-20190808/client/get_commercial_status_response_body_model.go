@@ -53,7 +53,12 @@ func (s *GetCommercialStatusResponseBody) SetUserAndCommodityStatus(v *GetCommer
 }
 
 func (s *GetCommercialStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserAndCommodityStatus != nil {
+		if err := s.UserAndCommodityStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCommercialStatusResponseBodyUserAndCommodityStatus struct {

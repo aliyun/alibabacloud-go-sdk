@@ -125,7 +125,12 @@ func (s *QueryCommercialUsageResponseBody) SetSuccess(v bool) *QueryCommercialUs
 }
 
 func (s *QueryCommercialUsageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryCommercialUsageResponseBodyData struct {

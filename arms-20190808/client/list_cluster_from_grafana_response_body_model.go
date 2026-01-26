@@ -53,7 +53,16 @@ func (s *ListClusterFromGrafanaResponseBody) SetRequestId(v string) *ListCluster
 }
 
 func (s *ListClusterFromGrafanaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PromClusterList != nil {
+		for _, item := range s.PromClusterList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListClusterFromGrafanaResponseBodyPromClusterList struct {

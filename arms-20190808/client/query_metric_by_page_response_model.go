@@ -59,5 +59,10 @@ func (s *QueryMetricByPageResponse) SetBody(v *QueryMetricByPageResponseBody) *Q
 }
 
 func (s *QueryMetricByPageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

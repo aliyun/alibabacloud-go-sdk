@@ -53,7 +53,12 @@ func (s *GetTraceAppResponseBody) SetTraceApp(v *GetTraceAppResponseBodyTraceApp
 }
 
 func (s *GetTraceAppResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TraceApp != nil {
+		if err := s.TraceApp.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTraceAppResponseBodyTraceApp struct {
@@ -293,7 +298,16 @@ func (s *GetTraceAppResponseBodyTraceApp) SetUserId(v string) *GetTraceAppRespon
 }
 
 func (s *GetTraceAppResponseBodyTraceApp) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTraceAppResponseBodyTraceAppTags struct {

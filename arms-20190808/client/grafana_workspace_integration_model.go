@@ -95,5 +95,14 @@ func (s *GrafanaWorkspaceIntegration) SetSupportRegions(v []*string) *GrafanaWor
 }
 
 func (s *GrafanaWorkspaceIntegration) Validate() error {
-	return dara.Validate(s)
+	if s.Previews != nil {
+		for _, item := range s.Previews {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

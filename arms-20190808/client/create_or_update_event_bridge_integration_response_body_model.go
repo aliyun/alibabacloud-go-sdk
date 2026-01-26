@@ -53,7 +53,12 @@ func (s *CreateOrUpdateEventBridgeIntegrationResponseBody) SetRequestId(v string
 }
 
 func (s *CreateOrUpdateEventBridgeIntegrationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EventBridgeIntegration != nil {
+		if err := s.EventBridgeIntegration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateEventBridgeIntegrationResponseBodyEventBridgeIntegration struct {

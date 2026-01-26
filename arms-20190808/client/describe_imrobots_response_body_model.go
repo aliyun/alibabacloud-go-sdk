@@ -53,7 +53,12 @@ func (s *DescribeIMRobotsResponseBody) SetRequestId(v string) *DescribeIMRobotsR
 }
 
 func (s *DescribeIMRobotsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageBean != nil {
+		if err := s.PageBean.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeIMRobotsResponseBodyPageBean struct {
@@ -124,7 +129,16 @@ func (s *DescribeIMRobotsResponseBodyPageBean) SetTotal(v int64) *DescribeIMRobo
 }
 
 func (s *DescribeIMRobotsResponseBodyPageBean) Validate() error {
-	return dara.Validate(s)
+	if s.AlertIMRobots != nil {
+		for _, item := range s.AlertIMRobots {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIMRobotsResponseBodyPageBeanAlertIMRobots struct {
@@ -278,7 +292,16 @@ func (s *DescribeIMRobotsResponseBodyPageBeanAlertIMRobots) SetType(v string) *D
 }
 
 func (s *DescribeIMRobotsResponseBodyPageBeanAlertIMRobots) Validate() error {
-	return dara.Validate(s)
+	if s.DispatchRules != nil {
+		for _, item := range s.DispatchRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIMRobotsResponseBodyPageBeanAlertIMRobotsDispatchRules struct {

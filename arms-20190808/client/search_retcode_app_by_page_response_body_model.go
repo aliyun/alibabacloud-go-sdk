@@ -53,7 +53,12 @@ func (s *SearchRetcodeAppByPageResponseBody) SetRequestId(v string) *SearchRetco
 }
 
 func (s *SearchRetcodeAppByPageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageBean != nil {
+		if err := s.PageBean.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchRetcodeAppByPageResponseBodyPageBean struct {
@@ -124,7 +129,16 @@ func (s *SearchRetcodeAppByPageResponseBodyPageBean) SetTotalCount(v int32) *Sea
 }
 
 func (s *SearchRetcodeAppByPageResponseBodyPageBean) Validate() error {
-	return dara.Validate(s)
+	if s.RetcodeApps != nil {
+		for _, item := range s.RetcodeApps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchRetcodeAppByPageResponseBodyPageBeanRetcodeApps struct {
@@ -331,7 +345,16 @@ func (s *SearchRetcodeAppByPageResponseBodyPageBeanRetcodeApps) SetUserId(v stri
 }
 
 func (s *SearchRetcodeAppByPageResponseBodyPageBeanRetcodeApps) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchRetcodeAppByPageResponseBodyPageBeanRetcodeAppsTags struct {

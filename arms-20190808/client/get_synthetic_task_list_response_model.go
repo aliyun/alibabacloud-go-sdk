@@ -59,5 +59,10 @@ func (s *GetSyntheticTaskListResponse) SetBody(v *GetSyntheticTaskListResponseBo
 }
 
 func (s *GetSyntheticTaskListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

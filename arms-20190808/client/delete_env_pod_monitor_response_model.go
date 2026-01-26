@@ -59,5 +59,10 @@ func (s *DeleteEnvPodMonitorResponse) SetBody(v *DeleteEnvPodMonitorResponseBody
 }
 
 func (s *DeleteEnvPodMonitorResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

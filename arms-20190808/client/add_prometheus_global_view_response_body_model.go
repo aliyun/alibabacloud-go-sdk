@@ -87,7 +87,12 @@ func (s *AddPrometheusGlobalViewResponseBody) SetRequestId(v string) *AddPrometh
 }
 
 func (s *AddPrometheusGlobalViewResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddPrometheusGlobalViewResponseBodyData struct {
@@ -147,7 +152,12 @@ func (s *AddPrometheusGlobalViewResponseBodyData) SetSuccess(v bool) *AddPrometh
 }
 
 func (s *AddPrometheusGlobalViewResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Info != nil {
+		if err := s.Info.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddPrometheusGlobalViewResponseBodyDataInfo struct {

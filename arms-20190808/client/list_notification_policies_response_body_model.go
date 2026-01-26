@@ -53,7 +53,12 @@ func (s *ListNotificationPoliciesResponseBody) SetRequestId(v string) *ListNotif
 }
 
 func (s *ListNotificationPoliciesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageBean != nil {
+		if err := s.PageBean.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListNotificationPoliciesResponseBodyPageBean struct {
@@ -124,7 +129,16 @@ func (s *ListNotificationPoliciesResponseBodyPageBean) SetTotal(v int64) *ListNo
 }
 
 func (s *ListNotificationPoliciesResponseBodyPageBean) Validate() error {
-	return dara.Validate(s)
+	if s.NotificationPolicies != nil {
+		for _, item := range s.NotificationPolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies struct {
@@ -326,7 +340,31 @@ func (s *ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies) SetSt
 }
 
 func (s *ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.GroupRule != nil {
+		if err := s.GroupRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MatchingRules != nil {
+		for _, item := range s.MatchingRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NotifyRule != nil {
+		if err := s.NotifyRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NotifyTemplate != nil {
+		if err := s.NotifyTemplate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesGroupRule struct {
@@ -412,7 +450,16 @@ func (s *ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesMatchin
 }
 
 func (s *ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesMatchingRules) Validate() error {
-	return dara.Validate(s)
+	if s.MatchingConditions != nil {
+		for _, item := range s.MatchingConditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesMatchingRulesMatchingConditions struct {
@@ -551,7 +598,16 @@ func (s *ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyR
 }
 
 func (s *ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyRule) Validate() error {
-	return dara.Validate(s)
+	if s.NotifyObjects != nil {
+		for _, item := range s.NotifyObjects {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyRuleNotifyObjects struct {

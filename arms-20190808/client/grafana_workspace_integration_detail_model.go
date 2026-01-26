@@ -59,5 +59,14 @@ func (s *GrafanaWorkspaceIntegrationDetail) SetStatus(v string) *GrafanaWorkspac
 }
 
 func (s *GrafanaWorkspaceIntegrationDetail) Validate() error {
-	return dara.Validate(s)
+	if s.DataSources != nil {
+		for _, item := range s.DataSources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *GetOnCallSchedulesDetailResponseBody) SetRequestId(v string) *GetOnCall
 }
 
 func (s *GetOnCallSchedulesDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOnCallSchedulesDetailResponseBodyData struct {
@@ -172,7 +177,34 @@ func (s *GetOnCallSchedulesDetailResponseBodyData) SetScheduleLayers(v []*GetOnC
 }
 
 func (s *GetOnCallSchedulesDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.RenderedFinnalEntries != nil {
+		for _, item := range s.RenderedFinnalEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RenderedSubstitudeEntries != nil {
+		for _, item := range s.RenderedSubstitudeEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ScheduleLayers != nil {
+		for _, item := range s.ScheduleLayers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntries struct {
@@ -228,7 +260,12 @@ func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntries) SetStart
 }
 
 func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntries) Validate() error {
-	return dara.Validate(s)
+	if s.SimpleContact != nil {
+		if err := s.SimpleContact.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntriesSimpleContact struct {
@@ -329,7 +366,12 @@ func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntries) SetSimple
 }
 
 func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntries) Validate() error {
-	return dara.Validate(s)
+	if s.SimpleContact != nil {
+		if err := s.SimpleContact.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntriesSimpleContact struct {
@@ -430,7 +472,12 @@ func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntries) SetS
 }
 
 func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntries) Validate() error {
-	return dara.Validate(s)
+	if s.SimpleContact != nil {
+		if err := s.SimpleContact.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntriesSimpleContact struct {
@@ -563,7 +610,16 @@ func (s *GetOnCallSchedulesDetailResponseBodyDataScheduleLayers) SetStartTime(v 
 }
 
 func (s *GetOnCallSchedulesDetailResponseBodyDataScheduleLayers) Validate() error {
-	return dara.Validate(s)
+	if s.Restrictions != nil {
+		for _, item := range s.Restrictions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOnCallSchedulesDetailResponseBodyDataScheduleLayersRestrictions struct {

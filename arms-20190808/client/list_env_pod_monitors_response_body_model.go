@@ -87,7 +87,16 @@ func (s *ListEnvPodMonitorsResponseBody) SetRequestId(v string) *ListEnvPodMonit
 }
 
 func (s *ListEnvPodMonitorsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEnvPodMonitorsResponseBodyData struct {
@@ -263,7 +272,16 @@ func (s *ListEnvPodMonitorsResponseBodyData) SetStatus(v string) *ListEnvPodMoni
 }
 
 func (s *ListEnvPodMonitorsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Endpoints != nil {
+		for _, item := range s.Endpoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEnvPodMonitorsResponseBodyDataEndpoints struct {

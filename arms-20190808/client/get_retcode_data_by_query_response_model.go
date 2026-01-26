@@ -59,5 +59,10 @@ func (s *GetRetcodeDataByQueryResponse) SetBody(v *GetRetcodeDataByQueryResponse
 }
 
 func (s *GetRetcodeDataByQueryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

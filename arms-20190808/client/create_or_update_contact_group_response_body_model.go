@@ -53,7 +53,12 @@ func (s *CreateOrUpdateContactGroupResponseBody) SetRequestId(v string) *CreateO
 }
 
 func (s *CreateOrUpdateContactGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AlertContactGroup != nil {
+		if err := s.AlertContactGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateContactGroupResponseBodyAlertContactGroup struct {

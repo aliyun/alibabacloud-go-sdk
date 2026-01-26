@@ -108,7 +108,16 @@ func (s *ListAddonsResponseBody) SetSuccess(v bool) *ListAddonsResponseBody {
 }
 
 func (s *ListAddonsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAddonsResponseBodyData struct {
@@ -317,7 +326,25 @@ func (s *ListAddonsResponseBodyData) SetWeight(v string) *ListAddonsResponseBody
 }
 
 func (s *ListAddonsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Dashboards != nil {
+		for _, item := range s.Dashboards {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Environments != nil {
+		for _, item := range s.Environments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAddonsResponseBodyDataDashboards struct {
@@ -474,7 +501,17 @@ func (s *ListAddonsResponseBodyDataEnvironments) SetPolicies(v *ListAddonsRespon
 }
 
 func (s *ListAddonsResponseBodyDataEnvironments) Validate() error {
-	return dara.Validate(s)
+	if s.Dependencies != nil {
+		if err := s.Dependencies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Policies != nil {
+		if err := s.Policies.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAddonsResponseBodyDataEnvironmentsDependencies struct {
@@ -634,7 +671,21 @@ func (s *ListAddonsResponseBodyDataEnvironmentsPolicies) SetTargetAddonName(v st
 }
 
 func (s *ListAddonsResponseBodyDataEnvironmentsPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.MetricCheckRule != nil {
+		if err := s.MetricCheckRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Protocols != nil {
+		for _, item := range s.Protocols {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAddonsResponseBodyDataEnvironmentsPoliciesMetricCheckRule struct {

@@ -59,5 +59,10 @@ func (s *GetExploreUrlResponse) SetBody(v *GetExploreUrlResponseBody) *GetExplor
 }
 
 func (s *GetExploreUrlResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

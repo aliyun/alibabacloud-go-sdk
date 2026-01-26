@@ -59,5 +59,10 @@ func (s *GetAuthTokenResponse) SetBody(v *GetAuthTokenResponseBody) *GetAuthToke
 }
 
 func (s *GetAuthTokenResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

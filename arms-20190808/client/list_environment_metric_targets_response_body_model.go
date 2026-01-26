@@ -108,7 +108,12 @@ func (s *ListEnvironmentMetricTargetsResponseBody) SetSuccess(v bool) *ListEnvir
 }
 
 func (s *ListEnvironmentMetricTargetsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEnvironmentMetricTargetsResponseBodyData struct {
@@ -145,7 +150,25 @@ func (s *ListEnvironmentMetricTargetsResponseBodyData) SetDroppedTargets(v []*Li
 }
 
 func (s *ListEnvironmentMetricTargetsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ActiveTargets != nil {
+		for _, item := range s.ActiveTargets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DroppedTargets != nil {
+		for _, item := range s.DroppedTargets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEnvironmentMetricTargetsResponseBodyDataActiveTargets struct {

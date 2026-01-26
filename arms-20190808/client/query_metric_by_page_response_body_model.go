@@ -116,7 +116,12 @@ func (s *QueryMetricByPageResponseBody) SetSuccess(v bool) *QueryMetricByPageRes
 }
 
 func (s *QueryMetricByPageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMetricByPageResponseBodyData struct {

@@ -223,7 +223,16 @@ func (s *QueryCommercialUsageRequest) SetStartTime(v int64) *QueryCommercialUsag
 }
 
 func (s *QueryCommercialUsageRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AdvancedFilters != nil {
+		for _, item := range s.AdvancedFilters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryCommercialUsageRequestAdvancedFilters struct {

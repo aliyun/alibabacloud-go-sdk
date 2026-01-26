@@ -104,7 +104,12 @@ func (s *DescribeEnvironmentFeatureResponseBody) SetSuccess(v bool) *DescribeEnv
 }
 
 func (s *DescribeEnvironmentFeatureResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEnvironmentFeatureResponseBodyData struct {
@@ -156,7 +161,17 @@ func (s *DescribeEnvironmentFeatureResponseBodyData) SetConfig(v string) *Descri
 }
 
 func (s *DescribeEnvironmentFeatureResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Feature != nil {
+		if err := s.Feature.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FeatureStatus != nil {
+		if err := s.FeatureStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEnvironmentFeatureResponseBodyDataFeature struct {
@@ -473,7 +488,16 @@ func (s *DescribeEnvironmentFeatureResponseBodyDataFeatureStatus) SetVSwitchId(v
 }
 
 func (s *DescribeEnvironmentFeatureResponseBodyDataFeatureStatus) Validate() error {
-	return dara.Validate(s)
+	if s.FeatureContainers != nil {
+		for _, item := range s.FeatureContainers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEnvironmentFeatureResponseBodyDataFeatureStatusFeatureContainers struct {

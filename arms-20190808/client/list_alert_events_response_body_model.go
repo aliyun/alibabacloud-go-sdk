@@ -53,7 +53,12 @@ func (s *ListAlertEventsResponseBody) SetRequestId(v string) *ListAlertEventsRes
 }
 
 func (s *ListAlertEventsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageBean != nil {
+		if err := s.PageBean.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAlertEventsResponseBodyPageBean struct {
@@ -124,7 +129,16 @@ func (s *ListAlertEventsResponseBodyPageBean) SetTotal(v int64) *ListAlertEvents
 }
 
 func (s *ListAlertEventsResponseBodyPageBean) Validate() error {
-	return dara.Validate(s)
+	if s.Events != nil {
+		for _, item := range s.Events {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAlertEventsResponseBodyPageBeanEvents struct {
@@ -387,7 +401,25 @@ func (s *ListAlertEventsResponseBodyPageBeanEvents) SetTriggerCount(v int64) *Li
 }
 
 func (s *ListAlertEventsResponseBodyPageBeanEvents) Validate() error {
-	return dara.Validate(s)
+	if s.Alarms != nil {
+		for _, item := range s.Alarms {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NotificationPolicies != nil {
+		for _, item := range s.NotificationPolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAlertEventsResponseBodyPageBeanEventsAlarms struct {

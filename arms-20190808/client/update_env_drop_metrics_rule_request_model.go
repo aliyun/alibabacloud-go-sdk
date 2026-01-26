@@ -20,10 +20,18 @@ type iUpdateEnvDropMetricsRuleRequest interface {
 }
 
 type UpdateEnvDropMetricsRuleRequest struct {
+	// The language. Valid values:
+	//
+	// 	- zh (default)
+	//
+	// 	- en
+	//
 	// example:
 	//
 	// zh
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// The metric to be discarded. Separate multiple metrics with line feeds.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -34,12 +42,16 @@ type UpdateEnvDropMetricsRuleRequest struct {
 	//
 	// metric_3
 	DropMetrics *string `json:"DropMetrics,omitempty" xml:"DropMetrics,omitempty"`
+	// The environment ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// env-xxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

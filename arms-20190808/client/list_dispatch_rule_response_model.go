@@ -59,5 +59,10 @@ func (s *ListDispatchRuleResponse) SetBody(v *ListDispatchRuleResponseBody) *Lis
 }
 
 func (s *ListDispatchRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

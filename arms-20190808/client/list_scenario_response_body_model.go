@@ -53,7 +53,16 @@ func (s *ListScenarioResponseBody) SetRequestId(v string) *ListScenarioResponseB
 }
 
 func (s *ListScenarioResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ArmsScenarios != nil {
+		for _, item := range s.ArmsScenarios {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListScenarioResponseBodyArmsScenarios struct {

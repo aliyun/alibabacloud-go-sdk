@@ -53,7 +53,12 @@ func (s *ListOnCallSchedulesResponseBody) SetRequestId(v string) *ListOnCallSche
 }
 
 func (s *ListOnCallSchedulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageBean != nil {
+		if err := s.PageBean.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListOnCallSchedulesResponseBodyPageBean struct {
@@ -124,7 +129,16 @@ func (s *ListOnCallSchedulesResponseBodyPageBean) SetTotal(v int64) *ListOnCallS
 }
 
 func (s *ListOnCallSchedulesResponseBodyPageBean) Validate() error {
-	return dara.Validate(s)
+	if s.OnCallSchedules != nil {
+		for _, item := range s.OnCallSchedules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListOnCallSchedulesResponseBodyPageBeanOnCallSchedules struct {

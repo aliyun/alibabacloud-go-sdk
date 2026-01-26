@@ -104,7 +104,12 @@ func (s *ListAddonReleasesResponseBody) SetSuccess(v bool) *ListAddonReleasesRes
 }
 
 func (s *ListAddonReleasesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAddonReleasesResponseBodyData struct {
@@ -145,7 +150,16 @@ func (s *ListAddonReleasesResponseBodyData) SetTotal(v int64) *ListAddonReleases
 }
 
 func (s *ListAddonReleasesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Releases != nil {
+		for _, item := range s.Releases {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAddonReleasesResponseBodyDataReleases struct {
@@ -471,7 +485,16 @@ func (s *ListAddonReleasesResponseBodyDataReleases) SetVersion(v string) *ListAd
 }
 
 func (s *ListAddonReleasesResponseBodyDataReleases) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAddonReleasesResponseBodyDataReleasesConditions struct {

@@ -53,7 +53,12 @@ func (s *GetRetcodeAppByPidResponseBody) SetRetcodeApp(v *GetRetcodeAppByPidResp
 }
 
 func (s *GetRetcodeAppByPidResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RetcodeApp != nil {
+		if err := s.RetcodeApp.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRetcodeAppByPidResponseBodyRetcodeApp struct {
@@ -166,7 +171,16 @@ func (s *GetRetcodeAppByPidResponseBodyRetcodeApp) SetTags(v []*GetRetcodeAppByP
 }
 
 func (s *GetRetcodeAppByPidResponseBodyRetcodeApp) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRetcodeAppByPidResponseBodyRetcodeAppTags struct {

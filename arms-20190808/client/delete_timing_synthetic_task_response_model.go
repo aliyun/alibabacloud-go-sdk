@@ -59,5 +59,10 @@ func (s *DeleteTimingSyntheticTaskResponse) SetBody(v *DeleteTimingSyntheticTask
 }
 
 func (s *DeleteTimingSyntheticTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

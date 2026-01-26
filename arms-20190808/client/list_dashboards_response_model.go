@@ -59,5 +59,10 @@ func (s *ListDashboardsResponse) SetBody(v *ListDashboardsResponseBody) *ListDas
 }
 
 func (s *ListDashboardsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

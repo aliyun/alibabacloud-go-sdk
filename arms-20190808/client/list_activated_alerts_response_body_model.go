@@ -65,7 +65,12 @@ func (s *ListActivatedAlertsResponseBody) SetRequestId(v string) *ListActivatedA
 }
 
 func (s *ListActivatedAlertsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Page != nil {
+		if err := s.Page.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListActivatedAlertsResponseBodyPage struct {
@@ -136,7 +141,16 @@ func (s *ListActivatedAlertsResponseBodyPage) SetTotal(v int32) *ListActivatedAl
 }
 
 func (s *ListActivatedAlertsResponseBodyPage) Validate() error {
-	return dara.Validate(s)
+	if s.Alerts != nil {
+		for _, item := range s.Alerts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListActivatedAlertsResponseBodyPageAlerts struct {
@@ -405,7 +419,16 @@ func (s *ListActivatedAlertsResponseBodyPageAlerts) SetStatus(v string) *ListAct
 }
 
 func (s *ListActivatedAlertsResponseBodyPageAlerts) Validate() error {
-	return dara.Validate(s)
+	if s.DispatchRules != nil {
+		for _, item := range s.DispatchRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListActivatedAlertsResponseBodyPageAlertsDispatchRules struct {

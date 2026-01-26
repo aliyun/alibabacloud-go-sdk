@@ -53,7 +53,12 @@ func (s *SearchAlertContactResponseBody) SetRequestId(v string) *SearchAlertCont
 }
 
 func (s *SearchAlertContactResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageBean != nil {
+		if err := s.PageBean.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchAlertContactResponseBodyPageBean struct {
@@ -124,7 +129,16 @@ func (s *SearchAlertContactResponseBodyPageBean) SetTotalCount(v int32) *SearchA
 }
 
 func (s *SearchAlertContactResponseBodyPageBean) Validate() error {
-	return dara.Validate(s)
+	if s.Contacts != nil {
+		for _, item := range s.Contacts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchAlertContactResponseBodyPageBeanContacts struct {

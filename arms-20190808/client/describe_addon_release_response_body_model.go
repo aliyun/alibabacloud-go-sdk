@@ -36,7 +36,7 @@ type DescribeAddonReleaseResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// ID of the request.
 	//
 	// example:
 	//
@@ -104,7 +104,12 @@ func (s *DescribeAddonReleaseResponseBody) SetSuccess(v string) *DescribeAddonRe
 }
 
 func (s *DescribeAddonReleaseResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAddonReleaseResponseBodyData struct {
@@ -145,7 +150,12 @@ func (s *DescribeAddonReleaseResponseBodyData) SetRelease(v *DescribeAddonReleas
 }
 
 func (s *DescribeAddonReleaseResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Release != nil {
+		if err := s.Release.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAddonReleaseResponseBodyDataRelease struct {
@@ -437,7 +447,16 @@ func (s *DescribeAddonReleaseResponseBodyDataRelease) SetVersion(v string) *Desc
 }
 
 func (s *DescribeAddonReleaseResponseBodyDataRelease) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAddonReleaseResponseBodyDataReleaseConditions struct {

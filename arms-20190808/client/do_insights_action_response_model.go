@@ -59,5 +59,10 @@ func (s *DoInsightsActionResponse) SetBody(v *DoInsightsActionResponseBody) *DoI
 }
 
 func (s *DoInsightsActionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

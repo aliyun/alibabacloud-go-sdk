@@ -59,5 +59,10 @@ func (s *CreateRumAppResponse) SetBody(v *CreateRumAppResponseBody) *CreateRumAp
 }
 
 func (s *CreateRumAppResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

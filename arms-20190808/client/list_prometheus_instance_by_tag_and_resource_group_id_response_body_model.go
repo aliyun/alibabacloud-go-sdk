@@ -87,7 +87,12 @@ func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponseBody) SetRequestId
 }
 
 func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyData struct {
@@ -113,7 +118,16 @@ func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyData) SetProme
 }
 
 func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.PrometheusInstances != nil {
+		for _, item := range s.PrometheusInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances struct {
@@ -485,7 +499,16 @@ func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheus
 }
 
 func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstancesTags struct {

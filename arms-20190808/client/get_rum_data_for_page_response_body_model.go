@@ -125,7 +125,12 @@ func (s *GetRumDataForPageResponseBody) SetSuccess(v string) *GetRumDataForPageR
 }
 
 func (s *GetRumDataForPageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRumDataForPageResponseBodyData struct {

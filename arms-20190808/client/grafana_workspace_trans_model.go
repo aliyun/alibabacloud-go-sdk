@@ -143,5 +143,14 @@ func (s *GrafanaWorkspaceTrans) SetUserId(v string) *GrafanaWorkspaceTrans {
 }
 
 func (s *GrafanaWorkspaceTrans) Validate() error {
-	return dara.Validate(s)
+	if s.TransDetails != nil {
+		for _, item := range s.TransDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

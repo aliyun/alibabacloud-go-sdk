@@ -59,5 +59,10 @@ func (s *DeletePrometheusMonitoringResponse) SetBody(v *DeletePrometheusMonitori
 }
 
 func (s *DeletePrometheusMonitoringResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

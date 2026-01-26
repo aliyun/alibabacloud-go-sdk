@@ -53,7 +53,12 @@ func (s *GetRetcodeLogstoreResponseBody) SetRequestId(v string) *GetRetcodeLogst
 }
 
 func (s *GetRetcodeLogstoreResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRetcodeLogstoreResponseBodyData struct {
@@ -109,7 +114,12 @@ func (s *GetRetcodeLogstoreResponseBodyData) SetStatus(v string) *GetRetcodeLogs
 }
 
 func (s *GetRetcodeLogstoreResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.RetcodeSLSConfig != nil {
+		if err := s.RetcodeSLSConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRetcodeLogstoreResponseBodyDataRetcodeSLSConfig struct {

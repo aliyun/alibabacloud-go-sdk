@@ -59,5 +59,10 @@ func (s *InitEnvironmentResponse) SetBody(v *InitEnvironmentResponseBody) *InitE
 }
 
 func (s *InitEnvironmentResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

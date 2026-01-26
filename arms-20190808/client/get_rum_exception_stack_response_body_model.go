@@ -125,7 +125,12 @@ func (s *GetRumExceptionStackResponseBody) SetSuccess(v string) *GetRumException
 }
 
 func (s *GetRumExceptionStackResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRumExceptionStackResponseBodyData struct {
@@ -252,7 +257,16 @@ func (s *GetRumExceptionStackResponseBodyData) SetUuid(v string) *GetRumExceptio
 }
 
 func (s *GetRumExceptionStackResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ThreadInfoList != nil {
+		for _, item := range s.ThreadInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRumExceptionStackResponseBodyDataThreadInfoList struct {

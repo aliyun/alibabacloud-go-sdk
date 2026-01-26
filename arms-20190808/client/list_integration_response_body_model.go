@@ -53,7 +53,12 @@ func (s *ListIntegrationResponseBody) SetRequestId(v string) *ListIntegrationRes
 }
 
 func (s *ListIntegrationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListIntegrationResponseBodyPageInfo struct {
@@ -124,7 +129,16 @@ func (s *ListIntegrationResponseBodyPageInfo) SetTotal(v int64) *ListIntegration
 }
 
 func (s *ListIntegrationResponseBodyPageInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Integrations != nil {
+		for _, item := range s.Integrations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIntegrationResponseBodyPageInfoIntegrations struct {
@@ -278,7 +292,12 @@ func (s *ListIntegrationResponseBodyPageInfoIntegrations) SetState(v bool) *List
 }
 
 func (s *ListIntegrationResponseBodyPageInfoIntegrations) Validate() error {
-	return dara.Validate(s)
+	if s.IntegrationDetail != nil {
+		if err := s.IntegrationDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail struct {

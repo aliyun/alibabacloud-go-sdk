@@ -53,7 +53,16 @@ func (s *ListDispatchRuleResponseBody) SetRequestId(v string) *ListDispatchRuleR
 }
 
 func (s *ListDispatchRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DispatchRules != nil {
+		for _, item := range s.DispatchRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDispatchRuleResponseBodyDispatchRules struct {

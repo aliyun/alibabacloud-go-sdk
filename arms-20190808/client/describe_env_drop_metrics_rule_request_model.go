@@ -16,12 +16,16 @@ type iDescribeEnvDropMetricsRuleRequest interface {
 }
 
 type DescribeEnvDropMetricsRuleRequest struct {
+	// The environment ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// env-xxxxxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

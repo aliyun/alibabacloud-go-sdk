@@ -53,7 +53,12 @@ func (s *GetSyntheticTaskListResponseBody) SetRequestId(v string) *GetSyntheticT
 }
 
 func (s *GetSyntheticTaskListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSyntheticTaskListResponseBodyPageInfo struct {
@@ -259,7 +264,16 @@ func (s *GetSyntheticTaskListResponseBodyPageInfo) SetTotal(v int64) *GetSynthet
 }
 
 func (s *GetSyntheticTaskListResponseBodyPageInfo) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSyntheticTaskListResponseBodyPageInfoList struct {

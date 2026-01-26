@@ -53,7 +53,12 @@ func (s *SearchTraceAppByPageResponseBody) SetRequestId(v string) *SearchTraceAp
 }
 
 func (s *SearchTraceAppByPageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageBean != nil {
+		if err := s.PageBean.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchTraceAppByPageResponseBodyPageBean struct {
@@ -124,7 +129,16 @@ func (s *SearchTraceAppByPageResponseBodyPageBean) SetTraceApps(v []*SearchTrace
 }
 
 func (s *SearchTraceAppByPageResponseBodyPageBean) Validate() error {
-	return dara.Validate(s)
+	if s.TraceApps != nil {
+		for _, item := range s.TraceApps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchTraceAppByPageResponseBodyPageBeanTraceApps struct {
@@ -319,7 +333,16 @@ func (s *SearchTraceAppByPageResponseBodyPageBeanTraceApps) SetUserId(v string) 
 }
 
 func (s *SearchTraceAppByPageResponseBodyPageBeanTraceApps) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchTraceAppByPageResponseBodyPageBeanTraceAppsTags struct {

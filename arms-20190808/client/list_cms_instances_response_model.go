@@ -59,5 +59,10 @@ func (s *ListCmsInstancesResponse) SetBody(v *ListCmsInstancesResponseBody) *Lis
 }
 
 func (s *ListCmsInstancesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *DeleteScenarioResponse) SetBody(v *DeleteScenarioResponseBody) *DeleteS
 }
 
 func (s *DeleteScenarioResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

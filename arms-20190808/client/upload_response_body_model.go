@@ -53,7 +53,12 @@ func (s *UploadResponseBody) SetUploadResult(v *UploadResponseBodyUploadResult) 
 }
 
 func (s *UploadResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UploadResult != nil {
+		if err := s.UploadResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UploadResponseBodyUploadResult struct {

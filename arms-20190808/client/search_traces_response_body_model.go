@@ -53,7 +53,16 @@ func (s *SearchTracesResponseBody) SetTraceInfos(v []*SearchTracesResponseBodyTr
 }
 
 func (s *SearchTracesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TraceInfos != nil {
+		for _, item := range s.TraceInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchTracesResponseBodyTraceInfos struct {

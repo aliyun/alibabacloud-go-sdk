@@ -83,7 +83,21 @@ func (s *ListTimingSyntheticTasksRequest) SetTags(v []*ListTimingSyntheticTasksR
 }
 
 func (s *ListTimingSyntheticTasksRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Search != nil {
+		if err := s.Search.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTimingSyntheticTasksRequestSearch struct {

@@ -87,7 +87,12 @@ func (s *DescribeEnvironmentResponseBody) SetRequestId(v string) *DescribeEnviro
 }
 
 func (s *DescribeEnvironmentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEnvironmentResponseBodyData struct {
@@ -582,7 +587,16 @@ func (s *DescribeEnvironmentResponseBodyData) SetVswitchId(v string) *DescribeEn
 }
 
 func (s *DescribeEnvironmentResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEnvironmentResponseBodyDataTags struct {

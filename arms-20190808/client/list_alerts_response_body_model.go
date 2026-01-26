@@ -70,7 +70,12 @@ func (s *ListAlertsResponseBody) SetRequestId(v string) *ListAlertsResponseBody 
 }
 
 func (s *ListAlertsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageBean != nil {
+		if err := s.PageBean.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAlertsResponseBodyPageBean struct {
@@ -141,7 +146,16 @@ func (s *ListAlertsResponseBodyPageBean) SetTotal(v int64) *ListAlertsResponseBo
 }
 
 func (s *ListAlertsResponseBodyPageBean) Validate() error {
-	return dara.Validate(s)
+	if s.ListAlerts != nil {
+		for _, item := range s.ListAlerts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAlertsResponseBodyPageBeanListAlerts struct {
@@ -394,7 +408,25 @@ func (s *ListAlertsResponseBodyPageBeanListAlerts) SetState(v int64) *ListAlerts
 }
 
 func (s *ListAlertsResponseBodyPageBeanListAlerts) Validate() error {
-	return dara.Validate(s)
+	if s.Activities != nil {
+		for _, item := range s.Activities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AlertEvents != nil {
+		for _, item := range s.AlertEvents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAlertsResponseBodyPageBeanListAlertsActivities struct {

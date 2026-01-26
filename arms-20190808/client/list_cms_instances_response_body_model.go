@@ -50,7 +50,12 @@ func (s *ListCmsInstancesResponseBody) SetRequestId(v string) *ListCmsInstancesR
 }
 
 func (s *ListCmsInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCmsInstancesResponseBodyData struct {
@@ -88,7 +93,16 @@ func (s *ListCmsInstancesResponseBodyData) SetProducts(v []*ListCmsInstancesResp
 }
 
 func (s *ListCmsInstancesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Products != nil {
+		for _, item := range s.Products {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCmsInstancesResponseBodyDataProducts struct {

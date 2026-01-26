@@ -267,7 +267,25 @@ func (s *SearchTracesByPageRequest) SetTags(v []*SearchTracesByPageRequestTags) 
 }
 
 func (s *SearchTracesByPageRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ExclusionFilters != nil {
+		for _, item := range s.ExclusionFilters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchTracesByPageRequestExclusionFilters struct {

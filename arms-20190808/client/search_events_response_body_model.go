@@ -74,7 +74,12 @@ func (s *SearchEventsResponseBody) SetRequestId(v string) *SearchEventsResponseB
 }
 
 func (s *SearchEventsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageBean != nil {
+		if err := s.PageBean.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchEventsResponseBodyPageBean struct {
@@ -145,7 +150,16 @@ func (s *SearchEventsResponseBodyPageBean) SetTotalCount(v int32) *SearchEventsR
 }
 
 func (s *SearchEventsResponseBodyPageBean) Validate() error {
-	return dara.Validate(s)
+	if s.Event != nil {
+		for _, item := range s.Event {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchEventsResponseBodyPageBeanEvent struct {

@@ -258,7 +258,25 @@ func (s *ListSyntheticDetailRequest) SetSyntheticType(v int32) *ListSyntheticDet
 }
 
 func (s *ListSyntheticDetailRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AdvancedFilters != nil {
+		for _, item := range s.AdvancedFilters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ExactFilters != nil {
+		for _, item := range s.ExactFilters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSyntheticDetailRequestAdvancedFilters struct {

@@ -133,5 +133,10 @@ func (s *GetGrafanaWorkspaceResponseBody) SetTraceId(v string) *GetGrafanaWorksp
 }
 
 func (s *GetGrafanaWorkspaceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

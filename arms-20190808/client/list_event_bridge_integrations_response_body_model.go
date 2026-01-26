@@ -53,7 +53,12 @@ func (s *ListEventBridgeIntegrationsResponseBody) SetRequestId(v string) *ListEv
 }
 
 func (s *ListEventBridgeIntegrationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageBean != nil {
+		if err := s.PageBean.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEventBridgeIntegrationsResponseBodyPageBean struct {
@@ -124,7 +129,16 @@ func (s *ListEventBridgeIntegrationsResponseBodyPageBean) SetTotal(v int64) *Lis
 }
 
 func (s *ListEventBridgeIntegrationsResponseBodyPageBean) Validate() error {
-	return dara.Validate(s)
+	if s.EventBridgeIntegrations != nil {
+		for _, item := range s.EventBridgeIntegrations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEventBridgeIntegrationsResponseBodyPageBeanEventBridgeIntegrations struct {

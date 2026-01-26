@@ -99,7 +99,12 @@ func (s *CreateSyntheticTaskResponseBody) SetRequestId(v string) *CreateSyntheti
 }
 
 func (s *CreateSyntheticTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateSyntheticTaskResponseBodyData struct {

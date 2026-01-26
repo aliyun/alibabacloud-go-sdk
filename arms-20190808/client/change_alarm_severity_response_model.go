@@ -59,5 +59,10 @@ func (s *ChangeAlarmSeverityResponse) SetBody(v *ChangeAlarmSeverityResponseBody
 }
 
 func (s *ChangeAlarmSeverityResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -104,7 +104,16 @@ func (s *ListPrometheusAlertRulesResponseBody) SetSuccess(v bool) *ListPrometheu
 }
 
 func (s *ListPrometheusAlertRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PrometheusAlertRules != nil {
+		for _, item := range s.PrometheusAlertRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrometheusAlertRulesResponseBodyPrometheusAlertRules struct {
@@ -310,7 +319,34 @@ func (s *ListPrometheusAlertRulesResponseBodyPrometheusAlertRules) SetType(v str
 }
 
 func (s *ListPrometheusAlertRulesResponseBodyPrometheusAlertRules) Validate() error {
-	return dara.Validate(s)
+	if s.Annotations != nil {
+		for _, item := range s.Annotations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrometheusAlertRulesResponseBodyPrometheusAlertRulesAnnotations struct {

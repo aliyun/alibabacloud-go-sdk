@@ -104,7 +104,12 @@ func (s *ListEnvironmentsResponseBody) SetSuccess(v bool) *ListEnvironmentsRespo
 }
 
 func (s *ListEnvironmentsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEnvironmentsResponseBodyData struct {
@@ -145,7 +150,16 @@ func (s *ListEnvironmentsResponseBodyData) SetTotal(v int64) *ListEnvironmentsRe
 }
 
 func (s *ListEnvironmentsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Environments != nil {
+		for _, item := range s.Environments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEnvironmentsResponseBodyDataEnvironments struct {
@@ -524,7 +538,34 @@ func (s *ListEnvironmentsResponseBodyDataEnvironments) SetUserId(v string) *List
 }
 
 func (s *ListEnvironmentsResponseBodyDataEnvironments) Validate() error {
-	return dara.Validate(s)
+	if s.Addons != nil {
+		for _, item := range s.Addons {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Features != nil {
+		for _, item := range s.Features {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEnvironmentsResponseBodyDataEnvironmentsAddons struct {

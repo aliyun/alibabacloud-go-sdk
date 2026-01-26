@@ -116,7 +116,12 @@ func (s *GetAppApiByPageResponseBody) SetSuccess(v bool) *GetAppApiByPageRespons
 }
 
 func (s *GetAppApiByPageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAppApiByPageResponseBodyData struct {

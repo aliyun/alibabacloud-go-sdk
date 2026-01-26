@@ -59,5 +59,10 @@ func (s *ListTimingSyntheticTasksResponse) SetBody(v *ListTimingSyntheticTasksRe
 }
 
 func (s *ListTimingSyntheticTasksResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

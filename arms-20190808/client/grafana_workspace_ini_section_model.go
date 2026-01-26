@@ -47,5 +47,14 @@ func (s *GrafanaWorkspaceIniSection) SetSection(v string) *GrafanaWorkspaceIniSe
 }
 
 func (s *GrafanaWorkspaceIniSection) Validate() error {
-	return dara.Validate(s)
+	if s.Propertys != nil {
+		for _, item := range s.Propertys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -87,7 +87,12 @@ func (s *UpdatePrometheusGlobalViewResponseBody) SetRequestId(v string) *UpdateP
 }
 
 func (s *UpdatePrometheusGlobalViewResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdatePrometheusGlobalViewResponseBodyData struct {
@@ -132,7 +137,16 @@ func (s *UpdatePrometheusGlobalViewResponseBodyData) SetSuccess(v bool) *UpdateP
 }
 
 func (s *UpdatePrometheusGlobalViewResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.FailedInstances != nil {
+		for _, item := range s.FailedInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdatePrometheusGlobalViewResponseBodyDataFailedInstances struct {

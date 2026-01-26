@@ -53,7 +53,16 @@ func (s *GetMultipleTraceResponseBody) SetRequestId(v string) *GetMultipleTraceR
 }
 
 func (s *GetMultipleTraceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MultiCallChainInfos != nil {
+		for _, item := range s.MultiCallChainInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMultipleTraceResponseBodyMultiCallChainInfos struct {
@@ -94,7 +103,16 @@ func (s *GetMultipleTraceResponseBodyMultiCallChainInfos) SetTraceID(v string) *
 }
 
 func (s *GetMultipleTraceResponseBodyMultiCallChainInfos) Validate() error {
-	return dara.Validate(s)
+	if s.Spans != nil {
+		for _, item := range s.Spans {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMultipleTraceResponseBodyMultiCallChainInfosSpans struct {
@@ -359,7 +377,25 @@ func (s *GetMultipleTraceResponseBodyMultiCallChainInfosSpans) SetTraceID(v stri
 }
 
 func (s *GetMultipleTraceResponseBodyMultiCallChainInfosSpans) Validate() error {
-	return dara.Validate(s)
+	if s.LogEventList != nil {
+		for _, item := range s.LogEventList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TagEntryList != nil {
+		for _, item := range s.TagEntryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMultipleTraceResponseBodyMultiCallChainInfosSpansLogEventList struct {
@@ -400,7 +436,16 @@ func (s *GetMultipleTraceResponseBodyMultiCallChainInfosSpansLogEventList) SetTi
 }
 
 func (s *GetMultipleTraceResponseBodyMultiCallChainInfosSpansLogEventList) Validate() error {
-	return dara.Validate(s)
+	if s.TagEntryList != nil {
+		for _, item := range s.TagEntryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMultipleTraceResponseBodyMultiCallChainInfosSpansLogEventListTagEntryList struct {

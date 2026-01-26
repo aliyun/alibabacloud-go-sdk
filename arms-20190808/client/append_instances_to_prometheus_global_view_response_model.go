@@ -59,5 +59,10 @@ func (s *AppendInstancesToPrometheusGlobalViewResponse) SetBody(v *AppendInstanc
 }
 
 func (s *AppendInstancesToPrometheusGlobalViewResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

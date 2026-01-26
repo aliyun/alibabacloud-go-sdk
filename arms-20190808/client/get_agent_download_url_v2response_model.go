@@ -59,5 +59,10 @@ func (s *GetAgentDownloadUrlV2Response) SetBody(v *GetAgentDownloadUrlV2Response
 }
 
 func (s *GetAgentDownloadUrlV2Response) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

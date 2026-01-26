@@ -53,7 +53,12 @@ func (s *CreateOrUpdateWebhookContactResponseBody) SetWebhookContact(v *CreateOr
 }
 
 func (s *CreateOrUpdateWebhookContactResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WebhookContact != nil {
+		if err := s.WebhookContact.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateWebhookContactResponseBodyWebhookContact struct {
@@ -109,7 +114,12 @@ func (s *CreateOrUpdateWebhookContactResponseBodyWebhookContact) SetWebhookName(
 }
 
 func (s *CreateOrUpdateWebhookContactResponseBodyWebhookContact) Validate() error {
-	return dara.Validate(s)
+	if s.Webhook != nil {
+		if err := s.Webhook.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateWebhookContactResponseBodyWebhookContactWebhook struct {

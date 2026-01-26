@@ -20,19 +20,25 @@ type iUpdateEnvDropMetricsRuleResponseBody interface {
 }
 
 type UpdateEnvDropMetricsRuleResponseBody struct {
+	// The status code. 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
 	// example:
 	//
 	// success
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message returned if the call failed.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

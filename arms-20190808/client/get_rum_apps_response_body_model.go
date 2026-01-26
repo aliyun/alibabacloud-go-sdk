@@ -125,7 +125,16 @@ func (s *GetRumAppsResponseBody) SetSuccess(v bool) *GetRumAppsResponseBody {
 }
 
 func (s *GetRumAppsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AppList != nil {
+		for _, item := range s.AppList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRumAppsResponseBodyAppList struct {
@@ -387,7 +396,25 @@ func (s *GetRumAppsResponseBodyAppList) SetType(v string) *GetRumAppsResponseBod
 }
 
 func (s *GetRumAppsResponseBodyAppList) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceDomainConfigs != nil {
+		for _, item := range s.ServiceDomainConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRumAppsResponseBodyAppListServiceDomainConfigs struct {

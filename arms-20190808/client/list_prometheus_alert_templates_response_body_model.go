@@ -53,7 +53,16 @@ func (s *ListPrometheusAlertTemplatesResponseBody) SetRequestId(v string) *ListP
 }
 
 func (s *ListPrometheusAlertTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PrometheusAlertTemplates != nil {
+		for _, item := range s.PrometheusAlertTemplates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrometheusAlertTemplatesResponseBodyPrometheusAlertTemplates struct {
@@ -180,7 +189,25 @@ func (s *ListPrometheusAlertTemplatesResponseBodyPrometheusAlertTemplates) SetVe
 }
 
 func (s *ListPrometheusAlertTemplatesResponseBodyPrometheusAlertTemplates) Validate() error {
-	return dara.Validate(s)
+	if s.Annotations != nil {
+		for _, item := range s.Annotations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrometheusAlertTemplatesResponseBodyPrometheusAlertTemplatesAnnotations struct {

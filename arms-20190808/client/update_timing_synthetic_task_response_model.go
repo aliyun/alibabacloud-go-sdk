@@ -59,5 +59,10 @@ func (s *UpdateTimingSyntheticTaskResponse) SetBody(v *UpdateTimingSyntheticTask
 }
 
 func (s *UpdateTimingSyntheticTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

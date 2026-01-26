@@ -104,7 +104,16 @@ func (s *GetCloudClusterAllUrlResponseBody) SetSuccess(v bool) *GetCloudClusterA
 }
 
 func (s *GetCloudClusterAllUrlResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCloudClusterAllUrlResponseBodyData struct {
@@ -160,7 +169,12 @@ func (s *GetCloudClusterAllUrlResponseBodyData) SetRemoteUrl(v *GetCloudClusterA
 }
 
 func (s *GetCloudClusterAllUrlResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.RemoteUrl != nil {
+		if err := s.RemoteUrl.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCloudClusterAllUrlResponseBodyDataRemoteUrl struct {

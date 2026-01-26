@@ -59,5 +59,10 @@ func (s *SetRetcodeShareStatusResponse) SetBody(v *SetRetcodeShareStatusResponse
 }
 
 func (s *SetRetcodeShareStatusResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,16 @@ func (s *ListRetcodeAppsResponseBody) SetRetcodeApps(v []*ListRetcodeAppsRespons
 }
 
 func (s *ListRetcodeAppsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RetcodeApps != nil {
+		for _, item := range s.RetcodeApps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRetcodeAppsResponseBodyRetcodeApps struct {
@@ -181,7 +190,16 @@ func (s *ListRetcodeAppsResponseBodyRetcodeApps) SetTags(v []*ListRetcodeAppsRes
 }
 
 func (s *ListRetcodeAppsResponseBodyRetcodeApps) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRetcodeAppsResponseBodyRetcodeAppsTags struct {

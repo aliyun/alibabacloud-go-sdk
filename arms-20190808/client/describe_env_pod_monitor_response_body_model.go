@@ -87,7 +87,12 @@ func (s *DescribeEnvPodMonitorResponseBody) SetRequestId(v string) *DescribeEnvP
 }
 
 func (s *DescribeEnvPodMonitorResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEnvPodMonitorResponseBodyData struct {

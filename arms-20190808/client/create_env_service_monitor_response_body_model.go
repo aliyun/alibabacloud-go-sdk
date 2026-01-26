@@ -87,7 +87,12 @@ func (s *CreateEnvServiceMonitorResponseBody) SetRequestId(v string) *CreateEnvS
 }
 
 func (s *CreateEnvServiceMonitorResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateEnvServiceMonitorResponseBodyData struct {

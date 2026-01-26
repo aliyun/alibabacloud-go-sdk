@@ -22,7 +22,7 @@ type iUpdatePrometheusAlertRuleResponseBody interface {
 }
 
 type UpdatePrometheusAlertRuleResponseBody struct {
-	// The HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+	// The status code. The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -33,8 +33,11 @@ type UpdatePrometheusAlertRuleResponseBody struct {
 	// example:
 	//
 	// success
-	Message             *string                                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned struct.
 	PrometheusAlertRule *UpdatePrometheusAlertRuleResponseBodyPrometheusAlertRule `json:"PrometheusAlertRule,omitempty" xml:"PrometheusAlertRule,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9FEA6D00-317F-45E3-9004-7FB8B0B7****
@@ -105,46 +108,87 @@ func (s *UpdatePrometheusAlertRuleResponseBody) SetSuccess(v bool) *UpdatePromet
 }
 
 func (s *UpdatePrometheusAlertRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PrometheusAlertRule != nil {
+		if err := s.PrometheusAlertRule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdatePrometheusAlertRuleResponseBodyPrometheusAlertRule struct {
+	// The ID of the alert rule.
+	//
 	// example:
 	//
 	// 3888704
 	AlertId *int64 `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
+	// The name of the alert rule.
+	//
 	// example:
 	//
 	// Prometheus_Alert
-	AlertName   *string                                                                `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	// The annotation of the alert rule.
 	Annotations []*UpdatePrometheusAlertRuleResponseBodyPrometheusAlertRuleAnnotations `json:"Annotations,omitempty" xml:"Annotations,omitempty" type:"Repeated"`
+	// The ID of the cluster.
+	//
 	// example:
 	//
 	// c0bad479465464e1d8c1e641b0afb****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the notification policy.
+	//
 	// example:
 	//
 	// 10282
 	DispatchRuleId *int64 `json:"DispatchRuleId,omitempty" xml:"DispatchRuleId,omitempty"`
+	// The duration. The value ranges from 1 to 1440 minutes.
+	//
 	// example:
 	//
 	// 1
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The expression of the alert rule.
+	//
 	// example:
 	//
 	// 100 	- (sum(rate(container_cpu_usage_seconds_total[1m])) by (pod_name) / sum(label_replace(kube_pod_container_resource_limits_cpu_cores, \\"pod_name\\", \\"$1\\", \\"pod\\", \\"(.*)\\")) by (pod_name))>75
-	Expression *string                                                           `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	Labels     []*UpdatePrometheusAlertRuleResponseBodyPrometheusAlertRuleLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Message    *string                                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The tags of the alert rule.
+	Labels []*UpdatePrometheusAlertRuleResponseBodyPrometheusAlertRuleLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The returned message.
+	//
+	// example:
+	//
+	// The CPU utilization of ${{$labels.pod_name}} exceeds 80%. Current value: {{$value}}%
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The method of that is used to send alert notifications. Valid values:
+	//
+	// 	- `ALERT_MANAGER`: Alert notifications are sent by Operation Center.
+	//
+	// 	- `DISPATCH_RULE`: Alert notifications are sent based on the specified notification policy.
+	//
 	// example:
 	//
 	// ALERT_MANAGER
 	NotifyType *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	// Indicates whether the alert rule is enabled. Valid values:
+	//
+	// - `1`: The alert rule is enabled.
+	//
+	// - `0`: The alert rule is disabled.
+	//
 	// example:
 	//
 	// 1
-	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the alert rule.
+	//
+	// example:
+	//
+	// Kubernetes component alert
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdatePrometheusAlertRuleResponseBodyPrometheusAlertRule) String() string {
@@ -264,14 +308,39 @@ func (s *UpdatePrometheusAlertRuleResponseBodyPrometheusAlertRule) SetType(v str
 }
 
 func (s *UpdatePrometheusAlertRuleResponseBodyPrometheusAlertRule) Validate() error {
-	return dara.Validate(s)
+	if s.Annotations != nil {
+		for _, item := range s.Annotations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdatePrometheusAlertRuleResponseBodyPrometheusAlertRuleAnnotations struct {
+	// The name of the annotation.
+	//
 	// example:
 	//
 	// message
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the annotation.
+	//
+	// example:
+	//
+	// The CPU utilization of ${{$labels.pod_name}} exceeds 80%. Current value: {{$value}}%
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -306,10 +375,14 @@ func (s *UpdatePrometheusAlertRuleResponseBodyPrometheusAlertRuleAnnotations) Va
 }
 
 type UpdatePrometheusAlertRuleResponseBodyPrometheusAlertRuleLabels struct {
+	// The name of the tag.
+	//
 	// example:
 	//
 	// severity
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the tag.
+	//
 	// example:
 	//
 	// critical

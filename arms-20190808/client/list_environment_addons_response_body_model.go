@@ -98,7 +98,12 @@ func (s *ListEnvironmentAddonsResponseBody) SetSuccess(v bool) *ListEnvironmentA
 }
 
 func (s *ListEnvironmentAddonsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEnvironmentAddonsResponseBodyData struct {
@@ -137,7 +142,16 @@ func (s *ListEnvironmentAddonsResponseBodyData) SetTotal(v int64) *ListEnvironme
 }
 
 func (s *ListEnvironmentAddonsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Addons != nil {
+		for _, item := range s.Addons {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEnvironmentAddonsResponseBodyDataAddons struct {
@@ -342,7 +356,25 @@ func (s *ListEnvironmentAddonsResponseBodyDataAddons) SetWeight(v string) *ListE
 }
 
 func (s *ListEnvironmentAddonsResponseBodyDataAddons) Validate() error {
-	return dara.Validate(s)
+	if s.Dashboards != nil {
+		for _, item := range s.Dashboards {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Environments != nil {
+		for _, item := range s.Environments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEnvironmentAddonsResponseBodyDataAddonsDashboards struct {
@@ -487,7 +519,17 @@ func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironments) SetPolicies(v 
 }
 
 func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironments) Validate() error {
-	return dara.Validate(s)
+	if s.Dependencies != nil {
+		if err := s.Dependencies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Policies != nil {
+		if err := s.Policies.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsDependencies struct {
@@ -647,7 +689,21 @@ func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies) SetTar
 }
 
 func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.MetricCheckRule != nil {
+		if err := s.MetricCheckRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Protocols != nil {
+		for _, item := range s.Protocols {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesMetricCheckRule struct {

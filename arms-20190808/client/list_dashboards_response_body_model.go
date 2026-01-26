@@ -104,7 +104,16 @@ func (s *ListDashboardsResponseBody) SetRequestId(v string) *ListDashboardsRespo
 }
 
 func (s *ListDashboardsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DashboardVos != nil {
+		for _, item := range s.DashboardVos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDashboardsResponseBodyDashboardVos struct {
@@ -421,7 +430,12 @@ func (s *ListDashboardsResponseBodyDashboardVos) SetVersion(v string) *ListDashb
 }
 
 func (s *ListDashboardsResponseBodyDashboardVos) Validate() error {
-	return dara.Validate(s)
+	if s.I18nChild != nil {
+		if err := s.I18nChild.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDashboardsResponseBodyDashboardVosI18nChild struct {

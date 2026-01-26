@@ -38,54 +38,84 @@ type iUpdatePrometheusAlertRuleRequest interface {
 }
 
 type UpdatePrometheusAlertRuleRequest struct {
+	// The ID of the alert rule. You can call the ListPrometheusAlertRules operation to query the ID of the alert rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3888704
 	AlertId *int64 `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
+	// The name of the alert rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Prometheus_Alert
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	// The annotations that are described in a JSON string. You must specify the name and value of each annotation.
+	//
 	// example:
 	//
 	// [{"Value": "xxx","Name": "description"}]
 	Annotations *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c0bad479465464e1d8c1e641b0afb****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the notification policy. This parameter is required if the NotifyType parameter is set to `DISPATCH_RULE`.
+	//
 	// example:
 	//
 	// 10282
 	DispatchRuleId *int64 `json:"DispatchRuleId,omitempty" xml:"DispatchRuleId,omitempty"`
+	// The duration. The value ranges from 1 to 1440 minutes.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The expression of the alert rule. The expression must follow the PromQL syntax.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 100 	- (sum(rate(container_cpu_usage_seconds_total[1m])) by (pod_name) / sum(label_replace(kube_pod_container_resource_limits_cpu_cores, \\"pod_name\\", \\"$1\\", \\"pod\\", \\"(.*)\\")) by (pod_name))>75
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The tags that are described in a JSON string. You must specify the name and value of each tag.
+	//
 	// example:
 	//
 	// [{"Value": "critical","Name": "severity"}]
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The alert message. Tags can be referenced in the {{$labels.xxx}} format.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// The CPU utilization of ${{$labels.pod_name}} exceeds 80%. Current value: {{$value}}%
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The method that is used to send alert notifications. Valid values:
+	//
+	// - `ALERT_MANAGER`: Alert notifications are sent by Operation Center. This is the default value.
+	//
+	// - `DISPATCH_RULE`: Alert notifications are sent based on the specified notification policy.
+	//
 	// example:
 	//
 	// ALERT_MANAGER
 	NotifyType *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -94,7 +124,12 @@ type UpdatePrometheusAlertRuleRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The tags.
 	Tags []*UpdatePrometheusAlertRuleRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Type *string                                 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of the alert rule.
+	//
+	// example:
+	//
+	// Kubernetes component alert
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdatePrometheusAlertRuleRequest) String() string {
@@ -223,7 +258,16 @@ func (s *UpdatePrometheusAlertRuleRequest) SetType(v string) *UpdatePrometheusAl
 }
 
 func (s *UpdatePrometheusAlertRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdatePrometheusAlertRuleRequestTags struct {

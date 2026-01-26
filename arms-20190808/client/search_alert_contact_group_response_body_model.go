@@ -53,7 +53,16 @@ func (s *SearchAlertContactGroupResponseBody) SetRequestId(v string) *SearchAler
 }
 
 func (s *SearchAlertContactGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ContactGroups != nil {
+		for _, item := range s.ContactGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchAlertContactGroupResponseBodyContactGroups struct {
@@ -154,7 +163,16 @@ func (s *SearchAlertContactGroupResponseBodyContactGroups) SetUserId(v string) *
 }
 
 func (s *SearchAlertContactGroupResponseBodyContactGroups) Validate() error {
-	return dara.Validate(s)
+	if s.Contacts != nil {
+		for _, item := range s.Contacts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchAlertContactGroupResponseBodyContactGroupsContacts struct {

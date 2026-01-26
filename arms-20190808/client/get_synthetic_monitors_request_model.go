@@ -55,7 +55,12 @@ func (s *GetSyntheticMonitorsRequest) SetRegionId(v string) *GetSyntheticMonitor
 }
 
 func (s *GetSyntheticMonitorsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		if err := s.Filter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSyntheticMonitorsRequestFilter struct {

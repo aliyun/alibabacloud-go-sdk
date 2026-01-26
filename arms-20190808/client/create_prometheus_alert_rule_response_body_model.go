@@ -104,7 +104,12 @@ func (s *CreatePrometheusAlertRuleResponseBody) SetSuccess(v bool) *CreatePromet
 }
 
 func (s *CreatePrometheusAlertRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PrometheusAlertRule != nil {
+		if err := s.PrometheusAlertRule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreatePrometheusAlertRuleResponseBodyPrometheusAlertRule struct {
@@ -299,7 +304,25 @@ func (s *CreatePrometheusAlertRuleResponseBodyPrometheusAlertRule) SetType(v str
 }
 
 func (s *CreatePrometheusAlertRuleResponseBodyPrometheusAlertRule) Validate() error {
-	return dara.Validate(s)
+	if s.Annotations != nil {
+		for _, item := range s.Annotations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreatePrometheusAlertRuleResponseBodyPrometheusAlertRuleAnnotations struct {

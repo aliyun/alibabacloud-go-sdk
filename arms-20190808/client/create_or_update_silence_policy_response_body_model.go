@@ -53,7 +53,12 @@ func (s *CreateOrUpdateSilencePolicyResponseBody) SetSilencePolicy(v *CreateOrUp
 }
 
 func (s *CreateOrUpdateSilencePolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SilencePolicy != nil {
+		if err := s.SilencePolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateSilencePolicyResponseBodySilencePolicy struct {
@@ -169,7 +174,16 @@ func (s *CreateOrUpdateSilencePolicyResponseBodySilencePolicy) SetTimeSlots(v st
 }
 
 func (s *CreateOrUpdateSilencePolicyResponseBodySilencePolicy) Validate() error {
-	return dara.Validate(s)
+	if s.MatchingRules != nil {
+		for _, item := range s.MatchingRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateSilencePolicyResponseBodySilencePolicyMatchingRules struct {
@@ -195,7 +209,16 @@ func (s *CreateOrUpdateSilencePolicyResponseBodySilencePolicyMatchingRules) SetM
 }
 
 func (s *CreateOrUpdateSilencePolicyResponseBodySilencePolicyMatchingRules) Validate() error {
-	return dara.Validate(s)
+	if s.MatchingConditions != nil {
+		for _, item := range s.MatchingConditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateSilencePolicyResponseBodySilencePolicyMatchingRulesMatchingConditions struct {

@@ -53,7 +53,16 @@ func (s *SearchTraceAppByNameResponseBody) SetTraceApps(v []*SearchTraceAppByNam
 }
 
 func (s *SearchTraceAppByNameResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TraceApps != nil {
+		for _, item := range s.TraceApps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchTraceAppByNameResponseBodyTraceApps struct {
@@ -248,7 +257,16 @@ func (s *SearchTraceAppByNameResponseBodyTraceApps) SetUserId(v string) *SearchT
 }
 
 func (s *SearchTraceAppByNameResponseBodyTraceApps) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchTraceAppByNameResponseBodyTraceAppsTags struct {

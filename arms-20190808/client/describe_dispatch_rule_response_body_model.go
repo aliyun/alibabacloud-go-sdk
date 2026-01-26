@@ -53,7 +53,12 @@ func (s *DescribeDispatchRuleResponseBody) SetRequestId(v string) *DescribeDispa
 }
 
 func (s *DescribeDispatchRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DispatchRule != nil {
+		if err := s.DispatchRule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDispatchRuleResponseBodyDispatchRule struct {
@@ -188,7 +193,30 @@ func (s *DescribeDispatchRuleResponseBodyDispatchRule) SetState(v string) *Descr
 }
 
 func (s *DescribeDispatchRuleResponseBodyDispatchRule) Validate() error {
-	return dara.Validate(s)
+	if s.GroupRules != nil {
+		for _, item := range s.GroupRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LabelMatchExpressionGrid != nil {
+		if err := s.LabelMatchExpressionGrid.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NotifyRules != nil {
+		for _, item := range s.NotifyRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDispatchRuleResponseBodyDispatchRuleGroupRules struct {
@@ -300,7 +328,16 @@ func (s *DescribeDispatchRuleResponseBodyDispatchRuleLabelMatchExpressionGrid) S
 }
 
 func (s *DescribeDispatchRuleResponseBodyDispatchRuleLabelMatchExpressionGrid) Validate() error {
-	return dara.Validate(s)
+	if s.LabelMatchExpressionGroups != nil {
+		for _, item := range s.LabelMatchExpressionGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDispatchRuleResponseBodyDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroups struct {
@@ -326,7 +363,16 @@ func (s *DescribeDispatchRuleResponseBodyDispatchRuleLabelMatchExpressionGridLab
 }
 
 func (s *DescribeDispatchRuleResponseBodyDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroups) Validate() error {
-	return dara.Validate(s)
+	if s.LabelMatchExpressions != nil {
+		for _, item := range s.LabelMatchExpressions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDispatchRuleResponseBodyDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupsLabelMatchExpressions struct {
@@ -443,7 +489,16 @@ func (s *DescribeDispatchRuleResponseBodyDispatchRuleNotifyRules) SetNotifyObjec
 }
 
 func (s *DescribeDispatchRuleResponseBodyDispatchRuleNotifyRules) Validate() error {
-	return dara.Validate(s)
+	if s.NotifyObjects != nil {
+		for _, item := range s.NotifyObjects {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDispatchRuleResponseBodyDispatchRuleNotifyRulesNotifyObjects struct {

@@ -87,7 +87,16 @@ func (s *ListPrometheusMonitoringResponseBody) SetRequestId(v string) *ListProme
 }
 
 func (s *ListPrometheusMonitoringResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrometheusMonitoringResponseBodyData struct {

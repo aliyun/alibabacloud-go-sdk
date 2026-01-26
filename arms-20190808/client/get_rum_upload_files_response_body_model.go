@@ -125,7 +125,12 @@ func (s *GetRumUploadFilesResponseBody) SetSuccess(v bool) *GetRumUploadFilesRes
 }
 
 func (s *GetRumUploadFilesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRumUploadFilesResponseBodyData struct {
@@ -160,7 +165,16 @@ func (s *GetRumUploadFilesResponseBodyData) SetNextToken(v string) *GetRumUpload
 }
 
 func (s *GetRumUploadFilesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.FileList != nil {
+		for _, item := range s.FileList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRumUploadFilesResponseBodyDataFileList struct {

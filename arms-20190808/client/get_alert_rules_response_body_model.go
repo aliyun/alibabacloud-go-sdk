@@ -53,7 +53,12 @@ func (s *GetAlertRulesResponseBody) SetRequestId(v string) *GetAlertRulesRespons
 }
 
 func (s *GetAlertRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageBean != nil {
+		if err := s.PageBean.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAlertRulesResponseBodyPageBean struct {
@@ -124,7 +129,16 @@ func (s *GetAlertRulesResponseBodyPageBean) SetTotal(v int64) *GetAlertRulesResp
 }
 
 func (s *GetAlertRulesResponseBodyPageBean) Validate() error {
-	return dara.Validate(s)
+	if s.AlertRules != nil {
+		for _, item := range s.AlertRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAlertRulesResponseBodyPageBeanAlertRules struct {
@@ -530,7 +544,44 @@ func (s *GetAlertRulesResponseBodyPageBeanAlertRules) SetUserId(v string) *GetAl
 }
 
 func (s *GetAlertRulesResponseBodyPageBeanAlertRules) Validate() error {
-	return dara.Validate(s)
+	if s.AlertRuleContent != nil {
+		if err := s.AlertRuleContent.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Annotations != nil {
+		for _, item := range s.Annotations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Filters != nil {
+		if err := s.Filters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContent struct {
@@ -575,7 +626,16 @@ func (s *GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContent) SetConditi
 }
 
 func (s *GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContent) Validate() error {
-	return dara.Validate(s)
+	if s.AlertRuleItems != nil {
+		for _, item := range s.AlertRuleItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContentAlertRuleItems struct {
@@ -793,7 +853,25 @@ func (s *GetAlertRulesResponseBodyPageBeanAlertRulesFilters) SetDimFilters(v []*
 }
 
 func (s *GetAlertRulesResponseBodyPageBeanAlertRulesFilters) Validate() error {
-	return dara.Validate(s)
+	if s.CustomSLSFilters != nil {
+		for _, item := range s.CustomSLSFilters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DimFilters != nil {
+		for _, item := range s.DimFilters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAlertRulesResponseBodyPageBeanAlertRulesFiltersCustomSLSFilters struct {

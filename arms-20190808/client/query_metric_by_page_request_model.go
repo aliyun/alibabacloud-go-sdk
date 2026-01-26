@@ -231,7 +231,16 @@ func (s *QueryMetricByPageRequest) SetStartTime(v int64) *QueryMetricByPageReque
 }
 
 func (s *QueryMetricByPageRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filters != nil {
+		for _, item := range s.Filters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryMetricByPageRequestFilters struct {

@@ -104,7 +104,16 @@ func (s *GetAppJVMConfigResponseBody) SetSuccess(v bool) *GetAppJVMConfigRespons
 }
 
 func (s *GetAppJVMConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.JvmInfoList != nil {
+		for _, item := range s.JvmInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAppJVMConfigResponseBodyJvmInfoList struct {

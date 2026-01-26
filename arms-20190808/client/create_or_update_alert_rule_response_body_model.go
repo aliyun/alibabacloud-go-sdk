@@ -53,7 +53,12 @@ func (s *CreateOrUpdateAlertRuleResponseBody) SetRequestId(v string) *CreateOrUp
 }
 
 func (s *CreateOrUpdateAlertRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AlertRule != nil {
+		if err := s.AlertRule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateAlertRuleResponseBodyAlertRule struct {
@@ -472,7 +477,44 @@ func (s *CreateOrUpdateAlertRuleResponseBodyAlertRule) SetUserId(v string) *Crea
 }
 
 func (s *CreateOrUpdateAlertRuleResponseBodyAlertRule) Validate() error {
-	return dara.Validate(s)
+	if s.AlertRuleContent != nil {
+		if err := s.AlertRuleContent.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Annotations != nil {
+		for _, item := range s.Annotations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Filters != nil {
+		if err := s.Filters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContent struct {
@@ -517,7 +559,16 @@ func (s *CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContent) SetCondit
 }
 
 func (s *CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContent) Validate() error {
-	return dara.Validate(s)
+	if s.AlertRuleItems != nil {
+		for _, item := range s.AlertRuleItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContentAlertRuleItems struct {
@@ -735,7 +786,25 @@ func (s *CreateOrUpdateAlertRuleResponseBodyAlertRuleFilters) SetDimFilters(v []
 }
 
 func (s *CreateOrUpdateAlertRuleResponseBodyAlertRuleFilters) Validate() error {
-	return dara.Validate(s)
+	if s.CustomSLSFilters != nil {
+		for _, item := range s.CustomSLSFilters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DimFilters != nil {
+		for _, item := range s.DimFilters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateAlertRuleResponseBodyAlertRuleFiltersCustomSLSFilters struct {

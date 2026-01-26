@@ -53,7 +53,12 @@ func (s *ListSilencePoliciesResponseBody) SetRequestId(v string) *ListSilencePol
 }
 
 func (s *ListSilencePoliciesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageBean != nil {
+		if err := s.PageBean.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSilencePoliciesResponseBodyPageBean struct {
@@ -124,7 +129,16 @@ func (s *ListSilencePoliciesResponseBodyPageBean) SetTotal(v int64) *ListSilence
 }
 
 func (s *ListSilencePoliciesResponseBodyPageBean) Validate() error {
-	return dara.Validate(s)
+	if s.SilencePolicies != nil {
+		for _, item := range s.SilencePolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSilencePoliciesResponseBodyPageBeanSilencePolicies struct {
@@ -240,7 +254,16 @@ func (s *ListSilencePoliciesResponseBodyPageBeanSilencePolicies) SetTimeSlots(v 
 }
 
 func (s *ListSilencePoliciesResponseBodyPageBeanSilencePolicies) Validate() error {
-	return dara.Validate(s)
+	if s.MatchingRules != nil {
+		for _, item := range s.MatchingRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSilencePoliciesResponseBodyPageBeanSilencePoliciesMatchingRules struct {
@@ -266,7 +289,16 @@ func (s *ListSilencePoliciesResponseBodyPageBeanSilencePoliciesMatchingRules) Se
 }
 
 func (s *ListSilencePoliciesResponseBodyPageBeanSilencePoliciesMatchingRules) Validate() error {
-	return dara.Validate(s)
+	if s.MatchingConditions != nil {
+		for _, item := range s.MatchingConditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSilencePoliciesResponseBodyPageBeanSilencePoliciesMatchingRulesMatchingConditions struct {

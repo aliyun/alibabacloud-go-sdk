@@ -87,7 +87,16 @@ func (s *ListEnvCustomJobsResponseBody) SetRequestId(v string) *ListEnvCustomJob
 }
 
 func (s *ListEnvCustomJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEnvCustomJobsResponseBodyData struct {
@@ -248,7 +257,16 @@ func (s *ListEnvCustomJobsResponseBodyData) SetStatus(v string) *ListEnvCustomJo
 }
 
 func (s *ListEnvCustomJobsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ScrapeConfigs != nil {
+		for _, item := range s.ScrapeConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEnvCustomJobsResponseBodyDataScrapeConfigs struct {

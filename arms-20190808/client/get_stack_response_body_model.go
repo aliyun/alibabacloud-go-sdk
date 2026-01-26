@@ -53,7 +53,16 @@ func (s *GetStackResponseBody) SetStackInfo(v []*GetStackResponseBodyStackInfo) 
 }
 
 func (s *GetStackResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StackInfo != nil {
+		for _, item := range s.StackInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetStackResponseBodyStackInfo struct {
@@ -199,7 +208,12 @@ func (s *GetStackResponseBodyStackInfo) SetStartTime(v int64) *GetStackResponseB
 }
 
 func (s *GetStackResponseBodyStackInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ExtInfo != nil {
+		if err := s.ExtInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStackResponseBodyStackInfoExtInfo struct {

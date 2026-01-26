@@ -59,5 +59,10 @@ func (s *CreateOrUpdateNotificationPolicyResponse) SetBody(v *CreateOrUpdateNoti
 }
 
 func (s *CreateOrUpdateNotificationPolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

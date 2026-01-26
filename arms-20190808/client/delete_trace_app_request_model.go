@@ -116,7 +116,12 @@ func (s *DeleteTraceAppRequest) SetType(v string) *DeleteTraceAppRequest {
 }
 
 func (s *DeleteTraceAppRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeleteReason != nil {
+		if err := s.DeleteReason.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteTraceAppRequestDeleteReason struct {
@@ -157,7 +162,16 @@ func (s *DeleteTraceAppRequestDeleteReason) SetRemark(v string) *DeleteTraceAppR
 }
 
 func (s *DeleteTraceAppRequestDeleteReason) Validate() error {
-	return dara.Validate(s)
+	if s.ReasonIds != nil {
+		for _, item := range s.ReasonIds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteTraceAppRequestDeleteReasonReasonIds struct {

@@ -53,7 +53,12 @@ func (s *SearchTracesByPageResponseBody) SetRequestId(v string) *SearchTracesByP
 }
 
 func (s *SearchTracesByPageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageBean != nil {
+		if err := s.PageBean.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchTracesByPageResponseBodyPageBean struct {
@@ -124,7 +129,16 @@ func (s *SearchTracesByPageResponseBodyPageBean) SetTraceInfos(v []*SearchTraces
 }
 
 func (s *SearchTracesByPageResponseBodyPageBean) Validate() error {
-	return dara.Validate(s)
+	if s.TraceInfos != nil {
+		for _, item := range s.TraceInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchTracesByPageResponseBodyPageBeanTraceInfos struct {

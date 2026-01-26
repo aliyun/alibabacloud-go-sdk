@@ -53,7 +53,12 @@ func (s *GetSyntheticTaskDetailResponseBody) SetTaskDetail(v *GetSyntheticTaskDe
 }
 
 func (s *GetSyntheticTaskDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TaskDetail != nil {
+		if err := s.TaskDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSyntheticTaskDetailResponseBodyTaskDetail struct {
@@ -313,7 +318,46 @@ func (s *GetSyntheticTaskDetailResponseBodyTaskDetail) SetUrl(v string) *GetSynt
 }
 
 func (s *GetSyntheticTaskDetailResponseBodyTaskDetail) Validate() error {
-	return dara.Validate(s)
+	if s.CommonParam != nil {
+		if err := s.CommonParam.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Download != nil {
+		if err := s.Download.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExtendInterval != nil {
+		if err := s.ExtendInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MonitorList != nil {
+		for _, item := range s.MonitorList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Nav != nil {
+		if err := s.Nav.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Net != nil {
+		if err := s.Net.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Protocol != nil {
+		if err := s.Protocol.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSyntheticTaskDetailResponseBodyTaskDetailCommonParam struct {
@@ -414,7 +458,16 @@ func (s *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParam) SetStartExecut
 }
 
 func (s *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParam) Validate() error {
-	return dara.Validate(s)
+	if s.AlertList != nil {
+		for _, item := range s.AlertList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSyntheticTaskDetailResponseBodyTaskDetailCommonParamAlertList struct {
@@ -1907,7 +1960,12 @@ func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocol) SetVerifyWay(v in
 }
 
 func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocol) Validate() error {
-	return dara.Validate(s)
+	if s.RequestContent != nil {
+		if err := s.RequestContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContent struct {
@@ -1963,7 +2021,21 @@ func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContent) Set
 }
 
 func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContent) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Header != nil {
+		for _, item := range s.Header {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBody struct {
@@ -2061,7 +2133,17 @@ func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBody)
 }
 
 func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBody) Validate() error {
-	return dara.Validate(s)
+	if s.Formdata != nil {
+		if err := s.Formdata.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Urlencoded != nil {
+		if err := s.Urlencoded.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBodyFormdata struct {

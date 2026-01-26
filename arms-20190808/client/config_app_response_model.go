@@ -59,5 +59,10 @@ func (s *ConfigAppResponse) SetBody(v *ConfigAppResponseBody) *ConfigAppResponse
 }
 
 func (s *ConfigAppResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *CreateOrUpdateContactResponseBody) SetRequestId(v string) *CreateOrUpda
 }
 
 func (s *CreateOrUpdateContactResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AlertContact != nil {
+		if err := s.AlertContact.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateContactResponseBodyAlertContact struct {

@@ -59,5 +59,10 @@ func (s *ListEnvironmentMetricTargetsResponse) SetBody(v *ListEnvironmentMetricT
 }
 
 func (s *ListEnvironmentMetricTargetsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

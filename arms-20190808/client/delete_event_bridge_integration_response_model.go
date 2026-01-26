@@ -59,5 +59,10 @@ func (s *DeleteEventBridgeIntegrationResponse) SetBody(v *DeleteEventBridgeInteg
 }
 
 func (s *DeleteEventBridgeIntegrationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

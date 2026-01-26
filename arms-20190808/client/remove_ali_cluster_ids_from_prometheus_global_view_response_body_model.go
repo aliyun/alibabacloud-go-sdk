@@ -87,7 +87,12 @@ func (s *RemoveAliClusterIdsFromPrometheusGlobalViewResponseBody) SetRequestId(v
 }
 
 func (s *RemoveAliClusterIdsFromPrometheusGlobalViewResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RemoveAliClusterIdsFromPrometheusGlobalViewResponseBodyData struct {
