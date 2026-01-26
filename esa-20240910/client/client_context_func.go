@@ -145,6 +145,50 @@ func (client *Client) ApplyCertificateWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// 为自定义主机名申请一个免费证书，适用于申请失败、证书即将过期、证书已过期场景
+//
+// @param request - ApplyCustomHostnameCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyCustomHostnameCertificateResponse
+func (client *Client) ApplyCustomHostnameCertificateWithContext(ctx context.Context, request *ApplyCustomHostnameCertificateRequest, runtime *dara.RuntimeOptions) (_result *ApplyCustomHostnameCertificateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.HostnameId) {
+		query["HostnameId"] = request.HostnameId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ApplyCustomHostnameCertificate"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ApplyCustomHostnameCertificateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds DNS records of different record types at a time..
 //
 // Description:
@@ -1315,6 +1359,82 @@ func (client *Client) CreateCompressionRuleWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateCompressionRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建自定义主机名
+//
+// @param request - CreateCustomHostnameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCustomHostnameResponse
+func (client *Client) CreateCustomHostnameWithContext(ctx context.Context, request *CreateCustomHostnameRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomHostnameResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CasId) {
+		query["CasId"] = request.CasId
+	}
+
+	if !dara.IsNil(request.CasRegion) {
+		query["CasRegion"] = request.CasRegion
+	}
+
+	if !dara.IsNil(request.CertType) {
+		query["CertType"] = request.CertType
+	}
+
+	if !dara.IsNil(request.Certificate) {
+		query["Certificate"] = request.Certificate
+	}
+
+	if !dara.IsNil(request.Hostname) {
+		query["Hostname"] = request.Hostname
+	}
+
+	if !dara.IsNil(request.PrivateKey) {
+		query["PrivateKey"] = request.PrivateKey
+	}
+
+	if !dara.IsNil(request.RecordId) {
+		query["RecordId"] = request.RecordId
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !dara.IsNil(request.SslFlag) {
+		query["SslFlag"] = request.SslFlag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCustomHostname"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCustomHostnameResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4919,6 +5039,50 @@ func (client *Client) DeleteCompressionRuleWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCompressionRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除自定义主机名
+//
+// @param request - DeleteCustomHostnameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCustomHostnameResponse
+func (client *Client) DeleteCustomHostnameWithContext(ctx context.Context, request *DeleteCustomHostnameRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomHostnameResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.HostnameId) {
+		query["HostnameId"] = request.HostnameId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCustomHostname"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCustomHostnameResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -8737,6 +8901,50 @@ func (client *Client) GetCrossBorderOptimizationWithContext(ctx context.Context,
 
 // Summary:
 //
+// 查询单个自定义主机名的信息
+//
+// @param request - GetCustomHostnameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCustomHostnameResponse
+func (client *Client) GetCustomHostnameWithContext(ctx context.Context, request *GetCustomHostnameRequest, runtime *dara.RuntimeOptions) (_result *GetCustomHostnameResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.HostnameId) {
+		query["HostnameId"] = request.HostnameId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCustomHostname"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCustomHostnameResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Query Site Developer Mode Configuration
 //
 // @param request - GetDevelopmentModeRequest
@@ -11953,6 +12161,74 @@ func (client *Client) ListCompressionRulesWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListCompressionRulesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询站点下的自定义主机名列表
+//
+// @param request - ListCustomHostnamesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCustomHostnamesResponse
+func (client *Client) ListCustomHostnamesWithContext(ctx context.Context, request *ListCustomHostnamesRequest, runtime *dara.RuntimeOptions) (_result *ListCustomHostnamesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Hostname) {
+		query["Hostname"] = request.Hostname
+	}
+
+	if !dara.IsNil(request.NameMatchType) {
+		query["NameMatchType"] = request.NameMatchType
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RecordId) {
+		query["RecordId"] = request.RecordId
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCustomHostnames"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCustomHostnamesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -16719,6 +16995,78 @@ func (client *Client) UpdateCrossBorderOptimizationWithContext(ctx context.Conte
 
 // Summary:
 //
+// 更新自定义主机名
+//
+// @param request - UpdateCustomHostnameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCustomHostnameResponse
+func (client *Client) UpdateCustomHostnameWithContext(ctx context.Context, request *UpdateCustomHostnameRequest, runtime *dara.RuntimeOptions) (_result *UpdateCustomHostnameResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CasId) {
+		query["CasId"] = request.CasId
+	}
+
+	if !dara.IsNil(request.CasRegion) {
+		query["CasRegion"] = request.CasRegion
+	}
+
+	if !dara.IsNil(request.CertType) {
+		query["CertType"] = request.CertType
+	}
+
+	if !dara.IsNil(request.Certificate) {
+		query["Certificate"] = request.Certificate
+	}
+
+	if !dara.IsNil(request.HostnameId) {
+		query["HostnameId"] = request.HostnameId
+	}
+
+	if !dara.IsNil(request.PrivateKey) {
+		query["PrivateKey"] = request.PrivateKey
+	}
+
+	if !dara.IsNil(request.RecordId) {
+		query["RecordId"] = request.RecordId
+	}
+
+	if !dara.IsNil(request.SslFlag) {
+		query["SslFlag"] = request.SslFlag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCustomHostname"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCustomHostnameResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the configurations of a custom scenario-specific policy.
 //
 // @param request - UpdateCustomScenePolicyRequest
@@ -20439,6 +20787,50 @@ func (client *Client) UploadSiteOriginClientCertificateWithContext(ctx context.C
 		BodyType:    dara.String("json"),
 	}
 	_result = &UploadSiteOriginClientCertificateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证自定义主机名
+//
+// @param request - VerifyCustomHostnameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyCustomHostnameResponse
+func (client *Client) VerifyCustomHostnameWithContext(ctx context.Context, request *VerifyCustomHostnameRequest, runtime *dara.RuntimeOptions) (_result *VerifyCustomHostnameResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.HostnameId) {
+		query["HostnameId"] = request.HostnameId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("VerifyCustomHostname"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &VerifyCustomHostnameResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
