@@ -197,6 +197,10 @@ type DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail struct {
 	// The match conditions.
 	Condition []*DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition `json:"Condition,omitempty" xml:"Condition,omitempty" type:"Repeated"`
 	// The parameter is deprecated.
+	//
+	// example:
+	//
+	// 废弃
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The parameter is deprecated.
 	//
@@ -205,6 +209,10 @@ type DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail struct {
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The parameter is deprecated.
+	//
+	// example:
+	//
+	// 废弃
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The name of the rule.
 	//
@@ -379,7 +387,7 @@ type DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition struct {
 	// example:
 	//
 	// ["2","3","ad"]
-	ContentList *string `json:"ContentList,omitempty" xml:"ContentList,omitempty"`
+	ContentList []*string `json:"ContentList,omitempty" xml:"ContentList,omitempty" type:"Repeated"`
 	// The match field.
 	//
 	// example:
@@ -414,7 +422,7 @@ func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition) GetConte
 	return s.Content
 }
 
-func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition) GetContentList() *string {
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition) GetContentList() []*string {
 	return s.ContentList
 }
 
@@ -435,8 +443,8 @@ func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition) SetConte
 	return s
 }
 
-func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition) SetContentList(v string) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition {
-	s.ContentList = &v
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition) SetContentList(v []*string) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition {
+	s.ContentList = v
 	return s
 }
 
