@@ -27,14 +27,20 @@ type iUpdateAgentRuntimeInput interface {
 	GetEnvironmentVariables() map[string]*string
 	SetExecutionRoleArn(v string) *UpdateAgentRuntimeInput
 	GetExecutionRoleArn() *string
+	SetExternalAgentEndpointUrl(v string) *UpdateAgentRuntimeInput
+	GetExternalAgentEndpointUrl() *string
 	SetHealthCheckConfiguration(v *HealthCheckConfiguration) *UpdateAgentRuntimeInput
 	GetHealthCheckConfiguration() *HealthCheckConfiguration
 	SetLogConfiguration(v *LogConfiguration) *UpdateAgentRuntimeInput
 	GetLogConfiguration() *LogConfiguration
 	SetMemory(v int32) *UpdateAgentRuntimeInput
 	GetMemory() *int32
+	SetNasConfig(v *NASConfig) *UpdateAgentRuntimeInput
+	GetNasConfig() *NASConfig
 	SetNetworkConfiguration(v *NetworkConfiguration) *UpdateAgentRuntimeInput
 	GetNetworkConfiguration() *NetworkConfiguration
+	SetOssMountConfig(v *OSSMountConfig) *UpdateAgentRuntimeInput
+	GetOssMountConfig() *OSSMountConfig
 	SetPort(v int32) *UpdateAgentRuntimeInput
 	GetPort() *int32
 	SetProtocolConfiguration(v *ProtocolConfiguration) *UpdateAgentRuntimeInput
@@ -94,6 +100,12 @@ type UpdateAgentRuntimeInput struct {
 	//
 	// acs:ram::1760720386195983:role/AgentRunExecutionRole
 	ExecutionRoleArn *string `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
+	// 外部注册类型的智能体访问端点地址，用于连接已部署在外部的智能体服务
+	//
+	// example:
+	//
+	// https://external-agent.example.com/api
+	ExternalAgentEndpointUrl *string `json:"externalAgentEndpointUrl,omitempty" xml:"externalAgentEndpointUrl,omitempty"`
 	// 智能体运行时的健康检查配置，用于监控运行时实例的健康状态
 	//
 	// example:
@@ -110,12 +122,24 @@ type UpdateAgentRuntimeInput struct {
 	//
 	// 1024
 	Memory *int32 `json:"memory,omitempty" xml:"memory,omitempty"`
+	// 文件存储NAS的配置信息，用于挂载NAS文件系统到智能体运行时
+	//
+	// example:
+	//
+	// {}
+	NasConfig *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
 	// 智能体运行时的网络配置，包括VPC、安全组等网络访问设置
 	//
 	// example:
 	//
 	// {}
 	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
+	// 对象存储OSS的挂载配置信息，用于挂载OSS存储桶到智能体运行时
+	//
+	// example:
+	//
+	// {}
+	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
 	// example:
 	//
 	// 8080
@@ -184,6 +208,10 @@ func (s *UpdateAgentRuntimeInput) GetExecutionRoleArn() *string {
 	return s.ExecutionRoleArn
 }
 
+func (s *UpdateAgentRuntimeInput) GetExternalAgentEndpointUrl() *string {
+	return s.ExternalAgentEndpointUrl
+}
+
 func (s *UpdateAgentRuntimeInput) GetHealthCheckConfiguration() *HealthCheckConfiguration {
 	return s.HealthCheckConfiguration
 }
@@ -196,8 +224,16 @@ func (s *UpdateAgentRuntimeInput) GetMemory() *int32 {
 	return s.Memory
 }
 
+func (s *UpdateAgentRuntimeInput) GetNasConfig() *NASConfig {
+	return s.NasConfig
+}
+
 func (s *UpdateAgentRuntimeInput) GetNetworkConfiguration() *NetworkConfiguration {
 	return s.NetworkConfiguration
+}
+
+func (s *UpdateAgentRuntimeInput) GetOssMountConfig() *OSSMountConfig {
+	return s.OssMountConfig
 }
 
 func (s *UpdateAgentRuntimeInput) GetPort() *int32 {
@@ -261,6 +297,11 @@ func (s *UpdateAgentRuntimeInput) SetExecutionRoleArn(v string) *UpdateAgentRunt
 	return s
 }
 
+func (s *UpdateAgentRuntimeInput) SetExternalAgentEndpointUrl(v string) *UpdateAgentRuntimeInput {
+	s.ExternalAgentEndpointUrl = &v
+	return s
+}
+
 func (s *UpdateAgentRuntimeInput) SetHealthCheckConfiguration(v *HealthCheckConfiguration) *UpdateAgentRuntimeInput {
 	s.HealthCheckConfiguration = v
 	return s
@@ -276,8 +317,18 @@ func (s *UpdateAgentRuntimeInput) SetMemory(v int32) *UpdateAgentRuntimeInput {
 	return s
 }
 
+func (s *UpdateAgentRuntimeInput) SetNasConfig(v *NASConfig) *UpdateAgentRuntimeInput {
+	s.NasConfig = v
+	return s
+}
+
 func (s *UpdateAgentRuntimeInput) SetNetworkConfiguration(v *NetworkConfiguration) *UpdateAgentRuntimeInput {
 	s.NetworkConfiguration = v
+	return s
+}
+
+func (s *UpdateAgentRuntimeInput) SetOssMountConfig(v *OSSMountConfig) *UpdateAgentRuntimeInput {
+	s.OssMountConfig = v
 	return s
 }
 
@@ -322,8 +373,18 @@ func (s *UpdateAgentRuntimeInput) Validate() error {
 			return err
 		}
 	}
+	if s.NasConfig != nil {
+		if err := s.NasConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.NetworkConfiguration != nil {
 		if err := s.NetworkConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OssMountConfig != nil {
+		if err := s.OssMountConfig.Validate(); err != nil {
 			return err
 		}
 	}

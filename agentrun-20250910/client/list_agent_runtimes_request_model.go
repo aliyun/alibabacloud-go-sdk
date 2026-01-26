@@ -11,6 +11,8 @@ type iListAgentRuntimesRequest interface {
 	GoString() string
 	SetAgentRuntimeName(v string) *ListAgentRuntimesRequest
 	GetAgentRuntimeName() *string
+	SetDiscoveryResourceGroupId(v string) *ListAgentRuntimesRequest
+	GetDiscoveryResourceGroupId() *string
 	SetPageNumber(v int32) *ListAgentRuntimesRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListAgentRuntimesRequest
@@ -30,6 +32,12 @@ type ListAgentRuntimesRequest struct {
 	//
 	// my-runtime
 	AgentRuntimeName *string `json:"agentRuntimeName,omitempty" xml:"agentRuntimeName,omitempty"`
+	// 用于服务发现的资源组标识符
+	//
+	// example:
+	//
+	// rg-123456
+	DiscoveryResourceGroupId *string `json:"discoveryResourceGroupId,omitempty" xml:"discoveryResourceGroupId,omitempty"`
 	// 当前页码，从1开始计数
 	//
 	// example:
@@ -69,6 +77,10 @@ func (s *ListAgentRuntimesRequest) GetAgentRuntimeName() *string {
 	return s.AgentRuntimeName
 }
 
+func (s *ListAgentRuntimesRequest) GetDiscoveryResourceGroupId() *string {
+	return s.DiscoveryResourceGroupId
+}
+
 func (s *ListAgentRuntimesRequest) GetPageNumber() *int32 {
 	return s.PageNumber
 }
@@ -91,6 +103,11 @@ func (s *ListAgentRuntimesRequest) GetStatus() *string {
 
 func (s *ListAgentRuntimesRequest) SetAgentRuntimeName(v string) *ListAgentRuntimesRequest {
 	s.AgentRuntimeName = &v
+	return s
+}
+
+func (s *ListAgentRuntimesRequest) SetDiscoveryResourceGroupId(v string) *ListAgentRuntimesRequest {
+	s.DiscoveryResourceGroupId = &v
 	return s
 }
 

@@ -1624,6 +1624,10 @@ func (client *Client) ListAgentRuntimesWithContext(ctx context.Context, request 
 		query["agentRuntimeName"] = request.AgentRuntimeName
 	}
 
+	if !dara.IsNil(request.DiscoveryResourceGroupId) {
+		query["discoveryResourceGroupId"] = request.DiscoveryResourceGroupId
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		query["pageNumber"] = request.PageNumber
 	}

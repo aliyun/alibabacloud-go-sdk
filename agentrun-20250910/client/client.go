@@ -2451,6 +2451,10 @@ func (client *Client) ListAgentRuntimesWithOptions(request *ListAgentRuntimesReq
 		query["agentRuntimeName"] = request.AgentRuntimeName
 	}
 
+	if !dara.IsNil(request.DiscoveryResourceGroupId) {
+		query["discoveryResourceGroupId"] = request.DiscoveryResourceGroupId
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		query["pageNumber"] = request.PageNumber
 	}

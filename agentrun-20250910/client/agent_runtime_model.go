@@ -35,6 +35,8 @@ type iAgentRuntime interface {
 	GetEnvironmentVariables() map[string]*string
 	SetExecutionRoleArn(v string) *AgentRuntime
 	GetExecutionRoleArn() *string
+	SetExternalAgentEndpointUrl(v string) *AgentRuntime
+	GetExternalAgentEndpointUrl() *string
 	SetHealthCheckConfiguration(v *HealthCheckConfiguration) *AgentRuntime
 	GetHealthCheckConfiguration() *HealthCheckConfiguration
 	SetLastUpdatedAt(v string) *AgentRuntime
@@ -43,8 +45,12 @@ type iAgentRuntime interface {
 	GetLogConfiguration() *LogConfiguration
 	SetMemory(v int) *AgentRuntime
 	GetMemory() *int
+	SetNasConfig(v *NASConfig) *AgentRuntime
+	GetNasConfig() *NASConfig
 	SetNetworkConfiguration(v *NetworkConfiguration) *AgentRuntime
 	GetNetworkConfiguration() *NetworkConfiguration
+	SetOssMountConfig(v *OSSMountConfig) *AgentRuntime
+	GetOssMountConfig() *OSSMountConfig
 	SetPort(v int) *AgentRuntime
 	GetPort() *int
 	SetProtocolConfiguration(v *ProtocolConfiguration) *AgentRuntime
@@ -140,6 +146,12 @@ type AgentRuntime struct {
 	//
 	// acs:ram::1760720386195983:role/AgentRunExecutionRole
 	ExecutionRoleArn *string `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
+	// 外部注册类型的智能体访问端点地址，用于连接已部署在外部的智能体服务
+	//
+	// example:
+	//
+	// https://external-agent.example.com/api
+	ExternalAgentEndpointUrl *string `json:"externalAgentEndpointUrl,omitempty" xml:"externalAgentEndpointUrl,omitempty"`
 	// 智能体运行时的健康检查配置，用于监控运行时实例的健康状态
 	//
 	// example:
@@ -164,12 +176,24 @@ type AgentRuntime struct {
 	//
 	// 2048
 	Memory *int `json:"memory,omitempty" xml:"memory,omitempty"`
+	// 文件存储NAS的配置信息，用于挂载NAS文件系统到智能体运行时
+	//
+	// example:
+	//
+	// {}
+	NasConfig *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
 	// 智能体运行时的网络配置信息
 	//
 	// example:
 	//
 	// {}
 	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
+	// 对象存储OSS的挂载配置信息，用于挂载OSS存储桶到智能体运行时
+	//
+	// example:
+	//
+	// {}
+	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
 	// 智能体运行时监听的端口号
 	//
 	// example:
@@ -269,6 +293,10 @@ func (s *AgentRuntime) GetExecutionRoleArn() *string {
 	return s.ExecutionRoleArn
 }
 
+func (s *AgentRuntime) GetExternalAgentEndpointUrl() *string {
+	return s.ExternalAgentEndpointUrl
+}
+
 func (s *AgentRuntime) GetHealthCheckConfiguration() *HealthCheckConfiguration {
 	return s.HealthCheckConfiguration
 }
@@ -285,8 +313,16 @@ func (s *AgentRuntime) GetMemory() *int {
 	return s.Memory
 }
 
+func (s *AgentRuntime) GetNasConfig() *NASConfig {
+	return s.NasConfig
+}
+
 func (s *AgentRuntime) GetNetworkConfiguration() *NetworkConfiguration {
 	return s.NetworkConfiguration
+}
+
+func (s *AgentRuntime) GetOssMountConfig() *OSSMountConfig {
+	return s.OssMountConfig
 }
 
 func (s *AgentRuntime) GetPort() *int {
@@ -382,6 +418,11 @@ func (s *AgentRuntime) SetExecutionRoleArn(v string) *AgentRuntime {
 	return s
 }
 
+func (s *AgentRuntime) SetExternalAgentEndpointUrl(v string) *AgentRuntime {
+	s.ExternalAgentEndpointUrl = &v
+	return s
+}
+
 func (s *AgentRuntime) SetHealthCheckConfiguration(v *HealthCheckConfiguration) *AgentRuntime {
 	s.HealthCheckConfiguration = v
 	return s
@@ -402,8 +443,18 @@ func (s *AgentRuntime) SetMemory(v int) *AgentRuntime {
 	return s
 }
 
+func (s *AgentRuntime) SetNasConfig(v *NASConfig) *AgentRuntime {
+	s.NasConfig = v
+	return s
+}
+
 func (s *AgentRuntime) SetNetworkConfiguration(v *NetworkConfiguration) *AgentRuntime {
 	s.NetworkConfiguration = v
+	return s
+}
+
+func (s *AgentRuntime) SetOssMountConfig(v *OSSMountConfig) *AgentRuntime {
+	s.OssMountConfig = v
 	return s
 }
 
@@ -463,8 +514,18 @@ func (s *AgentRuntime) Validate() error {
 			return err
 		}
 	}
+	if s.NasConfig != nil {
+		if err := s.NasConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.NetworkConfiguration != nil {
 		if err := s.NetworkConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OssMountConfig != nil {
+		if err := s.OssMountConfig.Validate(); err != nil {
 			return err
 		}
 	}
