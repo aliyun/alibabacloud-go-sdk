@@ -10073,6 +10073,10 @@ func (client *Client) PublishRecallManagementTableWithOptions(RecallManagementTa
 		body["Partition"] = request.Partition
 	}
 
+	if !dara.IsNil(request.Partitions) {
+		body["Partitions"] = request.Partitions
+	}
+
 	if !dara.IsNil(request.SkipThresholdCheck) {
 		body["SkipThresholdCheck"] = request.SkipThresholdCheck
 	}

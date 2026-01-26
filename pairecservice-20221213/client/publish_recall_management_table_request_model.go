@@ -15,6 +15,8 @@ type iPublishRecallManagementTableRequest interface {
 	GetMode() *string
 	SetPartition(v map[string]*string) *PublishRecallManagementTableRequest
 	GetPartition() map[string]*string
+	SetPartitions(v map[string]*string) *PublishRecallManagementTableRequest
+	GetPartitions() map[string]*string
 	SetSkipThresholdCheck(v bool) *PublishRecallManagementTableRequest
 	GetSkipThresholdCheck() *bool
 }
@@ -29,8 +31,9 @@ type PublishRecallManagementTableRequest struct {
 	// example:
 	//
 	// Merge
-	Mode      *string            `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Partition map[string]*string `json:"Partition,omitempty" xml:"Partition,omitempty"`
+	Mode       *string            `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Partition  map[string]*string `json:"Partition,omitempty" xml:"Partition,omitempty"`
+	Partitions map[string]*string `json:"Partitions,omitempty" xml:"Partitions,omitempty"`
 	// example:
 	//
 	// false
@@ -57,6 +60,10 @@ func (s *PublishRecallManagementTableRequest) GetPartition() map[string]*string 
 	return s.Partition
 }
 
+func (s *PublishRecallManagementTableRequest) GetPartitions() map[string]*string {
+	return s.Partitions
+}
+
 func (s *PublishRecallManagementTableRequest) GetSkipThresholdCheck() *bool {
 	return s.SkipThresholdCheck
 }
@@ -73,6 +80,11 @@ func (s *PublishRecallManagementTableRequest) SetMode(v string) *PublishRecallMa
 
 func (s *PublishRecallManagementTableRequest) SetPartition(v map[string]*string) *PublishRecallManagementTableRequest {
 	s.Partition = v
+	return s
+}
+
+func (s *PublishRecallManagementTableRequest) SetPartitions(v map[string]*string) *PublishRecallManagementTableRequest {
+	s.Partitions = v
 	return s
 }
 
