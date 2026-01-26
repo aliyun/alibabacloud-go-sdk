@@ -125,9 +125,11 @@ type DescribeLifecyclePoliciesResponseBodyLifecyclePolicies struct {
 	//
 	// 2019-10-30T10:08:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Description
+	//
 	// example:
 	//
-	// 描述
+	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the file system.
 	//
@@ -135,6 +137,8 @@ type DescribeLifecyclePoliciesResponseBodyLifecyclePolicies struct {
 	//
 	// 31a8e4****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The ID of the lifecycle policy.
+	//
 	// example:
 	//
 	// lc-xxx
@@ -145,6 +149,8 @@ type DescribeLifecyclePoliciesResponseBodyLifecyclePolicies struct {
 	//
 	// lifecyclepolicy_01
 	LifecyclePolicyName *string `json:"LifecyclePolicyName,omitempty" xml:"LifecyclePolicyName,omitempty"`
+	// The type of the lifecycle policy.
+	//
 	// example:
 	//
 	// Auto
@@ -153,13 +159,13 @@ type DescribeLifecyclePoliciesResponseBodyLifecyclePolicies struct {
 	//
 	// Valid values:
 	//
-	// 	- DEFAULT_ATIME_14: Files that are not accessed in the last 14 days are dumped to the IA storage medium.
+	// 	- DEFAULT_ATIME_14: Files that are not accessed in the last 14 days.
 	//
-	// 	- DEFAULT_ATIME_30: Files that are not accessed in the last 30 days are dumped to the IA storage medium.
+	// 	- DEFAULT_ATIME_30: Files that are not accessed in the last 30 days.
 	//
-	// 	- DEFAULT_ATIME_60: Files that are not accessed in the last 60 days are dumped to the IA storage medium.
+	// 	- DEFAULT_ATIME_60: Files that are not accessed in the last 60 days.
 	//
-	// 	- DEFAULT_ATIME_90: Files that are not accessed in the last 90 days are dumped to the IA storage medium.
+	// 	- DEFAULT_ATIME_90: Files that are not accessed in the last 90 days.
 	//
 	// example:
 	//
@@ -171,17 +177,21 @@ type DescribeLifecyclePoliciesResponseBodyLifecyclePolicies struct {
 	//
 	// /pathway/to/folder
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The absolute paths to multiple directories associated with the lifecycle policy.
-	Paths         []*string                                                              `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	// The absolute paths of directories with which the lifecycle policy is associated.
+	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	// File data retrieval rules.
 	RetrieveRules []*DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules `json:"RetrieveRules,omitempty" xml:"RetrieveRules,omitempty" type:"Repeated"`
-	// The storage type of the data that is dumped to the IA storage medium.
+	// The storage class.
 	//
-	// Default value: InfrequentAccess (IA).
+	// 	- InfrequentAccess: the IA storage class.
+	//
+	// 	- Archive: the Archive storage class.
 	//
 	// example:
 	//
 	// InfrequentAccess
-	StorageType  *string                                                               `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// Data transition rules.
 	TransitRules []*DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules `json:"TransitRules,omitempty" xml:"TransitRules,omitempty" type:"Repeated"`
 }
 
@@ -324,10 +334,14 @@ func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) Validate() erro
 }
 
 type DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules struct {
+	// Attribute of the rule.
+	//
 	// example:
 	//
 	// RetrieveType
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
+	// Threshold for the rule.
+	//
 	// example:
 	//
 	// All
@@ -365,10 +379,14 @@ func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules) Va
 }
 
 type DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules struct {
+	// Attribute of the rule.
+	//
 	// example:
 	//
 	// Atime
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
+	// Threshold for the rule.
+	//
 	// example:
 	//
 	// 3

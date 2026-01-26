@@ -32,6 +32,8 @@ type ModifyLifecyclePolicyRequest struct {
 	//
 	// 31a8e4****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The ID of the lifecycle policy.
+	//
 	// example:
 	//
 	// lc-xxx
@@ -48,13 +50,17 @@ type ModifyLifecyclePolicyRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- DEFAULT_ATIME_14: Files that are not accessed in the last 14 days are dumped to the IA storage medium.
+	// 	- DEFAULT_ATIME_14: Files not accessed for 14 days.
 	//
-	// 	- DEFAULT_ATIME_30: Files that are not accessed in the last 30 days are dumped to the IA storage medium.
+	// 	- DEFAULT_ATIME_30: Files not accessed for 30 days.
 	//
-	// 	- DEFAULT_ATIME_60: Files that are not accessed in the last 60 days are dumped to the IA storage medium.
+	// 	- DEFAULT_ATIME_60: Files not accessed for 60 days.
 	//
-	// 	- DEFAULT_ATIME_90: Files that are not accessed in the last 90 days are dumped to the IA storage medium.
+	// 	- DEFAULT_ATIME_90: Files not accessed for 90 days.
+	//
+	// 	- DEFAULT_ATIME_180: Files not accessed for 180 days. DEFAULT_ATIME_180 is supported only when the StorageType parameter is set to Archive.
+	//
+	// >  If an IA policy has already been set for the directory, any subsequent archival policy must have a longer duration than the IA policy.
 	//
 	// example:
 	//
@@ -68,9 +74,11 @@ type ModifyLifecyclePolicyRequest struct {
 	//
 	// /pathway/to/folder
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The storage type of the data that is dumped to the IA storage medium.
+	// The storage class.
 	//
-	// Default value: InfrequentAccess (IA).
+	// 	- InfrequentAccess: the Infrequent Access (IA) storage class.
+	//
+	// 	- Archive: the Archive storage class.
 	//
 	// example:
 	//
