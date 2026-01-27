@@ -83,12 +83,14 @@ type ListUserApplicationsResponseBodyApplications struct {
 	// example:
 	//
 	// Block
-	Action    *string   `json:"Action,omitempty" xml:"Action,omitempty"`
-	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	Action        *string         `json:"Action,omitempty" xml:"Action,omitempty"`
+	AddressGroups []*AddressGroup `json:"AddressGroups,omitempty" xml:"AddressGroups,omitempty" type:"Repeated"`
+	Addresses     []*string       `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
 	// example:
 	//
 	// pa-application-b927baf3e592****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	ConfigMode    *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
 	// example:
 	//
 	// private_access_application_name
@@ -112,12 +114,20 @@ func (s *ListUserApplicationsResponseBodyApplications) GetAction() *string {
 	return s.Action
 }
 
+func (s *ListUserApplicationsResponseBodyApplications) GetAddressGroups() []*AddressGroup {
+	return s.AddressGroups
+}
+
 func (s *ListUserApplicationsResponseBodyApplications) GetAddresses() []*string {
 	return s.Addresses
 }
 
 func (s *ListUserApplicationsResponseBodyApplications) GetApplicationId() *string {
 	return s.ApplicationId
+}
+
+func (s *ListUserApplicationsResponseBodyApplications) GetConfigMode() *string {
+	return s.ConfigMode
 }
 
 func (s *ListUserApplicationsResponseBodyApplications) GetName() *string {
@@ -137,6 +147,11 @@ func (s *ListUserApplicationsResponseBodyApplications) SetAction(v string) *List
 	return s
 }
 
+func (s *ListUserApplicationsResponseBodyApplications) SetAddressGroups(v []*AddressGroup) *ListUserApplicationsResponseBodyApplications {
+	s.AddressGroups = v
+	return s
+}
+
 func (s *ListUserApplicationsResponseBodyApplications) SetAddresses(v []*string) *ListUserApplicationsResponseBodyApplications {
 	s.Addresses = v
 	return s
@@ -144,6 +159,11 @@ func (s *ListUserApplicationsResponseBodyApplications) SetAddresses(v []*string)
 
 func (s *ListUserApplicationsResponseBodyApplications) SetApplicationId(v string) *ListUserApplicationsResponseBodyApplications {
 	s.ApplicationId = &v
+	return s
+}
+
+func (s *ListUserApplicationsResponseBodyApplications) SetConfigMode(v string) *ListUserApplicationsResponseBodyApplications {
+	s.ConfigMode = &v
 	return s
 }
 
@@ -163,6 +183,15 @@ func (s *ListUserApplicationsResponseBodyApplications) SetProtocol(v string) *Li
 }
 
 func (s *ListUserApplicationsResponseBodyApplications) Validate() error {
+	if s.AddressGroups != nil {
+		for _, item := range s.AddressGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.PortRanges != nil {
 		for _, item := range s.PortRanges {
 			if item != nil {

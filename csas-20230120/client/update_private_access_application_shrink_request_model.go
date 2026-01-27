@@ -9,10 +9,14 @@ type iUpdatePrivateAccessApplicationShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAddressGroups(v []*AddressGroup) *UpdatePrivateAccessApplicationShrinkRequest
+	GetAddressGroups() []*AddressGroup
 	SetAddresses(v []*string) *UpdatePrivateAccessApplicationShrinkRequest
 	GetAddresses() []*string
 	SetApplicationId(v string) *UpdatePrivateAccessApplicationShrinkRequest
 	GetApplicationId() *string
+	SetConfigMode(v string) *UpdatePrivateAccessApplicationShrinkRequest
+	GetConfigMode() *string
 	SetDescription(v string) *UpdatePrivateAccessApplicationShrinkRequest
 	GetDescription() *string
 	SetL7ConfigShrink(v string) *UpdatePrivateAccessApplicationShrinkRequest
@@ -25,6 +29,8 @@ type iUpdatePrivateAccessApplicationShrinkRequest interface {
 	GetL7ProxyDomainPrivate() *string
 	SetModifyType(v string) *UpdatePrivateAccessApplicationShrinkRequest
 	GetModifyType() *string
+	SetName(v string) *UpdatePrivateAccessApplicationShrinkRequest
+	GetName() *string
 	SetPortRanges(v []*UpdatePrivateAccessApplicationShrinkRequestPortRanges) *UpdatePrivateAccessApplicationShrinkRequest
 	GetPortRanges() []*UpdatePrivateAccessApplicationShrinkRequestPortRanges
 	SetProtocol(v string) *UpdatePrivateAccessApplicationShrinkRequest
@@ -36,6 +42,7 @@ type iUpdatePrivateAccessApplicationShrinkRequest interface {
 }
 
 type UpdatePrivateAccessApplicationShrinkRequest struct {
+	AddressGroups []*AddressGroup `json:"AddressGroups,omitempty" xml:"AddressGroups,omitempty" type:"Repeated"`
 	// The addresses of the office applications. You can enter up to 1,000 addresses of office applications.
 	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
 	// The ID of the office application. You can obtain the value by calling the following operations:
@@ -50,6 +57,7 @@ type UpdatePrivateAccessApplicationShrinkRequest struct {
 	//
 	// pa-application-e12860ef6c48****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	ConfigMode    *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
 	// The description of the office application. The value must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
 	//
 	// if can be null:
@@ -87,6 +95,7 @@ type UpdatePrivateAccessApplicationShrinkRequest struct {
 	//
 	// Cover
 	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The port ranges of the office applications. You can enter up to 65,535 port ranges. Multiple port ranges cannot be duplicated or overlapped.
 	PortRanges []*UpdatePrivateAccessApplicationShrinkRequestPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
 	// The protocol that is used by the office application. Valid values:
@@ -126,12 +135,20 @@ func (s UpdatePrivateAccessApplicationShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdatePrivateAccessApplicationShrinkRequest) GetAddressGroups() []*AddressGroup {
+	return s.AddressGroups
+}
+
 func (s *UpdatePrivateAccessApplicationShrinkRequest) GetAddresses() []*string {
 	return s.Addresses
 }
 
 func (s *UpdatePrivateAccessApplicationShrinkRequest) GetApplicationId() *string {
 	return s.ApplicationId
+}
+
+func (s *UpdatePrivateAccessApplicationShrinkRequest) GetConfigMode() *string {
+	return s.ConfigMode
 }
 
 func (s *UpdatePrivateAccessApplicationShrinkRequest) GetDescription() *string {
@@ -158,6 +175,10 @@ func (s *UpdatePrivateAccessApplicationShrinkRequest) GetModifyType() *string {
 	return s.ModifyType
 }
 
+func (s *UpdatePrivateAccessApplicationShrinkRequest) GetName() *string {
+	return s.Name
+}
+
 func (s *UpdatePrivateAccessApplicationShrinkRequest) GetPortRanges() []*UpdatePrivateAccessApplicationShrinkRequestPortRanges {
 	return s.PortRanges
 }
@@ -174,6 +195,11 @@ func (s *UpdatePrivateAccessApplicationShrinkRequest) GetTagIds() []*string {
 	return s.TagIds
 }
 
+func (s *UpdatePrivateAccessApplicationShrinkRequest) SetAddressGroups(v []*AddressGroup) *UpdatePrivateAccessApplicationShrinkRequest {
+	s.AddressGroups = v
+	return s
+}
+
 func (s *UpdatePrivateAccessApplicationShrinkRequest) SetAddresses(v []*string) *UpdatePrivateAccessApplicationShrinkRequest {
 	s.Addresses = v
 	return s
@@ -181,6 +207,11 @@ func (s *UpdatePrivateAccessApplicationShrinkRequest) SetAddresses(v []*string) 
 
 func (s *UpdatePrivateAccessApplicationShrinkRequest) SetApplicationId(v string) *UpdatePrivateAccessApplicationShrinkRequest {
 	s.ApplicationId = &v
+	return s
+}
+
+func (s *UpdatePrivateAccessApplicationShrinkRequest) SetConfigMode(v string) *UpdatePrivateAccessApplicationShrinkRequest {
+	s.ConfigMode = &v
 	return s
 }
 
@@ -214,6 +245,11 @@ func (s *UpdatePrivateAccessApplicationShrinkRequest) SetModifyType(v string) *U
 	return s
 }
 
+func (s *UpdatePrivateAccessApplicationShrinkRequest) SetName(v string) *UpdatePrivateAccessApplicationShrinkRequest {
+	s.Name = &v
+	return s
+}
+
 func (s *UpdatePrivateAccessApplicationShrinkRequest) SetPortRanges(v []*UpdatePrivateAccessApplicationShrinkRequestPortRanges) *UpdatePrivateAccessApplicationShrinkRequest {
 	s.PortRanges = v
 	return s
@@ -235,6 +271,15 @@ func (s *UpdatePrivateAccessApplicationShrinkRequest) SetTagIds(v []*string) *Up
 }
 
 func (s *UpdatePrivateAccessApplicationShrinkRequest) Validate() error {
+	if s.AddressGroups != nil {
+		for _, item := range s.AddressGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.PortRanges != nil {
 		for _, item := range s.PortRanges {
 			if item != nil {

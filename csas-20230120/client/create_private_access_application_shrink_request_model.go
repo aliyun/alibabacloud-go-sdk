@@ -9,10 +9,14 @@ type iCreatePrivateAccessApplicationShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAddressGroups(v []*AddressGroup) *CreatePrivateAccessApplicationShrinkRequest
+	GetAddressGroups() []*AddressGroup
 	SetAddresses(v []*string) *CreatePrivateAccessApplicationShrinkRequest
 	GetAddresses() []*string
 	SetBrowserAccessStatus(v string) *CreatePrivateAccessApplicationShrinkRequest
 	GetBrowserAccessStatus() *string
+	SetConfigMode(v string) *CreatePrivateAccessApplicationShrinkRequest
+	GetConfigMode() *string
 	SetDescription(v string) *CreatePrivateAccessApplicationShrinkRequest
 	GetDescription() *string
 	SetL7ConfigShrink(v string) *CreatePrivateAccessApplicationShrinkRequest
@@ -34,9 +38,8 @@ type iCreatePrivateAccessApplicationShrinkRequest interface {
 }
 
 type CreatePrivateAccessApplicationShrinkRequest struct {
+	AddressGroups []*AddressGroup `json:"AddressGroups,omitempty" xml:"AddressGroups,omitempty" type:"Repeated"`
 	// The addresses of the office applications. You can enter up to 1,000 addresses of office applications.
-	//
-	// This parameter is required.
 	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
 	// Specifies whether to allow access from a browser. Default value: **Disabled**. Valid values:
 	//
@@ -48,6 +51,7 @@ type CreatePrivateAccessApplicationShrinkRequest struct {
 	//
 	// Disabled
 	BrowserAccessStatus *string `json:"BrowserAccessStatus,omitempty" xml:"BrowserAccessStatus,omitempty"`
+	ConfigMode          *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
 	// The description of the office application. The value must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The browser access mode parameter. The parameter specifies the configurations of Layer 7 applications.
@@ -73,8 +77,6 @@ type CreatePrivateAccessApplicationShrinkRequest struct {
 	// private_access_application_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The port ranges of the office applications. You can enter up to 65,535 port ranges. Multiple port ranges cannot be duplicated or overlapped.
-	//
-	// This parameter is required.
 	PortRanges []*CreatePrivateAccessApplicationShrinkRequestPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
 	// The protocol that is used by the office application. Valid values:
 	//
@@ -114,12 +116,20 @@ func (s CreatePrivateAccessApplicationShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreatePrivateAccessApplicationShrinkRequest) GetAddressGroups() []*AddressGroup {
+	return s.AddressGroups
+}
+
 func (s *CreatePrivateAccessApplicationShrinkRequest) GetAddresses() []*string {
 	return s.Addresses
 }
 
 func (s *CreatePrivateAccessApplicationShrinkRequest) GetBrowserAccessStatus() *string {
 	return s.BrowserAccessStatus
+}
+
+func (s *CreatePrivateAccessApplicationShrinkRequest) GetConfigMode() *string {
+	return s.ConfigMode
 }
 
 func (s *CreatePrivateAccessApplicationShrinkRequest) GetDescription() *string {
@@ -158,6 +168,11 @@ func (s *CreatePrivateAccessApplicationShrinkRequest) GetTagIds() []*string {
 	return s.TagIds
 }
 
+func (s *CreatePrivateAccessApplicationShrinkRequest) SetAddressGroups(v []*AddressGroup) *CreatePrivateAccessApplicationShrinkRequest {
+	s.AddressGroups = v
+	return s
+}
+
 func (s *CreatePrivateAccessApplicationShrinkRequest) SetAddresses(v []*string) *CreatePrivateAccessApplicationShrinkRequest {
 	s.Addresses = v
 	return s
@@ -165,6 +180,11 @@ func (s *CreatePrivateAccessApplicationShrinkRequest) SetAddresses(v []*string) 
 
 func (s *CreatePrivateAccessApplicationShrinkRequest) SetBrowserAccessStatus(v string) *CreatePrivateAccessApplicationShrinkRequest {
 	s.BrowserAccessStatus = &v
+	return s
+}
+
+func (s *CreatePrivateAccessApplicationShrinkRequest) SetConfigMode(v string) *CreatePrivateAccessApplicationShrinkRequest {
+	s.ConfigMode = &v
 	return s
 }
 
@@ -214,6 +234,15 @@ func (s *CreatePrivateAccessApplicationShrinkRequest) SetTagIds(v []*string) *Cr
 }
 
 func (s *CreatePrivateAccessApplicationShrinkRequest) Validate() error {
+	if s.AddressGroups != nil {
+		for _, item := range s.AddressGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.PortRanges != nil {
 		for _, item := range s.PortRanges {
 			if item != nil {

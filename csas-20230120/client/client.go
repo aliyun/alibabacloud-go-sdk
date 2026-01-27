@@ -725,12 +725,20 @@ func (client *Client) CreatePrivateAccessApplicationWithOptions(tmpReq *CreatePr
 
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.AddressGroups) {
+		bodyFlat["AddressGroups"] = request.AddressGroups
+	}
+
 	if !dara.IsNil(request.Addresses) {
 		bodyFlat["Addresses"] = request.Addresses
 	}
 
 	if !dara.IsNil(request.BrowserAccessStatus) {
 		body["BrowserAccessStatus"] = request.BrowserAccessStatus
+	}
+
+	if !dara.IsNil(request.ConfigMode) {
+		body["ConfigMode"] = request.ConfigMode
 	}
 
 	if !dara.IsNil(request.Description) {
@@ -7272,12 +7280,20 @@ func (client *Client) UpdatePrivateAccessApplicationWithOptions(tmpReq *UpdatePr
 
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.AddressGroups) {
+		bodyFlat["AddressGroups"] = request.AddressGroups
+	}
+
 	if !dara.IsNil(request.Addresses) {
 		bodyFlat["Addresses"] = request.Addresses
 	}
 
 	if !dara.IsNil(request.ApplicationId) {
 		body["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ConfigMode) {
+		body["ConfigMode"] = request.ConfigMode
 	}
 
 	if !dara.IsNil(request.Description) {
@@ -7302,6 +7318,10 @@ func (client *Client) UpdatePrivateAccessApplicationWithOptions(tmpReq *UpdatePr
 
 	if !dara.IsNil(request.ModifyType) {
 		body["ModifyType"] = request.ModifyType
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
 	}
 
 	if !dara.IsNil(request.PortRanges) {
@@ -7407,6 +7427,10 @@ func (client *Client) UpdatePrivateAccessPolicyWithOptions(request *UpdatePrivat
 
 	if !dara.IsNil(request.ModifyType) {
 		body["ModifyType"] = request.ModifyType
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
 	}
 
 	if !dara.IsNil(request.PolicyAction) {

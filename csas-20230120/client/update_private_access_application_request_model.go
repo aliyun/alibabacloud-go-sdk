@@ -9,10 +9,14 @@ type iUpdatePrivateAccessApplicationRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAddressGroups(v []*AddressGroup) *UpdatePrivateAccessApplicationRequest
+	GetAddressGroups() []*AddressGroup
 	SetAddresses(v []*string) *UpdatePrivateAccessApplicationRequest
 	GetAddresses() []*string
 	SetApplicationId(v string) *UpdatePrivateAccessApplicationRequest
 	GetApplicationId() *string
+	SetConfigMode(v string) *UpdatePrivateAccessApplicationRequest
+	GetConfigMode() *string
 	SetDescription(v string) *UpdatePrivateAccessApplicationRequest
 	GetDescription() *string
 	SetL7Config(v *PAL7Config) *UpdatePrivateAccessApplicationRequest
@@ -25,6 +29,8 @@ type iUpdatePrivateAccessApplicationRequest interface {
 	GetL7ProxyDomainPrivate() *string
 	SetModifyType(v string) *UpdatePrivateAccessApplicationRequest
 	GetModifyType() *string
+	SetName(v string) *UpdatePrivateAccessApplicationRequest
+	GetName() *string
 	SetPortRanges(v []*UpdatePrivateAccessApplicationRequestPortRanges) *UpdatePrivateAccessApplicationRequest
 	GetPortRanges() []*UpdatePrivateAccessApplicationRequestPortRanges
 	SetProtocol(v string) *UpdatePrivateAccessApplicationRequest
@@ -36,6 +42,7 @@ type iUpdatePrivateAccessApplicationRequest interface {
 }
 
 type UpdatePrivateAccessApplicationRequest struct {
+	AddressGroups []*AddressGroup `json:"AddressGroups,omitempty" xml:"AddressGroups,omitempty" type:"Repeated"`
 	// The addresses of the office applications. You can enter up to 1,000 addresses of office applications.
 	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
 	// The ID of the office application. You can obtain the value by calling the following operations:
@@ -50,6 +57,7 @@ type UpdatePrivateAccessApplicationRequest struct {
 	//
 	// pa-application-e12860ef6c48****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	ConfigMode    *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
 	// The description of the office application. The value must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
 	//
 	// if can be null:
@@ -87,6 +95,7 @@ type UpdatePrivateAccessApplicationRequest struct {
 	//
 	// Cover
 	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The port ranges of the office applications. You can enter up to 65,535 port ranges. Multiple port ranges cannot be duplicated or overlapped.
 	PortRanges []*UpdatePrivateAccessApplicationRequestPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
 	// The protocol that is used by the office application. Valid values:
@@ -126,12 +135,20 @@ func (s UpdatePrivateAccessApplicationRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdatePrivateAccessApplicationRequest) GetAddressGroups() []*AddressGroup {
+	return s.AddressGroups
+}
+
 func (s *UpdatePrivateAccessApplicationRequest) GetAddresses() []*string {
 	return s.Addresses
 }
 
 func (s *UpdatePrivateAccessApplicationRequest) GetApplicationId() *string {
 	return s.ApplicationId
+}
+
+func (s *UpdatePrivateAccessApplicationRequest) GetConfigMode() *string {
+	return s.ConfigMode
 }
 
 func (s *UpdatePrivateAccessApplicationRequest) GetDescription() *string {
@@ -158,6 +175,10 @@ func (s *UpdatePrivateAccessApplicationRequest) GetModifyType() *string {
 	return s.ModifyType
 }
 
+func (s *UpdatePrivateAccessApplicationRequest) GetName() *string {
+	return s.Name
+}
+
 func (s *UpdatePrivateAccessApplicationRequest) GetPortRanges() []*UpdatePrivateAccessApplicationRequestPortRanges {
 	return s.PortRanges
 }
@@ -174,6 +195,11 @@ func (s *UpdatePrivateAccessApplicationRequest) GetTagIds() []*string {
 	return s.TagIds
 }
 
+func (s *UpdatePrivateAccessApplicationRequest) SetAddressGroups(v []*AddressGroup) *UpdatePrivateAccessApplicationRequest {
+	s.AddressGroups = v
+	return s
+}
+
 func (s *UpdatePrivateAccessApplicationRequest) SetAddresses(v []*string) *UpdatePrivateAccessApplicationRequest {
 	s.Addresses = v
 	return s
@@ -181,6 +207,11 @@ func (s *UpdatePrivateAccessApplicationRequest) SetAddresses(v []*string) *Updat
 
 func (s *UpdatePrivateAccessApplicationRequest) SetApplicationId(v string) *UpdatePrivateAccessApplicationRequest {
 	s.ApplicationId = &v
+	return s
+}
+
+func (s *UpdatePrivateAccessApplicationRequest) SetConfigMode(v string) *UpdatePrivateAccessApplicationRequest {
+	s.ConfigMode = &v
 	return s
 }
 
@@ -214,6 +245,11 @@ func (s *UpdatePrivateAccessApplicationRequest) SetModifyType(v string) *UpdateP
 	return s
 }
 
+func (s *UpdatePrivateAccessApplicationRequest) SetName(v string) *UpdatePrivateAccessApplicationRequest {
+	s.Name = &v
+	return s
+}
+
 func (s *UpdatePrivateAccessApplicationRequest) SetPortRanges(v []*UpdatePrivateAccessApplicationRequestPortRanges) *UpdatePrivateAccessApplicationRequest {
 	s.PortRanges = v
 	return s
@@ -235,6 +271,15 @@ func (s *UpdatePrivateAccessApplicationRequest) SetTagIds(v []*string) *UpdatePr
 }
 
 func (s *UpdatePrivateAccessApplicationRequest) Validate() error {
+	if s.AddressGroups != nil {
+		for _, item := range s.AddressGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.L7Config != nil {
 		if err := s.L7Config.Validate(); err != nil {
 			return err

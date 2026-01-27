@@ -9,10 +9,14 @@ type iCreatePrivateAccessApplicationRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAddressGroups(v []*AddressGroup) *CreatePrivateAccessApplicationRequest
+	GetAddressGroups() []*AddressGroup
 	SetAddresses(v []*string) *CreatePrivateAccessApplicationRequest
 	GetAddresses() []*string
 	SetBrowserAccessStatus(v string) *CreatePrivateAccessApplicationRequest
 	GetBrowserAccessStatus() *string
+	SetConfigMode(v string) *CreatePrivateAccessApplicationRequest
+	GetConfigMode() *string
 	SetDescription(v string) *CreatePrivateAccessApplicationRequest
 	GetDescription() *string
 	SetL7Config(v *PAL7Config) *CreatePrivateAccessApplicationRequest
@@ -34,9 +38,8 @@ type iCreatePrivateAccessApplicationRequest interface {
 }
 
 type CreatePrivateAccessApplicationRequest struct {
+	AddressGroups []*AddressGroup `json:"AddressGroups,omitempty" xml:"AddressGroups,omitempty" type:"Repeated"`
 	// The addresses of the office applications. You can enter up to 1,000 addresses of office applications.
-	//
-	// This parameter is required.
 	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
 	// Specifies whether to allow access from a browser. Default value: **Disabled**. Valid values:
 	//
@@ -48,6 +51,7 @@ type CreatePrivateAccessApplicationRequest struct {
 	//
 	// Disabled
 	BrowserAccessStatus *string `json:"BrowserAccessStatus,omitempty" xml:"BrowserAccessStatus,omitempty"`
+	ConfigMode          *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
 	// The description of the office application. The value must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The browser access mode parameter. The parameter specifies the configurations of Layer 7 applications.
@@ -73,8 +77,6 @@ type CreatePrivateAccessApplicationRequest struct {
 	// private_access_application_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The port ranges of the office applications. You can enter up to 65,535 port ranges. Multiple port ranges cannot be duplicated or overlapped.
-	//
-	// This parameter is required.
 	PortRanges []*CreatePrivateAccessApplicationRequestPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
 	// The protocol that is used by the office application. Valid values:
 	//
@@ -114,12 +116,20 @@ func (s CreatePrivateAccessApplicationRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreatePrivateAccessApplicationRequest) GetAddressGroups() []*AddressGroup {
+	return s.AddressGroups
+}
+
 func (s *CreatePrivateAccessApplicationRequest) GetAddresses() []*string {
 	return s.Addresses
 }
 
 func (s *CreatePrivateAccessApplicationRequest) GetBrowserAccessStatus() *string {
 	return s.BrowserAccessStatus
+}
+
+func (s *CreatePrivateAccessApplicationRequest) GetConfigMode() *string {
+	return s.ConfigMode
 }
 
 func (s *CreatePrivateAccessApplicationRequest) GetDescription() *string {
@@ -158,6 +168,11 @@ func (s *CreatePrivateAccessApplicationRequest) GetTagIds() []*string {
 	return s.TagIds
 }
 
+func (s *CreatePrivateAccessApplicationRequest) SetAddressGroups(v []*AddressGroup) *CreatePrivateAccessApplicationRequest {
+	s.AddressGroups = v
+	return s
+}
+
 func (s *CreatePrivateAccessApplicationRequest) SetAddresses(v []*string) *CreatePrivateAccessApplicationRequest {
 	s.Addresses = v
 	return s
@@ -165,6 +180,11 @@ func (s *CreatePrivateAccessApplicationRequest) SetAddresses(v []*string) *Creat
 
 func (s *CreatePrivateAccessApplicationRequest) SetBrowserAccessStatus(v string) *CreatePrivateAccessApplicationRequest {
 	s.BrowserAccessStatus = &v
+	return s
+}
+
+func (s *CreatePrivateAccessApplicationRequest) SetConfigMode(v string) *CreatePrivateAccessApplicationRequest {
+	s.ConfigMode = &v
 	return s
 }
 
@@ -214,6 +234,15 @@ func (s *CreatePrivateAccessApplicationRequest) SetTagIds(v []*string) *CreatePr
 }
 
 func (s *CreatePrivateAccessApplicationRequest) Validate() error {
+	if s.AddressGroups != nil {
+		for _, item := range s.AddressGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.L7Config != nil {
 		if err := s.L7Config.Validate(); err != nil {
 			return err

@@ -23,6 +23,8 @@ type iUpdatePrivateAccessPolicyRequest interface {
 	GetDeviceAttributeId() *string
 	SetModifyType(v string) *UpdatePrivateAccessPolicyRequest
 	GetModifyType() *string
+	SetName(v string) *UpdatePrivateAccessPolicyRequest
+	GetName() *string
 	SetPolicyAction(v string) *UpdatePrivateAccessPolicyRequest
 	GetPolicyAction() *string
 	SetPolicyId(v string) *UpdatePrivateAccessPolicyRequest
@@ -103,6 +105,7 @@ type UpdatePrivateAccessPolicyRequest struct {
 	//
 	// Cover
 	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Action of the private access policy. Values:
 	//
 	// - **Block**: Block.
@@ -237,6 +240,10 @@ func (s *UpdatePrivateAccessPolicyRequest) GetModifyType() *string {
 	return s.ModifyType
 }
 
+func (s *UpdatePrivateAccessPolicyRequest) GetName() *string {
+	return s.Name
+}
+
 func (s *UpdatePrivateAccessPolicyRequest) GetPolicyAction() *string {
 	return s.PolicyAction
 }
@@ -325,6 +332,11 @@ func (s *UpdatePrivateAccessPolicyRequest) SetDeviceAttributeId(v string) *Updat
 
 func (s *UpdatePrivateAccessPolicyRequest) SetModifyType(v string) *UpdatePrivateAccessPolicyRequest {
 	s.ModifyType = &v
+	return s
+}
+
+func (s *UpdatePrivateAccessPolicyRequest) SetName(v string) *UpdatePrivateAccessPolicyRequest {
+	s.Name = &v
 	return s
 }
 
