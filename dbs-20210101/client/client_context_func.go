@@ -2,84 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-qingdao":            dara.String("dbs-api.cn-hangzhou.aliyuncs.com"),
-		"cn-beijing":            dara.String("dbs-api.cn-hangzhou.aliyuncs.com"),
-		"cn-chengdu":            dara.String("dbs-api.cn-chengdu.aliyuncs.com"),
-		"cn-zhangjiakou":        dara.String("dbs-api.cn-hangzhou.aliyuncs.com"),
-		"cn-huhehaote":          dara.String("dbs-api.cn-huhehaote.aliyuncs.com"),
-		"cn-hangzhou":           dara.String("dbs-api.cn-hangzhou.aliyuncs.com"),
-		"cn-shanghai":           dara.String("dbs-api.cn-hangzhou.aliyuncs.com"),
-		"cn-shenzhen":           dara.String("dbs-api.cn-hangzhou.aliyuncs.com"),
-		"cn-hongkong":           dara.String("dbs-api.cn-hangzhou.aliyuncs.com"),
-		"ap-southeast-1":        dara.String("dbs-api.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-2":        dara.String("dbs-api.ap-southeast-2.aliyuncs.com"),
-		"ap-southeast-3":        dara.String("dbs-api.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-5":        dara.String("dbs-api.ap-southeast-5.aliyuncs.com"),
-		"ap-northeast-1":        dara.String("dbs-api.ap-northeast-1.aliyuncs.com"),
-		"us-west-1":             dara.String("dbs-api.cn-hangzhou.aliyuncs.com"),
-		"us-east-1":             dara.String("dbs-api.cn-hangzhou.aliyuncs.com"),
-		"eu-central-1":          dara.String("dbs-api.eu-central-1.aliyuncs.com"),
-		"cn-hangzhou-finance":   dara.String("dbs-api.cn-hangzhou.aliyuncs.com"),
-		"cn-shanghai-finance-1": dara.String("dbs-api.cn-hangzhou.aliyuncs.com"),
-		"cn-shenzhen-finance-1": dara.String("dbs-api.cn-hangzhou.aliyuncs.com"),
-		"ap-south-1":            dara.String("dbs-api.ap-south-1.aliyuncs.com"),
-		"eu-west-1":             dara.String("dbs-api.eu-west-1.aliyuncs.com"),
-		"me-east-1":             dara.String("dbs-api.me-east-1.aliyuncs.com"),
-	}
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("dbs"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -90,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeResourceGroupResponse
-func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -133,29 +59,11 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Moves a resource from one resource group to another.
-//
-// @param request - ChangeResourceGroupRequest
-//
-// @return ChangeResourceGroupResponse
-func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -168,7 +76,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConfigureBackupSetInfoResponse
-func (client *Client) ConfigureBackupSetInfoWithOptions(request *ConfigureBackupSetInfoRequest, runtime *dara.RuntimeOptions) (_result *ConfigureBackupSetInfoResponse, _err error) {
+func (client *Client) ConfigureBackupSetInfoWithContext(ctx context.Context, request *ConfigureBackupSetInfoRequest, runtime *dara.RuntimeOptions) (_result *ConfigureBackupSetInfoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -239,29 +147,11 @@ func (client *Client) ConfigureBackupSetInfoWithOptions(request *ConfigureBackup
 		BodyType:    dara.String("json"),
 	}
 	_result = &ConfigureBackupSetInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 配置备份集信息
-//
-// @param request - ConfigureBackupSetInfoRequest
-//
-// @return ConfigureBackupSetInfoResponse
-func (client *Client) ConfigureBackupSetInfo(request *ConfigureBackupSetInfoRequest) (_result *ConfigureBackupSetInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ConfigureBackupSetInfoResponse{}
-	_body, _err := client.ConfigureBackupSetInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -282,7 +172,7 @@ func (client *Client) ConfigureBackupSetInfo(request *ConfigureBackupSetInfoRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAdvancedPolicyResponse
-func (client *Client) CreateAdvancedPolicyWithOptions(request *CreateAdvancedPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateAdvancedPolicyResponse, _err error) {
+func (client *Client) CreateAdvancedPolicyWithContext(ctx context.Context, request *CreateAdvancedPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateAdvancedPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -313,37 +203,11 @@ func (client *Client) CreateAdvancedPolicyWithOptions(request *CreateAdvancedPol
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAdvancedPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables an advanced backup policy for a PolarDB instance.
-//
-// Description:
-//
-// ### [](#)Supported database engines
-//
-// # PolarDB for MySQL
-//
-// >  This API operation is available only to specific customers. If you want to call this API operation, join the Database Backup (DBS) DingTalk group (ID 35585947) for customer consultation to request permissions.
-//
-// @param request - CreateAdvancedPolicyRequest
-//
-// @return CreateAdvancedPolicyResponse
-func (client *Client) CreateAdvancedPolicy(request *CreateAdvancedPolicyRequest) (_result *CreateAdvancedPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateAdvancedPolicyResponse{}
-	_body, _err := client.CreateAdvancedPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -376,7 +240,7 @@ func (client *Client) CreateAdvancedPolicy(request *CreateAdvancedPolicyRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDownloadResponse
-func (client *Client) CreateDownloadWithOptions(request *CreateDownloadRequest, runtime *dara.RuntimeOptions) (_result *CreateDownloadResponse, _err error) {
+func (client *Client) CreateDownloadWithContext(ctx context.Context, request *CreateDownloadRequest, runtime *dara.RuntimeOptions) (_result *CreateDownloadResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -467,49 +331,11 @@ func (client *Client) CreateDownloadWithOptions(request *CreateDownloadRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDownloadResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an advanced download task for an ApsaraDB RDS for MySQL instance, an ApsaraDB RDS for PostgreSQL instance, or a PolarDB for MySQL cluster.
-//
-// Description:
-//
-// ### [](#)Supported database engines
-//
-//   - ApsaraDB RDS for MySQL
-//
-//   - ApsaraDB RDS for PostgreSQL
-//
-//   - PolarDB for MySQL
-//
-// ### [](#)References
-//
-// For the instances that meet your business requirements, you can create an advanced download task by point in time or backup set. You can set the download destination to a URL or directly upload the downloaded backup set to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving.
-//
-//   - [Download the backup files of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98819.html)
-//
-//   - [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96774.html)
-//
-//   - [Download the backup files of a PolarDB for MySQL cluster](https://help.aliyun.com/document_detail/2627635.html)
-//
-// @param request - CreateDownloadRequest
-//
-// @return CreateDownloadResponse
-func (client *Client) CreateDownload(request *CreateDownloadRequest) (_result *CreateDownloadResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateDownloadResponse{}
-	_body, _err := client.CreateDownloadWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -526,7 +352,7 @@ func (client *Client) CreateDownload(request *CreateDownloadRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteSandboxInstanceResponse
-func (client *Client) DeleteSandboxInstanceWithOptions(request *DeleteSandboxInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteSandboxInstanceResponse, _err error) {
+func (client *Client) DeleteSandboxInstanceWithContext(ctx context.Context, request *DeleteSandboxInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteSandboxInstanceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -561,33 +387,11 @@ func (client *Client) DeleteSandboxInstanceWithOptions(request *DeleteSandboxIns
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteSandboxInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Releases a sandbox instance.
-//
-// Description:
-//
-// This operation is available only for the Database Backup (DBS) API of the 2021-01-01 version.
-//
-// @param request - DeleteSandboxInstanceRequest
-//
-// @return DeleteSandboxInstanceResponse
-func (client *Client) DeleteSandboxInstance(request *DeleteSandboxInstanceRequest) (_result *DeleteSandboxInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteSandboxInstanceResponse{}
-	_body, _err := client.DeleteSandboxInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -612,7 +416,7 @@ func (client *Client) DeleteSandboxInstance(request *DeleteSandboxInstanceReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeBackupDataListResponse
-func (client *Client) DescribeBackupDataListWithOptions(request *DescribeBackupDataListRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupDataListResponse, _err error) {
+func (client *Client) DescribeBackupDataListWithContext(ctx context.Context, request *DescribeBackupDataListRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupDataListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -699,41 +503,11 @@ func (client *Client) DescribeBackupDataListWithOptions(request *DescribeBackupD
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeBackupDataListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about the backup data of a PolarDB for MySQL cluster.
-//
-// Description:
-//
-// ### [](#)Supported database engine
-//
-// # PolarDB for MySQL
-//
-// >  This API operation is available only to specific customers. If you want to call this API operation, join the Database Backup (DBS) DingTalk group (ID: 35585947) for customer consultation to request permissions.
-//
-// ### [](#)References
-//
-// [Back up data of PolarDB for MySQL](https://help.aliyun.com/document_detail/88172.html)
-//
-// @param request - DescribeBackupDataListRequest
-//
-// @return DescribeBackupDataListResponse
-func (client *Client) DescribeBackupDataList(request *DescribeBackupDataListRequest) (_result *DescribeBackupDataListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeBackupDataListResponse{}
-	_body, _err := client.DescribeBackupDataListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -758,7 +532,7 @@ func (client *Client) DescribeBackupDataList(request *DescribeBackupDataListRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeBackupPolicyResponse
-func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupPolicyResponse, _err error) {
+func (client *Client) DescribeBackupPolicyWithContext(ctx context.Context, request *DescribeBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -789,41 +563,11 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeBackupPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about the backup policy of a PolarDB for MySQL instance.
-//
-// Description:
-//
-// ### [](#)Supported database engine
-//
-// # PolarDB for MySQL
-//
-// >  The API operation is available only to specific customers. If you want to call this API operation, request permissions by joining the Database Backup (DBS) DingTalk group (ID 35585947) for customer consultation.
-//
-// ### [](#)References
-//
-// [Topics related to backup policies of PolarDB for MySQL instances](https://help.aliyun.com/document_detail/280422.html)
-//
-// @param request - DescribeBackupPolicyRequest
-//
-// @return DescribeBackupPolicyResponse
-func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest) (_result *DescribeBackupPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeBackupPolicyResponse{}
-	_body, _err := client.DescribeBackupPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -836,7 +580,7 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeBakDataSourceStorageAccessInfoResponse
-func (client *Client) DescribeBakDataSourceStorageAccessInfoWithOptions(request *DescribeBakDataSourceStorageAccessInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeBakDataSourceStorageAccessInfoResponse, _err error) {
+func (client *Client) DescribeBakDataSourceStorageAccessInfoWithContext(ctx context.Context, request *DescribeBakDataSourceStorageAccessInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeBakDataSourceStorageAccessInfoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -891,29 +635,11 @@ func (client *Client) DescribeBakDataSourceStorageAccessInfoWithOptions(request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeBakDataSourceStorageAccessInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询存储介质访问详情
-//
-// @param request - DescribeBakDataSourceStorageAccessInfoRequest
-//
-// @return DescribeBakDataSourceStorageAccessInfoResponse
-func (client *Client) DescribeBakDataSourceStorageAccessInfo(request *DescribeBakDataSourceStorageAccessInfoRequest) (_result *DescribeBakDataSourceStorageAccessInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeBakDataSourceStorageAccessInfoResponse{}
-	_body, _err := client.DescribeBakDataSourceStorageAccessInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -926,7 +652,7 @@ func (client *Client) DescribeBakDataSourceStorageAccessInfo(request *DescribeBa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCostInfoByDbsInstanceResponse
-func (client *Client) DescribeCostInfoByDbsInstanceWithOptions(request *DescribeCostInfoByDbsInstanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeCostInfoByDbsInstanceResponse, _err error) {
+func (client *Client) DescribeCostInfoByDbsInstanceWithContext(ctx context.Context, request *DescribeCostInfoByDbsInstanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeCostInfoByDbsInstanceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -957,29 +683,11 @@ func (client *Client) DescribeCostInfoByDbsInstanceWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCostInfoByDbsInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 根据dbs实例id获取费用列表
-//
-// @param request - DescribeCostInfoByDbsInstanceRequest
-//
-// @return DescribeCostInfoByDbsInstanceResponse
-func (client *Client) DescribeCostInfoByDbsInstance(request *DescribeCostInfoByDbsInstanceRequest) (_result *DescribeCostInfoByDbsInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCostInfoByDbsInstanceResponse{}
-	_body, _err := client.DescribeCostInfoByDbsInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -992,7 +700,7 @@ func (client *Client) DescribeCostInfoByDbsInstance(request *DescribeCostInfoByD
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDBTablesRecoveryBackupSetResponse
-func (client *Client) DescribeDBTablesRecoveryBackupSetWithOptions(request *DescribeDBTablesRecoveryBackupSetRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBTablesRecoveryBackupSetResponse, _err error) {
+func (client *Client) DescribeDBTablesRecoveryBackupSetWithContext(ctx context.Context, request *DescribeDBTablesRecoveryBackupSetRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBTablesRecoveryBackupSetResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1027,29 +735,11 @@ func (client *Client) DescribeDBTablesRecoveryBackupSetWithOptions(request *Desc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDBTablesRecoveryBackupSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查库表恢复可用的备份集
-//
-// @param request - DescribeDBTablesRecoveryBackupSetRequest
-//
-// @return DescribeDBTablesRecoveryBackupSetResponse
-func (client *Client) DescribeDBTablesRecoveryBackupSet(request *DescribeDBTablesRecoveryBackupSetRequest) (_result *DescribeDBTablesRecoveryBackupSetResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDBTablesRecoveryBackupSetResponse{}
-	_body, _err := client.DescribeDBTablesRecoveryBackupSetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1062,7 +752,7 @@ func (client *Client) DescribeDBTablesRecoveryBackupSet(request *DescribeDBTable
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDBTablesRecoveryStateResponse
-func (client *Client) DescribeDBTablesRecoveryStateWithOptions(request *DescribeDBTablesRecoveryStateRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBTablesRecoveryStateResponse, _err error) {
+func (client *Client) DescribeDBTablesRecoveryStateWithContext(ctx context.Context, request *DescribeDBTablesRecoveryStateRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBTablesRecoveryStateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1097,29 +787,11 @@ func (client *Client) DescribeDBTablesRecoveryStateWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDBTablesRecoveryStateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查库表恢复状态
-//
-// @param request - DescribeDBTablesRecoveryStateRequest
-//
-// @return DescribeDBTablesRecoveryStateResponse
-func (client *Client) DescribeDBTablesRecoveryState(request *DescribeDBTablesRecoveryStateRequest) (_result *DescribeDBTablesRecoveryStateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDBTablesRecoveryStateResponse{}
-	_body, _err := client.DescribeDBTablesRecoveryStateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1132,7 +804,7 @@ func (client *Client) DescribeDBTablesRecoveryState(request *DescribeDBTablesRec
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDBTablesRecoveryTimeRangeResponse
-func (client *Client) DescribeDBTablesRecoveryTimeRangeWithOptions(request *DescribeDBTablesRecoveryTimeRangeRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBTablesRecoveryTimeRangeResponse, _err error) {
+func (client *Client) DescribeDBTablesRecoveryTimeRangeWithContext(ctx context.Context, request *DescribeDBTablesRecoveryTimeRangeRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBTablesRecoveryTimeRangeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1167,29 +839,11 @@ func (client *Client) DescribeDBTablesRecoveryTimeRangeWithOptions(request *Desc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDBTablesRecoveryTimeRangeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查库表恢复可恢复的时间范围
-//
-// @param request - DescribeDBTablesRecoveryTimeRangeRequest
-//
-// @return DescribeDBTablesRecoveryTimeRangeResponse
-func (client *Client) DescribeDBTablesRecoveryTimeRange(request *DescribeDBTablesRecoveryTimeRangeRequest) (_result *DescribeDBTablesRecoveryTimeRangeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDBTablesRecoveryTimeRangeResponse{}
-	_body, _err := client.DescribeDBTablesRecoveryTimeRangeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1220,7 +874,7 @@ func (client *Client) DescribeDBTablesRecoveryTimeRange(request *DescribeDBTable
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDownloadBackupSetStorageInfoResponse
-func (client *Client) DescribeDownloadBackupSetStorageInfoWithOptions(request *DescribeDownloadBackupSetStorageInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeDownloadBackupSetStorageInfoResponse, _err error) {
+func (client *Client) DescribeDownloadBackupSetStorageInfoWithContext(ctx context.Context, request *DescribeDownloadBackupSetStorageInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeDownloadBackupSetStorageInfoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1267,47 +921,11 @@ func (client *Client) DescribeDownloadBackupSetStorageInfoWithOptions(request *D
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDownloadBackupSetStorageInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the storage information of a downloaded backup set.
-//
-// Description:
-//
-// ### [](#)Supported database engines
-//
-//   - ApsaraDB RDS for MySQL that uses Enterprise SSDs (ESSDs)
-//
-//   - RDS PostgreSQL
-//
-//   - PolarDB for MySQL
-//
-// ### [](#)References
-//
-//   - [Download the backup files of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98819.html)
-//
-//   - [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96774.html)
-//
-//   - [Download the backup files of a PolarDB for MySQL cluster](https://help.aliyun.com/document_detail/2627635.html)
-//
-// @param request - DescribeDownloadBackupSetStorageInfoRequest
-//
-// @return DescribeDownloadBackupSetStorageInfoResponse
-func (client *Client) DescribeDownloadBackupSetStorageInfo(request *DescribeDownloadBackupSetStorageInfoRequest) (_result *DescribeDownloadBackupSetStorageInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDownloadBackupSetStorageInfoResponse{}
-	_body, _err := client.DescribeDownloadBackupSetStorageInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1340,7 +958,7 @@ func (client *Client) DescribeDownloadBackupSetStorageInfo(request *DescribeDown
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDownloadSupportResponse
-func (client *Client) DescribeDownloadSupportWithOptions(request *DescribeDownloadSupportRequest, runtime *dara.RuntimeOptions) (_result *DescribeDownloadSupportResponse, _err error) {
+func (client *Client) DescribeDownloadSupportWithContext(ctx context.Context, request *DescribeDownloadSupportRequest, runtime *dara.RuntimeOptions) (_result *DescribeDownloadSupportResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1375,49 +993,11 @@ func (client *Client) DescribeDownloadSupportWithOptions(request *DescribeDownlo
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDownloadSupportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries whether an instance supports the advanced download feature.
-//
-// Description:
-//
-// ### [](#)Supported database engines
-//
-//   - ApsaraDB RDS for MySQL
-//
-//   - ApsaraDB RDS for PostgreSQL
-//
-//   - PolarDB for MySQL
-//
-// ### [](#)References
-//
-// You can create an advanced download task by point in time or backup set. You can set the download destination to a URL or directly upload the downloaded backup set to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving.
-//
-//   - [Download the backup files of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98819.html)
-//
-//   - [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96774.html)
-//
-//   - [Download the backup files of a PolarDB for MySQL cluster](https://help.aliyun.com/document_detail/2627635.html)
-//
-// @param request - DescribeDownloadSupportRequest
-//
-// @return DescribeDownloadSupportResponse
-func (client *Client) DescribeDownloadSupport(request *DescribeDownloadSupportRequest) (_result *DescribeDownloadSupportResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDownloadSupportResponse{}
-	_body, _err := client.DescribeDownloadSupportWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1448,7 +1028,7 @@ func (client *Client) DescribeDownloadSupport(request *DescribeDownloadSupportRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDownloadTaskResponse
-func (client *Client) DescribeDownloadTaskWithOptions(request *DescribeDownloadTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeDownloadTaskResponse, _err error) {
+func (client *Client) DescribeDownloadTaskWithContext(ctx context.Context, request *DescribeDownloadTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeDownloadTaskResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1523,47 +1103,11 @@ func (client *Client) DescribeDownloadTaskWithOptions(request *DescribeDownloadT
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDownloadTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the advanced download tasks for an ApsaraDB RDS for MySQL instance, an ApsaraDB RDS for PostgreSQL instance, or a PolarDB for MySQL cluster.
-//
-// Description:
-//
-// ### [](#)Supported database engines
-//
-//   - ApsaraDB RDS for MySQL
-//
-//   - ApsaraDB RDS for PostgreSQL
-//
-//   - PolarDB for MySQL
-//
-// ### [](#)References
-//
-//   - [Download the backup files of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98819.html)
-//
-//   - [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96774.html)
-//
-//   - [Download the backup files of a PolarDB for MySQL cluster](https://help.aliyun.com/document_detail/2627635.html)
-//
-// @param request - DescribeDownloadTaskRequest
-//
-// @return DescribeDownloadTaskResponse
-func (client *Client) DescribeDownloadTask(request *DescribeDownloadTaskRequest) (_result *DescribeDownloadTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDownloadTaskResponse{}
-	_body, _err := client.DescribeDownloadTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1580,7 +1124,7 @@ func (client *Client) DescribeDownloadTask(request *DescribeDownloadTaskRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSandboxBackupSetsResponse
-func (client *Client) DescribeSandboxBackupSetsWithOptions(request *DescribeSandboxBackupSetsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSandboxBackupSetsResponse, _err error) {
+func (client *Client) DescribeSandboxBackupSetsWithContext(ctx context.Context, request *DescribeSandboxBackupSetsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSandboxBackupSetsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1619,33 +1163,11 @@ func (client *Client) DescribeSandboxBackupSetsWithOptions(request *DescribeSand
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSandboxBackupSetsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the snapshots of an instance.
-//
-// Description:
-//
-// Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Use the emergency recovery feature of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/203154.html) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](https://help.aliyun.com/document_detail/185577.html). This operation is available only for the Database Backup (DBS) API of the 2021-01-01 version.
-//
-// @param request - DescribeSandboxBackupSetsRequest
-//
-// @return DescribeSandboxBackupSetsResponse
-func (client *Client) DescribeSandboxBackupSets(request *DescribeSandboxBackupSetsRequest) (_result *DescribeSandboxBackupSetsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSandboxBackupSetsResponse{}
-	_body, _err := client.DescribeSandboxBackupSetsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1662,7 +1184,7 @@ func (client *Client) DescribeSandboxBackupSets(request *DescribeSandboxBackupSe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSandboxInstancesResponse
-func (client *Client) DescribeSandboxInstancesWithOptions(request *DescribeSandboxInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeSandboxInstancesResponse, _err error) {
+func (client *Client) DescribeSandboxInstancesWithContext(ctx context.Context, request *DescribeSandboxInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeSandboxInstancesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1701,33 +1223,11 @@ func (client *Client) DescribeSandboxInstancesWithOptions(request *DescribeSandb
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSandboxInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries sandbox instances that are created within an account.
-//
-// Description:
-//
-// This operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
-//
-// @param request - DescribeSandboxInstancesRequest
-//
-// @return DescribeSandboxInstancesResponse
-func (client *Client) DescribeSandboxInstances(request *DescribeSandboxInstancesRequest) (_result *DescribeSandboxInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSandboxInstancesResponse{}
-	_body, _err := client.DescribeSandboxInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1744,7 +1244,7 @@ func (client *Client) DescribeSandboxInstances(request *DescribeSandboxInstances
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSandboxRecoveryTimeResponse
-func (client *Client) DescribeSandboxRecoveryTimeWithOptions(request *DescribeSandboxRecoveryTimeRequest, runtime *dara.RuntimeOptions) (_result *DescribeSandboxRecoveryTimeResponse, _err error) {
+func (client *Client) DescribeSandboxRecoveryTimeWithContext(ctx context.Context, request *DescribeSandboxRecoveryTimeRequest, runtime *dara.RuntimeOptions) (_result *DescribeSandboxRecoveryTimeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1771,33 +1271,11 @@ func (client *Client) DescribeSandboxRecoveryTimeWithOptions(request *DescribeSa
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSandboxRecoveryTimeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the recoverable time range of a sandbox instance.
-//
-// Description:
-//
-// Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Use the emergency recovery feature of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/203154.html) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](https://help.aliyun.com/document_detail/185577.html). This operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
-//
-// @param request - DescribeSandboxRecoveryTimeRequest
-//
-// @return DescribeSandboxRecoveryTimeResponse
-func (client *Client) DescribeSandboxRecoveryTime(request *DescribeSandboxRecoveryTimeRequest) (_result *DescribeSandboxRecoveryTimeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSandboxRecoveryTimeResponse{}
-	_body, _err := client.DescribeSandboxRecoveryTimeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1818,7 +1296,7 @@ func (client *Client) DescribeSandboxRecoveryTime(request *DescribeSandboxRecove
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyBackupPolicyResponse
-func (client *Client) ModifyBackupPolicyWithOptions(tmpReq *ModifyBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyBackupPolicyResponse, _err error) {
+func (client *Client) ModifyBackupPolicyWithContext(ctx context.Context, tmpReq *ModifyBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyBackupPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1899,37 +1377,11 @@ func (client *Client) ModifyBackupPolicyWithOptions(tmpReq *ModifyBackupPolicyRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyBackupPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the backup policy of a PolarDB instance.
-//
-// Description:
-//
-// ### [](#)Supported database engines
-//
-// # PolarDB for MySQL
-//
-// >  This API operation is available only to specific customers. If you want to call this API operation, join the Database Backup (DBS) DingTalk group (ID 35585947) for customer consultation to request permissions.
-//
-// @param request - ModifyBackupPolicyRequest
-//
-// @return ModifyBackupPolicyResponse
-func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_result *ModifyBackupPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyBackupPolicyResponse{}
-	_body, _err := client.ModifyBackupPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1942,7 +1394,7 @@ func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDBTablesRecoveryStateResponse
-func (client *Client) ModifyDBTablesRecoveryStateWithOptions(request *ModifyDBTablesRecoveryStateRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBTablesRecoveryStateResponse, _err error) {
+func (client *Client) ModifyDBTablesRecoveryStateWithContext(ctx context.Context, request *ModifyDBTablesRecoveryStateRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBTablesRecoveryStateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1985,29 +1437,11 @@ func (client *Client) ModifyDBTablesRecoveryStateWithOptions(request *ModifyDBTa
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDBTablesRecoveryStateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改库表恢复状态
-//
-// @param request - ModifyDBTablesRecoveryStateRequest
-//
-// @return ModifyDBTablesRecoveryStateResponse
-func (client *Client) ModifyDBTablesRecoveryState(request *ModifyDBTablesRecoveryStateRequest) (_result *ModifyDBTablesRecoveryStateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyDBTablesRecoveryStateResponse{}
-	_body, _err := client.ModifyDBTablesRecoveryStateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2020,7 +1454,7 @@ func (client *Client) ModifyDBTablesRecoveryState(request *ModifyDBTablesRecover
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RetryDownloadTaskResponse
-func (client *Client) RetryDownloadTaskWithOptions(request *RetryDownloadTaskRequest, runtime *dara.RuntimeOptions) (_result *RetryDownloadTaskResponse, _err error) {
+func (client *Client) RetryDownloadTaskWithContext(ctx context.Context, request *RetryDownloadTaskRequest, runtime *dara.RuntimeOptions) (_result *RetryDownloadTaskResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2059,29 +1493,11 @@ func (client *Client) RetryDownloadTaskWithOptions(request *RetryDownloadTaskReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &RetryDownloadTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 重试高级下载任务
-//
-// @param request - RetryDownloadTaskRequest
-//
-// @return RetryDownloadTaskResponse
-func (client *Client) RetryDownloadTask(request *RetryDownloadTaskRequest) (_result *RetryDownloadTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RetryDownloadTaskResponse{}
-	_body, _err := client.RetryDownloadTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2094,7 +1510,7 @@ func (client *Client) RetryDownloadTask(request *RetryDownloadTaskRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SupportDBTableRecoveryResponse
-func (client *Client) SupportDBTableRecoveryWithOptions(request *SupportDBTableRecoveryRequest, runtime *dara.RuntimeOptions) (_result *SupportDBTableRecoveryResponse, _err error) {
+func (client *Client) SupportDBTableRecoveryWithContext(ctx context.Context, request *SupportDBTableRecoveryRequest, runtime *dara.RuntimeOptions) (_result *SupportDBTableRecoveryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2129,28 +1545,10 @@ func (client *Client) SupportDBTableRecoveryWithOptions(request *SupportDBTableR
 		BodyType:    dara.String("json"),
 	}
 	_result = &SupportDBTableRecoveryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询是否支持库表恢复
-//
-// @param request - SupportDBTableRecoveryRequest
-//
-// @return SupportDBTableRecoveryResponse
-func (client *Client) SupportDBTableRecovery(request *SupportDBTableRecoveryRequest) (_result *SupportDBTableRecoveryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SupportDBTableRecoveryResponse{}
-	_body, _err := client.SupportDBTableRecoveryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
