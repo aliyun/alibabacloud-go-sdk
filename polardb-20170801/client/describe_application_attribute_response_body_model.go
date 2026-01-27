@@ -35,6 +35,8 @@ type iDescribeApplicationAttributeResponseBody interface {
 	GetMaintainEndTime() *string
 	SetMaintainStartTime(v string) *DescribeApplicationAttributeResponseBody
 	GetMaintainStartTime() *string
+	SetMemApplicationAttribute(v *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) *DescribeApplicationAttributeResponseBody
+	GetMemApplicationAttribute() *DescribeApplicationAttributeResponseBodyMemApplicationAttribute
 	SetPayType(v string) *DescribeApplicationAttributeResponseBody
 	GetPayType() *string
 	SetPolarFSInstanceId(v string) *DescribeApplicationAttributeResponseBody
@@ -109,7 +111,8 @@ type DescribeApplicationAttributeResponseBody struct {
 	// example:
 	//
 	// 18:00Z
-	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	MaintainStartTime       *string                                                          `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	MemApplicationAttribute *DescribeApplicationAttributeResponseBodyMemApplicationAttribute `json:"MemApplicationAttribute,omitempty" xml:"MemApplicationAttribute,omitempty" type:"Struct"`
 	// example:
 	//
 	// Postpaid
@@ -217,6 +220,10 @@ func (s *DescribeApplicationAttributeResponseBody) GetMaintainEndTime() *string 
 
 func (s *DescribeApplicationAttributeResponseBody) GetMaintainStartTime() *string {
 	return s.MaintainStartTime
+}
+
+func (s *DescribeApplicationAttributeResponseBody) GetMemApplicationAttribute() *DescribeApplicationAttributeResponseBodyMemApplicationAttribute {
+	return s.MemApplicationAttribute
 }
 
 func (s *DescribeApplicationAttributeResponseBody) GetPayType() *string {
@@ -336,6 +343,11 @@ func (s *DescribeApplicationAttributeResponseBody) SetMaintainStartTime(v string
 	return s
 }
 
+func (s *DescribeApplicationAttributeResponseBody) SetMemApplicationAttribute(v *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) *DescribeApplicationAttributeResponseBody {
+	s.MemApplicationAttribute = v
+	return s
+}
+
 func (s *DescribeApplicationAttributeResponseBody) SetPayType(v string) *DescribeApplicationAttributeResponseBody {
 	s.PayType = &v
 	return s
@@ -418,6 +430,11 @@ func (s *DescribeApplicationAttributeResponseBody) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.MemApplicationAttribute != nil {
+		if err := s.MemApplicationAttribute.Validate(); err != nil {
+			return err
 		}
 	}
 	if s.SecurityGroups != nil {
@@ -895,6 +912,81 @@ func (s *DescribeApplicationAttributeResponseBodyEndpoints) SetPortDescription(v
 }
 
 func (s *DescribeApplicationAttributeResponseBodyEndpoints) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeApplicationAttributeResponseBodyMemApplicationAttribute struct {
+	DbName            *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	EmbedderModelName *string `json:"EmbedderModelName,omitempty" xml:"EmbedderModelName,omitempty"`
+	LlmModelName      *string `json:"LlmModelName,omitempty" xml:"LlmModelName,omitempty"`
+	ProjectName       *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	RerankerModelName *string `json:"RerankerModelName,omitempty" xml:"RerankerModelName,omitempty"`
+	UserName          *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeApplicationAttributeResponseBodyMemApplicationAttribute) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeApplicationAttributeResponseBodyMemApplicationAttribute) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) GetDbName() *string {
+	return s.DbName
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) GetEmbedderModelName() *string {
+	return s.EmbedderModelName
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) GetLlmModelName() *string {
+	return s.LlmModelName
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) GetProjectName() *string {
+	return s.ProjectName
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) GetRerankerModelName() *string {
+	return s.RerankerModelName
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) GetUserName() *string {
+	return s.UserName
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) SetDbName(v string) *DescribeApplicationAttributeResponseBodyMemApplicationAttribute {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) SetEmbedderModelName(v string) *DescribeApplicationAttributeResponseBodyMemApplicationAttribute {
+	s.EmbedderModelName = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) SetLlmModelName(v string) *DescribeApplicationAttributeResponseBodyMemApplicationAttribute {
+	s.LlmModelName = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) SetProjectName(v string) *DescribeApplicationAttributeResponseBodyMemApplicationAttribute {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) SetRerankerModelName(v string) *DescribeApplicationAttributeResponseBodyMemApplicationAttribute {
+	s.RerankerModelName = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) SetUserName(v string) *DescribeApplicationAttributeResponseBodyMemApplicationAttribute {
+	s.UserName = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) Validate() error {
 	return dara.Validate(s)
 }
 

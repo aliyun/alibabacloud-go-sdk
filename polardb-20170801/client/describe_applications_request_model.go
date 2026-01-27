@@ -11,6 +11,8 @@ type iDescribeApplicationsRequest interface {
 	GoString() string
 	SetApplicationIds(v string) *DescribeApplicationsRequest
 	GetApplicationIds() *string
+	SetApplicationTypes(v string) *DescribeApplicationsRequest
+	GetApplicationTypes() *string
 	SetDBClusterId(v string) *DescribeApplicationsRequest
 	GetDBClusterId() *string
 	SetPageNumber(v int32) *DescribeApplicationsRequest
@@ -25,7 +27,8 @@ type DescribeApplicationsRequest struct {
 	// example:
 	//
 	// pa-**************
-	ApplicationIds *string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty"`
+	ApplicationIds   *string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty"`
+	ApplicationTypes *string `json:"ApplicationTypes,omitempty" xml:"ApplicationTypes,omitempty"`
 	// example:
 	//
 	// pc-**************
@@ -58,6 +61,10 @@ func (s *DescribeApplicationsRequest) GetApplicationIds() *string {
 	return s.ApplicationIds
 }
 
+func (s *DescribeApplicationsRequest) GetApplicationTypes() *string {
+	return s.ApplicationTypes
+}
+
 func (s *DescribeApplicationsRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
@@ -76,6 +83,11 @@ func (s *DescribeApplicationsRequest) GetRegionId() *string {
 
 func (s *DescribeApplicationsRequest) SetApplicationIds(v string) *DescribeApplicationsRequest {
 	s.ApplicationIds = &v
+	return s
+}
+
+func (s *DescribeApplicationsRequest) SetApplicationTypes(v string) *DescribeApplicationsRequest {
+	s.ApplicationTypes = &v
 	return s
 }
 

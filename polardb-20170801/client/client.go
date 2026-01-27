@@ -2233,6 +2233,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		request.EndpointsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Endpoints, dara.String("Endpoints"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.MemApplicationSpec) {
+		request.MemApplicationSpecShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MemApplicationSpec, dara.String("MemApplicationSpec"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationType) {
 		query["ApplicationType"] = request.ApplicationType
@@ -2274,6 +2278,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		query["Endpoints"] = request.EndpointsShrink
 	}
 
+	if !dara.IsNil(request.MemApplicationSpecShrink) {
+		query["MemApplicationSpec"] = request.MemApplicationSpecShrink
+	}
+
 	if !dara.IsNil(request.PayType) {
 		query["PayType"] = request.PayType
 	}
@@ -2296,6 +2304,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 
 	if !dara.IsNil(request.ResourceGroupId) {
 		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.SecurityGroupId) {
+		query["SecurityGroupId"] = request.SecurityGroupId
 	}
 
 	if !dara.IsNil(request.UsedTime) {
@@ -8280,6 +8292,10 @@ func (client *Client) DescribeApplicationsWithOptions(request *DescribeApplicati
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationIds) {
 		query["ApplicationIds"] = request.ApplicationIds
+	}
+
+	if !dara.IsNil(request.ApplicationTypes) {
+		query["ApplicationTypes"] = request.ApplicationTypes
 	}
 
 	if !dara.IsNil(request.DBClusterId) {

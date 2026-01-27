@@ -29,6 +29,8 @@ type iCreateApplicationShrinkRequest interface {
 	GetDryRun() *bool
 	SetEndpointsShrink(v string) *CreateApplicationShrinkRequest
 	GetEndpointsShrink() *string
+	SetMemApplicationSpecShrink(v string) *CreateApplicationShrinkRequest
+	GetMemApplicationSpecShrink() *string
 	SetPayType(v string) *CreateApplicationShrinkRequest
 	GetPayType() *string
 	SetPeriod(v string) *CreateApplicationShrinkRequest
@@ -41,6 +43,8 @@ type iCreateApplicationShrinkRequest interface {
 	GetRegionId() *string
 	SetResourceGroupId(v string) *CreateApplicationShrinkRequest
 	GetResourceGroupId() *string
+	SetSecurityGroupId(v string) *CreateApplicationShrinkRequest
+	GetSecurityGroupId() *string
 	SetUsedTime(v string) *CreateApplicationShrinkRequest
 	GetUsedTime() *string
 	SetVSwitchId(v string) *CreateApplicationShrinkRequest
@@ -82,8 +86,9 @@ type CreateApplicationShrinkRequest struct {
 	// example:
 	//
 	// false
-	DryRun          *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EndpointsShrink *string `json:"Endpoints,omitempty" xml:"Endpoints,omitempty"`
+	DryRun                   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	EndpointsShrink          *string `json:"Endpoints,omitempty" xml:"Endpoints,omitempty"`
+	MemApplicationSpecShrink *string `json:"MemApplicationSpec,omitempty" xml:"MemApplicationSpec,omitempty"`
 	// example:
 	//
 	// Postpaid
@@ -108,6 +113,7 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// rg-********************
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// example:
 	//
 	// 1
@@ -171,6 +177,10 @@ func (s *CreateApplicationShrinkRequest) GetEndpointsShrink() *string {
 	return s.EndpointsShrink
 }
 
+func (s *CreateApplicationShrinkRequest) GetMemApplicationSpecShrink() *string {
+	return s.MemApplicationSpecShrink
+}
+
 func (s *CreateApplicationShrinkRequest) GetPayType() *string {
 	return s.PayType
 }
@@ -193,6 +203,10 @@ func (s *CreateApplicationShrinkRequest) GetRegionId() *string {
 
 func (s *CreateApplicationShrinkRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
+}
+
+func (s *CreateApplicationShrinkRequest) GetSecurityGroupId() *string {
+	return s.SecurityGroupId
 }
 
 func (s *CreateApplicationShrinkRequest) GetUsedTime() *string {
@@ -261,6 +275,11 @@ func (s *CreateApplicationShrinkRequest) SetEndpointsShrink(v string) *CreateApp
 	return s
 }
 
+func (s *CreateApplicationShrinkRequest) SetMemApplicationSpecShrink(v string) *CreateApplicationShrinkRequest {
+	s.MemApplicationSpecShrink = &v
+	return s
+}
+
 func (s *CreateApplicationShrinkRequest) SetPayType(v string) *CreateApplicationShrinkRequest {
 	s.PayType = &v
 	return s
@@ -288,6 +307,11 @@ func (s *CreateApplicationShrinkRequest) SetRegionId(v string) *CreateApplicatio
 
 func (s *CreateApplicationShrinkRequest) SetResourceGroupId(v string) *CreateApplicationShrinkRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetSecurityGroupId(v string) *CreateApplicationShrinkRequest {
+	s.SecurityGroupId = &v
 	return s
 }
 

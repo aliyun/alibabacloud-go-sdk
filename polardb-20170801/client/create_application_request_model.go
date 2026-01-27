@@ -29,6 +29,8 @@ type iCreateApplicationRequest interface {
 	GetDryRun() *bool
 	SetEndpoints(v []*CreateApplicationRequestEndpoints) *CreateApplicationRequest
 	GetEndpoints() []*CreateApplicationRequestEndpoints
+	SetMemApplicationSpec(v *CreateApplicationRequestMemApplicationSpec) *CreateApplicationRequest
+	GetMemApplicationSpec() *CreateApplicationRequestMemApplicationSpec
 	SetPayType(v string) *CreateApplicationRequest
 	GetPayType() *string
 	SetPeriod(v string) *CreateApplicationRequest
@@ -41,6 +43,8 @@ type iCreateApplicationRequest interface {
 	GetRegionId() *string
 	SetResourceGroupId(v string) *CreateApplicationRequest
 	GetResourceGroupId() *string
+	SetSecurityGroupId(v string) *CreateApplicationRequest
+	GetSecurityGroupId() *string
 	SetUsedTime(v string) *CreateApplicationRequest
 	GetUsedTime() *string
 	SetVSwitchId(v string) *CreateApplicationRequest
@@ -82,8 +86,9 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// false
-	DryRun    *bool                                `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	Endpoints []*CreateApplicationRequestEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
+	DryRun             *bool                                       `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Endpoints          []*CreateApplicationRequestEndpoints        `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
+	MemApplicationSpec *CreateApplicationRequestMemApplicationSpec `json:"MemApplicationSpec,omitempty" xml:"MemApplicationSpec,omitempty" type:"Struct"`
 	// example:
 	//
 	// Postpaid
@@ -108,6 +113,7 @@ type CreateApplicationRequest struct {
 	//
 	// rg-********************
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// example:
 	//
 	// 1
@@ -171,6 +177,10 @@ func (s *CreateApplicationRequest) GetEndpoints() []*CreateApplicationRequestEnd
 	return s.Endpoints
 }
 
+func (s *CreateApplicationRequest) GetMemApplicationSpec() *CreateApplicationRequestMemApplicationSpec {
+	return s.MemApplicationSpec
+}
+
 func (s *CreateApplicationRequest) GetPayType() *string {
 	return s.PayType
 }
@@ -193,6 +203,10 @@ func (s *CreateApplicationRequest) GetRegionId() *string {
 
 func (s *CreateApplicationRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
+}
+
+func (s *CreateApplicationRequest) GetSecurityGroupId() *string {
+	return s.SecurityGroupId
 }
 
 func (s *CreateApplicationRequest) GetUsedTime() *string {
@@ -261,6 +275,11 @@ func (s *CreateApplicationRequest) SetEndpoints(v []*CreateApplicationRequestEnd
 	return s
 }
 
+func (s *CreateApplicationRequest) SetMemApplicationSpec(v *CreateApplicationRequestMemApplicationSpec) *CreateApplicationRequest {
+	s.MemApplicationSpec = v
+	return s
+}
+
 func (s *CreateApplicationRequest) SetPayType(v string) *CreateApplicationRequest {
 	s.PayType = &v
 	return s
@@ -288,6 +307,11 @@ func (s *CreateApplicationRequest) SetRegionId(v string) *CreateApplicationReque
 
 func (s *CreateApplicationRequest) SetResourceGroupId(v string) *CreateApplicationRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetSecurityGroupId(v string) *CreateApplicationRequest {
+	s.SecurityGroupId = &v
 	return s
 }
 
@@ -328,6 +352,11 @@ func (s *CreateApplicationRequest) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.MemApplicationSpec != nil {
+		if err := s.MemApplicationSpec.Validate(); err != nil {
+			return err
 		}
 	}
 	return nil
@@ -510,5 +539,90 @@ func (s *CreateApplicationRequestEndpoints) SetEndpointType(v string) *CreateApp
 }
 
 func (s *CreateApplicationRequestEndpoints) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateApplicationRequestMemApplicationSpec struct {
+	DbName        *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	DbPassword    *string `json:"DbPassword,omitempty" xml:"DbPassword,omitempty"`
+	DbUser        *string `json:"DbUser,omitempty" xml:"DbUser,omitempty"`
+	EmbedderModel *string `json:"EmbedderModel,omitempty" xml:"EmbedderModel,omitempty"`
+	LlmModel      *string `json:"LlmModel,omitempty" xml:"LlmModel,omitempty"`
+	ProjectName   *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	RerankerModel *string `json:"RerankerModel,omitempty" xml:"RerankerModel,omitempty"`
+}
+
+func (s CreateApplicationRequestMemApplicationSpec) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateApplicationRequestMemApplicationSpec) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) GetDbName() *string {
+	return s.DbName
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) GetDbPassword() *string {
+	return s.DbPassword
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) GetDbUser() *string {
+	return s.DbUser
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) GetEmbedderModel() *string {
+	return s.EmbedderModel
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) GetLlmModel() *string {
+	return s.LlmModel
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) GetProjectName() *string {
+	return s.ProjectName
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) GetRerankerModel() *string {
+	return s.RerankerModel
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) SetDbName(v string) *CreateApplicationRequestMemApplicationSpec {
+	s.DbName = &v
+	return s
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) SetDbPassword(v string) *CreateApplicationRequestMemApplicationSpec {
+	s.DbPassword = &v
+	return s
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) SetDbUser(v string) *CreateApplicationRequestMemApplicationSpec {
+	s.DbUser = &v
+	return s
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) SetEmbedderModel(v string) *CreateApplicationRequestMemApplicationSpec {
+	s.EmbedderModel = &v
+	return s
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) SetLlmModel(v string) *CreateApplicationRequestMemApplicationSpec {
+	s.LlmModel = &v
+	return s
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) SetProjectName(v string) *CreateApplicationRequestMemApplicationSpec {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) SetRerankerModel(v string) *CreateApplicationRequestMemApplicationSpec {
+	s.RerankerModel = &v
+	return s
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) Validate() error {
 	return dara.Validate(s)
 }
