@@ -28,44 +28,68 @@ type iVerifyCredentialRequest interface {
 }
 
 type VerifyCredentialRequest struct {
+	// The client ID. The system generates a unique ID for each client.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// d0b95762-0541-4b53-a0e4-7ed09f39****
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The credential.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456789cyG
 	Credential *string `json:"Credential,omitempty" xml:"Credential,omitempty"`
+	// The type of the logon credential that you want to clear.
+	//
+	// Valid values:
+	//
+	// 	- MfaPasscode: the multi-factor verification code.
+	//
+	// 	- FingerPrint: the fingerprint.
+	//
+	// 	- Password: the password.
+	//
 	// example:
 	//
 	// Password
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
+	// The ID of the key that you want to encrypt.
+	//
 	// example:
 	//
 	// drjfs****
 	EncryptedKey *string `json:"EncryptedKey,omitempty" xml:"EncryptedKey,omitempty"`
+	// The logon token.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// v1f5772a1c60dbea9fd8e1648567079018086448d234b5bc8e30bec0ba6e80c41c767c4dd0db51e9e5c4e0f111431a****
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// The office network ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai+dir-227468****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// eb17af2e-1dd6-4cc4-a3ee-3a14d0d7****

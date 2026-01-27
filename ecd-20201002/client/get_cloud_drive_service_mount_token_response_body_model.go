@@ -19,8 +19,9 @@ type GetCloudDriveServiceMountTokenResponseBody struct {
 	// example:
 	//
 	// DC27288A-F9E1-5092-9B5B-71C27D15****
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Token     *GetCloudDriveServiceMountTokenResponseBodyToken `json:"Token,omitempty" xml:"Token,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tokens.
+	Token *GetCloudDriveServiceMountTokenResponseBodyToken `json:"Token,omitempty" xml:"Token,omitempty" type:"Struct"`
 }
 
 func (s GetCloudDriveServiceMountTokenResponseBody) String() string {
@@ -71,10 +72,14 @@ type GetCloudDriveServiceMountTokenResponseBodyToken struct {
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The token.
+	//
 	// example:
 	//
 	// 7836fa6eced7dc8d54c775k34iu3h4i2kh534f****
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The total capacity of the enterprise drive. Unit: GiB
+	//
 	// example:
 	//
 	// 6050416754750

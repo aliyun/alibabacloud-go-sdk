@@ -20,18 +20,26 @@ type iIsKeepAliveResponseBody interface {
 }
 
 type IsKeepAliveResponseBody struct {
+	// Identifies whether the user should remain logged on to the client.
+	//
 	// example:
 	//
 	// True
 	IsKeepAlive *bool `json:"IsKeepAlive,omitempty" xml:"IsKeepAlive,omitempty"`
+	// The office network ID.
+	//
 	// example:
 	//
 	// cn-hangzhou+dir-885351****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The unique ID (UID) of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 141631846826****

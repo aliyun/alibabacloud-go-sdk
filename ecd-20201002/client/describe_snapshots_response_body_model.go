@@ -18,14 +18,19 @@ type iDescribeSnapshotsResponseBody interface {
 }
 
 type DescribeSnapshotsResponseBody struct {
+	// A pagination token. It can be used in the next request to retrieve a new page of results.If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6nmB7qrRFJ8vmttjxPL****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 51592A88-0F2C-55E6-AD2C-2AD9C10D****
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The snapshots.
 	Snapshots []*DescribeSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
 }
 
@@ -78,48 +83,100 @@ func (s *DescribeSnapshotsResponseBody) Validate() error {
 }
 
 type DescribeSnapshotsResponseBodySnapshots struct {
+	// The time when the snapshot was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2020-12-20T14:52:28Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The snapshot description.
+	//
 	// example:
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the cloud computer to which the snapshot belongs.
+	//
 	// example:
 	//
 	// ecd-g03l3tlm8djoj****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// The progress of creating the cloud computer.
+	//
 	// example:
 	//
 	// 100%
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The remaining time required to complete snapshot creation. Unit: seconds.
+	//
 	// example:
 	//
 	// 30
-	RemainTime       *int32  `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
-	RestorePointId   *string `json:"RestorePointId,omitempty" xml:"RestorePointId,omitempty"`
+	RemainTime *int32 `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
+	// The ID of the restore point.
+	//
+	// example:
+	//
+	// rp-btgmaa20wkcju****
+	RestorePointId *string `json:"RestorePointId,omitempty" xml:"RestorePointId,omitempty"`
+	// The name of the restore point.
+	//
+	// example:
+	//
+	// Data Disk Backup
 	RestorePointName *string `json:"RestorePointName,omitempty" xml:"RestorePointName,omitempty"`
+	// The snapshot ID.
+	//
 	// example:
 	//
 	// s-2zeipxmnhej803x7****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// The snapshot name.
+	//
 	// example:
 	//
 	// testSnapshotName
 	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+	// The snapshot type.
+	//
+	// Valid values:
+	//
+	// 	- AUTO: an automatic snapshot.
+	//
+	// 	- USER: a manual snapshot.
+	//
 	// example:
 	//
 	// USER
 	SnapshotType *string `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
+	// The size of the source disk. Unit: GiB.
+	//
 	// example:
 	//
 	// 150
 	SourceDiskSize *string `json:"SourceDiskSize,omitempty" xml:"SourceDiskSize,omitempty"`
+	// The type of the source disk.
+	//
+	// Valid values:
+	//
+	// 	- SYSTEM: a system disk.
+	//
+	// 	- DATA: a data disk.
+	//
 	// example:
 	//
 	// SYSTEM
 	SourceDiskType *string `json:"SourceDiskType,omitempty" xml:"SourceDiskType,omitempty"`
+	// The snapshot status.
+	//
+	// Valid values:
+	//
+	// 	- PROGRESSING: The snapshot is being created.
+	//
+	// 	- FAILED: The snapshot failed to be created.
+	//
+	// 	- ACCOMPLISHED: The snapshot is created.
+	//
 	// example:
 	//
 	// ACCOMPLISHED

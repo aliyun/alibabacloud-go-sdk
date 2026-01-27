@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 允许桌面FOTA升级
+// Enables OTA updates for cloud computers.
 //
 // @param request - ApproveFotaUpdateRequest
 //
@@ -319,6 +319,16 @@ func (client *Client) DescribeFingerPrintTemplatesWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of cloud computers. Currently, only the region corresponding to the Chinese mainland can be queried (excluding: Nanjing-local region-shutting down).
+//
+// Description:
+//
+//	  This API is a centralized domain name. The endpoint is in the China (Shanghai) region. You cannot call this API operation in other regions.
+//
+//		- The cloud computer status information in this interface has a delay of 1 to 3 seconds from the actual value.
+//
 // @param request - DescribeGlobalDesktopsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -435,6 +445,10 @@ func (client *Client) DescribeGlobalDesktopsWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries office networks.
+//
 // @param request - DescribeOfficeSitesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -458,6 +472,10 @@ func (client *Client) DescribeOfficeSitesWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Uuid) {
+		query["Uuid"] = request.Uuid
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -529,7 +547,7 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 列举快照
+// Queries the snapshots that are created based on a cloud computer and the details of the snapshots.
 //
 // @param request - DescribeSnapshotsRequest
 //
@@ -601,7 +619,11 @@ func (client *Client) DescribeSnapshotsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询用户资源列表
+// Queries user resources.
+//
+// Description:
+//
+// Before you call this operation, verify supported resource and service types in Alibaba Cloud Workspace.
 //
 // @param request - DescribeUserResourcesRequest
 //
@@ -821,7 +843,7 @@ func (client *Client) EncryptPasswordWithContext(ctx context.Context, request *E
 
 // Summary:
 //
-// 获取无影云盘的免密token
+// Retrieves the logon tokens for enterprise drives.
 //
 // @param request - GetCloudDriveServiceMountTokenRequest
 //
@@ -881,7 +903,11 @@ func (client *Client) GetCloudDriveServiceMountTokenWithContext(ctx context.Cont
 
 // Summary:
 //
-// 获得连接凭证
+// Retrieves the credential that is used to connect to a cloud computer.
+//
+// Description:
+//
+// The first time you call this operation, the system returns a task ID in the `TaskID` parameter. Use the task ID indicated in the `TaskID` parameter to continue calling this operation until the value of the `TaskStatus` parameter becomes `FINISHED` or `FAILED`. When `TaskStatus` becomes `FINISHED`, the value of the `Ticket` parameter is the ticket that is used to connect the client to the cloud computer.
 //
 // @param request - GetConnectionTicketRequest
 //
@@ -954,6 +980,10 @@ func (client *Client) GetConnectionTicketWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.TaskId) {
 		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TicketBlackList) {
+		query["TicketBlackList"] = request.TicketBlackList
 	}
 
 	if !dara.IsNil(request.Uuid) {
@@ -1111,7 +1141,7 @@ func (client *Client) GetLoginTokenWithContext(ctx context.Context, tmpReq *GetL
 
 // Summary:
 //
-// 是否保持登录判断接口
+// Verifies whether the client\\"s logon session is still active.
 //
 // @param request - IsKeepAliveRequest
 //
@@ -2193,6 +2223,10 @@ func (client *Client) UnbindUserDesktopWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Validates credentials to lock on-premises sessions on clients.
+//
 // @param request - VerifyCredentialRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions

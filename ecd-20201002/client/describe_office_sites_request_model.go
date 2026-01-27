@@ -15,6 +15,8 @@ type iDescribeOfficeSitesRequest interface {
 	GetOfficeSiteId() []*string
 	SetRegionId(v string) *DescribeOfficeSitesRequest
 	GetRegionId() *string
+	SetUuid(v string) *DescribeOfficeSitesRequest
+	GetUuid() *string
 }
 
 type DescribeOfficeSitesRequest struct {
@@ -31,6 +33,12 @@ type DescribeOfficeSitesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// uuid
+	//
+	// example:
+	//
+	// ASDASD
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s DescribeOfficeSitesRequest) String() string {
@@ -53,6 +61,10 @@ func (s *DescribeOfficeSitesRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *DescribeOfficeSitesRequest) GetUuid() *string {
+	return s.Uuid
+}
+
 func (s *DescribeOfficeSitesRequest) SetClientId(v string) *DescribeOfficeSitesRequest {
 	s.ClientId = &v
 	return s
@@ -65,6 +77,11 @@ func (s *DescribeOfficeSitesRequest) SetOfficeSiteId(v []*string) *DescribeOffic
 
 func (s *DescribeOfficeSitesRequest) SetRegionId(v string) *DescribeOfficeSitesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeOfficeSitesRequest) SetUuid(v string) *DescribeOfficeSitesRequest {
+	s.Uuid = &v
 	return s
 }
 

@@ -9,6 +9,8 @@ type iGetConnectionTicketResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDesktopId(v string) *GetConnectionTicketResponseBody
+	GetDesktopId() *string
 	SetP2PToken(v string) *GetConnectionTicketResponseBody
 	GetP2PToken() *string
 	SetRequestId(v string) *GetConnectionTicketResponseBody
@@ -26,21 +28,32 @@ type iGetConnectionTicketResponseBody interface {
 }
 
 type GetConnectionTicketResponseBody struct {
-	P2PToken *string `json:"P2PToken,omitempty" xml:"P2PToken,omitempty"`
+	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	P2PToken  *string `json:"P2PToken,omitempty" xml:"P2PToken,omitempty"`
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskCode  *string `json:"TaskCode,omitempty" xml:"TaskCode,omitempty"`
+	// example:
+	//
+	// W0VuY29kaW5nXQ0KSW5wdXRFbmNvZGluZz1V********
+	TaskCode *string `json:"TaskCode,omitempty" xml:"TaskCode,omitempty"`
+	// The ID of the task to connect to the cloud computer.
+	//
 	// example:
 	//
 	// 2afbad19-778a-4fc5-9674-1f19c63862da
-	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 2afbad19-778a-4fc5-9674-1f19c638****
 	TaskMessage *string `json:"TaskMessage,omitempty" xml:"TaskMessage,omitempty"`
 	// example:
 	//
 	// FINISHED
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The credentials for connecting to the cloud computer.
+	//
 	// example:
 	//
 	// W0VuY29kaW5nXQ0KSW5wdXRFbmNvZGluZz1V********
@@ -53,6 +66,10 @@ func (s GetConnectionTicketResponseBody) String() string {
 
 func (s GetConnectionTicketResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetConnectionTicketResponseBody) GetDesktopId() *string {
+	return s.DesktopId
 }
 
 func (s *GetConnectionTicketResponseBody) GetP2PToken() *string {
@@ -81,6 +98,11 @@ func (s *GetConnectionTicketResponseBody) GetTaskStatus() *string {
 
 func (s *GetConnectionTicketResponseBody) GetTicket() *string {
 	return s.Ticket
+}
+
+func (s *GetConnectionTicketResponseBody) SetDesktopId(v string) *GetConnectionTicketResponseBody {
+	s.DesktopId = &v
+	return s
 }
 
 func (s *GetConnectionTicketResponseBody) SetP2PToken(v string) *GetConnectionTicketResponseBody {

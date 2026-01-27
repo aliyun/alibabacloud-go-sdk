@@ -18,16 +18,22 @@ type iIsKeepAliveRequest interface {
 }
 
 type IsKeepAliveRequest struct {
+	// The client ID. The system generates a unique ID for each client.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f4a0dc8e-1702-4728-9a60-95b27a35****
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The office network ID.
+	//
 	// example:
 	//
 	// cn-hangzhou+dir-885351****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	//
 	// example:
 	//
 	// cn-hangzhou

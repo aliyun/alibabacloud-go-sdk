@@ -18,11 +18,16 @@ type iDescribeGlobalDesktopsResponseBody interface {
 }
 
 type DescribeGlobalDesktopsResponseBody struct {
+	// The details about the cloud computer.
 	Desktops []*DescribeGlobalDesktopsResponseBodyDesktops `json:"Desktops,omitempty" xml:"Desktops,omitempty" type:"Repeated"`
+	// The token used to start the next query. If NextToken is empty, it indicates that there is no next query.
+	//
 	// example:
 	//
 	// eyJkZWZhdWx0IjpbIjIwMjItMDgtMTdUM****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4686A731-D601-548C-83E2-4CB6371E****
@@ -78,121 +83,260 @@ func (s *DescribeGlobalDesktopsResponseBody) Validate() error {
 }
 
 type DescribeGlobalDesktopsResponseBodyDesktops struct {
+	// The billing method of the cloud computer pool.
+	//
+	// Valid value:
+	//
+	// 	- PostPaid: pay-as-you-go
+	//
+	// 	- PrePaid: subscription
+	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// 支持的客户端信息
+	// The information about the supported clients.
 	Clients []*DescribeGlobalDesktopsResponseBodyDesktopsClients `json:"Clients,omitempty" xml:"Clients,omitempty" type:"Repeated"`
+	// The state of the endpoint connection.
+	//
+	// Valid values:
+	//
+	// 	- Connected
+	//
+	// 	- Disconnecting
+	//
+	// 	- Pending.
+	//
+	// 	- Connecting.
+	//
+	// 	- Disconnected.
+	//
+	// 	- Deleting
+	//
 	// example:
 	//
 	// Disconnected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
+	// The number of vCPUs.
+	//
 	// example:
 	//
 	// 2
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The time when the cloud computer was created.
+	//
 	// example:
 	//
 	// 2020-11-06T08:28Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The ID of the cloud computer share.
+	//
 	// example:
 	//
 	// dg-3uiojcc0j4kh7****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	// The cloud compute ID.
+	//
 	// example:
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// The cloud computer name.
+	//
 	// example:
 	//
 	// testDesktopName
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	// The cloud computer status.
+	//
 	// example:
 	//
 	// Running
-	DesktopStatus *string                                                    `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
+	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
+	// The cloud computer timer object.
 	DesktopTimers []*DescribeGlobalDesktopsResponseBodyDesktopsDesktopTimers `json:"DesktopTimers,omitempty" xml:"DesktopTimers,omitempty" type:"Repeated"`
+	// The cloud computer type.
+	//
 	// example:
 	//
 	// ecd.basic.large
 	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
+	// The network ID of the office. Same as `OfficeSiteId`.
+	//
 	// example:
 	//
 	// cn-hangzhou+dir-jedbpr4sl9l37****
-	DirectoryId *string                                            `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	Disks       []*DescribeGlobalDesktopsResponseBodyDesktopsDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The disks.
+	Disks []*DescribeGlobalDesktopsResponseBodyDesktopsDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	// The names of end users.
+	//
 	// example:
 	//
 	// User1
-	EndUserId  *string   `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The list of end user.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
+	// The expiration time of the cloud computer.
+	//
+	// 	- For a cloud computer that is a package year or month, the return value is meaningful.
+	//
+	// 	- For pay-as-you-go cloud computers, the `2099-12-31T15:59Z` is returned.
+	//
 	// example:
 	//
 	// 2021-12-31T15:59Z
-	ExpiredTime *string                                               `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	FotaUpdate  *DescribeGlobalDesktopsResponseBodyDesktopsFotaUpdate `json:"FotaUpdate,omitempty" xml:"FotaUpdate,omitempty" type:"Struct"`
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The information about image update.
+	FotaUpdate *DescribeGlobalDesktopsResponseBodyDesktopsFotaUpdate `json:"FotaUpdate,omitempty" xml:"FotaUpdate,omitempty" type:"Struct"`
+	// The GPU memory size. For GPU-accelerated cloud computers, this return value is significant. Unit: MB.
+	//
 	// example:
 	//
 	// 2048
-	GpuMemory       *int32 `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
-	HibernationBeta *bool  `json:"HibernationBeta,omitempty" xml:"HibernationBeta,omitempty"`
+	GpuMemory *int32 `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
+	// Indicates whether this is a beta version of the hibernation feature.
+	//
+	// example:
+	//
+	// true
+	HibernationBeta *bool `json:"HibernationBeta,omitempty" xml:"HibernationBeta,omitempty"`
+	// The hostname of the cloud desktop.
+	//
 	// example:
 	//
 	// testName
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The image ID.
+	//
 	// example:
 	//
 	// m-4zfb6zj728hhr****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The time when the cloud desktop was last started.
+	//
 	// example:
 	//
 	// 2021-07-13T15:59Z
-	LastStartTime   *string   `json:"LastStartTime,omitempty" xml:"LastStartTime,omitempty"`
-	LocalName       *string   `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	LastStartTime *string `json:"LastStartTime,omitempty" xml:"LastStartTime,omitempty"`
+	// The region name.
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The list of cloud computer status.
 	ManagementFlags []*string `json:"ManagementFlags,omitempty" xml:"ManagementFlags,omitempty" type:"Repeated"`
+	// The memory of the cloud computer. Unit: MiB.
+	//
 	// example:
 	//
 	// 4096
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The IP address of the ENI.
+	//
 	// example:
 	//
 	// 192.168.xx.xx
 	NetworkInterfaceIp *string `json:"NetworkInterfaceIp,omitempty" xml:"NetworkInterfaceIp,omitempty"`
+	// The IDs of the office networks.
+	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
-	OfficeSiteId  *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	Os            *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	OsDescription *string `json:"OsDescription,omitempty" xml:"OsDescription,omitempty"`
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// OS Type
+	//
 	// example:
 	//
 	// Windows
-	OsType   *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	Os            *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	OsDescription *string `json:"OsDescription,omitempty" xml:"OsDescription,omitempty"`
+	// The operating system.
+	//
+	// Valid value:
+	//
+	// 	- Linux
+	//
+	// 	- Windows
+	//
+	// example:
+	//
+	// Windows
+	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	// The OS platform.
+	//
+	// Valid value:
+	//
+	// 	- Ubuntu
+	//
+	// 	- UOS
+	//
+	// 	- CentOS
+	//
+	// 	- Windows Server 2019
+	//
+	// 	- Windows Server 2016
+	//
+	// example:
+	//
+	// Ubuntu
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The cloud computer policy ID.
+	//
 	// example:
 	//
 	// pg-9cktlowtxfl6****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// The type of the protocol.
+	//
+	// Valid value:
+	//
+	// 	- High-definition Experience (HDX)
+	//
+	// 	- ASP
+	//
 	// example:
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// If a shared cloud computer is assigned a real cloud computer, the ID of the cloud computer is displayed.
+	//
 	// example:
 	//
 	// ecd-gx2x1dhsm****
 	RealDesktopId *string `json:"RealDesktopId,omitempty" xml:"RealDesktopId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId       *string                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegionLocation *string                                               `json:"RegionLocation,omitempty" xml:"RegionLocation,omitempty"`
-	SessionType    *string                                               `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
-	Sessions       []*DescribeGlobalDesktopsResponseBodyDesktopsSessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionLocation *string `json:"RegionLocation,omitempty" xml:"RegionLocation,omitempty"`
+	// The type of the session.
+	//
+	// Valid value:
+	//
+	// 	- SINGLE_SESSION
+	//
+	// 	- MULTIPLE_SESSION
+	//
+	// example:
+	//
+	// SINGLE_SESSION
+	SessionType *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
+	// The list of session information.
+	Sessions []*DescribeGlobalDesktopsResponseBodyDesktopsSessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
+	// Indicates whether hibernation is supported.
+	//
+	// Valid values:
+	//
+	// 	- true: supported
+	//
+	// 	- false: not supported
+	//
 	// example:
 	//
 	// true
 	SupportHibernation *bool `json:"SupportHibernation,omitempty" xml:"SupportHibernation,omitempty"`
+	// The custom cloud computer name.
+	//
 	// example:
 	//
 	// testDesktop
@@ -613,29 +757,33 @@ func (s *DescribeGlobalDesktopsResponseBodyDesktops) Validate() error {
 }
 
 type DescribeGlobalDesktopsResponseBodyDesktopsClients struct {
-	// 客户端类型，取值：
+	// The client type.
 	//
-	// - macos：Mac客户端
+	// Valid values:
 	//
-	// - ios：IOS客户端
+	// 	- html5: the web client.
 	//
-	// - android：Android客户端
+	// 	- android: the Android client.
 	//
-	// - html5：Web客户端
+	// 	- linux: Linux client.
 	//
-	// - windows：Windows客户端
+	// 	- ios: the iOS client.
 	//
-	// - linux：Linux客户端
+	// 	- windows: the Windows client.
+	//
+	// 	- macos: the macOS client.
 	//
 	// example:
 	//
 	// windows
 	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	// 客户端状态，取值：
+	// The status of the client.
 	//
-	// - ON：允许登录
+	// Valid values:
 	//
-	// - OFF：不允许登录
+	// 	- OFF: does not allow logon.
+	//
+	// 	- ON: allows logon.
 	//
 	// example:
 	//
@@ -674,25 +822,84 @@ func (s *DescribeGlobalDesktopsResponseBodyDesktopsClients) Validate() error {
 }
 
 type DescribeGlobalDesktopsResponseBodyDesktopsDesktopTimers struct {
+	// Whether to allow clients to set policies.
+	//
+	// example:
+	//
+	// true
 	AllowClientSetting *bool `json:"AllowClientSetting,omitempty" xml:"AllowClientSetting,omitempty"`
+	// The CRON expression for the scheduled task.
+	//
+	// For example, a `0 0 4 1/1 	- ?` indicates that the operation is executed every day from 4:00 a.m. on the first day of each month.
+	//
 	// example:
 	//
 	// 0 0 0 ? 	- 1
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// Indicates whether to forcibly execute the scheduled task. To `true` indicates that cloud computer and connection status detection are ignored, and scheduled tasks are forcibly executed.
+	//
 	// example:
 	//
 	// false
-	Enforce       *bool   `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
+	Enforce *bool `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
+	// The task duration.
+	//
+	// example:
+	//
+	// 2021-12-31T15:59Z
 	ExecutionTime *string `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
+	// The interval at which the monitoring data was queried. Unit: seconds.
+	//
 	// example:
 	//
 	// 60
-	Interval      *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The type of the scheduled task.
+	//
+	// Valid values:
+	//
+	// 	- HIBERNATE
+	//
+	// 	- SHUTDOWN
+	//
+	// example:
+	//
+	// SHUTDOWN
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	// For a reset task, you must set the reset type.
+	//
+	// Valid values:
+	//
+	// 	- RESET_TYPE_SYSTEM: resets the system disk.
+	//
+	// 	- RESET_TYPE_USER_DISK: resets the data disk.
+	//
+	// 	- RESET_TYPE_BOTH: resets the system disk and data disk.
+	//
 	// example:
 	//
 	// RESET_TYPE_BOTH
 	ResetType *string `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	// The type of the scheduled task.
+	//
+	// Valid values:
+	//
+	// 	- NoOperationDisconnect: scheduled disconnection upon inactivity.
+	//
+	// 	- NoConnectShutdown: connectionless shutdown.
+	//
+	// 	- TimerBoot: scheduled start.
+	//
+	// 	- TimerReset: scheduled reset.
+	//
+	// 	- NoOperationShutdown: scheduled shutdown upon inactivity.
+	//
+	// 	- TimerShutdown: Stops the cloud computers on schedule.
+	//
+	// 	- NoOperationReboot: scheduled restart upon inactivity.
+	//
+	// 	- TimerReboot: scheduled restart.
+	//
 	// example:
 	//
 	// NoConnectShutdown
@@ -784,14 +991,26 @@ func (s *DescribeGlobalDesktopsResponseBodyDesktopsDesktopTimers) Validate() err
 }
 
 type DescribeGlobalDesktopsResponseBodyDesktopsDisks struct {
+	// The disk ID.
+	//
 	// example:
 	//
 	// d-jedbpr4sl9l37****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The disk size. Unit: GiB.
+	//
 	// example:
 	//
 	// 80
 	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// The disk type.
+	//
+	// Valid value:
+	//
+	// 	- SYSTEM: a system disk.
+	//
+	// 	- DATA: a data disk.
+	//
 	// example:
 	//
 	// SYSTEM
@@ -838,30 +1057,53 @@ func (s *DescribeGlobalDesktopsResponseBodyDesktopsDisks) Validate() error {
 }
 
 type DescribeGlobalDesktopsResponseBodyDesktopsFotaUpdate struct {
+	// Subscription Channel
+	//
 	// example:
 	//
 	// Enterprise
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// The current version number of the cloud computer.
+	//
 	// example:
 	//
 	// 0.0.0-D-20220102.xxxx
 	CurrentAppVersion *string `json:"CurrentAppVersion,omitempty" xml:"CurrentAppVersion,omitempty"`
+	// Whether to force upgrade.
+	//
 	// example:
 	//
 	// false
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The version number of the application after the update.
+	//
 	// example:
 	//
 	// 0.0.0-R-20220307.xxxx
 	NewAppVersion *string `json:"NewAppVersion,omitempty" xml:"NewAppVersion,omitempty"`
 	NewDcdVersion *string `json:"NewDcdVersion,omitempty" xml:"NewDcdVersion,omitempty"`
+	// The name of the project.
+	//
 	// example:
 	//
 	// testProject
-	Project       *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	ReleaseNote   *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
+	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	// The description of the version that can be upgraded.
+	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
+	// The English release note for the new image version.
+	//
+	// example:
+	//
+	// Release note
 	ReleaseNoteEn *string `json:"ReleaseNoteEn,omitempty" xml:"ReleaseNoteEn,omitempty"`
+	// The Japanese release note for the new image version.
+	//
+	// example:
+	//
+	// リリースノート
 	ReleaseNoteJp *string `json:"ReleaseNoteJp,omitempty" xml:"ReleaseNoteJp,omitempty"`
+	// The size of the update package for the cloud computer image. Unit: MiB.
+	//
 	// example:
 	//
 	// 100
@@ -971,10 +1213,14 @@ func (s *DescribeGlobalDesktopsResponseBodyDesktopsFotaUpdate) Validate() error 
 }
 
 type DescribeGlobalDesktopsResponseBodyDesktopsSessions struct {
+	// End user information.
+	//
 	// example:
 	//
 	// User1
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The time when the session was created.
+	//
 	// example:
 	//
 	// 2021-03-07T08:23Z

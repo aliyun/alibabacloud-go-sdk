@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 允许桌面FOTA升级
+// Enables OTA updates for cloud computers.
 //
 // @param request - ApproveFotaUpdateRequest
 //
@@ -130,7 +130,7 @@ func (client *Client) ApproveFotaUpdateWithOptions(request *ApproveFotaUpdateReq
 
 // Summary:
 //
-// 允许桌面FOTA升级
+// Enables OTA updates for cloud computers.
 //
 // @param request - ApproveFotaUpdateRequest
 //
@@ -454,6 +454,16 @@ func (client *Client) DescribeFingerPrintTemplates(request *DescribeFingerPrintT
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of cloud computers. Currently, only the region corresponding to the Chinese mainland can be queried (excluding: Nanjing-local region-shutting down).
+//
+// Description:
+//
+//	  This API is a centralized domain name. The endpoint is in the China (Shanghai) region. You cannot call this API operation in other regions.
+//
+//		- The cloud computer status information in this interface has a delay of 1 to 3 seconds from the actual value.
+//
 // @param request - DescribeGlobalDesktopsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -570,6 +580,16 @@ func (client *Client) DescribeGlobalDesktopsWithOptions(request *DescribeGlobalD
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of cloud computers. Currently, only the region corresponding to the Chinese mainland can be queried (excluding: Nanjing-local region-shutting down).
+//
+// Description:
+//
+//	  This API is a centralized domain name. The endpoint is in the China (Shanghai) region. You cannot call this API operation in other regions.
+//
+//		- The cloud computer status information in this interface has a delay of 1 to 3 seconds from the actual value.
+//
 // @param request - DescribeGlobalDesktopsRequest
 //
 // @return DescribeGlobalDesktopsResponse
@@ -584,6 +604,10 @@ func (client *Client) DescribeGlobalDesktops(request *DescribeGlobalDesktopsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries office networks.
+//
 // @param request - DescribeOfficeSitesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -609,6 +633,10 @@ func (client *Client) DescribeOfficeSitesWithOptions(request *DescribeOfficeSite
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.Uuid) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -632,6 +660,10 @@ func (client *Client) DescribeOfficeSitesWithOptions(request *DescribeOfficeSite
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries office networks.
+//
 // @param request - DescribeOfficeSitesRequest
 //
 // @return DescribeOfficeSitesResponse
@@ -706,7 +738,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// 列举快照
+// Queries the snapshots that are created based on a cloud computer and the details of the snapshots.
 //
 // @param request - DescribeSnapshotsRequest
 //
@@ -778,7 +810,7 @@ func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsReq
 
 // Summary:
 //
-// 列举快照
+// Queries the snapshots that are created based on a cloud computer and the details of the snapshots.
 //
 // @param request - DescribeSnapshotsRequest
 //
@@ -796,7 +828,11 @@ func (client *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) (_res
 
 // Summary:
 //
-// 查询用户资源列表
+// Queries user resources.
+//
+// Description:
+//
+// Before you call this operation, verify supported resource and service types in Alibaba Cloud Workspace.
 //
 // @param request - DescribeUserResourcesRequest
 //
@@ -948,7 +984,11 @@ func (client *Client) DescribeUserResourcesWithOptions(request *DescribeUserReso
 
 // Summary:
 //
-// 查询用户资源列表
+// Queries user resources.
+//
+// Description:
+//
+// Before you call this operation, verify supported resource and service types in Alibaba Cloud Workspace.
 //
 // @param request - DescribeUserResourcesRequest
 //
@@ -1052,7 +1092,7 @@ func (client *Client) EncryptPassword(request *EncryptPasswordRequest) (_result 
 
 // Summary:
 //
-// 获取无影云盘的免密token
+// Retrieves the logon tokens for enterprise drives.
 //
 // @param request - GetCloudDriveServiceMountTokenRequest
 //
@@ -1112,7 +1152,7 @@ func (client *Client) GetCloudDriveServiceMountTokenWithOptions(request *GetClou
 
 // Summary:
 //
-// 获取无影云盘的免密token
+// Retrieves the logon tokens for enterprise drives.
 //
 // @param request - GetCloudDriveServiceMountTokenRequest
 //
@@ -1130,7 +1170,11 @@ func (client *Client) GetCloudDriveServiceMountToken(request *GetCloudDriveServi
 
 // Summary:
 //
-// 获得连接凭证
+// Retrieves the credential that is used to connect to a cloud computer.
+//
+// Description:
+//
+// The first time you call this operation, the system returns a task ID in the `TaskID` parameter. Use the task ID indicated in the `TaskID` parameter to continue calling this operation until the value of the `TaskStatus` parameter becomes `FINISHED` or `FAILED`. When `TaskStatus` becomes `FINISHED`, the value of the `Ticket` parameter is the ticket that is used to connect the client to the cloud computer.
 //
 // @param request - GetConnectionTicketRequest
 //
@@ -1205,6 +1249,10 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 		query["TaskId"] = request.TaskId
 	}
 
+	if !dara.IsNil(request.TicketBlackList) {
+		query["TicketBlackList"] = request.TicketBlackList
+	}
+
 	if !dara.IsNil(request.Uuid) {
 		query["Uuid"] = request.Uuid
 	}
@@ -1234,7 +1282,11 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 
 // Summary:
 //
-// 获得连接凭证
+// Retrieves the credential that is used to connect to a cloud computer.
+//
+// Description:
+//
+// The first time you call this operation, the system returns a task ID in the `TaskID` parameter. Use the task ID indicated in the `TaskID` parameter to continue calling this operation until the value of the `TaskStatus` parameter becomes `FINISHED` or `FAILED`. When `TaskStatus` becomes `FINISHED`, the value of the `Ticket` parameter is the ticket that is used to connect the client to the cloud computer.
 //
 // @param request - GetConnectionTicketRequest
 //
@@ -1396,7 +1448,7 @@ func (client *Client) GetLoginToken(request *GetLoginTokenRequest) (_result *Get
 
 // Summary:
 //
-// 是否保持登录判断接口
+// Verifies whether the client\\"s logon session is still active.
 //
 // @param request - IsKeepAliveRequest
 //
@@ -1448,7 +1500,7 @@ func (client *Client) IsKeepAliveWithOptions(request *IsKeepAliveRequest, runtim
 
 // Summary:
 //
-// 是否保持登录判断接口
+// Verifies whether the client\\"s logon session is still active.
 //
 // @param request - IsKeepAliveRequest
 //
@@ -2750,6 +2802,10 @@ func (client *Client) UnbindUserDesktop(request *UnbindUserDesktopRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Validates credentials to lock on-premises sessions on clients.
+//
 // @param request - VerifyCredentialRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2818,6 +2874,10 @@ func (client *Client) VerifyCredentialWithOptions(request *VerifyCredentialReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Validates credentials to lock on-premises sessions on clients.
+//
 // @param request - VerifyCredentialRequest
 //
 // @return VerifyCredentialResponse

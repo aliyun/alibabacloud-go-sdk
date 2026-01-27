@@ -14,6 +14,8 @@ type iVerifyCredentialResponseBody interface {
 }
 
 type VerifyCredentialResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// D5F0BDFB-A229-5F1D-B790-33709D43****

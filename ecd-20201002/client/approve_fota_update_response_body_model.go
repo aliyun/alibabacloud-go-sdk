@@ -14,6 +14,8 @@ type iApproveFotaUpdateResponseBody interface {
 }
 
 type ApproveFotaUpdateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****

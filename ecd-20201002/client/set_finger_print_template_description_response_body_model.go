@@ -14,6 +14,8 @@ type iSetFingerPrintTemplateDescriptionResponseBody interface {
 }
 
 type SetFingerPrintTemplateDescriptionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// BBD7DFD1-A5DE-51D9-8FD6-3BF54EF4****

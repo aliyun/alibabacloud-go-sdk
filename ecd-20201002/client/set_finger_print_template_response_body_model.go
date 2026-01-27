@@ -18,14 +18,20 @@ type iSetFingerPrintTemplateResponseBody interface {
 }
 
 type SetFingerPrintTemplateResponseBody struct {
+	// The encrypted password.
+	//
 	// example:
 	//
 	// 0711abb9-4cf8-41b2-9d0e-b51209468631;da4VFPNxwY3CZegFjOrCNw==;iHp2l9/qGcfD4tWx7jZIZQ==
 	EncryptedPassword *string `json:"EncryptedPassword,omitempty" xml:"EncryptedPassword,omitempty"`
+	// The index.
+	//
 	// example:
 	//
 	// 1
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CDE666EA-4FCD-5024-895C-8698E3D3****

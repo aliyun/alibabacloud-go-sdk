@@ -14,6 +14,8 @@ type iDeleteFingerPrintTemplateResponseBody interface {
 }
 
 type DeleteFingerPrintTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 134BD0B2-B848-5743-9CE2-C1FD3D5F****

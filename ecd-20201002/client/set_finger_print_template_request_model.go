@@ -32,50 +32,70 @@ type iSetFingerPrintTemplateRequest interface {
 }
 
 type SetFingerPrintTemplateRequest struct {
+	// The client ID. The system generates a unique ID for each client.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 347431a9-90f6-448e-82c4-42bc84a9****
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The client token to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the node.
+	//
 	// example:
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The encrypted fingerprint template.
+	//
 	// example:
 	//
 	// AAAAAAAAAAAAAA
 	EncryptedFingerPrintTemplate *string `json:"EncryptedFingerPrintTemplate,omitempty" xml:"EncryptedFingerPrintTemplate,omitempty"`
+	// The encryption key.
+	//
 	// example:
 	//
 	// drjfspchj
 	EncryptedKey *string `json:"EncryptedKey,omitempty" xml:"EncryptedKey,omitempty"`
+	// The fingerprint template.
+	//
 	// example:
 	//
 	// goG3gG8AAABhujtscn
 	FingerPrintTemplate *string `json:"FingerPrintTemplate,omitempty" xml:"FingerPrintTemplate,omitempty"`
+	// The logon credentials.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// v11c73e7af0cb43ff39301651142485099ffb447085d76c4147519dbaa21c3bd90d53045e327c1f525ee6331c52556****
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// The password that you want to encrypt.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// As53328794
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The region ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The session ID.
+	//
 	// This parameter is required.
 	//
 	// example:

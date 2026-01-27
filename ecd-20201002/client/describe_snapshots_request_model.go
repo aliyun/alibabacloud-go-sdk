@@ -28,40 +28,56 @@ type iDescribeSnapshotsRequest interface {
 }
 
 type DescribeSnapshotsRequest struct {
+	// The client ID. The system generates a unique ID for each client.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 16dad2b6-3c6d-4e4c-b057-78ecb13c****
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The cloud computer ID.
+	//
 	// example:
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// The logon token.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// v16abfb945208fc5745061668654680853da4a25202d1a394fcad57bba484e9827ad43ea7d10fb6bf13d44a4adc0e9****
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// The number of entries per page. Default value: 100.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6nmB7qrRFJ8vmttjxPL****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// a99b9aca-bac5-4da2-819e-400ce98f****
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The snapshot ID.
+	//
 	// example:
 	//
 	// s-2ze81owrnv9pity4****
