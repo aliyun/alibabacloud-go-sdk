@@ -2728,6 +2728,61 @@ func (client *Client) ListTrainingJobsWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
+// 您可以通过OperateNode对节点进行操作
+//
+// @param request - OperateNodeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateNodeResponse
+func (client *Client) OperateNodeWithContext(ctx context.Context, NodeId *string, request *OperateNodeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *OperateNodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Operation) {
+		body["Operation"] = request.Operation
+	}
+
+	if !dara.IsNil(request.OperationParameters) {
+		body["OperationParameters"] = request.OperationParameters
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OperateNode"),
+		Version:     dara.String("2022-01-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/nodes/" + dara.PercentEncode(dara.StringValue(NodeId))),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OperateNodeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 扩缩容Quota
 //
 // @param request - ScaleQuotaRequest
