@@ -1187,6 +1187,7 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTa
 }
 
 type DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions struct {
+	EnableABE *bool `json:"EnableABE,omitempty" xml:"EnableABE,omitempty"`
 	// Specifies whether to enable the oplock feature. Valid values:
 	//
 	// 	- true: enables the feature.
@@ -1209,8 +1210,17 @@ func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions) GoString() 
 	return s.String()
 }
 
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions) GetEnableABE() *bool {
+	return s.EnableABE
+}
+
 func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions) GetEnableOplock() *bool {
 	return s.EnableOplock
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions) SetEnableABE(v bool) *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions {
+	s.EnableABE = &v
+	return s
 }
 
 func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions) SetEnableOplock(v bool) *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions {
