@@ -9,6 +9,10 @@ type iDescribeRCClusterNodesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClusterId(v string) *DescribeRCClusterNodesRequest
+	GetClusterId() *string
+	SetNodePoolId(v string) *DescribeRCClusterNodesRequest
+	GetNodePoolId() *string
 	SetPageNumber(v int64) *DescribeRCClusterNodesRequest
 	GetPageNumber() *int64
 	SetPageSize(v int64) *DescribeRCClusterNodesRequest
@@ -20,6 +24,14 @@ type iDescribeRCClusterNodesRequest interface {
 }
 
 type DescribeRCClusterNodesRequest struct {
+	// example:
+	//
+	// c919424d85a644078ab1575c3a02c****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// rcnpf5e3ee4a65104cf0801f94850d37****
+	NodePoolId *string `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
 	// The page number.
 	//
 	// example:
@@ -58,6 +70,14 @@ func (s DescribeRCClusterNodesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeRCClusterNodesRequest) GetClusterId() *string {
+	return s.ClusterId
+}
+
+func (s *DescribeRCClusterNodesRequest) GetNodePoolId() *string {
+	return s.NodePoolId
+}
+
 func (s *DescribeRCClusterNodesRequest) GetPageNumber() *int64 {
 	return s.PageNumber
 }
@@ -72,6 +92,16 @@ func (s *DescribeRCClusterNodesRequest) GetRegionId() *string {
 
 func (s *DescribeRCClusterNodesRequest) GetVpcId() *string {
 	return s.VpcId
+}
+
+func (s *DescribeRCClusterNodesRequest) SetClusterId(v string) *DescribeRCClusterNodesRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeRCClusterNodesRequest) SetNodePoolId(v string) *DescribeRCClusterNodesRequest {
+	s.NodePoolId = &v
+	return s
 }
 
 func (s *DescribeRCClusterNodesRequest) SetPageNumber(v int64) *DescribeRCClusterNodesRequest {

@@ -15,6 +15,8 @@ type iRebootRCInstancesShrinkRequest interface {
 	GetForceReboot() *bool
 	SetInstanceIdsShrink(v string) *RebootRCInstancesShrinkRequest
 	GetInstanceIdsShrink() *string
+	SetRebootTime(v string) *RebootRCInstancesShrinkRequest
+	GetRebootTime() *string
 	SetRegionId(v string) *RebootRCInstancesShrinkRequest
 	GetRegionId() *string
 }
@@ -38,6 +40,10 @@ type RebootRCInstancesShrinkRequest struct {
 	ForceReboot *bool `json:"ForceReboot,omitempty" xml:"ForceReboot,omitempty"`
 	// The node IDs.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// example:
+	//
+	// 2018-01-01T12:05Z
+	RebootTime *string `json:"RebootTime,omitempty" xml:"RebootTime,omitempty"`
 	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
 	//
 	// example:
@@ -66,6 +72,10 @@ func (s *RebootRCInstancesShrinkRequest) GetInstanceIdsShrink() *string {
 	return s.InstanceIdsShrink
 }
 
+func (s *RebootRCInstancesShrinkRequest) GetRebootTime() *string {
+	return s.RebootTime
+}
+
 func (s *RebootRCInstancesShrinkRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -82,6 +92,11 @@ func (s *RebootRCInstancesShrinkRequest) SetForceReboot(v bool) *RebootRCInstanc
 
 func (s *RebootRCInstancesShrinkRequest) SetInstanceIdsShrink(v string) *RebootRCInstancesShrinkRequest {
 	s.InstanceIdsShrink = &v
+	return s
+}
+
+func (s *RebootRCInstancesShrinkRequest) SetRebootTime(v string) *RebootRCInstancesShrinkRequest {
+	s.RebootTime = &v
 	return s
 }
 

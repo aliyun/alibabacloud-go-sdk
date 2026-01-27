@@ -15,6 +15,8 @@ type iRebootRCInstanceRequest interface {
 	GetForceStop() *bool
 	SetInstanceId(v string) *RebootRCInstanceRequest
 	GetInstanceId() *string
+	SetRebootTime(v string) *RebootRCInstanceRequest
+	GetRebootTime() *string
 	SetRegionId(v string) *RebootRCInstanceRequest
 	GetRegionId() *string
 }
@@ -50,6 +52,10 @@ type RebootRCInstanceRequest struct {
 	//
 	// rc-m5sc1271fv344a1r****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 2018-01-01T12:05Z
+	RebootTime *string `json:"RebootTime,omitempty" xml:"RebootTime,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -78,6 +84,10 @@ func (s *RebootRCInstanceRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *RebootRCInstanceRequest) GetRebootTime() *string {
+	return s.RebootTime
+}
+
 func (s *RebootRCInstanceRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -94,6 +104,11 @@ func (s *RebootRCInstanceRequest) SetForceStop(v bool) *RebootRCInstanceRequest 
 
 func (s *RebootRCInstanceRequest) SetInstanceId(v string) *RebootRCInstanceRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *RebootRCInstanceRequest) SetRebootTime(v string) *RebootRCInstanceRequest {
+	s.RebootTime = &v
 	return s
 }
 

@@ -3781,6 +3781,94 @@ func (client *Client) CreateGadInstanceMemberWithContext(ctx context.Context, re
 
 // Summary:
 //
+// 创建数据导入任务
+//
+// @param request - CreateImportTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateImportTaskResponse
+func (client *Client) CreateImportTaskWithContext(ctx context.Context, request *CreateImportTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateImportTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DbInstanceId) {
+		query["DbInstanceId"] = request.DbInstanceId
+	}
+
+	if !dara.IsNil(request.EstimatedSize) {
+		query["EstimatedSize"] = request.EstimatedSize
+	}
+
+	if !dara.IsNil(request.Host) {
+		query["Host"] = request.Host
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Password) {
+		query["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.Port) {
+		query["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SourceInstanceId) {
+		query["SourceInstanceId"] = request.SourceInstanceId
+	}
+
+	if !dara.IsNil(request.SourcePlatform) {
+		query["SourcePlatform"] = request.SourcePlatform
+	}
+
+	if !dara.IsNil(request.StreamPort) {
+		query["StreamPort"] = request.StreamPort
+	}
+
+	if !dara.IsNil(request.User) {
+		query["User"] = request.User
+	}
+
+	if !dara.IsNil(request.XtrabackupPath) {
+		query["XtrabackupPath"] = request.XtrabackupPath
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateImportTask"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateImportTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建全密态规则
 //
 // @param tmpReq - CreateMaskingRulesRequest
@@ -4565,6 +4653,82 @@ func (client *Client) CreateRCDiskWithContext(ctx context.Context, request *Crea
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRCDiskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a custom image for an RDS Custom instance.
+//
+// Description:
+//
+// ### [](#)Supported database engines
+//
+//   - RDS MySQL
+//
+//   - RDS SQL Server
+//
+// ### [](#)References
+//
+//   - [Introduction to RDS Custom for MySQL](https://help.aliyun.com/document_detail/2844223.html)
+//
+//   - [Introduction to RDS Custom for SQL Server](https://help.aliyun.com/document_detail/2864363.html)
+//
+// ### [](#)Usage
+//
+//   - Method 1: Create a custom image by using a snapshot generated from the **system disk**. In this case, specify the SnapshotId and ImageName parameters at the same time in the request.
+//
+//   - Method 2: Create a custom image by using an RDS Custom instance. In this case, specify the InstanceId and ImageName parameters at the same time in the request.
+//
+// @param request - CreateRCImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRCImageResponse
+func (client *Client) CreateRCImageWithContext(ctx context.Context, request *CreateRCImageRequest, runtime *dara.RuntimeOptions) (_result *CreateRCImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ImageName) {
+		query["ImageName"] = request.ImageName
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SnapshotId) {
+		query["SnapshotId"] = request.SnapshotId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRCImage"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRCImageResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -13689,6 +13853,114 @@ func (client *Client) DescribeHostWebShellWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// 查询原生复制上云任务详情
+//
+// @param request - DescribeImportTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeImportTaskResponse
+func (client *Client) DescribeImportTaskWithContext(ctx context.Context, request *DescribeImportTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeImportTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeImportTask"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeImportTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看数据导入预检查状态
+//
+// @param request - DescribeImportTaskValidationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeImportTaskValidationResponse
+func (client *Client) DescribeImportTaskValidationWithContext(ctx context.Context, request *DescribeImportTaskValidationRequest, runtime *dara.RuntimeOptions) (_result *DescribeImportTaskValidationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DbInstanceId) {
+		query["DbInstanceId"] = request.DbInstanceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeImportTaskValidation"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeImportTaskValidationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the automatic renewal status of an instance.
 //
 // Description:
@@ -15848,6 +16120,14 @@ func (client *Client) DescribeRCClusterNodesWithContext(ctx context.Context, req
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.NodePoolId) {
+		query["NodePoolId"] = request.NodePoolId
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -17078,6 +17358,10 @@ func (client *Client) DescribeRCSnapshotsWithContext(ctx context.Context, reques
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DiskId) {
 		query["DiskId"] = request.DiskId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
 	}
 
 	if !dara.IsNil(request.PageNumber) {
@@ -20275,6 +20559,66 @@ func (client *Client) ListClassesWithContext(ctx context.Context, request *ListC
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListClassesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询上云任务列表
+//
+// @param request - ListImportTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListImportTasksResponse
+func (client *Client) ListImportTasksWithContext(ctx context.Context, request *ListImportTasksRequest, runtime *dara.RuntimeOptions) (_result *ListImportTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListImportTasks"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListImportTasksResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -24117,6 +24461,54 @@ func (client *Client) ModifyDBInstanceTDEWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 修改实例向量支持状态
+//
+// @param request - ModifyDBInstanceVectorSupportStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBInstanceVectorSupportStatusResponse
+func (client *Client) ModifyDBInstanceVectorSupportStatusWithContext(ctx context.Context, request *ModifyDBInstanceVectorSupportStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceVectorSupportStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyDBInstanceVectorSupportStatus"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyDBInstanceVectorSupportStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Changes the specifications, storage type, and storage capacity of an ApsaraDB RDS for MySQL instance that runs RDS Cluster Edition.
 //
 // Description:
@@ -25285,6 +25677,66 @@ func (client *Client) ModifyHASwitchConfigWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// 修改上云任务
+//
+// @param request - ModifyImportTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyImportTaskResponse
+func (client *Client) ModifyImportTaskWithContext(ctx context.Context, request *ModifyImportTaskRequest, runtime *dara.RuntimeOptions) (_result *ModifyImportTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Operation) {
+		query["Operation"] = request.Operation
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyImportTask"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyImportTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the auto-renewal settings of an instance.
 //
 // Description:
@@ -25869,6 +26321,70 @@ func (client *Client) ModifyParameterGroupWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// 修改块存储属性
+//
+// @param request - ModifyRCDiskAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyRCDiskAttributeResponse
+func (client *Client) ModifyRCDiskAttributeWithContext(ctx context.Context, request *ModifyRCDiskAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyRCDiskAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BurstingEnabled) {
+		query["BurstingEnabled"] = request.BurstingEnabled
+	}
+
+	if !dara.IsNil(request.DeleteWithInstance) {
+		query["DeleteWithInstance"] = request.DeleteWithInstance
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DiskId) {
+		query["DiskId"] = request.DiskId
+	}
+
+	if !dara.IsNil(request.DiskName) {
+		query["DiskName"] = request.DiskName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyRCDiskAttribute"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyRCDiskAttributeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 修改RDS用户磁盘付费类型
 //
 // @param request - ModifyRCDiskChargeTypeRequest
@@ -25884,6 +26400,10 @@ func (client *Client) ModifyRCDiskChargeTypeWithContext(ctx context.Context, req
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoPay) {
+		query["AutoPay"] = request.AutoPay
+	}
+
 	if !dara.IsNil(request.AutoRenew) {
 		query["AutoRenew"] = request.AutoRenew
 	}
@@ -25908,12 +26428,20 @@ func (client *Client) ModifyRCDiskChargeTypeWithContext(ctx context.Context, req
 		query["PayType"] = request.PayType
 	}
 
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
 	if !dara.IsNil(request.PromotionCode) {
 		query["PromotionCode"] = request.PromotionCode
 	}
 
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.UsedTime) {
+		query["UsedTime"] = request.UsedTime
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -27982,6 +28510,10 @@ func (client *Client) RebootRCInstanceWithContext(ctx context.Context, request *
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.RebootTime) {
+		query["RebootTime"] = request.RebootTime
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -28048,6 +28580,10 @@ func (client *Client) RebootRCInstancesWithContext(ctx context.Context, tmpReq *
 
 	if !dara.IsNil(request.InstanceIdsShrink) {
 		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	if !dara.IsNil(request.RebootTime) {
+		query["RebootTime"] = request.RebootTime
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -30598,6 +31134,10 @@ func (client *Client) StopRCInstanceWithContext(ctx context.Context, request *St
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.StoppedMode) {
+		query["StoppedMode"] = request.StoppedMode
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30672,6 +31212,10 @@ func (client *Client) StopRCInstancesWithContext(ctx context.Context, tmpReq *St
 
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StoppedMode) {
+		query["StoppedMode"] = request.StoppedMode
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -32367,6 +32911,94 @@ func (client *Client) UpgradeDBProxyInstanceKernelVersionWithContext(ctx context
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpgradeDBProxyInstanceKernelVersionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 预检验数据导入任务参数
+//
+// @param request - ValidateImportTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ValidateImportTaskResponse
+func (client *Client) ValidateImportTaskWithContext(ctx context.Context, request *ValidateImportTaskRequest, runtime *dara.RuntimeOptions) (_result *ValidateImportTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DbInstanceId) {
+		query["DbInstanceId"] = request.DbInstanceId
+	}
+
+	if !dara.IsNil(request.EstimatedSize) {
+		query["EstimatedSize"] = request.EstimatedSize
+	}
+
+	if !dara.IsNil(request.Host) {
+		query["Host"] = request.Host
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Password) {
+		query["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.Port) {
+		query["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SourceInstanceId) {
+		query["SourceInstanceId"] = request.SourceInstanceId
+	}
+
+	if !dara.IsNil(request.SourcePlatform) {
+		query["SourcePlatform"] = request.SourcePlatform
+	}
+
+	if !dara.IsNil(request.StreamPort) {
+		query["StreamPort"] = request.StreamPort
+	}
+
+	if !dara.IsNil(request.User) {
+		query["User"] = request.User
+	}
+
+	if !dara.IsNil(request.XtrabackupPath) {
+		query["XtrabackupPath"] = request.XtrabackupPath
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ValidateImportTask"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ValidateImportTaskResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

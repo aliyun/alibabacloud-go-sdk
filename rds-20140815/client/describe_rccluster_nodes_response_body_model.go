@@ -156,6 +156,10 @@ type DescribeRCClusterNodesResponseBodyNodes struct {
 	//
 	// Ready
 	NodeStatus *string `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	// example:
+	//
+	// 1
+	PodCount *int64 `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
 	// The runtime of the ACK cluster.
 	//
 	// example:
@@ -228,6 +232,10 @@ func (s *DescribeRCClusterNodesResponseBodyNodes) GetNodeStatus() *string {
 	return s.NodeStatus
 }
 
+func (s *DescribeRCClusterNodesResponseBodyNodes) GetPodCount() *int64 {
+	return s.PodCount
+}
+
 func (s *DescribeRCClusterNodesResponseBodyNodes) GetRuntimeVersion() *string {
 	return s.RuntimeVersion
 }
@@ -283,6 +291,11 @@ func (s *DescribeRCClusterNodesResponseBodyNodes) SetNodePoolId(v string) *Descr
 
 func (s *DescribeRCClusterNodesResponseBodyNodes) SetNodeStatus(v string) *DescribeRCClusterNodesResponseBodyNodes {
 	s.NodeStatus = &v
+	return s
+}
+
+func (s *DescribeRCClusterNodesResponseBodyNodes) SetPodCount(v int64) *DescribeRCClusterNodesResponseBodyNodes {
+	s.PodCount = &v
 	return s
 }
 

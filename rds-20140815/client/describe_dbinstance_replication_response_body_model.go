@@ -13,6 +13,8 @@ type iDescribeDBInstanceReplicationResponseBody interface {
 	GetExternalReplication() *string
 	SetGtidExecuted(v string) *DescribeDBInstanceReplicationResponseBody
 	GetGtidExecuted() *string
+	SetImportStatus(v string) *DescribeDBInstanceReplicationResponseBody
+	GetImportStatus() *string
 	SetReplicationDelay(v string) *DescribeDBInstanceReplicationResponseBody
 	GetReplicationDelay() *string
 	SetReplicationErrorMessage(v string) *DescribeDBInstanceReplicationResponseBody
@@ -41,6 +43,10 @@ type DescribeDBInstanceReplicationResponseBody struct {
 	// ON
 	ExternalReplication *string `json:"ExternalReplication,omitempty" xml:"ExternalReplication,omitempty"`
 	GtidExecuted        *string `json:"GtidExecuted,omitempty" xml:"GtidExecuted,omitempty"`
+	// example:
+	//
+	// COMPLETED
+	ImportStatus *string `json:"ImportStatus,omitempty" xml:"ImportStatus,omitempty"`
 	// The replication latency. Unit: seconds.
 	//
 	// example:
@@ -105,6 +111,10 @@ func (s *DescribeDBInstanceReplicationResponseBody) GetGtidExecuted() *string {
 	return s.GtidExecuted
 }
 
+func (s *DescribeDBInstanceReplicationResponseBody) GetImportStatus() *string {
+	return s.ImportStatus
+}
+
 func (s *DescribeDBInstanceReplicationResponseBody) GetReplicationDelay() *string {
 	return s.ReplicationDelay
 }
@@ -140,6 +150,11 @@ func (s *DescribeDBInstanceReplicationResponseBody) SetExternalReplication(v str
 
 func (s *DescribeDBInstanceReplicationResponseBody) SetGtidExecuted(v string) *DescribeDBInstanceReplicationResponseBody {
 	s.GtidExecuted = &v
+	return s
+}
+
+func (s *DescribeDBInstanceReplicationResponseBody) SetImportStatus(v string) *DescribeDBInstanceReplicationResponseBody {
+	s.ImportStatus = &v
 	return s
 }
 

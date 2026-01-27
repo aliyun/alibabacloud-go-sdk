@@ -58,8 +58,6 @@ type CreateRCSnapshotRequest struct {
 	InstantAccessRetentionDays *int32 `json:"InstantAccessRetentionDays,omitempty" xml:"InstantAccessRetentionDays,omitempty"`
 	// The region ID.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// cn-hangzhou

@@ -17,6 +17,8 @@ type iStopRCInstancesRequest interface {
 	GetInstanceIds() []*string
 	SetRegionId(v string) *StopRCInstancesRequest
 	GetRegionId() *string
+	SetStoppedMode(v string) *StopRCInstancesRequest
+	GetStoppedMode() *string
 }
 
 type StopRCInstancesRequest struct {
@@ -43,7 +45,8 @@ type StopRCInstancesRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StoppedMode *string `json:"StoppedMode,omitempty" xml:"StoppedMode,omitempty"`
 }
 
 func (s StopRCInstancesRequest) String() string {
@@ -70,6 +73,10 @@ func (s *StopRCInstancesRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *StopRCInstancesRequest) GetStoppedMode() *string {
+	return s.StoppedMode
+}
+
 func (s *StopRCInstancesRequest) SetBatchOptimization(v string) *StopRCInstancesRequest {
 	s.BatchOptimization = &v
 	return s
@@ -87,6 +94,11 @@ func (s *StopRCInstancesRequest) SetInstanceIds(v []*string) *StopRCInstancesReq
 
 func (s *StopRCInstancesRequest) SetRegionId(v string) *StopRCInstancesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *StopRCInstancesRequest) SetStoppedMode(v string) *StopRCInstancesRequest {
+	s.StoppedMode = &v
 	return s
 }
 
