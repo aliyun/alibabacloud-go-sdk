@@ -299,6 +299,82 @@ func (client *Client) ClearReplicaGroupDrillWithContext(ctx context.Context, req
 
 // Summary:
 //
+// 中心化角色：创建App
+//
+// @param request - CreateAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppResponse
+func (client *Client) CreateAppWithContext(ctx context.Context, request *CreateAppRequest, runtime *dara.RuntimeOptions) (_result *CreateAppResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.AppTags) {
+		query["AppTags"] = request.AppTags
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Owner) {
+		query["Owner"] = request.Owner
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ReportSendEnabled) {
+		query["ReportSendEnabled"] = request.ReportSendEnabled
+	}
+
+	if !dara.IsNil(request.SubscribePeriod) {
+		query["SubscribePeriod"] = request.SubscribePeriod
+	}
+
+	if !dara.IsNil(request.SubscribeStatus) {
+		query["SubscribeStatus"] = request.SubscribeStatus
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateApp"),
+		Version:     dara.String("2021-07-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAppResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a dedicated block storage cluster. When you call this operation, you can specify parameters, such as Azone, Capacity, Type, and PeriodUnit, in the request.
 //
 // Description:
@@ -723,6 +799,62 @@ func (client *Client) CreateEnterpriseSnapshotPolicyWithContext(ctx context.Cont
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateEnterpriseSnapshotPolicyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 中心化角色：删除App
+//
+// @param request - DeleteAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAppResponse
+func (client *Client) DeleteAppWithContext(ctx context.Context, request *DeleteAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Owner) {
+		query["Owner"] = request.Owner
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteApp"),
+		Version:     dara.String("2021-07-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAppResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
