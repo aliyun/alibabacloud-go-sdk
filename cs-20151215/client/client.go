@@ -786,6 +786,84 @@ func (client *Client) CleanUserPermissions(Uid *string, request *CleanUserPermis
 
 // Summary:
 //
+// 查询自愈规则
+//
+// @param request - CreateAutoRepairPolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAutoRepairPolicyResponse
+func (client *Client) CreateAutoRepairPolicyWithOptions(clusterId *string, request *CreateAutoRepairPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAutoRepairPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ResourceSubType) {
+		body["resource_sub_type"] = request.ResourceSubType
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		body["resource_type"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.Rules) {
+		body["rules"] = request.Rules
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAutoRepairPolicy"),
+		Version:     dara.String("2015-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/clusters/" + dara.PercentEncode(dara.StringValue(clusterId)) + "/auto_repair_policies"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAutoRepairPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自愈规则
+//
+// @param request - CreateAutoRepairPolicyRequest
+//
+// @return CreateAutoRepairPolicyResponse
+func (client *Client) CreateAutoRepairPolicy(clusterId *string, request *CreateAutoRepairPolicyRequest) (_result *CreateAutoRepairPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAutoRepairPolicyResponse{}
+	_body, _err := client.CreateAutoRepairPolicyWithOptions(clusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a scaling configuration to allow the system to scale resources based on the given scaling rules. When you create a scaling configuration, you can specify the scaling metrics, thresholds, scaling order, and scaling interval.
 //
 // @param request - CreateAutoscalingConfigRequest
@@ -2075,6 +2153,56 @@ func (client *Client) DeleteAlertContactGroup(request *DeleteAlertContactGroupRe
 
 // Summary:
 //
+// 查询自愈规则
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAutoRepairPolicyResponse
+func (client *Client) DeleteAutoRepairPolicyWithOptions(clusterId *string, policyId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAutoRepairPolicyResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAutoRepairPolicy"),
+		Version:     dara.String("2015-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/clusters/" + dara.PercentEncode(dara.StringValue(clusterId)) + "/auto_repair_policies/" + dara.PercentEncode(dara.StringValue(policyId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAutoRepairPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自愈规则
+//
+// @return DeleteAutoRepairPolicyResponse
+func (client *Client) DeleteAutoRepairPolicy(clusterId *string, policyId *string) (_result *DeleteAutoRepairPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAutoRepairPolicyResponse{}
+	_body, _err := client.DeleteAutoRepairPolicyWithOptions(clusterId, policyId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // You can call the DeleteCluster operation to delete a cluster and specify whether to delete or retain the relevant cluster resources. Before you delete a cluster, you must manually delete workloads in the cluster, such as Deployments, StatefulSets, Jobs, and CronJobs. Otherwise, you may fail to delete the cluster.
 //
 // Description:
@@ -2872,6 +3000,56 @@ func (client *Client) DescribeAddons(request *DescribeAddonsRequest) (_result *D
 	headers := make(map[string]*string)
 	_result = &DescribeAddonsResponse{}
 	_body, _err := client.DescribeAddonsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自愈规则
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAutoRepairPolicyResponse
+func (client *Client) DescribeAutoRepairPolicyWithOptions(clusterId *string, policyId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeAutoRepairPolicyResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAutoRepairPolicy"),
+		Version:     dara.String("2015-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/clusters/" + dara.PercentEncode(dara.StringValue(clusterId)) + "/auto_repair_policies/" + dara.PercentEncode(dara.StringValue(policyId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAutoRepairPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自愈规则
+//
+// @return DescribeAutoRepairPolicyResponse
+func (client *Client) DescribeAutoRepairPolicy(clusterId *string, policyId *string) (_result *DescribeAutoRepairPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeAutoRepairPolicyResponse{}
+	_body, _err := client.DescribeAutoRepairPolicyWithOptions(clusterId, policyId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6531,6 +6709,56 @@ func (client *Client) ListAddons(request *ListAddonsRequest) (_result *ListAddon
 
 // Summary:
 //
+// 查询自愈规则
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAutoRepairPoliciesResponse
+func (client *Client) ListAutoRepairPoliciesWithOptions(clusterId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAutoRepairPoliciesResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAutoRepairPolicies"),
+		Version:     dara.String("2015-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/clusters/" + dara.PercentEncode(dara.StringValue(clusterId)) + "/auto_repair_policies"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAutoRepairPoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自愈规则
+//
+// @return ListAutoRepairPoliciesResponse
+func (client *Client) ListAutoRepairPolicies(clusterId *string) (_result *ListAutoRepairPoliciesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAutoRepairPoliciesResponse{}
+	_body, _err := client.ListAutoRepairPoliciesWithOptions(clusterId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取集群组件实例的资源列表
 //
 // @param headers - map
@@ -7232,6 +7460,76 @@ func (client *Client) MigrateCluster(clusterId *string, request *MigrateClusterR
 	headers := make(map[string]*string)
 	_result = &MigrateClusterResponse{}
 	_body, _err := client.MigrateClusterWithOptions(clusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自愈规则
+//
+// @param request - ModifyAutoRepairPolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAutoRepairPolicyResponse
+func (client *Client) ModifyAutoRepairPolicyWithOptions(clusterId *string, policyId *string, request *ModifyAutoRepairPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyAutoRepairPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Rules) {
+		body["rules"] = request.Rules
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyAutoRepairPolicy"),
+		Version:     dara.String("2015-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/clusters/" + dara.PercentEncode(dara.StringValue(clusterId)) + "/auto_repair_policies/" + dara.PercentEncode(dara.StringValue(policyId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyAutoRepairPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自愈规则
+//
+// @param request - ModifyAutoRepairPolicyRequest
+//
+// @return ModifyAutoRepairPolicyResponse
+func (client *Client) ModifyAutoRepairPolicy(clusterId *string, policyId *string, request *ModifyAutoRepairPolicyRequest) (_result *ModifyAutoRepairPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModifyAutoRepairPolicyResponse{}
+	_body, _err := client.ModifyAutoRepairPolicyWithOptions(clusterId, policyId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
