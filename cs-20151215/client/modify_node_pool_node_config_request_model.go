@@ -13,6 +13,8 @@ type iModifyNodePoolNodeConfigRequest interface {
 	GetContainerdConfig() *ContainerdConfig
 	SetKubeletConfig(v *KubeletConfig) *ModifyNodePoolNodeConfigRequest
 	GetKubeletConfig() *KubeletConfig
+	SetNodeNames(v []*string) *ModifyNodePoolNodeConfigRequest
+	GetNodeNames() []*string
 	SetOsConfig(v *ModifyNodePoolNodeConfigRequestOsConfig) *ModifyNodePoolNodeConfigRequest
 	GetOsConfig() *ModifyNodePoolNodeConfigRequestOsConfig
 	SetRollingPolicy(v *ModifyNodePoolNodeConfigRequestRollingPolicy) *ModifyNodePoolNodeConfigRequest
@@ -24,6 +26,7 @@ type ModifyNodePoolNodeConfigRequest struct {
 	ContainerdConfig *ContainerdConfig `json:"containerd_config,omitempty" xml:"containerd_config,omitempty"`
 	// The kubelet configurations.
 	KubeletConfig *KubeletConfig `json:"kubelet_config,omitempty" xml:"kubelet_config,omitempty"`
+	NodeNames     []*string      `json:"node_names,omitempty" xml:"node_names,omitempty" type:"Repeated"`
 	// The OS configuration.
 	OsConfig *ModifyNodePoolNodeConfigRequestOsConfig `json:"os_config,omitempty" xml:"os_config,omitempty" type:"Struct"`
 	// The rolling policy configuration.
@@ -46,6 +49,10 @@ func (s *ModifyNodePoolNodeConfigRequest) GetKubeletConfig() *KubeletConfig {
 	return s.KubeletConfig
 }
 
+func (s *ModifyNodePoolNodeConfigRequest) GetNodeNames() []*string {
+	return s.NodeNames
+}
+
 func (s *ModifyNodePoolNodeConfigRequest) GetOsConfig() *ModifyNodePoolNodeConfigRequestOsConfig {
 	return s.OsConfig
 }
@@ -61,6 +68,11 @@ func (s *ModifyNodePoolNodeConfigRequest) SetContainerdConfig(v *ContainerdConfi
 
 func (s *ModifyNodePoolNodeConfigRequest) SetKubeletConfig(v *KubeletConfig) *ModifyNodePoolNodeConfigRequest {
 	s.KubeletConfig = v
+	return s
+}
+
+func (s *ModifyNodePoolNodeConfigRequest) SetNodeNames(v []*string) *ModifyNodePoolNodeConfigRequest {
+	s.NodeNames = v
 	return s
 }
 

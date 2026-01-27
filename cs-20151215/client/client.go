@@ -7947,6 +7947,10 @@ func (client *Client) ModifyNodePoolNodeConfigWithOptions(ClusterId *string, Nod
 		body["kubelet_config"] = request.KubeletConfig
 	}
 
+	if !dara.IsNil(request.NodeNames) {
+		body["node_names"] = request.NodeNames
+	}
+
 	if !dara.IsNil(request.OsConfig) {
 		body["os_config"] = request.OsConfig
 	}
