@@ -213,6 +213,7 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// 100
 	SystemDiskSize    *int32  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	VirtualKubeletIp  *string `json:"VirtualKubeletIp,omitempty" xml:"VirtualKubeletIp,omitempty"`
 	VirtualNodePoolId *string `json:"VirtualNodePoolId,omitempty" xml:"VirtualNodePoolId,omitempty"`
 	// The ID of the workstation.
 	//
@@ -322,6 +323,10 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) GetSystemDiskPerformanceL
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetSystemDiskSize() *int32 {
 	return s.SystemDiskSize
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) GetVirtualKubeletIp() *string {
+	return s.VirtualKubeletIp
 }
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetVirtualNodePoolId() *string {
@@ -443,6 +448,11 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) SetSystemDiskPerformanceL
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) SetSystemDiskSize(v int32) *ListWuyingServerResponseBodyWuyingServerList {
 	s.SystemDiskSize = &v
+	return s
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) SetVirtualKubeletIp(v string) *ListWuyingServerResponseBodyWuyingServerList {
+	s.VirtualKubeletIp = &v
 	return s
 }
 
