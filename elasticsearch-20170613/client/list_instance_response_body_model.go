@@ -249,6 +249,11 @@ type ListInstanceResponseBodyResult struct {
 	//
 	// vpc-bp1uag5jj38c****
 	VpcInstanceId *string `json:"vpcInstanceId,omitempty" xml:"vpcInstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	ZoneCount *int32                                     `json:"zoneCount,omitempty" xml:"zoneCount,omitempty"`
+	ZoneInfos []*ListInstanceResponseBodyResultZoneInfos `json:"zoneInfos,omitempty" xml:"zoneInfos,omitempty" type:"Repeated"`
 }
 
 func (s ListInstanceResponseBodyResult) String() string {
@@ -385,6 +390,14 @@ func (s *ListInstanceResponseBodyResult) GetUpdatedAt() *string {
 
 func (s *ListInstanceResponseBodyResult) GetVpcInstanceId() *string {
 	return s.VpcInstanceId
+}
+
+func (s *ListInstanceResponseBodyResult) GetZoneCount() *int32 {
+	return s.ZoneCount
+}
+
+func (s *ListInstanceResponseBodyResult) GetZoneInfos() []*ListInstanceResponseBodyResultZoneInfos {
+	return s.ZoneInfos
 }
 
 func (s *ListInstanceResponseBodyResult) SetAdvancedDedicateMaster(v bool) *ListInstanceResponseBodyResult {
@@ -547,6 +560,16 @@ func (s *ListInstanceResponseBodyResult) SetVpcInstanceId(v string) *ListInstanc
 	return s
 }
 
+func (s *ListInstanceResponseBodyResult) SetZoneCount(v int32) *ListInstanceResponseBodyResult {
+	s.ZoneCount = &v
+	return s
+}
+
+func (s *ListInstanceResponseBodyResult) SetZoneInfos(v []*ListInstanceResponseBodyResultZoneInfos) *ListInstanceResponseBodyResult {
+	s.ZoneInfos = v
+	return s
+}
+
 func (s *ListInstanceResponseBodyResult) Validate() error {
 	if s.ClientNodeConfiguration != nil {
 		if err := s.ClientNodeConfiguration.Validate(); err != nil {
@@ -580,6 +603,15 @@ func (s *ListInstanceResponseBodyResult) Validate() error {
 	}
 	if s.Tags != nil {
 		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ZoneInfos != nil {
+		for _, item := range s.ZoneInfos {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -1240,5 +1272,46 @@ func (s *ListInstanceResponseBodyResultTags) SetTagValue(v string) *ListInstance
 }
 
 func (s *ListInstanceResponseBodyResultTags) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListInstanceResponseBodyResultZoneInfos struct {
+	// example:
+	//
+	// NORMAL
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-i
+	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+}
+
+func (s ListInstanceResponseBodyResultZoneInfos) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListInstanceResponseBodyResultZoneInfos) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceResponseBodyResultZoneInfos) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ListInstanceResponseBodyResultZoneInfos) GetZoneId() *string {
+	return s.ZoneId
+}
+
+func (s *ListInstanceResponseBodyResultZoneInfos) SetStatus(v string) *ListInstanceResponseBodyResultZoneInfos {
+	s.Status = &v
+	return s
+}
+
+func (s *ListInstanceResponseBodyResultZoneInfos) SetZoneId(v string) *ListInstanceResponseBodyResultZoneInfos {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *ListInstanceResponseBodyResultZoneInfos) Validate() error {
 	return dara.Validate(s)
 }
