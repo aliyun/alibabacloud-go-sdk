@@ -166,8 +166,7 @@ type DescribeRCSnapshotsResponseBodySnapshots struct {
 	// example:
 	//
 	// none
-	InstantAccess    *bool   `json:"InstantAccess,omitempty" xml:"InstantAccess,omitempty"`
-	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
+	InstantAccess *bool `json:"InstantAccess,omitempty" xml:"InstantAccess,omitempty"`
 	// The progress of the snapshot creation task in percentage.
 	//
 	// example:
@@ -296,10 +295,6 @@ func (s *DescribeRCSnapshotsResponseBodySnapshots) GetInstantAccess() *bool {
 	return s.InstantAccess
 }
 
-func (s *DescribeRCSnapshotsResponseBodySnapshots) GetLastModifiedTime() *string {
-	return s.LastModifiedTime
-}
-
 func (s *DescribeRCSnapshotsResponseBodySnapshots) GetProgress() *string {
 	return s.Progress
 }
@@ -379,11 +374,6 @@ func (s *DescribeRCSnapshotsResponseBodySnapshots) SetEncrypted(v bool) *Describ
 
 func (s *DescribeRCSnapshotsResponseBodySnapshots) SetInstantAccess(v bool) *DescribeRCSnapshotsResponseBodySnapshots {
 	s.InstantAccess = &v
-	return s
-}
-
-func (s *DescribeRCSnapshotsResponseBodySnapshots) SetLastModifiedTime(v string) *DescribeRCSnapshotsResponseBodySnapshots {
-	s.LastModifiedTime = &v
 	return s
 }
 

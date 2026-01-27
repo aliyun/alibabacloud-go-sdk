@@ -11,8 +11,6 @@ type iDescribeRCSnapshotsRequest interface {
 	GoString() string
 	SetDiskId(v string) *DescribeRCSnapshotsRequest
 	GetDiskId() *string
-	SetInstanceId(v string) *DescribeRCSnapshotsRequest
-	GetInstanceId() *string
 	SetPageNumber(v int64) *DescribeRCSnapshotsRequest
 	GetPageNumber() *int64
 	SetPageSize(v int64) *DescribeRCSnapshotsRequest
@@ -31,8 +29,7 @@ type DescribeRCSnapshotsRequest struct {
 	// example:
 	//
 	// rcd-wz9c8isqly8637zw****
-	DiskId     *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
 	// The page number.
 	//
 	// example:
@@ -46,6 +43,8 @@ type DescribeRCSnapshotsRequest struct {
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -74,10 +73,6 @@ func (s *DescribeRCSnapshotsRequest) GetDiskId() *string {
 	return s.DiskId
 }
 
-func (s *DescribeRCSnapshotsRequest) GetInstanceId() *string {
-	return s.InstanceId
-}
-
 func (s *DescribeRCSnapshotsRequest) GetPageNumber() *int64 {
 	return s.PageNumber
 }
@@ -100,11 +95,6 @@ func (s *DescribeRCSnapshotsRequest) GetTag() []*DescribeRCSnapshotsRequestTag {
 
 func (s *DescribeRCSnapshotsRequest) SetDiskId(v string) *DescribeRCSnapshotsRequest {
 	s.DiskId = &v
-	return s
-}
-
-func (s *DescribeRCSnapshotsRequest) SetInstanceId(v string) *DescribeRCSnapshotsRequest {
-	s.InstanceId = &v
 	return s
 }
 

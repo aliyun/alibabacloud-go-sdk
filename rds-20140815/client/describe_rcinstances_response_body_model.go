@@ -138,10 +138,6 @@ type DescribeRCInstancesResponseBodyRCInstances struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// testHostName
-	EcsHostName *string `json:"EcsHostName,omitempty" xml:"EcsHostName,omitempty"`
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	// The time when the task was created. The time is displayed in GMT.
 	//
@@ -177,15 +173,7 @@ type DescribeRCInstancesResponseBodyRCInstances struct {
 	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
 	Memory             *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	NodeType           *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// example:
-	//
-	// CentOS  7.4 64 位
-	OSName *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
-	// example:
-	//
-	// linux
-	OSType   *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
+	PublicIp           *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -194,10 +182,6 @@ type DescribeRCInstancesResponseBodyRCInstances struct {
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	SpotStrategy    *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// example:
-	//
-	// 2017-12-10T04:04Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The instance status. Valid values:
 	//
 	// 	- **Pending**
@@ -216,7 +200,6 @@ type DescribeRCInstancesResponseBodyRCInstances struct {
 	//
 	// Running
 	Status       *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	StoppedMode  *string                                                   `json:"StoppedMode,omitempty" xml:"StoppedMode,omitempty"`
 	TagResources []*DescribeRCInstancesResponseBodyRCInstancesTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 	Tags         []*DescribeRCInstancesResponseBodyRCInstancesTags         `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// if can be null:
@@ -261,10 +244,6 @@ func (s *DescribeRCInstancesResponseBodyRCInstances) GetDeploymentSetId() *strin
 
 func (s *DescribeRCInstancesResponseBodyRCInstances) GetDescription() *string {
 	return s.Description
-}
-
-func (s *DescribeRCInstancesResponseBodyRCInstances) GetEcsHostName() *string {
-	return s.EcsHostName
 }
 
 func (s *DescribeRCInstancesResponseBodyRCInstances) GetExpiredTime() *string {
@@ -315,14 +294,6 @@ func (s *DescribeRCInstancesResponseBodyRCInstances) GetNodeType() *string {
 	return s.NodeType
 }
 
-func (s *DescribeRCInstancesResponseBodyRCInstances) GetOSName() *string {
-	return s.OSName
-}
-
-func (s *DescribeRCInstancesResponseBodyRCInstances) GetOSType() *string {
-	return s.OSType
-}
-
 func (s *DescribeRCInstancesResponseBodyRCInstances) GetPublicIp() *string {
 	return s.PublicIp
 }
@@ -339,16 +310,8 @@ func (s *DescribeRCInstancesResponseBodyRCInstances) GetSpotStrategy() *string {
 	return s.SpotStrategy
 }
 
-func (s *DescribeRCInstancesResponseBodyRCInstances) GetStartTime() *string {
-	return s.StartTime
-}
-
 func (s *DescribeRCInstancesResponseBodyRCInstances) GetStatus() *string {
 	return s.Status
-}
-
-func (s *DescribeRCInstancesResponseBodyRCInstances) GetStoppedMode() *string {
-	return s.StoppedMode
 }
 
 func (s *DescribeRCInstancesResponseBodyRCInstances) GetTagResources() []*DescribeRCInstancesResponseBodyRCInstancesTagResources {
@@ -398,11 +361,6 @@ func (s *DescribeRCInstancesResponseBodyRCInstances) SetDeploymentSetId(v string
 
 func (s *DescribeRCInstancesResponseBodyRCInstances) SetDescription(v string) *DescribeRCInstancesResponseBodyRCInstances {
 	s.Description = &v
-	return s
-}
-
-func (s *DescribeRCInstancesResponseBodyRCInstances) SetEcsHostName(v string) *DescribeRCInstancesResponseBodyRCInstances {
-	s.EcsHostName = &v
 	return s
 }
 
@@ -466,16 +424,6 @@ func (s *DescribeRCInstancesResponseBodyRCInstances) SetNodeType(v string) *Desc
 	return s
 }
 
-func (s *DescribeRCInstancesResponseBodyRCInstances) SetOSName(v string) *DescribeRCInstancesResponseBodyRCInstances {
-	s.OSName = &v
-	return s
-}
-
-func (s *DescribeRCInstancesResponseBodyRCInstances) SetOSType(v string) *DescribeRCInstancesResponseBodyRCInstances {
-	s.OSType = &v
-	return s
-}
-
 func (s *DescribeRCInstancesResponseBodyRCInstances) SetPublicIp(v string) *DescribeRCInstancesResponseBodyRCInstances {
 	s.PublicIp = &v
 	return s
@@ -496,18 +444,8 @@ func (s *DescribeRCInstancesResponseBodyRCInstances) SetSpotStrategy(v string) *
 	return s
 }
 
-func (s *DescribeRCInstancesResponseBodyRCInstances) SetStartTime(v string) *DescribeRCInstancesResponseBodyRCInstances {
-	s.StartTime = &v
-	return s
-}
-
 func (s *DescribeRCInstancesResponseBodyRCInstances) SetStatus(v string) *DescribeRCInstancesResponseBodyRCInstances {
 	s.Status = &v
-	return s
-}
-
-func (s *DescribeRCInstancesResponseBodyRCInstances) SetStoppedMode(v string) *DescribeRCInstancesResponseBodyRCInstances {
-	s.StoppedMode = &v
 	return s
 }
 

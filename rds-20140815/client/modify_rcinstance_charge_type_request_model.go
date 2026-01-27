@@ -124,6 +124,8 @@ type ModifyRCInstanceChargeTypeRequest struct {
 	//
 	// 	- **Postpaid**: pay-as-you-go.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Postpaid

@@ -44,6 +44,8 @@ type DetachRCDiskRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou

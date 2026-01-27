@@ -9,8 +9,6 @@ type iModifyRCDiskChargeTypeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetAutoPay(v bool) *ModifyRCDiskChargeTypeRequest
-	GetAutoPay() *bool
 	SetAutoRenew(v string) *ModifyRCDiskChargeTypeRequest
 	GetAutoRenew() *string
 	SetAutoUseCoupon(v bool) *ModifyRCDiskChargeTypeRequest
@@ -23,18 +21,13 @@ type iModifyRCDiskChargeTypeRequest interface {
 	GetInstanceId() *string
 	SetPayType(v string) *ModifyRCDiskChargeTypeRequest
 	GetPayType() *string
-	SetPeriod(v string) *ModifyRCDiskChargeTypeRequest
-	GetPeriod() *string
 	SetPromotionCode(v string) *ModifyRCDiskChargeTypeRequest
 	GetPromotionCode() *string
 	SetRegionId(v string) *ModifyRCDiskChargeTypeRequest
 	GetRegionId() *string
-	SetUsedTime(v int32) *ModifyRCDiskChargeTypeRequest
-	GetUsedTime() *int32
 }
 
 type ModifyRCDiskChargeTypeRequest struct {
-	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// example:
 	//
 	// true
@@ -54,14 +47,12 @@ type ModifyRCDiskChargeTypeRequest struct {
 	//
 	// rcd-pq2091s13go9bkb04*
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// example:
-	//
-	// Month
-	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	// example:
 	//
 	// 72802442****
@@ -75,10 +66,6 @@ type ModifyRCDiskChargeTypeRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// example:
-	//
-	// 1
-	UsedTime *int32 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
 }
 
 func (s ModifyRCDiskChargeTypeRequest) String() string {
@@ -87,10 +74,6 @@ func (s ModifyRCDiskChargeTypeRequest) String() string {
 
 func (s ModifyRCDiskChargeTypeRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyRCDiskChargeTypeRequest) GetAutoPay() *bool {
-	return s.AutoPay
 }
 
 func (s *ModifyRCDiskChargeTypeRequest) GetAutoRenew() *string {
@@ -117,25 +100,12 @@ func (s *ModifyRCDiskChargeTypeRequest) GetPayType() *string {
 	return s.PayType
 }
 
-func (s *ModifyRCDiskChargeTypeRequest) GetPeriod() *string {
-	return s.Period
-}
-
 func (s *ModifyRCDiskChargeTypeRequest) GetPromotionCode() *string {
 	return s.PromotionCode
 }
 
 func (s *ModifyRCDiskChargeTypeRequest) GetRegionId() *string {
 	return s.RegionId
-}
-
-func (s *ModifyRCDiskChargeTypeRequest) GetUsedTime() *int32 {
-	return s.UsedTime
-}
-
-func (s *ModifyRCDiskChargeTypeRequest) SetAutoPay(v bool) *ModifyRCDiskChargeTypeRequest {
-	s.AutoPay = &v
-	return s
 }
 
 func (s *ModifyRCDiskChargeTypeRequest) SetAutoRenew(v string) *ModifyRCDiskChargeTypeRequest {
@@ -168,11 +138,6 @@ func (s *ModifyRCDiskChargeTypeRequest) SetPayType(v string) *ModifyRCDiskCharge
 	return s
 }
 
-func (s *ModifyRCDiskChargeTypeRequest) SetPeriod(v string) *ModifyRCDiskChargeTypeRequest {
-	s.Period = &v
-	return s
-}
-
 func (s *ModifyRCDiskChargeTypeRequest) SetPromotionCode(v string) *ModifyRCDiskChargeTypeRequest {
 	s.PromotionCode = &v
 	return s
@@ -180,11 +145,6 @@ func (s *ModifyRCDiskChargeTypeRequest) SetPromotionCode(v string) *ModifyRCDisk
 
 func (s *ModifyRCDiskChargeTypeRequest) SetRegionId(v string) *ModifyRCDiskChargeTypeRequest {
 	s.RegionId = &v
-	return s
-}
-
-func (s *ModifyRCDiskChargeTypeRequest) SetUsedTime(v int32) *ModifyRCDiskChargeTypeRequest {
-	s.UsedTime = &v
 	return s
 }
 

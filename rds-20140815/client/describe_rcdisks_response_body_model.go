@@ -120,8 +120,7 @@ type DescribeRCDisksResponseBodyDisks struct {
 	// example:
 	//
 	// 2017-12-05T2340:00Z
-	AttachedTime    *string `json:"AttachedTime,omitempty" xml:"AttachedTime,omitempty"`
-	BurstingEnabled *bool   `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
+	AttachedTime *string `json:"AttachedTime,omitempty" xml:"AttachedTime,omitempty"`
 	// The category of the disk. Valid values:
 	//
 	// 	- **cloud_efficiency**: ultra disk.
@@ -244,7 +243,6 @@ type DescribeRCDisksResponseBodyDisks struct {
 	//
 	// PL0
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	Portable         *bool   `json:"Portable,omitempty" xml:"Portable,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -339,10 +337,6 @@ func (s *DescribeRCDisksResponseBodyDisks) GetAttachedTime() *string {
 	return s.AttachedTime
 }
 
-func (s *DescribeRCDisksResponseBodyDisks) GetBurstingEnabled() *bool {
-	return s.BurstingEnabled
-}
-
 func (s *DescribeRCDisksResponseBodyDisks) GetCategory() *string {
 	return s.Category
 }
@@ -403,10 +397,6 @@ func (s *DescribeRCDisksResponseBodyDisks) GetPerformanceLevel() *string {
 	return s.PerformanceLevel
 }
 
-func (s *DescribeRCDisksResponseBodyDisks) GetPortable() *bool {
-	return s.Portable
-}
-
 func (s *DescribeRCDisksResponseBodyDisks) GetRegionId() *string {
 	return s.RegionId
 }
@@ -453,11 +443,6 @@ func (s *DescribeRCDisksResponseBodyDisks) GetZoneId() *string {
 
 func (s *DescribeRCDisksResponseBodyDisks) SetAttachedTime(v string) *DescribeRCDisksResponseBodyDisks {
 	s.AttachedTime = &v
-	return s
-}
-
-func (s *DescribeRCDisksResponseBodyDisks) SetBurstingEnabled(v bool) *DescribeRCDisksResponseBodyDisks {
-	s.BurstingEnabled = &v
 	return s
 }
 
@@ -533,11 +518,6 @@ func (s *DescribeRCDisksResponseBodyDisks) SetInstanceId(v string) *DescribeRCDi
 
 func (s *DescribeRCDisksResponseBodyDisks) SetPerformanceLevel(v string) *DescribeRCDisksResponseBodyDisks {
 	s.PerformanceLevel = &v
-	return s
-}
-
-func (s *DescribeRCDisksResponseBodyDisks) SetPortable(v bool) *DescribeRCDisksResponseBodyDisks {
-	s.Portable = &v
 	return s
 }
 

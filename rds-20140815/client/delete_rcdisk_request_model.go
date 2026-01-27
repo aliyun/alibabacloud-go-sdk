@@ -26,6 +26,8 @@ type DeleteRCDiskRequest struct {
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
 	// The region ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou

@@ -17,8 +17,6 @@ type iStopRCInstancesShrinkRequest interface {
 	GetInstanceIdsShrink() *string
 	SetRegionId(v string) *StopRCInstancesShrinkRequest
 	GetRegionId() *string
-	SetStoppedMode(v string) *StopRCInstancesShrinkRequest
-	GetStoppedMode() *string
 }
 
 type StopRCInstancesShrinkRequest struct {
@@ -45,8 +43,7 @@ type StopRCInstancesShrinkRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StoppedMode *string `json:"StoppedMode,omitempty" xml:"StoppedMode,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s StopRCInstancesShrinkRequest) String() string {
@@ -73,10 +70,6 @@ func (s *StopRCInstancesShrinkRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
-func (s *StopRCInstancesShrinkRequest) GetStoppedMode() *string {
-	return s.StoppedMode
-}
-
 func (s *StopRCInstancesShrinkRequest) SetBatchOptimization(v string) *StopRCInstancesShrinkRequest {
 	s.BatchOptimization = &v
 	return s
@@ -94,11 +87,6 @@ func (s *StopRCInstancesShrinkRequest) SetInstanceIdsShrink(v string) *StopRCIns
 
 func (s *StopRCInstancesShrinkRequest) SetRegionId(v string) *StopRCInstancesShrinkRequest {
 	s.RegionId = &v
-	return s
-}
-
-func (s *StopRCInstancesShrinkRequest) SetStoppedMode(v string) *StopRCInstancesShrinkRequest {
-	s.StoppedMode = &v
 	return s
 }
 

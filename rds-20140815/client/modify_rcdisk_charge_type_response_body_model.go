@@ -24,7 +24,7 @@ type iModifyRCDiskChargeTypeResponseBody interface {
 type ModifyRCDiskChargeTypeResponseBody struct {
 	// example:
 	//
-	// Prepaid
+	// POSTPAY
 	ChargeType  *string   `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	ExpiredTime []*string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty" type:"Repeated"`
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
