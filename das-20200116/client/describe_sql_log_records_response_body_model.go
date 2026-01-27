@@ -272,12 +272,28 @@ type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {
 	//
 	// testname
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// ["col1"]
+	AffectColumns *string `json:"AffectColumns,omitempty" xml:"AffectColumns,omitempty"`
+	// example:
+	//
+	// 10.0.0.1xx
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// example:
+	//
+	// 3306
+	ClientPort *int64 `json:"ClientPort,omitempty" xml:"ClientPort,omitempty"`
 	// A reserved parameter.
 	//
 	// example:
 	//
 	// None
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// ld-******
+	ConnectionId *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
 	// The amount of time that is consumed to execute the SQL statement. Unit: millisecond.
 	//
 	// example:
@@ -356,6 +372,10 @@ type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {
 	//
 	// 2
 	ParallelQueueTime *string `json:"ParallelQueueTime,omitempty" xml:"ParallelQueueTime,omitempty"`
+	// example:
+	//
+	// [1, "das"]
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	// The number of physical asynchronous reads.
 	//
 	// example:
@@ -374,12 +394,20 @@ type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {
 	//
 	// 0
 	PhysicSyncRead *int64 `json:"PhysicSyncRead,omitempty" xml:"PhysicSyncRead,omitempty"`
+	// example:
+	//
+	// MySQL
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The number of rows returned by the SQL statement.
 	//
 	// example:
 	//
 	// 0
 	ReturnRows *int64 `json:"ReturnRows,omitempty" xml:"ReturnRows,omitempty"`
+	// example:
+	//
+	// 23
+	RowKey *string `json:"RowKey,omitempty" xml:"RowKey,omitempty"`
 	// The total number of rows that are updated or returned by the compute nodes of the PolarDB-X 2.0 instance.
 	//
 	// example:
@@ -425,7 +453,10 @@ type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {
 	// example:
 	//
 	// 0
-	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// das
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	// The thread ID.
 	//
@@ -487,8 +518,24 @@ func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) GetAccountName(
 	return s.AccountName
 }
 
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) GetAffectColumns() *string {
+	return s.AffectColumns
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) GetClientIp() *string {
+	return s.ClientIp
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) GetClientPort() *int64 {
+	return s.ClientPort
+}
+
 func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) GetCollection() *string {
 	return s.Collection
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) GetConnectionId() *string {
+	return s.ConnectionId
 }
 
 func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) GetConsume() *int64 {
@@ -543,6 +590,10 @@ func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) GetParallelQueu
 	return s.ParallelQueueTime
 }
 
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) GetParams() *string {
+	return s.Params
+}
+
 func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) GetPhysicAsyncRead() *int64 {
 	return s.PhysicAsyncRead
 }
@@ -555,8 +606,16 @@ func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) GetPhysicSyncRe
 	return s.PhysicSyncRead
 }
 
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) GetProtocol() *string {
+	return s.Protocol
+}
+
 func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) GetReturnRows() *int64 {
 	return s.ReturnRows
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) GetRowKey() *string {
+	return s.RowKey
 }
 
 func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) GetRows() *int64 {
@@ -624,8 +683,28 @@ func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetAccountName(
 	return s
 }
 
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetAffectColumns(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.AffectColumns = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetClientIp(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetClientPort(v int64) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.ClientPort = &v
+	return s
+}
+
 func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetCollection(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
 	s.Collection = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetConnectionId(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.ConnectionId = &v
 	return s
 }
 
@@ -694,6 +773,11 @@ func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetParallelQueu
 	return s
 }
 
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetParams(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.Params = &v
+	return s
+}
+
 func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetPhysicAsyncRead(v int64) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
 	s.PhysicAsyncRead = &v
 	return s
@@ -709,8 +793,18 @@ func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetPhysicSyncRe
 	return s
 }
 
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetProtocol(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.Protocol = &v
+	return s
+}
+
 func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetReturnRows(v int64) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
 	s.ReturnRows = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetRowKey(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.RowKey = &v
 	return s
 }
 

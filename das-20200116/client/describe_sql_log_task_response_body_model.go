@@ -393,7 +393,23 @@ type DescribeSqlLogTaskResponseBodyDataQueries struct {
 	//
 	// testname
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	Collection  *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// ["col1"]
+	AffectColumns *string `json:"AffectColumns,omitempty" xml:"AffectColumns,omitempty"`
+	// example:
+	//
+	// 10.0.0.1xx
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// example:
+	//
+	// 3306
+	ClientPort *int64  `json:"ClientPort,omitempty" xml:"ClientPort,omitempty"`
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// ld-******
+	ConnectionId *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
 	// The execution duration. Unit: millisecond.
 	//
 	// example:
@@ -472,6 +488,10 @@ type DescribeSqlLogTaskResponseBodyDataQueries struct {
 	//
 	// 2
 	ParallelQueueTime *string `json:"ParallelQueueTime,omitempty" xml:"ParallelQueueTime,omitempty"`
+	// example:
+	//
+	// [1, "das"]
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	// The number of physical asynchronous reads.
 	//
 	// example:
@@ -490,12 +510,20 @@ type DescribeSqlLogTaskResponseBodyDataQueries struct {
 	//
 	// 0
 	PhysicSyncRead *int64 `json:"PhysicSyncRead,omitempty" xml:"PhysicSyncRead,omitempty"`
+	// example:
+	//
+	// MySQL
+	Protected *string `json:"Protected,omitempty" xml:"Protected,omitempty"`
 	// The number of rows returned.
 	//
 	// example:
 	//
 	// 0
 	ReturnRows *int64 `json:"ReturnRows,omitempty" xml:"ReturnRows,omitempty"`
+	// example:
+	//
+	// 23
+	RowKey *string `json:"RowKey,omitempty" xml:"RowKey,omitempty"`
 	// The total number of rows updated or returned by the CNs of the PolarDB-X 2.0 instance.
 	//
 	// example:
@@ -513,7 +541,10 @@ type DescribeSqlLogTaskResponseBodyDataQueries struct {
 	// example:
 	//
 	// 10
-	Scnt       *int64 `json:"Scnt,omitempty" xml:"Scnt,omitempty"`
+	Scnt *int64 `json:"Scnt,omitempty" xml:"Scnt,omitempty"`
+	// example:
+	//
+	// sql
 	SqlCommand *int64 `json:"SqlCommand,omitempty" xml:"SqlCommand,omitempty"`
 	// The ID of the SQL statement.
 	//
@@ -549,6 +580,10 @@ type DescribeSqlLogTaskResponseBodyDataQueries struct {
 	//
 	// 0
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// das
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	// The thread ID.
 	//
 	// example:
@@ -609,8 +644,24 @@ func (s *DescribeSqlLogTaskResponseBodyDataQueries) GetAccountName() *string {
 	return s.AccountName
 }
 
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) GetAffectColumns() *string {
+	return s.AffectColumns
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) GetClientIp() *string {
+	return s.ClientIp
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) GetClientPort() *int64 {
+	return s.ClientPort
+}
+
 func (s *DescribeSqlLogTaskResponseBodyDataQueries) GetCollection() *string {
 	return s.Collection
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) GetConnectionId() *string {
+	return s.ConnectionId
 }
 
 func (s *DescribeSqlLogTaskResponseBodyDataQueries) GetConsume() *int64 {
@@ -665,6 +716,10 @@ func (s *DescribeSqlLogTaskResponseBodyDataQueries) GetParallelQueueTime() *stri
 	return s.ParallelQueueTime
 }
 
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) GetParams() *string {
+	return s.Params
+}
+
 func (s *DescribeSqlLogTaskResponseBodyDataQueries) GetPhysicAsyncRead() *int64 {
 	return s.PhysicAsyncRead
 }
@@ -677,8 +732,16 @@ func (s *DescribeSqlLogTaskResponseBodyDataQueries) GetPhysicSyncRead() *int64 {
 	return s.PhysicSyncRead
 }
 
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) GetProtected() *string {
+	return s.Protected
+}
+
 func (s *DescribeSqlLogTaskResponseBodyDataQueries) GetReturnRows() *int64 {
 	return s.ReturnRows
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) GetRowKey() *string {
+	return s.RowKey
 }
 
 func (s *DescribeSqlLogTaskResponseBodyDataQueries) GetRows() *int64 {
@@ -711,6 +774,10 @@ func (s *DescribeSqlLogTaskResponseBodyDataQueries) GetSqlType() *string {
 
 func (s *DescribeSqlLogTaskResponseBodyDataQueries) GetState() *string {
 	return s.State
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) GetTableName() *string {
+	return s.TableName
 }
 
 func (s *DescribeSqlLogTaskResponseBodyDataQueries) GetThreadId() *int64 {
@@ -746,8 +813,28 @@ func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetAccountName(v string) *De
 	return s
 }
 
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetAffectColumns(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.AffectColumns = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetClientIp(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetClientPort(v int64) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.ClientPort = &v
+	return s
+}
+
 func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetCollection(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
 	s.Collection = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetConnectionId(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.ConnectionId = &v
 	return s
 }
 
@@ -816,6 +903,11 @@ func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetParallelQueueTime(v strin
 	return s
 }
 
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetParams(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.Params = &v
+	return s
+}
+
 func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetPhysicAsyncRead(v int64) *DescribeSqlLogTaskResponseBodyDataQueries {
 	s.PhysicAsyncRead = &v
 	return s
@@ -831,8 +923,18 @@ func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetPhysicSyncRead(v int64) *
 	return s
 }
 
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetProtected(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.Protected = &v
+	return s
+}
+
 func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetReturnRows(v int64) *DescribeSqlLogTaskResponseBodyDataQueries {
 	s.ReturnRows = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetRowKey(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.RowKey = &v
 	return s
 }
 
@@ -873,6 +975,11 @@ func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetSqlType(v string) *Descri
 
 func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetState(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
 	s.State = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetTableName(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.TableName = &v
 	return s
 }
 
