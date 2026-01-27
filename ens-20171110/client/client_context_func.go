@@ -1374,10 +1374,6 @@ func (client *Client) CreateClusterWithContext(ctx context.Context, tmpReq *Crea
 		query["ClusterType"] = request.ClusterType
 	}
 
-	if !dara.IsNil(request.ClusterVersion) {
-		query["ClusterVersion"] = request.ClusterVersion
-	}
-
 	if !dara.IsNil(request.ContainerCidr) {
 		query["ContainerCidr"] = request.ContainerCidr
 	}

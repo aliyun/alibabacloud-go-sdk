@@ -11,8 +11,6 @@ type iCreateClusterShrinkRequest interface {
 	GoString() string
 	SetClusterType(v string) *CreateClusterShrinkRequest
 	GetClusterType() *string
-	SetClusterVersion(v string) *CreateClusterShrinkRequest
-	GetClusterVersion() *string
 	SetContainerCidr(v string) *CreateClusterShrinkRequest
 	GetContainerCidr() *string
 	SetControlPlaneConfigShrink(v string) *CreateClusterShrinkRequest
@@ -46,12 +44,6 @@ type CreateClusterShrinkRequest struct {
 	//
 	// Kubernetes
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The version of the cluster.
-	//
-	// example:
-	//
-	// 1.18.8
-	ClusterVersion *string `json:"ClusterVersion,omitempty" xml:"ClusterVersion,omitempty"`
 	// example:
 	//
 	// 172.20.0.0/16
@@ -112,10 +104,6 @@ func (s *CreateClusterShrinkRequest) GetClusterType() *string {
 	return s.ClusterType
 }
 
-func (s *CreateClusterShrinkRequest) GetClusterVersion() *string {
-	return s.ClusterVersion
-}
-
 func (s *CreateClusterShrinkRequest) GetContainerCidr() *string {
 	return s.ContainerCidr
 }
@@ -166,11 +154,6 @@ func (s *CreateClusterShrinkRequest) GetVswitchIdsShrink() *string {
 
 func (s *CreateClusterShrinkRequest) SetClusterType(v string) *CreateClusterShrinkRequest {
 	s.ClusterType = &v
-	return s
-}
-
-func (s *CreateClusterShrinkRequest) SetClusterVersion(v string) *CreateClusterShrinkRequest {
-	s.ClusterVersion = &v
 	return s
 }
 
