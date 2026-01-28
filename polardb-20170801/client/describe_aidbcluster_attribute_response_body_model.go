@@ -11,6 +11,8 @@ type iDescribeAIDBClusterAttributeResponseBody interface {
 	GoString() string
 	SetAiNodeType(v string) *DescribeAIDBClusterAttributeResponseBody
 	GetAiNodeType() *string
+	SetApiKey(v string) *DescribeAIDBClusterAttributeResponseBody
+	GetApiKey() *string
 	SetCreationTime(v string) *DescribeAIDBClusterAttributeResponseBody
 	GetCreationTime() *string
 	SetDBClusterDescription(v string) *DescribeAIDBClusterAttributeResponseBody
@@ -74,6 +76,7 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// vnode
 	AiNodeType *string `json:"AiNodeType,omitempty" xml:"AiNodeType,omitempty"`
+	ApiKey     *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
 	// example:
 	//
 	// 2020-08-14T05:58:42Z
@@ -185,6 +188,10 @@ func (s DescribeAIDBClusterAttributeResponseBody) GoString() string {
 
 func (s *DescribeAIDBClusterAttributeResponseBody) GetAiNodeType() *string {
 	return s.AiNodeType
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBody) GetApiKey() *string {
+	return s.ApiKey
 }
 
 func (s *DescribeAIDBClusterAttributeResponseBody) GetCreationTime() *string {
@@ -301,6 +308,11 @@ func (s *DescribeAIDBClusterAttributeResponseBody) GetZoneIds() *string {
 
 func (s *DescribeAIDBClusterAttributeResponseBody) SetAiNodeType(v string) *DescribeAIDBClusterAttributeResponseBody {
 	s.AiNodeType = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBody) SetApiKey(v string) *DescribeAIDBClusterAttributeResponseBody {
+	s.ApiKey = &v
 	return s
 }
 
