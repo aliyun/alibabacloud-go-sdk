@@ -2121,6 +2121,10 @@ func (client *Client) QueryDomainByInstanceIdWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询域名分组信息
+//
 // @param request - QueryDomainGroupListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2140,6 +2144,14 @@ func (client *Client) QueryDomainGroupListWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.Lang) {
 		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.OrderByType) {
+		query["OrderByType"] = request.OrderByType
+	}
+
+	if !dara.IsNil(request.OrderKeyType) {
+		query["OrderKeyType"] = request.OrderKeyType
 	}
 
 	if !dara.IsNil(request.ShowDeletingGroup) {
@@ -2192,6 +2204,10 @@ func (client *Client) QueryDomainListWithContext(ctx context.Context, request *Q
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Ccompany) {
 		query["Ccompany"] = request.Ccompany
+	}
+
+	if !dara.IsNil(request.Dns) {
+		query["Dns"] = request.Dns
 	}
 
 	if !dara.IsNil(request.DomainGroupId) {

@@ -13,6 +13,10 @@ type iQueryDomainGroupListRequest interface {
 	GetDomainGroupName() *string
 	SetLang(v string) *QueryDomainGroupListRequest
 	GetLang() *string
+	SetOrderByType(v string) *QueryDomainGroupListRequest
+	GetOrderByType() *string
+	SetOrderKeyType(v string) *QueryDomainGroupListRequest
+	GetOrderKeyType() *string
 	SetShowDeletingGroup(v bool) *QueryDomainGroupListRequest
 	GetShowDeletingGroup() *bool
 	SetUserClientIp(v string) *QueryDomainGroupListRequest
@@ -24,7 +28,9 @@ type QueryDomainGroupListRequest struct {
 	// example:
 	//
 	// en
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	OrderByType  *string `json:"OrderByType,omitempty" xml:"OrderByType,omitempty"`
+	OrderKeyType *string `json:"OrderKeyType,omitempty" xml:"OrderKeyType,omitempty"`
 	// example:
 	//
 	// false
@@ -51,6 +57,14 @@ func (s *QueryDomainGroupListRequest) GetLang() *string {
 	return s.Lang
 }
 
+func (s *QueryDomainGroupListRequest) GetOrderByType() *string {
+	return s.OrderByType
+}
+
+func (s *QueryDomainGroupListRequest) GetOrderKeyType() *string {
+	return s.OrderKeyType
+}
+
 func (s *QueryDomainGroupListRequest) GetShowDeletingGroup() *bool {
 	return s.ShowDeletingGroup
 }
@@ -66,6 +80,16 @@ func (s *QueryDomainGroupListRequest) SetDomainGroupName(v string) *QueryDomainG
 
 func (s *QueryDomainGroupListRequest) SetLang(v string) *QueryDomainGroupListRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *QueryDomainGroupListRequest) SetOrderByType(v string) *QueryDomainGroupListRequest {
+	s.OrderByType = &v
+	return s
+}
+
+func (s *QueryDomainGroupListRequest) SetOrderKeyType(v string) *QueryDomainGroupListRequest {
+	s.OrderKeyType = &v
 	return s
 }
 

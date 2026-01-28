@@ -11,6 +11,8 @@ type iQueryDomainListRequest interface {
 	GoString() string
 	SetCcompany(v string) *QueryDomainListRequest
 	GetCcompany() *string
+	SetDns(v string) *QueryDomainListRequest
+	GetDns() *string
 	SetDomainGroupId(v string) *QueryDomainListRequest
 	GetDomainGroupId() *string
 	SetDomainName(v string) *QueryDomainListRequest
@@ -54,6 +56,7 @@ type QueryDomainListRequest struct {
 	//
 	// Guangzhou Jinye Renewable Resources Recycling Co., Ltd
 	Ccompany *string `json:"Ccompany,omitempty" xml:"Ccompany,omitempty"`
+	Dns      *string `json:"Dns,omitempty" xml:"Dns,omitempty"`
 	// The ID of the domain name group.
 	//
 	// example:
@@ -193,6 +196,10 @@ func (s *QueryDomainListRequest) GetCcompany() *string {
 	return s.Ccompany
 }
 
+func (s *QueryDomainListRequest) GetDns() *string {
+	return s.Dns
+}
+
 func (s *QueryDomainListRequest) GetDomainGroupId() *string {
 	return s.DomainGroupId
 }
@@ -263,6 +270,11 @@ func (s *QueryDomainListRequest) GetUserClientIp() *string {
 
 func (s *QueryDomainListRequest) SetCcompany(v string) *QueryDomainListRequest {
 	s.Ccompany = &v
+	return s
+}
+
+func (s *QueryDomainListRequest) SetDns(v string) *QueryDomainListRequest {
+	s.Dns = &v
 	return s
 }
 

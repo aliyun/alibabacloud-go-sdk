@@ -2782,6 +2782,10 @@ func (client *Client) QueryDomainByInstanceId(request *QueryDomainByInstanceIdRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询域名分组信息
+//
 // @param request - QueryDomainGroupListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2801,6 +2805,14 @@ func (client *Client) QueryDomainGroupListWithOptions(request *QueryDomainGroupL
 
 	if !dara.IsNil(request.Lang) {
 		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.OrderByType) {
+		query["OrderByType"] = request.OrderByType
+	}
+
+	if !dara.IsNil(request.OrderKeyType) {
+		query["OrderKeyType"] = request.OrderKeyType
 	}
 
 	if !dara.IsNil(request.ShowDeletingGroup) {
@@ -2834,6 +2846,10 @@ func (client *Client) QueryDomainGroupListWithOptions(request *QueryDomainGroupL
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询域名分组信息
+//
 // @param request - QueryDomainGroupListRequest
 //
 // @return QueryDomainGroupListResponse
@@ -2867,6 +2883,10 @@ func (client *Client) QueryDomainListWithOptions(request *QueryDomainListRequest
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Ccompany) {
 		query["Ccompany"] = request.Ccompany
+	}
+
+	if !dara.IsNil(request.Dns) {
+		query["Dns"] = request.Dns
 	}
 
 	if !dara.IsNil(request.DomainGroupId) {

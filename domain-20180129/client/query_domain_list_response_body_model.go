@@ -215,7 +215,8 @@ type QueryDomainListResponseBodyDataDomain struct {
 	// example:
 	//
 	// 0
-	ChgholderStatus *string `json:"ChgholderStatus,omitempty" xml:"ChgholderStatus,omitempty"`
+	ChgholderStatus *string                                       `json:"ChgholderStatus,omitempty" xml:"ChgholderStatus,omitempty"`
+	DnsList         *QueryDomainListResponseBodyDataDomainDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
 	// The state of real-name verification for the domain name. Valid values:
 	//
 	// 	- **FAILED**: Real-name verification for the domain name fails.
@@ -373,6 +374,10 @@ func (s *QueryDomainListResponseBodyDataDomain) GetChgholderStatus() *string {
 	return s.ChgholderStatus
 }
 
+func (s *QueryDomainListResponseBodyDataDomain) GetDnsList() *QueryDomainListResponseBodyDataDomainDnsList {
+	return s.DnsList
+}
+
 func (s *QueryDomainListResponseBodyDataDomain) GetDomainAuditStatus() *string {
 	return s.DomainAuditStatus
 }
@@ -460,6 +465,11 @@ func (s *QueryDomainListResponseBodyDataDomain) SetCcompany(v string) *QueryDoma
 
 func (s *QueryDomainListResponseBodyDataDomain) SetChgholderStatus(v string) *QueryDomainListResponseBodyDataDomain {
 	s.ChgholderStatus = &v
+	return s
+}
+
+func (s *QueryDomainListResponseBodyDataDomain) SetDnsList(v *QueryDomainListResponseBodyDataDomainDnsList) *QueryDomainListResponseBodyDataDomain {
+	s.DnsList = v
 	return s
 }
 
@@ -564,12 +574,42 @@ func (s *QueryDomainListResponseBodyDataDomain) SetTag(v *QueryDomainListRespons
 }
 
 func (s *QueryDomainListResponseBodyDataDomain) Validate() error {
+	if s.DnsList != nil {
+		if err := s.DnsList.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Tag != nil {
 		if err := s.Tag.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type QueryDomainListResponseBodyDataDomainDnsList struct {
+	DnsList []*string `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Repeated"`
+}
+
+func (s QueryDomainListResponseBodyDataDomainDnsList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryDomainListResponseBodyDataDomainDnsList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDomainListResponseBodyDataDomainDnsList) GetDnsList() []*string {
+	return s.DnsList
+}
+
+func (s *QueryDomainListResponseBodyDataDomainDnsList) SetDnsList(v []*string) *QueryDomainListResponseBodyDataDomainDnsList {
+	s.DnsList = v
+	return s
+}
+
+func (s *QueryDomainListResponseBodyDataDomainDnsList) Validate() error {
+	return dara.Validate(s)
 }
 
 type QueryDomainListResponseBodyDataDomainTag struct {
