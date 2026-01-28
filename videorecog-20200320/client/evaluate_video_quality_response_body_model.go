@@ -62,7 +62,12 @@ func (s *EvaluateVideoQualityResponseBody) SetRequestId(v string) *EvaluateVideo
 }
 
 func (s *EvaluateVideoQualityResponseBody) Validate() error {
-  return dara.Validate(s)
+  if s.Data != nil {
+    if err := s.Data.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type EvaluateVideoQualityResponseBodyData struct {
@@ -113,7 +118,12 @@ func (s *EvaluateVideoQualityResponseBodyData) SetVideoQualityInfo(v *EvaluateVi
 }
 
 func (s *EvaluateVideoQualityResponseBodyData) Validate() error {
-  return dara.Validate(s)
+  if s.VideoQualityInfo != nil {
+    if err := s.VideoQualityInfo.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type EvaluateVideoQualityResponseBodyDataVideoQualityInfo struct {

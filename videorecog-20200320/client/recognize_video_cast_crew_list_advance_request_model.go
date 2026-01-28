@@ -53,7 +53,16 @@ func (s *RecognizeVideoCastCrewListAdvanceRequest) SetVideoUrlObject(v io.Reader
 }
 
 func (s *RecognizeVideoCastCrewListAdvanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Params != nil {
+		for _, item := range s.Params {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeVideoCastCrewListAdvanceRequestParams struct {

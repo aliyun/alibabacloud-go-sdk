@@ -62,7 +62,12 @@ func (s *GenerateVideoCoverResponseBody) SetRequestId(v string) *GenerateVideoCo
 }
 
 func (s *GenerateVideoCoverResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GenerateVideoCoverResponseBodyData struct {
@@ -87,7 +92,16 @@ func (s *GenerateVideoCoverResponseBodyData) SetOutputs(v []*GenerateVideoCoverR
 }
 
 func (s *GenerateVideoCoverResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Outputs != nil {
+		for _, item := range s.Outputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GenerateVideoCoverResponseBodyDataOutputs struct {

@@ -13,9 +13,11 @@ import (
 //
 // @return DetectVideoShotResponse
 func (client *Client) DetectVideoShotWithContext(ctx context.Context, request *DetectVideoShotRequest, runtime *dara.RuntimeOptions) (_result *DetectVideoShotResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.VideoUrl) {
@@ -55,9 +57,11 @@ func (client *Client) DetectVideoShotWithContext(ctx context.Context, request *D
 //
 // @return EvaluateVideoQualityResponse
 func (client *Client) EvaluateVideoQualityWithContext(ctx context.Context, request *EvaluateVideoQualityRequest, runtime *dara.RuntimeOptions) (_result *EvaluateVideoQualityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Mode) {
@@ -97,9 +101,11 @@ func (client *Client) EvaluateVideoQualityWithContext(ctx context.Context, reque
 //
 // @return GenerateVideoCoverResponse
 func (client *Client) GenerateVideoCoverWithContext(ctx context.Context, request *GenerateVideoCoverRequest, runtime *dara.RuntimeOptions) (_result *GenerateVideoCoverResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.IsGif) {
@@ -139,9 +145,11 @@ func (client *Client) GenerateVideoCoverWithContext(ctx context.Context, request
 //
 // @return GetAsyncJobResultResponse
 func (client *Client) GetAsyncJobResultWithContext(ctx context.Context, request *GetAsyncJobResultRequest, runtime *dara.RuntimeOptions) (_result *GetAsyncJobResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -181,9 +189,11 @@ func (client *Client) GetAsyncJobResultWithContext(ctx context.Context, request 
 //
 // @return RecognizeVideoCastCrewListResponse
 func (client *Client) RecognizeVideoCastCrewListWithContext(ctx context.Context, tmpReq *RecognizeVideoCastCrewListRequest, runtime *dara.RuntimeOptions) (_result *RecognizeVideoCastCrewListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RecognizeVideoCastCrewListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -233,9 +243,11 @@ func (client *Client) RecognizeVideoCastCrewListWithContext(ctx context.Context,
 //
 // @return SplitVideoPartsResponse
 func (client *Client) SplitVideoPartsWithContext(ctx context.Context, request *SplitVideoPartsRequest, runtime *dara.RuntimeOptions) (_result *SplitVideoPartsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.MaxTime) {
@@ -287,9 +299,11 @@ func (client *Client) SplitVideoPartsWithContext(ctx context.Context, request *S
 //
 // @return UnderstandVideoContentResponse
 func (client *Client) UnderstandVideoContentWithContext(ctx context.Context, request *UnderstandVideoContentRequest, runtime *dara.RuntimeOptions) (_result *UnderstandVideoContentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.VideoURL) {

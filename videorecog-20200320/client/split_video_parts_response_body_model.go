@@ -62,7 +62,12 @@ func (s *SplitVideoPartsResponseBody) SetRequestId(v string) *SplitVideoPartsRes
 }
 
 func (s *SplitVideoPartsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SplitVideoPartsResponseBodyData struct {
@@ -97,7 +102,25 @@ func (s *SplitVideoPartsResponseBodyData) SetSplitVideoPartResults(v []*SplitVid
 }
 
 func (s *SplitVideoPartsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Elements != nil {
+		for _, item := range s.Elements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SplitVideoPartResults != nil {
+		for _, item := range s.SplitVideoPartResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SplitVideoPartsResponseBodyDataElements struct {

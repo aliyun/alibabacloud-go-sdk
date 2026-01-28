@@ -59,5 +59,10 @@ func (s *SplitVideoPartsResponse) SetBody(v *SplitVideoPartsResponseBody) *Split
 }
 
 func (s *SplitVideoPartsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

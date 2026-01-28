@@ -62,7 +62,12 @@ func (s *UnderstandVideoContentResponseBody) SetRequestId(v string) *UnderstandV
 }
 
 func (s *UnderstandVideoContentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UnderstandVideoContentResponseBodyData struct {
@@ -97,7 +102,12 @@ func (s *UnderstandVideoContentResponseBodyData) SetVideoInfo(v *UnderstandVideo
 }
 
 func (s *UnderstandVideoContentResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.VideoInfo != nil {
+		if err := s.VideoInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UnderstandVideoContentResponseBodyDataVideoInfo struct {

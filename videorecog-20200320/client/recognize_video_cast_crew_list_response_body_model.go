@@ -62,7 +62,12 @@ func (s *RecognizeVideoCastCrewListResponseBody) SetRequestId(v string) *Recogni
 }
 
 func (s *RecognizeVideoCastCrewListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecognizeVideoCastCrewListResponseBodyData struct {
@@ -143,7 +148,43 @@ func (s *RecognizeVideoCastCrewListResponseBodyData) SetVideoOcrResults(v []*Rec
 }
 
 func (s *RecognizeVideoCastCrewListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CastResults != nil {
+		for _, item := range s.CastResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OcrResults != nil {
+		for _, item := range s.OcrResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SubtitlesResults != nil {
+		for _, item := range s.SubtitlesResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VideoOcrResults != nil {
+		for _, item := range s.VideoOcrResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeVideoCastCrewListResponseBodyDataCastResults struct {
@@ -245,7 +286,16 @@ func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResults) SetStartTime(v fl
 }
 
 func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResults) Validate() error {
-	return dara.Validate(s)
+	if s.DetailInfo != nil {
+		for _, item := range s.DetailInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo struct {
@@ -365,7 +415,16 @@ func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo) SetTrac
 }
 
 func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Position != nil {
+		for _, item := range s.Position {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoPosition struct {
@@ -544,7 +603,16 @@ func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults) SetStartTime
 }
 
 func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults) Validate() error {
-	return dara.Validate(s)
+	if s.DetailInfo != nil {
+		for _, item := range s.DetailInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo struct {
@@ -615,7 +683,16 @@ func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo) Se
 }
 
 func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Position != nil {
+		for _, item := range s.Position {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoPosition struct {
