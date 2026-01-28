@@ -263,6 +263,74 @@ func (client *Client) DeletePlaybookWithContext(ctx context.Context, request *De
 
 // Summary:
 //
+// 执行组件动作
+//
+// @param request - ExecuteComponentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteComponentResponse
+func (client *Client) ExecuteComponentWithContext(ctx context.Context, request *ExecuteComponentRequest, runtime *dara.RuntimeOptions) (_result *ExecuteComponentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ComponentActionName) {
+		body["ComponentActionName"] = request.ComponentActionName
+	}
+
+	if !dara.IsNil(request.ComponentAssetUuid) {
+		body["ComponentAssetUuid"] = request.ComponentAssetUuid
+	}
+
+	if !dara.IsNil(request.ComponentInput) {
+		body["ComponentInput"] = request.ComponentInput
+	}
+
+	if !dara.IsNil(request.ComponentName) {
+		body["ComponentName"] = request.ComponentName
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PlayBookNodeName) {
+		body["PlayBookNodeName"] = request.PlayBookNodeName
+	}
+
+	if !dara.IsNil(request.PlaybookUuid) {
+		body["PlaybookUuid"] = request.PlaybookUuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExecuteComponent"),
+		Version:     dara.String("2025-09-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExecuteComponentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Get playbook details.
 //
 // @param request - GetPlaybookRequest
