@@ -225,6 +225,70 @@ func (client *Client) CreateClusterWithContext(ctx context.Context, tmpReq *Crea
 
 // Summary:
 //
+// 创建数据源
+//
+// @param request - CreateDatasourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDatasourceResponse
+func (client *Client) CreateDatasourceWithContext(ctx context.Context, request *CreateDatasourceRequest, runtime *dara.RuntimeOptions) (_result *CreateDatasourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.ConnectionParams) {
+		body["ConnectionParams"] = request.ConnectionParams
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Password) {
+		body["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDatasource"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDatasourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 添加执行器
 //
 // @param request - CreateExecutorsRequest
@@ -661,6 +725,54 @@ func (client *Client) DeleteClusterWithContext(ctx context.Context, request *Del
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteClusterResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据源
+//
+// @param request - DeleteDatasourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDatasourceResponse
+func (client *Client) DeleteDatasourceWithContext(ctx context.Context, request *DeleteDatasourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteDatasourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.DatasourceId) {
+		body["DatasourceId"] = request.DatasourceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDatasource"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDatasourceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2055,6 +2167,74 @@ func (client *Client) ListClustersWithContext(ctx context.Context, request *List
 
 // Summary:
 //
+// 获取数据源列表
+//
+// @param request - ListDatasourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDatasourcesResponse
+func (client *Client) ListDatasourcesWithContext(ctx context.Context, request *ListDatasourcesRequest, runtime *dara.RuntimeOptions) (_result *ListDatasourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDatasources"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDatasourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询Executor列表
 //
 // @param request - ListExecutorsRequest
@@ -2777,6 +2957,62 @@ func (client *Client) OperateBackfillWorkflowWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &OperateBackfillWorkflowResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 连接数据源
+//
+// @param request - OperateConnectDatasourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateConnectDatasourceResponse
+func (client *Client) OperateConnectDatasourceWithContext(ctx context.Context, request *OperateConnectDatasourceRequest, runtime *dara.RuntimeOptions) (_result *OperateConnectDatasourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.ConnectionParams) {
+		body["ConnectionParams"] = request.ConnectionParams
+	}
+
+	if !dara.IsNil(request.Password) {
+		body["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OperateConnectDatasource"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OperateConnectDatasourceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4133,17 +4369,21 @@ func (client *Client) UpdateClusterWithContext(ctx context.Context, request *Upd
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
+	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
-		query["ClusterId"] = request.ClusterId
+		body["ClusterId"] = request.ClusterId
 	}
 
 	if !dara.IsNil(request.ClusterName) {
-		query["ClusterName"] = request.ClusterName
+		body["ClusterName"] = request.ClusterName
+	}
+
+	if !dara.IsNil(request.IpWhitelist) {
+		body["IpWhitelist"] = request.IpWhitelist
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("UpdateCluster"),
@@ -4157,6 +4397,70 @@ func (client *Client) UpdateClusterWithContext(ctx context.Context, request *Upd
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateClusterResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据源
+//
+// @param request - UpdateDatasourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDatasourceResponse
+func (client *Client) UpdateDatasourceWithContext(ctx context.Context, request *UpdateDatasourceRequest, runtime *dara.RuntimeOptions) (_result *UpdateDatasourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.ConnectionParams) {
+		body["ConnectionParams"] = request.ConnectionParams
+	}
+
+	if !dara.IsNil(request.DatasourceId) {
+		body["DatasourceId"] = request.DatasourceId
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Password) {
+		body["Password"] = request.Password
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDatasource"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDatasourceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4363,6 +4667,62 @@ func (client *Client) UpdateJobWithContext(ctx context.Context, tmpReq *UpdateJo
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新任务实例
+//
+// @param request - UpdateJobExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateJobExecutionResponse
+func (client *Client) UpdateJobExecutionWithContext(ctx context.Context, request *UpdateJobExecutionRequest, runtime *dara.RuntimeOptions) (_result *UpdateJobExecutionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		body["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.JobExecutionId) {
+		body["JobExecutionId"] = request.JobExecutionId
+	}
+
+	if !dara.IsNil(request.ScheduleTime) {
+		body["ScheduleTime"] = request.ScheduleTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateJobExecution"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateJobExecutionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

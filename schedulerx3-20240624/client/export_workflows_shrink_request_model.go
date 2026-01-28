@@ -18,8 +18,6 @@ type iExportWorkflowsShrinkRequest interface {
 }
 
 type ExportWorkflowsShrinkRequest struct {
-  // This parameter is required.
-  // 
   // example:
   // 
   // test-app

@@ -144,6 +144,10 @@ type GetClusterResponseBodyData struct {
 	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
 	// example:
 	//
+	// 192.168.1.0/24
+	IpWhitelist *string `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
+	// example:
+	//
 	// 100
 	JobNum *int32 `json:"JobNum,omitempty" xml:"JobNum,omitempty"`
 	// example:
@@ -284,6 +288,10 @@ func (s *GetClusterResponseBodyData) GetIntranetDomain() *string {
 	return s.IntranetDomain
 }
 
+func (s *GetClusterResponseBodyData) GetIpWhitelist() *string {
+	return s.IpWhitelist
+}
+
 func (s *GetClusterResponseBodyData) GetJobNum() *int32 {
 	return s.JobNum
 }
@@ -387,6 +395,11 @@ func (s *GetClusterResponseBodyData) SetInternetDomain(v string) *GetClusterResp
 
 func (s *GetClusterResponseBodyData) SetIntranetDomain(v string) *GetClusterResponseBodyData {
 	s.IntranetDomain = &v
+	return s
+}
+
+func (s *GetClusterResponseBodyData) SetIpWhitelist(v string) *GetClusterResponseBodyData {
+	s.IpWhitelist = &v
 	return s
 }
 

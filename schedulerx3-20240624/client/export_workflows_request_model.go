@@ -18,8 +18,6 @@ type iExportWorkflowsRequest interface {
 }
 
 type ExportWorkflowsRequest struct {
-  // This parameter is required.
-  // 
   // example:
   // 
   // test-app
