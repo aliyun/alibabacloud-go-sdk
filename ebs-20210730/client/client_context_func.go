@@ -2733,6 +2733,86 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// 中心化角色：修改App
+//
+// @param request - ModifyAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAppResponse
+func (client *Client) ModifyAppWithContext(ctx context.Context, request *ModifyAppRequest, runtime *dara.RuntimeOptions) (_result *ModifyAppResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.AppTags) {
+		query["AppTags"] = request.AppTags
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Owner) {
+		query["Owner"] = request.Owner
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ReportSendEnabled) {
+		query["ReportSendEnabled"] = request.ReportSendEnabled
+	}
+
+	if !dara.IsNil(request.SubscribePeriod) {
+		query["SubscribePeriod"] = request.SubscribePeriod
+	}
+
+	if !dara.IsNil(request.SubscribeStatus) {
+		query["SubscribeStatus"] = request.SubscribeStatus
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyApp"),
+		Version:     dara.String("2021-07-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyAppResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 修改专属集群属性OpenApi
 //
 // Description:
