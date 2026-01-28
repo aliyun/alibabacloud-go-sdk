@@ -328,7 +328,8 @@ type DescribeDataAgentSessionResponseBodyDataSessionConfig struct {
 	// example:
 	//
 	// ANALYSIS
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Mode          *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	UserOssBucket *string `json:"UserOssBucket,omitempty" xml:"UserOssBucket,omitempty"`
 }
 
 func (s DescribeDataAgentSessionResponseBodyDataSessionConfig) String() string {
@@ -363,6 +364,10 @@ func (s *DescribeDataAgentSessionResponseBodyDataSessionConfig) GetMode() *strin
 	return s.Mode
 }
 
+func (s *DescribeDataAgentSessionResponseBodyDataSessionConfig) GetUserOssBucket() *string {
+	return s.UserOssBucket
+}
+
 func (s *DescribeDataAgentSessionResponseBodyDataSessionConfig) SetCustomAgentId(v string) *DescribeDataAgentSessionResponseBodyDataSessionConfig {
 	s.CustomAgentId = &v
 	return s
@@ -390,6 +395,11 @@ func (s *DescribeDataAgentSessionResponseBodyDataSessionConfig) SetMcpServerIds(
 
 func (s *DescribeDataAgentSessionResponseBodyDataSessionConfig) SetMode(v string) *DescribeDataAgentSessionResponseBodyDataSessionConfig {
 	s.Mode = &v
+	return s
+}
+
+func (s *DescribeDataAgentSessionResponseBodyDataSessionConfig) SetUserOssBucket(v string) *DescribeDataAgentSessionResponseBodyDataSessionConfig {
+	s.UserOssBucket = &v
 	return s
 }
 
