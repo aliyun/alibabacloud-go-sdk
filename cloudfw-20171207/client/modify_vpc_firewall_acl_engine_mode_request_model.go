@@ -22,6 +22,8 @@ type ModifyVpcFirewallAclEngineModeRequest struct {
 	//
 	// 258039427902****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0

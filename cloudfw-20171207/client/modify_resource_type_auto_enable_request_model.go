@@ -21,7 +21,10 @@ type ModifyResourceTypeAutoEnableRequest struct {
 	// example:
 	//
 	// zh
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// cn-shanghai
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	// example:
 	//
