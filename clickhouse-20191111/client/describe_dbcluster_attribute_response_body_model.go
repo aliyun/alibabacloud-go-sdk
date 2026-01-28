@@ -312,6 +312,7 @@ type DescribeDBClusterAttributeResponseBodyDBCluster struct {
 	//
 	// false
 	IsExpired *string `json:"IsExpired,omitempty" xml:"IsExpired,omitempty"`
+	LbKind    *string `json:"LbKind,omitempty" xml:"LbKind,omitempty"`
 	// The lock mode of the cluster. Valid values:
 	//
 	// 	- **Unlock**: The cluster is not locked.
@@ -630,6 +631,10 @@ func (s *DescribeDBClusterAttributeResponseBodyDBCluster) GetIsExpired() *string
 	return s.IsExpired
 }
 
+func (s *DescribeDBClusterAttributeResponseBodyDBCluster) GetLbKind() *string {
+	return s.LbKind
+}
+
 func (s *DescribeDBClusterAttributeResponseBodyDBCluster) GetLockMode() *string {
 	return s.LockMode
 }
@@ -882,6 +887,11 @@ func (s *DescribeDBClusterAttributeResponseBodyDBCluster) SetExtStorageType(v st
 
 func (s *DescribeDBClusterAttributeResponseBodyDBCluster) SetIsExpired(v string) *DescribeDBClusterAttributeResponseBodyDBCluster {
 	s.IsExpired = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyDBCluster) SetLbKind(v string) *DescribeDBClusterAttributeResponseBodyDBCluster {
+	s.LbKind = &v
 	return s
 }
 
