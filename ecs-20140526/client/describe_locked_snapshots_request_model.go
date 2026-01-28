@@ -54,11 +54,11 @@ type DescribeLockedSnapshotsRequest struct {
 	//
 	// compliance-cooloff
 	LockStatus *string `json:"LockStatus,omitempty" xml:"LockStatus,omitempty"`
-	// The number of entries per page. Maximum value: 100.
+	// The maximum number of entries to return on each page. Maximum value: 100.
 	//
 	// Default value:
 	//
-	// 	- If you do not specify this parameter or if you set this parameter to a value that is smaller than 10, the default value is 10.
+	// 	- If no value is set or the set value is less than 10, the default value is 10.
 	//
 	// 	- If you set a value greater than 100, the default value is 100.
 	//
