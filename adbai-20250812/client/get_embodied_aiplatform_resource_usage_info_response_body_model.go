@@ -129,6 +129,7 @@ func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBody) Validate() error {
 }
 
 type GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails struct {
+	AllocatedUnit *int32 `json:"AllocatedUnit,omitempty" xml:"AllocatedUnit,omitempty"`
 	// example:
 	//
 	// ADB.MLLarge.2
@@ -147,12 +148,21 @@ func (s GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails) GoString()
 	return s.String()
 }
 
+func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails) GetAllocatedUnit() *int32 {
+	return s.AllocatedUnit
+}
+
 func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails) GetGpuModel() *string {
 	return s.GpuModel
 }
 
 func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails) GetTotalCount() *int32 {
 	return s.TotalCount
+}
+
+func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails) SetAllocatedUnit(v int32) *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails {
+	s.AllocatedUnit = &v
+	return s
 }
 
 func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails) SetGpuModel(v string) *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails {
