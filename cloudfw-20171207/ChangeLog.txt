@@ -1,6 +1,9 @@
 2026-01-28 Version: v10.0.1
 - Generated golang 2017-12-07 for Cloudfw.
 
+2026-01-28 Version: v10.0.1
+- Generated golang 2017-12-07 for Cloudfw.
+
 2026-01-21 Version: v10.0.0
 - Support API DescribeRegionResourceTypeAutoEnable.
 - Support API SetAutoProtectNewAssets.
