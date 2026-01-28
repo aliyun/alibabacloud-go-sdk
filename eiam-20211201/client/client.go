@@ -132,6 +132,90 @@ func (client *Client) AddApplicationAccountToUser(request *AddApplicationAccount
 
 // Summary:
 //
+// 将应用添加到授权规则
+//
+// @param request - AddApplicationToAuthorizationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddApplicationToAuthorizationRuleResponse
+func (client *Client) AddApplicationToAuthorizationRuleWithOptions(request *AddApplicationToAuthorizationRuleRequest, runtime *dara.RuntimeOptions) (_result *AddApplicationToAuthorizationRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.AuthorizationRuleId) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ValidityPeriod) {
+		query["ValidityPeriod"] = request.ValidityPeriod
+	}
+
+	if !dara.IsNil(request.ValidityType) {
+		query["ValidityType"] = request.ValidityType
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddApplicationToAuthorizationRule"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddApplicationToAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将应用添加到授权规则
+//
+// @param request - AddApplicationToAuthorizationRuleRequest
+//
+// @return AddApplicationToAuthorizationRuleResponse
+func (client *Client) AddApplicationToAuthorizationRule(request *AddApplicationToAuthorizationRuleRequest) (_result *AddApplicationToAuthorizationRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddApplicationToAuthorizationRuleResponse{}
+	_body, _err := client.AddApplicationToAuthorizationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 添加条款到品牌
 //
 // @param request - AddCustomPrivacyPoliciesToBrandRequest
@@ -193,6 +277,174 @@ func (client *Client) AddCustomPrivacyPoliciesToBrand(request *AddCustomPrivacyP
 	runtime := &dara.RuntimeOptions{}
 	_result = &AddCustomPrivacyPoliciesToBrandResponse{}
 	_body, _err := client.AddCustomPrivacyPoliciesToBrandWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 将组添加到授权规则
+//
+// @param request - AddGroupToAuthorizationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddGroupToAuthorizationRuleResponse
+func (client *Client) AddGroupToAuthorizationRuleWithOptions(request *AddGroupToAuthorizationRuleRequest, runtime *dara.RuntimeOptions) (_result *AddGroupToAuthorizationRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationRuleId) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ValidityPeriod) {
+		query["ValidityPeriod"] = request.ValidityPeriod
+	}
+
+	if !dara.IsNil(request.ValidityType) {
+		query["ValidityType"] = request.ValidityType
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddGroupToAuthorizationRule"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddGroupToAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将组添加到授权规则
+//
+// @param request - AddGroupToAuthorizationRuleRequest
+//
+// @return AddGroupToAuthorizationRuleResponse
+func (client *Client) AddGroupToAuthorizationRule(request *AddGroupToAuthorizationRuleRequest) (_result *AddGroupToAuthorizationRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddGroupToAuthorizationRuleResponse{}
+	_body, _err := client.AddGroupToAuthorizationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 将账户添加到授权规则
+//
+// @param request - AddUserToAuthorizationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddUserToAuthorizationRuleResponse
+func (client *Client) AddUserToAuthorizationRuleWithOptions(request *AddUserToAuthorizationRuleRequest, runtime *dara.RuntimeOptions) (_result *AddUserToAuthorizationRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationRuleId) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	if !dara.IsNil(request.ValidityPeriod) {
+		query["ValidityPeriod"] = request.ValidityPeriod
+	}
+
+	if !dara.IsNil(request.ValidityType) {
+		query["ValidityType"] = request.ValidityType
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddUserToAuthorizationRule"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddUserToAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将账户添加到授权规则
+//
+// @param request - AddUserToAuthorizationRuleRequest
+//
+// @return AddUserToAuthorizationRuleResponse
+func (client *Client) AddUserToAuthorizationRule(request *AddUserToAuthorizationRuleRequest) (_result *AddUserToAuthorizationRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddUserToAuthorizationRuleResponse{}
+	_body, _err := client.AddUserToAuthorizationRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1413,6 +1665,170 @@ func (client *Client) CreateApplicationToken(request *CreateApplicationTokenRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateApplicationTokenResponse{}
 	_body, _err := client.CreateApplicationTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建授权资源
+//
+// @param request - CreateAuthorizationResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAuthorizationResourceResponse
+func (client *Client) CreateAuthorizationResourceWithOptions(request *CreateAuthorizationResourceRequest, runtime *dara.RuntimeOptions) (_result *CreateAuthorizationResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationResourceEntityId) {
+		query["AuthorizationResourceEntityId"] = request.AuthorizationResourceEntityId
+	}
+
+	if !dara.IsNil(request.AuthorizationResourceEntityType) {
+		query["AuthorizationResourceEntityType"] = request.AuthorizationResourceEntityType
+	}
+
+	if !dara.IsNil(request.AuthorizationRuleId) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAuthorizationResource"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAuthorizationResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建授权资源
+//
+// @param request - CreateAuthorizationResourceRequest
+//
+// @return CreateAuthorizationResourceResponse
+func (client *Client) CreateAuthorizationResource(request *CreateAuthorizationResourceRequest) (_result *CreateAuthorizationResourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAuthorizationResourceResponse{}
+	_body, _err := client.CreateAuthorizationResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建授权规则
+//
+// @param request - CreateAuthorizationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAuthorizationRuleResponse
+func (client *Client) CreateAuthorizationRuleWithOptions(request *CreateAuthorizationRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateAuthorizationRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationResourceScope) {
+		query["AuthorizationResourceScope"] = request.AuthorizationResourceScope
+	}
+
+	if !dara.IsNil(request.AuthorizationRuleName) {
+		query["AuthorizationRuleName"] = request.AuthorizationRuleName
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAuthorizationRule"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建授权规则
+//
+// @param request - CreateAuthorizationRuleRequest
+//
+// @return CreateAuthorizationRuleResponse
+func (client *Client) CreateAuthorizationRule(request *CreateAuthorizationRuleRequest) (_result *CreateAuthorizationRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAuthorizationRuleResponse{}
+	_body, _err := client.CreateAuthorizationRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3279,6 +3695,142 @@ func (client *Client) DeleteApplicationToken(request *DeleteApplicationTokenRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteApplicationTokenResponse{}
 	_body, _err := client.DeleteApplicationTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除授权资源
+//
+// @param request - DeleteAuthorizationResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAuthorizationResourceResponse
+func (client *Client) DeleteAuthorizationResourceWithOptions(request *DeleteAuthorizationResourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteAuthorizationResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationResourceId) {
+		query["AuthorizationResourceId"] = request.AuthorizationResourceId
+	}
+
+	if !dara.IsNil(request.AuthorizationRuleId) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAuthorizationResource"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAuthorizationResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除授权资源
+//
+// @param request - DeleteAuthorizationResourceRequest
+//
+// @return DeleteAuthorizationResourceResponse
+func (client *Client) DeleteAuthorizationResource(request *DeleteAuthorizationResourceRequest) (_result *DeleteAuthorizationResourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAuthorizationResourceResponse{}
+	_body, _err := client.DeleteAuthorizationResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除授权规则
+//
+// @param request - DeleteAuthorizationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAuthorizationRuleResponse
+func (client *Client) DeleteAuthorizationRuleWithOptions(request *DeleteAuthorizationRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteAuthorizationRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationRuleId) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAuthorizationRule"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除授权规则
+//
+// @param request - DeleteAuthorizationRuleRequest
+//
+// @return DeleteAuthorizationRuleResponse
+func (client *Client) DeleteAuthorizationRule(request *DeleteAuthorizationRuleRequest) (_result *DeleteAuthorizationRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAuthorizationRuleResponse{}
+	_body, _err := client.DeleteAuthorizationRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5254,6 +5806,78 @@ func (client *Client) DisableApplicationToken(request *DisableApplicationTokenRe
 
 // Summary:
 //
+// 禁用授权规则
+//
+// @param request - DisableAuthorizationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableAuthorizationRuleResponse
+func (client *Client) DisableAuthorizationRuleWithOptions(request *DisableAuthorizationRuleRequest, runtime *dara.RuntimeOptions) (_result *DisableAuthorizationRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationRuleId) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableAuthorizationRule"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用授权规则
+//
+// @param request - DisableAuthorizationRuleRequest
+//
+// @return DisableAuthorizationRuleResponse
+func (client *Client) DisableAuthorizationRule(request *DisableAuthorizationRuleRequest) (_result *DisableAuthorizationRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DisableAuthorizationRuleResponse{}
+	_body, _err := client.DisableAuthorizationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 禁用品牌
 //
 // @param request - DisableBrandRequest
@@ -6799,6 +7423,78 @@ func (client *Client) EnableApplicationToken(request *EnableApplicationTokenRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &EnableApplicationTokenResponse{}
 	_body, _err := client.EnableApplicationTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用授权规则
+//
+// @param request - EnableAuthorizationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableAuthorizationRuleResponse
+func (client *Client) EnableAuthorizationRuleWithOptions(request *EnableAuthorizationRuleRequest, runtime *dara.RuntimeOptions) (_result *EnableAuthorizationRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationRuleId) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableAuthorizationRule"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用授权规则
+//
+// @param request - EnableAuthorizationRuleRequest
+//
+// @return EnableAuthorizationRuleResponse
+func (client *Client) EnableAuthorizationRule(request *EnableAuthorizationRuleRequest) (_result *EnableAuthorizationRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EnableAuthorizationRuleResponse{}
+	_body, _err := client.EnableAuthorizationRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8547,6 +9243,142 @@ func (client *Client) GetApplicationTemplate(request *GetApplicationTemplateRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetApplicationTemplateResponse{}
 	_body, _err := client.GetApplicationTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取授权资源信息
+//
+// @param request - GetAuthorizationResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAuthorizationResourceResponse
+func (client *Client) GetAuthorizationResourceWithOptions(request *GetAuthorizationResourceRequest, runtime *dara.RuntimeOptions) (_result *GetAuthorizationResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationResourceId) {
+		query["AuthorizationResourceId"] = request.AuthorizationResourceId
+	}
+
+	if !dara.IsNil(request.AuthorizationRuleId) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAuthorizationResource"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAuthorizationResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取授权资源信息
+//
+// @param request - GetAuthorizationResourceRequest
+//
+// @return GetAuthorizationResourceResponse
+func (client *Client) GetAuthorizationResource(request *GetAuthorizationResourceRequest) (_result *GetAuthorizationResourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAuthorizationResourceResponse{}
+	_body, _err := client.GetAuthorizationResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取授权规则信息
+//
+// @param request - GetAuthorizationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAuthorizationRuleResponse
+func (client *Client) GetAuthorizationRuleWithOptions(request *GetAuthorizationRuleRequest, runtime *dara.RuntimeOptions) (_result *GetAuthorizationRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationRuleId) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAuthorizationRule"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取授权规则信息
+//
+// @param request - GetAuthorizationRuleRequest
+//
+// @return GetAuthorizationRuleResponse
+func (client *Client) GetAuthorizationRule(request *GetAuthorizationRuleRequest) (_result *GetAuthorizationRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAuthorizationRuleResponse{}
+	_body, _err := client.GetAuthorizationRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11020,6 +11852,84 @@ func (client *Client) ListApplications(request *ListApplicationsRequest) (_resul
 
 // Summary:
 //
+// 查询授权规则关联的应用列表
+//
+// @param request - ListApplicationsForAuthorizationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationsForAuthorizationRuleResponse
+func (client *Client) ListApplicationsForAuthorizationRuleWithOptions(request *ListApplicationsForAuthorizationRuleRequest, runtime *dara.RuntimeOptions) (_result *ListApplicationsForAuthorizationRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationRuleId) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListApplicationsForAuthorizationRule"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListApplicationsForAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询授权规则关联的应用列表
+//
+// @param request - ListApplicationsForAuthorizationRuleRequest
+//
+// @return ListApplicationsForAuthorizationRuleResponse
+func (client *Client) ListApplicationsForAuthorizationRule(request *ListApplicationsForAuthorizationRuleRequest) (_result *ListApplicationsForAuthorizationRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListApplicationsForAuthorizationRuleResponse{}
+	_body, _err := client.ListApplicationsForAuthorizationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询一个EIAM组可访问的应用列表
 //
 // @param request - ListApplicationsForGroupRequest
@@ -11409,6 +12319,380 @@ func (client *Client) ListApplicationsForUser(request *ListApplicationsForUserRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListApplicationsForUserResponse{}
 	_body, _err := client.ListApplicationsForUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询授权资源信息列表
+//
+// @param request - ListAuthorizationResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAuthorizationResourcesResponse
+func (client *Client) ListAuthorizationResourcesWithOptions(request *ListAuthorizationResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListAuthorizationResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationRuleId) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAuthorizationResources"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAuthorizationResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询授权资源信息列表
+//
+// @param request - ListAuthorizationResourcesRequest
+//
+// @return ListAuthorizationResourcesResponse
+func (client *Client) ListAuthorizationResources(request *ListAuthorizationResourcesRequest) (_result *ListAuthorizationResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAuthorizationResourcesResponse{}
+	_body, _err := client.ListAuthorizationResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询授权规则信息列表
+//
+// @param request - ListAuthorizationRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAuthorizationRulesResponse
+func (client *Client) ListAuthorizationRulesWithOptions(request *ListAuthorizationRulesRequest, runtime *dara.RuntimeOptions) (_result *ListAuthorizationRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAuthorizationRules"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAuthorizationRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询授权规则信息列表
+//
+// @param request - ListAuthorizationRulesRequest
+//
+// @return ListAuthorizationRulesResponse
+func (client *Client) ListAuthorizationRules(request *ListAuthorizationRulesRequest) (_result *ListAuthorizationRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAuthorizationRulesResponse{}
+	_body, _err := client.ListAuthorizationRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询应用关联的授权规则信息列表
+//
+// @param request - ListAuthorizationRulesForApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAuthorizationRulesForApplicationResponse
+func (client *Client) ListAuthorizationRulesForApplicationWithOptions(request *ListAuthorizationRulesForApplicationRequest, runtime *dara.RuntimeOptions) (_result *ListAuthorizationRulesForApplicationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAuthorizationRulesForApplication"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAuthorizationRulesForApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询应用关联的授权规则信息列表
+//
+// @param request - ListAuthorizationRulesForApplicationRequest
+//
+// @return ListAuthorizationRulesForApplicationResponse
+func (client *Client) ListAuthorizationRulesForApplication(request *ListAuthorizationRulesForApplicationRequest) (_result *ListAuthorizationRulesForApplicationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAuthorizationRulesForApplicationResponse{}
+	_body, _err := client.ListAuthorizationRulesForApplicationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询组关联的授权规则信息列表
+//
+// @param request - ListAuthorizationRulesForGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAuthorizationRulesForGroupResponse
+func (client *Client) ListAuthorizationRulesForGroupWithOptions(request *ListAuthorizationRulesForGroupRequest, runtime *dara.RuntimeOptions) (_result *ListAuthorizationRulesForGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GroupId) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAuthorizationRulesForGroup"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAuthorizationRulesForGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询组关联的授权规则信息列表
+//
+// @param request - ListAuthorizationRulesForGroupRequest
+//
+// @return ListAuthorizationRulesForGroupResponse
+func (client *Client) ListAuthorizationRulesForGroup(request *ListAuthorizationRulesForGroupRequest) (_result *ListAuthorizationRulesForGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAuthorizationRulesForGroupResponse{}
+	_body, _err := client.ListAuthorizationRulesForGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户关联的授权规则信息列表
+//
+// @param request - ListAuthorizationRulesForUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAuthorizationRulesForUserResponse
+func (client *Client) ListAuthorizationRulesForUserWithOptions(request *ListAuthorizationRulesForUserRequest, runtime *dara.RuntimeOptions) (_result *ListAuthorizationRulesForUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAuthorizationRulesForUser"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAuthorizationRulesForUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户关联的授权规则信息列表
+//
+// @param request - ListAuthorizationRulesForUserRequest
+//
+// @return ListAuthorizationRulesForUserResponse
+func (client *Client) ListAuthorizationRulesForUser(request *ListAuthorizationRulesForUserRequest) (_result *ListAuthorizationRulesForUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAuthorizationRulesForUserResponse{}
+	_body, _err := client.ListAuthorizationRulesForUserWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12648,6 +13932,84 @@ func (client *Client) ListGroupsForApplication(request *ListGroupsForApplication
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListGroupsForApplicationResponse{}
 	_body, _err := client.ListGroupsForApplicationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询授权规则关联的组列表
+//
+// @param request - ListGroupsForAuthorizationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGroupsForAuthorizationRuleResponse
+func (client *Client) ListGroupsForAuthorizationRuleWithOptions(request *ListGroupsForAuthorizationRuleRequest, runtime *dara.RuntimeOptions) (_result *ListGroupsForAuthorizationRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationRuleId) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListGroupsForAuthorizationRule"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListGroupsForAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询授权规则关联的组列表
+//
+// @param request - ListGroupsForAuthorizationRuleRequest
+//
+// @return ListGroupsForAuthorizationRuleResponse
+func (client *Client) ListGroupsForAuthorizationRule(request *ListGroupsForAuthorizationRuleRequest) (_result *ListGroupsForAuthorizationRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListGroupsForAuthorizationRuleResponse{}
+	_body, _err := client.ListGroupsForAuthorizationRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14195,6 +15557,84 @@ func (client *Client) ListUsersForApplication(request *ListUsersForApplicationRe
 
 // Summary:
 //
+// 查询授权规则关联的账户列表
+//
+// @param request - ListUsersForAuthorizationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUsersForAuthorizationRuleResponse
+func (client *Client) ListUsersForAuthorizationRuleWithOptions(request *ListUsersForAuthorizationRuleRequest, runtime *dara.RuntimeOptions) (_result *ListUsersForAuthorizationRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationRuleId) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListUsersForAuthorizationRule"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListUsersForAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询授权规则关联的账户列表
+//
+// @param request - ListUsersForAuthorizationRuleRequest
+//
+// @return ListUsersForAuthorizationRuleResponse
+func (client *Client) ListUsersForAuthorizationRule(request *ListUsersForAuthorizationRuleRequest) (_result *ListUsersForAuthorizationRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListUsersForAuthorizationRuleResponse{}
+	_body, _err := client.ListUsersForAuthorizationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information of accounts in an Employee Identity and Access Management (EIAM) group of Identity as a Service (IDaaS).
 //
 // @param request - ListUsersForGroupRequest
@@ -14635,6 +16075,76 @@ func (client *Client) RemoveApplicationAccountFromUser(request *RemoveApplicatio
 
 // Summary:
 //
+// 将应用从授权规则中解除
+//
+// @param request - RemoveApplicationFromAuthorizationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveApplicationFromAuthorizationRuleResponse
+func (client *Client) RemoveApplicationFromAuthorizationRuleWithOptions(request *RemoveApplicationFromAuthorizationRuleRequest, runtime *dara.RuntimeOptions) (_result *RemoveApplicationFromAuthorizationRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.AuthorizationRuleId) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveApplicationFromAuthorizationRule"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveApplicationFromAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将应用从授权规则中解除
+//
+// @param request - RemoveApplicationFromAuthorizationRuleRequest
+//
+// @return RemoveApplicationFromAuthorizationRuleResponse
+func (client *Client) RemoveApplicationFromAuthorizationRule(request *RemoveApplicationFromAuthorizationRuleRequest) (_result *RemoveApplicationFromAuthorizationRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RemoveApplicationFromAuthorizationRuleResponse{}
+	_body, _err := client.RemoveApplicationFromAuthorizationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 移除品牌关联条款
 //
 // @param request - RemoveCustomPrivacyPoliciesFromBrandRequest
@@ -14696,6 +16206,146 @@ func (client *Client) RemoveCustomPrivacyPoliciesFromBrand(request *RemoveCustom
 	runtime := &dara.RuntimeOptions{}
 	_result = &RemoveCustomPrivacyPoliciesFromBrandResponse{}
 	_body, _err := client.RemoveCustomPrivacyPoliciesFromBrandWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 将组从授权规则中解除
+//
+// @param request - RemoveGroupFromAuthorizationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveGroupFromAuthorizationRuleResponse
+func (client *Client) RemoveGroupFromAuthorizationRuleWithOptions(request *RemoveGroupFromAuthorizationRuleRequest, runtime *dara.RuntimeOptions) (_result *RemoveGroupFromAuthorizationRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationRuleId) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveGroupFromAuthorizationRule"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveGroupFromAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将组从授权规则中解除
+//
+// @param request - RemoveGroupFromAuthorizationRuleRequest
+//
+// @return RemoveGroupFromAuthorizationRuleResponse
+func (client *Client) RemoveGroupFromAuthorizationRule(request *RemoveGroupFromAuthorizationRuleRequest) (_result *RemoveGroupFromAuthorizationRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RemoveGroupFromAuthorizationRuleResponse{}
+	_body, _err := client.RemoveGroupFromAuthorizationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 将账户从授权规则中解除
+//
+// @param request - RemoveUserFromAuthorizationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveUserFromAuthorizationRuleResponse
+func (client *Client) RemoveUserFromAuthorizationRuleWithOptions(request *RemoveUserFromAuthorizationRuleRequest, runtime *dara.RuntimeOptions) (_result *RemoveUserFromAuthorizationRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationRuleId) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveUserFromAuthorizationRule"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveUserFromAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将账户从授权规则中解除
+//
+// @param request - RemoveUserFromAuthorizationRuleRequest
+//
+// @return RemoveUserFromAuthorizationRuleResponse
+func (client *Client) RemoveUserFromAuthorizationRule(request *RemoveUserFromAuthorizationRuleRequest) (_result *RemoveUserFromAuthorizationRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RemoveUserFromAuthorizationRuleResponse{}
+	_body, _err := client.RemoveUserFromAuthorizationRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17688,6 +19338,414 @@ func (client *Client) UpdateApplicationTokenExpirationTime(request *UpdateApplic
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateApplicationTokenExpirationTimeResponse{}
 	_body, _err := client.UpdateApplicationTokenExpirationTimeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新授权规则信息
+//
+// @param request - UpdateAuthorizationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAuthorizationRuleResponse
+func (client *Client) UpdateAuthorizationRuleWithOptions(request *UpdateAuthorizationRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateAuthorizationRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationResourceScope) {
+		query["AuthorizationResourceScope"] = request.AuthorizationResourceScope
+	}
+
+	if !dara.IsNil(request.AuthorizationRuleId) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !dara.IsNil(request.AuthorizationRuleName) {
+		query["AuthorizationRuleName"] = request.AuthorizationRuleName
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAuthorizationRule"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新授权规则信息
+//
+// @param request - UpdateAuthorizationRuleRequest
+//
+// @return UpdateAuthorizationRuleResponse
+func (client *Client) UpdateAuthorizationRule(request *UpdateAuthorizationRuleRequest) (_result *UpdateAuthorizationRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAuthorizationRuleResponse{}
+	_body, _err := client.UpdateAuthorizationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新授权规则应用关联关系属性
+//
+// @param request - UpdateAuthorizationRuleApplicationAttachmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAuthorizationRuleApplicationAttachmentResponse
+func (client *Client) UpdateAuthorizationRuleApplicationAttachmentWithOptions(request *UpdateAuthorizationRuleApplicationAttachmentRequest, runtime *dara.RuntimeOptions) (_result *UpdateAuthorizationRuleApplicationAttachmentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.AuthorizationRuleId) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ValidityPeriod) {
+		query["ValidityPeriod"] = request.ValidityPeriod
+	}
+
+	if !dara.IsNil(request.ValidityType) {
+		query["ValidityType"] = request.ValidityType
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAuthorizationRuleApplicationAttachment"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAuthorizationRuleApplicationAttachmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新授权规则应用关联关系属性
+//
+// @param request - UpdateAuthorizationRuleApplicationAttachmentRequest
+//
+// @return UpdateAuthorizationRuleApplicationAttachmentResponse
+func (client *Client) UpdateAuthorizationRuleApplicationAttachment(request *UpdateAuthorizationRuleApplicationAttachmentRequest) (_result *UpdateAuthorizationRuleApplicationAttachmentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAuthorizationRuleApplicationAttachmentResponse{}
+	_body, _err := client.UpdateAuthorizationRuleApplicationAttachmentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新授权规则描述信息
+//
+// @param request - UpdateAuthorizationRuleDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAuthorizationRuleDescriptionResponse
+func (client *Client) UpdateAuthorizationRuleDescriptionWithOptions(request *UpdateAuthorizationRuleDescriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateAuthorizationRuleDescriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationRuleId) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAuthorizationRuleDescription"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAuthorizationRuleDescriptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新授权规则描述信息
+//
+// @param request - UpdateAuthorizationRuleDescriptionRequest
+//
+// @return UpdateAuthorizationRuleDescriptionResponse
+func (client *Client) UpdateAuthorizationRuleDescription(request *UpdateAuthorizationRuleDescriptionRequest) (_result *UpdateAuthorizationRuleDescriptionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAuthorizationRuleDescriptionResponse{}
+	_body, _err := client.UpdateAuthorizationRuleDescriptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新授权规则组关联关系属性
+//
+// @param request - UpdateAuthorizationRuleGroupAttachmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAuthorizationRuleGroupAttachmentResponse
+func (client *Client) UpdateAuthorizationRuleGroupAttachmentWithOptions(request *UpdateAuthorizationRuleGroupAttachmentRequest, runtime *dara.RuntimeOptions) (_result *UpdateAuthorizationRuleGroupAttachmentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationRuleId) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ValidityPeriod) {
+		query["ValidityPeriod"] = request.ValidityPeriod
+	}
+
+	if !dara.IsNil(request.ValidityType) {
+		query["ValidityType"] = request.ValidityType
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAuthorizationRuleGroupAttachment"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAuthorizationRuleGroupAttachmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新授权规则组关联关系属性
+//
+// @param request - UpdateAuthorizationRuleGroupAttachmentRequest
+//
+// @return UpdateAuthorizationRuleGroupAttachmentResponse
+func (client *Client) UpdateAuthorizationRuleGroupAttachment(request *UpdateAuthorizationRuleGroupAttachmentRequest) (_result *UpdateAuthorizationRuleGroupAttachmentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAuthorizationRuleGroupAttachmentResponse{}
+	_body, _err := client.UpdateAuthorizationRuleGroupAttachmentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新授权规则账户关联关系属性
+//
+// @param request - UpdateAuthorizationRuleUserAttachmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAuthorizationRuleUserAttachmentResponse
+func (client *Client) UpdateAuthorizationRuleUserAttachmentWithOptions(request *UpdateAuthorizationRuleUserAttachmentRequest, runtime *dara.RuntimeOptions) (_result *UpdateAuthorizationRuleUserAttachmentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationRuleId) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	if !dara.IsNil(request.ValidityPeriod) {
+		query["ValidityPeriod"] = request.ValidityPeriod
+	}
+
+	if !dara.IsNil(request.ValidityType) {
+		query["ValidityType"] = request.ValidityType
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAuthorizationRuleUserAttachment"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAuthorizationRuleUserAttachmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新授权规则账户关联关系属性
+//
+// @param request - UpdateAuthorizationRuleUserAttachmentRequest
+//
+// @return UpdateAuthorizationRuleUserAttachmentResponse
+func (client *Client) UpdateAuthorizationRuleUserAttachment(request *UpdateAuthorizationRuleUserAttachmentRequest) (_result *UpdateAuthorizationRuleUserAttachmentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAuthorizationRuleUserAttachmentResponse{}
+	_body, _err := client.UpdateAuthorizationRuleUserAttachmentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
