@@ -126,8 +126,10 @@ func (s *UploadDataSyncForLLMResponseBodyData) Validate() error {
 }
 
 type UploadDataSyncForLLMResponseBodyDataResultInfo struct {
-	Rules *UploadDataSyncForLLMResponseBodyDataResultInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
-	Score *int32                                               `json:"Score,omitempty" xml:"Score,omitempty"`
+	Rules          *UploadDataSyncForLLMResponseBodyDataResultInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	Score          *int32                                               `json:"Score,omitempty" xml:"Score,omitempty"`
+	TyxmPlusCount  *string                                              `json:"TyxmPlusCount,omitempty" xml:"TyxmPlusCount,omitempty"`
+	TyxmTurboCount *string                                              `json:"TyxmTurboCount,omitempty" xml:"TyxmTurboCount,omitempty"`
 }
 
 func (s UploadDataSyncForLLMResponseBodyDataResultInfo) String() string {
@@ -146,6 +148,14 @@ func (s *UploadDataSyncForLLMResponseBodyDataResultInfo) GetScore() *int32 {
 	return s.Score
 }
 
+func (s *UploadDataSyncForLLMResponseBodyDataResultInfo) GetTyxmPlusCount() *string {
+	return s.TyxmPlusCount
+}
+
+func (s *UploadDataSyncForLLMResponseBodyDataResultInfo) GetTyxmTurboCount() *string {
+	return s.TyxmTurboCount
+}
+
 func (s *UploadDataSyncForLLMResponseBodyDataResultInfo) SetRules(v *UploadDataSyncForLLMResponseBodyDataResultInfoRules) *UploadDataSyncForLLMResponseBodyDataResultInfo {
 	s.Rules = v
 	return s
@@ -153,6 +163,16 @@ func (s *UploadDataSyncForLLMResponseBodyDataResultInfo) SetRules(v *UploadDataS
 
 func (s *UploadDataSyncForLLMResponseBodyDataResultInfo) SetScore(v int32) *UploadDataSyncForLLMResponseBodyDataResultInfo {
 	s.Score = &v
+	return s
+}
+
+func (s *UploadDataSyncForLLMResponseBodyDataResultInfo) SetTyxmPlusCount(v string) *UploadDataSyncForLLMResponseBodyDataResultInfo {
+	s.TyxmPlusCount = &v
+	return s
+}
+
+func (s *UploadDataSyncForLLMResponseBodyDataResultInfo) SetTyxmTurboCount(v string) *UploadDataSyncForLLMResponseBodyDataResultInfo {
+	s.TyxmTurboCount = &v
 	return s
 }
 

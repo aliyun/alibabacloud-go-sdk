@@ -143,7 +143,9 @@ type UploadDataSyncResponseBodyDataResultInfo struct {
 	// example:
 	//
 	// 100
-	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	Score          *int32  `json:"Score,omitempty" xml:"Score,omitempty"`
+	TyxmPlusCount  *string `json:"TyxmPlusCount,omitempty" xml:"TyxmPlusCount,omitempty"`
+	TyxmTurboCount *string `json:"TyxmTurboCount,omitempty" xml:"TyxmTurboCount,omitempty"`
 }
 
 func (s UploadDataSyncResponseBodyDataResultInfo) String() string {
@@ -166,6 +168,14 @@ func (s *UploadDataSyncResponseBodyDataResultInfo) GetScore() *int32 {
 	return s.Score
 }
 
+func (s *UploadDataSyncResponseBodyDataResultInfo) GetTyxmPlusCount() *string {
+	return s.TyxmPlusCount
+}
+
+func (s *UploadDataSyncResponseBodyDataResultInfo) GetTyxmTurboCount() *string {
+	return s.TyxmTurboCount
+}
+
 func (s *UploadDataSyncResponseBodyDataResultInfo) SetHandScoreIdList(v *UploadDataSyncResponseBodyDataResultInfoHandScoreIdList) *UploadDataSyncResponseBodyDataResultInfo {
 	s.HandScoreIdList = v
 	return s
@@ -178,6 +188,16 @@ func (s *UploadDataSyncResponseBodyDataResultInfo) SetRules(v *UploadDataSyncRes
 
 func (s *UploadDataSyncResponseBodyDataResultInfo) SetScore(v int32) *UploadDataSyncResponseBodyDataResultInfo {
 	s.Score = &v
+	return s
+}
+
+func (s *UploadDataSyncResponseBodyDataResultInfo) SetTyxmPlusCount(v string) *UploadDataSyncResponseBodyDataResultInfo {
+	s.TyxmPlusCount = &v
+	return s
+}
+
+func (s *UploadDataSyncResponseBodyDataResultInfo) SetTyxmTurboCount(v string) *UploadDataSyncResponseBodyDataResultInfo {
+	s.TyxmTurboCount = &v
 	return s
 }
 
