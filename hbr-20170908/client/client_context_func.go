@@ -69,6 +69,62 @@ func (client *Client) AddContainerClusterWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 添加跨账号信息
+//
+// @param request - AddCrossAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddCrossAccountResponse
+func (client *Client) AddCrossAccountWithContext(ctx context.Context, request *AddCrossAccountRequest, runtime *dara.RuntimeOptions) (_result *AddCrossAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Alias) {
+		query["Alias"] = request.Alias
+	}
+
+	if !dara.IsNil(request.CrossAccountRoleName) {
+		query["CrossAccountRoleName"] = request.CrossAccountRoleName
+	}
+
+	if !dara.IsNil(request.CrossAccountType) {
+		query["CrossAccountType"] = request.CrossAccountType
+	}
+
+	if !dara.IsNil(request.CrossAccountUserId) {
+		query["CrossAccountUserId"] = request.CrossAccountUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddCrossAccount"),
+		Version:     dara.String("2017-09-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddCrossAccountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Cancels a backup job.
 //
 // @param request - CancelBackupJobRequest
@@ -1825,6 +1881,58 @@ func (client *Client) DeleteClientWithContext(ctx context.Context, request *Dele
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteClientResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除跨账号信息
+//
+// @param request - DeleteCrossAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCrossAccountResponse
+func (client *Client) DeleteCrossAccountWithContext(ctx context.Context, request *DeleteCrossAccountRequest, runtime *dara.RuntimeOptions) (_result *DeleteCrossAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CrossAccountRoleName) {
+		query["CrossAccountRoleName"] = request.CrossAccountRoleName
+	}
+
+	if !dara.IsNil(request.CrossAccountType) {
+		query["CrossAccountType"] = request.CrossAccountType
+	}
+
+	if !dara.IsNil(request.CrossAccountUserId) {
+		query["CrossAccountUserId"] = request.CrossAccountUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCrossAccount"),
+		Version:     dara.String("2017-09-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCrossAccountResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
