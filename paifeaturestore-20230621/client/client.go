@@ -551,6 +551,10 @@ func (client *Client) CreateLLMConfigWithOptions(InstanceId *string, request *Cr
 		body["BatchSize"] = request.BatchSize
 	}
 
+	if !dara.IsNil(request.EmbeddingDimension) {
+		body["EmbeddingDimension"] = request.EmbeddingDimension
+	}
+
 	if !dara.IsNil(request.MaxTokens) {
 		body["MaxTokens"] = request.MaxTokens
 	}
@@ -3811,6 +3815,10 @@ func (client *Client) UpdateLLMConfigWithOptions(InstanceId *string, LLMConfigId
 
 	if !dara.IsNil(request.BatchSize) {
 		body["BatchSize"] = request.BatchSize
+	}
+
+	if !dara.IsNil(request.EmbeddingDimension) {
+		body["EmbeddingDimension"] = request.EmbeddingDimension
 	}
 
 	if !dara.IsNil(request.MaxTokens) {

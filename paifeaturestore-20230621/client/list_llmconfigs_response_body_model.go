@@ -128,6 +128,10 @@ type ListLLMConfigsResponseBodyLLMConfigs struct {
 	BatchSize *int32 `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
 	// example:
 	//
+	// 1024
+	EmbeddingDimension *int32 `json:"EmbeddingDimension,omitempty" xml:"EmbeddingDimension,omitempty"`
+	// example:
+	//
 	// 2023-07-04T11:26:09.036+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	// example:
@@ -184,6 +188,10 @@ func (s *ListLLMConfigsResponseBodyLLMConfigs) GetBatchSize() *int32 {
 	return s.BatchSize
 }
 
+func (s *ListLLMConfigsResponseBodyLLMConfigs) GetEmbeddingDimension() *int32 {
+	return s.EmbeddingDimension
+}
+
 func (s *ListLLMConfigsResponseBodyLLMConfigs) GetGmtCreateTime() *string {
 	return s.GmtCreateTime
 }
@@ -232,6 +240,11 @@ func (s *ListLLMConfigsResponseBodyLLMConfigs) SetBaseUrl(v string) *ListLLMConf
 
 func (s *ListLLMConfigsResponseBodyLLMConfigs) SetBatchSize(v int32) *ListLLMConfigsResponseBodyLLMConfigs {
 	s.BatchSize = &v
+	return s
+}
+
+func (s *ListLLMConfigsResponseBodyLLMConfigs) SetEmbeddingDimension(v int32) *ListLLMConfigsResponseBodyLLMConfigs {
+	s.EmbeddingDimension = &v
 	return s
 }
 

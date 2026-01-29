@@ -15,6 +15,8 @@ type iGetLLMConfigResponseBody interface {
 	GetBaseUrl() *string
 	SetBatchSize(v int32) *GetLLMConfigResponseBody
 	GetBatchSize() *int32
+	SetEmbeddingDimension(v int32) *GetLLMConfigResponseBody
+	GetEmbeddingDimension() *int32
 	SetGmtCreateTime(v string) *GetLLMConfigResponseBody
 	GetGmtCreateTime() *string
 	SetGmtModifiedTime(v string) *GetLLMConfigResponseBody
@@ -48,6 +50,10 @@ type GetLLMConfigResponseBody struct {
 	//
 	// 8
 	BatchSize *int32 `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
+	// example:
+	//
+	// 1024
+	EmbeddingDimension *int32 `json:"EmbeddingDimension,omitempty" xml:"EmbeddingDimension,omitempty"`
 	// example:
 	//
 	// 2023-07-04T11:26:09.036+08:00
@@ -108,6 +114,10 @@ func (s *GetLLMConfigResponseBody) GetBatchSize() *int32 {
 	return s.BatchSize
 }
 
+func (s *GetLLMConfigResponseBody) GetEmbeddingDimension() *int32 {
+	return s.EmbeddingDimension
+}
+
 func (s *GetLLMConfigResponseBody) GetGmtCreateTime() *string {
 	return s.GmtCreateTime
 }
@@ -156,6 +166,11 @@ func (s *GetLLMConfigResponseBody) SetBaseUrl(v string) *GetLLMConfigResponseBod
 
 func (s *GetLLMConfigResponseBody) SetBatchSize(v int32) *GetLLMConfigResponseBody {
 	s.BatchSize = &v
+	return s
+}
+
+func (s *GetLLMConfigResponseBody) SetEmbeddingDimension(v int32) *GetLLMConfigResponseBody {
+	s.EmbeddingDimension = &v
 	return s
 }
 

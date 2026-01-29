@@ -15,6 +15,8 @@ type iUpdateLLMConfigRequest interface {
 	GetBaseUrl() *string
 	SetBatchSize(v int32) *UpdateLLMConfigRequest
 	GetBatchSize() *int32
+	SetEmbeddingDimension(v int32) *UpdateLLMConfigRequest
+	GetEmbeddingDimension() *int32
 	SetMaxTokens(v int32) *UpdateLLMConfigRequest
 	GetMaxTokens() *int32
 	SetModel(v string) *UpdateLLMConfigRequest
@@ -42,6 +44,10 @@ type UpdateLLMConfigRequest struct {
 	//
 	// 8
 	BatchSize *int32 `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
+	// example:
+	//
+	// 1024
+	EmbeddingDimension *int32 `json:"EmbeddingDimension,omitempty" xml:"EmbeddingDimension,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -88,6 +94,10 @@ func (s *UpdateLLMConfigRequest) GetBatchSize() *int32 {
 	return s.BatchSize
 }
 
+func (s *UpdateLLMConfigRequest) GetEmbeddingDimension() *int32 {
+	return s.EmbeddingDimension
+}
+
 func (s *UpdateLLMConfigRequest) GetMaxTokens() *int32 {
 	return s.MaxTokens
 }
@@ -116,6 +126,11 @@ func (s *UpdateLLMConfigRequest) SetBaseUrl(v string) *UpdateLLMConfigRequest {
 
 func (s *UpdateLLMConfigRequest) SetBatchSize(v int32) *UpdateLLMConfigRequest {
 	s.BatchSize = &v
+	return s
+}
+
+func (s *UpdateLLMConfigRequest) SetEmbeddingDimension(v int32) *UpdateLLMConfigRequest {
+	s.EmbeddingDimension = &v
 	return s
 }
 
