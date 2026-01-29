@@ -134,6 +134,18 @@ func (s *CallNumberDetailResponseBody) Validate() error {
 }
 
 type CallNumberDetailResponseBodyModel struct {
+	// ai计费时长
+	//
+	// example:
+	//
+	// 1
+	AiBill *int64 `json:"AiBill,omitempty" xml:"AiBill,omitempty"`
+	// 接通转接类型 1-不转人工；2-接通转人工；3-智能转人工
+	//
+	// example:
+	//
+	// 1
+	AnswerTransferType *int64 `json:"AnswerTransferType,omitempty" xml:"AnswerTransferType,omitempty"`
 	// 导入号码时返回的批次号
 	//
 	// example:
@@ -146,6 +158,12 @@ type CallNumberDetailResponseBodyModel struct {
 	//
 	// 1
 	Bill *int64 `json:"Bill,omitempty" xml:"Bill,omitempty"`
+	// 转接计费时长
+	//
+	// example:
+	//
+	// 1
+	BridgeBill *int64 `json:"BridgeBill,omitempty" xml:"BridgeBill,omitempty"`
 	// 每次呼叫的唯一标识
 	//
 	// example:
@@ -158,6 +176,30 @@ type CallNumberDetailResponseBodyModel struct {
 	//
 	// 1
 	CallType *int64 `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	// 客户详情url
+	//
+	// example:
+	//
+	// a
+	ClientUrl *string `json:"ClientUrl,omitempty" xml:"ClientUrl,omitempty"`
+	// 创建时间 格式 2026-01-01 00:00:00
+	//
+	// example:
+	//
+	// 2026-01-01 00:00:00
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 通话轮次
+	//
+	// example:
+	//
+	// 1
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// 线路id
+	//
+	// example:
+	//
+	// 1
+	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	// 号码编号
 	//
 	// example:
@@ -188,12 +230,30 @@ type CallNumberDetailResponseBodyModel struct {
 	//
 	// a
 	NumberMd5 *string `json:"NumberMd5,omitempty" xml:"NumberMd5,omitempty"`
+	// 自定义参数 json
+	//
+	// example:
+	//
+	// {"名字":"a"}
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	// 个性标签
 	//
 	// example:
 	//
 	// a
 	PersonalityTag *string `json:"PersonalityTag,omitempty" xml:"PersonalityTag,omitempty"`
+	// 备注信息
+	//
+	// example:
+	//
+	// a
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// 坐席id
+	//
+	// example:
+	//
+	// 1
+	Sid *int64 `json:"Sid,omitempty" xml:"Sid,omitempty"`
 	// 外呼状态编码
 	//
 	// example:
@@ -234,6 +294,14 @@ func (s CallNumberDetailResponseBodyModel) GoString() string {
 	return s.String()
 }
 
+func (s *CallNumberDetailResponseBodyModel) GetAiBill() *int64 {
+	return s.AiBill
+}
+
+func (s *CallNumberDetailResponseBodyModel) GetAnswerTransferType() *int64 {
+	return s.AnswerTransferType
+}
+
 func (s *CallNumberDetailResponseBodyModel) GetBatchId() *string {
 	return s.BatchId
 }
@@ -242,12 +310,32 @@ func (s *CallNumberDetailResponseBodyModel) GetBill() *int64 {
 	return s.Bill
 }
 
+func (s *CallNumberDetailResponseBodyModel) GetBridgeBill() *int64 {
+	return s.BridgeBill
+}
+
 func (s *CallNumberDetailResponseBodyModel) GetCallId() *string {
 	return s.CallId
 }
 
 func (s *CallNumberDetailResponseBodyModel) GetCallType() *int64 {
 	return s.CallType
+}
+
+func (s *CallNumberDetailResponseBodyModel) GetClientUrl() *string {
+	return s.ClientUrl
+}
+
+func (s *CallNumberDetailResponseBodyModel) GetCreateTime() *string {
+	return s.CreateTime
+}
+
+func (s *CallNumberDetailResponseBodyModel) GetDuration() *int64 {
+	return s.Duration
+}
+
+func (s *CallNumberDetailResponseBodyModel) GetGatewayId() *int64 {
+	return s.GatewayId
 }
 
 func (s *CallNumberDetailResponseBodyModel) GetId() *int64 {
@@ -270,8 +358,20 @@ func (s *CallNumberDetailResponseBodyModel) GetNumberMd5() *string {
 	return s.NumberMd5
 }
 
+func (s *CallNumberDetailResponseBodyModel) GetParams() *string {
+	return s.Params
+}
+
 func (s *CallNumberDetailResponseBodyModel) GetPersonalityTag() *string {
 	return s.PersonalityTag
+}
+
+func (s *CallNumberDetailResponseBodyModel) GetRemark() *string {
+	return s.Remark
+}
+
+func (s *CallNumberDetailResponseBodyModel) GetSid() *int64 {
+	return s.Sid
 }
 
 func (s *CallNumberDetailResponseBodyModel) GetStatusCode() *int64 {
@@ -294,6 +394,16 @@ func (s *CallNumberDetailResponseBodyModel) GetTransferStatus() *int64 {
 	return s.TransferStatus
 }
 
+func (s *CallNumberDetailResponseBodyModel) SetAiBill(v int64) *CallNumberDetailResponseBodyModel {
+	s.AiBill = &v
+	return s
+}
+
+func (s *CallNumberDetailResponseBodyModel) SetAnswerTransferType(v int64) *CallNumberDetailResponseBodyModel {
+	s.AnswerTransferType = &v
+	return s
+}
+
 func (s *CallNumberDetailResponseBodyModel) SetBatchId(v string) *CallNumberDetailResponseBodyModel {
 	s.BatchId = &v
 	return s
@@ -304,6 +414,11 @@ func (s *CallNumberDetailResponseBodyModel) SetBill(v int64) *CallNumberDetailRe
 	return s
 }
 
+func (s *CallNumberDetailResponseBodyModel) SetBridgeBill(v int64) *CallNumberDetailResponseBodyModel {
+	s.BridgeBill = &v
+	return s
+}
+
 func (s *CallNumberDetailResponseBodyModel) SetCallId(v string) *CallNumberDetailResponseBodyModel {
 	s.CallId = &v
 	return s
@@ -311,6 +426,26 @@ func (s *CallNumberDetailResponseBodyModel) SetCallId(v string) *CallNumberDetai
 
 func (s *CallNumberDetailResponseBodyModel) SetCallType(v int64) *CallNumberDetailResponseBodyModel {
 	s.CallType = &v
+	return s
+}
+
+func (s *CallNumberDetailResponseBodyModel) SetClientUrl(v string) *CallNumberDetailResponseBodyModel {
+	s.ClientUrl = &v
+	return s
+}
+
+func (s *CallNumberDetailResponseBodyModel) SetCreateTime(v string) *CallNumberDetailResponseBodyModel {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *CallNumberDetailResponseBodyModel) SetDuration(v int64) *CallNumberDetailResponseBodyModel {
+	s.Duration = &v
+	return s
+}
+
+func (s *CallNumberDetailResponseBodyModel) SetGatewayId(v int64) *CallNumberDetailResponseBodyModel {
+	s.GatewayId = &v
 	return s
 }
 
@@ -339,8 +474,23 @@ func (s *CallNumberDetailResponseBodyModel) SetNumberMd5(v string) *CallNumberDe
 	return s
 }
 
+func (s *CallNumberDetailResponseBodyModel) SetParams(v string) *CallNumberDetailResponseBodyModel {
+	s.Params = &v
+	return s
+}
+
 func (s *CallNumberDetailResponseBodyModel) SetPersonalityTag(v string) *CallNumberDetailResponseBodyModel {
 	s.PersonalityTag = &v
+	return s
+}
+
+func (s *CallNumberDetailResponseBodyModel) SetRemark(v string) *CallNumberDetailResponseBodyModel {
+	s.Remark = &v
+	return s
+}
+
+func (s *CallNumberDetailResponseBodyModel) SetSid(v int64) *CallNumberDetailResponseBodyModel {
+	s.Sid = &v
 	return s
 }
 
