@@ -37816,6 +37816,10 @@ func (client *Client) PrecheckDuckDBDependencyWithOptions(request *PrecheckDuckD
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !dara.IsNil(request.TargetMode) {
+		query["TargetMode"] = request.TargetMode
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}

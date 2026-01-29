@@ -17,6 +17,8 @@ type iPrecheckDuckDBDependencyRequest interface {
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *PrecheckDuckDBDependencyRequest
 	GetResourceOwnerId() *int64
+	SetTargetMode(v string) *PrecheckDuckDBDependencyRequest
+	GetTargetMode() *string
 }
 
 type PrecheckDuckDBDependencyRequest struct {
@@ -31,6 +33,10 @@ type PrecheckDuckDBDependencyRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// readOnly
+	TargetMode *string `json:"TargetMode,omitempty" xml:"TargetMode,omitempty"`
 }
 
 func (s PrecheckDuckDBDependencyRequest) String() string {
@@ -57,6 +63,10 @@ func (s *PrecheckDuckDBDependencyRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
 }
 
+func (s *PrecheckDuckDBDependencyRequest) GetTargetMode() *string {
+	return s.TargetMode
+}
+
 func (s *PrecheckDuckDBDependencyRequest) SetDBInstanceId(v string) *PrecheckDuckDBDependencyRequest {
 	s.DBInstanceId = &v
 	return s
@@ -74,6 +84,11 @@ func (s *PrecheckDuckDBDependencyRequest) SetResourceOwnerAccount(v string) *Pre
 
 func (s *PrecheckDuckDBDependencyRequest) SetResourceOwnerId(v int64) *PrecheckDuckDBDependencyRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *PrecheckDuckDBDependencyRequest) SetTargetMode(v string) *PrecheckDuckDBDependencyRequest {
+	s.TargetMode = &v
 	return s
 }
 
