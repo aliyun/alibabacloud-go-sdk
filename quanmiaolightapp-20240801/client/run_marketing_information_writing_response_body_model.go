@@ -221,6 +221,9 @@ func (s *RunMarketingInformationWritingResponseBodyPayload) Validate() error {
 }
 
 type RunMarketingInformationWritingResponseBodyPayloadOutput struct {
+	// example:
+	//
+	// 推理内容
 	ReasonContent *string `json:"reasonContent,omitempty" xml:"reasonContent,omitempty"`
 	Text          *string `json:"text,omitempty" xml:"text,omitempty"`
 }

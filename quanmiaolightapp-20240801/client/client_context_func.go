@@ -1237,16 +1237,16 @@ func (client *Client) RunMarketingInformationExtractWithContext(ctx context.Cont
 //
 // 营销文案写作服务
 //
-// @param request - RunMarketingInformationWritingRequest
+// @param tmpReq - RunMarketingInformationWritingRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunMarketingInformationWritingResponse
-func (client *Client) RunMarketingInformationWritingWithSSECtx(ctx context.Context, workspaceId *string, request *RunMarketingInformationWritingRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *RunMarketingInformationWritingResponse, _yieldErr chan error) {
+func (client *Client) RunMarketingInformationWritingWithSSECtx(ctx context.Context, workspaceId *string, tmpReq *RunMarketingInformationWritingRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *RunMarketingInformationWritingResponse, _yieldErr chan error) {
 	defer close(_yield)
-	client.runMarketingInformationWritingWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, workspaceId, request, headers, runtime)
+	client.runMarketingInformationWritingWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, workspaceId, tmpReq, headers, runtime)
 	return
 }
 
@@ -1254,20 +1254,26 @@ func (client *Client) RunMarketingInformationWritingWithSSECtx(ctx context.Conte
 //
 // 营销文案写作服务
 //
-// @param request - RunMarketingInformationWritingRequest
+// @param tmpReq - RunMarketingInformationWritingRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunMarketingInformationWritingResponse
-func (client *Client) RunMarketingInformationWritingWithContext(ctx context.Context, workspaceId *string, request *RunMarketingInformationWritingRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunMarketingInformationWritingResponse, _err error) {
+func (client *Client) RunMarketingInformationWritingWithContext(ctx context.Context, workspaceId *string, tmpReq *RunMarketingInformationWritingRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunMarketingInformationWritingResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &RunMarketingInformationWritingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ExtParameters) {
+		request.ExtParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExtParameters, dara.String("extParameters"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ApiKey) {
 		body["apiKey"] = request.ApiKey
@@ -1281,20 +1287,48 @@ func (client *Client) RunMarketingInformationWritingWithContext(ctx context.Cont
 		body["customPrompt"] = request.CustomPrompt
 	}
 
+	if !dara.IsNil(request.ExtParametersShrink) {
+		body["extParameters"] = request.ExtParametersShrink
+	}
+
+	if !dara.IsNil(request.GenerateCount) {
+		body["generateCount"] = request.GenerateCount
+	}
+
 	if !dara.IsNil(request.InputExample) {
 		body["inputExample"] = request.InputExample
+	}
+
+	if !dara.IsNil(request.Keywords) {
+		body["keywords"] = request.Keywords
+	}
+
+	if !dara.IsNil(request.Language) {
+		body["language"] = request.Language
 	}
 
 	if !dara.IsNil(request.ModelId) {
 		body["modelId"] = request.ModelId
 	}
 
+	if !dara.IsNil(request.OtherRequirements) {
+		body["otherRequirements"] = request.OtherRequirements
+	}
+
 	if !dara.IsNil(request.OutputExample) {
 		body["outputExample"] = request.OutputExample
 	}
 
+	if !dara.IsNil(request.Prompt) {
+		body["prompt"] = request.Prompt
+	}
+
 	if !dara.IsNil(request.SourceMaterial) {
 		body["sourceMaterial"] = request.SourceMaterial
+	}
+
+	if !dara.IsNil(request.WordCountRange) {
+		body["wordCountRange"] = request.WordCountRange
 	}
 
 	if !dara.IsNil(request.WritingType) {
@@ -3500,14 +3534,20 @@ func (client *Client) runMarketingInformationExtractWithSSECtx_opYieldFunc(_yiel
 	}
 }
 
-func (client *Client) runMarketingInformationWritingWithSSECtx_opYieldFunc(_yield chan *RunMarketingInformationWritingResponse, _yieldErr chan error, ctx context.Context, workspaceId *string, request *RunMarketingInformationWritingRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
+func (client *Client) runMarketingInformationWritingWithSSECtx_opYieldFunc(_yield chan *RunMarketingInformationWritingResponse, _yieldErr chan error, ctx context.Context, workspaceId *string, tmpReq *RunMarketingInformationWritingRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err := request.Validate()
+		_err := tmpReq.Validate()
 		if _err != nil {
 			_yieldErr <- _err
 			return
 		}
 	}
+	request := &RunMarketingInformationWritingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ExtParameters) {
+		request.ExtParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExtParameters, dara.String("extParameters"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ApiKey) {
 		body["apiKey"] = request.ApiKey
@@ -3521,20 +3561,48 @@ func (client *Client) runMarketingInformationWritingWithSSECtx_opYieldFunc(_yiel
 		body["customPrompt"] = request.CustomPrompt
 	}
 
+	if !dara.IsNil(request.ExtParametersShrink) {
+		body["extParameters"] = request.ExtParametersShrink
+	}
+
+	if !dara.IsNil(request.GenerateCount) {
+		body["generateCount"] = request.GenerateCount
+	}
+
 	if !dara.IsNil(request.InputExample) {
 		body["inputExample"] = request.InputExample
+	}
+
+	if !dara.IsNil(request.Keywords) {
+		body["keywords"] = request.Keywords
+	}
+
+	if !dara.IsNil(request.Language) {
+		body["language"] = request.Language
 	}
 
 	if !dara.IsNil(request.ModelId) {
 		body["modelId"] = request.ModelId
 	}
 
+	if !dara.IsNil(request.OtherRequirements) {
+		body["otherRequirements"] = request.OtherRequirements
+	}
+
 	if !dara.IsNil(request.OutputExample) {
 		body["outputExample"] = request.OutputExample
 	}
 
+	if !dara.IsNil(request.Prompt) {
+		body["prompt"] = request.Prompt
+	}
+
 	if !dara.IsNil(request.SourceMaterial) {
 		body["sourceMaterial"] = request.SourceMaterial
+	}
+
+	if !dara.IsNil(request.WordCountRange) {
+		body["wordCountRange"] = request.WordCountRange
 	}
 
 	if !dara.IsNil(request.WritingType) {
