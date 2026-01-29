@@ -104,7 +104,12 @@ func (s *GetResourcePackagePriceResponseBody) SetSuccess(v bool) *GetResourcePac
 }
 
 func (s *GetResourcePackagePriceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetResourcePackagePriceResponseBodyData struct {
@@ -190,7 +195,12 @@ func (s *GetResourcePackagePriceResponseBodyData) SetTradePrice(v float32) *GetR
 }
 
 func (s *GetResourcePackagePriceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Promotions != nil {
+		if err := s.Promotions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetResourcePackagePriceResponseBodyDataPromotions struct {
@@ -215,7 +225,16 @@ func (s *GetResourcePackagePriceResponseBodyDataPromotions) SetPromotion(v []*Ge
 }
 
 func (s *GetResourcePackagePriceResponseBodyDataPromotions) Validate() error {
-	return dara.Validate(s)
+	if s.Promotion != nil {
+		for _, item := range s.Promotion {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetResourcePackagePriceResponseBodyDataPromotionsPromotion struct {

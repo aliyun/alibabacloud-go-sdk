@@ -104,7 +104,12 @@ func (s *DescribeSavingsPlansUsageTotalResponseBody) SetSuccess(v bool) *Describ
 }
 
 func (s *DescribeSavingsPlansUsageTotalResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSavingsPlansUsageTotalResponseBodyData struct {
@@ -141,7 +146,21 @@ func (s *DescribeSavingsPlansUsageTotalResponseBodyData) SetTotalUsage(v *Descri
 }
 
 func (s *DescribeSavingsPlansUsageTotalResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.PeriodCoverage != nil {
+		for _, item := range s.PeriodCoverage {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TotalUsage != nil {
+		if err := s.TotalUsage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSavingsPlansUsageTotalResponseBodyDataPeriodCoverage struct {

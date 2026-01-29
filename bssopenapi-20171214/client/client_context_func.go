@@ -23,9 +23,11 @@ import (
 //
 // @return AddAccountRelationResponse
 func (client *Client) AddAccountRelationWithContext(ctx context.Context, request *AddAccountRelationRequest, runtime *dara.RuntimeOptions) (_result *AddAccountRelationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChildNick) {
@@ -89,9 +91,11 @@ func (client *Client) AddAccountRelationWithContext(ctx context.Context, request
 //
 // @return AllocateCostUnitResourceResponse
 func (client *Client) AllocateCostUnitResourceWithContext(ctx context.Context, request *AllocateCostUnitResourceRequest, runtime *dara.RuntimeOptions) (_result *AllocateCostUnitResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FromUnitId) {
@@ -147,9 +151,11 @@ func (client *Client) AllocateCostUnitResourceWithContext(ctx context.Context, r
 //
 // @return ApplyInvoiceResponse
 func (client *Client) ApplyInvoiceWithContext(ctx context.Context, request *ApplyInvoiceRequest, runtime *dara.RuntimeOptions) (_result *ApplyInvoiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddressId) {
@@ -229,9 +235,11 @@ func (client *Client) ApplyInvoiceWithContext(ctx context.Context, request *Appl
 //
 // @return CancelOrderResponse
 func (client *Client) CancelOrderWithContext(ctx context.Context, request *CancelOrderRequest, runtime *dara.RuntimeOptions) (_result *CancelOrderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -271,9 +279,11 @@ func (client *Client) CancelOrderWithContext(ctx context.Context, request *Cance
 //
 // @return ChangeResellerConsumeAmountResponse
 func (client *Client) ChangeResellerConsumeAmountWithContext(ctx context.Context, request *ChangeResellerConsumeAmountRequest, runtime *dara.RuntimeOptions) (_result *ChangeResellerConsumeAmountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AdjustType) {
@@ -345,9 +355,11 @@ func (client *Client) ChangeResellerConsumeAmountWithContext(ctx context.Context
 //
 // @return ConfirmRelationResponse
 func (client *Client) ConfirmRelationWithContext(ctx context.Context, request *ConfirmRelationRequest, runtime *dara.RuntimeOptions) (_result *ConfirmRelationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChildUserId) {
@@ -411,9 +423,11 @@ func (client *Client) ConfirmRelationWithContext(ctx context.Context, request *C
 //
 // @return ConvertChargeTypeResponse
 func (client *Client) ConvertChargeTypeWithContext(ctx context.Context, request *ConvertChargeTypeRequest, runtime *dara.RuntimeOptions) (_result *ConvertChargeTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -477,9 +491,11 @@ func (client *Client) ConvertChargeTypeWithContext(ctx context.Context, request 
 //
 // @return CreateAgAccountResponse
 func (client *Client) CreateAgAccountWithContext(ctx context.Context, request *CreateAgAccountRequest, runtime *dara.RuntimeOptions) (_result *CreateAgAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountAttr) {
@@ -551,9 +567,11 @@ func (client *Client) CreateAgAccountWithContext(ctx context.Context, request *C
 //
 // @return CreateCostUnitResponse
 func (client *Client) CreateCostUnitWithContext(ctx context.Context, request *CreateCostUnitRequest, runtime *dara.RuntimeOptions) (_result *CreateCostUnitResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.UnitEntityList) {
@@ -593,9 +611,11 @@ func (client *Client) CreateCostUnitWithContext(ctx context.Context, request *Cr
 //
 // @return CreateInstanceResponse
 func (client *Client) CreateInstanceWithContext(ctx context.Context, request *CreateInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -675,9 +695,11 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 //
 // @return CreateResellerUserQuotaResponse
 func (client *Client) CreateResellerUserQuotaWithContext(ctx context.Context, request *CreateResellerUserQuotaRequest, runtime *dara.RuntimeOptions) (_result *CreateResellerUserQuotaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Amount) {
@@ -729,9 +751,11 @@ func (client *Client) CreateResellerUserQuotaWithContext(ctx context.Context, re
 //
 // @return CreateResourcePackageResponse
 func (client *Client) CreateResourcePackageWithContext(ctx context.Context, request *CreateResourcePackageRequest, runtime *dara.RuntimeOptions) (_result *CreateResourcePackageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Duration) {
@@ -795,9 +819,11 @@ func (client *Client) CreateResourcePackageWithContext(ctx context.Context, requ
 //
 // @return CreateSavingsPlansInstanceResponse
 func (client *Client) CreateSavingsPlansInstanceWithContext(ctx context.Context, tmpReq *CreateSavingsPlansInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateSavingsPlansInstanceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateSavingsPlansInstanceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -887,9 +913,11 @@ func (client *Client) CreateSavingsPlansInstanceWithContext(ctx context.Context,
 //
 // @return DeleteCostUnitResponse
 func (client *Client) DeleteCostUnitWithContext(ctx context.Context, request *DeleteCostUnitRequest, runtime *dara.RuntimeOptions) (_result *DeleteCostUnitResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerUid) {
@@ -937,9 +965,11 @@ func (client *Client) DeleteCostUnitWithContext(ctx context.Context, request *De
 //
 // @return DescribeCostBudgetsSummaryResponse
 func (client *Client) DescribeCostBudgetsSummaryWithContext(ctx context.Context, request *DescribeCostBudgetsSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeCostBudgetsSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BudgetName) {
@@ -999,9 +1029,11 @@ func (client *Client) DescribeCostBudgetsSummaryWithContext(ctx context.Context,
 //
 // @return DescribeInstanceAmortizedCostByAmortizationPeriodResponse
 func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriodWithContext(ctx context.Context, request *DescribeInstanceAmortizedCostByAmortizationPeriodRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceAmortizedCostByAmortizationPeriodResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BillOwnerIdList) {
@@ -1081,9 +1113,11 @@ func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriodWithConte
 //
 // @return DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse
 func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriodDateWithContext(ctx context.Context, request *DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AmortizationDateEnd) {
@@ -1167,9 +1201,11 @@ func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriodDateWithC
 //
 // @return DescribeInstanceAmortizedCostByConsumePeriodResponse
 func (client *Client) DescribeInstanceAmortizedCostByConsumePeriodWithContext(ctx context.Context, request *DescribeInstanceAmortizedCostByConsumePeriodRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceAmortizedCostByConsumePeriodResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AmortizationPeriodFilter) {
@@ -1257,9 +1293,11 @@ func (client *Client) DescribeInstanceAmortizedCostByConsumePeriodWithContext(ct
 //
 // @return DescribeInstanceBillResponse
 func (client *Client) DescribeInstanceBillWithContext(ctx context.Context, request *DescribeInstanceBillRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceBillResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillOwnerId) {
@@ -1351,9 +1389,11 @@ func (client *Client) DescribeInstanceBillWithContext(ctx context.Context, reque
 //
 // @return DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse
 func (client *Client) DescribeInstanceDeductAmortizedCostByAmortizationPeriodWithContext(ctx context.Context, request *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BillOwnerIdList) {
@@ -1429,9 +1469,11 @@ func (client *Client) DescribeInstanceDeductAmortizedCostByAmortizationPeriodWit
 //
 // @return DescribePricingModuleResponse
 func (client *Client) DescribePricingModuleWithContext(ctx context.Context, request *DescribePricingModuleRequest, runtime *dara.RuntimeOptions) (_result *DescribePricingModuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -1487,9 +1529,11 @@ func (client *Client) DescribePricingModuleWithContext(ctx context.Context, requ
 //
 // @return DescribeProductAmortizedCostByAmortizationPeriodResponse
 func (client *Client) DescribeProductAmortizedCostByAmortizationPeriodWithContext(ctx context.Context, request *DescribeProductAmortizedCostByAmortizationPeriodRequest, runtime *dara.RuntimeOptions) (_result *DescribeProductAmortizedCostByAmortizationPeriodResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BillOwnerIdList) {
@@ -1565,9 +1609,11 @@ func (client *Client) DescribeProductAmortizedCostByAmortizationPeriodWithContex
 //
 // @return DescribeProductAmortizedCostByConsumePeriodResponse
 func (client *Client) DescribeProductAmortizedCostByConsumePeriodWithContext(ctx context.Context, request *DescribeProductAmortizedCostByConsumePeriodRequest, runtime *dara.RuntimeOptions) (_result *DescribeProductAmortizedCostByConsumePeriodResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AmortizationPeriodFilter) {
@@ -1651,9 +1697,11 @@ func (client *Client) DescribeProductAmortizedCostByConsumePeriodWithContext(ctx
 //
 // @return DescribeResourceCoverageDetailResponse
 func (client *Client) DescribeResourceCoverageDetailWithContext(ctx context.Context, request *DescribeResourceCoverageDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeResourceCoverageDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillOwnerId) {
@@ -1723,9 +1771,11 @@ func (client *Client) DescribeResourceCoverageDetailWithContext(ctx context.Cont
 //
 // @return DescribeResourceCoverageTotalResponse
 func (client *Client) DescribeResourceCoverageTotalWithContext(ctx context.Context, request *DescribeResourceCoverageTotalRequest, runtime *dara.RuntimeOptions) (_result *DescribeResourceCoverageTotalResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillOwnerId) {
@@ -1781,9 +1831,11 @@ func (client *Client) DescribeResourceCoverageTotalWithContext(ctx context.Conte
 //
 // @return DescribeResourcePackageProductResponse
 func (client *Client) DescribeResourcePackageProductWithContext(ctx context.Context, request *DescribeResourcePackageProductRequest, runtime *dara.RuntimeOptions) (_result *DescribeResourcePackageProductResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProductCode) {
@@ -1823,9 +1875,11 @@ func (client *Client) DescribeResourcePackageProductWithContext(ctx context.Cont
 //
 // @return DescribeResourceUsageDetailResponse
 func (client *Client) DescribeResourceUsageDetailWithContext(ctx context.Context, request *DescribeResourceUsageDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeResourceUsageDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillOwnerId) {
@@ -1889,9 +1943,11 @@ func (client *Client) DescribeResourceUsageDetailWithContext(ctx context.Context
 //
 // @return DescribeResourceUsageTotalResponse
 func (client *Client) DescribeResourceUsageTotalWithContext(ctx context.Context, request *DescribeResourceUsageTotalRequest, runtime *dara.RuntimeOptions) (_result *DescribeResourceUsageTotalResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillOwnerId) {
@@ -1941,16 +1997,24 @@ func (client *Client) DescribeResourceUsageTotalWithContext(ctx context.Context,
 //
 // Queries the coverage details of savings plans.
 //
-// @param request - DescribeSavingsPlansCoverageDetailRequest
+// @param tmpReq - DescribeSavingsPlansCoverageDetailRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSavingsPlansCoverageDetailResponse
-func (client *Client) DescribeSavingsPlansCoverageDetailWithContext(ctx context.Context, request *DescribeSavingsPlansCoverageDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeSavingsPlansCoverageDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+func (client *Client) DescribeSavingsPlansCoverageDetailWithContext(ctx context.Context, tmpReq *DescribeSavingsPlansCoverageDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeSavingsPlansCoverageDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
+	request := &DescribeSavingsPlansCoverageDetailShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.FilterParam) {
+		request.FilterParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterParam, dara.String("FilterParam"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillOwnerId) {
 		query["BillOwnerId"] = request.BillOwnerId
@@ -1958,6 +2022,10 @@ func (client *Client) DescribeSavingsPlansCoverageDetailWithContext(ctx context.
 
 	if !dara.IsNil(request.EndPeriod) {
 		query["EndPeriod"] = request.EndPeriod
+	}
+
+	if !dara.IsNil(request.FilterParamShrink) {
+		query["FilterParam"] = request.FilterParamShrink
 	}
 
 	if !dara.IsNil(request.MaxResults) {
@@ -2003,16 +2071,24 @@ func (client *Client) DescribeSavingsPlansCoverageDetailWithContext(ctx context.
 //
 // Queries the coverage summary of savings plans.
 //
-// @param request - DescribeSavingsPlansCoverageTotalRequest
+// @param tmpReq - DescribeSavingsPlansCoverageTotalRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSavingsPlansCoverageTotalResponse
-func (client *Client) DescribeSavingsPlansCoverageTotalWithContext(ctx context.Context, request *DescribeSavingsPlansCoverageTotalRequest, runtime *dara.RuntimeOptions) (_result *DescribeSavingsPlansCoverageTotalResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+func (client *Client) DescribeSavingsPlansCoverageTotalWithContext(ctx context.Context, tmpReq *DescribeSavingsPlansCoverageTotalRequest, runtime *dara.RuntimeOptions) (_result *DescribeSavingsPlansCoverageTotalResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
+	request := &DescribeSavingsPlansCoverageTotalShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.FilterParam) {
+		request.FilterParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterParam, dara.String("FilterParam"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillOwnerId) {
 		query["BillOwnerId"] = request.BillOwnerId
@@ -2020,6 +2096,10 @@ func (client *Client) DescribeSavingsPlansCoverageTotalWithContext(ctx context.C
 
 	if !dara.IsNil(request.EndPeriod) {
 		query["EndPeriod"] = request.EndPeriod
+	}
+
+	if !dara.IsNil(request.FilterParamShrink) {
+		query["FilterParam"] = request.FilterParamShrink
 	}
 
 	if !dara.IsNil(request.PeriodType) {
@@ -2057,16 +2137,24 @@ func (client *Client) DescribeSavingsPlansCoverageTotalWithContext(ctx context.C
 //
 // Queries the usage details of savings plans.
 //
-// @param request - DescribeSavingsPlansUsageDetailRequest
+// @param tmpReq - DescribeSavingsPlansUsageDetailRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSavingsPlansUsageDetailResponse
-func (client *Client) DescribeSavingsPlansUsageDetailWithContext(ctx context.Context, request *DescribeSavingsPlansUsageDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeSavingsPlansUsageDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+func (client *Client) DescribeSavingsPlansUsageDetailWithContext(ctx context.Context, tmpReq *DescribeSavingsPlansUsageDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeSavingsPlansUsageDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
+	request := &DescribeSavingsPlansUsageDetailShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.FilterParam) {
+		request.FilterParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterParam, dara.String("FilterParam"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillOwnerId) {
 		query["BillOwnerId"] = request.BillOwnerId
@@ -2074,6 +2162,10 @@ func (client *Client) DescribeSavingsPlansUsageDetailWithContext(ctx context.Con
 
 	if !dara.IsNil(request.EndPeriod) {
 		query["EndPeriod"] = request.EndPeriod
+	}
+
+	if !dara.IsNil(request.FilterParamShrink) {
+		query["FilterParam"] = request.FilterParamShrink
 	}
 
 	if !dara.IsNil(request.MaxResults) {
@@ -2119,16 +2211,24 @@ func (client *Client) DescribeSavingsPlansUsageDetailWithContext(ctx context.Con
 //
 // Queries the usage summary of savings plans.
 //
-// @param request - DescribeSavingsPlansUsageTotalRequest
+// @param tmpReq - DescribeSavingsPlansUsageTotalRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSavingsPlansUsageTotalResponse
-func (client *Client) DescribeSavingsPlansUsageTotalWithContext(ctx context.Context, request *DescribeSavingsPlansUsageTotalRequest, runtime *dara.RuntimeOptions) (_result *DescribeSavingsPlansUsageTotalResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+func (client *Client) DescribeSavingsPlansUsageTotalWithContext(ctx context.Context, tmpReq *DescribeSavingsPlansUsageTotalRequest, runtime *dara.RuntimeOptions) (_result *DescribeSavingsPlansUsageTotalResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
+	request := &DescribeSavingsPlansUsageTotalShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.FilterParam) {
+		request.FilterParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterParam, dara.String("FilterParam"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillOwnerId) {
 		query["BillOwnerId"] = request.BillOwnerId
@@ -2136,6 +2236,10 @@ func (client *Client) DescribeSavingsPlansUsageTotalWithContext(ctx context.Cont
 
 	if !dara.IsNil(request.EndPeriod) {
 		query["EndPeriod"] = request.EndPeriod
+	}
+
+	if !dara.IsNil(request.FilterParamShrink) {
+		query["FilterParam"] = request.FilterParamShrink
 	}
 
 	if !dara.IsNil(request.PeriodType) {
@@ -2187,9 +2291,11 @@ func (client *Client) DescribeSavingsPlansUsageTotalWithContext(ctx context.Cont
 //
 // @return DescribeSplitItemBillResponse
 func (client *Client) DescribeSplitItemBillWithContext(ctx context.Context, request *DescribeSplitItemBillRequest, runtime *dara.RuntimeOptions) (_result *DescribeSplitItemBillResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillOwnerId) {
@@ -2285,9 +2391,11 @@ func (client *Client) DescribeSplitItemBillWithContext(ctx context.Context, requ
 //
 // @return GetAccountRelationResponse
 func (client *Client) GetAccountRelationWithContext(ctx context.Context, request *GetAccountRelationRequest, runtime *dara.RuntimeOptions) (_result *GetAccountRelationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2323,9 +2431,11 @@ func (client *Client) GetAccountRelationWithContext(ctx context.Context, request
 //
 // @return GetCustomerAccountInfoResponse
 func (client *Client) GetCustomerAccountInfoWithContext(ctx context.Context, request *GetCustomerAccountInfoRequest, runtime *dara.RuntimeOptions) (_result *GetCustomerAccountInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -2365,9 +2475,11 @@ func (client *Client) GetCustomerAccountInfoWithContext(ctx context.Context, req
 //
 // @return GetOrderDetailResponse
 func (client *Client) GetOrderDetailWithContext(ctx context.Context, request *GetOrderDetailRequest, runtime *dara.RuntimeOptions) (_result *GetOrderDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -2421,9 +2533,11 @@ func (client *Client) GetOrderDetailWithContext(ctx context.Context, request *Ge
 //
 // @return GetPayAsYouGoPriceResponse
 func (client *Client) GetPayAsYouGoPriceWithContext(ctx context.Context, request *GetPayAsYouGoPriceRequest, runtime *dara.RuntimeOptions) (_result *GetPayAsYouGoPriceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ModuleList) {
@@ -2483,9 +2597,11 @@ func (client *Client) GetPayAsYouGoPriceWithContext(ctx context.Context, request
 //
 // @return GetResourcePackagePriceResponse
 func (client *Client) GetResourcePackagePriceWithContext(ctx context.Context, request *GetResourcePackagePriceRequest, runtime *dara.RuntimeOptions) (_result *GetResourcePackagePriceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Duration) {
@@ -2565,9 +2681,11 @@ func (client *Client) GetResourcePackagePriceWithContext(ctx context.Context, re
 //
 // @return GetSubscriptionPriceResponse
 func (client *Client) GetSubscriptionPriceWithContext(ctx context.Context, request *GetSubscriptionPriceRequest, runtime *dara.RuntimeOptions) (_result *GetSubscriptionPriceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -2655,9 +2773,11 @@ func (client *Client) GetSubscriptionPriceWithContext(ctx context.Context, reque
 //
 // @return InquiryPriceRefundInstanceResponse
 func (client *Client) InquiryPriceRefundInstanceWithContext(ctx context.Context, request *InquiryPriceRefundInstanceRequest, runtime *dara.RuntimeOptions) (_result *InquiryPriceRefundInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -2709,9 +2829,11 @@ func (client *Client) InquiryPriceRefundInstanceWithContext(ctx context.Context,
 //
 // @return ModifyAccountRelationResponse
 func (client *Client) ModifyAccountRelationWithContext(ctx context.Context, request *ModifyAccountRelationRequest, runtime *dara.RuntimeOptions) (_result *ModifyAccountRelationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChildNick) {
@@ -2783,9 +2905,11 @@ func (client *Client) ModifyAccountRelationWithContext(ctx context.Context, requ
 //
 // @return ModifyCostUnitResponse
 func (client *Client) ModifyCostUnitWithContext(ctx context.Context, request *ModifyCostUnitRequest, runtime *dara.RuntimeOptions) (_result *ModifyCostUnitResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.UnitEntityList) {
@@ -2825,9 +2949,11 @@ func (client *Client) ModifyCostUnitWithContext(ctx context.Context, request *Mo
 //
 // @return ModifyInstanceResponse
 func (client *Client) ModifyInstanceWithContext(ctx context.Context, request *ModifyInstanceRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -2895,9 +3021,11 @@ func (client *Client) ModifyInstanceWithContext(ctx context.Context, request *Mo
 //
 // @return PayOrderResponse
 func (client *Client) PayOrderWithContext(ctx context.Context, request *PayOrderRequest, runtime *dara.RuntimeOptions) (_result *PayOrderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BuyerId) {
@@ -2969,9 +3097,11 @@ func (client *Client) PayOrderWithContext(ctx context.Context, request *PayOrder
 //
 // @return QueryAccountBillResponse
 func (client *Client) QueryAccountBillWithContext(ctx context.Context, request *QueryAccountBillRequest, runtime *dara.RuntimeOptions) (_result *QueryAccountBillResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillOwnerId) {
@@ -3043,9 +3173,11 @@ func (client *Client) QueryAccountBillWithContext(ctx context.Context, request *
 //
 // @return QueryAccountTransactionDetailsResponse
 func (client *Client) QueryAccountTransactionDetailsWithContext(ctx context.Context, request *QueryAccountTransactionDetailsRequest, runtime *dara.RuntimeOptions) (_result *QueryAccountTransactionDetailsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreateTimeEnd) {
@@ -3117,9 +3249,11 @@ func (client *Client) QueryAccountTransactionDetailsWithContext(ctx context.Cont
 //
 // @return QueryAccountTransactionsResponse
 func (client *Client) QueryAccountTransactionsWithContext(ctx context.Context, request *QueryAccountTransactionsRequest, runtime *dara.RuntimeOptions) (_result *QueryAccountTransactionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreateTimeEnd) {
@@ -3195,9 +3329,11 @@ func (client *Client) QueryAccountTransactionsWithContext(ctx context.Context, r
 //
 // @return QueryAvailableInstancesResponse
 func (client *Client) QueryAvailableInstancesWithContext(ctx context.Context, request *QueryAvailableInstancesRequest, runtime *dara.RuntimeOptions) (_result *QueryAvailableInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreateTimeEnd) {
@@ -3285,9 +3421,11 @@ func (client *Client) QueryAvailableInstancesWithContext(ctx context.Context, re
 //
 // @return QueryBillResponse
 func (client *Client) QueryBillWithContext(ctx context.Context, request *QueryBillRequest, runtime *dara.RuntimeOptions) (_result *QueryBillResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillOwnerId) {
@@ -3367,9 +3505,11 @@ func (client *Client) QueryBillWithContext(ctx context.Context, request *QueryBi
 //
 // @return QueryBillOverviewResponse
 func (client *Client) QueryBillOverviewWithContext(ctx context.Context, request *QueryBillOverviewRequest, runtime *dara.RuntimeOptions) (_result *QueryBillOverviewResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillOwnerId) {
@@ -3425,9 +3565,11 @@ func (client *Client) QueryBillOverviewWithContext(ctx context.Context, request 
 //
 // @return QueryCashCouponsResponse
 func (client *Client) QueryCashCouponsWithContext(ctx context.Context, request *QueryCashCouponsRequest, runtime *dara.RuntimeOptions) (_result *QueryCashCouponsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EffectiveOrNot) {
@@ -3479,9 +3621,11 @@ func (client *Client) QueryCashCouponsWithContext(ctx context.Context, request *
 //
 // @return QueryCommodityListResponse
 func (client *Client) QueryCommodityListWithContext(ctx context.Context, request *QueryCommodityListRequest, runtime *dara.RuntimeOptions) (_result *QueryCommodityListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3517,9 +3661,11 @@ func (client *Client) QueryCommodityListWithContext(ctx context.Context, request
 //
 // @return QueryCostUnitResponse
 func (client *Client) QueryCostUnitWithContext(ctx context.Context, request *QueryCostUnitRequest, runtime *dara.RuntimeOptions) (_result *QueryCostUnitResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerUid) {
@@ -3571,9 +3717,11 @@ func (client *Client) QueryCostUnitWithContext(ctx context.Context, request *Que
 //
 // @return QueryCostUnitResourceResponse
 func (client *Client) QueryCostUnitResourceWithContext(ctx context.Context, request *QueryCostUnitResourceRequest, runtime *dara.RuntimeOptions) (_result *QueryCostUnitResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerUid) {
@@ -3625,9 +3773,11 @@ func (client *Client) QueryCostUnitResourceWithContext(ctx context.Context, requ
 //
 // @return QueryCustomerAddressListResponse
 func (client *Client) QueryCustomerAddressListWithContext(ctx context.Context, request *QueryCustomerAddressListRequest, runtime *dara.RuntimeOptions) (_result *QueryCustomerAddressListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -3673,9 +3823,11 @@ func (client *Client) QueryCustomerAddressListWithContext(ctx context.Context, r
 //
 // @return QueryDPUtilizationDetailResponse
 func (client *Client) QueryDPUtilizationDetailWithContext(ctx context.Context, request *QueryDPUtilizationDetailRequest, runtime *dara.RuntimeOptions) (_result *QueryDPUtilizationDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CommodityCode) {
@@ -3751,9 +3903,11 @@ func (client *Client) QueryDPUtilizationDetailWithContext(ctx context.Context, r
 //
 // @return QueryEvaluateListResponse
 func (client *Client) QueryEvaluateListWithContext(ctx context.Context, request *QueryEvaluateListRequest, runtime *dara.RuntimeOptions) (_result *QueryEvaluateListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillCycle) {
@@ -3845,9 +3999,11 @@ func (client *Client) QueryEvaluateListWithContext(ctx context.Context, request 
 //
 // @return QueryFinancialAccountInfoResponse
 func (client *Client) QueryFinancialAccountInfoWithContext(ctx context.Context, request *QueryFinancialAccountInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryFinancialAccountInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.UserId) {
@@ -3899,9 +4055,11 @@ func (client *Client) QueryFinancialAccountInfoWithContext(ctx context.Context, 
 //
 // @return QueryInstanceBillResponse
 func (client *Client) QueryInstanceBillWithContext(ctx context.Context, request *QueryInstanceBillRequest, runtime *dara.RuntimeOptions) (_result *QueryInstanceBillResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillOwnerId) {
@@ -3985,9 +4143,11 @@ func (client *Client) QueryInstanceBillWithContext(ctx context.Context, request 
 //
 // @return QueryInstanceByTagResponse
 func (client *Client) QueryInstanceByTagWithContext(ctx context.Context, request *QueryInstanceByTagRequest, runtime *dara.RuntimeOptions) (_result *QueryInstanceByTagResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceId) {
@@ -4035,9 +4195,11 @@ func (client *Client) QueryInstanceByTagWithContext(ctx context.Context, request
 //
 // @return QueryInstanceGaapCostResponse
 func (client *Client) QueryInstanceGaapCostWithContext(ctx context.Context, request *QueryInstanceGaapCostRequest, runtime *dara.RuntimeOptions) (_result *QueryInstanceGaapCostResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillingCycle) {
@@ -4097,9 +4259,11 @@ func (client *Client) QueryInstanceGaapCostWithContext(ctx context.Context, requ
 //
 // @return QueryInvoicingCustomerListResponse
 func (client *Client) QueryInvoicingCustomerListWithContext(ctx context.Context, request *QueryInvoicingCustomerListRequest, runtime *dara.RuntimeOptions) (_result *QueryInvoicingCustomerListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -4139,9 +4303,11 @@ func (client *Client) QueryInvoicingCustomerListWithContext(ctx context.Context,
 //
 // @return QueryOrdersResponse
 func (client *Client) QueryOrdersWithContext(ctx context.Context, request *QueryOrdersRequest, runtime *dara.RuntimeOptions) (_result *QueryOrdersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreateTimeEnd) {
@@ -4217,9 +4383,11 @@ func (client *Client) QueryOrdersWithContext(ctx context.Context, request *Query
 //
 // @return QueryPermissionListResponse
 func (client *Client) QueryPermissionListWithContext(ctx context.Context, request *QueryPermissionListRequest, runtime *dara.RuntimeOptions) (_result *QueryPermissionListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RelationId) {
@@ -4259,9 +4427,11 @@ func (client *Client) QueryPermissionListWithContext(ctx context.Context, reques
 //
 // @return QueryPrepaidCardsResponse
 func (client *Client) QueryPrepaidCardsWithContext(ctx context.Context, request *QueryPrepaidCardsRequest, runtime *dara.RuntimeOptions) (_result *QueryPrepaidCardsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EffectiveOrNot) {
@@ -4313,9 +4483,11 @@ func (client *Client) QueryPrepaidCardsWithContext(ctx context.Context, request 
 //
 // @return QueryPriceEntityListResponse
 func (client *Client) QueryPriceEntityListWithContext(ctx context.Context, request *QueryPriceEntityListRequest, runtime *dara.RuntimeOptions) (_result *QueryPriceEntityListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -4351,9 +4523,11 @@ func (client *Client) QueryPriceEntityListWithContext(ctx context.Context, reque
 //
 // @return QueryProductListResponse
 func (client *Client) QueryProductListWithContext(ctx context.Context, request *QueryProductListRequest, runtime *dara.RuntimeOptions) (_result *QueryProductListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNum) {
@@ -4401,9 +4575,11 @@ func (client *Client) QueryProductListWithContext(ctx context.Context, request *
 //
 // @return QueryRIUtilizationDetailResponse
 func (client *Client) QueryRIUtilizationDetailWithContext(ctx context.Context, request *QueryRIUtilizationDetailRequest, runtime *dara.RuntimeOptions) (_result *QueryRIUtilizationDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeductedInstanceId) {
@@ -4471,9 +4647,11 @@ func (client *Client) QueryRIUtilizationDetailWithContext(ctx context.Context, r
 //
 // @return QueryRedeemResponse
 func (client *Client) QueryRedeemWithContext(ctx context.Context, request *QueryRedeemRequest, runtime *dara.RuntimeOptions) (_result *QueryRedeemResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -4509,9 +4687,11 @@ func (client *Client) QueryRedeemWithContext(ctx context.Context, request *Query
 //
 // @return QueryRelationListResponse
 func (client *Client) QueryRelationListWithContext(ctx context.Context, request *QueryRelationListRequest, runtime *dara.RuntimeOptions) (_result *QueryRelationListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNum) {
@@ -4563,9 +4743,11 @@ func (client *Client) QueryRelationListWithContext(ctx context.Context, request 
 //
 // @return QueryResellerAvailableQuotaResponse
 func (client *Client) QueryResellerAvailableQuotaWithContext(ctx context.Context, request *QueryResellerAvailableQuotaRequest, runtime *dara.RuntimeOptions) (_result *QueryResellerAvailableQuotaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ItemCodes) {
@@ -4609,9 +4791,11 @@ func (client *Client) QueryResellerAvailableQuotaWithContext(ctx context.Context
 //
 // @return QueryResellerUserAlarmThresholdResponse
 func (client *Client) QueryResellerUserAlarmThresholdWithContext(ctx context.Context, request *QueryResellerUserAlarmThresholdRequest, runtime *dara.RuntimeOptions) (_result *QueryResellerUserAlarmThresholdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlarmType) {
@@ -4655,9 +4839,11 @@ func (client *Client) QueryResellerUserAlarmThresholdWithContext(ctx context.Con
 //
 // @return QueryResourcePackageInstancesResponse
 func (client *Client) QueryResourcePackageInstancesWithContext(ctx context.Context, request *QueryResourcePackageInstancesRequest, runtime *dara.RuntimeOptions) (_result *QueryResourcePackageInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExpiryTimeEnd) {
@@ -4721,9 +4907,11 @@ func (client *Client) QueryResourcePackageInstancesWithContext(ctx context.Conte
 //
 // @return QuerySavingsPlansDeductLogResponse
 func (client *Client) QuerySavingsPlansDeductLogWithContext(ctx context.Context, request *QuerySavingsPlansDeductLogRequest, runtime *dara.RuntimeOptions) (_result *QuerySavingsPlansDeductLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -4787,9 +4975,11 @@ func (client *Client) QuerySavingsPlansDeductLogWithContext(ctx context.Context,
 //
 // @return QuerySavingsPlansDiscountResponse
 func (client *Client) QuerySavingsPlansDiscountWithContext(ctx context.Context, request *QuerySavingsPlansDiscountRequest, runtime *dara.RuntimeOptions) (_result *QuerySavingsPlansDiscountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -4825,9 +5015,11 @@ func (client *Client) QuerySavingsPlansDiscountWithContext(ctx context.Context, 
 //
 // @return QuerySavingsPlansInstanceResponse
 func (client *Client) QuerySavingsPlansInstanceWithContext(ctx context.Context, request *QuerySavingsPlansInstanceRequest, runtime *dara.RuntimeOptions) (_result *QuerySavingsPlansInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CommodityCode) {
@@ -4899,9 +5091,11 @@ func (client *Client) QuerySavingsPlansInstanceWithContext(ctx context.Context, 
 //
 // @return QuerySettleBillResponse
 func (client *Client) QuerySettleBillWithContext(ctx context.Context, request *QuerySettleBillRequest, runtime *dara.RuntimeOptions) (_result *QuerySettleBillResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillOwnerId) {
@@ -4985,9 +5179,11 @@ func (client *Client) QuerySettleBillWithContext(ctx context.Context, request *Q
 //
 // @return QuerySkuPriceListResponse
 func (client *Client) QuerySkuPriceListWithContext(ctx context.Context, tmpReq *QuerySkuPriceListRequest, runtime *dara.RuntimeOptions) (_result *QuerySkuPriceListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QuerySkuPriceListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5039,9 +5235,11 @@ func (client *Client) QuerySkuPriceListWithContext(ctx context.Context, tmpReq *
 //
 // @return QuerySplitItemBillResponse
 func (client *Client) QuerySplitItemBillWithContext(ctx context.Context, request *QuerySplitItemBillRequest, runtime *dara.RuntimeOptions) (_result *QuerySplitItemBillResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillOwnerId) {
@@ -5121,9 +5319,11 @@ func (client *Client) QuerySplitItemBillWithContext(ctx context.Context, request
 //
 // @return QueryUserOmsDataResponse
 func (client *Client) QueryUserOmsDataWithContext(ctx context.Context, request *QueryUserOmsDataRequest, runtime *dara.RuntimeOptions) (_result *QueryUserOmsDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DataType) {
@@ -5195,9 +5395,11 @@ func (client *Client) QueryUserOmsDataWithContext(ctx context.Context, request *
 //
 // @return RefundInstanceResponse
 func (client *Client) RefundInstanceWithContext(ctx context.Context, request *RefundInstanceRequest, runtime *dara.RuntimeOptions) (_result *RefundInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -5257,9 +5459,11 @@ func (client *Client) RefundInstanceWithContext(ctx context.Context, request *Re
 //
 // @return ReleaseInstanceResponse
 func (client *Client) ReleaseInstanceWithContext(ctx context.Context, request *ReleaseInstanceRequest, runtime *dara.RuntimeOptions) (_result *ReleaseInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceIds) {
@@ -5323,9 +5527,11 @@ func (client *Client) ReleaseInstanceWithContext(ctx context.Context, request *R
 //
 // @return RelieveAccountRelationResponse
 func (client *Client) RelieveAccountRelationWithContext(ctx context.Context, request *RelieveAccountRelationRequest, runtime *dara.RuntimeOptions) (_result *RelieveAccountRelationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChildUserId) {
@@ -5381,9 +5587,11 @@ func (client *Client) RelieveAccountRelationWithContext(ctx context.Context, req
 //
 // @return RenewChangeInstanceResponse
 func (client *Client) RenewChangeInstanceWithContext(ctx context.Context, request *RenewChangeInstanceRequest, runtime *dara.RuntimeOptions) (_result *RenewChangeInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -5447,9 +5655,11 @@ func (client *Client) RenewChangeInstanceWithContext(ctx context.Context, reques
 //
 // @return RenewInstanceResponse
 func (client *Client) RenewInstanceWithContext(ctx context.Context, request *RenewInstanceRequest, runtime *dara.RuntimeOptions) (_result *RenewInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -5509,9 +5719,11 @@ func (client *Client) RenewInstanceWithContext(ctx context.Context, request *Ren
 //
 // @return RenewResourcePackageResponse
 func (client *Client) RenewResourcePackageWithContext(ctx context.Context, request *RenewResourcePackageRequest, runtime *dara.RuntimeOptions) (_result *RenewResourcePackageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Duration) {
@@ -5567,9 +5779,11 @@ func (client *Client) RenewResourcePackageWithContext(ctx context.Context, reque
 //
 // @return SetAllExpirationDayResponse
 func (client *Client) SetAllExpirationDayWithContext(ctx context.Context, request *SetAllExpirationDayRequest, runtime *dara.RuntimeOptions) (_result *SetAllExpirationDayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -5613,9 +5827,11 @@ func (client *Client) SetAllExpirationDayWithContext(ctx context.Context, reques
 //
 // @return SetRenewalResponse
 func (client *Client) SetRenewalWithContext(ctx context.Context, request *SetRenewalRequest, runtime *dara.RuntimeOptions) (_result *SetRenewalResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceIDs) {
@@ -5679,9 +5895,11 @@ func (client *Client) SetRenewalWithContext(ctx context.Context, request *SetRen
 //
 // @return SetResellerUserAlarmThresholdResponse
 func (client *Client) SetResellerUserAlarmThresholdWithContext(ctx context.Context, request *SetResellerUserAlarmThresholdRequest, runtime *dara.RuntimeOptions) (_result *SetResellerUserAlarmThresholdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlarmThresholds) {
@@ -5729,9 +5947,11 @@ func (client *Client) SetResellerUserAlarmThresholdWithContext(ctx context.Conte
 //
 // @return SetResellerUserQuotaResponse
 func (client *Client) SetResellerUserQuotaWithContext(ctx context.Context, request *SetResellerUserQuotaRequest, runtime *dara.RuntimeOptions) (_result *SetResellerUserQuotaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Amount) {
@@ -5779,9 +5999,11 @@ func (client *Client) SetResellerUserQuotaWithContext(ctx context.Context, reque
 //
 // @return SetResellerUserStatusResponse
 func (client *Client) SetResellerUserStatusWithContext(ctx context.Context, request *SetResellerUserStatusRequest, runtime *dara.RuntimeOptions) (_result *SetResellerUserStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessType) {
@@ -5833,9 +6055,11 @@ func (client *Client) SetResellerUserStatusWithContext(ctx context.Context, requ
 //
 // @return SetSavingPlanUserDeductRuleResponse
 func (client *Client) SetSavingPlanUserDeductRuleWithContext(ctx context.Context, tmpReq *SetSavingPlanUserDeductRuleRequest, runtime *dara.RuntimeOptions) (_result *SetSavingPlanUserDeductRuleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SetSavingPlanUserDeductRuleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5955,9 +6179,11 @@ func (client *Client) SetSavingPlanUserDeductRuleWithContext(ctx context.Context
 //
 // @return SubscribeBillToOSSResponse
 func (client *Client) SubscribeBillToOSSWithContext(ctx context.Context, request *SubscribeBillToOSSRequest, runtime *dara.RuntimeOptions) (_result *SubscribeBillToOSSResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BeginBillingCycle) {
@@ -6025,9 +6251,11 @@ func (client *Client) SubscribeBillToOSSWithContext(ctx context.Context, request
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceId) {
@@ -6075,9 +6303,11 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 //
 // @return UnsubscribeBillToOSSResponse
 func (client *Client) UnsubscribeBillToOSSWithContext(ctx context.Context, request *UnsubscribeBillToOSSRequest, runtime *dara.RuntimeOptions) (_result *UnsubscribeBillToOSSResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MultAccountRelSubscribe) {
@@ -6121,9 +6351,11 @@ func (client *Client) UnsubscribeBillToOSSWithContext(ctx context.Context, reque
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -6175,9 +6407,11 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 //
 // @return UpgradeResourcePackageResponse
 func (client *Client) UpgradeResourcePackageWithContext(ctx context.Context, request *UpgradeResourcePackageRequest, runtime *dara.RuntimeOptions) (_result *UpgradeResourcePackageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EffectiveDate) {

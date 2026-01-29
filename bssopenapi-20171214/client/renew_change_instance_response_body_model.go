@@ -97,7 +97,12 @@ func (s *RenewChangeInstanceResponseBody) SetSuccess(v bool) *RenewChangeInstanc
 }
 
 func (s *RenewChangeInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RenewChangeInstanceResponseBodyData struct {

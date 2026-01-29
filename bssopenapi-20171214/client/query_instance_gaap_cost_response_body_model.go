@@ -95,7 +95,12 @@ func (s *QueryInstanceGaapCostResponseBody) SetSuccess(v bool) *QueryInstanceGaa
 }
 
 func (s *QueryInstanceGaapCostResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryInstanceGaapCostResponseBodyData struct {
@@ -172,7 +177,12 @@ func (s *QueryInstanceGaapCostResponseBodyData) SetTotalCount(v int32) *QueryIns
 }
 
 func (s *QueryInstanceGaapCostResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Modules != nil {
+		if err := s.Modules.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryInstanceGaapCostResponseBodyDataModules struct {
@@ -197,7 +207,16 @@ func (s *QueryInstanceGaapCostResponseBodyDataModules) SetModule(v []*QueryInsta
 }
 
 func (s *QueryInstanceGaapCostResponseBodyDataModules) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		for _, item := range s.Module {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryInstanceGaapCostResponseBodyDataModulesModule struct {

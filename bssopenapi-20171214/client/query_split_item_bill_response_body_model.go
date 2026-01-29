@@ -104,7 +104,12 @@ func (s *QuerySplitItemBillResponseBody) SetSuccess(v bool) *QuerySplitItemBillR
 }
 
 func (s *QuerySplitItemBillResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QuerySplitItemBillResponseBodyData struct {
@@ -220,7 +225,12 @@ func (s *QuerySplitItemBillResponseBodyData) SetTotalCount(v int32) *QuerySplitI
 }
 
 func (s *QuerySplitItemBillResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QuerySplitItemBillResponseBodyDataItems struct {
@@ -245,7 +255,16 @@ func (s *QuerySplitItemBillResponseBodyDataItems) SetItem(v []*QuerySplitItemBil
 }
 
 func (s *QuerySplitItemBillResponseBodyDataItems) Validate() error {
-	return dara.Validate(s)
+	if s.Item != nil {
+		for _, item := range s.Item {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QuerySplitItemBillResponseBodyDataItemsItem struct {

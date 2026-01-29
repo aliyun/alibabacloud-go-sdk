@@ -36,7 +36,16 @@ func (s *ModifyCostUnitRequest) SetUnitEntityList(v []*ModifyCostUnitRequestUnit
 }
 
 func (s *ModifyCostUnitRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UnitEntityList != nil {
+		for _, item := range s.UnitEntityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyCostUnitRequestUnitEntityList struct {

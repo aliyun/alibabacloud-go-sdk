@@ -104,7 +104,12 @@ func (s *DescribePricingModuleResponseBody) SetSuccess(v bool) *DescribePricingM
 }
 
 func (s *DescribePricingModuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePricingModuleResponseBodyData struct {
@@ -141,7 +146,17 @@ func (s *DescribePricingModuleResponseBodyData) SetModuleList(v *DescribePricing
 }
 
 func (s *DescribePricingModuleResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AttributeList != nil {
+		if err := s.AttributeList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ModuleList != nil {
+		if err := s.ModuleList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePricingModuleResponseBodyDataAttributeList struct {
@@ -166,7 +181,16 @@ func (s *DescribePricingModuleResponseBodyDataAttributeList) SetAttribute(v []*D
 }
 
 func (s *DescribePricingModuleResponseBodyDataAttributeList) Validate() error {
-	return dara.Validate(s)
+	if s.Attribute != nil {
+		for _, item := range s.Attribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePricingModuleResponseBodyDataAttributeListAttribute struct {
@@ -237,7 +261,12 @@ func (s *DescribePricingModuleResponseBodyDataAttributeListAttribute) SetValues(
 }
 
 func (s *DescribePricingModuleResponseBodyDataAttributeListAttribute) Validate() error {
-	return dara.Validate(s)
+	if s.Values != nil {
+		if err := s.Values.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePricingModuleResponseBodyDataAttributeListAttributeValues struct {
@@ -262,7 +291,16 @@ func (s *DescribePricingModuleResponseBodyDataAttributeListAttributeValues) SetA
 }
 
 func (s *DescribePricingModuleResponseBodyDataAttributeListAttributeValues) Validate() error {
-	return dara.Validate(s)
+	if s.AttributeValue != nil {
+		for _, item := range s.AttributeValue {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePricingModuleResponseBodyDataAttributeListAttributeValuesAttributeValue struct {
@@ -368,7 +406,16 @@ func (s *DescribePricingModuleResponseBodyDataModuleList) SetModule(v []*Describ
 }
 
 func (s *DescribePricingModuleResponseBodyDataModuleList) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		for _, item := range s.Module {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePricingModuleResponseBodyDataModuleListModule struct {
@@ -465,7 +512,12 @@ func (s *DescribePricingModuleResponseBodyDataModuleListModule) SetPriceType(v s
 }
 
 func (s *DescribePricingModuleResponseBodyDataModuleListModule) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigList != nil {
+		if err := s.ConfigList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePricingModuleResponseBodyDataModuleListModuleConfigList struct {

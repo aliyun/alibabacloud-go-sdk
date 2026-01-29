@@ -104,7 +104,12 @@ func (s *QueryCostUnitResponseBody) SetSuccess(v bool) *QueryCostUnitResponseBod
 }
 
 func (s *QueryCostUnitResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryCostUnitResponseBodyData struct {
@@ -175,7 +180,16 @@ func (s *QueryCostUnitResponseBodyData) SetTotalCount(v int32) *QueryCostUnitRes
 }
 
 func (s *QueryCostUnitResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CostUnitDtoList != nil {
+		for _, item := range s.CostUnitDtoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryCostUnitResponseBodyDataCostUnitDtoList struct {

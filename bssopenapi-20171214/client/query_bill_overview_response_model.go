@@ -59,5 +59,10 @@ func (s *QueryBillOverviewResponse) SetBody(v *QueryBillOverviewResponseBody) *Q
 }
 
 func (s *QueryBillOverviewResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

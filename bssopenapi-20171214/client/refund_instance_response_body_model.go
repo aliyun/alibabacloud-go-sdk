@@ -104,7 +104,12 @@ func (s *RefundInstanceResponseBody) SetSuccess(v bool) *RefundInstanceResponseB
 }
 
 func (s *RefundInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RefundInstanceResponseBodyData struct {

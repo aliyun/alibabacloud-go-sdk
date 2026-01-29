@@ -104,7 +104,12 @@ func (s *QueryAvailableInstancesResponseBody) SetSuccess(v bool) *QueryAvailable
 }
 
 func (s *QueryAvailableInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryAvailableInstancesResponseBodyData struct {
@@ -175,7 +180,16 @@ func (s *QueryAvailableInstancesResponseBodyData) SetTotalCount(v int32) *QueryA
 }
 
 func (s *QueryAvailableInstancesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceList != nil {
+		for _, item := range s.InstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryAvailableInstancesResponseBodyDataInstanceList struct {

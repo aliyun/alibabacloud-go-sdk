@@ -281,7 +281,16 @@ func (s *DescribeSplitItemBillRequest) SetTagFilter(v []*DescribeSplitItemBillRe
 }
 
 func (s *DescribeSplitItemBillRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TagFilter != nil {
+		for _, item := range s.TagFilter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSplitItemBillRequestTagFilter struct {

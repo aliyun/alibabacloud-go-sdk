@@ -122,7 +122,16 @@ func (s *GetPayAsYouGoPriceRequest) SetSubscriptionType(v string) *GetPayAsYouGo
 }
 
 func (s *GetPayAsYouGoPriceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleList != nil {
+		for _, item := range s.ModuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPayAsYouGoPriceRequestModuleList struct {

@@ -104,7 +104,12 @@ func (s *QueryCustomerAddressListResponseBody) SetSuccess(v bool) *QueryCustomer
 }
 
 func (s *QueryCustomerAddressListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryCustomerAddressListResponseBodyData struct {
@@ -130,7 +135,12 @@ func (s *QueryCustomerAddressListResponseBodyData) SetCustomerInvoiceAddressList
 }
 
 func (s *QueryCustomerAddressListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CustomerInvoiceAddressList != nil {
+		if err := s.CustomerInvoiceAddressList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressList struct {
@@ -155,7 +165,16 @@ func (s *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressList) Set
 }
 
 func (s *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressList) Validate() error {
-	return dara.Validate(s)
+	if s.CustomerInvoiceAddress != nil {
+		for _, item := range s.CustomerInvoiceAddress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress struct {

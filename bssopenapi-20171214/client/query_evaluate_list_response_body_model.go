@@ -104,7 +104,12 @@ func (s *QueryEvaluateListResponseBody) SetSuccess(v bool) *QueryEvaluateListRes
 }
 
 func (s *QueryEvaluateListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryEvaluateListResponseBodyData struct {
@@ -220,7 +225,12 @@ func (s *QueryEvaluateListResponseBodyData) SetTotalUnAppliedInvoiceAmount(v int
 }
 
 func (s *QueryEvaluateListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.EvaluateList != nil {
+		if err := s.EvaluateList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryEvaluateListResponseBodyDataEvaluateList struct {
@@ -245,7 +255,16 @@ func (s *QueryEvaluateListResponseBodyDataEvaluateList) SetEvaluate(v []*QueryEv
 }
 
 func (s *QueryEvaluateListResponseBodyDataEvaluateList) Validate() error {
-	return dara.Validate(s)
+	if s.Evaluate != nil {
+		for _, item := range s.Evaluate {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryEvaluateListResponseBodyDataEvaluateListEvaluate struct {

@@ -59,5 +59,10 @@ func (s *QuerySkuPriceListResponse) SetBody(v *QuerySkuPriceListResponseBody) *Q
 }
 
 func (s *QuerySkuPriceListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

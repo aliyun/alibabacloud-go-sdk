@@ -108,7 +108,12 @@ func (s *GetCustomerListResponseBody) SetSuccess(v bool) *GetCustomerListRespons
 }
 
 func (s *GetCustomerListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCustomerListResponseBodyData struct {

@@ -59,5 +59,10 @@ func (s *QueryUserOmsDataResponse) SetBody(v *QueryUserOmsDataResponseBody) *Que
 }
 
 func (s *QueryUserOmsDataResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

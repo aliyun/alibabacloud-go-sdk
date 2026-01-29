@@ -59,5 +59,10 @@ func (s *DescribeInstanceAmortizedCostByConsumePeriodResponse) SetBody(v *Descri
 }
 
 func (s *DescribeInstanceAmortizedCostByConsumePeriodResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

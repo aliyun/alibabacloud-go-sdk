@@ -121,7 +121,12 @@ func (s *DescribeResourcePackageProductResponseBody) SetSuccess(v bool) *Describ
 }
 
 func (s *DescribeResourcePackageProductResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeResourcePackageProductResponseBodyData struct {
@@ -147,7 +152,12 @@ func (s *DescribeResourcePackageProductResponseBodyData) SetResourcePackages(v *
 }
 
 func (s *DescribeResourcePackageProductResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ResourcePackages != nil {
+		if err := s.ResourcePackages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackages struct {
@@ -172,7 +182,16 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackages) SetReso
 }
 
 func (s *DescribeResourcePackageProductResponseBodyDataResourcePackages) Validate() error {
-	return dara.Validate(s)
+	if s.ResourcePackage != nil {
+		for _, item := range s.ResourcePackage {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackage struct {
@@ -243,7 +262,12 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourceP
 }
 
 func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackage) Validate() error {
-	return dara.Validate(s)
+	if s.PackageTypes != nil {
+		if err := s.PackageTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypes struct {
@@ -268,7 +292,16 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourceP
 }
 
 func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypes) Validate() error {
-	return dara.Validate(s)
+	if s.PackageType != nil {
+		for _, item := range s.PackageType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageType struct {
@@ -335,7 +368,17 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourceP
 }
 
 func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageType) Validate() error {
-	return dara.Validate(s)
+	if s.Properties != nil {
+		if err := s.Properties.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Specifications != nil {
+		if err := s.Specifications.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeProperties struct {
@@ -360,7 +403,16 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourceP
 }
 
 func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeProperties) Validate() error {
-	return dara.Validate(s)
+	if s.Property != nil {
+		for _, item := range s.Property {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypePropertiesProperty struct {
@@ -430,7 +482,16 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourceP
 }
 
 func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecifications) Validate() error {
-	return dara.Validate(s)
+	if s.Specification != nil {
+		for _, item := range s.Specification {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecification struct {
@@ -486,7 +547,12 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourceP
 }
 
 func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecification) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableDurations != nil {
+		if err := s.AvailableDurations.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurations struct {
@@ -511,7 +577,16 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourceP
 }
 
 func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurations) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableDuration != nil {
+		for _, item := range s.AvailableDuration {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurationsAvailableDuration struct {

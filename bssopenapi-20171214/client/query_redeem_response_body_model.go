@@ -104,7 +104,12 @@ func (s *QueryRedeemResponseBody) SetSuccess(v bool) *QueryRedeemResponseBody {
 }
 
 func (s *QueryRedeemResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryRedeemResponseBodyData struct {
@@ -175,7 +180,12 @@ func (s *QueryRedeemResponseBodyData) SetTotalCount(v int64) *QueryRedeemRespons
 }
 
 func (s *QueryRedeemResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Redeem != nil {
+		if err := s.Redeem.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryRedeemResponseBodyDataRedeem struct {
@@ -200,7 +210,16 @@ func (s *QueryRedeemResponseBodyDataRedeem) SetRedeem(v []*QueryRedeemResponseBo
 }
 
 func (s *QueryRedeemResponseBodyDataRedeem) Validate() error {
-	return dara.Validate(s)
+	if s.Redeem != nil {
+		for _, item := range s.Redeem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryRedeemResponseBodyDataRedeemRedeem struct {

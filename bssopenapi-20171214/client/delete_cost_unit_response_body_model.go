@@ -104,7 +104,12 @@ func (s *DeleteCostUnitResponseBody) SetSuccess(v bool) *DeleteCostUnitResponseB
 }
 
 func (s *DeleteCostUnitResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteCostUnitResponseBodyData struct {

@@ -13,6 +13,8 @@ type iDescribeSavingsPlansUsageDetailRequest interface {
 	GetBillOwnerId() *int64
 	SetEndPeriod(v string) *DescribeSavingsPlansUsageDetailRequest
 	GetEndPeriod() *string
+	SetFilterParam(v *DescribeSavingsPlansUsageDetailRequestFilterParam) *DescribeSavingsPlansUsageDetailRequest
+	GetFilterParam() *DescribeSavingsPlansUsageDetailRequestFilterParam
 	SetMaxResults(v int32) *DescribeSavingsPlansUsageDetailRequest
 	GetMaxResults() *int32
 	SetPeriodType(v string) *DescribeSavingsPlansUsageDetailRequest
@@ -35,7 +37,8 @@ type DescribeSavingsPlansUsageDetailRequest struct {
 	// example:
 	//
 	// 2021-01-02 00:00:00
-	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
+	EndPeriod   *string                                            `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
+	FilterParam *DescribeSavingsPlansUsageDetailRequestFilterParam `json:"FilterParam,omitempty" xml:"FilterParam,omitempty" type:"Struct"`
 	// The maximum number of entries to return. Default value: 20. Maximum value: 300.
 	//
 	// example:
@@ -82,6 +85,10 @@ func (s *DescribeSavingsPlansUsageDetailRequest) GetEndPeriod() *string {
 	return s.EndPeriod
 }
 
+func (s *DescribeSavingsPlansUsageDetailRequest) GetFilterParam() *DescribeSavingsPlansUsageDetailRequestFilterParam {
+	return s.FilterParam
+}
+
 func (s *DescribeSavingsPlansUsageDetailRequest) GetMaxResults() *int32 {
 	return s.MaxResults
 }
@@ -108,6 +115,11 @@ func (s *DescribeSavingsPlansUsageDetailRequest) SetEndPeriod(v string) *Describ
 	return s
 }
 
+func (s *DescribeSavingsPlansUsageDetailRequest) SetFilterParam(v *DescribeSavingsPlansUsageDetailRequestFilterParam) *DescribeSavingsPlansUsageDetailRequest {
+	s.FilterParam = v
+	return s
+}
+
 func (s *DescribeSavingsPlansUsageDetailRequest) SetMaxResults(v int32) *DescribeSavingsPlansUsageDetailRequest {
 	s.MaxResults = &v
 	return s
@@ -129,5 +141,153 @@ func (s *DescribeSavingsPlansUsageDetailRequest) SetToken(v string) *DescribeSav
 }
 
 func (s *DescribeSavingsPlansUsageDetailRequest) Validate() error {
+	if s.FilterParam != nil {
+		if err := s.FilterParam.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeSavingsPlansUsageDetailRequestFilterParam struct {
+	Dimensions []*DescribeSavingsPlansUsageDetailRequestFilterParamDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
+	Tags       []*DescribeSavingsPlansUsageDetailRequestFilterParamTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSavingsPlansUsageDetailRequestFilterParam) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeSavingsPlansUsageDetailRequestFilterParam) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSavingsPlansUsageDetailRequestFilterParam) GetDimensions() []*DescribeSavingsPlansUsageDetailRequestFilterParamDimensions {
+	return s.Dimensions
+}
+
+func (s *DescribeSavingsPlansUsageDetailRequestFilterParam) GetTags() []*DescribeSavingsPlansUsageDetailRequestFilterParamTags {
+	return s.Tags
+}
+
+func (s *DescribeSavingsPlansUsageDetailRequestFilterParam) SetDimensions(v []*DescribeSavingsPlansUsageDetailRequestFilterParamDimensions) *DescribeSavingsPlansUsageDetailRequestFilterParam {
+	s.Dimensions = v
+	return s
+}
+
+func (s *DescribeSavingsPlansUsageDetailRequestFilterParam) SetTags(v []*DescribeSavingsPlansUsageDetailRequestFilterParamTags) *DescribeSavingsPlansUsageDetailRequestFilterParam {
+	s.Tags = v
+	return s
+}
+
+func (s *DescribeSavingsPlansUsageDetailRequestFilterParam) Validate() error {
+	if s.Dimensions != nil {
+		for _, item := range s.Dimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeSavingsPlansUsageDetailRequestFilterParamDimensions struct {
+	Code       *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	SelectType *string   `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
+	Values     []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSavingsPlansUsageDetailRequestFilterParamDimensions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeSavingsPlansUsageDetailRequestFilterParamDimensions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSavingsPlansUsageDetailRequestFilterParamDimensions) GetCode() *string {
+	return s.Code
+}
+
+func (s *DescribeSavingsPlansUsageDetailRequestFilterParamDimensions) GetSelectType() *string {
+	return s.SelectType
+}
+
+func (s *DescribeSavingsPlansUsageDetailRequestFilterParamDimensions) GetValues() []*string {
+	return s.Values
+}
+
+func (s *DescribeSavingsPlansUsageDetailRequestFilterParamDimensions) SetCode(v string) *DescribeSavingsPlansUsageDetailRequestFilterParamDimensions {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeSavingsPlansUsageDetailRequestFilterParamDimensions) SetSelectType(v string) *DescribeSavingsPlansUsageDetailRequestFilterParamDimensions {
+	s.SelectType = &v
+	return s
+}
+
+func (s *DescribeSavingsPlansUsageDetailRequestFilterParamDimensions) SetValues(v []*string) *DescribeSavingsPlansUsageDetailRequestFilterParamDimensions {
+	s.Values = v
+	return s
+}
+
+func (s *DescribeSavingsPlansUsageDetailRequestFilterParamDimensions) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeSavingsPlansUsageDetailRequestFilterParamTags struct {
+	Code       *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	SelectType *string   `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
+	Values     []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSavingsPlansUsageDetailRequestFilterParamTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeSavingsPlansUsageDetailRequestFilterParamTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSavingsPlansUsageDetailRequestFilterParamTags) GetCode() *string {
+	return s.Code
+}
+
+func (s *DescribeSavingsPlansUsageDetailRequestFilterParamTags) GetSelectType() *string {
+	return s.SelectType
+}
+
+func (s *DescribeSavingsPlansUsageDetailRequestFilterParamTags) GetValues() []*string {
+	return s.Values
+}
+
+func (s *DescribeSavingsPlansUsageDetailRequestFilterParamTags) SetCode(v string) *DescribeSavingsPlansUsageDetailRequestFilterParamTags {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeSavingsPlansUsageDetailRequestFilterParamTags) SetSelectType(v string) *DescribeSavingsPlansUsageDetailRequestFilterParamTags {
+	s.SelectType = &v
+	return s
+}
+
+func (s *DescribeSavingsPlansUsageDetailRequestFilterParamTags) SetValues(v []*string) *DescribeSavingsPlansUsageDetailRequestFilterParamTags {
+	s.Values = v
+	return s
+}
+
+func (s *DescribeSavingsPlansUsageDetailRequestFilterParamTags) Validate() error {
 	return dara.Validate(s)
 }

@@ -59,5 +59,10 @@ func (s *QueryRelationListResponse) SetBody(v *QueryRelationListResponseBody) *Q
 }
 
 func (s *QueryRelationListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

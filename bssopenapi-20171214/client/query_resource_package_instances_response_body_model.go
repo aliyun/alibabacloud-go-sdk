@@ -155,7 +155,12 @@ func (s *QueryResourcePackageInstancesResponseBody) SetTotal(v int32) *QueryReso
 }
 
 func (s *QueryResourcePackageInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryResourcePackageInstancesResponseBodyData struct {
@@ -241,7 +246,12 @@ func (s *QueryResourcePackageInstancesResponseBodyData) SetTotalCount(v string) 
 }
 
 func (s *QueryResourcePackageInstancesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		if err := s.Instances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryResourcePackageInstancesResponseBodyDataInstances struct {
@@ -266,7 +276,16 @@ func (s *QueryResourcePackageInstancesResponseBodyDataInstances) SetInstance(v [
 }
 
 func (s *QueryResourcePackageInstancesResponseBodyDataInstances) Validate() error {
-	return dara.Validate(s)
+	if s.Instance != nil {
+		for _, item := range s.Instance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryResourcePackageInstancesResponseBodyDataInstancesInstance struct {
@@ -487,7 +506,12 @@ func (s *QueryResourcePackageInstancesResponseBodyDataInstancesInstance) SetTota
 }
 
 func (s *QueryResourcePackageInstancesResponseBodyDataInstancesInstance) Validate() error {
-	return dara.Validate(s)
+	if s.ApplicableProducts != nil {
+		if err := s.ApplicableProducts.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryResourcePackageInstancesResponseBodyDataInstancesInstanceApplicableProducts struct {

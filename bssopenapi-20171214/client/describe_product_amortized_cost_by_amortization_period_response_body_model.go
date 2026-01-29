@@ -104,7 +104,12 @@ func (s *DescribeProductAmortizedCostByAmortizationPeriodResponseBody) SetSucces
 }
 
 func (s *DescribeProductAmortizedCostByAmortizationPeriodResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeProductAmortizedCostByAmortizationPeriodResponseBodyData struct {
@@ -205,7 +210,16 @@ func (s *DescribeProductAmortizedCostByAmortizationPeriodResponseBodyData) SetTo
 }
 
 func (s *DescribeProductAmortizedCostByAmortizationPeriodResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems struct {

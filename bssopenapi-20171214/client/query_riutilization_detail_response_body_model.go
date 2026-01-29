@@ -104,7 +104,12 @@ func (s *QueryRIUtilizationDetailResponseBody) SetSuccess(v bool) *QueryRIUtiliz
 }
 
 func (s *QueryRIUtilizationDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryRIUtilizationDetailResponseBodyData struct {
@@ -175,7 +180,12 @@ func (s *QueryRIUtilizationDetailResponseBodyData) SetTotalCount(v int64) *Query
 }
 
 func (s *QueryRIUtilizationDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DetailList != nil {
+		if err := s.DetailList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryRIUtilizationDetailResponseBodyDataDetailList struct {
@@ -200,7 +210,16 @@ func (s *QueryRIUtilizationDetailResponseBodyDataDetailList) SetDetailList(v []*
 }
 
 func (s *QueryRIUtilizationDetailResponseBodyDataDetailList) Validate() error {
-	return dara.Validate(s)
+	if s.DetailList != nil {
+		for _, item := range s.DetailList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryRIUtilizationDetailResponseBodyDataDetailListDetailList struct {

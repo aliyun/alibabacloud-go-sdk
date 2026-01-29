@@ -104,7 +104,12 @@ func (s *QueryCommodityListResponseBody) SetSuccess(v bool) *QueryCommodityListR
 }
 
 func (s *QueryCommodityListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryCommodityListResponseBodyData struct {
@@ -130,7 +135,16 @@ func (s *QueryCommodityListResponseBodyData) SetCommodityList(v []*QueryCommodit
 }
 
 func (s *QueryCommodityListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CommodityList != nil {
+		for _, item := range s.CommodityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryCommodityListResponseBodyDataCommodityList struct {

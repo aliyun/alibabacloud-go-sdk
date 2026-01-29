@@ -164,7 +164,16 @@ func (s *ModifyInstanceRequest) SetSubscriptionType(v string) *ModifyInstanceReq
 }
 
 func (s *ModifyInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Parameter != nil {
+		for _, item := range s.Parameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyInstanceRequestParameter struct {

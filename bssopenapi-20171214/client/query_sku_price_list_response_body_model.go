@@ -104,7 +104,12 @@ func (s *QuerySkuPriceListResponseBody) SetSuccess(v bool) *QuerySkuPriceListRes
 }
 
 func (s *QuerySkuPriceListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QuerySkuPriceListResponseBodyData struct {
@@ -130,7 +135,12 @@ func (s *QuerySkuPriceListResponseBodyData) SetSkuPricePage(v *QuerySkuPriceList
 }
 
 func (s *QuerySkuPriceListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.SkuPricePage != nil {
+		if err := s.SkuPricePage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QuerySkuPriceListResponseBodyDataSkuPricePage struct {
@@ -186,7 +196,16 @@ func (s *QuerySkuPriceListResponseBodyDataSkuPricePage) SetTotalCount(v int32) *
 }
 
 func (s *QuerySkuPriceListResponseBodyDataSkuPricePage) Validate() error {
-	return dara.Validate(s)
+	if s.SkuPriceList != nil {
+		for _, item := range s.SkuPriceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceList struct {
@@ -238,7 +257,16 @@ func (s *QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceList) SetSkuFactor
 }
 
 func (s *QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceList) Validate() error {
-	return dara.Validate(s)
+	if s.CskuPriceList != nil {
+		for _, item := range s.CskuPriceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceListCskuPriceList struct {
@@ -369,7 +397,16 @@ func (s *QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceListCskuPriceList)
 }
 
 func (s *QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceListCskuPriceList) Validate() error {
-	return dara.Validate(s)
+	if s.RangeList != nil {
+		for _, item := range s.RangeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceListCskuPriceListRangeList struct {

@@ -104,7 +104,12 @@ func (s *QueryInvoicingCustomerListResponseBody) SetSuccess(v bool) *QueryInvoic
 }
 
 func (s *QueryInvoicingCustomerListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryInvoicingCustomerListResponseBodyData struct {
@@ -130,7 +135,12 @@ func (s *QueryInvoicingCustomerListResponseBodyData) SetCustomerInvoiceList(v *Q
 }
 
 func (s *QueryInvoicingCustomerListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CustomerInvoiceList != nil {
+		if err := s.CustomerInvoiceList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceList struct {
@@ -155,7 +165,16 @@ func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceList) SetCusto
 }
 
 func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceList) Validate() error {
-	return dara.Validate(s)
+	if s.CustomerInvoice != nil {
+		for _, item := range s.CustomerInvoice {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice struct {

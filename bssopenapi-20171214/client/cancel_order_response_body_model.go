@@ -104,7 +104,12 @@ func (s *CancelOrderResponseBody) SetSuccess(v bool) *CancelOrderResponseBody {
 }
 
 func (s *CancelOrderResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CancelOrderResponseBodyData struct {

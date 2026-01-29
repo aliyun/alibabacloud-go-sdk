@@ -59,5 +59,10 @@ func (s *CreateAgAccountResponse) SetBody(v *CreateAgAccountResponseBody) *Creat
 }
 
 func (s *CreateAgAccountResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

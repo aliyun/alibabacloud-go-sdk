@@ -104,7 +104,12 @@ func (s *CreateCostUnitResponseBody) SetSuccess(v bool) *CreateCostUnitResponseB
 }
 
 func (s *CreateCostUnitResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateCostUnitResponseBodyData struct {
@@ -130,7 +135,16 @@ func (s *CreateCostUnitResponseBodyData) SetCostUnitDtoList(v []*CreateCostUnitR
 }
 
 func (s *CreateCostUnitResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CostUnitDtoList != nil {
+		for _, item := range s.CostUnitDtoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateCostUnitResponseBodyDataCostUnitDtoList struct {

@@ -104,7 +104,12 @@ func (s *QueryPermissionListResponseBody) SetSuccess(v bool) *QueryPermissionLis
 }
 
 func (s *QueryPermissionListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryPermissionListResponseBodyData struct {
@@ -235,7 +240,16 @@ func (s *QueryPermissionListResponseBodyData) SetState(v string) *QueryPermissio
 }
 
 func (s *QueryPermissionListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.PermissionList != nil {
+		for _, item := range s.PermissionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryPermissionListResponseBodyDataPermissionList struct {

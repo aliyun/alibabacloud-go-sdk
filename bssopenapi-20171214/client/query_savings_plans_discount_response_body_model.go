@@ -104,7 +104,12 @@ func (s *QuerySavingsPlansDiscountResponseBody) SetSuccess(v bool) *QuerySavings
 }
 
 func (s *QuerySavingsPlansDiscountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QuerySavingsPlansDiscountResponseBodyData struct {
@@ -145,7 +150,16 @@ func (s *QuerySavingsPlansDiscountResponseBodyData) SetItems(v []*QuerySavingsPl
 }
 
 func (s *QuerySavingsPlansDiscountResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QuerySavingsPlansDiscountResponseBodyDataItems struct {

@@ -104,7 +104,12 @@ func (s *GetPayAsYouGoPriceResponseBody) SetSuccess(v bool) *GetPayAsYouGoPriceR
 }
 
 func (s *GetPayAsYouGoPriceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPayAsYouGoPriceResponseBodyData struct {
@@ -162,7 +167,17 @@ func (s *GetPayAsYouGoPriceResponseBodyData) SetPromotionDetails(v *GetPayAsYouG
 }
 
 func (s *GetPayAsYouGoPriceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleDetails != nil {
+		if err := s.ModuleDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PromotionDetails != nil {
+		if err := s.PromotionDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPayAsYouGoPriceResponseBodyDataModuleDetails struct {
@@ -187,7 +202,16 @@ func (s *GetPayAsYouGoPriceResponseBodyDataModuleDetails) SetModuleDetail(v []*G
 }
 
 func (s *GetPayAsYouGoPriceResponseBodyDataModuleDetails) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleDetail != nil {
+		for _, item := range s.ModuleDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPayAsYouGoPriceResponseBodyDataModuleDetailsModuleDetail struct {
@@ -302,7 +326,16 @@ func (s *GetPayAsYouGoPriceResponseBodyDataPromotionDetails) SetPromotionDetail(
 }
 
 func (s *GetPayAsYouGoPriceResponseBodyDataPromotionDetails) Validate() error {
-	return dara.Validate(s)
+	if s.PromotionDetail != nil {
+		for _, item := range s.PromotionDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPayAsYouGoPriceResponseBodyDataPromotionDetailsPromotionDetail struct {

@@ -104,7 +104,12 @@ func (s *QueryPriceEntityListResponseBody) SetSuccess(v bool) *QueryPriceEntityL
 }
 
 func (s *QueryPriceEntityListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryPriceEntityListResponseBodyData struct {
@@ -130,7 +135,16 @@ func (s *QueryPriceEntityListResponseBodyData) SetPriceEntityInfoList(v []*Query
 }
 
 func (s *QueryPriceEntityListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.PriceEntityInfoList != nil {
+		for _, item := range s.PriceEntityInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryPriceEntityListResponseBodyDataPriceEntityInfoList struct {
@@ -186,7 +200,16 @@ func (s *QueryPriceEntityListResponseBodyDataPriceEntityInfoList) SetPriceFactor
 }
 
 func (s *QueryPriceEntityListResponseBodyDataPriceEntityInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.PriceFactorList != nil {
+		for _, item := range s.PriceFactorList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryPriceEntityListResponseBodyDataPriceEntityInfoListPriceFactorList struct {

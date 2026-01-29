@@ -104,7 +104,12 @@ func (s *QueryOrdersResponseBody) SetSuccess(v bool) *QueryOrdersResponseBody {
 }
 
 func (s *QueryOrdersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryOrdersResponseBodyData struct {
@@ -190,7 +195,12 @@ func (s *QueryOrdersResponseBodyData) SetTotalCount(v int32) *QueryOrdersRespons
 }
 
 func (s *QueryOrdersResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.OrderList != nil {
+		if err := s.OrderList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryOrdersResponseBodyDataOrderList struct {
@@ -215,7 +225,16 @@ func (s *QueryOrdersResponseBodyDataOrderList) SetOrder(v []*QueryOrdersResponse
 }
 
 func (s *QueryOrdersResponseBodyDataOrderList) Validate() error {
-	return dara.Validate(s)
+	if s.Order != nil {
+		for _, item := range s.Order {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryOrdersResponseBodyDataOrderListOrder struct {

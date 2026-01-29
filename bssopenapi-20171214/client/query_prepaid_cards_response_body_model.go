@@ -104,7 +104,12 @@ func (s *QueryPrepaidCardsResponseBody) SetSuccess(v bool) *QueryPrepaidCardsRes
 }
 
 func (s *QueryPrepaidCardsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryPrepaidCardsResponseBodyData struct {
@@ -129,7 +134,16 @@ func (s *QueryPrepaidCardsResponseBodyData) SetPrepaidCard(v []*QueryPrepaidCard
 }
 
 func (s *QueryPrepaidCardsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.PrepaidCard != nil {
+		for _, item := range s.PrepaidCard {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryPrepaidCardsResponseBodyDataPrepaidCard struct {

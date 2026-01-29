@@ -104,7 +104,12 @@ func (s *DescribeSavingsPlansCoverageDetailResponseBody) SetSuccess(v bool) *Des
 }
 
 func (s *DescribeSavingsPlansCoverageDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSavingsPlansCoverageDetailResponseBodyData struct {
@@ -160,7 +165,16 @@ func (s *DescribeSavingsPlansCoverageDetailResponseBodyData) SetTotalCount(v int
 }
 
 func (s *DescribeSavingsPlansCoverageDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSavingsPlansCoverageDetailResponseBodyDataItems struct {

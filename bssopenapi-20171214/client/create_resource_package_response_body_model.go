@@ -110,7 +110,12 @@ func (s *CreateResourcePackageResponseBody) SetSuccess(v bool) *CreateResourcePa
 }
 
 func (s *CreateResourcePackageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateResourcePackageResponseBodyData struct {

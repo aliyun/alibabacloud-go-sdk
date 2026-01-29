@@ -59,5 +59,10 @@ func (s *QueryBillToOSSSubscriptionResponse) SetBody(v *QueryBillToOSSSubscripti
 }
 
 func (s *QueryBillToOSSSubscriptionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

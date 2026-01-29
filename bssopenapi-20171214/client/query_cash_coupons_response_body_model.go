@@ -104,7 +104,12 @@ func (s *QueryCashCouponsResponseBody) SetSuccess(v bool) *QueryCashCouponsRespo
 }
 
 func (s *QueryCashCouponsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryCashCouponsResponseBodyData struct {
@@ -129,7 +134,16 @@ func (s *QueryCashCouponsResponseBodyData) SetCashCoupon(v []*QueryCashCouponsRe
 }
 
 func (s *QueryCashCouponsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CashCoupon != nil {
+		for _, item := range s.CashCoupon {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryCashCouponsResponseBodyDataCashCoupon struct {

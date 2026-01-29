@@ -104,7 +104,12 @@ func (s *GetSubscriptionPriceResponseBody) SetSuccess(v bool) *GetSubscriptionPr
 }
 
 func (s *GetSubscriptionPriceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSubscriptionPriceResponseBodyData struct {
@@ -222,7 +227,17 @@ func (s *GetSubscriptionPriceResponseBodyData) SetTradePrice(v float32) *GetSubs
 }
 
 func (s *GetSubscriptionPriceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleDetails != nil {
+		if err := s.ModuleDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PromotionDetails != nil {
+		if err := s.PromotionDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSubscriptionPriceResponseBodyDataModuleDetails struct {
@@ -247,7 +262,16 @@ func (s *GetSubscriptionPriceResponseBodyDataModuleDetails) SetModuleDetail(v []
 }
 
 func (s *GetSubscriptionPriceResponseBodyDataModuleDetails) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleDetail != nil {
+		for _, item := range s.ModuleDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSubscriptionPriceResponseBodyDataModuleDetailsModuleDetail struct {
@@ -362,7 +386,16 @@ func (s *GetSubscriptionPriceResponseBodyDataPromotionDetails) SetPromotionDetai
 }
 
 func (s *GetSubscriptionPriceResponseBodyDataPromotionDetails) Validate() error {
-	return dara.Validate(s)
+	if s.PromotionDetail != nil {
+		for _, item := range s.PromotionDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSubscriptionPriceResponseBodyDataPromotionDetailsPromotionDetail struct {

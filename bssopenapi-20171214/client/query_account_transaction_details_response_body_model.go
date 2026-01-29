@@ -104,7 +104,12 @@ func (s *QueryAccountTransactionDetailsResponseBody) SetSuccess(v bool) *QueryAc
 }
 
 func (s *QueryAccountTransactionDetailsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryAccountTransactionDetailsResponseBodyData struct {
@@ -190,7 +195,12 @@ func (s *QueryAccountTransactionDetailsResponseBodyData) SetTotalCount(v int32) 
 }
 
 func (s *QueryAccountTransactionDetailsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AccountTransactionsList != nil {
+		if err := s.AccountTransactionsList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsList struct {
@@ -215,7 +225,16 @@ func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsList) 
 }
 
 func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsList) Validate() error {
-	return dara.Validate(s)
+	if s.AccountTransactionsList != nil {
+		for _, item := range s.AccountTransactionsList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList struct {

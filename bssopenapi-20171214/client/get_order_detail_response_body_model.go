@@ -104,7 +104,12 @@ func (s *GetOrderDetailResponseBody) SetSuccess(v bool) *GetOrderDetailResponseB
 }
 
 func (s *GetOrderDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOrderDetailResponseBodyData struct {
@@ -190,7 +195,12 @@ func (s *GetOrderDetailResponseBodyData) SetTotalCount(v int32) *GetOrderDetailR
 }
 
 func (s *GetOrderDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.OrderList != nil {
+		if err := s.OrderList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOrderDetailResponseBodyDataOrderList struct {
@@ -215,7 +225,16 @@ func (s *GetOrderDetailResponseBodyDataOrderList) SetOrder(v []*GetOrderDetailRe
 }
 
 func (s *GetOrderDetailResponseBodyDataOrderList) Validate() error {
-	return dara.Validate(s)
+	if s.Order != nil {
+		for _, item := range s.Order {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrder struct {
@@ -668,7 +687,17 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetUsageStartTime(v strin
 }
 
 func (s *GetOrderDetailResponseBodyDataOrderListOrder) Validate() error {
-	return dara.Validate(s)
+	if s.BillModuleConfig != nil {
+		if err := s.BillModuleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OriginalModuleConfig != nil {
+		if err := s.OriginalModuleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfig struct {
@@ -693,7 +722,16 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfig) SetBillMo
 }
 
 func (s *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfig) Validate() error {
-	return dara.Validate(s)
+	if s.BillModuleConfig != nil {
+		for _, item := range s.BillModuleConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfig struct {
@@ -764,7 +802,12 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleC
 }
 
 func (s *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfig) Validate() error {
-	return dara.Validate(s)
+	if s.BillModuleProperties != nil {
+		if err := s.BillModuleProperties.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModuleProperties struct {
@@ -789,7 +832,16 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleC
 }
 
 func (s *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModuleProperties) Validate() error {
-	return dara.Validate(s)
+	if s.BillModuleProperties != nil {
+		for _, item := range s.BillModuleProperties {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModulePropertiesBillModuleProperties struct {
@@ -874,7 +926,16 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfig) SetOr
 }
 
 func (s *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfig) Validate() error {
-	return dara.Validate(s)
+	if s.OriginalModuleConfig != nil {
+		for _, item := range s.OriginalModuleConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfig struct {
@@ -930,7 +991,12 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOrigina
 }
 
 func (s *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfig) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleProperties != nil {
+		if err := s.ModuleProperties.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModuleProperties struct {
@@ -955,7 +1021,16 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOrigina
 }
 
 func (s *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModuleProperties) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleProperties != nil {
+		for _, item := range s.ModuleProperties {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModulePropertiesModuleProperties struct {

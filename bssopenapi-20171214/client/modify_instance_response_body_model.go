@@ -104,7 +104,12 @@ func (s *ModifyInstanceResponseBody) SetSuccess(v bool) *ModifyInstanceResponseB
 }
 
 func (s *ModifyInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyInstanceResponseBodyData struct {

@@ -104,7 +104,12 @@ func (s *QueryUserOmsDataResponseBody) SetSuccess(v bool) *QueryUserOmsDataRespo
 }
 
 func (s *QueryUserOmsDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryUserOmsDataResponseBodyData struct {

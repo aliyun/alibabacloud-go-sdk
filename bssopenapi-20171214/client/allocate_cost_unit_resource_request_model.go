@@ -122,7 +122,16 @@ func (s *AllocateCostUnitResourceRequest) SetToUnitUserId(v int64) *AllocateCost
 }
 
 func (s *AllocateCostUnitResourceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceInstanceList != nil {
+		for _, item := range s.ResourceInstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AllocateCostUnitResourceRequestResourceInstanceList struct {

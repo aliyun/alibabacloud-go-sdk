@@ -104,7 +104,12 @@ func (s *QueryFinancialAccountInfoResponseBody) SetSuccess(v bool) *QueryFinanci
 }
 
 func (s *QueryFinancialAccountInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryFinancialAccountInfoResponseBodyData struct {

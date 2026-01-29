@@ -104,7 +104,12 @@ func (s *CreateAgAccountResponseBody) SetSuccess(v bool) *CreateAgAccountRespons
 }
 
 func (s *CreateAgAccountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AgRelationDto != nil {
+		if err := s.AgRelationDto.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAgAccountResponseBodyAgRelationDto struct {

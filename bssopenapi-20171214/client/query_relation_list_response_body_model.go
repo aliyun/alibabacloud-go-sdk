@@ -104,7 +104,12 @@ func (s *QueryRelationListResponseBody) SetSuccess(v bool) *QueryRelationListRes
 }
 
 func (s *QueryRelationListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryRelationListResponseBodyData struct {
@@ -175,7 +180,16 @@ func (s *QueryRelationListResponseBodyData) SetTotalCount(v int32) *QueryRelatio
 }
 
 func (s *QueryRelationListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.FinancialRelationInfoList != nil {
+		for _, item := range s.FinancialRelationInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryRelationListResponseBodyDataFinancialRelationInfoList struct {

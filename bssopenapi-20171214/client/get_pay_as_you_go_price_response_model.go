@@ -59,5 +59,10 @@ func (s *GetPayAsYouGoPriceResponse) SetBody(v *GetPayAsYouGoPriceResponseBody) 
 }
 
 func (s *GetPayAsYouGoPriceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

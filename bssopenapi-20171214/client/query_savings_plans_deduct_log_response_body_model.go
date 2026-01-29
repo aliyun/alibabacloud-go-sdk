@@ -100,7 +100,12 @@ func (s *QuerySavingsPlansDeductLogResponseBody) SetSuccess(v bool) *QuerySaving
 }
 
 func (s *QuerySavingsPlansDeductLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QuerySavingsPlansDeductLogResponseBodyData struct {
@@ -171,7 +176,16 @@ func (s *QuerySavingsPlansDeductLogResponseBodyData) SetTotalCount(v int32) *Que
 }
 
 func (s *QuerySavingsPlansDeductLogResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QuerySavingsPlansDeductLogResponseBodyDataItems struct {

@@ -95,7 +95,12 @@ func (s *DescribeInstanceAmortizedCostByConsumePeriodResponseBody) SetSuccess(v 
 }
 
 func (s *DescribeInstanceAmortizedCostByConsumePeriodResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceAmortizedCostByConsumePeriodResponseBodyData struct {
@@ -185,7 +190,16 @@ func (s *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyData) SetTotalC
 }
 
 func (s *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems struct {

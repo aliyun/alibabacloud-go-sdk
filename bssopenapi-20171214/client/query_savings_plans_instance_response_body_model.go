@@ -104,7 +104,12 @@ func (s *QuerySavingsPlansInstanceResponseBody) SetSuccess(v bool) *QuerySavings
 }
 
 func (s *QuerySavingsPlansInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QuerySavingsPlansInstanceResponseBodyData struct {
@@ -175,7 +180,16 @@ func (s *QuerySavingsPlansInstanceResponseBodyData) SetTotalCount(v int32) *Quer
 }
 
 func (s *QuerySavingsPlansInstanceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QuerySavingsPlansInstanceResponseBodyDataItems struct {
@@ -550,7 +564,16 @@ func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetUtilization(v string
 }
 
 func (s *QuerySavingsPlansInstanceResponseBodyDataItems) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QuerySavingsPlansInstanceResponseBodyDataItemsTags struct {

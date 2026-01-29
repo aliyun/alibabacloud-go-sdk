@@ -104,7 +104,12 @@ func (s *QueryBillToOSSSubscriptionResponseBody) SetSuccess(v bool) *QueryBillTo
 }
 
 func (s *QueryBillToOSSSubscriptionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryBillToOSSSubscriptionResponseBodyData struct {
@@ -160,7 +165,12 @@ func (s *QueryBillToOSSSubscriptionResponseBodyData) SetItems(v *QueryBillToOSSS
 }
 
 func (s *QueryBillToOSSSubscriptionResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryBillToOSSSubscriptionResponseBodyDataItems struct {
@@ -185,7 +195,16 @@ func (s *QueryBillToOSSSubscriptionResponseBodyDataItems) SetItem(v []*QueryBill
 }
 
 func (s *QueryBillToOSSSubscriptionResponseBodyDataItems) Validate() error {
-	return dara.Validate(s)
+	if s.Item != nil {
+		for _, item := range s.Item {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryBillToOSSSubscriptionResponseBodyDataItemsItem struct {

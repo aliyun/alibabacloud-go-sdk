@@ -104,7 +104,12 @@ func (s *QueryInstanceBillResponseBody) SetSuccess(v bool) *QueryInstanceBillRes
 }
 
 func (s *QueryInstanceBillResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryInstanceBillResponseBodyData struct {
@@ -220,7 +225,12 @@ func (s *QueryInstanceBillResponseBodyData) SetTotalCount(v int32) *QueryInstanc
 }
 
 func (s *QueryInstanceBillResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryInstanceBillResponseBodyDataItems struct {
@@ -245,7 +255,16 @@ func (s *QueryInstanceBillResponseBodyDataItems) SetItem(v []*QueryInstanceBillR
 }
 
 func (s *QueryInstanceBillResponseBodyDataItems) Validate() error {
-	return dara.Validate(s)
+	if s.Item != nil {
+		for _, item := range s.Item {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryInstanceBillResponseBodyDataItemsItem struct {

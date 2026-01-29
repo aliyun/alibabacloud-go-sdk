@@ -104,7 +104,12 @@ func (s *QueryProductListResponseBody) SetSuccess(v bool) *QueryProductListRespo
 }
 
 func (s *QueryProductListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryProductListResponseBodyData struct {
@@ -175,7 +180,12 @@ func (s *QueryProductListResponseBodyData) SetTotalCount(v int32) *QueryProductL
 }
 
 func (s *QueryProductListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ProductList != nil {
+		if err := s.ProductList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryProductListResponseBodyDataProductList struct {
@@ -200,7 +210,16 @@ func (s *QueryProductListResponseBodyDataProductList) SetProduct(v []*QueryProdu
 }
 
 func (s *QueryProductListResponseBodyDataProductList) Validate() error {
-	return dara.Validate(s)
+	if s.Product != nil {
+		for _, item := range s.Product {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryProductListResponseBodyDataProductListProduct struct {

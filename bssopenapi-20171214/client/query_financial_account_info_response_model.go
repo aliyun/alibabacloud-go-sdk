@@ -59,5 +59,10 @@ func (s *QueryFinancialAccountInfoResponse) SetBody(v *QueryFinancialAccountInfo
 }
 
 func (s *QueryFinancialAccountInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

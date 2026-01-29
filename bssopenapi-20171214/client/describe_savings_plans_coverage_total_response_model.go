@@ -59,5 +59,10 @@ func (s *DescribeSavingsPlansCoverageTotalResponse) SetBody(v *DescribeSavingsPl
 }
 
 func (s *DescribeSavingsPlansCoverageTotalResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

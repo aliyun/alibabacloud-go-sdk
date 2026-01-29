@@ -128,7 +128,16 @@ func (s *RenewChangeInstanceRequest) SetRenewPeriod(v int64) *RenewChangeInstanc
 }
 
 func (s *RenewChangeInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Parameter != nil {
+		for _, item := range s.Parameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RenewChangeInstanceRequestParameter struct {
