@@ -1054,7 +1054,8 @@ type NodepoolScalingGroup struct {
 	// example:
 	//
 	// 2
-	DesiredSize *int64 `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
+	DesiredSize *int64      `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
+	DiskInit    []*DiskInit `json:"disk_init,omitempty" xml:"disk_init,omitempty" type:"Repeated"`
 	// example:
 	//
 	// aliyun_2_1903_x64_20G_alibase_20200904.vhd
@@ -1209,6 +1210,10 @@ func (s *NodepoolScalingGroup) GetDeploymentsetId() *string {
 
 func (s *NodepoolScalingGroup) GetDesiredSize() *int64 {
 	return s.DesiredSize
+}
+
+func (s *NodepoolScalingGroup) GetDiskInit() []*DiskInit {
+	return s.DiskInit
 }
 
 func (s *NodepoolScalingGroup) GetImageId() *string {
@@ -1390,6 +1395,11 @@ func (s *NodepoolScalingGroup) SetDeploymentsetId(v string) *NodepoolScalingGrou
 
 func (s *NodepoolScalingGroup) SetDesiredSize(v int64) *NodepoolScalingGroup {
 	s.DesiredSize = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetDiskInit(v []*DiskInit) *NodepoolScalingGroup {
+	s.DiskInit = v
 	return s
 }
 
@@ -1586,6 +1596,15 @@ func (s *NodepoolScalingGroup) SetVswitchIds(v []*string) *NodepoolScalingGroup 
 func (s *NodepoolScalingGroup) Validate() error {
 	if s.DataDisks != nil {
 		for _, item := range s.DataDisks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DiskInit != nil {
+		for _, item := range s.DiskInit {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err

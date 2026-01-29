@@ -1548,7 +1548,8 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	// example:
 	//
 	// 0
-	DesiredSize *int64 `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
+	DesiredSize *int64      `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
+	DiskInit    []*DiskInit `json:"disk_init,omitempty" xml:"disk_init,omitempty" type:"Repeated"`
 	// The custom image ID. By default, the image provided by Container Service for Kubernetes (ACK) is used.
 	//
 	// example:
@@ -1944,6 +1945,10 @@ func (s *CreateClusterNodePoolRequestScalingGroup) GetDesiredSize() *int64 {
 	return s.DesiredSize
 }
 
+func (s *CreateClusterNodePoolRequestScalingGroup) GetDiskInit() []*DiskInit {
+	return s.DiskInit
+}
+
 func (s *CreateClusterNodePoolRequestScalingGroup) GetImageId() *string {
 	return s.ImageId
 }
@@ -2144,6 +2149,11 @@ func (s *CreateClusterNodePoolRequestScalingGroup) SetDeploymentsetId(v string) 
 
 func (s *CreateClusterNodePoolRequestScalingGroup) SetDesiredSize(v int64) *CreateClusterNodePoolRequestScalingGroup {
 	s.DesiredSize = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetDiskInit(v []*DiskInit) *CreateClusterNodePoolRequestScalingGroup {
+	s.DiskInit = v
 	return s
 }
 
@@ -2360,6 +2370,15 @@ func (s *CreateClusterNodePoolRequestScalingGroup) SetVswitchIds(v []*string) *C
 func (s *CreateClusterNodePoolRequestScalingGroup) Validate() error {
 	if s.DataDisks != nil {
 		for _, item := range s.DataDisks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DiskInit != nil {
+		for _, item := range s.DiskInit {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err

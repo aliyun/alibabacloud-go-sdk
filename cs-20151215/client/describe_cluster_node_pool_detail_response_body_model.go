@@ -1469,7 +1469,8 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	// example:
 	//
 	// 2
-	DesiredSize *int64 `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
+	DesiredSize *int64      `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
+	DiskInit    []*DiskInit `json:"disk_init,omitempty" xml:"disk_init,omitempty" type:"Repeated"`
 	// The ID of the custom image. You can call the `DescribeKubernetesVersionMetadata` operation to query the images supported by ACK.
 	//
 	// example:
@@ -1817,6 +1818,10 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) GetDesiredSize()
 	return s.DesiredSize
 }
 
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) GetDiskInit() []*DiskInit {
+	return s.DiskInit
+}
+
 func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) GetImageId() *string {
 	return s.ImageId
 }
@@ -2025,6 +2030,11 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetDeploymentset
 
 func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetDesiredSize(v int64) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
 	s.DesiredSize = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetDiskInit(v []*DiskInit) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.DiskInit = v
 	return s
 }
 
@@ -2251,6 +2261,15 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetVswitchIds(v 
 func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) Validate() error {
 	if s.DataDisks != nil {
 		for _, item := range s.DataDisks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DiskInit != nil {
+		for _, item := range s.DiskInit {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err

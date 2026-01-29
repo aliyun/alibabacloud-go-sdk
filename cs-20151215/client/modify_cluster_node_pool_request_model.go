@@ -1095,7 +1095,8 @@ type ModifyClusterNodePoolRequestScalingGroup struct {
 	// example:
 	//
 	// 2
-	DesiredSize *int64 `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
+	DesiredSize *int64      `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
+	DiskInit    []*DiskInit `json:"disk_init,omitempty" xml:"disk_init,omitempty" type:"Repeated"`
 	// The custom image ID. You can call the `DescribeKubernetesVersionMetadata` operation to query the images supported by ACK. By default, the latest image is used.
 	//
 	// example:
@@ -1425,6 +1426,10 @@ func (s *ModifyClusterNodePoolRequestScalingGroup) GetDesiredSize() *int64 {
 	return s.DesiredSize
 }
 
+func (s *ModifyClusterNodePoolRequestScalingGroup) GetDiskInit() []*DiskInit {
+	return s.DiskInit
+}
+
 func (s *ModifyClusterNodePoolRequestScalingGroup) GetImageId() *string {
 	return s.ImageId
 }
@@ -1596,6 +1601,11 @@ func (s *ModifyClusterNodePoolRequestScalingGroup) SetDeploymentsetId(v string) 
 
 func (s *ModifyClusterNodePoolRequestScalingGroup) SetDesiredSize(v int64) *ModifyClusterNodePoolRequestScalingGroup {
 	s.DesiredSize = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetDiskInit(v []*DiskInit) *ModifyClusterNodePoolRequestScalingGroup {
+	s.DiskInit = v
 	return s
 }
 
@@ -1782,6 +1792,15 @@ func (s *ModifyClusterNodePoolRequestScalingGroup) SetVswitchIds(v []*string) *M
 func (s *ModifyClusterNodePoolRequestScalingGroup) Validate() error {
 	if s.DataDisks != nil {
 		for _, item := range s.DataDisks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DiskInit != nil {
+		for _, item := range s.DiskInit {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err

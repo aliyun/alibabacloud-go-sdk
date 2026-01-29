@@ -40,6 +40,8 @@ type iDataDisk interface {
 }
 
 type DataDisk struct {
+	// Deprecated
+	//
 	// example:
 	//
 	// true
@@ -68,6 +70,8 @@ type DataDisk struct {
 	//
 	// true
 	Encrypted *string `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// ext4
@@ -76,6 +80,8 @@ type DataDisk struct {
 	//
 	// 0e478b7a-4262-4802-b8cb-00d3fb40****
 	KmsKeyId *string `json:"kms_key_id,omitempty" xml:"kms_key_id,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// /mnt/path1
