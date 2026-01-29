@@ -813,7 +813,9 @@ type DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstancesInvokeIn
 	// example:
 	//
 	// Success
-	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
+	InvocationStatus   *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
+	OssOutputErrorCode *string `json:"OssOutputErrorCode,omitempty" xml:"OssOutputErrorCode,omitempty"`
+	OssOutputErrorInfo *string `json:"OssOutputErrorInfo,omitempty" xml:"OssOutputErrorInfo,omitempty"`
 	// The overall execution status of the command task. The value of this parameter depends on the execution status of the command task on all the involved instances. Valid values:
 	//
 	// 	- Pending: The command is being verified or sent. When the execution state on at least one instance is Pending, the overall execution state is Pending.
@@ -946,6 +948,14 @@ func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstancesInvo
 	return s.InvocationStatus
 }
 
+func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstancesInvokeInstance) GetOssOutputErrorCode() *string {
+	return s.OssOutputErrorCode
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstancesInvokeInstance) GetOssOutputErrorInfo() *string {
+	return s.OssOutputErrorInfo
+}
+
 func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstancesInvokeInstance) GetOssOutputStatus() *string {
 	return s.OssOutputStatus
 }
@@ -1020,6 +1030,16 @@ func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstancesInvo
 
 func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstancesInvokeInstance) SetInvocationStatus(v string) *DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstancesInvokeInstance {
 	s.InvocationStatus = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstancesInvokeInstance) SetOssOutputErrorCode(v string) *DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstancesInvokeInstance {
+	s.OssOutputErrorCode = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstancesInvokeInstance) SetOssOutputErrorInfo(v string) *DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstancesInvokeInstance {
+	s.OssOutputErrorInfo = &v
 	return s
 }
 

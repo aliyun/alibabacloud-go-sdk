@@ -3870,6 +3870,10 @@ func (client *Client) CreateActivationWithOptions(request *CreateActivationReque
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
 	}
@@ -4572,6 +4576,10 @@ func (client *Client) CreateCommandWithOptions(request *CreateCommandRequest, ru
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.CommandContent) {
 		query["CommandContent"] = request.CommandContent
 	}
@@ -13237,6 +13245,10 @@ func (client *Client) DeregisterManagedInstanceWithOptions(request *DeregisterMa
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -35761,6 +35773,10 @@ func (client *Client) ModifyInvocationAttributeWithOptions(tmpReq *ModifyInvocat
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.CommandContent) {
 		query["CommandContent"] = request.CommandContent
 	}
@@ -43730,6 +43746,10 @@ func (client *Client) SendFileWithOptions(request *SendFileRequest, runtime *dar
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.Content) {
 		query["Content"] = request.Content
 	}
@@ -44250,6 +44270,10 @@ func (client *Client) StartTerminalSessionWithOptions(tmpReq *StartTerminalSessi
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.CommandLine) {
 		query["CommandLine"] = request.CommandLine
 	}

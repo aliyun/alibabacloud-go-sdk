@@ -406,7 +406,9 @@ type DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationR
 	// example:
 	//
 	// oss://testBucket/testPrefix
-	OssOutputDelivery *string `json:"OssOutputDelivery,omitempty" xml:"OssOutputDelivery,omitempty"`
+	OssOutputDelivery  *string `json:"OssOutputDelivery,omitempty" xml:"OssOutputDelivery,omitempty"`
+	OssOutputErrorCode *string `json:"OssOutputErrorCode,omitempty" xml:"OssOutputErrorCode,omitempty"`
+	OssOutputErrorInfo *string `json:"OssOutputErrorInfo,omitempty" xml:"OssOutputErrorInfo,omitempty"`
 	// The execution results.
 	//
 	// example:
@@ -551,6 +553,14 @@ func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocat
 	return s.OssOutputDelivery
 }
 
+func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult) GetOssOutputErrorCode() *string {
+	return s.OssOutputErrorCode
+}
+
+func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult) GetOssOutputErrorInfo() *string {
+	return s.OssOutputErrorInfo
+}
+
 func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult) GetOssOutputStatus() *string {
 	return s.OssOutputStatus
 }
@@ -654,6 +664,16 @@ func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocat
 
 func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult) SetOssOutputDelivery(v string) *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult {
 	s.OssOutputDelivery = &v
+	return s
+}
+
+func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult) SetOssOutputErrorCode(v string) *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult {
+	s.OssOutputErrorCode = &v
+	return s
+}
+
+func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult) SetOssOutputErrorInfo(v string) *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult {
+	s.OssOutputErrorInfo = &v
 	return s
 }
 
