@@ -13,6 +13,8 @@ type iCreateCustomDomainInput interface {
 	GetAuthConfig() *AuthConfig
 	SetCertConfig(v *CertConfig) *CreateCustomDomainInput
 	GetCertConfig() *CertConfig
+	SetCorsConfig(v *CORSConfig) *CreateCustomDomainInput
+	GetCorsConfig() *CORSConfig
 	SetDomainName(v string) *CreateCustomDomainInput
 	GetDomainName() *string
 	SetProtocol(v string) *CreateCustomDomainInput
@@ -28,6 +30,7 @@ type iCreateCustomDomainInput interface {
 type CreateCustomDomainInput struct {
 	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
 	CertConfig *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
+	CorsConfig *CORSConfig `json:"corsConfig,omitempty" xml:"corsConfig,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -59,6 +62,10 @@ func (s *CreateCustomDomainInput) GetCertConfig() *CertConfig {
 	return s.CertConfig
 }
 
+func (s *CreateCustomDomainInput) GetCorsConfig() *CORSConfig {
+	return s.CorsConfig
+}
+
 func (s *CreateCustomDomainInput) GetDomainName() *string {
 	return s.DomainName
 }
@@ -86,6 +93,11 @@ func (s *CreateCustomDomainInput) SetAuthConfig(v *AuthConfig) *CreateCustomDoma
 
 func (s *CreateCustomDomainInput) SetCertConfig(v *CertConfig) *CreateCustomDomainInput {
 	s.CertConfig = v
+	return s
+}
+
+func (s *CreateCustomDomainInput) SetCorsConfig(v *CORSConfig) *CreateCustomDomainInput {
+	s.CorsConfig = v
 	return s
 }
 
@@ -122,6 +134,11 @@ func (s *CreateCustomDomainInput) Validate() error {
 	}
 	if s.CertConfig != nil {
 		if err := s.CertConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CorsConfig != nil {
+		if err := s.CorsConfig.Validate(); err != nil {
 			return err
 		}
 	}

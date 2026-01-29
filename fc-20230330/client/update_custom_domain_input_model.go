@@ -13,6 +13,8 @@ type iUpdateCustomDomainInput interface {
 	GetAuthConfig() *AuthConfig
 	SetCertConfig(v *CertConfig) *UpdateCustomDomainInput
 	GetCertConfig() *CertConfig
+	SetCorsConfig(v *CORSConfig) *UpdateCustomDomainInput
+	GetCorsConfig() *CORSConfig
 	SetProtocol(v string) *UpdateCustomDomainInput
 	GetProtocol() *string
 	SetRouteConfig(v *RouteConfig) *UpdateCustomDomainInput
@@ -26,6 +28,7 @@ type iUpdateCustomDomainInput interface {
 type UpdateCustomDomainInput struct {
 	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
 	CertConfig *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
+	CorsConfig *CORSConfig `json:"corsConfig,omitempty" xml:"corsConfig,omitempty"`
 	// example:
 	//
 	// HTTP
@@ -51,6 +54,10 @@ func (s *UpdateCustomDomainInput) GetCertConfig() *CertConfig {
 	return s.CertConfig
 }
 
+func (s *UpdateCustomDomainInput) GetCorsConfig() *CORSConfig {
+	return s.CorsConfig
+}
+
 func (s *UpdateCustomDomainInput) GetProtocol() *string {
 	return s.Protocol
 }
@@ -74,6 +81,11 @@ func (s *UpdateCustomDomainInput) SetAuthConfig(v *AuthConfig) *UpdateCustomDoma
 
 func (s *UpdateCustomDomainInput) SetCertConfig(v *CertConfig) *UpdateCustomDomainInput {
 	s.CertConfig = v
+	return s
+}
+
+func (s *UpdateCustomDomainInput) SetCorsConfig(v *CORSConfig) *UpdateCustomDomainInput {
+	s.CorsConfig = v
 	return s
 }
 
@@ -105,6 +117,11 @@ func (s *UpdateCustomDomainInput) Validate() error {
 	}
 	if s.CertConfig != nil {
 		if err := s.CertConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CorsConfig != nil {
+		if err := s.CorsConfig.Validate(); err != nil {
 			return err
 		}
 	}

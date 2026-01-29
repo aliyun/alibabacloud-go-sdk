@@ -17,6 +17,8 @@ type iCustomDomain interface {
 	GetAuthConfig() *AuthConfig
 	SetCertConfig(v *CertConfig) *CustomDomain
 	GetCertConfig() *CertConfig
+	SetCorsConfig(v *CORSConfig) *CustomDomain
+	GetCorsConfig() *CORSConfig
 	SetCreatedTime(v string) *CustomDomain
 	GetCreatedTime() *string
 	SetDomainName(v string) *CustomDomain
@@ -43,6 +45,7 @@ type CustomDomain struct {
 	ApiVersion *string     `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
 	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
 	CertConfig *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
+	CorsConfig *CORSConfig `json:"corsConfig,omitempty" xml:"corsConfig,omitempty"`
 	// example:
 	//
 	// 2023-03-30T08:02:19Z
@@ -90,6 +93,10 @@ func (s *CustomDomain) GetAuthConfig() *AuthConfig {
 
 func (s *CustomDomain) GetCertConfig() *CertConfig {
 	return s.CertConfig
+}
+
+func (s *CustomDomain) GetCorsConfig() *CORSConfig {
+	return s.CorsConfig
 }
 
 func (s *CustomDomain) GetCreatedTime() *string {
@@ -144,6 +151,11 @@ func (s *CustomDomain) SetCertConfig(v *CertConfig) *CustomDomain {
 	return s
 }
 
+func (s *CustomDomain) SetCorsConfig(v *CORSConfig) *CustomDomain {
+	s.CorsConfig = v
+	return s
+}
+
 func (s *CustomDomain) SetCreatedTime(v string) *CustomDomain {
 	s.CreatedTime = &v
 	return s
@@ -192,6 +204,11 @@ func (s *CustomDomain) Validate() error {
 	}
 	if s.CertConfig != nil {
 		if err := s.CertConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CorsConfig != nil {
+		if err := s.CorsConfig.Validate(); err != nil {
 			return err
 		}
 	}

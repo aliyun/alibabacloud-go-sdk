@@ -13,6 +13,8 @@ type iHTTPTriggerConfig interface {
 	GetAuthConfig() *string
 	SetAuthType(v string) *HTTPTriggerConfig
 	GetAuthType() *string
+	SetCorsConfig(v *CORSConfig) *HTTPTriggerConfig
+	GetCorsConfig() *CORSConfig
 	SetDisableURLInternet(v bool) *HTTPTriggerConfig
 	GetDisableURLInternet() *bool
 	SetMethods(v []*string) *HTTPTriggerConfig
@@ -27,7 +29,8 @@ type HTTPTriggerConfig struct {
 	// example:
 	//
 	// anonymous
-	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	AuthType   *string     `json:"authType,omitempty" xml:"authType,omitempty"`
+	CorsConfig *CORSConfig `json:"corsConfig,omitempty" xml:"corsConfig,omitempty"`
 	// example:
 	//
 	// true
@@ -51,6 +54,10 @@ func (s *HTTPTriggerConfig) GetAuthType() *string {
 	return s.AuthType
 }
 
+func (s *HTTPTriggerConfig) GetCorsConfig() *CORSConfig {
+	return s.CorsConfig
+}
+
 func (s *HTTPTriggerConfig) GetDisableURLInternet() *bool {
 	return s.DisableURLInternet
 }
@@ -69,6 +76,11 @@ func (s *HTTPTriggerConfig) SetAuthType(v string) *HTTPTriggerConfig {
 	return s
 }
 
+func (s *HTTPTriggerConfig) SetCorsConfig(v *CORSConfig) *HTTPTriggerConfig {
+	s.CorsConfig = v
+	return s
+}
+
 func (s *HTTPTriggerConfig) SetDisableURLInternet(v bool) *HTTPTriggerConfig {
 	s.DisableURLInternet = &v
 	return s
@@ -80,5 +92,10 @@ func (s *HTTPTriggerConfig) SetMethods(v []*string) *HTTPTriggerConfig {
 }
 
 func (s *HTTPTriggerConfig) Validate() error {
-	return dara.Validate(s)
+	if s.CorsConfig != nil {
+		if err := s.CorsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
