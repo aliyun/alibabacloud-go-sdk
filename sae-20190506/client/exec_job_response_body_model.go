@@ -26,24 +26,56 @@ type iExecJobResponseBody interface {
 }
 
 type ExecJobResponseBody struct {
+  // The HTTP status code. Valid values: 
+  // 
+  // 	- **2xx**: The call was successful.
+  // 
+  // 	- **3xx**: The call was redirected.
+  // 
+  // 	- **4xx**: The call failed.
+  // 
+  // 	- **5xx**: A server error occurred.
+  // 
   // example:
   // 
   // 200
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // The returned data.
   Data *ExecJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+  // The error code. Valid values:
+  // 
+  // 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
+  // 
+  // 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
   ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+  // The returned message. Valid values:
+  // 
+  // 	- success: If the call is successful, **success*	- is returned.
+  // 
+  // 	- An error code: If the call fails, an error code is returned.
+  // 
   // example:
   // 
   // success
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+  // The request ID.
+  // 
   // example:
   // 
   // 67DD9A98-9CCC-5BE8-8C9E-B45E72F4****
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // Indicates whether the request was successful. Valid values:
+  // 
+  // 	- **true**
+  // 
+  // 	- **false**
+  // 
   // example:
   // 
   // true
   Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+  // The ID of the trace. This parameter is used to query the exact call information.
+  // 
   // example:
   // 
   // 0b87b7e716575071334387401e****
@@ -131,18 +163,42 @@ func (s *ExecJobResponseBody) Validate() error {
 }
 
 type ExecJobResponseBodyData struct {
+  // The HTTP status code. Valid values: 
+  // 
+  // 	- **2xx**: The call was successful.
+  // 
+  // 	- **3xx**: The call was redirected.
+  // 
+  // 	- **4xx**: The call failed.
+  // 
+  // 	- **5xx**: A server error occurred.
+  // 
   // example:
   // 
   // 200
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // The job ID.
+  // 
   // example:
   // 
   // manual-3db7a8fa-5d40-4edc-92e4-49d50eab****
   Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+  // The returned message. Valid values:
+  // 
+  // - success: If the call is successful, **success*	- is returned.
+  // 
+  // - An error code: If the call fails, an error code is returned.
+  // 
   // example:
   // 
   // success
   Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+  // Indicates whether the request was successful. Valid values:
+  // 
+  // 	- **true**
+  // 
+  // 	- **false**
+  // 
   // example:
   // 
   // true

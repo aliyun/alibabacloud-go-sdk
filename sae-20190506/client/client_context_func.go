@@ -5088,6 +5088,10 @@ func (client *Client) EnableApplicationScalingRuleWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// Executes a job.
+//
 // @param request - ExecJobRequest
 //
 // @param headers - map
@@ -5958,6 +5962,57 @@ func (client *Client) ListAppVersionsWithContext(ctx context.Context, request *L
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAppVersionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询服务实例列表
+//
+// @param request - ListApplicationCenterServiceInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationCenterServiceInstancesResponse
+func (client *Client) ListApplicationCenterServiceInstancesWithContext(ctx context.Context, request *ListApplicationCenterServiceInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListApplicationCenterServiceInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.NamespaceId) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListApplicationCenterServiceInstances"),
+		Version:     dara.String("2019-05-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/cas/v5/app/listApplicationCenterServiceInstances"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListApplicationCenterServiceInstancesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

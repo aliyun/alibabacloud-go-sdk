@@ -6652,6 +6652,10 @@ func (client *Client) EnableApplicationScalingRule(request *EnableApplicationSca
 	return _result, _err
 }
 
+// Summary:
+//
+// Executes a job.
+//
 // @param request - ExecJobRequest
 //
 // @param headers - map
@@ -6731,6 +6735,10 @@ func (client *Client) ExecJobWithOptions(request *ExecJobRequest, headers map[st
 	return _result, _err
 }
 
+// Summary:
+//
+// Executes a job.
+//
 // @param request - ExecJobRequest
 //
 // @return ExecJobResponse
@@ -7785,6 +7793,76 @@ func (client *Client) ListAppVersions(request *ListAppVersionsRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &ListAppVersionsResponse{}
 	_body, _err := client.ListAppVersionsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询服务实例列表
+//
+// @param request - ListApplicationCenterServiceInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationCenterServiceInstancesResponse
+func (client *Client) ListApplicationCenterServiceInstancesWithOptions(request *ListApplicationCenterServiceInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListApplicationCenterServiceInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.NamespaceId) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListApplicationCenterServiceInstances"),
+		Version:     dara.String("2019-05-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/cas/v5/app/listApplicationCenterServiceInstances"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListApplicationCenterServiceInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询服务实例列表
+//
+// @param request - ListApplicationCenterServiceInstancesRequest
+//
+// @return ListApplicationCenterServiceInstancesResponse
+func (client *Client) ListApplicationCenterServiceInstances(request *ListApplicationCenterServiceInstancesRequest) (_result *ListApplicationCenterServiceInstancesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListApplicationCenterServiceInstancesResponse{}
+	_body, _err := client.ListApplicationCenterServiceInstancesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

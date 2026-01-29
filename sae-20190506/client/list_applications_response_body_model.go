@@ -765,7 +765,8 @@ type ListApplicationsResponseBodyDataApplicationsChildren struct {
 	// example:
 	//
 	// 2000
-	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Cpu        *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	EnableIdle *string `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
 	// The number of instances.
 	//
 	// example:
@@ -880,6 +881,10 @@ func (s *ListApplicationsResponseBodyDataApplicationsChildren) GetCpu() *int32 {
 	return s.Cpu
 }
 
+func (s *ListApplicationsResponseBodyDataApplicationsChildren) GetEnableIdle() *string {
+	return s.EnableIdle
+}
+
 func (s *ListApplicationsResponseBodyDataApplicationsChildren) GetInstances() *int32 {
 	return s.Instances
 }
@@ -968,6 +973,11 @@ func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetBaseAppId(v st
 
 func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetCpu(v int32) *ListApplicationsResponseBodyDataApplicationsChildren {
 	s.Cpu = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetEnableIdle(v string) *ListApplicationsResponseBodyDataApplicationsChildren {
+	s.EnableIdle = &v
 	return s
 }
 
