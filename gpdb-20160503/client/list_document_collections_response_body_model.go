@@ -192,7 +192,9 @@ type ListDocumentCollectionsResponseBodyItemsCollectionList struct {
 	// example:
 	//
 	// zh_cn
-	Parser *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	Parser                *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	SparseRetrievalFields *string `json:"SparseRetrievalFields,omitempty" xml:"SparseRetrievalFields,omitempty"`
+	SupportSparse         *bool   `json:"SupportSparse,omitempty" xml:"SupportSparse,omitempty"`
 }
 
 func (s ListDocumentCollectionsResponseBodyItemsCollectionList) String() string {
@@ -231,6 +233,14 @@ func (s *ListDocumentCollectionsResponseBodyItemsCollectionList) GetParser() *st
 	return s.Parser
 }
 
+func (s *ListDocumentCollectionsResponseBodyItemsCollectionList) GetSparseRetrievalFields() *string {
+	return s.SparseRetrievalFields
+}
+
+func (s *ListDocumentCollectionsResponseBodyItemsCollectionList) GetSupportSparse() *bool {
+	return s.SupportSparse
+}
+
 func (s *ListDocumentCollectionsResponseBodyItemsCollectionList) SetCollectionName(v string) *ListDocumentCollectionsResponseBodyItemsCollectionList {
 	s.CollectionName = &v
 	return s
@@ -263,6 +273,16 @@ func (s *ListDocumentCollectionsResponseBodyItemsCollectionList) SetMetrics(v st
 
 func (s *ListDocumentCollectionsResponseBodyItemsCollectionList) SetParser(v string) *ListDocumentCollectionsResponseBodyItemsCollectionList {
 	s.Parser = &v
+	return s
+}
+
+func (s *ListDocumentCollectionsResponseBodyItemsCollectionList) SetSparseRetrievalFields(v string) *ListDocumentCollectionsResponseBodyItemsCollectionList {
+	s.SparseRetrievalFields = &v
+	return s
+}
+
+func (s *ListDocumentCollectionsResponseBodyItemsCollectionList) SetSupportSparse(v bool) *ListDocumentCollectionsResponseBodyItemsCollectionList {
+	s.SupportSparse = &v
 	return s
 }
 

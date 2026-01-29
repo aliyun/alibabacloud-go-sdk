@@ -2275,6 +2275,10 @@ func (client *Client) CreateDocumentCollectionWithOptions(tmpReq *CreateDocument
 		request.RelationshipTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RelationshipTypes, dara.String("RelationshipTypes"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.SparseVectorIndexConfig) {
+		request.SparseVectorIndexConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SparseVectorIndexConfig, dara.String("SparseVectorIndexConfig"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Collection) {
 		query["Collection"] = request.Collection
@@ -2366,6 +2370,18 @@ func (client *Client) CreateDocumentCollectionWithOptions(tmpReq *CreateDocument
 
 	if !dara.IsNil(request.RelationshipTypesShrink) {
 		query["RelationshipTypes"] = request.RelationshipTypesShrink
+	}
+
+	if !dara.IsNil(request.SparseRetrievalFields) {
+		query["SparseRetrievalFields"] = request.SparseRetrievalFields
+	}
+
+	if !dara.IsNil(request.SparseVectorIndexConfigShrink) {
+		query["SparseVectorIndexConfig"] = request.SparseVectorIndexConfigShrink
+	}
+
+	if !dara.IsNil(request.SupportSparse) {
+		query["SupportSparse"] = request.SupportSparse
 	}
 
 	req := &openapiutil.OpenApiRequest{

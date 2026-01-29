@@ -55,6 +55,12 @@ type iCreateDocumentCollectionShrinkRequest interface {
 	GetRegionId() *string
 	SetRelationshipTypesShrink(v string) *CreateDocumentCollectionShrinkRequest
 	GetRelationshipTypesShrink() *string
+	SetSparseRetrievalFields(v string) *CreateDocumentCollectionShrinkRequest
+	GetSparseRetrievalFields() *string
+	SetSparseVectorIndexConfigShrink(v string) *CreateDocumentCollectionShrinkRequest
+	GetSparseVectorIndexConfigShrink() *string
+	SetSupportSparse(v bool) *CreateDocumentCollectionShrinkRequest
+	GetSupportSparse() *bool
 }
 
 type CreateDocumentCollectionShrinkRequest struct {
@@ -236,8 +242,11 @@ type CreateDocumentCollectionShrinkRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RelationshipTypesShrink *string `json:"RelationshipTypes,omitempty" xml:"RelationshipTypes,omitempty"`
+	RegionId                      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RelationshipTypesShrink       *string `json:"RelationshipTypes,omitempty" xml:"RelationshipTypes,omitempty"`
+	SparseRetrievalFields         *string `json:"SparseRetrievalFields,omitempty" xml:"SparseRetrievalFields,omitempty"`
+	SparseVectorIndexConfigShrink *string `json:"SparseVectorIndexConfig,omitempty" xml:"SparseVectorIndexConfig,omitempty"`
+	SupportSparse                 *bool   `json:"SupportSparse,omitempty" xml:"SupportSparse,omitempty"`
 }
 
 func (s CreateDocumentCollectionShrinkRequest) String() string {
@@ -338,6 +347,18 @@ func (s *CreateDocumentCollectionShrinkRequest) GetRegionId() *string {
 
 func (s *CreateDocumentCollectionShrinkRequest) GetRelationshipTypesShrink() *string {
 	return s.RelationshipTypesShrink
+}
+
+func (s *CreateDocumentCollectionShrinkRequest) GetSparseRetrievalFields() *string {
+	return s.SparseRetrievalFields
+}
+
+func (s *CreateDocumentCollectionShrinkRequest) GetSparseVectorIndexConfigShrink() *string {
+	return s.SparseVectorIndexConfigShrink
+}
+
+func (s *CreateDocumentCollectionShrinkRequest) GetSupportSparse() *bool {
+	return s.SupportSparse
 }
 
 func (s *CreateDocumentCollectionShrinkRequest) SetCollection(v string) *CreateDocumentCollectionShrinkRequest {
@@ -452,6 +473,21 @@ func (s *CreateDocumentCollectionShrinkRequest) SetRegionId(v string) *CreateDoc
 
 func (s *CreateDocumentCollectionShrinkRequest) SetRelationshipTypesShrink(v string) *CreateDocumentCollectionShrinkRequest {
 	s.RelationshipTypesShrink = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionShrinkRequest) SetSparseRetrievalFields(v string) *CreateDocumentCollectionShrinkRequest {
+	s.SparseRetrievalFields = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionShrinkRequest) SetSparseVectorIndexConfigShrink(v string) *CreateDocumentCollectionShrinkRequest {
+	s.SparseVectorIndexConfigShrink = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionShrinkRequest) SetSupportSparse(v bool) *CreateDocumentCollectionShrinkRequest {
+	s.SupportSparse = &v
 	return s
 }
 

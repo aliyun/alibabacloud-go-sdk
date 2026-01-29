@@ -55,6 +55,12 @@ type iCreateDocumentCollectionRequest interface {
 	GetRegionId() *string
 	SetRelationshipTypes(v []*string) *CreateDocumentCollectionRequest
 	GetRelationshipTypes() []*string
+	SetSparseRetrievalFields(v string) *CreateDocumentCollectionRequest
+	GetSparseRetrievalFields() *string
+	SetSparseVectorIndexConfig(v *CreateDocumentCollectionRequestSparseVectorIndexConfig) *CreateDocumentCollectionRequest
+	GetSparseVectorIndexConfig() *CreateDocumentCollectionRequestSparseVectorIndexConfig
+	SetSupportSparse(v bool) *CreateDocumentCollectionRequest
+	GetSupportSparse() *bool
 }
 
 type CreateDocumentCollectionRequest struct {
@@ -236,8 +242,11 @@ type CreateDocumentCollectionRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId          *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RelationshipTypes []*string `json:"RelationshipTypes,omitempty" xml:"RelationshipTypes,omitempty" type:"Repeated"`
+	RegionId                *string                                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RelationshipTypes       []*string                                               `json:"RelationshipTypes,omitempty" xml:"RelationshipTypes,omitempty" type:"Repeated"`
+	SparseRetrievalFields   *string                                                 `json:"SparseRetrievalFields,omitempty" xml:"SparseRetrievalFields,omitempty"`
+	SparseVectorIndexConfig *CreateDocumentCollectionRequestSparseVectorIndexConfig `json:"SparseVectorIndexConfig,omitempty" xml:"SparseVectorIndexConfig,omitempty" type:"Struct"`
+	SupportSparse           *bool                                                   `json:"SupportSparse,omitempty" xml:"SupportSparse,omitempty"`
 }
 
 func (s CreateDocumentCollectionRequest) String() string {
@@ -338,6 +347,18 @@ func (s *CreateDocumentCollectionRequest) GetRegionId() *string {
 
 func (s *CreateDocumentCollectionRequest) GetRelationshipTypes() []*string {
 	return s.RelationshipTypes
+}
+
+func (s *CreateDocumentCollectionRequest) GetSparseRetrievalFields() *string {
+	return s.SparseRetrievalFields
+}
+
+func (s *CreateDocumentCollectionRequest) GetSparseVectorIndexConfig() *CreateDocumentCollectionRequestSparseVectorIndexConfig {
+	return s.SparseVectorIndexConfig
+}
+
+func (s *CreateDocumentCollectionRequest) GetSupportSparse() *bool {
+	return s.SupportSparse
 }
 
 func (s *CreateDocumentCollectionRequest) SetCollection(v string) *CreateDocumentCollectionRequest {
@@ -455,6 +476,61 @@ func (s *CreateDocumentCollectionRequest) SetRelationshipTypes(v []*string) *Cre
 	return s
 }
 
+func (s *CreateDocumentCollectionRequest) SetSparseRetrievalFields(v string) *CreateDocumentCollectionRequest {
+	s.SparseRetrievalFields = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionRequest) SetSparseVectorIndexConfig(v *CreateDocumentCollectionRequestSparseVectorIndexConfig) *CreateDocumentCollectionRequest {
+	s.SparseVectorIndexConfig = v
+	return s
+}
+
+func (s *CreateDocumentCollectionRequest) SetSupportSparse(v bool) *CreateDocumentCollectionRequest {
+	s.SupportSparse = &v
+	return s
+}
+
 func (s *CreateDocumentCollectionRequest) Validate() error {
+	if s.SparseVectorIndexConfig != nil {
+		if err := s.SparseVectorIndexConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateDocumentCollectionRequestSparseVectorIndexConfig struct {
+	HnswEfConstruction *int32 `json:"HnswEfConstruction,omitempty" xml:"HnswEfConstruction,omitempty"`
+	HnswM              *int32 `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
+}
+
+func (s CreateDocumentCollectionRequestSparseVectorIndexConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDocumentCollectionRequestSparseVectorIndexConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDocumentCollectionRequestSparseVectorIndexConfig) GetHnswEfConstruction() *int32 {
+	return s.HnswEfConstruction
+}
+
+func (s *CreateDocumentCollectionRequestSparseVectorIndexConfig) GetHnswM() *int32 {
+	return s.HnswM
+}
+
+func (s *CreateDocumentCollectionRequestSparseVectorIndexConfig) SetHnswEfConstruction(v int32) *CreateDocumentCollectionRequestSparseVectorIndexConfig {
+	s.HnswEfConstruction = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionRequestSparseVectorIndexConfig) SetHnswM(v int32) *CreateDocumentCollectionRequestSparseVectorIndexConfig {
+	s.HnswM = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionRequestSparseVectorIndexConfig) Validate() error {
 	return dara.Validate(s)
 }
