@@ -21,6 +21,8 @@ type iDescribeApplicationsRequest interface {
 	GetPageSize() *int32
 	SetRegionId(v string) *DescribeApplicationsRequest
 	GetRegionId() *string
+	SetTag(v []*DescribeApplicationsRequestTag) *DescribeApplicationsRequest
+	GetTag() []*DescribeApplicationsRequestTag
 }
 
 type DescribeApplicationsRequest struct {
@@ -46,7 +48,8 @@ type DescribeApplicationsRequest struct {
 	// example:
 	//
 	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Tag      []*DescribeApplicationsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeApplicationsRequest) String() string {
@@ -81,6 +84,10 @@ func (s *DescribeApplicationsRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *DescribeApplicationsRequest) GetTag() []*DescribeApplicationsRequestTag {
+	return s.Tag
+}
+
 func (s *DescribeApplicationsRequest) SetApplicationIds(v string) *DescribeApplicationsRequest {
 	s.ApplicationIds = &v
 	return s
@@ -111,6 +118,61 @@ func (s *DescribeApplicationsRequest) SetRegionId(v string) *DescribeApplication
 	return s
 }
 
+func (s *DescribeApplicationsRequest) SetTag(v []*DescribeApplicationsRequestTag) *DescribeApplicationsRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *DescribeApplicationsRequest) Validate() error {
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeApplicationsRequestTag struct {
+	// example:
+	//
+	// testKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// testValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeApplicationsRequestTag) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeApplicationsRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationsRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeApplicationsRequestTag) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeApplicationsRequestTag) SetKey(v string) *DescribeApplicationsRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeApplicationsRequestTag) SetValue(v string) *DescribeApplicationsRequestTag {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeApplicationsRequestTag) Validate() error {
 	return dara.Validate(s)
 }

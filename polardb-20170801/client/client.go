@@ -8314,6 +8314,10 @@ func (client *Client) DescribeApplicationsWithOptions(request *DescribeApplicati
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}

@@ -186,7 +186,8 @@ type DescribeApplicationsResponseBodyItemsApplications struct {
 	// example:
 	//
 	// Activated
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   *DescribeApplicationsResponseBodyItemsApplicationsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// example:
 	//
 	// cn-hangzhou-b
@@ -251,6 +252,10 @@ func (s *DescribeApplicationsResponseBodyItemsApplications) GetRegionId() *strin
 
 func (s *DescribeApplicationsResponseBodyItemsApplications) GetStatus() *string {
 	return s.Status
+}
+
+func (s *DescribeApplicationsResponseBodyItemsApplications) GetTags() *DescribeApplicationsResponseBodyItemsApplicationsTags {
+	return s.Tags
 }
 
 func (s *DescribeApplicationsResponseBodyItemsApplications) GetZoneId() *string {
@@ -322,6 +327,11 @@ func (s *DescribeApplicationsResponseBodyItemsApplications) SetStatus(v string) 
 	return s
 }
 
+func (s *DescribeApplicationsResponseBodyItemsApplications) SetTags(v *DescribeApplicationsResponseBodyItemsApplicationsTags) *DescribeApplicationsResponseBodyItemsApplications {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeApplicationsResponseBodyItemsApplications) SetZoneId(v string) *DescribeApplicationsResponseBodyItemsApplications {
 	s.ZoneId = &v
 	return s
@@ -330,6 +340,11 @@ func (s *DescribeApplicationsResponseBodyItemsApplications) SetZoneId(v string) 
 func (s *DescribeApplicationsResponseBodyItemsApplications) Validate() error {
 	if s.Endpoints != nil {
 		if err := s.Endpoints.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
 			return err
 		}
 	}
@@ -421,5 +436,80 @@ func (s *DescribeApplicationsResponseBodyItemsApplicationsEndpointsEndpoint) Set
 }
 
 func (s *DescribeApplicationsResponseBodyItemsApplicationsEndpointsEndpoint) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeApplicationsResponseBodyItemsApplicationsTags struct {
+	Tag []*DescribeApplicationsResponseBodyItemsApplicationsTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeApplicationsResponseBodyItemsApplicationsTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeApplicationsResponseBodyItemsApplicationsTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationsResponseBodyItemsApplicationsTags) GetTag() []*DescribeApplicationsResponseBodyItemsApplicationsTagsTag {
+	return s.Tag
+}
+
+func (s *DescribeApplicationsResponseBodyItemsApplicationsTags) SetTag(v []*DescribeApplicationsResponseBodyItemsApplicationsTagsTag) *DescribeApplicationsResponseBodyItemsApplicationsTags {
+	s.Tag = v
+	return s
+}
+
+func (s *DescribeApplicationsResponseBodyItemsApplicationsTags) Validate() error {
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeApplicationsResponseBodyItemsApplicationsTagsTag struct {
+	// example:
+	//
+	// testKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// testValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeApplicationsResponseBodyItemsApplicationsTagsTag) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeApplicationsResponseBodyItemsApplicationsTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationsResponseBodyItemsApplicationsTagsTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeApplicationsResponseBodyItemsApplicationsTagsTag) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeApplicationsResponseBodyItemsApplicationsTagsTag) SetKey(v string) *DescribeApplicationsResponseBodyItemsApplicationsTagsTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeApplicationsResponseBodyItemsApplicationsTagsTag) SetValue(v string) *DescribeApplicationsResponseBodyItemsApplicationsTagsTag {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeApplicationsResponseBodyItemsApplicationsTagsTag) Validate() error {
 	return dara.Validate(s)
 }

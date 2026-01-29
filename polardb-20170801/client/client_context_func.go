@@ -6561,6 +6561,10 @@ func (client *Client) DescribeApplicationsWithContext(ctx context.Context, reque
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
