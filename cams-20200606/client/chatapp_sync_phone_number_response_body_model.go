@@ -142,6 +142,7 @@ func (s *ChatappSyncPhoneNumberResponseBody) Validate() error {
 }
 
 type ChatappSyncPhoneNumberResponseBodyPhoneNumbers struct {
+	CallingConfigure *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigure `json:"CallingConfigure,omitempty" xml:"CallingConfigure,omitempty" type:"Struct"`
 	// The verification state of the phone number.
 	//
 	// Valid values:
@@ -272,6 +273,10 @@ func (s ChatappSyncPhoneNumberResponseBodyPhoneNumbers) GoString() string {
 	return s.String()
 }
 
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbers) GetCallingConfigure() *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigure {
+	return s.CallingConfigure
+}
+
 func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbers) GetCodeVerificationStatus() *string {
 	return s.CodeVerificationStatus
 }
@@ -322,6 +327,11 @@ func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbers) GetUpQueue() *string {
 
 func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbers) GetVerifiedName() *string {
 	return s.VerifiedName
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbers) SetCallingConfigure(v *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigure) *ChatappSyncPhoneNumberResponseBodyPhoneNumbers {
+	s.CallingConfigure = v
+	return s
 }
 
 func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbers) SetCodeVerificationStatus(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbers {
@@ -390,5 +400,322 @@ func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbers) SetVerifiedName(v strin
 }
 
 func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbers) Validate() error {
+	if s.CallingConfigure != nil {
+		if err := s.CallingConfigure.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigure struct {
+	Calling *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCalling `json:"Calling,omitempty" xml:"Calling,omitempty" type:"Struct"`
+	// example:
+	//
+	// http://aliyun.com
+	CallingCallbackUrl *string `json:"CallingCallbackUrl,omitempty" xml:"CallingCallbackUrl,omitempty"`
+	// example:
+	//
+	// 100
+	MaxTalkTime *int64 `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
+}
+
+func (s ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigure) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigure) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigure) GetCalling() *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCalling {
+	return s.Calling
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigure) GetCallingCallbackUrl() *string {
+	return s.CallingCallbackUrl
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigure) GetMaxTalkTime() *int64 {
+	return s.MaxTalkTime
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigure) SetCalling(v *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCalling) *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigure {
+	s.Calling = v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigure) SetCallingCallbackUrl(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigure {
+	s.CallingCallbackUrl = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigure) SetMaxTalkTime(v int64) *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigure {
+	s.MaxTalkTime = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigure) Validate() error {
+	if s.Calling != nil {
+		if err := s.Calling.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCalling struct {
+	CallHours *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHours `json:"CallHours,omitempty" xml:"CallHours,omitempty" type:"Struct"`
+	// example:
+	//
+	// DEFAULT
+	CallIconVisibility *string `json:"CallIconVisibility,omitempty" xml:"CallIconVisibility,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
+	CallbackPermissionStatus *string `json:"CallbackPermissionStatus,omitempty" xml:"CallbackPermissionStatus,omitempty"`
+	// example:
+	//
+	// ENABLED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCalling) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCalling) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCalling) GetCallHours() *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHours {
+	return s.CallHours
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCalling) GetCallIconVisibility() *string {
+	return s.CallIconVisibility
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCalling) GetCallbackPermissionStatus() *string {
+	return s.CallbackPermissionStatus
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCalling) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCalling) SetCallHours(v *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHours) *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCalling {
+	s.CallHours = v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCalling) SetCallIconVisibility(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCalling {
+	s.CallIconVisibility = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCalling) SetCallbackPermissionStatus(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCalling {
+	s.CallbackPermissionStatus = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCalling) SetStatus(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCalling {
+	s.Status = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCalling) Validate() error {
+	if s.CallHours != nil {
+		if err := s.CallHours.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHours struct {
+	HolidaySchedule []*ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursHolidaySchedule `json:"HolidaySchedule,omitempty" xml:"HolidaySchedule,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ENABLED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Asia/Shanghai
+	TimezoneId           *string                                                                                               `json:"TimezoneId,omitempty" xml:"TimezoneId,omitempty"`
+	WeeklyOperatingHours []*ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursWeeklyOperatingHours `json:"WeeklyOperatingHours,omitempty" xml:"WeeklyOperatingHours,omitempty" type:"Repeated"`
+}
+
+func (s ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHours) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHours) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHours) GetHolidaySchedule() []*ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursHolidaySchedule {
+	return s.HolidaySchedule
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHours) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHours) GetTimezoneId() *string {
+	return s.TimezoneId
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHours) GetWeeklyOperatingHours() []*ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursWeeklyOperatingHours {
+	return s.WeeklyOperatingHours
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHours) SetHolidaySchedule(v []*ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursHolidaySchedule) *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHours {
+	s.HolidaySchedule = v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHours) SetStatus(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHours {
+	s.Status = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHours) SetTimezoneId(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHours {
+	s.TimezoneId = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHours) SetWeeklyOperatingHours(v []*ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursWeeklyOperatingHours) *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHours {
+	s.WeeklyOperatingHours = v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHours) Validate() error {
+	if s.HolidaySchedule != nil {
+		for _, item := range s.HolidaySchedule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.WeeklyOperatingHours != nil {
+		for _, item := range s.WeeklyOperatingHours {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursHolidaySchedule struct {
+	// example:
+	//
+	// 2026-01-01
+	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// example:
+	//
+	// 2359
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 0000
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursHolidaySchedule) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursHolidaySchedule) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursHolidaySchedule) GetDate() *string {
+	return s.Date
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursHolidaySchedule) GetEndTime() *string {
+	return s.EndTime
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursHolidaySchedule) GetStartTime() *string {
+	return s.StartTime
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursHolidaySchedule) SetDate(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursHolidaySchedule {
+	s.Date = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursHolidaySchedule) SetEndTime(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursHolidaySchedule {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursHolidaySchedule) SetStartTime(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursHolidaySchedule {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursHolidaySchedule) Validate() error {
+	return dara.Validate(s)
+}
+
+type ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursWeeklyOperatingHours struct {
+	// example:
+	//
+	// 2359
+	CloseTime *string `json:"CloseTime,omitempty" xml:"CloseTime,omitempty"`
+	// example:
+	//
+	// MONDAY
+	DayOfWeek *string `json:"DayOfWeek,omitempty" xml:"DayOfWeek,omitempty"`
+	// example:
+	//
+	// 0000
+	OpenTime *string `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
+}
+
+func (s ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursWeeklyOperatingHours) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursWeeklyOperatingHours) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursWeeklyOperatingHours) GetCloseTime() *string {
+	return s.CloseTime
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursWeeklyOperatingHours) GetDayOfWeek() *string {
+	return s.DayOfWeek
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursWeeklyOperatingHours) GetOpenTime() *string {
+	return s.OpenTime
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursWeeklyOperatingHours) SetCloseTime(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursWeeklyOperatingHours {
+	s.CloseTime = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursWeeklyOperatingHours) SetDayOfWeek(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursWeeklyOperatingHours {
+	s.DayOfWeek = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursWeeklyOperatingHours) SetOpenTime(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursWeeklyOperatingHours {
+	s.OpenTime = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursWeeklyOperatingHours) Validate() error {
 	return dara.Validate(s)
 }

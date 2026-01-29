@@ -11716,3 +11716,85 @@ func (client *Client) UpdateWabaMmlStatusWithContext(ctx context.Context, reques
 	_err = dara.Convert(_body, &_result)
 	return _result, _err
 }
+
+// Summary:
+//
+// # Whatsapp 语音电话
+//
+// @param tmpReq - WhatsappCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return WhatsappCallResponse
+func (client *Client) WhatsappCallWithContext(ctx context.Context, tmpReq *WhatsappCallRequest, runtime *dara.RuntimeOptions) (_result *WhatsappCallResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &WhatsappCallShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Session) {
+		request.SessionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Session, dara.String("Session"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessNumber) {
+		query["BusinessNumber"] = request.BusinessNumber
+	}
+
+	if !dara.IsNil(request.CallAction) {
+		query["CallAction"] = request.CallAction
+	}
+
+	if !dara.IsNil(request.CallId) {
+		query["CallId"] = request.CallId
+	}
+
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SessionShrink) {
+		query["Session"] = request.SessionShrink
+	}
+
+	if !dara.IsNil(request.UserNumber) {
+		query["UserNumber"] = request.UserNumber
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("WhatsappCall"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &WhatsappCallResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
