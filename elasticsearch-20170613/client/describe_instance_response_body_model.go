@@ -119,6 +119,7 @@ type DescribeInstanceResponseBodyResult struct {
 	// true
 	HaveKibana *bool                                           `json:"haveKibana,omitempty" xml:"haveKibana,omitempty"`
 	IkHotDicts []*DescribeInstanceResponseBodyResultIkHotDicts `json:"ikHotDicts,omitempty" xml:"ikHotDicts,omitempty" type:"Repeated"`
+	Inited     *bool                                           `json:"inited,omitempty" xml:"inited,omitempty"`
 	// example:
 	//
 	// advanced
@@ -313,6 +314,10 @@ func (s *DescribeInstanceResponseBodyResult) GetHaveKibana() *bool {
 
 func (s *DescribeInstanceResponseBodyResult) GetIkHotDicts() []*DescribeInstanceResponseBodyResultIkHotDicts {
 	return s.IkHotDicts
+}
+
+func (s *DescribeInstanceResponseBodyResult) GetInited() *bool {
+	return s.Inited
 }
 
 func (s *DescribeInstanceResponseBodyResult) GetInstanceCategory() *string {
@@ -564,6 +569,11 @@ func (s *DescribeInstanceResponseBodyResult) SetHaveKibana(v bool) *DescribeInst
 
 func (s *DescribeInstanceResponseBodyResult) SetIkHotDicts(v []*DescribeInstanceResponseBodyResultIkHotDicts) *DescribeInstanceResponseBodyResult {
 	s.IkHotDicts = v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyResult) SetInited(v bool) *DescribeInstanceResponseBodyResult {
+	s.Inited = &v
 	return s
 }
 
