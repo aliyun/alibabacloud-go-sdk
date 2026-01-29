@@ -106,7 +106,8 @@ type GetJobResponseBodyJobInfo struct {
 	// example:
 	//
 	// HPC
-	JobScheduler *string `json:"JobScheduler,omitempty" xml:"JobScheduler,omitempty"`
+	JobScheduler   *string                                  `json:"JobScheduler,omitempty" xml:"JobScheduler,omitempty"`
+	SecurityPolicy *GetJobResponseBodyJobInfoSecurityPolicy `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty" type:"Struct"`
 	// The time when the job started.
 	//
 	// example:
@@ -189,6 +190,10 @@ func (s *GetJobResponseBodyJobInfo) GetJobScheduler() *string {
 	return s.JobScheduler
 }
 
+func (s *GetJobResponseBodyJobInfo) GetSecurityPolicy() *GetJobResponseBodyJobInfoSecurityPolicy {
+	return s.SecurityPolicy
+}
+
 func (s *GetJobResponseBodyJobInfo) GetStartTime() *string {
 	return s.StartTime
 }
@@ -246,6 +251,11 @@ func (s *GetJobResponseBodyJobInfo) SetJobScheduler(v string) *GetJobResponseBod
 	return s
 }
 
+func (s *GetJobResponseBodyJobInfo) SetSecurityPolicy(v *GetJobResponseBodyJobInfoSecurityPolicy) *GetJobResponseBodyJobInfo {
+	s.SecurityPolicy = v
+	return s
+}
+
 func (s *GetJobResponseBodyJobInfo) SetStartTime(v string) *GetJobResponseBodyJobInfo {
 	s.StartTime = &v
 	return s
@@ -269,6 +279,11 @@ func (s *GetJobResponseBodyJobInfo) Validate() error {
 	}
 	if s.DeploymentPolicy != nil {
 		if err := s.DeploymentPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityPolicy != nil {
+		if err := s.SecurityPolicy.Validate(); err != nil {
 			return err
 		}
 	}
@@ -548,6 +563,61 @@ func (s *GetJobResponseBodyJobInfoDeploymentPolicyTags) SetTagValue(v string) *G
 }
 
 func (s *GetJobResponseBodyJobInfoDeploymentPolicyTags) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetJobResponseBodyJobInfoSecurityPolicy struct {
+	SecurityGroup *GetJobResponseBodyJobInfoSecurityPolicySecurityGroup `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty" type:"Struct"`
+}
+
+func (s GetJobResponseBodyJobInfoSecurityPolicy) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetJobResponseBodyJobInfoSecurityPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobResponseBodyJobInfoSecurityPolicy) GetSecurityGroup() *GetJobResponseBodyJobInfoSecurityPolicySecurityGroup {
+	return s.SecurityGroup
+}
+
+func (s *GetJobResponseBodyJobInfoSecurityPolicy) SetSecurityGroup(v *GetJobResponseBodyJobInfoSecurityPolicySecurityGroup) *GetJobResponseBodyJobInfoSecurityPolicy {
+	s.SecurityGroup = v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfoSecurityPolicy) Validate() error {
+	if s.SecurityGroup != nil {
+		if err := s.SecurityGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetJobResponseBodyJobInfoSecurityPolicySecurityGroup struct {
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+}
+
+func (s GetJobResponseBodyJobInfoSecurityPolicySecurityGroup) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetJobResponseBodyJobInfoSecurityPolicySecurityGroup) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobResponseBodyJobInfoSecurityPolicySecurityGroup) GetSecurityGroupIds() []*string {
+	return s.SecurityGroupIds
+}
+
+func (s *GetJobResponseBodyJobInfoSecurityPolicySecurityGroup) SetSecurityGroupIds(v []*string) *GetJobResponseBodyJobInfoSecurityPolicySecurityGroup {
+	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfoSecurityPolicySecurityGroup) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -867,6 +937,7 @@ type GetJobResponseBodyJobInfoTasksTaskSpec struct {
 	RetryPolicy *GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicy `json:"RetryPolicy,omitempty" xml:"RetryPolicy,omitempty" type:"Struct"`
 	// The task execution configurations.
 	TaskExecutor []*GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutor `json:"TaskExecutor,omitempty" xml:"TaskExecutor,omitempty" type:"Repeated"`
+	VolumeMount  []*GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount  `json:"VolumeMount,omitempty" xml:"VolumeMount,omitempty" type:"Repeated"`
 }
 
 func (s GetJobResponseBodyJobInfoTasksTaskSpec) String() string {
@@ -889,6 +960,10 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpec) GetTaskExecutor() []*GetJobResp
 	return s.TaskExecutor
 }
 
+func (s *GetJobResponseBodyJobInfoTasksTaskSpec) GetVolumeMount() []*GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount {
+	return s.VolumeMount
+}
+
 func (s *GetJobResponseBodyJobInfoTasksTaskSpec) SetResource(v *GetJobResponseBodyJobInfoTasksTaskSpecResource) *GetJobResponseBodyJobInfoTasksTaskSpec {
 	s.Resource = v
 	return s
@@ -901,6 +976,11 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpec) SetRetryPolicy(v *GetJobRespons
 
 func (s *GetJobResponseBodyJobInfoTasksTaskSpec) SetTaskExecutor(v []*GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutor) *GetJobResponseBodyJobInfoTasksTaskSpec {
 	s.TaskExecutor = v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfoTasksTaskSpec) SetVolumeMount(v []*GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount) *GetJobResponseBodyJobInfoTasksTaskSpec {
+	s.VolumeMount = v
 	return s
 }
 
@@ -917,6 +997,15 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpec) Validate() error {
 	}
 	if s.TaskExecutor != nil {
 		for _, item := range s.TaskExecutor {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VolumeMount != nil {
+		for _, item := range s.VolumeMount {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -1238,5 +1327,50 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM) SetScript(v strin
 }
 
 func (s *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount struct {
+	MountOptions *string `json:"MountOptions,omitempty" xml:"MountOptions,omitempty"`
+	MountPath    *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	VolumeDriver *string `json:"VolumeDriver,omitempty" xml:"VolumeDriver,omitempty"`
+}
+
+func (s GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount) GetMountOptions() *string {
+	return s.MountOptions
+}
+
+func (s *GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount) GetMountPath() *string {
+	return s.MountPath
+}
+
+func (s *GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount) GetVolumeDriver() *string {
+	return s.VolumeDriver
+}
+
+func (s *GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount) SetMountOptions(v string) *GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount {
+	s.MountOptions = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount) SetMountPath(v string) *GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount {
+	s.MountPath = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount) SetVolumeDriver(v string) *GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount {
+	s.VolumeDriver = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount) Validate() error {
 	return dara.Validate(s)
 }
