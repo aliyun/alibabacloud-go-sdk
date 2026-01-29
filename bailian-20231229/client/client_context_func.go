@@ -653,6 +653,10 @@ func (client *Client) CreateIndexWithContext(ctx context.Context, WorkspaceId *s
 		query["chunkMode"] = request.ChunkMode
 	}
 
+	if !dara.IsNil(request.ConnectId) {
+		query["connectId"] = request.ConnectId
+	}
+
 	if !dara.IsNil(request.Database) {
 		query["database"] = request.Database
 	}
@@ -663,6 +667,10 @@ func (client *Client) CreateIndexWithContext(ctx context.Context, WorkspaceId *s
 
 	if !dara.IsNil(request.EnableHeaders) {
 		query["enableHeaders"] = request.EnableHeaders
+	}
+
+	if !dara.IsNil(request.KnowledgeScene) {
+		query["knowledgeScene"] = request.KnowledgeScene
 	}
 
 	if !dara.IsNil(request.MetaExtractColumnsShrink) {

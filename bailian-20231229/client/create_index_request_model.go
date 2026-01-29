@@ -51,12 +51,16 @@ type iCreateIndexRequest interface {
 	GetTableIds() []*string
 	SetChunkMode(v string) *CreateIndexRequest
 	GetChunkMode() *string
+	SetConnectId(v string) *CreateIndexRequest
+	GetConnectId() *string
 	SetDatabase(v string) *CreateIndexRequest
 	GetDatabase() *string
 	SetDatasourceCode(v string) *CreateIndexRequest
 	GetDatasourceCode() *string
 	SetEnableHeaders(v bool) *CreateIndexRequest
 	GetEnableHeaders() *bool
+	SetKnowledgeScene(v string) *CreateIndexRequest
+	GetKnowledgeScene() *string
 	SetMetaExtractColumns(v []*CreateIndexRequestMetaExtractColumns) *CreateIndexRequest
 	GetMetaExtractColumns() []*CreateIndexRequestMetaExtractColumns
 	SetPipelineCommercialCu(v int32) *CreateIndexRequest
@@ -220,6 +224,7 @@ type CreateIndexRequest struct {
 	//
 	// regex
 	ChunkMode      *string `json:"chunkMode,omitempty" xml:"chunkMode,omitempty"`
+	ConnectId      *string `json:"connectId,omitempty" xml:"connectId,omitempty"`
 	Database       *string `json:"database,omitempty" xml:"database,omitempty"`
 	DatasourceCode *string `json:"datasourceCode,omitempty" xml:"datasourceCode,omitempty"`
 	// Whether to treat the first row of all .xlsx and .xls files as headers and concatenate them into each text chunk. This prevents the models from mistakenly interpreting headers as regular data rows.
@@ -237,7 +242,8 @@ type CreateIndexRequest struct {
 	// example:
 	//
 	// false
-	EnableHeaders *bool `json:"enableHeaders,omitempty" xml:"enableHeaders,omitempty"`
+	EnableHeaders  *bool   `json:"enableHeaders,omitempty" xml:"enableHeaders,omitempty"`
+	KnowledgeScene *string `json:"knowledgeScene,omitempty" xml:"knowledgeScene,omitempty"`
 	// The metadata extraction configurations. Metadata refers to a set of additional attributes associated with unstructured data, which are integrated into text chunks in key-value pairs. For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html).
 	MetaExtractColumns []*CreateIndexRequestMetaExtractColumns `json:"metaExtractColumns,omitempty" xml:"metaExtractColumns,omitempty" type:"Repeated"`
 	// example:
@@ -347,6 +353,10 @@ func (s *CreateIndexRequest) GetChunkMode() *string {
 	return s.ChunkMode
 }
 
+func (s *CreateIndexRequest) GetConnectId() *string {
+	return s.ConnectId
+}
+
 func (s *CreateIndexRequest) GetDatabase() *string {
 	return s.Database
 }
@@ -357,6 +367,10 @@ func (s *CreateIndexRequest) GetDatasourceCode() *string {
 
 func (s *CreateIndexRequest) GetEnableHeaders() *bool {
 	return s.EnableHeaders
+}
+
+func (s *CreateIndexRequest) GetKnowledgeScene() *string {
+	return s.KnowledgeScene
 }
 
 func (s *CreateIndexRequest) GetMetaExtractColumns() []*CreateIndexRequestMetaExtractColumns {
@@ -484,6 +498,11 @@ func (s *CreateIndexRequest) SetChunkMode(v string) *CreateIndexRequest {
 	return s
 }
 
+func (s *CreateIndexRequest) SetConnectId(v string) *CreateIndexRequest {
+	s.ConnectId = &v
+	return s
+}
+
 func (s *CreateIndexRequest) SetDatabase(v string) *CreateIndexRequest {
 	s.Database = &v
 	return s
@@ -496,6 +515,11 @@ func (s *CreateIndexRequest) SetDatasourceCode(v string) *CreateIndexRequest {
 
 func (s *CreateIndexRequest) SetEnableHeaders(v bool) *CreateIndexRequest {
 	s.EnableHeaders = &v
+	return s
+}
+
+func (s *CreateIndexRequest) SetKnowledgeScene(v string) *CreateIndexRequest {
+	s.KnowledgeScene = &v
 	return s
 }
 

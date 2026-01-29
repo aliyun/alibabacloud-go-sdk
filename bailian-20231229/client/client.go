@@ -873,6 +873,10 @@ func (client *Client) CreateIndexWithOptions(WorkspaceId *string, tmpReq *Create
 		query["chunkMode"] = request.ChunkMode
 	}
 
+	if !dara.IsNil(request.ConnectId) {
+		query["connectId"] = request.ConnectId
+	}
+
 	if !dara.IsNil(request.Database) {
 		query["database"] = request.Database
 	}
@@ -883,6 +887,10 @@ func (client *Client) CreateIndexWithOptions(WorkspaceId *string, tmpReq *Create
 
 	if !dara.IsNil(request.EnableHeaders) {
 		query["enableHeaders"] = request.EnableHeaders
+	}
+
+	if !dara.IsNil(request.KnowledgeScene) {
+		query["knowledgeScene"] = request.KnowledgeScene
 	}
 
 	if !dara.IsNil(request.MetaExtractColumnsShrink) {

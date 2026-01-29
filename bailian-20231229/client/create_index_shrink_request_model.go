@@ -51,12 +51,16 @@ type iCreateIndexShrinkRequest interface {
 	GetTableIdsShrink() *string
 	SetChunkMode(v string) *CreateIndexShrinkRequest
 	GetChunkMode() *string
+	SetConnectId(v string) *CreateIndexShrinkRequest
+	GetConnectId() *string
 	SetDatabase(v string) *CreateIndexShrinkRequest
 	GetDatabase() *string
 	SetDatasourceCode(v string) *CreateIndexShrinkRequest
 	GetDatasourceCode() *string
 	SetEnableHeaders(v bool) *CreateIndexShrinkRequest
 	GetEnableHeaders() *bool
+	SetKnowledgeScene(v string) *CreateIndexShrinkRequest
+	GetKnowledgeScene() *string
 	SetMetaExtractColumnsShrink(v string) *CreateIndexShrinkRequest
 	GetMetaExtractColumnsShrink() *string
 	SetPipelineCommercialCu(v int32) *CreateIndexShrinkRequest
@@ -220,6 +224,7 @@ type CreateIndexShrinkRequest struct {
 	//
 	// regex
 	ChunkMode      *string `json:"chunkMode,omitempty" xml:"chunkMode,omitempty"`
+	ConnectId      *string `json:"connectId,omitempty" xml:"connectId,omitempty"`
 	Database       *string `json:"database,omitempty" xml:"database,omitempty"`
 	DatasourceCode *string `json:"datasourceCode,omitempty" xml:"datasourceCode,omitempty"`
 	// Whether to treat the first row of all .xlsx and .xls files as headers and concatenate them into each text chunk. This prevents the models from mistakenly interpreting headers as regular data rows.
@@ -237,7 +242,8 @@ type CreateIndexShrinkRequest struct {
 	// example:
 	//
 	// false
-	EnableHeaders *bool `json:"enableHeaders,omitempty" xml:"enableHeaders,omitempty"`
+	EnableHeaders  *bool   `json:"enableHeaders,omitempty" xml:"enableHeaders,omitempty"`
+	KnowledgeScene *string `json:"knowledgeScene,omitempty" xml:"knowledgeScene,omitempty"`
 	// The metadata extraction configurations. Metadata refers to a set of additional attributes associated with unstructured data, which are integrated into text chunks in key-value pairs. For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html).
 	MetaExtractColumnsShrink *string `json:"metaExtractColumns,omitempty" xml:"metaExtractColumns,omitempty"`
 	// example:
@@ -347,6 +353,10 @@ func (s *CreateIndexShrinkRequest) GetChunkMode() *string {
 	return s.ChunkMode
 }
 
+func (s *CreateIndexShrinkRequest) GetConnectId() *string {
+	return s.ConnectId
+}
+
 func (s *CreateIndexShrinkRequest) GetDatabase() *string {
 	return s.Database
 }
@@ -357,6 +367,10 @@ func (s *CreateIndexShrinkRequest) GetDatasourceCode() *string {
 
 func (s *CreateIndexShrinkRequest) GetEnableHeaders() *bool {
 	return s.EnableHeaders
+}
+
+func (s *CreateIndexShrinkRequest) GetKnowledgeScene() *string {
+	return s.KnowledgeScene
 }
 
 func (s *CreateIndexShrinkRequest) GetMetaExtractColumnsShrink() *string {
@@ -484,6 +498,11 @@ func (s *CreateIndexShrinkRequest) SetChunkMode(v string) *CreateIndexShrinkRequ
 	return s
 }
 
+func (s *CreateIndexShrinkRequest) SetConnectId(v string) *CreateIndexShrinkRequest {
+	s.ConnectId = &v
+	return s
+}
+
 func (s *CreateIndexShrinkRequest) SetDatabase(v string) *CreateIndexShrinkRequest {
 	s.Database = &v
 	return s
@@ -496,6 +515,11 @@ func (s *CreateIndexShrinkRequest) SetDatasourceCode(v string) *CreateIndexShrin
 
 func (s *CreateIndexShrinkRequest) SetEnableHeaders(v bool) *CreateIndexShrinkRequest {
 	s.EnableHeaders = &v
+	return s
+}
+
+func (s *CreateIndexShrinkRequest) SetKnowledgeScene(v string) *CreateIndexShrinkRequest {
+	s.KnowledgeScene = &v
 	return s
 }
 
