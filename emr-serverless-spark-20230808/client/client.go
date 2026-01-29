@@ -808,6 +808,96 @@ func (client *Client) CreateProcessDefinitionWithSchedule(bizId *string, request
 
 // Summary:
 //
+// 创建Ray集群
+//
+// @param request - CreateRayClusterRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRayClusterResponse
+func (client *Client) CreateRayClusterWithOptions(workspaceId *string, request *CreateRayClusterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateRayClusterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DisplayReleaseVersion) {
+		body["displayReleaseVersion"] = request.DisplayReleaseVersion
+	}
+
+	if !dara.IsNil(request.ExtraParam) {
+		body["extraParam"] = request.ExtraParam
+	}
+
+	if !dara.IsNil(request.HeadSpec) {
+		body["headSpec"] = request.HeadSpec
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NetworkServiceName) {
+		body["networkServiceName"] = request.NetworkServiceName
+	}
+
+	if !dara.IsNil(request.WorkerSpec) {
+		body["workerSpec"] = request.WorkerSpec
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRayCluster"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/rayCluster"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRayClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Ray集群
+//
+// @param request - CreateRayClusterRequest
+//
+// @return CreateRayClusterResponse
+func (client *Client) CreateRayCluster(workspaceId *string, request *CreateRayClusterRequest) (_result *CreateRayClusterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateRayClusterResponse{}
+	_body, _err := client.CreateRayClusterWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a session.
 //
 // @param request - CreateSessionClusterRequest
@@ -1387,6 +1477,56 @@ func (client *Client) DeleteLivyComputeToken(workspaceBizId *string, livyCompute
 	headers := make(map[string]*string)
 	_result = &DeleteLivyComputeTokenResponse{}
 	_body, _err := client.DeleteLivyComputeTokenWithOptions(workspaceBizId, livyComputeId, tokenId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Ray集群
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRayClusterResponse
+func (client *Client) DeleteRayClusterWithOptions(workspaceId *string, clusterId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRayClusterResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteRayCluster"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/rayCluster/" + dara.PercentEncode(dara.StringValue(clusterId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteRayClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Ray集群
+//
+// @return DeleteRayClusterResponse
+func (client *Client) DeleteRayCluster(workspaceId *string, clusterId *string) (_result *DeleteRayClusterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteRayClusterResponse{}
+	_body, _err := client.DeleteRayClusterWithOptions(workspaceId, clusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2003,6 +2143,56 @@ func (client *Client) GetLivyComputeToken(workspaceBizId *string, livyComputeId 
 	headers := make(map[string]*string)
 	_result = &GetLivyComputeTokenResponse{}
 	_body, _err := client.GetLivyComputeTokenWithOptions(workspaceBizId, livyComputeId, tokenId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Ray集群
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRayClusterResponse
+func (client *Client) GetRayClusterWithOptions(workspaceId *string, clusterId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRayClusterResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRayCluster"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/rayCluster/" + dara.PercentEncode(dara.StringValue(clusterId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRayClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Ray集群
+//
+// @return GetRayClusterResponse
+func (client *Client) GetRayCluster(workspaceId *string, clusterId *string) (_result *GetRayClusterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetRayClusterResponse{}
+	_body, _err := client.GetRayClusterWithOptions(workspaceId, clusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3242,6 +3432,76 @@ func (client *Client) ListMembers(workspaceId *string, request *ListMembersReque
 
 // Summary:
 //
+// 列出Ray集群
+//
+// @param request - ListRayClusterRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRayClusterResponse
+func (client *Client) ListRayClusterWithOptions(workspaceId *string, request *ListRayClusterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRayClusterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNum) {
+		query["pageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRayCluster"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/rayCluster"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRayClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出Ray集群
+//
+// @param request - ListRayClusterRequest
+//
+// @return ListRayClusterResponse
+func (client *Client) ListRayCluster(workspaceId *string, request *ListRayClusterRequest) (_result *ListRayClusterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListRayClusterResponse{}
+	_body, _err := client.ListRayClusterWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the list of published versions of E-MapReduce (EMR) Serverless Spark.
 //
 // @param request - ListReleaseVersionsRequest
@@ -4134,6 +4394,72 @@ func (client *Client) StartProcessInstance(bizId *string, request *StartProcessI
 
 // Summary:
 //
+// 启动Ray集群
+//
+// @param request - StartRayClusterRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartRayClusterResponse
+func (client *Client) StartRayClusterWithOptions(workspaceId *string, clusterId *string, request *StartRayClusterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartRayClusterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["clientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StartRayCluster"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/rayCluster/" + dara.PercentEncode(dara.StringValue(clusterId)) + "/start"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StartRayClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动Ray集群
+//
+// @param request - StartRayClusterRequest
+//
+// @return StartRayClusterResponse
+func (client *Client) StartRayCluster(workspaceId *string, clusterId *string, request *StartRayClusterRequest) (_result *StartRayClusterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartRayClusterResponse{}
+	_body, _err := client.StartRayClusterWithOptions(workspaceId, clusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Starts a session.
 //
 // @param request - StartSessionClusterRequest
@@ -4317,6 +4643,72 @@ func (client *Client) StopLivyCompute(workspaceBizId *string, livyComputeId *str
 	headers := make(map[string]*string)
 	_result = &StopLivyComputeResponse{}
 	_body, _err := client.StopLivyComputeWithOptions(workspaceBizId, livyComputeId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止Ray集群
+//
+// @param request - StopRayClusterRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopRayClusterResponse
+func (client *Client) StopRayClusterWithOptions(workspaceId *string, clusterId *string, request *StopRayClusterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopRayClusterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["instanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StopRayCluster"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/rayCluster/" + dara.PercentEncode(dara.StringValue(clusterId)) + "/stop"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StopRayClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止Ray集群
+//
+// @param request - StopRayClusterRequest
+//
+// @return StopRayClusterResponse
+func (client *Client) StopRayCluster(workspaceId *string, clusterId *string, request *StopRayClusterRequest) (_result *StopRayClusterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopRayClusterResponse{}
+	_body, _err := client.StopRayClusterWithOptions(workspaceId, clusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4929,6 +5321,96 @@ func (client *Client) UpdateProcessDefinitionWithSchedule(bizId *string, code *s
 	headers := make(map[string]*string)
 	_result = &UpdateProcessDefinitionWithScheduleResponse{}
 	_body, _err := client.UpdateProcessDefinitionWithScheduleWithOptions(bizId, code, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Ray集群
+//
+// @param request - UpdateRayClusterRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRayClusterResponse
+func (client *Client) UpdateRayClusterWithOptions(workspaceId *string, clusterId *string, request *UpdateRayClusterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateRayClusterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DisplayReleaseVersion) {
+		body["displayReleaseVersion"] = request.DisplayReleaseVersion
+	}
+
+	if !dara.IsNil(request.ExtraParam) {
+		body["extraParam"] = request.ExtraParam
+	}
+
+	if !dara.IsNil(request.HeadSpec) {
+		body["headSpec"] = request.HeadSpec
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NetworkServiceName) {
+		body["networkServiceName"] = request.NetworkServiceName
+	}
+
+	if !dara.IsNil(request.WorkerSpec) {
+		body["workerSpec"] = request.WorkerSpec
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateRayCluster"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/rayCluster/" + dara.PercentEncode(dara.StringValue(clusterId))),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateRayClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Ray集群
+//
+// @param request - UpdateRayClusterRequest
+//
+// @return UpdateRayClusterResponse
+func (client *Client) UpdateRayCluster(workspaceId *string, clusterId *string, request *UpdateRayClusterRequest) (_result *UpdateRayClusterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateRayClusterResponse{}
+	_body, _err := client.UpdateRayClusterWithOptions(workspaceId, clusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
