@@ -131,7 +131,8 @@ type CheckResultResponseBodyResult struct {
 	// example:
 	//
 	// **
-	ExtRiskInfo *string `json:"ExtRiskInfo,omitempty" xml:"ExtRiskInfo,omitempty"`
+	ExtRiskInfo   *string `json:"ExtRiskInfo,omitempty" xml:"ExtRiskInfo,omitempty"`
+	ExtSourceInfo *string `json:"ExtSourceInfo,omitempty" xml:"ExtSourceInfo,omitempty"`
 	// Whether the authentication is passed.
 	//
 	// - Y: Passed
@@ -182,6 +183,10 @@ func (s *CheckResultResponseBodyResult) GetExtRiskInfo() *string {
 	return s.ExtRiskInfo
 }
 
+func (s *CheckResultResponseBodyResult) GetExtSourceInfo() *string {
+	return s.ExtSourceInfo
+}
+
 func (s *CheckResultResponseBodyResult) GetPassed() *string {
 	return s.Passed
 }
@@ -217,6 +222,11 @@ func (s *CheckResultResponseBodyResult) SetExtInfo(v string) *CheckResultRespons
 
 func (s *CheckResultResponseBodyResult) SetExtRiskInfo(v string) *CheckResultResponseBodyResult {
 	s.ExtRiskInfo = &v
+	return s
+}
+
+func (s *CheckResultResponseBodyResult) SetExtSourceInfo(v string) *CheckResultResponseBodyResult {
+	s.ExtSourceInfo = &v
 	return s
 }
 

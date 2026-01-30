@@ -43,6 +43,8 @@ type iInitializeRequest interface {
 	GetDocumentNumber() *string
 	SetEditOcrResult(v string) *InitializeRequest
 	GetEditOcrResult() *string
+	SetEmail(v string) *InitializeRequest
+	GetEmail() *string
 	SetExperienceCode(v string) *InitializeRequest
 	GetExperienceCode() *string
 	SetFaceGroupCodes(v string) *InitializeRequest
@@ -71,6 +73,8 @@ type iInitializeRequest interface {
 	GetMerchantUserId() *string
 	SetMetaInfo(v string) *InitializeRequest
 	GetMetaInfo() *string
+	SetMobile(v string) *InitializeRequest
+	GetMobile() *string
 	SetModel(v string) *InitializeRequest
 	GetModel() *string
 	SetOcr(v string) *InitializeRequest
@@ -242,6 +246,7 @@ type InitializeRequest struct {
 	//
 	// 0
 	EditOcrResult *string `json:"EditOcrResult,omitempty" xml:"EditOcrResult,omitempty"`
+	Email         *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// Experience code
 	//
 	// example:
@@ -342,6 +347,7 @@ type InitializeRequest struct {
 	//
 	// {\\"bioMetaInfo\\":\\"4.1.0:2916352,0\\",\\"deviceType\\":\\"web\\",\\"ua\\":\\"Mozilla/5.0 (Macintosh
 	MetaInfo *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
+	Mobile   *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	// The type of liveness detection to be performed:
 	//
 	// - **LIVENESS*	- (default): Blinking action liveness detection.
@@ -607,6 +613,10 @@ func (s *InitializeRequest) GetEditOcrResult() *string {
 	return s.EditOcrResult
 }
 
+func (s *InitializeRequest) GetEmail() *string {
+	return s.Email
+}
+
 func (s *InitializeRequest) GetExperienceCode() *string {
 	return s.ExperienceCode
 }
@@ -661,6 +671,10 @@ func (s *InitializeRequest) GetMerchantUserId() *string {
 
 func (s *InitializeRequest) GetMetaInfo() *string {
 	return s.MetaInfo
+}
+
+func (s *InitializeRequest) GetMobile() *string {
+	return s.Mobile
 }
 
 func (s *InitializeRequest) GetModel() *string {
@@ -824,6 +838,11 @@ func (s *InitializeRequest) SetEditOcrResult(v string) *InitializeRequest {
 	return s
 }
 
+func (s *InitializeRequest) SetEmail(v string) *InitializeRequest {
+	s.Email = &v
+	return s
+}
+
 func (s *InitializeRequest) SetExperienceCode(v string) *InitializeRequest {
 	s.ExperienceCode = &v
 	return s
@@ -891,6 +910,11 @@ func (s *InitializeRequest) SetMerchantUserId(v string) *InitializeRequest {
 
 func (s *InitializeRequest) SetMetaInfo(v string) *InitializeRequest {
 	s.MetaInfo = &v
+	return s
+}
+
+func (s *InitializeRequest) SetMobile(v string) *InitializeRequest {
+	s.Mobile = &v
 	return s
 }
 

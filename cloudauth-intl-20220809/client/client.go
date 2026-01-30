@@ -3128,6 +3128,10 @@ func (client *Client) InitializeWithOptions(tmpReq *InitializeRequest, runtime *
 		query["EditOcrResult"] = request.EditOcrResult
 	}
 
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
 	if !dara.IsNil(request.ExperienceCode) {
 		query["ExperienceCode"] = request.ExperienceCode
 	}
@@ -3178,6 +3182,10 @@ func (client *Client) InitializeWithOptions(tmpReq *InitializeRequest, runtime *
 
 	if !dara.IsNil(request.MetaInfo) {
 		query["MetaInfo"] = request.MetaInfo
+	}
+
+	if !dara.IsNil(request.Mobile) {
+		query["Mobile"] = request.Mobile
 	}
 
 	if !dara.IsNil(request.Model) {

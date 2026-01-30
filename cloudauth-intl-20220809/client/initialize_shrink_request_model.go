@@ -43,6 +43,8 @@ type iInitializeShrinkRequest interface {
 	GetDocumentNumber() *string
 	SetEditOcrResult(v string) *InitializeShrinkRequest
 	GetEditOcrResult() *string
+	SetEmail(v string) *InitializeShrinkRequest
+	GetEmail() *string
 	SetExperienceCode(v string) *InitializeShrinkRequest
 	GetExperienceCode() *string
 	SetFaceGroupCodes(v string) *InitializeShrinkRequest
@@ -71,6 +73,8 @@ type iInitializeShrinkRequest interface {
 	GetMerchantUserId() *string
 	SetMetaInfo(v string) *InitializeShrinkRequest
 	GetMetaInfo() *string
+	SetMobile(v string) *InitializeShrinkRequest
+	GetMobile() *string
 	SetModel(v string) *InitializeShrinkRequest
 	GetModel() *string
 	SetOcr(v string) *InitializeShrinkRequest
@@ -242,6 +246,7 @@ type InitializeShrinkRequest struct {
 	//
 	// 0
 	EditOcrResult *string `json:"EditOcrResult,omitempty" xml:"EditOcrResult,omitempty"`
+	Email         *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// Experience code
 	//
 	// example:
@@ -342,6 +347,7 @@ type InitializeShrinkRequest struct {
 	//
 	// {\\"bioMetaInfo\\":\\"4.1.0:2916352,0\\",\\"deviceType\\":\\"web\\",\\"ua\\":\\"Mozilla/5.0 (Macintosh
 	MetaInfo *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
+	Mobile   *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	// The type of liveness detection to be performed:
 	//
 	// - **LIVENESS*	- (default): Blinking action liveness detection.
@@ -607,6 +613,10 @@ func (s *InitializeShrinkRequest) GetEditOcrResult() *string {
 	return s.EditOcrResult
 }
 
+func (s *InitializeShrinkRequest) GetEmail() *string {
+	return s.Email
+}
+
 func (s *InitializeShrinkRequest) GetExperienceCode() *string {
 	return s.ExperienceCode
 }
@@ -661,6 +671,10 @@ func (s *InitializeShrinkRequest) GetMerchantUserId() *string {
 
 func (s *InitializeShrinkRequest) GetMetaInfo() *string {
 	return s.MetaInfo
+}
+
+func (s *InitializeShrinkRequest) GetMobile() *string {
+	return s.Mobile
 }
 
 func (s *InitializeShrinkRequest) GetModel() *string {
@@ -824,6 +838,11 @@ func (s *InitializeShrinkRequest) SetEditOcrResult(v string) *InitializeShrinkRe
 	return s
 }
 
+func (s *InitializeShrinkRequest) SetEmail(v string) *InitializeShrinkRequest {
+	s.Email = &v
+	return s
+}
+
 func (s *InitializeShrinkRequest) SetExperienceCode(v string) *InitializeShrinkRequest {
 	s.ExperienceCode = &v
 	return s
@@ -891,6 +910,11 @@ func (s *InitializeShrinkRequest) SetMerchantUserId(v string) *InitializeShrinkR
 
 func (s *InitializeShrinkRequest) SetMetaInfo(v string) *InitializeShrinkRequest {
 	s.MetaInfo = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetMobile(v string) *InitializeShrinkRequest {
+	s.Mobile = &v
 	return s
 }
 
