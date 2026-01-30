@@ -13,6 +13,8 @@ type iUpdateResourceInstanceRequest interface {
 	GetAction() *string
 	SetNewDiskSize(v string) *UpdateResourceInstanceRequest
 	GetNewDiskSize() *string
+	SetReason(v string) *UpdateResourceInstanceRequest
+	GetReason() *string
 }
 
 type UpdateResourceInstanceRequest struct {
@@ -31,6 +33,7 @@ type UpdateResourceInstanceRequest struct {
 	// Cordon
 	Action      *string `json:"Action,omitempty" xml:"Action,omitempty"`
 	NewDiskSize *string `json:"NewDiskSize,omitempty" xml:"NewDiskSize,omitempty"`
+	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
 func (s UpdateResourceInstanceRequest) String() string {
@@ -49,6 +52,10 @@ func (s *UpdateResourceInstanceRequest) GetNewDiskSize() *string {
 	return s.NewDiskSize
 }
 
+func (s *UpdateResourceInstanceRequest) GetReason() *string {
+	return s.Reason
+}
+
 func (s *UpdateResourceInstanceRequest) SetAction(v string) *UpdateResourceInstanceRequest {
 	s.Action = &v
 	return s
@@ -56,6 +63,11 @@ func (s *UpdateResourceInstanceRequest) SetAction(v string) *UpdateResourceInsta
 
 func (s *UpdateResourceInstanceRequest) SetNewDiskSize(v string) *UpdateResourceInstanceRequest {
 	s.NewDiskSize = &v
+	return s
+}
+
+func (s *UpdateResourceInstanceRequest) SetReason(v string) *UpdateResourceInstanceRequest {
+	s.Reason = &v
 	return s
 }
 

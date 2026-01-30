@@ -4833,6 +4833,10 @@ func (client *Client) UpdateResourceInstanceWithContext(ctx context.Context, Clu
 		body["NewDiskSize"] = request.NewDiskSize
 	}
 
+	if !dara.IsNil(request.Reason) {
+		body["Reason"] = request.Reason
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),

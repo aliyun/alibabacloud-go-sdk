@@ -53,6 +53,10 @@ type iResourceInstance interface {
 	GetInstanceUsedMemory() *string
 	SetLabels(v []*ResourceInstanceLabels) *ResourceInstance
 	GetLabels() []*ResourceInstanceLabels
+	SetLastCordonOperator(v string) *ResourceInstance
+	GetLastCordonOperator() *string
+	SetLastCordonReason(v string) *ResourceInstance
+	GetLastCordonReason() *string
 	SetRegion(v string) *ResourceInstance
 	GetRegion() *string
 	SetResourceId(v string) *ResourceInstance
@@ -84,6 +88,8 @@ type ResourceInstance struct {
 	InstanceUsedGpuMemory  *string                   `json:"InstanceUsedGpuMemory,omitempty" xml:"InstanceUsedGpuMemory,omitempty"`
 	InstanceUsedMemory     *string                   `json:"InstanceUsedMemory,omitempty" xml:"InstanceUsedMemory,omitempty"`
 	Labels                 []*ResourceInstanceLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	LastCordonOperator     *string                   `json:"LastCordonOperator,omitempty" xml:"LastCordonOperator,omitempty"`
+	LastCordonReason       *string                   `json:"LastCordonReason,omitempty" xml:"LastCordonReason,omitempty"`
 	Region                 *string                   `json:"Region,omitempty" xml:"Region,omitempty"`
 	ResourceId             *string                   `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	Zone                   *string                   `json:"Zone,omitempty" xml:"Zone,omitempty"`
@@ -183,6 +189,14 @@ func (s *ResourceInstance) GetInstanceUsedMemory() *string {
 
 func (s *ResourceInstance) GetLabels() []*ResourceInstanceLabels {
 	return s.Labels
+}
+
+func (s *ResourceInstance) GetLastCordonOperator() *string {
+	return s.LastCordonOperator
+}
+
+func (s *ResourceInstance) GetLastCordonReason() *string {
+	return s.LastCordonReason
 }
 
 func (s *ResourceInstance) GetRegion() *string {
@@ -304,6 +318,16 @@ func (s *ResourceInstance) SetInstanceUsedMemory(v string) *ResourceInstance {
 
 func (s *ResourceInstance) SetLabels(v []*ResourceInstanceLabels) *ResourceInstance {
 	s.Labels = v
+	return s
+}
+
+func (s *ResourceInstance) SetLastCordonOperator(v string) *ResourceInstance {
+	s.LastCordonOperator = &v
+	return s
+}
+
+func (s *ResourceInstance) SetLastCordonReason(v string) *ResourceInstance {
+	s.LastCordonReason = &v
 	return s
 }
 
