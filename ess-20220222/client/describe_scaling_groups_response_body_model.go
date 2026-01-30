@@ -445,9 +445,9 @@ type DescribeScalingGroupsResponseBodyScalingGroups struct {
 	//
 	// recycle
 	ScalingPolicy *string `json:"ScalingPolicy,omitempty" xml:"ScalingPolicy,omitempty"`
-	// The server groups.
+	// The information about the server groups.
 	//
-	// >  You can use this parameter to obtain information about ALB server groups and Network Load Balancer (NLB) server groups attached to the scaling group.
+	// >  You can use this parameter to obtain the information about the ALB, NLB, and GWLB server groups associated with a scaling group.
 	ServerGroups []*DescribeScalingGroupsResponseBodyScalingGroupsServerGroups `json:"ServerGroups,omitempty" xml:"ServerGroups,omitempty" type:"Repeated"`
 	// The allocation policy of preemptible instances. This parameter indicates the manner in which Auto Scaling selects instance types to create the required number of preemptible instances. This parameter takes effect only if you set `MultiAZPolicy` to `COMPOSABLE`. Valid values:
 	//
@@ -1550,7 +1550,7 @@ func (s *DescribeScalingGroupsResponseBodyScalingGroupsLoadBalancerConfigs) Vali
 }
 
 type DescribeScalingGroupsResponseBodyScalingGroupsServerGroups struct {
-	// The port number used by an ECS instance as a backend server in the server group.
+	// The port number used by each ECS instance in the server group.
 	//
 	// example:
 	//
@@ -1567,6 +1567,8 @@ type DescribeScalingGroupsResponseBodyScalingGroupsServerGroups struct {
 	// 	- ALB
 	//
 	// 	- NLB
+	//
+	// 	- GWLB
 	//
 	// example:
 	//

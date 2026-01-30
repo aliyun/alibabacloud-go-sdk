@@ -28,12 +28,24 @@ type iQueryHistoricalMetricRequest interface {
 }
 
 type QueryHistoricalMetricRequest struct {
+	// The end time of the historical monitoring data. The time follows the ISO8601 standard and uses UTC time.
+	//
+	// Format: yyyy-MM-ddTHH:mmZ.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2025-12-18T08:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The name of the monitoring metric of the prediction rule. Valid values:
+	//
+	// 	- CpuUtilization: the average CPU utilization.
+	//
+	// 	- IntranetRx: the inbound traffic over an internal network.
+	//
+	// 	- IntranetTx: the outbound traffic over an internal network.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -41,6 +53,8 @@ type QueryHistoricalMetricRequest struct {
 	// CpuUtilization
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -49,12 +63,18 @@ type QueryHistoricalMetricRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the scaling group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// asg-bp15oubotmrq11xe****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	// The start time of historical monitoring data. The time follows the ISO8601 standard and uses UTC time.
+	//
+	// Format: yyyy-MM-ddTHH:mmZ.
+	//
 	// This parameter is required.
 	//
 	// example:

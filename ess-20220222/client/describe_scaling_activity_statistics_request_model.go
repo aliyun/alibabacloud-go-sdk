@@ -28,17 +28,29 @@ type iDescribeScalingActivityStatisticsRequest interface {
 }
 
 type DescribeScalingActivityStatisticsRequest struct {
+	// The end time of the statistical interval. The time follows the ISO 8601 standard and uses UTC time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2025-12-18T08:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The name of the metric on which the scaling activity is counted. Valid values:
+	//
+	// 	- ScalingActivityStatus: collects statistics on the distribution of scaling activities in different states within a time range.
+	//
+	// 	- ScalingActivityErrorCodes: the distribution of error codes in failed scaling activities within a time range.
+	//
+	// Default value: ScalingActivityStatus.
+	//
 	// example:
 	//
 	// ScalingActivityStatus
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -47,10 +59,14 @@ type DescribeScalingActivityStatisticsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the scaling group.
+	//
 	// example:
 	//
 	// asg-8vbje5pofxxxxxxxx
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	// The start time of the statistical interval. The time follows the ISO 8601 standard and uses UTC time.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -287,7 +287,7 @@ type ModifyScalingConfigurationRequest struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The intelligent configuration settings, which determine the available instance types.
 	InstancePatternInfos []*ModifyScalingConfigurationRequestInstancePatternInfos `json:"InstancePatternInfos,omitempty" xml:"InstancePatternInfos,omitempty" type:"Repeated"`
-	// The instance types.
+	// Details of the instance types.
 	InstanceTypeOverrides []*ModifyScalingConfigurationRequestInstanceTypeOverrides `json:"InstanceTypeOverrides,omitempty" xml:"InstanceTypeOverrides,omitempty" type:"Repeated"`
 	// The instance types. If you specify InstanceTypes, InstanceType is ignored.
 	//
@@ -465,7 +465,7 @@ type ModifyScalingConfigurationRequest struct {
 	//
 	// Terminate
 	SpotInterruptionBehavior *string `json:"SpotInterruptionBehavior,omitempty" xml:"SpotInterruptionBehavior,omitempty"`
-	// The preemptible instance types.
+	// The information about spot instance types.
 	SpotPriceLimits []*ModifyScalingConfigurationRequestSpotPriceLimits `json:"SpotPriceLimits,omitempty" xml:"SpotPriceLimits,omitempty" type:"Repeated"`
 	// The preemption policy of pay-as-you-go instances. Valid values:
 	//
@@ -2229,35 +2229,35 @@ func (s *ModifyScalingConfigurationRequestInstancePatternInfos) Validate() error
 }
 
 type ModifyScalingConfigurationRequestInstanceTypeOverrides struct {
-	// The instance type. If you want to specify the capacity of instance types in the scaling configuration, specify InstanceType and WeightedCapacity at the same time.
+	// The instance type. If you want to specify the weight of the instance type in the scaling configuration, you must specify InstanceTypeOverride.WeightedCapacity after you specify this parameter.
 	//
-	// You can use InstanceType to specify multiple instance types and WeightedCapacity to specify the weights of the instance types.
+	// This parameter specifies instance types. You can use this parameter to specify multiple instance types and use InstanceTypeOverride.WeightedCapacity to specify weights for the instance types.
 	//
-	// > If you specify InstanceType, you cannot specify InstanceTypes.
+	// >  If you specify this parameter, you cannot specify instanceTypes.
 	//
-	// You can use InstanceType to specify only instance types that are available for purchase.
+	// You can use this parameter to specify any instance types that are available for purchase.
 	//
 	// example:
 	//
 	// ecs.c5.xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The weight of the instance type. The weight specifies the capacity of an instance of the specified instance type in the scaling group. If you want Auto Scaling to scale instances in the scaling group based on the weighted capacity of the instances, specify WeightedCapacity after you specify InstanceType.
+	// The weight of the instance type. If you want to trigger scale-outs based on instance capacities, you can specify this parameter after you specify LaunchTemplateOverride.InstanceType.
 	//
-	// A higher weight specifies that a smaller number of instances of the specified instance type are required to meet the expected capacity requirement.
+	// The weight specifies the capacity of an instance of the specified instance type in the scaling group. A higher weight specifies that a smaller number of instances of the specified instance type are required to meet the expected capacity requirement.
 	//
-	// Performance metrics, such as the number of vCPUs and the memory size of each instance type, may vary. You can specify different weights for different instance types based on your business requirements.
+	// Performance metrics such as the number of vCPUs and the memory size of each instance type may vary. You can specify different weights for different instance types based on your business requirements.
 	//
-	// Example:
+	// Sample capacity configurations:
 	//
-	// 	- Current capacity: 0
+	// 	- Current capacity: 0.
 	//
-	// 	- Expected capacity: 6
+	// 	- Expected capacity: 6.
 	//
-	// 	- Capacity of ecs.c5.xlarge: 4
+	// 	- Capacity of ecs.c5.xlarge: 4.
 	//
-	// To meet the expected capacity requirement, Auto Scaling must create and add two ecs.c5.xlarge instances.
+	// To reach the expected capacity, Auto Scaling must scale out two instances of ecs.c5.xlarge.
 	//
-	// > The capacity of the scaling group cannot exceed the sum of the maximum number of instances that is specified by MaxSize and the maximum weight of the instance types.
+	// >  The total capacity of the scaling group is constrained and cannot surpass the combined total of the maximum group size defined by MaxSize and the highest weight assigned to any instance type.
 	//
 	// Valid values of WeightedCapacity: 1 to 500.
 	//
@@ -2333,7 +2333,8 @@ type ModifyScalingConfigurationRequestNetworkInterfaces struct {
 	// example:
 	//
 	// HighPerformance
-	NetworkInterfaceTrafficMode *string `json:"NetworkInterfaceTrafficMode,omitempty" xml:"NetworkInterfaceTrafficMode,omitempty"`
+	NetworkInterfaceTrafficMode    *string `json:"NetworkInterfaceTrafficMode,omitempty" xml:"NetworkInterfaceTrafficMode,omitempty"`
+	SecondaryPrivateIpAddressCount *int32  `json:"SecondaryPrivateIpAddressCount,omitempty" xml:"SecondaryPrivateIpAddressCount,omitempty"`
 	// The IDs of the security groups to which you want to assign the ENI.
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
 }
@@ -2358,6 +2359,10 @@ func (s *ModifyScalingConfigurationRequestNetworkInterfaces) GetNetworkInterface
 	return s.NetworkInterfaceTrafficMode
 }
 
+func (s *ModifyScalingConfigurationRequestNetworkInterfaces) GetSecondaryPrivateIpAddressCount() *int32 {
+	return s.SecondaryPrivateIpAddressCount
+}
+
 func (s *ModifyScalingConfigurationRequestNetworkInterfaces) GetSecurityGroupIds() []*string {
 	return s.SecurityGroupIds
 }
@@ -2374,6 +2379,11 @@ func (s *ModifyScalingConfigurationRequestNetworkInterfaces) SetIpv6AddressCount
 
 func (s *ModifyScalingConfigurationRequestNetworkInterfaces) SetNetworkInterfaceTrafficMode(v string) *ModifyScalingConfigurationRequestNetworkInterfaces {
 	s.NetworkInterfaceTrafficMode = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationRequestNetworkInterfaces) SetSecondaryPrivateIpAddressCount(v int32) *ModifyScalingConfigurationRequestNetworkInterfaces {
+	s.SecondaryPrivateIpAddressCount = &v
 	return s
 }
 
@@ -2470,13 +2480,13 @@ func (s *ModifyScalingConfigurationRequestSecurityOptions) Validate() error {
 }
 
 type ModifyScalingConfigurationRequestSpotPriceLimits struct {
-	// The instance type of the preemptible instance. This parameter takes effect only if you set SpotStrategy to SpotWithPriceLimit.
+	// The instance type of the spot instances. This parameter takes effect only if you set SpotStrategy to SpotWithPriceLimit.
 	//
 	// example:
 	//
 	// ecs.g6.large
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The price limit of the preemptible instance. This parameter takes effect only if you set SpotStrategy to SpotWithPriceLimit.
+	// The price limit of the spot instances. This parameter takes effect only if you set SpotStrategy to SpotWithPriceLimit.
 	//
 	// example:
 	//

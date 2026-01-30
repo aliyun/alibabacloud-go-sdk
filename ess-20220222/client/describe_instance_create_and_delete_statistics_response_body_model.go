@@ -16,7 +16,10 @@ type iDescribeInstanceCreateAndDeleteStatisticsResponseBody interface {
 }
 
 type DescribeInstanceCreateAndDeleteStatisticsResponseBody struct {
+	// Metrics for instance creation and deletion.
 	InstanceCreateAndDeleteStatistics *DescribeInstanceCreateAndDeleteStatisticsResponseBodyInstanceCreateAndDeleteStatistics `json:"InstanceCreateAndDeleteStatistics,omitempty" xml:"InstanceCreateAndDeleteStatistics,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 086EFCD4-C76F-4DC6-9EE9-0D9B711E****
@@ -93,22 +96,32 @@ func (s *DescribeInstanceCreateAndDeleteStatisticsResponseBodyInstanceCreateAndD
 }
 
 type DescribeInstanceCreateAndDeleteStatisticsResponseBodyInstanceCreateAndDeleteStatisticsStatistic struct {
+	// The number of new instances.
+	//
 	// example:
 	//
 	// 12
 	CreatedVmCount *int32 `json:"CreatedVmCount,omitempty" xml:"CreatedVmCount,omitempty"`
+	// The number of released instances.
+	//
 	// example:
 	//
 	// 34
 	DestroyedVmCount *int32 `json:"DestroyedVmCount,omitempty" xml:"DestroyedVmCount,omitempty"`
+	// The number of instances that are started from economical mode.
+	//
 	// example:
 	//
 	// 5
 	StartedVmCount *int32 `json:"StartedVmCount,omitempty" xml:"StartedVmCount,omitempty"`
+	// The number of instances that are stopped in economical mode.
+	//
 	// example:
 	//
 	// 10
 	StoppedVmCount *int32 `json:"StoppedVmCount,omitempty" xml:"StoppedVmCount,omitempty"`
+	// The time when the statistics are generated. The time is in UTC. Format: yyyyMMddHH.
+	//
 	// example:
 	//
 	// 2025121623

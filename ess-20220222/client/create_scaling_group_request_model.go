@@ -439,9 +439,9 @@ type CreateScalingGroupRequest struct {
 	//
 	// recycle
 	ScalingPolicy *string `json:"ScalingPolicy,omitempty" xml:"ScalingPolicy,omitempty"`
-	// The server groups.
+	// The information about the server groups.
 	//
-	// >  You cannot use AlbServerGroups and ServerGroups to specify the same server group.
+	// > You cannot use AlbServerGroups and ServerGroups to specify the same server group.
 	ServerGroups []*CreateScalingGroupRequestServerGroups `json:"ServerGroups,omitempty" xml:"ServerGroups,omitempty" type:"Repeated"`
 	// The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy of preemptible instances. This parameter takes effect only if you set the `MultiAZPolicy` parameter to `COMPOSABLE`. Valid values:
 	//
@@ -487,7 +487,7 @@ type CreateScalingGroupRequest struct {
 	//
 	// false
 	SyncAlarmRuleToCms *bool `json:"SyncAlarmRuleToCms,omitempty" xml:"SyncAlarmRuleToCms,omitempty"`
-	// The information about the tags of the scaling group.
+	// The collection of tag information for the scaling group.
 	Tags []*CreateScalingGroupRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The backend vServer group that you want to associate with the scaling group.
 	VServerGroups []*CreateScalingGroupRequestVServerGroups `json:"VServerGroups,omitempty" xml:"VServerGroups,omitempty" type:"Repeated"`
@@ -1568,11 +1568,13 @@ type CreateScalingGroupRequestServerGroups struct {
 	//
 	// sgp-5yc3bd9lfyh*****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// The type of the server group. Valid values:
+	// The type of server group N. Valid Values:
 	//
 	// 	- ALB
 	//
 	// 	- NLB
+	//
+	// 	- GWLB
 	//
 	// example:
 	//
@@ -1580,7 +1582,9 @@ type CreateScalingGroupRequestServerGroups struct {
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The weight of each ECS instance as a backend server in the server group. Valid values: 0 to 100.
 	//
-	// If you increase the weight for an ECS instance, the number of requests that are forwarded to the ECS instance also increases. If you set the weight for an ECS instance to 0, no requests are forwarded to the ECS instance.
+	// The higher the weight, the more access requests the instance will be assigned. If the weight is 0, the instance will not receive any access requests.
+	//
+	// > For ALB and NLB types, this parameter is required. GWLB type cannot be set.
 	//
 	// example:
 	//

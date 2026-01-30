@@ -157,6 +157,8 @@ func (s *DetachServerGroupsRequest) Validate() error {
 type DetachServerGroupsRequestServerGroups struct {
 	// The port used by ECS instances or elastic container instances as backend servers of the server group.
 	//
+	// >  For ALB and NLB types, this parameter is required. GWLB type cannot set this parameter and the default value is 6081.
+	//
 	// example:
 	//
 	// 22
@@ -174,6 +176,8 @@ type DetachServerGroupsRequestServerGroups struct {
 	// 	- ALB
 	//
 	// 	- NLB
+	//
+	// 	- GWLB
 	//
 	// This parameter is required.
 	//

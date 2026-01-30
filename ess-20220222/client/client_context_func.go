@@ -569,7 +569,7 @@ func (client *Client) AttachLoadBalancersWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Attaches server groups to a scaling group. To seamlessly adjust the number of instances in response to changes in your business workload or to maintain the uninterrupted accessibility of your application, you can call the AttachServerGroups operation. By attaching Application Load Balancer (ALB) or Network Load Balancer (NLB) server groups to your scaling group, this operation enables Auto Scaling to automatically tailor your computing capacity to your business needs. Furthermore, it optimizes traffic routing by dynamically allocating incoming requests based on current workload patterns, which significantly improves the stability and performance of your application.
+// Attaches server groups to a scaling group. To seamlessly adjust the number of instances in response to changes in your business workload or to maintain the uninterrupted accessibility of your application, you can call the AttachServerGroups operation. By attaching Application Load Balancer (ALB), Network Load Balancer (NLB), or Gateway Load Balancer (GWLB) server groups to your scaling group, this operation enables Auto Scaling to automatically tailor your computing capacity to your business needs. Furthermore, it optimizes traffic routing by dynamically allocating incoming requests based on current workload patterns, which significantly improves the stability and performance of your application.
 //
 // @param request - AttachServerGroupsRequest
 //
@@ -1845,7 +1845,7 @@ func (client *Client) CreateScalingConfigurationWithContext(ctx context.Context,
 //
 // You can create only a limited number of scaling groups in a region. To check the quota of the scaling groups, go to Quota Center.
 //
-// A scaling group does not immediately take effect after you create the scaling group. You can call the [EnableScalingGroup](https://help.aliyun.com/document_detail/25939.html) operation to enable a scaling group. You can trigger scaling events and execute scaling rules only in scaling groups that are in the Enabled state.
+// A scaling group does not immediately take effect after you create it. You can call the [EnableScalingGroup](https://help.aliyun.com/document_detail/25939.html) operation to enable a scaling group. You can trigger scaling events and execute scaling rules only in scaling groups that are in the Enabled state.
 //
 // If you want to attach a Classic Load Balancer (CLB, formerly known as SLB) instance and an ApsaraDB RDS instance to the scaling group that you want to create, the scaling group, the CLB instance, and the ApsaraDB RDS instance must reside in the same region. For more information, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 //
@@ -1855,35 +1855,35 @@ func (client *Client) CreateScalingConfigurationWithContext(ctx context.Context,
 //
 //   - vServer group: If you want to forward different requests to different backend servers, or you want to forward requests based on domain names or URLs, you can specify vServer groups.
 //
-// >  If you specify both the default server group and multiple server groups simultaneously, Auto Scaling adds the ECS instances in your scaling group to these server groups concurrently.
+// >  If you specify both the default server group and multiple VServer groups, the ECS instances are added to these server groups.
 //
-// The default weight of each ECS instance as a backend server is 50. If you want to attach a CLB instance to the scaling group that you want to create, make sure that the CLB instance meets the following requirements:
+// The default weight of each ECS instance as a backend server is 50. The CLB instance must meet the following requirements:
 //
 //   - The CLB instance is in the Active state. You can call the [DescribeLoadBalancers](https://help.aliyun.com/document_detail/2401696.html) operation to query the status of CLB instances.
 //
-//   - Health check must be enabled on all listener ports configured for the CLB instance. Otherwise, the scaling group will fail to be created.
+//   - All listening ports configured for the CLB instance must be health check. Otherwise, the scaling group fails to be created.
 //
-// If you attach Application Load Balancer (ALB) or Network Load Balancer (NLB) server groups to the scaling group that you want to create, Auto Scaling adds the ECS instances in your scaling group to the ALB or NLB server groups to process the access requests forwarded by the corresponding ALB or NLB instances. You can attach multiple ALB or NLB server groups to a scaling group. Make sure that the ALB or NLB server groups belong to the same virtual private cloud (VPC). For more information, see [AttachAlbServerGroups](https://help.aliyun.com/document_detail/266800.html) or [AttachServerGroups](https://help.aliyun.com/document_detail/600535.html).
+// If you attach Application Load Balancer (ALB), Network Load Balancer (NLB), or Gateway Load Balancer (GWLB) server groups to the scaling group that you want to create, Auto Scaling adds the ECS instances in your scaling group to the ALB or NLB server groups to process the access requests forwarded by the corresponding ALB or NLB instances. You can specify multiple ALB, NLB, or GWLB server groups, but the server groups must belong to the same VPC as the scaling group. For more information, see [AttachAlbServerGroups](https://help.aliyun.com/document_detail/266800.html) or [AttachServerGroups](https://help.aliyun.com/document_detail/600535.html).
 //
-// If you attach an ApsaraDB RDS instance to the scaling group that you want to create, Auto Scaling automatically adds the private IP addresses of the ECS instances in your scaling group to the IP address whitelist of the ApsaraDB RDS instance. Before you attach an ApsaraDB RDS instance to your scaling group, make sure that the ApsaraDB RDS instance meets the following requirements:
+// If you associate an RDS instance with the scaling group, the scaling group will automatically add the internal IP addresses of ECS instances that join the scaling group to the access whitelist of the RDS instance. The RDS instance must meet the following requirements:
 //
-//   - The ApsaraDB RDS instance is in the Running state. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) state to query the status of ApsaraDB RDS instances.
+//   - The RDS instance must be in the Running state. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to view the status of the specified RDS instance.
 //
-//   - The number of IP addresses in the IP address whitelist of the ApsaraDB RDS instance does not reach its upper limit. For more information, see [Configure a whitelist](https://help.aliyun.com/document_detail/43185.html).
+//   - The number of IPs in the RDS instance\\"s access whitelist cannot exceed the upper limit. For more information, see [Configure a whitelist](https://help.aliyun.com/document_detail/43185.html).
 //
-// If you set MultiAZPolicy for the scaling group that you want to create to COST_OPTIMIZED, the following rules apply:
+// If the MultiAZPolicy for the scaling group is set to COST_OPTIMIZED, the following rules apply:
 //
-//   - If you use OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, and SpotInstancePools to specify the instance allocation mode under the cost optimization policy, Auto Scaling prioritizes the implementation of the specified instance allocation mode during scale-out events.
+//   - When you specify OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, and SpotInstancePools parameters (i.e., defining the instance allocation method under the cost optimization policy), Auto Scaling will prioritize this allocation method during scaling operations.
 //
 //   - If you do not specify OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, or SpotInstancePools, Auto Scaling preferentially creates instances of the lowest-priced instance type based on the cost optimization policy.
 //
 // If you set `Tags.Propagate` to true, the following rules will apply:
 //
-//   - Tags that you add to the scaling group cannot be propagated to existing instances in the scaling group. Tags that you add to the scaling group are propagated to only new instances.
+//   - Tags added to the scaling group will only propagate to newly created instances and will not affect instances already running within the scaling group.
 //
-//   - If you specify instance tags in the scaling configuration that is used to create instances and propagate the tags that you add to the scaling group to the instances, all tags exist at the same time.
+//   - If instance tags are specified in the scaling configuration and the scaling group’s tags are propagated to the instance, all tags will coexist.
 //
-//   - If the tag key that you specify in a scaling configuration and the tag key that you add to the scaling group of the scaling configuration are the same, the tag value that you specify in the scaling configuration is preferentially used.
+//   - If the tag key specified in the scaling configuration matches a tag key in the scaling group, the tag value from the scaling configuration will take precedence.
 //
 // @param request - CreateScalingGroupRequest
 //
@@ -2541,7 +2541,7 @@ func (client *Client) DeleteAlarmWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
-// # DeleteDiagnoseReport
+// Deletes a health diagnosis report for a scaling group.
 //
 // @param request - DeleteDiagnoseReportRequest
 //
@@ -3409,6 +3409,10 @@ func (client *Client) DescribeElasticStrengthWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Instance creation and deletion statistics.
+//
 // @param request - DescribeInstanceCreateAndDeleteStatisticsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4111,6 +4115,10 @@ func (client *Client) DescribeScalingActivityDetailWithContext(ctx context.Conte
 	return _result, _err
 }
 
+// Summary:
+//
+// The distribution of scaling activities in different states over a period of time.
+//
 // @param request - DescribeScalingActivityStatisticsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5071,7 +5079,7 @@ func (client *Client) DetachLoadBalancersWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Detach server groups from a scaling group. To seamlessly adjust the number of instances in response to changes in your business workload or to maintain the uninterrupted accessibility of your application, you can call the DetachServerGroups operation. By detaching Application Load Balancer (ALB) or Network Load Balancer (NLB) server groups from your scaling group, this operation enables Auto Scaling to automatically tailor your computing capacity to your business needs. Furthermore, it optimizes traffic routing by dynamically allocating incoming requests based on current workload patterns, which significantly improves the stability and performance of your application.
+// Remove one or more SLB server groups from a scaling group. Supported server group types include Application Load Balancer (ALB), Network Load Balancer (NLB), and Gateway Load Balancer (GWLB), which can dynamically adjust SLB policies and help improve high availability of the system.
 //
 // @param request - DetachServerGroupsRequest
 //
@@ -7421,6 +7429,10 @@ func (client *Client) ModifyScheduledTaskWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the historical monitoring data of a scaling group that uses predictive scaling rules.
+//
 // @param request - QueryHistoricalMetricRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7489,6 +7501,10 @@ func (client *Client) QueryHistoricalMetricWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries predicted monitoring data.
+//
 // @param request - QueryPredictiveMetricRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7557,6 +7573,10 @@ func (client *Client) QueryPredictiveMetricWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a prediction task.
+//
 // @param request - QueryPredictiveTaskInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7621,6 +7641,10 @@ func (client *Client) QueryPredictiveTaskInfoWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the predicted number of instances in a scaling group.
+//
 // @param request - QueryPredictiveValueRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions

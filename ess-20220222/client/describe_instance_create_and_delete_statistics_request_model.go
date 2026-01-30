@@ -26,6 +26,8 @@ type iDescribeInstanceCreateAndDeleteStatisticsRequest interface {
 }
 
 type DescribeInstanceCreateAndDeleteStatisticsRequest struct {
+	// The end time of the statistical interval. The time follows the ISO 8601 standard and uses UTC time.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -33,6 +35,8 @@ type DescribeInstanceCreateAndDeleteStatisticsRequest struct {
 	// 2025-12-18T08:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -41,10 +45,14 @@ type DescribeInstanceCreateAndDeleteStatisticsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the scaling group.
+	//
 	// example:
 	//
 	// asg-2ze4057nqfbxxxxxxxx
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	// The start time of the statistical interval. The time follows the ISO 8601 standard and uses UTC time.
+	//
 	// This parameter is required.
 	//
 	// example:

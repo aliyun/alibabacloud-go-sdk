@@ -16,12 +16,16 @@ type iDeleteDiagnoseReportRequest interface {
 }
 
 type DeleteDiagnoseReportRequest struct {
+	// The region ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the diagnostic report.
+	//
 	// This parameter is required.
 	//
 	// example:

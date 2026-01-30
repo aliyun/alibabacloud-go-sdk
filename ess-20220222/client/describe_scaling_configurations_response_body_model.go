@@ -2086,7 +2086,8 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInterf
 	// example:
 	//
 	// HighPerformance
-	NetworkInterfaceTrafficMode *string `json:"NetworkInterfaceTrafficMode,omitempty" xml:"NetworkInterfaceTrafficMode,omitempty"`
+	NetworkInterfaceTrafficMode    *string `json:"NetworkInterfaceTrafficMode,omitempty" xml:"NetworkInterfaceTrafficMode,omitempty"`
+	SecondaryPrivateIpAddressCount *int32  `json:"SecondaryPrivateIpAddressCount,omitempty" xml:"SecondaryPrivateIpAddressCount,omitempty"`
 	// The IDs of the security groups to which the ENIs belong.
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
 }
@@ -2111,6 +2112,10 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkIn
 	return s.NetworkInterfaceTrafficMode
 }
 
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInterfaces) GetSecondaryPrivateIpAddressCount() *int32 {
+	return s.SecondaryPrivateIpAddressCount
+}
+
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInterfaces) GetSecurityGroupIds() []*string {
 	return s.SecurityGroupIds
 }
@@ -2127,6 +2132,11 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkIn
 
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInterfaces) SetNetworkInterfaceTrafficMode(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInterfaces {
 	s.NetworkInterfaceTrafficMode = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInterfaces) SetSecondaryPrivateIpAddressCount(v int32) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInterfaces {
+	s.SecondaryPrivateIpAddressCount = &v
 	return s
 }
 
