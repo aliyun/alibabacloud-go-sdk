@@ -1860,6 +1860,68 @@ func (client *Client) GetShutdownPolicyRecord(request *GetShutdownPolicyRecordRe
 
 // Summary:
 //
+// 查询T2优惠券审批详情
+//
+// @param request - GetTier2CouponApprovalDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTier2CouponApprovalDetailResponse
+func (client *Client) GetTier2CouponApprovalDetailWithOptions(request *GetTier2CouponApprovalDetailRequest, runtime *dara.RuntimeOptions) (_result *GetTier2CouponApprovalDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationSheetId) {
+		query["ApplicationSheetId"] = request.ApplicationSheetId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTier2CouponApprovalDetail"),
+		Version:     dara.String("2022-12-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTier2CouponApprovalDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询T2优惠券审批详情
+//
+// @param request - GetTier2CouponApprovalDetailRequest
+//
+// @return GetTier2CouponApprovalDetailResponse
+func (client *Client) GetTier2CouponApprovalDetail(request *GetTier2CouponApprovalDetailRequest) (_result *GetTier2CouponApprovalDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetTier2CouponApprovalDetailResponse{}
+	_body, _err := client.GetTier2CouponApprovalDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Query all the Unassociated Customer.
 //
 // @param request - GetUnassociatedCustomerRequest
@@ -2276,6 +2338,158 @@ func (client *Client) ListExportTasks(request *ListExportTasksRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListExportTasksResponse{}
 	_body, _err := client.ListExportTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # T1查询T2优惠券申请列表
+//
+// @param request - ListTier2CouponApprovalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTier2CouponApprovalResponse
+func (client *Client) ListTier2CouponApprovalWithOptions(request *ListTier2CouponApprovalRequest, runtime *dara.RuntimeOptions) (_result *ListTier2CouponApprovalResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationSheetId) {
+		query["ApplicationSheetId"] = request.ApplicationSheetId
+	}
+
+	if !dara.IsNil(request.ApprovalStatus) {
+		query["ApprovalStatus"] = request.ApprovalStatus
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.T2PartnerName) {
+		query["T2PartnerName"] = request.T2PartnerName
+	}
+
+	if !dara.IsNil(request.T2PartnerUid) {
+		query["T2PartnerUid"] = request.T2PartnerUid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTier2CouponApproval"),
+		Version:     dara.String("2022-12-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTier2CouponApprovalResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # T1查询T2优惠券申请列表
+//
+// @param request - ListTier2CouponApprovalRequest
+//
+// @return ListTier2CouponApprovalResponse
+func (client *Client) ListTier2CouponApproval(request *ListTier2CouponApprovalRequest) (_result *ListTier2CouponApprovalResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListTier2CouponApprovalResponse{}
+	_body, _err := client.ListTier2CouponApprovalWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 审批流审批通用接口
+//
+// @param request - ProcessApprovalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ProcessApprovalResponse
+func (client *Client) ProcessApprovalWithOptions(request *ProcessApprovalRequest, runtime *dara.RuntimeOptions) (_result *ProcessApprovalResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationSheetId) {
+		query["ApplicationSheetId"] = request.ApplicationSheetId
+	}
+
+	if !dara.IsNil(request.ApprovalAction) {
+		query["ApprovalAction"] = request.ApprovalAction
+	}
+
+	if !dara.IsNil(request.ApprovalComments) {
+		query["ApprovalComments"] = request.ApprovalComments
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ProcessApproval"),
+		Version:     dara.String("2022-12-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ProcessApprovalResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 审批流审批通用接口
+//
+// @param request - ProcessApprovalRequest
+//
+// @return ProcessApprovalResponse
+func (client *Client) ProcessApproval(request *ProcessApprovalRequest) (_result *ProcessApprovalResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ProcessApprovalResponse{}
+	_body, _err := client.ProcessApprovalWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
