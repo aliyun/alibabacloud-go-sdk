@@ -25,6 +25,8 @@ type iCreateHttpApiRouteRequest interface {
 	GetMcpRouteConfig() *CreateHttpApiRouteRequestMcpRouteConfig
 	SetName(v string) *CreateHttpApiRouteRequest
 	GetName() *string
+	SetPolicyConfigs(v []*HttpApiPolicyConfigs) *CreateHttpApiRouteRequest
+	GetPolicyConfigs() []*HttpApiPolicyConfigs
 }
 
 type CreateHttpApiRouteRequest struct {
@@ -53,7 +55,8 @@ type CreateHttpApiRouteRequest struct {
 	// example:
 	//
 	// login
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name          *string                 `json:"name,omitempty" xml:"name,omitempty"`
+	PolicyConfigs []*HttpApiPolicyConfigs `json:"policyConfigs,omitempty" xml:"policyConfigs,omitempty" type:"Repeated"`
 }
 
 func (s CreateHttpApiRouteRequest) String() string {
@@ -96,6 +99,10 @@ func (s *CreateHttpApiRouteRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateHttpApiRouteRequest) GetPolicyConfigs() []*HttpApiPolicyConfigs {
+	return s.PolicyConfigs
+}
+
 func (s *CreateHttpApiRouteRequest) SetBackendConfig(v *CreateHttpApiRouteRequestBackendConfig) *CreateHttpApiRouteRequest {
 	s.BackendConfig = v
 	return s
@@ -136,6 +143,11 @@ func (s *CreateHttpApiRouteRequest) SetName(v string) *CreateHttpApiRouteRequest
 	return s
 }
 
+func (s *CreateHttpApiRouteRequest) SetPolicyConfigs(v []*HttpApiPolicyConfigs) *CreateHttpApiRouteRequest {
+	s.PolicyConfigs = v
+	return s
+}
+
 func (s *CreateHttpApiRouteRequest) Validate() error {
 	if s.BackendConfig != nil {
 		if err := s.BackendConfig.Validate(); err != nil {
@@ -159,6 +171,15 @@ func (s *CreateHttpApiRouteRequest) Validate() error {
 	if s.McpRouteConfig != nil {
 		if err := s.McpRouteConfig.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.PolicyConfigs != nil {
+		for _, item := range s.PolicyConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil

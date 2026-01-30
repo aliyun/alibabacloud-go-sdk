@@ -17,14 +17,22 @@ type iAiServiceConfig interface {
 	GetApiKeys() []*string
 	SetBedrockServiceConfig(v *AiServiceConfigBedrockServiceConfig) *AiServiceConfig
 	GetBedrockServiceConfig() *AiServiceConfigBedrockServiceConfig
+	SetCompatibleProtocols(v []*string) *AiServiceConfig
+	GetCompatibleProtocols() []*string
+	SetDefaultModelName(v string) *AiServiceConfig
+	GetDefaultModelName() *string
 	SetEnableHealthCheck(v bool) *AiServiceConfig
 	GetEnableHealthCheck() *bool
+	SetEnableOutlierDetection(v bool) *AiServiceConfig
+	GetEnableOutlierDetection() *bool
 	SetPaiEASServiceConfig(v *AiServiceConfigPaiEASServiceConfig) *AiServiceConfig
 	GetPaiEASServiceConfig() *AiServiceConfigPaiEASServiceConfig
 	SetProtocols(v []*string) *AiServiceConfig
 	GetProtocols() []*string
 	SetProvider(v string) *AiServiceConfig
 	GetProvider() *string
+	SetVertexServiceConfig(v *AiServiceConfigVertexServiceConfig) *AiServiceConfig
+	GetVertexServiceConfig() *AiServiceConfigVertexServiceConfig
 }
 
 type AiServiceConfig struct {
@@ -32,16 +40,20 @@ type AiServiceConfig struct {
 	// example:
 	//
 	// https://dashscope.aliyun.com
-	Address              *string                              `json:"address,omitempty" xml:"address,omitempty"`
-	ApiKeys              []*string                            `json:"apiKeys,omitempty" xml:"apiKeys,omitempty" type:"Repeated"`
-	BedrockServiceConfig *AiServiceConfigBedrockServiceConfig `json:"bedrockServiceConfig,omitempty" xml:"bedrockServiceConfig,omitempty" type:"Struct"`
-	EnableHealthCheck    *bool                                `json:"enableHealthCheck,omitempty" xml:"enableHealthCheck,omitempty"`
-	PaiEASServiceConfig  *AiServiceConfigPaiEASServiceConfig  `json:"paiEASServiceConfig,omitempty" xml:"paiEASServiceConfig,omitempty" type:"Struct"`
-	Protocols            []*string                            `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	Address                *string                              `json:"address,omitempty" xml:"address,omitempty"`
+	ApiKeys                []*string                            `json:"apiKeys,omitempty" xml:"apiKeys,omitempty" type:"Repeated"`
+	BedrockServiceConfig   *AiServiceConfigBedrockServiceConfig `json:"bedrockServiceConfig,omitempty" xml:"bedrockServiceConfig,omitempty" type:"Struct"`
+	CompatibleProtocols    []*string                            `json:"compatibleProtocols,omitempty" xml:"compatibleProtocols,omitempty" type:"Repeated"`
+	DefaultModelName       *string                              `json:"defaultModelName,omitempty" xml:"defaultModelName,omitempty"`
+	EnableHealthCheck      *bool                                `json:"enableHealthCheck,omitempty" xml:"enableHealthCheck,omitempty"`
+	EnableOutlierDetection *bool                                `json:"enableOutlierDetection,omitempty" xml:"enableOutlierDetection,omitempty"`
+	PaiEASServiceConfig    *AiServiceConfigPaiEASServiceConfig  `json:"paiEASServiceConfig,omitempty" xml:"paiEASServiceConfig,omitempty" type:"Struct"`
+	Protocols              []*string                            `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
 	// example:
 	//
 	// qwen
-	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	Provider            *string                             `json:"provider,omitempty" xml:"provider,omitempty"`
+	VertexServiceConfig *AiServiceConfigVertexServiceConfig `json:"vertexServiceConfig,omitempty" xml:"vertexServiceConfig,omitempty" type:"Struct"`
 }
 
 func (s AiServiceConfig) String() string {
@@ -68,8 +80,20 @@ func (s *AiServiceConfig) GetBedrockServiceConfig() *AiServiceConfigBedrockServi
 	return s.BedrockServiceConfig
 }
 
+func (s *AiServiceConfig) GetCompatibleProtocols() []*string {
+	return s.CompatibleProtocols
+}
+
+func (s *AiServiceConfig) GetDefaultModelName() *string {
+	return s.DefaultModelName
+}
+
 func (s *AiServiceConfig) GetEnableHealthCheck() *bool {
 	return s.EnableHealthCheck
+}
+
+func (s *AiServiceConfig) GetEnableOutlierDetection() *bool {
+	return s.EnableOutlierDetection
 }
 
 func (s *AiServiceConfig) GetPaiEASServiceConfig() *AiServiceConfigPaiEASServiceConfig {
@@ -82,6 +106,10 @@ func (s *AiServiceConfig) GetProtocols() []*string {
 
 func (s *AiServiceConfig) GetProvider() *string {
 	return s.Provider
+}
+
+func (s *AiServiceConfig) GetVertexServiceConfig() *AiServiceConfigVertexServiceConfig {
+	return s.VertexServiceConfig
 }
 
 func (s *AiServiceConfig) SetApiKeyGenerateMode(v string) *AiServiceConfig {
@@ -104,8 +132,23 @@ func (s *AiServiceConfig) SetBedrockServiceConfig(v *AiServiceConfigBedrockServi
 	return s
 }
 
+func (s *AiServiceConfig) SetCompatibleProtocols(v []*string) *AiServiceConfig {
+	s.CompatibleProtocols = v
+	return s
+}
+
+func (s *AiServiceConfig) SetDefaultModelName(v string) *AiServiceConfig {
+	s.DefaultModelName = &v
+	return s
+}
+
 func (s *AiServiceConfig) SetEnableHealthCheck(v bool) *AiServiceConfig {
 	s.EnableHealthCheck = &v
+	return s
+}
+
+func (s *AiServiceConfig) SetEnableOutlierDetection(v bool) *AiServiceConfig {
+	s.EnableOutlierDetection = &v
 	return s
 }
 
@@ -124,6 +167,11 @@ func (s *AiServiceConfig) SetProvider(v string) *AiServiceConfig {
 	return s
 }
 
+func (s *AiServiceConfig) SetVertexServiceConfig(v *AiServiceConfigVertexServiceConfig) *AiServiceConfig {
+	s.VertexServiceConfig = v
+	return s
+}
+
 func (s *AiServiceConfig) Validate() error {
 	if s.BedrockServiceConfig != nil {
 		if err := s.BedrockServiceConfig.Validate(); err != nil {
@@ -132,6 +180,11 @@ func (s *AiServiceConfig) Validate() error {
 	}
 	if s.PaiEASServiceConfig != nil {
 		if err := s.PaiEASServiceConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VertexServiceConfig != nil {
+		if err := s.VertexServiceConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -235,5 +288,80 @@ func (s *AiServiceConfigPaiEASServiceConfig) SetWorkspaceId(v string) *AiService
 }
 
 func (s *AiServiceConfigPaiEASServiceConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type AiServiceConfigVertexServiceConfig struct {
+	GeminiSafetySetting     map[string]*string `json:"geminiSafetySetting,omitempty" xml:"geminiSafetySetting,omitempty"`
+	VertexAuthKey           *string            `json:"vertexAuthKey,omitempty" xml:"vertexAuthKey,omitempty"`
+	VertexAuthServiceName   *string            `json:"vertexAuthServiceName,omitempty" xml:"vertexAuthServiceName,omitempty"`
+	VertexProjectId         *string            `json:"vertexProjectId,omitempty" xml:"vertexProjectId,omitempty"`
+	VertexRegion            *string            `json:"vertexRegion,omitempty" xml:"vertexRegion,omitempty"`
+	VertexTokenRefreshAhead *int32             `json:"vertexTokenRefreshAhead,omitempty" xml:"vertexTokenRefreshAhead,omitempty"`
+}
+
+func (s AiServiceConfigVertexServiceConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AiServiceConfigVertexServiceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AiServiceConfigVertexServiceConfig) GetGeminiSafetySetting() map[string]*string {
+	return s.GeminiSafetySetting
+}
+
+func (s *AiServiceConfigVertexServiceConfig) GetVertexAuthKey() *string {
+	return s.VertexAuthKey
+}
+
+func (s *AiServiceConfigVertexServiceConfig) GetVertexAuthServiceName() *string {
+	return s.VertexAuthServiceName
+}
+
+func (s *AiServiceConfigVertexServiceConfig) GetVertexProjectId() *string {
+	return s.VertexProjectId
+}
+
+func (s *AiServiceConfigVertexServiceConfig) GetVertexRegion() *string {
+	return s.VertexRegion
+}
+
+func (s *AiServiceConfigVertexServiceConfig) GetVertexTokenRefreshAhead() *int32 {
+	return s.VertexTokenRefreshAhead
+}
+
+func (s *AiServiceConfigVertexServiceConfig) SetGeminiSafetySetting(v map[string]*string) *AiServiceConfigVertexServiceConfig {
+	s.GeminiSafetySetting = v
+	return s
+}
+
+func (s *AiServiceConfigVertexServiceConfig) SetVertexAuthKey(v string) *AiServiceConfigVertexServiceConfig {
+	s.VertexAuthKey = &v
+	return s
+}
+
+func (s *AiServiceConfigVertexServiceConfig) SetVertexAuthServiceName(v string) *AiServiceConfigVertexServiceConfig {
+	s.VertexAuthServiceName = &v
+	return s
+}
+
+func (s *AiServiceConfigVertexServiceConfig) SetVertexProjectId(v string) *AiServiceConfigVertexServiceConfig {
+	s.VertexProjectId = &v
+	return s
+}
+
+func (s *AiServiceConfigVertexServiceConfig) SetVertexRegion(v string) *AiServiceConfigVertexServiceConfig {
+	s.VertexRegion = &v
+	return s
+}
+
+func (s *AiServiceConfigVertexServiceConfig) SetVertexTokenRefreshAhead(v int32) *AiServiceConfigVertexServiceConfig {
+	s.VertexTokenRefreshAhead = &v
+	return s
+}
+
+func (s *AiServiceConfigVertexServiceConfig) Validate() error {
 	return dara.Validate(s)
 }

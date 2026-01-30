@@ -1172,6 +1172,10 @@ func (client *Client) CreateHttpApiRouteWithOptions(httpApiId *string, request *
 		body["name"] = request.Name
 	}
 
+	if !dara.IsNil(request.PolicyConfigs) {
+		body["policyConfigs"] = request.PolicyConfigs
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -1691,6 +1695,11 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, he
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.GatewayId) {
 		body["gatewayId"] = request.GatewayId
@@ -1710,6 +1719,7 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, he
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{

@@ -17,6 +17,8 @@ type iCreateServiceRequest interface {
 	GetServiceConfigs() []*CreateServiceRequestServiceConfigs
 	SetSourceType(v string) *CreateServiceRequest
 	GetSourceType() *string
+	SetClientToken(v string) *CreateServiceRequest
+	GetClientToken() *string
 }
 
 type CreateServiceRequest struct {
@@ -65,7 +67,8 @@ type CreateServiceRequest struct {
 	// example:
 	//
 	// MSE_NACOS
-	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	SourceType  *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
 func (s CreateServiceRequest) String() string {
@@ -92,6 +95,10 @@ func (s *CreateServiceRequest) GetSourceType() *string {
 	return s.SourceType
 }
 
+func (s *CreateServiceRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
 func (s *CreateServiceRequest) SetGatewayId(v string) *CreateServiceRequest {
 	s.GatewayId = &v
 	return s
@@ -109,6 +116,11 @@ func (s *CreateServiceRequest) SetServiceConfigs(v []*CreateServiceRequestServic
 
 func (s *CreateServiceRequest) SetSourceType(v string) *CreateServiceRequest {
 	s.SourceType = &v
+	return s
+}
+
+func (s *CreateServiceRequest) SetClientToken(v string) *CreateServiceRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -132,7 +144,8 @@ type CreateServiceRequestServiceConfigs struct {
 	// The AI service configurations.
 	AiServiceConfig *AiServiceConfig `json:"aiServiceConfig,omitempty" xml:"aiServiceConfig,omitempty"`
 	// The list of DNS service addresses.
-	DnsServers []*string `json:"dnsServers,omitempty" xml:"dnsServers,omitempty" type:"Repeated"`
+	DnsServers  []*string `json:"dnsServers,omitempty" xml:"dnsServers,omitempty" type:"Repeated"`
+	ExpressType *string   `json:"expressType,omitempty" xml:"expressType,omitempty"`
 	// The service group name. This parameter is required if sourceType is set to MSE_NACOS.
 	//
 	// example:
@@ -160,8 +173,9 @@ type CreateServiceRequestServiceConfigs struct {
 	// example:
 	//
 	// LATEST
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	SourceId  *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	Qualifier         *string                                              `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	SourceId          *string                                              `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	ValidationOptions *CreateServiceRequestServiceConfigsValidationOptions `json:"validationOptions,omitempty" xml:"validationOptions,omitempty" type:"Struct"`
 }
 
 func (s CreateServiceRequestServiceConfigs) String() string {
@@ -188,6 +202,10 @@ func (s *CreateServiceRequestServiceConfigs) GetDnsServers() []*string {
 	return s.DnsServers
 }
 
+func (s *CreateServiceRequestServiceConfigs) GetExpressType() *string {
+	return s.ExpressType
+}
+
 func (s *CreateServiceRequestServiceConfigs) GetGroupName() *string {
 	return s.GroupName
 }
@@ -208,6 +226,10 @@ func (s *CreateServiceRequestServiceConfigs) GetSourceId() *string {
 	return s.SourceId
 }
 
+func (s *CreateServiceRequestServiceConfigs) GetValidationOptions() *CreateServiceRequestServiceConfigsValidationOptions {
+	return s.ValidationOptions
+}
+
 func (s *CreateServiceRequestServiceConfigs) SetAddresses(v []*string) *CreateServiceRequestServiceConfigs {
 	s.Addresses = v
 	return s
@@ -225,6 +247,11 @@ func (s *CreateServiceRequestServiceConfigs) SetAiServiceConfig(v *AiServiceConf
 
 func (s *CreateServiceRequestServiceConfigs) SetDnsServers(v []*string) *CreateServiceRequestServiceConfigs {
 	s.DnsServers = v
+	return s
+}
+
+func (s *CreateServiceRequestServiceConfigs) SetExpressType(v string) *CreateServiceRequestServiceConfigs {
+	s.ExpressType = &v
 	return s
 }
 
@@ -253,6 +280,11 @@ func (s *CreateServiceRequestServiceConfigs) SetSourceId(v string) *CreateServic
 	return s
 }
 
+func (s *CreateServiceRequestServiceConfigs) SetValidationOptions(v *CreateServiceRequestServiceConfigsValidationOptions) *CreateServiceRequestServiceConfigs {
+	s.ValidationOptions = v
+	return s
+}
+
 func (s *CreateServiceRequestServiceConfigs) Validate() error {
 	if s.AgentServiceConfig != nil {
 		if err := s.AgentServiceConfig.Validate(); err != nil {
@@ -264,5 +296,35 @@ func (s *CreateServiceRequestServiceConfigs) Validate() error {
 			return err
 		}
 	}
+	if s.ValidationOptions != nil {
+		if err := s.ValidationOptions.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
+}
+
+type CreateServiceRequestServiceConfigsValidationOptions struct {
+	SkipVerifyAIChatCompletion *bool `json:"skipVerifyAIChatCompletion,omitempty" xml:"skipVerifyAIChatCompletion,omitempty"`
+}
+
+func (s CreateServiceRequestServiceConfigsValidationOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateServiceRequestServiceConfigsValidationOptions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceRequestServiceConfigsValidationOptions) GetSkipVerifyAIChatCompletion() *bool {
+	return s.SkipVerifyAIChatCompletion
+}
+
+func (s *CreateServiceRequestServiceConfigsValidationOptions) SetSkipVerifyAIChatCompletion(v bool) *CreateServiceRequestServiceConfigsValidationOptions {
+	s.SkipVerifyAIChatCompletion = &v
+	return s
+}
+
+func (s *CreateServiceRequestServiceConfigsValidationOptions) Validate() error {
+	return dara.Validate(s)
 }

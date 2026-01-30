@@ -11,12 +11,16 @@ type iAgentServiceConfig interface {
 	GoString() string
 	SetAddress(v string) *AgentServiceConfig
 	GetAddress() *string
+	SetCustomConfig(v *AgentServiceConfigCustomConfig) *AgentServiceConfig
+	GetCustomConfig() *AgentServiceConfigCustomConfig
 	SetDashScopeConfig(v *AgentServiceConfigDashScopeConfig) *AgentServiceConfig
 	GetDashScopeConfig() *AgentServiceConfigDashScopeConfig
 	SetDifyConfig(v *AgentServiceConfigDifyConfig) *AgentServiceConfig
 	GetDifyConfig() *AgentServiceConfigDifyConfig
 	SetEnableHealthCheck(v bool) *AgentServiceConfig
 	GetEnableHealthCheck() *bool
+	SetEnableOutlierDetection(v bool) *AgentServiceConfig
+	GetEnableOutlierDetection() *bool
 	SetProtocols(v []*string) *AgentServiceConfig
 	GetProtocols() []*string
 	SetProvider(v string) *AgentServiceConfig
@@ -29,11 +33,13 @@ type AgentServiceConfig struct {
 	// example:
 	//
 	// https://dashscope.aliyuncs.com/api/v1
-	Address           *string                            `json:"address,omitempty" xml:"address,omitempty"`
-	DashScopeConfig   *AgentServiceConfigDashScopeConfig `json:"dashScopeConfig,omitempty" xml:"dashScopeConfig,omitempty" type:"Struct"`
-	DifyConfig        *AgentServiceConfigDifyConfig      `json:"difyConfig,omitempty" xml:"difyConfig,omitempty" type:"Struct"`
-	EnableHealthCheck *bool                              `json:"enableHealthCheck,omitempty" xml:"enableHealthCheck,omitempty"`
-	Protocols         []*string                          `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	Address                *string                            `json:"address,omitempty" xml:"address,omitempty"`
+	CustomConfig           *AgentServiceConfigCustomConfig    `json:"customConfig,omitempty" xml:"customConfig,omitempty" type:"Struct"`
+	DashScopeConfig        *AgentServiceConfigDashScopeConfig `json:"dashScopeConfig,omitempty" xml:"dashScopeConfig,omitempty" type:"Struct"`
+	DifyConfig             *AgentServiceConfigDifyConfig      `json:"difyConfig,omitempty" xml:"difyConfig,omitempty" type:"Struct"`
+	EnableHealthCheck      *bool                              `json:"enableHealthCheck,omitempty" xml:"enableHealthCheck,omitempty"`
+	EnableOutlierDetection *bool                              `json:"enableOutlierDetection,omitempty" xml:"enableOutlierDetection,omitempty"`
+	Protocols              []*string                          `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
 	// This parameter is required.
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
 }
@@ -50,6 +56,10 @@ func (s *AgentServiceConfig) GetAddress() *string {
 	return s.Address
 }
 
+func (s *AgentServiceConfig) GetCustomConfig() *AgentServiceConfigCustomConfig {
+	return s.CustomConfig
+}
+
 func (s *AgentServiceConfig) GetDashScopeConfig() *AgentServiceConfigDashScopeConfig {
 	return s.DashScopeConfig
 }
@@ -62,6 +72,10 @@ func (s *AgentServiceConfig) GetEnableHealthCheck() *bool {
 	return s.EnableHealthCheck
 }
 
+func (s *AgentServiceConfig) GetEnableOutlierDetection() *bool {
+	return s.EnableOutlierDetection
+}
+
 func (s *AgentServiceConfig) GetProtocols() []*string {
 	return s.Protocols
 }
@@ -72,6 +86,11 @@ func (s *AgentServiceConfig) GetProvider() *string {
 
 func (s *AgentServiceConfig) SetAddress(v string) *AgentServiceConfig {
 	s.Address = &v
+	return s
+}
+
+func (s *AgentServiceConfig) SetCustomConfig(v *AgentServiceConfigCustomConfig) *AgentServiceConfig {
+	s.CustomConfig = v
 	return s
 }
 
@@ -90,6 +109,11 @@ func (s *AgentServiceConfig) SetEnableHealthCheck(v bool) *AgentServiceConfig {
 	return s
 }
 
+func (s *AgentServiceConfig) SetEnableOutlierDetection(v bool) *AgentServiceConfig {
+	s.EnableOutlierDetection = &v
+	return s
+}
+
 func (s *AgentServiceConfig) SetProtocols(v []*string) *AgentServiceConfig {
 	s.Protocols = v
 	return s
@@ -101,6 +125,11 @@ func (s *AgentServiceConfig) SetProvider(v string) *AgentServiceConfig {
 }
 
 func (s *AgentServiceConfig) Validate() error {
+	if s.CustomConfig != nil {
+		if err := s.CustomConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.DashScopeConfig != nil {
 		if err := s.DashScopeConfig.Validate(); err != nil {
 			return err
@@ -112,6 +141,41 @@ func (s *AgentServiceConfig) Validate() error {
 		}
 	}
 	return nil
+}
+
+type AgentServiceConfigCustomConfig struct {
+	ApiKey             *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	ApiKeyGenerateMode *string `json:"apiKeyGenerateMode,omitempty" xml:"apiKeyGenerateMode,omitempty"`
+}
+
+func (s AgentServiceConfigCustomConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AgentServiceConfigCustomConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AgentServiceConfigCustomConfig) GetApiKey() *string {
+	return s.ApiKey
+}
+
+func (s *AgentServiceConfigCustomConfig) GetApiKeyGenerateMode() *string {
+	return s.ApiKeyGenerateMode
+}
+
+func (s *AgentServiceConfigCustomConfig) SetApiKey(v string) *AgentServiceConfigCustomConfig {
+	s.ApiKey = &v
+	return s
+}
+
+func (s *AgentServiceConfigCustomConfig) SetApiKeyGenerateMode(v string) *AgentServiceConfigCustomConfig {
+	s.ApiKeyGenerateMode = &v
+	return s
+}
+
+func (s *AgentServiceConfigCustomConfig) Validate() error {
+	return dara.Validate(s)
 }
 
 type AgentServiceConfigDashScopeConfig struct {
