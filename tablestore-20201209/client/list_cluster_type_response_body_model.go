@@ -9,17 +9,17 @@ type iListClusterTypeResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetClusterTypeDetailList(v []*ListClusterTypeResponseBodyClusterTypeDetailList) *ListClusterTypeResponseBody
-	GetClusterTypeDetailList() []*ListClusterTypeResponseBodyClusterTypeDetailList
-	SetClusterTypeList(v []*string) *ListClusterTypeResponseBody
-	GetClusterTypeList() []*string
+	SetClusterTypeInfos(v []*ListClusterTypeResponseBodyClusterTypeInfos) *ListClusterTypeResponseBody
+	GetClusterTypeInfos() []*ListClusterTypeResponseBodyClusterTypeInfos
+	SetClusterTypes(v []*string) *ListClusterTypeResponseBody
+	GetClusterTypes() []*string
 	SetRequestId(v string) *ListClusterTypeResponseBody
 	GetRequestId() *string
 }
 
 type ListClusterTypeResponseBody struct {
-	ClusterTypeDetailList []*ListClusterTypeResponseBodyClusterTypeDetailList `json:"ClusterTypeDetailList,omitempty" xml:"ClusterTypeDetailList,omitempty" type:"Repeated"`
-	ClusterTypeList       []*string                                           `json:"ClusterTypeList,omitempty" xml:"ClusterTypeList,omitempty" type:"Repeated"`
+	ClusterTypeInfos []*ListClusterTypeResponseBodyClusterTypeInfos `json:"ClusterTypeInfos,omitempty" xml:"ClusterTypeInfos,omitempty" type:"Repeated"`
+	ClusterTypes     []*string                                      `json:"ClusterTypes,omitempty" xml:"ClusterTypes,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 88BA193C-4918-08C4-9870-E1FE6BBECF34
@@ -34,25 +34,25 @@ func (s ListClusterTypeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListClusterTypeResponseBody) GetClusterTypeDetailList() []*ListClusterTypeResponseBodyClusterTypeDetailList {
-	return s.ClusterTypeDetailList
+func (s *ListClusterTypeResponseBody) GetClusterTypeInfos() []*ListClusterTypeResponseBodyClusterTypeInfos {
+	return s.ClusterTypeInfos
 }
 
-func (s *ListClusterTypeResponseBody) GetClusterTypeList() []*string {
-	return s.ClusterTypeList
+func (s *ListClusterTypeResponseBody) GetClusterTypes() []*string {
+	return s.ClusterTypes
 }
 
 func (s *ListClusterTypeResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *ListClusterTypeResponseBody) SetClusterTypeDetailList(v []*ListClusterTypeResponseBodyClusterTypeDetailList) *ListClusterTypeResponseBody {
-	s.ClusterTypeDetailList = v
+func (s *ListClusterTypeResponseBody) SetClusterTypeInfos(v []*ListClusterTypeResponseBodyClusterTypeInfos) *ListClusterTypeResponseBody {
+	s.ClusterTypeInfos = v
 	return s
 }
 
-func (s *ListClusterTypeResponseBody) SetClusterTypeList(v []*string) *ListClusterTypeResponseBody {
-	s.ClusterTypeList = v
+func (s *ListClusterTypeResponseBody) SetClusterTypes(v []*string) *ListClusterTypeResponseBody {
+	s.ClusterTypes = v
 	return s
 }
 
@@ -62,8 +62,8 @@ func (s *ListClusterTypeResponseBody) SetRequestId(v string) *ListClusterTypeRes
 }
 
 func (s *ListClusterTypeResponseBody) Validate() error {
-	if s.ClusterTypeDetailList != nil {
-		for _, item := range s.ClusterTypeDetailList {
+	if s.ClusterTypeInfos != nil {
+		for _, item := range s.ClusterTypeInfos {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -74,43 +74,40 @@ func (s *ListClusterTypeResponseBody) Validate() error {
 	return nil
 }
 
-type ListClusterTypeResponseBodyClusterTypeDetailList struct {
+type ListClusterTypeResponseBodyClusterTypeInfos struct {
 	// example:
 	//
 	// SSD
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// example:
-	//
-	// true
-	IsMultiAZ *bool `json:"IsMultiAZ,omitempty" xml:"IsMultiAZ,omitempty"`
+	IsMultiAZ   *bool   `json:"IsMultiAZ,omitempty" xml:"IsMultiAZ,omitempty"`
 }
 
-func (s ListClusterTypeResponseBodyClusterTypeDetailList) String() string {
+func (s ListClusterTypeResponseBodyClusterTypeInfos) String() string {
 	return dara.Prettify(s)
 }
 
-func (s ListClusterTypeResponseBodyClusterTypeDetailList) GoString() string {
+func (s ListClusterTypeResponseBodyClusterTypeInfos) GoString() string {
 	return s.String()
 }
 
-func (s *ListClusterTypeResponseBodyClusterTypeDetailList) GetClusterType() *string {
+func (s *ListClusterTypeResponseBodyClusterTypeInfos) GetClusterType() *string {
 	return s.ClusterType
 }
 
-func (s *ListClusterTypeResponseBodyClusterTypeDetailList) GetIsMultiAZ() *bool {
+func (s *ListClusterTypeResponseBodyClusterTypeInfos) GetIsMultiAZ() *bool {
 	return s.IsMultiAZ
 }
 
-func (s *ListClusterTypeResponseBodyClusterTypeDetailList) SetClusterType(v string) *ListClusterTypeResponseBodyClusterTypeDetailList {
+func (s *ListClusterTypeResponseBodyClusterTypeInfos) SetClusterType(v string) *ListClusterTypeResponseBodyClusterTypeInfos {
 	s.ClusterType = &v
 	return s
 }
 
-func (s *ListClusterTypeResponseBodyClusterTypeDetailList) SetIsMultiAZ(v bool) *ListClusterTypeResponseBodyClusterTypeDetailList {
+func (s *ListClusterTypeResponseBodyClusterTypeInfos) SetIsMultiAZ(v bool) *ListClusterTypeResponseBodyClusterTypeInfos {
 	s.IsMultiAZ = &v
 	return s
 }
 
-func (s *ListClusterTypeResponseBodyClusterTypeDetailList) Validate() error {
+func (s *ListClusterTypeResponseBodyClusterTypeInfos) Validate() error {
 	return dara.Validate(s)
 }
