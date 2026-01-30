@@ -26542,6 +26542,10 @@ func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, ru
 		query["TaskAction"] = request.TaskAction
 	}
 
+	if !dara.IsNil(request.TaskGroupId) {
+		query["TaskGroupId"] = request.TaskGroupId
+	}
+
 	if !dara.IsNil(request.TaskIds) {
 		query["TaskIds"] = request.TaskIds
 	}

@@ -20820,6 +20820,10 @@ func (client *Client) DescribeTasksWithContext(ctx context.Context, request *Des
 		query["TaskAction"] = request.TaskAction
 	}
 
+	if !dara.IsNil(request.TaskGroupId) {
+		query["TaskGroupId"] = request.TaskGroupId
+	}
+
 	if !dara.IsNil(request.TaskIds) {
 		query["TaskIds"] = request.TaskIds
 	}
