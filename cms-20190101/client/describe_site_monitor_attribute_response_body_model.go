@@ -1085,7 +1085,8 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	// example:
 	//
 	// 1
-	MatchRule *int32 `json:"match_rule,omitempty" xml:"match_rule,omitempty"`
+	MatchRule     *int32  `json:"match_rule,omitempty" xml:"match_rule,omitempty"`
+	MaxTlsVersion *string `json:"max_tls_version,omitempty" xml:"max_tls_version,omitempty"`
 	// The minimum TLS version. By default, TLS 1.2 and later versions are supported. TLS 1.0 and 1.1 are disabled. If you still require TLS 1.0 or 1.1, you can change the configuration.
 	//
 	// example:
@@ -1196,14 +1197,16 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	// example:
 	//
 	// false
-	ScrollEnd *bool                                                                `json:"scroll_end,omitempty" xml:"scroll_end,omitempty"`
-	Steps     *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonSteps `json:"steps,omitempty" xml:"steps,omitempty" type:"Struct"`
+	ScrollEnd  *bool                                                                `json:"scroll_end,omitempty" xml:"scroll_end,omitempty"`
+	ServerName *string                                                              `json:"server_name,omitempty" xml:"server_name,omitempty"`
+	Steps      *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonSteps `json:"steps,omitempty" xml:"steps,omitempty" type:"Struct"`
 	// Indicates whether to allow the loading failures of some page elements. Valid values: false and true.
 	//
 	// example:
 	//
 	// false
-	StrictMode *bool `json:"strict_mode,omitempty" xml:"strict_mode,omitempty"`
+	StrictMode           *bool   `json:"strict_mode,omitempty" xml:"strict_mode,omitempty"`
+	SupportedCipherSuits *string `json:"supported_cipher_suits,omitempty" xml:"supported_cipher_suits,omitempty"`
 	// The timeout period. Unit: milliseconds.
 	//
 	// example:
@@ -1223,6 +1226,7 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	// The traffic hijacking whitelist. When redirection occurs, if the URL of the resource loaded by the browser does not match any expression in the whitelist, traffic hijacking is considered to have occurred.
 	TrafficHijackElementWhitelist *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementWhitelist `json:"traffic_hijack_element_whitelist,omitempty" xml:"traffic_hijack_element_whitelist,omitempty" type:"Struct"`
 	UsePrivateCrt                 *bool                                                                                        `json:"use_private_crt,omitempty" xml:"use_private_crt,omitempty"`
+	UseSsl                        *bool                                                                                        `json:"use_ssl,omitempty" xml:"use_ssl,omitempty"`
 	// The username of the FTP, SMTP, or POP3 protocol.
 	//
 	// example:
@@ -1373,6 +1377,10 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetMatc
 	return s.MatchRule
 }
 
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetMaxTlsVersion() *string {
+	return s.MaxTlsVersion
+}
+
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetMinTlsVersion() *string {
 	return s.MinTlsVersion
 }
@@ -1445,12 +1453,20 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetScro
 	return s.ScrollEnd
 }
 
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetServerName() *string {
+	return s.ServerName
+}
+
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetSteps() *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonSteps {
 	return s.Steps
 }
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetStrictMode() *bool {
 	return s.StrictMode
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetSupportedCipherSuits() *string {
+	return s.SupportedCipherSuits
 }
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetTimeOut() *int64 {
@@ -1479,6 +1495,10 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetTraf
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetUsePrivateCrt() *bool {
 	return s.UsePrivateCrt
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetUseSsl() *bool {
+	return s.UseSsl
 }
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetUsername() *string {
@@ -1649,6 +1669,11 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetMatc
 	return s
 }
 
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetMaxTlsVersion(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.MaxTlsVersion = &v
+	return s
+}
+
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetMinTlsVersion(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
 	s.MinTlsVersion = &v
 	return s
@@ -1739,6 +1764,11 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetScro
 	return s
 }
 
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetServerName(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.ServerName = &v
+	return s
+}
+
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetSteps(v *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonSteps) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
 	s.Steps = v
 	return s
@@ -1746,6 +1776,11 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetStep
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetStrictMode(v bool) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
 	s.StrictMode = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetSupportedCipherSuits(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.SupportedCipherSuits = &v
 	return s
 }
 
@@ -1781,6 +1816,11 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetTraf
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetUsePrivateCrt(v bool) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
 	s.UsePrivateCrt = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetUseSsl(v bool) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.UseSsl = &v
 	return s
 }
 
