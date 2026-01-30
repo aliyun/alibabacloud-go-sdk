@@ -8062,6 +8062,138 @@ func (client *Client) ListFeatureConsistencyCheckJobs(request *ListFeatureConsis
 
 // Summary:
 //
+// 获取数据资源下的Schema列表。
+//
+// @param request - ListInstanceResourceSchemasRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceResourceSchemasResponse
+func (client *Client) ListInstanceResourceSchemasWithOptions(InstanceId *string, ResourceId *string, request *ListInstanceResourceSchemasRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstanceResourceSchemasResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SchemaName) {
+		query["SchemaName"] = request.SchemaName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstanceResourceSchemas"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(InstanceId)) + "/resources/" + dara.PercentEncode(dara.StringValue(ResourceId)) + "/schemas"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInstanceResourceSchemasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据资源下的Schema列表。
+//
+// @param request - ListInstanceResourceSchemasRequest
+//
+// @return ListInstanceResourceSchemasResponse
+func (client *Client) ListInstanceResourceSchemas(InstanceId *string, ResourceId *string, request *ListInstanceResourceSchemasRequest) (_result *ListInstanceResourceSchemasResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListInstanceResourceSchemasResponse{}
+	_body, _err := client.ListInstanceResourceSchemasWithOptions(InstanceId, ResourceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据源下数据表的列表。
+//
+// @param request - ListInstanceResourceTablesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceResourceTablesResponse
+func (client *Client) ListInstanceResourceTablesWithOptions(InstanceId *string, ResourceId *string, request *ListInstanceResourceTablesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstanceResourceTablesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxcomputeSchema) {
+		query["MaxcomputeSchema"] = request.MaxcomputeSchema
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstanceResourceTables"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(InstanceId)) + "/resources/" + dara.PercentEncode(dara.StringValue(ResourceId)) + "/tables"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInstanceResourceTablesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据源下数据表的列表。
+//
+// @param request - ListInstanceResourceTablesRequest
+//
+// @return ListInstanceResourceTablesResponse
+func (client *Client) ListInstanceResourceTables(InstanceId *string, ResourceId *string, request *ListInstanceResourceTablesRequest) (_result *ListInstanceResourceTablesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListInstanceResourceTablesResponse{}
+	_body, _err := client.ListInstanceResourceTablesWithOptions(InstanceId, ResourceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取实例下配置的资源列表。
 //
 // @param request - ListInstanceResourcesRequest
