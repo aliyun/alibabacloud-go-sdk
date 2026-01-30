@@ -541,6 +541,74 @@ func (client *Client) CreateQueueWithContext(ctx context.Context, tmpReq *Create
 
 // Summary:
 //
+// 创建预设节点池
+//
+// @param request - CreateReservedNodePoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateReservedNodePoolResponse
+func (client *Client) CreateReservedNodePoolWithContext(ctx context.Context, request *CreateReservedNodePoolRequest, runtime *dara.RuntimeOptions) (_result *CreateReservedNodePoolResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.Count) {
+		query["Count"] = request.Count
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.HostPostfix) {
+		query["HostPostfix"] = request.HostPostfix
+	}
+
+	if !dara.IsNil(request.HostPrefix) {
+		query["HostPrefix"] = request.HostPrefix
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateReservedNodePool"),
+		Version:     dara.String("2024-07-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateReservedNodePoolResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds users to an Elastic High Performance Computing (E-HPC) cluster.
 //
 // @param tmpReq - CreateUsersRequest
@@ -757,6 +825,54 @@ func (client *Client) DeleteQueuesWithContext(ctx context.Context, tmpReq *Delet
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteQueuesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除集群预设节点池
+//
+// @param request - DeleteReservedNodePoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteReservedNodePoolResponse
+func (client *Client) DeleteReservedNodePoolWithContext(ctx context.Context, request *DeleteReservedNodePoolRequest, runtime *dara.RuntimeOptions) (_result *DeleteReservedNodePoolResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteReservedNodePool"),
+		Version:     dara.String("2024-07-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteReservedNodePoolResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
