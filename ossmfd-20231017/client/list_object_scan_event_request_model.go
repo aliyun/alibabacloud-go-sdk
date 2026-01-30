@@ -9,10 +9,14 @@ type iListObjectScanEventRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBatchType(v string) *ListObjectScanEventRequest
+	GetBatchType() *string
 	SetBucketName(v string) *ListObjectScanEventRequest
 	GetBucketName() *string
 	SetCurrentPage(v int32) *ListObjectScanEventRequest
 	GetCurrentPage() *int32
+	SetEventId(v int64) *ListObjectScanEventRequest
+	GetEventId() *int64
 	SetEventName(v string) *ListObjectScanEventRequest
 	GetEventName() *string
 	SetLang(v string) *ListObjectScanEventRequest
@@ -29,6 +33,8 @@ type iListObjectScanEventRequest interface {
 	GetRiskLevel() *string
 	SetSource(v string) *ListObjectScanEventRequest
 	GetSource() *string
+	SetStatus(v int32) *ListObjectScanEventRequest
+	GetStatus() *int32
 	SetTimeEnd(v int64) *ListObjectScanEventRequest
 	GetTimeEnd() *int64
 	SetTimeStart(v int64) *ListObjectScanEventRequest
@@ -38,6 +44,10 @@ type iListObjectScanEventRequest interface {
 type ListObjectScanEventRequest struct {
 	// example:
 	//
+	// sha256
+	BatchType *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
+	// example:
+	//
 	// testBucket******
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
 	// This parameter is required.
@@ -45,8 +55,15 @@ type ListObjectScanEventRequest struct {
 	// example:
 	//
 	// 1
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EventName   *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 1
+	EventId *int64 `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// WebShell
+	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	// example:
 	//
 	// zh
@@ -79,6 +96,10 @@ type ListObjectScanEventRequest struct {
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// example:
 	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
 	// 1683862286000
 	TimeEnd *int64 `json:"TimeEnd,omitempty" xml:"TimeEnd,omitempty"`
 	// example:
@@ -95,12 +116,20 @@ func (s ListObjectScanEventRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListObjectScanEventRequest) GetBatchType() *string {
+	return s.BatchType
+}
+
 func (s *ListObjectScanEventRequest) GetBucketName() *string {
 	return s.BucketName
 }
 
 func (s *ListObjectScanEventRequest) GetCurrentPage() *int32 {
 	return s.CurrentPage
+}
+
+func (s *ListObjectScanEventRequest) GetEventId() *int64 {
+	return s.EventId
 }
 
 func (s *ListObjectScanEventRequest) GetEventName() *string {
@@ -135,12 +164,21 @@ func (s *ListObjectScanEventRequest) GetSource() *string {
 	return s.Source
 }
 
+func (s *ListObjectScanEventRequest) GetStatus() *int32 {
+	return s.Status
+}
+
 func (s *ListObjectScanEventRequest) GetTimeEnd() *int64 {
 	return s.TimeEnd
 }
 
 func (s *ListObjectScanEventRequest) GetTimeStart() *int64 {
 	return s.TimeStart
+}
+
+func (s *ListObjectScanEventRequest) SetBatchType(v string) *ListObjectScanEventRequest {
+	s.BatchType = &v
+	return s
 }
 
 func (s *ListObjectScanEventRequest) SetBucketName(v string) *ListObjectScanEventRequest {
@@ -150,6 +188,11 @@ func (s *ListObjectScanEventRequest) SetBucketName(v string) *ListObjectScanEven
 
 func (s *ListObjectScanEventRequest) SetCurrentPage(v int32) *ListObjectScanEventRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListObjectScanEventRequest) SetEventId(v int64) *ListObjectScanEventRequest {
+	s.EventId = &v
 	return s
 }
 
@@ -190,6 +233,11 @@ func (s *ListObjectScanEventRequest) SetRiskLevel(v string) *ListObjectScanEvent
 
 func (s *ListObjectScanEventRequest) SetSource(v string) *ListObjectScanEventRequest {
 	s.Source = &v
+	return s
+}
+
+func (s *ListObjectScanEventRequest) SetStatus(v int32) *ListObjectScanEventRequest {
+	s.Status = &v
 	return s
 }
 

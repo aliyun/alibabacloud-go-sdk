@@ -62,7 +62,21 @@ func (s *ListObjectScanEventResponseBody) SetRequestId(v string) *ListObjectScan
 }
 
 func (s *ListObjectScanEventResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListObjectScanEventResponseBodyData struct {
@@ -75,6 +89,7 @@ type ListObjectScanEventResponseBodyData struct {
 	//
 	// true
 	DisplaySandboxResult *string `json:"DisplaySandboxResult,omitempty" xml:"DisplaySandboxResult,omitempty"`
+	ErrorMsg             *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	// example:
 	//
 	// 1
@@ -99,11 +114,13 @@ type ListObjectScanEventResponseBodyData struct {
 	// example:
 	//
 	// e991e62f484bb6accd676e57a9******
-	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	Md5           *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	OperateResult *string `json:"OperateResult,omitempty" xml:"OperateResult,omitempty"`
 	// example:
 	//
 	// 1/2022/06/23/15/41/16559701077444693a0c6-33b2-4cc2-a99f-9f38b8b8****
 	OssKey *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// example:
 	//
 	// high
@@ -120,6 +137,7 @@ type ListObjectScanEventResponseBodyData struct {
 	//
 	// OSS
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListObjectScanEventResponseBodyData) String() string {
@@ -140,6 +158,10 @@ func (s *ListObjectScanEventResponseBodyData) GetDetails() []*ListObjectScanEven
 
 func (s *ListObjectScanEventResponseBodyData) GetDisplaySandboxResult() *string {
 	return s.DisplaySandboxResult
+}
+
+func (s *ListObjectScanEventResponseBodyData) GetErrorMsg() *string {
+	return s.ErrorMsg
 }
 
 func (s *ListObjectScanEventResponseBodyData) GetEventId() *int64 {
@@ -170,8 +192,16 @@ func (s *ListObjectScanEventResponseBodyData) GetMd5() *string {
 	return s.Md5
 }
 
+func (s *ListObjectScanEventResponseBodyData) GetOperateResult() *string {
+	return s.OperateResult
+}
+
 func (s *ListObjectScanEventResponseBodyData) GetOssKey() *string {
 	return s.OssKey
+}
+
+func (s *ListObjectScanEventResponseBodyData) GetRemark() *string {
+	return s.Remark
 }
 
 func (s *ListObjectScanEventResponseBodyData) GetRiskLevel() *string {
@@ -190,6 +220,10 @@ func (s *ListObjectScanEventResponseBodyData) GetSource() *string {
 	return s.Source
 }
 
+func (s *ListObjectScanEventResponseBodyData) GetStatus() *int32 {
+	return s.Status
+}
+
 func (s *ListObjectScanEventResponseBodyData) SetBucketName(v string) *ListObjectScanEventResponseBodyData {
 	s.BucketName = &v
 	return s
@@ -202,6 +236,11 @@ func (s *ListObjectScanEventResponseBodyData) SetDetails(v []*ListObjectScanEven
 
 func (s *ListObjectScanEventResponseBodyData) SetDisplaySandboxResult(v string) *ListObjectScanEventResponseBodyData {
 	s.DisplaySandboxResult = &v
+	return s
+}
+
+func (s *ListObjectScanEventResponseBodyData) SetErrorMsg(v string) *ListObjectScanEventResponseBodyData {
+	s.ErrorMsg = &v
 	return s
 }
 
@@ -240,8 +279,18 @@ func (s *ListObjectScanEventResponseBodyData) SetMd5(v string) *ListObjectScanEv
 	return s
 }
 
+func (s *ListObjectScanEventResponseBodyData) SetOperateResult(v string) *ListObjectScanEventResponseBodyData {
+	s.OperateResult = &v
+	return s
+}
+
 func (s *ListObjectScanEventResponseBodyData) SetOssKey(v string) *ListObjectScanEventResponseBodyData {
 	s.OssKey = &v
+	return s
+}
+
+func (s *ListObjectScanEventResponseBodyData) SetRemark(v string) *ListObjectScanEventResponseBodyData {
+	s.Remark = &v
 	return s
 }
 
@@ -265,8 +314,22 @@ func (s *ListObjectScanEventResponseBodyData) SetSource(v string) *ListObjectSca
 	return s
 }
 
+func (s *ListObjectScanEventResponseBodyData) SetStatus(v int32) *ListObjectScanEventResponseBodyData {
+	s.Status = &v
+	return s
+}
+
 func (s *ListObjectScanEventResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Details != nil {
+		for _, item := range s.Details {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListObjectScanEventResponseBodyDataDetails struct {

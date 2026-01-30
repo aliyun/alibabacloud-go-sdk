@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -112,9 +113,11 @@ func (client *Client) CheckMfdServiceOpen() (_result *CheckMfdServiceOpenRespons
 //
 // @return CreateOssBucketScanTaskResponse
 func (client *Client) CreateOssBucketScanTaskWithOptions(request *CreateOssBucketScanTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateOssBucketScanTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllKeyPrefix) {
@@ -208,9 +211,11 @@ func (client *Client) CreateOssBucketScanTask(request *CreateOssBucketScanTaskRe
 //
 // @return CreateOssScanConfigResponse
 func (client *Client) CreateOssScanConfigWithOptions(request *CreateOssScanConfigRequest, runtime *dara.RuntimeOptions) (_result *CreateOssScanConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllKeyPrefix) {
@@ -320,9 +325,11 @@ func (client *Client) CreateOssScanConfig(request *CreateOssScanConfigRequest) (
 //
 // @return DescribeExportInfoResponse
 func (client *Client) DescribeExportInfoWithOptions(request *DescribeExportInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeExportInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExportId) {
@@ -380,9 +387,11 @@ func (client *Client) DescribeExportInfo(request *DescribeExportInfoRequest) (_r
 //
 // @return DescribeServiceLinkedRoleStatusResponse
 func (client *Client) DescribeServiceLinkedRoleStatusWithOptions(request *DescribeServiceLinkedRoleStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceLinkedRoleStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ServiceLinkedRole) {
@@ -440,9 +449,11 @@ func (client *Client) DescribeServiceLinkedRoleStatus(request *DescribeServiceLi
 //
 // @return ExportRecordResponse
 func (client *Client) ExportRecordWithOptions(request *ExportRecordRequest, runtime *dara.RuntimeOptions) (_result *ExportRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExportType) {
@@ -508,9 +519,11 @@ func (client *Client) ExportRecord(request *ExportRecordRequest) (_result *Expor
 //
 // @return GetFileDetectReportResponse
 func (client *Client) GetFileDetectReportWithOptions(request *GetFileDetectReportRequest, runtime *dara.RuntimeOptions) (_result *GetFileDetectReportResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventId) {
@@ -584,9 +597,11 @@ func (client *Client) GetFileDetectReport(request *GetFileDetectReportRequest) (
 //
 // @return GetOssBucketScanStatisticResponse
 func (client *Client) GetOssBucketScanStatisticWithOptions(request *GetOssBucketScanStatisticRequest, runtime *dara.RuntimeOptions) (_result *GetOssBucketScanStatisticResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BucketNameList) {
@@ -644,9 +659,11 @@ func (client *Client) GetOssBucketScanStatistic(request *GetOssBucketScanStatist
 //
 // @return GetOssScanConfigResponse
 func (client *Client) GetOssScanConfigWithOptions(request *GetOssScanConfigRequest, runtime *dara.RuntimeOptions) (_result *GetOssScanConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BucketName) {
@@ -704,17 +721,27 @@ func (client *Client) GetOssScanConfig(request *GetOssScanConfigRequest) (_resul
 //
 // @return ListObjectScanEventResponse
 func (client *Client) ListObjectScanEventWithOptions(request *ListObjectScanEventRequest, runtime *dara.RuntimeOptions) (_result *ListObjectScanEventResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BatchType) {
+		query["BatchType"] = request.BatchType
+	}
+
 	if !dara.IsNil(request.BucketName) {
 		query["BucketName"] = request.BucketName
 	}
 
 	if !dara.IsNil(request.CurrentPage) {
 		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
 	}
 
 	if !dara.IsNil(request.EventName) {
@@ -747,6 +774,10 @@ func (client *Client) ListObjectScanEventWithOptions(request *ListObjectScanEven
 
 	if !dara.IsNil(request.Source) {
 		query["Source"] = request.Source
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
 	}
 
 	if !dara.IsNil(request.TimeEnd) {
@@ -808,9 +839,11 @@ func (client *Client) ListObjectScanEvent(request *ListObjectScanEventRequest) (
 //
 // @return ListOssBucketResponse
 func (client *Client) ListOssBucketWithOptions(request *ListOssBucketRequest, runtime *dara.RuntimeOptions) (_result *ListOssBucketResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BucketName) {
@@ -872,9 +905,11 @@ func (client *Client) ListOssBucket(request *ListOssBucketRequest) (_result *Lis
 //
 // @return ListOssBucketScanInfoResponse
 func (client *Client) ListOssBucketScanInfoWithOptions(request *ListOssBucketScanInfoRequest, runtime *dara.RuntimeOptions) (_result *ListOssBucketScanInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BucketName) {
@@ -1003,9 +1038,11 @@ func (client *Client) ListSupportObjectSuffix() (_result *ListSupportObjectSuffi
 //
 // @return OperateBucketScanTaskResponse
 func (client *Client) OperateBucketScanTaskWithOptions(request *OperateBucketScanTaskRequest, runtime *dara.RuntimeOptions) (_result *OperateBucketScanTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BucketName) {
@@ -1067,9 +1104,11 @@ func (client *Client) OperateBucketScanTask(request *OperateBucketScanTaskReques
 //
 // @return UpdateOssScanConfigResponse
 func (client *Client) UpdateOssScanConfigWithOptions(request *UpdateOssScanConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateOssScanConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllKeyPrefix) {
