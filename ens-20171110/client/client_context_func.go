@@ -6282,6 +6282,10 @@ func (client *Client) DescribeClusterUserKubeconfigWithContext(ctx context.Conte
 		query["ClusterId"] = request.ClusterId
 	}
 
+	if !dara.IsNil(request.PrivateIpAddress) {
+		query["PrivateIpAddress"] = request.PrivateIpAddress
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
