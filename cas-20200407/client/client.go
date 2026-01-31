@@ -111,6 +111,68 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 申请证书
+//
+// @param request - ApplyCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyCertificateResponse
+func (client *Client) ApplyCertificateWithOptions(request *ApplyCertificateRequest, runtime *dara.RuntimeOptions) (_result *ApplyCertificateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ApplyCertificate"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ApplyCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 申请证书
+//
+// @param request - ApplyCertificateRequest
+//
+// @return ApplyCertificateResponse
+func (client *Client) ApplyCertificate(request *ApplyCertificateRequest) (_result *ApplyCertificateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ApplyCertificateResponse{}
+	_body, _err := client.ApplyCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Revokes an issued certificate and cancels the application order of the certificate.
 //
 // Description:
@@ -242,6 +304,68 @@ func (client *Client) CancelOrderRequest(request *CancelOrderRequestRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &CancelOrderRequestResponse{}
 	_body, _err := client.CancelOrderRequestWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 撤回证书申请
+//
+// @param request - CancelPendingCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelPendingCertificateResponse
+func (client *Client) CancelPendingCertificateWithOptions(request *CancelPendingCertificateRequest, runtime *dara.RuntimeOptions) (_result *CancelPendingCertificateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelPendingCertificate"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelPendingCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 撤回证书申请
+//
+// @param request - CancelPendingCertificateRequest
+//
+// @return CancelPendingCertificateResponse
+func (client *Client) CancelPendingCertificate(request *CancelPendingCertificateRequest) (_result *CancelPendingCertificateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CancelPendingCertificateResponse{}
+	_body, _err := client.CancelPendingCertificateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1053,6 +1177,68 @@ func (client *Client) DeleteDeploymentJob(request *DeleteDeploymentJobRequest) (
 
 // Summary:
 //
+// 删除实例
+//
+// @param request - DeleteInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceResponse
+func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteInstance"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除实例
+//
+// @param request - DeleteInstanceRequest
+//
+// @return DeleteInstanceResponse
+func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *DeleteInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteInstanceResponse{}
+	_body, _err := client.DeleteInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a private certificate from a certificate application repository.
 //
 // Description:
@@ -1734,6 +1920,68 @@ func (client *Client) GetCertWarehouseQuota() (_result *GetCertWarehouseQuotaRes
 
 // Summary:
 //
+// 查询证书详情
+//
+// @param request - GetCertificateDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCertificateDetailResponse
+func (client *Client) GetCertificateDetailWithOptions(request *GetCertificateDetailRequest, runtime *dara.RuntimeOptions) (_result *GetCertificateDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CertificateId) {
+		query["CertificateId"] = request.CertificateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCertificateDetail"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCertificateDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询证书详情
+//
+// @param request - GetCertificateDetailRequest
+//
+// @return GetCertificateDetailResponse
+func (client *Client) GetCertificateDetail(request *GetCertificateDetailRequest) (_result *GetCertificateDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetCertificateDetailResponse{}
+	_body, _err := client.GetCertificateDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtains the content of a certificate signing request (CSR) file.
 //
 // @param request - GetCsrDetailRequest
@@ -1787,6 +2035,196 @@ func (client *Client) GetCsrDetail(request *GetCsrDetailRequest) (_result *GetCs
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetCsrDetailResponse{}
 	_body, _err := client.GetCsrDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例详情
+//
+// @param request - GetInstanceDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceDetailResponse
+func (client *Client) GetInstanceDetailWithOptions(request *GetInstanceDetailRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInstanceDetail"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInstanceDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例详情
+//
+// @param request - GetInstanceDetailRequest
+//
+// @return GetInstanceDetailResponse
+func (client *Client) GetInstanceDetail(request *GetInstanceDetailRequest) (_result *GetInstanceDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetInstanceDetailResponse{}
+	_body, _err := client.GetInstanceDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 实例统计
+//
+// @param request - GetInstanceSummaryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceSummaryResponse
+func (client *Client) GetInstanceSummaryWithOptions(request *GetInstanceSummaryRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceSummaryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceType) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInstanceSummary"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInstanceSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 实例统计
+//
+// @param request - GetInstanceSummaryRequest
+//
+// @return GetInstanceSummaryResponse
+func (client *Client) GetInstanceSummary(request *GetInstanceSummaryRequest) (_result *GetInstanceSummaryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetInstanceSummaryResponse{}
+	_body, _err := client.GetInstanceSummaryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询异步任务状态
+//
+// @param request - GetTaskAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskAttributeResponse
+func (client *Client) GetTaskAttributeWithOptions(request *GetTaskAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetTaskAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TaskType) {
+		query["TaskType"] = request.TaskType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTaskAttribute"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTaskAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询异步任务状态
+//
+// @param request - GetTaskAttributeRequest
+//
+// @return GetTaskAttributeResponse
+func (client *Client) GetTaskAttribute(request *GetTaskAttributeRequest) (_result *GetTaskAttributeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetTaskAttributeResponse{}
+	_body, _err := client.GetTaskAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2049,6 +2487,92 @@ func (client *Client) ListCertWarehouse(request *ListCertWarehouseRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListCertWarehouseResponse{}
 	_body, _err := client.ListCertWarehouseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取证书列表
+//
+// @param request - ListCertificatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCertificatesResponse
+func (client *Client) ListCertificatesWithOptions(request *ListCertificatesRequest, runtime *dara.RuntimeOptions) (_result *ListCertificatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CertificateSource) {
+		query["CertificateSource"] = request.CertificateSource
+	}
+
+	if !dara.IsNil(request.CertificateStatus) {
+		query["CertificateStatus"] = request.CertificateStatus
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ShowSize) {
+		query["ShowSize"] = request.ShowSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCertificates"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCertificatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取证书列表
+//
+// @param request - ListCertificatesRequest
+//
+// @return ListCertificatesResponse
+func (client *Client) ListCertificates(request *ListCertificatesRequest) (_result *ListCertificatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCertificatesResponse{}
+	_body, _err := client.ListCertificatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2566,6 +3090,100 @@ func (client *Client) ListDeploymentJobResource(request *ListDeploymentJobResour
 
 // Summary:
 //
+// 获取实例列表
+//
+// @param request - ListInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstancesResponse
+func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Brand) {
+		query["Brand"] = request.Brand
+	}
+
+	if !dara.IsNil(request.CertificateStatus) {
+		query["CertificateStatus"] = request.CertificateStatus
+	}
+
+	if !dara.IsNil(request.CertificateType) {
+		query["CertificateType"] = request.CertificateType
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.InstanceType) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ShowSize) {
+		query["ShowSize"] = request.ShowSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstances"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例列表
+//
+// @param request - ListInstancesRequest
+//
+// @return ListInstancesResponse
+func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListInstancesResponse{}
+	_body, _err := client.ListInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the certificates or certificate orders of users.
 //
 // Description:
@@ -2816,6 +3434,68 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 
 // Summary:
 //
+// 申请证书
+//
+// @param request - RefundInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefundInstanceResponse
+func (client *Client) RefundInstanceWithOptions(request *RefundInstanceRequest, runtime *dara.RuntimeOptions) (_result *RefundInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RefundInstance"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RefundInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 申请证书
+//
+// @param request - RefundInstanceRequest
+//
+// @return RefundInstanceResponse
+func (client *Client) RefundInstance(request *RefundInstanceRequest) (_result *RefundInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RefundInstanceResponse{}
+	_body, _err := client.RefundInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Submits a renewal application for an issued certificate.
 //
 // Description:
@@ -2889,6 +3569,68 @@ func (client *Client) RenewCertificateOrderForPackageRequest(request *RenewCerti
 	runtime := &dara.RuntimeOptions{}
 	_result = &RenewCertificateOrderForPackageRequestResponse{}
 	_body, _err := client.RenewCertificateOrderForPackageRequestWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 吊销证书
+//
+// @param request - RevokeCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeCertificateResponse
+func (client *Client) RevokeCertificateWithOptions(request *RevokeCertificateRequest, runtime *dara.RuntimeOptions) (_result *RevokeCertificateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokeCertificate"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevokeCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 吊销证书
+//
+// @param request - RevokeCertificateRequest
+//
+// @return RevokeCertificateResponse
+func (client *Client) RevokeCertificate(request *RevokeCertificateRequest) (_result *RevokeCertificateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RevokeCertificateResponse{}
+	_body, _err := client.RevokeCertificateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3201,6 +3943,124 @@ func (client *Client) UpdateDeploymentJobStatus(request *UpdateDeploymentJobStat
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateDeploymentJobStatusResponse{}
 	_body, _err := client.UpdateDeploymentJobStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新实例
+//
+// @param request - UpdateInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstanceResponse
+func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoReissue) {
+		query["AutoReissue"] = request.AutoReissue
+	}
+
+	if !dara.IsNil(request.CertificateName) {
+		query["CertificateName"] = request.CertificateName
+	}
+
+	if !dara.IsNil(request.City) {
+		query["City"] = request.City
+	}
+
+	if !dara.IsNil(request.CompanyId) {
+		query["CompanyId"] = request.CompanyId
+	}
+
+	if !dara.IsNil(request.ContactIdList) {
+		query["ContactIdList"] = request.ContactIdList
+	}
+
+	if !dara.IsNil(request.CountryCode) {
+		query["CountryCode"] = request.CountryCode
+	}
+
+	if !dara.IsNil(request.Csr) {
+		query["Csr"] = request.Csr
+	}
+
+	if !dara.IsNil(request.Domain) {
+		query["Domain"] = request.Domain
+	}
+
+	if !dara.IsNil(request.GenerateCsrMethod) {
+		query["GenerateCsrMethod"] = request.GenerateCsrMethod
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.KeyAlgorithm) {
+		query["KeyAlgorithm"] = request.KeyAlgorithm
+	}
+
+	if !dara.IsNil(request.Province) {
+		query["Province"] = request.Province
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
+	if !dara.IsNil(request.ValidationMethod) {
+		query["ValidationMethod"] = request.ValidationMethod
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateInstance"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新实例
+//
+// @param request - UpdateInstanceRequest
+//
+// @return UpdateInstanceResponse
+func (client *Client) UpdateInstance(request *UpdateInstanceRequest) (_result *UpdateInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateInstanceResponse{}
+	_body, _err := client.UpdateInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
