@@ -140,11 +140,13 @@ func (s *GetAgentTaskResponseBodyData) Validate() error {
 }
 
 type GetAgentTaskResponseBodyDataJobs struct {
-	Error    *string     `json:"error,omitempty" xml:"error,omitempty"`
-	Instance *string     `json:"instance,omitempty" xml:"instance,omitempty"`
-	Params   interface{} `json:"params,omitempty" xml:"params,omitempty"`
-	Region   *string     `json:"region,omitempty" xml:"region,omitempty"`
-	Result   *string     `json:"result,omitempty" xml:"result,omitempty"`
+	Error        *string     `json:"error,omitempty" xml:"error,omitempty"`
+	ErrorCode    *string     `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string     `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Instance     *string     `json:"instance,omitempty" xml:"instance,omitempty"`
+	Params       interface{} `json:"params,omitempty" xml:"params,omitempty"`
+	Region       *string     `json:"region,omitempty" xml:"region,omitempty"`
+	Result       *string     `json:"result,omitempty" xml:"result,omitempty"`
 	// example:
 	//
 	// Running
@@ -161,6 +163,14 @@ func (s GetAgentTaskResponseBodyDataJobs) GoString() string {
 
 func (s *GetAgentTaskResponseBodyDataJobs) GetError() *string {
 	return s.Error
+}
+
+func (s *GetAgentTaskResponseBodyDataJobs) GetErrorCode() *string {
+	return s.ErrorCode
+}
+
+func (s *GetAgentTaskResponseBodyDataJobs) GetErrorMessage() *string {
+	return s.ErrorMessage
 }
 
 func (s *GetAgentTaskResponseBodyDataJobs) GetInstance() *string {
@@ -185,6 +195,16 @@ func (s *GetAgentTaskResponseBodyDataJobs) GetStatus() *string {
 
 func (s *GetAgentTaskResponseBodyDataJobs) SetError(v string) *GetAgentTaskResponseBodyDataJobs {
 	s.Error = &v
+	return s
+}
+
+func (s *GetAgentTaskResponseBodyDataJobs) SetErrorCode(v string) *GetAgentTaskResponseBodyDataJobs {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetAgentTaskResponseBodyDataJobs) SetErrorMessage(v string) *GetAgentTaskResponseBodyDataJobs {
+	s.ErrorMessage = &v
 	return s
 }
 
