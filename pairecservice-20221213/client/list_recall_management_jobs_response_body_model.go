@@ -115,8 +115,9 @@ type ListRecallManagementJobsResponseBodyRecallManagementJobs struct {
 	// example:
 	//
 	// 1
-	RecallManagementJobId  *string                                                                         `json:"RecallManagementJobId,omitempty" xml:"RecallManagementJobId,omitempty"`
-	RecallManagerTableInfo *ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagerTableInfo `json:"RecallManagerTableInfo,omitempty" xml:"RecallManagerTableInfo,omitempty" type:"Struct"`
+	RecallManagementJobId     *string                                                                            `json:"RecallManagementJobId,omitempty" xml:"RecallManagementJobId,omitempty"`
+	RecallManagementTableInfo *ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagementTableInfo `json:"RecallManagementTableInfo,omitempty" xml:"RecallManagementTableInfo,omitempty" type:"Struct"`
+	RecallManagerTableInfo    *ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagerTableInfo    `json:"RecallManagerTableInfo,omitempty" xml:"RecallManagerTableInfo,omitempty" type:"Struct"`
 	// example:
 	//
 	// 2025-01-28T10:00:00Z
@@ -143,6 +144,10 @@ func (s *ListRecallManagementJobsResponseBodyRecallManagementJobs) GetRecallMana
 	return s.RecallManagementJobId
 }
 
+func (s *ListRecallManagementJobsResponseBodyRecallManagementJobs) GetRecallManagementTableInfo() *ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagementTableInfo {
+	return s.RecallManagementTableInfo
+}
+
 func (s *ListRecallManagementJobsResponseBodyRecallManagementJobs) GetRecallManagerTableInfo() *ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagerTableInfo {
 	return s.RecallManagerTableInfo
 }
@@ -165,6 +170,11 @@ func (s *ListRecallManagementJobsResponseBodyRecallManagementJobs) SetRecallMana
 	return s
 }
 
+func (s *ListRecallManagementJobsResponseBodyRecallManagementJobs) SetRecallManagementTableInfo(v *ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagementTableInfo) *ListRecallManagementJobsResponseBodyRecallManagementJobs {
+	s.RecallManagementTableInfo = v
+	return s
+}
+
 func (s *ListRecallManagementJobsResponseBodyRecallManagementJobs) SetRecallManagerTableInfo(v *ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagerTableInfo) *ListRecallManagementJobsResponseBodyRecallManagementJobs {
 	s.RecallManagerTableInfo = v
 	return s
@@ -181,12 +191,72 @@ func (s *ListRecallManagementJobsResponseBodyRecallManagementJobs) SetStatus(v s
 }
 
 func (s *ListRecallManagementJobsResponseBodyRecallManagementJobs) Validate() error {
+	if s.RecallManagementTableInfo != nil {
+		if err := s.RecallManagementTableInfo.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.RecallManagerTableInfo != nil {
 		if err := s.RecallManagerTableInfo.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagementTableInfo struct {
+	DataVersion                    *string `json:"DataVersion,omitempty" xml:"DataVersion,omitempty"`
+	RecallManagementTableVersionId *string `json:"RecallManagementTableVersionId,omitempty" xml:"RecallManagementTableVersionId,omitempty"`
+	SourceTableDataSize            *string `json:"SourceTableDataSize,omitempty" xml:"SourceTableDataSize,omitempty"`
+	SourceTableRowCount            *string `json:"SourceTableRowCount,omitempty" xml:"SourceTableRowCount,omitempty"`
+}
+
+func (s ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagementTableInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagementTableInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagementTableInfo) GetDataVersion() *string {
+	return s.DataVersion
+}
+
+func (s *ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagementTableInfo) GetRecallManagementTableVersionId() *string {
+	return s.RecallManagementTableVersionId
+}
+
+func (s *ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagementTableInfo) GetSourceTableDataSize() *string {
+	return s.SourceTableDataSize
+}
+
+func (s *ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagementTableInfo) GetSourceTableRowCount() *string {
+	return s.SourceTableRowCount
+}
+
+func (s *ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagementTableInfo) SetDataVersion(v string) *ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagementTableInfo {
+	s.DataVersion = &v
+	return s
+}
+
+func (s *ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagementTableInfo) SetRecallManagementTableVersionId(v string) *ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagementTableInfo {
+	s.RecallManagementTableVersionId = &v
+	return s
+}
+
+func (s *ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagementTableInfo) SetSourceTableDataSize(v string) *ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagementTableInfo {
+	s.SourceTableDataSize = &v
+	return s
+}
+
+func (s *ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagementTableInfo) SetSourceTableRowCount(v string) *ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagementTableInfo {
+	s.SourceTableRowCount = &v
+	return s
+}
+
+func (s *ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagementTableInfo) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagerTableInfo struct {
