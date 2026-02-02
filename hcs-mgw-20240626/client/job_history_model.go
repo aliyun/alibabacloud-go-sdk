@@ -33,6 +33,10 @@ type iJobHistory interface {
 	GetRuntimeId() *string
 	SetRuntimeState(v string) *JobHistory
 	GetRuntimeState() *string
+	SetSkippedCount(v int64) *JobHistory
+	GetSkippedCount() *int64
+	SetSkippedSize(v int64) *JobHistory
+	GetSkippedSize() *int64
 	SetStartTime(v string) *JobHistory
 	GetStartTime() *string
 	SetStatus(v string) *JobHistory
@@ -89,6 +93,14 @@ type JobHistory struct {
 	//
 	// Normal
 	RuntimeState *string `json:"RuntimeState,omitempty" xml:"RuntimeState,omitempty"`
+	// example:
+	//
+	// 1000
+	SkippedCount *int64 `json:"SkippedCount,omitempty" xml:"SkippedCount,omitempty"`
+	// example:
+	//
+	// 100000
+	SkippedSize *int64 `json:"SkippedSize,omitempty" xml:"SkippedSize,omitempty"`
 	// example:
 	//
 	// 2025-07-04T07:09:26.000Z
@@ -161,6 +173,14 @@ func (s *JobHistory) GetRuntimeId() *string {
 
 func (s *JobHistory) GetRuntimeState() *string {
 	return s.RuntimeState
+}
+
+func (s *JobHistory) GetSkippedCount() *int64 {
+	return s.SkippedCount
+}
+
+func (s *JobHistory) GetSkippedSize() *int64 {
+	return s.SkippedSize
 }
 
 func (s *JobHistory) GetStartTime() *string {
@@ -236,6 +256,16 @@ func (s *JobHistory) SetRuntimeId(v string) *JobHistory {
 
 func (s *JobHistory) SetRuntimeState(v string) *JobHistory {
 	s.RuntimeState = &v
+	return s
+}
+
+func (s *JobHistory) SetSkippedCount(v int64) *JobHistory {
+	s.SkippedCount = &v
+	return s
+}
+
+func (s *JobHistory) SetSkippedSize(v int64) *JobHistory {
+	s.SkippedSize = &v
 	return s
 }
 
