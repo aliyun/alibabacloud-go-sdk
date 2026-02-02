@@ -11,6 +11,8 @@ type iDescribeHeadersResponseBody interface {
 	GoString() string
 	SetCustomHeader(v *DescribeHeadersResponseBodyCustomHeader) *DescribeHeadersResponseBody
 	GetCustomHeader() *DescribeHeadersResponseBodyCustomHeader
+	SetEmbeddedHeaders(v string) *DescribeHeadersResponseBody
+	GetEmbeddedHeaders() *string
 	SetRequestId(v string) *DescribeHeadersResponseBody
 	GetRequestId() *string
 }
@@ -18,6 +20,13 @@ type iDescribeHeadersResponseBody interface {
 type DescribeHeadersResponseBody struct {
 	// The information about the custom header.
 	CustomHeader *DescribeHeadersResponseBodyCustomHeader `json:"CustomHeader,omitempty" xml:"CustomHeader,omitempty" type:"Struct"`
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// {"X-Client-IP":true,"X-True-IP":true,"Web-Server-Type":true,"WL-Proxy-Client-IP":true,"X-Forwarded-Proto":true}
+	EmbeddedHeaders *string `json:"EmbeddedHeaders,omitempty" xml:"EmbeddedHeaders,omitempty"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
 	//
 	// example:
@@ -38,12 +47,21 @@ func (s *DescribeHeadersResponseBody) GetCustomHeader() *DescribeHeadersResponse
 	return s.CustomHeader
 }
 
+func (s *DescribeHeadersResponseBody) GetEmbeddedHeaders() *string {
+	return s.EmbeddedHeaders
+}
+
 func (s *DescribeHeadersResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
 func (s *DescribeHeadersResponseBody) SetCustomHeader(v *DescribeHeadersResponseBodyCustomHeader) *DescribeHeadersResponseBody {
 	s.CustomHeader = v
+	return s
+}
+
+func (s *DescribeHeadersResponseBody) SetEmbeddedHeaders(v string) *DescribeHeadersResponseBody {
+	s.EmbeddedHeaders = &v
 	return s
 }
 

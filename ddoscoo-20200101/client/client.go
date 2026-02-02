@@ -12334,6 +12334,10 @@ func (client *Client) ModifyHeadersWithOptions(request *ModifyHeadersRequest, ru
 		query["Domain"] = request.Domain
 	}
 
+	if !dara.IsNil(request.EmbeddedHeaders) {
+		query["EmbeddedHeaders"] = request.EmbeddedHeaders
+	}
+
 	if !dara.IsNil(request.ResourceGroupId) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}

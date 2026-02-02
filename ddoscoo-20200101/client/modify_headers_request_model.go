@@ -13,6 +13,8 @@ type iModifyHeadersRequest interface {
 	GetCustomHeaders() *string
 	SetDomain(v string) *ModifyHeadersRequest
 	GetDomain() *string
+	SetEmbeddedHeaders(v string) *ModifyHeadersRequest
+	GetEmbeddedHeaders() *string
 	SetResourceGroupId(v string) *ModifyHeadersRequest
 	GetResourceGroupId() *string
 }
@@ -50,6 +52,10 @@ type ModifyHeadersRequest struct {
 	//
 	// example.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// {"X-Client-IP":true,"X-True-IP":true,"Web-Server-Type":true,"WL-Proxy-Client-IP":true,"X-Forwarded-Proto":true}
+	EmbeddedHeaders *string `json:"EmbeddedHeaders,omitempty" xml:"EmbeddedHeaders,omitempty"`
 	// The ID of the resource group to which the instance belongs.
 	//
 	// >
@@ -80,6 +86,10 @@ func (s *ModifyHeadersRequest) GetDomain() *string {
 	return s.Domain
 }
 
+func (s *ModifyHeadersRequest) GetEmbeddedHeaders() *string {
+	return s.EmbeddedHeaders
+}
+
 func (s *ModifyHeadersRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
@@ -91,6 +101,11 @@ func (s *ModifyHeadersRequest) SetCustomHeaders(v string) *ModifyHeadersRequest 
 
 func (s *ModifyHeadersRequest) SetDomain(v string) *ModifyHeadersRequest {
 	s.Domain = &v
+	return s
+}
+
+func (s *ModifyHeadersRequest) SetEmbeddedHeaders(v string) *ModifyHeadersRequest {
+	s.EmbeddedHeaders = &v
 	return s
 }
 

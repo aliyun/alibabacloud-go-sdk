@@ -9034,6 +9034,10 @@ func (client *Client) ModifyHeadersWithContext(ctx context.Context, request *Mod
 		query["Domain"] = request.Domain
 	}
 
+	if !dara.IsNil(request.EmbeddedHeaders) {
+		query["EmbeddedHeaders"] = request.EmbeddedHeaders
+	}
+
 	if !dara.IsNil(request.ResourceGroupId) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
