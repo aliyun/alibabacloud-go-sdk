@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("central")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("cloudauth"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -69,7 +20,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EntElementVerifyResponse
-func (client *Client) EntElementVerifyWithOptions(request *EntElementVerifyRequest, runtime *dara.RuntimeOptions) (_result *EntElementVerifyResponse, _err error) {
+func (client *Client) EntElementVerifyWithContext(ctx context.Context, request *EntElementVerifyRequest, runtime *dara.RuntimeOptions) (_result *EntElementVerifyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -128,33 +79,11 @@ func (client *Client) EntElementVerifyWithOptions(request *EntElementVerifyReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &EntElementVerifyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Enterprise Element Verification
-//
-// Description:
-//
-// Supports only enterprises and individual businesses.
-//
-// @param request - EntElementVerifyRequest
-//
-// @return EntElementVerifyResponse
-func (client *Client) EntElementVerify(request *EntElementVerifyRequest) (_result *EntElementVerifyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EntElementVerifyResponse{}
-	_body, _err := client.EntElementVerifyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -167,7 +96,7 @@ func (client *Client) EntElementVerify(request *EntElementVerifyRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EntElementVerifyPROResponse
-func (client *Client) EntElementVerifyPROWithOptions(request *EntElementVerifyPRORequest, runtime *dara.RuntimeOptions) (_result *EntElementVerifyPROResponse, _err error) {
+func (client *Client) EntElementVerifyPROWithContext(ctx context.Context, request *EntElementVerifyPRORequest, runtime *dara.RuntimeOptions) (_result *EntElementVerifyPROResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -226,29 +155,11 @@ func (client *Client) EntElementVerifyPROWithOptions(request *EntElementVerifyPR
 		BodyType:    dara.String("json"),
 	}
 	_result = &EntElementVerifyPROResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 企业要素核验PRO
-//
-// @param request - EntElementVerifyPRORequest
-//
-// @return EntElementVerifyPROResponse
-func (client *Client) EntElementVerifyPRO(request *EntElementVerifyPRORequest) (_result *EntElementVerifyPROResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EntElementVerifyPROResponse{}
-	_body, _err := client.EntElementVerifyPROWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -269,7 +180,7 @@ func (client *Client) EntElementVerifyPRO(request *EntElementVerifyPRORequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EntElementVerifyV2Response
-func (client *Client) EntElementVerifyV2WithOptions(request *EntElementVerifyV2Request, runtime *dara.RuntimeOptions) (_result *EntElementVerifyV2Response, _err error) {
+func (client *Client) EntElementVerifyV2WithContext(ctx context.Context, request *EntElementVerifyV2Request, runtime *dara.RuntimeOptions) (_result *EntElementVerifyV2Response, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -328,37 +239,11 @@ func (client *Client) EntElementVerifyV2WithOptions(request *EntElementVerifyV2R
 		BodyType:    dara.String("json"),
 	}
 	_result = &EntElementVerifyV2Response{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Enterprise Element Verification V2
-//
-// Description:
-//
-// The Enterprise Element Verification API provides a service for verifying the consistency of enterprise element information, used to identify the authenticity of enterprise information.
-//
-// It supports various institutions including enterprises, individual businesses, farmers\\" professional cooperatives, government agencies, public institutions, social organizations, legal profession institutions, and owners\\" meetings for 2-3 elements;
-//
-// For 4 elements, it supports enterprises, individual businesses, farmers\\" professional cooperatives, and legal professions.
-//
-// @param request - EntElementVerifyV2Request
-//
-// @return EntElementVerifyV2Response
-func (client *Client) EntElementVerifyV2(request *EntElementVerifyV2Request) (_result *EntElementVerifyV2Response, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EntElementVerifyV2Response{}
-	_body, _err := client.EntElementVerifyV2WithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -371,7 +256,7 @@ func (client *Client) EntElementVerifyV2(request *EntElementVerifyV2Request) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EntRiskQueryResponse
-func (client *Client) EntRiskQueryWithOptions(request *EntRiskQueryRequest, runtime *dara.RuntimeOptions) (_result *EntRiskQueryResponse, _err error) {
+func (client *Client) EntRiskQueryWithContext(ctx context.Context, request *EntRiskQueryRequest, runtime *dara.RuntimeOptions) (_result *EntRiskQueryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -418,29 +303,11 @@ func (client *Client) EntRiskQueryWithOptions(request *EntRiskQueryRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &EntRiskQueryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Abnormal Business Operation Query
-//
-// @param request - EntRiskQueryRequest
-//
-// @return EntRiskQueryResponse
-func (client *Client) EntRiskQuery(request *EntRiskQueryRequest) (_result *EntRiskQueryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EntRiskQueryResponse{}
-	_body, _err := client.EntRiskQueryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -453,7 +320,7 @@ func (client *Client) EntRiskQuery(request *EntRiskQueryRequest) (_result *EntRi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EntVerifyResponse
-func (client *Client) EntVerifyWithOptions(request *EntVerifyRequest, runtime *dara.RuntimeOptions) (_result *EntVerifyResponse, _err error) {
+func (client *Client) EntVerifyWithContext(ctx context.Context, request *EntVerifyRequest, runtime *dara.RuntimeOptions) (_result *EntVerifyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -528,28 +395,10 @@ func (client *Client) EntVerifyWithOptions(request *EntVerifyRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &EntVerifyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Enterprise Authentication
-//
-// @param request - EntVerifyRequest
-//
-// @return EntVerifyResponse
-func (client *Client) EntVerify(request *EntVerifyRequest) (_result *EntVerifyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EntVerifyResponse{}
-	_body, _err := client.EntVerifyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
