@@ -266,7 +266,7 @@ func (client *Client) ActivateRouterInterface(request *ActivateRouterInterfaceRe
 	return _result, _err
 }
 
-// Deprecated: OpenAPI AddBandwidthPackageIps is deprecated, please use Vpc::2016-04-28::AddBandwidthPackageIps instead.
+// Deprecated: OpenAPI AddBandwidthPackageIps is deprecated
 //
 // Summary:
 //
@@ -340,7 +340,7 @@ func (client *Client) AddBandwidthPackageIpsWithOptions(request *AddBandwidthPac
 	return _result, _err
 }
 
-// Deprecated: OpenAPI AddBandwidthPackageIps is deprecated, please use Vpc::2016-04-28::AddBandwidthPackageIps instead.
+// Deprecated: OpenAPI AddBandwidthPackageIps is deprecated
 //
 // Summary:
 //
@@ -7997,6 +7997,98 @@ func (client *Client) CreatePhysicalConnection(request *CreatePhysicalConnection
 
 // Summary:
 //
+// 创建运维窗口
+//
+// @param tmpReq - CreatePlanMaintenanceWindowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePlanMaintenanceWindowResponse
+func (client *Client) CreatePlanMaintenanceWindowWithOptions(tmpReq *CreatePlanMaintenanceWindowRequest, runtime *dara.RuntimeOptions) (_result *CreatePlanMaintenanceWindowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreatePlanMaintenanceWindowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TargetResource) {
+		request.TargetResourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TargetResource, dara.String("TargetResource"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TimePeriod) {
+		request.TimePeriodShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TimePeriod, dara.String("TimePeriod"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Enable) {
+		query["Enable"] = request.Enable
+	}
+
+	if !dara.IsNil(request.PlanWindowName) {
+		query["PlanWindowName"] = request.PlanWindowName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SupportMaintenanceAction) {
+		query["SupportMaintenanceAction"] = request.SupportMaintenanceAction
+	}
+
+	if !dara.IsNil(request.TargetResourceShrink) {
+		query["TargetResource"] = request.TargetResourceShrink
+	}
+
+	if !dara.IsNil(request.TimePeriodShrink) {
+		query["TimePeriod"] = request.TimePeriodShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePlanMaintenanceWindow"),
+		Version:     dara.String("2014-05-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePlanMaintenanceWindowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建运维窗口
+//
+// @param request - CreatePlanMaintenanceWindowRequest
+//
+// @return CreatePlanMaintenanceWindowResponse
+func (client *Client) CreatePlanMaintenanceWindow(request *CreatePlanMaintenanceWindowRequest) (_result *CreatePlanMaintenanceWindowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreatePlanMaintenanceWindowResponse{}
+	_body, _err := client.CreatePlanMaintenanceWindowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a port list. You can associate a port list with resources, such as security groups.
 //
 // @param request - CreatePortRangeListRequest
@@ -10071,8 +10163,6 @@ func (client *Client) DeleteAutoSnapshotPolicy(request *DeleteAutoSnapshotPolicy
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DeleteBandwidthPackage is deprecated, please use Vpc::2016-04-28::DeleteBandwidthPackage instead.
-//
 // Summary:
 //
 // # DeleteBandwidthPackage
@@ -10137,8 +10227,6 @@ func (client *Client) DeleteBandwidthPackageWithOptions(request *DeleteBandwidth
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DeleteBandwidthPackage is deprecated, please use Vpc::2016-04-28::DeleteBandwidthPackage instead.
-//
 // Summary:
 //
 // # DeleteBandwidthPackage
@@ -10146,7 +10234,6 @@ func (client *Client) DeleteBandwidthPackageWithOptions(request *DeleteBandwidth
 // @param request - DeleteBandwidthPackageRequest
 //
 // @return DeleteBandwidthPackageResponse
-// Deprecated
 func (client *Client) DeleteBandwidthPackage(request *DeleteBandwidthPackageRequest) (_result *DeleteBandwidthPackageResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteBandwidthPackageResponse{}
@@ -12198,6 +12285,72 @@ func (client *Client) DeletePhysicalConnection(request *DeletePhysicalConnection
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeletePhysicalConnectionResponse{}
 	_body, _err := client.DeletePhysicalConnectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除运维窗口
+//
+// @param request - DeletePlanMaintenanceWindowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePlanMaintenanceWindowResponse
+func (client *Client) DeletePlanMaintenanceWindowWithOptions(request *DeletePlanMaintenanceWindowRequest, runtime *dara.RuntimeOptions) (_result *DeletePlanMaintenanceWindowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PlanWindowId) {
+		query["PlanWindowId"] = request.PlanWindowId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePlanMaintenanceWindow"),
+		Version:     dara.String("2014-05-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePlanMaintenanceWindowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除运维窗口
+//
+// @param request - DeletePlanMaintenanceWindowRequest
+//
+// @return DeletePlanMaintenanceWindowResponse
+func (client *Client) DeletePlanMaintenanceWindow(request *DeletePlanMaintenanceWindowRequest) (_result *DeletePlanMaintenanceWindowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeletePlanMaintenanceWindowResponse{}
+	_body, _err := client.DeletePlanMaintenanceWindowWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22311,6 +22464,102 @@ func (client *Client) DescribePhysicalConnections(request *DescribePhysicalConne
 
 // Summary:
 //
+// 查询运维窗口
+//
+// @param tmpReq - DescribePlanMaintenanceWindowsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePlanMaintenanceWindowsResponse
+func (client *Client) DescribePlanMaintenanceWindowsWithOptions(tmpReq *DescribePlanMaintenanceWindowsRequest, runtime *dara.RuntimeOptions) (_result *DescribePlanMaintenanceWindowsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DescribePlanMaintenanceWindowsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TargetResourceTags) {
+		request.TargetResourceTagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TargetResourceTags, dara.String("TargetResourceTags"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Enable) {
+		query["Enable"] = request.Enable
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PlanWindowId) {
+		query["PlanWindowId"] = request.PlanWindowId
+	}
+
+	if !dara.IsNil(request.PlanWindowName) {
+		query["PlanWindowName"] = request.PlanWindowName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TargetResourceGroupId) {
+		query["TargetResourceGroupId"] = request.TargetResourceGroupId
+	}
+
+	if !dara.IsNil(request.TargetResourceTagsShrink) {
+		query["TargetResourceTags"] = request.TargetResourceTagsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePlanMaintenanceWindows"),
+		Version:     dara.String("2014-05-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePlanMaintenanceWindowsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询运维窗口
+//
+// @param request - DescribePlanMaintenanceWindowsRequest
+//
+// @return DescribePlanMaintenanceWindowsResponse
+func (client *Client) DescribePlanMaintenanceWindows(request *DescribePlanMaintenanceWindowsRequest) (_result *DescribePlanMaintenanceWindowsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribePlanMaintenanceWindowsResponse{}
+	_body, _err := client.DescribePlanMaintenanceWindowsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the resources that are associated with a port list, such as security groups.
 //
 // @param request - DescribePortRangeListAssociationsRequest
@@ -31185,7 +31434,7 @@ func (client *Client) ModifyAutoSnapshotPolicyEx(request *ModifyAutoSnapshotPoli
 	return _result, _err
 }
 
-// Deprecated: OpenAPI ModifyBandwidthPackageSpec is deprecated, please use Vpc::2016-04-28::ModifyBandwidthPackageSpec instead.
+// Deprecated: OpenAPI ModifyBandwidthPackageSpec is deprecated
 //
 // Summary:
 //
@@ -31255,7 +31504,7 @@ func (client *Client) ModifyBandwidthPackageSpecWithOptions(request *ModifyBandw
 	return _result, _err
 }
 
-// Deprecated: OpenAPI ModifyBandwidthPackageSpec is deprecated, please use Vpc::2016-04-28::ModifyBandwidthPackageSpec instead.
+// Deprecated: OpenAPI ModifyBandwidthPackageSpec is deprecated
 //
 // Summary:
 //
@@ -36373,6 +36622,102 @@ func (client *Client) ModifyPhysicalConnectionAttribute(request *ModifyPhysicalC
 
 // Summary:
 //
+// 更新运维窗口
+//
+// @param tmpReq - ModifyPlanMaintenanceWindowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyPlanMaintenanceWindowResponse
+func (client *Client) ModifyPlanMaintenanceWindowWithOptions(tmpReq *ModifyPlanMaintenanceWindowRequest, runtime *dara.RuntimeOptions) (_result *ModifyPlanMaintenanceWindowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ModifyPlanMaintenanceWindowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TargetResource) {
+		request.TargetResourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TargetResource, dara.String("TargetResource"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TimePeriod) {
+		request.TimePeriodShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TimePeriod, dara.String("TimePeriod"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Enable) {
+		query["Enable"] = request.Enable
+	}
+
+	if !dara.IsNil(request.PlanWindowId) {
+		query["PlanWindowId"] = request.PlanWindowId
+	}
+
+	if !dara.IsNil(request.PlanWindowName) {
+		query["PlanWindowName"] = request.PlanWindowName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SupportMaintenanceAction) {
+		query["SupportMaintenanceAction"] = request.SupportMaintenanceAction
+	}
+
+	if !dara.IsNil(request.TargetResourceShrink) {
+		query["TargetResource"] = request.TargetResourceShrink
+	}
+
+	if !dara.IsNil(request.TimePeriodShrink) {
+		query["TimePeriod"] = request.TimePeriodShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyPlanMaintenanceWindow"),
+		Version:     dara.String("2014-05-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyPlanMaintenanceWindowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新运维窗口
+//
+// @param request - ModifyPlanMaintenanceWindowRequest
+//
+// @return ModifyPlanMaintenanceWindowResponse
+func (client *Client) ModifyPlanMaintenanceWindow(request *ModifyPlanMaintenanceWindowRequest) (_result *ModifyPlanMaintenanceWindowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyPlanMaintenanceWindowResponse{}
+	_body, _err := client.ModifyPlanMaintenanceWindowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the name and entries of a port list. You can call this operation to add, modify, and remove entries for a port list.
 //
 // @param request - ModifyPortRangeListRequest
@@ -40671,8 +41016,6 @@ func (client *Client) ReleasePublicIpAddress(request *ReleasePublicIpAddressRequ
 	return _result, _err
 }
 
-// Deprecated: OpenAPI RemoveBandwidthPackageIps is deprecated, please use Vpc::2016-04-28::RemoveBandwidthPackageIps instead.
-//
 // Summary:
 //
 // # RemoveBandwidthPackageIps
@@ -40745,8 +41088,6 @@ func (client *Client) RemoveBandwidthPackageIpsWithOptions(request *RemoveBandwi
 	return _result, _err
 }
 
-// Deprecated: OpenAPI RemoveBandwidthPackageIps is deprecated, please use Vpc::2016-04-28::RemoveBandwidthPackageIps instead.
-//
 // Summary:
 //
 // # RemoveBandwidthPackageIps
@@ -40754,7 +41095,6 @@ func (client *Client) RemoveBandwidthPackageIpsWithOptions(request *RemoveBandwi
 // @param request - RemoveBandwidthPackageIpsRequest
 //
 // @return RemoveBandwidthPackageIpsResponse
-// Deprecated
 func (client *Client) RemoveBandwidthPackageIps(request *RemoveBandwidthPackageIpsRequest) (_result *RemoveBandwidthPackageIpsResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &RemoveBandwidthPackageIpsResponse{}

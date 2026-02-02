@@ -448,6 +448,10 @@ type DescribeDisksResponseBodyDisksDisk struct {
 	//
 	// 60
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// d-123*********
+	SourceDiskId *string `json:"SourceDiskId,omitempty" xml:"SourceDiskId,omitempty"`
 	// The ID of the snapshot that was used to create the cloud disk.
 	//
 	// This parameter is empty unless the cloud disk was created from a snapshot. The value of this parameter remains unchanged throughout the lifecycle of the cloud disk.
@@ -690,6 +694,10 @@ func (s *DescribeDisksResponseBodyDisksDisk) GetSize() *int32 {
 	return s.Size
 }
 
+func (s *DescribeDisksResponseBodyDisksDisk) GetSourceDiskId() *string {
+	return s.SourceDiskId
+}
+
 func (s *DescribeDisksResponseBodyDisksDisk) GetSourceSnapshotId() *string {
 	return s.SourceSnapshotId
 }
@@ -921,6 +929,11 @@ func (s *DescribeDisksResponseBodyDisksDisk) SetSerialNumber(v string) *Describe
 
 func (s *DescribeDisksResponseBodyDisksDisk) SetSize(v int32) *DescribeDisksResponseBodyDisksDisk {
 	s.Size = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyDisksDisk) SetSourceDiskId(v string) *DescribeDisksResponseBodyDisksDisk {
+	s.SourceDiskId = &v
 	return s
 }
 

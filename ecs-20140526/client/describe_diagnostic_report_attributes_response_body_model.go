@@ -482,6 +482,8 @@ type DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResultIssu
 	//
 	// 2022-07-11T14:00:00Z
 	OccurrenceTime *string `json:"OccurrenceTime,omitempty" xml:"OccurrenceTime,omitempty"`
+	RepairStatus   *string `json:"RepairStatus,omitempty" xml:"RepairStatus,omitempty"`
+	Repairable     *bool   `json:"Repairable,omitempty" xml:"Repairable,omitempty"`
 	// The severity level of the diagnosed issue. Valid values:
 	//
 	// 	- Info: Diagnostic information was recorded and may be related to exceptions.
@@ -516,6 +518,14 @@ func (s *DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResult
 	return s.OccurrenceTime
 }
 
+func (s *DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResultIssuesIssue) GetRepairStatus() *string {
+	return s.RepairStatus
+}
+
+func (s *DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResultIssuesIssue) GetRepairable() *bool {
+	return s.Repairable
+}
+
 func (s *DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResultIssuesIssue) GetSeverity() *string {
 	return s.Severity
 }
@@ -532,6 +542,16 @@ func (s *DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResult
 
 func (s *DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResultIssuesIssue) SetOccurrenceTime(v string) *DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResultIssuesIssue {
 	s.OccurrenceTime = &v
+	return s
+}
+
+func (s *DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResultIssuesIssue) SetRepairStatus(v string) *DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResultIssuesIssue {
+	s.RepairStatus = &v
+	return s
+}
+
+func (s *DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResultIssuesIssue) SetRepairable(v bool) *DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResultIssuesIssue {
+	s.Repairable = &v
 	return s
 }
 
