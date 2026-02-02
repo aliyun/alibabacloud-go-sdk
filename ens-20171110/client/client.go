@@ -17937,6 +17937,88 @@ func (client *Client) ManageAICLogin(request *ManageAICLoginRequest) (_result *M
 
 // Summary:
 //
+// aic实例变配接口
+//
+// @param request - ModifyAICInstanceTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAICInstanceTypeResponse
+func (client *Client) ModifyAICInstanceTypeWithOptions(request *ModifyAICInstanceTypeRequest, runtime *dara.RuntimeOptions) (_result *ModifyAICInstanceTypeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnvironmentVar) {
+		query["EnvironmentVar"] = request.EnvironmentVar
+	}
+
+	if !dara.IsNil(request.Frequency) {
+		query["Frequency"] = request.Frequency
+	}
+
+	if !dara.IsNil(request.ImageId) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InstanceType) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !dara.IsNil(request.Resolution) {
+		query["Resolution"] = request.Resolution
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyAICInstanceType"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyAICInstanceTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// aic实例变配接口
+//
+// @param request - ModifyAICInstanceTypeRequest
+//
+// @return ModifyAICInstanceTypeResponse
+func (client *Client) ModifyAICInstanceType(request *ModifyAICInstanceTypeRequest) (_result *ModifyAICInstanceTypeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyAICInstanceTypeResponse{}
+	_body, _err := client.ModifyAICInstanceTypeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 修改集群组件实例配置
 //
 // @param tmpReq - ModifyClusterAddonRequest
