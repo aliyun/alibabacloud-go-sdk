@@ -1481,6 +1481,80 @@ func (client *Client) CreateRemediationWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// 为当前UID创建合规报告模版
+//
+// @param tmpReq - CreateReportTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateReportTemplateResponse
+func (client *Client) CreateReportTemplateWithContext(ctx context.Context, tmpReq *CreateReportTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateReportTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateReportTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ReportScope) {
+		request.ReportScopeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ReportScope, dara.String("ReportScope"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ReportFileFormats) {
+		body["ReportFileFormats"] = request.ReportFileFormats
+	}
+
+	if !dara.IsNil(request.ReportGranularity) {
+		body["ReportGranularity"] = request.ReportGranularity
+	}
+
+	if !dara.IsNil(request.ReportLanguage) {
+		body["ReportLanguage"] = request.ReportLanguage
+	}
+
+	if !dara.IsNil(request.ReportScopeShrink) {
+		body["ReportScope"] = request.ReportScopeShrink
+	}
+
+	if !dara.IsNil(request.ReportTemplateDescription) {
+		body["ReportTemplateDescription"] = request.ReportTemplateDescription
+	}
+
+	if !dara.IsNil(request.ReportTemplateName) {
+		body["ReportTemplateName"] = request.ReportTemplateName
+	}
+
+	if !dara.IsNil(request.SubscriptionFrequency) {
+		body["SubscriptionFrequency"] = request.SubscriptionFrequency
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateReportTemplate"),
+		Version:     dara.String("2020-09-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateReportTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Disables one or more rules in an account group. After a rule is disabled, the resource in the rule is no longer evaluated. The compliance evaluation results before the rule is disabled are still displayed.
 //
 // Description:
@@ -4605,6 +4679,50 @@ func (client *Client) GetReportFromTemplateWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// 获取合规报告模版详情
+//
+// @param request - GetReportTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetReportTemplateResponse
+func (client *Client) GetReportTemplateWithContext(ctx context.Context, request *GetReportTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetReportTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ReportTemplateId) {
+		query["ReportTemplateId"] = request.ReportTemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetReportTemplate"),
+		Version:     dara.String("2020-09-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetReportTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the compliance summary based on the compliance evaluation result of a rule.
 //
 // Description:
@@ -6911,6 +7029,58 @@ func (client *Client) ListRemediationsWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// 批量获取合规报告模版详情
+//
+// @param request - ListReportTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListReportTemplatesResponse
+func (client *Client) ListReportTemplatesWithContext(ctx context.Context, request *ListReportTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListReportTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListReportTemplates"),
+		Version:     dara.String("2020-09-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListReportTemplatesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the compliance evaluation results of resources.
 //
 // Description:
@@ -8961,6 +9131,84 @@ func (client *Client) UpdateRemediationWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateRemediationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新合规报告模版
+//
+// @param tmpReq - UpdateReportTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateReportTemplateResponse
+func (client *Client) UpdateReportTemplateWithContext(ctx context.Context, tmpReq *UpdateReportTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateReportTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateReportTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ReportScope) {
+		request.ReportScopeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ReportScope, dara.String("ReportScope"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ReportFileFormats) {
+		body["ReportFileFormats"] = request.ReportFileFormats
+	}
+
+	if !dara.IsNil(request.ReportGranularity) {
+		body["ReportGranularity"] = request.ReportGranularity
+	}
+
+	if !dara.IsNil(request.ReportLanguage) {
+		body["ReportLanguage"] = request.ReportLanguage
+	}
+
+	if !dara.IsNil(request.ReportScopeShrink) {
+		body["ReportScope"] = request.ReportScopeShrink
+	}
+
+	if !dara.IsNil(request.ReportTemplateDescription) {
+		body["ReportTemplateDescription"] = request.ReportTemplateDescription
+	}
+
+	if !dara.IsNil(request.ReportTemplateId) {
+		body["ReportTemplateId"] = request.ReportTemplateId
+	}
+
+	if !dara.IsNil(request.ReportTemplateName) {
+		body["ReportTemplateName"] = request.ReportTemplateName
+	}
+
+	if !dara.IsNil(request.SubscriptionFrequency) {
+		body["SubscriptionFrequency"] = request.SubscriptionFrequency
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateReportTemplate"),
+		Version:     dara.String("2020-09-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateReportTemplateResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
