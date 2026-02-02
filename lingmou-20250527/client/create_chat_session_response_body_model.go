@@ -24,23 +24,34 @@ type iCreateChatSessionResponseBody interface {
 }
 
 type CreateChatSessionResponseBody struct {
+	// 响应码。
+	//
 	// example:
 	//
 	// 200
-	Code *string                            `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// 响应数据。
 	Data *CreateChatSessionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// http响应码
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// 状态码描述。
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// 请求ID
+	//
 	// example:
 	//
 	// 7239F9E5-A4DB-55BA-B701-0CE47DBDB0A8
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// 请求是否成功
+	//
 	// example:
 	//
 	// True
@@ -119,8 +130,12 @@ func (s *CreateChatSessionResponseBody) Validate() error {
 }
 
 type CreateChatSessionResponseBodyData struct {
+	// 端渲染数字人资产信息。
 	AvatarAssets *CreateChatSessionResponseBodyDataAvatarAssets `json:"avatarAssets,omitempty" xml:"avatarAssets,omitempty" type:"Struct"`
-	RtcParams    *CreateChatSessionResponseBodyDataRtcParams    `json:"rtcParams,omitempty" xml:"rtcParams,omitempty" type:"Struct"`
+	// RTC入参。
+	RtcParams *CreateChatSessionResponseBodyDataRtcParams `json:"rtcParams,omitempty" xml:"rtcParams,omitempty" type:"Struct"`
+	// 会话ID
+	//
 	// example:
 	//
 	// 9827f4bd-5008-4d34-98fb-62598f3ad3b5
@@ -177,25 +192,35 @@ func (s *CreateChatSessionResponseBodyData) Validate() error {
 }
 
 type CreateChatSessionResponseBodyDataAvatarAssets struct {
+	// 资产MD5值。
+	//
 	// example:
 	//
-	// 5B83BE2114489274BB88BADE7EBC9BC0
+	// 5B83BE2114489274BB88BADE7EBC****
 	Md5 *string `json:"md5,omitempty" xml:"md5,omitempty"`
+	// 支持的SDK最低版本。
+	//
 	// example:
 	//
 	// 0.0.1
 	MinRequiredVersion *string `json:"minRequiredVersion,omitempty" xml:"minRequiredVersion,omitempty"`
+	// SDK使用的密钥。
+	//
 	// example:
 	//
-	// J562PNqJBZDhzOQpLBgIcIW8+rHQoM7P6IONGMP7P5vGxrWLxT7VtRenFnMY+wg/zpA2qwpFBmJYO2rVexnlCQ2WE4kvYOH/OKmlTzpQddY34U5jS9KaS3b3ulpq4xnKDjWJ+sLZSRMhuPDdlq8ZPfcfEPhJhF3zPO8Hu4QOSu+D/pAIDJUoixOTo9Q14DXFKGFuuVRQOQ7f/VxJcoSLIWIusV917pLtph/IYBaLd27gzbrTZBEVD8qrucR+WOQPY1g67PGAdafkhJWrs/+coM7+5dc3HEUC+KgI9JN4X4Akelc94aJcy78RZ6tRdr73hBzN83/cMZdzt2hxnjzg==
+	// J562PNqJBZDhzOQpLBgIcIW8+rHQoM7P6IONGMP7P5vGxrWLxT7VtRenFnMY+wg/zpA2qwpFBmJYO2rVexnlCQ2WE4kvYOH/OKmlTzpQddY34U5jS9KaS3b3ulpq4xnKDjWJ+sLZSRMhuPDdlq8ZPfcfEPhJhF3zPO8Hu4QOSu+D/pAIDJUoixOTo9Q14DXFKGFuuVRQOQ7f/VxJcoSLIWIusV917pLtph/IYBaLd27gzbrTZBEVD8qrucR+WOQPY1g67PGAdafkhJWrs/+coM7+5dc3HEUC+KgI9JN4X4Akelc94aJcy78RZ6tRdr73hBzN83/cMZdzt2hx******
 	Secret *string `json:"secret,omitempty" xml:"secret,omitempty"`
+	// 资产类型。
+	//
 	// example:
 	//
 	// AVATAR_3D_TRADITIONAL
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// 资产下载链接。
+	//
 	// example:
 	//
-	// https://daily-avatar-property.oss-cn-beijing.aliyuncs.com/avatar-share-property/AVATAR_3D_TRADITIONAL/Mt.CNMU6BO4RBYU2/secret_assets_web.zip?Expires=1752637519&OSSAccessKeyId=STS.NZULzwLRx8thHDHQxem94dWdN&Signature=Oni3%2Be8dY8Xrv3iRGDyzn7uReVc%3D&security-token=CAISzAJ1q6Ft5B2yfSjIr5ngB8DDoY1Zj7aDSmL5tXgwYbYYi5LPrDz2IHhMfnloB%2BEcsfU3nmxT6vkZlrp6SJtIXleCZtF94oxN9h2gb4fb4093DEHt08%2FLI3OaLjKm9u2wCryLYbGwU%2FOpbE%2B%2B5U0X6LDmdDKkckW4OJmS8%2FBOZcgWWQ%2FKBlgvRq0hRG1YpdQdKGHaONu0LxfumRCwNkdzvRdmgm4NgsbWgO%2Fks0KA1QSml7ZP%2B9WuesH0M%2FMBZskvD42Hu8VtbbfE3SJq7BxHybx7lqQs%2B02c5onHUwEPsk%2FZYrKOroYzc1RjAbM%2FErRY6fP8nOE9ovbUm5RXHpT05CrMOs62ZPdDoKOscIvBXr6yZaP7JmcGC6iQLG%2FznQkSc081IsK2C7Xq0pe54O3lg9Ab41ZGNYEjq%2BpCIUP%2Fs97dqXEelD2e%2Bh8UezDnKxqAAXuAiYRY7Ox3cf6h2MlmRsK5yywg45O%2FizjiK2k8Z8p6WeOA54W3pfbg6ElV4d8TMWCVZ7tuAbSgRCKBg3q5YYrdS2ENqDu6njIea1pxG4LT4ydGxDBkYpjwcUxutDd0aAhFjsypSK%2Feuk0%2FDCfKMrWzCmkr1AtPpcNfJ8LPj58qIA
+	// https://daily-avatar-property.oss-cn-beijing.aliyuncs.com/avatar-share-property/AVATAR_3D_TRADITIONAL/Mt.CNMU6BO4RBYU2/secret_assets_web.zip?Expires=1752637519&OSSAccessKeyId=STS.NZULzwLRx8thHDHQxem94****&Signature=Oni3%2Be8dY8Xrv3iRGDyzn7u****%3D&security-token=CAISzAJ1q6Ft5B2yfSjIr5ngB8DDoY1Zj7aDSmL5tXgwYbYYi5LPrDz2IHhMfnloB%2BEcsfU3nmxT6vkZlrp6SJtIXleCZtF94oxN9h2gb4fb4093DEHt08%2FLI3OaLjKm9u2wCryLYbGwU%2FOpbE%2B%2B5U0X6LDmdDKkckW4OJmS8%2FBOZcgWWQ%2FKBlgvRq0hRG1YpdQdKGHaONu0LxfumRCwNkdzvRdmgm4NgsbWgO%2Fks0KA1QSml7ZP%2B9WuesH0M%2FMBZskvD42Hu8VtbbfE3SJq7BxHybx7lqQs%2B02c5onHUwEPsk%2FZYrKOroYzc1RjAbM%2FErRY6fP8nOE9ovbUm5RXHpT05CrMOs62ZPdDoKOscIvBXr6yZaP7JmcGC6iQLG%2FznQkSc081IsK2C7Xq0pe54O3lg9Ab41ZGNYEjq%2BpCIUP%2Fs97dqXEelD2e%2Bh8UezDnKxqAAXuAiYRY7Ox3cf6h2MlmRsK5yywg45O%2FizjiK2k8Z8p6WeOA54W3pfbg6ElV4d8TMWCVZ7tuAbSgRCKBg3q5YYrdS2ENqDu6njIea1pxG4LT4ydGxDBkYpjwcUxutDd0aAhFjsypSK%2Feuk0%2FDCfKMrWzCmkr1AtPpcNfJ8LPj58qIA
 	Url *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
@@ -257,41 +282,59 @@ func (s *CreateChatSessionResponseBodyDataAvatarAssets) Validate() error {
 }
 
 type CreateChatSessionResponseBodyDataRtcParams struct {
+	// 应用id。
+	//
 	// example:
 	//
 	// 895cbf3b
 	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// 数字人侧用户ID。
+	//
 	// example:
 	//
 	// E7enIvjUos
 	AvatarUserId *string `json:"avatarUserId,omitempty" xml:"avatarUserId,omitempty"`
+	// RTC通道ID。
+	//
 	// example:
 	//
-	// pPltqR3FovNCK3hNQc8eHUL3Ztq1wY
+	// pPltqR3FovNCK3hNQc8eHUL3Zt****
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	// 客户端侧用户ID。
+	//
 	// example:
 	//
 	// aw0tqpFlP4
 	ClientUserId *string `json:"clientUserId,omitempty" xml:"clientUserId,omitempty"`
+	// RTC服务地址。
+	//
 	// example:
 	//
 	// https://gw.rtn.aliyuncs.com
 	Gslb *string `json:"gslb,omitempty" xml:"gslb,omitempty"`
+	// 随机串。
+	//
 	// example:
 	//
 	// f8b0ef02c5da778f4488e2470c
 	Nonce *string `json:"nonce,omitempty" xml:"nonce,omitempty"`
+	// 服务端侧用户ID。
+	//
 	// example:
 	//
 	// YzZtSQP8QX
 	ServerUserId *string `json:"serverUserId,omitempty" xml:"serverUserId,omitempty"`
+	// 过期时间戳。
+	//
 	// example:
 	//
 	// 1560588594
 	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	// 访问凭证token。
+	//
 	// example:
 	//
-	// PtGgv2dM9F8tEuAtda50c0VNNFjn0WUbyTDRPa1im4cUBEcxlo
+	// PtGgv2dM9F8tEuAtda50c0VNNFjn0WUbyTDPa1im4cUBE****
 	Token *string `json:"token,omitempty" xml:"token,omitempty"`
 }
 

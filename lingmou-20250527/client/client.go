@@ -488,7 +488,7 @@ func (client *Client) CreateChatConfig(request *CreateChatConfigRequest) (_resul
 
 // Summary:
 //
-// 创建数字人会话
+// 创建实时数字人会话。
 //
 // @param request - CreateChatSessionRequest
 //
@@ -543,7 +543,7 @@ func (client *Client) CreateChatSessionWithOptions(id *string, request *CreateCh
 
 // Summary:
 //
-// 创建数字人会话
+// 创建实时数字人会话。
 //
 // @param request - CreateChatSessionRequest
 //
@@ -747,6 +747,10 @@ func (client *Client) CreateTrainPicAvatarWithOptions(request *CreateTrainPicAva
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizType) {
+		query["bizType"] = request.BizType
+	}
+
 	if !dara.IsNil(request.Gender) {
 		query["gender"] = request.Gender
 	}

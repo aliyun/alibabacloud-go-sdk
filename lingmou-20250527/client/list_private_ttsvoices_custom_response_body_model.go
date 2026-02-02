@@ -237,7 +237,7 @@ func (s *ListPrivateTTSVoicesCustomResponseBodyData) Validate() error {
 type ListPrivateTTSVoicesCustomResponseBodyDataData struct {
 	// example:
 	//
-	// https://xxx-aliyuncs.com/material/INPUT_TRAIN_AUDIO/Mt.CQEG75L4FWIU2/TestTTSVoiceName.mp3?Expires=1764262805&OSSAccessKeyId=LTAI5tK3WcKwKtAyaTSeq7sx&Signature=D%2Fld6gp9Zh6TsGRU9cd6GD2pFY0%3D
+	// https://xxx-aliyuncs.com/material/INPUT_TRAIN_AUDIO/Mt.CQEG75L4FWIU2/TestTTSVoiceName.mp3?Expires=1764262805&OSSAccessKeyId=LTAI5tK3WcKwKtAyaT******&Signature=D%2Fld6gp9Zh6TsGRU9cd6GD2pFY0%3D
 	AudioURL *string `json:"audioURL,omitempty" xml:"audioURL,omitempty"`
 	// example:
 	//
@@ -255,7 +255,12 @@ type ListPrivateTTSVoicesCustomResponseBodyDataData struct {
 	//
 	// Optional for WH managernif no issue will be cancel
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	ErrorCode   *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误码。
+	//
+	// example:
+	//
+	// Audio.AudioShortError
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	// example:
 	//
 	// Error

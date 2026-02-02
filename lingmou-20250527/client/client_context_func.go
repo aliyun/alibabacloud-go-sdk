@@ -325,7 +325,7 @@ func (client *Client) CreateChatConfigWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 创建数字人会话
+// 创建实时数字人会话。
 //
 // @param request - CreateChatSessionRequest
 //
@@ -527,6 +527,10 @@ func (client *Client) CreateTrainPicAvatarWithContext(ctx context.Context, reque
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizType) {
+		query["bizType"] = request.BizType
+	}
+
 	if !dara.IsNil(request.Gender) {
 		query["gender"] = request.Gender
 	}

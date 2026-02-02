@@ -9,6 +9,8 @@ type iCreateTrainPicAvatarRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBizType(v string) *CreateTrainPicAvatarRequest
+	GetBizType() *string
 	SetGender(v string) *CreateTrainPicAvatarRequest
 	GetGender() *string
 	SetGenerateAssets(v bool) *CreateTrainPicAvatarRequest
@@ -24,6 +26,7 @@ type iCreateTrainPicAvatarRequest interface {
 }
 
 type CreateTrainPicAvatarRequest struct {
+	BizType *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -60,6 +63,10 @@ func (s CreateTrainPicAvatarRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateTrainPicAvatarRequest) GetBizType() *string {
+	return s.BizType
+}
+
 func (s *CreateTrainPicAvatarRequest) GetGender() *string {
 	return s.Gender
 }
@@ -82,6 +89,11 @@ func (s *CreateTrainPicAvatarRequest) GetTemplateId() *string {
 
 func (s *CreateTrainPicAvatarRequest) GetTransparent() *bool {
 	return s.Transparent
+}
+
+func (s *CreateTrainPicAvatarRequest) SetBizType(v string) *CreateTrainPicAvatarRequest {
+	s.BizType = &v
+	return s
 }
 
 func (s *CreateTrainPicAvatarRequest) SetGender(v string) *CreateTrainPicAvatarRequest {

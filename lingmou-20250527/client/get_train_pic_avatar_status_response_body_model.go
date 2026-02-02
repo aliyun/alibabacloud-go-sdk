@@ -125,7 +125,7 @@ type GetTrainPicAvatarStatusResponseBodyData struct {
 	AvatarId *string `json:"avatarId,omitempty" xml:"avatarId,omitempty"`
 	// example:
 	//
-	// //daily-avatar-property.oss-cn-beijing.aliyuncs.com/avatar-share-property/AVATAR_2D_PIC/Mt.CMTMRYX4TNIU2/retalking_output.mp4?Expires=1764327167&OSSAccessKeyId=LTAI5tBRPnF5JkRCidYA8kw9&Signature=%2BH%2BSBpNDPiMQtPyl8vraEHMv9X8%3D
+	// //daily-avatar-property.oss-cn-beijing.aliyuncs.com/avatar-share-property/AVATAR_2D_PIC/Mt.CMTMRYX4TNIU2/retalking_output.mp4?Expires=1764327167&OSSAccessKeyId=LTAI5tBRPnF5JkRCid******&Signature=%2BH%2BSBpNDPiMQtPyl8vraEHMv9X8%3D
 	PreviewURL *string `json:"previewURL,omitempty" xml:"previewURL,omitempty"`
 	Status     *string `json:"status,omitempty" xml:"status,omitempty"`
 }

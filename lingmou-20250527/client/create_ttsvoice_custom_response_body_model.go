@@ -121,7 +121,7 @@ func (s *CreateTTSVoiceCustomResponseBody) Validate() error {
 type CreateTTSVoiceCustomResponseBodyData struct {
 	// example:
 	//
-	// https://xxx-aliyuncs.com/material/INPUT_TRAIN_AUDIO/Mt.CQEG75L4FWIU2/TestTTSVoiceName.mp3?Expires=1764262805&OSSAccessKeyId=LTAI5tK3WcKwKtAyaTSeq7sx&Signature=D%2Fld6gp9Zh6TsGRU9cd6GD2pFY0%3D
+	// https://xxx-aliyuncs.com/material/INPUT_TRAIN_AUDIO/Mt.CQEG75L4FWIU2/TestTTSVoiceName.mp3?Expires=1764262805&OSSAccessKeyId=LTAI5tK3WcKwKtAyaT******&Signature=D%2Fld6gp9Zh6TsGRU9cd6GD2pFY0%3D
 	AudioURL *string `json:"audioURL,omitempty" xml:"audioURL,omitempty"`
 	// example:
 	//
