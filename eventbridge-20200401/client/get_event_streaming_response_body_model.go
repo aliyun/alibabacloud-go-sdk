@@ -709,8 +709,9 @@ type GetEventStreamingResponseBodyDataSink struct {
 	// The parameters that are returned if the event target is Message Queue for Apache Kafka.
 	SinkKafkaParameters *GetEventStreamingResponseBodyDataSinkSinkKafkaParameters `json:"SinkKafkaParameters,omitempty" xml:"SinkKafkaParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if the event target is Message Service (MNS).
-	SinkMNSParameters *GetEventStreamingResponseBodyDataSinkSinkMNSParameters `json:"SinkMNSParameters,omitempty" xml:"SinkMNSParameters,omitempty" type:"Struct"`
-	SinkOSSParameters *SinkOSSParameters                                      `json:"SinkOSSParameters,omitempty" xml:"SinkOSSParameters,omitempty"`
+	SinkMNSParameters  *GetEventStreamingResponseBodyDataSinkSinkMNSParameters `json:"SinkMNSParameters,omitempty" xml:"SinkMNSParameters,omitempty" type:"Struct"`
+	SinkMQTTParameters *SinkMQTTParameters                                     `json:"SinkMQTTParameters,omitempty" xml:"SinkMQTTParameters,omitempty"`
+	SinkOSSParameters  *SinkOSSParameters                                      `json:"SinkOSSParameters,omitempty" xml:"SinkOSSParameters,omitempty"`
 	// Sink Open Source RabbitMQ Parameters
 	SinkOpenSourceRabbitMQParameters *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters `json:"SinkOpenSourceRabbitMQParameters,omitempty" xml:"SinkOpenSourceRabbitMQParameters,omitempty" type:"Struct"`
 	SinkRabbitMQMetaParameters       *SinkRabbitMQMetaParameters                                            `json:"SinkRabbitMQMetaParameters,omitempty" xml:"SinkRabbitMQMetaParameters,omitempty"`
@@ -791,6 +792,10 @@ func (s *GetEventStreamingResponseBodyDataSink) GetSinkKafkaParameters() *GetEve
 
 func (s *GetEventStreamingResponseBodyDataSink) GetSinkMNSParameters() *GetEventStreamingResponseBodyDataSinkSinkMNSParameters {
 	return s.SinkMNSParameters
+}
+
+func (s *GetEventStreamingResponseBodyDataSink) GetSinkMQTTParameters() *SinkMQTTParameters {
+	return s.SinkMQTTParameters
 }
 
 func (s *GetEventStreamingResponseBodyDataSink) GetSinkOSSParameters() *SinkOSSParameters {
@@ -897,6 +902,11 @@ func (s *GetEventStreamingResponseBodyDataSink) SetSinkKafkaParameters(v *GetEve
 
 func (s *GetEventStreamingResponseBodyDataSink) SetSinkMNSParameters(v *GetEventStreamingResponseBodyDataSinkSinkMNSParameters) *GetEventStreamingResponseBodyDataSink {
 	s.SinkMNSParameters = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSink) SetSinkMQTTParameters(v *SinkMQTTParameters) *GetEventStreamingResponseBodyDataSink {
+	s.SinkMQTTParameters = v
 	return s
 }
 
@@ -1013,6 +1023,11 @@ func (s *GetEventStreamingResponseBodyDataSink) Validate() error {
 	}
 	if s.SinkMNSParameters != nil {
 		if err := s.SinkMNSParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkMQTTParameters != nil {
+		if err := s.SinkMQTTParameters.Validate(); err != nil {
 			return err
 		}
 	}

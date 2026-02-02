@@ -658,6 +658,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSink struct {
 	SinkKafkaParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters `json:"SinkKafkaParameters,omitempty" xml:"SinkKafkaParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if MNS is specified as the event target.
 	SinkMNSParameters                *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParameters                `json:"SinkMNSParameters,omitempty" xml:"SinkMNSParameters,omitempty" type:"Struct"`
+	SinkMQTTParameters               *SinkMQTTParameters                                                                     `json:"SinkMQTTParameters,omitempty" xml:"SinkMQTTParameters,omitempty"`
 	SinkOSSParameters                *SinkOSSParameters                                                                      `json:"SinkOSSParameters,omitempty" xml:"SinkOSSParameters,omitempty"`
 	SinkOpenSourceRabbitMQParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters `json:"SinkOpenSourceRabbitMQParameters,omitempty" xml:"SinkOpenSourceRabbitMQParameters,omitempty" type:"Struct"`
 	SinkRabbitMQMetaParameters       *SinkRabbitMQMetaParameters                                                             `json:"SinkRabbitMQMetaParameters,omitempty" xml:"SinkRabbitMQMetaParameters,omitempty"`
@@ -729,6 +730,10 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkKafkaPar
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkMNSParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParameters {
 	return s.SinkMNSParameters
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkMQTTParameters() *SinkMQTTParameters {
+	return s.SinkMQTTParameters
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkOSSParameters() *SinkOSSParameters {
@@ -825,6 +830,11 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkKafkaPar
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkMNSParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
 	s.SinkMNSParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkMQTTParameters(v *SinkMQTTParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
+	s.SinkMQTTParameters = v
 	return s
 }
 
@@ -931,6 +941,11 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) Validate() erro
 	}
 	if s.SinkMNSParameters != nil {
 		if err := s.SinkMNSParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkMQTTParameters != nil {
+		if err := s.SinkMQTTParameters.Validate(); err != nil {
 			return err
 		}
 	}

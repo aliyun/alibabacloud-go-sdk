@@ -544,6 +544,7 @@ type CreateEventStreamingRequestSink struct {
 	SinkKafkaParameters *CreateEventStreamingRequestSinkSinkKafkaParameters `json:"SinkKafkaParameters,omitempty" xml:"SinkKafkaParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify MNS as the event target.
 	SinkMNSParameters                *CreateEventStreamingRequestSinkSinkMNSParameters                `json:"SinkMNSParameters,omitempty" xml:"SinkMNSParameters,omitempty" type:"Struct"`
+	SinkMQTTParameters               *SinkMQTTParameters                                              `json:"SinkMQTTParameters,omitempty" xml:"SinkMQTTParameters,omitempty"`
 	SinkOSSParameters                *SinkOSSParameters                                               `json:"SinkOSSParameters,omitempty" xml:"SinkOSSParameters,omitempty"`
 	SinkOpenSourceRabbitMQParameters *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters `json:"SinkOpenSourceRabbitMQParameters,omitempty" xml:"SinkOpenSourceRabbitMQParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify Managed Service for Prometheus as the event target.
@@ -625,6 +626,10 @@ func (s *CreateEventStreamingRequestSink) GetSinkKafkaParameters() *CreateEventS
 
 func (s *CreateEventStreamingRequestSink) GetSinkMNSParameters() *CreateEventStreamingRequestSinkSinkMNSParameters {
 	return s.SinkMNSParameters
+}
+
+func (s *CreateEventStreamingRequestSink) GetSinkMQTTParameters() *SinkMQTTParameters {
+	return s.SinkMQTTParameters
 }
 
 func (s *CreateEventStreamingRequestSink) GetSinkOSSParameters() *SinkOSSParameters {
@@ -735,6 +740,11 @@ func (s *CreateEventStreamingRequestSink) SetSinkKafkaParameters(v *CreateEventS
 
 func (s *CreateEventStreamingRequestSink) SetSinkMNSParameters(v *CreateEventStreamingRequestSinkSinkMNSParameters) *CreateEventStreamingRequestSink {
 	s.SinkMNSParameters = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSink) SetSinkMQTTParameters(v *SinkMQTTParameters) *CreateEventStreamingRequestSink {
+	s.SinkMQTTParameters = v
 	return s
 }
 
@@ -856,6 +866,11 @@ func (s *CreateEventStreamingRequestSink) Validate() error {
 	}
 	if s.SinkMNSParameters != nil {
 		if err := s.SinkMNSParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkMQTTParameters != nil {
+		if err := s.SinkMQTTParameters.Validate(); err != nil {
 			return err
 		}
 	}

@@ -580,8 +580,9 @@ type UpdateEventStreamingRequestSink struct {
 	// The parameters that are configured if you specify ApsaraMQ for Kafka as the event target.
 	SinkKafkaParameters *UpdateEventStreamingRequestSinkSinkKafkaParameters `json:"SinkKafkaParameters,omitempty" xml:"SinkKafkaParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify Simple Message Queue (SMQ, formerly MNS) as the event target.
-	SinkMNSParameters *UpdateEventStreamingRequestSinkSinkMNSParameters `json:"SinkMNSParameters,omitempty" xml:"SinkMNSParameters,omitempty" type:"Struct"`
-	SinkOSSParameters *SinkOSSParameters                                `json:"SinkOSSParameters,omitempty" xml:"SinkOSSParameters,omitempty"`
+	SinkMNSParameters  *UpdateEventStreamingRequestSinkSinkMNSParameters `json:"SinkMNSParameters,omitempty" xml:"SinkMNSParameters,omitempty" type:"Struct"`
+	SinkMQTTParameters *SinkMQTTParameters                               `json:"SinkMQTTParameters,omitempty" xml:"SinkMQTTParameters,omitempty"`
+	SinkOSSParameters  *SinkOSSParameters                                `json:"SinkOSSParameters,omitempty" xml:"SinkOSSParameters,omitempty"`
 	// The parameters that are configured if you specify open source RabbitMQ as the event target.
 	SinkOpenSourceRabbitMQParameters *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters `json:"SinkOpenSourceRabbitMQParameters,omitempty" xml:"SinkOpenSourceRabbitMQParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify Managed Service for Prometheus as the event target.
@@ -664,6 +665,10 @@ func (s *UpdateEventStreamingRequestSink) GetSinkKafkaParameters() *UpdateEventS
 
 func (s *UpdateEventStreamingRequestSink) GetSinkMNSParameters() *UpdateEventStreamingRequestSinkSinkMNSParameters {
 	return s.SinkMNSParameters
+}
+
+func (s *UpdateEventStreamingRequestSink) GetSinkMQTTParameters() *SinkMQTTParameters {
+	return s.SinkMQTTParameters
 }
 
 func (s *UpdateEventStreamingRequestSink) GetSinkOSSParameters() *SinkOSSParameters {
@@ -774,6 +779,11 @@ func (s *UpdateEventStreamingRequestSink) SetSinkKafkaParameters(v *UpdateEventS
 
 func (s *UpdateEventStreamingRequestSink) SetSinkMNSParameters(v *UpdateEventStreamingRequestSinkSinkMNSParameters) *UpdateEventStreamingRequestSink {
 	s.SinkMNSParameters = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSink) SetSinkMQTTParameters(v *SinkMQTTParameters) *UpdateEventStreamingRequestSink {
+	s.SinkMQTTParameters = v
 	return s
 }
 
@@ -895,6 +905,11 @@ func (s *UpdateEventStreamingRequestSink) Validate() error {
 	}
 	if s.SinkMNSParameters != nil {
 		if err := s.SinkMNSParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkMQTTParameters != nil {
+		if err := s.SinkMQTTParameters.Validate(); err != nil {
 			return err
 		}
 	}
