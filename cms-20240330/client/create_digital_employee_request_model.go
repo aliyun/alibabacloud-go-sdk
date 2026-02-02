@@ -19,8 +19,12 @@ type iCreateDigitalEmployeeRequest interface {
 	GetKnowledges() *CreateDigitalEmployeeRequestKnowledges
 	SetName(v string) *CreateDigitalEmployeeRequest
 	GetName() *string
+	SetResourceGroupId(v string) *CreateDigitalEmployeeRequest
+	GetResourceGroupId() *string
 	SetRoleArn(v string) *CreateDigitalEmployeeRequest
 	GetRoleArn() *string
+	SetTags(v []*Tag) *CreateDigitalEmployeeRequest
+	GetTags() []*Tag
 }
 
 type CreateDigitalEmployeeRequest struct {
@@ -43,12 +47,17 @@ type CreateDigitalEmployeeRequest struct {
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// rg-ae******ey
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// acs:ram::12345678912:role/testrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	Tags    []*Tag  `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s CreateDigitalEmployeeRequest) String() string {
@@ -79,8 +88,16 @@ func (s *CreateDigitalEmployeeRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateDigitalEmployeeRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *CreateDigitalEmployeeRequest) GetRoleArn() *string {
 	return s.RoleArn
+}
+
+func (s *CreateDigitalEmployeeRequest) GetTags() []*Tag {
+	return s.Tags
 }
 
 func (s *CreateDigitalEmployeeRequest) SetDefaultRule(v string) *CreateDigitalEmployeeRequest {
@@ -108,8 +125,18 @@ func (s *CreateDigitalEmployeeRequest) SetName(v string) *CreateDigitalEmployeeR
 	return s
 }
 
+func (s *CreateDigitalEmployeeRequest) SetResourceGroupId(v string) *CreateDigitalEmployeeRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateDigitalEmployeeRequest) SetRoleArn(v string) *CreateDigitalEmployeeRequest {
 	s.RoleArn = &v
+	return s
+}
+
+func (s *CreateDigitalEmployeeRequest) SetTags(v []*Tag) *CreateDigitalEmployeeRequest {
+	s.Tags = v
 	return s
 }
 
@@ -117,6 +144,15 @@ func (s *CreateDigitalEmployeeRequest) Validate() error {
 	if s.Knowledges != nil {
 		if err := s.Knowledges.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil

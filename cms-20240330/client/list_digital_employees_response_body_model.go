@@ -134,8 +134,13 @@ type ListDigitalEmployeesResponseBodyDigitalEmployees struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// example:
 	//
+	// rg-ae******ey
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// example:
+	//
 	// acs:ram::12345678912:role/testrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	Tags    []*Tag  `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
@@ -180,8 +185,16 @@ func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) GetName() *string {
 	return s.Name
 }
 
+func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) GetRoleArn() *string {
 	return s.RoleArn
+}
+
+func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) GetTags() []*Tag {
+	return s.Tags
 }
 
 func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) GetUpdateTime() *string {
@@ -223,8 +236,18 @@ func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) SetName(v string) *Li
 	return s
 }
 
+func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) SetResourceGroupId(v string) *ListDigitalEmployeesResponseBodyDigitalEmployees {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) SetRoleArn(v string) *ListDigitalEmployeesResponseBodyDigitalEmployees {
 	s.RoleArn = &v
+	return s
+}
+
+func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) SetTags(v []*Tag) *ListDigitalEmployeesResponseBodyDigitalEmployees {
+	s.Tags = v
 	return s
 }
 
@@ -237,6 +260,15 @@ func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) Validate() error {
 	if s.Knowledges != nil {
 		if err := s.Knowledges.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil

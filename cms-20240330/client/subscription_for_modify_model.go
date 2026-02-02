@@ -19,6 +19,8 @@ type iSubscriptionForModify interface {
 	GetPushingSetting() *SubscriptionForModifyPushingSetting
 	SetSubscriptionName(v string) *SubscriptionForModify
 	GetSubscriptionName() *string
+	SetWorkspaceFilterSetting(v *WorkspaceFilterSetting) *SubscriptionForModify
+	GetWorkspaceFilterSetting() *WorkspaceFilterSetting
 }
 
 type SubscriptionForModify struct {
@@ -27,7 +29,8 @@ type SubscriptionForModify struct {
 	NotifyStrategyId *string                              `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
 	PushingSetting   *SubscriptionForModifyPushingSetting `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty" type:"Struct"`
 	// This parameter is required.
-	SubscriptionName *string `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
+	SubscriptionName       *string                 `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
+	WorkspaceFilterSetting *WorkspaceFilterSetting `json:"workspaceFilterSetting,omitempty" xml:"workspaceFilterSetting,omitempty"`
 }
 
 func (s SubscriptionForModify) String() string {
@@ -58,6 +61,10 @@ func (s *SubscriptionForModify) GetSubscriptionName() *string {
 	return s.SubscriptionName
 }
 
+func (s *SubscriptionForModify) GetWorkspaceFilterSetting() *WorkspaceFilterSetting {
+	return s.WorkspaceFilterSetting
+}
+
 func (s *SubscriptionForModify) SetDescription(v string) *SubscriptionForModify {
 	s.Description = &v
 	return s
@@ -83,6 +90,11 @@ func (s *SubscriptionForModify) SetSubscriptionName(v string) *SubscriptionForMo
 	return s
 }
 
+func (s *SubscriptionForModify) SetWorkspaceFilterSetting(v *WorkspaceFilterSetting) *SubscriptionForModify {
+	s.WorkspaceFilterSetting = v
+	return s
+}
+
 func (s *SubscriptionForModify) Validate() error {
 	if s.FilterSetting != nil {
 		if err := s.FilterSetting.Validate(); err != nil {
@@ -91,6 +103,11 @@ func (s *SubscriptionForModify) Validate() error {
 	}
 	if s.PushingSetting != nil {
 		if err := s.PushingSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WorkspaceFilterSetting != nil {
+		if err := s.WorkspaceFilterSetting.Validate(); err != nil {
 			return err
 		}
 	}

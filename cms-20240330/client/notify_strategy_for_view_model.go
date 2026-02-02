@@ -485,10 +485,12 @@ func (s *NotifyStrategyForViewRepeatNotifySetting) Validate() error {
 }
 
 type NotifyStrategyForViewRoutes struct {
-	Channels        []*NotifyStrategyForViewRoutesChannels      `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
-	EffectTimeRange *NotifyStrategyForViewRoutesEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
-	FilterSetting   *FilterSetting                              `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	Severities      []*string                                   `json:"severities,omitempty" xml:"severities,omitempty" type:"Repeated"`
+	Channels            []*NotifyStrategyForViewRoutesChannels      `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
+	DigitalEmployeeName *string                                     `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
+	EffectTimeRange     *NotifyStrategyForViewRoutesEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
+	EnableRca           *bool                                       `json:"enableRca,omitempty" xml:"enableRca,omitempty"`
+	FilterSetting       *FilterSetting                              `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
+	Severities          []*string                                   `json:"severities,omitempty" xml:"severities,omitempty" type:"Repeated"`
 }
 
 func (s NotifyStrategyForViewRoutes) String() string {
@@ -503,8 +505,16 @@ func (s *NotifyStrategyForViewRoutes) GetChannels() []*NotifyStrategyForViewRout
 	return s.Channels
 }
 
+func (s *NotifyStrategyForViewRoutes) GetDigitalEmployeeName() *string {
+	return s.DigitalEmployeeName
+}
+
 func (s *NotifyStrategyForViewRoutes) GetEffectTimeRange() *NotifyStrategyForViewRoutesEffectTimeRange {
 	return s.EffectTimeRange
+}
+
+func (s *NotifyStrategyForViewRoutes) GetEnableRca() *bool {
+	return s.EnableRca
 }
 
 func (s *NotifyStrategyForViewRoutes) GetFilterSetting() *FilterSetting {
@@ -520,8 +530,18 @@ func (s *NotifyStrategyForViewRoutes) SetChannels(v []*NotifyStrategyForViewRout
 	return s
 }
 
+func (s *NotifyStrategyForViewRoutes) SetDigitalEmployeeName(v string) *NotifyStrategyForViewRoutes {
+	s.DigitalEmployeeName = &v
+	return s
+}
+
 func (s *NotifyStrategyForViewRoutes) SetEffectTimeRange(v *NotifyStrategyForViewRoutesEffectTimeRange) *NotifyStrategyForViewRoutes {
 	s.EffectTimeRange = v
+	return s
+}
+
+func (s *NotifyStrategyForViewRoutes) SetEnableRca(v bool) *NotifyStrategyForViewRoutes {
+	s.EnableRca = &v
 	return s
 }
 

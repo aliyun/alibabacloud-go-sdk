@@ -27,8 +27,12 @@ type iGetDigitalEmployeeResponseBody interface {
 	GetRegionId() *string
 	SetRequestId(v string) *GetDigitalEmployeeResponseBody
 	GetRequestId() *string
+	SetResourceGroupId(v string) *GetDigitalEmployeeResponseBody
+	GetResourceGroupId() *string
 	SetRoleArn(v string) *GetDigitalEmployeeResponseBody
 	GetRoleArn() *string
+	SetTags(v []*Tag) *GetDigitalEmployeeResponseBody
+	GetTags() []*Tag
 	SetUpdateTime(v string) *GetDigitalEmployeeResponseBody
 	GetUpdateTime() *string
 }
@@ -68,8 +72,13 @@ type GetDigitalEmployeeResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// example:
 	//
+	// rg-ae******ey
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// example:
+	//
 	// acs:ram::12345678912:role/testrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	Tags    []*Tag  `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
@@ -122,8 +131,16 @@ func (s *GetDigitalEmployeeResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *GetDigitalEmployeeResponseBody) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *GetDigitalEmployeeResponseBody) GetRoleArn() *string {
 	return s.RoleArn
+}
+
+func (s *GetDigitalEmployeeResponseBody) GetTags() []*Tag {
+	return s.Tags
 }
 
 func (s *GetDigitalEmployeeResponseBody) GetUpdateTime() *string {
@@ -175,8 +192,18 @@ func (s *GetDigitalEmployeeResponseBody) SetRequestId(v string) *GetDigitalEmplo
 	return s
 }
 
+func (s *GetDigitalEmployeeResponseBody) SetResourceGroupId(v string) *GetDigitalEmployeeResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetDigitalEmployeeResponseBody) SetRoleArn(v string) *GetDigitalEmployeeResponseBody {
 	s.RoleArn = &v
+	return s
+}
+
+func (s *GetDigitalEmployeeResponseBody) SetTags(v []*Tag) *GetDigitalEmployeeResponseBody {
+	s.Tags = v
 	return s
 }
 
@@ -189,6 +216,15 @@ func (s *GetDigitalEmployeeResponseBody) Validate() error {
 	if s.Knowledges != nil {
 		if err := s.Knowledges.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil

@@ -19,6 +19,10 @@ type iListDigitalEmployeesRequest interface {
 	GetName() *string
 	SetNextToken(v string) *ListDigitalEmployeesRequest
 	GetNextToken() *string
+	SetResourceGroupId(v string) *ListDigitalEmployeesRequest
+	GetResourceGroupId() *string
+	SetTags(v []*Tag) *ListDigitalEmployeesRequest
+	GetTags() []*Tag
 }
 
 type ListDigitalEmployeesRequest struct {
@@ -36,6 +40,11 @@ type ListDigitalEmployeesRequest struct {
 	//
 	// xxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// rg-ae******ey
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Tags            []*Tag  `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s ListDigitalEmployeesRequest) String() string {
@@ -66,6 +75,14 @@ func (s *ListDigitalEmployeesRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *ListDigitalEmployeesRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
+func (s *ListDigitalEmployeesRequest) GetTags() []*Tag {
+	return s.Tags
+}
+
 func (s *ListDigitalEmployeesRequest) SetDisplayName(v string) *ListDigitalEmployeesRequest {
 	s.DisplayName = &v
 	return s
@@ -91,6 +108,25 @@ func (s *ListDigitalEmployeesRequest) SetNextToken(v string) *ListDigitalEmploye
 	return s
 }
 
+func (s *ListDigitalEmployeesRequest) SetResourceGroupId(v string) *ListDigitalEmployeesRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListDigitalEmployeesRequest) SetTags(v []*Tag) *ListDigitalEmployeesRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *ListDigitalEmployeesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

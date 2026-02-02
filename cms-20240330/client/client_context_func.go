@@ -549,8 +549,16 @@ func (client *Client) CreateDigitalEmployeeWithContext(ctx context.Context, requ
 		body["name"] = request.Name
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !dara.IsNil(request.RoleArn) {
 		body["roleArn"] = request.RoleArn
+	}
+
+	if !dara.IsNil(request.Tags) {
+		body["tags"] = request.Tags
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3326,20 +3334,26 @@ func (client *Client) ListBizTracesWithContext(ctx context.Context, request *Lis
 //
 // 列出资源DigitalEmployee
 //
-// @param request - ListDigitalEmployeesRequest
+// @param tmpReq - ListDigitalEmployeesRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDigitalEmployeesResponse
-func (client *Client) ListDigitalEmployeesWithContext(ctx context.Context, request *ListDigitalEmployeesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDigitalEmployeesResponse, _err error) {
+func (client *Client) ListDigitalEmployeesWithContext(ctx context.Context, tmpReq *ListDigitalEmployeesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDigitalEmployeesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ListDigitalEmployeesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Tags) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("tags"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DisplayName) {
 		query["displayName"] = request.DisplayName
@@ -3359,6 +3373,14 @@ func (client *Client) ListDigitalEmployeesWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.NextToken) {
 		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.TagsShrink) {
+		query["tags"] = request.TagsShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{

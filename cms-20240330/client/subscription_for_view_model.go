@@ -33,6 +33,8 @@ type iSubscriptionForView interface {
 	GetUserId() *string
 	SetWorkspace(v string) *SubscriptionForView
 	GetWorkspace() *string
+	SetWorkspaceFilterSetting(v *WorkspaceFilterSetting) *SubscriptionForView
+	GetWorkspaceFilterSetting() *WorkspaceFilterSetting
 }
 
 type SubscriptionForView struct {
@@ -44,11 +46,12 @@ type SubscriptionForView struct {
 	PushingSetting   *SubscriptionForViewPushingSetting `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty" type:"Struct"`
 	SubscriptionId   *string                            `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
 	// This parameter is required.
-	SubscriptionName *string `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
-	SyncFromType     *string `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
-	UpdateTime       *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	UserId           *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	Workspace        *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	SubscriptionName       *string                 `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
+	SyncFromType           *string                 `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
+	UpdateTime             *string                 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	UserId                 *string                 `json:"userId,omitempty" xml:"userId,omitempty"`
+	Workspace              *string                 `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	WorkspaceFilterSetting *WorkspaceFilterSetting `json:"workspaceFilterSetting,omitempty" xml:"workspaceFilterSetting,omitempty"`
 }
 
 func (s SubscriptionForView) String() string {
@@ -105,6 +108,10 @@ func (s *SubscriptionForView) GetUserId() *string {
 
 func (s *SubscriptionForView) GetWorkspace() *string {
 	return s.Workspace
+}
+
+func (s *SubscriptionForView) GetWorkspaceFilterSetting() *WorkspaceFilterSetting {
+	return s.WorkspaceFilterSetting
 }
 
 func (s *SubscriptionForView) SetCreateTime(v string) *SubscriptionForView {
@@ -167,6 +174,11 @@ func (s *SubscriptionForView) SetWorkspace(v string) *SubscriptionForView {
 	return s
 }
 
+func (s *SubscriptionForView) SetWorkspaceFilterSetting(v *WorkspaceFilterSetting) *SubscriptionForView {
+	s.WorkspaceFilterSetting = v
+	return s
+}
+
 func (s *SubscriptionForView) Validate() error {
 	if s.FilterSetting != nil {
 		if err := s.FilterSetting.Validate(); err != nil {
@@ -175,6 +187,11 @@ func (s *SubscriptionForView) Validate() error {
 	}
 	if s.PushingSetting != nil {
 		if err := s.PushingSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WorkspaceFilterSetting != nil {
+		if err := s.WorkspaceFilterSetting.Validate(); err != nil {
 			return err
 		}
 	}
