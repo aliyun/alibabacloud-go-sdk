@@ -383,6 +383,10 @@ func (client *Client) CreateCustomAgentWithOptions(tmpReq *CreateCustomAgentRequ
 	}
 	request := &CreateCustomAgentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SkillIds) {
+		request.SkillIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SkillIds, dara.String("SkillIds"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.Tools) {
 		request.ToolsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tools, dara.String("Tools"), dara.String("json"))
 	}
@@ -394,6 +398,10 @@ func (client *Client) CreateCustomAgentWithOptions(tmpReq *CreateCustomAgentRequ
 
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.SkillIdsShrink) {
+		query["SkillIds"] = request.SkillIdsShrink
 	}
 
 	if !dara.IsNil(request.SystemPrompt) {
@@ -2266,7 +2274,17 @@ func (client *Client) ModifyInstanceStorageConfig(request *ModifyInstanceStorage
 
 // Summary:
 //
-// 批量修改实例的SSL配置
+// Modifies the SSL settings of RDS Supabase instances in batches.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// # RDS PostgreSQL
+//
+// ### [](#)References
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param tmpReq - ModifyInstancesSSLRequest
 //
@@ -2336,7 +2354,17 @@ func (client *Client) ModifyInstancesSSLWithOptions(tmpReq *ModifyInstancesSSLRe
 
 // Summary:
 //
-// 批量修改实例的SSL配置
+// Modifies the SSL settings of RDS Supabase instances in batches.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// # RDS PostgreSQL
+//
+// ### [](#)References
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param request - ModifyInstancesSSLRequest
 //
@@ -2796,6 +2824,10 @@ func (client *Client) UpdateCustomAgentWithOptions(tmpReq *UpdateCustomAgentRequ
 	}
 	request := &UpdateCustomAgentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SkillIds) {
+		request.SkillIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SkillIds, dara.String("SkillIds"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.Tools) {
 		request.ToolsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tools, dara.String("Tools"), dara.String("json"))
 	}
@@ -2811,6 +2843,10 @@ func (client *Client) UpdateCustomAgentWithOptions(tmpReq *UpdateCustomAgentRequ
 
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.SkillIdsShrink) {
+		query["SkillIds"] = request.SkillIdsShrink
 	}
 
 	if !dara.IsNil(request.SystemPrompt) {

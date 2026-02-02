@@ -15,6 +15,8 @@ type iUpdateCustomAgentRequest interface {
 	GetEnableTools() *bool
 	SetName(v string) *UpdateCustomAgentRequest
 	GetName() *string
+	SetSkillIds(v []*string) *UpdateCustomAgentRequest
+	GetSkillIds() []*string
 	SetSystemPrompt(v string) *UpdateCustomAgentRequest
 	GetSystemPrompt() *string
 	SetTools(v []*string) *UpdateCustomAgentRequest
@@ -37,7 +39,8 @@ type UpdateCustomAgentRequest struct {
 	// true
 	EnableTools *bool `json:"EnableTools,omitempty" xml:"EnableTools,omitempty"`
 	// The ID of the agent.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name     *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	SkillIds []*string `json:"SkillIds,omitempty" xml:"SkillIds,omitempty" type:"Repeated"`
 	// The name of the agent.
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
 	// Specifies whether to enable tools.
@@ -64,6 +67,10 @@ func (s *UpdateCustomAgentRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *UpdateCustomAgentRequest) GetSkillIds() []*string {
+	return s.SkillIds
+}
+
 func (s *UpdateCustomAgentRequest) GetSystemPrompt() *string {
 	return s.SystemPrompt
 }
@@ -84,6 +91,11 @@ func (s *UpdateCustomAgentRequest) SetEnableTools(v bool) *UpdateCustomAgentRequ
 
 func (s *UpdateCustomAgentRequest) SetName(v string) *UpdateCustomAgentRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateCustomAgentRequest) SetSkillIds(v []*string) *UpdateCustomAgentRequest {
+	s.SkillIds = v
 	return s
 }
 

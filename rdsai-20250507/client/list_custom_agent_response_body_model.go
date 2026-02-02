@@ -17,6 +17,8 @@ type iListCustomAgentResponseBody interface {
 	GetPageSize() *int64
 	SetRequestId(v string) *ListCustomAgentResponseBody
 	GetRequestId() *string
+	SetSkills(v []*ListCustomAgentResponseBodySkills) *ListCustomAgentResponseBody
+	GetSkills() []*ListCustomAgentResponseBodySkills
 	SetTotalCount(v int32) *ListCustomAgentResponseBody
 	GetTotalCount() *int32
 }
@@ -41,7 +43,8 @@ type ListCustomAgentResponseBody struct {
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Skills    []*ListCustomAgentResponseBodySkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
 	// The total number of entries returned. By default, this parameter is not returned.
 	//
 	// example:
@@ -74,6 +77,10 @@ func (s *ListCustomAgentResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *ListCustomAgentResponseBody) GetSkills() []*ListCustomAgentResponseBodySkills {
+	return s.Skills
+}
+
 func (s *ListCustomAgentResponseBody) GetTotalCount() *int32 {
 	return s.TotalCount
 }
@@ -98,6 +105,11 @@ func (s *ListCustomAgentResponseBody) SetRequestId(v string) *ListCustomAgentRes
 	return s
 }
 
+func (s *ListCustomAgentResponseBody) SetSkills(v []*ListCustomAgentResponseBodySkills) *ListCustomAgentResponseBody {
+	s.Skills = v
+	return s
+}
+
 func (s *ListCustomAgentResponseBody) SetTotalCount(v int32) *ListCustomAgentResponseBody {
 	s.TotalCount = &v
 	return s
@@ -106,6 +118,15 @@ func (s *ListCustomAgentResponseBody) SetTotalCount(v int32) *ListCustomAgentRes
 func (s *ListCustomAgentResponseBody) Validate() error {
 	if s.Data != nil {
 		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Skills != nil {
+		for _, item := range s.Skills {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -221,5 +242,60 @@ func (s *ListCustomAgentResponseBodyData) SetUpdatedAt(v string) *ListCustomAgen
 }
 
 func (s *ListCustomAgentResponseBodyData) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListCustomAgentResponseBodySkills struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SkillType   *string `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
+}
+
+func (s ListCustomAgentResponseBodySkills) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListCustomAgentResponseBodySkills) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomAgentResponseBodySkills) GetDescription() *string {
+	return s.Description
+}
+
+func (s *ListCustomAgentResponseBodySkills) GetId() *string {
+	return s.Id
+}
+
+func (s *ListCustomAgentResponseBodySkills) GetName() *string {
+	return s.Name
+}
+
+func (s *ListCustomAgentResponseBodySkills) GetSkillType() *string {
+	return s.SkillType
+}
+
+func (s *ListCustomAgentResponseBodySkills) SetDescription(v string) *ListCustomAgentResponseBodySkills {
+	s.Description = &v
+	return s
+}
+
+func (s *ListCustomAgentResponseBodySkills) SetId(v string) *ListCustomAgentResponseBodySkills {
+	s.Id = &v
+	return s
+}
+
+func (s *ListCustomAgentResponseBodySkills) SetName(v string) *ListCustomAgentResponseBodySkills {
+	s.Name = &v
+	return s
+}
+
+func (s *ListCustomAgentResponseBodySkills) SetSkillType(v string) *ListCustomAgentResponseBodySkills {
+	s.SkillType = &v
+	return s
+}
+
+func (s *ListCustomAgentResponseBodySkills) Validate() error {
 	return dara.Validate(s)
 }

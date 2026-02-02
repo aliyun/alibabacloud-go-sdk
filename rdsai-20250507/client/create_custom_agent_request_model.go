@@ -13,6 +13,8 @@ type iCreateCustomAgentRequest interface {
 	GetEnableTools() *bool
 	SetName(v string) *CreateCustomAgentRequest
 	GetName() *string
+	SetSkillIds(v []*string) *CreateCustomAgentRequest
+	GetSkillIds() []*string
 	SetSystemPrompt(v string) *CreateCustomAgentRequest
 	GetSystemPrompt() *string
 	SetTools(v []*string) *CreateCustomAgentRequest
@@ -27,7 +29,8 @@ type CreateCustomAgentRequest struct {
 	// true
 	EnableTools *bool `json:"EnableTools,omitempty" xml:"EnableTools,omitempty"`
 	// The operation that you want to perform. Set the value to **CreateCustomAgent**.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name     *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	SkillIds []*string `json:"SkillIds,omitempty" xml:"SkillIds,omitempty" type:"Repeated"`
 	// The name of the dedicated agent.
 	//
 	// This parameter is required.
@@ -52,6 +55,10 @@ func (s *CreateCustomAgentRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateCustomAgentRequest) GetSkillIds() []*string {
+	return s.SkillIds
+}
+
 func (s *CreateCustomAgentRequest) GetSystemPrompt() *string {
 	return s.SystemPrompt
 }
@@ -67,6 +74,11 @@ func (s *CreateCustomAgentRequest) SetEnableTools(v bool) *CreateCustomAgentRequ
 
 func (s *CreateCustomAgentRequest) SetName(v string) *CreateCustomAgentRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateCustomAgentRequest) SetSkillIds(v []*string) *CreateCustomAgentRequest {
+	s.SkillIds = v
 	return s
 }
 

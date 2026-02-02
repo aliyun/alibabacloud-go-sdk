@@ -16,6 +16,8 @@ type iModifyInstancesSSLResponseBody interface {
 }
 
 type ModifyInstancesSSLResponseBody struct {
+	// The RDS Supabase instances whose SSL settings are modified.
+	//
 	// example:
 	//
 	// [
@@ -26,6 +28,8 @@ type ModifyInstancesSSLResponseBody struct {
 	//
 	//   ]
 	InstanceNames []*string `json:"InstanceNames,omitempty" xml:"InstanceNames,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 32DEFB4A-xxxx-ADD5-918E4FD7AB8C

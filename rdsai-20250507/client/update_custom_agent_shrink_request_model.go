@@ -15,6 +15,8 @@ type iUpdateCustomAgentShrinkRequest interface {
 	GetEnableTools() *bool
 	SetName(v string) *UpdateCustomAgentShrinkRequest
 	GetName() *string
+	SetSkillIdsShrink(v string) *UpdateCustomAgentShrinkRequest
+	GetSkillIdsShrink() *string
 	SetSystemPrompt(v string) *UpdateCustomAgentShrinkRequest
 	GetSystemPrompt() *string
 	SetToolsShrink(v string) *UpdateCustomAgentShrinkRequest
@@ -37,7 +39,8 @@ type UpdateCustomAgentShrinkRequest struct {
 	// true
 	EnableTools *bool `json:"EnableTools,omitempty" xml:"EnableTools,omitempty"`
 	// The ID of the agent.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SkillIdsShrink *string `json:"SkillIds,omitempty" xml:"SkillIds,omitempty"`
 	// The name of the agent.
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
 	// Specifies whether to enable tools.
@@ -64,6 +67,10 @@ func (s *UpdateCustomAgentShrinkRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *UpdateCustomAgentShrinkRequest) GetSkillIdsShrink() *string {
+	return s.SkillIdsShrink
+}
+
 func (s *UpdateCustomAgentShrinkRequest) GetSystemPrompt() *string {
 	return s.SystemPrompt
 }
@@ -84,6 +91,11 @@ func (s *UpdateCustomAgentShrinkRequest) SetEnableTools(v bool) *UpdateCustomAge
 
 func (s *UpdateCustomAgentShrinkRequest) SetName(v string) *UpdateCustomAgentShrinkRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateCustomAgentShrinkRequest) SetSkillIdsShrink(v string) *UpdateCustomAgentShrinkRequest {
+	s.SkillIdsShrink = &v
 	return s
 }
 

@@ -17,6 +17,8 @@ type iUpdateCustomAgentResponseBody interface {
 	GetName() *string
 	SetRequestId(v string) *UpdateCustomAgentResponseBody
 	GetRequestId() *string
+	SetSkills(v []*UpdateCustomAgentResponseBodySkills) *UpdateCustomAgentResponseBody
+	GetSkills() []*UpdateCustomAgentResponseBodySkills
 	SetSystemPrompt(v string) *UpdateCustomAgentResponseBody
 	GetSystemPrompt() *string
 	SetTools(v []*string) *UpdateCustomAgentResponseBody
@@ -43,7 +45,8 @@ type UpdateCustomAgentResponseBody struct {
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Skills    []*UpdateCustomAgentResponseBodySkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
 	// The system prompts.
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
 	// The information about the tool.
@@ -74,6 +77,10 @@ func (s *UpdateCustomAgentResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *UpdateCustomAgentResponseBody) GetSkills() []*UpdateCustomAgentResponseBodySkills {
+	return s.Skills
+}
+
 func (s *UpdateCustomAgentResponseBody) GetSystemPrompt() *string {
 	return s.SystemPrompt
 }
@@ -102,6 +109,11 @@ func (s *UpdateCustomAgentResponseBody) SetRequestId(v string) *UpdateCustomAgen
 	return s
 }
 
+func (s *UpdateCustomAgentResponseBody) SetSkills(v []*UpdateCustomAgentResponseBodySkills) *UpdateCustomAgentResponseBody {
+	s.Skills = v
+	return s
+}
+
 func (s *UpdateCustomAgentResponseBody) SetSystemPrompt(v string) *UpdateCustomAgentResponseBody {
 	s.SystemPrompt = &v
 	return s
@@ -113,5 +125,69 @@ func (s *UpdateCustomAgentResponseBody) SetTools(v []*string) *UpdateCustomAgent
 }
 
 func (s *UpdateCustomAgentResponseBody) Validate() error {
+	if s.Skills != nil {
+		for _, item := range s.Skills {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type UpdateCustomAgentResponseBodySkills struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SkillType   *string `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
+}
+
+func (s UpdateCustomAgentResponseBodySkills) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateCustomAgentResponseBodySkills) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomAgentResponseBodySkills) GetDescription() *string {
+	return s.Description
+}
+
+func (s *UpdateCustomAgentResponseBodySkills) GetId() *string {
+	return s.Id
+}
+
+func (s *UpdateCustomAgentResponseBodySkills) GetName() *string {
+	return s.Name
+}
+
+func (s *UpdateCustomAgentResponseBodySkills) GetSkillType() *string {
+	return s.SkillType
+}
+
+func (s *UpdateCustomAgentResponseBodySkills) SetDescription(v string) *UpdateCustomAgentResponseBodySkills {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodySkills) SetId(v string) *UpdateCustomAgentResponseBodySkills {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodySkills) SetName(v string) *UpdateCustomAgentResponseBodySkills {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodySkills) SetSkillType(v string) *UpdateCustomAgentResponseBodySkills {
+	s.SkillType = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodySkills) Validate() error {
 	return dara.Validate(s)
 }

@@ -24,10 +24,16 @@ type iModifyInstancesSSLRequest interface {
 }
 
 type ModifyInstancesSSLRequest struct {
+	// The certificate type. Only **custom*	- is supported.
+	//
+	// >  This parameter is required if **SSLEnabled*	- is set to **1**.
+	//
 	// example:
 	//
 	// custom
 	CAType *string `json:"CAType,omitempty" xml:"CAType,omitempty"`
+	// The information about the RDS Supabase instances that you want to configure. You can specify up to 10 instances.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -40,20 +46,36 @@ type ModifyInstancesSSLRequest struct {
 	//
 	//   ]
 	InstanceNames []*string `json:"InstanceNames,omitempty" xml:"InstanceNames,omitempty" type:"Repeated"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Enables or disables SSL. Valid values:
+	//
+	// 	- **1**: enable
+	//
+	// 	- **0**: disable
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	SSLEnabled *int32 `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
+	// The content of the custom certificate.
+	//
+	// >  This parameter is required if **CAType*	- is set to **custom**.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----MIID*****QqEP-----END CERTIFICATE-----
 	ServerCert *string `json:"ServerCert,omitempty" xml:"ServerCert,omitempty"`
+	// The private key of the certificate.
+	//
+	// >  This parameter is required if **CAType*	- is set to **custom**.
+	//
 	// example:
 	//
 	// -----BEGIN PRIVATE KEY-----MIIE****ihfg==-----END PRIVATE KEY-----
