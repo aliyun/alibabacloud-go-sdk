@@ -5898,6 +5898,88 @@ func (client *Client) CreatePolicyGroup(request *CreatePolicyGroupRequest) (_res
 
 // Summary:
 //
+// 新建限速组
+//
+// @param request - CreateQosRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateQosRuleResponse
+func (client *Client) CreateQosRuleWithOptions(request *CreateQosRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateQosRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthAndroidId) {
+		query["AuthAndroidId"] = request.AuthAndroidId
+	}
+
+	if !dara.IsNil(request.AuthDesktopId) {
+		query["AuthDesktopId"] = request.AuthDesktopId
+	}
+
+	if !dara.IsNil(request.Download) {
+		query["Download"] = request.Download
+	}
+
+	if !dara.IsNil(request.NetworkPackageId) {
+		query["NetworkPackageId"] = request.NetworkPackageId
+	}
+
+	if !dara.IsNil(request.QosRuleName) {
+		query["QosRuleName"] = request.QosRuleName
+	}
+
+	if !dara.IsNil(request.Upload) {
+		query["Upload"] = request.Upload
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateQosRule"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateQosRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建限速组
+//
+// @param request - CreateQosRuleRequest
+//
+// @return CreateQosRuleResponse
+func (client *Client) CreateQosRule(request *CreateQosRuleRequest) (_result *CreateQosRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateQosRuleResponse{}
+	_body, _err := client.CreateQosRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a Resource Access Management (RAM) directory.
 //
 // Description:
@@ -8160,6 +8242,60 @@ func (client *Client) DeletePolicyGroups(request *DeletePolicyGroupsRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeletePolicyGroupsResponse{}
 	_body, _err := client.DeletePolicyGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DeleteQosRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteQosRulesResponse
+func (client *Client) DeleteQosRulesWithOptions(request *DeleteQosRulesRequest, runtime *dara.RuntimeOptions) (_result *DeleteQosRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.QosRuleId) {
+		query["QosRuleId"] = request.QosRuleId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteQosRules"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteQosRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeleteQosRulesRequest
+//
+// @return DeleteQosRulesResponse
+func (client *Client) DeleteQosRules(request *DeleteQosRulesRequest) (_result *DeleteQosRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteQosRulesResponse{}
+	_body, _err := client.DeleteQosRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13758,6 +13894,64 @@ func (client *Client) DescribePriceForRenewDesktopOversoldGroup(request *Describ
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribePriceForRenewDesktopOversoldGroupResponse{}
 	_body, _err := client.DescribePriceForRenewDesktopOversoldGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeQosRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeQosRulesResponse
+func (client *Client) DescribeQosRulesWithOptions(request *DescribeQosRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeQosRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.NetworkPackageId) {
+		query["NetworkPackageId"] = request.NetworkPackageId
+	}
+
+	if !dara.IsNil(request.QosRuleName) {
+		query["QosRuleName"] = request.QosRuleName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeQosRules"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeQosRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeQosRulesRequest
+//
+// @return DescribeQosRulesResponse
+func (client *Client) DescribeQosRules(request *DescribeQosRulesRequest) (_result *DescribeQosRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeQosRulesResponse{}
+	_body, _err := client.DescribeQosRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21986,6 +22180,150 @@ func (client *Client) ModifyPolicyGroup(request *ModifyPolicyGroupRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyPolicyGroupResponse{}
 	_body, _err := client.ModifyPolicyGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改限速组资源绑定关系
+//
+// @param request - ModifyQosEntriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyQosEntriesResponse
+func (client *Client) ModifyQosEntriesWithOptions(request *ModifyQosEntriesRequest, runtime *dara.RuntimeOptions) (_result *ModifyQosEntriesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthAndroidId) {
+		query["AuthAndroidId"] = request.AuthAndroidId
+	}
+
+	if !dara.IsNil(request.AuthDesktopId) {
+		query["AuthDesktopId"] = request.AuthDesktopId
+	}
+
+	if !dara.IsNil(request.QosRuleId) {
+		query["QosRuleId"] = request.QosRuleId
+	}
+
+	if !dara.IsNil(request.RevokeAndroidId) {
+		query["RevokeAndroidId"] = request.RevokeAndroidId
+	}
+
+	if !dara.IsNil(request.RevokeDesktopId) {
+		query["RevokeDesktopId"] = request.RevokeDesktopId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyQosEntries"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyQosEntriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改限速组资源绑定关系
+//
+// @param request - ModifyQosEntriesRequest
+//
+// @return ModifyQosEntriesResponse
+func (client *Client) ModifyQosEntries(request *ModifyQosEntriesRequest) (_result *ModifyQosEntriesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyQosEntriesResponse{}
+	_body, _err := client.ModifyQosEntriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ModifyQosRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyQosRuleResponse
+func (client *Client) ModifyQosRuleWithOptions(request *ModifyQosRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifyQosRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Download) {
+		query["Download"] = request.Download
+	}
+
+	if !dara.IsNil(request.QosRuleId) {
+		query["QosRuleId"] = request.QosRuleId
+	}
+
+	if !dara.IsNil(request.QosRuleName) {
+		query["QosRuleName"] = request.QosRuleName
+	}
+
+	if !dara.IsNil(request.Upload) {
+		query["Upload"] = request.Upload
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyQosRule"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyQosRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ModifyQosRuleRequest
+//
+// @return ModifyQosRuleResponse
+func (client *Client) ModifyQosRule(request *ModifyQosRuleRequest) (_result *ModifyQosRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyQosRuleResponse{}
+	_body, _err := client.ModifyQosRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
