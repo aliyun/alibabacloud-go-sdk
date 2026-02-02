@@ -263,6 +263,10 @@ type GetDialogDetailResponseBodyDataDialogueList struct {
 	IntentName *string `json:"intentName,omitempty" xml:"intentName,omitempty"`
 	// example:
 	//
+	// 19387872364736xdhcb
+	RecordId *string `json:"recordId,omitempty" xml:"recordId,omitempty"`
+	// example:
+	//
 	// 0
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
 	// example:
@@ -311,6 +315,10 @@ func (s *GetDialogDetailResponseBodyDataDialogueList) GetIntentName() *string {
 	return s.IntentName
 }
 
+func (s *GetDialogDetailResponseBodyDataDialogueList) GetRecordId() *string {
+	return s.RecordId
+}
+
 func (s *GetDialogDetailResponseBodyDataDialogueList) GetRole() *string {
 	return s.Role
 }
@@ -356,6 +364,11 @@ func (s *GetDialogDetailResponseBodyDataDialogueList) SetIntentCode(v string) *G
 
 func (s *GetDialogDetailResponseBodyDataDialogueList) SetIntentName(v string) *GetDialogDetailResponseBodyDataDialogueList {
 	s.IntentName = &v
+	return s
+}
+
+func (s *GetDialogDetailResponseBodyDataDialogueList) SetRecordId(v string) *GetDialogDetailResponseBodyDataDialogueList {
+	s.RecordId = &v
 	return s
 }
 
