@@ -323,6 +323,54 @@ func (client *Client) GetApplicationWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
+// 获取数据通道凭证
+//
+// @param request - GetDataChannelCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataChannelCredentialResponse
+func (client *Client) GetDataChannelCredentialWithContext(ctx context.Context, request *GetDataChannelCredentialRequest, runtime *dara.RuntimeOptions) (_result *GetDataChannelCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		query["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	if !dara.IsNil(request.DeviceId) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataChannelCredential"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDataChannelCredentialResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询应用
 //
 // @param request - ListApplicationsRequest
