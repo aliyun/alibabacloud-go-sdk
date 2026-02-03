@@ -11,6 +11,10 @@ type iGetPermissionShrinkRequest interface {
 	GoString() string
 	SetAccessibility(v string) *GetPermissionShrinkRequest
 	GetAccessibility() *string
+	SetCallerType(v string) *GetPermissionShrinkRequest
+	GetCallerType() *string
+	SetCallerUid(v string) *GetPermissionShrinkRequest
+	GetCallerUid() *string
 	SetCreator(v string) *GetPermissionShrinkRequest
 	GetCreator() *string
 	SetLabelsShrink(v string) *GetPermissionShrinkRequest
@@ -19,6 +23,8 @@ type iGetPermissionShrinkRequest interface {
 	GetOption() *string
 	SetResource(v string) *GetPermissionShrinkRequest
 	GetResource() *string
+	SetSecurityToken(v string) *GetPermissionShrinkRequest
+	GetSecurityToken() *string
 }
 
 type GetPermissionShrinkRequest struct {
@@ -32,6 +38,8 @@ type GetPermissionShrinkRequest struct {
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	CallerType    *string `json:"CallerType,omitempty" xml:"CallerType,omitempty"`
+	CallerUid     *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
 	// The UID of the Alibaba Cloud account that is used to create the workspace.
 	//
 	// example:
@@ -54,7 +62,8 @@ type GetPermissionShrinkRequest struct {
 	// example:
 	//
 	// job/dlc-ksd******s12
-	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	Resource      *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s GetPermissionShrinkRequest) String() string {
@@ -67,6 +76,14 @@ func (s GetPermissionShrinkRequest) GoString() string {
 
 func (s *GetPermissionShrinkRequest) GetAccessibility() *string {
 	return s.Accessibility
+}
+
+func (s *GetPermissionShrinkRequest) GetCallerType() *string {
+	return s.CallerType
+}
+
+func (s *GetPermissionShrinkRequest) GetCallerUid() *string {
+	return s.CallerUid
 }
 
 func (s *GetPermissionShrinkRequest) GetCreator() *string {
@@ -85,8 +102,22 @@ func (s *GetPermissionShrinkRequest) GetResource() *string {
 	return s.Resource
 }
 
+func (s *GetPermissionShrinkRequest) GetSecurityToken() *string {
+	return s.SecurityToken
+}
+
 func (s *GetPermissionShrinkRequest) SetAccessibility(v string) *GetPermissionShrinkRequest {
 	s.Accessibility = &v
+	return s
+}
+
+func (s *GetPermissionShrinkRequest) SetCallerType(v string) *GetPermissionShrinkRequest {
+	s.CallerType = &v
+	return s
+}
+
+func (s *GetPermissionShrinkRequest) SetCallerUid(v string) *GetPermissionShrinkRequest {
+	s.CallerUid = &v
 	return s
 }
 
@@ -107,6 +138,11 @@ func (s *GetPermissionShrinkRequest) SetOption(v string) *GetPermissionShrinkReq
 
 func (s *GetPermissionShrinkRequest) SetResource(v string) *GetPermissionShrinkRequest {
 	s.Resource = &v
+	return s
+}
+
+func (s *GetPermissionShrinkRequest) SetSecurityToken(v string) *GetPermissionShrinkRequest {
+	s.SecurityToken = &v
 	return s
 }
 
