@@ -679,6 +679,58 @@ func (client *Client) DescribeNisInspectionTaskWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询流量分析topN异步任务结果
+//
+// @param request - DescribeNisTrafficRankingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNisTrafficRankingResponse
+func (client *Client) DescribeNisTrafficRankingWithContext(ctx context.Context, request *DescribeNisTrafficRankingRequest, runtime *dara.RuntimeOptions) (_result *DescribeNisTrafficRankingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.NisTrafficRankingId) {
+		query["NisTrafficRankingId"] = request.NisTrafficRankingId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeNisTrafficRanking"),
+		Version:     dara.String("2021-12-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeNisTrafficRankingResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // Deprecated: OpenAPI GetInternetTuple is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
 //
 // Summary:
@@ -1517,6 +1569,120 @@ func (client *Client) StartNisInspectionTaskWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartNisInspectionTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取云网络流量指标排名
+//
+// @param tmpReq - StartNisTrafficRankingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartNisTrafficRankingResponse
+func (client *Client) StartNisTrafficRankingWithContext(ctx context.Context, tmpReq *StartNisTrafficRankingRequest, runtime *dara.RuntimeOptions) (_result *StartNisTrafficRankingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &StartNisTrafficRankingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Filter) {
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, dara.String("Filter"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.GroupBy) {
+		request.GroupByShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GroupBy, dara.String("GroupBy"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BeginTime) {
+		query["BeginTime"] = request.BeginTime
+	}
+
+	if !dara.IsNil(request.Direction) {
+		query["Direction"] = request.Direction
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.FilterShrink) {
+		query["Filter"] = request.FilterShrink
+	}
+
+	if !dara.IsNil(request.GroupByShrink) {
+		query["GroupBy"] = request.GroupByShrink
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.RegionNo) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	if !dara.IsNil(request.Sort) {
+		query["Sort"] = request.Sort
+	}
+
+	if !dara.IsNil(request.StorageInterval) {
+		query["StorageInterval"] = request.StorageInterval
+	}
+
+	if !dara.IsNil(request.TopN) {
+		query["TopN"] = request.TopN
+	}
+
+	if !dara.IsNil(request.TrafficAnalyzerId) {
+		query["TrafficAnalyzerId"] = request.TrafficAnalyzerId
+	}
+
+	if !dara.IsNil(request.TrafficScenario) {
+		query["TrafficScenario"] = request.TrafficScenario
+	}
+
+	if !dara.IsNil(request.TupleDimension) {
+		query["TupleDimension"] = request.TupleDimension
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StartNisTrafficRanking"),
+		Version:     dara.String("2021-12-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StartNisTrafficRankingResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
