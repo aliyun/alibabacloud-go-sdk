@@ -13,6 +13,10 @@ type iDescribeConfigurationPriceRequest interface {
 	GetBestEffortType() *string
 	SetCpu(v int32) *DescribeConfigurationPriceRequest
 	GetCpu() *int32
+	SetGpuA10(v string) *DescribeConfigurationPriceRequest
+	GetGpuA10() *string
+	SetGpuPpu810e(v string) *DescribeConfigurationPriceRequest
+	GetGpuPpu810e() *string
 	SetMemory(v int32) *DescribeConfigurationPriceRequest
 	GetMemory() *int32
 	SetNewSaeVersion(v string) *DescribeConfigurationPriceRequest
@@ -48,7 +52,9 @@ type DescribeConfigurationPriceRequest struct {
 	// example:
 	//
 	// 2000
-	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Cpu        *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	GpuA10     *string `json:"GpuA10,omitempty" xml:"GpuA10,omitempty"`
+	GpuPpu810e *string `json:"GpuPpu810e,omitempty" xml:"GpuPpu810e,omitempty"`
 	// The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
 	//
 	// 	- This parameter is set to **1024*	- if the Cpu parameter is set to 500 or 1000.
@@ -107,6 +113,14 @@ func (s *DescribeConfigurationPriceRequest) GetCpu() *int32 {
 	return s.Cpu
 }
 
+func (s *DescribeConfigurationPriceRequest) GetGpuA10() *string {
+	return s.GpuA10
+}
+
+func (s *DescribeConfigurationPriceRequest) GetGpuPpu810e() *string {
+	return s.GpuPpu810e
+}
+
 func (s *DescribeConfigurationPriceRequest) GetMemory() *int32 {
 	return s.Memory
 }
@@ -130,6 +144,16 @@ func (s *DescribeConfigurationPriceRequest) SetBestEffortType(v string) *Describ
 
 func (s *DescribeConfigurationPriceRequest) SetCpu(v int32) *DescribeConfigurationPriceRequest {
 	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceRequest) SetGpuA10(v string) *DescribeConfigurationPriceRequest {
+	s.GpuA10 = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceRequest) SetGpuPpu810e(v string) *DescribeConfigurationPriceRequest {
+	s.GpuPpu810e = &v
 	return s
 }
 

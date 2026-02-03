@@ -4735,6 +4735,14 @@ func (client *Client) DescribeConfigurationPriceWithOptions(request *DescribeCon
 		query["Cpu"] = request.Cpu
 	}
 
+	if !dara.IsNil(request.GpuA10) {
+		query["GpuA10"] = request.GpuA10
+	}
+
+	if !dara.IsNil(request.GpuPpu810e) {
+		query["GpuPpu810e"] = request.GpuPpu810e
+	}
+
 	if !dara.IsNil(request.Memory) {
 		query["Memory"] = request.Memory
 	}
