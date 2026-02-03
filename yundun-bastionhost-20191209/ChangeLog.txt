@@ -1,3 +1,6 @@
+2026-02-03 Version: v2.4.3
+- Generated golang 2019-12-09 for Yundun-bastionhost.
+
 2026-01-21 Version: v2.4.2
 - Update API GetNetworkDomain: add request parameters CheckProxyState.
 - Update API SetPolicyProtocolConfig: add request parameters ProtocolConfig.RDP.DiskRedirectionDownload.
