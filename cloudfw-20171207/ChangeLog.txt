@@ -1,3 +1,7 @@
+2026-02-03 Version: v10.0.2
+- Update API DescribeTrFirewallsV2Detail: add response parameters Body.TrAttachmentId.
+
+
 2026-01-28 Version: v10.0.1
 - Generated golang 2017-12-07 for Cloudfw.
 

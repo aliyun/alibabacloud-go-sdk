@@ -37,6 +37,8 @@ type iDescribeTrFirewallsV2DetailResponseBody interface {
 	GetRequestId() *string
 	SetRouteMode(v string) *DescribeTrFirewallsV2DetailResponseBody
 	GetRouteMode() *string
+	SetTrAttachmentId(v string) *DescribeTrFirewallsV2DetailResponseBody
+	GetTrAttachmentId() *string
 	SetTrAttachmentMasterCidr(v string) *DescribeTrFirewallsV2DetailResponseBody
 	GetTrAttachmentMasterCidr() *string
 	SetTrAttachmentMasterZone(v string) *DescribeTrFirewallsV2DetailResponseBody
@@ -159,7 +161,8 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	// example:
 	//
 	// managed
-	RouteMode *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
+	RouteMode      *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
+	TrAttachmentId *string `json:"TrAttachmentId,omitempty" xml:"TrAttachmentId,omitempty"`
 	// The primary subnet CIDR block that the VPC uses to connect to the transit router in automatic mode.
 	//
 	// example:
@@ -256,6 +259,10 @@ func (s *DescribeTrFirewallsV2DetailResponseBody) GetRouteMode() *string {
 	return s.RouteMode
 }
 
+func (s *DescribeTrFirewallsV2DetailResponseBody) GetTrAttachmentId() *string {
+	return s.TrAttachmentId
+}
+
 func (s *DescribeTrFirewallsV2DetailResponseBody) GetTrAttachmentMasterCidr() *string {
 	return s.TrAttachmentMasterCidr
 }
@@ -343,6 +350,11 @@ func (s *DescribeTrFirewallsV2DetailResponseBody) SetRequestId(v string) *Descri
 
 func (s *DescribeTrFirewallsV2DetailResponseBody) SetRouteMode(v string) *DescribeTrFirewallsV2DetailResponseBody {
 	s.RouteMode = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBody) SetTrAttachmentId(v string) *DescribeTrFirewallsV2DetailResponseBody {
+	s.TrAttachmentId = &v
 	return s
 }
 
