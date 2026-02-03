@@ -19,6 +19,8 @@ type iDescribeIntranetAttributeResponseBody interface {
 	GetExpireTime() *string
 	SetHasPrePaidBandWidthOrderRunning(v bool) *DescribeIntranetAttributeResponseBody
 	GetHasPrePaidBandWidthOrderRunning() *bool
+	SetIntranetBandWidthBurst(v int32) *DescribeIntranetAttributeResponseBody
+	GetIntranetBandWidthBurst() *int32
 	SetIntranetBandwidth(v int32) *DescribeIntranetAttributeResponseBody
 	GetIntranetBandwidth() *int32
 	SetRequestId(v string) *DescribeIntranetAttributeResponseBody
@@ -75,7 +77,8 @@ type DescribeIntranetAttributeResponseBody struct {
 	// example:
 	//
 	// true
-	HasPrePaidBandWidthOrderRunning *bool `json:"HasPrePaidBandWidthOrderRunning,omitempty" xml:"HasPrePaidBandWidthOrderRunning,omitempty"`
+	HasPrePaidBandWidthOrderRunning *bool  `json:"HasPrePaidBandWidthOrderRunning,omitempty" xml:"HasPrePaidBandWidthOrderRunning,omitempty"`
+	IntranetBandWidthBurst          *int32 `json:"IntranetBandWidthBurst,omitempty" xml:"IntranetBandWidthBurst,omitempty"`
 	// The internal bandwidth of the instance. This parameter indicates the combined bandwidth of all shards in the instance. Unit: Mbit/s.
 	//
 	// example:
@@ -118,6 +121,10 @@ func (s *DescribeIntranetAttributeResponseBody) GetHasPrePaidBandWidthOrderRunni
 	return s.HasPrePaidBandWidthOrderRunning
 }
 
+func (s *DescribeIntranetAttributeResponseBody) GetIntranetBandWidthBurst() *int32 {
+	return s.IntranetBandWidthBurst
+}
+
 func (s *DescribeIntranetAttributeResponseBody) GetIntranetBandwidth() *int32 {
 	return s.IntranetBandwidth
 }
@@ -148,6 +155,11 @@ func (s *DescribeIntranetAttributeResponseBody) SetExpireTime(v string) *Describ
 
 func (s *DescribeIntranetAttributeResponseBody) SetHasPrePaidBandWidthOrderRunning(v bool) *DescribeIntranetAttributeResponseBody {
 	s.HasPrePaidBandWidthOrderRunning = &v
+	return s
+}
+
+func (s *DescribeIntranetAttributeResponseBody) SetIntranetBandWidthBurst(v int32) *DescribeIntranetAttributeResponseBody {
+	s.IntranetBandWidthBurst = &v
 	return s
 }
 

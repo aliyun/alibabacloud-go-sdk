@@ -8863,7 +8863,11 @@ func (client *Client) DescribeTairKVCacheInferInstanceAttribute(request *Describ
 
 // Summary:
 //
-// 查看TairInfer实例列表
+// Queries the information of one or more Tair (Redis OSS-compatible) KVCache instances.
+//
+// Description:
+//
+// You can call this operation to query the following Tair (Redis OSS-compatible) KVCache instances: inference operator instances, virtual cluster instances, and cache service instances.
 //
 // @param request - DescribeTairKVCacheInferInstancesRequest
 //
@@ -8903,7 +8907,11 @@ func (client *Client) DescribeTairKVCacheInferInstancesWithOptions(request *Desc
 
 // Summary:
 //
-// 查看TairInfer实例列表
+// Queries the information of one or more Tair (Redis OSS-compatible) KVCache instances.
+//
+// Description:
+//
+// You can call this operation to query the following Tair (Redis OSS-compatible) KVCache instances: inference operator instances, virtual cluster instances, and cache service instances.
 //
 // @param request - DescribeTairKVCacheInferInstancesRequest
 //
@@ -15606,6 +15614,10 @@ func (client *Client) TransformInstanceChargeTypeWithOptions(request *TransformI
 		query["ChargeType"] = request.ChargeType
 	}
 
+	if !dara.IsNil(request.CouponNo) {
+		query["CouponNo"] = request.CouponNo
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -15830,6 +15842,10 @@ func (client *Client) TransformToPrePaidWithOptions(request *TransformToPrePaidR
 
 	if !dara.IsNil(request.AutoRenewPeriod) {
 		query["AutoRenewPeriod"] = request.AutoRenewPeriod
+	}
+
+	if !dara.IsNil(request.CouponNo) {
+		query["CouponNo"] = request.CouponNo
 	}
 
 	if !dara.IsNil(request.InstanceId) {

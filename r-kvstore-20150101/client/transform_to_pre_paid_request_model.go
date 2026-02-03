@@ -15,6 +15,8 @@ type iTransformToPrePaidRequest interface {
 	GetAutoRenew() *string
 	SetAutoRenewPeriod(v int64) *TransformToPrePaidRequest
 	GetAutoRenewPeriod() *int64
+	SetCouponNo(v string) *TransformToPrePaidRequest
+	GetCouponNo() *string
 	SetInstanceId(v string) *TransformToPrePaidRequest
 	GetInstanceId() *string
 	SetOwnerAccount(v string) *TransformToPrePaidRequest
@@ -59,7 +61,8 @@ type TransformToPrePaidRequest struct {
 	// example:
 	//
 	// 3
-	AutoRenewPeriod *int64 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	AutoRenewPeriod *int64  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	CouponNo        *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
 	// The ID of the instance. You can call the [DescribeInstances](~~DescribeInstances~~) operation to query the ID of the instance.
 	//
 	// This parameter is required.
@@ -103,6 +106,10 @@ func (s *TransformToPrePaidRequest) GetAutoRenewPeriod() *int64 {
 	return s.AutoRenewPeriod
 }
 
+func (s *TransformToPrePaidRequest) GetCouponNo() *string {
+	return s.CouponNo
+}
+
 func (s *TransformToPrePaidRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -143,6 +150,11 @@ func (s *TransformToPrePaidRequest) SetAutoRenew(v string) *TransformToPrePaidRe
 
 func (s *TransformToPrePaidRequest) SetAutoRenewPeriod(v int64) *TransformToPrePaidRequest {
 	s.AutoRenewPeriod = &v
+	return s
+}
+
+func (s *TransformToPrePaidRequest) SetCouponNo(v string) *TransformToPrePaidRequest {
+	s.CouponNo = &v
 	return s
 }
 

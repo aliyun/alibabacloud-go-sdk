@@ -17,6 +17,8 @@ type iTransformInstanceChargeTypeRequest interface {
 	GetAutoRenewPeriod() *int64
 	SetChargeType(v string) *TransformInstanceChargeTypeRequest
 	GetChargeType() *string
+	SetCouponNo(v string) *TransformInstanceChargeTypeRequest
+	GetCouponNo() *string
 	SetInstanceId(v string) *TransformInstanceChargeTypeRequest
 	GetInstanceId() *string
 	SetOwnerAccount(v string) *TransformInstanceChargeTypeRequest
@@ -80,6 +82,7 @@ type TransformInstanceChargeTypeRequest struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	CouponNo   *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
 	// The ID of the instance. You can call the [DescribeInstances](~~DescribeInstances~~) operation to query the ID of the instance.
 	//
 	// This parameter is required.
@@ -127,6 +130,10 @@ func (s *TransformInstanceChargeTypeRequest) GetChargeType() *string {
 	return s.ChargeType
 }
 
+func (s *TransformInstanceChargeTypeRequest) GetCouponNo() *string {
+	return s.CouponNo
+}
+
 func (s *TransformInstanceChargeTypeRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -172,6 +179,11 @@ func (s *TransformInstanceChargeTypeRequest) SetAutoRenewPeriod(v int64) *Transf
 
 func (s *TransformInstanceChargeTypeRequest) SetChargeType(v string) *TransformInstanceChargeTypeRequest {
 	s.ChargeType = &v
+	return s
+}
+
+func (s *TransformInstanceChargeTypeRequest) SetCouponNo(v string) *TransformInstanceChargeTypeRequest {
+	s.CouponNo = &v
 	return s
 }
 
