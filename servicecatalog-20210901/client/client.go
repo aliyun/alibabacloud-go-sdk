@@ -151,6 +151,10 @@ func (client *Client) AssociatePrincipalWithPortfolioWithOptions(request *Associ
 		body["PrincipalId"] = request.PrincipalId
 	}
 
+	if !dara.IsNil(request.PrincipalPattern) {
+		body["PrincipalPattern"] = request.PrincipalPattern
+	}
+
 	if !dara.IsNil(request.PrincipalType) {
 		body["PrincipalType"] = request.PrincipalType
 	}
@@ -1493,6 +1497,10 @@ func (client *Client) DisassociatePrincipalFromPortfolioWithOptions(request *Dis
 
 	if !dara.IsNil(request.PrincipalId) {
 		body["PrincipalId"] = request.PrincipalId
+	}
+
+	if !dara.IsNil(request.PrincipalPattern) {
+		body["PrincipalPattern"] = request.PrincipalPattern
 	}
 
 	if !dara.IsNil(request.PrincipalType) {

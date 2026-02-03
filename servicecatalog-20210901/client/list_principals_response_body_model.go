@@ -71,7 +71,8 @@ type ListPrincipalsResponseBodyPrincipals struct {
 	// example:
 	//
 	// 24477111603637****
-	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	PrincipalId      *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	PrincipalPattern *string `json:"PrincipalPattern,omitempty" xml:"PrincipalPattern,omitempty"`
 	// The type of the RAM entity. Valid values:
 	//
 	// 	- RamUser: a RAM user
@@ -96,12 +97,21 @@ func (s *ListPrincipalsResponseBodyPrincipals) GetPrincipalId() *string {
 	return s.PrincipalId
 }
 
+func (s *ListPrincipalsResponseBodyPrincipals) GetPrincipalPattern() *string {
+	return s.PrincipalPattern
+}
+
 func (s *ListPrincipalsResponseBodyPrincipals) GetPrincipalType() *string {
 	return s.PrincipalType
 }
 
 func (s *ListPrincipalsResponseBodyPrincipals) SetPrincipalId(v string) *ListPrincipalsResponseBodyPrincipals {
 	s.PrincipalId = &v
+	return s
+}
+
+func (s *ListPrincipalsResponseBodyPrincipals) SetPrincipalPattern(v string) *ListPrincipalsResponseBodyPrincipals {
+	s.PrincipalPattern = &v
 	return s
 }
 

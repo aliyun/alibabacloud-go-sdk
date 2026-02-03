@@ -13,6 +13,8 @@ type iAssociatePrincipalWithPortfolioRequest interface {
 	GetPortfolioId() *string
 	SetPrincipalId(v string) *AssociatePrincipalWithPortfolioRequest
 	GetPrincipalId() *string
+	SetPrincipalPattern(v string) *AssociatePrincipalWithPortfolioRequest
+	GetPrincipalPattern() *string
 	SetPrincipalType(v string) *AssociatePrincipalWithPortfolioRequest
 	GetPrincipalType() *string
 }
@@ -24,12 +26,17 @@ type AssociatePrincipalWithPortfolioRequest struct {
 	//
 	// port-bp1yt7582g****
 	PortfolioId *string `json:"PortfolioId,omitempty" xml:"PortfolioId,omitempty"`
-	// This parameter is required.
+	// if can be null:
+	// true
 	//
 	// example:
 	//
 	// 24477111603637****
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// example:
+	//
+	// user/userName
+	PrincipalPattern *string `json:"PrincipalPattern,omitempty" xml:"PrincipalPattern,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -54,6 +61,10 @@ func (s *AssociatePrincipalWithPortfolioRequest) GetPrincipalId() *string {
 	return s.PrincipalId
 }
 
+func (s *AssociatePrincipalWithPortfolioRequest) GetPrincipalPattern() *string {
+	return s.PrincipalPattern
+}
+
 func (s *AssociatePrincipalWithPortfolioRequest) GetPrincipalType() *string {
 	return s.PrincipalType
 }
@@ -65,6 +76,11 @@ func (s *AssociatePrincipalWithPortfolioRequest) SetPortfolioId(v string) *Assoc
 
 func (s *AssociatePrincipalWithPortfolioRequest) SetPrincipalId(v string) *AssociatePrincipalWithPortfolioRequest {
 	s.PrincipalId = &v
+	return s
+}
+
+func (s *AssociatePrincipalWithPortfolioRequest) SetPrincipalPattern(v string) *AssociatePrincipalWithPortfolioRequest {
+	s.PrincipalPattern = &v
 	return s
 }
 

@@ -9,6 +9,8 @@ type iListTagOptionsResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetNextToken(v string) *ListTagOptionsResponseBody
+	GetNextToken() *string
 	SetPageNumber(v int32) *ListTagOptionsResponseBody
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListTagOptionsResponseBody
@@ -22,6 +24,7 @@ type iListTagOptionsResponseBody interface {
 }
 
 type ListTagOptionsResponseBody struct {
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The page number of the returned page.
 	//
 	// example:
@@ -60,6 +63,10 @@ func (s ListTagOptionsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ListTagOptionsResponseBody) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *ListTagOptionsResponseBody) GetPageNumber() *int32 {
 	return s.PageNumber
 }
@@ -78,6 +85,11 @@ func (s *ListTagOptionsResponseBody) GetTagOptionDetails() []*ListTagOptionsResp
 
 func (s *ListTagOptionsResponseBody) GetTotalCount() *int32 {
 	return s.TotalCount
+}
+
+func (s *ListTagOptionsResponseBody) SetNextToken(v string) *ListTagOptionsResponseBody {
+	s.NextToken = &v
+	return s
 }
 
 func (s *ListTagOptionsResponseBody) SetPageNumber(v int32) *ListTagOptionsResponseBody {

@@ -11,6 +11,10 @@ type iListTagOptionsShrinkRequest interface {
 	GoString() string
 	SetFiltersShrink(v string) *ListTagOptionsShrinkRequest
 	GetFiltersShrink() *string
+	SetMaxResults(v int32) *ListTagOptionsShrinkRequest
+	GetMaxResults() *int32
+	SetNextToken(v string) *ListTagOptionsShrinkRequest
+	GetNextToken() *string
 	SetPageNumber(v int32) *ListTagOptionsShrinkRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListTagOptionsShrinkRequest
@@ -24,6 +28,8 @@ type iListTagOptionsShrinkRequest interface {
 type ListTagOptionsShrinkRequest struct {
 	// The filter condition.
 	FiltersShrink *string `json:"Filters,omitempty" xml:"Filters,omitempty"`
+	MaxResults    *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The number of the page to return.
 	//
 	// Pages start from page 1. Default value: 1.
@@ -72,6 +78,14 @@ func (s *ListTagOptionsShrinkRequest) GetFiltersShrink() *string {
 	return s.FiltersShrink
 }
 
+func (s *ListTagOptionsShrinkRequest) GetMaxResults() *int32 {
+	return s.MaxResults
+}
+
+func (s *ListTagOptionsShrinkRequest) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *ListTagOptionsShrinkRequest) GetPageNumber() *int32 {
 	return s.PageNumber
 }
@@ -90,6 +104,16 @@ func (s *ListTagOptionsShrinkRequest) GetSortOrder() *string {
 
 func (s *ListTagOptionsShrinkRequest) SetFiltersShrink(v string) *ListTagOptionsShrinkRequest {
 	s.FiltersShrink = &v
+	return s
+}
+
+func (s *ListTagOptionsShrinkRequest) SetMaxResults(v int32) *ListTagOptionsShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTagOptionsShrinkRequest) SetNextToken(v string) *ListTagOptionsShrinkRequest {
+	s.NextToken = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iDisassociatePrincipalFromPortfolioRequest interface {
 	GetPortfolioId() *string
 	SetPrincipalId(v string) *DisassociatePrincipalFromPortfolioRequest
 	GetPrincipalId() *string
+	SetPrincipalPattern(v string) *DisassociatePrincipalFromPortfolioRequest
+	GetPrincipalPattern() *string
 	SetPrincipalType(v string) *DisassociatePrincipalFromPortfolioRequest
 	GetPrincipalType() *string
 }
@@ -32,12 +34,14 @@ type DisassociatePrincipalFromPortfolioRequest struct {
 	//
 	// For more information about how to obtain the ID of a RAM role, see [GetRole](https://help.aliyun.com/document_detail/28711.html).
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 24477111603637****
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// example:
+	//
+	// user/userName
+	PrincipalPattern *string `json:"PrincipalPattern,omitempty" xml:"PrincipalPattern,omitempty"`
 	// The type of the Resource Access Management (RAM) entity. Valid values:
 	//
 	// 	- RamUser: a RAM user
@@ -68,6 +72,10 @@ func (s *DisassociatePrincipalFromPortfolioRequest) GetPrincipalId() *string {
 	return s.PrincipalId
 }
 
+func (s *DisassociatePrincipalFromPortfolioRequest) GetPrincipalPattern() *string {
+	return s.PrincipalPattern
+}
+
 func (s *DisassociatePrincipalFromPortfolioRequest) GetPrincipalType() *string {
 	return s.PrincipalType
 }
@@ -79,6 +87,11 @@ func (s *DisassociatePrincipalFromPortfolioRequest) SetPortfolioId(v string) *Di
 
 func (s *DisassociatePrincipalFromPortfolioRequest) SetPrincipalId(v string) *DisassociatePrincipalFromPortfolioRequest {
 	s.PrincipalId = &v
+	return s
+}
+
+func (s *DisassociatePrincipalFromPortfolioRequest) SetPrincipalPattern(v string) *DisassociatePrincipalFromPortfolioRequest {
+	s.PrincipalPattern = &v
 	return s
 }
 

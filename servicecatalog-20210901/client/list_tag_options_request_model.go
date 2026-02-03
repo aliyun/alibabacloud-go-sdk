@@ -11,6 +11,10 @@ type iListTagOptionsRequest interface {
 	GoString() string
 	SetFilters(v *ListTagOptionsRequestFilters) *ListTagOptionsRequest
 	GetFilters() *ListTagOptionsRequestFilters
+	SetMaxResults(v int32) *ListTagOptionsRequest
+	GetMaxResults() *int32
+	SetNextToken(v string) *ListTagOptionsRequest
+	GetNextToken() *string
 	SetPageNumber(v int32) *ListTagOptionsRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListTagOptionsRequest
@@ -23,7 +27,9 @@ type iListTagOptionsRequest interface {
 
 type ListTagOptionsRequest struct {
 	// The filter condition.
-	Filters *ListTagOptionsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Struct"`
+	Filters    *ListTagOptionsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Struct"`
+	MaxResults *int32                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The number of the page to return.
 	//
 	// Pages start from page 1. Default value: 1.
@@ -72,6 +78,14 @@ func (s *ListTagOptionsRequest) GetFilters() *ListTagOptionsRequestFilters {
 	return s.Filters
 }
 
+func (s *ListTagOptionsRequest) GetMaxResults() *int32 {
+	return s.MaxResults
+}
+
+func (s *ListTagOptionsRequest) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *ListTagOptionsRequest) GetPageNumber() *int32 {
 	return s.PageNumber
 }
@@ -90,6 +104,16 @@ func (s *ListTagOptionsRequest) GetSortOrder() *string {
 
 func (s *ListTagOptionsRequest) SetFilters(v *ListTagOptionsRequestFilters) *ListTagOptionsRequest {
 	s.Filters = v
+	return s
+}
+
+func (s *ListTagOptionsRequest) SetMaxResults(v int32) *ListTagOptionsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTagOptionsRequest) SetNextToken(v string) *ListTagOptionsRequest {
+	s.NextToken = &v
 	return s
 }
 
