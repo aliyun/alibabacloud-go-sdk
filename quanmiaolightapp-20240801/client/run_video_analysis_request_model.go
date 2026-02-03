@@ -425,8 +425,14 @@ func (s *RunVideoAnalysisRequestAddDocumentParam) Validate() error {
 }
 
 type RunVideoAnalysisRequestAddDocumentParamDocument struct {
-	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	CategoryUuid *string                                                  `json:"categoryUuid,omitempty" xml:"categoryUuid,omitempty"`
+	DocId        *string                                                  `json:"docId,omitempty" xml:"docId,omitempty"`
+	Extend1      *string                                                  `json:"extend1,omitempty" xml:"extend1,omitempty"`
+	Extend2      *string                                                  `json:"extend2,omitempty" xml:"extend2,omitempty"`
+	Extend3      *string                                                  `json:"extend3,omitempty" xml:"extend3,omitempty"`
+	Metadata     *RunVideoAnalysisRequestAddDocumentParamDocumentMetadata `json:"metadata,omitempty" xml:"metadata,omitempty" type:"Struct"`
+	Tags         []*string                                                `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Title        *string                                                  `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s RunVideoAnalysisRequestAddDocumentParamDocument) String() string {
@@ -437,16 +443,70 @@ func (s RunVideoAnalysisRequestAddDocumentParamDocument) GoString() string {
 	return s.String()
 }
 
+func (s *RunVideoAnalysisRequestAddDocumentParamDocument) GetCategoryUuid() *string {
+	return s.CategoryUuid
+}
+
 func (s *RunVideoAnalysisRequestAddDocumentParamDocument) GetDocId() *string {
 	return s.DocId
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParamDocument) GetExtend1() *string {
+	return s.Extend1
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParamDocument) GetExtend2() *string {
+	return s.Extend2
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParamDocument) GetExtend3() *string {
+	return s.Extend3
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParamDocument) GetMetadata() *RunVideoAnalysisRequestAddDocumentParamDocumentMetadata {
+	return s.Metadata
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParamDocument) GetTags() []*string {
+	return s.Tags
 }
 
 func (s *RunVideoAnalysisRequestAddDocumentParamDocument) GetTitle() *string {
 	return s.Title
 }
 
+func (s *RunVideoAnalysisRequestAddDocumentParamDocument) SetCategoryUuid(v string) *RunVideoAnalysisRequestAddDocumentParamDocument {
+	s.CategoryUuid = &v
+	return s
+}
+
 func (s *RunVideoAnalysisRequestAddDocumentParamDocument) SetDocId(v string) *RunVideoAnalysisRequestAddDocumentParamDocument {
 	s.DocId = &v
+	return s
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParamDocument) SetExtend1(v string) *RunVideoAnalysisRequestAddDocumentParamDocument {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParamDocument) SetExtend2(v string) *RunVideoAnalysisRequestAddDocumentParamDocument {
+	s.Extend2 = &v
+	return s
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParamDocument) SetExtend3(v string) *RunVideoAnalysisRequestAddDocumentParamDocument {
+	s.Extend3 = &v
+	return s
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParamDocument) SetMetadata(v *RunVideoAnalysisRequestAddDocumentParamDocumentMetadata) *RunVideoAnalysisRequestAddDocumentParamDocument {
+	s.Metadata = v
+	return s
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParamDocument) SetTags(v []*string) *RunVideoAnalysisRequestAddDocumentParamDocument {
+	s.Tags = v
 	return s
 }
 
@@ -456,6 +516,80 @@ func (s *RunVideoAnalysisRequestAddDocumentParamDocument) SetTitle(v string) *Ru
 }
 
 func (s *RunVideoAnalysisRequestAddDocumentParamDocument) Validate() error {
+	if s.Metadata != nil {
+		if err := s.Metadata.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type RunVideoAnalysisRequestAddDocumentParamDocumentMetadata struct {
+	KeyValues []*RunVideoAnalysisRequestAddDocumentParamDocumentMetadataKeyValues `json:"keyValues,omitempty" xml:"keyValues,omitempty" type:"Repeated"`
+}
+
+func (s RunVideoAnalysisRequestAddDocumentParamDocumentMetadata) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunVideoAnalysisRequestAddDocumentParamDocumentMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParamDocumentMetadata) GetKeyValues() []*RunVideoAnalysisRequestAddDocumentParamDocumentMetadataKeyValues {
+	return s.KeyValues
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParamDocumentMetadata) SetKeyValues(v []*RunVideoAnalysisRequestAddDocumentParamDocumentMetadataKeyValues) *RunVideoAnalysisRequestAddDocumentParamDocumentMetadata {
+	s.KeyValues = v
+	return s
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParamDocumentMetadata) Validate() error {
+	if s.KeyValues != nil {
+		for _, item := range s.KeyValues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type RunVideoAnalysisRequestAddDocumentParamDocumentMetadataKeyValues struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s RunVideoAnalysisRequestAddDocumentParamDocumentMetadataKeyValues) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunVideoAnalysisRequestAddDocumentParamDocumentMetadataKeyValues) GoString() string {
+	return s.String()
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParamDocumentMetadataKeyValues) GetKey() *string {
+	return s.Key
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParamDocumentMetadataKeyValues) GetValue() *string {
+	return s.Value
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParamDocumentMetadataKeyValues) SetKey(v string) *RunVideoAnalysisRequestAddDocumentParamDocumentMetadataKeyValues {
+	s.Key = &v
+	return s
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParamDocumentMetadataKeyValues) SetValue(v string) *RunVideoAnalysisRequestAddDocumentParamDocumentMetadataKeyValues {
+	s.Value = &v
+	return s
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParamDocumentMetadataKeyValues) Validate() error {
 	return dara.Validate(s)
 }
 

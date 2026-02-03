@@ -413,8 +413,14 @@ func (s *SubmitVideoAnalysisTaskRequestAddDocumentParam) Validate() error {
 }
 
 type SubmitVideoAnalysisTaskRequestAddDocumentParamDocument struct {
-	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	CategoryUuid *string                                                         `json:"categoryUuid,omitempty" xml:"categoryUuid,omitempty"`
+	DocId        *string                                                         `json:"docId,omitempty" xml:"docId,omitempty"`
+	Extend1      *string                                                         `json:"extend1,omitempty" xml:"extend1,omitempty"`
+	Extend2      *string                                                         `json:"extend2,omitempty" xml:"extend2,omitempty"`
+	Extend3      *string                                                         `json:"extend3,omitempty" xml:"extend3,omitempty"`
+	Metadata     *SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadata `json:"metadata,omitempty" xml:"metadata,omitempty" type:"Struct"`
+	Tags         []*string                                                       `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Title        *string                                                         `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s SubmitVideoAnalysisTaskRequestAddDocumentParamDocument) String() string {
@@ -425,16 +431,70 @@ func (s SubmitVideoAnalysisTaskRequestAddDocumentParamDocument) GoString() strin
 	return s.String()
 }
 
+func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocument) GetCategoryUuid() *string {
+	return s.CategoryUuid
+}
+
 func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocument) GetDocId() *string {
 	return s.DocId
+}
+
+func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocument) GetExtend1() *string {
+	return s.Extend1
+}
+
+func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocument) GetExtend2() *string {
+	return s.Extend2
+}
+
+func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocument) GetExtend3() *string {
+	return s.Extend3
+}
+
+func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocument) GetMetadata() *SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadata {
+	return s.Metadata
+}
+
+func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocument) GetTags() []*string {
+	return s.Tags
 }
 
 func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocument) GetTitle() *string {
 	return s.Title
 }
 
+func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocument) SetCategoryUuid(v string) *SubmitVideoAnalysisTaskRequestAddDocumentParamDocument {
+	s.CategoryUuid = &v
+	return s
+}
+
 func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocument) SetDocId(v string) *SubmitVideoAnalysisTaskRequestAddDocumentParamDocument {
 	s.DocId = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocument) SetExtend1(v string) *SubmitVideoAnalysisTaskRequestAddDocumentParamDocument {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocument) SetExtend2(v string) *SubmitVideoAnalysisTaskRequestAddDocumentParamDocument {
+	s.Extend2 = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocument) SetExtend3(v string) *SubmitVideoAnalysisTaskRequestAddDocumentParamDocument {
+	s.Extend3 = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocument) SetMetadata(v *SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadata) *SubmitVideoAnalysisTaskRequestAddDocumentParamDocument {
+	s.Metadata = v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocument) SetTags(v []*string) *SubmitVideoAnalysisTaskRequestAddDocumentParamDocument {
+	s.Tags = v
 	return s
 }
 
@@ -444,6 +504,80 @@ func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocument) SetTitle(v stri
 }
 
 func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocument) Validate() error {
+	if s.Metadata != nil {
+		if err := s.Metadata.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadata struct {
+	KeyValues []*SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadataKeyValues `json:"keyValues,omitempty" xml:"keyValues,omitempty" type:"Repeated"`
+}
+
+func (s SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadata) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadata) GetKeyValues() []*SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadataKeyValues {
+	return s.KeyValues
+}
+
+func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadata) SetKeyValues(v []*SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadataKeyValues) *SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadata {
+	s.KeyValues = v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadata) Validate() error {
+	if s.KeyValues != nil {
+		for _, item := range s.KeyValues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadataKeyValues struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadataKeyValues) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadataKeyValues) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadataKeyValues) GetKey() *string {
+	return s.Key
+}
+
+func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadataKeyValues) GetValue() *string {
+	return s.Value
+}
+
+func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadataKeyValues) SetKey(v string) *SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadataKeyValues {
+	s.Key = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadataKeyValues) SetValue(v string) *SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadataKeyValues {
+	s.Value = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadataKeyValues) Validate() error {
 	return dara.Validate(s)
 }
 
