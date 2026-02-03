@@ -205,6 +205,7 @@ type DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord struct {
 	//
 	// testdb[testdb] @  [100.**.**.242]
 	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
+	LockTimeMS  *int64  `json:"LockTimeMS,omitempty" xml:"LockTimeMS,omitempty"`
 	// SQL lock duration in seconds.
 	//
 	// example:
@@ -269,6 +270,10 @@ func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) GetHostAddress() 
 	return s.HostAddress
 }
 
+func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) GetLockTimeMS() *int64 {
+	return s.LockTimeMS
+}
+
 func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) GetLockTimes() *int64 {
 	return s.LockTimes
 }
@@ -314,6 +319,11 @@ func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetExecutionStart
 
 func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetHostAddress(v string) *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord {
 	s.HostAddress = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetLockTimeMS(v int64) *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord {
+	s.LockTimeMS = &v
 	return s
 }
 
