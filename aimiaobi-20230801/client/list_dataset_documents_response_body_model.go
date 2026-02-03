@@ -180,6 +180,7 @@ type ListDatasetDocumentsResponseBodyData struct {
 	//
 	// 2025-04-14 19:59:53
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
 	// example:
 	//
 	// false
@@ -224,7 +225,8 @@ type ListDatasetDocumentsResponseBodyData struct {
 	// example:
 	//
 	// xx
-	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// xx
@@ -233,6 +235,7 @@ type ListDatasetDocumentsResponseBodyData struct {
 	//
 	// 2025-04-14 19:59:53
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateUser *string `json:"UpdateUser,omitempty" xml:"UpdateUser,omitempty"`
 	// url
 	//
 	// example:
@@ -259,6 +262,10 @@ func (s *ListDatasetDocumentsResponseBodyData) GetContent() *string {
 
 func (s *ListDatasetDocumentsResponseBodyData) GetCreateTime() *string {
 	return s.CreateTime
+}
+
+func (s *ListDatasetDocumentsResponseBodyData) GetCreateUser() *string {
+	return s.CreateUser
 }
 
 func (s *ListDatasetDocumentsResponseBodyData) GetDisableHandleMultimodalMedia() *bool {
@@ -309,12 +316,20 @@ func (s *ListDatasetDocumentsResponseBodyData) GetSummary() *string {
 	return s.Summary
 }
 
+func (s *ListDatasetDocumentsResponseBodyData) GetTags() []*string {
+	return s.Tags
+}
+
 func (s *ListDatasetDocumentsResponseBodyData) GetTitle() *string {
 	return s.Title
 }
 
 func (s *ListDatasetDocumentsResponseBodyData) GetUpdateTime() *string {
 	return s.UpdateTime
+}
+
+func (s *ListDatasetDocumentsResponseBodyData) GetUpdateUser() *string {
+	return s.UpdateUser
 }
 
 func (s *ListDatasetDocumentsResponseBodyData) GetUrl() *string {
@@ -333,6 +348,11 @@ func (s *ListDatasetDocumentsResponseBodyData) SetContent(v string) *ListDataset
 
 func (s *ListDatasetDocumentsResponseBodyData) SetCreateTime(v string) *ListDatasetDocumentsResponseBodyData {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBodyData) SetCreateUser(v string) *ListDatasetDocumentsResponseBodyData {
+	s.CreateUser = &v
 	return s
 }
 
@@ -396,6 +416,11 @@ func (s *ListDatasetDocumentsResponseBodyData) SetSummary(v string) *ListDataset
 	return s
 }
 
+func (s *ListDatasetDocumentsResponseBodyData) SetTags(v []*string) *ListDatasetDocumentsResponseBodyData {
+	s.Tags = v
+	return s
+}
+
 func (s *ListDatasetDocumentsResponseBodyData) SetTitle(v string) *ListDatasetDocumentsResponseBodyData {
 	s.Title = &v
 	return s
@@ -403,6 +428,11 @@ func (s *ListDatasetDocumentsResponseBodyData) SetTitle(v string) *ListDatasetDo
 
 func (s *ListDatasetDocumentsResponseBodyData) SetUpdateTime(v string) *ListDatasetDocumentsResponseBodyData {
 	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBodyData) SetUpdateUser(v string) *ListDatasetDocumentsResponseBodyData {
+	s.UpdateUser = &v
 	return s
 }
 

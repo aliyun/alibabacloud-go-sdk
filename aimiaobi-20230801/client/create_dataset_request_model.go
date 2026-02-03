@@ -155,6 +155,7 @@ func (s *CreateDatasetRequest) Validate() error {
 }
 
 type CreateDatasetRequestDatasetConfig struct {
+	SearchSourceConfig  *CreateDatasetRequestDatasetConfigSearchSourceConfig    `json:"SearchSourceConfig,omitempty" xml:"SearchSourceConfig,omitempty" type:"Struct"`
 	SearchSourceConfigs []*CreateDatasetRequestDatasetConfigSearchSourceConfigs `json:"SearchSourceConfigs,omitempty" xml:"SearchSourceConfigs,omitempty" type:"Repeated"`
 }
 
@@ -166,8 +167,17 @@ func (s CreateDatasetRequestDatasetConfig) GoString() string {
 	return s.String()
 }
 
+func (s *CreateDatasetRequestDatasetConfig) GetSearchSourceConfig() *CreateDatasetRequestDatasetConfigSearchSourceConfig {
+	return s.SearchSourceConfig
+}
+
 func (s *CreateDatasetRequestDatasetConfig) GetSearchSourceConfigs() []*CreateDatasetRequestDatasetConfigSearchSourceConfigs {
 	return s.SearchSourceConfigs
+}
+
+func (s *CreateDatasetRequestDatasetConfig) SetSearchSourceConfig(v *CreateDatasetRequestDatasetConfigSearchSourceConfig) *CreateDatasetRequestDatasetConfig {
+	s.SearchSourceConfig = v
+	return s
 }
 
 func (s *CreateDatasetRequestDatasetConfig) SetSearchSourceConfigs(v []*CreateDatasetRequestDatasetConfigSearchSourceConfigs) *CreateDatasetRequestDatasetConfig {
@@ -176,6 +186,11 @@ func (s *CreateDatasetRequestDatasetConfig) SetSearchSourceConfigs(v []*CreateDa
 }
 
 func (s *CreateDatasetRequestDatasetConfig) Validate() error {
+	if s.SearchSourceConfig != nil {
+		if err := s.SearchSourceConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.SearchSourceConfigs != nil {
 		for _, item := range s.SearchSourceConfigs {
 			if item != nil {
@@ -186,6 +201,61 @@ func (s *CreateDatasetRequestDatasetConfig) Validate() error {
 		}
 	}
 	return nil
+}
+
+type CreateDatasetRequestDatasetConfigSearchSourceConfig struct {
+	MetadataKeyValueGenerateEnable *bool `json:"MetadataKeyValueGenerateEnable,omitempty" xml:"MetadataKeyValueGenerateEnable,omitempty"`
+	MetadataKeyValueSearchEnable   *bool `json:"MetadataKeyValueSearchEnable,omitempty" xml:"MetadataKeyValueSearchEnable,omitempty"`
+	TagGenerateEnable              *bool `json:"TagGenerateEnable,omitempty" xml:"TagGenerateEnable,omitempty"`
+	TagSearchEnable                *bool `json:"TagSearchEnable,omitempty" xml:"TagSearchEnable,omitempty"`
+}
+
+func (s CreateDatasetRequestDatasetConfigSearchSourceConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDatasetRequestDatasetConfigSearchSourceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfig) GetMetadataKeyValueGenerateEnable() *bool {
+	return s.MetadataKeyValueGenerateEnable
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfig) GetMetadataKeyValueSearchEnable() *bool {
+	return s.MetadataKeyValueSearchEnable
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfig) GetTagGenerateEnable() *bool {
+	return s.TagGenerateEnable
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfig) GetTagSearchEnable() *bool {
+	return s.TagSearchEnable
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfig) SetMetadataKeyValueGenerateEnable(v bool) *CreateDatasetRequestDatasetConfigSearchSourceConfig {
+	s.MetadataKeyValueGenerateEnable = &v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfig) SetMetadataKeyValueSearchEnable(v bool) *CreateDatasetRequestDatasetConfigSearchSourceConfig {
+	s.MetadataKeyValueSearchEnable = &v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfig) SetTagGenerateEnable(v bool) *CreateDatasetRequestDatasetConfigSearchSourceConfig {
+	s.TagGenerateEnable = &v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfig) SetTagSearchEnable(v bool) *CreateDatasetRequestDatasetConfigSearchSourceConfig {
+	s.TagSearchEnable = &v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfig) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateDatasetRequestDatasetConfigSearchSourceConfigs struct {

@@ -728,10 +728,18 @@ func (s *RunSearchGenerationRequestChatConfig) Validate() error {
 }
 
 type RunSearchGenerationRequestChatConfigSearchParam struct {
+	CategoryUuids   []*string `json:"CategoryUuids,omitempty" xml:"CategoryUuids,omitempty" type:"Repeated"`
+	CreateTimeEnd   *int64    `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	CreateTimeStart *int64    `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	DocIds          []*string `json:"DocIds,omitempty" xml:"DocIds,omitempty" type:"Repeated"`
+	DocUuids        []*string `json:"DocUuids,omitempty" xml:"DocUuids,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1725983999999
 	EndTime               *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Extend1               *string   `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	Extend2               *string   `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	Extend3               *string   `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
 	MultimodalSearchTypes []*string `json:"MultimodalSearchTypes,omitempty" xml:"MultimodalSearchTypes,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -753,7 +761,8 @@ type RunSearchGenerationRequestChatConfigSearchParam struct {
 	// example:
 	//
 	// 1725983999999
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Tags      []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s RunSearchGenerationRequestChatConfigSearchParam) String() string {
@@ -764,8 +773,40 @@ func (s RunSearchGenerationRequestChatConfigSearchParam) GoString() string {
 	return s.String()
 }
 
+func (s *RunSearchGenerationRequestChatConfigSearchParam) GetCategoryUuids() []*string {
+	return s.CategoryUuids
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) GetCreateTimeEnd() *int64 {
+	return s.CreateTimeEnd
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) GetCreateTimeStart() *int64 {
+	return s.CreateTimeStart
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) GetDocIds() []*string {
+	return s.DocIds
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) GetDocUuids() []*string {
+	return s.DocUuids
+}
+
 func (s *RunSearchGenerationRequestChatConfigSearchParam) GetEndTime() *int64 {
 	return s.EndTime
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) GetExtend1() *string {
+	return s.Extend1
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) GetExtend2() *string {
+	return s.Extend2
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) GetExtend3() *string {
+	return s.Extend3
 }
 
 func (s *RunSearchGenerationRequestChatConfigSearchParam) GetMultimodalSearchTypes() []*string {
@@ -796,8 +837,52 @@ func (s *RunSearchGenerationRequestChatConfigSearchParam) GetStartTime() *int64 
 	return s.StartTime
 }
 
+func (s *RunSearchGenerationRequestChatConfigSearchParam) GetTags() []*string {
+	return s.Tags
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) SetCategoryUuids(v []*string) *RunSearchGenerationRequestChatConfigSearchParam {
+	s.CategoryUuids = v
+	return s
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) SetCreateTimeEnd(v int64) *RunSearchGenerationRequestChatConfigSearchParam {
+	s.CreateTimeEnd = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) SetCreateTimeStart(v int64) *RunSearchGenerationRequestChatConfigSearchParam {
+	s.CreateTimeStart = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) SetDocIds(v []*string) *RunSearchGenerationRequestChatConfigSearchParam {
+	s.DocIds = v
+	return s
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) SetDocUuids(v []*string) *RunSearchGenerationRequestChatConfigSearchParam {
+	s.DocUuids = v
+	return s
+}
+
 func (s *RunSearchGenerationRequestChatConfigSearchParam) SetEndTime(v int64) *RunSearchGenerationRequestChatConfigSearchParam {
 	s.EndTime = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) SetExtend1(v string) *RunSearchGenerationRequestChatConfigSearchParam {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) SetExtend2(v string) *RunSearchGenerationRequestChatConfigSearchParam {
+	s.Extend2 = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) SetExtend3(v string) *RunSearchGenerationRequestChatConfigSearchParam {
+	s.Extend3 = &v
 	return s
 }
 
@@ -833,6 +918,11 @@ func (s *RunSearchGenerationRequestChatConfigSearchParam) SetSearchVideoMinScore
 
 func (s *RunSearchGenerationRequestChatConfigSearchParam) SetStartTime(v int64) *RunSearchGenerationRequestChatConfigSearchParam {
 	s.StartTime = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) SetTags(v []*string) *RunSearchGenerationRequestChatConfigSearchParam {
+	s.Tags = v
 	return s
 }
 

@@ -153,6 +153,9 @@ func (s *SearchDatasetDocumentsResponseBodyData) Validate() error {
 }
 
 type SearchDatasetDocumentsResponseBodyDataDocuments struct {
+	CategoryUuid *string                                                      `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	Chunk        *string                                                      `json:"Chunk,omitempty" xml:"Chunk,omitempty"`
+	ChunkInfos   []*SearchDatasetDocumentsResponseBodyDataDocumentsChunkInfos `json:"ChunkInfos,omitempty" xml:"ChunkInfos,omitempty" type:"Repeated"`
 	// example:
 	//
 	// xx
@@ -160,15 +163,23 @@ type SearchDatasetDocumentsResponseBodyDataDocuments struct {
 	// example:
 	//
 	// 用户指定的文档唯一ID
-	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	DocId   *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
 	// example:
 	//
 	// 内部文档唯一ID
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
 	// example:
 	//
 	// 2024-12-09 17:09:40
-	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	PubTime          *string  `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	Score            *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	SearchSource     *string  `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	SearchSourceName *string  `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	SearchSourceType *string  `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
 	// example:
 	//
 	// 来源
@@ -176,7 +187,8 @@ type SearchDatasetDocumentsResponseBodyDataDocuments struct {
 	// example:
 	//
 	// 文章摘要
-	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// xx
@@ -195,6 +207,18 @@ func (s SearchDatasetDocumentsResponseBodyDataDocuments) GoString() string {
 	return s.String()
 }
 
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) GetCategoryUuid() *string {
+	return s.CategoryUuid
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) GetChunk() *string {
+	return s.Chunk
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) GetChunkInfos() []*SearchDatasetDocumentsResponseBodyDataDocumentsChunkInfos {
+	return s.ChunkInfos
+}
+
 func (s *SearchDatasetDocumentsResponseBodyDataDocuments) GetContent() *string {
 	return s.Content
 }
@@ -203,12 +227,44 @@ func (s *SearchDatasetDocumentsResponseBodyDataDocuments) GetDocId() *string {
 	return s.DocId
 }
 
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) GetDocType() *string {
+	return s.DocType
+}
+
 func (s *SearchDatasetDocumentsResponseBodyDataDocuments) GetDocUuid() *string {
 	return s.DocUuid
 }
 
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) GetExtend1() *string {
+	return s.Extend1
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) GetExtend2() *string {
+	return s.Extend2
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) GetExtend3() *string {
+	return s.Extend3
+}
+
 func (s *SearchDatasetDocumentsResponseBodyDataDocuments) GetPubTime() *string {
 	return s.PubTime
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) GetScore() *float64 {
+	return s.Score
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) GetSearchSource() *string {
+	return s.SearchSource
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) GetSearchSourceName() *string {
+	return s.SearchSourceName
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) GetSearchSourceType() *string {
+	return s.SearchSourceType
 }
 
 func (s *SearchDatasetDocumentsResponseBodyDataDocuments) GetSourceFrom() *string {
@@ -219,12 +275,31 @@ func (s *SearchDatasetDocumentsResponseBodyDataDocuments) GetSummary() *string {
 	return s.Summary
 }
 
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) GetTags() []*string {
+	return s.Tags
+}
+
 func (s *SearchDatasetDocumentsResponseBodyDataDocuments) GetTitle() *string {
 	return s.Title
 }
 
 func (s *SearchDatasetDocumentsResponseBodyDataDocuments) GetUrl() *string {
 	return s.Url
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetCategoryUuid(v string) *SearchDatasetDocumentsResponseBodyDataDocuments {
+	s.CategoryUuid = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetChunk(v string) *SearchDatasetDocumentsResponseBodyDataDocuments {
+	s.Chunk = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetChunkInfos(v []*SearchDatasetDocumentsResponseBodyDataDocumentsChunkInfos) *SearchDatasetDocumentsResponseBodyDataDocuments {
+	s.ChunkInfos = v
+	return s
 }
 
 func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetContent(v string) *SearchDatasetDocumentsResponseBodyDataDocuments {
@@ -237,13 +312,53 @@ func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetDocId(v string) *Se
 	return s
 }
 
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetDocType(v string) *SearchDatasetDocumentsResponseBodyDataDocuments {
+	s.DocType = &v
+	return s
+}
+
 func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetDocUuid(v string) *SearchDatasetDocumentsResponseBodyDataDocuments {
 	s.DocUuid = &v
 	return s
 }
 
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetExtend1(v string) *SearchDatasetDocumentsResponseBodyDataDocuments {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetExtend2(v string) *SearchDatasetDocumentsResponseBodyDataDocuments {
+	s.Extend2 = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetExtend3(v string) *SearchDatasetDocumentsResponseBodyDataDocuments {
+	s.Extend3 = &v
+	return s
+}
+
 func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetPubTime(v string) *SearchDatasetDocumentsResponseBodyDataDocuments {
 	s.PubTime = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetScore(v float64) *SearchDatasetDocumentsResponseBodyDataDocuments {
+	s.Score = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetSearchSource(v string) *SearchDatasetDocumentsResponseBodyDataDocuments {
+	s.SearchSource = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetSearchSourceName(v string) *SearchDatasetDocumentsResponseBodyDataDocuments {
+	s.SearchSourceName = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetSearchSourceType(v string) *SearchDatasetDocumentsResponseBodyDataDocuments {
+	s.SearchSourceType = &v
 	return s
 }
 
@@ -254,6 +369,11 @@ func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetSourceFrom(v string
 
 func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetSummary(v string) *SearchDatasetDocumentsResponseBodyDataDocuments {
 	s.Summary = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetTags(v []*string) *SearchDatasetDocumentsResponseBodyDataDocuments {
+	s.Tags = v
 	return s
 }
 
@@ -268,5 +388,49 @@ func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetUrl(v string) *Sear
 }
 
 func (s *SearchDatasetDocumentsResponseBodyDataDocuments) Validate() error {
+	if s.ChunkInfos != nil {
+		for _, item := range s.ChunkInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type SearchDatasetDocumentsResponseBodyDataDocumentsChunkInfos struct {
+	Chunk *string  `json:"Chunk,omitempty" xml:"Chunk,omitempty"`
+	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+}
+
+func (s SearchDatasetDocumentsResponseBodyDataDocumentsChunkInfos) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SearchDatasetDocumentsResponseBodyDataDocumentsChunkInfos) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocumentsChunkInfos) GetChunk() *string {
+	return s.Chunk
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocumentsChunkInfos) GetScore() *float64 {
+	return s.Score
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocumentsChunkInfos) SetChunk(v string) *SearchDatasetDocumentsResponseBodyDataDocumentsChunkInfos {
+	s.Chunk = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocumentsChunkInfos) SetScore(v float64) *SearchDatasetDocumentsResponseBodyDataDocumentsChunkInfos {
+	s.Score = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocumentsChunkInfos) Validate() error {
 	return dara.Validate(s)
 }

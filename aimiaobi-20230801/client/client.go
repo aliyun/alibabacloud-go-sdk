@@ -7600,12 +7600,77 @@ func (client *Client) ListDatasetDocumentsWithOptions(tmpReq *ListDatasetDocumen
 	}
 	request := &ListDatasetDocumentsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CategoryUuids) {
+		request.CategoryUuidsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CategoryUuids, dara.String("CategoryUuids"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.DocIds) {
+		request.DocIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocIds, dara.String("DocIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.DocUuids) {
+		request.DocUuidsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocUuids, dara.String("DocUuids"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.ExcludeFields) {
 		request.ExcludeFieldsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExcludeFields, dara.String("ExcludeFields"), dara.String("json"))
 	}
 
 	if !dara.IsNil(tmpReq.IncludeFields) {
 		request.IncludeFieldsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IncludeFields, dara.String("IncludeFields"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Tags) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("Tags"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CategoryUuidsShrink) {
+		query["CategoryUuids"] = request.CategoryUuidsShrink
+	}
+
+	if !dara.IsNil(request.CreateTimeEnd) {
+		query["CreateTimeEnd"] = request.CreateTimeEnd
+	}
+
+	if !dara.IsNil(request.CreateTimeStart) {
+		query["CreateTimeStart"] = request.CreateTimeStart
+	}
+
+	if !dara.IsNil(request.DocIdsShrink) {
+		query["DocIds"] = request.DocIdsShrink
+	}
+
+	if !dara.IsNil(request.DocUuidsShrink) {
+		query["DocUuids"] = request.DocUuidsShrink
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Extend1) {
+		query["Extend1"] = request.Extend1
+	}
+
+	if !dara.IsNil(request.Extend2) {
+		query["Extend2"] = request.Extend2
+	}
+
+	if !dara.IsNil(request.Extend3) {
+		query["Extend3"] = request.Extend3
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TagsShrink) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	if !dara.IsNil(request.Title) {
+		query["Title"] = request.Title
 	}
 
 	body := map[string]interface{}{}
@@ -7654,7 +7719,8 @@ func (client *Client) ListDatasetDocumentsWithOptions(tmpReq *ListDatasetDocumen
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ListDatasetDocuments"),
@@ -14293,18 +14359,89 @@ func (client *Client) SaveStyleLearningResult(request *SaveStyleLearningResultRe
 //
 // 搜索数据集文档
 //
-// @param request - SearchDatasetDocumentsRequest
+// @param tmpReq - SearchDatasetDocumentsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchDatasetDocumentsResponse
-func (client *Client) SearchDatasetDocumentsWithOptions(request *SearchDatasetDocumentsRequest, runtime *dara.RuntimeOptions) (_result *SearchDatasetDocumentsResponse, _err error) {
+func (client *Client) SearchDatasetDocumentsWithOptions(tmpReq *SearchDatasetDocumentsRequest, runtime *dara.RuntimeOptions) (_result *SearchDatasetDocumentsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &SearchDatasetDocumentsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CategoryUuids) {
+		request.CategoryUuidsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CategoryUuids, dara.String("CategoryUuids"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.DocIds) {
+		request.DocIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocIds, dara.String("DocIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.DocTypes) {
+		request.DocTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocTypes, dara.String("DocTypes"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.DocUuids) {
+		request.DocUuidsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocUuids, dara.String("DocUuids"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Tags) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("Tags"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CategoryUuidsShrink) {
+		query["CategoryUuids"] = request.CategoryUuidsShrink
+	}
+
+	if !dara.IsNil(request.CreateTimeEnd) {
+		query["CreateTimeEnd"] = request.CreateTimeEnd
+	}
+
+	if !dara.IsNil(request.CreateTimeStart) {
+		query["CreateTimeStart"] = request.CreateTimeStart
+	}
+
+	if !dara.IsNil(request.DocIdsShrink) {
+		query["DocIds"] = request.DocIdsShrink
+	}
+
+	if !dara.IsNil(request.DocTypesShrink) {
+		query["DocTypes"] = request.DocTypesShrink
+	}
+
+	if !dara.IsNil(request.DocUuidsShrink) {
+		query["DocUuids"] = request.DocUuidsShrink
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Extend2) {
+		query["Extend2"] = request.Extend2
+	}
+
+	if !dara.IsNil(request.Extend3) {
+		query["Extend3"] = request.Extend3
+	}
+
+	if !dara.IsNil(request.SearchMode) {
+		query["SearchMode"] = request.SearchMode
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TagsShrink) {
+		query["Tags"] = request.TagsShrink
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetId) {
 		body["DatasetId"] = request.DatasetId
@@ -14335,7 +14472,8 @@ func (client *Client) SearchDatasetDocumentsWithOptions(request *SearchDatasetDo
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("SearchDatasetDocuments"),

@@ -764,6 +764,7 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle struct {
+	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
 	// example:
 	//
 	// xx
@@ -772,6 +773,9 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	//
 	// xx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
 	// example:
 	//
 	// xx
@@ -779,7 +783,8 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	// example:
 	//
 	// xxx
-	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// xx
@@ -798,12 +803,28 @@ func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenera
 	return s.String()
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) GetCategoryUuid() *string {
+	return s.CategoryUuid
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) GetDocId() *string {
 	return s.DocId
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) GetDocUuid() *string {
 	return s.DocUuid
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) GetExtend1() *string {
+	return s.Extend1
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) GetExtend2() *string {
+	return s.Extend2
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) GetExtend3() *string {
+	return s.Extend3
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) GetSearchSourceName() *string {
@@ -814,12 +835,21 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 	return s.Summary
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) GetTags() []*string {
+	return s.Tags
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) GetTitle() *string {
 	return s.Title
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) GetUrl() *string {
 	return s.Url
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) SetCategoryUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle {
+	s.CategoryUuid = &v
+	return s
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) SetDocId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle {
@@ -832,6 +862,21 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 	return s
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) SetExtend1(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) SetExtend2(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle {
+	s.Extend2 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) SetExtend3(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle {
+	s.Extend3 = &v
+	return s
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) SetSearchSourceName(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle {
 	s.SearchSourceName = &v
 	return s
@@ -839,6 +884,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle {
 	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) SetTags(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle {
+	s.Tags = v
 	return s
 }
 
@@ -1229,6 +1279,7 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle struct {
+	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
 	// example:
 	//
 	// xx
@@ -1236,15 +1287,21 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	// example:
 	//
 	// xx
-	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	DocUuid      *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	Extend1      *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	Extend2      *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	Extend3      *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
 	// example:
 	//
 	// xx
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
 	// example:
 	//
 	// xx
-	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// xx
@@ -1263,6 +1320,10 @@ func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenera
 	return s.String()
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) GetCategoryUuid() *string {
+	return s.CategoryUuid
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) GetDocId() *string {
 	return s.DocId
 }
@@ -1271,12 +1332,36 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 	return s.DocUuid
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) GetExtend1() *string {
+	return s.Extend1
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) GetExtend2() *string {
+	return s.Extend2
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) GetExtend3() *string {
+	return s.Extend3
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) GetSearchSource() *string {
+	return s.SearchSource
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) GetSearchSourceName() *string {
 	return s.SearchSourceName
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) GetSearchSourceType() *string {
+	return s.SearchSourceType
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) GetSummary() *string {
 	return s.Summary
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) GetTags() []*string {
+	return s.Tags
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) GetTitle() *string {
@@ -1285,6 +1370,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) GetUrl() *string {
 	return s.Url
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) SetCategoryUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle {
+	s.CategoryUuid = &v
+	return s
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) SetDocId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle {
@@ -1297,13 +1387,43 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 	return s
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) SetExtend1(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) SetExtend2(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle {
+	s.Extend2 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) SetExtend3(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle {
+	s.Extend3 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) SetSearchSource(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle {
+	s.SearchSource = &v
+	return s
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) SetSearchSourceName(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle {
 	s.SearchSourceName = &v
 	return s
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) SetSearchSourceType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle {
+	s.SearchSourceType = &v
+	return s
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle {
 	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) SetTags(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle {
+	s.Tags = v
 	return s
 }
 
@@ -1531,6 +1651,7 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle struct {
+	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
 	// example:
 	//
 	// xx
@@ -1538,15 +1659,21 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	// example:
 	//
 	// xx
-	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	DocUuid      *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	Extend1      *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	Extend2      *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	Extend3      *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
 	// example:
 	//
 	// 互联网搜索
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
 	// example:
 	//
 	// xx
-	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// xx
@@ -1565,6 +1692,10 @@ func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenera
 	return s.String()
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) GetCategoryUuid() *string {
+	return s.CategoryUuid
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) GetDocId() *string {
 	return s.DocId
 }
@@ -1573,12 +1704,36 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 	return s.DocUuid
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) GetExtend1() *string {
+	return s.Extend1
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) GetExtend2() *string {
+	return s.Extend2
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) GetExtend3() *string {
+	return s.Extend3
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) GetSearchSource() *string {
+	return s.SearchSource
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) GetSearchSourceName() *string {
 	return s.SearchSourceName
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) GetSearchSourceType() *string {
+	return s.SearchSourceType
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) GetSummary() *string {
 	return s.Summary
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) GetTags() []*string {
+	return s.Tags
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) GetTitle() *string {
@@ -1587,6 +1742,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) GetUrl() *string {
 	return s.Url
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) SetCategoryUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle {
+	s.CategoryUuid = &v
+	return s
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) SetDocId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle {
@@ -1599,13 +1759,43 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 	return s
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) SetExtend1(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) SetExtend2(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle {
+	s.Extend2 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) SetExtend3(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle {
+	s.Extend3 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) SetSearchSource(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle {
+	s.SearchSource = &v
+	return s
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) SetSearchSourceName(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle {
 	s.SearchSourceName = &v
 	return s
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) SetSearchSourceType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle {
+	s.SearchSourceType = &v
+	return s
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle {
 	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) SetTags(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle {
+	s.Tags = v
 	return s
 }
 
@@ -1697,6 +1887,7 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult struct {
+	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
 	// example:
 	//
 	// xx
@@ -1705,6 +1896,9 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	//
 	// xx
 	DocUuid          *string                                                                                                                                                          `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	Extend1          *string                                                                                                                                                          `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	Extend2          *string                                                                                                                                                          `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	Extend3          *string                                                                                                                                                          `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
 	MultimodalMedias []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResultMultimodalMedias `json:"MultimodalMedias,omitempty" xml:"MultimodalMedias,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -1725,7 +1919,8 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	// example:
 	//
 	// xx
-	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// xx
@@ -1744,12 +1939,28 @@ func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenera
 	return s.String()
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) GetCategoryUuid() *string {
+	return s.CategoryUuid
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) GetDocId() *string {
 	return s.DocId
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) GetDocUuid() *string {
 	return s.DocUuid
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) GetExtend1() *string {
+	return s.Extend1
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) GetExtend2() *string {
+	return s.Extend2
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) GetExtend3() *string {
+	return s.Extend3
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) GetMultimodalMedias() []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResultMultimodalMedias {
@@ -1776,12 +1987,21 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 	return s.Summary
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) GetTags() []*string {
+	return s.Tags
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) GetTitle() *string {
 	return s.Title
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) GetUrl() *string {
 	return s.Url
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) SetCategoryUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult {
+	s.CategoryUuid = &v
+	return s
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) SetDocId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult {
@@ -1791,6 +2011,21 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) SetDocUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult {
 	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) SetExtend1(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) SetExtend2(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult {
+	s.Extend2 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) SetExtend3(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult {
+	s.Extend3 = &v
 	return s
 }
 
@@ -1821,6 +2056,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult {
 	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) SetTags(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult {
+	s.Tags = v
 	return s
 }
 
@@ -2050,6 +2290,7 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle struct {
+	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
 	// example:
 	//
 	// xx
@@ -2057,15 +2298,21 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	// example:
 	//
 	// xx
-	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	DocUuid      *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	Extend1      *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	Extend2      *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	Extend3      *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
 	// example:
 	//
 	// 互联网搜索
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
 	// example:
 	//
 	// xx
-	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// xx
@@ -2084,6 +2331,10 @@ func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenera
 	return s.String()
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) GetCategoryUuid() *string {
+	return s.CategoryUuid
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) GetDocId() *string {
 	return s.DocId
 }
@@ -2092,12 +2343,36 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 	return s.DocUuid
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) GetExtend1() *string {
+	return s.Extend1
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) GetExtend2() *string {
+	return s.Extend2
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) GetExtend3() *string {
+	return s.Extend3
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) GetSearchSource() *string {
+	return s.SearchSource
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) GetSearchSourceName() *string {
 	return s.SearchSourceName
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) GetSearchSourceType() *string {
+	return s.SearchSourceType
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) GetSummary() *string {
 	return s.Summary
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) GetTags() []*string {
+	return s.Tags
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) GetTitle() *string {
@@ -2106,6 +2381,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) GetUrl() *string {
 	return s.Url
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) SetCategoryUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle {
+	s.CategoryUuid = &v
+	return s
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) SetDocId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle {
@@ -2118,13 +2398,43 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 	return s
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) SetExtend1(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) SetExtend2(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle {
+	s.Extend2 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) SetExtend3(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle {
+	s.Extend3 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) SetSearchSource(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle {
+	s.SearchSource = &v
+	return s
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) SetSearchSourceName(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle {
 	s.SearchSourceName = &v
 	return s
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) SetSearchSourceType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle {
+	s.SearchSourceType = &v
+	return s
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle {
 	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) SetTags(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle {
+	s.Tags = v
 	return s
 }
 
@@ -2306,7 +2616,8 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult struct {
-	Chunks []*string `json:"Chunks,omitempty" xml:"Chunks,omitempty" type:"Repeated"`
+	CategoryUuid *string   `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	Chunks       []*string `json:"Chunks,omitempty" xml:"Chunks,omitempty" type:"Repeated"`
 	// example:
 	//
 	// xx
@@ -2323,6 +2634,9 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	//
 	// xx
 	Excerpt          *string                                                                                                                        `json:"Excerpt,omitempty" xml:"Excerpt,omitempty"`
+	Extend1          *string                                                                                                                        `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	Extend2          *string                                                                                                                        `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	Extend3          *string                                                                                                                        `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
 	MultimodalMedias []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultMultimodalMedias `json:"MultimodalMedias,omitempty" xml:"MultimodalMedias,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -2352,6 +2666,7 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	//
 	// xx
 	Summary                         *string                                                                                                                                       `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Tags                            []*string                                                                                                                                     `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	TextGenerateMultimodalMediaList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaList `json:"TextGenerateMultimodalMediaList,omitempty" xml:"TextGenerateMultimodalMediaList,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -2375,6 +2690,10 @@ func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenera
 	return s.String()
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) GetCategoryUuid() *string {
+	return s.CategoryUuid
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) GetChunks() []*string {
 	return s.Chunks
 }
@@ -2393,6 +2712,18 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) GetExcerpt() *string {
 	return s.Excerpt
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) GetExtend1() *string {
+	return s.Extend1
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) GetExtend2() *string {
+	return s.Extend2
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) GetExtend3() *string {
+	return s.Extend3
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) GetMultimodalMedias() []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultMultimodalMedias {
@@ -2427,6 +2758,10 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 	return s.Summary
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) GetTags() []*string {
+	return s.Tags
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) GetTextGenerateMultimodalMediaList() []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaList {
 	return s.TextGenerateMultimodalMediaList
 }
@@ -2441,6 +2776,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) GetUrl() *string {
 	return s.Url
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetCategoryUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
+	s.CategoryUuid = &v
+	return s
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetChunks(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
@@ -2465,6 +2805,21 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetExcerpt(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
 	s.Excerpt = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetExtend1(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetExtend2(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
+	s.Extend2 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetExtend3(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
+	s.Extend3 = &v
 	return s
 }
 
@@ -2505,6 +2860,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
 	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetTags(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
+	s.Tags = v
 	return s
 }
 
@@ -2930,6 +3290,7 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle struct {
+	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
 	// example:
 	//
 	// xx
@@ -2938,6 +3299,9 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	//
 	// xx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
 	// example:
 	//
 	// 互联网搜索
@@ -2945,7 +3309,8 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	// example:
 	//
 	// xx
-	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// xx
@@ -2964,12 +3329,28 @@ func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenera
 	return s.String()
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) GetCategoryUuid() *string {
+	return s.CategoryUuid
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) GetDocId() *string {
 	return s.DocId
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) GetDocUuid() *string {
 	return s.DocUuid
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) GetExtend1() *string {
+	return s.Extend1
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) GetExtend2() *string {
+	return s.Extend2
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) GetExtend3() *string {
+	return s.Extend3
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) GetSearchSourceName() *string {
@@ -2980,12 +3361,21 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 	return s.Summary
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) GetTags() []*string {
+	return s.Tags
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) GetTitle() *string {
 	return s.Title
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) GetUrl() *string {
 	return s.Url
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) SetCategoryUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle {
+	s.CategoryUuid = &v
+	return s
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) SetDocId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle {
@@ -2998,6 +3388,21 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 	return s
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) SetExtend1(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) SetExtend2(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle {
+	s.Extend2 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) SetExtend3(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle {
+	s.Extend3 = &v
+	return s
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) SetSearchSourceName(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle {
 	s.SearchSourceName = &v
 	return s
@@ -3005,6 +3410,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle {
 	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) SetTags(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle {
+	s.Tags = v
 	return s
 }
 
@@ -3145,6 +3555,7 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle struct {
+	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
 	// example:
 	//
 	// xx
@@ -3157,6 +3568,9 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	//
 	// xx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
 	// example:
 	//
 	// 2023-04-04 08:39:09
@@ -3184,7 +3598,8 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	// example:
 	//
 	// xx
-	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// xx
@@ -3203,6 +3618,10 @@ func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenera
 	return s.String()
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) GetCategoryUuid() *string {
+	return s.CategoryUuid
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) GetContent() *string {
 	return s.Content
 }
@@ -3213,6 +3632,18 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) GetDocUuid() *string {
 	return s.DocUuid
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) GetExtend1() *string {
+	return s.Extend1
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) GetExtend2() *string {
+	return s.Extend2
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) GetExtend3() *string {
+	return s.Extend3
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) GetPubTime() *string {
@@ -3243,12 +3674,21 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 	return s.Summary
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) GetTags() []*string {
+	return s.Tags
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) GetTitle() *string {
 	return s.Title
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) GetUrl() *string {
 	return s.Url
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) SetCategoryUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle {
+	s.CategoryUuid = &v
+	return s
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) SetContent(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle {
@@ -3263,6 +3703,21 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) SetDocUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle {
 	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) SetExtend1(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) SetExtend2(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle {
+	s.Extend2 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) SetExtend3(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle {
+	s.Extend3 = &v
 	return s
 }
 
@@ -3298,6 +3753,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle {
 	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) SetTags(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle {
+	s.Tags = v
 	return s
 }
 
@@ -4155,7 +4615,8 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList struct {
-	Chunks []*string `json:"Chunks,omitempty" xml:"Chunks,omitempty" type:"Repeated"`
+	CategoryUuid *string   `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	Chunks       []*string `json:"Chunks,omitempty" xml:"Chunks,omitempty" type:"Repeated"`
 	// example:
 	//
 	// xx
@@ -4168,6 +4629,9 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	//
 	// xx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
 	// example:
 	//
 	// 2023-04-04 08:39:09
@@ -4199,7 +4663,8 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	// example:
 	//
 	// xx
-	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// xx
@@ -4222,6 +4687,10 @@ func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenera
 	return s.String()
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) GetCategoryUuid() *string {
+	return s.CategoryUuid
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) GetChunks() []*string {
 	return s.Chunks
 }
@@ -4236,6 +4705,18 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) GetDocUuid() *string {
 	return s.DocUuid
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) GetExtend1() *string {
+	return s.Extend1
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) GetExtend2() *string {
+	return s.Extend2
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) GetExtend3() *string {
+	return s.Extend3
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) GetPubTime() *string {
@@ -4270,6 +4751,10 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 	return s.Summary
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) GetTags() []*string {
+	return s.Tags
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) GetTitle() *string {
 	return s.Title
 }
@@ -4280,6 +4765,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) GetUrl() *string {
 	return s.Url
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) SetCategoryUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList {
+	s.CategoryUuid = &v
+	return s
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) SetChunks(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList {
@@ -4299,6 +4789,21 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) SetDocUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList {
 	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) SetExtend1(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) SetExtend2(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList {
+	s.Extend2 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) SetExtend3(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList {
+	s.Extend3 = &v
 	return s
 }
 
@@ -4339,6 +4844,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList {
 	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) SetTags(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList {
+	s.Tags = v
 	return s
 }
 
@@ -4648,6 +5158,7 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult struct {
+	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
 	// example:
 	//
 	// xx
@@ -4660,6 +5171,9 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	//
 	// xx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
 	// example:
 	//
 	// 2024-11-25 14:25:59
@@ -4679,7 +5193,8 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	// example:
 	//
 	// xx
-	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// xx
@@ -4702,6 +5217,10 @@ func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenera
 	return s.String()
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) GetCategoryUuid() *string {
+	return s.CategoryUuid
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) GetContent() *string {
 	return s.Content
 }
@@ -4712,6 +5231,18 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) GetDocUuid() *string {
 	return s.DocUuid
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) GetExtend1() *string {
+	return s.Extend1
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) GetExtend2() *string {
+	return s.Extend2
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) GetExtend3() *string {
+	return s.Extend3
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) GetPubTime() *string {
@@ -4734,6 +5265,10 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 	return s.Summary
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) GetTags() []*string {
+	return s.Tags
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) GetTitle() *string {
 	return s.Title
 }
@@ -4744,6 +5279,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) GetUrl() *string {
 	return s.Url
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) SetCategoryUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult {
+	s.CategoryUuid = &v
+	return s
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) SetContent(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult {
@@ -4758,6 +5298,21 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) SetDocUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult {
 	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) SetExtend1(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) SetExtend2(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult {
+	s.Extend2 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) SetExtend3(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult {
+	s.Extend3 = &v
 	return s
 }
 
@@ -4783,6 +5338,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult {
 	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) SetTags(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult {
+	s.Tags = v
 	return s
 }
 
@@ -5450,7 +6010,8 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList struct {
-	Chunks []*string `json:"Chunks,omitempty" xml:"Chunks,omitempty" type:"Repeated"`
+	CategoryUuid *string   `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	Chunks       []*string `json:"Chunks,omitempty" xml:"Chunks,omitempty" type:"Repeated"`
 	// example:
 	//
 	// xx
@@ -5463,6 +6024,9 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	//
 	// xx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
 	// example:
 	//
 	// 2023-04-04 08:39:09
@@ -5494,7 +6058,8 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	// example:
 	//
 	// xx
-	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// xx
@@ -5517,6 +6082,10 @@ func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenera
 	return s.String()
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) GetCategoryUuid() *string {
+	return s.CategoryUuid
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) GetChunks() []*string {
 	return s.Chunks
 }
@@ -5531,6 +6100,18 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) GetDocUuid() *string {
 	return s.DocUuid
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) GetExtend1() *string {
+	return s.Extend1
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) GetExtend2() *string {
+	return s.Extend2
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) GetExtend3() *string {
+	return s.Extend3
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) GetPubTime() *string {
@@ -5565,6 +6146,10 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 	return s.Summary
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) GetTags() []*string {
+	return s.Tags
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) GetTitle() *string {
 	return s.Title
 }
@@ -5575,6 +6160,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) GetUrl() *string {
 	return s.Url
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) SetCategoryUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList {
+	s.CategoryUuid = &v
+	return s
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) SetChunks(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList {
@@ -5594,6 +6184,21 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) SetDocUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList {
 	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) SetExtend1(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) SetExtend2(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList {
+	s.Extend2 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) SetExtend3(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList {
+	s.Extend3 = &v
 	return s
 }
 
@@ -5634,6 +6239,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList {
 	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) SetTags(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList {
+	s.Tags = v
 	return s
 }
 
@@ -6001,6 +6611,7 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle struct {
+	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
 	// example:
 	//
 	// xx
@@ -6009,6 +6620,9 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	//
 	// xx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
 	// example:
 	//
 	// 互联网搜索
@@ -6016,7 +6630,8 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	// example:
 	//
 	// xx
-	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// xx
@@ -6035,12 +6650,28 @@ func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenera
 	return s.String()
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) GetCategoryUuid() *string {
+	return s.CategoryUuid
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) GetDocId() *string {
 	return s.DocId
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) GetDocUuid() *string {
 	return s.DocUuid
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) GetExtend1() *string {
+	return s.Extend1
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) GetExtend2() *string {
+	return s.Extend2
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) GetExtend3() *string {
+	return s.Extend3
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) GetSearchSourceName() *string {
@@ -6051,12 +6682,21 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 	return s.Summary
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) GetTags() []*string {
+	return s.Tags
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) GetTitle() *string {
 	return s.Title
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) GetUrl() *string {
 	return s.Url
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) SetCategoryUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle {
+	s.CategoryUuid = &v
+	return s
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) SetDocId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle {
@@ -6069,6 +6709,21 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 	return s
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) SetExtend1(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) SetExtend2(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle {
+	s.Extend2 = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) SetExtend3(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle {
+	s.Extend3 = &v
+	return s
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) SetSearchSourceName(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle {
 	s.SearchSourceName = &v
 	return s
@@ -6076,6 +6731,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle {
 	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) SetTags(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle {
+	s.Tags = v
 	return s
 }
 

@@ -119,6 +119,7 @@ func (s *UpdateDatasetDocumentResponseBody) Validate() error {
 }
 
 type UpdateDatasetDocumentResponseBodyData struct {
+	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
 	// example:
 	//
 	// 用户指定的文档唯一ID
@@ -126,8 +127,12 @@ type UpdateDatasetDocumentResponseBodyData struct {
 	// example:
 	//
 	// 内部文档唯一ID
-	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
-	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	DocUuid *string   `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	Extend1 *string   `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	Extend2 *string   `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	Extend3 *string   `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Title   *string   `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s UpdateDatasetDocumentResponseBodyData) String() string {
@@ -138,6 +143,10 @@ func (s UpdateDatasetDocumentResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateDatasetDocumentResponseBodyData) GetCategoryUuid() *string {
+	return s.CategoryUuid
+}
+
 func (s *UpdateDatasetDocumentResponseBodyData) GetDocId() *string {
 	return s.DocId
 }
@@ -146,8 +155,29 @@ func (s *UpdateDatasetDocumentResponseBodyData) GetDocUuid() *string {
 	return s.DocUuid
 }
 
+func (s *UpdateDatasetDocumentResponseBodyData) GetExtend1() *string {
+	return s.Extend1
+}
+
+func (s *UpdateDatasetDocumentResponseBodyData) GetExtend2() *string {
+	return s.Extend2
+}
+
+func (s *UpdateDatasetDocumentResponseBodyData) GetExtend3() *string {
+	return s.Extend3
+}
+
+func (s *UpdateDatasetDocumentResponseBodyData) GetTags() []*string {
+	return s.Tags
+}
+
 func (s *UpdateDatasetDocumentResponseBodyData) GetTitle() *string {
 	return s.Title
+}
+
+func (s *UpdateDatasetDocumentResponseBodyData) SetCategoryUuid(v string) *UpdateDatasetDocumentResponseBodyData {
+	s.CategoryUuid = &v
+	return s
 }
 
 func (s *UpdateDatasetDocumentResponseBodyData) SetDocId(v string) *UpdateDatasetDocumentResponseBodyData {
@@ -157,6 +187,26 @@ func (s *UpdateDatasetDocumentResponseBodyData) SetDocId(v string) *UpdateDatase
 
 func (s *UpdateDatasetDocumentResponseBodyData) SetDocUuid(v string) *UpdateDatasetDocumentResponseBodyData {
 	s.DocUuid = &v
+	return s
+}
+
+func (s *UpdateDatasetDocumentResponseBodyData) SetExtend1(v string) *UpdateDatasetDocumentResponseBodyData {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *UpdateDatasetDocumentResponseBodyData) SetExtend2(v string) *UpdateDatasetDocumentResponseBodyData {
+	s.Extend2 = &v
+	return s
+}
+
+func (s *UpdateDatasetDocumentResponseBodyData) SetExtend3(v string) *UpdateDatasetDocumentResponseBodyData {
+	s.Extend3 = &v
+	return s
+}
+
+func (s *UpdateDatasetDocumentResponseBodyData) SetTags(v []*string) *UpdateDatasetDocumentResponseBodyData {
+	s.Tags = v
 	return s
 }
 

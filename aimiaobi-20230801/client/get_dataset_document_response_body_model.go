@@ -119,7 +119,8 @@ func (s *GetDatasetDocumentResponseBody) Validate() error {
 }
 
 type GetDatasetDocumentResponseBodyData struct {
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// example:
 	//
 	// true
@@ -133,6 +134,9 @@ type GetDatasetDocumentResponseBodyData struct {
 	//
 	// 内部文档唯一ID
 	DocUuid  *string                                     `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	Extend1  *string                                     `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	Extend2  *string                                     `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	Extend3  *string                                     `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
 	Metadata *GetDatasetDocumentResponseBodyDataMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
 	// example:
 	//
@@ -146,8 +150,9 @@ type GetDatasetDocumentResponseBodyData struct {
 	// example:
 	//
 	// 文章摘要
-	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Title   *string   `json:"Title,omitempty" xml:"Title,omitempty"`
 	// example:
 	//
 	// https://www.aliyun.com
@@ -160,6 +165,10 @@ func (s GetDatasetDocumentResponseBodyData) String() string {
 
 func (s GetDatasetDocumentResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetDatasetDocumentResponseBodyData) GetCategoryUuid() *string {
+	return s.CategoryUuid
 }
 
 func (s *GetDatasetDocumentResponseBodyData) GetContent() *string {
@@ -182,6 +191,18 @@ func (s *GetDatasetDocumentResponseBodyData) GetDocUuid() *string {
 	return s.DocUuid
 }
 
+func (s *GetDatasetDocumentResponseBodyData) GetExtend1() *string {
+	return s.Extend1
+}
+
+func (s *GetDatasetDocumentResponseBodyData) GetExtend2() *string {
+	return s.Extend2
+}
+
+func (s *GetDatasetDocumentResponseBodyData) GetExtend3() *string {
+	return s.Extend3
+}
+
 func (s *GetDatasetDocumentResponseBodyData) GetMetadata() *GetDatasetDocumentResponseBodyDataMetadata {
 	return s.Metadata
 }
@@ -202,12 +223,21 @@ func (s *GetDatasetDocumentResponseBodyData) GetSummary() *string {
 	return s.Summary
 }
 
+func (s *GetDatasetDocumentResponseBodyData) GetTags() []*string {
+	return s.Tags
+}
+
 func (s *GetDatasetDocumentResponseBodyData) GetTitle() *string {
 	return s.Title
 }
 
 func (s *GetDatasetDocumentResponseBodyData) GetUrl() *string {
 	return s.Url
+}
+
+func (s *GetDatasetDocumentResponseBodyData) SetCategoryUuid(v string) *GetDatasetDocumentResponseBodyData {
+	s.CategoryUuid = &v
+	return s
 }
 
 func (s *GetDatasetDocumentResponseBodyData) SetContent(v string) *GetDatasetDocumentResponseBodyData {
@@ -232,6 +262,21 @@ func (s *GetDatasetDocumentResponseBodyData) SetDocType(v string) *GetDatasetDoc
 
 func (s *GetDatasetDocumentResponseBodyData) SetDocUuid(v string) *GetDatasetDocumentResponseBodyData {
 	s.DocUuid = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyData) SetExtend1(v string) *GetDatasetDocumentResponseBodyData {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyData) SetExtend2(v string) *GetDatasetDocumentResponseBodyData {
+	s.Extend2 = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyData) SetExtend3(v string) *GetDatasetDocumentResponseBodyData {
+	s.Extend3 = &v
 	return s
 }
 
@@ -260,6 +305,11 @@ func (s *GetDatasetDocumentResponseBodyData) SetSummary(v string) *GetDatasetDoc
 	return s
 }
 
+func (s *GetDatasetDocumentResponseBodyData) SetTags(v []*string) *GetDatasetDocumentResponseBodyData {
+	s.Tags = v
+	return s
+}
+
 func (s *GetDatasetDocumentResponseBodyData) SetTitle(v string) *GetDatasetDocumentResponseBodyData {
 	s.Title = &v
 	return s
@@ -281,6 +331,7 @@ func (s *GetDatasetDocumentResponseBodyData) Validate() error {
 
 type GetDatasetDocumentResponseBodyDataMetadata struct {
 	AsrSentences []*GetDatasetDocumentResponseBodyDataMetadataAsrSentences `json:"AsrSentences,omitempty" xml:"AsrSentences,omitempty" type:"Repeated"`
+	KeyValues    []*GetDatasetDocumentResponseBodyDataMetadataKeyValues    `json:"KeyValues,omitempty" xml:"KeyValues,omitempty" type:"Repeated"`
 	Text         *string                                                   `json:"Text,omitempty" xml:"Text,omitempty"`
 	VideoShots   []*GetDatasetDocumentResponseBodyDataMetadataVideoShots   `json:"VideoShots,omitempty" xml:"VideoShots,omitempty" type:"Repeated"`
 }
@@ -297,6 +348,10 @@ func (s *GetDatasetDocumentResponseBodyDataMetadata) GetAsrSentences() []*GetDat
 	return s.AsrSentences
 }
 
+func (s *GetDatasetDocumentResponseBodyDataMetadata) GetKeyValues() []*GetDatasetDocumentResponseBodyDataMetadataKeyValues {
+	return s.KeyValues
+}
+
 func (s *GetDatasetDocumentResponseBodyDataMetadata) GetText() *string {
 	return s.Text
 }
@@ -307,6 +362,11 @@ func (s *GetDatasetDocumentResponseBodyDataMetadata) GetVideoShots() []*GetDatas
 
 func (s *GetDatasetDocumentResponseBodyDataMetadata) SetAsrSentences(v []*GetDatasetDocumentResponseBodyDataMetadataAsrSentences) *GetDatasetDocumentResponseBodyDataMetadata {
 	s.AsrSentences = v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadata) SetKeyValues(v []*GetDatasetDocumentResponseBodyDataMetadataKeyValues) *GetDatasetDocumentResponseBodyDataMetadata {
+	s.KeyValues = v
 	return s
 }
 
@@ -323,6 +383,15 @@ func (s *GetDatasetDocumentResponseBodyDataMetadata) SetVideoShots(v []*GetDatas
 func (s *GetDatasetDocumentResponseBodyDataMetadata) Validate() error {
 	if s.AsrSentences != nil {
 		for _, item := range s.AsrSentences {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.KeyValues != nil {
+		for _, item := range s.KeyValues {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -384,6 +453,41 @@ func (s *GetDatasetDocumentResponseBodyDataMetadataAsrSentences) SetText(v strin
 }
 
 func (s *GetDatasetDocumentResponseBodyDataMetadataAsrSentences) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetDatasetDocumentResponseBodyDataMetadataKeyValues struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetDatasetDocumentResponseBodyDataMetadataKeyValues) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDatasetDocumentResponseBodyDataMetadataKeyValues) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadataKeyValues) GetKey() *string {
+	return s.Key
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadataKeyValues) GetValue() *string {
+	return s.Value
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadataKeyValues) SetKey(v string) *GetDatasetDocumentResponseBodyDataMetadataKeyValues {
+	s.Key = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadataKeyValues) SetValue(v string) *GetDatasetDocumentResponseBodyDataMetadataKeyValues {
+	s.Value = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadataKeyValues) Validate() error {
 	return dara.Validate(s)
 }
 

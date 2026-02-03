@@ -248,16 +248,23 @@ func (s *RunSearchSimilarArticlesResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunSearchSimilarArticlesResponseBodyPayloadOutputArticles struct {
-	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	DocId        *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	DocType      *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
 	// example:
 	//
 	// a26c2c1
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
 	// example:
 	//
 	// 2025-01-16 18:07:22
 	PubTime          *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	SearchSource     *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
 	// example:
 	//
 	// xxx.com
@@ -265,8 +272,9 @@ type RunSearchSimilarArticlesResponseBodyPayloadOutputArticles struct {
 	// example:
 	//
 	// xxx
-	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Title   *string   `json:"Title,omitempty" xml:"Title,omitempty"`
 	// example:
 	//
 	// https://xxx
@@ -281,20 +289,48 @@ func (s RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) GoString() st
 	return s.String()
 }
 
+func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) GetCategoryUuid() *string {
+	return s.CategoryUuid
+}
+
 func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) GetDocId() *string {
 	return s.DocId
+}
+
+func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) GetDocType() *string {
+	return s.DocType
 }
 
 func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) GetDocUuid() *string {
 	return s.DocUuid
 }
 
+func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) GetExtend1() *string {
+	return s.Extend1
+}
+
+func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) GetExtend2() *string {
+	return s.Extend2
+}
+
+func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) GetExtend3() *string {
+	return s.Extend3
+}
+
 func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) GetPubTime() *string {
 	return s.PubTime
 }
 
+func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) GetSearchSource() *string {
+	return s.SearchSource
+}
+
 func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) GetSearchSourceName() *string {
 	return s.SearchSourceName
+}
+
+func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) GetSearchSourceType() *string {
+	return s.SearchSourceType
 }
 
 func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) GetSource() *string {
@@ -305,6 +341,10 @@ func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) GetSummary()
 	return s.Summary
 }
 
+func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) GetTags() []*string {
+	return s.Tags
+}
+
 func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) GetTitle() *string {
 	return s.Title
 }
@@ -313,8 +353,18 @@ func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) GetUrl() *st
 	return s.Url
 }
 
+func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) SetCategoryUuid(v string) *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles {
+	s.CategoryUuid = &v
+	return s
+}
+
 func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) SetDocId(v string) *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles {
 	s.DocId = &v
+	return s
+}
+
+func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) SetDocType(v string) *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles {
+	s.DocType = &v
 	return s
 }
 
@@ -323,13 +373,38 @@ func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) SetDocUuid(v
 	return s
 }
 
+func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) SetExtend1(v string) *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) SetExtend2(v string) *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles {
+	s.Extend2 = &v
+	return s
+}
+
+func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) SetExtend3(v string) *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles {
+	s.Extend3 = &v
+	return s
+}
+
 func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) SetPubTime(v string) *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles {
 	s.PubTime = &v
 	return s
 }
 
+func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) SetSearchSource(v string) *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles {
+	s.SearchSource = &v
+	return s
+}
+
 func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) SetSearchSourceName(v string) *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles {
 	s.SearchSourceName = &v
+	return s
+}
+
+func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) SetSearchSourceType(v string) *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles {
+	s.SearchSourceType = &v
 	return s
 }
 
@@ -340,6 +415,11 @@ func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) SetSource(v 
 
 func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) SetSummary(v string) *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles {
 	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) SetTags(v []*string) *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles {
+	s.Tags = v
 	return s
 }
 

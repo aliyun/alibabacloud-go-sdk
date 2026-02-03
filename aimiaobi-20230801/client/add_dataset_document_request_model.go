@@ -92,6 +92,7 @@ func (s *AddDatasetDocumentRequest) Validate() error {
 }
 
 type AddDatasetDocumentRequestDocument struct {
+	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
 	// example:
 	//
 	// xxx
@@ -141,7 +142,8 @@ type AddDatasetDocumentRequestDocument struct {
 	// example:
 	//
 	// 文章摘要
-	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// xxxxx@xxxxx.com
@@ -158,6 +160,10 @@ func (s AddDatasetDocumentRequestDocument) String() string {
 
 func (s AddDatasetDocumentRequestDocument) GoString() string {
 	return s.String()
+}
+
+func (s *AddDatasetDocumentRequestDocument) GetCategoryUuid() *string {
+	return s.CategoryUuid
 }
 
 func (s *AddDatasetDocumentRequestDocument) GetContent() *string {
@@ -216,12 +222,21 @@ func (s *AddDatasetDocumentRequestDocument) GetSummary() *string {
 	return s.Summary
 }
 
+func (s *AddDatasetDocumentRequestDocument) GetTags() []*string {
+	return s.Tags
+}
+
 func (s *AddDatasetDocumentRequestDocument) GetTitle() *string {
 	return s.Title
 }
 
 func (s *AddDatasetDocumentRequestDocument) GetUrl() *string {
 	return s.Url
+}
+
+func (s *AddDatasetDocumentRequestDocument) SetCategoryUuid(v string) *AddDatasetDocumentRequestDocument {
+	s.CategoryUuid = &v
+	return s
 }
 
 func (s *AddDatasetDocumentRequestDocument) SetContent(v string) *AddDatasetDocumentRequestDocument {
@@ -294,6 +309,11 @@ func (s *AddDatasetDocumentRequestDocument) SetSummary(v string) *AddDatasetDocu
 	return s
 }
 
+func (s *AddDatasetDocumentRequestDocument) SetTags(v []*string) *AddDatasetDocumentRequestDocument {
+	s.Tags = v
+	return s
+}
+
 func (s *AddDatasetDocumentRequestDocument) SetTitle(v string) *AddDatasetDocumentRequestDocument {
 	s.Title = &v
 	return s
@@ -324,6 +344,7 @@ func (s *AddDatasetDocumentRequestDocument) Validate() error {
 
 type AddDatasetDocumentRequestDocumentMetadata struct {
 	AsrSentences []*AddDatasetDocumentRequestDocumentMetadataAsrSentences `json:"AsrSentences,omitempty" xml:"AsrSentences,omitempty" type:"Repeated"`
+	KeyValues    []*AddDatasetDocumentRequestDocumentMetadataKeyValues    `json:"KeyValues,omitempty" xml:"KeyValues,omitempty" type:"Repeated"`
 	Text         *string                                                  `json:"Text,omitempty" xml:"Text,omitempty"`
 	VideoShots   []*AddDatasetDocumentRequestDocumentMetadataVideoShots   `json:"VideoShots,omitempty" xml:"VideoShots,omitempty" type:"Repeated"`
 }
@@ -340,6 +361,10 @@ func (s *AddDatasetDocumentRequestDocumentMetadata) GetAsrSentences() []*AddData
 	return s.AsrSentences
 }
 
+func (s *AddDatasetDocumentRequestDocumentMetadata) GetKeyValues() []*AddDatasetDocumentRequestDocumentMetadataKeyValues {
+	return s.KeyValues
+}
+
 func (s *AddDatasetDocumentRequestDocumentMetadata) GetText() *string {
 	return s.Text
 }
@@ -350,6 +375,11 @@ func (s *AddDatasetDocumentRequestDocumentMetadata) GetVideoShots() []*AddDatase
 
 func (s *AddDatasetDocumentRequestDocumentMetadata) SetAsrSentences(v []*AddDatasetDocumentRequestDocumentMetadataAsrSentences) *AddDatasetDocumentRequestDocumentMetadata {
 	s.AsrSentences = v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadata) SetKeyValues(v []*AddDatasetDocumentRequestDocumentMetadataKeyValues) *AddDatasetDocumentRequestDocumentMetadata {
+	s.KeyValues = v
 	return s
 }
 
@@ -366,6 +396,15 @@ func (s *AddDatasetDocumentRequestDocumentMetadata) SetVideoShots(v []*AddDatase
 func (s *AddDatasetDocumentRequestDocumentMetadata) Validate() error {
 	if s.AsrSentences != nil {
 		for _, item := range s.AsrSentences {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.KeyValues != nil {
+		for _, item := range s.KeyValues {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -427,6 +466,41 @@ func (s *AddDatasetDocumentRequestDocumentMetadataAsrSentences) SetText(v string
 }
 
 func (s *AddDatasetDocumentRequestDocumentMetadataAsrSentences) Validate() error {
+	return dara.Validate(s)
+}
+
+type AddDatasetDocumentRequestDocumentMetadataKeyValues struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s AddDatasetDocumentRequestDocumentMetadataKeyValues) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AddDatasetDocumentRequestDocumentMetadataKeyValues) GoString() string {
+	return s.String()
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadataKeyValues) GetKey() *string {
+	return s.Key
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadataKeyValues) GetValue() *string {
+	return s.Value
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadataKeyValues) SetKey(v string) *AddDatasetDocumentRequestDocumentMetadataKeyValues {
+	s.Key = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadataKeyValues) SetValue(v string) *AddDatasetDocumentRequestDocumentMetadataKeyValues {
+	s.Value = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadataKeyValues) Validate() error {
 	return dara.Validate(s)
 }
 

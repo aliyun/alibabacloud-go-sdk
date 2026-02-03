@@ -255,6 +255,7 @@ func (s *GetDatasetResponseBodyData) Validate() error {
 }
 
 type GetDatasetResponseBodyDataDatasetConfig struct {
+	SearchSourceConfig  *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig    `json:"SearchSourceConfig,omitempty" xml:"SearchSourceConfig,omitempty" type:"Struct"`
 	SearchSourceConfigs []*GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs `json:"SearchSourceConfigs,omitempty" xml:"SearchSourceConfigs,omitempty" type:"Repeated"`
 }
 
@@ -266,8 +267,17 @@ func (s GetDatasetResponseBodyDataDatasetConfig) GoString() string {
 	return s.String()
 }
 
+func (s *GetDatasetResponseBodyDataDatasetConfig) GetSearchSourceConfig() *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig {
+	return s.SearchSourceConfig
+}
+
 func (s *GetDatasetResponseBodyDataDatasetConfig) GetSearchSourceConfigs() []*GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs {
 	return s.SearchSourceConfigs
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfig) SetSearchSourceConfig(v *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig) *GetDatasetResponseBodyDataDatasetConfig {
+	s.SearchSourceConfig = v
+	return s
 }
 
 func (s *GetDatasetResponseBodyDataDatasetConfig) SetSearchSourceConfigs(v []*GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs) *GetDatasetResponseBodyDataDatasetConfig {
@@ -276,6 +286,11 @@ func (s *GetDatasetResponseBodyDataDatasetConfig) SetSearchSourceConfigs(v []*Ge
 }
 
 func (s *GetDatasetResponseBodyDataDatasetConfig) Validate() error {
+	if s.SearchSourceConfig != nil {
+		if err := s.SearchSourceConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.SearchSourceConfigs != nil {
 		for _, item := range s.SearchSourceConfigs {
 			if item != nil {
@@ -286,6 +301,61 @@ func (s *GetDatasetResponseBodyDataDatasetConfig) Validate() error {
 		}
 	}
 	return nil
+}
+
+type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig struct {
+	MetadataKeyValueGenerateEnable *string `json:"MetadataKeyValueGenerateEnable,omitempty" xml:"MetadataKeyValueGenerateEnable,omitempty"`
+	MetadataKeyValueSearchEnable   *string `json:"MetadataKeyValueSearchEnable,omitempty" xml:"MetadataKeyValueSearchEnable,omitempty"`
+	TagGenerateEnable              *string `json:"TagGenerateEnable,omitempty" xml:"TagGenerateEnable,omitempty"`
+	TagSearchEnable                *string `json:"TagSearchEnable,omitempty" xml:"TagSearchEnable,omitempty"`
+}
+
+func (s GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig) GetMetadataKeyValueGenerateEnable() *string {
+	return s.MetadataKeyValueGenerateEnable
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig) GetMetadataKeyValueSearchEnable() *string {
+	return s.MetadataKeyValueSearchEnable
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig) GetTagGenerateEnable() *string {
+	return s.TagGenerateEnable
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig) GetTagSearchEnable() *string {
+	return s.TagSearchEnable
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig) SetMetadataKeyValueGenerateEnable(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig {
+	s.MetadataKeyValueGenerateEnable = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig) SetMetadataKeyValueSearchEnable(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig {
+	s.MetadataKeyValueSearchEnable = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig) SetTagGenerateEnable(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig {
+	s.TagGenerateEnable = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig) SetTagSearchEnable(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig {
+	s.TagSearchEnable = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig) Validate() error {
+	return dara.Validate(s)
 }
 
 type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs struct {

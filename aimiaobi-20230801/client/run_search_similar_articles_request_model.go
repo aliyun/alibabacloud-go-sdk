@@ -135,7 +135,19 @@ func (s *RunSearchSimilarArticlesRequestChatConfig) Validate() error {
 }
 
 type RunSearchSimilarArticlesRequestChatConfigSearchParam struct {
-	SearchSources []*RunSearchSimilarArticlesRequestChatConfigSearchParamSearchSources `json:"SearchSources,omitempty" xml:"SearchSources,omitempty" type:"Repeated"`
+	CategoryUuids   []*string                                                            `json:"CategoryUuids,omitempty" xml:"CategoryUuids,omitempty" type:"Repeated"`
+	CreateTimeEnd   *int64                                                               `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	CreateTimeStart *int64                                                               `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	DocIds          []*string                                                            `json:"DocIds,omitempty" xml:"DocIds,omitempty" type:"Repeated"`
+	DocTypes        []*string                                                            `json:"DocTypes,omitempty" xml:"DocTypes,omitempty" type:"Repeated"`
+	DocUuids        []*string                                                            `json:"DocUuids,omitempty" xml:"DocUuids,omitempty" type:"Repeated"`
+	EndTime         *int64                                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Extend1         *string                                                              `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	Extend2         *string                                                              `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	Extend3         *string                                                              `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	SearchSources   []*RunSearchSimilarArticlesRequestChatConfigSearchParamSearchSources `json:"SearchSources,omitempty" xml:"SearchSources,omitempty" type:"Repeated"`
+	StartTime       *int64                                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Tags            []*string                                                            `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s RunSearchSimilarArticlesRequestChatConfigSearchParam) String() string {
@@ -146,12 +158,120 @@ func (s RunSearchSimilarArticlesRequestChatConfigSearchParam) GoString() string 
 	return s.String()
 }
 
+func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) GetCategoryUuids() []*string {
+	return s.CategoryUuids
+}
+
+func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) GetCreateTimeEnd() *int64 {
+	return s.CreateTimeEnd
+}
+
+func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) GetCreateTimeStart() *int64 {
+	return s.CreateTimeStart
+}
+
+func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) GetDocIds() []*string {
+	return s.DocIds
+}
+
+func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) GetDocTypes() []*string {
+	return s.DocTypes
+}
+
+func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) GetDocUuids() []*string {
+	return s.DocUuids
+}
+
+func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) GetEndTime() *int64 {
+	return s.EndTime
+}
+
+func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) GetExtend1() *string {
+	return s.Extend1
+}
+
+func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) GetExtend2() *string {
+	return s.Extend2
+}
+
+func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) GetExtend3() *string {
+	return s.Extend3
+}
+
 func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) GetSearchSources() []*RunSearchSimilarArticlesRequestChatConfigSearchParamSearchSources {
 	return s.SearchSources
 }
 
+func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) GetStartTime() *int64 {
+	return s.StartTime
+}
+
+func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) GetTags() []*string {
+	return s.Tags
+}
+
+func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) SetCategoryUuids(v []*string) *RunSearchSimilarArticlesRequestChatConfigSearchParam {
+	s.CategoryUuids = v
+	return s
+}
+
+func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) SetCreateTimeEnd(v int64) *RunSearchSimilarArticlesRequestChatConfigSearchParam {
+	s.CreateTimeEnd = &v
+	return s
+}
+
+func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) SetCreateTimeStart(v int64) *RunSearchSimilarArticlesRequestChatConfigSearchParam {
+	s.CreateTimeStart = &v
+	return s
+}
+
+func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) SetDocIds(v []*string) *RunSearchSimilarArticlesRequestChatConfigSearchParam {
+	s.DocIds = v
+	return s
+}
+
+func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) SetDocTypes(v []*string) *RunSearchSimilarArticlesRequestChatConfigSearchParam {
+	s.DocTypes = v
+	return s
+}
+
+func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) SetDocUuids(v []*string) *RunSearchSimilarArticlesRequestChatConfigSearchParam {
+	s.DocUuids = v
+	return s
+}
+
+func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) SetEndTime(v int64) *RunSearchSimilarArticlesRequestChatConfigSearchParam {
+	s.EndTime = &v
+	return s
+}
+
+func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) SetExtend1(v string) *RunSearchSimilarArticlesRequestChatConfigSearchParam {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) SetExtend2(v string) *RunSearchSimilarArticlesRequestChatConfigSearchParam {
+	s.Extend2 = &v
+	return s
+}
+
+func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) SetExtend3(v string) *RunSearchSimilarArticlesRequestChatConfigSearchParam {
+	s.Extend3 = &v
+	return s
+}
+
 func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) SetSearchSources(v []*RunSearchSimilarArticlesRequestChatConfigSearchParamSearchSources) *RunSearchSimilarArticlesRequestChatConfigSearchParam {
 	s.SearchSources = v
+	return s
+}
+
+func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) SetStartTime(v int64) *RunSearchSimilarArticlesRequestChatConfigSearchParam {
+	s.StartTime = &v
+	return s
+}
+
+func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) SetTags(v []*string) *RunSearchSimilarArticlesRequestChatConfigSearchParam {
+	s.Tags = v
 	return s
 }
 

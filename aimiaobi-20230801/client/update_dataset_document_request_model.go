@@ -90,6 +90,7 @@ func (s *UpdateDatasetDocumentRequest) Validate() error {
 }
 
 type UpdateDatasetDocumentRequestDocument struct {
+	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
 	// example:
 	//
 	// 用户指定的文档唯一ID
@@ -97,7 +98,11 @@ type UpdateDatasetDocumentRequestDocument struct {
 	// example:
 	//
 	// 内部文档唯一ID
-	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	DocUuid *string   `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	Extend1 *string   `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	Extend2 *string   `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	Extend3 *string   `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// xx
@@ -112,6 +117,10 @@ func (s UpdateDatasetDocumentRequestDocument) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateDatasetDocumentRequestDocument) GetCategoryUuid() *string {
+	return s.CategoryUuid
+}
+
 func (s *UpdateDatasetDocumentRequestDocument) GetDocId() *string {
 	return s.DocId
 }
@@ -120,8 +129,29 @@ func (s *UpdateDatasetDocumentRequestDocument) GetDocUuid() *string {
 	return s.DocUuid
 }
 
+func (s *UpdateDatasetDocumentRequestDocument) GetExtend1() *string {
+	return s.Extend1
+}
+
+func (s *UpdateDatasetDocumentRequestDocument) GetExtend2() *string {
+	return s.Extend2
+}
+
+func (s *UpdateDatasetDocumentRequestDocument) GetExtend3() *string {
+	return s.Extend3
+}
+
+func (s *UpdateDatasetDocumentRequestDocument) GetTags() []*string {
+	return s.Tags
+}
+
 func (s *UpdateDatasetDocumentRequestDocument) GetTitle() *string {
 	return s.Title
+}
+
+func (s *UpdateDatasetDocumentRequestDocument) SetCategoryUuid(v string) *UpdateDatasetDocumentRequestDocument {
+	s.CategoryUuid = &v
+	return s
 }
 
 func (s *UpdateDatasetDocumentRequestDocument) SetDocId(v string) *UpdateDatasetDocumentRequestDocument {
@@ -131,6 +161,26 @@ func (s *UpdateDatasetDocumentRequestDocument) SetDocId(v string) *UpdateDataset
 
 func (s *UpdateDatasetDocumentRequestDocument) SetDocUuid(v string) *UpdateDatasetDocumentRequestDocument {
 	s.DocUuid = &v
+	return s
+}
+
+func (s *UpdateDatasetDocumentRequestDocument) SetExtend1(v string) *UpdateDatasetDocumentRequestDocument {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *UpdateDatasetDocumentRequestDocument) SetExtend2(v string) *UpdateDatasetDocumentRequestDocument {
+	s.Extend2 = &v
+	return s
+}
+
+func (s *UpdateDatasetDocumentRequestDocument) SetExtend3(v string) *UpdateDatasetDocumentRequestDocument {
+	s.Extend3 = &v
+	return s
+}
+
+func (s *UpdateDatasetDocumentRequestDocument) SetTags(v []*string) *UpdateDatasetDocumentRequestDocument {
+	s.Tags = v
 	return s
 }
 
