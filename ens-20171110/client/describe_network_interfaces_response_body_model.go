@@ -249,6 +249,7 @@ type DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSe
 	//
 	// vsw-5rqswx1trlsj9
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VmncLearn *bool   `json:"VmncLearn,omitempty" xml:"VmncLearn,omitempty"`
 }
 
 func (s DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet) String() string {
@@ -321,6 +322,10 @@ func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfa
 
 func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet) GetVSwitchId() *string {
 	return s.VSwitchId
+}
+
+func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet) GetVmncLearn() *bool {
+	return s.VmncLearn
 }
 
 func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet) SetCreationTime(v string) *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet {
@@ -400,6 +405,11 @@ func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfa
 
 func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet) SetVSwitchId(v string) *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet {
 	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet) SetVmncLearn(v bool) *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet {
+	s.VmncLearn = &v
 	return s
 }
 
