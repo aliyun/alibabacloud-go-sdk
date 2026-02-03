@@ -23,6 +23,8 @@ type iPermission interface {
 	GetPrincipal() *string
 	SetResourceType(v string) *Permission
 	GetResourceType() *string
+	SetRowFilter(v *RowFilter) *Permission
+	GetRowFilter() *RowFilter
 	SetTable(v string) *Permission
 	GetTable() *string
 	SetView(v string) *Permission
@@ -37,6 +39,7 @@ type Permission struct {
 	Function     *string            `json:"function,omitempty" xml:"function,omitempty"`
 	Principal    *string            `json:"principal,omitempty" xml:"principal,omitempty"`
 	ResourceType *string            `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	RowFilter    *RowFilter         `json:"rowFilter,omitempty" xml:"rowFilter,omitempty"`
 	Table        *string            `json:"table,omitempty" xml:"table,omitempty"`
 	View         *string            `json:"view,omitempty" xml:"view,omitempty"`
 }
@@ -75,6 +78,10 @@ func (s *Permission) GetPrincipal() *string {
 
 func (s *Permission) GetResourceType() *string {
 	return s.ResourceType
+}
+
+func (s *Permission) GetRowFilter() *RowFilter {
+	return s.RowFilter
 }
 
 func (s *Permission) GetTable() *string {
@@ -120,6 +127,11 @@ func (s *Permission) SetResourceType(v string) *Permission {
 	return s
 }
 
+func (s *Permission) SetRowFilter(v *RowFilter) *Permission {
+	s.RowFilter = v
+	return s
+}
+
 func (s *Permission) SetTable(v string) *Permission {
 	s.Table = &v
 	return s
@@ -133,6 +145,11 @@ func (s *Permission) SetView(v string) *Permission {
 func (s *Permission) Validate() error {
 	if s.Columns != nil {
 		if err := s.Columns.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RowFilter != nil {
+		if err := s.RowFilter.Validate(); err != nil {
 			return err
 		}
 	}

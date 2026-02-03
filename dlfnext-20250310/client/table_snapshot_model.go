@@ -19,6 +19,8 @@ type iTableSnapshot interface {
 	GetRecordCount() *int64
 	SetSnapshot(v *Snapshot) *TableSnapshot
 	GetSnapshot() *Snapshot
+	SetTotalBuckets(v int32) *TableSnapshot
+	GetTotalBuckets() *int32
 }
 
 type TableSnapshot struct {
@@ -27,6 +29,7 @@ type TableSnapshot struct {
 	LastFileCreationTime *int64    `json:"lastFileCreationTime,omitempty" xml:"lastFileCreationTime,omitempty"`
 	RecordCount          *int64    `json:"recordCount,omitempty" xml:"recordCount,omitempty"`
 	Snapshot             *Snapshot `json:"snapshot,omitempty" xml:"snapshot,omitempty"`
+	TotalBuckets         *int32    `json:"totalBuckets,omitempty" xml:"totalBuckets,omitempty"`
 }
 
 func (s TableSnapshot) String() string {
@@ -57,6 +60,10 @@ func (s *TableSnapshot) GetSnapshot() *Snapshot {
 	return s.Snapshot
 }
 
+func (s *TableSnapshot) GetTotalBuckets() *int32 {
+	return s.TotalBuckets
+}
+
 func (s *TableSnapshot) SetFileCount(v int64) *TableSnapshot {
 	s.FileCount = &v
 	return s
@@ -79,6 +86,11 @@ func (s *TableSnapshot) SetRecordCount(v int64) *TableSnapshot {
 
 func (s *TableSnapshot) SetSnapshot(v *Snapshot) *TableSnapshot {
 	s.Snapshot = v
+	return s
+}
+
+func (s *TableSnapshot) SetTotalBuckets(v int32) *TableSnapshot {
+	s.TotalBuckets = &v
 	return s
 }
 

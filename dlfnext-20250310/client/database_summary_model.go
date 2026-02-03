@@ -33,6 +33,8 @@ type iDatabaseSummary interface {
 	GetTotalFileCount() *int64
 	SetTotalFileSizeInBytes(v int64) *DatabaseSummary
 	GetTotalFileSizeInBytes() *int64
+	SetTotalMetaFileCount(v int64) *DatabaseSummary
+	GetTotalMetaFileCount() *int64
 	SetTotalMetaSizeInBytes(v int64) *DatabaseSummary
 	GetTotalMetaSizeInBytes() *int64
 }
@@ -56,6 +58,7 @@ type DatabaseSummary struct {
 	TotalFileCount *int64 `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
 	// Total file count
 	TotalFileSizeInBytes *int64 `json:"totalFileSizeInBytes,omitempty" xml:"totalFileSizeInBytes,omitempty"`
+	TotalMetaFileCount   *int64 `json:"totalMetaFileCount,omitempty" xml:"totalMetaFileCount,omitempty"`
 	TotalMetaSizeInBytes *int64 `json:"totalMetaSizeInBytes,omitempty" xml:"totalMetaSizeInBytes,omitempty"`
 }
 
@@ -113,6 +116,10 @@ func (s *DatabaseSummary) GetTotalFileCount() *int64 {
 
 func (s *DatabaseSummary) GetTotalFileSizeInBytes() *int64 {
 	return s.TotalFileSizeInBytes
+}
+
+func (s *DatabaseSummary) GetTotalMetaFileCount() *int64 {
+	return s.TotalMetaFileCount
 }
 
 func (s *DatabaseSummary) GetTotalMetaSizeInBytes() *int64 {
@@ -176,6 +183,11 @@ func (s *DatabaseSummary) SetTotalFileCount(v int64) *DatabaseSummary {
 
 func (s *DatabaseSummary) SetTotalFileSizeInBytes(v int64) *DatabaseSummary {
 	s.TotalFileSizeInBytes = &v
+	return s
+}
+
+func (s *DatabaseSummary) SetTotalMetaFileCount(v int64) *DatabaseSummary {
+	s.TotalMetaFileCount = &v
 	return s
 }
 

@@ -1240,7 +1240,7 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 
 // Summary:
 //
-// 创建数据湖Catalog
+// 删除数据湖Catalog
 //
 // @param headers - map
 //
@@ -1273,7 +1273,7 @@ func (client *Client) DropCatalogWithOptions(catalog *string, headers map[string
 
 // Summary:
 //
-// 创建数据湖Catalog
+// 删除数据湖Catalog
 //
 // @return DropCatalogResponse
 func (client *Client) DropCatalog(catalog *string) (_result *DropCatalogResponse, _err error) {

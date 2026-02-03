@@ -31,6 +31,8 @@ type iPartition interface {
 	GetStorageActionTimestamp() *int64
 	SetStorageClass(v string) *Partition
 	GetStorageClass() *string
+	SetTotalBuckets(v int32) *Partition
+	GetTotalBuckets() *int32
 	SetUpdatedAt(v int64) *Partition
 	GetUpdatedAt() *int64
 	SetUpdatedBy(v string) *Partition
@@ -49,6 +51,7 @@ type Partition struct {
 	StorageAction          *string                `json:"storageAction,omitempty" xml:"storageAction,omitempty"`
 	StorageActionTimestamp *int64                 `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
 	StorageClass           *string                `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
+	TotalBuckets           *int32                 `json:"totalBuckets,omitempty" xml:"totalBuckets,omitempty"`
 	UpdatedAt              *int64                 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
 	UpdatedBy              *string                `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
 }
@@ -103,6 +106,10 @@ func (s *Partition) GetStorageActionTimestamp() *int64 {
 
 func (s *Partition) GetStorageClass() *string {
 	return s.StorageClass
+}
+
+func (s *Partition) GetTotalBuckets() *int32 {
+	return s.TotalBuckets
 }
 
 func (s *Partition) GetUpdatedAt() *int64 {
@@ -165,6 +172,11 @@ func (s *Partition) SetStorageActionTimestamp(v int64) *Partition {
 
 func (s *Partition) SetStorageClass(v string) *Partition {
 	s.StorageClass = &v
+	return s
+}
+
+func (s *Partition) SetTotalBuckets(v int32) *Partition {
+	s.TotalBuckets = &v
 	return s
 }
 

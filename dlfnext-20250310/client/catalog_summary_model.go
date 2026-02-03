@@ -35,6 +35,8 @@ type iCatalogSummary interface {
 	GetTotalFileCount() *MoMValues
 	SetTotalFileSizeInBytes(v *MoMValues) *CatalogSummary
 	GetTotalFileSizeInBytes() *MoMValues
+	SetTotalMetaFileCount(v *MoMValues) *CatalogSummary
+	GetTotalMetaFileCount() *MoMValues
 	SetTotalMetaSizeInBytes(v *MoMValues) *CatalogSummary
 	GetTotalMetaSizeInBytes() *MoMValues
 }
@@ -54,6 +56,7 @@ type CatalogSummary struct {
 	ThroughputMonthly      *int64     `json:"throughputMonthly,omitempty" xml:"throughputMonthly,omitempty"`
 	TotalFileCount         *MoMValues `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
 	TotalFileSizeInBytes   *MoMValues `json:"totalFileSizeInBytes,omitempty" xml:"totalFileSizeInBytes,omitempty"`
+	TotalMetaFileCount     *MoMValues `json:"totalMetaFileCount,omitempty" xml:"totalMetaFileCount,omitempty"`
 	TotalMetaSizeInBytes   *MoMValues `json:"totalMetaSizeInBytes,omitempty" xml:"totalMetaSizeInBytes,omitempty"`
 }
 
@@ -115,6 +118,10 @@ func (s *CatalogSummary) GetTotalFileCount() *MoMValues {
 
 func (s *CatalogSummary) GetTotalFileSizeInBytes() *MoMValues {
 	return s.TotalFileSizeInBytes
+}
+
+func (s *CatalogSummary) GetTotalMetaFileCount() *MoMValues {
+	return s.TotalMetaFileCount
 }
 
 func (s *CatalogSummary) GetTotalMetaSizeInBytes() *MoMValues {
@@ -186,6 +193,11 @@ func (s *CatalogSummary) SetTotalFileSizeInBytes(v *MoMValues) *CatalogSummary {
 	return s
 }
 
+func (s *CatalogSummary) SetTotalMetaFileCount(v *MoMValues) *CatalogSummary {
+	s.TotalMetaFileCount = v
+	return s
+}
+
 func (s *CatalogSummary) SetTotalMetaSizeInBytes(v *MoMValues) *CatalogSummary {
 	s.TotalMetaSizeInBytes = v
 	return s
@@ -214,6 +226,11 @@ func (s *CatalogSummary) Validate() error {
 	}
 	if s.TotalFileSizeInBytes != nil {
 		if err := s.TotalFileSizeInBytes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalMetaFileCount != nil {
+		if err := s.TotalMetaFileCount.Validate(); err != nil {
 			return err
 		}
 	}

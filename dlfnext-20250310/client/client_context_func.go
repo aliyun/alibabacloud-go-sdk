@@ -870,7 +870,7 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, headers ma
 
 // Summary:
 //
-// 创建数据湖Catalog
+// 删除数据湖Catalog
 //
 // @param headers - map
 //

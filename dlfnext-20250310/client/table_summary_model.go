@@ -41,8 +41,14 @@ type iTableSummary interface {
 	GetTotalFileCount() *int64
 	SetTotalFileSizeInBytes(v int64) *TableSummary
 	GetTotalFileSizeInBytes() *int64
+	SetTotalMetaFileCount(v int64) *TableSummary
+	GetTotalMetaFileCount() *int64
 	SetTotalMetaSizeInBytes(v int64) *TableSummary
 	GetTotalMetaSizeInBytes() *int64
+	SetUnaccessedStdIaPartitionCount180d(v int64) *TableSummary
+	GetUnaccessedStdIaPartitionCount180d() *int64
+	SetUnaccessedStdPartitionCount30d(v int64) *TableSummary
+	GetUnaccessedStdPartitionCount30d() *int64
 	SetUpdatedAt(v int64) *TableSummary
 	GetUpdatedAt() *int64
 }
@@ -69,8 +75,13 @@ type TableSummary struct {
 	// 30-day access count
 	TotalFileCount       *int64 `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
 	TotalFileSizeInBytes *int64 `json:"totalFileSizeInBytes,omitempty" xml:"totalFileSizeInBytes,omitempty"`
+	TotalMetaFileCount   *int64 `json:"totalMetaFileCount,omitempty" xml:"totalMetaFileCount,omitempty"`
 	TotalMetaSizeInBytes *int64 `json:"totalMetaSizeInBytes,omitempty" xml:"totalMetaSizeInBytes,omitempty"`
-	UpdatedAt            *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// Creation timestamp in milliseconds
+	UnaccessedStdIaPartitionCount180d *int64 `json:"unaccessedStdIaPartitionCount180d,omitempty" xml:"unaccessedStdIaPartitionCount180d,omitempty"`
+	// Creation timestamp in milliseconds
+	UnaccessedStdPartitionCount30d *int64 `json:"unaccessedStdPartitionCount30d,omitempty" xml:"unaccessedStdPartitionCount30d,omitempty"`
+	UpdatedAt                      *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
 }
 
 func (s TableSummary) String() string {
@@ -145,8 +156,20 @@ func (s *TableSummary) GetTotalFileSizeInBytes() *int64 {
 	return s.TotalFileSizeInBytes
 }
 
+func (s *TableSummary) GetTotalMetaFileCount() *int64 {
+	return s.TotalMetaFileCount
+}
+
 func (s *TableSummary) GetTotalMetaSizeInBytes() *int64 {
 	return s.TotalMetaSizeInBytes
+}
+
+func (s *TableSummary) GetUnaccessedStdIaPartitionCount180d() *int64 {
+	return s.UnaccessedStdIaPartitionCount180d
+}
+
+func (s *TableSummary) GetUnaccessedStdPartitionCount30d() *int64 {
+	return s.UnaccessedStdPartitionCount30d
 }
 
 func (s *TableSummary) GetUpdatedAt() *int64 {
@@ -233,8 +256,23 @@ func (s *TableSummary) SetTotalFileSizeInBytes(v int64) *TableSummary {
 	return s
 }
 
+func (s *TableSummary) SetTotalMetaFileCount(v int64) *TableSummary {
+	s.TotalMetaFileCount = &v
+	return s
+}
+
 func (s *TableSummary) SetTotalMetaSizeInBytes(v int64) *TableSummary {
 	s.TotalMetaSizeInBytes = &v
+	return s
+}
+
+func (s *TableSummary) SetUnaccessedStdIaPartitionCount180d(v int64) *TableSummary {
+	s.UnaccessedStdIaPartitionCount180d = &v
+	return s
+}
+
+func (s *TableSummary) SetUnaccessedStdPartitionCount30d(v int64) *TableSummary {
+	s.UnaccessedStdPartitionCount30d = &v
 	return s
 }
 
