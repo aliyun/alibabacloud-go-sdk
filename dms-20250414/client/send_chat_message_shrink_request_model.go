@@ -19,6 +19,8 @@ type iSendChatMessageShrinkRequest interface {
 	GetMessage() *string
 	SetMessageType(v string) *SendChatMessageShrinkRequest
 	GetMessageType() *string
+	SetParentSessionId(v string) *SendChatMessageShrinkRequest
+	GetParentSessionId() *string
 	SetQuestion(v string) *SendChatMessageShrinkRequest
 	GetQuestion() *string
 	SetQuotedMessage(v string) *SendChatMessageShrinkRequest
@@ -52,8 +54,9 @@ type SendChatMessageShrinkRequest struct {
 	// example:
 	//
 	// primary
-	MessageType *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
-	Question    *string `json:"Question,omitempty" xml:"Question,omitempty"`
+	MessageType     *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	ParentSessionId *string `json:"ParentSessionId,omitempty" xml:"ParentSessionId,omitempty"`
+	Question        *string `json:"Question,omitempty" xml:"Question,omitempty"`
 	// example:
 	//
 	// {"version":"v0"}
@@ -101,6 +104,10 @@ func (s *SendChatMessageShrinkRequest) GetMessageType() *string {
 	return s.MessageType
 }
 
+func (s *SendChatMessageShrinkRequest) GetParentSessionId() *string {
+	return s.ParentSessionId
+}
+
 func (s *SendChatMessageShrinkRequest) GetQuestion() *string {
 	return s.Question
 }
@@ -143,6 +150,11 @@ func (s *SendChatMessageShrinkRequest) SetMessage(v string) *SendChatMessageShri
 
 func (s *SendChatMessageShrinkRequest) SetMessageType(v string) *SendChatMessageShrinkRequest {
 	s.MessageType = &v
+	return s
+}
+
+func (s *SendChatMessageShrinkRequest) SetParentSessionId(v string) *SendChatMessageShrinkRequest {
+	s.ParentSessionId = &v
 	return s
 }
 

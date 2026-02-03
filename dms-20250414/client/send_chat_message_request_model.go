@@ -19,6 +19,8 @@ type iSendChatMessageRequest interface {
 	GetMessage() *string
 	SetMessageType(v string) *SendChatMessageRequest
 	GetMessageType() *string
+	SetParentSessionId(v string) *SendChatMessageRequest
+	GetParentSessionId() *string
 	SetQuestion(v string) *SendChatMessageRequest
 	GetQuestion() *string
 	SetQuotedMessage(v string) *SendChatMessageRequest
@@ -52,8 +54,9 @@ type SendChatMessageRequest struct {
 	// example:
 	//
 	// primary
-	MessageType *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
-	Question    *string `json:"Question,omitempty" xml:"Question,omitempty"`
+	MessageType     *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	ParentSessionId *string `json:"ParentSessionId,omitempty" xml:"ParentSessionId,omitempty"`
+	Question        *string `json:"Question,omitempty" xml:"Question,omitempty"`
 	// example:
 	//
 	// {"version":"v0"}
@@ -101,6 +104,10 @@ func (s *SendChatMessageRequest) GetMessageType() *string {
 	return s.MessageType
 }
 
+func (s *SendChatMessageRequest) GetParentSessionId() *string {
+	return s.ParentSessionId
+}
+
 func (s *SendChatMessageRequest) GetQuestion() *string {
 	return s.Question
 }
@@ -143,6 +150,11 @@ func (s *SendChatMessageRequest) SetMessage(v string) *SendChatMessageRequest {
 
 func (s *SendChatMessageRequest) SetMessageType(v string) *SendChatMessageRequest {
 	s.MessageType = &v
+	return s
+}
+
+func (s *SendChatMessageRequest) SetParentSessionId(v string) *SendChatMessageRequest {
+	s.ParentSessionId = &v
 	return s
 }
 

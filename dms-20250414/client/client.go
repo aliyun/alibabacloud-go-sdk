@@ -4162,6 +4162,10 @@ func (client *Client) SendChatMessageWithOptions(tmpReq *SendChatMessageRequest,
 		query["MessageType"] = request.MessageType
 	}
 
+	if !dara.IsNil(request.ParentSessionId) {
+		query["ParentSessionId"] = request.ParentSessionId
+	}
+
 	if !dara.IsNil(request.Question) {
 		query["Question"] = request.Question
 	}
