@@ -136,6 +136,10 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 		body["CredentialConfig"] = request.CredentialConfig
 	}
 
+	if !dara.IsNil(request.CustomEnvs) {
+		body["CustomEnvs"] = request.CustomEnvs
+	}
+
 	if !dara.IsNil(request.DataSources) {
 		body["DataSources"] = request.DataSources
 	}

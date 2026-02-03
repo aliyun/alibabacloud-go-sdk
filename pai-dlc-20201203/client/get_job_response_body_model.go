@@ -17,6 +17,8 @@ type iGetJobResponseBody interface {
 	GetCodeSource() *GetJobResponseBodyCodeSource
 	SetCredentialConfig(v *CredentialConfig) *GetJobResponseBody
 	GetCredentialConfig() *CredentialConfig
+	SetCustomEnvs(v []*GetJobResponseBodyCustomEnvs) *GetJobResponseBody
+	GetCustomEnvs() []*GetJobResponseBodyCustomEnvs
 	SetDataSources(v []*GetJobResponseBodyDataSources) *GetJobResponseBody
 	GetDataSources() []*GetJobResponseBodyDataSources
 	SetDisplayName(v string) *GetJobResponseBody
@@ -117,7 +119,8 @@ type GetJobResponseBody struct {
 	// The code source.
 	CodeSource *GetJobResponseBodyCodeSource `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
 	// The access credential configurations.
-	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	CredentialConfig *CredentialConfig               `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	CustomEnvs       []*GetJobResponseBodyCustomEnvs `json:"CustomEnvs,omitempty" xml:"CustomEnvs,omitempty" type:"Repeated"`
 	// The data sources.
 	DataSources []*GetJobResponseBodyDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
 	// The job name.
@@ -358,6 +361,10 @@ func (s *GetJobResponseBody) GetCredentialConfig() *CredentialConfig {
 	return s.CredentialConfig
 }
 
+func (s *GetJobResponseBody) GetCustomEnvs() []*GetJobResponseBodyCustomEnvs {
+	return s.CustomEnvs
+}
+
 func (s *GetJobResponseBody) GetDataSources() []*GetJobResponseBodyDataSources {
 	return s.DataSources
 }
@@ -531,6 +538,11 @@ func (s *GetJobResponseBody) SetCodeSource(v *GetJobResponseBodyCodeSource) *Get
 
 func (s *GetJobResponseBody) SetCredentialConfig(v *CredentialConfig) *GetJobResponseBody {
 	s.CredentialConfig = v
+	return s
+}
+
+func (s *GetJobResponseBody) SetCustomEnvs(v []*GetJobResponseBodyCustomEnvs) *GetJobResponseBody {
+	s.CustomEnvs = v
 	return s
 }
 
@@ -740,6 +752,15 @@ func (s *GetJobResponseBody) Validate() error {
 			return err
 		}
 	}
+	if s.CustomEnvs != nil {
+		for _, item := range s.CustomEnvs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.DataSources != nil {
 		for _, item := range s.DataSources {
 			if item != nil {
@@ -884,6 +905,51 @@ func (s *GetJobResponseBodyCodeSource) SetMountPath(v string) *GetJobResponseBod
 }
 
 func (s *GetJobResponseBodyCodeSource) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetJobResponseBodyCustomEnvs struct {
+	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value   *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Visible *string `json:"Visible,omitempty" xml:"Visible,omitempty"`
+}
+
+func (s GetJobResponseBodyCustomEnvs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetJobResponseBodyCustomEnvs) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobResponseBodyCustomEnvs) GetKey() *string {
+	return s.Key
+}
+
+func (s *GetJobResponseBodyCustomEnvs) GetValue() *string {
+	return s.Value
+}
+
+func (s *GetJobResponseBodyCustomEnvs) GetVisible() *string {
+	return s.Visible
+}
+
+func (s *GetJobResponseBodyCustomEnvs) SetKey(v string) *GetJobResponseBodyCustomEnvs {
+	s.Key = &v
+	return s
+}
+
+func (s *GetJobResponseBodyCustomEnvs) SetValue(v string) *GetJobResponseBodyCustomEnvs {
+	s.Value = &v
+	return s
+}
+
+func (s *GetJobResponseBodyCustomEnvs) SetVisible(v string) *GetJobResponseBodyCustomEnvs {
+	s.Visible = &v
+	return s
+}
+
+func (s *GetJobResponseBodyCustomEnvs) Validate() error {
 	return dara.Validate(s)
 }
 

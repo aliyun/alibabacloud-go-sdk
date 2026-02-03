@@ -42,6 +42,10 @@ func (client *Client) CreateJobWithContext(ctx context.Context, request *CreateJ
 		body["CredentialConfig"] = request.CredentialConfig
 	}
 
+	if !dara.IsNil(request.CustomEnvs) {
+		body["CustomEnvs"] = request.CustomEnvs
+	}
+
 	if !dara.IsNil(request.DataSources) {
 		body["DataSources"] = request.DataSources
 	}

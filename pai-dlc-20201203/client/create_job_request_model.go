@@ -15,6 +15,8 @@ type iCreateJobRequest interface {
 	GetCodeSource() *CreateJobRequestCodeSource
 	SetCredentialConfig(v *CredentialConfig) *CreateJobRequest
 	GetCredentialConfig() *CredentialConfig
+	SetCustomEnvs(v []*CreateJobRequestCustomEnvs) *CreateJobRequest
+	GetCustomEnvs() []*CreateJobRequestCustomEnvs
 	SetDataSources(v []*CreateJobRequestDataSources) *CreateJobRequest
 	GetDataSources() []*CreateJobRequestDataSources
 	SetDebuggerConfigContent(v string) *CreateJobRequest
@@ -67,7 +69,8 @@ type CreateJobRequest struct {
 	// The code source of the job. Before the node of the job runs, DLC automatically downloads the configured code from the code source and mounts the code to the local path of the container.
 	CodeSource *CreateJobRequestCodeSource `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
 	// The access credential configuration.
-	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	CredentialConfig *CredentialConfig             `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	CustomEnvs       []*CreateJobRequestCustomEnvs `json:"CustomEnvs,omitempty" xml:"CustomEnvs,omitempty" type:"Repeated"`
 	// The data sources for job running.
 	DataSources []*CreateJobRequestDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
 	// This parameter is not supported.
@@ -230,6 +233,10 @@ func (s *CreateJobRequest) GetCredentialConfig() *CredentialConfig {
 	return s.CredentialConfig
 }
 
+func (s *CreateJobRequest) GetCustomEnvs() []*CreateJobRequestCustomEnvs {
+	return s.CustomEnvs
+}
+
 func (s *CreateJobRequest) GetDataSources() []*CreateJobRequestDataSources {
 	return s.DataSources
 }
@@ -314,6 +321,11 @@ func (s *CreateJobRequest) SetCodeSource(v *CreateJobRequestCodeSource) *CreateJ
 
 func (s *CreateJobRequest) SetCredentialConfig(v *CredentialConfig) *CreateJobRequest {
 	s.CredentialConfig = v
+	return s
+}
+
+func (s *CreateJobRequest) SetCustomEnvs(v []*CreateJobRequestCustomEnvs) *CreateJobRequest {
+	s.CustomEnvs = v
 	return s
 }
 
@@ -416,6 +428,15 @@ func (s *CreateJobRequest) Validate() error {
 	if s.CredentialConfig != nil {
 		if err := s.CredentialConfig.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.CustomEnvs != nil {
+		for _, item := range s.CustomEnvs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	if s.DataSources != nil {
@@ -526,6 +547,51 @@ func (s *CreateJobRequestCodeSource) SetMountPath(v string) *CreateJobRequestCod
 }
 
 func (s *CreateJobRequestCodeSource) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateJobRequestCustomEnvs struct {
+	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value   *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Visible *string `json:"Visible,omitempty" xml:"Visible,omitempty"`
+}
+
+func (s CreateJobRequestCustomEnvs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateJobRequestCustomEnvs) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobRequestCustomEnvs) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateJobRequestCustomEnvs) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateJobRequestCustomEnvs) GetVisible() *string {
+	return s.Visible
+}
+
+func (s *CreateJobRequestCustomEnvs) SetKey(v string) *CreateJobRequestCustomEnvs {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateJobRequestCustomEnvs) SetValue(v string) *CreateJobRequestCustomEnvs {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateJobRequestCustomEnvs) SetVisible(v string) *CreateJobRequestCustomEnvs {
+	s.Visible = &v
+	return s
+}
+
+func (s *CreateJobRequestCustomEnvs) Validate() error {
 	return dara.Validate(s)
 }
 

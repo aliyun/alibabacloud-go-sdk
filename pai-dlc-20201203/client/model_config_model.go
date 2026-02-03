@@ -11,10 +11,13 @@ type iModelConfig interface {
 	GoString() string
 	SetModelName(v string) *ModelConfig
 	GetModelName() *string
+	SetModelTemplate(v *ModelTemplate) *ModelConfig
+	GetModelTemplate() *ModelTemplate
 }
 
 type ModelConfig struct {
-	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	ModelName     *string        `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	ModelTemplate *ModelTemplate `json:"ModelTemplate,omitempty" xml:"ModelTemplate,omitempty"`
 }
 
 func (s ModelConfig) String() string {
@@ -29,11 +32,25 @@ func (s *ModelConfig) GetModelName() *string {
 	return s.ModelName
 }
 
+func (s *ModelConfig) GetModelTemplate() *ModelTemplate {
+	return s.ModelTemplate
+}
+
 func (s *ModelConfig) SetModelName(v string) *ModelConfig {
 	s.ModelName = &v
 	return s
 }
 
+func (s *ModelConfig) SetModelTemplate(v *ModelTemplate) *ModelConfig {
+	s.ModelTemplate = v
+	return s
+}
+
 func (s *ModelConfig) Validate() error {
-	return dara.Validate(s)
+	if s.ModelTemplate != nil {
+		if err := s.ModelTemplate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
