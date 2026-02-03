@@ -231,6 +231,7 @@ type DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord struct {
 	//
 	// 2
 	LastRowsAffectedCount *int64 `json:"LastRowsAffectedCount,omitempty" xml:"LastRowsAffectedCount,omitempty"`
+	LockTimeMS            *int64 `json:"LockTimeMS,omitempty" xml:"LockTimeMS,omitempty"`
 	// The lock duration of the query. Unit: seconds.
 	//
 	// example:
@@ -351,6 +352,10 @@ func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) GetLastRowsAffect
 	return s.LastRowsAffectedCount
 }
 
+func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) GetLockTimeMS() *int64 {
+	return s.LockTimeMS
+}
+
 func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) GetLockTimes() *int64 {
 	return s.LockTimes
 }
@@ -431,6 +436,11 @@ func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetHostAddress(v 
 
 func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetLastRowsAffectedCount(v int64) *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord {
 	s.LastRowsAffectedCount = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetLockTimeMS(v int64) *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord {
+	s.LockTimeMS = &v
 	return s
 }
 
