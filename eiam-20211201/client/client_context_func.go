@@ -6715,6 +6715,62 @@ func (client *Client) EnableUserWithContext(ctx context.Context, request *Enable
 
 // Summary:
 //
+// 解析IdP Metadata信息。
+//
+// @param request - ExecIdentityProviderMetadataUrlResolutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecIdentityProviderMetadataUrlResolutionResponse
+func (client *Client) ExecIdentityProviderMetadataUrlResolutionWithContext(ctx context.Context, request *ExecIdentityProviderMetadataUrlResolutionRequest, runtime *dara.RuntimeOptions) (_result *ExecIdentityProviderMetadataUrlResolutionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IdentityProviderId) {
+		query["IdentityProviderId"] = request.IdentityProviderId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NetworkAccessEndpointId) {
+		query["NetworkAccessEndpointId"] = request.NetworkAccessEndpointId
+	}
+
+	if !dara.IsNil(request.OidcIssuer) {
+		query["OidcIssuer"] = request.OidcIssuer
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExecIdentityProviderMetadataUrlResolution"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExecIdentityProviderMetadataUrlResolutionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 生成文件导入结果下载地址
 //
 // @param request - GenerateDownloadUrlForSynchronizationJobRequest
@@ -6801,6 +6857,62 @@ func (client *Client) GenerateFileImportTemplateWithContext(ctx context.Context,
 		BodyType:    dara.String("json"),
 	}
 	_result = &GenerateFileImportTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成 Oauth Token
+//
+// @param request - GenerateOauthTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateOauthTokenResponse
+func (client *Client) GenerateOauthTokenWithContext(ctx context.Context, request *GenerateOauthTokenRequest, runtime *dara.RuntimeOptions) (_result *GenerateOauthTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.Audience) {
+		query["Audience"] = request.Audience
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ScopeValues) {
+		query["ScopeValues"] = request.ScopeValues
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GenerateOauthToken"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GenerateOauthTokenResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -9059,6 +9171,50 @@ func (client *Client) GetRootOrganizationalUnitWithContext(ctx context.Context, 
 
 // Summary:
 //
+// 获取服务Quota
+//
+// @param request - GetServiceQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceQuotaResponse
+func (client *Client) GetServiceQuotaWithContext(ctx context.Context, request *GetServiceQuotaRequest, runtime *dara.RuntimeOptions) (_result *GetServiceQuotaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.QuotaType) {
+		query["QuotaType"] = request.QuotaType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetServiceQuota"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetServiceQuotaResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtains the information about a single synchronization job.
 //
 // @param request - GetSynchronizationJobRequest
@@ -9145,6 +9301,62 @@ func (client *Client) GetUserWithContext(ctx context.Context, request *GetUserRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetUserResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看调用事件列表
+//
+// @param request - ListActionTrackEventTypesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListActionTrackEventTypesResponse
+func (client *Client) ListActionTrackEventTypesWithContext(ctx context.Context, request *ListActionTrackEventTypesRequest, runtime *dara.RuntimeOptions) (_result *ListActionTrackEventTypesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PreviousToken) {
+		query["PreviousToken"] = request.PreviousToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListActionTrackEventTypes"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListActionTrackEventTypesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -11017,6 +11229,54 @@ func (client *Client) ListEiamInstancesWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEiamInstancesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看事件列表
+//
+// @param request - ListEventTypesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEventTypesResponse
+func (client *Client) ListEventTypesWithContext(ctx context.Context, request *ListEventTypesRequest, runtime *dara.RuntimeOptions) (_result *ListEventTypesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListEventTypes"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListEventTypesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -13107,6 +13367,50 @@ func (client *Client) RemoveUsersFromGroupWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// 免费版续期
+//
+// @param request - RenewFreeLicenseEndTimeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenewFreeLicenseEndTimeResponse
+func (client *Client) RenewFreeLicenseEndTimeWithContext(ctx context.Context, request *RenewFreeLicenseEndTimeRequest, runtime *dara.RuntimeOptions) (_result *RenewFreeLicenseEndTimeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RenewFreeLicenseEndTime"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RenewFreeLicenseEndTimeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Revokes the permissions to access an application from multiple account groups at a time in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - RevokeApplicationFromGroupsRequest
@@ -14075,6 +14379,70 @@ func (client *Client) SetForgetPasswordConfigurationWithContext(ctx context.Cont
 
 // Summary:
 //
+// 修改认证信息
+//
+// @param request - SetIdentityProviderAuthnConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetIdentityProviderAuthnConfigurationResponse
+func (client *Client) SetIdentityProviderAuthnConfigurationWithContext(ctx context.Context, request *SetIdentityProviderAuthnConfigurationRequest, runtime *dara.RuntimeOptions) (_result *SetIdentityProviderAuthnConfigurationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoCreateUserConfig) {
+		query["AutoCreateUserConfig"] = request.AutoCreateUserConfig
+	}
+
+	if !dara.IsNil(request.AutoUpdateUserConfig) {
+		query["AutoUpdateUserConfig"] = request.AutoUpdateUserConfig
+	}
+
+	if !dara.IsNil(request.BindingConfig) {
+		query["BindingConfig"] = request.BindingConfig
+	}
+
+	if !dara.IsNil(request.IdentityProviderId) {
+		query["IdentityProviderId"] = request.IdentityProviderId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.LdapAuthnConfig) {
+		query["LdapAuthnConfig"] = request.LdapAuthnConfig
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetIdentityProviderAuthnConfiguration"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetIdentityProviderAuthnConfigurationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Update IdP synchronization configuration.
 //
 // @param request - SetIdentityProviderUdPullConfigurationRequest
@@ -14141,6 +14509,174 @@ func (client *Client) SetIdentityProviderUdPullConfigurationWithContext(ctx cont
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetIdentityProviderUdPullConfigurationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改IdP同步出配置
+//
+// @param request - SetIdentityProviderUdPushConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetIdentityProviderUdPushConfigurationResponse
+func (client *Client) SetIdentityProviderUdPushConfigurationWithContext(ctx context.Context, request *SetIdentityProviderUdPushConfigurationRequest, runtime *dara.RuntimeOptions) (_result *SetIdentityProviderUdPushConfigurationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IdentityProviderId) {
+		query["IdentityProviderId"] = request.IdentityProviderId
+	}
+
+	if !dara.IsNil(request.IncrementalCallbackStatus) {
+		query["IncrementalCallbackStatus"] = request.IncrementalCallbackStatus
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.LdapUdPushConfig) {
+		query["LdapUdPushConfig"] = request.LdapUdPushConfig
+	}
+
+	if !dara.IsNil(request.PeriodicSyncConfig) {
+		query["PeriodicSyncConfig"] = request.PeriodicSyncConfig
+	}
+
+	if !dara.IsNil(request.PeriodicSyncStatus) {
+		query["PeriodicSyncStatus"] = request.PeriodicSyncStatus
+	}
+
+	if !dara.IsNil(request.UdSyncScopeConfigs) {
+		query["UdSyncScopeConfigs"] = request.UdSyncScopeConfigs
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetIdentityProviderUdPushConfiguration"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetIdentityProviderUdPushConfigurationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置实例控制项
+//
+// @param request - SetInstanceControlConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetInstanceControlConfigurationResponse
+func (client *Client) SetInstanceControlConfigurationWithContext(ctx context.Context, request *SetInstanceControlConfigurationRequest, runtime *dara.RuntimeOptions) (_result *SetInstanceControlConfigurationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ControlElements) {
+		query["ControlElements"] = request.ControlElements
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetInstanceControlConfiguration"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetInstanceControlConfigurationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置实例语言、时区信息
+//
+// @param request - SetInstanceGlobalizationConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetInstanceGlobalizationConfigResponse
+func (client *Client) SetInstanceGlobalizationConfigWithContext(ctx context.Context, request *SetInstanceGlobalizationConfigRequest, runtime *dara.RuntimeOptions) (_result *SetInstanceGlobalizationConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.TimeZone) {
+		query["TimeZone"] = request.TimeZone
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetInstanceGlobalizationConfig"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetInstanceGlobalizationConfigResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -14541,6 +15077,114 @@ func (client *Client) SetUserPrimaryOrganizationalUnitWithContext(ctx context.Co
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetUserPrimaryOrganizationalUnitResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置WebAuthn配置
+//
+// @param request - SetWebAuthnConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetWebAuthnConfigurationResponse
+func (client *Client) SetWebAuthnConfigurationWithContext(ctx context.Context, request *SetWebAuthnConfigurationRequest, runtime *dara.RuntimeOptions) (_result *SetWebAuthnConfigurationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Aaguids) {
+		query["Aaguids"] = request.Aaguids
+	}
+
+	if !dara.IsNil(request.EnableAaguidVerification) {
+		query["EnableAaguidVerification"] = request.EnableAaguidVerification
+	}
+
+	if !dara.IsNil(request.EnableMetadataServiceVerification) {
+		query["EnableMetadataServiceVerification"] = request.EnableMetadataServiceVerification
+	}
+
+	if !dara.IsNil(request.EnableUserSelfRegistration) {
+		query["EnableUserSelfRegistration"] = request.EnableUserSelfRegistration
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetWebAuthnConfiguration"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetWebAuthnConfigurationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 解绑指定用户TOTP
+//
+// @param request - UnbindTotpAuthenticatorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindTotpAuthenticatorResponse
+func (client *Client) UnbindTotpAuthenticatorWithContext(ctx context.Context, request *UnbindTotpAuthenticatorRequest, runtime *dara.RuntimeOptions) (_result *UnbindTotpAuthenticatorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UnbindTotpAuthenticator"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UnbindTotpAuthenticatorResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
