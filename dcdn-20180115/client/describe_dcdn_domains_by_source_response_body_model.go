@@ -55,7 +55,16 @@ func (s *DescribeDcdnDomainsBySourceResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeDcdnDomainsBySourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainInfo != nil {
+		for _, item := range s.DomainInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainsBySourceResponseBodyDomainInfo struct {
@@ -96,7 +105,16 @@ func (s *DescribeDcdnDomainsBySourceResponseBodyDomainInfo) SetSource(v string) 
 }
 
 func (s *DescribeDcdnDomainsBySourceResponseBodyDomainInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DomainList != nil {
+		for _, item := range s.DomainList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainsBySourceResponseBodyDomainInfoDomainList struct {

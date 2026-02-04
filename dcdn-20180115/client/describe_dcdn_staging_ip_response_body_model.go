@@ -52,7 +52,12 @@ func (s *DescribeDcdnStagingIpResponseBody) SetRequestId(v string) *DescribeDcdn
 }
 
 func (s *DescribeDcdnStagingIpResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IPV4s != nil {
+		if err := s.IPV4s.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnStagingIpResponseBodyIPV4s struct {

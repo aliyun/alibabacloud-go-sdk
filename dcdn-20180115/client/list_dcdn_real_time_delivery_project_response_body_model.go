@@ -70,7 +70,12 @@ func (s *ListDcdnRealTimeDeliveryProjectResponseBody) SetTotalCount(v int32) *Li
 }
 
 func (s *ListDcdnRealTimeDeliveryProjectResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDcdnRealTimeDeliveryProjectResponseBodyContent struct {
@@ -95,7 +100,16 @@ func (s *ListDcdnRealTimeDeliveryProjectResponseBodyContent) SetProjects(v []*Li
 }
 
 func (s *ListDcdnRealTimeDeliveryProjectResponseBodyContent) Validate() error {
-	return dara.Validate(s)
+	if s.Projects != nil {
+		for _, item := range s.Projects {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDcdnRealTimeDeliveryProjectResponseBodyContentProjects struct {

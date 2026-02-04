@@ -104,7 +104,12 @@ func (s *DescribeRDDomainsResponseBody) SetTotalCount(v int64) *DescribeRDDomain
 }
 
 func (s *DescribeRDDomainsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Domains != nil {
+		if err := s.Domains.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRDDomainsResponseBodyDomains struct {
@@ -129,7 +134,16 @@ func (s *DescribeRDDomainsResponseBodyDomains) SetPageData(v []*DescribeRDDomain
 }
 
 func (s *DescribeRDDomainsResponseBodyDomains) Validate() error {
-	return dara.Validate(s)
+	if s.PageData != nil {
+		for _, item := range s.PageData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRDDomainsResponseBodyDomainsPageData struct {
@@ -326,7 +340,12 @@ func (s *DescribeRDDomainsResponseBodyDomainsPageData) SetSslProtocol(v string) 
 }
 
 func (s *DescribeRDDomainsResponseBodyDomainsPageData) Validate() error {
-	return dara.Validate(s)
+	if s.Sources != nil {
+		if err := s.Sources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRDDomainsResponseBodyDomainsPageDataSources struct {
@@ -351,7 +370,16 @@ func (s *DescribeRDDomainsResponseBodyDomainsPageDataSources) SetSource(v []*Des
 }
 
 func (s *DescribeRDDomainsResponseBodyDomainsPageDataSources) Validate() error {
-	return dara.Validate(s)
+	if s.Source != nil {
+		for _, item := range s.Source {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRDDomainsResponseBodyDomainsPageDataSourcesSource struct {

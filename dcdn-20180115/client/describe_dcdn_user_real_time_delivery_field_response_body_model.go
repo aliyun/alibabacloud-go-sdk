@@ -53,7 +53,12 @@ func (s *DescribeDcdnUserRealTimeDeliveryFieldResponseBody) SetRequestId(v strin
 }
 
 func (s *DescribeDcdnUserRealTimeDeliveryFieldResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnUserRealTimeDeliveryFieldResponseBodyContent struct {
@@ -78,7 +83,16 @@ func (s *DescribeDcdnUserRealTimeDeliveryFieldResponseBodyContent) SetFields(v [
 }
 
 func (s *DescribeDcdnUserRealTimeDeliveryFieldResponseBodyContent) Validate() error {
-	return dara.Validate(s)
+	if s.Fields != nil {
+		for _, item := range s.Fields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnUserRealTimeDeliveryFieldResponseBodyContentFields struct {

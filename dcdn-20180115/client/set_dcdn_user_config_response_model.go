@@ -59,5 +59,10 @@ func (s *SetDcdnUserConfigResponse) SetBody(v *SetDcdnUserConfigResponseBody) *S
 }
 
 func (s *SetDcdnUserConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *DescribeDcdnWafPolicyResponseBody) SetRequestId(v string) *DescribeDcdn
 }
 
 func (s *DescribeDcdnWafPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Policy != nil {
+		if err := s.Policy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnWafPolicyResponseBodyPolicy struct {

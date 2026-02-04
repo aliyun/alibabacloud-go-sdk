@@ -59,5 +59,10 @@ func (s *DescribeDcdnOriginSiteHealthStatusResponse) SetBody(v *DescribeDcdnOrig
 }
 
 func (s *DescribeDcdnOriginSiteHealthStatusResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

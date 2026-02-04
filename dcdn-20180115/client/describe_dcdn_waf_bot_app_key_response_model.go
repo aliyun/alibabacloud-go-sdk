@@ -59,5 +59,10 @@ func (s *DescribeDcdnWafBotAppKeyResponse) SetBody(v *DescribeDcdnWafBotAppKeyRe
 }
 
 func (s *DescribeDcdnWafBotAppKeyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

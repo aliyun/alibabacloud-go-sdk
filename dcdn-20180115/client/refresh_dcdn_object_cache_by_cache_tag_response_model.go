@@ -59,5 +59,10 @@ func (s *RefreshDcdnObjectCacheByCacheTagResponse) SetBody(v *RefreshDcdnObjectC
 }
 
 func (s *RefreshDcdnObjectCacheByCacheTagResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

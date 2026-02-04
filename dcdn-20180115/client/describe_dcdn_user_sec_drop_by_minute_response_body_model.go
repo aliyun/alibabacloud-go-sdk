@@ -138,7 +138,16 @@ func (s *DescribeDcdnUserSecDropByMinuteResponseBody) SetTotalCount(v int32) *De
 }
 
 func (s *DescribeDcdnUserSecDropByMinuteResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Rows != nil {
+		for _, item := range s.Rows {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnUserSecDropByMinuteResponseBodyRows struct {

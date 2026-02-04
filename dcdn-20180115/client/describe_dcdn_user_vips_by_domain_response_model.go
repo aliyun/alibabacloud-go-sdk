@@ -59,5 +59,10 @@ func (s *DescribeDcdnUserVipsByDomainResponse) SetBody(v *DescribeDcdnUserVipsBy
 }
 
 func (s *DescribeDcdnUserVipsByDomainResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -139,7 +139,32 @@ func (s *DescribeDcdnDomainTopUrlVisitResponseBody) SetUrl500List(v *DescribeDcd
 }
 
 func (s *DescribeDcdnDomainTopUrlVisitResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AllUrlList != nil {
+		if err := s.AllUrlList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Url200List != nil {
+		if err := s.Url200List.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Url300List != nil {
+		if err := s.Url300List.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Url400List != nil {
+		if err := s.Url400List.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Url500List != nil {
+		if err := s.Url500List.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainTopUrlVisitResponseBodyAllUrlList struct {
@@ -164,7 +189,16 @@ func (s *DescribeDcdnDomainTopUrlVisitResponseBodyAllUrlList) SetUrlList(v []*De
 }
 
 func (s *DescribeDcdnDomainTopUrlVisitResponseBodyAllUrlList) Validate() error {
-	return dara.Validate(s)
+	if s.UrlList != nil {
+		for _, item := range s.UrlList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainTopUrlVisitResponseBodyAllUrlListUrlList struct {
@@ -279,7 +313,16 @@ func (s *DescribeDcdnDomainTopUrlVisitResponseBodyUrl200List) SetUrlList(v []*De
 }
 
 func (s *DescribeDcdnDomainTopUrlVisitResponseBodyUrl200List) Validate() error {
-	return dara.Validate(s)
+	if s.UrlList != nil {
+		for _, item := range s.UrlList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainTopUrlVisitResponseBodyUrl200ListUrlList struct {
@@ -394,7 +437,16 @@ func (s *DescribeDcdnDomainTopUrlVisitResponseBodyUrl300List) SetUrlList(v []*De
 }
 
 func (s *DescribeDcdnDomainTopUrlVisitResponseBodyUrl300List) Validate() error {
-	return dara.Validate(s)
+	if s.UrlList != nil {
+		for _, item := range s.UrlList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainTopUrlVisitResponseBodyUrl300ListUrlList struct {
@@ -509,7 +561,16 @@ func (s *DescribeDcdnDomainTopUrlVisitResponseBodyUrl400List) SetUrlList(v []*De
 }
 
 func (s *DescribeDcdnDomainTopUrlVisitResponseBodyUrl400List) Validate() error {
-	return dara.Validate(s)
+	if s.UrlList != nil {
+		for _, item := range s.UrlList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainTopUrlVisitResponseBodyUrl400ListUrlList struct {
@@ -624,7 +685,16 @@ func (s *DescribeDcdnDomainTopUrlVisitResponseBodyUrl500List) SetUrlList(v []*De
 }
 
 func (s *DescribeDcdnDomainTopUrlVisitResponseBodyUrl500List) Validate() error {
-	return dara.Validate(s)
+	if s.UrlList != nil {
+		for _, item := range s.UrlList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainTopUrlVisitResponseBodyUrl500ListUrlList struct {

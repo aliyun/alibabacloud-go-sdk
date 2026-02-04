@@ -53,7 +53,16 @@ func (s *DescribeDcdnWafLogsResponseBody) SetRequestId(v string) *DescribeDcdnWa
 }
 
 func (s *DescribeDcdnWafLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainLogDetails != nil {
+		for _, item := range s.DomainLogDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnWafLogsResponseBodyDomainLogDetails struct {
@@ -120,7 +129,21 @@ func (s *DescribeDcdnWafLogsResponseBodyDomainLogDetails) SetPageInfos(v *Descri
 }
 
 func (s *DescribeDcdnWafLogsResponseBodyDomainLogDetails) Validate() error {
-	return dara.Validate(s)
+	if s.LogInfos != nil {
+		for _, item := range s.LogInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfos != nil {
+		if err := s.PageInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnWafLogsResponseBodyDomainLogDetailsLogInfos struct {

@@ -92,7 +92,25 @@ func (s *DescribeKvRealTimeQpsDataResponseBody) SetStartTime(v string) *Describe
 }
 
 func (s *DescribeKvRealTimeQpsDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AggregateData != nil {
+		for _, item := range s.AggregateData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.KvQpsData != nil {
+		for _, item := range s.KvQpsData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeKvRealTimeQpsDataResponseBodyAggregateData struct {

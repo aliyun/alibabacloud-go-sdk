@@ -70,7 +70,16 @@ func (s *DescribeDcdnWafDomainResponseBody) SetTotalCount(v int32) *DescribeDcdn
 }
 
 func (s *DescribeDcdnWafDomainResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OutPutDomains != nil {
+		for _, item := range s.OutPutDomains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnWafDomainResponseBodyOutPutDomains struct {

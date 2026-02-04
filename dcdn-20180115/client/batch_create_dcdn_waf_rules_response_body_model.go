@@ -53,7 +53,12 @@ func (s *BatchCreateDcdnWafRulesResponseBody) SetRuleIds(v *BatchCreateDcdnWafRu
 }
 
 func (s *BatchCreateDcdnWafRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RuleIds != nil {
+		if err := s.RuleIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BatchCreateDcdnWafRulesResponseBodyRuleIds struct {

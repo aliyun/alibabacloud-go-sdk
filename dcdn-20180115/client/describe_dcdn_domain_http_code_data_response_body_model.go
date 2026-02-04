@@ -121,7 +121,12 @@ func (s *DescribeDcdnDomainHttpCodeDataResponseBody) SetStartTime(v string) *Des
 }
 
 func (s *DescribeDcdnDomainHttpCodeDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataPerInterval != nil {
+		if err := s.DataPerInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainHttpCodeDataResponseBodyDataPerInterval struct {
@@ -146,7 +151,16 @@ func (s *DescribeDcdnDomainHttpCodeDataResponseBodyDataPerInterval) SetDataModul
 }
 
 func (s *DescribeDcdnDomainHttpCodeDataResponseBodyDataPerInterval) Validate() error {
-	return dara.Validate(s)
+	if s.DataModule != nil {
+		for _, item := range s.DataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainHttpCodeDataResponseBodyDataPerIntervalDataModule struct {
@@ -187,7 +201,12 @@ func (s *DescribeDcdnDomainHttpCodeDataResponseBodyDataPerIntervalDataModule) Se
 }
 
 func (s *DescribeDcdnDomainHttpCodeDataResponseBodyDataPerIntervalDataModule) Validate() error {
-	return dara.Validate(s)
+	if s.HttpCodeDataPerInterval != nil {
+		if err := s.HttpCodeDataPerInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainHttpCodeDataResponseBodyDataPerIntervalDataModuleHttpCodeDataPerInterval struct {
@@ -212,7 +231,16 @@ func (s *DescribeDcdnDomainHttpCodeDataResponseBodyDataPerIntervalDataModuleHttp
 }
 
 func (s *DescribeDcdnDomainHttpCodeDataResponseBodyDataPerIntervalDataModuleHttpCodeDataPerInterval) Validate() error {
-	return dara.Validate(s)
+	if s.HttpCodeDataModule != nil {
+		for _, item := range s.HttpCodeDataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainHttpCodeDataResponseBodyDataPerIntervalDataModuleHttpCodeDataPerIntervalHttpCodeDataModule struct {

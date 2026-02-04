@@ -59,5 +59,10 @@ func (s *DeleteDcdnRealTimeLogProjectResponse) SetBody(v *DeleteDcdnRealTimeLogP
 }
 
 func (s *DeleteDcdnRealTimeLogProjectResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

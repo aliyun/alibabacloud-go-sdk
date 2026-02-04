@@ -104,7 +104,12 @@ func (s *DescribeDcdnUserDomainsResponseBody) SetTotalCount(v int64) *DescribeDc
 }
 
 func (s *DescribeDcdnUserDomainsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Domains != nil {
+		if err := s.Domains.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnUserDomainsResponseBodyDomains struct {
@@ -129,7 +134,16 @@ func (s *DescribeDcdnUserDomainsResponseBodyDomains) SetPageData(v []*DescribeDc
 }
 
 func (s *DescribeDcdnUserDomainsResponseBodyDomains) Validate() error {
-	return dara.Validate(s)
+	if s.PageData != nil {
+		for _, item := range s.PageData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnUserDomainsResponseBodyDomainsPageData struct {
@@ -365,7 +379,12 @@ func (s *DescribeDcdnUserDomainsResponseBodyDomainsPageData) SetSources(v *Descr
 }
 
 func (s *DescribeDcdnUserDomainsResponseBodyDomainsPageData) Validate() error {
-	return dara.Validate(s)
+	if s.Sources != nil {
+		if err := s.Sources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnUserDomainsResponseBodyDomainsPageDataSources struct {
@@ -390,7 +409,16 @@ func (s *DescribeDcdnUserDomainsResponseBodyDomainsPageDataSources) SetSource(v 
 }
 
 func (s *DescribeDcdnUserDomainsResponseBodyDomainsPageDataSources) Validate() error {
-	return dara.Validate(s)
+	if s.Source != nil {
+		for _, item := range s.Source {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnUserDomainsResponseBodyDomainsPageDataSourcesSource struct {

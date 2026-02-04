@@ -59,5 +59,10 @@ func (s *UpdateDcdnDomainResponse) SetBody(v *UpdateDcdnDomainResponseBody) *Upd
 }
 
 func (s *UpdateDcdnDomainResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

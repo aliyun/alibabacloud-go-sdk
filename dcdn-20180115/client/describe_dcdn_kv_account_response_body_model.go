@@ -166,7 +166,16 @@ func (s *DescribeDcdnKvAccountResponseBody) SetStatus(v string) *DescribeDcdnKvA
 }
 
 func (s *DescribeDcdnKvAccountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NamespaceList != nil {
+		for _, item := range s.NamespaceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnKvAccountResponseBodyNamespaceList struct {

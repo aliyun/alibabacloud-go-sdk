@@ -121,7 +121,12 @@ func (s *DescribeDcdnDomainTrafficDataResponseBody) SetTrafficDataPerInterval(v 
 }
 
 func (s *DescribeDcdnDomainTrafficDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficDataPerInterval != nil {
+		if err := s.TrafficDataPerInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainTrafficDataResponseBodyTrafficDataPerInterval struct {
@@ -146,7 +151,16 @@ func (s *DescribeDcdnDomainTrafficDataResponseBodyTrafficDataPerInterval) SetDat
 }
 
 func (s *DescribeDcdnDomainTrafficDataResponseBodyTrafficDataPerInterval) Validate() error {
-	return dara.Validate(s)
+	if s.DataModule != nil {
+		for _, item := range s.DataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainTrafficDataResponseBodyTrafficDataPerIntervalDataModule struct {

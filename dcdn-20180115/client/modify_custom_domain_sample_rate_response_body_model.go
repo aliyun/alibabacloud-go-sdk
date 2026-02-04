@@ -47,7 +47,16 @@ func (s *ModifyCustomDomainSampleRateResponseBody) SetRequestId(v string) *Modif
 }
 
 func (s *ModifyCustomDomainSampleRateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		for _, item := range s.Content {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyCustomDomainSampleRateResponseBodyContent struct {

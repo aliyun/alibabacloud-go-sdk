@@ -53,7 +53,16 @@ func (s *DescribeDcdnWafGeoInfoResponseBody) SetRequestId(v string) *DescribeDcd
 }
 
 func (s *DescribeDcdnWafGeoInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		for _, item := range s.Content {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnWafGeoInfoResponseBodyContent struct {
@@ -98,7 +107,16 @@ func (s *DescribeDcdnWafGeoInfoResponseBodyContent) SetType(v string) *DescribeD
 }
 
 func (s *DescribeDcdnWafGeoInfoResponseBodyContent) Validate() error {
-	return dara.Validate(s)
+	if s.Continents != nil {
+		for _, item := range s.Continents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnWafGeoInfoResponseBodyContentContinents struct {
@@ -139,7 +157,16 @@ func (s *DescribeDcdnWafGeoInfoResponseBodyContentContinents) SetRegions(v []*De
 }
 
 func (s *DescribeDcdnWafGeoInfoResponseBodyContentContinents) Validate() error {
-	return dara.Validate(s)
+	if s.Regions != nil {
+		for _, item := range s.Regions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnWafGeoInfoResponseBodyContentContinentsRegions struct {

@@ -121,7 +121,12 @@ func (s *DescribeDcdnDomainWebsocketHttpCodeDataResponseBody) SetStartTime(v str
 }
 
 func (s *DescribeDcdnDomainWebsocketHttpCodeDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HttpCodeDataPerInterval != nil {
+		if err := s.HttpCodeDataPerInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainWebsocketHttpCodeDataResponseBodyHttpCodeDataPerInterval struct {
@@ -146,7 +151,16 @@ func (s *DescribeDcdnDomainWebsocketHttpCodeDataResponseBodyHttpCodeDataPerInter
 }
 
 func (s *DescribeDcdnDomainWebsocketHttpCodeDataResponseBodyHttpCodeDataPerInterval) Validate() error {
-	return dara.Validate(s)
+	if s.DataModule != nil {
+		for _, item := range s.DataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainWebsocketHttpCodeDataResponseBodyHttpCodeDataPerIntervalDataModule struct {
@@ -187,7 +201,12 @@ func (s *DescribeDcdnDomainWebsocketHttpCodeDataResponseBodyHttpCodeDataPerInter
 }
 
 func (s *DescribeDcdnDomainWebsocketHttpCodeDataResponseBodyHttpCodeDataPerIntervalDataModule) Validate() error {
-	return dara.Validate(s)
+	if s.WebsocketHttpCode != nil {
+		if err := s.WebsocketHttpCode.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainWebsocketHttpCodeDataResponseBodyHttpCodeDataPerIntervalDataModuleWebsocketHttpCode struct {
@@ -212,7 +231,16 @@ func (s *DescribeDcdnDomainWebsocketHttpCodeDataResponseBodyHttpCodeDataPerInter
 }
 
 func (s *DescribeDcdnDomainWebsocketHttpCodeDataResponseBodyHttpCodeDataPerIntervalDataModuleWebsocketHttpCode) Validate() error {
-	return dara.Validate(s)
+	if s.HttpCodeDataModule != nil {
+		for _, item := range s.HttpCodeDataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainWebsocketHttpCodeDataResponseBodyHttpCodeDataPerIntervalDataModuleWebsocketHttpCodeHttpCodeDataModule struct {

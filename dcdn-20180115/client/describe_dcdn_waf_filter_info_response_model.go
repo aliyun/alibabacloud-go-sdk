@@ -59,5 +59,10 @@ func (s *DescribeDcdnWafFilterInfoResponse) SetBody(v *DescribeDcdnWafFilterInfo
 }
 
 func (s *DescribeDcdnWafFilterInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

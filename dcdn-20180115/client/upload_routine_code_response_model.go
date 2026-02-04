@@ -59,5 +59,10 @@ func (s *UploadRoutineCodeResponse) SetBody(v *UploadRoutineCodeResponseBody) *U
 }
 
 func (s *UploadRoutineCodeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

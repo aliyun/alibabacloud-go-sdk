@@ -166,7 +166,12 @@ func (s *DescribeDcdnIpaServiceResponseBody) SetRequestId(v string) *DescribeDcd
 }
 
 func (s *DescribeDcdnIpaServiceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OperationLocks != nil {
+		if err := s.OperationLocks.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnIpaServiceResponseBodyOperationLocks struct {
@@ -191,7 +196,16 @@ func (s *DescribeDcdnIpaServiceResponseBodyOperationLocks) SetLockReason(v []*De
 }
 
 func (s *DescribeDcdnIpaServiceResponseBodyOperationLocks) Validate() error {
-	return dara.Validate(s)
+	if s.LockReason != nil {
+		for _, item := range s.LockReason {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnIpaServiceResponseBodyOperationLocksLockReason struct {

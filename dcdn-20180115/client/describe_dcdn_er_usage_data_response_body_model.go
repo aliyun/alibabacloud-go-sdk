@@ -87,7 +87,12 @@ func (s *DescribeDcdnErUsageDataResponseBody) SetStartTime(v string) *DescribeDc
 }
 
 func (s *DescribeDcdnErUsageDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ErAccData != nil {
+		if err := s.ErAccData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnErUsageDataResponseBodyErAccData struct {
@@ -112,7 +117,16 @@ func (s *DescribeDcdnErUsageDataResponseBodyErAccData) SetErAccItem(v []*Describ
 }
 
 func (s *DescribeDcdnErUsageDataResponseBodyErAccData) Validate() error {
-	return dara.Validate(s)
+	if s.ErAccItem != nil {
+		for _, item := range s.ErAccItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnErUsageDataResponseBodyErAccDataErAccItem struct {

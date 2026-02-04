@@ -53,7 +53,12 @@ func (s *DescribeDcdnSLSRealTimeLogTypeResponseBody) SetRequestId(v string) *Des
 }
 
 func (s *DescribeDcdnSLSRealTimeLogTypeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnSLSRealTimeLogTypeResponseBodyContent struct {
@@ -78,7 +83,16 @@ func (s *DescribeDcdnSLSRealTimeLogTypeResponseBodyContent) SetBusiness(v []*Des
 }
 
 func (s *DescribeDcdnSLSRealTimeLogTypeResponseBodyContent) Validate() error {
-	return dara.Validate(s)
+	if s.Business != nil {
+		for _, item := range s.Business {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnSLSRealTimeLogTypeResponseBodyContentBusiness struct {

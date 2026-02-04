@@ -53,7 +53,12 @@ func (s *CreateDcdnSLSRealTimeLogDeliveryResponseBody) SetRequestId(v string) *C
 }
 
 func (s *CreateDcdnSLSRealTimeLogDeliveryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDcdnSLSRealTimeLogDeliveryResponseBodyContent struct {
@@ -78,7 +83,16 @@ func (s *CreateDcdnSLSRealTimeLogDeliveryResponseBodyContent) SetDomains(v []*Cr
 }
 
 func (s *CreateDcdnSLSRealTimeLogDeliveryResponseBodyContent) Validate() error {
-	return dara.Validate(s)
+	if s.Domains != nil {
+		for _, item := range s.Domains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDcdnSLSRealTimeLogDeliveryResponseBodyContentDomains struct {

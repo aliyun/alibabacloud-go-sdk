@@ -66,7 +66,17 @@ func (s *DescribeDcdnRegionAndIspResponseBody) SetRequestId(v string) *DescribeD
 }
 
 func (s *DescribeDcdnRegionAndIspResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Isps != nil {
+		if err := s.Isps.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Regions != nil {
+		if err := s.Regions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnRegionAndIspResponseBodyIsps struct {
@@ -91,7 +101,16 @@ func (s *DescribeDcdnRegionAndIspResponseBodyIsps) SetIsp(v []*DescribeDcdnRegio
 }
 
 func (s *DescribeDcdnRegionAndIspResponseBodyIsps) Validate() error {
-	return dara.Validate(s)
+	if s.Isp != nil {
+		for _, item := range s.Isp {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnRegionAndIspResponseBodyIspsIsp struct {
@@ -161,7 +180,16 @@ func (s *DescribeDcdnRegionAndIspResponseBodyRegions) SetRegion(v []*DescribeDcd
 }
 
 func (s *DescribeDcdnRegionAndIspResponseBodyRegions) Validate() error {
-	return dara.Validate(s)
+	if s.Region != nil {
+		for _, item := range s.Region {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnRegionAndIspResponseBodyRegionsRegion struct {

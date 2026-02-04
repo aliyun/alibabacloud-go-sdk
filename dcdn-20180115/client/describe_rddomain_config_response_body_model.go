@@ -53,7 +53,16 @@ func (s *DescribeRDDomainConfigResponseBody) SetRequestId(v string) *DescribeRDD
 }
 
 func (s *DescribeRDDomainConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainConfigs != nil {
+		for _, item := range s.DomainConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRDDomainConfigResponseBodyDomainConfigs struct {
@@ -147,7 +156,16 @@ func (s *DescribeRDDomainConfigResponseBodyDomainConfigs) SetStatus(v string) *D
 }
 
 func (s *DescribeRDDomainConfigResponseBodyDomainConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.FunctionArgs != nil {
+		for _, item := range s.FunctionArgs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRDDomainConfigResponseBodyDomainConfigsFunctionArgs struct {

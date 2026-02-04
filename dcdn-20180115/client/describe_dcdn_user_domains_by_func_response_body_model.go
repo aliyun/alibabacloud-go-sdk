@@ -104,7 +104,12 @@ func (s *DescribeDcdnUserDomainsByFuncResponseBody) SetTotalCount(v int64) *Desc
 }
 
 func (s *DescribeDcdnUserDomainsByFuncResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Domains != nil {
+		if err := s.Domains.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnUserDomainsByFuncResponseBodyDomains struct {
@@ -129,7 +134,16 @@ func (s *DescribeDcdnUserDomainsByFuncResponseBodyDomains) SetPageData(v []*Desc
 }
 
 func (s *DescribeDcdnUserDomainsByFuncResponseBodyDomains) Validate() error {
-	return dara.Validate(s)
+	if s.PageData != nil {
+		for _, item := range s.PageData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnUserDomainsByFuncResponseBodyDomainsPageData struct {
@@ -306,7 +320,12 @@ func (s *DescribeDcdnUserDomainsByFuncResponseBodyDomainsPageData) SetSslProtoco
 }
 
 func (s *DescribeDcdnUserDomainsByFuncResponseBodyDomainsPageData) Validate() error {
-	return dara.Validate(s)
+	if s.Sources != nil {
+		if err := s.Sources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnUserDomainsByFuncResponseBodyDomainsPageDataSources struct {
@@ -331,7 +350,16 @@ func (s *DescribeDcdnUserDomainsByFuncResponseBodyDomainsPageDataSources) SetSou
 }
 
 func (s *DescribeDcdnUserDomainsByFuncResponseBodyDomainsPageDataSources) Validate() error {
-	return dara.Validate(s)
+	if s.Source != nil {
+		for _, item := range s.Source {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnUserDomainsByFuncResponseBodyDomainsPageDataSourcesSource struct {

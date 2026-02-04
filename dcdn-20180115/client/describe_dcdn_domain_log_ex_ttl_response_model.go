@@ -59,5 +59,10 @@ func (s *DescribeDcdnDomainLogExTtlResponse) SetBody(v *DescribeDcdnDomainLogExT
 }
 
 func (s *DescribeDcdnDomainLogExTtlResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

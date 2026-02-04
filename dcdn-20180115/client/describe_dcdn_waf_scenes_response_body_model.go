@@ -53,7 +53,16 @@ func (s *DescribeDcdnWafScenesResponseBody) SetRequestId(v string) *DescribeDcdn
 }
 
 func (s *DescribeDcdnWafScenesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DefenseScenes != nil {
+		for _, item := range s.DefenseScenes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnWafScenesResponseBodyDefenseScenes struct {

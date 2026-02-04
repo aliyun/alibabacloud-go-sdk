@@ -104,7 +104,16 @@ func (s *ListDcdnKvResponseBody) SetTotalCount(v int32) *ListDcdnKvResponseBody 
 }
 
 func (s *ListDcdnKvResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Keys != nil {
+		for _, item := range s.Keys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDcdnKvResponseBodyKeys struct {

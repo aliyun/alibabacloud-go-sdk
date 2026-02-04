@@ -121,7 +121,12 @@ func (s *DescribeDcdnDomainOriginTrafficDataResponseBody) SetStartTime(v string)
 }
 
 func (s *DescribeDcdnDomainOriginTrafficDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OriginTrafficDataPerInterval != nil {
+		if err := s.OriginTrafficDataPerInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainOriginTrafficDataResponseBodyOriginTrafficDataPerInterval struct {
@@ -146,7 +151,16 @@ func (s *DescribeDcdnDomainOriginTrafficDataResponseBodyOriginTrafficDataPerInte
 }
 
 func (s *DescribeDcdnDomainOriginTrafficDataResponseBodyOriginTrafficDataPerInterval) Validate() error {
-	return dara.Validate(s)
+	if s.DataModule != nil {
+		for _, item := range s.DataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainOriginTrafficDataResponseBodyOriginTrafficDataPerIntervalDataModule struct {

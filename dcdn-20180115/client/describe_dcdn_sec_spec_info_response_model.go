@@ -59,5 +59,10 @@ func (s *DescribeDcdnSecSpecInfoResponse) SetBody(v *DescribeDcdnSecSpecInfoResp
 }
 
 func (s *DescribeDcdnSecSpecInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

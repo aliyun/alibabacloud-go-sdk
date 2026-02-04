@@ -251,7 +251,12 @@ func (s *DescribeDcdnsecServiceResponseBody) SetVersion(v string) *DescribeDcdns
 }
 
 func (s *DescribeDcdnsecServiceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OperationLocks != nil {
+		if err := s.OperationLocks.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnsecServiceResponseBodyOperationLocks struct {
@@ -276,7 +281,16 @@ func (s *DescribeDcdnsecServiceResponseBodyOperationLocks) SetLockReason(v []*De
 }
 
 func (s *DescribeDcdnsecServiceResponseBodyOperationLocks) Validate() error {
-	return dara.Validate(s)
+	if s.LockReason != nil {
+		for _, item := range s.LockReason {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnsecServiceResponseBodyOperationLocksLockReason struct {

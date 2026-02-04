@@ -59,5 +59,10 @@ func (s *DescribeDcdnL2IpsResponse) SetBody(v *DescribeDcdnL2IpsResponseBody) *D
 }
 
 func (s *DescribeDcdnL2IpsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

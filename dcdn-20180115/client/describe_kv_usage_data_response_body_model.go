@@ -87,7 +87,16 @@ func (s *DescribeKvUsageDataResponseBody) SetStartTime(v string) *DescribeKvUsag
 }
 
 func (s *DescribeKvUsageDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.KvUsageData != nil {
+		for _, item := range s.KvUsageData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeKvUsageDataResponseBodyKvUsageData struct {

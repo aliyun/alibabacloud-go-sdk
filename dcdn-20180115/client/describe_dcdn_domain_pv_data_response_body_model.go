@@ -121,7 +121,12 @@ func (s *DescribeDcdnDomainPvDataResponseBody) SetStartTime(v string) *DescribeD
 }
 
 func (s *DescribeDcdnDomainPvDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PvDataInterval != nil {
+		if err := s.PvDataInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainPvDataResponseBodyPvDataInterval struct {
@@ -146,7 +151,16 @@ func (s *DescribeDcdnDomainPvDataResponseBodyPvDataInterval) SetUsageData(v []*D
 }
 
 func (s *DescribeDcdnDomainPvDataResponseBodyPvDataInterval) Validate() error {
-	return dara.Validate(s)
+	if s.UsageData != nil {
+		for _, item := range s.UsageData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainPvDataResponseBodyPvDataIntervalUsageData struct {

@@ -121,7 +121,12 @@ func (s *DescribeDcdnDomainIpaBpsDataResponseBody) SetStartTime(v string) *Descr
 }
 
 func (s *DescribeDcdnDomainIpaBpsDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BpsDataPerInterval != nil {
+		if err := s.BpsDataPerInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainIpaBpsDataResponseBodyBpsDataPerInterval struct {
@@ -146,7 +151,16 @@ func (s *DescribeDcdnDomainIpaBpsDataResponseBodyBpsDataPerInterval) SetDataModu
 }
 
 func (s *DescribeDcdnDomainIpaBpsDataResponseBodyBpsDataPerInterval) Validate() error {
-	return dara.Validate(s)
+	if s.DataModule != nil {
+		for _, item := range s.DataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainIpaBpsDataResponseBodyBpsDataPerIntervalDataModule struct {

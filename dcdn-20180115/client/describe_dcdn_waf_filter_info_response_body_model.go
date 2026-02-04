@@ -53,7 +53,16 @@ func (s *DescribeDcdnWafFilterInfoResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeDcdnWafFilterInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		for _, item := range s.Content {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnWafFilterInfoResponseBodyContent struct {
@@ -94,7 +103,16 @@ func (s *DescribeDcdnWafFilterInfoResponseBodyContent) SetFields(v []*DescribeDc
 }
 
 func (s *DescribeDcdnWafFilterInfoResponseBodyContent) Validate() error {
-	return dara.Validate(s)
+	if s.Fields != nil {
+		for _, item := range s.Fields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnWafFilterInfoResponseBodyContentFields struct {
@@ -150,7 +168,16 @@ func (s *DescribeDcdnWafFilterInfoResponseBodyContentFields) SetMatchField(v str
 }
 
 func (s *DescribeDcdnWafFilterInfoResponseBodyContentFields) Validate() error {
-	return dara.Validate(s)
+	if s.LogicalSymbol != nil {
+		for _, item := range s.LogicalSymbol {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbol struct {
@@ -286,7 +313,12 @@ func (s *DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbol) SetTyp
 }
 
 func (s *DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbol) Validate() error {
-	return dara.Validate(s)
+	if s.Regexp != nil {
+		if err := s.Regexp.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbolRegexp struct {

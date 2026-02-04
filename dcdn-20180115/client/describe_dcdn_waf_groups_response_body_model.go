@@ -104,7 +104,16 @@ func (s *DescribeDcdnWafGroupsResponseBody) SetWafGroups(v []*DescribeDcdnWafGro
 }
 
 func (s *DescribeDcdnWafGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WafGroups != nil {
+		for _, item := range s.WafGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnWafGroupsResponseBodyWafGroups struct {
@@ -224,7 +233,16 @@ func (s *DescribeDcdnWafGroupsResponseBodyWafGroups) SetTemplateId(v int64) *Des
 }
 
 func (s *DescribeDcdnWafGroupsResponseBodyWafGroups) Validate() error {
-	return dara.Validate(s)
+	if s.Policies != nil {
+		for _, item := range s.Policies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnWafGroupsResponseBodyWafGroupsPolicies struct {

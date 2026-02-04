@@ -53,7 +53,16 @@ func (s *DescribeDcdnOriginSiteHealthStatusResponseBody) SetRequestId(v string) 
 }
 
 func (s *DescribeDcdnOriginSiteHealthStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OriginSiteStatus != nil {
+		for _, item := range s.OriginSiteStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnOriginSiteHealthStatusResponseBodyOriginSiteStatus struct {

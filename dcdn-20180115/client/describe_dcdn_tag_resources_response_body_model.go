@@ -53,7 +53,16 @@ func (s *DescribeDcdnTagResourcesResponseBody) SetTagResources(v []*DescribeDcdn
 }
 
 func (s *DescribeDcdnTagResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TagResources != nil {
+		for _, item := range s.TagResources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnTagResourcesResponseBodyTagResources struct {
@@ -94,7 +103,16 @@ func (s *DescribeDcdnTagResourcesResponseBodyTagResources) SetTag(v []*DescribeD
 }
 
 func (s *DescribeDcdnTagResourcesResponseBodyTagResources) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnTagResourcesResponseBodyTagResourcesTag struct {

@@ -91,7 +91,12 @@ func (s *DescribeDcdnWafUsageDataResponseBody) SetWafUsageData(v *DescribeDcdnWa
 }
 
 func (s *DescribeDcdnWafUsageDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WafUsageData != nil {
+		if err := s.WafUsageData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnWafUsageDataResponseBodyWafUsageData struct {
@@ -116,7 +121,16 @@ func (s *DescribeDcdnWafUsageDataResponseBodyWafUsageData) SetWafUsageDataItem(v
 }
 
 func (s *DescribeDcdnWafUsageDataResponseBodyWafUsageData) Validate() error {
-	return dara.Validate(s)
+	if s.WafUsageDataItem != nil {
+		for _, item := range s.WafUsageDataItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnWafUsageDataResponseBodyWafUsageDataWafUsageDataItem struct {

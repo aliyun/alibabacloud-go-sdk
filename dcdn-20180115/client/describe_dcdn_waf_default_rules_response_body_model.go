@@ -53,7 +53,16 @@ func (s *DescribeDcdnWafDefaultRulesResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeDcdnWafDefaultRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		for _, item := range s.Content {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnWafDefaultRulesResponseBodyContent struct {
@@ -98,7 +107,16 @@ func (s *DescribeDcdnWafDefaultRulesResponseBodyContent) SetRules(v []*DescribeD
 }
 
 func (s *DescribeDcdnWafDefaultRulesResponseBodyContent) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnWafDefaultRulesResponseBodyContentRules struct {

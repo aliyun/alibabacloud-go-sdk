@@ -70,7 +70,16 @@ func (s *DescribeDcdnWafSpecInfoResponseBody) SetSpecInfos(v []*DescribeDcdnWafS
 }
 
 func (s *DescribeDcdnWafSpecInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SpecInfos != nil {
+		for _, item := range s.SpecInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnWafSpecInfoResponseBodySpecInfos struct {
@@ -123,7 +132,16 @@ func (s *DescribeDcdnWafSpecInfoResponseBodySpecInfos) SetDefenseScene(v string)
 }
 
 func (s *DescribeDcdnWafSpecInfoResponseBodySpecInfos) Validate() error {
-	return dara.Validate(s)
+	if s.Configs != nil {
+		for _, item := range s.Configs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnWafSpecInfoResponseBodySpecInfosConfigs struct {

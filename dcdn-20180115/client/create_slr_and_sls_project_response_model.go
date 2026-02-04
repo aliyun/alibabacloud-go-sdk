@@ -59,5 +59,10 @@ func (s *CreateSlrAndSlsProjectResponse) SetBody(v *CreateSlrAndSlsProjectRespon
 }
 
 func (s *CreateSlrAndSlsProjectResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

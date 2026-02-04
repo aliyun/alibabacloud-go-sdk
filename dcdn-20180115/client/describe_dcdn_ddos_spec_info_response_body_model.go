@@ -179,7 +179,16 @@ func (s *DescribeDcdnDdosSpecInfoResponseBody) SetSpecInfos(v []*DescribeDcdnDdo
 }
 
 func (s *DescribeDcdnDdosSpecInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SpecInfos != nil {
+		for _, item := range s.SpecInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDdosSpecInfoResponseBodySpecInfos struct {
@@ -226,7 +235,16 @@ func (s *DescribeDcdnDdosSpecInfoResponseBodySpecInfos) SetRule(v string) *Descr
 }
 
 func (s *DescribeDcdnDdosSpecInfoResponseBodySpecInfos) Validate() error {
-	return dara.Validate(s)
+	if s.Configs != nil {
+		for _, item := range s.Configs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDdosSpecInfoResponseBodySpecInfosConfigs struct {

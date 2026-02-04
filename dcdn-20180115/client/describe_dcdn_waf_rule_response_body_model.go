@@ -53,7 +53,12 @@ func (s *DescribeDcdnWafRuleResponseBody) SetRule(v *DescribeDcdnWafRuleResponse
 }
 
 func (s *DescribeDcdnWafRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Rule != nil {
+		if err := s.Rule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnWafRuleResponseBodyRule struct {

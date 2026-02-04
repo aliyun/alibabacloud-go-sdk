@@ -53,7 +53,12 @@ func (s *BatchSetDcdnDomainConfigsResponseBody) SetRequestId(v string) *BatchSet
 }
 
 func (s *BatchSetDcdnDomainConfigsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainConfigList != nil {
+		if err := s.DomainConfigList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BatchSetDcdnDomainConfigsResponseBodyDomainConfigList struct {
@@ -78,7 +83,16 @@ func (s *BatchSetDcdnDomainConfigsResponseBodyDomainConfigList) SetDomainConfigM
 }
 
 func (s *BatchSetDcdnDomainConfigsResponseBodyDomainConfigList) Validate() error {
-	return dara.Validate(s)
+	if s.DomainConfigModel != nil {
+		for _, item := range s.DomainConfigModel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchSetDcdnDomainConfigsResponseBodyDomainConfigListDomainConfigModel struct {

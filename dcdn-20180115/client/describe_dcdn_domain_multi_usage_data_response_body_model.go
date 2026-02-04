@@ -100,7 +100,17 @@ func (s *DescribeDcdnDomainMultiUsageDataResponseBody) SetTrafficPerInterval(v *
 }
 
 func (s *DescribeDcdnDomainMultiUsageDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RequestPerInterval != nil {
+		if err := s.RequestPerInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TrafficPerInterval != nil {
+		if err := s.TrafficPerInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainMultiUsageDataResponseBodyRequestPerInterval struct {
@@ -125,7 +135,16 @@ func (s *DescribeDcdnDomainMultiUsageDataResponseBodyRequestPerInterval) SetRequ
 }
 
 func (s *DescribeDcdnDomainMultiUsageDataResponseBodyRequestPerInterval) Validate() error {
-	return dara.Validate(s)
+	if s.RequestDataModule != nil {
+		for _, item := range s.RequestDataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainMultiUsageDataResponseBodyRequestPerIntervalRequestDataModule struct {
@@ -225,7 +244,16 @@ func (s *DescribeDcdnDomainMultiUsageDataResponseBodyTrafficPerInterval) SetTraf
 }
 
 func (s *DescribeDcdnDomainMultiUsageDataResponseBodyTrafficPerInterval) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficDataModule != nil {
+		for _, item := range s.TrafficDataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule struct {

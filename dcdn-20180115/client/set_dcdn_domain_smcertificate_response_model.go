@@ -59,5 +59,10 @@ func (s *SetDcdnDomainSMCertificateResponse) SetBody(v *SetDcdnDomainSMCertifica
 }
 
 func (s *SetDcdnDomainSMCertificateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

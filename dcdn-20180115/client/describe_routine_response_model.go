@@ -59,5 +59,10 @@ func (s *DescribeRoutineResponse) SetBody(v *DescribeRoutineResponseBody) *Descr
 }
 
 func (s *DescribeRoutineResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

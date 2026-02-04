@@ -87,7 +87,12 @@ func (s *DescribeDcdnDomainTopReferVisitResponseBody) SetTopReferList(v *Describ
 }
 
 func (s *DescribeDcdnDomainTopReferVisitResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TopReferList != nil {
+		if err := s.TopReferList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainTopReferVisitResponseBodyTopReferList struct {
@@ -112,7 +117,16 @@ func (s *DescribeDcdnDomainTopReferVisitResponseBodyTopReferList) SetReferList(v
 }
 
 func (s *DescribeDcdnDomainTopReferVisitResponseBodyTopReferList) Validate() error {
-	return dara.Validate(s)
+	if s.ReferList != nil {
+		for _, item := range s.ReferList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainTopReferVisitResponseBodyTopReferListReferList struct {

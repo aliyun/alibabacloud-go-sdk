@@ -53,7 +53,16 @@ func (s *DescribeHighlightInfoResponseBody) SetRequestId(v string) *DescribeHigh
 }
 
 func (s *DescribeHighlightInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataModule != nil {
+		for _, item := range s.DataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHighlightInfoResponseBodyDataModule struct {

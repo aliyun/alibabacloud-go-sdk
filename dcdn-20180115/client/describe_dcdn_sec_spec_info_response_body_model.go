@@ -70,7 +70,16 @@ func (s *DescribeDcdnSecSpecInfoResponseBody) SetVersion(v string) *DescribeDcdn
 }
 
 func (s *DescribeDcdnSecSpecInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SpecInfos != nil {
+		for _, item := range s.SpecInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnSecSpecInfoResponseBodySpecInfos struct {
@@ -111,7 +120,16 @@ func (s *DescribeDcdnSecSpecInfoResponseBodySpecInfos) SetRuleConfigs(v []*Descr
 }
 
 func (s *DescribeDcdnSecSpecInfoResponseBodySpecInfos) Validate() error {
-	return dara.Validate(s)
+	if s.RuleConfigs != nil {
+		for _, item := range s.RuleConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnSecSpecInfoResponseBodySpecInfosRuleConfigs struct {

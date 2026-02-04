@@ -55,7 +55,16 @@ func (s *BatchPutDcdnKvRequest) SetNamespace(v string) *BatchPutDcdnKvRequest {
 }
 
 func (s *BatchPutDcdnKvRequest) Validate() error {
-	return dara.Validate(s)
+	if s.KvList != nil {
+		for _, item := range s.KvList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchPutDcdnKvRequestKvList struct {

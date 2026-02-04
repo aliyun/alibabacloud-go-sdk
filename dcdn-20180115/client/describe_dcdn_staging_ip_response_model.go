@@ -59,5 +59,10 @@ func (s *DescribeDcdnStagingIpResponse) SetBody(v *DescribeDcdnStagingIpResponse
 }
 
 func (s *DescribeDcdnStagingIpResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

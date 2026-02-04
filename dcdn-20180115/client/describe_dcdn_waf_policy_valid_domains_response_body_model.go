@@ -104,7 +104,16 @@ func (s *DescribeDcdnWafPolicyValidDomainsResponseBody) SetTotalCount(v int32) *
 }
 
 func (s *DescribeDcdnWafPolicyValidDomainsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Domains != nil {
+		for _, item := range s.Domains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnWafPolicyValidDomainsResponseBodyDomains struct {
@@ -194,7 +203,16 @@ func (s *DescribeDcdnWafPolicyValidDomainsResponseBodyDomains) SetPolicyType(v s
 }
 
 func (s *DescribeDcdnWafPolicyValidDomainsResponseBodyDomains) Validate() error {
-	return dara.Validate(s)
+	if s.Policies != nil {
+		for _, item := range s.Policies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnWafPolicyValidDomainsResponseBodyDomainsPolicies struct {

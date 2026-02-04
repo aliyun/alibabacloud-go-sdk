@@ -59,5 +59,10 @@ func (s *DescribeDcdnWafUsageDataResponse) SetBody(v *DescribeDcdnWafUsageDataRe
 }
 
 func (s *DescribeDcdnWafUsageDataResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

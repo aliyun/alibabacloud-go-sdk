@@ -53,7 +53,12 @@ func (s *DescribeDcdnDomainDetailResponseBody) SetRequestId(v string) *DescribeD
 }
 
 func (s *DescribeDcdnDomainDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainDetail != nil {
+		if err := s.DomainDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainDetailResponseBodyDomainDetail struct {
@@ -295,7 +300,12 @@ func (s *DescribeDcdnDomainDetailResponseBodyDomainDetail) SetSources(v *Describ
 }
 
 func (s *DescribeDcdnDomainDetailResponseBodyDomainDetail) Validate() error {
-	return dara.Validate(s)
+	if s.Sources != nil {
+		if err := s.Sources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainDetailResponseBodyDomainDetailSources struct {
@@ -320,7 +330,16 @@ func (s *DescribeDcdnDomainDetailResponseBodyDomainDetailSources) SetSource(v []
 }
 
 func (s *DescribeDcdnDomainDetailResponseBodyDomainDetailSources) Validate() error {
-	return dara.Validate(s)
+	if s.Source != nil {
+		for _, item := range s.Source {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainDetailResponseBodyDomainDetailSourcesSource struct {

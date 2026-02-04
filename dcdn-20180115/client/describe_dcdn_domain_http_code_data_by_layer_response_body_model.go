@@ -70,7 +70,12 @@ func (s *DescribeDcdnDomainHttpCodeDataByLayerResponseBody) SetRequestId(v strin
 }
 
 func (s *DescribeDcdnDomainHttpCodeDataByLayerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HttpCodeDataInterval != nil {
+		if err := s.HttpCodeDataInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataInterval struct {
@@ -95,7 +100,16 @@ func (s *DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataInterval) 
 }
 
 func (s *DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataInterval) Validate() error {
-	return dara.Validate(s)
+	if s.DataModule != nil {
+		for _, item := range s.DataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule struct {

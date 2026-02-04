@@ -70,7 +70,12 @@ func (s *DescribeDcdnDomainBpsDataByLayerResponseBody) SetRequestId(v string) *D
 }
 
 func (s *DescribeDcdnDomainBpsDataByLayerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BpsDataInterval != nil {
+		if err := s.BpsDataInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataInterval struct {
@@ -95,7 +100,16 @@ func (s *DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataInterval) SetDataMod
 }
 
 func (s *DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataInterval) Validate() error {
-	return dara.Validate(s)
+	if s.DataModule != nil {
+		for _, item := range s.DataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule struct {

@@ -53,7 +53,12 @@ func (s *DescribeDcdnDomainConfigsResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeDcdnDomainConfigsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainConfigs != nil {
+		if err := s.DomainConfigs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainConfigsResponseBodyDomainConfigs struct {
@@ -78,7 +83,16 @@ func (s *DescribeDcdnDomainConfigsResponseBodyDomainConfigs) SetDomainConfig(v [
 }
 
 func (s *DescribeDcdnDomainConfigsResponseBodyDomainConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.DomainConfig != nil {
+		for _, item := range s.DomainConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainConfigsResponseBodyDomainConfigsDomainConfig struct {
@@ -172,7 +186,12 @@ func (s *DescribeDcdnDomainConfigsResponseBodyDomainConfigsDomainConfig) SetStat
 }
 
 func (s *DescribeDcdnDomainConfigsResponseBodyDomainConfigsDomainConfig) Validate() error {
-	return dara.Validate(s)
+	if s.FunctionArgs != nil {
+		if err := s.FunctionArgs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionArgs struct {
@@ -197,7 +216,16 @@ func (s *DescribeDcdnDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionA
 }
 
 func (s *DescribeDcdnDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionArgs) Validate() error {
-	return dara.Validate(s)
+	if s.FunctionArg != nil {
+		for _, item := range s.FunctionArg {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionArgsFunctionArg struct {

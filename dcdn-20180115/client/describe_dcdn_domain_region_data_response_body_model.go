@@ -121,7 +121,12 @@ func (s *DescribeDcdnDomainRegionDataResponseBody) SetValue(v *DescribeDcdnDomai
 }
 
 func (s *DescribeDcdnDomainRegionDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Value != nil {
+		if err := s.Value.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainRegionDataResponseBodyValue struct {
@@ -146,7 +151,16 @@ func (s *DescribeDcdnDomainRegionDataResponseBodyValue) SetRegionProportionData(
 }
 
 func (s *DescribeDcdnDomainRegionDataResponseBodyValue) Validate() error {
-	return dara.Validate(s)
+	if s.RegionProportionData != nil {
+		for _, item := range s.RegionProportionData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainRegionDataResponseBodyValueRegionProportionData struct {

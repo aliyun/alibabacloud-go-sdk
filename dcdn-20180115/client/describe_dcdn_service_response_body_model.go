@@ -217,7 +217,12 @@ func (s *DescribeDcdnServiceResponseBody) SetWebsocketType(v string) *DescribeDc
 }
 
 func (s *DescribeDcdnServiceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OperationLocks != nil {
+		if err := s.OperationLocks.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnServiceResponseBodyOperationLocks struct {
@@ -242,7 +247,16 @@ func (s *DescribeDcdnServiceResponseBodyOperationLocks) SetLockReason(v []*Descr
 }
 
 func (s *DescribeDcdnServiceResponseBodyOperationLocks) Validate() error {
-	return dara.Validate(s)
+	if s.LockReason != nil {
+		for _, item := range s.LockReason {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnServiceResponseBodyOperationLocksLockReason struct {

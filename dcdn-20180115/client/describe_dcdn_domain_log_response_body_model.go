@@ -70,7 +70,12 @@ func (s *DescribeDcdnDomainLogResponseBody) SetRequestId(v string) *DescribeDcdn
 }
 
 func (s *DescribeDcdnDomainLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainLogDetails != nil {
+		if err := s.DomainLogDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainLogResponseBodyDomainLogDetails struct {
@@ -95,7 +100,16 @@ func (s *DescribeDcdnDomainLogResponseBodyDomainLogDetails) SetDomainLogDetail(v
 }
 
 func (s *DescribeDcdnDomainLogResponseBodyDomainLogDetails) Validate() error {
-	return dara.Validate(s)
+	if s.DomainLogDetail != nil {
+		for _, item := range s.DomainLogDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainLogResponseBodyDomainLogDetailsDomainLogDetail struct {
@@ -147,7 +161,17 @@ func (s *DescribeDcdnDomainLogResponseBodyDomainLogDetailsDomainLogDetail) SetPa
 }
 
 func (s *DescribeDcdnDomainLogResponseBodyDomainLogDetailsDomainLogDetail) Validate() error {
-	return dara.Validate(s)
+	if s.LogInfos != nil {
+		if err := s.LogInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PageInfos != nil {
+		if err := s.PageInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainLogResponseBodyDomainLogDetailsDomainLogDetailLogInfos struct {
@@ -172,7 +196,16 @@ func (s *DescribeDcdnDomainLogResponseBodyDomainLogDetailsDomainLogDetailLogInfo
 }
 
 func (s *DescribeDcdnDomainLogResponseBodyDomainLogDetailsDomainLogDetailLogInfos) Validate() error {
-	return dara.Validate(s)
+	if s.LogInfoDetail != nil {
+		for _, item := range s.LogInfoDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainLogResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail struct {

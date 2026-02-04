@@ -53,7 +53,12 @@ func (s *DescribeDcdnDomainCnameResponseBody) SetRequestId(v string) *DescribeDc
 }
 
 func (s *DescribeDcdnDomainCnameResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CnameDatas != nil {
+		if err := s.CnameDatas.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainCnameResponseBodyCnameDatas struct {
@@ -78,7 +83,16 @@ func (s *DescribeDcdnDomainCnameResponseBodyCnameDatas) SetData(v []*DescribeDcd
 }
 
 func (s *DescribeDcdnDomainCnameResponseBodyCnameDatas) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnDomainCnameResponseBodyCnameDatasData struct {

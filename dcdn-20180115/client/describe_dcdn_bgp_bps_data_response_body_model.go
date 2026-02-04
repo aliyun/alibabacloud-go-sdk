@@ -87,7 +87,16 @@ func (s *DescribeDcdnBgpBpsDataResponseBody) SetStartTime(v string) *DescribeDcd
 }
 
 func (s *DescribeDcdnBgpBpsDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BgpDataInterval != nil {
+		for _, item := range s.BgpDataInterval {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnBgpBpsDataResponseBodyBgpDataInterval struct {

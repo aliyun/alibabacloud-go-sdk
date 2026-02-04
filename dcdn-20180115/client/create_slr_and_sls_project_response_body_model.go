@@ -53,7 +53,12 @@ func (s *CreateSlrAndSlsProjectResponseBody) SetSlsInfo(v *CreateSlrAndSlsProjec
 }
 
 func (s *CreateSlrAndSlsProjectResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SlsInfo != nil {
+		if err := s.SlsInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateSlrAndSlsProjectResponseBodySlsInfo struct {

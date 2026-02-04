@@ -53,7 +53,12 @@ func (s *DescribeDcdnSLSRealtimeLogDeliveryResponseBody) SetRequestId(v string) 
 }
 
 func (s *DescribeDcdnSLSRealtimeLogDeliveryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDcdnSLSRealtimeLogDeliveryResponseBodyContent struct {
