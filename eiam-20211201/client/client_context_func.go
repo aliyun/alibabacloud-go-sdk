@@ -931,6 +931,158 @@ func (client *Client) BindUserAuthnSourceMappingWithContext(ctx context.Context,
 
 // Summary:
 //
+// 检查应用同步主组织是否在应用同步范围
+//
+// @param request - CheckApplicationProvisioningUserPrimaryOrganizationalUnitRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckApplicationProvisioningUserPrimaryOrganizationalUnitResponse
+func (client *Client) CheckApplicationProvisioningUserPrimaryOrganizationalUnitWithContext(ctx context.Context, request *CheckApplicationProvisioningUserPrimaryOrganizationalUnitRequest, runtime *dara.RuntimeOptions) (_result *CheckApplicationProvisioningUserPrimaryOrganizationalUnitResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.UserPrimaryOrganizationalUnitId) {
+		query["UserPrimaryOrganizationalUnitId"] = request.UserPrimaryOrganizationalUnitId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckApplicationProvisioningUserPrimaryOrganizationalUnit"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckApplicationProvisioningUserPrimaryOrganizationalUnitResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 实例删除检查
+//
+// @param request - CheckInstanceForDeleteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckInstanceForDeleteResponse
+func (client *Client) CheckInstanceForDeleteWithContext(ctx context.Context, request *CheckInstanceForDeleteRequest, runtime *dara.RuntimeOptions) (_result *CheckInstanceForDeleteResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckInstanceForDelete"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckInstanceForDeleteResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 判断实例是否具有某个模块的功能
+//
+// @param request - CheckInstanceModuleStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckInstanceModuleStatusResponse
+func (client *Client) CheckInstanceModuleStatusWithContext(ctx context.Context, request *CheckInstanceModuleStatusRequest, runtime *dara.RuntimeOptions) (_result *CheckInstanceModuleStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FeatureKey) {
+		query["FeatureKey"] = request.FeatureKey
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ModuleKey) {
+		query["ModuleKey"] = request.ModuleKey
+	}
+
+	if !dara.IsNil(request.SubFeatureKey) {
+		query["SubFeatureKey"] = request.SubFeatureKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckInstanceModuleStatus"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckInstanceModuleStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds an application to an Enterprise Identity Access Management (EIAM) instance of Identity as a Service (IDaaS).
 //
 // Description:
@@ -1695,6 +1847,98 @@ func (client *Client) CreateConditionalAccessPolicyWithContext(ctx context.Conte
 
 // Summary:
 //
+// 创建扩展字段
+//
+// @param request - CreateCustomFieldRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCustomFieldResponse
+func (client *Client) CreateCustomFieldWithContext(ctx context.Context, request *CreateCustomFieldRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomFieldResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DefaultValue) {
+		query["DefaultValue"] = request.DefaultValue
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Encrypted) {
+		query["Encrypted"] = request.Encrypted
+	}
+
+	if !dara.IsNil(request.EntityType) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !dara.IsNil(request.FieldDataConfig) {
+		query["FieldDataConfig"] = request.FieldDataConfig
+	}
+
+	if !dara.IsNil(request.FieldDataType) {
+		query["FieldDataType"] = request.FieldDataType
+	}
+
+	if !dara.IsNil(request.FieldDisplayName) {
+		query["FieldDisplayName"] = request.FieldDisplayName
+	}
+
+	if !dara.IsNil(request.FieldDisplayType) {
+		query["FieldDisplayType"] = request.FieldDisplayType
+	}
+
+	if !dara.IsNil(request.FieldName) {
+		query["FieldName"] = request.FieldName
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Required) {
+		query["Required"] = request.Required
+	}
+
+	if !dara.IsNil(request.Unique) {
+		query["Unique"] = request.Unique
+	}
+
+	if !dara.IsNil(request.UserPermission) {
+		query["UserPermission"] = request.UserPermission
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCustomField"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCustomFieldResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建自定义条款
 //
 // @param request - CreateCustomPrivacyPolicyRequest
@@ -2181,6 +2425,50 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 为实例创建试用版 License
+//
+// @param request - CreateInstanceTrialLicenseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceTrialLicenseResponse
+func (client *Client) CreateInstanceTrialLicenseWithContext(ctx context.Context, request *CreateInstanceTrialLicenseRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceTrialLicenseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateInstanceTrialLicense"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateInstanceTrialLicenseResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3157,6 +3445,54 @@ func (client *Client) DeleteConditionalAccessPolicyWithContext(ctx context.Conte
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteConditionalAccessPolicyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除扩展字段
+//
+// @param request - DeleteCustomFieldRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCustomFieldResponse
+func (client *Client) DeleteCustomFieldWithContext(ctx context.Context, request *DeleteCustomFieldRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomFieldResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FieldId) {
+		query["FieldId"] = request.FieldId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCustomField"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCustomFieldResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4613,6 +4949,54 @@ func (client *Client) DisableConditionalAccessPolicyWithContext(ctx context.Cont
 
 // Summary:
 //
+// 禁用字段
+//
+// @param request - DisableCustomFieldRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableCustomFieldResponse
+func (client *Client) DisableCustomFieldWithContext(ctx context.Context, request *DisableCustomFieldRequest, runtime *dara.RuntimeOptions) (_result *DisableCustomFieldResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FieldId) {
+		query["FieldId"] = request.FieldId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableCustomField"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableCustomFieldResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 禁用自定义条款
 //
 // @param request - DisableCustomPrivacyPolicyRequest
@@ -5803,6 +6187,54 @@ func (client *Client) EnableConditionalAccessPolicyWithContext(ctx context.Conte
 
 // Summary:
 //
+// 启用字段
+//
+// @param request - EnableCustomFieldRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableCustomFieldResponse
+func (client *Client) EnableCustomFieldWithContext(ctx context.Context, request *EnableCustomFieldRequest, runtime *dara.RuntimeOptions) (_result *EnableCustomFieldResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FieldId) {
+		query["FieldId"] = request.FieldId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableCustomField"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableCustomFieldResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 启用自定义条款
 //
 // @param request - EnableCustomPrivacyPolicyRequest
@@ -6723,6 +7155,54 @@ func (client *Client) GetApplicationProvisioningScopeWithContext(ctx context.Con
 
 // Summary:
 //
+// 查询指定应用同步配置
+//
+// @param request - GetApplicationProvisioningUserPrimaryOrganizationalUnitRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApplicationProvisioningUserPrimaryOrganizationalUnitResponse
+func (client *Client) GetApplicationProvisioningUserPrimaryOrganizationalUnitWithContext(ctx context.Context, request *GetApplicationProvisioningUserPrimaryOrganizationalUnitRequest, runtime *dara.RuntimeOptions) (_result *GetApplicationProvisioningUserPrimaryOrganizationalUnitResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetApplicationProvisioningUserPrimaryOrganizationalUnit"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetApplicationProvisioningUserPrimaryOrganizationalUnitResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取角色信息
 //
 // @param request - GetApplicationRoleRequest
@@ -7219,6 +7699,54 @@ func (client *Client) GetConditionalAccessPolicyWithContext(ctx context.Context,
 
 // Summary:
 //
+// 获取扩展字段信息
+//
+// @param request - GetCustomFieldRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCustomFieldResponse
+func (client *Client) GetCustomFieldWithContext(ctx context.Context, request *GetCustomFieldRequest, runtime *dara.RuntimeOptions) (_result *GetCustomFieldResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FieldId) {
+		query["FieldId"] = request.FieldId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCustomField"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCustomFieldResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取自定义条款
 //
 // @param request - GetCustomPrivacyPolicyRequest
@@ -7551,6 +8079,106 @@ func (client *Client) GetIdentityProviderWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 获取高级配置信息
+//
+// @param request - GetIdentityProviderAdvancedConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIdentityProviderAdvancedConfigurationResponse
+func (client *Client) GetIdentityProviderAdvancedConfigurationWithContext(ctx context.Context, request *GetIdentityProviderAdvancedConfigurationRequest, runtime *dara.RuntimeOptions) (_result *GetIdentityProviderAdvancedConfigurationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IdentityProviderId) {
+		query["IdentityProviderId"] = request.IdentityProviderId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetIdentityProviderAdvancedConfiguration"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetIdentityProviderAdvancedConfigurationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取IdP检查任务
+//
+// @param request - GetIdentityProviderStatusCheckJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIdentityProviderStatusCheckJobResponse
+func (client *Client) GetIdentityProviderStatusCheckJobWithContext(ctx context.Context, request *GetIdentityProviderStatusCheckJobRequest, runtime *dara.RuntimeOptions) (_result *GetIdentityProviderStatusCheckJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IdentityProviderId) {
+		query["IdentityProviderId"] = request.IdentityProviderId
+	}
+
+	if !dara.IsNil(request.IdentityProviderStatusCheckJobId) {
+		query["IdentityProviderStatusCheckJobId"] = request.IdentityProviderStatusCheckJobId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetIdentityProviderStatusCheckJob"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetIdentityProviderStatusCheckJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Get IdP Inbound Synchronization Configuration Information
 //
 // @param request - GetIdentityProviderUdPullConfigurationRequest
@@ -7589,6 +8217,54 @@ func (client *Client) GetIdentityProviderUdPullConfigurationWithContext(ctx cont
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetIdentityProviderUdPullConfigurationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取IdP同步出配置
+//
+// @param request - GetIdentityProviderUdPushConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIdentityProviderUdPushConfigurationResponse
+func (client *Client) GetIdentityProviderUdPushConfigurationWithContext(ctx context.Context, request *GetIdentityProviderUdPushConfigurationRequest, runtime *dara.RuntimeOptions) (_result *GetIdentityProviderUdPushConfigurationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IdentityProviderId) {
+		query["IdentityProviderId"] = request.IdentityProviderId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetIdentityProviderUdPushConfiguration"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetIdentityProviderUdPushConfigurationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7643,6 +8319,94 @@ func (client *Client) GetInstanceWithContext(ctx context.Context, request *GetIn
 
 // Summary:
 //
+// 查询实例控制项
+//
+// @param request - GetInstanceControlConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceControlConfigurationResponse
+func (client *Client) GetInstanceControlConfigurationWithContext(ctx context.Context, request *GetInstanceControlConfigurationRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceControlConfigurationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInstanceControlConfiguration"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInstanceControlConfigurationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例语言、时区信息
+//
+// @param request - GetInstanceGlobalizationConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceGlobalizationConfigResponse
+func (client *Client) GetInstanceGlobalizationConfigWithContext(ctx context.Context, request *GetInstanceGlobalizationConfigRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceGlobalizationConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInstanceGlobalizationConfig"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInstanceGlobalizationConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Query the currently effective License information of the instance
 //
 // Description:
@@ -7681,6 +8445,146 @@ func (client *Client) GetInstanceLicenseWithContext(ctx context.Context, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetInstanceLicenseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取一级模块下，所有模块信息
+//
+// @param request - GetInstanceModuleInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceModuleInfoResponse
+func (client *Client) GetInstanceModuleInfoWithContext(ctx context.Context, request *GetInstanceModuleInfoRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceModuleInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ModuleKey) {
+		query["ModuleKey"] = request.ModuleKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInstanceModuleInfo"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInstanceModuleInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例单一类型的Quota
+//
+// @param request - GetInstanceQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceQuotaResponse
+func (client *Client) GetInstanceQuotaWithContext(ctx context.Context, request *GetInstanceQuotaRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceQuotaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.QuotaKey) {
+		query["QuotaKey"] = request.QuotaKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInstanceQuota"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInstanceQuotaResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例的试用状态
+//
+// @param request - GetInstanceTrialStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceTrialStatusResponse
+func (client *Client) GetInstanceTrialStatusWithContext(ctx context.Context, request *GetInstanceTrialStatusRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceTrialStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInstanceTrialStatus"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInstanceTrialStatusResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
