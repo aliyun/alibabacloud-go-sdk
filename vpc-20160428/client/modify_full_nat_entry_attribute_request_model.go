@@ -9,6 +9,8 @@ type iModifyFullNatEntryAttributeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessDomain(v string) *ModifyFullNatEntryAttributeRequest
+	GetAccessDomain() *string
 	SetAccessIp(v string) *ModifyFullNatEntryAttributeRequest
 	GetAccessIp() *string
 	SetAccessPort(v string) *ModifyFullNatEntryAttributeRequest
@@ -46,6 +48,7 @@ type iModifyFullNatEntryAttributeRequest interface {
 }
 
 type ModifyFullNatEntryAttributeRequest struct {
+	AccessDomain *string `json:"AccessDomain,omitempty" xml:"AccessDomain,omitempty"`
 	// The backend IP address to be modified in FULLNAT address translation.
 	//
 	// example:
@@ -162,6 +165,10 @@ func (s ModifyFullNatEntryAttributeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyFullNatEntryAttributeRequest) GetAccessDomain() *string {
+	return s.AccessDomain
+}
+
 func (s *ModifyFullNatEntryAttributeRequest) GetAccessIp() *string {
 	return s.AccessIp
 }
@@ -228,6 +235,11 @@ func (s *ModifyFullNatEntryAttributeRequest) GetResourceOwnerAccount() *string {
 
 func (s *ModifyFullNatEntryAttributeRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
+}
+
+func (s *ModifyFullNatEntryAttributeRequest) SetAccessDomain(v string) *ModifyFullNatEntryAttributeRequest {
+	s.AccessDomain = &v
+	return s
 }
 
 func (s *ModifyFullNatEntryAttributeRequest) SetAccessIp(v string) *ModifyFullNatEntryAttributeRequest {

@@ -306,7 +306,8 @@ type DescribeVirtualBorderRoutersForPhysicalConnectionResponseBodyVirtualBorderR
 	// example:
 	//
 	// vbr-bp16ksp61j7e0tk****
-	VbrId *string `json:"VbrId,omitempty" xml:"VbrId,omitempty"`
+	VbrId   *string `json:"VbrId,omitempty" xml:"VbrId,omitempty"`
+	VbrName *string `json:"VbrName,omitempty" xml:"VbrName,omitempty"`
 	// The ID of the Alibaba Cloud account to which the VBR belongs.
 	//
 	// If the owner of the VBR is the same as that of the Express Connect circuit, this parameter is empty.
@@ -413,6 +414,10 @@ func (s *DescribeVirtualBorderRoutersForPhysicalConnectionResponseBodyVirtualBor
 
 func (s *DescribeVirtualBorderRoutersForPhysicalConnectionResponseBodyVirtualBorderRouterForPhysicalConnectionSetVirtualBorderRouterForPhysicalConnectionType) GetVbrId() *string {
 	return s.VbrId
+}
+
+func (s *DescribeVirtualBorderRoutersForPhysicalConnectionResponseBodyVirtualBorderRouterForPhysicalConnectionSetVirtualBorderRouterForPhysicalConnectionType) GetVbrName() *string {
+	return s.VbrName
 }
 
 func (s *DescribeVirtualBorderRoutersForPhysicalConnectionResponseBodyVirtualBorderRouterForPhysicalConnectionSetVirtualBorderRouterForPhysicalConnectionType) GetVbrOwnerUid() *int64 {
@@ -525,6 +530,11 @@ func (s *DescribeVirtualBorderRoutersForPhysicalConnectionResponseBodyVirtualBor
 
 func (s *DescribeVirtualBorderRoutersForPhysicalConnectionResponseBodyVirtualBorderRouterForPhysicalConnectionSetVirtualBorderRouterForPhysicalConnectionType) SetVbrId(v string) *DescribeVirtualBorderRoutersForPhysicalConnectionResponseBodyVirtualBorderRouterForPhysicalConnectionSetVirtualBorderRouterForPhysicalConnectionType {
 	s.VbrId = &v
+	return s
+}
+
+func (s *DescribeVirtualBorderRoutersForPhysicalConnectionResponseBodyVirtualBorderRouterForPhysicalConnectionSetVirtualBorderRouterForPhysicalConnectionType) SetVbrName(v string) *DescribeVirtualBorderRoutersForPhysicalConnectionResponseBodyVirtualBorderRouterForPhysicalConnectionSetVirtualBorderRouterForPhysicalConnectionType {
+	s.VbrName = &v
 	return s
 }
 

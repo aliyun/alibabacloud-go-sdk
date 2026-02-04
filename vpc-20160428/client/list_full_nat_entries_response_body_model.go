@@ -155,6 +155,7 @@ func (s *ListFullNatEntriesResponseBody) Validate() error {
 }
 
 type ListFullNatEntriesResponseBodyFullNatEntries struct {
+	AccessDomain *string `json:"AccessDomain,omitempty" xml:"AccessDomain,omitempty"`
 	// The backend IP address that is used for FULLNAT address translation in FULLNAT entries.
 	//
 	// example:
@@ -172,7 +173,8 @@ type ListFullNatEntriesResponseBodyFullNatEntries struct {
 	// example:
 	//
 	// 2021-10-27T02:44:40Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CreationTime  *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DomainResolve *string `json:"DomainResolve,omitempty" xml:"DomainResolve,omitempty"`
 	// The description of the FULLNAT entry.
 	//
 	// The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
@@ -259,6 +261,10 @@ func (s ListFullNatEntriesResponseBodyFullNatEntries) GoString() string {
 	return s.String()
 }
 
+func (s *ListFullNatEntriesResponseBodyFullNatEntries) GetAccessDomain() *string {
+	return s.AccessDomain
+}
+
 func (s *ListFullNatEntriesResponseBodyFullNatEntries) GetAccessIp() *string {
 	return s.AccessIp
 }
@@ -269,6 +275,10 @@ func (s *ListFullNatEntriesResponseBodyFullNatEntries) GetAccessPort() *string {
 
 func (s *ListFullNatEntriesResponseBodyFullNatEntries) GetCreationTime() *string {
 	return s.CreationTime
+}
+
+func (s *ListFullNatEntriesResponseBodyFullNatEntries) GetDomainResolve() *string {
+	return s.DomainResolve
 }
 
 func (s *ListFullNatEntriesResponseBodyFullNatEntries) GetFullNatEntryDescription() *string {
@@ -311,6 +321,11 @@ func (s *ListFullNatEntriesResponseBodyFullNatEntries) GetNetworkInterfaceType()
 	return s.NetworkInterfaceType
 }
 
+func (s *ListFullNatEntriesResponseBodyFullNatEntries) SetAccessDomain(v string) *ListFullNatEntriesResponseBodyFullNatEntries {
+	s.AccessDomain = &v
+	return s
+}
+
 func (s *ListFullNatEntriesResponseBodyFullNatEntries) SetAccessIp(v string) *ListFullNatEntriesResponseBodyFullNatEntries {
 	s.AccessIp = &v
 	return s
@@ -323,6 +338,11 @@ func (s *ListFullNatEntriesResponseBodyFullNatEntries) SetAccessPort(v string) *
 
 func (s *ListFullNatEntriesResponseBodyFullNatEntries) SetCreationTime(v string) *ListFullNatEntriesResponseBodyFullNatEntries {
 	s.CreationTime = &v
+	return s
+}
+
+func (s *ListFullNatEntriesResponseBodyFullNatEntries) SetDomainResolve(v string) *ListFullNatEntriesResponseBodyFullNatEntries {
+	s.DomainResolve = &v
 	return s
 }
 

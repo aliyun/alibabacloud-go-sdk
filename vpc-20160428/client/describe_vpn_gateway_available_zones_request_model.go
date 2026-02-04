@@ -11,6 +11,8 @@ type iDescribeVpnGatewayAvailableZonesRequest interface {
 	GoString() string
 	SetAcceptLanguage(v string) *DescribeVpnGatewayAvailableZonesRequest
 	GetAcceptLanguage() *string
+	SetGatewayType(v string) *DescribeVpnGatewayAvailableZonesRequest
+	GetGatewayType() *string
 	SetOwnerAccount(v string) *DescribeVpnGatewayAvailableZonesRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *DescribeVpnGatewayAvailableZonesRequest
@@ -36,6 +38,7 @@ type DescribeVpnGatewayAvailableZonesRequest struct {
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	GatewayType    *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
@@ -92,6 +95,10 @@ func (s *DescribeVpnGatewayAvailableZonesRequest) GetAcceptLanguage() *string {
 	return s.AcceptLanguage
 }
 
+func (s *DescribeVpnGatewayAvailableZonesRequest) GetGatewayType() *string {
+	return s.GatewayType
+}
+
 func (s *DescribeVpnGatewayAvailableZonesRequest) GetOwnerAccount() *string {
 	return s.OwnerAccount
 }
@@ -118,6 +125,11 @@ func (s *DescribeVpnGatewayAvailableZonesRequest) GetSpec() *string {
 
 func (s *DescribeVpnGatewayAvailableZonesRequest) SetAcceptLanguage(v string) *DescribeVpnGatewayAvailableZonesRequest {
 	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DescribeVpnGatewayAvailableZonesRequest) SetGatewayType(v string) *DescribeVpnGatewayAvailableZonesRequest {
+	s.GatewayType = &v
 	return s
 }
 

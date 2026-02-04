@@ -3161,86 +3161,6 @@ func (client *Client) ConnectRouterInterfaceWithContext(ctx context.Context, req
 	return _result, _err
 }
 
-// Deprecated: OpenAPI ConvertBandwidthPackage is deprecated
-//
-// Summary:
-//
-// Converts a NAT service plan to an Internet Shared Bandwidth instance.
-//
-// Description:
-//
-// Before you convert a NAT service plan to an Internet Shared Bandwidth instance, take note of the following limits:
-//
-//   - You are not charged for the conversion.
-//
-//   - When you convert a NAT service plan to an Internet Shared Bandwidth instance, you can continue to use the SNAT and DNAT features of the NAT gateway, and your workloads are not affected. However, we recommend that you convert your NAT service plan during off-peak hours.
-//
-//   - After the NAT service plan is converted to an Internet Shared Bandwidth instance, the public IP addresses in the NAT service plan are converted to elastic IP addresses (EIPs). The maximum bandwidth and billing method of the Internet Shared Bandwidth instance are the same as those of the NAT service plan.
-//
-// @param request - ConvertBandwidthPackageRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ConvertBandwidthPackageResponse
-func (client *Client) ConvertBandwidthPackageWithContext(ctx context.Context, request *ConvertBandwidthPackageRequest, runtime *dara.RuntimeOptions) (_result *ConvertBandwidthPackageResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.BandwidthPackageId) {
-		query["BandwidthPackageId"] = request.BandwidthPackageId
-	}
-
-	if !dara.IsNil(request.ClientToken) {
-		query["ClientToken"] = request.ClientToken
-	}
-
-	if !dara.IsNil(request.OwnerId) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !dara.IsNil(request.RegionId) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !dara.IsNil(request.RegionId) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !dara.IsNil(request.ResourceOwnerAccount) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !dara.IsNil(request.ResourceOwnerId) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("ConvertBandwidthPackage"),
-		Version:     dara.String("2016-04-28"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &ConvertBandwidthPackageResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
 // Summary:
 //
 // Copies rules of a network access control list (ACL).
@@ -4800,6 +4720,10 @@ func (client *Client) CreateFullNatEntryWithContext(ctx context.Context, request
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccessDomain) {
+		query["AccessDomain"] = request.AccessDomain
+	}
+
 	if !dara.IsNil(request.AccessIp) {
 		query["AccessIp"] = request.AccessIp
 	}
@@ -20971,64 +20895,6 @@ func (client *Client) DiagnoseVpnGatewayWithContext(ctx context.Context, request
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DisableNatGatewayEcsMetric is deprecated
-//
-// Summary:
-//
-// Disables traffic monitoring for an Elastic Compute Service (ECS) instance.
-//
-// @param request - DisableNatGatewayEcsMetricRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DisableNatGatewayEcsMetricResponse
-func (client *Client) DisableNatGatewayEcsMetricWithContext(ctx context.Context, request *DisableNatGatewayEcsMetricRequest, runtime *dara.RuntimeOptions) (_result *DisableNatGatewayEcsMetricResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.DryRun) {
-		query["DryRun"] = request.DryRun
-	}
-
-	if !dara.IsNil(request.NatGatewayId) {
-		query["NatGatewayId"] = request.NatGatewayId
-	}
-
-	if !dara.IsNil(request.RegionId) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !dara.IsNil(request.RegionId) {
-		query["RegionId"] = request.RegionId
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("DisableNatGatewayEcsMetric"),
-		Version:     dara.String("2016-04-28"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &DisableNatGatewayEcsMetricResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
 // Summary:
 //
 // Disables ClassicLink for a virtual private cloud (VPC).
@@ -21387,64 +21253,6 @@ func (client *Client) DownloadVpnConnectionConfigWithContext(ctx context.Context
 		BodyType:    dara.String("json"),
 	}
 	_result = &DownloadVpnConnectionConfigResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI EnableNatGatewayEcsMetric is deprecated
-//
-// Summary:
-//
-// Enables Elastic Compute Service (ECS) traffic monitoring.
-//
-// @param request - EnableNatGatewayEcsMetricRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return EnableNatGatewayEcsMetricResponse
-func (client *Client) EnableNatGatewayEcsMetricWithContext(ctx context.Context, request *EnableNatGatewayEcsMetricRequest, runtime *dara.RuntimeOptions) (_result *EnableNatGatewayEcsMetricResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.DryRun) {
-		query["DryRun"] = request.DryRun
-	}
-
-	if !dara.IsNil(request.NatGatewayId) {
-		query["NatGatewayId"] = request.NatGatewayId
-	}
-
-	if !dara.IsNil(request.RegionId) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !dara.IsNil(request.RegionId) {
-		query["RegionId"] = request.RegionId
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("EnableNatGatewayEcsMetric"),
-		Version:     dara.String("2016-04-28"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &EnableNatGatewayEcsMetricResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -21961,162 +21769,6 @@ func (client *Client) GetNatGatewayAttributeWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetNatGatewayAttributeResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Call GetNatIpAttribute to query the VPC NAT network to obtain information on each NAT IP address.
-//
-// @param request - GetNatIpAttributeRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetNatIpAttributeResponse
-func (client *Client) GetNatIpAttributeWithContext(ctx context.Context, request *GetNatIpAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetNatIpAttributeResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.ClientToken) {
-		query["ClientToken"] = request.ClientToken
-	}
-
-	if !dara.IsNil(request.DryRun) {
-		query["DryRun"] = request.DryRun
-	}
-
-	if !dara.IsNil(request.NatIpId) {
-		query["NatIpId"] = request.NatIpId
-	}
-
-	if !dara.IsNil(request.OwnerAccount) {
-		query["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !dara.IsNil(request.OwnerId) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !dara.IsNil(request.RegionId) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !dara.IsNil(request.RegionId) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !dara.IsNil(request.ResourceOwnerAccount) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !dara.IsNil(request.ResourceOwnerId) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("GetNatIpAttribute"),
-		Version:     dara.String("2016-04-28"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GetNatIpAttributeResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Call GetNatIpCidrAttribute to query the VPC NAT network to obtain information on each NAT IP cidr address.
-//
-// @param request - GetNatIpCidrAttributeRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetNatIpCidrAttributeResponse
-func (client *Client) GetNatIpCidrAttributeWithContext(ctx context.Context, request *GetNatIpCidrAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetNatIpCidrAttributeResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.ClientToken) {
-		query["ClientToken"] = request.ClientToken
-	}
-
-	if !dara.IsNil(request.DryRun) {
-		query["DryRun"] = request.DryRun
-	}
-
-	if !dara.IsNil(request.NatGatewayId) {
-		query["NatGatewayId"] = request.NatGatewayId
-	}
-
-	if !dara.IsNil(request.NatIpCidr) {
-		query["NatIpCidr"] = request.NatIpCidr
-	}
-
-	if !dara.IsNil(request.OwnerAccount) {
-		query["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !dara.IsNil(request.OwnerId) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !dara.IsNil(request.RegionId) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !dara.IsNil(request.RegionId) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !dara.IsNil(request.ResourceOwnerAccount) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !dara.IsNil(request.ResourceOwnerId) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("GetNatIpCidrAttribute"),
-		Version:     dara.String("2016-04-28"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GetNatIpCidrAttributeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -26468,6 +26120,10 @@ func (client *Client) ModifyFullNatEntryAttributeWithContext(ctx context.Context
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccessDomain) {
+		query["AccessDomain"] = request.AccessDomain
+	}
+
 	if !dara.IsNil(request.AccessIp) {
 		query["AccessIp"] = request.AccessIp
 	}

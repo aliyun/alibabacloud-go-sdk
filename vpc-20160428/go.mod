@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/vpc-20160428/v6
+module github.com/alibabacloud-go/vpc-20160428/v7
 
 go 1.14
 

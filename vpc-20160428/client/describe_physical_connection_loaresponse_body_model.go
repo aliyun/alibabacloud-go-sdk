@@ -80,6 +80,7 @@ type DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType struct {
 	//
 	// 2019-02-26T08:00:00Z
 	ConstructionTime *string `json:"ConstructionTime,omitempty" xml:"ConstructionTime,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the Express Connect circuit.
 	//
 	// example:
@@ -188,6 +189,10 @@ func (s *DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType) Get
 	return s.ConstructionTime
 }
 
+func (s *DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType) GetDescription() *string {
+	return s.Description
+}
+
 func (s *DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -240,6 +245,11 @@ func (s *DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType) Set
 
 func (s *DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType) SetConstructionTime(v string) *DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType {
 	s.ConstructionTime = &v
+	return s
+}
+
+func (s *DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType) SetDescription(v string) *DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType {
+	s.Description = &v
 	return s
 }
 
