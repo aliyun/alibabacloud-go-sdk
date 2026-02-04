@@ -11,6 +11,8 @@ type iCreateNormalizationRuleShrinkRequest interface {
 	GoString() string
 	SetExtendContentPacked(v string) *CreateNormalizationRuleShrinkRequest
 	GetExtendContentPacked() *string
+	SetExtendFieldStoreMode(v string) *CreateNormalizationRuleShrinkRequest
+	GetExtendFieldStoreMode() *string
 	SetLang(v string) *CreateNormalizationRuleShrinkRequest
 	GetLang() *string
 	SetNormalizationCategoryId(v string) *CreateNormalizationRuleShrinkRequest
@@ -47,6 +49,10 @@ type iCreateNormalizationRuleShrinkRequest interface {
 
 type CreateNormalizationRuleShrinkRequest struct {
 	ExtendContentPacked *string `json:"ExtendContentPacked,omitempty" xml:"ExtendContentPacked,omitempty"`
+	// example:
+	//
+	// flat
+	ExtendFieldStoreMode *string `json:"ExtendFieldStoreMode,omitempty" xml:"ExtendFieldStoreMode,omitempty"`
 	// example:
 	//
 	// zh。
@@ -111,6 +117,10 @@ func (s CreateNormalizationRuleShrinkRequest) GoString() string {
 
 func (s *CreateNormalizationRuleShrinkRequest) GetExtendContentPacked() *string {
 	return s.ExtendContentPacked
+}
+
+func (s *CreateNormalizationRuleShrinkRequest) GetExtendFieldStoreMode() *string {
+	return s.ExtendFieldStoreMode
 }
 
 func (s *CreateNormalizationRuleShrinkRequest) GetLang() *string {
@@ -179,6 +189,11 @@ func (s *CreateNormalizationRuleShrinkRequest) GetVendorId() *string {
 
 func (s *CreateNormalizationRuleShrinkRequest) SetExtendContentPacked(v string) *CreateNormalizationRuleShrinkRequest {
 	s.ExtendContentPacked = &v
+	return s
+}
+
+func (s *CreateNormalizationRuleShrinkRequest) SetExtendFieldStoreMode(v string) *CreateNormalizationRuleShrinkRequest {
+	s.ExtendFieldStoreMode = &v
 	return s
 }
 

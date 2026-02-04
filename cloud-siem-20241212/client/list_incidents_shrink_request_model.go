@@ -31,6 +31,8 @@ type iListIncidentsShrinkRequest interface {
 	GetOrderDirection() *string
 	SetOrderFieldName(v string) *ListIncidentsShrinkRequest
 	GetOrderFieldName() *string
+	SetOwners(v []*string) *ListIncidentsShrinkRequest
+	GetOwners() []*string
 	SetPageNumber(v int32) *ListIncidentsShrinkRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListIncidentsShrinkRequest
@@ -92,7 +94,8 @@ type ListIncidentsShrinkRequest struct {
 	// example:
 	//
 	// GmtModified
-	OrderFieldName *string `json:"OrderFieldName,omitempty" xml:"OrderFieldName,omitempty"`
+	OrderFieldName *string   `json:"OrderFieldName,omitempty" xml:"OrderFieldName,omitempty"`
+	Owners         []*string `json:"Owners,omitempty" xml:"Owners,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -179,6 +182,10 @@ func (s *ListIncidentsShrinkRequest) GetOrderDirection() *string {
 
 func (s *ListIncidentsShrinkRequest) GetOrderFieldName() *string {
 	return s.OrderFieldName
+}
+
+func (s *ListIncidentsShrinkRequest) GetOwners() []*string {
+	return s.Owners
 }
 
 func (s *ListIncidentsShrinkRequest) GetPageNumber() *int32 {
@@ -269,6 +276,11 @@ func (s *ListIncidentsShrinkRequest) SetOrderDirection(v string) *ListIncidentsS
 
 func (s *ListIncidentsShrinkRequest) SetOrderFieldName(v string) *ListIncidentsShrinkRequest {
 	s.OrderFieldName = &v
+	return s
+}
+
+func (s *ListIncidentsShrinkRequest) SetOwners(v []*string) *ListIncidentsShrinkRequest {
+	s.Owners = v
 	return s
 }
 

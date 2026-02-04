@@ -141,11 +141,13 @@ type ListDetectionRulesResponseBodyDetectionRules struct {
 	// example:
 	//
 	// Discovery
-	AlertAttCk *string `json:"AlertAttCk,omitempty" xml:"AlertAttCk,omitempty"`
+	AlertAttCk       *string `json:"AlertAttCk,omitempty" xml:"AlertAttCk,omitempty"`
+	AlertDescription *string `json:"AlertDescription,omitempty" xml:"AlertDescription,omitempty"`
 	// example:
 	//
 	// 1
 	AlertLevel *string `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	AlertName  *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// example:
 	//
 	// ALERT_ACTIVITY
@@ -304,8 +306,16 @@ func (s *ListDetectionRulesResponseBodyDetectionRules) GetAlertAttCk() *string {
 	return s.AlertAttCk
 }
 
+func (s *ListDetectionRulesResponseBodyDetectionRules) GetAlertDescription() *string {
+	return s.AlertDescription
+}
+
 func (s *ListDetectionRulesResponseBodyDetectionRules) GetAlertLevel() *string {
 	return s.AlertLevel
+}
+
+func (s *ListDetectionRulesResponseBodyDetectionRules) GetAlertName() *string {
+	return s.AlertName
 }
 
 func (s *ListDetectionRulesResponseBodyDetectionRules) GetAlertSchemaId() *string {
@@ -429,8 +439,18 @@ func (s *ListDetectionRulesResponseBodyDetectionRules) SetAlertAttCk(v string) *
 	return s
 }
 
+func (s *ListDetectionRulesResponseBodyDetectionRules) SetAlertDescription(v string) *ListDetectionRulesResponseBodyDetectionRules {
+	s.AlertDescription = &v
+	return s
+}
+
 func (s *ListDetectionRulesResponseBodyDetectionRules) SetAlertLevel(v string) *ListDetectionRulesResponseBodyDetectionRules {
 	s.AlertLevel = &v
+	return s
+}
+
+func (s *ListDetectionRulesResponseBodyDetectionRules) SetAlertName(v string) *ListDetectionRulesResponseBodyDetectionRules {
+	s.AlertName = &v
 	return s
 }
 

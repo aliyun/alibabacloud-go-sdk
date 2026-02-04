@@ -11,8 +11,12 @@ type iCreateDetectionRuleRequest interface {
 	GoString() string
 	SetAlertAttCk(v string) *CreateDetectionRuleRequest
 	GetAlertAttCk() *string
+	SetAlertDescription(v string) *CreateDetectionRuleRequest
+	GetAlertDescription() *string
 	SetAlertLevel(v string) *CreateDetectionRuleRequest
 	GetAlertLevel() *string
+	SetAlertName(v string) *CreateDetectionRuleRequest
+	GetAlertName() *string
 	SetAlertSchemaId(v string) *CreateDetectionRuleRequest
 	GetAlertSchemaId() *string
 	SetAlertTacticId(v string) *CreateDetectionRuleRequest
@@ -79,13 +83,15 @@ type CreateDetectionRuleRequest struct {
 	// example:
 	//
 	// Discovery
-	AlertAttCk *string `json:"AlertAttCk,omitempty" xml:"AlertAttCk,omitempty"`
+	AlertAttCk       *string `json:"AlertAttCk,omitempty" xml:"AlertAttCk,omitempty"`
+	AlertDescription *string `json:"AlertDescription,omitempty" xml:"AlertDescription,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	AlertLevel *string `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	AlertName  *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -264,8 +270,16 @@ func (s *CreateDetectionRuleRequest) GetAlertAttCk() *string {
 	return s.AlertAttCk
 }
 
+func (s *CreateDetectionRuleRequest) GetAlertDescription() *string {
+	return s.AlertDescription
+}
+
 func (s *CreateDetectionRuleRequest) GetAlertLevel() *string {
 	return s.AlertLevel
+}
+
+func (s *CreateDetectionRuleRequest) GetAlertName() *string {
+	return s.AlertName
 }
 
 func (s *CreateDetectionRuleRequest) GetAlertSchemaId() *string {
@@ -393,8 +407,18 @@ func (s *CreateDetectionRuleRequest) SetAlertAttCk(v string) *CreateDetectionRul
 	return s
 }
 
+func (s *CreateDetectionRuleRequest) SetAlertDescription(v string) *CreateDetectionRuleRequest {
+	s.AlertDescription = &v
+	return s
+}
+
 func (s *CreateDetectionRuleRequest) SetAlertLevel(v string) *CreateDetectionRuleRequest {
 	s.AlertLevel = &v
+	return s
+}
+
+func (s *CreateDetectionRuleRequest) SetAlertName(v string) *CreateDetectionRuleRequest {
+	s.AlertName = &v
 	return s
 }
 

@@ -31,6 +31,8 @@ type iListIncidentsRequest interface {
 	GetOrderDirection() *string
 	SetOrderFieldName(v string) *ListIncidentsRequest
 	GetOrderFieldName() *string
+	SetOwners(v []*string) *ListIncidentsRequest
+	GetOwners() []*string
 	SetPageNumber(v int32) *ListIncidentsRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListIncidentsRequest
@@ -92,7 +94,8 @@ type ListIncidentsRequest struct {
 	// example:
 	//
 	// GmtModified
-	OrderFieldName *string `json:"OrderFieldName,omitempty" xml:"OrderFieldName,omitempty"`
+	OrderFieldName *string   `json:"OrderFieldName,omitempty" xml:"OrderFieldName,omitempty"`
+	Owners         []*string `json:"Owners,omitempty" xml:"Owners,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -179,6 +182,10 @@ func (s *ListIncidentsRequest) GetOrderDirection() *string {
 
 func (s *ListIncidentsRequest) GetOrderFieldName() *string {
 	return s.OrderFieldName
+}
+
+func (s *ListIncidentsRequest) GetOwners() []*string {
+	return s.Owners
 }
 
 func (s *ListIncidentsRequest) GetPageNumber() *int32 {
@@ -269,6 +276,11 @@ func (s *ListIncidentsRequest) SetOrderDirection(v string) *ListIncidentsRequest
 
 func (s *ListIncidentsRequest) SetOrderFieldName(v string) *ListIncidentsRequest {
 	s.OrderFieldName = &v
+	return s
+}
+
+func (s *ListIncidentsRequest) SetOwners(v []*string) *ListIncidentsRequest {
+	s.Owners = v
 	return s
 }
 

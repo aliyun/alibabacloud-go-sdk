@@ -117,6 +117,10 @@ type GetIncidentResponseBodyIncident struct {
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// example:
 	//
+	// 1234567890xxxxxx
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
 	// 23
 	RelateAlertCount *int32 `json:"RelateAlertCount,omitempty" xml:"RelateAlertCount,omitempty"`
 	// example:
@@ -191,6 +195,10 @@ func (s *GetIncidentResponseBodyIncident) GetIncidentTags() *string {
 
 func (s *GetIncidentResponseBodyIncident) GetIncidentUuid() *string {
 	return s.IncidentUuid
+}
+
+func (s *GetIncidentResponseBodyIncident) GetOwner() *string {
+	return s.Owner
 }
 
 func (s *GetIncidentResponseBodyIncident) GetRelateAlertCount() *int32 {
@@ -268,6 +276,11 @@ func (s *GetIncidentResponseBodyIncident) SetIncidentTags(v string) *GetIncident
 
 func (s *GetIncidentResponseBodyIncident) SetIncidentUuid(v string) *GetIncidentResponseBodyIncident {
 	s.IncidentUuid = &v
+	return s
+}
+
+func (s *GetIncidentResponseBodyIncident) SetOwner(v string) *GetIncidentResponseBodyIncident {
+	s.Owner = &v
 	return s
 }
 

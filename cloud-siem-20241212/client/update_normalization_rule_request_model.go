@@ -11,8 +11,12 @@ type iUpdateNormalizationRuleRequest interface {
 	GoString() string
 	SetExtendContentPacked(v string) *UpdateNormalizationRuleRequest
 	GetExtendContentPacked() *string
+	SetExtendFieldStoreMode(v string) *UpdateNormalizationRuleRequest
+	GetExtendFieldStoreMode() *string
 	SetLang(v string) *UpdateNormalizationRuleRequest
 	GetLang() *string
+	SetNormalizationCategoryId(v string) *UpdateNormalizationRuleRequest
+	GetNormalizationCategoryId() *string
 	SetNormalizationRuleDescription(v string) *UpdateNormalizationRuleRequest
 	GetNormalizationRuleDescription() *string
 	SetNormalizationRuleExpression(v string) *UpdateNormalizationRuleRequest
@@ -47,8 +51,16 @@ type UpdateNormalizationRuleRequest struct {
 	ExtendContentPacked *string `json:"ExtendContentPacked,omitempty" xml:"ExtendContentPacked,omitempty"`
 	// example:
 	//
+	// flat
+	ExtendFieldStoreMode *string `json:"ExtendFieldStoreMode,omitempty" xml:"ExtendFieldStoreMode,omitempty"`
+	// example:
+	//
 	// zh。
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// NETWORK_CATEGORY。
+	NormalizationCategoryId *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
 	// example:
 	//
 	// normalization_rule_Z57np。
@@ -110,8 +122,16 @@ func (s *UpdateNormalizationRuleRequest) GetExtendContentPacked() *string {
 	return s.ExtendContentPacked
 }
 
+func (s *UpdateNormalizationRuleRequest) GetExtendFieldStoreMode() *string {
+	return s.ExtendFieldStoreMode
+}
+
 func (s *UpdateNormalizationRuleRequest) GetLang() *string {
 	return s.Lang
+}
+
+func (s *UpdateNormalizationRuleRequest) GetNormalizationCategoryId() *string {
+	return s.NormalizationCategoryId
 }
 
 func (s *UpdateNormalizationRuleRequest) GetNormalizationRuleDescription() *string {
@@ -175,8 +195,18 @@ func (s *UpdateNormalizationRuleRequest) SetExtendContentPacked(v string) *Updat
 	return s
 }
 
+func (s *UpdateNormalizationRuleRequest) SetExtendFieldStoreMode(v string) *UpdateNormalizationRuleRequest {
+	s.ExtendFieldStoreMode = &v
+	return s
+}
+
 func (s *UpdateNormalizationRuleRequest) SetLang(v string) *UpdateNormalizationRuleRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *UpdateNormalizationRuleRequest) SetNormalizationCategoryId(v string) *UpdateNormalizationRuleRequest {
+	s.NormalizationCategoryId = &v
 	return s
 }
 

@@ -110,8 +110,20 @@ func (s *ListNormalizationSchemasResponseBody) Validate() error {
 type ListNormalizationSchemasResponseBodyNormalizationSchemas struct {
 	// example:
 	//
+	// 1736386610000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
 	// NETWORK_CATEGORY。
 	NormalizationCategoryId *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
+	// example:
+	//
+	// 网络五元组日志
+	NormalizationSchemaDescription *string `json:"NormalizationSchemaDescription,omitempty" xml:"NormalizationSchemaDescription,omitempty"`
+	// example:
+	//
+	// preset
+	NormalizationSchemaFrom *string `json:"NormalizationSchemaFrom,omitempty" xml:"NormalizationSchemaFrom,omitempty"`
 	// example:
 	//
 	// HTTP_ACTIVITY。
@@ -124,6 +136,18 @@ type ListNormalizationSchemasResponseBodyNormalizationSchemas struct {
 	//
 	// network-activity。
 	NormalizationSchemaTargetLogStore *string `json:"NormalizationSchemaTargetLogStore,omitempty" xml:"NormalizationSchemaTargetLogStore,omitempty"`
+	// example:
+	//
+	// network-activity
+	TargetLogStore *string `json:"TargetLogStore,omitempty" xml:"TargetLogStore,omitempty"`
+	// example:
+	//
+	// network-activity
+	TargetStoreView *string `json:"TargetStoreView,omitempty" xml:"TargetStoreView,omitempty"`
+	// example:
+	//
+	// 1736386610000
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListNormalizationSchemasResponseBodyNormalizationSchemas) String() string {
@@ -134,8 +158,20 @@ func (s ListNormalizationSchemasResponseBodyNormalizationSchemas) GoString() str
 	return s.String()
 }
 
+func (s *ListNormalizationSchemasResponseBodyNormalizationSchemas) GetCreateTime() *int64 {
+	return s.CreateTime
+}
+
 func (s *ListNormalizationSchemasResponseBodyNormalizationSchemas) GetNormalizationCategoryId() *string {
 	return s.NormalizationCategoryId
+}
+
+func (s *ListNormalizationSchemasResponseBodyNormalizationSchemas) GetNormalizationSchemaDescription() *string {
+	return s.NormalizationSchemaDescription
+}
+
+func (s *ListNormalizationSchemasResponseBodyNormalizationSchemas) GetNormalizationSchemaFrom() *string {
+	return s.NormalizationSchemaFrom
 }
 
 func (s *ListNormalizationSchemasResponseBodyNormalizationSchemas) GetNormalizationSchemaId() *string {
@@ -150,8 +186,35 @@ func (s *ListNormalizationSchemasResponseBodyNormalizationSchemas) GetNormalizat
 	return s.NormalizationSchemaTargetLogStore
 }
 
+func (s *ListNormalizationSchemasResponseBodyNormalizationSchemas) GetTargetLogStore() *string {
+	return s.TargetLogStore
+}
+
+func (s *ListNormalizationSchemasResponseBodyNormalizationSchemas) GetTargetStoreView() *string {
+	return s.TargetStoreView
+}
+
+func (s *ListNormalizationSchemasResponseBodyNormalizationSchemas) GetUpdateTime() *int64 {
+	return s.UpdateTime
+}
+
+func (s *ListNormalizationSchemasResponseBodyNormalizationSchemas) SetCreateTime(v int64) *ListNormalizationSchemasResponseBodyNormalizationSchemas {
+	s.CreateTime = &v
+	return s
+}
+
 func (s *ListNormalizationSchemasResponseBodyNormalizationSchemas) SetNormalizationCategoryId(v string) *ListNormalizationSchemasResponseBodyNormalizationSchemas {
 	s.NormalizationCategoryId = &v
+	return s
+}
+
+func (s *ListNormalizationSchemasResponseBodyNormalizationSchemas) SetNormalizationSchemaDescription(v string) *ListNormalizationSchemasResponseBodyNormalizationSchemas {
+	s.NormalizationSchemaDescription = &v
+	return s
+}
+
+func (s *ListNormalizationSchemasResponseBodyNormalizationSchemas) SetNormalizationSchemaFrom(v string) *ListNormalizationSchemasResponseBodyNormalizationSchemas {
+	s.NormalizationSchemaFrom = &v
 	return s
 }
 
@@ -167,6 +230,21 @@ func (s *ListNormalizationSchemasResponseBodyNormalizationSchemas) SetNormalizat
 
 func (s *ListNormalizationSchemasResponseBodyNormalizationSchemas) SetNormalizationSchemaTargetLogStore(v string) *ListNormalizationSchemasResponseBodyNormalizationSchemas {
 	s.NormalizationSchemaTargetLogStore = &v
+	return s
+}
+
+func (s *ListNormalizationSchemasResponseBodyNormalizationSchemas) SetTargetLogStore(v string) *ListNormalizationSchemasResponseBodyNormalizationSchemas {
+	s.TargetLogStore = &v
+	return s
+}
+
+func (s *ListNormalizationSchemasResponseBodyNormalizationSchemas) SetTargetStoreView(v string) *ListNormalizationSchemasResponseBodyNormalizationSchemas {
+	s.TargetStoreView = &v
+	return s
+}
+
+func (s *ListNormalizationSchemasResponseBodyNormalizationSchemas) SetUpdateTime(v int64) *ListNormalizationSchemasResponseBodyNormalizationSchemas {
+	s.UpdateTime = &v
 	return s
 }
 

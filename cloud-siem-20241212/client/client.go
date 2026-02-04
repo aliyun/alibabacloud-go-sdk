@@ -445,10 +445,6 @@ func (client *Client) CreateDataSourceWithOptions(tmpReq *CreateDataSourceReques
 		body["RoleFor"] = request.RoleFor
 	}
 
-	if !dara.IsNil(request.UpdateTime) {
-		body["UpdateTime"] = request.UpdateTime
-	}
-
 	body = dara.ToMap(body,
 		openapiutil.Query(bodyFlat))
 	req := &openapiutil.OpenApiRequest{
@@ -513,8 +509,16 @@ func (client *Client) CreateDetectionRuleWithOptions(request *CreateDetectionRul
 		body["AlertAttCk"] = request.AlertAttCk
 	}
 
+	if !dara.IsNil(request.AlertDescription) {
+		body["AlertDescription"] = request.AlertDescription
+	}
+
 	if !dara.IsNil(request.AlertLevel) {
 		body["AlertLevel"] = request.AlertLevel
+	}
+
+	if !dara.IsNil(request.AlertName) {
+		body["AlertName"] = request.AlertName
 	}
 
 	if !dara.IsNil(request.AlertSchemaId) {
@@ -869,6 +873,10 @@ func (client *Client) CreateNormalizationRuleWithOptions(tmpReq *CreateNormaliza
 		body["ExtendContentPacked"] = request.ExtendContentPacked
 	}
 
+	if !dara.IsNil(request.ExtendFieldStoreMode) {
+		body["ExtendFieldStoreMode"] = request.ExtendFieldStoreMode
+	}
+
 	if !dara.IsNil(request.Lang) {
 		body["Lang"] = request.Lang
 	}
@@ -967,6 +975,104 @@ func (client *Client) CreateNormalizationRule(request *CreateNormalizationRuleRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateNormalizationRuleResponse{}
 	_body, _err := client.CreateNormalizationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建标准化结构
+//
+// @param request - CreateNormalizationSchemaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateNormalizationSchemaResponse
+func (client *Client) CreateNormalizationSchemaWithOptions(request *CreateNormalizationSchemaRequest, runtime *dara.RuntimeOptions) (_result *CreateNormalizationSchemaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.NormalizationCategoryId) {
+		body["NormalizationCategoryId"] = request.NormalizationCategoryId
+	}
+
+	if !dara.IsNil(request.NormalizationFields) {
+		body["NormalizationFields"] = request.NormalizationFields
+	}
+
+	if !dara.IsNil(request.NormalizationSchemaDescription) {
+		body["NormalizationSchemaDescription"] = request.NormalizationSchemaDescription
+	}
+
+	if !dara.IsNil(request.NormalizationSchemaId) {
+		body["NormalizationSchemaId"] = request.NormalizationSchemaId
+	}
+
+	if !dara.IsNil(request.NormalizationSchemaName) {
+		body["NormalizationSchemaName"] = request.NormalizationSchemaName
+	}
+
+	if !dara.IsNil(request.NormalizationSchemaType) {
+		body["NormalizationSchemaType"] = request.NormalizationSchemaType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RoleFor) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !dara.IsNil(request.TargetLogStore) {
+		body["TargetLogStore"] = request.TargetLogStore
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateNormalizationSchema"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateNormalizationSchemaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建标准化结构
+//
+// @param request - CreateNormalizationSchemaRequest
+//
+// @return CreateNormalizationSchemaResponse
+func (client *Client) CreateNormalizationSchema(request *CreateNormalizationSchemaRequest) (_result *CreateNormalizationSchemaResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateNormalizationSchemaResponse{}
+	_body, _err := client.CreateNormalizationSchemaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3806,6 +3912,10 @@ func (client *Client) ListIncidentsWithOptions(tmpReq *ListIncidentsRequest, run
 		body["OrderFieldName"] = request.OrderFieldName
 	}
 
+	if !dara.IsNil(request.Owners) {
+		body["Owners"] = request.Owners
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		body["PageNumber"] = request.PageNumber
 	}
@@ -5054,6 +5164,80 @@ func (client *Client) ListVendors(request *ListVendorsRequest) (_result *ListVen
 
 // Summary:
 //
+// 刷新数据源
+//
+// @param request - RefreshDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefreshDataSourceResponse
+func (client *Client) RefreshDataSourceWithOptions(request *RefreshDataSourceRequest, runtime *dara.RuntimeOptions) (_result *RefreshDataSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DataSourceId) {
+		body["DataSourceId"] = request.DataSourceId
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RoleFor) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RefreshDataSource"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RefreshDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 刷新数据源
+//
+// @param request - RefreshDataSourceRequest
+//
+// @return RefreshDataSourceResponse
+func (client *Client) RefreshDataSource(request *RefreshDataSourceRequest) (_result *RefreshDataSourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RefreshDataSourceResponse{}
+	_body, _err := client.RefreshDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 数据存储的清空操作，该动作会删除已有的数据，重新初始化物理存储。
 //
 // @param request - ResetDataStorageRequest
@@ -6137,8 +6321,16 @@ func (client *Client) UpdateDetectionRuleWithOptions(request *UpdateDetectionRul
 		body["AlertAttCk"] = request.AlertAttCk
 	}
 
+	if !dara.IsNil(request.AlertDescription) {
+		body["AlertDescription"] = request.AlertDescription
+	}
+
 	if !dara.IsNil(request.AlertLevel) {
 		body["AlertLevel"] = request.AlertLevel
+	}
+
+	if !dara.IsNil(request.AlertName) {
+		body["AlertName"] = request.AlertName
 	}
 
 	if !dara.IsNil(request.AlertSchemaId) {
@@ -6321,8 +6513,16 @@ func (client *Client) UpdateNormalizationRuleWithOptions(tmpReq *UpdateNormaliza
 		body["ExtendContentPacked"] = request.ExtendContentPacked
 	}
 
+	if !dara.IsNil(request.ExtendFieldStoreMode) {
+		body["ExtendFieldStoreMode"] = request.ExtendFieldStoreMode
+	}
+
 	if !dara.IsNil(request.Lang) {
 		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.NormalizationCategoryId) {
+		body["NormalizationCategoryId"] = request.NormalizationCategoryId
 	}
 
 	if !dara.IsNil(request.NormalizationRuleDescription) {
@@ -6415,6 +6615,96 @@ func (client *Client) UpdateNormalizationRule(request *UpdateNormalizationRuleRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateNormalizationRuleResponse{}
 	_body, _err := client.UpdateNormalizationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新标准化结构
+//
+// @param request - UpdateNormalizationSchemaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNormalizationSchemaResponse
+func (client *Client) UpdateNormalizationSchemaWithOptions(request *UpdateNormalizationSchemaRequest, runtime *dara.RuntimeOptions) (_result *UpdateNormalizationSchemaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.NormalizationFields) {
+		body["NormalizationFields"] = request.NormalizationFields
+	}
+
+	if !dara.IsNil(request.NormalizationSchemaDescription) {
+		body["NormalizationSchemaDescription"] = request.NormalizationSchemaDescription
+	}
+
+	if !dara.IsNil(request.NormalizationSchemaId) {
+		body["NormalizationSchemaId"] = request.NormalizationSchemaId
+	}
+
+	if !dara.IsNil(request.NormalizationSchemaName) {
+		body["NormalizationSchemaName"] = request.NormalizationSchemaName
+	}
+
+	if !dara.IsNil(request.NormalizationSchemaType) {
+		body["NormalizationSchemaType"] = request.NormalizationSchemaType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RoleFor) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateNormalizationSchema"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateNormalizationSchemaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新标准化结构
+//
+// @param request - UpdateNormalizationSchemaRequest
+//
+// @return UpdateNormalizationSchemaResponse
+func (client *Client) UpdateNormalizationSchema(request *UpdateNormalizationSchemaRequest) (_result *UpdateNormalizationSchemaResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateNormalizationSchemaResponse{}
+	_body, _err := client.UpdateNormalizationSchemaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6689,16 +6979,36 @@ func (client *Client) ValidateNormalizationRuleWithOptions(request *ValidateNorm
 		body["Data"] = request.Data
 	}
 
+	if !dara.IsNil(request.ExtendFieldStoreMode) {
+		body["ExtendFieldStoreMode"] = request.ExtendFieldStoreMode
+	}
+
 	if !dara.IsNil(request.Lang) {
 		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.LogSample) {
+		body["LogSample"] = request.LogSample
 	}
 
 	if !dara.IsNil(request.NormalizationCategoryId) {
 		body["NormalizationCategoryId"] = request.NormalizationCategoryId
 	}
 
+	if !dara.IsNil(request.NormalizationRuleExpression) {
+		body["NormalizationRuleExpression"] = request.NormalizationRuleExpression
+	}
+
+	if !dara.IsNil(request.NormalizationRuleMode) {
+		body["NormalizationRuleMode"] = request.NormalizationRuleMode
+	}
+
 	if !dara.IsNil(request.NormalizationSchemaId) {
 		body["NormalizationSchemaId"] = request.NormalizationSchemaId
+	}
+
+	if !dara.IsNil(request.ProductId) {
+		body["ProductId"] = request.ProductId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -6707,6 +7017,10 @@ func (client *Client) ValidateNormalizationRuleWithOptions(request *ValidateNorm
 
 	if !dara.IsNil(request.RoleFor) {
 		body["RoleFor"] = request.RoleFor
+	}
+
+	if !dara.IsNil(request.VendorId) {
+		body["VendorId"] = request.VendorId
 	}
 
 	req := &openapiutil.OpenApiRequest{

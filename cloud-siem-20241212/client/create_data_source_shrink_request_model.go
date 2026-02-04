@@ -43,8 +43,6 @@ type iCreateDataSourceShrinkRequest interface {
 	GetRegionId() *string
 	SetRoleFor(v int64) *CreateDataSourceShrinkRequest
 	GetRoleFor() *int64
-	SetUpdateTime(v int64) *CreateDataSourceShrinkRequest
-	GetUpdateTime() *int64
 }
 
 type CreateDataSourceShrinkRequest struct {
@@ -94,8 +92,7 @@ type CreateDataSourceShrinkRequest struct {
 	// example:
 	//
 	// 173326*******。
-	RoleFor    *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 }
 
 func (s CreateDataSourceShrinkRequest) String() string {
@@ -172,10 +169,6 @@ func (s *CreateDataSourceShrinkRequest) GetRegionId() *string {
 
 func (s *CreateDataSourceShrinkRequest) GetRoleFor() *int64 {
 	return s.RoleFor
-}
-
-func (s *CreateDataSourceShrinkRequest) GetUpdateTime() *int64 {
-	return s.UpdateTime
 }
 
 func (s *CreateDataSourceShrinkRequest) SetDataSourceFrom(v string) *CreateDataSourceShrinkRequest {
@@ -263,11 +256,6 @@ func (s *CreateDataSourceShrinkRequest) SetRoleFor(v int64) *CreateDataSourceShr
 	return s
 }
 
-func (s *CreateDataSourceShrinkRequest) SetUpdateTime(v int64) *CreateDataSourceShrinkRequest {
-	s.UpdateTime = &v
-	return s
-}
-
 func (s *CreateDataSourceShrinkRequest) Validate() error {
 	if s.DataSourceStores != nil {
 		for _, item := range s.DataSourceStores {
@@ -282,7 +270,6 @@ func (s *CreateDataSourceShrinkRequest) Validate() error {
 }
 
 type CreateDataSourceShrinkRequestDataSourceStores struct {
-	CreateTime            *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DataSourceStoreFrom   *string `json:"DataSourceStoreFrom,omitempty" xml:"DataSourceStoreFrom,omitempty"`
 	DataSourceStoreId     *string `json:"DataSourceStoreId,omitempty" xml:"DataSourceStoreId,omitempty"`
 	DataSourceStoreStatus *string `json:"DataSourceStoreStatus,omitempty" xml:"DataSourceStoreStatus,omitempty"`
@@ -298,7 +285,6 @@ type CreateDataSourceShrinkRequestDataSourceStores struct {
 	//
 	// actiontrail_management-events。
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	UpdateTime   *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s CreateDataSourceShrinkRequestDataSourceStores) String() string {
@@ -307,10 +293,6 @@ func (s CreateDataSourceShrinkRequestDataSourceStores) String() string {
 
 func (s CreateDataSourceShrinkRequestDataSourceStores) GoString() string {
 	return s.String()
-}
-
-func (s *CreateDataSourceShrinkRequestDataSourceStores) GetCreateTime() *int64 {
-	return s.CreateTime
 }
 
 func (s *CreateDataSourceShrinkRequestDataSourceStores) GetDataSourceStoreFrom() *string {
@@ -335,15 +317,6 @@ func (s *CreateDataSourceShrinkRequestDataSourceStores) GetLogRegionId() *string
 
 func (s *CreateDataSourceShrinkRequestDataSourceStores) GetLogStoreName() *string {
 	return s.LogStoreName
-}
-
-func (s *CreateDataSourceShrinkRequestDataSourceStores) GetUpdateTime() *int64 {
-	return s.UpdateTime
-}
-
-func (s *CreateDataSourceShrinkRequestDataSourceStores) SetCreateTime(v int64) *CreateDataSourceShrinkRequestDataSourceStores {
-	s.CreateTime = &v
-	return s
 }
 
 func (s *CreateDataSourceShrinkRequestDataSourceStores) SetDataSourceStoreFrom(v string) *CreateDataSourceShrinkRequestDataSourceStores {
@@ -373,11 +346,6 @@ func (s *CreateDataSourceShrinkRequestDataSourceStores) SetLogRegionId(v string)
 
 func (s *CreateDataSourceShrinkRequestDataSourceStores) SetLogStoreName(v string) *CreateDataSourceShrinkRequestDataSourceStores {
 	s.LogStoreName = &v
-	return s
-}
-
-func (s *CreateDataSourceShrinkRequestDataSourceStores) SetUpdateTime(v int64) *CreateDataSourceShrinkRequestDataSourceStores {
-	s.UpdateTime = &v
 	return s
 }
 

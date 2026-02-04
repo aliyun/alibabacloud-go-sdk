@@ -66,6 +66,10 @@ type GetNormalizationRuleResponseBodyNormalizationRule struct {
 	ExtendContentPacked *string `json:"ExtendContentPacked,omitempty" xml:"ExtendContentPacked,omitempty"`
 	// example:
 	//
+	// flat
+	ExtendFieldStoreMode *string `json:"ExtendFieldStoreMode,omitempty" xml:"ExtendFieldStoreMode,omitempty"`
+	// example:
+	//
 	// NETWORK_CATEGORY。
 	NormalizationCategoryId *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
 	// example:
@@ -140,6 +144,10 @@ func (s *GetNormalizationRuleResponseBodyNormalizationRule) GetExtendContentPack
 	return s.ExtendContentPacked
 }
 
+func (s *GetNormalizationRuleResponseBodyNormalizationRule) GetExtendFieldStoreMode() *string {
+	return s.ExtendFieldStoreMode
+}
+
 func (s *GetNormalizationRuleResponseBodyNormalizationRule) GetNormalizationCategoryId() *string {
 	return s.NormalizationCategoryId
 }
@@ -211,6 +219,11 @@ func (s *GetNormalizationRuleResponseBodyNormalizationRule) SetCreateTime(v int6
 
 func (s *GetNormalizationRuleResponseBodyNormalizationRule) SetExtendContentPacked(v string) *GetNormalizationRuleResponseBodyNormalizationRule {
 	s.ExtendContentPacked = &v
+	return s
+}
+
+func (s *GetNormalizationRuleResponseBodyNormalizationRule) SetExtendFieldStoreMode(v string) *GetNormalizationRuleResponseBodyNormalizationRule {
+	s.ExtendFieldStoreMode = &v
 	return s
 }
 

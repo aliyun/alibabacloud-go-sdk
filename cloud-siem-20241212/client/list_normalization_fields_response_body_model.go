@@ -110,6 +110,10 @@ func (s *ListNormalizationFieldsResponseBody) Validate() error {
 type ListNormalizationFieldsResponseBodyNormalizationFields struct {
 	// example:
 	//
+	// 1736386610000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
 	// NETWORK_CATEGORY。
 	NormalizationCategoryId *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
 	// example:
@@ -122,8 +126,15 @@ type ListNormalizationFieldsResponseBodyNormalizationFields struct {
 	NormalizationFieldExample *string `json:"NormalizationFieldExample,omitempty" xml:"NormalizationFieldExample,omitempty"`
 	// example:
 	//
+	// preset
+	NormalizationFieldFrom         *string                                                                             `json:"NormalizationFieldFrom,omitempty" xml:"NormalizationFieldFrom,omitempty"`
+	NormalizationFieldJsonIndexAll *bool                                                                               `json:"NormalizationFieldJsonIndexAll,omitempty" xml:"NormalizationFieldJsonIndexAll,omitempty"`
+	NormalizationFieldJsonKeys     []*ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys `json:"NormalizationFieldJsonKeys,omitempty" xml:"NormalizationFieldJsonKeys,omitempty" type:"Repeated"`
+	// example:
+	//
 	// cloud_user。
-	NormalizationFieldName *string `json:"NormalizationFieldName,omitempty" xml:"NormalizationFieldName,omitempty"`
+	NormalizationFieldName     *string `json:"NormalizationFieldName,omitempty" xml:"NormalizationFieldName,omitempty"`
+	NormalizationFieldRequired *bool   `json:"NormalizationFieldRequired,omitempty" xml:"NormalizationFieldRequired,omitempty"`
 	// example:
 	//
 	// true。
@@ -132,6 +143,7 @@ type ListNormalizationFieldsResponseBodyNormalizationFields struct {
 	//
 	// true。
 	NormalizationFieldReserved *bool `json:"NormalizationFieldReserved,omitempty" xml:"NormalizationFieldReserved,omitempty"`
+	NormalizationFieldTokenize *bool `json:"NormalizationFieldTokenize,omitempty" xml:"NormalizationFieldTokenize,omitempty"`
 	// example:
 	//
 	// varchar。
@@ -140,6 +152,10 @@ type ListNormalizationFieldsResponseBodyNormalizationFields struct {
 	//
 	// NETWORK_SESSION_ACTIVITY。
 	NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
+	// example:
+	//
+	// 1736386610000
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListNormalizationFieldsResponseBodyNormalizationFields) String() string {
@@ -148,6 +164,10 @@ func (s ListNormalizationFieldsResponseBodyNormalizationFields) String() string 
 
 func (s ListNormalizationFieldsResponseBodyNormalizationFields) GoString() string {
 	return s.String()
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFields) GetCreateTime() *int64 {
+	return s.CreateTime
 }
 
 func (s *ListNormalizationFieldsResponseBodyNormalizationFields) GetNormalizationCategoryId() *string {
@@ -162,8 +182,24 @@ func (s *ListNormalizationFieldsResponseBodyNormalizationFields) GetNormalizatio
 	return s.NormalizationFieldExample
 }
 
+func (s *ListNormalizationFieldsResponseBodyNormalizationFields) GetNormalizationFieldFrom() *string {
+	return s.NormalizationFieldFrom
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFields) GetNormalizationFieldJsonIndexAll() *bool {
+	return s.NormalizationFieldJsonIndexAll
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFields) GetNormalizationFieldJsonKeys() []*ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys {
+	return s.NormalizationFieldJsonKeys
+}
+
 func (s *ListNormalizationFieldsResponseBodyNormalizationFields) GetNormalizationFieldName() *string {
 	return s.NormalizationFieldName
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFields) GetNormalizationFieldRequired() *bool {
+	return s.NormalizationFieldRequired
 }
 
 func (s *ListNormalizationFieldsResponseBodyNormalizationFields) GetNormalizationFieldRequirement() *bool {
@@ -174,12 +210,25 @@ func (s *ListNormalizationFieldsResponseBodyNormalizationFields) GetNormalizatio
 	return s.NormalizationFieldReserved
 }
 
+func (s *ListNormalizationFieldsResponseBodyNormalizationFields) GetNormalizationFieldTokenize() *bool {
+	return s.NormalizationFieldTokenize
+}
+
 func (s *ListNormalizationFieldsResponseBodyNormalizationFields) GetNormalizationFieldType() *string {
 	return s.NormalizationFieldType
 }
 
 func (s *ListNormalizationFieldsResponseBodyNormalizationFields) GetNormalizationSchemaId() *string {
 	return s.NormalizationSchemaId
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFields) GetUpdateTime() *int64 {
+	return s.UpdateTime
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFields) SetCreateTime(v int64) *ListNormalizationFieldsResponseBodyNormalizationFields {
+	s.CreateTime = &v
+	return s
 }
 
 func (s *ListNormalizationFieldsResponseBodyNormalizationFields) SetNormalizationCategoryId(v string) *ListNormalizationFieldsResponseBodyNormalizationFields {
@@ -197,8 +246,28 @@ func (s *ListNormalizationFieldsResponseBodyNormalizationFields) SetNormalizatio
 	return s
 }
 
+func (s *ListNormalizationFieldsResponseBodyNormalizationFields) SetNormalizationFieldFrom(v string) *ListNormalizationFieldsResponseBodyNormalizationFields {
+	s.NormalizationFieldFrom = &v
+	return s
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFields) SetNormalizationFieldJsonIndexAll(v bool) *ListNormalizationFieldsResponseBodyNormalizationFields {
+	s.NormalizationFieldJsonIndexAll = &v
+	return s
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFields) SetNormalizationFieldJsonKeys(v []*ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys) *ListNormalizationFieldsResponseBodyNormalizationFields {
+	s.NormalizationFieldJsonKeys = v
+	return s
+}
+
 func (s *ListNormalizationFieldsResponseBodyNormalizationFields) SetNormalizationFieldName(v string) *ListNormalizationFieldsResponseBodyNormalizationFields {
 	s.NormalizationFieldName = &v
+	return s
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFields) SetNormalizationFieldRequired(v bool) *ListNormalizationFieldsResponseBodyNormalizationFields {
+	s.NormalizationFieldRequired = &v
 	return s
 }
 
@@ -212,6 +281,11 @@ func (s *ListNormalizationFieldsResponseBodyNormalizationFields) SetNormalizatio
 	return s
 }
 
+func (s *ListNormalizationFieldsResponseBodyNormalizationFields) SetNormalizationFieldTokenize(v bool) *ListNormalizationFieldsResponseBodyNormalizationFields {
+	s.NormalizationFieldTokenize = &v
+	return s
+}
+
 func (s *ListNormalizationFieldsResponseBodyNormalizationFields) SetNormalizationFieldType(v string) *ListNormalizationFieldsResponseBodyNormalizationFields {
 	s.NormalizationFieldType = &v
 	return s
@@ -222,6 +296,156 @@ func (s *ListNormalizationFieldsResponseBodyNormalizationFields) SetNormalizatio
 	return s
 }
 
+func (s *ListNormalizationFieldsResponseBodyNormalizationFields) SetUpdateTime(v int64) *ListNormalizationFieldsResponseBodyNormalizationFields {
+	s.UpdateTime = &v
+	return s
+}
+
 func (s *ListNormalizationFieldsResponseBodyNormalizationFields) Validate() error {
+	if s.NormalizationFieldJsonKeys != nil {
+		for _, item := range s.NormalizationFieldJsonKeys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys struct {
+	// example:
+	//
+	// 1736386610000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 告警等级
+	NormalizationFieldDescription *string `json:"NormalizationFieldDescription,omitempty" xml:"NormalizationFieldDescription,omitempty"`
+	// example:
+	//
+	// 枚举值：1、2、3、4、5
+	NormalizationFieldExample *string `json:"NormalizationFieldExample,omitempty" xml:"NormalizationFieldExample,omitempty"`
+	// example:
+	//
+	// preset
+	NormalizationFieldFrom *string `json:"NormalizationFieldFrom,omitempty" xml:"NormalizationFieldFrom,omitempty"`
+	// example:
+	//
+	// alert_name
+	NormalizationFieldName     *string `json:"NormalizationFieldName,omitempty" xml:"NormalizationFieldName,omitempty"`
+	NormalizationFieldRequired *bool   `json:"NormalizationFieldRequired,omitempty" xml:"NormalizationFieldRequired,omitempty"`
+	NormalizationFieldReserved *bool   `json:"NormalizationFieldReserved,omitempty" xml:"NormalizationFieldReserved,omitempty"`
+	NormalizationFieldTokenize *bool   `json:"NormalizationFieldTokenize,omitempty" xml:"NormalizationFieldTokenize,omitempty"`
+	// example:
+	//
+	// text
+	NormalizationFieldType *string `json:"NormalizationFieldType,omitempty" xml:"NormalizationFieldType,omitempty"`
+	// example:
+	//
+	// 1736386610000
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys) GoString() string {
+	return s.String()
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys) GetCreateTime() *int64 {
+	return s.CreateTime
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys) GetNormalizationFieldDescription() *string {
+	return s.NormalizationFieldDescription
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys) GetNormalizationFieldExample() *string {
+	return s.NormalizationFieldExample
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys) GetNormalizationFieldFrom() *string {
+	return s.NormalizationFieldFrom
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys) GetNormalizationFieldName() *string {
+	return s.NormalizationFieldName
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys) GetNormalizationFieldRequired() *bool {
+	return s.NormalizationFieldRequired
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys) GetNormalizationFieldReserved() *bool {
+	return s.NormalizationFieldReserved
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys) GetNormalizationFieldTokenize() *bool {
+	return s.NormalizationFieldTokenize
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys) GetNormalizationFieldType() *string {
+	return s.NormalizationFieldType
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys) GetUpdateTime() *int64 {
+	return s.UpdateTime
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys) SetCreateTime(v int64) *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys) SetNormalizationFieldDescription(v string) *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys {
+	s.NormalizationFieldDescription = &v
+	return s
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys) SetNormalizationFieldExample(v string) *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys {
+	s.NormalizationFieldExample = &v
+	return s
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys) SetNormalizationFieldFrom(v string) *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys {
+	s.NormalizationFieldFrom = &v
+	return s
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys) SetNormalizationFieldName(v string) *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys {
+	s.NormalizationFieldName = &v
+	return s
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys) SetNormalizationFieldRequired(v bool) *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys {
+	s.NormalizationFieldRequired = &v
+	return s
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys) SetNormalizationFieldReserved(v bool) *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys {
+	s.NormalizationFieldReserved = &v
+	return s
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys) SetNormalizationFieldTokenize(v bool) *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys {
+	s.NormalizationFieldTokenize = &v
+	return s
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys) SetNormalizationFieldType(v string) *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys {
+	s.NormalizationFieldType = &v
+	return s
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys) SetUpdateTime(v int64) *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJsonKeys) Validate() error {
 	return dara.Validate(s)
 }

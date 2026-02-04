@@ -11,8 +11,12 @@ type iUpdateNormalizationRuleShrinkRequest interface {
 	GoString() string
 	SetExtendContentPacked(v string) *UpdateNormalizationRuleShrinkRequest
 	GetExtendContentPacked() *string
+	SetExtendFieldStoreMode(v string) *UpdateNormalizationRuleShrinkRequest
+	GetExtendFieldStoreMode() *string
 	SetLang(v string) *UpdateNormalizationRuleShrinkRequest
 	GetLang() *string
+	SetNormalizationCategoryId(v string) *UpdateNormalizationRuleShrinkRequest
+	GetNormalizationCategoryId() *string
 	SetNormalizationRuleDescription(v string) *UpdateNormalizationRuleShrinkRequest
 	GetNormalizationRuleDescription() *string
 	SetNormalizationRuleExpression(v string) *UpdateNormalizationRuleShrinkRequest
@@ -47,8 +51,16 @@ type UpdateNormalizationRuleShrinkRequest struct {
 	ExtendContentPacked *string `json:"ExtendContentPacked,omitempty" xml:"ExtendContentPacked,omitempty"`
 	// example:
 	//
+	// flat
+	ExtendFieldStoreMode *string `json:"ExtendFieldStoreMode,omitempty" xml:"ExtendFieldStoreMode,omitempty"`
+	// example:
+	//
 	// zh。
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// NETWORK_CATEGORY。
+	NormalizationCategoryId *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
 	// example:
 	//
 	// normalization_rule_Z57np。
@@ -110,8 +122,16 @@ func (s *UpdateNormalizationRuleShrinkRequest) GetExtendContentPacked() *string 
 	return s.ExtendContentPacked
 }
 
+func (s *UpdateNormalizationRuleShrinkRequest) GetExtendFieldStoreMode() *string {
+	return s.ExtendFieldStoreMode
+}
+
 func (s *UpdateNormalizationRuleShrinkRequest) GetLang() *string {
 	return s.Lang
+}
+
+func (s *UpdateNormalizationRuleShrinkRequest) GetNormalizationCategoryId() *string {
+	return s.NormalizationCategoryId
 }
 
 func (s *UpdateNormalizationRuleShrinkRequest) GetNormalizationRuleDescription() *string {
@@ -175,8 +195,18 @@ func (s *UpdateNormalizationRuleShrinkRequest) SetExtendContentPacked(v string) 
 	return s
 }
 
+func (s *UpdateNormalizationRuleShrinkRequest) SetExtendFieldStoreMode(v string) *UpdateNormalizationRuleShrinkRequest {
+	s.ExtendFieldStoreMode = &v
+	return s
+}
+
 func (s *UpdateNormalizationRuleShrinkRequest) SetLang(v string) *UpdateNormalizationRuleShrinkRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *UpdateNormalizationRuleShrinkRequest) SetNormalizationCategoryId(v string) *UpdateNormalizationRuleShrinkRequest {
+	s.NormalizationCategoryId = &v
 	return s
 }
 

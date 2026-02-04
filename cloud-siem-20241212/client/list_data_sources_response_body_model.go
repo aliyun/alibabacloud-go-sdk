@@ -432,6 +432,10 @@ type ListDataSourcesResponseBodyDataSourcesDataSourceStores struct {
 	DataSourceStoreStatus *string `json:"DataSourceStoreStatus,omitempty" xml:"DataSourceStoreStatus,omitempty"`
 	// example:
 	//
+	// LogStoreNotExist
+	DataSourceStoreStatusCode *string `json:"DataSourceStoreStatusCode,omitempty" xml:"DataSourceStoreStatusCode,omitempty"`
+	// example:
+	//
 	// aliyun-cloudsiem-data-173326*******-cn-hangzhou。
 	LogProjectName *string `json:"LogProjectName,omitempty" xml:"LogProjectName,omitempty"`
 	// example:
@@ -476,6 +480,10 @@ func (s *ListDataSourcesResponseBodyDataSourcesDataSourceStores) GetDataSourceSt
 	return s.DataSourceStoreStatus
 }
 
+func (s *ListDataSourcesResponseBodyDataSourcesDataSourceStores) GetDataSourceStoreStatusCode() *string {
+	return s.DataSourceStoreStatusCode
+}
+
 func (s *ListDataSourcesResponseBodyDataSourcesDataSourceStores) GetLogProjectName() *string {
 	return s.LogProjectName
 }
@@ -514,6 +522,11 @@ func (s *ListDataSourcesResponseBodyDataSourcesDataSourceStores) SetDataSourceSt
 
 func (s *ListDataSourcesResponseBodyDataSourcesDataSourceStores) SetDataSourceStoreStatus(v string) *ListDataSourcesResponseBodyDataSourcesDataSourceStores {
 	s.DataSourceStoreStatus = &v
+	return s
+}
+
+func (s *ListDataSourcesResponseBodyDataSourcesDataSourceStores) SetDataSourceStoreStatusCode(v string) *ListDataSourcesResponseBodyDataSourcesDataSourceStores {
+	s.DataSourceStoreStatusCode = &v
 	return s
 }
 

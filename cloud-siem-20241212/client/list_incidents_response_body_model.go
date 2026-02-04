@@ -141,7 +141,8 @@ type ListIncidentsResponseBodyIncidents struct {
 	// example:
 	//
 	// 1603248483000
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime      *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DetectionRuleId *string `json:"DetectionRuleId,omitempty" xml:"DetectionRuleId,omitempty"`
 	// example:
 	//
 	// ECS unusual log in
@@ -162,6 +163,10 @@ type ListIncidentsResponseBodyIncidents struct {
 	//
 	// dbb1d7211c9285c862aa89385098****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// example:
+	//
+	// 1234567890xxxxxx
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// example:
 	//
 	// 3
@@ -192,6 +197,10 @@ func (s *ListIncidentsResponseBodyIncidents) GetCreateTime() *int64 {
 	return s.CreateTime
 }
 
+func (s *ListIncidentsResponseBodyIncidents) GetDetectionRuleId() *string {
+	return s.DetectionRuleId
+}
+
 func (s *ListIncidentsResponseBodyIncidents) GetIncidentName() *string {
 	return s.IncidentName
 }
@@ -212,6 +221,10 @@ func (s *ListIncidentsResponseBodyIncidents) GetIncidentUuid() *string {
 	return s.IncidentUuid
 }
 
+func (s *ListIncidentsResponseBodyIncidents) GetOwner() *string {
+	return s.Owner
+}
+
 func (s *ListIncidentsResponseBodyIncidents) GetRelateAlertCount() *int32 {
 	return s.RelateAlertCount
 }
@@ -230,6 +243,11 @@ func (s *ListIncidentsResponseBodyIncidents) GetUpdateTime() *int64 {
 
 func (s *ListIncidentsResponseBodyIncidents) SetCreateTime(v int64) *ListIncidentsResponseBodyIncidents {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *ListIncidentsResponseBodyIncidents) SetDetectionRuleId(v string) *ListIncidentsResponseBodyIncidents {
+	s.DetectionRuleId = &v
 	return s
 }
 
@@ -255,6 +273,11 @@ func (s *ListIncidentsResponseBodyIncidents) SetIncidentTags(v string) *ListInci
 
 func (s *ListIncidentsResponseBodyIncidents) SetIncidentUuid(v string) *ListIncidentsResponseBodyIncidents {
 	s.IncidentUuid = &v
+	return s
+}
+
+func (s *ListIncidentsResponseBodyIncidents) SetOwner(v string) *ListIncidentsResponseBodyIncidents {
+	s.Owner = &v
 	return s
 }
 

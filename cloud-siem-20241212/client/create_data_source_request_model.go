@@ -43,8 +43,6 @@ type iCreateDataSourceRequest interface {
 	GetRegionId() *string
 	SetRoleFor(v int64) *CreateDataSourceRequest
 	GetRoleFor() *int64
-	SetUpdateTime(v int64) *CreateDataSourceRequest
-	GetUpdateTime() *int64
 }
 
 type CreateDataSourceRequest struct {
@@ -94,8 +92,7 @@ type CreateDataSourceRequest struct {
 	// example:
 	//
 	// 173326*******。
-	RoleFor    *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 }
 
 func (s CreateDataSourceRequest) String() string {
@@ -172,10 +169,6 @@ func (s *CreateDataSourceRequest) GetRegionId() *string {
 
 func (s *CreateDataSourceRequest) GetRoleFor() *int64 {
 	return s.RoleFor
-}
-
-func (s *CreateDataSourceRequest) GetUpdateTime() *int64 {
-	return s.UpdateTime
 }
 
 func (s *CreateDataSourceRequest) SetDataSourceFrom(v string) *CreateDataSourceRequest {
@@ -263,11 +256,6 @@ func (s *CreateDataSourceRequest) SetRoleFor(v int64) *CreateDataSourceRequest {
 	return s
 }
 
-func (s *CreateDataSourceRequest) SetUpdateTime(v int64) *CreateDataSourceRequest {
-	s.UpdateTime = &v
-	return s
-}
-
 func (s *CreateDataSourceRequest) Validate() error {
 	if s.DataSourceStores != nil {
 		for _, item := range s.DataSourceStores {
@@ -282,7 +270,6 @@ func (s *CreateDataSourceRequest) Validate() error {
 }
 
 type CreateDataSourceRequestDataSourceStores struct {
-	CreateTime            *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DataSourceStoreFrom   *string `json:"DataSourceStoreFrom,omitempty" xml:"DataSourceStoreFrom,omitempty"`
 	DataSourceStoreId     *string `json:"DataSourceStoreId,omitempty" xml:"DataSourceStoreId,omitempty"`
 	DataSourceStoreStatus *string `json:"DataSourceStoreStatus,omitempty" xml:"DataSourceStoreStatus,omitempty"`
@@ -298,7 +285,6 @@ type CreateDataSourceRequestDataSourceStores struct {
 	//
 	// actiontrail_management-events。
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	UpdateTime   *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s CreateDataSourceRequestDataSourceStores) String() string {
@@ -307,10 +293,6 @@ func (s CreateDataSourceRequestDataSourceStores) String() string {
 
 func (s CreateDataSourceRequestDataSourceStores) GoString() string {
 	return s.String()
-}
-
-func (s *CreateDataSourceRequestDataSourceStores) GetCreateTime() *int64 {
-	return s.CreateTime
 }
 
 func (s *CreateDataSourceRequestDataSourceStores) GetDataSourceStoreFrom() *string {
@@ -335,15 +317,6 @@ func (s *CreateDataSourceRequestDataSourceStores) GetLogRegionId() *string {
 
 func (s *CreateDataSourceRequestDataSourceStores) GetLogStoreName() *string {
 	return s.LogStoreName
-}
-
-func (s *CreateDataSourceRequestDataSourceStores) GetUpdateTime() *int64 {
-	return s.UpdateTime
-}
-
-func (s *CreateDataSourceRequestDataSourceStores) SetCreateTime(v int64) *CreateDataSourceRequestDataSourceStores {
-	s.CreateTime = &v
-	return s
 }
 
 func (s *CreateDataSourceRequestDataSourceStores) SetDataSourceStoreFrom(v string) *CreateDataSourceRequestDataSourceStores {
@@ -373,11 +346,6 @@ func (s *CreateDataSourceRequestDataSourceStores) SetLogRegionId(v string) *Crea
 
 func (s *CreateDataSourceRequestDataSourceStores) SetLogStoreName(v string) *CreateDataSourceRequestDataSourceStores {
 	s.LogStoreName = &v
-	return s
-}
-
-func (s *CreateDataSourceRequestDataSourceStores) SetUpdateTime(v int64) *CreateDataSourceRequestDataSourceStores {
-	s.UpdateTime = &v
 	return s
 }
 

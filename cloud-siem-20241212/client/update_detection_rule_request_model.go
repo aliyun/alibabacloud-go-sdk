@@ -11,8 +11,12 @@ type iUpdateDetectionRuleRequest interface {
 	GoString() string
 	SetAlertAttCk(v string) *UpdateDetectionRuleRequest
 	GetAlertAttCk() *string
+	SetAlertDescription(v string) *UpdateDetectionRuleRequest
+	GetAlertDescription() *string
 	SetAlertLevel(v string) *UpdateDetectionRuleRequest
 	GetAlertLevel() *string
+	SetAlertName(v string) *UpdateDetectionRuleRequest
+	GetAlertName() *string
 	SetAlertSchemaId(v string) *UpdateDetectionRuleRequest
 	GetAlertSchemaId() *string
 	SetAlertTacticId(v string) *UpdateDetectionRuleRequest
@@ -75,11 +79,13 @@ type UpdateDetectionRuleRequest struct {
 	// example:
 	//
 	// Discovery
-	AlertAttCk *string `json:"AlertAttCk,omitempty" xml:"AlertAttCk,omitempty"`
+	AlertAttCk       *string `json:"AlertAttCk,omitempty" xml:"AlertAttCk,omitempty"`
+	AlertDescription *string `json:"AlertDescription,omitempty" xml:"AlertDescription,omitempty"`
 	// example:
 	//
 	// 1
 	AlertLevel *string `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	AlertName  *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// example:
 	//
 	// ALERT_ACTIVITY
@@ -244,8 +250,16 @@ func (s *UpdateDetectionRuleRequest) GetAlertAttCk() *string {
 	return s.AlertAttCk
 }
 
+func (s *UpdateDetectionRuleRequest) GetAlertDescription() *string {
+	return s.AlertDescription
+}
+
 func (s *UpdateDetectionRuleRequest) GetAlertLevel() *string {
 	return s.AlertLevel
+}
+
+func (s *UpdateDetectionRuleRequest) GetAlertName() *string {
+	return s.AlertName
 }
 
 func (s *UpdateDetectionRuleRequest) GetAlertSchemaId() *string {
@@ -365,8 +379,18 @@ func (s *UpdateDetectionRuleRequest) SetAlertAttCk(v string) *UpdateDetectionRul
 	return s
 }
 
+func (s *UpdateDetectionRuleRequest) SetAlertDescription(v string) *UpdateDetectionRuleRequest {
+	s.AlertDescription = &v
+	return s
+}
+
 func (s *UpdateDetectionRuleRequest) SetAlertLevel(v string) *UpdateDetectionRuleRequest {
 	s.AlertLevel = &v
+	return s
+}
+
+func (s *UpdateDetectionRuleRequest) SetAlertName(v string) *UpdateDetectionRuleRequest {
+	s.AlertName = &v
 	return s
 }
 
