@@ -287,6 +287,10 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AclInfo) {
+		body["aclInfo"] = request.AclInfo
+	}
+
 	if !dara.IsNil(request.AutoRenew) {
 		body["autoRenew"] = request.AutoRenew
 	}

@@ -9,6 +9,8 @@ type iCreateInstanceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAclInfo(v *CreateInstanceRequestAclInfo) *CreateInstanceRequest
+	GetAclInfo() *CreateInstanceRequestAclInfo
 	SetAutoRenew(v bool) *CreateInstanceRequest
 	GetAutoRenew() *bool
 	SetAutoRenewPeriod(v int32) *CreateInstanceRequest
@@ -44,6 +46,7 @@ type iCreateInstanceRequest interface {
 }
 
 type CreateInstanceRequest struct {
+	AclInfo *CreateInstanceRequestAclInfo `json:"aclInfo,omitempty" xml:"aclInfo,omitempty" type:"Struct"`
 	// Specifies whether to enable auto-renewal for the instance. This parameter takes effect only if you set paymentType to Subscription. Valid values:
 	//
 	// 	- true
@@ -216,6 +219,10 @@ func (s CreateInstanceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateInstanceRequest) GetAclInfo() *CreateInstanceRequestAclInfo {
+	return s.AclInfo
+}
+
 func (s *CreateInstanceRequest) GetAutoRenew() *bool {
 	return s.AutoRenew
 }
@@ -278,6 +285,11 @@ func (s *CreateInstanceRequest) GetTags() []*CreateInstanceRequestTags {
 
 func (s *CreateInstanceRequest) GetClientToken() *string {
 	return s.ClientToken
+}
+
+func (s *CreateInstanceRequest) SetAclInfo(v *CreateInstanceRequestAclInfo) *CreateInstanceRequest {
+	s.AclInfo = v
+	return s
 }
 
 func (s *CreateInstanceRequest) SetAutoRenew(v bool) *CreateInstanceRequest {
@@ -361,6 +373,11 @@ func (s *CreateInstanceRequest) SetClientToken(v string) *CreateInstanceRequest 
 }
 
 func (s *CreateInstanceRequest) Validate() error {
+	if s.AclInfo != nil {
+		if err := s.AclInfo.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.NetworkInfo != nil {
 		if err := s.NetworkInfo.Validate(); err != nil {
 			return err
@@ -381,6 +398,31 @@ func (s *CreateInstanceRequest) Validate() error {
 		}
 	}
 	return nil
+}
+
+type CreateInstanceRequestAclInfo struct {
+	DefaultVpcAuthFree *bool `json:"defaultVpcAuthFree,omitempty" xml:"defaultVpcAuthFree,omitempty"`
+}
+
+func (s CreateInstanceRequestAclInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateInstanceRequestAclInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestAclInfo) GetDefaultVpcAuthFree() *bool {
+	return s.DefaultVpcAuthFree
+}
+
+func (s *CreateInstanceRequestAclInfo) SetDefaultVpcAuthFree(v bool) *CreateInstanceRequestAclInfo {
+	s.DefaultVpcAuthFree = &v
+	return s
+}
+
+func (s *CreateInstanceRequestAclInfo) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateInstanceRequestNetworkInfo struct {
