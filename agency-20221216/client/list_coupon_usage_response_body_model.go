@@ -135,7 +135,8 @@ type ListCouponUsageResponseBodyData struct {
 	// example:
 	//
 	// AVAILABLE
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	T2PartnerUid *string `json:"T2PartnerUid,omitempty" xml:"T2PartnerUid,omitempty"`
 	// example:
 	//
 	// 1647668856741998
@@ -182,6 +183,10 @@ func (s *ListCouponUsageResponseBodyData) GetStatus() *string {
 	return s.Status
 }
 
+func (s *ListCouponUsageResponseBodyData) GetT2PartnerUid() *string {
+	return s.T2PartnerUid
+}
+
 func (s *ListCouponUsageResponseBodyData) GetUid() *int64 {
 	return s.Uid
 }
@@ -223,6 +228,11 @@ func (s *ListCouponUsageResponseBodyData) SetPublishDate(v string) *ListCouponUs
 
 func (s *ListCouponUsageResponseBodyData) SetStatus(v string) *ListCouponUsageResponseBodyData {
 	s.Status = &v
+	return s
+}
+
+func (s *ListCouponUsageResponseBodyData) SetT2PartnerUid(v string) *ListCouponUsageResponseBodyData {
+	s.T2PartnerUid = &v
 	return s
 }
 
