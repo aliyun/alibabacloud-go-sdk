@@ -104,7 +104,12 @@ func (s *DescribeCenRouteMapsResponseBody) SetTotalCount(v int32) *DescribeCenRo
 }
 
 func (s *DescribeCenRouteMapsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RouteMaps != nil {
+		if err := s.RouteMaps.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCenRouteMapsResponseBodyRouteMaps struct {
@@ -129,7 +134,16 @@ func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetRouteMap(v []*DescribeCen
 }
 
 func (s *DescribeCenRouteMapsResponseBodyRouteMaps) Validate() error {
-	return dara.Validate(s)
+	if s.RouteMap != nil {
+		for _, item := range s.RouteMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCenRouteMapsResponseBodyRouteMapsRouteMap struct {
@@ -650,7 +664,77 @@ func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetTransmitDirection
 }
 
 func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) Validate() error {
-	return dara.Validate(s)
+	if s.DestinationChildInstanceTypes != nil {
+		if err := s.DestinationChildInstanceTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DestinationCidrBlocks != nil {
+		if err := s.DestinationCidrBlocks.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DestinationInstanceIds != nil {
+		if err := s.DestinationInstanceIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DestinationRegionIds != nil {
+		if err := s.DestinationRegionIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DestinationRouteTableIds != nil {
+		if err := s.DestinationRouteTableIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MatchAsns != nil {
+		if err := s.MatchAsns.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MatchCommunitySet != nil {
+		if err := s.MatchCommunitySet.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OperateCommunitySet != nil {
+		if err := s.OperateCommunitySet.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrependAsPath != nil {
+		if err := s.PrependAsPath.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RouteTypes != nil {
+		if err := s.RouteTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceChildInstanceTypes != nil {
+		if err := s.SourceChildInstanceTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceInstanceIds != nil {
+		if err := s.SourceInstanceIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceRegionIds != nil {
+		if err := s.SourceRegionIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceRouteTableIds != nil {
+		if err := s.SourceRouteTableIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationChildInstanceTypes struct {

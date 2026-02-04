@@ -104,7 +104,16 @@ func (s *ListTransitRouterPrefixListAssociationResponseBody) SetTotalCount(v int
 }
 
 func (s *ListTransitRouterPrefixListAssociationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PrefixLists != nil {
+		for _, item := range s.PrefixLists {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTransitRouterPrefixListAssociationResponseBodyPrefixLists struct {

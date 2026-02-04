@@ -385,7 +385,16 @@ func (s *ListTransitRouterRouteEntriesRequest) SetTransitRouterRouteTableId(v st
 }
 
 func (s *ListTransitRouterRouteEntriesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RouteFilter != nil {
+		for _, item := range s.RouteFilter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTransitRouterRouteEntriesRequestRouteFilter struct {

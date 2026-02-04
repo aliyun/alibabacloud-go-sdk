@@ -74,7 +74,16 @@ func (s *ListCenInterRegionTrafficQosQueuesResponseBody) SetTrafficQosQueues(v [
 }
 
 func (s *ListCenInterRegionTrafficQosQueuesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficQosQueues != nil {
+		for _, item := range s.TrafficQosQueues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCenInterRegionTrafficQosQueuesResponseBodyTrafficQosQueues struct {

@@ -108,7 +108,16 @@ func (s *ListTransitRouterRouteEntriesResponseBody) SetTransitRouterRouteEntries
 }
 
 func (s *ListTransitRouterRouteEntriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TransitRouterRouteEntries != nil {
+		for _, item := range s.TransitRouterRouteEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries struct {
@@ -430,7 +439,12 @@ func (s *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries) Set
 }
 
 func (s *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries) Validate() error {
-	return dara.Validate(s)
+	if s.PathAttributes != nil {
+		if err := s.PathAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntriesPathAttributes struct {

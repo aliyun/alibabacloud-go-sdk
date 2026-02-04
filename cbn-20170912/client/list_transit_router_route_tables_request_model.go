@@ -238,7 +238,21 @@ func (s *ListTransitRouterRouteTablesRequest) SetTransitRouterRouteTableType(v s
 }
 
 func (s *ListTransitRouterRouteTablesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RouteTableOptions != nil {
+		if err := s.RouteTableOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTransitRouterRouteTablesRequestRouteTableOptions struct {

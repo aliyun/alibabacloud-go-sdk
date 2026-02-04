@@ -59,5 +59,10 @@ func (s *ListTransitRouterCidrResponse) SetBody(v *ListTransitRouterCidrResponse
 }
 
 func (s *ListTransitRouterCidrResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

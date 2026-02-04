@@ -104,7 +104,12 @@ func (s *DescribeCensResponseBody) SetTotalCount(v int32) *DescribeCensResponseB
 }
 
 func (s *DescribeCensResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Cens != nil {
+		if err := s.Cens.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCensResponseBodyCens struct {
@@ -129,7 +134,16 @@ func (s *DescribeCensResponseBodyCens) SetCen(v []*DescribeCensResponseBodyCensC
 }
 
 func (s *DescribeCensResponseBodyCens) Validate() error {
-	return dara.Validate(s)
+	if s.Cen != nil {
+		for _, item := range s.Cen {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCensResponseBodyCensCen struct {
@@ -300,7 +314,17 @@ func (s *DescribeCensResponseBodyCensCen) SetTags(v *DescribeCensResponseBodyCen
 }
 
 func (s *DescribeCensResponseBodyCensCen) Validate() error {
-	return dara.Validate(s)
+	if s.CenBandwidthPackageIds != nil {
+		if err := s.CenBandwidthPackageIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCensResponseBodyCensCenCenBandwidthPackageIds struct {
@@ -350,7 +374,16 @@ func (s *DescribeCensResponseBodyCensCenTags) SetTag(v []*DescribeCensResponseBo
 }
 
 func (s *DescribeCensResponseBodyCensCenTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCensResponseBodyCensCenTagsTag struct {

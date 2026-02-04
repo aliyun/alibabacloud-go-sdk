@@ -106,7 +106,16 @@ func (s *ListGrantVSwitchEnisResponseBody) SetTotalCount(v string) *ListGrantVSw
 }
 
 func (s *ListGrantVSwitchEnisResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GrantVSwitchEnis != nil {
+		for _, item := range s.GrantVSwitchEnis {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis struct {

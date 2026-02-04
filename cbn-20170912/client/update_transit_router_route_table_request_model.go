@@ -183,7 +183,12 @@ func (s *UpdateTransitRouterRouteTableRequest) SetTransitRouterRouteTableName(v 
 }
 
 func (s *UpdateTransitRouterRouteTableRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RouteTableOptions != nil {
+		if err := s.RouteTableOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateTransitRouterRouteTableRequestRouteTableOptions struct {

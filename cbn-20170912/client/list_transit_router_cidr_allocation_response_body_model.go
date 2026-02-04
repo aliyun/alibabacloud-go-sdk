@@ -112,7 +112,16 @@ func (s *ListTransitRouterCidrAllocationResponseBody) SetTransitRouterCidrAlloca
 }
 
 func (s *ListTransitRouterCidrAllocationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TransitRouterCidrAllocations != nil {
+		for _, item := range s.TransitRouterCidrAllocations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTransitRouterCidrAllocationResponseBodyTransitRouterCidrAllocations struct {

@@ -59,5 +59,10 @@ func (s *DeleteCenInterRegionTrafficQosPolicyResponse) SetBody(v *DeleteCenInter
 }
 
 func (s *DeleteCenInterRegionTrafficQosPolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

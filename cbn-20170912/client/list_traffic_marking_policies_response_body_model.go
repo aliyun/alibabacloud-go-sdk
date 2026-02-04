@@ -108,7 +108,16 @@ func (s *ListTrafficMarkingPoliciesResponseBody) SetTrafficMarkingPolicies(v []*
 }
 
 func (s *ListTrafficMarkingPoliciesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficMarkingPolicies != nil {
+		for _, item := range s.TrafficMarkingPolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies struct {
@@ -249,7 +258,16 @@ func (s *ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies) SetTransi
 }
 
 func (s *ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficMatchRules != nil {
+		for _, item := range s.TrafficMatchRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRules struct {

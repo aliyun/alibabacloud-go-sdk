@@ -104,7 +104,12 @@ func (s *DescribeRouteConflictResponseBody) SetTotalCount(v int32) *DescribeRout
 }
 
 func (s *DescribeRouteConflictResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RouteConflicts != nil {
+		if err := s.RouteConflicts.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRouteConflictResponseBodyRouteConflicts struct {
@@ -129,7 +134,16 @@ func (s *DescribeRouteConflictResponseBodyRouteConflicts) SetRouteConflict(v []*
 }
 
 func (s *DescribeRouteConflictResponseBodyRouteConflicts) Validate() error {
-	return dara.Validate(s)
+	if s.RouteConflict != nil {
+		for _, item := range s.RouteConflict {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRouteConflictResponseBodyRouteConflictsRouteConflict struct {

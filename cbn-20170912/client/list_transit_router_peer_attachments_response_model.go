@@ -59,5 +59,10 @@ func (s *ListTransitRouterPeerAttachmentsResponse) SetBody(v *ListTransitRouterP
 }
 
 func (s *ListTransitRouterPeerAttachmentsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

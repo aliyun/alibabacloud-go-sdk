@@ -228,7 +228,12 @@ func (s *ListCenInterRegionTrafficQosQueuesRequest) SetTransitRouterId(v string)
 }
 
 func (s *ListCenInterRegionTrafficQosQueuesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EffectiveBandwidthFilter != nil {
+		if err := s.EffectiveBandwidthFilter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCenInterRegionTrafficQosQueuesRequestEffectiveBandwidthFilter struct {

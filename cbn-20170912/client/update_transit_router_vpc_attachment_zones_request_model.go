@@ -158,7 +158,25 @@ func (s *UpdateTransitRouterVpcAttachmentZonesRequest) SetTransitRouterAttachmen
 }
 
 func (s *UpdateTransitRouterVpcAttachmentZonesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AddZoneMappings != nil {
+		for _, item := range s.AddZoneMappings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RemoveZoneMappings != nil {
+		for _, item := range s.RemoveZoneMappings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateTransitRouterVpcAttachmentZonesRequestAddZoneMappings struct {

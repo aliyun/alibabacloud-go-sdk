@@ -108,7 +108,16 @@ func (s *ListTransitRouterMulticastGroupsResponseBody) SetTransitRouterMulticast
 }
 
 func (s *ListTransitRouterMulticastGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TransitRouterMulticastGroups != nil {
+		for _, item := range s.TransitRouterMulticastGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups struct {

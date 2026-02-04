@@ -104,7 +104,12 @@ func (s *DescribeCenInterRegionBandwidthLimitsResponseBody) SetTotalCount(v int3
 }
 
 func (s *DescribeCenInterRegionBandwidthLimitsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CenInterRegionBandwidthLimits != nil {
+		if err := s.CenInterRegionBandwidthLimits.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits struct {
@@ -129,7 +134,16 @@ func (s *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidt
 }
 
 func (s *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits) Validate() error {
-	return dara.Validate(s)
+	if s.CenInterRegionBandwidthLimit != nil {
+		for _, item := range s.CenInterRegionBandwidthLimit {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimitsCenInterRegionBandwidthLimit struct {

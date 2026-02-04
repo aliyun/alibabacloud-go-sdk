@@ -138,7 +138,12 @@ func (s *DescribeCenPrivateZoneRoutesResponseBody) SetTotalCount(v int32) *Descr
 }
 
 func (s *DescribeCenPrivateZoneRoutesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PrivateZoneInfos != nil {
+		if err := s.PrivateZoneInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos struct {
@@ -163,7 +168,16 @@ func (s *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos) SetPrivateZon
 }
 
 func (s *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos) Validate() error {
-	return dara.Validate(s)
+	if s.PrivateZoneInfo != nil {
+		for _, item := range s.PrivateZoneInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfosPrivateZoneInfo struct {

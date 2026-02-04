@@ -104,7 +104,12 @@ func (s *DescribeCenBandwidthPackagesResponseBody) SetTotalCount(v int32) *Descr
 }
 
 func (s *DescribeCenBandwidthPackagesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CenBandwidthPackages != nil {
+		if err := s.CenBandwidthPackages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages struct {
@@ -129,7 +134,16 @@ func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) SetCenBan
 }
 
 func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) Validate() error {
-	return dara.Validate(s)
+	if s.CenBandwidthPackage != nil {
+		for _, item := range s.CenBandwidthPackage {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage struct {
@@ -502,7 +516,22 @@ func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidt
 }
 
 func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) Validate() error {
-	return dara.Validate(s)
+	if s.CenIds != nil {
+		if err := s.CenIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OrginInterRegionBandwidthLimits != nil {
+		if err := s.OrginInterRegionBandwidthLimits.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageCenIds struct {
@@ -552,7 +581,16 @@ func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidt
 }
 
 func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimits) Validate() error {
-	return dara.Validate(s)
+	if s.OrginInterRegionBandwidthLimit != nil {
+		for _, item := range s.OrginInterRegionBandwidthLimit {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimitsOrginInterRegionBandwidthLimit struct {
@@ -652,7 +690,16 @@ func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidt
 }
 
 func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageTagsTag struct {

@@ -104,7 +104,16 @@ func (s *ListTransitRoutersResponseBody) SetTransitRouters(v []*ListTransitRoute
 }
 
 func (s *ListTransitRoutersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TransitRouters != nil {
+		for _, item := range s.TransitRouters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTransitRoutersResponseBodyTransitRouters struct {
@@ -311,7 +320,25 @@ func (s *ListTransitRoutersResponseBodyTransitRouters) SetType(v string) *ListTr
 }
 
 func (s *ListTransitRoutersResponseBodyTransitRouters) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TransitRouterCidrList != nil {
+		for _, item := range s.TransitRouterCidrList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTransitRoutersResponseBodyTransitRoutersTags struct {

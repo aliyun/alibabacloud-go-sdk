@@ -74,7 +74,16 @@ func (s *ListCenChildInstanceRouteEntriesToAttachmentResponseBody) SetRouteEntry
 }
 
 func (s *ListCenChildInstanceRouteEntriesToAttachmentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RouteEntry != nil {
+		for _, item := range s.RouteEntry {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCenChildInstanceRouteEntriesToAttachmentResponseBodyRouteEntry struct {

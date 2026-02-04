@@ -110,7 +110,12 @@ func (s *DescribeGrantRulesToCenResponseBody) SetTotalCount(v int64) *DescribeGr
 }
 
 func (s *DescribeGrantRulesToCenResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GrantRules != nil {
+		if err := s.GrantRules.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGrantRulesToCenResponseBodyGrantRules struct {
@@ -135,7 +140,16 @@ func (s *DescribeGrantRulesToCenResponseBodyGrantRules) SetGrantRule(v []*Descri
 }
 
 func (s *DescribeGrantRulesToCenResponseBodyGrantRules) Validate() error {
-	return dara.Validate(s)
+	if s.GrantRule != nil {
+		for _, item := range s.GrantRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule struct {

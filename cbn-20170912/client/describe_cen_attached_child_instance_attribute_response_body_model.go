@@ -215,7 +215,12 @@ func (s *DescribeCenAttachedChildInstanceAttributeResponseBody) SetStatus(v stri
 }
 
 func (s *DescribeCenAttachedChildInstanceAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ChildInstanceAttributes != nil {
+		if err := s.ChildInstanceAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributes struct {
@@ -282,7 +287,17 @@ func (s *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttri
 }
 
 func (s *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributes) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6CidrBlocks != nil {
+		if err := s.Ipv6CidrBlocks.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecondaryCidrBlocks != nil {
+		if err := s.SecondaryCidrBlocks.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocks struct {
@@ -307,7 +322,16 @@ func (s *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttri
 }
 
 func (s *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocks) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6CidrBlock != nil {
+		for _, item := range s.Ipv6CidrBlock {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocksIpv6CidrBlock struct {

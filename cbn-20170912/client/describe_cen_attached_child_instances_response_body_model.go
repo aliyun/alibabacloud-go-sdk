@@ -104,7 +104,12 @@ func (s *DescribeCenAttachedChildInstancesResponseBody) SetTotalCount(v int32) *
 }
 
 func (s *DescribeCenAttachedChildInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ChildInstances != nil {
+		if err := s.ChildInstances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCenAttachedChildInstancesResponseBodyChildInstances struct {
@@ -129,7 +134,16 @@ func (s *DescribeCenAttachedChildInstancesResponseBodyChildInstances) SetChildIn
 }
 
 func (s *DescribeCenAttachedChildInstancesResponseBodyChildInstances) Validate() error {
-	return dara.Validate(s)
+	if s.ChildInstance != nil {
+		for _, item := range s.ChildInstance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance struct {

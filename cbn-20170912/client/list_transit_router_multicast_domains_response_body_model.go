@@ -108,7 +108,16 @@ func (s *ListTransitRouterMulticastDomainsResponseBody) SetTransitRouterMulticas
 }
 
 func (s *ListTransitRouterMulticastDomainsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TransitRouterMulticastDomains != nil {
+		for _, item := range s.TransitRouterMulticastDomains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains struct {
@@ -254,7 +263,21 @@ func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDoma
 }
 
 func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains) Validate() error {
-	return dara.Validate(s)
+	if s.Options != nil {
+		if err := s.Options.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsOptions struct {

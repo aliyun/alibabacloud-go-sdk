@@ -53,7 +53,16 @@ func (s *ListTransitRouterCidrResponseBody) SetRequestId(v string) *ListTransitR
 }
 
 func (s *ListTransitRouterCidrResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CidrLists != nil {
+		for _, item := range s.CidrLists {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTransitRouterCidrResponseBodyCidrLists struct {

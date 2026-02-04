@@ -240,7 +240,25 @@ func (s *CreateTransitRouterRequest) SetTransitRouterName(v string) *CreateTrans
 }
 
 func (s *CreateTransitRouterRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TransitRouterCidrList != nil {
+		for _, item := range s.TransitRouterCidrList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateTransitRouterRequestTag struct {

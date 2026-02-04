@@ -223,7 +223,16 @@ func (s *CreateCenInterRegionTrafficQosPolicyRequest) SetTransitRouterId(v strin
 }
 
 func (s *CreateCenInterRegionTrafficQosPolicyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficQosQueues != nil {
+		for _, item := range s.TrafficQosQueues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues struct {

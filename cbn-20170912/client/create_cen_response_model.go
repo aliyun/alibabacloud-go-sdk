@@ -59,5 +59,10 @@ func (s *CreateCenResponse) SetBody(v *CreateCenResponseBody) *CreateCenResponse
 }
 
 func (s *CreateCenResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

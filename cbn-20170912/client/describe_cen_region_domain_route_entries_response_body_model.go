@@ -104,7 +104,12 @@ func (s *DescribeCenRegionDomainRouteEntriesResponseBody) SetTotalCount(v int32)
 }
 
 func (s *DescribeCenRegionDomainRouteEntriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CenRouteEntries != nil {
+		if err := s.CenRouteEntries.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries struct {
@@ -129,7 +134,16 @@ func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries) SetCenR
 }
 
 func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries) Validate() error {
-	return dara.Validate(s)
+	if s.CenRouteEntry != nil {
+		for _, item := range s.CenRouteEntry {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry struct {
@@ -336,7 +350,27 @@ func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteE
 }
 
 func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) Validate() error {
-	return dara.Validate(s)
+	if s.AsPaths != nil {
+		if err := s.AsPaths.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CenOutRouteMapRecords != nil {
+		if err := s.CenOutRouteMapRecords.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CenRouteMapRecords != nil {
+		if err := s.CenRouteMapRecords.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Communities != nil {
+		if err := s.Communities.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths struct {
@@ -386,7 +420,16 @@ func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteE
 }
 
 func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecords) Validate() error {
-	return dara.Validate(s)
+	if s.CenOutRouteMapRecord != nil {
+		for _, item := range s.CenOutRouteMapRecord {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecordsCenOutRouteMapRecord struct {
@@ -456,7 +499,16 @@ func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteE
 }
 
 func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords) Validate() error {
-	return dara.Validate(s)
+	if s.CenRouteMapRecord != nil {
+		for _, item := range s.CenRouteMapRecord {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord struct {

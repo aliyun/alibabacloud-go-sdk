@@ -104,7 +104,12 @@ func (s *DescribeCenVbrHealthCheckResponseBody) SetVbrHealthChecks(v *DescribeCe
 }
 
 func (s *DescribeCenVbrHealthCheckResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VbrHealthChecks != nil {
+		if err := s.VbrHealthChecks.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks struct {
@@ -129,7 +134,16 @@ func (s *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks) SetVbrHealthCheck
 }
 
 func (s *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks) Validate() error {
-	return dara.Validate(s)
+	if s.VbrHealthCheck != nil {
+		for _, item := range s.VbrHealthCheck {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck struct {

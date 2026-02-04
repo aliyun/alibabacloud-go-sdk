@@ -194,7 +194,16 @@ func (s *ListCenChildInstanceRouteEntriesToAttachmentRequest) SetTransitRouterAt
 }
 
 func (s *ListCenChildInstanceRouteEntriesToAttachmentRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RouteFilter != nil {
+		for _, item := range s.RouteFilter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCenChildInstanceRouteEntriesToAttachmentRequestRouteFilter struct {

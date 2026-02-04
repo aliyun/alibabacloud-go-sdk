@@ -59,5 +59,10 @@ func (s *UpdateTransitRouterResponse) SetBody(v *UpdateTransitRouterResponseBody
 }
 
 func (s *UpdateTransitRouterResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

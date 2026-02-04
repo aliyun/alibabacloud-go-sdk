@@ -181,7 +181,12 @@ func (s *ModifyTransitRouterMulticastDomainRequest) SetTransitRouterMulticastDom
 }
 
 func (s *ModifyTransitRouterMulticastDomainRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Options != nil {
+		if err := s.Options.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyTransitRouterMulticastDomainRequestOptions struct {

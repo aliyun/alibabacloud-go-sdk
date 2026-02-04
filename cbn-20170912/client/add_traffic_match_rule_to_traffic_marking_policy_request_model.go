@@ -147,7 +147,16 @@ func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequest) SetTrafficMatchRules(
 }
 
 func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficMatchRules != nil {
+		for _, item := range s.TrafficMatchRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules struct {

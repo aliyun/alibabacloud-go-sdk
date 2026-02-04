@@ -104,7 +104,16 @@ func (s *ListTransitRouterRouteTablePropagationsResponseBody) SetTransitRouterPr
 }
 
 func (s *ListTransitRouterRouteTablePropagationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TransitRouterPropagations != nil {
+		for _, item := range s.TransitRouterPropagations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTransitRouterRouteTablePropagationsResponseBodyTransitRouterPropagations struct {

@@ -108,7 +108,16 @@ func (s *ListCenInterRegionTrafficQosPoliciesResponseBody) SetTrafficQosPolicies
 }
 
 func (s *ListCenInterRegionTrafficQosPoliciesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficQosPolicies != nil {
+		for _, item := range s.TrafficQosPolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies struct {
@@ -251,7 +260,16 @@ func (s *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies) Set
 }
 
 func (s *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficQosQueues != nil {
+		for _, item := range s.TrafficQosQueues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQosQueues struct {

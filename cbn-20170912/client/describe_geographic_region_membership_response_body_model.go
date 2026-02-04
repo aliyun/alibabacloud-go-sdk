@@ -104,7 +104,12 @@ func (s *DescribeGeographicRegionMembershipResponseBody) SetTotalCount(v int32) 
 }
 
 func (s *DescribeGeographicRegionMembershipResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RegionIds != nil {
+		if err := s.RegionIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGeographicRegionMembershipResponseBodyRegionIds struct {
@@ -129,7 +134,16 @@ func (s *DescribeGeographicRegionMembershipResponseBodyRegionIds) SetRegionId(v 
 }
 
 func (s *DescribeGeographicRegionMembershipResponseBodyRegionIds) Validate() error {
-	return dara.Validate(s)
+	if s.RegionId != nil {
+		for _, item := range s.RegionId {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGeographicRegionMembershipResponseBodyRegionIdsRegionId struct {

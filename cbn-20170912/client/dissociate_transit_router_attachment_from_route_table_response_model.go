@@ -59,5 +59,10 @@ func (s *DissociateTransitRouterAttachmentFromRouteTableResponse) SetBody(v *Dis
 }
 
 func (s *DissociateTransitRouterAttachmentFromRouteTableResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

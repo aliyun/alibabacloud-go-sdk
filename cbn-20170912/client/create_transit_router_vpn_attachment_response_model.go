@@ -59,5 +59,10 @@ func (s *CreateTransitRouterVpnAttachmentResponse) SetBody(v *CreateTransitRoute
 }
 
 func (s *CreateTransitRouterVpnAttachmentResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

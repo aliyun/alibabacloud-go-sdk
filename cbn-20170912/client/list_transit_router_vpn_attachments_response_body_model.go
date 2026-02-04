@@ -108,7 +108,16 @@ func (s *ListTransitRouterVpnAttachmentsResponseBody) SetTransitRouterAttachment
 }
 
 func (s *ListTransitRouterVpnAttachmentsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TransitRouterAttachments != nil {
+		for _, item := range s.TransitRouterAttachments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments struct {
@@ -377,7 +386,25 @@ func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments) Se
 }
 
 func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Zones != nil {
+		for _, item := range s.Zones {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachmentsTags struct {

@@ -59,6 +59,11 @@ func (s *EnableTransitRouterRouteTablePropagationResponse) SetBody(v *EnableTran
 }
 
 func (s *EnableTransitRouterRouteTablePropagationResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

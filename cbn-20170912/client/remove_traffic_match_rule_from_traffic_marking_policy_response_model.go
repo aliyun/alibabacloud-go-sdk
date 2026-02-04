@@ -59,5 +59,10 @@ func (s *RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse) SetBody(v *Remo
 }
 
 func (s *RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

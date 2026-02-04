@@ -104,7 +104,16 @@ func (s *ListGrantVSwitchesToCenResponseBody) SetVSwitches(v []*ListGrantVSwitch
 }
 
 func (s *ListGrantVSwitchesToCenResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VSwitches != nil {
+		for _, item := range s.VSwitches {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGrantVSwitchesToCenResponseBodyVSwitches struct {

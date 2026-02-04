@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -75,9 +76,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return ActiveFlowLogResponse
 func (client *Client) ActiveFlowLogWithOptions(request *ActiveFlowLogRequest, runtime *dara.RuntimeOptions) (_result *ActiveFlowLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -181,9 +184,11 @@ func (client *Client) ActiveFlowLog(request *ActiveFlowLogRequest) (_result *Act
 //
 // @return AddTrafficMatchRuleToTrafficMarkingPolicyResponse
 func (client *Client) AddTrafficMatchRuleToTrafficMarkingPolicyWithOptions(request *AddTrafficMatchRuleToTrafficMarkingPolicyRequest, runtime *dara.RuntimeOptions) (_result *AddTrafficMatchRuleToTrafficMarkingPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -285,9 +290,11 @@ func (client *Client) AddTrafficMatchRuleToTrafficMarkingPolicy(request *AddTraf
 //
 // @return AddTraficMatchRuleToTrafficMarkingPolicyResponse
 func (client *Client) AddTraficMatchRuleToTrafficMarkingPolicyWithOptions(request *AddTraficMatchRuleToTrafficMarkingPolicyRequest, runtime *dara.RuntimeOptions) (_result *AddTraficMatchRuleToTrafficMarkingPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -388,9 +395,11 @@ func (client *Client) AddTraficMatchRuleToTrafficMarkingPolicy(request *AddTrafi
 //
 // @return AssociateCenBandwidthPackageResponse
 func (client *Client) AssociateCenBandwidthPackageWithOptions(request *AssociateCenBandwidthPackageRequest, runtime *dara.RuntimeOptions) (_result *AssociateCenBandwidthPackageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenBandwidthPackageId) {
@@ -488,9 +497,11 @@ func (client *Client) AssociateCenBandwidthPackage(request *AssociateCenBandwidt
 //
 // @return AssociateTransitRouterAttachmentWithRouteTableResponse
 func (client *Client) AssociateTransitRouterAttachmentWithRouteTableWithOptions(request *AssociateTransitRouterAttachmentWithRouteTableRequest, runtime *dara.RuntimeOptions) (_result *AssociateTransitRouterAttachmentWithRouteTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -602,9 +613,11 @@ func (client *Client) AssociateTransitRouterAttachmentWithRouteTable(request *As
 //
 // @return AssociateTransitRouterMulticastDomainResponse
 func (client *Client) AssociateTransitRouterMulticastDomainWithOptions(request *AssociateTransitRouterMulticastDomainRequest, runtime *dara.RuntimeOptions) (_result *AssociateTransitRouterMulticastDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -716,9 +729,11 @@ func (client *Client) AssociateTransitRouterMulticastDomain(request *AssociateTr
 //
 // @return AttachCenChildInstanceResponse
 func (client *Client) AttachCenChildInstanceWithOptions(request *AttachCenChildInstanceRequest, runtime *dara.RuntimeOptions) (_result *AttachCenChildInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -818,9 +833,11 @@ func (client *Client) AttachCenChildInstance(request *AttachCenChildInstanceRequ
 //
 // @return CheckTransitRouterServiceResponse
 func (client *Client) CheckTransitRouterServiceWithOptions(request *CheckTransitRouterServiceRequest, runtime *dara.RuntimeOptions) (_result *CheckTransitRouterServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -902,9 +919,11 @@ func (client *Client) CheckTransitRouterService(request *CheckTransitRouterServi
 //
 // @return CreateCenResponse
 func (client *Client) CreateCenWithOptions(request *CreateCenRequest, runtime *dara.RuntimeOptions) (_result *CreateCenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1010,9 +1029,11 @@ func (client *Client) CreateCen(request *CreateCenRequest) (_result *CreateCenRe
 //
 // @return CreateCenBandwidthPackageResponse
 func (client *Client) CreateCenBandwidthPackageWithOptions(request *CreateCenBandwidthPackageRequest, runtime *dara.RuntimeOptions) (_result *CreateCenBandwidthPackageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -1154,9 +1175,11 @@ func (client *Client) CreateCenBandwidthPackage(request *CreateCenBandwidthPacka
 //
 // @return CreateCenChildInstanceRouteEntryToAttachmentResponse
 func (client *Client) CreateCenChildInstanceRouteEntryToAttachmentWithOptions(request *CreateCenChildInstanceRouteEntryToAttachmentRequest, runtime *dara.RuntimeOptions) (_result *CreateCenChildInstanceRouteEntryToAttachmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -1272,9 +1295,11 @@ func (client *Client) CreateCenChildInstanceRouteEntryToAttachment(request *Crea
 //
 // @return CreateCenChildInstanceRouteEntryToCenResponse
 func (client *Client) CreateCenChildInstanceRouteEntryToCenWithOptions(request *CreateCenChildInstanceRouteEntryToCenRequest, runtime *dara.RuntimeOptions) (_result *CreateCenChildInstanceRouteEntryToCenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -1404,9 +1429,11 @@ func (client *Client) CreateCenChildInstanceRouteEntryToCen(request *CreateCenCh
 //
 // @return CreateCenInterRegionTrafficQosPolicyResponse
 func (client *Client) CreateCenInterRegionTrafficQosPolicyWithOptions(request *CreateCenInterRegionTrafficQosPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateCenInterRegionTrafficQosPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BandwidthGuaranteeMode) {
@@ -1538,9 +1565,11 @@ func (client *Client) CreateCenInterRegionTrafficQosPolicy(request *CreateCenInt
 //
 // @return CreateCenInterRegionTrafficQosQueueResponse
 func (client *Client) CreateCenInterRegionTrafficQosQueueWithOptions(request *CreateCenInterRegionTrafficQosQueueRequest, runtime *dara.RuntimeOptions) (_result *CreateCenInterRegionTrafficQosQueueResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Bandwidth) {
@@ -1660,9 +1689,11 @@ func (client *Client) CreateCenInterRegionTrafficQosQueue(request *CreateCenInte
 //
 // @return CreateCenRouteMapResponse
 func (client *Client) CreateCenRouteMapWithOptions(request *CreateCenRouteMapRequest, runtime *dara.RuntimeOptions) (_result *CreateCenRouteMapResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AsPathMatchMode) {
@@ -1896,9 +1927,11 @@ func (client *Client) CreateCenRouteMap(request *CreateCenRouteMapRequest) (_res
 //
 // @return CreateFlowlogResponse
 func (client *Client) CreateFlowlogWithOptions(request *CreateFlowlogRequest, runtime *dara.RuntimeOptions) (_result *CreateFlowlogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -2060,9 +2093,11 @@ func (client *Client) CreateFlowlog(request *CreateFlowlogRequest) (_result *Cre
 //
 // @return CreateTrafficMarkingPolicyResponse
 func (client *Client) CreateTrafficMarkingPolicyWithOptions(request *CreateTrafficMarkingPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateTrafficMarkingPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -2184,9 +2219,11 @@ func (client *Client) CreateTrafficMarkingPolicy(request *CreateTrafficMarkingPo
 //
 // @return CreateTransitRouteTableAggregationResponse
 func (client *Client) CreateTransitRouteTableAggregationWithOptions(tmpReq *CreateTransitRouteTableAggregationRequest, runtime *dara.RuntimeOptions) (_result *CreateTransitRouteTableAggregationResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateTransitRouteTableAggregationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2314,9 +2351,11 @@ func (client *Client) CreateTransitRouteTableAggregation(request *CreateTransitR
 //
 // @return CreateTransitRouterResponse
 func (client *Client) CreateTransitRouterWithOptions(tmpReq *CreateTransitRouterRequest, runtime *dara.RuntimeOptions) (_result *CreateTransitRouterResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateTransitRouterShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2462,9 +2501,11 @@ func (client *Client) CreateTransitRouter(request *CreateTransitRouterRequest) (
 //
 // @return CreateTransitRouterCidrResponse
 func (client *Client) CreateTransitRouterCidrWithOptions(request *CreateTransitRouterCidrRequest, runtime *dara.RuntimeOptions) (_result *CreateTransitRouterCidrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Cidr) {
@@ -2622,9 +2663,11 @@ func (client *Client) CreateTransitRouterCidr(request *CreateTransitRouterCidrRe
 //
 // @return CreateTransitRouterEcrAttachmentResponse
 func (client *Client) CreateTransitRouterEcrAttachmentWithOptions(request *CreateTransitRouterEcrAttachmentRequest, runtime *dara.RuntimeOptions) (_result *CreateTransitRouterEcrAttachmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -2776,9 +2819,11 @@ func (client *Client) CreateTransitRouterEcrAttachment(request *CreateTransitRou
 //
 // @return CreateTransitRouterMulticastDomainResponse
 func (client *Client) CreateTransitRouterMulticastDomainWithOptions(request *CreateTransitRouterMulticastDomainRequest, runtime *dara.RuntimeOptions) (_result *CreateTransitRouterMulticastDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -2912,9 +2957,11 @@ func (client *Client) CreateTransitRouterMulticastDomain(request *CreateTransitR
 //
 // @return CreateTransitRouterPeerAttachmentResponse
 func (client *Client) CreateTransitRouterPeerAttachmentWithOptions(request *CreateTransitRouterPeerAttachmentRequest, runtime *dara.RuntimeOptions) (_result *CreateTransitRouterPeerAttachmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPublishRouteEnabled) {
@@ -3072,9 +3119,11 @@ func (client *Client) CreateTransitRouterPeerAttachment(request *CreateTransitRo
 //
 // @return CreateTransitRouterPrefixListAssociationResponse
 func (client *Client) CreateTransitRouterPrefixListAssociationWithOptions(request *CreateTransitRouterPrefixListAssociationRequest, runtime *dara.RuntimeOptions) (_result *CreateTransitRouterPrefixListAssociationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -3198,9 +3247,11 @@ func (client *Client) CreateTransitRouterPrefixListAssociation(request *CreateTr
 //
 // @return CreateTransitRouterRouteEntryResponse
 func (client *Client) CreateTransitRouterRouteEntryWithOptions(request *CreateTransitRouterRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateTransitRouterRouteEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -3320,9 +3371,11 @@ func (client *Client) CreateTransitRouterRouteEntry(request *CreateTransitRouter
 //
 // @return CreateTransitRouterRouteTableResponse
 func (client *Client) CreateTransitRouterRouteTableWithOptions(request *CreateTransitRouterRouteTableRequest, runtime *dara.RuntimeOptions) (_result *CreateTransitRouterRouteTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -3452,9 +3505,11 @@ func (client *Client) CreateTransitRouterRouteTable(request *CreateTransitRouter
 //
 // @return CreateTransitRouterVbrAttachmentResponse
 func (client *Client) CreateTransitRouterVbrAttachmentWithOptions(request *CreateTransitRouterVbrAttachmentRequest, runtime *dara.RuntimeOptions) (_result *CreateTransitRouterVbrAttachmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPublishRouteEnabled) {
@@ -3616,9 +3671,11 @@ func (client *Client) CreateTransitRouterVbrAttachment(request *CreateTransitRou
 //
 // @return CreateTransitRouterVpcAttachmentResponse
 func (client *Client) CreateTransitRouterVpcAttachmentWithOptions(tmpReq *CreateTransitRouterVpcAttachmentRequest, runtime *dara.RuntimeOptions) (_result *CreateTransitRouterVpcAttachmentResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateTransitRouterVpcAttachmentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3788,9 +3845,11 @@ func (client *Client) CreateTransitRouterVpcAttachment(request *CreateTransitRou
 //
 // @return CreateTransitRouterVpnAttachmentResponse
 func (client *Client) CreateTransitRouterVpnAttachmentWithOptions(request *CreateTransitRouterVpnAttachmentRequest, runtime *dara.RuntimeOptions) (_result *CreateTransitRouterVpnAttachmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPublishRouteEnabled) {
@@ -3932,9 +3991,11 @@ func (client *Client) CreateTransitRouterVpnAttachment(request *CreateTransitRou
 //
 // @return DeactiveFlowLogResponse
 func (client *Client) DeactiveFlowLogWithOptions(request *DeactiveFlowLogRequest, runtime *dara.RuntimeOptions) (_result *DeactiveFlowLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -4056,9 +4117,11 @@ func (client *Client) DeactiveFlowLog(request *DeactiveFlowLogRequest) (_result 
 //
 // @return DeleteCenResponse
 func (client *Client) DeleteCenWithOptions(request *DeleteCenRequest, runtime *dara.RuntimeOptions) (_result *DeleteCenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -4156,9 +4219,11 @@ func (client *Client) DeleteCen(request *DeleteCenRequest) (_result *DeleteCenRe
 //
 // @return DeleteCenBandwidthPackageResponse
 func (client *Client) DeleteCenBandwidthPackageWithOptions(request *DeleteCenBandwidthPackageRequest, runtime *dara.RuntimeOptions) (_result *DeleteCenBandwidthPackageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenBandwidthPackageId) {
@@ -4238,9 +4303,11 @@ func (client *Client) DeleteCenBandwidthPackage(request *DeleteCenBandwidthPacka
 //
 // @return DeleteCenChildInstanceRouteEntryToAttachmentResponse
 func (client *Client) DeleteCenChildInstanceRouteEntryToAttachmentWithOptions(request *DeleteCenChildInstanceRouteEntryToAttachmentRequest, runtime *dara.RuntimeOptions) (_result *DeleteCenChildInstanceRouteEntryToAttachmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -4352,9 +4419,11 @@ func (client *Client) DeleteCenChildInstanceRouteEntryToAttachment(request *Dele
 //
 // @return DeleteCenChildInstanceRouteEntryToCenResponse
 func (client *Client) DeleteCenChildInstanceRouteEntryToCenWithOptions(request *DeleteCenChildInstanceRouteEntryToCenRequest, runtime *dara.RuntimeOptions) (_result *DeleteCenChildInstanceRouteEntryToCenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -4470,9 +4539,11 @@ func (client *Client) DeleteCenChildInstanceRouteEntryToCen(request *DeleteCenCh
 //
 // @return DeleteCenInterRegionTrafficQosPolicyResponse
 func (client *Client) DeleteCenInterRegionTrafficQosPolicyWithOptions(request *DeleteCenInterRegionTrafficQosPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteCenInterRegionTrafficQosPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -4570,9 +4641,11 @@ func (client *Client) DeleteCenInterRegionTrafficQosPolicy(request *DeleteCenInt
 //
 // @return DeleteCenInterRegionTrafficQosQueueResponse
 func (client *Client) DeleteCenInterRegionTrafficQosQueueWithOptions(request *DeleteCenInterRegionTrafficQosQueueRequest, runtime *dara.RuntimeOptions) (_result *DeleteCenInterRegionTrafficQosQueueResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -4668,9 +4741,11 @@ func (client *Client) DeleteCenInterRegionTrafficQosQueue(request *DeleteCenInte
 //
 // @return DeleteCenRouteMapResponse
 func (client *Client) DeleteCenRouteMapWithOptions(request *DeleteCenRouteMapRequest, runtime *dara.RuntimeOptions) (_result *DeleteCenRouteMapResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -4768,9 +4843,11 @@ func (client *Client) DeleteCenRouteMap(request *DeleteCenRouteMapRequest) (_res
 //
 // @return DeleteFlowlogResponse
 func (client *Client) DeleteFlowlogWithOptions(request *DeleteFlowlogRequest, runtime *dara.RuntimeOptions) (_result *DeleteFlowlogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -4872,9 +4949,11 @@ func (client *Client) DeleteFlowlog(request *DeleteFlowlogRequest) (_result *Del
 //
 // @return DeleteRouteServiceInCenResponse
 func (client *Client) DeleteRouteServiceInCenWithOptions(request *DeleteRouteServiceInCenRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouteServiceInCenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessRegionId) {
@@ -4982,9 +5061,11 @@ func (client *Client) DeleteRouteServiceInCen(request *DeleteRouteServiceInCenRe
 //
 // @return DeleteTrafficMarkingPolicyResponse
 func (client *Client) DeleteTrafficMarkingPolicyWithOptions(request *DeleteTrafficMarkingPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteTrafficMarkingPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -5086,9 +5167,11 @@ func (client *Client) DeleteTrafficMarkingPolicy(request *DeleteTrafficMarkingPo
 //
 // @return DeleteTransitRouteTableAggregationResponse
 func (client *Client) DeleteTransitRouteTableAggregationWithOptions(request *DeleteTransitRouteTableAggregationRequest, runtime *dara.RuntimeOptions) (_result *DeleteTransitRouteTableAggregationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -5206,9 +5289,11 @@ func (client *Client) DeleteTransitRouteTableAggregation(request *DeleteTransitR
 //
 // @return DeleteTransitRouterResponse
 func (client *Client) DeleteTransitRouterWithOptions(request *DeleteTransitRouterRequest, runtime *dara.RuntimeOptions) (_result *DeleteTransitRouterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -5320,9 +5405,11 @@ func (client *Client) DeleteTransitRouter(request *DeleteTransitRouterRequest) (
 //
 // @return DeleteTransitRouterCidrResponse
 func (client *Client) DeleteTransitRouterCidrWithOptions(request *DeleteTransitRouterCidrRequest, runtime *dara.RuntimeOptions) (_result *DeleteTransitRouterCidrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -5422,9 +5509,11 @@ func (client *Client) DeleteTransitRouterCidr(request *DeleteTransitRouterCidrRe
 //
 // @return DeleteTransitRouterEcrAttachmentResponse
 func (client *Client) DeleteTransitRouterEcrAttachmentWithOptions(request *DeleteTransitRouterEcrAttachmentRequest, runtime *dara.RuntimeOptions) (_result *DeleteTransitRouterEcrAttachmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -5528,9 +5617,11 @@ func (client *Client) DeleteTransitRouterEcrAttachment(request *DeleteTransitRou
 //
 // @return DeleteTransitRouterMulticastDomainResponse
 func (client *Client) DeleteTransitRouterMulticastDomainWithOptions(request *DeleteTransitRouterMulticastDomainRequest, runtime *dara.RuntimeOptions) (_result *DeleteTransitRouterMulticastDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -5646,9 +5737,11 @@ func (client *Client) DeleteTransitRouterMulticastDomain(request *DeleteTransitR
 //
 // @return DeleteTransitRouterPeerAttachmentResponse
 func (client *Client) DeleteTransitRouterPeerAttachmentWithOptions(request *DeleteTransitRouterPeerAttachmentRequest, runtime *dara.RuntimeOptions) (_result *DeleteTransitRouterPeerAttachmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -5760,9 +5853,11 @@ func (client *Client) DeleteTransitRouterPeerAttachment(request *DeleteTransitRo
 //
 // @return DeleteTransitRouterPrefixListAssociationResponse
 func (client *Client) DeleteTransitRouterPrefixListAssociationWithOptions(request *DeleteTransitRouterPrefixListAssociationRequest, runtime *dara.RuntimeOptions) (_result *DeleteTransitRouterPrefixListAssociationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -5890,9 +5985,11 @@ func (client *Client) DeleteTransitRouterPrefixListAssociation(request *DeleteTr
 //
 // @return DeleteTransitRouterRouteEntryResponse
 func (client *Client) DeleteTransitRouterRouteEntryWithOptions(request *DeleteTransitRouterRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteTransitRouterRouteEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -6022,9 +6119,11 @@ func (client *Client) DeleteTransitRouterRouteEntry(request *DeleteTransitRouter
 //
 // @return DeleteTransitRouterRouteTableResponse
 func (client *Client) DeleteTransitRouterRouteTableWithOptions(request *DeleteTransitRouterRouteTableRequest, runtime *dara.RuntimeOptions) (_result *DeleteTransitRouterRouteTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -6136,9 +6235,11 @@ func (client *Client) DeleteTransitRouterRouteTable(request *DeleteTransitRouter
 //
 // @return DeleteTransitRouterVbrAttachmentResponse
 func (client *Client) DeleteTransitRouterVbrAttachmentWithOptions(request *DeleteTransitRouterVbrAttachmentRequest, runtime *dara.RuntimeOptions) (_result *DeleteTransitRouterVbrAttachmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -6266,9 +6367,11 @@ func (client *Client) DeleteTransitRouterVbrAttachment(request *DeleteTransitRou
 //
 // @return DeleteTransitRouterVpcAttachmentResponse
 func (client *Client) DeleteTransitRouterVpcAttachmentWithOptions(request *DeleteTransitRouterVpcAttachmentRequest, runtime *dara.RuntimeOptions) (_result *DeleteTransitRouterVpcAttachmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -6380,9 +6483,11 @@ func (client *Client) DeleteTransitRouterVpcAttachment(request *DeleteTransitRou
 //
 // @return DeleteTransitRouterVpnAttachmentResponse
 func (client *Client) DeleteTransitRouterVpnAttachmentWithOptions(request *DeleteTransitRouterVpnAttachmentRequest, runtime *dara.RuntimeOptions) (_result *DeleteTransitRouterVpnAttachmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -6482,9 +6587,11 @@ func (client *Client) DeleteTransitRouterVpnAttachment(request *DeleteTransitRou
 //
 // @return DeregisterTransitRouterMulticastGroupMembersResponse
 func (client *Client) DeregisterTransitRouterMulticastGroupMembersWithOptions(request *DeregisterTransitRouterMulticastGroupMembersRequest, runtime *dara.RuntimeOptions) (_result *DeregisterTransitRouterMulticastGroupMembersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -6598,9 +6705,11 @@ func (client *Client) DeregisterTransitRouterMulticastGroupMembers(request *Dere
 //
 // @return DeregisterTransitRouterMulticastGroupSourcesResponse
 func (client *Client) DeregisterTransitRouterMulticastGroupSourcesWithOptions(request *DeregisterTransitRouterMulticastGroupSourcesRequest, runtime *dara.RuntimeOptions) (_result *DeregisterTransitRouterMulticastGroupSourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -6700,9 +6809,11 @@ func (client *Client) DeregisterTransitRouterMulticastGroupSources(request *Dere
 //
 // @return DescribeCenAttachedChildInstanceAttributeResponse
 func (client *Client) DescribeCenAttachedChildInstanceAttributeWithOptions(request *DescribeCenAttachedChildInstanceAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeCenAttachedChildInstanceAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -6798,9 +6909,11 @@ func (client *Client) DescribeCenAttachedChildInstanceAttribute(request *Describ
 //
 // @return DescribeCenAttachedChildInstancesResponse
 func (client *Client) DescribeCenAttachedChildInstancesWithOptions(request *DescribeCenAttachedChildInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCenAttachedChildInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -6900,9 +7013,11 @@ func (client *Client) DescribeCenAttachedChildInstances(request *DescribeCenAtta
 //
 // @return DescribeCenBandwidthPackagesResponse
 func (client *Client) DescribeCenBandwidthPackagesWithOptions(request *DescribeCenBandwidthPackagesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCenBandwidthPackagesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Filter) {
@@ -7000,9 +7115,11 @@ func (client *Client) DescribeCenBandwidthPackages(request *DescribeCenBandwidth
 //
 // @return DescribeCenChildInstanceRouteEntriesResponse
 func (client *Client) DescribeCenChildInstanceRouteEntriesWithOptions(request *DescribeCenChildInstanceRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCenChildInstanceRouteEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -7104,9 +7221,11 @@ func (client *Client) DescribeCenChildInstanceRouteEntries(request *DescribeCenC
 //
 // @return DescribeCenGeographicSpanRemainingBandwidthResponse
 func (client *Client) DescribeCenGeographicSpanRemainingBandwidthWithOptions(request *DescribeCenGeographicSpanRemainingBandwidthRequest, runtime *dara.RuntimeOptions) (_result *DescribeCenGeographicSpanRemainingBandwidthResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -7196,9 +7315,11 @@ func (client *Client) DescribeCenGeographicSpanRemainingBandwidth(request *Descr
 //
 // @return DescribeCenGeographicSpansResponse
 func (client *Client) DescribeCenGeographicSpansWithOptions(request *DescribeCenGeographicSpansRequest, runtime *dara.RuntimeOptions) (_result *DescribeCenGeographicSpansResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GeographicSpanId) {
@@ -7280,9 +7401,11 @@ func (client *Client) DescribeCenGeographicSpans(request *DescribeCenGeographicS
 //
 // @return DescribeCenInterRegionBandwidthLimitsResponse
 func (client *Client) DescribeCenInterRegionBandwidthLimitsWithOptions(request *DescribeCenInterRegionBandwidthLimitsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCenInterRegionBandwidthLimitsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -7368,9 +7491,11 @@ func (client *Client) DescribeCenInterRegionBandwidthLimits(request *DescribeCen
 //
 // @return DescribeCenPrivateZoneRoutesResponse
 func (client *Client) DescribeCenPrivateZoneRoutesWithOptions(request *DescribeCenPrivateZoneRoutesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCenPrivateZoneRoutesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessRegionId) {
@@ -7452,9 +7577,11 @@ func (client *Client) DescribeCenPrivateZoneRoutes(request *DescribeCenPrivateZo
 //
 // @return DescribeCenRegionDomainRouteEntriesResponse
 func (client *Client) DescribeCenRegionDomainRouteEntriesWithOptions(request *DescribeCenRegionDomainRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCenRegionDomainRouteEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -7544,9 +7671,11 @@ func (client *Client) DescribeCenRegionDomainRouteEntries(request *DescribeCenRe
 //
 // @return DescribeCenRouteMapsResponse
 func (client *Client) DescribeCenRouteMapsWithOptions(request *DescribeCenRouteMapsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCenRouteMapsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -7644,9 +7773,11 @@ func (client *Client) DescribeCenRouteMaps(request *DescribeCenRouteMapsRequest)
 //
 // @return DescribeCenVbrHealthCheckResponse
 func (client *Client) DescribeCenVbrHealthCheckWithOptions(request *DescribeCenVbrHealthCheckRequest, runtime *dara.RuntimeOptions) (_result *DescribeCenVbrHealthCheckResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -7740,9 +7871,11 @@ func (client *Client) DescribeCenVbrHealthCheck(request *DescribeCenVbrHealthChe
 //
 // @return DescribeCensResponse
 func (client *Client) DescribeCensWithOptions(request *DescribeCensRequest, runtime *dara.RuntimeOptions) (_result *DescribeCensResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Filter) {
@@ -7836,9 +7969,11 @@ func (client *Client) DescribeCens(request *DescribeCensRequest) (_result *Descr
 //
 // @return DescribeChildInstanceRegionsResponse
 func (client *Client) DescribeChildInstanceRegionsWithOptions(request *DescribeChildInstanceRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeChildInstanceRegionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -7920,9 +8055,11 @@ func (client *Client) DescribeChildInstanceRegions(request *DescribeChildInstanc
 //
 // @return DescribeFlowlogsResponse
 func (client *Client) DescribeFlowlogsWithOptions(request *DescribeFlowlogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeFlowlogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -8056,9 +8193,11 @@ func (client *Client) DescribeFlowlogs(request *DescribeFlowlogsRequest) (_resul
 //
 // @return DescribeGeographicRegionMembershipResponse
 func (client *Client) DescribeGeographicRegionMembershipWithOptions(request *DescribeGeographicRegionMembershipRequest, runtime *dara.RuntimeOptions) (_result *DescribeGeographicRegionMembershipResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GeographicRegionId) {
@@ -8144,9 +8283,11 @@ func (client *Client) DescribeGeographicRegionMembership(request *DescribeGeogra
 //
 // @return DescribeGrantRulesToCenResponse
 func (client *Client) DescribeGrantRulesToCenWithOptions(request *DescribeGrantRulesToCenRequest, runtime *dara.RuntimeOptions) (_result *DescribeGrantRulesToCenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -8252,9 +8393,11 @@ func (client *Client) DescribeGrantRulesToCen(request *DescribeGrantRulesToCenRe
 //
 // @return DescribeGrantRulesToResourceResponse
 func (client *Client) DescribeGrantRulesToResourceWithOptions(request *DescribeGrantRulesToResourceRequest, runtime *dara.RuntimeOptions) (_result *DescribeGrantRulesToResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -8344,9 +8487,11 @@ func (client *Client) DescribeGrantRulesToResource(request *DescribeGrantRulesTo
 //
 // @return DescribePublishedRouteEntriesResponse
 func (client *Client) DescribePublishedRouteEntriesWithOptions(request *DescribePublishedRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribePublishedRouteEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -8440,9 +8585,11 @@ func (client *Client) DescribePublishedRouteEntries(request *DescribePublishedRo
 //
 // @return DescribeRouteConflictResponse
 func (client *Client) DescribeRouteConflictWithOptions(request *DescribeRouteConflictRequest, runtime *dara.RuntimeOptions) (_result *DescribeRouteConflictResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChildInstanceId) {
@@ -8540,9 +8687,11 @@ func (client *Client) DescribeRouteConflict(request *DescribeRouteConflictReques
 //
 // @return DescribeRouteServicesInCenResponse
 func (client *Client) DescribeRouteServicesInCenWithOptions(request *DescribeRouteServicesInCenRequest, runtime *dara.RuntimeOptions) (_result *DescribeRouteServicesInCenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessRegionId) {
@@ -8644,9 +8793,11 @@ func (client *Client) DescribeRouteServicesInCen(request *DescribeRouteServicesI
 //
 // @return DescribeTransitRouteTableAggregationResponse
 func (client *Client) DescribeTransitRouteTableAggregationWithOptions(request *DescribeTransitRouteTableAggregationRequest, runtime *dara.RuntimeOptions) (_result *DescribeTransitRouteTableAggregationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -8740,9 +8891,11 @@ func (client *Client) DescribeTransitRouteTableAggregation(request *DescribeTran
 //
 // @return DescribeTransitRouteTableAggregationDetailResponse
 func (client *Client) DescribeTransitRouteTableAggregationDetailWithOptions(request *DescribeTransitRouteTableAggregationDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeTransitRouteTableAggregationDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -8824,9 +8977,11 @@ func (client *Client) DescribeTransitRouteTableAggregationDetail(request *Descri
 //
 // @return DetachCenChildInstanceResponse
 func (client *Client) DetachCenChildInstanceWithOptions(request *DetachCenChildInstanceRequest, runtime *dara.RuntimeOptions) (_result *DetachCenChildInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -8924,9 +9079,11 @@ func (client *Client) DetachCenChildInstance(request *DetachCenChildInstanceRequ
 //
 // @return DisableCenVbrHealthCheckResponse
 func (client *Client) DisableCenVbrHealthCheckWithOptions(request *DisableCenVbrHealthCheckRequest, runtime *dara.RuntimeOptions) (_result *DisableCenVbrHealthCheckResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -9024,9 +9181,11 @@ func (client *Client) DisableCenVbrHealthCheck(request *DisableCenVbrHealthCheck
 //
 // @return DisableTransitRouterRouteTablePropagationResponse
 func (client *Client) DisableTransitRouterRouteTablePropagationWithOptions(request *DisableTransitRouterRouteTablePropagationRequest, runtime *dara.RuntimeOptions) (_result *DisableTransitRouterRouteTablePropagationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -9132,9 +9291,11 @@ func (client *Client) DisableTransitRouterRouteTablePropagation(request *Disable
 //
 // @return DisassociateTransitRouterMulticastDomainResponse
 func (client *Client) DisassociateTransitRouterMulticastDomainWithOptions(request *DisassociateTransitRouterMulticastDomainRequest, runtime *dara.RuntimeOptions) (_result *DisassociateTransitRouterMulticastDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -9244,9 +9405,11 @@ func (client *Client) DisassociateTransitRouterMulticastDomain(request *Disassoc
 //
 // @return DissociateTransitRouterAttachmentFromRouteTableResponse
 func (client *Client) DissociateTransitRouterAttachmentFromRouteTableWithOptions(request *DissociateTransitRouterAttachmentFromRouteTableRequest, runtime *dara.RuntimeOptions) (_result *DissociateTransitRouterAttachmentFromRouteTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -9352,9 +9515,11 @@ func (client *Client) DissociateTransitRouterAttachmentFromRouteTable(request *D
 //
 // @return EnableCenVbrHealthCheckResponse
 func (client *Client) EnableCenVbrHealthCheckWithOptions(request *EnableCenVbrHealthCheckRequest, runtime *dara.RuntimeOptions) (_result *EnableCenVbrHealthCheckResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -9488,9 +9653,11 @@ func (client *Client) EnableCenVbrHealthCheck(request *EnableCenVbrHealthCheckRe
 //
 // @return EnableTransitRouterRouteTablePropagationResponse
 func (client *Client) EnableTransitRouterRouteTablePropagationWithOptions(request *EnableTransitRouterRouteTablePropagationRequest, runtime *dara.RuntimeOptions) (_result *EnableTransitRouterRouteTablePropagationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -9612,9 +9779,11 @@ func (client *Client) EnableTransitRouterRouteTablePropagation(request *EnableTr
 //
 // @return GrantInstanceToTransitRouterResponse
 func (client *Client) GrantInstanceToTransitRouterWithOptions(request *GrantInstanceToTransitRouterRequest, runtime *dara.RuntimeOptions) (_result *GrantInstanceToTransitRouterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -9736,9 +9905,11 @@ func (client *Client) GrantInstanceToTransitRouter(request *GrantInstanceToTrans
 //
 // @return ListCenChildInstanceRouteEntriesToAttachmentResponse
 func (client *Client) ListCenChildInstanceRouteEntriesToAttachmentWithOptions(request *ListCenChildInstanceRouteEntriesToAttachmentRequest, runtime *dara.RuntimeOptions) (_result *ListCenChildInstanceRouteEntriesToAttachmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -9852,9 +10023,11 @@ func (client *Client) ListCenChildInstanceRouteEntriesToAttachment(request *List
 //
 // @return ListCenInterRegionTrafficQosPoliciesResponse
 func (client *Client) ListCenInterRegionTrafficQosPoliciesWithOptions(request *ListCenInterRegionTrafficQosPoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListCenInterRegionTrafficQosPoliciesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -9970,9 +10143,11 @@ func (client *Client) ListCenInterRegionTrafficQosPolicies(request *ListCenInter
 //
 // @return ListCenInterRegionTrafficQosQueuesResponse
 func (client *Client) ListCenInterRegionTrafficQosQueuesWithOptions(request *ListCenInterRegionTrafficQosQueuesRequest, runtime *dara.RuntimeOptions) (_result *ListCenInterRegionTrafficQosQueuesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EffectiveBandwidthFilter) {
@@ -10088,9 +10263,11 @@ func (client *Client) ListCenInterRegionTrafficQosQueues(request *ListCenInterRe
 //
 // @return ListGrantVSwitchEnisResponse
 func (client *Client) ListGrantVSwitchEnisWithOptions(request *ListGrantVSwitchEnisRequest, runtime *dara.RuntimeOptions) (_result *ListGrantVSwitchEnisResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -10208,9 +10385,11 @@ func (client *Client) ListGrantVSwitchEnis(request *ListGrantVSwitchEnisRequest)
 //
 // @return ListGrantVSwitchesToCenResponse
 func (client *Client) ListGrantVSwitchesToCenWithOptions(request *ListGrantVSwitchesToCenRequest, runtime *dara.RuntimeOptions) (_result *ListGrantVSwitchesToCenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -10334,9 +10513,11 @@ func (client *Client) ListGrantVSwitchesToCen(request *ListGrantVSwitchesToCenRe
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NextToken) {
@@ -10454,9 +10635,11 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 //
 // @return ListTrafficMarkingPoliciesResponse
 func (client *Client) ListTrafficMarkingPoliciesWithOptions(request *ListTrafficMarkingPoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListTrafficMarkingPoliciesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -10576,9 +10759,11 @@ func (client *Client) ListTrafficMarkingPolicies(request *ListTrafficMarkingPoli
 //
 // @return ListTransitRouterAvailableResourceResponse
 func (client *Client) ListTransitRouterAvailableResourceWithOptions(request *ListTransitRouterAvailableResourceRequest, runtime *dara.RuntimeOptions) (_result *ListTransitRouterAvailableResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -10672,9 +10857,11 @@ func (client *Client) ListTransitRouterAvailableResource(request *ListTransitRou
 //
 // @return ListTransitRouterCidrResponse
 func (client *Client) ListTransitRouterCidrWithOptions(request *ListTransitRouterCidrRequest, runtime *dara.RuntimeOptions) (_result *ListTransitRouterCidrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -10764,9 +10951,11 @@ func (client *Client) ListTransitRouterCidr(request *ListTransitRouterCidrReques
 //
 // @return ListTransitRouterCidrAllocationResponse
 func (client *Client) ListTransitRouterCidrAllocationWithOptions(request *ListTransitRouterCidrAllocationRequest, runtime *dara.RuntimeOptions) (_result *ListTransitRouterCidrAllocationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AttachmentId) {
@@ -10894,9 +11083,11 @@ func (client *Client) ListTransitRouterCidrAllocation(request *ListTransitRouter
 //
 // @return ListTransitRouterEcrAttachmentsResponse
 func (client *Client) ListTransitRouterEcrAttachmentsWithOptions(request *ListTransitRouterEcrAttachmentsRequest, runtime *dara.RuntimeOptions) (_result *ListTransitRouterEcrAttachmentsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -11010,9 +11201,11 @@ func (client *Client) ListTransitRouterEcrAttachments(request *ListTransitRouter
 //
 // @return ListTransitRouterMulticastDomainAssociationsResponse
 func (client *Client) ListTransitRouterMulticastDomainAssociationsWithOptions(request *ListTransitRouterMulticastDomainAssociationsRequest, runtime *dara.RuntimeOptions) (_result *ListTransitRouterMulticastDomainAssociationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -11116,9 +11309,11 @@ func (client *Client) ListTransitRouterMulticastDomainAssociations(request *List
 //
 // @return ListTransitRouterMulticastDomainVSwitchesResponse
 func (client *Client) ListTransitRouterMulticastDomainVSwitchesWithOptions(request *ListTransitRouterMulticastDomainVSwitchesRequest, runtime *dara.RuntimeOptions) (_result *ListTransitRouterMulticastDomainVSwitchesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -11210,9 +11405,11 @@ func (client *Client) ListTransitRouterMulticastDomainVSwitches(request *ListTra
 //
 // @return ListTransitRouterMulticastDomainsResponse
 func (client *Client) ListTransitRouterMulticastDomainsWithOptions(request *ListTransitRouterMulticastDomainsRequest, runtime *dara.RuntimeOptions) (_result *ListTransitRouterMulticastDomainsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -11336,9 +11533,11 @@ func (client *Client) ListTransitRouterMulticastDomains(request *ListTransitRout
 //
 // @return ListTransitRouterMulticastGroupsResponse
 func (client *Client) ListTransitRouterMulticastGroupsWithOptions(request *ListTransitRouterMulticastGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListTransitRouterMulticastGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -11484,9 +11683,11 @@ func (client *Client) ListTransitRouterMulticastGroups(request *ListTransitRoute
 //
 // @return ListTransitRouterPeerAttachmentsResponse
 func (client *Client) ListTransitRouterPeerAttachmentsWithOptions(request *ListTransitRouterPeerAttachmentsRequest, runtime *dara.RuntimeOptions) (_result *ListTransitRouterPeerAttachmentsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -11592,9 +11793,11 @@ func (client *Client) ListTransitRouterPeerAttachments(request *ListTransitRoute
 //
 // @return ListTransitRouterPrefixListAssociationResponse
 func (client *Client) ListTransitRouterPrefixListAssociationWithOptions(request *ListTransitRouterPrefixListAssociationRequest, runtime *dara.RuntimeOptions) (_result *ListTransitRouterPrefixListAssociationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NextHop) {
@@ -11708,9 +11911,11 @@ func (client *Client) ListTransitRouterPrefixListAssociation(request *ListTransi
 //
 // @return ListTransitRouterRouteEntriesResponse
 func (client *Client) ListTransitRouterRouteEntriesWithOptions(request *ListTransitRouterRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *ListTransitRouterRouteEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -11858,9 +12063,11 @@ func (client *Client) ListTransitRouterRouteEntries(request *ListTransitRouterRo
 //
 // @return ListTransitRouterRouteTableAssociationsResponse
 func (client *Client) ListTransitRouterRouteTableAssociationsWithOptions(request *ListTransitRouterRouteTableAssociationsRequest, runtime *dara.RuntimeOptions) (_result *ListTransitRouterRouteTableAssociationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -11972,9 +12179,11 @@ func (client *Client) ListTransitRouterRouteTableAssociations(request *ListTrans
 //
 // @return ListTransitRouterRouteTablePropagationsResponse
 func (client *Client) ListTransitRouterRouteTablePropagationsWithOptions(request *ListTransitRouterRouteTablePropagationsRequest, runtime *dara.RuntimeOptions) (_result *ListTransitRouterRouteTablePropagationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -12072,9 +12281,11 @@ func (client *Client) ListTransitRouterRouteTablePropagations(request *ListTrans
 //
 // @return ListTransitRouterRouteTablesResponse
 func (client *Client) ListTransitRouterRouteTablesWithOptions(request *ListTransitRouterRouteTablesRequest, runtime *dara.RuntimeOptions) (_result *ListTransitRouterRouteTablesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -12188,9 +12399,11 @@ func (client *Client) ListTransitRouterRouteTables(request *ListTransitRouterRou
 //
 // @return ListTransitRouterVbrAttachmentsResponse
 func (client *Client) ListTransitRouterVbrAttachmentsWithOptions(request *ListTransitRouterVbrAttachmentsRequest, runtime *dara.RuntimeOptions) (_result *ListTransitRouterVbrAttachmentsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -12306,9 +12519,11 @@ func (client *Client) ListTransitRouterVbrAttachments(request *ListTransitRouter
 //
 // @return ListTransitRouterVpcAttachmentsResponse
 func (client *Client) ListTransitRouterVpcAttachmentsWithOptions(request *ListTransitRouterVpcAttachmentsRequest, runtime *dara.RuntimeOptions) (_result *ListTransitRouterVpcAttachmentsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -12440,9 +12655,11 @@ func (client *Client) ListTransitRouterVpcAttachments(request *ListTransitRouter
 //
 // @return ListTransitRouterVpnAttachmentsResponse
 func (client *Client) ListTransitRouterVpnAttachmentsWithOptions(request *ListTransitRouterVpnAttachmentsRequest, runtime *dara.RuntimeOptions) (_result *ListTransitRouterVpnAttachmentsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -12564,9 +12781,11 @@ func (client *Client) ListTransitRouterVpnAttachments(request *ListTransitRouter
 //
 // @return ListTransitRoutersResponse
 func (client *Client) ListTransitRoutersWithOptions(request *ListTransitRoutersRequest, runtime *dara.RuntimeOptions) (_result *ListTransitRoutersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -12696,9 +12915,11 @@ func (client *Client) ListTransitRouters(request *ListTransitRoutersRequest) (_r
 //
 // @return ModifyCenAttributeResponse
 func (client *Client) ModifyCenAttributeWithOptions(request *ModifyCenAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyCenAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -12792,9 +13013,11 @@ func (client *Client) ModifyCenAttribute(request *ModifyCenAttributeRequest) (_r
 //
 // @return ModifyCenBandwidthPackageAttributeResponse
 func (client *Client) ModifyCenBandwidthPackageAttributeWithOptions(request *ModifyCenBandwidthPackageAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyCenBandwidthPackageAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenBandwidthPackageId) {
@@ -12876,9 +13099,11 @@ func (client *Client) ModifyCenBandwidthPackageAttribute(request *ModifyCenBandw
 //
 // @return ModifyCenBandwidthPackageSpecResponse
 func (client *Client) ModifyCenBandwidthPackageSpecWithOptions(request *ModifyCenBandwidthPackageSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyCenBandwidthPackageSpecResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Bandwidth) {
@@ -12964,9 +13189,11 @@ func (client *Client) ModifyCenBandwidthPackageSpec(request *ModifyCenBandwidthP
 //
 // @return ModifyCenRouteMapResponse
 func (client *Client) ModifyCenRouteMapWithOptions(request *ModifyCenRouteMapRequest, runtime *dara.RuntimeOptions) (_result *ModifyCenRouteMapResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AsPathMatchMode) {
@@ -13168,9 +13395,11 @@ func (client *Client) ModifyCenRouteMap(request *ModifyCenRouteMapRequest) (_res
 //
 // @return ModifyFlowLogAttributeResponse
 func (client *Client) ModifyFlowLogAttributeWithOptions(request *ModifyFlowLogAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyFlowLogAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -13276,9 +13505,11 @@ func (client *Client) ModifyFlowLogAttribute(request *ModifyFlowLogAttributeRequ
 //
 // @return ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse
 func (client *Client) ModifyTrafficMatchRuleToTrafficMarkingPolicyWithOptions(request *ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -13372,9 +13603,11 @@ func (client *Client) ModifyTrafficMatchRuleToTrafficMarkingPolicy(request *Modi
 //
 // @return ModifyTransitRouteTableAggregationResponse
 func (client *Client) ModifyTransitRouteTableAggregationWithOptions(tmpReq *ModifyTransitRouteTableAggregationRequest, runtime *dara.RuntimeOptions) (_result *ModifyTransitRouteTableAggregationResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyTransitRouteTableAggregationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -13496,9 +13729,11 @@ func (client *Client) ModifyTransitRouteTableAggregation(request *ModifyTransitR
 //
 // @return ModifyTransitRouterCidrResponse
 func (client *Client) ModifyTransitRouterCidrWithOptions(request *ModifyTransitRouterCidrRequest, runtime *dara.RuntimeOptions) (_result *ModifyTransitRouterCidrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Cidr) {
@@ -13618,9 +13853,11 @@ func (client *Client) ModifyTransitRouterCidr(request *ModifyTransitRouterCidrRe
 //
 // @return ModifyTransitRouterMulticastDomainResponse
 func (client *Client) ModifyTransitRouterMulticastDomainWithOptions(request *ModifyTransitRouterMulticastDomainRequest, runtime *dara.RuntimeOptions) (_result *ModifyTransitRouterMulticastDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -13718,9 +13955,11 @@ func (client *Client) ModifyTransitRouterMulticastDomain(request *ModifyTransitR
 //
 // @return MoveResourceGroupResponse
 func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -13818,9 +14057,11 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 //
 // @return OpenTransitRouterServiceResponse
 func (client *Client) OpenTransitRouterServiceWithOptions(request *OpenTransitRouterServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenTransitRouterServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -13926,9 +14167,11 @@ func (client *Client) OpenTransitRouterService(request *OpenTransitRouterService
 //
 // @return PublishRouteEntriesResponse
 func (client *Client) PublishRouteEntriesWithOptions(request *PublishRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *PublishRouteEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -14042,9 +14285,11 @@ func (client *Client) PublishRouteEntries(request *PublishRouteEntriesRequest) (
 //
 // @return RefreshTransitRouteTableAggregationResponse
 func (client *Client) RefreshTransitRouteTableAggregationWithOptions(request *RefreshTransitRouteTableAggregationRequest, runtime *dara.RuntimeOptions) (_result *RefreshTransitRouteTableAggregationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -14142,9 +14387,11 @@ func (client *Client) RefreshTransitRouteTableAggregation(request *RefreshTransi
 //
 // @return RegisterTransitRouterMulticastGroupMembersResponse
 func (client *Client) RegisterTransitRouterMulticastGroupMembersWithOptions(request *RegisterTransitRouterMulticastGroupMembersRequest, runtime *dara.RuntimeOptions) (_result *RegisterTransitRouterMulticastGroupMembersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -14272,9 +14519,11 @@ func (client *Client) RegisterTransitRouterMulticastGroupMembers(request *Regist
 //
 // @return RegisterTransitRouterMulticastGroupSourcesResponse
 func (client *Client) RegisterTransitRouterMulticastGroupSourcesWithOptions(request *RegisterTransitRouterMulticastGroupSourcesRequest, runtime *dara.RuntimeOptions) (_result *RegisterTransitRouterMulticastGroupSourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -14398,9 +14647,11 @@ func (client *Client) RegisterTransitRouterMulticastGroupSources(request *Regist
 //
 // @return RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse
 func (client *Client) RemoveTrafficMatchRuleFromTrafficMarkingPolicyWithOptions(request *RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest, runtime *dara.RuntimeOptions) (_result *RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -14510,9 +14761,11 @@ func (client *Client) RemoveTrafficMatchRuleFromTrafficMarkingPolicy(request *Re
 //
 // @return RemoveTraficMatchRuleFromTrafficMarkingPolicyResponse
 func (client *Client) RemoveTraficMatchRuleFromTrafficMarkingPolicyWithOptions(request *RemoveTraficMatchRuleFromTrafficMarkingPolicyRequest, runtime *dara.RuntimeOptions) (_result *RemoveTraficMatchRuleFromTrafficMarkingPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -14607,9 +14860,11 @@ func (client *Client) RemoveTraficMatchRuleFromTrafficMarkingPolicy(request *Rem
 //
 // @return ReplaceTransitRouterRouteTableAssociationResponse
 func (client *Client) ReplaceTransitRouterRouteTableAssociationWithOptions(request *ReplaceTransitRouterRouteTableAssociationRequest, runtime *dara.RuntimeOptions) (_result *ReplaceTransitRouterRouteTableAssociationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -14719,9 +14974,11 @@ func (client *Client) ReplaceTransitRouterRouteTableAssociation(request *Replace
 //
 // @return ResolveAndRouteServiceInCenResponse
 func (client *Client) ResolveAndRouteServiceInCenWithOptions(request *ResolveAndRouteServiceInCenRequest, runtime *dara.RuntimeOptions) (_result *ResolveAndRouteServiceInCenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessRegionIds) {
@@ -14863,9 +15120,11 @@ func (client *Client) ResolveAndRouteServiceInCen(request *ResolveAndRouteServic
 //
 // @return RevokeInstanceFromTransitRouterResponse
 func (client *Client) RevokeInstanceFromTransitRouterWithOptions(request *RevokeInstanceFromTransitRouterRequest, runtime *dara.RuntimeOptions) (_result *RevokeInstanceFromTransitRouterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -15001,9 +15260,11 @@ func (client *Client) RevokeInstanceFromTransitRouter(request *RevokeInstanceFro
 //
 // @return RoutePrivateZoneInCenToVpcResponse
 func (client *Client) RoutePrivateZoneInCenToVpcWithOptions(request *RoutePrivateZoneInCenToVpcRequest, runtime *dara.RuntimeOptions) (_result *RoutePrivateZoneInCenToVpcResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessRegionId) {
@@ -15141,9 +15402,11 @@ func (client *Client) RoutePrivateZoneInCenToVpc(request *RoutePrivateZoneInCenT
 //
 // @return SetCenInterRegionBandwidthLimitResponse
 func (client *Client) SetCenInterRegionBandwidthLimitWithOptions(request *SetCenInterRegionBandwidthLimitRequest, runtime *dara.RuntimeOptions) (_result *SetCenInterRegionBandwidthLimitResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BandwidthLimit) {
@@ -15267,9 +15530,11 @@ func (client *Client) SetCenInterRegionBandwidthLimit(request *SetCenInterRegion
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -15363,9 +15628,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 //
 // @return TempUpgradeCenBandwidthPackageSpecResponse
 func (client *Client) TempUpgradeCenBandwidthPackageSpecWithOptions(request *TempUpgradeCenBandwidthPackageSpecRequest, runtime *dara.RuntimeOptions) (_result *TempUpgradeCenBandwidthPackageSpecResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Bandwidth) {
@@ -15451,9 +15718,11 @@ func (client *Client) TempUpgradeCenBandwidthPackageSpec(request *TempUpgradeCen
 //
 // @return UnassociateCenBandwidthPackageResponse
 func (client *Client) UnassociateCenBandwidthPackageWithOptions(request *UnassociateCenBandwidthPackageRequest, runtime *dara.RuntimeOptions) (_result *UnassociateCenBandwidthPackageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenBandwidthPackageId) {
@@ -15535,9 +15804,11 @@ func (client *Client) UnassociateCenBandwidthPackage(request *UnassociateCenBand
 //
 // @return UnroutePrivateZoneInCenToVpcResponse
 func (client *Client) UnroutePrivateZoneInCenToVpcWithOptions(request *UnroutePrivateZoneInCenToVpcRequest, runtime *dara.RuntimeOptions) (_result *UnroutePrivateZoneInCenToVpcResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessRegionId) {
@@ -15615,9 +15886,11 @@ func (client *Client) UnroutePrivateZoneInCenToVpc(request *UnroutePrivateZoneIn
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -15707,9 +15980,11 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 //
 // @return UpdateCenInterRegionTrafficQosPolicyAttributeResponse
 func (client *Client) UpdateCenInterRegionTrafficQosPolicyAttributeWithOptions(request *UpdateCenInterRegionTrafficQosPolicyAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateCenInterRegionTrafficQosPolicyAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -15799,9 +16074,11 @@ func (client *Client) UpdateCenInterRegionTrafficQosPolicyAttribute(request *Upd
 //
 // @return UpdateCenInterRegionTrafficQosQueueAttributeResponse
 func (client *Client) UpdateCenInterRegionTrafficQosQueueAttributeWithOptions(request *UpdateCenInterRegionTrafficQosQueueAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateCenInterRegionTrafficQosQueueAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Bandwidth) {
@@ -15903,9 +16180,11 @@ func (client *Client) UpdateCenInterRegionTrafficQosQueueAttribute(request *Upda
 //
 // @return UpdateTrafficMarkingPolicyAttributeResponse
 func (client *Client) UpdateTrafficMarkingPolicyAttributeWithOptions(request *UpdateTrafficMarkingPolicyAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateTrafficMarkingPolicyAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddTrafficMatchRules) {
@@ -16011,9 +16290,11 @@ func (client *Client) UpdateTrafficMarkingPolicyAttribute(request *UpdateTraffic
 //
 // @return UpdateTransitRouterResponse
 func (client *Client) UpdateTransitRouterWithOptions(request *UpdateTransitRouterRequest, runtime *dara.RuntimeOptions) (_result *UpdateTransitRouterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -16121,9 +16402,11 @@ func (client *Client) UpdateTransitRouter(request *UpdateTransitRouterRequest) (
 //
 // @return UpdateTransitRouterEcrAttachmentAttributeResponse
 func (client *Client) UpdateTransitRouterEcrAttachmentAttributeWithOptions(request *UpdateTransitRouterEcrAttachmentAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateTransitRouterEcrAttachmentAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -16227,9 +16510,11 @@ func (client *Client) UpdateTransitRouterEcrAttachmentAttribute(request *UpdateT
 //
 // @return UpdateTransitRouterPeerAttachmentAttributeResponse
 func (client *Client) UpdateTransitRouterPeerAttachmentAttributeWithOptions(request *UpdateTransitRouterPeerAttachmentAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateTransitRouterPeerAttachmentAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPublishRouteEnabled) {
@@ -16347,9 +16632,11 @@ func (client *Client) UpdateTransitRouterPeerAttachmentAttribute(request *Update
 //
 // @return UpdateTransitRouterRouteEntryResponse
 func (client *Client) UpdateTransitRouterRouteEntryWithOptions(request *UpdateTransitRouterRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *UpdateTransitRouterRouteEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -16439,9 +16726,11 @@ func (client *Client) UpdateTransitRouterRouteEntry(request *UpdateTransitRouter
 //
 // @return UpdateTransitRouterRouteTableResponse
 func (client *Client) UpdateTransitRouterRouteTableWithOptions(request *UpdateTransitRouterRouteTableRequest, runtime *dara.RuntimeOptions) (_result *UpdateTransitRouterRouteTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -16543,9 +16832,11 @@ func (client *Client) UpdateTransitRouterRouteTable(request *UpdateTransitRouter
 //
 // @return UpdateTransitRouterVbrAttachmentAttributeResponse
 func (client *Client) UpdateTransitRouterVbrAttachmentAttributeWithOptions(request *UpdateTransitRouterVbrAttachmentAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateTransitRouterVbrAttachmentAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPublishRouteEnabled) {
@@ -16655,9 +16946,11 @@ func (client *Client) UpdateTransitRouterVbrAttachmentAttribute(request *UpdateT
 //
 // @return UpdateTransitRouterVpcAttachmentAttributeResponse
 func (client *Client) UpdateTransitRouterVpcAttachmentAttributeWithOptions(tmpReq *UpdateTransitRouterVpcAttachmentAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateTransitRouterVpcAttachmentAttributeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateTransitRouterVpcAttachmentAttributeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -16779,9 +17072,11 @@ func (client *Client) UpdateTransitRouterVpcAttachmentAttribute(request *UpdateT
 //
 // @return UpdateTransitRouterVpcAttachmentZonesResponse
 func (client *Client) UpdateTransitRouterVpcAttachmentZonesWithOptions(request *UpdateTransitRouterVpcAttachmentZonesRequest, runtime *dara.RuntimeOptions) (_result *UpdateTransitRouterVpcAttachmentZonesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddZoneMappings) {
@@ -16881,9 +17176,11 @@ func (client *Client) UpdateTransitRouterVpcAttachmentZones(request *UpdateTrans
 //
 // @return UpdateTransitRouterVpnAttachmentAttributeResponse
 func (client *Client) UpdateTransitRouterVpnAttachmentAttributeWithOptions(request *UpdateTransitRouterVpnAttachmentAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateTransitRouterVpnAttachmentAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPublishRouteEnabled) {
@@ -16977,9 +17274,11 @@ func (client *Client) UpdateTransitRouterVpnAttachmentAttribute(request *UpdateT
 //
 // @return WithdrawPublishedRouteEntriesResponse
 func (client *Client) WithdrawPublishedRouteEntriesWithOptions(request *WithdrawPublishedRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *WithdrawPublishedRouteEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {

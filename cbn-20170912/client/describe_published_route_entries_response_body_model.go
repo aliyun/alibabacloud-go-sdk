@@ -104,7 +104,12 @@ func (s *DescribePublishedRouteEntriesResponseBody) SetTotalCount(v int32) *Desc
 }
 
 func (s *DescribePublishedRouteEntriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PublishedRouteEntries != nil {
+		if err := s.PublishedRouteEntries.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries struct {
@@ -129,7 +134,16 @@ func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries) SetPubl
 }
 
 func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries) Validate() error {
-	return dara.Validate(s)
+	if s.PublishedRouteEntry != nil {
+		for _, item := range s.PublishedRouteEntry {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry struct {
@@ -316,7 +330,12 @@ func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublished
 }
 
 func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry) Validate() error {
-	return dara.Validate(s)
+	if s.Conflicts != nil {
+		if err := s.Conflicts.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflicts struct {
@@ -341,7 +360,16 @@ func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublished
 }
 
 func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflicts) Validate() error {
-	return dara.Validate(s)
+	if s.Conflict != nil {
+		for _, item := range s.Conflict {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflictsConflict struct {

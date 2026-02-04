@@ -104,7 +104,12 @@ func (s *DescribeCenGeographicSpansResponseBody) SetTotalCount(v int32) *Describ
 }
 
 func (s *DescribeCenGeographicSpansResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GeographicSpanModels != nil {
+		if err := s.GeographicSpanModels.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCenGeographicSpansResponseBodyGeographicSpanModels struct {
@@ -129,7 +134,16 @@ func (s *DescribeCenGeographicSpansResponseBodyGeographicSpanModels) SetGeograph
 }
 
 func (s *DescribeCenGeographicSpansResponseBodyGeographicSpanModels) Validate() error {
-	return dara.Validate(s)
+	if s.GeographicSpanModel != nil {
+		for _, item := range s.GeographicSpanModel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCenGeographicSpansResponseBodyGeographicSpanModelsGeographicSpanModel struct {

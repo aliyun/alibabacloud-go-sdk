@@ -110,7 +110,16 @@ func (s *DescribeGrantRulesToResourceResponseBody) SetTotalCount(v int32) *Descr
 }
 
 func (s *DescribeGrantRulesToResourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GrantRules != nil {
+		for _, item := range s.GrantRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGrantRulesToResourceResponseBodyGrantRules struct {

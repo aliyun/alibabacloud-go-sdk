@@ -314,7 +314,25 @@ func (s *CreateTransitRouterVpnAttachmentRequest) SetZone(v []*CreateTransitRout
 }
 
 func (s *CreateTransitRouterVpnAttachmentRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Zone != nil {
+		for _, item := range s.Zone {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateTransitRouterVpnAttachmentRequestTag struct {

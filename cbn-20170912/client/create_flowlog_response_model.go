@@ -59,5 +59,10 @@ func (s *CreateFlowlogResponse) SetBody(v *CreateFlowlogResponseBody) *CreateFlo
 }
 
 func (s *CreateFlowlogResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *DescribeCenPrivateZoneRoutesResponse) SetBody(v *DescribeCenPrivateZone
 }
 
 func (s *DescribeCenPrivateZoneRoutesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

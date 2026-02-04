@@ -104,7 +104,12 @@ func (s *DescribeRouteServicesInCenResponseBody) SetTotalCount(v int32) *Describ
 }
 
 func (s *DescribeRouteServicesInCenResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RouteServiceEntries != nil {
+		if err := s.RouteServiceEntries.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRouteServicesInCenResponseBodyRouteServiceEntries struct {
@@ -129,7 +134,16 @@ func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntries) SetRouteServ
 }
 
 func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntries) Validate() error {
-	return dara.Validate(s)
+	if s.RouteServiceEntry != nil {
+		for _, item := range s.RouteServiceEntry {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry struct {
@@ -266,7 +280,12 @@ func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEn
 }
 
 func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry) Validate() error {
-	return dara.Validate(s)
+	if s.Cidrs != nil {
+		if err := s.Cidrs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntryCidrs struct {

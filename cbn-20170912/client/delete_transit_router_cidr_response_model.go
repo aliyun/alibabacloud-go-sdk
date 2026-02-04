@@ -59,5 +59,10 @@ func (s *DeleteTransitRouterCidrResponse) SetBody(v *DeleteTransitRouterCidrResp
 }
 
 func (s *DeleteTransitRouterCidrResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

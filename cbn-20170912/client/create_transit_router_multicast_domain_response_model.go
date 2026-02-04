@@ -59,5 +59,10 @@ func (s *CreateTransitRouterMulticastDomainResponse) SetBody(v *CreateTransitRou
 }
 
 func (s *CreateTransitRouterMulticastDomainResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
