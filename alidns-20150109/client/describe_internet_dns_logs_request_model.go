@@ -23,6 +23,8 @@ type iDescribeInternetDnsLogsRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *DescribeInternetDnsLogsRequest
 	GetPageSize() *int32
+	SetPreciseSort(v bool) *DescribeInternetDnsLogsRequest
+	GetPreciseSort() *bool
 	SetQueryCondition(v string) *DescribeInternetDnsLogsRequest
 	GetQueryCondition() *string
 	SetRecursionProtocolType(v string) *DescribeInternetDnsLogsRequest
@@ -83,7 +85,8 @@ type DescribeInternetDnsLogsRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PreciseSort *bool  `json:"PreciseSort,omitempty" xml:"PreciseSort,omitempty"`
 	// Query parameters
 	//
 	// - sourceIp: Source IP address
@@ -147,6 +150,10 @@ func (s *DescribeInternetDnsLogsRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *DescribeInternetDnsLogsRequest) GetPreciseSort() *bool {
+	return s.PreciseSort
+}
+
 func (s *DescribeInternetDnsLogsRequest) GetQueryCondition() *string {
 	return s.QueryCondition
 }
@@ -191,6 +198,11 @@ func (s *DescribeInternetDnsLogsRequest) SetPageNumber(v int32) *DescribeInterne
 
 func (s *DescribeInternetDnsLogsRequest) SetPageSize(v int32) *DescribeInternetDnsLogsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsRequest) SetPreciseSort(v bool) *DescribeInternetDnsLogsRequest {
+	s.PreciseSort = &v
 	return s
 }
 

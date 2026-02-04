@@ -6402,6 +6402,10 @@ func (client *Client) DescribeInternetDnsLogsWithContext(ctx context.Context, re
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.PreciseSort) {
+		query["PreciseSort"] = request.PreciseSort
+	}
+
 	if !dara.IsNil(request.QueryCondition) {
 		query["QueryCondition"] = request.QueryCondition
 	}
