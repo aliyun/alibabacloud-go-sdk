@@ -21,6 +21,8 @@ type iGetLindormInstanceResponseBody interface {
 	GetArchiveStorage() *int32
 	SetAutoRenew(v bool) *GetLindormInstanceResponseBody
 	GetAutoRenew() *bool
+	SetBackupInstance(v string) *GetLindormInstanceResponseBody
+	GetBackupInstance() *string
 	SetColdStorage(v int32) *GetLindormInstanceResponseBody
 	GetColdStorage() *int32
 	SetCoreDiskCategory(v string) *GetLindormInstanceResponseBody
@@ -171,7 +173,8 @@ type GetLindormInstanceResponseBody struct {
 	// example:
 	//
 	// false
-	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenew      *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	BackupInstance *string `json:"BackupInstance,omitempty" xml:"BackupInstance,omitempty"`
 	// The Capacity storage size of the instance.
 	//
 	// example:
@@ -670,6 +673,10 @@ func (s *GetLindormInstanceResponseBody) GetAutoRenew() *bool {
 	return s.AutoRenew
 }
 
+func (s *GetLindormInstanceResponseBody) GetBackupInstance() *string {
+	return s.BackupInstance
+}
+
 func (s *GetLindormInstanceResponseBody) GetColdStorage() *int32 {
 	return s.ColdStorage
 }
@@ -901,6 +908,11 @@ func (s *GetLindormInstanceResponseBody) SetArchiveStorage(v int32) *GetLindormI
 
 func (s *GetLindormInstanceResponseBody) SetAutoRenew(v bool) *GetLindormInstanceResponseBody {
 	s.AutoRenew = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBody) SetBackupInstance(v string) *GetLindormInstanceResponseBody {
+	s.BackupInstance = &v
 	return s
 }
 
