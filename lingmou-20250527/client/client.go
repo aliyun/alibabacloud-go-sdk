@@ -270,6 +270,76 @@ func (client *Client) CreateBackgroundPic(request *CreateBackgroundPicRequest) (
 
 // Summary:
 //
+// 创建播报音频
+//
+// @param request - CreateBroadcastAudioRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBroadcastAudioResponse
+func (client *Client) CreateBroadcastAudioWithOptions(request *CreateBroadcastAudioRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateBroadcastAudioResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FileName) {
+		body["fileName"] = request.FileName
+	}
+
+	if !dara.IsNil(request.OssKey) {
+		body["ossKey"] = request.OssKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateBroadcastAudio"),
+		Version:     dara.String("2025-05-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/customer/broadcast/material/audio/create"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateBroadcastAudioResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建播报音频
+//
+// @param request - CreateBroadcastAudioRequest
+//
+// @return CreateBroadcastAudioResponse
+func (client *Client) CreateBroadcastAudio(request *CreateBroadcastAudioRequest) (_result *CreateBroadcastAudioResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateBroadcastAudioResponse{}
+	_body, _err := client.CreateBroadcastAudioWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建播报贴图
 //
 // @param request - CreateBroadcastStickerRequest
@@ -1079,6 +1149,78 @@ func (client *Client) GetUploadPolicy(request *GetUploadPolicyRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &GetUploadPolicyResponse{}
 	_body, _err := client.GetUploadPolicyWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据音频id批量查询播报音频（最多查询100个）
+//
+// @param tmpReq - ListBroadcastAudiosByIdRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBroadcastAudiosByIdResponse
+func (client *Client) ListBroadcastAudiosByIdWithOptions(tmpReq *ListBroadcastAudiosByIdRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListBroadcastAudiosByIdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListBroadcastAudiosByIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AudioIds) {
+		request.AudioIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AudioIds, dara.String("audioIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AudioIdsShrink) {
+		query["audioIds"] = request.AudioIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListBroadcastAudiosById"),
+		Version:     dara.String("2025-05-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/customer/broadcast/material/audio/batchQuery"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListBroadcastAudiosByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据音频id批量查询播报音频（最多查询100个）
+//
+// @param request - ListBroadcastAudiosByIdRequest
+//
+// @return ListBroadcastAudiosByIdResponse
+func (client *Client) ListBroadcastAudiosById(request *ListBroadcastAudiosByIdRequest) (_result *ListBroadcastAudiosByIdResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListBroadcastAudiosByIdResponse{}
+	_body, _err := client.ListBroadcastAudiosByIdWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
