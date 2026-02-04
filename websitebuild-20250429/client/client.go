@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 绑定应用域名
+// # Bind Application Domain
 //
 // @param request - BindAppDomainRequest
 //
@@ -114,7 +114,7 @@ func (client *Client) BindAppDomainWithOptions(request *BindAppDomainRequest, ru
 
 // Summary:
 //
-// 绑定应用域名
+// # Bind Application Domain
 //
 // @param request - BindAppDomainRequest
 //
@@ -246,7 +246,7 @@ func (client *Client) CreateAppInstance(request *CreateAppInstanceRequest) (_res
 
 // Summary:
 //
-// 免登ticket
+// # SSO ticket
 //
 // @param request - CreateAppInstanceTicketRequest
 //
@@ -294,7 +294,7 @@ func (client *Client) CreateAppInstanceTicketWithOptions(request *CreateAppInsta
 
 // Summary:
 //
-// 免登ticket
+// # SSO ticket
 //
 // @param request - CreateAppInstanceTicketRequest
 //
@@ -386,7 +386,7 @@ func (client *Client) CreateLogoTask(request *CreateLogoTaskRequest) (_result *C
 
 // Summary:
 //
-// 删除域名的SSL证书
+// # Delete the SSL certificate of a domain
 //
 // @param request - DeleteAppDomainCertificateRequest
 //
@@ -434,7 +434,7 @@ func (client *Client) DeleteAppDomainCertificateWithOptions(request *DeleteAppDo
 
 // Summary:
 //
-// 删除域名的SSL证书
+// # Delete the SSL certificate of a domain
 //
 // @param request - DeleteAppDomainCertificateRequest
 //
@@ -452,7 +452,7 @@ func (client *Client) DeleteAppDomainCertificate(request *DeleteAppDomainCertifi
 
 // Summary:
 //
-// 删除域名的跳转规则
+// # Delete the domain redirection rules
 //
 // @param request - DeleteAppDomainRedirectRequest
 //
@@ -500,7 +500,7 @@ func (client *Client) DeleteAppDomainRedirectWithOptions(request *DeleteAppDomai
 
 // Summary:
 //
-// 删除域名的跳转规则
+// # Delete the domain redirection rules
 //
 // @param request - DeleteAppDomainRedirectRequest
 //
@@ -518,7 +518,7 @@ func (client *Client) DeleteAppDomainRedirect(request *DeleteAppDomainRedirectRe
 
 // Summary:
 //
-// 查询域名的DNS解析记录
+// # Query the DNS resolution records of a domain
 //
 // @param request - DescribeAppDomainDnsRecordRequest
 //
@@ -570,7 +570,7 @@ func (client *Client) DescribeAppDomainDnsRecordWithOptions(request *DescribeApp
 
 // Summary:
 //
-// 查询域名的DNS解析记录
+// # Query the DNS resolution records of a domain
 //
 // @param request - DescribeAppDomainDnsRecordRequest
 //
@@ -666,7 +666,7 @@ func (client *Client) DispatchConsoleAPIForPartner(request *DispatchConsoleAPIFo
 
 // Summary:
 //
-// 查询应用实例详情
+// # Query Application Instance Details
 //
 // @param request - GetAppInstanceRequest
 //
@@ -710,7 +710,7 @@ func (client *Client) GetAppInstanceWithOptions(request *GetAppInstanceRequest, 
 
 // Summary:
 //
-// 查询应用实例详情
+// # Query Application Instance Details
 //
 // @param request - GetAppInstanceRequest
 //
@@ -1070,7 +1070,73 @@ func (client *Client) GetUserTmpIdentityForPartner(request *GetUserTmpIdentityFo
 
 // Summary:
 //
-// 查询域名的跳转规则列表
+// 检查AccessToken
+//
+// @param request - IntrospectAppInstanceTicketForPreviewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IntrospectAppInstanceTicketForPreviewResponse
+func (client *Client) IntrospectAppInstanceTicketForPreviewWithOptions(request *IntrospectAppInstanceTicketForPreviewRequest, runtime *dara.RuntimeOptions) (_result *IntrospectAppInstanceTicketForPreviewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.Token) {
+		query["Token"] = request.Token
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("IntrospectAppInstanceTicketForPreview"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &IntrospectAppInstanceTicketForPreviewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 检查AccessToken
+//
+// @param request - IntrospectAppInstanceTicketForPreviewRequest
+//
+// @return IntrospectAppInstanceTicketForPreviewResponse
+func (client *Client) IntrospectAppInstanceTicketForPreview(request *IntrospectAppInstanceTicketForPreviewRequest) (_result *IntrospectAppInstanceTicketForPreviewResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &IntrospectAppInstanceTicketForPreviewResponse{}
+	_body, _err := client.IntrospectAppInstanceTicketForPreviewWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query the list of domain redirection rules
 //
 // @param request - ListAppDomainRedirectRecordsRequest
 //
@@ -1122,7 +1188,7 @@ func (client *Client) ListAppDomainRedirectRecordsWithOptions(request *ListAppDo
 
 // Summary:
 //
-// 查询域名的跳转规则列表
+// # Query the list of domain redirection rules
 //
 // @param request - ListAppDomainRedirectRecordsRequest
 //
@@ -1140,7 +1206,7 @@ func (client *Client) ListAppDomainRedirectRecords(request *ListAppDomainRedirec
 
 // Summary:
 //
-// 查询应用实例下的所有域名列表
+// # List all domain names under the application instance
 //
 // @param request - ListAppInstanceDomainsRequest
 //
@@ -1208,7 +1274,7 @@ func (client *Client) ListAppInstanceDomainsWithOptions(request *ListAppInstance
 
 // Summary:
 //
-// 查询应用实例下的所有域名列表
+// # List all domain names under the application instance
 //
 // @param request - ListAppInstanceDomainsRequest
 //
@@ -1226,7 +1292,7 @@ func (client *Client) ListAppInstanceDomains(request *ListAppInstanceDomainsRequ
 
 // Summary:
 //
-// 建站实例列表查询
+// # Website Instance List Query
 //
 // @param tmpReq - ListAppInstancesRequest
 //
@@ -1320,7 +1386,7 @@ func (client *Client) ListAppInstancesWithOptions(tmpReq *ListAppInstancesReques
 
 // Summary:
 //
-// 建站实例列表查询
+// # Website Instance List Query
 //
 // @param request - ListAppInstancesRequest
 //
@@ -1338,7 +1404,7 @@ func (client *Client) ListAppInstances(request *ListAppInstancesRequest) (_resul
 
 // Summary:
 //
-// 建站实例变配
+// # Modify the configuration of a building instance
 //
 // @param request - ModifyAppInstanceSpecRequest
 //
@@ -1406,7 +1472,7 @@ func (client *Client) ModifyAppInstanceSpecWithOptions(request *ModifyAppInstanc
 
 // Summary:
 //
-// 建站实例变配
+// # Modify the configuration of a building instance
 //
 // @param request - ModifyAppInstanceSpecRequest
 //
@@ -1564,7 +1630,7 @@ func (client *Client) OperateAppServiceForPartner(request *OperateAppServiceForP
 
 // Summary:
 //
-// 刷新ticket
+// # Refresh ticket
 //
 // @param request - RefreshAppInstanceTicketRequest
 //
@@ -1616,7 +1682,7 @@ func (client *Client) RefreshAppInstanceTicketWithOptions(request *RefreshAppIns
 
 // Summary:
 //
-// 刷新ticket
+// # Refresh ticket
 //
 // @param request - RefreshAppInstanceTicketRequest
 //
@@ -1708,7 +1774,7 @@ func (client *Client) RefundAppInstanceForPartner(request *RefundAppInstanceForP
 
 // Summary:
 //
-// 建站实例续费
+// # Renewal of website building instance
 //
 // @param request - RenewAppInstanceRequest
 //
@@ -1772,7 +1838,7 @@ func (client *Client) RenewAppInstanceWithOptions(request *RenewAppInstanceReque
 
 // Summary:
 //
-// 建站实例续费
+// # Renewal of website building instance
 //
 // @param request - RenewAppInstanceRequest
 //
@@ -1914,7 +1980,7 @@ func (client *Client) SearchImage(request *SearchImageRequest) (_result *SearchI
 
 // Summary:
 //
-// 设置域名的SSL证书
+// # Set the SSL certificate for a domain
 //
 // @param request - SetAppDomainCertificateRequest
 //
@@ -1978,7 +2044,7 @@ func (client *Client) SetAppDomainCertificateWithOptions(request *SetAppDomainCe
 
 // Summary:
 //
-// 设置域名的SSL证书
+// # Set the SSL certificate for a domain
 //
 // @param request - SetAppDomainCertificateRequest
 //
@@ -2080,7 +2146,7 @@ func (client *Client) SyncAppInstanceForPartner(request *SyncAppInstanceForPartn
 
 // Summary:
 //
-// 解绑应用域名
+// # Unbind Application Domain
 //
 // @param request - UnbindAppDomainRequest
 //
@@ -2128,7 +2194,7 @@ func (client *Client) UnbindAppDomainWithOptions(request *UnbindAppDomainRequest
 
 // Summary:
 //
-// 解绑应用域名
+// # Unbind Application Domain
 //
 // @param request - UnbindAppDomainRequest
 //

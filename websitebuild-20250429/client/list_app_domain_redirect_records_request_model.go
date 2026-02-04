@@ -18,14 +18,22 @@ type iListAppDomainRedirectRecordsRequest interface {
 }
 
 type ListAppDomainRedirectRecordsRequest struct {
+	// Application instance business ID
+	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The number of results per query.
+	//
+	// Range: 10~100. Default value: 20.
+	//
 	// example:
 	//
 	// 1
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Token for the next query. It is empty if there is no next query.
+	//
 	// example:
 	//
 	// yPkgBbQln0gmUnIZSGizGw==

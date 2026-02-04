@@ -20,15 +20,26 @@ type iBindAppDomainRequest interface {
 }
 
 type BindAppDomainRequest struct {
+	// Business ID
+	//
 	// example:
 	//
 	// WD20250820143531000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Domain Name
+	//
 	// example:
 	//
 	// xiaoniu.link
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Extend     *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// Extended Information (OverwriteExistingRecord)
+	//
+	// example:
+	//
+	// {\\"deliveryNodeName\\":\\"网站验收\\",\\"deliveryNodeStatus\\":\\"Reject\\",\\"deliveryOperatorRole\\":\\"Customer\\"}
+	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// Domain Binding - Operation Type
+	//
 	// example:
 	//
 	// vul_fix

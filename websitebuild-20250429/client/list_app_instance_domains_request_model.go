@@ -26,30 +26,46 @@ type iListAppInstanceDomainsRequest interface {
 }
 
 type ListAppInstanceDomainsRequest struct {
+	// Business ID
+	//
 	// example:
 	//
 	// WD20250718165839000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Number of results per query.
+	//
+	// Range: 10~100. Default value: 20.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Token for the next query. It will be empty if there is no next query.
+	//
 	// example:
 	//
 	// 0l45bkwM022Dt+rOvPi/oQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Sorting field
+	//
 	// example:
 	//
 	// CreationTime
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
+	// Sorting type ASC|DESC
+	//
 	// example:
 	//
 	// BUY
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// Page number, default is 1
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Page size, default is 10
+	//
 	// example:
 	//
 	// 0

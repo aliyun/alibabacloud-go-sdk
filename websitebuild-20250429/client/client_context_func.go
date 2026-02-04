@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 绑定应用域名
+// # Bind Application Domain
 //
 // @param request - BindAppDomainRequest
 //
@@ -161,7 +161,7 @@ func (client *Client) CreateAppInstanceWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 免登ticket
+// # SSO ticket
 //
 // @param request - CreateAppInstanceTicketRequest
 //
@@ -265,7 +265,7 @@ func (client *Client) CreateLogoTaskWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 删除域名的SSL证书
+// # Delete the SSL certificate of a domain
 //
 // @param request - DeleteAppDomainCertificateRequest
 //
@@ -313,7 +313,7 @@ func (client *Client) DeleteAppDomainCertificateWithContext(ctx context.Context,
 
 // Summary:
 //
-// 删除域名的跳转规则
+// # Delete the domain redirection rules
 //
 // @param request - DeleteAppDomainRedirectRequest
 //
@@ -361,7 +361,7 @@ func (client *Client) DeleteAppDomainRedirectWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询域名的DNS解析记录
+// # Query the DNS resolution records of a domain
 //
 // @param request - DescribeAppDomainDnsRecordRequest
 //
@@ -473,7 +473,7 @@ func (client *Client) DispatchConsoleAPIForPartnerWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询应用实例详情
+// # Query Application Instance Details
 //
 // @param request - GetAppInstanceRequest
 //
@@ -769,7 +769,55 @@ func (client *Client) GetUserTmpIdentityForPartnerWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询域名的跳转规则列表
+// 检查AccessToken
+//
+// @param request - IntrospectAppInstanceTicketForPreviewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IntrospectAppInstanceTicketForPreviewResponse
+func (client *Client) IntrospectAppInstanceTicketForPreviewWithContext(ctx context.Context, request *IntrospectAppInstanceTicketForPreviewRequest, runtime *dara.RuntimeOptions) (_result *IntrospectAppInstanceTicketForPreviewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.Token) {
+		query["Token"] = request.Token
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("IntrospectAppInstanceTicketForPreview"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &IntrospectAppInstanceTicketForPreviewResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query the list of domain redirection rules
 //
 // @param request - ListAppDomainRedirectRecordsRequest
 //
@@ -821,7 +869,7 @@ func (client *Client) ListAppDomainRedirectRecordsWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询应用实例下的所有域名列表
+// # List all domain names under the application instance
 //
 // @param request - ListAppInstanceDomainsRequest
 //
@@ -889,7 +937,7 @@ func (client *Client) ListAppInstanceDomainsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 建站实例列表查询
+// # Website Instance List Query
 //
 // @param tmpReq - ListAppInstancesRequest
 //
@@ -983,7 +1031,7 @@ func (client *Client) ListAppInstancesWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
-// 建站实例变配
+// # Modify the configuration of a building instance
 //
 // @param request - ModifyAppInstanceSpecRequest
 //
@@ -1155,7 +1203,7 @@ func (client *Client) OperateAppServiceForPartnerWithContext(ctx context.Context
 
 // Summary:
 //
-// 刷新ticket
+// # Refresh ticket
 //
 // @param request - RefreshAppInstanceTicketRequest
 //
@@ -1263,7 +1311,7 @@ func (client *Client) RefundAppInstanceForPartnerWithContext(ctx context.Context
 
 // Summary:
 //
-// 建站实例续费
+// # Renewal of website building instance
 //
 // @param request - RenewAppInstanceRequest
 //
@@ -1433,7 +1481,7 @@ func (client *Client) SearchImageWithContext(ctx context.Context, tmpReq *Search
 
 // Summary:
 //
-// 设置域名的SSL证书
+// # Set the SSL certificate for a domain
 //
 // @param request - SetAppDomainCertificateRequest
 //
@@ -1563,7 +1611,7 @@ func (client *Client) SyncAppInstanceForPartnerWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 解绑应用域名
+// # Unbind Application Domain
 //
 // @param request - UnbindAppDomainRequest
 //

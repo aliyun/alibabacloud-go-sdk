@@ -18,14 +18,20 @@ type iDescribeAppDomainDnsRecordRequest interface {
 }
 
 type DescribeAppDomainDnsRecordRequest struct {
+	// Business ID
+	//
 	// example:
 	//
 	// WD20250821114240000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Domain name
+	//
 	// example:
 	//
 	// rayihealth.cn
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Purpose for querying DNS configuration
+	//
 	// example:
 	//
 	// restore

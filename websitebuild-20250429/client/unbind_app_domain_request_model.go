@@ -16,10 +16,14 @@ type iUnbindAppDomainRequest interface {
 }
 
 type UnbindAppDomainRequest struct {
+	// Business ID
+	//
 	// example:
 	//
 	// WD20250908140837000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Domain Name
+	//
 	// example:
 	//
 	// conway.cn

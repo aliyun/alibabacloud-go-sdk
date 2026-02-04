@@ -16,10 +16,14 @@ type iDeleteAppDomainCertificateRequest interface {
 }
 
 type DeleteAppDomainCertificateRequest struct {
+	// Business ID of the application instance
+	//
 	// example:
 	//
 	// 202506170003
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Domain name
+	//
 	// example:
 	//
 	// aliwmzs.com

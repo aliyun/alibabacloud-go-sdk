@@ -34,39 +34,60 @@ type iDescribeAppDomainDnsRecordResponseBody interface {
 }
 
 type DescribeAppDomainDnsRecordResponseBody struct {
+	// Details of access denial; this field is returned only when RAM verification fails.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Whether retry is allowed
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// 应用名称，查询此名称的应用
+	//
 	// example:
 	//
 	// ish-intelligence-store-platform-admin-web
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// Dynamic message.
+	//
 	// example:
 	//
-	// https://check-result-file-sh.oss-cn-shanghai.aliyuncs.com/vs1w2yd3p8264pz/vs1w2yd3p8264pz.diff.zip?Expires=1739592470&OSSAccessKeyId=LTAI5tKUErVCETM4ev9SELNb&Signature=3DRuMtCeTinVYxo7XAOEIOEmZGE%3D
-	DynamicMessage *string                                       `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{}                                 `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	Module         *DescribeAppDomainDnsRecordResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// Id of the request
+	// SYSTEM_ERROR
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// 返回错误参数
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// Application module
+	Module *DescribeAppDomainDnsRecordResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	// ID of the request
 	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg  *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Exception message
+	//
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Backup parameter.
+	//
 	// example:
 	//
 	// True
@@ -190,14 +211,20 @@ func (s *DescribeAppDomainDnsRecordResponseBody) Validate() error {
 }
 
 type DescribeAppDomainDnsRecordResponseBodyModule struct {
+	// Host record
+	//
 	// example:
 	//
 	// *.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// Record type
+	//
 	// example:
 	//
 	// A
 	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
+	// Record value
+	//
 	// example:
 	//
 	// Maintenance

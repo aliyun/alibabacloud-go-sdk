@@ -38,47 +38,74 @@ type iListAppDomainRedirectRecordsResponseBody interface {
 }
 
 type ListAppDomainRedirectRecordsResponseBody struct {
+	// Detailed reason for access denial.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Whether retry is allowed
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// Frontend application name.
+	//
 	// example:
 	//
 	// spring-cloud-b
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// Dynamic message, currently unused, please ignore
+	//
 	// example:
 	//
-	// https://check-result-file-sh.oss-cn-shanghai.aliyuncs.com/u6qw3gxzu3b7sbj/u6qw3gxzu3b7sbj.diff.zip?Expires=1740975709&OSSAccessKeyId=LTAI5tKUErVCETM4ev9SELNb&Signature=FP7dDnkrLlOZHmRRORVqbLOtv9c%3D
-	DynamicMessage *string       `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// SYSTEM_ERROR
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// Error parameters
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// Number of results per query.
+	//
+	// Range: 10~100. Default value: 20.
+	//
 	// example:
 	//
 	// 10
-	MaxResults *int32                                          `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Module     *ListAppDomainRedirectRecordsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Returned object.
+	Module *ListAppDomainRedirectRecordsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	// 下一个查询开始的Token。没有下一个查询时为空。
+	//
 	// example:
 	//
 	// AAAAARbaCuN6hiD08qrLdwJ9Fh3BFw8paIJ7ylB6A7Qn9JjM
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg  *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Exception message
+	//
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Whether it is processed synchronously
+	//
 	// example:
 	//
 	// True
@@ -220,23 +247,36 @@ func (s *ListAppDomainRedirectRecordsResponseBody) Validate() error {
 }
 
 type ListAppDomainRedirectRecordsResponseBodyModule struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 12
-	CurrentPageNum *int32                                                `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	Data           []*ListAppDomainRedirectRecordsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Next           *ListAppDomainRedirectRecordsResponseBodyModuleNext   `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
-	NextPage       *bool                                                 `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
+	// Member name.
+	Data []*ListAppDomainRedirectRecordsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Next feature ID
+	Next *ListAppDomainRedirectRecordsResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
+	// Whether there is a next page
+	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 50
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PrePage     *bool  `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	ResultLimit *bool  `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Whether there is a previous page.
+	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	// Apart from pagination limits, the server processes up to the most recent 1000 records. If the result exceeds 1000, **ResultLimit*	- is **true**, please narrow down the time range and search again; otherwise, **ResultLimit*	- is **false**.
+	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
+	// Total number of items.
+	//
 	// example:
 	//
 	// 1
 	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -351,14 +391,20 @@ func (s *ListAppDomainRedirectRecordsResponseBodyModule) Validate() error {
 }
 
 type ListAppDomainRedirectRecordsResponseBodyModuleData struct {
+	// Redirect record ID
+	//
 	// example:
 	//
 	// f0379419-433d-410e-98d9-bf5c72f47227
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// Source domain
+	//
 	// example:
 	//
 	// abc.wanwang.xin
 	SourceDomain *string `json:"SourceDomain,omitempty" xml:"SourceDomain,omitempty"`
+	// 目标域名
+	//
 	// example:
 	//
 	// aliyuncs.com
@@ -405,14 +451,20 @@ func (s *ListAppDomainRedirectRecordsResponseBodyModuleData) Validate() error {
 }
 
 type ListAppDomainRedirectRecordsResponseBodyModuleNext struct {
+	// Redirect record ID
+	//
 	// example:
 	//
 	// 936956504373539840
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// Source domain
+	//
 	// example:
 	//
 	// abc.wanwang.xin
 	SourceDomain *string `json:"SourceDomain,omitempty" xml:"SourceDomain,omitempty"`
+	// Target domain
+	//
 	// example:
 	//
 	// aliyuncs.com

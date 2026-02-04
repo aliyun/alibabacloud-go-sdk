@@ -24,26 +24,38 @@ type iSetAppDomainCertificateRequest interface {
 }
 
 type SetAppDomainCertificateRequest struct {
+	// Business ID of the application instance
+	//
 	// example:
 	//
 	// WD20250821161210000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// SSL certificate name
+	//
 	// example:
 	//
 	// 2024
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
+	// Certificate type: Default free certificate or customer\\"s own certificate
+	//
 	// example:
 	//
 	// Server
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
+	// Domain name
+	//
 	// example:
 	//
 	// kaibaidu.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Private key
+	//
 	// example:
 	//
 	// ***
 	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	// Public key
+	//
 	// example:
 	//
 	// c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUxGQnQxUUpyT3IxK2hTTGRkbERMZUx4WGRIZ3hBalBxWHJIbWNFNWxqSk8gbm93Y29kZXJAbm93Y29kZXJkZU1hY0Jvb2stUHJvLmxvY2Fs

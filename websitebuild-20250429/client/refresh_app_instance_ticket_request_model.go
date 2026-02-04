@@ -18,14 +18,20 @@ type iRefreshAppInstanceTicketRequest interface {
 }
 
 type RefreshAppInstanceTicketRequest struct {
+	// Business ID of the application instance
+	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Updated token information
+	//
 	// example:
 	//
 	// ***
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The UUID of the server.
+	//
 	// example:
 	//
 	// c5c354d7-5e68-443a-b7fc-767e6ede9deb
