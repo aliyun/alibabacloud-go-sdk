@@ -11,6 +11,10 @@ type iListDelegatedServicesForAccountResponseBody interface {
 	GoString() string
 	SetDelegatedServices(v *ListDelegatedServicesForAccountResponseBodyDelegatedServices) *ListDelegatedServicesForAccountResponseBody
 	GetDelegatedServices() *ListDelegatedServicesForAccountResponseBodyDelegatedServices
+	SetMaxResults(v int32) *ListDelegatedServicesForAccountResponseBody
+	GetMaxResults() *int32
+	SetNextToken(v string) *ListDelegatedServicesForAccountResponseBody
+	GetNextToken() *string
 	SetRequestId(v string) *ListDelegatedServicesForAccountResponseBody
 	GetRequestId() *string
 }
@@ -20,6 +24,14 @@ type ListDelegatedServicesForAccountResponseBody struct {
 	//
 	// > If the value of this parameter is empty, the member is not specified as a delegated administrator account.
 	DelegatedServices *ListDelegatedServicesForAccountResponseBodyDelegatedServices `json:"DelegatedServices,omitempty" xml:"DelegatedServices,omitempty" type:"Struct"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// TGlzdFJlc291cm****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
 	//
 	// example:
@@ -40,12 +52,30 @@ func (s *ListDelegatedServicesForAccountResponseBody) GetDelegatedServices() *Li
 	return s.DelegatedServices
 }
 
+func (s *ListDelegatedServicesForAccountResponseBody) GetMaxResults() *int32 {
+	return s.MaxResults
+}
+
+func (s *ListDelegatedServicesForAccountResponseBody) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *ListDelegatedServicesForAccountResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
 func (s *ListDelegatedServicesForAccountResponseBody) SetDelegatedServices(v *ListDelegatedServicesForAccountResponseBodyDelegatedServices) *ListDelegatedServicesForAccountResponseBody {
 	s.DelegatedServices = v
+	return s
+}
+
+func (s *ListDelegatedServicesForAccountResponseBody) SetMaxResults(v int32) *ListDelegatedServicesForAccountResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDelegatedServicesForAccountResponseBody) SetNextToken(v string) *ListDelegatedServicesForAccountResponseBody {
+	s.NextToken = &v
 	return s
 }
 

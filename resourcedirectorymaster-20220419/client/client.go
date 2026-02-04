@@ -3222,6 +3222,14 @@ func (client *Client) ListDelegatedServicesForAccountWithOptions(request *ListDe
 		query["AccountId"] = request.AccountId
 	}
 
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
