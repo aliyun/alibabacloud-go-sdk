@@ -1608,6 +1608,10 @@ func (client *Client) CreateDtsInstanceWithContext(ctx context.Context, request 
 		query["FeeType"] = request.FeeType
 	}
 
+	if !dara.IsNil(request.InsightModule) {
+		query["InsightModule"] = request.InsightModule
+	}
+
 	if !dara.IsNil(request.InstanceClass) {
 		query["InstanceClass"] = request.InstanceClass
 	}

@@ -83,6 +83,8 @@ type iDescribeDtsJobDetailResponseBody interface {
 	GetHttpStatusCode() *int32
 	SetInitCheckpoint(v string) *DescribeDtsJobDetailResponseBody
 	GetInitCheckpoint() *string
+	SetInsightModule(v bool) *DescribeDtsJobDetailResponseBody
+	GetInsightModule() *bool
 	SetJobType(v string) *DescribeDtsJobDetailResponseBody
 	GetJobType() *string
 	SetLastUpdateTime(v string) *DescribeDtsJobDetailResponseBody
@@ -361,6 +363,7 @@ type DescribeDtsJobDetailResponseBody struct {
 	// 200
 	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	InitCheckpoint *string `json:"InitCheckpoint,omitempty" xml:"InitCheckpoint,omitempty"`
+	InsightModule  *bool   `json:"InsightModule,omitempty" xml:"InsightModule,omitempty"`
 	// The type of the DTS task. Valid values:
 	//
 	// 	- **sync**: a data synchronization task.
@@ -683,6 +686,10 @@ func (s *DescribeDtsJobDetailResponseBody) GetInitCheckpoint() *string {
 	return s.InitCheckpoint
 }
 
+func (s *DescribeDtsJobDetailResponseBody) GetInsightModule() *bool {
+	return s.InsightModule
+}
+
 func (s *DescribeDtsJobDetailResponseBody) GetJobType() *string {
 	return s.JobType
 }
@@ -949,6 +956,11 @@ func (s *DescribeDtsJobDetailResponseBody) SetHttpStatusCode(v int32) *DescribeD
 
 func (s *DescribeDtsJobDetailResponseBody) SetInitCheckpoint(v string) *DescribeDtsJobDetailResponseBody {
 	s.InitCheckpoint = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBody) SetInsightModule(v bool) *DescribeDtsJobDetailResponseBody {
+	s.InsightModule = &v
 	return s
 }
 

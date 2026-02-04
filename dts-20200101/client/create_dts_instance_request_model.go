@@ -27,6 +27,8 @@ type iCreateDtsInstanceRequest interface {
 	GetDu() *int32
 	SetFeeType(v string) *CreateDtsInstanceRequest
 	GetFeeType() *string
+	SetInsightModule(v bool) *CreateDtsInstanceRequest
+	GetInsightModule() *bool
 	SetInstanceClass(v string) *CreateDtsInstanceRequest
 	GetInstanceClass() *string
 	SetJobId(v string) *CreateDtsInstanceRequest
@@ -177,7 +179,8 @@ type CreateDtsInstanceRequest struct {
 	// example:
 	//
 	// ONLY_CONFIGURATION_FEE
-	FeeType *string `json:"FeeType,omitempty" xml:"FeeType,omitempty"`
+	FeeType       *string `json:"FeeType,omitempty" xml:"FeeType,omitempty"`
+	InsightModule *bool   `json:"InsightModule,omitempty" xml:"InsightModule,omitempty"`
 	// The instance class.
 	//
 	// 	- DTS supports the following instance classes for a data migration instance: **xxlarge**, **xlarge**, **large**, **medium**, and **small**.
@@ -402,6 +405,10 @@ func (s *CreateDtsInstanceRequest) GetFeeType() *string {
 	return s.FeeType
 }
 
+func (s *CreateDtsInstanceRequest) GetInsightModule() *bool {
+	return s.InsightModule
+}
+
 func (s *CreateDtsInstanceRequest) GetInstanceClass() *string {
 	return s.InstanceClass
 }
@@ -500,6 +507,11 @@ func (s *CreateDtsInstanceRequest) SetDu(v int32) *CreateDtsInstanceRequest {
 
 func (s *CreateDtsInstanceRequest) SetFeeType(v string) *CreateDtsInstanceRequest {
 	s.FeeType = &v
+	return s
+}
+
+func (s *CreateDtsInstanceRequest) SetInsightModule(v bool) *CreateDtsInstanceRequest {
+	s.InsightModule = &v
 	return s
 }
 
