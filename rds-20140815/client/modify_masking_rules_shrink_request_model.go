@@ -35,17 +35,42 @@ type iModifyMaskingRulesShrinkRequest interface {
 
 type ModifyMaskingRulesShrinkRequest struct {
 	// This parameter is required.
-	DBInstanceName       *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DBName               *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	DefaultAlgo          *string `json:"DefaultAlgo,omitempty" xml:"DefaultAlgo,omitempty"`
-	Enabled              *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	MaskingAlgo          *string `json:"MaskingAlgo,omitempty" xml:"MaskingAlgo,omitempty"`
-	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	//
+	// example:
+	//
+	// rm-t4n8t18o******6d5
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// example:
+	//
+	// myDB
+	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// example:
+	//
+	// sm4-128-gcm
+	DefaultAlgo *string `json:"DefaultAlgo,omitempty" xml:"DefaultAlgo,omitempty"`
+	// example:
+	//
+	// true
+	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// example:
+	//
+	// [{"name": "sha256"},
+	//
+	//         {"name":"sm4-128-gcm"}]
+	MaskingAlgo *string `json:"MaskingAlgo,omitempty" xml:"MaskingAlgo,omitempty"`
+	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// ap-southeast-1
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RuleConfigShrink     *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rulename1
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 

@@ -16,8 +16,11 @@ type iDescribeMaskingRulesResponseBody interface {
 }
 
 type DescribeMaskingRulesResponseBody struct {
-	Data      *DescribeMaskingRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *DescribeMaskingRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 69779000-57A4-38F6-BF85-**********A2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeMaskingRulesResponseBody) String() string {
@@ -90,11 +93,25 @@ func (s *DescribeMaskingRulesResponseBodyData) Validate() error {
 }
 
 type DescribeMaskingRulesResponseBodyDataRules struct {
-	DefaultAlgo *string                                              `json:"DefaultAlgo,omitempty" xml:"DefaultAlgo,omitempty"`
-	Enabled     *string                                              `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// example:
+	//
+	// aes-128-gcm
+	DefaultAlgo *string `json:"DefaultAlgo,omitempty" xml:"DefaultAlgo,omitempty"`
+	// example:
+	//
+	// true
+	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// example:
+	//
+	// [{"name": "aes-128-gcm"},
+	//
+	//         {"name":"sm4-128-gcm"}]
 	MaskingAlgo *string                                              `json:"MaskingAlgo,omitempty" xml:"MaskingAlgo,omitempty"`
 	RuleConfig  *DescribeMaskingRulesResponseBodyDataRulesRuleConfig `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty" type:"Struct"`
-	RuleName    *string                                              `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// test
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
 func (s DescribeMaskingRulesResponseBodyDataRules) String() string {

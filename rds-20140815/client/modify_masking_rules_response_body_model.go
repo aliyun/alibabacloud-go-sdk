@@ -20,10 +20,19 @@ type iModifyMaskingRulesResponseBody interface {
 }
 
 type ModifyMaskingRulesResponseBody struct {
-	Data      map[string]*string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string            `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data map[string]*string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 8B1434A1-08A7-3E8C-A237-076A********
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyMaskingRulesResponseBody) String() string {

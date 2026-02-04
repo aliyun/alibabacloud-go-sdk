@@ -20,10 +20,19 @@ type iDeleteMaskingRulesResponseBody interface {
 }
 
 type DeleteMaskingRulesResponseBody struct {
-	Data      map[string]*string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string            `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data map[string]*string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 5EEE1ED1-A459-38D2-840C-0C49********
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteMaskingRulesResponseBody) String() string {

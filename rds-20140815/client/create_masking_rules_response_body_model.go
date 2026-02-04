@@ -20,10 +20,19 @@ type iCreateMaskingRulesResponseBody interface {
 }
 
 type CreateMaskingRulesResponseBody struct {
-	Data      map[string]*string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string            `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data map[string]*string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// successful create
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 792233B1-76B8-5A01-92B4-**********864
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateMaskingRulesResponseBody) String() string {

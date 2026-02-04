@@ -16,8 +16,11 @@ type iDescribeAccountMaskingPrivilegeResponseBody interface {
 }
 
 type DescribeAccountMaskingPrivilegeResponseBody struct {
-	Data      *DescribeAccountMaskingPrivilegeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *DescribeAccountMaskingPrivilegeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// D0073A98-52F1-3075-8256-394**********
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAccountMaskingPrivilegeResponseBody) String() string {
@@ -90,9 +93,18 @@ func (s *DescribeAccountMaskingPrivilegeResponseBodyData) Validate() error {
 }
 
 type DescribeAccountMaskingPrivilegeResponseBodyDataUserPrivilege struct {
+	// example:
+	//
+	// 2026-01-22T02:01:20Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Privilege  *string `json:"Privilege,omitempty" xml:"Privilege,omitempty"`
-	UserName   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// example:
+	//
+	// restrictedAccess
+	Privilege *string `json:"Privilege,omitempty" xml:"Privilege,omitempty"`
+	// example:
+	//
+	// rds
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s DescribeAccountMaskingPrivilegeResponseBodyDataUserPrivilege) String() string {

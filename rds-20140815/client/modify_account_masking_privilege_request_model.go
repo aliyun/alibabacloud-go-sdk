@@ -31,16 +31,37 @@ type iModifyAccountMaskingPrivilegeRequest interface {
 
 type ModifyAccountMaskingPrivilegeRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-t4n8t18o******6d5
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DBName         *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	ExpireTime     *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	OwnerId        *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// myDB
+	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// example:
+	//
+	// 2026-01-22T02:01:20Z
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	OwnerId    *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
-	Privilege            *string `json:"Privilege,omitempty" xml:"Privilege,omitempty"`
+	//
+	// example:
+	//
+	// restrictedAccess
+	Privilege *string `json:"Privilege,omitempty" xml:"Privilege,omitempty"`
+	// example:
+	//
+	// ap-southeast-1
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// user1,user2
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 

@@ -20,10 +20,19 @@ type iModifyAccountMaskingPrivilegeResponseBody interface {
 }
 
 type ModifyAccountMaskingPrivilegeResponseBody struct {
-	Data      map[string]*string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string            `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data map[string]*string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2144F5CC-10C5-3B72-8C74-E52C********
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyAccountMaskingPrivilegeResponseBody) String() string {
