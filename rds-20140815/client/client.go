@@ -10751,6 +10751,84 @@ func (client *Client) DescribeActionEventPolicy(request *DescribeActionEventPoli
 
 // Summary:
 //
+// 查询主动操作维护配置
+//
+// @param request - DescribeActiveOperationMaintainConfRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeActiveOperationMaintainConfResponse
+func (client *Client) DescribeActiveOperationMaintainConfWithOptions(request *DescribeActiveOperationMaintainConfRequest, runtime *dara.RuntimeOptions) (_result *DescribeActiveOperationMaintainConfResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeActiveOperationMaintainConf"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeActiveOperationMaintainConfResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询主动操作维护配置
+//
+// @param request - DescribeActiveOperationMaintainConfRequest
+//
+// @return DescribeActiveOperationMaintainConfResponse
+func (client *Client) DescribeActiveOperationMaintainConf(request *DescribeActiveOperationMaintainConfRequest) (_result *DescribeActiveOperationMaintainConfResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeActiveOperationMaintainConfResponse{}
+	_body, _err := client.DescribeActiveOperationMaintainConfWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details about scheduled O\\\\\\\\\\\\\\\\\\\\&M tasks for an instance.
 //
 // Description:
@@ -24932,6 +25010,88 @@ func (client *Client) DescribeSQLLogReportList(request *DescribeSQLLogReportList
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeSQLLogReportListResponse{}
 	_body, _err := client.DescribeSQLLogReportListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询SQLServer升级版本
+//
+// @param request - DescribeSQLServerUpgradeVersionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSQLServerUpgradeVersionsResponse
+func (client *Client) DescribeSQLServerUpgradeVersionsWithOptions(request *DescribeSQLServerUpgradeVersionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSQLServerUpgradeVersionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.EngineVersion) {
+		query["EngineVersion"] = request.EngineVersion
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSQLServerUpgradeVersions"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSQLServerUpgradeVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询SQLServer升级版本
+//
+// @param request - DescribeSQLServerUpgradeVersionsRequest
+//
+// @return DescribeSQLServerUpgradeVersionsResponse
+func (client *Client) DescribeSQLServerUpgradeVersions(request *DescribeSQLServerUpgradeVersionsRequest) (_result *DescribeSQLServerUpgradeVersionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeSQLServerUpgradeVersionsResponse{}
+	_body, _err := client.DescribeSQLServerUpgradeVersionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
