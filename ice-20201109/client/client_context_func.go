@@ -1080,6 +1080,10 @@ func (client *Client) ClearAIAgentVoiceprintWithContext(ctx context.Context, req
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegistrationMode) {
+		query["RegistrationMode"] = request.RegistrationMode
+	}
+
 	if !dara.IsNil(request.VoiceprintId) {
 		query["VoiceprintId"] = request.VoiceprintId
 	}
@@ -10114,6 +10118,10 @@ func (client *Client) ListAIAgentVoiceprintsWithContext(ctx context.Context, req
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegistrationMode) {
+		query["RegistrationMode"] = request.RegistrationMode
 	}
 
 	if !dara.IsNil(request.VoiceprintId) {

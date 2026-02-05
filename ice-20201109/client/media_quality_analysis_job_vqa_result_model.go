@@ -145,6 +145,7 @@ type MediaQualityAnalysisJobVqaResultScoreResult struct {
 	Color  *MediaQualityAnalysisJobVqaResultScoreResultColor  `json:"Color,omitempty" xml:"Color,omitempty" type:"Struct"`
 	Detail *MediaQualityAnalysisJobVqaResultScoreResultDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Struct"`
 	Noise  *MediaQualityAnalysisJobVqaResultScoreResultNoise  `json:"Noise,omitempty" xml:"Noise,omitempty" type:"Struct"`
+	Score  *float64                                           `json:"Score,omitempty" xml:"Score,omitempty"`
 	Sharp  *MediaQualityAnalysisJobVqaResultScoreResultSharp  `json:"Sharp,omitempty" xml:"Sharp,omitempty" type:"Struct"`
 }
 
@@ -172,6 +173,10 @@ func (s *MediaQualityAnalysisJobVqaResultScoreResult) GetNoise() *MediaQualityAn
 	return s.Noise
 }
 
+func (s *MediaQualityAnalysisJobVqaResultScoreResult) GetScore() *float64 {
+	return s.Score
+}
+
 func (s *MediaQualityAnalysisJobVqaResultScoreResult) GetSharp() *MediaQualityAnalysisJobVqaResultScoreResultSharp {
 	return s.Sharp
 }
@@ -193,6 +198,11 @@ func (s *MediaQualityAnalysisJobVqaResultScoreResult) SetDetail(v *MediaQualityA
 
 func (s *MediaQualityAnalysisJobVqaResultScoreResult) SetNoise(v *MediaQualityAnalysisJobVqaResultScoreResultNoise) *MediaQualityAnalysisJobVqaResultScoreResult {
 	s.Noise = v
+	return s
+}
+
+func (s *MediaQualityAnalysisJobVqaResultScoreResult) SetScore(v float64) *MediaQualityAnalysisJobVqaResultScoreResult {
+	s.Score = &v
 	return s
 }
 

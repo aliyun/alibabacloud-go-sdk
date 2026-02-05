@@ -9,11 +9,14 @@ type iClearAIAgentVoiceprintRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetRegistrationMode(v string) *ClearAIAgentVoiceprintRequest
+	GetRegistrationMode() *string
 	SetVoiceprintId(v string) *ClearAIAgentVoiceprintRequest
 	GetVoiceprintId() *string
 }
 
 type ClearAIAgentVoiceprintRequest struct {
+	RegistrationMode *string `json:"RegistrationMode,omitempty" xml:"RegistrationMode,omitempty"`
 	// The unique identifier for the voiceprint.
 	//
 	// example:
@@ -30,8 +33,17 @@ func (s ClearAIAgentVoiceprintRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ClearAIAgentVoiceprintRequest) GetRegistrationMode() *string {
+	return s.RegistrationMode
+}
+
 func (s *ClearAIAgentVoiceprintRequest) GetVoiceprintId() *string {
 	return s.VoiceprintId
+}
+
+func (s *ClearAIAgentVoiceprintRequest) SetRegistrationMode(v string) *ClearAIAgentVoiceprintRequest {
+	s.RegistrationMode = &v
+	return s
 }
 
 func (s *ClearAIAgentVoiceprintRequest) SetVoiceprintId(v string) *ClearAIAgentVoiceprintRequest {

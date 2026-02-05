@@ -1559,6 +1559,10 @@ func (client *Client) ClearAIAgentVoiceprintWithOptions(request *ClearAIAgentVoi
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegistrationMode) {
+		query["RegistrationMode"] = request.RegistrationMode
+	}
+
 	if !dara.IsNil(request.VoiceprintId) {
 		query["VoiceprintId"] = request.VoiceprintId
 	}
@@ -14236,6 +14240,10 @@ func (client *Client) ListAIAgentVoiceprintsWithOptions(request *ListAIAgentVoic
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegistrationMode) {
+		query["RegistrationMode"] = request.RegistrationMode
 	}
 
 	if !dara.IsNil(request.VoiceprintId) {

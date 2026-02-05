@@ -13,6 +13,8 @@ type iListAIAgentVoiceprintsRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListAIAgentVoiceprintsRequest
 	GetPageSize() *int32
+	SetRegistrationMode(v string) *ListAIAgentVoiceprintsRequest
+	GetRegistrationMode() *string
 	SetVoiceprintId(v string) *ListAIAgentVoiceprintsRequest
 	GetVoiceprintId() *string
 }
@@ -29,7 +31,8 @@ type ListAIAgentVoiceprintsRequest struct {
 	// example:
 	//
 	// 100
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegistrationMode *string `json:"RegistrationMode,omitempty" xml:"RegistrationMode,omitempty"`
 	// A unique identifier for the voiceprint. This parameter is optional. If provided, only the information for that ID is returned. If not specified, all voiceprints under the account are returned.
 	//
 	// example:
@@ -54,6 +57,10 @@ func (s *ListAIAgentVoiceprintsRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListAIAgentVoiceprintsRequest) GetRegistrationMode() *string {
+	return s.RegistrationMode
+}
+
 func (s *ListAIAgentVoiceprintsRequest) GetVoiceprintId() *string {
 	return s.VoiceprintId
 }
@@ -65,6 +72,11 @@ func (s *ListAIAgentVoiceprintsRequest) SetPageNumber(v int32) *ListAIAgentVoice
 
 func (s *ListAIAgentVoiceprintsRequest) SetPageSize(v int32) *ListAIAgentVoiceprintsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListAIAgentVoiceprintsRequest) SetRegistrationMode(v string) *ListAIAgentVoiceprintsRequest {
+	s.RegistrationMode = &v
 	return s
 }
 

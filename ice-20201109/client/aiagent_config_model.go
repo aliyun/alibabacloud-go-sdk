@@ -23,6 +23,8 @@ type iAIAgentConfig interface {
 	GetAvatarUrlType() *string
 	SetBackChannelingConfig(v []*AIAgentConfigBackChannelingConfig) *AIAgentConfig
 	GetBackChannelingConfig() []*AIAgentConfigBackChannelingConfig
+	SetBackChannelingConfigs(v []*AIAgentConfigBackChannelingConfigs) *AIAgentConfig
+	GetBackChannelingConfigs() []*AIAgentConfigBackChannelingConfigs
 	SetEnableIntelligentSegment(v bool) *AIAgentConfig
 	GetEnableIntelligentSegment() *bool
 	SetEnablePushToTalk(v bool) *AIAgentConfig
@@ -60,30 +62,32 @@ type iAIAgentConfig interface {
 }
 
 type AIAgentConfig struct {
-	AmbientSoundConfig       *AIAgentConfigAmbientSoundConfig     `json:"AmbientSoundConfig,omitempty" xml:"AmbientSoundConfig,omitempty" type:"Struct"`
-	AsrConfig                *AIAgentConfigAsrConfig              `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
-	AutoSpeechConfig         *AIAgentConfigAutoSpeechConfig       `json:"AutoSpeechConfig,omitempty" xml:"AutoSpeechConfig,omitempty" type:"Struct"`
-	AvatarConfig             *AIAgentConfigAvatarConfig           `json:"AvatarConfig,omitempty" xml:"AvatarConfig,omitempty" type:"Struct"`
-	AvatarUrl                *string                              `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
-	AvatarUrlType            *string                              `json:"AvatarUrlType,omitempty" xml:"AvatarUrlType,omitempty"`
-	BackChannelingConfig     []*AIAgentConfigBackChannelingConfig `json:"BackChannelingConfig,omitempty" xml:"BackChannelingConfig,omitempty" type:"Repeated"`
-	EnableIntelligentSegment *bool                                `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
-	EnablePushToTalk         *bool                                `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
-	ExperimentalConfig       *string                              `json:"ExperimentalConfig,omitempty" xml:"ExperimentalConfig,omitempty"`
-	GracefulShutdown         *bool                                `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
-	Greeting                 *string                              `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
-	InterruptConfig          *AIAgentConfigInterruptConfig        `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty" type:"Struct"`
-	LlmConfig                *AIAgentConfigLlmConfig              `json:"LlmConfig,omitempty" xml:"LlmConfig,omitempty" type:"Struct"`
-	MaxIdleTime              *int32                               `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
-	TtsConfig                *AIAgentConfigTtsConfig              `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
-	TurnDetectionConfig      *AIAgentConfigTurnDetectionConfig    `json:"TurnDetectionConfig,omitempty" xml:"TurnDetectionConfig,omitempty" type:"Struct"`
-	UserOfflineTimeout       *int32                               `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
-	UserOnlineTimeout        *int32                               `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
-	VcrConfig                *AIAgentConfigVcrConfig              `json:"VcrConfig,omitempty" xml:"VcrConfig,omitempty" type:"Struct"`
-	VoiceprintConfig         *AIAgentConfigVoiceprintConfig       `json:"VoiceprintConfig,omitempty" xml:"VoiceprintConfig,omitempty" type:"Struct"`
-	Volume                   *int64                               `json:"Volume,omitempty" xml:"Volume,omitempty"`
-	WakeUpQuery              *string                              `json:"WakeUpQuery,omitempty" xml:"WakeUpQuery,omitempty"`
-	WorkflowOverrideParams   *string                              `json:"WorkflowOverrideParams,omitempty" xml:"WorkflowOverrideParams,omitempty"`
+	AmbientSoundConfig *AIAgentConfigAmbientSoundConfig `json:"AmbientSoundConfig,omitempty" xml:"AmbientSoundConfig,omitempty" type:"Struct"`
+	AsrConfig          *AIAgentConfigAsrConfig          `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
+	AutoSpeechConfig   *AIAgentConfigAutoSpeechConfig   `json:"AutoSpeechConfig,omitempty" xml:"AutoSpeechConfig,omitempty" type:"Struct"`
+	AvatarConfig       *AIAgentConfigAvatarConfig       `json:"AvatarConfig,omitempty" xml:"AvatarConfig,omitempty" type:"Struct"`
+	AvatarUrl          *string                          `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	AvatarUrlType      *string                          `json:"AvatarUrlType,omitempty" xml:"AvatarUrlType,omitempty"`
+	// Deprecated
+	BackChannelingConfig     []*AIAgentConfigBackChannelingConfig  `json:"BackChannelingConfig,omitempty" xml:"BackChannelingConfig,omitempty" type:"Repeated"`
+	BackChannelingConfigs    []*AIAgentConfigBackChannelingConfigs `json:"BackChannelingConfigs,omitempty" xml:"BackChannelingConfigs,omitempty" type:"Repeated"`
+	EnableIntelligentSegment *bool                                 `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
+	EnablePushToTalk         *bool                                 `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
+	ExperimentalConfig       *string                               `json:"ExperimentalConfig,omitempty" xml:"ExperimentalConfig,omitempty"`
+	GracefulShutdown         *bool                                 `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
+	Greeting                 *string                               `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	InterruptConfig          *AIAgentConfigInterruptConfig         `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty" type:"Struct"`
+	LlmConfig                *AIAgentConfigLlmConfig               `json:"LlmConfig,omitempty" xml:"LlmConfig,omitempty" type:"Struct"`
+	MaxIdleTime              *int32                                `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
+	TtsConfig                *AIAgentConfigTtsConfig               `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
+	TurnDetectionConfig      *AIAgentConfigTurnDetectionConfig     `json:"TurnDetectionConfig,omitempty" xml:"TurnDetectionConfig,omitempty" type:"Struct"`
+	UserOfflineTimeout       *int32                                `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
+	UserOnlineTimeout        *int32                                `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
+	VcrConfig                *AIAgentConfigVcrConfig               `json:"VcrConfig,omitempty" xml:"VcrConfig,omitempty" type:"Struct"`
+	VoiceprintConfig         *AIAgentConfigVoiceprintConfig        `json:"VoiceprintConfig,omitempty" xml:"VoiceprintConfig,omitempty" type:"Struct"`
+	Volume                   *int64                                `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	WakeUpQuery              *string                               `json:"WakeUpQuery,omitempty" xml:"WakeUpQuery,omitempty"`
+	WorkflowOverrideParams   *string                               `json:"WorkflowOverrideParams,omitempty" xml:"WorkflowOverrideParams,omitempty"`
 }
 
 func (s AIAgentConfig) String() string {
@@ -120,6 +124,10 @@ func (s *AIAgentConfig) GetAvatarUrlType() *string {
 
 func (s *AIAgentConfig) GetBackChannelingConfig() []*AIAgentConfigBackChannelingConfig {
 	return s.BackChannelingConfig
+}
+
+func (s *AIAgentConfig) GetBackChannelingConfigs() []*AIAgentConfigBackChannelingConfigs {
+	return s.BackChannelingConfigs
 }
 
 func (s *AIAgentConfig) GetEnableIntelligentSegment() *bool {
@@ -222,6 +230,11 @@ func (s *AIAgentConfig) SetAvatarUrlType(v string) *AIAgentConfig {
 
 func (s *AIAgentConfig) SetBackChannelingConfig(v []*AIAgentConfigBackChannelingConfig) *AIAgentConfig {
 	s.BackChannelingConfig = v
+	return s
+}
+
+func (s *AIAgentConfig) SetBackChannelingConfigs(v []*AIAgentConfigBackChannelingConfigs) *AIAgentConfig {
+	s.BackChannelingConfigs = v
 	return s
 }
 
@@ -333,6 +346,15 @@ func (s *AIAgentConfig) Validate() error {
 	}
 	if s.BackChannelingConfig != nil {
 		for _, item := range s.BackChannelingConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BackChannelingConfigs != nil {
+		for _, item := range s.BackChannelingConfigs {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -817,6 +839,105 @@ func (s *AIAgentConfigBackChannelingConfigWords) SetText(v string) *AIAgentConfi
 }
 
 func (s *AIAgentConfigBackChannelingConfigWords) Validate() error {
+	return dara.Validate(s)
+}
+
+type AIAgentConfigBackChannelingConfigs struct {
+	Enabled      *bool                                      `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Probability  *float64                                   `json:"Probability,omitempty" xml:"Probability,omitempty"`
+	TriggerStage *string                                    `json:"TriggerStage,omitempty" xml:"TriggerStage,omitempty"`
+	Words        []*AIAgentConfigBackChannelingConfigsWords `json:"Words,omitempty" xml:"Words,omitempty" type:"Repeated"`
+}
+
+func (s AIAgentConfigBackChannelingConfigs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AIAgentConfigBackChannelingConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfigBackChannelingConfigs) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *AIAgentConfigBackChannelingConfigs) GetProbability() *float64 {
+	return s.Probability
+}
+
+func (s *AIAgentConfigBackChannelingConfigs) GetTriggerStage() *string {
+	return s.TriggerStage
+}
+
+func (s *AIAgentConfigBackChannelingConfigs) GetWords() []*AIAgentConfigBackChannelingConfigsWords {
+	return s.Words
+}
+
+func (s *AIAgentConfigBackChannelingConfigs) SetEnabled(v bool) *AIAgentConfigBackChannelingConfigs {
+	s.Enabled = &v
+	return s
+}
+
+func (s *AIAgentConfigBackChannelingConfigs) SetProbability(v float64) *AIAgentConfigBackChannelingConfigs {
+	s.Probability = &v
+	return s
+}
+
+func (s *AIAgentConfigBackChannelingConfigs) SetTriggerStage(v string) *AIAgentConfigBackChannelingConfigs {
+	s.TriggerStage = &v
+	return s
+}
+
+func (s *AIAgentConfigBackChannelingConfigs) SetWords(v []*AIAgentConfigBackChannelingConfigsWords) *AIAgentConfigBackChannelingConfigs {
+	s.Words = v
+	return s
+}
+
+func (s *AIAgentConfigBackChannelingConfigs) Validate() error {
+	if s.Words != nil {
+		for _, item := range s.Words {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type AIAgentConfigBackChannelingConfigsWords struct {
+	Probability *float64 `json:"Probability,omitempty" xml:"Probability,omitempty"`
+	Text        *string  `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s AIAgentConfigBackChannelingConfigsWords) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AIAgentConfigBackChannelingConfigsWords) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfigBackChannelingConfigsWords) GetProbability() *float64 {
+	return s.Probability
+}
+
+func (s *AIAgentConfigBackChannelingConfigsWords) GetText() *string {
+	return s.Text
+}
+
+func (s *AIAgentConfigBackChannelingConfigsWords) SetProbability(v float64) *AIAgentConfigBackChannelingConfigsWords {
+	s.Probability = &v
+	return s
+}
+
+func (s *AIAgentConfigBackChannelingConfigsWords) SetText(v string) *AIAgentConfigBackChannelingConfigsWords {
+	s.Text = &v
+	return s
+}
+
+func (s *AIAgentConfigBackChannelingConfigsWords) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -1538,8 +1659,9 @@ func (s *AIAgentConfigVcrConfigStillFrameMotion) Validate() error {
 }
 
 type AIAgentConfigVoiceprintConfig struct {
-	UseVoiceprint *bool   `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
-	VoiceprintId  *string `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
+	RegistrationMode *string `json:"RegistrationMode,omitempty" xml:"RegistrationMode,omitempty"`
+	UseVoiceprint    *bool   `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
+	VoiceprintId     *string `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
 }
 
 func (s AIAgentConfigVoiceprintConfig) String() string {
@@ -1550,12 +1672,21 @@ func (s AIAgentConfigVoiceprintConfig) GoString() string {
 	return s.String()
 }
 
+func (s *AIAgentConfigVoiceprintConfig) GetRegistrationMode() *string {
+	return s.RegistrationMode
+}
+
 func (s *AIAgentConfigVoiceprintConfig) GetUseVoiceprint() *bool {
 	return s.UseVoiceprint
 }
 
 func (s *AIAgentConfigVoiceprintConfig) GetVoiceprintId() *string {
 	return s.VoiceprintId
+}
+
+func (s *AIAgentConfigVoiceprintConfig) SetRegistrationMode(v string) *AIAgentConfigVoiceprintConfig {
+	s.RegistrationMode = &v
+	return s
 }
 
 func (s *AIAgentConfigVoiceprintConfig) SetUseVoiceprint(v bool) *AIAgentConfigVoiceprintConfig {
