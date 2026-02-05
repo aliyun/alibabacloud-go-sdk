@@ -15,6 +15,8 @@ type iCreateSandboxInput interface {
 	GetOssMountConfig() *OSSMountConfig
 	SetSandboxId(v string) *CreateSandboxInput
 	GetSandboxId() *string
+	SetSandboxIdleTimeoutInSeconds(v int32) *CreateSandboxInput
+	GetSandboxIdleTimeoutInSeconds() *int32
 	SetSandboxIdleTimeoutSeconds(v int32) *CreateSandboxInput
 	GetSandboxIdleTimeoutSeconds() *int32
 	SetTemplateName(v string) *CreateSandboxInput
@@ -22,9 +24,12 @@ type iCreateSandboxInput interface {
 }
 
 type CreateSandboxInput struct {
-	NasConfig      *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
-	SandboxId      *string         `json:"sandboxId,omitempty" xml:"sandboxId,omitempty"`
+	NasConfig                   *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	OssMountConfig              *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	SandboxId                   *string         `json:"sandboxId,omitempty" xml:"sandboxId,omitempty"`
+	SandboxIdleTimeoutInSeconds *int32          `json:"sandboxIdleTimeoutInSeconds,omitempty" xml:"sandboxIdleTimeoutInSeconds,omitempty"`
+	// Deprecated
+	//
 	// 沙箱空闲超时时间（秒）
 	SandboxIdleTimeoutSeconds *int32 `json:"sandboxIdleTimeoutSeconds,omitempty" xml:"sandboxIdleTimeoutSeconds,omitempty"`
 	// 模板名称（系统内部通过 templateName 查询 template_id）
@@ -53,6 +58,10 @@ func (s *CreateSandboxInput) GetSandboxId() *string {
 	return s.SandboxId
 }
 
+func (s *CreateSandboxInput) GetSandboxIdleTimeoutInSeconds() *int32 {
+	return s.SandboxIdleTimeoutInSeconds
+}
+
 func (s *CreateSandboxInput) GetSandboxIdleTimeoutSeconds() *int32 {
 	return s.SandboxIdleTimeoutSeconds
 }
@@ -73,6 +82,11 @@ func (s *CreateSandboxInput) SetOssMountConfig(v *OSSMountConfig) *CreateSandbox
 
 func (s *CreateSandboxInput) SetSandboxId(v string) *CreateSandboxInput {
 	s.SandboxId = &v
+	return s
+}
+
+func (s *CreateSandboxInput) SetSandboxIdleTimeoutInSeconds(v int32) *CreateSandboxInput {
+	s.SandboxIdleTimeoutInSeconds = &v
 	return s
 }
 
