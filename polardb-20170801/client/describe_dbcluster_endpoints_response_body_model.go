@@ -185,7 +185,8 @@ type DescribeDBClusterEndpointsResponseBodyItems struct {
 	// example:
 	//
 	// on
-	SccMode *string `json:"SccMode,omitempty" xml:"SccMode,omitempty"`
+	SccMode     *string `json:"SccMode,omitempty" xml:"SccMode,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
 func (s DescribeDBClusterEndpointsResponseBodyItems) String() string {
@@ -246,6 +247,10 @@ func (s *DescribeDBClusterEndpointsResponseBodyItems) GetReadWriteMode() *string
 
 func (s *DescribeDBClusterEndpointsResponseBodyItems) GetSccMode() *string {
 	return s.SccMode
+}
+
+func (s *DescribeDBClusterEndpointsResponseBodyItems) GetServiceName() *string {
+	return s.ServiceName
 }
 
 func (s *DescribeDBClusterEndpointsResponseBodyItems) SetAddressItems(v []*DescribeDBClusterEndpointsResponseBodyItemsAddressItems) *DescribeDBClusterEndpointsResponseBodyItems {
@@ -310,6 +315,11 @@ func (s *DescribeDBClusterEndpointsResponseBodyItems) SetReadWriteMode(v string)
 
 func (s *DescribeDBClusterEndpointsResponseBodyItems) SetSccMode(v string) *DescribeDBClusterEndpointsResponseBodyItems {
 	s.SccMode = &v
+	return s
+}
+
+func (s *DescribeDBClusterEndpointsResponseBodyItems) SetServiceName(v string) *DescribeDBClusterEndpointsResponseBodyItems {
+	s.ServiceName = &v
 	return s
 }
 
