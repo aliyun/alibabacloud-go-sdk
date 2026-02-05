@@ -445,7 +445,9 @@ func (s *GetVpcEndpointServiceAttributeResponseBody) Validate() error {
 type GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet struct {
 	RegionBusinessStatus *string `json:"RegionBusinessStatus,omitempty" xml:"RegionBusinessStatus,omitempty"`
 	RegionServiceStatus  *string `json:"RegionServiceStatus,omitempty" xml:"RegionServiceStatus,omitempty"`
-	ServiceRegionId      *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+	// Deprecated
+	ServiceRegionId   *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+	SupportedRegionId *string `json:"SupportedRegionId,omitempty" xml:"SupportedRegionId,omitempty"`
 }
 
 func (s GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet) String() string {
@@ -468,6 +470,10 @@ func (s *GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet) GetServic
 	return s.ServiceRegionId
 }
 
+func (s *GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet) GetSupportedRegionId() *string {
+	return s.SupportedRegionId
+}
+
 func (s *GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet) SetRegionBusinessStatus(v string) *GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet {
 	s.RegionBusinessStatus = &v
 	return s
@@ -480,6 +486,11 @@ func (s *GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet) SetRegion
 
 func (s *GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet) SetServiceRegionId(v string) *GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet {
 	s.ServiceRegionId = &v
+	return s
+}
+
+func (s *GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet) SetSupportedRegionId(v string) *GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet {
+	s.SupportedRegionId = &v
 	return s
 }
 
