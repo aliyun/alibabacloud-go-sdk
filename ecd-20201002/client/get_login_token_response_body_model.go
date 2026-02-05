@@ -47,6 +47,8 @@ type iGetLoginTokenResponseBody interface {
 	GetTenantId() *int64
 	SetWindowDisplayMode(v string) *GetLoginTokenResponseBody
 	GetWindowDisplayMode() *string
+	SetWyId(v string) *GetLoginTokenResponseBody
+	GetWyId() *string
 }
 
 type GetLoginTokenResponseBody struct {
@@ -159,6 +161,7 @@ type GetLoginTokenResponseBody struct {
 	//
 	// mode
 	WindowDisplayMode *string `json:"WindowDisplayMode,omitempty" xml:"WindowDisplayMode,omitempty"`
+	WyId              *string `json:"WyId,omitempty" xml:"WyId,omitempty"`
 }
 
 func (s GetLoginTokenResponseBody) String() string {
@@ -243,6 +246,10 @@ func (s *GetLoginTokenResponseBody) GetTenantId() *int64 {
 
 func (s *GetLoginTokenResponseBody) GetWindowDisplayMode() *string {
 	return s.WindowDisplayMode
+}
+
+func (s *GetLoginTokenResponseBody) GetWyId() *string {
+	return s.WyId
 }
 
 func (s *GetLoginTokenResponseBody) SetEmail(v string) *GetLoginTokenResponseBody {
@@ -337,6 +344,11 @@ func (s *GetLoginTokenResponseBody) SetTenantId(v int64) *GetLoginTokenResponseB
 
 func (s *GetLoginTokenResponseBody) SetWindowDisplayMode(v string) *GetLoginTokenResponseBody {
 	s.WindowDisplayMode = &v
+	return s
+}
+
+func (s *GetLoginTokenResponseBody) SetWyId(v string) *GetLoginTokenResponseBody {
+	s.WyId = &v
 	return s
 }
 
