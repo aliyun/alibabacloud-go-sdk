@@ -28,14 +28,32 @@ type iGetRecallManagementJobResponseBody interface {
 }
 
 type GetRecallManagementJobResponseBody struct {
-	EndTime                   *string                                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Log                       *string                                                      `json:"Log,omitempty" xml:"Log,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// "success"
+	Log *string `json:"Log,omitempty" xml:"Log,omitempty"`
+	// example:
+	//
+	// 1
 	RecallManagementJobId     *string                                                      `json:"RecallManagementJobId,omitempty" xml:"RecallManagementJobId,omitempty"`
 	RecallManagementTableInfo *GetRecallManagementJobResponseBodyRecallManagementTableInfo `json:"RecallManagementTableInfo,omitempty" xml:"RecallManagementTableInfo,omitempty" type:"Struct"`
 	RecallManagerTableInfo    *GetRecallManagementJobResponseBodyRecallManagerTableInfo    `json:"RecallManagerTableInfo,omitempty" xml:"RecallManagerTableInfo,omitempty" type:"Struct"`
-	RequestId                 *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartTime                 *string                                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status                    *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2021-12-15T22:24:33.132
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetRecallManagementJobResponseBody) String() string {
@@ -133,10 +151,22 @@ func (s *GetRecallManagementJobResponseBody) Validate() error {
 }
 
 type GetRecallManagementJobResponseBodyRecallManagementTableInfo struct {
-	DataVersion                    *string `json:"DataVersion,omitempty" xml:"DataVersion,omitempty"`
+	// example:
+	//
+	// ds=20250701
+	DataVersion *string `json:"DataVersion,omitempty" xml:"DataVersion,omitempty"`
+	// example:
+	//
+	// 20250101000
 	RecallManagementTableVersionId *string `json:"RecallManagementTableVersionId,omitempty" xml:"RecallManagementTableVersionId,omitempty"`
-	SourceTableDataSize            *string `json:"SourceTableDataSize,omitempty" xml:"SourceTableDataSize,omitempty"`
-	SourceTableRowCount            *string `json:"SourceTableRowCount,omitempty" xml:"SourceTableRowCount,omitempty"`
+	// example:
+	//
+	// 10000
+	SourceTableDataSize *string `json:"SourceTableDataSize,omitempty" xml:"SourceTableDataSize,omitempty"`
+	// example:
+	//
+	// 100
+	SourceTableRowCount *string `json:"SourceTableRowCount,omitempty" xml:"SourceTableRowCount,omitempty"`
 }
 
 func (s GetRecallManagementJobResponseBodyRecallManagementTableInfo) String() string {
@@ -188,10 +218,22 @@ func (s *GetRecallManagementJobResponseBodyRecallManagementTableInfo) Validate()
 }
 
 type GetRecallManagementJobResponseBodyRecallManagerTableInfo struct {
-	DataVersion                 *string `json:"DataVersion,omitempty" xml:"DataVersion,omitempty"`
+	// example:
+	//
+	// ds=20250701
+	DataVersion *string `json:"DataVersion,omitempty" xml:"DataVersion,omitempty"`
+	// example:
+	//
+	// 20250101000
 	RecallManagerTableVersionId *string `json:"RecallManagerTableVersionId,omitempty" xml:"RecallManagerTableVersionId,omitempty"`
-	SourceTableDataSize         *string `json:"SourceTableDataSize,omitempty" xml:"SourceTableDataSize,omitempty"`
-	SourceTableRowCount         *string `json:"SourceTableRowCount,omitempty" xml:"SourceTableRowCount,omitempty"`
+	// example:
+	//
+	// 10000
+	SourceTableDataSize *string `json:"SourceTableDataSize,omitempty" xml:"SourceTableDataSize,omitempty"`
+	// example:
+	//
+	// 100
+	SourceTableRowCount *string `json:"SourceTableRowCount,omitempty" xml:"SourceTableRowCount,omitempty"`
 }
 
 func (s GetRecallManagementJobResponseBodyRecallManagerTableInfo) String() string {

@@ -21,8 +21,8 @@ type iGetRecallManagementTableResponseBody interface {
 	GetEnableDataSizeFluctuationThreshold() *bool
 	SetEnableRowCountFluctuationThreshold(v bool) *GetRecallManagementTableResponseBody
 	GetEnableRowCountFluctuationThreshold() *bool
-	SetFields(v *GetRecallManagementTableResponseBodyFields) *GetRecallManagementTableResponseBody
-	GetFields() *GetRecallManagementTableResponseBodyFields
+	SetFields(v []*GetRecallManagementTableResponseBodyFields) *GetRecallManagementTableResponseBody
+	GetFields() []*GetRecallManagementTableResponseBodyFields
 	SetGmtCreateTime(v string) *GetRecallManagementTableResponseBody
 	GetGmtCreateTime() *string
 	SetGmtModifiedTime(v string) *GetRecallManagementTableResponseBody
@@ -83,8 +83,8 @@ type GetRecallManagementTableResponseBody struct {
 	// example:
 	//
 	// true
-	EnableRowCountFluctuationThreshold *bool                                       `json:"EnableRowCountFluctuationThreshold,omitempty" xml:"EnableRowCountFluctuationThreshold,omitempty"`
-	Fields                             *GetRecallManagementTableResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Struct"`
+	EnableRowCountFluctuationThreshold *bool                                         `json:"EnableRowCountFluctuationThreshold,omitempty" xml:"EnableRowCountFluctuationThreshold,omitempty"`
+	Fields                             []*GetRecallManagementTableResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
@@ -189,7 +189,7 @@ func (s *GetRecallManagementTableResponseBody) GetEnableRowCountFluctuationThres
 	return s.EnableRowCountFluctuationThreshold
 }
 
-func (s *GetRecallManagementTableResponseBody) GetFields() *GetRecallManagementTableResponseBodyFields {
+func (s *GetRecallManagementTableResponseBody) GetFields() []*GetRecallManagementTableResponseBodyFields {
 	return s.Fields
 }
 
@@ -291,7 +291,7 @@ func (s *GetRecallManagementTableResponseBody) SetEnableRowCountFluctuationThres
 	return s
 }
 
-func (s *GetRecallManagementTableResponseBody) SetFields(v *GetRecallManagementTableResponseBodyFields) *GetRecallManagementTableResponseBody {
+func (s *GetRecallManagementTableResponseBody) SetFields(v []*GetRecallManagementTableResponseBodyFields) *GetRecallManagementTableResponseBody {
 	s.Fields = v
 	return s
 }
@@ -383,8 +383,12 @@ func (s *GetRecallManagementTableResponseBody) SetType(v string) *GetRecallManag
 
 func (s *GetRecallManagementTableResponseBody) Validate() error {
 	if s.Fields != nil {
-		if err := s.Fields.Validate(); err != nil {
-			return err
+		for _, item := range s.Fields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil
