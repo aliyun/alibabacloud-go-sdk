@@ -455,6 +455,162 @@ func (client *Client) CreateCustomAgent(request *CreateCustomAgentRequest) (_res
 
 // Summary:
 //
+// 创建一个批量实例巡检任务
+//
+// @param request - CreateInspectionTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInspectionTaskResponse
+func (client *Client) CreateInspectionTaskWithOptions(request *CreateInspectionTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateInspectionTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InspectionItems) {
+		query["InspectionItems"] = request.InspectionItems
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateInspectionTask"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateInspectionTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一个批量实例巡检任务
+//
+// @param request - CreateInspectionTaskRequest
+//
+// @return CreateInspectionTaskResponse
+func (client *Client) CreateInspectionTask(request *CreateInspectionTaskRequest) (_result *CreateInspectionTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateInspectionTaskResponse{}
+	_body, _err := client.CreateInspectionTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一个新的批量实例巡检任务
+//
+// @param request - CreateScheduledTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateScheduledTaskResponse
+func (client *Client) CreateScheduledTaskWithOptions(request *CreateScheduledTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateScheduledTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Frequency) {
+		query["Frequency"] = request.Frequency
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TimeRange) {
+		query["TimeRange"] = request.TimeRange
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateScheduledTask"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateScheduledTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一个新的批量实例巡检任务
+//
+// @param request - CreateScheduledTaskRequest
+//
+// @return CreateScheduledTaskResponse
+func (client *Client) CreateScheduledTask(request *CreateScheduledTaskRequest) (_result *CreateScheduledTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateScheduledTaskResponse{}
+	_body, _err := client.CreateScheduledTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an RDS Supabase instance.
 //
 // Description:
@@ -606,6 +762,68 @@ func (client *Client) DeleteCustomAgent(request *DeleteCustomAgentRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteCustomAgentResponse{}
 	_body, _err := client.DeleteCustomAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指定的巡检任务
+//
+// @param request - DeleteScheduledTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteScheduledTaskResponse
+func (client *Client) DeleteScheduledTaskWithOptions(request *DeleteScheduledTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteScheduledTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ScheduledId) {
+		query["ScheduledId"] = request.ScheduledId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteScheduledTask"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteScheduledTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指定的巡检任务
+//
+// @param request - DeleteScheduledTaskRequest
+//
+// @return DeleteScheduledTaskResponse
+func (client *Client) DeleteScheduledTask(request *DeleteScheduledTaskRequest) (_result *DeleteScheduledTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteScheduledTaskResponse{}
+	_body, _err := client.DeleteScheduledTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1521,6 +1739,72 @@ func (client *Client) GetCustomAgent(request *GetCustomAgentRequest) (_result *G
 
 // Summary:
 //
+// 获取巡检任务报告结果
+//
+// @param request - GetInspectionReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInspectionReportResponse
+func (client *Client) GetInspectionReportWithOptions(request *GetInspectionReportRequest, runtime *dara.RuntimeOptions) (_result *GetInspectionReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInspectionReport"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInspectionReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取巡检任务报告结果
+//
+// @param request - GetInspectionReportRequest
+//
+// @return GetInspectionReportResponse
+func (client *Client) GetInspectionReport(request *GetInspectionReportRequest) (_result *GetInspectionReportResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetInspectionReportResponse{}
+	_body, _err := client.GetInspectionReportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries specific conversation messages.
 //
 // @param request - GetMessagesRequest
@@ -1586,6 +1870,228 @@ func (client *Client) GetMessages(request *GetMessagesRequest) (_result *GetMess
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetMessagesResponse{}
 	_body, _err := client.GetMessagesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定定时任务配置中包含的所有实例ID列表，支持分页
+//
+// @param request - GetScheduledInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetScheduledInstancesResponse
+func (client *Client) GetScheduledInstancesWithOptions(request *GetScheduledInstancesRequest, runtime *dara.RuntimeOptions) (_result *GetScheduledInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ScheduledId) {
+		query["ScheduledId"] = request.ScheduledId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetScheduledInstances"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetScheduledInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定定时任务配置中包含的所有实例ID列表，支持分页
+//
+// @param request - GetScheduledInstancesRequest
+//
+// @return GetScheduledInstancesResponse
+func (client *Client) GetScheduledInstances(request *GetScheduledInstancesRequest) (_result *GetScheduledInstancesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetScheduledInstancesResponse{}
+	_body, _err := client.GetScheduledInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取定时任务的所有巡检报告，支持分页
+//
+// @param request - GetScheduledReportsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetScheduledReportsResponse
+func (client *Client) GetScheduledReportsWithOptions(request *GetScheduledReportsRequest, runtime *dara.RuntimeOptions) (_result *GetScheduledReportsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ScheduledId) {
+		query["ScheduledId"] = request.ScheduledId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetScheduledReports"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetScheduledReportsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取定时任务的所有巡检报告，支持分页
+//
+// @param request - GetScheduledReportsRequest
+//
+// @return GetScheduledReportsResponse
+func (client *Client) GetScheduledReports(request *GetScheduledReportsRequest) (_result *GetScheduledReportsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetScheduledReportsResponse{}
+	_body, _err := client.GetScheduledReportsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定用户下所有非定时任务的单独巡检报告列表，支持分页
+//
+// @param request - GetStandAloneReportsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetStandAloneReportsResponse
+func (client *Client) GetStandAloneReportsWithOptions(request *GetStandAloneReportsRequest, runtime *dara.RuntimeOptions) (_result *GetStandAloneReportsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetStandAloneReports"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetStandAloneReportsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定用户下所有非定时任务的单独巡检报告列表，支持分页
+//
+// @param request - GetStandAloneReportsRequest
+//
+// @return GetStandAloneReportsResponse
+func (client *Client) GetStandAloneReports(request *GetStandAloneReportsRequest) (_result *GetStandAloneReportsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetStandAloneReportsResponse{}
+	_body, _err := client.GetStandAloneReportsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1699,6 +2205,76 @@ func (client *Client) ListCustomAgentTools() (_result *ListCustomAgentToolsRespo
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListCustomAgentToolsResponse{}
 	_body, _err := client.ListCustomAgentToolsWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定用户UID下所有巡检任务的基本信息列表
+//
+// @param request - ListScheduledTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListScheduledTasksResponse
+func (client *Client) ListScheduledTasksWithOptions(request *ListScheduledTasksRequest, runtime *dara.RuntimeOptions) (_result *ListScheduledTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ScheduledId) {
+		query["ScheduledId"] = request.ScheduledId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListScheduledTasks"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListScheduledTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定用户UID下所有巡检任务的基本信息列表
+//
+// @param request - ListScheduledTasksRequest
+//
+// @return ListScheduledTasksResponse
+func (client *Client) ListScheduledTasks(request *ListScheduledTasksRequest) (_result *ListScheduledTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListScheduledTasksResponse{}
+	_body, _err := client.ListScheduledTasksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2443,6 +3019,92 @@ func (client *Client) ModifyMessagesFeedbacks(request *ModifyMessagesFeedbacksRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyMessagesFeedbacksResponse{}
 	_body, _err := client.ModifyMessagesFeedbacksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改已存在的巡检任务信息
+//
+// @param request - ModifyScheduledTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyScheduledTaskResponse
+func (client *Client) ModifyScheduledTaskWithOptions(request *ModifyScheduledTaskRequest, runtime *dara.RuntimeOptions) (_result *ModifyScheduledTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Frequency) {
+		query["Frequency"] = request.Frequency
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ScheduledId) {
+		query["ScheduledId"] = request.ScheduledId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TimeRange) {
+		query["TimeRange"] = request.TimeRange
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyScheduledTask"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyScheduledTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改已存在的巡检任务信息
+//
+// @param request - ModifyScheduledTaskRequest
+//
+// @return ModifyScheduledTaskResponse
+func (client *Client) ModifyScheduledTask(request *ModifyScheduledTaskRequest) (_result *ModifyScheduledTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyScheduledTaskResponse{}
+	_body, _err := client.ModifyScheduledTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

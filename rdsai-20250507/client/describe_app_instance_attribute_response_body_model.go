@@ -15,6 +15,8 @@ type iDescribeAppInstanceAttributeResponseBody interface {
 	GetAppType() *string
 	SetDBInstanceName(v string) *DescribeAppInstanceAttributeResponseBody
 	GetDBInstanceName() *string
+	SetEipId(v string) *DescribeAppInstanceAttributeResponseBody
+	GetEipId() *string
 	SetEipStatus(v string) *DescribeAppInstanceAttributeResponseBody
 	GetEipStatus() *string
 	SetInstanceClass(v string) *DescribeAppInstanceAttributeResponseBody
@@ -23,6 +25,10 @@ type iDescribeAppInstanceAttributeResponseBody interface {
 	GetInstanceMinorVersion() *string
 	SetInstanceName(v string) *DescribeAppInstanceAttributeResponseBody
 	GetInstanceName() *string
+	SetNatCreatedBy(v string) *DescribeAppInstanceAttributeResponseBody
+	GetNatCreatedBy() *string
+	SetNatGatewayId(v string) *DescribeAppInstanceAttributeResponseBody
+	GetNatGatewayId() *string
 	SetNatStatus(v string) *DescribeAppInstanceAttributeResponseBody
 	GetNatStatus() *string
 	SetPublicConnectionString(v string) *DescribeAppInstanceAttributeResponseBody
@@ -60,6 +66,7 @@ type DescribeAppInstanceAttributeResponseBody struct {
 	//
 	// pgm-2ze49qv594vi****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	EipId          *string `json:"EipId,omitempty" xml:"EipId,omitempty"`
 	EipStatus      *string `json:"EipStatus,omitempty" xml:"EipStatus,omitempty"`
 	// The instance type of the RDS Supabase instance.
 	//
@@ -79,6 +86,8 @@ type DescribeAppInstanceAttributeResponseBody struct {
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	NatCreatedBy *string `json:"NatCreatedBy,omitempty" xml:"NatCreatedBy,omitempty"`
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 	NatStatus    *string `json:"NatStatus,omitempty" xml:"NatStatus,omitempty"`
 	// The public endpoint of the AI application.
 	//
@@ -144,6 +153,10 @@ func (s *DescribeAppInstanceAttributeResponseBody) GetDBInstanceName() *string {
 	return s.DBInstanceName
 }
 
+func (s *DescribeAppInstanceAttributeResponseBody) GetEipId() *string {
+	return s.EipId
+}
+
 func (s *DescribeAppInstanceAttributeResponseBody) GetEipStatus() *string {
 	return s.EipStatus
 }
@@ -158,6 +171,14 @@ func (s *DescribeAppInstanceAttributeResponseBody) GetInstanceMinorVersion() *st
 
 func (s *DescribeAppInstanceAttributeResponseBody) GetInstanceName() *string {
 	return s.InstanceName
+}
+
+func (s *DescribeAppInstanceAttributeResponseBody) GetNatCreatedBy() *string {
+	return s.NatCreatedBy
+}
+
+func (s *DescribeAppInstanceAttributeResponseBody) GetNatGatewayId() *string {
+	return s.NatGatewayId
 }
 
 func (s *DescribeAppInstanceAttributeResponseBody) GetNatStatus() *string {
@@ -207,6 +228,11 @@ func (s *DescribeAppInstanceAttributeResponseBody) SetDBInstanceName(v string) *
 	return s
 }
 
+func (s *DescribeAppInstanceAttributeResponseBody) SetEipId(v string) *DescribeAppInstanceAttributeResponseBody {
+	s.EipId = &v
+	return s
+}
+
 func (s *DescribeAppInstanceAttributeResponseBody) SetEipStatus(v string) *DescribeAppInstanceAttributeResponseBody {
 	s.EipStatus = &v
 	return s
@@ -224,6 +250,16 @@ func (s *DescribeAppInstanceAttributeResponseBody) SetInstanceMinorVersion(v str
 
 func (s *DescribeAppInstanceAttributeResponseBody) SetInstanceName(v string) *DescribeAppInstanceAttributeResponseBody {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeAppInstanceAttributeResponseBody) SetNatCreatedBy(v string) *DescribeAppInstanceAttributeResponseBody {
+	s.NatCreatedBy = &v
+	return s
+}
+
+func (s *DescribeAppInstanceAttributeResponseBody) SetNatGatewayId(v string) *DescribeAppInstanceAttributeResponseBody {
+	s.NatGatewayId = &v
 	return s
 }
 
