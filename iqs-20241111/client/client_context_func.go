@@ -10,7 +10,7 @@ import (
 
 // Summary:
 //
-// # AI搜索流式接口
+// AI搜索流式接口(废弃)
 //
 // @param request - AiSearchRequest
 //
@@ -27,7 +27,7 @@ func (client *Client) AiSearchWithSSECtx(ctx context.Context, request *AiSearchR
 
 // Summary:
 //
-// # AI搜索流式接口
+// AI搜索流式接口(废弃)
 //
 // @param request - AiSearchRequest
 //
@@ -346,6 +346,48 @@ func (client *Client) GlobalSearchWithContext(ctx context.Context, request *Glob
 		BodyType:    dara.String("json"),
 	}
 	_result = &GlobalSearchResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 多模态搜索
+//
+// @param request - MultimodalSearchRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MultimodalSearchResponse
+func (client *Client) MultimodalSearchWithContext(ctx context.Context, request *MultimodalSearchRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *MultimodalSearchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MultimodalSearch"),
+		Version:     dara.String("2024-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/linked-retrieval/linked-retrieval-entry/v1/iqs/multimodal/unified"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MultimodalSearchResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
