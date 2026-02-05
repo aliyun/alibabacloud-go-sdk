@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("customerservice"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -67,7 +18,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEnterpriseSupportPlanResponse
-func (client *Client) ListEnterpriseSupportPlanWithOptions(request *ListEnterpriseSupportPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListEnterpriseSupportPlanResponse, _err error) {
+func (client *Client) ListEnterpriseSupportPlanWithContext(ctx context.Context, request *ListEnterpriseSupportPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListEnterpriseSupportPlanResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -99,30 +50,11 @@ func (client *Client) ListEnterpriseSupportPlanWithOptions(request *ListEnterpri
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEnterpriseSupportPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取我的企业支持计划
-//
-// @param request - ListEnterpriseSupportPlanRequest
-//
-// @return ListEnterpriseSupportPlanResponse
-func (client *Client) ListEnterpriseSupportPlan(request *ListEnterpriseSupportPlanRequest) (_result *ListEnterpriseSupportPlanResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListEnterpriseSupportPlanResponse{}
-	_body, _err := client.ListEnterpriseSupportPlanWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -137,7 +69,7 @@ func (client *Client) ListEnterpriseSupportPlan(request *ListEnterpriseSupportPl
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEnterpriseSupportPlanSimpleResponse
-func (client *Client) ListEnterpriseSupportPlanSimpleWithOptions(request *ListEnterpriseSupportPlanSimpleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListEnterpriseSupportPlanSimpleResponse, _err error) {
+func (client *Client) ListEnterpriseSupportPlanSimpleWithContext(ctx context.Context, request *ListEnterpriseSupportPlanSimpleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListEnterpriseSupportPlanSimpleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -169,30 +101,11 @@ func (client *Client) ListEnterpriseSupportPlanSimpleWithOptions(request *ListEn
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEnterpriseSupportPlanSimpleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取我的企业支持计划(下拉)
-//
-// @param request - ListEnterpriseSupportPlanSimpleRequest
-//
-// @return ListEnterpriseSupportPlanSimpleResponse
-func (client *Client) ListEnterpriseSupportPlanSimple(request *ListEnterpriseSupportPlanSimpleRequest) (_result *ListEnterpriseSupportPlanSimpleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListEnterpriseSupportPlanSimpleResponse{}
-	_body, _err := client.ListEnterpriseSupportPlanSimpleWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -207,7 +120,7 @@ func (client *Client) ListEnterpriseSupportPlanSimple(request *ListEnterpriseSup
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListServiceApplyResponse
-func (client *Client) ListServiceApplyWithOptions(request *ListServiceApplyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListServiceApplyResponse, _err error) {
+func (client *Client) ListServiceApplyWithContext(ctx context.Context, request *ListServiceApplyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListServiceApplyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -259,30 +172,11 @@ func (client *Client) ListServiceApplyWithOptions(request *ListServiceApplyReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListServiceApplyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取专家服务列表
-//
-// @param request - ListServiceApplyRequest
-//
-// @return ListServiceApplyResponse
-func (client *Client) ListServiceApply(request *ListServiceApplyRequest) (_result *ListServiceApplyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListServiceApplyResponse{}
-	_body, _err := client.ListServiceApplyWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -297,7 +191,7 @@ func (client *Client) ListServiceApply(request *ListServiceApplyRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListYunQiTaskByUidResponse
-func (client *Client) ListYunQiTaskByUidWithOptions(request *ListYunQiTaskByUidRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListYunQiTaskByUidResponse, _err error) {
+func (client *Client) ListYunQiTaskByUidWithContext(ctx context.Context, request *ListYunQiTaskByUidRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListYunQiTaskByUidResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -353,29 +247,10 @@ func (client *Client) ListYunQiTaskByUidWithOptions(request *ListYunQiTaskByUidR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListYunQiTaskByUidResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 通过UID分页获取云企任务单
-//
-// @param request - ListYunQiTaskByUidRequest
-//
-// @return ListYunQiTaskByUidResponse
-func (client *Client) ListYunQiTaskByUid(request *ListYunQiTaskByUidRequest) (_result *ListYunQiTaskByUidResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListYunQiTaskByUidResponse{}
-	_body, _err := client.ListYunQiTaskByUidWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
