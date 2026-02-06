@@ -507,6 +507,66 @@ func (client *Client) CreateCloudResourceWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
+// 添加云产品接入的扩展证书
+//
+// @param request - CreateCloudResourceExtensionCertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCloudResourceExtensionCertResponse
+func (client *Client) CreateCloudResourceExtensionCertWithContext(ctx context.Context, request *CreateCloudResourceExtensionCertRequest, runtime *dara.RuntimeOptions) (_result *CreateCloudResourceExtensionCertResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CertId) {
+		query["CertId"] = request.CertId
+	}
+
+	if !dara.IsNil(request.CloudResourceId) {
+		query["CloudResourceId"] = request.CloudResourceId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCloudResourceExtensionCert"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCloudResourceExtensionCertResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建防护对象
 //
 // @param tmpReq - CreateDefenseResourceRequest
@@ -1779,6 +1839,66 @@ func (client *Client) DeleteCloudResourceWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCloudResourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除云产品接入的扩展证书
+//
+// @param request - DeleteCloudResourceExtensionCertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCloudResourceExtensionCertResponse
+func (client *Client) DeleteCloudResourceExtensionCertWithContext(ctx context.Context, request *DeleteCloudResourceExtensionCertRequest, runtime *dara.RuntimeOptions) (_result *DeleteCloudResourceExtensionCertResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CertId) {
+		query["CertId"] = request.CertId
+	}
+
+	if !dara.IsNil(request.CloudResourceId) {
+		query["CloudResourceId"] = request.CloudResourceId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCloudResourceExtensionCert"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCloudResourceExtensionCertResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -12919,6 +13039,66 @@ func (client *Client) ModifyCloudResourceCertWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyCloudResourceCertResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改云产品接入的默认证书
+//
+// @param request - ModifyCloudResourceDefaultCertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyCloudResourceDefaultCertResponse
+func (client *Client) ModifyCloudResourceDefaultCertWithContext(ctx context.Context, request *ModifyCloudResourceDefaultCertRequest, runtime *dara.RuntimeOptions) (_result *ModifyCloudResourceDefaultCertResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CertId) {
+		query["CertId"] = request.CertId
+	}
+
+	if !dara.IsNil(request.CloudResourceId) {
+		query["CloudResourceId"] = request.CloudResourceId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyCloudResourceDefaultCert"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyCloudResourceDefaultCertResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
