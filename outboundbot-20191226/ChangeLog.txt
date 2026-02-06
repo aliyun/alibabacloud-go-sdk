@@ -1,3 +1,34 @@
+2026-02-06 Version: v2.0.0
+- Support API AssignJobsAsync.
+- Support API GetAssignJobsAsyncResult.
+- Delete API ApplyNumberDistrictInfoParsingResult.
+- Delete API CreateNumberDistrictInfoDownloadUrl.
+- Delete API CreateNumberDistrictInfoParsingTask.
+- Delete API CreateOutboundCallNumber.
+- Delete API DescribeNumberDistrictInfoStatus.
+- Delete API DismissNumberDistrictInfoParsingResult.
+- Delete API GetEffectiveDays.
+- Delete API ListSchedulerInstances.
+- Update API CreateTaskExportTask: add request parameters CallingNumber.
+- Update API DescribeGroupExecutingInfo: add response parameters Body.ExecutingInfo.AvgTalkTime.
+- Update API DescribeGroupExecutingInfo: add response parameters Body.ExecutingInfo.DurationDistribution.
+- Update API DescribeGroupExecutingInfo: add response parameters Body.ExecutingInfo.TalkTurnsDistribution.
+- Update API DescribeJobGroup: add response parameters Body.JobGroup.ScriptNluEngine.
+- Update API DescribeScript: add response parameters Body.Script.LabelConfig.
+- Update API DescribeScript: add response parameters Body.Script.NluProfile.SupportBeebotPrompts.
+- Update API GetTaskByUuid: update response parameters Body.Task.EndReason' type has changed.
+- Update API GetTaskByUuid: update response parameters Body.Task.EndReason' format has changed.
+- Update API ModifyScript: add request parameters LabelConfig.
+- Update API QueryJobsWithResult: add request parameters LabelsJson.
+- Update API QueryJobsWithResult: add response parameters Body.Labels.
+- Update API SearchTask: add request parameters CallingNumber.
+- Update API SearchTask: add request parameters LabelsJson.
+- Update API SearchTask: add response parameters Body.Labels.
+- Update API SearchTask: add response parameters Body.VariableNames.
+- Update API SearchTask: add response parameters Body.SearchTaskInfoList.$.CallingNumber.
+- Update API SearchTask: add response parameters Body.SearchTaskInfoList.$.Labels.
+
+
 2025-04-25 Version: v1.2.0
 - Support API CreateBeebotIntent.
 - Support API CreateBeebotIntentLgf.
