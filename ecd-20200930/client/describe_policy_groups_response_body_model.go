@@ -164,6 +164,9 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	CameraRedirect       *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
 	ClientControlMenu    *string `json:"ClientControlMenu,omitempty" xml:"ClientControlMenu,omitempty"`
 	ClientCreateSnapshot *string `json:"ClientCreateSnapshot,omitempty" xml:"ClientCreateSnapshot,omitempty"`
+	ClientHibernate      *string `json:"ClientHibernate,omitempty" xml:"ClientHibernate,omitempty"`
+	ClientRestart        *string `json:"ClientRestart,omitempty" xml:"ClientRestart,omitempty"`
+	ClientShutdown       *string `json:"ClientShutdown,omitempty" xml:"ClientShutdown,omitempty"`
 	// The logon method control rules to limit the type of the Alibaba Cloud Workspace client used by end users to connect to cloud computers.
 	ClientTypes []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsClientTypes `json:"ClientTypes,omitempty" xml:"ClientTypes,omitempty" type:"Repeated"`
 	// The permissions on the clipboard.
@@ -348,6 +351,9 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	// off
 	GpuAcceleration *string `json:"GpuAcceleration,omitempty" xml:"GpuAcceleration,omitempty"`
 	HoverConfigMsg  *string `json:"HoverConfigMsg,omitempty" xml:"HoverConfigMsg,omitempty"`
+	HoverHibernate  *string `json:"HoverHibernate,omitempty" xml:"HoverHibernate,omitempty"`
+	HoverRestart    *string `json:"HoverRestart,omitempty" xml:"HoverRestart,omitempty"`
+	HoverShutdown   *string `json:"HoverShutdown,omitempty" xml:"HoverShutdown,omitempty"`
 	// Specifies whether to allow web client access.
 	//
 	// Valid values:
@@ -1092,6 +1098,18 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetClientCreateSn
 	return s.ClientCreateSnapshot
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetClientHibernate() *string {
+	return s.ClientHibernate
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetClientRestart() *string {
+	return s.ClientRestart
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetClientShutdown() *string {
+	return s.ClientShutdown
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetClientTypes() []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsClientTypes {
 	return s.ClientTypes
 }
@@ -1218,6 +1236,18 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetGpuAcceleratio
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetHoverConfigMsg() *string {
 	return s.HoverConfigMsg
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetHoverHibernate() *string {
+	return s.HoverHibernate
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetHoverRestart() *string {
+	return s.HoverRestart
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetHoverShutdown() *string {
+	return s.HoverShutdown
 }
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetHtml5Access() *string {
@@ -1621,6 +1651,21 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetClientCreateSn
 	return s
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetClientHibernate(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.ClientHibernate = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetClientRestart(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.ClientRestart = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetClientShutdown(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.ClientShutdown = &v
+	return s
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetClientTypes(v []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsClientTypes) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.ClientTypes = v
 	return s
@@ -1778,6 +1823,21 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetGpuAcceleratio
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetHoverConfigMsg(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.HoverConfigMsg = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetHoverHibernate(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.HoverHibernate = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetHoverRestart(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.HoverRestart = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetHoverShutdown(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.HoverShutdown = &v
 	return s
 }
 
