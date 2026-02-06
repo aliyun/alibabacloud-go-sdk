@@ -9095,6 +9095,72 @@ func (client *Client) DeleteParameterGroup(request *DeleteParameterGroupRequest)
 
 // Summary:
 //
+// # RDS MySQL删除修改参数运行任务
+//
+// @param request - DeleteParameterTimedScheduleTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteParameterTimedScheduleTaskResponse
+func (client *Client) DeleteParameterTimedScheduleTaskWithOptions(request *DeleteParameterTimedScheduleTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteParameterTimedScheduleTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteParameterTimedScheduleTask"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteParameterTimedScheduleTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # RDS MySQL删除修改参数运行任务
+//
+// @param request - DeleteParameterTimedScheduleTaskRequest
+//
+// @return DeleteParameterTimedScheduleTaskResponse
+func (client *Client) DeleteParameterTimedScheduleTask(request *DeleteParameterTimedScheduleTaskRequest) (_result *DeleteParameterTimedScheduleTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteParameterTimedScheduleTaskResponse{}
+	_body, _err := client.DeleteParameterTimedScheduleTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an extension from a database.
 //
 // Description:
@@ -21015,6 +21081,64 @@ func (client *Client) DescribeParameterTemplates(request *DescribeParameterTempl
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeParameterTemplatesResponse{}
 	_body, _err := client.DescribeParameterTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # RDS MySQL查询修改参数运行时间列表
+//
+// @param request - DescribeParameterTimedScheduleTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeParameterTimedScheduleTaskResponse
+func (client *Client) DescribeParameterTimedScheduleTaskWithOptions(request *DescribeParameterTimedScheduleTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeParameterTimedScheduleTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeParameterTimedScheduleTask"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeParameterTimedScheduleTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # RDS MySQL查询修改参数运行时间列表
+//
+// @param request - DescribeParameterTimedScheduleTaskRequest
+//
+// @return DescribeParameterTimedScheduleTaskResponse
+func (client *Client) DescribeParameterTimedScheduleTask(request *DescribeParameterTimedScheduleTaskRequest) (_result *DescribeParameterTimedScheduleTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeParameterTimedScheduleTaskResponse{}
+	_body, _err := client.DescribeParameterTimedScheduleTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
