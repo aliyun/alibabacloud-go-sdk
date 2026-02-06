@@ -11,10 +11,13 @@ type iAuthorizeSkillRequest interface {
 	GoString() string
 	SetPermissionCodes(v []*string) *AuthorizeSkillRequest
 	GetPermissionCodes() []*string
+	SetSourceIdOfAssistantId(v string) *AuthorizeSkillRequest
+	GetSourceIdOfAssistantId() *string
 }
 
 type AuthorizeSkillRequest struct {
-	PermissionCodes []*string `json:"PermissionCodes,omitempty" xml:"PermissionCodes,omitempty" type:"Repeated"`
+	PermissionCodes       []*string `json:"PermissionCodes,omitempty" xml:"PermissionCodes,omitempty" type:"Repeated"`
+	SourceIdOfAssistantId *string   `json:"SourceIdOfAssistantId,omitempty" xml:"SourceIdOfAssistantId,omitempty"`
 }
 
 func (s AuthorizeSkillRequest) String() string {
@@ -29,8 +32,17 @@ func (s *AuthorizeSkillRequest) GetPermissionCodes() []*string {
 	return s.PermissionCodes
 }
 
+func (s *AuthorizeSkillRequest) GetSourceIdOfAssistantId() *string {
+	return s.SourceIdOfAssistantId
+}
+
 func (s *AuthorizeSkillRequest) SetPermissionCodes(v []*string) *AuthorizeSkillRequest {
 	s.PermissionCodes = v
+	return s
+}
+
+func (s *AuthorizeSkillRequest) SetSourceIdOfAssistantId(v string) *AuthorizeSkillRequest {
+	s.SourceIdOfAssistantId = &v
 	return s
 }
 

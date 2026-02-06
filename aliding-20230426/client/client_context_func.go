@@ -1113,6 +1113,10 @@ func (client *Client) AuthorizeSkillWithContext(ctx context.Context, tmpReq *Aut
 		body["PermissionCodes"] = request.PermissionCodesShrink
 	}
 
+	if !dara.IsNil(request.SourceIdOfAssistantId) {
+		body["SourceIdOfAssistantId"] = request.SourceIdOfAssistantId
+	}
+
 	realHeaders := make(map[string]*string)
 	if !dara.IsNil(headers.CommonHeaders) {
 		realHeaders = headers.CommonHeaders
@@ -12063,6 +12067,156 @@ func (client *Client) GetSheetContentJobIdWithContext(ctx context.Context, tmpRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSheetContentJobIdResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取技能详情
+//
+// @param request - GetSkillDetailRequest
+//
+// @param tmpHeader - GetSkillDetailHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSkillDetailResponse
+func (client *Client) GetSkillDetailWithContext(ctx context.Context, request *GetSkillDetailRequest, tmpHeader *GetSkillDetailHeaders, runtime *dara.RuntimeOptions) (_result *GetSkillDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	headers := &GetSkillDetailShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GroupId) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.SkillId) {
+		body["SkillId"] = request.SkillId
+	}
+
+	if !dara.IsNil(request.SourceIdOfAssistantId) {
+		body["SourceIdOfAssistantId"] = request.SourceIdOfAssistantId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSkillDetail"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/ai/v1/skill/getSkillDetail"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSkillDetailResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取技能列表
+//
+// @param tmpReq - GetSkillsRequest
+//
+// @param tmpHeader - GetSkillsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSkillsResponse
+func (client *Client) GetSkillsWithContext(ctx context.Context, tmpReq *GetSkillsRequest, tmpHeader *GetSkillsHeaders, runtime *dara.RuntimeOptions) (_result *GetSkillsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetSkillsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetSkillsShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.GroupIds) {
+		request.GroupIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GroupIds, dara.String("GroupIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SkillIds) {
+		request.SkillIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SkillIds, dara.String("SkillIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GroupIdsShrink) {
+		body["GroupIds"] = request.GroupIdsShrink
+	}
+
+	if !dara.IsNil(request.SkillIdsShrink) {
+		body["SkillIds"] = request.SkillIdsShrink
+	}
+
+	if !dara.IsNil(request.SourceIdOfAssistantId) {
+		body["SourceIdOfAssistantId"] = request.SourceIdOfAssistantId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSkills"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/ai/v1/skill/getSkills"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSkillsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
