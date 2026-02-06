@@ -121,6 +121,10 @@ type GetURLUploadInfosResponseBodyURLUploadInfoList struct {
 	//
 	// 93ab850b4f6f54b6e91d24d81d4****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// example:
+	//
+	// 93ab850b4f654b6e91d24d81d44****
+	RegisteredMediaId *string `json:"RegisteredMediaId,omitempty" xml:"RegisteredMediaId,omitempty"`
 	// The status of the URL-based upload job. For more information about the valid values and value description of the parameter, see the "Status: the status of a video" section of the [Basic structures](https://help.aliyun.com/document_detail/52839.html) topic.
 	//
 	// example:
@@ -179,6 +183,10 @@ func (s *GetURLUploadInfosResponseBodyURLUploadInfoList) GetMediaId() *string {
 	return s.MediaId
 }
 
+func (s *GetURLUploadInfosResponseBodyURLUploadInfoList) GetRegisteredMediaId() *string {
+	return s.RegisteredMediaId
+}
+
 func (s *GetURLUploadInfosResponseBodyURLUploadInfoList) GetStatus() *string {
 	return s.Status
 }
@@ -223,6 +231,11 @@ func (s *GetURLUploadInfosResponseBodyURLUploadInfoList) SetJobId(v string) *Get
 
 func (s *GetURLUploadInfosResponseBodyURLUploadInfoList) SetMediaId(v string) *GetURLUploadInfosResponseBodyURLUploadInfoList {
 	s.MediaId = &v
+	return s
+}
+
+func (s *GetURLUploadInfosResponseBodyURLUploadInfoList) SetRegisteredMediaId(v string) *GetURLUploadInfosResponseBodyURLUploadInfoList {
+	s.RegisteredMediaId = &v
 	return s
 }
 

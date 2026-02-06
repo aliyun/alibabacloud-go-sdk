@@ -10225,6 +10225,10 @@ func (client *Client) GetPlayInfoWithOptions(request *GetPlayInfoRequest, runtim
 		query["AuthTimeout"] = request.AuthTimeout
 	}
 
+	if !dara.IsNil(request.CodecName) {
+		query["CodecName"] = request.CodecName
+	}
+
 	if !dara.IsNil(request.Definition) {
 		query["Definition"] = request.Definition
 	}

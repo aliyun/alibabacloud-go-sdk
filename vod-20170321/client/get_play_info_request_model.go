@@ -13,6 +13,8 @@ type iGetPlayInfoRequest interface {
 	GetAdditionType() *string
 	SetAuthTimeout(v int64) *GetPlayInfoRequest
 	GetAuthTimeout() *int64
+	SetCodecName(v string) *GetPlayInfoRequest
+	GetCodecName() *string
 	SetDefinition(v string) *GetPlayInfoRequest
 	GetDefinition() *string
 	SetDigitalWatermarkType(v string) *GetPlayInfoRequest
@@ -72,6 +74,10 @@ type GetPlayInfoRequest struct {
 	//
 	// 1800
 	AuthTimeout *int64 `json:"AuthTimeout,omitempty" xml:"AuthTimeout,omitempty"`
+	// example:
+	//
+	// H264
+	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
 	// The quality of the video stream. Separate multiple qualities with commas (,). Valid values:
 	//
 	// 	- **FD**: low definition
@@ -224,6 +230,10 @@ func (s *GetPlayInfoRequest) GetAuthTimeout() *int64 {
 	return s.AuthTimeout
 }
 
+func (s *GetPlayInfoRequest) GetCodecName() *string {
+	return s.CodecName
+}
+
 func (s *GetPlayInfoRequest) GetDefinition() *string {
 	return s.Definition
 }
@@ -275,6 +285,11 @@ func (s *GetPlayInfoRequest) SetAdditionType(v string) *GetPlayInfoRequest {
 
 func (s *GetPlayInfoRequest) SetAuthTimeout(v int64) *GetPlayInfoRequest {
 	s.AuthTimeout = &v
+	return s
+}
+
+func (s *GetPlayInfoRequest) SetCodecName(v string) *GetPlayInfoRequest {
+	s.CodecName = &v
 	return s
 }
 

@@ -7270,6 +7270,10 @@ func (client *Client) GetPlayInfoWithContext(ctx context.Context, request *GetPl
 		query["AuthTimeout"] = request.AuthTimeout
 	}
 
+	if !dara.IsNil(request.CodecName) {
+		query["CodecName"] = request.CodecName
+	}
+
 	if !dara.IsNil(request.Definition) {
 		query["Definition"] = request.Definition
 	}
