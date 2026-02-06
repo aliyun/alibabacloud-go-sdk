@@ -362,6 +362,11 @@ func (client *Client) CreateImageByInstanceWithContext(ctx context.Context, requ
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TagList) {
+		query["TagList"] = request.TagList
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoCleanUserdata) {
 		body["AutoCleanUserdata"] = request.AutoCleanUserdata
@@ -400,7 +405,8 @@ func (client *Client) CreateImageByInstanceWithContext(ctx context.Context, requ
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CreateImageByInstance"),

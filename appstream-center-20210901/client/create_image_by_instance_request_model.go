@@ -27,6 +27,8 @@ type iCreateImageByInstanceRequest interface {
 	GetProductType() *string
 	SetSubInstanceId(v string) *CreateImageByInstanceRequest
 	GetSubInstanceId() *string
+	SetTagList(v []*CreateImageByInstanceRequestTagList) *CreateImageByInstanceRequest
+	GetTagList() []*CreateImageByInstanceRequestTagList
 }
 
 type CreateImageByInstanceRequest struct {
@@ -101,7 +103,8 @@ type CreateImageByInstanceRequest struct {
 	// example:
 	//
 	// p-0cc7s3n1l*****
-	SubInstanceId *string `json:"SubInstanceId,omitempty" xml:"SubInstanceId,omitempty"`
+	SubInstanceId *string                                `json:"SubInstanceId,omitempty" xml:"SubInstanceId,omitempty"`
+	TagList       []*CreateImageByInstanceRequestTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
 }
 
 func (s CreateImageByInstanceRequest) String() string {
@@ -146,6 +149,10 @@ func (s *CreateImageByInstanceRequest) GetProductType() *string {
 
 func (s *CreateImageByInstanceRequest) GetSubInstanceId() *string {
 	return s.SubInstanceId
+}
+
+func (s *CreateImageByInstanceRequest) GetTagList() []*CreateImageByInstanceRequestTagList {
+	return s.TagList
 }
 
 func (s *CreateImageByInstanceRequest) SetAutoCleanUserdata(v bool) *CreateImageByInstanceRequest {
@@ -193,6 +200,55 @@ func (s *CreateImageByInstanceRequest) SetSubInstanceId(v string) *CreateImageBy
 	return s
 }
 
+func (s *CreateImageByInstanceRequest) SetTagList(v []*CreateImageByInstanceRequestTagList) *CreateImageByInstanceRequest {
+	s.TagList = v
+	return s
+}
+
 func (s *CreateImageByInstanceRequest) Validate() error {
+	if s.TagList != nil {
+		for _, item := range s.TagList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateImageByInstanceRequestTagList struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateImageByInstanceRequestTagList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateImageByInstanceRequestTagList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageByInstanceRequestTagList) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateImageByInstanceRequestTagList) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateImageByInstanceRequestTagList) SetKey(v string) *CreateImageByInstanceRequestTagList {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateImageByInstanceRequestTagList) SetValue(v string) *CreateImageByInstanceRequestTagList {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateImageByInstanceRequestTagList) Validate() error {
 	return dara.Validate(s)
 }
