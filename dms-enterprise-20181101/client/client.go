@@ -15989,6 +15989,10 @@ func (client *Client) ListDatabasesWithOptions(request *ListDatabasesRequest, ru
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.SearchKey) {
+		query["SearchKey"] = request.SearchKey
+	}
+
 	if !dara.IsNil(request.Tid) {
 		query["Tid"] = request.Tid
 	}

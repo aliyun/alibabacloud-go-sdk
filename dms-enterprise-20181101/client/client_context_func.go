@@ -12095,6 +12095,10 @@ func (client *Client) ListDatabasesWithContext(ctx context.Context, request *Lis
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.SearchKey) {
+		query["SearchKey"] = request.SearchKey
+	}
+
 	if !dara.IsNil(request.Tid) {
 		query["Tid"] = request.Tid
 	}

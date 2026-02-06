@@ -15,6 +15,8 @@ type iListDatabasesRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListDatabasesRequest
 	GetPageSize() *int32
+	SetSearchKey(v string) *ListDatabasesRequest
+	GetSearchKey() *string
 	SetTid(v int64) *ListDatabasesRequest
 	GetTid() *int64
 }
@@ -39,7 +41,8 @@ type ListDatabasesRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
 	// The ID of the tenant.
 	//
 	// > : To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
@@ -70,6 +73,10 @@ func (s *ListDatabasesRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListDatabasesRequest) GetSearchKey() *string {
+	return s.SearchKey
+}
+
 func (s *ListDatabasesRequest) GetTid() *int64 {
 	return s.Tid
 }
@@ -86,6 +93,11 @@ func (s *ListDatabasesRequest) SetPageNumber(v int32) *ListDatabasesRequest {
 
 func (s *ListDatabasesRequest) SetPageSize(v int32) *ListDatabasesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListDatabasesRequest) SetSearchKey(v string) *ListDatabasesRequest {
+	s.SearchKey = &v
 	return s
 }
 
