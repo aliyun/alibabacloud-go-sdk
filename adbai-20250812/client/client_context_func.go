@@ -137,6 +137,58 @@ func (client *Client) CreateEmbodiedAIPlatformWithContext(ctx context.Context, t
 
 // Summary:
 //
+// 删除具身智能平台
+//
+// @param request - DeleteEmbodiedAIPlatformRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEmbodiedAIPlatformResponse
+func (client *Client) DeleteEmbodiedAIPlatformWithContext(ctx context.Context, request *DeleteEmbodiedAIPlatformRequest, runtime *dara.RuntimeOptions) (_result *DeleteEmbodiedAIPlatformResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PlatformName) {
+		query["PlatformName"] = request.PlatformName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteEmbodiedAIPlatform"),
+		Version:     dara.String("2025-08-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteEmbodiedAIPlatformResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询具身智能平台
 //
 // @param request - DescribeEmbodiedAIPlatformsRequest
