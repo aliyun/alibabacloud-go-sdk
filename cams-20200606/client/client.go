@@ -2597,6 +2597,10 @@ func (client *Client) CreateFlowWithOptions(tmpReq *CreateFlowRequest, runtime *
 		query["CustSpaceId"] = request.CustSpaceId
 	}
 
+	if !dara.IsNil(request.EndpointUri) {
+		query["EndpointUri"] = request.EndpointUri
+	}
+
 	if !dara.IsNil(request.FlowName) {
 		query["FlowName"] = request.FlowName
 	}
@@ -10849,6 +10853,10 @@ func (client *Client) ModifyFlowWithOptions(tmpReq *ModifyFlowRequest, runtime *
 
 	if !dara.IsNil(request.CustSpaceId) {
 		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.EndpointUri) {
+		query["EndpointUri"] = request.EndpointUri
 	}
 
 	if !dara.IsNil(request.FlowId) {

@@ -110,6 +110,10 @@ func (s *ModifyFlowResponseBody) Validate() error {
 type ModifyFlowResponseBodyData struct {
 	// The categories of the Flow.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// example:
+	//
+	// http://www.abc.com
+	EndpointUri *string `json:"EndpointUri,omitempty" xml:"EndpointUri,omitempty"`
 	// The Flow ID.
 	//
 	// example:
@@ -136,6 +140,10 @@ func (s *ModifyFlowResponseBodyData) GetCategories() []*string {
 	return s.Categories
 }
 
+func (s *ModifyFlowResponseBodyData) GetEndpointUri() *string {
+	return s.EndpointUri
+}
+
 func (s *ModifyFlowResponseBodyData) GetFlowId() *string {
 	return s.FlowId
 }
@@ -146,6 +154,11 @@ func (s *ModifyFlowResponseBodyData) GetFlowName() *string {
 
 func (s *ModifyFlowResponseBodyData) SetCategories(v []*string) *ModifyFlowResponseBodyData {
 	s.Categories = v
+	return s
+}
+
+func (s *ModifyFlowResponseBodyData) SetEndpointUri(v string) *ModifyFlowResponseBodyData {
+	s.EndpointUri = &v
 	return s
 }
 

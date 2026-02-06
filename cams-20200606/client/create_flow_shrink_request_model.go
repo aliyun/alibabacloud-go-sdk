@@ -13,6 +13,8 @@ type iCreateFlowShrinkRequest interface {
 	GetCategoriesShrink() *string
 	SetCustSpaceId(v string) *CreateFlowShrinkRequest
 	GetCustSpaceId() *string
+	SetEndpointUri(v string) *CreateFlowShrinkRequest
+	GetEndpointUri() *string
 	SetFlowName(v string) *CreateFlowShrinkRequest
 	GetFlowName() *string
 	SetOwnerId(v int64) *CreateFlowShrinkRequest
@@ -30,6 +32,10 @@ type CreateFlowShrinkRequest struct {
 	//
 	// 示例值示例值示例值
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// example:
+	//
+	// http://www.***.com
+	EndpointUri *string `json:"EndpointUri,omitempty" xml:"EndpointUri,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -57,6 +63,10 @@ func (s *CreateFlowShrinkRequest) GetCustSpaceId() *string {
 	return s.CustSpaceId
 }
 
+func (s *CreateFlowShrinkRequest) GetEndpointUri() *string {
+	return s.EndpointUri
+}
+
 func (s *CreateFlowShrinkRequest) GetFlowName() *string {
 	return s.FlowName
 }
@@ -80,6 +90,11 @@ func (s *CreateFlowShrinkRequest) SetCategoriesShrink(v string) *CreateFlowShrin
 
 func (s *CreateFlowShrinkRequest) SetCustSpaceId(v string) *CreateFlowShrinkRequest {
 	s.CustSpaceId = &v
+	return s
+}
+
+func (s *CreateFlowShrinkRequest) SetEndpointUri(v string) *CreateFlowShrinkRequest {
+	s.EndpointUri = &v
 	return s
 }
 

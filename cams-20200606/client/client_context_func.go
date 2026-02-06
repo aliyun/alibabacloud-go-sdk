@@ -2020,6 +2020,10 @@ func (client *Client) CreateFlowWithContext(ctx context.Context, tmpReq *CreateF
 		query["CustSpaceId"] = request.CustSpaceId
 	}
 
+	if !dara.IsNil(request.EndpointUri) {
+		query["EndpointUri"] = request.EndpointUri
+	}
+
 	if !dara.IsNil(request.FlowName) {
 		query["FlowName"] = request.FlowName
 	}
@@ -8498,6 +8502,10 @@ func (client *Client) ModifyFlowWithContext(ctx context.Context, tmpReq *ModifyF
 
 	if !dara.IsNil(request.CustSpaceId) {
 		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.EndpointUri) {
+		query["EndpointUri"] = request.EndpointUri
 	}
 
 	if !dara.IsNil(request.FlowId) {

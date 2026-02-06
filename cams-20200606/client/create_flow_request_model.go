@@ -13,6 +13,8 @@ type iCreateFlowRequest interface {
 	GetCategories() []*string
 	SetCustSpaceId(v string) *CreateFlowRequest
 	GetCustSpaceId() *string
+	SetEndpointUri(v string) *CreateFlowRequest
+	GetEndpointUri() *string
 	SetFlowName(v string) *CreateFlowRequest
 	GetFlowName() *string
 	SetOwnerId(v int64) *CreateFlowRequest
@@ -30,6 +32,10 @@ type CreateFlowRequest struct {
 	//
 	// 示例值示例值示例值
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// example:
+	//
+	// http://www.***.com
+	EndpointUri *string `json:"EndpointUri,omitempty" xml:"EndpointUri,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -57,6 +63,10 @@ func (s *CreateFlowRequest) GetCustSpaceId() *string {
 	return s.CustSpaceId
 }
 
+func (s *CreateFlowRequest) GetEndpointUri() *string {
+	return s.EndpointUri
+}
+
 func (s *CreateFlowRequest) GetFlowName() *string {
 	return s.FlowName
 }
@@ -80,6 +90,11 @@ func (s *CreateFlowRequest) SetCategories(v []*string) *CreateFlowRequest {
 
 func (s *CreateFlowRequest) SetCustSpaceId(v string) *CreateFlowRequest {
 	s.CustSpaceId = &v
+	return s
+}
+
+func (s *CreateFlowRequest) SetEndpointUri(v string) *CreateFlowRequest {
+	s.EndpointUri = &v
 	return s
 }
 

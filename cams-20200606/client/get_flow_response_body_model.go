@@ -116,6 +116,10 @@ type GetFlowResponseBodyData struct {
 	//
 	// 3.0
 	DataApiVersion *string `json:"DataApiVersion,omitempty" xml:"DataApiVersion,omitempty"`
+	// example:
+	//
+	// http://abc.com
+	EndpointUri *string `json:"EndpointUri,omitempty" xml:"EndpointUri,omitempty"`
 	// The Flow ID.
 	//
 	// example:
@@ -196,6 +200,10 @@ func (s *GetFlowResponseBodyData) GetDataApiVersion() *string {
 	return s.DataApiVersion
 }
 
+func (s *GetFlowResponseBodyData) GetEndpointUri() *string {
+	return s.EndpointUri
+}
+
 func (s *GetFlowResponseBodyData) GetFlowId() *string {
 	return s.FlowId
 }
@@ -227,6 +235,11 @@ func (s *GetFlowResponseBodyData) SetCategories(v []*string) *GetFlowResponseBod
 
 func (s *GetFlowResponseBodyData) SetDataApiVersion(v string) *GetFlowResponseBodyData {
 	s.DataApiVersion = &v
+	return s
+}
+
+func (s *GetFlowResponseBodyData) SetEndpointUri(v string) *GetFlowResponseBodyData {
+	s.EndpointUri = &v
 	return s
 }
 

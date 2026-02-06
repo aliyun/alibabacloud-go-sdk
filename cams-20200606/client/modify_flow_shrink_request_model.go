@@ -13,6 +13,8 @@ type iModifyFlowShrinkRequest interface {
 	GetCategoriesShrink() *string
 	SetCustSpaceId(v string) *ModifyFlowShrinkRequest
 	GetCustSpaceId() *string
+	SetEndpointUri(v string) *ModifyFlowShrinkRequest
+	GetEndpointUri() *string
 	SetFlowId(v string) *ModifyFlowShrinkRequest
 	GetFlowId() *string
 	SetFlowName(v string) *ModifyFlowShrinkRequest
@@ -32,6 +34,10 @@ type ModifyFlowShrinkRequest struct {
 	//
 	// 示例值示例值
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// example:
+	//
+	// http://www.***.com
+	EndpointUri *string `json:"EndpointUri,omitempty" xml:"EndpointUri,omitempty"`
 	// example:
 	//
 	// 示例值
@@ -63,6 +69,10 @@ func (s *ModifyFlowShrinkRequest) GetCustSpaceId() *string {
 	return s.CustSpaceId
 }
 
+func (s *ModifyFlowShrinkRequest) GetEndpointUri() *string {
+	return s.EndpointUri
+}
+
 func (s *ModifyFlowShrinkRequest) GetFlowId() *string {
 	return s.FlowId
 }
@@ -90,6 +100,11 @@ func (s *ModifyFlowShrinkRequest) SetCategoriesShrink(v string) *ModifyFlowShrin
 
 func (s *ModifyFlowShrinkRequest) SetCustSpaceId(v string) *ModifyFlowShrinkRequest {
 	s.CustSpaceId = &v
+	return s
+}
+
+func (s *ModifyFlowShrinkRequest) SetEndpointUri(v string) *ModifyFlowShrinkRequest {
+	s.EndpointUri = &v
 	return s
 }
 

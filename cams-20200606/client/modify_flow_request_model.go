@@ -13,6 +13,8 @@ type iModifyFlowRequest interface {
 	GetCategories() []*string
 	SetCustSpaceId(v string) *ModifyFlowRequest
 	GetCustSpaceId() *string
+	SetEndpointUri(v string) *ModifyFlowRequest
+	GetEndpointUri() *string
 	SetFlowId(v string) *ModifyFlowRequest
 	GetFlowId() *string
 	SetFlowName(v string) *ModifyFlowRequest
@@ -32,6 +34,10 @@ type ModifyFlowRequest struct {
 	//
 	// 示例值示例值
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// example:
+	//
+	// http://www.***.com
+	EndpointUri *string `json:"EndpointUri,omitempty" xml:"EndpointUri,omitempty"`
 	// example:
 	//
 	// 示例值
@@ -63,6 +69,10 @@ func (s *ModifyFlowRequest) GetCustSpaceId() *string {
 	return s.CustSpaceId
 }
 
+func (s *ModifyFlowRequest) GetEndpointUri() *string {
+	return s.EndpointUri
+}
+
 func (s *ModifyFlowRequest) GetFlowId() *string {
 	return s.FlowId
 }
@@ -90,6 +100,11 @@ func (s *ModifyFlowRequest) SetCategories(v []*string) *ModifyFlowRequest {
 
 func (s *ModifyFlowRequest) SetCustSpaceId(v string) *ModifyFlowRequest {
 	s.CustSpaceId = &v
+	return s
+}
+
+func (s *ModifyFlowRequest) SetEndpointUri(v string) *ModifyFlowRequest {
+	s.EndpointUri = &v
 	return s
 }
 
