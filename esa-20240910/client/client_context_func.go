@@ -1445,6 +1445,78 @@ func (client *Client) CreateCustomHostnameWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// Add configurations for modifying the response code.
+//
+// @param request - CreateCustomResponseCodeRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCustomResponseCodeRuleResponse
+func (client *Client) CreateCustomResponseCodeRuleWithContext(ctx context.Context, request *CreateCustomResponseCodeRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomResponseCodeRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageId) {
+		query["PageId"] = request.PageId
+	}
+
+	if !dara.IsNil(request.ReturnCode) {
+		query["ReturnCode"] = request.ReturnCode
+	}
+
+	if !dara.IsNil(request.Rule) {
+		query["Rule"] = request.Rule
+	}
+
+	if !dara.IsNil(request.RuleEnable) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.Sequence) {
+		query["Sequence"] = request.Sequence
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !dara.IsNil(request.SiteVersion) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCustomResponseCodeRule"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCustomResponseCodeRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an account-level custom scenario policy. You can execute a policy after you associate the policy with a website.
 //
 // @param request - CreateCustomScenePolicyRequest
@@ -5083,6 +5155,54 @@ func (client *Client) DeleteCustomHostnameWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCustomHostnameResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes the configuration of response code modification for a website.
+//
+// @param request - DeleteCustomResponseCodeRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCustomResponseCodeRuleResponse
+func (client *Client) DeleteCustomResponseCodeRuleWithContext(ctx context.Context, request *DeleteCustomResponseCodeRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomResponseCodeRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigId) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCustomResponseCodeRule"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCustomResponseCodeRuleResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -8945,6 +9065,54 @@ func (client *Client) GetCustomHostnameWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// 查询修改响应码规则详情
+//
+// @param request - GetCustomResponseCodeRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCustomResponseCodeRuleResponse
+func (client *Client) GetCustomResponseCodeRuleWithContext(ctx context.Context, request *GetCustomResponseCodeRuleRequest, runtime *dara.RuntimeOptions) (_result *GetCustomResponseCodeRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigId) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCustomResponseCodeRule"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCustomResponseCodeRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Query Site Developer Mode Configuration
 //
 // @param request - GetDevelopmentModeRequest
@@ -12229,6 +12397,74 @@ func (client *Client) ListCustomHostnamesWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListCustomHostnamesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the configuration list of an HTTP response header modification rule for a website.
+//
+// @param request - ListCustomResponseCodeRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCustomResponseCodeRulesResponse
+func (client *Client) ListCustomResponseCodeRulesWithContext(ctx context.Context, request *ListCustomResponseCodeRulesRequest, runtime *dara.RuntimeOptions) (_result *ListCustomResponseCodeRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigId) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !dara.IsNil(request.ConfigType) {
+		query["ConfigType"] = request.ConfigType
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !dara.IsNil(request.SiteVersion) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCustomResponseCodeRules"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCustomResponseCodeRulesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -17057,6 +17293,78 @@ func (client *Client) UpdateCustomHostnameWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateCustomHostnameResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modify the response code configurations for a website.
+//
+// @param request - UpdateCustomResponseCodeRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCustomResponseCodeRuleResponse
+func (client *Client) UpdateCustomResponseCodeRuleWithContext(ctx context.Context, request *UpdateCustomResponseCodeRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateCustomResponseCodeRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigId) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !dara.IsNil(request.PageId) {
+		query["PageId"] = request.PageId
+	}
+
+	if !dara.IsNil(request.ReturnCode) {
+		query["ReturnCode"] = request.ReturnCode
+	}
+
+	if !dara.IsNil(request.Rule) {
+		query["Rule"] = request.Rule
+	}
+
+	if !dara.IsNil(request.RuleEnable) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.Sequence) {
+		query["Sequence"] = request.Sequence
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCustomResponseCodeRule"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCustomResponseCodeRuleResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
