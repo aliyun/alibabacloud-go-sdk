@@ -386,6 +386,76 @@ func (client *Client) CreateLogoTask(request *CreateLogoTaskRequest) (_result *C
 
 // Summary:
 //
+// 创建素材中心文件夹
+//
+// @param request - CreateMaterialDirectoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMaterialDirectoryResponse
+func (client *Client) CreateMaterialDirectoryWithOptions(request *CreateMaterialDirectoryRequest, runtime *dara.RuntimeOptions) (_result *CreateMaterialDirectoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ParentDirectoryId) {
+		query["ParentDirectoryId"] = request.ParentDirectoryId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMaterialDirectory"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMaterialDirectoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建素材中心文件夹
+//
+// @param request - CreateMaterialDirectoryRequest
+//
+// @return CreateMaterialDirectoryResponse
+func (client *Client) CreateMaterialDirectory(request *CreateMaterialDirectoryRequest) (_result *CreateMaterialDirectoryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateMaterialDirectoryResponse{}
+	_body, _err := client.CreateMaterialDirectoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Delete the SSL certificate of a domain
 //
 // @param request - DeleteAppDomainCertificateRequest
@@ -509,6 +579,140 @@ func (client *Client) DeleteAppDomainRedirect(request *DeleteAppDomainRedirectRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteAppDomainRedirectResponse{}
 	_body, _err := client.DeleteAppDomainRedirectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除素材中心文件夹
+//
+// @param request - DeleteMaterialDirectoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMaterialDirectoryResponse
+func (client *Client) DeleteMaterialDirectoryWithOptions(request *DeleteMaterialDirectoryRequest, runtime *dara.RuntimeOptions) (_result *DeleteMaterialDirectoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMaterialDirectory"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMaterialDirectoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除素材中心文件夹
+//
+// @param request - DeleteMaterialDirectoryRequest
+//
+// @return DeleteMaterialDirectoryResponse
+func (client *Client) DeleteMaterialDirectory(request *DeleteMaterialDirectoryRequest) (_result *DeleteMaterialDirectoryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteMaterialDirectoryResponse{}
+	_body, _err := client.DeleteMaterialDirectoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除素材生产任务
+//
+// @param tmpReq - DeleteMaterialTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMaterialTaskResponse
+func (client *Client) DeleteMaterialTaskWithOptions(tmpReq *DeleteMaterialTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteMaterialTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteMaterialTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TaskIds) {
+		request.TaskIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TaskIds, dara.String("TaskIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TaskIdsShrink) {
+		query["TaskIds"] = request.TaskIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMaterialTask"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMaterialTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除素材生产任务
+//
+// @param request - DeleteMaterialTaskRequest
+//
+// @return DeleteMaterialTaskResponse
+func (client *Client) DeleteMaterialTask(request *DeleteMaterialTaskRequest) (_result *DeleteMaterialTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteMaterialTaskResponse{}
+	_body, _err := client.DeleteMaterialTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -657,6 +861,78 @@ func (client *Client) DispatchConsoleAPIForPartner(request *DispatchConsoleAPIFo
 	runtime := &dara.RuntimeOptions{}
 	_result = &DispatchConsoleAPIForPartnerResponse{}
 	_body, _err := client.DispatchConsoleAPIForPartnerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 导出素材文件
+//
+// @param tmpReq - ExportMaterialFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportMaterialFileResponse
+func (client *Client) ExportMaterialFileWithOptions(tmpReq *ExportMaterialFileRequest, runtime *dara.RuntimeOptions) (_result *ExportMaterialFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ExportMaterialFileShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.FileIds) {
+		request.FileIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FileIds, dara.String("FileIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.FileIdsShrink) {
+		query["FileIds"] = request.FileIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExportMaterialFile"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExportMaterialFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 导出素材文件
+//
+// @param request - ExportMaterialFileRequest
+//
+// @return ExportMaterialFileResponse
+func (client *Client) ExportMaterialFile(request *ExportMaterialFileRequest) (_result *ExportMaterialFileResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ExportMaterialFileResponse{}
+	_body, _err := client.ExportMaterialFileWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1490,6 +1766,372 @@ func (client *Client) ModifyAppInstanceSpec(request *ModifyAppInstanceSpecReques
 
 // Summary:
 //
+// 修改素材中心文件夹
+//
+// @param request - ModifyMaterialDirectoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyMaterialDirectoryResponse
+func (client *Client) ModifyMaterialDirectoryWithOptions(request *ModifyMaterialDirectoryRequest, runtime *dara.RuntimeOptions) (_result *ModifyMaterialDirectoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyMaterialDirectory"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyMaterialDirectoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改素材中心文件夹
+//
+// @param request - ModifyMaterialDirectoryRequest
+//
+// @return ModifyMaterialDirectoryResponse
+func (client *Client) ModifyMaterialDirectory(request *ModifyMaterialDirectoryRequest) (_result *ModifyMaterialDirectoryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyMaterialDirectoryResponse{}
+	_body, _err := client.ModifyMaterialDirectoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改素材文件
+//
+// @param request - ModifyMaterialFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyMaterialFileResponse
+func (client *Client) ModifyMaterialFileWithOptions(request *ModifyMaterialFileRequest, runtime *dara.RuntimeOptions) (_result *ModifyMaterialFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyMaterialFile"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyMaterialFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改素材文件
+//
+// @param request - ModifyMaterialFileRequest
+//
+// @return ModifyMaterialFileResponse
+func (client *Client) ModifyMaterialFile(request *ModifyMaterialFileRequest) (_result *ModifyMaterialFileResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyMaterialFileResponse{}
+	_body, _err := client.ModifyMaterialFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改素材文件状态
+//
+// @param tmpReq - ModifyMaterialFileStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyMaterialFileStatusResponse
+func (client *Client) ModifyMaterialFileStatusWithOptions(tmpReq *ModifyMaterialFileStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyMaterialFileStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ModifyMaterialFileStatusShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.FileIds) {
+		request.FileIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FileIds, dara.String("FileIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.FileIdsShrink) {
+		query["FileIds"] = request.FileIdsShrink
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyMaterialFileStatus"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyMaterialFileStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改素材文件状态
+//
+// @param request - ModifyMaterialFileStatusRequest
+//
+// @return ModifyMaterialFileStatusResponse
+func (client *Client) ModifyMaterialFileStatus(request *ModifyMaterialFileStatusRequest) (_result *ModifyMaterialFileStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyMaterialFileStatusResponse{}
+	_body, _err := client.ModifyMaterialFileStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 移动素材中心文件夹
+//
+// @param request - MoveMaterialDirectoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MoveMaterialDirectoryResponse
+func (client *Client) MoveMaterialDirectoryWithOptions(request *MoveMaterialDirectoryRequest, runtime *dara.RuntimeOptions) (_result *MoveMaterialDirectoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.ParentDirectoryId) {
+		query["ParentDirectoryId"] = request.ParentDirectoryId
+	}
+
+	if !dara.IsNil(request.SortNum) {
+		query["SortNum"] = request.SortNum
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MoveMaterialDirectory"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MoveMaterialDirectoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 移动素材中心文件夹
+//
+// @param request - MoveMaterialDirectoryRequest
+//
+// @return MoveMaterialDirectoryResponse
+func (client *Client) MoveMaterialDirectory(request *MoveMaterialDirectoryRequest) (_result *MoveMaterialDirectoryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &MoveMaterialDirectoryResponse{}
+	_body, _err := client.MoveMaterialDirectoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 移动素材文件
+//
+// @param tmpReq - MoveMaterialFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MoveMaterialFileResponse
+func (client *Client) MoveMaterialFileWithOptions(tmpReq *MoveMaterialFileRequest, runtime *dara.RuntimeOptions) (_result *MoveMaterialFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &MoveMaterialFileShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.FileIds) {
+		request.FileIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FileIds, dara.String("FileIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.FileIdsShrink) {
+		query["FileIds"] = request.FileIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MoveMaterialFile"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MoveMaterialFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 移动素材文件
+//
+// @param request - MoveMaterialFileRequest
+//
+// @return MoveMaterialFileResponse
+func (client *Client) MoveMaterialFile(request *MoveMaterialFileRequest) (_result *MoveMaterialFileResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &MoveMaterialFileResponse{}
+	_body, _err := client.MoveMaterialFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 合作伙伴操作应用
 //
 // @param request - OperateAppInstanceForPartnerRequest
@@ -1621,6 +2263,536 @@ func (client *Client) OperateAppServiceForPartner(request *OperateAppServiceForP
 	runtime := &dara.RuntimeOptions{}
 	_result = &OperateAppServiceForPartnerResponse{}
 	_body, _err := client.OperateAppServiceForPartnerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询素材中心文件夹树结构
+//
+// @param request - QueryMaterialDirectoryTreeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMaterialDirectoryTreeResponse
+func (client *Client) QueryMaterialDirectoryTreeWithOptions(request *QueryMaterialDirectoryTreeRequest, runtime *dara.RuntimeOptions) (_result *QueryMaterialDirectoryTreeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.HiddenPublic) {
+		query["HiddenPublic"] = request.HiddenPublic
+	}
+
+	if !dara.IsNil(request.Root) {
+		query["Root"] = request.Root
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryMaterialDirectoryTree"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryMaterialDirectoryTreeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询素材中心文件夹树结构
+//
+// @param request - QueryMaterialDirectoryTreeRequest
+//
+// @return QueryMaterialDirectoryTreeResponse
+func (client *Client) QueryMaterialDirectoryTree(request *QueryMaterialDirectoryTreeRequest) (_result *QueryMaterialDirectoryTreeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryMaterialDirectoryTreeResponse{}
+	_body, _err := client.QueryMaterialDirectoryTreeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询素材文件详情
+//
+// @param request - QueryMaterialFileDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMaterialFileDetailResponse
+func (client *Client) QueryMaterialFileDetailWithOptions(request *QueryMaterialFileDetailRequest, runtime *dara.RuntimeOptions) (_result *QueryMaterialFileDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryMaterialFileDetail"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryMaterialFileDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询素材文件详情
+//
+// @param request - QueryMaterialFileDetailRequest
+//
+// @return QueryMaterialFileDetailResponse
+func (client *Client) QueryMaterialFileDetail(request *QueryMaterialFileDetailRequest) (_result *QueryMaterialFileDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryMaterialFileDetailResponse{}
+	_body, _err := client.QueryMaterialFileDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询素材文件列表
+//
+// @param tmpReq - QueryMaterialFileListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMaterialFileListResponse
+func (client *Client) QueryMaterialFileListWithOptions(tmpReq *QueryMaterialFileListRequest, runtime *dara.RuntimeOptions) (_result *QueryMaterialFileListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &QueryMaterialFileListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.StatusList) {
+		request.StatusListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StatusList, dara.String("StatusList"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SuffixList) {
+		request.SuffixListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SuffixList, dara.String("SuffixList"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TypeList) {
+		request.TypeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TypeList, dara.String("TypeList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.MaxFileSize) {
+		query["MaxFileSize"] = request.MaxFileSize
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.MinFileSize) {
+		query["MinFileSize"] = request.MinFileSize
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OrderColumn) {
+		query["OrderColumn"] = request.OrderColumn
+	}
+
+	if !dara.IsNil(request.OrderType) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StatusListShrink) {
+		query["StatusList"] = request.StatusListShrink
+	}
+
+	if !dara.IsNil(request.SuffixListShrink) {
+		query["SuffixList"] = request.SuffixListShrink
+	}
+
+	if !dara.IsNil(request.TypeListShrink) {
+		query["TypeList"] = request.TypeListShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryMaterialFileList"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryMaterialFileListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询素材文件列表
+//
+// @param request - QueryMaterialFileListRequest
+//
+// @return QueryMaterialFileListResponse
+func (client *Client) QueryMaterialFileList(request *QueryMaterialFileListRequest) (_result *QueryMaterialFileListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryMaterialFileListResponse{}
+	_body, _err := client.QueryMaterialFileListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询素材中心文件概要信息
+//
+// @param tmpReq - QueryMaterialFileSummaryInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMaterialFileSummaryInfoResponse
+func (client *Client) QueryMaterialFileSummaryInfoWithOptions(tmpReq *QueryMaterialFileSummaryInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryMaterialFileSummaryInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &QueryMaterialFileSummaryInfoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.StatusList) {
+		request.StatusListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StatusList, dara.String("StatusList"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TypeList) {
+		request.TypeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TypeList, dara.String("TypeList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OrderColumn) {
+		query["OrderColumn"] = request.OrderColumn
+	}
+
+	if !dara.IsNil(request.OrderType) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StatusListShrink) {
+		query["StatusList"] = request.StatusListShrink
+	}
+
+	if !dara.IsNil(request.TypeListShrink) {
+		query["TypeList"] = request.TypeListShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryMaterialFileSummaryInfo"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryMaterialFileSummaryInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询素材中心文件概要信息
+//
+// @param request - QueryMaterialFileSummaryInfoRequest
+//
+// @return QueryMaterialFileSummaryInfoResponse
+func (client *Client) QueryMaterialFileSummaryInfo(request *QueryMaterialFileSummaryInfoRequest) (_result *QueryMaterialFileSummaryInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryMaterialFileSummaryInfoResponse{}
+	_body, _err := client.QueryMaterialFileSummaryInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询素材生产任务详情
+//
+// @param request - QueryMaterialTaskDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMaterialTaskDetailResponse
+func (client *Client) QueryMaterialTaskDetailWithOptions(request *QueryMaterialTaskDetailRequest, runtime *dara.RuntimeOptions) (_result *QueryMaterialTaskDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryMaterialTaskDetail"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryMaterialTaskDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询素材生产任务详情
+//
+// @param request - QueryMaterialTaskDetailRequest
+//
+// @return QueryMaterialTaskDetailResponse
+func (client *Client) QueryMaterialTaskDetail(request *QueryMaterialTaskDetailRequest) (_result *QueryMaterialTaskDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryMaterialTaskDetailResponse{}
+	_body, _err := client.QueryMaterialTaskDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询素材生产任务列表
+//
+// @param tmpReq - QueryMaterialTaskListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMaterialTaskListResponse
+func (client *Client) QueryMaterialTaskListWithOptions(tmpReq *QueryMaterialTaskListRequest, runtime *dara.RuntimeOptions) (_result *QueryMaterialTaskListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &QueryMaterialTaskListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.StatusList) {
+		request.StatusListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StatusList, dara.String("StatusList"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TaskTypeList) {
+		request.TaskTypeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TaskTypeList, dara.String("TaskTypeList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OrderColumn) {
+		query["OrderColumn"] = request.OrderColumn
+	}
+
+	if !dara.IsNil(request.OrderType) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StatusListShrink) {
+		query["StatusList"] = request.StatusListShrink
+	}
+
+	if !dara.IsNil(request.TaskTypeListShrink) {
+		query["TaskTypeList"] = request.TaskTypeListShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryMaterialTaskList"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryMaterialTaskListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询素材生产任务列表
+//
+// @param request - QueryMaterialTaskListRequest
+//
+// @return QueryMaterialTaskListResponse
+func (client *Client) QueryMaterialTaskList(request *QueryMaterialTaskListRequest) (_result *QueryMaterialTaskListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryMaterialTaskListResponse{}
+	_body, _err := client.QueryMaterialTaskListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2062,6 +3234,72 @@ func (client *Client) SetAppDomainCertificate(request *SetAppDomainCertificateRe
 
 // Summary:
 //
+// 提交素材生产任务
+//
+// @param request - SubmitMaterialTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitMaterialTaskResponse
+func (client *Client) SubmitMaterialTaskWithOptions(request *SubmitMaterialTaskRequest, runtime *dara.RuntimeOptions) (_result *SubmitMaterialTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TaskParam) {
+		query["TaskParam"] = request.TaskParam
+	}
+
+	if !dara.IsNil(request.TaskType) {
+		query["TaskType"] = request.TaskType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitMaterialTask"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitMaterialTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交素材生产任务
+//
+// @param request - SubmitMaterialTaskRequest
+//
+// @return SubmitMaterialTaskResponse
+func (client *Client) SubmitMaterialTask(request *SubmitMaterialTaskRequest) (_result *SubmitMaterialTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitMaterialTaskResponse{}
+	_body, _err := client.SubmitMaterialTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 合作伙伴同步应用实例
 //
 // @param tmpReq - SyncAppInstanceForPartnerRequest
@@ -2203,6 +3441,80 @@ func (client *Client) UnbindAppDomain(request *UnbindAppDomainRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &UnbindAppDomainResponse{}
 	_body, _err := client.UnbindAppDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传素材文件
+//
+// @param request - UploadMaterialFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadMaterialFileResponse
+func (client *Client) UploadMaterialFileWithOptions(request *UploadMaterialFileRequest, runtime *dara.RuntimeOptions) (_result *UploadMaterialFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.FileUrl) {
+		query["FileUrl"] = request.FileUrl
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UploadMaterialFile"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UploadMaterialFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传素材文件
+//
+// @param request - UploadMaterialFileRequest
+//
+// @return UploadMaterialFileResponse
+func (client *Client) UploadMaterialFile(request *UploadMaterialFileRequest) (_result *UploadMaterialFileResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UploadMaterialFileResponse{}
+	_body, _err := client.UploadMaterialFileWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
