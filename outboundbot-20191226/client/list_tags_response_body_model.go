@@ -26,28 +26,40 @@ type iListTagsResponseBody interface {
 }
 
 type ListTagsResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message prompt
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
-	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// List of tag groups
 	TagGroups []*ListTagsResponseBodyTagGroups `json:"TagGroups,omitempty" xml:"TagGroups,omitempty" type:"Repeated"`
-	Tags      []*ListTagsResponseBodyTags      `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// List of tags
+	Tags []*ListTagsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListTagsResponseBody) String() string {
@@ -144,15 +156,26 @@ func (s *ListTagsResponseBody) Validate() error {
 }
 
 type ListTagsResponseBodyTagGroups struct {
+	// Scenario ID
+	//
 	// example:
 	//
-	// 8a4c6d3d-5ed6-44ca-b779-16c20f8862be
+	// 365b955d-6f4d-4ab5-a6e1-9a301307f4b1
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// Tag Group Name
+	//
+	// example:
+	//
+	// 当前学历
 	TagGroup *string `json:"TagGroup,omitempty" xml:"TagGroup,omitempty"`
+	// Tag Group ID
+	//
 	// example:
 	//
 	// 38c03261-9fe8-4b9b-8c3b-983a60319012
 	TagGroupId *string `json:"TagGroupId,omitempty" xml:"TagGroupId,omitempty"`
+	// Tag Group Index
+	//
 	// example:
 	//
 	// 1
@@ -208,20 +231,36 @@ func (s *ListTagsResponseBodyTagGroups) Validate() error {
 }
 
 type ListTagsResponseBodyTags struct {
+	// Scenario ID
+	//
 	// example:
 	//
 	// 8a4c6d3d-5ed6-44ca-b779-16c20f8862be
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// Tag Group Name
+	//
+	// example:
+	//
+	// 当前学历
 	TagGroup *string `json:"TagGroup,omitempty" xml:"TagGroup,omitempty"`
+	// Tag ID
+	//
 	// example:
 	//
 	// d62be647-6202-4b1f-9708-0baeec552635
 	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// Tag Index
+	//
 	// example:
 	//
 	// 1
-	TagIndex *int32  `json:"TagIndex,omitempty" xml:"TagIndex,omitempty"`
-	TagName  *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	TagIndex *int32 `json:"TagIndex,omitempty" xml:"TagIndex,omitempty"`
+	// Tag Name
+	//
+	// example:
+	//
+	// 本科
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s ListTagsResponseBodyTags) String() string {

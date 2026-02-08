@@ -20,20 +20,28 @@ type iModifyBeebotIntentLgfRequest interface {
 }
 
 type ModifyBeebotIntentLgfRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// e5035654-1745-484a-8c5b-165f7c7bcd79
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Utterance template definition
+	//
 	// This parameter is required.
 	LgfDefinition *ModifyBeebotIntentLgfRequestLgfDefinition `json:"LgfDefinition,omitempty" xml:"LgfDefinition,omitempty" type:"Struct"`
+	// Utterance template ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5666117
 	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	// Scenario ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -96,13 +104,21 @@ func (s *ModifyBeebotIntentLgfRequest) Validate() error {
 }
 
 type ModifyBeebotIntentLgfRequestLgfDefinition struct {
+	// Intent ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10717802
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// Intent configuration
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 我是一个问法模版
 	RuleText *string `json:"RuleText,omitempty" xml:"RuleText,omitempty"`
 }
 

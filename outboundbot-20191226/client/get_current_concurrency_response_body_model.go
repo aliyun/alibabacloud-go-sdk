@@ -28,34 +28,50 @@ type iGetCurrentConcurrencyResponseBody interface {
 }
 
 type GetCurrentConcurrencyResponseBody struct {
+	// API status code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Current concurrency
+	//
 	// example:
 	//
 	// 12
 	CurrentConcurrency *int32 `json:"CurrentConcurrency,omitempty" xml:"CurrentConcurrency,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// 12f3dd08-0c55-44ce-9b64-e69d35ed3a76
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Maximum concurrency
+	//
 	// example:
 	//
 	// 5
 	MaxConcurrentConversation *int32 `json:"MaxConcurrentConversation,omitempty" xml:"MaxConcurrentConversation,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded
+	//
 	// example:
 	//
 	// true

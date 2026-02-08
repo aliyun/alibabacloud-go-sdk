@@ -22,30 +22,40 @@ type iModifyOutboundCallNumberRequest interface {
 }
 
 type ModifyOutboundCallNumberRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 52e80b02-0126-4556-a1e6-ef5b3747ed53/a9a3ddc7-d7d7-48cd-82b5-b31bb5510e71_2a66f8ad-dfbb-4980-9b84-439171295a11.xlsx
+	// 8fa1953f-4a84-46d8-b80c-8ce9cf684fb3
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number to be modified
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 10088
+	// 10088xxx
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// Number ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// fa0e21e9-caab-4629-9121-1e341243d599
 	OutboundCallNumberId *string `json:"OutboundCallNumberId,omitempty" xml:"OutboundCallNumberId,omitempty"`
+	// Count of Rate Limiting rules
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	RateLimitCount *int32 `json:"RateLimitCount,omitempty" xml:"RateLimitCount,omitempty"`
+	// Time Range for Rate Limiting, in seconds
+	//
 	// This parameter is required.
 	//
 	// example:

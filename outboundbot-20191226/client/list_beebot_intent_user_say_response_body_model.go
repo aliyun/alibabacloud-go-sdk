@@ -32,43 +32,62 @@ type iListBeebotIntentUserSayResponseBody interface {
 }
 
 type ListBeebotIntentUserSayResponseBody struct {
+	// Internal request ID
+	//
 	// example:
 	//
 	// D7BBFCDF-59B0-1ADA-BCA3-4B77F642DDFB
 	BeebotRequestId *string `json:"BeebotRequestId,omitempty" xml:"BeebotRequestId,omitempty"`
+	// API status code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of items per page
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 0956D5DA-0978-5DC9-94B0-C68527DA7475
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total count
+	//
 	// example:
 	//
 	// 100
-	TotalCount *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	UserSays   []*ListBeebotIntentUserSayResponseBodyUserSays `json:"UserSays,omitempty" xml:"UserSays,omitempty" type:"Repeated"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// List of user utterances
+	UserSays []*ListBeebotIntentUserSayResponseBodyUserSays `json:"UserSays,omitempty" xml:"UserSays,omitempty" type:"Repeated"`
 }
 
 func (s ListBeebotIntentUserSayResponseBody) String() string {
@@ -183,19 +202,32 @@ func (s *ListBeebotIntentUserSayResponseBody) Validate() error {
 }
 
 type ListBeebotIntentUserSayResponseBodyUserSays struct {
+	// Content
+	//
+	// example:
+	//
+	// 你知道xxxx么？
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Creation Time
+	//
 	// example:
 	//
 	// 2025-04-21 14:16:05.+0800
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Intent ID
+	//
 	// example:
 	//
 	// 10717802
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// Updated At
+	//
 	// example:
 	//
 	// 2025-04-21 14:16:05.+0800
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// Utterance ID
+	//
 	// example:
 	//
 	// 17448458

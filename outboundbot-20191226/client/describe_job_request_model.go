@@ -18,18 +18,24 @@ type iDescribeJobRequest interface {
 }
 
 type DescribeJobRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Job ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c8a2b7f2-ad1a-4865-b872-d0080d9802d9
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Indicates whether to return job scenario information.
+	//
 	// example:
 	//
 	// false

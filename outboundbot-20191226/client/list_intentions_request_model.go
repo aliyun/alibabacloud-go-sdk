@@ -30,38 +30,71 @@ type iListIntentionsRequest interface {
 }
 
 type ListIntentionsRequest struct {
+	// Source of annotation data.
+	//
+	// - 1: Outbound call
+	//
+	// - 2: Navigation
+	//
 	// example:
 	//
 	// 1
 	AnnotationMissionDataSourceType *int64 `json:"AnnotationMissionDataSourceType,omitempty" xml:"AnnotationMissionDataSourceType,omitempty"`
+	// Bot ID
+	//
+	// > You can obtain this parameter from the DescribeScript API. The corresponding parameter is ChatbotId.
+	//
 	// example:
 	//
 	// chatbot-cn-n7QmzrUnNe
 	BotId *string `json:"BotId,omitempty" xml:"BotId,omitempty"`
+	// Environment
+	//
+	// - 1: Private Cloud
+	//
+	// - 2: Public Cloud
+	//
 	// example:
 	//
 	// 2
 	Environment *int64 `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// e5035654-1745-484a-8c5b-165f7c7bcd79
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Intent ID
+	//
 	// example:
 	//
 	// 10717802
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// Number of entries
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Scenario ID
+	//
 	// example:
 	//
 	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// Intent name
+	//
+	// > You can use a keyword to perform a fuzzy query as a filter condition.
+	//
+	// example:
+	//
+	// 知道
 	UserNick *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
 }
 

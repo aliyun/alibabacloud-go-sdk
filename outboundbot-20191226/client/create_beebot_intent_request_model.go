@@ -18,14 +18,20 @@ type iCreateBeebotIntentRequest interface {
 }
 
 type CreateBeebotIntentRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// e5035654-1745-484a-8c5b-165f7c7bcd79
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Intent definition description
+	//
 	// This parameter is required.
 	IntentDefinition *CreateBeebotIntentRequestIntentDefinition `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty" type:"Struct"`
+	// Scenario ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -79,8 +85,21 @@ func (s *CreateBeebotIntentRequest) Validate() error {
 }
 
 type CreateBeebotIntentRequestIntentDefinition struct {
+	// Intent alias
+	//
+	// example:
+	//
+	// 嗯明白了
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// Intent name
+	//
+	// > This serves as the intent code and is a UUID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 知道了
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
 }
 

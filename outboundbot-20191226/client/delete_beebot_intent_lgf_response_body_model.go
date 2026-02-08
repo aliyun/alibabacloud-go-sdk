@@ -26,30 +26,44 @@ type iDeleteBeebotIntentLgfResponseBody interface {
 }
 
 type DeleteBeebotIntentLgfResponseBody struct {
+	// Internal request ID
+	//
 	// example:
 	//
 	// 0B219FCB-EC71-1F08-BB1B-0E87C20158C8
 	BeebotRequestId *string `json:"BeebotRequestId,omitempty" xml:"BeebotRequestId,omitempty"`
+	// API status code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Utterance template ID
+	//
 	// example:
 	//
 	// 5666117
 	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded
+	//
 	// example:
 	//
 	// true

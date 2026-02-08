@@ -22,27 +22,36 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
+	// The token for starting the next query
+	//
 	// example:
 	//
 	// b949ae1f-01dc-4191-ae5a-70fbe6772fd8
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Deprecated
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// List of resource IDs. The value range of n is [1, 50].
+	//
 	// example:
 	//
 	// ResourceId.1=b949ae1f-01dc-4191-ae5a-70fbe6772fd8
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// resource type
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// instance
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// INSTANCE
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// List of tags.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -112,10 +121,14 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
+	// Tag key. The value range for n is [1, 20].
+	//
 	// example:
 	//
 	// Tag.1.Key=key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Tag value. The value range for n is [1, 20].
+	//
 	// example:
 	//
 	// Tag.1.Value=value1

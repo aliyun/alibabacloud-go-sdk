@@ -16,10 +16,14 @@ type iGenerateUploadUrlRequest interface {
 }
 
 type GenerateUploadUrlRequest struct {
+	// File name, including the extension.
+	//
 	// example:
 	//
 	// faaf8508-9542-4ac4-84a2-0ddcbb5f79a6 (2).json
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// Upload URL key
+	//
 	// example:
 	//
 	// 3b9b5dc6d67ee9fa

@@ -20,24 +20,36 @@ type iTagResourcesRequest interface {
 }
 
 type TagResourcesRequest struct {
+	// Deprecated
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// List of resource IDs. The value range of n is [1, 50].
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ResourceId.1=b949ae1f-01dc-4191-ae5a-70fbe6772fd8
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// Resource type
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// instance
+	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// List of tags.
+	//
+	// If the key and value differ from existing tags, a new tag is created.
+	//
+	// > You can obtain the tags of instances by calling the ListResourceTags API.
+	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -100,10 +112,14 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
+	// Tag key. The value range of n is [1, 20].
+	//
 	// example:
 	//
 	// Tag.1.Key=key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Tag value. The value range of n is [1, 20].
+	//
 	// example:
 	//
 	// Tag.1.Value=value1

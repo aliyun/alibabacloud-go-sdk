@@ -24,23 +24,34 @@ type iGetAnnotationMissionTagInfoListResponseBody interface {
 }
 
 type GetAnnotationMissionTagInfoListResponseBody struct {
+	// API status code
+	//
 	// example:
 	//
 	// OK
-	Code *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data
 	Data *GetAnnotationMissionTagInfoListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// CDR \\"job-efbaeefc-4d45-4e79-83f7-b33b0769c969\\" doesn\\"t exists.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded. true: The call succeeded. false: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -119,11 +130,16 @@ func (s *GetAnnotationMissionTagInfoListResponseBody) Validate() error {
 }
 
 type GetAnnotationMissionTagInfoListResponseBodyData struct {
+	// Tag list
 	AnnotationMissionTagInfoList []*GetAnnotationMissionTagInfoListResponseBodyDataAnnotationMissionTagInfoList `json:"AnnotationMissionTagInfoList,omitempty" xml:"AnnotationMissionTagInfoList,omitempty" type:"Repeated"`
+	// API message
+	//
 	// example:
 	//
 	// CDR \\"job-efbaeefc-4d45-4e79-83f7-b33b0769c969\\" doesn\\"t exists.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the API call succeeded. true: The call succeeded. false: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -179,20 +195,38 @@ func (s *GetAnnotationMissionTagInfoListResponseBodyData) Validate() error {
 }
 
 type GetAnnotationMissionTagInfoListResponseBodyDataAnnotationMissionTagInfoList struct {
+	// Tag Description
+	//
+	// example:
+	//
+	// 用户投诉
 	AnnotationMissionTagInfoDescription *string `json:"AnnotationMissionTagInfoDescription,omitempty" xml:"AnnotationMissionTagInfoDescription,omitempty"`
+	// Tag ID
+	//
 	// example:
 	//
 	// e1ee87ea-ebad-4079-aebb-1c56a4ef0c06
-	AnnotationMissionTagInfoId   *string `json:"AnnotationMissionTagInfoId,omitempty" xml:"AnnotationMissionTagInfoId,omitempty"`
+	AnnotationMissionTagInfoId *string `json:"AnnotationMissionTagInfoId,omitempty" xml:"AnnotationMissionTagInfoId,omitempty"`
+	// Tag Name
+	//
+	// example:
+	//
+	// 用户投诉
 	AnnotationMissionTagInfoName *string `json:"AnnotationMissionTagInfoName,omitempty" xml:"AnnotationMissionTagInfoName,omitempty"`
+	// Indicates whether the tag is deleted.
+	//
 	// example:
 	//
 	// false
 	Delete *bool `json:"Delete,omitempty" xml:"Delete,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// 3c3b8d1d-deff-48d9-9318-addc80ae5b1e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Tenant ID.
+	//
 	// example:
 	//
 	// DING_ORG_dingbd9daecdb7aaed3bffe93478753d9884

@@ -20,29 +20,37 @@ type iListGlobalQuestionsRequest interface {
 }
 
 type ListGlobalQuestionsRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 361c8a53-0e29-42f3-8aa7-c7752d010399
+	// dd8c2b62-4660-457f-9597-6723b5722aff
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Page number for paging
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of entries to display per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Scenario ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// aa279896-64a6-4182-864c-4f2b04ec8d17
+	// f63b0dfc-848a-42f3-9329-8854e232e977
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
 }
 

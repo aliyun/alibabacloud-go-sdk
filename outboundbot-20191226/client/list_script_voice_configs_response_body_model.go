@@ -24,23 +24,34 @@ type iListScriptVoiceConfigsResponseBody interface {
 }
 
 type ListScriptVoiceConfigsResponseBody struct {
+	// API status code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
-	RequestId          *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of script voice recordings
 	ScriptVoiceConfigs *ListScriptVoiceConfigsResponseBodyScriptVoiceConfigs `json:"ScriptVoiceConfigs,omitempty" xml:"ScriptVoiceConfigs,omitempty" type:"Struct"`
+	// Indicates whether the request succeeded
+	//
 	// example:
 	//
 	// true
@@ -119,15 +130,22 @@ func (s *ListScriptVoiceConfigsResponseBody) Validate() error {
 }
 
 type ListScriptVoiceConfigsResponseBodyScriptVoiceConfigs struct {
+	// Array of script voice recordings
 	List []*ListScriptVoiceConfigsResponseBodyScriptVoiceConfigsList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of items per page
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count
+	//
 	// example:
 	//
 	// 100
@@ -192,27 +210,44 @@ func (s *ListScriptVoiceConfigsResponseBodyScriptVoiceConfigs) Validate() error 
 }
 
 type ListScriptVoiceConfigsResponseBodyScriptVoiceConfigsList struct {
+	// instance ID
+	//
 	// example:
 	//
 	// bdd49242-114c-4045-b1d1-25ccc1756c75
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Script text content
+	//
+	// example:
+	//
+	// 请问你是 @name 吗
 	ScriptContent *string `json:"ScriptContent,omitempty" xml:"ScriptContent,omitempty"`
+	// script ID
+	//
 	// example:
 	//
 	// a7441a05-43bb-4a2d-acb0-365f245d7a5b
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// voice configuration ID
+	//
 	// example:
 	//
 	// 2c8fa91f-9856-4145-90f2-08252f09bc18
 	ScriptVoiceConfigId *string `json:"ScriptVoiceConfigId,omitempty" xml:"ScriptVoiceConfigId,omitempty"`
+	// relational data of script audio configuration
+	//
 	// example:
 	//
 	// ""
 	ScriptWaveformRelation *string `json:"ScriptWaveformRelation,omitempty" xml:"ScriptWaveformRelation,omitempty"`
+	// script source
+	//
 	// example:
 	//
 	// DIALOGUE_FLOW
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Voice type
+	//
 	// example:
 	//
 	// TTS

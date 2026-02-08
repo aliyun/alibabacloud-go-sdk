@@ -24,23 +24,34 @@ type iListGlobalQuestionsResponseBody interface {
 }
 
 type ListGlobalQuestionsResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// OK
-	Code            *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Global question data
 	GlobalQuestions *ListGlobalQuestionsResponseBodyGlobalQuestions `json:"GlobalQuestions,omitempty" xml:"GlobalQuestions,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded.
+	//
 	// example:
 	//
 	// true
@@ -119,18 +130,25 @@ func (s *ListGlobalQuestionsResponseBody) Validate() error {
 }
 
 type ListGlobalQuestionsResponseBodyGlobalQuestions struct {
+	// Array of global questions
 	List []*ListGlobalQuestionsResponseBodyGlobalQuestionsList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count
+	//
 	// example:
 	//
-	// 12
+	// 10
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -192,17 +210,42 @@ func (s *ListGlobalQuestionsResponseBodyGlobalQuestions) Validate() error {
 }
 
 type ListGlobalQuestionsResponseBodyGlobalQuestionsList struct {
+	// Response to the global question
+	//
+	// example:
+	//
+	// ["你好,您可以再说一遍吗","不好意思我刚才没有听清"]
 	Answers *string `json:"Answers,omitempty" xml:"Answers,omitempty"`
+	// Global question ID
+	//
 	// example:
 	//
 	// 53c27755-d41e-46a6-bb3c-4f66f257d50c
-	GlobalQuestionId   *string `json:"GlobalQuestionId,omitempty" xml:"GlobalQuestionId,omitempty"`
+	GlobalQuestionId *string `json:"GlobalQuestionId,omitempty" xml:"GlobalQuestionId,omitempty"`
+	// Global question name
+	//
+	// example:
+	//
+	// 未识别
 	GlobalQuestionName *string `json:"GlobalQuestionName,omitempty" xml:"GlobalQuestionName,omitempty"`
+	// Global question type
+	//
+	// - SYSTEM: System
+	//
+	// - COMMON: Common
+	//
 	// example:
 	//
 	// SYSTEM
 	GlobalQuestionType *string `json:"GlobalQuestionType,omitempty" xml:"GlobalQuestionType,omitempty"`
-	Questions          *string `json:"Questions,omitempty" xml:"Questions,omitempty"`
+	// List of global questions
+	//
+	// example:
+	//
+	// ["测试问题1","测试问题2"]
+	Questions *string `json:"Questions,omitempty" xml:"Questions,omitempty"`
+	// Scenario ID
+	//
 	// example:
 	//
 	// aa279896-64a6-4182-864c-4f2b04ec8d17

@@ -24,28 +24,45 @@ type iSaveBaseStrategyPeriodRequest interface {
 }
 
 type SaveBaseStrategyPeriodRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// fe51eca2-a904-4b4d-b3ff-31be334b9500
 	EntryId *string `json:"EntryId,omitempty" xml:"EntryId,omitempty"`
+	// Call only from Monday to Friday. Defaults to false if left empty.
+	//
 	// example:
 	//
 	// false
 	OnlyWeekdays *bool `json:"OnlyWeekdays,omitempty" xml:"OnlyWeekdays,omitempty"`
+	// Call only on non-holidays. Defaults to false if left empty.
+	//
+	// example:
+	//
+	// false
 	OnlyWorkdays *bool `json:"OnlyWorkdays,omitempty" xml:"OnlyWorkdays,omitempty"`
+	// Policy level (Required)
+	//
+	// - 2: instance
+	//
 	// example:
 	//
 	// 2
 	StrategyLevel *int32 `json:"StrategyLevel,omitempty" xml:"StrategyLevel,omitempty"`
+	// Running time [Deprecated]
+	//
 	// example:
 	//
 	// []
 	WorkingTime []*string `json:"WorkingTime,omitempty" xml:"WorkingTime,omitempty" type:"Repeated"`
+	// Running time
+	//
 	// example:
 	//
-	// [{\\"beginTime\\":\\"09:00:00\\",\\"beginTimeMillis\\":324000000000,\\"endTime\\":\\"21:00:00\\",\\"endTimeMillis\\":756000000000}]
+	// [{"beginTime":"09:00:00","endTime":"21:00:00"}]
 	WorkingTimeFramesJson *string `json:"WorkingTimeFramesJson,omitempty" xml:"WorkingTimeFramesJson,omitempty"`
 }
 

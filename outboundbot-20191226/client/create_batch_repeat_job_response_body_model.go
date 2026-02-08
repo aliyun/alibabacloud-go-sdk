@@ -24,26 +24,38 @@ type iCreateBatchRepeatJobResponseBody interface {
 }
 
 type CreateBatchRepeatJobResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP error code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Job group information
+	//
 	// example:
 	//
 	// {}
 	JobGroup *CreateBatchRepeatJobResponseBodyJobGroup `json:"JobGroup,omitempty" xml:"JobGroup,omitempty" type:"Struct"`
+	// Response message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded
+	//
 	// example:
 	//
 	// true
@@ -122,18 +134,26 @@ func (s *CreateBatchRepeatJobResponseBody) Validate() error {
 }
 
 type CreateBatchRepeatJobResponseBodyJobGroup struct {
+	// Job group ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Minimum concurrency
+	//
 	// example:
 	//
 	// 1
 	MinConcurrency *int64 `json:"MinConcurrency,omitempty" xml:"MinConcurrency,omitempty"`
+	// Job priority
+	//
 	// example:
 	//
 	// 3
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Ringing duration
+	//
 	// example:
 	//
 	// 30

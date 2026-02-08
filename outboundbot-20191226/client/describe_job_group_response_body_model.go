@@ -24,23 +24,34 @@ type iDescribeJobGroupResponseBody interface {
 }
 
 type DescribeJobGroupResponseBody struct {
+	// API status code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobGroup       *DescribeJobGroupResponseBodyJobGroup `json:"JobGroup,omitempty" xml:"JobGroup,omitempty" type:"Struct"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Job information.
+	JobGroup *DescribeJobGroupResponseBodyJobGroup `json:"JobGroup,omitempty" xml:"JobGroup,omitempty" type:"Struct"`
+	// API message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -119,65 +130,114 @@ func (s *DescribeJobGroupResponseBody) Validate() error {
 }
 
 type DescribeJobGroupResponseBodyJobGroup struct {
+	// List of calling numbers.
 	CallingNumbers []*string `json:"CallingNumbers,omitempty" xml:"CallingNumbers,omitempty" type:"Repeated"`
+	// Creation Time.
+	//
 	// example:
 	//
 	// 1578881227404
-	CreationTime   *int64                                              `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// Export progress [deprecated]
+	//
+	// > This information is obtained from the ListJobGroups API.
 	ExportProgress *DescribeJobGroupResponseBodyJobGroupExportProgress `json:"ExportProgress,omitempty" xml:"ExportProgress,omitempty" type:"Struct"`
+	// Configuration parameters for flash SMS push, in JSON format, containing configuration information for third-party flash SMS.
 	FlashSmsExtras *DescribeJobGroupResponseBodyJobGroupFlashSmsExtras `json:"FlashSmsExtras,omitempty" xml:"FlashSmsExtras,omitempty" type:"Struct"`
+	// Job list parsing operation ID. [Deprecated]
+	//
 	// example:
 	//
 	// da37319b-6c83-4268-9f19-814aed62e401/a5a9a310-b902-4674-a6e1-29975cbaa312_100.xlsx
 	JobDataParsingTaskId *string `json:"JobDataParsingTaskId,omitempty" xml:"JobDataParsingTaskId,omitempty"`
+	// OSS Filekey after job list upload. [Deprecated]
+	//
 	// example:
 	//
 	// da37319b-6c83-4268-9f19-814aed62e401/a5a9a310-b902-4674-a6e1-29975cbaa312_100.xlsx
-	JobFilePath         *string `json:"JobFilePath,omitempty" xml:"JobFilePath,omitempty"`
+	JobFilePath *string `json:"JobFilePath,omitempty" xml:"JobFilePath,omitempty"`
+	// Job description.
+	//
+	// example:
+	//
+	// 催收作业组
 	JobGroupDescription *string `json:"JobGroupDescription,omitempty" xml:"JobGroupDescription,omitempty"`
+	// Task group ID.
+	//
 	// example:
 	//
 	// 46a9ad0c-3e11-44da-a9a7-2c21bf5ce185
-	JobGroupId   *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	// Task group name.
+	//
+	// example:
+	//
+	// 催收作业组
 	JobGroupName *string `json:"JobGroupName,omitempty" xml:"JobGroupName,omitempty"`
+	// Minimum concurrency
+	//
 	// example:
 	//
 	// 1
 	MinConcurrency *int64 `json:"MinConcurrency,omitempty" xml:"MinConcurrency,omitempty"`
+	// Updated At.
+	//
 	// example:
 	//
 	// 1578881227404
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// Priority
+	//
 	// example:
 	//
 	// 1
-	Priority             *string                                             `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Progress             *DescribeJobGroupResponseBodyJobGroupProgress       `json:"Progress,omitempty" xml:"Progress,omitempty" type:"Struct"`
-	RecallCallingNumbers []*string                                           `json:"RecallCallingNumbers,omitempty" xml:"RecallCallingNumbers,omitempty" type:"Repeated"`
-	RecallStrategy       *DescribeJobGroupResponseBodyJobGroupRecallStrategy `json:"RecallStrategy,omitempty" xml:"RecallStrategy,omitempty" type:"Struct"`
-	Result               *DescribeJobGroupResponseBodyJobGroupResult         `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Job progress details.
+	Progress *DescribeJobGroupResponseBodyJobGroupProgress `json:"Progress,omitempty" xml:"Progress,omitempty" type:"Struct"`
+	// List of recall calling numbers used when the initial call fails to connect. If not specified, the default is the same as the primary calling number list.
+	RecallCallingNumbers []*string `json:"RecallCallingNumbers,omitempty" xml:"RecallCallingNumbers,omitempty" type:"Repeated"`
+	// Recall policy.
+	RecallStrategy *DescribeJobGroupResponseBodyJobGroupRecallStrategy `json:"RecallStrategy,omitempty" xml:"RecallStrategy,omitempty" type:"Struct"`
+	// Statistics information (historical parameter, no longer provided). [Deprecated]
+	Result *DescribeJobGroupResponseBodyJobGroupResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Ringing duration
+	//
 	// example:
 	//
 	// 30
 	RingingDuration *int64 `json:"RingingDuration,omitempty" xml:"RingingDuration,omitempty"`
+	// Scenario ID (legacy canvas parameter; for the new canvas, the scenario ID is the same as ScriptId).
+	//
 	// example:
 	//
 	// fce6c599-8ede-40e3-9f78-0928eda7b4e8
 	ScenarioId *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
+	// Script scenario ID.
+	//
 	// example:
 	//
 	// 49f00b0d-78ac-4d51-91de-a9e8e92b8470
-	ScriptId        *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// Scenario name.
+	//
+	// example:
+	//
+	// 催收话术
 	ScriptName      *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
 	ScriptNluEngine *string `json:"ScriptNluEngine,omitempty" xml:"ScriptNluEngine,omitempty"`
+	// Script scenario version number.
+	//
 	// example:
 	//
 	// 49f00b0d-78ac-4d51-91de-a9e8e92b8470
 	ScriptVersion *string `json:"ScriptVersion,omitempty" xml:"ScriptVersion,omitempty"`
+	// Task Status.
+	//
 	// example:
 	//
 	// Completed
-	Status   *string                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Execution policy of the job.
 	Strategy *DescribeJobGroupResponseBodyJobGroupStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
 }
 
@@ -440,14 +500,20 @@ func (s *DescribeJobGroupResponseBodyJobGroup) Validate() error {
 }
 
 type DescribeJobGroupResponseBodyJobGroupExportProgress struct {
+	// File URL [deprecated]
+	//
 	// example:
 	//
 	// https://oss-cn-shanghai.aliyuncs.com/xx.zip
 	FileHttpUrl *string `json:"FileHttpUrl,omitempty" xml:"FileHttpUrl,omitempty"`
+	// Export progress [deprecated]
+	//
 	// example:
 	//
 	// 1
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// Export status [deprecated]
+	//
 	// example:
 	//
 	// FINISHED
@@ -494,7 +560,17 @@ func (s *DescribeJobGroupResponseBodyJobGroupExportProgress) Validate() error {
 }
 
 type DescribeJobGroupResponseBodyJobGroupFlashSmsExtras struct {
-	ConfigId   *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Flash SMS configuration ID.
+	//
+	// example:
+	//
+	// bebe23e6e2604f50bbeb12900c07703d
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Flash SMS Template ID.
+	//
+	// example:
+	//
+	// e080d737-5c0b-4350-b7d4-1162530579e7
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -529,48 +605,72 @@ func (s *DescribeJobGroupResponseBodyJobGroupFlashSmsExtras) Validate() error {
 }
 
 type DescribeJobGroupResponseBodyJobGroupProgress struct {
+	// Business result information [Deprecated]
 	Briefs []*DescribeJobGroupResponseBodyJobGroupProgressBriefs `json:"Briefs,omitempty" xml:"Briefs,omitempty" type:"Repeated"`
+	// Number of cancelled jobs
+	//
 	// example:
 	//
 	// 0
-	Cancelled  *int32                                                    `json:"Cancelled,omitempty" xml:"Cancelled,omitempty"`
+	Cancelled *int32 `json:"Cancelled,omitempty" xml:"Cancelled,omitempty"`
+	// Statistics information in key-value format. [Deprecated]
 	Categories []*DescribeJobGroupResponseBodyJobGroupProgressCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// Job running time. [Deprecated]
+	//
 	// example:
 	//
 	// 1000
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Number of executing jobs.
+	//
 	// example:
 	//
 	// 2
 	Executing *int32 `json:"Executing,omitempty" xml:"Executing,omitempty"`
+	// Number of failed jobs.
+	//
 	// example:
 	//
 	// 0
 	Failed *int32 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// Number of paused jobs
+	//
 	// example:
 	//
 	// 0
 	Paused *int32 `json:"Paused,omitempty" xml:"Paused,omitempty"`
+	// Number of jobs in scheduling
+	//
 	// example:
 	//
 	// 5
 	Scheduling *int32 `json:"Scheduling,omitempty" xml:"Scheduling,omitempty"`
+	// Time when execution started. [Deprecated]
+	//
 	// example:
 	//
 	// 1578881227404
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Overall job execution status. [Deprecated]
+	//
 	// example:
 	//
 	// Executing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Total number of completed jobs
+	//
 	// example:
 	//
 	// 2
 	TotalCompleted *int32 `json:"TotalCompleted,omitempty" xml:"TotalCompleted,omitempty"`
+	// Total number of jobs
+	//
 	// example:
 	//
 	// 10
 	TotalJobs *int32 `json:"TotalJobs,omitempty" xml:"TotalJobs,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// 1
@@ -725,10 +825,14 @@ func (s *DescribeJobGroupResponseBodyJobGroupProgress) Validate() error {
 }
 
 type DescribeJobGroupResponseBodyJobGroupProgressBriefs struct {
+	// Result name
+	//
 	// example:
 	//
 	// score
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Result Value
+	//
 	// example:
 	//
 	// 5
@@ -766,10 +870,14 @@ func (s *DescribeJobGroupResponseBodyJobGroupProgressBriefs) Validate() error {
 }
 
 type DescribeJobGroupResponseBodyJobGroupProgressCategories struct {
+	// Custom statistics information field name.
+	//
 	// example:
 	//
 	// success
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Custom statistics information value.
+	//
 	// example:
 	//
 	// 10
@@ -807,14 +915,20 @@ func (s *DescribeJobGroupResponseBodyJobGroupProgressCategories) Validate() erro
 }
 
 type DescribeJobGroupResponseBodyJobGroupRecallStrategy struct {
+	// Do not make outbound calls to nonexistent numbers.
+	//
 	// example:
 	//
 	// false
 	EmptyNumberIgnore *bool `json:"EmptyNumberIgnore,omitempty" xml:"EmptyNumberIgnore,omitempty"`
+	// Do not make outbound calls to numbers with overdue payments.
+	//
 	// example:
 	//
 	// false
 	InArrearsIgnore *bool `json:"InArrearsIgnore,omitempty" xml:"InArrearsIgnore,omitempty"`
+	// Do not make outbound calls to numbers that are out of service.
+	//
 	// example:
 	//
 	// false
@@ -861,22 +975,32 @@ func (s *DescribeJobGroupResponseBodyJobGroupRecallStrategy) Validate() error {
 }
 
 type DescribeJobGroupResponseBodyJobGroupResult struct {
+	// Quantity of customer hang-ups [Deprecated]
+	//
 	// example:
 	//
 	// 1
 	ClientHangupNum *int32 `json:"ClientHangupNum,omitempty" xml:"ClientHangupNum,omitempty"`
+	// Quantity completed [Deprecated]
+	//
 	// example:
 	//
 	// 1
 	FinishedNum *int32 `json:"FinishedNum,omitempty" xml:"FinishedNum,omitempty"`
+	// Quantity with no interaction [Deprecated]
+	//
 	// example:
 	//
 	// 1
 	NoInteractNum *int32 `json:"NoInteractNum,omitempty" xml:"NoInteractNum,omitempty"`
+	// Quantity of timeout hang-ups [Deprecated]
+	//
 	// example:
 	//
 	// 1
 	TimeoutHangupNum *int32 `json:"TimeoutHangupNum,omitempty" xml:"TimeoutHangupNum,omitempty"`
+	// Number of unrecognized responses [Deprecated]
+	//
 	// example:
 	//
 	// 1
@@ -941,54 +1065,97 @@ func (s *DescribeJobGroupResponseBodyJobGroupResult) Validate() error {
 }
 
 type DescribeJobGroupResponseBodyJobGroupStrategy struct {
+	// Custom data of the policy (historical parameter, no longer used).
+	//
 	// example:
 	//
 	// {}
 	Customized *string `json:"Customized,omitempty" xml:"Customized,omitempty"`
+	// The overall end time of the schedule policy
+	//
 	// example:
 	//
 	// 1579881227404
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The handling method after the execution epoch ends (historical parameter, no longer used).
+	//
 	// example:
 	//
 	// NONE
 	FollowUpStrategy *string `json:"FollowUpStrategy,omitempty" xml:"FollowUpStrategy,omitempty"`
+	// Indicates whether it is a template.
+	//
 	// example:
 	//
 	// false
 	IsTemplate *bool `json:"IsTemplate,omitempty" xml:"IsTemplate,omitempty"`
+	// Maximum number of calls per day when the call is not answered
+	//
 	// example:
 	//
 	// 2
 	MaxAttemptsPerDay *int32 `json:"MaxAttemptsPerDay,omitempty" xml:"MaxAttemptsPerDay,omitempty"`
+	// The interval between retries
+	//
 	// example:
 	//
 	// 10
 	MinAttemptInterval *int32 `json:"MinAttemptInterval,omitempty" xml:"MinAttemptInterval,omitempty"`
+	// The job repetition method
+	//
 	// example:
 	//
 	// Once
-	RepeatBy   *string   `json:"RepeatBy,omitempty" xml:"RepeatBy,omitempty"`
+	RepeatBy *string `json:"RepeatBy,omitempty" xml:"RepeatBy,omitempty"`
+	// Dates for recurrence, used in conjunction with RepeatBy.
+	//
+	// - If the recurrence is "weekly," 0 represents Sunday, and 1–6 represent Monday through Saturday, respectively.
+	//
+	// - If the recurrence is "monthly," 1–31 represent the 1st to the 31st day of the month. Months that do not contain the specified date will not execute the task. For example, if the 30th is selected, the task will not run in February.
 	RepeatDays []*string `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
-	Repeatable *bool     `json:"Repeatable,omitempty" xml:"Repeatable,omitempty"`
+	// Indicates whether it is a loop task.
+	//
+	// example:
+	//
+	// false
+	Repeatable *bool `json:"Repeatable,omitempty" xml:"Repeatable,omitempty"`
+	// Number routing policy
+	//
 	// example:
 	//
 	// LocalFirst
 	RoutingStrategy *string `json:"RoutingStrategy,omitempty" xml:"RoutingStrategy,omitempty"`
+	// The overall start time of the policy
+	//
 	// example:
 	//
 	// 1578881227404
-	StartTime           *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Policy description
+	//
+	// example:
+	//
+	// 催收策略
 	StrategyDescription *string `json:"StrategyDescription,omitempty" xml:"StrategyDescription,omitempty"`
+	// Policy ID
+	//
 	// example:
 	//
 	// a2bff22c-2604-4df2-83d6-5952e2438c5a
-	StrategyId   *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	// Policy name
+	//
+	// example:
+	//
+	// 催收策略名字
 	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
+	// Policy type
+	//
 	// example:
 	//
 	// Repeatable
-	Type        *string                                                    `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Working time segments.
 	WorkingTime []*DescribeJobGroupResponseBodyJobGroupStrategyWorkingTime `json:"WorkingTime,omitempty" xml:"WorkingTime,omitempty" type:"Repeated"`
 }
 
@@ -1158,10 +1325,14 @@ func (s *DescribeJobGroupResponseBodyJobGroupStrategy) Validate() error {
 }
 
 type DescribeJobGroupResponseBodyJobGroupStrategyWorkingTime struct {
+	// End Time.
+	//
 	// example:
 	//
 	// 09:00:00
 	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// Start Time.
+	//
 	// example:
 	//
 	// 12:00:00

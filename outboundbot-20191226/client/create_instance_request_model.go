@@ -24,20 +24,52 @@ type iCreateInstanceRequest interface {
 }
 
 type CreateInstanceRequest struct {
-	CallingNumber       []*string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty" type:"Repeated"`
-	InstanceDescription *string   `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	// The list of calling numbers.
+	//
+	// > This parameter is left empty by default.
+	CallingNumber []*string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty" type:"Repeated"`
+	// The instance description.
+	//
+	// example:
+	//
+	// 这个是第一的实例
+	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	// The instance name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 第一个实例
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The maximum concurrent conversations for the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4
 	MaxConcurrentConversation *int32 `json:"MaxConcurrentConversation,omitempty" xml:"MaxConcurrentConversation,omitempty"`
+	// The service type.
+	//
+	// > If this parameter is not specified, the default value is Managed.
+	//
+	// - DialogStudio: Conversation Engine 3.0.
+	//
+	// - Authorized: Public Cloud Conversation Bot. This refers to the Intelligent Speech Interaction product service purchased by public cloud customers (a private customer service). Authorization is completed via Scenario Management > Edit > Invoke Service > Custom Service.
+	//
+	// - Provided: On Premises Deployment Conversation Bot.
+	//
+	// - Managed: Legacy outbound calling canvas. This is the default Intelligent Speech Interaction product service (public service) for Intelligent Outbound Calling products.
+	//
 	// example:
 	//
-	// Provided
+	// DialogStudio
 	NluServiceType *string `json:"NluServiceType,omitempty" xml:"NluServiceType,omitempty"`
+	// The resource group ID.
+	//
+	// > You can obtain this from the Resource Management document. For more information, see the following link: https://api.aliyun.com/document/ResourceManager/2020-03-31/ListResourceGroups
+	//
 	// example:
 	//
 	// rg-acfmwd4qr3z773y

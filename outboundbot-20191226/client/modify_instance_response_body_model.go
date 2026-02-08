@@ -24,26 +24,38 @@ type iModifyInstanceResponseBody interface {
 }
 
 type ModifyInstanceResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Business instance information.
+	//
 	// example:
 	//
 	// {\\"InstanceId\\": \\"ob369xifpi2074\\", \\"AutoUpgradeObVersion\\": False}
 	Instance *ModifyInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
+	// API message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded.
+	//
 	// example:
 	//
 	// true
@@ -122,28 +134,50 @@ func (s *ModifyInstanceResponseBody) Validate() error {
 }
 
 type ModifyInstanceResponseBodyInstance struct {
+	// Creation Time.
+	//
 	// example:
 	//
 	// 1578469042851
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// Creator ID.
+	//
 	// example:
 	//
 	// 123123
 	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// Creator name.
+	//
 	// example:
 	//
 	// xxx
-	CreatorName         *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// Business instance description.
+	//
+	// example:
+	//
+	// 这是第一个实例
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	// Business instance ID.
+	//
 	// example:
 	//
 	// 90515b5-6115-4ccf-83e2-52d5bfaf2ddf
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Business instance name.
+	//
+	// example:
+	//
+	// 第一个实例
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Maximum concurrent conversations.
+	//
 	// example:
 	//
 	// 5
 	MaxConcurrentConversation *int32 `json:"MaxConcurrentConversation,omitempty" xml:"MaxConcurrentConversation,omitempty"`
+	// Owner name.
+	//
 	// example:
 	//
 	// xxx

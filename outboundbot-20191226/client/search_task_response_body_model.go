@@ -34,43 +34,65 @@ type iSearchTaskResponseBody interface {
 }
 
 type SearchTaskResponseBody struct {
+	// Request status code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Labels         []*SearchTaskResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Tag information that can be used as filter conditions.
+	//
+	// > Displays all tags with enumeration values in this task group.
+	Labels []*SearchTaskResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 0
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// Number of items per page
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Job list
+	//
 	// example:
 	//
 	// []
 	SearchTaskInfoList []*SearchTaskResponseBodySearchTaskInfoList `json:"SearchTaskInfoList,omitempty" xml:"SearchTaskInfoList,omitempty" type:"Repeated"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total number of items
+	//
 	// example:
 	//
 	// 2
-	Total         *int64    `json:"Total,omitempty" xml:"Total,omitempty"`
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// Full set of tag name keys
 	VariableNames []*string `json:"VariableNames,omitempty" xml:"VariableNames,omitempty" type:"Repeated"`
 }
 
@@ -204,7 +226,13 @@ func (s *SearchTaskResponseBody) Validate() error {
 }
 
 type SearchTaskResponseBodyLabels struct {
-	Name      *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Tag Name
+	//
+	// example:
+	//
+	// 是否满意
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// List of tag values
 	ValueList []*string `json:"ValueList,omitempty" xml:"ValueList,omitempty" type:"Repeated"`
 }
 
@@ -239,107 +267,434 @@ func (s *SearchTaskResponseBodyLabels) Validate() error {
 }
 
 type SearchTaskResponseBodySearchTaskInfoList struct {
+	// Actual running time
+	//
 	// example:
 	//
 	// 1643436089677
 	ActualTime *int64 `json:"ActualTime,omitempty" xml:"ActualTime,omitempty"`
+	// Call duration, in milliseconds.
+	//
 	// example:
 	//
-	// 1646792941
+	// 46000
 	CallDuration *int32 `json:"CallDuration,omitempty" xml:"CallDuration,omitempty"`
+	// Call duration
+	//
 	// example:
 	//
-	// ActualTime
+	// 47″
 	CallDurationDisplay *string `json:"CallDurationDisplay,omitempty" xml:"CallDurationDisplay,omitempty"`
+	// Called number
+	//
 	// example:
 	//
 	// 15205879599
-	CalledNumber  *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// Calling number
+	//
+	// example:
+	//
+	// 02152739269
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// Abnormal condition
+	//
 	// example:
 	//
 	// [{"code":"OutboundCallError.SipCodeError", "params":[{"key":"SipCode","value":"500"}]}]
-	DialException      *string   `json:"DialException,omitempty" xml:"DialException,omitempty"`
+	DialException *string `json:"DialException,omitempty" xml:"DialException,omitempty"`
+	// Field used for displaying remarks on the page
 	DialExceptionCodes []*string `json:"DialExceptionCodes,omitempty" xml:"DialExceptionCodes,omitempty" type:"Repeated"`
+	// Abnormal condition
+	//
 	// example:
 	//
 	// ["OutboundCallError.SipTrunkError"]
 	DialExceptionOld *string `json:"DialExceptionOld,omitempty" xml:"DialExceptionOld,omitempty"`
+	// Whether there is an acknowledgement
+	//
 	// example:
 	//
 	// true
 	HasAnswered *bool `json:"HasAnswered,omitempty" xml:"HasAnswered,omitempty"`
+	// Hang up due to rejection
+	//
 	// example:
 	//
 	// true
 	HasHangUpByRejection *bool `json:"HasHangUpByRejection,omitempty" xml:"HasHangUpByRejection,omitempty"`
+	// Whether the last playback was completed before hang-up
+	//
 	// example:
 	//
 	// true
 	HasLastPlaybackCompleted *bool `json:"HasLastPlaybackCompleted,omitempty" xml:"HasLastPlaybackCompleted,omitempty"`
+	// Conversation completed
+	//
 	// example:
 	//
 	// true
 	HasReachedEndOfFlow *bool `json:"HasReachedEndOfFlow,omitempty" xml:"HasReachedEndOfFlow,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// 73df6283-26b2-402d-bad0-ffa489923ea1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Job group ID
+	//
 	// example:
 	//
 	// 37db3113-ad34-4ba3-b930-468f016bbf95
-	JobGroupId   *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	// Job group name
+	//
+	// example:
+	//
+	// 85成新（有笔记划线）2021_11_14_18_00_51
 	JobGroupName *string `json:"JobGroupName,omitempty" xml:"JobGroupName,omitempty"`
+	// Job ID
+	//
 	// example:
 	//
 	// 6203248e-e652-4ef8-a1eb-586ed7b54dc2
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Job status
+	//
+	//
+	//
+	// - 0: Scheduling
+	//
+	// - 1: Executing
+	//
+	// - 2: Succeeded
+	//
+	// - 3: Paused
+	//
+	// - 4: Failed
+	//
+	// - 5: Cancelled
+	//
 	// example:
 	//
-	// Succeeded
+	// 0
 	JobStatus *int32 `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	// Job status display content
+	//
+	// - 0: Scheduling
+	//
+	// - 1: Executing
+	//
+	// - 2: Succeeded
+	//
+	// - 3: Paused
+	//
+	// - 4: Failed
+	//
+	// - 5: Cancelled
+	//
 	// example:
 	//
-	// xxx
+	// 调度中
 	JobStatusName *string `json:"JobStatusName,omitempty" xml:"JobStatusName,omitempty"`
+	// Job Status
+	//
+	// - Scheduling: Scheduling (0)
+	//
+	// - Executing: Executing (1)
+	//
+	// - Succeeded: End – Reached (2)
+	//
+	// - Paused: Paused (3)
+	//
+	// - Failed: Failed – Busy (4)
+	//
+	// - Cancelled: Cancelled (5)
+	//
 	// example:
 	//
 	// Scheduling
-	JobStatusString *string                                           `json:"JobStatusString,omitempty" xml:"JobStatusString,omitempty"`
-	Labels          []*SearchTaskResponseBodySearchTaskInfoListLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	JobStatusString *string `json:"JobStatusString,omitempty" xml:"JobStatusString,omitempty"`
+	// The label hit status of the current outbound call
+	Labels []*SearchTaskResponseBodySearchTaskInfoListLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// Ringing duration, in seconds.
+	//
 	// example:
 	//
 	// 10
-	RecordingDuration *int32  `json:"RecordingDuration,omitempty" xml:"RecordingDuration,omitempty"`
-	ScriptName        *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
+	RecordingDuration *int32 `json:"RecordingDuration,omitempty" xml:"RecordingDuration,omitempty"`
+	// Scenario Name
+	//
+	// example:
+	//
+	// 慢病线索
+	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
+	// Job creation time
+	//
 	// example:
 	//
 	// 1646792941
 	TaskCreateTime *int64 `json:"TaskCreateTime,omitempty" xml:"TaskCreateTime,omitempty"`
+	// Reason for job termination
+	//
+	// - FINISHED(1, "Normal completion"),
+	//
+	// - CHATBOT_HANGUP_AFTER_NOANSWER(2, "Chatbot hang-up after no answer"),
+	//
+	// - CHATBOT_HANGUP_AFTER_SILENCE(3, "Chatbot hang-up due to silence timeout"),
+	//
+	// - CLIENT_HANGUP_AFTER_NOANSWER(4, "User hang-up after no answer"),
+	//
+	// - CLIENT_HANGUP(5, "User hang-up without reason"),
+	//
+	// - TRANSFER_BY_INTENT(6, "Transfer to agent after intent hit"),
+	//
+	// - TRANSFER_AFTER_NOANSWER(7, "Transfer to agent after no answer"),
+	//
+	// - NO_INTERACTION(8, "No interaction from user side"),
+	//
+	// - ERROR(9, "System Exception break"),
+	//
+	// - SPECIAL_INTERCEPT_VOICE_ASSISTANT(10, "Special case interception – voice assistant"),
+	//
+	// - SPECIAL_INTERCEPT_EXTENSION_NUMBER_TRANSFER(11, "Special case interception – extension number transfer");
+	//
 	// example:
 	//
 	// OutOfService
 	TaskEndReason *int32 `json:"TaskEndReason,omitempty" xml:"TaskEndReason,omitempty"`
+	// Job ID
+	//
 	// example:
 	//
 	// 479aea04-3a92-4ac3-935d-c8798c667850
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Value range
+	//
+	// (Note: The **Succeeded*	- status has been further categorized by reason. The generic **Succeeded**: 1 (Connected) status will not be displayed. Subsequent responses will only show specific sub-reason types.)
+	//
+	// - **Executing**: 0 (Calling in progress).
+	//
+	// - **Succeeded**: 1 (Connected).
+	//
+	// - **NoAnswer**: 2 (Not connected – No answer).
+	//
+	// - **NotExist**: 3 (Not connected – Nonexistent number).
+	//
+	// - **Busy**: 4 (Not connected – Line busy).
+	//
+	// - **Cancelled**: 5 (Not dialed – Job stopped).
+	//
+	// - **Failed**: 6 (Failed).
+	//
+	// - **NotConnected**: 7 (Not connected – Unable to reach).
+	//
+	// - **PoweredOff**: 8 (Not connected – Powered off).
+	//
+	// - **OutOfService**: 9 (Not connected – Called party suspended).
+	//
+	// - **InArrears**: 10 (Not connected – Called party has overdue payment).
+	//
+	// - **EmptyNumber**: 11 (Not dialed – Nonexistent number, no call made).
+	//
+	// - **PerDayCallCountLimit**: 12 (Not dialed – Exceeded daily call limit).
+	//
+	// - **ContactBlockList**: 13 (Not dialed – Blacklist).
+	//
+	// - **CallerNotRegistered**: 14 (Not dialed – Caller number not registered).
+	//
+	// - **Terminated**: 15 (Not dialed – Terminated).
+	//
+	// - **VerificationCancelled**: 16 (Not dialed – Cancelled due to failed pre-call authentication).
+	//
+	// - **OutOfServiceNoCall**: 17 (Not dialed – Called party suspended, no call made).
+	//
+	// - **InArrearsNoCall**: 18 (Not dialed – Called party has overdue payment, no call made).
+	//
+	// - **CallingNumberNotExist**: 19 (Not dialed – Caller number does not exist).
+	//
+	// - **SucceededFinish**: 20 (Connected – Normal completion).
+	//
+	// - **SucceededChatbotHangUpAfterNoAnswer**: 21 (Connected – Bot hung up after unrecognized input).
+	//
+	// - **SucceededChatbotHangUpAfterSilence**: 22 (Connected – Bot hung up after silence timeout).
+	//
+	// - **SucceededClientHangUpAfterNoAnswer**: 23 (Connected – User hung up after unrecognized input).
+	//
+	// - **SucceededClientHangUp**: 24 (Connected – User hung up without reason).
+	//
+	// - **SucceededTransferByIntent**: 25 (Connected – Transferred to agent due to intent match).
+	//
+	// - **SucceededTransferAfterNoAnswer**: 26 (Connected – Transferred to agent after unrecognized input).
+	//
+	// - **SucceededInoInterAction**: 27 (Connected – No interaction from user side).
+	//
+	// - **SucceededError**: 28 (Connected – Interrupted due to system exception).
+	//
+	// - **SucceededSpecialInterceptVoiceAssistant**: 29 (Connected – Blocked under special circumstances – Voice assistant).
+	//
+	// - **SucceededSpecialInterceptExtensionNumberTransfer**: 30 (Connected – Blocked under special circumstances – Extension transfer).
+	//
 	// example:
 	//
-	// Success
+	// 0
 	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// Call status display content
+	//
+	// Value range
+	//
+	// (Note: The **Succeeded*	- status has been further categorized by reason and will no longer be displayed as **Succeeded**: 1 (Answered). Subsequent responses will use specific detailed reason types.)
+	//
+	// - **Executing**: 0 (Calling in progress).
+	//
+	// - **Succeeded**: 1 (Answered).
+	//
+	// - **NoAnswer**: 2 (Not answered – No response).
+	//
+	// - **NotExist**: 3 (Not answered – Nonexistent number).
+	//
+	// - **Busy**: 4 (Not answered – Line busy).
+	//
+	// - **Cancelled**: 5 (Not dialed – Job stopped).
+	//
+	// - **Failed**: 6 (Failed).
+	//
+	// - **NotConnected**: 7 (Not answered – Unable to connect).
+	//
+	// - **PoweredOff**: 8 (Not answered – Powered off).
+	//
+	// - **OutOfService**: 9 (Not answered – Called party suspended).
+	//
+	// - **InArrears**: 10 (Not answered – Called party has overdue payment).
+	//
+	// - **EmptyNumber**: 11 (Not dialed – Nonexistent number, not called).
+	//
+	// - **PerDayCallCountLimit**: 12 (Not dialed – Exceeded daily call limit).
+	//
+	// - **ContactBlockList**: 13 (Not dialed – Blacklist).
+	//
+	// - **CallerNotRegistered**: 14 (Not dialed – Caller number not registered).
+	//
+	// - **Terminated**: 15 (Not dialed – Terminated).
+	//
+	// - **VerificationCancelled**: 16 (Not dialed – Cancelled due to pre-call authentication failure).
+	//
+	// - **OutOfServiceNoCall**: 17 (Not dialed – Called party suspended, not called).
+	//
+	// - **InArrearsNoCall**: 18 (Not dialed – Called party has overdue payment, not called).
+	//
+	// - **CallingNumberNotExist**: 19 (Not dialed – Caller number does not exist).
+	//
+	// - **SucceededFinish**: 20 (Answered – Normal completion).
+	//
+	// - **SucceededChatbotHangUpAfterNoAnswer**: 21 (Answered – Bot hung up after unrecognized input).
+	//
+	// - **SucceededChatbotHangUpAfterSilence**: 22 (Answered – Bot hung up after silence timeout).
+	//
+	// - **SucceededClientHangUpAfterNoAnswer**: 23 (Answered – User hung up after unrecognized input).
+	//
+	// - **SucceededClientHangUp**: 24 (Answered – User hung up without reason).
+	//
+	// - **SucceededTransferByIntent**: 25 (Answered – Transferred to agent due to intent match).
+	//
+	// - **SucceededTransferAfterNoAnswer**: 26 (Answered – Transferred to agent after unrecognized input).
+	//
+	// - **SucceededInoInterAction**: 27 (Answered – No interaction from user side).
+	//
+	// - **SucceededError**: 28 (Answered – Call interrupted due to system exception).
+	//
+	// - **SucceededSpecialInterceptVoiceAssistant**: 29 (Answered – Intercepted under special circumstances – Voice assistant).
+	//
+	// - **SucceededSpecialInterceptExtensionNumberTransfer**: 30 (Answered – Intercepted under special circumstances – Extension transfer).
+	//
 	// example:
 	//
-	// xxxx
+	// 正在拨打
 	TaskStatusName *string `json:"TaskStatusName,omitempty" xml:"TaskStatusName,omitempty"`
+	// Task Status
+	//
+	// Value range:
+	//
+	// (Note: The **Succeeded*	- status has been further categorized by reason. The generic **Succeeded**: 1 (Connected) status will no longer be displayed. Subsequent responses will always return a specific detailed reason.)
+	//
+	// - **Executing**: 0 (Calling in progress).
+	//
+	// - **Succeeded**: 1 (Connected).
+	//
+	// - **NoAnswer**: 2 (Not connected – No answer).
+	//
+	// - **NotExist**: 3 (Not connected – Nonexistent number).
+	//
+	// - **Busy**: 4 (Not connected – Line busy).
+	//
+	// - **Cancelled**: 5 (Not dialed – Job stopped).
+	//
+	// - **Failed**: 6 (Failed).
+	//
+	// - **NotConnected**: 7 (Not connected – Unable to reach).
+	//
+	// - **PoweredOff**: 8 (Not connected – Powered off).
+	//
+	// - **OutOfService**: 9 (Not connected – Called party suspended).
+	//
+	// - **InArrears**: 10 (Not connected – Called party has overdue payment).
+	//
+	// - **EmptyNumber**: 11 (Not dialed – Nonexistent number, not called).
+	//
+	// - **PerDayCallCountLimit**: 12 (Not dialed – Exceeded daily call limit).
+	//
+	// - **ContactBlockList**: 13 (Not dialed – Blacklist).
+	//
+	// - **CallerNotRegistered**: 14 (Not dialed – Caller number not registered).
+	//
+	// - **Terminated**: 15 (Not dialed – Terminated).
+	//
+	// - **VerificationCancelled**: 16 (Not dialed – Cancelled due to failed pre-call authentication).
+	//
+	// - **OutOfServiceNoCall**: 17 (Not dialed – Called party suspended, not called).
+	//
+	// - **InArrearsNoCall**: 18 (Not dialed – Called party has overdue payment, not called).
+	//
+	// - **CallingNumberNotExist**: 19 (Not dialed – Caller number does not exist).
+	//
+	// - **SucceededFinish**: 20 (Connected – Normal completion).
+	//
+	// - **SucceededChatbotHangUpAfterNoAnswer**: 21 (Connected – Bot hung up after unrecognized input).
+	//
+	// - **SucceededChatbotHangUpAfterSilence**: 22 (Connected – Bot hung up after silence timeout).
+	//
+	// - **SucceededClientHangUpAfterNoAnswer**: 23 (Connected – User hung up after unrecognized input).
+	//
+	// - **SucceededClientHangUp**: 24 (Connected – User hung up without reason).
+	//
+	// - **SucceededTransferByIntent**: 25 (Connected – Transferred to agent due to intent match).
+	//
+	// - **SucceededTransferAfterNoAnswer**: 26 (Connected – Transferred to agent after unrecognized input).
+	//
+	// - **SucceededInoInterAction**: 27 (Connected – No interaction from user side).
+	//
+	// - **SucceededError**: 28 (Connected – Interrupted due to system exception).
+	//
+	// - **SucceededSpecialInterceptVoiceAssistant**: 29 (Connected – Intercepted under special condition – Voice assistant).
+	//
+	// - **SucceededSpecialInterceptExtensionNumberTransfer**: 30 (Connected – Intercepted under special condition – Extension transfer).
+	//
+	// - **SucceededSpecialInterceptCustomSpecialIntercept**: 31 (Connected – Intercepted under special condition – Custom intercept).
+	//
+	// - **HighRiskSipCode**: 32 (Not dialed – High-risk, not called).
+	//
 	// example:
 	//
 	// Executing
 	TaskStatusString *string `json:"TaskStatusString,omitempty" xml:"TaskStatusString,omitempty"`
+	// User ID
+	//
 	// example:
 	//
 	// 12334134
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Username
+	//
 	// example:
 	//
 	// xxx
@@ -638,7 +993,17 @@ func (s *SearchTaskResponseBodySearchTaskInfoList) Validate() error {
 }
 
 type SearchTaskResponseBodySearchTaskInfoListLabels struct {
+	// Tag Name
+	//
+	// example:
+	//
+	// 是否满意
 	K *string `json:"K,omitempty" xml:"K,omitempty"`
+	// The hit tag value
+	//
+	// example:
+	//
+	// 是
 	V *string `json:"V,omitempty" xml:"V,omitempty"`
 }
 

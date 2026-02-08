@@ -24,23 +24,34 @@ type iDownloadRecordingResponseBody interface {
 }
 
 type DownloadRecordingResponseBody struct {
+	// API status code
+	//
 	// example:
 	//
 	// OK
-	Code           *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Document download URL
 	DownloadParams *DownloadRecordingResponseBodyDownloadParams `json:"DownloadParams,omitempty" xml:"DownloadParams,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API prompt message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded
+	//
 	// example:
 	//
 	// true
@@ -119,14 +130,23 @@ func (s *DownloadRecordingResponseBody) Validate() error {
 }
 
 type DownloadRecordingResponseBodyDownloadParams struct {
+	// Recording file name, usually a UUID
+	//
 	// example:
 	//
 	// 281eb174-3865-41c1-9274-7b6813edadab.wav
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// A URL pointing to the recording file for HTTP download
+	//
 	// example:
 	//
 	// http://tiangong-staging.oss-cn-shanghai.aliyuncs.com/record/281eb174-3865-41c1-9274-7b6813edadab.wav?Expires=1578624046&OSSAccessKeyId=LTAI****cqw&Signature=dL2dxWS6VcdZrvG9xOMOBMSP3Fg%3D
-	SignatureUrl                *string `json:"SignatureUrl,omitempty" xml:"SignatureUrl,omitempty"`
+	SignatureUrl *string `json:"SignatureUrl,omitempty" xml:"SignatureUrl,omitempty"`
+	// List of segmented recordings, including file names and file URLs
+	//
+	// example:
+	//
+	// [{"fileName":"10a17c447415424c99491884abe27d8a-1.wav","filePath":"https://ssml-test.oss-cn-shanghai.aliyuncs.com/7253/voiceSlice/10a17c447415424c99491884abe27d8a/10a17c447415424c99491884abe27d8a-1.wav?Expires=1686645470&OSSAccessKeyId=LTA*********kr8M9&Signature=V23OhiV5yIOoouriu6SiWkO9h8E%3D"}]
 	VoiceSliceRecordingListJson *string `json:"VoiceSliceRecordingListJson,omitempty" xml:"VoiceSliceRecordingListJson,omitempty"`
 }
 

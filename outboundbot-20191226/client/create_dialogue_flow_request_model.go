@@ -20,20 +20,32 @@ type iCreateDialogueFlowRequest interface {
 }
 
 type CreateDialogueFlowRequest struct {
+	// Flow type. Valid values: SubFlow (child flow) and MainFlow (main flow)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MainFlow
 	DialogueFlowType *string `json:"DialogueFlowType,omitempty" xml:"DialogueFlowType,omitempty"`
+	// Conversation flow name
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 主流程
 	DialogueName *string `json:"DialogueName,omitempty" xml:"DialogueName,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 174952ab-9825-4cc9-a5e2-de82d7fa4cdd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Script ID
+	//
 	// This parameter is required.
 	//
 	// example:

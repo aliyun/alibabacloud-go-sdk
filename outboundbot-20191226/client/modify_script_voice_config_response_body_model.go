@@ -24,23 +24,34 @@ type iModifyScriptVoiceConfigResponseBody interface {
 }
 
 type ModifyScriptVoiceConfigResponseBody struct {
+	// API status code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API prompt message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
-	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Script voice configuration information
 	ScriptVoiceConfig *ModifyScriptVoiceConfigResponseBodyScriptVoiceConfig `json:"ScriptVoiceConfig,omitempty" xml:"ScriptVoiceConfig,omitempty" type:"Struct"`
+	// Indicates whether the operation succeeded
+	//
 	// example:
 	//
 	// true
@@ -119,24 +130,44 @@ func (s *ModifyScriptVoiceConfigResponseBody) Validate() error {
 }
 
 type ModifyScriptVoiceConfigResponseBodyScriptVoiceConfig struct {
+	// Instance ID
+	//
 	// example:
 	//
 	// bdd49242-114c-4045-b1d1-25ccc1756c75
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Text corresponding to the audio
+	//
+	// example:
+	//
+	// 你好
 	ScriptContent *string `json:"ScriptContent,omitempty" xml:"ScriptContent,omitempty"`
+	// Scene ID
+	//
 	// example:
 	//
 	// 1d7a26e0-628b-4c3c-9918-7f2e23273f54
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// Scene audio configuration ID
+	//
 	// example:
 	//
 	// 4ddea690-6534-4c88-9cbd-0b5882ec64c0
-	ScriptVoiceConfigId    *string `json:"ScriptVoiceConfigId,omitempty" xml:"ScriptVoiceConfigId,omitempty"`
+	ScriptVoiceConfigId *string `json:"ScriptVoiceConfigId,omitempty" xml:"ScriptVoiceConfigId,omitempty"`
+	// Relational data of the recording correspondence
+	//
+	// example:
+	//
+	// [{"ScriptContent":"你好","ScriptWaveformId":"6facc560-9f25-420f-bb0b-99f4299ad0d5"},{"ScriptContent":"吗","ScriptWaveformId":"76f48266-e253-4f44-ab4f-f64f7d38f1b4"}]
 	ScriptWaveformRelation *string `json:"ScriptWaveformRelation,omitempty" xml:"ScriptWaveformRelation,omitempty"`
+	// Script source
+	//
 	// example:
 	//
 	// DIALOGUE_FLOW
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Broadcast type
+	//
 	// example:
 	//
 	// WAVEFORM

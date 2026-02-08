@@ -24,29 +24,41 @@ type iGetVersionResponseBody interface {
 }
 
 type GetVersionResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 1364f208-982d-4d0c-89aa-d56e22b47589
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Version
+	//
 	// example:
 	//
-	// 2018-12-13
+	// v2.4.1.xxxxxxx_release
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 

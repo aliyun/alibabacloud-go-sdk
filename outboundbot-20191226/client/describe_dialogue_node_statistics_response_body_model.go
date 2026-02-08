@@ -32,39 +32,58 @@ type iDescribeDialogueNodeStatisticsResponseBody interface {
 }
 
 type DescribeDialogueNodeStatisticsResponseBody struct {
+	// API status code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Task group ID
+	//
 	// example:
 	//
 	// f06f7c9f-2895-4b30-a8c2-6ecccb9c9f89
-	GroupId             *string                                                          `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Hang-up edge zones
 	HangUpDialogueNodes []*DescribeDialogueNodeStatisticsResponseBodyHangUpDialogueNodes `json:"HangUpDialogueNodes,omitempty" xml:"HangUpDialogueNodes,omitempty" type:"Repeated"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// e5035654-1745-484a-8c5b-165f7c7bcd79
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// No-answer edge zones
+	//
 	// example:
 	//
 	// []
 	NoAnswerDialogueNodes []*DescribeDialogueNodeStatisticsResponseBodyNoAnswerDialogueNodes `json:"NoAnswerDialogueNodes,omitempty" xml:"NoAnswerDialogueNodes,omitempty" type:"Repeated"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Number of completed jobs in the task group
+	//
 	// example:
 	//
 	// 13
@@ -192,9 +211,29 @@ func (s *DescribeDialogueNodeStatisticsResponseBody) Validate() error {
 }
 
 type DescribeDialogueNodeStatisticsResponseBodyHangUpDialogueNodes struct {
-	HangUpNum   *int32  `json:"HangUpNum,omitempty" xml:"HangUpNum,omitempty"`
-	NodeId      *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	NodeName    *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// Number of hang-ups
+	//
+	// example:
+	//
+	// 2
+	HangUpNum *int32 `json:"HangUpNum,omitempty" xml:"HangUpNum,omitempty"`
+	// Edge zone ID
+	//
+	// example:
+	//
+	// e5035654-1745-484a-8c5b-165f7c7bcd79
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Edge zone name
+	//
+	// example:
+	//
+	// xxx
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// Quantity percentage
+	//
+	// example:
+	//
+	// 100%
 	RateDisplay *string `json:"RateDisplay,omitempty" xml:"RateDisplay,omitempty"`
 }
 
@@ -247,14 +286,20 @@ func (s *DescribeDialogueNodeStatisticsResponseBodyHangUpDialogueNodes) Validate
 }
 
 type DescribeDialogueNodeStatisticsResponseBodyNoAnswerDialogueNodes struct {
+	// Task group ID
+	//
 	// example:
 	//
 	// f06f7c9f-2895-4b30-a8c2-6ecccb9c9f89
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Hang-up quantity
+	//
 	// example:
 	//
 	// 2
 	HangUpNum *int32 `json:"HangUpNum,omitempty" xml:"HangUpNum,omitempty"`
+	// Hit quantity
+	//
 	// example:
 	//
 	// 12
@@ -265,18 +310,26 @@ type DescribeDialogueNodeStatisticsResponseBodyNoAnswerDialogueNodes struct {
 	//
 	// 123
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// e5035654-1745-484a-8c5b-165f7c7bcd79
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// No-answer quantity
+	//
 	// example:
 	//
 	// 2
 	NoAnswerNum *int32 `json:"NoAnswerNum,omitempty" xml:"NoAnswerNum,omitempty"`
+	// Edge zone ID
+	//
 	// example:
 	//
 	// e5035654-1745-484a-8c5b-165f7c7bcd79
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Edge zone name
+	//
 	// example:
 	//
 	// xxx

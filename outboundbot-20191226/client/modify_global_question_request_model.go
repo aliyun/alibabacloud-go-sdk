@@ -26,35 +26,61 @@ type iModifyGlobalQuestionRequest interface {
 }
 
 type ModifyGlobalQuestionRequest struct {
+	// List of response scripts
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ["你好,我是你的专属客服顾问."]
 	Answers *string `json:"Answers,omitempty" xml:"Answers,omitempty"`
+	// Global question ID. This parameter is the unique value of the source global question.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ad80de88-1661-445a-92ec-bf88dc45d581
 	GlobalQuestionId *string `json:"GlobalQuestionId,omitempty" xml:"GlobalQuestionId,omitempty"`
+	// Global question name
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 未识别全局问题
 	GlobalQuestionName *string `json:"GlobalQuestionName,omitempty" xml:"GlobalQuestionName,omitempty"`
+	// Global question type
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// COMMON
 	GlobalQuestionType *string `json:"GlobalQuestionType,omitempty" xml:"GlobalQuestionType,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 8fa1953f-4a84-46d8-b80c-8ce9cf684fb3
+	// e5035654-1745-484a-8c5b-165f7c7bcd79
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// This parameter is required.
-	Questions *string `json:"Questions,omitempty" xml:"Questions,omitempty"`
+	// List of questions
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 19ac2375-53e3-477f-abe9-6cd334227981
+	// ["你是谁","你叫什么"]
+	Questions *string `json:"Questions,omitempty" xml:"Questions,omitempty"`
+	// Scenario ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0fe7f71c-8771-42ef-9bb1-19aa16ae7120
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
 }
 

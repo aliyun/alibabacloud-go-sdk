@@ -18,16 +18,22 @@ type iListAgentProfilesRequest interface {
 }
 
 type ListAgentProfilesRequest struct {
+	// app_ip (system field, optional)
+	//
 	// example:
 	//
 	// 127.0.0.1
 	AppIp *string `json:"AppIp,omitempty" xml:"AppIp,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Scenario ID
+	//
 	// example:
 	//
 	// d004cfd2-6a81-491c-83c6-cbe186620c95

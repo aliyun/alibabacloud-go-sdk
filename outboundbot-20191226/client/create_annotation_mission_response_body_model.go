@@ -24,20 +24,34 @@ type iCreateAnnotationMissionResponseBody interface {
 }
 
 type CreateAnnotationMissionResponseBody struct {
+	// API status code
+	//
 	// example:
 	//
 	// OK
-	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
 	Data *CreateAnnotationMissionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Additional information. The value is interpreted as follows: if the request is normal, returns "success"; if the request is abnormal, returns the specific error code.
+	//
+	// example:
+	//
+	// 执行失败：查找元素或操作超时,outTaskId:trademark_regnew_public_cn-uax33hol2uu,flowId:null,nodeUUID:541b6c71-8cce-4ab0-af84-713ca9741821
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the API invocation succeeded. true: succeeded. false: failed to invoke.
+	//
 	// example:
 	//
 	// True
@@ -116,7 +130,14 @@ func (s *CreateAnnotationMissionResponseBody) Validate() error {
 }
 
 type CreateAnnotationMissionResponseBodyData struct {
+	// Additional information. The value is interpreted as follows: if the request is normal, returns "success"; if the request is abnormal, returns the specific error code.
+	//
+	// example:
+	//
+	// 执行失败：查找元素或操作超时,outTaskId:trademark_regnew_public_cn-uax33hol2uu,flowId:null,nodeUUID:541b6c71-8cce-4ab0-af84-713ca9741821
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Whether the operation succeeded
+	//
 	// example:
 	//
 	// True

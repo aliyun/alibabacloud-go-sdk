@@ -16,12 +16,16 @@ type iListDialogueFlowsRequest interface {
 }
 
 type ListDialogueFlowsRequest struct {
+	// instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 361c8a53-0e29-42f3-8aa7-c7752d010399
+	// b5b0a30f-69e7-4147-98b5-553fc526361d
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// scenario ID
+	//
 	// This parameter is required.
 	//
 	// example:

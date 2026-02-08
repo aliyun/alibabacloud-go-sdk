@@ -30,35 +30,52 @@ type iGetAssignJobsAsyncResultResponseBody interface {
 }
 
 type GetAssignJobsAsyncResultResponseBody struct {
+	// API status code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Task group ID.
+	//
 	// example:
 	//
 	// d3550dd1-360d-4fe5-b4b2-667a4a664dab
-	JobGroupId *string   `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	JobsId     []*string `json:"JobsId,omitempty" xml:"JobsId,omitempty" type:"Repeated"`
+	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	// List of job IDs.
+	JobsId []*string `json:"JobsId,omitempty" xml:"JobsId,omitempty" type:"Repeated"`
+	// API message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the asynchronous job has timed out.
+	//
 	// example:
 	//
 	// false
 	Timeout *bool `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// Indicates whether the result has been fully generated.
+	//
 	// example:
 	//
 	// true

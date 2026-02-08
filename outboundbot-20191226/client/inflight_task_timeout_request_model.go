@@ -18,16 +18,22 @@ type iInflightTaskTimeoutRequest interface {
 }
 
 type InflightTaskTimeoutRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2d350e38-f561-49b0-85d3-b90d9fc7e052
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Alibaba Cloud account ID to which the instance belongs
+	//
 	// example:
 	//
 	// 1864632921948620
 	InstanceOwnerId *int64 `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
+	// Job ID
+	//
 	// This parameter is required.
 	//
 	// example:

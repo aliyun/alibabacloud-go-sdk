@@ -18,18 +18,24 @@ type iDownloadScriptRecordingRequest interface {
 }
 
 type DownloadScriptRecordingRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// b3865dc3-40fa-4afd-9fe4-dc7cda305a24
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Scenario ID where the recording is located
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aa279896-64a6-4182-864c-4f2b04ec8d17
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// Unique ID of the recording
+	//
 	// This parameter is required.
 	//
 	// example:

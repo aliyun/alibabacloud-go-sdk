@@ -24,14 +24,38 @@ type iGetTaskByUuidResponseBody interface {
 }
 
 type GetTaskByUuidResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// API status code.
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the operation succeeded.
+	//
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Job information
+	//
 	// example:
 	//
 	// {}
@@ -110,47 +134,94 @@ func (s *GetTaskByUuidResponseBody) Validate() error {
 }
 
 type GetTaskByUuidResponseBodyTask struct {
+	// Actual running time
+	//
 	// example:
 	//
 	// 1640090211434
 	ActualTime *int64 `json:"ActualTime,omitempty" xml:"ActualTime,omitempty"`
+	// Call ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// Called number
+	//
 	// example:
 	//
 	// 13777777777
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// Calling number
+	//
 	// example:
 	//
 	// 057190294
-	CallingNumber *string                                       `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// List of conversation information
 	Conversations []*GetTaskByUuidResponseBodyTaskConversations `json:"Conversations,omitempty" xml:"Conversations,omitempty" type:"Repeated"`
+	// End reason
+	//
+	// - FINISHED(1, "Normal completion"),
+	//
+	// - CHATBOT_HANGUP_AFTER_NOANSWER(2, "Bot hangs up after unrecognized input"),
+	//
+	// - CHATBOT_HANGUP_AFTER_SILENCE(3, "Bot hangs up due to silence timeout"),
+	//
+	// - CLIENT_HANGUP_AFTER_NOANSWER(4, "User hangs up after unrecognized input"),
+	//
+	// - CLIENT_HANGUP(5, "User hangs up without reason"),
+	//
+	// - TRANSFER_BY_INTENT(6, "Transferred to agent due to intent hit"),
+	//
+	// - TRANSFER_AFTER_NOANSWER(7, "Transferred to agent after unrecognized input"),
+	//
+	// - INO_INTERACTION(8, "No interaction from user side"),
+	//
+	// - ERROR(9, "System Exception break"),
+	//
+	// - SPECIAL_INTERCEPT_VOICE_ASSISTANT(10, "Special case Block – Voice assistant"),
+	//
+	// - SPECIAL_INTERCEPT_EXTENSION_NUMBER_TRANSFER(11, "Special case Block – Extension transfer")
+	//
+	// 	Notice: This parameter is of type string and returns enumeration values such as FINISHED.</notice>
+	//
 	// example:
 	//
-	// 1640090211434
+	// FINISHED
 	EndReason *string `json:"EndReason,omitempty" xml:"EndReason,omitempty"`
+	// End time
+	//
 	// example:
 	//
 	// 1640090211434
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Job ID
+	//
 	// example:
 	//
 	// 2
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Job group ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	// Job ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Planned running time of the job [Deprecated]
+	//
 	// example:
 	//
 	// 1640090211434
@@ -287,11 +358,66 @@ func (s *GetTaskByUuidResponseBodyTask) Validate() error {
 }
 
 type GetTaskByUuidResponseBodyTaskConversations struct {
-	Action     *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	Script     *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	// Instruction
+	//
+	// - BeginDialogue: Begin dialogue
+	//
+	// - Dialogue: Dialogue
+	//
+	// - AbortDialogue: Abort dialogue
+	//
+	// - SilenceTimeout: Silence timeout
+	//
+	// - CollectedNumber: Collected number
+	//
+	// - EndDialogue: End dialogue
+	//
+	// - Broadcast: Broadcast
+	//
+	// - HangUp: Hang up
+	//
+	// - Authorize: Authorization
+	//
+	// - TransferToAgent: Transfer to agent
+	//
+	// - TransferToIVR: Transfer to IVR
+	//
+	// - RedirectToPage: Redirection to page
+	//
+	// - CollectNumber: Collect number
+	//
+	// - WaitOnAsyncTask: Wait on asynchronous task
+	//
+	// - Error: Fault
+	//
+	// example:
+	//
+	// Broadcast
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// Dialogue text.
+	//
+	// example:
+	//
+	// 你好，我是**客服
+	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	// Session ID.
+	//
+	// example:
+	//
+	// fd279983-93b9-b13b-9a34-64e5df473225
 	SequenceId *string `json:"SequenceId,omitempty" xml:"SequenceId,omitempty"`
-	Speaker    *string `json:"Speaker,omitempty" xml:"Speaker,omitempty"`
-	Timestamp  *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// Speaker of the dialogue: Robot or Contact.
+	//
+	// example:
+	//
+	// Robot
+	Speaker *string `json:"Speaker,omitempty" xml:"Speaker,omitempty"`
+	// Summary creation time.
+	//
+	// example:
+	//
+	// 1579068424883
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s GetTaskByUuidResponseBodyTaskConversations) String() string {

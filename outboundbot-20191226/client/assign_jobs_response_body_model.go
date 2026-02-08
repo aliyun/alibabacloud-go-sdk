@@ -26,27 +26,40 @@ type iAssignJobsResponseBody interface {
 }
 
 type AssignJobsResponseBody struct {
+	// API status code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Task group ID.
+	//
 	// example:
 	//
 	// 390515b5-6115-4ccf-83e2-52d5bfaf2ddf
-	JobGroupId *string   `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	JobsId     []*string `json:"JobsId,omitempty" xml:"JobsId,omitempty" type:"Repeated"`
+	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	// List of job IDs.
+	JobsId []*string `json:"JobsId,omitempty" xml:"JobsId,omitempty" type:"Repeated"`
+	// API message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded.
+	//
 	// example:
 	//
 	// true

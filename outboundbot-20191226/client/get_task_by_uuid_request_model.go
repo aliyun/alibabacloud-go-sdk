@@ -18,21 +18,29 @@ type iGetTaskByUuidRequest interface {
 }
 
 type GetTaskByUuidRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 024f8cf0-c842-4c01-b74b-c8667e4579c7
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Job ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 15160071061
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Specifies whether to include conversation information.
+	//
+	// > If this parameter is not specified, the default value is false.
+	//
 	// example:
 	//
-	// true
+	// false
 	WithConversations *bool `json:"WithConversations,omitempty" xml:"WithConversations,omitempty"`
 }
 

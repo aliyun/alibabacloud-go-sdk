@@ -16,12 +16,18 @@ type iDescribeJobDataParsingTaskProgressRequest interface {
 }
 
 type DescribeJobDataParsingTaskProgressRequest struct {
+	// instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c209abb3-6804-4a75-b2c7-dd55c8c61b6a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Job data analytics task ID
+	//
+	// > You can obtain this parameter value by calling the CreateJobDataParsingTask API.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,26 +22,40 @@ type iUploadScriptRecordingRequest interface {
 }
 
 type UploadScriptRecordingRequest struct {
+	// Text content of the recording file
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 您好
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Key of the file in OSS
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cab_script_recording/upload/88a56c18-3dc8-4338-9116-911deb169780/hello.wav
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// File name
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hello.wav
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c209abb3-6804-4a75-b2c7-dd55c8c61b6a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Script ID
+	//
 	// This parameter is required.
 	//
 	// example:

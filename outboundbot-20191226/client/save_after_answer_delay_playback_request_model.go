@@ -18,16 +18,24 @@ type iSaveAfterAnswerDelayPlaybackRequest interface {
 }
 
 type SaveAfterAnswerDelayPlaybackRequest struct {
+	// Playback time for delayed playback. The default value is 0 if this parameter is not specified.
+	//
 	// example:
 	//
-	// 1000
+	// 1
 	AfterAnswerDelayPlayback *int32 `json:"AfterAnswerDelayPlayback,omitempty" xml:"AfterAnswerDelayPlayback,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 980116ec-2d3d-4747-8059-dc25e7af8501
 	EntryId *string `json:"EntryId,omitempty" xml:"EntryId,omitempty"`
+	// Policy level (Required).
+	//
+	// - 2: instance
+	//
 	// example:
 	//
 	// 2

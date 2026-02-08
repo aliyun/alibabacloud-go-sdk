@@ -26,30 +26,44 @@ type iCreateBeebotIntentLgfResponseBody interface {
 }
 
 type CreateBeebotIntentLgfResponseBody struct {
+	// Internal request ID
+	//
 	// example:
 	//
 	// 497CFAFF-48CC-161A-AD2C-252DED569037
 	BeebotRequestId *string `json:"BeebotRequestId,omitempty" xml:"BeebotRequestId,omitempty"`
+	// API status code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP error code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Utterance template ID
+	//
 	// example:
 	//
 	// 5666117
 	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	// API prompt message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the operation succeeded
+	//
 	// example:
 	//
 	// True

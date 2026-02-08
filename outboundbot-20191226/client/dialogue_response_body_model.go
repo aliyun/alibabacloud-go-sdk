@@ -24,23 +24,34 @@ type iDialogueResponseBody interface {
 }
 
 type DialogueResponseBody struct {
+	// API status code
+	//
 	// example:
 	//
 	// OK
-	Code     *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned conversation information
 	Feedback *DialogueResponseBodyFeedback `json:"Feedback,omitempty" xml:"Feedback,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API prompt message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -119,18 +130,32 @@ func (s *DialogueResponseBody) Validate() error {
 }
 
 type DialogueResponseBodyFeedback struct {
+	// Instruction to IVR
+	//
 	// example:
 	//
 	// broadcast
-	Action       *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// Instruction parameters
+	//
+	// example:
+	//
+	// ""
 	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
-	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Conversation text
+	//
+	// example:
+	//
+	// 你好，我是**客服
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// 已废弃
 	//
 	// example:
 	//
 	// “”
 	ContentParams *string `json:"ContentParams,omitempty" xml:"ContentParams,omitempty"`
+	// Indicates whether the playback can be interrupted.
+	//
 	// example:
 	//
 	// true

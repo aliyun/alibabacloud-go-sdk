@@ -16,12 +16,22 @@ type iGetMaxAttemptsPerDayRequest interface {
 }
 
 type GetMaxAttemptsPerDayRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2bfa5ae4-7185-4227-a3b8-328f26f11be1
 	EntryId *string `json:"EntryId,omitempty" xml:"EntryId,omitempty"`
+	// Policy level. The default value is 2 for business instances.
+	//
+	// - 0: System
+	//
+	// - 1: Tenant
+	//
+	// - 2: Instance
+	//
 	// example:
 	//
 	// 2

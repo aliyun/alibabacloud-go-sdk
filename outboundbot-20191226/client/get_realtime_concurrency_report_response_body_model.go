@@ -26,27 +26,40 @@ type iGetRealtimeConcurrencyReportResponseBody interface {
 }
 
 type GetRealtimeConcurrencyReportResponseBody struct {
+	// API status code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Report generation time
+	//
 	// example:
 	//
 	// 1743474900488
-	ReportDate *int64                                           `json:"ReportDate,omitempty" xml:"ReportDate,omitempty"`
-	Reports    *GetRealtimeConcurrencyReportResponseBodyReports `json:"Reports,omitempty" xml:"Reports,omitempty" type:"Struct"`
+	ReportDate *int64 `json:"ReportDate,omitempty" xml:"ReportDate,omitempty"`
+	// Report details.
+	Reports *GetRealtimeConcurrencyReportResponseBodyReports `json:"Reports,omitempty" xml:"Reports,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded
+	//
 	// example:
 	//
 	// true
@@ -134,15 +147,22 @@ func (s *GetRealtimeConcurrencyReportResponseBody) Validate() error {
 }
 
 type GetRealtimeConcurrencyReportResponseBodyReports struct {
+	// Collection of report data
 	List []*GetRealtimeConcurrencyReportResponseBodyReportsList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number
+	//
 	// example:
 	//
 	// 2
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of entries per page
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count
+	//
 	// example:
 	//
 	// 16
@@ -207,28 +227,50 @@ func (s *GetRealtimeConcurrencyReportResponseBodyReports) Validate() error {
 }
 
 type GetRealtimeConcurrencyReportResponseBodyReportsList struct {
+	// Instance ID
+	//
 	// example:
 	//
 	// 85bf7efa-a07c-498a-850e-99a5849b8589
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Instance name
+	//
+	// example:
+	//
+	// 智能外呼场景
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Job ID
+	//
 	// example:
 	//
 	// c62e6789-28a8-41db-941e-171a01d3b3b9
-	JobGroupId   *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	// Job Name.
+	//
+	// example:
+	//
+	// 第一个作业组
 	JobGroupName *string `json:"JobGroupName,omitempty" xml:"JobGroupName,omitempty"`
+	// Configured maximum concurrency limit
+	//
 	// example:
 	//
 	// 2
 	MaxConcurrencyLimit *int64 `json:"MaxConcurrencyLimit,omitempty" xml:"MaxConcurrencyLimit,omitempty"`
+	// Minimum Concurrency Limit of the job
+	//
 	// example:
 	//
 	// 0
 	MinConcurrencyLimit *int64 `json:"MinConcurrencyLimit,omitempty" xml:"MinConcurrencyLimit,omitempty"`
+	// Occupied concurrent value
+	//
 	// example:
 	//
 	// 1
 	OccupiedConcurrencyCount *int64 `json:"OccupiedConcurrencyCount,omitempty" xml:"OccupiedConcurrencyCount,omitempty"`
+	// Report generation time
+	//
 	// example:
 	//
 	// 1743474900488

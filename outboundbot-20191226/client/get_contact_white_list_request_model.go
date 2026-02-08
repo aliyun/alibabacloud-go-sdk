@@ -20,20 +20,28 @@ type iGetContactWhiteListRequest interface {
 }
 
 type GetContactWhiteListRequest struct {
+	// Indicates whether the total number of entries is required
+	//
 	// example:
 	//
 	// true
 	CountTotalRow *bool `json:"CountTotalRow,omitempty" xml:"CountTotalRow,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2a830781-324e-4568-ae96-309f93090fe1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of entries per page
+	//
 	// example:
 	//
 	// 10

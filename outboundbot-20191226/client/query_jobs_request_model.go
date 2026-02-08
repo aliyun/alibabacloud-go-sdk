@@ -32,45 +32,68 @@ type iQueryJobsRequest interface {
 }
 
 type QueryJobsRequest struct {
+	// Filter condition. Contact name.
+	//
+	// example:
+	//
+	// 张三
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	// Filter condition. The end time. Default value: 0, which indicates the current time.
+	//
 	// example:
 	//
 	// 1579077794665
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Task group ID.
+	//
 	// example:
 	//
 	// 994b8baf-7ef8-480c-b141-b7b6db77c4df
 	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	// Paging ordinal number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Filter condition. Contact phone number.
+	//
 	// example:
 	//
 	// 135****8888
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// Scenario ID. This parameter is deprecated.
+	//
 	// example:
 	//
 	// b0f35dd1-0337-402e-9c4f-3a6c2426950a
 	ScenarioId *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
+	// Filter condition. Start Time. The default value is 0, which indicates the start of the current day (00:00).
+	//
 	// example:
 	//
 	// 1579068424883
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Specifies whether to query by start time, end time, or job creation time. Valid values: start, end, job_create.
+	//
 	// example:
 	//
 	// start

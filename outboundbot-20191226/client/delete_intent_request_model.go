@@ -18,18 +18,24 @@ type iDeleteIntentRequest interface {
 }
 
 type DeleteIntentRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 361c8a53-0e29-42f3-8aa7-c7752d010399
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// ID of the intent to delete
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c21fb0ec-fb5e-476f-a6bf-81a892739c8d
 	IntentId *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// Script ID of the intent
+	//
 	// This parameter is required.
 	//
 	// example:

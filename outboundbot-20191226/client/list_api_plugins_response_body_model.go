@@ -30,35 +30,52 @@ type iListApiPluginsResponseBody interface {
 }
 
 type ListApiPluginsResponseBody struct {
+	// API plugin list
 	ApiPlugins []*ListApiPluginsResponseBodyApiPlugins `json:"ApiPlugins,omitempty" xml:"ApiPlugins,omitempty" type:"Repeated"`
+	// API status code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of entries per page
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total number of entries
+	//
 	// example:
 	//
 	// 100
@@ -168,30 +185,168 @@ func (s *ListApiPluginsResponseBody) Validate() error {
 }
 
 type ListApiPluginsResponseBodyApiPlugins struct {
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Description.
+	//
+	// example:
+	//
+	// 这个插件是用来xxx.....
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Draft configuration
+	//
+	// example:
+	//
+	// {
+	//
+	// 	"description": "测试-2",
+	//
+	// 	"functionMeta": {
+	//
+	// 		"failoverRegionWeight": 0.5,
+	//
+	// 		"functionMetaId": "a9127136087e4172b31b8f400430d63b",
+	//
+	// 		"functionName": "yongyu-stream-2",
+	//
+	// 		"regionId": "cn-hangzhou"
+	//
+	// 	},
+	//
+	// 	"inputParams": [{
+	//
+	// 		"debugValue": "1112",
+	//
+	// 		"description": "测试",
+	//
+	// 		"name": "test",
+	//
+	// 		"required": false,
+	//
+	// 		"type": "String",
+	//
+	// 		"valueSource": "Var"
+	//
+	// 	}],
+	//
+	// 	"name": "测试插件01",
+	//
+	// 	"outputParams": [{
+	//
+	// 		"description": "直接返回API结果，并作为提示词输入给模型",
+	//
+	// 		"name": "result",
+	//
+	// 		"type": "String"
+	//
+	// 	}],
+	//
+	// 	"timeout": 5,
+	//
+	// 	"transitionContent": "稍等，和您确认下信息。",
+	//
+	// 	"type": "Function"
+	//
+	// }
 	DraftedConfigJson *string `json:"DraftedConfigJson,omitempty" xml:"DraftedConfigJson,omitempty"`
+	// Creation Time.
+	//
 	// example:
 	//
 	// 1666230851000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Update Time
+	//
 	// example:
 	//
 	// 1641891940000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// 7c0e5b5e-a839-4999-8301-2c7d07a1f16f
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Plugin name
+	//
+	// example:
+	//
+	// 这是一个插件
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Published configuration
+	//
+	// example:
+	//
+	// {
+	//
+	// 	"description": "发布-2",
+	//
+	// 	"functionMeta": {
+	//
+	// 		"failoverRegionWeight": 0.5,
+	//
+	// 		"functionMetaId": "c4af5815daaa485bb8118be6b2f14058",
+	//
+	// 		"functionName": "yongyu-stream-2",
+	//
+	// 		"regionId": "cn-hangzhou"
+	//
+	// 	},
+	//
+	// 	"inputParams": [{
+	//
+	// 		"debugValue": "111",
+	//
+	// 		"description": "发布",
+	//
+	// 		"name": "test",
+	//
+	// 		"required": false,
+	//
+	// 		"type": "String",
+	//
+	// 		"valueSource": "Var"
+	//
+	// 	}],
+	//
+	// 	"name": "发布插件",
+	//
+	// 	"outputParams": [{
+	//
+	// 		"description": "直接返回API结果，并作为提示词输入给模型",
+	//
+	// 		"name": "result",
+	//
+	// 		"type": "String"
+	//
+	// 	}],
+	//
+	// 	"timeout": 5,
+	//
+	// 	"transitionContent": "稍等，和您确认下信息。",
+	//
+	// 	"type": "Function"
+	//
+	// }
 	PublishedConfigJson *string `json:"PublishedConfigJson,omitempty" xml:"PublishedConfigJson,omitempty"`
+	// Status.
+	//
+	// - Drafted: Draft
+	//
+	// - Published: Published
+	//
+	// - PublishedAndEdited: Published (Edited)
+	//
 	// example:
 	//
 	// Drafted
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Type
+	//
 	// example:
 	//
 	// Function
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Unique identifier of the plugin
+	//
 	// example:
 	//
 	// e1a3c448-20cf-4586-8aa2-4cdca75f7c20

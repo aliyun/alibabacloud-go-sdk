@@ -24,23 +24,34 @@ type iCreateInstanceBindNumberResponseBody interface {
 }
 
 type CreateInstanceBindNumberResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// OK
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data
 	Data *CreateInstanceBindNumberResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded
+	//
 	// example:
 	//
 	// true
@@ -119,6 +130,7 @@ func (s *CreateInstanceBindNumberResponseBody) Validate() error {
 }
 
 type CreateInstanceBindNumberResponseBodyData struct {
+	// List of number data
 	List []*CreateInstanceBindNumberResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 }
 
@@ -153,10 +165,14 @@ func (s *CreateInstanceBindNumberResponseBodyData) Validate() error {
 }
 
 type CreateInstanceBindNumberResponseBodyDataList struct {
+	// Instance ID
+	//
 	// example:
 	//
 	// 96b847ad-2683-4794-b7b4-7ef094fb81f6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether the attachment succeeded
+	//
 	// example:
 	//
 	// true

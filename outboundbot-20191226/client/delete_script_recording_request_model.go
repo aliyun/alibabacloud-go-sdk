@@ -18,25 +18,29 @@ type iDeleteScriptRecordingRequest interface {
 }
 
 type DeleteScriptRecordingRequest struct {
+	// Instance ID to which the recording belongs
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1eefcb81-cd58-4143-8180-6a962d79d708
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Scenario ID to which the recording belongs
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dcc42f0d-cfd8-4866-9bbf-002042503745
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// List of recording IDs. If empty, all recordings are selected by default.
+	//
+	// > You can obtain the recording IDs from the ListScriptRecording API.
+	//
 	// example:
 	//
-	// [
-	//
-	//       "d17d5bfa-4972-4389-9718-f9602edabe48"
-	//
-	// ]
+	// ["d17d5bfa-4972-4389-9718-f9602edabe48"]
 	UuidsJson *string `json:"UuidsJson,omitempty" xml:"UuidsJson,omitempty"`
 }
 

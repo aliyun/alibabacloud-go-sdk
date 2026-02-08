@@ -22,25 +22,40 @@ type iListBeebotIntentRequest interface {
 }
 
 type ListBeebotIntentRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// e5035654-1745-484a-8c5b-165f7c7bcd79
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Intent Name
+	//
+	// > This is the intent code, a unique identifier.
+	//
+	// example:
+	//
+	// 知道了
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	// Page number
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of entries per page
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Scenario ID
+	//
 	// This parameter is required.
 	//
 	// example:

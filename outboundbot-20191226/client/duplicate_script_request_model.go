@@ -18,14 +18,24 @@ type iDuplicateScriptRequest interface {
 }
 
 type DuplicateScriptRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 361c8a53-0e29-42f3-8aa7-c7752d010399
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// New scenario name
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 复制的催收话术
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Source scenario ID
+	//
 	// This parameter is required.
 	//
 	// example:

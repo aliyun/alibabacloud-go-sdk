@@ -18,16 +18,22 @@ type iSaveEffectiveDaysRequest interface {
 }
 
 type SaveEffectiveDaysRequest struct {
+	// Effective period
+	//
 	// example:
 	//
 	// 30
 	EffectiveDays *int32 `json:"EffectiveDays,omitempty" xml:"EffectiveDays,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// e90b5b8e-c8b4-4182-b28d-a5aa81685e49
 	EntryId *string `json:"EntryId,omitempty" xml:"EntryId,omitempty"`
+	// Policy level
+	//
 	// example:
 	//
 	// 2

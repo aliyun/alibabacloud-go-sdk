@@ -18,16 +18,24 @@ type iSaveMaxAttemptsPerDayRequest interface {
 }
 
 type SaveMaxAttemptsPerDayRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c8bf820a-6a8a-47bc-99bf-97593df8faa8
 	EntryId *string `json:"EntryId,omitempty" xml:"EntryId,omitempty"`
+	// Maximum number of redial attempts per day. Default value is 3 if not specified.
+	//
 	// example:
 	//
-	// 5
+	// 3
 	MaxAttemptsPerDay *int32 `json:"MaxAttemptsPerDay,omitempty" xml:"MaxAttemptsPerDay,omitempty"`
+	// Policy level (Required)
+	//
+	// - 2: instance
+	//
 	// example:
 	//
 	// 2

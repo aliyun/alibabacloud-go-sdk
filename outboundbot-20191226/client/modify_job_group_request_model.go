@@ -42,52 +42,131 @@ type iModifyJobGroupRequest interface {
 }
 
 type ModifyJobGroupRequest struct {
-	CallingNumber  []*string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty" type:"Repeated"`
-	Description    *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	FlashSmsExtras *string   `json:"FlashSmsExtras,omitempty" xml:"FlashSmsExtras,omitempty"`
+	// Calling number.
+	CallingNumber []*string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty" type:"Repeated"`
+	// Job description.
+	//
+	// example:
+	//
+	// 修改后的作业组
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Configuration parameters for flash SMS push, in JSON format, containing third-party flash SMS configuration information.
+	//
+	// templateId: Flash SMS template ID.
+	//
+	// configId: Flash SMS configuration ID.
+	//
+	// example:
+	//
+	// {"templateId":"10471","configId":"8037f524-6ff2-4dbe-bb28-f59234ea7a64"}
+	FlashSmsExtras *string `json:"FlashSmsExtras,omitempty" xml:"FlashSmsExtras,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 174952ab-9825-4cc9-a5e2-de82d7fa4cdd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Job ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3edc0260-6f7c-4de4-8535-09372240618b
 	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	// Task status. Valid values:
+	//
+	// - Draft: Draft.
+	//
+	// - Paused: Paused.
+	//
 	// example:
 	//
 	// Draft
 	JobGroupStatus *string `json:"JobGroupStatus,omitempty" xml:"JobGroupStatus,omitempty"`
+	// Minimum concurrency guarantee
+	//
+	// When the job starts, at least N concurrent calls are guaranteed.
+	//
+	// The sum of minimum concurrency guarantees for jobs with the same priority must not exceed the instance\\"s maximum concurrency.
+	//
+	// If the minimum concurrency guarantee is set to 0, the system intelligently assigns available idle concurrency.
+	//
 	// example:
 	//
 	// 1
 	MinConcurrency *int64 `json:"MinConcurrency,omitempty" xml:"MinConcurrency,omitempty"`
+	// Job name.
+	//
 	// This parameter is required.
-	Name                *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Priority            *string   `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RecallCallingNumber []*string `json:"RecallCallingNumber,omitempty" xml:"RecallCallingNumber,omitempty" type:"Repeated"`
+	//
 	// example:
 	//
-	// {\\"emptyNumberIgnore\\":false,\\"inArrearsIgnore\\":false,\\"outOfServiceIgnore\\":false}
+	// 修改后的作业组
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Job group priority. Valid values:
+	//
+	// - **Urgent**: Urgent job.
+	//
+	// - **Daily**: Daily job.
+	//
+	// example:
+	//
+	// Daily
+	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// List of redial calling numbers
+	RecallCallingNumber []*string `json:"RecallCallingNumber,omitempty" xml:"RecallCallingNumber,omitempty" type:"Repeated"`
+	// Redial strategy JSON
+	//
+	// example:
+	//
+	// {"emptyNumberIgnore":false,"inArrearsIgnore":false,"outOfServiceIgnore":false}
 	RecallStrategyJson *string `json:"RecallStrategyJson,omitempty" xml:"RecallStrategyJson,omitempty"`
+	// Optimal ringing duration.
+	//
 	// example:
 	//
 	// 25
 	RingingDuration *int64 `json:"RingingDuration,omitempty" xml:"RingingDuration,omitempty"`
+	// Scenario ID. (This is a legacy parameter; use ScriptId going forward.)
+	//
+	// > This parameter is now deprecated. You can pass any value, but it is recommended to keep it consistent with scriptId.
+	//
 	// example:
 	//
 	// c6a668d1-3145-4048-9101-cb3678bb8884
 	ScenarioId *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
+	// Scenario script ID.
+	//
 	// example:
 	//
 	// 5a3940ce-a12f-4222-9f0f-605a9b89ea7c
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// Task execution policy.
+	//
+	// - repeatBy: Recurrence type. Once (no recurrence), Day (daily recurrence), Week (weekly recurrence), Month (monthly recurrence).
+	//
+	// - startTime: Start time of the policy.
+	//
+	// - endTime: End time of the policy.
+	//
+	// - workingTime: Allowed outbound calling time segment.
+	//
+	// - maxAttemptsPerDay: Maximum number of call attempts per day for each number under this job.
+	//
+	// - minAttemptInterval: Minimum interval between retry calls for a number, in minutes.
+	//
+	// - routingStrategy: Number routing strategy. None (not specified), LocalFirst (prioritize numbers from the same city), LocalProvinceFirst (prioritize numbers from the same province).
+	//
+	// - repeatDays: Execution dates corresponding to the recurrence type. If repeatBy is Week, 0 represents Sunday and 1–6 represent Monday through Saturday respectively. If repeatBy is Month, values 1–31 represent the 1st through the 31st day of the month; months without the specified date will skip execution (for example, if the 30th is selected, February will not execute).
+	//
+	// - repeatable: Whether loop task is enabled, true/false.
+	//
 	// example:
 	//
-	// {\\"maxAttemptsPerDay\\":\\"0\\",\\"minAttemptInterval\\":\\"5\\",\\"Id\\":\\"689fc584-7f9f-4dc2-933d-8711beef7b15\\"}
+	// {"maxAttemptsPerDay":"3","minAttemptInterval":"10","routingStrategy":"LocalProvinceFirst","repeatDays":["1","2","3"],"workingTime":[{"beginTime":"10:00:00","endTime":"11:00:00"},{"beginTime":"14:00:00","endTime":"15:00:00"}],"repeatable":true,"endTime":1707494400000,"startTime":1706976000000,"repeatBy":"Week"}
 	StrategyJson *string `json:"StrategyJson,omitempty" xml:"StrategyJson,omitempty"`
 }
 

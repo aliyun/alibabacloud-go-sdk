@@ -24,20 +24,34 @@ type iSaveAnnotationMissionSessionListResponseBody interface {
 }
 
 type SaveAnnotationMissionSessionListResponseBody struct {
+	// [parameters_AnnotationMissionSessionList_schema_items_properties_AnnotationMissionChatList_items_properties_AnnotationMissionChatVocabularyInfoList_items_properties_Vocabulary_description]Hot word annotation content
+	//
 	// example:
 	//
 	// OK
-	Code *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// [parameters_AnnotationMissionSessionList_schema_items_properties_AnnotationMissionChatList_items_properties_AnnotationMissionChatTagInfoList_items_properties_Delete_type]boolean
 	Data *SaveAnnotationMissionSessionListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// [parameters_AnnotationMissionSessionList_schema_items_properties_AnnotationMissionChatList_items_properties_AnnotationMissionChatTagInfoList_items_type]object
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// [parameters_AnnotationMissionSessionList_schema_items_properties_AnnotationMissionChatList_items_type]object
+	//
+	// example:
+	//
+	// 执行失败：查找元素或操作超时,outTaskId:trademark_regnew_public_cn-zz4310rp1lb,flowId:null,nodeUUID:541b6c71-8cce-4ab0-af84-713ca9741821
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// [parameters_AnnotationMissionSessionList_schema_items_properties_AnnotationMissionChatList_items_properties_AnnotationMissionChatTagInfoList_type]array
+	//
 	// example:
 	//
 	// 76E93048-F90F-57B7-BD46-6097611A706D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// [parameters_AnnotationMissionSessionList_schema_items_properties_AnnotationMissionChatList_items_properties_AnnotationMissionChatVocabularyInfoList_items_properties_InstanceId_description]instance ID
+	//
 	// example:
 	//
 	// true
@@ -116,9 +130,18 @@ func (s *SaveAnnotationMissionSessionListResponseBody) Validate() error {
 }
 
 type SaveAnnotationMissionSessionListResponseBodyData struct {
-	Message                                 *string                                                                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	MessageList                             []*string                                                                                `json:"MessageList,omitempty" xml:"MessageList,omitempty" type:"Repeated"`
+	// [parameters_AnnotationMissionSessionList_schema_items_properties_AnnotationMissionChatList_items_properties_AnnotationMissionChatTagInfoList_items_properties_ModifiedTime_type]integer
+	//
+	// example:
+	//
+	// 执行失败：查找元素或操作超时,outTaskId:trademark_regnew_public_cn-zz4310rp1lb,flowId:null,nodeUUID:541b6c71-8cce-4ab0-af84-713ca9741821
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// [parameters_AnnotationMissionSessionList_schema_items_properties_AnnotationMissionChatList_items_properties_AnnotationMissionChatVocabularyInfoList_items_description]Table of hot word annotation information for the annotation job chat
+	MessageList []*string `json:"MessageList,omitempty" xml:"MessageList,omitempty" type:"Repeated"`
+	// [parameters_AnnotationMissionSessionList_schema_items_properties_AnnotationMissionChatList_items_properties_AnnotationMissionSessionId_description]Session ID
 	SaveAnnotationMissionSessionListRequest *SaveAnnotationMissionSessionListResponseBodyDataSaveAnnotationMissionSessionListRequest `json:"SaveAnnotationMissionSessionListRequest,omitempty" xml:"SaveAnnotationMissionSessionListRequest,omitempty" type:"Struct"`
+	// [parameters_AnnotationMissionSessionList_schema_items_properties_AnnotationMissionChatList_items_properties_AnnotationMissionChatVocabularyInfoList_description]Table of hot word annotation information for the annotation job chat
+	//
 	// example:
 	//
 	// true
@@ -179,6 +202,11 @@ func (s *SaveAnnotationMissionSessionListResponseBodyData) Validate() error {
 }
 
 type SaveAnnotationMissionSessionListResponseBodyDataSaveAnnotationMissionSessionListRequest struct {
+	// [parameters_AnnotationMissionSessionList_schema_items_properties_AnnotationMissionChatList_items_properties_OccurTime_description]Trigger time
+	//
+	// example:
+	//
+	// []
 	AnnotationMissionSessionListJsonString *string `json:"AnnotationMissionSessionListJsonString,omitempty" xml:"AnnotationMissionSessionListJsonString,omitempty"`
 }
 

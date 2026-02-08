@@ -24,26 +24,38 @@ type iDescribeDsReportsResponseBody interface {
 }
 
 type DescribeDsReportsResponseBody struct {
+	// API status code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Conversation flow information, in the format: key:{value: Count}
+	//
 	// example:
 	//
-	// {}
+	// "{\\"标签1\\":{\\"标签值1\\":2},\\"标签2\\":{\\"标签值1\\":2},\\"标签3\\":{\\"标签值1\\":1,\\"标签值2\\":1}}"
 	DsReports *string `json:"DsReports,omitempty" xml:"DsReports,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 1364f208-982d-4d0c-89aa-d56e22b47589
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded
+	//
 	// example:
 	//
 	// true

@@ -20,22 +20,30 @@ type iSubmitRecordingRequest interface {
 }
 
 type SubmitRecordingRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Script recording data
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"contactId":"3d35c0487cc041abb7ad0ce61752601f","duration":27,"fileName":"ce2659e5-a20b-4f8e-91b5-5cd909c6b96e_3d35c0487cc041abb7ad0ce61752601f.wav","filePath":"oss://ForCompatibility/waveforms/","startTime":1579057583670,"type":"Merged"}
 	MergedRecording *string `json:"MergedRecording,omitempty" xml:"MergedRecording,omitempty"`
+	// Script recording data
+	//
 	// example:
 	//
 	// {"contactId":"3d35c0487cc041abb7ad0ce61752601f","duration":27,"fileName":"ce2659e5-a20b-4f8e-91b5-5cd909c6b96e_3d35c0487cc041abb7ad0ce61752601f.wav","filePath":"oss://ForCompatibility/waveforms/","startTime":1579057583670,"type":"Source"}
 	ResourceRecording *string `json:"ResourceRecording,omitempty" xml:"ResourceRecording,omitempty"`
+	// Job ID
+	//
 	// This parameter is required.
 	//
 	// example:

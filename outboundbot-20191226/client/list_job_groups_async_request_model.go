@@ -14,6 +14,8 @@ type iListJobGroupsAsyncRequest interface {
 }
 
 type ListJobGroupsAsyncRequest struct {
+	// When ListJobGroup is invoked in asynchronous mode, the value of AsyncTaskId returned by ListJobGroup. You can use this ID to retrieve the result of the asynchronous query.
+	//
 	// This parameter is required.
 	//
 	// example:

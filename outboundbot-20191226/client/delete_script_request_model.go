@@ -16,12 +16,16 @@ type iDeleteScriptRequest interface {
 }
 
 type DeleteScriptRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// b3d5ac22-9643-49c6-aa84-777f6656f9f5
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// ID of the script to delete
+	//
 	// This parameter is required.
 	//
 	// example:

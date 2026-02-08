@@ -24,26 +24,38 @@ type iGetContactWhiteListResponseBody interface {
 }
 
 type GetContactWhiteListResponseBody struct {
+	// API status code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Contact list
+	//
 	// example:
 	//
 	// {}
 	ContactWhitelistList *GetContactWhiteListResponseBodyContactWhitelistList `json:"ContactWhitelistList,omitempty" xml:"ContactWhitelistList,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded
+	//
 	// example:
 	//
 	// true
@@ -122,18 +134,26 @@ func (s *GetContactWhiteListResponseBody) Validate() error {
 }
 
 type GetContactWhiteListResponseBodyContactWhitelistList struct {
+	// Contact list
+	//
 	// example:
 	//
 	// {}
 	List []*GetContactWhiteListResponseBodyContactWhitelistListList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number per page
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count
+	//
 	// example:
 	//
 	// 100
@@ -198,28 +218,50 @@ func (s *GetContactWhiteListResponseBodyContactWhitelistList) Validate() error {
 }
 
 type GetContactWhiteListResponseBodyContactWhitelistListList struct {
+	// Whitelist ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	ContactWhiteListId *string `json:"ContactWhiteListId,omitempty" xml:"ContactWhiteListId,omitempty"`
+	// Creation Time
+	//
 	// example:
 	//
 	// 1640174411848
-	CreationTime *int64  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Creator      *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// Creator
+	//
+	// example:
+	//
+	// 测试123
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Name
+	//
+	// example:
+	//
+	// 张三
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Operator
+	//
 	// example:
 	//
 	// xxx
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// Phone number
+	//
 	// example:
 	//
 	// 13959999999
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// Remark
+	//
 	// example:
 	//
 	// xxxx

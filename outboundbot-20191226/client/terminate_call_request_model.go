@@ -16,12 +16,18 @@ type iTerminateCallRequest interface {
 }
 
 type TerminateCallRequest struct {
+	// Call ID
+	//
+	// > You can obtain it by calling the DescribeJob API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1528189846043
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:

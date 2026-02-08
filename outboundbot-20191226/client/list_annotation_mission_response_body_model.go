@@ -24,23 +24,34 @@ type iListAnnotationMissionResponseBody interface {
 }
 
 type ListAnnotationMissionResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// OK
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data
 	Data *ListAnnotationMissionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Additional information. The value is as follows: If the request is normal, returns "success". If the request is abnormal, returns the specific error code.
+	//
 	// example:
 	//
 	// CDR \\"job-c7b8a817-b8e8-40f3-b7ad-f28dcea218ff\\" doesn\\"t exists.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the invocation succeeded. true: The invocation succeeded. false: Failed to Invocate.
+	//
 	// example:
 	//
 	// true
@@ -119,27 +130,40 @@ func (s *ListAnnotationMissionResponseBody) Validate() error {
 }
 
 type ListAnnotationMissionResponseBodyData struct {
+	// Annotation job list
 	AnnotationMissionList []*ListAnnotationMissionResponseBodyDataAnnotationMissionList `json:"AnnotationMissionList,omitempty" xml:"AnnotationMissionList,omitempty" type:"Repeated"`
+	// Additional information. The value is as follows: If the request is normal, returns "success". If the request is abnormal, returns the specific error code.
+	//
 	// example:
 	//
 	// CDR \\"job-c7b8a817-b8e8-40f3-b7ad-f28dcea218ff\\" doesn\\"t exists.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Page index
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// Number of entries displayed per page
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates whether the invocation succeeded. true: The invocation succeeded. false: Failed to Invocate.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total count
+	//
 	// example:
 	//
 	// 30
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Total number of pages
+	//
 	// example:
 	//
 	// 4
@@ -231,62 +255,132 @@ func (s *ListAnnotationMissionResponseBodyData) Validate() error {
 }
 
 type ListAnnotationMissionResponseBodyDataAnnotationMissionList struct {
+	// Annotation data source. 1: Outbound call, 2: Navigation
+	//
 	// example:
 	//
 	// 1
-	AnnotationMissionDataSourceType      *int32   `json:"AnnotationMissionDataSourceType,omitempty" xml:"AnnotationMissionDataSourceType,omitempty"`
+	AnnotationMissionDataSourceType *int32 `json:"AnnotationMissionDataSourceType,omitempty" xml:"AnnotationMissionDataSourceType,omitempty"`
+	// List of annotation debug data sources
+	//
+	// > Note: An additional category 0 will be included in the return value, for example: [0,1], [0,2], or [0,1,2].
 	AnnotationMissionDebugDataSourceList []*int32 `json:"AnnotationMissionDebugDataSourceList,omitempty" xml:"AnnotationMissionDebugDataSourceList,omitempty" type:"Repeated"`
+	// Job ID
+	//
 	// example:
 	//
 	// ddce607f-f537-4ebd-9914-cf45671defb9
-	AnnotationMissionId   *string `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
+	AnnotationMissionId *string `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
+	// Task Name
+	//
+	// example:
+	//
+	// 体验场景--移车-标注任务-20230220-141347
 	AnnotationMissionName *string `json:"AnnotationMissionName,omitempty" xml:"AnnotationMissionName,omitempty"`
+	// Annotation status
+	//
+	// - 1: In progress
+	//
+	// - 2: Completed
+	//
+	// - 3: Shutdown
+	//
 	// example:
 	//
 	// 1
 	AnnotationStatus *int32 `json:"AnnotationStatus,omitempty" xml:"AnnotationStatus,omitempty"`
+	// End time of the conversation time filter condition for the annotation job
+	//
 	// example:
 	//
 	// 1684511999000
 	ConversationTimeEndFilter *int64 `json:"ConversationTimeEndFilter,omitempty" xml:"ConversationTimeEndFilter,omitempty"`
+	// Start time of the conversation time filter condition for the annotation job
+	//
 	// example:
 	//
 	// 1683216000000
 	ConversationTimeStartFilter *int64 `json:"ConversationTimeStartFilter,omitempty" xml:"ConversationTimeStartFilter,omitempty"`
+	// Creation Time
+	//
 	// example:
 	//
 	// 1676170339515
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Whether to exclude call records already annotated by other jobs
+	//
 	// example:
 	//
 	// false
 	ExcludeOtherMissionSession *bool `json:"ExcludeOtherMissionSession,omitempty" xml:"ExcludeOtherMissionSession,omitempty"`
+	// Completion time of the annotation job
+	//
 	// example:
 	//
 	// 1683443903785
 	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// instance ID
+	//
 	// example:
 	//
 	// 32be9d94-1346-4c4a-a4d0-ccd379f87013
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Maximum limit for sampling quantity
+	//
 	// example:
 	//
 	// 1
-	SamplingCount       *int32  `json:"SamplingCount,omitempty" xml:"SamplingCount,omitempty"`
+	SamplingCount *int32 `json:"SamplingCount,omitempty" xml:"SamplingCount,omitempty"`
+	// Sampling description
+	//
+	// example:
+	//
+	// 标注
 	SamplingDescription *string `json:"SamplingDescription,omitempty" xml:"SamplingDescription,omitempty"`
+	// Sampling ratio
+	//
 	// example:
 	//
 	// 1
 	SamplingRate *int32 `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
+	// Sampling type
+	//
 	// example:
 	//
 	// 1
-	SamplingType               *int32   `json:"SamplingType,omitempty" xml:"SamplingType,omitempty"`
+	SamplingType *int32 `json:"SamplingType,omitempty" xml:"SamplingType,omitempty"`
+	// List of call termination types used when creating the job:
+	//
+	// - 1: Normal completion
+	//
+	// - 2: Bot hang-up after failed detection
+	//
+	// - 3: Hang-up due to silence timeout
+	//
+	// - 4: User hang-up after failed detection
+	//
+	// - 5: User hang-up without reason
+	//
+	// - 6: Hit intent and transferred to human agent
+	//
+	// - 7: Failed detection and transferred to human agent
+	//
+	// - 8: No interaction from user side
+	//
+	// - 9: System Exception break
+	//
+	// - 10: Hit intent and transferred to IVR
+	//
+	// - 11: Failed detection and transferred to IVR
 	SessionEndReasonFilterList []*int32 `json:"SessionEndReasonFilterList,omitempty" xml:"SessionEndReasonFilterList,omitempty" type:"Repeated"`
+	// Number of completed annotation sessions
+	//
 	// example:
 	//
 	// 1
 	SessionFinishCount *int32 `json:"SessionFinishCount,omitempty" xml:"SessionFinishCount,omitempty"`
+	// Total number of annotation jobs
+	//
 	// example:
 	//
 	// 1

@@ -24,26 +24,38 @@ type iGetSummaryInfoResponseBody interface {
 }
 
 type GetSummaryInfoResponseBody struct {
+	// List of instances
+	//
 	// example:
 	//
 	// []
 	AgentBotInstanceSummaryList []*GetSummaryInfoResponseBodyAgentBotInstanceSummaryList `json:"AgentBotInstanceSummaryList,omitempty" xml:"AgentBotInstanceSummaryList,omitempty" type:"Repeated"`
+	// Response code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded
+	//
 	// example:
 	//
 	// true
@@ -126,18 +138,26 @@ func (s *GetSummaryInfoResponseBody) Validate() error {
 }
 
 type GetSummaryInfoResponseBodyAgentBotInstanceSummaryList struct {
+	// Instance ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Total number of outbound calls
+	//
 	// example:
 	//
 	// 12
 	TotalCallCount *int64 `json:"TotalCallCount,omitempty" xml:"TotalCallCount,omitempty"`
+	// Total call duration
+	//
 	// example:
 	//
 	// 10
 	TotalCallTime *int64 `json:"TotalCallTime,omitempty" xml:"TotalCallTime,omitempty"`
+	// Used recording storage space (MB)
+	//
 	// example:
 	//
 	// 10

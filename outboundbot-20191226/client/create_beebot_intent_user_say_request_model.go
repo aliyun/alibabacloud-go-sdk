@@ -18,18 +18,24 @@ type iCreateBeebotIntentUserSayRequest interface {
 }
 
 type CreateBeebotIntentUserSayRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// e5035654-1745-484a-8c5b-165f7c7bcd79
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Scenario ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// User utterance definition description
+	//
 	// This parameter is required.
 	UserSayDefinition *CreateBeebotIntentUserSayRequestUserSayDefinition `json:"UserSayDefinition,omitempty" xml:"UserSayDefinition,omitempty" type:"Struct"`
 }
@@ -79,8 +85,16 @@ func (s *CreateBeebotIntentUserSayRequest) Validate() error {
 }
 
 type CreateBeebotIntentUserSayRequestUserSayDefinition struct {
+	// User utterance
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 你知道xxxxx么？
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Intent ID
+	//
 	// This parameter is required.
 	//
 	// example:

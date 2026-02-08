@@ -24,26 +24,38 @@ type iListResourceTagsResponseBody interface {
 }
 
 type ListResourceTagsResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message prompt
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Resource tag information
+	//
 	// example:
 	//
 	// {}
 	ResourceTags *ListResourceTagsResponseBodyResourceTags `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty" type:"Struct"`
+	// Indicates whether the operation succeeded
+	//
 	// example:
 	//
 	// true
@@ -122,18 +134,26 @@ func (s *ListResourceTagsResponseBody) Validate() error {
 }
 
 type ListResourceTagsResponseBodyResourceTags struct {
+	// List of resource tags
+	//
 	// example:
 	//
 	// []
 	List []*ListResourceTagsResponseBodyResourceTagsList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Count per page
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count
+	//
 	// example:
 	//
 	// 100
@@ -198,10 +218,14 @@ func (s *ListResourceTagsResponseBodyResourceTags) Validate() error {
 }
 
 type ListResourceTagsResponseBodyResourceTagsList struct {
+	// Resource tag key
+	//
 	// example:
 	//
 	// name
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Resource tag value
+	//
 	// example:
 	//
 	// xxx

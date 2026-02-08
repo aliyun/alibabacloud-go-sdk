@@ -18,10 +18,35 @@ type iImportScriptRequest interface {
 }
 
 type ImportScriptRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 00b37342-e759-4fe5-b296-aef775933af0
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NluEngine  *string `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
+	// NLU engine (applicable only to LLM scenarios).
+	//
+	// Enumeration:
+	//
+	// - Prompts: LLM scenario.
+	//
+	// - Empty for non-LLM scenarios.
+	//
+	// example:
+	//
+	// Prompts
+	NluEngine *string `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
+	// URL of the scenario JSON file used for import.
+	//
+	// > The value of this parameter is the Folder parameter obtained from the GetJobDataUploadParams API.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// UPLOADED/SCRIPT/136a055e-***-46c6-853a-731b3a2973de/18dc6d79-338f-413c-a5a8-dcce5f05b41a_9bd7916d-a340-4925-a911-92390cbe0f33.json
 	SignatureUrl *string `json:"SignatureUrl,omitempty" xml:"SignatureUrl,omitempty"`
 }
 

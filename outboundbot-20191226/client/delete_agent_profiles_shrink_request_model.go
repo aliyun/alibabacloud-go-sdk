@@ -16,7 +16,10 @@ type iDeleteAgentProfilesShrinkRequest interface {
 }
 
 type DeleteAgentProfilesShrinkRequest struct {
+	// Collection of agent configuration IDs
 	AgentProfileIdsShrink *string `json:"AgentProfileIds,omitempty" xml:"AgentProfileIds,omitempty"`
+	// app_ip (system field, optional)
+	//
 	// example:
 	//
 	// 127.0.0.1

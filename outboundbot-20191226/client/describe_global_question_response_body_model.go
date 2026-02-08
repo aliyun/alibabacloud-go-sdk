@@ -24,23 +24,34 @@ type iDescribeGlobalQuestionResponseBody interface {
 }
 
 type DescribeGlobalQuestionResponseBody struct {
+	// API status code
+	//
 	// example:
 	//
 	// OK
-	Code           *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Global question information
 	GlobalQuestion *DescribeGlobalQuestionResponseBodyGlobalQuestion `json:"GlobalQuestion,omitempty" xml:"GlobalQuestion,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded
+	//
 	// example:
 	//
 	// true
@@ -119,17 +130,38 @@ func (s *DescribeGlobalQuestionResponseBody) Validate() error {
 }
 
 type DescribeGlobalQuestionResponseBodyGlobalQuestion struct {
+	// Answer responses
+	//
+	// example:
+	//
+	// ["你好,我是你的专属客服顾问."]
 	Answers *string `json:"Answers,omitempty" xml:"Answers,omitempty"`
+	// Global script ID
+	//
 	// example:
 	//
 	// f160ec2e-94f2-4c03-87be-ece5b52d5dd9
-	GlobalQuestionId   *string `json:"GlobalQuestionId,omitempty" xml:"GlobalQuestionId,omitempty"`
+	GlobalQuestionId *string `json:"GlobalQuestionId,omitempty" xml:"GlobalQuestionId,omitempty"`
+	// Global question name
+	//
+	// example:
+	//
+	// 你是谁-全局问题
 	GlobalQuestionName *string `json:"GlobalQuestionName,omitempty" xml:"GlobalQuestionName,omitempty"`
+	// Global script type
+	//
 	// example:
 	//
 	// COMMON
 	GlobalQuestionType *string `json:"GlobalQuestionType,omitempty" xml:"GlobalQuestionType,omitempty"`
-	Questions          *string `json:"Questions,omitempty" xml:"Questions,omitempty"`
+	// Global questions
+	//
+	// example:
+	//
+	// ["你是谁","你叫什么"]
+	Questions *string `json:"Questions,omitempty" xml:"Questions,omitempty"`
+	// Scenario ID
+	//
 	// example:
 	//
 	// 290e06a5-6de2-4cc8-8a9c-72b7c152256c

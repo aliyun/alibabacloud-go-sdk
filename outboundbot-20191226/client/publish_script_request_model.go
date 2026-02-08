@@ -18,14 +18,24 @@ type iPublishScriptRequest interface {
 }
 
 type PublishScriptRequest struct {
+	// Description of this scenario publishing operation
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 本次发布了xxxx内容
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// ID of the scenario to publish
+	//
 	// This parameter is required.
 	//
 	// example:

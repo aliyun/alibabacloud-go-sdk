@@ -18,18 +18,24 @@ type iDescribeDialogueNodeStatisticsRequest interface {
 }
 
 type DescribeDialogueNodeStatisticsRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aeff669b-388f-4619-82af-81e177df5628
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Job group ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a3c670d1-01bf-491d-b9aa-759b1a82f47c
 	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	// Limit for displaying statistics
+	//
 	// This parameter is required.
 	//
 	// example:

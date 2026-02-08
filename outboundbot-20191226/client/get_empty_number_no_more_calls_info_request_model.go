@@ -16,12 +16,22 @@ type iGetEmptyNumberNoMoreCallsInfoRequest interface {
 }
 
 type GetEmptyNumberNoMoreCallsInfoRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// db3e679b-7d5e-4d9b-828a-345adca455f3
 	EntryId *string `json:"EntryId,omitempty" xml:"EntryId,omitempty"`
+	// Policy level. The default value is 2 for business instances.
+	//
+	// - 0: System
+	//
+	// - 1: Tenant
+	//
+	// - 2: Instance
+	//
 	// example:
 	//
 	// 2

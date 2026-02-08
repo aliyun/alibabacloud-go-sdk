@@ -20,20 +20,35 @@ type iSubmitScriptReviewRequest interface {
 }
 
 type SubmitScriptReviewRequest struct {
+	// Description
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 第一版本提交审核
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	From        *string `json:"From,omitempty" xml:"From,omitempty"`
+	// Source of the submission for review
+	//
+	// example:
+	//
+	// MAINSITE
+	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Script ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// b0f35dd1-0337-402e-9c4f-3a6c2426950a
+	// af81a389-91f0-4157-8d82-720edd02b66a
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
 }
 

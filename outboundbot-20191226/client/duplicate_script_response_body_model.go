@@ -24,29 +24,41 @@ type iDuplicateScriptResponseBody interface {
 }
 
 type DuplicateScriptResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Scenario ID
+	//
 	// example:
 	//
 	// 6114e7e8-4140-48d9-b46d-65ea29f13fe8
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// Indicates whether the operation succeeded.
+	//
 	// example:
 	//
-	// true
+	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

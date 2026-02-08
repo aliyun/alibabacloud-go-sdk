@@ -34,24 +34,37 @@ type QueryJobsWithResultResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                                   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Jobs           *QueryJobsWithResultResponseBodyJobs     `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Struct"`
-	Labels         []*QueryJobsWithResultResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Job
+	Jobs *QueryJobsWithResultResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Struct"`
+	// Label information that can be used as Filter Conditions.
+	//
+	// > Displays all label information with enumeration values in this task group
+	Labels []*QueryJobsWithResultResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 9bdaa1d1-a036-4451-ab11-ca0373679091
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded
+	//
 	// example:
 	//
 	// true
-	Success       *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Tag names to be collected
 	VariableNames []*string `json:"VariableNames,omitempty" xml:"VariableNames,omitempty" type:"Repeated"`
 }
 
@@ -154,19 +167,28 @@ func (s *QueryJobsWithResultResponseBody) Validate() error {
 }
 
 type QueryJobsWithResultResponseBodyJobs struct {
+	// Job list
 	List []*QueryJobsWithResultResponseBodyJobsList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Total number of pages
+	//
 	// example:
 	//
 	// 1
 	PageCount *int32 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total number of entries
+	//
 	// example:
 	//
 	// 1
@@ -240,16 +262,73 @@ func (s *QueryJobsWithResultResponseBodyJobs) Validate() error {
 }
 
 type QueryJobsWithResultResponseBodyJobsList struct {
+	// Job ID
+	//
 	// example:
 	//
 	// cc231a1d-3c05-4739-8926-193ecf4097ba
-	Id               *string                                            `json:"Id,omitempty" xml:"Id,omitempty"`
-	JobFailureReason *string                                            `json:"JobFailureReason,omitempty" xml:"JobFailureReason,omitempty"`
-	LatestTask       *QueryJobsWithResultResponseBodyJobsListLatestTask `json:"LatestTask,omitempty" xml:"LatestTask,omitempty" type:"Struct"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Job failure reason
+	//
+	// example:
+	//
+	// - Unknown（未知错误）
+	//
+	// - NoAnswer（无人接听）
+	//
+	// - InvalidStrategy（无效的策略，策略配置不正确）
+	//
+	// - TimeUp（调度时发现超时）
+	//
+	// - NoStrategy（策略为空或没有找到）
+	//
+	// - CallFailed（呼叫失败）
+	//
+	// -PerDayCallCountLimit（号码每日呼叫次数限制）
+	//
+	// - ContactBlockList（禁止外呼名单）
+	//
+	// - EmptyNumber（空号不再外呼）
+	//
+	// - JobPerDayCallCountLimit（号码每日呼叫次数限制）
+	//
+	// - VerificationCancelled（呼叫前验证不通过取消）
+	//
+	// - ContactSuspended（止呼）
+	//
+	// - InArrears（欠费）
+	//
+	// - OutOfService（停机）
+	//
+	// - NoneRepeatableJobMaxAttemptCountLimit（ 任务最大尝试次数， 当RepeatBy（@see ）为None时生效）
+	JobFailureReason *string `json:"JobFailureReason,omitempty" xml:"JobFailureReason,omitempty"`
+	// Latest call
+	LatestTask *QueryJobsWithResultResponseBodyJobsListLatestTask `json:"LatestTask,omitempty" xml:"LatestTask,omitempty" type:"Struct"`
+	// Job status.
+	//
+	// - Scheduling(0, "Scheduling")
+	//
+	// - Executing(1, "Executing")
+	//
+	// - Succeeded(2, "Ended - Reached")
+	//
+	// - Paused(3, "Paused")
+	//
+	// - Failed(4, "Ended - Not Reached")
+	//
+	// - Cancelled(5, "Cancelled - Manual Intervention")
+	//
+	// - Drafted(6, "Draft")
+	//
 	// example:
 	//
 	// Succeeded
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Job status name
+	//
+	// example:
+	//
+	// 结束-已触达
 	StatusName *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
 }
 
@@ -316,43 +395,70 @@ func (s *QueryJobsWithResultResponseBodyJobsList) Validate() error {
 }
 
 type QueryJobsWithResultResponseBodyJobsListLatestTask struct {
+	// Call duration
+	//
 	// example:
 	//
 	// 40000
 	CallDuration *int32 `json:"CallDuration,omitempty" xml:"CallDuration,omitempty"`
+	// Call duration
+	//
 	// example:
 	//
 	// 40
 	CallDurationDisplay *string `json:"CallDurationDisplay,omitempty" xml:"CallDurationDisplay,omitempty"`
+	// Call time
+	//
 	// example:
 	//
 	// 1615363297000
-	CallTime           *int64                                                                 `json:"CallTime,omitempty" xml:"CallTime,omitempty"`
-	Contact            *QueryJobsWithResultResponseBodyJobsListLatestTaskContact              `json:"Contact,omitempty" xml:"Contact,omitempty" type:"Struct"`
+	CallTime *int64 `json:"CallTime,omitempty" xml:"CallTime,omitempty"`
+	// Contact
+	Contact *QueryJobsWithResultResponseBodyJobsListLatestTaskContact `json:"Contact,omitempty" xml:"Contact,omitempty" type:"Struct"`
+	// Call abnormal codes
 	DialExceptionCodes []*QueryJobsWithResultResponseBodyJobsListLatestTaskDialExceptionCodes `json:"DialExceptionCodes,omitempty" xml:"DialExceptionCodes,omitempty" type:"Repeated"`
-	Extras             []*QueryJobsWithResultResponseBodyJobsListLatestTaskExtras             `json:"Extras,omitempty" xml:"Extras,omitempty" type:"Repeated"`
+	// Tag names to collect
+	Extras []*QueryJobsWithResultResponseBodyJobsListLatestTaskExtras `json:"Extras,omitempty" xml:"Extras,omitempty" type:"Repeated"`
+	// Is answered
+	//
 	// example:
 	//
 	// true
 	HasAnswered *bool `json:"HasAnswered,omitempty" xml:"HasAnswered,omitempty"`
+	// Is hung up due to rejection
+	//
 	// example:
 	//
 	// false
 	HasHangUpByRejection *bool `json:"HasHangUpByRejection,omitempty" xml:"HasHangUpByRejection,omitempty"`
+	// Indicates whether the playback was completed when the call ended
+	//
 	// example:
 	//
 	// true
 	HasLastPlaybackCompleted *bool `json:"HasLastPlaybackCompleted,omitempty" xml:"HasLastPlaybackCompleted,omitempty"`
+	// Indicates whether the flow has ended
+	//
 	// example:
 	//
 	// true
 	HasReachedEndOfFlow *bool `json:"HasReachedEndOfFlow,omitempty" xml:"HasReachedEndOfFlow,omitempty"`
+	// Call status
+	//
 	// example:
 	//
 	// Succeeded
-	Status     *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusName *string                                                     `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
-	TagHits    []*QueryJobsWithResultResponseBodyJobsListLatestTaskTagHits `json:"TagHits,omitempty" xml:"TagHits,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Call status name
+	//
+	// example:
+	//
+	// 未呼出-超出每日上限
+	StatusName *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
+	// Tag hit information [returned by the old canvas]
+	TagHits []*QueryJobsWithResultResponseBodyJobsListLatestTaskTagHits `json:"TagHits,omitempty" xml:"TagHits,omitempty" type:"Repeated"`
+	// Call result
+	//
 	// example:
 	//
 	// FINISHED
@@ -530,33 +636,72 @@ func (s *QueryJobsWithResultResponseBodyJobsListLatestTask) Validate() error {
 }
 
 type QueryJobsWithResultResponseBodyJobsListLatestTaskContact struct {
+	// Honorific title for the contact. If not provided, it defaults to the same value as the name.
+	//
+	// > Customized by the customer and passed via JSON when executing the outbound call task through an API call.
+	//
+	// example:
+	//
+	// 张先生
 	Honorific *string `json:"Honorific,omitempty" xml:"Honorific,omitempty"`
+	// Contact ID, a UUID generated by the System when uploading the outbound calling list
+	//
 	// example:
 	//
 	// 63860deb-6218-45df-b1e0-76f2b166e790
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Job ID
+	//
 	// example:
 	//
 	// cc231a1d-3c05-4739-8926-193ecf4097ba
 	JobUuid *string `json:"JobUuid,omitempty" xml:"JobUuid,omitempty"`
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Contact name, such as Zhang San
+	//
+	// example:
+	//
+	// 张三
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The contact\\"s phone number
+	//
 	// example:
 	//
 	// 1882020****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The phone number specified by the callee during the conversation. If provided, this number will be actually dialed.
+	//
+	// > Customized by the Customer and passed in JSON format when invoking the API to execute an outbound calling job.
+	//
 	// example:
 	//
 	// 134123****
 	PreferredPhoneNumber *string `json:"PreferredPhoneNumber,omitempty" xml:"PreferredPhoneNumber,omitempty"`
+	// A contact ID uploaded by the customer. This ID must be provided by the business party to avoid ambiguity caused by duplicate names.
+	//
 	// example:
 	//
 	// C01
 	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	Role        *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The role of this contact in the outbound call task. If not specified, no distinction is made. In debt collection scenarios, contact roles can include borrower, co-borrower, guarantor, etc.
+	//
+	// > Customized by the customer and passed via JSON when invoking the API.
+	//
+	// example:
+	//
+	// 借款人
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// Round
+	//
 	// example:
 	//
 	// 151
 	Round *int32 `json:"Round,omitempty" xml:"Round,omitempty"`
+	// The contact\\"s status,
+	//
+	// such as Normal (Available), WrongNumber, or nonexistent number (DoesNotExist).
+	//
+	// > Customized by the Customer and passed in JSON format when invoking the API to execute an outbound calling job.
+	//
 	// example:
 	//
 	// Available
@@ -666,10 +811,17 @@ func (s *QueryJobsWithResultResponseBodyJobsListLatestTaskContact) Validate() er
 }
 
 type QueryJobsWithResultResponseBodyJobsListLatestTaskDialExceptionCodes struct {
+	// Error code
+	//
 	// example:
 	//
 	// 0
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error hint message
+	//
+	// example:
+	//
+	// 无
 	Hint *string `json:"Hint,omitempty" xml:"Hint,omitempty"`
 }
 
@@ -705,8 +857,16 @@ func (s *QueryJobsWithResultResponseBodyJobsListLatestTaskDialExceptionCodes) Va
 
 type QueryJobsWithResultResponseBodyJobsListLatestTaskExtras struct {
 	// Key
+	//
+	// example:
+	//
+	// 是否已经接通
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// Value
+	//
+	// example:
+	//
+	// 是
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -741,8 +901,18 @@ func (s *QueryJobsWithResultResponseBodyJobsListLatestTaskExtras) Validate() err
 }
 
 type QueryJobsWithResultResponseBodyJobsListLatestTaskTagHits struct {
+	// Tag Group
+	//
+	// example:
+	//
+	// 动物
 	TagGroup *string `json:"TagGroup,omitempty" xml:"TagGroup,omitempty"`
-	TagName  *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// Tag Name
+	//
+	// example:
+	//
+	// 猫幼年期,猫幼年期
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s QueryJobsWithResultResponseBodyJobsListLatestTaskTagHits) String() string {
@@ -776,7 +946,13 @@ func (s *QueryJobsWithResultResponseBodyJobsListLatestTaskTagHits) Validate() er
 }
 
 type QueryJobsWithResultResponseBodyLabels struct {
-	Name      *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Label name
+	//
+	// example:
+	//
+	// 是否满意
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// List of tag values.
 	ValueList []*string `json:"ValueList,omitempty" xml:"ValueList,omitempty" type:"Repeated"`
 }
 

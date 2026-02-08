@@ -22,14 +22,36 @@ type iListInstancesRequest interface {
 }
 
 type ListInstancesRequest struct {
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Name of the Intelligent outbound call instance
+	//
+	// example:
+	//
+	// xxx
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Page number
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The resource group ID.
+	//
+	// > You can obtain this from the Resource Management document via the source API. For more information, see: https://api.aliyun.com/document/ResourceManager/2020-03-31/ListResourceGroups
+	//
 	// example:
 	//
 	// rg-acfm3iugit3uw7a
-	ResourceGroupId *string                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag             []*ListInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// List of tags of business instances.
+	//
+	// >You can obtain it by calling the ListResourceTags API.
+	Tag []*ListInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -99,10 +121,14 @@ func (s *ListInstancesRequest) Validate() error {
 }
 
 type ListInstancesRequestTag struct {
+	// Tag key of the instance.
+	//
 	// example:
 	//
 	// name
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Tag value of the instance.
+	//
 	// example:
 	//
 	// xxx

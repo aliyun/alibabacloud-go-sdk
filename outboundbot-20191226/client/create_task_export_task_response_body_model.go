@@ -24,26 +24,38 @@ type iCreateTaskExportTaskResponseBody interface {
 }
 
 type CreateTaskExportTaskResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// []
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// C377C5FF-4F94-1B23-89D0-50C560623EE4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Export job ID
+	//
 	// example:
 	//
 	// a7d6dcff1b8b40f4a8b769a9c24e7852

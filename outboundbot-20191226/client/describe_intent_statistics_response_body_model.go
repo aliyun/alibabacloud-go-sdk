@@ -36,47 +36,70 @@ type iDescribeIntentStatisticsResponseBody interface {
 }
 
 type DescribeIntentStatisticsResponseBody struct {
+	// API status code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Total number of global intents
+	//
 	// example:
 	//
 	// 100
 	GlobalIntentNum *int32 `json:"GlobalIntentNum,omitempty" xml:"GlobalIntentNum,omitempty"`
+	// Array of global events
+	//
 	// example:
 	//
 	// []
 	GlobalIntents []*DescribeIntentStatisticsResponseBodyGlobalIntents `json:"GlobalIntents,omitempty" xml:"GlobalIntents,omitempty" type:"Repeated"`
+	// Group ID to which the instance belongs.
+	//
 	// example:
 	//
 	// 0c3f352f-d045-491d-9ce7-11f2d2b7775d
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// a4274627-265f-4e14-b2d6-4ee7d4f8593e
-	InstanceId           *string                                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// List of unrecognized intent information
 	IntentsAfterNoAnswer []*DescribeIntentStatisticsResponseBodyIntentsAfterNoAnswer `json:"IntentsAfterNoAnswer,omitempty" xml:"IntentsAfterNoAnswer,omitempty" type:"Repeated"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Total count of flow intents
+	//
 	// example:
 	//
 	// 123
 	ProcessIntentNum *int32 `json:"ProcessIntentNum,omitempty" xml:"ProcessIntentNum,omitempty"`
+	// List of intent information
+	//
 	// example:
 	//
 	// []
 	ProcessIntents []*DescribeIntentStatisticsResponseBodyProcessIntents `json:"ProcessIntents,omitempty" xml:"ProcessIntents,omitempty" type:"Repeated"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded
+	//
 	// example:
 	//
 	// true
@@ -231,27 +254,48 @@ func (s *DescribeIntentStatisticsResponseBody) Validate() error {
 }
 
 type DescribeIntentStatisticsResponseBodyGlobalIntents struct {
+	// Task group ID
+	//
 	// example:
 	//
 	// 0c3f352f-d045-491d-9ce7-11f2d2b7775d
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Hits followed by no acknowledgement
+	//
 	// example:
 	//
 	// 1
 	HitAfterNoAnswer *int32 `json:"HitAfterNoAnswer,omitempty" xml:"HitAfterNoAnswer,omitempty"`
+	// Hit quantity
+	//
 	// example:
 	//
 	// 11
 	HitNum *int32 `json:"HitNum,omitempty" xml:"HitNum,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// a4274627-265f-4e14-b2d6-4ee7d4f8593e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Intent ID
+	//
 	// example:
 	//
 	// 21343425
-	IntentId   *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	IntentId *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// Intent name
+	//
+	// example:
+	//
+	// 请假意图
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	// Type
+	//
+	// GlobalIntent(0): global intent
+	//
+	// ProcessIntent(1): flow intent
+	//
 	// example:
 	//
 	// GlobalIntent
@@ -334,13 +378,35 @@ func (s *DescribeIntentStatisticsResponseBodyGlobalIntents) Validate() error {
 }
 
 type DescribeIntentStatisticsResponseBodyIntentsAfterNoAnswer struct {
-	GroupId          *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	HitAfterNoAnswer *int32  `json:"HitAfterNoAnswer,omitempty" xml:"HitAfterNoAnswer,omitempty"`
+	// Task group ID
+	//
+	// example:
+	//
+	// b24d321a-2a74-4dd1-a0ba-4ab09cef6652
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Hits with no acknowledgement after matching
+	//
+	// example:
+	//
+	// 1
+	HitAfterNoAnswer *int32 `json:"HitAfterNoAnswer,omitempty" xml:"HitAfterNoAnswer,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// a4274627-265f-4e14-b2d6-4ee7d4f8593e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IntentId   *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// Intent ID
+	//
+	// example:
+	//
+	// 10398032
+	IntentId *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// Intent name
+	//
+	// example:
+	//
+	// 请假意图
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
 }
 
@@ -402,28 +468,54 @@ func (s *DescribeIntentStatisticsResponseBodyIntentsAfterNoAnswer) Validate() er
 }
 
 type DescribeIntentStatisticsResponseBodyProcessIntents struct {
+	// Task group ID
+	//
 	// example:
 	//
 	// 0c3f352f-d045-491d-9ce7-11f2d2b7775d
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Hits followed by no acknowledgement
+	//
 	// example:
 	//
 	// 1
 	HitAfterNoAnswer *int32 `json:"HitAfterNoAnswer,omitempty" xml:"HitAfterNoAnswer,omitempty"`
+	// Hit quantity
+	//
 	// example:
 	//
 	// 10
 	HitNum *int32 `json:"HitNum,omitempty" xml:"HitNum,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// a4274627-265f-4e14-b2d6-4ee7d4f8593e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Intent ID
+	//
 	// example:
 	//
 	// 12343
-	IntentId    *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	IntentName  *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	IntentId *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// Intent name
+	//
+	// example:
+	//
+	// 请假意图
+	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	// Quantity percentage
+	//
+	// example:
+	//
+	// 33.33%
 	RateDisplay *string `json:"RateDisplay,omitempty" xml:"RateDisplay,omitempty"`
+	// Type
+	//
+	// - GlobalIntent(0): global intent
+	//
+	// - ProcessIntent(1): flow intent
+	//
 	// example:
 	//
 	// ProcessIntent

@@ -18,16 +18,24 @@ type iGetAgentProfileRequest interface {
 }
 
 type GetAgentProfileRequest struct {
+	// Agent profile ID.
+	//
+	// > You can obtain the agent profile ID of an already created scenario from the ChatbotId response parameter of DescribeScript.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 37ca3ca1ac4b4e57adf3da5b5d939d04
+	// d31794e2a51f47d2901b4094d88311d7
 	AgentProfileId *string `json:"AgentProfileId,omitempty" xml:"AgentProfileId,omitempty"`
+	// app_ip (system field, optional)
+	//
 	// example:
 	//
 	// 127.0.0.1
 	AppIp *string `json:"AppIp,omitempty" xml:"AppIp,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:

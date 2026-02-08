@@ -24,26 +24,37 @@ type iDescribeTTSConfigResponseBody interface {
 }
 
 type DescribeTTSConfigResponseBody struct {
+	// API status code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// f765d3ee-ec03-4765-b235-6877501d99d1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded
+	//
 	// example:
 	//
 	// true
-	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// TTS configuration
 	TTSConfig *DescribeTTSConfigResponseBodyTTSConfig `json:"TTSConfig,omitempty" xml:"TTSConfig,omitempty" type:"Struct"`
 }
 
@@ -119,23 +130,38 @@ func (s *DescribeTTSConfigResponseBody) Validate() error {
 }
 
 type DescribeTTSConfigResponseBodyTTSConfig struct {
+	// AppKey for invoking TTS
+	//
+	// example:
+	//
+	// p2SjSj4zxxxxxxxx
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// 947e0875-b5d4-4b33-b18c-7b2cf85bcb4f
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Service Type
+	//
 	// example:
 	//
 	// Managed
 	NlsServiceType *string `json:"NlsServiceType,omitempty" xml:"NlsServiceType,omitempty"`
+	// Speech rate
+	//
 	// example:
 	//
 	// -150
 	SpeechRate *string `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	// TTS model
+	//
 	// example:
 	//
 	// xiaoyun
 	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	// Volume
+	//
 	// example:
 	//
 	// 100

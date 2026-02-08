@@ -24,26 +24,37 @@ type iGetAgentProfileResponseBody interface {
 }
 
 type GetAgentProfileResponseBody struct {
+	// response code
+	//
 	// example:
 	//
 	// OK
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data
 	Data *GetAgentProfileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 7A573837-3AD3-54CF-930A-07A3287042C2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// is succeeded
+	//
 	// example:
 	//
-	// true
+	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -119,10 +130,14 @@ func (s *GetAgentProfileResponseBody) Validate() error {
 }
 
 type GetAgentProfileResponseBodyData struct {
+	// agent configuration ID
+	//
 	// example:
 	//
-	// 37ca3ca1ac4b4e57adf3da5b5d939d04
+	// d31794e2a51f47d2901b4094d88311d7
 	AgentProfileId *string `json:"AgentProfileId,omitempty" xml:"AgentProfileId,omitempty"`
+	// agent configuration template ID
+	//
 	// example:
 	//
 	// default-survey
@@ -133,54 +148,111 @@ type GetAgentProfileResponseBodyData struct {
 	//
 	// ""
 	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
+	// API plugin configuration
+	//
 	// example:
 	//
 	// []
 	ApiPluginJson *string `json:"ApiPluginJson,omitempty" xml:"ApiPluginJson,omitempty"`
+	// Creation Time
+	//
 	// example:
 	//
 	// 1741338619000
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Description
+	//
+	// example:
+	//
+	// 这是一个大模型机器人
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// 7f04f92c-ccfc-4f8f-a816-6902023be5c6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// instruction configuration
+	//
 	// example:
 	//
 	// [{"type":"TransferToAgent","instructions":[{"code":"Transfer0","skillGroupId":"123","skillGroupName":"123"}],"timeoutEnable":false},{"type":"CollectNumber","instructions":[]}]
 	InstructionJson *string `json:"InstructionJson,omitempty" xml:"InstructionJson,omitempty"`
-	LabelsJson      *string `json:"LabelsJson,omitempty" xml:"LabelsJson,omitempty"`
+	// Tag Description
+	//
+	// example:
+	//
+	// [{\\"name\\":\\"是否送达\\",\\"description\\":\\"购买的家电是否已经送达\\",\\"valueList\\":\\"[\\\\\\"是\\\\\\",\\\\\\"否\\\\\\"]\\"},{\\"name\\":\\"预约上门时间\\",\\"description\\":\\"收集客户期望的上门安装时间\\",\\"valueList\\":\\"[]\\"}]
+	LabelsJson *string `json:"LabelsJson,omitempty" xml:"LabelsJson,omitempty"`
+	// model ID
+	//
 	// example:
 	//
 	// model_002
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// Model Configuration
+	//
 	// example:
 	//
 	// {}
 	ModelConfig *string `json:"ModelConfig,omitempty" xml:"ModelConfig,omitempty"`
+	// NLU configuration. Parameter configuration:
+	//
+	// - chatbotInstanceId: LLM-based XiaoMi bot instance ID
+	//
+	// - faqCategoryIds: Attached FAQ category IDs
+	//
+	// - llmAgentId: XiaoMi LLM workspace ID
+	//
+	// - llmAgentKey: XiaoMi LLM workspace key
+	//
+	// - llmAgentInstanceId: XiaoMi LLM workspace instance ID
+	//
 	// example:
 	//
 	// {"chatbotInstanceId":"chatbot-cn-j7eiVJZRmb","faqCategoryIds":[30000474726],"llmAgentId":"1246206","llmAgentInstanceId":"outbound_05efb75a-95df-438e-9b9b-8f2c857d5498","llmAgentKey":"d682716514814815ae77757c0bcbda01_p_outbound_public"}
 	NluConfigJson *string `json:"NluConfigJson,omitempty" xml:"NluConfigJson,omitempty"`
+	// prompt (professional mode)
+	//
 	// example:
 	//
 	// ""
-	Prompt     *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// agent configuration
+	//
+	// example:
+	//
+	// {"name":"小x","gender":"男","age":18,"role":"游戏推广员","communicationStyle":["亲切"],"goals":"你好","background":"不是很好","openingPrompt":"你好，我是xxx"}
 	PromptJson *string `json:"PromptJson,omitempty" xml:"PromptJson,omitempty"`
-	Scenario   *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
+	// scenario
+	//
+	// example:
+	//
+	// 测试场景
+	Scenario *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
+	// scenario ID
+	//
 	// example:
 	//
 	// d13ad2d3-3fe6-4352-b38b-bd6559047de8
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// Indicates whether it is a system template.
+	//
 	// example:
 	//
 	// false
 	System *bool `json:"System,omitempty" xml:"System,omitempty"`
+	// Updated At
+	//
 	// example:
 	//
 	// 1741338619000
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Variable configuration
+	//
+	// example:
+	//
+	// [{\\"name\\":\\"name\\",\\"description\\":\\"客户姓名\\"},{\\"name\\":\\"gender\\",\\"description\\":\\"客户性别\\"}]
 	VariablesJson *string `json:"VariablesJson,omitempty" xml:"VariablesJson,omitempty"`
 }
 

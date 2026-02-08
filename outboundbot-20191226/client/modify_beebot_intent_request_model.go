@@ -20,20 +20,28 @@ type iModifyBeebotIntentRequest interface {
 }
 
 type ModifyBeebotIntentRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// e5035654-1745-484a-8c5b-165f7c7bcd79
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Intent definition
+	//
 	// This parameter is required.
 	IntentDefinition *ModifyBeebotIntentRequestIntentDefinition `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty" type:"Struct"`
+	// Intent ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10717802
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// Scenario ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -96,8 +104,19 @@ func (s *ModifyBeebotIntentRequest) Validate() error {
 }
 
 type ModifyBeebotIntentRequestIntentDefinition struct {
+	// Intent alias
+	//
+	// example:
+	//
+	// 嗯明白了
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// Intent name
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 知道了么
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
 }
 

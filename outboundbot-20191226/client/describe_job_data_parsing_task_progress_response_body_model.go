@@ -24,26 +24,38 @@ type iDescribeJobDataParsingTaskProgressResponseBody interface {
 }
 
 type DescribeJobDataParsingTaskProgressResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Progress
+	//
 	// example:
 	//
 	// {}
 	Progress *DescribeJobDataParsingTaskProgressResponseBodyProgress `json:"Progress,omitempty" xml:"Progress,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded
+	//
 	// example:
 	//
 	// true
@@ -122,23 +134,48 @@ func (s *DescribeJobDataParsingTaskProgressResponseBody) Validate() error {
 }
 
 type DescribeJobDataParsingTaskProgressResponseBodyProgress struct {
+	// Failure error code
+	//
 	// example:
 	//
 	// Permission.JobStatus
 	FailErrorCode *string `json:"FailErrorCode,omitempty" xml:"FailErrorCode,omitempty"`
+	// Failure reason
+	//
 	// example:
 	//
 	// CreateCorpus
-	FailReason  *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+	FailReason *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+	// Download URL for the file containing records of parsing failures [Deprecated]
+	//
+	// example:
+	//
+	// xxxx
 	FeedbackUrl *string `json:"FeedbackUrl,omitempty" xml:"FeedbackUrl,omitempty"`
+	// Number of jobs being processed
+	//
 	// example:
 	//
 	// 2
 	HandledJobCount *int32 `json:"HandledJobCount,omitempty" xml:"HandledJobCount,omitempty"`
+	// Job status
+	//
+	// - Pending: Pending
+	//
+	// - InProgress: In progress
+	//
+	// - Finished: Finished
+	//
+	// - PartialFinished: Partially finished
+	//
+	// - Failed: Failed
+	//
 	// example:
 	//
 	// Pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Total number of jobs
+	//
 	// example:
 	//
 	// 3

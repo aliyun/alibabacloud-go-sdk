@@ -24,26 +24,38 @@ type iGetContactBlockListResponseBody interface {
 }
 
 type GetContactBlockListResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Contact list
+	//
 	// example:
 	//
 	// {}
 	ContactBlocklistList *GetContactBlockListResponseBodyContactBlocklistList `json:"ContactBlocklistList,omitempty" xml:"ContactBlocklistList,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded
+	//
 	// example:
 	//
 	// true
@@ -122,18 +134,26 @@ func (s *GetContactBlockListResponseBody) Validate() error {
 }
 
 type GetContactBlockListResponseBodyContactBlocklistList struct {
+	// Array data
+	//
 	// example:
 	//
 	// []
 	List []*GetContactBlockListResponseBodyContactBlocklistListList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of entries per page
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count
+	//
 	// example:
 	//
 	// 100
@@ -198,34 +218,50 @@ func (s *GetContactBlockListResponseBodyContactBlocklistList) Validate() error {
 }
 
 type GetContactBlockListResponseBodyContactBlocklistListList struct {
+	// Unique key of the outbound call blocklist
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	ContactBlockListId *string `json:"ContactBlockListId,omitempty" xml:"ContactBlockListId,omitempty"`
+	// Creation Time
+	//
 	// example:
 	//
 	// 1640077685465
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// Creator
+	//
 	// example:
 	//
 	// xxx
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Name
+	//
 	// example:
 	//
 	// xxx
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Operator
+	//
 	// example:
 	//
 	// xxx
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// Phone number
+	//
 	// example:
 	//
 	// 1388888888
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// Remark
+	//
 	// example:
 	//
 	// xxxx

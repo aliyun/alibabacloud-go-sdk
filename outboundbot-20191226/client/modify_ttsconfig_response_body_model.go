@@ -24,26 +24,37 @@ type iModifyTTSConfigResponseBody interface {
 }
 
 type ModifyTTSConfigResponseBody struct {
+	// API status code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API prompt message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// f765d3ee-ec03-4765-b235-6877501d99d1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// TTS Configuration Information
 	TTSConfig *ModifyTTSConfigResponseBodyTTSConfig `json:"TTSConfig,omitempty" xml:"TTSConfig,omitempty" type:"Struct"`
 }
 
@@ -119,6 +130,8 @@ func (s *ModifyTTSConfigResponseBody) Validate() error {
 }
 
 type ModifyTTSConfigResponseBodyTTSConfig struct {
+	// Instance ID
+	//
 	// example:
 	//
 	// 291cfc6a-8703-4bdd-a99d-9cba32d5288a
@@ -130,23 +143,37 @@ type ModifyTTSConfigResponseBodyTTSConfig struct {
 	// 大于0表示升高音高。
 	//
 	// 小于0表示降低音高。
+	//
+	// example:
+	//
+	// 0
 	PitchRate *string `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
+	// Scenario ID
+	//
 	// example:
 	//
 	// 947e0875-b5d4-4b33-b18c-7b2cf85bcb4f
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// Speech rate
+	//
 	// example:
 	//
 	// 50
 	SpeechRate *string `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	// Configuration ID
+	//
 	// example:
 	//
 	// 2a07b634-e15d-445f-bbcb-fc4ea2df7b87
 	TTSConfigId *string `json:"TTSConfigId,omitempty" xml:"TTSConfigId,omitempty"`
+	// Speech synthesis model
+	//
 	// example:
 	//
 	// xiaoyun
 	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	// Volume
+	//
 	// example:
 	//
 	// 100

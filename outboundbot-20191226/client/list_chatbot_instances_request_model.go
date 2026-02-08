@@ -18,13 +18,26 @@ type iListChatbotInstancesRequest interface {
 }
 
 type ListChatbotInstancesRequest struct {
+	// Access key for the agent workspace
+	//
+	// > This parameter is obtained from ListChatbotAgents. If left empty, agents from all workspaces are queried.
+	//
+	// example:
+	//
+	// 9137ab9c27044921860030adf8590ec4_p_outbound_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Page number
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of items
+	//
+	// > The value of this parameter must be less than or equal to 50.
+	//
 	// This parameter is required.
 	//
 	// example:

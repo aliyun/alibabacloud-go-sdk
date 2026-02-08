@@ -18,18 +18,24 @@ type iDescribeIntentStatisticsRequest interface {
 }
 
 type DescribeIntentStatisticsRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c3c92de8-e4bd-4db4-a962-50f8acce40bc
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Job group ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 040355a9-e80c-4308-b85c-aa5b9fd25246
 	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	// Number of statistics entries to display (Required)
+	//
 	// example:
 	//
 	// 5

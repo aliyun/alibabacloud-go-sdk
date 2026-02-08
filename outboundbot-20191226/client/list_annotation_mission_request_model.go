@@ -30,32 +30,60 @@ type iListAnnotationMissionRequest interface {
 }
 
 type ListAnnotationMissionRequest struct {
+	// Annotation job ID
+	//
 	// example:
 	//
 	// 0943abcb-bd7d-4ace-8cf7-97d39d4dd0b9
-	AnnotationMissionId        *string  `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
-	AnnotationMissionName      *string  `json:"AnnotationMissionName,omitempty" xml:"AnnotationMissionName,omitempty"`
+	AnnotationMissionId *string `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
+	// Annotation job name
+	//
+	// example:
+	//
+	// 全景服务场景-标注任务-20230316-103253
+	AnnotationMissionName *string `json:"AnnotationMissionName,omitempty" xml:"AnnotationMissionName,omitempty"`
+	// Annotation status filter condition [Historical parameter, deprecated]
 	AnnotationStatusListFilter []*int32 `json:"AnnotationStatusListFilter,omitempty" xml:"AnnotationStatusListFilter,omitempty" type:"Repeated"`
+	// Filter condition for annotation status
+	//
+	// > Format: [1]. Multiple choice is supported. The meanings of specific array values are as follows:
+	//
+	// - 1: In progress
+	//
+	// - 2: Completed
+	//
+	// - 3: Shutdown
+	//
 	// example:
 	//
 	// [1]
 	AnnotationStatusListStringFilter *string `json:"AnnotationStatusListStringFilter,omitempty" xml:"AnnotationStatusListStringFilter,omitempty"`
+	// End time for filtering annotation jobs by creation time
+	//
 	// example:
 	//
 	// 1673280000000
 	CreateTimeEndFilter *int64 `json:"CreateTimeEndFilter,omitempty" xml:"CreateTimeEndFilter,omitempty"`
+	// Annotation job creation filter start time
+	//
 	// example:
 	//
 	// 1661961600000
 	CreateTimeStartFilter *int64 `json:"CreateTimeStartFilter,omitempty" xml:"CreateTimeStartFilter,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// 191ef468-75a2-4004-9441-a5c31bf5cd9d
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// Number of entries displayed per page
+	//
 	// example:
 	//
 	// 10

@@ -34,41 +34,60 @@ type iDialogueRequest interface {
 }
 
 type DialogueRequest struct {
+	// action to be executed for outbound calls, such as Hangup
+	//
 	// example:
 	//
 	// broadcast
-	ActionKey    *string `json:"ActionKey,omitempty" xml:"ActionKey,omitempty"`
+	ActionKey *string `json:"ActionKey,omitempty" xml:"ActionKey,omitempty"`
+	// parameters required to execute the action (deprecated)
+	//
+	// example:
+	//
+	// ""
 	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
+	// call ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1528189846043
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// call type, usually Outbound
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Outbound
 	CallType *string `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	// Called number
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 135****4353
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// calling number
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1***6
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Scenario ID
+	//
 	// example:
 	//
 	// 6cea9bed-63e6-439e-ae4c-b3333efff53d
@@ -79,11 +98,19 @@ type DialogueRequest struct {
 	//
 	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// Job ID
+	//
 	// example:
 	//
 	// ff44709e-39a6-43ba-959b-20fcabe3e496
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// User utterance
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 是的
 	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
 }
 

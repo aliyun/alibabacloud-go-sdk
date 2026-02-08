@@ -28,31 +28,50 @@ type iGetBaseStrategyPeriodResponseBody interface {
 }
 
 type GetBaseStrategyPeriodResponseBody struct {
+	// API status code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Is weekend only
+	//
 	// example:
 	//
 	// false
 	OnlyWeekdays *bool `json:"OnlyWeekdays,omitempty" xml:"OnlyWeekdays,omitempty"`
+	// Is workday only
+	//
+	// example:
+	//
+	// false
 	OnlyWorkdays *bool `json:"OnlyWorkdays,omitempty" xml:"OnlyWorkdays,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Is successful
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Policy execution time segment
+	//
 	// example:
 	//
 	// []
@@ -153,18 +172,26 @@ func (s *GetBaseStrategyPeriodResponseBody) Validate() error {
 }
 
 type GetBaseStrategyPeriodResponseBodyWorkingTime struct {
+	// Start Time
+	//
 	// example:
 	//
 	// 00:00:00
 	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// Daily start time in milliseconds
+	//
 	// example:
 	//
 	// 0
 	BeginTimeMillis *int64 `json:"BeginTimeMillis,omitempty" xml:"BeginTimeMillis,omitempty"`
+	// End Time
+	//
 	// example:
 	//
 	// 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Daily end time in milliseconds
+	//
 	// example:
 	//
 	// 0

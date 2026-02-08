@@ -24,23 +24,34 @@ type iListAnnotationMissionSessionResponseBody interface {
 }
 
 type ListAnnotationMissionSessionResponseBody struct {
+	// API status code
+	//
 	// example:
 	//
 	// OK
-	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data
 	Data *ListAnnotationMissionSessionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Additional information. The value is interpreted as follows: If the request is normal, returns "success". If the request is abnormal, returns the specific error code.
+	//
 	// example:
 	//
 	// bp.java.nopowerContact
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the invocation succeeded. true: The invocation succeeded. false: The invocation failed.
+	//
 	// example:
 	//
 	// true
@@ -119,19 +130,28 @@ func (s *ListAnnotationMissionSessionResponseBody) Validate() error {
 }
 
 type ListAnnotationMissionSessionResponseBodyData struct {
+	// Job ID
+	//
 	// example:
 	//
 	// b3f2c931-5180-43ca-b4aa-2baee2d73c8b
-	AnnotationMissionId          *string                                                                     `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
+	AnnotationMissionId *string `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
+	// Session list
 	AnnotationMissionSessionList []*ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionList `json:"AnnotationMissionSessionList,omitempty" xml:"AnnotationMissionSessionList,omitempty" type:"Repeated"`
+	// Additional information. The value is interpreted as follows: If the request is normal, returns "success". If the request is abnormal, returns the specific error code.
+	//
 	// example:
 	//
 	// bp.java.nopowerContact
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the invocation succeeded. true: The invocation succeeded. false: The invocation failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total count
+	//
 	// example:
 	//
 	// 30
@@ -205,7 +225,10 @@ func (s *ListAnnotationMissionSessionResponseBodyData) Validate() error {
 }
 
 type ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionList struct {
+	// Chat list
 	AnnotationMissionChatList []*ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatList `json:"AnnotationMissionChatList,omitempty" xml:"AnnotationMissionChatList,omitempty" type:"Repeated"`
+	// Job ID
+	//
 	// example:
 	//
 	// 64ba5ac9-a4e1-4333-b03c-9d4a588c9f6c
@@ -216,42 +239,70 @@ type ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionList st
 	//
 	// 64ba5ac9-a4e1-4333-b03c-9d4a588c9f6c
 	AnnotationMissionSessionId *string `json:"AnnotationMissionSessionId,omitempty" xml:"AnnotationMissionSessionId,omitempty"`
+	// Annotation status
+	//
+	// - 0: Undone (UNDO)
+	//
+	// - 1: In progress (DOING)
+	//
+	// - 2: Completed (DONE)
+	//
+	// - 3: Canceled (CLOSED)
+	//
 	// example:
 	//
 	// 1
 	AnnotationStatus *int32 `json:"AnnotationStatus,omitempty" xml:"AnnotationStatus,omitempty"`
+	// Creation Time
+	//
 	// example:
 	//
 	// 1691117009000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Debug conversation
+	//
 	// example:
 	//
 	// true
 	DebugConversation *bool `json:"DebugConversation,omitempty" xml:"DebugConversation,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// a4274627-265f-4e14-b2d6-4ee7d4f8593e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Task group ID
+	//
 	// example:
 	//
 	// 2f642da1-b00b-4dd6-ac7d-dcbeefd13ff3
 	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	// Job ID
+	//
 	// example:
 	//
 	// 42da7cde-a5e8-45cc-b9d2-828711d95b30
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Updated At
+	//
 	// example:
 	//
 	// 1677987898384
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// Scenario ID
+	//
 	// example:
 	//
 	// 408d6c4d-23e2-41f6-bbdd-f919a8297aa4
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// For outbound calling systems, this is taskId; for navigation, it is conversationId.
+	//
 	// example:
 	//
 	// 40669e52-c1c8-487f-9593-29749086bdc9
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Version number
+	//
 	// example:
 	//
 	// 1
@@ -397,55 +448,148 @@ func (s *ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionLis
 }
 
 type ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatList struct {
-	AnnotationAsrResult                            *string                                                                                                                                            `json:"AnnotationAsrResult,omitempty" xml:"AnnotationAsrResult,omitempty"`
+	// Manually annotated ASR text result, used for computing character accuracy rate
+	//
+	// example:
+	//
+	// []
+	AnnotationAsrResult *string `json:"AnnotationAsrResult,omitempty" xml:"AnnotationAsrResult,omitempty"`
+	// Table of language model annotation information for the annotation job chat
 	AnnotationMissionChatCustomizationDataInfoList []*ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatCustomizationDataInfoList `json:"AnnotationMissionChatCustomizationDataInfoList,omitempty" xml:"AnnotationMissionChatCustomizationDataInfoList,omitempty" type:"Repeated"`
 	// chat id
 	//
 	// example:
 	//
 	// 40669e52-c1c8-487f-9593-29749086bdc9
-	AnnotationMissionChatId                    *string                                                                                                                                        `json:"AnnotationMissionChatId,omitempty" xml:"AnnotationMissionChatId,omitempty"`
+	AnnotationMissionChatId *string `json:"AnnotationMissionChatId,omitempty" xml:"AnnotationMissionChatId,omitempty"`
+	// List of chat intents
 	AnnotationMissionChatIntentUserSayInfoList []*ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatIntentUserSayInfoList `json:"AnnotationMissionChatIntentUserSayInfoList,omitempty" xml:"AnnotationMissionChatIntentUserSayInfoList,omitempty" type:"Repeated"`
-	AnnotationMissionChatTagInfoList           []*ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatTagInfoList           `json:"AnnotationMissionChatTagInfoList,omitempty" xml:"AnnotationMissionChatTagInfoList,omitempty" type:"Repeated"`
-	AnnotationMissionChatVocabularyInfoList    []*ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatVocabularyInfoList    `json:"AnnotationMissionChatVocabularyInfoList,omitempty" xml:"AnnotationMissionChatVocabularyInfoList,omitempty" type:"Repeated"`
+	// List of tag mapping relationships attached to the annotated chat
+	AnnotationMissionChatTagInfoList []*ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatTagInfoList `json:"AnnotationMissionChatTagInfoList,omitempty" xml:"AnnotationMissionChatTagInfoList,omitempty" type:"Repeated"`
+	// Table of hot word annotation information for the annotation mission chat
+	AnnotationMissionChatVocabularyInfoList []*ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatVocabularyInfoList `json:"AnnotationMissionChatVocabularyInfoList,omitempty" xml:"AnnotationMissionChatVocabularyInfoList,omitempty" type:"Repeated"`
+	// Job ID
+	//
 	// example:
 	//
 	// 03f56192-fa8a-40dc-9558-39b357f0618f
-	AnnotationMissionId        *string `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
+	AnnotationMissionId *string `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
+	// Session ID
+	//
+	// example:
+	//
+	// 03f56192-fa8a-40dc-9558-39b357f0618f
 	AnnotationMissionSessionId *string `json:"AnnotationMissionSessionId,omitempty" xml:"AnnotationMissionSessionId,omitempty"`
+	// Chat annotation status
+	//
+	// - 0: Not started (UNDO)
+	//
+	// - 1: In progress (DOING)
+	//
+	// - 2: Completed (DONE)
+	//
+	// - 3: Canceled (CLOSED)
+	//
 	// example:
 	//
 	// 1
 	AnnotationStatus *int32 `json:"AnnotationStatus,omitempty" xml:"AnnotationStatus,omitempty"`
+	// Bot response content
+	//
 	// example:
 	//
 	// {\\"Answer\\": u\\"\\u53c2\\u8003\\u6587\\u6863\\uff1ahttps://help.aliyun.com/document_detail/215402.html\\", \\"QuestionId\\": 371159, \\"Uuid\\": \\"ac14000116781568127896224d0044\\"}
-	Answer              *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
-	AsrAnnotationStatus *int32  `json:"AsrAnnotationStatus,omitempty" xml:"AsrAnnotationStatus,omitempty"`
+	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// ASR annotation status
+	//
+	// - 0: Undone (UNDO)
+	//
+	// - 1: In progress (DOING)
+	//
+	// - 2: Done (DONE)
+	//
+	// - 3: Canceled (CLOSED)
+	//
+	// example:
+	//
+	// 1
+	AsrAnnotationStatus *int32 `json:"AsrAnnotationStatus,omitempty" xml:"AsrAnnotationStatus,omitempty"`
+	// Creation Time
+	//
 	// example:
 	//
 	// 1682216045619
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// 77343553-cbc2-4487-a35c-869f1e86c573
-	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IntentAnnotationStatus *int32  `json:"IntentAnnotationStatus,omitempty" xml:"IntentAnnotationStatus,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Semantics annotation status
+	//
+	// - 0: Undone (UNDO)
+	//
+	// - 1: In progress (DOING)
+	//
+	// - 2: Completed (DONE)
+	//
+	// - 3: Canceled (CLOSED)
+	//
+	// example:
+	//
+	// 1
+	IntentAnnotationStatus *int32 `json:"IntentAnnotationStatus,omitempty" xml:"IntentAnnotationStatus,omitempty"`
+	// Updated At
+	//
 	// example:
 	//
 	// 1571649300000
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// Trigger Time
+	//
 	// example:
 	//
 	// 1682390676403
-	OccurTime         *int64  `json:"OccurTime,omitempty" xml:"OccurTime,omitempty"`
+	OccurTime *int64 `json:"OccurTime,omitempty" xml:"OccurTime,omitempty"`
+	// ASR Classification Result
+	//
+	// example:
+	//
+	// []
 	OriginalAsrResult *string `json:"OriginalAsrResult,omitempty" xml:"OriginalAsrResult,omitempty"`
+	// Sequence ID
+	//
 	// example:
 	//
 	// 380578077
-	SequenceId          *string `json:"SequenceId,omitempty" xml:"SequenceId,omitempty"`
-	SubStatus           *int32  `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
-	TagAnnotationStatus *int32  `json:"TagAnnotationStatus,omitempty" xml:"TagAnnotationStatus,omitempty"`
+	SequenceId *string `json:"SequenceId,omitempty" xml:"SequenceId,omitempty"`
+	// Annotation action: 1 correct, 20 match fault not optimized, 21 match fault optimized, 3 not overwritten, 4 invalid
+	//
+	// example:
+	//
+	// 1
+	SubStatus *int32 `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	// Label annotation status
+	//
+	// - 0: Undone (UNDO)
+	//
+	// - 1: In progress (DOING)
+	//
+	// - 2: Completed (DONE)
+	//
+	// - 3: Canceled (CLOSED)
+	//
+	// example:
+	//
+	// 1
+	TagAnnotationStatus *int32 `json:"TagAnnotationStatus,omitempty" xml:"TagAnnotationStatus,omitempty"`
+	// Translation error identity
+	//
+	// - 0: No
+	//
+	// - 1: Yes
+	//
 	// example:
 	//
 	// 1
@@ -691,36 +835,85 @@ func (s *ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionLis
 
 type ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatCustomizationDataInfoList struct {
 	// id
+	//
+	// example:
+	//
+	// 03f56192-fa8a-40dc-9558-39b357f0618f
 	AnnotationMissionChatCustomizationDataInfoId *string `json:"AnnotationMissionChatCustomizationDataInfoId,omitempty" xml:"AnnotationMissionChatCustomizationDataInfoId,omitempty"`
 	// chat id
+	//
+	// example:
+	//
+	// 03f56192-fa8a-40dc-9558-39b357f0618f
 	AnnotationMissionChatId *string `json:"AnnotationMissionChatId,omitempty" xml:"AnnotationMissionChatId,omitempty"`
+	// Job ID
+	//
 	// example:
 	//
 	// 2f03b24a-fda2-4501-90ba-0a9a59f8dd9d
-	AnnotationMissionId        *string `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
+	AnnotationMissionId *string `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
+	// Session ID
+	//
+	// example:
+	//
+	// 03f56192-fa8a-40dc-9558-39b357f0618f
 	AnnotationMissionSessionId *string `json:"AnnotationMissionSessionId,omitempty" xml:"AnnotationMissionSessionId,omitempty"`
-	Content                    *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Voice annotation text
+	//
+	// example:
+	//
+	// 抱歉哈，可能给您造成困扰了，这边先不打扰您，祝您生活愉快，再见
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Is creation
+	//
 	// example:
 	//
 	// true
 	Create *bool `json:"Create,omitempty" xml:"Create,omitempty"`
+	// Creation Time
+	//
 	// example:
 	//
 	// 1682216045619
-	CreateTime                   *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Description
+	//
+	// example:
+	//
+	// 默认数据
 	CustomizationDataDescription *string `json:"CustomizationDataDescription,omitempty" xml:"CustomizationDataDescription,omitempty"`
 	// id
-	CustomizationDataId     *string `json:"CustomizationDataId,omitempty" xml:"CustomizationDataId,omitempty"`
-	CustomizationDataName   *string `json:"CustomizationDataName,omitempty" xml:"CustomizationDataName,omitempty"`
-	CustomizationDataWeight *int32  `json:"CustomizationDataWeight,omitempty" xml:"CustomizationDataWeight,omitempty"`
+	//
+	// example:
+	//
+	// 03f56192-fa8a-40dc-9558-39b357f0618f
+	CustomizationDataId *string `json:"CustomizationDataId,omitempty" xml:"CustomizationDataId,omitempty"`
+	// Name
+	//
+	// example:
+	//
+	// 默认数据
+	CustomizationDataName *string `json:"CustomizationDataName,omitempty" xml:"CustomizationDataName,omitempty"`
+	// Language model data weight
+	//
+	// example:
+	//
+	// 1
+	CustomizationDataWeight *int32 `json:"CustomizationDataWeight,omitempty" xml:"CustomizationDataWeight,omitempty"`
+	// Indicates whether it has been deleted.
+	//
 	// example:
 	//
 	// true
 	Delete *bool `json:"Delete,omitempty" xml:"Delete,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// d3fbfca8-4208-4d4b-a53a-c4dba5e43a66
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Updated At
+	//
 	// example:
 	//
 	// 1679552585384
@@ -873,44 +1066,73 @@ type ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnn
 	// 77343553-cbc2-4487-a35c-869f1e86c573
 	AnnotationMissionChatId *string `json:"AnnotationMissionChatId,omitempty" xml:"AnnotationMissionChatId,omitempty"`
 	// id
+	//
+	// example:
+	//
+	// 03f56192-fa8a-40dc-9558-39b357f0618f
 	AnnotationMissionChatIntentUserSayInfoId *string `json:"AnnotationMissionChatIntentUserSayInfoId,omitempty" xml:"AnnotationMissionChatIntentUserSayInfoId,omitempty"`
+	// Annotation Job ID
+	//
 	// example:
 	//
 	// 77343553-cbc2-4487-a35c-869f1e86c573
 	AnnotationMissionId *string `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
+	// Session ID
+	//
 	// example:
 	//
 	// 77343553-cbc2-4487-a35c-869f1e86c573
 	AnnotationMissionSessionId *string `json:"AnnotationMissionSessionId,omitempty" xml:"AnnotationMissionSessionId,omitempty"`
+	// Bot ID
+	//
 	// example:
 	//
 	// 77343553-cbc2-4487-a35c-869f1e86c573
-	BotId   *string `json:"BotId,omitempty" xml:"BotId,omitempty"`
+	BotId *string `json:"BotId,omitempty" xml:"BotId,omitempty"`
+	// Modified user utterance
+	//
+	// example:
+	//
+	// []
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Created
+	//
 	// example:
 	//
 	// false
 	Create *bool `json:"Create,omitempty" xml:"Create,omitempty"`
+	// Creation Time
+	//
 	// example:
 	//
 	// 1682216045619
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Deleted
+	//
 	// example:
 	//
 	// true
 	Delete *bool `json:"Delete,omitempty" xml:"Delete,omitempty"`
+	// Dialog ID
+	//
 	// example:
 	//
-	// 77343553-cbc2-4487-a35c-869f1e86c573
+	// 29921312
 	DialogId *int64 `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// 77343553-cbc2-4487-a35c-869f1e86c573
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Intent ID
+	//
 	// example:
 	//
-	// 77343553-cbc2-4487-a35c-869f1e86c573
+	// 11234112
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// Updated At
+	//
 	// example:
 	//
 	// 1682216045619
@@ -1048,33 +1270,67 @@ func (s *ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionLis
 
 type ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatTagInfoList struct {
 	// chat id
+	//
+	// example:
+	//
+	// 03f56192-fa8a-40dc-9558-39b357f0618f
 	AnnotationMissionChatId *string `json:"AnnotationMissionChatId,omitempty" xml:"AnnotationMissionChatId,omitempty"`
 	// id
+	//
+	// example:
+	//
+	// 03f56192-fa8a-40dc-9558-39b357f0618f
 	AnnotationMissionChatTagInfoId *string `json:"AnnotationMissionChatTagInfoId,omitempty" xml:"AnnotationMissionChatTagInfoId,omitempty"`
+	// Job ID
+	//
 	// example:
 	//
 	// e7272cbb-a60d-4b41-b5c4-8863edc0b8f7
-	AnnotationMissionId        *string `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
+	AnnotationMissionId *string `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
+	// Session ID
+	//
+	// example:
+	//
+	// 03f56192-fa8a-40dc-9558-39b357f0618f
 	AnnotationMissionSessionId *string `json:"AnnotationMissionSessionId,omitempty" xml:"AnnotationMissionSessionId,omitempty"`
 	// tag id
-	AnnotationMissionTagInfoId   *string `json:"AnnotationMissionTagInfoId,omitempty" xml:"AnnotationMissionTagInfoId,omitempty"`
+	//
+	// example:
+	//
+	// 03f56192-fa8a-40dc-9558-39b357f0618f
+	AnnotationMissionTagInfoId *string `json:"AnnotationMissionTagInfoId,omitempty" xml:"AnnotationMissionTagInfoId,omitempty"`
+	// Tag name
+	//
+	// example:
+	//
+	// 标签
 	AnnotationMissionTagInfoName *string `json:"AnnotationMissionTagInfoName,omitempty" xml:"AnnotationMissionTagInfoName,omitempty"`
+	// Creation
+	//
 	// example:
 	//
 	// true
 	Create *bool `json:"Create,omitempty" xml:"Create,omitempty"`
+	// Creation Time
+	//
 	// example:
 	//
 	// 1686797050000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Delete
+	//
 	// example:
 	//
 	// true
 	Delete *bool `json:"Delete,omitempty" xml:"Delete,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// 32be9d94-1346-4c4a-a4d0-ccd379f87013
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Updated At
+	//
 	// example:
 	//
 	// 1679019660000
@@ -1200,43 +1456,83 @@ type ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnn
 	// 77343553-cbc2-4487-a35c-869f1e86c573
 	AnnotationMissionChatId *string `json:"AnnotationMissionChatId,omitempty" xml:"AnnotationMissionChatId,omitempty"`
 	// id
+	//
+	// example:
+	//
+	// 03f56192-fa8a-40dc-9558-39b357f0618f
 	AnnotationMissionChatVocabularyInfoId *string `json:"AnnotationMissionChatVocabularyInfoId,omitempty" xml:"AnnotationMissionChatVocabularyInfoId,omitempty"`
+	// Job ID
+	//
 	// example:
 	//
 	// b3f2c931-5180-43ca-b4aa-2baee2d73c8b
 	AnnotationMissionId *string `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
+	// Session ID
+	//
 	// example:
 	//
 	// 77343553-cbc2-4487-a35c-869f1e86c573
 	AnnotationMissionSessionId *string `json:"AnnotationMissionSessionId,omitempty" xml:"AnnotationMissionSessionId,omitempty"`
+	// Created
+	//
 	// example:
 	//
 	// true
 	Create *bool `json:"Create,omitempty" xml:"Create,omitempty"`
+	// Creation Time
+	//
 	// example:
 	//
 	// 1675218421941
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Deleted
+	//
 	// example:
 	//
 	// true
 	Delete *bool `json:"Delete,omitempty" xml:"Delete,omitempty"`
+	// instance ID
+	//
 	// example:
 	//
 	// 818961ce-d9ba-4f88-89ca-2a04b24bdf01
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Updated At
+	//
 	// example:
 	//
 	// 1676272557653
-	ModifiedTime          *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	Vocabulary            *string `json:"Vocabulary,omitempty" xml:"Vocabulary,omitempty"`
+	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// Hot word annotation content
+	//
+	// example:
+	//
+	// []
+	Vocabulary *string `json:"Vocabulary,omitempty" xml:"Vocabulary,omitempty"`
+	// Description
+	//
+	// example:
+	//
+	// 描述
 	VocabularyDescription *string `json:"VocabularyDescription,omitempty" xml:"VocabularyDescription,omitempty"`
+	// Hot word ID
+	//
 	// example:
 	//
 	// 77343553-cbc2-4487-a35c-869f1e86c573
-	VocabularyId     *string `json:"VocabularyId,omitempty" xml:"VocabularyId,omitempty"`
-	VocabularyName   *string `json:"VocabularyName,omitempty" xml:"VocabularyName,omitempty"`
-	VocabularyWeight *int32  `json:"VocabularyWeight,omitempty" xml:"VocabularyWeight,omitempty"`
+	VocabularyId *string `json:"VocabularyId,omitempty" xml:"VocabularyId,omitempty"`
+	// Vocabulary name
+	//
+	// example:
+	//
+	// 名称
+	VocabularyName *string `json:"VocabularyName,omitempty" xml:"VocabularyName,omitempty"`
+	// Hot word weight [-6, 5]
+	//
+	// example:
+	//
+	// 0
+	VocabularyWeight *int32 `json:"VocabularyWeight,omitempty" xml:"VocabularyWeight,omitempty"`
 }
 
 func (s ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatVocabularyInfoList) String() string {

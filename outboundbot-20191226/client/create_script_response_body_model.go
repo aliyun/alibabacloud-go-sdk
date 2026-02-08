@@ -24,23 +24,34 @@ type iCreateScriptResponseBody interface {
 }
 
 type CreateScriptResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Script    *CreateScriptResponseBodyScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Script information
+	Script *CreateScriptResponseBodyScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
+	// Indicates whether the request succeeded
+	//
 	// example:
 	//
 	// true
@@ -119,32 +130,96 @@ func (s *CreateScriptResponseBody) Validate() error {
 }
 
 type CreateScriptResponseBodyScript struct {
+	// Script debug status
+	//
 	// example:
 	//
 	// DRAFTED
 	DebugStatus *string `json:"DebugStatus,omitempty" xml:"DebugStatus,omitempty"`
-	Industry    *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
+	// Industry
+	//
+	// example:
+	//
+	// 教育
+	Industry *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
+	// Indicates whether the script is a debug draft
+	//
 	// example:
 	//
 	// true
 	IsDebugDrafted *bool `json:"IsDebugDrafted,omitempty" xml:"IsDebugDrafted,omitempty"`
+	// Indicates whether the script is a draft.
+	//
 	// example:
 	//
 	// true
-	IsDrafted         *bool   `json:"IsDrafted,omitempty" xml:"IsDrafted,omitempty"`
-	NluAccessType     *string `json:"NluAccessType,omitempty" xml:"NluAccessType,omitempty"`
-	NluEngine         *string `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
-	Scene             *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	IsDrafted *bool `json:"IsDrafted,omitempty" xml:"IsDrafted,omitempty"`
+	// NLU access method (applicable only to LLM scenarios). Enumeration: Managed—uses an Alibaba public account for access. This field is empty for non-LLM scenarios.
+	//
+	// example:
+	//
+	// Managed
+	NluAccessType *string `json:"NluAccessType,omitempty" xml:"NluAccessType,omitempty"`
+	// NLU engine (applicable only to LLM scenarios). Enumeration: Prompts—used for LLM scenarios. This field is empty for non-LLM scenarios.
+	//
+	// example:
+	//
+	// Prompts
+	NluEngine *string `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
+	// Associated scenario
+	//
+	// example:
+	//
+	// 回访
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// Script description
+	//
+	// example:
+	//
+	// 课程满意度回访
 	ScriptDescription *string `json:"ScriptDescription,omitempty" xml:"ScriptDescription,omitempty"`
+	// Script ID
+	//
 	// example:
 	//
 	// 8c58d3e0-bf27-4685-a5a5-65872ec5abc4
-	ScriptId   *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// Script name
+	//
+	// example:
+	//
+	// 课程满意度回访
 	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
+	// Job status. Valid values:
+	//
+	// - **DRAFTED**: Draft.
+	//
+	// - **INITIALIZE_IN_PROGRESS**: Initializing.
+	//
+	// - **PUBLISHED**: Published.
+	//
+	// - **PUBLISH_IN_PROGRESS**: Publishing.
+	//
+	// - **ROLLBACK_IN_PROGRESS**: Rolling back.
+	//
+	// - **EXAMINE_IN_PROGRESS**: Pending review.
+	//
+	// - **PUBLISHED_AND_EXAMINE_IN_PROGRESS**: Published and pending review.
+	//
+	// - **PUBLISH_FAILED**: Publish failed.
+	//
+	// - **ROLLBACK_FAILED**: Rollback failed.
+	//
+	// - **IMPORT_IN_PROGRESS**: Importing.
+	//
+	// - **IMPORT_FAILED**: Import failed.
+	//
 	// example:
 	//
 	// DRAFTED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Script update time (in milliseconds)
+	//
 	// example:
 	//
 	// 1578474045152

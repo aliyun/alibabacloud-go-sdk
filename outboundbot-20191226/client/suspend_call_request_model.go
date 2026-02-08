@@ -18,14 +18,20 @@ type iSuspendCallRequest interface {
 }
 
 type SuspendCallRequest struct {
+	// List of called numbers
+	//
 	// example:
 	//
 	// []
 	CalledNumbers []*string `json:"CalledNumbers,omitempty" xml:"CalledNumbers,omitempty" type:"Repeated"`
+	// Task group ID (Required)
+	//
 	// example:
 	//
 	// f745881b-343d-43e4-9c51-31b7b063031c
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Instance ID (Required)
+	//
 	// This parameter is required.
 	//
 	// example:

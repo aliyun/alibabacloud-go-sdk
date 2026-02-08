@@ -24,26 +24,38 @@ type iGetEmptyNumberNoMoreCallsInfoResponseBody interface {
 }
 
 type GetEmptyNumberNoMoreCallsInfoResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Nonexistent number no-more-calls
+	//
 	// example:
 	//
 	// true
 	EmptyNumberNoMoreCalls *bool `json:"EmptyNumberNoMoreCalls,omitempty" xml:"EmptyNumberNoMoreCalls,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded
+	//
 	// example:
 	//
 	// true

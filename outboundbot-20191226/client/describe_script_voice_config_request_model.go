@@ -18,18 +18,24 @@ type iDescribeScriptVoiceConfigRequest interface {
 }
 
 type DescribeScriptVoiceConfigRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 8fa1953f-4a84-46d8-b80c-8ce9cf684fb3
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Scenario ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 28c4bcaf-5ab1-495e-8966-3206bf9ee733
+	// 0fe7f71c-8771-42ef-9bb1-19aa16ae7120
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// Scenario voice configuration ID
+	//
 	// This parameter is required.
 	//
 	// example:

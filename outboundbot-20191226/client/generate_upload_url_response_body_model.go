@@ -24,26 +24,37 @@ type iGenerateUploadUrlResponseBody interface {
 }
 
 type GenerateUploadUrlResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// OK
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
 	Data *GenerateUploadUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded.
+	//
 	// example:
 	//
-	// true
+	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -119,37 +130,53 @@ func (s *GenerateUploadUrlResponseBody) Validate() error {
 }
 
 type GenerateUploadUrlResponseBodyData struct {
+	// OSS access ID
+	//
 	// example:
 	//
-	// LTAIvKWEr4DoFSqz
+	// LTAIvKWEr4******
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	// Expiration time (seconds)
+	//
 	// example:
 	//
 	// 1742960933
 	Expire *int32 `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	// Upload folder
+	//
 	// example:
 	//
 	// pload/file/874d7371-791b-4281-935c-637630a37785/874d7371-791b-4281-935c-637630a37785_9bd7916d-a340-4925-a911-92390cbe0f33.json
 	Folder *string `json:"Folder,omitempty" xml:"Folder,omitempty"`
+	// Upload server URL
+	//
 	// example:
 	//
 	// https://cloudagentbot-online.oss-cn-hangzhou.aliyuncs.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Upload policy
+	//
 	// example:
 	//
 	// eyJleHBpcmF0aW9uIjoiMjAyNS0wMy0yNlQwMzo0ODo1My4wMzVaIiwiY29uZGl0aW9ucyI6W1siY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsNTI0Mjg4MF0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCJ1cGxvYWQvZmlsZS84NzRkNzM3MS03OTFiLTQyODEtOTM1Yy02Mzc2MzBhMzc3ODUvIl1dfQ==",
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// Signature information
+	//
 	// example:
 	//
 	// I6d1ONWVuTj5i0Kz4Vn+V0lC6v4=
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	// Indicates whether the operation succeeded.
+	//
 	// example:
 	//
-	// true
+	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

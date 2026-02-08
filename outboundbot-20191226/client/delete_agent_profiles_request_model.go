@@ -16,7 +16,10 @@ type iDeleteAgentProfilesRequest interface {
 }
 
 type DeleteAgentProfilesRequest struct {
+	// Collection of agent configuration IDs
 	AgentProfileIds []*string `json:"AgentProfileIds,omitempty" xml:"AgentProfileIds,omitempty" type:"Repeated"`
+	// app_ip (system field, optional)
+	//
 	// example:
 	//
 	// 127.0.0.1

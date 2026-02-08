@@ -62,95 +62,263 @@ type iSearchTaskRequest interface {
 }
 
 type SearchTaskRequest struct {
+	// Call Start Time
+	//
 	// example:
 	//
 	// 1646582400000
 	ActualTimeGte *int64 `json:"ActualTimeGte,omitempty" xml:"ActualTimeGte,omitempty"`
+	// Call End Time
+	//
 	// example:
 	//
 	// 1643126399000
 	ActualTimeLte *int64 `json:"ActualTimeLte,omitempty" xml:"ActualTimeLte,omitempty"`
+	// Minimum call duration for search, in milliseconds
+	//
 	// example:
 	//
 	// 12341155
 	CallDurationGte *int64 `json:"CallDurationGte,omitempty" xml:"CallDurationGte,omitempty"`
+	// Maximum call duration for search, in milliseconds
+	//
 	// example:
 	//
 	// 12341155
 	CallDurationLte *int64 `json:"CallDurationLte,omitempty" xml:"CallDurationLte,omitempty"`
+	// Called Number
+	//
 	// example:
 	//
 	// 15126426342
-	CalledNumber  *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// Calling number
+	//
+	// example:
+	//
+	// 051085500215
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// d481cebe-0bb6-4d13-9649-42ce5074fb75
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Task group ID
+	//
 	// example:
 	//
 	// 3a30ae7c-27b2-4305-9444-7185ced9d51f
-	JobGroupId        *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	// Job group name
+	//
+	// example:
+	//
+	// 国寿财住院保续保_20220301_134130
 	JobGroupNameQuery *string `json:"JobGroupNameQuery,omitempty" xml:"JobGroupNameQuery,omitempty"`
+	// Job ID
+	//
 	// example:
 	//
 	// 11994321-e6bc-47bb-8b1c-8eef8f2f768b
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Job status. Separate multiple values with commas. When this field is not empty, it overwrites jobStatusList.
+	//
+	// - Scheduling: Scheduling.
+	//
+	// - Executing: Executing.
+	//
+	// - Succeeded: End – Reached.
+	//
+	// - Paused: Paused.
+	//
+	// - Failed: End – Not Reached.
+	//
+	// - Cancelled: Cancelled.
+	//
 	// example:
 	//
 	// Succeeded
-	JobStatusStringList *string   `json:"JobStatusStringList,omitempty" xml:"JobStatusStringList,omitempty"`
-	LabelsJson          []*string `json:"LabelsJson,omitempty" xml:"LabelsJson,omitempty" type:"Repeated"`
+	JobStatusStringList *string `json:"JobStatusStringList,omitempty" xml:"JobStatusStringList,omitempty"`
+	// Tag filtering conditions for calls
+	//
+	// > This condition supports filtering only by tags that have specific enumeration tag values configured, specifically those tags with explicit tag values configured in the LLM scenario.
+	LabelsJson []*string `json:"LabelsJson,omitempty" xml:"LabelsJson,omitempty" type:"Repeated"`
+	// Other ID
+	//
+	// **Includes the following:**
+	//
+	// - sessionID
+	//
+	// - taskid
+	//
+	// - jobid
+	//
 	// example:
 	//
 	// AVD-2021-39685
 	OtherId *string `json:"OtherId,omitempty" xml:"OtherId,omitempty"`
+	// Page index
+	//
+	// > The page index for this API starts from 0 by default.
+	//
 	// example:
 	//
 	// 2
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// Number of items
+	//
+	// > When this parameter is empty, the default value is 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Minimum ringing duration for search
+	//
 	// example:
 	//
 	// 10
 	RecordingDurationGte *int64 `json:"RecordingDurationGte,omitempty" xml:"RecordingDurationGte,omitempty"`
+	// Maximum ringing duration for search
+	//
 	// example:
 	//
 	// 60
-	RecordingDurationLte *int64  `json:"RecordingDurationLte,omitempty" xml:"RecordingDurationLte,omitempty"`
-	ScriptNameQuery      *string `json:"ScriptNameQuery,omitempty" xml:"ScriptNameQuery,omitempty"`
+	RecordingDurationLte *int64 `json:"RecordingDurationLte,omitempty" xml:"RecordingDurationLte,omitempty"`
+	// Scenario Name
+	//
+	// example:
+	//
+	// 国寿财
+	ScriptNameQuery *string `json:"ScriptNameQuery,omitempty" xml:"ScriptNameQuery,omitempty"`
+	// Sorting method. The default is actualTime.
+	//
 	// example:
 	//
 	// actualTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// Sorting order. Valid values:
+	//
+	// - asc (ascending)
+	//
+	// - desc (default): descending
+	//
 	// example:
 	//
 	// desc
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// Job start time
+	//
+	// > This parameter must be used together with the job end time parameter TaskCreateTimeLte. Otherwise, it will be invalid.
+	//
 	// example:
 	//
 	// 1646792941
 	TaskCreateTimeGte *int64 `json:"TaskCreateTimeGte,omitempty" xml:"TaskCreateTimeGte,omitempty"`
+	// Job end time
+	//
+	// > This parameter must be used together with the job start time parameter TaskCreateTimeGte. Otherwise, it will be invalid.
+	//
 	// example:
 	//
 	// 1646792941
 	TaskCreateTimeLte *int64 `json:"TaskCreateTimeLte,omitempty" xml:"TaskCreateTimeLte,omitempty"`
+	// Task ID
+	//
 	// example:
 	//
 	// 744b27f3-437f-4a8c-a181-f668e492fd24
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Call status. Separate multiple values with commas.
+	//
+	// Value range:
+	//
+	// (Note: The **Succeeded*	- status has been subdivided by reason. The generic **Succeeded**: 1 (Answered) status will not be returned. Instead, only the specific subdivided reason types will be returned.)
+	//
+	// - **Executing**: 0 (Calling).
+	//
+	// - **Succeeded**: 1 (Answered).
+	//
+	// - **NoAnswer**: 2 (Not answered – No response).
+	//
+	// - **NotExist**: 3 (Not answered – Nonexistent number).
+	//
+	// - **Busy**: 4 (Not answered – Line busy).
+	//
+	// - **Cancelled**: 5 (Not dialed – Job stopped).
+	//
+	// - **Failed**: 6 (Failed).
+	//
+	// - **NotConnected**: 7 (Not answered – Unable to connect).
+	//
+	// - **PoweredOff**: 8 (Not answered – Powered off).
+	//
+	// - **OutOfService**: 9 (Not answered – Called party out of service).
+	//
+	// - **InArrears**: 10 (Not answered – Called party has overdue payment).
+	//
+	// - **EmptyNumber**: 11 (Not dialed – Nonexistent number, no call made).
+	//
+	// - **PerDayCallCountLimit**: 12 (Not dialed – Exceeded daily call limit).
+	//
+	// - **ContactBlockList**: 13 (Not dialed – Blacklist).
+	//
+	// - **CallerNotRegistered**: 14 (Not dialed – Caller number not registered).
+	//
+	// - **Terminated**: 15 (Not dialed – Terminated).
+	//
+	// - **VerificationCancelled**: 16 (Not dialed – Cancelled due to pre-call authentication failure).
+	//
+	// - **OutOfServiceNoCall**: 17 (Not dialed – Called party out of service, no call made).
+	//
+	// - **InArrearsNoCall**: 18 (Not dialed – Called party has overdue payment, no call made).
+	//
+	// - **CallingNumberNotExist**: 19 (Not dialed – Caller number does not exist).
+	//
+	// - **SucceededFinish**: 20 (Answered – Normal completion).
+	//
+	// - **SucceededChatbotHangUpAfterNoAnswer**: 21 (Answered – Bot hung up after unrecognized input).
+	//
+	// - **SucceededChatbotHangUpAfterSilence**: 22 (Answered – Bot hung up after silence timeout).
+	//
+	// - **SucceededClientHangUpAfterNoAnswer**: 23 (Answered – User hung up after unrecognized input).
+	//
+	// - **SucceededClientHangUp**: 24 (Answered – User hung up without reason).
+	//
+	// - **SucceededTransferByIntent**: 25 (Answered – Transferred to agent due to intent hit).
+	//
+	// - **SucceededTransferAfterNoAnswer**: 26 (Answered – Transferred to agent after unrecognized input).
+	//
+	// - **SucceededInoInterAction**: 27 (Answered – No interaction from user side).
+	//
+	// - **SucceededError**: 28 (Answered – Interrupted due to system exception).
+	//
+	// - **SucceededSpecialInterceptVoiceAssistant**: 29 (Answered – Intercepted under special condition – Voice assistant).
+	//
+	// - **SucceededSpecialInterceptExtensionNumberTransfer**: 30 (Answered – Intercepted under special condition – Extension transfer).
+	//
+	// - **SucceededSpecialInterceptCustomSpecialIntercept**: 31 (Answered – Intercepted under special condition – Custom intercept).
+	//
+	// - **HighRiskSipCode**: 32 (Not dialed – High-risk, no call made)
+	//
 	// example:
 	//
-	// Succeeded
+	// Executing
 	TaskStatusStringList *string `json:"TaskStatusStringList,omitempty" xml:"TaskStatusStringList,omitempty"`
+	// User ID, the unique identifier of the user
+	//
+	// > This field is provided when uploading an outbound call list.
+	//
+	// > - If uploaded via JSON, the User ID corresponds to the value of referenceId.
+	//
+	// > - If uploaded via an Excel file, the User ID corresponds to the value of contactId.
+	//
 	// example:
 	//
-	// 12341155
+	// C01
 	UserIdMatch *string `json:"UserIdMatch,omitempty" xml:"UserIdMatch,omitempty"`
 }
 

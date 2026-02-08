@@ -16,12 +16,16 @@ type iChangeResourceGroupRequest interface {
 }
 
 type ChangeResourceGroupRequest struct {
+	// New resource group ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rg-aeky6wvb7yzabqy
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	// Resource ID
+	//
 	// This parameter is required.
 	//
 	// example:

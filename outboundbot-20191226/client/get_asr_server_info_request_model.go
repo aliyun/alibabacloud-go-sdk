@@ -16,10 +16,14 @@ type iGetAsrServerInfoRequest interface {
 }
 
 type GetAsrServerInfoRequest struct {
+	// Instance ID
+	//
 	// example:
 	//
 	// 024f8cf0-c842-4c01-b74b-c8667e4579c7
 	EntryId *string `json:"EntryId,omitempty" xml:"EntryId,omitempty"`
+	// Policy level
+	//
 	// example:
 	//
 	// 2

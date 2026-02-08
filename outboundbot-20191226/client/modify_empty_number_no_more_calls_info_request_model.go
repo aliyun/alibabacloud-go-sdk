@@ -18,16 +18,28 @@ type iModifyEmptyNumberNoMoreCallsInfoRequest interface {
 }
 
 type ModifyEmptyNumberNoMoreCallsInfoRequest struct {
+	// Indicates whether to stop outbound calls to nonexistent numbers
+	//
 	// example:
 	//
 	// true
 	EmptyNumberNoMoreCalls *bool `json:"EmptyNumberNoMoreCalls,omitempty" xml:"EmptyNumberNoMoreCalls,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6cc9f5ca-2cb6-4cc7-a46b-2bbfd3e61b22
 	EntryId *string `json:"EntryId,omitempty" xml:"EntryId,omitempty"`
+	// Policy level. The default value is 2 for business instances.
+	//
+	// - 0: System
+	//
+	// - 1: Tenant
+	//
+	// - 2: Instance
+	//
 	// example:
 	//
 	// 2

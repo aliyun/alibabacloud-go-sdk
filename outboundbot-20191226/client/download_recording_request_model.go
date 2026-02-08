@@ -18,13 +18,22 @@ type iDownloadRecordingRequest interface {
 }
 
 type DownloadRecordingRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// da37319b-6c83-4268-9f19-814aed62e401
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NeedVoiceSliceRecording *bool   `json:"NeedVoiceSliceRecording,omitempty" xml:"NeedVoiceSliceRecording,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether to query segmented recordings
+	//
+	// example:
+	//
+	// false
+	NeedVoiceSliceRecording *bool `json:"NeedVoiceSliceRecording,omitempty" xml:"NeedVoiceSliceRecording,omitempty"`
+	// Call ID
+	//
 	// This parameter is required.
 	//
 	// example:

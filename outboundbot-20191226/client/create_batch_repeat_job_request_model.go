@@ -40,55 +40,92 @@ type iCreateBatchRepeatJobRequest interface {
 }
 
 type CreateBatchRepeatJobRequest struct {
+	// Calling number
+	//
 	// example:
 	//
 	// []
 	CallingNumber []*string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty" type:"Repeated"`
-	Description   *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Job group description
+	//
+	// example:
+	//
+	// 测试3
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Job group status
+	//
 	// example:
 	//
 	// Succeeded,NoInteraction,Failed,Cancelled
-	FilterStatus   *string `json:"FilterStatus,omitempty" xml:"FilterStatus,omitempty"`
+	FilterStatus *string `json:"FilterStatus,omitempty" xml:"FilterStatus,omitempty"`
+	// Configuration parameters for flash SMS push, in JSON format, containing configuration information for third-party flash SMS.
+	//
+	// - templateId: Flash SMS Template ID.
+	//
+	// - configId: Flash SMS configuration ID.
+	//
+	// example:
+	//
+	// {"templateId":"10471","configId":"8037f524-6ff2-4dbe-bb28-f59234ea7a64"}
 	FlashSmsExtras *string `json:"FlashSmsExtras,omitempty" xml:"FlashSmsExtras,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2bfa5ae4-7185-4227-a3b8-328f26f11be1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Minimum concurrency
+	//
 	// example:
 	//
 	// 2
 	MinConcurrency *int64 `json:"MinConcurrency,omitempty" xml:"MinConcurrency,omitempty"`
+	// Job name
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 24
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Job priority
+	//
 	// example:
 	//
 	// 10
-	Priority            *string   `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// List of caller numbers for redialing
 	RecallCallingNumber []*string `json:"RecallCallingNumber,omitempty" xml:"RecallCallingNumber,omitempty" type:"Repeated"`
+	// Redial policy in JSON format
+	//
 	// example:
 	//
 	// {\\"emptyNumberIgnore\\":false,\\"inArrearsIgnore\\":false,\\"outOfServiceIgnore\\":false}
 	RecallStrategyJson *string `json:"RecallStrategyJson,omitempty" xml:"RecallStrategyJson,omitempty"`
+	// Ringing duration
+	//
 	// example:
 	//
 	// 25
 	RingingDuration *int64 `json:"RingingDuration,omitempty" xml:"RingingDuration,omitempty"`
+	// Script ID
+	//
 	// example:
 	//
 	// 0fe7f71c-8771-42ef-9bb1-19aa16ae7120
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// Job group ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c4f8a3d3-2e94-4bd4-aef8-e35f663d4847
 	SourceGroupId *string `json:"SourceGroupId,omitempty" xml:"SourceGroupId,omitempty"`
+	// Job execution policy
+	//
 	// example:
 	//
 	// {\\"maxAttemptsPerDay\\":1,\\"minAttemptInterval\\":1,\\"routingStrategy\\":\\"LocalFirst\\"}

@@ -24,23 +24,34 @@ type iModifyScriptResponseBody interface {
 }
 
 type ModifyScriptResponseBody struct {
+	// API status
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Script    *ModifyScriptResponseBodyScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Script information
+	Script *ModifyScriptResponseBodyScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
+	// Indicates whether the operation succeeded
+	//
 	// example:
 	//
 	// true
@@ -119,30 +130,62 @@ func (s *ModifyScriptResponseBody) Validate() error {
 }
 
 type ModifyScriptResponseBodyScript struct {
+	// Script debug status
+	//
 	// example:
 	//
 	// DRAFTED
 	DebugStatus *string `json:"DebugStatus,omitempty" xml:"DebugStatus,omitempty"`
-	Industry    *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
+	// Industry
+	//
+	// example:
+	//
+	// 政务
+	Industry *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
+	// Is debug draft
+	//
 	// example:
 	//
 	// true
 	IsDebugDrafted *bool `json:"IsDebugDrafted,omitempty" xml:"IsDebugDrafted,omitempty"`
+	// Is draft
+	//
 	// example:
 	//
 	// true
-	IsDrafted         *bool   `json:"IsDrafted,omitempty" xml:"IsDrafted,omitempty"`
-	Scene             *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	IsDrafted *bool `json:"IsDrafted,omitempty" xml:"IsDrafted,omitempty"`
+	// Scenario
+	//
+	// example:
+	//
+	// 回访
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// Script description
+	//
+	// example:
+	//
+	// 返工回访话术
 	ScriptDescription *string `json:"ScriptDescription,omitempty" xml:"ScriptDescription,omitempty"`
+	// Script ID
+	//
 	// example:
 	//
 	// c153d0d8-ba04-41c0-8632-453944c9dd0b
-	ScriptId   *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// Script name
+	//
+	// example:
+	//
+	// 回访话术
 	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
+	// Script status
+	//
 	// example:
 	//
 	// PUBLISHED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Update Time
+	//
 	// example:
 	//
 	// 1578881227000

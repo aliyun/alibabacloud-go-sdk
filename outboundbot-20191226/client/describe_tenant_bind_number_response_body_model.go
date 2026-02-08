@@ -24,23 +24,34 @@ type iDescribeTenantBindNumberResponseBody interface {
 }
 
 type DescribeTenantBindNumberResponseBody struct {
+	// API status code
+	//
 	// example:
 	//
 	// OK
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
 	Data *DescribeTenantBindNumberResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 1364f208-982d-4d0c-89aa-d56e22b47589
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -119,6 +130,7 @@ func (s *DescribeTenantBindNumberResponseBody) Validate() error {
 }
 
 type DescribeTenantBindNumberResponseBodyData struct {
+	// Job group description
 	List []*DescribeTenantBindNumberResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 }
 
@@ -153,14 +165,20 @@ func (s *DescribeTenantBindNumberResponseBodyData) Validate() error {
 }
 
 type DescribeTenantBindNumberResponseBodyDataList struct {
+	// instance ID
+	//
 	// example:
 	//
 	// e2d7a184-7d6c-45d4-ac24-34ab48f54669
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Instance name
+	//
 	// example:
 	//
 	// xxxx
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Indicates whether the instance is in the attached state.
+	//
 	// example:
 	//
 	// true

@@ -38,36 +38,122 @@ type iDescribeTTSDemoRequest interface {
 }
 
 type DescribeTTSDemoRequest struct {
-	AccessKey          *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	// The AccessKey (AK) of this namespace.
+	//
+	// > When the engine is xunfei, you must provide its AK here.
+	//
+	// example:
+	//
+	// 5d0f37**********ef56db601****
+	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	// Alibaba customized voice, which is the voice invocation ID
+	//
+	// example:
+	//
+	// voice-e1be3a6
 	AliCustomizedVoice *string `json:"AliCustomizedVoice,omitempty" xml:"AliCustomizedVoice,omitempty"`
-	AppKey             *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	Engine             *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// Voice service type
+	//
+	// - When **ali*	- is used as the custom service, this field stores the appKey of the Intelligent Speech Interaction product project.
+	//
+	// - When **xunfei*	- is used as the custom service provider, this field stores the corresponding appKey.
+	//
+	// example:
+	//
+	// xusi*******RnP7
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// Storage engine. Valid values are ali, volc, and xunfei.
+	//
+	// - Use **ali*	- when using the default service or a custom service provided by Alibaba.
+	//
+	// - Use **volc*	- when using the doubao service.
+	//
+	// - Use **xunfei*	- when using xunfei as the service provider (only supported in small model scenarios).
+	//
+	// example:
+	//
+	// ali
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a8eccb3c-2b26-4b6d-a54f-696b953e33a6
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Service Type
+	//
+	// Managed: The default Intelligent Speech Interaction service for Intelligent Outbound Calling products (public service).
+	//
+	// Authorized: The Intelligent Speech Interaction service purchased by the public cloud customer (customer private service), authorized via Scenario Management > Edit > Invoke Service > Custom Service.
+	//
+	// > When using Alibaba\\"s Intelligent Speech Interaction service—i.e., when Alibaba is specified as the custom service provider—you must set this parameter to Authorized.
+	//
+	// example:
+	//
+	// Authorized
 	NlsServiceType *string `json:"NlsServiceType,omitempty" xml:"NlsServiceType,omitempty"`
+	// Pitch
+	//
+	// An integer between [-500, 500]. Default value is 0.
+	//
+	// A value greater than 0 raises the pitch.
+	//
+	// A value less than 0 lowers the pitch.
+	//
 	// example:
 	//
 	// 0
 	PitchRate *int32 `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
+	// Scenario ID
+	//
 	// example:
 	//
 	// 5ab2d935-306c-478a-88bf-d08e4e25c1b7
-	ScriptId  *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// AccessKey secret (SK) of the namespace.
+	//
+	// > When engine is set to xunfei, you must provide its SK here.
+	//
+	// example:
+	//
+	// OTdhNDE3Z********zQ****
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
+	// Speech rate
+	//
+	// An integer between -500 and 500. Default value is 0.
+	//
+	// A value greater than 0 increases the speech rate.
+	//
+	// A value less than 0 decreases the speech rate.
+	//
 	// example:
 	//
 	// 0
 	SpeechRate *int32 `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	// Text content
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 测试
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// Voice speaker information, such as aixia, siyue, or xiaoyun. For a complete list of available voices, see https://ai.aliyun.com/nls/tts.
+	//
 	// example:
 	//
 	// aixia
 	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	// Volume
+	//
+	// An integer between [0, 100]. Default value is 50.
+	//
+	// A value greater than 50 increases the volume.
+	//
+	// A value less than 50 decreases the volume.
+	//
 	// example:
 	//
 	// 50

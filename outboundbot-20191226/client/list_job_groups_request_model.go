@@ -30,35 +30,80 @@ type iListJobGroupsRequest interface {
 }
 
 type ListJobGroupsRequest struct {
+	// Whether to asynchronously retrieve the query result.
+	//
 	// example:
 	//
 	// true
 	AsyncQuery *bool `json:"AsyncQuery,omitempty" xml:"AsyncQuery,omitempty"`
+	// Filter by the end of task group creation time.
+	//
 	// example:
 	//
 	// 1579965079000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Business ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 174952ab-9825-4cc9-a5e2-de82d7fa4cdd
-	InstanceId                *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobGroupStatusFilter      *string `json:"JobGroupStatusFilter,omitempty" xml:"JobGroupStatusFilter,omitempty"`
-	OnlyMinConcurrencyEnabled *bool   `json:"OnlyMinConcurrencyEnabled,omitempty" xml:"OnlyMinConcurrencyEnabled,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Filter condition: Filter by job status. You can select multiple statuses simultaneously, separated by commas, with a logical OR relationship.
+	//
+	// Valid values:
+	//
+	// - **Draft**: Draft.
+	//
+	// - **Scheduling**: Scheduling.
+	//
+	// - **Executing**: Executing.
+	//
+	// - **Completed**: Completed.
+	//
+	// - **Paused**: Suspended.
+	//
+	// - **Failed**: Failed.
+	//
+	// - **Cancelled**: Cancelled.
+	//
+	// - **Initializing**: Initializing.
+	//
+	// example:
+	//
+	// Draft
+	JobGroupStatusFilter *string `json:"JobGroupStatusFilter,omitempty" xml:"JobGroupStatusFilter,omitempty"`
+	// View jobs with effective concurrency guarantee values.
+	//
+	// example:
+	//
+	// false
+	OnlyMinConcurrencyEnabled *bool `json:"OnlyMinConcurrencyEnabled,omitempty" xml:"OnlyMinConcurrencyEnabled,omitempty"`
+	// Page number
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of records per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Search keyword
+	//
+	// example:
+	//
+	// 面试
 	SearchText *string `json:"SearchText,omitempty" xml:"SearchText,omitempty"`
+	// Filter by task group creation time (start).
+	//
 	// example:
 	//
 	// 1578965079000

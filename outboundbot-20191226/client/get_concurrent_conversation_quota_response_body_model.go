@@ -26,10 +26,14 @@ type iGetConcurrentConversationQuotaResponseBody interface {
 }
 
 type GetConcurrentConversationQuotaResponseBody struct {
+	// API status code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
@@ -40,18 +44,26 @@ type GetConcurrentConversationQuotaResponseBody struct {
 	//
 	// 10
 	MaxConcurrent *int32 `json:"MaxConcurrent,omitempty" xml:"MaxConcurrent,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Remaining concurrency
+	//
 	// example:
 	//
 	// 2
 	RemainingConcurrent *int32 `json:"RemainingConcurrent,omitempty" xml:"RemainingConcurrent,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded
+	//
 	// example:
 	//
 	// true

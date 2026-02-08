@@ -18,14 +18,20 @@ type iSaveContactWhiteListRequest interface {
 }
 
 type SaveContactWhiteListRequest struct {
+	// Contact whitelist list [Deprecated]
+	//
 	// example:
 	//
 	// {}
 	ContactWhiteListList []*string `json:"ContactWhiteListList,omitempty" xml:"ContactWhiteListList,omitempty" type:"Repeated"`
+	// Whitelist list (Required)
+	//
 	// example:
 	//
-	// {}
+	// [{"phoneNumber":"132322","remark":"123321","name":"ccc1","creator":"ccc222"}]
 	ContactWhiteListsJson *string `json:"ContactWhiteListsJson,omitempty" xml:"ContactWhiteListsJson,omitempty"`
+	// Instance ID (Required)
+	//
 	// This parameter is required.
 	//
 	// example:

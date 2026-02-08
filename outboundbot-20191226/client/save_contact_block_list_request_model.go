@@ -18,14 +18,28 @@ type iSaveContactBlockListRequest interface {
 }
 
 type SaveContactBlockListRequest struct {
+	// List of contact information [Deprecated]
+	//
 	// example:
 	//
 	// []
 	ContactBlockListList []*string `json:"ContactBlockListList,omitempty" xml:"ContactBlockListList,omitempty" type:"Repeated"`
+	// A JSON-formatted string of the Do Not Call List (Required)
+	//
+	// - phonenumber: Phone number
+	//
+	// - remark: Remark
+	//
+	// - name: Name
+	//
+	// - creator: Creator
+	//
 	// example:
 	//
-	// {}
+	// [{"phoneNumber":"132322","remark":"123321","name":"ccc1","creator":"ccc222"}]
 	ContactBlockListsJson *string `json:"ContactBlockListsJson,omitempty" xml:"ContactBlockListsJson,omitempty"`
+	// Instance ID (Required)
+	//
 	// example:
 	//
 	// c3c92de8-e4bd-4db4-a962-50f8acce40bc

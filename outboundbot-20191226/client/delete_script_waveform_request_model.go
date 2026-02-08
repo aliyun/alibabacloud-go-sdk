@@ -18,11 +18,29 @@ type iDeleteScriptWaveformRequest interface {
 }
 
 type DeleteScriptWaveformRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// e5035654-1745-484a-8c5b-165f7c7bcd79
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Scenario ID
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// b9ff4e88-65f9-4eb3-987c-11ba51f3f24d
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// ID of the recording to delete
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// df8216aa-d8f6-4501-864f-f8334d946561
 	ScriptWaveformId *string `json:"ScriptWaveformId,omitempty" xml:"ScriptWaveformId,omitempty"`
 }
 

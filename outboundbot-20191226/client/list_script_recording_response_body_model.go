@@ -30,35 +30,52 @@ type iListScriptRecordingResponseBody interface {
 }
 
 type ListScriptRecordingResponseBody struct {
+	// API status.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of entries per page
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
-	RequestId        *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of recordings
 	ScriptRecordings []*ListScriptRecordingResponseBodyScriptRecordings `json:"ScriptRecordings,omitempty" xml:"ScriptRecordings,omitempty" type:"Repeated"`
+	// Indicates whether the operation succeeded.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total count
+	//
 	// example:
 	//
 	// 99
@@ -168,49 +185,86 @@ func (s *ListScriptRecordingResponseBody) Validate() error {
 }
 
 type ListScriptRecordingResponseBodyScriptRecordings struct {
+	// Creation Time.
+	//
 	// example:
 	//
-	// 2022-07-11T07:51:49.000+0000
+	// 1744963749000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Update Time
+	//
 	// example:
 	//
 	// 1654601332000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Time when the recording was uploaded.
+	//
 	// example:
 	//
 	// 1654601332000
 	GmtUpload *int64 `json:"GmtUpload,omitempty" xml:"GmtUpload,omitempty"`
+	// The ID of the recording file under the instance.
+	//
 	// example:
 	//
-	// 1
+	// 000003
 	InnerId *string `json:"InnerId,omitempty" xml:"InnerId,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// ff0fb845-9f90-46d3-9716-d36b8a1e753a
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Recording content
+	//
+	// example:
+	//
+	// 您好！
 	RecordingContent *string `json:"RecordingContent,omitempty" xml:"RecordingContent,omitempty"`
+	// Recording duration, in seconds.
+	//
 	// example:
 	//
 	// 10
 	RecordingDuration *int32 `json:"RecordingDuration,omitempty" xml:"RecordingDuration,omitempty"`
+	// Recording name
+	//
 	// example:
 	//
 	// hello.wav
 	RecordingName *string `json:"RecordingName,omitempty" xml:"RecordingName,omitempty"`
-	RefId         *string `json:"RefId,omitempty" xml:"RefId,omitempty"`
+	// Unique ID of the recording.
+	//
+	// example:
+	//
+	// 0a77386e-6402-8d23-4adf-6ec13b3f404d
+	RefId *string `json:"RefId,omitempty" xml:"RefId,omitempty"`
+	// The ID of the scenario to which the recording belongs.
+	//
 	// example:
 	//
 	// 6019b692-fd9e-4adb-8877-cef6a297b234
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// Recording status.
+	//
 	// example:
 	//
 	// 8
-	State       *int32  `json:"State,omitempty" xml:"State,omitempty"`
+	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
+	// Status extension
+	//
+	// example:
+	//
+	// 无
 	StateExtend *string `json:"StateExtend,omitempty" xml:"StateExtend,omitempty"`
+	// Storage UUID
+	//
 	// example:
 	//
 	// 393674ed-3b5d-db44-0fda-615d05210178
 	StorageUuid *string `json:"StorageUuid,omitempty" xml:"StorageUuid,omitempty"`
+	// Unique ID of the recording.
+	//
 	// example:
 	//
 	// 0a77386e-6402-8d23-4adf-6ec13b3f404d

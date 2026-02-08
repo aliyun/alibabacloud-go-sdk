@@ -16,12 +16,18 @@ type iGetAfterAnswerDelayPlaybackRequest interface {
 }
 
 type GetAfterAnswerDelayPlaybackRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c46001bc-3ead-4bfd-9a69-4b5b66a4a3f4
 	EntryId *string `json:"EntryId,omitempty" xml:"EntryId,omitempty"`
+	// Policy level (Required)
+	//
+	// - 2: instance
+	//
 	// example:
 	//
 	// 2

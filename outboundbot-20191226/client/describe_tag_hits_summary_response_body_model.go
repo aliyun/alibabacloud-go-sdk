@@ -26,27 +26,39 @@ type iDescribeTagHitsSummaryResponseBody interface {
 }
 
 type DescribeTagHitsSummaryResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 5391EB13-A0E7-402D-A407-B99D4ABAF22A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded
+	//
 	// example:
 	//
 	// true
-	Success     *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
-	TagGroups   []*DescribeTagHitsSummaryResponseBodyTagGroups   `json:"TagGroups,omitempty" xml:"TagGroups,omitempty" type:"Repeated"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Tag group information
+	TagGroups []*DescribeTagHitsSummaryResponseBodyTagGroups `json:"TagGroups,omitempty" xml:"TagGroups,omitempty" type:"Repeated"`
+	// Hit tag information
 	TagHitsList []*DescribeTagHitsSummaryResponseBodyTagHitsList `json:"TagHitsList,omitempty" xml:"TagHitsList,omitempty" type:"Repeated"`
 }
 
@@ -150,11 +162,20 @@ type DescribeTagHitsSummaryResponseBodyTagGroups struct {
 	//
 	// 8bb6f8ca-85a3-49f8-86a5-3127902a2156
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Scenario ID
+	//
 	// example:
 	//
-	// 84fc7c41-f918-4a47-b742-a439b35a8567
+	// 8a4c6d3d-5ed6-44ca-b779-16c20f8862be
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// Tag group name
+	//
+	// example:
+	//
+	// 标签组
 	TagGroup *string `json:"TagGroup,omitempty" xml:"TagGroup,omitempty"`
+	// Tag group index
+	//
 	// example:
 	//
 	// 0
@@ -210,12 +231,24 @@ func (s *DescribeTagHitsSummaryResponseBodyTagGroups) Validate() error {
 }
 
 type DescribeTagHitsSummaryResponseBodyTagHitsList struct {
+	// Hit count
+	//
 	// example:
 	//
 	// 1
-	HitCount *int32  `json:"HitCount,omitempty" xml:"HitCount,omitempty"`
+	HitCount *int32 `json:"HitCount,omitempty" xml:"HitCount,omitempty"`
+	// Tag group name
+	//
+	// example:
+	//
+	// 当前学历
 	TagGroup *string `json:"TagGroup,omitempty" xml:"TagGroup,omitempty"`
-	TagName  *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// Tag name
+	//
+	// example:
+	//
+	// 本科
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s DescribeTagHitsSummaryResponseBodyTagHitsList) String() string {

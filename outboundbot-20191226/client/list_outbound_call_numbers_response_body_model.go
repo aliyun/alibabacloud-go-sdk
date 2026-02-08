@@ -24,23 +24,34 @@ type iListOutboundCallNumbersResponseBody interface {
 }
 
 type ListOutboundCallNumbersResponseBody struct {
+	// API status code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
-	Message             *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Number list
 	OutboundCallNumbers *ListOutboundCallNumbersResponseBodyOutboundCallNumbers `json:"OutboundCallNumbers,omitempty" xml:"OutboundCallNumbers,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded
+	//
 	// example:
 	//
 	// true
@@ -119,15 +130,22 @@ func (s *ListOutboundCallNumbersResponseBody) Validate() error {
 }
 
 type ListOutboundCallNumbersResponseBodyOutboundCallNumbers struct {
+	// List of number data
 	List []*ListOutboundCallNumbersResponseBodyOutboundCallNumbersList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Count
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count
+	//
 	// example:
 	//
 	// 10
@@ -192,18 +210,26 @@ func (s *ListOutboundCallNumbersResponseBodyOutboundCallNumbers) Validate() erro
 }
 
 type ListOutboundCallNumbersResponseBodyOutboundCallNumbersList struct {
+	// Number
+	//
 	// example:
 	//
 	// 10088
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// Number ID
+	//
 	// example:
 	//
 	// fa0e21e9-caab-4629-9121-1e341243d599
 	OutboundCallNumberId *string `json:"OutboundCallNumberId,omitempty" xml:"OutboundCallNumberId,omitempty"`
+	// Time Range for Rate Limiting, in seconds
+	//
 	// example:
 	//
 	// 10
 	RateLimitCount *string `json:"RateLimitCount,omitempty" xml:"RateLimitCount,omitempty"`
+	// Rate Limiting count
+	//
 	// example:
 	//
 	// 100

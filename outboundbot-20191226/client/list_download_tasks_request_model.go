@@ -18,13 +18,22 @@ type iListDownloadTasksRequest interface {
 }
 
 type ListDownloadTasksRequest struct {
+	// Instance ID.
+	//
+	// example:
+	//
+	// ae4572af-376f-439f-8970-38764acbaa91
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Page number
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of entries
+	//
 	// This parameter is required.
 	//
 	// example:

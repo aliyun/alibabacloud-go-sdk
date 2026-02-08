@@ -24,23 +24,34 @@ type iListIntentsResponseBody interface {
 }
 
 type ListIntentsResponseBody struct {
+	// Status Code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Intents        *ListIntentsResponseBodyIntents `json:"Intents,omitempty" xml:"Intents,omitempty" type:"Struct"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Intent list
+	Intents *ListIntentsResponseBodyIntents `json:"Intents,omitempty" xml:"Intents,omitempty" type:"Struct"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the operation succeeded
+	//
 	// example:
 	//
 	// true
@@ -119,15 +130,22 @@ func (s *ListIntentsResponseBody) Validate() error {
 }
 
 type ListIntentsResponseBodyIntents struct {
+	// Array of intents
 	List []*ListIntentsResponseBodyIntentsList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count
+	//
 	// example:
 	//
 	// 20
@@ -192,25 +210,53 @@ func (s *ListIntentsResponseBodyIntents) Validate() error {
 }
 
 type ListIntentsResponseBodyIntentsList struct {
+	// Creation Time
+	//
 	// example:
 	//
 	// 1578469042851
-	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Instance description
+	//
+	// example:
+	//
+	// 同意还款意图
 	IntentDescription *string `json:"IntentDescription,omitempty" xml:"IntentDescription,omitempty"`
+	// Intent ID
+	//
 	// example:
 	//
 	// a8494b35-eefb-4c8a-887b-b60d2f0fa57a
-	IntentId   *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	IntentId *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// Intent name
+	//
+	// example:
+	//
+	// 统一还款
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	Keywords   *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	// Intent keywords
+	//
+	// example:
+	//
+	// ["还款"]
+	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	// Script ID
+	//
 	// example:
 	//
 	// 6ef95fd5-558f-4ee8-af34-b2ede087a87c
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// Intent Update Time
+	//
 	// example:
 	//
 	// 1578469042851
-	UpdateTime *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// User utterances that trigger the intent
+	//
+	// example:
+	//
+	// ["ok","好的","好吧","好嘞","可以","行啊","行吧","那行","知道了","我看一下","能的","等会吧","等一下","马上还","等一会","过两天","我会想办法处理"]
 	Utterances *string `json:"Utterances,omitempty" xml:"Utterances,omitempty"`
 }
 

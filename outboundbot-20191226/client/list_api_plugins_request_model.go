@@ -20,24 +20,32 @@ type iListApiPluginsRequest interface {
 }
 
 type ListApiPluginsRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 024f8cf0-c842-4c01-b74b-c8667e4579c7
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Page number
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of entries to display per page
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// List of UUIDs of API plugins
+	//
 	// example:
 	//
 	// ["d17d5bfa-4972-4389-9718-f9602edabe48"]

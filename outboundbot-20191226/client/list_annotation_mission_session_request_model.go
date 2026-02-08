@@ -24,26 +24,64 @@ type iListAnnotationMissionSessionRequest interface {
 }
 
 type ListAnnotationMissionSessionRequest struct {
+	// Job ID
+	//
 	// example:
 	//
 	// 8434a4b0-41fc-41b1-aa75-bbd1f2ab0c8d
 	AnnotationMissionId *string `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
+	// Annotation Job chat instance ID
+	//
+	// > Obtain it by calling the SaveAnnotationMissionSessionList API.
+	//
 	// example:
 	//
 	// 8434a4b0-41fc-41b1-aa75-bbd1f2ab0c8d
 	AnnotationMissionSessionId *string `json:"AnnotationMissionSessionId,omitempty" xml:"AnnotationMissionSessionId,omitempty"`
+	// Environment
+	//
+	// > Default value is 2.
+	//
+	// **Enumeration values**
+	//
+	// - 0: NONE
+	//
+	// - 1: Private Cloud
+	//
+	// - 2: Public Cloud
+	//
 	// example:
 	//
 	// 0
 	Environment *int32 `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// List of included statuses
+	//
+	// > Format: [1]. Specify the exact enumeration values in the array.
+	//
+	// **Enumeration values*	-
+	//
+	// - 1: Detected correctly
+	//
+	// - 2: Detection fault
+	//
+	// - 8: Invalid data
+	//
+	// - 4: Intent not covered
+	//
+	// - 16: Misrecognized translation
+	//
 	// example:
 	//
 	// [1]
 	IncludeStatusListJsonString *string `json:"IncludeStatusListJsonString,omitempty" xml:"IncludeStatusListJsonString,omitempty"`
+	// Page index
+	//
 	// example:
 	//
 	// 3
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// Number of records displayed per page.
+	//
 	// example:
 	//
 	// 1

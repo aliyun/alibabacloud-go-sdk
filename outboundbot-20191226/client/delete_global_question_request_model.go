@@ -18,23 +18,31 @@ type iDeleteGlobalQuestionRequest interface {
 }
 
 type DeleteGlobalQuestionRequest struct {
+	// Global question ID
+	//
+	// > Obtain it by calling the ListGlobalQuestions API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 35f1361e-4377-494c-9f10-4274bda0317f
 	GlobalQuestionId *string `json:"GlobalQuestionId,omitempty" xml:"GlobalQuestionId,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 361c8a53-0e29-42f3-8aa7-c7752d010399
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Scenario ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// aa279896-64a6-4182-864c-4f2b04ec8d17
+	// 0fe7f71c-8771-42ef-9bb1-19aa16ae7120
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
 }
 

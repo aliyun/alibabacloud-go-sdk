@@ -30,35 +30,52 @@ type iListChatbotInstancesResponseBody interface {
 }
 
 type ListChatbotInstancesResponseBody struct {
+	// List of bot information
 	Bots []*ListChatbotInstancesResponseBodyBots `json:"Bots,omitempty" xml:"Bots,omitempty" type:"Repeated"`
+	// Response code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 5
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Count
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total count
+	//
 	// example:
 	//
 	// 100
@@ -168,24 +185,44 @@ func (s *ListChatbotInstancesResponseBody) Validate() error {
 }
 
 type ListChatbotInstancesResponseBodyBots struct {
+	// URL of the profile picture
+	//
 	// example:
 	//
 	// https://ccrm.wengine.cn/ccrm/system/common/fileDownload/noToken?fileId=975cdeaa064846e3b6004abd9ba1d7c8
 	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	// Creation Time
+	//
 	// example:
 	//
 	// 2022-01-18T02:36:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// instance ID
+	//
 	// example:
 	//
 	// e874fcf0-d2f4-4e62-9377-b6f35fe55210
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Bot remark
+	//
+	// example:
+	//
+	// 这是直播的描述
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
+	// Language of the bot service, such as zh-cn or en-us
+	//
 	// example:
 	//
 	// zh-cn
 	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Bot name
+	//
+	// example:
+	//
+	// 智能回访2
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Time zone of the bot, refer to "Common - Time Zone Codes"
+	//
 	// example:
 	//
 	// Asia/Shanghai

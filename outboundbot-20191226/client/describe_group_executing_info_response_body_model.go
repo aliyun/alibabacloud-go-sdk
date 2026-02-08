@@ -28,34 +28,50 @@ type iDescribeGroupExecutingInfoResponseBody interface {
 }
 
 type DescribeGroupExecutingInfoResponseBody struct {
+	// API status code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Execution information
+	//
 	// example:
 	//
 	// {}
 	ExecutingInfo *DescribeGroupExecutingInfoResponseBodyExecutingInfo `json:"ExecutingInfo,omitempty" xml:"ExecutingInfo,omitempty" type:"Struct"`
+	// Task group ID
+	//
 	// example:
 	//
 	// b24d321a-2a74-4dd1-a0ba-4ab09cef6652
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// c46001bc-3ead-4bfd-9a69-4b5b66a4a3f4
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded
+	//
 	// example:
 	//
 	// true
@@ -153,45 +169,70 @@ func (s *DescribeGroupExecutingInfoResponseBody) Validate() error {
 
 type DescribeGroupExecutingInfoResponseBodyExecutingInfo struct {
 	AvgTalkTime *int32 `json:"AvgTalkTime,omitempty" xml:"AvgTalkTime,omitempty"`
+	// Number of call failures
+	//
 	// example:
 	//
 	// 5
 	CallFailedNum *int32 `json:"CallFailedNum,omitempty" xml:"CallFailedNum,omitempty"`
+	// Number of outbound calls
+	//
 	// example:
 	//
 	// 5
 	CallNum *int32 `json:"CallNum,omitempty" xml:"CallNum,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// xxx
 	CreatorName          *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
 	DurationDistribution *string `json:"DurationDistribution,omitempty" xml:"DurationDistribution,omitempty"`
+	// End Time
+	//
 	// example:
 	//
 	// 1640087774563
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Number of completed executions
+	//
 	// example:
 	//
 	// 5
 	FinishedNum *int32 `json:"FinishedNum,omitempty" xml:"FinishedNum,omitempty"`
+	// Number of times hung up by the customer
+	//
 	// example:
 	//
 	// 5
 	HangUpByClientNum *int32 `json:"HangUpByClientNum,omitempty" xml:"HangUpByClientNum,omitempty"`
+	// Execution progress
+	//
 	// example:
 	//
 	// {}
-	JobsProgress     *DescribeGroupExecutingInfoResponseBodyExecutingInfoJobsProgress `json:"JobsProgress,omitempty" xml:"JobsProgress,omitempty" type:"Struct"`
-	NoInteractionNum *int32                                                           `json:"NoInteractionNum,omitempty" xml:"NoInteractionNum,omitempty"`
+	JobsProgress *DescribeGroupExecutingInfoResponseBodyExecutingInfoJobsProgress `json:"JobsProgress,omitempty" xml:"JobsProgress,omitempty" type:"Struct"`
+	// Number of no-interaction occurrences.
+	//
+	// example:
+	//
+	// 1
+	NoInteractionNum *int32 `json:"NoInteractionNum,omitempty" xml:"NoInteractionNum,omitempty"`
+	// Start Time
+	//
 	// example:
 	//
 	// 1640087774563
 	StartTime             *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TalkTurnsDistribution *string `json:"TalkTurnsDistribution,omitempty" xml:"TalkTurnsDistribution,omitempty"`
+	// Intent recognition
+	//
 	// example:
 	//
 	// 5
 	TransferByIntentNum *int32 `json:"TransferByIntentNum,omitempty" xml:"TransferByIntentNum,omitempty"`
+	// No acknowledgement
+	//
 	// example:
 	//
 	// 5
@@ -342,34 +383,50 @@ func (s *DescribeGroupExecutingInfoResponseBodyExecutingInfo) Validate() error {
 }
 
 type DescribeGroupExecutingInfoResponseBodyExecutingInfoJobsProgress struct {
+	// Number of cancelled jobs
+	//
 	// example:
 	//
 	// 5
 	CancelledNum *int32 `json:"CancelledNum,omitempty" xml:"CancelledNum,omitempty"`
+	// Number of jobs being executed
+	//
 	// example:
 	//
 	// 5
 	ExecutingNum *int32 `json:"ExecutingNum,omitempty" xml:"ExecutingNum,omitempty"`
+	// Number of failed jobs
+	//
 	// example:
 	//
 	// 5
 	FailedNum *int32 `json:"FailedNum,omitempty" xml:"FailedNum,omitempty"`
+	// Number of pauses
+	//
 	// example:
 	//
 	// 5
 	PausedNum *int32 `json:"PausedNum,omitempty" xml:"PausedNum,omitempty"`
+	// Number of jobs being scheduled
+	//
 	// example:
 	//
 	// 5
 	SchedulingNum *int32 `json:"SchedulingNum,omitempty" xml:"SchedulingNum,omitempty"`
+	// Total quantity completed
+	//
 	// example:
 	//
 	// 5
 	TotalCompletedNum *int32 `json:"TotalCompletedNum,omitempty" xml:"TotalCompletedNum,omitempty"`
+	// Total number of jobs
+	//
 	// example:
 	//
 	// 5
 	TotalJobs *int32 `json:"TotalJobs,omitempty" xml:"TotalJobs,omitempty"`
+	// Quantity with no acknowledgement
+	//
 	// example:
 	//
 	// 5

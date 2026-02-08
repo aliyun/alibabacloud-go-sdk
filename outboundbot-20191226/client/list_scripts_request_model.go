@@ -22,25 +22,47 @@ type iListScriptsRequest interface {
 }
 
 type ListScriptsRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// bdd49242-114c-4045-b1d1-25ccc1756c75
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NluEngine  *string `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
+	// NLU bot engine.
+	//
+	// - If left unspecified, queries scenarios using small models.
+	//
+	// - If set to "Prompts", queries text-input pattern under LLM scenarios.
+	//
+	// - If set to "SSE_FUNCTION", queries Function Compute pattern under LLM scenarios.
+	//
+	// example:
+	//
+	// Prompts
+	NluEngine *string `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
+	// Page number
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of entries displayed per page
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Script name
+	//
+	// example:
+	//
+	// 课程满意度回访
 	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
 }
 

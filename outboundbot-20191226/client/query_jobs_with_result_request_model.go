@@ -40,56 +40,177 @@ type iQueryJobsWithResultRequest interface {
 }
 
 type QueryJobsWithResultRequest struct {
+	// Filter condition for call end time
+	//
+	// example:
+	//
+	// 1579055783000
 	EndActualTimeFilter *int64 `json:"EndActualTimeFilter,omitempty" xml:"EndActualTimeFilter,omitempty"`
+	// Is answered
+	//
 	// example:
 	//
 	// true
 	HasAnsweredFilter *bool `json:"HasAnsweredFilter,omitempty" xml:"HasAnsweredFilter,omitempty"`
+	// Whether the call was hung up due to rejection
+	//
 	// example:
 	//
 	// false
 	HasHangUpByRejectionFilter *bool `json:"HasHangUpByRejectionFilter,omitempty" xml:"HasHangUpByRejectionFilter,omitempty"`
+	// Is completed
+	//
 	// example:
 	//
 	// true
 	HasReachedEndOfFlowFilter *bool `json:"HasReachedEndOfFlowFilter,omitempty" xml:"HasReachedEndOfFlowFilter,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 9d53cd72-4050-4419-8c17-acc0bf158147
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// List of job failure reasons
+	//
 	// example:
 	//
 	// ["NoAnswer"]
 	JobFailureReasonsFilter *string `json:"JobFailureReasonsFilter,omitempty" xml:"JobFailureReasonsFilter,omitempty"`
+	// Task group ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ad16fc35-d824-4102-a606-2be51c1aa6dd
 	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	// Job status filter
+	//
+	// - Scheduling: Scheduling.
+	//
+	// - Executing: Executing.
+	//
+	// - Succeeded: Ended – Reached.
+	//
+	// - Paused: Paused.
+	//
+	// - Failed: Ended – Not reached.
+	//
+	// - Cancelled: Cancelled – Manual intervention.
+	//
 	// example:
 	//
 	// Succeeded
-	JobStatusFilter *string   `json:"JobStatusFilter,omitempty" xml:"JobStatusFilter,omitempty"`
-	LabelsJson      []*string `json:"LabelsJson,omitempty" xml:"LabelsJson,omitempty" type:"Repeated"`
+	JobStatusFilter *string `json:"JobStatusFilter,omitempty" xml:"JobStatusFilter,omitempty"`
+	// Tag filtering conditions for calls
+	//
+	// > This condition supports filtering only by labels that have specific enumeration tag values configured—that is, labels with explicitly defined tag values in the LLM scenario.
+	LabelsJson []*string `json:"LabelsJson,omitempty" xml:"LabelsJson,omitempty" type:"Repeated"`
+	// Page number
+	//
+	// 	Notice: This parameter is Required
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size
+	//
+	// 	Notice: This parameter is Required
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Search content; you can search by phone number
+	//
 	// example:
 	//
 	// 1882020****
-	QueryText             *string `json:"QueryText,omitempty" xml:"QueryText,omitempty"`
-	StartActualTimeFilter *int64  `json:"StartActualTimeFilter,omitempty" xml:"StartActualTimeFilter,omitempty"`
+	QueryText *string `json:"QueryText,omitempty" xml:"QueryText,omitempty"`
+	// Filter condition for call start time
+	//
 	// example:
 	//
-	// Succeeded
+	// 1579055782000
+	StartActualTimeFilter *int64 `json:"StartActualTimeFilter,omitempty" xml:"StartActualTimeFilter,omitempty"`
+	// Call status. Valid values: ["Executing","Succeeded"]. Separate multiple values with commas.
+	//
+	// Value range:
+	//
+	// (Note: The **Succeeded*	- status has been subdivided by reason. The generic **Succeeded**: 1 (Answered) status will not be displayed; instead, only the specific subdivided reason types will be returned.)
+	//
+	// - **Executing**: 0 (Dialing in progress).
+	//
+	// - **Succeeded**: 1 (Answered).
+	//
+	// - **NoAnswer**: 2 (Not answered – No one picked up).
+	//
+	// - **NotExist**: 3 (Not answered – Nonexistent number).
+	//
+	// - **Busy**: 4 (Not answered – Line busy).
+	//
+	// - **Cancelled**: 5 (Not dialed – Job stopped).
+	//
+	// - **Failed**: 6 (Failed).
+	//
+	// - **NotConnected**: 7 (Not answered – Unable to connect).
+	//
+	// - **PoweredOff**: 8 (Not answered – Powered off).
+	//
+	// - **OutOfService**: 9 (Not answered – Called party suspended).
+	//
+	// - **InArrears**: 10 (Not answered – Called party has overdue payment).
+	//
+	// - **EmptyNumber**: 11 (Not dialed – Nonexistent number, no call placed).
+	//
+	// - **PerDayCallCountLimit**: 12 (Not dialed – Exceeded daily call limit).
+	//
+	// - **ContactBlockList**: 13 (Not dialed – Blacklist).
+	//
+	// - **CallerNotRegistered**: 14 (Not dialed – Caller number not registered).
+	//
+	// - **Terminated**: 15 (Not dialed – Terminated).
+	//
+	// - **VerificationCancelled**: 16 (Not dialed – Cancelled due to failed pre-call authentication).
+	//
+	// - **OutOfServiceNoCall**: 17 (Not dialed – Called party suspended, no call placed).
+	//
+	// - **InArrearsNoCall**: 18 (Not dialed – Called party has overdue payment, no call placed).
+	//
+	// - **CallingNumberNotExist**: 19 (Not dialed – Caller number does not exist).
+	//
+	// - **SucceededFinish**: 20 (Answered – Normal completion).
+	//
+	// - **SucceededChatbotHangUpAfterNoAnswer**: 21 (Answered – Bot hung up after rejection).
+	//
+	// - **SucceededChatbotHangUpAfterSilence**: 22 (Answered – Bot hung up after silence timeout).
+	//
+	// - **SucceededClientHangUpAfterNoAnswer**: 23 (Answered – User hung up after rejection).
+	//
+	// - **SucceededClientHangUp**: 24 (Answered – User hung up without reason).
+	//
+	// - **SucceededTransferByIntent**: 25 (Answered – Transferred to agent due to intent hit).
+	//
+	// - **SucceededTransferAfterNoAnswer**: 26 (Answered – Transferred to agent after rejection).
+	//
+	// - **SucceededInoInterAction**: 27 (Answered – No interaction from user side).
+	//
+	// - **SucceededError**: 28 (Answered – Interrupted by system exception).
+	//
+	// - **SucceededSpecialInterceptVoiceAssistant**: 29 (Answered – Intercepted under special condition – Voice assistant).
+	//
+	// - **SucceededSpecialInterceptExtensionNumberTransfer**: 30 (Answered – Intercepted under special condition – Extension transfer).
+	//
+	// - **SucceededSpecialInterceptCustomSpecialIntercept**: 31 (Answered – Intercepted under special condition – Custom intercept).
+	//
+	// - **HighRiskSipCode**: 32 (Not dialed – High-risk, no call placed).
+	//
+	// example:
+	//
+	// ["Executing"]
 	TaskStatusFilter *string `json:"TaskStatusFilter,omitempty" xml:"TaskStatusFilter,omitempty"`
 }
 

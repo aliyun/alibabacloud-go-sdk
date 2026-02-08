@@ -24,12 +24,42 @@ type iCreateScriptWaveformResponseBody interface {
 }
 
 type CreateScriptWaveformResponseBody struct {
-	Code             *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode   *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Status code
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Script information
+	//
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Script recording ID
+	//
+	// example:
+	//
+	// df8216aa-d8f6-4501-864f-f8334d946561
 	ScriptWaveformId *string `json:"ScriptWaveformId,omitempty" xml:"ScriptWaveformId,omitempty"`
-	Success          *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the operation succeeded
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateScriptWaveformResponseBody) String() string {

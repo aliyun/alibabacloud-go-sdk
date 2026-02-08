@@ -24,29 +24,97 @@ type iStartJobRequest interface {
 }
 
 type StartJobRequest struct {
+	// List of calling numbers
+	//
 	// example:
 	//
 	// 10086
 	CallingNumber []*string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty" type:"Repeated"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// da37319b-6c83-4268-9f19-814aed62e401
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Task group ID
+	//
 	// example:
 	//
 	// 4f21446e-324e-46f2-bf62-7f341fb004ea
 	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	// Job data, including the following content:
+	//
+	// extras // Optional additional information
+	//
+	// - key // Key of the custom variable content
+	//
+	// - value // Value of the custom variable content
+	//
+	// contacts // Required field; callee contact information
+	//
+	// - phoneNumber // Required field; callee phone number
+	//
+	// - referenceId // Required field; contact ID (user-defined), primarily used to avoid duplicate names
+	//
+	// - role // Optional field; role of this contact in the outbound call scenario; if unspecified, no distinction is made
+	//
+	// - honorific // Optional field; honorific title for the contact
+	//
+	// - name // Optional field; contact name
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {
+	//
+	// 	"extras": [{
+	//
+	// 		"value": "测试",
+	//
+	// 		"key": "测试"
+	//
+	// 	}, {
+	//
+	// 		"key": "ServiceId",
+	//
+	// 		"value": null
+	//
+	// 	}, {
+	//
+	// 		"key": "TenantId",
+	//
+	// 		"value": null
+	//
+	// 	}],
+	//
+	// 	"contacts": [{
+	//
+	// 		"phonenumber": "198********",
+	//
+	// 		"name": "张三",
+	//
+	// 		"priority": 5,
+	//
+	// 		"referenceId": "C01"
+	//
+	// 	}]
+	//
+	// }
 	JobJson *string `json:"JobJson,omitempty" xml:"JobJson,omitempty"`
+	// Scenario ID, used for compatibility with the legacy outbound calling feature. This parameter is optional.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	ScenarioId *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
+	// Scenario ID (Required)
+	//
 	// example:
 	//
-	// b9ff4e88-65f9-4eb3-987c-11ba51f3f24d
+	// 1eeae263-54ca-4a52-ae14-62da58f3c473
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
 }
 

@@ -22,22 +22,36 @@ type iGetJobDataUploadParamsRequest interface {
 }
 
 type GetJobDataUploadParamsRequest struct {
+	// Business type
+	//
 	// example:
 	//
 	// SCRIPT_RECORDING
 	BusiType *string `json:"BusiType,omitempty" xml:"BusiType,omitempty"`
+	// File name
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// SHUKE_ZA_ol_2_开场白.wav
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4eee9bf8-1319-468f-ac82-83c50ae389f8
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Relative path of file storage
+	//
 	// example:
 	//
 	// //airwaybill/1237185904146124802
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// Unique business ID (prevents file name duplication; if left blank, the system automatically adds one)
+	//
 	// example:
 	//
 	// sas_siema_1477832102462645_siem_f07e90c2c147cf8cf1549ccb974e1956

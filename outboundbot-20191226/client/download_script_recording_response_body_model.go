@@ -24,23 +24,34 @@ type iDownloadScriptRecordingResponseBody interface {
 }
 
 type DownloadScriptRecordingResponseBody struct {
+	// API status code
+	//
 	// example:
 	//
 	// OK
-	Code           *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Parameters
 	DownloadParams *DownloadScriptRecordingResponseBodyDownloadParams `json:"DownloadParams,omitempty" xml:"DownloadParams,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API prompt message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded
+	//
 	// example:
 	//
 	// true
@@ -119,10 +130,14 @@ func (s *DownloadScriptRecordingResponseBody) Validate() error {
 }
 
 type DownloadScriptRecordingResponseBodyDownloadParams struct {
+	// Recording file name
+	//
 	// example:
 	//
 	// 281eb174-3865-41c1-9274-7b6813edadab.wav
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// A URL pointing to the recording file. You can use this URL for playback or download.
+	//
 	// example:
 	//
 	// http://tiangong-staging.oss-cn-shanghai.aliyuncs.com/record/281eb174-3865-41c1-9274-7b6813edadab.wav?Expires=1578624046&OSSAccessKeyId=LTAI****cqw&Signature=dL2dxWS6VcdZrvG9xOMOBMSP3Fg%3D

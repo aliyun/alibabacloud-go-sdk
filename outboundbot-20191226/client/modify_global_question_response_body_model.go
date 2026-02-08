@@ -24,26 +24,38 @@ type iModifyGlobalQuestionResponseBody interface {
 }
 
 type ModifyGlobalQuestionResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Global question ID
+	//
 	// example:
 	//
 	// ad80de88-1661-445a-92ec-bf88dc45d581
 	DialogueQuestionId *string `json:"DialogueQuestionId,omitempty" xml:"DialogueQuestionId,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded
+	//
 	// example:
 	//
 	// true

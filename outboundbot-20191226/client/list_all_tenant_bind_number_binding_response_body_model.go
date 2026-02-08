@@ -24,23 +24,34 @@ type iListAllTenantBindNumberBindingResponseBody interface {
 }
 
 type ListAllTenantBindNumberBindingResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// OK
-	Code *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data
 	Data *ListAllTenantBindNumberBindingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// A4BEAB4B-C810-5386-B72A-1A35FF1E6B15
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded
+	//
 	// example:
 	//
 	// True
@@ -119,6 +130,7 @@ func (s *ListAllTenantBindNumberBindingResponseBody) Validate() error {
 }
 
 type ListAllTenantBindNumberBindingResponseBodyData struct {
+	// Array
 	List []*ListAllTenantBindNumberBindingResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 }
 
@@ -154,20 +166,32 @@ func (s *ListAllTenantBindNumberBindingResponseBodyData) Validate() error {
 
 type ListAllTenantBindNumberBindingResponseBodyDataList struct {
 	BillingType *string `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+	// Binding ID
+	//
 	// example:
 	//
 	// b5bfb844-ce85-4779-bc8f-161fba46aa07
-	BindingId        *string   `json:"BindingId,omitempty" xml:"BindingId,omitempty"`
+	BindingId *string `json:"BindingId,omitempty" xml:"BindingId,omitempty"`
+	// List of instance names
 	InstanceNameList []*string `json:"InstanceNameList,omitempty" xml:"InstanceNameList,omitempty" type:"Repeated"`
+	// Number
+	//
 	// example:
 	//
 	// 15005059355
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// Policy
+	//
 	// example:
 	//
 	// {\\"rateLimitPeriod\\":\\"1\\",\\"rateLimitCount\\":\\"1\\"}
 	SerializedParams *string `json:"SerializedParams,omitempty" xml:"SerializedParams,omitempty"`
-	TrunkName        *string `json:"TrunkName,omitempty" xml:"TrunkName,omitempty"`
+	// Trunk Name
+	//
+	// example:
+	//
+	// 小码-公共
+	TrunkName *string `json:"TrunkName,omitempty" xml:"TrunkName,omitempty"`
 }
 
 func (s ListAllTenantBindNumberBindingResponseBodyDataList) String() string {

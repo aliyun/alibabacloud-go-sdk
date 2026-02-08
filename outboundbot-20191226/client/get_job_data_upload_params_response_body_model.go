@@ -24,26 +24,37 @@ type iGetJobDataUploadParamsResponseBody interface {
 }
 
 type GetJobDataUploadParamsResponseBody struct {
+	// API status code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded
+	//
 	// example:
 	//
 	// True
-	Success      *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// List of upload parameters
 	UploadParams *GetJobDataUploadParamsResponseBodyUploadParams `json:"UploadParams,omitempty" xml:"UploadParams,omitempty" type:"Struct"`
 }
 
@@ -119,26 +130,40 @@ func (s *GetJobDataUploadParamsResponseBody) Validate() error {
 }
 
 type GetJobDataUploadParamsResponseBodyUploadParams struct {
+	// OSS Access ID
+	//
 	// example:
 	//
-	// LTAIvKWEr4DoFSqz
+	// LTAI****************
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	// Expiration time (seconds)
+	//
 	// example:
 	//
 	// 1741855527
 	Expire *int32 `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	// Upload folder
+	//
+	// > The value of this parameter will be used in the request parameters of many APIs.
+	//
 	// example:
 	//
-	// UPLOADED/SCRIPT/136a055e-3d07-46c6-853a-731b3a2973de/18dc6d79-338f-413c-a5a8-dcce5f05b41a_9bd7916d-a340-4925-a911-92390cbe0f33.json
+	// UPLOADED/SCRIPT/136a055e-***-46c6-853a-731b3a2973de/18dc6d79-338f-413c-a5a8-dcce5f05b41a_9bd7916d-a340-4925-a911-92390cbe0f33.json
 	Folder *string `json:"Folder,omitempty" xml:"Folder,omitempty"`
+	// Upload server URL
+	//
 	// example:
 	//
 	// https://cloudagentbot-online.oss-cn-hangzhou.aliyuncs.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// Upload policy
+	//
 	// example:
 	//
 	// eyJleHBpcmF0aW9uIjoiMjAyNS0wMy0xM1QwODo0NToyNy4zMzFaIiwiY29uZGl0aW9ucyI6W1siY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsNTI0Mjg4MDBdLFsic3RhcnRzLXdpdGgiLCIka2V5IiwiVVBMT0FERUQvU0NSSVBULzEzNmEwNTVlLTNkMDctNDZjNi04NTNhLTczMWIzYTI5NzNkZS8iXV19
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// Signature information
+	//
 	// example:
 	//
 	// MD4CHQCiECtjdsP+fstJDcqsPt+GbWxSWPzGQxeQiblzAh0AuidaKc5JY5AkHFIE+qiQI3izJQQbpUoG0paPTw==

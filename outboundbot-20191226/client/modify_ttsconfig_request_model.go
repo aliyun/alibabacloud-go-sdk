@@ -28,16 +28,26 @@ type iModifyTTSConfigRequest interface {
 }
 
 type ModifyTTSConfigRequest struct {
+	// When the Voice Service Type (nlsServiceType) is set to Authorized, this field stores the appKey of the Intelligent Speech Interaction product project.
+	//
 	// example:
 	//
 	// 99****Aw
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 27244bae-e446-4811-bb1d-f8a07b525af0
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Service Type
+	//
+	// Managed: The default Intelligent Speech Interaction service for Intelligent Outbound Calling products (public service).
+	//
+	// Authorized: A private Intelligent Speech Interaction service purchased by public cloud customers (customer private service), authorized via Scenario Management > Edit > Invoke Service > Custom Service.
+	//
 	// example:
 	//
 	// Managed
@@ -47,15 +57,41 @@ type ModifyTTSConfigRequest struct {
 	// 大于0表示升高音高。
 	//
 	// 小于0表示降低音高。
+	//
+	// example:
+	//
+	// 0
 	PitchRate *string `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
+	// scenario ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1f1a2ba0-b3e7-4ff9-baf1-6dc8aeac0791
-	ScriptId   *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// Speech rate: an integer between [-500, 500]. Default Value is 0.
+	//
+	// A value greater than 0 speeds up speech.
+	//
+	// A value less than 0 slows down speech.
+	//
+	// example:
+	//
+	// 0
 	SpeechRate *string `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	Voice      *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	// Voice information, such as: aixia / siyue / xiaoyun
+	//
+	// example:
+	//
+	// aixia
+	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	// Volume: an integer between [0, 100]. Default Value is 50.
+	//
+	// A value greater than 50 increases the volume.
+	//
+	// A value less than 50 decreases the volume.
+	//
 	// example:
 	//
 	// 100

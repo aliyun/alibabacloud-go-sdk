@@ -30,29 +30,55 @@ type iListInstancesResponseBody interface {
 }
 
 type ListInstancesResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Instances      []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// List of business instances.
+	Instances []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// The API message.
+	//
 	// example:
 	//
 	// Success
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size for paging.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded.
+	//
 	// example:
 	//
 	// true
-	Success    *bool  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of instances.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -159,37 +185,68 @@ func (s *ListInstancesResponseBody) Validate() error {
 }
 
 type ListInstancesResponseBodyInstances struct {
+	// Creation Time.
+	//
 	// example:
 	//
 	// 1578469042851
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The creator ID.
+	//
 	// example:
 	//
 	// 34234
 	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The creator name.
+	//
 	// example:
 	//
 	// xxx
-	CreatorName         *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// The description of the Intelligent Outbound Call business instance.
+	//
+	// example:
+	//
+	// 这是一个实例
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	// Business instance ID.
+	//
 	// example:
 	//
 	// 90515b5-6115-4ccf-83e2-52d5bfaf2ddf
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Name of the Intelligent Outbound Calling business instance.
+	//
+	// example:
+	//
+	// 回访
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	IsPreset     *bool   `json:"IsPreset,omitempty" xml:"IsPreset,omitempty"`
+	// Indicates whether the instance is a system preset instance.
+	//
+	// example:
+	//
+	// false
+	IsPreset *bool `json:"IsPreset,omitempty" xml:"IsPreset,omitempty"`
+	// Maximum allowed outbound call concurrency.
+	//
 	// example:
 	//
 	// 10
 	MaxConcurrentConversation *int32 `json:"MaxConcurrentConversation,omitempty" xml:"MaxConcurrentConversation,omitempty"`
+	// Account name.
+	//
 	// example:
 	//
 	// xxx
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// Resource group ID.
+	//
 	// example:
 	//
 	// 90515b5-6115-4ccf-83e2-52d5bfaf2ddf
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Tag information.
+	//
 	// example:
 	//
 	// []
@@ -317,10 +374,14 @@ func (s *ListInstancesResponseBodyInstances) Validate() error {
 }
 
 type ListInstancesResponseBodyInstancesResourceTags struct {
+	// Tag key.
+	//
 	// example:
 	//
 	// age
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Tag value.
+	//
 	// example:
 	//
 	// 20

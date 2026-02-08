@@ -18,14 +18,22 @@ type iSuspendCallWithFileRequest interface {
 }
 
 type SuspendCallWithFileRequest struct {
+	// File Path (Required)
+	//
+	// > You can obtain the value of this parameter by invoking the GetJobDataUploadParams API to upload a file and retrieving the Folder response parameter, then passing it into FilePath.
+	//
 	// example:
 	//
 	// xxxx
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// Task group ID (Required)
+	//
 	// example:
 	//
 	// 0197261b-30e6-467b-83d6-7f72af868b03
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Instance ID (Required)
+	//
 	// example:
 	//
 	// a4274627-265f-4e14-b2d6-4ee7d4f8593e

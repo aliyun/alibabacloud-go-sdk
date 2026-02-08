@@ -24,33 +24,51 @@ type iCancelJobsRequest interface {
 }
 
 type CancelJobsRequest struct {
+	// Specifies whether to cancel all jobs
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 174952ab-9825-4cc9-a5e2-de82d7fa4cdd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Filter condition: task group ID
+	//
 	// example:
 	//
 	// 9f84892d-721a-4069-9975-668c8164d64e
 	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	// Filter condition: job ID
+	//
+	// > When the All parameter is false, JobId is required.
+	//
 	// example:
 	//
 	// edf45790-7200-4cbc-b157-8c0a5f400b75
 	JobId []*string `json:"JobId,omitempty" xml:"JobId,omitempty" type:"Repeated"`
+	// Filter condition: reference ID of the job
+	//
+	// > This corresponds to the ReferenceId uploaded by the Customer when uploading the outbound call list.
+	//
 	// example:
 	//
 	// 4a875676-b136-4087-88b4-de67c61fed69
 	JobReferenceId []*string `json:"JobReferenceId,omitempty" xml:"JobReferenceId,omitempty" type:"Repeated"`
+	// Filter condition: scenario ID
+	//
+	// > You can obtain this by calling DescribeJobGroup.
+	//
 	// example:
 	//
-	// 9cef0dd3-b9d6-4748-9a6f-77a8c3402bb1
+	// 35641113-b2f6-464e-a772-25c25554798b
 	ScenarioId *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
 }
 

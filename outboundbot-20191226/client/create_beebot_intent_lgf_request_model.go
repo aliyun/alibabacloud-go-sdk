@@ -18,14 +18,20 @@ type iCreateBeebotIntentLgfRequest interface {
 }
 
 type CreateBeebotIntentLgfRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// e5035654-1745-484a-8c5b-165f7c7bcd79
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// LGF definition information
+	//
 	// This parameter is required.
 	LgfDefinition *CreateBeebotIntentLgfRequestLgfDefinition `json:"LgfDefinition,omitempty" xml:"LgfDefinition,omitempty" type:"Struct"`
+	// Scenario ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -79,13 +85,21 @@ func (s *CreateBeebotIntentLgfRequest) Validate() error {
 }
 
 type CreateBeebotIntentLgfRequestLgfDefinition struct {
+	// Intent ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10717802
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// Intent configuration
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 我是一个问法模版
 	RuleText *string `json:"RuleText,omitempty" xml:"RuleText,omitempty"`
 }
 

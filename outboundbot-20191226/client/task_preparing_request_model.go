@@ -18,16 +18,22 @@ type iTaskPreparingRequest interface {
 }
 
 type TaskPreparingRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 33040b9a-b04b-452f-b554-cd6f3a15f850
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Account ID of the instance owner
+	//
 	// example:
 	//
 	// 1971226538081821
 	InstanceOwnerId *int64 `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
+	// Job ID
+	//
 	// This parameter is required.
 	//
 	// example:
