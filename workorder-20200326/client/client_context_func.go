@@ -2,63 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("central")
-	client.EndpointMap = map[string]*string{
-		"ap-northeast-1": dara.String("workorder.ap-northeast-1.aliyuncs.com"),
-		"ap-southeast-1": dara.String("workorder.ap-southeast-1.aliyuncs.com"),
-	}
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("workorder"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Deprecated: OpenAPI CloseTicket is deprecated, please use Workorder::2021-06-10::CloseTicket instead.
 //
@@ -67,7 +14,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CloseTicketResponse
-func (client *Client) CloseTicketWithOptions(request *CloseTicketRequest, runtime *dara.RuntimeOptions) (_result *CloseTicketResponse, _err error) {
+func (client *Client) CloseTicketWithContext(ctx context.Context, request *CloseTicketRequest, runtime *dara.RuntimeOptions) (_result *CloseTicketResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -98,28 +45,11 @@ func (client *Client) CloseTicketWithOptions(request *CloseTicketRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &CloseTicketResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI CloseTicket is deprecated, please use Workorder::2021-06-10::CloseTicket instead.
-//
-// @param request - CloseTicketRequest
-//
-// @return CloseTicketResponse
-// Deprecated
-func (client *Client) CloseTicket(request *CloseTicketRequest) (_result *CloseTicketResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CloseTicketResponse{}
-	_body, _err := client.CloseTicketWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -130,7 +60,7 @@ func (client *Client) CloseTicket(request *CloseTicketRequest) (_result *CloseTi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateTicketResponse
-func (client *Client) CreateTicketWithOptions(request *CreateTicketRequest, runtime *dara.RuntimeOptions) (_result *CreateTicketResponse, _err error) {
+func (client *Client) CreateTicketWithContext(ctx context.Context, request *CreateTicketRequest, runtime *dara.RuntimeOptions) (_result *CreateTicketResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -189,28 +119,11 @@ func (client *Client) CreateTicketWithOptions(request *CreateTicketRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateTicketResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI CreateTicket is deprecated, please use Workorder::2021-06-10::CreateTicket instead.
-//
-// @param request - CreateTicketRequest
-//
-// @return CreateTicketResponse
-// Deprecated
-func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *CreateTicketResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateTicketResponse{}
-	_body, _err := client.CreateTicketWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -221,7 +134,7 @@ func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *Creat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListCategoriesResponse
-func (client *Client) ListCategoriesWithOptions(request *ListCategoriesRequest, runtime *dara.RuntimeOptions) (_result *ListCategoriesResponse, _err error) {
+func (client *Client) ListCategoriesWithContext(ctx context.Context, request *ListCategoriesRequest, runtime *dara.RuntimeOptions) (_result *ListCategoriesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -252,28 +165,11 @@ func (client *Client) ListCategoriesWithOptions(request *ListCategoriesRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListCategoriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ListCategories is deprecated, please use Workorder::2021-06-10::ListCategories instead.
-//
-// @param request - ListCategoriesRequest
-//
-// @return ListCategoriesResponse
-// Deprecated
-func (client *Client) ListCategories(request *ListCategoriesRequest) (_result *ListCategoriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListCategoriesResponse{}
-	_body, _err := client.ListCategoriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -284,7 +180,7 @@ func (client *Client) ListCategories(request *ListCategoriesRequest) (_result *L
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListProductsResponse
-func (client *Client) ListProductsWithOptions(request *ListProductsRequest, runtime *dara.RuntimeOptions) (_result *ListProductsResponse, _err error) {
+func (client *Client) ListProductsWithContext(ctx context.Context, request *ListProductsRequest, runtime *dara.RuntimeOptions) (_result *ListProductsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -311,28 +207,11 @@ func (client *Client) ListProductsWithOptions(request *ListProductsRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListProductsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ListProducts is deprecated, please use Workorder::2021-06-10::ListProducts instead.
-//
-// @param request - ListProductsRequest
-//
-// @return ListProductsResponse
-// Deprecated
-func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListProductsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListProductsResponse{}
-	_body, _err := client.ListProductsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -343,7 +222,7 @@ func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListP
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTicketNotesResponse
-func (client *Client) ListTicketNotesWithOptions(request *ListTicketNotesRequest, runtime *dara.RuntimeOptions) (_result *ListTicketNotesResponse, _err error) {
+func (client *Client) ListTicketNotesWithContext(ctx context.Context, request *ListTicketNotesRequest, runtime *dara.RuntimeOptions) (_result *ListTicketNotesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -374,28 +253,11 @@ func (client *Client) ListTicketNotesWithOptions(request *ListTicketNotesRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTicketNotesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ListTicketNotes is deprecated, please use Workorder::2021-06-10::ListTicketNotes instead.
-//
-// @param request - ListTicketNotesRequest
-//
-// @return ListTicketNotesResponse
-// Deprecated
-func (client *Client) ListTicketNotes(request *ListTicketNotesRequest) (_result *ListTicketNotesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTicketNotesResponse{}
-	_body, _err := client.ListTicketNotesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -406,7 +268,7 @@ func (client *Client) ListTicketNotes(request *ListTicketNotesRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTicketsResponse
-func (client *Client) ListTicketsWithOptions(request *ListTicketsRequest, runtime *dara.RuntimeOptions) (_result *ListTicketsResponse, _err error) {
+func (client *Client) ListTicketsWithContext(ctx context.Context, request *ListTicketsRequest, runtime *dara.RuntimeOptions) (_result *ListTicketsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -465,27 +327,10 @@ func (client *Client) ListTicketsWithOptions(request *ListTicketsRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTicketsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ListTickets is deprecated, please use Workorder::2021-06-10::ListTickets instead.
-//
-// @param request - ListTicketsRequest
-//
-// @return ListTicketsResponse
-// Deprecated
-func (client *Client) ListTickets(request *ListTicketsRequest) (_result *ListTicketsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTicketsResponse{}
-	_body, _err := client.ListTicketsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
