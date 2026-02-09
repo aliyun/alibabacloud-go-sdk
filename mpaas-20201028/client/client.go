@@ -894,6 +894,288 @@ func (client *Client) CreateMcdpZone(request *CreateMcdpZoneRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建热修复资源
+//
+// @param request - CreateMcubeHotpatchResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMcubeHotpatchResourceResponse
+func (client *Client) CreateMcubeHotpatchResourceWithOptions(request *CreateMcubeHotpatchResourceRequest, runtime *dara.RuntimeOptions) (_result *CreateMcubeHotpatchResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.FileUrl) {
+		body["FileUrl"] = request.FileUrl
+	}
+
+	if !dara.IsNil(request.FixDesc) {
+		body["FixDesc"] = request.FixDesc
+	}
+
+	if !dara.IsNil(request.OnexFlag) {
+		body["OnexFlag"] = request.OnexFlag
+	}
+
+	if !dara.IsNil(request.Platform) {
+		body["Platform"] = request.Platform
+	}
+
+	if !dara.IsNil(request.ProductVersion) {
+		body["ProductVersion"] = request.ProductVersion
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMcubeHotpatchResource"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMcubeHotpatchResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建热修复资源
+//
+// @param request - CreateMcubeHotpatchResourceRequest
+//
+// @return CreateMcubeHotpatchResourceResponse
+func (client *Client) CreateMcubeHotpatchResource(request *CreateMcubeHotpatchResourceRequest) (_result *CreateMcubeHotpatchResourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateMcubeHotpatchResourceResponse{}
+	_body, _err := client.CreateMcubeHotpatchResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建热修复回滚任务
+//
+// @param request - CreateMcubeHotpatchRollbackTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMcubeHotpatchRollbackTaskResponse
+func (client *Client) CreateMcubeHotpatchRollbackTaskWithOptions(request *CreateMcubeHotpatchRollbackTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateMcubeHotpatchRollbackTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.ProductId) {
+		body["ProductId"] = request.ProductId
+	}
+
+	if !dara.IsNil(request.ProductVersion) {
+		body["ProductVersion"] = request.ProductVersion
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMcubeHotpatchRollbackTask"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMcubeHotpatchRollbackTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建热修复回滚任务
+//
+// @param request - CreateMcubeHotpatchRollbackTaskRequest
+//
+// @return CreateMcubeHotpatchRollbackTaskResponse
+func (client *Client) CreateMcubeHotpatchRollbackTask(request *CreateMcubeHotpatchRollbackTaskRequest) (_result *CreateMcubeHotpatchRollbackTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateMcubeHotpatchRollbackTaskResponse{}
+	_body, _err := client.CreateMcubeHotpatchRollbackTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建热修复发布任务
+//
+// @param request - CreateMcubeHotpatchTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMcubeHotpatchTaskResponse
+func (client *Client) CreateMcubeHotpatchTaskWithOptions(request *CreateMcubeHotpatchTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateMcubeHotpatchTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.GreyConfigInfo) {
+		body["GreyConfigInfo"] = request.GreyConfigInfo
+	}
+
+	if !dara.IsNil(request.GreyEndtimeData) {
+		body["GreyEndtimeData"] = request.GreyEndtimeData
+	}
+
+	if !dara.IsNil(request.GreyNum) {
+		body["GreyNum"] = request.GreyNum
+	}
+
+	if !dara.IsNil(request.Memo) {
+		body["Memo"] = request.Memo
+	}
+
+	if !dara.IsNil(request.PackageId) {
+		body["PackageId"] = request.PackageId
+	}
+
+	if !dara.IsNil(request.Platform) {
+		body["Platform"] = request.Platform
+	}
+
+	if !dara.IsNil(request.PublishMode) {
+		body["PublishMode"] = request.PublishMode
+	}
+
+	if !dara.IsNil(request.PublishType) {
+		body["PublishType"] = request.PublishType
+	}
+
+	if !dara.IsNil(request.SyncMode) {
+		body["SyncMode"] = request.SyncMode
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WhitelistIds) {
+		body["WhitelistIds"] = request.WhitelistIds
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMcubeHotpatchTask"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMcubeHotpatchTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建热修复发布任务
+//
+// @param request - CreateMcubeHotpatchTaskRequest
+//
+// @return CreateMcubeHotpatchTaskResponse
+func (client *Client) CreateMcubeHotpatchTask(request *CreateMcubeHotpatchTaskRequest) (_result *CreateMcubeHotpatchTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateMcubeHotpatchTaskResponse{}
+	_body, _err := client.CreateMcubeHotpatchTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - CreateMcubeMiniAppRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2888,6 +3170,84 @@ func (client *Client) DeleteMcdpZone(request *DeleteMcdpZoneRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除热修复资源包
+//
+// @param request - DeleteMcubeHotpatchResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMcubeHotpatchResourceResponse
+func (client *Client) DeleteMcubeHotpatchResourceWithOptions(request *DeleteMcubeHotpatchResourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteMcubeHotpatchResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppCode) {
+		body["AppCode"] = request.AppCode
+	}
+
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMcubeHotpatchResource"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMcubeHotpatchResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除热修复资源包
+//
+// @param request - DeleteMcubeHotpatchResourceRequest
+//
+// @return DeleteMcubeHotpatchResourceResponse
+func (client *Client) DeleteMcubeHotpatchResource(request *DeleteMcubeHotpatchResourceRequest) (_result *DeleteMcubeHotpatchResourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteMcubeHotpatchResourceResponse{}
+	_body, _err := client.DeleteMcubeHotpatchResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - DeleteMcubeMiniAppRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3569,6 +3929,96 @@ func (client *Client) GetFileTokenForUploadToMsa(request *GetFileTokenForUploadT
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetFileTokenForUploadToMsaResponse{}
 	_body, _err := client.GetFileTokenForUploadToMsaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看全部审核记录
+//
+// @param request - GetGameReviewByStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGameReviewByStatusResponse
+func (client *Client) GetGameReviewByStatusWithOptions(request *GetGameReviewByStatusRequest, runtime *dara.RuntimeOptions) (_result *GetGameReviewByStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		body["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ReviewStatus) {
+		body["ReviewStatus"] = request.ReviewStatus
+	}
+
+	if !dara.IsNil(request.SortMode) {
+		body["SortMode"] = request.SortMode
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetGameReviewByStatus"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetGameReviewByStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看全部审核记录
+//
+// @param request - GetGameReviewByStatusRequest
+//
+// @return GetGameReviewByStatusResponse
+func (client *Client) GetGameReviewByStatus(request *GetGameReviewByStatusRequest) (_result *GetGameReviewByStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetGameReviewByStatusResponse{}
+	_body, _err := client.GetGameReviewByStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4612,6 +5062,158 @@ func (client *Client) ListMcdpAim(request *ListMcdpAimRequest) (_result *ListMcd
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListMcdpAimResponse{}
 	_body, _err := client.ListMcdpAimWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询热修复资源包列表
+//
+// @param request - ListMcubeHotpatchResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMcubeHotpatchResourcesResponse
+func (client *Client) ListMcubeHotpatchResourcesWithOptions(request *ListMcubeHotpatchResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListMcubeHotpatchResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		body["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMcubeHotpatchResources"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMcubeHotpatchResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询热修复资源包列表
+//
+// @param request - ListMcubeHotpatchResourcesRequest
+//
+// @return ListMcubeHotpatchResourcesResponse
+func (client *Client) ListMcubeHotpatchResources(request *ListMcubeHotpatchResourcesRequest) (_result *ListMcubeHotpatchResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListMcubeHotpatchResourcesResponse{}
+	_body, _err := client.ListMcubeHotpatchResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询热修复发布任务列表
+//
+// @param request - ListMcubeHotpatchTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMcubeHotpatchTasksResponse
+func (client *Client) ListMcubeHotpatchTasksWithOptions(request *ListMcubeHotpatchTasksRequest, runtime *dara.RuntimeOptions) (_result *ListMcubeHotpatchTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMcubeHotpatchTasks"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMcubeHotpatchTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询热修复发布任务列表
+//
+// @param request - ListMcubeHotpatchTasksRequest
+//
+// @return ListMcubeHotpatchTasksResponse
+func (client *Client) ListMcubeHotpatchTasks(request *ListMcubeHotpatchTasksRequest) (_result *ListMcubeHotpatchTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListMcubeHotpatchTasksResponse{}
+	_body, _err := client.ListMcubeHotpatchTasksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7221,6 +7823,80 @@ func (client *Client) QueryMcdpZone(request *QueryMcdpZoneRequest) (_result *Que
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询热修复发布任务详情
+//
+// @param request - QueryMcubeHotpatchTaskDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMcubeHotpatchTaskDetailResponse
+func (client *Client) QueryMcubeHotpatchTaskDetailWithOptions(request *QueryMcubeHotpatchTaskDetailRequest, runtime *dara.RuntimeOptions) (_result *QueryMcubeHotpatchTaskDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryMcubeHotpatchTaskDetail"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryMcubeHotpatchTaskDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询热修复发布任务详情
+//
+// @param request - QueryMcubeHotpatchTaskDetailRequest
+//
+// @return QueryMcubeHotpatchTaskDetailResponse
+func (client *Client) QueryMcubeHotpatchTaskDetail(request *QueryMcubeHotpatchTaskDetailRequest) (_result *QueryMcubeHotpatchTaskDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryMcubeHotpatchTaskDetailResponse{}
+	_body, _err := client.QueryMcubeHotpatchTaskDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - QueryMcubeMiniPackageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7818,6 +8494,84 @@ func (client *Client) QueryMpsSchedulerList(request *QueryMpsSchedulerListReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &QueryMpsSchedulerListResponse{}
 	_body, _err := client.QueryMpsSchedulerListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询风险信息
+//
+// @param request - QueryMscpRiskInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMscpRiskInfoResponse
+func (client *Client) QueryMscpRiskInfoWithOptions(request *QueryMscpRiskInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryMscpRiskInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ApdidToken) {
+		body["ApdidToken"] = request.ApdidToken
+	}
+
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.TerminalType) {
+		body["TerminalType"] = request.TerminalType
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryMscpRiskInfo"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryMscpRiskInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询风险信息
+//
+// @param request - QueryMscpRiskInfoRequest
+//
+// @return QueryMscpRiskInfoResponse
+func (client *Client) QueryMscpRiskInfo(request *QueryMscpRiskInfoRequest) (_result *QueryMscpRiskInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryMscpRiskInfoResponse{}
+	_body, _err := client.QueryMscpRiskInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8632,6 +9386,92 @@ func (client *Client) UpdateLink(request *UpdateLinkRequest) (_result *UpdateLin
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateLinkResponse{}
 	_body, _err := client.UpdateLinkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新热修复发布任务状态
+//
+// @param request - UpdateMcubeHotpatchTaskStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMcubeHotpatchTaskStatusResponse
+func (client *Client) UpdateMcubeHotpatchTaskStatusWithOptions(request *UpdateMcubeHotpatchTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateMcubeHotpatchTaskStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.BizType) {
+		body["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.PackageId) {
+		body["PackageId"] = request.PackageId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TaskStatus) {
+		body["TaskStatus"] = request.TaskStatus
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMcubeHotpatchTaskStatus"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMcubeHotpatchTaskStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新热修复发布任务状态
+//
+// @param request - UpdateMcubeHotpatchTaskStatusRequest
+//
+// @return UpdateMcubeHotpatchTaskStatusResponse
+func (client *Client) UpdateMcubeHotpatchTaskStatus(request *UpdateMcubeHotpatchTaskStatusRequest) (_result *UpdateMcubeHotpatchTaskStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateMcubeHotpatchTaskStatusResponse{}
+	_body, _err := client.UpdateMcubeHotpatchTaskStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
