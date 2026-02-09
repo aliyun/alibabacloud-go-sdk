@@ -155,7 +155,11 @@ func (s *ListAivppResourcesResponseBody) Validate() error {
 }
 
 type ListAivppResourcesResponseBodyData struct {
-	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// example:
+	//
+	// 10000
+	ConnectNum *int32  `json:"ConnectNum,omitempty" xml:"ConnectNum,omitempty"`
+	Detail     *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	// example:
 	//
 	// 2034-03-09T17:47:11Z
@@ -172,6 +176,10 @@ type ListAivppResourcesResponseBodyData struct {
 	//
 	// 1
 	LeftQuantity *string `json:"LeftQuantity,omitempty" xml:"LeftQuantity,omitempty"`
+	// example:
+	//
+	// 500
+	MessageTps *int32 `json:"MessageTps,omitempty" xml:"MessageTps,omitempty"`
 	// example:
 	//
 	// 231287932080007
@@ -206,6 +214,10 @@ func (s ListAivppResourcesResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *ListAivppResourcesResponseBodyData) GetConnectNum() *int32 {
+	return s.ConnectNum
+}
+
 func (s *ListAivppResourcesResponseBodyData) GetDetail() *string {
 	return s.Detail
 }
@@ -224,6 +236,10 @@ func (s *ListAivppResourcesResponseBodyData) GetInstanceType() *string {
 
 func (s *ListAivppResourcesResponseBodyData) GetLeftQuantity() *string {
 	return s.LeftQuantity
+}
+
+func (s *ListAivppResourcesResponseBodyData) GetMessageTps() *int32 {
+	return s.MessageTps
 }
 
 func (s *ListAivppResourcesResponseBodyData) GetOrderId() *string {
@@ -250,6 +266,11 @@ func (s *ListAivppResourcesResponseBodyData) GetUserId() *string {
 	return s.UserId
 }
 
+func (s *ListAivppResourcesResponseBodyData) SetConnectNum(v int32) *ListAivppResourcesResponseBodyData {
+	s.ConnectNum = &v
+	return s
+}
+
 func (s *ListAivppResourcesResponseBodyData) SetDetail(v string) *ListAivppResourcesResponseBodyData {
 	s.Detail = &v
 	return s
@@ -272,6 +293,11 @@ func (s *ListAivppResourcesResponseBodyData) SetInstanceType(v string) *ListAivp
 
 func (s *ListAivppResourcesResponseBodyData) SetLeftQuantity(v string) *ListAivppResourcesResponseBodyData {
 	s.LeftQuantity = &v
+	return s
+}
+
+func (s *ListAivppResourcesResponseBodyData) SetMessageTps(v int32) *ListAivppResourcesResponseBodyData {
+	s.MessageTps = &v
 	return s
 }
 

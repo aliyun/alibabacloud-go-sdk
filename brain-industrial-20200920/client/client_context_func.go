@@ -728,6 +728,10 @@ func (client *Client) ListAivppResourcesWithContext(ctx context.Context, request
 		body["CurrentPage"] = request.CurrentPage
 	}
 
+	if !dara.IsNil(request.InstanceType) {
+		body["InstanceType"] = request.InstanceType
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		body["MaxResults"] = request.MaxResults
 	}

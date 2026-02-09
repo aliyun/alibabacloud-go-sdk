@@ -939,6 +939,10 @@ func (client *Client) ListAivppResourcesWithOptions(request *ListAivppResourcesR
 		body["CurrentPage"] = request.CurrentPage
 	}
 
+	if !dara.IsNil(request.InstanceType) {
+		body["InstanceType"] = request.InstanceType
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		body["MaxResults"] = request.MaxResults
 	}
