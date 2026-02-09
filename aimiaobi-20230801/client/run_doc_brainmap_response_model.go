@@ -13,6 +13,10 @@ type iRunDocBrainmapResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunDocBrainmapResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunDocBrainmapResponse
+	GetId() *string
+	SetEvent(v string) *RunDocBrainmapResponse
+	GetEvent() *string
 	SetBody(v *RunDocBrainmapResponseBody) *RunDocBrainmapResponse
 	GetBody() *RunDocBrainmapResponseBody
 }
@@ -20,6 +24,8 @@ type iRunDocBrainmapResponse interface {
 type RunDocBrainmapResponse struct {
 	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                     `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                     `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunDocBrainmapResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunDocBrainmapResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunDocBrainmapResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunDocBrainmapResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunDocBrainmapResponse) GetBody() *RunDocBrainmapResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunDocBrainmapResponse) SetHeaders(v map[string]*string) *RunDocBrainma
 
 func (s *RunDocBrainmapResponse) SetStatusCode(v int32) *RunDocBrainmapResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunDocBrainmapResponse) SetId(v string) *RunDocBrainmapResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunDocBrainmapResponse) SetEvent(v string) *RunDocBrainmapResponse {
+	s.Event = &v
 	return s
 }
 

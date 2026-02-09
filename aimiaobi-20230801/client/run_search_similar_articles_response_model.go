@@ -13,6 +13,10 @@ type iRunSearchSimilarArticlesResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunSearchSimilarArticlesResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunSearchSimilarArticlesResponse
+	GetId() *string
+	SetEvent(v string) *RunSearchSimilarArticlesResponse
+	GetEvent() *string
 	SetBody(v *RunSearchSimilarArticlesResponseBody) *RunSearchSimilarArticlesResponse
 	GetBody() *RunSearchSimilarArticlesResponseBody
 }
@@ -20,6 +24,8 @@ type iRunSearchSimilarArticlesResponse interface {
 type RunSearchSimilarArticlesResponse struct {
 	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                               `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                               `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunSearchSimilarArticlesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunSearchSimilarArticlesResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunSearchSimilarArticlesResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunSearchSimilarArticlesResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunSearchSimilarArticlesResponse) GetBody() *RunSearchSimilarArticlesResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunSearchSimilarArticlesResponse) SetHeaders(v map[string]*string) *Run
 
 func (s *RunSearchSimilarArticlesResponse) SetStatusCode(v int32) *RunSearchSimilarArticlesResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunSearchSimilarArticlesResponse) SetId(v string) *RunSearchSimilarArticlesResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunSearchSimilarArticlesResponse) SetEvent(v string) *RunSearchSimilarArticlesResponse {
+	s.Event = &v
 	return s
 }
 

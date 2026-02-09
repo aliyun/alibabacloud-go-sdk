@@ -26,13 +26,16 @@ type iWritingOutline interface {
 }
 
 type WritingOutline struct {
-	Articles          []*OutlineWritingArticle `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
-	Children          []*WritingOutline        `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
-	Outline           *string                  `json:"Outline,omitempty" xml:"Outline,omitempty"`
-	OutlineId         *string                  `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
-	SearchKeyWordList []*string                `json:"SearchKeyWordList,omitempty" xml:"SearchKeyWordList,omitempty" type:"Repeated"`
-	WordCount         *string                  `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
-	WritingTips       *string                  `json:"WritingTips,omitempty" xml:"WritingTips,omitempty"`
+	Articles []*OutlineWritingArticle `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+	Children []*WritingOutline        `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
+	Outline  *string                  `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// example:
+	//
+	// xxx
+	OutlineId         *string   `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
+	SearchKeyWordList []*string `json:"SearchKeyWordList,omitempty" xml:"SearchKeyWordList,omitempty" type:"Repeated"`
+	WordCount         *string   `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
+	WritingTips       *string   `json:"WritingTips,omitempty" xml:"WritingTips,omitempty"`
 }
 
 func (s WritingOutline) String() string {

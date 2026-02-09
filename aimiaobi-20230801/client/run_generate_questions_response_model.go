@@ -13,6 +13,10 @@ type iRunGenerateQuestionsResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunGenerateQuestionsResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunGenerateQuestionsResponse
+	GetId() *string
+	SetEvent(v string) *RunGenerateQuestionsResponse
+	GetEvent() *string
 	SetBody(v *RunGenerateQuestionsResponseBody) *RunGenerateQuestionsResponse
 	GetBody() *RunGenerateQuestionsResponseBody
 }
@@ -20,6 +24,8 @@ type iRunGenerateQuestionsResponse interface {
 type RunGenerateQuestionsResponse struct {
 	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                           `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                           `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunGenerateQuestionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunGenerateQuestionsResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunGenerateQuestionsResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunGenerateQuestionsResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunGenerateQuestionsResponse) GetBody() *RunGenerateQuestionsResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunGenerateQuestionsResponse) SetHeaders(v map[string]*string) *RunGene
 
 func (s *RunGenerateQuestionsResponse) SetStatusCode(v int32) *RunGenerateQuestionsResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunGenerateQuestionsResponse) SetId(v string) *RunGenerateQuestionsResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunGenerateQuestionsResponse) SetEvent(v string) *RunGenerateQuestionsResponse {
+	s.Event = &v
 	return s
 }
 

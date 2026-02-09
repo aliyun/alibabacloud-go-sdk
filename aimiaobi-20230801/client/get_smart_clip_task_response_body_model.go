@@ -178,7 +178,7 @@ func (s *GetSmartClipTaskResponseBodyData) Validate() error {
 type GetSmartClipTaskResponseBodyDataSubJobs struct {
 	// example:
 	//
-	// x\"x\"x\"x
+	// x\\"x\\"x\\"x
 	ErrorMessage *string                                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	FileAttr     *GetSmartClipTaskResponseBodyDataSubJobsFileAttr `json:"FileAttr,omitempty" xml:"FileAttr,omitempty" type:"Struct"`
 	// example:

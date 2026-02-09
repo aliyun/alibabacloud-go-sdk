@@ -13,6 +13,10 @@ type iRunTopicSelectionMergeResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunTopicSelectionMergeResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunTopicSelectionMergeResponse
+	GetId() *string
+	SetEvent(v string) *RunTopicSelectionMergeResponse
+	GetEvent() *string
 	SetBody(v *RunTopicSelectionMergeResponseBody) *RunTopicSelectionMergeResponse
 	GetBody() *RunTopicSelectionMergeResponseBody
 }
@@ -20,6 +24,8 @@ type iRunTopicSelectionMergeResponse interface {
 type RunTopicSelectionMergeResponse struct {
 	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                             `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                             `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunTopicSelectionMergeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunTopicSelectionMergeResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunTopicSelectionMergeResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunTopicSelectionMergeResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunTopicSelectionMergeResponse) GetBody() *RunTopicSelectionMergeResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunTopicSelectionMergeResponse) SetHeaders(v map[string]*string) *RunTo
 
 func (s *RunTopicSelectionMergeResponse) SetStatusCode(v int32) *RunTopicSelectionMergeResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunTopicSelectionMergeResponse) SetId(v string) *RunTopicSelectionMergeResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunTopicSelectionMergeResponse) SetEvent(v string) *RunTopicSelectionMergeResponse {
+	s.Event = &v
 	return s
 }
 

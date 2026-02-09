@@ -493,7 +493,7 @@ func (s *ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParam) Validate(
 type ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParamSearchSources struct {
 	// example:
 	//
-	// x\"x
+	// x\\"x
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// example:
 	//

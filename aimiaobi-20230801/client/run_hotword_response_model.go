@@ -13,6 +13,10 @@ type iRunHotwordResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunHotwordResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunHotwordResponse
+	GetId() *string
+	SetEvent(v string) *RunHotwordResponse
+	GetEvent() *string
 	SetBody(v *RunHotwordResponseBody) *RunHotwordResponse
 	GetBody() *RunHotwordResponseBody
 }
@@ -20,6 +24,8 @@ type iRunHotwordResponse interface {
 type RunHotwordResponse struct {
 	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                 `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                 `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunHotwordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunHotwordResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunHotwordResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunHotwordResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunHotwordResponse) GetBody() *RunHotwordResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunHotwordResponse) SetHeaders(v map[string]*string) *RunHotwordRespons
 
 func (s *RunHotwordResponse) SetStatusCode(v int32) *RunHotwordResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunHotwordResponse) SetId(v string) *RunHotwordResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunHotwordResponse) SetEvent(v string) *RunHotwordResponse {
+	s.Event = &v
 	return s
 }
 

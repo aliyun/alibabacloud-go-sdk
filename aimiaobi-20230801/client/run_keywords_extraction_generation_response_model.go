@@ -13,6 +13,10 @@ type iRunKeywordsExtractionGenerationResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunKeywordsExtractionGenerationResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunKeywordsExtractionGenerationResponse
+	GetId() *string
+	SetEvent(v string) *RunKeywordsExtractionGenerationResponse
+	GetEvent() *string
 	SetBody(v *RunKeywordsExtractionGenerationResponseBody) *RunKeywordsExtractionGenerationResponse
 	GetBody() *RunKeywordsExtractionGenerationResponseBody
 }
@@ -20,6 +24,8 @@ type iRunKeywordsExtractionGenerationResponse interface {
 type RunKeywordsExtractionGenerationResponse struct {
 	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                                      `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                                      `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunKeywordsExtractionGenerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunKeywordsExtractionGenerationResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunKeywordsExtractionGenerationResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunKeywordsExtractionGenerationResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunKeywordsExtractionGenerationResponse) GetBody() *RunKeywordsExtractionGenerationResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunKeywordsExtractionGenerationResponse) SetHeaders(v map[string]*strin
 
 func (s *RunKeywordsExtractionGenerationResponse) SetStatusCode(v int32) *RunKeywordsExtractionGenerationResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunKeywordsExtractionGenerationResponse) SetId(v string) *RunKeywordsExtractionGenerationResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunKeywordsExtractionGenerationResponse) SetEvent(v string) *RunKeywordsExtractionGenerationResponse {
+	s.Event = &v
 	return s
 }
 

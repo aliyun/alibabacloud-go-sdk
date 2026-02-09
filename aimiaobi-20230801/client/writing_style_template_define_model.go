@@ -69,7 +69,13 @@ func (s *WritingStyleTemplateDefine) Validate() error {
 }
 
 type WritingStyleTemplateDefineExample struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// topic
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 123
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

@@ -42,21 +42,51 @@ type iWritingStyleTemplateField interface {
 }
 
 type WritingStyleTemplateField struct {
+	// example:
+	//
+	// true
 	BuildIn         *bool                             `json:"BuildIn,omitempty" xml:"BuildIn,omitempty"`
 	CascadingFields []*WritingStyleTemplateField      `json:"CascadingFields,omitempty" xml:"CascadingFields,omitempty" type:"Repeated"`
 	Enums           []*WritingStyleTemplateFieldEnums `json:"Enums,omitempty" xml:"Enums,omitempty" type:"Repeated"`
 	InitialValue    *string                           `json:"InitialValue,omitempty" xml:"InitialValue,omitempty"`
-	Key             *string                           `json:"Key,omitempty" xml:"Key,omitempty"`
-	Max             *float64                          `json:"Max,omitempty" xml:"Max,omitempty"`
-	MaxItem         *int32                            `json:"MaxItem,omitempty" xml:"MaxItem,omitempty"`
-	MaxItemLength   *int32                            `json:"MaxItemLength,omitempty" xml:"MaxItemLength,omitempty"`
-	MaxLength       *int32                            `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
-	Min             *float64                          `json:"Min,omitempty" xml:"Min,omitempty"`
-	MinItemLength   *int32                            `json:"MinItemLength,omitempty" xml:"MinItemLength,omitempty"`
-	MinLength       *int32                            `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
-	Name            *string                           `json:"Name,omitempty" xml:"Name,omitempty"`
-	Required        *bool                             `json:"Required,omitempty" xml:"Required,omitempty"`
-	Style           *WritingStyleTemplateFieldStyle   `json:"Style,omitempty" xml:"Style,omitempty" type:"Struct"`
+	// example:
+	//
+	// topic
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 2000
+	Max *float64 `json:"Max,omitempty" xml:"Max,omitempty"`
+	// example:
+	//
+	// 10
+	MaxItem *int32 `json:"MaxItem,omitempty" xml:"MaxItem,omitempty"`
+	// example:
+	//
+	// 4000
+	MaxItemLength *int32 `json:"MaxItemLength,omitempty" xml:"MaxItemLength,omitempty"`
+	// example:
+	//
+	// 2000
+	MaxLength *int32 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	// example:
+	//
+	// 1
+	Min *float64 `json:"Min,omitempty" xml:"Min,omitempty"`
+	// example:
+	//
+	// 1000
+	MinItemLength *int32 `json:"MinItemLength,omitempty" xml:"MinItemLength,omitempty"`
+	// example:
+	//
+	// 20
+	MinLength *int32  `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// false
+	Required *bool                           `json:"Required,omitempty" xml:"Required,omitempty"`
+	Style    *WritingStyleTemplateFieldStyle `json:"Style,omitempty" xml:"Style,omitempty" type:"Struct"`
 }
 
 func (s WritingStyleTemplateField) String() string {
@@ -276,11 +306,17 @@ func (s *WritingStyleTemplateFieldEnums) Validate() error {
 
 type WritingStyleTemplateFieldStyle struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// yyyy-mm-dd
 	Format      *string `json:"Format,omitempty" xml:"Format,omitempty"`
 	Placeholder *string `json:"Placeholder,omitempty" xml:"Placeholder,omitempty"`
 	ShowTime    *bool   `json:"ShowTime,omitempty" xml:"ShowTime,omitempty"`
 	Suffix      *string `json:"Suffix,omitempty" xml:"Suffix,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// media
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s WritingStyleTemplateFieldStyle) String() string {

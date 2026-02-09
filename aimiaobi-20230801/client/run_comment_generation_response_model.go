@@ -13,6 +13,10 @@ type iRunCommentGenerationResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunCommentGenerationResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunCommentGenerationResponse
+	GetId() *string
+	SetEvent(v string) *RunCommentGenerationResponse
+	GetEvent() *string
 	SetBody(v *RunCommentGenerationResponseBody) *RunCommentGenerationResponse
 	GetBody() *RunCommentGenerationResponseBody
 }
@@ -20,6 +24,8 @@ type iRunCommentGenerationResponse interface {
 type RunCommentGenerationResponse struct {
 	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                           `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                           `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunCommentGenerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunCommentGenerationResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunCommentGenerationResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunCommentGenerationResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunCommentGenerationResponse) GetBody() *RunCommentGenerationResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunCommentGenerationResponse) SetHeaders(v map[string]*string) *RunComm
 
 func (s *RunCommentGenerationResponse) SetStatusCode(v int32) *RunCommentGenerationResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunCommentGenerationResponse) SetId(v string) *RunCommentGenerationResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunCommentGenerationResponse) SetEvent(v string) *RunCommentGenerationResponse {
+	s.Event = &v
 	return s
 }
 

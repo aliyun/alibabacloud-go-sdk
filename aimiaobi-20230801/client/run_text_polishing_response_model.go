@@ -13,6 +13,10 @@ type iRunTextPolishingResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunTextPolishingResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunTextPolishingResponse
+	GetId() *string
+	SetEvent(v string) *RunTextPolishingResponse
+	GetEvent() *string
 	SetBody(v *RunTextPolishingResponseBody) *RunTextPolishingResponse
 	GetBody() *RunTextPolishingResponseBody
 }
@@ -20,6 +24,8 @@ type iRunTextPolishingResponse interface {
 type RunTextPolishingResponse struct {
 	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                       `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                       `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunTextPolishingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunTextPolishingResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunTextPolishingResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunTextPolishingResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunTextPolishingResponse) GetBody() *RunTextPolishingResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunTextPolishingResponse) SetHeaders(v map[string]*string) *RunTextPoli
 
 func (s *RunTextPolishingResponse) SetStatusCode(v int32) *RunTextPolishingResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunTextPolishingResponse) SetId(v string) *RunTextPolishingResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunTextPolishingResponse) SetEvent(v string) *RunTextPolishingResponse {
+	s.Event = &v
 	return s
 }
 

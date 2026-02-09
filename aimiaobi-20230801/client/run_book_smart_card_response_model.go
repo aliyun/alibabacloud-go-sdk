@@ -13,6 +13,10 @@ type iRunBookSmartCardResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunBookSmartCardResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunBookSmartCardResponse
+	GetId() *string
+	SetEvent(v string) *RunBookSmartCardResponse
+	GetEvent() *string
 	SetBody(v *RunBookSmartCardResponseBody) *RunBookSmartCardResponse
 	GetBody() *RunBookSmartCardResponseBody
 }
@@ -20,6 +24,8 @@ type iRunBookSmartCardResponse interface {
 type RunBookSmartCardResponse struct {
 	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                       `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                       `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunBookSmartCardResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunBookSmartCardResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunBookSmartCardResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunBookSmartCardResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunBookSmartCardResponse) GetBody() *RunBookSmartCardResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunBookSmartCardResponse) SetHeaders(v map[string]*string) *RunBookSmar
 
 func (s *RunBookSmartCardResponse) SetStatusCode(v int32) *RunBookSmartCardResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunBookSmartCardResponse) SetId(v string) *RunBookSmartCardResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunBookSmartCardResponse) SetEvent(v string) *RunBookSmartCardResponse {
+	s.Event = &v
 	return s
 }
 

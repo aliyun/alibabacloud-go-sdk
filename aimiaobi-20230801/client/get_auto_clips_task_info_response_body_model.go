@@ -112,11 +112,14 @@ func (s *GetAutoClipsTaskInfoResponseBody) Validate() error {
 }
 
 type GetAutoClipsTaskInfoResponseBodyData struct {
-	CloseMusic    *bool                                             `json:"CloseMusic,omitempty" xml:"CloseMusic,omitempty"`
-	CloseSubtitle *bool                                             `json:"CloseSubtitle,omitempty" xml:"CloseSubtitle,omitempty"`
-	CloseVoice    *bool                                             `json:"CloseVoice,omitempty" xml:"CloseVoice,omitempty"`
-	ColorWords    []*GetAutoClipsTaskInfoResponseBodyDataColorWords `json:"ColorWords,omitempty" xml:"ColorWords,omitempty" type:"Repeated"`
-	Content       *string                                           `json:"Content,omitempty" xml:"Content,omitempty"`
+	AnalysisResults   []*GetAutoClipsTaskInfoResponseBodyDataAnalysisResults `json:"AnalysisResults,omitempty" xml:"AnalysisResults,omitempty" type:"Repeated"`
+	CloseMusic        *bool                                                  `json:"CloseMusic,omitempty" xml:"CloseMusic,omitempty"`
+	CloseSubtitle     *bool                                                  `json:"CloseSubtitle,omitempty" xml:"CloseSubtitle,omitempty"`
+	CloseVoice        *bool                                                  `json:"CloseVoice,omitempty" xml:"CloseVoice,omitempty"`
+	ClosingCreditsUrl *string                                                `json:"ClosingCreditsUrl,omitempty" xml:"ClosingCreditsUrl,omitempty"`
+	ColorWords        []*GetAutoClipsTaskInfoResponseBodyDataColorWords      `json:"ColorWords,omitempty" xml:"ColorWords,omitempty" type:"Repeated"`
+	Content           *string                                                `json:"Content,omitempty" xml:"Content,omitempty"`
+	CustomVoiceStyle  *string                                                `json:"CustomVoiceStyle,omitempty" xml:"CustomVoiceStyle,omitempty"`
 	// example:
 	//
 	// http://xxx/xxx.mp4
@@ -135,12 +138,16 @@ type GetAutoClipsTaskInfoResponseBodyData struct {
 	// example:
 	//
 	// 5
-	MusicVolume *int32 `json:"MusicVolume,omitempty" xml:"MusicVolume,omitempty"`
+	MusicVolume        *int32  `json:"MusicVolume,omitempty" xml:"MusicVolume,omitempty"`
+	OpeningCreditsUrl  *string `json:"OpeningCreditsUrl,omitempty" xml:"OpeningCreditsUrl,omitempty"`
+	OutputVideoFileKey *string `json:"OutputVideoFileKey,omitempty" xml:"OutputVideoFileKey,omitempty"`
 	// example:
 	//
 	// http://output.mp4
-	OutputVideoUrl *string `json:"OutputVideoUrl,omitempty" xml:"OutputVideoUrl,omitempty"`
-	Status         *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	OutputVideoUrl *string                                             `json:"OutputVideoUrl,omitempty" xml:"OutputVideoUrl,omitempty"`
+	ReferenceVideo *GetAutoClipsTaskInfoResponseBodyDataReferenceVideo `json:"ReferenceVideo,omitempty" xml:"ReferenceVideo,omitempty" type:"Struct"`
+	SourceVideos   []*GetAutoClipsTaskInfoResponseBodyDataSourceVideos `json:"SourceVideos,omitempty" xml:"SourceVideos,omitempty" type:"Repeated"`
+	Status         *int32                                              `json:"Status,omitempty" xml:"Status,omitempty"`
 	// example:
 	//
 	// clips
@@ -170,6 +177,10 @@ func (s GetAutoClipsTaskInfoResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *GetAutoClipsTaskInfoResponseBodyData) GetAnalysisResults() []*GetAutoClipsTaskInfoResponseBodyDataAnalysisResults {
+	return s.AnalysisResults
+}
+
 func (s *GetAutoClipsTaskInfoResponseBodyData) GetCloseMusic() *bool {
 	return s.CloseMusic
 }
@@ -182,12 +193,20 @@ func (s *GetAutoClipsTaskInfoResponseBodyData) GetCloseVoice() *bool {
 	return s.CloseVoice
 }
 
+func (s *GetAutoClipsTaskInfoResponseBodyData) GetClosingCreditsUrl() *string {
+	return s.ClosingCreditsUrl
+}
+
 func (s *GetAutoClipsTaskInfoResponseBodyData) GetColorWords() []*GetAutoClipsTaskInfoResponseBodyDataColorWords {
 	return s.ColorWords
 }
 
 func (s *GetAutoClipsTaskInfoResponseBodyData) GetContent() *string {
 	return s.Content
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) GetCustomVoiceStyle() *string {
+	return s.CustomVoiceStyle
 }
 
 func (s *GetAutoClipsTaskInfoResponseBodyData) GetCustomVoiceUrl() *string {
@@ -218,8 +237,24 @@ func (s *GetAutoClipsTaskInfoResponseBodyData) GetMusicVolume() *int32 {
 	return s.MusicVolume
 }
 
+func (s *GetAutoClipsTaskInfoResponseBodyData) GetOpeningCreditsUrl() *string {
+	return s.OpeningCreditsUrl
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) GetOutputVideoFileKey() *string {
+	return s.OutputVideoFileKey
+}
+
 func (s *GetAutoClipsTaskInfoResponseBodyData) GetOutputVideoUrl() *string {
 	return s.OutputVideoUrl
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) GetReferenceVideo() *GetAutoClipsTaskInfoResponseBodyDataReferenceVideo {
+	return s.ReferenceVideo
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) GetSourceVideos() []*GetAutoClipsTaskInfoResponseBodyDataSourceVideos {
+	return s.SourceVideos
 }
 
 func (s *GetAutoClipsTaskInfoResponseBodyData) GetStatus() *int32 {
@@ -254,6 +289,11 @@ func (s *GetAutoClipsTaskInfoResponseBodyData) GetVoiceVolume() *int32 {
 	return s.VoiceVolume
 }
 
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetAnalysisResults(v []*GetAutoClipsTaskInfoResponseBodyDataAnalysisResults) *GetAutoClipsTaskInfoResponseBodyData {
+	s.AnalysisResults = v
+	return s
+}
+
 func (s *GetAutoClipsTaskInfoResponseBodyData) SetCloseMusic(v bool) *GetAutoClipsTaskInfoResponseBodyData {
 	s.CloseMusic = &v
 	return s
@@ -269,6 +309,11 @@ func (s *GetAutoClipsTaskInfoResponseBodyData) SetCloseVoice(v bool) *GetAutoCli
 	return s
 }
 
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetClosingCreditsUrl(v string) *GetAutoClipsTaskInfoResponseBodyData {
+	s.ClosingCreditsUrl = &v
+	return s
+}
+
 func (s *GetAutoClipsTaskInfoResponseBodyData) SetColorWords(v []*GetAutoClipsTaskInfoResponseBodyDataColorWords) *GetAutoClipsTaskInfoResponseBodyData {
 	s.ColorWords = v
 	return s
@@ -276,6 +321,11 @@ func (s *GetAutoClipsTaskInfoResponseBodyData) SetColorWords(v []*GetAutoClipsTa
 
 func (s *GetAutoClipsTaskInfoResponseBodyData) SetContent(v string) *GetAutoClipsTaskInfoResponseBodyData {
 	s.Content = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetCustomVoiceStyle(v string) *GetAutoClipsTaskInfoResponseBodyData {
+	s.CustomVoiceStyle = &v
 	return s
 }
 
@@ -314,8 +364,28 @@ func (s *GetAutoClipsTaskInfoResponseBodyData) SetMusicVolume(v int32) *GetAutoC
 	return s
 }
 
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetOpeningCreditsUrl(v string) *GetAutoClipsTaskInfoResponseBodyData {
+	s.OpeningCreditsUrl = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetOutputVideoFileKey(v string) *GetAutoClipsTaskInfoResponseBodyData {
+	s.OutputVideoFileKey = &v
+	return s
+}
+
 func (s *GetAutoClipsTaskInfoResponseBodyData) SetOutputVideoUrl(v string) *GetAutoClipsTaskInfoResponseBodyData {
 	s.OutputVideoUrl = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetReferenceVideo(v *GetAutoClipsTaskInfoResponseBodyDataReferenceVideo) *GetAutoClipsTaskInfoResponseBodyData {
+	s.ReferenceVideo = v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetSourceVideos(v []*GetAutoClipsTaskInfoResponseBodyDataSourceVideos) *GetAutoClipsTaskInfoResponseBodyData {
+	s.SourceVideos = v
 	return s
 }
 
@@ -360,8 +430,31 @@ func (s *GetAutoClipsTaskInfoResponseBodyData) SetVoiceVolume(v int32) *GetAutoC
 }
 
 func (s *GetAutoClipsTaskInfoResponseBodyData) Validate() error {
+	if s.AnalysisResults != nil {
+		for _, item := range s.AnalysisResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.ColorWords != nil {
 		for _, item := range s.ColorWords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ReferenceVideo != nil {
+		if err := s.ReferenceVideo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceVideos != nil {
+		for _, item := range s.SourceVideos {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -388,6 +481,235 @@ func (s *GetAutoClipsTaskInfoResponseBodyData) Validate() error {
 		}
 	}
 	return nil
+}
+
+type GetAutoClipsTaskInfoResponseBodyDataAnalysisResults struct {
+	LensInfos []*GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos `json:"LensInfos,omitempty" xml:"LensInfos,omitempty" type:"Repeated"`
+	MediaId   *string                                                         `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaName *string                                                         `json:"MediaName,omitempty" xml:"MediaName,omitempty"`
+	MediaUrl  *string                                                         `json:"MediaUrl,omitempty" xml:"MediaUrl,omitempty"`
+}
+
+func (s GetAutoClipsTaskInfoResponseBodyDataAnalysisResults) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAutoClipsTaskInfoResponseBodyDataAnalysisResults) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResults) GetLensInfos() []*GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos {
+	return s.LensInfos
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResults) GetMediaId() *string {
+	return s.MediaId
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResults) GetMediaName() *string {
+	return s.MediaName
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResults) GetMediaUrl() *string {
+	return s.MediaUrl
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResults) SetLensInfos(v []*GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos) *GetAutoClipsTaskInfoResponseBodyDataAnalysisResults {
+	s.LensInfos = v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResults) SetMediaId(v string) *GetAutoClipsTaskInfoResponseBodyDataAnalysisResults {
+	s.MediaId = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResults) SetMediaName(v string) *GetAutoClipsTaskInfoResponseBodyDataAnalysisResults {
+	s.MediaName = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResults) SetMediaUrl(v string) *GetAutoClipsTaskInfoResponseBodyDataAnalysisResults {
+	s.MediaUrl = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResults) Validate() error {
+	if s.LensInfos != nil {
+		for _, item := range s.LensInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos struct {
+	AnalysisContent *string                                                                `json:"AnalysisContent,omitempty" xml:"AnalysisContent,omitempty"`
+	EndTime         *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime   `json:"EndTime,omitempty" xml:"EndTime,omitempty" type:"Struct"`
+	StartTime       *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime `json:"StartTime,omitempty" xml:"StartTime,omitempty" type:"Struct"`
+}
+
+func (s GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos) GetAnalysisContent() *string {
+	return s.AnalysisContent
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos) GetEndTime() *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime {
+	return s.EndTime
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos) GetStartTime() *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime {
+	return s.StartTime
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos) SetAnalysisContent(v string) *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos {
+	s.AnalysisContent = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos) SetEndTime(v *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime) *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos {
+	s.EndTime = v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos) SetStartTime(v *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime) *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos {
+	s.StartTime = v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos) Validate() error {
+	if s.EndTime != nil {
+		if err := s.EndTime.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StartTime != nil {
+		if err := s.StartTime.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime struct {
+	Hour       *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	MillSecond *int32 `json:"MillSecond,omitempty" xml:"MillSecond,omitempty"`
+	Minute     *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
+	Second     *int32 `json:"Second,omitempty" xml:"Second,omitempty"`
+}
+
+func (s GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime) GetHour() *int32 {
+	return s.Hour
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime) GetMillSecond() *int32 {
+	return s.MillSecond
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime) GetMinute() *int32 {
+	return s.Minute
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime) GetSecond() *int32 {
+	return s.Second
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime) SetHour(v int32) *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime {
+	s.Hour = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime) SetMillSecond(v int32) *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime {
+	s.MillSecond = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime) SetMinute(v int32) *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime {
+	s.Minute = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime) SetSecond(v int32) *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime {
+	s.Second = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime struct {
+	Hour       *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	MillSecond *int32 `json:"MillSecond,omitempty" xml:"MillSecond,omitempty"`
+	Minute     *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
+	Second     *int32 `json:"Second,omitempty" xml:"Second,omitempty"`
+}
+
+func (s GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime) GetHour() *int32 {
+	return s.Hour
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime) GetMillSecond() *int32 {
+	return s.MillSecond
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime) GetMinute() *int32 {
+	return s.Minute
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime) GetSecond() *int32 {
+	return s.Second
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime) SetHour(v int32) *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime {
+	s.Hour = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime) SetMillSecond(v int32) *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime {
+	s.MillSecond = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime) SetMinute(v int32) *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime {
+	s.Minute = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime) SetSecond(v int32) *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime {
+	s.Second = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime) Validate() error {
+	return dara.Validate(s)
 }
 
 type GetAutoClipsTaskInfoResponseBodyDataColorWords struct {
@@ -490,6 +812,96 @@ func (s *GetAutoClipsTaskInfoResponseBodyDataColorWords) SetY(v float32) *GetAut
 }
 
 func (s *GetAutoClipsTaskInfoResponseBodyDataColorWords) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetAutoClipsTaskInfoResponseBodyDataReferenceVideo struct {
+	VideoId   *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	VideoName *string `json:"VideoName,omitempty" xml:"VideoName,omitempty"`
+	VideoUrl  *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s GetAutoClipsTaskInfoResponseBodyDataReferenceVideo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAutoClipsTaskInfoResponseBodyDataReferenceVideo) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataReferenceVideo) GetVideoId() *string {
+	return s.VideoId
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataReferenceVideo) GetVideoName() *string {
+	return s.VideoName
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataReferenceVideo) GetVideoUrl() *string {
+	return s.VideoUrl
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataReferenceVideo) SetVideoId(v string) *GetAutoClipsTaskInfoResponseBodyDataReferenceVideo {
+	s.VideoId = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataReferenceVideo) SetVideoName(v string) *GetAutoClipsTaskInfoResponseBodyDataReferenceVideo {
+	s.VideoName = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataReferenceVideo) SetVideoUrl(v string) *GetAutoClipsTaskInfoResponseBodyDataReferenceVideo {
+	s.VideoUrl = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataReferenceVideo) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetAutoClipsTaskInfoResponseBodyDataSourceVideos struct {
+	VideoId   *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	VideoName *string `json:"VideoName,omitempty" xml:"VideoName,omitempty"`
+	VideoUrl  *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s GetAutoClipsTaskInfoResponseBodyDataSourceVideos) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAutoClipsTaskInfoResponseBodyDataSourceVideos) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataSourceVideos) GetVideoId() *string {
+	return s.VideoId
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataSourceVideos) GetVideoName() *string {
+	return s.VideoName
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataSourceVideos) GetVideoUrl() *string {
+	return s.VideoUrl
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataSourceVideos) SetVideoId(v string) *GetAutoClipsTaskInfoResponseBodyDataSourceVideos {
+	s.VideoId = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataSourceVideos) SetVideoName(v string) *GetAutoClipsTaskInfoResponseBodyDataSourceVideos {
+	s.VideoName = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataSourceVideos) SetVideoUrl(v string) *GetAutoClipsTaskInfoResponseBodyDataSourceVideos {
+	s.VideoUrl = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataSourceVideos) Validate() error {
 	return dara.Validate(s)
 }
 

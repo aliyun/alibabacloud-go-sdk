@@ -23,7 +23,10 @@ type HottopicNews struct {
 	Comments []*HottopicNewsComments `json:"Comments,omitempty" xml:"Comments,omitempty" type:"Repeated"`
 	Content  *string                 `json:"Content,omitempty" xml:"Content,omitempty"`
 	Title    *string                 `json:"Title,omitempty" xml:"Title,omitempty"`
-	Url      *string                 `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// http://www.example.com/xxx.html
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s HottopicNews) String() string {

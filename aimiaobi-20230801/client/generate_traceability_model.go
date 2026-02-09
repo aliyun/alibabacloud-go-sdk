@@ -48,12 +48,23 @@ func (s *GenerateTraceability) Validate() error {
 }
 
 type GenerateTraceabilityNews struct {
-	Index            *int32  `json:"Index,omitempty" xml:"Index,omitempty"`
+	// example:
+	//
+	// 2
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// example:
+	//
+	// 2024-01-22 10:29:00
 	PubTime          *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
 	SearchSource     *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
 	Title            *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Url              *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// URL
+	//
+	// example:
+	//
+	// http://www.example.com/xxx.html
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GenerateTraceabilityNews) String() string {

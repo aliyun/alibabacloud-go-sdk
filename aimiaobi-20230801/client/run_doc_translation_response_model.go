@@ -13,6 +13,10 @@ type iRunDocTranslationResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunDocTranslationResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunDocTranslationResponse
+	GetId() *string
+	SetEvent(v string) *RunDocTranslationResponse
+	GetEvent() *string
 	SetBody(v *RunDocTranslationResponseBody) *RunDocTranslationResponse
 	GetBody() *RunDocTranslationResponseBody
 }
@@ -20,6 +24,8 @@ type iRunDocTranslationResponse interface {
 type RunDocTranslationResponse struct {
 	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                        `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                        `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunDocTranslationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunDocTranslationResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunDocTranslationResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunDocTranslationResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunDocTranslationResponse) GetBody() *RunDocTranslationResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunDocTranslationResponse) SetHeaders(v map[string]*string) *RunDocTran
 
 func (s *RunDocTranslationResponse) SetStatusCode(v int32) *RunDocTranslationResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunDocTranslationResponse) SetId(v string) *RunDocTranslationResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunDocTranslationResponse) SetEvent(v string) *RunDocTranslationResponse {
+	s.Event = &v
 	return s
 }
 

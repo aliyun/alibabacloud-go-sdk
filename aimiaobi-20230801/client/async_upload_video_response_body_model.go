@@ -27,17 +27,26 @@ type AsyncUploadVideoResponseBody struct {
 	// example:
 	//
 	// successful
-	Code           *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *AsyncUploadVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *AsyncUploadVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	//
 	// example:
 	//
 	// 94512A33-8EC1-5452-A793-5C91F18ED2F0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AsyncUploadVideoResponseBody) String() string {
@@ -159,6 +168,9 @@ func (s *AsyncUploadVideoResponseBodyData) Validate() error {
 }
 
 type AsyncUploadVideoResponseBodyDataVideoInfos struct {
+	// example:
+	//
+	// 视频中有一个房子
 	VideoExtraInfo *string `json:"VideoExtraInfo,omitempty" xml:"VideoExtraInfo,omitempty"`
 	// example:
 	//

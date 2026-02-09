@@ -15,18 +15,32 @@ type iAsyncCreateClipsTaskRequest interface {
 	GetCloseSubtitle() *bool
 	SetCloseVoice(v bool) *AsyncCreateClipsTaskRequest
 	GetCloseVoice() *bool
+	SetClosingCreditsUrl(v string) *AsyncCreateClipsTaskRequest
+	GetClosingCreditsUrl() *string
 	SetColorWords(v []*AsyncCreateClipsTaskRequestColorWords) *AsyncCreateClipsTaskRequest
 	GetColorWords() []*AsyncCreateClipsTaskRequestColorWords
+	SetCosyVoiceAppKey(v string) *AsyncCreateClipsTaskRequest
+	GetCosyVoiceAppKey() *string
+	SetCosyVoiceToken(v string) *AsyncCreateClipsTaskRequest
+	GetCosyVoiceToken() *string
+	SetCustomVoiceStyle(v string) *AsyncCreateClipsTaskRequest
+	GetCustomVoiceStyle() *string
 	SetCustomVoiceUrl(v string) *AsyncCreateClipsTaskRequest
 	GetCustomVoiceUrl() *string
 	SetCustomVoiceVolume(v int32) *AsyncCreateClipsTaskRequest
 	GetCustomVoiceVolume() *int32
 	SetHeight(v int32) *AsyncCreateClipsTaskRequest
 	GetHeight() *int32
+	SetHighDefSourceVideos(v []*AsyncCreateClipsTaskRequestHighDefSourceVideos) *AsyncCreateClipsTaskRequest
+	GetHighDefSourceVideos() []*AsyncCreateClipsTaskRequestHighDefSourceVideos
+	SetMusicStyle(v string) *AsyncCreateClipsTaskRequest
+	GetMusicStyle() *string
 	SetMusicUrl(v string) *AsyncCreateClipsTaskRequest
 	GetMusicUrl() *string
 	SetMusicVolume(v int32) *AsyncCreateClipsTaskRequest
 	GetMusicVolume() *int32
+	SetOpeningCreditsUrl(v string) *AsyncCreateClipsTaskRequest
+	GetOpeningCreditsUrl() *string
 	SetStickers(v []*AsyncCreateClipsTaskRequestStickers) *AsyncCreateClipsTaskRequest
 	GetStickers() []*AsyncCreateClipsTaskRequestStickers
 	SetSubtitleFontSize(v int32) *AsyncCreateClipsTaskRequest
@@ -44,10 +58,14 @@ type iAsyncCreateClipsTaskRequest interface {
 }
 
 type AsyncCreateClipsTaskRequest struct {
-	CloseMusic    *bool                                    `json:"CloseMusic,omitempty" xml:"CloseMusic,omitempty"`
-	CloseSubtitle *bool                                    `json:"CloseSubtitle,omitempty" xml:"CloseSubtitle,omitempty"`
-	CloseVoice    *bool                                    `json:"CloseVoice,omitempty" xml:"CloseVoice,omitempty"`
-	ColorWords    []*AsyncCreateClipsTaskRequestColorWords `json:"ColorWords,omitempty" xml:"ColorWords,omitempty" type:"Repeated"`
+	CloseMusic        *bool                                    `json:"CloseMusic,omitempty" xml:"CloseMusic,omitempty"`
+	CloseSubtitle     *bool                                    `json:"CloseSubtitle,omitempty" xml:"CloseSubtitle,omitempty"`
+	CloseVoice        *bool                                    `json:"CloseVoice,omitempty" xml:"CloseVoice,omitempty"`
+	ClosingCreditsUrl *string                                  `json:"ClosingCreditsUrl,omitempty" xml:"ClosingCreditsUrl,omitempty"`
+	ColorWords        []*AsyncCreateClipsTaskRequestColorWords `json:"ColorWords,omitempty" xml:"ColorWords,omitempty" type:"Repeated"`
+	CosyVoiceAppKey   *string                                  `json:"CosyVoiceAppKey,omitempty" xml:"CosyVoiceAppKey,omitempty"`
+	CosyVoiceToken    *string                                  `json:"CosyVoiceToken,omitempty" xml:"CosyVoiceToken,omitempty"`
+	CustomVoiceStyle  *string                                  `json:"CustomVoiceStyle,omitempty" xml:"CustomVoiceStyle,omitempty"`
 	// example:
 	//
 	// http://xxx/xxx.mp4
@@ -59,14 +77,17 @@ type AsyncCreateClipsTaskRequest struct {
 	// example:
 	//
 	// 1920
-	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Height              *int32                                            `json:"Height,omitempty" xml:"Height,omitempty"`
+	HighDefSourceVideos []*AsyncCreateClipsTaskRequestHighDefSourceVideos `json:"HighDefSourceVideos,omitempty" xml:"HighDefSourceVideos,omitempty" type:"Repeated"`
+	MusicStyle          *string                                           `json:"MusicStyle,omitempty" xml:"MusicStyle,omitempty"`
 	// example:
 	//
 	// http://music.mp4
-	MusicUrl         *string                                `json:"MusicUrl,omitempty" xml:"MusicUrl,omitempty"`
-	MusicVolume      *int32                                 `json:"MusicVolume,omitempty" xml:"MusicVolume,omitempty"`
-	Stickers         []*AsyncCreateClipsTaskRequestStickers `json:"Stickers,omitempty" xml:"Stickers,omitempty" type:"Repeated"`
-	SubtitleFontSize *int32                                 `json:"SubtitleFontSize,omitempty" xml:"SubtitleFontSize,omitempty"`
+	MusicUrl          *string                                `json:"MusicUrl,omitempty" xml:"MusicUrl,omitempty"`
+	MusicVolume       *int32                                 `json:"MusicVolume,omitempty" xml:"MusicVolume,omitempty"`
+	OpeningCreditsUrl *string                                `json:"OpeningCreditsUrl,omitempty" xml:"OpeningCreditsUrl,omitempty"`
+	Stickers          []*AsyncCreateClipsTaskRequestStickers `json:"Stickers,omitempty" xml:"Stickers,omitempty" type:"Repeated"`
+	SubtitleFontSize  *int32                                 `json:"SubtitleFontSize,omitempty" xml:"SubtitleFontSize,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -107,8 +128,24 @@ func (s *AsyncCreateClipsTaskRequest) GetCloseVoice() *bool {
 	return s.CloseVoice
 }
 
+func (s *AsyncCreateClipsTaskRequest) GetClosingCreditsUrl() *string {
+	return s.ClosingCreditsUrl
+}
+
 func (s *AsyncCreateClipsTaskRequest) GetColorWords() []*AsyncCreateClipsTaskRequestColorWords {
 	return s.ColorWords
+}
+
+func (s *AsyncCreateClipsTaskRequest) GetCosyVoiceAppKey() *string {
+	return s.CosyVoiceAppKey
+}
+
+func (s *AsyncCreateClipsTaskRequest) GetCosyVoiceToken() *string {
+	return s.CosyVoiceToken
+}
+
+func (s *AsyncCreateClipsTaskRequest) GetCustomVoiceStyle() *string {
+	return s.CustomVoiceStyle
 }
 
 func (s *AsyncCreateClipsTaskRequest) GetCustomVoiceUrl() *string {
@@ -123,12 +160,24 @@ func (s *AsyncCreateClipsTaskRequest) GetHeight() *int32 {
 	return s.Height
 }
 
+func (s *AsyncCreateClipsTaskRequest) GetHighDefSourceVideos() []*AsyncCreateClipsTaskRequestHighDefSourceVideos {
+	return s.HighDefSourceVideos
+}
+
+func (s *AsyncCreateClipsTaskRequest) GetMusicStyle() *string {
+	return s.MusicStyle
+}
+
 func (s *AsyncCreateClipsTaskRequest) GetMusicUrl() *string {
 	return s.MusicUrl
 }
 
 func (s *AsyncCreateClipsTaskRequest) GetMusicVolume() *int32 {
 	return s.MusicVolume
+}
+
+func (s *AsyncCreateClipsTaskRequest) GetOpeningCreditsUrl() *string {
+	return s.OpeningCreditsUrl
 }
 
 func (s *AsyncCreateClipsTaskRequest) GetStickers() []*AsyncCreateClipsTaskRequestStickers {
@@ -174,8 +223,28 @@ func (s *AsyncCreateClipsTaskRequest) SetCloseVoice(v bool) *AsyncCreateClipsTas
 	return s
 }
 
+func (s *AsyncCreateClipsTaskRequest) SetClosingCreditsUrl(v string) *AsyncCreateClipsTaskRequest {
+	s.ClosingCreditsUrl = &v
+	return s
+}
+
 func (s *AsyncCreateClipsTaskRequest) SetColorWords(v []*AsyncCreateClipsTaskRequestColorWords) *AsyncCreateClipsTaskRequest {
 	s.ColorWords = v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequest) SetCosyVoiceAppKey(v string) *AsyncCreateClipsTaskRequest {
+	s.CosyVoiceAppKey = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequest) SetCosyVoiceToken(v string) *AsyncCreateClipsTaskRequest {
+	s.CosyVoiceToken = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequest) SetCustomVoiceStyle(v string) *AsyncCreateClipsTaskRequest {
+	s.CustomVoiceStyle = &v
 	return s
 }
 
@@ -194,6 +263,16 @@ func (s *AsyncCreateClipsTaskRequest) SetHeight(v int32) *AsyncCreateClipsTaskRe
 	return s
 }
 
+func (s *AsyncCreateClipsTaskRequest) SetHighDefSourceVideos(v []*AsyncCreateClipsTaskRequestHighDefSourceVideos) *AsyncCreateClipsTaskRequest {
+	s.HighDefSourceVideos = v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequest) SetMusicStyle(v string) *AsyncCreateClipsTaskRequest {
+	s.MusicStyle = &v
+	return s
+}
+
 func (s *AsyncCreateClipsTaskRequest) SetMusicUrl(v string) *AsyncCreateClipsTaskRequest {
 	s.MusicUrl = &v
 	return s
@@ -201,6 +280,11 @@ func (s *AsyncCreateClipsTaskRequest) SetMusicUrl(v string) *AsyncCreateClipsTas
 
 func (s *AsyncCreateClipsTaskRequest) SetMusicVolume(v int32) *AsyncCreateClipsTaskRequest {
 	s.MusicVolume = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequest) SetOpeningCreditsUrl(v string) *AsyncCreateClipsTaskRequest {
+	s.OpeningCreditsUrl = &v
 	return s
 }
 
@@ -242,6 +326,15 @@ func (s *AsyncCreateClipsTaskRequest) SetWorkspaceId(v string) *AsyncCreateClips
 func (s *AsyncCreateClipsTaskRequest) Validate() error {
 	if s.ColorWords != nil {
 		for _, item := range s.ColorWords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HighDefSourceVideos != nil {
+		for _, item := range s.HighDefSourceVideos {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -355,6 +448,51 @@ func (s *AsyncCreateClipsTaskRequestColorWords) SetY(v float32) *AsyncCreateClip
 }
 
 func (s *AsyncCreateClipsTaskRequestColorWords) Validate() error {
+	return dara.Validate(s)
+}
+
+type AsyncCreateClipsTaskRequestHighDefSourceVideos struct {
+	VideoId   *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	VideoName *string `json:"VideoName,omitempty" xml:"VideoName,omitempty"`
+	VideoUrl  *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s AsyncCreateClipsTaskRequestHighDefSourceVideos) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AsyncCreateClipsTaskRequestHighDefSourceVideos) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncCreateClipsTaskRequestHighDefSourceVideos) GetVideoId() *string {
+	return s.VideoId
+}
+
+func (s *AsyncCreateClipsTaskRequestHighDefSourceVideos) GetVideoName() *string {
+	return s.VideoName
+}
+
+func (s *AsyncCreateClipsTaskRequestHighDefSourceVideos) GetVideoUrl() *string {
+	return s.VideoUrl
+}
+
+func (s *AsyncCreateClipsTaskRequestHighDefSourceVideos) SetVideoId(v string) *AsyncCreateClipsTaskRequestHighDefSourceVideos {
+	s.VideoId = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequestHighDefSourceVideos) SetVideoName(v string) *AsyncCreateClipsTaskRequestHighDefSourceVideos {
+	s.VideoName = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequestHighDefSourceVideos) SetVideoUrl(v string) *AsyncCreateClipsTaskRequestHighDefSourceVideos {
+	s.VideoUrl = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequestHighDefSourceVideos) Validate() error {
 	return dara.Validate(s)
 }
 

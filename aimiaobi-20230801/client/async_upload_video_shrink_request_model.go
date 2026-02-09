@@ -9,6 +9,8 @@ type iAsyncUploadVideoShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAdaptiveThreshold(v float32) *AsyncUploadVideoShrinkRequest
+	GetAdaptiveThreshold() *float32
 	SetAnlysisPrompt(v string) *AsyncUploadVideoShrinkRequest
 	GetAnlysisPrompt() *string
 	SetFaceIdentitySimilarityMinScore(v float64) *AsyncUploadVideoShrinkRequest
@@ -21,6 +23,10 @@ type iAsyncUploadVideoShrinkRequest interface {
 	GetSourceVideosShrink() *string
 	SetSplitInterval(v int32) *AsyncUploadVideoShrinkRequest
 	GetSplitInterval() *int32
+	SetTaskName(v string) *AsyncUploadVideoShrinkRequest
+	GetTaskName() *string
+	SetTaskType(v string) *AsyncUploadVideoShrinkRequest
+	GetTaskType() *string
 	SetVideoRolesShrink(v string) *AsyncUploadVideoShrinkRequest
 	GetVideoRolesShrink() *string
 	SetVideoShotFaceIdentityCount(v int32) *AsyncUploadVideoShrinkRequest
@@ -30,6 +36,13 @@ type iAsyncUploadVideoShrinkRequest interface {
 }
 
 type AsyncUploadVideoShrinkRequest struct {
+	// example:
+	//
+	// 3
+	AdaptiveThreshold *float32 `json:"AdaptiveThreshold,omitempty" xml:"AdaptiveThreshold,omitempty"`
+	// example:
+	//
+	// 重点理解视频中的风景信息
 	AnlysisPrompt *string `json:"AnlysisPrompt,omitempty" xml:"AnlysisPrompt,omitempty"`
 	// example:
 	//
@@ -39,8 +52,19 @@ type AsyncUploadVideoShrinkRequest struct {
 	RemoveSubtitle                 *bool    `json:"RemoveSubtitle,omitempty" xml:"RemoveSubtitle,omitempty"`
 	// This parameter is required.
 	SourceVideosShrink *string `json:"SourceVideos,omitempty" xml:"SourceVideos,omitempty"`
-	SplitInterval      *int32  `json:"SplitInterval,omitempty" xml:"SplitInterval,omitempty"`
-	VideoRolesShrink   *string `json:"VideoRoles,omitempty" xml:"VideoRoles,omitempty"`
+	// example:
+	//
+	// 默认1
+	SplitInterval *int32 `json:"SplitInterval,omitempty" xml:"SplitInterval,omitempty"`
+	// example:
+	//
+	// task001
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// example:
+	//
+	// type001
+	TaskType         *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	VideoRolesShrink *string `json:"VideoRoles,omitempty" xml:"VideoRoles,omitempty"`
 	// example:
 	//
 	// 2
@@ -59,6 +83,10 @@ func (s AsyncUploadVideoShrinkRequest) String() string {
 
 func (s AsyncUploadVideoShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AsyncUploadVideoShrinkRequest) GetAdaptiveThreshold() *float32 {
+	return s.AdaptiveThreshold
 }
 
 func (s *AsyncUploadVideoShrinkRequest) GetAnlysisPrompt() *string {
@@ -85,6 +113,14 @@ func (s *AsyncUploadVideoShrinkRequest) GetSplitInterval() *int32 {
 	return s.SplitInterval
 }
 
+func (s *AsyncUploadVideoShrinkRequest) GetTaskName() *string {
+	return s.TaskName
+}
+
+func (s *AsyncUploadVideoShrinkRequest) GetTaskType() *string {
+	return s.TaskType
+}
+
 func (s *AsyncUploadVideoShrinkRequest) GetVideoRolesShrink() *string {
 	return s.VideoRolesShrink
 }
@@ -95,6 +131,11 @@ func (s *AsyncUploadVideoShrinkRequest) GetVideoShotFaceIdentityCount() *int32 {
 
 func (s *AsyncUploadVideoShrinkRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *AsyncUploadVideoShrinkRequest) SetAdaptiveThreshold(v float32) *AsyncUploadVideoShrinkRequest {
+	s.AdaptiveThreshold = &v
+	return s
 }
 
 func (s *AsyncUploadVideoShrinkRequest) SetAnlysisPrompt(v string) *AsyncUploadVideoShrinkRequest {
@@ -124,6 +165,16 @@ func (s *AsyncUploadVideoShrinkRequest) SetSourceVideosShrink(v string) *AsyncUp
 
 func (s *AsyncUploadVideoShrinkRequest) SetSplitInterval(v int32) *AsyncUploadVideoShrinkRequest {
 	s.SplitInterval = &v
+	return s
+}
+
+func (s *AsyncUploadVideoShrinkRequest) SetTaskName(v string) *AsyncUploadVideoShrinkRequest {
+	s.TaskName = &v
+	return s
+}
+
+func (s *AsyncUploadVideoShrinkRequest) SetTaskType(v string) *AsyncUploadVideoShrinkRequest {
+	s.TaskType = &v
 	return s
 }
 

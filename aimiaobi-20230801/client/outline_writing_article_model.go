@@ -28,14 +28,20 @@ type iOutlineWritingArticle interface {
 }
 
 type OutlineWritingArticle struct {
-	Content          *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Outline          *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
-	PrimaryOutline   *string `json:"PrimaryOutline,omitempty" xml:"PrimaryOutline,omitempty"`
+	Content        *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Outline        *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	PrimaryOutline *string `json:"PrimaryOutline,omitempty" xml:"PrimaryOutline,omitempty"`
+	// example:
+	//
+	// 2023-04-11 06:14:07
 	PubTime          *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
 	SearchSource     *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
 	Title            *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Url              *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// http://www.example.com/xxxx.html
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s OutlineWritingArticle) String() string {

@@ -13,6 +13,10 @@ type iRunTranslateGenerationResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunTranslateGenerationResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunTranslateGenerationResponse
+	GetId() *string
+	SetEvent(v string) *RunTranslateGenerationResponse
+	GetEvent() *string
 	SetBody(v *RunTranslateGenerationResponseBody) *RunTranslateGenerationResponse
 	GetBody() *RunTranslateGenerationResponseBody
 }
@@ -20,6 +24,8 @@ type iRunTranslateGenerationResponse interface {
 type RunTranslateGenerationResponse struct {
 	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                             `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                             `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunTranslateGenerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunTranslateGenerationResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunTranslateGenerationResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunTranslateGenerationResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunTranslateGenerationResponse) GetBody() *RunTranslateGenerationResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunTranslateGenerationResponse) SetHeaders(v map[string]*string) *RunTr
 
 func (s *RunTranslateGenerationResponse) SetStatusCode(v int32) *RunTranslateGenerationResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunTranslateGenerationResponse) SetId(v string) *RunTranslateGenerationResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunTranslateGenerationResponse) SetEvent(v string) *RunTranslateGenerationResponse {
+	s.Event = &v
 	return s
 }
 

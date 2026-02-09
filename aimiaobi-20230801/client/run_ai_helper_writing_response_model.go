@@ -13,6 +13,10 @@ type iRunAiHelperWritingResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunAiHelperWritingResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunAiHelperWritingResponse
+	GetId() *string
+	SetEvent(v string) *RunAiHelperWritingResponse
+	GetEvent() *string
 	SetBody(v *RunAiHelperWritingResponseBody) *RunAiHelperWritingResponse
 	GetBody() *RunAiHelperWritingResponseBody
 }
@@ -20,6 +24,8 @@ type iRunAiHelperWritingResponse interface {
 type RunAiHelperWritingResponse struct {
 	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                         `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                         `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunAiHelperWritingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunAiHelperWritingResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunAiHelperWritingResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunAiHelperWritingResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunAiHelperWritingResponse) GetBody() *RunAiHelperWritingResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunAiHelperWritingResponse) SetHeaders(v map[string]*string) *RunAiHelp
 
 func (s *RunAiHelperWritingResponse) SetStatusCode(v int32) *RunAiHelperWritingResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunAiHelperWritingResponse) SetId(v string) *RunAiHelperWritingResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunAiHelperWritingResponse) SetEvent(v string) *RunAiHelperWritingResponse {
+	s.Event = &v
 	return s
 }
 

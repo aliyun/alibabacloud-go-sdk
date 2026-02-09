@@ -13,6 +13,10 @@ type iRunMultiDocIntroductionResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunMultiDocIntroductionResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunMultiDocIntroductionResponse
+	GetId() *string
+	SetEvent(v string) *RunMultiDocIntroductionResponse
+	GetEvent() *string
 	SetBody(v *RunMultiDocIntroductionResponseBody) *RunMultiDocIntroductionResponse
 	GetBody() *RunMultiDocIntroductionResponseBody
 }
@@ -20,6 +24,8 @@ type iRunMultiDocIntroductionResponse interface {
 type RunMultiDocIntroductionResponse struct {
 	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                              `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                              `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunMultiDocIntroductionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunMultiDocIntroductionResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunMultiDocIntroductionResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunMultiDocIntroductionResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunMultiDocIntroductionResponse) GetBody() *RunMultiDocIntroductionResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunMultiDocIntroductionResponse) SetHeaders(v map[string]*string) *RunM
 
 func (s *RunMultiDocIntroductionResponse) SetStatusCode(v int32) *RunMultiDocIntroductionResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunMultiDocIntroductionResponse) SetId(v string) *RunMultiDocIntroductionResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunMultiDocIntroductionResponse) SetEvent(v string) *RunMultiDocIntroductionResponse {
+	s.Event = &v
 	return s
 }
 

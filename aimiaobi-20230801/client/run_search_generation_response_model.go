@@ -13,6 +13,10 @@ type iRunSearchGenerationResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunSearchGenerationResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunSearchGenerationResponse
+	GetId() *string
+	SetEvent(v string) *RunSearchGenerationResponse
+	GetEvent() *string
 	SetBody(v *RunSearchGenerationResponseBody) *RunSearchGenerationResponse
 	GetBody() *RunSearchGenerationResponseBody
 }
@@ -20,6 +24,8 @@ type iRunSearchGenerationResponse interface {
 type RunSearchGenerationResponse struct {
 	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                          `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                          `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunSearchGenerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunSearchGenerationResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunSearchGenerationResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunSearchGenerationResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunSearchGenerationResponse) GetBody() *RunSearchGenerationResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunSearchGenerationResponse) SetHeaders(v map[string]*string) *RunSearc
 
 func (s *RunSearchGenerationResponse) SetStatusCode(v int32) *RunSearchGenerationResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponse) SetId(v string) *RunSearchGenerationResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponse) SetEvent(v string) *RunSearchGenerationResponse {
+	s.Event = &v
 	return s
 }
 

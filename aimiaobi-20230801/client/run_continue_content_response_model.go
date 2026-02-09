@@ -13,6 +13,10 @@ type iRunContinueContentResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunContinueContentResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunContinueContentResponse
+	GetId() *string
+	SetEvent(v string) *RunContinueContentResponse
+	GetEvent() *string
 	SetBody(v *RunContinueContentResponseBody) *RunContinueContentResponse
 	GetBody() *RunContinueContentResponseBody
 }
@@ -20,6 +24,8 @@ type iRunContinueContentResponse interface {
 type RunContinueContentResponse struct {
 	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                         `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                         `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunContinueContentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunContinueContentResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunContinueContentResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunContinueContentResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunContinueContentResponse) GetBody() *RunContinueContentResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunContinueContentResponse) SetHeaders(v map[string]*string) *RunContin
 
 func (s *RunContinueContentResponse) SetStatusCode(v int32) *RunContinueContentResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunContinueContentResponse) SetId(v string) *RunContinueContentResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunContinueContentResponse) SetEvent(v string) *RunContinueContentResponse {
+	s.Event = &v
 	return s
 }
 

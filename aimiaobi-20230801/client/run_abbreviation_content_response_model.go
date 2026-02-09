@@ -13,6 +13,10 @@ type iRunAbbreviationContentResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunAbbreviationContentResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunAbbreviationContentResponse
+	GetId() *string
+	SetEvent(v string) *RunAbbreviationContentResponse
+	GetEvent() *string
 	SetBody(v *RunAbbreviationContentResponseBody) *RunAbbreviationContentResponse
 	GetBody() *RunAbbreviationContentResponseBody
 }
@@ -20,6 +24,8 @@ type iRunAbbreviationContentResponse interface {
 type RunAbbreviationContentResponse struct {
 	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                             `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                             `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunAbbreviationContentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunAbbreviationContentResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunAbbreviationContentResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunAbbreviationContentResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunAbbreviationContentResponse) GetBody() *RunAbbreviationContentResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunAbbreviationContentResponse) SetHeaders(v map[string]*string) *RunAb
 
 func (s *RunAbbreviationContentResponse) SetStatusCode(v int32) *RunAbbreviationContentResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunAbbreviationContentResponse) SetId(v string) *RunAbbreviationContentResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunAbbreviationContentResponse) SetEvent(v string) *RunAbbreviationContentResponse {
+	s.Event = &v
 	return s
 }
 

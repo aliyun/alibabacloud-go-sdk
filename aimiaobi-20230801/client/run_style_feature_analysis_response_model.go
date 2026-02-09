@@ -13,6 +13,10 @@ type iRunStyleFeatureAnalysisResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunStyleFeatureAnalysisResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunStyleFeatureAnalysisResponse
+	GetId() *string
+	SetEvent(v string) *RunStyleFeatureAnalysisResponse
+	GetEvent() *string
 	SetBody(v *RunStyleFeatureAnalysisResponseBody) *RunStyleFeatureAnalysisResponse
 	GetBody() *RunStyleFeatureAnalysisResponseBody
 }
@@ -20,6 +24,8 @@ type iRunStyleFeatureAnalysisResponse interface {
 type RunStyleFeatureAnalysisResponse struct {
 	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                              `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                              `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunStyleFeatureAnalysisResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunStyleFeatureAnalysisResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunStyleFeatureAnalysisResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunStyleFeatureAnalysisResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunStyleFeatureAnalysisResponse) GetBody() *RunStyleFeatureAnalysisResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunStyleFeatureAnalysisResponse) SetHeaders(v map[string]*string) *RunS
 
 func (s *RunStyleFeatureAnalysisResponse) SetStatusCode(v int32) *RunStyleFeatureAnalysisResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunStyleFeatureAnalysisResponse) SetId(v string) *RunStyleFeatureAnalysisResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunStyleFeatureAnalysisResponse) SetEvent(v string) *RunStyleFeatureAnalysisResponse {
+	s.Event = &v
 	return s
 }
 

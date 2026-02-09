@@ -15,18 +15,32 @@ type iAsyncCreateClipsTaskShrinkRequest interface {
 	GetCloseSubtitle() *bool
 	SetCloseVoice(v bool) *AsyncCreateClipsTaskShrinkRequest
 	GetCloseVoice() *bool
+	SetClosingCreditsUrl(v string) *AsyncCreateClipsTaskShrinkRequest
+	GetClosingCreditsUrl() *string
 	SetColorWordsShrink(v string) *AsyncCreateClipsTaskShrinkRequest
 	GetColorWordsShrink() *string
+	SetCosyVoiceAppKey(v string) *AsyncCreateClipsTaskShrinkRequest
+	GetCosyVoiceAppKey() *string
+	SetCosyVoiceToken(v string) *AsyncCreateClipsTaskShrinkRequest
+	GetCosyVoiceToken() *string
+	SetCustomVoiceStyle(v string) *AsyncCreateClipsTaskShrinkRequest
+	GetCustomVoiceStyle() *string
 	SetCustomVoiceUrl(v string) *AsyncCreateClipsTaskShrinkRequest
 	GetCustomVoiceUrl() *string
 	SetCustomVoiceVolume(v int32) *AsyncCreateClipsTaskShrinkRequest
 	GetCustomVoiceVolume() *int32
 	SetHeight(v int32) *AsyncCreateClipsTaskShrinkRequest
 	GetHeight() *int32
+	SetHighDefSourceVideosShrink(v string) *AsyncCreateClipsTaskShrinkRequest
+	GetHighDefSourceVideosShrink() *string
+	SetMusicStyle(v string) *AsyncCreateClipsTaskShrinkRequest
+	GetMusicStyle() *string
 	SetMusicUrl(v string) *AsyncCreateClipsTaskShrinkRequest
 	GetMusicUrl() *string
 	SetMusicVolume(v int32) *AsyncCreateClipsTaskShrinkRequest
 	GetMusicVolume() *int32
+	SetOpeningCreditsUrl(v string) *AsyncCreateClipsTaskShrinkRequest
+	GetOpeningCreditsUrl() *string
 	SetStickersShrink(v string) *AsyncCreateClipsTaskShrinkRequest
 	GetStickersShrink() *string
 	SetSubtitleFontSize(v int32) *AsyncCreateClipsTaskShrinkRequest
@@ -44,10 +58,14 @@ type iAsyncCreateClipsTaskShrinkRequest interface {
 }
 
 type AsyncCreateClipsTaskShrinkRequest struct {
-	CloseMusic       *bool   `json:"CloseMusic,omitempty" xml:"CloseMusic,omitempty"`
-	CloseSubtitle    *bool   `json:"CloseSubtitle,omitempty" xml:"CloseSubtitle,omitempty"`
-	CloseVoice       *bool   `json:"CloseVoice,omitempty" xml:"CloseVoice,omitempty"`
-	ColorWordsShrink *string `json:"ColorWords,omitempty" xml:"ColorWords,omitempty"`
+	CloseMusic        *bool   `json:"CloseMusic,omitempty" xml:"CloseMusic,omitempty"`
+	CloseSubtitle     *bool   `json:"CloseSubtitle,omitempty" xml:"CloseSubtitle,omitempty"`
+	CloseVoice        *bool   `json:"CloseVoice,omitempty" xml:"CloseVoice,omitempty"`
+	ClosingCreditsUrl *string `json:"ClosingCreditsUrl,omitempty" xml:"ClosingCreditsUrl,omitempty"`
+	ColorWordsShrink  *string `json:"ColorWords,omitempty" xml:"ColorWords,omitempty"`
+	CosyVoiceAppKey   *string `json:"CosyVoiceAppKey,omitempty" xml:"CosyVoiceAppKey,omitempty"`
+	CosyVoiceToken    *string `json:"CosyVoiceToken,omitempty" xml:"CosyVoiceToken,omitempty"`
+	CustomVoiceStyle  *string `json:"CustomVoiceStyle,omitempty" xml:"CustomVoiceStyle,omitempty"`
 	// example:
 	//
 	// http://xxx/xxx.mp4
@@ -59,14 +77,17 @@ type AsyncCreateClipsTaskShrinkRequest struct {
 	// example:
 	//
 	// 1920
-	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Height                    *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	HighDefSourceVideosShrink *string `json:"HighDefSourceVideos,omitempty" xml:"HighDefSourceVideos,omitempty"`
+	MusicStyle                *string `json:"MusicStyle,omitempty" xml:"MusicStyle,omitempty"`
 	// example:
 	//
 	// http://music.mp4
-	MusicUrl         *string `json:"MusicUrl,omitempty" xml:"MusicUrl,omitempty"`
-	MusicVolume      *int32  `json:"MusicVolume,omitempty" xml:"MusicVolume,omitempty"`
-	StickersShrink   *string `json:"Stickers,omitempty" xml:"Stickers,omitempty"`
-	SubtitleFontSize *int32  `json:"SubtitleFontSize,omitempty" xml:"SubtitleFontSize,omitempty"`
+	MusicUrl          *string `json:"MusicUrl,omitempty" xml:"MusicUrl,omitempty"`
+	MusicVolume       *int32  `json:"MusicVolume,omitempty" xml:"MusicVolume,omitempty"`
+	OpeningCreditsUrl *string `json:"OpeningCreditsUrl,omitempty" xml:"OpeningCreditsUrl,omitempty"`
+	StickersShrink    *string `json:"Stickers,omitempty" xml:"Stickers,omitempty"`
+	SubtitleFontSize  *int32  `json:"SubtitleFontSize,omitempty" xml:"SubtitleFontSize,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -107,8 +128,24 @@ func (s *AsyncCreateClipsTaskShrinkRequest) GetCloseVoice() *bool {
 	return s.CloseVoice
 }
 
+func (s *AsyncCreateClipsTaskShrinkRequest) GetClosingCreditsUrl() *string {
+	return s.ClosingCreditsUrl
+}
+
 func (s *AsyncCreateClipsTaskShrinkRequest) GetColorWordsShrink() *string {
 	return s.ColorWordsShrink
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) GetCosyVoiceAppKey() *string {
+	return s.CosyVoiceAppKey
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) GetCosyVoiceToken() *string {
+	return s.CosyVoiceToken
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) GetCustomVoiceStyle() *string {
+	return s.CustomVoiceStyle
 }
 
 func (s *AsyncCreateClipsTaskShrinkRequest) GetCustomVoiceUrl() *string {
@@ -123,12 +160,24 @@ func (s *AsyncCreateClipsTaskShrinkRequest) GetHeight() *int32 {
 	return s.Height
 }
 
+func (s *AsyncCreateClipsTaskShrinkRequest) GetHighDefSourceVideosShrink() *string {
+	return s.HighDefSourceVideosShrink
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) GetMusicStyle() *string {
+	return s.MusicStyle
+}
+
 func (s *AsyncCreateClipsTaskShrinkRequest) GetMusicUrl() *string {
 	return s.MusicUrl
 }
 
 func (s *AsyncCreateClipsTaskShrinkRequest) GetMusicVolume() *int32 {
 	return s.MusicVolume
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) GetOpeningCreditsUrl() *string {
+	return s.OpeningCreditsUrl
 }
 
 func (s *AsyncCreateClipsTaskShrinkRequest) GetStickersShrink() *string {
@@ -174,8 +223,28 @@ func (s *AsyncCreateClipsTaskShrinkRequest) SetCloseVoice(v bool) *AsyncCreateCl
 	return s
 }
 
+func (s *AsyncCreateClipsTaskShrinkRequest) SetClosingCreditsUrl(v string) *AsyncCreateClipsTaskShrinkRequest {
+	s.ClosingCreditsUrl = &v
+	return s
+}
+
 func (s *AsyncCreateClipsTaskShrinkRequest) SetColorWordsShrink(v string) *AsyncCreateClipsTaskShrinkRequest {
 	s.ColorWordsShrink = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) SetCosyVoiceAppKey(v string) *AsyncCreateClipsTaskShrinkRequest {
+	s.CosyVoiceAppKey = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) SetCosyVoiceToken(v string) *AsyncCreateClipsTaskShrinkRequest {
+	s.CosyVoiceToken = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) SetCustomVoiceStyle(v string) *AsyncCreateClipsTaskShrinkRequest {
+	s.CustomVoiceStyle = &v
 	return s
 }
 
@@ -194,6 +263,16 @@ func (s *AsyncCreateClipsTaskShrinkRequest) SetHeight(v int32) *AsyncCreateClips
 	return s
 }
 
+func (s *AsyncCreateClipsTaskShrinkRequest) SetHighDefSourceVideosShrink(v string) *AsyncCreateClipsTaskShrinkRequest {
+	s.HighDefSourceVideosShrink = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) SetMusicStyle(v string) *AsyncCreateClipsTaskShrinkRequest {
+	s.MusicStyle = &v
+	return s
+}
+
 func (s *AsyncCreateClipsTaskShrinkRequest) SetMusicUrl(v string) *AsyncCreateClipsTaskShrinkRequest {
 	s.MusicUrl = &v
 	return s
@@ -201,6 +280,11 @@ func (s *AsyncCreateClipsTaskShrinkRequest) SetMusicUrl(v string) *AsyncCreateCl
 
 func (s *AsyncCreateClipsTaskShrinkRequest) SetMusicVolume(v int32) *AsyncCreateClipsTaskShrinkRequest {
 	s.MusicVolume = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) SetOpeningCreditsUrl(v string) *AsyncCreateClipsTaskShrinkRequest {
+	s.OpeningCreditsUrl = &v
 	return s
 }
 

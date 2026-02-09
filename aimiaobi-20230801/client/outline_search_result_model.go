@@ -22,11 +22,14 @@ type iOutlineSearchResult interface {
 }
 
 type OutlineSearchResult struct {
-	Articles       []*OutlineWritingArticle `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
-	Outline        *string                  `json:"Outline,omitempty" xml:"Outline,omitempty"`
-	OutlineId      *string                  `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
-	PrimaryOutline *string                  `json:"PrimaryOutline,omitempty" xml:"PrimaryOutline,omitempty"`
-	Query          *string                  `json:"Query,omitempty" xml:"Query,omitempty"`
+	Articles []*OutlineWritingArticle `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+	Outline  *string                  `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	OutlineId      *string `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
+	PrimaryOutline *string `json:"PrimaryOutline,omitempty" xml:"PrimaryOutline,omitempty"`
+	Query          *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
 func (s OutlineSearchResult) String() string {
