@@ -16,6 +16,13 @@ type iMultimodalSearchBody interface {
 }
 
 type MultimodalSearchBody struct {
+	// example:
+	//
+	// {
+	//
+	//     "excludeSites": "www.360doc.com,weibo.com"
+	//
+	//   }
 	AdvancedParams map[string]interface{} `json:"advancedParams,omitempty" xml:"advancedParams,omitempty"`
 	Query          *string                `json:"query,omitempty" xml:"query,omitempty"`
 }

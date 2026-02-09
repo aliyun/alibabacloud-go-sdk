@@ -20,10 +20,13 @@ type iMultimodalSearchOutput interface {
 }
 
 type MultimodalSearchOutput struct {
-	ImageItems        []*UnifiedImageItem     `json:"imageItems,omitempty" xml:"imageItems,omitempty" type:"Repeated"`
-	QueryContext      *MultimodalQueryContext `json:"queryContext,omitempty" xml:"queryContext,omitempty"`
-	RequestId         *string                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	SearchInformation *SearchInformation      `json:"searchInformation,omitempty" xml:"searchInformation,omitempty"`
+	ImageItems   []*UnifiedImageItem     `json:"imageItems,omitempty" xml:"imageItems,omitempty" type:"Repeated"`
+	QueryContext *MultimodalQueryContext `json:"queryContext,omitempty" xml:"queryContext,omitempty"`
+	// example:
+	//
+	// sdfsd234-2vxcg345-345vc
+	RequestId         *string            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	SearchInformation *SearchInformation `json:"searchInformation,omitempty" xml:"searchInformation,omitempty"`
 }
 
 func (s MultimodalSearchOutput) String() string {

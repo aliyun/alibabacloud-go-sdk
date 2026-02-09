@@ -26,13 +26,29 @@ type iReadPageScrapeBody interface {
 }
 
 type ReadPageScrapeBody struct {
-	Formats     []*string                      `json:"formats,omitempty" xml:"formats,omitempty" type:"Repeated"`
-	Location    *string                        `json:"location,omitempty" xml:"location,omitempty"`
-	MaxAge      *int32                         `json:"maxAge,omitempty" xml:"maxAge,omitempty"`
+	Formats []*string `json:"formats,omitempty" xml:"formats,omitempty" type:"Repeated"`
+	// example:
+	//
+	// null
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// example:
+	//
+	// 1296000
+	MaxAge *int32 `json:"maxAge,omitempty" xml:"maxAge,omitempty"`
+	// example:
+	//
+	// 15000
 	PageTimeout *int32                         `json:"pageTimeout,omitempty" xml:"pageTimeout,omitempty"`
 	Readability *ReadPageScrapeBodyReadability `json:"readability,omitempty" xml:"readability,omitempty" type:"Struct"`
-	Timeout     *int32                         `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	// example:
+	//
+	// 60000
+	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// https://www.example.com
 	Url *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
@@ -117,10 +133,19 @@ func (s *ReadPageScrapeBody) Validate() error {
 }
 
 type ReadPageScrapeBodyReadability struct {
-	ExcludeAllImages *bool     `json:"excludeAllImages,omitempty" xml:"excludeAllImages,omitempty"`
-	ExcludeAllLinks  *bool     `json:"excludeAllLinks,omitempty" xml:"excludeAllLinks,omitempty"`
-	ExcludedTags     []*string `json:"excludedTags,omitempty" xml:"excludedTags,omitempty" type:"Repeated"`
-	ReadabilityMode  *string   `json:"readabilityMode,omitempty" xml:"readabilityMode,omitempty"`
+	// example:
+	//
+	// false
+	ExcludeAllImages *bool `json:"excludeAllImages,omitempty" xml:"excludeAllImages,omitempty"`
+	// example:
+	//
+	// false
+	ExcludeAllLinks *bool     `json:"excludeAllLinks,omitempty" xml:"excludeAllLinks,omitempty"`
+	ExcludedTags    []*string `json:"excludedTags,omitempty" xml:"excludedTags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// none
+	ReadabilityMode *string `json:"readabilityMode,omitempty" xml:"readabilityMode,omitempty"`
 }
 
 func (s ReadPageScrapeBodyReadability) String() string {

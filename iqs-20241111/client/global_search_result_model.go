@@ -24,6 +24,8 @@ type iGlobalSearchResult interface {
 type GlobalSearchResult struct {
 	PageItems    []*GlobalPageItem   `json:"pageItems,omitempty" xml:"pageItems,omitempty" type:"Repeated"`
 	QueryContext *GlobalQueryContext `json:"queryContext,omitempty" xml:"queryContext,omitempty"`
+	// requestId
+	//
 	// example:
 	//
 	// 123456

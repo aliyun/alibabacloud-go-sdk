@@ -18,6 +18,9 @@ type iUnifiedQueryContext interface {
 }
 
 type UnifiedQueryContext struct {
+	// example:
+	//
+	// Generic
 	EngineType    *string               `json:"engineType,omitempty" xml:"engineType,omitempty"`
 	OriginalQuery *UnifiedOriginalQuery `json:"originalQuery,omitempty" xml:"originalQuery,omitempty"`
 	Rewrite       *UnifiedRewrite       `json:"rewrite,omitempty" xml:"rewrite,omitempty"`

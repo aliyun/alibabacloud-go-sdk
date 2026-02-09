@@ -13,6 +13,10 @@ type iAiSearchResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *AiSearchResponse
 	GetStatusCode() *int32
+	SetId(v string) *AiSearchResponse
+	GetId() *string
+	SetEvent(v string) *AiSearchResponse
+	GetEvent() *string
 	SetBody(v *AiSearchResponseBody) *AiSearchResponse
 	GetBody() *AiSearchResponseBody
 }
@@ -20,6 +24,8 @@ type iAiSearchResponse interface {
 type AiSearchResponse struct {
 	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string               `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string               `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *AiSearchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *AiSearchResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *AiSearchResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *AiSearchResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *AiSearchResponse) GetBody() *AiSearchResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *AiSearchResponse) SetHeaders(v map[string]*string) *AiSearchResponse {
 
 func (s *AiSearchResponse) SetStatusCode(v int32) *AiSearchResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *AiSearchResponse) SetId(v string) *AiSearchResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *AiSearchResponse) SetEvent(v string) *AiSearchResponse {
+	s.Event = &v
 	return s
 }
 

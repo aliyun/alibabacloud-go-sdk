@@ -16,7 +16,10 @@ type iUnifiedOriginalQuery interface {
 }
 
 type UnifiedOriginalQuery struct {
-	Query     *string `json:"query,omitempty" xml:"query,omitempty"`
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// example:
+	//
+	// NoLimit
 	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
 }
 

@@ -16,8 +16,14 @@ type iGlobalSearchInformation interface {
 }
 
 type GlobalSearchInformation struct {
+	// example:
+	//
+	// 1200
 	SearchTime *int64 `json:"searchTime,omitempty" xml:"searchTime,omitempty"`
-	Total      *int64 `json:"total,omitempty" xml:"total,omitempty"`
+	// example:
+	//
+	// 10339
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s GlobalSearchInformation) String() string {

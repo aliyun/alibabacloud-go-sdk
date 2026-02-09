@@ -16,6 +16,9 @@ type iSearchCredits interface {
 }
 
 type SearchCredits struct {
+	// example:
+	//
+	// 1
 	GenericTextSearch      *int32 `json:"genericTextSearch,omitempty" xml:"genericTextSearch,omitempty"`
 	LiteAdvancedTextSearch *int32 `json:"liteAdvancedTextSearch,omitempty" xml:"liteAdvancedTextSearch,omitempty"`
 }

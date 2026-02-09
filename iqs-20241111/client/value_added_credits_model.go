@@ -16,8 +16,14 @@ type iValueAddedCredits interface {
 }
 
 type ValueAddedCredits struct {
+	// example:
+	//
+	// 0
 	Advanced *int32 `json:"advanced,omitempty" xml:"advanced,omitempty"`
-	Summary  *int32 `json:"summary,omitempty" xml:"summary,omitempty"`
+	// example:
+	//
+	// 1
+	Summary *int32 `json:"summary,omitempty" xml:"summary,omitempty"`
 }
 
 func (s ValueAddedCredits) String() string {

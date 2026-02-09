@@ -42,18 +42,27 @@ type iUnifiedPageItem interface {
 }
 
 type UnifiedPageItem struct {
-	CorrelationTag     *int32    `json:"correlationTag,omitempty" xml:"correlationTag,omitempty"`
-	HostAuthorityScore *float64  `json:"hostAuthorityScore,omitempty" xml:"hostAuthorityScore,omitempty"`
-	HostLogo           *string   `json:"hostLogo,omitempty" xml:"hostLogo,omitempty"`
-	Hostname           *string   `json:"hostname,omitempty" xml:"hostname,omitempty"`
-	Images             []*string `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
-	Link               *string   `json:"link,omitempty" xml:"link,omitempty"`
-	MainText           *string   `json:"mainText,omitempty" xml:"mainText,omitempty"`
-	MarkdownText       *string   `json:"markdownText,omitempty" xml:"markdownText,omitempty"`
+	CorrelationTag     *int32   `json:"correlationTag,omitempty" xml:"correlationTag,omitempty"`
+	HostAuthorityScore *float64 `json:"hostAuthorityScore,omitempty" xml:"hostAuthorityScore,omitempty"`
 	// example:
 	//
-	// 2025-04-07T10:15:30.123+08:00
-	PublishedTime         *string  `json:"publishedTime,omitempty" xml:"publishedTime,omitempty"`
+	// https://www.china.com/zh_cn/img1905/2023/logo.png
+	HostLogo *string   `json:"hostLogo,omitempty" xml:"hostLogo,omitempty"`
+	Hostname *string   `json:"hostname,omitempty" xml:"hostname,omitempty"`
+	Images   []*string `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
+	// example:
+	//
+	// https://hea.china.com/articles/20250427/202504271666343.html
+	Link         *string `json:"link,omitempty" xml:"link,omitempty"`
+	MainText     *string `json:"mainText,omitempty" xml:"mainText,omitempty"`
+	MarkdownText *string `json:"markdownText,omitempty" xml:"markdownText,omitempty"`
+	// example:
+	//
+	// 2025-04-27T20:36:04+08:00
+	PublishedTime *string `json:"publishedTime,omitempty" xml:"publishedTime,omitempty"`
+	// example:
+	//
+	// 0.7786493301391602
 	RerankScore           *float64 `json:"rerankScore,omitempty" xml:"rerankScore,omitempty"`
 	RichMainBody          *string  `json:"richMainBody,omitempty" xml:"richMainBody,omitempty"`
 	Snippet               *string  `json:"snippet,omitempty" xml:"snippet,omitempty"`

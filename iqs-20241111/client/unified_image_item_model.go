@@ -24,12 +24,27 @@ type iUnifiedImageItem interface {
 }
 
 type UnifiedImageItem struct {
-	Height        *int32  `json:"height,omitempty" xml:"height,omitempty"`
-	HostPageUrl   *string `json:"hostPageUrl,omitempty" xml:"hostPageUrl,omitempty"`
-	ImageUrl      *string `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
+	// example:
+	//
+	// 1330
+	Height *int32 `json:"height,omitempty" xml:"height,omitempty"`
+	// example:
+	//
+	// http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4541580238898912926
+	HostPageUrl *string `json:"hostPageUrl,omitempty" xml:"hostPageUrl,omitempty"`
+	// example:
+	//
+	// http://pic.rmb.bdstatic.com/bjh/bb87f566c0c/241218/f7936f25837b20211e5ef88d7980c143.jpeg
+	ImageUrl *string `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
+	// example:
+	//
+	// 2022-07-05T00:54:42+08:00
 	PublishedTime *string `json:"publishedTime,omitempty" xml:"publishedTime,omitempty"`
 	Title         *string `json:"title,omitempty" xml:"title,omitempty"`
-	Width         *int32  `json:"width,omitempty" xml:"width,omitempty"`
+	// example:
+	//
+	// 1000
+	Width *int32 `json:"width,omitempty" xml:"width,omitempty"`
 }
 
 func (s UnifiedImageItem) String() string {

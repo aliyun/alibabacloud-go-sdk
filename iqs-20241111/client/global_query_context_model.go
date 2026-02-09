@@ -44,8 +44,14 @@ func (s *GlobalQueryContext) Validate() error {
 }
 
 type GlobalQueryContextOriginalQuery struct {
-	Page      *string `json:"page,omitempty" xml:"page,omitempty"`
-	Query     *string `json:"query,omitempty" xml:"query,omitempty"`
+	// example:
+	//
+	// 1
+	Page  *string `json:"page,omitempty" xml:"page,omitempty"`
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// example:
+	//
+	// NoLimit
 	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
 }
 

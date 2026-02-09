@@ -17,7 +17,10 @@ type iUnifiedSceneItem interface {
 
 type UnifiedSceneItem struct {
 	Detail *string `json:"detail,omitempty" xml:"detail,omitempty"`
-	Type   *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// time
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s UnifiedSceneItem) String() string {
