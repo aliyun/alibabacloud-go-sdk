@@ -738,7 +738,7 @@ func (client *Client) CreateCallbackWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 在线测试
+// # Online Test
 //
 // @param request - CreateOnlineTestRequest
 //
@@ -1272,7 +1272,7 @@ func (client *Client) DeleteKeywordLibWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除在线测试接口
+// # Delete online test
 //
 // @param request - DeleteOnlineTestRequest
 //
@@ -2076,7 +2076,7 @@ func (client *Client) GetBucketsListWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 查询调用量
+// # Query Call Volume
 //
 // @param request - GetCipStatsRequest
 //
@@ -2091,6 +2091,10 @@ func (client *Client) GetCipStatsWithContext(ctx context.Context, request *GetCi
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -4097,7 +4101,7 @@ func (client *Client) ModifyCallbackWithContext(ctx context.Context, request *Mo
 
 // Summary:
 //
-// 保存特性配置
+// # Save Feature Configuration
 //
 // @param request - ModifyFeatureConfigRequest
 //
@@ -4229,7 +4233,7 @@ func (client *Client) ModifyServiceInfoWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// oss扫描结果查询
+// # OSS scan result query
 //
 // @param tmpReq - OssCheckResultListRequest
 //
@@ -5205,18 +5209,20 @@ func (client *Client) llmStreamChatWithSSECtx_opYieldFunc(_yield chan *LlmStream
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }

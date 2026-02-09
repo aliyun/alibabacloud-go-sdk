@@ -1004,7 +1004,7 @@ func (client *Client) CreateCallback(request *CreateCallbackRequest) (_result *C
 
 // Summary:
 //
-// 在线测试
+// # Online Test
 //
 // @param request - CreateOnlineTestRequest
 //
@@ -1060,7 +1060,7 @@ func (client *Client) CreateOnlineTestWithOptions(request *CreateOnlineTestReque
 
 // Summary:
 //
-// 在线测试
+// # Online Test
 //
 // @param request - CreateOnlineTestRequest
 //
@@ -1700,7 +1700,7 @@ func (client *Client) DeleteKeywordLib(request *DeleteKeywordLibRequest) (_resul
 
 // Summary:
 //
-// 删除在线测试接口
+// # Delete online test
 //
 // @param request - DeleteOnlineTestRequest
 //
@@ -1748,7 +1748,7 @@ func (client *Client) DeleteOnlineTestWithOptions(request *DeleteOnlineTestReque
 
 // Summary:
 //
-// 删除在线测试接口
+// # Delete online test
 //
 // @param request - DeleteOnlineTestRequest
 //
@@ -2756,7 +2756,7 @@ func (client *Client) GetBucketsList(request *GetBucketsListRequest) (_result *G
 
 // Summary:
 //
-// 查询调用量
+// # Query Call Volume
 //
 // @param request - GetCipStatsRequest
 //
@@ -2771,6 +2771,10 @@ func (client *Client) GetCipStatsWithOptions(request *GetCipStatsRequest, runtim
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -2834,7 +2838,7 @@ func (client *Client) GetCipStatsWithOptions(request *GetCipStatsRequest, runtim
 
 // Summary:
 //
-// 查询调用量
+// # Query Call Volume
 //
 // @param request - GetCipStatsRequest
 //
@@ -5389,7 +5393,7 @@ func (client *Client) ModifyCallback(request *ModifyCallbackRequest) (_result *M
 
 // Summary:
 //
-// 保存特性配置
+// # Save Feature Configuration
 //
 // @param request - ModifyFeatureConfigRequest
 //
@@ -5459,7 +5463,7 @@ func (client *Client) ModifyFeatureConfigWithOptions(request *ModifyFeatureConfi
 
 // Summary:
 //
-// 保存特性配置
+// # Save Feature Configuration
 //
 // @param request - ModifyFeatureConfigRequest
 //
@@ -5557,7 +5561,7 @@ func (client *Client) ModifyServiceInfo(request *ModifyServiceInfoRequest) (_res
 
 // Summary:
 //
-// oss扫描结果查询
+// # OSS scan result query
 //
 // @param tmpReq - OssCheckResultListRequest
 //
@@ -5639,7 +5643,7 @@ func (client *Client) OssCheckResultListWithOptions(tmpReq *OssCheckResultListRe
 
 // Summary:
 //
-// oss扫描结果查询
+// # OSS scan result query
 //
 // @param request - OssCheckResultListRequest
 //
@@ -6803,18 +6807,20 @@ func (client *Client) llmStreamChatWithSSE_opYieldFunc(_yield chan *LlmStreamCha
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }

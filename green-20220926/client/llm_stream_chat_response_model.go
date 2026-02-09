@@ -13,6 +13,10 @@ type iLlmStreamChatResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *LlmStreamChatResponse
 	GetStatusCode() *int32
+	SetId(v string) *LlmStreamChatResponse
+	GetId() *string
+	SetEvent(v string) *LlmStreamChatResponse
+	GetEvent() *string
 	SetBody(v *LlmStreamChatResponseBody) *LlmStreamChatResponse
 	GetBody() *LlmStreamChatResponseBody
 }
@@ -20,6 +24,8 @@ type iLlmStreamChatResponse interface {
 type LlmStreamChatResponse struct {
 	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                    `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                    `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *LlmStreamChatResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *LlmStreamChatResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *LlmStreamChatResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *LlmStreamChatResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *LlmStreamChatResponse) GetBody() *LlmStreamChatResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *LlmStreamChatResponse) SetHeaders(v map[string]*string) *LlmStreamChatR
 
 func (s *LlmStreamChatResponse) SetStatusCode(v int32) *LlmStreamChatResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *LlmStreamChatResponse) SetId(v string) *LlmStreamChatResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *LlmStreamChatResponse) SetEvent(v string) *LlmStreamChatResponse {
+	s.Event = &v
 	return s
 }
 

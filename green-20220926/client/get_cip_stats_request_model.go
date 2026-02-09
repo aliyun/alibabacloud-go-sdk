@@ -15,6 +15,8 @@ type iGetCipStatsRequest interface {
 	GetEndDate() *string
 	SetLabel(v string) *GetCipStatsRequest
 	GetLabel() *string
+	SetQuery(v string) *GetCipStatsRequest
+	GetQuery() *string
 	SetRegionId(v string) *GetCipStatsRequest
 	GetRegionId() *string
 	SetResourceType(v string) *GetCipStatsRequest
@@ -42,6 +44,7 @@ type GetCipStatsRequest struct {
 	//
 	// xx
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// example:
 	//
 	// cn-shanghai
@@ -82,6 +85,10 @@ func (s *GetCipStatsRequest) GetLabel() *string {
 	return s.Label
 }
 
+func (s *GetCipStatsRequest) GetQuery() *string {
+	return s.Query
+}
+
 func (s *GetCipStatsRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -118,6 +125,11 @@ func (s *GetCipStatsRequest) SetEndDate(v string) *GetCipStatsRequest {
 
 func (s *GetCipStatsRequest) SetLabel(v string) *GetCipStatsRequest {
 	s.Label = &v
+	return s
+}
+
+func (s *GetCipStatsRequest) SetQuery(v string) *GetCipStatsRequest {
+	s.Query = &v
 	return s
 }
 
