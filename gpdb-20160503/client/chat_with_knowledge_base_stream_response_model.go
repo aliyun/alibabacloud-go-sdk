@@ -13,6 +13,10 @@ type iChatWithKnowledgeBaseStreamResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *ChatWithKnowledgeBaseStreamResponse
 	GetStatusCode() *int32
+	SetId(v string) *ChatWithKnowledgeBaseStreamResponse
+	GetId() *string
+	SetEvent(v string) *ChatWithKnowledgeBaseStreamResponse
+	GetEvent() *string
 	SetBody(v *ChatWithKnowledgeBaseStreamResponseBody) *ChatWithKnowledgeBaseStreamResponse
 	GetBody() *ChatWithKnowledgeBaseStreamResponseBody
 }
@@ -20,6 +24,8 @@ type iChatWithKnowledgeBaseStreamResponse interface {
 type ChatWithKnowledgeBaseStreamResponse struct {
 	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                                  `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                                  `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *ChatWithKnowledgeBaseStreamResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *ChatWithKnowledgeBaseStreamResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *ChatWithKnowledgeBaseStreamResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *ChatWithKnowledgeBaseStreamResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *ChatWithKnowledgeBaseStreamResponse) GetBody() *ChatWithKnowledgeBaseStreamResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *ChatWithKnowledgeBaseStreamResponse) SetHeaders(v map[string]*string) *
 
 func (s *ChatWithKnowledgeBaseStreamResponse) SetStatusCode(v int32) *ChatWithKnowledgeBaseStreamResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *ChatWithKnowledgeBaseStreamResponse) SetId(v string) *ChatWithKnowledgeBaseStreamResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *ChatWithKnowledgeBaseStreamResponse) SetEvent(v string) *ChatWithKnowledgeBaseStreamResponse {
+	s.Event = &v
 	return s
 }
 

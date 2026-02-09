@@ -100,10 +100,8 @@ func (s *GetStatementResultResponseBody) Validate() error {
 }
 
 type GetStatementResultResponseBodyData struct {
-	// List of column metadata.
 	ColumnMetadata *GetStatementResultResponseBodyDataColumnMetadata `json:"ColumnMetadata,omitempty" xml:"ColumnMetadata,omitempty" type:"Struct"`
-	// Multiple rows of data.
-	Records *GetStatementResultResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Struct"`
+	Records        *GetStatementResultResponseBodyDataRecords        `json:"Records,omitempty" xml:"Records,omitempty" type:"Struct"`
 	// Total number of entries.
 	//
 	// example:

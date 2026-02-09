@@ -16,7 +16,6 @@ type iDescribeAccountsResponseBody interface {
 }
 
 type DescribeAccountsResponseBody struct {
-	// The queried database accounts.
 	Accounts *DescribeAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,42 +95,11 @@ func (s *DescribeAccountsResponseBodyAccounts) Validate() error {
 }
 
 type DescribeAccountsResponseBodyAccountsDBInstanceAccount struct {
-	// The description of the account.
-	//
-	// example:
-	//
-	// testuser
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The name of the account.
-	//
-	// example:
-	//
-	// testuser
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The state of the account.
-	//
-	// 	- **0**: The account is being created.
-	//
-	// 	- **1**: The account is in use.
-	//
-	// 	- **3**: The account is being deleted.
-	//
-	// example:
-	//
-	// 1
-	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
-	// The type of the database account. Valid values: Super and Normal. Super indicates a privileged account and Normal indicates a standard account.
-	//
-	// example:
-	//
-	// Super
-	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// gp-bp***************
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	AccountName        *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountStatus      *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
+	AccountType        *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	DBInstanceId       *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
 func (s DescribeAccountsResponseBodyAccountsDBInstanceAccount) String() string {

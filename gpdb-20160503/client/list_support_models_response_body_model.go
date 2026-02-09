@@ -16,7 +16,6 @@ type iListSupportModelsResponseBody interface {
 }
 
 type ListSupportModelsResponseBody struct {
-	// The list of supported model names.
 	ModelNames *ListSupportModelsResponseBodyModelNames `json:"ModelNames,omitempty" xml:"ModelNames,omitempty" type:"Struct"`
 	// The unique ID of the request.
 	//

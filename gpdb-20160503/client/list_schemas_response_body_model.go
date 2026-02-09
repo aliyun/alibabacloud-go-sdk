@@ -39,9 +39,8 @@ type ListSchemasResponseBody struct {
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried schemas.
-	Schemas *ListSchemasResponseBodySchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Schemas   *ListSchemasResponseBodySchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Struct"`
 	// The status of the operation. Valid values:
 	//
 	// 	- **success**

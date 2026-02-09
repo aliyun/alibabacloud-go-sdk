@@ -39,9 +39,8 @@ type ListSecretsResponseBody struct {
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried access credentials.
-	Secrets *ListSecretsResponseBodySecrets `json:"Secrets,omitempty" xml:"Secrets,omitempty" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Secrets   *ListSecretsResponseBodySecrets `json:"Secrets,omitempty" xml:"Secrets,omitempty" type:"Struct"`
 	// The status of the operation. Valid values:
 	//
 	// 	- **success**
@@ -151,48 +150,13 @@ func (s *ListSecretsResponseBodySecrets) Validate() error {
 }
 
 type ListSecretsResponseBodySecretsSecrets struct {
-	// The ID of the Alibaba Cloud account.
-	//
-	// example:
-	//
-	// 1033***
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// gp-bp14****
+	AccountId    *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The description of the access credential.
-	//
-	// example:
-	//
-	// test description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The region ID of the instance.
-	//
-	// example:
-	//
-	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. Format: `acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}`.
-	//
-	// example:
-	//
-	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
-	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
-	// The name of the access credential.
-	//
-	// example:
-	//
-	// testsecret
-	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	// The name of the database account.
-	//
-	// example:
-	//
-	// testacc
-	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecretArn    *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	SecretName   *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	Username     *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s ListSecretsResponseBodySecretsSecrets) String() string {

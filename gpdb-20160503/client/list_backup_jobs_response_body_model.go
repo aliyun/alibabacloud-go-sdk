@@ -16,7 +16,6 @@ type iListBackupJobsResponseBody interface {
 }
 
 type ListBackupJobsResponseBody struct {
-	// The queried backup jobs.
 	Items *ListBackupJobsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,44 +95,11 @@ func (s *ListBackupJobsResponseBodyItems) Validate() error {
 }
 
 type ListBackupJobsResponseBodyItemsBackupJob struct {
-	// The backup job ID.
-	//
-	// example:
-	//
-	// 123
-	BackupJobId *string `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
-	// The backup mode. Valid values:
-	//
-	// 	- **Automated**
-	//
-	// 	- **Manual**
-	//
-	// example:
-	//
-	// Automated
-	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	// The backup status. Valid values:
-	//
-	// 	- **Success**
-	//
-	// 	- **Failure**
-	//
-	// example:
-	//
-	// Success
+	BackupJobId  *string `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
+	BackupMode   *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	// The progress of the backup job.
-	//
-	// example:
-	//
-	// 50%
-	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	// The time when the backup job started. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2022-08-11T09:26:43Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Process      *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListBackupJobsResponseBodyItemsBackupJob) String() string {

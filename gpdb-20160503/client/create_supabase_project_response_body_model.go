@@ -9,6 +9,8 @@ type iCreateSupabaseProjectResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetOrderId(v string) *CreateSupabaseProjectResponseBody
+	GetOrderId() *string
 	SetProjectId(v string) *CreateSupabaseProjectResponseBody
 	GetProjectId() *string
 	SetRequestId(v string) *CreateSupabaseProjectResponseBody
@@ -16,6 +18,7 @@ type iCreateSupabaseProjectResponseBody interface {
 }
 
 type CreateSupabaseProjectResponseBody struct {
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The Supabase project ID.
 	//
 	// example:
@@ -38,12 +41,21 @@ func (s CreateSupabaseProjectResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreateSupabaseProjectResponseBody) GetOrderId() *string {
+	return s.OrderId
+}
+
 func (s *CreateSupabaseProjectResponseBody) GetProjectId() *string {
 	return s.ProjectId
 }
 
 func (s *CreateSupabaseProjectResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *CreateSupabaseProjectResponseBody) SetOrderId(v string) *CreateSupabaseProjectResponseBody {
+	s.OrderId = &v
+	return s
 }
 
 func (s *CreateSupabaseProjectResponseBody) SetProjectId(v string) *CreateSupabaseProjectResponseBody {

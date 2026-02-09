@@ -33,9 +33,8 @@ type DescribeDBInstancePlansResponseBody struct {
 	// example:
 	//
 	// ****
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The queried plans.
-	Items *DescribeDBInstancePlansResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	ErrorMessage *string                                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Items        *DescribeDBInstancePlansResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
 	// example:
@@ -185,94 +184,16 @@ func (s *DescribeDBInstancePlansResponseBodyItems) Validate() error {
 }
 
 type DescribeDBInstancePlansResponseBodyItemsPlanList struct {
-	// The instance ID.
-	//
-	// example:
-	//
-	// gp-bp12ga6v69h86****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The execution information of the plan.
-	//
-	// example:
-	//
-	// {"pause":{"planCronTime":"0 22 	- 	- 5"},"resume":{"planCronTime":"0 23 	- 	- 5"}}
-	PlanConfig *string `json:"PlanConfig,omitempty" xml:"PlanConfig,omitempty"`
-	// The description of the plan.
-	//
-	// example:
-	//
-	// this is a test plan
-	PlanDesc *string `json:"PlanDesc,omitempty" xml:"PlanDesc,omitempty"`
-	// The end time of the plan. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// >
-	//
-	// 	- This parameter is returned only for the plans that are periodically executed.
-	//
-	// 	- If you did not specify the end time when you created the plan, this parameter is not returned.
-	//
-	// example:
-	//
-	// 2023-04-17T23:00Z
-	PlanEndDate *string `json:"PlanEndDate,omitempty" xml:"PlanEndDate,omitempty"`
-	// The plan ID.
-	//
-	// example:
-	//
-	// 1234
-	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	// The name of the plan.
-	//
-	// example:
-	//
-	// test-plan
-	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	// The execution mode of the plan. Valid values:
-	//
-	// 	- **Postpone**: The plan is executed later.
-	//
-	// 	- **Regular**: The plan is executed periodically.
-	//
-	// example:
-	//
-	// Regular
+	DBInstanceId     *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	PlanConfig       *string `json:"PlanConfig,omitempty" xml:"PlanConfig,omitempty"`
+	PlanDesc         *string `json:"PlanDesc,omitempty" xml:"PlanDesc,omitempty"`
+	PlanEndDate      *string `json:"PlanEndDate,omitempty" xml:"PlanEndDate,omitempty"`
+	PlanId           *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	PlanName         *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
 	PlanScheduleType *string `json:"PlanScheduleType,omitempty" xml:"PlanScheduleType,omitempty"`
-	// The start time of the plan. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// >
-	//
-	// 	- This parameter is returned only for the plans that are periodically executed.
-	//
-	// 	- If you did not specify the start time when you created the plan, the current time is returned.
-	//
-	// example:
-	//
-	// 2022-04-17T23:00Z
-	PlanStartDate *string `json:"PlanStartDate,omitempty" xml:"PlanStartDate,omitempty"`
-	// The status of the plan. Valid values:
-	//
-	// 	- **active**
-	//
-	// 	- **cancel**
-	//
-	// 	- **deleted**
-	//
-	// 	- **finished**
-	//
-	// example:
-	//
-	// active
-	PlanStatus *string `json:"PlanStatus,omitempty" xml:"PlanStatus,omitempty"`
-	// The type of the plan. Valid values:
-	//
-	// 	- **PauseResume**: pauses and resumes an instance.
-	//
-	// 	- **Resize**: scales an instance.
-	//
-	// example:
-	//
-	// PauseResume
-	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
+	PlanStartDate    *string `json:"PlanStartDate,omitempty" xml:"PlanStartDate,omitempty"`
+	PlanStatus       *string `json:"PlanStatus,omitempty" xml:"PlanStatus,omitempty"`
+	PlanType         *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
 }
 
 func (s DescribeDBInstancePlansResponseBodyItemsPlanList) String() string {

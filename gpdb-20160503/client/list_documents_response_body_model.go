@@ -29,8 +29,7 @@ type ListDocumentsResponseBody struct {
 	// example:
 	//
 	// 3
-	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The queried documents.
+	Count *int32                          `json:"Count,omitempty" xml:"Count,omitempty"`
 	Items *ListDocumentsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -168,18 +167,8 @@ func (s *ListDocumentsResponseBodyItems) Validate() error {
 }
 
 type ListDocumentsResponseBodyItemsDocumentList struct {
-	// The name of the document.
-	//
-	// example:
-	//
-	// music.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The source of the document.
-	//
-	// example:
-	//
-	// http://oss.xxx/music.txt
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Source   *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s ListDocumentsResponseBodyItemsDocumentList) String() string {

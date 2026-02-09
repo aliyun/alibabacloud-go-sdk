@@ -16,7 +16,6 @@ type iDescribeRegionsResponseBody interface {
 }
 
 type DescribeRegionsResponseBody struct {
-	// Details of the regions.
 	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,14 +95,8 @@ func (s *DescribeRegionsResponseBodyRegions) Validate() error {
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Details of the zones.
-	Zones *DescribeRegionsResponseBodyRegionsRegionZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
+	RegionId *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Zones    *DescribeRegionsResponseBodyRegionsRegionZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsRegion) String() string {
@@ -176,22 +169,8 @@ func (s *DescribeRegionsResponseBodyRegionsRegionZones) Validate() error {
 }
 
 type DescribeRegionsResponseBodyRegionsRegionZonesZone struct {
-	// Indicates whether Virtual Private Cloud (VPC) is available.
-	//
-	// 	- **true**: VPC is available.
-	//
-	// 	- **false**: VPC is unavailable.
-	//
-	// example:
-	//
-	// true
-	VpcEnabled *bool `json:"VpcEnabled,omitempty" xml:"VpcEnabled,omitempty"`
-	// The ID of the zone.
-	//
-	// example:
-	//
-	// cn-hangzhou-c
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	VpcEnabled *bool   `json:"VpcEnabled,omitempty" xml:"VpcEnabled,omitempty"`
+	ZoneId     *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsRegionZonesZone) String() string {

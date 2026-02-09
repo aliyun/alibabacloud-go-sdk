@@ -20,7 +20,6 @@ type iListIndicesResponseBody interface {
 }
 
 type ListIndicesResponseBody struct {
-	// The queried indexes.
 	Indices *ListIndicesResponseBodyIndices `json:"Indices,omitempty" xml:"Indices,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -134,30 +133,10 @@ func (s *ListIndicesResponseBodyIndices) Validate() error {
 }
 
 type ListIndicesResponseBodyIndicesIndices struct {
-	// The name of the collection.
-	//
-	// example:
-	//
-	// testcollection
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	// The definition of the index.
-	//
-	// example:
-	//
-	// CREATE INDEX testindex ON mynamespace. testcollection
-	IndexDef *string `json:"IndexDef,omitempty" xml:"IndexDef,omitempty"`
-	// The name of the index.
-	//
-	// example:
-	//
-	// testindex
-	IndexName *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
-	// The namespace to which the pod belongs.
-	//
-	// example:
-	//
-	// mynamespace
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	IndexDef   *string `json:"IndexDef,omitempty" xml:"IndexDef,omitempty"`
+	IndexName  *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
+	Namespace  *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
 func (s ListIndicesResponseBodyIndicesIndices) String() string {

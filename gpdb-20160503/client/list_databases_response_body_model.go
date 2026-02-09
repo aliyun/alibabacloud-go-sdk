@@ -22,7 +22,6 @@ type iListDatabasesResponseBody interface {
 }
 
 type ListDatabasesResponseBody struct {
-	// The queried databases.
 	Databases *ListDatabasesResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Struct"`
 	// The returned message.
 	//

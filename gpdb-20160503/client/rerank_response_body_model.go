@@ -33,9 +33,8 @@ type RerankResponseBody struct {
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Rerank results.
-	Results *RerankResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
+	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results   *RerankResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
 	// API execution status, value description:
 	//
 	// - **success**: Execution succeeded.
@@ -151,23 +150,8 @@ func (s *RerankResponseBodyResults) Validate() error {
 }
 
 type RerankResponseBodyResultsResults struct {
-	// Re-ordered document information.
-	//
-	// example:
-	//
-	// ADBPG is the OLAP database of Alibaba Cloud.
-	Document *string `json:"Document,omitempty" xml:"Document,omitempty"`
-	// Index of this document in the request parameter Documents, starting from 0.
-	//
-	// example:
-	//
-	// 1
-	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// Rerank similarity score.
-	//
-	// example:
-	//
-	// 2.31412
+	Document       *string  `json:"Document,omitempty" xml:"Document,omitempty"`
+	Index          *int32   `json:"Index,omitempty" xml:"Index,omitempty"`
 	RelevanceScore *float32 `json:"RelevanceScore,omitempty" xml:"RelevanceScore,omitempty"`
 }
 

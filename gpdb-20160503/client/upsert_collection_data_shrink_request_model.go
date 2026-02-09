@@ -70,7 +70,8 @@ type UpsertCollectionDataShrinkRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The vector data that you want to upload.
 	RowsShrink *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
 	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
 	//

@@ -701,7 +701,7 @@ func (client *Client) CheckHadoopDataSourceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Check Hadoop Cluster Network Connectivity
+// Checks the network connectivity of a Hadoop external data source.
 //
 // @param request - CheckHadoopNetConnectionRequest
 //
@@ -813,7 +813,7 @@ func (client *Client) CheckJDBCSourceNetConnectionWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries whether a service-linked role is created.
+// Checks whether a service-linked role is created.
 //
 // @param request - CheckServiceLinkedRoleRequest
 //
@@ -1813,7 +1813,7 @@ func (client *Client) CreateDocumentCollectionWithContext(ctx context.Context, t
 
 // Summary:
 //
-// Install extensions.
+// Installs extensions.
 //
 // @param request - CreateExtensionsRequest
 //
@@ -2665,7 +2665,7 @@ func (client *Client) CreateStreamingDataServiceWithContext(ctx context.Context,
 
 // Summary:
 //
-// # Create External Data Source Configuration
+// Creates a real-time data source.
 //
 // @param request - CreateStreamingDataSourceRequest
 //
@@ -2910,6 +2910,14 @@ func (client *Client) CreateSupabaseProjectWithContext(ctx context.Context, requ
 		query["DiskPerformanceLevel"] = request.DiskPerformanceLevel
 	}
 
+	if !dara.IsNil(request.PayType) {
+		query["PayType"] = request.PayType
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
 	if !dara.IsNil(request.ProjectName) {
 		query["ProjectName"] = request.ProjectName
 	}
@@ -2928,6 +2936,10 @@ func (client *Client) CreateSupabaseProjectWithContext(ctx context.Context, requ
 
 	if !dara.IsNil(request.StorageSize) {
 		query["StorageSize"] = request.StorageSize
+	}
+
+	if !dara.IsNil(request.UsedTime) {
+		query["UsedTime"] = request.UsedTime
 	}
 
 	if !dara.IsNil(request.VSwitchId) {
@@ -3125,7 +3137,7 @@ func (client *Client) DeleteAINodeWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// 删除数据库账号
+// Deletes a database account.
 //
 // @param request - DeleteAccountRequest
 //
@@ -3771,7 +3783,7 @@ func (client *Client) DeleteDocumentCollectionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Uninstall an extension.
+// Uninstalls extensions.
 //
 // @param request - DeleteExtensionRequest
 //
@@ -3879,7 +3891,7 @@ func (client *Client) DeleteExternalDataServiceWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 删除hadoop数据源
+// Deletes a Hadoop external data source.
 //
 // @param request - DeleteHadoopDataSourceRequest
 //
@@ -4335,7 +4347,7 @@ func (client *Client) DeleteSecretWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// Deletes a real-time data service.
+// Deletes the configurations of an external data source.
 //
 // @param request - DeleteStreamingDataServiceRequest
 //
@@ -4439,7 +4451,7 @@ func (client *Client) DeleteStreamingDataSourceWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Deletes a real-time data service job.
+// Deletes a real-time data synchronization job.
 //
 // @param request - DeleteStreamingJobRequest
 //
@@ -6405,7 +6417,7 @@ func (client *Client) DescribeDataReDistributeInfoWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the state of data sharing for AnalyticDB for PostgreSQL instances.
+// Queries the status of data sharing for AnalyticDB for PostgreSQL instances.
 //
 // Description:
 //
@@ -6589,7 +6601,7 @@ func (client *Client) DescribeDatabaseWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries all databases and database accounts for an AnalyticDB for PostgreSQL instance.
+// Queries all databases and database accounts of an AnalyticDB for PostgreSQL instance.
 //
 // Description:
 //
@@ -6981,7 +6993,7 @@ func (client *Client) DescribeDownloadRecordsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Get download records
+// Queries the last five download records of slow query logs for an AnalyticDB for PostgreSQL instance.
 //
 // @param request - DescribeDownloadSQLLogsRequest
 //
@@ -7129,7 +7141,7 @@ func (client *Client) DescribeExternalDataServiceWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries E-MapReduce (EMR) Hadoop clusters in a specific virtual private cloud (VPC).
+// Queries a list of E-MapReduce (EMR) clusters in a virtual private cloud (VPC).
 //
 // @param request - DescribeHadoopClustersInSameNetRequest
 //
@@ -8011,7 +8023,7 @@ func (client *Client) DescribeRdsVpcsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 描述一个实例是否处于平衡状态
+// Queries the rebalance status of an AnalyticDB for PostgreSQL instance.
 //
 // @param request - DescribeRebalanceStatusRequest
 //
@@ -8627,7 +8639,7 @@ func (client *Client) DescribeStreamingDataSourceWithContext(ctx context.Context
 
 // Summary:
 //
-// # Delete External Data Source Configuration
+// Queries a real-time data synchronization job.
 //
 // @param request - DescribeStreamingJobRequest
 //
@@ -9695,7 +9707,7 @@ func (client *Client) ExecuteStatementWithContext(ctx context.Context, tmpReq *E
 
 // Summary:
 //
-// 获取特定的账号信息
+// Queries the information about a database account.
 //
 // @param request - GetAccountRequest
 //
@@ -10913,7 +10925,7 @@ func (client *Client) ListExternalDataServicesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取实例外表配置列表
+// Queries a list of data sources.
 //
 // @param request - ListExternalDataSourcesRequest
 //
@@ -11283,7 +11295,7 @@ func (client *Client) ListNamespacesWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// # Get Homogeneous Data Source
+// Queries remote AnalyticDB data sources.
 //
 // @param request - ListRemoteADBDataSourcesRequest
 //
@@ -11607,7 +11619,7 @@ func (client *Client) ListStreamingDataServicesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries real-time service data sources.
+// Queries a list of real-time service data sources.
 //
 // @param request - ListStreamingDataSourcesRequest
 //
@@ -11907,7 +11919,7 @@ func (client *Client) ListTablesWithContext(ctx context.Context, request *ListTa
 
 // Summary:
 //
-// Queries a list of tags that are added to AnalyticDB for PostgreSQL instances.
+// Queries a list of AnalyticDB for PostgreSQL instances that have specific tags added.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -12545,7 +12557,7 @@ func (client *Client) ModifyDBInstanceNetworkTypeWithContext(ctx context.Context
 
 // Summary:
 //
-// 包年包月/按量付费转换改造
+// Switches between billing methods for an AnalyticDB for PostgreSQL instance.
 //
 // @param request - ModifyDBInstancePayTypeRequest
 //
@@ -13133,7 +13145,7 @@ func (client *Client) ModifyParametersWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Modify Homogeneous Data Source
+// Modifies a remote AnalyticDB data source.
 //
 // @param request - ModifyRemoteADBDataSourceRequest
 //
@@ -13323,7 +13335,7 @@ func (client *Client) ModifySecurityIpsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Modifies a real-time data service.
+// Modifies the configurations of an external data source.
 //
 // @param request - ModifyStreamingDataServiceRequest
 //
@@ -13637,7 +13649,7 @@ func (client *Client) ModifySupabaseProjectSecurityIpsWithContext(ctx context.Co
 
 // Summary:
 //
-// Modifies the vector engine optimization configuration of an AnalyticDB for PostgreSQL instance.
+// Modifies the vector search engine optimization configuration of an AnalyticDB for PostgreSQL instance.
 //
 // @param request - ModifyVectorConfigurationRequest
 //
@@ -13941,7 +13953,7 @@ func (client *Client) QueryCollectionDataWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// # Query
+// Retrieves vector data and metadata from a document collection by using natural statements.
 //
 // @param tmpReq - QueryContentRequest
 //
@@ -14283,7 +14295,7 @@ func (client *Client) ReleaseInstancePublicConnectionWithContext(ctx context.Con
 
 // Summary:
 //
-// # Score and re-order documents using a model
+// The Rerank operation can resolve the issue of inaccurate ranking of vector and full-text search results. It re-scores and reranks the retrieved data through semantic understanding to significantly improve the relevance and accuracy of the results. AnalyticDB for PostgreSQL allows you to rerank search results by using Rerank models, but does not provide models.
 //
 // @param tmpReq - RerankRequest
 //
@@ -15083,7 +15095,7 @@ func (client *Client) UnbindDBResourceGroupWithRoleWithContext(ctx context.Conte
 
 // Summary:
 //
-// Releases a sample dataset from an AnalyticDB for PostgreSQL instance.
+// Releases the sample dataset from an AnalyticDB for PostgreSQL instance.
 //
 // Description:
 //
@@ -15139,7 +15151,7 @@ func (client *Client) UnloadSampleDataWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Remove resource tags
+// Removes tags from AnalyticDB for PostgreSQL instances. If the tags that you remove are not added to other instances, the tags are automatically deleted.
 //
 // @param request - UntagResourcesRequest
 //
@@ -16081,18 +16093,20 @@ func (client *Client) chatWithKnowledgeBaseStreamWithSSECtx_opYieldFunc(_yield c
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }

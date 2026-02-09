@@ -20,7 +20,6 @@ type iDescribeTableResponseBody interface {
 }
 
 type DescribeTableResponseBody struct {
-	// The columns of the table.
 	ColumnList *DescribeTableResponseBodyColumnList `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Struct"`
 	// The returned message.
 	//

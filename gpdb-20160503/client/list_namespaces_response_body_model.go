@@ -43,8 +43,7 @@ type ListNamespacesResponseBody struct {
 	// example:
 	//
 	// Successful
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The queried namespaces.
+	Message    *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
 	Namespaces *ListNamespacesResponseBodyNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Struct"`
 	// The region ID of the instance.
 	//

@@ -28,7 +28,6 @@ type iListCollectionsResponseBody interface {
 }
 
 type ListCollectionsResponseBody struct {
-	// The queried vector collections.
 	Collections *ListCollectionsResponseBodyCollections `json:"Collections,omitempty" xml:"Collections,omitempty" type:"Struct"`
 	// The total number of entries returned.
 	//

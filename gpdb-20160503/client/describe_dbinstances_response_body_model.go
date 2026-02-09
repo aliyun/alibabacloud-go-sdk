@@ -22,7 +22,6 @@ type iDescribeDBInstancesResponseBody interface {
 }
 
 type DescribeDBInstancesResponseBody struct {
-	// The queried instances.
 	Items *DescribeDBInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,238 +146,34 @@ func (s *DescribeDBInstancesResponseBodyItems) Validate() error {
 }
 
 type DescribeDBInstancesResponseBodyItemsDBInstance struct {
-	// An invalid parameter. It is no longer returned when you call this operation.
-	//
-	// You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/86910.html) operation to query the access mode of an instance.
-	//
-	// example:
-	//
-	// null
-	ConnectionMode *string `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
-	// The time when the instance was created. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-10-09T04:54:08Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The edition of the instance. Valid values:
-	//
-	// 	- **Basic**: Basic Edition.
-	//
-	// 	- **HighAvailability**: High-availability Edition.
-	//
-	// 	- **Finance**: Enterprise Edition.
-	//
-	// example:
-	//
-	// HighAvailability
-	DBInstanceCategory *string `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
-	// The description of the instance.
-	//
-	// example:
-	//
-	// gp-bp12ga6v69h86****
-	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// gp-bp12ga6v69h86****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The resource type of the instance. Valid values:
-	//
-	// 	- **Serverless**: Serverless mode.
-	//
-	// 	- **StorageElastic**: elastic storage mode.
-	//
-	// 	- **Classic**: reserved storage mode.
-	//
-	// example:
-	//
-	// StorageElastic
-	DBInstanceMode *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
-	// The type of the network interface card (NIC) that is used by the instance. Valid values:
-	//
-	// 	- **0**: Internet.
-	//
-	// 	- **1**: internal network.
-	//
-	// 	- **2**: VPC.
-	//
-	// example:
-	//
-	// 2
-	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
-	// The status of the instance. For more information, see [Instance statuses](https://help.aliyun.com/document_detail/86944.html).
-	//
-	// example:
-	//
-	// Running
-	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	// The database engine of the instance.
-	//
-	// example:
-	//
-	// gpdb
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version of the instance.
-	//
-	// example:
-	//
-	// 6.0
-	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The expiration time of the instance. The time is displayed in UTC.
-	//
-	// >  The expiration time of a pay-as-you-go instance is `2999-09-08T16:00:00Z`.
-	//
-	// example:
-	//
-	// 2999-09-08T16:00:00Z
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The resource type of the instance. Valid values:
-	//
-	// 	- **cluster**: Serverless mode or elastic storage mode.
-	//
-	// 	- **replicaSet**: reserved storage mode.
-	//
-	// example:
-	//
-	// cluster
-	InstanceDeployType *string `json:"InstanceDeployType,omitempty" xml:"InstanceDeployType,omitempty"`
-	// The network type of the instance. Valid values:
-	//
-	// 	- **Classic**: classic network.
-	//
-	// 	- **VPC**: VPC.
-	//
-	// example:
-	//
-	// VPC
-	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	// The lock mode of the instance. Valid values:
-	//
-	// 	- **Unlock**: The instance is not locked.
-	//
-	// 	- **ManualLock**: The instance is manually locked.
-	//
-	// 	- **LockByExpiration**: The instance is automatically locked due to instance expiration.
-	//
-	// 	- **LockByRestoration**: The instance is automatically locked due to instance restoration.
-	//
-	// 	- **LockByDiskQuota**: The instance is automatically locked due to exhausted storage.
-	//
-	// 	- **LockReadInstanceByDiskQuota**: The instance is a read-only instance and is automatically locked when the disk space is full.
-	//
-	// example:
-	//
-	// Unlock
-	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The reason why the instance is locked. Valid values:
-	//
-	// 	- **0**: The instance is not locked.
-	//
-	// 	- **1**: The instance is manually locked.
-	//
-	// 	- **2**: The instance is automatically locked due to instance expiration.
-	//
-	// 	- **3**: The instance is automatically locked due to instance restoration.
-	//
-	// 	- **4**: The instance is automatically locked due to exhausted storage.
-	//
-	// >  If the instance is in reserved storage mode and is not locked, null is returned.
-	//
-	// example:
-	//
-	// 0
-	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The number of coordinator nodes.
-	//
-	// example:
-	//
-	// 1
-	MasterNodeNum *int32 `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
-	// The billing method of the instance. Valid values:
-	//
-	// 	- **Postpaid**: pay-as-you-go.
-	//
-	// 	- **Prepaid**: subscription.
-	//
-	// example:
-	//
-	// Postpaid
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// product type
-	//
-	// example:
-	//
-	// standard
-	ProdType *string `json:"ProdType,omitempty" xml:"ProdType,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs.
-	//
-	// example:
-	//
-	// rg-bp67acfmxazb4p****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The number of compute nodes.
-	//
-	// example:
-	//
-	// 4
-	SegNodeNum *string `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
-	// The type of the Serverless mode. Valid values:
-	//
-	// 	- **Manual**: manual scheduling.
-	//
-	// 	- **Auto**: automatic scheduling.
-	//
-	// >  This parameter is returned only for instances in Serverless mode.
-	//
-	// example:
-	//
-	// Manual
-	ServerlessMode *string `json:"ServerlessMode,omitempty" xml:"ServerlessMode,omitempty"`
-	// The storage capacity of the instance. Unit: GB.
-	//
-	// example:
-	//
-	// 50
-	StorageSize *string `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	// The storage type of the instance. Valid values:
-	//
-	// 	- **cloud_essd**: enhanced SSD (ESSD).
-	//
-	// 	- **cloud_efficiency**: ultra disk.
-	//
-	// example:
-	//
-	// cloud_essd
-	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The tags that are added to the instance.
-	Tags *DescribeDBInstancesResponseBodyItemsDBInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The vSwitch ID.
-	//
-	// example:
-	//
-	// vsw-bp1cpq8mr64paltkb****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC ID of the instance.
-	//
-	// example:
-	//
-	// vpc-bp19ame5m1r3oejns****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The zone ID.
-	//
-	// example:
-	//
-	// cn-hangzhou-h
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ConnectionMode        *string                                             `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
+	CreateTime            *string                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DBInstanceCategory    *string                                             `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
+	DBInstanceDescription *string                                             `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	DBInstanceId          *string                                             `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceMode        *string                                             `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
+	DBInstanceNetType     *string                                             `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
+	DBInstanceStatus      *string                                             `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	Engine                *string                                             `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion         *string                                             `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	ExpireTime            *string                                             `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	InstanceDeployType    *string                                             `json:"InstanceDeployType,omitempty" xml:"InstanceDeployType,omitempty"`
+	InstanceNetworkType   *string                                             `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	LockMode              *string                                             `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	LockReason            *string                                             `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	MasterNodeNum         *int32                                              `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
+	PayType               *string                                             `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	ProdType              *string                                             `json:"ProdType,omitempty" xml:"ProdType,omitempty"`
+	RegionId              *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId       *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SegNodeNum            *string                                             `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
+	ServerlessMode        *string                                             `json:"ServerlessMode,omitempty" xml:"ServerlessMode,omitempty"`
+	StorageSize           *string                                             `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	StorageType           *string                                             `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Tags                  *DescribeDBInstancesResponseBodyItemsDBInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VSwitchId             *string                                             `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                 *string                                             `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId                *string                                             `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBInstancesResponseBodyItemsDBInstance) String() string {
@@ -685,17 +480,7 @@ func (s *DescribeDBInstancesResponseBodyItemsDBInstanceTags) Validate() error {
 }
 
 type DescribeDBInstancesResponseBodyItemsDBInstanceTagsTag struct {
-	// The key of tag N.
-	//
-	// example:
-	//
-	// test-key
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N.
-	//
-	// example:
-	//
-	// test-value
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

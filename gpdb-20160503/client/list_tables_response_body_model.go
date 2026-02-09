@@ -49,8 +49,7 @@ type ListTablesResponseBody struct {
 	// example:
 	//
 	// success
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The queried tables.
+	Status *string                       `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tables *ListTablesResponseBodyTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Struct"`
 }
 

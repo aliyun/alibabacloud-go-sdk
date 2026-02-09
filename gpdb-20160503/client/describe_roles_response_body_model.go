@@ -21,9 +21,8 @@ type DescribeRolesResponseBody struct {
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The roles.
-	RoleList *DescribeRolesResponseBodyRoleList `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Struct"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RoleList  *DescribeRolesResponseBodyRoleList `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Struct"`
 }
 
 func (s DescribeRolesResponseBody) String() string {

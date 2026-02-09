@@ -15,6 +15,10 @@ type iCreateSupabaseProjectRequest interface {
 	GetClientToken() *string
 	SetDiskPerformanceLevel(v string) *CreateSupabaseProjectRequest
 	GetDiskPerformanceLevel() *string
+	SetPayType(v string) *CreateSupabaseProjectRequest
+	GetPayType() *string
+	SetPeriod(v string) *CreateSupabaseProjectRequest
+	GetPeriod() *string
 	SetProjectName(v string) *CreateSupabaseProjectRequest
 	GetProjectName() *string
 	SetProjectSpec(v string) *CreateSupabaseProjectRequest
@@ -25,6 +29,8 @@ type iCreateSupabaseProjectRequest interface {
 	GetSecurityIPList() *string
 	SetStorageSize(v int64) *CreateSupabaseProjectRequest
 	GetStorageSize() *int64
+	SetUsedTime(v string) *CreateSupabaseProjectRequest
+	GetUsedTime() *string
 	SetVSwitchId(v string) *CreateSupabaseProjectRequest
 	GetVSwitchId() *string
 	SetVpcId(v string) *CreateSupabaseProjectRequest
@@ -64,6 +70,8 @@ type CreateSupabaseProjectRequest struct {
 	//
 	// PL0
 	DiskPerformanceLevel *string `json:"DiskPerformanceLevel,omitempty" xml:"DiskPerformanceLevel,omitempty"`
+	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Period               *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The name of the Supabase project. The name must meet the following requirements:
 	//
 	// 	- The name must be 1 to 128 characters in length.
@@ -107,7 +115,8 @@ type CreateSupabaseProjectRequest struct {
 	// example:
 	//
 	// 2
-	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	StorageSize *int64  `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	UsedTime    *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
 	// The vSwitch ID.
 	//
 	// >
@@ -168,6 +177,14 @@ func (s *CreateSupabaseProjectRequest) GetDiskPerformanceLevel() *string {
 	return s.DiskPerformanceLevel
 }
 
+func (s *CreateSupabaseProjectRequest) GetPayType() *string {
+	return s.PayType
+}
+
+func (s *CreateSupabaseProjectRequest) GetPeriod() *string {
+	return s.Period
+}
+
 func (s *CreateSupabaseProjectRequest) GetProjectName() *string {
 	return s.ProjectName
 }
@@ -186,6 +203,10 @@ func (s *CreateSupabaseProjectRequest) GetSecurityIPList() *string {
 
 func (s *CreateSupabaseProjectRequest) GetStorageSize() *int64 {
 	return s.StorageSize
+}
+
+func (s *CreateSupabaseProjectRequest) GetUsedTime() *string {
+	return s.UsedTime
 }
 
 func (s *CreateSupabaseProjectRequest) GetVSwitchId() *string {
@@ -215,6 +236,16 @@ func (s *CreateSupabaseProjectRequest) SetDiskPerformanceLevel(v string) *Create
 	return s
 }
 
+func (s *CreateSupabaseProjectRequest) SetPayType(v string) *CreateSupabaseProjectRequest {
+	s.PayType = &v
+	return s
+}
+
+func (s *CreateSupabaseProjectRequest) SetPeriod(v string) *CreateSupabaseProjectRequest {
+	s.Period = &v
+	return s
+}
+
 func (s *CreateSupabaseProjectRequest) SetProjectName(v string) *CreateSupabaseProjectRequest {
 	s.ProjectName = &v
 	return s
@@ -237,6 +268,11 @@ func (s *CreateSupabaseProjectRequest) SetSecurityIPList(v string) *CreateSupaba
 
 func (s *CreateSupabaseProjectRequest) SetStorageSize(v int64) *CreateSupabaseProjectRequest {
 	s.StorageSize = &v
+	return s
+}
+
+func (s *CreateSupabaseProjectRequest) SetUsedTime(v string) *CreateSupabaseProjectRequest {
+	s.UsedTime = &v
 	return s
 }
 

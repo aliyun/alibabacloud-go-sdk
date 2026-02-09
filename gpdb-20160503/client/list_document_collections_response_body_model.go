@@ -27,8 +27,7 @@ type ListDocumentCollectionsResponseBody struct {
 	// example:
 	//
 	// 10
-	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The queried document collections.
+	Count *int32                                    `json:"Count,omitempty" xml:"Count,omitempty"`
 	Items *ListDocumentCollectionsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -151,50 +150,15 @@ func (s *ListDocumentCollectionsResponseBodyItems) Validate() error {
 }
 
 type ListDocumentCollectionsResponseBodyItemsCollectionList struct {
-	// The name of the document collection.
-	//
-	// example:
-	//
-	// document
-	CollectionName *string `json:"CollectionName,omitempty" xml:"CollectionName,omitempty"`
-	// The number of vector dimensions.
-	//
-	// example:
-	//
-	// 1536
-	Dimension *int32 `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// The name of the vector algorithm.
-	//
-	// example:
-	//
-	// text-embeddding-v1
-	EmbeddingModel *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
-	// The fields that are used for full-text search. Multiple fields are separated by commas (,).
-	//
-	// example:
-	//
-	// title
+	CollectionName          *string `json:"CollectionName,omitempty" xml:"CollectionName,omitempty"`
+	Dimension               *int32  `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	EmbeddingModel          *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
 	FullTextRetrievalFields *string `json:"FullTextRetrievalFields,omitempty" xml:"FullTextRetrievalFields,omitempty"`
-	// The metadata.
-	//
-	// example:
-	//
-	// {\\"page\\": \\"int\\", \\"title\\": \\"text\\"}
-	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The vector similarity algorithm.
-	//
-	// example:
-	//
-	// cosine
-	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	// The analyzer that is used for full-text search.
-	//
-	// example:
-	//
-	// zh_cn
-	Parser                *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
-	SparseRetrievalFields *string `json:"SparseRetrievalFields,omitempty" xml:"SparseRetrievalFields,omitempty"`
-	SupportSparse         *bool   `json:"SupportSparse,omitempty" xml:"SupportSparse,omitempty"`
+	Metadata                *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Metrics                 *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	Parser                  *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	SparseRetrievalFields   *string `json:"SparseRetrievalFields,omitempty" xml:"SparseRetrievalFields,omitempty"`
+	SupportSparse           *bool   `json:"SupportSparse,omitempty" xml:"SupportSparse,omitempty"`
 }
 
 func (s ListDocumentCollectionsResponseBodyItemsCollectionList) String() string {

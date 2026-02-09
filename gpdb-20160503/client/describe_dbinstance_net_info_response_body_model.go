@@ -18,7 +18,6 @@ type iDescribeDBInstanceNetInfoResponseBody interface {
 }
 
 type DescribeDBInstanceNetInfoResponseBody struct {
-	// The connection information of the instance.
 	DBInstanceNetInfos *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos `json:"DBInstanceNetInfos,omitempty" xml:"DBInstanceNetInfos,omitempty" type:"Struct"`
 	// The network type of the instance. Valid values:
 	//
@@ -117,58 +116,14 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos) Validate() err
 }
 
 type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo struct {
-	// The type of the endpoint.
-	//
-	// example:
-	//
-	// Intranet
-	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// The endpoint that is used to connect to the instance.
-	//
-	// example:
-	//
-	// gp-xxxxxxx.gpdb.rds.aliyuncs.com
+	AddressType      *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The IP address.
-	//
-	// example:
-	//
-	// 127.0.0.1
-	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
-	// The type of the IP address.
-	//
-	// 	- Valid values for instances in the classic network: Inner and Public.
-	//
-	// 	- Valid values for instances in a virtual private cloud (VPC): Private and Public.
-	//
-	// example:
-	//
-	// Inner
-	IPType *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
-	// The port number.
-	//
-	// example:
-	//
-	// 3432
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The VPC ID of the instance.
-	//
-	// example:
-	//
-	// vpc-xxxxxxx
-	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The vSwitch ID. Multiple IDs are separated by commas (,).
-	//
-	// example:
-	//
-	// vsw-xxxxxxxx
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the instance that is deployed in a VPC.
-	//
-	// example:
-	//
-	// vpc-xxxxxxx
-	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
+	IPAddress        *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
+	IPType           *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
+	Port             *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	VPCId            *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcInstanceId    *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
 }
 
 func (s DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo) String() string {

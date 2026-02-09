@@ -18,7 +18,6 @@ type iListRemoteADBDataSourcesResponseBody interface {
 }
 
 type ListRemoteADBDataSourcesResponseBody struct {
-	// Returns the successfully added data sharing service data.
 	DataSourceItems *ListRemoteADBDataSourcesResponseBodyDataSourceItems `json:"DataSourceItems,omitempty" xml:"DataSourceItems,omitempty" type:"Struct"`
 	// Request ID.
 	//
@@ -113,74 +112,17 @@ func (s *ListRemoteADBDataSourcesResponseBodyDataSourceItems) Validate() error {
 }
 
 type ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources struct {
-	// Data source name
-	//
-	// example:
-	//
-	// db1_gptest1_to_db2_gp-test2
-	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
-	// Description.
-	//
-	// example:
-	//
-	// test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// ID.
-	//
-	// example:
-	//
-	// 1
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Local database name
-	//
-	// example:
-	//
-	// db1
-	LocalDatabase *string `json:"LocalDatabase,omitempty" xml:"LocalDatabase,omitempty"`
-	// Local instance name
-	//
-	// example:
-	//
-	// gp-test1
-	LocalInstanceName *string `json:"LocalInstanceName,omitempty" xml:"LocalInstanceName,omitempty"`
-	// Manager user name
-	//
-	// example:
-	//
-	// admin
-	ManagerUserName *string `json:"ManagerUserName,omitempty" xml:"ManagerUserName,omitempty"`
-	// Region ID.
-	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) API to view available region IDs.
-	//
-	// example:
-	//
-	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Remote database name
-	//
-	// example:
-	//
-	// db2
-	RemoteDatabase *string `json:"RemoteDatabase,omitempty" xml:"RemoteDatabase,omitempty"`
-	// Remote instance name
-	//
-	// example:
-	//
-	// gp-test2
+	DataSourceName     *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	LocalDatabase      *string `json:"LocalDatabase,omitempty" xml:"LocalDatabase,omitempty"`
+	LocalInstanceName  *string `json:"LocalInstanceName,omitempty" xml:"LocalInstanceName,omitempty"`
+	ManagerUserName    *string `json:"ManagerUserName,omitempty" xml:"ManagerUserName,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RemoteDatabase     *string `json:"RemoteDatabase,omitempty" xml:"RemoteDatabase,omitempty"`
 	RemoteInstanceName *string `json:"RemoteInstanceName,omitempty" xml:"RemoteInstanceName,omitempty"`
-	// Data source status
-	//
-	// example:
-	//
-	// creating
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// User name
-	//
-	// example:
-	//
-	// user1
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserName           *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources) String() string {

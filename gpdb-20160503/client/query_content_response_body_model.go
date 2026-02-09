@@ -37,18 +37,15 @@ type QueryContentResponseBody struct {
 	// example:
 	//
 	// 100
-	EmbeddingTokens *string `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
-	// The entities.
-	Entities *QueryContentResponseBodyEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Struct"`
-	// The retrieved data.
-	Matches *QueryContentResponseBodyMatches `json:"Matches,omitempty" xml:"Matches,omitempty" type:"Struct"`
+	EmbeddingTokens *string                           `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
+	Entities        *QueryContentResponseBodyEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Struct"`
+	Matches         *QueryContentResponseBodyMatches  `json:"Matches,omitempty" xml:"Matches,omitempty" type:"Struct"`
 	// Return message.
 	//
 	// example:
 	//
 	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The list of relationship edges.
+	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	Relations *QueryContentResponseBodyRelations `json:"Relations,omitempty" xml:"Relations,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -67,8 +64,7 @@ type QueryContentResponseBody struct {
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Resource usage for this query.
-	Usage *QueryContentResponseBodyUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
-	// List of windowed matches.
+	Usage         *QueryContentResponseBodyUsage         `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 	WindowMatches *QueryContentResponseBodyWindowMatches `json:"WindowMatches,omitempty" xml:"WindowMatches,omitempty" type:"Struct"`
 }
 
@@ -225,36 +221,11 @@ func (s *QueryContentResponseBodyEntities) Validate() error {
 }
 
 type QueryContentResponseBodyEntitiesEntities struct {
-	// Entity description.
-	//
-	// example:
-	//
-	// A former advisor at DeepMind.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The entity name.
-	//
-	// example:
-	//
-	// Dr. Wang
-	Entity *string `json:"Entity,omitempty" xml:"Entity,omitempty"`
-	// The file name.
-	//
-	// example:
-	//
-	// my_doc.txt
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The entity ID.
-	//
-	// example:
-	//
-	// 1
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The entity type.
-	//
-	// example:
-	//
-	// Figure
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Entity      *string `json:"Entity,omitempty" xml:"Entity,omitempty"`
+	FileName    *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s QueryContentResponseBodyEntitiesEntities) String() string {
@@ -349,70 +320,16 @@ func (s *QueryContentResponseBodyMatches) Validate() error {
 }
 
 type QueryContentResponseBodyMatchesMatchList struct {
-	// The content that is used for full-text search. If you leave this parameter empty, only vector search is used. If you do not leave this parameter empty, two-way retrieval based on vector search and full-text search is used.
-	//
-	// >  You must specify at least one of the Content and Vector parameters.
-	//
-	// example:
-	//
-	// Cloud-native data warehouse AnalyticDB PostgreSQL Edition provides a simple, fast, and cost-effective PB-level cloud data warehouse solution.
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The name of the document.
-	//
-	// >  You can call the [ListDocuments](https://help.aliyun.com/document_detail/2618453.html) operation to query a list of documents.
-	//
-	// example:
-	//
-	// my_doc.txt
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The public URL of the query result image, valid for 2 hours
-	//
-	// example:
-	//
-	// https://xxx-cn-beijing.aliyuncs.com/image/test.png
-	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
-	// The unique ID of the vector data.
-	//
-	// example:
-	//
-	// doca-1234
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Metadata during document loader loading.
-	//
-	// example:
-	//
-	// {"page_pos": 1}
-	LoaderMetadata *string `json:"LoaderMetadata,omitempty" xml:"LoaderMetadata,omitempty"`
-	// The metadata.
-	Metadata map[string]*string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// Re-ranking score.
-	//
-	// example:
-	//
-	// 6.2345
-	RerankScore *float64 `json:"RerankScore,omitempty" xml:"RerankScore,omitempty"`
-	// Source of the retrieval results:
-	//
-	// - 1 indicates vector retrieval
-	//
-	// - 2 indicates full-text retrieval
-	//
-	// - 3 indicates dual-path recall
-	//
-	// example:
-	//
-	// 1
-	RetrievalSource *int32 `json:"RetrievalSource,omitempty" xml:"RetrievalSource,omitempty"`
-	// The similarity score of the data. It is related to the `l2, ip, or cosine` algorithm that is specified when you create an index.
-	//
-	// example:
-	//
-	// 0.12345
-	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The vector data. The length of the value must be the same as that of the Dimension parameter in the [CreateCollection](https://help.aliyun.com/document_detail/2401497.html) operation.
-	//
-	// >  If you leave this parameter empty, only full-text search results are returned.
-	Vector *QueryContentResponseBodyMatchesMatchListVector `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Struct"`
+	Content         *string                                         `json:"Content,omitempty" xml:"Content,omitempty"`
+	FileName        *string                                         `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileURL         *string                                         `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
+	Id              *string                                         `json:"Id,omitempty" xml:"Id,omitempty"`
+	LoaderMetadata  *string                                         `json:"LoaderMetadata,omitempty" xml:"LoaderMetadata,omitempty"`
+	Metadata        map[string]*string                              `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	RerankScore     *float64                                        `json:"RerankScore,omitempty" xml:"RerankScore,omitempty"`
+	RetrievalSource *int32                                          `json:"RetrievalSource,omitempty" xml:"RetrievalSource,omitempty"`
+	Score           *float64                                        `json:"Score,omitempty" xml:"Score,omitempty"`
+	Vector          *QueryContentResponseBodyMatchesMatchListVector `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Struct"`
 }
 
 func (s QueryContentResponseBodyMatchesMatchList) String() string {
@@ -582,35 +499,10 @@ func (s *QueryContentResponseBodyRelations) Validate() error {
 }
 
 type QueryContentResponseBodyRelationsRelations struct {
-	// The description of the relationship edge.
-	//
-	// example:
-	//
-	// Dr. Wang previously served as an advisor at DeepMind.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The file name.
-	//
-	// example:
-	//
-	// my_doc.txt
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The ID of the relationship edge.
-	//
-	// example:
-	//
-	// 1
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The source entity.
-	//
-	// example:
-	//
-	// Former DeepMind consultant
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	SourceEntity *string `json:"SourceEntity,omitempty" xml:"SourceEntity,omitempty"`
-	// The destination entity.
-	//
-	// example:
-	//
-	// Dr. Wang
 	TargetEntity *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
 }
 
@@ -755,7 +647,6 @@ func (s *QueryContentResponseBodyWindowMatches) Validate() error {
 }
 
 type QueryContentResponseBodyWindowMatchesWindowMatches struct {
-	// List of individual top windowed matches.
 	WindowMatch *QueryContentResponseBodyWindowMatchesWindowMatchesWindowMatch `json:"WindowMatch,omitempty" xml:"WindowMatch,omitempty" type:"Struct"`
 }
 
@@ -820,32 +711,11 @@ func (s *QueryContentResponseBodyWindowMatchesWindowMatchesWindowMatch) Validate
 }
 
 type QueryContentResponseBodyWindowMatchesWindowMatchesWindowMatchWindowMatch struct {
-	// Text content.
-	//
-	// example:
-	//
-	// AnalyticDB for PostgreSQL is a cloud-native data warehouse service that provides large-scale parallel processing (MPP) capabilities for massive online data analysis.
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// File name.
-	//
-	// example:
-	//
-	// my_doc.txt
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// Unique ID of the vector data.
-	//
-	// example:
-	//
-	// doca-2345
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Metadata information when the document loader was loaded.
-	//
-	// example:
-	//
-	// {"page_pos": 2}
-	LoaderMetadata *string `json:"LoaderMetadata,omitempty" xml:"LoaderMetadata,omitempty"`
-	// Metadata map.
-	Metadata map[string]*string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Content        *string            `json:"Content,omitempty" xml:"Content,omitempty"`
+	FileName       *string            `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Id             *string            `json:"Id,omitempty" xml:"Id,omitempty"`
+	LoaderMetadata *string            `json:"LoaderMetadata,omitempty" xml:"LoaderMetadata,omitempty"`
+	Metadata       map[string]*string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 }
 
 func (s QueryContentResponseBodyWindowMatchesWindowMatchesWindowMatchWindowMatch) String() string {

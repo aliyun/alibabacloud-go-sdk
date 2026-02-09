@@ -22,15 +22,6 @@ type iDescribeDataShareInstancesResponseBody interface {
 }
 
 type DescribeDataShareInstancesResponseBody struct {
-	// The state of data sharing. Valid values:
-	//
-	// 	- **opening**
-	//
-	// 	- **opened**
-	//
-	// 	- **closing**
-	//
-	// 	- **closed**
 	Items *DescribeDataShareInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -155,56 +146,12 @@ func (s *DescribeDataShareInstancesResponseBodyItems) Validate() error {
 }
 
 type DescribeDataShareInstancesResponseBodyItemsDBInstance struct {
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// gp-bp***************
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The resource type of the instance. Valid values:
-	//
-	// 	- **Serverless**: Serverless mode
-	//
-	// 	- **StorageElasic**: elastic storage mode
-	//
-	// 	- **Classic**: reserved storage mode
-	//
-	// example:
-	//
-	// Serverless
-	DBInstanceMode *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
-	// The state of data sharing. Valid values:
-	//
-	// 	- **opening**: Data sharing is being enabled.
-	//
-	// 	- **opened**: Data sharing is enabled.
-	//
-	// 	- **closing**: Data sharing is being disabled.
-	//
-	// 	- **closed**: Data sharing is disabled.
-	//
-	// example:
-	//
-	// opened
+	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceMode  *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
 	DataShareStatus *string `json:"DataShareStatus,omitempty" xml:"DataShareStatus,omitempty"`
-	// The description of the instance.
-	//
-	// example:
-	//
-	// gp-bp***************
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The region ID of the instance.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The zone ID of the instance.
-	//
-	// example:
-	//
-	// cn-hangzhou-j
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ZoneId          *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDataShareInstancesResponseBodyItemsDBInstance) String() string {

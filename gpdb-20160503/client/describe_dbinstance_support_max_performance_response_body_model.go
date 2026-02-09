@@ -23,8 +23,7 @@ type DescribeDBInstanceSupportMaxPerformanceResponseBody struct {
 	// example:
 	//
 	// gp-bp***************
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The queried performance metric.
+	DBInstanceId *string                                                          `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	Performances *DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformances `json:"Performances,omitempty" xml:"Performances,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -113,30 +112,10 @@ func (s *DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformances) Valida
 }
 
 type DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformancesPerformance struct {
-	// The performance bottleneck type.
-	//
-	// example:
-	//
-	// ecs or disk
 	Bottleneck *string `json:"Bottleneck,omitempty" xml:"Bottleneck,omitempty"`
-	// The name of the performance metric.
-	//
-	// example:
-	//
-	// adbpg_status,adbpg_disk_status,adbpg_connection_status,adbgp_segment_disk_usage_percent_max,adbpg_master_disk_usage_percent_max,adbpg_disk_usage_percent
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The unit of the performance metric.
-	//
-	// example:
-	//
-	// %
-	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	// The value of the performance metric.
-	//
-	// example:
-	//
-	// 90
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Key        *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Unit       *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformancesPerformance) String() string {

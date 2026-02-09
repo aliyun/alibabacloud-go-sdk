@@ -1059,7 +1059,7 @@ func (client *Client) CheckHadoopDataSource(request *CheckHadoopDataSourceReques
 
 // Summary:
 //
-// # Check Hadoop Cluster Network Connectivity
+// Checks the network connectivity of a Hadoop external data source.
 //
 // @param request - CheckHadoopNetConnectionRequest
 //
@@ -1115,7 +1115,7 @@ func (client *Client) CheckHadoopNetConnectionWithOptions(request *CheckHadoopNe
 
 // Summary:
 //
-// # Check Hadoop Cluster Network Connectivity
+// Checks the network connectivity of a Hadoop external data source.
 //
 // @param request - CheckHadoopNetConnectionRequest
 //
@@ -1207,7 +1207,7 @@ func (client *Client) CheckJDBCSourceNetConnection(request *CheckJDBCSourceNetCo
 
 // Summary:
 //
-// Queries whether a service-linked role is created.
+// Checks whether a service-linked role is created.
 //
 // @param request - CheckServiceLinkedRoleRequest
 //
@@ -1251,7 +1251,7 @@ func (client *Client) CheckServiceLinkedRoleWithOptions(request *CheckServiceLin
 
 // Summary:
 //
-// Queries whether a service-linked role is created.
+// Checks whether a service-linked role is created.
 //
 // @param request - CheckServiceLinkedRoleRequest
 //
@@ -2427,7 +2427,7 @@ func (client *Client) CreateDocumentCollection(request *CreateDocumentCollection
 
 // Summary:
 //
-// Install extensions.
+// Installs extensions.
 //
 // @param request - CreateExtensionsRequest
 //
@@ -2483,7 +2483,7 @@ func (client *Client) CreateExtensionsWithOptions(request *CreateExtensionsReque
 
 // Summary:
 //
-// Install extensions.
+// Installs extensions.
 //
 // @param request - CreateExtensionsRequest
 //
@@ -3507,7 +3507,7 @@ func (client *Client) CreateStreamingDataService(request *CreateStreamingDataSer
 
 // Summary:
 //
-// # Create External Data Source Configuration
+// Creates a real-time data source.
 //
 // @param request - CreateStreamingDataSourceRequest
 //
@@ -3575,7 +3575,7 @@ func (client *Client) CreateStreamingDataSourceWithOptions(request *CreateStream
 
 // Summary:
 //
-// # Create External Data Source Configuration
+// Creates a real-time data source.
 //
 // @param request - CreateStreamingDataSourceRequest
 //
@@ -3788,6 +3788,14 @@ func (client *Client) CreateSupabaseProjectWithOptions(request *CreateSupabasePr
 		query["DiskPerformanceLevel"] = request.DiskPerformanceLevel
 	}
 
+	if !dara.IsNil(request.PayType) {
+		query["PayType"] = request.PayType
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
 	if !dara.IsNil(request.ProjectName) {
 		query["ProjectName"] = request.ProjectName
 	}
@@ -3806,6 +3814,10 @@ func (client *Client) CreateSupabaseProjectWithOptions(request *CreateSupabasePr
 
 	if !dara.IsNil(request.StorageSize) {
 		query["StorageSize"] = request.StorageSize
+	}
+
+	if !dara.IsNil(request.UsedTime) {
+		query["UsedTime"] = request.UsedTime
 	}
 
 	if !dara.IsNil(request.VSwitchId) {
@@ -4067,7 +4079,7 @@ func (client *Client) DeleteAINode(request *DeleteAINodeRequest) (_result *Delet
 
 // Summary:
 //
-// 删除数据库账号
+// Deletes a database account.
 //
 // @param request - DeleteAccountRequest
 //
@@ -4115,7 +4127,7 @@ func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, ru
 
 // Summary:
 //
-// 删除数据库账号
+// Deletes a database account.
 //
 // @param request - DeleteAccountRequest
 //
@@ -4929,7 +4941,7 @@ func (client *Client) DeleteDocumentCollection(request *DeleteDocumentCollection
 
 // Summary:
 //
-// Uninstall an extension.
+// Uninstalls extensions.
 //
 // @param request - DeleteExtensionRequest
 //
@@ -4985,7 +4997,7 @@ func (client *Client) DeleteExtensionWithOptions(request *DeleteExtensionRequest
 
 // Summary:
 //
-// Uninstall an extension.
+// Uninstalls extensions.
 //
 // @param request - DeleteExtensionRequest
 //
@@ -5073,7 +5085,7 @@ func (client *Client) DeleteExternalDataService(request *DeleteExternalDataServi
 
 // Summary:
 //
-// 删除hadoop数据源
+// Deletes a Hadoop external data source.
 //
 // @param request - DeleteHadoopDataSourceRequest
 //
@@ -5125,7 +5137,7 @@ func (client *Client) DeleteHadoopDataSourceWithOptions(request *DeleteHadoopDat
 
 // Summary:
 //
-// 删除hadoop数据源
+// Deletes a Hadoop external data source.
 //
 // @param request - DeleteHadoopDataSourceRequest
 //
@@ -5677,7 +5689,7 @@ func (client *Client) DeleteSecret(request *DeleteSecretRequest) (_result *Delet
 
 // Summary:
 //
-// Deletes a real-time data service.
+// Deletes the configurations of an external data source.
 //
 // @param request - DeleteStreamingDataServiceRequest
 //
@@ -5729,7 +5741,7 @@ func (client *Client) DeleteStreamingDataServiceWithOptions(request *DeleteStrea
 
 // Summary:
 //
-// Deletes a real-time data service.
+// Deletes the configurations of an external data source.
 //
 // @param request - DeleteStreamingDataServiceRequest
 //
@@ -5817,7 +5829,7 @@ func (client *Client) DeleteStreamingDataSource(request *DeleteStreamingDataSour
 
 // Summary:
 //
-// Deletes a real-time data service job.
+// Deletes a real-time data synchronization job.
 //
 // @param request - DeleteStreamingJobRequest
 //
@@ -5869,7 +5881,7 @@ func (client *Client) DeleteStreamingJobWithOptions(request *DeleteStreamingJobR
 
 // Summary:
 //
-// Deletes a real-time data service job.
+// Deletes a real-time data synchronization job.
 //
 // @param request - DeleteStreamingJobRequest
 //
@@ -8461,7 +8473,7 @@ func (client *Client) DescribeDataReDistributeInfo(request *DescribeDataReDistri
 
 // Summary:
 //
-// Queries the state of data sharing for AnalyticDB for PostgreSQL instances.
+// Queries the status of data sharing for AnalyticDB for PostgreSQL instances.
 //
 // Description:
 //
@@ -8529,7 +8541,7 @@ func (client *Client) DescribeDataShareInstancesWithOptions(request *DescribeDat
 
 // Summary:
 //
-// Queries the state of data sharing for AnalyticDB for PostgreSQL instances.
+// Queries the status of data sharing for AnalyticDB for PostgreSQL instances.
 //
 // Description:
 //
@@ -8711,7 +8723,7 @@ func (client *Client) DescribeDatabase(request *DescribeDatabaseRequest) (_resul
 
 // Summary:
 //
-// Queries all databases and database accounts for an AnalyticDB for PostgreSQL instance.
+// Queries all databases and database accounts of an AnalyticDB for PostgreSQL instance.
 //
 // Description:
 //
@@ -8763,7 +8775,7 @@ func (client *Client) DescribeDiagnosisDimensionsWithOptions(request *DescribeDi
 
 // Summary:
 //
-// Queries all databases and database accounts for an AnalyticDB for PostgreSQL instance.
+// Queries all databases and database accounts of an AnalyticDB for PostgreSQL instance.
 //
 // Description:
 //
@@ -9247,7 +9259,7 @@ func (client *Client) DescribeDownloadRecords(request *DescribeDownloadRecordsRe
 
 // Summary:
 //
-// # Get download records
+// Queries the last five download records of slow query logs for an AnalyticDB for PostgreSQL instance.
 //
 // @param request - DescribeDownloadSQLLogsRequest
 //
@@ -9291,7 +9303,7 @@ func (client *Client) DescribeDownloadSQLLogsWithOptions(request *DescribeDownlo
 
 // Summary:
 //
-// # Get download records
+// Queries the last five download records of slow query logs for an AnalyticDB for PostgreSQL instance.
 //
 // @param request - DescribeDownloadSQLLogsRequest
 //
@@ -9449,7 +9461,7 @@ func (client *Client) DescribeExternalDataService(request *DescribeExternalDataS
 
 // Summary:
 //
-// Queries E-MapReduce (EMR) Hadoop clusters in a specific virtual private cloud (VPC).
+// Queries a list of E-MapReduce (EMR) clusters in a virtual private cloud (VPC).
 //
 // @param request - DescribeHadoopClustersInSameNetRequest
 //
@@ -9497,7 +9509,7 @@ func (client *Client) DescribeHadoopClustersInSameNetWithOptions(request *Descri
 
 // Summary:
 //
-// Queries E-MapReduce (EMR) Hadoop clusters in a specific virtual private cloud (VPC).
+// Queries a list of E-MapReduce (EMR) clusters in a virtual private cloud (VPC).
 //
 // @param request - DescribeHadoopClustersInSameNetRequest
 //
@@ -10643,7 +10655,7 @@ func (client *Client) DescribeRdsVpcs(request *DescribeRdsVpcsRequest) (_result 
 
 // Summary:
 //
-// 描述一个实例是否处于平衡状态
+// Queries the rebalance status of an AnalyticDB for PostgreSQL instance.
 //
 // @param request - DescribeRebalanceStatusRequest
 //
@@ -10687,7 +10699,7 @@ func (client *Client) DescribeRebalanceStatusWithOptions(request *DescribeRebala
 
 // Summary:
 //
-// 描述一个实例是否处于平衡状态
+// Queries the rebalance status of an AnalyticDB for PostgreSQL instance.
 //
 // @param request - DescribeRebalanceStatusRequest
 //
@@ -11449,7 +11461,7 @@ func (client *Client) DescribeStreamingDataSource(request *DescribeStreamingData
 
 // Summary:
 //
-// # Delete External Data Source Configuration
+// Queries a real-time data synchronization job.
 //
 // @param request - DescribeStreamingJobRequest
 //
@@ -11501,7 +11513,7 @@ func (client *Client) DescribeStreamingJobWithOptions(request *DescribeStreaming
 
 // Summary:
 //
-// # Delete External Data Source Configuration
+// Queries a real-time data synchronization job.
 //
 // @param request - DescribeStreamingJobRequest
 //
@@ -12829,7 +12841,7 @@ func (client *Client) ExecuteStatement(request *ExecuteStatementRequest) (_resul
 
 // Summary:
 //
-// 获取特定的账号信息
+// Queries the information about a database account.
 //
 // @param request - GetAccountRequest
 //
@@ -12877,7 +12889,7 @@ func (client *Client) GetAccountWithOptions(request *GetAccountRequest, runtime 
 
 // Summary:
 //
-// 获取特定的账号信息
+// Queries the information about a database account.
 //
 // @param request - GetAccountRequest
 //
@@ -14437,7 +14449,7 @@ func (client *Client) ListExternalDataServices(request *ListExternalDataServices
 
 // Summary:
 //
-// 获取实例外表配置列表
+// Queries a list of data sources.
 //
 // @param request - ListExternalDataSourcesRequest
 //
@@ -14493,7 +14505,7 @@ func (client *Client) ListExternalDataSourcesWithOptions(request *ListExternalDa
 
 // Summary:
 //
-// 获取实例外表配置列表
+// Queries a list of data sources.
 //
 // @param request - ListExternalDataSourcesRequest
 //
@@ -14925,7 +14937,7 @@ func (client *Client) ListNamespaces(request *ListNamespacesRequest) (_result *L
 
 // Summary:
 //
-// # Get Homogeneous Data Source
+// Queries remote AnalyticDB data sources.
 //
 // @param request - ListRemoteADBDataSourcesRequest
 //
@@ -14977,7 +14989,7 @@ func (client *Client) ListRemoteADBDataSourcesWithOptions(request *ListRemoteADB
 
 // Summary:
 //
-// # Get Homogeneous Data Source
+// Queries remote AnalyticDB data sources.
 //
 // @param request - ListRemoteADBDataSourcesRequest
 //
@@ -15339,7 +15351,7 @@ func (client *Client) ListStreamingDataServices(request *ListStreamingDataServic
 
 // Summary:
 //
-// Queries real-time service data sources.
+// Queries a list of real-time service data sources.
 //
 // @param request - ListStreamingDataSourcesRequest
 //
@@ -15395,7 +15407,7 @@ func (client *Client) ListStreamingDataSourcesWithOptions(request *ListStreaming
 
 // Summary:
 //
-// Queries real-time service data sources.
+// Queries a list of real-time service data sources.
 //
 // @param request - ListStreamingDataSourcesRequest
 //
@@ -15737,7 +15749,7 @@ func (client *Client) ListTables(request *ListTablesRequest) (_result *ListTable
 
 // Summary:
 //
-// Queries a list of tags that are added to AnalyticDB for PostgreSQL instances.
+// Queries a list of AnalyticDB for PostgreSQL instances that have specific tags added.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -15813,7 +15825,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// Queries a list of tags that are added to AnalyticDB for PostgreSQL instances.
+// Queries a list of AnalyticDB for PostgreSQL instances that have specific tags added.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -16581,7 +16593,7 @@ func (client *Client) ModifyDBInstanceNetworkType(request *ModifyDBInstanceNetwo
 
 // Summary:
 //
-// 包年包月/按量付费转换改造
+// Switches between billing methods for an AnalyticDB for PostgreSQL instance.
 //
 // @param request - ModifyDBInstancePayTypeRequest
 //
@@ -16637,7 +16649,7 @@ func (client *Client) ModifyDBInstancePayTypeWithOptions(request *ModifyDBInstan
 
 // Summary:
 //
-// 包年包月/按量付费转换改造
+// Switches between billing methods for an AnalyticDB for PostgreSQL instance.
 //
 // @param request - ModifyDBInstancePayTypeRequest
 //
@@ -17349,7 +17361,7 @@ func (client *Client) ModifyParameters(request *ModifyParametersRequest) (_resul
 
 // Summary:
 //
-// # Modify Homogeneous Data Source
+// Modifies a remote AnalyticDB data source.
 //
 // @param request - ModifyRemoteADBDataSourceRequest
 //
@@ -17413,7 +17425,7 @@ func (client *Client) ModifyRemoteADBDataSourceWithOptions(request *ModifyRemote
 
 // Summary:
 //
-// # Modify Homogeneous Data Source
+// Modifies a remote AnalyticDB data source.
 //
 // @param request - ModifyRemoteADBDataSourceRequest
 //
@@ -17607,7 +17619,7 @@ func (client *Client) ModifySecurityIps(request *ModifySecurityIpsRequest) (_res
 
 // Summary:
 //
-// Modifies a real-time data service.
+// Modifies the configurations of an external data source.
 //
 // @param request - ModifyStreamingDataServiceRequest
 //
@@ -17667,7 +17679,7 @@ func (client *Client) ModifyStreamingDataServiceWithOptions(request *ModifyStrea
 
 // Summary:
 //
-// Modifies a real-time data service.
+// Modifies the configurations of an external data source.
 //
 // @param request - ModifyStreamingDataServiceRequest
 //
@@ -17997,7 +18009,7 @@ func (client *Client) ModifySupabaseProjectSecurityIps(request *ModifySupabasePr
 
 // Summary:
 //
-// Modifies the vector engine optimization configuration of an AnalyticDB for PostgreSQL instance.
+// Modifies the vector search engine optimization configuration of an AnalyticDB for PostgreSQL instance.
 //
 // @param request - ModifyVectorConfigurationRequest
 //
@@ -18049,7 +18061,7 @@ func (client *Client) ModifyVectorConfigurationWithOptions(request *ModifyVector
 
 // Summary:
 //
-// Modifies the vector engine optimization configuration of an AnalyticDB for PostgreSQL instance.
+// Modifies the vector search engine optimization configuration of an AnalyticDB for PostgreSQL instance.
 //
 // @param request - ModifyVectorConfigurationRequest
 //
@@ -18385,7 +18397,7 @@ func (client *Client) QueryCollectionData(request *QueryCollectionDataRequest) (
 
 // Summary:
 //
-// # Query
+// Retrieves vector data and metadata from a document collection by using natural statements.
 //
 // @param tmpReq - QueryContentRequest
 //
@@ -18541,7 +18553,7 @@ func (client *Client) QueryContentWithOptions(tmpReq *QueryContentRequest, runti
 
 // Summary:
 //
-// # Query
+// Retrieves vector data and metadata from a document collection by using natural statements.
 //
 // @param request - QueryContentRequest
 //
@@ -18906,7 +18918,7 @@ func (client *Client) ReleaseInstancePublicConnection(request *ReleaseInstancePu
 
 // Summary:
 //
-// # Score and re-order documents using a model
+// The Rerank operation can resolve the issue of inaccurate ranking of vector and full-text search results. It re-scores and reranks the retrieved data through semantic understanding to significantly improve the relevance and accuracy of the results. AnalyticDB for PostgreSQL allows you to rerank search results by using Rerank models, but does not provide models.
 //
 // @param tmpReq - RerankRequest
 //
@@ -18990,7 +19002,7 @@ func (client *Client) RerankWithOptions(tmpReq *RerankRequest, runtime *dara.Run
 
 // Summary:
 //
-// # Score and re-order documents using a model
+// The Rerank operation can resolve the issue of inaccurate ranking of vector and full-text search results. It re-scores and reranks the retrieved data through semantic understanding to significantly improve the relevance and accuracy of the results. AnalyticDB for PostgreSQL allows you to rerank search results by using Rerank models, but does not provide models.
 //
 // @param request - RerankRequest
 //
@@ -19984,7 +19996,7 @@ func (client *Client) UnbindDBResourceGroupWithRole(request *UnbindDBResourceGro
 
 // Summary:
 //
-// Releases a sample dataset from an AnalyticDB for PostgreSQL instance.
+// Releases the sample dataset from an AnalyticDB for PostgreSQL instance.
 //
 // Description:
 //
@@ -20040,7 +20052,7 @@ func (client *Client) UnloadSampleDataWithOptions(request *UnloadSampleDataReque
 
 // Summary:
 //
-// Releases a sample dataset from an AnalyticDB for PostgreSQL instance.
+// Releases the sample dataset from an AnalyticDB for PostgreSQL instance.
 //
 // Description:
 //
@@ -20066,7 +20078,7 @@ func (client *Client) UnloadSampleData(request *UnloadSampleDataRequest) (_resul
 
 // Summary:
 //
-// # Remove resource tags
+// Removes tags from AnalyticDB for PostgreSQL instances. If the tags that you remove are not added to other instances, the tags are automatically deleted.
 //
 // @param request - UntagResourcesRequest
 //
@@ -20142,7 +20154,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// # Remove resource tags
+// Removes tags from AnalyticDB for PostgreSQL instances. If the tags that you remove are not added to other instances, the tags are automatically deleted.
 //
 // @param request - UntagResourcesRequest
 //
@@ -21479,18 +21491,20 @@ func (client *Client) chatWithKnowledgeBaseStreamWithSSE_opYieldFunc(_yield chan
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }

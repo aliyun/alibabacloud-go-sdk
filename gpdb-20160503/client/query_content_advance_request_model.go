@@ -73,7 +73,12 @@ type QueryContentAdvanceRequest struct {
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Text content for retrieval.
+	//
+	// example:
+	//
+	// What is ADBPG?
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// Instance ID.
 	//
 	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB for PostgreSQL instances in the target region, including the instance ID.

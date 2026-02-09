@@ -33,9 +33,8 @@ type TextEmbeddingResponseBody struct {
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The embedding results.
-	Results *TextEmbeddingResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results   *TextEmbeddingResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
 	// The status of the operation. Valid values:
 	//
 	// 	- **success**
@@ -151,14 +150,8 @@ func (s *TextEmbeddingResponseBodyResults) Validate() error {
 }
 
 type TextEmbeddingResponseBodyResultsResults struct {
-	// The embedding values.
 	Embedding *TextEmbeddingResponseBodyResultsResultsEmbedding `json:"Embedding,omitempty" xml:"Embedding,omitempty" type:"Struct"`
-	// The number of the embedding in the Input request parameter, which starts from 0.
-	//
-	// example:
-	//
-	// 0
-	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	Index     *int32                                            `json:"Index,omitempty" xml:"Index,omitempty"`
 }
 
 func (s TextEmbeddingResponseBodyResultsResults) String() string {

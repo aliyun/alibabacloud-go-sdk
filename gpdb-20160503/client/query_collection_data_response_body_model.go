@@ -22,7 +22,6 @@ type iQueryCollectionDataResponseBody interface {
 }
 
 type QueryCollectionDataResponseBody struct {
-	// Data list.
 	Matches *QueryCollectionDataResponseBodyMatches `json:"Matches,omitempty" xml:"Matches,omitempty" type:"Struct"`
 	// Detailed information when the request fails.
 	//
@@ -151,24 +150,12 @@ func (s *QueryCollectionDataResponseBodyMatches) Validate() error {
 }
 
 type QueryCollectionDataResponseBodyMatchesMatch struct {
-	// The unique ID of the vector data.
-	//
-	// example:
-	//
-	// doca-1234
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Metadata.
-	Metadata   map[string]*string     `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	MetadataV2 map[string]interface{} `json:"MetadataV2,omitempty" xml:"MetadataV2,omitempty"`
-	// The similarity score of this data, which is related to the algorithm `(l2/ip/cosine)` specified when creating the index.
-	//
-	// example:
-	//
-	// 0.12345
+	Id           *string                                                  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Metadata     map[string]*string                                       `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	MetadataV2   map[string]interface{}                                   `json:"MetadataV2,omitempty" xml:"MetadataV2,omitempty"`
 	Score        *float64                                                 `json:"Score,omitempty" xml:"Score,omitempty"`
 	SparseValues *QueryCollectionDataResponseBodyMatchesMatchSparseValues `json:"SparseValues,omitempty" xml:"SparseValues,omitempty" type:"Struct"`
-	// List of vector data.
-	Values *QueryCollectionDataResponseBodyMatchesMatchValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Struct"`
+	Values       *QueryCollectionDataResponseBodyMatchesMatchValues       `json:"Values,omitempty" xml:"Values,omitempty" type:"Struct"`
 }
 
 func (s QueryCollectionDataResponseBodyMatchesMatch) String() string {

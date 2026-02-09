@@ -16,7 +16,6 @@ type iDescribeDBInstanceAttributeResponseBody interface {
 }
 
 type DescribeDBInstanceAttributeResponseBody struct {
-	// The queried instance.
 	Items *DescribeDBInstanceAttributeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// Request ID.
 	//
@@ -96,521 +95,76 @@ func (s *DescribeDBInstanceAttributeResponseBodyItems) Validate() error {
 }
 
 type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
-	// Queries the current instance availability status, in percentage (%).
-	//
-	// > This parameter is only applicable to instances in the storage reserved mode.
-	//
-	// example:
-	//
-	// 100.0%
-	AvailabilityValue *string `json:"AvailabilityValue,omitempty" xml:"AvailabilityValue,omitempty"`
-	CacheStorageSize  *string `json:"CacheStorageSize,omitempty" xml:"CacheStorageSize,omitempty"`
-	// Access mode, with the following values:
-	//
-	// - **Performance**: Standard access mode.
-	//
-	// - **Safty**: High-security access mode.
-	//
-	// - **LVS**: LVS link mode.
-	//
-	// example:
-	//
-	// LVS
-	ConnectionMode *string `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
-	// Instance connection address.
-	//
-	// example:
-	//
-	// gp-bp13ue79qk8y1****-master.gpdb.rds.aliyuncs.com
-	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// Minor version number of the kernel.
-	//
-	// example:
-	//
-	// mm.v6.3.10.1-202207141918
-	CoreVersion *string `json:"CoreVersion,omitempty" xml:"CoreVersion,omitempty"`
-	// Number of CPU cores for the compute node, unit: Core.
-	//
-	// example:
-	//
-	// 2
-	CpuCores *int32 `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
-	// Number of CPU cores per node.
-	//
-	// > This parameter is only applicable to instances in the storage reserved mode.
-	//
-	// example:
-	//
-	// 0
-	CpuCoresPerNode *int32 `json:"CpuCoresPerNode,omitempty" xml:"CpuCoresPerNode,omitempty"`
-	// Instance creation time.
-	//
-	// example:
-	//
-	// 2022-08-11T09:16:26Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// Instance series, with the following values:
-	//
-	// - **Basic**: Basic Edition.
-	//
-	// - **HighAvailability**: High Availability Edition.
-	//
-	// example:
-	//
-	// HighAvailability
-	DBInstanceCategory *string `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
-	// Instance specification.
-	//
-	// > This parameter is only applicable to reserved storage mode instances.
-	//
-	// example:
-	//
-	// gpdb.group.segsdx1
-	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	// Instance family, with the following values:
-	//
-	// - **s**: Shared type.
-	//
-	// - **x**: General type.
-	//
-	// - **d**: Dedicated package.
-	//
-	// - **h**: Dedicated physical machine.
-	//
-	// example:
-	//
-	// x
-	DBInstanceClassType *string `json:"DBInstanceClassType,omitempty" xml:"DBInstanceClassType,omitempty"`
-	// Number of CPU cores.
-	//
-	// example:
-	//
-	// 2
-	DBInstanceCpuCores *int32 `json:"DBInstanceCpuCores,omitempty" xml:"DBInstanceCpuCores,omitempty"`
-	// Instance description.
-	//
-	// example:
-	//
-	// gp-bp13ue79qk8y1****
-	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// Maximum BPS (disk throughput) of the compute group, in Mbps.
-	//
-	// > This parameter is only applicable to reserved storage mode instances.
-	//
-	// example:
-	//
-	// 0
-	DBInstanceDiskMBPS *int64 `json:"DBInstanceDiskMBPS,omitempty" xml:"DBInstanceDiskMBPS,omitempty"`
-	// Number of compute groups.
-	//
-	// > This parameter is only applicable to reserved storage mode instances.
-	//
-	// example:
-	//
-	// 0
-	DBInstanceGroupCount *string `json:"DBInstanceGroupCount,omitempty" xml:"DBInstanceGroupCount,omitempty"`
-	// Instance ID.
-	//
-	// example:
-	//
-	// gp-bp13ue79qk8y1****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Memory of the compute node.
-	//
-	// > The unit for storage-reserved mode is MB; for Serverless and storage-elastic modes, it is GB.
-	//
-	// example:
-	//
-	// 16
-	DBInstanceMemory *int64 `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
-	// Instance resource type, with the following values:
-	//
-	// - **Serverless**: Serverless mode.
-	//
-	// - **StorageElastic**: Storage elastic mode.
-	//
-	// - **Classic**: Storage reserved mode.
-	//
-	// example:
-	//
-	// StorageElastic
-	DBInstanceMode *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
-	// This parameter is deprecated and will not return any value.
-	//
-	// example:
-	//
-	// null
-	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
-	// Instance status. For more details, see the supplementary explanation of the DBInstanceStatus parameter.
-	//
-	// example:
-	//
-	// Running
-	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	// Maximum storage space of a single replica, in GB.
-	//
-	// example:
-	//
-	// 50
-	DBInstanceStorage *int64 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
-	// The deployment mode.
-	//
-	// example:
-	//
-	// single
-	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
-	// Encryption key.
-	//
-	// > This parameter is returned only for instances with disk encryption enabled.
-	//
-	// example:
-	//
-	// 0d2470df-da7b-4786-b981-************
-	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	// Encryption type, with the following value:
-	//
-	// - **CloudDisk**: Cloud disk encryption.
-	//
-	// > This parameter is returned only for instances with cloud disk encryption.
-	//
-	// example:
-	//
-	// CloudDisk
-	EncryptionType *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
-	// Database engine.
-	//
-	// example:
-	//
-	// gpdb
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// Database version.
-	//
-	// example:
-	//
-	// 6.0
-	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// Instance expiration time (in UTC).
-	//
-	// > The expiration time for pay-as-you-go instances is `2999-09-08T16:00:00Z`.
-	//
-	// example:
-	//
-	// 2999-09-08T16:00:00Z
-	ExpireTime        *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	GraphEngineStatus *string `json:"GraphEngineStatus,omitempty" xml:"GraphEngineStatus,omitempty"`
-	// Compute group machine type, with the following values:
-	//
-	// - **0**: SSD
-	//
-	// - **1**: HDD
-	//
-	// > This parameter applies only to storage-reserved mode instances.
-	//
-	// example:
-	//
-	// 0
-	HostType *string `json:"HostType,omitempty" xml:"HostType,omitempty"`
-	// Idle release waiting time. Unit: seconds.
-	//
-	// > This parameter is returned only for instances in the Serverless automatic scheduling mode.
-	//
-	// example:
-	//
-	// 600
-	IdleTime *int32 `json:"IdleTime,omitempty" xml:"IdleTime,omitempty"`
-	// Instance network type, with the following values:
-	//
-	// - **Classic**: Classic network.
-	//
-	// - **VPC**: VPC network.
-	//
-	// example:
-	//
-	// VPC
-	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	InstanceSpec        *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	// Lock mode, with the following values:
-	//
-	// - **Unlock**: Normal.
-	//
-	// - **ManualLock**: Manually triggered lock.
-	//
-	// - **LockByExpiration**: Automatically locked when the instance expires.
-	//
-	// - **LockByRestoration**: Automatically locked before the instance rolls back.
-	//
-	// - **LockByDiskQuota**: Automatically locked when the instance space is full.
-	//
-	// example:
-	//
-	// Unlock
-	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// This parameter is deprecated and will not return any value.
-	//
-	// example:
-	//
-	// null
-	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// Maintenance end time.
-	//
-	// example:
-	//
-	// 22:00Z
-	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// Maintenance start time.
-	//
-	// example:
-	//
-	// 18:00Z
-	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	// The specifications of AI coordinator node resources of the instance. If the coordinator nodes of the instance are not AI nodes, null is returned.
-	//
-	// example:
-	//
-	// ADB.AIMedium.2
-	MasterAISpec *string `json:"MasterAISpec,omitempty" xml:"MasterAISpec,omitempty"`
-	// Master resources.
-	//
-	// example:
-	//
-	// 4
-	MasterCU *int32 `json:"MasterCU,omitempty" xml:"MasterCU,omitempty"`
-	// Number of Master nodes.
-	//
-	// example:
-	//
-	// 1
-	MasterNodeNum *int32 `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
-	// Maximum number of concurrent connections for the instance.
-	//
-	// > This parameter is only applicable to reserved storage mode instances.
-	//
-	// example:
-	//
-	// 500
-	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	// Memory size per replica, see the **MemoryUnit*	- parameter for the unit.
-	//
-	// > This parameter is only applicable to instances in the storage reserved mode.
-	//
-	// example:
-	//
-	// 0
-	MemoryPerNode *int32 `json:"MemoryPerNode,omitempty" xml:"MemoryPerNode,omitempty"`
-	// Memory size of the compute node.
-	//
-	// > The unit is MB for the storage reserved mode; GB for Serverless and storage elastic modes.
-	//
-	// example:
-	//
-	// 16
-	MemorySize *int64 `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
-	// Memory unit.
-	//
-	// > This parameter is only applicable to reserved storage mode instances.
-	//
-	// example:
-	//
-	// GB
-	MemoryUnit *string `json:"MemoryUnit,omitempty" xml:"MemoryUnit,omitempty"`
-	// Minor version of the kernel.
-	//
-	// example:
-	//
-	// 6.3.10.1-202207141918
-	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	// Billing type, with the following values:
-	//
-	// - **Postpaid**: Pay-as-you-go.
-	//
-	// - **Prepaid**: Subscription.
-	//
-	// example:
-	//
-	// Postpaid
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// Instance port number.
-	//
-	// example:
-	//
-	// 5432
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The service type.
-	//
-	// example:
-	//
-	// standard
-	ProdType *string `json:"ProdType,omitempty" xml:"ProdType,omitempty"`
-	// This parameter has been deprecated and will not return a value.
-	//
-	// example:
-	//
-	// null
-	ReadDelayTime *string `json:"ReadDelayTime,omitempty" xml:"ReadDelayTime,omitempty"`
-	// Region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// ID of the resource group where the instance is located.
-	//
-	// example:
-	//
-	// rg-bp67acfmxazb4p****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Instance running time.
-	//
-	// example:
-	//
-	// 4 days 22:58:55
-	RunningTime *string `json:"RunningTime,omitempty" xml:"RunningTime,omitempty"`
-	// This parameter is deprecated and will not return any value.
-	//
-	// example:
-	//
-	// null
-	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// Performance Level (PL), currently only **PL1*	- is supported.
-	//
-	// example:
-	//
-	// PL1
-	SegDiskPerformanceLevel *string `json:"SegDiskPerformanceLevel,omitempty" xml:"SegDiskPerformanceLevel,omitempty"`
-	// Number of Segment nodes.
-	//
-	// > This parameter applies only to instances in the storage elastic mode and Serverless manual scheduling mode.
-	//
-	// example:
-	//
-	// 4
-	SegNodeNum *int32 `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
-	// The specifications of AI compute node resources of the instance. If the compute nodes of the instance are not AI nodes, null is returned.
-	//
-	// example:
-	//
-	// ADB.AIMedium.2
-	SegmentAISpec *string `json:"SegmentAISpec,omitempty" xml:"SegmentAISpec,omitempty"`
-	// Number of compute groups.
-	//
-	// > This parameter applies only to storage-reserved mode instances.
-	//
-	// example:
-	//
-	// 0
-	SegmentCounts *int32 `json:"SegmentCounts,omitempty" xml:"SegmentCounts,omitempty"`
-	// The mode of the Serverless instance, with the following values:
-	//
-	// - **Manual**: Manual scheduling.
-	//
-	// - **Auto**: Automatic scheduling.
-	//
-	// > This parameter is returned only for Serverless mode instances.
-	//
-	// example:
-	//
-	// Auto
-	ServerlessMode *string `json:"ServerlessMode,omitempty" xml:"ServerlessMode,omitempty"`
-	// Compute resource threshold. Unit: ACU.
-	//
-	// > This parameter is returned only for instances in the Serverless automatic scheduling mode.
-	//
-	// example:
-	//
-	// 32
-	ServerlessResource *int32 `json:"ServerlessResource,omitempty" xml:"ServerlessResource,omitempty"`
-	// The secondary zone ID.
-	//
-	// example:
-	//
-	// cn-hangzhou-i
-	StandbyZoneId *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
-	// The time when the instance started running.
-	//
-	// example:
-	//
-	// 2022-08-11T09:26:43Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Storage size per replica, see the **StorageUnit*	- parameter for units.
-	//
-	// > This parameter applies only to storage-reserved mode instances.
-	//
-	// example:
-	//
-	// 0
-	StoragePerNode *int32 `json:"StoragePerNode,omitempty" xml:"StoragePerNode,omitempty"`
-	// Storage space size, unit: GB.
-	//
-	// example:
-	//
-	// 50
-	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	// Storage type, with the following values:
-	//
-	// - **cloud_essd**: ESSD cloud disk.
-	//
-	// - **cloud_efficiency**: Efficient cloud disk.
-	//
-	// > This parameter is only applicable to instances in the storage elastic mode.
-	//
-	// example:
-	//
-	// cloud_essd
-	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// Storage unit, with the following values:
-	//
-	// - **GB SSD**
-	//
-	// - **TB SSD**
-	//
-	// - **GB HDD**
-	//
-	// > This parameter is only applicable to instances in the storage reserved mode.
-	//
-	// example:
-	//
-	// GB SSD
-	StorageUnit *string `json:"StorageUnit,omitempty" xml:"StorageUnit,omitempty"`
-	// Indicates whether backup recovery is supported, with the following values:
-	//
-	// - **true**: Backup recovery is supported.
-	//
-	// - **false**: Backup recovery is not supported.
-	//
-	// example:
-	//
-	// true
-	SupportRestore *bool `json:"SupportRestore,omitempty" xml:"SupportRestore,omitempty"`
-	// Tag key-value pairs.
-	Tags *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// vSwitch ID.
-	//
-	// example:
-	//
-	// vsw-bp1cpq8mr64paltkb****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// Indicates whether vector engine optimization is enabled. The values are as follows:
-	//
-	// - **enabled**: Indicates that vector engine optimization is enabled.
-	//
-	// - **disabled**: Indicates that vector engine optimization is disabled.
-	//
-	// example:
-	//
-	// enabled
-	VectorConfigurationStatus *string `json:"VectorConfigurationStatus,omitempty" xml:"VectorConfigurationStatus,omitempty"`
-	// VPC ID.
-	//
-	// example:
-	//
-	// vpc-bp19ame5m1r3oejns****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// Zone ID.
-	//
-	// example:
-	//
-	// cn-hangzhou-j
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AvailabilityValue         *string                                                              `json:"AvailabilityValue,omitempty" xml:"AvailabilityValue,omitempty"`
+	CacheStorageSize          *string                                                              `json:"CacheStorageSize,omitempty" xml:"CacheStorageSize,omitempty"`
+	ConnectionMode            *string                                                              `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
+	ConnectionString          *string                                                              `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	CoreVersion               *string                                                              `json:"CoreVersion,omitempty" xml:"CoreVersion,omitempty"`
+	CpuCores                  *int32                                                               `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
+	CpuCoresPerNode           *int32                                                               `json:"CpuCoresPerNode,omitempty" xml:"CpuCoresPerNode,omitempty"`
+	CreationTime              *string                                                              `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DBInstanceCategory        *string                                                              `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
+	DBInstanceClass           *string                                                              `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	DBInstanceClassType       *string                                                              `json:"DBInstanceClassType,omitempty" xml:"DBInstanceClassType,omitempty"`
+	DBInstanceCpuCores        *int32                                                               `json:"DBInstanceCpuCores,omitempty" xml:"DBInstanceCpuCores,omitempty"`
+	DBInstanceDescription     *string                                                              `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	DBInstanceDiskMBPS        *int64                                                               `json:"DBInstanceDiskMBPS,omitempty" xml:"DBInstanceDiskMBPS,omitempty"`
+	DBInstanceGroupCount      *string                                                              `json:"DBInstanceGroupCount,omitempty" xml:"DBInstanceGroupCount,omitempty"`
+	DBInstanceId              *string                                                              `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceMemory          *int64                                                               `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
+	DBInstanceMode            *string                                                              `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
+	DBInstanceNetType         *string                                                              `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
+	DBInstanceStatus          *string                                                              `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	DBInstanceStorage         *int64                                                               `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
+	DeployMode                *string                                                              `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	EncryptionKey             *string                                                              `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	EncryptionType            *string                                                              `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
+	Engine                    *string                                                              `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion             *string                                                              `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	ExpireTime                *string                                                              `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	GraphEngineStatus         *string                                                              `json:"GraphEngineStatus,omitempty" xml:"GraphEngineStatus,omitempty"`
+	HostType                  *string                                                              `json:"HostType,omitempty" xml:"HostType,omitempty"`
+	IdleTime                  *int32                                                               `json:"IdleTime,omitempty" xml:"IdleTime,omitempty"`
+	InstanceNetworkType       *string                                                              `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	InstanceSpec              *string                                                              `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	LockMode                  *string                                                              `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	LockReason                *string                                                              `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	MaintainEndTime           *string                                                              `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	MaintainStartTime         *string                                                              `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	MasterAISpec              *string                                                              `json:"MasterAISpec,omitempty" xml:"MasterAISpec,omitempty"`
+	MasterCU                  *int32                                                               `json:"MasterCU,omitempty" xml:"MasterCU,omitempty"`
+	MasterNodeNum             *int32                                                               `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
+	MaxConnections            *int32                                                               `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	MemoryPerNode             *int32                                                               `json:"MemoryPerNode,omitempty" xml:"MemoryPerNode,omitempty"`
+	MemorySize                *int64                                                               `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	MemoryUnit                *string                                                              `json:"MemoryUnit,omitempty" xml:"MemoryUnit,omitempty"`
+	MinorVersion              *string                                                              `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	PayType                   *string                                                              `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Port                      *string                                                              `json:"Port,omitempty" xml:"Port,omitempty"`
+	ProdType                  *string                                                              `json:"ProdType,omitempty" xml:"ProdType,omitempty"`
+	ReadDelayTime             *string                                                              `json:"ReadDelayTime,omitempty" xml:"ReadDelayTime,omitempty"`
+	RegionId                  *string                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId           *string                                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	RunningTime               *string                                                              `json:"RunningTime,omitempty" xml:"RunningTime,omitempty"`
+	SecurityIPList            *string                                                              `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	SegDiskPerformanceLevel   *string                                                              `json:"SegDiskPerformanceLevel,omitempty" xml:"SegDiskPerformanceLevel,omitempty"`
+	SegNodeNum                *int32                                                               `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
+	SegmentAISpec             *string                                                              `json:"SegmentAISpec,omitempty" xml:"SegmentAISpec,omitempty"`
+	SegmentCounts             *int32                                                               `json:"SegmentCounts,omitempty" xml:"SegmentCounts,omitempty"`
+	ServerlessMode            *string                                                              `json:"ServerlessMode,omitempty" xml:"ServerlessMode,omitempty"`
+	ServerlessResource        *int32                                                               `json:"ServerlessResource,omitempty" xml:"ServerlessResource,omitempty"`
+	StandbyZoneId             *string                                                              `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
+	StartTime                 *string                                                              `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StoragePerNode            *int32                                                               `json:"StoragePerNode,omitempty" xml:"StoragePerNode,omitempty"`
+	StorageSize               *int64                                                               `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	StorageType               *string                                                              `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	StorageUnit               *string                                                              `json:"StorageUnit,omitempty" xml:"StorageUnit,omitempty"`
+	SupportRestore            *bool                                                                `json:"SupportRestore,omitempty" xml:"SupportRestore,omitempty"`
+	Tags                      *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VSwitchId                 *string                                                              `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VectorConfigurationStatus *string                                                              `json:"VectorConfigurationStatus,omitempty" xml:"VectorConfigurationStatus,omitempty"`
+	VpcId                     *string                                                              `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId                    *string                                                              `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) String() string {
@@ -1295,17 +849,7 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTags) Va
 }
 
 type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTagsTag struct {
-	// Tag key.
-	//
-	// example:
-	//
-	// test-key
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Tag value.
-	//
-	// example:
-	//
-	// test-value
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

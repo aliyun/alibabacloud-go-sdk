@@ -185,9 +185,7 @@ func (s *ExecuteStatementResponseBody) Validate() error {
 }
 
 type ExecuteStatementResponseBodyData struct {
-  // The metadata of the columns.
   ColumnMetadata *ExecuteStatementResponseBodyDataColumnMetadata `json:"ColumnMetadata,omitempty" xml:"ColumnMetadata,omitempty" type:"Struct"`
-  // The rows of data.
   Records *ExecuteStatementResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Struct"`
   // The total number of entries returned.
   // 
