@@ -18,9 +18,18 @@ type iAuthorizationResourceInfo interface {
 }
 
 type AuthorizationResourceInfo struct {
-	EnvironmentId    *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// example:
+	//
+	// env-cq7l5s5lhtgi6qasrdc0
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// example:
+	//
+	// api-cujbijem1hkr4voden8g
 	ParentResourceId *string `json:"parentResourceId,omitempty" xml:"parentResourceId,omitempty"`
-	ResourceId       *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// example:
+	//
+	// hr-d0mnu16m1hkgujnkgrcg
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
 }
 
 func (s AuthorizationResourceInfo) String() string {

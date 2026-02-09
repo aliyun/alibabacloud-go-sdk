@@ -44,34 +44,47 @@ type iCreateHttpApiRequest interface {
 }
 
 type CreateHttpApiRequest struct {
+	// Agent protocols
 	AgentProtocols []*string `json:"agentProtocols,omitempty" xml:"agentProtocols,omitempty" type:"Repeated"`
-	// The AI API protocols. Valid value:
-	//
-	// 	- OpenAI/v1
+	// $.parameters[0].schema.properties.authConfig.enumValueTitles
 	AiProtocols []*string `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
-	// The authentication configurations.
+	// The request parameters for API creation.
 	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
-	// The API base path, which must start with a forward slash (/).
+	// $.parameters[0].schema.properties.deployConfigs.items.example
 	//
 	// example:
 	//
 	// /v1
 	BasePath *string `json:"basePath,omitempty" xml:"basePath,omitempty"`
-	// The API deployment configurations. Currently, only AI APIs support deployment configurations, and only a single deployment configuration can be passed.
+	// $.parameters[0].schema.example
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
-	// The API description.
+	// $.parameters[0].schema.properties.aiProtocols.items.description
 	//
 	// example:
 	//
-	// API for testing
+	// $.parameters[0].schema.properties.aiProtocols.items.example
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether to enable authentication.
-	EnableAuth       *bool  `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
+	// Create an API of HTTP type
+	//
+	// example:
+	//
+	// true
+	EnableAuth *bool `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
+	// First byte timeout
+	//
+	// example:
+	//
+	// 30
 	FirstByteTimeout *int32 `json:"firstByteTimeout,omitempty" xml:"firstByteTimeout,omitempty"`
-	// The HTTP Ingress configurations.
+	// $.parameters[0].schema.properties.deployConfigs.example
 	IngressConfig *CreateHttpApiRequestIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
-	ModelCategory *string                            `json:"modelCategory,omitempty" xml:"modelCategory,omitempty"`
-	// The API name.
+	// Model category
+	//
+	// example:
+	//
+	// llm/text-to-image
+	ModelCategory *string `json:"modelCategory,omitempty" xml:"modelCategory,omitempty"`
+	// $.parameters[0].schema.example
 	//
 	// This parameter is required.
 	//
@@ -79,30 +92,27 @@ type CreateHttpApiRequest struct {
 	//
 	// test-api
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The protocols that are used to call the API.
-	Protocols               []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
-	RemoveBasePathOnForward *bool     `json:"removeBasePathOnForward,omitempty" xml:"removeBasePathOnForward,omitempty"`
-	// The resource group ID.
+	// $.parameters[0].schema.properties.aiProtocols.description
+	Protocols []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	// Whether to remove base path when forwarding
 	//
 	// example:
 	//
-	// rg-aekzgvmlotionbi
+	// true
+	RemoveBasePathOnForward *bool `json:"removeBasePathOnForward,omitempty" xml:"removeBasePathOnForward,omitempty"`
+	// $.parameters[0].schema.properties.authConfig.example
+	//
+	// example:
+	//
+	// rg-xxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The API type. Valid values:
-	//
-	// 	- Http
-	//
-	// 	- Rest
-	//
-	// 	- WebSocket
-	//
-	// 	- HttpIngress
+	// $.parameters[0].schema.properties.deployConfigs.description
 	//
 	// example:
 	//
 	// Http
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The versioning configuration of the API.
+	// $.parameters[0].schema.properties.deployConfigs.items.enumValueTitles
 	VersionConfig *HttpApiVersionConfig `json:"versionConfig,omitempty" xml:"versionConfig,omitempty"`
 }
 
@@ -287,20 +297,25 @@ func (s *CreateHttpApiRequest) Validate() error {
 }
 
 type CreateHttpApiRequestIngressConfig struct {
+	// Cluster ID.
+	//
+	// example:
+	//
+	// k7v5eobfzttudni2pw***
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	// The environment ID.
+	// $.parameters[0].schema.properties.deployConfigs.enumValueTitles
 	//
 	// example:
 	//
 	// env-cq146allhtgk***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The Ingress Class for listening.
+	// $.parameters[0].schema.properties.enableAuth.example
 	//
 	// example:
 	//
 	// mse
 	IngressClass *string `json:"ingressClass,omitempty" xml:"ingressClass,omitempty"`
-	// Specifies whether to update the address in Ingress Status.
+	// $.parameters[0].schema.properties.authConfig.description
 	//
 	// example:
 	//
@@ -308,13 +323,13 @@ type CreateHttpApiRequestIngressConfig struct {
 	OverrideIngressIp *bool `json:"overrideIngressIp,omitempty" xml:"overrideIngressIp,omitempty"`
 	// Deprecated
 	//
-	// The source ID.
+	// $.parameters[0].schema.properties.enableAuth.description
 	//
 	// example:
 	//
 	// src-crdddallhtgtr***
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// The namespace for listening.
+	// $.parameters[0].schema.properties.enableAuth.enumValueTitles
 	//
 	// example:
 	//

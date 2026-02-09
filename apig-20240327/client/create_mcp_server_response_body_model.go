@@ -20,21 +20,21 @@ type iCreateMcpServerResponseBody interface {
 }
 
 type CreateMcpServerResponseBody struct {
-	// The status code.
+	// code
 	//
 	// example:
 	//
-	// Ok
+	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response payload.
+	// object
 	Data *CreateMcpServerResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The status message.
+	// message
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -96,13 +96,13 @@ func (s *CreateMcpServerResponseBody) Validate() error {
 }
 
 type CreateMcpServerResponseBodyData struct {
-	// The ID of the MCP server.
+	// MCP Server ID
 	//
 	// example:
 	//
 	// mcp-afegaijoijaoji24a
 	McpServerId *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
-	// The name of the MCP server.
+	// MCP server name
 	//
 	// example:
 	//

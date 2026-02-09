@@ -44,13 +44,13 @@ type CreateDomainRequest struct {
 	//
 	// 1ef1da5f-38ed-69b3-****-037781890265
 	CaCertIdentifier *string `json:"caCertIdentifier,omitempty" xml:"caCertIdentifier,omitempty"`
-	// The certificate ID.
+	// The certificate identifier.
 	//
 	// example:
 	//
 	// 1ef1da5f-38ed-69b3-****-037781890265
 	CertIdentifier *string `json:"certIdentifier,omitempty" xml:"certIdentifier,omitempty"`
-	// The client CA certificate.
+	// The client CA certificate content.
 	//
 	// example:
 	//
@@ -64,14 +64,25 @@ type CreateDomainRequest struct {
 	//
 	// -----END CERTIFICATE-----
 	ClientCACert *string `json:"clientCACert,omitempty" xml:"clientCACert,omitempty"`
-	// Specifies whether to enable forcible HTTPS redirection.
+	// Specifies whether to enable forced HTTP to HTTPS redirection.
 	//
 	// example:
 	//
 	// false
-	ForceHttps  *bool   `json:"forceHttps,omitempty" xml:"forceHttps,omitempty"`
+	ForceHttps *bool `json:"forceHttps,omitempty" xml:"forceHttps,omitempty"`
+	// The gateway type.
+	//
+	// Valid values:
+	//
+	// 	- AI
+	//
+	// 	- API
+	//
+	// example:
+	//
+	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The HTTP/2 configuration.
+	// HTTP/2 configuration options.
 	//
 	// Valid values:
 	//
@@ -85,7 +96,7 @@ type CreateDomainRequest struct {
 	//
 	// Open
 	Http2Option *string `json:"http2Option,omitempty" xml:"http2Option,omitempty"`
-	// Specifies whether to enable mutual authentication.
+	// Specifies whether to enable mutual Transport Layer Security (mTLS) authentication.
 	MTLSEnabled *bool `json:"mTLSEnabled,omitempty" xml:"mTLSEnabled,omitempty"`
 	// The domain name.
 	//
@@ -97,9 +108,9 @@ type CreateDomainRequest struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The protocol type supported by the domain name.
 	//
-	// 	- HTTP: Only HTTP is supported.
+	// 	- HTTP: HTTP only
 	//
-	// 	- HTTPS: Only HTTPS is supported.
+	// 	- HTTPS: HTTPS only
 	//
 	// This parameter is required.
 	//
@@ -115,13 +126,13 @@ type CreateDomainRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The cipher suite configuration.
 	TlsCipherSuitesConfig *TlsCipherSuitesConfig `json:"tlsCipherSuitesConfig,omitempty" xml:"tlsCipherSuitesConfig,omitempty"`
-	// The maximum version of the TLS protocol. Up to TLS 1.3 is supported.
+	// The maximum TLS protocol version (up to TLS 1.3).
 	//
 	// example:
 	//
 	// TLS1.3
 	TlsMax *string `json:"tlsMax,omitempty" xml:"tlsMax,omitempty"`
-	// The minimum version of the TLS protocol. Down to TLS 1.0 is supported.
+	// The minimum TLS protocol version (minimum TLS 1.0).
 	//
 	// example:
 	//

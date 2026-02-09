@@ -38,34 +38,52 @@ type iHttpApiDeployConfig interface {
 }
 
 type HttpApiDeployConfig struct {
+	// Specifies whether to enable automatic deployment.
+	//
 	// example:
 	//
 	// true
 	AutoDeploy *bool `json:"autoDeploy,omitempty" xml:"autoDeploy,omitempty"`
+	// The publishing scenario.
+	//
 	// example:
 	//
 	// SingleService
-	BackendScene      *string                                 `json:"backendScene,omitempty" xml:"backendScene,omitempty"`
-	CustomDomainIds   []*string                               `json:"customDomainIds,omitempty" xml:"customDomainIds,omitempty" type:"Repeated"`
+	BackendScene *string `json:"backendScene,omitempty" xml:"backendScene,omitempty"`
+	// The IDs of the custom domain names.
+	CustomDomainIds []*string `json:"customDomainIds,omitempty" xml:"customDomainIds,omitempty" type:"Repeated"`
+	// The information about the custom domain names.
 	CustomDomainInfos []*HttpApiDeployConfigCustomDomainInfos `json:"customDomainInfos,omitempty" xml:"customDomainInfos,omitempty" type:"Repeated"`
+	// The environment ID.
+	//
 	// example:
 	//
 	// env-xxx
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// gw-xx
-	GatewayId   *string      `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The instance information.
 	GatewayInfo *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
+	// 网关类型
+	//
 	// example:
 	//
 	// API
-	GatewayType    *string                              `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	Mock           *HttpApiMockContract                 `json:"mock,omitempty" xml:"mock,omitempty"`
-	PolicyConfigs  []*HttpApiDeployConfigPolicyConfigs  `json:"policyConfigs,omitempty" xml:"policyConfigs,omitempty" type:"Repeated"`
-	RouteBackend   *Backend                             `json:"routeBackend,omitempty" xml:"routeBackend,omitempty"`
+	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
+	// The Mock settings.
+	Mock *HttpApiMockContract `json:"mock,omitempty" xml:"mock,omitempty"`
+	// The policy configurations.
+	PolicyConfigs []*HttpApiDeployConfigPolicyConfigs `json:"policyConfigs,omitempty" xml:"policyConfigs,omitempty" type:"Repeated"`
+	// routeBackend
+	RouteBackend *Backend `json:"routeBackend,omitempty" xml:"routeBackend,omitempty"`
+	// The service configurations.
 	ServiceConfigs []*HttpApiDeployConfigServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
-	SubDomains     []*HttpApiDeployConfigSubDomains     `json:"subDomains,omitempty" xml:"subDomains,omitempty" type:"Repeated"`
+	// The information about the sub-domain names.
+	SubDomains []*HttpApiDeployConfigSubDomains `json:"subDomains,omitempty" xml:"subDomains,omitempty" type:"Repeated"`
 }
 
 func (s HttpApiDeployConfig) String() string {
@@ -249,8 +267,23 @@ func (s *HttpApiDeployConfig) Validate() error {
 }
 
 type HttpApiDeployConfigCustomDomainInfos struct {
+	// The domain name ID.
+	//
+	// example:
+	//
+	// d-cshee6dlhtgkf4muio3g
 	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
-	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The domain name.
+	//
+	// example:
+	//
+	// hello-server.com
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The protocol.
+	//
+	// example:
+	//
+	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 }
 
@@ -294,13 +327,20 @@ func (s *HttpApiDeployConfigCustomDomainInfos) Validate() error {
 }
 
 type HttpApiDeployConfigPolicyConfigs struct {
-	AiFallbackConfig       *HttpApiDeployConfigPolicyConfigsAiFallbackConfig       `json:"aiFallbackConfig,omitempty" xml:"aiFallbackConfig,omitempty" type:"Struct"`
-	AiSecurityGuardConfig  *HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfig  `json:"aiSecurityGuardConfig,omitempty" xml:"aiSecurityGuardConfig,omitempty" type:"Struct"`
+	// The fallback configurations
+	AiFallbackConfig *HttpApiDeployConfigPolicyConfigsAiFallbackConfig `json:"aiFallbackConfig,omitempty" xml:"aiFallbackConfig,omitempty" type:"Struct"`
+	// AI Security Guard configuration
+	AiSecurityGuardConfig *HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfig `json:"aiSecurityGuardConfig,omitempty" xml:"aiSecurityGuardConfig,omitempty" type:"Struct"`
+	// AI Token Rate Limit configuration
 	AiTokenRateLimitConfig *HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfig `json:"aiTokenRateLimitConfig,omitempty" xml:"aiTokenRateLimitConfig,omitempty" type:"Struct"`
+	// Specifies whether to enable the policy.
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The type of the policy. Valid values:
+	//
 	// example:
 	//
 	// AiFallback
@@ -380,6 +420,7 @@ func (s *HttpApiDeployConfigPolicyConfigs) Validate() error {
 }
 
 type HttpApiDeployConfigPolicyConfigsAiFallbackConfig struct {
+	// List of fallback service configurations
 	ServiceConfigs []*HttpApiDeployConfigPolicyConfigsAiFallbackConfigServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
 }
 
@@ -414,7 +455,17 @@ func (s *HttpApiDeployConfigPolicyConfigsAiFallbackConfig) Validate() error {
 }
 
 type HttpApiDeployConfigPolicyConfigsAiFallbackConfigServiceConfigs struct {
-	ServiceId       *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// Service ID for fallback
+	//
+	// example:
+	//
+	// svc-******
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// targetModelName
+	//
+	// example:
+	//
+	// gpt-4/llama3-70b
 	TargetModelName *string `json:"targetModelName,omitempty" xml:"targetModelName,omitempty"`
 }
 
@@ -449,21 +500,80 @@ func (s *HttpApiDeployConfigPolicyConfigsAiFallbackConfigServiceConfigs) Validat
 }
 
 type HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfig struct {
-	BufferLimit                  *int32                                                                               `json:"bufferLimit,omitempty" xml:"bufferLimit,omitempty"`
-	CheckRequest                 *bool                                                                                `json:"checkRequest,omitempty" xml:"checkRequest,omitempty"`
-	CheckRequestImage            *bool                                                                                `json:"checkRequestImage,omitempty" xml:"checkRequestImage,omitempty"`
-	CheckResponse                *bool                                                                                `json:"checkResponse,omitempty" xml:"checkResponse,omitempty"`
-	CheckResponseImage           *bool                                                                                `json:"checkResponseImage,omitempty" xml:"checkResponseImage,omitempty"`
-	ConsumerRequestCheckService  []*HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigConsumerRequestCheckService  `json:"consumerRequestCheckService,omitempty" xml:"consumerRequestCheckService,omitempty" type:"Repeated"`
+	// bufferLimit
+	//
+	// example:
+	//
+	// 50
+	BufferLimit *int32 `json:"bufferLimit,omitempty" xml:"bufferLimit,omitempty"`
+	// Whether to check request content
+	//
+	// example:
+	//
+	// true
+	CheckRequest *bool `json:"checkRequest,omitempty" xml:"checkRequest,omitempty"`
+	// Whether to check request content
+	//
+	// example:
+	//
+	// true
+	CheckRequestImage *bool `json:"checkRequestImage,omitempty" xml:"checkRequestImage,omitempty"`
+	// Whether to check response content
+	//
+	// example:
+	//
+	// true
+	CheckResponse *bool `json:"checkResponse,omitempty" xml:"checkResponse,omitempty"`
+	// Whether to check response content
+	//
+	// example:
+	//
+	// true
+	CheckResponseImage *bool `json:"checkResponseImage,omitempty" xml:"checkResponseImage,omitempty"`
+	// Consumer-specific request check configs
+	ConsumerRequestCheckService []*HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigConsumerRequestCheckService `json:"consumerRequestCheckService,omitempty" xml:"consumerRequestCheckService,omitempty" type:"Repeated"`
+	// Consumer-specific Response check configs
 	ConsumerResponseCheckService []*HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigConsumerResponseCheckService `json:"consumerResponseCheckService,omitempty" xml:"consumerResponseCheckService,omitempty" type:"Repeated"`
-	ConsumerRiskLevel            []*HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigConsumerRiskLevel            `json:"consumerRiskLevel,omitempty" xml:"consumerRiskLevel,omitempty" type:"Repeated"`
-	RequestCheckService          *string                                                                              `json:"requestCheckService,omitempty" xml:"requestCheckService,omitempty"`
-	RequestImageCheckService     *string                                                                              `json:"requestImageCheckService,omitempty" xml:"requestImageCheckService,omitempty"`
-	ResponseCheckService         *string                                                                              `json:"responseCheckService,omitempty" xml:"responseCheckService,omitempty"`
-	ResponseImageCheckService    *string                                                                              `json:"responseImageCheckService,omitempty" xml:"responseImageCheckService,omitempty"`
-	RiskAlertLevel               *string                                                                              `json:"riskAlertLevel,omitempty" xml:"riskAlertLevel,omitempty"`
-	RiskConfig                   []*HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigRiskConfig                   `json:"riskConfig,omitempty" xml:"riskConfig,omitempty" type:"Repeated"`
-	ServiceAddress               *string                                                                              `json:"serviceAddress,omitempty" xml:"serviceAddress,omitempty"`
+	// Consumer-specific risk level configs
+	ConsumerRiskLevel []*HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigConsumerRiskLevel `json:"consumerRiskLevel,omitempty" xml:"consumerRiskLevel,omitempty" type:"Repeated"`
+	// Request check service name
+	//
+	// example:
+	//
+	// https://checker.example.com/validate-request
+	RequestCheckService *string `json:"requestCheckService,omitempty" xml:"requestCheckService,omitempty"`
+	// Request check service name
+	//
+	// example:
+	//
+	// https://image-checker.example.com/scan
+	RequestImageCheckService *string `json:"requestImageCheckService,omitempty" xml:"requestImageCheckService,omitempty"`
+	// Response check service name
+	//
+	// example:
+	//
+	// https://checker.example.com/validate-response
+	ResponseCheckService *string `json:"responseCheckService,omitempty" xml:"responseCheckService,omitempty"`
+	// Response check service name
+	//
+	// example:
+	//
+	// https://image-checker.example.com/scan-response
+	ResponseImageCheckService *string `json:"responseImageCheckService,omitempty" xml:"responseImageCheckService,omitempty"`
+	// Risk alert level for content moderation
+	//
+	// example:
+	//
+	// low/medium/high
+	RiskAlertLevel *string `json:"riskAlertLevel,omitempty" xml:"riskAlertLevel,omitempty"`
+	// riskConfig
+	RiskConfig []*HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigRiskConfig `json:"riskConfig,omitempty" xml:"riskConfig,omitempty" type:"Repeated"`
+	// Security guard service address
+	//
+	// example:
+	//
+	// https://api.example.com/v1
+	ServiceAddress *string `json:"serviceAddress,omitempty" xml:"serviceAddress,omitempty"`
 }
 
 func (s HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfig) String() string {
@@ -650,10 +760,35 @@ func (s *HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfig) Validate() error
 }
 
 type HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigConsumerRequestCheckService struct {
-	MatchType                *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
-	ModalityType             *string `json:"modalityType,omitempty" xml:"modalityType,omitempty"`
-	Name                     *string `json:"name,omitempty" xml:"name,omitempty"`
-	RequestCheckService      *string `json:"requestCheckService,omitempty" xml:"requestCheckService,omitempty"`
+	// Match type
+	//
+	// example:
+	//
+	// exact/prefix
+	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// Modality type
+	//
+	// example:
+	//
+	// text/image
+	ModalityType *string `json:"modalityType,omitempty" xml:"modalityType,omitempty"`
+	// Consumer name for matching
+	//
+	// example:
+	//
+	// API
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Request check service name
+	//
+	// example:
+	//
+	// https://checker.example.com/validate
+	RequestCheckService *string `json:"requestCheckService,omitempty" xml:"requestCheckService,omitempty"`
+	// requestImageCheckService
+	//
+	// example:
+	//
+	// https://image-check.example.com/scan
 	RequestImageCheckService *string `json:"requestImageCheckService,omitempty" xml:"requestImageCheckService,omitempty"`
 }
 
@@ -715,10 +850,35 @@ func (s *HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigConsumerRequestChe
 }
 
 type HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigConsumerResponseCheckService struct {
-	MatchType                 *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
-	ModalityType              *string `json:"modalityType,omitempty" xml:"modalityType,omitempty"`
-	Name                      *string `json:"name,omitempty" xml:"name,omitempty"`
-	ResponseCheckService      *string `json:"responseCheckService,omitempty" xml:"responseCheckService,omitempty"`
+	// Match type
+	//
+	// example:
+	//
+	// term
+	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// Modality type
+	//
+	// example:
+	//
+	// text/image
+	ModalityType *string `json:"modalityType,omitempty" xml:"modalityType,omitempty"`
+	// Consumer name for matching
+	//
+	// example:
+	//
+	// AI_API
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Response check service name
+	//
+	// example:
+	//
+	// https://checker.example.com/validate-response
+	ResponseCheckService *string `json:"responseCheckService,omitempty" xml:"responseCheckService,omitempty"`
+	// responseImageCheckService
+	//
+	// example:
+	//
+	// https://image-check.example.com/scan-response
 	ResponseImageCheckService *string `json:"responseImageCheckService,omitempty" xml:"responseImageCheckService,omitempty"`
 }
 
@@ -780,10 +940,30 @@ func (s *HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigConsumerResponseCh
 }
 
 type HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigConsumerRiskLevel struct {
-	Level     *string `json:"level,omitempty" xml:"level,omitempty"`
+	// Risk alert level
+	//
+	// example:
+	//
+	// Critical
+	Level *string `json:"level,omitempty" xml:"level,omitempty"`
+	// Match type
+	//
+	// example:
+	//
+	// term
 	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
-	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
-	Type      *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Consumer name for matching
+	//
+	// example:
+	//
+	// APIG-UI
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Risk type
+	//
+	// example:
+	//
+	// K8S
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigConsumerRiskLevel) String() string {
@@ -835,9 +1015,20 @@ func (s *HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigConsumerRiskLevel)
 }
 
 type HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigRiskConfig struct {
+	// Consumer-specific rules
 	ConsumerRules *HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigRiskConfigConsumerRules `json:"consumerRules,omitempty" xml:"consumerRules,omitempty" type:"Struct"`
-	Level         *string                                                                       `json:"level,omitempty" xml:"level,omitempty"`
-	Type          *string                                                                       `json:"type,omitempty" xml:"type,omitempty"`
+	// Risk alert level
+	//
+	// example:
+	//
+	// Critical
+	Level *string `json:"level,omitempty" xml:"level,omitempty"`
+	// Risk type identifier
+	//
+	// example:
+	//
+	// K8S
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigRiskConfig) String() string {
@@ -885,8 +1076,18 @@ func (s *HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigRiskConfig) Valida
 }
 
 type HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigRiskConfigConsumerRules struct {
+	// Match type
+	//
+	// example:
+	//
+	// term
 	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
-	Pattern   *string `json:"pattern,omitempty" xml:"pattern,omitempty"`
+	// Pattern for matching
+	//
+	// example:
+	//
+	// first
+	Pattern *string `json:"pattern,omitempty" xml:"pattern,omitempty"`
 }
 
 func (s HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigRiskConfigConsumerRules) String() string {
@@ -920,9 +1121,16 @@ func (s *HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigRiskConfigConsumer
 }
 
 type HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfig struct {
-	EnableGlobalRules *bool                                                                `json:"enableGlobalRules,omitempty" xml:"enableGlobalRules,omitempty"`
-	GlobalRules       []*HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigGlobalRules `json:"globalRules,omitempty" xml:"globalRules,omitempty" type:"Repeated"`
-	Rules             []*HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigRules       `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
+	// Whether to enable global rate limit rules
+	//
+	// example:
+	//
+	// true
+	EnableGlobalRules *bool `json:"enableGlobalRules,omitempty" xml:"enableGlobalRules,omitempty"`
+	// List of global rate limit rules
+	GlobalRules []*HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigGlobalRules `json:"globalRules,omitempty" xml:"globalRules,omitempty" type:"Repeated"`
+	// List of rate limit rules
+	Rules []*HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
 }
 
 func (s HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfig) String() string {
@@ -983,11 +1191,41 @@ func (s *HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfig) Validate() erro
 }
 
 type HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigGlobalRules struct {
-	LimitMode  *string `json:"limitMode,omitempty" xml:"limitMode,omitempty"`
-	LimitType  *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
-	LimitValue *int32  `json:"limitValue,omitempty" xml:"limitValue,omitempty"`
-	MatchKey   *string `json:"matchKey,omitempty" xml:"matchKey,omitempty"`
-	MatchType  *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// Limit mode for global rules
+	//
+	// example:
+	//
+	// local
+	LimitMode *string `json:"limitMode,omitempty" xml:"limitMode,omitempty"`
+	// Limit type for global rules
+	//
+	// example:
+	//
+	// request
+	LimitType *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
+	// Limit value for global rules
+	//
+	// example:
+	//
+	// 100
+	LimitValue *int32 `json:"limitValue,omitempty" xml:"limitValue,omitempty"`
+	// Match key
+	//
+	// example:
+	//
+	// user_id
+	MatchKey *string `json:"matchKey,omitempty" xml:"matchKey,omitempty"`
+	// Match type
+	//
+	// example:
+	//
+	// term
+	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// Match value
+	//
+	// example:
+	//
+	// user123
 	MatchValue *string `json:"matchValue,omitempty" xml:"matchValue,omitempty"`
 }
 
@@ -1058,11 +1296,41 @@ func (s *HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigGlobalRules) Vali
 }
 
 type HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigRules struct {
-	LimitMode  *string `json:"limitMode,omitempty" xml:"limitMode,omitempty"`
-	LimitType  *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
-	LimitValue *int32  `json:"limitValue,omitempty" xml:"limitValue,omitempty"`
-	MatchKey   *string `json:"matchKey,omitempty" xml:"matchKey,omitempty"`
-	MatchType  *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// Limit mode
+	//
+	// example:
+	//
+	// local
+	LimitMode *string `json:"limitMode,omitempty" xml:"limitMode,omitempty"`
+	// Limit type
+	//
+	// example:
+	//
+	// request/token
+	LimitType *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
+	// Limit value
+	//
+	// example:
+	//
+	// 100
+	LimitValue *int32 `json:"limitValue,omitempty" xml:"limitValue,omitempty"`
+	// Match key
+	//
+	// example:
+	//
+	// user_id/api_path
+	MatchKey *string `json:"matchKey,omitempty" xml:"matchKey,omitempty"`
+	// Match type
+	//
+	// example:
+	//
+	// term
+	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// Match value
+	//
+	// example:
+	//
+	// user123
 	MatchValue *string `json:"matchValue,omitempty" xml:"matchValue,omitempty"`
 }
 
@@ -1133,20 +1401,34 @@ func (s *HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigRules) Validate()
 }
 
 type HttpApiDeployConfigServiceConfigs struct {
-	IntentCode *string                        `json:"intentCode,omitempty" xml:"intentCode,omitempty"`
-	Match      *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
+	// Intent classification code
+	//
+	// example:
+	//
+	// INQUIRY
+	IntentCode *string `json:"intentCode,omitempty" xml:"intentCode,omitempty"`
+	// Match conditions
+	Match *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// The model name matching rule.
+	//
 	// example:
 	//
 	// qwen-*
 	ModelNamePattern *string `json:"modelNamePattern,omitempty" xml:"modelNamePattern,omitempty"`
+	// The service ID.
+	//
 	// example:
 	//
 	// svc-xxx
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// The service weight.
+	//
 	// example:
 	//
 	// 100
@@ -1225,10 +1507,30 @@ func (s *HttpApiDeployConfigServiceConfigs) Validate() error {
 }
 
 type HttpApiDeployConfigSubDomains struct {
-	DomainId    *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
-	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The domain name ID.
+	//
+	// example:
+	//
+	// d-csmn42um1hksudfk9eng
+	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
+	// The domain name.
+	//
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The network type.
+	//
+	// example:
+	//
+	// Intranet
 	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	Protocol    *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The protocol.
+	//
+	// example:
+	//
+	// HTTP
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 }
 
 func (s HttpApiDeployConfigSubDomains) String() string {

@@ -26,8 +26,18 @@ type UndeployHttpApiRequest struct {
 	//
 	// env-cqsmtellhtgvo***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	GatewayId     *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	OperationId   *string `json:"operationId,omitempty" xml:"operationId,omitempty"`
+	// Gateway ID.
+	//
+	// example:
+	//
+	// gw-cq7l5s5lhtg***
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The operation ID.
+	//
+	// example:
+	//
+	// op-d4favr6m1hk***
+	OperationId *string `json:"operationId,omitempty" xml:"operationId,omitempty"`
 	// The route ID. You must specify this parameter when you unpublish the route of an HTTP API.
 	//
 	// example:

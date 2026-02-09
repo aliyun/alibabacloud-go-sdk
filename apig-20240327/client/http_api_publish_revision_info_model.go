@@ -38,39 +38,81 @@ type iHttpApiPublishRevisionInfo interface {
 }
 
 type HttpApiPublishRevisionInfo struct {
+	// The publishing scenario.
+	//
+	// Valid values:
+	//
+	// 	- SingleService
+	//
+	// 	- MultiServiceByRatio
+	//
+	// 	- MultiServiceByContent
+	//
+	// 	- MultiServiceByTag
+	//
+	// 	- Mock
+	//
 	// example:
 	//
 	// SingleService
 	BackendScene *string `json:"backendScene,omitempty" xml:"backendScene,omitempty"`
+	// The type of the backend service.
+	//
+	// Valid values:
+	//
+	// 	- DNS: a DNS domain name
+	//
+	// 	- Service: an existing service
+	//
+	// 	- VIP: a fixed IP address
+	//
+	// 	- CloudProduct: a cloud service
+	//
 	// example:
 	//
 	// Service
-	BackendType        *string                                       `json:"backendType,omitempty" xml:"backendType,omitempty"`
+	BackendType *string `json:"backendType,omitempty" xml:"backendType,omitempty"`
+	// The cloud service configurations.
 	CloudProductConfig *HttpApiPublishRevisionInfoCloudProductConfig `json:"cloudProductConfig,omitempty" xml:"cloudProductConfig,omitempty" type:"Struct"`
+	// The publishing timestamp.
+	//
 	// example:
 	//
 	// 1718807057927
-	CreateTimestamp *int64                                  `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	CustomDomains   []*HttpApiDomainInfo                    `json:"customDomains,omitempty" xml:"customDomains,omitempty" type:"Repeated"`
-	DnsConfigs      []*HttpApiPublishRevisionInfoDnsConfigs `json:"dnsConfigs,omitempty" xml:"dnsConfigs,omitempty" type:"Repeated"`
+	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// The custom domain names.
+	CustomDomains []*HttpApiDomainInfo `json:"customDomains,omitempty" xml:"customDomains,omitempty" type:"Repeated"`
+	// The configurations of DNS domain names. For single-service publishing, only one entry is allowed. For other scenarios, multiple entries are allowed.
+	DnsConfigs []*HttpApiPublishRevisionInfoDnsConfigs `json:"dnsConfigs,omitempty" xml:"dnsConfigs,omitempty" type:"Repeated"`
+	// The environment information.
+	//
 	// example:
 	//
 	// env-xxx
 	EnvironmentInfo *HttpApiPublishRevisionInfoEnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty" type:"Struct"`
+	// Specifies whether the current version is used.
+	//
 	// example:
 	//
 	// true
-	IsCurrentVersion *bool                   `json:"isCurrentVersion,omitempty" xml:"isCurrentVersion,omitempty"`
-	Operations       []*HttpApiOperationInfo `json:"operations,omitempty" xml:"operations,omitempty" type:"Repeated"`
+	IsCurrentVersion *bool `json:"isCurrentVersion,omitempty" xml:"isCurrentVersion,omitempty"`
+	// The operations.
+	Operations []*HttpApiOperationInfo `json:"operations,omitempty" xml:"operations,omitempty" type:"Repeated"`
+	// The published version.
+	//
 	// example:
 	//
 	// apr-xxx
-	RevisionId     *string                                     `json:"revisionId,omitempty" xml:"revisionId,omitempty"`
+	RevisionId *string `json:"revisionId,omitempty" xml:"revisionId,omitempty"`
+	// The configurations of existing services. For single-service publishing, only one entry is allowed. For other scenarios, multiple entries are allowed.
 	ServiceConfigs []*HttpApiPublishRevisionInfoServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
+	// The default domain names of the environment.
+	//
 	// example:
 	//
 	// env-xxx.com
-	SubDomains []*HttpApiDomainInfo                    `json:"subDomains,omitempty" xml:"subDomains,omitempty" type:"Repeated"`
+	SubDomains []*HttpApiDomainInfo `json:"subDomains,omitempty" xml:"subDomains,omitempty" type:"Repeated"`
+	// The configurations of fixed IP addresses. For single-service publishing, only one entry is allowed. For other scenarios, multiple entries are allowed.
 	VipConfigs []*HttpApiPublishRevisionInfoVipConfigs `json:"vipConfigs,omitempty" xml:"vipConfigs,omitempty" type:"Repeated"`
 }
 
@@ -268,13 +310,18 @@ func (s *HttpApiPublishRevisionInfo) Validate() error {
 }
 
 type HttpApiPublishRevisionInfoCloudProductConfig struct {
+	// The type of the cloud service.
+	//
 	// example:
 	//
 	// FC
-	CloudProductType        *string                                                                `json:"cloudProductType,omitempty" xml:"cloudProductType,omitempty"`
+	CloudProductType *string `json:"cloudProductType,omitempty" xml:"cloudProductType,omitempty"`
+	// The ACK configurations.
 	ContainerServiceConfigs []*HttpApiPublishRevisionInfoCloudProductConfigContainerServiceConfigs `json:"containerServiceConfigs,omitempty" xml:"containerServiceConfigs,omitempty" type:"Repeated"`
-	FunctionConfigs         []*HttpApiPublishRevisionInfoCloudProductConfigFunctionConfigs         `json:"functionConfigs,omitempty" xml:"functionConfigs,omitempty" type:"Repeated"`
-	MseNacosConfigs         []*HttpApiPublishRevisionInfoCloudProductConfigMseNacosConfigs         `json:"mseNacosConfigs,omitempty" xml:"mseNacosConfigs,omitempty" type:"Repeated"`
+	// The Function Compute configurations.
+	FunctionConfigs []*HttpApiPublishRevisionInfoCloudProductConfigFunctionConfigs `json:"functionConfigs,omitempty" xml:"functionConfigs,omitempty" type:"Repeated"`
+	// The MSE Nacos configurations.
+	MseNacosConfigs []*HttpApiPublishRevisionInfoCloudProductConfigMseNacosConfigs `json:"mseNacosConfigs,omitempty" xml:"mseNacosConfigs,omitempty" type:"Repeated"`
 }
 
 func (s HttpApiPublishRevisionInfoCloudProductConfig) String() string {
@@ -353,27 +400,40 @@ func (s *HttpApiPublishRevisionInfoCloudProductConfig) Validate() error {
 }
 
 type HttpApiPublishRevisionInfoCloudProductConfigContainerServiceConfigs struct {
+	// The associated service ID.
+	//
 	// example:
 	//
 	// gs-xxx
-	GatewayServiceId *string                        `json:"gatewayServiceId,omitempty" xml:"gatewayServiceId,omitempty"`
-	Match            *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
+	GatewayServiceId *string `json:"gatewayServiceId,omitempty" xml:"gatewayServiceId,omitempty"`
+	// The matching conditions.
+	Match *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
+	// The K8s service name.
+	//
 	// example:
 	//
 	// demo-service
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The K8s namespace.
+	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The service port.
+	//
 	// example:
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// The service protocol.
+	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The service weight.
+	//
 	// example:
 	//
 	// 100
@@ -461,19 +521,28 @@ func (s *HttpApiPublishRevisionInfoCloudProductConfigContainerServiceConfigs) Va
 }
 
 type HttpApiPublishRevisionInfoCloudProductConfigFunctionConfigs struct {
+	// The associated service ID.
+	//
 	// example:
 	//
 	// gs-xxx
-	GatewayServiceId *string                        `json:"gatewayServiceId,omitempty" xml:"gatewayServiceId,omitempty"`
-	Match            *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
+	GatewayServiceId *string `json:"gatewayServiceId,omitempty" xml:"gatewayServiceId,omitempty"`
+	// The matching conditions.
+	Match *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
+	// The function name.
+	//
 	// example:
 	//
 	// demo-function
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The function version or alias.
+	//
 	// example:
 	//
 	// LATEST
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	// The service weight.
+	//
 	// example:
 	//
 	// 100
@@ -543,23 +612,34 @@ func (s *HttpApiPublishRevisionInfoCloudProductConfigFunctionConfigs) Validate()
 }
 
 type HttpApiPublishRevisionInfoCloudProductConfigMseNacosConfigs struct {
+	// The associated service ID.
+	//
 	// example:
 	//
 	// gs-xxx
 	GatewayServiceId *string `json:"gatewayServiceId,omitempty" xml:"gatewayServiceId,omitempty"`
+	// The service group.
+	//
 	// example:
 	//
 	// DEFAULT_GROUP
-	GroupName *string                        `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	Match     *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The matching conditions.
+	Match *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
+	// The Nacos service name.
+	//
 	// example:
 	//
 	// spring-demo
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The Nacos namespace.
+	//
 	// example:
 	//
 	// public
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The service weight.
+	//
 	// example:
 	//
 	// 100
@@ -638,8 +718,12 @@ func (s *HttpApiPublishRevisionInfoCloudProductConfigMseNacosConfigs) Validate()
 }
 
 type HttpApiPublishRevisionInfoDnsConfigs struct {
-	DnsList []*string                      `json:"dnsList,omitempty" xml:"dnsList,omitempty" type:"Repeated"`
-	Match   *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
+	// The DNS domain names.
+	DnsList []*string `json:"dnsList,omitempty" xml:"dnsList,omitempty" type:"Repeated"`
+	// The matching condition. This condition is valid only in content-based routing.
+	Match *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
+	// The weight. Valid values: [1,100]. This parameter is valid only in proportional routing.
+	//
 	// example:
 	//
 	// 100
@@ -691,15 +775,22 @@ func (s *HttpApiPublishRevisionInfoDnsConfigs) Validate() error {
 }
 
 type HttpApiPublishRevisionInfoEnvironmentInfo struct {
+	// The environment alias.
+	//
 	// example:
 	//
-	// 测试
+	// Test
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// The environment ID.
+	//
 	// example:
 	//
 	// env-xxx
-	EnvironmentId *string                                               `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	GatewayInfo   *HttpApiPublishRevisionInfoEnvironmentInfoGatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty" type:"Struct"`
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// The instance information.
+	GatewayInfo *HttpApiPublishRevisionInfoEnvironmentInfoGatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty" type:"Struct"`
+	// The environment name.
+	//
 	// example:
 	//
 	// test
@@ -760,13 +851,17 @@ func (s *HttpApiPublishRevisionInfoEnvironmentInfo) Validate() error {
 }
 
 type HttpApiPublishRevisionInfoEnvironmentInfoGatewayInfo struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// gw-xxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
-	// 实例1
+	// Instance 1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -801,23 +896,34 @@ func (s *HttpApiPublishRevisionInfoEnvironmentInfoGatewayInfo) Validate() error 
 }
 
 type HttpApiPublishRevisionInfoServiceConfigs struct {
+	// The service ID.
+	//
 	// example:
 	//
 	// gs-xxx
-	GatewayServiceId *string                        `json:"gatewayServiceId,omitempty" xml:"gatewayServiceId,omitempty"`
-	Match            *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
+	GatewayServiceId *string `json:"gatewayServiceId,omitempty" xml:"gatewayServiceId,omitempty"`
+	// The matching conditions.
+	Match *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
+	// The service port.
+	//
 	// example:
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// The service protocol.
+	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The service version.
+	//
 	// example:
 	//
 	// v1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The service weight.
+	//
 	// example:
 	//
 	// 100
@@ -896,8 +1002,12 @@ func (s *HttpApiPublishRevisionInfoServiceConfigs) Validate() error {
 }
 
 type HttpApiPublishRevisionInfoVipConfigs struct {
-	Endpoints []*string                      `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
-	Match     *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
+	// The IP addresses.
+	Endpoints []*string `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
+	// The matching condition. This condition is valid only in content-based routing.
+	Match *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
+	// The weight. Valid values: [1,100]. This parameter is valid only in proportional routing.
+	//
 	// example:
 	//
 	// 100

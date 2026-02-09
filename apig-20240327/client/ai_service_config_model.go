@@ -36,23 +36,53 @@ type iAiServiceConfig interface {
 }
 
 type AiServiceConfig struct {
+	// API key generation mode.
+	//
+	// example:
+	//
+	// -
 	ApiKeyGenerateMode *string `json:"ApiKeyGenerateMode,omitempty" xml:"ApiKeyGenerateMode,omitempty"`
+	// The service endpoint.
+	//
 	// example:
 	//
 	// https://dashscope.aliyun.com
-	Address                *string                              `json:"address,omitempty" xml:"address,omitempty"`
-	ApiKeys                []*string                            `json:"apiKeys,omitempty" xml:"apiKeys,omitempty" type:"Repeated"`
-	BedrockServiceConfig   *AiServiceConfigBedrockServiceConfig `json:"bedrockServiceConfig,omitempty" xml:"bedrockServiceConfig,omitempty" type:"Struct"`
-	CompatibleProtocols    []*string                            `json:"compatibleProtocols,omitempty" xml:"compatibleProtocols,omitempty" type:"Repeated"`
-	DefaultModelName       *string                              `json:"defaultModelName,omitempty" xml:"defaultModelName,omitempty"`
-	EnableHealthCheck      *bool                                `json:"enableHealthCheck,omitempty" xml:"enableHealthCheck,omitempty"`
-	EnableOutlierDetection *bool                                `json:"enableOutlierDetection,omitempty" xml:"enableOutlierDetection,omitempty"`
-	PaiEASServiceConfig    *AiServiceConfigPaiEASServiceConfig  `json:"paiEASServiceConfig,omitempty" xml:"paiEASServiceConfig,omitempty" type:"Struct"`
-	Protocols              []*string                            `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	Address *string `json:"address,omitempty" xml:"address,omitempty"`
+	// The API keys.
+	ApiKeys []*string `json:"apiKeys,omitempty" xml:"apiKeys,omitempty" type:"Repeated"`
+	// Bedrock service configuration.
+	BedrockServiceConfig *AiServiceConfigBedrockServiceConfig `json:"bedrockServiceConfig,omitempty" xml:"bedrockServiceConfig,omitempty" type:"Struct"`
+	// Supported compatible protocols.
+	CompatibleProtocols []*string `json:"compatibleProtocols,omitempty" xml:"compatibleProtocols,omitempty" type:"Repeated"`
+	// Default model name.
+	//
+	// example:
+	//
+	// qwen-turbo
+	DefaultModelName *string `json:"defaultModelName,omitempty" xml:"defaultModelName,omitempty"`
+	// Specifies whether to enable health check.
+	//
+	// example:
+	//
+	// true
+	EnableHealthCheck *bool `json:"enableHealthCheck,omitempty" xml:"enableHealthCheck,omitempty"`
+	// Enable outlier detection.
+	//
+	// example:
+	//
+	// false
+	EnableOutlierDetection *bool `json:"enableOutlierDetection,omitempty" xml:"enableOutlierDetection,omitempty"`
+	// PAI-EAS service configuration settings.
+	PaiEASServiceConfig *AiServiceConfigPaiEASServiceConfig `json:"paiEASServiceConfig,omitempty" xml:"paiEASServiceConfig,omitempty" type:"Struct"`
+	// The LLM protocols.
+	Protocols []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	// The Large Language Model (LLM) provider.
+	//
 	// example:
 	//
 	// qwen
-	Provider            *string                             `json:"provider,omitempty" xml:"provider,omitempty"`
+	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	// Vertex AI service configuration.
 	VertexServiceConfig *AiServiceConfigVertexServiceConfig `json:"vertexServiceConfig,omitempty" xml:"vertexServiceConfig,omitempty" type:"Struct"`
 }
 
@@ -192,8 +222,23 @@ func (s *AiServiceConfig) Validate() error {
 }
 
 type AiServiceConfigBedrockServiceConfig struct {
+	// AWS-AccessKey
+	//
+	// example:
+	//
+	// AKIAIOSFODNN7EXAMPLE
 	AwsAccessKey *string `json:"awsAccessKey,omitempty" xml:"awsAccessKey,omitempty"`
-	AwsRegion    *string `json:"awsRegion,omitempty" xml:"awsRegion,omitempty"`
+	// AWS-Region
+	//
+	// example:
+	//
+	// us-west-2
+	AwsRegion *string `json:"awsRegion,omitempty" xml:"awsRegion,omitempty"`
+	// AWS-SecretKey
+	//
+	// example:
+	//
+	// wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 	AwsSecretKey *string `json:"awsSecretKey,omitempty" xml:"awsSecretKey,omitempty"`
 }
 
@@ -237,10 +282,30 @@ func (s *AiServiceConfigBedrockServiceConfig) Validate() error {
 }
 
 type AiServiceConfigPaiEASServiceConfig struct {
+	// Type of endpoint.
+	//
+	// example:
+	//
+	// "public"，"private"
 	EndpointType *string `json:"endpointType,omitempty" xml:"endpointType,omitempty"`
-	ServiceId    *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	ServiceName  *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	WorkspaceId  *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// Service identifier.
+	//
+	// example:
+	//
+	// svc-d33onfmm1hkn5duhuqjg
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// Name of the service.
+	//
+	// example:
+	//
+	// service-hello
+	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	// Workspace identifier.
+	//
+	// example:
+	//
+	// plw-d5g7qsem1hkmih54g210
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s AiServiceConfigPaiEASServiceConfig) String() string {
@@ -292,12 +357,38 @@ func (s *AiServiceConfigPaiEASServiceConfig) Validate() error {
 }
 
 type AiServiceConfigVertexServiceConfig struct {
-	GeminiSafetySetting     map[string]*string `json:"geminiSafetySetting,omitempty" xml:"geminiSafetySetting,omitempty"`
-	VertexAuthKey           *string            `json:"vertexAuthKey,omitempty" xml:"vertexAuthKey,omitempty"`
-	VertexAuthServiceName   *string            `json:"vertexAuthServiceName,omitempty" xml:"vertexAuthServiceName,omitempty"`
-	VertexProjectId         *string            `json:"vertexProjectId,omitempty" xml:"vertexProjectId,omitempty"`
-	VertexRegion            *string            `json:"vertexRegion,omitempty" xml:"vertexRegion,omitempty"`
-	VertexTokenRefreshAhead *int32             `json:"vertexTokenRefreshAhead,omitempty" xml:"vertexTokenRefreshAhead,omitempty"`
+	// Gemini safety settings.
+	GeminiSafetySetting map[string]*string `json:"geminiSafetySetting,omitempty" xml:"geminiSafetySetting,omitempty"`
+	// Vertex AI authentication key.
+	//
+	// example:
+	//
+	// {\\"type\\":\\"service_account\\",\\"project_id\\":\\"xxx\\",\\"private_key\\":\\"-----BEGIN PRIVATE KEY-----\\",\\"client_email\\":\\"xxx@xxx.iam.gserviceaccount.com\\",\\"token_uri\\":\\"https://oauth2.googleapis.com/token\\"}
+	VertexAuthKey *string `json:"vertexAuthKey,omitempty" xml:"vertexAuthKey,omitempty"`
+	// Vertex AI auth service name.
+	//
+	// example:
+	//
+	// custom-vertex-auth
+	VertexAuthServiceName *string `json:"vertexAuthServiceName,omitempty" xml:"vertexAuthServiceName,omitempty"`
+	// Vertex AI project ID.
+	//
+	// example:
+	//
+	// my-gcp-project-123
+	VertexProjectId *string `json:"vertexProjectId,omitempty" xml:"vertexProjectId,omitempty"`
+	// Vertex AI region.
+	//
+	// example:
+	//
+	// us-central1
+	VertexRegion *string `json:"vertexRegion,omitempty" xml:"vertexRegion,omitempty"`
+	// Vertex token refresh lead time.
+	//
+	// example:
+	//
+	// 300
+	VertexTokenRefreshAhead *int32 `json:"vertexTokenRefreshAhead,omitempty" xml:"vertexTokenRefreshAhead,omitempty"`
 }
 
 func (s AiServiceConfigVertexServiceConfig) String() string {

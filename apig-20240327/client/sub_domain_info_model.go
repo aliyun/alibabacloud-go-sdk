@@ -20,10 +20,42 @@ type iSubDomainInfo interface {
 }
 
 type SubDomainInfo struct {
-	DomainId    *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
-	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The domain name ID.
+	//
+	// example:
+	//
+	// d-cpudb0llhtgl2djvq2sg
+	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
+	// The domain name.
+	//
+	// example:
+	//
+	// abc.com
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The network type. Valid values:
+	//
+	// Valid values:
+	//
+	// 	- Intranet
+	//
+	// 	- Internet
+	//
+	// example:
+	//
+	// Intranet
 	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	Protocol    *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The protocol.
+	//
+	// Valid values:
+	//
+	// 	- HTTPS
+	//
+	// 	- HTTP
+	//
+	// example:
+	//
+	// HTTP
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 }
 
 func (s SubDomainInfo) String() string {

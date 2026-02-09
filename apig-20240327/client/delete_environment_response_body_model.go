@@ -18,19 +18,19 @@ type iDeleteEnvironmentResponseBody interface {
 }
 
 type DeleteEnvironmentResponseBody struct {
-	// Response code.
+	// The status code returned.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response message.
+	// The response message returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID, used for tracing the request chain.
+	// The request ID. You can use the ID to trace the request link.
 	//
 	// example:
 	//

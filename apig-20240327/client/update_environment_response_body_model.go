@@ -18,20 +18,14 @@ type iUpdateEnvironmentResponseBody interface {
 }
 
 type UpdateEnvironmentResponseBody struct {
-	// Response code.
-	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response message.
-	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID, used for tracing the API call chain.
-	//
 	// example:
 	//
 	// 52FB803B-3CD8-5FF8-AAE9-C2B841F6A483

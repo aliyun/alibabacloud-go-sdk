@@ -18,15 +18,15 @@ type iAddGatewaySecurityGroupRuleRequest interface {
 }
 
 type AddGatewaySecurityGroupRuleRequest struct {
-	// Description of the security group rule.
+	// The description of security group rule N.
 	//
 	// example:
 	//
-	// 商品中心访问安全组
+	// ProductCenterSG
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Port ranges.
+	// The port ranges.
 	PortRanges []*string `json:"portRanges,omitempty" xml:"portRanges,omitempty" type:"Repeated"`
-	// Security group ID.
+	// The security group ID.
 	//
 	// example:
 	//

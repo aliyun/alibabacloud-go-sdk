@@ -14,7 +14,7 @@ type iUpgradeGatewayRequest interface {
 }
 
 type UpgradeGatewayRequest struct {
-	// Gateway version.
+	// The destination instance version.
 	//
 	// example:
 	//

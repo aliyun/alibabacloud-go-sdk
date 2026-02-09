@@ -16,13 +16,13 @@ type iGetEnvironmentRequest interface {
 }
 
 type GetEnvironmentRequest struct {
-	// Indicates whether to return online resource info.
+	// The request ID, which is used to trace the API call link.
 	//
 	// example:
 	//
 	// true
 	WithStatistics *bool `json:"withStatistics,omitempty" xml:"withStatistics,omitempty"`
-	// Option for vpc info.
+	// Schema of Response
 	//
 	// example:
 	//

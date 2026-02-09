@@ -16,8 +16,18 @@ type iKMSConfig interface {
 }
 
 type KMSConfig struct {
+	// The KMS instance ID
+	//
+	// example:
+	//
+	// kst-xxxxxxxx
 	KmsInstanceId *string `json:"kmsInstanceId,omitempty" xml:"kmsInstanceId,omitempty"`
-	KmsKeyId      *string `json:"kmsKeyId,omitempty" xml:"kmsKeyId,omitempty"`
+	// The KMS key ID
+	//
+	// example:
+	//
+	// key-xxxxxxxx
+	KmsKeyId *string `json:"kmsKeyId,omitempty" xml:"kmsKeyId,omitempty"`
 }
 
 func (s KMSConfig) String() string {

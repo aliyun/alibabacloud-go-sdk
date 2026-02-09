@@ -20,21 +20,21 @@ type iGetEnvironmentResponseBody interface {
 }
 
 type GetEnvironmentResponseBody struct {
-	// Response code.
+	// The response message returned.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response data.
+	// The environment ID.
 	Data *GetEnvironmentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Response message.
+	// The response data.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID, used for tracing the API call chain.
+	// The status code returned.
 	//
 	// example:
 	//
@@ -96,55 +96,55 @@ func (s *GetEnvironmentResponseBody) Validate() error {
 }
 
 type GetEnvironmentResponseBodyData struct {
-	// Environment alias.
+	// Test environment
 	//
 	// example:
 	//
-	// 测试环境
+	// The environment description.
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// Creation timestamp.
+	// The update timestamp.
 	//
 	// example:
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// Whether it is the default environment.
+	// The creation timestamp.
 	//
 	// example:
 	//
 	// true
 	Default *bool `json:"default,omitempty" xml:"default,omitempty"`
-	// Environment description.
+	// Testing environment for xx project of xxx
 	//
 	// example:
 	//
-	// 这是xxx的xx项目测试环境
+	// The instance information.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Environment ID.
+	// The environment name.
 	//
 	// example:
 	//
 	// env-cq7l5s5lhtgi6qasrdc0
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// Gateway information
+	// The subdomains.
 	GatewayInfo *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
-	// Environment name.
+	// The environment alias.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The ID of the resource group.
+	// rg-aekzzzntl5njbpi
 	//
 	// example:
 	//
-	// rg-aekzzzntl5njbpi
+	// rg-aekz4us4iruleja
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// Related resource information.
+	// The information about online resources.
 	StatisticsInfo *GetEnvironmentResponseBodyDataStatisticsInfo `json:"statisticsInfo,omitempty" xml:"statisticsInfo,omitempty" type:"Struct"`
-	// List of subdomains.
+	// The subdomain information.
 	SubDomainInfos []*SubDomainInfo `json:"subDomainInfos,omitempty" xml:"subDomainInfos,omitempty" type:"Repeated"`
-	// Update timestamp.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -283,13 +283,13 @@ func (s *GetEnvironmentResponseBodyData) Validate() error {
 }
 
 type GetEnvironmentResponseBodyDataStatisticsInfo struct {
-	// The array of related resource information.
+	// 4
 	ResourceStatistics []*ResourceStatistic `json:"resourceStatistics,omitempty" xml:"resourceStatistics,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
-	// 4
+	// 1
 	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 

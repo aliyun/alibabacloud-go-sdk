@@ -18,19 +18,19 @@ type iDeleteGatewayResponseBody interface {
 }
 
 type DeleteGatewayResponseBody struct {
-	// Response status code.
+	// The status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response message.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

@@ -18,19 +18,19 @@ type iDeleteDomainResponseBody interface {
 }
 
 type DeleteDomainResponseBody struct {
-	// Response code.
+	// The status code returned.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response message.
+	// The response message returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID, used for tracing the API call chain.
+	// The request ID, which is used to trace the API call link.
 	//
 	// example:
 	//

@@ -54,14 +54,24 @@ type GetDashboardShrinkRequest struct {
 	//
 	// PLUGIN
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The plug-in ID.
+	// The plug-in type ID.
 	//
 	// example:
 	//
 	// pls-dn82a9djd8z****
 	PluginClassId *string `json:"pluginClassId,omitempty" xml:"pluginClassId,omitempty"`
-	PluginId      *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
-	RouteId       *string `json:"routeId,omitempty" xml:"routeId,omitempty"`
+	// The plug-in ID.
+	//
+	// example:
+	//
+	// inner-ai-search-cvd3mcum1hks660icn10
+	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
+	// The route ID.
+	//
+	// example:
+	//
+	// route-xxx
+	RouteId *string `json:"routeId,omitempty" xml:"routeId,omitempty"`
 	// The dashboard source. Valid values:
 	//
 	// 	- SLS: Simple Log Service
@@ -69,7 +79,12 @@ type GetDashboardShrinkRequest struct {
 	// example:
 	//
 	// SLS
-	Source          *string `json:"source,omitempty" xml:"source,omitempty"`
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The AI service identifier.
+	//
+	// example:
+	//
+	// outbound|443||ds.ai
 	UpstreamCluster *string `json:"upstreamCluster,omitempty" xml:"upstreamCluster,omitempty"`
 }
 

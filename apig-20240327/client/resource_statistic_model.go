@@ -16,8 +16,24 @@ type iResourceStatistic interface {
 }
 
 type ResourceStatistic struct {
-	ResourceCount *int32  `json:"resourceCount,omitempty" xml:"resourceCount,omitempty"`
-	ResourceType  *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The number of online resources.
+	//
+	// example:
+	//
+	// 10
+	ResourceCount *int32 `json:"resourceCount,omitempty" xml:"resourceCount,omitempty"`
+	// The resource type.
+	//
+	// Valid values:
+	//
+	// 	- HttpApi
+	//
+	// 	- GatewayRoute
+	//
+	// example:
+	//
+	// HttpApi
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
 func (s ResourceStatistic) String() string {

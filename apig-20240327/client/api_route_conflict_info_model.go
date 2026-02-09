@@ -16,8 +16,10 @@ type iApiRouteConflictInfo interface {
 }
 
 type ApiRouteConflictInfo struct {
-	Conflicts  []*ApiRouteConflictInfoConflicts `json:"conflicts,omitempty" xml:"conflicts,omitempty" type:"Repeated"`
-	DomainInfo *ApiRouteConflictInfoDomainInfo  `json:"domainInfo,omitempty" xml:"domainInfo,omitempty" type:"Struct"`
+	// The conflicts.
+	Conflicts []*ApiRouteConflictInfoConflicts `json:"conflicts,omitempty" xml:"conflicts,omitempty" type:"Repeated"`
+	// The conflicting routes.
+	DomainInfo *ApiRouteConflictInfoDomainInfo `json:"domainInfo,omitempty" xml:"domainInfo,omitempty" type:"Struct"`
 }
 
 func (s ApiRouteConflictInfo) String() string {
@@ -65,12 +67,36 @@ func (s *ApiRouteConflictInfo) Validate() error {
 }
 
 type ApiRouteConflictInfoConflicts struct {
-	Details         []*ApiRouteConflictInfoConflictsDetails       `json:"details,omitempty" xml:"details,omitempty" type:"Repeated"`
+	// The details about the conflicts.
+	Details []*ApiRouteConflictInfoConflictsDetails `json:"details,omitempty" xml:"details,omitempty" type:"Repeated"`
+	// For APIs, conflicts exist in the specific environment. If the conflict object is a route, ignore.
 	EnvironmentInfo *ApiRouteConflictInfoConflictsEnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty" type:"Struct"`
-	ResourceId      *string                                       `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	ResourceName    *string                                       `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
-	ResourceType    *string                                       `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	RouteInfo       *ApiRouteConflictInfoConflictsRouteInfo       `json:"routeInfo,omitempty" xml:"routeInfo,omitempty" type:"Struct"`
+	// The conflicting resource ID.
+	//
+	// example:
+	//
+	// api-crdclqllhtggm***
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// The conflicting resource name.
+	//
+	// example:
+	//
+	// item-stock
+	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
+	// The type of the conflicting resource.
+	//
+	// Valid values:
+	//
+	// 	- RestApi
+	//
+	// 	- HttpApiRoute
+	//
+	// example:
+	//
+	// HttpApiRoute
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The route information.
+	RouteInfo *ApiRouteConflictInfoConflictsRouteInfo `json:"routeInfo,omitempty" xml:"routeInfo,omitempty" type:"Struct"`
 }
 
 func (s ApiRouteConflictInfoConflicts) String() string {
@@ -159,9 +185,16 @@ func (s *ApiRouteConflictInfoConflicts) Validate() error {
 }
 
 type ApiRouteConflictInfoConflictsDetails struct {
+	// The matching rule information of the conflicting target.
 	ConflictingMatch *ApiRouteConflictInfoConflictsDetailsConflictingMatch `json:"conflictingMatch,omitempty" xml:"conflictingMatch,omitempty" type:"Struct"`
-	DetectedMatch    *ApiRouteConflictInfoConflictsDetailsDetectedMatch    `json:"detectedMatch,omitempty" xml:"detectedMatch,omitempty" type:"Struct"`
-	Level            *string                                               `json:"level,omitempty" xml:"level,omitempty"`
+	// The matching rule information of the object being detected.
+	DetectedMatch *ApiRouteConflictInfoConflictsDetailsDetectedMatch `json:"detectedMatch,omitempty" xml:"detectedMatch,omitempty" type:"Struct"`
+	// The conflict level. Valid values: Critical, Warning, and Informational.
+	//
+	// example:
+	//
+	// Critical
+	Level *string `json:"level,omitempty" xml:"level,omitempty"`
 }
 
 func (s ApiRouteConflictInfoConflictsDetails) String() string {
@@ -214,7 +247,9 @@ func (s *ApiRouteConflictInfoConflictsDetails) Validate() error {
 }
 
 type ApiRouteConflictInfoConflictsDetailsConflictingMatch struct {
-	Match         *HttpRouteMatch                                                    `json:"match,omitempty" xml:"match,omitempty"`
+	// The matching rule.
+	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
+	// The corresponding operation information if the conflicting target is an API.
 	OperationInfo *ApiRouteConflictInfoConflictsDetailsConflictingMatchOperationInfo `json:"operationInfo,omitempty" xml:"operationInfo,omitempty" type:"Struct"`
 }
 
@@ -259,7 +294,17 @@ func (s *ApiRouteConflictInfoConflictsDetailsConflictingMatch) Validate() error 
 }
 
 type ApiRouteConflictInfoConflictsDetailsConflictingMatchOperationInfo struct {
-	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The operation name.
+	//
+	// example:
+	//
+	// GetItem
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The operation ID.
+	//
+	// example:
+	//
+	// op-cq35jadlhtgrv07***
 	OperationId *string `json:"operationId,omitempty" xml:"operationId,omitempty"`
 }
 
@@ -294,7 +339,9 @@ func (s *ApiRouteConflictInfoConflictsDetailsConflictingMatchOperationInfo) Vali
 }
 
 type ApiRouteConflictInfoConflictsDetailsDetectedMatch struct {
-	Match         *HttpRouteMatch                                                 `json:"match,omitempty" xml:"match,omitempty"`
+	// The matching rule information of the object being detected.
+	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
+	// If the object is an API, the conflicting operation information needs to be returned.
 	OperationInfo *ApiRouteConflictInfoConflictsDetailsDetectedMatchOperationInfo `json:"operationInfo,omitempty" xml:"operationInfo,omitempty" type:"Struct"`
 }
 
@@ -339,7 +386,17 @@ func (s *ApiRouteConflictInfoConflictsDetailsDetectedMatch) Validate() error {
 }
 
 type ApiRouteConflictInfoConflictsDetailsDetectedMatchOperationInfo struct {
-	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The operation name.
+	//
+	// example:
+	//
+	// GetItemV2
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The operation ID.
+	//
+	// example:
+	//
+	// op-cqf17dllhtgng1m**
 	OperationId *string `json:"operationId,omitempty" xml:"operationId,omitempty"`
 }
 
@@ -374,8 +431,18 @@ func (s *ApiRouteConflictInfoConflictsDetailsDetectedMatchOperationInfo) Validat
 }
 
 type ApiRouteConflictInfoConflictsEnvironmentInfo struct {
+	// The environment ID.
+	//
+	// example:
+	//
+	// env-cquqsollhtgidd***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The environment name.
+	//
+	// example:
+	//
+	// itemcenter-dev
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ApiRouteConflictInfoConflictsEnvironmentInfo) String() string {
@@ -409,7 +476,17 @@ func (s *ApiRouteConflictInfoConflictsEnvironmentInfo) Validate() error {
 }
 
 type ApiRouteConflictInfoConflictsRouteInfo struct {
-	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The route name.
+	//
+	// example:
+	//
+	// itemcenter-route
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The route ID.
+	//
+	// example:
+	//
+	// hr-cr82undlhtgrlej***
 	RouteId *string `json:"routeId,omitempty" xml:"routeId,omitempty"`
 }
 
@@ -444,8 +521,18 @@ func (s *ApiRouteConflictInfoConflictsRouteInfo) Validate() error {
 }
 
 type ApiRouteConflictInfoDomainInfo struct {
+	// The domain name ID.
+	//
+	// example:
+	//
+	// d-cqookcllhtgvof7e***
 	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
-	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The domain name.
+	//
+	// example:
+	//
+	// httpbin
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ApiRouteConflictInfoDomainInfo) String() string {

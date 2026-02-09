@@ -16,13 +16,16 @@ type iHttpApiResponseContract interface {
 }
 
 type HttpApiResponseContract struct {
+	// The content type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// application/json
-	ContentType *string                         `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	Items       []*HttpApiResponseContractItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// The response definition.
+	Items []*HttpApiResponseContractItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 
 func (s HttpApiResponseContract) String() string {
@@ -65,18 +68,51 @@ func (s *HttpApiResponseContract) Validate() error {
 }
 
 type HttpApiResponseContractItems struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
+	// The response description.
+	//
 	// example:
 	//
-	// 正常接口响应
+	// This is a description.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The sample value.
+	//
 	// example:
 	//
 	// {"result": "ok"}
-	Example    *string `json:"example,omitempty" xml:"example,omitempty"`
+	Example *string `json:"example,omitempty" xml:"example,omitempty"`
+	// The JSON definition description of the response body.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "type": "object",
+	//
+	//     "required": [
+	//
+	//         "result"
+	//
+	//     ],
+	//
+	//     "properties": {
+	//
+	//         "result": {
+	//
+	//             "type": "string",
+	//
+	//             "description": "This is a description."
+	//
+	//         }
+	//
+	//     }
+	//
+	// }
 	JsonSchema *string `json:"jsonSchema,omitempty" xml:"jsonSchema,omitempty"`
 }
 

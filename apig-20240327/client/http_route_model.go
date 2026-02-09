@@ -38,19 +38,60 @@ type iHttpRoute interface {
 }
 
 type HttpRoute struct {
-	Backend         *Backend                  `json:"backend,omitempty" xml:"backend,omitempty"`
-	Builtin         *string                   `json:"builtin,omitempty" xml:"builtin,omitempty"`
-	CreateTimestamp *int64                    `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	DeployStatus    *string                   `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
-	Description     *string                   `json:"description,omitempty" xml:"description,omitempty"`
-	DomainInfos     []*HttpRouteDomainInfos   `json:"domainInfos,omitempty" xml:"domainInfos,omitempty" type:"Repeated"`
+	// The backend configuration
+	Backend *Backend `json:"backend,omitempty" xml:"backend,omitempty"`
+	// builtin
+	//
+	// example:
+	//
+	// true
+	Builtin *string `json:"builtin,omitempty" xml:"builtin,omitempty"`
+	// The creation timestamp in milliseconds
+	//
+	// example:
+	//
+	// 1726649310593
+	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// The deployment status
+	//
+	// example:
+	//
+	// Deployed
+	DeployStatus *string `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
+	// The description of the route
+	//
+	// example:
+	//
+	// Route for user management API
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// List of domain information
+	DomainInfos []*HttpRouteDomainInfos `json:"domainInfos,omitempty" xml:"domainInfos,omitempty" type:"Repeated"`
+	// The environment information
 	EnvironmentInfo *HttpRouteEnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty" type:"Struct"`
-	GatewayStatus   map[string]*string        `json:"gatewayStatus,omitempty" xml:"gatewayStatus,omitempty"`
-	Match           *HttpRouteMatch           `json:"match,omitempty" xml:"match,omitempty"`
-	McpServerInfo   *HttpRouteMcpServerInfo   `json:"mcpServerInfo,omitempty" xml:"mcpServerInfo,omitempty" type:"Struct"`
-	Name            *string                   `json:"name,omitempty" xml:"name,omitempty"`
-	RouteId         *string                   `json:"routeId,omitempty" xml:"routeId,omitempty"`
-	UpdateTimestamp *int64                    `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
+	// gatewayStatus
+	GatewayStatus map[string]*string `json:"gatewayStatus,omitempty" xml:"gatewayStatus,omitempty"`
+	// The route matching rules
+	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
+	// The MCP server information
+	McpServerInfo *HttpRouteMcpServerInfo `json:"mcpServerInfo,omitempty" xml:"mcpServerInfo,omitempty" type:"Struct"`
+	// The name of the route
+	//
+	// example:
+	//
+	// itemcenter-pre-route
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The unique identifier of the route
+	//
+	// example:
+	//
+	// hr-crf5l7tlhtgp91t***
+	RouteId *string `json:"routeId,omitempty" xml:"routeId,omitempty"`
+	// The last update timestamp in milliseconds
+	//
+	// example:
+	//
+	// 1726819895636
+	UpdateTimestamp *int64 `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
 }
 
 func (s HttpRoute) String() string {
@@ -212,8 +253,23 @@ func (s *HttpRoute) Validate() error {
 }
 
 type HttpRouteDomainInfos struct {
+	// The domain ID
+	//
+	// example:
+	//
+	// d-cr3v7dllhtgi9s***
 	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
-	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The domain name
+	//
+	// example:
+	//
+	// itemcenter.dev
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The domain protocol
+	//
+	// example:
+	//
+	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 }
 
@@ -257,11 +313,28 @@ func (s *HttpRouteDomainInfos) Validate() error {
 }
 
 type HttpRouteEnvironmentInfo struct {
-	Alias         *string                               `json:"alias,omitempty" xml:"alias,omitempty"`
-	EnvironmentId *string                               `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	GatewayInfo   *HttpRouteEnvironmentInfoGatewayInfo  `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty" type:"Struct"`
-	Name          *string                               `json:"name,omitempty" xml:"name,omitempty"`
-	SubDomains    []*HttpRouteEnvironmentInfoSubDomains `json:"subDomains,omitempty" xml:"subDomains,omitempty" type:"Repeated"`
+	// The environment alias
+	//
+	// example:
+	//
+	// prod
+	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// The environment ID
+	//
+	// example:
+	//
+	// env-crhq1u5lhtgju***
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// The gateway information
+	GatewayInfo *HttpRouteEnvironmentInfoGatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty" type:"Struct"`
+	// The environment name
+	//
+	// example:
+	//
+	// itemcenter-pre
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// List of subdomain information
+	SubDomains []*HttpRouteEnvironmentInfoSubDomains `json:"subDomains,omitempty" xml:"subDomains,omitempty" type:"Repeated"`
 }
 
 func (s HttpRouteEnvironmentInfo) String() string {
@@ -336,8 +409,18 @@ func (s *HttpRouteEnvironmentInfo) Validate() error {
 }
 
 type HttpRouteEnvironmentInfoGatewayInfo struct {
+	// The gateway ID
+	//
+	// example:
+	//
+	// gw-cqoohqtlh***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The gateway name
+	//
+	// example:
+	//
+	// itemcenter-gateway
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s HttpRouteEnvironmentInfoGatewayInfo) String() string {
@@ -371,13 +454,30 @@ func (s *HttpRouteEnvironmentInfoGatewayInfo) Validate() error {
 }
 
 type HttpRouteEnvironmentInfoSubDomains struct {
+	// The subdomain ID
+	//
+	// example:
+	//
+	// d-cqu19hdlhtgjuv4***
 	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
-	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The subdomain name
+	//
+	// example:
+	//
+	// env-crmic3llht***-cn-hangzhou-vpc.alicloudapi.com
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// networkType
+	//
 	// example:
 	//
 	// Internet
 	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	Protocol    *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The subdomain protocol
+	//
+	// example:
+	//
+	// HTTP
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 }
 
 func (s HttpRouteEnvironmentInfoSubDomains) String() string {
@@ -429,12 +529,38 @@ func (s *HttpRouteEnvironmentInfoSubDomains) Validate() error {
 }
 
 type HttpRouteMcpServerInfo struct {
-	CreateFromType    *string                               `json:"createFromType,omitempty" xml:"createFromType,omitempty"`
-	ImportInstanceId  *string                               `json:"importInstanceId,omitempty" xml:"importInstanceId,omitempty"`
-	ImportMcpServerId *string                               `json:"importMcpServerId,omitempty" xml:"importMcpServerId,omitempty"`
-	ImportNamespace   *string                               `json:"importNamespace,omitempty" xml:"importNamespace,omitempty"`
-	McpRouteConfig    *HttpRouteMcpServerInfoMcpRouteConfig `json:"mcpRouteConfig,omitempty" xml:"mcpRouteConfig,omitempty" type:"Struct"`
-	McpServerConfig   *string                               `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty"`
+	// The creation type
+	//
+	// example:
+	//
+	// Nacos
+	CreateFromType *string `json:"createFromType,omitempty" xml:"createFromType,omitempty"`
+	// The imported instance ID
+	//
+	// example:
+	//
+	// import-001
+	ImportInstanceId *string `json:"importInstanceId,omitempty" xml:"importInstanceId,omitempty"`
+	// The imported Nacos MCP server ID
+	//
+	// example:
+	//
+	// mcp-002
+	ImportMcpServerId *string `json:"importMcpServerId,omitempty" xml:"importMcpServerId,omitempty"`
+	// The imported namespace
+	//
+	// example:
+	//
+	// default
+	ImportNamespace *string `json:"importNamespace,omitempty" xml:"importNamespace,omitempty"`
+	// The MCP route configuration
+	McpRouteConfig *HttpRouteMcpServerInfoMcpRouteConfig `json:"mcpRouteConfig,omitempty" xml:"mcpRouteConfig,omitempty" type:"Struct"`
+	// The MCP server configuration content
+	//
+	// example:
+	//
+	// {\\"config\\":{}}
+	McpServerConfig *string `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty"`
 }
 
 func (s HttpRouteMcpServerInfo) String() string {
@@ -509,8 +635,18 @@ func (s *HttpRouteMcpServerInfo) Validate() error {
 }
 
 type HttpRouteMcpServerInfoMcpRouteConfig struct {
+	// mcp route path
+	//
+	// example:
+	//
+	// /mcp
 	ExposedUriPath *string `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
-	Protocol       *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The MCP protocol
+	//
+	// example:
+	//
+	// SSE
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 }
 
 func (s HttpRouteMcpServerInfoMcpRouteConfig) String() string {

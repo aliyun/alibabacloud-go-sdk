@@ -38,39 +38,80 @@ type iHttpApiOperationInfo interface {
 }
 
 type HttpApiOperationInfo struct {
+	// The authentication configurations of the operation.
 	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
+	// The creation timestamp.
+	//
 	// example:
 	//
 	// 1719386834548
-	CreateTimestamp *int64                 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	DeployConfigs   []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
+	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// The backend service deployment information of the operation.
+	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
+	// The operation description.
+	//
 	// example:
 	//
-	// 获取用户信息
+	// A example operation.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Specifies whether to enable authentication.
+	//
 	// example:
 	//
 	// true
 	EnableAuth *bool `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
+	// The HTTP method of the operation.
+	//
+	// Valid values:
+	//
+	// 	- TRACE
+	//
+	// 	- HEAD
+	//
+	// 	- DELETE
+	//
+	// 	- POST
+	//
+	// 	- GET
+	//
+	// 	- CONNECT
+	//
+	// 	- OPTIONS
+	//
+	// 	- PUT
+	//
+	// 	- PATCH
+	//
 	// example:
 	//
 	// GET
-	Method *string              `json:"method,omitempty" xml:"method,omitempty"`
-	Mock   *HttpApiMockContract `json:"mock,omitempty" xml:"mock,omitempty"`
+	Method *string `json:"method,omitempty" xml:"method,omitempty"`
+	// The mocked parameters of the operation.
+	Mock *HttpApiMockContract `json:"mock,omitempty" xml:"mock,omitempty"`
+	// The operation name.
+	//
 	// example:
 	//
 	// GetUserInfo
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The operation ID.
+	//
 	// example:
 	//
 	// op-xxx
 	OperationId *string `json:"operationId,omitempty" xml:"operationId,omitempty"`
+	// The operation path.
+	//
 	// example:
 	//
 	// /user/123
-	Path     *string                  `json:"path,omitempty" xml:"path,omitempty"`
-	Request  *HttpApiRequestContract  `json:"request,omitempty" xml:"request,omitempty"`
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// The request parameters of the operation.
+	Request *HttpApiRequestContract `json:"request,omitempty" xml:"request,omitempty"`
+	// The response parameters of the operation.
 	Response *HttpApiResponseContract `json:"response,omitempty" xml:"response,omitempty"`
+	// The operation publishing status on the instance.
+	//
 	// example:
 	//
 	// Deployed

@@ -32,16 +32,110 @@ type iPolicyInfo interface {
 }
 
 type PolicyInfo struct {
-	Attachments     []*Attachment `json:"attachments,omitempty" xml:"attachments,omitempty" type:"Repeated"`
-	ClassAlias      *string       `json:"classAlias,omitempty" xml:"classAlias,omitempty"`
-	ClassName       *string       `json:"className,omitempty" xml:"className,omitempty"`
-	Config          *string       `json:"config,omitempty" xml:"config,omitempty"`
-	Direction       *string       `json:"direction,omitempty" xml:"direction,omitempty"`
-	ExecutePriority *string       `json:"executePriority,omitempty" xml:"executePriority,omitempty"`
-	ExecuteStage    *string       `json:"executeStage,omitempty" xml:"executeStage,omitempty"`
-	Name            *string       `json:"name,omitempty" xml:"name,omitempty"`
-	PolicyId        *string       `json:"policyId,omitempty" xml:"policyId,omitempty"`
-	Type            *string       `json:"type,omitempty" xml:"type,omitempty"`
+	// The mount information.
+	Attachments []*Attachment `json:"attachments,omitempty" xml:"attachments,omitempty" type:"Repeated"`
+	// The policy class alias.
+	ClassAlias *string `json:"classAlias,omitempty" xml:"classAlias,omitempty"`
+	// The class name supported by the policy. Different policies support different mount points. This parameter is used in combination with AttachResourceType.
+	//
+	// 	- RateLimit: throttles traffic. Supported: HttpApi, Operation, and GatewayRoute.
+	//
+	// 	- ConcurrencyLimit: controls concurrency. Supported: HttpApi, Operation, and GatewayRoute.
+	//
+	// 	- CircuitBreaker: breaks circuits and downgrades traffic. Supported: HttpApi, Operation, and GatewayRoute.
+	//
+	// 	- HttpRewrite: rewrites HTTP traffic. Supported: HttpApi, Operation, and GatewayRoute.
+	//
+	// 	- HeaderModify: modifies headers. Supported: HttpApi, Operation, and GatewayRoute.
+	//
+	// 	- Cors: supports CORS. Supported: HttpApi, Operation, and GatewayRoute.
+	//
+	// 	- FlowCopy: replicates traffic. Supported: HttpApi, Operation, and GatewayRoute.
+	//
+	// 	- Timeout: times out requests. Supported: HttpApi, Operation, and GatewayRoute.
+	//
+	// 	- Retry: retries requests. Supported: HttpApi, Operation, and GatewayRoute.
+	//
+	// 	- IpAccessControl: implements IP address-based access control. Supported: HttpApi, Operation, GatewayRoute, Domain, and Gateway.
+	//
+	// 	- DirectResponse: mocks responses. Supported: Operation and GatewayRoute.
+	//
+	// 	- Redirect: redirects traffic. Supported: GatewayRoute.
+	//
+	// 	- Fallback: implements fallback. Supported: Operation and GatewayRoute.
+	//
+	// 	- ServiceTls: implements TLS authentication. Supported: GatewayService.
+	//
+	// 	- ServiceLb: balances loads. Supported: GatewayService.
+	//
+	// 	- ServicePortTls: implements service port TLS authentication. Supported: GatewayServicePort.
+	//
+	// 	- Waf: implements WAF protection. Supported: GatewayRoute and Gateway.
+	//
+	// 	- JWTAuth: implements global JWT authentication. Supported: Gateway.
+	//
+	// 	- OIDCAuth: implements global OIDC authentication. Supported: Gateway.
+	//
+	// 	- ExternalZAuth: implements custom authentication. Supported: Gateway.
+	ClassName *string `json:"className,omitempty" xml:"className,omitempty"`
+	// The policy configurations.
+	//
+	// example:
+	//
+	// {"enable":false}
+	Config *string `json:"config,omitempty" xml:"config,omitempty"`
+	// The direction of traffic on which the policy takes effect. Valid values:
+	//
+	// 	- OutBound
+	//
+	// 	- InBound
+	//
+	// 	- Both
+	//
+	// example:
+	//
+	// InBound
+	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
+	// The execution priority.
+	//
+	// example:
+	//
+	// 310
+	ExecutePriority *string `json:"executePriority,omitempty" xml:"executePriority,omitempty"`
+	// The execution phase.
+	//
+	// Valid values:
+	//
+	// 	- PluginStatistic
+	//
+	// 	- PluginAuthorization
+	//
+	// 	- PluginPre
+	//
+	// 	- PluginAuthentication
+	//
+	// 	- PluginDefault
+	//
+	// 	- PluginPost
+	//
+	// example:
+	//
+	// PluginPost
+	ExecuteStage *string `json:"executeStage,omitempty" xml:"executeStage,omitempty"`
+	// The policy name.
+	//
+	// example:
+	//
+	// test-policy
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The policy ID.
+	//
+	// example:
+	//
+	// p-cq7l5s5lhtgi6qasrdc0
+	PolicyId *string `json:"policyId,omitempty" xml:"policyId,omitempty"`
+	// The policy type.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s PolicyInfo) String() string {

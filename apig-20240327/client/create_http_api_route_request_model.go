@@ -30,16 +30,17 @@ type iCreateHttpApiRouteRequest interface {
 }
 
 type CreateHttpApiRouteRequest struct {
-	// The backend service configurations of the route.
+	// The backend service configurations for the route.
 	BackendConfig *CreateHttpApiRouteRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
-	DeployConfigs []*HttpApiDeployConfig                  `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
+	// deployConfigs
+	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
 	// The route description.
 	//
 	// example:
 	//
 	// User logon route
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The domain name IDs.
+	// The list of domain IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
 	// The environment ID.
 	//
@@ -47,15 +48,17 @@ type CreateHttpApiRouteRequest struct {
 	//
 	// env-cpqnr6tlhtgubcv***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The rule for matching the route.
-	Match          *HttpRouteMatch                          `json:"match,omitempty" xml:"match,omitempty"`
+	// The route match rule.
+	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
+	// The MCP route configuration
 	McpRouteConfig *CreateHttpApiRouteRequestMcpRouteConfig `json:"mcpRouteConfig,omitempty" xml:"mcpRouteConfig,omitempty" type:"Struct"`
 	// The route name.
 	//
 	// example:
 	//
 	// login
-	Name          *string                 `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The route-level policy configurations
 	PolicyConfigs []*HttpApiPolicyConfigs `json:"policyConfigs,omitempty" xml:"policyConfigs,omitempty" type:"Repeated"`
 }
 
@@ -186,7 +189,7 @@ func (s *CreateHttpApiRouteRequest) Validate() error {
 }
 
 type CreateHttpApiRouteRequestBackendConfig struct {
-	// The scenario of the backend service.
+	// The backend service scenario. Valid values:
 	//
 	// 	- SingleService
 	//
@@ -200,7 +203,7 @@ type CreateHttpApiRouteRequestBackendConfig struct {
 	//
 	// SingleService
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
-	// The backend services.
+	// The list of backend services.
 	Services []*CreateHttpApiRouteRequestBackendConfigServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
 }
 
@@ -244,13 +247,13 @@ func (s *CreateHttpApiRouteRequestBackendConfig) Validate() error {
 }
 
 type CreateHttpApiRouteRequestBackendConfigServices struct {
-	// The service port. If you want to use a dynamic port, do not pass this parameter.
+	// The service port (omit for dynamic ports).
 	//
 	// example:
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The protocol. Valid values:
+	// The service protocol. Valid values:
 	//
 	// 	- HTTP
 	//
@@ -266,13 +269,13 @@ type CreateHttpApiRouteRequestBackendConfigServices struct {
 	//
 	// svc-crbgq0dlhtgr***
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// The service version. Pass this parameter for tag-based routing.
+	// The service version (valid only in tag-based scenarios).
 	//
 	// example:
 	//
 	// v1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The percentage value of traffic.
+	// The traffic weight percentage.
 	//
 	// example:
 	//
@@ -338,9 +341,24 @@ func (s *CreateHttpApiRouteRequestBackendConfigServices) Validate() error {
 }
 
 type CreateHttpApiRouteRequestMcpRouteConfig struct {
-	ExposedUriPath      *string `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
-	McpStatisticsEnable *bool   `json:"mcpStatisticsEnable,omitempty" xml:"mcpStatisticsEnable,omitempty"`
-	Protocol            *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The exposed URI path
+	//
+	// example:
+	//
+	// /v1/chat/completions
+	ExposedUriPath *string `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
+	// mcpStatisticsEnable
+	//
+	// example:
+	//
+	// false
+	McpStatisticsEnable *bool `json:"mcpStatisticsEnable,omitempty" xml:"mcpStatisticsEnable,omitempty"`
+	// The MCP protocol
+	//
+	// example:
+	//
+	// HTTP,HTTPS
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 }
 
 func (s CreateHttpApiRouteRequestMcpRouteConfig) String() string {

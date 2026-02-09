@@ -32,18 +32,57 @@ type iEnvironmentInfo interface {
 }
 
 type EnvironmentInfo struct {
+  // The environment alias.
+  // 
+  // example:
+  // 
+  // test-env
   Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+  // The creation timestamp.
+  // 
+  // example:
+  // 
+  // 1721116090326
   CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+  // Specifies whether the environment is the default environment.
+  // 
+  // example:
+  // 
+  // false
   Default *bool `json:"default,omitempty" xml:"default,omitempty"`
+  // The environment descriptiont.
+  // 
+  // example:
+  // 
+  // This is a test environment.
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // The environment ID.
+  // 
+  // example:
+  // 
+  // env-cq7l5s5lhtgi6qasrdc0
   EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+  // The instance information.
   GatewayInfo *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
+  // The environment name.
+  // 
+  // example:
+  // 
+  // test
   Name *string `json:"name,omitempty" xml:"name,omitempty"`
+  // The resource group ID.
+  // 
   // example:
   // 
   // rg-xxxx
   ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+  // The subdomains.
   SubDomainInfos []*SubDomainInfo `json:"subDomainInfos,omitempty" xml:"subDomainInfos,omitempty" type:"Repeated"`
+  // The update timestamp.
+  // 
+  // example:
+  // 
+  // 1721116090326
   UpdateTimestamp *int64 `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
 }
 

@@ -80,7 +80,12 @@ type ListHttpApiRoutesRequest struct {
 	//
 	// env-cpqnr6tlhtgubc***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	ForDeploy     *bool   `json:"forDeploy,omitempty" xml:"forDeploy,omitempty"`
+	// Whether to filter for deployment scenario
+	//
+	// example:
+	//
+	// true
+	ForDeploy *bool `json:"forDeploy,omitempty" xml:"forDeploy,omitempty"`
 	// The ID of the Cloud-native API Gateway instance.
 	//
 	// example:

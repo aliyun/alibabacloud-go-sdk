@@ -20,10 +20,22 @@ type iAkSkIdentityConfig interface {
 }
 
 type AkSkIdentityConfig struct {
-	Ak           *string `json:"ak,omitempty" xml:"ak,omitempty"`
+	// example:
+	//
+	// xxxx
+	Ak *string `json:"ak,omitempty" xml:"ak,omitempty"`
+	// example:
+	//
+	// System
 	GenerateMode *string `json:"generateMode,omitempty" xml:"generateMode,omitempty"`
-	Sk           *string `json:"sk,omitempty" xml:"sk,omitempty"`
-	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// xxxx
+	Sk *string `json:"sk,omitempty" xml:"sk,omitempty"`
+	// example:
+	//
+	// Jwt
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s AkSkIdentityConfig) String() string {

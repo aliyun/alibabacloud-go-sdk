@@ -16,7 +16,17 @@ type iAuthConfig interface {
 }
 
 type AuthConfig struct {
+	// The authentication mode.
+	//
+	// example:
+	//
+	// NoAuth
 	AuthMode *string `json:"authMode,omitempty" xml:"authMode,omitempty"`
+	// The authentication type.
+	//
+	// example:
+	//
+	// Jwt
 	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
 }
 

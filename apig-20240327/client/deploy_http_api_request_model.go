@@ -18,10 +18,13 @@ type iDeployHttpApiRequest interface {
 }
 
 type DeployHttpApiRequest struct {
+	// Deprecated
+	//
+	// httpApiConfig
 	HttpApiConfig *DeployHttpApiRequestHttpApiConfig `json:"httpApiConfig,omitempty" xml:"httpApiConfig,omitempty" type:"Struct"`
-	// Rest API deployment configuration. Required when deploying an HTTP API as a Rest API.
+	// The REST API deployment configuration. This parameter is required when you publish a REST API.
 	RestApiConfig *DeployHttpApiRequestRestApiConfig `json:"restApiConfig,omitempty" xml:"restApiConfig,omitempty" type:"Struct"`
-	// Route ID. This must be provided when publishing the route of an HTTP API.
+	// The route ID. You must specify this parameter when you publish an HTTP API.
 	//
 	// example:
 	//
@@ -79,8 +82,14 @@ func (s *DeployHttpApiRequest) Validate() error {
 }
 
 type DeployHttpApiRequestHttpApiConfig struct {
-	GatewayId *string   `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	RouteIds  []*string `json:"routeIds,omitempty" xml:"routeIds,omitempty" type:"Repeated"`
+	// The gateway ID.
+	//
+	// example:
+	//
+	// gw-csrhgfmm1hknf0hu6o3g
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// routeIds
+	RouteIds []*string `json:"routeIds,omitempty" xml:"routeIds,omitempty" type:"Repeated"`
 }
 
 func (s DeployHttpApiRequestHttpApiConfig) String() string {
@@ -114,17 +123,26 @@ func (s *DeployHttpApiRequestHttpApiConfig) Validate() error {
 }
 
 type DeployHttpApiRequestRestApiConfig struct {
-	// Publication description.
+	// The publish description.
 	//
 	// example:
 	//
-	// 用户服务API发布。
+	// The user service API
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Publication environment configuration.
-	Environment  *DeployHttpApiRequestRestApiConfigEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
-	GatewayId    *string                                       `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	OperationIds []*string                                     `json:"operationIds,omitempty" xml:"operationIds,omitempty" type:"Repeated"`
-	// Historical version number. If this field is specified, the publication information will be based on the historical version information.
+	// The environment configurations.
+	Environment *DeployHttpApiRequestRestApiConfigEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
+	// The gateway ID.
+	//
+	// example:
+	//
+	// gw-cvn2u46m1hkun04oll8g
+	GatewayId            *string                                                  `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	OperationDeployments []*DeployHttpApiRequestRestApiConfigOperationDeployments `json:"operationDeployments,omitempty" xml:"operationDeployments,omitempty" type:"Repeated"`
+	// Deprecated
+	//
+	// operationIds
+	OperationIds []*string `json:"operationIds,omitempty" xml:"operationIds,omitempty" type:"Repeated"`
+	// The historical version of the API. If you specify this parameter, the corresponding version of the API is published.
 	//
 	// example:
 	//
@@ -152,6 +170,10 @@ func (s *DeployHttpApiRequestRestApiConfig) GetGatewayId() *string {
 	return s.GatewayId
 }
 
+func (s *DeployHttpApiRequestRestApiConfig) GetOperationDeployments() []*DeployHttpApiRequestRestApiConfigOperationDeployments {
+	return s.OperationDeployments
+}
+
 func (s *DeployHttpApiRequestRestApiConfig) GetOperationIds() []*string {
 	return s.OperationIds
 }
@@ -175,6 +197,11 @@ func (s *DeployHttpApiRequestRestApiConfig) SetGatewayId(v string) *DeployHttpAp
 	return s
 }
 
+func (s *DeployHttpApiRequestRestApiConfig) SetOperationDeployments(v []*DeployHttpApiRequestRestApiConfigOperationDeployments) *DeployHttpApiRequestRestApiConfig {
+	s.OperationDeployments = v
+	return s
+}
+
 func (s *DeployHttpApiRequestRestApiConfig) SetOperationIds(v []*string) *DeployHttpApiRequestRestApiConfig {
 	s.OperationIds = v
 	return s
@@ -191,25 +218,50 @@ func (s *DeployHttpApiRequestRestApiConfig) Validate() error {
 			return err
 		}
 	}
+	if s.OperationDeployments != nil {
+		for _, item := range s.OperationDeployments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	return nil
 }
 
 type DeployHttpApiRequestRestApiConfigEnvironment struct {
-	// API publication scenario.
+	// Deprecated
+	//
+	// The publishing scenario.
+	//
+	// Valid values:
+	//
+	// 	- SingleService
+	//
+	// 	- MultiServiceByRatio
+	//
+	// 	- MultiServiceByContent
+	//
+	// 	- Mock
 	//
 	// example:
 	//
 	// SingleService
 	BackendScene *string `json:"backendScene,omitempty" xml:"backendScene,omitempty"`
-	// List of user domains.
+	// The custom domain names.
 	CustomDomainIds []*string `json:"customDomainIds,omitempty" xml:"customDomainIds,omitempty" type:"Repeated"`
-	// Environment ID.
+	// Deprecated
+	//
+	// The environment ID.
 	//
 	// example:
 	//
 	// env-cpqnr6tlhtgubc***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// Existing service configurations. Only one entry is allowed in a single-service scenario, while multiple entries are allowed in scenarios such as by ratio or by content.
+	// Deprecated
+	//
+	// The configurations of existing services. For single-service publishing, only one entry is allowed. For other scenarios, multiple entries are allowed.
 	ServiceConfigs []*DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
 }
 
@@ -271,37 +323,41 @@ func (s *DeployHttpApiRequestRestApiConfigEnvironment) Validate() error {
 }
 
 type DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs struct {
-	// Configuration of matching conditions related to API deployment.
+	// The matching condition configurations related to API publishing.
+	//
+	// example:
+	//
+	// {\\"change_order_revision\\":\\"3.657.33_fc-hz-yunqi.1662568293908382_faas-eerouter\\"}
 	Match *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
-	// Service port, do not provide for dynamic ports.
+	// The service port. If you want to use a dynamic port, do not pass this parameter.
 	//
 	// example:
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// Service protocol:
+	// The service protocol. Valid values:
 	//
-	// - HTTP.
+	// 	- HTTP
 	//
-	// - HTTPS.
+	// 	- HTTPS
 	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// Service ID.
+	// The service ID.
 	//
 	// example:
 	//
 	// svc-cr6pk4tlhtgm58e***
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// Service version.
+	// The version of the microservice.
 	//
 	// example:
 	//
 	// v1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// Weight, range [1,100], valid only in the by-ratio scenario.
+	// The weight. Valid values: [1,100]. This parameter is valid only in proportional routing.
 	//
 	// example:
 	//
@@ -378,4 +434,45 @@ func (s *DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs) Validate() 
 		}
 	}
 	return nil
+}
+
+type DeployHttpApiRequestRestApiConfigOperationDeployments struct {
+	// example:
+	//
+	// Publish
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// example:
+	//
+	// op-d5s57hmm1hks653u9dkg
+	OperationId *string `json:"operationId,omitempty" xml:"operationId,omitempty"`
+}
+
+func (s DeployHttpApiRequestRestApiConfigOperationDeployments) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DeployHttpApiRequestRestApiConfigOperationDeployments) GoString() string {
+	return s.String()
+}
+
+func (s *DeployHttpApiRequestRestApiConfigOperationDeployments) GetAction() *string {
+	return s.Action
+}
+
+func (s *DeployHttpApiRequestRestApiConfigOperationDeployments) GetOperationId() *string {
+	return s.OperationId
+}
+
+func (s *DeployHttpApiRequestRestApiConfigOperationDeployments) SetAction(v string) *DeployHttpApiRequestRestApiConfigOperationDeployments {
+	s.Action = &v
+	return s
+}
+
+func (s *DeployHttpApiRequestRestApiConfigOperationDeployments) SetOperationId(v string) *DeployHttpApiRequestRestApiConfigOperationDeployments {
+	s.OperationId = &v
+	return s
+}
+
+func (s *DeployHttpApiRequestRestApiConfigOperationDeployments) Validate() error {
+	return dara.Validate(s)
 }

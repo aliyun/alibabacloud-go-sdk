@@ -26,7 +26,7 @@ type ListHttpApiRoutesResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response parameters.
+	// The response payload.
 	Data *ListHttpApiRoutesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The returned message.
 	//

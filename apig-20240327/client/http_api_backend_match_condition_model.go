@@ -20,18 +20,34 @@ type iHttpApiBackendMatchCondition interface {
 }
 
 type HttpApiBackendMatchCondition struct {
+	// The key of the matching condition.
+	//
 	// example:
 	//
 	// color
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The operator. Exact match, prefix match, and regular expressions are supported.
+	//
+	// Valid values:
+	//
+	// 	- equal
+	//
+	// 	- regex
+	//
+	// 	- prefix
+	//
 	// example:
 	//
 	// equal
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// The match type. Query and Header parameters can be matched.
+	//
 	// example:
 	//
 	// Query
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The value of the matching condition.
+	//
 	// example:
 	//
 	// gray

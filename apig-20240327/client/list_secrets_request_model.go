@@ -20,10 +20,30 @@ type iListSecretsRequest interface {
 }
 
 type ListSecretsRequest struct {
+	// Gateway type for filtering secrets of specific gateway type
+	//
+	// example:
+	//
+	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	NameLike    *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
-	PageNumber  *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize    *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Secret name for fuzzy matching, supports filtering secrets by name
+	//
+	// example:
+	//
+	// test-secret
+	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
+	// Page number
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Number of items per page
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListSecretsRequest) String() string {

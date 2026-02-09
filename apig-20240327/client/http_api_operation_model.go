@@ -32,33 +32,71 @@ type iHttpApiOperation interface {
 }
 
 type HttpApiOperation struct {
-	AuthConfig    *AuthConfig            `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
+	// The authentication configurations.
+	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
+	// The deployment configurations.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
+	// The operation description.
+	//
 	// example:
 	//
-	// 获取用户信息
+	// This is a operation description.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	EnableAuth  *bool   `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
+	// Specifies whether to enable authentication.
+	//
+	// example:
+	//
+	// true
+	EnableAuth *bool `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
+	// The HTTP method.
+	//
+	// Valid values:
+	//
+	// 	- TRACE
+	//
+	// 	- HEAD
+	//
+	// 	- DELETE
+	//
+	// 	- POST
+	//
+	// 	- GET
+	//
+	// 	- CONNECT
+	//
+	// 	- OPTIONS
+	//
+	// 	- PUT
+	//
+	// 	- PATCH
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// GET
-	Method *string              `json:"method,omitempty" xml:"method,omitempty"`
-	Mock   *HttpApiMockContract `json:"mock,omitempty" xml:"mock,omitempty"`
+	Method *string `json:"method,omitempty" xml:"method,omitempty"`
+	// The mocking configuration of the operation. This field takes effect only when the API publishing scenario is Mock.
+	Mock *HttpApiMockContract `json:"mock,omitempty" xml:"mock,omitempty"`
+	// The operation name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// GetUserInfo
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The operation path.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /user
-	Path     *string                  `json:"path,omitempty" xml:"path,omitempty"`
-	Request  *HttpApiRequestContract  `json:"request,omitempty" xml:"request,omitempty"`
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// The request parameters of the operation.
+	Request *HttpApiRequestContract `json:"request,omitempty" xml:"request,omitempty"`
+	// The response parameters of the operation.
 	Response *HttpApiResponseContract `json:"response,omitempty" xml:"response,omitempty"`
 }
 

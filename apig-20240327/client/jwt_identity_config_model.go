@@ -22,11 +22,34 @@ type iJwtIdentityConfig interface {
 }
 
 type JwtIdentityConfig struct {
-	Jwks             *string                            `json:"jwks,omitempty" xml:"jwks,omitempty"`
+	// The JWKS configuration.
+	//
+	// example:
+	//
+	// xxxx
+	Jwks *string `json:"jwks,omitempty" xml:"jwks,omitempty"`
+	// The JWT payload configuration.
 	JwtPayloadConfig *JwtIdentityConfigJwtPayloadConfig `json:"jwtPayloadConfig,omitempty" xml:"jwtPayloadConfig,omitempty" type:"Struct"`
-	JwtTokenConfig   *JwtIdentityConfigJwtTokenConfig   `json:"jwtTokenConfig,omitempty" xml:"jwtTokenConfig,omitempty" type:"Struct"`
-	SecretType       *string                            `json:"secretType,omitempty" xml:"secretType,omitempty"`
-	Type             *string                            `json:"type,omitempty" xml:"type,omitempty"`
+	// The JWT token configuration.
+	JwtTokenConfig *JwtIdentityConfigJwtTokenConfig `json:"jwtTokenConfig,omitempty" xml:"jwtTokenConfig,omitempty" type:"Struct"`
+	// The type of the secret used.
+	//
+	// Valid values:
+	//
+	// 	- Asymmetry: asymmetric encryption.
+	//
+	// 	- Symmetry: symmetric encryption.
+	//
+	// example:
+	//
+	// Symmetry
+	SecretType *string `json:"secretType,omitempty" xml:"secretType,omitempty"`
+	// The authentication configuration type.
+	//
+	// example:
+	//
+	// Jwt
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s JwtIdentityConfig) String() string {
@@ -97,7 +120,17 @@ func (s *JwtIdentityConfig) Validate() error {
 }
 
 type JwtIdentityConfigJwtPayloadConfig struct {
-	PayloadKeyName  *string `json:"payloadKeyName,omitempty" xml:"payloadKeyName,omitempty"`
+	// The key in the JWT payload.
+	//
+	// example:
+	//
+	// uid
+	PayloadKeyName *string `json:"payloadKeyName,omitempty" xml:"payloadKeyName,omitempty"`
+	// The value for the JWT payload key.
+	//
+	// example:
+	//
+	// 2222
 	PayloadKeyValue *string `json:"payloadKeyValue,omitempty" xml:"payloadKeyValue,omitempty"`
 }
 
@@ -132,10 +165,30 @@ func (s *JwtIdentityConfigJwtPayloadConfig) Validate() error {
 }
 
 type JwtIdentityConfigJwtTokenConfig struct {
-	Key      *string `json:"key,omitempty" xml:"key,omitempty"`
-	Pass     *bool   `json:"pass,omitempty" xml:"pass,omitempty"`
+	// The key used for the JWT.
+	//
+	// example:
+	//
+	// Authorization
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// Indicates whether acceptance is granted.
+	//
+	// example:
+	//
+	// true
+	Pass *bool `json:"pass,omitempty" xml:"pass,omitempty"`
+	// The location where the JWT is stored.
+	//
+	// example:
+	//
+	// HEADER
 	Position *string `json:"position,omitempty" xml:"position,omitempty"`
-	Prefix   *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// The token prefix configuration.
+	//
+	// example:
+	//
+	// test
+	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
 }
 
 func (s JwtIdentityConfigJwtTokenConfig) String() string {

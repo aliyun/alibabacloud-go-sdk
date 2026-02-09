@@ -18,14 +18,23 @@ type iHttpApiMockContract interface {
 }
 
 type HttpApiMockContract struct {
+	// Specifies whether to enable the Mock feature.
+	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	ResponseCode    *int32  `json:"responseCode,omitempty" xml:"responseCode,omitempty"`
+	ResponseCode *int32 `json:"responseCode,omitempty" xml:"responseCode,omitempty"`
+	// The response content.
+	//
+	// example:
+	//
+	// Mock content.
 	ResponseContent *string `json:"responseContent,omitempty" xml:"responseContent,omitempty"`
 }
 

@@ -30,37 +30,47 @@ type iRiskCheckResults interface {
 }
 
 type RiskCheckResults struct {
+	// The check time
+	//
+	// example:
+	//
+	// 1234567890000
 	CheckTime *int64 `json:"checkTime,omitempty" xml:"checkTime,omitempty"`
-	// 网关实例的唯一标识符
+	// The gateway ID
 	//
 	// example:
 	//
 	// gw-0364f863b1a04474911b48cd6d51d03d
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// 实例的基本信息
+	// The instance metadata
 	Metadata *RiskCheckResultsMetadata `json:"metadata,omitempty" xml:"metadata,omitempty" type:"Struct"`
-	// 详细的风险项信息列表
+	// The risk details list
 	RiskDetails []*RiskCheckResultsRiskDetails `json:"riskDetails,omitempty" xml:"riskDetails,omitempty" type:"Repeated"`
-	// 整体风险等级，可选值：LOW（低风险）、MEDIUM（中风险）、HIGH（高风险）、CRITICAL（严重风险）
+	// The risk level
 	//
 	// example:
 	//
 	// MEDIUM
 	RiskLevel *string `json:"riskLevel,omitempty" xml:"riskLevel,omitempty"`
-	// 风险综合评分，取值范围0-100分，分数越高表示风险越低
+	// The risk score
 	//
 	// example:
 	//
 	// 85
-	Score        *int32 `json:"score,omitempty" xml:"score,omitempty"`
+	Score *int32 `json:"score,omitempty" xml:"score,omitempty"`
+	// The snapshot time
+	//
+	// example:
+	//
+	// 1234567890000
 	SnapshotTime *int64 `json:"snapshotTime,omitempty" xml:"snapshotTime,omitempty"`
-	// 风险检测状态，可选值：SUCCESS（成功）、FAIL（失败）、RUNNING（运行中）
+	// The execution status
 	//
 	// example:
 	//
 	// SUCCESS
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 检测到的风险项总数量
+	// The total number of risks
 	//
 	// example:
 	//
@@ -176,18 +186,26 @@ func (s *RiskCheckResults) Validate() error {
 }
 
 type RiskCheckResultsMetadata struct {
+	// The cluster type
+	//
 	// example:
 	//
 	// Ingress
 	ClusterType *string `json:"clusterType,omitempty" xml:"clusterType,omitempty"`
+	// The replica count
+	//
 	// example:
 	//
 	// 3
 	Replica *int32 `json:"replica,omitempty" xml:"replica,omitempty"`
+	// The specification
+	//
 	// example:
 	//
 	// apigw.small.x1
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
+	// The version
+	//
 	// example:
 	//
 	// 2.0.14
@@ -243,61 +261,61 @@ func (s *RiskCheckResultsMetadata) Validate() error {
 }
 
 type RiskCheckResultsRiskDetails struct {
-	// 执行检测的模块名称
+	// The check module
 	//
 	// example:
 	//
 	// BaseInfo
 	CheckModule *string `json:"checkModule,omitempty" xml:"checkModule,omitempty"`
-	// 风险相关的详细数据，不同风险类型数据结构不同
+	// The risk detailed data
 	Data map[string]*string `json:"data,omitempty" xml:"data,omitempty"`
-	// 风险的详细描述，JSON字符串格式
+	// The risk description
 	//
 	// example:
 	//
-	// {"desc":"单节点实例存在架构风险，单点故障会导致服务不可用。建议扩容到2节点及以上。"}
+	// The version is outdated
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 该风险项的告警通知是否已被屏蔽
+	// Whether to mute notifications
 	//
 	// example:
 	//
 	// false
 	IsNoticeMute *bool `json:"isNoticeMute,omitempty" xml:"isNoticeMute,omitempty"`
-	// 风险项的唯一标识码
+	// The risk code
 	//
 	// example:
 	//
 	// 30010010001
 	RiskCode *string `json:"riskCode,omitempty" xml:"riskCode,omitempty"`
-	// 该风险项的等级，可选值：LOW、MEDIUM、HIGH、CRITICAL
+	// The risk level
 	//
 	// example:
 	//
 	// HIGH
 	RiskLevel *string `json:"riskLevel,omitempty" xml:"riskLevel,omitempty"`
-	// 风险项的名称
+	// The risk title
 	//
 	// example:
 	//
-	// 单节点架构风险
+	// Version Risk
 	RiskName *string `json:"riskName,omitempty" xml:"riskName,omitempty"`
-	// 风险分类，可选值：SYSTEM（系统风险）、VERSION（版本风险）、SAFE（安全风险）、CAPACITY（容量风险）
+	// The risk type
 	//
 	// example:
 	//
 	// SYSTEM
 	RiskType *string `json:"riskType,omitempty" xml:"riskType,omitempty"`
-	// 当前实例的风险现状，JSON字符串格式
+	// The risk situation
 	//
 	// example:
 	//
-	// {"desc":"集群节点数为1，不具备高可用能力"}
+	// Current version is 2 releases behind
 	Situation *string `json:"situation,omitempty" xml:"situation,omitempty"`
-	// 针对该风险的优化建议，JSON字符串格式，包含描述和操作链接
+	// The fix suggestion
 	//
 	// example:
 	//
-	// {"desc":"扩容到2节点及以上","links":[{"descEn":"click to upgrade specification","type":"upgrade","desc":"点击扩容"}]}
+	// Upgrade to the latest version
 	Suggestion *string `json:"suggestion,omitempty" xml:"suggestion,omitempty"`
 }
 

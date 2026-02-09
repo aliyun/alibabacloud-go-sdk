@@ -28,19 +28,41 @@ type iAgentServiceConfig interface {
 }
 
 type AgentServiceConfig struct {
+	// The address.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://dashscope.aliyuncs.com/api/v1
-	Address                *string                            `json:"address,omitempty" xml:"address,omitempty"`
-	CustomConfig           *AgentServiceConfigCustomConfig    `json:"customConfig,omitempty" xml:"customConfig,omitempty" type:"Struct"`
-	DashScopeConfig        *AgentServiceConfigDashScopeConfig `json:"dashScopeConfig,omitempty" xml:"dashScopeConfig,omitempty" type:"Struct"`
-	DifyConfig             *AgentServiceConfigDifyConfig      `json:"difyConfig,omitempty" xml:"difyConfig,omitempty" type:"Struct"`
-	EnableHealthCheck      *bool                              `json:"enableHealthCheck,omitempty" xml:"enableHealthCheck,omitempty"`
-	EnableOutlierDetection *bool                              `json:"enableOutlierDetection,omitempty" xml:"enableOutlierDetection,omitempty"`
-	Protocols              []*string                          `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	Address *string `json:"address,omitempty" xml:"address,omitempty"`
+	// User-defined configuration
+	CustomConfig *AgentServiceConfigCustomConfig `json:"customConfig,omitempty" xml:"customConfig,omitempty" type:"Struct"`
+	// The Model Studio service configuration.
+	DashScopeConfig *AgentServiceConfigDashScopeConfig `json:"dashScopeConfig,omitempty" xml:"dashScopeConfig,omitempty" type:"Struct"`
+	// The Dify service configuration.
+	DifyConfig *AgentServiceConfigDifyConfig `json:"difyConfig,omitempty" xml:"difyConfig,omitempty" type:"Struct"`
+	// Specifies whether to enable health check.
+	//
+	// example:
+	//
+	// true
+	EnableHealthCheck *bool `json:"enableHealthCheck,omitempty" xml:"enableHealthCheck,omitempty"`
+	// Whether to enable outlier detection
+	//
+	// example:
+	//
+	// true
+	EnableOutlierDetection *bool `json:"enableOutlierDetection,omitempty" xml:"enableOutlierDetection,omitempty"`
+	// The protocol.
+	Protocols []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	// The service provider.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// aliyun
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
 }
 
@@ -144,7 +166,17 @@ func (s *AgentServiceConfig) Validate() error {
 }
 
 type AgentServiceConfigCustomConfig struct {
-	ApiKey             *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	// apiKey
+	//
+	// example:
+	//
+	// sk-xxx
+	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	// API key generation mode.
+	//
+	// example:
+	//
+	// Reference
 	ApiKeyGenerateMode *string `json:"apiKeyGenerateMode,omitempty" xml:"apiKeyGenerateMode,omitempty"`
 }
 
@@ -179,6 +211,7 @@ func (s *AgentServiceConfigCustomConfig) Validate() error {
 }
 
 type AgentServiceConfigDashScopeConfig struct {
+	// The application configuration.
 	AppCredentials []*AgentServiceConfigDashScopeConfigAppCredentials `json:"appCredentials,omitempty" xml:"appCredentials,omitempty" type:"Repeated"`
 }
 
@@ -213,8 +246,18 @@ func (s *AgentServiceConfigDashScopeConfig) Validate() error {
 }
 
 type AgentServiceConfigDashScopeConfigAppCredentials struct {
+	// apiKey
+	//
+	// example:
+	//
+	// sk-xxx
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
-	AppId  *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// The application ID.
+	//
+	// example:
+	//
+	// app-xxx
+	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
 }
 
 func (s AgentServiceConfigDashScopeConfigAppCredentials) String() string {
@@ -248,7 +291,17 @@ func (s *AgentServiceConfigDashScopeConfigAppCredentials) Validate() error {
 }
 
 type AgentServiceConfigDifyConfig struct {
-	ApiKey  *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	// API Key
+	//
+	// example:
+	//
+	// sk-xxx
+	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	// The interaction type.
+	//
+	// example:
+	//
+	// chatbot
 	BotType *string `json:"botType,omitempty" xml:"botType,omitempty"`
 }
 

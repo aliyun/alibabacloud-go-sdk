@@ -36,21 +36,21 @@ type CreateServiceRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The list of service configurations.
 	ServiceConfigs []*CreateServiceRequestServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
-	// The service source. Valid values:
+	// The service source type. Valid values:
 	//
-	// 	- MSE_NACOS: a service in an MSE Nacos instance
+	// 	- MSE_NACOS: MSE Nacos instance services
 	//
-	// 	- K8S: a service in a Kubernetes (K8s) cluster in Container Service for Kubernetes (ACK)
+	// 	- K8S: Container Service for Kubernetes (ACK) cluster services
 	//
-	// 	- VIP: a fixed IP address
+	// 	- VIP: fixed IP addresses
 	//
-	// 	- DNS: a Domain Name System (DNS) domain name
+	// 	- DNS: Domain Name System (DNS) domains
 	//
-	// 	- FC3: a service in Function Compute
+	// 	- FC3: Function Compute services
 	//
-	// 	- SAE_K8S_SERVICE: a service in a K8s cluster in Serverless App Engine (SAE)
+	// 	- SAE_K8S_SERVICE: Serverless App Engine (SAE) Kubernetes services
 	//
-	// Enumerated values:
+	// Valid values:
 	//
 	// 	- SAE_K8S_SERVICE
 	//
@@ -67,7 +67,12 @@ type CreateServiceRequest struct {
 	// example:
 	//
 	// MSE_NACOS
-	SourceType  *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// clientToken
+	//
+	// example:
+	//
+	// xxx
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -138,14 +143,20 @@ func (s *CreateServiceRequest) Validate() error {
 }
 
 type CreateServiceRequestServiceConfigs struct {
-	// The list of domain names or fixed addresses.
-	Addresses          []*string           `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
+	// The list of domain names or fixed IP addresses.
+	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
+	// Agent service configuration
 	AgentServiceConfig *AgentServiceConfig `json:"agentServiceConfig,omitempty" xml:"agentServiceConfig,omitempty"`
 	// The AI service configurations.
 	AiServiceConfig *AiServiceConfig `json:"aiServiceConfig,omitempty" xml:"aiServiceConfig,omitempty"`
 	// The list of DNS service addresses.
-	DnsServers  []*string `json:"dnsServers,omitempty" xml:"dnsServers,omitempty" type:"Repeated"`
-	ExpressType *string   `json:"expressType,omitempty" xml:"expressType,omitempty"`
+	DnsServers []*string `json:"dnsServers,omitempty" xml:"dnsServers,omitempty" type:"Repeated"`
+	// Express type
+	//
+	// example:
+	//
+	// Standard
+	ExpressType *string `json:"expressType,omitempty" xml:"expressType,omitempty"`
 	// The service group name. This parameter is required if sourceType is set to MSE_NACOS.
 	//
 	// example:
@@ -164,17 +175,25 @@ type CreateServiceRequestServiceConfigs struct {
 	//
 	// 	- If sourceType is set to MSE_NACOS, this parameter specifies a namespace in Nacos.
 	//
+	// This parameter is required if sourceType is set to K8S or MSE_NACOS.
+	//
 	// example:
 	//
 	// PUBLIC
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The function version or alias.
+	// The function version/alias.
 	//
 	// example:
 	//
 	// LATEST
-	Qualifier         *string                                              `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	SourceId          *string                                              `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	// Service source ID
+	//
+	// example:
+	//
+	// nacos-instance-001
+	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// Validation options
 	ValidationOptions *CreateServiceRequestServiceConfigsValidationOptions `json:"validationOptions,omitempty" xml:"validationOptions,omitempty" type:"Struct"`
 }
 
@@ -305,6 +324,7 @@ func (s *CreateServiceRequestServiceConfigs) Validate() error {
 }
 
 type CreateServiceRequestServiceConfigsValidationOptions struct {
+	// Skip AI chat completion verification
 	SkipVerifyAIChatCompletion *bool `json:"skipVerifyAIChatCompletion,omitempty" xml:"skipVerifyAIChatCompletion,omitempty"`
 }
 

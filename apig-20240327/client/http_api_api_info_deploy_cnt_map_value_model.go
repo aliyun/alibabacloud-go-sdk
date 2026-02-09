@@ -16,8 +16,18 @@ type iHttpApiApiInfoDeployCntMapValue interface {
 }
 
 type HttpApiApiInfoDeployCntMapValue struct {
+	// deployedCnt
+	//
+	// example:
+	//
+	// 3
 	DeployedCnt *int64 `json:"deployedCnt,omitempty" xml:"deployedCnt,omitempty"`
-	Cnt         *int64 `json:"Cnt,omitempty" xml:"Cnt,omitempty"`
+	// Cnt
+	//
+	// example:
+	//
+	// 5
+	Cnt *int64 `json:"Cnt,omitempty" xml:"Cnt,omitempty"`
 }
 
 func (s HttpApiApiInfoDeployCntMapValue) String() string {

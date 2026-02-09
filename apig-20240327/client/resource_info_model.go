@@ -20,9 +20,29 @@ type iResourceInfo interface {
 }
 
 type ResourceInfo struct {
-	ResourceId      *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	ResourceName    *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
-	ResourceType    *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The resource ID.
+	//
+	// example:
+	//
+	// api-1nsu2d****
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// The resource name.
+	//
+	// example:
+	//
+	// test1023
+	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
+	// The resource type. Valid values: HttpApi, Operation, GatewayRoute, Gateway, and GatewayDomain.
+	//
+	// example:
+	//
+	// HttpApi
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The resource version.
+	//
+	// example:
+	//
+	// 1.0.0
 	ResourceVersion *string `json:"resourceVersion,omitempty" xml:"resourceVersion,omitempty"`
 }
 

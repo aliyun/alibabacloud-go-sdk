@@ -20,21 +20,21 @@ type iExportHttpApiResponseBody interface {
 }
 
 type ExportHttpApiResponseBody struct {
-  // Response status code.
+  // The status code.
   // 
   // example:
   // 
   // Ok
   Code *string `json:"code,omitempty" xml:"code,omitempty"`
-  // API definition information.
+  // The API definition.
   Data *ExportHttpApiResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-  // Response message.
+  // The response message returned.
   // 
   // example:
   // 
   // success
   Message *string `json:"message,omitempty" xml:"message,omitempty"`
-  // Request ID.
+  // The request ID.
   // 
   // example:
   // 
@@ -96,7 +96,7 @@ func (s *ExportHttpApiResponseBody) Validate() error {
 }
 
 type ExportHttpApiResponseBodyData struct {
-  // Base64编码的API定义。
+  // The Base64-encoded API definition.
   // 
   // example:
   // 

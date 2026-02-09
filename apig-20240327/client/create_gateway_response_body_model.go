@@ -20,21 +20,16 @@ type iCreateGatewayResponseBody interface {
 }
 
 type CreateGatewayResponseBody struct {
-	// The status code.
-	//
 	// example:
 	//
 	// Ok
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response payload.
+	Code *string                        `json:"code,omitempty" xml:"code,omitempty"`
 	Data *CreateGatewayResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The status message.
-	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -96,8 +91,6 @@ func (s *CreateGatewayResponseBody) Validate() error {
 }
 
 type CreateGatewayResponseBodyData struct {
-	// The instance ID.
-	//
 	// example:
 	//
 	// gw-cq2vundlhtg***

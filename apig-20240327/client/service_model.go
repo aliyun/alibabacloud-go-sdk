@@ -54,45 +54,106 @@ type iService interface {
 }
 
 type Service struct {
-	Addresses          []*string           `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
+	// The address details, which can be IP addresses or domain names.
+	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
+	// The agent service configuration
 	AgentServiceConfig *AgentServiceConfig `json:"agentServiceConfig,omitempty" xml:"agentServiceConfig,omitempty"`
-	AiServiceConfig    *AiServiceConfig    `json:"aiServiceConfig,omitempty" xml:"aiServiceConfig,omitempty"`
-	CreateTimestamp    *int64              `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// The AI service configurations.
+	AiServiceConfig *AiServiceConfig `json:"aiServiceConfig,omitempty" xml:"aiServiceConfig,omitempty"`
+	// The creation time (unix timestamp).
+	//
+	// example:
+	//
+	// 1725617840096
+	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// The express type
+	//
 	// example:
 	//
 	// StartExecution
 	ExpressType *string `json:"expressType,omitempty" xml:"expressType,omitempty"`
+	// The gateway instance ID.
+	//
 	// example:
 	//
 	// gw-xxxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The service group name.
+	//
 	// example:
 	//
 	// publich
-	GroupName        *string             `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	HealthCheck      *ServiceHealthCheck `json:"healthCheck,omitempty" xml:"healthCheck,omitempty"`
-	HealthStatus     *string             `json:"healthStatus,omitempty" xml:"healthStatus,omitempty"`
-	LabelDetails     []*LabelDetail      `json:"labelDetails,omitempty" xml:"labelDetails,omitempty" type:"Repeated"`
-	Name             *string             `json:"name,omitempty" xml:"name,omitempty"`
-	Namespace        *string             `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	OutlierEndpoints []*string           `json:"outlierEndpoints,omitempty" xml:"outlierEndpoints,omitempty" type:"Repeated"`
-	Ports            []*ServicePorts     `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The health check configurations.
+	HealthCheck *ServiceHealthCheck `json:"healthCheck,omitempty" xml:"healthCheck,omitempty"`
+	// The health check status.
+	//
+	// Valid values:
+	//
+	// 	- Unhealthy
+	//
+	// 	- Healthy
+	//
+	// example:
+	//
+	// Healthy
+	HealthStatus *string `json:"healthStatus,omitempty" xml:"healthStatus,omitempty"`
+	// The label details for service version configuration
+	LabelDetails []*LabelDetail `json:"labelDetails,omitempty" xml:"labelDetails,omitempty" type:"Repeated"`
+	// The service name.
+	//
+	// example:
+	//
+	// user-service
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The namespace of the service.
+	//
+	// example:
+	//
+	// PUBLIC
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The outlier endpoints list
+	OutlierEndpoints []*string `json:"outlierEndpoints,omitempty" xml:"outlierEndpoints,omitempty" type:"Repeated"`
+	// The list of objects containing port details.
+	Ports []*ServicePorts `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
+	// The service protocol type.
+	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The function qualifier name.
+	//
 	// example:
 	//
 	// LATEST
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-xxx
-	ResourceGroupId    *string   `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	ServiceId          *string   `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	SourceType         *string   `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The service unique ID.
+	//
+	// example:
+	//
+	// svc-cr6pk4tlhtgm***
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// The source type.
+	//
+	// example:
+	//
+	// MSE_NACOS
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// The list of unhealthy endpoints.
 	UnhealthyEndpoints []*string `json:"unhealthyEndpoints,omitempty" xml:"unhealthyEndpoints,omitempty" type:"Repeated"`
-	UpdateTimestamp    *int64    `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
+	// The last modified time (unix timestamp).
+	//
+	// example:
+	//
+	// 1725868548440
+	UpdateTimestamp *int64 `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
 }
 
 func (s Service) String() string {
@@ -330,8 +391,23 @@ func (s *Service) Validate() error {
 }
 
 type ServicePorts struct {
-	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
-	Port     *int32  `json:"port,omitempty" xml:"port,omitempty"`
+	// The port name.
+	//
+	// example:
+	//
+	// user-service
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The port number.
+	//
+	// example:
+	//
+	// 8080
+	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// The protocol. Valid values: TCP and UDP.
+	//
+	// example:
+	//
+	// TCP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 }
 

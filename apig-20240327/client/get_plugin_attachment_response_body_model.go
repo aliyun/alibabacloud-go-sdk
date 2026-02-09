@@ -34,7 +34,7 @@ type GetPluginAttachmentResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type GetPluginAttachmentResponseBodyData struct {
 	//
 	// pl-cvo8ub6m1hkvgv03r3k0
 	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
-	// The resource details.
+	// The resource information.
 	ResourceInfos []*ResourceInfo `json:"resourceInfos,omitempty" xml:"resourceInfos,omitempty" type:"Repeated"`
 }
 

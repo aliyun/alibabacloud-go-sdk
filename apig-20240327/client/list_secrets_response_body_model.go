@@ -20,10 +20,25 @@ type iListSecretsResponseBody interface {
 }
 
 type ListSecretsResponseBody struct {
-	Code    *string                      `json:"code,omitempty" xml:"code,omitempty"`
-	Data    *ListSecretsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	Message *string                      `json:"message,omitempty" xml:"message,omitempty"`
+	// Code of the request
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Data
+	Data *ListSecretsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// message
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 2F270C0B-7D6A-5DA7-93E2-******
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -81,10 +96,26 @@ func (s *ListSecretsResponseBody) Validate() error {
 }
 
 type ListSecretsResponseBodyData struct {
-	Items      []*ListSecretsResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	PageNumber *int32                              `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int32                              `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	TotalSize  *int32                              `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
+	// Array of secret details
+	Items []*ListSecretsResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// Page number
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Number of items per page
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Total number of records matching the query
+	//
+	// example:
+	//
+	// 104
+	TotalSize *int32 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
 }
 
 func (s ListSecretsResponseBodyData) String() string {
@@ -145,15 +176,56 @@ func (s *ListSecretsResponseBodyData) Validate() error {
 }
 
 type ListSecretsResponseBodyDataItems struct {
-	CreateTimestamp *int64     `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	GatewayType     *string    `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	KmsConfig       *KMSConfig `json:"kmsConfig,omitempty" xml:"kmsConfig,omitempty"`
-	Name            *string    `json:"name,omitempty" xml:"name,omitempty"`
-	ReferenceCount  *int32     `json:"referenceCount,omitempty" xml:"referenceCount,omitempty"`
-	SecretId        *string    `json:"secretId,omitempty" xml:"secretId,omitempty"`
-	SecretSource    *string    `json:"secretSource,omitempty" xml:"secretSource,omitempty"`
-	Status          *string    `json:"status,omitempty" xml:"status,omitempty"`
-	UpdateTimestamp *int64     `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
+	// Unix timestamp when the secret was created
+	//
+	// example:
+	//
+	// 1234567890
+	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// Gateway type associated with the secret
+	//
+	// example:
+	//
+	// API
+	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
+	// KMS configuration object
+	KmsConfig *KMSConfig `json:"kmsConfig,omitempty" xml:"kmsConfig,omitempty"`
+	// Name of the secret
+	//
+	// example:
+	//
+	// test-secret
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Number of resources referencing this secret
+	//
+	// example:
+	//
+	// 5
+	ReferenceCount *int32 `json:"referenceCount,omitempty" xml:"referenceCount,omitempty"`
+	// Source of the ID
+	//
+	// example:
+	//
+	// xxxxxx
+	SecretId *string `json:"secretId,omitempty" xml:"secretId,omitempty"`
+	// Source of the secret
+	//
+	// example:
+	//
+	// KMS
+	SecretSource *string `json:"secretSource,omitempty" xml:"secretSource,omitempty"`
+	// Current status of the secret
+	//
+	// example:
+	//
+	// ENABLE
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Unix timestamp when the secret was last updated
+	//
+	// example:
+	//
+	// 1234567890
+	UpdateTimestamp *int64 `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
 }
 
 func (s ListSecretsResponseBodyDataItems) String() string {

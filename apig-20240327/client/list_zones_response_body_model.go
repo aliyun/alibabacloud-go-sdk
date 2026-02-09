@@ -26,7 +26,7 @@ type ListZonesResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data.
+	// The data returned.
 	Data *ListZonesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Response message.
 	//
@@ -96,7 +96,7 @@ func (s *ListZonesResponseBody) Validate() error {
 }
 
 type ListZonesResponseBodyData struct {
-	// List of availability zones.
+	// The list of queried zones.
 	Items []*ListZonesResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 
@@ -131,8 +131,13 @@ func (s *ListZonesResponseBodyData) Validate() error {
 }
 
 type ListZonesResponseBodyDataItems struct {
+	// Whether QAT (Quality Assurance Testing) is supported in this zone
+	//
+	// example:
+	//
+	// true
 	SupportQat *string `json:"supportQat,omitempty" xml:"supportQat,omitempty"`
-	// 可用区ID。
+	// The zone identifier
 	//
 	// example:
 	//

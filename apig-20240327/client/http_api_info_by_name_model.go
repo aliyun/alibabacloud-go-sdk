@@ -26,18 +26,25 @@ type HttpApiInfoByName struct {
 	//
 	// gw-xx
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The API name.
+	//
 	// example:
 	//
 	// test-api
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The API type.
+	//
 	// example:
 	//
 	// Http
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Specifies whether to enable versioning.
+	//
 	// example:
 	//
 	// true
-	VersionEnabled    *bool             `json:"versionEnabled,omitempty" xml:"versionEnabled,omitempty"`
+	VersionEnabled *bool `json:"versionEnabled,omitempty" xml:"versionEnabled,omitempty"`
+	// The information about the versioned API.
 	VersionedHttpApis []*HttpApiApiInfo `json:"versionedHttpApis,omitempty" xml:"versionedHttpApis,omitempty" type:"Repeated"`
 }
 

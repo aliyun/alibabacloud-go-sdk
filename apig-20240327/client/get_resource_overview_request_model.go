@@ -14,6 +14,8 @@ type iGetResourceOverviewRequest interface {
 }
 
 type GetResourceOverviewRequest struct {
+	// The gateway type.
+	//
 	// example:
 	//
 	// AI

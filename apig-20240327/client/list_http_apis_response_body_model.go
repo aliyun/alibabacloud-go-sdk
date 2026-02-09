@@ -24,17 +24,17 @@ type ListHttpApisResponseBody struct {
 	//
 	// example:
 	//
-	// Ok
+	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The APIs.
+	// Response data.
 	Data *ListHttpApisResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The returned message.
+	// Response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// Get HTTP API List
 	//
 	// example:
 	//
@@ -96,21 +96,21 @@ func (s *ListHttpApisResponseBody) Validate() error {
 }
 
 type ListHttpApisResponseBodyData struct {
-	// The API information.
+	// object
 	Items []*HttpApiInfoByName `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// Page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// Page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of entries returned.
+	// Total number of items.
 	//
 	// example:
 	//

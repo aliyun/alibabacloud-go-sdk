@@ -40,45 +40,51 @@ type iCreateMcpServerRequest interface {
 }
 
 type CreateMcpServerRequest struct {
-	// The list of assembly sources. This parameter is required when the type parameter is set to AssemblyMCP.
+	// Assembled MCP server sources
 	AssembledSources []*CreateMcpServerRequestAssembledSources `json:"assembledSources,omitempty" xml:"assembledSources,omitempty" type:"Repeated"`
-	// The backend service configurations for the route.
+	// Backend configuration
 	BackendConfig *CreateMcpServerRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
-	// Creates the MCP server from the specified type.
+	// Creation source type
+	//
+	// example:
+	//
+	// ApiGatewayMcpHosting
 	CreateFromType *string `json:"createFromType,omitempty" xml:"createFromType,omitempty"`
-	// The MCP server description.
+	// MCP server description
 	//
 	// example:
 	//
 	// mcp tool fetch time
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The domain IDs.
+	// List of domain IDs for the MCP server
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
-	// The exposed URI path. This parameter is required when the protocol parameter is set to SSE or StreamableHTTP, and the type parameter is set to RealMCP.
+	// Exposed URI path for SSE/StreamableHTTP protocols
 	//
 	// example:
 	//
 	// /sse
 	ExposedUriPath *string `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
-	// The ID of the gateway.
+	// Gateway ID
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gw-cq7l5s5lhtgi6qac0
-	GatewayId            *string                                       `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// Gray route configurations
 	GrayMcpServerConfigs []*CreateMcpServerRequestGrayMcpServerConfigs `json:"grayMcpServerConfigs,omitempty" xml:"grayMcpServerConfigs,omitempty" type:"Repeated"`
-	// The route match rule.
-	Match           *HttpRouteMatch                        `json:"match,omitempty" xml:"match,omitempty"`
+	// Route matching conditions
+	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
+	// MCP server specification
 	McpServerConfig *CreateMcpServerRequestMcpServerConfig `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty" type:"Struct"`
-	// Specifies whether MCP observability is enabled. Default: false.
+	// Enable MCP statistics
 	//
 	// example:
 	//
 	// false
 	McpStatisticsEnable *bool `json:"mcpStatisticsEnable,omitempty" xml:"mcpStatisticsEnable,omitempty"`
-	// The name of the MCP server. The name must match the regular expression ^[a-z0-9](%5B-a-z0-9%5D\\*%5Ba-z0-9%5D)?(.[a-z0-9](%5B-a-z0-9%5D\\*%5Ba-z0-9%5D)?)\\*$ and can be up to 64 characters in length.
+	// MCP server name
 	//
 	// This parameter is required.
 	//
@@ -86,15 +92,13 @@ type CreateMcpServerRequest struct {
 	//
 	// fetch-time
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The protocol type. Valid values: HTTP, HTTPS, SSE, and StreamableHTTP
+	// MCP protocol
 	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The type. Valid value:
-	//
-	// RealMCP: regular MCP service
+	// MCP server type
 	//
 	// This parameter is required.
 	//
@@ -276,19 +280,19 @@ func (s *CreateMcpServerRequest) Validate() error {
 }
 
 type CreateMcpServerRequestAssembledSources struct {
-	// The MCP server ID.
+	// MCP Server ID
 	//
 	// example:
 	//
 	// mcp-sdfa3qgavz
 	McpServerId *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
-	// The name of the MCP server.
+	// Source MCP server name
 	//
 	// example:
 	//
 	// test-mcp
 	McpServerName *string `json:"mcpServerName,omitempty" xml:"mcpServerName,omitempty"`
-	// The list of the MCP tools.
+	// List of tool names to include
 	Tools []*string `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
 }
 
@@ -332,13 +336,13 @@ func (s *CreateMcpServerRequestAssembledSources) Validate() error {
 }
 
 type CreateMcpServerRequestBackendConfig struct {
-	// The scenario of the backend service.
+	// Backend scene type
 	//
 	// example:
 	//
 	// SingleService
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
-	// The backend services.
+	// List of backend services
 	Services []*CreateMcpServerRequestBackendConfigServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
 }
 
@@ -382,35 +386,31 @@ func (s *CreateMcpServerRequestBackendConfig) Validate() error {
 }
 
 type CreateMcpServerRequestBackendConfigServices struct {
-	// The backend node port of the service.
+	// Service port
 	//
 	// example:
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The service protocol. Valid values:
-	//
-	// 	- HTTP
-	//
-	// 	- HTTPS
+	// Service protocol
 	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The service ID.
+	// Service ID
 	//
 	// example:
 	//
 	// svc-crbgq0dlhtgr***
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// The service version.
+	// Service version
 	//
 	// example:
 	//
 	// 2.1.6
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The weight.
+	// Service weight
 	//
 	// example:
 	//
@@ -476,9 +476,16 @@ func (s *CreateMcpServerRequestBackendConfigServices) Validate() error {
 }
 
 type CreateMcpServerRequestGrayMcpServerConfigs struct {
+	// Backend configuration for gray route
 	BackendConfig *CreateMcpServerRequestGrayMcpServerConfigsBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
-	Match         *HttpRouteMatch                                          `json:"match,omitempty" xml:"match,omitempty"`
-	RouteId       *string                                                  `json:"routeId,omitempty" xml:"routeId,omitempty"`
+	// Route matching rules
+	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
+	// Route ID for update operations
+	//
+	// example:
+	//
+	// gray-route-123
+	RouteId *string `json:"routeId,omitempty" xml:"routeId,omitempty"`
 }
 
 func (s CreateMcpServerRequestGrayMcpServerConfigs) String() string {
@@ -531,7 +538,13 @@ func (s *CreateMcpServerRequestGrayMcpServerConfigs) Validate() error {
 }
 
 type CreateMcpServerRequestGrayMcpServerConfigsBackendConfig struct {
-	Scene    *string                                                            `json:"scene,omitempty" xml:"scene,omitempty"`
+	// Must be SingleService
+	//
+	// example:
+	//
+	// SingleService
+	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// Exactly one service
 	Services []*CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
 }
 
@@ -575,11 +588,36 @@ func (s *CreateMcpServerRequestGrayMcpServerConfigsBackendConfig) Validate() err
 }
 
 type CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices struct {
-	Port      *int32  `json:"port,omitempty" xml:"port,omitempty"`
-	Protocol  *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// Service port number
+	//
+	// example:
+	//
+	// 8080
+	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// Service protocol type
+	//
+	// example:
+	//
+	// HTTP
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// Service ID
+	//
+	// example:
+	//
+	// svc-gray
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	Version   *string `json:"version,omitempty" xml:"version,omitempty"`
-	Weight    *int32  `json:"weight,omitempty" xml:"weight,omitempty"`
+	// Service version
+	//
+	// example:
+	//
+	// v2.0.0
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// Service weight for load balancing
+	//
+	// example:
+	//
+	// 100
+	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
 }
 
 func (s CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) String() string {
@@ -640,7 +678,17 @@ func (s *CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) Valida
 }
 
 type CreateMcpServerRequestMcpServerConfig struct {
+	// Converted MCP server spec YAML
+	//
+	// example:
+	//
+	// mcp-spec.yaml
 	McpServerSpec *string `json:"mcpServerSpec,omitempty" xml:"mcpServerSpec,omitempty"`
+	// Raw Swagger/OpenAPI document
+	//
+	// example:
+	//
+	// swagger.yaml
 	SwaggerConfig *string `json:"swaggerConfig,omitempty" xml:"swaggerConfig,omitempty"`
 }
 

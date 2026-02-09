@@ -26,7 +26,7 @@ type GetResourceOverviewResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Resource information.
+	// The resource information.
 	Data *GetResourceOverviewResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Response message.
 	//
@@ -99,7 +99,8 @@ type GetResourceOverviewResponseBodyData struct {
 	// API information.
 	Api *GetResourceOverviewResponseBodyDataApi `json:"api,omitempty" xml:"api,omitempty" type:"Struct"`
 	// Gateway information.
-	Gateway      *GetResourceOverviewResponseBodyDataGateway        `json:"gateway,omitempty" xml:"gateway,omitempty" type:"Struct"`
+	Gateway *GetResourceOverviewResponseBodyDataGateway `json:"gateway,omitempty" xml:"gateway,omitempty" type:"Struct"`
+	// The risk overview.
 	RiskOverview []*GetResourceOverviewResponseBodyDataRiskOverview `json:"riskOverview,omitempty" xml:"riskOverview,omitempty" type:"Repeated"`
 }
 
@@ -252,11 +253,16 @@ func (s *GetResourceOverviewResponseBodyDataGateway) Validate() error {
 }
 
 type GetResourceOverviewResponseBodyDataRiskOverview struct {
+	// The number of instances at a risk level.
+	//
 	// example:
 	//
 	// 1
-	Count       *string                                                       `json:"count,omitempty" xml:"count,omitempty"`
+	Count *string `json:"count,omitempty" xml:"count,omitempty"`
+	// The risk details list.
 	RiskDetails []*GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails `json:"riskDetails,omitempty" xml:"riskDetails,omitempty" type:"Repeated"`
+	// The risk level.
+	//
 	// example:
 	//
 	// LOW
@@ -312,19 +318,28 @@ func (s *GetResourceOverviewResponseBodyDataRiskOverview) Validate() error {
 }
 
 type GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails struct {
+	// The gateway ID.
+	//
 	// example:
 	//
 	// gw-xxxxxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The gateway name.
+	//
 	// example:
 	//
 	// test-gateway
 	GatewayName *string `json:"gatewayName,omitempty" xml:"gatewayName,omitempty"`
+	// The risk level.
+	//
 	// example:
 	//
 	// LOW
-	RiskLevel *string   `json:"riskLevel,omitempty" xml:"riskLevel,omitempty"`
+	RiskLevel *string `json:"riskLevel,omitempty" xml:"riskLevel,omitempty"`
+	// The risk name list.
 	RiskNames []*string `json:"riskNames,omitempty" xml:"riskNames,omitempty" type:"Repeated"`
+	// The risk score.
+	//
 	// example:
 	//
 	// 100

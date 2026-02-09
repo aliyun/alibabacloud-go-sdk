@@ -20,21 +20,21 @@ type iListPolicyClassesResponseBody interface {
 }
 
 type ListPolicyClassesResponseBody struct {
-	// Response code.
+	// The status code returned.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Policy template information.
+	// An array of policy template information.
 	Data *ListPolicyClassesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// ResponseMessage
+	// The response message returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,21 +96,21 @@ func (s *ListPolicyClassesResponseBody) Validate() error {
 }
 
 type ListPolicyClassesResponseBodyData struct {
-	// List of policy templates
+	// The templates.
 	Items []*PolicyClassInfo `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// Page number.
+	// The page number of the returned page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// Page size
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//

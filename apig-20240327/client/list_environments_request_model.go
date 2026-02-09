@@ -32,7 +32,7 @@ type ListEnvironmentsRequest struct {
 	//
 	// example:
 	//
-	// 测试
+	// production
 	AliasLike *string `json:"aliasLike,omitempty" xml:"aliasLike,omitempty"`
 	// Gateway ID, exact search.
 	//
@@ -46,7 +46,12 @@ type ListEnvironmentsRequest struct {
 	//
 	// test-gw
 	GatewayNameLike *string `json:"gatewayNameLike,omitempty" xml:"gatewayNameLike,omitempty"`
-	GatewayType     *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
+	// The gateway type
+	//
+	// example:
+	//
+	// APIGateway
+	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
 	// Environment name, fuzzy search.
 	//
 	// example:

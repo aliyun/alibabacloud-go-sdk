@@ -93,7 +93,12 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	// example:
 	//
 	// HttpApiRoute
-	ResourceType  *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The resource types.
+	//
+	// example:
+	//
+	// K8S
 	ResourceTypes *string `json:"resourceTypes,omitempty" xml:"resourceTypes,omitempty"`
 }
 

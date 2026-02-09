@@ -145,15 +145,21 @@ type CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier
 	// example:
 	//
 	// env-cti17hem1hktoruj98ug
-	EnvironmentId    *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// Parent resource ID
+	//
+	// example:
+	//
+	// api-******
 	ParentResourceId *string `json:"parentResourceId,omitempty" xml:"parentResourceId,omitempty"`
 	// The resource ID.
 	//
 	// example:
 	//
 	// ha-cn-li942gy8p03
-	ResourceId *string   `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	Resources  []*string `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// List of resources
+	Resources []*string `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
 }
 
 func (s CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier) String() string {

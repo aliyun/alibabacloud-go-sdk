@@ -38,19 +38,80 @@ type iPolicyClassInfo interface {
 }
 
 type PolicyClassInfo struct {
-	Alias                   *string   `json:"alias,omitempty" xml:"alias,omitempty"`
+	// The template alias.
+	//
+	// example:
+	//
+	// Rate Limit
+	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// The list of resource types that can be mounted.
 	AttachableResourceTypes []*string `json:"attachableResourceTypes,omitempty" xml:"attachableResourceTypes,omitempty" type:"Repeated"`
-	ClassId                 *string   `json:"classId,omitempty" xml:"classId,omitempty"`
-	ConfigExample           *string   `json:"configExample,omitempty" xml:"configExample,omitempty"`
-	Deprecated              *bool     `json:"deprecated,omitempty" xml:"deprecated,omitempty"`
-	Description             *string   `json:"description,omitempty" xml:"description,omitempty"`
-	Direction               *string   `json:"direction,omitempty" xml:"direction,omitempty"`
-	EnableLog               *bool     `json:"enableLog,omitempty" xml:"enableLog,omitempty"`
-	ExecutePriority         *string   `json:"executePriority,omitempty" xml:"executePriority,omitempty"`
-	ExecuteStage            *string   `json:"executeStage,omitempty" xml:"executeStage,omitempty"`
-	Name                    *string   `json:"name,omitempty" xml:"name,omitempty"`
-	Type                    *string   `json:"type,omitempty" xml:"type,omitempty"`
-	Version                 *string   `json:"version,omitempty" xml:"version,omitempty"`
+	// The template identifier.
+	//
+	// example:
+	//
+	// pc-cpqm0s94ckt1displ8ng
+	ClassId *string `json:"classId,omitempty" xml:"classId,omitempty"`
+	// A configuration example.
+	//
+	// example:
+	//
+	// {}
+	ConfigExample *string `json:"configExample,omitempty" xml:"configExample,omitempty"`
+	// Specifies whether the policy has been deprecated.
+	//
+	// example:
+	//
+	// false
+	Deprecated *bool `json:"deprecated,omitempty" xml:"deprecated,omitempty"`
+	// The template description.
+	//
+	// example:
+	//
+	// Limits the number of requests per unit of time
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The direction of traffic on which the policy takes effect.
+	//
+	// example:
+	//
+	// InBound
+	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
+	// Specifies whether to enable logging.
+	//
+	// example:
+	//
+	// true
+	EnableLog *bool `json:"enableLog,omitempty" xml:"enableLog,omitempty"`
+	// The execution priority.
+	//
+	// example:
+	//
+	// 1
+	ExecutePriority *string `json:"executePriority,omitempty" xml:"executePriority,omitempty"`
+	// The execution phase.
+	//
+	// example:
+	//
+	// POST
+	ExecuteStage *string `json:"executeStage,omitempty" xml:"executeStage,omitempty"`
+	// The template name.
+	//
+	// example:
+	//
+	// ConcurrencyLimit
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The policy type.
+	//
+	// example:
+	//
+	// FlowControl
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The template version.
+	//
+	// example:
+	//
+	// 1.0.0
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s PolicyClassInfo) String() string {

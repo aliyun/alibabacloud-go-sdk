@@ -30,7 +30,7 @@ type iUpdateHttpApiRouteRequest interface {
 }
 
 type UpdateHttpApiRouteRequest struct {
-	// The backend service configurations of the route.
+	// The backend service configurations for the route.
 	BackendConfig *UpdateHttpApiRouteRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
 	DeployConfigs []*HttpApiDeployConfig                  `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
 	// The route description.
@@ -39,7 +39,7 @@ type UpdateHttpApiRouteRequest struct {
 	//
 	// test route
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The domain IDs.
+	// The list of domain IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
 	// The environment ID.
 	//
@@ -47,7 +47,7 @@ type UpdateHttpApiRouteRequest struct {
 	//
 	// env-cquqsollhtgid***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The rules for matching the route.
+	// The route match rule.
 	Match          *HttpRouteMatch                           `json:"match,omitempty" xml:"match,omitempty"`
 	McpRouteConfig *UpdateHttpApiRouteRequestMcpRouteConfig  `json:"mcpRouteConfig,omitempty" xml:"mcpRouteConfig,omitempty" type:"Struct"`
 	Name           *string                                   `json:"name,omitempty" xml:"name,omitempty"`
@@ -181,9 +181,7 @@ func (s *UpdateHttpApiRouteRequest) Validate() error {
 }
 
 type UpdateHttpApiRouteRequestBackendConfig struct {
-	// The backend service scenario.
-	//
-	// Valid values:
+	// The backend service scenario. Valid values:
 	//
 	// 	- SingleService
 	//
@@ -197,7 +195,7 @@ type UpdateHttpApiRouteRequestBackendConfig struct {
 	//
 	// SingleService
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
-	// The backend services.
+	// The list of backend services.
 	Services []*UpdateHttpApiRouteRequestBackendConfigServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
 }
 
@@ -241,13 +239,13 @@ func (s *UpdateHttpApiRouteRequestBackendConfig) Validate() error {
 }
 
 type UpdateHttpApiRouteRequestBackendConfigServices struct {
-	// The service port. If you want to use a dynamic port, do not pass this parameter.
+	// The service port (omit for dynamic ports).
 	//
 	// example:
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The protocol. Valid values:
+	// The service protocol. Valid values:
 	//
 	// 	- HTTP
 	//
@@ -269,7 +267,7 @@ type UpdateHttpApiRouteRequestBackendConfigServices struct {
 	//
 	// v1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The percentage value of traffic.
+	// The traffic weight percentage.
 	//
 	// example:
 	//
@@ -815,6 +813,7 @@ func (s *UpdateHttpApiRouteRequestPolicyConfigsAiCacheConfigRedisConfig) Validat
 }
 
 type UpdateHttpApiRouteRequestPolicyConfigsAiCacheConfigVectorConfig struct {
+	// apiKey
 	ApiKey       *string  `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
 	CollectionId *string  `json:"collectionId,omitempty" xml:"collectionId,omitempty"`
 	ServiceHost  *string  `json:"serviceHost,omitempty" xml:"serviceHost,omitempty"`

@@ -24,7 +24,7 @@ type DeployHttpApiResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 响应消息。
+	// Response message.
 	//
 	// example:
 	//

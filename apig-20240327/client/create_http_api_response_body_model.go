@@ -20,21 +20,21 @@ type iCreateHttpApiResponseBody interface {
 }
 
 type CreateHttpApiResponseBody struct {
-	// The status code.
+	// API for testing
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The API information.
+	// A protocol.
 	Data *CreateHttpApiResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The returned message.
+	// The protocol list for API access.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// The API description.
 	//
 	// example:
 	//
@@ -96,13 +96,13 @@ func (s *CreateHttpApiResponseBody) Validate() error {
 }
 
 type CreateHttpApiResponseBodyData struct {
-	// The HTTP API ID.
+	// HTTP API ID。
 	//
 	// example:
 	//
 	// api-xxx
 	HttpApiId *string `json:"httpApiId,omitempty" xml:"httpApiId,omitempty"`
-	// The API name.
+	// The API base path, which must start with a forward slash (/).
 	//
 	// example:
 	//

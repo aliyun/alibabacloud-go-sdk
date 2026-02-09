@@ -20,21 +20,21 @@ type iCreateEnvironmentResponseBody interface {
 }
 
 type CreateEnvironmentResponseBody struct {
-	// Response code.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response data.
+	// Schema of Response
 	Data *CreateEnvironmentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Response message.
+	// rg-acfmycs5expl7oq
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID, used for tracing the API call chain.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *CreateEnvironmentResponseBody) Validate() error {
 }
 
 type CreateEnvironmentResponseBodyData struct {
-	// Environment ID.
+	// The request ID, which is used to trace the call link.
 	//
 	// example:
 	//

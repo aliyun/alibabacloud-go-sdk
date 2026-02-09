@@ -36,21 +36,102 @@ type iDomainInfo interface {
 }
 
 type DomainInfo struct {
-	CertIdentifier  *string `json:"certIdentifier,omitempty" xml:"certIdentifier,omitempty"`
-	ClientCACert    *string `json:"clientCACert,omitempty" xml:"clientCACert,omitempty"`
-	CreateFrom      *string `json:"createFrom,omitempty" xml:"createFrom,omitempty"`
-	CreateTimestamp *int64  `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	DomainId        *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
-	ForceHttps      *bool   `json:"forceHttps,omitempty" xml:"forceHttps,omitempty"`
-	MTLSEnabled     *bool   `json:"mTLSEnabled,omitempty" xml:"mTLSEnabled,omitempty"`
-	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
-	Protocol        *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The certificate identifier.
+	//
+	// example:
+	//
+	// 235556-cn-hangzhou
+	CertIdentifier *string `json:"certIdentifier,omitempty" xml:"certIdentifier,omitempty"`
+	// The client CA certificate.
+	//
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----
+	//
+	// MIIFBTCCAu2gAwIBAgIUORLpYPGSFD1YOP6PMbE7Wd/mpTQwDQYJKoZIhvcNAQEL
+	//
+	// BQAwE************************************************2VwVOJ2gqX3
+	//
+	// YuGaxvIbDy0iQJ1GMerPRyzJTeVEtdIKT29u0PdFRr4KZWom35qX7G4=
+	//
+	// -----END CERTIFICATE-----
+	ClientCACert *string `json:"clientCACert,omitempty" xml:"clientCACert,omitempty"`
+	// The creation source of the domain name.
+	//
+	// Valid values:
+	//
+	// 	- Console
+	//
+	// 	- Ingress
+	//
+	// example:
+	//
+	// Console
+	CreateFrom *string `json:"createFrom,omitempty" xml:"createFrom,omitempty"`
+	// The creation timestamp.
+	//
+	// example:
+	//
+	// 1719386834548
+	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// The domain name ID.
+	//
+	// example:
+	//
+	// d-cq1lthllhtgja4dk54eg
+	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
+	// Specifies whether to enable forcible HTTPS redirection when HTTPS is used as the protocol.
+	//
+	// example:
+	//
+	// false
+	ForceHttps *bool `json:"forceHttps,omitempty" xml:"forceHttps,omitempty"`
+	// Specifies whether to enable mutual authentication.
+	//
+	// example:
+	//
+	// true
+	MTLSEnabled *bool `json:"mTLSEnabled,omitempty" xml:"mTLSEnabled,omitempty"`
+	// The domain name.
+	//
+	// example:
+	//
+	// abc.com
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The supported protocol. Valid values:
+	//
+	// 	- HTTP
+	//
+	// 	- HTTPS
+	//
+	// example:
+	//
+	// HTTP
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-xxxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	Status          *string `json:"status,omitempty" xml:"status,omitempty"`
-	UpdateTimestamp *int64  `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
+	// The domain name status.
+	//
+	// Valid values:
+	//
+	// 	- UnPublished
+	//
+	// 	- Published
+	//
+	// example:
+	//
+	// Published
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The update timestamp.
+	//
+	// example:
+	//
+	// 1719386834548
+	UpdateTimestamp *int64 `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
 }
 
 func (s DomainInfo) String() string {

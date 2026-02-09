@@ -34,67 +34,49 @@ type iCreateGatewayRequest interface {
 }
 
 type CreateGatewayRequest struct {
-	// The billing method.
-	//
-	// Valid values:
-	//
-	// 	- POSTPAY
-	//
-	// 	- PREPAY
+	// The logging configurations.
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	// The gateway edition.
-	//
 	// example:
 	//
-	// -
+	// Professional
 	GatewayEdition *string `json:"gatewayEdition,omitempty" xml:"gatewayEdition,omitempty"`
-	// The type of the gateway.
-	//
-	// Valid values:
-	//
-	// 	- AI
-	//
-	// 	- API
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// API
-	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The logging configurations.
-	LogConfig *CreateGatewayRequestLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty" type:"Struct"`
-	// The name of the gateway instance.
+	GatewayType *string                        `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
+	LogConfig   *CreateGatewayRequestLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty" type:"Struct"`
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
 	// test-ceshi
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The network access configuration.
+	// The gateway edition.
 	NetworkAccessConfig *CreateGatewayRequestNetworkAccessConfig `json:"networkAccessConfig,omitempty" xml:"networkAccessConfig,omitempty" type:"Struct"`
-	// The ID of the resource group.
-	//
 	// example:
 	//
 	// rg-ahr5uil8raz0rq3b
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The specifications of the node.
+	// The tag key.
 	//
 	// example:
 	//
 	// apigw.dev.x2
-	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
-	// The tags.
-	Tag []*CreateGatewayRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
-	// The ID of the VPC.
+	Spec *string                    `json:"spec,omitempty" xml:"spec,omitempty"`
+	Tag  []*CreateGatewayRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
+	// The tag value.
 	//
 	// example:
 	//
 	// vpc-zm0x16tomfiat1mk9f6rs
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The zone settings.
+	// The status message.
 	ZoneConfig *CreateGatewayRequestZoneConfig `json:"zoneConfig,omitempty" xml:"zoneConfig,omitempty" type:"Struct"`
 }
 
@@ -234,7 +216,6 @@ func (s *CreateGatewayRequest) Validate() error {
 }
 
 type CreateGatewayRequestLogConfig struct {
-	// The Simple Log Service configurations.
 	Sls *CreateGatewayRequestLogConfigSls `json:"sls,omitempty" xml:"sls,omitempty" type:"Struct"`
 }
 
@@ -265,8 +246,6 @@ func (s *CreateGatewayRequestLogConfig) Validate() error {
 }
 
 type CreateGatewayRequestLogConfigSls struct {
-	// Indicates if enabled.
-	//
 	// example:
 	//
 	// false
@@ -295,15 +274,7 @@ func (s *CreateGatewayRequestLogConfigSls) Validate() error {
 }
 
 type CreateGatewayRequestNetworkAccessConfig struct {
-	// The network access type.
-	//
-	// Valid values:
-	//
-	// 	- InternetAndIntranet
-	//
-	// 	- Intranet
-	//
-	// 	- Internet
+	// -
 	//
 	// example:
 	//
@@ -333,14 +304,10 @@ func (s *CreateGatewayRequestNetworkAccessConfig) Validate() error {
 }
 
 type CreateGatewayRequestTag struct {
-	// The tag key.
-	//
 	// example:
 	//
 	// key
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The tag value.
-	//
 	// example:
 	//
 	// value
@@ -378,26 +345,17 @@ func (s *CreateGatewayRequestTag) Validate() error {
 }
 
 type CreateGatewayRequestZoneConfig struct {
-	// The option for selecting the zone.
-	//
-	// Valid values:
-	//
-	// 	- Auto
-	//
-	// 	- Manual
+	// The response payload.
 	//
 	// example:
 	//
 	// Manual
 	SelectOption *string `json:"selectOption,omitempty" xml:"selectOption,omitempty"`
-	// The ID of the vSwitch.
-	//
 	// example:
 	//
 	// vsw-xxx
-	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	// The supported zones.
-	Zones []*CreateGatewayRequestZoneConfigZones `json:"zones,omitempty" xml:"zones,omitempty" type:"Repeated"`
+	VSwitchId *string                                `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	Zones     []*CreateGatewayRequestZoneConfigZones `json:"zones,omitempty" xml:"zones,omitempty" type:"Repeated"`
 }
 
 func (s CreateGatewayRequestZoneConfig) String() string {
@@ -449,14 +407,10 @@ func (s *CreateGatewayRequestZoneConfig) Validate() error {
 }
 
 type CreateGatewayRequestZoneConfigZones struct {
-	// The ID of the vSwitch.
-	//
 	// example:
 	//
 	// vsw-xx
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	// The zone ID.
-	//
 	// example:
 	//
 	// cn-wulanchabu-a

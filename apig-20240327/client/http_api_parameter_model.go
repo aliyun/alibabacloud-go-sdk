@@ -24,20 +24,55 @@ type iHttpApiParameter interface {
 }
 
 type HttpApiParameter struct {
+	// The default value of the parameter.
+	//
+	// example:
+	//
+	// 123
 	DefaultValue *string `json:"defaultValue,omitempty" xml:"defaultValue,omitempty"`
-	Description  *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The parameter description.
+	//
+	// example:
+	//
+	// The example description.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The sample value of the parameter.
+	//
+	// example:
+	//
+	// 123
 	ExampleValue *string `json:"exampleValue,omitempty" xml:"exampleValue,omitempty"`
+	// The parameter name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// userId
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Specifies whether the parameter is required.
+	//
 	// example:
 	//
-	// false
+	// true
 	Required *bool `json:"required,omitempty" xml:"required,omitempty"`
+	// The parameter type.
+	//
+	// Valid values:
+	//
+	// 	- Integer
+	//
+	// 	- Number
+	//
+	// 	- String
+	//
+	// 	- Boolean
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// string
+	// String
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 

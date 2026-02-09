@@ -18,14 +18,26 @@ type iHttpApiDomainInfo interface {
 }
 
 type HttpApiDomainInfo struct {
+	// The domain name ID.
+	//
 	// example:
 	//
 	// d-xxx
 	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// www.example.com
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The protocol.
+	//
+	// Valid values:
+	//
+	// 	- HTTPS
+	//
+	// 	- HTTP
+	//
 	// example:
 	//
 	// HTTP

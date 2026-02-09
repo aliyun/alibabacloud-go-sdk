@@ -22,22 +22,32 @@ type iHttpApiVersionInfo interface {
 }
 
 type HttpApiVersionInfo struct {
+	// Specifies whether to enable versioning.
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The key in the specified header when the header versioning solution is used.
+	//
 	// example:
 	//
 	// my-version
 	HeaderName *string `json:"headerName,omitempty" xml:"headerName,omitempty"`
+	// The key in the specified query parameter when the query versioning solution is used.
+	//
 	// example:
 	//
 	// myVersion
 	QueryName *string `json:"queryName,omitempty" xml:"queryName,omitempty"`
+	// The versioning solution.
+	//
 	// example:
 	//
 	// Query
 	Scheme *string `json:"scheme,omitempty" xml:"scheme,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// v1

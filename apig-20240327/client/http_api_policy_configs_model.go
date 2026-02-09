@@ -32,16 +32,34 @@ type iHttpApiPolicyConfigs interface {
 }
 
 type HttpApiPolicyConfigs struct {
-	AiCacheConfig          *HttpApiPolicyConfigsAiCacheConfig          `json:"aiCacheConfig,omitempty" xml:"aiCacheConfig,omitempty" type:"Struct"`
-	AiFallbackConfig       *HttpApiPolicyConfigsAiFallbackConfig       `json:"aiFallbackConfig,omitempty" xml:"aiFallbackConfig,omitempty" type:"Struct"`
-	AiNetworkSearchConfig  *HttpApiPolicyConfigsAiNetworkSearchConfig  `json:"aiNetworkSearchConfig,omitempty" xml:"aiNetworkSearchConfig,omitempty" type:"Struct"`
-	AiSecurityGuardConfig  *HttpApiPolicyConfigsAiSecurityGuardConfig  `json:"aiSecurityGuardConfig,omitempty" xml:"aiSecurityGuardConfig,omitempty" type:"Struct"`
-	AiStatisticsConfig     *HttpApiPolicyConfigsAiStatisticsConfig     `json:"aiStatisticsConfig,omitempty" xml:"aiStatisticsConfig,omitempty" type:"Struct"`
+	// AiCacheConfig
+	AiCacheConfig *HttpApiPolicyConfigsAiCacheConfig `json:"aiCacheConfig,omitempty" xml:"aiCacheConfig,omitempty" type:"Struct"`
+	// AiFallbackConfig
+	AiFallbackConfig *HttpApiPolicyConfigsAiFallbackConfig `json:"aiFallbackConfig,omitempty" xml:"aiFallbackConfig,omitempty" type:"Struct"`
+	// AiNetworkSearchConfig
+	AiNetworkSearchConfig *HttpApiPolicyConfigsAiNetworkSearchConfig `json:"aiNetworkSearchConfig,omitempty" xml:"aiNetworkSearchConfig,omitempty" type:"Struct"`
+	// AiSecurityGuardConfig
+	AiSecurityGuardConfig *HttpApiPolicyConfigsAiSecurityGuardConfig `json:"aiSecurityGuardConfig,omitempty" xml:"aiSecurityGuardConfig,omitempty" type:"Struct"`
+	// AiStatisticsConfig
+	AiStatisticsConfig *HttpApiPolicyConfigsAiStatisticsConfig `json:"aiStatisticsConfig,omitempty" xml:"aiStatisticsConfig,omitempty" type:"Struct"`
+	// AiTokenRateLimitConfig
 	AiTokenRateLimitConfig *HttpApiPolicyConfigsAiTokenRateLimitConfig `json:"aiTokenRateLimitConfig,omitempty" xml:"aiTokenRateLimitConfig,omitempty" type:"Struct"`
-	AiToolSelectionConfig  *HttpApiPolicyConfigsAiToolSelectionConfig  `json:"aiToolSelectionConfig,omitempty" xml:"aiToolSelectionConfig,omitempty" type:"Struct"`
-	Enable                 *bool                                       `json:"enable,omitempty" xml:"enable,omitempty"`
-	SemanticRouterConfig   *HttpApiPolicyConfigsSemanticRouterConfig   `json:"semanticRouterConfig,omitempty" xml:"semanticRouterConfig,omitempty" type:"Struct"`
-	Type                   *string                                     `json:"type,omitempty" xml:"type,omitempty"`
+	// AiToolSelectionConfig
+	AiToolSelectionConfig *HttpApiPolicyConfigsAiToolSelectionConfig `json:"aiToolSelectionConfig,omitempty" xml:"aiToolSelectionConfig,omitempty" type:"Struct"`
+	// Policy Enable
+	//
+	// example:
+	//
+	// true
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// SemanticRouterConfig
+	SemanticRouterConfig *HttpApiPolicyConfigsSemanticRouterConfig `json:"semanticRouterConfig,omitempty" xml:"semanticRouterConfig,omitempty" type:"Struct"`
+	// Policy Type
+	//
+	// example:
+	//
+	// AiCache
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s HttpApiPolicyConfigs) String() string {
@@ -187,13 +205,32 @@ func (s *HttpApiPolicyConfigs) Validate() error {
 }
 
 type HttpApiPolicyConfigsAiCacheConfig struct {
-	CacheKeyStrategy *string                                           `json:"cacheKeyStrategy,omitempty" xml:"cacheKeyStrategy,omitempty"`
-	CacheMode        *string                                           `json:"cacheMode,omitempty" xml:"cacheMode,omitempty"`
-	CacheTTL         *int32                                            `json:"cacheTTL,omitempty" xml:"cacheTTL,omitempty"`
-	EmbeddingConfig  *HttpApiPolicyConfigsAiCacheConfigEmbeddingConfig `json:"embeddingConfig,omitempty" xml:"embeddingConfig,omitempty" type:"Struct"`
-	PluginStatus     *HttpApiPolicyConfigsAiCacheConfigPluginStatus    `json:"pluginStatus,omitempty" xml:"pluginStatus,omitempty" type:"Struct"`
-	RedisConfig      *HttpApiPolicyConfigsAiCacheConfigRedisConfig     `json:"redisConfig,omitempty" xml:"redisConfig,omitempty" type:"Struct"`
-	VectorConfig     *HttpApiPolicyConfigsAiCacheConfigVectorConfig    `json:"vectorConfig,omitempty" xml:"vectorConfig,omitempty" type:"Struct"`
+	// Strategy for generating cache keys
+	//
+	// example:
+	//
+	// default
+	CacheKeyStrategy *string `json:"cacheKeyStrategy,omitempty" xml:"cacheKeyStrategy,omitempty"`
+	// Cache mode type
+	//
+	// example:
+	//
+	// exact
+	CacheMode *string `json:"cacheMode,omitempty" xml:"cacheMode,omitempty"`
+	// Cache time-to-live in seconds
+	//
+	// example:
+	//
+	// 3600
+	CacheTTL *int32 `json:"cacheTTL,omitempty" xml:"cacheTTL,omitempty"`
+	// Embedding Config
+	EmbeddingConfig *HttpApiPolicyConfigsAiCacheConfigEmbeddingConfig `json:"embeddingConfig,omitempty" xml:"embeddingConfig,omitempty" type:"Struct"`
+	// pluginStatus
+	PluginStatus *HttpApiPolicyConfigsAiCacheConfigPluginStatus `json:"pluginStatus,omitempty" xml:"pluginStatus,omitempty" type:"Struct"`
+	// Redis configuration for cache storage
+	RedisConfig *HttpApiPolicyConfigsAiCacheConfigRedisConfig `json:"redisConfig,omitempty" xml:"redisConfig,omitempty" type:"Struct"`
+	// vectorConfig
+	VectorConfig *HttpApiPolicyConfigsAiCacheConfigVectorConfig `json:"vectorConfig,omitempty" xml:"vectorConfig,omitempty" type:"Struct"`
 }
 
 func (s HttpApiPolicyConfigsAiCacheConfig) String() string {
@@ -292,10 +329,30 @@ func (s *HttpApiPolicyConfigsAiCacheConfig) Validate() error {
 }
 
 type HttpApiPolicyConfigsAiCacheConfigEmbeddingConfig struct {
+	// Embedding model name
+	//
+	// example:
+	//
+	// model-1
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// Embedding service ID
+	//
+	// example:
+	//
+	// svc-1
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	Timeout   *int32  `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	Type      *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Embedding service request timeout in milliseconds
+	//
+	// example:
+	//
+	// 2000
+	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	// Embedding service provider type
+	//
+	// example:
+	//
+	// dashscope
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s HttpApiPolicyConfigsAiCacheConfigEmbeddingConfig) String() string {
@@ -347,9 +404,20 @@ func (s *HttpApiPolicyConfigsAiCacheConfigEmbeddingConfig) Validate() error {
 }
 
 type HttpApiPolicyConfigsAiCacheConfigPluginStatus struct {
-	ErrorLogs      map[string]*string `json:"errorLogs,omitempty" xml:"errorLogs,omitempty"`
-	PluginId       *string            `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
-	ServiceHealthy *bool              `json:"serviceHealthy,omitempty" xml:"serviceHealthy,omitempty"`
+	// errorLogs
+	ErrorLogs map[string]*string `json:"errorLogs,omitempty" xml:"errorLogs,omitempty"`
+	// pluginId
+	//
+	// example:
+	//
+	// pl-123456
+	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
+	// serviceHealthy
+	//
+	// example:
+	//
+	// true
+	ServiceHealthy *bool `json:"serviceHealthy,omitempty" xml:"serviceHealthy,omitempty"`
 }
 
 func (s HttpApiPolicyConfigsAiCacheConfigPluginStatus) String() string {
@@ -392,12 +460,42 @@ func (s *HttpApiPolicyConfigsAiCacheConfigPluginStatus) Validate() error {
 }
 
 type HttpApiPolicyConfigsAiCacheConfigRedisConfig struct {
-	DatabaseNumber *int32  `json:"databaseNumber,omitempty" xml:"databaseNumber,omitempty"`
-	Host           *string `json:"host,omitempty" xml:"host,omitempty"`
-	Password       *string `json:"password,omitempty" xml:"password,omitempty"`
-	Port           *int32  `json:"port,omitempty" xml:"port,omitempty"`
-	Timeout        *int32  `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	Username       *string `json:"username,omitempty" xml:"username,omitempty"`
+	// Redis database number
+	//
+	// example:
+	//
+	// 1
+	DatabaseNumber *int32 `json:"databaseNumber,omitempty" xml:"databaseNumber,omitempty"`
+	// Redis host
+	//
+	// example:
+	//
+	// redis.example.com
+	Host *string `json:"host,omitempty" xml:"host,omitempty"`
+	// Redis password
+	//
+	// example:
+	//
+	// ******
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// Redis port
+	//
+	// example:
+	//
+	// 6379
+	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// Redis timeout
+	//
+	// example:
+	//
+	// 60
+	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	// Redis username
+	//
+	// example:
+	//
+	// username
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s HttpApiPolicyConfigsAiCacheConfigRedisConfig) String() string {
@@ -467,12 +565,42 @@ func (s *HttpApiPolicyConfigsAiCacheConfigRedisConfig) Validate() error {
 }
 
 type HttpApiPolicyConfigsAiCacheConfigVectorConfig struct {
-	ApiKey       *string  `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
-	CollectionId *string  `json:"collectionId,omitempty" xml:"collectionId,omitempty"`
-	ServiceHost  *string  `json:"serviceHost,omitempty" xml:"serviceHost,omitempty"`
-	Threshold    *float32 `json:"threshold,omitempty" xml:"threshold,omitempty"`
-	Timeout      *int32   `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	Type         *string  `json:"type,omitempty" xml:"type,omitempty"`
+	// Vector database API key for authentication
+	//
+	// example:
+	//
+	// vec-api-key-123
+	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	// Vector database collection ID for storing vector embeddings
+	//
+	// example:
+	//
+	// col-1
+	CollectionId *string `json:"collectionId,omitempty" xml:"collectionId,omitempty"`
+	// Vector database service host address
+	//
+	// example:
+	//
+	// vec.example.com
+	ServiceHost *string `json:"serviceHost,omitempty" xml:"serviceHost,omitempty"`
+	// Similarity threshold for semantic matching
+	//
+	// example:
+	//
+	// 0.8
+	Threshold *float32 `json:"threshold,omitempty" xml:"threshold,omitempty"`
+	// Vector database request timeout in milliseconds
+	//
+	// example:
+	//
+	// 1000
+	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	// Vector database service type
+	//
+	// example:
+	//
+	// dashvector
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s HttpApiPolicyConfigsAiCacheConfigVectorConfig) String() string {
@@ -542,9 +670,20 @@ func (s *HttpApiPolicyConfigsAiCacheConfigVectorConfig) Validate() error {
 }
 
 type HttpApiPolicyConfigsAiFallbackConfig struct {
-	OnlyRedirectUpstreamCode *bool                                                 `json:"onlyRedirectUpstreamCode,omitempty" xml:"onlyRedirectUpstreamCode,omitempty"`
-	RouteEmbedded            *bool                                                 `json:"routeEmbedded,omitempty" xml:"routeEmbedded,omitempty"`
-	ServiceConfigs           []*HttpApiPolicyConfigsAiFallbackConfigServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
+	// Only trigger fallback when backend returns 4xx/5xx status codes
+	//
+	// example:
+	//
+	// true
+	OnlyRedirectUpstreamCode *bool `json:"onlyRedirectUpstreamCode,omitempty" xml:"onlyRedirectUpstreamCode,omitempty"`
+	// Whether the policy is generated from route embedded configuration
+	//
+	// example:
+	//
+	// true
+	RouteEmbedded *bool `json:"routeEmbedded,omitempty" xml:"routeEmbedded,omitempty"`
+	// List of fallback service configurations
+	ServiceConfigs []*HttpApiPolicyConfigsAiFallbackConfigServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
 }
 
 func (s HttpApiPolicyConfigsAiFallbackConfig) String() string {
@@ -596,10 +735,30 @@ func (s *HttpApiPolicyConfigsAiFallbackConfig) Validate() error {
 }
 
 type HttpApiPolicyConfigsAiFallbackConfigServiceConfigs struct {
-	Name                 *string `json:"name,omitempty" xml:"name,omitempty"`
-	PassThroughModelName *bool   `json:"passThroughModelName,omitempty" xml:"passThroughModelName,omitempty"`
-	ServiceId            *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	TargetModelName      *string `json:"targetModelName,omitempty" xml:"targetModelName,omitempty"`
+	// Service name for frontend display
+	//
+	// example:
+	//
+	// azure.ai
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Whether to pass through the original model name
+	//
+	// example:
+	//
+	// true
+	PassThroughModelName *bool `json:"passThroughModelName,omitempty" xml:"passThroughModelName,omitempty"`
+	// Fallback service ID
+	//
+	// example:
+	//
+	// svc-123456
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// Target model name for fallback
+	//
+	// example:
+	//
+	// kimi-fallback-test
+	TargetModelName *string `json:"targetModelName,omitempty" xml:"targetModelName,omitempty"`
 }
 
 func (s HttpApiPolicyConfigsAiFallbackConfigServiceConfigs) String() string {
@@ -651,15 +810,44 @@ func (s *HttpApiPolicyConfigsAiFallbackConfigServiceConfigs) Validate() error {
 }
 
 type HttpApiPolicyConfigsAiNetworkSearchConfig struct {
-	DefaultEnable      *bool                                                        `json:"defaultEnable,omitempty" xml:"defaultEnable,omitempty"`
-	DefaultLang        *string                                                      `json:"defaultLang,omitempty" xml:"defaultLang,omitempty"`
-	NeedReference      *bool                                                        `json:"needReference,omitempty" xml:"needReference,omitempty"`
-	PluginStatus       *HttpApiPolicyConfigsAiNetworkSearchConfigPluginStatus       `json:"pluginStatus,omitempty" xml:"pluginStatus,omitempty" type:"Struct"`
-	ReferenceFormat    *string                                                      `json:"referenceFormat,omitempty" xml:"referenceFormat,omitempty"`
-	ReferenceLocation  *string                                                      `json:"referenceLocation,omitempty" xml:"referenceLocation,omitempty"`
+	// Default enable
+	//
+	// example:
+	//
+	// true
+	DefaultEnable *bool `json:"defaultEnable,omitempty" xml:"defaultEnable,omitempty"`
+	// Default search language code
+	//
+	// example:
+	//
+	// zh-CN
+	DefaultLang *string `json:"defaultLang,omitempty" xml:"defaultLang,omitempty"`
+	// Add reference sources in answer
+	//
+	// example:
+	//
+	// true
+	NeedReference *bool `json:"needReference,omitempty" xml:"needReference,omitempty"`
+	// pluginStatus
+	PluginStatus *HttpApiPolicyConfigsAiNetworkSearchConfigPluginStatus `json:"pluginStatus,omitempty" xml:"pluginStatus,omitempty" type:"Struct"`
+	// Reference format
+	//
+	// example:
+	//
+	// Reference: %s
+	ReferenceFormat *string `json:"referenceFormat,omitempty" xml:"referenceFormat,omitempty"`
+	// Reference location
+	//
+	// example:
+	//
+	// head
+	ReferenceLocation *string `json:"referenceLocation,omitempty" xml:"referenceLocation,omitempty"`
+	// Search engine configuration
 	SearchEngineConfig *HttpApiPolicyConfigsAiNetworkSearchConfigSearchEngineConfig `json:"searchEngineConfig,omitempty" xml:"searchEngineConfig,omitempty" type:"Struct"`
-	SearchFrom         []*HttpApiPolicyConfigsAiNetworkSearchConfigSearchFrom       `json:"searchFrom,omitempty" xml:"searchFrom,omitempty" type:"Repeated"`
-	SearchRewrite      *HttpApiPolicyConfigsAiNetworkSearchConfigSearchRewrite      `json:"searchRewrite,omitempty" xml:"searchRewrite,omitempty" type:"Struct"`
+	// Search engine list
+	SearchFrom []*HttpApiPolicyConfigsAiNetworkSearchConfigSearchFrom `json:"searchFrom,omitempty" xml:"searchFrom,omitempty" type:"Repeated"`
+	// Search rewrite configuration
+	SearchRewrite *HttpApiPolicyConfigsAiNetworkSearchConfigSearchRewrite `json:"searchRewrite,omitempty" xml:"searchRewrite,omitempty" type:"Struct"`
 }
 
 func (s HttpApiPolicyConfigsAiNetworkSearchConfig) String() string {
@@ -780,9 +968,20 @@ func (s *HttpApiPolicyConfigsAiNetworkSearchConfig) Validate() error {
 }
 
 type HttpApiPolicyConfigsAiNetworkSearchConfigPluginStatus struct {
-	ErrorLogs      map[string]*string `json:"errorLogs,omitempty" xml:"errorLogs,omitempty"`
-	PluginId       *string            `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
-	ServiceHealthy *bool              `json:"serviceHealthy,omitempty" xml:"serviceHealthy,omitempty"`
+	// errorLogs
+	ErrorLogs map[string]*string `json:"errorLogs,omitempty" xml:"errorLogs,omitempty"`
+	// pluginId
+	//
+	// example:
+	//
+	// pl-123456
+	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
+	// serviceHealthy
+	//
+	// example:
+	//
+	// true
+	ServiceHealthy *bool `json:"serviceHealthy,omitempty" xml:"serviceHealthy,omitempty"`
 }
 
 func (s HttpApiPolicyConfigsAiNetworkSearchConfigPluginStatus) String() string {
@@ -825,16 +1024,62 @@ func (s *HttpApiPolicyConfigsAiNetworkSearchConfigPluginStatus) Validate() error
 }
 
 type HttpApiPolicyConfigsAiNetworkSearchConfigSearchEngineConfig struct {
-	ApiKey             *string            `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
-	ContentMode        *string            `json:"contentMode,omitempty" xml:"contentMode,omitempty"`
-	Count              *int32             `json:"count,omitempty" xml:"count,omitempty"`
-	Endpoint           *string            `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	Industry           *string            `json:"industry,omitempty" xml:"industry,omitempty"`
-	OptionArgs         map[string]*string `json:"optionArgs,omitempty" xml:"optionArgs,omitempty"`
-	Start              *int32             `json:"start,omitempty" xml:"start,omitempty"`
-	TimeRange          *string            `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
-	TimeoutMillisecond *int32             `json:"timeoutMillisecond,omitempty" xml:"timeoutMillisecond,omitempty"`
-	Type               *string            `json:"type,omitempty" xml:"type,omitempty"`
+	// Search engine API key
+	//
+	// example:
+	//
+	// xxx
+	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	// Content mode
+	//
+	// example:
+	//
+	// summary
+	ContentMode *string `json:"contentMode,omitempty" xml:"contentMode,omitempty"`
+	// Result count
+	//
+	// example:
+	//
+	// 10
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// Search engine endpoint
+	//
+	// example:
+	//
+	// ******-hangzhou.aliyuncs.com
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// Industry
+	//
+	// example:
+	//
+	// tech
+	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
+	// Additional parameters
+	OptionArgs map[string]*string `json:"optionArgs,omitempty" xml:"optionArgs,omitempty"`
+	// Result offset
+	//
+	// example:
+	//
+	// 0
+	Start *int32 `json:"start,omitempty" xml:"start,omitempty"`
+	// Time range
+	//
+	// example:
+	//
+	// 7d
+	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
+	// API call timeout in milliseconds
+	//
+	// example:
+	//
+	// 5000
+	TimeoutMillisecond *int32 `json:"timeoutMillisecond,omitempty" xml:"timeoutMillisecond,omitempty"`
+	// Search engine type: Bing/aliyunQuark
+	//
+	// example:
+	//
+	// Bing
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s HttpApiPolicyConfigsAiNetworkSearchConfigSearchEngineConfig) String() string {
@@ -940,16 +1185,62 @@ func (s *HttpApiPolicyConfigsAiNetworkSearchConfigSearchEngineConfig) Validate()
 }
 
 type HttpApiPolicyConfigsAiNetworkSearchConfigSearchFrom struct {
-	ApiKey             *string            `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
-	ContentMode        *string            `json:"contentMode,omitempty" xml:"contentMode,omitempty"`
-	Count              *int32             `json:"count,omitempty" xml:"count,omitempty"`
-	Endpoint           *string            `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	Industry           *string            `json:"industry,omitempty" xml:"industry,omitempty"`
-	OptionArgs         map[string]*string `json:"optionArgs,omitempty" xml:"optionArgs,omitempty"`
-	Start              *int32             `json:"start,omitempty" xml:"start,omitempty"`
-	TimeRange          *string            `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
-	TimeoutMillisecond *int32             `json:"timeoutMillisecond,omitempty" xml:"timeoutMillisecond,omitempty"`
-	Type               *string            `json:"type,omitempty" xml:"type,omitempty"`
+	// Search engine API key
+	//
+	// example:
+	//
+	// xxx
+	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	// Content mode
+	//
+	// example:
+	//
+	// summary
+	ContentMode *string `json:"contentMode,omitempty" xml:"contentMode,omitempty"`
+	// Result count
+	//
+	// example:
+	//
+	// 10
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// Search engine endpoint
+	//
+	// example:
+	//
+	// ******-hangzhou.aliyuncs.com
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// Industry
+	//
+	// example:
+	//
+	// tech
+	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
+	// Additional parameters
+	OptionArgs map[string]*string `json:"optionArgs,omitempty" xml:"optionArgs,omitempty"`
+	// Result offset
+	//
+	// example:
+	//
+	// 0
+	Start *int32 `json:"start,omitempty" xml:"start,omitempty"`
+	// Time range
+	//
+	// example:
+	//
+	// 7d
+	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
+	// API call timeout in milliseconds
+	//
+	// example:
+	//
+	// 5000
+	TimeoutMillisecond *int32 `json:"timeoutMillisecond,omitempty" xml:"timeoutMillisecond,omitempty"`
+	// Search engine type
+	//
+	// example:
+	//
+	// Bing
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s HttpApiPolicyConfigsAiNetworkSearchConfigSearchFrom) String() string {
@@ -1055,11 +1346,36 @@ func (s *HttpApiPolicyConfigsAiNetworkSearchConfigSearchFrom) Validate() error {
 }
 
 type HttpApiPolicyConfigsAiNetworkSearchConfigSearchRewrite struct {
-	Enable             *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
-	MaxCount           *int32  `json:"maxCount,omitempty" xml:"maxCount,omitempty"`
-	ModelName          *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	ServiceId          *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	TimeoutMillisecond *int32  `json:"timeoutMillisecond,omitempty" xml:"timeoutMillisecond,omitempty"`
+	// Enable search rewrite
+	//
+	// example:
+	//
+	// true
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// Max rewrite count (1-5)
+	//
+	// example:
+	//
+	// 3
+	MaxCount *int32 `json:"maxCount,omitempty" xml:"maxCount,omitempty"`
+	// Model name
+	//
+	// example:
+	//
+	// qwen-turbo
+	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// Service ID
+	//
+	// example:
+	//
+	// svc-123456
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// Timeout in milliseconds
+	//
+	// example:
+	//
+	// 5000
+	TimeoutMillisecond *int32 `json:"timeoutMillisecond,omitempty" xml:"timeoutMillisecond,omitempty"`
 }
 
 func (s HttpApiPolicyConfigsAiNetworkSearchConfigSearchRewrite) String() string {
@@ -1120,22 +1436,82 @@ func (s *HttpApiPolicyConfigsAiNetworkSearchConfigSearchRewrite) Validate() erro
 }
 
 type HttpApiPolicyConfigsAiSecurityGuardConfig struct {
-	BufferLimit                  *int32                                                                   `json:"bufferLimit,omitempty" xml:"bufferLimit,omitempty"`
-	CheckRequest                 *bool                                                                    `json:"checkRequest,omitempty" xml:"checkRequest,omitempty"`
-	CheckRequestImage            *bool                                                                    `json:"checkRequestImage,omitempty" xml:"checkRequestImage,omitempty"`
-	CheckResponse                *bool                                                                    `json:"checkResponse,omitempty" xml:"checkResponse,omitempty"`
-	CheckResponseImage           *bool                                                                    `json:"checkResponseImage,omitempty" xml:"checkResponseImage,omitempty"`
-	ConsumerRequestCheckService  []*HttpApiPolicyConfigsAiSecurityGuardConfigConsumerRequestCheckService  `json:"consumerRequestCheckService,omitempty" xml:"consumerRequestCheckService,omitempty" type:"Repeated"`
+	// Buffer limit for content checking
+	//
+	// example:
+	//
+	// 1000
+	BufferLimit *int32 `json:"bufferLimit,omitempty" xml:"bufferLimit,omitempty"`
+	// Enable request content checking
+	//
+	// example:
+	//
+	// true
+	CheckRequest *bool `json:"checkRequest,omitempty" xml:"checkRequest,omitempty"`
+	// Enable request image checking
+	//
+	// example:
+	//
+	// true
+	CheckRequestImage *bool `json:"checkRequestImage,omitempty" xml:"checkRequestImage,omitempty"`
+	// Enable response content checking
+	//
+	// example:
+	//
+	// true
+	CheckResponse *bool `json:"checkResponse,omitempty" xml:"checkResponse,omitempty"`
+	// Enable response image checking
+	//
+	// example:
+	//
+	// true
+	CheckResponseImage *bool `json:"checkResponseImage,omitempty" xml:"checkResponseImage,omitempty"`
+	// consumerRequestCheckService
+	ConsumerRequestCheckService []*HttpApiPolicyConfigsAiSecurityGuardConfigConsumerRequestCheckService `json:"consumerRequestCheckService,omitempty" xml:"consumerRequestCheckService,omitempty" type:"Repeated"`
+	// consumerResponseCheckService
 	ConsumerResponseCheckService []*HttpApiPolicyConfigsAiSecurityGuardConfigConsumerResponseCheckService `json:"consumerResponseCheckService,omitempty" xml:"consumerResponseCheckService,omitempty" type:"Repeated"`
-	ConsumerRiskLevel            []*HttpApiPolicyConfigsAiSecurityGuardConfigConsumerRiskLevel            `json:"consumerRiskLevel,omitempty" xml:"consumerRiskLevel,omitempty" type:"Repeated"`
-	PluginStatus                 *HttpApiPolicyConfigsAiSecurityGuardConfigPluginStatus                   `json:"pluginStatus,omitempty" xml:"pluginStatus,omitempty" type:"Struct"`
-	RequestCheckService          *string                                                                  `json:"requestCheckService,omitempty" xml:"requestCheckService,omitempty"`
-	RequestImageCheckService     *string                                                                  `json:"requestImageCheckService,omitempty" xml:"requestImageCheckService,omitempty"`
-	ResponseCheckService         *string                                                                  `json:"responseCheckService,omitempty" xml:"responseCheckService,omitempty"`
-	ResponseImageCheckService    *string                                                                  `json:"responseImageCheckService,omitempty" xml:"responseImageCheckService,omitempty"`
-	RiskAlertLevel               *string                                                                  `json:"riskAlertLevel,omitempty" xml:"riskAlertLevel,omitempty"`
-	RiskConfig                   []*HttpApiPolicyConfigsAiSecurityGuardConfigRiskConfig                   `json:"riskConfig,omitempty" xml:"riskConfig,omitempty" type:"Repeated"`
-	ServiceAddress               *string                                                                  `json:"serviceAddress,omitempty" xml:"serviceAddress,omitempty"`
+	// consumerRiskLevel
+	ConsumerRiskLevel []*HttpApiPolicyConfigsAiSecurityGuardConfigConsumerRiskLevel `json:"consumerRiskLevel,omitempty" xml:"consumerRiskLevel,omitempty" type:"Repeated"`
+	// pluginStatus
+	PluginStatus *HttpApiPolicyConfigsAiSecurityGuardConfigPluginStatus `json:"pluginStatus,omitempty" xml:"pluginStatus,omitempty" type:"Struct"`
+	// Request text check service type
+	//
+	// example:
+	//
+	// content-moderation-service
+	RequestCheckService *string `json:"requestCheckService,omitempty" xml:"requestCheckService,omitempty"`
+	// Request image check service type
+	//
+	// example:
+	//
+	// image-moderation-service
+	RequestImageCheckService *string `json:"requestImageCheckService,omitempty" xml:"requestImageCheckService,omitempty"`
+	// Response text check service type
+	//
+	// example:
+	//
+	// output-moderation-service
+	ResponseCheckService *string `json:"responseCheckService,omitempty" xml:"responseCheckService,omitempty"`
+	// Response image check service type
+	//
+	// example:
+	//
+	// generated-image-scanner
+	ResponseImageCheckService *string `json:"responseImageCheckService,omitempty" xml:"responseImageCheckService,omitempty"`
+	// Global risk alert level
+	//
+	// example:
+	//
+	// high
+	RiskAlertLevel *string `json:"riskAlertLevel,omitempty" xml:"riskAlertLevel,omitempty"`
+	// RiskConfig
+	RiskConfig []*HttpApiPolicyConfigsAiSecurityGuardConfigRiskConfig `json:"riskConfig,omitempty" xml:"riskConfig,omitempty" type:"Repeated"`
+	// Security guard service endpoint URL
+	//
+	// example:
+	//
+	// https://api.example.com/v1
+	ServiceAddress *string `json:"serviceAddress,omitempty" xml:"serviceAddress,omitempty"`
 }
 
 func (s HttpApiPolicyConfigsAiSecurityGuardConfig) String() string {
@@ -1336,10 +1712,35 @@ func (s *HttpApiPolicyConfigsAiSecurityGuardConfig) Validate() error {
 }
 
 type HttpApiPolicyConfigsAiSecurityGuardConfigConsumerRequestCheckService struct {
-	MatchType                *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
-	ModalityType             *string `json:"modalityType,omitempty" xml:"modalityType,omitempty"`
-	Name                     *string `json:"name,omitempty" xml:"name,omitempty"`
-	RequestCheckService      *string `json:"requestCheckService,omitempty" xml:"requestCheckService,omitempty"`
+	// Match type
+	//
+	// example:
+	//
+	// Exact
+	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// Modality type
+	//
+	// example:
+	//
+	// Text
+	ModalityType *string `json:"modalityType,omitempty" xml:"modalityType,omitempty"`
+	// Consumer name
+	//
+	// example:
+	//
+	// consumer-1
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// requestCheckService
+	//
+	// example:
+	//
+	// query_security_check
+	RequestCheckService *string `json:"requestCheckService,omitempty" xml:"requestCheckService,omitempty"`
+	// requestImageCheckService
+	//
+	// example:
+	//
+	// nsfw-image-detector
 	RequestImageCheckService *string `json:"requestImageCheckService,omitempty" xml:"requestImageCheckService,omitempty"`
 }
 
@@ -1401,10 +1802,35 @@ func (s *HttpApiPolicyConfigsAiSecurityGuardConfigConsumerRequestCheckService) V
 }
 
 type HttpApiPolicyConfigsAiSecurityGuardConfigConsumerResponseCheckService struct {
-	MatchType                 *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
-	ModalityType              *string `json:"modalityType,omitempty" xml:"modalityType,omitempty"`
-	Name                      *string `json:"name,omitempty" xml:"name,omitempty"`
-	ResponseCheckService      *string `json:"responseCheckService,omitempty" xml:"responseCheckService,omitempty"`
+	// Match type
+	//
+	// example:
+	//
+	// Exact
+	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// Modality type
+	//
+	// example:
+	//
+	// Text
+	ModalityType *string `json:"modalityType,omitempty" xml:"modalityType,omitempty"`
+	// Consumer name
+	//
+	// example:
+	//
+	// consumer-1
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// responseCheckService
+	//
+	// example:
+	//
+	// response_security_check
+	ResponseCheckService *string `json:"responseCheckService,omitempty" xml:"responseCheckService,omitempty"`
+	// responseImageCheckService
+	//
+	// example:
+	//
+	// watermark-detector
 	ResponseImageCheckService *string `json:"responseImageCheckService,omitempty" xml:"responseImageCheckService,omitempty"`
 }
 
@@ -1466,10 +1892,30 @@ func (s *HttpApiPolicyConfigsAiSecurityGuardConfigConsumerResponseCheckService) 
 }
 
 type HttpApiPolicyConfigsAiSecurityGuardConfigConsumerRiskLevel struct {
-	Level     *string `json:"level,omitempty" xml:"level,omitempty"`
+	// Risk level
+	//
+	// example:
+	//
+	// high
+	Level *string `json:"level,omitempty" xml:"level,omitempty"`
+	// Match type
+	//
+	// example:
+	//
+	// Exact
 	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
-	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
-	Type      *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Consumer name
+	//
+	// example:
+	//
+	// consumer-1
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Risk type
+	//
+	// example:
+	//
+	// ContentModeration
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s HttpApiPolicyConfigsAiSecurityGuardConfigConsumerRiskLevel) String() string {
@@ -1521,9 +1967,20 @@ func (s *HttpApiPolicyConfigsAiSecurityGuardConfigConsumerRiskLevel) Validate() 
 }
 
 type HttpApiPolicyConfigsAiSecurityGuardConfigPluginStatus struct {
-	ErrorLogs      map[string]*string `json:"errorLogs,omitempty" xml:"errorLogs,omitempty"`
-	PluginId       *string            `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
-	ServiceHealthy *bool              `json:"serviceHealthy,omitempty" xml:"serviceHealthy,omitempty"`
+	// errorLogs
+	ErrorLogs map[string]*string `json:"errorLogs,omitempty" xml:"errorLogs,omitempty"`
+	// pluginId
+	//
+	// example:
+	//
+	// pl-123456
+	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
+	// serviceHealthy
+	//
+	// example:
+	//
+	// true
+	ServiceHealthy *bool `json:"serviceHealthy,omitempty" xml:"serviceHealthy,omitempty"`
 }
 
 func (s HttpApiPolicyConfigsAiSecurityGuardConfigPluginStatus) String() string {
@@ -1566,9 +2023,20 @@ func (s *HttpApiPolicyConfigsAiSecurityGuardConfigPluginStatus) Validate() error
 }
 
 type HttpApiPolicyConfigsAiSecurityGuardConfigRiskConfig struct {
+	// consumerRules
 	ConsumerRules *HttpApiPolicyConfigsAiSecurityGuardConfigRiskConfigConsumerRules `json:"consumerRules,omitempty" xml:"consumerRules,omitempty" type:"Struct"`
-	Level         *string                                                           `json:"level,omitempty" xml:"level,omitempty"`
-	Type          *string                                                           `json:"type,omitempty" xml:"type,omitempty"`
+	// Risk level
+	//
+	// example:
+	//
+	// high
+	Level *string `json:"level,omitempty" xml:"level,omitempty"`
+	// Risk type
+	//
+	// example:
+	//
+	// ContentModeration
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s HttpApiPolicyConfigsAiSecurityGuardConfigRiskConfig) String() string {
@@ -1616,8 +2084,18 @@ func (s *HttpApiPolicyConfigsAiSecurityGuardConfigRiskConfig) Validate() error {
 }
 
 type HttpApiPolicyConfigsAiSecurityGuardConfigRiskConfigConsumerRules struct {
+	// matchType
+	//
+	// example:
+	//
+	// Exact
 	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
-	Pattern   *string `json:"pattern,omitempty" xml:"pattern,omitempty"`
+	// pattern
+	//
+	// example:
+	//
+	// /v1/chat/*
+	Pattern *string `json:"pattern,omitempty" xml:"pattern,omitempty"`
 }
 
 func (s HttpApiPolicyConfigsAiSecurityGuardConfigRiskConfigConsumerRules) String() string {
@@ -1651,7 +2129,17 @@ func (s *HttpApiPolicyConfigsAiSecurityGuardConfigRiskConfigConsumerRules) Valid
 }
 
 type HttpApiPolicyConfigsAiStatisticsConfig struct {
-	LogRequestContent  *bool `json:"logRequestContent,omitempty" xml:"logRequestContent,omitempty"`
+	// Log request content
+	//
+	// example:
+	//
+	// true
+	LogRequestContent *bool `json:"logRequestContent,omitempty" xml:"logRequestContent,omitempty"`
+	// Log response content
+	//
+	// example:
+	//
+	// true
 	LogResponseContent *bool `json:"logResponseContent,omitempty" xml:"logResponseContent,omitempty"`
 }
 
@@ -1686,11 +2174,20 @@ func (s *HttpApiPolicyConfigsAiStatisticsConfig) Validate() error {
 }
 
 type HttpApiPolicyConfigsAiTokenRateLimitConfig struct {
-	EnableGlobalRules *bool                                                    `json:"enableGlobalRules,omitempty" xml:"enableGlobalRules,omitempty"`
-	GlobalRules       []*HttpApiPolicyConfigsAiTokenRateLimitConfigGlobalRules `json:"globalRules,omitempty" xml:"globalRules,omitempty" type:"Repeated"`
-	PluginStatus      *HttpApiPolicyConfigsAiTokenRateLimitConfigPluginStatus  `json:"pluginStatus,omitempty" xml:"pluginStatus,omitempty" type:"Struct"`
-	RedisConfig       *HttpApiPolicyConfigsAiTokenRateLimitConfigRedisConfig   `json:"redisConfig,omitempty" xml:"redisConfig,omitempty" type:"Struct"`
-	Rules             []*HttpApiPolicyConfigsAiTokenRateLimitConfigRules       `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
+	// Enable global rate limit rules
+	//
+	// example:
+	//
+	// true
+	EnableGlobalRules *bool `json:"enableGlobalRules,omitempty" xml:"enableGlobalRules,omitempty"`
+	// List of global rate limit rules
+	GlobalRules []*HttpApiPolicyConfigsAiTokenRateLimitConfigGlobalRules `json:"globalRules,omitempty" xml:"globalRules,omitempty" type:"Repeated"`
+	// pluginStatus
+	PluginStatus *HttpApiPolicyConfigsAiTokenRateLimitConfigPluginStatus `json:"pluginStatus,omitempty" xml:"pluginStatus,omitempty" type:"Struct"`
+	// Redis Config
+	RedisConfig *HttpApiPolicyConfigsAiTokenRateLimitConfigRedisConfig `json:"redisConfig,omitempty" xml:"redisConfig,omitempty" type:"Struct"`
+	// List of rate limit rules
+	Rules []*HttpApiPolicyConfigsAiTokenRateLimitConfigRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
 }
 
 func (s HttpApiPolicyConfigsAiTokenRateLimitConfig) String() string {
@@ -1779,11 +2276,41 @@ func (s *HttpApiPolicyConfigsAiTokenRateLimitConfig) Validate() error {
 }
 
 type HttpApiPolicyConfigsAiTokenRateLimitConfigGlobalRules struct {
-	LimitMode  *string `json:"limitMode,omitempty" xml:"limitMode,omitempty"`
-	LimitType  *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
+	// Limit mode
+	//
+	// example:
+	//
+	// TokenPerSecond
+	LimitMode *string `json:"limitMode,omitempty" xml:"limitMode,omitempty"`
+	// Limit type
+	//
+	// example:
+	//
+	// Global
+	LimitType *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
+	// Limit value
+	//
+	// example:
+	//
+	// 100
 	LimitValue *string `json:"limitValue,omitempty" xml:"limitValue,omitempty"`
-	MatchKey   *string `json:"matchKey,omitempty" xml:"matchKey,omitempty"`
-	MatchType  *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// Match key
+	//
+	// example:
+	//
+	// user_id
+	MatchKey *string `json:"matchKey,omitempty" xml:"matchKey,omitempty"`
+	// Match type
+	//
+	// example:
+	//
+	// Exact
+	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// Match value
+	//
+	// example:
+	//
+	// 12345
 	MatchValue *string `json:"matchValue,omitempty" xml:"matchValue,omitempty"`
 }
 
@@ -1854,9 +2381,20 @@ func (s *HttpApiPolicyConfigsAiTokenRateLimitConfigGlobalRules) Validate() error
 }
 
 type HttpApiPolicyConfigsAiTokenRateLimitConfigPluginStatus struct {
-	ErrorLogs      map[string]*string `json:"errorLogs,omitempty" xml:"errorLogs,omitempty"`
-	PluginId       *string            `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
-	ServiceHealthy *bool              `json:"serviceHealthy,omitempty" xml:"serviceHealthy,omitempty"`
+	// Array of plugin execution error logs
+	ErrorLogs map[string]*string `json:"errorLogs,omitempty" xml:"errorLogs,omitempty"`
+	// Plugin instance unique identifier
+	//
+	// example:
+	//
+	// pl-123456
+	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
+	// Health status of the cache service
+	//
+	// example:
+	//
+	// true
+	ServiceHealthy *bool `json:"serviceHealthy,omitempty" xml:"serviceHealthy,omitempty"`
 }
 
 func (s HttpApiPolicyConfigsAiTokenRateLimitConfigPluginStatus) String() string {
@@ -1899,12 +2437,42 @@ func (s *HttpApiPolicyConfigsAiTokenRateLimitConfigPluginStatus) Validate() erro
 }
 
 type HttpApiPolicyConfigsAiTokenRateLimitConfigRedisConfig struct {
-	DatabaseNumber *int32  `json:"databaseNumber,omitempty" xml:"databaseNumber,omitempty"`
-	Host           *string `json:"host,omitempty" xml:"host,omitempty"`
-	Password       *string `json:"password,omitempty" xml:"password,omitempty"`
-	Port           *int32  `json:"port,omitempty" xml:"port,omitempty"`
-	Timeout        *int32  `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	Username       *string `json:"username,omitempty" xml:"username,omitempty"`
+	// Redis database number
+	//
+	// example:
+	//
+	// 1
+	DatabaseNumber *int32 `json:"databaseNumber,omitempty" xml:"databaseNumber,omitempty"`
+	// Redis host
+	//
+	// example:
+	//
+	// redis.example.com
+	Host *string `json:"host,omitempty" xml:"host,omitempty"`
+	// Redis password
+	//
+	// example:
+	//
+	// ******
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// Redis port
+	//
+	// example:
+	//
+	// 6379
+	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// Redis timeout
+	//
+	// example:
+	//
+	// 60
+	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	// Redis username
+	//
+	// example:
+	//
+	// username
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s HttpApiPolicyConfigsAiTokenRateLimitConfigRedisConfig) String() string {
@@ -1974,11 +2542,41 @@ func (s *HttpApiPolicyConfigsAiTokenRateLimitConfigRedisConfig) Validate() error
 }
 
 type HttpApiPolicyConfigsAiTokenRateLimitConfigRules struct {
-	LimitMode  *string `json:"limitMode,omitempty" xml:"limitMode,omitempty"`
-	LimitType  *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
+	// Limit mode
+	//
+	// example:
+	//
+	// TokenPerSecond
+	LimitMode *string `json:"limitMode,omitempty" xml:"limitMode,omitempty"`
+	// Limit type
+	//
+	// example:
+	//
+	// Header
+	LimitType *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
+	// Limit value
+	//
+	// example:
+	//
+	// 100
 	LimitValue *string `json:"limitValue,omitempty" xml:"limitValue,omitempty"`
-	MatchKey   *string `json:"matchKey,omitempty" xml:"matchKey,omitempty"`
-	MatchType  *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// Match key
+	//
+	// example:
+	//
+	// x-api-key
+	MatchKey *string `json:"matchKey,omitempty" xml:"matchKey,omitempty"`
+	// Match type
+	//
+	// example:
+	//
+	// Exact
+	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// Match value
+	//
+	// example:
+	//
+	// test-value
 	MatchValue *string `json:"matchValue,omitempty" xml:"matchValue,omitempty"`
 }
 
@@ -2049,10 +2647,14 @@ func (s *HttpApiPolicyConfigsAiTokenRateLimitConfigRules) Validate() error {
 }
 
 type HttpApiPolicyConfigsAiToolSelectionConfig struct {
+	// Enable conditions configuration
 	EnableConditions *HttpApiPolicyConfigsAiToolSelectionConfigEnableConditions `json:"enableConditions,omitempty" xml:"enableConditions,omitempty" type:"Struct"`
-	PluginStatus     *HttpApiPolicyConfigsAiToolSelectionConfigPluginStatus     `json:"pluginStatus,omitempty" xml:"pluginStatus,omitempty" type:"Struct"`
-	QueryRewriting   *HttpApiPolicyConfigsAiToolSelectionConfigQueryRewriting   `json:"queryRewriting,omitempty" xml:"queryRewriting,omitempty" type:"Struct"`
-	ToolReranking    *HttpApiPolicyConfigsAiToolSelectionConfigToolReranking    `json:"toolReranking,omitempty" xml:"toolReranking,omitempty" type:"Struct"`
+	// Plugin status
+	PluginStatus *HttpApiPolicyConfigsAiToolSelectionConfigPluginStatus `json:"pluginStatus,omitempty" xml:"pluginStatus,omitempty" type:"Struct"`
+	// Query rewriting configuration
+	QueryRewriting *HttpApiPolicyConfigsAiToolSelectionConfigQueryRewriting `json:"queryRewriting,omitempty" xml:"queryRewriting,omitempty" type:"Struct"`
+	// Tool reranking configuration
+	ToolReranking *HttpApiPolicyConfigsAiToolSelectionConfigToolReranking `json:"toolReranking,omitempty" xml:"toolReranking,omitempty" type:"Struct"`
 }
 
 func (s HttpApiPolicyConfigsAiToolSelectionConfig) String() string {
@@ -2124,6 +2726,11 @@ func (s *HttpApiPolicyConfigsAiToolSelectionConfig) Validate() error {
 }
 
 type HttpApiPolicyConfigsAiToolSelectionConfigEnableConditions struct {
+	// Tool count threshold
+	//
+	// example:
+	//
+	// 10
 	ToolCountThreshold *int32 `json:"toolCountThreshold,omitempty" xml:"toolCountThreshold,omitempty"`
 }
 
@@ -2149,9 +2756,20 @@ func (s *HttpApiPolicyConfigsAiToolSelectionConfigEnableConditions) Validate() e
 }
 
 type HttpApiPolicyConfigsAiToolSelectionConfigPluginStatus struct {
-	ErrorLogs      map[string]*string `json:"errorLogs,omitempty" xml:"errorLogs,omitempty"`
-	PluginId       *string            `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
-	ServiceHealthy *bool              `json:"serviceHealthy,omitempty" xml:"serviceHealthy,omitempty"`
+	// errorLogs
+	ErrorLogs map[string]*string `json:"errorLogs,omitempty" xml:"errorLogs,omitempty"`
+	// pluginId
+	//
+	// example:
+	//
+	// pl-123456
+	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
+	// serviceHealthy
+	//
+	// example:
+	//
+	// true
+	ServiceHealthy *bool `json:"serviceHealthy,omitempty" xml:"serviceHealthy,omitempty"`
 }
 
 func (s HttpApiPolicyConfigsAiToolSelectionConfigPluginStatus) String() string {
@@ -2194,12 +2812,31 @@ func (s *HttpApiPolicyConfigsAiToolSelectionConfigPluginStatus) Validate() error
 }
 
 type HttpApiPolicyConfigsAiToolSelectionConfigQueryRewriting struct {
-	ContextSelection  *HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingContextSelection  `json:"contextSelection,omitempty" xml:"contextSelection,omitempty" type:"Struct"`
-	Enabled           *bool                                                                     `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	FallbackStrategy  *string                                                                   `json:"fallbackStrategy,omitempty" xml:"fallbackStrategy,omitempty"`
-	MaxOutputTokens   *int32                                                                    `json:"maxOutputTokens,omitempty" xml:"maxOutputTokens,omitempty"`
-	ModelService      *HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingModelService      `json:"modelService,omitempty" xml:"modelService,omitempty" type:"Struct"`
-	PromptConfig      *HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingPromptConfig      `json:"promptConfig,omitempty" xml:"promptConfig,omitempty" type:"Struct"`
+	// Context selection
+	ContextSelection *HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingContextSelection `json:"contextSelection,omitempty" xml:"contextSelection,omitempty" type:"Struct"`
+	// Enable query rewriting
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// Fallback strategy
+	//
+	// example:
+	//
+	// skip
+	FallbackStrategy *string `json:"fallbackStrategy,omitempty" xml:"fallbackStrategy,omitempty"`
+	// Max output tokens
+	//
+	// example:
+	//
+	// 50
+	MaxOutputTokens *int32 `json:"maxOutputTokens,omitempty" xml:"maxOutputTokens,omitempty"`
+	// Model service configuration
+	ModelService *HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingModelService `json:"modelService,omitempty" xml:"modelService,omitempty" type:"Struct"`
+	// Prompt configuration
+	PromptConfig *HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingPromptConfig `json:"promptConfig,omitempty" xml:"promptConfig,omitempty" type:"Struct"`
+	// Trigger conditions
 	TriggerConditions *HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingTriggerConditions `json:"triggerConditions,omitempty" xml:"triggerConditions,omitempty" type:"Struct"`
 }
 
@@ -2299,8 +2936,18 @@ func (s *HttpApiPolicyConfigsAiToolSelectionConfigQueryRewriting) Validate() err
 }
 
 type HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingContextSelection struct {
-	Type  *string `json:"type,omitempty" xml:"type,omitempty"`
-	Value *int32  `json:"value,omitempty" xml:"value,omitempty"`
+	// Context type
+	//
+	// example:
+	//
+	// recentMessages
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Value
+	//
+	// example:
+	//
+	// 5
+	Value *int32 `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingContextSelection) String() string {
@@ -2334,9 +2981,24 @@ func (s *HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingContextSelection
 }
 
 type HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingModelService struct {
-	ModelName          *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	ServiceId          *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	TimeoutMillisecond *int32  `json:"timeoutMillisecond,omitempty" xml:"timeoutMillisecond,omitempty"`
+	// Model name
+	//
+	// example:
+	//
+	// qwen-turbo
+	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// Service ID
+	//
+	// example:
+	//
+	// svc-123456
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// Timeout in milliseconds
+	//
+	// example:
+	//
+	// 5000
+	TimeoutMillisecond *int32 `json:"timeoutMillisecond,omitempty" xml:"timeoutMillisecond,omitempty"`
 }
 
 func (s HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingModelService) String() string {
@@ -2379,8 +3041,18 @@ func (s *HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingModelService) Va
 }
 
 type HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingPromptConfig struct {
+	// Custom prompt (required when type=custom)
+	//
+	// example:
+	//
+	// Custom prompt
 	CustomPrompt *string `json:"customPrompt,omitempty" xml:"customPrompt,omitempty"`
-	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Prompt type: builtIn/custom
+	//
+	// example:
+	//
+	// builtIn
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingPromptConfig) String() string {
@@ -2414,6 +3086,11 @@ func (s *HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingPromptConfig) Va
 }
 
 type HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingTriggerConditions struct {
+	// Message count threshold (≥0)
+	//
+	// example:
+	//
+	// 1
 	MessageCountThreshold *int32 `json:"messageCountThreshold,omitempty" xml:"messageCountThreshold,omitempty"`
 }
 
@@ -2439,12 +3116,38 @@ func (s *HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingTriggerCondition
 }
 
 type HttpApiPolicyConfigsAiToolSelectionConfigToolReranking struct {
-	FallbackStrategy *string                                                             `json:"fallbackStrategy,omitempty" xml:"fallbackStrategy,omitempty"`
-	FilteringMethod  *string                                                             `json:"filteringMethod,omitempty" xml:"filteringMethod,omitempty"`
-	ModelService     *HttpApiPolicyConfigsAiToolSelectionConfigToolRerankingModelService `json:"modelService,omitempty" xml:"modelService,omitempty" type:"Struct"`
-	ScoreThreshold   *float32                                                            `json:"scoreThreshold,omitempty" xml:"scoreThreshold,omitempty"`
-	TopKPercent      *int32                                                              `json:"topKPercent,omitempty" xml:"topKPercent,omitempty"`
-	TopNCount        *int32                                                              `json:"topNCount,omitempty" xml:"topNCount,omitempty"`
+	// Fallback strategy: skip/error
+	//
+	// example:
+	//
+	// skip
+	FallbackStrategy *string `json:"fallbackStrategy,omitempty" xml:"fallbackStrategy,omitempty"`
+	// Filtering method: topK/topN/combined
+	//
+	// example:
+	//
+	// topK
+	FilteringMethod *string `json:"filteringMethod,omitempty" xml:"filteringMethod,omitempty"`
+	// Model service configuration
+	ModelService *HttpApiPolicyConfigsAiToolSelectionConfigToolRerankingModelService `json:"modelService,omitempty" xml:"modelService,omitempty" type:"Struct"`
+	// Score threshold (0.0-1.0, 0 means disabled)
+	//
+	// example:
+	//
+	// 0.5
+	ScoreThreshold *float32 `json:"scoreThreshold,omitempty" xml:"scoreThreshold,omitempty"`
+	// TopK percentage (1-100)
+	//
+	// example:
+	//
+	// 50
+	TopKPercent *int32 `json:"topKPercent,omitempty" xml:"topKPercent,omitempty"`
+	// TopN count
+	//
+	// example:
+	//
+	// 5
+	TopNCount *int32 `json:"topNCount,omitempty" xml:"topNCount,omitempty"`
 }
 
 func (s HttpApiPolicyConfigsAiToolSelectionConfigToolReranking) String() string {
@@ -2519,9 +3222,24 @@ func (s *HttpApiPolicyConfigsAiToolSelectionConfigToolReranking) Validate() erro
 }
 
 type HttpApiPolicyConfigsAiToolSelectionConfigToolRerankingModelService struct {
-	ModelName          *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	ServiceId          *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	TimeoutMillisecond *int32  `json:"timeoutMillisecond,omitempty" xml:"timeoutMillisecond,omitempty"`
+	// Model name
+	//
+	// example:
+	//
+	// gte-rerank-v2
+	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// Service ID
+	//
+	// example:
+	//
+	// svc-123456
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// Timeout in milliseconds
+	//
+	// example:
+	//
+	// 5000
+	TimeoutMillisecond *int32 `json:"timeoutMillisecond,omitempty" xml:"timeoutMillisecond,omitempty"`
 }
 
 func (s HttpApiPolicyConfigsAiToolSelectionConfigToolRerankingModelService) String() string {
@@ -2564,6 +3282,11 @@ func (s *HttpApiPolicyConfigsAiToolSelectionConfigToolRerankingModelService) Val
 }
 
 type HttpApiPolicyConfigsSemanticRouterConfig struct {
+	// Timeout in milliseconds
+	//
+	// example:
+	//
+	// 2000
 	TimeoutMillisecond *int32 `json:"timeoutMillisecond,omitempty" xml:"timeoutMillisecond,omitempty"`
 }
 

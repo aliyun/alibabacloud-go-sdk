@@ -14,8 +14,6 @@ type iUpdateGatewayNameRequest interface {
 }
 
 type UpdateGatewayNameRequest struct {
-	// Gateway name.
-	//
 	// example:
 	//
 	// dev-itemcenter-router

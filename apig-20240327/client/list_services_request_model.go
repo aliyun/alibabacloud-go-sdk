@@ -83,7 +83,12 @@ type ListServicesRequest struct {
 	// example:
 	//
 	// MSE_NACOS
-	SourceType  *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// List of service source types
+	//
+	// example:
+	//
+	// ["K8S", "FC3"]
 	SourceTypes *string `json:"sourceTypes,omitempty" xml:"sourceTypes,omitempty"`
 }
 

@@ -22,11 +22,46 @@ type iAttachment interface {
 }
 
 type Attachment struct {
-	AttachResourceIds  []*string `json:"attachResourceIds,omitempty" xml:"attachResourceIds,omitempty" type:"Repeated"`
-	AttachResourceType *string   `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
-	EnvironmentId      *string   `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	GatewayId          *string   `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	PolicyAttachmentId *string   `json:"policyAttachmentId,omitempty" xml:"policyAttachmentId,omitempty"`
+	// The resource IDs.
+	AttachResourceIds []*string `json:"attachResourceIds,omitempty" xml:"attachResourceIds,omitempty" type:"Repeated"`
+	// The supported mount point type. Valid values:
+	//
+	// 	- HttpApi: an HTTP API
+	//
+	// 	- Operation: an operation in an HTTP API
+	//
+	// 	- GatewayRoute: a gateway route
+	//
+	// 	- GatewayService: a gateway service
+	//
+	// 	- GatewayServicePort: a gateway service port
+	//
+	// 	- Domain: a gateway domain name
+	//
+	// 	- Gateway: a gateway instance
+	//
+	// example:
+	//
+	// HttpApi
+	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
+	// The environment to which the mounted resource belongs. If an asterisk (\\*) is returned as the environment ID, the mounted resource is not related to the environment.
+	//
+	// example:
+	//
+	// env-cq7l5s5lhtgi6qasrdc0
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// The instance to which the mounted resource belongs.
+	//
+	// example:
+	//
+	// gw-cpr4f9dlhtgq5ksfgmb0
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The mount ID.
+	//
+	// example:
+	//
+	// pr-cq7l5s5lhtgi6qasrdc0
+	PolicyAttachmentId *string `json:"policyAttachmentId,omitempty" xml:"policyAttachmentId,omitempty"`
 }
 
 func (s Attachment) String() string {

@@ -18,19 +18,19 @@ type iDeleteHttpApiOperationResponseBody interface {
 }
 
 type DeleteHttpApiOperationResponseBody struct {
-	// Response status code.
+	// The status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response message,
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

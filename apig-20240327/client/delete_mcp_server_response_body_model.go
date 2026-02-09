@@ -18,19 +18,19 @@ type iDeleteMcpServerResponseBody interface {
 }
 
 type DeleteMcpServerResponseBody struct {
-	// The status code.
+	// The request ID.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The status message.
+	// The status code.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// The MCP server ID.
 	//
 	// example:
 	//

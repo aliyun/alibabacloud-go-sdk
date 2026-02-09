@@ -16,10 +16,13 @@ type iBackend interface {
 }
 
 type Backend struct {
+	// The backend service scenario. Valid values: Single, MultiServiceByRatio, MultiServiceByTag, Mock, and Redirect.
+	//
 	// example:
 	//
 	// Single
-	Scene    *string            `json:"scene,omitempty" xml:"scene,omitempty"`
+	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// The backend services.
 	Services []*BackendServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
 }
 
@@ -63,26 +66,38 @@ func (s *Backend) Validate() error {
 }
 
 type BackendServices struct {
+	// The service name.
+	//
 	// example:
 	//
 	// item-service
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The service port. If you want to use a dynamic port, do not pass this parameter.
+	//
 	// example:
 	//
 	// port
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// The service protocol. Valid values: HTTP, TCP, and DUBBO.
+	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The service ID.
+	//
 	// example:
 	//
 	// service-cq2bmmdlhtgj***
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// The service version.
+	//
 	// example:
 	//
 	// v1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The percentage value of traffic.
+	//
 	// example:
 	//
 	// 49

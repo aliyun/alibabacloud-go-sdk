@@ -18,19 +18,19 @@ type iUpdateHttpApiResponseBody interface {
 }
 
 type UpdateHttpApiResponseBody struct {
-	// The status code.
+	// Response status code.
 	//
 	// example:
 	//
-	// Ok
+	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned message.
+	// Response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//

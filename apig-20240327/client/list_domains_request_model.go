@@ -29,7 +29,12 @@ type ListDomainsRequest struct {
 	// example:
 	//
 	// gw-xxx
-	GatewayId   *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The gateway type to filter. Valid values: **AI*	- and **API**.
+	//
+	// example:
+	//
+	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
 	// The domain name keyword for fuzzy search.
 	//

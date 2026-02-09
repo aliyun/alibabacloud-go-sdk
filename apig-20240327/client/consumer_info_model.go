@@ -18,9 +18,24 @@ type iConsumerInfo interface {
 }
 
 type ConsumerInfo struct {
+	// consumerId
+	//
+	// example:
+	//
+	// cs-ctd4l1um1hkph7ki1k80
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
-	Enable     *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	// enable
+	//
+	// example:
+	//
+	// false
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// name
+	//
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ConsumerInfo) String() string {

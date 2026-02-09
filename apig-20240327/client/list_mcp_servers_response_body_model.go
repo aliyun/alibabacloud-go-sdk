@@ -177,6 +177,10 @@ func (s *ListMcpServersResponseBodyData) Validate() error {
 
 type ListMcpServersResponseBodyDataItems struct {
 	// The API ID.
+	//
+	// example:
+	//
+	// api-xxx
 	ApiId *string `json:"apiId,omitempty" xml:"apiId,omitempty"`
 	// The list of assembly sources. This parameter is required when the type parameter is set to AssemblyMCP.
 	AssembledSources []*ListMcpServersResponseBodyDataItemsAssembledSources `json:"assembledSources,omitempty" xml:"assembledSources,omitempty" type:"Repeated"`
@@ -205,6 +209,10 @@ type ListMcpServersResponseBodyDataItems struct {
 	// Deployed
 	DeployStatus *string `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
 	// The description.
+	//
+	// example:
+	//
+	// My MCP Server
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The domain name IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
@@ -231,6 +239,10 @@ type ListMcpServersResponseBodyDataItems struct {
 	// The route match rule.
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
 	// The HTTP-to-MCP configurations.
+	//
+	// example:
+	//
+	// mcp spec content
 	McpServerConfig *string `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty"`
 	// The MCP server ID.
 	//
@@ -576,6 +588,10 @@ type ListMcpServersResponseBodyDataItemsNacosMcpSyncInfo struct {
 	// mse-faefrefxz
 	ImportInstanceId *string `json:"importInstanceId,omitempty" xml:"importInstanceId,omitempty"`
 	// The synchronized MCP server ID.
+	//
+	// example:
+	//
+	// nacos-mcp-001
 	ImportMcpServerId *string `json:"importMcpServerId,omitempty" xml:"importMcpServerId,omitempty"`
 	// The Nacos namespace.
 	//

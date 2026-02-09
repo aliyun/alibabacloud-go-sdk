@@ -26,7 +26,7 @@ type GetDomainResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The data returned.
+	// The response data.
 	Data *GetDomainResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The response message returned.
 	//

@@ -58,7 +58,7 @@ type UpdateDomainRequest struct {
 	//
 	// -----END CERTIFICATE-----
 	ClientCACert *string `json:"clientCACert,omitempty" xml:"clientCACert,omitempty"`
-	// Specifies whether to enable HTTPS redirection. If protocol is set to HTTPS, forceHttps is required.
+	// Specifies whether to enable forcible HTTPS redirection. If protocol is set to HTTPS, forceHttps is required.
 	//
 	// example:
 	//

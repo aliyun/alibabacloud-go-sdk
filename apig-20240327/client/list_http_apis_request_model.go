@@ -46,101 +46,108 @@ type iListHttpApisRequest interface {
 }
 
 type ListHttpApisRequest struct {
-	// The ID of the Cloud-native API Gateway instance.
+	// Specifies whether to include policy configurations.
 	//
 	// example:
 	//
 	// gw-cq2avtllh****
-	GatewayId   *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The API information.
+	//
+	// example:
+	//
+	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The search keyword. You can fuzzy-search by API name or exact-search by API ID.
+	// The consumer authentication policy in the specified environment in each returned API.
 	//
 	// example:
 	//
 	// test-
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// The API name that is used for the search. In this case, exact search is performed.
+	// Specifies whether authentication is enabled.
 	//
 	// example:
 	//
 	// login
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The page number of the page to return. Pages start from page 1. Default value: 1.
+	// The environment information.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The resource group ID.
+	// The returned message.
 	//
 	// example:
 	//
 	// rg-ahr5uil8raz0rq3b
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The API type. You can specify multiple types and separate them with a comma (,).
-	//
-	// 	- Http
-	//
-	// 	- Rest
-	//
-	// 	- WebSocket
-	//
-	// 	- HttpIngress
+	// The Ingress information.
 	//
 	// example:
 	//
 	// Http,Rest
-	Types                          *string `json:"types,omitempty" xml:"types,omitempty"`
-	WithAPIsPublishedToEnvironment *bool   `json:"withAPIsPublishedToEnvironment,omitempty" xml:"withAPIsPublishedToEnvironment,omitempty"`
-	// The consumer authentication policy in the specified environment in each returned API.
+	Types *string `json:"types,omitempty" xml:"types,omitempty"`
+	// Whether to return all APIs published to a specific environment
+	//
+	// example:
+	//
+	// true
+	WithAPIsPublishedToEnvironment *bool `json:"withAPIsPublishedToEnvironment,omitempty" xml:"withAPIsPublishedToEnvironment,omitempty"`
+	// The gateway type to filter. Valid values: **AI*	- and **API**.
 	//
 	// example:
 	//
 	// env-xxx
 	WithAuthPolicyInEnvironmentId *string `json:"withAuthPolicyInEnvironmentId,omitempty" xml:"withAuthPolicyInEnvironmentId,omitempty"`
-	// Specifies whether authentication is enabled.
+	// The page number of the returned page.
 	//
 	// example:
 	//
 	// true
 	WithAuthPolicyList *bool `json:"withAuthPolicyList,omitempty" xml:"withAuthPolicyList,omitempty"`
-	// The authorization rules of the specified consumer in each returned API.
+	// The response body.
 	//
 	// example:
 	//
 	// cs-xxx
 	WithConsumerInfoById *string `json:"withConsumerInfoById,omitempty" xml:"withConsumerInfoById,omitempty"`
-	// The environment information.
+	// The request ID.
 	//
 	// example:
 	//
 	// true
 	WithEnvironmentInfo *bool `json:"withEnvironmentInfo,omitempty" xml:"withEnvironmentInfo,omitempty"`
-	// The environment ID.
+	// The APIs.
 	//
 	// example:
 	//
 	// env-ctovu5mm1hksb4q8ln40
 	WithEnvironmentInfoById *string `json:"withEnvironmentInfoById,omitempty" xml:"withEnvironmentInfoById,omitempty"`
-	// The Ingress information.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// false
 	WithIngressInfo *bool `json:"withIngressInfo,omitempty" xml:"withIngressInfo,omitempty"`
-	// The plug-in ID. You can use the returned value of this parameter to query the plug-in.
+	// The status code.
 	//
 	// example:
 	//
 	// pl-ct9qn3um1hktue8dqol0
 	WithPluginAttachmentByPluginId *string `json:"withPluginAttachmentByPluginId,omitempty" xml:"withPluginAttachmentByPluginId,omitempty"`
-	WithPolicyConfigs              *bool   `json:"withPolicyConfigs,omitempty" xml:"withPolicyConfigs,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// false
+	WithPolicyConfigs *bool `json:"withPolicyConfigs,omitempty" xml:"withPolicyConfigs,omitempty"`
 }
 
 func (s ListHttpApisRequest) String() string {

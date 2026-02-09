@@ -14,7 +14,7 @@ type iUpdateGatewayFeatureRequest interface {
 }
 
 type UpdateGatewayFeatureRequest struct {
-	// Parameter value.
+	// The parameter value.
 	//
 	// example:
 	//

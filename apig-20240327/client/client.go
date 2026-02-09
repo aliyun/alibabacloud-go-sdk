@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// # Authorize the security group for gateway to access services
+// Adds a security group that authorizes an instance to access services.
 //
 // @param request - AddGatewaySecurityGroupRuleRequest
 //
@@ -113,7 +113,7 @@ func (client *Client) AddGatewaySecurityGroupRuleWithOptions(gatewayId *string, 
 
 // Summary:
 //
-// # Authorize the security group for gateway to access services
+// Adds a security group that authorizes an instance to access services.
 //
 // @param request - AddGatewaySecurityGroupRuleRequest
 //
@@ -198,7 +198,7 @@ func (client *Client) BatchDeleteConsumerAuthorizationRule(request *BatchDeleteC
 
 // Summary:
 //
-// # Resource Group Transfer
+// Moves a resource from one resource group to another.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -257,7 +257,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// # Resource Group Transfer
+// Moves a resource from one resource group to another.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -732,11 +732,7 @@ func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *Creat
 //
 // Summary:
 //
-// # CreateEnvironment
-//
-// Description:
-//
-// Create environment.
+// Creates an environment.
 //
 // @param request - CreateEnvironmentRequest
 //
@@ -801,11 +797,7 @@ func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentReq
 //
 // Summary:
 //
-// # CreateEnvironment
-//
-// Description:
-//
-// Create environment.
+// Creates an environment.
 //
 // @param request - CreateEnvironmentRequest
 //
@@ -1429,7 +1421,7 @@ func (client *Client) CreatePluginAttachment(request *CreatePluginAttachmentRequ
 
 // Summary:
 //
-// # Create Policy
+// Creates a policy.
 //
 // @param request - CreatePolicyRequest
 //
@@ -1488,7 +1480,7 @@ func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, head
 
 // Summary:
 //
-// # Create Policy
+// Creates a policy.
 //
 // @param request - CreatePolicyRequest
 //
@@ -1507,7 +1499,7 @@ func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *Creat
 
 // Summary:
 //
-// # Create policy resource mount
+// Creates a policy attachment.
 //
 // @param request - CreatePolicyAttachmentRequest
 //
@@ -1570,7 +1562,7 @@ func (client *Client) CreatePolicyAttachmentWithOptions(request *CreatePolicyAtt
 
 // Summary:
 //
-// # Create policy resource mount
+// Creates a policy attachment.
 //
 // @param request - CreatePolicyAttachmentRequest
 //
@@ -1837,7 +1829,7 @@ func (client *Client) CreateServiceVersion(serviceId *string, request *CreateSer
 
 // Summary:
 //
-// 创建服务来源
+// Creates a service source.
 //
 // @param request - CreateSourceRequest
 //
@@ -1900,7 +1892,7 @@ func (client *Client) CreateSourceWithOptions(request *CreateSourceRequest, head
 
 // Summary:
 //
-// 创建服务来源
+// Creates a service source.
 //
 // @param request - CreateSourceRequest
 //
@@ -2019,7 +2011,7 @@ func (client *Client) DeleteConsumerAuthorizationRule(consumerAuthorizationRuleI
 
 // Summary:
 //
-// # DeleteDomain
+// Deletes a domain name.
 //
 // @param headers - map
 //
@@ -2052,7 +2044,7 @@ func (client *Client) DeleteDomainWithOptions(domainId *string, headers map[stri
 
 // Summary:
 //
-// # DeleteDomain
+// Deletes a domain name.
 //
 // @return DeleteDomainResponse
 func (client *Client) DeleteDomain(domainId *string) (_result *DeleteDomainResponse, _err error) {
@@ -2071,7 +2063,7 @@ func (client *Client) DeleteDomain(domainId *string) (_result *DeleteDomainRespo
 //
 // Summary:
 //
-// # DeleteEnvironment
+// Deletes an environment.
 //
 // @param headers - map
 //
@@ -2106,7 +2098,7 @@ func (client *Client) DeleteEnvironmentWithOptions(environmentId *string, header
 //
 // Summary:
 //
-// # DeleteEnvironment
+// Deletes an environment.
 //
 // @return DeleteEnvironmentResponse
 // Deprecated
@@ -2124,7 +2116,7 @@ func (client *Client) DeleteEnvironment(environmentId *string) (_result *DeleteE
 
 // Summary:
 //
-// # Delete Gateway
+// Deletes a Cloud-native API Gateway instance.
 //
 // @param headers - map
 //
@@ -2157,7 +2149,7 @@ func (client *Client) DeleteGatewayWithOptions(gatewayId *string, headers map[st
 
 // Summary:
 //
-// # Delete Gateway
+// Deletes a Cloud-native API Gateway instance.
 //
 // @return DeleteGatewayResponse
 func (client *Client) DeleteGateway(gatewayId *string) (_result *DeleteGatewayResponse, _err error) {
@@ -2174,7 +2166,7 @@ func (client *Client) DeleteGateway(gatewayId *string) (_result *DeleteGatewayRe
 
 // Summary:
 //
-// # Delete the security group rule of a gateway
+// Deletes a security group rule from a Cloud-native API Gateway instance.
 //
 // @param request - DeleteGatewaySecurityGroupRuleRequest
 //
@@ -2221,7 +2213,7 @@ func (client *Client) DeleteGatewaySecurityGroupRuleWithOptions(gatewayId *strin
 
 // Summary:
 //
-// # Delete the security group rule of a gateway
+// Deletes a security group rule from a Cloud-native API Gateway instance.
 //
 // @param request - DeleteGatewaySecurityGroupRuleRequest
 //
@@ -2290,7 +2282,7 @@ func (client *Client) DeleteHttpApi(httpApiId *string) (_result *DeleteHttpApiRe
 
 // Summary:
 //
-// # Delete Operation
+// Deletes an operation from an HTTP API.
 //
 // @param headers - map
 //
@@ -2323,7 +2315,7 @@ func (client *Client) DeleteHttpApiOperationWithOptions(httpApiId *string, opera
 
 // Summary:
 //
-// # Delete Operation
+// Deletes an operation from an HTTP API.
 //
 // @return DeleteHttpApiOperationResponse
 func (client *Client) DeleteHttpApiOperation(httpApiId *string, operationId *string) (_result *DeleteHttpApiOperationResponse, _err error) {
@@ -2340,7 +2332,7 @@ func (client *Client) DeleteHttpApiOperation(httpApiId *string, operationId *str
 
 // Summary:
 //
-// # Delete the route of an HttpApi
+// Deletes a route in an HTTP API.
 //
 // @param headers - map
 //
@@ -2373,7 +2365,7 @@ func (client *Client) DeleteHttpApiRouteWithOptions(httpApiId *string, routeId *
 
 // Summary:
 //
-// # Delete the route of an HttpApi
+// Deletes a route in an HTTP API.
 //
 // @return DeleteHttpApiRouteResponse
 func (client *Client) DeleteHttpApiRoute(httpApiId *string, routeId *string) (_result *DeleteHttpApiRouteResponse, _err error) {
@@ -2390,7 +2382,7 @@ func (client *Client) DeleteHttpApiRoute(httpApiId *string, routeId *string) (_r
 
 // Summary:
 //
-// 删除MCP server
+// Deletes an MCP server.
 //
 // @param headers - map
 //
@@ -2423,7 +2415,7 @@ func (client *Client) DeleteMcpServerWithOptions(mcpServerId *string, headers ma
 
 // Summary:
 //
-// 删除MCP server
+// Deletes an MCP server.
 //
 // @return DeleteMcpServerResponse
 func (client *Client) DeleteMcpServer(mcpServerId *string) (_result *DeleteMcpServerResponse, _err error) {
@@ -2490,7 +2482,7 @@ func (client *Client) DeletePluginAttachment(pluginAttachmentId *string) (_resul
 
 // Summary:
 //
-// # Delete Policy
+// Deletes a policy.
 //
 // @param headers - map
 //
@@ -2523,7 +2515,7 @@ func (client *Client) DeletePolicyWithOptions(policyId *string, headers map[stri
 
 // Summary:
 //
-// # Delete Policy
+// Deletes a policy.
 //
 // @return DeletePolicyResponse
 func (client *Client) DeletePolicy(policyId *string) (_result *DeletePolicyResponse, _err error) {
@@ -2540,7 +2532,7 @@ func (client *Client) DeletePolicy(policyId *string) (_result *DeletePolicyRespo
 
 // Summary:
 //
-// # Delete policy resource attachment
+// Deletes a policy attachment.
 //
 // @param headers - map
 //
@@ -2573,7 +2565,7 @@ func (client *Client) DeletePolicyAttachmentWithOptions(policyAttachmentId *stri
 
 // Summary:
 //
-// # Delete policy resource attachment
+// Deletes a policy attachment.
 //
 // @return DeletePolicyAttachmentResponse
 func (client *Client) DeletePolicyAttachment(policyAttachmentId *string) (_result *DeletePolicyAttachmentResponse, _err error) {
@@ -2740,7 +2732,7 @@ func (client *Client) DeleteServiceVersion(serviceId *string, name *string) (_re
 
 // Summary:
 //
-// 删除服务来源
+// Deletes a service source.
 //
 // @param headers - map
 //
@@ -2773,7 +2765,7 @@ func (client *Client) DeleteSourceWithOptions(sourceId *string, headers map[stri
 
 // Summary:
 //
-// 删除服务来源
+// Deletes a service source.
 //
 // @return DeleteSourceResponse
 func (client *Client) DeleteSource(sourceId *string) (_result *DeleteSourceResponse, _err error) {
@@ -2914,7 +2906,7 @@ func (client *Client) DeployMcpServer(mcpServerId *string) (_result *DeployMcpSe
 
 // Summary:
 //
-// # Export HTTP API
+// Exports an HTTP API.
 //
 // @param headers - map
 //
@@ -2947,7 +2939,7 @@ func (client *Client) ExportHttpApiWithOptions(httpApiId *string, headers map[st
 
 // Summary:
 //
-// # Export HTTP API
+// Exports an HTTP API.
 //
 // @return ExportHttpApiResponse
 func (client *Client) ExportHttpApi(httpApiId *string) (_result *ExportHttpApiResponse, _err error) {
@@ -3236,7 +3228,7 @@ func (client *Client) GetDomain(domainId *string, request *GetDomainRequest) (_r
 //
 // Summary:
 //
-// # GetEnvironment
+// Queries an environment.
 //
 // @param request - GetEnvironmentRequest
 //
@@ -3289,7 +3281,7 @@ func (client *Client) GetEnvironmentWithOptions(environmentId *string, request *
 //
 // Summary:
 //
-// # GetEnvironment
+// Queries an environment.
 //
 // @param request - GetEnvironmentRequest
 //
@@ -3667,7 +3659,7 @@ func (client *Client) GetPolicy(policyId *string) (_result *GetPolicyResponse, _
 
 // Summary:
 //
-// # Query Policy Resource Attachment
+// Queries a policy attachment.
 //
 // @param headers - map
 //
@@ -3700,7 +3692,7 @@ func (client *Client) GetPolicyAttachmentWithOptions(policyAttachmentId *string,
 
 // Summary:
 //
-// # Query Policy Resource Attachment
+// Queries a policy attachment.
 //
 // @return GetPolicyAttachmentResponse
 func (client *Client) GetPolicyAttachment(policyAttachmentId *string) (_result *GetPolicyAttachmentResponse, _err error) {
@@ -3883,7 +3875,7 @@ func (client *Client) GetSecretValue(name *string) (_result *GetSecretValueRespo
 
 // Summary:
 //
-// Queries the details of a service.
+// Queries a service.
 //
 // @param headers - map
 //
@@ -3916,7 +3908,7 @@ func (client *Client) GetServiceWithOptions(serviceId *string, headers map[strin
 
 // Summary:
 //
-// Queries the details of a service.
+// Queries a service.
 //
 // @return GetServiceResponse
 func (client *Client) GetService(serviceId *string) (_result *GetServiceResponse, _err error) {
@@ -3983,7 +3975,7 @@ func (client *Client) GetSource(sourceId *string) (_result *GetSourceResponse, _
 
 // Summary:
 //
-// # Retrieve Tracing Configuration
+// Queries the tracing configurations of a Cloud-native API Gateway instance.
 //
 // @param request - GetTraceConfigRequest
 //
@@ -4030,7 +4022,7 @@ func (client *Client) GetTraceConfigWithOptions(gatewayId *string, request *GetT
 
 // Summary:
 //
-// # Retrieve Tracing Configuration
+// Queries the tracing configurations of a Cloud-native API Gateway instance.
 //
 // @param request - GetTraceConfigRequest
 //
@@ -5572,7 +5564,7 @@ func (client *Client) ListPolicies(request *ListPoliciesRequest) (_result *ListP
 
 // Summary:
 //
-// # ListPolicyClasses
+// Queries policy templates.
 //
 // @param request - ListPolicyClassesRequest
 //
@@ -5643,7 +5635,7 @@ func (client *Client) ListPolicyClassesWithOptions(request *ListPolicyClassesReq
 
 // Summary:
 //
-// # ListPolicyClasses
+// Queries policy templates.
 //
 // @param request - ListPolicyClassesRequest
 //
@@ -5900,7 +5892,7 @@ func (client *Client) ListServices(request *ListServicesRequest) (_result *ListS
 
 // Summary:
 //
-// # ListSslCerts
+// Queries SSL certificates.
 //
 // @param request - ListSslCertsRequest
 //
@@ -5959,7 +5951,7 @@ func (client *Client) ListSslCertsWithOptions(request *ListSslCertsRequest, head
 
 // Summary:
 //
-// # ListSslCerts
+// Queries SSL certificates.
 //
 // @param request - ListSslCertsRequest
 //
@@ -6184,7 +6176,7 @@ func (client *Client) RemoveConsumerAuthorizationRule(consumerAuthorizationRuleI
 
 // Summary:
 //
-// # Gateway Restart
+// Restarts an instance.
 //
 // @param headers - map
 //
@@ -6217,7 +6209,7 @@ func (client *Client) RestartGatewayWithOptions(gatewayId *string, headers map[s
 
 // Summary:
 //
-// # Gateway Restart
+// Restarts an instance.
 //
 // @return RestartGatewayResponse
 func (client *Client) RestartGateway(gatewayId *string) (_result *RestartGatewayResponse, _err error) {
@@ -6742,6 +6734,10 @@ func (client *Client) UpdateConsumerAuthorizationRule(consumerId *string, consum
 //
 // Updates a domain name.
 //
+// Description:
+//
+// You can update the listening Ingress only for sources whose types are **ACK**.
+//
 // @param request - UpdateDomainRequest
 //
 // @param headers - map
@@ -6825,6 +6821,10 @@ func (client *Client) UpdateDomainWithOptions(domainId *string, request *UpdateD
 //
 // Updates a domain name.
 //
+// Description:
+//
+// You can update the listening Ingress only for sources whose types are **ACK**.
+//
 // @param request - UpdateDomainRequest
 //
 // @return UpdateDomainResponse
@@ -6844,7 +6844,7 @@ func (client *Client) UpdateDomain(domainId *string, request *UpdateDomainReques
 //
 // Summary:
 //
-// # UpdateEnvironment
+// Modifies an environment.
 //
 // @param request - UpdateEnvironmentRequest
 //
@@ -6897,7 +6897,7 @@ func (client *Client) UpdateEnvironmentWithOptions(environmentId *string, reques
 //
 // Summary:
 //
-// # UpdateEnvironment
+// Modifies an environment.
 //
 // @param request - UpdateEnvironmentRequest
 //
@@ -6917,7 +6917,7 @@ func (client *Client) UpdateEnvironment(environmentId *string, request *UpdateEn
 
 // Summary:
 //
-// # Get the feature configuration of the gateway
+// Updates the configuration of an instance feature parameter.
 //
 // @param request - UpdateGatewayFeatureRequest
 //
@@ -6964,7 +6964,7 @@ func (client *Client) UpdateGatewayFeatureWithOptions(gatewayId *string, name *s
 
 // Summary:
 //
-// # Get the feature configuration of the gateway
+// Updates the configuration of an instance feature parameter.
 //
 // @param request - UpdateGatewayFeatureRequest
 //
@@ -6983,7 +6983,7 @@ func (client *Client) UpdateGatewayFeature(gatewayId *string, name *string, requ
 
 // Summary:
 //
-// # Change the name of a gateway instance
+// Changes the name of a Cloud-native API Gateway instance.
 //
 // @param request - UpdateGatewayNameRequest
 //
@@ -7030,7 +7030,7 @@ func (client *Client) UpdateGatewayNameWithOptions(gatewayId *string, request *U
 
 // Summary:
 //
-// # Change the name of a gateway instance
+// Changes the name of a Cloud-native API Gateway instance.
 //
 // @param request - UpdateGatewayNameRequest
 //
@@ -7163,7 +7163,7 @@ func (client *Client) UpdateHttpApi(httpApiId *string, request *UpdateHttpApiReq
 
 // Summary:
 //
-// # Update Operation
+// Updates an operation of an HTTP API.
 //
 // @param request - UpdateHttpApiOperationRequest
 //
@@ -7210,7 +7210,7 @@ func (client *Client) UpdateHttpApiOperationWithOptions(httpApiId *string, opera
 
 // Summary:
 //
-// # Update Operation
+// Updates an operation of an HTTP API.
 //
 // @param request - UpdateHttpApiOperationRequest
 //
@@ -7519,7 +7519,7 @@ func (client *Client) UpdatePluginAttachment(pluginAttachmentId *string, request
 
 // Summary:
 //
-// # Update Policy
+// Updates a policy.
 //
 // @param request - UpdatePolicyRequest
 //
@@ -7574,7 +7574,7 @@ func (client *Client) UpdatePolicyWithOptions(policyId *string, request *UpdateP
 
 // Summary:
 //
-// # Update Policy
+// Updates a policy.
 //
 // @param request - UpdatePolicyRequest
 //
@@ -7659,7 +7659,7 @@ func (client *Client) UpdateSecret(secretId *string, request *UpdateSecretReques
 
 // Summary:
 //
-// 更新服务
+// Updates a service. You can call this operation to update the health check, DNS domain name, and fixed address configurations of a service.
 //
 // @param request - UpdateServiceRequest
 //
@@ -7738,7 +7738,7 @@ func (client *Client) UpdateServiceWithOptions(serviceId *string, request *Updat
 
 // Summary:
 //
-// 更新服务
+// Updates a service. You can call this operation to update the health check, DNS domain name, and fixed address configurations of a service.
 //
 // @param request - UpdateServiceRequest
 //
@@ -7823,7 +7823,7 @@ func (client *Client) UpdateServiceVersion(serviceId *string, name *string, requ
 
 // Summary:
 //
-// # Upgrade the gateway version
+// Updates the version of a Cloud-native API Gateway instance.
 //
 // @param request - UpgradeGatewayRequest
 //
@@ -7870,7 +7870,7 @@ func (client *Client) UpgradeGatewayWithOptions(gatewayId *string, request *Upgr
 
 // Summary:
 //
-// # Upgrade the gateway version
+// Updates the version of a Cloud-native API Gateway instance.
 //
 // @param request - UpgradeGatewayRequest
 //

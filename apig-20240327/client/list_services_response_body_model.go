@@ -26,7 +26,7 @@ type ListServicesResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response parameters.
+	// The response payload.
 	Data *ListServicesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -96,7 +96,7 @@ func (s *ListServicesResponseBody) Validate() error {
 }
 
 type ListServicesResponseBodyData struct {
-	// The services.
+	// The list of services.
 	Items []*Service `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page number of the returned page.
 	//

@@ -16,8 +16,14 @@ type iParentResourceInfo interface {
 }
 
 type ParentResourceInfo struct {
-	ApiInfo      *HttpApiApiInfo `json:"apiInfo,omitempty" xml:"apiInfo,omitempty"`
-	ResourceType *string         `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The API information.
+	ApiInfo *HttpApiApiInfo `json:"apiInfo,omitempty" xml:"apiInfo,omitempty"`
+	// The resource type. Valid values: HttpApi/Operation/GatewayRoute/Gateway/GatewayDomain
+	//
+	// example:
+	//
+	// Gateway
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
 func (s ParentResourceInfo) String() string {

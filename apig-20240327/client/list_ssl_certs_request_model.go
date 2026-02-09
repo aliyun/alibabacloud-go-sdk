@@ -20,25 +20,25 @@ type iListSslCertsRequest interface {
 }
 
 type ListSslCertsRequest struct {
-	// Name matching keyword.
+	// The name keyword for matching.
 	//
 	// example:
 	//
 	// ali
 	CertNameLike *string `json:"certNameLike,omitempty" xml:"certNameLike,omitempty"`
-	// Domain name.
+	// The domain name.
 	//
 	// example:
 	//
 	// fun.iot.evideocloud.com.cn
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
-	// Page number, default is 1
+	// The page number of the page to return. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// Page size, default is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//

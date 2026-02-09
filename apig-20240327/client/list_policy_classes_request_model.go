@@ -26,53 +26,63 @@ type iListPolicyClassesRequest interface {
 }
 
 type ListPolicyClassesRequest struct {
+	// The resource ID to attach the policy
+	//
+	// example:
+	//
+	// route-001
 	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
-	// Types of attachment points supported by the policy.
+	// The supported mount point type. Valid values:
 	//
-	// - HttpApi: HttpApi.
+	// 	- HttpApi: an HTTP API
 	//
-	// - Operation: Operation of HttpApi.
+	// 	- Operation: an operation in an HTTP API
 	//
-	// - GatewayRoute: Gateway route.
+	// 	- GatewayRoute: a route
 	//
-	// - GatewayService: Gateway service.
+	// 	- GatewayService: a service
 	//
-	// - GatewayServicePort: Gateway service port.
+	// 	- GatewayServicePort: a service port
 	//
-	// - Domain: Gateway domain.
+	// 	- Domain: a domain name
 	//
-	// - Gateway: Gateway.
+	// 	- Gateway: an instance
 	//
 	// example:
 	//
 	// Operation
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
-	// Direction of the policy.
+	// The direction of traffic on which the policy takes effect. Valid values:
 	//
-	// - Outbound: OutBound.
+	// 	- OutBound
 	//
-	// - Inbound: InBound.
+	// 	- InBound
 	//
-	// - Both directions: Both.
+	// 	- Both
 	//
 	// example:
 	//
 	// InBound
 	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
+	// The gateway ID
+	//
+	// example:
+	//
+	// gw-001
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// Page number, default is 1.
+	// The page number of the page to return. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// Page size
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Type of the policy template.
+	// The template type.
 	//
 	// example:
 	//

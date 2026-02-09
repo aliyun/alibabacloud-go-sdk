@@ -20,10 +20,26 @@ type iGatewayInfo interface {
 }
 
 type GatewayInfo struct {
-	EngineVersion *string             `json:"engineVersion,omitempty" xml:"engineVersion,omitempty"`
-	GatewayId     *string             `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	Name          *string             `json:"name,omitempty" xml:"name,omitempty"`
-	VpcInfo       *GatewayInfoVpcInfo `json:"vpcInfo,omitempty" xml:"vpcInfo,omitempty" type:"Struct"`
+	// The instance engine version.
+	//
+	// example:
+	//
+	// 2.0.7
+	EngineVersion *string `json:"engineVersion,omitempty" xml:"engineVersion,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// gw-cq7og15lhtgi6qasrj60
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// apitest-gw
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The virtual private cloud (VPC) information.
+	VpcInfo *GatewayInfoVpcInfo `json:"vpcInfo,omitempty" xml:"vpcInfo,omitempty" type:"Struct"`
 }
 
 func (s GatewayInfo) String() string {
@@ -80,7 +96,17 @@ func (s *GatewayInfo) Validate() error {
 }
 
 type GatewayInfoVpcInfo struct {
-	Name  *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The VPC name.
+	//
+	// example:
+	//
+	// test-vpc
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-uf664nyle5kh***
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 

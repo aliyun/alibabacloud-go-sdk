@@ -123,6 +123,10 @@ type GetMcpServerResponseBodyData struct {
 	// Deployed
 	DeployStatus *string `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
 	// The description.
+	//
+	// example:
+	//
+	// A sample MCP server
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The domain name IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
@@ -145,7 +149,8 @@ type GetMcpServerResponseBodyData struct {
 	// example:
 	//
 	// gw-cq2vundlhtg***
-	GatewayId            *string                                             `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// List of gray MCP server configurations
 	GrayMcpServerConfigs []*GetMcpServerResponseBodyDataGrayMcpServerConfigs `json:"grayMcpServerConfigs,omitempty" xml:"grayMcpServerConfigs,omitempty" type:"Repeated"`
 	// The route match rule.
 	//
@@ -154,6 +159,10 @@ type GetMcpServerResponseBodyData struct {
 	// {\\"product_code\\":\\"apigw\\"}
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
 	// The HTTP-to-MCP configurations.
+	//
+	// example:
+	//
+	// config-yaml-content
 	McpServerConfig *string `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty"`
 	// The attachment ID for the MCP server plug-in configuration.
 	//
@@ -576,9 +585,16 @@ func (s *GetMcpServerResponseBodyDataDomainInfos) Validate() error {
 }
 
 type GetMcpServerResponseBodyDataGrayMcpServerConfigs struct {
+	// The gray route backend configuration
 	BackendConfig *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
-	Match         *HttpRouteMatch                                                `json:"match,omitempty" xml:"match,omitempty"`
-	RouteId       *string                                                        `json:"routeId,omitempty" xml:"routeId,omitempty"`
+	// The gray route matching rules
+	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
+	// The gray route ID
+	//
+	// example:
+	//
+	// gray-route-xxx
+	RouteId *string `json:"routeId,omitempty" xml:"routeId,omitempty"`
 }
 
 func (s GetMcpServerResponseBodyDataGrayMcpServerConfigs) String() string {
@@ -631,7 +647,13 @@ func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigs) Validate() error {
 }
 
 type GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig struct {
-	Scene    *string                                                                  `json:"scene,omitempty" xml:"scene,omitempty"`
+	// The backend scene type
+	//
+	// example:
+	//
+	// SingleService
+	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// List of backend services
 	Services []*GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
 }
 
@@ -675,11 +697,36 @@ func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig) Validate
 }
 
 type GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices struct {
-	Port      *int32  `json:"port,omitempty" xml:"port,omitempty"`
-	Protocol  *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The service port
+	//
+	// example:
+	//
+	// 8080
+	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// The service protocol
+	//
+	// example:
+	//
+	// HTTP
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The gray service ID
+	//
+	// example:
+	//
+	// svc-xxx
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	Version   *string `json:"version,omitempty" xml:"version,omitempty"`
-	Weight    *int32  `json:"weight,omitempty" xml:"weight,omitempty"`
+	// The service version
+	//
+	// example:
+	//
+	// v2.0.0
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The service weight
+	//
+	// example:
+	//
+	// 100
+	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
 }
 
 func (s GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices) String() string {

@@ -44,9 +44,24 @@ type ListHttpApiOperationsRequest struct {
 	//
 	// cas-xxx
 	ConsumerAuthorizationRuleId *string `json:"consumerAuthorizationRuleId,omitempty" xml:"consumerAuthorizationRuleId,omitempty"`
-	EnableAuth                  *bool   `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
-	ForDeploy                   *bool   `json:"forDeploy,omitempty" xml:"forDeploy,omitempty"`
-	GatewayId                   *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// Filter operations by authentication status
+	//
+	// example:
+	//
+	// true
+	EnableAuth *bool `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
+	// Whether to filter for deployment scenario
+	//
+	// example:
+	//
+	// true
+	ForDeploy *bool `json:"forDeploy,omitempty" xml:"forDeploy,omitempty"`
+	// The gateway ID
+	//
+	// example:
+	//
+	// gw-001
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
 	// List interfaces by Method.
 	//
 	// example:

@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// # Authorize the security group for gateway to access services
+// Adds a security group that authorizes an instance to access services.
 //
 // @param request - AddGatewaySecurityGroupRuleRequest
 //
@@ -111,7 +111,7 @@ func (client *Client) BatchDeleteConsumerAuthorizationRuleWithContext(ctx contex
 
 // Summary:
 //
-// # Resource Group Transfer
+// Moves a resource from one resource group to another.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -527,11 +527,7 @@ func (client *Client) CreateDomainWithContext(ctx context.Context, request *Crea
 //
 // Summary:
 //
-// # CreateEnvironment
-//
-// Description:
-//
-// Create environment.
+// Creates an environment.
 //
 // @param request - CreateEnvironmentRequest
 //
@@ -1084,7 +1080,7 @@ func (client *Client) CreatePluginAttachmentWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Create Policy
+// Creates a policy.
 //
 // @param request - CreatePolicyRequest
 //
@@ -1143,7 +1139,7 @@ func (client *Client) CreatePolicyWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// # Create policy resource mount
+// Creates a policy attachment.
 //
 // @param request - CreatePolicyAttachmentRequest
 //
@@ -1393,7 +1389,7 @@ func (client *Client) CreateServiceVersionWithContext(ctx context.Context, servi
 
 // Summary:
 //
-// 创建服务来源
+// Creates a service source.
 //
 // @param request - CreateSourceRequest
 //
@@ -1522,7 +1518,7 @@ func (client *Client) DeleteConsumerAuthorizationRuleWithContext(ctx context.Con
 
 // Summary:
 //
-// # DeleteDomain
+// Deletes a domain name.
 //
 // @param headers - map
 //
@@ -1557,7 +1553,7 @@ func (client *Client) DeleteDomainWithContext(ctx context.Context, domainId *str
 //
 // Summary:
 //
-// # DeleteEnvironment
+// Deletes an environment.
 //
 // @param headers - map
 //
@@ -1590,7 +1586,7 @@ func (client *Client) DeleteEnvironmentWithContext(ctx context.Context, environm
 
 // Summary:
 //
-// # Delete Gateway
+// Deletes a Cloud-native API Gateway instance.
 //
 // @param headers - map
 //
@@ -1623,7 +1619,7 @@ func (client *Client) DeleteGatewayWithContext(ctx context.Context, gatewayId *s
 
 // Summary:
 //
-// # Delete the security group rule of a gateway
+// Deletes a security group rule from a Cloud-native API Gateway instance.
 //
 // @param request - DeleteGatewaySecurityGroupRuleRequest
 //
@@ -1703,7 +1699,7 @@ func (client *Client) DeleteHttpApiWithContext(ctx context.Context, httpApiId *s
 
 // Summary:
 //
-// # Delete Operation
+// Deletes an operation from an HTTP API.
 //
 // @param headers - map
 //
@@ -1736,7 +1732,7 @@ func (client *Client) DeleteHttpApiOperationWithContext(ctx context.Context, htt
 
 // Summary:
 //
-// # Delete the route of an HttpApi
+// Deletes a route in an HTTP API.
 //
 // @param headers - map
 //
@@ -1769,7 +1765,7 @@ func (client *Client) DeleteHttpApiRouteWithContext(ctx context.Context, httpApi
 
 // Summary:
 //
-// 删除MCP server
+// Deletes an MCP server.
 //
 // @param headers - map
 //
@@ -1835,7 +1831,7 @@ func (client *Client) DeletePluginAttachmentWithContext(ctx context.Context, plu
 
 // Summary:
 //
-// # Delete Policy
+// Deletes a policy.
 //
 // @param headers - map
 //
@@ -1868,7 +1864,7 @@ func (client *Client) DeletePolicyWithContext(ctx context.Context, policyId *str
 
 // Summary:
 //
-// # Delete policy resource attachment
+// Deletes a policy attachment.
 //
 // @param headers - map
 //
@@ -2000,7 +1996,7 @@ func (client *Client) DeleteServiceVersionWithContext(ctx context.Context, servi
 
 // Summary:
 //
-// 删除服务来源
+// Deletes a service source.
 //
 // @param headers - map
 //
@@ -2121,7 +2117,7 @@ func (client *Client) DeployMcpServerWithContext(ctx context.Context, mcpServerI
 
 // Summary:
 //
-// # Export HTTP API
+// Exports an HTTP API.
 //
 // @param headers - map
 //
@@ -2354,7 +2350,7 @@ func (client *Client) GetDomainWithContext(ctx context.Context, domainId *string
 //
 // Summary:
 //
-// # GetEnvironment
+// Queries an environment.
 //
 // @param request - GetEnvironmentRequest
 //
@@ -2640,7 +2636,7 @@ func (client *Client) GetPolicyWithContext(ctx context.Context, policyId *string
 
 // Summary:
 //
-// # Query Policy Resource Attachment
+// Queries a policy attachment.
 //
 // @param headers - map
 //
@@ -2786,7 +2782,7 @@ func (client *Client) GetSecretValueWithContext(ctx context.Context, name *strin
 
 // Summary:
 //
-// Queries the details of a service.
+// Queries a service.
 //
 // @param headers - map
 //
@@ -2852,7 +2848,7 @@ func (client *Client) GetSourceWithContext(ctx context.Context, sourceId *string
 
 // Summary:
 //
-// # Retrieve Tracing Configuration
+// Queries the tracing configurations of a Cloud-native API Gateway instance.
 //
 // @param request - GetTraceConfigRequest
 //
@@ -4113,7 +4109,7 @@ func (client *Client) ListPoliciesWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// # ListPolicyClasses
+// Queries policy templates.
 //
 // @param request - ListPolicyClassesRequest
 //
@@ -4365,7 +4361,7 @@ func (client *Client) ListServicesWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// # ListSslCerts
+// Queries SSL certificates.
 //
 // @param request - ListSslCertsRequest
 //
@@ -4577,7 +4573,7 @@ func (client *Client) RemoveConsumerAuthorizationRuleWithContext(ctx context.Con
 
 // Summary:
 //
-// # Gateway Restart
+// Restarts an instance.
 //
 // @param headers - map
 //
@@ -4989,6 +4985,10 @@ func (client *Client) UpdateConsumerAuthorizationRuleWithContext(ctx context.Con
 //
 // Updates a domain name.
 //
+// Description:
+//
+// You can update the listening Ingress only for sources whose types are **ACK**.
+//
 // @param request - UpdateDomainRequest
 //
 // @param headers - map
@@ -5072,7 +5072,7 @@ func (client *Client) UpdateDomainWithContext(ctx context.Context, domainId *str
 //
 // Summary:
 //
-// # UpdateEnvironment
+// Modifies an environment.
 //
 // @param request - UpdateEnvironmentRequest
 //
@@ -5123,7 +5123,7 @@ func (client *Client) UpdateEnvironmentWithContext(ctx context.Context, environm
 
 // Summary:
 //
-// # Get the feature configuration of the gateway
+// Updates the configuration of an instance feature parameter.
 //
 // @param request - UpdateGatewayFeatureRequest
 //
@@ -5170,7 +5170,7 @@ func (client *Client) UpdateGatewayFeatureWithContext(ctx context.Context, gatew
 
 // Summary:
 //
-// # Change the name of a gateway instance
+// Changes the name of a Cloud-native API Gateway instance.
 //
 // @param request - UpdateGatewayNameRequest
 //
@@ -5312,7 +5312,7 @@ func (client *Client) UpdateHttpApiWithContext(ctx context.Context, httpApiId *s
 
 // Summary:
 //
-// # Update Operation
+// Updates an operation of an HTTP API.
 //
 // @param request - UpdateHttpApiOperationRequest
 //
@@ -5588,7 +5588,7 @@ func (client *Client) UpdatePluginAttachmentWithContext(ctx context.Context, plu
 
 // Summary:
 //
-// # Update Policy
+// Updates a policy.
 //
 // @param request - UpdatePolicyRequest
 //
@@ -5690,7 +5690,7 @@ func (client *Client) UpdateSecretWithContext(ctx context.Context, secretId *str
 
 // Summary:
 //
-// 更新服务
+// Updates a service. You can call this operation to update the health check, DNS domain name, and fixed address configurations of a service.
 //
 // @param request - UpdateServiceRequest
 //
@@ -5816,7 +5816,7 @@ func (client *Client) UpdateServiceVersionWithContext(ctx context.Context, servi
 
 // Summary:
 //
-// # Upgrade the gateway version
+// Updates the version of a Cloud-native API Gateway instance.
 //
 // @param request - UpgradeGatewayRequest
 //

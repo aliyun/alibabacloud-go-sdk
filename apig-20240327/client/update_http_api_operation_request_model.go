@@ -14,7 +14,7 @@ type iUpdateHttpApiOperationRequest interface {
 }
 
 type UpdateHttpApiOperationRequest struct {
-	// operation definition.
+	// The operation definition.
 	Operation *HttpApiOperation `json:"operation,omitempty" xml:"operation,omitempty"`
 }
 

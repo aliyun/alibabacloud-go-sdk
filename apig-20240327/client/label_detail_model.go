@@ -16,7 +16,13 @@ type iLabelDetail interface {
 }
 
 type LabelDetail struct {
-	Key    *string   `json:"key,omitempty" xml:"key,omitempty"`
+	// The label key
+	//
+	// example:
+	//
+	// version
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The list of available values for this label
 	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 

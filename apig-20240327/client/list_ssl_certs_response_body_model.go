@@ -20,21 +20,21 @@ type iListSslCertsResponseBody interface {
 }
 
 type ListSslCertsResponseBody struct {
-	// Response status code.
+	// The status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data
+	// The data returned.
 	Data *ListSslCertsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Response message.
+	// The response message returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,21 +96,21 @@ func (s *ListSslCertsResponseBody) Validate() error {
 }
 
 type ListSslCertsResponseBodyData struct {
-	// List of certificate information.
+	// The list of certificate information.
 	Items []*SslCertMetaInfo `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// Page number.
+	// The page number of the returned page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// Page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Total count.
+	// The total number of entries returned.
 	//
 	// example:
 	//

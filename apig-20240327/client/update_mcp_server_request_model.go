@@ -41,8 +41,16 @@ type UpdateMcpServerRequest struct {
 	// The backend service configurations for the route.
 	BackendConfig *UpdateMcpServerRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
 	// Specifies the type of source for MCP server creation.
+	//
+	// example:
+	//
+	// ApiGatewayMcpHosting
 	CreateFromType *string `json:"createFromType,omitempty" xml:"createFromType,omitempty"`
 	// The description.
+	//
+	// example:
+	//
+	// Updated MCP server description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The domain IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
@@ -51,10 +59,12 @@ type UpdateMcpServerRequest struct {
 	// example:
 	//
 	// /sse
-	ExposedUriPath       *string                                       `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
+	ExposedUriPath *string `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
+	// The gray MCP server configurations
 	GrayMcpServerConfigs []*UpdateMcpServerRequestGrayMcpServerConfigs `json:"grayMcpServerConfigs,omitempty" xml:"grayMcpServerConfigs,omitempty" type:"Repeated"`
 	// The route match rule.
-	Match           *HttpRouteMatch                        `json:"match,omitempty" xml:"match,omitempty"`
+	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
+	// The MCP server configuration
 	McpServerConfig *UpdateMcpServerRequestMcpServerConfig `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty" type:"Struct"`
 	// Specifies if MCP observability is enabled. Default value: false.
 	//
@@ -436,9 +446,16 @@ func (s *UpdateMcpServerRequestBackendConfigServices) Validate() error {
 }
 
 type UpdateMcpServerRequestGrayMcpServerConfigs struct {
+	// The backend configuration
 	BackendConfig *UpdateMcpServerRequestGrayMcpServerConfigsBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
-	Match         *HttpRouteMatch                                          `json:"match,omitempty" xml:"match,omitempty"`
-	RouteId       *string                                                  `json:"routeId,omitempty" xml:"routeId,omitempty"`
+	// The route match rules
+	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
+	// The route ID
+	//
+	// example:
+	//
+	// route-123
+	RouteId *string `json:"routeId,omitempty" xml:"routeId,omitempty"`
 }
 
 func (s UpdateMcpServerRequestGrayMcpServerConfigs) String() string {
@@ -491,7 +508,13 @@ func (s *UpdateMcpServerRequestGrayMcpServerConfigs) Validate() error {
 }
 
 type UpdateMcpServerRequestGrayMcpServerConfigsBackendConfig struct {
-	Scene    *string                                                            `json:"scene,omitempty" xml:"scene,omitempty"`
+	// The backend scene
+	//
+	// example:
+	//
+	// SingleService
+	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// The list of backend services
 	Services []*UpdateMcpServerRequestGrayMcpServerConfigsBackendConfigServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
 }
 
@@ -535,11 +558,36 @@ func (s *UpdateMcpServerRequestGrayMcpServerConfigsBackendConfig) Validate() err
 }
 
 type UpdateMcpServerRequestGrayMcpServerConfigsBackendConfigServices struct {
-	Port      *int32  `json:"port,omitempty" xml:"port,omitempty"`
-	Protocol  *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The service port
+	//
+	// example:
+	//
+	// 8080
+	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// The service protocol
+	//
+	// example:
+	//
+	// HTTP
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The service ID
+	//
+	// example:
+	//
+	// gray-svc-123
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	Version   *string `json:"version,omitempty" xml:"version,omitempty"`
-	Weight    *int32  `json:"weight,omitempty" xml:"weight,omitempty"`
+	// The service version
+	//
+	// example:
+	//
+	// v1
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The service weight
+	//
+	// example:
+	//
+	// 100
+	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
 }
 
 func (s UpdateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) String() string {
@@ -600,7 +648,17 @@ func (s *UpdateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) Valida
 }
 
 type UpdateMcpServerRequestMcpServerConfig struct {
+	// The converted mcp server spec yaml
+	//
+	// example:
+	//
+	// mcp-server-spec-yaml
 	McpServerSpec *string `json:"mcpServerSpec,omitempty" xml:"mcpServerSpec,omitempty"`
+	// The raw swagger/openapi document
+	//
+	// example:
+	//
+	// swagger-content
 	SwaggerConfig *string `json:"swaggerConfig,omitempty" xml:"swaggerConfig,omitempty"`
 }
 

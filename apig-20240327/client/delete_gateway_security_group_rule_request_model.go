@@ -14,7 +14,7 @@ type iDeleteGatewaySecurityGroupRuleRequest interface {
 }
 
 type DeleteGatewaySecurityGroupRuleRequest struct {
-	// Whether to cascade delete the security group rules.
+	// Specifies whether to delete the cascaded security group rule.
 	//
 	// example:
 	//

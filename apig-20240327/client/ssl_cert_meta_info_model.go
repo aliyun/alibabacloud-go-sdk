@@ -50,25 +50,120 @@ type iSslCertMetaInfo interface {
 }
 
 type SslCertMetaInfo struct {
-	Algorithm          *string `json:"algorithm,omitempty" xml:"algorithm,omitempty"`
-	CertId             *int64  `json:"certId,omitempty" xml:"certId,omitempty"`
-	CertIdentifier     *string `json:"certIdentifier,omitempty" xml:"certIdentifier,omitempty"`
-	CertName           *string `json:"certName,omitempty" xml:"certName,omitempty"`
-	CommonName         *string `json:"commonName,omitempty" xml:"commonName,omitempty"`
-	Domain             *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	DomainMatchCert    *bool   `json:"domainMatchCert,omitempty" xml:"domainMatchCert,omitempty"`
-	Fingerprint        *string `json:"fingerprint,omitempty" xml:"fingerprint,omitempty"`
-	InstanceId         *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	IsChainCompleted   *bool   `json:"isChainCompleted,omitempty" xml:"isChainCompleted,omitempty"`
-	Issuer             *string `json:"issuer,omitempty" xml:"issuer,omitempty"`
-	KeySize            *string `json:"keySize,omitempty" xml:"keySize,omitempty"`
-	Md5                *string `json:"md5,omitempty" xml:"md5,omitempty"`
-	NotAfterTimestamp  *int64  `json:"notAfterTimestamp,omitempty" xml:"notAfterTimestamp,omitempty"`
-	NotBeforeTimestamp *int64  `json:"notBeforeTimestamp,omitempty" xml:"notBeforeTimestamp,omitempty"`
-	Sans               *string `json:"sans,omitempty" xml:"sans,omitempty"`
-	SerialNo           *string `json:"serialNo,omitempty" xml:"serialNo,omitempty"`
-	Sha2               *string `json:"sha2,omitempty" xml:"sha2,omitempty"`
-	SignAlgorithm      *string `json:"signAlgorithm,omitempty" xml:"signAlgorithm,omitempty"`
+	// The algorithm.
+	//
+	// example:
+	//
+	// RSA2048
+	Algorithm *string `json:"algorithm,omitempty" xml:"algorithm,omitempty"`
+	// The certificate ID.
+	//
+	// example:
+	//
+	// 1234567890
+	CertId *int64 `json:"certId,omitempty" xml:"certId,omitempty"`
+	// The certificate ID.
+	//
+	// example:
+	//
+	// cert-123
+	CertIdentifier *string `json:"certIdentifier,omitempty" xml:"certIdentifier,omitempty"`
+	// The certificate name.
+	//
+	// example:
+	//
+	// example.com
+	CertName *string `json:"certName,omitempty" xml:"certName,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// example.com
+	CommonName *string `json:"commonName,omitempty" xml:"commonName,omitempty"`
+	// The domain name.
+	//
+	// example:
+	//
+	// api.example.com
+	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// The certificate matching the domain name.
+	//
+	// example:
+	//
+	// true
+	DomainMatchCert *bool `json:"domainMatchCert,omitempty" xml:"domainMatchCert,omitempty"`
+	// The certificate fingerprint.
+	//
+	// example:
+	//
+	// A1:B2:C3:D4:E5:F6:78:90:AB:CD:EF:12:34:56:78:90
+	Fingerprint *string `json:"fingerprint,omitempty" xml:"fingerprint,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// i-bp1234567890
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// isChainCompleted
+	//
+	// example:
+	//
+	// true
+	IsChainCompleted *bool `json:"isChainCompleted,omitempty" xml:"isChainCompleted,omitempty"`
+	// The certificate issuer.
+	//
+	// example:
+	//
+	// DigiCert Inc
+	Issuer *string `json:"issuer,omitempty" xml:"issuer,omitempty"`
+	// The key size.
+	//
+	// example:
+	//
+	// 2048
+	KeySize *string `json:"keySize,omitempty" xml:"keySize,omitempty"`
+	// The md5 value.
+	//
+	// example:
+	//
+	// A1B2C3D4E5F67890ABCDEF1234567890
+	Md5 *string `json:"md5,omitempty" xml:"md5,omitempty"`
+	// The time when the certificate expires.
+	//
+	// example:
+	//
+	// 1234567890000
+	NotAfterTimestamp *int64 `json:"notAfterTimestamp,omitempty" xml:"notAfterTimestamp,omitempty"`
+	// The time when the certificate starts to take effect.
+	//
+	// example:
+	//
+	// 1234567890000
+	NotBeforeTimestamp *int64 `json:"notBeforeTimestamp,omitempty" xml:"notBeforeTimestamp,omitempty"`
+	// sans
+	//
+	// example:
+	//
+	// *.example.com,api.example.com,www.example.com
+	Sans *string `json:"sans,omitempty" xml:"sans,omitempty"`
+	// The serial number.
+	//
+	// example:
+	//
+	// 03:A1:B2:C3:D4:E5:F6:78:90:AB:CD:EF:12:34:56:78:90
+	SerialNo *string `json:"serialNo,omitempty" xml:"serialNo,omitempty"`
+	// The sha2 value.
+	//
+	// example:
+	//
+	// A1B2C3D4E5F67890ABCDEF1234567890ABCDEF1234567890ABCDEF1234567890
+	Sha2 *string `json:"sha2,omitempty" xml:"sha2,omitempty"`
+	// The signature algorithm.
+	//
+	// example:
+	//
+	// sha256WithRSAEncryption
+	SignAlgorithm *string `json:"signAlgorithm,omitempty" xml:"signAlgorithm,omitempty"`
 }
 
 func (s SslCertMetaInfo) String() string {

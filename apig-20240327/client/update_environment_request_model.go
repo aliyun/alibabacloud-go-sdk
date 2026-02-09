@@ -16,19 +16,19 @@ type iUpdateEnvironmentRequest interface {
 }
 
 type UpdateEnvironmentRequest struct {
-	// Environment alias.
+	// Schema of Response
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 测试环境
+	// The request ID, which is used to trace the API call link.
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// Description of the environment, which can include information such as the purpose of the environment and its users.
+	// The status code returned.
 	//
 	// example:
 	//
-	// 这是xx的xx项目测试环境
+	// The response message returned.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 }
 

@@ -20,10 +20,14 @@ type iHttpApiRequestContract interface {
 }
 
 type HttpApiRequestContract struct {
-	Body             *HttpApiRequestContractBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	HeaderParameters []*HttpApiParameter         `json:"headerParameters,omitempty" xml:"headerParameters,omitempty" type:"Repeated"`
-	PathParameters   []*HttpApiParameter         `json:"pathParameters,omitempty" xml:"pathParameters,omitempty" type:"Repeated"`
-	QueryParameters  []*HttpApiParameter         `json:"queryParameters,omitempty" xml:"queryParameters,omitempty" type:"Repeated"`
+	// The body parameters.
+	Body *HttpApiRequestContractBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
+	// The request header parameters.
+	HeaderParameters []*HttpApiParameter `json:"headerParameters,omitempty" xml:"headerParameters,omitempty" type:"Repeated"`
+	// The path parameters.
+	PathParameters []*HttpApiParameter `json:"pathParameters,omitempty" xml:"pathParameters,omitempty" type:"Repeated"`
+	// The query parameters.
+	QueryParameters []*HttpApiParameter `json:"queryParameters,omitempty" xml:"queryParameters,omitempty" type:"Repeated"`
 }
 
 func (s HttpApiRequestContract) String() string {
@@ -107,15 +111,51 @@ func (s *HttpApiRequestContract) Validate() error {
 }
 
 type HttpApiRequestContractBody struct {
+	// The content type of the request body.
+	//
 	// example:
 	//
 	// application/json
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The parameter description.
+	//
 	// example:
 	//
-	// {"key":"value"}
-	Example    *string `json:"example,omitempty" xml:"example,omitempty"`
+	// This is a description.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The sample value.
+	//
+	// example:
+	//
+	// {"result":"ok"}
+	Example *string `json:"example,omitempty" xml:"example,omitempty"`
+	// The JSON definition description of the request body.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "type": "object",
+	//
+	//       "required": [
+	//
+	//           "result"
+	//
+	//       ],
+	//
+	//       "properties": {
+	//
+	//           "result": {
+	//
+	//               "type": "string",
+	//
+	//               "description": "Operation result. \\"ok\\" indicates success."
+	//
+	//           }
+	//
+	//       }
+	//
+	//   }
 	JsonSchema *string `json:"jsonSchema,omitempty" xml:"jsonSchema,omitempty"`
 }
 

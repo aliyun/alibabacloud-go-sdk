@@ -16,7 +16,13 @@ type iTlsCipherSuitesConfig interface {
 }
 
 type TlsCipherSuitesConfig struct {
-	ConfigType     *string                                `json:"configType,omitempty" xml:"configType,omitempty"`
+	// The configuration type.
+	//
+	// example:
+	//
+	// Default
+	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
+	// tlsCipherSuite
 	TlsCipherSuite []*TlsCipherSuitesConfigTlsCipherSuite `json:"tlsCipherSuite,omitempty" xml:"tlsCipherSuite,omitempty" type:"Repeated"`
 }
 
@@ -60,7 +66,13 @@ func (s *TlsCipherSuitesConfig) Validate() error {
 }
 
 type TlsCipherSuitesConfigTlsCipherSuite struct {
-	Name            *string   `json:"name,omitempty" xml:"name,omitempty"`
+	// The suite name.
+	//
+	// example:
+	//
+	// ECDHE-ECDSA-AES256-GCM-SHA384
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The supported versions.
 	SupportVersions []*string `json:"supportVersions,omitempty" xml:"supportVersions,omitempty" type:"Repeated"`
 }
 

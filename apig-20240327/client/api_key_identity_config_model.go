@@ -18,9 +18,16 @@ type iApiKeyIdentityConfig interface {
 }
 
 type ApiKeyIdentityConfig struct {
-	ApikeySource *ApiKeyIdentityConfigApikeySource  `json:"apikeySource,omitempty" xml:"apikeySource,omitempty" type:"Struct"`
-	Credentials  []*ApiKeyIdentityConfigCredentials `json:"credentials,omitempty" xml:"credentials,omitempty" type:"Repeated"`
-	Type         *string                            `json:"type,omitempty" xml:"type,omitempty"`
+	// The source configuration of the API key.
+	ApikeySource *ApiKeyIdentityConfigApikeySource `json:"apikeySource,omitempty" xml:"apikeySource,omitempty" type:"Struct"`
+	// The list of certificates.
+	Credentials []*ApiKeyIdentityConfigCredentials `json:"credentials,omitempty" xml:"credentials,omitempty" type:"Repeated"`
+	// The type.
+	//
+	// example:
+	//
+	// Apikey
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ApiKeyIdentityConfig) String() string {
@@ -77,8 +84,26 @@ func (s *ApiKeyIdentityConfig) Validate() error {
 }
 
 type ApiKeyIdentityConfigApikeySource struct {
+	// The source of the API key.
+	//
+	// Valid values:
+	//
+	// 	- Header
+	//
+	// 	- QueryString
+	//
+	// 	- Default
+	//
+	// example:
+	//
+	// Default
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	Value  *string `json:"value,omitempty" xml:"value,omitempty"`
+	// The value of the API key.
+	//
+	// example:
+	//
+	// xxxx
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s ApiKeyIdentityConfigApikeySource) String() string {
@@ -112,7 +137,17 @@ func (s *ApiKeyIdentityConfigApikeySource) Validate() error {
 }
 
 type ApiKeyIdentityConfigCredentials struct {
-	Apikey       *string `json:"apikey,omitempty" xml:"apikey,omitempty"`
+	// The API key configuration.
+	//
+	// example:
+	//
+	// xxxxx
+	Apikey *string `json:"apikey,omitempty" xml:"apikey,omitempty"`
+	// The production mode.
+	//
+	// example:
+	//
+	// System
 	GenerateMode *string `json:"generateMode,omitempty" xml:"generateMode,omitempty"`
 }
 

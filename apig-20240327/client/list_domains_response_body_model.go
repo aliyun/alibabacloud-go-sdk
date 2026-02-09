@@ -26,7 +26,7 @@ type ListDomainsResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response data.
+	// Response parameters.
 	Data *ListDomainsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The message returned.
 	//
@@ -96,7 +96,7 @@ func (s *ListDomainsResponseBody) Validate() error {
 }
 
 type ListDomainsResponseBodyData struct {
-	// The information about the domain names.
+	// The list of domain information.
 	Items []*DomainInfo `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page number of the returned page.
 	//
