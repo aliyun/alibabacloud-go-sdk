@@ -23393,6 +23393,10 @@ func (client *Client) DescribeImageSensitiveFileListWithOptions(tmpReq *Describe
 		query["ScanRange"] = request.ScanRangeShrink
 	}
 
+	if !dara.IsNil(request.SensitiveKeyList) {
+		query["SensitiveKeyList"] = request.SensitiveKeyList
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26044,6 +26048,10 @@ func (client *Client) DescribePropertyScaDetailWithOptions(request *DescribeProp
 
 	if !dara.IsNil(request.ScaVersion) {
 		query["ScaVersion"] = request.ScaVersion
+	}
+
+	if !dara.IsNil(request.SearchCriteriaList) {
+		query["SearchCriteriaList"] = request.SearchCriteriaList
 	}
 
 	if !dara.IsNil(request.SearchInfo) {
@@ -35712,6 +35720,10 @@ func (client *Client) ExportVulWithOptions(request *ExportVulRequest, runtime *d
 		query["VpcInstanceIds"] = request.VpcInstanceIds
 	}
 
+	if !dara.IsNil(request.VulEntityList) {
+		query["VulEntityList"] = request.VulEntityList
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -37896,6 +37908,10 @@ func (client *Client) GetCheckCountStatisticWithOptions(request *GetCheckCountSt
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
 	if !dara.IsNil(request.StatisticType) {
 		query["StatisticType"] = request.StatisticType
 	}

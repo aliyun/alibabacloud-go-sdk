@@ -37,6 +37,8 @@ type iDescribeVersionConfigResponseBody interface {
 	GetInstanceBuyType() *int32
 	SetInstanceId(v string) *DescribeVersionConfigResponseBody
 	GetInstanceId() *string
+	SetIntelligentAnalysisFlow(v int32) *DescribeVersionConfigResponseBody
+	GetIntelligentAnalysisFlow() *int32
 	SetIsNewContainerVersion(v bool) *DescribeVersionConfigResponseBody
 	GetIsNewContainerVersion() *bool
 	SetIsNewMultiVersion(v bool) *DescribeVersionConfigResponseBody
@@ -59,6 +61,8 @@ type iDescribeVersionConfigResponseBody interface {
 	GetMultiVersion() *string
 	SetNewThreatAnalysis(v int32) *DescribeVersionConfigResponseBody
 	GetNewThreatAnalysis() *int32
+	SetOnboardedAssets(v int32) *DescribeVersionConfigResponseBody
+	GetOnboardedAssets() *int32
 	SetOpenTime(v int64) *DescribeVersionConfigResponseBody
 	GetOpenTime() *int64
 	SetPostPayHostVersion(v int32) *DescribeVersionConfigResponseBody
@@ -222,6 +226,10 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// sas-vg6hafdsafs****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 100
+	IntelligentAnalysisFlow *int32 `json:"IntelligentAnalysisFlow,omitempty" xml:"IntelligentAnalysisFlow,omitempty"`
 	// Indicates whether Security Center runs the latest version of the Ultimate edition.
 	//
 	// 	- **true**: yes
@@ -314,6 +322,10 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 1
 	NewThreatAnalysis *int32 `json:"NewThreatAnalysis,omitempty" xml:"NewThreatAnalysis,omitempty"`
+	// example:
+	//
+	// 10
+	OnboardedAssets *int32 `json:"OnboardedAssets,omitempty" xml:"OnboardedAssets,omitempty"`
 	// The timestamp when Security Center is purchased. Unit: milliseconds.
 	//
 	// example:
@@ -546,6 +558,10 @@ func (s *DescribeVersionConfigResponseBody) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *DescribeVersionConfigResponseBody) GetIntelligentAnalysisFlow() *int32 {
+	return s.IntelligentAnalysisFlow
+}
+
 func (s *DescribeVersionConfigResponseBody) GetIsNewContainerVersion() *bool {
 	return s.IsNewContainerVersion
 }
@@ -588,6 +604,10 @@ func (s *DescribeVersionConfigResponseBody) GetMultiVersion() *string {
 
 func (s *DescribeVersionConfigResponseBody) GetNewThreatAnalysis() *int32 {
 	return s.NewThreatAnalysis
+}
+
+func (s *DescribeVersionConfigResponseBody) GetOnboardedAssets() *int32 {
+	return s.OnboardedAssets
 }
 
 func (s *DescribeVersionConfigResponseBody) GetOpenTime() *int64 {
@@ -744,6 +764,11 @@ func (s *DescribeVersionConfigResponseBody) SetInstanceId(v string) *DescribeVer
 	return s
 }
 
+func (s *DescribeVersionConfigResponseBody) SetIntelligentAnalysisFlow(v int32) *DescribeVersionConfigResponseBody {
+	s.IntelligentAnalysisFlow = &v
+	return s
+}
+
 func (s *DescribeVersionConfigResponseBody) SetIsNewContainerVersion(v bool) *DescribeVersionConfigResponseBody {
 	s.IsNewContainerVersion = &v
 	return s
@@ -796,6 +821,11 @@ func (s *DescribeVersionConfigResponseBody) SetMultiVersion(v string) *DescribeV
 
 func (s *DescribeVersionConfigResponseBody) SetNewThreatAnalysis(v int32) *DescribeVersionConfigResponseBody {
 	s.NewThreatAnalysis = &v
+	return s
+}
+
+func (s *DescribeVersionConfigResponseBody) SetOnboardedAssets(v int32) *DescribeVersionConfigResponseBody {
+	s.OnboardedAssets = &v
 	return s
 }
 

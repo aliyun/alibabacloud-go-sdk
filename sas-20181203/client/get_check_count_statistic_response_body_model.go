@@ -118,6 +118,10 @@ func (s *GetCheckCountStatisticResponseBodyCheckCountStatisticDTO) Validate() er
 }
 
 type GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisticItems struct {
+	// example:
+	//
+	// 开启公网访问
+	CheckShowName *string `json:"CheckShowName,omitempty" xml:"CheckShowName,omitempty"`
 	// The number of the CPU cores used by the host instance.
 	//
 	// example:
@@ -302,6 +306,10 @@ type GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatistic
 	//
 	// ALIYUN
 	Vendor *int32 `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// example:
+	//
+	// 阿里云
+	VendorShowName *string `json:"VendorShowName,omitempty" xml:"VendorShowName,omitempty"`
 	// The ID of the VPC to which the host instance belongs.
 	//
 	// example:
@@ -316,6 +324,10 @@ func (s GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatis
 
 func (s GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisticItems) GoString() string {
 	return s.String()
+}
+
+func (s *GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisticItems) GetCheckShowName() *string {
+	return s.CheckShowName
 }
 
 func (s *GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisticItems) GetCores() *int32 {
@@ -374,8 +386,17 @@ func (s *GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStati
 	return s.Vendor
 }
 
+func (s *GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisticItems) GetVendorShowName() *string {
+	return s.VendorShowName
+}
+
 func (s *GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisticItems) GetVpcInstanceId() *string {
 	return s.VpcInstanceId
+}
+
+func (s *GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisticItems) SetCheckShowName(v string) *GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisticItems {
+	s.CheckShowName = &v
+	return s
 }
 
 func (s *GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisticItems) SetCores(v int32) *GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisticItems {
@@ -445,6 +466,11 @@ func (s *GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStati
 
 func (s *GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisticItems) SetVendor(v int32) *GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisticItems {
 	s.Vendor = &v
+	return s
+}
+
+func (s *GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisticItems) SetVendorShowName(v string) *GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisticItems {
+	s.VendorShowName = &v
 	return s
 }
 

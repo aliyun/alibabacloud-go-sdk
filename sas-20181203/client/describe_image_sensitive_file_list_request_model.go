@@ -25,6 +25,8 @@ type iDescribeImageSensitiveFileListRequest interface {
 	GetRiskLevel() *string
 	SetScanRange(v []*string) *DescribeImageSensitiveFileListRequest
 	GetScanRange() []*string
+	SetSensitiveKeyList(v []*string) *DescribeImageSensitiveFileListRequest
+	GetSensitiveKeyList() []*string
 }
 
 type DescribeImageSensitiveFileListRequest struct {
@@ -315,7 +317,8 @@ type DescribeImageSensitiveFileListRequest struct {
 	// 	- **image**
 	//
 	// 	- **container**
-	ScanRange []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
+	ScanRange        []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
+	SensitiveKeyList []*string `json:"SensitiveKeyList,omitempty" xml:"SensitiveKeyList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeImageSensitiveFileListRequest) String() string {
@@ -358,6 +361,10 @@ func (s *DescribeImageSensitiveFileListRequest) GetScanRange() []*string {
 	return s.ScanRange
 }
 
+func (s *DescribeImageSensitiveFileListRequest) GetSensitiveKeyList() []*string {
+	return s.SensitiveKeyList
+}
+
 func (s *DescribeImageSensitiveFileListRequest) SetCriteria(v string) *DescribeImageSensitiveFileListRequest {
 	s.Criteria = &v
 	return s
@@ -395,6 +402,11 @@ func (s *DescribeImageSensitiveFileListRequest) SetRiskLevel(v string) *Describe
 
 func (s *DescribeImageSensitiveFileListRequest) SetScanRange(v []*string) *DescribeImageSensitiveFileListRequest {
 	s.ScanRange = v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListRequest) SetSensitiveKeyList(v []*string) *DescribeImageSensitiveFileListRequest {
+	s.SensitiveKeyList = v
 	return s
 }
 

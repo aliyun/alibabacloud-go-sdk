@@ -39,6 +39,8 @@ type iDescribePropertyScaDetailRequest interface {
 	GetScaNamePattern() *string
 	SetScaVersion(v string) *DescribePropertyScaDetailRequest
 	GetScaVersion() *string
+	SetSearchCriteriaList(v []*DescribePropertyScaDetailRequestSearchCriteriaList) *DescribePropertyScaDetailRequest
+	GetSearchCriteriaList() []*DescribePropertyScaDetailRequestSearchCriteriaList
 	SetSearchInfo(v string) *DescribePropertyScaDetailRequest
 	GetSearchInfo() *string
 	SetSearchInfoSub(v string) *DescribePropertyScaDetailRequest
@@ -177,7 +179,8 @@ type DescribePropertyScaDetailRequest struct {
 	// example:
 	//
 	// 1.0.2k
-	ScaVersion *string `json:"ScaVersion,omitempty" xml:"ScaVersion,omitempty"`
+	ScaVersion         *string                                               `json:"ScaVersion,omitempty" xml:"ScaVersion,omitempty"`
+	SearchCriteriaList []*DescribePropertyScaDetailRequestSearchCriteriaList `json:"SearchCriteriaList,omitempty" xml:"SearchCriteriaList,omitempty" type:"Repeated"`
 	// The search keyword. You must specify this parameter based on the value of the **SearchItem*	- parameter.
 	//
 	// 	- If the **SearchItem*	- parameter is set to **name**, you must enter the name of an asset fingerprint.
@@ -338,6 +341,10 @@ func (s *DescribePropertyScaDetailRequest) GetScaVersion() *string {
 	return s.ScaVersion
 }
 
+func (s *DescribePropertyScaDetailRequest) GetSearchCriteriaList() []*DescribePropertyScaDetailRequestSearchCriteriaList {
+	return s.SearchCriteriaList
+}
+
 func (s *DescribePropertyScaDetailRequest) GetSearchInfo() *string {
 	return s.SearchInfo
 }
@@ -441,6 +448,11 @@ func (s *DescribePropertyScaDetailRequest) SetScaVersion(v string) *DescribeProp
 	return s
 }
 
+func (s *DescribePropertyScaDetailRequest) SetSearchCriteriaList(v []*DescribePropertyScaDetailRequestSearchCriteriaList) *DescribePropertyScaDetailRequest {
+	s.SearchCriteriaList = v
+	return s
+}
+
 func (s *DescribePropertyScaDetailRequest) SetSearchInfo(v string) *DescribePropertyScaDetailRequest {
 	s.SearchInfo = &v
 	return s
@@ -477,5 +489,55 @@ func (s *DescribePropertyScaDetailRequest) SetUuid(v string) *DescribePropertySc
 }
 
 func (s *DescribePropertyScaDetailRequest) Validate() error {
+	if s.SearchCriteriaList != nil {
+		for _, item := range s.SearchCriteriaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribePropertyScaDetailRequestSearchCriteriaList struct {
+	// example:
+	//
+	// Name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// test
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribePropertyScaDetailRequestSearchCriteriaList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribePropertyScaDetailRequestSearchCriteriaList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePropertyScaDetailRequestSearchCriteriaList) GetName() *string {
+	return s.Name
+}
+
+func (s *DescribePropertyScaDetailRequestSearchCriteriaList) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribePropertyScaDetailRequestSearchCriteriaList) SetName(v string) *DescribePropertyScaDetailRequestSearchCriteriaList {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribePropertyScaDetailRequestSearchCriteriaList) SetValue(v string) *DescribePropertyScaDetailRequestSearchCriteriaList {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribePropertyScaDetailRequestSearchCriteriaList) Validate() error {
 	return dara.Validate(s)
 }

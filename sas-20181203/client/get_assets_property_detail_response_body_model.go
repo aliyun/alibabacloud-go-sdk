@@ -216,6 +216,10 @@ type GetAssetsPropertyDetailResponseBodyPropertys struct {
 	//
 	// /lib/modules/4****
 	Filepath *string `json:"Filepath,omitempty" xml:"Filepath,omitempty"`
+	// example:
+	//
+	// ImageDigest
+	ImageDigest *string `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
 	// Image name.
 	//
 	// example:
@@ -341,6 +345,14 @@ type GetAssetsPropertyDetailResponseBodyPropertys struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// ACR-Example
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// example:
+	//
+	// Default
+	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
 	// Web site type.
 	//
 	// > Returned only when **Biz*	- is **web_server**.
@@ -356,8 +368,12 @@ type GetAssetsPropertyDetailResponseBodyPropertys struct {
 	// example:
 	//
 	// 10
-	Size          *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
-	SkillsName    *string `json:"SkillsName,omitempty" xml:"SkillsName,omitempty"`
+	Size       *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	SkillsName *string `json:"SkillsName,omitempty" xml:"SkillsName,omitempty"`
+	// example:
+	//
+	// AI
+	Tag           *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	TransportName *string `json:"TransportName,omitempty" xml:"TransportName,omitempty"`
 	// Number of dependencies for the kernel module.
 	//
@@ -429,6 +445,10 @@ func (s *GetAssetsPropertyDetailResponseBodyPropertys) GetFile() *string {
 
 func (s *GetAssetsPropertyDetailResponseBodyPropertys) GetFilepath() *string {
 	return s.Filepath
+}
+
+func (s *GetAssetsPropertyDetailResponseBodyPropertys) GetImageDigest() *string {
+	return s.ImageDigest
 }
 
 func (s *GetAssetsPropertyDetailResponseBodyPropertys) GetImageName() *string {
@@ -507,6 +527,14 @@ func (s *GetAssetsPropertyDetailResponseBodyPropertys) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *GetAssetsPropertyDetailResponseBodyPropertys) GetRepoName() *string {
+	return s.RepoName
+}
+
+func (s *GetAssetsPropertyDetailResponseBodyPropertys) GetRepoNamespace() *string {
+	return s.RepoNamespace
+}
+
 func (s *GetAssetsPropertyDetailResponseBodyPropertys) GetServerType() *string {
 	return s.ServerType
 }
@@ -517,6 +545,10 @@ func (s *GetAssetsPropertyDetailResponseBodyPropertys) GetSize() *int32 {
 
 func (s *GetAssetsPropertyDetailResponseBodyPropertys) GetSkillsName() *string {
 	return s.SkillsName
+}
+
+func (s *GetAssetsPropertyDetailResponseBodyPropertys) GetTag() *string {
+	return s.Tag
 }
 
 func (s *GetAssetsPropertyDetailResponseBodyPropertys) GetTransportName() *string {
@@ -576,6 +608,11 @@ func (s *GetAssetsPropertyDetailResponseBodyPropertys) SetFile(v string) *GetAss
 
 func (s *GetAssetsPropertyDetailResponseBodyPropertys) SetFilepath(v string) *GetAssetsPropertyDetailResponseBodyPropertys {
 	s.Filepath = &v
+	return s
+}
+
+func (s *GetAssetsPropertyDetailResponseBodyPropertys) SetImageDigest(v string) *GetAssetsPropertyDetailResponseBodyPropertys {
+	s.ImageDigest = &v
 	return s
 }
 
@@ -674,6 +711,16 @@ func (s *GetAssetsPropertyDetailResponseBodyPropertys) SetRegionId(v string) *Ge
 	return s
 }
 
+func (s *GetAssetsPropertyDetailResponseBodyPropertys) SetRepoName(v string) *GetAssetsPropertyDetailResponseBodyPropertys {
+	s.RepoName = &v
+	return s
+}
+
+func (s *GetAssetsPropertyDetailResponseBodyPropertys) SetRepoNamespace(v string) *GetAssetsPropertyDetailResponseBodyPropertys {
+	s.RepoNamespace = &v
+	return s
+}
+
 func (s *GetAssetsPropertyDetailResponseBodyPropertys) SetServerType(v string) *GetAssetsPropertyDetailResponseBodyPropertys {
 	s.ServerType = &v
 	return s
@@ -686,6 +733,11 @@ func (s *GetAssetsPropertyDetailResponseBodyPropertys) SetSize(v int32) *GetAsse
 
 func (s *GetAssetsPropertyDetailResponseBodyPropertys) SetSkillsName(v string) *GetAssetsPropertyDetailResponseBodyPropertys {
 	s.SkillsName = &v
+	return s
+}
+
+func (s *GetAssetsPropertyDetailResponseBodyPropertys) SetTag(v string) *GetAssetsPropertyDetailResponseBodyPropertys {
+	s.Tag = &v
 	return s
 }
 

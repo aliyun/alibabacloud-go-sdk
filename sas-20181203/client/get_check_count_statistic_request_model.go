@@ -9,6 +9,8 @@ type iGetCheckCountStatisticRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetLang(v string) *GetCheckCountStatisticRequest
+	GetLang() *string
 	SetStatisticType(v string) *GetCheckCountStatisticRequest
 	GetStatisticType() *string
 	SetTaskSources(v []*string) *GetCheckCountStatisticRequest
@@ -18,6 +20,10 @@ type iGetCheckCountStatisticRequest interface {
 }
 
 type GetCheckCountStatisticRequest struct {
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The type of the statistics. Valid values:
 	//
 	// 	- **user**: the top five users that are granted excessive permissions.
@@ -46,6 +52,10 @@ func (s GetCheckCountStatisticRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetCheckCountStatisticRequest) GetLang() *string {
+	return s.Lang
+}
+
 func (s *GetCheckCountStatisticRequest) GetStatisticType() *string {
 	return s.StatisticType
 }
@@ -56,6 +66,11 @@ func (s *GetCheckCountStatisticRequest) GetTaskSources() []*string {
 
 func (s *GetCheckCountStatisticRequest) GetVendors() []*string {
 	return s.Vendors
+}
+
+func (s *GetCheckCountStatisticRequest) SetLang(v string) *GetCheckCountStatisticRequest {
+	s.Lang = &v
+	return s
 }
 
 func (s *GetCheckCountStatisticRequest) SetStatisticType(v string) *GetCheckCountStatisticRequest {

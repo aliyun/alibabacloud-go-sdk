@@ -43,6 +43,8 @@ type iExportVulRequest interface {
   GetUuids() *string 
   SetVpcInstanceIds(v string) *ExportVulRequest
   GetVpcInstanceIds() *string 
+  SetVulEntityList(v []*ExportVulRequestVulEntityList) *ExportVulRequest
+  GetVulEntityList() []*ExportVulRequestVulEntityList 
 }
 
 type ExportVulRequest struct {
@@ -200,6 +202,7 @@ type ExportVulRequest struct {
   // 
   // ins-133****,ins-5414****
   VpcInstanceIds *string `json:"VpcInstanceIds,omitempty" xml:"VpcInstanceIds,omitempty"`
+  VulEntityList []*ExportVulRequestVulEntityList `json:"VulEntityList,omitempty" xml:"VulEntityList,omitempty" type:"Repeated"`
 }
 
 func (s ExportVulRequest) String() string {
@@ -276,6 +279,10 @@ func (s *ExportVulRequest) GetUuids() *string  {
 
 func (s *ExportVulRequest) GetVpcInstanceIds() *string  {
   return s.VpcInstanceIds
+}
+
+func (s *ExportVulRequest) GetVulEntityList() []*ExportVulRequestVulEntityList  {
+  return s.VulEntityList
 }
 
 func (s *ExportVulRequest) SetAliasName(v string) *ExportVulRequest {
@@ -363,7 +370,62 @@ func (s *ExportVulRequest) SetVpcInstanceIds(v string) *ExportVulRequest {
   return s
 }
 
+func (s *ExportVulRequest) SetVulEntityList(v []*ExportVulRequestVulEntityList) *ExportVulRequest {
+  s.VulEntityList = v
+  return s
+}
+
 func (s *ExportVulRequest) Validate() error {
+  if s.VulEntityList != nil {
+    for _, item := range s.VulEntityList {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
+}
+
+type ExportVulRequestVulEntityList struct {
+  // example:
+  // 
+  // Ollama
+  EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+  // example:
+  // 
+  // 1.0.0
+  EntityVersion *string `json:"EntityVersion,omitempty" xml:"EntityVersion,omitempty"`
+}
+
+func (s ExportVulRequestVulEntityList) String() string {
+  return dara.Prettify(s)
+}
+
+func (s ExportVulRequestVulEntityList) GoString() string {
+  return s.String()
+}
+
+func (s *ExportVulRequestVulEntityList) GetEntityName() *string  {
+  return s.EntityName
+}
+
+func (s *ExportVulRequestVulEntityList) GetEntityVersion() *string  {
+  return s.EntityVersion
+}
+
+func (s *ExportVulRequestVulEntityList) SetEntityName(v string) *ExportVulRequestVulEntityList {
+  s.EntityName = &v
+  return s
+}
+
+func (s *ExportVulRequestVulEntityList) SetEntityVersion(v string) *ExportVulRequestVulEntityList {
+  s.EntityVersion = &v
+  return s
+}
+
+func (s *ExportVulRequestVulEntityList) Validate() error {
   return dara.Validate(s)
 }
 

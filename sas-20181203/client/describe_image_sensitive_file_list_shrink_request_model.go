@@ -25,6 +25,8 @@ type iDescribeImageSensitiveFileListShrinkRequest interface {
 	GetRiskLevel() *string
 	SetScanRangeShrink(v string) *DescribeImageSensitiveFileListShrinkRequest
 	GetScanRangeShrink() *string
+	SetSensitiveKeyList(v []*string) *DescribeImageSensitiveFileListShrinkRequest
+	GetSensitiveKeyList() []*string
 }
 
 type DescribeImageSensitiveFileListShrinkRequest struct {
@@ -315,7 +317,8 @@ type DescribeImageSensitiveFileListShrinkRequest struct {
 	// 	- **image**
 	//
 	// 	- **container**
-	ScanRangeShrink *string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty"`
+	ScanRangeShrink  *string   `json:"ScanRange,omitempty" xml:"ScanRange,omitempty"`
+	SensitiveKeyList []*string `json:"SensitiveKeyList,omitempty" xml:"SensitiveKeyList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeImageSensitiveFileListShrinkRequest) String() string {
@@ -358,6 +361,10 @@ func (s *DescribeImageSensitiveFileListShrinkRequest) GetScanRangeShrink() *stri
 	return s.ScanRangeShrink
 }
 
+func (s *DescribeImageSensitiveFileListShrinkRequest) GetSensitiveKeyList() []*string {
+	return s.SensitiveKeyList
+}
+
 func (s *DescribeImageSensitiveFileListShrinkRequest) SetCriteria(v string) *DescribeImageSensitiveFileListShrinkRequest {
 	s.Criteria = &v
 	return s
@@ -395,6 +402,11 @@ func (s *DescribeImageSensitiveFileListShrinkRequest) SetRiskLevel(v string) *De
 
 func (s *DescribeImageSensitiveFileListShrinkRequest) SetScanRangeShrink(v string) *DescribeImageSensitiveFileListShrinkRequest {
 	s.ScanRangeShrink = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListShrinkRequest) SetSensitiveKeyList(v []*string) *DescribeImageSensitiveFileListShrinkRequest {
+	s.SensitiveKeyList = v
 	return s
 }
 

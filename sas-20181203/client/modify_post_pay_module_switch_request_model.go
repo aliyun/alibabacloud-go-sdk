@@ -169,6 +169,10 @@ type ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj struct {
 	//
 	// 1
 	Agentless *int32 `json:"Agentless,omitempty" xml:"Agentless,omitempty"`
+	// example:
+	//
+	// 1
+	AiDigital *int32 `json:"AiDigital,omitempty" xml:"AiDigital,omitempty"`
 	// Anti-Ransomware Module. Values:
 	//
 	// - **0**: Off
@@ -295,6 +299,10 @@ func (s *ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj) GetAgentless() 
 	return s.Agentless
 }
 
+func (s *ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj) GetAiDigital() *int32 {
+	return s.AiDigital
+}
+
 func (s *ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj) GetAntiRansomware() *int32 {
 	return s.AntiRansomware
 }
@@ -341,6 +349,11 @@ func (s *ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj) GetWebLock() *i
 
 func (s *ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj) SetAgentless(v int32) *ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj {
 	s.Agentless = &v
+	return s
+}
+
+func (s *ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj) SetAiDigital(v int32) *ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj {
+	s.AiDigital = &v
 	return s
 }
 
