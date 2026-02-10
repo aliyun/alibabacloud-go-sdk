@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 在当前应用下给指定员工添加一个应用账号
+// 在当前应用下给指定员工添加一个应用账号。
 //
 // @param request - AddApplicationAccountToUserRequest
 //
@@ -114,7 +114,7 @@ func (client *Client) AddApplicationAccountToUserWithOptions(request *AddApplica
 
 // Summary:
 //
-// 在当前应用下给指定员工添加一个应用账号
+// 在当前应用下给指定员工添加一个应用账号。
 //
 // @param request - AddApplicationAccountToUserRequest
 //
@@ -1338,7 +1338,7 @@ func (client *Client) CheckApplicationProvisioningUserPrimaryOrganizationalUnit(
 
 // Summary:
 //
-// 实例删除检查
+// 实例删除检查。
 //
 // @param request - CheckInstanceForDeleteRequest
 //
@@ -1382,7 +1382,7 @@ func (client *Client) CheckInstanceForDeleteWithOptions(request *CheckInstanceFo
 
 // Summary:
 //
-// 实例删除检查
+// 实例删除检查。
 //
 // @param request - CheckInstanceForDeleteRequest
 //
@@ -1493,6 +1493,10 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationIdentityType) {
+		query["ApplicationIdentityType"] = request.ApplicationIdentityType
+	}
+
 	if !dara.IsNil(request.ApplicationName) {
 		query["ApplicationName"] = request.ApplicationName
 	}
@@ -5030,7 +5034,7 @@ func (client *Client) DeleteIdentityProvider(request *DeleteIdentityProviderRequ
 
 // Summary:
 //
-// Deletes an Enterprise Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS) that you do not need.
+// Deletes an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS) that you do not need.
 //
 // Description:
 //
@@ -5078,7 +5082,7 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 
 // Summary:
 //
-// Deletes an Enterprise Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS) that you do not need.
+// Deletes an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS) that you do not need.
 //
 // Description:
 //
@@ -5298,7 +5302,7 @@ func (client *Client) DeleteOrganizationalUnit(request *DeleteOrganizationalUnit
 
 // Summary:
 //
-// # Delete organizational unit information, forcibly deleting all accounts and sub-organizations beneath it
+// Deletes information about an organization and forcefully deletes all accounts and sub-organizations in the organization.
 //
 // @param request - DeleteOrganizationalUnitChildrenRequest
 //
@@ -5346,7 +5350,7 @@ func (client *Client) DeleteOrganizationalUnitChildrenWithOptions(request *Delet
 
 // Summary:
 //
-// # Delete organizational unit information, forcibly deleting all accounts and sub-organizations beneath it
+// Deletes information about an organization and forcefully deletes all accounts and sub-organizations in the organization.
 //
 // @param request - DeleteOrganizationalUnitChildrenRequest
 //
@@ -5982,7 +5986,7 @@ func (client *Client) DisableApplicationM2MClient(request *DisableApplicationM2M
 
 // Summary:
 //
-// Disables the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Disables the account synchronization feature for an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - DisableApplicationProvisioningRequest
 //
@@ -6030,7 +6034,7 @@ func (client *Client) DisableApplicationProvisioningWithOptions(request *Disable
 
 // Summary:
 //
-// Disables the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Disables the account synchronization feature for an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - DisableApplicationProvisioningRequest
 //
@@ -7468,7 +7472,7 @@ func (client *Client) EnableApplicationApiInvoke(request *EnableApplicationApiIn
 
 // Summary:
 //
-// Enables the client key of an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Enables the client key of an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - EnableApplicationClientSecretRequest
 //
@@ -7520,7 +7524,7 @@ func (client *Client) EnableApplicationClientSecretWithOptions(request *EnableAp
 
 // Summary:
 //
-// Enables the client key of an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Enables the client key of an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - EnableApplicationClientSecretRequest
 //
@@ -7674,7 +7678,7 @@ func (client *Client) EnableApplicationM2MClient(request *EnableApplicationM2MCl
 
 // Summary:
 //
-// Enables the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Enables the account synchronization feature for an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - EnableApplicationProvisioningRequest
 //
@@ -7722,7 +7726,7 @@ func (client *Client) EnableApplicationProvisioningWithOptions(request *EnableAp
 
 // Summary:
 //
-// Enables the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Enables the account synchronization feature for an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - EnableApplicationProvisioningRequest
 //
@@ -12348,7 +12352,7 @@ func (client *Client) GetResourceServerScope(request *GetResourceServerScopeRequ
 
 // Summary:
 //
-// Queries the information about the root organizational unit in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Queries the information about the root organizational unit in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - GetRootOrganizationalUnitRequest
 //
@@ -12392,7 +12396,7 @@ func (client *Client) GetRootOrganizationalUnitWithOptions(request *GetRootOrgan
 
 // Summary:
 //
-// Queries the information about the root organizational unit in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Queries the information about the root organizational unit in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - GetRootOrganizationalUnitRequest
 //
@@ -13126,7 +13130,7 @@ func (client *Client) ListApplicationRoles(request *ListApplicationRolesRequest)
 
 // Summary:
 //
-// 应用支持账户同步类型列表
+// Queries the synchronization protocol types that are supported by an application.
 //
 // @param request - ListApplicationSupportedProvisionProtocolTypesRequest
 //
@@ -13174,7 +13178,7 @@ func (client *Client) ListApplicationSupportedProvisionProtocolTypesWithOptions(
 
 // Summary:
 //
-// 应用支持账户同步类型列表
+// Queries the synchronization protocol types that are supported by an application.
 //
 // @param request - ListApplicationSupportedProvisionProtocolTypesRequest
 //
@@ -13279,6 +13283,10 @@ func (client *Client) ListApplicationsWithOptions(request *ListApplicationsReque
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationCreationType) {
 		query["ApplicationCreationType"] = request.ApplicationCreationType
+	}
+
+	if !dara.IsNil(request.ApplicationIdentityType) {
+		query["ApplicationIdentityType"] = request.ApplicationIdentityType
 	}
 
 	if !dara.IsNil(request.ApplicationIds) {
@@ -15437,7 +15445,7 @@ func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroup
 
 // Summary:
 //
-// Queries a list of account groups to which the permissions to access an application are granted. The returned results contain the group IDs. You can call the GetGroup operation to query the information about an account group based on the group ID.
+// Queries the account groups that are granted permissions to access an application and displays the results by page. The IDs of the account groups are returned. To query the detailed information about the account groups, call the GetGroup operation.
 //
 // @param request - ListGroupsForApplicationRequest
 //
@@ -15501,7 +15509,7 @@ func (client *Client) ListGroupsForApplicationWithOptions(request *ListGroupsFor
 
 // Summary:
 //
-// Queries a list of account groups to which the permissions to access an application are granted. The returned results contain the group IDs. You can call the GetGroup operation to query the information about an account group based on the group ID.
+// Queries the account groups that are granted permissions to access an application and displays the results by page. The IDs of the account groups are returned. To query the detailed information about the account groups, call the GetGroup operation.
 //
 // @param request - ListGroupsForApplicationRequest
 //
@@ -15630,6 +15638,10 @@ func (client *Client) ListGroupsForResourceServerWithOptions(request *ListGroups
 
 	if !dara.IsNil(request.NextToken) {
 		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ResourceServerScopeId) {
+		query["ResourceServerScopeId"] = request.ResourceServerScopeId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -15897,7 +15909,7 @@ func (client *Client) ListIdentityProvidersForNetworkAccessEndpoint(request *Lis
 
 // Summary:
 //
-// Queries the information of one or more Enterprise Identity and Access Management (EIAM) instances of Identity as a Service (IDaaS).
+// Queries the information about one or more Enterprise Identity and Access Management (EIAM) instances of Identity as a Service (IDaaS).
 //
 // @param request - ListInstancesRequest
 //
@@ -15953,7 +15965,7 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 
 // Summary:
 //
-// Queries the information of one or more Enterprise Identity and Access Management (EIAM) instances of Identity as a Service (IDaaS).
+// Queries the information about one or more Enterprise Identity and Access Management (EIAM) instances of Identity as a Service (IDaaS).
 //
 // @param request - ListInstancesRequest
 //
@@ -16018,7 +16030,7 @@ func (client *Client) ListNetworkAccessEndpointAvailableRegions() (_result *List
 
 // Summary:
 //
-// 获取支持NAE的可用区列表
+// Queries the zones that support dedicated network endpoints in the specified region of Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - ListNetworkAccessEndpointAvailableZonesRequest
 //
@@ -16062,7 +16074,7 @@ func (client *Client) ListNetworkAccessEndpointAvailableZonesWithOptions(request
 
 // Summary:
 //
-// 获取支持NAE的可用区列表
+// Queries the zones that support dedicated network endpoints in the specified region of Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - ListNetworkAccessEndpointAvailableZonesRequest
 //
@@ -16080,7 +16092,7 @@ func (client *Client) ListNetworkAccessEndpointAvailableZones(request *ListNetwo
 
 // Summary:
 //
-// 列表查询专属网络端点。
+// # List query dedicated network endpoint
 //
 // @param request - ListNetworkAccessEndpointsRequest
 //
@@ -16148,7 +16160,7 @@ func (client *Client) ListNetworkAccessEndpointsWithOptions(request *ListNetwork
 
 // Summary:
 //
-// 列表查询专属网络端点。
+// # List query dedicated network endpoint
 //
 // @param request - ListNetworkAccessEndpointsRequest
 //
@@ -16579,6 +16591,10 @@ func (client *Client) ListOrganizationalUnitsForResourceServerWithOptions(reques
 		query["NextToken"] = request.NextToken
 	}
 
+	if !dara.IsNil(request.ResourceServerScopeId) {
+		query["ResourceServerScopeId"] = request.ResourceServerScopeId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16622,7 +16638,7 @@ func (client *Client) ListOrganizationalUnitsForResourceServer(request *ListOrga
 
 // Summary:
 //
-// Queries the supported Alibaba Cloud regions.
+// Queries a list of supported Alibaba Cloud regions.
 //
 // @param request - ListRegionsRequest
 //
@@ -16653,7 +16669,7 @@ func (client *Client) ListRegionsWithOptions(runtime *dara.RuntimeOptions) (_res
 
 // Summary:
 //
-// Queries the supported Alibaba Cloud regions.
+// Queries a list of supported Alibaba Cloud regions.
 //
 // @return ListRegionsResponse
 func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
@@ -16747,7 +16763,7 @@ func (client *Client) ListResourceServersForUser(request *ListResourceServersFor
 
 // Summary:
 //
-// 查询同步任务
+// Queries a list of synchronization jobs.
 //
 // @param request - ListSynchronizationJobsRequest
 //
@@ -16835,7 +16851,7 @@ func (client *Client) ListSynchronizationJobsWithOptions(request *ListSynchroniz
 
 // Summary:
 //
-// 查询同步任务
+// Queries a list of synchronization jobs.
 //
 // @param request - ListSynchronizationJobsRequest
 //
@@ -17324,6 +17340,10 @@ func (client *Client) ListUsersForResourceServerWithOptions(request *ListUsersFo
 
 	if !dara.IsNil(request.NextToken) {
 		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ResourceServerScopeId) {
+		query["ResourceServerScopeId"] = request.ResourceServerScopeId
 	}
 
 	req := &openapiutil.OpenApiRequest{

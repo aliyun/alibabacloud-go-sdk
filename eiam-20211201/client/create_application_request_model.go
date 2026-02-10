@@ -9,6 +9,8 @@ type iCreateApplicationRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetApplicationIdentityType(v string) *CreateApplicationRequest
+	GetApplicationIdentityType() *string
 	SetApplicationName(v string) *CreateApplicationRequest
 	GetApplicationName() *string
 	SetApplicationSourceType(v string) *CreateApplicationRequest
@@ -26,6 +28,10 @@ type iCreateApplicationRequest interface {
 }
 
 type CreateApplicationRequest struct {
+	// example:
+	//
+	// application
+	ApplicationIdentityType *string `json:"ApplicationIdentityType,omitempty" xml:"ApplicationIdentityType,omitempty"`
 	// The name of the application.
 	//
 	// This parameter is required.
@@ -94,6 +100,10 @@ func (s CreateApplicationRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateApplicationRequest) GetApplicationIdentityType() *string {
+	return s.ApplicationIdentityType
+}
+
 func (s *CreateApplicationRequest) GetApplicationName() *string {
 	return s.ApplicationName
 }
@@ -120,6 +130,11 @@ func (s *CreateApplicationRequest) GetLogoUrl() *string {
 
 func (s *CreateApplicationRequest) GetSsoType() *string {
 	return s.SsoType
+}
+
+func (s *CreateApplicationRequest) SetApplicationIdentityType(v string) *CreateApplicationRequest {
+	s.ApplicationIdentityType = &v
+	return s
 }
 
 func (s *CreateApplicationRequest) SetApplicationName(v string) *CreateApplicationRequest {

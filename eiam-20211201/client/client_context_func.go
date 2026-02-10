@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 在当前应用下给指定员工添加一个应用账号
+// 在当前应用下给指定员工添加一个应用账号。
 //
 // @param request - AddApplicationAccountToUserRequest
 //
@@ -983,7 +983,7 @@ func (client *Client) CheckApplicationProvisioningUserPrimaryOrganizationalUnitW
 
 // Summary:
 //
-// 实例删除检查
+// 实例删除检查。
 //
 // @param request - CheckInstanceForDeleteRequest
 //
@@ -1102,6 +1102,10 @@ func (client *Client) CreateApplicationWithContext(ctx context.Context, request 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationIdentityType) {
+		query["ApplicationIdentityType"] = request.ApplicationIdentityType
+	}
+
 	if !dara.IsNil(request.ApplicationName) {
 		query["ApplicationName"] = request.ApplicationName
 	}
@@ -3795,7 +3799,7 @@ func (client *Client) DeleteIdentityProviderWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Deletes an Enterprise Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS) that you do not need.
+// Deletes an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS) that you do not need.
 //
 // Description:
 //
@@ -3987,7 +3991,7 @@ func (client *Client) DeleteOrganizationalUnitWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Delete organizational unit information, forcibly deleting all accounts and sub-organizations beneath it
+// Deletes information about an organization and forcefully deletes all accounts and sub-organizations in the organization.
 //
 // @param request - DeleteOrganizationalUnitChildrenRequest
 //
@@ -4487,7 +4491,7 @@ func (client *Client) DisableApplicationM2MClientWithContext(ctx context.Context
 
 // Summary:
 //
-// Disables the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Disables the account synchronization feature for an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - DisableApplicationProvisioningRequest
 //
@@ -5573,7 +5577,7 @@ func (client *Client) EnableApplicationApiInvokeWithContext(ctx context.Context,
 
 // Summary:
 //
-// Enables the client key of an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Enables the client key of an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - EnableApplicationClientSecretRequest
 //
@@ -5725,7 +5729,7 @@ func (client *Client) EnableApplicationM2MClientWithContext(ctx context.Context,
 
 // Summary:
 //
-// Enables the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Enables the account synchronization feature for an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - EnableApplicationProvisioningRequest
 //
@@ -9127,7 +9131,7 @@ func (client *Client) GetResourceServerScopeWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the information about the root organizational unit in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Queries the information about the root organizational unit in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - GetRootOrganizationalUnitRequest
 //
@@ -9707,7 +9711,7 @@ func (client *Client) ListApplicationRolesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 应用支持账户同步类型列表
+// Queries the synchronization protocol types that are supported by an application.
 //
 // @param request - ListApplicationSupportedProvisionProtocolTypesRequest
 //
@@ -9824,6 +9828,10 @@ func (client *Client) ListApplicationsWithContext(ctx context.Context, request *
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationCreationType) {
 		query["ApplicationCreationType"] = request.ApplicationCreationType
+	}
+
+	if !dara.IsNil(request.ApplicationIdentityType) {
+		query["ApplicationIdentityType"] = request.ApplicationIdentityType
 	}
 
 	if !dara.IsNil(request.ApplicationIds) {
@@ -11419,7 +11427,7 @@ func (client *Client) ListGroupsWithContext(ctx context.Context, request *ListGr
 
 // Summary:
 //
-// Queries a list of account groups to which the permissions to access an application are granted. The returned results contain the group IDs. You can call the GetGroup operation to query the information about an account group based on the group ID.
+// Queries the account groups that are granted permissions to access an application and displays the results by page. The IDs of the account groups are returned. To query the detailed information about the account groups, call the GetGroup operation.
 //
 // @param request - ListGroupsForApplicationRequest
 //
@@ -11576,6 +11584,10 @@ func (client *Client) ListGroupsForResourceServerWithContext(ctx context.Context
 
 	if !dara.IsNil(request.NextToken) {
 		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ResourceServerScopeId) {
+		query["ResourceServerScopeId"] = request.ResourceServerScopeId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -11771,7 +11783,7 @@ func (client *Client) ListIdentityProvidersForNetworkAccessEndpointWithContext(c
 
 // Summary:
 //
-// Queries the information of one or more Enterprise Identity and Access Management (EIAM) instances of Identity as a Service (IDaaS).
+// Queries the information about one or more Enterprise Identity and Access Management (EIAM) instances of Identity as a Service (IDaaS).
 //
 // @param request - ListInstancesRequest
 //
@@ -11827,7 +11839,7 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 获取支持NAE的可用区列表
+// Queries the zones that support dedicated network endpoints in the specified region of Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - ListNetworkAccessEndpointAvailableZonesRequest
 //
@@ -11871,7 +11883,7 @@ func (client *Client) ListNetworkAccessEndpointAvailableZonesWithContext(ctx con
 
 // Summary:
 //
-// 列表查询专属网络端点。
+// # List query dedicated network endpoint
 //
 // @param request - ListNetworkAccessEndpointsRequest
 //
@@ -12262,6 +12274,10 @@ func (client *Client) ListOrganizationalUnitsForResourceServerWithContext(ctx co
 		query["NextToken"] = request.NextToken
 	}
 
+	if !dara.IsNil(request.ResourceServerScopeId) {
+		query["ResourceServerScopeId"] = request.ResourceServerScopeId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12347,7 +12363,7 @@ func (client *Client) ListResourceServersForUserWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询同步任务
+// Queries a list of synchronization jobs.
 //
 // @param request - ListSynchronizationJobsRequest
 //
@@ -12816,6 +12832,10 @@ func (client *Client) ListUsersForResourceServerWithContext(ctx context.Context,
 
 	if !dara.IsNil(request.NextToken) {
 		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ResourceServerScopeId) {
+		query["ResourceServerScopeId"] = request.ResourceServerScopeId
 	}
 
 	req := &openapiutil.OpenApiRequest{

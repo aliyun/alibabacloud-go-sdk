@@ -19,6 +19,8 @@ type iListGroupsForResourceServerRequest interface {
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListGroupsForResourceServerRequest
 	GetNextToken() *string
+	SetResourceServerScopeId(v string) *ListGroupsForResourceServerRequest
+	GetResourceServerScopeId() *string
 }
 
 type ListGroupsForResourceServerRequest struct {
@@ -47,6 +49,12 @@ type ListGroupsForResourceServerRequest struct {
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 权限唯一标识。
+	//
+	// example:
+	//
+	// ress_nbte4bb3qqqnaq73rlmkqixxxx
+	ResourceServerScopeId *string `json:"ResourceServerScopeId,omitempty" xml:"ResourceServerScopeId,omitempty"`
 }
 
 func (s ListGroupsForResourceServerRequest) String() string {
@@ -77,6 +85,10 @@ func (s *ListGroupsForResourceServerRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *ListGroupsForResourceServerRequest) GetResourceServerScopeId() *string {
+	return s.ResourceServerScopeId
+}
+
 func (s *ListGroupsForResourceServerRequest) SetApplicationId(v string) *ListGroupsForResourceServerRequest {
 	s.ApplicationId = &v
 	return s
@@ -99,6 +111,11 @@ func (s *ListGroupsForResourceServerRequest) SetMaxResults(v int32) *ListGroupsF
 
 func (s *ListGroupsForResourceServerRequest) SetNextToken(v string) *ListGroupsForResourceServerRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListGroupsForResourceServerRequest) SetResourceServerScopeId(v string) *ListGroupsForResourceServerRequest {
+	s.ResourceServerScopeId = &v
 	return s
 }
 

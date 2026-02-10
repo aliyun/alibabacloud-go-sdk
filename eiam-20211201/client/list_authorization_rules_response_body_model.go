@@ -136,6 +136,12 @@ type ListAuthorizationRulesResponseBodyAuthorizationRules struct {
 	//
 	// test-name
 	AuthorizationRuleName *string `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty"`
+	// 授权规则主体ID，主体类型对应的主体ID。
+	AuthorizationRuleSubjectId *string `json:"AuthorizationRuleSubjectId,omitempty" xml:"AuthorizationRuleSubjectId,omitempty"`
+	// 授权规则主体范围，枚举类型：shared（共享型，即支持所有主体，包括账户、应用），exclusive（专属类型）
+	AuthorizationRuleSubjectScope *string `json:"AuthorizationRuleSubjectScope,omitempty" xml:"AuthorizationRuleSubjectScope,omitempty"`
+	// 授权规则主体类型，枚举类型：application（应用)，user（账户)。
+	AuthorizationRuleSubjectType *string `json:"AuthorizationRuleSubjectType,omitempty" xml:"AuthorizationRuleSubjectType,omitempty"`
 	// 创建时间，Unix时间戳格式，单位为毫秒。
 	//
 	// example:
@@ -198,6 +204,18 @@ func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) GetAuthorizationR
 	return s.AuthorizationRuleName
 }
 
+func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) GetAuthorizationRuleSubjectId() *string {
+	return s.AuthorizationRuleSubjectId
+}
+
+func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) GetAuthorizationRuleSubjectScope() *string {
+	return s.AuthorizationRuleSubjectScope
+}
+
+func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) GetAuthorizationRuleSubjectType() *string {
+	return s.AuthorizationRuleSubjectType
+}
+
 func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) GetCreateTime() *int64 {
 	return s.CreateTime
 }
@@ -239,6 +257,21 @@ func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) SetAuthorizationR
 
 func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) SetAuthorizationRuleName(v string) *ListAuthorizationRulesResponseBodyAuthorizationRules {
 	s.AuthorizationRuleName = &v
+	return s
+}
+
+func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) SetAuthorizationRuleSubjectId(v string) *ListAuthorizationRulesResponseBodyAuthorizationRules {
+	s.AuthorizationRuleSubjectId = &v
+	return s
+}
+
+func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) SetAuthorizationRuleSubjectScope(v string) *ListAuthorizationRulesResponseBodyAuthorizationRules {
+	s.AuthorizationRuleSubjectScope = &v
+	return s
+}
+
+func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) SetAuthorizationRuleSubjectType(v string) *ListAuthorizationRulesResponseBodyAuthorizationRules {
+	s.AuthorizationRuleSubjectType = &v
 	return s
 }
 

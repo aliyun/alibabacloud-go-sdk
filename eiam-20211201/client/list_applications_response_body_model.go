@@ -92,7 +92,8 @@ type ListApplicationsResponseBodyApplications struct {
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
-	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	ApplicationId           *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	ApplicationIdentityType *string `json:"ApplicationIdentityType,omitempty" xml:"ApplicationIdentityType,omitempty"`
 	// The name of the application.
 	//
 	// example:
@@ -237,6 +238,10 @@ func (s *ListApplicationsResponseBodyApplications) GetApplicationId() *string {
 	return s.ApplicationId
 }
 
+func (s *ListApplicationsResponseBodyApplications) GetApplicationIdentityType() *string {
+	return s.ApplicationIdentityType
+}
+
 func (s *ListApplicationsResponseBodyApplications) GetApplicationName() *string {
 	return s.ApplicationName
 }
@@ -312,6 +317,11 @@ func (s *ListApplicationsResponseBodyApplications) SetApplicationCreationType(v 
 
 func (s *ListApplicationsResponseBodyApplications) SetApplicationId(v string) *ListApplicationsResponseBodyApplications {
 	s.ApplicationId = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyApplications) SetApplicationIdentityType(v string) *ListApplicationsResponseBodyApplications {
+	s.ApplicationIdentityType = &v
 	return s
 }
 

@@ -19,6 +19,8 @@ type iListUsersForResourceServerRequest interface {
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListUsersForResourceServerRequest
 	GetNextToken() *string
+	SetResourceServerScopeId(v string) *ListUsersForResourceServerRequest
+	GetResourceServerScopeId() *string
 }
 
 type ListUsersForResourceServerRequest struct {
@@ -49,6 +51,12 @@ type ListUsersForResourceServerRequest struct {
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 权限唯一标识。
+	//
+	// example:
+	//
+	// ress_nbte4bb3qqqnaq73rlmkqixxxx
+	ResourceServerScopeId *string `json:"ResourceServerScopeId,omitempty" xml:"ResourceServerScopeId,omitempty"`
 }
 
 func (s ListUsersForResourceServerRequest) String() string {
@@ -79,6 +87,10 @@ func (s *ListUsersForResourceServerRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *ListUsersForResourceServerRequest) GetResourceServerScopeId() *string {
+	return s.ResourceServerScopeId
+}
+
 func (s *ListUsersForResourceServerRequest) SetApplicationId(v string) *ListUsersForResourceServerRequest {
 	s.ApplicationId = &v
 	return s
@@ -101,6 +113,11 @@ func (s *ListUsersForResourceServerRequest) SetMaxResults(v int32) *ListUsersFor
 
 func (s *ListUsersForResourceServerRequest) SetNextToken(v string) *ListUsersForResourceServerRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListUsersForResourceServerRequest) SetResourceServerScopeId(v string) *ListUsersForResourceServerRequest {
+	s.ResourceServerScopeId = &v
 	return s
 }
 

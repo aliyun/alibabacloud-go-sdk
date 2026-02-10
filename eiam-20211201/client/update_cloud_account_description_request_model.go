@@ -34,8 +34,6 @@ type UpdateCloudAccountDescriptionRequest struct {
 	//
 	// ca_01kmegjc11qa1txxxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// cloud_account_description

@@ -11,6 +11,8 @@ type iListApplicationsRequest interface {
 	GoString() string
 	SetApplicationCreationType(v string) *ListApplicationsRequest
 	GetApplicationCreationType() *string
+	SetApplicationIdentityType(v string) *ListApplicationsRequest
+	GetApplicationIdentityType() *string
 	SetApplicationIds(v []*string) *ListApplicationsRequest
 	GetApplicationIds() []*string
 	SetApplicationName(v string) *ListApplicationsRequest
@@ -38,6 +40,10 @@ type ListApplicationsRequest struct {
 	//
 	// system_init
 	ApplicationCreationType *string `json:"ApplicationCreationType,omitempty" xml:"ApplicationCreationType,omitempty"`
+	// example:
+	//
+	// application
+	ApplicationIdentityType *string `json:"ApplicationIdentityType,omitempty" xml:"ApplicationIdentityType,omitempty"`
 	// The IDs of the applications.
 	//
 	// example:
@@ -136,6 +142,10 @@ func (s *ListApplicationsRequest) GetApplicationCreationType() *string {
 	return s.ApplicationCreationType
 }
 
+func (s *ListApplicationsRequest) GetApplicationIdentityType() *string {
+	return s.ApplicationIdentityType
+}
+
 func (s *ListApplicationsRequest) GetApplicationIds() []*string {
 	return s.ApplicationIds
 }
@@ -178,6 +188,11 @@ func (s *ListApplicationsRequest) GetStatus() *string {
 
 func (s *ListApplicationsRequest) SetApplicationCreationType(v string) *ListApplicationsRequest {
 	s.ApplicationCreationType = &v
+	return s
+}
+
+func (s *ListApplicationsRequest) SetApplicationIdentityType(v string) *ListApplicationsRequest {
+	s.ApplicationIdentityType = &v
 	return s
 }
 

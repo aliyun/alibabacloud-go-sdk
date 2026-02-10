@@ -44,8 +44,6 @@ type UpdateCloudAccountRoleDescriptionRequest struct {
 	CloudAccountRoleId *string `json:"CloudAccountRoleId,omitempty" xml:"CloudAccountRoleId,omitempty"`
 	// 描述
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// cloud_account_role_description
