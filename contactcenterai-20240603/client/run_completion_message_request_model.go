@@ -78,7 +78,16 @@ func (s *RunCompletionMessageRequest) SetResponseFormatType(v string) *RunComple
 }
 
 func (s *RunCompletionMessageRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		for _, item := range s.Messages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunCompletionMessageRequestMessages struct {

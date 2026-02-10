@@ -65,12 +65,20 @@ func (s *GetTaskResultResponseBody) SetSuccess(v string) *GetTaskResultResponseB
 }
 
 func (s *GetTaskResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTaskResultResponseBodyData struct {
 	AsrResult        []*GetTaskResultResponseBodyDataAsrResult `json:"asrResult,omitempty" xml:"asrResult,omitempty" type:"Repeated"`
 	Extra            *string                                   `json:"extra,omitempty" xml:"extra,omitempty"`
+	RagErrorMessage  *string                                   `json:"ragErrorMessage,omitempty" xml:"ragErrorMessage,omitempty"`
+	RagResult        *string                                   `json:"ragResult,omitempty" xml:"ragResult,omitempty"`
+	RagStatus        *string                                   `json:"ragStatus,omitempty" xml:"ragStatus,omitempty"`
 	TaskErrorMessage *string                                   `json:"taskErrorMessage,omitempty" xml:"taskErrorMessage,omitempty"`
 	// example:
 	//
@@ -79,8 +87,9 @@ type GetTaskResultResponseBodyData struct {
 	// example:
 	//
 	// FINISH
-	TaskStatus *string `json:"taskStatus,omitempty" xml:"taskStatus,omitempty"`
-	Text       *string `json:"text,omitempty" xml:"text,omitempty"`
+	TaskStatus *string                             `json:"taskStatus,omitempty" xml:"taskStatus,omitempty"`
+	Text       *string                             `json:"text,omitempty" xml:"text,omitempty"`
+	Usage      *GetTaskResultResponseBodyDataUsage `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
 }
 
 func (s GetTaskResultResponseBodyData) String() string {
@@ -99,6 +108,18 @@ func (s *GetTaskResultResponseBodyData) GetExtra() *string {
 	return s.Extra
 }
 
+func (s *GetTaskResultResponseBodyData) GetRagErrorMessage() *string {
+	return s.RagErrorMessage
+}
+
+func (s *GetTaskResultResponseBodyData) GetRagResult() *string {
+	return s.RagResult
+}
+
+func (s *GetTaskResultResponseBodyData) GetRagStatus() *string {
+	return s.RagStatus
+}
+
 func (s *GetTaskResultResponseBodyData) GetTaskErrorMessage() *string {
 	return s.TaskErrorMessage
 }
@@ -115,6 +136,10 @@ func (s *GetTaskResultResponseBodyData) GetText() *string {
 	return s.Text
 }
 
+func (s *GetTaskResultResponseBodyData) GetUsage() *GetTaskResultResponseBodyDataUsage {
+	return s.Usage
+}
+
 func (s *GetTaskResultResponseBodyData) SetAsrResult(v []*GetTaskResultResponseBodyDataAsrResult) *GetTaskResultResponseBodyData {
 	s.AsrResult = v
 	return s
@@ -122,6 +147,21 @@ func (s *GetTaskResultResponseBodyData) SetAsrResult(v []*GetTaskResultResponseB
 
 func (s *GetTaskResultResponseBodyData) SetExtra(v string) *GetTaskResultResponseBodyData {
 	s.Extra = &v
+	return s
+}
+
+func (s *GetTaskResultResponseBodyData) SetRagErrorMessage(v string) *GetTaskResultResponseBodyData {
+	s.RagErrorMessage = &v
+	return s
+}
+
+func (s *GetTaskResultResponseBodyData) SetRagResult(v string) *GetTaskResultResponseBodyData {
+	s.RagResult = &v
+	return s
+}
+
+func (s *GetTaskResultResponseBodyData) SetRagStatus(v string) *GetTaskResultResponseBodyData {
+	s.RagStatus = &v
 	return s
 }
 
@@ -145,8 +185,27 @@ func (s *GetTaskResultResponseBodyData) SetText(v string) *GetTaskResultResponse
 	return s
 }
 
+func (s *GetTaskResultResponseBodyData) SetUsage(v *GetTaskResultResponseBodyDataUsage) *GetTaskResultResponseBodyData {
+	s.Usage = v
+	return s
+}
+
 func (s *GetTaskResultResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AsrResult != nil {
+		for _, item := range s.AsrResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTaskResultResponseBodyDataAsrResult struct {
@@ -231,5 +290,170 @@ func (s *GetTaskResultResponseBodyDataAsrResult) SetWords(v string) *GetTaskResu
 }
 
 func (s *GetTaskResultResponseBodyDataAsrResult) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetTaskResultResponseBodyDataUsage struct {
+	Rag *GetTaskResultResponseBodyDataUsageRag `json:"rag,omitempty" xml:"rag,omitempty" type:"Struct"`
+}
+
+func (s GetTaskResultResponseBodyDataUsage) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetTaskResultResponseBodyDataUsage) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResultResponseBodyDataUsage) GetRag() *GetTaskResultResponseBodyDataUsageRag {
+	return s.Rag
+}
+
+func (s *GetTaskResultResponseBodyDataUsage) SetRag(v *GetTaskResultResponseBodyDataUsageRag) *GetTaskResultResponseBodyDataUsage {
+	s.Rag = v
+	return s
+}
+
+func (s *GetTaskResultResponseBodyDataUsage) Validate() error {
+	if s.Rag != nil {
+		if err := s.Rag.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetTaskResultResponseBodyDataUsageRag struct {
+	Adaptive      *GetTaskResultResponseBodyDataUsageRagAdaptive      `json:"adaptive,omitempty" xml:"adaptive,omitempty" type:"Struct"`
+	DialogSummary *GetTaskResultResponseBodyDataUsageRagDialogSummary `json:"dialogSummary,omitempty" xml:"dialogSummary,omitempty" type:"Struct"`
+}
+
+func (s GetTaskResultResponseBodyDataUsageRag) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetTaskResultResponseBodyDataUsageRag) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResultResponseBodyDataUsageRag) GetAdaptive() *GetTaskResultResponseBodyDataUsageRagAdaptive {
+	return s.Adaptive
+}
+
+func (s *GetTaskResultResponseBodyDataUsageRag) GetDialogSummary() *GetTaskResultResponseBodyDataUsageRagDialogSummary {
+	return s.DialogSummary
+}
+
+func (s *GetTaskResultResponseBodyDataUsageRag) SetAdaptive(v *GetTaskResultResponseBodyDataUsageRagAdaptive) *GetTaskResultResponseBodyDataUsageRag {
+	s.Adaptive = v
+	return s
+}
+
+func (s *GetTaskResultResponseBodyDataUsageRag) SetDialogSummary(v *GetTaskResultResponseBodyDataUsageRagDialogSummary) *GetTaskResultResponseBodyDataUsageRag {
+	s.DialogSummary = v
+	return s
+}
+
+func (s *GetTaskResultResponseBodyDataUsageRag) Validate() error {
+	if s.Adaptive != nil {
+		if err := s.Adaptive.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DialogSummary != nil {
+		if err := s.DialogSummary.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetTaskResultResponseBodyDataUsageRagAdaptive struct {
+	InputTokens  *int32 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	InvokeCount  *int32 `json:"invokeCount,omitempty" xml:"invokeCount,omitempty"`
+	OutputTokens *int32 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+}
+
+func (s GetTaskResultResponseBodyDataUsageRagAdaptive) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetTaskResultResponseBodyDataUsageRagAdaptive) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResultResponseBodyDataUsageRagAdaptive) GetInputTokens() *int32 {
+	return s.InputTokens
+}
+
+func (s *GetTaskResultResponseBodyDataUsageRagAdaptive) GetInvokeCount() *int32 {
+	return s.InvokeCount
+}
+
+func (s *GetTaskResultResponseBodyDataUsageRagAdaptive) GetOutputTokens() *int32 {
+	return s.OutputTokens
+}
+
+func (s *GetTaskResultResponseBodyDataUsageRagAdaptive) SetInputTokens(v int32) *GetTaskResultResponseBodyDataUsageRagAdaptive {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *GetTaskResultResponseBodyDataUsageRagAdaptive) SetInvokeCount(v int32) *GetTaskResultResponseBodyDataUsageRagAdaptive {
+	s.InvokeCount = &v
+	return s
+}
+
+func (s *GetTaskResultResponseBodyDataUsageRagAdaptive) SetOutputTokens(v int32) *GetTaskResultResponseBodyDataUsageRagAdaptive {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *GetTaskResultResponseBodyDataUsageRagAdaptive) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetTaskResultResponseBodyDataUsageRagDialogSummary struct {
+	InputTokens  *int32 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	InvokeCount  *int32 `json:"invokeCount,omitempty" xml:"invokeCount,omitempty"`
+	OutputTokens *int32 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+}
+
+func (s GetTaskResultResponseBodyDataUsageRagDialogSummary) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetTaskResultResponseBodyDataUsageRagDialogSummary) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResultResponseBodyDataUsageRagDialogSummary) GetInputTokens() *int32 {
+	return s.InputTokens
+}
+
+func (s *GetTaskResultResponseBodyDataUsageRagDialogSummary) GetInvokeCount() *int32 {
+	return s.InvokeCount
+}
+
+func (s *GetTaskResultResponseBodyDataUsageRagDialogSummary) GetOutputTokens() *int32 {
+	return s.OutputTokens
+}
+
+func (s *GetTaskResultResponseBodyDataUsageRagDialogSummary) SetInputTokens(v int32) *GetTaskResultResponseBodyDataUsageRagDialogSummary {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *GetTaskResultResponseBodyDataUsageRagDialogSummary) SetInvokeCount(v int32) *GetTaskResultResponseBodyDataUsageRagDialogSummary {
+	s.InvokeCount = &v
+	return s
+}
+
+func (s *GetTaskResultResponseBodyDataUsageRagDialogSummary) SetOutputTokens(v int32) *GetTaskResultResponseBodyDataUsageRagDialogSummary {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *GetTaskResultResponseBodyDataUsageRagDialogSummary) Validate() error {
 	return dara.Validate(s)
 }

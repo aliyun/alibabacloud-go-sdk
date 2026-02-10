@@ -3,6 +3,7 @@ package client
 
 import (
 	"context"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
@@ -18,10 +19,29 @@ import (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AnalyzeAudioSyncResponse
+func (client *Client) AnalyzeAudioSyncWithSSECtx(ctx context.Context, workspaceId *string, appId *string, request *AnalyzeAudioSyncRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *AnalyzeAudioSyncResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.analyzeAudioSyncWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, workspaceId, appId, request, headers, runtime)
+	return
+}
+
+// Summary:
+//
+// 语音文件分析任务极速版
+//
+// @param request - AnalyzeAudioSyncRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AnalyzeAudioSyncResponse
 func (client *Client) AnalyzeAudioSyncWithContext(ctx context.Context, workspaceId *string, appId *string, request *AnalyzeAudioSyncRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AnalyzeAudioSyncResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryTags) {
@@ -103,10 +123,29 @@ func (client *Client) AnalyzeAudioSyncWithContext(ctx context.Context, workspace
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AnalyzeConversationResponse
+func (client *Client) AnalyzeConversationWithSSECtx(ctx context.Context, workspaceId *string, appId *string, request *AnalyzeConversationRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *AnalyzeConversationResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.analyzeConversationWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, workspaceId, appId, request, headers, runtime)
+	return
+}
+
+// Summary:
+//
+// 根据类型调用大模型
+//
+// @param request - AnalyzeConversationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AnalyzeConversationResponse
 func (client *Client) AnalyzeConversationWithContext(ctx context.Context, workspaceId *string, appId *string, request *AnalyzeConversationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AnalyzeConversationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryTags) {
@@ -200,10 +239,29 @@ func (client *Client) AnalyzeConversationWithContext(ctx context.Context, worksp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AnalyzeImageResponse
+func (client *Client) AnalyzeImageWithSSECtx(ctx context.Context, workspaceId *string, appId *string, request *AnalyzeImageRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *AnalyzeImageResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.analyzeImageWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, workspaceId, appId, request, headers, runtime)
+	return
+}
+
+// Summary:
+//
+// 图片分析
+//
+// @param request - AnalyzeImageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AnalyzeImageResponse
 func (client *Client) AnalyzeImageWithContext(ctx context.Context, workspaceId *string, appId *string, request *AnalyzeImageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AnalyzeImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageUrls) {
@@ -258,9 +316,11 @@ func (client *Client) AnalyzeImageWithContext(ctx context.Context, workspaceId *
 //
 // @return CreateTaskResponse
 func (client *Client) CreateTaskWithContext(ctx context.Context, workspaceId *string, appId *string, request *CreateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CallBackUrl) {
@@ -355,9 +415,11 @@ func (client *Client) CreateTaskWithContext(ctx context.Context, workspaceId *st
 //
 // @return CreateVocabResponse
 func (client *Client) CreateVocabWithContext(ctx context.Context, request *CreateVocabRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateVocabResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AudioModelCode) {
@@ -416,9 +478,11 @@ func (client *Client) CreateVocabWithContext(ctx context.Context, request *Creat
 //
 // @return DeleteVocabResponse
 func (client *Client) DeleteVocabWithContext(ctx context.Context, request *DeleteVocabRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteVocabResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.VocabularyId) {
@@ -464,10 +528,29 @@ func (client *Client) DeleteVocabWithContext(ctx context.Context, request *Delet
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GeneralAnalyzeImageResponse
+func (client *Client) GeneralAnalyzeImageWithSSECtx(ctx context.Context, workspaceId *string, appId *string, request *GeneralAnalyzeImageRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *GeneralAnalyzeImageResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.generalAnalyzeImageWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, workspaceId, appId, request, headers, runtime)
+	return
+}
+
+// Summary:
+//
+// 通用图片分析
+//
+// @param request - GeneralAnalyzeImageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GeneralAnalyzeImageResponse
 func (client *Client) GeneralAnalyzeImageWithContext(ctx context.Context, workspaceId *string, appId *string, request *GeneralAnalyzeImageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GeneralAnalyzeImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CustomPrompt) {
@@ -522,9 +605,11 @@ func (client *Client) GeneralAnalyzeImageWithContext(ctx context.Context, worksp
 //
 // @return GetTaskResultResponse
 func (client *Client) GetTaskResultWithContext(ctx context.Context, tmpReq *GetTaskResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskResultResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetTaskResultShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -577,9 +662,11 @@ func (client *Client) GetTaskResultWithContext(ctx context.Context, tmpReq *GetT
 //
 // @return GetVocabResponse
 func (client *Client) GetVocabWithContext(ctx context.Context, request *GetVocabRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetVocabResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.VocabularyId) {
@@ -626,9 +713,11 @@ func (client *Client) GetVocabWithContext(ctx context.Context, request *GetVocab
 //
 // @return ListVocabResponse
 func (client *Client) ListVocabWithContext(ctx context.Context, request *ListVocabRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListVocabResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.WorkspaceId) {
@@ -670,10 +759,29 @@ func (client *Client) ListVocabWithContext(ctx context.Context, request *ListVoc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunCompletionResponse
+func (client *Client) RunCompletionWithSSECtx(ctx context.Context, workspaceId *string, appId *string, request *RunCompletionRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *RunCompletionResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runCompletionWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, workspaceId, appId, request, headers, runtime)
+	return
+}
+
+// Summary:
+//
+// # CCAI服务面API
+//
+// @param request - RunCompletionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunCompletionResponse
 func (client *Client) RunCompletionWithContext(ctx context.Context, workspaceId *string, appId *string, request *RunCompletionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunCompletionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Dialogue) {
@@ -743,10 +851,29 @@ func (client *Client) RunCompletionWithContext(ctx context.Context, workspaceId 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunCompletionMessageResponse
+func (client *Client) RunCompletionMessageWithSSECtx(ctx context.Context, workspaceId *string, appId *string, request *RunCompletionMessageRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *RunCompletionMessageResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runCompletionMessageWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, workspaceId, appId, request, headers, runtime)
+	return
+}
+
+// Summary:
+//
+// # CCAI服务面API
+//
+// @param request - RunCompletionMessageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunCompletionMessageResponse
 func (client *Client) RunCompletionMessageWithContext(ctx context.Context, workspaceId *string, appId *string, request *RunCompletionMessageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunCompletionMessageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Messages) {
@@ -801,9 +928,11 @@ func (client *Client) RunCompletionMessageWithContext(ctx context.Context, works
 //
 // @return UpdateVocabResponse
 func (client *Client) UpdateVocabWithContext(ctx context.Context, request *UpdateVocabRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateVocabResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -848,4 +977,454 @@ func (client *Client) UpdateVocabWithContext(ctx context.Context, request *Updat
 	}
 	_err = dara.Convert(_body, &_result)
 	return _result, _err
+}
+
+func (client *Client) analyzeAudioSyncWithSSECtx_opYieldFunc(_yield chan *AnalyzeAudioSyncResponse, _yieldErr chan error, ctx context.Context, workspaceId *string, appId *string, request *AnalyzeAudioSyncRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CategoryTags) {
+		body["categoryTags"] = request.CategoryTags
+	}
+
+	if !dara.IsNil(request.CustomPrompt) {
+		body["customPrompt"] = request.CustomPrompt
+	}
+
+	if !dara.IsNil(request.Fields) {
+		body["fields"] = request.Fields
+	}
+
+	if !dara.IsNil(request.ModelCode) {
+		body["modelCode"] = request.ModelCode
+	}
+
+	if !dara.IsNil(request.ResponseFormatType) {
+		body["responseFormatType"] = request.ResponseFormatType
+	}
+
+	if !dara.IsNil(request.ResultTypes) {
+		body["resultTypes"] = request.ResultTypes
+	}
+
+	if !dara.IsNil(request.ServiceInspection) {
+		body["serviceInspection"] = request.ServiceInspection
+	}
+
+	if !dara.IsNil(request.Stream) {
+		body["stream"] = request.Stream
+	}
+
+	if !dara.IsNil(request.TemplateIds) {
+		body["templateIds"] = request.TemplateIds
+	}
+
+	if !dara.IsNil(request.Transcription) {
+		body["transcription"] = request.Transcription
+	}
+
+	if !dara.IsNil(request.Variables) {
+		body["variables"] = request.Variables
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AnalyzeAudioSync"),
+		Version:     dara.String("2024-06-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/ccai/app/" + dara.PercentEncode(dara.StringValue(appId)) + "/analyzeAudioSync"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
+}
+
+func (client *Client) analyzeConversationWithSSECtx_opYieldFunc(_yield chan *AnalyzeConversationResponse, _yieldErr chan error, ctx context.Context, workspaceId *string, appId *string, request *AnalyzeConversationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CategoryTags) {
+		body["categoryTags"] = request.CategoryTags
+	}
+
+	if !dara.IsNil(request.CustomPrompt) {
+		body["customPrompt"] = request.CustomPrompt
+	}
+
+	if !dara.IsNil(request.Dialogue) {
+		body["dialogue"] = request.Dialogue
+	}
+
+	if !dara.IsNil(request.Examples) {
+		body["examples"] = request.Examples
+	}
+
+	if !dara.IsNil(request.Fields) {
+		body["fields"] = request.Fields
+	}
+
+	if !dara.IsNil(request.ModelCode) {
+		body["modelCode"] = request.ModelCode
+	}
+
+	if !dara.IsNil(request.ResponseFormatType) {
+		body["responseFormatType"] = request.ResponseFormatType
+	}
+
+	if !dara.IsNil(request.ResultTypes) {
+		body["resultTypes"] = request.ResultTypes
+	}
+
+	if !dara.IsNil(request.SceneName) {
+		body["sceneName"] = request.SceneName
+	}
+
+	if !dara.IsNil(request.ServiceInspection) {
+		body["serviceInspection"] = request.ServiceInspection
+	}
+
+	if !dara.IsNil(request.SourceCallerUid) {
+		body["sourceCallerUid"] = request.SourceCallerUid
+	}
+
+	if !dara.IsNil(request.Stream) {
+		body["stream"] = request.Stream
+	}
+
+	if !dara.IsNil(request.TimeConstraintList) {
+		body["timeConstraintList"] = request.TimeConstraintList
+	}
+
+	if !dara.IsNil(request.UserProfiles) {
+		body["userProfiles"] = request.UserProfiles
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AnalyzeConversation"),
+		Version:     dara.String("2024-06-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/ccai/app/" + dara.PercentEncode(dara.StringValue(appId)) + "/analyze_conversation"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
+}
+
+func (client *Client) analyzeImageWithSSECtx_opYieldFunc(_yield chan *AnalyzeImageResponse, _yieldErr chan error, ctx context.Context, workspaceId *string, appId *string, request *AnalyzeImageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ImageUrls) {
+		body["imageUrls"] = request.ImageUrls
+	}
+
+	if !dara.IsNil(request.ResponseFormatType) {
+		body["responseFormatType"] = request.ResponseFormatType
+	}
+
+	if !dara.IsNil(request.ResultTypes) {
+		body["resultTypes"] = request.ResultTypes
+	}
+
+	if !dara.IsNil(request.Stream) {
+		body["stream"] = request.Stream
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AnalyzeImage"),
+		Version:     dara.String("2024-06-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/ccai/app/" + dara.PercentEncode(dara.StringValue(appId)) + "/analyzeImage"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
+}
+
+func (client *Client) generalAnalyzeImageWithSSECtx_opYieldFunc(_yield chan *GeneralAnalyzeImageResponse, _yieldErr chan error, ctx context.Context, workspaceId *string, appId *string, request *GeneralAnalyzeImageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CustomPrompt) {
+		body["customPrompt"] = request.CustomPrompt
+	}
+
+	if !dara.IsNil(request.ImageUrls) {
+		body["imageUrls"] = request.ImageUrls
+	}
+
+	if !dara.IsNil(request.Stream) {
+		body["stream"] = request.Stream
+	}
+
+	if !dara.IsNil(request.TemplateIds) {
+		body["templateIds"] = request.TemplateIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GeneralAnalyzeImage"),
+		Version:     dara.String("2024-06-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/ccai/app/" + dara.PercentEncode(dara.StringValue(appId)) + "/generalanalyzeImage"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
+}
+
+func (client *Client) runCompletionWithSSECtx_opYieldFunc(_yield chan *RunCompletionResponse, _yieldErr chan error, ctx context.Context, workspaceId *string, appId *string, request *RunCompletionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Dialogue) {
+		body["Dialogue"] = request.Dialogue
+	}
+
+	if !dara.IsNil(request.Fields) {
+		body["Fields"] = request.Fields
+	}
+
+	if !dara.IsNil(request.ModelCode) {
+		body["ModelCode"] = request.ModelCode
+	}
+
+	if !dara.IsNil(request.ServiceInspection) {
+		body["ServiceInspection"] = request.ServiceInspection
+	}
+
+	if !dara.IsNil(request.Stream) {
+		body["Stream"] = request.Stream
+	}
+
+	if !dara.IsNil(request.TemplateIds) {
+		body["TemplateIds"] = request.TemplateIds
+	}
+
+	if !dara.IsNil(request.ResponseFormatType) {
+		body["responseFormatType"] = request.ResponseFormatType
+	}
+
+	if !dara.IsNil(request.Variables) {
+		body["variables"] = request.Variables
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunCompletion"),
+		Version:     dara.String("2024-06-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/ccai/app/" + dara.PercentEncode(dara.StringValue(appId)) + "/completion"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
+}
+
+func (client *Client) runCompletionMessageWithSSECtx_opYieldFunc(_yield chan *RunCompletionMessageResponse, _yieldErr chan error, ctx context.Context, workspaceId *string, appId *string, request *RunCompletionMessageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Messages) {
+		body["Messages"] = request.Messages
+	}
+
+	if !dara.IsNil(request.ModelCode) {
+		body["ModelCode"] = request.ModelCode
+	}
+
+	if !dara.IsNil(request.Stream) {
+		body["Stream"] = request.Stream
+	}
+
+	if !dara.IsNil(request.ResponseFormatType) {
+		body["responseFormatType"] = request.ResponseFormatType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunCompletionMessage"),
+		Version:     dara.String("2024-06-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/ccai/app/" + dara.PercentEncode(dara.StringValue(appId)) + "/completion_message"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
 }

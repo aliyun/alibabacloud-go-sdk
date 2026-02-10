@@ -201,7 +201,54 @@ func (s *CreateTaskRequest) SetVariables(v []*CreateTaskRequestVariables) *Creat
 }
 
 func (s *CreateTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CategoryTags != nil {
+		for _, item := range s.CategoryTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Dialogue != nil {
+		if err := s.Dialogue.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Examples != nil {
+		if err := s.Examples.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Fields != nil {
+		for _, item := range s.Fields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ServiceInspection != nil {
+		if err := s.ServiceInspection.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Transcription != nil {
+		if err := s.Transcription.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Variables != nil {
+		for _, item := range s.Variables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateTaskRequestCategoryTags struct {
@@ -275,7 +322,16 @@ func (s *CreateTaskRequestDialogue) SetSessionId(v string) *CreateTaskRequestDia
 }
 
 func (s *CreateTaskRequestDialogue) Validate() error {
-	return dara.Validate(s)
+	if s.Sentences != nil {
+		for _, item := range s.Sentences {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateTaskRequestDialogueSentences struct {
@@ -352,7 +408,16 @@ func (s *CreateTaskRequestExamples) SetSentences(v []*CreateTaskRequestExamplesS
 }
 
 func (s *CreateTaskRequestExamples) Validate() error {
-	return dara.Validate(s)
+	if s.Sentences != nil {
+		for _, item := range s.Sentences {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateTaskRequestExamplesSentences struct {
@@ -453,7 +518,16 @@ func (s *CreateTaskRequestFields) SetName(v string) *CreateTaskRequestFields {
 }
 
 func (s *CreateTaskRequestFields) Validate() error {
-	return dara.Validate(s)
+	if s.EnumValues != nil {
+		for _, item := range s.EnumValues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateTaskRequestFieldsEnumValues struct {
@@ -538,7 +612,16 @@ func (s *CreateTaskRequestServiceInspection) SetSceneIntroduction(v string) *Cre
 }
 
 func (s *CreateTaskRequestServiceInspection) Validate() error {
-	return dara.Validate(s)
+	if s.InspectionContents != nil {
+		for _, item := range s.InspectionContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateTaskRequestServiceInspectionInspectionContents struct {

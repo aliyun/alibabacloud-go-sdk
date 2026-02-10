@@ -13,6 +13,10 @@ type iRunCompletionMessageResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunCompletionMessageResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunCompletionMessageResponse
+	GetId() *string
+	SetEvent(v string) *RunCompletionMessageResponse
+	GetEvent() *string
 	SetBody(v *RunCompletionMessageResponseBody) *RunCompletionMessageResponse
 	GetBody() *RunCompletionMessageResponseBody
 }
@@ -20,6 +24,8 @@ type iRunCompletionMessageResponse interface {
 type RunCompletionMessageResponse struct {
 	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                           `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                           `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunCompletionMessageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunCompletionMessageResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunCompletionMessageResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunCompletionMessageResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunCompletionMessageResponse) GetBody() *RunCompletionMessageResponseBody {
 	return s.Body
 }
@@ -53,11 +67,26 @@ func (s *RunCompletionMessageResponse) SetStatusCode(v int32) *RunCompletionMess
 	return s
 }
 
+func (s *RunCompletionMessageResponse) SetId(v string) *RunCompletionMessageResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunCompletionMessageResponse) SetEvent(v string) *RunCompletionMessageResponse {
+	s.Event = &v
+	return s
+}
+
 func (s *RunCompletionMessageResponse) SetBody(v *RunCompletionMessageResponseBody) *RunCompletionMessageResponse {
 	s.Body = v
 	return s
 }
 
 func (s *RunCompletionMessageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

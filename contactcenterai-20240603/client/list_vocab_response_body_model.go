@@ -65,7 +65,16 @@ func (s *ListVocabResponseBody) SetSuccess(v string) *ListVocabResponseBody {
 }
 
 func (s *ListVocabResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListVocabResponseBodyData struct {
@@ -136,7 +145,16 @@ func (s *ListVocabResponseBodyData) SetWordWeightList(v []*ListVocabResponseBody
 }
 
 func (s *ListVocabResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.WordWeightList != nil {
+		for _, item := range s.WordWeightList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListVocabResponseBodyDataWordWeightList struct {

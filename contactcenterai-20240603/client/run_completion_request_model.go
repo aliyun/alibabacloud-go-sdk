@@ -127,7 +127,35 @@ func (s *RunCompletionRequest) SetVariables(v []*RunCompletionRequestVariables) 
 }
 
 func (s *RunCompletionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Dialogue != nil {
+		if err := s.Dialogue.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Fields != nil {
+		for _, item := range s.Fields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ServiceInspection != nil {
+		if err := s.ServiceInspection.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Variables != nil {
+		for _, item := range s.Variables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunCompletionRequestDialogue struct {
@@ -165,7 +193,16 @@ func (s *RunCompletionRequestDialogue) SetSessionId(v string) *RunCompletionRequ
 }
 
 func (s *RunCompletionRequestDialogue) Validate() error {
-	return dara.Validate(s)
+	if s.Sentences != nil {
+		for _, item := range s.Sentences {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunCompletionRequestDialogueSentences struct {
@@ -275,7 +312,16 @@ func (s *RunCompletionRequestFields) SetName(v string) *RunCompletionRequestFiel
 }
 
 func (s *RunCompletionRequestFields) Validate() error {
-	return dara.Validate(s)
+	if s.EnumValues != nil {
+		for _, item := range s.EnumValues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunCompletionRequestFieldsEnumValues struct {
@@ -356,7 +402,16 @@ func (s *RunCompletionRequestServiceInspection) SetSceneIntroduction(v string) *
 }
 
 func (s *RunCompletionRequestServiceInspection) Validate() error {
-	return dara.Validate(s)
+	if s.InspectionContents != nil {
+		for _, item := range s.InspectionContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunCompletionRequestServiceInspectionInspectionContents struct {

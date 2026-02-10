@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -84,9 +85,11 @@ func (client *Client) AnalyzeAudioSyncWithSSE(workspaceId *string, appId *string
 //
 // @return AnalyzeAudioSyncResponse
 func (client *Client) AnalyzeAudioSyncWithOptions(workspaceId *string, appId *string, request *AnalyzeAudioSyncRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AnalyzeAudioSyncResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryTags) {
@@ -205,9 +208,11 @@ func (client *Client) AnalyzeConversationWithSSE(workspaceId *string, appId *str
 //
 // @return AnalyzeConversationResponse
 func (client *Client) AnalyzeConversationWithOptions(workspaceId *string, appId *string, request *AnalyzeConversationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AnalyzeConversationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryTags) {
@@ -338,9 +343,11 @@ func (client *Client) AnalyzeImageWithSSE(workspaceId *string, appId *string, re
 //
 // @return AnalyzeImageResponse
 func (client *Client) AnalyzeImageWithOptions(workspaceId *string, appId *string, request *AnalyzeImageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AnalyzeImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageUrls) {
@@ -414,9 +421,11 @@ func (client *Client) AnalyzeImage(workspaceId *string, appId *string, request *
 //
 // @return CreateTaskResponse
 func (client *Client) CreateTaskWithOptions(workspaceId *string, appId *string, request *CreateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CallBackUrl) {
@@ -530,9 +539,11 @@ func (client *Client) CreateTask(workspaceId *string, appId *string, request *Cr
 //
 // @return CreateVocabResponse
 func (client *Client) CreateVocabWithOptions(request *CreateVocabRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateVocabResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AudioModelCode) {
@@ -610,9 +621,11 @@ func (client *Client) CreateVocab(request *CreateVocabRequest) (_result *CreateV
 //
 // @return DeleteVocabResponse
 func (client *Client) DeleteVocabWithOptions(request *DeleteVocabRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteVocabResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.VocabularyId) {
@@ -695,9 +708,11 @@ func (client *Client) GeneralAnalyzeImageWithSSE(workspaceId *string, appId *str
 //
 // @return GeneralAnalyzeImageResponse
 func (client *Client) GeneralAnalyzeImageWithOptions(workspaceId *string, appId *string, request *GeneralAnalyzeImageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GeneralAnalyzeImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CustomPrompt) {
@@ -771,9 +786,11 @@ func (client *Client) GeneralAnalyzeImage(workspaceId *string, appId *string, re
 //
 // @return GetTaskResultResponse
 func (client *Client) GetTaskResultWithOptions(tmpReq *GetTaskResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskResultResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetTaskResultShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -845,9 +862,11 @@ func (client *Client) GetTaskResult(request *GetTaskResultRequest) (_result *Get
 //
 // @return GetVocabResponse
 func (client *Client) GetVocabWithOptions(request *GetVocabRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetVocabResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.VocabularyId) {
@@ -913,9 +932,11 @@ func (client *Client) GetVocab(request *GetVocabRequest) (_result *GetVocabRespo
 //
 // @return ListVocabResponse
 func (client *Client) ListVocabWithOptions(request *ListVocabRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListVocabResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.WorkspaceId) {
@@ -994,9 +1015,11 @@ func (client *Client) RunCompletionWithSSE(workspaceId *string, appId *string, r
 //
 // @return RunCompletionResponse
 func (client *Client) RunCompletionWithOptions(workspaceId *string, appId *string, request *RunCompletionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunCompletionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Dialogue) {
@@ -1103,9 +1126,11 @@ func (client *Client) RunCompletionMessageWithSSE(workspaceId *string, appId *st
 //
 // @return RunCompletionMessageResponse
 func (client *Client) RunCompletionMessageWithOptions(workspaceId *string, appId *string, request *RunCompletionMessageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunCompletionMessageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Messages) {
@@ -1179,9 +1204,11 @@ func (client *Client) RunCompletionMessage(workspaceId *string, appId *string, r
 //
 // @return UpdateVocabResponse
 func (client *Client) UpdateVocabWithOptions(request *UpdateVocabRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateVocabResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -1248,10 +1275,12 @@ func (client *Client) UpdateVocab(request *UpdateVocabRequest) (_result *UpdateV
 }
 
 func (client *Client) analyzeAudioSyncWithSSE_opYieldFunc(_yield chan *AnalyzeAudioSyncResponse, _yieldErr chan error, workspaceId *string, appId *string, request *AnalyzeAudioSyncRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryTags) {
@@ -1316,27 +1345,31 @@ func (client *Client) analyzeAudioSyncWithSSE_opYieldFunc(_yield chan *AnalyzeAu
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }
 
 func (client *Client) analyzeConversationWithSSE_opYieldFunc(_yield chan *AnalyzeConversationResponse, _yieldErr chan error, workspaceId *string, appId *string, request *AnalyzeConversationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryTags) {
@@ -1413,27 +1446,31 @@ func (client *Client) analyzeConversationWithSSE_opYieldFunc(_yield chan *Analyz
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }
 
 func (client *Client) analyzeImageWithSSE_opYieldFunc(_yield chan *AnalyzeImageResponse, _yieldErr chan error, workspaceId *string, appId *string, request *AnalyzeImageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageUrls) {
@@ -1470,27 +1507,31 @@ func (client *Client) analyzeImageWithSSE_opYieldFunc(_yield chan *AnalyzeImageR
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }
 
 func (client *Client) generalAnalyzeImageWithSSE_opYieldFunc(_yield chan *GeneralAnalyzeImageResponse, _yieldErr chan error, workspaceId *string, appId *string, request *GeneralAnalyzeImageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CustomPrompt) {
@@ -1527,27 +1568,31 @@ func (client *Client) generalAnalyzeImageWithSSE_opYieldFunc(_yield chan *Genera
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }
 
 func (client *Client) runCompletionWithSSE_opYieldFunc(_yield chan *RunCompletionResponse, _yieldErr chan error, workspaceId *string, appId *string, request *RunCompletionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Dialogue) {
@@ -1600,27 +1645,31 @@ func (client *Client) runCompletionWithSSE_opYieldFunc(_yield chan *RunCompletio
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }
 
 func (client *Client) runCompletionMessageWithSSE_opYieldFunc(_yield chan *RunCompletionMessageResponse, _yieldErr chan error, workspaceId *string, appId *string, request *RunCompletionMessageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Messages) {
@@ -1657,18 +1706,20 @@ func (client *Client) runCompletionMessageWithSSE_opYieldFunc(_yield chan *RunCo
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }

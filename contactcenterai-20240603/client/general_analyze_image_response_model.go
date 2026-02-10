@@ -13,6 +13,10 @@ type iGeneralAnalyzeImageResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *GeneralAnalyzeImageResponse
 	GetStatusCode() *int32
+	SetId(v string) *GeneralAnalyzeImageResponse
+	GetId() *string
+	SetEvent(v string) *GeneralAnalyzeImageResponse
+	GetEvent() *string
 	SetBody(v *GeneralAnalyzeImageResponseBody) *GeneralAnalyzeImageResponse
 	GetBody() *GeneralAnalyzeImageResponseBody
 }
@@ -20,6 +24,8 @@ type iGeneralAnalyzeImageResponse interface {
 type GeneralAnalyzeImageResponse struct {
 	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                          `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                          `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *GeneralAnalyzeImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *GeneralAnalyzeImageResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *GeneralAnalyzeImageResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *GeneralAnalyzeImageResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *GeneralAnalyzeImageResponse) GetBody() *GeneralAnalyzeImageResponseBody {
 	return s.Body
 }
@@ -53,11 +67,26 @@ func (s *GeneralAnalyzeImageResponse) SetStatusCode(v int32) *GeneralAnalyzeImag
 	return s
 }
 
+func (s *GeneralAnalyzeImageResponse) SetId(v string) *GeneralAnalyzeImageResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *GeneralAnalyzeImageResponse) SetEvent(v string) *GeneralAnalyzeImageResponse {
+	s.Event = &v
+	return s
+}
+
 func (s *GeneralAnalyzeImageResponse) SetBody(v *GeneralAnalyzeImageResponseBody) *GeneralAnalyzeImageResponse {
 	s.Body = v
 	return s
 }
 
 func (s *GeneralAnalyzeImageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

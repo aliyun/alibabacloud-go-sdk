@@ -200,7 +200,53 @@ func (s *AnalyzeConversationRequest) SetUserProfiles(v []*AnalyzeConversationReq
 }
 
 func (s *AnalyzeConversationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CategoryTags != nil {
+		for _, item := range s.CategoryTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Dialogue != nil {
+		if err := s.Dialogue.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Examples != nil {
+		for _, item := range s.Examples {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Fields != nil {
+		for _, item := range s.Fields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ServiceInspection != nil {
+		if err := s.ServiceInspection.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserProfiles != nil {
+		for _, item := range s.UserProfiles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AnalyzeConversationRequestCategoryTags struct {
@@ -274,7 +320,16 @@ func (s *AnalyzeConversationRequestDialogue) SetSessionId(v string) *AnalyzeConv
 }
 
 func (s *AnalyzeConversationRequestDialogue) Validate() error {
-	return dara.Validate(s)
+	if s.Sentences != nil {
+		for _, item := range s.Sentences {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AnalyzeConversationRequestDialogueSentences struct {
@@ -352,7 +407,16 @@ func (s *AnalyzeConversationRequestExamples) SetSentences(v []*AnalyzeConversati
 }
 
 func (s *AnalyzeConversationRequestExamples) Validate() error {
-	return dara.Validate(s)
+	if s.Sentences != nil {
+		for _, item := range s.Sentences {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AnalyzeConversationRequestExamplesSentences struct {
@@ -459,7 +523,16 @@ func (s *AnalyzeConversationRequestFields) SetName(v string) *AnalyzeConversatio
 }
 
 func (s *AnalyzeConversationRequestFields) Validate() error {
-	return dara.Validate(s)
+	if s.EnumValues != nil {
+		for _, item := range s.EnumValues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AnalyzeConversationRequestFieldsEnumValues struct {
@@ -544,7 +617,16 @@ func (s *AnalyzeConversationRequestServiceInspection) SetSceneIntroduction(v str
 }
 
 func (s *AnalyzeConversationRequestServiceInspection) Validate() error {
-	return dara.Validate(s)
+	if s.InspectionContents != nil {
+		for _, item := range s.InspectionContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AnalyzeConversationRequestServiceInspectionInspectionContents struct {

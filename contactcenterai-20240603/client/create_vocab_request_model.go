@@ -93,7 +93,16 @@ func (s *CreateVocabRequest) SetWorkspaceId(v string) *CreateVocabRequest {
 }
 
 func (s *CreateVocabRequest) Validate() error {
-	return dara.Validate(s)
+	if s.WordWeightList != nil {
+		for _, item := range s.WordWeightList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateVocabRequestWordWeightList struct {

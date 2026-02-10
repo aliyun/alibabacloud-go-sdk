@@ -166,7 +166,44 @@ func (s *AnalyzeAudioSyncRequest) SetVariables(v []*AnalyzeAudioSyncRequestVaria
 }
 
 func (s *AnalyzeAudioSyncRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CategoryTags != nil {
+		for _, item := range s.CategoryTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Fields != nil {
+		for _, item := range s.Fields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ServiceInspection != nil {
+		if err := s.ServiceInspection.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Transcription != nil {
+		if err := s.Transcription.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Variables != nil {
+		for _, item := range s.Variables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AnalyzeAudioSyncRequestCategoryTags struct {
@@ -259,7 +296,16 @@ func (s *AnalyzeAudioSyncRequestFields) SetName(v string) *AnalyzeAudioSyncReque
 }
 
 func (s *AnalyzeAudioSyncRequestFields) Validate() error {
-	return dara.Validate(s)
+	if s.EnumValues != nil {
+		for _, item := range s.EnumValues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AnalyzeAudioSyncRequestFieldsEnumValues struct {
@@ -339,7 +385,16 @@ func (s *AnalyzeAudioSyncRequestServiceInspection) SetSceneIntroduction(v string
 }
 
 func (s *AnalyzeAudioSyncRequestServiceInspection) Validate() error {
-	return dara.Validate(s)
+	if s.InspectionContents != nil {
+		for _, item := range s.InspectionContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AnalyzeAudioSyncRequestServiceInspectionInspectionContents struct {

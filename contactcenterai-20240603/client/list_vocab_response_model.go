@@ -59,5 +59,10 @@ func (s *ListVocabResponse) SetBody(v *ListVocabResponseBody) *ListVocabResponse
 }
 
 func (s *ListVocabResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
