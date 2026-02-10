@@ -32,7 +32,7 @@ type ChatBISchemaIndexCreateRequest struct {
 	AuthType    *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	// example:
 	//
-	// 空字符串, \"graph_info.time,text_info.ext\"
+	// 空字符串, \\"graph_info.time,text_info.ext\\"
 	ColumnsExcluded *string `json:"ColumnsExcluded,omitempty" xml:"ColumnsExcluded,omitempty"`
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type ChatBISchemaIndexCreateRequest struct {
 	TableNameSuffix *string `json:"TableNameSuffix,omitempty" xml:"TableNameSuffix,omitempty"`
 	// example:
 	//
-	// 空字符串, \"graph_info,image_info,text_info\"
+	// 空字符串, \\"graph_info,image_info,text_info\\"
 	TablesIncluded *string `json:"TablesIncluded,omitempty" xml:"TablesIncluded,omitempty"`
 	// example:
 	//

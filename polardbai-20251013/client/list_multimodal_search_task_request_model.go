@@ -11,6 +11,12 @@ type iListMultimodalSearchTaskRequest interface {
 	GoString() string
 	SetDBClusterId(v string) *ListMultimodalSearchTaskRequest
 	GetDBClusterId() *string
+	SetDatasetIds(v []*string) *ListMultimodalSearchTaskRequest
+	GetDatasetIds() []*string
+	SetInputField(v string) *ListMultimodalSearchTaskRequest
+	GetInputField() *string
+	SetModelMode(v string) *ListMultimodalSearchTaskRequest
+	GetModelMode() *string
 	SetPageNumber(v int32) *ListMultimodalSearchTaskRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListMultimodalSearchTaskRequest
@@ -23,7 +29,16 @@ type ListMultimodalSearchTaskRequest struct {
 	// example:
 	//
 	// pc-2ze454l20me07****
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterId *string   `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DatasetIds  []*string `json:"DatasetIds,omitempty" xml:"DatasetIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 红绿灯
+	InputField *string `json:"InputField,omitempty" xml:"InputField,omitempty"`
+	// example:
+	//
+	// flash，plus
+	ModelMode *string `json:"ModelMode,omitempty" xml:"ModelMode,omitempty"`
 	// example:
 	//
 	// 1
@@ -46,6 +61,18 @@ func (s *ListMultimodalSearchTaskRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
 
+func (s *ListMultimodalSearchTaskRequest) GetDatasetIds() []*string {
+	return s.DatasetIds
+}
+
+func (s *ListMultimodalSearchTaskRequest) GetInputField() *string {
+	return s.InputField
+}
+
+func (s *ListMultimodalSearchTaskRequest) GetModelMode() *string {
+	return s.ModelMode
+}
+
 func (s *ListMultimodalSearchTaskRequest) GetPageNumber() *int32 {
 	return s.PageNumber
 }
@@ -56,6 +83,21 @@ func (s *ListMultimodalSearchTaskRequest) GetPageSize() *int32 {
 
 func (s *ListMultimodalSearchTaskRequest) SetDBClusterId(v string) *ListMultimodalSearchTaskRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *ListMultimodalSearchTaskRequest) SetDatasetIds(v []*string) *ListMultimodalSearchTaskRequest {
+	s.DatasetIds = v
+	return s
+}
+
+func (s *ListMultimodalSearchTaskRequest) SetInputField(v string) *ListMultimodalSearchTaskRequest {
+	s.InputField = &v
+	return s
+}
+
+func (s *ListMultimodalSearchTaskRequest) SetModelMode(v string) *ListMultimodalSearchTaskRequest {
+	s.ModelMode = &v
 	return s
 }
 

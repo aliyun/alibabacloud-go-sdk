@@ -10,6 +10,58 @@ import (
 
 // Summary:
 //
+// 导入OSS数据集
+//
+// @param request - AddOSSMultimodalFineTuneDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddOSSMultimodalFineTuneDatasetResponse
+func (client *Client) AddOSSMultimodalFineTuneDatasetWithContext(ctx context.Context, request *AddOSSMultimodalFineTuneDatasetRequest, runtime *dara.RuntimeOptions) (_result *AddOSSMultimodalFineTuneDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DatasetId) {
+		query["DatasetId"] = request.DatasetId
+	}
+
+	if !dara.IsNil(request.OssUrl) {
+		query["OssUrl"] = request.OssUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddOSSMultimodalFineTuneDataset"),
+		Version:     dara.String("2025-10-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddOSSMultimodalFineTuneDatasetResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建chatbi配置表
 //
 // @param request - ChatBIConfigCreateRequest
@@ -1655,6 +1707,120 @@ func (client *Client) CreateMultimodalDatasetEmbeddingWithContext(ctx context.Co
 
 // Summary:
 //
+// 创建多模态微调数据集
+//
+// @param request - CreateMultimodalFineTuneDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMultimodalFineTuneDatasetResponse
+func (client *Client) CreateMultimodalFineTuneDatasetWithContext(ctx context.Context, request *CreateMultimodalFineTuneDatasetRequest, runtime *dara.RuntimeOptions) (_result *CreateMultimodalFineTuneDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DatasetDescription) {
+		query["DatasetDescription"] = request.DatasetDescription
+	}
+
+	if !dara.IsNil(request.DatasetName) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMultimodalFineTuneDataset"),
+		Version:     dara.String("2025-10-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMultimodalFineTuneDatasetResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 部署打标服务
+//
+// @param tmpReq - CreateMultimodalLabelStudioServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMultimodalLabelStudioServiceResponse
+func (client *Client) CreateMultimodalLabelStudioServiceWithContext(ctx context.Context, tmpReq *CreateMultimodalLabelStudioServiceRequest, runtime *dara.RuntimeOptions) (_result *CreateMultimodalLabelStudioServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateMultimodalLabelStudioServiceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DatasetIds) {
+		request.DatasetIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DatasetIds, dara.String("DatasetIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DatasetIdsShrink) {
+		query["DatasetIds"] = request.DatasetIdsShrink
+	}
+
+	if !dara.IsNil(request.Password) {
+		query["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.Username) {
+		query["Username"] = request.Username
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMultimodalLabelStudioService"),
+		Version:     dara.String("2025-10-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMultimodalLabelStudioServiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建SearchTask
 //
 // @param tmpReq - CreateMultimodalSearchTaskRequest
@@ -1719,6 +1885,80 @@ func (client *Client) CreateMultimodalSearchTaskWithContext(ctx context.Context,
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateMultimodalSearchTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 从检索结果中创建微调数据集
+//
+// @param tmpReq - CreateMultimodalSearchTaskResultFineTuneDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMultimodalSearchTaskResultFineTuneDatasetResponse
+func (client *Client) CreateMultimodalSearchTaskResultFineTuneDatasetWithContext(ctx context.Context, tmpReq *CreateMultimodalSearchTaskResultFineTuneDatasetRequest, runtime *dara.RuntimeOptions) (_result *CreateMultimodalSearchTaskResultFineTuneDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ResultIndex) {
+		request.ResultIndexShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResultIndex, dara.String("ResultIndex"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DatasetDescription) {
+		query["DatasetDescription"] = request.DatasetDescription
+	}
+
+	if !dara.IsNil(request.DatasetName) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !dara.IsNil(request.ResultIndexShrink) {
+		query["ResultIndex"] = request.ResultIndexShrink
+	}
+
+	if !dara.IsNil(request.ResultMode) {
+		query["ResultMode"] = request.ResultMode
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TopN) {
+		query["TopN"] = request.TopN
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMultimodalSearchTaskResultFineTuneDataset"),
+		Version:     dara.String("2025-10-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMultimodalSearchTaskResultFineTuneDatasetResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1815,6 +2055,150 @@ func (client *Client) DeleteMultimodalEmbeddingWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteMultimodalEmbeddingResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除多模态微调数据集
+//
+// @param request - DeleteMultimodalFineTuneDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMultimodalFineTuneDatasetResponse
+func (client *Client) DeleteMultimodalFineTuneDatasetWithContext(ctx context.Context, request *DeleteMultimodalFineTuneDatasetRequest, runtime *dara.RuntimeOptions) (_result *DeleteMultimodalFineTuneDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DatasetId) {
+		query["DatasetId"] = request.DatasetId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMultimodalFineTuneDataset"),
+		Version:     dara.String("2025-10-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMultimodalFineTuneDatasetResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询模型mode可选列表
+//
+// @param request - DeleteMultimodalLabelStudioServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMultimodalLabelStudioServiceResponse
+func (client *Client) DeleteMultimodalLabelStudioServiceWithContext(ctx context.Context, request *DeleteMultimodalLabelStudioServiceRequest, runtime *dara.RuntimeOptions) (_result *DeleteMultimodalLabelStudioServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMultimodalLabelStudioService"),
+		Version:     dara.String("2025-10-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMultimodalLabelStudioServiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 微调数据集删除导入的OSS路径
+//
+// @param request - DeleteOSSMultimodalFineTuneDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteOSSMultimodalFineTuneDatasetResponse
+func (client *Client) DeleteOSSMultimodalFineTuneDatasetWithContext(ctx context.Context, request *DeleteOSSMultimodalFineTuneDatasetRequest, runtime *dara.RuntimeOptions) (_result *DeleteOSSMultimodalFineTuneDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DatasetId) {
+		query["DatasetId"] = request.DatasetId
+	}
+
+	if !dara.IsNil(request.OssUrl) {
+		query["OssUrl"] = request.OssUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteOSSMultimodalFineTuneDataset"),
+		Version:     dara.String("2025-10-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteOSSMultimodalFineTuneDatasetResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2077,6 +2461,106 @@ func (client *Client) ListMultimodalEmbeddingModelModeWithContext(ctx context.Co
 
 // Summary:
 //
+// 查询多模态数据集列表
+//
+// @param request - ListMultimodalFineTuneDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMultimodalFineTuneDatasetResponse
+func (client *Client) ListMultimodalFineTuneDatasetWithContext(ctx context.Context, request *ListMultimodalFineTuneDatasetRequest, runtime *dara.RuntimeOptions) (_result *ListMultimodalFineTuneDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.InputField) {
+		query["InputField"] = request.InputField
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMultimodalFineTuneDataset"),
+		Version:     dara.String("2025-10-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMultimodalFineTuneDatasetResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询打标服务信息
+//
+// @param request - ListMultimodalLabelStudioServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMultimodalLabelStudioServiceResponse
+func (client *Client) ListMultimodalLabelStudioServiceWithContext(ctx context.Context, request *ListMultimodalLabelStudioServiceRequest, runtime *dara.RuntimeOptions) (_result *ListMultimodalLabelStudioServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMultimodalLabelStudioService"),
+		Version:     dara.String("2025-10-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMultimodalLabelStudioServiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询search模型列表
 //
 // @param request - ListMultimodalSearchModelRequest
@@ -2131,21 +2615,39 @@ func (client *Client) ListMultimodalSearchModelWithContext(ctx context.Context, 
 //
 // 查询search task列表
 //
-// @param request - ListMultimodalSearchTaskRequest
+// @param tmpReq - ListMultimodalSearchTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListMultimodalSearchTaskResponse
-func (client *Client) ListMultimodalSearchTaskWithContext(ctx context.Context, request *ListMultimodalSearchTaskRequest, runtime *dara.RuntimeOptions) (_result *ListMultimodalSearchTaskResponse, _err error) {
+func (client *Client) ListMultimodalSearchTaskWithContext(ctx context.Context, tmpReq *ListMultimodalSearchTaskRequest, runtime *dara.RuntimeOptions) (_result *ListMultimodalSearchTaskResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ListMultimodalSearchTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DatasetIds) {
+		request.DatasetIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DatasetIds, dara.String("DatasetIds"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DatasetIdsShrink) {
+		query["DatasetIds"] = request.DatasetIdsShrink
+	}
+
+	if !dara.IsNil(request.InputField) {
+		query["InputField"] = request.InputField
+	}
+
+	if !dara.IsNil(request.ModelMode) {
+		query["ModelMode"] = request.ModelMode
 	}
 
 	if !dara.IsNil(request.PageNumber) {
@@ -2283,6 +2785,116 @@ func (client *Client) UpdateMultimodalDatasetWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateMultimodalDatasetResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新微调数据集信息
+//
+// @param request - UpdateMultimodalFineTuneDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMultimodalFineTuneDatasetResponse
+func (client *Client) UpdateMultimodalFineTuneDatasetWithContext(ctx context.Context, request *UpdateMultimodalFineTuneDatasetRequest, runtime *dara.RuntimeOptions) (_result *UpdateMultimodalFineTuneDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DatasetDescription) {
+		query["DatasetDescription"] = request.DatasetDescription
+	}
+
+	if !dara.IsNil(request.DatasetId) {
+		query["DatasetId"] = request.DatasetId
+	}
+
+	if !dara.IsNil(request.DatasetName) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMultimodalFineTuneDataset"),
+		Version:     dara.String("2025-10-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMultimodalFineTuneDatasetResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 为打标服务覆盖配置白名单
+//
+// @param tmpReq - UpdateMultimodalLabelStudioServiceWhiteListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMultimodalLabelStudioServiceWhiteListResponse
+func (client *Client) UpdateMultimodalLabelStudioServiceWhiteListWithContext(ctx context.Context, tmpReq *UpdateMultimodalLabelStudioServiceWhiteListRequest, runtime *dara.RuntimeOptions) (_result *UpdateMultimodalLabelStudioServiceWhiteListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateMultimodalLabelStudioServiceWhiteListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.WhiteList) {
+		request.WhiteListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WhiteList, dara.String("WhiteList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.WhiteListShrink) {
+		query["WhiteList"] = request.WhiteListShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMultimodalLabelStudioServiceWhiteList"),
+		Version:     dara.String("2025-10-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMultimodalLabelStudioServiceWhiteListResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2531,18 +3143,20 @@ func (client *Client) chatBIPredictSseWithSSECtx_opYieldFunc(_yield chan *ChatBI
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }
