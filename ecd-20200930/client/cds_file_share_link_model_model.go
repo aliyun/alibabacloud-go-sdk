@@ -62,31 +62,212 @@ type iCdsFileShareLinkModel interface {
 }
 
 type CdsFileShareLinkModel struct {
-	AccessCount       *int64  `json:"AccessCount,omitempty" xml:"AccessCount,omitempty"`
-	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Creator           *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisableDownload   *bool   `json:"DisableDownload,omitempty" xml:"DisableDownload,omitempty"`
-	DisablePreview    *bool   `json:"DisablePreview,omitempty" xml:"DisablePreview,omitempty"`
-	DisableSave       *bool   `json:"DisableSave,omitempty" xml:"DisableSave,omitempty"`
-	DownloadCount     *int64  `json:"DownloadCount,omitempty" xml:"DownloadCount,omitempty"`
-	DownloadLimit     *int64  `json:"DownloadLimit,omitempty" xml:"DownloadLimit,omitempty"`
-	DriveId           *string `json:"DriveId,omitempty" xml:"DriveId,omitempty"`
-	Expiration        *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	Expired           *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	FileIds           *string `json:"FileIds,omitempty" xml:"FileIds,omitempty"`
-	ModifiyTime       *string `json:"ModifiyTime,omitempty" xml:"ModifiyTime,omitempty"`
-	PreviewCount      *int64  `json:"PreviewCount,omitempty" xml:"PreviewCount,omitempty"`
-	PreviewLimit      *int64  `json:"PreviewLimit,omitempty" xml:"PreviewLimit,omitempty"`
-	ReportCount       *int64  `json:"ReportCount,omitempty" xml:"ReportCount,omitempty"`
-	SaveCount         *int64  `json:"SaveCount,omitempty" xml:"SaveCount,omitempty"`
-	SaveLimit         *int64  `json:"SaveLimit,omitempty" xml:"SaveLimit,omitempty"`
-	ShareId           *string `json:"ShareId,omitempty" xml:"ShareId,omitempty"`
-	ShareLink         *string `json:"ShareLink,omitempty" xml:"ShareLink,omitempty"`
-	ShareName         *string `json:"ShareName,omitempty" xml:"ShareName,omitempty"`
-	SharePwd          *string `json:"SharePwd,omitempty" xml:"SharePwd,omitempty"`
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VideoPreviewCount *int64  `json:"VideoPreviewCount,omitempty" xml:"VideoPreviewCount,omitempty"`
+	// The number of times to access the shared file.
+	//
+	// example:
+	//
+	// 10000
+	AccessCount *int64 `json:"AccessCount,omitempty" xml:"AccessCount,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2021-09-04T03:30:36Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The user that creates the file sharing task.
+	//
+	// example:
+	//
+	// user01
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// newDescription
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The shared file is forbidden from being downloaded.
+	//
+	// example:
+	//
+	// false
+	DisableDownload *bool `json:"DisableDownload,omitempty" xml:"DisableDownload,omitempty"`
+	// The shared file is forbidden from being previewed.
+	//
+	// example:
+	//
+	// false
+	DisablePreview *bool `json:"DisablePreview,omitempty" xml:"DisablePreview,omitempty"`
+	// The shared file is forbidden from being dumped.
+	//
+	// example:
+	//
+	// false
+	DisableSave *bool `json:"DisableSave,omitempty" xml:"DisableSave,omitempty"`
+	// The number of times that the shared file can be downloaded.
+	//
+	// example:
+	//
+	// 100
+	DownloadCount *int64 `json:"DownloadCount,omitempty" xml:"DownloadCount,omitempty"`
+	// The maximum number of times that the shared file can be downloaded.
+	//
+	// example:
+	//
+	// 100
+	DownloadLimit *int64 `json:"DownloadLimit,omitempty" xml:"DownloadLimit,omitempty"`
+	// The team space ID.
+	//
+	// example:
+	//
+	// dri-g0877jp3hu1ox****
+	DriveId *string `json:"DriveId,omitempty" xml:"DriveId,omitempty"`
+	// The time when the file sharing link expires.
+	//
+	// >  The value must be in the FC3339 format. Example: 2020-06-28T11:33:00.000+08:00. If the parameter is left empty, the file sharing link is permanently valid.
+	//
+	// example:
+	//
+	// 2020-06-28T11:33:00.000+08:00
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// Specifies whether the file sharing link expires.
+	//
+	// example:
+	//
+	// False
+	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// The file sharing task IDs.
+	//
+	// example:
+	//
+	// [\\"63886f1fe2014d9a5a3348768dcc27dfc57ee103\\"]
+	FileIds *string `json:"FileIds,omitempty" xml:"FileIds,omitempty"`
+	// The modification time.
+	//
+	// example:
+	//
+	// 2021-09-04T04:30:36Z
+	ModifiyTime *string `json:"ModifiyTime,omitempty" xml:"ModifiyTime,omitempty"`
+	// The number of times that the shared file is previewed.
+	//
+	// example:
+	//
+	// 0
+	PreviewCount *int64 `json:"PreviewCount,omitempty" xml:"PreviewCount,omitempty"`
+	// The maximum number of times that the shared file can be previewed.
+	//
+	// example:
+	//
+	// 100
+	PreviewLimit *int64 `json:"PreviewLimit,omitempty" xml:"PreviewLimit,omitempty"`
+	// The number of times that the shared file is reported due to content violation.
+	//
+	// example:
+	//
+	// 0
+	ReportCount *int64 `json:"ReportCount,omitempty" xml:"ReportCount,omitempty"`
+	// The number of times that the shared files can be dumped.
+	//
+	// example:
+	//
+	// 100
+	SaveCount *int64 `json:"SaveCount,omitempty" xml:"SaveCount,omitempty"`
+	// The maximum number of times that the shared file can be saved.
+	//
+	// example:
+	//
+	// 100
+	SaveLimit *int64 `json:"SaveLimit,omitempty" xml:"SaveLimit,omitempty"`
+	// The file sharing task ID.
+	//
+	// example:
+	//
+	// 7JQX1Fs****
+	ShareId *string `json:"ShareId,omitempty" xml:"ShareId,omitempty"`
+	// The file sharing link.
+	//
+	// example:
+	//
+	// https://stg109960.apps.aliyunpds.com/disk/s/7uLJanz****
+	ShareLink *string `json:"ShareLink,omitempty" xml:"ShareLink,omitempty"`
+	// The shared file name. By default, the name of the first shared file is used.
+	//
+	// example:
+	//
+	// view.txt
+	ShareName *string `json:"ShareName,omitempty" xml:"ShareName,omitempty"`
+	// The access code. It must contain up to 64 characters in length. 0 characters indicates that there is no access code.
+	//
+	// example:
+	//
+	// 12345678
+	SharePwd *string `json:"SharePwd,omitempty" xml:"SharePwd,omitempty"`
+	// The status of the file sharing link.
+	//
+	// Valid values:
+	//
+	// 	- forbidden_disabled
+	//
+	//     <!-- -->
+	//
+	//     : The file sharing link is canceled
+	//
+	//     <!-- -->
+	//
+	//     after it
+	//
+	//     <!-- -->
+	//
+	//     is not allowed.
+	//
+	// 	- forbidden
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The file sharing link is not allowed
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// 	- disabled
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The file sharing link is canceled.
+	//
+	//     <!-- -->
+	//
+	// 	- enabled
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The file sharing link is valid.
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// disabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of times that the audio and video file is played.
+	//
+	// example:
+	//
+	// 0
+	VideoPreviewCount *int64 `json:"VideoPreviewCount,omitempty" xml:"VideoPreviewCount,omitempty"`
 }
 
 func (s CdsFileShareLinkModel) String() string {

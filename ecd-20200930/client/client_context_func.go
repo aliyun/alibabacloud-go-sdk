@@ -561,7 +561,7 @@ func (client *Client) ApplyCoordinatePrivilegeWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Applies for coordination monitoring. This operation is mainly used in administrator assistance scenarios and education scenarios.
+// (Administrator) initiates a remote assistance request to the end user. This operation is mainly used in administrator assistance scenarios and education scenarios.
 //
 // @param request - ApplyCoordinationForMonitoringRequest
 //
@@ -1211,7 +1211,7 @@ func (client *Client) CancelCdsFileShareLinkWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Cancels monitoring on stream collaboration.
+// Cancels a remote assistance request to the end user.
 //
 // @param request - CancelCoordinationForMonitoringRequest
 //
@@ -1603,7 +1603,7 @@ func (client *Client) ConfigADConnectorUserWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Copies a file or a directory.
+// Makes a copy of a file or folder on a drive.
 //
 // @param request - CopyCdsFileRequest
 //
@@ -1983,7 +1983,7 @@ func (client *Client) CreateADConnectorOfficeSiteWithContext(ctx context.Context
 
 // Summary:
 //
-// Creates a File Storage NAS (NAS) file system and mount the file system to the workspace in which a desktop group resides.
+// Creates a NAS file system and associate it with the office network of the shared cloud computer.
 //
 // @param request - CreateAndBindNasFileSystemRequest
 //
@@ -3919,7 +3919,7 @@ func (client *Client) CreateDesktopsWithContext(ctx context.Context, tmpReq *Cre
 
 // Summary:
 //
-// Enables the disk encryption feature and adds the service-linked role that is encrypted by Cloud Drive Service to a Resource Access Management (RAM) user.
+// Enables disk encryption and creates the required service-linked role in your Resource Access Management (RAM) user account for the Enterprise Drive.
 //
 // @param request - CreateDiskEncryptionServiceRequest
 //
@@ -4753,7 +4753,7 @@ func (client *Client) CreatePolicyGroupWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 新建限速组
+// Creates a Quality of Service (QoS) rule.
 //
 // @param request - CreateQosRuleRequest
 //
@@ -5624,7 +5624,7 @@ func (client *Client) DeleteCdsFileWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// # Deletes a center policy
+// Deletes a global policy.
 //
 // @param request - DeleteCenterPolicyRequest
 //
@@ -5732,7 +5732,7 @@ func (client *Client) DeleteCloudDriveGroupsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 删除无影网盘中的终端用户
+// Deletes users from a cloud disk in Cloud Drive Service.
 //
 // @param request - DeleteCloudDriveUsersRequest
 //
@@ -6522,6 +6522,10 @@ func (client *Client) DeletePolicyGroupsWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a traffic throttling rule from a QoS policy.
+//
 // @param request - DeleteQosRulesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6876,7 +6880,7 @@ func (client *Client) DeleteTemplatesWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Delete virtual multi-factor authentication (MFA) devices.
+// Removes a virtual multi-factor authentication (MFA) device that is associated with an Active Directory (AD) account.
 //
 // Description:
 //
@@ -7484,7 +7488,7 @@ func (client *Client) DescribeClientEventsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询云盘团队空间列表
+// Queries team spaces in a cloud disk.
 //
 // @param request - DescribeCloudDiskGroupDrivesRequest
 //
@@ -7544,7 +7548,7 @@ func (client *Client) DescribeCloudDiskGroupDrivesWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询云盘团队列表
+// Queries team spaces from the drive.
 //
 // @param request - DescribeCloudDiskGroupsRequest
 //
@@ -7604,7 +7608,7 @@ func (client *Client) DescribeCloudDiskGroupsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries a list of authorized team spaces.
+// Queries the list and basic information of all team shared disks in an enterprise drive.
 //
 // @param request - DescribeCloudDriveGroupsRequest
 //
@@ -7692,7 +7696,7 @@ func (client *Client) DescribeCloudDriveGroupsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询pds用户权限
+// Queries the permission settings on the enterprise drive.
 //
 // @param request - DescribeCloudDrivePermissionsRequest
 //
@@ -7740,7 +7744,7 @@ func (client *Client) DescribeCloudDrivePermissionsWithContext(ctx context.Conte
 
 // Summary:
 //
-// 查询所有无影网盘终端用户的信息
+// Queries users of cloud disks in Cloud Drive Service.
 //
 // @param request - DescribeCloudDriveUsersRequest
 //
@@ -7874,6 +7878,10 @@ func (client *Client) DescribeConfigGroupWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the header information of the cloud computer list.
+//
 // @param request - DescribeCustomizedListHeadersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8184,7 +8192,7 @@ func (client *Client) DescribeDesktopInfoWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询云电脑基础元数据
+// Queries the list and metadata of cloud computers in a specific region.
 //
 // @param request - DescribeDesktopMetadataRequest
 //
@@ -9216,7 +9224,7 @@ func (client *Client) DescribeEcdReportTasksWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 查询EIP监控
+// Queries the monitoring data of the desktop inbound bandwidth and the desktop outbound bandwidth, or the monitoring data of the workspace bandwidth originated from or destined for the Internet.
 //
 // @param request - DescribeFlowMetricRequest
 //
@@ -9670,7 +9678,7 @@ func (client *Client) DescribeGlobalDesktopRecordsWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询全局定时任务Batch记录
+// Queries the batch information in the execution history of scheduled tasks and returns the summary task execution results.
 //
 // @param request - DescribeGlobalTimerBatchesRequest
 //
@@ -11004,6 +11012,10 @@ func (client *Client) DescribePriceForRenewDesktopOversoldGroupWithContext(ctx c
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries Quality of Service (QoS) rules.
+//
 // @param request - DescribeQosRulesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11050,7 +11062,7 @@ func (client *Client) DescribeQosRulesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询录屏文件列表
+// Queries the screen recording files in all regions.
 //
 // @param request - DescribeRecordFileRequest
 //
@@ -11396,6 +11408,10 @@ func (client *Client) DescribeRenewalPriceWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries cloud resources that are associated with a global policy.
+//
 // @param request - DescribeResourceByCenterPolicyIdRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12340,7 +12356,7 @@ func (client *Client) DescribeUsersInGroupWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the passwords of authorized users of a cloud computer.
+// Queries the passwords for the accounts within a cloud computer image. For example, when the Chrome browser on the cloud computer queries the cached password, it requires the end user to enter the password for identity verification.
 //
 // @param request - DescribeUsersPasswordRequest
 //
@@ -12388,7 +12404,7 @@ func (client *Client) DescribeUsersPasswordWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries multi-factor authentication (MFA) devices that are bound to an Active Directory (AD) account.
+// Queries the virtual multi-factor authentication (MFA) devices that are associated with Active Directory (AD) accounts.
 //
 // @param request - DescribeVirtualMFADevicesRequest
 //
@@ -12664,7 +12680,7 @@ func (client *Client) DisableDesktopsInGroupWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Disconnects from desktop sessions.
+// Disconnects cloud computer sessions.
 //
 // @param request - DisconnectDesktopSessionsRequest
 //
@@ -13182,7 +13198,7 @@ func (client *Client) ExportDesktopListInfoWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Obtains the information about an asynchronous task based on the value of the AsyncTaskId parameter that you obtain by calling the CopyCdsFile operation.
+// When you call the CopyCdsFile operation to copy a folder, the operation returns AsyncTaskId. Call this operation specifying the obtained AsyncTaskId, and you can query the information about the asynchronous task.
 //
 // @param request - GetAsyncTaskRequest
 //
@@ -13314,7 +13330,7 @@ func (client *Client) GetConnectionTicketWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Obtains the credentials of the stream collaboration
+// Get the stream collaboration credentials for remote assistance or shared collaboration.
 //
 // @param request - GetCoordinateTicketRequest
 //
@@ -13422,7 +13438,7 @@ func (client *Client) GetDesktopGroupDetailWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries whether single sign-on (SSO) is enabled for a workspace.
+// Queries whether single sign-on (SSO) is enabled for an office network.
 //
 // @param request - GetOfficeSiteSsoStatusRequest
 //
@@ -14064,7 +14080,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取文件列表
+// Gets the download URL of the transferred file.
 //
 // @param request - ListTransferFileDownloadUrlRequest
 //
@@ -14832,7 +14848,7 @@ func (client *Client) ModifyCdsFileWithContext(ctx context.Context, request *Mod
 
 // Summary:
 //
-// Modifies the link for file sharing.
+// Modify the file sharing settings.
 //
 // @param request - ModifyCdsFileShareLinkRequest
 //
@@ -15632,7 +15648,7 @@ func (client *Client) ModifyCloudDrivePermissionWithContext(ctx context.Context,
 
 // Summary:
 //
-// 修改无影网盘终端用户的属性
+// Modifies users of a cloud disk in Cloud Drive Service.
 //
 // @param request - ModifyCloudDriveUsersRequest
 //
@@ -17540,7 +17556,7 @@ func (client *Client) ModifyPolicyGroupWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 修改限速组资源绑定关系
+// Modifies the resources that a Quality of Service (QoS) rule applies to.
 //
 // @param request - ModifyQosEntriesRequest
 //
@@ -17598,6 +17614,10 @@ func (client *Client) ModifyQosEntriesWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a Quality of Service (QoS) rule.
+//
 // @param request - ModifyQosRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -17650,6 +17670,10 @@ func (client *Client) ModifyQosRuleWithContext(ctx context.Context, request *Mod
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a global policy that is associated with a cloud resource.
+//
 // @param request - ModifyResourceCenterPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -18141,7 +18165,7 @@ func (client *Client) ModifyUserToDesktopGroupWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Move files or folders.
+// Moves a file or folder on the drive to a new location.
 //
 // @param request - MoveCdsFileRequest
 //
@@ -19107,7 +19131,7 @@ func (client *Client) RevokeCoordinatePrivilegeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Runs a PowerShell or batch (.bat) script on Windows cloud desktops.
+// Runs a PowerShell or batch (.bat) command on one or more Windows cloud computers.
 //
 // Description:
 //
@@ -19467,7 +19491,7 @@ func (client *Client) SetDesktopMaintenanceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Configures the single sign-on (SSO) status of an Active Directory (AD) directory.
+// Enables or disables the single sign-on (SSO) feature for an Active Directory (AD) account-based office network.
 //
 // Description:
 //
@@ -19583,7 +19607,7 @@ func (client *Client) SetIdpMetadataWithContext(ctx context.Context, request *Se
 
 // Summary:
 //
-// Enables or disables single sign-on (SSO) for a workspace.
+// Enables or disables single sign-on (SSO) for an office network.
 //
 // @param request - SetOfficeSiteSsoStatusRequest
 //
@@ -19809,7 +19833,7 @@ func (client *Client) StopDesktopsWithContext(ctx context.Context, request *Stop
 
 // Summary:
 //
-// Stops a Cloud Assistant command that is running on one or more cloud desktops.
+// Stop a process that executes the Cloud Assistant script in one or more cloud computers.
 //
 // Description:
 //

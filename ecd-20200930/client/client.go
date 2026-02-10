@@ -790,7 +790,7 @@ func (client *Client) ApplyCoordinatePrivilege(request *ApplyCoordinatePrivilege
 
 // Summary:
 //
-// Applies for coordination monitoring. This operation is mainly used in administrator assistance scenarios and education scenarios.
+// (Administrator) initiates a remote assistance request to the end user. This operation is mainly used in administrator assistance scenarios and education scenarios.
 //
 // @param request - ApplyCoordinationForMonitoringRequest
 //
@@ -854,7 +854,7 @@ func (client *Client) ApplyCoordinationForMonitoringWithOptions(request *ApplyCo
 
 // Summary:
 //
-// Applies for coordination monitoring. This operation is mainly used in administrator assistance scenarios and education scenarios.
+// (Administrator) initiates a remote assistance request to the end user. This operation is mainly used in administrator assistance scenarios and education scenarios.
 //
 // @param request - ApplyCoordinationForMonitoringRequest
 //
@@ -1660,7 +1660,7 @@ func (client *Client) CancelCdsFileShareLink(request *CancelCdsFileShareLinkRequ
 
 // Summary:
 //
-// Cancels monitoring on stream collaboration.
+// Cancels a remote assistance request to the end user.
 //
 // @param request - CancelCoordinationForMonitoringRequest
 //
@@ -1716,7 +1716,7 @@ func (client *Client) CancelCoordinationForMonitoringWithOptions(request *Cancel
 
 // Summary:
 //
-// Cancels monitoring on stream collaboration.
+// Cancels a remote assistance request to the end user.
 //
 // @param request - CancelCoordinationForMonitoringRequest
 //
@@ -2174,7 +2174,7 @@ func (client *Client) ConfigADConnectorUser(request *ConfigADConnectorUserReques
 
 // Summary:
 //
-// Copies a file or a directory.
+// Makes a copy of a file or folder on a drive.
 //
 // @param request - CopyCdsFileRequest
 //
@@ -2250,7 +2250,7 @@ func (client *Client) CopyCdsFileWithOptions(request *CopyCdsFileRequest, runtim
 
 // Summary:
 //
-// Copies a file or a directory.
+// Makes a copy of a file or folder on a drive.
 //
 // @param request - CopyCdsFileRequest
 //
@@ -2646,7 +2646,7 @@ func (client *Client) CreateADConnectorOfficeSite(request *CreateADConnectorOffi
 
 // Summary:
 //
-// Creates a File Storage NAS (NAS) file system and mount the file system to the workspace in which a desktop group resides.
+// Creates a NAS file system and associate it with the office network of the shared cloud computer.
 //
 // @param request - CreateAndBindNasFileSystemRequest
 //
@@ -2718,7 +2718,7 @@ func (client *Client) CreateAndBindNasFileSystemWithOptions(request *CreateAndBi
 
 // Summary:
 //
-// Creates a File Storage NAS (NAS) file system and mount the file system to the workspace in which a desktop group resides.
+// Creates a NAS file system and associate it with the office network of the shared cloud computer.
 //
 // @param request - CreateAndBindNasFileSystemRequest
 //
@@ -4876,7 +4876,7 @@ func (client *Client) CreateDesktops(request *CreateDesktopsRequest) (_result *C
 
 // Summary:
 //
-// Enables the disk encryption feature and adds the service-linked role that is encrypted by Cloud Drive Service to a Resource Access Management (RAM) user.
+// Enables disk encryption and creates the required service-linked role in your Resource Access Management (RAM) user account for the Enterprise Drive.
 //
 // @param request - CreateDiskEncryptionServiceRequest
 //
@@ -4920,7 +4920,7 @@ func (client *Client) CreateDiskEncryptionServiceWithOptions(request *CreateDisk
 
 // Summary:
 //
-// Enables the disk encryption feature and adds the service-linked role that is encrypted by Cloud Drive Service to a Resource Access Management (RAM) user.
+// Enables disk encryption and creates the required service-linked role in your Resource Access Management (RAM) user account for the Enterprise Drive.
 //
 // @param request - CreateDiskEncryptionServiceRequest
 //
@@ -5898,7 +5898,7 @@ func (client *Client) CreatePolicyGroup(request *CreatePolicyGroupRequest) (_res
 
 // Summary:
 //
-// 新建限速组
+// Creates a Quality of Service (QoS) rule.
 //
 // @param request - CreateQosRuleRequest
 //
@@ -5962,7 +5962,7 @@ func (client *Client) CreateQosRuleWithOptions(request *CreateQosRuleRequest, ru
 
 // Summary:
 //
-// 新建限速组
+// Creates a Quality of Service (QoS) rule.
 //
 // @param request - CreateQosRuleRequest
 //
@@ -7005,7 +7005,7 @@ func (client *Client) DeleteCdsFile(request *DeleteCdsFileRequest) (_result *Del
 
 // Summary:
 //
-// # Deletes a center policy
+// Deletes a global policy.
 //
 // @param request - DeleteCenterPolicyRequest
 //
@@ -7061,7 +7061,7 @@ func (client *Client) DeleteCenterPolicyWithOptions(request *DeleteCenterPolicyR
 
 // Summary:
 //
-// # Deletes a center policy
+// Deletes a global policy.
 //
 // @param request - DeleteCenterPolicyRequest
 //
@@ -7149,7 +7149,7 @@ func (client *Client) DeleteCloudDriveGroups(request *DeleteCloudDriveGroupsRequ
 
 // Summary:
 //
-// 删除无影网盘中的终端用户
+// Deletes users from a cloud disk in Cloud Drive Service.
 //
 // @param request - DeleteCloudDriveUsersRequest
 //
@@ -7201,7 +7201,7 @@ func (client *Client) DeleteCloudDriveUsersWithOptions(request *DeleteCloudDrive
 
 // Summary:
 //
-// 删除无影网盘中的终端用户
+// Deletes users from a cloud disk in Cloud Drive Service.
 //
 // @param request - DeleteCloudDriveUsersRequest
 //
@@ -8249,6 +8249,10 @@ func (client *Client) DeletePolicyGroups(request *DeletePolicyGroupsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a traffic throttling rule from a QoS policy.
+//
 // @param request - DeleteQosRulesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8289,6 +8293,10 @@ func (client *Client) DeleteQosRulesWithOptions(request *DeleteQosRulesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a traffic throttling rule from a QoS policy.
+//
 // @param request - DeleteQosRulesRequest
 //
 // @return DeleteQosRulesResponse
@@ -8733,7 +8741,7 @@ func (client *Client) DeleteTemplates(request *DeleteTemplatesRequest) (_result 
 
 // Summary:
 //
-// Delete virtual multi-factor authentication (MFA) devices.
+// Removes a virtual multi-factor authentication (MFA) device that is associated with an Active Directory (AD) account.
 //
 // Description:
 //
@@ -8785,7 +8793,7 @@ func (client *Client) DeleteVirtualMFADeviceWithOptions(request *DeleteVirtualMF
 
 // Summary:
 //
-// Delete virtual multi-factor authentication (MFA) devices.
+// Removes a virtual multi-factor authentication (MFA) device that is associated with an Active Directory (AD) account.
 //
 // Description:
 //
@@ -9497,7 +9505,7 @@ func (client *Client) DescribeClientEvents(request *DescribeClientEventsRequest)
 
 // Summary:
 //
-// 查询云盘团队空间列表
+// Queries team spaces in a cloud disk.
 //
 // @param request - DescribeCloudDiskGroupDrivesRequest
 //
@@ -9557,7 +9565,7 @@ func (client *Client) DescribeCloudDiskGroupDrivesWithOptions(request *DescribeC
 
 // Summary:
 //
-// 查询云盘团队空间列表
+// Queries team spaces in a cloud disk.
 //
 // @param request - DescribeCloudDiskGroupDrivesRequest
 //
@@ -9575,7 +9583,7 @@ func (client *Client) DescribeCloudDiskGroupDrives(request *DescribeCloudDiskGro
 
 // Summary:
 //
-// 查询云盘团队列表
+// Queries team spaces from the drive.
 //
 // @param request - DescribeCloudDiskGroupsRequest
 //
@@ -9635,7 +9643,7 @@ func (client *Client) DescribeCloudDiskGroupsWithOptions(request *DescribeCloudD
 
 // Summary:
 //
-// 查询云盘团队列表
+// Queries team spaces from the drive.
 //
 // @param request - DescribeCloudDiskGroupsRequest
 //
@@ -9653,7 +9661,7 @@ func (client *Client) DescribeCloudDiskGroups(request *DescribeCloudDiskGroupsRe
 
 // Summary:
 //
-// Queries a list of authorized team spaces.
+// Queries the list and basic information of all team shared disks in an enterprise drive.
 //
 // @param request - DescribeCloudDriveGroupsRequest
 //
@@ -9741,7 +9749,7 @@ func (client *Client) DescribeCloudDriveGroupsWithOptions(request *DescribeCloud
 
 // Summary:
 //
-// Queries a list of authorized team spaces.
+// Queries the list and basic information of all team shared disks in an enterprise drive.
 //
 // @param request - DescribeCloudDriveGroupsRequest
 //
@@ -9759,7 +9767,7 @@ func (client *Client) DescribeCloudDriveGroups(request *DescribeCloudDriveGroups
 
 // Summary:
 //
-// 查询pds用户权限
+// Queries the permission settings on the enterprise drive.
 //
 // @param request - DescribeCloudDrivePermissionsRequest
 //
@@ -9807,7 +9815,7 @@ func (client *Client) DescribeCloudDrivePermissionsWithOptions(request *Describe
 
 // Summary:
 //
-// 查询pds用户权限
+// Queries the permission settings on the enterprise drive.
 //
 // @param request - DescribeCloudDrivePermissionsRequest
 //
@@ -9825,7 +9833,7 @@ func (client *Client) DescribeCloudDrivePermissions(request *DescribeCloudDriveP
 
 // Summary:
 //
-// 查询所有无影网盘终端用户的信息
+// Queries users of cloud disks in Cloud Drive Service.
 //
 // @param request - DescribeCloudDriveUsersRequest
 //
@@ -9885,7 +9893,7 @@ func (client *Client) DescribeCloudDriveUsersWithOptions(request *DescribeCloudD
 
 // Summary:
 //
-// 查询所有无影网盘终端用户的信息
+// Queries users of cloud disks in Cloud Drive Service.
 //
 // @param request - DescribeCloudDriveUsersRequest
 //
@@ -9995,6 +10003,10 @@ func (client *Client) DescribeConfigGroup(request *DescribeConfigGroupRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the header information of the cloud computer list.
+//
 // @param request - DescribeCustomizedListHeadersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10043,6 +10055,10 @@ func (client *Client) DescribeCustomizedListHeadersWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the header information of the cloud computer list.
+//
 // @param request - DescribeCustomizedListHeadersRequest
 //
 // @return DescribeCustomizedListHeadersResponse
@@ -10373,7 +10389,7 @@ func (client *Client) DescribeDesktopInfo(request *DescribeDesktopInfoRequest) (
 
 // Summary:
 //
-// 查询云电脑基础元数据
+// Queries the list and metadata of cloud computers in a specific region.
 //
 // @param request - DescribeDesktopMetadataRequest
 //
@@ -10465,7 +10481,7 @@ func (client *Client) DescribeDesktopMetadataWithOptions(request *DescribeDeskto
 
 // Summary:
 //
-// 查询云电脑基础元数据
+// Queries the list and metadata of cloud computers in a specific region.
 //
 // @param request - DescribeDesktopMetadataRequest
 //
@@ -11629,7 +11645,7 @@ func (client *Client) DescribeEcdReportTasks(request *DescribeEcdReportTasksRequ
 
 // Summary:
 //
-// 查询EIP监控
+// Queries the monitoring data of the desktop inbound bandwidth and the desktop outbound bandwidth, or the monitoring data of the workspace bandwidth originated from or destined for the Internet.
 //
 // @param request - DescribeFlowMetricRequest
 //
@@ -11697,7 +11713,7 @@ func (client *Client) DescribeFlowMetricWithOptions(request *DescribeFlowMetricR
 
 // Summary:
 //
-// 查询EIP监控
+// Queries the monitoring data of the desktop inbound bandwidth and the desktop outbound bandwidth, or the monitoring data of the workspace bandwidth originated from or destined for the Internet.
 //
 // @param request - DescribeFlowMetricRequest
 //
@@ -12205,7 +12221,7 @@ func (client *Client) DescribeGlobalDesktopRecords(request *DescribeGlobalDeskto
 
 // Summary:
 //
-// 查询全局定时任务Batch记录
+// Queries the batch information in the execution history of scheduled tasks and returns the summary task execution results.
 //
 // @param request - DescribeGlobalTimerBatchesRequest
 //
@@ -12269,7 +12285,7 @@ func (client *Client) DescribeGlobalTimerBatchesWithOptions(request *DescribeGlo
 
 // Summary:
 //
-// 查询全局定时任务Batch记录
+// Queries the batch information in the execution history of scheduled tasks and returns the summary task execution results.
 //
 // @param request - DescribeGlobalTimerBatchesRequest
 //
@@ -13901,6 +13917,10 @@ func (client *Client) DescribePriceForRenewDesktopOversoldGroup(request *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries Quality of Service (QoS) rules.
+//
 // @param request - DescribeQosRulesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13945,6 +13965,10 @@ func (client *Client) DescribeQosRulesWithOptions(request *DescribeQosRulesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries Quality of Service (QoS) rules.
+//
 // @param request - DescribeQosRulesRequest
 //
 // @return DescribeQosRulesResponse
@@ -13961,7 +13985,7 @@ func (client *Client) DescribeQosRules(request *DescribeQosRulesRequest) (_resul
 
 // Summary:
 //
-// 查询录屏文件列表
+// Queries the screen recording files in all regions.
 //
 // @param request - DescribeRecordFileRequest
 //
@@ -14049,7 +14073,7 @@ func (client *Client) DescribeRecordFileWithOptions(request *DescribeRecordFileR
 
 // Summary:
 //
-// 查询录屏文件列表
+// Queries the screen recording files in all regions.
 //
 // @param request - DescribeRecordFileRequest
 //
@@ -14397,6 +14421,10 @@ func (client *Client) DescribeRenewalPrice(request *DescribeRenewalPriceRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries cloud resources that are associated with a global policy.
+//
 // @param request - DescribeResourceByCenterPolicyIdRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14453,6 +14481,10 @@ func (client *Client) DescribeResourceByCenterPolicyIdWithOptions(request *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries cloud resources that are associated with a global policy.
+//
 // @param request - DescribeResourceByCenterPolicyIdRequest
 //
 // @return DescribeResourceByCenterPolicyIdResponse
@@ -15595,7 +15627,7 @@ func (client *Client) DescribeUsersInGroup(request *DescribeUsersInGroupRequest)
 
 // Summary:
 //
-// Queries the passwords of authorized users of a cloud computer.
+// Queries the passwords for the accounts within a cloud computer image. For example, when the Chrome browser on the cloud computer queries the cached password, it requires the end user to enter the password for identity verification.
 //
 // @param request - DescribeUsersPasswordRequest
 //
@@ -15643,7 +15675,7 @@ func (client *Client) DescribeUsersPasswordWithOptions(request *DescribeUsersPas
 
 // Summary:
 //
-// Queries the passwords of authorized users of a cloud computer.
+// Queries the passwords for the accounts within a cloud computer image. For example, when the Chrome browser on the cloud computer queries the cached password, it requires the end user to enter the password for identity verification.
 //
 // @param request - DescribeUsersPasswordRequest
 //
@@ -15661,7 +15693,7 @@ func (client *Client) DescribeUsersPassword(request *DescribeUsersPasswordReques
 
 // Summary:
 //
-// Queries multi-factor authentication (MFA) devices that are bound to an Active Directory (AD) account.
+// Queries the virtual multi-factor authentication (MFA) devices that are associated with Active Directory (AD) accounts.
 //
 // @param request - DescribeVirtualMFADevicesRequest
 //
@@ -15725,7 +15757,7 @@ func (client *Client) DescribeVirtualMFADevicesWithOptions(request *DescribeVirt
 
 // Summary:
 //
-// Queries multi-factor authentication (MFA) devices that are bound to an Active Directory (AD) account.
+// Queries the virtual multi-factor authentication (MFA) devices that are associated with Active Directory (AD) accounts.
 //
 // @param request - DescribeVirtualMFADevicesRequest
 //
@@ -16027,7 +16059,7 @@ func (client *Client) DisableDesktopsInGroup(request *DisableDesktopsInGroupRequ
 
 // Summary:
 //
-// Disconnects from desktop sessions.
+// Disconnects cloud computer sessions.
 //
 // @param request - DisconnectDesktopSessionsRequest
 //
@@ -16079,7 +16111,7 @@ func (client *Client) DisconnectDesktopSessionsWithOptions(request *DisconnectDe
 
 // Summary:
 //
-// Disconnects from desktop sessions.
+// Disconnects cloud computer sessions.
 //
 // @param request - DisconnectDesktopSessionsRequest
 //
@@ -16705,7 +16737,7 @@ func (client *Client) ExportDesktopListInfo(request *ExportDesktopListInfoReques
 
 // Summary:
 //
-// Obtains the information about an asynchronous task based on the value of the AsyncTaskId parameter that you obtain by calling the CopyCdsFile operation.
+// When you call the CopyCdsFile operation to copy a folder, the operation returns AsyncTaskId. Call this operation specifying the obtained AsyncTaskId, and you can query the information about the asynchronous task.
 //
 // @param request - GetAsyncTaskRequest
 //
@@ -16753,7 +16785,7 @@ func (client *Client) GetAsyncTaskWithOptions(request *GetAsyncTaskRequest, runt
 
 // Summary:
 //
-// Obtains the information about an asynchronous task based on the value of the AsyncTaskId parameter that you obtain by calling the CopyCdsFile operation.
+// When you call the CopyCdsFile operation to copy a folder, the operation returns AsyncTaskId. Call this operation specifying the obtained AsyncTaskId, and you can query the information about the asynchronous task.
 //
 // @param request - GetAsyncTaskRequest
 //
@@ -16877,7 +16909,7 @@ func (client *Client) GetConnectionTicket(request *GetConnectionTicketRequest) (
 
 // Summary:
 //
-// # Obtains the credentials of the stream collaboration
+// Get the stream collaboration credentials for remote assistance or shared collaboration.
 //
 // @param request - GetCoordinateTicketRequest
 //
@@ -16937,7 +16969,7 @@ func (client *Client) GetCoordinateTicketWithOptions(request *GetCoordinateTicke
 
 // Summary:
 //
-// # Obtains the credentials of the stream collaboration
+// Get the stream collaboration credentials for remote assistance or shared collaboration.
 //
 // @param request - GetCoordinateTicketRequest
 //
@@ -17021,7 +17053,7 @@ func (client *Client) GetDesktopGroupDetail(request *GetDesktopGroupDetailReques
 
 // Summary:
 //
-// Queries whether single sign-on (SSO) is enabled for a workspace.
+// Queries whether single sign-on (SSO) is enabled for an office network.
 //
 // @param request - GetOfficeSiteSsoStatusRequest
 //
@@ -17069,7 +17101,7 @@ func (client *Client) GetOfficeSiteSsoStatusWithOptions(request *GetOfficeSiteSs
 
 // Summary:
 //
-// Queries whether single sign-on (SSO) is enabled for a workspace.
+// Queries whether single sign-on (SSO) is enabled for an office network.
 //
 // @param request - GetOfficeSiteSsoStatusRequest
 //
@@ -17859,7 +17891,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// 获取文件列表
+// Gets the download URL of the transferred file.
 //
 // @param request - ListTransferFileDownloadUrlRequest
 //
@@ -17907,7 +17939,7 @@ func (client *Client) ListTransferFileDownloadUrlWithOptions(request *ListTransf
 
 // Summary:
 //
-// 获取文件列表
+// Gets the download URL of the transferred file.
 //
 // @param request - ListTransferFileDownloadUrlRequest
 //
@@ -18863,7 +18895,7 @@ func (client *Client) ModifyCdsFile(request *ModifyCdsFileRequest) (_result *Mod
 
 // Summary:
 //
-// Modifies the link for file sharing.
+// Modify the file sharing settings.
 //
 // @param request - ModifyCdsFileShareLinkRequest
 //
@@ -18975,7 +19007,7 @@ func (client *Client) ModifyCdsFileShareLinkWithOptions(request *ModifyCdsFileSh
 
 // Summary:
 //
-// Modifies the link for file sharing.
+// Modify the file sharing settings.
 //
 // @param request - ModifyCdsFileShareLinkRequest
 //
@@ -19735,7 +19767,7 @@ func (client *Client) ModifyCloudDrivePermission(request *ModifyCloudDrivePermis
 
 // Summary:
 //
-// 修改无影网盘终端用户的属性
+// Modifies users of a cloud disk in Cloud Drive Service.
 //
 // @param request - ModifyCloudDriveUsersRequest
 //
@@ -19795,7 +19827,7 @@ func (client *Client) ModifyCloudDriveUsersWithOptions(request *ModifyCloudDrive
 
 // Summary:
 //
-// 修改无影网盘终端用户的属性
+// Modifies users of a cloud disk in Cloud Drive Service.
 //
 // @param request - ModifyCloudDriveUsersRequest
 //
@@ -22189,7 +22221,7 @@ func (client *Client) ModifyPolicyGroup(request *ModifyPolicyGroupRequest) (_res
 
 // Summary:
 //
-// 修改限速组资源绑定关系
+// Modifies the resources that a Quality of Service (QoS) rule applies to.
 //
 // @param request - ModifyQosEntriesRequest
 //
@@ -22249,7 +22281,7 @@ func (client *Client) ModifyQosEntriesWithOptions(request *ModifyQosEntriesReque
 
 // Summary:
 //
-// 修改限速组资源绑定关系
+// Modifies the resources that a Quality of Service (QoS) rule applies to.
 //
 // @param request - ModifyQosEntriesRequest
 //
@@ -22265,6 +22297,10 @@ func (client *Client) ModifyQosEntries(request *ModifyQosEntriesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a Quality of Service (QoS) rule.
+//
 // @param request - ModifyQosRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -22317,6 +22353,10 @@ func (client *Client) ModifyQosRuleWithOptions(request *ModifyQosRuleRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a Quality of Service (QoS) rule.
+//
 // @param request - ModifyQosRuleRequest
 //
 // @return ModifyQosRuleResponse
@@ -22331,6 +22371,10 @@ func (client *Client) ModifyQosRule(request *ModifyQosRuleRequest) (_result *Mod
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a global policy that is associated with a cloud resource.
+//
 // @param request - ModifyResourceCenterPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -22391,6 +22435,10 @@ func (client *Client) ModifyResourceCenterPolicyWithOptions(request *ModifyResou
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a global policy that is associated with a cloud resource.
+//
 // @param request - ModifyResourceCenterPolicyRequest
 //
 // @return ModifyResourceCenterPolicyResponse
@@ -22958,7 +23006,7 @@ func (client *Client) ModifyUserToDesktopGroup(request *ModifyUserToDesktopGroup
 
 // Summary:
 //
-// Move files or folders.
+// Moves a file or folder on the drive to a new location.
 //
 // @param request - MoveCdsFileRequest
 //
@@ -23026,7 +23074,7 @@ func (client *Client) MoveCdsFileWithOptions(request *MoveCdsFileRequest, runtim
 
 // Summary:
 //
-// Move files or folders.
+// Moves a file or folder on the drive to a new location.
 //
 // @param request - MoveCdsFileRequest
 //
@@ -24230,7 +24278,7 @@ func (client *Client) RevokeCoordinatePrivilege(request *RevokeCoordinatePrivile
 
 // Summary:
 //
-// Runs a PowerShell or batch (.bat) script on Windows cloud desktops.
+// Runs a PowerShell or batch (.bat) command on one or more Windows cloud computers.
 //
 // Description:
 //
@@ -24306,7 +24354,7 @@ func (client *Client) RunCommandWithOptions(request *RunCommandRequest, runtime 
 
 // Summary:
 //
-// Runs a PowerShell or batch (.bat) script on Windows cloud desktops.
+// Runs a PowerShell or batch (.bat) command on one or more Windows cloud computers.
 //
 // Description:
 //
@@ -24710,7 +24758,7 @@ func (client *Client) SetDesktopMaintenance(request *SetDesktopMaintenanceReques
 
 // Summary:
 //
-// Configures the single sign-on (SSO) status of an Active Directory (AD) directory.
+// Enables or disables the single sign-on (SSO) feature for an Active Directory (AD) account-based office network.
 //
 // Description:
 //
@@ -24766,7 +24814,7 @@ func (client *Client) SetDirectorySsoStatusWithOptions(request *SetDirectorySsoS
 
 // Summary:
 //
-// Configures the single sign-on (SSO) status of an Active Directory (AD) directory.
+// Enables or disables the single sign-on (SSO) feature for an Active Directory (AD) account-based office network.
 //
 // Description:
 //
@@ -24870,7 +24918,7 @@ func (client *Client) SetIdpMetadata(request *SetIdpMetadataRequest) (_result *S
 
 // Summary:
 //
-// Enables or disables single sign-on (SSO) for a workspace.
+// Enables or disables single sign-on (SSO) for an office network.
 //
 // @param request - SetOfficeSiteSsoStatusRequest
 //
@@ -24922,7 +24970,7 @@ func (client *Client) SetOfficeSiteSsoStatusWithOptions(request *SetOfficeSiteSs
 
 // Summary:
 //
-// Enables or disables single sign-on (SSO) for a workspace.
+// Enables or disables single sign-on (SSO) for an office network.
 //
 // @param request - SetOfficeSiteSsoStatusRequest
 //
@@ -25176,7 +25224,7 @@ func (client *Client) StopDesktops(request *StopDesktopsRequest) (_result *StopD
 
 // Summary:
 //
-// Stops a Cloud Assistant command that is running on one or more cloud desktops.
+// Stop a process that executes the Cloud Assistant script in one or more cloud computers.
 //
 // Description:
 //
@@ -25232,7 +25280,7 @@ func (client *Client) StopInvocationWithOptions(request *StopInvocationRequest, 
 
 // Summary:
 //
-// Stops a Cloud Assistant command that is running on one or more cloud desktops.
+// Stop a process that executes the Cloud Assistant script in one or more cloud computers.
 //
 // Description:
 //

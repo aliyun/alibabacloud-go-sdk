@@ -20,11 +20,57 @@ type iFilePermissionMember interface {
 }
 
 type FilePermissionMember struct {
+	// The object that you want to grant permissions. The object can be a user or a group.
+	//
 	// This parameter is required.
-	CdsIdentity        *FilePermissionMemberCdsIdentity `json:"CdsIdentity,omitempty" xml:"CdsIdentity,omitempty" type:"Struct"`
-	DisinheritSubGroup *bool                            `json:"DisinheritSubGroup,omitempty" xml:"DisinheritSubGroup,omitempty"`
-	ExpireTime         *int64                           `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	CdsIdentity *FilePermissionMemberCdsIdentity `json:"CdsIdentity,omitempty" xml:"CdsIdentity,omitempty" type:"Struct"`
+	// Indicates whether to disable the permission from users in the subgroup.
+	//
+	// example:
+	//
+	// true
+	DisinheritSubGroup *bool `json:"DisinheritSubGroup,omitempty" xml:"DisinheritSubGroup,omitempty"`
+	// The expiration time. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC
+	//
+	// example:
+	//
+	// 1633598866642
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The role.
+	//
+	// Valid values:
+	//
+	// 	- SystemFileEditorWithoutShareLink: The role that can edit but cannot share files.
+	//
+	// 	- SystemFileUploaderAndDownloaderWithShareLink: The role that can upload, download, and share files.
+	//
+	// 	- SystemFileDownloader: The role that can download files.
+	//
+	// 	- SystemFileEditorWithoutDelete: The role that can edit but cannot edit files.
+	//
+	// 	- SystemFileOwner: The role that can collaborate with others on files.
+	//
+	// 	- SystemFileDownloaderWithShareLink: The role that can download and share files.
+	//
+	// 	- SystemFileUploaderAndViewer: The role that can preview and upload files.
+	//
+	// 	- SystemFileViewer: The role that can preview files.
+	//
+	// 	- SystemFileEditor: The role that can edit files.
+	//
+	// 	- SystemFileUploaderWithShareLink: The role that can upload and share files.
+	//
+	// 	- SystemFileUploader: The role that can upload files.
+	//
+	// 	- SystemFileUploaderAndDownloader: The role that can upload and download files.
+	//
+	// 	- SystemFileMetaViewer: The role that can view file list.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// SystemFileEditor
 	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
 }
 
@@ -82,9 +128,27 @@ func (s *FilePermissionMember) Validate() error {
 }
 
 type FilePermissionMemberCdsIdentity struct {
+	// The user ID or a team ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 16435bdf934248b788b7b3771ee9****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The object type.
+	//
+	// Valid values:
+	//
+	// 	- IT_Group: team
+	//
+	// 	- IT_User: user
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// IT_User
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

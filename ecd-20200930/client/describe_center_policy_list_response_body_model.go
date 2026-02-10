@@ -83,6 +83,7 @@ func (s *DescribeCenterPolicyListResponseBody) Validate() error {
 }
 
 type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
+	AcademicProxy *string `json:"AcademicProxy,omitempty" xml:"AcademicProxy,omitempty"`
 	// Indicates whether the admin permissions are granted to end users.
 	//
 	// >  This parameter is in private preview and only available to specific users.
@@ -108,6 +109,9 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	// on
 	CameraRedirect    *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
 	ClientControlMenu *string `json:"ClientControlMenu,omitempty" xml:"ClientControlMenu,omitempty"`
+	ClientHibernate   *string `json:"ClientHibernate,omitempty" xml:"ClientHibernate,omitempty"`
+	ClientRestart     *string `json:"ClientRestart,omitempty" xml:"ClientRestart,omitempty"`
+	ClientShutdown    *string `json:"ClientShutdown,omitempty" xml:"ClientShutdown,omitempty"`
 	// The logon method control rules.
 	ClientTypes []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsClientTypes `json:"ClientTypes,omitempty" xml:"ClientTypes,omitempty" type:"Repeated"`
 	// The read/write permissions on the clipboard.
@@ -229,6 +233,9 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	// off
 	GpuAcceleration *string `json:"GpuAcceleration,omitempty" xml:"GpuAcceleration,omitempty"`
 	HoverConfigMsg  *string `json:"HoverConfigMsg,omitempty" xml:"HoverConfigMsg,omitempty"`
+	HoverHibernate  *string `json:"HoverHibernate,omitempty" xml:"HoverHibernate,omitempty"`
+	HoverRestart    *string `json:"HoverRestart,omitempty" xml:"HoverRestart,omitempty"`
+	HoverShutdown   *string `json:"HoverShutdown,omitempty" xml:"HoverShutdown,omitempty"`
 	// The web client access policy.
 	//
 	// example:
@@ -299,7 +306,8 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// off
-	MobileRestart *string `json:"MobileRestart,omitempty" xml:"MobileRestart,omitempty"`
+	MobileRestart  *string `json:"MobileRestart,omitempty" xml:"MobileRestart,omitempty"`
+	MobileSafeMenu *string `json:"MobileSafeMenu,omitempty" xml:"MobileSafeMenu,omitempty"`
 	// Indicates whether the Stop button is displayed in the DesktopAssistant menu when end users connect to cloud computers from Android clients.
 	//
 	// >  This feature applies to only mobile clients of version 7.4.0 or later.
@@ -307,7 +315,11 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// off
-	MobileShutdown *string `json:"MobileShutdown,omitempty" xml:"MobileShutdown,omitempty"`
+	MobileShutdown     *string `json:"MobileShutdown,omitempty" xml:"MobileShutdown,omitempty"`
+	MobileWuyingKeeper *string `json:"MobileWuyingKeeper,omitempty" xml:"MobileWuyingKeeper,omitempty"`
+	MobileWyAssistant  *string `json:"MobileWyAssistant,omitempty" xml:"MobileWyAssistant,omitempty"`
+	ModelLibrary       *string `json:"ModelLibrary,omitempty" xml:"ModelLibrary,omitempty"`
+	MultiScreen        *string `json:"MultiScreen,omitempty" xml:"MultiScreen,omitempty"`
 	// The policy name.
 	//
 	// example:
@@ -360,6 +372,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	//
 	// AVAILABLE
 	PolicyStatus *string `json:"PolicyStatus,omitempty" xml:"PolicyStatus,omitempty"`
+	PortProxy    *string `json:"PortProxy,omitempty" xml:"PortProxy,omitempty"`
 	// The printer redirection policy.
 	//
 	// example:
@@ -628,6 +641,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	//
 	// on
 	WatermarkSecurity *string `json:"WatermarkSecurity,omitempty" xml:"WatermarkSecurity,omitempty"`
+	WatermarkShadow   *string `json:"WatermarkShadow,omitempty" xml:"WatermarkShadow,omitempty"`
 	// The watermark transparency. A higher value means the watermark is less transparent. Valid values: 10 to 100.
 	//
 	// example:
@@ -656,6 +670,10 @@ func (s DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GoString() str
 	return s.String()
 }
 
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetAcademicProxy() *string {
+	return s.AcademicProxy
+}
+
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetAdminAccess() *string {
 	return s.AdminAccess
 }
@@ -678,6 +696,18 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetCameraRedi
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetClientControlMenu() *string {
 	return s.ClientControlMenu
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetClientHibernate() *string {
+	return s.ClientHibernate
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetClientRestart() *string {
+	return s.ClientRestart
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetClientShutdown() *string {
+	return s.ClientShutdown
 }
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetClientTypes() []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsClientTypes {
@@ -788,6 +818,18 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetHoverConfi
 	return s.HoverConfigMsg
 }
 
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetHoverHibernate() *string {
+	return s.HoverHibernate
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetHoverRestart() *string {
+	return s.HoverRestart
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetHoverShutdown() *string {
+	return s.HoverShutdown
+}
+
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetHtml5Access() *string {
 	return s.Html5Access
 }
@@ -840,8 +882,28 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetMobileRest
 	return s.MobileRestart
 }
 
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetMobileSafeMenu() *string {
+	return s.MobileSafeMenu
+}
+
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetMobileShutdown() *string {
 	return s.MobileShutdown
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetMobileWuyingKeeper() *string {
+	return s.MobileWuyingKeeper
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetMobileWyAssistant() *string {
+	return s.MobileWyAssistant
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetModelLibrary() *string {
+	return s.ModelLibrary
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetMultiScreen() *string {
+	return s.MultiScreen
 }
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetName() *string {
@@ -874,6 +936,10 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetPolicyGrou
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetPolicyStatus() *string {
 	return s.PolicyStatus
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetPortProxy() *string {
+	return s.PortProxy
 }
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetPrinterRedirection() *string {
@@ -1080,6 +1146,10 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetWatermarkS
 	return s.WatermarkSecurity
 }
 
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetWatermarkShadow() *string {
+	return s.WatermarkShadow
+}
+
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetWatermarkTransparencyValue() *int32 {
 	return s.WatermarkTransparencyValue
 }
@@ -1090,6 +1160,11 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetWatermarkT
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetWyAssistant() *string {
 	return s.WyAssistant
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetAcademicProxy(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.AcademicProxy = &v
+	return s
 }
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetAdminAccess(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
@@ -1119,6 +1194,21 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetCameraRedi
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetClientControlMenu(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.ClientControlMenu = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetClientHibernate(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.ClientHibernate = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetClientRestart(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.ClientRestart = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetClientShutdown(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.ClientShutdown = &v
 	return s
 }
 
@@ -1257,6 +1347,21 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetHoverConfi
 	return s
 }
 
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetHoverHibernate(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.HoverHibernate = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetHoverRestart(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.HoverRestart = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetHoverShutdown(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.HoverShutdown = &v
+	return s
+}
+
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetHtml5Access(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.Html5Access = &v
 	return s
@@ -1322,8 +1427,33 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetMobileRest
 	return s
 }
 
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetMobileSafeMenu(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.MobileSafeMenu = &v
+	return s
+}
+
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetMobileShutdown(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.MobileShutdown = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetMobileWuyingKeeper(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.MobileWuyingKeeper = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetMobileWyAssistant(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.MobileWyAssistant = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetModelLibrary(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.ModelLibrary = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetMultiScreen(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.MultiScreen = &v
 	return s
 }
 
@@ -1364,6 +1494,11 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetPolicyGrou
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetPolicyStatus(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.PolicyStatus = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetPortProxy(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.PortProxy = &v
 	return s
 }
 
@@ -1619,6 +1754,11 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetWatermarkR
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetWatermarkSecurity(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.WatermarkSecurity = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetWatermarkShadow(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.WatermarkShadow = &v
 	return s
 }
 
