@@ -1,3 +1,9 @@
+2026-02-10 Version: v5.5.0
+- Support API CreateDigitalSignOrder.
+- Support API CreateDigitalSmsTemplate.
+- Support API QueryDigitalSignByName.
+
+
 2026-01-05 Version: v5.4.0
 - Support API CreateSmsAppIcpRecord.
 - Support API CreateSmsTrademark.

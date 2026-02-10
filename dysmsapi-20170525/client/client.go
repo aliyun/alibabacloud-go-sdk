@@ -597,7 +597,7 @@ func (client *Client) ChangeSignatureQualification(request *ChangeSignatureQuali
 
 // Summary:
 //
-// Checks whether a mobile phone number can receive card messages.
+// Queries whether some mobile phone numbers support card messages.
 //
 // Description:
 //
@@ -651,7 +651,7 @@ func (client *Client) CheckMobilesCardSupportWithOptions(request *CheckMobilesCa
 
 // Summary:
 //
-// Checks whether a mobile phone number can receive card messages.
+// Queries whether some mobile phone numbers support card messages.
 //
 // Description:
 //
@@ -857,7 +857,209 @@ func (client *Client) CreateCardSmsTemplate(request *CreateCardSmsTemplateReques
 
 // Summary:
 //
-// 创建短链
+// 数字短信签名操作订单
+//
+// @param tmpReq - CreateDigitalSignOrderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDigitalSignOrderResponse
+func (client *Client) CreateDigitalSignOrderWithOptions(tmpReq *CreateDigitalSignOrderRequest, runtime *dara.RuntimeOptions) (_result *CreateDigitalSignOrderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateDigitalSignOrderShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.OrderContext) {
+		request.OrderContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OrderContext, dara.String("OrderContext"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExtendMessage) {
+		query["ExtendMessage"] = request.ExtendMessage
+	}
+
+	if !dara.IsNil(request.OrderContextShrink) {
+		query["OrderContext"] = request.OrderContextShrink
+	}
+
+	if !dara.IsNil(request.OrderType) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.QualificationId) {
+		query["QualificationId"] = request.QualificationId
+	}
+
+	if !dara.IsNil(request.QualificationVersion) {
+		query["QualificationVersion"] = request.QualificationVersion
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SignId) {
+		query["SignId"] = request.SignId
+	}
+
+	if !dara.IsNil(request.SignIndustry) {
+		query["SignIndustry"] = request.SignIndustry
+	}
+
+	if !dara.IsNil(request.SignName) {
+		query["SignName"] = request.SignName
+	}
+
+	if !dara.IsNil(request.SignSource) {
+		query["SignSource"] = request.SignSource
+	}
+
+	if !dara.IsNil(request.Submitter) {
+		query["Submitter"] = request.Submitter
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDigitalSignOrder"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDigitalSignOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 数字短信签名操作订单
+//
+// @param request - CreateDigitalSignOrderRequest
+//
+// @return CreateDigitalSignOrderResponse
+func (client *Client) CreateDigitalSignOrder(request *CreateDigitalSignOrderRequest) (_result *CreateDigitalSignOrderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateDigitalSignOrderResponse{}
+	_body, _err := client.CreateDigitalSignOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数字短信模板
+//
+// @param request - CreateDigitalSmsTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDigitalSmsTemplateResponse
+func (client *Client) CreateDigitalSmsTemplateWithOptions(request *CreateDigitalSmsTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateDigitalSmsTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SignName) {
+		query["SignName"] = request.SignName
+	}
+
+	if !dara.IsNil(request.TemplateContents) {
+		query["TemplateContents"] = request.TemplateContents
+	}
+
+	if !dara.IsNil(request.TemplateName) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDigitalSmsTemplate"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDigitalSmsTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数字短信模板
+//
+// @param request - CreateDigitalSmsTemplateRequest
+//
+// @return CreateDigitalSmsTemplateResponse
+func (client *Client) CreateDigitalSmsTemplate(request *CreateDigitalSmsTemplateRequest) (_result *CreateDigitalSmsTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateDigitalSmsTemplateResponse{}
+	_body, _err := client.CreateDigitalSmsTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates personalized short URLs. You can specify multiple mobile numbers and source URLs in the request. The operation returns the short URLs corresponding to the specified mobile numbers. You can obtain the click information of end users based on different short URLs. The click information helps you realize secondary marketing. QPS limit You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - CreateSmartShortUrlRequest
 //
@@ -921,7 +1123,7 @@ func (client *Client) CreateSmartShortUrlWithOptions(request *CreateSmartShortUr
 
 // Summary:
 //
-// 创建短链
+// Creates personalized short URLs. You can specify multiple mobile numbers and source URLs in the request. The operation returns the short URLs corresponding to the specified mobile numbers. You can obtain the click information of end users based on different short URLs. The click information helps you realize secondary marketing. QPS limit You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - CreateSmartShortUrlRequest
 //
@@ -3347,6 +3549,80 @@ func (client *Client) QueryCardSmsTemplateReport(request *QueryCardSmsTemplateRe
 
 // Summary:
 //
+// 获取数字短信签名通过签名name
+//
+// @param request - QueryDigitalSignByNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDigitalSignByNameResponse
+func (client *Client) QueryDigitalSignByNameWithOptions(request *QueryDigitalSignByNameRequest, runtime *dara.RuntimeOptions) (_result *QueryDigitalSignByNameResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SignName) {
+		query["SignName"] = request.SignName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryDigitalSignByName"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryDigitalSignByNameResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数字短信签名通过签名name
+//
+// @param request - QueryDigitalSignByNameRequest
+//
+// @return QueryDigitalSignByNameResponse
+func (client *Client) QueryDigitalSignByName(request *QueryDigitalSignByNameRequest) (_result *QueryDigitalSignByNameResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryDigitalSignByNameResponse{}
+	_body, _err := client.QueryDigitalSignByNameWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询验证码签名
 //
 // @param request - QueryExtCodeSignRequest
@@ -3433,7 +3709,7 @@ func (client *Client) QueryExtCodeSign(request *QueryExtCodeSignRequest) (_resul
 
 // Summary:
 //
-// Checks whether a mobile phone number can receive card messages.
+// Queries whether some mobile phone numbers support card messages.
 //
 // @param tmpReq - QueryMobilesCardSupportRequest
 //
@@ -3491,7 +3767,7 @@ func (client *Client) QueryMobilesCardSupportWithOptions(tmpReq *QueryMobilesCar
 
 // Summary:
 //
-// Checks whether a mobile phone number can receive card messages.
+// Queries whether some mobile phone numbers support card messages.
 //
 // @param request - QueryMobilesCardSupportRequest
 //
@@ -3509,7 +3785,7 @@ func (client *Client) QueryMobilesCardSupport(request *QueryMobilesCardSupportRe
 
 // Summary:
 //
-// 点击明细查询
+// Queries the information about clicks within a specific time range or related to a mobile number. QPS limit You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - QueryPageSmartShortUrlLogRequest
 //
@@ -3585,7 +3861,7 @@ func (client *Client) QueryPageSmartShortUrlLogWithOptions(request *QueryPageSma
 
 // Summary:
 //
-// 点击明细查询
+// Queries the information about clicks within a specific time range or related to a mobile number. QPS limit You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - QueryPageSmartShortUrlLogRequest
 //

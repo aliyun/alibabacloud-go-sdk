@@ -43,8 +43,7 @@ type QuerySendDetailsResponseBody struct {
 	// example:
 	//
 	// 819BE656-D2E0-4858-8B21-B2E477085AAF
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the message.
+	RequestId         *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SmsSendDetailDTOs *QuerySendDetailsResponseBodySmsSendDetailDTOs `json:"SmsSendDetailDTOs,omitempty" xml:"SmsSendDetailDTOs,omitempty" type:"Struct"`
 	// The number of sent messages.
 	//
@@ -151,63 +150,13 @@ func (s *QuerySendDetailsResponseBodySmsSendDetailDTOs) Validate() error {
 }
 
 type QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO struct {
-	// The content of the message.
-	//
-	// example:
-	//
-	// 【Aliyun】This is a test message.
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The status code returned by the carrier.
-	//
-	// 	- If the message is delivered, "DELIVERED" is returned.
-	//
-	// 	- For information about the error codes that may be returned if the message is not delivered, see [error codes](https://help.aliyun.com/document_detail/101347.html).
-	//
-	// example:
-	//
-	// DELIVERED
-	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The extended field.
-	//
-	// example:
-	//
-	// 123
-	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	// The mobile numbers of the recipients.
-	//
-	// example:
-	//
-	// 1390000****
-	PhoneNum *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
-	// The date and time when the message was received.
-	//
-	// example:
-	//
-	// 2019-01-08 16:44:13
-	ReceiveDate *string `json:"ReceiveDate,omitempty" xml:"ReceiveDate,omitempty"`
-	// The date and time when the message was sent.
-	//
-	// example:
-	//
-	// 2019-01-08 16:44:10
-	SendDate *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
-	// The delivery status of the message. Valid values:
-	//
-	// 	- **1**: The message has not received a delivery receipt yet.
-	//
-	// 	- **2**: The message failed to be delivered.
-	//
-	// 	- **3**: The message was delivered.
-	//
-	// example:
-	//
-	// 3
-	SendStatus *int64 `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
-	// The ID of the message template.
-	//
-	// example:
-	//
-	// SMS_12231****
+	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	ErrCode      *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	OutId        *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	PhoneNum     *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
+	ReceiveDate  *string `json:"ReceiveDate,omitempty" xml:"ReceiveDate,omitempty"`
+	SendDate     *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
+	SendStatus   *int64  `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 

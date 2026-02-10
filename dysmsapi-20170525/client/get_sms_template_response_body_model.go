@@ -75,8 +75,7 @@ type GetSmsTemplateResponseBody struct {
 	// example:
 	//
 	// 2024-06-03 10:02:34
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// File information, compatible with signatures created by the [AddSmsSign](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-addsmstemplate?spm) API.
+	CreateDate  *string                                `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	FileUrlList *GetSmsTemplateResponseBodyFileUrlList `json:"FileUrlList,omitempty" xml:"FileUrlList,omitempty" type:"Struct"`
 	// International/Hong Kong, Macao, and Taiwan template type. When the **TemplateType*	- parameter is **3**, this parameter is required for international/Hong Kong, Macao, and Taiwan templates, with values:
 	//
@@ -95,8 +94,7 @@ type GetSmsTemplateResponseBody struct {
 	// example:
 	//
 	// OK
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Additional documentation information, supplementing uploaded business proof files or operational screenshots file list.
+	Message             *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
 	MoreDataFileUrlList *GetSmsTemplateResponseBodyMoreDataFileUrlList `json:"MoreDataFileUrlList,omitempty" xml:"MoreDataFileUrlList,omitempty" type:"Struct"`
 	// Work order number.
 	//
