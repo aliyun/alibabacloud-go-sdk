@@ -26,30 +26,56 @@ type iImageItem interface {
 }
 
 type ImageItem struct {
+	// The type of the image accelerator. Valid values:
+	//
+	// 	- cpu
+	//
+	// 	- gpu
+	//
 	// example:
 	//
 	// gpu
 	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	// The creator of the image.
+	//
 	// example:
 	//
 	// ken
 	AuthorId *string `json:"AuthorId,omitempty" xml:"AuthorId,omitempty"`
+	// The computing framework that is encapsulated by the image. Valid values:
+	//
+	// 	- TFJob
+	//
+	// 	- PyTorchJob
+	//
 	// example:
 	//
 	// PyTorchJob
 	Framework *string `json:"Framework,omitempty" xml:"Framework,omitempty"`
+	// The image type. Valid values:
+	//
+	// 	- Community
+	//
+	// 	- PAI
+	//
 	// example:
 	//
 	// Community
 	ImageProviderType *string `json:"ImageProviderType,omitempty" xml:"ImageProviderType,omitempty"`
+	// The tag of the docker image.
+	//
 	// example:
 	//
 	// tensorflow-training:2.3-cpu-py36-ubuntu18.04
 	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	// The image URL address.
+	//
 	// example:
 	//
 	// registry.cn-beijing.aliyuncs.com/pai-dlc/tensorflow-training:2.3-cpu-py36-ubuntu18.04
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// The VPC endpoint of the image URL. This address provides faster access speed.
+	//
 	// example:
 	//
 	// registry-vpc.cn-beijing.aliyuncs.com/pai-dlc/tensorflow-training:2.3-cpu-py36-ubuntu18.04

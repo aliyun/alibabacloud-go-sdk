@@ -28,34 +28,54 @@ type iTensorboardDataSourceSpec interface {
 }
 
 type TensorboardDataSourceSpec struct {
+	// The file type that corresponds to the URI in the dataset configurations.
+	//
 	// example:
 	//
 	// OSS
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The directory prefix of the dataset in the TensorBoard task.
+	//
 	// example:
 	//
 	// dlcJobName
 	DirectoryName *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
+	// The full summary path.
+	//
 	// example:
 	//
 	// oss://xxxxx/tensorboard/run1
 	FullSummaryPath *string `json:"FullSummaryPath,omitempty" xml:"FullSummaryPath,omitempty"`
+	// The ID of the dataset configurations. In most cases, the ID of the dataset configurations is the ID of a dataset or task.
+	//
 	// example:
 	//
 	// d-vf2fdhxxxxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the dataset configurations. In most cases, the name of the dataset configurations is the name of a dataset or task.
+	//
 	// example:
 	//
 	// dlcJobName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The dataset type.
+	//
+	// 	- datasource: configure a dataset based on the dataset type.
+	//
+	// 	- dlcjob: configure a dataset based on the task type.
+	//
 	// example:
 	//
 	// datasource
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The summary path.
+	//
 	// example:
 	//
 	// /tensorboard/run1
 	SummaryPath *string `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
+	// The file system URI in the dataset configurations.
+	//
 	// example:
 	//
 	// oss://.oss-cn-shanghai-finance-1.aliyuncs.com/

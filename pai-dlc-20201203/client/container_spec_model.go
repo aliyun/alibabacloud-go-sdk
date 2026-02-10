@@ -26,18 +26,28 @@ type iContainerSpec interface {
 }
 
 type ContainerSpec struct {
-	Args    []*string `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
+	// The command parameters.
+	Args []*string `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
+	// The user command.
 	Command []*string `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
-	Env     []*EnvVar `json:"Env,omitempty" xml:"Env,omitempty" type:"Repeated"`
+	// The environment variables.
+	Env []*EnvVar `json:"Env,omitempty" xml:"Env,omitempty" type:"Repeated"`
+	// The endpoint of the container image.
+	//
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.com/pai-dlc/curl:v1.0.0
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The name of the container.
+	//
 	// example:
 	//
 	// data-init
-	Name      *string               `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The container resources.
 	Resources *ResourceRequirements `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	// The working directory in the container.
+	//
 	// example:
 	//
 	// /root

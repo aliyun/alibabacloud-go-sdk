@@ -18,9 +18,26 @@ type iSpotSpec interface {
 }
 
 type SpotSpec struct {
+	// The maximum discount. Specify only one of SpotDiscountLimit and SpotPriceLimit.
+	//
+	// example:
+	//
+	// 0.8
 	SpotDiscountLimit *float32 `json:"SpotDiscountLimit,omitempty" xml:"SpotDiscountLimit,omitempty"`
-	SpotPriceLimit    *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
-	SpotStrategy      *string  `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	// The maximum price. Unit: CNY/minute. Specify only one of SpotDiscountLimit and SpotPriceLimit.
+	//
+	// example:
+	//
+	// 0.4744
+	SpotPriceLimit *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
+	// The spot policy. Valid values:
+	//
+	// 	- SpotWithPriceLimit
+	//
+	// example:
+	//
+	// SpotWithPriceLimit
+	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 }
 
 func (s SpotSpec) String() string {

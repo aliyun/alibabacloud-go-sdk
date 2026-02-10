@@ -18,8 +18,23 @@ type iResourceLimit interface {
 }
 
 type ResourceLimit struct {
-	CPU    *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	GPU    *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// The number of GPU cores.
+	//
+	// example:
+	//
+	// 2
+	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// The number of GPU cores.
+	//
+	// example:
+	//
+	// 20
+	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// The memory capacity limit, in Gi.
+	//
+	// example:
+	//
+	// 10Gi
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
 }
 

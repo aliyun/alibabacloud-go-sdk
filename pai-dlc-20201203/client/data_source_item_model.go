@@ -36,50 +36,74 @@ type iDataSourceItem interface {
 }
 
 type DataSourceItem struct {
+	// The data source ID.
+	//
 	// example:
 	//
-	// data-20210114104214-vf9lowjt3pso
+	// data-20210114104214-xxxxxxx
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The data source type. Only File Storage NAS (NAS) file systems are supported.
+	//
 	// example:
 	//
 	// nas
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The data source description.
+	//
 	// example:
 	//
 	// data source of dlc examples
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The data source name.
+	//
 	// example:
 	//
 	// nas-data
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The endpoint of the Alibaba Cloud OSS file system.
+	//
 	// example:
 	//
 	// oss-cn-beijing-internal.aliyuncs.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The ID of the NAS file system. For more information, see [Alibaba Cloud documentation](https://help.aliyun.com/document_detail/185212.html).
+	//
 	// example:
 	//
 	// 1ca404****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The time when the data source was created. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2021-01-12T14:35:00Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the data source was last modified. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:00Z
 	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	// The local path of the container that is attached to the runtime of the task.
+	//
 	// example:
 	//
 	// /root/data/
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The configuration options of the Alibaba Cloud OSS file system.
+	//
 	// example:
 	//
 	// {"key": "value"}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The path of the Alibaba Cloud Object Storage Service (OSS) file system.
+	//
 	// example:
 	//
 	// oss://mybucket/path/to/dir
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The ID of the Alibaba Cloud account that creates the data source.
+	//
 	// example:
 	//
 	// 123456789

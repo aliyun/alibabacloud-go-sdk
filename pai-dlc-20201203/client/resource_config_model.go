@@ -22,22 +22,32 @@ type iResourceConfig interface {
 }
 
 type ResourceConfig struct {
+	// The number of vCPUs.
+	//
 	// example:
 	//
 	// 10
 	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// The number of GPUs.
+	//
 	// example:
 	//
 	// 3
 	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// The GPU type.
+	//
 	// example:
 	//
 	// Tesla-V100-16G
 	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// The memory size.
+	//
 	// example:
 	//
 	// 10Gi
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The shared memory capacity.
+	//
 	// example:
 	//
 	// 5Gi

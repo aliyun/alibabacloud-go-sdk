@@ -48,37 +48,77 @@ type iJobSpec interface {
 }
 
 type JobSpec struct {
-	AssignNodeSpec  *AssignNodeSpec  `json:"AssignNodeSpec,omitempty" xml:"AssignNodeSpec,omitempty"`
+	// The scheduling node configurations.
+	AssignNodeSpec *AssignNodeSpec `json:"AssignNodeSpec,omitempty" xml:"AssignNodeSpec,omitempty"`
+	// The auto scaling configurations.
 	AutoScalingSpec *AutoScalingSpec `json:"AutoScalingSpec,omitempty" xml:"AutoScalingSpec,omitempty"`
+	// The hardware specifications of the worker. For more information, see [Billing of DLC](https://help.aliyun.com/document_detail/171758.html) of PAI.
+	//
+	// >  The price varies based on instance types.
+	//
 	// example:
 	//
 	// ecs.c6.large
-	EcsSpec      *string       `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	// The additional pod configurations.
 	ExtraPodSpec *ExtraPodSpec `json:"ExtraPodSpec,omitempty" xml:"ExtraPodSpec,omitempty"`
+	// The address of the image that is run by the worker node. You can call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain the image provided by PAI. You can also specify a third-party public image.
+	//
 	// example:
 	//
-	// registry.cn-hangzhou.aliyuncs.com/pai-dlc/tensorflow-training:1.12.2PAI-cpu-py27-ubuntu16.04
-	Image       *string      `json:"Image,omitempty" xml:"Image,omitempty"`
+	// registry-vpc.cn-hangzhou.aliyuncs.com/cloud-dsw/tensorflow:1.12PAI-gpu-py36-cu101-ubuntu18.04
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The configuration of the private image.
 	ImageConfig *ImageConfig `json:"ImageConfig,omitempty" xml:"ImageConfig,omitempty"`
 	// Deprecated
-	IsCheif         *bool             `json:"IsCheif,omitempty" xml:"IsCheif,omitempty"`
-	IsChief         *bool             `json:"IsChief,omitempty" xml:"IsChief,omitempty"`
+	//
+	// Deprecated.
+	IsCheif *bool `json:"IsCheif,omitempty" xml:"IsCheif,omitempty"`
+	// Whether the role is a Chief role. Chief role must be unique.
+	IsChief *bool `json:"IsChief,omitempty" xml:"IsChief,omitempty"`
+	// The list of local mount configurations.
 	LocalMountSpecs []*LocalMountSpec `json:"LocalMountSpecs,omitempty" xml:"LocalMountSpecs,omitempty" type:"Repeated"`
+	// The number of replicas.
+	//
 	// example:
 	//
 	// 1
-	PodCount            *int64               `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
-	ResourceConfig      *ResourceConfig      `json:"ResourceConfig,omitempty" xml:"ResourceConfig,omitempty"`
-	RestartPolicy       *string              `json:"RestartPolicy,omitempty" xml:"RestartPolicy,omitempty"`
-	ServiceSpec         *ServiceSpec         `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
+	PodCount *int64 `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
+	// The resource configurations.
+	ResourceConfig *ResourceConfig `json:"ResourceConfig,omitempty" xml:"ResourceConfig,omitempty"`
+	// The restart policy. Valid values: Always, Never, OnFailure, and ExitCode.
+	//
+	// example:
+	//
+	// ExitCode
+	RestartPolicy *string `json:"RestartPolicy,omitempty" xml:"RestartPolicy,omitempty"`
+	// The service configurations.
+	ServiceSpec *ServiceSpec `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
+	// The configurations of the preemptible instance.
 	SpotSpec            *SpotSpec            `json:"SpotSpec,omitempty" xml:"SpotSpec,omitempty"`
 	StartupDependencies []*StartupDependency `json:"StartupDependencies,omitempty" xml:"StartupDependencies,omitempty" type:"Repeated"`
 	SystemDisk          *SystemDisk          `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
+	// The worker type, which is related to JobType. The valid values of this parameter vary based on the value of JobType.
+	//
+	// 	- Valid values when JobType is set to **TFJob**: Chief, PS, Worker, Evaluator, and GraphLearn.
+	//
+	// 	- Valid values when JobType is set to **PyTorchJob**: Worker and Master.
+	//
+	// 	- Valid values when JobType is set to **XGBoostJob**: Worker and Master.
+	//
+	// 	- Valid values when JobType is set to **OneFlowJob**: Worker and Master.
+	//
+	// 	- Valid values when JobType is set to **ElasticBatch**: Worker and Master.
+	//
+	// The Master node in jobs of the PyTorchJob, XGBoostJob, OneFlowJob, or ElasticBatch type is optional. If you do not specify the Master node, the system automatically uses the first Worker node as the Master node.
+	//
 	// example:
 	//
 	// Worker
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// Deprecated
+	//
+	// Whether to use preemptible instances.
 	//
 	// example:
 	//

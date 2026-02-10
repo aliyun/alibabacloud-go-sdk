@@ -20,13 +20,26 @@ type iImageConfig interface {
 }
 
 type ImageConfig struct {
+	// The authentication information of the image repository.
 	Auth *string `json:"Auth,omitempty" xml:"Auth,omitempty"`
+	// The address of the image repository.
+	//
 	// example:
 	//
-	// registry.cn-hangzhou.aliyuncs.com
+	// docker****registry.com
 	DockerRegistry *string `json:"DockerRegistry,omitempty" xml:"DockerRegistry,omitempty"`
-	Password       *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Username       *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The password that is used to log on to the image repository.
+	//
+	// example:
+	//
+	// password
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The username that is used to log on to the image repository.
+	//
+	// example:
+	//
+	// username
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s ImageConfig) String() string {

@@ -126,185 +126,317 @@ type iJobItem interface {
 }
 
 type JobItem struct {
+	// The visibility of the job.
+	//
 	// example:
 	//
 	// PUBLIC
-	Accessibility    *string               `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	ClusterId        *string               `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CodeSource       *JobItemCodeSource    `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
-	CredentialConfig *CredentialConfig     `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	DataSources      []*JobItemDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The cluster ID.
+	//
+	// example:
+	//
+	// ****1316721349****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The code source used by the job.
+	CodeSource *JobItemCodeSource `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
+	// The credential configurations associated with the job.
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// A list of all data sources used by the job.
+	DataSources []*JobItemDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	// The job name.
+	//
 	// example:
 	//
 	// tf-mnist-test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The duration of the job. Unit: seconds.
+	//
 	// example:
 	//
 	// 3602
-	Duration    *int64          `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The elastic parameters of the job.
 	ElasticSpec *JobElasticSpec `json:"ElasticSpec,omitempty" xml:"ElasticSpec,omitempty"`
+	// Indicates whether PreemptibleJob is enabled.
+	//
 	// example:
 	//
 	// false
 	EnablePreemptibleJob *bool `json:"EnablePreemptibleJob,omitempty" xml:"EnablePreemptibleJob,omitempty"`
+	// Indicates whether DeBugger is enabled.
+	//
 	// example:
 	//
 	// false
-	EnabledDebugger *bool              `json:"EnabledDebugger,omitempty" xml:"EnabledDebugger,omitempty"`
-	Envs            map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	EnabledDebugger *bool `json:"EnabledDebugger,omitempty" xml:"EnabledDebugger,omitempty"`
+	// The environment variables that are injected into the job run time.
+	Envs map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	// The time when the job was created (UTC).
+	//
 	// example:
 	//
 	// 2021-01-12T14:35:01Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the job failed (UTC).
+	//
 	// example:
 	//
 	// 2021-01-12T14:35:01Z
 	GmtFailedTime *string `json:"GmtFailedTime,omitempty" xml:"GmtFailedTime,omitempty"`
+	// The time when the job ended (UTC).
+	//
 	// example:
 	//
 	// 2021-01-12T15:36:08Z
 	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
+	// The time when the job was modified (UTC).
+	//
 	// example:
 	//
 	// 2021-01-12T15:36:08Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The time when the job started (UTC).
+	//
 	// example:
 	//
 	// 2021-01-12T14:35:01Z
 	GmtRunningTime *string `json:"GmtRunningTime,omitempty" xml:"GmtRunningTime,omitempty"`
+	// The time when the job stopped (UTC).
+	//
 	// example:
 	//
 	// 2021-01-12T14:35:01Z
 	GmtStoppedTime *string `json:"GmtStoppedTime,omitempty" xml:"GmtStoppedTime,omitempty"`
+	// The time when the job was submitted (UTC).
+	//
 	// example:
 	//
 	// 2021-01-12T14:35:01Z
 	GmtSubmittedTime *string `json:"GmtSubmittedTime,omitempty" xml:"GmtSubmittedTime,omitempty"`
+	// The time when the job succeeded (UTC).
+	//
 	// example:
 	//
 	// 2021-01-12T14:35:01Z
 	GmtSuccessedTime *string `json:"GmtSuccessedTime,omitempty" xml:"GmtSuccessedTime,omitempty"`
+	// Indicates whether the job is deleted.
+	//
 	// example:
 	//
 	// false
 	IsDeleted *bool `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	// The ID of the job.
+	//
 	// example:
 	//
-	// dlc-20210126170216-mtl37ge7gkvdz
+	// dlc-20210126170216-********
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The maximum running duration of the job.
+	//
 	// example:
 	//
 	// 1
 	JobMaxRunningTimeMinutes *int64              `json:"JobMaxRunningTimeMinutes,omitempty" xml:"JobMaxRunningTimeMinutes,omitempty"`
 	JobReplicaStatuses       []*JobReplicaStatus `json:"JobReplicaStatuses,omitempty" xml:"JobReplicaStatuses,omitempty" type:"Repeated"`
-	JobSpecs                 []*JobSpec          `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
+	// The node configurations of the job run time.
+	JobSpecs []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
+	// The job type. Valid values:
+	//
+	// 	- TFJob
+	//
+	// 	- PyTorchJob
+	//
+	// 	- MPIJob
+	//
+	// 	- XGBoostJob
+	//
+	// 	- OneFlowJob
+	//
+	// 	- ElasticBatchJob
+	//
+	// 	- RayJob
+	//
+	// 	- SlurmJob
+	//
 	// example:
 	//
 	// TFJob
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The number of nodes.
+	//
 	// example:
 	//
 	// 1
-	NodeCount *string    `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	NodeNames []*string  `json:"NodeNames,omitempty" xml:"NodeNames,omitempty" type:"Repeated"`
-	Pods      []*PodItem `json:"Pods,omitempty" xml:"Pods,omitempty" type:"Repeated"`
+	NodeCount *string `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// The node names.
+	NodeNames []*string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty" type:"Repeated"`
+	// The pods.
+	Pods []*PodItem `json:"Pods,omitempty" xml:"Pods,omitempty" type:"Repeated"`
+	// The priority of the job.
+	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The reason code for the job to enter the current status. Valid values:
+	//
+	// 	- InvalidParameter
+	//
+	// 	- JobSucceeded
+	//
+	// 	- JobStoppedByUser
+	//
 	// example:
 	//
 	// JobStoppedByUser
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// The detailed reason for the job to enter the current status.
+	//
 	// example:
 	//
 	// Job is stopped by user.
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// The requested CPU cores.
+	//
 	// example:
 	//
 	// 1
 	RequestCPU *int64 `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
+	// The requested GPU cores.
+	//
 	// example:
 	//
 	// 1
 	RequestGPU *string `json:"RequestGPU,omitempty" xml:"RequestGPU,omitempty"`
+	// The requested memory.
+	//
 	// example:
 	//
 	// 1Gi
 	RequestMemory *string `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
+	// The ID of the resource group to which the resource belongs.
+	//
 	// example:
 	//
 	// dlc-quota
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource level of the job run time.
+	//
 	// example:
 	//
 	// L0
 	ResourceLevel *string `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
+	// The name of the resource on which the job runs.
+	//
 	// example:
 	//
 	// my_resource_group
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The name of the resource quota.
+	//
 	// example:
 	//
 	// test
 	ResourceQuotaName *string `json:"ResourceQuotaName,omitempty" xml:"ResourceQuotaName,omitempty"`
+	// The resource type. Valid values: ECS, Lingjun, and ACS.
+	//
 	// example:
 	//
 	// ECS
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The number of job restarts.
+	//
 	// example:
 	//
 	// 1
-	RestartTimes *string      `json:"RestartTimes,omitempty" xml:"RestartTimes,omitempty"`
-	Settings     *JobSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
+	RestartTimes *string `json:"RestartTimes,omitempty" xml:"RestartTimes,omitempty"`
+	// The extra parameters of the job.
+	Settings *JobSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
+	// The job status. Valid values:
+	//
+	// 	- Succeeded
+	//
+	// 	- Failed
+	//
 	// example:
 	//
 	// Stopped
-	Status        *string                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status history of the job.
 	StatusHistory []*StatusTransitionItem `json:"StatusHistory,omitempty" xml:"StatusHistory,omitempty" type:"Repeated"`
+	// The sub-status of the job, such as the preemption and retry status.
+	//
 	// example:
 	//
 	// Restarting
-	SubStatus  *string            `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	// The system environment variables configured.
 	SystemEnvs map[string]*string `json:"SystemEnvs,omitempty" xml:"SystemEnvs,omitempty"`
-	TenantId   *string            `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The tenant ID.
+	//
+	// example:
+	//
+	// ****93955616****
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The name of the folder in which the requirements.txt file resides.
+	//
 	// example:
 	//
 	// /root/code/
-	ThirdpartyLibDir *string   `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
-	ThirdpartyLibs   []*string `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
+	ThirdpartyLibDir *string `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
+	// The third-party Python libraries required for the job.
+	ThirdpartyLibs []*string `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
+	// Indicates whether the job uses idle resources.
+	//
 	// example:
 	//
 	// false
 	UseOversoldResource *bool `json:"UseOversoldResource,omitempty" xml:"UseOversoldResource,omitempty"`
+	// The start command for each node of the job.
+	//
 	// example:
 	//
 	// python /root/code/mnist.py
 	UserCommand *string `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
+	// The UID of the user to which the job belongs.
+	//
 	// example:
 	//
 	// 123456789
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The user script.
+	//
 	// example:
 	//
 	// ls
 	UserScript *string `json:"UserScript,omitempty" xml:"UserScript,omitempty"`
+	// The user VPC.
+	//
 	// example:
 	//
 	// vpc-1
 	UserVpc *JobItemUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
+	// The username that is used to submit the job.
+	//
 	// example:
 	//
 	// pai-dlc-role
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The working path.
+	//
 	// example:
 	//
 	// /mnt/data
 	WorkingDir *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+	// The ID of the workspace to which the job belongs.
+	//
 	// example:
 	//
 	// 268
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The name of the workspace to which the job belongs.
+	//
 	// example:
 	//
 	// dlc-workspace
@@ -907,18 +1039,26 @@ func (s *JobItem) Validate() error {
 }
 
 type JobItemCodeSource struct {
+	// The code repository branch.
+	//
 	// example:
 	//
 	// master
 	Branch *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
+	// The code source ID.
+	//
 	// example:
 	//
-	// code-20210111103721-85qz78ia96lu
+	// code-20210111103721-********
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
+	// The CommitID of the code repository used by the job.
+	//
 	// example:
 	//
-	// 44da109b59f8596152987eaa8f3b2487bb72ea63
+	// 44da109b59f8596152987eaa8f3b2487bb******
 	Commit *string `json:"Commit,omitempty" xml:"Commit,omitempty"`
+	// The local mount path of the code.
+	//
 	// example:
 	//
 	// /mnt/data
@@ -974,10 +1114,14 @@ func (s *JobItemCodeSource) Validate() error {
 }
 
 type JobItemDataSources struct {
+	// The data source ID.
+	//
 	// example:
 	//
-	// data-20210114104214-vf9lowjt3pso
+	// data-20210114104214-********
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The local mount path of the data source.
+	//
 	// example:
 	//
 	// /mnt/data
@@ -1015,11 +1159,36 @@ func (s *JobItemDataSources) Validate() error {
 }
 
 type JobItemUserVpc struct {
-	DefaultRoute    *string   `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
-	ExtendedCidrs   []*string `json:"ExtendedCidrs,omitempty" xml:"ExtendedCidrs,omitempty" type:"Repeated"`
-	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SwitchId        *string   `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
-	VpcId           *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The default route. Default value: false. Valid values:
+	//
+	// 	- eth0: The default network interface is used to access the Internet through the public gateway.
+	//
+	// 	- eth1: The user\\"s Elastic Network Interface is used to access the Internet through the private gateway.
+	//
+	// example:
+	//
+	// eth0
+	DefaultRoute *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	// The extended CIDR blocks that need to be connected.
+	ExtendedCidrs []*string `json:"ExtendedCidrs,omitempty" xml:"ExtendedCidrs,omitempty" type:"Repeated"`
+	// The security group ID.
+	//
+	// example:
+	//
+	// sg-2zeef***
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-2ze6***
+	SwitchId *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
+	// VPC ID
+	//
+	// example:
+	//
+	// vpc-2zed***
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s JobItemUserVpc) String() string {

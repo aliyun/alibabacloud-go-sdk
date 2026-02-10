@@ -20,10 +20,16 @@ type iDataJuicerConfig interface {
 }
 
 type DataJuicerConfig struct {
-	CommandType              *string        `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
-	EnableResourceEstimation *bool          `json:"EnableResourceEstimation,omitempty" xml:"EnableResourceEstimation,omitempty"`
-	ExecutionMode            *string        `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
-	ResourceLimit            *ResourceLimit `json:"ResourceLimit,omitempty" xml:"ResourceLimit,omitempty"`
+	// example:
+	//
+	// config
+	CommandType              *string `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
+	EnableResourceEstimation *bool   `json:"EnableResourceEstimation,omitempty" xml:"EnableResourceEstimation,omitempty"`
+	// example:
+	//
+	// standalone
+	ExecutionMode *string        `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
+	ResourceLimit *ResourceLimit `json:"ResourceLimit,omitempty" xml:"ResourceLimit,omitempty"`
 }
 
 func (s DataJuicerConfig) String() string {

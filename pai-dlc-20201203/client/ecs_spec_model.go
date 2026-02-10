@@ -40,55 +40,93 @@ type iEcsSpec interface {
 }
 
 type EcsSpec struct {
+  // The accelerator type. Valid values:
+  // 
+  // 	- CPU
+  // 
+  // 	- GPU
+  // 
   // example:
   // 
   // GPU
   AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+  // The number of CPU cores.
+  // 
   // example:
   // 
   // 12
   Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+  // The default GPU driver version.
+  // 
   // example:
   // 
   // 470.199.02
   DefaultGPUDriver *string `json:"DefaultGPUDriver,omitempty" xml:"DefaultGPUDriver,omitempty"`
+  // The number of GPUs.
+  // 
   // example:
   // 
   // 1
   Gpu *int32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+  // The GPU memory size.
+  // 
   // example:
   // 
   // 80
   GpuMemory *int32 `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
+  // The GPU type.
+  // 
   // example:
   // 
   // NVIDIA v100
   GpuType *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
+  // The instance type.
+  // 
   // example:
   // 
   // ecs.gn6e-c12g1.3xlarge
   InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+  // Indicates whether the instance type is available. Valid values:
+  // 
+  // 	- true
+  // 
+  // 	- false
+  // 
   // example:
   // 
   // true
   IsAvailable *bool `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
+  // The memory size. Unit: MiB or GiB.
+  // 
   // example:
   // 
   // 92
   Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+  // The discount on the current price of the preemptible instance.
+  // 
   // example:
   // 
   // 0.1
   NonProtectSpotDiscount *float32 `json:"NonProtectSpotDiscount,omitempty" xml:"NonProtectSpotDiscount,omitempty"`
+  // The billing methods.
   PaymentTypes []*string `json:"PaymentTypes,omitempty" xml:"PaymentTypes,omitempty" type:"Repeated"`
+  // The resource type. Valid values:
+  // 
+  // 	- ECS
+  // 
+  // 	- Lingjun
+  // 
   // example:
   // 
   // ECS
   ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+  // The inventory status of preemptible instance.
+  // 
   // example:
   // 
   // WithStock
   SpotStockStatus *string `json:"SpotStockStatus,omitempty" xml:"SpotStockStatus,omitempty"`
+  // The GPU driver versions.
   SupportedGPUDrivers []*string `json:"SupportedGPUDrivers,omitempty" xml:"SupportedGPUDrivers,omitempty" type:"Repeated"`
 }
 

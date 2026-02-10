@@ -24,13 +24,21 @@ type iExtraPodSpec interface {
 }
 
 type ExtraPodSpec struct {
+  // The containers to be initialized.
   InitContainers []*ContainerSpec `json:"InitContainers,omitempty" xml:"InitContainers,omitempty" type:"Repeated"`
+  // The lifecycle object.
   Lifecycle *Lifecycle `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
   // Deprecated
+  // 
+  // The pod annotations.
   PodAnnotations map[string]*string `json:"PodAnnotations,omitempty" xml:"PodAnnotations,omitempty"`
   // Deprecated
+  // 
+  // The pod labels.
   PodLabels map[string]*string `json:"PodLabels,omitempty" xml:"PodLabels,omitempty"`
+  // The local paths shared between containers.
   SharedVolumeMountPaths []*string `json:"SharedVolumeMountPaths,omitempty" xml:"SharedVolumeMountPaths,omitempty" type:"Repeated"`
+  // The sidecar containers.
   SideCarContainers []*ContainerSpec `json:"SideCarContainers,omitempty" xml:"SideCarContainers,omitempty" type:"Repeated"`
 }
 

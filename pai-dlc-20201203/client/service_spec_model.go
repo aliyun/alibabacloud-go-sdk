@@ -18,9 +18,15 @@ type iServiceSpec interface {
 }
 
 type ServiceSpec struct {
+	// example:
+	//
+	// 8080
 	DefaultPort *int32   `json:"DefaultPort,omitempty" xml:"DefaultPort,omitempty"`
 	ExtraPorts  []*int32 `json:"ExtraPorts,omitempty" xml:"ExtraPorts,omitempty" type:"Repeated"`
-	ServiceMode *string  `json:"ServiceMode,omitempty" xml:"ServiceMode,omitempty"`
+	// example:
+	//
+	// PerRole
+	ServiceMode *string `json:"ServiceMode,omitempty" xml:"ServiceMode,omitempty"`
 }
 
 func (s ServiceSpec) String() string {

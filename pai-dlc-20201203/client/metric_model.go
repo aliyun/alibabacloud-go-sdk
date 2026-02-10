@@ -16,10 +16,14 @@ type iMetric interface {
 }
 
 type Metric struct {
+	// The timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1616987726587
 	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The value of the monitoring data.
+	//
 	// example:
 	//
 	// 23.45

@@ -16,10 +16,13 @@ type iPodMetric interface {
 }
 
 type PodMetric struct {
+	// The metrics list.
 	Metrics []*Metric `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	// The node ID.
+	//
 	// example:
 	//
-	// dlc-20210329110128-746bf7cl47pr8-worker-0
+	// dlc-20210329110128-******-worker-0
 	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
 }
 

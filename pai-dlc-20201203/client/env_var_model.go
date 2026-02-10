@@ -16,10 +16,14 @@ type iEnvVar interface {
 }
 
 type EnvVar struct {
+  // The name of the environment variable.
+  // 
   // example:
   // 
   // ENABLE_DEBUG
   Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+  // The value of the environment variable.
+  // 
   // example:
   // 
   // true

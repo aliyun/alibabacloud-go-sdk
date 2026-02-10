@@ -20,18 +20,26 @@ type iTensorboardSpec interface {
 }
 
 type TensorboardSpec struct {
+	// The specifications of the ECS instance configured for the pay-as-you-go Tensorboard task.
+	//
 	// example:
 	//
 	// ecs.g6.large
 	EcsType *string `json:"EcsType,omitempty" xml:"EcsType,omitempty"`
+	// The ID of the security group configured for the pay-as-you-go Tensorboard task.
+	//
 	// example:
 	//
 	// sg-xxxxx
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The ID of the vSwitch configured for the pay-as-you-go Tensorboard task.
+	//
 	// example:
 	//
 	// vsw-xxxx
 	SwitchId *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
+	// The ID of the virtual private cloud (VPC) configured for the pay-as-you-go Tensorboard task.
+	//
 	// example:
 	//
 	// vpc-xxxx

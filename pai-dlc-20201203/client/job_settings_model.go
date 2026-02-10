@@ -13,6 +13,8 @@ type iJobSettings interface {
 	GetAdvancedSettings() map[string]interface{}
 	SetAllocateAllRDMADevices(v bool) *JobSettings
 	GetAllocateAllRDMADevices() *bool
+	SetAllowUnschedulableNodes(v bool) *JobSettings
+	GetAllowUnschedulableNodes() *bool
 	SetBusinessUserId(v string) *JobSettings
 	GetBusinessUserId() *string
 	SetCaller(v string) *JobSettings
@@ -56,76 +58,136 @@ type iJobSettings interface {
 }
 
 type JobSettings struct {
-	AdvancedSettings       map[string]interface{} `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
-	AllocateAllRDMADevices *bool                  `json:"AllocateAllRDMADevices,omitempty" xml:"AllocateAllRDMADevices,omitempty"`
+	// The additional advanced parameter configurations.
+	AdvancedSettings map[string]interface{} `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
+	// Whether to mount all RDMA network interface controllers
+	AllocateAllRDMADevices  *bool `json:"AllocateAllRDMADevices,omitempty" xml:"AllocateAllRDMADevices,omitempty"`
+	AllowUnschedulableNodes *bool `json:"AllowUnschedulableNodes,omitempty" xml:"AllowUnschedulableNodes,omitempty"`
+	// The ID of the user associated with the job.
+	//
 	// example:
 	//
-	// 166924
+	// 16****
 	BusinessUserId *string `json:"BusinessUserId,omitempty" xml:"BusinessUserId,omitempty"`
+	// The caller.
+	//
 	// example:
 	//
 	// SilkFlow
 	Caller           *string           `json:"Caller,omitempty" xml:"Caller,omitempty"`
 	DataJuicerConfig *DataJuicerConfig `json:"DataJuicerConfig,omitempty" xml:"DataJuicerConfig,omitempty"`
+	// Whether inventory check is skipped. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// false
 	DisableEcsStockCheck *bool `json:"DisableEcsStockCheck,omitempty" xml:"DisableEcsStockCheck,omitempty"`
+	// The NVIDIA driver configurations.
+	//
 	// example:
 	//
 	// 535.54.03
 	Driver *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
+	// Whether the CPU affinity is enabled. This parameter takes effect only when you use subscription general computing resources.
+	//
 	// example:
 	//
 	// true
 	EnableCPUAffinity *bool `json:"EnableCPUAffinity,omitempty" xml:"EnableCPUAffinity,omitempty"`
 	EnableDSWDev      *bool `json:"EnableDSWDev,omitempty" xml:"EnableDSWDev,omitempty"`
+	// Whether fault tolerance monitoring is enabled for the job. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// false
 	EnableErrorMonitoringInAIMaster *bool `json:"EnableErrorMonitoringInAIMaster,omitempty" xml:"EnableErrorMonitoringInAIMaster,omitempty"`
+	// Whether data is written to Object Storage Service (OSS) in append mode. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	EnableOssAppend *bool `json:"EnableOssAppend,omitempty" xml:"EnableOssAppend,omitempty"`
+	// Whether RDMA is enabled for the job. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	EnableRDMA *bool `json:"EnableRDMA,omitempty" xml:"EnableRDMA,omitempty"`
+	// Whether sanity check is enabled for the job. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	EnableSanityCheck *bool `json:"EnableSanityCheck,omitempty" xml:"EnableSanityCheck,omitempty"`
+	// Whether tidal resources are allowed for the job. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	EnableTideResource *bool `json:"EnableTideResource,omitempty" xml:"EnableTideResource,omitempty"`
+	// The configuration parameters after you enable fault tolerance monitoring. For example, you can specify whether to enable log hang-based detection.
+	//
 	// example:
 	//
 	// --enable-log-hang-detection true
 	ErrorMonitoringArgs *string `json:"ErrorMonitoringArgs,omitempty" xml:"ErrorMonitoringArgs,omitempty"`
+	// The retention period after the job ends. Unit: minutes.
+	//
 	// example:
 	//
 	// 30
 	JobReservedMinutes *int32 `json:"JobReservedMinutes,omitempty" xml:"JobReservedMinutes,omitempty"`
+	// The retention policy after the job ends.
+	//
 	// example:
 	//
 	// Always
 	JobReservedPolicy *string      `json:"JobReservedPolicy,omitempty" xml:"JobReservedPolicy,omitempty"`
 	ModelConfig       *ModelConfig `json:"ModelConfig,omitempty" xml:"ModelConfig,omitempty"`
+	// Whether the job accepts oversold resources. Valid values: ForbiddenQuotaOverSold, AcceptQuotaOverSold, and ForceQuotaOverSold.
+	//
 	// example:
 	//
 	// AcceptQuotaOverSold
 	OversoldType *string `json:"OversoldType,omitempty" xml:"OversoldType,omitempty"`
+	// The pipeline ID.
+	//
 	// example:
 	//
 	// pid-123456
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The configuration parameters for sanity check.
+	//
 	// example:
 	//
-	// --sanity-check-timing=AfterJobFaultTolerant --sanity-check-timeout-ops=MarkJobFai
-	SanityCheckArgs *string            `json:"SanityCheckArgs,omitempty" xml:"SanityCheckArgs,omitempty"`
-	Tags            map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// --sanity-check-timing=AfterJobFaultTolerant --sanity-check-timeout-ops=MarkJobFail
+	SanityCheckArgs *string `json:"SanityCheckArgs,omitempty" xml:"SanityCheckArgs,omitempty"`
+	// The custom tag.
+	Tags map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s JobSettings) String() string {
@@ -142,6 +204,10 @@ func (s *JobSettings) GetAdvancedSettings() map[string]interface{} {
 
 func (s *JobSettings) GetAllocateAllRDMADevices() *bool {
 	return s.AllocateAllRDMADevices
+}
+
+func (s *JobSettings) GetAllowUnschedulableNodes() *bool {
+	return s.AllowUnschedulableNodes
 }
 
 func (s *JobSettings) GetBusinessUserId() *string {
@@ -231,6 +297,11 @@ func (s *JobSettings) SetAdvancedSettings(v map[string]interface{}) *JobSettings
 
 func (s *JobSettings) SetAllocateAllRDMADevices(v bool) *JobSettings {
 	s.AllocateAllRDMADevices = &v
+	return s
+}
+
+func (s *JobSettings) SetAllowUnschedulableNodes(v bool) *JobSettings {
+	s.AllowUnschedulableNodes = &v
 	return s
 }
 
