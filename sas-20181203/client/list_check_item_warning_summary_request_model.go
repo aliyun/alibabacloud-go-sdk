@@ -31,6 +31,8 @@ type iListCheckItemWarningSummaryRequest interface {
 	GetLang() *string
 	SetPageSize(v int32) *ListCheckItemWarningSummaryRequest
 	GetPageSize() *int32
+	SetResourceDirectoryAccountId(v int64) *ListCheckItemWarningSummaryRequest
+	GetResourceDirectoryAccountId() *int64
 	SetRiskType(v string) *ListCheckItemWarningSummaryRequest
 	GetRiskType() *string
 	SetSource(v string) *ListCheckItemWarningSummaryRequest
@@ -126,6 +128,14 @@ type ListCheckItemWarningSummaryRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The Alibaba Cloud account ID of the member in the resource directory.
+	//
+	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+	//
+	// example:
+	//
+	// 127608589417****
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The type of the baseline.
 	//
 	// example:
@@ -206,6 +216,10 @@ func (s *ListCheckItemWarningSummaryRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListCheckItemWarningSummaryRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *ListCheckItemWarningSummaryRequest) GetRiskType() *string {
 	return s.RiskType
 }
@@ -274,6 +288,11 @@ func (s *ListCheckItemWarningSummaryRequest) SetLang(v string) *ListCheckItemWar
 
 func (s *ListCheckItemWarningSummaryRequest) SetPageSize(v int32) *ListCheckItemWarningSummaryRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListCheckItemWarningSummaryRequest) SetResourceDirectoryAccountId(v int64) *ListCheckItemWarningSummaryRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

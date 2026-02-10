@@ -34,61 +34,77 @@ type iDescribePropertyUserDetailRequest interface {
 }
 
 type DescribePropertyUserDetailRequest struct {
-	// The number of the page to return. Default value: **1**.
+	// Set which page of the returned results to start displaying the query results. The default value is **1**, indicating that the display starts from the first page.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Specifies whether the fuzzy search by account name is supported. If you want to use fuzzy search, set the parameter to **1**. If you set the parameter to a different value or leave the parameter empty, fuzzy search is not supported.
+	// Whether the account name supports fuzzy search. To enable fuzzy search, set this parameter\\"s value to **1**; other values or an empty value indicate that fuzzy search is not supported.
 	//
 	// example:
 	//
 	// 1
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// Specifies whether the account has root permissions. Valid values:
+	// Whether the queried account has ROOT privileges. Possible values include:
 	//
-	// 	- **0**: no
+	// - **0**: No
 	//
-	// 	- **1**: yes
+	// - **1**: Yes
 	//
 	// example:
 	//
 	// 0
 	IsRoot *string `json:"IsRoot,omitempty" xml:"IsRoot,omitempty"`
-	// The timestamp of the last logoff from the account. Unit: milliseconds.
+	// The end timestamp for the last login retrieval. The unit is milliseconds.
 	//
 	// example:
 	//
-	// 164922523600
+	// 1651298836000
 	LastLoginTimeEnd *int64 `json:"LastLoginTimeEnd,omitempty" xml:"LastLoginTimeEnd,omitempty"`
-	// The timestamp of the last logon to the account. Unit: milliseconds.
+	// The start timestamp for the last login retrieval. The unit is milliseconds.
 	//
 	// example:
 	//
 	// 164922523600
-	LastLoginTimeStart *int64  `json:"LastLoginTimeStart,omitempty" xml:"LastLoginTimeStart,omitempty"`
-	NextToken          *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	LastLoginTimeStart *int64 `json:"LastLoginTimeStart,omitempty" xml:"LastLoginTimeStart,omitempty"`
+	// Used to mark the starting position for reading. Leave it empty to start from the beginning.
+	//
+	// > For the first call, you do not need to fill in this field. The response will include the NextToken for the second call, and each subsequent call will include the NextToken for the next call.
+	//
+	// example:
+	//
+	// E17B501887A2D3AA5E8360A6EFA3B***
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Set the number of account asset fingerprint information items to display per page during pagination. The default value is **10**, indicating that 10 items of account asset fingerprint information are displayed per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name or IP address of the server.
+	// The name or IP address of the server to be queried.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
-	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	UseNextToken *bool   `json:"UseNextToken,omitempty" xml:"UseNextToken,omitempty"`
-	// The name of the account to which the server belongs.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Whether to use the NextToken method to fetch vulnerability list data. If this parameter is used, TotalCount will no longer be returned. Possible values:
+	//
+	// - **true**: Use the NextToken method.
+	//
+	// - **false**: Do not use the NextToken method.
+	//
+	// example:
+	//
+	// false
+	UseNextToken *bool `json:"UseNextToken,omitempty" xml:"UseNextToken,omitempty"`
+	// The account name of the server to be queried.
 	//
 	// example:
 	//
 	// bin
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
-	// The UUID of the server.
+	// The UUID of the server to be queried.
 	//
 	// example:
 	//

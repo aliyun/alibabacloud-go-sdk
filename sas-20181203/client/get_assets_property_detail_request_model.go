@@ -32,13 +32,13 @@ type iGetAssetsPropertyDetailRequest interface {
 }
 
 type GetAssetsPropertyDetailRequest struct {
-	// The type of the asset fingerprint that you want to query. Default value: **sca**. Valid values:
+	// The type of asset fingerprint to be queried, with a default value of **sca**. Values:
 	//
-	// 	- **lkm**: kernel module
+	// - **lkm**: Kernel module
 	//
-	// 	- **autorun**: startup item
+	// - **autorun**: Startup item
 	//
-	// 	- **web_server**: website
+	// - **web_server**: Web site
 	//
 	// This parameter is required.
 	//
@@ -46,51 +46,67 @@ type GetAssetsPropertyDetailRequest struct {
 	//
 	// lkm
 	Biz *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// Set the page number from which to start displaying the query results. The default value is **1**, indicating that the display starts from the first page.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The name of the aggregation item for the asset fingerprint that you want to query.
+	// The aggregated item name of the asset fingerprint to be queried.
 	//
-	// > You can call the [GetAssetsPropertyItem](~~GetAssetsPropertyItem~~) operation to query the names of aggregation items.
+	// > Call the [GetAssetsPropertyItem](~~GetAssetsPropertyItem~~) API to obtain this parameter.
 	//
 	// example:
 	//
 	// virtio
 	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language type for the request and response. Values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// en
-	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Used to mark the current read position. Leave it empty to start from the beginning.
 	//
-	// > We recommend that you do not leave this parameter empty.
+	// > Do not fill in for the first call; the response will include the NextToken for the second call. Each subsequent call\\"s response will contain the NextToken for the next call.
+	//
+	// example:
+	//
+	// 71640f04f6e7b49764c8d08ae170xxxx
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Specify the maximum number of data entries per page in a paginated query. The default number of data entries per page is 20. If the PageSize parameter is empty, 20 data entries will be returned by default.
+	//
+	// > It is recommended that the PageSize value is not empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name or IP address of the server.
+	// Server name or IP.
 	//
 	// example:
 	//
 	// 1.2.XX.XX
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The conditions that are used to query the details about the asset fingerprint.
+	// A set of conditions for querying asset fingerprint details.
 	SearchCriteriaList []*GetAssetsPropertyDetailRequestSearchCriteriaList `json:"SearchCriteriaList,omitempty" xml:"SearchCriteriaList,omitempty" type:"Repeated"`
-	UseNextToken       *bool                                               `json:"UseNextToken,omitempty" xml:"UseNextToken,omitempty"`
-	// The UUID of the server.
+	// Whether to use the NextToken method to fetch the list of vulnerabilities. If this parameter is used, TotalCount will not be returned. Values:
 	//
-	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+	// - **true**: Use the NextToken method.
+	//
+	// - **false**: Do not use the NextToken method.
+	//
+	// example:
+	//
+	// true
+	UseNextToken *bool `json:"UseNextToken,omitempty" xml:"UseNextToken,omitempty"`
+	// The UUID of the asset to be queried.
+	//
+	// > Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) API to obtain this parameter.
 	//
 	// example:
 	//
@@ -210,21 +226,22 @@ func (s *GetAssetsPropertyDetailRequest) Validate() error {
 }
 
 type GetAssetsPropertyDetailRequestSearchCriteriaList struct {
-	// The name of the condition. Valid values:
+	// The name of the condition to be queried. Values are as follows:
 	//
-	// 	- **remarkItemName**: the aggregation item of the asset fingerprints. Fuzzy match is supported.
+	// - **remarkItemName**: The aggregated item name of the asset fingerprint, supporting fuzzy matching
 	//
-	// > 	- If **Biz*	- is set to **web_server**, **remarkItemName*	- specifies a domain name.
 	//
-	// > 	- If **Biz*	- is set to **lkm**, **remarkItemName*	- specifies a module name.
+	// >-   - When **Biz*	- is **web_server**, **remarkItemName*	- represents the domain name as the search condition.
 	//
-	// > 	- If **Biz*	- is set to **autorun**, **remarkItemName*	- specifies the path to a startup item.
+	// >-   - When **Biz*	- is **lkm**, **remarkItemName*	- represents the module name as the search condition.
+	//
+	// >-   - When **Biz*	- is **autorun**, **remarkItemName*	- represents the startup item path as the search condition.
 	//
 	// example:
 	//
 	// remarkItemName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The value of the condition.
+	// The value of the condition to be queried.
 	//
 	// example:
 	//

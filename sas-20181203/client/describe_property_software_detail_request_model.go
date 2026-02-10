@@ -36,38 +36,45 @@ type iDescribePropertySoftwareDetailRequest interface {
 }
 
 type DescribePropertySoftwareDetailRequest struct {
-	// The page number. Default value: **1**.
+	// Set which page of the returned results to start displaying the query results. The default value is **1**, indicating that the display starts from the first page.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Specifies whether fuzzy search by software name is supported. If you want to use fuzzy search, set the parameter to 1. If you set the parameter to a different value or leave the parameter empty, fuzzy search is not supported.
+	// Whether the software name supports fuzzy search. To enable fuzzy search, set the value of this parameter to 1; other values or an empty value indicate that fuzzy search is not supported.
 	//
 	// example:
 	//
 	// 1
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// The timestamp generated when the software update ends. Unit: milliseconds.
+	// The timestamp when the software update ended. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1650012695000
 	InstallTimeEnd *int64 `json:"InstallTimeEnd,omitempty" xml:"InstallTimeEnd,omitempty"`
-	// The timestamp generated when the software update starts. Unit: milliseconds.
+	// The timestamp when the software update started. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649321495000
 	InstallTimeStart *int64 `json:"InstallTimeStart,omitempty" xml:"InstallTimeStart,omitempty"`
-	// The name of the software.
+	// The name of the software to be queried.
 	//
 	// example:
 	//
 	// kernel
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Used to mark the starting position for reading. Leave it blank to start from the beginning.
+	//
+	// > For the first call, you do not need to fill this in; the response will include the NextToken for the second call, and each subsequent call\\"s response will contain the NextToken for the next call.
+	//
+	// example:
+	//
+	// E17B501887A2D3AA5E8360A6EFA3B***
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The number of entries per page. Default value: **10**.
+	// Set the number of software asset fingerprint information items displayed per page during pagination. The default value is **10**, indicating that 10 items of software asset fingerprint information are displayed per page.
 	//
 	// example:
 	//
@@ -79,19 +86,28 @@ type DescribePropertySoftwareDetailRequest struct {
 	//
 	// /etc/test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The name or IP address of the server.
+	// The name or IP address of the server to be queried.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The version of the software.
+	// The version information of the software.
 	//
 	// example:
 	//
 	// 3.10.0
 	SoftwareVersion *string `json:"SoftwareVersion,omitempty" xml:"SoftwareVersion,omitempty"`
-	UseNextToken    *bool   `json:"UseNextToken,omitempty" xml:"UseNextToken,omitempty"`
+	// Whether to use the NextToken method to pull asset list data. If this parameter is used, TotalCount will no longer be returned. Values:
+	//
+	// - **true**: Use the NextToken method.
+	//
+	// - **false**: Do not use the NextToken method.
+	//
+	// example:
+	//
+	// true
+	UseNextToken *bool `json:"UseNextToken,omitempty" xml:"UseNextToken,omitempty"`
 	// The UUID of the server.
 	//
 	// example:

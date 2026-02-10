@@ -32,15 +32,11 @@ type GetClientRatioStatisticRequest struct {
 	StatisticTypes []*string `json:"StatisticTypes,omitempty" xml:"StatisticTypes,omitempty" type:"Repeated"`
 	// The timestamp that specifies the end of the time range to collect statistics. Unit: milliseconds.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1686412799999
 	TimeEnd *int64 `json:"TimeEnd,omitempty" xml:"TimeEnd,omitempty"`
 	// The timestamp that specifies the beginning of the time range to collect statistics. Unit: milliseconds.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//

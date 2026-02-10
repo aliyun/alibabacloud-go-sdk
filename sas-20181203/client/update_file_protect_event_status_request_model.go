@@ -38,18 +38,78 @@ type iUpdateFileProtectEventStatusRequest interface {
 }
 
 type UpdateFileProtectEventStatusRequest struct {
+	// The severities of alerts.
 	AlertLevels []*int32 `json:"AlertLevels,omitempty" xml:"AlertLevels,omitempty" type:"Repeated"`
-	EndTime     *int64   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end of the time range to query. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1649040221
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The IDs of the events.
-	Id                   []*int64 `json:"Id,omitempty" xml:"Id,omitempty" type:"Repeated"`
-	InstanceId           *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName         *string  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InternetIp           *string  `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	IntranetIp           *string  `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	Operation            *string  `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	RuleName             *string  `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	SelectAllAcrossPages *bool    `json:"SelectAllAcrossPages,omitempty" xml:"SelectAllAcrossPages,omitempty"`
-	StartTime            *int64   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Id []*int64 `json:"Id,omitempty" xml:"Id,omitempty" type:"Repeated"`
+	// The instance ID of the asset.
+	//
+	// example:
+	//
+	// i-bp1g6wxdwps7s9dz****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the server.
+	//
+	// example:
+	//
+	// test
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The public IP address of the server.
+	//
+	// example:
+	//
+	// 120.27.XX.XX
+	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// The private IP address of the server.
+	//
+	// example:
+	//
+	// 172.26.XX.XX
+	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// Type of operation on a file. eg:
+	//
+	// - **DELETE**: delete the file.
+	//
+	// - **WRITE**: write the file.
+	//
+	// - **READ**: read the file.
+	//
+	// - **RENAME**: rename the file.
+	//
+	// - **CHOWN**: set the file owner and file association group operations.
+	//
+	// example:
+	//
+	// READ
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// The name of the defense rule.
+	//
+	// example:
+	//
+	// tetsRule
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Whether to choose all fields across industries.
+	//
+	// - **true**: yes
+	//
+	// - **false**: no
+	//
+	// example:
+	//
+	// true
+	SelectAllAcrossPages *bool `json:"SelectAllAcrossPages,omitempty" xml:"SelectAllAcrossPages,omitempty"`
+	// The beginning of the time range to query. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1680919232000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The handling status of the event. Valid values:
 	//
 	// 	- **0**: unhandled
@@ -61,8 +121,15 @@ type UpdateFileProtectEventStatusRequest struct {
 	// example:
 	//
 	// 0
-	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Uuid   *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The UUID of the server.
+	//
+	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+	//
+	// example:
+	//
+	// eb2c782e-64f2-4590-a86c-d90164df****
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s UpdateFileProtectEventStatusRequest) String() string {

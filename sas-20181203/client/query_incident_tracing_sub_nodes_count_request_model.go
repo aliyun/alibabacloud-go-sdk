@@ -14,6 +14,7 @@ type iQueryIncidentTracingSubNodesCountRequest interface {
 }
 
 type QueryIncidentTracingSubNodesCountRequest struct {
+	// The key-value pairs that consist of node IDs and node types. A key-value pair is an array.
 	VertexIdAndTypeList [][]*string `json:"VertexIdAndTypeList,omitempty" xml:"VertexIdAndTypeList,omitempty" type:"Repeated"`
 }
 

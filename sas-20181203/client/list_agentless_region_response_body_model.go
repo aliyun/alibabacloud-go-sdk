@@ -25,7 +25,8 @@ type ListAgentlessRegionResponseBody struct {
 	// example:
 	//
 	// 7E0618A9-D5EF-4220-9471-C42B5E92****
-	RequestId        *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the regions.
 	VendorRegionList []*ListAgentlessRegionResponseBodyVendorRegionList `json:"VendorRegionList,omitempty" xml:"VendorRegionList,omitempty" type:"Repeated"`
 }
 
@@ -78,8 +79,28 @@ func (s *ListAgentlessRegionResponseBody) Validate() error {
 }
 
 type ListAgentlessRegionResponseBodyVendorRegionList struct {
+	// The region ID of the instance.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Vendor   *int32  `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// The type of the server. Valid values:
+	//
+	// - **0**: Alibaba Cloud
+	//
+	// - **3**: Tencent Cloud
+	//
+	// - **4**: Huawei Cloud
+	//
+	// - **5**: Azure
+	//
+	// - **7**: AWS
+	//
+	// example:
+	//
+	// 0
+	Vendor *int32 `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s ListAgentlessRegionResponseBodyVendorRegionList) String() string {

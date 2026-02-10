@@ -25,7 +25,14 @@ type DescribeExportInfoRequest struct {
 	// example:
 	//
 	// 111
-	ExportId                   *int64 `json:"ExportId,omitempty" xml:"ExportId,omitempty"`
+	ExportId *int64 `json:"ExportId,omitempty" xml:"ExportId,omitempty"`
+	// The Alibaba Cloud account ID of the member in the resource directory.
+	//
+	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+	//
+	// example:
+	//
+	// 16670360956*****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 

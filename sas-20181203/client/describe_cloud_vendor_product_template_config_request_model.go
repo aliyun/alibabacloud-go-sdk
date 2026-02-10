@@ -16,10 +16,24 @@ type iDescribeCloudVendorProductTemplateConfigRequest interface {
 }
 
 type DescribeCloudVendorProductTemplateConfigRequest struct {
+	// Set the language type for request and response messages, default is **zh**. Values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Cloud asset vendor. Values:
+	//
+	// - **CHAITIN**: Chaitin Technology
+	//
+	// - **FORTINET**: Fortinet
+	//
+	// - **THREATBOOK**: ThreatBook
+	//
 	// example:
 	//
 	// CHAITIN

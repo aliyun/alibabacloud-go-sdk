@@ -40,26 +40,92 @@ type iUpdateFileProtectRemarkRequest interface {
 }
 
 type UpdateFileProtectRemarkRequest struct {
+	// Alert notification level list.
 	AlertLevels []*int32 `json:"AlertLevels,omitempty" xml:"AlertLevels,omitempty" type:"Repeated"`
-	EndTime     *int64   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// End time timestamp.
+	//
+	// example:
+	//
+	// 1649040221
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the event.
 	//
 	// example:
 	//
 	// 1764
-	Id           *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
-	IdList       []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
-	InstanceId   *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName *string  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InternetIp   *string  `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	IntranetIp   *string  `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	Operation    *string  `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Event ID list.
+	IdList []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	// Asset instance ID.
+	//
+	// example:
+	//
+	// i-bp1g6wxdwps7s9dz****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Asset instance name.
+	//
+	// example:
+	//
+	// test
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Public IP.
+	//
+	// example:
+	//
+	// 101.132.XX.XX
+	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// Private IP.
+	//
+	// example:
+	//
+	// 172.26.XX.XX
+	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// File operation type. Values:
+	//
+	// - **DELETE**: File deletion operation.
+	//
+	// - **WRITE**: File write operation.
+	//
+	// - **READ**: File read operation.
+	//
+	// - **RENAME**: File rename operation.
+	//
+	// - **CHOWN**: Set file owner and associated group operation.
+	//
+	// example:
+	//
+	// READ
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	// The remarks.
-	Remark               []*string `json:"Remark,omitempty" xml:"Remark,omitempty" type:"Repeated"`
-	RuleName             *string   `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	SelectAllAcrossPages *bool     `json:"SelectAllAcrossPages,omitempty" xml:"SelectAllAcrossPages,omitempty"`
-	StartTime            *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Uuid                 *string   `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Remark []*string `json:"Remark,omitempty" xml:"Remark,omitempty" type:"Repeated"`
+	// Rule name.
+	//
+	// example:
+	//
+	// test-rule-1
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Cross-page select all indicator. Values:
+	//
+	// - **true**: Yes
+	//
+	// - **false**: No
+	//
+	// example:
+	//
+	// true
+	SelectAllAcrossPages *bool `json:"SelectAllAcrossPages,omitempty" xml:"SelectAllAcrossPages,omitempty"`
+	// Start time timestamp.
+	//
+	// example:
+	//
+	// 1651290987000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Server UUID.
+	//
+	// example:
+	//
+	// 5d55af3c-35f3-4d4d-8ccc-8c5443b0****
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s UpdateFileProtectRemarkRequest) String() string {

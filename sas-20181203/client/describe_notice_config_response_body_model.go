@@ -71,7 +71,28 @@ type DescribeNoticeConfigResponseBodyNoticeConfigList struct {
 	// example:
 	//
 	// 12123414****
-	AliUid   *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// Business categories under cloud monitoring notification configuration. Values:
+	//
+	// - **Incident**: Security incidents.
+	//
+	// - **Suspicious**: Security alerts.
+	//
+	// - **Hc**: Baseline checks.
+	//
+	// - **Cspm**: Cloud Security Posture Management.
+	//
+	// - **Agentless**: Agentless detection.
+	//
+	// - **Filedetect**: Malicious file SDK.
+	//
+	// - **Vul**: Vulnerabilities.
+	//
+	// - **Rasp**: Application protection.
+	//
+	// example:
+	//
+	// Cspm
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The page number of the returned page.
 	//

@@ -112,6 +112,13 @@ type ExportRecordRequest struct {
   // 
   // {"extend":"1","currentPage":1,"pageSize":10}
   Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+  // The Alibaba Cloud account ID of the member in the resource directory.
+  // 
+  // >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the ID.
+  // 
+  // example:
+  // 
+  // 1232428423234****
   ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 

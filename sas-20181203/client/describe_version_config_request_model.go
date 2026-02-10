@@ -9,8 +9,8 @@ type iDescribeVersionConfigRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetResourceDirectoryAccountId(v string) *DescribeVersionConfigRequest
-	GetResourceDirectoryAccountId() *string
+	SetResourceDirectoryAccountId(v int64) *DescribeVersionConfigRequest
+	GetResourceDirectoryAccountId() *int64
 	SetSourceIp(v string) *DescribeVersionConfigRequest
 	GetSourceIp() *string
 }
@@ -23,7 +23,7 @@ type DescribeVersionConfigRequest struct {
 	// example:
 	//
 	// 127608589417****
-	ResourceDirectoryAccountId *string `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The source IP address of the request.
 	//
 	// example:
@@ -40,7 +40,7 @@ func (s DescribeVersionConfigRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeVersionConfigRequest) GetResourceDirectoryAccountId() *string {
+func (s *DescribeVersionConfigRequest) GetResourceDirectoryAccountId() *int64 {
 	return s.ResourceDirectoryAccountId
 }
 
@@ -48,7 +48,7 @@ func (s *DescribeVersionConfigRequest) GetSourceIp() *string {
 	return s.SourceIp
 }
 
-func (s *DescribeVersionConfigRequest) SetResourceDirectoryAccountId(v string) *DescribeVersionConfigRequest {
+func (s *DescribeVersionConfigRequest) SetResourceDirectoryAccountId(v int64) *DescribeVersionConfigRequest {
 	s.ResourceDirectoryAccountId = &v
 	return s
 }

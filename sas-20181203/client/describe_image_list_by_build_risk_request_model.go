@@ -9,6 +9,10 @@ type iDescribeImageListByBuildRiskRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCriteria(v string) *DescribeImageListByBuildRiskRequest
+	GetCriteria() *string
+	SetCriteriaType(v string) *DescribeImageListByBuildRiskRequest
+	GetCriteriaType() *string
 	SetCurrentPage(v int32) *DescribeImageListByBuildRiskRequest
 	GetCurrentPage() *int32
 	SetLang(v string) *DescribeImageListByBuildRiskRequest
@@ -24,6 +28,22 @@ type iDescribeImageListByBuildRiskRequest interface {
 }
 
 type DescribeImageListByBuildRiskRequest struct {
+	// The attribute value of the condition parameter.
+	//
+	// example:
+	//
+	// sas
+	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
+	// The property name of the condition parameters. Values:
+	//
+	//  - **RepoNamespace**: Namespace.
+	//
+	//  - **RepoName**: Repository name.
+	//
+	// example:
+	//
+	// RepoNamespace
+	CriteriaType *string `json:"CriteriaType,omitempty" xml:"CriteriaType,omitempty"`
 	// The page number. Default value: **1**.
 	//
 	// example:
@@ -88,6 +108,14 @@ func (s DescribeImageListByBuildRiskRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeImageListByBuildRiskRequest) GetCriteria() *string {
+	return s.Criteria
+}
+
+func (s *DescribeImageListByBuildRiskRequest) GetCriteriaType() *string {
+	return s.CriteriaType
+}
+
 func (s *DescribeImageListByBuildRiskRequest) GetCurrentPage() *int32 {
 	return s.CurrentPage
 }
@@ -110,6 +138,16 @@ func (s *DescribeImageListByBuildRiskRequest) GetRiskLevel() *string {
 
 func (s *DescribeImageListByBuildRiskRequest) GetStatus() *int32 {
 	return s.Status
+}
+
+func (s *DescribeImageListByBuildRiskRequest) SetCriteria(v string) *DescribeImageListByBuildRiskRequest {
+	s.Criteria = &v
+	return s
+}
+
+func (s *DescribeImageListByBuildRiskRequest) SetCriteriaType(v string) *DescribeImageListByBuildRiskRequest {
+	s.CriteriaType = &v
+	return s
 }
 
 func (s *DescribeImageListByBuildRiskRequest) SetCurrentPage(v int32) *DescribeImageListByBuildRiskRequest {

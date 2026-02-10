@@ -95,8 +95,13 @@ type DescribePropertyScaDetailResponseBodyPageInfo struct {
 	// example:
 	//
 	// 1
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The value of NextToken that is returned when the NextToken method is used.
+	//
+	// example:
+	//
+	// B60***
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The number of entries returned per page. Default value: **10**.
 	//
 	// example:

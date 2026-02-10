@@ -24,12 +24,46 @@ type iListHoneypotAlarmEventsRequest interface {
 }
 
 type ListHoneypotAlarmEventsRequest struct {
-	CurrentPage   *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Dealed        *string   `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
-	DstIp         *string   `json:"DstIp,omitempty" xml:"DstIp,omitempty"`
-	PageSize      *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 10
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The status of the alert event. Default value: **a**. Valid values:
+	//
+	// 	- **a**: all states
+	//
+	// 	- **y**: handled
+	//
+	// 	- **n**: unhandled
+	//
+	// example:
+	//
+	// n
+	Dealed *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	// The destination IP address.
+	//
+	// example:
+	//
+	// 172.20.XX.XX
+	DstIp *string `json:"DstIp,omitempty" xml:"DstIp,omitempty"`
+	// The number of entries per page. Default value: 100. If you leave this parameter empty, 100 entries are returned on each page.
+	//
+	// >  We recommend that you do not leave this parameter empty. We recommend that you set the value to a value no greater than 100.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The risk levels.
 	RiskLevelList []*string `json:"RiskLevelList,omitempty" xml:"RiskLevelList,omitempty" type:"Repeated"`
-	SrcIp         *string   `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
+	// The source IP address.
+	//
+	// example:
+	//
+	// 101.132.XX.XX
+	SrcIp *string `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
 }
 
 func (s ListHoneypotAlarmEventsRequest) String() string {

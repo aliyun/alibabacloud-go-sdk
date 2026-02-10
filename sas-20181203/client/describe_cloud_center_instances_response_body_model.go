@@ -209,6 +209,16 @@ type DescribeCloudCenterInstancesResponseBodyInstances struct {
 	//
 	// true
 	Bind *bool `json:"Bind,omitempty" xml:"Bind,omitempty"`
+	// Whether to bind tamper-proof authorization. Values:
+	//
+	// - **block**: Yes
+	//
+	// - **none**: No
+	//
+	// example:
+	//
+	// block
+	BindFileProtectType *string `json:"BindFileProtectType,omitempty" xml:"BindFileProtectType,omitempty"`
 	// The status of the Security Center agent installed on the asset. Valid values:
 	//
 	// 	- **online**: The Security Center agent is **enabled**.
@@ -751,6 +761,10 @@ func (s *DescribeCloudCenterInstancesResponseBodyInstances) GetBind() *bool {
 	return s.Bind
 }
 
+func (s *DescribeCloudCenterInstancesResponseBodyInstances) GetBindFileProtectType() *string {
+	return s.BindFileProtectType
+}
+
 func (s *DescribeCloudCenterInstancesResponseBodyInstances) GetClientStatus() *string {
 	return s.ClientStatus
 }
@@ -993,6 +1007,11 @@ func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetAuthVersionName(v
 
 func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetBind(v bool) *DescribeCloudCenterInstancesResponseBodyInstances {
 	s.Bind = &v
+	return s
+}
+
+func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetBindFileProtectType(v string) *DescribeCloudCenterInstancesResponseBodyInstances {
+	s.BindFileProtectType = &v
 	return s
 }
 

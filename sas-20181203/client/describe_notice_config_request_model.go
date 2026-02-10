@@ -16,6 +16,15 @@ type iDescribeNoticeConfigRequest interface {
 }
 
 type DescribeNoticeConfigRequest struct {
+	// Notification configuration type, with values:
+	//
+	// - **Default (not provided)**: SMS/Email/Site Message
+	//
+	// - **cms**: Cloud Monitor Push
+	//
+	// example:
+	//
+	// cms
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The source IP address of the request.
 	//

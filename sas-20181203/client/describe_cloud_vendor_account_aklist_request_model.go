@@ -21,6 +21,8 @@ type iDescribeCloudVendorAccountAKListRequest interface {
 	GetStatus() *int32
 	SetSubAccountName(v string) *DescribeCloudVendorAccountAKListRequest
 	GetSubAccountName() *string
+	SetVendor(v string) *DescribeCloudVendorAccountAKListRequest
+	GetVendor() *string
 	SetVendorAuthAlias(v string) *DescribeCloudVendorAccountAKListRequest
 	GetVendorAuthAlias() *string
 }
@@ -70,6 +72,7 @@ type DescribeCloudVendorAccountAKListRequest struct {
 	//
 	// AlibabaCloud_***
 	SubAccountName *string `json:"SubAccountName,omitempty" xml:"SubAccountName,omitempty"`
+	Vendor         *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 	// The name of the AccessKey pair.
 	//
 	// example:
@@ -110,6 +113,10 @@ func (s *DescribeCloudVendorAccountAKListRequest) GetSubAccountName() *string {
 	return s.SubAccountName
 }
 
+func (s *DescribeCloudVendorAccountAKListRequest) GetVendor() *string {
+	return s.Vendor
+}
+
 func (s *DescribeCloudVendorAccountAKListRequest) GetVendorAuthAlias() *string {
 	return s.VendorAuthAlias
 }
@@ -141,6 +148,11 @@ func (s *DescribeCloudVendorAccountAKListRequest) SetStatus(v int32) *DescribeCl
 
 func (s *DescribeCloudVendorAccountAKListRequest) SetSubAccountName(v string) *DescribeCloudVendorAccountAKListRequest {
 	s.SubAccountName = &v
+	return s
+}
+
+func (s *DescribeCloudVendorAccountAKListRequest) SetVendor(v string) *DescribeCloudVendorAccountAKListRequest {
+	s.Vendor = &v
 	return s
 }
 

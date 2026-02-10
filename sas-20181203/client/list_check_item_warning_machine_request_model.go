@@ -25,6 +25,8 @@ type iListCheckItemWarningMachineRequest interface {
 	GetPageSize() *int32
 	SetRemark(v string) *ListCheckItemWarningMachineRequest
 	GetRemark() *string
+	SetResourceDirectoryAccountId(v int64) *ListCheckItemWarningMachineRequest
+	GetResourceDirectoryAccountId() *int64
 	SetRiskType(v string) *ListCheckItemWarningMachineRequest
 	GetRiskType() *string
 	SetSource(v string) *ListCheckItemWarningMachineRequest
@@ -94,6 +96,14 @@ type ListCheckItemWarningMachineRequest struct {
 	//
 	// 225
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The Alibaba Cloud account ID of the member in the resource directory.
+	//
+	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+	//
+	// example:
+	//
+	// 1232428423234****
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The type of the check item.
 	//
 	// example:
@@ -172,6 +182,10 @@ func (s *ListCheckItemWarningMachineRequest) GetRemark() *string {
 	return s.Remark
 }
 
+func (s *ListCheckItemWarningMachineRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *ListCheckItemWarningMachineRequest) GetRiskType() *string {
 	return s.RiskType
 }
@@ -225,6 +239,11 @@ func (s *ListCheckItemWarningMachineRequest) SetPageSize(v int32) *ListCheckItem
 
 func (s *ListCheckItemWarningMachineRequest) SetRemark(v string) *ListCheckItemWarningMachineRequest {
 	s.Remark = &v
+	return s
+}
+
+func (s *ListCheckItemWarningMachineRequest) SetResourceDirectoryAccountId(v int64) *ListCheckItemWarningMachineRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

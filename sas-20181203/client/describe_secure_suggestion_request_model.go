@@ -22,26 +22,42 @@ type iDescribeSecureSuggestionRequest interface {
 }
 
 type DescribeSecureSuggestionRequest struct {
+	// Choose to query the new or old version of the security score rules. When the value is **home_security_score**, it queries the new version of the security score rules; otherwise, it defaults to querying the old version of the security score rules.
+	//
 	// example:
 	//
 	// home_security_score
 	CalType *string `json:"CalType,omitempty" xml:"CalType,omitempty"`
+	// The language type for request and response messages, default is **zh**. Values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The Alibaba Cloud account ID of the member in the resource directory.
+	// Resource directory member account ID (Alibaba Cloud account).
 	//
-	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+	// > You can obtain this parameter by calling the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) API.
 	//
 	// example:
 	//
 	// 1232428423234****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	// Source of the security score. If left empty, it defaults to Cloud Security Center. Enumerated values:
+	//
+	// - 0: Cloud Security Center.
+	//
+	// - 1: Yaochi Console.
+	//
 	// example:
 	//
 	// 0
 	Source *int32 `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The IP address of the access source.
+	//
 	// example:
 	//
 	// 192.168.XX.XX

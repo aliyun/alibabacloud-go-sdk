@@ -22,6 +22,13 @@ type iModifyNoticeConfigRequest interface {
 }
 
 type ModifyNoticeConfigRequest struct {
+	// Notification configuration type, default is SMS/email/in-site message. Value:
+	//
+	// - **cms**: Cloud Monitor push
+	//
+	// example:
+	//
+	// cms
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The identifier of the notification item. Valid values:
 	//

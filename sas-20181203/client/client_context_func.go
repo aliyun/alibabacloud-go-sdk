@@ -2093,7 +2093,7 @@ func (client *Client) ChangeUserLangWithContext(ctx context.Context, request *Ch
 
 // Summary:
 //
-// Checks whether one or more alert events are generated on a specified server based on the IDs of the alert events.
+// Checks whether one or more alerts are generated on a specified server based on alert IDs.
 //
 // @param request - CheckSecurityEventIdRequest
 //
@@ -6127,7 +6127,7 @@ func (client *Client) DeleteBackupPolicyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Disables a specified anti-ransomware policy that is applied to specified servers and uninstalls the anti-ransomware agent from the servers. If the backup vaults of the servers contain only backup data of the servers, the backup vaults are deleted.
+// Deletes a server from a specified anti-ransomware policy.
 //
 // @param request - DeleteBackupPolicyMachineRequest
 //
@@ -8891,7 +8891,7 @@ func (client *Client) DescribeAgentlessSensitiveFileByKeyWithContext(ctx context
 
 // Summary:
 //
-// Queries the details of an alert event. An alert event consists of alerts and exceptions. Each alert event is associated with multiple exceptions.
+// Queries the details about an alert event. An alert event consists of an alert and exceptions. Each alert event is associated with multiple exceptions.
 //
 // @param request - DescribeAlarmEventDetailRequest
 //
@@ -9013,7 +9013,7 @@ func (client *Client) DescribeAlarmEventStackInfoWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the information about all server groups.
+// Queries the information about server groups.
 //
 // @param request - DescribeAllGroupsRequest
 //
@@ -10023,7 +10023,7 @@ func (client *Client) DescribeBruteForceRecordsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// The source IP address of the request.
+// Queries the statistics of IP address blocking policies that are used to defend against brute-force attacks and trigger alerts.
 //
 // @param request - DescribeBruteForceSummaryRequest
 //
@@ -11094,6 +11094,10 @@ func (client *Client) DescribeCloudVendorAccountAKListWithContext(ctx context.Co
 		query["SubAccountName"] = request.SubAccountName
 	}
 
+	if !dara.IsNil(request.Vendor) {
+		query["Vendor"] = request.Vendor
+	}
+
 	if !dara.IsNil(request.VendorAuthAlias) {
 		query["VendorAuthAlias"] = request.VendorAuthAlias
 	}
@@ -11123,7 +11127,7 @@ func (client *Client) DescribeCloudVendorAccountAKListWithContext(ctx context.Co
 
 // Summary:
 //
-// 获取厂商云产品接入模板
+// # Get the cloud product access template for vendors
 //
 // @param request - DescribeCloudVendorProductTemplateConfigRequest
 //
@@ -12239,7 +12243,7 @@ func (client *Client) DescribeContainerServiceK8sClustersWithContext(ctx context
 
 // Summary:
 //
-// Queries the alert statistics on container assets.
+// Queries the alert statistics of container assets.
 //
 // Description:
 //
@@ -14811,7 +14815,7 @@ func (client *Client) DescribeHcExportInfoWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries statistics on the quota of honeypots.
+// Queries the statistics about the quota on honeypots.
 //
 // @param request - DescribeHoneyPotAuthRequest
 //
@@ -14855,7 +14859,7 @@ func (client *Client) DescribeHoneyPotAuthWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the top five virtual private clouds (VPCs) or assets for which alerts are most frequently generated.
+// Queries the information about top 5 virtual private clouds (VPCs) or assets for which alerts are most frequently generated.
 //
 // @param request - DescribeHoneyPotSuspStatisticsRequest
 //
@@ -16322,6 +16326,14 @@ func (client *Client) DescribeImageListByBuildRiskWithContext(ctx context.Contex
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Criteria) {
+		query["Criteria"] = request.Criteria
+	}
+
+	if !dara.IsNil(request.CriteriaType) {
+		query["CriteriaType"] = request.CriteriaType
+	}
+
 	if !dara.IsNil(request.CurrentPage) {
 		query["CurrentPage"] = request.CurrentPage
 	}
@@ -17197,7 +17209,7 @@ func (client *Client) DescribeImageVulWhiteListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the verification codes that are used to manually install the Security Center agent.
+// Queries the verification code for you to manually install the Security Center agent.
 //
 // @param request - DescribeInstallCaptchaRequest
 //
@@ -17309,7 +17321,7 @@ func (client *Client) DescribeInstanceAntiBruteForceRulesWithContext(ctx context
 
 // Summary:
 //
-// Queries the status of the instance that you restart.
+// Queries the status of the servers that you restart.
 //
 // @param request - DescribeInstanceRebootStatusRequest
 //
@@ -18245,7 +18257,7 @@ func (client *Client) DescribePropertyCountWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the details of scheduled tasks on the Host page.
+// # Query Asset Fingerprint Scheduled Task Details
 //
 // @param request - DescribePropertyCronDetailRequest
 //
@@ -18377,7 +18389,7 @@ func (client *Client) DescribePropertyCronItemWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the fingerprints of ports on a specified server.
+// # Query Details of Asset Fingerprint Port Collection
 //
 // @param request - DescribePropertyPortDetailRequest
 //
@@ -18517,7 +18529,7 @@ func (client *Client) DescribePropertyPortItemWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the fingerprints of processes on a specified server.
+// # Query Details of Asset Fingerprint Collection Process
 //
 // @param request - DescribePropertyProcDetailRequest
 //
@@ -18665,7 +18677,7 @@ func (client *Client) DescribePropertyProcItemWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries middleware fingerprints.
+// # Query Asset Fingerprint Collection Middleware Details
 //
 // @param request - DescribePropertyScaDetailRequest
 //
@@ -18973,7 +18985,7 @@ func (client *Client) DescribePropertyScheduleConfigWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the details of a software asset.
+// # Query details of asset fingerprint software collection
 //
 // @param request - DescribePropertySoftwareDetailRequest
 //
@@ -19217,7 +19229,7 @@ func (client *Client) DescribePropertyUsageTopWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the asset fingerprints for an account to which a server belongs.
+// # Query asset fingerprint user details
 //
 // @param request - DescribePropertyUserDetailRequest
 //
@@ -19789,7 +19801,7 @@ func (client *Client) DescribeRiskCheckResultWithContext(ctx context.Context, re
 //
 // Summary:
 //
-// Queries the summary information about the check results of cloud service configurations. The information includes the number of risk items, the risk rate, the number of affected assets, the check time, and the statistics for each type of check item.
+// Queries the summary information about the check results of cloud service configurations. The information includes the number of risk items, the risk rate, the number of affected assets, the check time, and the statistics about each type of check items.
 //
 // Description:
 //
@@ -20089,7 +20101,7 @@ func (client *Client) DescribeRisksWithContext(ctx context.Context, request *Des
 
 // Summary:
 //
-// Queries the servers on which you want to install Cloud Assistant or the CloudMonitor agent.
+// Queries the servers on which you want to install the CloudMonitor agent.
 //
 // @param request - DescribeSasPmAgentListRequest
 //
@@ -20329,7 +20341,7 @@ func (client *Client) DescribeSearchConditionWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries suggestions on how to handle the risks that affect the security score.
+// # Query Security Risk Handling Suggestions Details
 //
 // @param request - DescribeSecureSuggestionRequest
 //
@@ -22751,7 +22763,7 @@ func (client *Client) DescribeUniRecoverableListWithContext(ctx context.Context,
 
 // Summary:
 //
-// The source IP address of the request.
+// Queries whether Security Center is authorized to run configuration checks on cloud services.
 //
 // @param request - DescribeUserBaselineAuthorizationRequest
 //
@@ -23087,7 +23099,7 @@ func (client *Client) DescribeVpcHoneyPotCriteriaWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries virtual private clouds (VPCs) on which honeypots are deployed.
+// Queries honeypots.
 //
 // Description:
 //
@@ -25687,7 +25699,7 @@ func (client *Client) ExportWarningWithContext(ctx context.Context, request *Exp
 
 // Summary:
 //
-// 容器网络连接
+// # Container Network Connection
 //
 // @param tmpReq - FindContainerNetworkConnectRequest
 //
@@ -26545,7 +26557,7 @@ func (client *Client) GetAssetSelectionConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the details about the asset fingerprints of the startup item, kernel module, or website type.
+// # Query detailed information of asset fingerprints
 //
 // @param request - GetAssetsPropertyDetailRequest
 //
@@ -28409,7 +28421,7 @@ func (client *Client) GetHoneyPotUploadPolicyInfoWithContext(ctx context.Context
 
 // Summary:
 //
-// 获取蜜罐攻击统计数据
+// 获取蜜罐攻击事件的统计数据。
 //
 // @param request - GetHoneypotAttackStatisticsRequest
 //
@@ -30423,7 +30435,7 @@ func (client *Client) GetSupportedModulesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the statistics on alerts in one or more asset groups.
+// Queries the statistics of alerts in one or more asset groups.
 //
 // @param request - GetSuspiciousStatisticsRequest
 //
@@ -31049,7 +31061,7 @@ func (client *Client) IgnoreCheckItemsWithContext(ctx context.Context, request *
 //
 // Summary:
 //
-// Ignores multiple baseline risk items at a time or cancels the ignore action that is performed on multiple baseline risk items at a time.
+// Ignores or cancels ignoring multiple baseline risk items at a time.
 //
 // @param request - IgnoreHcCheckWarningsRequest
 //
@@ -32846,6 +32858,10 @@ func (client *Client) ListCheckItemWarningMachineWithContext(ctx context.Context
 		query["Remark"] = request.Remark
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.RiskType) {
 		query["RiskType"] = request.RiskType
 	}
@@ -32944,6 +32960,10 @@ func (client *Client) ListCheckItemWarningSummaryWithContext(ctx context.Context
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !dara.IsNil(request.RiskType) {
@@ -35051,7 +35071,7 @@ func (client *Client) ListImageRegistryExtraWithContext(ctx context.Context, req
 
 // Summary:
 //
-// The region ID of the image.
+// Queries the regions in which you can add self-managed image repositories to Security Center.
 //
 // @param request - ListImageRegistryRegionRequest
 //
@@ -37875,7 +37895,7 @@ func (client *Client) ModifyAssetCleanConfigWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Changes the server group to which specified servers belong.
+// Changes the server group to which one or more servers belong.
 //
 // Description:
 //
@@ -40117,7 +40137,7 @@ func (client *Client) ModifyLoginBaseConfigWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Enables or disables the logon security settings for an asset.
+// Enables or disables the logon security settings for a specific asset.
 //
 // @param request - ModifyLoginSwitchConfigRequest
 //
@@ -40337,27 +40357,45 @@ func (client *Client) ModifyOperateVulWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Modifies the switch settings of pay-as-you-go modules.
+// # Operate the Postpaid Module Switch
 //
-// @param request - ModifyPostPayModuleSwitchRequest
+// @param tmpReq - ModifyPostPayModuleSwitchRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyPostPayModuleSwitchResponse
-func (client *Client) ModifyPostPayModuleSwitchWithContext(ctx context.Context, request *ModifyPostPayModuleSwitchRequest, runtime *dara.RuntimeOptions) (_result *ModifyPostPayModuleSwitchResponse, _err error) {
+func (client *Client) ModifyPostPayModuleSwitchWithContext(ctx context.Context, tmpReq *ModifyPostPayModuleSwitchRequest, runtime *dara.RuntimeOptions) (_result *ModifyPostPayModuleSwitchResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ModifyPostPayModuleSwitchShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.PostPayModuleSwitchObj) {
+		request.PostPayModuleSwitchObjShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PostPayModuleSwitchObj, dara.String("PostPayModuleSwitchObj"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.PostPaidHostAutoBind) {
+		query["PostPaidHostAutoBind"] = request.PostPaidHostAutoBind
+	}
+
+	if !dara.IsNil(request.PostPaidHostAutoBindVersion) {
+		query["PostPaidHostAutoBindVersion"] = request.PostPaidHostAutoBindVersion
+	}
+
 	if !dara.IsNil(request.PostPayInstanceId) {
 		query["PostPayInstanceId"] = request.PostPayInstanceId
 	}
 
 	if !dara.IsNil(request.PostPayModuleSwitch) {
 		query["PostPayModuleSwitch"] = request.PostPayModuleSwitch
+	}
+
+	if !dara.IsNil(request.PostPayModuleSwitchObjShrink) {
+		query["PostPayModuleSwitchObj"] = request.PostPayModuleSwitchObjShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -40703,7 +40741,7 @@ func (client *Client) ModifySearchConditionWithContext(ctx context.Context, requ
 //
 // Summary:
 //
-// Specifies the time when an automatic configuration check is performed on cloud services.
+// Specifies the time when an automatic configuration check on cloud services runs.
 //
 // Description:
 //
@@ -41465,7 +41503,7 @@ func (client *Client) ModifyVulTargetWithContext(ctx context.Context, request *M
 
 // Summary:
 //
-// Configures vulnerability scan for a server.
+// Configures vulnerability detection for a server.
 //
 // @param request - ModifyVulTargetConfigRequest
 //
@@ -41833,7 +41871,7 @@ func (client *Client) ModifyWebLockRefreshWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Enables web tamper proofing for a specified server.
+// Configures and enables web tamper proofing for a specified server.
 //
 // @param request - ModifyWebLockStartRequest
 //
@@ -42009,7 +42047,7 @@ func (client *Client) ModifyWebLockUnbindWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Modifies the protection policy for a specified server.
+// Modifies protection policy for a specified server.
 //
 // @param request - ModifyWebLockUpdateConfigRequest
 //
@@ -45301,7 +45339,7 @@ func (client *Client) SetSyncRefreshRegionWithContext(ctx context.Context, reque
 //
 // Summary:
 //
-// Checks cloud service configurations. You can check all items or a single item and verify whether an item is checked.
+// Checks cloud service configurations. You can check all items or a specific item and verify whether an item is checked.
 //
 // @param request - StartBaselineSecurityCheckRequest
 //
@@ -46551,7 +46589,7 @@ func (client *Client) UpdateFileProtectEventStatusWithContext(ctx context.Contex
 
 // Summary:
 //
-// Adds remarks to core file monitoring events reported by the Security Center agent.
+// # Modify Alert Remarks
 //
 // @param request - UpdateFileProtectRemarkRequest
 //

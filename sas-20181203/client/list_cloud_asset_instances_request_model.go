@@ -26,6 +26,7 @@ type iListCloudAssetInstancesRequest interface {
 }
 
 type ListCloudAssetInstancesRequest struct {
+	// Query data list based on keywords.
 	CloudAssetQueryData []*ListCloudAssetInstancesRequestCloudAssetQueryData `json:"CloudAssetQueryData,omitempty" xml:"CloudAssetQueryData,omitempty" type:"Repeated"`
 	// The details of the cloud asset.
 	CloudAssetTypes []*ListCloudAssetInstancesRequestCloudAssetTypes `json:"CloudAssetTypes,omitempty" xml:"CloudAssetTypes,omitempty" type:"Repeated"`
@@ -171,7 +172,17 @@ func (s *ListCloudAssetInstancesRequest) Validate() error {
 }
 
 type ListCloudAssetInstancesRequestCloudAssetQueryData struct {
-	Data     *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Query content.
+	//
+	// example:
+	//
+	// 163.8.8.9
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Query operator, currently only supports: INCLUDE.
+	//
+	// example:
+	//
+	// INCLUDE
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 }
 

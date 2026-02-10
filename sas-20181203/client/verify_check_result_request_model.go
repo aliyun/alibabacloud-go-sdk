@@ -19,7 +19,8 @@ type iVerifyCheckResultRequest interface {
 
 type VerifyCheckResultRequest struct {
 	// The IDs of the check items.
-	CheckIds    []*int64  `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
+	CheckIds []*int64 `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
+	// List of instance IDs for the check item assets.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The source of task.
 	//
