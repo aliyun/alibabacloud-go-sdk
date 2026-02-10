@@ -20,18 +20,26 @@ type iAkSkIdentityConfig interface {
 }
 
 type AkSkIdentityConfig struct {
+	// Access Key
+	//
 	// example:
 	//
 	// xxxx
 	Ak *string `json:"ak,omitempty" xml:"ak,omitempty"`
+	// Generation mode
+	//
 	// example:
 	//
 	// System
 	GenerateMode *string `json:"generateMode,omitempty" xml:"generateMode,omitempty"`
+	// Secret Key
+	//
 	// example:
 	//
 	// xxxx
 	Sk *string `json:"sk,omitempty" xml:"sk,omitempty"`
+	// Identity authentication type
+	//
 	// example:
 	//
 	// Jwt
