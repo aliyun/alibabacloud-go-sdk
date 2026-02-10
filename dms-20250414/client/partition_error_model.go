@@ -16,6 +16,9 @@ type iPartitionError interface {
 }
 
 type PartitionError struct {
+	// example:
+	//
+	// auth failed
 	ErrorDetail *string   `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty"`
 	Values      []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }

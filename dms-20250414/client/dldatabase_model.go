@@ -24,12 +24,30 @@ type iDLDatabase interface {
 }
 
 type DLDatabase struct {
-	CatalogName *string                `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	DbId        *int64                 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	Description *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	Location    *string                `json:"Location,omitempty" xml:"Location,omitempty"`
-	Name        *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Parameters  map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// example:
+	//
+	// hive
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// example:
+	//
+	// 19
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// example:
+	//
+	// Default database for catalog hive
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// oss://xxx
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// default
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// key/value
+	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 }
 
 func (s DLDatabase) String() string {

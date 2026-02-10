@@ -18,9 +18,18 @@ type iDLColumn interface {
 }
 
 type DLColumn struct {
+	// example:
+	//
+	// from deserializer
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// col
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// string
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DLColumn) String() string {

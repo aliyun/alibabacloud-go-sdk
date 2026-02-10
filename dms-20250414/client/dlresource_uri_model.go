@@ -16,8 +16,14 @@ type iDLResourceUri interface {
 }
 
 type DLResourceUri struct {
+	// example:
+	//
+	// JAR
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Uri          *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// example:
+	//
+	// hdfs://name****.example.com:8020/user/hive/udfs/my_***.jar
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s DLResourceUri) String() string {

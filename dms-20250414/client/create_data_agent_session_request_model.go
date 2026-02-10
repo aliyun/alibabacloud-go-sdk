@@ -112,7 +112,9 @@ type CreateDataAgentSessionRequestSessionConfig struct {
 	// example:
 	//
 	// false
-	EnableSearch *bool `json:"EnableSearch,omitempty" xml:"EnableSearch,omitempty"`
+	EnableSearch *bool   `json:"EnableSearch,omitempty" xml:"EnableSearch,omitempty"`
+	EncryptKey   *string `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
+	EncryptType  *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
 	// example:
 	//
 	// CHINESE
@@ -121,8 +123,10 @@ type CreateDataAgentSessionRequestSessionConfig struct {
 	// example:
 	//
 	// ANALYSIS
-	Mode          *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	UserOssBucket *string `json:"UserOssBucket,omitempty" xml:"UserOssBucket,omitempty"`
+	Mode            *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	ReportPageWidth *int64  `json:"ReportPageWidth,omitempty" xml:"ReportPageWidth,omitempty"`
+	ReportWaterMark *string `json:"ReportWaterMark,omitempty" xml:"ReportWaterMark,omitempty"`
+	UserOssBucket   *string `json:"UserOssBucket,omitempty" xml:"UserOssBucket,omitempty"`
 }
 
 func (s CreateDataAgentSessionRequestSessionConfig) String() string {
@@ -145,6 +149,14 @@ func (s *CreateDataAgentSessionRequestSessionConfig) GetEnableSearch() *bool {
 	return s.EnableSearch
 }
 
+func (s *CreateDataAgentSessionRequestSessionConfig) GetEncryptKey() *string {
+	return s.EncryptKey
+}
+
+func (s *CreateDataAgentSessionRequestSessionConfig) GetEncryptType() *string {
+	return s.EncryptType
+}
+
 func (s *CreateDataAgentSessionRequestSessionConfig) GetLanguage() *string {
 	return s.Language
 }
@@ -155,6 +167,14 @@ func (s *CreateDataAgentSessionRequestSessionConfig) GetMcpServerIds() []*string
 
 func (s *CreateDataAgentSessionRequestSessionConfig) GetMode() *string {
 	return s.Mode
+}
+
+func (s *CreateDataAgentSessionRequestSessionConfig) GetReportPageWidth() *int64 {
+	return s.ReportPageWidth
+}
+
+func (s *CreateDataAgentSessionRequestSessionConfig) GetReportWaterMark() *string {
+	return s.ReportWaterMark
 }
 
 func (s *CreateDataAgentSessionRequestSessionConfig) GetUserOssBucket() *string {
@@ -176,6 +196,16 @@ func (s *CreateDataAgentSessionRequestSessionConfig) SetEnableSearch(v bool) *Cr
 	return s
 }
 
+func (s *CreateDataAgentSessionRequestSessionConfig) SetEncryptKey(v string) *CreateDataAgentSessionRequestSessionConfig {
+	s.EncryptKey = &v
+	return s
+}
+
+func (s *CreateDataAgentSessionRequestSessionConfig) SetEncryptType(v string) *CreateDataAgentSessionRequestSessionConfig {
+	s.EncryptType = &v
+	return s
+}
+
 func (s *CreateDataAgentSessionRequestSessionConfig) SetLanguage(v string) *CreateDataAgentSessionRequestSessionConfig {
 	s.Language = &v
 	return s
@@ -188,6 +218,16 @@ func (s *CreateDataAgentSessionRequestSessionConfig) SetMcpServerIds(v []*string
 
 func (s *CreateDataAgentSessionRequestSessionConfig) SetMode(v string) *CreateDataAgentSessionRequestSessionConfig {
 	s.Mode = &v
+	return s
+}
+
+func (s *CreateDataAgentSessionRequestSessionConfig) SetReportPageWidth(v int64) *CreateDataAgentSessionRequestSessionConfig {
+	s.ReportPageWidth = &v
+	return s
+}
+
+func (s *CreateDataAgentSessionRequestSessionConfig) SetReportWaterMark(v string) *CreateDataAgentSessionRequestSessionConfig {
+	s.ReportWaterMark = &v
 	return s
 }
 

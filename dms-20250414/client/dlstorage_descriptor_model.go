@@ -36,18 +36,36 @@ type iDLStorageDescriptor interface {
 }
 
 type DLStorageDescriptor struct {
-	BucketCols      []*string              `json:"BucketCols,omitempty" xml:"BucketCols,omitempty" type:"Repeated"`
-	Columns         []*DLColumn            `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	InputFormat     *string                `json:"InputFormat,omitempty" xml:"InputFormat,omitempty"`
-	IsCompressed    *bool                  `json:"IsCompressed,omitempty" xml:"IsCompressed,omitempty"`
-	Location        *string                `json:"Location,omitempty" xml:"Location,omitempty"`
-	NumBuckets      *int32                 `json:"NumBuckets,omitempty" xml:"NumBuckets,omitempty"`
-	OriginalColumns []*DLColumn            `json:"OriginalColumns,omitempty" xml:"OriginalColumns,omitempty" type:"Repeated"`
-	OutputFormat    *string                `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
-	Parameters      map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	SerdeInfo       *DLSerdeInfo           `json:"SerdeInfo,omitempty" xml:"SerdeInfo,omitempty"`
-	SkewedInfo      *DLSkewedInfo          `json:"SkewedInfo,omitempty" xml:"SkewedInfo,omitempty"`
-	SortCols        []*DLOrder             `json:"SortCols,omitempty" xml:"SortCols,omitempty" type:"Repeated"`
+	BucketCols []*string   `json:"BucketCols,omitempty" xml:"BucketCols,omitempty" type:"Repeated"`
+	Columns    []*DLColumn `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// org.apache.hadoop.mapred.SequenceFileInputFormat
+	InputFormat *string `json:"InputFormat,omitempty" xml:"InputFormat,omitempty"`
+	// example:
+	//
+	// false
+	IsCompressed *bool `json:"IsCompressed,omitempty" xml:"IsCompressed,omitempty"`
+	// example:
+	//
+	// oss://xxx
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// -1
+	NumBuckets      *int32      `json:"NumBuckets,omitempty" xml:"NumBuckets,omitempty"`
+	OriginalColumns []*DLColumn `json:"OriginalColumns,omitempty" xml:"OriginalColumns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat
+	OutputFormat *string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
+	// example:
+	//
+	// key/value
+	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	SerdeInfo  *DLSerdeInfo           `json:"SerdeInfo,omitempty" xml:"SerdeInfo,omitempty"`
+	SkewedInfo *DLSkewedInfo          `json:"SkewedInfo,omitempty" xml:"SkewedInfo,omitempty"`
+	SortCols   []*DLOrder             `json:"SortCols,omitempty" xml:"SortCols,omitempty" type:"Repeated"`
 }
 
 func (s DLStorageDescriptor) String() string {

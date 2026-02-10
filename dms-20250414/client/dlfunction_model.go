@@ -34,15 +34,45 @@ type iDLFunction interface {
 }
 
 type DLFunction struct {
-	CatalogName  *string          `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	ClassName    *string          `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
-	CreateTime   *int32           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreatorId    *int64           `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	DbName       *string          `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	FunctionName *string          `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	FunctionType *string          `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
-	ModifierId   *int64           `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
-	OwnerName    *string          `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// example:
+	//
+	// hive
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// example:
+	//
+	// com.example.hive.MyCustomUDF
+	ClassName *string `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
+	// example:
+	//
+	// 1731586286
+	CreateTime *int32 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 12****
+	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// example:
+	//
+	// default
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// example:
+	//
+	// my_funciton
+	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	// example:
+	//
+	// JAVA
+	FunctionType *string `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
+	// example:
+	//
+	// 26****
+	ModifierId *int64 `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	// example:
+	//
+	// zhangsan
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// example:
+	//
+	// USER
 	OwnerType    *string          `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
 	ResourceUris []*DLResourceUri `json:"ResourceUris,omitempty" xml:"ResourceUris,omitempty" type:"Repeated"`
 }

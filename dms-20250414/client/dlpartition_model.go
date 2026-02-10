@@ -28,14 +28,29 @@ type iDLPartition interface {
 }
 
 type DLPartition struct {
-	CatalogName    *string              `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	CreateTime     *int32               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DbName         *string              `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// example:
+	//
+	// hive
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// example:
+	//
+	// 1735109884
+	CreateTime *int32 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// default
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// example:
+	//
+	// 1608707407
 	LastAccessTime *int32               `json:"LastAccessTime,omitempty" xml:"LastAccessTime,omitempty"`
 	Parameters     map[string]*string   `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	Sd             *DLStorageDescriptor `json:"Sd,omitempty" xml:"Sd,omitempty"`
-	TableName      *string              `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	Values         []*string            `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	// example:
+	//
+	// table_name
+	TableName *string   `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	Values    []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s DLPartition) String() string {

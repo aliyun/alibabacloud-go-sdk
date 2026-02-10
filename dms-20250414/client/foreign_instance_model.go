@@ -28,14 +28,60 @@ type iForeignInstance interface {
 }
 
 type ForeignInstance struct {
-	DataLinkName   *string            `json:"DataLinkName,omitempty" xml:"DataLinkName,omitempty"`
-	Host           *string            `json:"Host,omitempty" xml:"Host,omitempty"`
-	InstanceSource *string            `json:"InstanceSource,omitempty" xml:"InstanceSource,omitempty"`
-	InstanceType   *string            `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Port           *int32             `json:"Port,omitempty" xml:"Port,omitempty"`
-	Properties     map[string]*string `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	RegionId       *string            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Sid            *string            `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	// The name of the data link.
+	//
+	// example:
+	//
+	// dbl_mysql_2337
+	DataLinkName *string `json:"DataLinkName,omitempty" xml:"DataLinkName,omitempty"`
+	// The endpoint that is used to connect to the database instance.
+	//
+	// example:
+	//
+	// 127.0.0.1
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The source of the database instance. Valid values:
+	//
+	// 	- **PUBLIC_OWN:*	- a self-managed database instance that is deployed on the Internet.
+	//
+	// 	- **RDS**: an ApsaraDB RDS instance.
+	//
+	// 	- **ECS_OWN**: a self-managed database that is hosted on an Elastic Compute Service (ECS) instance.
+	//
+	// 	- **VPC_IDC**: a self-managed database instance that is deployed in the data center over a virtual private cloud (VPC).
+	//
+	// example:
+	//
+	// RDS
+	InstanceSource *string `json:"InstanceSource,omitempty" xml:"InstanceSource,omitempty"`
+	// The type of the instance.
+	//
+	// example:
+	//
+	// mysql
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The port number that is used to connect to the database instance.
+	//
+	// example:
+	//
+	// 7890
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The information of the properties.
+	Properties map[string]*string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The system identifier (SID) of the database.
+	//
+	// >  The SID uniquely identifies an Oracle database. After a database is created, a SID is generated for the database.
+	//
+	// example:
+	//
+	// HXE
+	Sid *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
 }
 
 func (s ForeignInstance) String() string {

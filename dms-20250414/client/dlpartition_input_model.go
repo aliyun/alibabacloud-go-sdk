@@ -22,7 +22,13 @@ type iDLPartitionInput interface {
 }
 
 type DLPartitionInput struct {
-	CreateTime        *int32               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1735109884
+	CreateTime *int32 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1735109884
 	LastAccessTime    *int32               `json:"LastAccessTime,omitempty" xml:"LastAccessTime,omitempty"`
 	Parameters        map[string]*string   `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	StorageDescriptor *DLStorageDescriptor `json:"StorageDescriptor,omitempty" xml:"StorageDescriptor,omitempty"`

@@ -18,7 +18,10 @@ type iDLSkewedInfo interface {
 }
 
 type DLSkewedInfo struct {
-	SkewedColNames             []*string              `json:"SkewedColNames,omitempty" xml:"SkewedColNames,omitempty" type:"Repeated"`
+	SkewedColNames []*string `json:"SkewedColNames,omitempty" xml:"SkewedColNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {“col1”:"val1"}
 	SkewedColValueLocationMaps map[string]interface{} `json:"SkewedColValueLocationMaps,omitempty" xml:"SkewedColValueLocationMaps,omitempty"`
 	SkewedColValues            [][]*string            `json:"SkewedColValues,omitempty" xml:"SkewedColValues,omitempty" type:"Repeated"`
 }

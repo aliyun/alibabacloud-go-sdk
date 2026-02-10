@@ -16,8 +16,14 @@ type iForeignInstanceCredInfo interface {
 }
 
 type ForeignInstanceCredInfo struct {
+	// The information about the credential.
 	CredInfo map[string]*string `json:"CredInfo,omitempty" xml:"CredInfo,omitempty"`
-	CredType *string            `json:"CredType,omitempty" xml:"CredType,omitempty"`
+	// The type of the credential. Set the value to DEFAULT.
+	//
+	// example:
+	//
+	// DEFAULT
+	CredType *string `json:"CredType,omitempty" xml:"CredType,omitempty"`
 }
 
 func (s ForeignInstanceCredInfo) String() string {

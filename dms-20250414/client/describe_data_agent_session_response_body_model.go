@@ -319,7 +319,9 @@ type DescribeDataAgentSessionResponseBodyDataSessionConfig struct {
 	// example:
 	//
 	// True
-	EnableSearch *bool `json:"EnableSearch,omitempty" xml:"EnableSearch,omitempty"`
+	EnableSearch *bool   `json:"EnableSearch,omitempty" xml:"EnableSearch,omitempty"`
+	EncryptKey   *string `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
+	EncryptType  *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
 	// example:
 	//
 	// CHINESE
@@ -328,8 +330,10 @@ type DescribeDataAgentSessionResponseBodyDataSessionConfig struct {
 	// example:
 	//
 	// ANALYSIS
-	Mode          *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	UserOssBucket *string `json:"UserOssBucket,omitempty" xml:"UserOssBucket,omitempty"`
+	Mode            *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	ReportPageWidth *int64  `json:"ReportPageWidth,omitempty" xml:"ReportPageWidth,omitempty"`
+	ReportWaterMark *string `json:"ReportWaterMark,omitempty" xml:"ReportWaterMark,omitempty"`
+	UserOssBucket   *string `json:"UserOssBucket,omitempty" xml:"UserOssBucket,omitempty"`
 }
 
 func (s DescribeDataAgentSessionResponseBodyDataSessionConfig) String() string {
@@ -352,6 +356,14 @@ func (s *DescribeDataAgentSessionResponseBodyDataSessionConfig) GetEnableSearch(
 	return s.EnableSearch
 }
 
+func (s *DescribeDataAgentSessionResponseBodyDataSessionConfig) GetEncryptKey() *string {
+	return s.EncryptKey
+}
+
+func (s *DescribeDataAgentSessionResponseBodyDataSessionConfig) GetEncryptType() *string {
+	return s.EncryptType
+}
+
 func (s *DescribeDataAgentSessionResponseBodyDataSessionConfig) GetLanguage() *string {
 	return s.Language
 }
@@ -362,6 +374,14 @@ func (s *DescribeDataAgentSessionResponseBodyDataSessionConfig) GetMcpServerIds(
 
 func (s *DescribeDataAgentSessionResponseBodyDataSessionConfig) GetMode() *string {
 	return s.Mode
+}
+
+func (s *DescribeDataAgentSessionResponseBodyDataSessionConfig) GetReportPageWidth() *int64 {
+	return s.ReportPageWidth
+}
+
+func (s *DescribeDataAgentSessionResponseBodyDataSessionConfig) GetReportWaterMark() *string {
+	return s.ReportWaterMark
 }
 
 func (s *DescribeDataAgentSessionResponseBodyDataSessionConfig) GetUserOssBucket() *string {
@@ -383,6 +403,16 @@ func (s *DescribeDataAgentSessionResponseBodyDataSessionConfig) SetEnableSearch(
 	return s
 }
 
+func (s *DescribeDataAgentSessionResponseBodyDataSessionConfig) SetEncryptKey(v string) *DescribeDataAgentSessionResponseBodyDataSessionConfig {
+	s.EncryptKey = &v
+	return s
+}
+
+func (s *DescribeDataAgentSessionResponseBodyDataSessionConfig) SetEncryptType(v string) *DescribeDataAgentSessionResponseBodyDataSessionConfig {
+	s.EncryptType = &v
+	return s
+}
+
 func (s *DescribeDataAgentSessionResponseBodyDataSessionConfig) SetLanguage(v string) *DescribeDataAgentSessionResponseBodyDataSessionConfig {
 	s.Language = &v
 	return s
@@ -395,6 +425,16 @@ func (s *DescribeDataAgentSessionResponseBodyDataSessionConfig) SetMcpServerIds(
 
 func (s *DescribeDataAgentSessionResponseBodyDataSessionConfig) SetMode(v string) *DescribeDataAgentSessionResponseBodyDataSessionConfig {
 	s.Mode = &v
+	return s
+}
+
+func (s *DescribeDataAgentSessionResponseBodyDataSessionConfig) SetReportPageWidth(v int64) *DescribeDataAgentSessionResponseBodyDataSessionConfig {
+	s.ReportPageWidth = &v
+	return s
+}
+
+func (s *DescribeDataAgentSessionResponseBodyDataSessionConfig) SetReportWaterMark(v string) *DescribeDataAgentSessionResponseBodyDataSessionConfig {
+	s.ReportWaterMark = &v
 	return s
 }
 

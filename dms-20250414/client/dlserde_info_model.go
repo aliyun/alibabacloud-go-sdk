@@ -26,13 +26,38 @@ type iDLSerdeInfo interface {
 }
 
 type DLSerdeInfo struct {
-	Description       *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	DeserializerClass *string                `json:"DeserializerClass,omitempty" xml:"DeserializerClass,omitempty"`
-	Name              *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Parameters        map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	SerdeType         *int32                 `json:"SerdeType,omitempty" xml:"SerdeType,omitempty"`
-	SerializationLib  *string                `json:"SerializationLib,omitempty" xml:"SerializationLib,omitempty"`
-	SerializerClass   *string                `json:"SerializerClass,omitempty" xml:"SerializerClass,omitempty"`
+	// example:
+	//
+	// "serialize"
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// org.apache.hadoop.hive.serde2.OpenCSVSerde
+	DeserializerClass *string `json:"DeserializerClass,omitempty" xml:"DeserializerClass,omitempty"`
+	// example:
+	//
+	// name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "serialization.format": "1"
+	//
+	// }
+	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// example:
+	//
+	// 0
+	SerdeType *int32 `json:"SerdeType,omitempty" xml:"SerdeType,omitempty"`
+	// example:
+	//
+	// org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe
+	SerializationLib *string `json:"SerializationLib,omitempty" xml:"SerializationLib,omitempty"`
+	// example:
+	//
+	// org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe
+	SerializerClass *string `json:"SerializerClass,omitempty" xml:"SerializerClass,omitempty"`
 }
 
 func (s DLSerdeInfo) String() string {

@@ -18,9 +18,18 @@ type iDLCatalog interface {
 }
 
 type DLCatalog struct {
+	// example:
+	//
+	// init default catalog
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Location    *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// oss://xxxx
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// hive
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DLCatalog) String() string {
