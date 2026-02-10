@@ -220,117 +220,36 @@ func (s *GetOrderDetailResponseBodyDataOrderList) Validate() error {
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrder struct {
-	// example:
-	//
-	// 0
-	AfterTaxAmount   *string                                                       `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
-	BillModuleConfig *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfig `json:"BillModuleConfig,omitempty" xml:"BillModuleConfig,omitempty" type:"Struct"`
-	// example:
-	//
-	// rds
-	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// example:
-	//
-	// DBInstanceClass:[DBInstanceClass:rds.mysql.s1.small;EngineVersion:8.0;Region:cn-qingdao;]DBFlowType:[Region:cn-qingdao;]
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// example:
-	//
-	// 2017-06-08T09:41:30Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// CNY
-	Currency    *string            `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	ExtendInfos map[string]*string `json:"ExtendInfos,omitempty" xml:"ExtendInfos,omitempty"`
-	// example:
-	//
-	// ["rm-bp1a2vsr018313t6o"]
-	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// example:
-	//
-	// 322315
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// example:
-	//
-	// 241559391310333
-	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// example:
-	//
-	// productsuborder
-	OrderSubType *string `json:"OrderSubType,omitempty" xml:"OrderSubType,omitempty"`
-	// example:
-	//
-	// new
-	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// example:
-	//
-	// DBInstanceClass:[DBInstanceClass:rds.mysql.s1.small;EngineVersion:8.0;Region:cn-qingdao;]DBFlowType:[Region:cn-qingdao;]
+	AfterTaxAmount       *string                                                           `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
+	BillModuleConfig     *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfig     `json:"BillModuleConfig,omitempty" xml:"BillModuleConfig,omitempty" type:"Struct"`
+	CommodityCode        *string                                                           `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	Config               *string                                                           `json:"Config,omitempty" xml:"Config,omitempty"`
+	CreateTime           *string                                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Currency             *string                                                           `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	ExtendInfos          map[string]*string                                                `json:"ExtendInfos,omitempty" xml:"ExtendInfos,omitempty"`
+	InstanceIds          *string                                                           `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	Operator             *string                                                           `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	OrderId              *string                                                           `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderSubType         *string                                                           `json:"OrderSubType,omitempty" xml:"OrderSubType,omitempty"`
+	OrderType            *string                                                           `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OriginalConfig       *string                                                           `json:"OriginalConfig,omitempty" xml:"OriginalConfig,omitempty"`
 	OriginalModuleConfig *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfig `json:"OriginalModuleConfig,omitempty" xml:"OriginalModuleConfig,omitempty" type:"Struct"`
-	// example:
-	//
-	// CNY
-	PaymentCurrency *string `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
-	// example:
-	//
-	// paid
-	PaymentStatus *string `json:"PaymentStatus,omitempty" xml:"PaymentStatus,omitempty"`
-	// example:
-	//
-	// 2017-06-08T09:41:30Z
-	PaymentTime *string `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
-	// example:
-	//
-	// 0
-	PretaxAmount *string `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	// example:
-	//
-	// 0
-	PretaxAmountLocal *string `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
-	// example:
-	//
-	// 0
-	PretaxGrossAmount *string `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	// example:
-	//
-	// rds
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// example:
-	//
-	// rds
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// example:
-	//
-	// 3
-	Quantity *string `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	// example:
-	//
-	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// example:
-	//
-	// 241559391310332
-	RelatedOrderId *string `json:"RelatedOrderId,omitempty" xml:"RelatedOrderId,omitempty"`
-	// example:
-	//
-	// 234343
-	SubOrderId *string `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
-	// example:
-	//
-	// Subscription
-	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	// example:
-	//
-	// 0
-	Tax *string `json:"Tax,omitempty" xml:"Tax,omitempty"`
-	// example:
-	//
-	// 2117-06-08T16:00:00Z
-	UsageEndTime *string `json:"UsageEndTime,omitempty" xml:"UsageEndTime,omitempty"`
-	// example:
-	//
-	// 2017-06-08T16:00:00Z
-	UsageStartTime *string `json:"UsageStartTime,omitempty" xml:"UsageStartTime,omitempty"`
+	PaymentCurrency      *string                                                           `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
+	PaymentStatus        *string                                                           `json:"PaymentStatus,omitempty" xml:"PaymentStatus,omitempty"`
+	PaymentTime          *string                                                           `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
+	PretaxAmount         *string                                                           `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	PretaxAmountLocal    *string                                                           `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
+	PretaxGrossAmount    *string                                                           `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	ProductCode          *string                                                           `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductType          *string                                                           `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	Quantity             *string                                                           `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	Region               *string                                                           `json:"Region,omitempty" xml:"Region,omitempty"`
+	RelatedOrderId       *string                                                           `json:"RelatedOrderId,omitempty" xml:"RelatedOrderId,omitempty"`
+	SubOrderId           *string                                                           `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
+	SubscriptionType     *string                                                           `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	Tax                  *string                                                           `json:"Tax,omitempty" xml:"Tax,omitempty"`
+	UsageEndTime         *string                                                           `json:"UsageEndTime,omitempty" xml:"UsageEndTime,omitempty"`
+	UsageStartTime       *string                                                           `json:"UsageStartTime,omitempty" xml:"UsageStartTime,omitempty"`
 }
 
 func (s GetOrderDetailResponseBodyDataOrderListOrder) String() string {
@@ -660,18 +579,10 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfig) Validate(
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfig struct {
-	// apiCode
-	//
-	// example:
-	//
-	// datadisk
 	ApiCode              *string                                                                                           `json:"ApiCode,omitempty" xml:"ApiCode,omitempty"`
 	BillModuleProperties *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModuleProperties `json:"BillModuleProperties,omitempty" xml:"BillModuleProperties,omitempty" type:"Struct"`
-	// example:
-	//
-	// datadisk
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Code                 *string                                                                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Name                 *string                                                                                           `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfig) String() string {
@@ -762,18 +673,9 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleC
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModulePropertiesBillModuleProperties struct {
-	// example:
-	//
-	// cloud_ssd
-	AttrApiCode *string `json:"AttrApiCode,omitempty" xml:"AttrApiCode,omitempty"`
-	// example:
-	//
-	// cloud_ssd
+	AttrApiCode   *string `json:"AttrApiCode,omitempty" xml:"AttrApiCode,omitempty"`
 	ModuleApiCode *string `json:"ModuleApiCode,omitempty" xml:"ModuleApiCode,omitempty"`
-	// example:
-	//
-	// cloud_ssd
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModulePropertiesBillModuleProperties) String() string {
@@ -850,9 +752,6 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfig) Valid
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfig struct {
-	// example:
-	//
-	// systemdisk
 	Code             *string                                                                                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	ModuleProperties *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModuleProperties `json:"ModuleProperties,omitempty" xml:"ModuleProperties,omitempty" type:"Struct"`
 	Name             *string                                                                                               `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -937,14 +836,8 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOrigina
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModulePropertiesModuleProperties struct {
-	// example:
-	//
-	// cloud_efficiency
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// cloud_efficiency
+	Code  *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

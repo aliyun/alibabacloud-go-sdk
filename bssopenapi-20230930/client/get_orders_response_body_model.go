@@ -220,74 +220,23 @@ func (s *GetOrdersResponseBodyDataOrderList) Validate() error {
 }
 
 type GetOrdersResponseBodyDataOrderListOrder struct {
-	// example:
-	//
-	// 66
-	AfterTaxAmount *string `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
-	// example:
-	//
-	// rds
-	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// example:
-	//
-	// 2017-06-08T09:41:30Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// CNY
-	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// example:
-	//
-	// 237258627070169
-	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// example:
-	//
-	// New
-	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// example:
-	//
-	// CNY
-	PaymentCurrency *string `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
-	// example:
-	//
-	// Paid
-	PaymentStatus *string `json:"PaymentStatus,omitempty" xml:"PaymentStatus,omitempty"`
-	// example:
-	//
-	// 2017-06-08T09:41:30Z
-	PaymentTime *string `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
-	// example:
-	//
-	// 0
-	PretaxAmount *string `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	// example:
-	//
-	// 0
+	AfterTaxAmount    *string `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
+	CommodityCode     *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Currency          *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	OrderId           *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderType         *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	PaymentCurrency   *string `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
+	PaymentStatus     *string `json:"PaymentStatus,omitempty" xml:"PaymentStatus,omitempty"`
+	PaymentTime       *string `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
+	PretaxAmount      *string `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
 	PretaxAmountLocal *string `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
-	// example:
-	//
-	// 0
 	PretaxGrossAmount *string `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	// example:
-	//
-	// rds
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// example:
-	//
-	// rds
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// example:
-	//
-	// 234535345345342
-	RelatedOrderId *string `json:"RelatedOrderId,omitempty" xml:"RelatedOrderId,omitempty"`
-	// example:
-	//
-	// Subscription
-	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	// example:
-	//
-	// 1
-	Tax *string `json:"Tax,omitempty" xml:"Tax,omitempty"`
+	ProductCode       *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductType       *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	RelatedOrderId    *string `json:"RelatedOrderId,omitempty" xml:"RelatedOrderId,omitempty"`
+	SubscriptionType  *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	Tax               *string `json:"Tax,omitempty" xml:"Tax,omitempty"`
 }
 
 func (s GetOrdersResponseBodyDataOrderListOrder) String() string {

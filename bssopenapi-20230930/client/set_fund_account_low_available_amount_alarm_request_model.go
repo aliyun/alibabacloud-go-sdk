@@ -20,6 +20,8 @@ type SetFundAccountLowAvailableAmountAlarmRequest struct {
 	//
 	// 12321213
 	FundAccountId *int64 `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
