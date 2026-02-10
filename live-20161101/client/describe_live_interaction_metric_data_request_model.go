@@ -13,6 +13,8 @@ type iDescribeLiveInteractionMetricDataRequest interface {
 	GetAppId() *string
 	SetBeginTs(v int64) *DescribeLiveInteractionMetricDataRequest
 	GetBeginTs() *int64
+	SetChannelId(v string) *DescribeLiveInteractionMetricDataRequest
+	GetChannelId() *string
 	SetEndTs(v int64) *DescribeLiveInteractionMetricDataRequest
 	GetEndTs() *int64
 	SetMetricType(v string) *DescribeLiveInteractionMetricDataRequest
@@ -39,7 +41,8 @@ type DescribeLiveInteractionMetricDataRequest struct {
 	// example:
 	//
 	// 1698195600000
-	BeginTs *int64 `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
+	BeginTs   *int64  `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// This parameter is required.
@@ -94,6 +97,10 @@ func (s *DescribeLiveInteractionMetricDataRequest) GetBeginTs() *int64 {
 	return s.BeginTs
 }
 
+func (s *DescribeLiveInteractionMetricDataRequest) GetChannelId() *string {
+	return s.ChannelId
+}
+
 func (s *DescribeLiveInteractionMetricDataRequest) GetEndTs() *int64 {
 	return s.EndTs
 }
@@ -117,6 +124,11 @@ func (s *DescribeLiveInteractionMetricDataRequest) SetAppId(v string) *DescribeL
 
 func (s *DescribeLiveInteractionMetricDataRequest) SetBeginTs(v int64) *DescribeLiveInteractionMetricDataRequest {
 	s.BeginTs = &v
+	return s
+}
+
+func (s *DescribeLiveInteractionMetricDataRequest) SetChannelId(v string) *DescribeLiveInteractionMetricDataRequest {
+	s.ChannelId = &v
 	return s
 }
 

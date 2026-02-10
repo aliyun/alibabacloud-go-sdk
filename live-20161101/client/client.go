@@ -19074,6 +19074,10 @@ func (client *Client) DescribeLiveInteractionMetricDataWithOptions(request *Desc
 		query["BeginTs"] = request.BeginTs
 	}
 
+	if !dara.IsNil(request.ChannelId) {
+		query["ChannelId"] = request.ChannelId
+	}
+
 	if !dara.IsNil(request.EndTs) {
 		query["EndTs"] = request.EndTs
 	}
