@@ -23,6 +23,8 @@ type iCreateTemplateInput interface {
 	GetDescription() *string
 	SetDiskSize(v int32) *CreateTemplateInput
 	GetDiskSize() *int32
+	SetEnableAgent(v bool) *CreateTemplateInput
+	GetEnableAgent() *bool
 	SetEnvironmentVariables(v map[string]*string) *CreateTemplateInput
 	GetEnvironmentVariables() map[string]*string
 	SetExecutionRoleArn(v string) *CreateTemplateInput
@@ -31,6 +33,8 @@ type iCreateTemplateInput interface {
 	GetLogConfiguration() *LogConfiguration
 	SetMemory(v int32) *CreateTemplateInput
 	GetMemory() *int32
+	SetNasConfig(v *NASConfig) *CreateTemplateInput
+	GetNasConfig() *NASConfig
 	SetNetworkConfiguration(v *NetworkConfiguration) *CreateTemplateInput
 	GetNetworkConfiguration() *NetworkConfiguration
 	SetOssConfiguration(v []*OssConfiguration) *CreateTemplateInput
@@ -50,6 +54,10 @@ type iCreateTemplateInput interface {
 type CreateTemplateInput struct {
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// true
 	AllowAnonymousManage *bool              `json:"allowAnonymousManage,omitempty" xml:"allowAnonymousManage,omitempty"`
 	ArmsConfiguration    *ArmsConfiguration `json:"armsConfiguration,omitempty" xml:"armsConfiguration,omitempty"`
 	// 容器配置，只允许基于 Browser/Code Interpreter 基础镜像的 image
@@ -57,33 +65,65 @@ type CreateTemplateInput struct {
 	// CPU资源配置（单位：核心）
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
 	Cpu                     *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
 	CredentialConfiguration *CredentialConfiguration `json:"credentialConfiguration,omitempty" xml:"credentialConfiguration,omitempty"`
 	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
-	DiskSize                *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
-	ExecutionRoleArn        *string                  `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
-	LogConfiguration        *LogConfiguration        `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
+	// example:
+	//
+	// 10240
+	DiskSize             *int32             `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	EnableAgent          *bool              `json:"enableAgent,omitempty" xml:"enableAgent,omitempty"`
+	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
+	// example:
+	//
+	// acs:ram::123456789:role/aliyunfcdefaultrole
+	ExecutionRoleArn *string           `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
+	LogConfiguration *LogConfiguration `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
 	// 内存资源配置（单位：MB）
 	//
 	// This parameter is required.
-	Memory *int32 `json:"memory,omitempty" xml:"memory,omitempty"`
+	//
+	// example:
+	//
+	// 2048
+	Memory    *int32     `json:"memory,omitempty" xml:"memory,omitempty"`
+	NasConfig *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
 	// This parameter is required.
 	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
 	OssConfiguration     []*OssConfiguration   `json:"ossConfiguration,omitempty" xml:"ossConfiguration,omitempty" type:"Repeated"`
 	// 沙箱空闲超时时间（秒）
+	//
+	// example:
+	//
+	// 1800
 	SandboxIdleTimeoutInSeconds *int32 `json:"sandboxIdleTimeoutInSeconds,omitempty" xml:"sandboxIdleTimeoutInSeconds,omitempty"`
 	// Deprecated
 	//
 	// 沙箱存活时间（秒）
+	//
+	// example:
+	//
+	// 26000
 	SandboxTTLInSeconds *int32 `json:"sandboxTTLInSeconds,omitempty" xml:"sandboxTTLInSeconds,omitempty"`
 	// 模板配置（灵活的对象结构，根据 templateType 不同而不同）
 	TemplateConfiguration map[string]interface{} `json:"templateConfiguration,omitempty" xml:"templateConfiguration,omitempty"`
 	// 模板名称（要求账号唯一的）
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// browser-1766687911567
 	TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Browser
 	TemplateType *string `json:"templateType,omitempty" xml:"templateType,omitempty"`
 }
 
@@ -123,6 +163,10 @@ func (s *CreateTemplateInput) GetDiskSize() *int32 {
 	return s.DiskSize
 }
 
+func (s *CreateTemplateInput) GetEnableAgent() *bool {
+	return s.EnableAgent
+}
+
 func (s *CreateTemplateInput) GetEnvironmentVariables() map[string]*string {
 	return s.EnvironmentVariables
 }
@@ -137,6 +181,10 @@ func (s *CreateTemplateInput) GetLogConfiguration() *LogConfiguration {
 
 func (s *CreateTemplateInput) GetMemory() *int32 {
 	return s.Memory
+}
+
+func (s *CreateTemplateInput) GetNasConfig() *NASConfig {
+	return s.NasConfig
 }
 
 func (s *CreateTemplateInput) GetNetworkConfiguration() *NetworkConfiguration {
@@ -202,6 +250,11 @@ func (s *CreateTemplateInput) SetDiskSize(v int32) *CreateTemplateInput {
 	return s
 }
 
+func (s *CreateTemplateInput) SetEnableAgent(v bool) *CreateTemplateInput {
+	s.EnableAgent = &v
+	return s
+}
+
 func (s *CreateTemplateInput) SetEnvironmentVariables(v map[string]*string) *CreateTemplateInput {
 	s.EnvironmentVariables = v
 	return s
@@ -219,6 +272,11 @@ func (s *CreateTemplateInput) SetLogConfiguration(v *LogConfiguration) *CreateTe
 
 func (s *CreateTemplateInput) SetMemory(v int32) *CreateTemplateInput {
 	s.Memory = &v
+	return s
+}
+
+func (s *CreateTemplateInput) SetNasConfig(v *NASConfig) *CreateTemplateInput {
+	s.NasConfig = v
 	return s
 }
 
@@ -275,6 +333,11 @@ func (s *CreateTemplateInput) Validate() error {
 	}
 	if s.LogConfiguration != nil {
 		if err := s.LogConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NasConfig != nil {
+		if err := s.NasConfig.Validate(); err != nil {
 			return err
 		}
 	}

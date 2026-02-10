@@ -24,17 +24,28 @@ type iCreateSandboxInput interface {
 }
 
 type CreateSandboxInput struct {
-	NasConfig                   *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	OssMountConfig              *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
-	SandboxId                   *string         `json:"sandboxId,omitempty" xml:"sandboxId,omitempty"`
-	SandboxIdleTimeoutInSeconds *int32          `json:"sandboxIdleTimeoutInSeconds,omitempty" xml:"sandboxIdleTimeoutInSeconds,omitempty"`
+	NasConfig      *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	// example:
+	//
+	// 01KE8DAJ35JC8SKP9CNFRZ8CW7
+	SandboxId                   *string `json:"sandboxId,omitempty" xml:"sandboxId,omitempty"`
+	SandboxIdleTimeoutInSeconds *int32  `json:"sandboxIdleTimeoutInSeconds,omitempty" xml:"sandboxIdleTimeoutInSeconds,omitempty"`
 	// Deprecated
 	//
 	// 沙箱空闲超时时间（秒）
+	//
+	// example:
+	//
+	// 1800
 	SandboxIdleTimeoutSeconds *int32 `json:"sandboxIdleTimeoutSeconds,omitempty" xml:"sandboxIdleTimeoutSeconds,omitempty"`
 	// 模板名称（系统内部通过 templateName 查询 template_id）
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// templateName
 	TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
 }
 

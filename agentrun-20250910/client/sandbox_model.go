@@ -37,21 +37,57 @@ type Sandbox struct {
 	// 沙箱创建时间
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2025-11-26T10:54:17.770719+08:00
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	EndedAt   *string `json:"endedAt,omitempty" xml:"endedAt,omitempty"`
+	// example:
+	//
+	// 2025-11-26T10:54:17.770719+08:00
+	EndedAt *string `json:"endedAt,omitempty" xml:"endedAt,omitempty"`
 	// 最后更新时间
-	LastUpdatedAt *string                `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
-	Metadata      map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	SandboxArn    *string                `json:"sandboxArn,omitempty" xml:"sandboxArn,omitempty"`
+	//
+	// example:
+	//
+	// 2025-11-26T10:54:17.770719+08:00
+	LastUpdatedAt *string `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
+	// example:
+	//
+	// {}
+	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	// example:
+	//
+	// acs:ram::1760720386195983:role/aliyunfcdefaultrole
+	SandboxArn *string `json:"sandboxArn,omitempty" xml:"sandboxArn,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 01KAWBP6JQD0J3Z34BP4WMX1KG
 	SandboxId               *string `json:"sandboxId,omitempty" xml:"sandboxId,omitempty"`
 	SandboxIdleTTLInSeconds *int32  `json:"sandboxIdleTTLInSeconds,omitempty" xml:"sandboxIdleTTLInSeconds,omitempty"`
 	// 沙箱空闲超时时间（秒）
+	//
+	// example:
+	//
+	// 1800
 	SandboxIdleTimeoutSeconds *int32 `json:"sandboxIdleTimeoutSeconds,omitempty" xml:"sandboxIdleTimeoutSeconds,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// This parameter is required.
-	TemplateId   *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	//
+	// example:
+	//
+	// 8d409d30-cac1-445a-95d5-476c47780336.schema
+	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	// example:
+	//
+	// my-template
 	TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
 }
 

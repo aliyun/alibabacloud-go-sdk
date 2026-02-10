@@ -23,11 +23,26 @@ type iOssConfiguration interface {
 
 type OssConfiguration struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// a-test-oss
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// /mnt/oss1
 	MountPoint *string `json:"mountPoint,omitempty" xml:"mountPoint,omitempty"`
+	// example:
+	//
+	// READ_WRITE
 	Permission *string `json:"permission,omitempty" xml:"permission,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// /
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
 	// example:
 	//

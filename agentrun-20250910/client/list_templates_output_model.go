@@ -23,10 +23,22 @@ type ListTemplatesOutput struct {
 	// This parameter is required.
 	Items []*Template `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 

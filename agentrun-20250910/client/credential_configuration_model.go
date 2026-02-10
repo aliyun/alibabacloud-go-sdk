@@ -15,6 +15,10 @@ type iCredentialConfiguration interface {
 
 type CredentialConfiguration struct {
 	// 凭证的唯一标识符
+	//
+	// example:
+	//
+	// deepagent-key
 	CredentialName *string `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
 }
 

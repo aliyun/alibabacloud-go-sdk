@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 启动模板的MCP服务器
+// Enable the TemplateMCP service.
 //
 // @param request - ActivateTemplateMCPRequest
 //
@@ -109,7 +109,7 @@ func (client *Client) ActivateTemplateMCPWithOptions(templateName *string, reque
 
 // Summary:
 //
-// 启动模板的MCP服务器
+// Enable the TemplateMCP service.
 //
 // @param request - ActivateTemplateMCPRequest
 //
@@ -128,7 +128,7 @@ func (client *Client) ActivateTemplateMCP(templateName *string, request *Activat
 
 // Summary:
 //
-// # Create an agent runtime
+// # CreateAgentRuntime
 //
 // Description:
 //
@@ -174,7 +174,7 @@ func (client *Client) CreateAgentRuntimeWithOptions(request *CreateAgentRuntimeR
 
 // Summary:
 //
-// # Create an agent runtime
+// # CreateAgentRuntime
 //
 // Description:
 //
@@ -839,7 +839,7 @@ func (client *Client) CreateSandbox(request *CreateSandboxRequest) (_result *Cre
 
 // Summary:
 //
-// 创建模板
+// Create a template.
 //
 // Description:
 //
@@ -885,7 +885,7 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 
 // Summary:
 //
-// 创建模板
+// Create a template.
 //
 // Description:
 //
@@ -2270,7 +2270,7 @@ func (client *Client) GetTemplate(templateName *string) (_result *GetTemplateRes
 
 // Summary:
 //
-// 列出智能体运行时端点
+// # Retrieve the list of access endpoints for an agent runtime
 //
 // Description:
 //
@@ -2333,7 +2333,7 @@ func (client *Client) ListAgentRuntimeEndpointsWithOptions(agentRuntimeId *strin
 
 // Summary:
 //
-// 列出智能体运行时端点
+// # Retrieve the list of access endpoints for an agent runtime
 //
 // Description:
 //
@@ -3569,7 +3569,7 @@ func (client *Client) StopSandbox(sandboxId *string) (_result *StopSandboxRespon
 
 // Summary:
 //
-// 停止模板的MCP服务器
+// Stop the TemplateMCP service.
 //
 // @param headers - map
 //
@@ -3602,7 +3602,7 @@ func (client *Client) StopTemplateMCPWithOptions(templateName *string, headers m
 
 // Summary:
 //
-// 停止模板的MCP服务器
+// Stop the TemplateMCP service.
 //
 // @return StopTemplateMCPResponse
 func (client *Client) StopTemplateMCP(templateName *string) (_result *StopTemplateMCPResponse, _err error) {

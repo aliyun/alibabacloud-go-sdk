@@ -18,9 +18,18 @@ type iPolarFsMountConfig interface {
 }
 
 type PolarFsMountConfig struct {
+	// example:
+	//
+	// pfs-cn-6sa48a6gk001
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	MountDir   *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
-	RemoteDir  *string `json:"remoteDir,omitempty" xml:"remoteDir,omitempty"`
+	// example:
+	//
+	// /
+	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	// example:
+	//
+	// /mnt/pfs
+	RemoteDir *string `json:"remoteDir,omitempty" xml:"remoteDir,omitempty"`
 }
 
 func (s PolarFsMountConfig) String() string {

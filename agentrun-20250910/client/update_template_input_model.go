@@ -21,6 +21,8 @@ type iUpdateTemplateInput interface {
 	GetCredentialConfiguration() *CredentialConfiguration
 	SetDescription(v string) *UpdateTemplateInput
 	GetDescription() *string
+	SetEnableAgent(v bool) *UpdateTemplateInput
+	GetEnableAgent() *bool
 	SetEnvironmentVariables(v map[string]*string) *UpdateTemplateInput
 	GetEnvironmentVariables() map[string]*string
 	SetExecutionRoleArn(v string) *UpdateTemplateInput
@@ -29,6 +31,8 @@ type iUpdateTemplateInput interface {
 	GetLogConfiguration() *LogConfiguration
 	SetMemory(v int32) *UpdateTemplateInput
 	GetMemory() *int32
+	SetNasConfig(v *NASConfig) *UpdateTemplateInput
+	GetNasConfig() *NASConfig
 	SetNetworkConfiguration(v *NetworkConfiguration) *UpdateTemplateInput
 	GetNetworkConfiguration() *NetworkConfiguration
 	SetOssConfiguration(v []*OssConfiguration) *UpdateTemplateInput
@@ -52,11 +56,13 @@ type UpdateTemplateInput struct {
 	Cpu                     *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
 	CredentialConfiguration *CredentialConfiguration `json:"credentialConfiguration,omitempty" xml:"credentialConfiguration,omitempty"`
 	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
+	EnableAgent             *bool                    `json:"enableAgent,omitempty" xml:"enableAgent,omitempty"`
 	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
 	ExecutionRoleArn        *string                  `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
 	LogConfiguration        *LogConfiguration        `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
 	// 内存资源配置（单位：MB）
 	Memory               *int32                `json:"memory,omitempty" xml:"memory,omitempty"`
+	NasConfig            *NASConfig            `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
 	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
 	OssConfiguration     []*OssConfiguration   `json:"ossConfiguration,omitempty" xml:"ossConfiguration,omitempty" type:"Repeated"`
 	// 沙箱空闲超时时间（秒）
@@ -101,6 +107,10 @@ func (s *UpdateTemplateInput) GetDescription() *string {
 	return s.Description
 }
 
+func (s *UpdateTemplateInput) GetEnableAgent() *bool {
+	return s.EnableAgent
+}
+
 func (s *UpdateTemplateInput) GetEnvironmentVariables() map[string]*string {
 	return s.EnvironmentVariables
 }
@@ -115,6 +125,10 @@ func (s *UpdateTemplateInput) GetLogConfiguration() *LogConfiguration {
 
 func (s *UpdateTemplateInput) GetMemory() *int32 {
 	return s.Memory
+}
+
+func (s *UpdateTemplateInput) GetNasConfig() *NASConfig {
+	return s.NasConfig
 }
 
 func (s *UpdateTemplateInput) GetNetworkConfiguration() *NetworkConfiguration {
@@ -167,6 +181,11 @@ func (s *UpdateTemplateInput) SetDescription(v string) *UpdateTemplateInput {
 	return s
 }
 
+func (s *UpdateTemplateInput) SetEnableAgent(v bool) *UpdateTemplateInput {
+	s.EnableAgent = &v
+	return s
+}
+
 func (s *UpdateTemplateInput) SetEnvironmentVariables(v map[string]*string) *UpdateTemplateInput {
 	s.EnvironmentVariables = v
 	return s
@@ -184,6 +203,11 @@ func (s *UpdateTemplateInput) SetLogConfiguration(v *LogConfiguration) *UpdateTe
 
 func (s *UpdateTemplateInput) SetMemory(v int32) *UpdateTemplateInput {
 	s.Memory = &v
+	return s
+}
+
+func (s *UpdateTemplateInput) SetNasConfig(v *NASConfig) *UpdateTemplateInput {
+	s.NasConfig = v
 	return s
 }
 
@@ -230,6 +254,11 @@ func (s *UpdateTemplateInput) Validate() error {
 	}
 	if s.LogConfiguration != nil {
 		if err := s.LogConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NasConfig != nil {
+		if err := s.NasConfig.Validate(); err != nil {
 			return err
 		}
 	}

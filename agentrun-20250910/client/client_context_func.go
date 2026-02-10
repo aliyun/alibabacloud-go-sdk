@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 启动模板的MCP服务器
+// Enable the TemplateMCP service.
 //
 // @param request - ActivateTemplateMCPRequest
 //
@@ -60,7 +60,7 @@ func (client *Client) ActivateTemplateMCPWithContext(ctx context.Context, templa
 
 // Summary:
 //
-// # Create an agent runtime
+// # CreateAgentRuntime
 //
 // Description:
 //
@@ -542,7 +542,7 @@ func (client *Client) CreateSandboxWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// 创建模板
+// Create a template.
 //
 // Description:
 //
@@ -1485,7 +1485,7 @@ func (client *Client) GetTemplateWithContext(ctx context.Context, templateName *
 
 // Summary:
 //
-// 列出智能体运行时端点
+// # Retrieve the list of access endpoints for an agent runtime
 //
 // Description:
 //
@@ -2450,7 +2450,7 @@ func (client *Client) StopSandboxWithContext(ctx context.Context, sandboxId *str
 
 // Summary:
 //
-// 停止模板的MCP服务器
+// Stop the TemplateMCP service.
 //
 // @param headers - map
 //

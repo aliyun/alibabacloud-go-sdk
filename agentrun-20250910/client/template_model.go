@@ -23,6 +23,8 @@ type iTemplate interface {
 	GetDescription() *string
 	SetDiskSize(v int32) *Template
 	GetDiskSize() *int32
+	SetEnableAgent(v bool) *Template
+	GetEnableAgent() *bool
 	SetEnvironmentVariables(v map[string]*string) *Template
 	GetEnvironmentVariables() map[string]*string
 	SetExecutionRoleArn(v string) *Template
@@ -37,6 +39,8 @@ type iTemplate interface {
 	GetMcpState() *TemplateMcpState
 	SetMemory(v int32) *Template
 	GetMemory() *int32
+	SetNasConfig(v *NASConfig) *Template
+	GetNasConfig() *NASConfig
 	SetNetworkConfiguration(v *NetworkConfiguration) *Template
 	GetNetworkConfiguration() *NetworkConfiguration
 	SetOssConfiguration(v []*OssConfiguration) *Template
@@ -74,6 +78,7 @@ type Template struct {
 	CredentialConfiguration *CredentialConfiguration `json:"credentialConfiguration,omitempty" xml:"credentialConfiguration,omitempty"`
 	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
 	DiskSize                *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	EnableAgent             *bool                    `json:"enableAgent,omitempty" xml:"enableAgent,omitempty"`
 	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
 	ExecutionRoleArn        *string                  `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
 	LastUpdatedAt           *string                  `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
@@ -82,6 +87,7 @@ type Template struct {
 	McpState                *TemplateMcpState        `json:"mcpState,omitempty" xml:"mcpState,omitempty" type:"Struct"`
 	// This parameter is required.
 	Memory                      *int32                `json:"memory,omitempty" xml:"memory,omitempty"`
+	NasConfig                   *NASConfig            `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
 	NetworkConfiguration        *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
 	OssConfiguration            []*OssConfiguration   `json:"ossConfiguration,omitempty" xml:"ossConfiguration,omitempty" type:"Repeated"`
 	ResourceName                *string               `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
@@ -136,6 +142,10 @@ func (s *Template) GetDiskSize() *int32 {
 	return s.DiskSize
 }
 
+func (s *Template) GetEnableAgent() *bool {
+	return s.EnableAgent
+}
+
 func (s *Template) GetEnvironmentVariables() map[string]*string {
 	return s.EnvironmentVariables
 }
@@ -162,6 +172,10 @@ func (s *Template) GetMcpState() *TemplateMcpState {
 
 func (s *Template) GetMemory() *int32 {
 	return s.Memory
+}
+
+func (s *Template) GetNasConfig() *NASConfig {
+	return s.NasConfig
 }
 
 func (s *Template) GetNetworkConfiguration() *NetworkConfiguration {
@@ -251,6 +265,11 @@ func (s *Template) SetDiskSize(v int32) *Template {
 	return s
 }
 
+func (s *Template) SetEnableAgent(v bool) *Template {
+	s.EnableAgent = &v
+	return s
+}
+
 func (s *Template) SetEnvironmentVariables(v map[string]*string) *Template {
 	s.EnvironmentVariables = v
 	return s
@@ -283,6 +302,11 @@ func (s *Template) SetMcpState(v *TemplateMcpState) *Template {
 
 func (s *Template) SetMemory(v int32) *Template {
 	s.Memory = &v
+	return s
+}
+
+func (s *Template) SetNasConfig(v *NASConfig) *Template {
+	s.NasConfig = v
 	return s
 }
 
@@ -374,6 +398,11 @@ func (s *Template) Validate() error {
 	}
 	if s.McpState != nil {
 		if err := s.McpState.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NasConfig != nil {
+		if err := s.NasConfig.Validate(); err != nil {
 			return err
 		}
 	}

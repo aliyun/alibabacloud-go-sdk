@@ -34,7 +34,7 @@ type BrowserSessionListOut struct {
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// example:
 	//
-	// 100
+	// 2
 	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
 }
 

@@ -18,9 +18,15 @@ type iPolarFsConfig interface {
 }
 
 type PolarFsConfig struct {
+	// example:
+	//
+	// 1000
 	GroupId     *int32                `json:"groupId,omitempty" xml:"groupId,omitempty"`
 	MountPoints []*PolarFsMountConfig `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
-	UserId      *int32                `json:"userId,omitempty" xml:"userId,omitempty"`
+	// example:
+	//
+	// 1000
+	UserId *int32 `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s PolarFsConfig) String() string {

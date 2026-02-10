@@ -18,9 +18,15 @@ type iStopSandboxResult interface {
 }
 
 type StopSandboxResult struct {
-	Code      *string  `json:"code,omitempty" xml:"code,omitempty"`
-	Data      *Sandbox `json:"data,omitempty" xml:"data,omitempty"`
-	RequestId *string  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Code *string  `json:"code,omitempty" xml:"code,omitempty"`
+	Data *Sandbox `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// F8A0F5F3-0C3E-4C82-9D4F-5E4B6A7C8D9E
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s StopSandboxResult) String() string {
