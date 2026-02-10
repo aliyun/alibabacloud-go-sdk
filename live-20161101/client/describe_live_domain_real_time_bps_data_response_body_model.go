@@ -41,8 +41,7 @@ type DescribeLiveDomainRealTimeBpsDataResponseBody struct {
 	// example:
 	//
 	// 2015-11-30T05:40:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The bandwidth data that was collected every minute.
+	EndTime                    *string                                                                  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RealTimeBpsDataPerInterval *DescribeLiveDomainRealTimeBpsDataResponseBodyRealTimeBpsDataPerInterval `json:"RealTimeBpsDataPerInterval,omitempty" xml:"RealTimeBpsDataPerInterval,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -164,18 +163,8 @@ func (s *DescribeLiveDomainRealTimeBpsDataResponseBodyRealTimeBpsDataPerInterval
 }
 
 type DescribeLiveDomainRealTimeBpsDataResponseBodyRealTimeBpsDataPerIntervalDataModule struct {
-	// The timestamp of the returned data.
-	//
-	// example:
-	//
-	// 2015-11-30T05:39:00Z
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The bandwidth. Unit: bit/s.
-	//
-	// example:
-	//
-	// 59392614.8
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeLiveDomainRealTimeBpsDataResponseBodyRealTimeBpsDataPerIntervalDataModule) String() string {

@@ -16,7 +16,6 @@ type iDescribeLiveStreamMergeResponseBody interface {
 }
 
 type DescribeLiveStreamMergeResponseBody struct {
-	// Live stream information list.
 	LiveStreamMergeList *DescribeLiveStreamMergeResponseBodyLiveStreamMergeList `json:"LiveStreamMergeList,omitempty" xml:"LiveStreamMergeList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,86 +95,21 @@ func (s *DescribeLiveStreamMergeResponseBodyLiveStreamMergeList) Validate() erro
 }
 
 type DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge struct {
-	// The name of the application that generates the output stream.
-	//
-	// example:
-	//
-	// app
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The application that is being used.
-	//
-	// example:
-	//
-	// app1
-	AppUsing *string `json:"AppUsing,omitempty" xml:"AppUsing,omitempty"`
-	// The streaming domain.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end time of the stream mixing.
-	//
-	// example:
-	//
-	// 2020-05-29T01:00:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The names of the applications that generate the input additional streams other than the primary stream and secondary stream, and the names of these additional streams.
-	//
-	// example:
-	//
-	// app3/stream3,app4/stream4,app5/stream5,…,appN/streamN
+	AppName           *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppUsing          *string `json:"AppUsing,omitempty" xml:"AppUsing,omitempty"`
+	DomainName        *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime           *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	ExtraInAppStreams *string `json:"ExtraInAppStreams,omitempty" xml:"ExtraInAppStreams,omitempty"`
-	// The name of the application that generates the input primary stream.
-	//
-	// example:
-	//
-	// app1
-	InAppName1 *string `json:"InAppName1,omitempty" xml:"InAppName1,omitempty"`
-	// The name of the application that generates the input secondary stream.
-	//
-	// example:
-	//
-	// app2
-	InAppName2 *string `json:"InAppName2,omitempty" xml:"InAppName2,omitempty"`
-	// The name of the input primary stream.
-	//
-	// example:
-	//
-	// InStream1
-	InStreamName1 *string `json:"InStreamName1,omitempty" xml:"InStreamName1,omitempty"`
-	// The name of the input secondary stream.
-	//
-	// example:
-	//
-	// stream2
-	InStreamName2   *string `json:"InStreamName2,omitempty" xml:"InStreamName2,omitempty"`
-	LiveMerger      *string `json:"LiveMerger,omitempty" xml:"LiveMerger,omitempty"`
-	MergeParameters *string `json:"MergeParameters,omitempty" xml:"MergeParameters,omitempty"`
-	// The streaming protocol.
-	//
-	// example:
-	//
-	// rtmp
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The start time of the stream mixing.
-	//
-	// example:
-	//
-	// 2020-05-29T00:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the output stream.
-	//
-	// example:
-	//
-	// StreamName
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The stream that is being used.
-	//
-	// example:
-	//
-	// InStream1
-	StreamUsing *string `json:"StreamUsing,omitempty" xml:"StreamUsing,omitempty"`
+	InAppName1        *string `json:"InAppName1,omitempty" xml:"InAppName1,omitempty"`
+	InAppName2        *string `json:"InAppName2,omitempty" xml:"InAppName2,omitempty"`
+	InStreamName1     *string `json:"InStreamName1,omitempty" xml:"InStreamName1,omitempty"`
+	InStreamName2     *string `json:"InStreamName2,omitempty" xml:"InStreamName2,omitempty"`
+	LiveMerger        *string `json:"LiveMerger,omitempty" xml:"LiveMerger,omitempty"`
+	MergeParameters   *string `json:"MergeParameters,omitempty" xml:"MergeParameters,omitempty"`
+	Protocol          *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	StartTime         *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StreamName        *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	StreamUsing       *string `json:"StreamUsing,omitempty" xml:"StreamUsing,omitempty"`
 }
 
 func (s DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge) String() string {

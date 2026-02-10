@@ -26,7 +26,6 @@ type iDescribeLivePackageConfigResponseBody interface {
 }
 
 type DescribeLivePackageConfigResponseBody struct {
-	// The live stream encapsulation configurations.
 	LivePackageConfigList *DescribeLivePackageConfigResponseBodyLivePackageConfigList `json:"LivePackageConfigList,omitempty" xml:"LivePackageConfigList,omitempty" type:"Struct"`
 	// The sorting order. Valid values:
 	//
@@ -185,58 +184,14 @@ func (s *DescribeLivePackageConfigResponseBodyLivePackageConfigList) Validate() 
 }
 
 type DescribeLivePackageConfigResponseBodyLivePackageConfigListLivePackageConfig struct {
-	// The application name.
-	//
-	// example:
-	//
-	// AppName
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The main streaming domain.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Indicates whether the transcoded stream is ignored. Valid values:
-	//
-	// 	- **true*	- (default)
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	IgnoreTranscode *bool `json:"IgnoreTranscode,omitempty" xml:"IgnoreTranscode,omitempty"`
-	// The part length. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 0
-	PartDuration *int32 `json:"PartDuration,omitempty" xml:"PartDuration,omitempty"`
-	// The streaming protocol and encapsulation format.
-	//
-	// example:
-	//
-	// HLS_CMAF
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The segment length. Unit: seconds.
-	//
-	// example:
-	//
-	// 5
-	SegmentDuration *int32 `json:"SegmentDuration,omitempty" xml:"SegmentDuration,omitempty"`
-	// The number of segments.
-	//
-	// example:
-	//
-	// 3
-	SegmentNum *int32 `json:"SegmentNum,omitempty" xml:"SegmentNum,omitempty"`
-	// The stream name.
-	//
-	// example:
-	//
-	// StreamName
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	AppName         *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	DomainName      *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	IgnoreTranscode *bool   `json:"IgnoreTranscode,omitempty" xml:"IgnoreTranscode,omitempty"`
+	PartDuration    *int32  `json:"PartDuration,omitempty" xml:"PartDuration,omitempty"`
+	Protocol        *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	SegmentDuration *int32  `json:"SegmentDuration,omitempty" xml:"SegmentDuration,omitempty"`
+	SegmentNum      *int32  `json:"SegmentNum,omitempty" xml:"SegmentNum,omitempty"`
+	StreamName      *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
 }
 
 func (s DescribeLivePackageConfigResponseBodyLivePackageConfigListLivePackageConfig) String() string {

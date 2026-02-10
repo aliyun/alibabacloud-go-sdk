@@ -18,7 +18,6 @@ type iDescribeCasterChannelsResponseBody interface {
 }
 
 type DescribeCasterChannelsResponseBody struct {
-	// The channels.
 	Channels *DescribeCasterChannelsResponseBodyChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -113,38 +112,11 @@ func (s *DescribeCasterChannelsResponseBodyChannels) Validate() error {
 }
 
 type DescribeCasterChannelsResponseBodyChannelsChannel struct {
-	// The ID of the channel.
-	//
-	// The layout references the channel ID when the channel is enabled. You can specify up to one video resource for the channel. The value of this parameter must be in the RV[Number] format, such as RV01 and RV12.
-	//
-	// example:
-	//
-	// RV01
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// The face retouching effect. Valid values: 0 (all effects), 1 (skin smoothing), 2 (skin whitening), 3 (dark circles removal), and 4 (nasolabial folds removal).
-	//
-	// example:
-	//
-	// 0
+	ChannelId  *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	FaceBeauty *string `json:"FaceBeauty,omitempty" xml:"FaceBeauty,omitempty"`
-	// The ID of the video resource.
-	//
-	// example:
-	//
-	// 87642866-281E-4AEA-9582-B124879****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The URL in the Real-Time Messaging Protocol (RTMP) format.
-	//
-	// example:
-	//
-	// rtmp://demo.aliyundoc.com/caster/rtmperf?auth_key=****
-	RtmpUrl *string `json:"RtmpUrl,omitempty" xml:"RtmpUrl,omitempty"`
-	// The URL of the output content in the channel.
-	//
-	// example:
-	//
-	// http://demo.aliyundoc.com/caster/streamwsx.flv?auth_key=YYYYY
-	StreamUrl *string `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
+	RtmpUrl    *string `json:"RtmpUrl,omitempty" xml:"RtmpUrl,omitempty"`
+	StreamUrl  *string `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
 }
 
 func (s DescribeCasterChannelsResponseBodyChannelsChannel) String() string {

@@ -16,7 +16,6 @@ type iDescribeLiveDrmUsageDataResponseBody interface {
 }
 
 type DescribeLiveDrmUsageDataResponseBody struct {
-	// The usage of the DRM encryption service at each time interval.
 	DrmUsageData *DescribeLiveDrmUsageDataResponseBodyDrmUsageData `json:"DrmUsageData,omitempty" xml:"DrmUsageData,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,35 +95,10 @@ func (s *DescribeLiveDrmUsageDataResponseBodyDrmUsageData) Validate() error {
 }
 
 type DescribeLiveDrmUsageDataResponseBodyDrmUsageDataDataModule struct {
-	// The number of times DRM-encrypted live streams are requested.
-	//
-	// example:
-	//
-	// 1
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The domain name. If the value of SplitBy includes domain, the returned data is grouped by domain name.
-	//
-	// example:
-	//
-	// example.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The DRM type. If the value of SplitBy includes drm_type, the returned data is grouped by DRM type.
-	//
-	// example:
-	//
-	// Widevine
-	DrmType *string `json:"DrmType,omitempty" xml:"DrmType,omitempty"`
-	// The ID of the region. If the value of SplitBy includes region, the returned data is grouped by region.
-	//
-	// example:
-	//
-	// cn-beijing
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The timestamp of the returned data.
-	//
-	// example:
-	//
-	// 2021-05-01T16:00:00Z
+	Count     *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Domain    *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	DrmType   *string `json:"DrmType,omitempty" xml:"DrmType,omitempty"`
+	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 

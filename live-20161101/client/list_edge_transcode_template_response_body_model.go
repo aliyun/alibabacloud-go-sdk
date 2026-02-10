@@ -23,8 +23,7 @@ type ListEdgeTranscodeTemplateResponseBody struct {
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the edge transcoding templates.
+	RequestId    *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TemplateList *ListEdgeTranscodeTemplateResponseBodyTemplateList `json:"TemplateList,omitempty" xml:"TemplateList,omitempty" type:"Struct"`
 	// The total number of templates returned.
 	//
@@ -113,66 +112,15 @@ func (s *ListEdgeTranscodeTemplateResponseBodyTemplateList) Validate() error {
 }
 
 type ListEdgeTranscodeTemplateResponseBodyTemplateListTemplate struct {
-	// The bitrate. If a numeric value is returned, a fixed bitrate is configured for the output stream. If ws is returned, the output stream maintains the same bitrate as the input stream.
-	//
-	// example:
-	//
-	// 3000
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The video encoding format. Valid values:
-	//
-	// 	- H.264
-	//
-	// 	- H.265
-	//
-	// example:
-	//
-	// H.264
-	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	// The time when the image template was created.
-	//
-	// example:
-	//
-	// 2023-07-25T02:48:58Z
+	Bitrate    *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Codec      *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The frame rate. If a numeric value is returned, a fixed frame rate is configured for the output stream. If ws is returned, the output stream maintains the same frame rate as the input stream.
-	//
-	// example:
-	//
-	// 30
-	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// The group of pictures (GOP) size. The GOP size can be defined by the number of frames or the time interval between I-frames. If ws is returned, the output stream maintains the same GOP size as the input stream.
-	//
-	// example:
-	//
-	// 2s
-	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
-	// The template name.
-	//
-	// example:
-	//
-	// my_template
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The resolution. If width and height values are returned, a fixed resolution is configured for the output stream. If ws is returned, the output stream maintains the same resolution as the input stream.
-	//
-	// >  If the width value is -1, the width of the output video is adapted to a fixed height. If the height value is -2, the height of the output video is adapted to a fixed width.
-	//
-	// example:
-	//
-	// 1920*1080
+	Fps        *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Gop        *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	// The ID of the edge transcoding template.
-	//
-	// example:
-	//
-	// 9b1571b513cb44f7a1ba6ae561ff46f7
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The type of edge transcoding.
-	//
-	// example:
-	//
-	// common
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListEdgeTranscodeTemplateResponseBodyTemplateListTemplate) String() string {

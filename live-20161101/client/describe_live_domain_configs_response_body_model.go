@@ -16,7 +16,6 @@ type iDescribeLiveDomainConfigsResponseBody interface {
 }
 
 type DescribeLiveDomainConfigsResponseBody struct {
-	// The configurations of the domain name.
 	DomainConfigs *DescribeLiveDomainConfigsResponseBodyDomainConfigs `json:"DomainConfigs,omitempty" xml:"DomainConfigs,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,34 +95,10 @@ func (s *DescribeLiveDomainConfigsResponseBodyDomainConfigs) Validate() error {
 }
 
 type DescribeLiveDomainConfigsResponseBodyDomainConfigsDomainConfig struct {
-	// The configuration ID.
-	//
-	// example:
-	//
-	// 5003576
-	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The attributes of the feature.
+	ConfigId     *string                                                                     `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	FunctionArgs *DescribeLiveDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionArgs `json:"FunctionArgs,omitempty" xml:"FunctionArgs,omitempty" type:"Struct"`
-	// The name of the feature.
-	//
-	// example:
-	//
-	// set_req_host_header
-	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	// The configuration status. Valid values:
-	//
-	// 	- **success**
-	//
-	// 	- **testing**
-	//
-	// 	- **failed**
-	//
-	// 	- **configuring**
-	//
-	// example:
-	//
-	// success
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	FunctionName *string                                                                     `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	Status       *string                                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeLiveDomainConfigsResponseBodyDomainConfigsDomainConfig) String() string {
@@ -214,17 +189,7 @@ func (s *DescribeLiveDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionA
 }
 
 type DescribeLiveDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionArgsFunctionArg struct {
-	// The name of the attribute.
-	//
-	// example:
-	//
-	// domain_name
-	ArgName *string `json:"ArgName,omitempty" xml:"ArgName,omitempty"`
-	// The attribute value.
-	//
-	// example:
-	//
-	// developer.aliyundoc.com
+	ArgName  *string `json:"ArgName,omitempty" xml:"ArgName,omitempty"`
 	ArgValue *string `json:"ArgValue,omitempty" xml:"ArgValue,omitempty"`
 }
 

@@ -16,7 +16,6 @@ type iDescribeLiveStreamsControlHistoryResponseBody interface {
 }
 
 type DescribeLiveStreamsControlHistoryResponseBody struct {
-	// The operation records.
 	ControlInfo *DescribeLiveStreamsControlHistoryResponseBodyControlInfo `json:"ControlInfo,omitempty" xml:"ControlInfo,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,30 +95,10 @@ func (s *DescribeLiveStreamsControlHistoryResponseBodyControlInfo) Validate() er
 }
 
 type DescribeLiveStreamsControlHistoryResponseBodyControlInfoLiveStreamControlInfo struct {
-	// The name of the operation performed.
-	//
-	// example:
-	//
-	// DescribeLiveStreamsControlHistory
-	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The IP address that is used by the client for live streaming.
-	//
-	// example:
-	//
-	// 10.207.XX.XX
-	ClientIP *string `json:"ClientIP,omitempty" xml:"ClientIP,omitempty"`
-	// The name of the live stream.
-	//
-	// example:
-	//
-	// liveStream****
+	Action     *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	ClientIP   *string `json:"ClientIP,omitempty" xml:"ClientIP,omitempty"`
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The time when the operation was performed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2015-12-01T16:36:18Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeLiveStreamsControlHistoryResponseBodyControlInfoLiveStreamControlInfo) String() string {

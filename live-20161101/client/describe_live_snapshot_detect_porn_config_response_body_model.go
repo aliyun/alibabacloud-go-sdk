@@ -26,7 +26,6 @@ type iDescribeLiveSnapshotDetectPornConfigResponseBody interface {
 }
 
 type DescribeLiveSnapshotDetectPornConfigResponseBody struct {
-	// The list of video moderation configurations.
 	LiveSnapshotDetectPornConfigList *DescribeLiveSnapshotDetectPornConfigResponseBodyLiveSnapshotDetectPornConfigList `json:"LiveSnapshotDetectPornConfigList,omitempty" xml:"LiveSnapshotDetectPornConfigList,omitempty" type:"Struct"`
 	// The sort order.
 	//
@@ -181,44 +180,13 @@ func (s *DescribeLiveSnapshotDetectPornConfigResponseBodyLiveSnapshotDetectPornC
 }
 
 type DescribeLiveSnapshotDetectPornConfigResponseBodyLiveSnapshotDetectPornConfigListLiveSnapshotDetectPornConfig struct {
-	// The application name.
-	//
-	// example:
-	//
-	// liveApp****
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The main streaming domain.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The interval at which snapshots are captured from the live stream. Unit: seconds.
-	//
-	// example:
-	//
-	// 80
-	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The name of the OSS bucket.
-	//
-	// example:
-	//
-	// liveBucket****
-	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	// The endpoint of the OSS bucket.
-	//
-	// example:
-	//
-	// cn-oss-****.aliyuncs.com
-	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	// The name of the storage file in Object Storage Service (OSS).
-	//
-	// example:
-	//
-	// {liveApp****}/{liveStream****}/{Date}/{Hour}/{Minute}_{Second}.jpg
-	OssObject *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
-	// The moderation scenario array.
-	Scenes *DescribeLiveSnapshotDetectPornConfigResponseBodyLiveSnapshotDetectPornConfigListLiveSnapshotDetectPornConfigScenes `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Struct"`
+	AppName     *string                                                                                                             `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	DomainName  *string                                                                                                             `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Interval    *int32                                                                                                              `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	OssBucket   *string                                                                                                             `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint *string                                                                                                             `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	OssObject   *string                                                                                                             `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
+	Scenes      *DescribeLiveSnapshotDetectPornConfigResponseBodyLiveSnapshotDetectPornConfigListLiveSnapshotDetectPornConfigScenes `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Struct"`
 }
 
 func (s DescribeLiveSnapshotDetectPornConfigResponseBodyLiveSnapshotDetectPornConfigListLiveSnapshotDetectPornConfig) String() string {

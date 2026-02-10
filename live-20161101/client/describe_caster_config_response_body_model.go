@@ -147,9 +147,8 @@ type DescribeCasterConfigResponseBody struct {
 	// example:
 	//
 	// rtmp://sophon-developer.aliyundoc.com/caster/4a82a3d1b7f0462ea37348366201****?auth_key=1608953344-0-0-ac8c628078541d7055a170ec59a5****
-	SideOutputUrlList *string `json:"SideOutputUrlList,omitempty" xml:"SideOutputUrlList,omitempty"`
-	// The storage configuration.
-	SyncGroupsConfig *DescribeCasterConfigResponseBodySyncGroupsConfig `json:"SyncGroupsConfig,omitempty" xml:"SyncGroupsConfig,omitempty" type:"Struct"`
+	SideOutputUrlList *string                                           `json:"SideOutputUrlList,omitempty" xml:"SideOutputUrlList,omitempty"`
+	SyncGroupsConfig  *DescribeCasterConfigResponseBodySyncGroupsConfig `json:"SyncGroupsConfig,omitempty" xml:"SyncGroupsConfig,omitempty" type:"Struct"`
 	// The transcoding configuration.
 	TranscodeConfig *DescribeCasterConfigResponseBodyTranscodeConfig `json:"TranscodeConfig,omitempty" xml:"TranscodeConfig,omitempty" type:"Struct"`
 	// Prepared broadcast image media asset ID.
@@ -411,8 +410,7 @@ type DescribeCasterConfigResponseBodyRecordConfig struct {
 	// example:
 	//
 	// oss-cn-shanghai.aliyundoc.com
-	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	// The recording configuration.
+	OssEndpoint  *string                                                   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 	RecordFormat *DescribeCasterConfigResponseBodyRecordConfigRecordFormat `json:"RecordFormat,omitempty" xml:"RecordFormat,omitempty" type:"Struct"`
 }
 
@@ -504,29 +502,9 @@ func (s *DescribeCasterConfigResponseBodyRecordConfigRecordFormat) Validate() er
 }
 
 type DescribeCasterConfigResponseBodyRecordConfigRecordFormatRecordFormat struct {
-	// The length of the recording.
-	//
-	// example:
-	//
-	// 3600
-	CycleDuration *int32 `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
-	// The format of the recording.
-	//
-	// example:
-	//
-	// M3U8
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The name of the recording.
-	//
-	// example:
-	//
-	// record/{liveApp****}/{liveStream****}
-	OssObjectPrefix *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
-	// The name of the segment.
-	//
-	// example:
-	//
-	// record/{liveApp****}/{liveStream****}/{UnixTimestamp****}
+	CycleDuration        *int32  `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
+	Format               *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	OssObjectPrefix      *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
 	SliceOssObjectPrefix *string `json:"SliceOssObjectPrefix,omitempty" xml:"SliceOssObjectPrefix,omitempty"`
 }
 
@@ -613,26 +591,9 @@ func (s *DescribeCasterConfigResponseBodySyncGroupsConfig) Validate() error {
 }
 
 type DescribeCasterConfigResponseBodySyncGroupsConfigSyncGroup struct {
-	// The ID of the resource in the production studio.
-	//
-	// example:
-	//
-	// 28768383240243****
-	HostResourceId *string `json:"HostResourceId,omitempty" xml:"HostResourceId,omitempty"`
-	// The cache mode of the Static Page Caching policy. Valid values:
-	//
-	// 	- 0: standard mode
-	//
-	// 	- 1: force mode
-	//
-	// 	- 2: no cache
-	//
-	// example:
-	//
-	// 0
-	Mode *int32 `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The IDs of the resources for which you want to modify the resource group. The number of resource IDs is 1 to 50.
-	ResourceIds *DescribeCasterConfigResponseBodySyncGroupsConfigSyncGroupResourceIds `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Struct"`
+	HostResourceId *string                                                               `json:"HostResourceId,omitempty" xml:"HostResourceId,omitempty"`
+	Mode           *int32                                                                `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	ResourceIds    *DescribeCasterConfigResponseBodySyncGroupsConfigSyncGroupResourceIds `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Struct"`
 }
 
 func (s DescribeCasterConfigResponseBodySyncGroupsConfigSyncGroup) String() string {
@@ -728,8 +689,7 @@ type DescribeCasterConfigResponseBodyTranscodeConfig struct {
 	// lp_hd
 	CasterTemplate *string `json:"CasterTemplate,omitempty" xml:"CasterTemplate,omitempty"`
 	// The custom settings.
-	CustomParams *DescribeCasterConfigResponseBodyTranscodeConfigCustomParams `json:"CustomParams,omitempty" xml:"CustomParams,omitempty" type:"Struct"`
-	// The transcoding setting for live streams.
+	CustomParams    *DescribeCasterConfigResponseBodyTranscodeConfigCustomParams    `json:"CustomParams,omitempty" xml:"CustomParams,omitempty" type:"Struct"`
 	LiveTemplateIds *DescribeCasterConfigResponseBodyTranscodeConfigLiveTemplateIds `json:"LiveTemplateIds,omitempty" xml:"LiveTemplateIds,omitempty" type:"Struct"`
 }
 

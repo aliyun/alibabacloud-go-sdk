@@ -18,7 +18,6 @@ type iDescribeCasterComponentsResponseBody interface {
 }
 
 type DescribeCasterComponentsResponseBody struct {
-	// The components.
 	Components *DescribeCasterComponentsResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -113,58 +112,15 @@ func (s *DescribeCasterComponentsResponseBodyComponents) Validate() error {
 }
 
 type DescribeCasterComponentsResponseBodyComponentsComponent struct {
-	// The information about the subtitle component.
 	CaptionLayerContent *DescribeCasterComponentsResponseBodyComponentsComponentCaptionLayerContent `json:"CaptionLayerContent,omitempty" xml:"CaptionLayerContent,omitempty" type:"Struct"`
-	// The component ID.
-	//
-	// example:
-	//
-	// 72d2ec7a-4cd7-4a01-974b-7cd53947****
-	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
-	// The information about the component layer, such as the size and layout.
-	ComponentLayer *DescribeCasterComponentsResponseBodyComponentsComponentComponentLayer `json:"ComponentLayer,omitempty" xml:"ComponentLayer,omitempty" type:"Struct"`
-	// The name of the component. By default, the name is the ID of the component.
-	//
-	// example:
-	//
-	// component_name
-	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	// The type of the component. Valid values:
-	//
-	// 	- **text**: a text component
-	//
-	// 	- **image**: an image component
-	//
-	// 	- **caption**: a caption component
-	//
-	// example:
-	//
-	// text
-	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
-	// The display effect for the component. Valid values:
-	//
-	// 	- **none**
-	//
-	// 	- **animateH**: horizontal scrolling
-	//
-	// 	- **animateV**: vertical scrolling
-	//
-	// example:
-	//
-	// animateV
-	Effect *string `json:"Effect,omitempty" xml:"Effect,omitempty"`
-	// The information about the image component. This parameter is returned only for image components.
-	ImageLayerContent *DescribeCasterComponentsResponseBodyComponentsComponentImageLayerContent `json:"ImageLayerContent,omitempty" xml:"ImageLayerContent,omitempty" type:"Struct"`
-	// The location ID of the component.
-	//
-	// Each location ID can be assigned to only one component and must be in the RC[Number] format. The values of this parameter are in ascending order, for example, from RC01 to RC12.
-	//
-	// example:
-	//
-	// RC01
-	LocationId *string `json:"LocationId,omitempty" xml:"LocationId,omitempty"`
-	// The information about the text component. This parameter is returned only for text components.
-	TextLayerContent *DescribeCasterComponentsResponseBodyComponentsComponentTextLayerContent `json:"TextLayerContent,omitempty" xml:"TextLayerContent,omitempty" type:"Struct"`
+	ComponentId         *string                                                                     `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
+	ComponentLayer      *DescribeCasterComponentsResponseBodyComponentsComponentComponentLayer      `json:"ComponentLayer,omitempty" xml:"ComponentLayer,omitempty" type:"Struct"`
+	ComponentName       *string                                                                     `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	ComponentType       *string                                                                     `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
+	Effect              *string                                                                     `json:"Effect,omitempty" xml:"Effect,omitempty"`
+	ImageLayerContent   *DescribeCasterComponentsResponseBodyComponentsComponentImageLayerContent   `json:"ImageLayerContent,omitempty" xml:"ImageLayerContent,omitempty" type:"Struct"`
+	LocationId          *string                                                                     `json:"LocationId,omitempty" xml:"LocationId,omitempty"`
+	TextLayerContent    *DescribeCasterComponentsResponseBodyComponentsComponentTextLayerContent    `json:"TextLayerContent,omitempty" xml:"TextLayerContent,omitempty" type:"Struct"`
 }
 
 func (s DescribeCasterComponentsResponseBodyComponentsComponent) String() string {
@@ -281,136 +237,20 @@ func (s *DescribeCasterComponentsResponseBodyComponentsComponent) Validate() err
 }
 
 type DescribeCasterComponentsResponseBodyComponentsComponentCaptionLayerContent struct {
-	// The color of the text border.
-	//
-	// Valid values: **0x000000 to 0xffffff**. If the value of this parameter is "", this parameter does not take effect.
-	//
-	// example:
-	//
-	// 0x000000
-	BorderColor *string `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
-	// The normalized value of the width of the text border. The value of this parameter equals the border width divided by the font size.
-	//
-	// The maximum width of the text border is **16**, even if the border width calculated based on this parameter is greater than **16**.
-	//
-	// example:
-	//
-	// 0
+	BorderColor           *string  `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
 	BorderWidthNormalized *float32 `json:"BorderWidthNormalized,omitempty" xml:"BorderWidthNormalized,omitempty"`
-	// The color of the text. Valid values: **0x000000 to 0xffffff**.
-	//
-	// example:
-	//
-	// 0x000000
-	Color *string `json:"Color,omitempty" xml:"Color,omitempty"`
-	// The font of the text, which is specified by the system. Valid values:
-	//
-	// 	- **KaiTi**
-	//
-	// 	- **AlibabaPuHuiTi-Regular**
-	//
-	// 	- **AlibabaPuHuiTi-Bold**
-	//
-	// 	- **NAlibabaPuHuiTi-Light**
-	//
-	// 	- **NotoSansHans-Regular**
-	//
-	// 	- **NotoSansHans-Bold**
-	//
-	// 	- **NotoSansHans-Light**
-	//
-	// ****
-	//
-	// example:
-	//
-	// KaiTi
-	FontName *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
-	// The line spacing, which indicates the interval between every two lines.
-	//
-	// example:
-	//
-	// 0
-	LineSpaceNormalized *float32 `json:"LineSpaceNormalized,omitempty" xml:"LineSpaceNormalized,omitempty"`
-	// The location ID of the component. If the value of the ComponentType parameter is caption, the LocationId parameter indicates the channel ID of the video source that is referenced by the component.
-	//
-	// example:
-	//
-	// RV01
-	LocationId *string `json:"LocationId,omitempty" xml:"LocationId,omitempty"`
-	// The offset between the presentation timestamps (PTS) of the subtitles and the audio.
-	//
-	// Valid values: **-10000 to 10000**. Default value: **0**.
-	//
-	// example:
-	//
-	// 0
-	PtsOffset *int32 `json:"PtsOffset,omitempty" xml:"PtsOffset,omitempty"`
-	// Indicates whether the source language of the subtitles is displayed. Valid values:
-	//
-	// 	- **true**: The source language is displayed.
-	//
-	// 	- **false**: The source language is not displayed.
-	//
-	// example:
-	//
-	// false
-	ShowSourceLan *bool `json:"ShowSourceLan,omitempty" xml:"ShowSourceLan,omitempty"`
-	// The normalized value of the font size of the subtitles. The value of this parameter equals the font size divided by the output height.``
-	//
-	// The maximum font size of the subtitles is **1,024**, even if the font size calculated based on this parameter is greater than **1,024**. If the value of this parameter is **-1**, this parameter does not take effect.
-	//
-	// example:
-	//
-	// 0.1
-	SizeNormalized *float32 `json:"SizeNormalized,omitempty" xml:"SizeNormalized,omitempty"`
-	// The source language of the audio in the video source. Valid values:
-	//
-	// 	- **en**: English
-	//
-	// 	- **cn**: Chinese
-	//
-	// 	- **es**: Spanish
-	//
-	// 	- **ru**: Russian
-	//
-	// example:
-	//
-	// cn
-	SourceLan *string `json:"SourceLan,omitempty" xml:"SourceLan,omitempty"`
-	// The target language of the audio in the video source. Valid values:
-	//
-	// 	- **en**: English
-	//
-	// 	- **cn**: Chinese
-	//
-	// 	- **es**: Spanish
-	//
-	// 	- **ru**: Russian
-	//
-	// example:
-	//
-	// cn
-	TargetLan *string `json:"TargetLan,omitempty" xml:"TargetLan,omitempty"`
-	// The maximum number of words displayed in each line.
-	//
-	// example:
-	//
-	// 15
-	WordCountPerLine *int32 `json:"WordCountPerLine,omitempty" xml:"WordCountPerLine,omitempty"`
-	// The word spacing, which indicates the interval between every two words.
-	//
-	// example:
-	//
-	// 0
-	WordSpaceNormalized *float32 `json:"WordSpaceNormalized,omitempty" xml:"WordSpaceNormalized,omitempty"`
-	// The number of words displayed on the component. The value of this parameter can be specified based on the font size.
-	//
-	// Valid values: **10 to 50**.
-	//
-	// example:
-	//
-	// 35
-	WordsCount *int32 `json:"WordsCount,omitempty" xml:"WordsCount,omitempty"`
+	Color                 *string  `json:"Color,omitempty" xml:"Color,omitempty"`
+	FontName              *string  `json:"FontName,omitempty" xml:"FontName,omitempty"`
+	LineSpaceNormalized   *float32 `json:"LineSpaceNormalized,omitempty" xml:"LineSpaceNormalized,omitempty"`
+	LocationId            *string  `json:"LocationId,omitempty" xml:"LocationId,omitempty"`
+	PtsOffset             *int32   `json:"PtsOffset,omitempty" xml:"PtsOffset,omitempty"`
+	ShowSourceLan         *bool    `json:"ShowSourceLan,omitempty" xml:"ShowSourceLan,omitempty"`
+	SizeNormalized        *float32 `json:"SizeNormalized,omitempty" xml:"SizeNormalized,omitempty"`
+	SourceLan             *string  `json:"SourceLan,omitempty" xml:"SourceLan,omitempty"`
+	TargetLan             *string  `json:"TargetLan,omitempty" xml:"TargetLan,omitempty"`
+	WordCountPerLine      *int32   `json:"WordCountPerLine,omitempty" xml:"WordCountPerLine,omitempty"`
+	WordSpaceNormalized   *float32 `json:"WordSpaceNormalized,omitempty" xml:"WordSpaceNormalized,omitempty"`
+	WordsCount            *int32   `json:"WordsCount,omitempty" xml:"WordsCount,omitempty"`
 }
 
 func (s DescribeCasterComponentsResponseBodyComponentsComponentCaptionLayerContent) String() string {
@@ -552,48 +392,11 @@ func (s *DescribeCasterComponentsResponseBodyComponentsComponentCaptionLayerCont
 }
 
 type DescribeCasterComponentsResponseBodyComponentsComponentComponentLayer struct {
-	// The normalized value for heights of the elements in the layer. The widths of the elements are proportionally scaled based on this parameter.
-	//
-	// If the value of this parameter is **0**, the elements in the layer are not scaled.
-	//
-	// example:
-	//
-	// 0.5
-	HeightNormalized *float32 `json:"HeightNormalized,omitempty" xml:"HeightNormalized,omitempty"`
-	// The normalized value of the position of the layer, in the format of `[x,y]`. Example: `[0,0]`.
-	//
-	// >  The values of x and y need to be normalized.
+	HeightNormalized    *float32                                                                                  `json:"HeightNormalized,omitempty" xml:"HeightNormalized,omitempty"`
 	PositionNormalizeds *DescribeCasterComponentsResponseBodyComponentsComponentComponentLayerPositionNormalizeds `json:"PositionNormalizeds,omitempty" xml:"PositionNormalizeds,omitempty" type:"Struct"`
-	// The reference coordinates of the layer. Valid values:
-	//
-	// 	- **topLeft**: the upper-left corner
-	//
-	// 	- **topRight**: the upper-right corner
-	//
-	// 	- **bottomLeft**: the lower-left corner
-	//
-	// 	- **bottomRight**: the lower-right corner
-	//
-	// example:
-	//
-	// topLeft
-	PositionRefer *string `json:"PositionRefer,omitempty" xml:"PositionRefer,omitempty"`
-	// The transparency of the layer. Valid values: 0 to 255.
-	//
-	// A value of **0*	- indicates that the layer is completely transparent. A value of **255*	- indicates that the layer is completely opaque.
-	//
-	// example:
-	//
-	// 200
-	Transparency *int32 `json:"Transparency,omitempty" xml:"Transparency,omitempty"`
-	// The normalized value for widths of the elements in the layer. The heights of the elements are proportionally scaled based on this parameter. If the value of this parameter is **0**, the elements in the layer are not scaled.
-	//
-	// >  This parameter conflicts with the HeightNormalized parameter. If both of them are specified, only the HeightNormalized parameter takes effect. If only one of them is specified, the latest specified value is used.
-	//
-	// example:
-	//
-	// 0.5
-	WidthNormalized *float32 `json:"WidthNormalized,omitempty" xml:"WidthNormalized,omitempty"`
+	PositionRefer       *string                                                                                   `json:"PositionRefer,omitempty" xml:"PositionRefer,omitempty"`
+	Transparency        *int32                                                                                    `json:"Transparency,omitempty" xml:"Transparency,omitempty"`
+	WidthNormalized     *float32                                                                                  `json:"WidthNormalized,omitempty" xml:"WidthNormalized,omitempty"`
 }
 
 func (s DescribeCasterComponentsResponseBodyComponentsComponentComponentLayer) String() string {
@@ -684,11 +487,6 @@ func (s *DescribeCasterComponentsResponseBodyComponentsComponentComponentLayerPo
 }
 
 type DescribeCasterComponentsResponseBodyComponentsComponentImageLayerContent struct {
-	// The ID of the material from the media library.
-	//
-	// example:
-	//
-	// 6cf724c6ebfd4a59b5b3cec6f10d****
 	MaterialId *string `json:"MaterialId,omitempty" xml:"MaterialId,omitempty"`
 }
 
@@ -714,62 +512,12 @@ func (s *DescribeCasterComponentsResponseBodyComponentsComponentImageLayerConten
 }
 
 type DescribeCasterComponentsResponseBodyComponentsComponentTextLayerContent struct {
-	// The color of the text border. Valid values: **0x000000 to 0xffffff**. If the value of this parameter is **""**, this parameter does not take effect.
-	//
-	// example:
-	//
-	// 0x000000
-	BorderColor *string `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
-	// The normalized value of the width of the text border. The value of this parameter equals the border width divided by the font size.****
-	//
-	// The maximum width of the text border is **16**, even if the border width calculated based on this parameter is greater than **16**.
-	//
-	// example:
-	//
-	// 0
+	BorderColor           *string  `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
 	BorderWidthNormalized *float32 `json:"BorderWidthNormalized,omitempty" xml:"BorderWidthNormalized,omitempty"`
-	// The color of the text. Valid values: **0x000000 to 0xffffff**.
-	//
-	// example:
-	//
-	// 0xff0000
-	Color *string `json:"Color,omitempty" xml:"Color,omitempty"`
-	// The font of the text, which is specified by the system. Valid values:
-	//
-	// 	- **KaiTi**
-	//
-	// 	- **AlibabaPuHuiTi-Regular**
-	//
-	// 	- **AlibabaPuHuiTi-Bold**
-	//
-	// 	- **NAlibabaPuHuiTi-Light**
-	//
-	// 	- **NotoSansHans-Regular**
-	//
-	// 	- **NotoSansHans-Bold**
-	//
-	// 	- **NotoSansHans-Light**
-	//
-	// ****
-	//
-	// example:
-	//
-	// KaiTi
-	FontName *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
-	// The normalized value of the font size of the text.
-	//
-	// The value of this parameter equals the font size divided by the output height.***	- The maximum font size of the text is **1,024**, even if the font size calculated based on this parameter is greater than **1,024**. If the value of this parameter is **-1**, this parameter does not take effect.
-	//
-	// example:
-	//
-	// 16
-	SizeNormalized *float32 `json:"SizeNormalized,omitempty" xml:"SizeNormalized,omitempty"`
-	// The content of the text.
-	//
-	// example:
-	//
-	// hello world
-	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	Color                 *string  `json:"Color,omitempty" xml:"Color,omitempty"`
+	FontName              *string  `json:"FontName,omitempty" xml:"FontName,omitempty"`
+	SizeNormalized        *float32 `json:"SizeNormalized,omitempty" xml:"SizeNormalized,omitempty"`
+	Text                  *string  `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s DescribeCasterComponentsResponseBodyComponentsComponentTextLayerContent) String() string {

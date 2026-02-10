@@ -22,7 +22,6 @@ type iDescribeCasterSceneAudioResponseBody interface {
 }
 
 type DescribeCasterSceneAudioResponseBody struct {
-	// The configurations of the audio layers.
 	AudioLayers *DescribeCasterSceneAudioResponseBodyAudioLayers `json:"AudioLayers,omitempty" xml:"AudioLayers,omitempty" type:"Struct"`
 	// The ID of the production studio. You can specify the ID in a request to start a scene in the production studio.
 	//
@@ -151,30 +150,9 @@ func (s *DescribeCasterSceneAudioResponseBodyAudioLayers) Validate() error {
 }
 
 type DescribeCasterSceneAudioResponseBodyAudioLayersAudioLayer struct {
-	// The fixed delay of the audio layer. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 2000
-	FixedDelayDuration *int32 `json:"FixedDelayDuration,omitempty" xml:"FixedDelayDuration,omitempty"`
-	// The sound channel type of the audio layer. Valid values:
-	//
-	// 	- **left**: the left channel
-	//
-	// 	- **right**: the right channel
-	//
-	// 	- **all*	- (default): both the left and right channels
-	//
-	// example:
-	//
-	// all
-	ValidChannel *string `json:"ValidChannel,omitempty" xml:"ValidChannel,omitempty"`
-	// The volume of the audio layer.
-	//
-	// example:
-	//
-	// 1
-	VolumeRate *float32 `json:"VolumeRate,omitempty" xml:"VolumeRate,omitempty"`
+	FixedDelayDuration *int32   `json:"FixedDelayDuration,omitempty" xml:"FixedDelayDuration,omitempty"`
+	ValidChannel       *string  `json:"ValidChannel,omitempty" xml:"ValidChannel,omitempty"`
+	VolumeRate         *float32 `json:"VolumeRate,omitempty" xml:"VolumeRate,omitempty"`
 }
 
 func (s DescribeCasterSceneAudioResponseBodyAudioLayersAudioLayer) String() string {

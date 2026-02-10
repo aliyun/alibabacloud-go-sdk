@@ -21,8 +21,7 @@ type DescribeLiveAISubtitleResponseBody struct {
 	// example:
 	//
 	// 5c6a2a0df228-4a64- af62-20e91b96****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the subtitle templates.
+	RequestId       *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SubtitleConfigs *DescribeLiveAISubtitleResponseBodySubtitleConfigs `json:"SubtitleConfigs,omitempty" xml:"SubtitleConfigs,omitempty" type:"Struct"`
 }
 
@@ -96,106 +95,24 @@ func (s *DescribeLiveAISubtitleResponseBodySubtitleConfigs) Validate() error {
 }
 
 type DescribeLiveAISubtitleResponseBodySubtitleConfigsSubtitleConfig struct {
-	// The background color of the subtitles.
-	//
-	// example:
-	//
-	// 0xFF0000
-	BgColor *string `json:"BgColor,omitempty" xml:"BgColor,omitempty"`
-	// The size of the background image.
-	//
-	// example:
-	//
-	// 0.09
-	BgWidthNormalized *float32 `json:"BgWidthNormalized,omitempty" xml:"BgWidthNormalized,omitempty"`
-	// The font weight.
-	//
-	// example:
-	//
-	// 0.05
-	BorderWidthNormalized *float32 `json:"BorderWidthNormalized,omitempty" xml:"BorderWidthNormalized,omitempty"`
-	// The description of the template.
-	//
-	// example:
-	//
-	// live AI subtitle template
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The language to which the subtitles are translated.
-	//
-	// example:
-	//
-	// zh-CN
-	DstLanguage *string `json:"DstLanguage,omitempty" xml:"DstLanguage,omitempty"`
-	// The font color.
-	//
-	// example:
-	//
-	// 0xFFFFFF
-	FontColor *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	// The font.
-	//
-	// example:
-	//
-	// AlibabaPuHuiTi-Regular
-	FontName *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
-	// The font size.
-	//
-	// example:
-	//
-	// 0.037
-	FontSizeNormalized *string `json:"FontSizeNormalized,omitempty" xml:"FontSizeNormalized,omitempty"`
-	// The height of the preview image.
-	//
-	// example:
-	//
-	// 720
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The number of displayed lines.
-	//
-	// example:
-	//
-	// 2
-	MaxLines *int32 `json:"MaxLines,omitempty" xml:"MaxLines,omitempty"`
-	// The position of the subtitles.
-	PositionNormalized *DescribeLiveAISubtitleResponseBodySubtitleConfigsSubtitleConfigPositionNormalized `json:"PositionNormalized,omitempty" xml:"PositionNormalized,omitempty" type:"Struct"`
-	// The ID of the subtitle rule.
-	RulesRefer *DescribeLiveAISubtitleResponseBodySubtitleConfigsSubtitleConfigRulesRefer `json:"RulesRefer,omitempty" xml:"RulesRefer,omitempty" type:"Struct"`
-	// Indicates whether the source language of the subtitle is displayed.
-	//
-	// example:
-	//
-	// true
-	ShowSourceLan *int32 `json:"ShowSourceLan,omitempty" xml:"ShowSourceLan,omitempty"`
-	// The source language of the subtitles.
-	//
-	// example:
-	//
-	// zh-CN
-	SrcLanguage *string `json:"SrcLanguage,omitempty" xml:"SrcLanguage,omitempty"`
-	// The ID of the subtitle template.
-	//
-	// example:
-	//
-	// 597991f3-6ef9-4100-9238-82951de1****
-	SubtitleId *string `json:"SubtitleId,omitempty" xml:"SubtitleId,omitempty"`
-	// The name of the subtitle template.
-	//
-	// example:
-	//
-	// sub1
-	SubtitleName *string `json:"SubtitleName,omitempty" xml:"SubtitleName,omitempty"`
-	// The width of the preview image.
-	//
-	// example:
-	//
-	// 1280
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
-	// The number of words per line.
-	//
-	// example:
-	//
-	// 20
-	WordPerline *int32 `json:"WordPerline,omitempty" xml:"WordPerline,omitempty"`
+	BgColor               *string                                                                            `json:"BgColor,omitempty" xml:"BgColor,omitempty"`
+	BgWidthNormalized     *float32                                                                           `json:"BgWidthNormalized,omitempty" xml:"BgWidthNormalized,omitempty"`
+	BorderWidthNormalized *float32                                                                           `json:"BorderWidthNormalized,omitempty" xml:"BorderWidthNormalized,omitempty"`
+	Description           *string                                                                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	DstLanguage           *string                                                                            `json:"DstLanguage,omitempty" xml:"DstLanguage,omitempty"`
+	FontColor             *string                                                                            `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	FontName              *string                                                                            `json:"FontName,omitempty" xml:"FontName,omitempty"`
+	FontSizeNormalized    *string                                                                            `json:"FontSizeNormalized,omitempty" xml:"FontSizeNormalized,omitempty"`
+	Height                *string                                                                            `json:"Height,omitempty" xml:"Height,omitempty"`
+	MaxLines              *int32                                                                             `json:"MaxLines,omitempty" xml:"MaxLines,omitempty"`
+	PositionNormalized    *DescribeLiveAISubtitleResponseBodySubtitleConfigsSubtitleConfigPositionNormalized `json:"PositionNormalized,omitempty" xml:"PositionNormalized,omitempty" type:"Struct"`
+	RulesRefer            *DescribeLiveAISubtitleResponseBodySubtitleConfigsSubtitleConfigRulesRefer         `json:"RulesRefer,omitempty" xml:"RulesRefer,omitempty" type:"Struct"`
+	ShowSourceLan         *int32                                                                             `json:"ShowSourceLan,omitempty" xml:"ShowSourceLan,omitempty"`
+	SrcLanguage           *string                                                                            `json:"SrcLanguage,omitempty" xml:"SrcLanguage,omitempty"`
+	SubtitleId            *string                                                                            `json:"SubtitleId,omitempty" xml:"SubtitleId,omitempty"`
+	SubtitleName          *string                                                                            `json:"SubtitleName,omitempty" xml:"SubtitleName,omitempty"`
+	Width                 *string                                                                            `json:"Width,omitempty" xml:"Width,omitempty"`
+	WordPerline           *int32                                                                             `json:"WordPerline,omitempty" xml:"WordPerline,omitempty"`
 }
 
 func (s DescribeLiveAISubtitleResponseBodySubtitleConfigsSubtitleConfig) String() string {

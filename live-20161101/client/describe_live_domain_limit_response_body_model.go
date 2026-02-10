@@ -16,7 +16,6 @@ type iDescribeLiveDomainLimitResponseBody interface {
 }
 
 type DescribeLiveDomainLimitResponseBody struct {
-	// The limits.
 	LiveDomainLimitList *DescribeLiveDomainLimitResponseBodyLiveDomainLimitList `json:"LiveDomainLimitList,omitempty" xml:"LiveDomainLimitList,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,48 +95,13 @@ func (s *DescribeLiveDomainLimitResponseBodyLiveDomainLimitList) Validate() erro
 }
 
 type DescribeLiveDomainLimitResponseBodyLiveDomainLimitListLiveDomainLimit struct {
-	// The current number of ingested streams.
-	//
-	// example:
-	//
-	// 10
-	CurrentNum *int32 `json:"CurrentNum,omitempty" xml:"CurrentNum,omitempty"`
-	// The current number of transcoded streams.
-	//
-	// example:
-	//
-	// 10
-	CurrentTranscodeNum *int32 `json:"CurrentTranscodeNum,omitempty" xml:"CurrentTranscodeNum,omitempty"`
-	// The current number of streams relayed from the live center.
-	//
-	// example:
-	//
-	// 10
-	CurrentTransferNum *int32 `json:"CurrentTransferNum,omitempty" xml:"CurrentTransferNum,omitempty"`
-	// The name of the queried main streaming domain.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The maximum number of ingested streams.
-	//
-	// example:
-	//
-	// 100
-	LimitNum *int32 `json:"LimitNum,omitempty" xml:"LimitNum,omitempty"`
-	// The maximum number of transcoded streams.
-	//
-	// example:
-	//
-	// 50
-	LimitTranscodeNum *int32 `json:"LimitTranscodeNum,omitempty" xml:"LimitTranscodeNum,omitempty"`
-	// The maximum allowed number of streams relayed from the live center.
-	//
-	// example:
-	//
-	// 50
-	LimitTransferNum *int32 `json:"LimitTransferNum,omitempty" xml:"LimitTransferNum,omitempty"`
+	CurrentNum          *int32  `json:"CurrentNum,omitempty" xml:"CurrentNum,omitempty"`
+	CurrentTranscodeNum *int32  `json:"CurrentTranscodeNum,omitempty" xml:"CurrentTranscodeNum,omitempty"`
+	CurrentTransferNum  *int32  `json:"CurrentTransferNum,omitempty" xml:"CurrentTransferNum,omitempty"`
+	DomainName          *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	LimitNum            *int32  `json:"LimitNum,omitempty" xml:"LimitNum,omitempty"`
+	LimitTranscodeNum   *int32  `json:"LimitTranscodeNum,omitempty" xml:"LimitTranscodeNum,omitempty"`
+	LimitTransferNum    *int32  `json:"LimitTransferNum,omitempty" xml:"LimitTransferNum,omitempty"`
 }
 
 func (s DescribeLiveDomainLimitResponseBodyLiveDomainLimitListLiveDomainLimit) String() string {

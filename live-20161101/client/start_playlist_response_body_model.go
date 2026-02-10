@@ -96,9 +96,8 @@ type StartPlaylistResponseBodyStreamInfo struct {
 	// example:
 	//
 	// liveStream****
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The streaming URLs.
-	Streams *StartPlaylistResponseBodyStreamInfoStreams `json:"Streams,omitempty" xml:"Streams,omitempty" type:"Struct"`
+	StreamName *string                                     `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	Streams    *StartPlaylistResponseBodyStreamInfoStreams `json:"Streams,omitempty" xml:"Streams,omitempty" type:"Struct"`
 }
 
 func (s StartPlaylistResponseBodyStreamInfo) String() string {
@@ -189,30 +188,10 @@ func (s *StartPlaylistResponseBodyStreamInfoStreams) Validate() error {
 }
 
 type StartPlaylistResponseBodyStreamInfoStreamsStream struct {
-	// The streaming URL in the Flash Video (FLV) format.
-	//
-	// example:
-	//
-	// http://aliyundoc.com/caster/liveStream****.flv?auth_key=1612772224-0-0-3632be7cd9907169e8b09e91099c****
-	PullFlvUrl *string `json:"PullFlvUrl,omitempty" xml:"PullFlvUrl,omitempty"`
-	// The streaming URL in the Real-Time Messaging Protocol (RTMP) format.
-	//
-	// example:
-	//
-	// rtmp:///aliyundoc.com/caster/liveStream****?auth_key=1612772224-0-0-4404ca59c0246226d49d01f734b1****
+	PullFlvUrl  *string `json:"PullFlvUrl,omitempty" xml:"PullFlvUrl,omitempty"`
 	PullM3U8Url *string `json:"PullM3U8Url,omitempty" xml:"PullM3U8Url,omitempty"`
-	// The streaming URL in the M3U8 format.
-	//
-	// example:
-	//
-	// http://aliyundoc.com/caster/liveStream****.m3u8?auth_key=1612772224-0-0-919a023a127156fe82e3562c3b3b****
 	PullRtmpUrl *string `json:"PullRtmpUrl,omitempty" xml:"PullRtmpUrl,omitempty"`
-	// The video quality of the live stream. Valid values: **original**: original quality
-	//
-	// example:
-	//
-	// original
-	Quality *string `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	Quality     *string `json:"Quality,omitempty" xml:"Quality,omitempty"`
 }
 
 func (s StartPlaylistResponseBodyStreamInfoStreamsStream) String() string {

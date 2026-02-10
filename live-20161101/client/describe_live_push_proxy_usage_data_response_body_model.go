@@ -25,8 +25,7 @@ type DescribeLivePushProxyUsageDataResponseBody struct {
 	// example:
 	//
 	// 2022-10-10T21:00:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The usage data of live center stream relay.
+	EndTime       *string                                                  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	PushProxyData *DescribeLivePushProxyUsageDataResponseBodyPushProxyData `json:"PushProxyData,omitempty" xml:"PushProxyData,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -130,30 +129,10 @@ func (s *DescribeLivePushProxyUsageDataResponseBodyPushProxyData) Validate() err
 }
 
 type DescribeLivePushProxyUsageDataResponseBodyPushProxyDataPushProxyDataItem struct {
-	// The domain name. If the value of SplitBy includes domain, the returned data is grouped by domain name.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the region. If the value of SplitBy includes region, the returned data is grouped by region.
-	//
-	// example:
-	//
-	// cn-beijing
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The peak number of live center stream relay channels.
-	//
-	// example:
-	//
-	// 8
-	StreamCount *int64 `json:"StreamCount,omitempty" xml:"StreamCount,omitempty"`
-	// The timestamp of the returned data.
-	//
-	// example:
-	//
-	// 2022-10-10T20:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	DomainName  *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Region      *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	StreamCount *int64  `json:"StreamCount,omitempty" xml:"StreamCount,omitempty"`
+	TimeStamp   *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeLivePushProxyUsageDataResponseBodyPushProxyDataPushProxyDataItem) String() string {

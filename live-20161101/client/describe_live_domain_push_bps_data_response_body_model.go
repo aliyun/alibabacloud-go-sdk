@@ -24,7 +24,6 @@ type iDescribeLiveDomainPushBpsDataResponseBody interface {
 }
 
 type DescribeLiveDomainPushBpsDataResponseBody struct {
-	// The bandwidth data that was collected at each interval.
 	BpsDataPerInterval *DescribeLiveDomainPushBpsDataResponseBodyBpsDataPerInterval `json:"BpsDataPerInterval,omitempty" xml:"BpsDataPerInterval,omitempty" type:"Struct"`
 	// The time granularity of the query.
 	//
@@ -164,17 +163,7 @@ func (s *DescribeLiveDomainPushBpsDataResponseBodyBpsDataPerInterval) Validate()
 }
 
 type DescribeLiveDomainPushBpsDataResponseBodyBpsDataPerIntervalDataModule struct {
-	// The bandwidth. Unit: bit/s.
-	//
-	// example:
-	//
-	// 11288111
-	BpsValue *string `json:"BpsValue,omitempty" xml:"BpsValue,omitempty"`
-	// The timestamp of the data returned.
-	//
-	// example:
-	//
-	// 2017-12-10T20:00:00Z
+	BpsValue  *string `json:"BpsValue,omitempty" xml:"BpsValue,omitempty"`
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 

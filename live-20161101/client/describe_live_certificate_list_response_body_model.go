@@ -62,7 +62,6 @@ func (s *DescribeLiveCertificateListResponseBody) Validate() error {
 }
 
 type DescribeLiveCertificateListResponseBodyCertificateListModel struct {
-	// The certificates.
 	CertList *DescribeLiveCertificateListResponseBodyCertificateListModelCertList `json:"CertList,omitempty" xml:"CertList,omitempty" type:"Struct"`
 	// The number of certificates.
 	//
@@ -142,42 +141,12 @@ func (s *DescribeLiveCertificateListResponseBodyCertificateListModelCertList) Va
 }
 
 type DescribeLiveCertificateListResponseBodyCertificateListModelCertListCert struct {
-	// The ID of the certificate.
-	//
-	// example:
-	//
-	// 123456
-	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The name of the certificate.
-	//
-	// example:
-	//
-	// Cert-****
-	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// The Common Name (CN) attribute of the certificate.
-	//
-	// example:
-	//
-	// example.net
-	Common *string `json:"Common,omitempty" xml:"Common,omitempty"`
-	// The fingerprint of the certificate.
-	//
-	// example:
-	//
-	// ****
+	CertId      *int64  `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	CertName    *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	Common      *string `json:"Common,omitempty" xml:"Common,omitempty"`
 	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	// The certificate authority (CA) that issued the certificate.
-	//
-	// example:
-	//
-	// *****
-	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The time when the certificate was issued. Unit: seconds.
-	//
-	// example:
-	//
-	// 1512388659
-	LastTime *int64 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	Issuer      *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	LastTime    *int64  `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
 }
 
 func (s DescribeLiveCertificateListResponseBodyCertificateListModelCertListCert) String() string {

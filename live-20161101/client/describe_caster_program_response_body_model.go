@@ -29,8 +29,7 @@ type DescribeCasterProgramResponseBody struct {
 	// example:
 	//
 	// LIVEPRODUCER_POST-cn-0pp1czt****
-	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
-	// The list of the episodes.
+	CasterId *string                                    `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
 	Episodes *DescribeCasterProgramResponseBodyEpisodes `json:"Episodes,omitempty" xml:"Episodes,omitempty" type:"Struct"`
 	// Indicates whether carousel playback is enabled.
 	//
@@ -168,64 +167,15 @@ func (s *DescribeCasterProgramResponseBodyEpisodes) Validate() error {
 }
 
 type DescribeCasterProgramResponseBodyEpisodesEpisode struct {
-	// The components.
 	ComponentIds *DescribeCasterProgramResponseBodyEpisodesEpisodeComponentIds `json:"ComponentIds,omitempty" xml:"ComponentIds,omitempty" type:"Struct"`
-	// The end of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2016-06-29T10:02:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the episode.
-	//
-	// example:
-	//
-	// 1872639A-F203-4EC5-8E43-CB92E68F****
-	EpisodeId *string `json:"EpisodeId,omitempty" xml:"EpisodeId,omitempty"`
-	// The name of the episode.
-	//
-	// example:
-	//
-	// program_name_1
-	EpisodeName *string `json:"EpisodeName,omitempty" xml:"EpisodeName,omitempty"`
-	// The type of the episode. Valid values:
-	//
-	// 	- **Resource**: a video resource
-	//
-	// 	- **Component**: a component
-	//
-	// example:
-	//
-	// Resource
-	EpisodeType *string `json:"EpisodeType,omitempty" xml:"EpisodeType,omitempty"`
-	// The ID of the video resource.
-	//
-	// example:
-	//
-	// 1872639A-F203-4EC5-8E43-CB92E837****
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The beginning of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2016-06-29T09:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the episode.
-	//
-	// example:
-	//
-	// 0
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The policy for switching episodes. Valid values:
-	//
-	// 	- **TimeFirst**: The episode starts when the previous episode ends and ends when the next episode starts. If no next episode exists, the episode keeps repeating until a new episode is added or the production studio stops. This value is required for live video resources.
-	//
-	// 	- **ContentFirst**: The episode starts and ends as scheduled.
-	//
-	// example:
-	//
-	// TimeFirst
-	SwitchType *string `json:"SwitchType,omitempty" xml:"SwitchType,omitempty"`
+	EndTime      *string                                                       `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EpisodeId    *string                                                       `json:"EpisodeId,omitempty" xml:"EpisodeId,omitempty"`
+	EpisodeName  *string                                                       `json:"EpisodeName,omitempty" xml:"EpisodeName,omitempty"`
+	EpisodeType  *string                                                       `json:"EpisodeType,omitempty" xml:"EpisodeType,omitempty"`
+	ResourceId   *string                                                       `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	StartTime    *string                                                       `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status       *int32                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	SwitchType   *string                                                       `json:"SwitchType,omitempty" xml:"SwitchType,omitempty"`
 }
 
 func (s DescribeCasterProgramResponseBodyEpisodesEpisode) String() string {

@@ -16,7 +16,6 @@ type iAddCasterProgramResponseBody interface {
 }
 
 type AddCasterProgramResponseBody struct {
-	// The IDs of the episodes. The episode IDs are listed in the same order as specified by the variable N.
 	EpisodeIds *AddCasterProgramResponseBodyEpisodeIds `json:"EpisodeIds,omitempty" xml:"EpisodeIds,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,11 +95,6 @@ func (s *AddCasterProgramResponseBodyEpisodeIds) Validate() error {
 }
 
 type AddCasterProgramResponseBodyEpisodeIdsEpisodeId struct {
-	// The ID of the episode. You can use the ID as a request parameter in the API operation that is used to modify the episode list, query the information about the episode list, delete the episode, or modify the configurations of the episode.
-	//
-	// example:
-	//
-	// 16A96B9A-F203-4EC5-8E43-CB92E68F****
 	EpisodeId *string `json:"EpisodeId,omitempty" xml:"EpisodeId,omitempty"`
 }
 

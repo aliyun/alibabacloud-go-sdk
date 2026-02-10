@@ -29,8 +29,7 @@ type SetLiveStreamPreloadTasksResponseBody struct {
 	// example:
 	//
 	// 0
-	FailedURL *int32 `json:"FailedURL,omitempty" xml:"FailedURL,omitempty"`
-	// The details of the prefetch task.
+	FailedURL            *int32                                                     `json:"FailedURL,omitempty" xml:"FailedURL,omitempty"`
 	PreloadTasksMessages *SetLiveStreamPreloadTasksResponseBodyPreloadTasksMessages `json:"PreloadTasksMessages,omitempty" xml:"PreloadTasksMessages,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -170,24 +169,9 @@ func (s *SetLiveStreamPreloadTasksResponseBodyPreloadTasksMessages) Validate() e
 }
 
 type SetLiveStreamPreloadTasksResponseBodyPreloadTasksMessagesPreloadTasksMessage struct {
-	// Indicates whether the prefetch task is successful. Valid values:
-	//
-	// 	- Successfully
-	//
-	// 	- InternalError
-	//
-	// example:
-	//
-	// Successfully
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The streaming URL.
-	PlayUrl *string `json:"PlayUrl,omitempty" xml:"PlayUrl,omitempty"`
-	// The ID of the prefetch task.
-	//
-	// example:
-	//
-	// yourTaskId
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	PlayUrl     *string `json:"PlayUrl,omitempty" xml:"PlayUrl,omitempty"`
+	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s SetLiveStreamPreloadTasksResponseBodyPreloadTasksMessagesPreloadTasksMessage) String() string {

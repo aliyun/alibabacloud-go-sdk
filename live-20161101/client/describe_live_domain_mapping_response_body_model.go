@@ -16,7 +16,6 @@ type iDescribeLiveDomainMappingResponseBody interface {
 }
 
 type DescribeLiveDomainMappingResponseBody struct {
-	// The mappings of the queried domain name.
 	LiveDomainModels *DescribeLiveDomainMappingResponseBodyLiveDomainModels `json:"LiveDomainModels,omitempty" xml:"LiveDomainModels,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,24 +95,8 @@ func (s *DescribeLiveDomainMappingResponseBodyLiveDomainModels) Validate() error
 }
 
 type DescribeLiveDomainMappingResponseBodyLiveDomainModelsLiveDomainModel struct {
-	// The domain name to which the queried domain name is mapped.
-	//
-	// example:
-	//
-	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The type of the queried domain name. Valid values:
-	//
-	// 	- **vhost**: main streaming domain
-	//
-	// 	- **publish**: ingest domain
-	//
-	// 	- **play**: sub-streaming domain
-	//
-	// example:
-	//
-	// play
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeLiveDomainMappingResponseBodyLiveDomainModelsLiveDomainModel) String() string {

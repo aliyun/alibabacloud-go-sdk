@@ -16,7 +16,6 @@ type iDescribeLiveDomainByCertificateResponseBody interface {
 }
 
 type DescribeLiveDomainByCertificateResponseBody struct {
-	// The information about the certificate.
 	CertInfos *DescribeLiveDomainByCertificateResponseBodyCertInfos `json:"CertInfos,omitempty" xml:"CertInfos,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,68 +95,15 @@ func (s *DescribeLiveDomainByCertificateResponseBodyCertInfos) Validate() error 
 }
 
 type DescribeLiveDomainByCertificateResponseBodyCertInfosCertInfo struct {
-	// Indicates whether the SSL certificate is obsolete. Valid values:
-	//
-	// 	- **yes**
-	//
-	// 	- **no**
-	//
-	// example:
-	//
-	// yes
-	CertCaIsLegacy *string `json:"CertCaIsLegacy,omitempty" xml:"CertCaIsLegacy,omitempty"`
-	// The time at which the certificate expires.
-	//
-	// example:
-	//
-	// Nov 29 00:00:00 2016 GMT
-	CertExpireTime *string `json:"CertExpireTime,omitempty" xml:"CertExpireTime,omitempty"`
-	// Indicates whether the SSL certificate is expired. Valid values:
-	//
-	// 	- **yes**
-	//
-	// 	- **no**
-	//
-	// example:
-	//
-	// yes
-	CertExpired *string `json:"CertExpired,omitempty" xml:"CertExpired,omitempty"`
-	// The effective time of the certificate.
-	//
-	// example:
-	//
-	// Nov 29 23:59:59 2017 GMT
-	CertStartTime *string `json:"CertStartTime,omitempty" xml:"CertStartTime,omitempty"`
-	// The name of the SSL certificate owner.
-	//
-	// example:
-	//
-	// owner
+	CertCaIsLegacy        *string `json:"CertCaIsLegacy,omitempty" xml:"CertCaIsLegacy,omitempty"`
+	CertExpireTime        *string `json:"CertExpireTime,omitempty" xml:"CertExpireTime,omitempty"`
+	CertExpired           *string `json:"CertExpired,omitempty" xml:"CertExpired,omitempty"`
+	CertStartTime         *string `json:"CertStartTime,omitempty" xml:"CertStartTime,omitempty"`
 	CertSubjectCommonName *string `json:"CertSubjectCommonName,omitempty" xml:"CertSubjectCommonName,omitempty"`
-	// The type of the certificate. Valid values: **RSA**, **DSA**, and **ECDSA**.
-	//
-	// example:
-	//
-	// RSA
-	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// The list of domain names. If a value is returned, the value matches the SSL certificate. Multiple domain names are separated by commas (,).
-	//
-	// example:
-	//
-	// example.com,aliyundoc.com
-	DomainList *string `json:"DomainList,omitempty" xml:"DomainList,omitempty"`
-	// The domain names (DNS fields) that match the SSL certificate. Multiple domain names are separated by commas (,).
-	//
-	// example:
-	//
-	// *.example.com,aliyundoc.com
-	DomainNames *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
-	// The certificate authority (CA) that issued the SSL certificate.
-	//
-	// example:
-	//
-	// C=US, O=Symantec Corporation, OU=Symantec Trust Network, OU=Domain Validated SSL, CN=Symantec Basic DV SSL CA - G1
-	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	CertType              *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	DomainList            *string `json:"DomainList,omitempty" xml:"DomainList,omitempty"`
+	DomainNames           *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
+	Issuer                *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
 }
 
 func (s DescribeLiveDomainByCertificateResponseBodyCertInfosCertInfo) String() string {

@@ -20,7 +20,6 @@ type iDescribeLiveDomainOnlineUserNumResponseBody interface {
 }
 
 type DescribeLiveDomainOnlineUserNumResponseBody struct {
-	// The information about the streams.
 	OnlineUserInfo *DescribeLiveDomainOnlineUserNumResponseBodyOnlineUserInfo `json:"OnlineUserInfo,omitempty" xml:"OnlineUserInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -130,14 +129,8 @@ func (s *DescribeLiveDomainOnlineUserNumResponseBodyOnlineUserInfo) Validate() e
 }
 
 type DescribeLiveDomainOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineUserNumInfo struct {
-	// The statistics on the stream.
-	Infos *DescribeLiveDomainOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineUserNumInfoInfos `json:"Infos,omitempty" xml:"Infos,omitempty" type:"Struct"`
-	// The name of the stream.
-	//
-	// example:
-	//
-	// rtmp://example.com/test/liveStream****_3_1
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	Infos      *DescribeLiveDomainOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineUserNumInfoInfos `json:"Infos,omitempty" xml:"Infos,omitempty" type:"Struct"`
+	StreamName *string                                                                                    `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
 }
 
 func (s DescribeLiveDomainOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineUserNumInfo) String() string {
@@ -210,18 +203,8 @@ func (s *DescribeLiveDomainOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnli
 }
 
 type DescribeLiveDomainOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineUserNumInfoInfosInfo struct {
-	// The transcoding template. A value of origin indicates that the stream is a source stream.
-	//
-	// example:
-	//
-	// origin
 	TranscodeTemplate *string `json:"TranscodeTemplate,omitempty" xml:"TranscodeTemplate,omitempty"`
-	// The number of online users for the stream, which can be a source stream or transcoded stream.
-	//
-	// example:
-	//
-	// 1
-	UserNumber *int64 `json:"UserNumber,omitempty" xml:"UserNumber,omitempty"`
+	UserNumber        *int64  `json:"UserNumber,omitempty" xml:"UserNumber,omitempty"`
 }
 
 func (s DescribeLiveDomainOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineUserNumInfoInfosInfo) String() string {

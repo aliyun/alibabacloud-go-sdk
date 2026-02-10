@@ -18,7 +18,6 @@ type iDescribeCastersResponseBody interface {
 }
 
 type DescribeCastersResponseBody struct {
-	// The production studios.
 	CasterList *DescribeCastersResponseBodyCasterList `json:"CasterList,omitempty" xml:"CasterList,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -113,130 +112,22 @@ func (s *DescribeCastersResponseBodyCasterList) Validate() error {
 }
 
 type DescribeCastersResponseBodyCasterListCaster struct {
-	// The ID of the production studio. You can specify the ID in a request to query the streaming URLs of the production studio, start the production studio, add a video resource, a layout, a component, or a playlist to the production studio, or query layouts of the production studio.
-	//
-	// example:
-	//
-	// LIVEPRODUCER_POST-cn-0pp1czt****
-	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
-	// The name of the production studio.
-	//
-	// example:
-	//
-	// liveCaster****
-	CasterName *string `json:"CasterName,omitempty" xml:"CasterName,omitempty"`
-	// The resolution in which the production studio plays videos. This parameter is returned if the subscription billing method is used. Valid values:
-	//
-	// 	- lp_ld: low definition
-	//
-	// 	- lp_sd: standard definition
-	//
-	// 	- lp_hd: high definition
-	//
-	// 	- lp_ud: ultra high definition.
-	//
-	// 	- lp_ld_v: low definition (portrait mode)
-	//
-	// 	- lp_sd_v: standard definition (portrait mode)
-	//
-	// 	- lp_hd_v: high definition (portrait mode)
-	//
-	// 	- lp_ud_v: ultra high definition (portrait mode)
-	//
-	// example:
-	//
-	// lp_ld
-	CasterTemplate *string `json:"CasterTemplate,omitempty" xml:"CasterTemplate,omitempty"`
-	// Indicates whether the channel is enabled for the production studio.
-	//
-	// 	- 0: The channel is disabled.
-	//
-	// 	- 1: The channel is enabled.
-	//
-	// example:
-	//
-	// 1
-	ChannelEnable *int32 `json:"ChannelEnable,omitempty" xml:"ChannelEnable,omitempty"`
-	// The billing method. Valid values:
-	//
-	// 	- PrePaid: the subscription billing method
-	//
-	// 	- PostPaid: the pay-as-you-go billing method
-	//
-	// example:
-	//
-	// PrePaid
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// example:
-	//
-	// 53200b81-b761-4c10-842a-a0726d97****
-	ClientTokenId *string `json:"ClientTokenId,omitempty" xml:"ClientTokenId,omitempty"`
-	// The time when the production studio was created.
-	//
-	// example:
-	//
-	// 2017-08-30 12:02:57.0
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The streaming duration. Format: hh:mm:ss.
-	//
-	// example:
-	//
-	// 1:02:33
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The time when the production studio expires.
-	//
-	// example:
-	//
-	// 2018-08-30 12:02:57.0
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The time when the production studio was last modified. For example, the time when the production studio was last started, stopped, or modified is returned.
-	//
-	// example:
-	//
-	// 2021-12-01T05:08:45Z
-	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// The type of the production studio. Valid values:
-	//
-	// 	- 0: playlist mode
-	//
-	// 	- 1: general mode
-	//
-	// example:
-	//
-	// 1
-	NormType *int32 `json:"NormType,omitempty" xml:"NormType,omitempty"`
-	// The time when the production studio was purchased.
-	//
-	// example:
-	//
-	// 2017-08-30 12:02:57.0
-	PurchaseTime *string `json:"PurchaseTime,omitempty" xml:"PurchaseTime,omitempty"`
-	// The resource group ID. For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/2381067.html).
-	//
-	// example:
-	//
-	// rg-aekzw******
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The time when the production studio was started. This parameter is returned if the production studio is in the streaming status.
-	//
-	// example:
-	//
-	// 2017-08-30 18:02:57.0
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the production studio. Valid values:
-	//
-	// 	- 0: idle
-	//
-	// 	- 1: streaming
-	//
-	// example:
-	//
-	// 1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags.
-	Tags *DescribeCastersResponseBodyCasterListCasterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	CasterId        *string                                          `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
+	CasterName      *string                                          `json:"CasterName,omitempty" xml:"CasterName,omitempty"`
+	CasterTemplate  *string                                          `json:"CasterTemplate,omitempty" xml:"CasterTemplate,omitempty"`
+	ChannelEnable   *int32                                           `json:"ChannelEnable,omitempty" xml:"ChannelEnable,omitempty"`
+	ChargeType      *string                                          `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ClientTokenId   *string                                          `json:"ClientTokenId,omitempty" xml:"ClientTokenId,omitempty"`
+	CreateTime      *string                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Duration        *string                                          `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	ExpireTime      *string                                          `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	LastModified    *string                                          `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	NormType        *int32                                           `json:"NormType,omitempty" xml:"NormType,omitempty"`
+	PurchaseTime    *string                                          `json:"PurchaseTime,omitempty" xml:"PurchaseTime,omitempty"`
+	ResourceGroupId *string                                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	StartTime       *string                                          `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status          *int32                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags            *DescribeCastersResponseBodyCasterListCasterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeCastersResponseBodyCasterListCaster) String() string {
@@ -435,17 +326,7 @@ func (s *DescribeCastersResponseBodyCasterListCasterTags) Validate() error {
 }
 
 type DescribeCastersResponseBodyCasterListCasterTagsTag struct {
-	// The key of the tag.
-	//
-	// example:
-	//
-	// TestKey
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
-	//
-	// example:
-	//
-	// TestValue
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

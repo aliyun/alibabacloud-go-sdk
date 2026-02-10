@@ -16,7 +16,6 @@ type iDescribeLiveAudioAuditNotifyConfigResponseBody interface {
 }
 
 type DescribeLiveAudioAuditNotifyConfigResponseBody struct {
-	// The configuration of callbacks for audio moderation results.
 	LiveAudioAuditNotifyConfigList *DescribeLiveAudioAuditNotifyConfigResponseBodyLiveAudioAuditNotifyConfigList `json:"LiveAudioAuditNotifyConfigList,omitempty" xml:"LiveAudioAuditNotifyConfigList,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,34 +95,9 @@ func (s *DescribeLiveAudioAuditNotifyConfigResponseBodyLiveAudioAuditNotifyConfi
 }
 
 type DescribeLiveAudioAuditNotifyConfigResponseBodyLiveAudioAuditNotifyConfigListLiveAudioAuditNotifyConfig struct {
-	// The callback URL.
-	//
-	// example:
-	//
-	// http://guide.aliyundoc.com/callback
-	Callback *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
-	// The callback template. The following fields are configured:
-	//
-	// 	- **{DomainName}**: the streaming domain.
-	//
-	// 	- **{AppName}**: the name of the application to which the live stream belongs.
-	//
-	// 	- **{StreamName}**: the name of the live stream.
-	//
-	// 	- **{Timestamp}**: the time when the callback is returned. The value of this field is a UNIX timestamp. Unit: seconds.
-	//
-	// 	- **{Result}**: the moderation results.
-	//
-	// example:
-	//
-	// {\\"domain\\":{DomainName},\\"app\\":{AppName},\\"stream\\":{StreamName},\\"timestamp\\":{Timestamp},\\"result\\":{Result}}
+	Callback         *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
 	CallbackTemplate *string `json:"CallbackTemplate,omitempty" xml:"CallbackTemplate,omitempty"`
-	// The main streaming domain.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainName       *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
 func (s DescribeLiveAudioAuditNotifyConfigResponseBodyLiveAudioAuditNotifyConfigListLiveAudioAuditNotifyConfig) String() string {

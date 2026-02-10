@@ -53,8 +53,7 @@ type DescribeLiveDomainTrafficDataResponseBody struct {
 	// example:
 	//
 	// 2017-12-10T14:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The network traffic data that was collected at each interval.
+	StartTime              *string                                                          `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TrafficDataPerInterval *DescribeLiveDomainTrafficDataResponseBodyTrafficDataPerInterval `json:"TrafficDataPerInterval,omitempty" xml:"TrafficDataPerInterval,omitempty" type:"Struct"`
 }
 
@@ -164,30 +163,10 @@ func (s *DescribeLiveDomainTrafficDataResponseBodyTrafficDataPerInterval) Valida
 }
 
 type DescribeLiveDomainTrafficDataResponseBodyTrafficDataPerIntervalDataModule struct {
-	// The traffic over HTTP. Unit: bytes.
-	//
-	// example:
-	//
-	// 0
-	HttpTrafficValue *string `json:"HttpTrafficValue,omitempty" xml:"HttpTrafficValue,omitempty"`
-	// The traffic over HTTPS. Unit: bytes.
-	//
-	// example:
-	//
-	// 454680793
+	HttpTrafficValue  *string `json:"HttpTrafficValue,omitempty" xml:"HttpTrafficValue,omitempty"`
 	HttpsTrafficValue *string `json:"HttpsTrafficValue,omitempty" xml:"HttpsTrafficValue,omitempty"`
-	// The timestamp of the data returned.
-	//
-	// example:
-	//
-	// 2017-12-10T15:00:05Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The total traffic. Unit: bytes.
-	//
-	// example:
-	//
-	// 454680793
-	TrafficValue *string `json:"TrafficValue,omitempty" xml:"TrafficValue,omitempty"`
+	TimeStamp         *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TrafficValue      *string `json:"TrafficValue,omitempty" xml:"TrafficValue,omitempty"`
 }
 
 func (s DescribeLiveDomainTrafficDataResponseBodyTrafficDataPerIntervalDataModule) String() string {

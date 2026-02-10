@@ -18,7 +18,6 @@ type iDescribeLivePushProxyLogResponseBody interface {
 }
 
 type DescribeLivePushProxyLogResponseBody struct {
-	// The log information.
 	DomainLogDetails *DescribeLivePushProxyLogResponseBodyDomainLogDetails `json:"DomainLogDetails,omitempty" xml:"DomainLogDetails,omitempty" type:"Struct"`
 	// Push domain.
 	//
@@ -113,15 +112,8 @@ func (s *DescribeLivePushProxyLogResponseBodyDomainLogDetails) Validate() error 
 }
 
 type DescribeLivePushProxyLogResponseBodyDomainLogDetailsDomainLogDetail struct {
-	// The total number of entries returned on the current page.
-	//
-	// example:
-	//
-	// 10
-	LogCount *int64 `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
-	// Details about the logs.
-	LogInfos *DescribeLivePushProxyLogResponseBodyDomainLogDetailsDomainLogDetailLogInfos `json:"LogInfos,omitempty" xml:"LogInfos,omitempty" type:"Struct"`
-	// The page information.
+	LogCount  *int64                                                                        `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
+	LogInfos  *DescribeLivePushProxyLogResponseBodyDomainLogDetailsDomainLogDetailLogInfos  `json:"LogInfos,omitempty" xml:"LogInfos,omitempty" type:"Struct"`
 	PageInfos *DescribeLivePushProxyLogResponseBodyDomainLogDetailsDomainLogDetailPageInfos `json:"PageInfos,omitempty" xml:"PageInfos,omitempty" type:"Struct"`
 }
 
@@ -209,37 +201,10 @@ func (s *DescribeLivePushProxyLogResponseBodyDomainLogDetailsDomainLogDetailLogI
 }
 
 type DescribeLivePushProxyLogResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail struct {
-	// The end of the time range during which data was queried.
-	//
-	// The value is a UNIX timestamp.
-	//
-	// example:
-	//
-	// 1695189600
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the log file.
-	//
-	// example:
-	//
-	// example.com
-	//
-	// _2023_09_20_160000_170000.****.gz
-	LogName *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
-	// The path of the log file.
-	LogPath *string `json:"LogPath,omitempty" xml:"LogPath,omitempty"`
-	// The size of the log file.
-	//
-	// example:
-	//
-	// 512
-	LogSize *int64 `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
-	// The beginning of the time range during which data was queried.
-	//
-	// The value is a UNIX timestamp.
-	//
-	// example:
-	//
-	// 1695193200
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	LogName   *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
+	LogPath   *string `json:"LogPath,omitempty" xml:"LogPath,omitempty"`
+	LogSize   *int64  `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -301,24 +266,9 @@ func (s *DescribeLivePushProxyLogResponseBodyDomainLogDetailsDomainLogDetailLogI
 }
 
 type DescribeLivePushProxyLogResponseBodyDomainLogDetailsDomainLogDetailPageInfos struct {
-	// The page number.
-	//
-	// example:
-	//
-	// 1
 	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 20
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
-	//
-	// example:
-	//
-	// 20
-	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	PageSize  *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total     *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeLivePushProxyLogResponseBodyDomainLogDetailsDomainLogDetailPageInfos) String() string {

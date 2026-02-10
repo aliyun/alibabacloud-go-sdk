@@ -24,7 +24,6 @@ type iDescribeLiveDomainBpsDataResponseBody interface {
 }
 
 type DescribeLiveDomainBpsDataResponseBody struct {
-	// The bandwidth data returned at each interval.
 	BpsDataPerInterval *DescribeLiveDomainBpsDataResponseBodyBpsDataPerInterval `json:"BpsDataPerInterval,omitempty" xml:"BpsDataPerInterval,omitempty" type:"Struct"`
 	// The time granularity of the query. Unit: seconds.
 	//
@@ -164,30 +163,10 @@ func (s *DescribeLiveDomainBpsDataResponseBodyBpsDataPerInterval) Validate() err
 }
 
 type DescribeLiveDomainBpsDataResponseBodyBpsDataPerIntervalDataModule struct {
-	// The bandwidth. Unit: bit/s.
-	//
-	// example:
-	//
-	// 11288111
-	BpsValue *string `json:"BpsValue,omitempty" xml:"BpsValue,omitempty"`
-	// The bandwidth over HTTP. Unit: bit/s.
-	//
-	// example:
-	//
-	// 11286111
-	HttpBpsValue *string `json:"HttpBpsValue,omitempty" xml:"HttpBpsValue,omitempty"`
-	// The bandwidth over HTTPS. Unit: bit/s.
-	//
-	// example:
-	//
-	// 2000
+	BpsValue      *string `json:"BpsValue,omitempty" xml:"BpsValue,omitempty"`
+	HttpBpsValue  *string `json:"HttpBpsValue,omitempty" xml:"HttpBpsValue,omitempty"`
 	HttpsBpsValue *string `json:"HttpsBpsValue,omitempty" xml:"HttpsBpsValue,omitempty"`
-	// The timestamp of the data returned.
-	//
-	// example:
-	//
-	// 2017-12-10T08:00:05Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TimeStamp     *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeLiveDomainBpsDataResponseBodyBpsDataPerIntervalDataModule) String() string {

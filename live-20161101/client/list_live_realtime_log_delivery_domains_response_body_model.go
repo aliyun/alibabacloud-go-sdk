@@ -16,7 +16,6 @@ type iListLiveRealtimeLogDeliveryDomainsResponseBody interface {
 }
 
 type ListLiveRealtimeLogDeliveryDomainsResponseBody struct {
-	// The domain names.
 	Content *ListLiveRealtimeLogDeliveryDomainsResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,22 +95,8 @@ func (s *ListLiveRealtimeLogDeliveryDomainsResponseBodyContent) Validate() error
 }
 
 type ListLiveRealtimeLogDeliveryDomainsResponseBodyContentDomains struct {
-	// The streaming domain.
-	//
-	// example:
-	//
-	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The status of real-time log delivery. Valid values:
-	//
-	// 	- **online**: enabled
-	//
-	// 	- **offline**: disabled
-	//
-	// example:
-	//
-	// online
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListLiveRealtimeLogDeliveryDomainsResponseBodyContentDomains) String() string {

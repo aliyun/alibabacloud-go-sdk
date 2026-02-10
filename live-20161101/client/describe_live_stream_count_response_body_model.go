@@ -21,8 +21,7 @@ type DescribeLiveStreamCountResponseBody struct {
 	// example:
 	//
 	// FCFFE4A4-F34F-4EEF-B401-36A01689AFBC
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The statistics of the live streams.
+	RequestId        *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StreamCountInfos *DescribeLiveStreamCountResponseBodyStreamCountInfos `json:"StreamCountInfos,omitempty" xml:"StreamCountInfos,omitempty" type:"Struct"`
 }
 
@@ -96,30 +95,10 @@ func (s *DescribeLiveStreamCountResponseBodyStreamCountInfos) Validate() error {
 }
 
 type DescribeLiveStreamCountResponseBodyStreamCountInfosStreamCountInfo struct {
-	// The number of online streams.
-	//
-	// example:
-	//
-	// 3
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The maximum allowed number of concurrently ingested streams. This parameter is available only to users in the whitelist.
-	//
-	// example:
-	//
-	// 10
-	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The information about the live streams.
+	Count              *int64                                                                                `json:"Count,omitempty" xml:"Count,omitempty"`
+	Limit              *int64                                                                                `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	StreamCountDetails *DescribeLiveStreamCountResponseBodyStreamCountInfosStreamCountInfoStreamCountDetails `json:"StreamCountDetails,omitempty" xml:"StreamCountDetails,omitempty" type:"Struct"`
-	// The type of the live stream. Valid values:
-	//
-	// 	- **raw**: source streams
-	//
-	// 	- **trans**: transcoded streams
-	//
-	// example:
-	//
-	// raw
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type               *string                                                                               `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeLiveStreamCountResponseBodyStreamCountInfosStreamCountInfo) String() string {
@@ -210,28 +189,9 @@ func (s *DescribeLiveStreamCountResponseBodyStreamCountInfosStreamCountInfoStrea
 }
 
 type DescribeLiveStreamCountResponseBodyStreamCountInfosStreamCountInfoStreamCountDetailsStreamCountDetail struct {
-	// The number of online streams.
-	//
-	// example:
-	//
-	// 2
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The video codec. Valid values:
-	//
-	// 	- **h264**
-	//
-	// 	- **h265**
-	//
-	// example:
-	//
-	// h264
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The video bitrate. This parameter is returned only for transcoded streams.
-	//
-	// example:
-	//
-	// 390
-	VideoDataRate *int64 `json:"VideoDataRate,omitempty" xml:"VideoDataRate,omitempty"`
+	Count         *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Format        *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	VideoDataRate *int64  `json:"VideoDataRate,omitempty" xml:"VideoDataRate,omitempty"`
 }
 
 func (s DescribeLiveStreamCountResponseBodyStreamCountInfosStreamCountInfoStreamCountDetailsStreamCountDetail) String() string {

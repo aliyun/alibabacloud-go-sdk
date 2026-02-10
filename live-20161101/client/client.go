@@ -4445,7 +4445,7 @@ func (client *Client) BatchDeleteLiveDomainConfigs(request *BatchDeleteLiveDomai
 
 // Summary:
 //
-// 根据一个或多个用户uid查询用户是否在线
+// Queries whether users are online by UID.
 //
 // Description:
 //
@@ -4507,7 +4507,7 @@ func (client *Client) BatchGetOnlineUsersWithOptions(request *BatchGetOnlineUser
 
 // Summary:
 //
-// 根据一个或多个用户uid查询用户是否在线
+// Queries whether users are online by UID.
 //
 // Description:
 //
@@ -7227,7 +7227,7 @@ func (client *Client) CreateRTCWhipStreamAddress(request *CreateRTCWhipStreamAdd
 
 // Summary:
 //
-// Creates a Real-Time Messaging Protocol (RTMP) ingest URL for a channel.
+// Generates a Real-Time Messaging Protocol (RTMP) ingest URL for a channel.
 //
 // Description:
 //
@@ -7291,7 +7291,7 @@ func (client *Client) CreateRoomRealTimeStreamAddressWithOptions(request *Create
 
 // Summary:
 //
-// Creates a Real-Time Messaging Protocol (RTMP) ingest URL for a channel.
+// Generates a Real-Time Messaging Protocol (RTMP) ingest URL for a channel.
 //
 // Description:
 //
@@ -10287,6 +10287,10 @@ func (client *Client) DeleteLiveMessageUserMessage(request *DeleteLiveMessageUse
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除直播封装配置
+//
 // Description:
 //
 // You can call this operation to delete a live stream encapsulation configuration. The deletion takes effect after you re-ingest the stream.
@@ -10351,6 +10355,10 @@ func (client *Client) DeleteLivePackageConfigWithOptions(request *DeleteLivePack
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除直播封装配置
+//
 // Description:
 //
 // You can call this operation to delete a live stream encapsulation configuration. The deletion takes effect after you re-ingest the stream.
@@ -19555,6 +19563,10 @@ func (client *Client) DescribeLiveMessageGroupBand(request *DescribeLiveMessageG
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询直播封装配置
+//
 // Description:
 //
 // Obtain the main streaming domain, and then call this operation to query live stream encapsulation configurations.
@@ -19631,6 +19643,10 @@ func (client *Client) DescribeLivePackageConfigWithOptions(request *DescribeLive
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询直播封装配置
+//
 // Description:
 //
 // Obtain the main streaming domain, and then call this operation to query live stream encapsulation configurations.
@@ -21105,7 +21121,7 @@ func (client *Client) DescribeLiveRtcRecordUsageData(request *DescribeLiveRtcRec
 
 // Summary:
 //
-// Queries the time shifting configurations under a domain name.
+// Queries the time shifting configurations of a domain name.
 //
 // Description:
 //
@@ -21165,7 +21181,7 @@ func (client *Client) DescribeLiveShiftConfigsWithOptions(request *DescribeLiveS
 
 // Summary:
 //
-// Queries the time shifting configurations under a domain name.
+// Queries the time shifting configurations of a domain name.
 //
 // Description:
 //
@@ -23623,7 +23639,7 @@ func (client *Client) DescribeLiveStreamWatermarks(request *DescribeLiveStreamWa
 
 // Summary:
 //
-// Queries the blacklist of live stream URLs under a main streaming domain.
+// Queries the live streams that are blacklisted under a domain name.
 //
 // Description:
 //
@@ -23691,7 +23707,7 @@ func (client *Client) DescribeLiveStreamsBlockListWithOptions(request *DescribeL
 
 // Summary:
 //
-// Queries the blacklist of live stream URLs under a main streaming domain.
+// Queries the live streams that are blacklisted under a domain name.
 //
 // Description:
 //
@@ -25961,7 +25977,7 @@ func (client *Client) DescribeRTSNativeSDKVvData(request *DescribeRTSNativeSDKVv
 
 // Summary:
 //
-// 查询rtc云端录制文件与任务信息
+// Queries the information about a real-time communication (RTC) cloud-based recording task.
 //
 // @param request - DescribeRtcCloudRecordingFilesRequest
 //
@@ -26005,7 +26021,7 @@ func (client *Client) DescribeRtcCloudRecordingFilesWithOptions(request *Describ
 
 // Summary:
 //
-// 查询rtc云端录制文件与任务信息
+// Queries the information about a real-time communication (RTC) cloud-based recording task.
 //
 // @param request - DescribeRtcCloudRecordingFilesRequest
 //
@@ -26014,6 +26030,72 @@ func (client *Client) DescribeRtcCloudRecordingFiles(request *DescribeRtcCloudRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeRtcCloudRecordingFilesResponse{}
 	_body, _err := client.DescribeRtcCloudRecordingFilesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询云端转码任务
+//
+// @param request - DescribeRtcCloudTranscodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRtcCloudTranscodeResponse
+func (client *Client) DescribeRtcCloudTranscodeWithOptions(request *DescribeRtcCloudTranscodeRequest, runtime *dara.RuntimeOptions) (_result *DescribeRtcCloudTranscodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRtcCloudTranscode"),
+		Version:     dara.String("2016-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRtcCloudTranscodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询云端转码任务
+//
+// @param request - DescribeRtcCloudTranscodeRequest
+//
+// @return DescribeRtcCloudTranscodeResponse
+func (client *Client) DescribeRtcCloudTranscode(request *DescribeRtcCloudTranscodeRequest) (_result *DescribeRtcCloudTranscodeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeRtcCloudTranscodeResponse{}
+	_body, _err := client.DescribeRtcCloudTranscodeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32689,7 +32771,7 @@ func (client *Client) ModifyLiveMessageGroupBand(request *ModifyLiveMessageGroup
 
 // Summary:
 //
-// Modifies the information about a user.
+// Modifies the information about one or more users.
 //
 // @param request - ModifyLiveMessageUserInfoRequest
 //
@@ -32745,7 +32827,7 @@ func (client *Client) ModifyLiveMessageUserInfoWithOptions(request *ModifyLiveMe
 
 // Summary:
 //
-// Modifies the information about a user.
+// Modifies the information about one or more users.
 //
 // @param request - ModifyLiveMessageUserInfoRequest
 //
@@ -34253,7 +34335,7 @@ func (client *Client) RemoveLiveMessageGroupBand(request *RemoveLiveMessageGroup
 
 // Summary:
 //
-// Removes a specified episode from an episode list.
+// Removes an episode from an episode list.
 //
 // Description:
 //
@@ -34327,7 +34409,7 @@ func (client *Client) RemoveShowFromShowListWithOptions(request *RemoveShowFromS
 
 // Summary:
 //
-// Removes a specified episode from an episode list.
+// Removes an episode from an episode list.
 //
 // Description:
 //
@@ -38025,6 +38107,94 @@ func (client *Client) StartRtcCloudRecording(request *StartRtcCloudRecordingRequ
 
 // Summary:
 //
+// 创建云端转码任务
+//
+// @param tmpReq - StartRtcCloudTranscodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartRtcCloudTranscodeResponse
+func (client *Client) StartRtcCloudTranscodeWithOptions(tmpReq *StartRtcCloudTranscodeRequest, runtime *dara.RuntimeOptions) (_result *StartRtcCloudTranscodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &StartRtcCloudTranscodeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.InputParam) {
+		request.InputParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InputParam, dara.String("InputParam"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.OutputParams) {
+		request.OutputParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OutputParams, dara.String("OutputParams"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.ChannelId) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !dara.IsNil(request.InputParamShrink) {
+		query["InputParam"] = request.InputParamShrink
+	}
+
+	if !dara.IsNil(request.MaxIdleTime) {
+		query["MaxIdleTime"] = request.MaxIdleTime
+	}
+
+	if !dara.IsNil(request.OutputParamsShrink) {
+		query["OutputParams"] = request.OutputParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StartRtcCloudTranscode"),
+		Version:     dara.String("2016-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StartRtcCloudTranscodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建云端转码任务
+//
+// @param request - StartRtcCloudTranscodeRequest
+//
+// @return StartRtcCloudTranscodeResponse
+func (client *Client) StartRtcCloudTranscode(request *StartRtcCloudTranscodeRequest) (_result *StartRtcCloudTranscodeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &StartRtcCloudTranscodeResponse{}
+	_body, _err := client.StartRtcCloudTranscodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Stops a production studio. This stops the PVW and PGM scenes of the production studio.
 //
 // Description:
@@ -38111,7 +38281,7 @@ func (client *Client) StopCaster(request *StopCasterRequest) (_result *StopCaste
 
 // Summary:
 //
-// Stops a specified preview scene.
+// Stops a specified preview (PVW) scene.
 //
 // Description:
 //
@@ -38173,7 +38343,7 @@ func (client *Client) StopCasterSceneWithOptions(request *StopCasterSceneRequest
 
 // Summary:
 //
-// Stops a specified preview scene.
+// Stops a specified preview (PVW) scene.
 //
 // Description:
 //
@@ -38791,7 +38961,7 @@ func (client *Client) StopRtcAsrTask(request *StopRtcAsrTaskRequest) (_result *S
 
 // Summary:
 //
-// 停止rtc云端录制任务
+// Stops a real-time communication (RTC) cloud-based recording task.
 //
 // @param request - StopRtcCloudRecordingRequest
 //
@@ -38835,7 +39005,7 @@ func (client *Client) StopRtcCloudRecordingWithOptions(request *StopRtcCloudReco
 
 // Summary:
 //
-// 停止rtc云端录制任务
+// Stops a real-time communication (RTC) cloud-based recording task.
 //
 // @param request - StopRtcCloudRecordingRequest
 //
@@ -38853,7 +39023,73 @@ func (client *Client) StopRtcCloudRecording(request *StopRtcCloudRecordingReques
 
 // Summary:
 //
-// The N tags that you want to add for the resource.
+// 停止云端转码任务
+//
+// @param request - StopRtcCloudTranscodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopRtcCloudTranscodeResponse
+func (client *Client) StopRtcCloudTranscodeWithOptions(request *StopRtcCloudTranscodeRequest, runtime *dara.RuntimeOptions) (_result *StopRtcCloudTranscodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StopRtcCloudTranscode"),
+		Version:     dara.String("2016-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StopRtcCloudTranscodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止云端转码任务
+//
+// @param request - StopRtcCloudTranscodeRequest
+//
+// @return StopRtcCloudTranscodeResponse
+func (client *Client) StopRtcCloudTranscode(request *StopRtcCloudTranscodeRequest) (_result *StopRtcCloudTranscodeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &StopRtcCloudTranscodeResponse{}
+	_body, _err := client.StopRtcCloudTranscodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds tags for domain names.
 //
 // Description:
 //
@@ -38917,7 +39153,7 @@ func (client *Client) TagLiveResourcesWithOptions(request *TagLiveResourcesReque
 
 // Summary:
 //
-// The N tags that you want to add for the resource.
+// Adds tags for domain names.
 //
 // Description:
 //
@@ -38939,7 +39175,7 @@ func (client *Client) TagLiveResources(request *TagLiveResourcesRequest) (_resul
 
 // Summary:
 //
-// 解绑标签
+// Deletes tags of domain names.
 //
 // @param request - UnTagLiveResourcesRequest
 //
@@ -39003,7 +39239,7 @@ func (client *Client) UnTagLiveResourcesWithOptions(request *UnTagLiveResourcesR
 
 // Summary:
 //
-// 解绑标签
+// Deletes tags of domain names.
 //
 // @param request - UnTagLiveResourcesRequest
 //

@@ -108,22 +108,10 @@ func (s *ListLiveTagResourcesResponseBodyTagResources) Validate() error {
 }
 
 type ListLiveTagResourcesResponseBodyTagResourcesTagResource struct {
-	// example:
-	//
-	// my-resource-id
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// example:
-	//
-	// DOMAIN
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// example:
-	//
-	// env
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// example:
-	//
-	// dev
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListLiveTagResourcesResponseBodyTagResourcesTagResource) String() string {

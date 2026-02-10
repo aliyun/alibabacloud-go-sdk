@@ -41,8 +41,7 @@ type DescribeLiveDomainPvUvDataResponseBody struct {
 	// example:
 	//
 	// 2018-03-20T16:00:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The data of PVs and UVs.
+	EndTime       *string                                              `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	PvUvDataInfos *DescribeLiveDomainPvUvDataResponseBodyPvUvDataInfos `json:"PvUvDataInfos,omitempty" xml:"PvUvDataInfos,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -164,24 +163,9 @@ func (s *DescribeLiveDomainPvUvDataResponseBodyPvUvDataInfos) Validate() error {
 }
 
 type DescribeLiveDomainPvUvDataResponseBodyPvUvDataInfosPvUvDataInfo struct {
-	// The number of PVs.
-	//
-	// example:
-	//
-	// 3036
-	PV *string `json:"PV,omitempty" xml:"PV,omitempty"`
-	// The timestamp of the data returned. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ssZ	- format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2018-03-19T16:00:00Z
+	PV        *string `json:"PV,omitempty" xml:"PV,omitempty"`
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The number of UVs.
-	//
-	// example:
-	//
-	// 2
-	UV *string `json:"UV,omitempty" xml:"UV,omitempty"`
+	UV        *string `json:"UV,omitempty" xml:"UV,omitempty"`
 }
 
 func (s DescribeLiveDomainPvUvDataResponseBodyPvUvDataInfosPvUvDataInfo) String() string {

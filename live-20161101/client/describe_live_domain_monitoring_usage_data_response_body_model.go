@@ -43,8 +43,7 @@ type DescribeLiveDomainMonitoringUsageDataResponseBody struct {
 	// example:
 	//
 	// e62af24d-a354-3b0c-9f1f-da592c4b****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The live monitoring data.
+	InstanceId     *string                                                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	MonitoringData *DescribeLiveDomainMonitoringUsageDataResponseBodyMonitoringData `json:"MonitoringData,omitempty" xml:"MonitoringData,omitempty" type:"Struct"`
 	// The region of the live center.
 	//
@@ -181,42 +180,12 @@ func (s *DescribeLiveDomainMonitoringUsageDataResponseBodyMonitoringData) Valida
 }
 
 type DescribeLiveDomainMonitoringUsageDataResponseBodyMonitoringDataMonitoringDataItem struct {
-	// The domain name. This field is valid only when you specify domain for the **SplitBy*	- parameter.
-	//
-	// example:
-	//
-	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The duration. Unit: minutes.
-	//
-	// example:
-	//
-	// 2000
-	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The ID of the monitoring session. This field is valid only when you specify instance for the **SplitBy*	- parameter.
-	//
-	// example:
-	//
-	// e62af24d-a354-3b0c-9f1f-da592c4b****
+	Duration   *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region of the live center. This field is valid only when you specify Region for the **SplitBy*	- parameter.
-	//
-	// example:
-	//
-	// cn-shanghai
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The resolution. This field is valid only when you specify resolution for the **SplitBy*	- parameter.
-	//
-	// example:
-	//
-	// 720P
+	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	// The timestamp of the returned data.
-	//
-	// example:
-	//
-	// 2022-12-10T20:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeLiveDomainMonitoringUsageDataResponseBodyMonitoringDataMonitoringDataItem) String() string {

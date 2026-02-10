@@ -20,7 +20,6 @@ type iDescribeLiveDelayedStreamingUsageResponseBody interface {
 }
 
 type DescribeLiveDelayedStreamingUsageResponseBody struct {
-	// The details about the stream delay usage data.
 	DelayData *DescribeLiveDelayedStreamingUsageResponseBodyDelayData `json:"DelayData,omitempty" xml:"DelayData,omitempty" type:"Struct"`
 	// The end of the time range during which the data was queried.
 	//
@@ -130,36 +129,11 @@ func (s *DescribeLiveDelayedStreamingUsageResponseBodyDelayData) Validate() erro
 }
 
 type DescribeLiveDelayedStreamingUsageResponseBodyDelayDataDelayDataItem struct {
-	// The domain name. If SplitBy is set to domain, the data returned is grouped by domain name.
-	//
-	// example:
-	//
-	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The duration of stream delay.
-	//
-	// example:
-	//
-	// 84
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The ID of the region. If SplitBy is set to region, the data returned is grouped by region.
-	//
-	// example:
-	//
-	// cn-shanghai
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The name of the stream. If SplitBy is set to stream, the data returned is grouped by stream.
-	//
-	// example:
-	//
-	// liveStream****
+	Duration   *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The timestamp of the data returned.
-	//
-	// example:
-	//
-	// 2022-10-10T20:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeLiveDelayedStreamingUsageResponseBodyDelayDataDelayDataItem) String() string {

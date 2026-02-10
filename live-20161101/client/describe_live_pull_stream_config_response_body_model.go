@@ -16,7 +16,6 @@ type iDescribeLivePullStreamConfigResponseBody interface {
 }
 
 type DescribeLivePullStreamConfigResponseBody struct {
-	// Details about the stream pulling configurations.
 	LiveAppRecordList *DescribeLivePullStreamConfigResponseBodyLiveAppRecordList `json:"LiveAppRecordList,omitempty" xml:"LiveAppRecordList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,48 +95,13 @@ func (s *DescribeLivePullStreamConfigResponseBodyLiveAppRecordList) Validate() e
 }
 
 type DescribeLivePullStreamConfigResponseBodyLiveAppRecordListLiveAppRecord struct {
-	// The name of the application to which the live stream belongs.
-	//
-	// example:
-	//
-	// liveApp****
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The main streaming domain.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range for which the configurations were queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2016-05-20T01:33:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The origin server of the live stream.
-	//
-	// example:
-	//
-	// guide.aliyundoc.com
-	SourceUrl *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
-	// The live stream origin server that you are using.
-	//
-	// example:
-	//
-	// guide.aliyundoc.com
+	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	DomainName  *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	SourceUrl   *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
 	SourceUsing *string `json:"SourceUsing,omitempty" xml:"SourceUsing,omitempty"`
-	// The beginning of the time range for which the configurations were queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2016-05-15T01:30:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the live stream.
-	//
-	// example:
-	//
-	// liveStream****
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StreamName  *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
 }
 
 func (s DescribeLivePullStreamConfigResponseBodyLiveAppRecordListLiveAppRecord) String() string {

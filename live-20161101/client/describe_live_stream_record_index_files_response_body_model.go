@@ -43,8 +43,7 @@ type DescribeLiveStreamRecordIndexFilesResponseBody struct {
 	// example:
 	//
 	// 5
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The index files.
+	PageSize            *int32                                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RecordIndexInfoList *DescribeLiveStreamRecordIndexFilesResponseBodyRecordIndexInfoList `json:"RecordIndexInfoList,omitempty" xml:"RecordIndexInfoList,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -181,92 +180,21 @@ func (s *DescribeLiveStreamRecordIndexFilesResponseBodyRecordIndexInfoList) Vali
 }
 
 type DescribeLiveStreamRecordIndexFilesResponseBodyRecordIndexInfoListRecordIndexInfo struct {
-	// The name of the application to which the live stream belongs.
-	//
-	// example:
-	//
-	// liveApp****
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The time when the index file was created.
-	//
-	// example:
-	//
-	// 2016-05-27T09:40:56Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The main streaming domain.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The recording length. Unit: seconds.
-	//
-	// example:
-	//
-	// 588.849
-	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The end time of the index file. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2015-12-01T07:46:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The video format.
-	//
-	// example:
-	//
-	// HLS
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The video height.
-	//
-	// example:
-	//
-	// 480
-	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The name of the Object Storage Service (OSS) bucket.
-	//
-	// example:
-	//
-	// liveBucket****
-	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	// The endpoint of the OSS bucket.
-	//
-	// example:
-	//
-	// cn-oss-****.aliyuncs.com
-	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	// The name of the storage file in OSS.
-	//
-	// example:
-	//
-	// liveObject****
-	OssObject *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
-	// The ID of the index file.
-	//
-	// example:
-	//
-	// c4d7f0a4-b506-43f9-8de3-07732c3f****
-	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The URL of the index file.
-	RecordUrl *string `json:"RecordUrl,omitempty" xml:"RecordUrl,omitempty"`
-	// The start time of the index file. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2015-12-01T07:36:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the live stream.
-	//
-	// example:
-	//
-	// liveStream****
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The video width.
-	//
-	// example:
-	//
-	// 640
-	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	AppName     *string  `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	CreateTime  *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DomainName  *string  `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Duration    *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EndTime     *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Format      *string  `json:"Format,omitempty" xml:"Format,omitempty"`
+	Height      *int32   `json:"Height,omitempty" xml:"Height,omitempty"`
+	OssBucket   *string  `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint *string  `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	OssObject   *string  `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
+	RecordId    *string  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	RecordUrl   *string  `json:"RecordUrl,omitempty" xml:"RecordUrl,omitempty"`
+	StartTime   *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StreamName  *string  `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	Width       *int32   `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s DescribeLiveStreamRecordIndexFilesResponseBodyRecordIndexInfoListRecordIndexInfo) String() string {

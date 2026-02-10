@@ -35,8 +35,7 @@ type DescribeLiveStreamsPublishListResponseBody struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The information about the stream ingest records.
+	PageSize    *int32                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PublishInfo *DescribeLiveStreamsPublishListResponseBodyPublishInfo `json:"PublishInfo,omitempty" xml:"PublishInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -164,88 +163,20 @@ func (s *DescribeLiveStreamsPublishListResponseBodyPublishInfo) Validate() error
 }
 
 type DescribeLiveStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInfo struct {
-	// Internal error
-	//
-	// example:
-	//
-	// 3000001
 	AliInnerErrorFlags *string `json:"AliInnerErrorFlags,omitempty" xml:"AliInnerErrorFlags,omitempty"`
-	// The name of the application to which the live stream belongs.
-	//
-	// example:
-	//
-	// liveApp****
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The IP address of the client that ingested the live stream.
-	//
-	// example:
-	//
-	// 10.175.XX.XX
-	ClientAddr *string `json:"ClientAddr,omitempty" xml:"ClientAddr,omitempty"`
-	// The ingest domain or main streaming domain.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The IP address of the CDN point of presence (POP) to which the stream was ingested.
-	//
-	// example:
-	//
-	// 10.175.XX.XX
-	EdgeNodeAddr *string `json:"EdgeNodeAddr,omitempty" xml:"EdgeNodeAddr,omitempty"`
-	// The ingest domain.
-	//
-	// example:
-	//
-	// demo.aliyundoc.com
-	PublishDomain *string `json:"PublishDomain,omitempty" xml:"PublishDomain,omitempty"`
-	// The time when the stream ingest was started. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2015-12-02T03:05:53Z
-	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
-	// The type of the stream ingest. Valid values:
-	//
-	// 	- **edge**: edge ingest
-	//
-	// 	- **center**: live center ingest
-	//
-	// example:
-	//
-	// edge
-	PublishType *string `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
-	// The complete ingest URL.
-	PublishUrl *string `json:"PublishUrl,omitempty" xml:"PublishUrl,omitempty"`
-	// The time when the stream ingest was stopped. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2015-12-02T03:11:19Z
-	StopTime *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
-	// The name of the live stream.
-	//
-	// example:
-	//
-	// liveStream****
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The streaming URL.
-	StreamUrl *string `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
-	// The ID of the transcoding template.
-	//
-	// >  This parameter is not returned if the value of the Transcoded parameter is no.
-	//
-	// example:
-	//
-	// ld
-	TranscodeId *string `json:"TranscodeId,omitempty" xml:"TranscodeId,omitempty"`
-	// Indicates whether the stream was a transcoded stream.
-	//
-	// example:
-	//
-	// yes
-	Transcoded *string `json:"Transcoded,omitempty" xml:"Transcoded,omitempty"`
+	AppName            *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	ClientAddr         *string `json:"ClientAddr,omitempty" xml:"ClientAddr,omitempty"`
+	DomainName         *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EdgeNodeAddr       *string `json:"EdgeNodeAddr,omitempty" xml:"EdgeNodeAddr,omitempty"`
+	PublishDomain      *string `json:"PublishDomain,omitempty" xml:"PublishDomain,omitempty"`
+	PublishTime        *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	PublishType        *string `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
+	PublishUrl         *string `json:"PublishUrl,omitempty" xml:"PublishUrl,omitempty"`
+	StopTime           *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
+	StreamName         *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	StreamUrl          *string `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
+	TranscodeId        *string `json:"TranscodeId,omitempty" xml:"TranscodeId,omitempty"`
+	Transcoded         *string `json:"Transcoded,omitempty" xml:"Transcoded,omitempty"`
 }
 
 func (s DescribeLiveStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInfo) String() string {

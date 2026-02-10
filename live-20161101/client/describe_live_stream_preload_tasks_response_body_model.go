@@ -35,8 +35,7 @@ type DescribeLiveStreamPreloadTasksResponseBody struct {
 	// example:
 	//
 	// 2
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The details of the prefetch task.
+	PageSize     *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PreloadTasks *DescribeLiveStreamPreloadTasksResponseBodyPreloadTasks `json:"PreloadTasks,omitempty" xml:"PreloadTasks,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -164,80 +163,16 @@ func (s *DescribeLiveStreamPreloadTasksResponseBodyPreloadTasks) Validate() erro
 }
 
 type DescribeLiveStreamPreloadTasksResponseBodyPreloadTasksPreloadTask struct {
-	// The acceleration region where the live content is prefetched. Valid values:
-	//
-	// 	- domestic: regions in the Chinese mainland.
-	//
-	// 	- overseas: regions outside the Chinese mainland.
-	//
-	// 	- global: regions in and outside the Chinese mainland.
-	//
-	// >  If this parameter is left empty, the acceleration region configured for the domain name is returned.
-	//
-	// example:
-	//
-	// domestic
-	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// The time when the prefetch task was created.
-	//
-	// example:
-	//
-	// 2016-06-29T19:00:00Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether the prefetch task is successful. Valid values:
-	//
-	// 	- Successfully
-	//
-	// 	- InternalError
-	//
-	// example:
-	//
-	// Successfully
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The streaming domain name.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The streaming URL.
-	PlayUrl *string `json:"PlayUrl,omitempty" xml:"PlayUrl,omitempty"`
-	// The time when the prefetch task ended.
-	//
-	// example:
-	//
-	// 2016-06-30T19:00:00Z
-	PreloadedEndTime *string `json:"PreloadedEndTime,omitempty" xml:"PreloadedEndTime,omitempty"`
-	// The time when the prefetch task started.
-	//
-	// example:
-	//
-	// 2016-06-29T19:00:00Z
+	Area               *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DomainName         *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	PlayUrl            *string `json:"PlayUrl,omitempty" xml:"PlayUrl,omitempty"`
+	PreloadedEndTime   *string `json:"PreloadedEndTime,omitempty" xml:"PreloadedEndTime,omitempty"`
 	PreloadedStartTime *string `json:"PreloadedStartTime,omitempty" xml:"PreloadedStartTime,omitempty"`
-	// The progress of the prefetch task.
-	//
-	// example:
-	//
-	// 100%
-	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	// The status of the prefetch task. Valid values:
-	//
-	// 	- Success
-	//
-	// 	- Failed
-	//
-	// >  Success is returned only if the prefetch task is configured for all streaming URLs.
-	//
-	// example:
-	//
-	// Success
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the prefetch task.
-	//
-	// example:
-	//
-	// yourTaskId
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Process            *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId             *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DescribeLiveStreamPreloadTasksResponseBodyPreloadTasksPreloadTask) String() string {

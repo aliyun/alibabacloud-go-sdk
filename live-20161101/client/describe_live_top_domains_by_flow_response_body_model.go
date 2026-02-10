@@ -53,8 +53,7 @@ type DescribeLiveTopDomainsByFlowResponseBody struct {
 	// example:
 	//
 	// 2018-03-17T16:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The top domain names ranked by traffic.
+	StartTime  *string                                             `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TopDomains *DescribeLiveTopDomainsByFlowResponseBodyTopDomains `json:"TopDomains,omitempty" xml:"TopDomains,omitempty" type:"Struct"`
 }
 
@@ -164,47 +163,12 @@ func (s *DescribeLiveTopDomainsByFlowResponseBodyTopDomains) Validate() error {
 }
 
 type DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain struct {
-	// The domain name.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The peak bandwidth of the domain name.
-	//
-	// example:
-	//
-	// 22139626
-	MaxBps *int64 `json:"MaxBps,omitempty" xml:"MaxBps,omitempty"`
-	// The time when the bandwidth reached the peak value.
-	//
-	// example:
-	//
-	// 1457111400
-	MaxBpsTime *string `json:"MaxBpsTime,omitempty" xml:"MaxBpsTime,omitempty"`
-	// The ranking of the domain name.
-	//
-	// example:
-	//
-	// 1
-	Rank *int64 `json:"Rank,omitempty" xml:"Rank,omitempty"`
-	// The number of visits to the domain name.
-	//
-	// example:
-	//
-	// 107784230
-	TotalAccess *int64 `json:"TotalAccess,omitempty" xml:"TotalAccess,omitempty"`
-	// The total traffic.
-	//
-	// example:
-	//
-	// 2043859876683.9001
-	TotalTraffic *string `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
-	// The traffic share of the domain name relative to the total traffic.
-	//
-	// example:
-	//
-	// 30.64191989360235
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	MaxBps         *int64  `json:"MaxBps,omitempty" xml:"MaxBps,omitempty"`
+	MaxBpsTime     *string `json:"MaxBpsTime,omitempty" xml:"MaxBpsTime,omitempty"`
+	Rank           *int64  `json:"Rank,omitempty" xml:"Rank,omitempty"`
+	TotalAccess    *int64  `json:"TotalAccess,omitempty" xml:"TotalAccess,omitempty"`
+	TotalTraffic   *string `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
 	TrafficPercent *string `json:"TrafficPercent,omitempty" xml:"TrafficPercent,omitempty"`
 }
 

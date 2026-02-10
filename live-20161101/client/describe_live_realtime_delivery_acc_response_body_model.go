@@ -16,7 +16,6 @@ type iDescribeLiveRealtimeDeliveryAccResponseBody interface {
 }
 
 type DescribeLiveRealtimeDeliveryAccResponseBody struct {
-	// The information about real-time log deliveries.
 	RealTimeDeliveryAccData *DescribeLiveRealtimeDeliveryAccResponseBodyRealTimeDeliveryAccData `json:"RealTimeDeliveryAccData,omitempty" xml:"RealTimeDeliveryAccData,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,24 +95,9 @@ func (s *DescribeLiveRealtimeDeliveryAccResponseBodyRealTimeDeliveryAccData) Val
 }
 
 type DescribeLiveRealtimeDeliveryAccResponseBodyRealTimeDeliveryAccDataAccData struct {
-	// The number of failed real-time log deliveries.
-	//
-	// example:
-	//
-	// 0
-	FailedNum *int32 `json:"FailedNum,omitempty" xml:"FailedNum,omitempty"`
-	// The number of successful real-time log deliveries.
-	//
-	// example:
-	//
-	// 321321
-	SuccessNum *int32 `json:"SuccessNum,omitempty" xml:"SuccessNum,omitempty"`
-	// The timestamp of the data returned.
-	//
-	// example:
-	//
-	// 2015-12-10T20:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	FailedNum  *int32  `json:"FailedNum,omitempty" xml:"FailedNum,omitempty"`
+	SuccessNum *int32  `json:"SuccessNum,omitempty" xml:"SuccessNum,omitempty"`
+	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeLiveRealtimeDeliveryAccResponseBodyRealTimeDeliveryAccDataAccData) String() string {

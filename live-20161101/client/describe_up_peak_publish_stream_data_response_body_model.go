@@ -16,7 +16,6 @@ type iDescribeUpPeakPublishStreamDataResponseBody interface {
 }
 
 type DescribeUpPeakPublishStreamDataResponseBody struct {
-	// The information about the peak number of concurrently ingested streams on each day.
 	DescribeUpPeakPublishStreamDatas *DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDatas `json:"DescribeUpPeakPublishStreamDatas,omitempty" xml:"DescribeUpPeakPublishStreamDatas,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,36 +95,11 @@ func (s *DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamD
 }
 
 type DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDatasDescribeUpPeakPublishStreamData struct {
-	// The daily peak inbound bandwidth.
-	//
-	// example:
-	//
-	// 777.2727083333333
-	BandWidth *string `json:"BandWidth,omitempty" xml:"BandWidth,omitempty"`
-	// The time when the daily peak number of concurrently ingested streams is reached.
-	//
-	// example:
-	//
-	// 1522180000000
-	PeakTime *string `json:"PeakTime,omitempty" xml:"PeakTime,omitempty"`
-	// The daily peak number of concurrently ingested streams.
-	//
-	// example:
-	//
-	// 36
-	PublishStreamNum *int32 `json:"PublishStreamNum,omitempty" xml:"PublishStreamNum,omitempty"`
-	// The time queried on the day.
-	//
-	// example:
-	//
-	// 1522080000000
-	QueryTime *string `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
-	// The category of the statistical data. If the DomainSwitch parameter is set to on, the value of this parameter is the domain name. If the DomainSwitch parameter is set to off or not specified, the value of this parameter is the user ID.
-	//
-	// example:
-	//
-	// push-live.aliyuncs.com
-	StatName *string `json:"StatName,omitempty" xml:"StatName,omitempty"`
+	BandWidth        *string `json:"BandWidth,omitempty" xml:"BandWidth,omitempty"`
+	PeakTime         *string `json:"PeakTime,omitempty" xml:"PeakTime,omitempty"`
+	PublishStreamNum *int32  `json:"PublishStreamNum,omitempty" xml:"PublishStreamNum,omitempty"`
+	QueryTime        *string `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
+	StatName         *string `json:"StatName,omitempty" xml:"StatName,omitempty"`
 }
 
 func (s DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDatasDescribeUpPeakPublishStreamData) String() string {

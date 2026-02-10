@@ -16,7 +16,6 @@ type iDescribeUpBpsPeakDataResponseBody interface {
 }
 
 type DescribeUpBpsPeakDataResponseBody struct {
-	// The information about peak inbound bandwidth on each day.
 	DescribeUpPeakTraffics *DescribeUpBpsPeakDataResponseBodyDescribeUpPeakTraffics `json:"DescribeUpPeakTraffics,omitempty" xml:"DescribeUpPeakTraffics,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,30 +95,10 @@ func (s *DescribeUpBpsPeakDataResponseBodyDescribeUpPeakTraffics) Validate() err
 }
 
 type DescribeUpBpsPeakDataResponseBodyDescribeUpPeakTrafficsDescribeUpPeakTraffic struct {
-	// The daily peak inbound bandwidth.
-	//
-	// example:
-	//
-	// 777.2727083333333
 	BandWidth *string `json:"BandWidth,omitempty" xml:"BandWidth,omitempty"`
-	// The time when the daily peak bandwidth is reached.
-	//
-	// example:
-	//
-	// 1522180000000
-	PeakTime *string `json:"PeakTime,omitempty" xml:"PeakTime,omitempty"`
-	// The time queried on the day.
-	//
-	// example:
-	//
-	// 1522080000000
+	PeakTime  *string `json:"PeakTime,omitempty" xml:"PeakTime,omitempty"`
 	QueryTime *string `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
-	// The category of the statistical data. If the DomainSwitch parameter is set to on, the value of this parameter is the domain name. If the DomainSwitch parameter is set to off or not specified, the value of this parameter is the user ID.
-	//
-	// example:
-	//
-	// push-live.aliyuncs.com
-	StatName *string `json:"StatName,omitempty" xml:"StatName,omitempty"`
+	StatName  *string `json:"StatName,omitempty" xml:"StatName,omitempty"`
 }
 
 func (s DescribeUpBpsPeakDataResponseBodyDescribeUpPeakTrafficsDescribeUpPeakTraffic) String() string {

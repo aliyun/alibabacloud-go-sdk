@@ -63,8 +63,7 @@ type DescribeLiveStreamPushMetricDetailDataResponseBody struct {
 	// example:
 	//
 	// 2022-09-10T20:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The data array returned.
+	StartTime        *string                                                             `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	StreamDetailData *DescribeLiveStreamPushMetricDetailDataResponseBodyStreamDetailData `json:"StreamDetailData,omitempty" xml:"StreamDetailData,omitempty" type:"Struct"`
 }
 
@@ -183,36 +182,11 @@ func (s *DescribeLiveStreamPushMetricDetailDataResponseBodyStreamDetailData) Val
 }
 
 type DescribeLiveStreamPushMetricDetailDataResponseBodyStreamDetailDataStreamData struct {
-	// The name of the application.
-	//
-	// example:
-	//
-	// app
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The total bandwidth consumed by the stream per minute. Unit: bit/s.
-	//
-	// example:
-	//
-	// 423304182
-	ReqBps *float32 `json:"ReqBps,omitempty" xml:"ReqBps,omitempty"`
-	// The total amount of traffic consumed by the stream per minute. Unit: bytes.
-	//
-	// example:
-	//
-	// 423304182.66
-	ReqTraffic *int64 `json:"ReqTraffic,omitempty" xml:"ReqTraffic,omitempty"`
-	// The name of the stream.
-	//
-	// example:
-	//
-	// test.flv
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The timestamp of the returned data.
-	//
-	// example:
-	//
-	// 2022-09-10T20:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	AppName    *string  `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	ReqBps     *float32 `json:"ReqBps,omitempty" xml:"ReqBps,omitempty"`
+	ReqTraffic *int64   `json:"ReqTraffic,omitempty" xml:"ReqTraffic,omitempty"`
+	StreamName *string  `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	TimeStamp  *string  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeLiveStreamPushMetricDetailDataResponseBodyStreamDetailDataStreamData) String() string {

@@ -41,8 +41,7 @@ type DescribeLiveDomainRealTimeTrafficDataResponseBody struct {
 	// example:
 	//
 	// 2015-12-10T15:01:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The traffic that was collected at each interval.
+	EndTime                        *string                                                                          `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RealTimeTrafficDataPerInterval *DescribeLiveDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerInterval `json:"RealTimeTrafficDataPerInterval,omitempty" xml:"RealTimeTrafficDataPerInterval,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -164,18 +163,8 @@ func (s *DescribeLiveDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPer
 }
 
 type DescribeLiveDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerIntervalDataModule struct {
-	// The timestamp of the data returned. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2015-12-10T15:01:00Z
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The traffic. Unit: bytes.
-	//
-	// example:
-	//
-	// 0
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeLiveDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerIntervalDataModule) String() string {

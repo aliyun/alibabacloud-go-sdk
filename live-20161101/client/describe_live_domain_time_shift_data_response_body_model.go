@@ -21,8 +21,7 @@ type DescribeLiveDomainTimeShiftDataResponseBody struct {
 	// example:
 	//
 	// 8AE1CB3A-6510-442E-A6B9-EF03D05B3E09
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The time shifting usage data that was collected for each time interval.
+	RequestId     *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TimeShiftData *DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftData `json:"TimeShiftData,omitempty" xml:"TimeShiftData,omitempty" type:"Struct"`
 }
 
@@ -96,24 +95,9 @@ func (s *DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftData) Validate() er
 }
 
 type DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftDataDataModule struct {
-	// The storage used for time shifting. Unit: bytes.
-	//
-	// example:
-	//
-	// 1664165660
-	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The timestamp of the data returned.
-	//
-	// example:
-	//
-	// 2021-03-03T00:00:00Z
+	Size      *string `json:"Size,omitempty" xml:"Size,omitempty"`
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The type of time shifting. Examples: HLS_D1 and HLS_D7.
-	//
-	// example:
-	//
-	// HLS_D7
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftDataDataModule) String() string {

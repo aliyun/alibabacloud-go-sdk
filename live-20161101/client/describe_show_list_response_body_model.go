@@ -108,9 +108,8 @@ type DescribeShowListResponseBodyShowListInfo struct {
 	// example:
 	//
 	// 2021-11-23T12:30:00
-	HighPriorityShowStartTime *string `json:"HighPriorityShowStartTime,omitempty" xml:"HighPriorityShowStartTime,omitempty"`
-	// The episodes in the episode list.
-	ShowList *DescribeShowListResponseBodyShowListInfoShowList `json:"ShowList,omitempty" xml:"ShowList,omitempty" type:"Struct"`
+	HighPriorityShowStartTime *string                                           `json:"HighPriorityShowStartTime,omitempty" xml:"HighPriorityShowStartTime,omitempty"`
+	ShowList                  *DescribeShowListResponseBodyShowListInfoShowList `json:"ShowList,omitempty" xml:"ShowList,omitempty" type:"Struct"`
 	// The number of additional times the episode list is played by default. The value is 0.
 	//
 	// example:
@@ -240,34 +239,11 @@ func (s *DescribeShowListResponseBodyShowListInfoShowList) Validate() error {
 }
 
 type DescribeShowListResponseBodyShowListInfoShowListShow struct {
-	// The duration of the episode. Unit: seconds.
-	//
-	// example:
-	//
-	// 20
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The number of times the episode repeats after the first playback is complete.
-	//
-	// For example, if you set the value to 0, the episode is to be played once. If you set the value to 1, the episode is to be played twice.
-	//
-	// example:
-	//
-	// 5
-	RepeatTimes *int32 `json:"RepeatTimes,omitempty" xml:"RepeatTimes,omitempty"`
-	// The resource information.
+	Duration     *int64                                                            `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	RepeatTimes  *int32                                                            `json:"RepeatTimes,omitempty" xml:"RepeatTimes,omitempty"`
 	ResourceInfo *DescribeShowListResponseBodyShowListInfoShowListShowResourceInfo `json:"ResourceInfo,omitempty" xml:"ResourceInfo,omitempty" type:"Struct"`
-	// The ID of the episode.
-	//
-	// example:
-	//
-	// a2b8e671-2fe5-4642-a2ec-bf93880e****
-	ShowId *string `json:"ShowId,omitempty" xml:"ShowId,omitempty"`
-	// The name of the episode.
-	//
-	// example:
-	//
-	// liveShow****
-	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
+	ShowId       *string                                                           `json:"ShowId,omitempty" xml:"ShowId,omitempty"`
+	ShowName     *string                                                           `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
 }
 
 func (s DescribeShowListResponseBodyShowListInfoShowListShow) String() string {
@@ -333,26 +309,10 @@ func (s *DescribeShowListResponseBodyShowListInfoShowListShow) Validate() error 
 }
 
 type DescribeShowListResponseBodyShowListInfoShowListShowResourceInfo struct {
-	// The custom type label.
-	//
-	// example:
-	//
-	// 1
-	LiveInputType *int32 `json:"LiveInputType,omitempty" xml:"LiveInputType,omitempty"`
-	// The ID of the video-on-demand (VOD) file.
-	//
-	// example:
-	//
-	// a2b8e671-2fe5-4642-a2ec-bf93880e****
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource.
-	//
-	// example:
-	//
-	// vod
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The URL of the resource.
-	ResourceUrl *string `json:"ResourceUrl,omitempty" xml:"ResourceUrl,omitempty"`
+	LiveInputType *int32  `json:"LiveInputType,omitempty" xml:"LiveInputType,omitempty"`
+	ResourceId    *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceUrl   *string `json:"ResourceUrl,omitempty" xml:"ResourceUrl,omitempty"`
 }
 
 func (s DescribeShowListResponseBodyShowListInfoShowListShowResourceInfo) String() string {

@@ -25,8 +25,7 @@ type DescribeCasterStreamUrlResponseBody struct {
 	// example:
 	//
 	// a2b8e671-2fe5-4642-a2ec-bf93880e****
-	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
-	// The information about the streams of the production studio.
+	CasterId      *string                                           `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
 	CasterStreams *DescribeCasterStreamUrlResponseBodyCasterStreams `json:"CasterStreams,omitempty" xml:"CasterStreams,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -130,36 +129,11 @@ func (s *DescribeCasterStreamUrlResponseBodyCasterStreams) Validate() error {
 }
 
 type DescribeCasterStreamUrlResponseBodyCasterStreamsCasterStream struct {
-	// Indicates whether the output stream is in preview mode or program mode.
-	//
-	// 	- **0**: indicates that the output videos of the scene are in preview mode.
-	//
-	// 	- **1**: indicates that the output videos of the scene are in program mode.
-	//
-	// example:
-	//
-	// 1
-	OutputType *int32 `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
-	// The Real Time Messaging Protocol (RTMP) URL.
-	//
-	// example:
-	//
-	// rtmp://live/caster/example.edu
-	RtmpUrl *string `json:"RtmpUrl,omitempty" xml:"RtmpUrl,omitempty"`
-	// The ID of the scene.
-	//
-	// example:
-	//
-	// 23ca74e0-aca3-4e7a-8561-9d96f525****
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// The information about the stream.
+	OutputType  *int32                                                                   `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
+	RtmpUrl     *string                                                                  `json:"RtmpUrl,omitempty" xml:"RtmpUrl,omitempty"`
+	SceneId     *string                                                                  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	StreamInfos *DescribeCasterStreamUrlResponseBodyCasterStreamsCasterStreamStreamInfos `json:"StreamInfos,omitempty" xml:"StreamInfos,omitempty" type:"Struct"`
-	// The streaming URL.
-	//
-	// example:
-	//
-	// http://live/caster/example.org
-	StreamUrl *string `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
+	StreamUrl   *string                                                                  `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
 }
 
 func (s DescribeCasterStreamUrlResponseBodyCasterStreamsCasterStream) String() string {
@@ -259,38 +233,9 @@ func (s *DescribeCasterStreamUrlResponseBodyCasterStreamsCasterStreamStreamInfos
 }
 
 type DescribeCasterStreamUrlResponseBodyCasterStreamsCasterStreamStreamInfosStreamInfo struct {
-	// The streaming URL.
-	//
-	// example:
-	//
-	// http://out/caster/example.net
 	OutputStreamUrl *string `json:"OutputStreamUrl,omitempty" xml:"OutputStreamUrl,omitempty"`
-	// The resolution to which the scene transcodes the stream for playback. Valid values:
-	//
-	// 	- **lsd**: standard definition.
-	//
-	// 	- **lld**: low definition.
-	//
-	// 	- **lud**: ultra high definition.
-	//
-	// 	- **lhd**: high definition.
-	//
-	// example:
-	//
-	// lld
 	TranscodeConfig *string `json:"TranscodeConfig,omitempty" xml:"TranscodeConfig,omitempty"`
-	// The format to which the scene transcodes the stream for playback. Valid values:
-	//
-	// 	- **flv**.
-	//
-	// 	- **rtmp**.
-	//
-	// 	- **m3u8**.
-	//
-	// example:
-	//
-	// flv
-	VideoFormat *string `json:"VideoFormat,omitempty" xml:"VideoFormat,omitempty"`
+	VideoFormat     *string `json:"VideoFormat,omitempty" xml:"VideoFormat,omitempty"`
 }
 
 func (s DescribeCasterStreamUrlResponseBodyCasterStreamsCasterStreamStreamInfosStreamInfo) String() string {

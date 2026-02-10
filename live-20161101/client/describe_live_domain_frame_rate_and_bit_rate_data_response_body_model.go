@@ -16,7 +16,6 @@ type iDescribeLiveDomainFrameRateAndBitRateDataResponseBody interface {
 }
 
 type DescribeLiveDomainFrameRateAndBitRateDataResponseBody struct {
-	// The frame rates and bitrates of the live streams that were queried.
 	FrameRateAndBitRateInfos *DescribeLiveDomainFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfos `json:"FrameRateAndBitRateInfos,omitempty" xml:"FrameRateAndBitRateInfos,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,29 +95,9 @@ func (s *DescribeLiveDomainFrameRateAndBitRateDataResponseBodyFrameRateAndBitRat
 }
 
 type DescribeLiveDomainFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfosFrameRateAndBitRateInfo struct {
-	// The audio frame rate of the live stream. Unit: FPS.
-	//
-	// example:
-	//
-	// 42.9
 	AudioFrameRate *float32 `json:"AudioFrameRate,omitempty" xml:"AudioFrameRate,omitempty"`
-	// The bitrate of the live stream. Unit: bit/s.
-	//
-	// example:
-	//
-	// 30693.96
-	BitRate *float32 `json:"BitRate,omitempty" xml:"BitRate,omitempty"`
-	// The URL of the live stream.
-	//
-	// example:
-	//
-	// rtmp://demo.aliyundoc.com/test/liveStream****_3_4
-	StreamUrl *string `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
-	// The video frame rate of the live stream. Unit: frames per second (FPS).
-	//
-	// example:
-	//
-	// 24.9
+	BitRate        *float32 `json:"BitRate,omitempty" xml:"BitRate,omitempty"`
+	StreamUrl      *string  `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
 	VideoFrameRate *float32 `json:"VideoFrameRate,omitempty" xml:"VideoFrameRate,omitempty"`
 }
 

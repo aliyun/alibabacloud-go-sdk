@@ -61,8 +61,7 @@ type DescribeLiveStreamMetricDetailDataResponseBody struct {
 	// example:
 	//
 	// 2015-12-10T20:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The data array returned.
+	StartTime        *string                                                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	StreamDetailData *DescribeLiveStreamMetricDetailDataResponseBodyStreamDetailData `json:"StreamDetailData,omitempty" xml:"StreamDetailData,omitempty" type:"Struct"`
 }
 
@@ -181,168 +180,28 @@ func (s *DescribeLiveStreamMetricDetailDataResponseBodyStreamDetailData) Validat
 }
 
 type DescribeLiveStreamMetricDetailDataResponseBodyStreamDetailDataStreamData struct {
-	// The name of the application.
-	//
-	// example:
-	//
-	// app
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The total bandwidth consumed by the stream per minute. Unit: bit/s.
-	//
-	// example:
-	//
-	// 423304182.66
-	Bps *float32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	// The total number of online viewers for the stream per minute.
-	//
-	// example:
-	//
-	// 423304182
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The bandwidth over the Flash Video (FLV) protocol. Unit: bit/s.
-	//
-	// >  This parameter is not returned if no traffic is generated over the protocol.
-	//
-	// example:
-	//
-	// 454
-	FlvBps *float32 `json:"FlvBps,omitempty" xml:"FlvBps,omitempty"`
-	// The number of online viewers over the FLV protocol.
-	//
-	// >  This parameter is not returned if no traffic is generated over the protocol.
-	//
-	// example:
-	//
-	// 32
-	FlvCount *int64 `json:"FlvCount,omitempty" xml:"FlvCount,omitempty"`
-	// The amount of traffic over the FLV protocol. Unit: bytes.
-	//
-	// >  This parameter is not returned if no traffic is generated over the protocol.
-	//
-	// example:
-	//
-	// 1254
-	FlvTraffic *int64 `json:"FlvTraffic,omitempty" xml:"FlvTraffic,omitempty"`
-	// The bandwidth over the HTTP Live Streaming (HLS) protocol. Unit: bit/s.
-	//
-	// >  This parameter is not returned if no traffic is generated over the protocol.
-	//
-	// example:
-	//
-	// 4456
-	HlsBps *float32 `json:"HlsBps,omitempty" xml:"HlsBps,omitempty"`
-	// The number of online viewers over the HLS protocol.
-	//
-	// >  Currently, this parameter is not supported.
-	//
-	// example:
-	//
-	// 56
-	HlsCount *int64 `json:"HlsCount,omitempty" xml:"HlsCount,omitempty"`
-	// The amount of traffic over the HLS protocol. Unit: bytes.
-	//
-	// >  This parameter is not returned if no traffic is generated over the protocol.
-	//
-	// example:
-	//
-	// 568
-	HlsTraffic *int64 `json:"HlsTraffic,omitempty" xml:"HlsTraffic,omitempty"`
-	// Number of new connections established per minute.
-	//
-	// example:
-	//
-	// 450
-	NewConns *string `json:"NewConns,omitempty" xml:"NewConns,omitempty"`
-	// The bandwidth over the P2P protocol. Unit: bit/s.
-	//
-	// >  This parameter is not returned if no traffic is generated over the protocol.
-	//
-	// example:
-	//
-	// 6845
-	P2pBps *float32 `json:"P2pBps,omitempty" xml:"P2pBps,omitempty"`
-	// The number of online viewers over the P2P protocol.
-	//
-	// >  This parameter is not returned if no traffic is generated over the protocol.
-	//
-	// example:
-	//
-	// 78
-	P2pCount *int64 `json:"P2pCount,omitempty" xml:"P2pCount,omitempty"`
-	// The amount of traffic over the peer-to-peer (P2P) protocol. Unit: bytes.
-	//
-	// >  This parameter is not returned if no traffic is generated over the protocol.
-	//
-	// example:
-	//
-	// 4102
-	P2pTraffic *int64 `json:"P2pTraffic,omitempty" xml:"P2pTraffic,omitempty"`
-	// The bandwidth over the Real-Time Messaging Protocol (RTMP) protocol. Unit: bit/s.
-	//
-	// >  This parameter is not returned if no traffic is generated over the protocol.
-	//
-	// example:
-	//
-	// 3323
-	RtmpBps *float32 `json:"RtmpBps,omitempty" xml:"RtmpBps,omitempty"`
-	// The number of online viewers over the RTMP protocol.
-	//
-	// >  This parameter is not returned if no traffic is generated over the protocol.
-	//
-	// example:
-	//
-	// 63
-	RtmpCount *int64 `json:"RtmpCount,omitempty" xml:"RtmpCount,omitempty"`
-	// The amount of traffic over the RTMP protocol. Unit: bytes.
-	//
-	// >  This parameter is not returned if no traffic is generated over the protocol.
-	//
-	// example:
-	//
-	// 5568
-	RtmpTraffic *int64 `json:"RtmpTraffic,omitempty" xml:"RtmpTraffic,omitempty"`
-	// The bandwidth over the RTS protocol. Unit: bit/s.
-	//
-	// >  This parameter is not returned if no traffic is generated over the protocol.
-	//
-	// example:
-	//
-	// 2361
-	RtsBps *float32 `json:"RtsBps,omitempty" xml:"RtsBps,omitempty"`
-	// The number of online viewers over the Real-Time Streaming (RTS) protocol.
-	//
-	// >  This parameter is not returned if no traffic is generated over the protocol.
-	//
-	// example:
-	//
-	// 89
-	RtsCount *int64 `json:"RtsCount,omitempty" xml:"RtsCount,omitempty"`
-	// The amount of traffic over the RTS protocol. Unit: bytes.
-	//
-	// >  This parameter is not returned if no traffic is generated over the protocol.
-	//
-	// example:
-	//
-	// 2322
-	RtsTraffic *int64 `json:"RtsTraffic,omitempty" xml:"RtsTraffic,omitempty"`
-	// The name of the stream.
-	//
-	// example:
-	//
-	// test.flv
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The timestamp of the returned data.
-	//
-	// example:
-	//
-	// 2015-12-10T20:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The total amount of traffic consumed by the stream per minute. Unit: bytes.
-	//
-	// example:
-	//
-	// 423304182
-	Traffic *int64 `json:"Traffic,omitempty" xml:"Traffic,omitempty"`
+	AppName     *string  `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Bps         *float32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	Count       *int64   `json:"Count,omitempty" xml:"Count,omitempty"`
+	FlvBps      *float32 `json:"FlvBps,omitempty" xml:"FlvBps,omitempty"`
+	FlvCount    *int64   `json:"FlvCount,omitempty" xml:"FlvCount,omitempty"`
+	FlvTraffic  *int64   `json:"FlvTraffic,omitempty" xml:"FlvTraffic,omitempty"`
+	HlsBps      *float32 `json:"HlsBps,omitempty" xml:"HlsBps,omitempty"`
+	HlsCount    *int64   `json:"HlsCount,omitempty" xml:"HlsCount,omitempty"`
+	HlsTraffic  *int64   `json:"HlsTraffic,omitempty" xml:"HlsTraffic,omitempty"`
+	NewConns    *string  `json:"NewConns,omitempty" xml:"NewConns,omitempty"`
+	P2pBps      *float32 `json:"P2pBps,omitempty" xml:"P2pBps,omitempty"`
+	P2pCount    *int64   `json:"P2pCount,omitempty" xml:"P2pCount,omitempty"`
+	P2pTraffic  *int64   `json:"P2pTraffic,omitempty" xml:"P2pTraffic,omitempty"`
+	RtmpBps     *float32 `json:"RtmpBps,omitempty" xml:"RtmpBps,omitempty"`
+	RtmpCount   *int64   `json:"RtmpCount,omitempty" xml:"RtmpCount,omitempty"`
+	RtmpTraffic *int64   `json:"RtmpTraffic,omitempty" xml:"RtmpTraffic,omitempty"`
+	RtsBps      *float32 `json:"RtsBps,omitempty" xml:"RtsBps,omitempty"`
+	RtsCount    *int64   `json:"RtsCount,omitempty" xml:"RtsCount,omitempty"`
+	RtsTraffic  *int64   `json:"RtsTraffic,omitempty" xml:"RtsTraffic,omitempty"`
+	StreamName  *string  `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	TimeStamp   *string  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Traffic     *int64   `json:"Traffic,omitempty" xml:"Traffic,omitempty"`
 }
 
 func (s DescribeLiveStreamMetricDetailDataResponseBodyStreamDetailDataStreamData) String() string {

@@ -21,8 +21,7 @@ type DescribeLiveGrtnDurationResponseBody struct {
 	// example:
 	//
 	// 4B460F8B-993C-4F48-B98A-910811DEBFEB
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the co-streaming usage data.
+	RequestId        *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StreamDetailData *DescribeLiveGrtnDurationResponseBodyStreamDetailData `json:"StreamDetailData,omitempty" xml:"StreamDetailData,omitempty" type:"Struct"`
 }
 
@@ -96,48 +95,11 @@ func (s *DescribeLiveGrtnDurationResponseBodyStreamDetailData) Validate() error 
 }
 
 type DescribeLiveGrtnDurationResponseBodyStreamDetailDataStreamData struct {
-	// The ID of the application.
-	//
-	// example:
-	//
-	// 4346289a-a790-4869-9e23-22766d5e****
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The co-streaming duration. Unit: minutes.
-	//
-	// example:
-	//
-	// 30
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The media specification. Valid values:
-	//
-	// 	- 0: audio-only. This is a basic specification.
-	//
-	// 	- 480P: standard definition (SD). The video resolution is 640 × 480 or lower.
-	//
-	// 	- 720P: high definition (HD). The video resolution is 1280 × 720 or lower.
-	//
-	// 	- 1080P: full HD. The video resolution is 1920 × 1080 or lower.
-	//
-	// example:
-	//
-	// 480P
+	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Duration     *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	MediaProfile *string `json:"MediaProfile,omitempty" xml:"MediaProfile,omitempty"`
-	// The media type. Valid values:
-	//
-	// 	- audio
-	//
-	// 	- video
-	//
-	// example:
-	//
-	// audio
-	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// The timestamp of the returned data.
-	//
-	// example:
-	//
-	// 2022-12-10T20:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	MediaType    *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	TimeStamp    *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeLiveGrtnDurationResponseBodyStreamDetailDataStreamData) String() string {

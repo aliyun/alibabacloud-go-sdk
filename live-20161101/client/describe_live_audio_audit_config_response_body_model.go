@@ -16,7 +16,6 @@ type iDescribeLiveAudioAuditConfigResponseBody interface {
 }
 
 type DescribeLiveAudioAuditConfigResponseBody struct {
-	// The list of audio moderation configurations.
 	LiveAudioAuditConfigList *DescribeLiveAudioAuditConfigResponseBodyLiveAudioAuditConfigList `json:"LiveAudioAuditConfigList,omitempty" xml:"LiveAudioAuditConfigList,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,32 +95,11 @@ func (s *DescribeLiveAudioAuditConfigResponseBodyLiveAudioAuditConfigList) Valid
 }
 
 type DescribeLiveAudioAuditConfigResponseBodyLiveAudioAuditConfigListLiveAudioAuditConfig struct {
-	// The name of the application to which the live stream belongs.
-	//
-	// example:
-	//
-	// liveApp****
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The business type. You can specify a model. The default value is the domain name.
-	//
-	// example:
-	//
-	// example.edu
-	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The main streaming domain.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The moderation scenarios.
-	Scenes *DescribeLiveAudioAuditConfigResponseBodyLiveAudioAuditConfigListLiveAudioAuditConfigScenes `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Struct"`
-	// The name of the live stream.
-	//
-	// example:
-	//
-	// liveStream****
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	AppName    *string                                                                                     `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BizType    *string                                                                                     `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	DomainName *string                                                                                     `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Scenes     *DescribeLiveAudioAuditConfigResponseBodyLiveAudioAuditConfigListLiveAudioAuditConfigScenes `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Struct"`
+	StreamName *string                                                                                     `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
 }
 
 func (s DescribeLiveAudioAuditConfigResponseBodyLiveAudioAuditConfigListLiveAudioAuditConfig) String() string {

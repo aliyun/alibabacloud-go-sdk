@@ -53,8 +53,7 @@ type DescribeLiveDomainPushTrafficDataResponseBody struct {
 	// example:
 	//
 	// 2017-12-10T20:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The traffic data that was collected at each interval.
+	StartTime              *string                                                              `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TrafficDataPerInterval *DescribeLiveDomainPushTrafficDataResponseBodyTrafficDataPerInterval `json:"TrafficDataPerInterval,omitempty" xml:"TrafficDataPerInterval,omitempty" type:"Struct"`
 }
 
@@ -164,17 +163,7 @@ func (s *DescribeLiveDomainPushTrafficDataResponseBodyTrafficDataPerInterval) Va
 }
 
 type DescribeLiveDomainPushTrafficDataResponseBodyTrafficDataPerIntervalDataModule struct {
-	// The timestamp of the data returned.
-	//
-	// example:
-	//
-	// 2017-12-10T20:05:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The traffic. Unit: bytes.
-	//
-	// example:
-	//
-	// 1288111
+	TimeStamp    *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 	TrafficValue *string `json:"TrafficValue,omitempty" xml:"TrafficValue,omitempty"`
 }
 

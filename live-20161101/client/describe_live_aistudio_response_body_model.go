@@ -39,8 +39,7 @@ type DescribeLiveAIStudioResponseBody struct {
 	// example:
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The virtual studio templates.
+	RequestId     *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StudioConfigs *DescribeLiveAIStudioResponseBodyStudioConfigs `json:"StudioConfigs,omitempty" xml:"StudioConfigs,omitempty" type:"Struct"`
 	// The total number of templates.
 	//
@@ -147,128 +146,21 @@ func (s *DescribeLiveAIStudioResponseBodyStudioConfigs) Validate() error {
 }
 
 type DescribeLiveAIStudioResponseBodyStudioConfigsSubtitleConfig struct {
-	// The ID of the background material.
-	//
-	// example:
-	//
-	// d0eb493192c771efba644531858c0102
-	BackgroundResourceId *string `json:"BackgroundResourceId,omitempty" xml:"BackgroundResourceId,omitempty"`
-	// The URL of the background material. Make sure that the URL is accessible over the Internet. Either this parameter or the BackgroundResourceId parameter is returned.
-	//
-	// example:
-	//
-	// https://testbucket.xx.com/2.jpg
-	BackgroundResourceUrl *string `json:"BackgroundResourceUrl,omitempty" xml:"BackgroundResourceUrl,omitempty"`
-	// The type of the background material. Valid values:
-	//
-	// 	- VOD: a video in ApsaraVideo VOD
-	//
-	// 	- PIC: an image
-	//
-	// 	- LIVE: a live stream
-	//
-	// example:
-	//
-	// VOD
-	BackgroundType *string `json:"BackgroundType,omitempty" xml:"BackgroundType,omitempty"`
-	// The custom description.
-	//
-	// example:
-	//
-	// user defined description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The preview height. Unit: pixels.
-	//
-	// The following preview specifications (width × height) are supported:
-	//
-	// 	- Landscape low definition 360p (640×360)
-	//
-	// 	- Portrait low definition 360p (360×640)
-	//
-	// 	- Landscape standard definition 480p (854×480)
-	//
-	// 	- Portrait standard definition 480p (480×854)
-	//
-	// 	- Landscape high definition 720p (1280×720)
-	//
-	// 	- Portrait high definition 720p (720×1280)
-	//
-	// 	- Landscape ultra-high definition 1080p (1920×1080)
-	//
-	// 	- Portrait ultra-high definition 1080p (1080×1920)
-	//
-	// example:
-	//
-	// 1080
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The layout information of the multimedia material.
-	//
-	// example:
-	//
-	// "{\\"positionY\\":\\"0.0\\",\\"positionX\\":\\"0.0\\",\\"heightNormalized\\":\\"0.5\\"}"
-	MattingLayout *string `json:"MattingLayout,omitempty" xml:"MattingLayout,omitempty"`
-	// The type of chroma key that is performed on ingested streams. Valid values:
-	//
-	// 	- green: green-key chroma key
-	//
-	// 	- blue: blue-screen chroma key
-	//
-	// 	- complex: background replacement
-	//
-	// example:
-	//
-	// complex
-	MattingType *string `json:"MattingType,omitempty" xml:"MattingType,omitempty"`
-	// LIVE, live streaming
-	//
-	// example:
-	//
-	// "{\\"positionY\\":\\"0.0\\",\\"positionX\\":\\"0.0\\",\\"heightNormalized\\":\\"0.5\\"}"
-	MediaLayout *string `json:"MediaLayout,omitempty" xml:"MediaLayout,omitempty"`
-	// The ID of the multimedia material in ApsaraVideo VOD.
-	//
-	// example:
-	//
-	// d0eb493192c771efba644531858c0102
-	MediaResourceId *string `json:"MediaResourceId,omitempty" xml:"MediaResourceId,omitempty"`
-	// The URL of the multimedia material.
-	//
-	// example:
-	//
-	// https://testbucket.xx.com/2.jpg
-	MediaResourceUrl *string `json:"MediaResourceUrl,omitempty" xml:"MediaResourceUrl,omitempty"`
-	// The type of the multimedia material. Valid values:
-	//
-	// 	- VOD: a video in ApsaraVideo VOD
-	//
-	// 	- PIC: an image
-	//
-	// 	- LIVE: a live stream
-	//
-	// example:
-	//
-	// VOD
-	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// The IDs of the bound rules.
-	RuleIds *DescribeLiveAIStudioResponseBodyStudioConfigsSubtitleConfigRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
-	// The ID of the virtual studio template.
-	//
-	// example:
-	//
-	// 24654384-f5ac-40ea-823b-74e85a61dd9f
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The name of the virtual studio template. The name is the same as the value of the StudioName parameter that was specified when you called the CreateLiveAiStudio operation to create the virtual studio template.
-	//
-	// example:
-	//
-	// studio1
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The preview width.
-	//
-	// example:
-	//
-	// 1920
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	BackgroundResourceId  *string                                                             `json:"BackgroundResourceId,omitempty" xml:"BackgroundResourceId,omitempty"`
+	BackgroundResourceUrl *string                                                             `json:"BackgroundResourceUrl,omitempty" xml:"BackgroundResourceUrl,omitempty"`
+	BackgroundType        *string                                                             `json:"BackgroundType,omitempty" xml:"BackgroundType,omitempty"`
+	Description           *string                                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	Height                *string                                                             `json:"Height,omitempty" xml:"Height,omitempty"`
+	MattingLayout         *string                                                             `json:"MattingLayout,omitempty" xml:"MattingLayout,omitempty"`
+	MattingType           *string                                                             `json:"MattingType,omitempty" xml:"MattingType,omitempty"`
+	MediaLayout           *string                                                             `json:"MediaLayout,omitempty" xml:"MediaLayout,omitempty"`
+	MediaResourceId       *string                                                             `json:"MediaResourceId,omitempty" xml:"MediaResourceId,omitempty"`
+	MediaResourceUrl      *string                                                             `json:"MediaResourceUrl,omitempty" xml:"MediaResourceUrl,omitempty"`
+	MediaType             *string                                                             `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	RuleIds               *DescribeLiveAIStudioResponseBodyStudioConfigsSubtitleConfigRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
+	TemplateId            *string                                                             `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName          *string                                                             `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	Width                 *string                                                             `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s DescribeLiveAIStudioResponseBodyStudioConfigsSubtitleConfig) String() string {

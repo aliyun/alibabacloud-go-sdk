@@ -16,7 +16,6 @@ type iDescribeLiveDetectPornDataResponseBody interface {
 }
 
 type DescribeLiveDetectPornDataResponseBody struct {
-	// The bandwidth data returned at each interval.
 	DetectPornData *DescribeLiveDetectPornDataResponseBodyDetectPornData `json:"DetectPornData,omitempty" xml:"DetectPornData,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,67 +95,13 @@ func (s *DescribeLiveDetectPornDataResponseBodyDetectPornData) Validate() error 
 }
 
 type DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule struct {
-	// The name of the application to which the live stream belongs.
-	//
-	// example:
-	//
-	// liveApp****
-	App *string `json:"App,omitempty" xml:"App,omitempty"`
-	// The number of reviewed images.
-	//
-	// example:
-	//
-	// 2
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The main streaming domain.
-	//
-	// example:
-	//
-	// example.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Indicates whether a quota of free image scanning is available. Valid values:
-	//
-	// 	- **free**
-	//
-	// 	- **charge**
-	//
-	// example:
-	//
-	// free
-	Fee *string `json:"Fee,omitempty" xml:"Fee,omitempty"`
-	// The region in which the domain name resides.
-	//
-	// example:
-	//
-	// cn-shanghai
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The moderation scenario. Valid values:
-	//
-	// 	- **porn*	- (default): pornography
-	//
-	// 	- **terrorism**: terrorism or politically sensitive content
-	//
-	// 	- **ad**: ad violation
-	//
-	// 	- **live**: undesirable scene
-	//
-	// 	- **logo**
-	//
-	// example:
-	//
-	// porn
-	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	// The name of the live stream.
-	//
-	// example:
-	//
-	// liveStream****
-	Stream *string `json:"Stream,omitempty" xml:"Stream,omitempty"`
-	// The timestamp of the data returned. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2017-12-10T15:00:05Z
+	App       *string `json:"App,omitempty" xml:"App,omitempty"`
+	Count     *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Domain    *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Fee       *string `json:"Fee,omitempty" xml:"Fee,omitempty"`
+	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Scene     *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	Stream    *string `json:"Stream,omitempty" xml:"Stream,omitempty"`
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 

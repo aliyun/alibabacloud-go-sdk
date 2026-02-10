@@ -21,8 +21,7 @@ type DescribeLiveDomainStreamTranscodeDataResponseBody struct {
 	// example:
 	//
 	// 3C6CCEC4-6B88-4D4A-93E4-D47B3D92CF8F
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The transcoding usage data returned at each interval.
+	RequestId         *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TranscodeDataList *DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataList `json:"TranscodeDataList,omitempty" xml:"TranscodeDataList,omitempty" type:"Struct"`
 }
 
@@ -96,86 +95,13 @@ func (s *DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataList) Val
 }
 
 type DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataListTranscodeData struct {
-	// The main streaming domain. This parameter is returned only when you add the domain key to the value of the Split parameter.
-	//
-	// example:
-	//
-	// example.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The transcoding length. Unit: minutes.
-	//
-	// example:
-	//
-	// 2000
-	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The frame rate of the transcoded stream. This parameter is returned only when you add the fps key to the value of the Split parameter.
-	//
-	// example:
-	//
-	// normal
-	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// The region in which the domain name resides. Valid values:
-	//
-	// >  This parameter takes effect only when you set Split to region.
-	//
-	// 	- **cn-beijing**: China (Beijing)
-	//
-	// 	- **cn-shanghai**: China (Shanghai)
-	//
-	// 	- **cn-qingdao**: China (Qingdao)
-	//
-	// 	- **cn-shenzhen**: China (Shenzhen)
-	//
-	// 	- **ap-northeast-1**: Japan (Tokyo)
-	//
-	// 	- **ap-southeast-1**: Singapore
-	//
-	// 	- **ap-southeast-5**: Indonesia (Jakarta)
-	//
-	// 	- **eu-central-1**: Germany (Frankfurt)
-	//
-	// example:
-	//
-	// cn-beijing
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The resolution of the transcoded stream. This parameter is returned only when you add the resolution key to the value of the Split parameter. Valid values:
-	//
-	// 	- **2K**
-	//
-	// 	- **4K**
-	//
-	// 	- **LD**: low definition
-	//
-	// 	- **SD**: standard definition
-	//
-	// 	- **HD**: high definition
-	//
-	// 	- **def**: audio
-	//
-	// example:
-	//
-	// HD
-	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	// The transcoding type. Valid values:
-	//
-	// >  This parameter takes effect only if the request parameter Split is set to transcode_type.
-	//
-	// 	- **H264NBHD**: Narrowband HD™ transcoding based on H.264
-	//
-	// 	- **H265NBHD**: Narrowband HD™ transcoding based on H.265
-	//
-	// 	- **AUDIO**: audio transcoding
-	//
-	// example:
-	//
-	// H264STD
+	Domain       *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Duration     *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Fps          *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Resolution   *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
 	TanscodeType *string `json:"TanscodeType,omitempty" xml:"TanscodeType,omitempty"`
-	// The timestamp of the data entry.
-	//
-	// example:
-	//
-	// 2017-12-10T20:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TimeStamp    *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataListTranscodeData) String() string {

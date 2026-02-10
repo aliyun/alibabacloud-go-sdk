@@ -16,7 +16,6 @@ type iDescribeLiveStreamHistoryUserNumResponseBody interface {
 }
 
 type DescribeLiveStreamHistoryUserNumResponseBody struct {
-	// The number of historical online users for the live stream.
 	LiveStreamUserNumInfos *DescribeLiveStreamHistoryUserNumResponseBodyLiveStreamUserNumInfos `json:"LiveStreamUserNumInfos,omitempty" xml:"LiveStreamUserNumInfos,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,18 +95,8 @@ func (s *DescribeLiveStreamHistoryUserNumResponseBodyLiveStreamUserNumInfos) Val
 }
 
 type DescribeLiveStreamHistoryUserNumResponseBodyLiveStreamUserNumInfosLiveStreamUserNumInfo struct {
-	// The time when the stream started. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2017-10-20T06:20:00Z
 	StreamTime *string `json:"StreamTime,omitempty" xml:"StreamTime,omitempty"`
-	// The number of users at the current point in time.
-	//
-	// example:
-	//
-	// 1
-	UserNum *string `json:"UserNum,omitempty" xml:"UserNum,omitempty"`
+	UserNum    *string `json:"UserNum,omitempty" xml:"UserNum,omitempty"`
 }
 
 func (s DescribeLiveStreamHistoryUserNumResponseBodyLiveStreamUserNumInfosLiveStreamUserNumInfo) String() string {

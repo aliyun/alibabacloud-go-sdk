@@ -20,7 +20,6 @@ type iDescribeLiveProducerUsageDataResponseBody interface {
 }
 
 type DescribeLiveProducerUsageDataResponseBody struct {
-	// The production studio usage data.
 	BillProducerData *DescribeLiveProducerUsageDataResponseBodyBillProducerData `json:"BillProducerData,omitempty" xml:"BillProducerData,omitempty" type:"Struct"`
 	// The end of the time range during which data was queried.
 	//
@@ -130,72 +129,17 @@ func (s *DescribeLiveProducerUsageDataResponseBodyBillProducerData) Validate() e
 }
 
 type DescribeLiveProducerUsageDataResponseBodyBillProducerDataBillProducerDataItem struct {
-	// The domain name. If domain is specified by the SplitBy parameter, the usage data is returned based on different domain names.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The production studio instance. If instance is specified by the SplitBy parameter, the usage data is returned based on different production studio instances.
-	//
-	// example:
-	//
-	// a17d0184-462d-4630-b2a6-8c26dde2****
-	Instance *string `json:"Instance,omitempty" xml:"Instance,omitempty"`
-	// The duration of high definition streaming. Unit: minutes.
-	//
-	// example:
-	//
-	// 6000
-	OutputHdDuration *int64 `json:"OutputHdDuration,omitempty" xml:"OutputHdDuration,omitempty"`
-	// The duration of low definition streaming. Unit: minutes.
-	//
-	// example:
-	//
-	// 1001
-	OutputLdDuration *int64 `json:"OutputLdDuration,omitempty" xml:"OutputLdDuration,omitempty"`
-	// The duration of standard definition streaming. Unit: minutes.
-	//
-	// example:
-	//
-	// 500
-	OutputSdDuration *int64 `json:"OutputSdDuration,omitempty" xml:"OutputSdDuration,omitempty"`
-	// The region. If region is specified by the SplitBy parameter, the usage data is returned based on different regions.
-	//
-	// example:
-	//
-	// cn-shanghai
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The timestamp of the returned data.
-	//
-	// example:
-	//
-	// 2018-09-30T00:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The duration of high definition transcoding. Unit: minutes.
-	//
-	// example:
-	//
-	// 6777
-	TranHdDuration *int64 `json:"TranHdDuration,omitempty" xml:"TranHdDuration,omitempty"`
-	// The duration of low definition transcoding. Unit: minutes.
-	//
-	// example:
-	//
-	// 111
-	TranLdDuration *int64 `json:"TranLdDuration,omitempty" xml:"TranLdDuration,omitempty"`
-	// The duration of standard definition transcoding. Unit: minutes.
-	//
-	// example:
-	//
-	// 666
-	TranSdDuration *int64 `json:"TranSdDuration,omitempty" xml:"TranSdDuration,omitempty"`
-	// The type of the production studio. If type is specified by the SplitBy parameter, the usage data is returned based on different types of production studios.
-	//
-	// example:
-	//
-	// slidelive
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	DomainName       *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Instance         *string `json:"Instance,omitempty" xml:"Instance,omitempty"`
+	OutputHdDuration *int64  `json:"OutputHdDuration,omitempty" xml:"OutputHdDuration,omitempty"`
+	OutputLdDuration *int64  `json:"OutputLdDuration,omitempty" xml:"OutputLdDuration,omitempty"`
+	OutputSdDuration *int64  `json:"OutputSdDuration,omitempty" xml:"OutputSdDuration,omitempty"`
+	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	TimeStamp        *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TranHdDuration   *int64  `json:"TranHdDuration,omitempty" xml:"TranHdDuration,omitempty"`
+	TranLdDuration   *int64  `json:"TranLdDuration,omitempty" xml:"TranLdDuration,omitempty"`
+	TranSdDuration   *int64  `json:"TranSdDuration,omitempty" xml:"TranSdDuration,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeLiveProducerUsageDataResponseBodyBillProducerDataBillProducerDataItem) String() string {

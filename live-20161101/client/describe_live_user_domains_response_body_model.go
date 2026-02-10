@@ -22,7 +22,6 @@ type iDescribeLiveUserDomainsResponseBody interface {
 }
 
 type DescribeLiveUserDomainsResponseBody struct {
-	// The domain names.
 	Domains *DescribeLiveUserDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,70 +146,15 @@ func (s *DescribeLiveUserDomainsResponseBodyDomains) Validate() error {
 }
 
 type DescribeLiveUserDomainsResponseBodyDomainsPageData struct {
-	// The CNAME generated for the domain name.
-	//
-	// example:
-	//
-	// learn.developer.aliyundoc.com
-	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	// The description.
-	//
-	// example:
-	//
-	// test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The domain name.
-	//
-	// example:
-	//
-	// demo.aliyundoc.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The time when the domain name was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2017-08-29T12:15:36Z
-	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the domain name was last modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2017-12-29T12:15:36Z
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The status of the domain name. Valid values:
-	//
-	// 	- **online**
-	//
-	// 	- **offline**
-	//
-	// 	- **configuring**
-	//
-	// example:
-	//
-	// online
+	Cname            *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DomainName       *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	GmtCreated       *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	GmtModified      *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	LiveDomainStatus *string `json:"LiveDomainStatus,omitempty" xml:"LiveDomainStatus,omitempty"`
-	// The type of the domain name. Valid values:
-	//
-	// 	- **liveVideo**: streaming domain
-	//
-	// 	- **liveEdge**: ingest domain
-	//
-	// example:
-	//
-	// liveVideo
-	LiveDomainType *string `json:"LiveDomainType,omitempty" xml:"LiveDomainType,omitempty"`
-	// The ID of the region in which the domain name resides.
-	//
-	// example:
-	//
-	// cn-beijing
-	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	// The ID of the resource group.
-	//
-	// example:
-	//
-	// rg-aekzvyjetyjjmla
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	LiveDomainType   *string `json:"LiveDomainType,omitempty" xml:"LiveDomainType,omitempty"`
+	RegionName       *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeLiveUserDomainsResponseBodyDomainsPageData) String() string {

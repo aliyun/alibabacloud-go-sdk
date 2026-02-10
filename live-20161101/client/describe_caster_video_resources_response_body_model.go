@@ -29,8 +29,7 @@ type DescribeCasterVideoResourcesResponseBody struct {
 	// example:
 	//
 	// 2
-	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
-	// The input sources.
+	Total          *int32                                                  `json:"Total,omitempty" xml:"Total,omitempty"`
 	VideoResources *DescribeCasterVideoResourcesResponseBodyVideoResources `json:"VideoResources,omitempty" xml:"VideoResources,omitempty" type:"Struct"`
 }
 
@@ -113,96 +112,19 @@ func (s *DescribeCasterVideoResourcesResponseBodyVideoResources) Validate() erro
 }
 
 type DescribeCasterVideoResourcesResponseBodyVideoResourcesVideoResource struct {
-	// The offset of the position where the system starts to read the video resource. This parameter takes effect only if the input source is a video file. Unit: milliseconds.
-	//
-	// A value **greater than 0*	- indicates an offset from the first frame.
-	//
-	// example:
-	//
-	// 1000
-	BeginOffset *int32 `json:"BeginOffset,omitempty" xml:"BeginOffset,omitempty"`
-	// The offset of the position where the system stops reading the video file. This parameter takes effect only if the input source is a video file. Unit: milliseconds.
-	//
-	// 	- A value greater than **0*	- indicates an offset from the first frame.
-	//
-	// 	- A value smaller than **0*	- indicates an offset from the last frame.
-	//
-	// example:
-	//
-	// 10000
-	EndOffset *int32 `json:"EndOffset,omitempty" xml:"EndOffset,omitempty"`
-	// The source URL.
-	//
-	// example:
-	//
-	// http://guide.aliyundoc.com/example.org
-	FlvUrl *string `json:"FlvUrl,omitempty" xml:"FlvUrl,omitempty"`
-	// The image ID.
-	//
-	// example:
-	//
-	// a089175eb5f4427684fc0715159a****
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The image URL.
-	//
-	// example:
-	//
-	// http://learn.aliyundoc.com/AppName/image.jpg
-	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The URL of the live stream.
-	//
-	// example:
-	//
-	// rtmp://abcLive/appName/b5447c21fcfe444c9e9b6f7ba208****
-	LiveStreamUrl *string `json:"LiveStreamUrl,omitempty" xml:"LiveStreamUrl,omitempty"`
-	// The position of the video resource.
-	//
-	// example:
-	//
-	// RV01
-	LocationId *string `json:"LocationId,omitempty" xml:"LocationId,omitempty"`
-	// The material ID.
-	//
-	// example:
-	//
-	// d2c429cd907742ee8f6e76465ad3****
-	MaterialId *string `json:"MaterialId,omitempty" xml:"MaterialId,omitempty"`
-	// The interval between presentation timestamp (PTS) callbacks. If you set the value to 0, the PTS callback is disabled. This parameter is returned only when the video resource is a video-on-demand (VOD) file.
-	//
-	// example:
-	//
-	// 0
-	PtsCallbackInterval *int32 `json:"PtsCallbackInterval,omitempty" xml:"PtsCallbackInterval,omitempty"`
-	// The number of playback times after the first playback is complete. This parameter takes effect only when the input source is a video file. Valid values:
-	//
-	// 	- **0*	- (default): The video file is played only once.
-	//
-	// 	- **-1**: The video file is played in loop mode.
-	//
-	// example:
-	//
-	// 0
-	RepeatNum *int32 `json:"RepeatNum,omitempty" xml:"RepeatNum,omitempty"`
-	// The resource ID.
-	//
-	// example:
-	//
-	// b5f8c837-ceeb-424f-b30b-68e94e86****
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource name.
-	//
-	// example:
-	//
-	// resource-Name1
-	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The URL of the VOD file.
-	//
-	// This parameter is returned only when the video resource is an MP4, FLV, or TS file that is not from the media library.
-	//
-	// example:
-	//
-	// http://developer.aliyundoc.com/caster1.flv
-	VodUrl *string `json:"VodUrl,omitempty" xml:"VodUrl,omitempty"`
+	BeginOffset         *int32  `json:"BeginOffset,omitempty" xml:"BeginOffset,omitempty"`
+	EndOffset           *int32  `json:"EndOffset,omitempty" xml:"EndOffset,omitempty"`
+	FlvUrl              *string `json:"FlvUrl,omitempty" xml:"FlvUrl,omitempty"`
+	ImageId             *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageUrl            *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	LiveStreamUrl       *string `json:"LiveStreamUrl,omitempty" xml:"LiveStreamUrl,omitempty"`
+	LocationId          *string `json:"LocationId,omitempty" xml:"LocationId,omitempty"`
+	MaterialId          *string `json:"MaterialId,omitempty" xml:"MaterialId,omitempty"`
+	PtsCallbackInterval *int32  `json:"PtsCallbackInterval,omitempty" xml:"PtsCallbackInterval,omitempty"`
+	RepeatNum           *int32  `json:"RepeatNum,omitempty" xml:"RepeatNum,omitempty"`
+	ResourceId          *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName        *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	VodUrl              *string `json:"VodUrl,omitempty" xml:"VodUrl,omitempty"`
 }
 
 func (s DescribeCasterVideoResourcesResponseBodyVideoResourcesVideoResource) String() string {

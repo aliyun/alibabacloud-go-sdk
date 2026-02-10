@@ -18,9 +18,7 @@ type iStartCasterResponseBody interface {
 }
 
 type StartCasterResponseBody struct {
-	// The PGM scenes.
 	PgmSceneInfos *StartCasterResponseBodyPgmSceneInfos `json:"PgmSceneInfos,omitempty" xml:"PgmSceneInfos,omitempty" type:"Struct"`
-	// The PVW scenes.
 	PvwSceneInfos *StartCasterResponseBodyPvwSceneInfos `json:"PvwSceneInfos,omitempty" xml:"PvwSceneInfos,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -114,20 +112,9 @@ func (s *StartCasterResponseBodyPgmSceneInfos) Validate() error {
 }
 
 type StartCasterResponseBodyPgmSceneInfosSceneInfo struct {
-	// The ID of the scene.
-	//
-	// example:
-	//
-	// b5f8c837-ceeb-424f-b30b-68e94e86****
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// The stream relay URLs.
+	SceneId     *string                                                   `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	StreamInfos *StartCasterResponseBodyPgmSceneInfosSceneInfoStreamInfos `json:"StreamInfos,omitempty" xml:"StreamInfos,omitempty" type:"Struct"`
-	// The streaming URL of the PGM scene in the production studio. The value is not a stream relay URL.
-	//
-	// example:
-	//
-	// rtmp://abclive/caster/example.edu
-	StreamUrl *string `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
+	StreamUrl   *string                                                   `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
 }
 
 func (s StartCasterResponseBodyPgmSceneInfosSceneInfo) String() string {
@@ -209,38 +196,9 @@ func (s *StartCasterResponseBodyPgmSceneInfosSceneInfoStreamInfos) Validate() er
 }
 
 type StartCasterResponseBodyPgmSceneInfosSceneInfoStreamInfosStreamInfo struct {
-	// The URL.
-	//
-	// example:
-	//
-	// rtmp://abclive/caster/example.net
 	OutputStreamUrl *string `json:"OutputStreamUrl,omitempty" xml:"OutputStreamUrl,omitempty"`
-	// The transcoding configuration. Valid values:
-	//
-	// 	- **lsd**: standard definition
-	//
-	// 	- **lld**: low definition
-	//
-	// 	- **lud**: ultra-high definition
-	//
-	// 	- **lhd**: high definition
-	//
-	// example:
-	//
-	// lld
 	TranscodeConfig *string `json:"TranscodeConfig,omitempty" xml:"TranscodeConfig,omitempty"`
-	// The format. Valid values:
-	//
-	// 	- **flv**
-	//
-	// 	- **rtmp**
-	//
-	// 	- **m3u8**
-	//
-	// example:
-	//
-	// flv
-	VideoFormat *string `json:"VideoFormat,omitempty" xml:"VideoFormat,omitempty"`
+	VideoFormat     *string `json:"VideoFormat,omitempty" xml:"VideoFormat,omitempty"`
 }
 
 func (s StartCasterResponseBodyPgmSceneInfosSceneInfoStreamInfosStreamInfo) String() string {
@@ -317,17 +275,7 @@ func (s *StartCasterResponseBodyPvwSceneInfos) Validate() error {
 }
 
 type StartCasterResponseBodyPvwSceneInfosSceneInfo struct {
-	// The ID of the scene.
-	//
-	// example:
-	//
-	// b5f8c837-ceeb-424f-b30b-68e94e86****
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// The streaming URL of the PVW scene in the production studio. The value is not a stream relay URL.
-	//
-	// example:
-	//
-	// rtmp://abclive/caster/example.net
+	SceneId   *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	StreamUrl *string `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
 }
 

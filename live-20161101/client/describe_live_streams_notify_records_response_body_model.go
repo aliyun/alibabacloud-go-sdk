@@ -24,7 +24,6 @@ type iDescribeLiveStreamsNotifyRecordsResponseBody interface {
 }
 
 type DescribeLiveStreamsNotifyRecordsResponseBody struct {
-	// The stream ingest callback records.
 	NotifyRecordsInfo *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfo `json:"NotifyRecordsInfo,omitempty" xml:"NotifyRecordsInfo,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -164,70 +163,17 @@ func (s *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfo) Validate
 }
 
 type DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo struct {
-	// The name of the application to which the live stream belongs.
-	//
-	// example:
-	//
-	// app
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The result of the request. If success is returned, the request is successful. If an error message is returned, the request failed.
-	//
-	// example:
-	//
-	// success
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ingest domain.
-	//
-	// example:
-	//
-	// push.example1.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The callback content.
-	//
-	// example:
-	//
-	// {\\"action\\":\\"publish_done\\",\\"app\\":\\"push.example1.com\\"}
+	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	NotifyContent  *string `json:"NotifyContent,omitempty" xml:"NotifyContent,omitempty"`
 	NotifyHeader   *string `json:"NotifyHeader,omitempty" xml:"NotifyHeader,omitempty"`
 	NotifyResponse *string `json:"NotifyResponse,omitempty" xml:"NotifyResponse,omitempty"`
-	// The callback result. Valid values:
-	//
-	// 	- success
-	//
-	// 	- failed
-	//
-	// example:
-	//
-	// success
-	NotifyResult *string `json:"NotifyResult,omitempty" xml:"NotifyResult,omitempty"`
-	// The time when the callback was invoked. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2022-10-19T19:09:28Z
-	NotifyTime *string `json:"NotifyTime,omitempty" xml:"NotifyTime,omitempty"`
-	// The event. Valid values:
-	//
-	// 	- publish: The stream ingest starts.
-	//
-	// 	- publish_done: The stream ingest is interrupted.
-	//
-	// example:
-	//
-	// publish_done
-	NotifyType *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
-	// The callback URL.
-	//
-	// example:
-	//
-	// http://xx.xx.xx.xx/callbacks
-	NotifyUrl *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
-	// The name of the live stream.
-	//
-	// example:
-	//
-	// stream
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	NotifyResult   *string `json:"NotifyResult,omitempty" xml:"NotifyResult,omitempty"`
+	NotifyTime     *string `json:"NotifyTime,omitempty" xml:"NotifyTime,omitempty"`
+	NotifyType     *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	NotifyUrl      *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	StreamName     *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
 }
 
 func (s DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo) String() string {

@@ -22,7 +22,6 @@ type iDescribeLiveRecordVodConfigsResponseBody interface {
 }
 
 type DescribeLiveRecordVodConfigsResponseBody struct {
-	// The configurations.
 	LiveRecordVodConfigs *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigs `json:"LiveRecordVodConfigs,omitempty" xml:"LiveRecordVodConfigs,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,76 +146,16 @@ func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigs) Validate(
 }
 
 type DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig struct {
-	// The name of the application to which the live stream belongs.
-	//
-	// example:
-	//
-	// liveApp****
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Indicates whether automatic merging is enabled. Valid values:
-	//
-	// 	- **ON**
-	//
-	// 	- **OFF**
-	//
-	// example:
-	//
-	// ON
-	AutoCompose *string `json:"AutoCompose,omitempty" xml:"AutoCompose,omitempty"`
-	// The ID of the transcoding template group that was used to automatically merge the VOD files created from the live streams.
-	//
-	// >  This parameter is returned if the value of the AutoCompose parameter is ON.
-	//
-	// example:
-	//
-	// dadfcaadde****
+	AppName                    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AutoCompose                *string `json:"AutoCompose,omitempty" xml:"AutoCompose,omitempty"`
 	ComposeVodTranscodeGroupId *string `json:"ComposeVodTranscodeGroupId,omitempty" xml:"ComposeVodTranscodeGroupId,omitempty"`
-	// The time when the live stream was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2015-12-01T17:37:00Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The recording cycle. Unit: seconds. Default value: **3600**. Valid values: **300 to 21600**.
-	//
-	// example:
-	//
-	// 360
-	CycleDuration *int32 `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
-	// The main streaming domain.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Indicates whether on-demand recording is enabled. Valid values:
-	//
-	// 	- **0*	- (default): On-demand recording is disabled.
-	//
-	// 	- **1**: On-demand recording is enabled by using the HTTP callback method.
-	//
-	// example:
-	//
-	// 0
-	OnDemand *int32 `json:"OnDemand,omitempty" xml:"OnDemand,omitempty"`
-	// The storage location.
-	//
-	// example:
-	//
-	// ****-tjptr2vatm.oss-cn-shanghai.aliyuncs.com
-	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	// The name of the live stream.
-	//
-	// example:
-	//
-	// liveStream****
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The ID of the transcoding template group in ApsaraVideo VOD.
-	//
-	// example:
-	//
-	// e2d796d3bb5fd8049d32bff62f94****
-	VodTranscodeGroupId *string `json:"VodTranscodeGroupId,omitempty" xml:"VodTranscodeGroupId,omitempty"`
+	CreateTime                 *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CycleDuration              *int32  `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
+	DomainName                 *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	OnDemand                   *int32  `json:"OnDemand,omitempty" xml:"OnDemand,omitempty"`
+	StorageLocation            *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	StreamName                 *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	VodTranscodeGroupId        *string `json:"VodTranscodeGroupId,omitempty" xml:"VodTranscodeGroupId,omitempty"`
 }
 
 func (s DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig) String() string {

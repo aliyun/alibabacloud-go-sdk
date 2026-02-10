@@ -18,7 +18,6 @@ type iAddCasterEpisodeGroupContentResponseBody interface {
 }
 
 type AddCasterEpisodeGroupContentResponseBody struct {
-	// The IDs of the episodes.
 	ItemIds *AddCasterEpisodeGroupContentResponseBodyItemIds `json:"ItemIds,omitempty" xml:"ItemIds,omitempty" type:"Struct"`
 	// The ID of the episode list. You can use the ID as a request parameter in the API operation that is used to create or add episodes, remove episodes, query episodes, edit an episode list, delete an episode list, query the information about an episode list, start playing an episode list, or stop playing an episode list.
 	//

@@ -21,8 +21,7 @@ type DescribeLiveAIProduceRulesResponseBody struct {
 	// example:
 	//
 	// 5c6a2a0df228-4a64- af62-20e91b96****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The subtitle rules.
+	RequestId    *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RuleInfoList *DescribeLiveAIProduceRulesResponseBodyRuleInfoList `json:"RuleInfoList,omitempty" xml:"RuleInfoList,omitempty" type:"Struct"`
 }
 
@@ -96,66 +95,16 @@ func (s *DescribeLiveAIProduceRulesResponseBodyRuleInfoList) Validate() error {
 }
 
 type DescribeLiveAIProduceRulesResponseBodyRuleInfoListRuleInfo struct {
-	// The name of the application to which the live stream belongs.
-	//
-	// example:
-	//
-	// App Name
-	App *string `json:"App,omitempty" xml:"App,omitempty"`
-	// The description of the rule.
-	//
-	// example:
-	//
-	// live AI subtitle template
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The streaming domain.
-	//
-	// example:
-	//
-	// demo.aliyundoc.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The last time when the rule was modified. The value is a timestamp.
-	//
-	// example:
-	//
-	// 1715594344000
+	App           *string `json:"App,omitempty" xml:"App,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Domain        *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	// Indicates whether the rule takes effect when stream pulling starts.
-	//
-	// example:
-	//
-	// true
-	IsLazy *bool `json:"IsLazy,omitempty" xml:"IsLazy,omitempty"`
-	// The specification of the exported subtitles.
-	//
-	// example:
-	//
-	// lp_ld
-	LiveTemplate *string `json:"LiveTemplate,omitempty" xml:"LiveTemplate,omitempty"`
-	// The ID of the subtitle rule.
-	//
-	// example:
-	//
-	// 72fba656-2cc2-40fd-923c-2a10c3b9****
-	RulesId *string `json:"RulesId,omitempty" xml:"RulesId,omitempty"`
-	// The name of the virtual background template.
-	//
-	// example:
-	//
-	// test0708
-	StudioName *string `json:"StudioName,omitempty" xml:"StudioName,omitempty"`
-	// The name of the subtitle template.
-	//
-	// example:
-	//
-	// sub1
-	SubtitleName *string `json:"SubtitleName,omitempty" xml:"SubtitleName,omitempty"`
-	// The suffix of the subtitle rule.
-	//
-	// example:
-	//
-	// test0506
-	SuffixName *string `json:"SuffixName,omitempty" xml:"SuffixName,omitempty"`
+	IsLazy        *bool   `json:"IsLazy,omitempty" xml:"IsLazy,omitempty"`
+	LiveTemplate  *string `json:"LiveTemplate,omitempty" xml:"LiveTemplate,omitempty"`
+	RulesId       *string `json:"RulesId,omitempty" xml:"RulesId,omitempty"`
+	StudioName    *string `json:"StudioName,omitempty" xml:"StudioName,omitempty"`
+	SubtitleName  *string `json:"SubtitleName,omitempty" xml:"SubtitleName,omitempty"`
+	SuffixName    *string `json:"SuffixName,omitempty" xml:"SuffixName,omitempty"`
 }
 
 func (s DescribeLiveAIProduceRulesResponseBodyRuleInfoListRuleInfo) String() string {

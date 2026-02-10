@@ -21,8 +21,7 @@ type DescribeLiveStreamsTotalCountResponseBody struct {
 	// example:
 	//
 	// String	FCFFE4A4-F34F-4EEF-B401-36A01689AFBC
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The statistics about the live streams.
+	RequestId       *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StreamCountList *DescribeLiveStreamsTotalCountResponseBodyStreamCountList `json:"StreamCountList,omitempty" xml:"StreamCountList,omitempty" type:"Struct"`
 }
 
@@ -96,17 +95,7 @@ func (s *DescribeLiveStreamsTotalCountResponseBodyStreamCountList) Validate() er
 }
 
 type DescribeLiveStreamsTotalCountResponseBodyStreamCountListStreamCountInfos struct {
-	// The total number of live streams.
-	//
-	// example:
-	//
-	// 934
-	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The timestamp.
-	//
-	// example:
-	//
-	// 2023-07-24T16:00:00Z
+	Count     *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
 	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 

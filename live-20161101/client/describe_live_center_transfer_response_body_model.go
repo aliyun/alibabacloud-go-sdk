@@ -16,7 +16,6 @@ type iDescribeLiveCenterTransferResponseBody interface {
 }
 
 type DescribeLiveCenterTransferResponseBody struct {
-	// The stream relay information.
 	LiveCenterTransferInfoList *DescribeLiveCenterTransferResponseBodyLiveCenterTransferInfoList `json:"LiveCenterTransferInfoList,omitempty" xml:"LiveCenterTransferInfoList,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,51 +95,12 @@ func (s *DescribeLiveCenterTransferResponseBodyLiveCenterTransferInfoList) Valid
 }
 
 type DescribeLiveCenterTransferResponseBodyLiveCenterTransferInfoListLiveCenterTransferInfo struct {
-	// The name of the application to which the live stream belongs.
-	//
-	// example:
-	//
-	// teststream
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The streaming domain.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The third-party URL to which the live stream is relayed.
-	//
-	// example:
-	//
-	// rtmp://push.example2.aliyunlive.com/testapp1/teststream2
-	DstUrl *string `json:"DstUrl,omitempty" xml:"DstUrl,omitempty"`
-	// The end time of stream relay.
-	//
-	// example:
-	//
-	// 2022-04-29T15:16:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time of stream relay.
-	//
-	// example:
-	//
-	// 2022-04-28T15:16:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the live stream.
-	//
-	// example:
-	//
-	// teststream
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The validity period of stream relay. Valid values:
-	//
-	// 	- **always**: The stream can always be relayed.
-	//
-	// 	- **time**: The stream can be relayed in a specified time period.
-	//
-	// example:
-	//
-	// time
+	AppName      *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DstUrl       *string `json:"DstUrl,omitempty" xml:"DstUrl,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StreamName   *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
 	TransferArgs *string `json:"TransferArgs,omitempty" xml:"TransferArgs,omitempty"`
 }
 

@@ -25,8 +25,7 @@ type DescribeLiveDomainRecordUsageDataResponseBody struct {
 	// example:
 	//
 	// 2021-05-10T21:00:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The recording data that was collected for each interval.
+	EndTime         *string                                                       `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RecordUsageData *DescribeLiveDomainRecordUsageDataResponseBodyRecordUsageData `json:"RecordUsageData,omitempty" xml:"RecordUsageData,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -130,42 +129,12 @@ func (s *DescribeLiveDomainRecordUsageDataResponseBodyRecordUsageData) Validate(
 }
 
 type DescribeLiveDomainRecordUsageDataResponseBodyRecordUsageDataDataModule struct {
-	// The number of peak channels.
-	//
-	// example:
-	//
-	// 1
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The main streaming domain. This parameter is returned if the value of the request parameter SplitBy contains `domain`.
-	//
-	// example:
-	//
-	// example.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The recording length. Unit: seconds.
-	//
-	// example:
-	//
-	// 3560
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-shanghai
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The time when recording started.
-	//
-	// example:
-	//
-	// 2021-05-10T20:00:00Z
+	Count     *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Domain    *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Duration  *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The recording file type. This parameter is returned if the value of the request parameter SplitBy contains `record_fmt`.
-	//
-	// example:
-	//
-	// MP4
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeLiveDomainRecordUsageDataResponseBodyRecordUsageDataDataModule) String() string {

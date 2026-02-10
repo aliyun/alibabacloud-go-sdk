@@ -16,7 +16,6 @@ type iDescribeLiveShiftConfigsResponseBody interface {
 }
 
 type DescribeLiveShiftConfigsResponseBody struct {
-	// The time shifting configurations.
 	Content *DescribeLiveShiftConfigsResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,42 +95,11 @@ func (s *DescribeLiveShiftConfigsResponseBodyContent) Validate() error {
 }
 
 type DescribeLiveShiftConfigsResponseBodyContentConfig struct {
-	// The application for which you configure time shifting.
-	//
-	// example:
-	//
-	// liveApp****
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The domain name for which you configure time shifting.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Whether to ignore time shift generation for the transcode stream.
-	//
-	// 	- true: Ignore time shifting generation.
-	//
-	// 	- false: Generate time shifting.
-	//
-	// The default value is true.
-	//
-	// example:
-	//
-	// true
-	IgnoreTranscode *bool `json:"IgnoreTranscode,omitempty" xml:"IgnoreTranscode,omitempty"`
-	// The name of the live stream for which you configure time shifting.
-	//
-	// example:
-	//
-	// liveStream****
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The number of days for which the time shifting configurations are retained.
-	//
-	// example:
-	//
-	// 7
-	Vision *int32 `json:"Vision,omitempty" xml:"Vision,omitempty"`
+	AppName         *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	DomainName      *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	IgnoreTranscode *bool   `json:"IgnoreTranscode,omitempty" xml:"IgnoreTranscode,omitempty"`
+	StreamName      *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	Vision          *int32  `json:"Vision,omitempty" xml:"Vision,omitempty"`
 }
 
 func (s DescribeLiveShiftConfigsResponseBodyContentConfig) String() string {

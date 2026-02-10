@@ -18,7 +18,6 @@ type iDescribeLiveHttpsDomainListResponseBody interface {
 }
 
 type DescribeLiveHttpsDomainListResponseBody struct {
-	// The information about the certificates.
 	CertInfos *DescribeLiveHttpsDomainListResponseBodyCertInfos `json:"CertInfos,omitempty" xml:"CertInfos,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -113,66 +112,14 @@ func (s *DescribeLiveHttpsDomainListResponseBodyCertInfos) Validate() error {
 }
 
 type DescribeLiveHttpsDomainListResponseBodyCertInfosCertInfo struct {
-	// The primary domain name of the certificate.
-	//
-	// example:
-	//
-	// example.org
 	CertCommonName *string `json:"CertCommonName,omitempty" xml:"CertCommonName,omitempty"`
-	// The time when the certificate expires.
-	//
-	// example:
-	//
-	// 2018-12-26 14:45:09
 	CertExpireTime *string `json:"CertExpireTime,omitempty" xml:"CertExpireTime,omitempty"`
-	// The name of the certificate.
-	//
-	// example:
-	//
-	// test
-	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// The time when the certificate became effective.
-	//
-	// example:
-	//
-	// 2018-11-26 14:45:09
-	CertStartTime *string `json:"CertStartTime,omitempty" xml:"CertStartTime,omitempty"`
-	// The status of the certificate. Valid values:
-	//
-	// 	- **ok**: The certificate is working as expected.
-	//
-	// 	- **mismatch**: The certificate does not match the specified domain name.
-	//
-	// 	- **expired**: The certificate has expired.
-	//
-	// 	- **expire_soon**: The certificate will expire soon.
-	//
-	// example:
-	//
-	// mismatch
-	CertStatus *string `json:"CertStatus,omitempty" xml:"CertStatus,omitempty"`
-	// The type of the certificate. Valid values:
-	//
-	// 	- **cas**: a certificate that you purchased from Certificate Management Service
-	//
-	// 	- **upload**: a custom certificate that you uploaded
-	//
-	// example:
-	//
-	// cas
-	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// The time when the certificate was updated.
-	//
-	// example:
-	//
-	// 2019-01-08 18:33:16
+	CertName       *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	CertStartTime  *string `json:"CertStartTime,omitempty" xml:"CertStartTime,omitempty"`
+	CertStatus     *string `json:"CertStatus,omitempty" xml:"CertStatus,omitempty"`
+	CertType       *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
 	CertUpdateTime *string `json:"CertUpdateTime,omitempty" xml:"CertUpdateTime,omitempty"`
-	// The accelerated domain name.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
 func (s DescribeLiveHttpsDomainListResponseBodyCertInfosCertInfo) String() string {

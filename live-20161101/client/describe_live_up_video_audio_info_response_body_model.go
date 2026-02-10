@@ -21,9 +21,8 @@ type DescribeLiveUpVideoAudioInfoResponseBody struct {
 	// example:
 	//
 	// BC858082-736F-4A25-867B-E5B67C85ACF7
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The request ID.
-	UpItems *DescribeLiveUpVideoAudioInfoResponseBodyUpItems `json:"UpItems,omitempty" xml:"UpItems,omitempty" type:"Struct"`
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UpItems   *DescribeLiveUpVideoAudioInfoResponseBodyUpItems `json:"UpItems,omitempty" xml:"UpItems,omitempty" type:"Struct"`
 }
 
 func (s DescribeLiveUpVideoAudioInfoResponseBody) String() string {
@@ -96,90 +95,28 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItems) Validate() error {
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItem struct {
-	// The details about the audio and video data of the stream ingest occurrences.
-	AacHeaders *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAacHeaders `json:"AacHeaders,omitempty" xml:"AacHeaders,omitempty" type:"Struct"`
-	// The metric value at a granularity of seconds at the query time.
-	//
-	// example:
-	//
-	// AppName
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The name of the application to which the ingested stream belongs.
-	AudioBitRate *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioBitRate `json:"AudioBitRate,omitempty" xml:"AudioBitRate,omitempty" type:"Struct"`
-	// The metric value at a granularity of seconds at the query time.
-	AudioFrames *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioFrames `json:"AudioFrames,omitempty" xml:"AudioFrames,omitempty" type:"Struct"`
-	// The metric value at a granularity of seconds at the query time.
-	AudioInterval *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioInterval `json:"AudioInterval,omitempty" xml:"AudioInterval,omitempty" type:"Struct"`
-	// The metric value at a granularity of seconds at the query time.
-	AudioStamps *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioStamps `json:"AudioStamps,omitempty" xml:"AudioStamps,omitempty" type:"Struct"`
-	// The metric value at a granularity of seconds at the query time.
-	AvcHeaders *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAvcHeaders `json:"AvcHeaders,omitempty" xml:"AvcHeaders,omitempty" type:"Struct"`
-	// The metric value at a granularity of seconds at the query time.
-	//
-	// example:
-	//
-	// H264/AAC
-	CodecInfo *string `json:"CodecInfo,omitempty" xml:"CodecInfo,omitempty"`
-	// The audio and video encoding information.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ingest domain.
-	ErrorFlags *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemErrorFlags `json:"ErrorFlags,omitempty" xml:"ErrorFlags,omitempty" type:"Struct"`
-	// The metric value at a granularity of seconds at the query time.
-	//
-	// example:
-	//
-	// -
-	PublishInterval *string `json:"PublishInterval,omitempty" xml:"PublishInterval,omitempty"`
-	// The stream ingest duration. Unit: seconds. A hyphen (-) indicates that the stream is being ingested and the duration cannot be returned.
-	//
-	// example:
-	//
-	// cn397
-	PublishIp *string `json:"PublishIp,omitempty" xml:"PublishIp,omitempty"`
-	// The IP address of the stream ingest client.
-	//
-	// example:
-	//
-	// 1
-	PublishStatus *string `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
-	// The stream ingest status. A value of 1 indicates that the stream is being ingested. A value of 0 indicates that the stream was ingested.
-	//
-	// example:
-	//
-	// 2015-12-10T15:00:00Z
-	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
-	// The start time of stream ingest. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2015-12-10T15:10:00Z
-	StopTime *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
-	// The end time of stream ingest. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// StreamName
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The name of the stream.
-	//
-	// example:
-	//
-	// 2.-395_37261_9848098_1538080899396
-	UniqueId *string `json:"UniqueId,omitempty" xml:"UniqueId,omitempty"`
-	// The unique ID of each stream ingest occurrence.
+	AacHeaders         *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAacHeaders         `json:"AacHeaders,omitempty" xml:"AacHeaders,omitempty" type:"Struct"`
+	AppName            *string                                                                       `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AudioBitRate       *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioBitRate       `json:"AudioBitRate,omitempty" xml:"AudioBitRate,omitempty" type:"Struct"`
+	AudioFrames        *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioFrames        `json:"AudioFrames,omitempty" xml:"AudioFrames,omitempty" type:"Struct"`
+	AudioInterval      *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioInterval      `json:"AudioInterval,omitempty" xml:"AudioInterval,omitempty" type:"Struct"`
+	AudioStamps        *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioStamps        `json:"AudioStamps,omitempty" xml:"AudioStamps,omitempty" type:"Struct"`
+	AvcHeaders         *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAvcHeaders         `json:"AvcHeaders,omitempty" xml:"AvcHeaders,omitempty" type:"Struct"`
+	CodecInfo          *string                                                                       `json:"CodecInfo,omitempty" xml:"CodecInfo,omitempty"`
+	DomainName         *string                                                                       `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	ErrorFlags         *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemErrorFlags         `json:"ErrorFlags,omitempty" xml:"ErrorFlags,omitempty" type:"Struct"`
+	PublishInterval    *string                                                                       `json:"PublishInterval,omitempty" xml:"PublishInterval,omitempty"`
+	PublishIp          *string                                                                       `json:"PublishIp,omitempty" xml:"PublishIp,omitempty"`
+	PublishStatus      *string                                                                       `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
+	PublishTime        *string                                                                       `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	StopTime           *string                                                                       `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
+	StreamName         *string                                                                       `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	UniqueId           *string                                                                       `json:"UniqueId,omitempty" xml:"UniqueId,omitempty"`
 	VideoAndAudioStamp *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoAndAudioStamp `json:"VideoAndAudioStamp,omitempty" xml:"VideoAndAudioStamp,omitempty" type:"Struct"`
-	// The metric value at a granularity of seconds at the query time.
-	VideoBitRate *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoBitRate `json:"VideoBitRate,omitempty" xml:"VideoBitRate,omitempty" type:"Struct"`
-	// The metric value at a granularity of seconds at the query time.
-	VideoFrames *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoFrames `json:"VideoFrames,omitempty" xml:"VideoFrames,omitempty" type:"Struct"`
-	// The metric value at a granularity of seconds at the query time.
-	VideoInterval *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoInterval `json:"VideoInterval,omitempty" xml:"VideoInterval,omitempty" type:"Struct"`
-	// The metric value at a granularity of seconds at the query time.
-	VideoStamps *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoStamps `json:"VideoStamps,omitempty" xml:"VideoStamps,omitempty" type:"Struct"`
+	VideoBitRate       *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoBitRate       `json:"VideoBitRate,omitempty" xml:"VideoBitRate,omitempty" type:"Struct"`
+	VideoFrames        *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoFrames        `json:"VideoFrames,omitempty" xml:"VideoFrames,omitempty" type:"Struct"`
+	VideoInterval      *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoInterval      `json:"VideoInterval,omitempty" xml:"VideoInterval,omitempty" type:"Struct"`
+	VideoStamps        *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoStamps        `json:"VideoStamps,omitempty" xml:"VideoStamps,omitempty" type:"Struct"`
 }
 
 func (s DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItem) String() string {
@@ -487,17 +424,7 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAacHeaders) V
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAacHeadersAacHeaders struct {
-	// The number of AAC headers in the audio.
-	//
-	// example:
-	//
-	// 1538134750408
-	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The query time. The value is a UNIX timestamp in milliseconds.
-	//
-	// example:
-	//
-	// 20
+	Time  *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 	Value *int32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -566,17 +493,7 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioBitRate)
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioBitRateAudioBitRate struct {
-	// The bitrate of the audio. Unit: bit/s.
-	//
-	// example:
-	//
-	// 1538134750408
-	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The query time. The value is a UNIX timestamp in milliseconds.
-	//
-	// example:
-	//
-	// 24552
+	Time  *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 	Value *int32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -645,17 +562,7 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioFrames) 
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioFramesAudioFrames struct {
-	// The frame rate of the audio. Unit: frames.
-	//
-	// example:
-	//
-	// 1538134750408
-	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The query time. The value is a UNIX timestamp in milliseconds.
-	//
-	// example:
-	//
-	// 23
+	Time  *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 	Value *int32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -724,17 +631,7 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioInterval
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioIntervalAudioInterval struct {
-	// The maximum audio frame interval. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1538134750408
-	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The query time. The value is a UNIX timestamp in milliseconds.
-	//
-	// example:
-	//
-	// 254
+	Time  *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 	Value *int32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -803,17 +700,7 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioStamps) 
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioStampsAudioStamps struct {
-	// The audio timestamp. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1538134750408
-	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The query time. The value is a UNIX timestamp in milliseconds.
-	//
-	// example:
-	//
-	// 725053422
+	Time  *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 	Value *int32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -882,17 +769,7 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAvcHeaders) V
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAvcHeadersAvcHeaders struct {
-	// The number of AVC headers in the audio.
-	//
-	// example:
-	//
-	// 1538134750408
-	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The query time. The value is a UNIX timestamp in milliseconds.
-	//
-	// example:
-	//
-	// 11
+	Time  *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 	Value *int32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -961,17 +838,7 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemErrorFlags) V
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemErrorFlagsErrorFlags struct {
-	// The number of times the error code that indicates interrupted stream ingest was returned.
-	//
-	// example:
-	//
-	// 1538134750408
-	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The query time. The value is a UNIX timestamp in milliseconds.
-	//
-	// example:
-	//
-	// 0
+	Time  *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 	Value *int32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1040,17 +907,7 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoAndAudio
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoAndAudioStampVAStamp struct {
-	// The difference between the audio and video timestamps. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1538134750408
-	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The query time. The value is a UNIX timestamp in milliseconds.
-	//
-	// example:
-	//
-	// 359
+	Time  *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 	Value *int32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1119,17 +976,7 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoBitRate)
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoBitRateVideoBitRate struct {
-	// The bitrate of the video. Unit: bit/s.
-	//
-	// example:
-	//
-	// 1538134750408
-	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The query time. The value is a UNIX timestamp in milliseconds.
-	//
-	// example:
-	//
-	// 3970160
+	Time  *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 	Value *int32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1198,17 +1045,7 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoFrames) 
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoFramesVideoFrames struct {
-	// The frame rate of the video. Unit: frames.
-	//
-	// example:
-	//
-	// 1538134750408
-	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The query time. The value is a UNIX timestamp in milliseconds.
-	//
-	// example:
-	//
-	// 29
+	Time  *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 	Value *int32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1277,17 +1114,7 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoInterval
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoIntervalVideoInterval struct {
-	// The maximum video frame interval. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1538134750408
-	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The query time. The value is a UNIX timestamp in milliseconds.
-	//
-	// example:
-	//
-	// 278
+	Time  *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 	Value *int32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1356,17 +1183,7 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoStamps) 
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoStampsVideoStamps struct {
-	// The video timestamp. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1538134750408
-	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The query time. The value is a UNIX timestamp in milliseconds.
-	//
-	// example:
-	//
-	// 725053781
+	Time  *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 	Value *int32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

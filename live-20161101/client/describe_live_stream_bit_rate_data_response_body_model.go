@@ -16,7 +16,6 @@ type iDescribeLiveStreamBitRateDataResponseBody interface {
 }
 
 type DescribeLiveStreamBitRateDataResponseBody struct {
-	// The frame rates and bitrates of the live stream.
 	FrameRateAndBitRateInfos *DescribeLiveStreamBitRateDataResponseBodyFrameRateAndBitRateInfos `json:"FrameRateAndBitRateInfos,omitempty" xml:"FrameRateAndBitRateInfos,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,31 +95,10 @@ func (s *DescribeLiveStreamBitRateDataResponseBodyFrameRateAndBitRateInfos) Vali
 }
 
 type DescribeLiveStreamBitRateDataResponseBodyFrameRateAndBitRateInfosFrameRateAndBitRateInfo struct {
-	// The audio frame rate of the live stream. Unit: FPS.
-	//
-	// example:
-	//
-	// 100
 	AudioFrameRate *float32 `json:"AudioFrameRate,omitempty" xml:"AudioFrameRate,omitempty"`
-	// The bitrate of the live stream. Unit: bit/s.
-	//
-	// example:
-	//
-	// 600
-	BitRate *float32 `json:"BitRate,omitempty" xml:"BitRate,omitempty"`
-	// The URL of the live stream.
-	StreamUrl *string `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
-	// The time when the data was collected. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2016-09-13T16:04:00Z
-	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The video frame rate of the live stream. Unit: frames per second (FPS).
-	//
-	// example:
-	//
-	// 30
+	BitRate        *float32 `json:"BitRate,omitempty" xml:"BitRate,omitempty"`
+	StreamUrl      *string  `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
+	Time           *string  `json:"Time,omitempty" xml:"Time,omitempty"`
 	VideoFrameRate *float32 `json:"VideoFrameRate,omitempty" xml:"VideoFrameRate,omitempty"`
 }
 

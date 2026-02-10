@@ -16,7 +16,6 @@ type iDescribeLiveLazyPullStreamConfigResponseBody interface {
 }
 
 type DescribeLiveLazyPullStreamConfigResponseBody struct {
-	// The configurations of triggered stream pulling.
 	LiveLazyPullConfigList *DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigList `json:"LiveLazyPullConfigList,omitempty" xml:"LiveLazyPullConfigList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,58 +95,13 @@ func (s *DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigList) Val
 }
 
 type DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigListLiveLazyPullConfig struct {
-	// The name of the application.
-	//
-	// example:
-	//
-	// liveApp****
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The main streaming domain.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The name of the application for back-to-origin stream pulling. If the application specified in the streaming URL is used, this parameter is left empty.
-	//
-	// example:
-	//
-	// livePullApp****
-	PullAppName *string `json:"PullAppName,omitempty" xml:"PullAppName,omitempty"`
-	// The parameters of back-to-origin stream pulling.
-	//
-	// example:
-	//
-	// k=v
-	PullArgs *string `json:"PullArgs,omitempty" xml:"PullArgs,omitempty"`
-	// The domain name for back-to-origin stream pulling.
-	//
-	// example:
-	//
-	// guide.aliyundoc.com
+	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	PullAppName    *string `json:"PullAppName,omitempty" xml:"PullAppName,omitempty"`
+	PullArgs       *string `json:"PullArgs,omitempty" xml:"PullArgs,omitempty"`
 	PullDomainName *string `json:"PullDomainName,omitempty" xml:"PullDomainName,omitempty"`
-	// The protocol for back-to-origin stream pulling. Valid values:
-	//
-	// 	- **rtmp**
-	//
-	// 	- **httpflv**
-	//
-	// 	- **hls**
-	//
-	// example:
-	//
-	// RTMP
-	PullProtocol *string `json:"PullProtocol,omitempty" xml:"PullProtocol,omitempty"`
-	// Indicates whether stream pulling is triggered when the transcoded stream is played. Default value: **no**. Valid values:
-	//
-	// 	- **yes**
-	//
-	// 	- **no**
-	//
-	// example:
-	//
-	// no
-	TranscodeLazy *string `json:"TranscodeLazy,omitempty" xml:"TranscodeLazy,omitempty"`
+	PullProtocol   *string `json:"PullProtocol,omitempty" xml:"PullProtocol,omitempty"`
+	TranscodeLazy  *string `json:"TranscodeLazy,omitempty" xml:"TranscodeLazy,omitempty"`
 }
 
 func (s DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigListLiveLazyPullConfig) String() string {

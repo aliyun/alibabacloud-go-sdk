@@ -49,8 +49,7 @@ type DescribeLiveStreamsBlockListResponseBody struct {
 	// example:
 	//
 	// 9D855EC8-CF71-4615-B164-F7DFCB23B41D
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The complete URL of each live stream.
+	RequestId  *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StreamUrls *DescribeLiveStreamsBlockListResponseBodyStreamUrls `json:"StreamUrls,omitempty" xml:"StreamUrls,omitempty" type:"Struct"`
 	// The total number of live stream URLs that meet the specified conditions.
 	//

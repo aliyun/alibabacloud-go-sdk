@@ -21,8 +21,7 @@ type DescribeLiveDomainSnapshotDataResponseBody struct {
 	// example:
 	//
 	// B955107D-E658-4E77-B913-E0AC3D31693F
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The daily statistics on the number of snapshots.
+	RequestId         *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SnapshotDataInfos *DescribeLiveDomainSnapshotDataResponseBodySnapshotDataInfos `json:"SnapshotDataInfos,omitempty" xml:"SnapshotDataInfos,omitempty" type:"Struct"`
 }
 
@@ -96,18 +95,8 @@ func (s *DescribeLiveDomainSnapshotDataResponseBodySnapshotDataInfos) Validate()
 }
 
 type DescribeLiveDomainSnapshotDataResponseBodySnapshotDataInfosSnapshotDataInfo struct {
-	// The date.
-	//
-	// example:
-	//
-	// 20180209
-	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// The total number of snapshots that were captured on the day.
-	//
-	// example:
-	//
-	// 110
-	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	Date  *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	Total *int32  `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeLiveDomainSnapshotDataResponseBodySnapshotDataInfosSnapshotDataInfo) String() string {

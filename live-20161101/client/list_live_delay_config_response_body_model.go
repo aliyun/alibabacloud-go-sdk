@@ -18,7 +18,6 @@ type iListLiveDelayConfigResponseBody interface {
 }
 
 type ListLiveDelayConfigResponseBody struct {
-	// The stream delay configurations.
 	DelayConfigList *ListLiveDelayConfigResponseBodyDelayConfigList `json:"DelayConfigList,omitempty" xml:"DelayConfigList,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -113,41 +112,10 @@ func (s *ListLiveDelayConfigResponseBodyDelayConfigList) Validate() error {
 }
 
 type ListLiveDelayConfigResponseBodyDelayConfigListDelayConfig struct {
-	// The name of the application to which the live stream belongs.
-	//
-	// example:
-	//
-	// liveApp****
-	App *string `json:"App,omitempty" xml:"App,omitempty"`
-	// The duration for which the playback of the live stream is delayed. Unit: seconds.
-	//
-	// example:
-	//
-	// 60
-	DelayTime *string `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
-	// The main streaming domain.
-	//
-	// example:
-	//
-	// example.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The name of the live stream.
-	//
-	// example:
-	//
-	// liveStream****
-	Stream *string `json:"Stream,omitempty" xml:"Stream,omitempty"`
-	// The trigger mode. Valid values:
-	//
-	// 	- **PUBLISH_ONLY**: Stream delay can be triggered only by specifying the stream delay parameter in the ingest URL.
-	//
-	// 	- **CONFIG_ONLY**: Stream delay can be triggered only by the stream delay configuration.
-	//
-	// 	- **PUBLISH_CONFIG**: Stream delay can be triggered by the stream delay parameter in the ingest URL or the stream delay configuration. The stream delay parameter takes precedence over the stream delay configuration.
-	//
-	// example:
-	//
-	// PUBLISH_ONLY
+	App             *string `json:"App,omitempty" xml:"App,omitempty"`
+	DelayTime       *string `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
+	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Stream          *string `json:"Stream,omitempty" xml:"Stream,omitempty"`
 	TaskTriggerMode *string `json:"TaskTriggerMode,omitempty" xml:"TaskTriggerMode,omitempty"`
 }
 

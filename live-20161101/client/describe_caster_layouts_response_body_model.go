@@ -18,7 +18,6 @@ type iDescribeCasterLayoutsResponseBody interface {
 }
 
 type DescribeCasterLayoutsResponseBody struct {
-	// The layouts.
 	Layouts *DescribeCasterLayoutsResponseBodyLayouts `json:"Layouts,omitempty" xml:"Layouts,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -117,19 +116,10 @@ func (s *DescribeCasterLayoutsResponseBodyLayouts) Validate() error {
 }
 
 type DescribeCasterLayoutsResponseBodyLayoutsLayout struct {
-	// The configurations of the audio layers.
 	AudioLayers *DescribeCasterLayoutsResponseBodyLayoutsLayoutAudioLayers `json:"AudioLayers,omitempty" xml:"AudioLayers,omitempty" type:"Struct"`
-	// The location IDs of the video layers, which are in the same order as the video layers.
-	BlendList *DescribeCasterLayoutsResponseBodyLayoutsLayoutBlendList `json:"BlendList,omitempty" xml:"BlendList,omitempty" type:"Struct"`
-	// The ID of the layout.
-	//
-	// example:
-	//
-	// 72d2ec7a-4cd7-4a01-974b-7cd53947****
-	LayoutId *string `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
-	// The location IDs of the audio layers, which are in the same order as the audio layers.
-	MixList *DescribeCasterLayoutsResponseBodyLayoutsLayoutMixList `json:"MixList,omitempty" xml:"MixList,omitempty" type:"Struct"`
-	// The configurations of the video layers, which are in the default array sequence.
+	BlendList   *DescribeCasterLayoutsResponseBodyLayoutsLayoutBlendList   `json:"BlendList,omitempty" xml:"BlendList,omitempty" type:"Struct"`
+	LayoutId    *string                                                    `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+	MixList     *DescribeCasterLayoutsResponseBodyLayoutsLayoutMixList     `json:"MixList,omitempty" xml:"MixList,omitempty" type:"Struct"`
 	VideoLayers *DescribeCasterLayoutsResponseBodyLayoutsLayoutVideoLayers `json:"VideoLayers,omitempty" xml:"VideoLayers,omitempty" type:"Struct"`
 }
 
@@ -245,34 +235,9 @@ func (s *DescribeCasterLayoutsResponseBodyLayoutsLayoutAudioLayers) Validate() e
 }
 
 type DescribeCasterLayoutsResponseBodyLayoutsLayoutAudioLayersAudioLayer struct {
-	// The fixed delay of the audio layer. This parameter is used to synchronize the audio with subtitles.
-	//
-	// Unit: milliseconds. Default value: **0**. Valid values: **0 to 5000**.
-	//
-	// example:
-	//
-	// 20
-	FixedDelayDuration *int32 `json:"FixedDelayDuration,omitempty" xml:"FixedDelayDuration,omitempty"`
-	// The sound channels that are used for volume input in the audio layer. Valid values:
-	//
-	// 	- **leftChannel**: the left channel
-	//
-	// 	- **rightChannel**: the right channel
-	//
-	// 	- **all*	- (default): both the left and right channels
-	//
-	// example:
-	//
-	// all
-	ValidChannel *string `json:"ValidChannel,omitempty" xml:"ValidChannel,omitempty"`
-	// The normalized value of the height of the audio layer. The width of the audio layer is proportionally scaled based on this parameter.
-	//
-	// >  The default value is **0**, which indicates that the audio layer is not scaled.
-	//
-	// example:
-	//
-	// 1
-	VolumeRate *float32 `json:"VolumeRate,omitempty" xml:"VolumeRate,omitempty"`
+	FixedDelayDuration *int32   `json:"FixedDelayDuration,omitempty" xml:"FixedDelayDuration,omitempty"`
+	ValidChannel       *string  `json:"ValidChannel,omitempty" xml:"ValidChannel,omitempty"`
+	VolumeRate         *float32 `json:"VolumeRate,omitempty" xml:"VolumeRate,omitempty"`
 }
 
 func (s DescribeCasterLayoutsResponseBodyLayoutsLayoutAudioLayersAudioLayer) String() string {
@@ -399,72 +364,12 @@ func (s *DescribeCasterLayoutsResponseBodyLayoutsLayoutVideoLayers) Validate() e
 }
 
 type DescribeCasterLayoutsResponseBodyLayoutsLayoutVideoLayersVideoLayer struct {
-	// The scaling mode of the video layer. Valid values:
-	//
-	// 	- **none*	- (default): specifies that the video layer is not scaled. The video layer is displayed based on its original size.
-	//
-	// 	- **fit**: specifies that the video layer is adapted to the fill area. The video layer is displayed based on the fill area. In this case, the video layer is scaled proportionally, with its original aspect ratio retained. The video layer is placed in the center, with its longer sides aligned with the fill area. If the aspect ratio of the video layer is different from that of the fill area, the content of the lower layer is displayed alongside the shorter sides. If there is no lower layer, black bars are displayed instead.
-	//
-	// example:
-	//
-	// fit
-	FillMode *string `json:"FillMode,omitempty" xml:"FillMode,omitempty"`
-	// The fixed delay of the video layer. This parameter is used to synchronize the video with subtitles.
-	//
-	// Unit: milliseconds. Default value: **0**. Valid values: **0 to 5000**.
-	//
-	// example:
-	//
-	// 20
-	FixedDelayDuration *int32 `json:"FixedDelayDuration,omitempty" xml:"FixedDelayDuration,omitempty"`
-	// The normalized value of the height of the video layer.
-	//
-	// 	- If the FillMode parameter of the video layer is set to none, the width of the video layer is proportionally scaled based on this parameter. The default value is **0**, which indicates that the video layer is not scaled.
-	//
-	// 	- If the FillMode parameter of the video layer is set to fit, the value of this parameter is greater than **0**.
-	//
-	// example:
-	//
-	// 0.5
-	HeightNormalized *float32 `json:"HeightNormalized,omitempty" xml:"HeightNormalized,omitempty"`
-	// The normalized value of the position of the video layer, in the format of `[x,y]`. Default value: `[0,0]`.
-	//
-	// >  The values of x and y are normalized.
+	FillMode            *string                                                                                 `json:"FillMode,omitempty" xml:"FillMode,omitempty"`
+	FixedDelayDuration  *int32                                                                                  `json:"FixedDelayDuration,omitempty" xml:"FixedDelayDuration,omitempty"`
+	HeightNormalized    *float32                                                                                `json:"HeightNormalized,omitempty" xml:"HeightNormalized,omitempty"`
 	PositionNormalizeds *DescribeCasterLayoutsResponseBodyLayoutsLayoutVideoLayersVideoLayerPositionNormalizeds `json:"PositionNormalizeds,omitempty" xml:"PositionNormalizeds,omitempty" type:"Struct"`
-	// The reference coordinates of the video layer. Valid values:
-	//
-	// 	- **topLeft*	- (default): the upper-left corner
-	//
-	// 	- **topRight**: the upper-right corner
-	//
-	// 	- **bottomLeft**: the lower-left corner
-	//
-	// 	- **bottomRight**: the lower-right corner
-	//
-	// 	- **center**: the center
-	//
-	// 	- **topCenter**: the upper center
-	//
-	// 	- **bottomCenter**: the lower center
-	//
-	// 	- **leftCenter**: the left center
-	//
-	// 	- **rightCenter**: the right center
-	//
-	// example:
-	//
-	// topLeft
-	PositionRefer *string `json:"PositionRefer,omitempty" xml:"PositionRefer,omitempty"`
-	// The normalized value of the width of the video layer.
-	//
-	// 	- If the FillMode parameter of the video layer is set to none, the height of the video layer is scaled based on this parameter. The default value is **0**, which indicates that the video layer is not scaled.
-	//
-	// 	- If the FillMode parameter of the video layer is set to fit, the value of this parameter is greater than **0**.
-	//
-	// example:
-	//
-	// 0.5
-	WidthNormalized *float32 `json:"WidthNormalized,omitempty" xml:"WidthNormalized,omitempty"`
+	PositionRefer       *string                                                                                 `json:"PositionRefer,omitempty" xml:"PositionRefer,omitempty"`
+	WidthNormalized     *float32                                                                                `json:"WidthNormalized,omitempty" xml:"WidthNormalized,omitempty"`
 }
 
 func (s DescribeCasterLayoutsResponseBodyLayoutsLayoutVideoLayersVideoLayer) String() string {

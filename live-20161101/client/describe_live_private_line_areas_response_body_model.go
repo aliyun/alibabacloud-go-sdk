@@ -16,7 +16,6 @@ type iDescribeLivePrivateLineAreasResponseBody interface {
 }
 
 type DescribeLivePrivateLineAreasResponseBody struct {
-	// Details about the regions.
 	LiveAreasList *DescribeLivePrivateLineAreasResponseBodyLiveAreasList `json:"LiveAreasList,omitempty" xml:"LiveAreasList,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,18 +95,8 @@ func (s *DescribeLivePrivateLineAreasResponseBodyLiveAreasList) Validate() error
 }
 
 type DescribeLivePrivateLineAreasResponseBodyLiveAreasListLiveArea struct {
-	// The region type. Valid values:
-	//
-	// 	- domestic: in the Chinese mainland
-	//
-	// 	- overseas: outside the Chinese mainland
-	//
-	// example:
-	//
-	// domestic
-	RegionType *string `json:"RegionType,omitempty" xml:"RegionType,omitempty"`
-	// The regions.
-	Regions *DescribeLivePrivateLineAreasResponseBodyLiveAreasListLiveAreaRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	RegionType *string                                                               `json:"RegionType,omitempty" xml:"RegionType,omitempty"`
+	Regions    *DescribeLivePrivateLineAreasResponseBodyLiveAreasListLiveAreaRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 }
 
 func (s DescribeLivePrivateLineAreasResponseBodyLiveAreasListLiveArea) String() string {
@@ -180,18 +169,8 @@ func (s *DescribeLivePrivateLineAreasResponseBodyLiveAreasListLiveAreaRegions) V
 }
 
 type DescribeLivePrivateLineAreasResponseBodyLiveAreasListLiveAreaRegionsRegion struct {
-	// The region name.
-	//
-	// example:
-	//
-	// cn-shenzhen
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-shenzhen
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeLivePrivateLineAreasResponseBodyLiveAreasListLiveAreaRegionsRegion) String() string {

@@ -18,7 +18,6 @@ type iAddCasterEpisodeGroupResponseBody interface {
 }
 
 type AddCasterEpisodeGroupResponseBody struct {
-	// The IDs of the episodes.
 	ItemIds *AddCasterEpisodeGroupResponseBodyItemIds `json:"ItemIds,omitempty" xml:"ItemIds,omitempty" type:"Struct"`
 	// The ID of the episode list that was added. Record the ID as it can be used to manage the program being added.
 	//

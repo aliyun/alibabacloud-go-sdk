@@ -31,8 +31,7 @@ type DeleteSnapshotFilesResponseBody struct {
 	// example:
 	//
 	// 90F60327-ABEC-5A93-BF1F-****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the snapshots.
+	RequestId              *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SnapshotDeleteInfoList *DeleteSnapshotFilesResponseBodySnapshotDeleteInfoList `json:"SnapshotDeleteInfoList,omitempty" xml:"SnapshotDeleteInfoList,omitempty" type:"Struct"`
 	// The number of successful screenshot deletions.
 	//
@@ -130,22 +129,8 @@ func (s *DeleteSnapshotFilesResponseBodySnapshotDeleteInfoList) Validate() error
 }
 
 type DeleteSnapshotFilesResponseBodySnapshotDeleteInfoListSnapshotDeleteInfo struct {
-	// The timestamp when the snapshot was captured. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1653641526637
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The processing result of the snapshot. Valid values:
-	//
-	// 	- **OK**: The snapshot was deleted.
-	//
-	// 	- **FileNotFound**: The snapshot was not found.
-	//
-	// example:
-	//
-	// OK
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s DeleteSnapshotFilesResponseBodySnapshotDeleteInfoListSnapshotDeleteInfo) String() string {

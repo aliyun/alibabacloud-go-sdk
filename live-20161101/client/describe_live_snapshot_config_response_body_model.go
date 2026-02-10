@@ -26,7 +26,6 @@ type iDescribeLiveSnapshotConfigResponseBody interface {
 }
 
 type DescribeLiveSnapshotConfigResponseBody struct {
-	// The snapshot configurations.
 	LiveStreamSnapshotConfigList *DescribeLiveSnapshotConfigResponseBodyLiveStreamSnapshotConfigList `json:"LiveStreamSnapshotConfigList,omitempty" xml:"LiveStreamSnapshotConfigList,omitempty" type:"Struct"`
 	// The sort order.
 	//
@@ -181,60 +180,15 @@ func (s *DescribeLiveSnapshotConfigResponseBodyLiveStreamSnapshotConfigList) Val
 }
 
 type DescribeLiveSnapshotConfigResponseBodyLiveStreamSnapshotConfigListLiveStreamSnapshotConfig struct {
-	// The name of the application to which the live stream belongs.
-	//
-	// example:
-	//
-	// liveApp****
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The callback URL that is used to receive notifications about snapshot capture.
-	//
-	// example:
-	//
-	// https://learn.aliyundoc.com
-	Callback *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
-	// The time when the configuration was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2016-05-20T01:33:38Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The main streaming domain.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The name of the Object Storage Service (OSS) bucket.
-	//
-	// example:
-	//
-	// liveBucket****
-	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	// The endpoint of the OSS bucket.
-	//
-	// example:
-	//
-	// cn-oss-****.aliyuncs.com
-	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	// The naming format of snapshots that are stored in the overwrite mode, which means that a new snapshot overwrites the previous snapshot.
-	//
-	// example:
-	//
-	// {liveApp****}/{liveStream****}.jpg
+	AppName            *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Callback           *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DomainName         *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	OssBucket          *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint        *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 	OverwriteOssObject *string `json:"OverwriteOssObject,omitempty" xml:"OverwriteOssObject,omitempty"`
-	// The naming format of snapshots that are stored in sequence, which means that a new snapshot does not overwrite the previous snapshot.
-	//
-	// example:
-	//
-	// snapshot/{liveApp****}/{liveStream****}/{UnixTimestamp}.jpg
-	SequenceOssObject *string `json:"SequenceOssObject,omitempty" xml:"SequenceOssObject,omitempty"`
-	// The interval at which snapshots are captured. Unit: seconds.
-	//
-	// example:
-	//
-	// 10
-	TimeInterval *int32 `json:"TimeInterval,omitempty" xml:"TimeInterval,omitempty"`
+	SequenceOssObject  *string `json:"SequenceOssObject,omitempty" xml:"SequenceOssObject,omitempty"`
+	TimeInterval       *int32  `json:"TimeInterval,omitempty" xml:"TimeInterval,omitempty"`
 }
 
 func (s DescribeLiveSnapshotConfigResponseBodyLiveStreamSnapshotConfigListLiveStreamSnapshotConfig) String() string {

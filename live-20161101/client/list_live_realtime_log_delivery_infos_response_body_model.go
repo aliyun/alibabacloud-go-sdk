@@ -16,7 +16,6 @@ type iListLiveRealtimeLogDeliveryInfosResponseBody interface {
 }
 
 type ListLiveRealtimeLogDeliveryInfosResponseBody struct {
-	// Details about the configuration of real-time log delivery.
 	Content *ListLiveRealtimeLogDeliveryInfosResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,24 +95,9 @@ func (s *ListLiveRealtimeLogDeliveryInfosResponseBodyContent) Validate() error {
 }
 
 type ListLiveRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos struct {
-	// The name of the Logstore to which log entries are delivered.
-	//
-	// example:
-	//
-	// logstore_example
 	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
-	// The name of the Log Service project that is used for real-time log delivery.
-	//
-	// example:
-	//
-	// project_example
-	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// The ID of the region where the Log Service project is deployed.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Project  *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s ListLiveRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos) String() string {

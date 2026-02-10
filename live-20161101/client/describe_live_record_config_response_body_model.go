@@ -26,7 +26,6 @@ type iDescribeLiveRecordConfigResponseBody interface {
 }
 
 type DescribeLiveRecordConfigResponseBody struct {
-	// The list of recording configurations.
 	LiveAppRecordList *DescribeLiveRecordConfigResponseBodyLiveAppRecordList `json:"LiveAppRecordList,omitempty" xml:"LiveAppRecordList,omitempty" type:"Struct"`
 	// The sorting order of recording configurations by creation time.
 	//
@@ -181,82 +180,19 @@ func (s *DescribeLiveRecordConfigResponseBodyLiveAppRecordList) Validate() error
 }
 
 type DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecord struct {
-	// The name of the application to which the live stream belongs.
-	//
-	// example:
-	//
-	// liveApp****
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The time when the recording configuration was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2016-05-20T09:33:38Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The maximum interruption duration of the live stream. If the actual interruption duration exceeds the threshold, a new recording is generated. Valid values: 15 to 21600. Unit: seconds.
-	//
-	// example:
-	//
-	// 180
-	DelayTime *int32 `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
-	// The name of the main streaming domain.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end time of the recording. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2018-11-08T03:49:18Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The configuration of on-demand recording. Valid values:
-	//
-	// 	- **0**: disables on-demand recording.
-	//
-	// 	- **1**: enables on-demand recording that is triggered by HTTP callbacks.
-	//
-	// 	- **2**: enables on-demand recording that is triggered by stream ingest parameters.
-	//
-	// 	- **7**: enables on-demand recording by calling the [RealTimeRecordCommand](https://help.aliyun.com/document_detail/85907.html) operation to manually start or stop recording.
-	//
-	// >  If you set OnDemand to **1**, you must call the [AddLiveRecordNotifyConfig](https://help.aliyun.com/document_detail/51831.html) operation to configure OnDemandUrl. Otherwise, the configuration of on-demand recording is invalid.
-	//
-	// example:
-	//
-	// 0
-	OnDemond *int32 `json:"OnDemond,omitempty" xml:"OnDemond,omitempty"`
-	// The name of the Object Storage Service (OSS) bucket in which the recordings are stored.
-	//
-	// example:
-	//
-	// liveBucket****
-	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	// The endpoint of the OSS bucket.
-	//
-	// example:
-	//
-	// cn-oss-****.aliyuncs.com
-	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	// The recording formats of original streams.
-	RecordFormatList *DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecordRecordFormatList `json:"RecordFormatList,omitempty" xml:"RecordFormatList,omitempty" type:"Struct"`
-	// The start time of the recording. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2018-11-08T02:49:18Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the live stream.
-	//
-	// example:
-	//
-	// liveStream****
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The recording formats of transcoded streams.
+	AppName                   *string                                                                                      `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	CreateTime                *string                                                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DelayTime                 *int32                                                                                       `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
+	DomainName                *string                                                                                      `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime                   *string                                                                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OnDemond                  *int32                                                                                       `json:"OnDemond,omitempty" xml:"OnDemond,omitempty"`
+	OssBucket                 *string                                                                                      `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint               *string                                                                                      `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	RecordFormatList          *DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecordRecordFormatList          `json:"RecordFormatList,omitempty" xml:"RecordFormatList,omitempty" type:"Struct"`
+	StartTime                 *string                                                                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StreamName                *string                                                                                      `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
 	TranscodeRecordFormatList *DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecordTranscodeRecordFormatList `json:"TranscodeRecordFormatList,omitempty" xml:"TranscodeRecordFormatList,omitempty" type:"Struct"`
-	// The transcoding templates.
-	TranscodeTemplates *DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecordTranscodeTemplates `json:"TranscodeTemplates,omitempty" xml:"TranscodeTemplates,omitempty" type:"Struct"`
+	TranscodeTemplates        *DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecordTranscodeTemplates        `json:"TranscodeTemplates,omitempty" xml:"TranscodeTemplates,omitempty" type:"Struct"`
 }
 
 func (s DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecord) String() string {
@@ -438,35 +374,10 @@ func (s *DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecordRecor
 }
 
 type DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecordRecordFormatListRecordFormat struct {
-	// The duration of a recording file. Unit: seconds.
-	//
-	// example:
-	//
-	// 3600
-	CycleDuration *int32 `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
-	// The format of recording files.
-	//
-	// example:
-	//
-	// M3U8
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The naming format of a recording file.
-	//
-	// example:
-	//
-	// record/{liveApp****}/{liveStream****}
-	OssObjectPrefix *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
-	// The duration of a segment file. Unit: seconds.
-	//
-	// example:
-	//
-	// 30
-	SliceDuration *int32 `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
-	// The naming format of a segment file.
-	//
-	// example:
-	//
-	// record/{liveApp****}/{liveStream****}/{UnixTimestamp}
+	CycleDuration        *int32  `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
+	Format               *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	OssObjectPrefix      *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
+	SliceDuration        *int32  `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
 	SliceOssObjectPrefix *string `json:"SliceOssObjectPrefix,omitempty" xml:"SliceOssObjectPrefix,omitempty"`
 }
 
@@ -562,35 +473,10 @@ func (s *DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecordTrans
 }
 
 type DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecordTranscodeRecordFormatListRecordFormat struct {
-	// The duration of a recording file. Unit: seconds.
-	//
-	// example:
-	//
-	// 3600
-	CycleDuration *int32 `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
-	// The format of recording files.
-	//
-	// example:
-	//
-	// M3U8
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The naming format of a recording file.
-	//
-	// example:
-	//
-	// record/{liveApp****}/{liveStream****}
-	OssObjectPrefix *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
-	// The duration of a segment file. Unit: seconds.
-	//
-	// example:
-	//
-	// 30
-	SliceDuration *int32 `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
-	// The naming format of a segment file.
-	//
-	// example:
-	//
-	// record/{liveApp****}/{liveStream****}/{UnixTimestamp}
+	CycleDuration        *int32  `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
+	Format               *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	OssObjectPrefix      *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
+	SliceDuration        *int32  `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
 	SliceOssObjectPrefix *string `json:"SliceOssObjectPrefix,omitempty" xml:"SliceOssObjectPrefix,omitempty"`
 }
 

@@ -18,7 +18,6 @@ type iListEdgeTranscodeJobResponseBody interface {
 }
 
 type ListEdgeTranscodeJobResponseBody struct {
-	// The edge transcoding tasks.
 	JobList *ListEdgeTranscodeJobResponseBodyJobList `json:"JobList,omitempty" xml:"JobList,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -113,82 +112,17 @@ func (s *ListEdgeTranscodeJobResponseBodyJobList) Validate() error {
 }
 
 type ListEdgeTranscodeJobResponseBodyJobListJob struct {
-	// The time when the task was created.
-	//
-	// example:
-	//
-	// 2023-07-24T16:44:55Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the task.
-	//
-	// example:
-	//
-	// ****20b48fb04483915d4f2cd8ac****
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The time when the task was last started.
-	//
-	// example:
-	//
-	// 2023-07-25T02:48:58Z
-	LastStartAt *string `json:"LastStartAt,omitempty" xml:"LastStartAt,omitempty"`
-	// The time when the task was last stopped.
-	//
-	// example:
-	//
-	// 2023-07-25T05:48:58Z
-	LastStopAt *string `json:"LastStopAt,omitempty" xml:"LastStopAt,omitempty"`
-	// The name of the task.
-	//
-	// example:
-	//
-	// my_job
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The status of the task. Valid values:
-	//
-	// 	- 0: not started
-	//
-	// 	- 1: in progress
-	//
-	// example:
-	//
-	// 0
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The URL of the input stream.
-	//
-	// example:
-	//
-	// rtmp://mydomain/app/stream1
-	StreamInput *string `json:"StreamInput,omitempty" xml:"StreamInput,omitempty"`
-	// The URL of the output stream.
-	//
-	// example:
-	//
-	// rtmp://testdomain/app/stream2
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	LastStartAt  *string `json:"LastStartAt,omitempty" xml:"LastStartAt,omitempty"`
+	LastStopAt   *string `json:"LastStopAt,omitempty" xml:"LastStopAt,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StreamInput  *string `json:"StreamInput,omitempty" xml:"StreamInput,omitempty"`
 	StreamOutput *string `json:"StreamOutput,omitempty" xml:"StreamOutput,omitempty"`
-	// The ID of the edge transcoding template used by the task.
-	//
-	// example:
-	//
-	// 9b1571b513cb44f7a1ba6ae561ff****
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The name of the edge transcoding template used by the task.
-	//
-	// example:
-	//
-	// my_template
+	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The type of edge transcoding. Valid values:
-	//
-	// 	- common: standard transcoding and Narrowband HD™ 1.0 transcoding.
-	//
-	// 	- nbhd-2: Narrowband HD™ 2.0 transcoding
-	//
-	// 	- ultra-hd: ultra-high definition transcoding
-	//
-	// example:
-	//
-	// common
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListEdgeTranscodeJobResponseBodyJobListJob) String() string {

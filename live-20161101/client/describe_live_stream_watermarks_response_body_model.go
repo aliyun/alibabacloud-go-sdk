@@ -29,8 +29,7 @@ type DescribeLiveStreamWatermarksResponseBody struct {
 	// example:
 	//
 	// 100
-	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
-	// Details of the watermark templates.
+	Total         *int32                                                 `json:"Total,omitempty" xml:"Total,omitempty"`
 	WatermarkList *DescribeLiveStreamWatermarksResponseBodyWatermarkList `json:"WatermarkList,omitempty" xml:"WatermarkList,omitempty" type:"Struct"`
 }
 
@@ -113,100 +112,19 @@ func (s *DescribeLiveStreamWatermarksResponseBodyWatermarkList) Validate() error
 }
 
 type DescribeLiveStreamWatermarksResponseBodyWatermarkListWatermark struct {
-	// The description of the watermark.
-	//
-	// example:
-	//
-	// my watermark
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The height of the watermark. Unit: pixels.
-	//
-	// example:
-	//
-	// 200
-	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The name of the watermark.
-	//
-	// example:
-	//
-	// livewatermark****
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The position of the watermark.
-	//
-	// 	- TopLeft: the upper-left corner.
-	//
-	// 	- TopRight: the upper-right corner.
-	//
-	// 	- BottomLeft: the lower-left corner.
-	//
-	// 	- BottomRight: the lower-right corner.
-	//
-	// example:
-	//
-	// TopRight
-	OffsetCorner *string `json:"OffsetCorner,omitempty" xml:"OffsetCorner,omitempty"`
-	// The URL of the watermark image.
-	//
-	// example:
-	//
-	// http://example.com
-	PictureUrl *string `json:"PictureUrl,omitempty" xml:"PictureUrl,omitempty"`
-	// The height of the background video. Unit: pixels.
-	//
-	// example:
-	//
-	// 1080
-	RefHeight *int32 `json:"RefHeight,omitempty" xml:"RefHeight,omitempty"`
-	// The width of the background video. Unit: pixels.
-	//
-	// example:
-	//
-	// 1920
-	RefWidth *int32 `json:"RefWidth,omitempty" xml:"RefWidth,omitempty"`
-	// The number of watermark rules configured for the domain name.
-	//
-	// example:
-	//
-	// 12
-	RuleCount *int32 `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
-	// The ID of the watermark template.
-	//
-	// example:
-	//
-	// 445409ec-7eaa-4 61d-8f29-4bec2eb9 ****
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The transparency of the watermark. A smaller value indicates a more transparent watermark. Valid values: 0 to 255.
-	//
-	// example:
-	//
-	// 255
-	Transparency *int32 `json:"Transparency,omitempty" xml:"Transparency,omitempty"`
-	// The watermark type.
-	//
-	// 	- 0: image. Only image watermarks are supported.
-	//
-	// 	- 1: text.
-	//
-	// example:
-	//
-	// 0
-	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The offset of the watermark along the x-axis. Unit: pixels.
-	//
-	// >  The value of the RefWidth parameter is used as the reference. If the OffsetCorner parameter is set to TopLeft, the value of the XOffset parameter indicates the x-axis offset of the upper-left corner of the watermark relative to that of the background video. The directions from the coordinate axes to the center of the background video are positive. In other words, the x-axis is positive toward the right.
-	//
-	// example:
-	//
-	// 50.0
-	XOffset *float32 `json:"XOffset,omitempty" xml:"XOffset,omitempty"`
-	// The offset of the watermark along the y-axis. Unit: pixels.
-	//
-	// >  The value of the RefHeight parameter is used as the reference. If the OffsetCorner parameter is set to TopLeft, the value of the YOffset parameter indicates the y-axis offset of the upper-left corner of the watermark relative to that of the background video. The directions from the coordinate axes to the center of the background video are positive. In other words, the y-axis is positive downward.
-	//
-	// example:
-	//
-	// 100.0
-	YOffset *float32 `json:"YOffset,omitempty" xml:"YOffset,omitempty"`
+	Description  *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Height       *int32   `json:"Height,omitempty" xml:"Height,omitempty"`
+	Name         *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	OffsetCorner *string  `json:"OffsetCorner,omitempty" xml:"OffsetCorner,omitempty"`
+	PictureUrl   *string  `json:"PictureUrl,omitempty" xml:"PictureUrl,omitempty"`
+	RefHeight    *int32   `json:"RefHeight,omitempty" xml:"RefHeight,omitempty"`
+	RefWidth     *int32   `json:"RefWidth,omitempty" xml:"RefWidth,omitempty"`
+	RuleCount    *int32   `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
+	TemplateId   *string  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Transparency *int32   `json:"Transparency,omitempty" xml:"Transparency,omitempty"`
+	Type         *int32   `json:"Type,omitempty" xml:"Type,omitempty"`
+	XOffset      *float32 `json:"XOffset,omitempty" xml:"XOffset,omitempty"`
+	YOffset      *float32 `json:"YOffset,omitempty" xml:"YOffset,omitempty"`
 }
 
 func (s DescribeLiveStreamWatermarksResponseBodyWatermarkListWatermark) String() string {

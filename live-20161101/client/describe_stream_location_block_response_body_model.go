@@ -47,8 +47,7 @@ type DescribeStreamLocationBlockResponseBody struct {
 	// example:
 	//
 	// C7C69682-7F88-40DD-A198-10D0309E439B
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The configurations.
+	RequestId       *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StreamBlockList *DescribeStreamLocationBlockResponseBodyStreamBlockList `json:"StreamBlockList,omitempty" xml:"StreamBlockList,omitempty" type:"Struct"`
 	// The total number of pages.
 	//
@@ -164,58 +163,14 @@ func (s *DescribeStreamLocationBlockResponseBodyStreamBlockList) Validate() erro
 }
 
 type DescribeStreamLocationBlockResponseBodyStreamBlockListStreamBlock struct {
-	// The name of the application in which the blocking applies.
-	//
-	// example:
-	//
-	// liveApp****
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The blocking type. Valid values:
-	//
-	// 	- blacklist
-	//
-	// 	- whitelist
-	//
-	// example:
-	//
-	// blacklist
-	BlockType *string `json:"BlockType,omitempty" xml:"BlockType,omitempty"`
-	// The accelerated domain name.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The blocked region. If multiple regions are specified, such as CN and AS, they are separated by commas (,).
-	//
-	// example:
-	//
-	// CN
+	AppName      *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BlockType    *string `json:"BlockType,omitempty" xml:"BlockType,omitempty"`
+	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	LocationList *string `json:"LocationList,omitempty" xml:"LocationList,omitempty"`
-	// The time when the blocking ends. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2023-08-13T09:27Z
-	ReleaseTime *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
-	// The blocking status. Valid values: 0 (not started), 1 (blocking), 2 (successful), 3 (failed), 4 (expired), and 5 (deleting).
-	//
-	// example:
-	//
-	// 0
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the stream.
-	//
-	// example:
-	//
-	// stream
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The time when the configuration was last modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2023-08-14T09:27Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	ReleaseTime  *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
+	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	StreamName   *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	UpdateTime   *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeStreamLocationBlockResponseBodyStreamBlockListStreamBlock) String() string {

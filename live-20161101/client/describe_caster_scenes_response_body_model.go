@@ -23,8 +23,7 @@ type DescribeCasterScenesResponseBody struct {
 	// example:
 	//
 	// The ID of the scene.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The scenes.
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SceneList *DescribeCasterScenesResponseBodySceneList `json:"SceneList,omitempty" xml:"SceneList,omitempty" type:"Struct"`
 	// The total number of entries.
 	//
@@ -113,54 +112,14 @@ func (s *DescribeCasterScenesResponseBodySceneList) Validate() error {
 }
 
 type DescribeCasterScenesResponseBodySceneListScene struct {
-	// The components.
 	ComponentIds *DescribeCasterScenesResponseBodySceneListSceneComponentIds `json:"ComponentIds,omitempty" xml:"ComponentIds,omitempty" type:"Struct"`
-	// The ID of the layout.
-	//
-	// example:
-	//
-	// 37cb2f8b-f152-4338-b928-6704f71d****
-	LayoutId *string `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
-	// Indicates whether the output video is in PVW mode or PGM mode. Valid values:
-	//
-	// 	- **0**: in PVW mode.
-	//
-	// 	- **1**: in PGM mode.
-	//
-	// example:
-	//
-	// 0
-	OutputType *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
-	// The ID of the scene. You can use the ID as a request parameter in the API operation that is used to modify the audio configurations of the scene, query the audio configurations of the scene, start the scene, or stop the scene.
-	//
-	// example:
-	//
-	// b5f8c837-ceeb-424f-b30b-68e94e86****
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// The name of the scene.
-	//
-	// example:
-	//
-	// scene1
-	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	// The status of the scene. Valid values:
-	//
-	// 	- **0**: disabled
-	//
-	// 	- **1**: enabled
-	//
-	// example:
-	//
-	// 0
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The information about the stream.
-	StreamInfos *DescribeCasterScenesResponseBodySceneListSceneStreamInfos `json:"StreamInfos,omitempty" xml:"StreamInfos,omitempty" type:"Struct"`
-	// The URL of the output stream.
-	//
-	// example:
-	//
-	// rtmp://developer.aliyundoc.com/caster/4a82a3d1b7f0462ea37348366201****?auth_key=1608953344-0-0-ac8c628078541d7055a170ec59a5****
-	StreamUrl *string `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
+	LayoutId     *string                                                     `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+	OutputType   *string                                                     `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
+	SceneId      *string                                                     `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneName    *string                                                     `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	Status       *int32                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	StreamInfos  *DescribeCasterScenesResponseBodySceneListSceneStreamInfos  `json:"StreamInfos,omitempty" xml:"StreamInfos,omitempty" type:"Struct"`
+	StreamUrl    *string                                                     `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
 }
 
 func (s DescribeCasterScenesResponseBodySceneListScene) String() string {
@@ -317,38 +276,9 @@ func (s *DescribeCasterScenesResponseBodySceneListSceneStreamInfos) Validate() e
 }
 
 type DescribeCasterScenesResponseBodySceneListSceneStreamInfosStreamInfo struct {
-	// The streaming URL.
-	//
-	// example:
-	//
-	// http://live/caster/example.net
 	OutputStreamUrl *string `json:"OutputStreamUrl,omitempty" xml:"OutputStreamUrl,omitempty"`
-	// The transcoding configuration. Valid values:
-	//
-	// 	- **sd**: standard definition
-	//
-	// 	- **lld**: low definition
-	//
-	// 	- **lud**: ultra-high definition
-	//
-	// 	- **lhd**: high definition
-	//
-	// example:
-	//
-	// lld
 	TranscodeConfig *string `json:"TranscodeConfig,omitempty" xml:"TranscodeConfig,omitempty"`
-	// The format. Valid values:
-	//
-	// 	- **flv**
-	//
-	// 	- **mp4**
-	//
-	// 	- **m3u8**
-	//
-	// example:
-	//
-	// flv
-	VideoFormat *string `json:"VideoFormat,omitempty" xml:"VideoFormat,omitempty"`
+	VideoFormat     *string `json:"VideoFormat,omitempty" xml:"VideoFormat,omitempty"`
 }
 
 func (s DescribeCasterScenesResponseBodySceneListSceneStreamInfosStreamInfo) String() string {

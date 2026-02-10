@@ -18,7 +18,6 @@ type iDescribeLiveStreamSnapshotInfoResponseBody interface {
 }
 
 type DescribeLiveStreamSnapshotInfoResponseBody struct {
-	// The snapshots.
 	LiveStreamSnapshotInfoList *DescribeLiveStreamSnapshotInfoResponseBodyLiveStreamSnapshotInfoList `json:"LiveStreamSnapshotInfoList,omitempty" xml:"LiveStreamSnapshotInfoList,omitempty" type:"Struct"`
 	// The time when the next call occurred. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	//
@@ -115,46 +114,12 @@ func (s *DescribeLiveStreamSnapshotInfoResponseBodyLiveStreamSnapshotInfoList) V
 }
 
 type DescribeLiveStreamSnapshotInfoResponseBodyLiveStreamSnapshotInfoListLiveStreamSnapshotInfo struct {
-	// The time when the snapshot was captured. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2015-12-01T17:36:00Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The timestamp when the snapshot file was created. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1653641526637
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The snapshot mode. Valid values:
-	//
-	// 	- **true**: overwrite mode, which means that a new snapshot overwrites the previous snapshot.
-	//
-	// 	- **false**: sequence mode, which means that a new snapshot does not overwrite the previous snapshot.
-	//
-	// example:
-	//
-	// false
-	IsOverlay *bool `json:"IsOverlay,omitempty" xml:"IsOverlay,omitempty"`
-	// The name of the OSS bucket.
-	//
-	// example:
-	//
-	// liveBucket****
-	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	// The endpoint of the OSS bucket.
-	//
-	// example:
-	//
-	// cn-oss-****.aliyuncs.com
-	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	// The name of the snapshot stored in Object Storage Service (OSS).
-	//
-	// example:
-	//
-	// {liveApp****}/{liveStream****}.jpg
-	OssObject *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	IsOverlay       *bool   `json:"IsOverlay,omitempty" xml:"IsOverlay,omitempty"`
+	OssBucket       *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint     *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	OssObject       *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
 }
 
 func (s DescribeLiveStreamSnapshotInfoResponseBodyLiveStreamSnapshotInfoListLiveStreamSnapshotInfo) String() string {

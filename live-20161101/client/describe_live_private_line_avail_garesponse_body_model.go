@@ -16,7 +16,6 @@ type iDescribeLivePrivateLineAvailGAResponseBody interface {
 }
 
 type DescribeLivePrivateLineAvailGAResponseBody struct {
-	// The GA instance configuration details.
 	LivePrivateLineAvailGAs *DescribeLivePrivateLineAvailGAResponseBodyLivePrivateLineAvailGAs `json:"LivePrivateLineAvailGAs,omitempty" xml:"LivePrivateLineAvailGAs,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,84 +95,17 @@ func (s *DescribeLivePrivateLineAvailGAResponseBodyLivePrivateLineAvailGAs) Vali
 }
 
 type DescribeLivePrivateLineAvailGAResponseBodyLivePrivateLineAvailGAsLivePrivateLineAvailGA struct {
-	// The acceleration channel.
-	//
-	// example:
-	//
-	// ap-southeast-1
 	AccelerationArea *string `json:"AccelerationArea,omitempty" xml:"AccelerationArea,omitempty"`
-	// The acceleration type. Valid values:
-	//
-	// 	- play: streaming acceleration
-	//
-	// 	- publish: stream ingest acceleration
-	//
-	// example:
-	//
-	// play
 	AccelerationType *string `json:"AccelerationType,omitempty" xml:"AccelerationType,omitempty"`
-	// The name of the application.
-	//
-	// example:
-	//
-	// live
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Indicates whether the GA instance is bound to an acceleration circuit. Valid values:
-	//
-	// 	- yes
-	//
-	// 	- no
-	//
-	// example:
-	//
-	// yes
-	BindingStatus *string `json:"BindingStatus,omitempty" xml:"BindingStatus,omitempty"`
-	// The main streaming domain.
-	//
-	// example:
-	//
-	// demo.aliyundoc.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The accelerated IP address.
-	//
-	// example:
-	//
-	// 127.0.0.1
-	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// The ID of the GA instance.
-	//
-	// example:
-	//
-	// ga-bp1iovsdpf01ym9su****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The status of the GA instance. Valid values:
-	//
-	// 	- active: The GA instance is available.
-	//
-	// 	- inactive: The GA instance is unavailable.
-	//
-	// example:
-	//
-	// active
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the live stream.
-	//
-	// example:
-	//
-	// testStream
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The user ID (UID).
-	//
-	// example:
-	//
-	// 1833220971116****
-	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	// The live center.
-	//
-	// example:
-	//
-	// cn-shanghai
-	VideoCenter *string `json:"VideoCenter,omitempty" xml:"VideoCenter,omitempty"`
+	AppName          *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BindingStatus    *string `json:"BindingStatus,omitempty" xml:"BindingStatus,omitempty"`
+	DomainName       *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	IP               *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StreamName       *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	Uid              *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	VideoCenter      *string `json:"VideoCenter,omitempty" xml:"VideoCenter,omitempty"`
 }
 
 func (s DescribeLivePrivateLineAvailGAResponseBodyLivePrivateLineAvailGAsLivePrivateLineAvailGA) String() string {

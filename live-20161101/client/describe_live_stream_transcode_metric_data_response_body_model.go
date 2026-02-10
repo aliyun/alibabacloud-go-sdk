@@ -63,8 +63,7 @@ type DescribeLiveStreamTranscodeMetricDataResponseBody struct {
 	// example:
 	//
 	// 2023-06-11T03:46:40Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The data array returned.
+	StartTime        *string                                                            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	StreamDetailData *DescribeLiveStreamTranscodeMetricDataResponseBodyStreamDetailData `json:"StreamDetailData,omitempty" xml:"StreamDetailData,omitempty" type:"Struct"`
 }
 
@@ -183,99 +182,13 @@ func (s *DescribeLiveStreamTranscodeMetricDataResponseBodyStreamDetailData) Vali
 }
 
 type DescribeLiveStreamTranscodeMetricDataResponseBodyStreamDetailDataStreamData struct {
-	// The name of the application.
-	//
-	// example:
-	//
-	// app
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The duration. Unit: seconds.
-	//
-	// example:
-	//
-	// 300
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The frame rate.
-	//
-	// Valid values:
-	//
-	// 	- <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     normal
-	//
-	//     <!-- -->
-	//
-	// 	- <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     high
-	//
-	//     <!-- -->
-	//
-	// 	- <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     def
-	//
-	//     <!-- -->
-	//
-	// example:
-	//
-	// high
-	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// The region.
-	//
-	// example:
-	//
-	// cn-shanghai
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The resolution. Valid values:
-	//
-	// 	- 2K: 2K resolution
-	//
-	// 	- 4K: 4K resolution
-	//
-	// 	- LD: low definition
-	//
-	// 	- SD: standard definition
-	//
-	// 	- HD: high definition
-	//
-	// 	- def: audio
-	//
-	// example:
-	//
-	// 4K
-	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	// The name of the stream.
-	//
-	// example:
-	//
-	// stream
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The timestamp of the returned data.
-	//
-	// example:
-	//
-	// 2023-06-11T02:45:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The transcoding type. Valid values:
-	//
-	// 	- H264STD: standard transcoding based on H.264
-	//
-	// 	- H264NBHD: Narrowband HD™ transcoding based on H.264
-	//
-	// 	- H265STD: standard transcoding based on H.265
-	//
-	// 	- AUDIO: audio transcoding
-	//
-	// example:
-	//
-	// H264STD
+	AppName       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Duration      *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Fps           *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Resolution    *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	StreamName    *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	TimeStamp     *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 	TranscodeType *string `json:"TranscodeType,omitempty" xml:"TranscodeType,omitempty"`
 }
 

@@ -24,7 +24,6 @@ type iDescribeLiveStreamsOnlineListResponseBody interface {
 }
 
 type DescribeLiveStreamsOnlineListResponseBody struct {
-	// The information about the live streams that are being ingested.
 	OnlineInfo *DescribeLiveStreamsOnlineListResponseBodyOnlineInfo `json:"OnlineInfo,omitempty" xml:"OnlineInfo,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -164,120 +163,23 @@ func (s *DescribeLiveStreamsOnlineListResponseBodyOnlineInfo) Validate() error {
 }
 
 type DescribeLiveStreamsOnlineListResponseBodyOnlineInfoLiveStreamOnlineInfo struct {
-	// The name of the application to which the live stream belongs.
-	//
-	// example:
-	//
-	// liveApp****
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The ID of the audio codec.
-	//
-	// example:
-	//
-	// 10
-	AudioCodecId *int32 `json:"AudioCodecId,omitempty" xml:"AudioCodecId,omitempty"`
-	// The audio bitrate of the live stream. Unit: Kbit/s.
-	//
-	// >  This parameter can be returned after you submit a ticket for whitelist configuration. For more information about how to submit a ticket, see Contact us.
-	//
-	// example:
-	//
-	// 600
-	AudioDataRate *int32 `json:"AudioDataRate,omitempty" xml:"AudioDataRate,omitempty"`
-	// The IP address of the client for stream ingest.
-	//
-	// example:
-	//
-	// 106.11.XX.XX
-	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// The main streaming domain.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The frame rate. Unit: FPS.
-	//
-	// example:
-	//
-	// 15
-	FrameRate *int32 `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
-	// The height of the video resolution. Unit: pixels.
-	//
-	// example:
-	//
-	// 720
-	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The ingest domain. If live center ingest was used, the streaming domain is returned.
-	//
-	// example:
-	//
-	// demo.aliyundoc.com
+	AppName       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AudioCodecId  *int32  `json:"AudioCodecId,omitempty" xml:"AudioCodecId,omitempty"`
+	AudioDataRate *int32  `json:"AudioDataRate,omitempty" xml:"AudioDataRate,omitempty"`
+	ClientIp      *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	FrameRate     *int32  `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	Height        *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
 	PublishDomain *string `json:"PublishDomain,omitempty" xml:"PublishDomain,omitempty"`
-	// The start time of stream ingest. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-08-09T02:37:59Z
-	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
-	// The ingest type. Valid values:
-	//
-	// 	- **edge**: edge ingest.
-	//
-	// 	- **center**: live center ingest.
-	//
-	// example:
-	//
-	// edge
-	PublishType *string `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
-	// The complete URL that was used to ingest the stream.
-	//
-	// example:
-	//
-	// rtmp://demo.aliyundoc.com/live/test****
-	PublishUrl *string `json:"PublishUrl,omitempty" xml:"PublishUrl,omitempty"`
-	// The IP address of the ingest node.
-	//
-	// example:
-	//
-	// 120.221.XX.XX
-	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	// The name of the live stream.
-	//
-	// example:
-	//
-	// liveStream****
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// Indicates whether the stream was transcoded. Valid values:
-	//
-	// 	- **yes**
-	//
-	// 	- **no**
-	//
-	// example:
-	//
-	// no
-	Transcoded *string `json:"Transcoded,omitempty" xml:"Transcoded,omitempty"`
-	// The ID of the video codec.
-	//
-	// example:
-	//
-	// 7
-	VideoCodecId *int32 `json:"VideoCodecId,omitempty" xml:"VideoCodecId,omitempty"`
-	// The video bitrate of the live stream. Unit: Kbit/s.
-	//
-	// >  This parameter can be returned after you submit a ticket for whitelist configuration. For more information about how to submit a ticket, see Contact us.
-	//
-	// example:
-	//
-	// 600
-	VideoDataRate *int32 `json:"VideoDataRate,omitempty" xml:"VideoDataRate,omitempty"`
-	// The width of the video resolution. Unit: pixels.
-	//
-	// example:
-	//
-	// 1280
-	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	PublishTime   *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	PublishType   *string `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
+	PublishUrl    *string `json:"PublishUrl,omitempty" xml:"PublishUrl,omitempty"`
+	ServerIp      *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	StreamName    *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	Transcoded    *string `json:"Transcoded,omitempty" xml:"Transcoded,omitempty"`
+	VideoCodecId  *int32  `json:"VideoCodecId,omitempty" xml:"VideoCodecId,omitempty"`
+	VideoDataRate *int32  `json:"VideoDataRate,omitempty" xml:"VideoDataRate,omitempty"`
+	Width         *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s DescribeLiveStreamsOnlineListResponseBodyOnlineInfoLiveStreamOnlineInfo) String() string {
