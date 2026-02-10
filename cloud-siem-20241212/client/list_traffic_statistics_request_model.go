@@ -27,6 +27,8 @@ type iListTrafficStatisticsRequest interface {
 	GetTrafficStatisticPeriodType() *string
 	SetTrafficStatisticType(v string) *ListTrafficStatisticsRequest
 	GetTrafficStatisticType() *string
+	SetTrafficType(v string) *ListTrafficStatisticsRequest
+	GetTrafficType() *string
 }
 
 type ListTrafficStatisticsRequest struct {
@@ -63,6 +65,10 @@ type ListTrafficStatisticsRequest struct {
 	//
 	// Region。
 	TrafficStatisticType *string `json:"TrafficStatisticType,omitempty" xml:"TrafficStatisticType,omitempty"`
+	// example:
+	//
+	// agentAnalysisLogTraffic
+	TrafficType *string `json:"TrafficType,omitempty" xml:"TrafficType,omitempty"`
 }
 
 func (s ListTrafficStatisticsRequest) String() string {
@@ -109,6 +115,10 @@ func (s *ListTrafficStatisticsRequest) GetTrafficStatisticType() *string {
 	return s.TrafficStatisticType
 }
 
+func (s *ListTrafficStatisticsRequest) GetTrafficType() *string {
+	return s.TrafficType
+}
+
 func (s *ListTrafficStatisticsRequest) SetLang(v string) *ListTrafficStatisticsRequest {
 	s.Lang = &v
 	return s
@@ -151,6 +161,11 @@ func (s *ListTrafficStatisticsRequest) SetTrafficStatisticPeriodType(v string) *
 
 func (s *ListTrafficStatisticsRequest) SetTrafficStatisticType(v string) *ListTrafficStatisticsRequest {
 	s.TrafficStatisticType = &v
+	return s
+}
+
+func (s *ListTrafficStatisticsRequest) SetTrafficType(v string) *ListTrafficStatisticsRequest {
+	s.TrafficType = &v
 	return s
 }
 

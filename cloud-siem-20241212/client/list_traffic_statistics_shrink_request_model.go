@@ -27,6 +27,8 @@ type iListTrafficStatisticsShrinkRequest interface {
 	GetTrafficStatisticPeriodType() *string
 	SetTrafficStatisticType(v string) *ListTrafficStatisticsShrinkRequest
 	GetTrafficStatisticType() *string
+	SetTrafficType(v string) *ListTrafficStatisticsShrinkRequest
+	GetTrafficType() *string
 }
 
 type ListTrafficStatisticsShrinkRequest struct {
@@ -63,6 +65,10 @@ type ListTrafficStatisticsShrinkRequest struct {
 	//
 	// Region。
 	TrafficStatisticType *string `json:"TrafficStatisticType,omitempty" xml:"TrafficStatisticType,omitempty"`
+	// example:
+	//
+	// agentAnalysisLogTraffic
+	TrafficType *string `json:"TrafficType,omitempty" xml:"TrafficType,omitempty"`
 }
 
 func (s ListTrafficStatisticsShrinkRequest) String() string {
@@ -109,6 +115,10 @@ func (s *ListTrafficStatisticsShrinkRequest) GetTrafficStatisticType() *string {
 	return s.TrafficStatisticType
 }
 
+func (s *ListTrafficStatisticsShrinkRequest) GetTrafficType() *string {
+	return s.TrafficType
+}
+
 func (s *ListTrafficStatisticsShrinkRequest) SetLang(v string) *ListTrafficStatisticsShrinkRequest {
 	s.Lang = &v
 	return s
@@ -151,6 +161,11 @@ func (s *ListTrafficStatisticsShrinkRequest) SetTrafficStatisticPeriodType(v str
 
 func (s *ListTrafficStatisticsShrinkRequest) SetTrafficStatisticType(v string) *ListTrafficStatisticsShrinkRequest {
 	s.TrafficStatisticType = &v
+	return s
+}
+
+func (s *ListTrafficStatisticsShrinkRequest) SetTrafficType(v string) *ListTrafficStatisticsShrinkRequest {
+	s.TrafficType = &v
 	return s
 }
 

@@ -429,7 +429,7 @@ type GetNormalizationSchemaResponseBodyNormalizationSchemaNormalizationFieldsNor
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// example:
 	//
-	// 云code，枚举值：\n<br>● alibaba_cloud\n<br>● huawei_cloud\n<br>● tencent_cloud
+	// 云code，枚举值：\\n<br>● alibaba_cloud\\n<br>● huawei_cloud\\n<br>● tencent_cloud
 	NormalizationFieldDescription *string `json:"NormalizationFieldDescription,omitempty" xml:"NormalizationFieldDescription,omitempty"`
 	// example:
 	//

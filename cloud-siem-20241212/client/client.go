@@ -4947,6 +4947,10 @@ func (client *Client) ListTrafficStatisticsWithOptions(tmpReq *ListTrafficStatis
 		body["TrafficStatisticType"] = request.TrafficStatisticType
 	}
 
+	if !dara.IsNil(request.TrafficType) {
+		body["TrafficType"] = request.TrafficType
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
