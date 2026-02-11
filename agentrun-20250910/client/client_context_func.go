@@ -1648,6 +1648,10 @@ func (client *Client) ListAgentRuntimesWithContext(ctx context.Context, request 
 		query["status"] = request.Status
 	}
 
+	if !dara.IsNil(request.WorkspaceId) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),

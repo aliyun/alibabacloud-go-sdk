@@ -53,6 +53,8 @@ type iCreateAgentRuntimeInput interface {
 	GetSessionConcurrencyLimitPerInstance() *int32
 	SetSessionIdleTimeoutSeconds(v int32) *CreateAgentRuntimeInput
 	GetSessionIdleTimeoutSeconds() *int32
+	SetWorkspaceId(v string) *CreateAgentRuntimeInput
+	GetWorkspaceId() *string
 }
 
 type CreateAgentRuntimeInput struct {
@@ -184,7 +186,8 @@ type CreateAgentRuntimeInput struct {
 	//
 	// {}
 	ProtocolConfiguration *ProtocolConfiguration `json:"protocolConfiguration,omitempty" xml:"protocolConfiguration,omitempty"`
-	ResourceGroupId       *string                `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// Deprecated
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// 每个运行时实例允许的最大并发会话数
 	//
 	// example:
@@ -197,6 +200,12 @@ type CreateAgentRuntimeInput struct {
 	//
 	// 3600
 	SessionIdleTimeoutSeconds *int32 `json:"sessionIdleTimeoutSeconds,omitempty" xml:"sessionIdleTimeoutSeconds,omitempty"`
+	// 智能体运行时所属的工作空间标识符，用于资源隔离和权限管理
+	//
+	// example:
+	//
+	// ws-1234567890abcdef
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s CreateAgentRuntimeInput) String() string {
@@ -293,6 +302,10 @@ func (s *CreateAgentRuntimeInput) GetSessionConcurrencyLimitPerInstance() *int32
 
 func (s *CreateAgentRuntimeInput) GetSessionIdleTimeoutSeconds() *int32 {
 	return s.SessionIdleTimeoutSeconds
+}
+
+func (s *CreateAgentRuntimeInput) GetWorkspaceId() *string {
+	return s.WorkspaceId
 }
 
 func (s *CreateAgentRuntimeInput) SetAgentRuntimeName(v string) *CreateAgentRuntimeInput {
@@ -402,6 +415,11 @@ func (s *CreateAgentRuntimeInput) SetSessionConcurrencyLimitPerInstance(v int32)
 
 func (s *CreateAgentRuntimeInput) SetSessionIdleTimeoutSeconds(v int32) *CreateAgentRuntimeInput {
 	s.SessionIdleTimeoutSeconds = &v
+	return s
+}
+
+func (s *CreateAgentRuntimeInput) SetWorkspaceId(v string) *CreateAgentRuntimeInput {
+	s.WorkspaceId = &v
 	return s
 }
 

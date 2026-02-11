@@ -11,6 +11,10 @@ type iProtocolSettings interface {
 	GoString() string
 	SetA2AAgentCard(v string) *ProtocolSettings
 	GetA2AAgentCard() *string
+	SetA2aAgentCard(v string) *ProtocolSettings
+	GetA2aAgentCard() *string
+	SetA2aAgentCardUrl(v string) *ProtocolSettings
+	GetA2aAgentCardUrl() *string
 	SetHeaders(v string) *ProtocolSettings
 	GetHeaders() *string
 	SetInputBodyJsonSchema(v string) *ProtocolSettings
@@ -32,8 +36,12 @@ type iProtocolSettings interface {
 }
 
 type ProtocolSettings struct {
+	// Deprecated
+	//
 	// A2A Agent Card
-	A2AAgentCard *string `json:"A2AAgentCard,omitempty" xml:"A2AAgentCard,omitempty"`
+	A2AAgentCard    *string `json:"A2AAgentCard,omitempty" xml:"A2AAgentCard,omitempty"`
+	A2aAgentCard    *string `json:"a2aAgentCard,omitempty" xml:"a2aAgentCard,omitempty"`
+	A2aAgentCardUrl *string `json:"a2aAgentCardUrl,omitempty" xml:"a2aAgentCardUrl,omitempty"`
 	// 请求头
 	Headers *string `json:"headers,omitempty" xml:"headers,omitempty"`
 	// 请求体JSON模式
@@ -64,6 +72,14 @@ func (s ProtocolSettings) GoString() string {
 
 func (s *ProtocolSettings) GetA2AAgentCard() *string {
 	return s.A2AAgentCard
+}
+
+func (s *ProtocolSettings) GetA2aAgentCard() *string {
+	return s.A2aAgentCard
+}
+
+func (s *ProtocolSettings) GetA2aAgentCardUrl() *string {
+	return s.A2aAgentCardUrl
 }
 
 func (s *ProtocolSettings) GetHeaders() *string {
@@ -104,6 +120,16 @@ func (s *ProtocolSettings) GetResponseContentType() *string {
 
 func (s *ProtocolSettings) SetA2AAgentCard(v string) *ProtocolSettings {
 	s.A2AAgentCard = &v
+	return s
+}
+
+func (s *ProtocolSettings) SetA2aAgentCard(v string) *ProtocolSettings {
+	s.A2aAgentCard = &v
+	return s
+}
+
+func (s *ProtocolSettings) SetA2aAgentCardUrl(v string) *ProtocolSettings {
+	s.A2aAgentCardUrl = &v
 	return s
 }
 

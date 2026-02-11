@@ -23,6 +23,8 @@ type iListAgentRuntimesRequest interface {
 	GetSearchMode() *string
 	SetStatus(v string) *ListAgentRuntimesRequest
 	GetStatus() *string
+	SetWorkspaceId(v string) *ListAgentRuntimesRequest
+	GetWorkspaceId() *string
 }
 
 type ListAgentRuntimesRequest struct {
@@ -32,6 +34,8 @@ type ListAgentRuntimesRequest struct {
 	//
 	// my-runtime
 	AgentRuntimeName *string `json:"agentRuntimeName,omitempty" xml:"agentRuntimeName,omitempty"`
+	// Deprecated
+	//
 	// 用于服务发现的资源组标识符
 	//
 	// example:
@@ -49,7 +53,8 @@ type ListAgentRuntimesRequest struct {
 	// example:
 	//
 	// 10
-	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Deprecated
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// 查询模式，支持精确查询和模糊查询
 	//
@@ -63,6 +68,12 @@ type ListAgentRuntimesRequest struct {
 	//
 	// READY,CREATING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// 根据工作空间ID进行过滤，用于资源隔离和权限管理
+	//
+	// example:
+	//
+	// ws-1234567890abcdef
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s ListAgentRuntimesRequest) String() string {
@@ -101,6 +112,10 @@ func (s *ListAgentRuntimesRequest) GetStatus() *string {
 	return s.Status
 }
 
+func (s *ListAgentRuntimesRequest) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *ListAgentRuntimesRequest) SetAgentRuntimeName(v string) *ListAgentRuntimesRequest {
 	s.AgentRuntimeName = &v
 	return s
@@ -133,6 +148,11 @@ func (s *ListAgentRuntimesRequest) SetSearchMode(v string) *ListAgentRuntimesReq
 
 func (s *ListAgentRuntimesRequest) SetStatus(v string) *ListAgentRuntimesRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListAgentRuntimesRequest) SetWorkspaceId(v string) *ListAgentRuntimesRequest {
+	s.WorkspaceId = &v
 	return s
 }
 

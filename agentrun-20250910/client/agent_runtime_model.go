@@ -65,6 +65,8 @@ type iAgentRuntime interface {
 	GetStatus() *string
 	SetStatusReason(v string) *AgentRuntime
 	GetStatusReason() *string
+	SetWorkspaceId(v string) *AgentRuntime
+	GetWorkspaceId() *string
 }
 
 type AgentRuntime struct {
@@ -206,7 +208,8 @@ type AgentRuntime struct {
 	//
 	// {}
 	ProtocolConfiguration *ProtocolConfiguration `json:"protocolConfiguration,omitempty" xml:"protocolConfiguration,omitempty"`
-	ResourceGroupId       *string                `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// Deprecated
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// 每个运行时实例允许的最大并发会话数
 	//
 	// example:
@@ -231,6 +234,12 @@ type AgentRuntime struct {
 	//
 	// Runtime is ready for use
 	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
+	// 智能体运行时所属的工作空间标识符，用于资源隔离和权限管理
+	//
+	// example:
+	//
+	// ws-1234567890abcdef
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s AgentRuntime) String() string {
@@ -351,6 +360,10 @@ func (s *AgentRuntime) GetStatus() *string {
 
 func (s *AgentRuntime) GetStatusReason() *string {
 	return s.StatusReason
+}
+
+func (s *AgentRuntime) GetWorkspaceId() *string {
+	return s.WorkspaceId
 }
 
 func (s *AgentRuntime) SetAgentRuntimeArn(v string) *AgentRuntime {
@@ -490,6 +503,11 @@ func (s *AgentRuntime) SetStatus(v string) *AgentRuntime {
 
 func (s *AgentRuntime) SetStatusReason(v string) *AgentRuntime {
 	s.StatusReason = &v
+	return s
+}
+
+func (s *AgentRuntime) SetWorkspaceId(v string) *AgentRuntime {
+	s.WorkspaceId = &v
 	return s
 }
 

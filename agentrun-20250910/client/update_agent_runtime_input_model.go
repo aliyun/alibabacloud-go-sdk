@@ -49,6 +49,8 @@ type iUpdateAgentRuntimeInput interface {
 	GetSessionConcurrencyLimitPerInstance() *int32
 	SetSessionIdleTimeoutSeconds(v int32) *UpdateAgentRuntimeInput
 	GetSessionIdleTimeoutSeconds() *int32
+	SetWorkspaceId(v string) *UpdateAgentRuntimeInput
+	GetWorkspaceId() *string
 }
 
 type UpdateAgentRuntimeInput struct {
@@ -161,7 +163,8 @@ type UpdateAgentRuntimeInput struct {
 	// example:
 	//
 	// 3600
-	SessionIdleTimeoutSeconds *int32 `json:"sessionIdleTimeoutSeconds,omitempty" xml:"sessionIdleTimeoutSeconds,omitempty"`
+	SessionIdleTimeoutSeconds *int32  `json:"sessionIdleTimeoutSeconds,omitempty" xml:"sessionIdleTimeoutSeconds,omitempty"`
+	WorkspaceId               *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s UpdateAgentRuntimeInput) String() string {
@@ -250,6 +253,10 @@ func (s *UpdateAgentRuntimeInput) GetSessionConcurrencyLimitPerInstance() *int32
 
 func (s *UpdateAgentRuntimeInput) GetSessionIdleTimeoutSeconds() *int32 {
 	return s.SessionIdleTimeoutSeconds
+}
+
+func (s *UpdateAgentRuntimeInput) GetWorkspaceId() *string {
+	return s.WorkspaceId
 }
 
 func (s *UpdateAgentRuntimeInput) SetAgentRuntimeName(v string) *UpdateAgentRuntimeInput {
@@ -349,6 +356,11 @@ func (s *UpdateAgentRuntimeInput) SetSessionConcurrencyLimitPerInstance(v int32)
 
 func (s *UpdateAgentRuntimeInput) SetSessionIdleTimeoutSeconds(v int32) *UpdateAgentRuntimeInput {
 	s.SessionIdleTimeoutSeconds = &v
+	return s
+}
+
+func (s *UpdateAgentRuntimeInput) SetWorkspaceId(v string) *UpdateAgentRuntimeInput {
+	s.WorkspaceId = &v
 	return s
 }
 
