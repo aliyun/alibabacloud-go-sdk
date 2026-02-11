@@ -1,0 +1,51 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iAddGrafanaResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetData(v string) *AddGrafanaResponseBody
+	GetData() *string
+	SetRequestId(v string) *AddGrafanaResponseBody
+	GetRequestId() *string
+}
+
+type AddGrafanaResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddGrafanaResponseBody) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AddGrafanaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddGrafanaResponseBody) GetData() *string {
+	return s.Data
+}
+
+func (s *AddGrafanaResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *AddGrafanaResponseBody) SetData(v string) *AddGrafanaResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *AddGrafanaResponseBody) SetRequestId(v string) *AddGrafanaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddGrafanaResponseBody) Validate() error {
+	return dara.Validate(s)
+}

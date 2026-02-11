@@ -2,101 +2,17 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"ap-northeast-2-pop":          dara.String("arms.aliyuncs.com"),
-		"cn-beijing-finance-1":        dara.String("arms.aliyuncs.com"),
-		"cn-beijing-finance-pop":      dara.String("arms.aliyuncs.com"),
-		"cn-beijing-gov-1":            dara.String("arms.aliyuncs.com"),
-		"cn-beijing-nu16-b01":         dara.String("arms.aliyuncs.com"),
-		"cn-edge-1":                   dara.String("arms.aliyuncs.com"),
-		"cn-fujian":                   dara.String("arms.aliyuncs.com"),
-		"cn-haidian-cm12-c01":         dara.String("arms.aliyuncs.com"),
-		"cn-hangzhou-bj-b01":          dara.String("arms.aliyuncs.com"),
-		"cn-hangzhou-internal-prod-1": dara.String("arms.aliyuncs.com"),
-		"cn-hangzhou-internal-test-1": dara.String("arms.aliyuncs.com"),
-		"cn-hangzhou-internal-test-2": dara.String("arms.aliyuncs.com"),
-		"cn-hangzhou-internal-test-3": dara.String("arms.aliyuncs.com"),
-		"cn-hangzhou-test-306":        dara.String("arms.aliyuncs.com"),
-		"cn-hongkong-finance-pop":     dara.String("arms.aliyuncs.com"),
-		"cn-huhehaote-nebula-1":       dara.String("arms.aliyuncs.com"),
-		"cn-qingdao-nebula":           dara.String("arms.aliyuncs.com"),
-		"cn-shanghai-et15-b01":        dara.String("arms.aliyuncs.com"),
-		"cn-shanghai-et2-b01":         dara.String("arms.aliyuncs.com"),
-		"cn-shanghai-inner":           dara.String("arms.aliyuncs.com"),
-		"cn-shanghai-internal-test-1": dara.String("arms.aliyuncs.com"),
-		"cn-shenzhen-inner":           dara.String("arms.aliyuncs.com"),
-		"cn-shenzhen-st4-d01":         dara.String("arms.aliyuncs.com"),
-		"cn-shenzhen-su18-b01":        dara.String("arms.aliyuncs.com"),
-		"cn-wuhan":                    dara.String("arms.aliyuncs.com"),
-		"cn-yushanfang":               dara.String("arms.aliyuncs.com"),
-		"cn-zhangbei":                 dara.String("arms.aliyuncs.com"),
-		"cn-zhangbei-na61-b01":        dara.String("arms.aliyuncs.com"),
-		"cn-zhangjiakou-na62-a01":     dara.String("arms.aliyuncs.com"),
-		"cn-zhengzhou-nebula-1":       dara.String("arms.aliyuncs.com"),
-		"eu-west-1-oxs":               dara.String("arms.aliyuncs.com"),
-		"me-east-1":                   dara.String("arms.aliyuncs.com"),
-		"rus-west-1-pop":              dara.String("arms.aliyuncs.com"),
-	}
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("arms"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // @param request - AddGrafanaRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddGrafanaResponse
-func (client *Client) AddGrafanaWithOptions(request *AddGrafanaRequest, runtime *dara.RuntimeOptions) (_result *AddGrafanaResponse, _err error) {
+func (client *Client) AddGrafanaWithContext(ctx context.Context, request *AddGrafanaRequest, runtime *dara.RuntimeOptions) (_result *AddGrafanaResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -131,25 +47,11 @@ func (client *Client) AddGrafanaWithOptions(request *AddGrafanaRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddGrafanaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - AddGrafanaRequest
-//
-// @return AddGrafanaResponse
-func (client *Client) AddGrafana(request *AddGrafanaRequest) (_result *AddGrafanaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddGrafanaResponse{}
-	_body, _err := client.AddGrafanaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -158,7 +60,7 @@ func (client *Client) AddGrafana(request *AddGrafanaRequest) (_result *AddGrafan
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddIntegrationResponse
-func (client *Client) AddIntegrationWithOptions(request *AddIntegrationRequest, runtime *dara.RuntimeOptions) (_result *AddIntegrationResponse, _err error) {
+func (client *Client) AddIntegrationWithContext(ctx context.Context, request *AddIntegrationRequest, runtime *dara.RuntimeOptions) (_result *AddIntegrationResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -193,25 +95,11 @@ func (client *Client) AddIntegrationWithOptions(request *AddIntegrationRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddIntegrationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - AddIntegrationRequest
-//
-// @return AddIntegrationResponse
-func (client *Client) AddIntegration(request *AddIntegrationRequest) (_result *AddIntegrationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddIntegrationResponse{}
-	_body, _err := client.AddIntegrationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -220,7 +108,7 @@ func (client *Client) AddIntegration(request *AddIntegrationRequest) (_result *A
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ApplyScenarioResponse
-func (client *Client) ApplyScenarioWithOptions(tmpReq *ApplyScenarioRequest, runtime *dara.RuntimeOptions) (_result *ApplyScenarioResponse, _err error) {
+func (client *Client) ApplyScenarioWithContext(ctx context.Context, tmpReq *ApplyScenarioRequest, runtime *dara.RuntimeOptions) (_result *ApplyScenarioResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -293,25 +181,11 @@ func (client *Client) ApplyScenarioWithOptions(tmpReq *ApplyScenarioRequest, run
 		BodyType:    dara.String("json"),
 	}
 	_result = &ApplyScenarioResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ApplyScenarioRequest
-//
-// @return ApplyScenarioResponse
-func (client *Client) ApplyScenario(request *ApplyScenarioRequest) (_result *ApplyScenarioResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ApplyScenarioResponse{}
-	_body, _err := client.ApplyScenarioWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -320,7 +194,7 @@ func (client *Client) ApplyScenario(request *ApplyScenarioRequest) (_result *App
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckDataConsistencyResponse
-func (client *Client) CheckDataConsistencyWithOptions(request *CheckDataConsistencyRequest, runtime *dara.RuntimeOptions) (_result *CheckDataConsistencyResponse, _err error) {
+func (client *Client) CheckDataConsistencyWithContext(ctx context.Context, request *CheckDataConsistencyRequest, runtime *dara.RuntimeOptions) (_result *CheckDataConsistencyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -363,25 +237,11 @@ func (client *Client) CheckDataConsistencyWithOptions(request *CheckDataConsiste
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckDataConsistencyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CheckDataConsistencyRequest
-//
-// @return CheckDataConsistencyResponse
-func (client *Client) CheckDataConsistency(request *CheckDataConsistencyRequest) (_result *CheckDataConsistencyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckDataConsistencyResponse{}
-	_body, _err := client.CheckDataConsistencyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -390,7 +250,7 @@ func (client *Client) CheckDataConsistency(request *CheckDataConsistencyRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckServiceLinkedRoleForDeletingResponse
-func (client *Client) CheckServiceLinkedRoleForDeletingWithOptions(request *CheckServiceLinkedRoleForDeletingRequest, runtime *dara.RuntimeOptions) (_result *CheckServiceLinkedRoleForDeletingResponse, _err error) {
+func (client *Client) CheckServiceLinkedRoleForDeletingWithContext(ctx context.Context, request *CheckServiceLinkedRoleForDeletingRequest, runtime *dara.RuntimeOptions) (_result *CheckServiceLinkedRoleForDeletingResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -433,25 +293,11 @@ func (client *Client) CheckServiceLinkedRoleForDeletingWithOptions(request *Chec
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckServiceLinkedRoleForDeletingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CheckServiceLinkedRoleForDeletingRequest
-//
-// @return CheckServiceLinkedRoleForDeletingResponse
-func (client *Client) CheckServiceLinkedRoleForDeleting(request *CheckServiceLinkedRoleForDeletingRequest) (_result *CheckServiceLinkedRoleForDeletingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckServiceLinkedRoleForDeletingResponse{}
-	_body, _err := client.CheckServiceLinkedRoleForDeletingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -460,7 +306,7 @@ func (client *Client) CheckServiceLinkedRoleForDeleting(request *CheckServiceLin
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckServiceStatusResponse
-func (client *Client) CheckServiceStatusWithOptions(request *CheckServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *CheckServiceStatusResponse, _err error) {
+func (client *Client) CheckServiceStatusWithContext(ctx context.Context, request *CheckServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *CheckServiceStatusResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -491,25 +337,11 @@ func (client *Client) CheckServiceStatusWithOptions(request *CheckServiceStatusR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckServiceStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CheckServiceStatusRequest
-//
-// @return CheckServiceStatusResponse
-func (client *Client) CheckServiceStatus(request *CheckServiceStatusRequest) (_result *CheckServiceStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckServiceStatusResponse{}
-	_body, _err := client.CheckServiceStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -518,7 +350,7 @@ func (client *Client) CheckServiceStatus(request *CheckServiceStatusRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConfigAppResponse
-func (client *Client) ConfigAppWithOptions(request *ConfigAppRequest, runtime *dara.RuntimeOptions) (_result *ConfigAppResponse, _err error) {
+func (client *Client) ConfigAppWithContext(ctx context.Context, request *ConfigAppRequest, runtime *dara.RuntimeOptions) (_result *ConfigAppResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -553,25 +385,11 @@ func (client *Client) ConfigAppWithOptions(request *ConfigAppRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &ConfigAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ConfigAppRequest
-//
-// @return ConfigAppResponse
-func (client *Client) ConfigApp(request *ConfigAppRequest) (_result *ConfigAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ConfigAppResponse{}
-	_body, _err := client.ConfigAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -580,7 +398,7 @@ func (client *Client) ConfigApp(request *ConfigAppRequest) (_result *ConfigAppRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAlertContactResponse
-func (client *Client) CreateAlertContactWithOptions(request *CreateAlertContactRequest, runtime *dara.RuntimeOptions) (_result *CreateAlertContactResponse, _err error) {
+func (client *Client) CreateAlertContactWithContext(ctx context.Context, request *CreateAlertContactRequest, runtime *dara.RuntimeOptions) (_result *CreateAlertContactResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -627,25 +445,11 @@ func (client *Client) CreateAlertContactWithOptions(request *CreateAlertContactR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAlertContactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CreateAlertContactRequest
-//
-// @return CreateAlertContactResponse
-func (client *Client) CreateAlertContact(request *CreateAlertContactRequest) (_result *CreateAlertContactResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateAlertContactResponse{}
-	_body, _err := client.CreateAlertContactWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -654,7 +458,7 @@ func (client *Client) CreateAlertContact(request *CreateAlertContactRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAlertContactGroupResponse
-func (client *Client) CreateAlertContactGroupWithOptions(request *CreateAlertContactGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateAlertContactGroupResponse, _err error) {
+func (client *Client) CreateAlertContactGroupWithContext(ctx context.Context, request *CreateAlertContactGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateAlertContactGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -689,25 +493,11 @@ func (client *Client) CreateAlertContactGroupWithOptions(request *CreateAlertCon
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAlertContactGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CreateAlertContactGroupRequest
-//
-// @return CreateAlertContactGroupResponse
-func (client *Client) CreateAlertContactGroup(request *CreateAlertContactGroupRequest) (_result *CreateAlertContactGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateAlertContactGroupResponse{}
-	_body, _err := client.CreateAlertContactGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -716,7 +506,7 @@ func (client *Client) CreateAlertContactGroup(request *CreateAlertContactGroupRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAlertTemplateResponse
-func (client *Client) CreateAlertTemplateWithOptions(request *CreateAlertTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateAlertTemplateResponse, _err error) {
+func (client *Client) CreateAlertTemplateWithContext(ctx context.Context, request *CreateAlertTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateAlertTemplateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -779,25 +569,11 @@ func (client *Client) CreateAlertTemplateWithOptions(request *CreateAlertTemplat
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAlertTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CreateAlertTemplateRequest
-//
-// @return CreateAlertTemplateResponse
-func (client *Client) CreateAlertTemplate(request *CreateAlertTemplateRequest) (_result *CreateAlertTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateAlertTemplateResponse{}
-	_body, _err := client.CreateAlertTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -806,7 +582,7 @@ func (client *Client) CreateAlertTemplate(request *CreateAlertTemplateRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDispatchRuleResponse
-func (client *Client) CreateDispatchRuleWithOptions(request *CreateDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateDispatchRuleResponse, _err error) {
+func (client *Client) CreateDispatchRuleWithContext(ctx context.Context, request *CreateDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateDispatchRuleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -837,25 +613,11 @@ func (client *Client) CreateDispatchRuleWithOptions(request *CreateDispatchRuleR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDispatchRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CreateDispatchRuleRequest
-//
-// @return CreateDispatchRuleResponse
-func (client *Client) CreateDispatchRule(request *CreateDispatchRuleRequest) (_result *CreateDispatchRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateDispatchRuleResponse{}
-	_body, _err := client.CreateDispatchRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -864,7 +626,7 @@ func (client *Client) CreateDispatchRule(request *CreateDispatchRuleRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePrometheusAlertRuleResponse
-func (client *Client) CreatePrometheusAlertRuleWithOptions(request *CreatePrometheusAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *CreatePrometheusAlertRuleResponse, _err error) {
+func (client *Client) CreatePrometheusAlertRuleWithContext(ctx context.Context, request *CreatePrometheusAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *CreatePrometheusAlertRuleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -931,25 +693,11 @@ func (client *Client) CreatePrometheusAlertRuleWithOptions(request *CreatePromet
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePrometheusAlertRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CreatePrometheusAlertRuleRequest
-//
-// @return CreatePrometheusAlertRuleResponse
-func (client *Client) CreatePrometheusAlertRule(request *CreatePrometheusAlertRuleRequest) (_result *CreatePrometheusAlertRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreatePrometheusAlertRuleResponse{}
-	_body, _err := client.CreatePrometheusAlertRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -958,7 +706,7 @@ func (client *Client) CreatePrometheusAlertRule(request *CreatePrometheusAlertRu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRetcodeAppResponse
-func (client *Client) CreateRetcodeAppWithOptions(request *CreateRetcodeAppRequest, runtime *dara.RuntimeOptions) (_result *CreateRetcodeAppResponse, _err error) {
+func (client *Client) CreateRetcodeAppWithContext(ctx context.Context, request *CreateRetcodeAppRequest, runtime *dara.RuntimeOptions) (_result *CreateRetcodeAppResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -993,25 +741,11 @@ func (client *Client) CreateRetcodeAppWithOptions(request *CreateRetcodeAppReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRetcodeAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CreateRetcodeAppRequest
-//
-// @return CreateRetcodeAppResponse
-func (client *Client) CreateRetcodeApp(request *CreateRetcodeAppRequest) (_result *CreateRetcodeAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRetcodeAppResponse{}
-	_body, _err := client.CreateRetcodeAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1020,7 +754,7 @@ func (client *Client) CreateRetcodeApp(request *CreateRetcodeAppRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateWehookResponse
-func (client *Client) CreateWehookWithOptions(request *CreateWehookRequest, runtime *dara.RuntimeOptions) (_result *CreateWehookResponse, _err error) {
+func (client *Client) CreateWehookWithContext(ctx context.Context, request *CreateWehookRequest, runtime *dara.RuntimeOptions) (_result *CreateWehookResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1071,25 +805,11 @@ func (client *Client) CreateWehookWithOptions(request *CreateWehookRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateWehookResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CreateWehookRequest
-//
-// @return CreateWehookResponse
-func (client *Client) CreateWehook(request *CreateWehookRequest) (_result *CreateWehookResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateWehookResponse{}
-	_body, _err := client.CreateWehookWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1098,7 +818,7 @@ func (client *Client) CreateWehook(request *CreateWehookRequest) (_result *Creat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAlertContactResponse
-func (client *Client) DeleteAlertContactWithOptions(request *DeleteAlertContactRequest, runtime *dara.RuntimeOptions) (_result *DeleteAlertContactResponse, _err error) {
+func (client *Client) DeleteAlertContactWithContext(ctx context.Context, request *DeleteAlertContactRequest, runtime *dara.RuntimeOptions) (_result *DeleteAlertContactResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1129,25 +849,11 @@ func (client *Client) DeleteAlertContactWithOptions(request *DeleteAlertContactR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAlertContactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteAlertContactRequest
-//
-// @return DeleteAlertContactResponse
-func (client *Client) DeleteAlertContact(request *DeleteAlertContactRequest) (_result *DeleteAlertContactResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAlertContactResponse{}
-	_body, _err := client.DeleteAlertContactWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1156,7 +862,7 @@ func (client *Client) DeleteAlertContact(request *DeleteAlertContactRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAlertContactGroupResponse
-func (client *Client) DeleteAlertContactGroupWithOptions(request *DeleteAlertContactGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteAlertContactGroupResponse, _err error) {
+func (client *Client) DeleteAlertContactGroupWithContext(ctx context.Context, request *DeleteAlertContactGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteAlertContactGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1187,25 +893,11 @@ func (client *Client) DeleteAlertContactGroupWithOptions(request *DeleteAlertCon
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAlertContactGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteAlertContactGroupRequest
-//
-// @return DeleteAlertContactGroupResponse
-func (client *Client) DeleteAlertContactGroup(request *DeleteAlertContactGroupRequest) (_result *DeleteAlertContactGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAlertContactGroupResponse{}
-	_body, _err := client.DeleteAlertContactGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1214,7 +906,7 @@ func (client *Client) DeleteAlertContactGroup(request *DeleteAlertContactGroupRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAlertRulesResponse
-func (client *Client) DeleteAlertRulesWithOptions(request *DeleteAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *DeleteAlertRulesResponse, _err error) {
+func (client *Client) DeleteAlertRulesWithContext(ctx context.Context, request *DeleteAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *DeleteAlertRulesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1245,25 +937,11 @@ func (client *Client) DeleteAlertRulesWithOptions(request *DeleteAlertRulesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAlertRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteAlertRulesRequest
-//
-// @return DeleteAlertRulesResponse
-func (client *Client) DeleteAlertRules(request *DeleteAlertRulesRequest) (_result *DeleteAlertRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAlertRulesResponse{}
-	_body, _err := client.DeleteAlertRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1272,7 +950,7 @@ func (client *Client) DeleteAlertRules(request *DeleteAlertRulesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAlertTemplateResponse
-func (client *Client) DeleteAlertTemplateWithOptions(request *DeleteAlertTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteAlertTemplateResponse, _err error) {
+func (client *Client) DeleteAlertTemplateWithContext(ctx context.Context, request *DeleteAlertTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteAlertTemplateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1303,25 +981,11 @@ func (client *Client) DeleteAlertTemplateWithOptions(request *DeleteAlertTemplat
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAlertTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteAlertTemplateRequest
-//
-// @return DeleteAlertTemplateResponse
-func (client *Client) DeleteAlertTemplate(request *DeleteAlertTemplateRequest) (_result *DeleteAlertTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAlertTemplateResponse{}
-	_body, _err := client.DeleteAlertTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1330,7 +994,7 @@ func (client *Client) DeleteAlertTemplate(request *DeleteAlertTemplateRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDispatchRuleResponse
-func (client *Client) DeleteDispatchRuleWithOptions(request *DeleteDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteDispatchRuleResponse, _err error) {
+func (client *Client) DeleteDispatchRuleWithContext(ctx context.Context, request *DeleteDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteDispatchRuleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1361,25 +1025,11 @@ func (client *Client) DeleteDispatchRuleWithOptions(request *DeleteDispatchRuleR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteDispatchRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteDispatchRuleRequest
-//
-// @return DeleteDispatchRuleResponse
-func (client *Client) DeleteDispatchRule(request *DeleteDispatchRuleRequest) (_result *DeleteDispatchRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteDispatchRuleResponse{}
-	_body, _err := client.DeleteDispatchRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1388,7 +1038,7 @@ func (client *Client) DeleteDispatchRule(request *DeleteDispatchRuleRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteGrafanaResourceResponse
-func (client *Client) DeleteGrafanaResourceWithOptions(request *DeleteGrafanaResourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteGrafanaResourceResponse, _err error) {
+func (client *Client) DeleteGrafanaResourceWithContext(ctx context.Context, request *DeleteGrafanaResourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteGrafanaResourceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1423,25 +1073,11 @@ func (client *Client) DeleteGrafanaResourceWithOptions(request *DeleteGrafanaRes
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteGrafanaResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteGrafanaResourceRequest
-//
-// @return DeleteGrafanaResourceResponse
-func (client *Client) DeleteGrafanaResource(request *DeleteGrafanaResourceRequest) (_result *DeleteGrafanaResourceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteGrafanaResourceResponse{}
-	_body, _err := client.DeleteGrafanaResourceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1450,7 +1086,7 @@ func (client *Client) DeleteGrafanaResource(request *DeleteGrafanaResourceReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePrometheusAlertRuleResponse
-func (client *Client) DeletePrometheusAlertRuleWithOptions(request *DeletePrometheusAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *DeletePrometheusAlertRuleResponse, _err error) {
+func (client *Client) DeletePrometheusAlertRuleWithContext(ctx context.Context, request *DeletePrometheusAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *DeletePrometheusAlertRuleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1477,25 +1113,11 @@ func (client *Client) DeletePrometheusAlertRuleWithOptions(request *DeletePromet
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePrometheusAlertRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeletePrometheusAlertRuleRequest
-//
-// @return DeletePrometheusAlertRuleResponse
-func (client *Client) DeletePrometheusAlertRule(request *DeletePrometheusAlertRuleRequest) (_result *DeletePrometheusAlertRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePrometheusAlertRuleResponse{}
-	_body, _err := client.DeletePrometheusAlertRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1504,7 +1126,7 @@ func (client *Client) DeletePrometheusAlertRule(request *DeletePrometheusAlertRu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRetcodeAppResponse
-func (client *Client) DeleteRetcodeAppWithOptions(request *DeleteRetcodeAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteRetcodeAppResponse, _err error) {
+func (client *Client) DeleteRetcodeAppWithContext(ctx context.Context, request *DeleteRetcodeAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteRetcodeAppResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1535,25 +1157,11 @@ func (client *Client) DeleteRetcodeAppWithOptions(request *DeleteRetcodeAppReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRetcodeAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteRetcodeAppRequest
-//
-// @return DeleteRetcodeAppResponse
-func (client *Client) DeleteRetcodeApp(request *DeleteRetcodeAppRequest) (_result *DeleteRetcodeAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteRetcodeAppResponse{}
-	_body, _err := client.DeleteRetcodeAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1562,7 +1170,7 @@ func (client *Client) DeleteRetcodeApp(request *DeleteRetcodeAppRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteScenarioResponse
-func (client *Client) DeleteScenarioWithOptions(request *DeleteScenarioRequest, runtime *dara.RuntimeOptions) (_result *DeleteScenarioResponse, _err error) {
+func (client *Client) DeleteScenarioWithContext(ctx context.Context, request *DeleteScenarioRequest, runtime *dara.RuntimeOptions) (_result *DeleteScenarioResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1593,25 +1201,11 @@ func (client *Client) DeleteScenarioWithOptions(request *DeleteScenarioRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteScenarioResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteScenarioRequest
-//
-// @return DeleteScenarioResponse
-func (client *Client) DeleteScenario(request *DeleteScenarioRequest) (_result *DeleteScenarioResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteScenarioResponse{}
-	_body, _err := client.DeleteScenarioWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1620,7 +1214,7 @@ func (client *Client) DeleteScenario(request *DeleteScenarioRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteTraceAppResponse
-func (client *Client) DeleteTraceAppWithOptions(request *DeleteTraceAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteTraceAppResponse, _err error) {
+func (client *Client) DeleteTraceAppWithContext(ctx context.Context, request *DeleteTraceAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteTraceAppResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1659,25 +1253,11 @@ func (client *Client) DeleteTraceAppWithOptions(request *DeleteTraceAppRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteTraceAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteTraceAppRequest
-//
-// @return DeleteTraceAppResponse
-func (client *Client) DeleteTraceApp(request *DeleteTraceAppRequest) (_result *DeleteTraceAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteTraceAppResponse{}
-	_body, _err := client.DeleteTraceAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1686,7 +1266,7 @@ func (client *Client) DeleteTraceApp(request *DeleteTraceAppRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDispatchRuleResponse
-func (client *Client) DescribeDispatchRuleWithOptions(request *DescribeDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *DescribeDispatchRuleResponse, _err error) {
+func (client *Client) DescribeDispatchRuleWithContext(ctx context.Context, request *DescribeDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *DescribeDispatchRuleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1717,25 +1297,11 @@ func (client *Client) DescribeDispatchRuleWithOptions(request *DescribeDispatchR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDispatchRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DescribeDispatchRuleRequest
-//
-// @return DescribeDispatchRuleResponse
-func (client *Client) DescribeDispatchRule(request *DescribeDispatchRuleRequest) (_result *DescribeDispatchRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDispatchRuleResponse{}
-	_body, _err := client.DescribeDispatchRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1744,7 +1310,7 @@ func (client *Client) DescribeDispatchRule(request *DescribeDispatchRuleRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePrometheusAlertRuleResponse
-func (client *Client) DescribePrometheusAlertRuleWithOptions(request *DescribePrometheusAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *DescribePrometheusAlertRuleResponse, _err error) {
+func (client *Client) DescribePrometheusAlertRuleWithContext(ctx context.Context, request *DescribePrometheusAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *DescribePrometheusAlertRuleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1771,25 +1337,11 @@ func (client *Client) DescribePrometheusAlertRuleWithOptions(request *DescribePr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePrometheusAlertRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DescribePrometheusAlertRuleRequest
-//
-// @return DescribePrometheusAlertRuleResponse
-func (client *Client) DescribePrometheusAlertRule(request *DescribePrometheusAlertRuleRequest) (_result *DescribePrometheusAlertRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePrometheusAlertRuleResponse{}
-	_body, _err := client.DescribePrometheusAlertRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1798,7 +1350,7 @@ func (client *Client) DescribePrometheusAlertRule(request *DescribePrometheusAle
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeTraceLicenseKeyResponse
-func (client *Client) DescribeTraceLicenseKeyWithOptions(request *DescribeTraceLicenseKeyRequest, runtime *dara.RuntimeOptions) (_result *DescribeTraceLicenseKeyResponse, _err error) {
+func (client *Client) DescribeTraceLicenseKeyWithContext(ctx context.Context, request *DescribeTraceLicenseKeyRequest, runtime *dara.RuntimeOptions) (_result *DescribeTraceLicenseKeyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1825,25 +1377,11 @@ func (client *Client) DescribeTraceLicenseKeyWithOptions(request *DescribeTraceL
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeTraceLicenseKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DescribeTraceLicenseKeyRequest
-//
-// @return DescribeTraceLicenseKeyResponse
-func (client *Client) DescribeTraceLicenseKey(request *DescribeTraceLicenseKeyRequest) (_result *DescribeTraceLicenseKeyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeTraceLicenseKeyResponse{}
-	_body, _err := client.DescribeTraceLicenseKeyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1852,7 +1390,7 @@ func (client *Client) DescribeTraceLicenseKey(request *DescribeTraceLicenseKeyRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeTraceLocationResponse
-func (client *Client) DescribeTraceLocationWithOptions(request *DescribeTraceLocationRequest, runtime *dara.RuntimeOptions) (_result *DescribeTraceLocationResponse, _err error) {
+func (client *Client) DescribeTraceLocationWithContext(ctx context.Context, request *DescribeTraceLocationRequest, runtime *dara.RuntimeOptions) (_result *DescribeTraceLocationResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1879,25 +1417,11 @@ func (client *Client) DescribeTraceLocationWithOptions(request *DescribeTraceLoc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeTraceLocationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DescribeTraceLocationRequest
-//
-// @return DescribeTraceLocationResponse
-func (client *Client) DescribeTraceLocation(request *DescribeTraceLocationRequest) (_result *DescribeTraceLocationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeTraceLocationResponse{}
-	_body, _err := client.DescribeTraceLocationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1906,7 +1430,7 @@ func (client *Client) DescribeTraceLocation(request *DescribeTraceLocationReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisableAlertTemplateResponse
-func (client *Client) DisableAlertTemplateWithOptions(request *DisableAlertTemplateRequest, runtime *dara.RuntimeOptions) (_result *DisableAlertTemplateResponse, _err error) {
+func (client *Client) DisableAlertTemplateWithContext(ctx context.Context, request *DisableAlertTemplateRequest, runtime *dara.RuntimeOptions) (_result *DisableAlertTemplateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1937,25 +1461,11 @@ func (client *Client) DisableAlertTemplateWithOptions(request *DisableAlertTempl
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableAlertTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DisableAlertTemplateRequest
-//
-// @return DisableAlertTemplateResponse
-func (client *Client) DisableAlertTemplate(request *DisableAlertTemplateRequest) (_result *DisableAlertTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DisableAlertTemplateResponse{}
-	_body, _err := client.DisableAlertTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1964,7 +1474,7 @@ func (client *Client) DisableAlertTemplate(request *DisableAlertTemplateRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnableAlertTemplateResponse
-func (client *Client) EnableAlertTemplateWithOptions(request *EnableAlertTemplateRequest, runtime *dara.RuntimeOptions) (_result *EnableAlertTemplateResponse, _err error) {
+func (client *Client) EnableAlertTemplateWithContext(ctx context.Context, request *EnableAlertTemplateRequest, runtime *dara.RuntimeOptions) (_result *EnableAlertTemplateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1995,25 +1505,11 @@ func (client *Client) EnableAlertTemplateWithOptions(request *EnableAlertTemplat
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableAlertTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - EnableAlertTemplateRequest
-//
-// @return EnableAlertTemplateResponse
-func (client *Client) EnableAlertTemplate(request *EnableAlertTemplateRequest) (_result *EnableAlertTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnableAlertTemplateResponse{}
-	_body, _err := client.EnableAlertTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2022,7 +1518,7 @@ func (client *Client) EnableAlertTemplate(request *EnableAlertTemplateRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExportPrometheusRulesResponse
-func (client *Client) ExportPrometheusRulesWithOptions(request *ExportPrometheusRulesRequest, runtime *dara.RuntimeOptions) (_result *ExportPrometheusRulesResponse, _err error) {
+func (client *Client) ExportPrometheusRulesWithContext(ctx context.Context, request *ExportPrometheusRulesRequest, runtime *dara.RuntimeOptions) (_result *ExportPrometheusRulesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2061,25 +1557,11 @@ func (client *Client) ExportPrometheusRulesWithOptions(request *ExportPrometheus
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExportPrometheusRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ExportPrometheusRulesRequest
-//
-// @return ExportPrometheusRulesResponse
-func (client *Client) ExportPrometheusRules(request *ExportPrometheusRulesRequest) (_result *ExportPrometheusRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ExportPrometheusRulesResponse{}
-	_body, _err := client.ExportPrometheusRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2088,7 +1570,7 @@ func (client *Client) ExportPrometheusRules(request *ExportPrometheusRulesReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAgentDownloadUrlResponse
-func (client *Client) GetAgentDownloadUrlWithOptions(request *GetAgentDownloadUrlRequest, runtime *dara.RuntimeOptions) (_result *GetAgentDownloadUrlResponse, _err error) {
+func (client *Client) GetAgentDownloadUrlWithContext(ctx context.Context, request *GetAgentDownloadUrlRequest, runtime *dara.RuntimeOptions) (_result *GetAgentDownloadUrlResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2111,25 +1593,11 @@ func (client *Client) GetAgentDownloadUrlWithOptions(request *GetAgentDownloadUr
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAgentDownloadUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetAgentDownloadUrlRequest
-//
-// @return GetAgentDownloadUrlResponse
-func (client *Client) GetAgentDownloadUrl(request *GetAgentDownloadUrlRequest) (_result *GetAgentDownloadUrlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAgentDownloadUrlResponse{}
-	_body, _err := client.GetAgentDownloadUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2138,7 +1606,7 @@ func (client *Client) GetAgentDownloadUrl(request *GetAgentDownloadUrlRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAppApiByPageResponse
-func (client *Client) GetAppApiByPageWithOptions(request *GetAppApiByPageRequest, runtime *dara.RuntimeOptions) (_result *GetAppApiByPageResponse, _err error) {
+func (client *Client) GetAppApiByPageWithContext(ctx context.Context, request *GetAppApiByPageRequest, runtime *dara.RuntimeOptions) (_result *GetAppApiByPageResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2189,25 +1657,11 @@ func (client *Client) GetAppApiByPageWithOptions(request *GetAppApiByPageRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAppApiByPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetAppApiByPageRequest
-//
-// @return GetAppApiByPageResponse
-func (client *Client) GetAppApiByPage(request *GetAppApiByPageRequest) (_result *GetAppApiByPageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAppApiByPageResponse{}
-	_body, _err := client.GetAppApiByPageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2216,7 +1670,7 @@ func (client *Client) GetAppApiByPage(request *GetAppApiByPageRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetConsistencySnapshotResponse
-func (client *Client) GetConsistencySnapshotWithOptions(request *GetConsistencySnapshotRequest, runtime *dara.RuntimeOptions) (_result *GetConsistencySnapshotResponse, _err error) {
+func (client *Client) GetConsistencySnapshotWithContext(ctx context.Context, request *GetConsistencySnapshotRequest, runtime *dara.RuntimeOptions) (_result *GetConsistencySnapshotResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2259,25 +1713,11 @@ func (client *Client) GetConsistencySnapshotWithOptions(request *GetConsistencyS
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetConsistencySnapshotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetConsistencySnapshotRequest
-//
-// @return GetConsistencySnapshotResponse
-func (client *Client) GetConsistencySnapshot(request *GetConsistencySnapshotRequest) (_result *GetConsistencySnapshotResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetConsistencySnapshotResponse{}
-	_body, _err := client.GetConsistencySnapshotWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2286,7 +1726,7 @@ func (client *Client) GetConsistencySnapshot(request *GetConsistencySnapshotRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetIntegrationTokenResponse
-func (client *Client) GetIntegrationTokenWithOptions(request *GetIntegrationTokenRequest, runtime *dara.RuntimeOptions) (_result *GetIntegrationTokenResponse, _err error) {
+func (client *Client) GetIntegrationTokenWithContext(ctx context.Context, request *GetIntegrationTokenRequest, runtime *dara.RuntimeOptions) (_result *GetIntegrationTokenResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2317,25 +1757,11 @@ func (client *Client) GetIntegrationTokenWithOptions(request *GetIntegrationToke
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetIntegrationTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetIntegrationTokenRequest
-//
-// @return GetIntegrationTokenResponse
-func (client *Client) GetIntegrationToken(request *GetIntegrationTokenRequest) (_result *GetIntegrationTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetIntegrationTokenResponse{}
-	_body, _err := client.GetIntegrationTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2344,7 +1770,7 @@ func (client *Client) GetIntegrationToken(request *GetIntegrationTokenRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMultipleTraceResponse
-func (client *Client) GetMultipleTraceWithOptions(request *GetMultipleTraceRequest, runtime *dara.RuntimeOptions) (_result *GetMultipleTraceResponse, _err error) {
+func (client *Client) GetMultipleTraceWithContext(ctx context.Context, request *GetMultipleTraceRequest, runtime *dara.RuntimeOptions) (_result *GetMultipleTraceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2375,25 +1801,11 @@ func (client *Client) GetMultipleTraceWithOptions(request *GetMultipleTraceReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetMultipleTraceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetMultipleTraceRequest
-//
-// @return GetMultipleTraceResponse
-func (client *Client) GetMultipleTrace(request *GetMultipleTraceRequest) (_result *GetMultipleTraceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetMultipleTraceResponse{}
-	_body, _err := client.GetMultipleTraceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2402,7 +1814,7 @@ func (client *Client) GetMultipleTrace(request *GetMultipleTraceRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPrometheusApiTokenResponse
-func (client *Client) GetPrometheusApiTokenWithOptions(request *GetPrometheusApiTokenRequest, runtime *dara.RuntimeOptions) (_result *GetPrometheusApiTokenResponse, _err error) {
+func (client *Client) GetPrometheusApiTokenWithContext(ctx context.Context, request *GetPrometheusApiTokenRequest, runtime *dara.RuntimeOptions) (_result *GetPrometheusApiTokenResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2429,25 +1841,11 @@ func (client *Client) GetPrometheusApiTokenWithOptions(request *GetPrometheusApi
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPrometheusApiTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetPrometheusApiTokenRequest
-//
-// @return GetPrometheusApiTokenResponse
-func (client *Client) GetPrometheusApiToken(request *GetPrometheusApiTokenRequest) (_result *GetPrometheusApiTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPrometheusApiTokenResponse{}
-	_body, _err := client.GetPrometheusApiTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2456,7 +1854,7 @@ func (client *Client) GetPrometheusApiToken(request *GetPrometheusApiTokenReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRetcodeShareUrlResponse
-func (client *Client) GetRetcodeShareUrlWithOptions(request *GetRetcodeShareUrlRequest, runtime *dara.RuntimeOptions) (_result *GetRetcodeShareUrlResponse, _err error) {
+func (client *Client) GetRetcodeShareUrlWithContext(ctx context.Context, request *GetRetcodeShareUrlRequest, runtime *dara.RuntimeOptions) (_result *GetRetcodeShareUrlResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2483,25 +1881,11 @@ func (client *Client) GetRetcodeShareUrlWithOptions(request *GetRetcodeShareUrlR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRetcodeShareUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetRetcodeShareUrlRequest
-//
-// @return GetRetcodeShareUrlResponse
-func (client *Client) GetRetcodeShareUrl(request *GetRetcodeShareUrlRequest) (_result *GetRetcodeShareUrlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRetcodeShareUrlResponse{}
-	_body, _err := client.GetRetcodeShareUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2510,7 +1894,7 @@ func (client *Client) GetRetcodeShareUrl(request *GetRetcodeShareUrlRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetStackResponse
-func (client *Client) GetStackWithOptions(request *GetStackRequest, runtime *dara.RuntimeOptions) (_result *GetStackResponse, _err error) {
+func (client *Client) GetStackWithContext(ctx context.Context, request *GetStackRequest, runtime *dara.RuntimeOptions) (_result *GetStackResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2557,25 +1941,11 @@ func (client *Client) GetStackWithOptions(request *GetStackRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetStackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetStackRequest
-//
-// @return GetStackResponse
-func (client *Client) GetStack(request *GetStackRequest) (_result *GetStackResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetStackResponse{}
-	_body, _err := client.GetStackWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2584,7 +1954,7 @@ func (client *Client) GetStack(request *GetStackRequest) (_result *GetStackRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTraceResponse
-func (client *Client) GetTraceWithOptions(request *GetTraceRequest, runtime *dara.RuntimeOptions) (_result *GetTraceResponse, _err error) {
+func (client *Client) GetTraceWithContext(ctx context.Context, request *GetTraceRequest, runtime *dara.RuntimeOptions) (_result *GetTraceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2615,25 +1985,11 @@ func (client *Client) GetTraceWithOptions(request *GetTraceRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTraceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetTraceRequest
-//
-// @return GetTraceResponse
-func (client *Client) GetTrace(request *GetTraceRequest) (_result *GetTraceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetTraceResponse{}
-	_body, _err := client.GetTraceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2642,7 +1998,7 @@ func (client *Client) GetTrace(request *GetTraceRequest) (_result *GetTraceRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTraceAppResponse
-func (client *Client) GetTraceAppWithOptions(request *GetTraceAppRequest, runtime *dara.RuntimeOptions) (_result *GetTraceAppResponse, _err error) {
+func (client *Client) GetTraceAppWithContext(ctx context.Context, request *GetTraceAppRequest, runtime *dara.RuntimeOptions) (_result *GetTraceAppResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2673,25 +2029,11 @@ func (client *Client) GetTraceAppWithOptions(request *GetTraceAppRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTraceAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetTraceAppRequest
-//
-// @return GetTraceAppResponse
-func (client *Client) GetTraceApp(request *GetTraceAppRequest) (_result *GetTraceAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetTraceAppResponse{}
-	_body, _err := client.GetTraceAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2700,7 +2042,7 @@ func (client *Client) GetTraceApp(request *GetTraceAppRequest) (_result *GetTrac
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ImportAppAlertRulesResponse
-func (client *Client) ImportAppAlertRulesWithOptions(request *ImportAppAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *ImportAppAlertRulesResponse, _err error) {
+func (client *Client) ImportAppAlertRulesWithContext(ctx context.Context, request *ImportAppAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *ImportAppAlertRulesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2747,25 +2089,11 @@ func (client *Client) ImportAppAlertRulesWithOptions(request *ImportAppAlertRule
 		BodyType:    dara.String("json"),
 	}
 	_result = &ImportAppAlertRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ImportAppAlertRulesRequest
-//
-// @return ImportAppAlertRulesResponse
-func (client *Client) ImportAppAlertRules(request *ImportAppAlertRulesRequest) (_result *ImportAppAlertRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ImportAppAlertRulesResponse{}
-	_body, _err := client.ImportAppAlertRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2774,7 +2102,7 @@ func (client *Client) ImportAppAlertRules(request *ImportAppAlertRulesRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ImportCustomAlertRulesResponse
-func (client *Client) ImportCustomAlertRulesWithOptions(request *ImportCustomAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *ImportCustomAlertRulesResponse, _err error) {
+func (client *Client) ImportCustomAlertRulesWithContext(ctx context.Context, request *ImportCustomAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *ImportCustomAlertRulesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2817,25 +2145,11 @@ func (client *Client) ImportCustomAlertRulesWithOptions(request *ImportCustomAle
 		BodyType:    dara.String("json"),
 	}
 	_result = &ImportCustomAlertRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ImportCustomAlertRulesRequest
-//
-// @return ImportCustomAlertRulesResponse
-func (client *Client) ImportCustomAlertRules(request *ImportCustomAlertRulesRequest) (_result *ImportCustomAlertRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ImportCustomAlertRulesResponse{}
-	_body, _err := client.ImportCustomAlertRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2844,7 +2158,7 @@ func (client *Client) ImportCustomAlertRules(request *ImportCustomAlertRulesRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ImportPrometheusRulesResponse
-func (client *Client) ImportPrometheusRulesWithOptions(request *ImportPrometheusRulesRequest, runtime *dara.RuntimeOptions) (_result *ImportPrometheusRulesResponse, _err error) {
+func (client *Client) ImportPrometheusRulesWithContext(ctx context.Context, request *ImportPrometheusRulesRequest, runtime *dara.RuntimeOptions) (_result *ImportPrometheusRulesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2887,25 +2201,11 @@ func (client *Client) ImportPrometheusRulesWithOptions(request *ImportPrometheus
 		BodyType:    dara.String("json"),
 	}
 	_result = &ImportPrometheusRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ImportPrometheusRulesRequest
-//
-// @return ImportPrometheusRulesResponse
-func (client *Client) ImportPrometheusRules(request *ImportPrometheusRulesRequest) (_result *ImportPrometheusRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ImportPrometheusRulesResponse{}
-	_body, _err := client.ImportPrometheusRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2914,7 +2214,7 @@ func (client *Client) ImportPrometheusRules(request *ImportPrometheusRulesReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListActivatedAlertsResponse
-func (client *Client) ListActivatedAlertsWithOptions(request *ListActivatedAlertsRequest, runtime *dara.RuntimeOptions) (_result *ListActivatedAlertsResponse, _err error) {
+func (client *Client) ListActivatedAlertsWithContext(ctx context.Context, request *ListActivatedAlertsRequest, runtime *dara.RuntimeOptions) (_result *ListActivatedAlertsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2953,25 +2253,11 @@ func (client *Client) ListActivatedAlertsWithOptions(request *ListActivatedAlert
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListActivatedAlertsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListActivatedAlertsRequest
-//
-// @return ListActivatedAlertsResponse
-func (client *Client) ListActivatedAlerts(request *ListActivatedAlertsRequest) (_result *ListActivatedAlertsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListActivatedAlertsResponse{}
-	_body, _err := client.ListActivatedAlertsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2980,7 +2266,7 @@ func (client *Client) ListActivatedAlerts(request *ListActivatedAlertsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAlertTemplatesResponse
-func (client *Client) ListAlertTemplatesWithOptions(request *ListAlertTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListAlertTemplatesResponse, _err error) {
+func (client *Client) ListAlertTemplatesWithContext(ctx context.Context, request *ListAlertTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListAlertTemplatesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3031,25 +2317,11 @@ func (client *Client) ListAlertTemplatesWithOptions(request *ListAlertTemplatesR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAlertTemplatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListAlertTemplatesRequest
-//
-// @return ListAlertTemplatesResponse
-func (client *Client) ListAlertTemplates(request *ListAlertTemplatesRequest) (_result *ListAlertTemplatesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListAlertTemplatesResponse{}
-	_body, _err := client.ListAlertTemplatesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3058,7 +2330,7 @@ func (client *Client) ListAlertTemplates(request *ListAlertTemplatesRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListClusterFromGrafanaResponse
-func (client *Client) ListClusterFromGrafanaWithOptions(request *ListClusterFromGrafanaRequest, runtime *dara.RuntimeOptions) (_result *ListClusterFromGrafanaResponse, _err error) {
+func (client *Client) ListClusterFromGrafanaWithContext(ctx context.Context, request *ListClusterFromGrafanaRequest, runtime *dara.RuntimeOptions) (_result *ListClusterFromGrafanaResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3085,25 +2357,11 @@ func (client *Client) ListClusterFromGrafanaWithOptions(request *ListClusterFrom
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListClusterFromGrafanaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListClusterFromGrafanaRequest
-//
-// @return ListClusterFromGrafanaResponse
-func (client *Client) ListClusterFromGrafana(request *ListClusterFromGrafanaRequest) (_result *ListClusterFromGrafanaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListClusterFromGrafanaResponse{}
-	_body, _err := client.ListClusterFromGrafanaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3112,7 +2370,7 @@ func (client *Client) ListClusterFromGrafana(request *ListClusterFromGrafanaRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDashboardsResponse
-func (client *Client) ListDashboardsWithOptions(request *ListDashboardsRequest, runtime *dara.RuntimeOptions) (_result *ListDashboardsResponse, _err error) {
+func (client *Client) ListDashboardsWithContext(ctx context.Context, request *ListDashboardsRequest, runtime *dara.RuntimeOptions) (_result *ListDashboardsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3159,25 +2417,11 @@ func (client *Client) ListDashboardsWithOptions(request *ListDashboardsRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDashboardsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListDashboardsRequest
-//
-// @return ListDashboardsResponse
-func (client *Client) ListDashboards(request *ListDashboardsRequest) (_result *ListDashboardsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListDashboardsResponse{}
-	_body, _err := client.ListDashboardsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3186,7 +2430,7 @@ func (client *Client) ListDashboards(request *ListDashboardsRequest) (_result *L
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDispatchRuleResponse
-func (client *Client) ListDispatchRuleWithOptions(request *ListDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *ListDispatchRuleResponse, _err error) {
+func (client *Client) ListDispatchRuleWithContext(ctx context.Context, request *ListDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *ListDispatchRuleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3221,25 +2465,11 @@ func (client *Client) ListDispatchRuleWithOptions(request *ListDispatchRuleReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDispatchRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListDispatchRuleRequest
-//
-// @return ListDispatchRuleResponse
-func (client *Client) ListDispatchRule(request *ListDispatchRuleRequest) (_result *ListDispatchRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListDispatchRuleResponse{}
-	_body, _err := client.ListDispatchRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3248,7 +2478,7 @@ func (client *Client) ListDispatchRule(request *ListDispatchRuleRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPromClustersResponse
-func (client *Client) ListPromClustersWithOptions(request *ListPromClustersRequest, runtime *dara.RuntimeOptions) (_result *ListPromClustersResponse, _err error) {
+func (client *Client) ListPromClustersWithContext(ctx context.Context, request *ListPromClustersRequest, runtime *dara.RuntimeOptions) (_result *ListPromClustersResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3275,25 +2505,11 @@ func (client *Client) ListPromClustersWithOptions(request *ListPromClustersReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPromClustersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListPromClustersRequest
-//
-// @return ListPromClustersResponse
-func (client *Client) ListPromClusters(request *ListPromClustersRequest) (_result *ListPromClustersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPromClustersResponse{}
-	_body, _err := client.ListPromClustersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3302,7 +2518,7 @@ func (client *Client) ListPromClusters(request *ListPromClustersRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPrometheusAlertRulesResponse
-func (client *Client) ListPrometheusAlertRulesWithOptions(request *ListPrometheusAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusAlertRulesResponse, _err error) {
+func (client *Client) ListPrometheusAlertRulesWithContext(ctx context.Context, request *ListPrometheusAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusAlertRulesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3349,25 +2565,11 @@ func (client *Client) ListPrometheusAlertRulesWithOptions(request *ListPrometheu
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPrometheusAlertRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListPrometheusAlertRulesRequest
-//
-// @return ListPrometheusAlertRulesResponse
-func (client *Client) ListPrometheusAlertRules(request *ListPrometheusAlertRulesRequest) (_result *ListPrometheusAlertRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPrometheusAlertRulesResponse{}
-	_body, _err := client.ListPrometheusAlertRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3376,7 +2578,7 @@ func (client *Client) ListPrometheusAlertRules(request *ListPrometheusAlertRules
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPrometheusAlertTemplatesResponse
-func (client *Client) ListPrometheusAlertTemplatesWithOptions(request *ListPrometheusAlertTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusAlertTemplatesResponse, _err error) {
+func (client *Client) ListPrometheusAlertTemplatesWithContext(ctx context.Context, request *ListPrometheusAlertTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusAlertTemplatesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3407,25 +2609,11 @@ func (client *Client) ListPrometheusAlertTemplatesWithOptions(request *ListProme
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPrometheusAlertTemplatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListPrometheusAlertTemplatesRequest
-//
-// @return ListPrometheusAlertTemplatesResponse
-func (client *Client) ListPrometheusAlertTemplates(request *ListPrometheusAlertTemplatesRequest) (_result *ListPrometheusAlertTemplatesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPrometheusAlertTemplatesResponse{}
-	_body, _err := client.ListPrometheusAlertTemplatesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3434,7 +2622,7 @@ func (client *Client) ListPrometheusAlertTemplates(request *ListPrometheusAlertT
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListRetcodeAppsResponse
-func (client *Client) ListRetcodeAppsWithOptions(request *ListRetcodeAppsRequest, runtime *dara.RuntimeOptions) (_result *ListRetcodeAppsResponse, _err error) {
+func (client *Client) ListRetcodeAppsWithContext(ctx context.Context, request *ListRetcodeAppsRequest, runtime *dara.RuntimeOptions) (_result *ListRetcodeAppsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3465,25 +2653,11 @@ func (client *Client) ListRetcodeAppsWithOptions(request *ListRetcodeAppsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRetcodeAppsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListRetcodeAppsRequest
-//
-// @return ListRetcodeAppsResponse
-func (client *Client) ListRetcodeApps(request *ListRetcodeAppsRequest) (_result *ListRetcodeAppsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListRetcodeAppsResponse{}
-	_body, _err := client.ListRetcodeAppsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3492,7 +2666,7 @@ func (client *Client) ListRetcodeApps(request *ListRetcodeAppsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListScenarioResponse
-func (client *Client) ListScenarioWithOptions(request *ListScenarioRequest, runtime *dara.RuntimeOptions) (_result *ListScenarioResponse, _err error) {
+func (client *Client) ListScenarioWithContext(ctx context.Context, request *ListScenarioRequest, runtime *dara.RuntimeOptions) (_result *ListScenarioResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3535,25 +2709,11 @@ func (client *Client) ListScenarioWithOptions(request *ListScenarioRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListScenarioResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListScenarioRequest
-//
-// @return ListScenarioResponse
-func (client *Client) ListScenario(request *ListScenarioRequest) (_result *ListScenarioResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListScenarioResponse{}
-	_body, _err := client.ListScenarioWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3562,7 +2722,7 @@ func (client *Client) ListScenario(request *ListScenarioRequest) (_result *ListS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListServerlessTopNAppsResponse
-func (client *Client) ListServerlessTopNAppsWithOptions(request *ListServerlessTopNAppsRequest, runtime *dara.RuntimeOptions) (_result *ListServerlessTopNAppsResponse, _err error) {
+func (client *Client) ListServerlessTopNAppsWithContext(ctx context.Context, request *ListServerlessTopNAppsRequest, runtime *dara.RuntimeOptions) (_result *ListServerlessTopNAppsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3605,25 +2765,11 @@ func (client *Client) ListServerlessTopNAppsWithOptions(request *ListServerlessT
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListServerlessTopNAppsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListServerlessTopNAppsRequest
-//
-// @return ListServerlessTopNAppsResponse
-func (client *Client) ListServerlessTopNApps(request *ListServerlessTopNAppsRequest) (_result *ListServerlessTopNAppsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListServerlessTopNAppsResponse{}
-	_body, _err := client.ListServerlessTopNAppsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3632,7 +2778,7 @@ func (client *Client) ListServerlessTopNApps(request *ListServerlessTopNAppsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTraceAppsResponse
-func (client *Client) ListTraceAppsWithOptions(request *ListTraceAppsRequest, runtime *dara.RuntimeOptions) (_result *ListTraceAppsResponse, _err error) {
+func (client *Client) ListTraceAppsWithContext(ctx context.Context, request *ListTraceAppsRequest, runtime *dara.RuntimeOptions) (_result *ListTraceAppsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3659,25 +2805,11 @@ func (client *Client) ListTraceAppsWithOptions(request *ListTraceAppsRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTraceAppsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListTraceAppsRequest
-//
-// @return ListTraceAppsResponse
-func (client *Client) ListTraceApps(request *ListTraceAppsRequest) (_result *ListTraceAppsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTraceAppsResponse{}
-	_body, _err := client.ListTraceAppsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3686,7 +2818,7 @@ func (client *Client) ListTraceApps(request *ListTraceAppsRequest) (_result *Lis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OpenArmsDefaultSLRResponse
-func (client *Client) OpenArmsDefaultSLRWithOptions(request *OpenArmsDefaultSLRRequest, runtime *dara.RuntimeOptions) (_result *OpenArmsDefaultSLRResponse, _err error) {
+func (client *Client) OpenArmsDefaultSLRWithContext(ctx context.Context, request *OpenArmsDefaultSLRRequest, runtime *dara.RuntimeOptions) (_result *OpenArmsDefaultSLRResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3713,25 +2845,11 @@ func (client *Client) OpenArmsDefaultSLRWithOptions(request *OpenArmsDefaultSLRR
 		BodyType:    dara.String("json"),
 	}
 	_result = &OpenArmsDefaultSLRResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - OpenArmsDefaultSLRRequest
-//
-// @return OpenArmsDefaultSLRResponse
-func (client *Client) OpenArmsDefaultSLR(request *OpenArmsDefaultSLRRequest) (_result *OpenArmsDefaultSLRResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OpenArmsDefaultSLRResponse{}
-	_body, _err := client.OpenArmsDefaultSLRWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3740,7 +2858,7 @@ func (client *Client) OpenArmsDefaultSLR(request *OpenArmsDefaultSLRRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OpenArmsServiceResponse
-func (client *Client) OpenArmsServiceWithOptions(request *OpenArmsServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenArmsServiceResponse, _err error) {
+func (client *Client) OpenArmsServiceWithContext(ctx context.Context, request *OpenArmsServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenArmsServiceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3771,25 +2889,11 @@ func (client *Client) OpenArmsServiceWithOptions(request *OpenArmsServiceRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &OpenArmsServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - OpenArmsServiceRequest
-//
-// @return OpenArmsServiceResponse
-func (client *Client) OpenArmsService(request *OpenArmsServiceRequest) (_result *OpenArmsServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OpenArmsServiceResponse{}
-	_body, _err := client.OpenArmsServiceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3798,7 +2902,7 @@ func (client *Client) OpenArmsService(request *OpenArmsServiceRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OpenVClusterResponse
-func (client *Client) OpenVClusterWithOptions(request *OpenVClusterRequest, runtime *dara.RuntimeOptions) (_result *OpenVClusterResponse, _err error) {
+func (client *Client) OpenVClusterWithContext(ctx context.Context, request *OpenVClusterRequest, runtime *dara.RuntimeOptions) (_result *OpenVClusterResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3841,25 +2945,11 @@ func (client *Client) OpenVClusterWithOptions(request *OpenVClusterRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &OpenVClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - OpenVClusterRequest
-//
-// @return OpenVClusterResponse
-func (client *Client) OpenVCluster(request *OpenVClusterRequest) (_result *OpenVClusterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OpenVClusterResponse{}
-	_body, _err := client.OpenVClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3868,7 +2958,7 @@ func (client *Client) OpenVCluster(request *OpenVClusterRequest) (_result *OpenV
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OpenXtraceDefaultSLRResponse
-func (client *Client) OpenXtraceDefaultSLRWithOptions(request *OpenXtraceDefaultSLRRequest, runtime *dara.RuntimeOptions) (_result *OpenXtraceDefaultSLRResponse, _err error) {
+func (client *Client) OpenXtraceDefaultSLRWithContext(ctx context.Context, request *OpenXtraceDefaultSLRRequest, runtime *dara.RuntimeOptions) (_result *OpenXtraceDefaultSLRResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3895,25 +2985,11 @@ func (client *Client) OpenXtraceDefaultSLRWithOptions(request *OpenXtraceDefault
 		BodyType:    dara.String("json"),
 	}
 	_result = &OpenXtraceDefaultSLRResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - OpenXtraceDefaultSLRRequest
-//
-// @return OpenXtraceDefaultSLRResponse
-func (client *Client) OpenXtraceDefaultSLR(request *OpenXtraceDefaultSLRRequest) (_result *OpenXtraceDefaultSLRResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OpenXtraceDefaultSLRResponse{}
-	_body, _err := client.OpenXtraceDefaultSLRWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3922,7 +2998,7 @@ func (client *Client) OpenXtraceDefaultSLR(request *OpenXtraceDefaultSLRRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryDatasetResponse
-func (client *Client) QueryDatasetWithOptions(request *QueryDatasetRequest, runtime *dara.RuntimeOptions) (_result *QueryDatasetResponse, _err error) {
+func (client *Client) QueryDatasetWithContext(ctx context.Context, request *QueryDatasetRequest, runtime *dara.RuntimeOptions) (_result *QueryDatasetResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4005,25 +3081,11 @@ func (client *Client) QueryDatasetWithOptions(request *QueryDatasetRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryDatasetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryDatasetRequest
-//
-// @return QueryDatasetResponse
-func (client *Client) QueryDataset(request *QueryDatasetRequest) (_result *QueryDatasetResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryDatasetResponse{}
-	_body, _err := client.QueryDatasetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4032,7 +3094,7 @@ func (client *Client) QueryDataset(request *QueryDatasetRequest) (_result *Query
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryMetricResponse
-func (client *Client) QueryMetricWithOptions(request *QueryMetricRequest, runtime *dara.RuntimeOptions) (_result *QueryMetricResponse, _err error) {
+func (client *Client) QueryMetricWithContext(ctx context.Context, request *QueryMetricRequest, runtime *dara.RuntimeOptions) (_result *QueryMetricResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4107,25 +3169,11 @@ func (client *Client) QueryMetricWithOptions(request *QueryMetricRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryMetricResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryMetricRequest
-//
-// @return QueryMetricResponse
-func (client *Client) QueryMetric(request *QueryMetricRequest) (_result *QueryMetricResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryMetricResponse{}
-	_body, _err := client.QueryMetricWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4134,7 +3182,7 @@ func (client *Client) QueryMetric(request *QueryMetricRequest) (_result *QueryMe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryMetricByPageResponse
-func (client *Client) QueryMetricByPageWithOptions(request *QueryMetricByPageRequest, runtime *dara.RuntimeOptions) (_result *QueryMetricByPageResponse, _err error) {
+func (client *Client) QueryMetricByPageWithContext(ctx context.Context, request *QueryMetricByPageRequest, runtime *dara.RuntimeOptions) (_result *QueryMetricByPageResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4205,25 +3253,11 @@ func (client *Client) QueryMetricByPageWithOptions(request *QueryMetricByPageReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryMetricByPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryMetricByPageRequest
-//
-// @return QueryMetricByPageResponse
-func (client *Client) QueryMetricByPage(request *QueryMetricByPageRequest) (_result *QueryMetricByPageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryMetricByPageResponse{}
-	_body, _err := client.QueryMetricByPageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4232,7 +3266,7 @@ func (client *Client) QueryMetricByPage(request *QueryMetricByPageRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveTraceAppConfigResponse
-func (client *Client) SaveTraceAppConfigWithOptions(request *SaveTraceAppConfigRequest, runtime *dara.RuntimeOptions) (_result *SaveTraceAppConfigResponse, _err error) {
+func (client *Client) SaveTraceAppConfigWithContext(ctx context.Context, request *SaveTraceAppConfigRequest, runtime *dara.RuntimeOptions) (_result *SaveTraceAppConfigResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4263,25 +3297,11 @@ func (client *Client) SaveTraceAppConfigWithOptions(request *SaveTraceAppConfigR
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveTraceAppConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveTraceAppConfigRequest
-//
-// @return SaveTraceAppConfigResponse
-func (client *Client) SaveTraceAppConfig(request *SaveTraceAppConfigRequest) (_result *SaveTraceAppConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveTraceAppConfigResponse{}
-	_body, _err := client.SaveTraceAppConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4290,7 +3310,7 @@ func (client *Client) SaveTraceAppConfig(request *SaveTraceAppConfigRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchAlertContactResponse
-func (client *Client) SearchAlertContactWithOptions(request *SearchAlertContactRequest, runtime *dara.RuntimeOptions) (_result *SearchAlertContactResponse, _err error) {
+func (client *Client) SearchAlertContactWithContext(ctx context.Context, request *SearchAlertContactRequest, runtime *dara.RuntimeOptions) (_result *SearchAlertContactResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4341,25 +3361,11 @@ func (client *Client) SearchAlertContactWithOptions(request *SearchAlertContactR
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchAlertContactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SearchAlertContactRequest
-//
-// @return SearchAlertContactResponse
-func (client *Client) SearchAlertContact(request *SearchAlertContactRequest) (_result *SearchAlertContactResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchAlertContactResponse{}
-	_body, _err := client.SearchAlertContactWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4368,7 +3374,7 @@ func (client *Client) SearchAlertContact(request *SearchAlertContactRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchAlertContactGroupResponse
-func (client *Client) SearchAlertContactGroupWithOptions(request *SearchAlertContactGroupRequest, runtime *dara.RuntimeOptions) (_result *SearchAlertContactGroupResponse, _err error) {
+func (client *Client) SearchAlertContactGroupWithContext(ctx context.Context, request *SearchAlertContactGroupRequest, runtime *dara.RuntimeOptions) (_result *SearchAlertContactGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4415,25 +3421,11 @@ func (client *Client) SearchAlertContactGroupWithOptions(request *SearchAlertCon
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchAlertContactGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SearchAlertContactGroupRequest
-//
-// @return SearchAlertContactGroupResponse
-func (client *Client) SearchAlertContactGroup(request *SearchAlertContactGroupRequest) (_result *SearchAlertContactGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchAlertContactGroupResponse{}
-	_body, _err := client.SearchAlertContactGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4442,7 +3434,7 @@ func (client *Client) SearchAlertContactGroup(request *SearchAlertContactGroupRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchAlertHistoriesResponse
-func (client *Client) SearchAlertHistoriesWithOptions(request *SearchAlertHistoriesRequest, runtime *dara.RuntimeOptions) (_result *SearchAlertHistoriesResponse, _err error) {
+func (client *Client) SearchAlertHistoriesWithContext(ctx context.Context, request *SearchAlertHistoriesRequest, runtime *dara.RuntimeOptions) (_result *SearchAlertHistoriesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4493,25 +3485,11 @@ func (client *Client) SearchAlertHistoriesWithOptions(request *SearchAlertHistor
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchAlertHistoriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SearchAlertHistoriesRequest
-//
-// @return SearchAlertHistoriesResponse
-func (client *Client) SearchAlertHistories(request *SearchAlertHistoriesRequest) (_result *SearchAlertHistoriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchAlertHistoriesResponse{}
-	_body, _err := client.SearchAlertHistoriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4520,7 +3498,7 @@ func (client *Client) SearchAlertHistories(request *SearchAlertHistoriesRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchAlertRulesResponse
-func (client *Client) SearchAlertRulesWithOptions(request *SearchAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *SearchAlertRulesResponse, _err error) {
+func (client *Client) SearchAlertRulesWithContext(ctx context.Context, request *SearchAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *SearchAlertRulesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4571,25 +3549,11 @@ func (client *Client) SearchAlertRulesWithOptions(request *SearchAlertRulesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchAlertRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SearchAlertRulesRequest
-//
-// @return SearchAlertRulesResponse
-func (client *Client) SearchAlertRules(request *SearchAlertRulesRequest) (_result *SearchAlertRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchAlertRulesResponse{}
-	_body, _err := client.SearchAlertRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4598,7 +3562,7 @@ func (client *Client) SearchAlertRules(request *SearchAlertRulesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchEventsResponse
-func (client *Client) SearchEventsWithOptions(request *SearchEventsRequest, runtime *dara.RuntimeOptions) (_result *SearchEventsResponse, _err error) {
+func (client *Client) SearchEventsWithContext(ctx context.Context, request *SearchEventsRequest, runtime *dara.RuntimeOptions) (_result *SearchEventsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4661,25 +3625,11 @@ func (client *Client) SearchEventsWithOptions(request *SearchEventsRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchEventsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SearchEventsRequest
-//
-// @return SearchEventsResponse
-func (client *Client) SearchEvents(request *SearchEventsRequest) (_result *SearchEventsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchEventsResponse{}
-	_body, _err := client.SearchEventsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4688,7 +3638,7 @@ func (client *Client) SearchEvents(request *SearchEventsRequest) (_result *Searc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchRetcodeAppByPageResponse
-func (client *Client) SearchRetcodeAppByPageWithOptions(request *SearchRetcodeAppByPageRequest, runtime *dara.RuntimeOptions) (_result *SearchRetcodeAppByPageResponse, _err error) {
+func (client *Client) SearchRetcodeAppByPageWithContext(ctx context.Context, request *SearchRetcodeAppByPageRequest, runtime *dara.RuntimeOptions) (_result *SearchRetcodeAppByPageResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4727,25 +3677,11 @@ func (client *Client) SearchRetcodeAppByPageWithOptions(request *SearchRetcodeAp
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchRetcodeAppByPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SearchRetcodeAppByPageRequest
-//
-// @return SearchRetcodeAppByPageResponse
-func (client *Client) SearchRetcodeAppByPage(request *SearchRetcodeAppByPageRequest) (_result *SearchRetcodeAppByPageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchRetcodeAppByPageResponse{}
-	_body, _err := client.SearchRetcodeAppByPageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4754,7 +3690,7 @@ func (client *Client) SearchRetcodeAppByPage(request *SearchRetcodeAppByPageRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchTraceAppByNameResponse
-func (client *Client) SearchTraceAppByNameWithOptions(request *SearchTraceAppByNameRequest, runtime *dara.RuntimeOptions) (_result *SearchTraceAppByNameResponse, _err error) {
+func (client *Client) SearchTraceAppByNameWithContext(ctx context.Context, request *SearchTraceAppByNameRequest, runtime *dara.RuntimeOptions) (_result *SearchTraceAppByNameResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4785,25 +3721,11 @@ func (client *Client) SearchTraceAppByNameWithOptions(request *SearchTraceAppByN
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchTraceAppByNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SearchTraceAppByNameRequest
-//
-// @return SearchTraceAppByNameResponse
-func (client *Client) SearchTraceAppByName(request *SearchTraceAppByNameRequest) (_result *SearchTraceAppByNameResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchTraceAppByNameResponse{}
-	_body, _err := client.SearchTraceAppByNameWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4812,7 +3734,7 @@ func (client *Client) SearchTraceAppByName(request *SearchTraceAppByNameRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchTraceAppByPageResponse
-func (client *Client) SearchTraceAppByPageWithOptions(request *SearchTraceAppByPageRequest, runtime *dara.RuntimeOptions) (_result *SearchTraceAppByPageResponse, _err error) {
+func (client *Client) SearchTraceAppByPageWithContext(ctx context.Context, request *SearchTraceAppByPageRequest, runtime *dara.RuntimeOptions) (_result *SearchTraceAppByPageResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4851,25 +3773,11 @@ func (client *Client) SearchTraceAppByPageWithOptions(request *SearchTraceAppByP
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchTraceAppByPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SearchTraceAppByPageRequest
-//
-// @return SearchTraceAppByPageResponse
-func (client *Client) SearchTraceAppByPage(request *SearchTraceAppByPageRequest) (_result *SearchTraceAppByPageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchTraceAppByPageResponse{}
-	_body, _err := client.SearchTraceAppByPageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4878,7 +3786,7 @@ func (client *Client) SearchTraceAppByPage(request *SearchTraceAppByPageRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchTracesResponse
-func (client *Client) SearchTracesWithOptions(request *SearchTracesRequest, runtime *dara.RuntimeOptions) (_result *SearchTracesResponse, _err error) {
+func (client *Client) SearchTracesWithContext(ctx context.Context, request *SearchTracesRequest, runtime *dara.RuntimeOptions) (_result *SearchTracesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4941,25 +3849,11 @@ func (client *Client) SearchTracesWithOptions(request *SearchTracesRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchTracesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SearchTracesRequest
-//
-// @return SearchTracesResponse
-func (client *Client) SearchTraces(request *SearchTracesRequest) (_result *SearchTracesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchTracesResponse{}
-	_body, _err := client.SearchTracesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4968,7 +3862,7 @@ func (client *Client) SearchTraces(request *SearchTracesRequest) (_result *Searc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchTracesByPageResponse
-func (client *Client) SearchTracesByPageWithOptions(request *SearchTracesByPageRequest, runtime *dara.RuntimeOptions) (_result *SearchTracesByPageResponse, _err error) {
+func (client *Client) SearchTracesByPageWithContext(ctx context.Context, request *SearchTracesByPageRequest, runtime *dara.RuntimeOptions) (_result *SearchTracesByPageResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5035,25 +3929,11 @@ func (client *Client) SearchTracesByPageWithOptions(request *SearchTracesByPageR
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchTracesByPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SearchTracesByPageRequest
-//
-// @return SearchTracesByPageResponse
-func (client *Client) SearchTracesByPage(request *SearchTracesByPageRequest) (_result *SearchTracesByPageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchTracesByPageResponse{}
-	_body, _err := client.SearchTracesByPageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5062,7 +3942,7 @@ func (client *Client) SearchTracesByPage(request *SearchTracesByPageRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SendCustomIncidentsResponse
-func (client *Client) SendCustomIncidentsWithOptions(request *SendCustomIncidentsRequest, runtime *dara.RuntimeOptions) (_result *SendCustomIncidentsResponse, _err error) {
+func (client *Client) SendCustomIncidentsWithContext(ctx context.Context, request *SendCustomIncidentsRequest, runtime *dara.RuntimeOptions) (_result *SendCustomIncidentsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5097,25 +3977,11 @@ func (client *Client) SendCustomIncidentsWithOptions(request *SendCustomIncident
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendCustomIncidentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SendCustomIncidentsRequest
-//
-// @return SendCustomIncidentsResponse
-func (client *Client) SendCustomIncidents(request *SendCustomIncidentsRequest) (_result *SendCustomIncidentsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SendCustomIncidentsResponse{}
-	_body, _err := client.SendCustomIncidentsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5124,7 +3990,7 @@ func (client *Client) SendCustomIncidents(request *SendCustomIncidentsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SendMseIncidentResponse
-func (client *Client) SendMseIncidentWithOptions(request *SendMseIncidentRequest, runtime *dara.RuntimeOptions) (_result *SendMseIncidentResponse, _err error) {
+func (client *Client) SendMseIncidentWithContext(ctx context.Context, request *SendMseIncidentRequest, runtime *dara.RuntimeOptions) (_result *SendMseIncidentResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5155,25 +4021,11 @@ func (client *Client) SendMseIncidentWithOptions(request *SendMseIncidentRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendMseIncidentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SendMseIncidentRequest
-//
-// @return SendMseIncidentResponse
-func (client *Client) SendMseIncident(request *SendMseIncidentRequest) (_result *SendMseIncidentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SendMseIncidentResponse{}
-	_body, _err := client.SendMseIncidentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5182,7 +4034,7 @@ func (client *Client) SendMseIncident(request *SendMseIncidentRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetRetcodeShareStatusResponse
-func (client *Client) SetRetcodeShareStatusWithOptions(request *SetRetcodeShareStatusRequest, runtime *dara.RuntimeOptions) (_result *SetRetcodeShareStatusResponse, _err error) {
+func (client *Client) SetRetcodeShareStatusWithContext(ctx context.Context, request *SetRetcodeShareStatusRequest, runtime *dara.RuntimeOptions) (_result *SetRetcodeShareStatusResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5217,25 +4069,11 @@ func (client *Client) SetRetcodeShareStatusWithOptions(request *SetRetcodeShareS
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetRetcodeShareStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SetRetcodeShareStatusRequest
-//
-// @return SetRetcodeShareStatusResponse
-func (client *Client) SetRetcodeShareStatus(request *SetRetcodeShareStatusRequest) (_result *SetRetcodeShareStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetRetcodeShareStatusResponse{}
-	_body, _err := client.SetRetcodeShareStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5244,7 +4082,7 @@ func (client *Client) SetRetcodeShareStatus(request *SetRetcodeShareStatusReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartAlertResponse
-func (client *Client) StartAlertWithOptions(request *StartAlertRequest, runtime *dara.RuntimeOptions) (_result *StartAlertResponse, _err error) {
+func (client *Client) StartAlertWithContext(ctx context.Context, request *StartAlertRequest, runtime *dara.RuntimeOptions) (_result *StartAlertResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5275,25 +4113,11 @@ func (client *Client) StartAlertWithOptions(request *StartAlertRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartAlertResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - StartAlertRequest
-//
-// @return StartAlertResponse
-func (client *Client) StartAlert(request *StartAlertRequest) (_result *StartAlertResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartAlertResponse{}
-	_body, _err := client.StartAlertWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5302,7 +4126,7 @@ func (client *Client) StartAlert(request *StartAlertRequest) (_result *StartAler
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopAlertResponse
-func (client *Client) StopAlertWithOptions(request *StopAlertRequest, runtime *dara.RuntimeOptions) (_result *StopAlertResponse, _err error) {
+func (client *Client) StopAlertWithContext(ctx context.Context, request *StopAlertRequest, runtime *dara.RuntimeOptions) (_result *StopAlertResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5333,25 +4157,11 @@ func (client *Client) StopAlertWithOptions(request *StopAlertRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopAlertResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - StopAlertRequest
-//
-// @return StopAlertResponse
-func (client *Client) StopAlert(request *StopAlertRequest) (_result *StopAlertResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopAlertResponse{}
-	_body, _err := client.StopAlertWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5360,7 +4170,7 @@ func (client *Client) StopAlert(request *StopAlertRequest) (_result *StopAlertRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateAlertContactResponse
-func (client *Client) UpdateAlertContactWithOptions(request *UpdateAlertContactRequest, runtime *dara.RuntimeOptions) (_result *UpdateAlertContactResponse, _err error) {
+func (client *Client) UpdateAlertContactWithContext(ctx context.Context, request *UpdateAlertContactRequest, runtime *dara.RuntimeOptions) (_result *UpdateAlertContactResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5411,25 +4221,11 @@ func (client *Client) UpdateAlertContactWithOptions(request *UpdateAlertContactR
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAlertContactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - UpdateAlertContactRequest
-//
-// @return UpdateAlertContactResponse
-func (client *Client) UpdateAlertContact(request *UpdateAlertContactRequest) (_result *UpdateAlertContactResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateAlertContactResponse{}
-	_body, _err := client.UpdateAlertContactWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5438,7 +4234,7 @@ func (client *Client) UpdateAlertContact(request *UpdateAlertContactRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateAlertContactGroupResponse
-func (client *Client) UpdateAlertContactGroupWithOptions(request *UpdateAlertContactGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateAlertContactGroupResponse, _err error) {
+func (client *Client) UpdateAlertContactGroupWithContext(ctx context.Context, request *UpdateAlertContactGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateAlertContactGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5477,25 +4273,11 @@ func (client *Client) UpdateAlertContactGroupWithOptions(request *UpdateAlertCon
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAlertContactGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - UpdateAlertContactGroupRequest
-//
-// @return UpdateAlertContactGroupResponse
-func (client *Client) UpdateAlertContactGroup(request *UpdateAlertContactGroupRequest) (_result *UpdateAlertContactGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateAlertContactGroupResponse{}
-	_body, _err := client.UpdateAlertContactGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5504,7 +4286,7 @@ func (client *Client) UpdateAlertContactGroup(request *UpdateAlertContactGroupRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateAlertRuleResponse
-func (client *Client) UpdateAlertRuleWithOptions(request *UpdateAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateAlertRuleResponse, _err error) {
+func (client *Client) UpdateAlertRuleWithContext(ctx context.Context, request *UpdateAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateAlertRuleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5547,25 +4329,11 @@ func (client *Client) UpdateAlertRuleWithOptions(request *UpdateAlertRuleRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAlertRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - UpdateAlertRuleRequest
-//
-// @return UpdateAlertRuleResponse
-func (client *Client) UpdateAlertRule(request *UpdateAlertRuleRequest) (_result *UpdateAlertRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateAlertRuleResponse{}
-	_body, _err := client.UpdateAlertRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5574,7 +4342,7 @@ func (client *Client) UpdateAlertRule(request *UpdateAlertRuleRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateAlertTemplateResponse
-func (client *Client) UpdateAlertTemplateWithOptions(request *UpdateAlertTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateAlertTemplateResponse, _err error) {
+func (client *Client) UpdateAlertTemplateWithContext(ctx context.Context, request *UpdateAlertTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateAlertTemplateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5637,25 +4405,11 @@ func (client *Client) UpdateAlertTemplateWithOptions(request *UpdateAlertTemplat
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAlertTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - UpdateAlertTemplateRequest
-//
-// @return UpdateAlertTemplateResponse
-func (client *Client) UpdateAlertTemplate(request *UpdateAlertTemplateRequest) (_result *UpdateAlertTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateAlertTemplateResponse{}
-	_body, _err := client.UpdateAlertTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5664,7 +4418,7 @@ func (client *Client) UpdateAlertTemplate(request *UpdateAlertTemplateRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateDispatchRuleResponse
-func (client *Client) UpdateDispatchRuleWithOptions(request *UpdateDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateDispatchRuleResponse, _err error) {
+func (client *Client) UpdateDispatchRuleWithContext(ctx context.Context, request *UpdateDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateDispatchRuleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5695,25 +4449,11 @@ func (client *Client) UpdateDispatchRuleWithOptions(request *UpdateDispatchRuleR
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateDispatchRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - UpdateDispatchRuleRequest
-//
-// @return UpdateDispatchRuleResponse
-func (client *Client) UpdateDispatchRule(request *UpdateDispatchRuleRequest) (_result *UpdateDispatchRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateDispatchRuleResponse{}
-	_body, _err := client.UpdateDispatchRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5722,7 +4462,7 @@ func (client *Client) UpdateDispatchRule(request *UpdateDispatchRuleRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdatePrometheusAlertRuleResponse
-func (client *Client) UpdatePrometheusAlertRuleWithOptions(request *UpdatePrometheusAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdatePrometheusAlertRuleResponse, _err error) {
+func (client *Client) UpdatePrometheusAlertRuleWithContext(ctx context.Context, request *UpdatePrometheusAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdatePrometheusAlertRuleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5793,25 +4533,11 @@ func (client *Client) UpdatePrometheusAlertRuleWithOptions(request *UpdatePromet
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePrometheusAlertRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - UpdatePrometheusAlertRuleRequest
-//
-// @return UpdatePrometheusAlertRuleResponse
-func (client *Client) UpdatePrometheusAlertRule(request *UpdatePrometheusAlertRuleRequest) (_result *UpdatePrometheusAlertRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdatePrometheusAlertRuleResponse{}
-	_body, _err := client.UpdatePrometheusAlertRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5820,7 +4546,7 @@ func (client *Client) UpdatePrometheusAlertRule(request *UpdatePrometheusAlertRu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateWebhookResponse
-func (client *Client) UpdateWebhookWithOptions(request *UpdateWebhookRequest, runtime *dara.RuntimeOptions) (_result *UpdateWebhookResponse, _err error) {
+func (client *Client) UpdateWebhookWithContext(ctx context.Context, request *UpdateWebhookRequest, runtime *dara.RuntimeOptions) (_result *UpdateWebhookResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5875,24 +4601,10 @@ func (client *Client) UpdateWebhookWithOptions(request *UpdateWebhookRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateWebhookResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - UpdateWebhookRequest
-//
-// @return UpdateWebhookResponse
-func (client *Client) UpdateWebhook(request *UpdateWebhookRequest) (_result *UpdateWebhookResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateWebhookResponse{}
-	_body, _err := client.UpdateWebhookWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
