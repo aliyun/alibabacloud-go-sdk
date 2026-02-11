@@ -1146,7 +1146,8 @@ type CreateJobRequestTasksTaskSpecTaskExecutorContainer struct {
 	// example:
 	//
 	// registry-vpc.cn-hangzhou.aliyuncs.com/ehpc/hpl:latest
-	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	Image                *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	ImageRegistryOptions *string `json:"ImageRegistryOptions,omitempty" xml:"ImageRegistryOptions,omitempty"`
 	// The working directory of the container.
 	//
 	// example:
@@ -1183,6 +1184,10 @@ func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) GetImage() *string 
 	return s.Image
 }
 
+func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) GetImageRegistryOptions() *string {
+	return s.ImageRegistryOptions
+}
+
 func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) GetWorkingDir() *string {
 	return s.WorkingDir
 }
@@ -1209,6 +1214,11 @@ func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) SetEnvironmentVars(
 
 func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) SetImage(v string) *CreateJobRequestTasksTaskSpecTaskExecutorContainer {
 	s.Image = &v
+	return s
+}
+
+func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) SetImageRegistryOptions(v string) *CreateJobRequestTasksTaskSpecTaskExecutorContainer {
+	s.ImageRegistryOptions = &v
 	return s
 }
 

@@ -651,7 +651,7 @@ func (client *Client) DescribeJobMetricLastWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 查询作业输出
+// # Query job logs
 //
 // @param request - DescribeJobResultsRequest
 //

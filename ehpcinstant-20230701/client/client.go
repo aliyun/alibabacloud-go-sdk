@@ -890,7 +890,7 @@ func (client *Client) DescribeJobMetricLast(request *DescribeJobMetricLastReques
 
 // Summary:
 //
-// 查询作业输出
+// # Query job logs
 //
 // @param request - DescribeJobResultsRequest
 //
@@ -954,7 +954,7 @@ func (client *Client) DescribeJobResultsWithOptions(request *DescribeJobResultsR
 
 // Summary:
 //
-// 查询作业输出
+// # Query job logs
 //
 // @param request - DescribeJobResultsRequest
 //
