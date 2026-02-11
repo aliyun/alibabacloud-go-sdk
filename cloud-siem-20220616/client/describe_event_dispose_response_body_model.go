@@ -112,7 +112,12 @@ func (s *DescribeEventDisposeResponseBody) SetSuccess(v bool) *DescribeEventDisp
 }
 
 func (s *DescribeEventDisposeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventDisposeResponseBodyData struct {
@@ -191,7 +196,12 @@ func (s *DescribeEventDisposeResponseBodyData) SetStatus(v int32) *DescribeEvent
 }
 
 func (s *DescribeEventDisposeResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ReceiverInfo != nil {
+		if err := s.ReceiverInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventDisposeResponseBodyDataReceiverInfo struct {

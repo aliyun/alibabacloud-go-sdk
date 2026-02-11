@@ -98,7 +98,12 @@ func (s *ListEntitiesResponseBody) SetSuccess(v bool) *ListEntitiesResponseBody 
 }
 
 func (s *ListEntitiesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEntitiesResponseBodyData struct {
@@ -133,7 +138,21 @@ func (s *ListEntitiesResponseBodyData) SetResponseData(v []*ListEntitiesResponse
 }
 
 func (s *ListEntitiesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResponseData != nil {
+		for _, item := range s.ResponseData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEntitiesResponseBodyDataPageInfo struct {
@@ -191,6 +210,10 @@ func (s *ListEntitiesResponseBodyDataPageInfo) Validate() error {
 }
 
 type ListEntitiesResponseBodyDataResponseData struct {
+	AgentConfidence           *string `json:"AgentConfidence,omitempty" xml:"AgentConfidence,omitempty"`
+	AgentDisposalMethod       *string `json:"AgentDisposalMethod,omitempty" xml:"AgentDisposalMethod,omitempty"`
+	AgentDisposalPlaybookUuid *string `json:"AgentDisposalPlaybookUuid,omitempty" xml:"AgentDisposalPlaybookUuid,omitempty"`
+	AgentDisposalSuggestion   *string `json:"AgentDisposalSuggestion,omitempty" xml:"AgentDisposalSuggestion,omitempty"`
 	// example:
 	//
 	// 1
@@ -268,6 +291,22 @@ func (s ListEntitiesResponseBodyDataResponseData) GoString() string {
 	return s.String()
 }
 
+func (s *ListEntitiesResponseBodyDataResponseData) GetAgentConfidence() *string {
+	return s.AgentConfidence
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) GetAgentDisposalMethod() *string {
+	return s.AgentDisposalMethod
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) GetAgentDisposalPlaybookUuid() *string {
+	return s.AgentDisposalPlaybookUuid
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) GetAgentDisposalSuggestion() *string {
+	return s.AgentDisposalSuggestion
+}
+
 func (s *ListEntitiesResponseBodyDataResponseData) GetAlertNum() *int32 {
 	return s.AlertNum
 }
@@ -342,6 +381,26 @@ func (s *ListEntitiesResponseBodyDataResponseData) GetSubUserId() *int64 {
 
 func (s *ListEntitiesResponseBodyDataResponseData) GetTags() *string {
 	return s.Tags
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) SetAgentConfidence(v string) *ListEntitiesResponseBodyDataResponseData {
+	s.AgentConfidence = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) SetAgentDisposalMethod(v string) *ListEntitiesResponseBodyDataResponseData {
+	s.AgentDisposalMethod = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) SetAgentDisposalPlaybookUuid(v string) *ListEntitiesResponseBodyDataResponseData {
+	s.AgentDisposalPlaybookUuid = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) SetAgentDisposalSuggestion(v string) *ListEntitiesResponseBodyDataResponseData {
+	s.AgentDisposalSuggestion = &v
+	return s
 }
 
 func (s *ListEntitiesResponseBodyDataResponseData) SetAlertNum(v int32) *ListEntitiesResponseBodyDataResponseData {

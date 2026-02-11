@@ -59,5 +59,10 @@ func (s *UpdateWhiteRuleListResponse) SetBody(v *UpdateWhiteRuleListResponseBody
 }
 
 func (s *UpdateWhiteRuleListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *AddUserSourceLogConfigResponseBody) SetRequestId(v string) *AddUserSour
 }
 
 func (s *AddUserSourceLogConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddUserSourceLogConfigResponseBodyData struct {

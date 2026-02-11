@@ -11,6 +11,8 @@ type iDescribeAlertsRequest interface {
 	GoString() string
 	SetAlertName(v string) *DescribeAlertsRequest
 	GetAlertName() *string
+	SetAlertStatus(v []*string) *DescribeAlertsRequest
+	GetAlertStatus() []*string
 	SetAlertTitle(v string) *DescribeAlertsRequest
 	GetAlertTitle() *string
 	SetAlertType(v string) *DescribeAlertsRequest
@@ -52,33 +54,22 @@ type iDescribeAlertsRequest interface {
 }
 
 type DescribeAlertsRequest struct {
-	// example:
-	//
-	// 异常连接-TFTP恶意扫描
-	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	AlertName   *string   `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	AlertStatus []*string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty" type:"Repeated"`
 	// The title of the alert.
 	//
 	// example:
 	//
 	// Unusual Logon-login_common_account
 	AlertTitle *string `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
-	// example:
-	//
-	// 异常连接-TFTP恶意扫描
-	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	AlertType  *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
 	// The UUID of the alert.
 	//
 	// example:
 	//
 	// sas_71e24437d2797ce8fc59692905a4****
 	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
-	// example:
-	//
-	// 异常连接-TFTP恶意扫描
-	AssetId *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
-	// example:
-	//
-	// 异常连接-TFTP恶意扫描
+	AssetId   *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
 	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
 	// The page number. Pages start from page 1.
 	//
@@ -93,14 +84,8 @@ type DescribeAlertsRequest struct {
 	// example:
 	//
 	// 1577808000000
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// example:
-	//
-	// 异常连接-TFTP恶意扫描
-	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// example:
-	//
-	// 异常连接-TFTP恶意扫描
+	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EntityId   *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
 	// Specifies whether an attack is defended. Valid values:
 	//
@@ -194,6 +179,10 @@ func (s *DescribeAlertsRequest) GetAlertName() *string {
 	return s.AlertName
 }
 
+func (s *DescribeAlertsRequest) GetAlertStatus() []*string {
+	return s.AlertStatus
+}
+
 func (s *DescribeAlertsRequest) GetAlertTitle() *string {
 	return s.AlertTitle
 }
@@ -272,6 +261,11 @@ func (s *DescribeAlertsRequest) GetSubUserId() *string {
 
 func (s *DescribeAlertsRequest) SetAlertName(v string) *DescribeAlertsRequest {
 	s.AlertName = &v
+	return s
+}
+
+func (s *DescribeAlertsRequest) SetAlertStatus(v []*string) *DescribeAlertsRequest {
+	s.AlertStatus = v
 	return s
 }
 

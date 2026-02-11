@@ -112,7 +112,12 @@ func (s *ListCloudSiemCustomizeRulesResponseBody) SetSuccess(v bool) *ListCloudS
 }
 
 func (s *ListCloudSiemCustomizeRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCloudSiemCustomizeRulesResponseBodyData struct {
@@ -149,7 +154,21 @@ func (s *ListCloudSiemCustomizeRulesResponseBodyData) SetResponseData(v []*ListC
 }
 
 func (s *ListCloudSiemCustomizeRulesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResponseData != nil {
+		for _, item := range s.ResponseData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCloudSiemCustomizeRulesResponseBodyDataPageInfo struct {

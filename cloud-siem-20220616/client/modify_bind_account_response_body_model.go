@@ -53,7 +53,12 @@ func (s *ModifyBindAccountResponseBody) SetRequestId(v string) *ModifyBindAccoun
 }
 
 func (s *ModifyBindAccountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyBindAccountResponseBodyData struct {

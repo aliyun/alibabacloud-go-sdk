@@ -112,7 +112,16 @@ func (s *DescribeScopeUsersResponseBody) SetSuccess(v bool) *DescribeScopeUsersR
 }
 
 func (s *DescribeScopeUsersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeScopeUsersResponseBodyData struct {

@@ -59,5 +59,10 @@ func (s *DescribeCloudSiemAssetsResponse) SetBody(v *DescribeCloudSiemAssetsResp
 }
 
 func (s *DescribeCloudSiemAssetsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

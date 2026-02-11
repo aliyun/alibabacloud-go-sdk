@@ -112,7 +112,12 @@ func (s *DescribeCloudSiemEventDetailResponseBody) SetSuccess(v bool) *DescribeC
 }
 
 func (s *DescribeCloudSiemEventDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudSiemEventDetailResponseBodyData struct {
@@ -437,7 +442,16 @@ func (s *DescribeCloudSiemEventDetailResponseBodyData) SetThreatScore(v float32)
 }
 
 func (s *DescribeCloudSiemEventDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AttckStages != nil {
+		for _, item := range s.AttckStages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudSiemEventDetailResponseBodyDataAttckStages struct {

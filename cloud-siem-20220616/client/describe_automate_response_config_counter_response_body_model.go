@@ -112,7 +112,12 @@ func (s *DescribeAutomateResponseConfigCounterResponseBody) SetSuccess(v bool) *
 }
 
 func (s *DescribeAutomateResponseConfigCounterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAutomateResponseConfigCounterResponseBodyData struct {

@@ -112,7 +112,12 @@ func (s *ListAutomateResponseConfigsResponseBody) SetSuccess(v bool) *ListAutoma
 }
 
 func (s *ListAutomateResponseConfigsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAutomateResponseConfigsResponseBodyData struct {
@@ -149,7 +154,21 @@ func (s *ListAutomateResponseConfigsResponseBodyData) SetResponseData(v []*ListA
 }
 
 func (s *ListAutomateResponseConfigsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResponseData != nil {
+		for _, item := range s.ResponseData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAutomateResponseConfigsResponseBodyDataPageInfo struct {

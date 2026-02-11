@@ -112,7 +112,12 @@ func (s *DescribeWhiteRuleListResponseBody) SetSuccess(v bool) *DescribeWhiteRul
 }
 
 func (s *DescribeWhiteRuleListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeWhiteRuleListResponseBodyData struct {
@@ -149,7 +154,21 @@ func (s *DescribeWhiteRuleListResponseBodyData) SetResponseData(v []*DescribeWhi
 }
 
 func (s *DescribeWhiteRuleListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResponseData != nil {
+		for _, item := range s.ResponseData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWhiteRuleListResponseBodyDataPageInfo struct {
@@ -423,7 +442,12 @@ func (s *DescribeWhiteRuleListResponseBodyDataResponseData) SetSubAliuid(v int64
 }
 
 func (s *DescribeWhiteRuleListResponseBodyDataResponseData) Validate() error {
-	return dara.Validate(s)
+	if s.Expression != nil {
+		if err := s.Expression.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeWhiteRuleListResponseBodyDataResponseDataExpression struct {
@@ -464,7 +488,16 @@ func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpression) SetLogic(v
 }
 
 func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpression) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions struct {
@@ -562,7 +595,17 @@ func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions) 
 }
 
 func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions) Validate() error {
-	return dara.Validate(s)
+	if s.Left != nil {
+		if err := s.Left.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Right != nil {
+		if err := s.Right.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft struct {

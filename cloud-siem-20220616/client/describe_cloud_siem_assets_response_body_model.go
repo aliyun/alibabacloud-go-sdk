@@ -112,7 +112,12 @@ func (s *DescribeCloudSiemAssetsResponseBody) SetSuccess(v bool) *DescribeCloudS
 }
 
 func (s *DescribeCloudSiemAssetsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudSiemAssetsResponseBodyData struct {
@@ -149,7 +154,21 @@ func (s *DescribeCloudSiemAssetsResponseBodyData) SetResponseData(v []*DescribeC
 }
 
 func (s *DescribeCloudSiemAssetsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResponseData != nil {
+		for _, item := range s.ResponseData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudSiemAssetsResponseBodyDataPageInfo struct {
@@ -422,7 +441,16 @@ func (s *DescribeCloudSiemAssetsResponseBodyDataResponseData) SetSubUserId(v int
 }
 
 func (s *DescribeCloudSiemAssetsResponseBodyDataResponseData) Validate() error {
-	return dara.Validate(s)
+	if s.AssetInfo != nil {
+		for _, item := range s.AssetInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudSiemAssetsResponseBodyDataResponseDataAssetInfo struct {

@@ -53,7 +53,12 @@ func (s *ListDataSourceLogsResponseBody) SetRequestId(v string) *ListDataSourceL
 }
 
 func (s *ListDataSourceLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataSourceLogsResponseBodyData struct {
@@ -175,7 +180,16 @@ func (s *ListDataSourceLogsResponseBodyData) SetSubUserId(v int64) *ListDataSour
 }
 
 func (s *ListDataSourceLogsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DataSourceInstanceLogs != nil {
+		for _, item := range s.DataSourceInstanceLogs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs struct {
@@ -265,7 +279,16 @@ func (s *ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs) SetTaskStatus
 }
 
 func (s *ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs) Validate() error {
-	return dara.Validate(s)
+	if s.LogParams != nil {
+		for _, item := range s.LogParams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataSourceLogsResponseBodyDataDataSourceInstanceLogsLogParams struct {

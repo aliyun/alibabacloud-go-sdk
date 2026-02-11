@@ -59,5 +59,10 @@ func (s *ListBindAccountResponse) SetBody(v *ListBindAccountResponseBody) *ListB
 }
 
 func (s *ListBindAccountResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

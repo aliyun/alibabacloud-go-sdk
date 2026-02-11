@@ -43,6 +43,8 @@ type iListDisposeStrategyRequest interface {
 	GetSophonTaskId() *string
 	SetStartTime(v int64) *ListDisposeStrategyRequest
 	GetStartTime() *int64
+	SetStatus(v int32) *ListDisposeStrategyRequest
+	GetStatus() *int32
 }
 
 type ListDisposeStrategyRequest struct {
@@ -189,6 +191,7 @@ type ListDisposeStrategyRequest struct {
 	//
 	// 1577808000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status    *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListDisposeStrategyRequest) String() string {
@@ -265,6 +268,10 @@ func (s *ListDisposeStrategyRequest) GetSophonTaskId() *string {
 
 func (s *ListDisposeStrategyRequest) GetStartTime() *int64 {
 	return s.StartTime
+}
+
+func (s *ListDisposeStrategyRequest) GetStatus() *int32 {
+	return s.Status
 }
 
 func (s *ListDisposeStrategyRequest) SetCurrentPage(v int32) *ListDisposeStrategyRequest {
@@ -349,6 +356,11 @@ func (s *ListDisposeStrategyRequest) SetSophonTaskId(v string) *ListDisposeStrat
 
 func (s *ListDisposeStrategyRequest) SetStartTime(v int64) *ListDisposeStrategyRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *ListDisposeStrategyRequest) SetStatus(v int32) *ListDisposeStrategyRequest {
+	s.Status = &v
 	return s
 }
 

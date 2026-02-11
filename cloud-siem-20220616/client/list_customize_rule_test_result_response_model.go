@@ -59,5 +59,10 @@ func (s *ListCustomizeRuleTestResultResponse) SetBody(v *ListCustomizeRuleTestRe
 }
 
 func (s *ListCustomizeRuleTestResultResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

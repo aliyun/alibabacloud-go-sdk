@@ -53,7 +53,12 @@ func (s *DescribeDataSourceInstanceResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeDataSourceInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDataSourceInstanceResponseBodyData struct {
@@ -130,7 +135,16 @@ func (s *DescribeDataSourceInstanceResponseBodyData) SetDataSourceInstanceParams
 }
 
 func (s *DescribeDataSourceInstanceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DataSourceInstanceParams != nil {
+		for _, item := range s.DataSourceInstanceParams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataSourceInstanceResponseBodyDataDataSourceInstanceParams struct {

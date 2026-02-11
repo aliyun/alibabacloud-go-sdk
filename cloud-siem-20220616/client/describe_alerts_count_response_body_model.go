@@ -112,7 +112,12 @@ func (s *DescribeAlertsCountResponseBody) SetSuccess(v bool) *DescribeAlertsCoun
 }
 
 func (s *DescribeAlertsCountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAlertsCountResponseBodyData struct {

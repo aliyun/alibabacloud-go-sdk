@@ -163,7 +163,16 @@ func (s *DataProductListLogMapValue) SetExtraParameters(v []*DataProductListLogM
 }
 
 func (s *DataProductListLogMapValue) Validate() error {
-	return dara.Validate(s)
+	if s.ExtraParameters != nil {
+		for _, item := range s.ExtraParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DataProductListLogMapValueExtraParameters struct {

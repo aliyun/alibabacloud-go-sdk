@@ -17,6 +17,8 @@ type iListEntitiesRequest interface {
 	GetEntityType() *string
 	SetEntityUuid(v string) *ListEntitiesRequest
 	GetEntityUuid() *string
+	SetEntityUuids(v string) *ListEntitiesRequest
+	GetEntityUuids() *string
 	SetIncidentUuid(v string) *ListEntitiesRequest
 	GetIncidentUuid() *string
 	SetIsMalwareEntity(v string) *ListEntitiesRequest
@@ -53,7 +55,8 @@ type ListEntitiesRequest struct {
 	// example:
 	//
 	// 6c740667-80b2-476d-8924-2e706feb****
-	EntityUuid *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
+	EntityUuid  *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
+	EntityUuids *string `json:"EntityUuids,omitempty" xml:"EntityUuids,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -113,6 +116,10 @@ func (s *ListEntitiesRequest) GetEntityUuid() *string {
 	return s.EntityUuid
 }
 
+func (s *ListEntitiesRequest) GetEntityUuids() *string {
+	return s.EntityUuids
+}
+
 func (s *ListEntitiesRequest) GetIncidentUuid() *string {
 	return s.IncidentUuid
 }
@@ -162,6 +169,11 @@ func (s *ListEntitiesRequest) SetEntityType(v string) *ListEntitiesRequest {
 
 func (s *ListEntitiesRequest) SetEntityUuid(v string) *ListEntitiesRequest {
 	s.EntityUuid = &v
+	return s
+}
+
+func (s *ListEntitiesRequest) SetEntityUuids(v string) *ListEntitiesRequest {
+	s.EntityUuids = &v
 	return s
 }
 

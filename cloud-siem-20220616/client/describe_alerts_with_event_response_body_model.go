@@ -112,7 +112,12 @@ func (s *DescribeAlertsWithEventResponseBody) SetSuccess(v bool) *DescribeAlerts
 }
 
 func (s *DescribeAlertsWithEventResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAlertsWithEventResponseBodyData struct {
@@ -149,7 +154,21 @@ func (s *DescribeAlertsWithEventResponseBodyData) SetResponseData(v []*DescribeA
 }
 
 func (s *DescribeAlertsWithEventResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResponseData != nil {
+		for _, item := range s.ResponseData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAlertsWithEventResponseBodyDataPageInfo struct {
@@ -810,7 +829,16 @@ func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetVendorId(v stri
 }
 
 func (s *DescribeAlertsWithEventResponseBodyDataResponseData) Validate() error {
-	return dara.Validate(s)
+	if s.AlertInfoList != nil {
+		for _, item := range s.AlertInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList struct {

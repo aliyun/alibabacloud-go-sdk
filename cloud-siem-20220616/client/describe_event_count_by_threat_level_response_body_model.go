@@ -112,10 +112,16 @@ func (s *DescribeEventCountByThreatLevelResponseBody) SetSuccess(v bool) *Descri
 }
 
 func (s *DescribeEventCountByThreatLevelResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventCountByThreatLevelResponseBodyData struct {
+	EventDailyNum []*DescribeEventCountByThreatLevelResponseBodyDataEventDailyNum `json:"EventDailyNum,omitempty" xml:"EventDailyNum,omitempty" type:"Repeated"`
 	// The total number of events.
 	//
 	// example:
@@ -158,6 +164,10 @@ func (s DescribeEventCountByThreatLevelResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeEventCountByThreatLevelResponseBodyData) GetEventDailyNum() []*DescribeEventCountByThreatLevelResponseBodyDataEventDailyNum {
+	return s.EventDailyNum
+}
+
 func (s *DescribeEventCountByThreatLevelResponseBodyData) GetEventNum() *int64 {
 	return s.EventNum
 }
@@ -184,6 +194,11 @@ func (s *DescribeEventCountByThreatLevelResponseBodyData) GetSeriousLevelEventNu
 
 func (s *DescribeEventCountByThreatLevelResponseBodyData) GetUndealEventNum() *int64 {
 	return s.UndealEventNum
+}
+
+func (s *DescribeEventCountByThreatLevelResponseBodyData) SetEventDailyNum(v []*DescribeEventCountByThreatLevelResponseBodyDataEventDailyNum) *DescribeEventCountByThreatLevelResponseBodyData {
+	s.EventDailyNum = v
+	return s
 }
 
 func (s *DescribeEventCountByThreatLevelResponseBodyData) SetEventNum(v int64) *DescribeEventCountByThreatLevelResponseBodyData {
@@ -222,5 +237,59 @@ func (s *DescribeEventCountByThreatLevelResponseBodyData) SetUndealEventNum(v in
 }
 
 func (s *DescribeEventCountByThreatLevelResponseBodyData) Validate() error {
+	if s.EventDailyNum != nil {
+		for _, item := range s.EventDailyNum {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeEventCountByThreatLevelResponseBodyDataEventDailyNum struct {
+	Date           *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	EventNum       *int64  `json:"EventNum,omitempty" xml:"EventNum,omitempty"`
+	UndealEventNum *int64  `json:"UndealEventNum,omitempty" xml:"UndealEventNum,omitempty"`
+}
+
+func (s DescribeEventCountByThreatLevelResponseBodyDataEventDailyNum) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeEventCountByThreatLevelResponseBodyDataEventDailyNum) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEventCountByThreatLevelResponseBodyDataEventDailyNum) GetDate() *string {
+	return s.Date
+}
+
+func (s *DescribeEventCountByThreatLevelResponseBodyDataEventDailyNum) GetEventNum() *int64 {
+	return s.EventNum
+}
+
+func (s *DescribeEventCountByThreatLevelResponseBodyDataEventDailyNum) GetUndealEventNum() *int64 {
+	return s.UndealEventNum
+}
+
+func (s *DescribeEventCountByThreatLevelResponseBodyDataEventDailyNum) SetDate(v string) *DescribeEventCountByThreatLevelResponseBodyDataEventDailyNum {
+	s.Date = &v
+	return s
+}
+
+func (s *DescribeEventCountByThreatLevelResponseBodyDataEventDailyNum) SetEventNum(v int64) *DescribeEventCountByThreatLevelResponseBodyDataEventDailyNum {
+	s.EventNum = &v
+	return s
+}
+
+func (s *DescribeEventCountByThreatLevelResponseBodyDataEventDailyNum) SetUndealEventNum(v int64) *DescribeEventCountByThreatLevelResponseBodyDataEventDailyNum {
+	s.UndealEventNum = &v
+	return s
+}
+
+func (s *DescribeEventCountByThreatLevelResponseBodyDataEventDailyNum) Validate() error {
 	return dara.Validate(s)
 }

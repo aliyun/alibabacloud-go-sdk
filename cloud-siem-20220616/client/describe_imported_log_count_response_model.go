@@ -59,5 +59,10 @@ func (s *DescribeImportedLogCountResponse) SetBody(v *DescribeImportedLogCountRe
 }
 
 func (s *DescribeImportedLogCountResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

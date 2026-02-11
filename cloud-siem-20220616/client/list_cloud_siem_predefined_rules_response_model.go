@@ -59,5 +59,10 @@ func (s *ListCloudSiemPredefinedRulesResponse) SetBody(v *ListCloudSiemPredefine
 }
 
 func (s *ListCloudSiemPredefinedRulesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

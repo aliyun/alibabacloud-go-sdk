@@ -53,7 +53,12 @@ func (s *ListDeliveryResponseBody) SetRequestId(v string) *ListDeliveryResponseB
 }
 
 func (s *ListDeliveryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDeliveryResponseBodyData struct {
@@ -162,7 +167,16 @@ func (s *ListDeliveryResponseBodyData) SetSearchUrl(v string) *ListDeliveryRespo
 }
 
 func (s *ListDeliveryResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ProductList != nil {
+		for _, item := range s.ProductList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDeliveryResponseBodyDataProductList struct {
@@ -275,7 +289,16 @@ func (s *ListDeliveryResponseBodyDataProductList) SetProductName(v string) *List
 }
 
 func (s *ListDeliveryResponseBodyDataProductList) Validate() error {
-	return dara.Validate(s)
+	if s.LogList != nil {
+		for _, item := range s.LogList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDeliveryResponseBodyDataProductListLogList struct {
@@ -414,7 +437,16 @@ func (s *ListDeliveryResponseBodyDataProductListLogList) SetTopic(v string) *Lis
 }
 
 func (s *ListDeliveryResponseBodyDataProductListLogList) Validate() error {
-	return dara.Validate(s)
+	if s.ExtraParameters != nil {
+		for _, item := range s.ExtraParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDeliveryResponseBodyDataProductListLogListExtraParameters struct {

@@ -53,10 +53,23 @@ func (s *GetCapacityResponseBody) SetRequestId(v string) *GetCapacityResponseBod
 }
 
 func (s *GetCapacityResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCapacityResponseBodyData struct {
+	// example:
+	//
+	// 1
+	AgentManagedAssetQuota *int64 `json:"AgentManagedAssetQuota,omitempty" xml:"AgentManagedAssetQuota,omitempty"`
+	// example:
+	//
+	// 1
+	AgentManagedAssetUsed *int64 `json:"AgentManagedAssetUsed,omitempty" xml:"AgentManagedAssetUsed,omitempty"`
 	// Indicates whether the Logstores for the threat analysis feature exist on the user side. Valid values:
 	//
 	// 	- true: The logs are in the normal state. The log analysis feature is available.
@@ -89,6 +102,14 @@ func (s GetCapacityResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *GetCapacityResponseBodyData) GetAgentManagedAssetQuota() *int64 {
+	return s.AgentManagedAssetQuota
+}
+
+func (s *GetCapacityResponseBodyData) GetAgentManagedAssetUsed() *int64 {
+	return s.AgentManagedAssetUsed
+}
+
 func (s *GetCapacityResponseBodyData) GetExistLogStore() *bool {
 	return s.ExistLogStore
 }
@@ -99,6 +120,16 @@ func (s *GetCapacityResponseBodyData) GetPreservedCapacity() *int64 {
 
 func (s *GetCapacityResponseBodyData) GetUsedCapacity() *float64 {
 	return s.UsedCapacity
+}
+
+func (s *GetCapacityResponseBodyData) SetAgentManagedAssetQuota(v int64) *GetCapacityResponseBodyData {
+	s.AgentManagedAssetQuota = &v
+	return s
+}
+
+func (s *GetCapacityResponseBodyData) SetAgentManagedAssetUsed(v int64) *GetCapacityResponseBodyData {
+	s.AgentManagedAssetUsed = &v
+	return s
 }
 
 func (s *GetCapacityResponseBodyData) SetExistLogStore(v bool) *GetCapacityResponseBodyData {

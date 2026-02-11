@@ -53,7 +53,12 @@ func (s *DescribeProdCountResponseBody) SetRequestId(v string) *DescribeProdCoun
 }
 
 func (s *DescribeProdCountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeProdCountResponseBodyData struct {

@@ -59,5 +59,10 @@ func (s *PostAutomateResponseConfigResponse) SetBody(v *PostAutomateResponseConf
 }
 
 func (s *PostAutomateResponseConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

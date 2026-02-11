@@ -53,7 +53,12 @@ func (s *DeleteDataSourceLogResponseBody) SetRequestId(v string) *DeleteDataSour
 }
 
 func (s *DeleteDataSourceLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteDataSourceLogResponseBodyData struct {

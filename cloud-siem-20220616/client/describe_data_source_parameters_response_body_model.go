@@ -53,7 +53,16 @@ func (s *DescribeDataSourceParametersResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribeDataSourceParametersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataSourceParametersResponseBodyData struct {
@@ -302,7 +311,16 @@ func (s *DescribeDataSourceParametersResponseBodyData) SetTitle(v string) *Descr
 }
 
 func (s *DescribeDataSourceParametersResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ParamValue != nil {
+		for _, item := range s.ParamValue {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataSourceParametersResponseBodyDataParamValue struct {

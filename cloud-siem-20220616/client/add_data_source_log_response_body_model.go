@@ -53,7 +53,12 @@ func (s *AddDataSourceLogResponseBody) SetRequestId(v string) *AddDataSourceLogR
 }
 
 func (s *AddDataSourceLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddDataSourceLogResponseBodyData struct {

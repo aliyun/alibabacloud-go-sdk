@@ -112,7 +112,16 @@ func (s *DescribeAutomateResponseConfigFeatureResponseBody) SetSuccess(v bool) *
 }
 
 func (s *DescribeAutomateResponseConfigFeatureResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAutomateResponseConfigFeatureResponseBodyData struct {
@@ -179,7 +188,25 @@ func (s *DescribeAutomateResponseConfigFeatureResponseBodyData) SetSupportOperat
 }
 
 func (s *DescribeAutomateResponseConfigFeatureResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.RightValueEnums != nil {
+		for _, item := range s.RightValueEnums {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SupportOperators != nil {
+		for _, item := range s.SupportOperators {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAutomateResponseConfigFeatureResponseBodyDataRightValueEnums struct {

@@ -53,7 +53,12 @@ func (s *ListAllProdsResponseBody) SetRequestId(v string) *ListAllProdsResponseB
 }
 
 func (s *ListAllProdsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAllProdsResponseBodyData struct {
@@ -128,7 +133,16 @@ func (s *ListAllProdsResponseBodyData) SetTotalCount(v int32) *ListAllProdsRespo
 }
 
 func (s *ListAllProdsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ProdList != nil {
+		for _, item := range s.ProdList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAllProdsResponseBodyDataProdList struct {

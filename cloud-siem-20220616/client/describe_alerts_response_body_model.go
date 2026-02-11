@@ -112,7 +112,12 @@ func (s *DescribeAlertsResponseBody) SetSuccess(v bool) *DescribeAlertsResponseB
 }
 
 func (s *DescribeAlertsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAlertsResponseBodyData struct {
@@ -149,7 +154,21 @@ func (s *DescribeAlertsResponseBodyData) SetResponseData(v []*DescribeAlertsResp
 }
 
 func (s *DescribeAlertsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResponseData != nil {
+		for _, item := range s.ResponseData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAlertsResponseBodyDataPageInfo struct {
@@ -285,6 +304,10 @@ type DescribeAlertsResponseBodyDataResponseData struct {
 	//
 	// waf
 	AlertSrcProdModule *string `json:"AlertSrcProdModule,omitempty" xml:"AlertSrcProdModule,omitempty"`
+	// example:
+	//
+	// 1
+	AlertStatus *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
 	// The title of the alert.
 	//
 	// example:
@@ -509,6 +532,10 @@ func (s *DescribeAlertsResponseBodyDataResponseData) GetAlertSrcProdModule() *st
 	return s.AlertSrcProdModule
 }
 
+func (s *DescribeAlertsResponseBodyDataResponseData) GetAlertStatus() *string {
+	return s.AlertStatus
+}
+
 func (s *DescribeAlertsResponseBodyDataResponseData) GetAlertTitle() *string {
 	return s.AlertTitle
 }
@@ -672,6 +699,11 @@ func (s *DescribeAlertsResponseBodyDataResponseData) SetAlertSrcProdModule(v str
 	return s
 }
 
+func (s *DescribeAlertsResponseBodyDataResponseData) SetAlertStatus(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.AlertStatus = &v
+	return s
+}
+
 func (s *DescribeAlertsResponseBodyDataResponseData) SetAlertTitle(v string) *DescribeAlertsResponseBodyDataResponseData {
 	s.AlertTitle = &v
 	return s
@@ -808,7 +840,16 @@ func (s *DescribeAlertsResponseBodyDataResponseData) SetVendorId(v string) *Desc
 }
 
 func (s *DescribeAlertsResponseBodyDataResponseData) Validate() error {
-	return dara.Validate(s)
+	if s.AlertInfoList != nil {
+		for _, item := range s.AlertInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAlertsResponseBodyDataResponseDataAlertInfoList struct {

@@ -59,5 +59,10 @@ func (s *ModifyBindAccountResponse) SetBody(v *ModifyBindAccountResponseBody) *M
 }
 
 func (s *ModifyBindAccountResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

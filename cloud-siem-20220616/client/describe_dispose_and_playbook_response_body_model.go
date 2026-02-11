@@ -112,7 +112,12 @@ func (s *DescribeDisposeAndPlaybookResponseBody) SetSuccess(v bool) *DescribeDis
 }
 
 func (s *DescribeDisposeAndPlaybookResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDisposeAndPlaybookResponseBodyData struct {
@@ -149,7 +154,21 @@ func (s *DescribeDisposeAndPlaybookResponseBodyData) SetResponseData(v []*Descri
 }
 
 func (s *DescribeDisposeAndPlaybookResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResponseData != nil {
+		for _, item := range s.ResponseData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDisposeAndPlaybookResponseBodyDataPageInfo struct {
@@ -353,7 +372,16 @@ func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseData) SetScope(v []in
 }
 
 func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseData) Validate() error {
-	return dara.Validate(s)
+	if s.PlaybookList != nil {
+		for _, item := range s.PlaybookList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList struct {

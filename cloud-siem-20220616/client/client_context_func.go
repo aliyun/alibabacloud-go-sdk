@@ -17,9 +17,11 @@ import (
 //
 // @return AddDataSourceResponse
 func (client *Client) AddDataSourceWithContext(ctx context.Context, request *AddDataSourceRequest, runtime *dara.RuntimeOptions) (_result *AddDataSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -83,9 +85,11 @@ func (client *Client) AddDataSourceWithContext(ctx context.Context, request *Add
 //
 // @return AddDataSourceLogResponse
 func (client *Client) AddDataSourceLogWithContext(ctx context.Context, request *AddDataSourceLogRequest, runtime *dara.RuntimeOptions) (_result *AddDataSourceLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -145,9 +149,11 @@ func (client *Client) AddDataSourceLogWithContext(ctx context.Context, request *
 //
 // @return AddUserSourceLogConfigResponse
 func (client *Client) AddUserSourceLogConfigWithContext(ctx context.Context, request *AddUserSourceLogConfigRequest, runtime *dara.RuntimeOptions) (_result *AddUserSourceLogConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Deleted) {
@@ -211,9 +217,11 @@ func (client *Client) AddUserSourceLogConfigWithContext(ctx context.Context, req
 //
 // @return BindAccountResponse
 func (client *Client) BindAccountWithContext(ctx context.Context, request *BindAccountRequest, runtime *dara.RuntimeOptions) (_result *BindAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AccessId) {
@@ -277,9 +285,11 @@ func (client *Client) BindAccountWithContext(ctx context.Context, request *BindA
 //
 // @return CloseDeliveryResponse
 func (client *Client) CloseDeliveryWithContext(ctx context.Context, request *CloseDeliveryRequest, runtime *dara.RuntimeOptions) (_result *CloseDeliveryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.LogCode) {
@@ -335,9 +345,11 @@ func (client *Client) CloseDeliveryWithContext(ctx context.Context, request *Clo
 //
 // @return DeleteAutomateResponseConfigResponse
 func (client *Client) DeleteAutomateResponseConfigWithContext(ctx context.Context, request *DeleteAutomateResponseConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteAutomateResponseConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -389,9 +401,11 @@ func (client *Client) DeleteAutomateResponseConfigWithContext(ctx context.Contex
 //
 // @return DeleteBindAccountResponse
 func (client *Client) DeleteBindAccountWithContext(ctx context.Context, request *DeleteBindAccountRequest, runtime *dara.RuntimeOptions) (_result *DeleteBindAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AccessId) {
@@ -455,9 +469,11 @@ func (client *Client) DeleteBindAccountWithContext(ctx context.Context, request 
 //
 // @return DeleteCustomizeRuleResponse
 func (client *Client) DeleteCustomizeRuleWithContext(ctx context.Context, request *DeleteCustomizeRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomizeRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -509,9 +525,11 @@ func (client *Client) DeleteCustomizeRuleWithContext(ctx context.Context, reques
 //
 // @return DeleteDataSourceResponse
 func (client *Client) DeleteDataSourceWithContext(ctx context.Context, request *DeleteDataSourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -563,9 +581,11 @@ func (client *Client) DeleteDataSourceWithContext(ctx context.Context, request *
 //
 // @return DeleteDataSourceLogResponse
 func (client *Client) DeleteDataSourceLogWithContext(ctx context.Context, request *DeleteDataSourceLogRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataSourceLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -621,9 +641,11 @@ func (client *Client) DeleteDataSourceLogWithContext(ctx context.Context, reques
 //
 // @return DeleteWhiteRuleListResponse
 func (client *Client) DeleteWhiteRuleListWithContext(ctx context.Context, request *DeleteWhiteRuleListRequest, runtime *dara.RuntimeOptions) (_result *DeleteWhiteRuleListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -675,9 +697,11 @@ func (client *Client) DeleteWhiteRuleListWithContext(ctx context.Context, reques
 //
 // @return DescribeAggregateFunctionResponse
 func (client *Client) DescribeAggregateFunctionWithContext(ctx context.Context, request *DescribeAggregateFunctionRequest, runtime *dara.RuntimeOptions) (_result *DescribeAggregateFunctionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -725,9 +749,11 @@ func (client *Client) DescribeAggregateFunctionWithContext(ctx context.Context, 
 //
 // @return DescribeAlertSceneResponse
 func (client *Client) DescribeAlertSceneWithContext(ctx context.Context, request *DescribeAlertSceneRequest, runtime *dara.RuntimeOptions) (_result *DescribeAlertSceneResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -775,9 +801,11 @@ func (client *Client) DescribeAlertSceneWithContext(ctx context.Context, request
 //
 // @return DescribeAlertSceneByEventResponse
 func (client *Client) DescribeAlertSceneByEventWithContext(ctx context.Context, request *DescribeAlertSceneByEventRequest, runtime *dara.RuntimeOptions) (_result *DescribeAlertSceneByEventResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.IncidentUuid) {
@@ -829,9 +857,11 @@ func (client *Client) DescribeAlertSceneByEventWithContext(ctx context.Context, 
 //
 // @return DescribeAlertSourceResponse
 func (client *Client) DescribeAlertSourceWithContext(ctx context.Context, request *DescribeAlertSourceRequest, runtime *dara.RuntimeOptions) (_result *DescribeAlertSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -891,9 +921,11 @@ func (client *Client) DescribeAlertSourceWithContext(ctx context.Context, reques
 //
 // @return DescribeAlertSourceWithEventResponse
 func (client *Client) DescribeAlertSourceWithEventWithContext(ctx context.Context, request *DescribeAlertSourceWithEventRequest, runtime *dara.RuntimeOptions) (_result *DescribeAlertSourceWithEventResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.IncidentUuid) {
@@ -945,9 +977,11 @@ func (client *Client) DescribeAlertSourceWithEventWithContext(ctx context.Contex
 //
 // @return DescribeAlertTypeResponse
 func (client *Client) DescribeAlertTypeWithContext(ctx context.Context, request *DescribeAlertTypeRequest, runtime *dara.RuntimeOptions) (_result *DescribeAlertTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -999,13 +1033,19 @@ func (client *Client) DescribeAlertTypeWithContext(ctx context.Context, request 
 //
 // @return DescribeAlertsResponse
 func (client *Client) DescribeAlertsWithContext(ctx context.Context, request *DescribeAlertsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAlertsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AlertName) {
 		body["AlertName"] = request.AlertName
+	}
+
+	if !dara.IsNil(request.AlertStatus) {
+		body["AlertStatus"] = request.AlertStatus
 	}
 
 	if !dara.IsNil(request.AlertTitle) {
@@ -1117,9 +1157,11 @@ func (client *Client) DescribeAlertsWithContext(ctx context.Context, request *De
 //
 // @return DescribeAlertsCountResponse
 func (client *Client) DescribeAlertsCountWithContext(ctx context.Context, request *DescribeAlertsCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeAlertsCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -1179,9 +1221,11 @@ func (client *Client) DescribeAlertsCountWithContext(ctx context.Context, reques
 //
 // @return DescribeAlertsWithEntityResponse
 func (client *Client) DescribeAlertsWithEntityWithContext(ctx context.Context, request *DescribeAlertsWithEntityRequest, runtime *dara.RuntimeOptions) (_result *DescribeAlertsWithEntityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -1261,9 +1305,11 @@ func (client *Client) DescribeAlertsWithEntityWithContext(ctx context.Context, r
 //
 // @return DescribeAlertsWithEventResponse
 func (client *Client) DescribeAlertsWithEventWithContext(ctx context.Context, request *DescribeAlertsWithEventRequest, runtime *dara.RuntimeOptions) (_result *DescribeAlertsWithEventResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AlertName) {
@@ -1375,9 +1421,11 @@ func (client *Client) DescribeAlertsWithEventWithContext(ctx context.Context, re
 //
 // @return DescribeAuthResponse
 func (client *Client) DescribeAuthWithContext(ctx context.Context, request *DescribeAuthRequest, runtime *dara.RuntimeOptions) (_result *DescribeAuthResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1417,9 +1465,11 @@ func (client *Client) DescribeAuthWithContext(ctx context.Context, request *Desc
 //
 // @return DescribeAutomateResponseConfigCounterResponse
 func (client *Client) DescribeAutomateResponseConfigCounterWithContext(ctx context.Context, request *DescribeAutomateResponseConfigCounterRequest, runtime *dara.RuntimeOptions) (_result *DescribeAutomateResponseConfigCounterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1467,9 +1517,11 @@ func (client *Client) DescribeAutomateResponseConfigCounterWithContext(ctx conte
 //
 // @return DescribeAutomateResponseConfigFeatureResponse
 func (client *Client) DescribeAutomateResponseConfigFeatureWithContext(ctx context.Context, request *DescribeAutomateResponseConfigFeatureRequest, runtime *dara.RuntimeOptions) (_result *DescribeAutomateResponseConfigFeatureResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoResponseType) {
@@ -1513,64 +1565,6 @@ func (client *Client) DescribeAutomateResponseConfigFeatureWithContext(ctx conte
 
 // Summary:
 //
-// Queries user-defined playbooks.
-//
-// @param request - DescribeAutomateResponseConfigPlayBooksRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeAutomateResponseConfigPlayBooksResponse
-func (client *Client) DescribeAutomateResponseConfigPlayBooksWithContext(ctx context.Context, request *DescribeAutomateResponseConfigPlayBooksRequest, runtime *dara.RuntimeOptions) (_result *DescribeAutomateResponseConfigPlayBooksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.AutoResponseType) {
-		body["AutoResponseType"] = request.AutoResponseType
-	}
-
-	if !dara.IsNil(request.EntityType) {
-		body["EntityType"] = request.EntityType
-	}
-
-	if !dara.IsNil(request.RegionId) {
-		body["RegionId"] = request.RegionId
-	}
-
-	if !dara.IsNil(request.RoleFor) {
-		body["RoleFor"] = request.RoleFor
-	}
-
-	if !dara.IsNil(request.RoleType) {
-		body["RoleType"] = request.RoleType
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("DescribeAutomateResponseConfigPlayBooks"),
-		Version:     dara.String("2022-06-16"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &DescribeAutomateResponseConfigPlayBooksResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
 // Queries the assets that are associated with an event.
 //
 // @param request - DescribeCloudSiemAssetsRequest
@@ -1579,9 +1573,11 @@ func (client *Client) DescribeAutomateResponseConfigPlayBooksWithContext(ctx con
 //
 // @return DescribeCloudSiemAssetsResponse
 func (client *Client) DescribeCloudSiemAssetsWithContext(ctx context.Context, request *DescribeCloudSiemAssetsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudSiemAssetsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssetName) {
@@ -1653,9 +1649,11 @@ func (client *Client) DescribeCloudSiemAssetsWithContext(ctx context.Context, re
 //
 // @return DescribeCloudSiemAssetsCounterResponse
 func (client *Client) DescribeCloudSiemAssetsCounterWithContext(ctx context.Context, request *DescribeCloudSiemAssetsCounterRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudSiemAssetsCounterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.IncidentUuid) {
@@ -1707,9 +1705,11 @@ func (client *Client) DescribeCloudSiemAssetsCounterWithContext(ctx context.Cont
 //
 // @return DescribeCloudSiemEventDetailResponse
 func (client *Client) DescribeCloudSiemEventDetailWithContext(ctx context.Context, request *DescribeCloudSiemEventDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudSiemEventDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.IncidentUuid) {
@@ -1761,9 +1761,11 @@ func (client *Client) DescribeCloudSiemEventDetailWithContext(ctx context.Contex
 //
 // @return DescribeCloudSiemEventsResponse
 func (client *Client) DescribeCloudSiemEventsWithContext(ctx context.Context, request *DescribeCloudSiemEventsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudSiemEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssetId) {
@@ -1859,9 +1861,11 @@ func (client *Client) DescribeCloudSiemEventsWithContext(ctx context.Context, re
 //
 // @return DescribeCustomizeRuleCountResponse
 func (client *Client) DescribeCustomizeRuleCountWithContext(ctx context.Context, request *DescribeCustomizeRuleCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomizeRuleCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1909,9 +1913,11 @@ func (client *Client) DescribeCustomizeRuleCountWithContext(ctx context.Context,
 //
 // @return DescribeCustomizeRuleTestResponse
 func (client *Client) DescribeCustomizeRuleTestWithContext(ctx context.Context, request *DescribeCustomizeRuleTestRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomizeRuleTestResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -1963,9 +1969,11 @@ func (client *Client) DescribeCustomizeRuleTestWithContext(ctx context.Context, 
 //
 // @return DescribeCustomizeRuleTestHistogramResponse
 func (client *Client) DescribeCustomizeRuleTestHistogramWithContext(ctx context.Context, request *DescribeCustomizeRuleTestHistogramRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomizeRuleTestHistogramResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -2017,9 +2025,11 @@ func (client *Client) DescribeCustomizeRuleTestHistogramWithContext(ctx context.
 //
 // @return DescribeDataSourceInstanceResponse
 func (client *Client) DescribeDataSourceInstanceWithContext(ctx context.Context, request *DescribeDataSourceInstanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataSourceInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -2071,9 +2081,11 @@ func (client *Client) DescribeDataSourceInstanceWithContext(ctx context.Context,
 //
 // @return DescribeDataSourceParametersResponse
 func (client *Client) DescribeDataSourceParametersWithContext(ctx context.Context, request *DescribeDataSourceParametersRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataSourceParametersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CloudCode) {
@@ -2121,9 +2133,11 @@ func (client *Client) DescribeDataSourceParametersWithContext(ctx context.Contex
 //
 // @return DescribeDisposeAndPlaybookResponse
 func (client *Client) DescribeDisposeAndPlaybookWithContext(ctx context.Context, request *DescribeDisposeAndPlaybookRequest, runtime *dara.RuntimeOptions) (_result *DescribeDisposeAndPlaybookResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -2191,9 +2205,11 @@ func (client *Client) DescribeDisposeAndPlaybookWithContext(ctx context.Context,
 //
 // @return DescribeDisposeStrategyPlaybookResponse
 func (client *Client) DescribeDisposeStrategyPlaybookWithContext(ctx context.Context, request *DescribeDisposeStrategyPlaybookRequest, runtime *dara.RuntimeOptions) (_result *DescribeDisposeStrategyPlaybookResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -2249,9 +2265,11 @@ func (client *Client) DescribeDisposeStrategyPlaybookWithContext(ctx context.Con
 //
 // @return DescribeEntityInfoResponse
 func (client *Client) DescribeEntityInfoWithContext(ctx context.Context, request *DescribeEntityInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeEntityInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EntityId) {
@@ -2315,9 +2333,11 @@ func (client *Client) DescribeEntityInfoWithContext(ctx context.Context, request
 //
 // @return DescribeEventCountByThreatLevelResponse
 func (client *Client) DescribeEventCountByThreatLevelWithContext(ctx context.Context, request *DescribeEventCountByThreatLevelRequest, runtime *dara.RuntimeOptions) (_result *DescribeEventCountByThreatLevelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -2373,9 +2393,11 @@ func (client *Client) DescribeEventCountByThreatLevelWithContext(ctx context.Con
 //
 // @return DescribeEventDisposeResponse
 func (client *Client) DescribeEventDisposeWithContext(ctx context.Context, request *DescribeEventDisposeRequest, runtime *dara.RuntimeOptions) (_result *DescribeEventDisposeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -2435,9 +2457,11 @@ func (client *Client) DescribeEventDisposeWithContext(ctx context.Context, reque
 //
 // @return DescribeImportedLogCountResponse
 func (client *Client) DescribeImportedLogCountWithContext(ctx context.Context, request *DescribeImportedLogCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeImportedLogCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2485,9 +2509,11 @@ func (client *Client) DescribeImportedLogCountWithContext(ctx context.Context, r
 //
 // @return DescribeLogFieldsResponse
 func (client *Client) DescribeLogFieldsWithContext(ctx context.Context, request *DescribeLogFieldsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLogFieldsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.LogSource) {
@@ -2543,9 +2569,11 @@ func (client *Client) DescribeLogFieldsWithContext(ctx context.Context, request 
 //
 // @return DescribeLogSourceResponse
 func (client *Client) DescribeLogSourceWithContext(ctx context.Context, request *DescribeLogSourceRequest, runtime *dara.RuntimeOptions) (_result *DescribeLogSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.LogType) {
@@ -2597,9 +2625,11 @@ func (client *Client) DescribeLogSourceWithContext(ctx context.Context, request 
 //
 // @return DescribeLogTypeResponse
 func (client *Client) DescribeLogTypeWithContext(ctx context.Context, request *DescribeLogTypeRequest, runtime *dara.RuntimeOptions) (_result *DescribeLogTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2647,9 +2677,11 @@ func (client *Client) DescribeLogTypeWithContext(ctx context.Context, request *D
 //
 // @return DescribeOperatorsResponse
 func (client *Client) DescribeOperatorsWithContext(ctx context.Context, request *DescribeOperatorsRequest, runtime *dara.RuntimeOptions) (_result *DescribeOperatorsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2701,9 +2733,11 @@ func (client *Client) DescribeOperatorsWithContext(ctx context.Context, request 
 //
 // @return DescribeProdCountResponse
 func (client *Client) DescribeProdCountWithContext(ctx context.Context, request *DescribeProdCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeProdCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2751,9 +2785,11 @@ func (client *Client) DescribeProdCountWithContext(ctx context.Context, request 
 //
 // @return DescribeScopeUsersResponse
 func (client *Client) DescribeScopeUsersWithContext(ctx context.Context, request *DescribeScopeUsersRequest, runtime *dara.RuntimeOptions) (_result *DescribeScopeUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2801,9 +2837,11 @@ func (client *Client) DescribeScopeUsersWithContext(ctx context.Context, request
 //
 // @return DescribeServiceStatusResponse
 func (client *Client) DescribeServiceStatusWithContext(ctx context.Context, request *DescribeServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2843,9 +2881,11 @@ func (client *Client) DescribeServiceStatusWithContext(ctx context.Context, requ
 //
 // @return DescribeStorageResponse
 func (client *Client) DescribeStorageWithContext(ctx context.Context, request *DescribeStorageRequest, runtime *dara.RuntimeOptions) (_result *DescribeStorageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2893,9 +2933,11 @@ func (client *Client) DescribeStorageWithContext(ctx context.Context, request *D
 //
 // @return DescribeUserBuyStatusResponse
 func (client *Client) DescribeUserBuyStatusWithContext(ctx context.Context, request *DescribeUserBuyStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserBuyStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2939,9 +2981,11 @@ func (client *Client) DescribeUserBuyStatusWithContext(ctx context.Context, requ
 //
 // @return DescribeWafScopeResponse
 func (client *Client) DescribeWafScopeWithContext(ctx context.Context, request *DescribeWafScopeRequest, runtime *dara.RuntimeOptions) (_result *DescribeWafScopeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EntityId) {
@@ -2993,9 +3037,11 @@ func (client *Client) DescribeWafScopeWithContext(ctx context.Context, request *
 //
 // @return DescribeWhiteRuleListResponse
 func (client *Client) DescribeWhiteRuleListWithContext(ctx context.Context, request *DescribeWhiteRuleListRequest, runtime *dara.RuntimeOptions) (_result *DescribeWhiteRuleListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AlertName) {
@@ -3063,9 +3109,11 @@ func (client *Client) DescribeWhiteRuleListWithContext(ctx context.Context, requ
 //
 // @return EnableAccessForCloudSiemResponse
 func (client *Client) EnableAccessForCloudSiemWithContext(ctx context.Context, request *EnableAccessForCloudSiemRequest, runtime *dara.RuntimeOptions) (_result *EnableAccessForCloudSiemResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoSubmit) {
@@ -3117,9 +3165,11 @@ func (client *Client) EnableAccessForCloudSiemWithContext(ctx context.Context, r
 //
 // @return EnableServiceForCloudSiemResponse
 func (client *Client) EnableServiceForCloudSiemWithContext(ctx context.Context, request *EnableServiceForCloudSiemRequest, runtime *dara.RuntimeOptions) (_result *EnableServiceForCloudSiemResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3159,9 +3209,11 @@ func (client *Client) EnableServiceForCloudSiemWithContext(ctx context.Context, 
 //
 // @return GetCapacityResponse
 func (client *Client) GetCapacityWithContext(ctx context.Context, request *GetCapacityRequest, runtime *dara.RuntimeOptions) (_result *GetCapacityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3209,9 +3261,11 @@ func (client *Client) GetCapacityWithContext(ctx context.Context, request *GetCa
 //
 // @return GetStorageResponse
 func (client *Client) GetStorageWithContext(ctx context.Context, request *GetStorageRequest, runtime *dara.RuntimeOptions) (_result *GetStorageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3259,9 +3313,11 @@ func (client *Client) GetStorageWithContext(ctx context.Context, request *GetSto
 //
 // @return ListAccountAccessIdResponse
 func (client *Client) ListAccountAccessIdWithContext(ctx context.Context, request *ListAccountAccessIdRequest, runtime *dara.RuntimeOptions) (_result *ListAccountAccessIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CloudCode) {
@@ -3313,9 +3369,11 @@ func (client *Client) ListAccountAccessIdWithContext(ctx context.Context, reques
 //
 // @return ListAccountsByLogResponse
 func (client *Client) ListAccountsByLogWithContext(ctx context.Context, request *ListAccountsByLogRequest, runtime *dara.RuntimeOptions) (_result *ListAccountsByLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CloudCode) {
@@ -3375,9 +3433,11 @@ func (client *Client) ListAccountsByLogWithContext(ctx context.Context, request 
 //
 // @return ListAllProdsResponse
 func (client *Client) ListAllProdsWithContext(ctx context.Context, request *ListAllProdsRequest, runtime *dara.RuntimeOptions) (_result *ListAllProdsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3425,9 +3485,11 @@ func (client *Client) ListAllProdsWithContext(ctx context.Context, request *List
 //
 // @return ListAutomateResponseConfigsResponse
 func (client *Client) ListAutomateResponseConfigsWithContext(ctx context.Context, request *ListAutomateResponseConfigsRequest, runtime *dara.RuntimeOptions) (_result *ListAutomateResponseConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ActionType) {
@@ -3515,9 +3577,11 @@ func (client *Client) ListAutomateResponseConfigsWithContext(ctx context.Context
 //
 // @return ListBindAccountResponse
 func (client *Client) ListBindAccountWithContext(ctx context.Context, request *ListBindAccountRequest, runtime *dara.RuntimeOptions) (_result *ListBindAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CloudCode) {
@@ -3569,9 +3633,11 @@ func (client *Client) ListBindAccountWithContext(ctx context.Context, request *L
 //
 // @return ListBindDataSourcesResponse
 func (client *Client) ListBindDataSourcesWithContext(ctx context.Context, request *ListBindDataSourcesRequest, runtime *dara.RuntimeOptions) (_result *ListBindDataSourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -3619,9 +3685,11 @@ func (client *Client) ListBindDataSourcesWithContext(ctx context.Context, reques
 //
 // @return ListCloudSiemCustomizeRulesResponse
 func (client *Client) ListCloudSiemCustomizeRulesWithContext(ctx context.Context, request *ListCloudSiemCustomizeRulesRequest, runtime *dara.RuntimeOptions) (_result *ListCloudSiemCustomizeRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AlertType) {
@@ -3717,9 +3785,11 @@ func (client *Client) ListCloudSiemCustomizeRulesWithContext(ctx context.Context
 //
 // @return ListCloudSiemPredefinedRulesResponse
 func (client *Client) ListCloudSiemPredefinedRulesWithContext(ctx context.Context, request *ListCloudSiemPredefinedRulesRequest, runtime *dara.RuntimeOptions) (_result *ListCloudSiemPredefinedRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AlertType) {
@@ -3827,9 +3897,11 @@ func (client *Client) ListCloudSiemPredefinedRulesWithContext(ctx context.Contex
 //
 // @return ListCustomizeRuleTestResultResponse
 func (client *Client) ListCustomizeRuleTestResultWithContext(ctx context.Context, request *ListCustomizeRuleTestResultRequest, runtime *dara.RuntimeOptions) (_result *ListCustomizeRuleTestResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -3905,9 +3977,11 @@ func (client *Client) ListCustomizeRuleTestResultWithContext(ctx context.Context
 //
 // @return ListDataSourceLogsResponse
 func (client *Client) ListDataSourceLogsWithContext(ctx context.Context, request *ListDataSourceLogsRequest, runtime *dara.RuntimeOptions) (_result *ListDataSourceLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -3959,9 +4033,11 @@ func (client *Client) ListDataSourceLogsWithContext(ctx context.Context, request
 //
 // @return ListDataSourceTypesResponse
 func (client *Client) ListDataSourceTypesWithContext(ctx context.Context, request *ListDataSourceTypesRequest, runtime *dara.RuntimeOptions) (_result *ListDataSourceTypesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CloudCode) {
@@ -4005,9 +4081,11 @@ func (client *Client) ListDataSourceTypesWithContext(ctx context.Context, reques
 //
 // @return ListDeliveryResponse
 func (client *Client) ListDeliveryWithContext(ctx context.Context, request *ListDeliveryRequest, runtime *dara.RuntimeOptions) (_result *ListDeliveryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -4055,9 +4133,11 @@ func (client *Client) ListDeliveryWithContext(ctx context.Context, request *List
 //
 // @return ListDisposeStrategyResponse
 func (client *Client) ListDisposeStrategyWithContext(ctx context.Context, request *ListDisposeStrategyRequest, runtime *dara.RuntimeOptions) (_result *ListDisposeStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -4128,6 +4208,10 @@ func (client *Client) ListDisposeStrategyWithContext(ctx context.Context, reques
 		body["StartTime"] = request.StartTime
 	}
 
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -4153,7 +4237,7 @@ func (client *Client) ListDisposeStrategyWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询实体列表
+// Queries entities.
 //
 // @param request - ListEntitiesRequest
 //
@@ -4161,9 +4245,11 @@ func (client *Client) ListDisposeStrategyWithContext(ctx context.Context, reques
 //
 // @return ListEntitiesResponse
 func (client *Client) ListEntitiesWithContext(ctx context.Context, request *ListEntitiesRequest, runtime *dara.RuntimeOptions) (_result *ListEntitiesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -4180,6 +4266,10 @@ func (client *Client) ListEntitiesWithContext(ctx context.Context, request *List
 
 	if !dara.IsNil(request.EntityUuid) {
 		body["EntityUuid"] = request.EntityUuid
+	}
+
+	if !dara.IsNil(request.EntityUuids) {
+		body["EntityUuids"] = request.EntityUuids
 	}
 
 	if !dara.IsNil(request.IncidentUuid) {
@@ -4247,9 +4337,11 @@ func (client *Client) ListEntitiesWithContext(ctx context.Context, request *List
 //
 // @return ListImportedLogsByProdResponse
 func (client *Client) ListImportedLogsByProdWithContext(ctx context.Context, request *ListImportedLogsByProdRequest, runtime *dara.RuntimeOptions) (_result *ListImportedLogsByProdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CloudCode) {
@@ -4305,9 +4397,11 @@ func (client *Client) ListImportedLogsByProdWithContext(ctx context.Context, req
 //
 // @return ListProjectLogStoresResponse
 func (client *Client) ListProjectLogStoresWithContext(ctx context.Context, request *ListProjectLogStoresRequest, runtime *dara.RuntimeOptions) (_result *ListProjectLogStoresResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -4359,9 +4453,11 @@ func (client *Client) ListProjectLogStoresWithContext(ctx context.Context, reque
 //
 // @return ListRdUsersResponse
 func (client *Client) ListRdUsersWithContext(ctx context.Context, request *ListRdUsersRequest, runtime *dara.RuntimeOptions) (_result *ListRdUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -4401,9 +4497,11 @@ func (client *Client) ListRdUsersWithContext(ctx context.Context, request *ListR
 //
 // @return ModifyBindAccountResponse
 func (client *Client) ModifyBindAccountWithContext(ctx context.Context, request *ModifyBindAccountRequest, runtime *dara.RuntimeOptions) (_result *ModifyBindAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AccessId) {
@@ -4471,9 +4569,11 @@ func (client *Client) ModifyBindAccountWithContext(ctx context.Context, request 
 //
 // @return ModifyDataSourceResponse
 func (client *Client) ModifyDataSourceWithContext(ctx context.Context, request *ModifyDataSourceRequest, runtime *dara.RuntimeOptions) (_result *ModifyDataSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -4541,9 +4641,11 @@ func (client *Client) ModifyDataSourceWithContext(ctx context.Context, request *
 //
 // @return ModifyDataSourceLogResponse
 func (client *Client) ModifyDataSourceLogWithContext(ctx context.Context, request *ModifyDataSourceLogRequest, runtime *dara.RuntimeOptions) (_result *ModifyDataSourceLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -4611,9 +4713,11 @@ func (client *Client) ModifyDataSourceLogWithContext(ctx context.Context, reques
 //
 // @return OpenDeliveryResponse
 func (client *Client) OpenDeliveryWithContext(ctx context.Context, request *OpenDeliveryRequest, runtime *dara.RuntimeOptions) (_result *OpenDeliveryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.LogCode) {
@@ -4669,9 +4773,11 @@ func (client *Client) OpenDeliveryWithContext(ctx context.Context, request *Open
 //
 // @return PostAutomateResponseConfigResponse
 func (client *Client) PostAutomateResponseConfigWithContext(ctx context.Context, request *PostAutomateResponseConfigRequest, runtime *dara.RuntimeOptions) (_result *PostAutomateResponseConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ActionConfig) {
@@ -4747,9 +4853,11 @@ func (client *Client) PostAutomateResponseConfigWithContext(ctx context.Context,
 //
 // @return PostCustomizeRuleResponse
 func (client *Client) PostCustomizeRuleWithContext(ctx context.Context, request *PostCustomizeRuleRequest, runtime *dara.RuntimeOptions) (_result *PostCustomizeRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AlertType) {
@@ -4869,9 +4977,11 @@ func (client *Client) PostCustomizeRuleWithContext(ctx context.Context, request 
 //
 // @return PostCustomizeRuleTestResponse
 func (client *Client) PostCustomizeRuleTestWithContext(ctx context.Context, request *PostCustomizeRuleTestRequest, runtime *dara.RuntimeOptions) (_result *PostCustomizeRuleTestResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -4931,17 +5041,27 @@ func (client *Client) PostCustomizeRuleTestWithContext(ctx context.Context, requ
 //
 // @return PostEventDisposeAndWhiteruleListResponse
 func (client *Client) PostEventDisposeAndWhiteruleListWithContext(ctx context.Context, request *PostEventDisposeAndWhiteruleListRequest, runtime *dara.RuntimeOptions) (_result *PostEventDisposeAndWhiteruleListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.DisposeStrategyIds) {
+		body["DisposeStrategyIds"] = request.DisposeStrategyIds
+	}
+
 	if !dara.IsNil(request.EventDispose) {
 		body["EventDispose"] = request.EventDispose
 	}
 
 	if !dara.IsNil(request.IncidentUuid) {
 		body["IncidentUuid"] = request.IncidentUuid
+	}
+
+	if !dara.IsNil(request.Owner) {
+		body["Owner"] = request.Owner
 	}
 
 	if !dara.IsNil(request.ReceiverInfo) {
@@ -4954,6 +5074,10 @@ func (client *Client) PostEventDisposeAndWhiteruleListWithContext(ctx context.Co
 
 	if !dara.IsNil(request.Remark) {
 		body["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.ResponseSource) {
+		body["ResponseSource"] = request.ResponseSource
 	}
 
 	if !dara.IsNil(request.RoleFor) {
@@ -5005,9 +5129,11 @@ func (client *Client) PostEventDisposeAndWhiteruleListWithContext(ctx context.Co
 //
 // @return PostEventWhiteruleListResponse
 func (client *Client) PostEventWhiteruleListWithContext(ctx context.Context, request *PostEventWhiteruleListRequest, runtime *dara.RuntimeOptions) (_result *PostEventWhiteruleListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.IncidentUuid) {
@@ -5063,9 +5189,11 @@ func (client *Client) PostEventWhiteruleListWithContext(ctx context.Context, req
 //
 // @return PostFinishCustomizeRuleTestResponse
 func (client *Client) PostFinishCustomizeRuleTestWithContext(ctx context.Context, request *PostFinishCustomizeRuleTestRequest, runtime *dara.RuntimeOptions) (_result *PostFinishCustomizeRuleTestResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -5117,9 +5245,11 @@ func (client *Client) PostFinishCustomizeRuleTestWithContext(ctx context.Context
 //
 // @return PostRuleStatusChangeResponse
 func (client *Client) PostRuleStatusChangeWithContext(ctx context.Context, request *PostRuleStatusChangeRequest, runtime *dara.RuntimeOptions) (_result *PostRuleStatusChangeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Ids) {
@@ -5179,9 +5309,11 @@ func (client *Client) PostRuleStatusChangeWithContext(ctx context.Context, reque
 //
 // @return RestoreCapacityResponse
 func (client *Client) RestoreCapacityWithContext(ctx context.Context, request *RestoreCapacityRequest, runtime *dara.RuntimeOptions) (_result *RestoreCapacityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -5229,9 +5361,11 @@ func (client *Client) RestoreCapacityWithContext(ctx context.Context, request *R
 //
 // @return SetStorageResponse
 func (client *Client) SetStorageWithContext(ctx context.Context, request *SetStorageRequest, runtime *dara.RuntimeOptions) (_result *SetStorageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Region) {
@@ -5287,9 +5421,11 @@ func (client *Client) SetStorageWithContext(ctx context.Context, request *SetSto
 //
 // @return SubmitImportLogTasksResponse
 func (client *Client) SubmitImportLogTasksWithContext(ctx context.Context, request *SubmitImportLogTasksRequest, runtime *dara.RuntimeOptions) (_result *SubmitImportLogTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Accounts) {
@@ -5357,9 +5493,11 @@ func (client *Client) SubmitImportLogTasksWithContext(ctx context.Context, reque
 //
 // @return UpdateAutomateResponseConfigStatusResponse
 func (client *Client) UpdateAutomateResponseConfigStatusWithContext(ctx context.Context, request *UpdateAutomateResponseConfigStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateAutomateResponseConfigStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Ids) {
@@ -5415,9 +5553,11 @@ func (client *Client) UpdateAutomateResponseConfigStatusWithContext(ctx context.
 //
 // @return UpdateWhiteRuleListResponse
 func (client *Client) UpdateWhiteRuleListWithContext(ctx context.Context, request *UpdateWhiteRuleListRequest, runtime *dara.RuntimeOptions) (_result *UpdateWhiteRuleListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Expression) {

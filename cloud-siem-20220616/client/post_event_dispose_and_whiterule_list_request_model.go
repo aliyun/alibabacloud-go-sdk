@@ -9,16 +9,22 @@ type iPostEventDisposeAndWhiteruleListRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDisposeStrategyIds(v string) *PostEventDisposeAndWhiteruleListRequest
+	GetDisposeStrategyIds() *string
 	SetEventDispose(v string) *PostEventDisposeAndWhiteruleListRequest
 	GetEventDispose() *string
 	SetIncidentUuid(v string) *PostEventDisposeAndWhiteruleListRequest
 	GetIncidentUuid() *string
+	SetOwner(v string) *PostEventDisposeAndWhiteruleListRequest
+	GetOwner() *string
 	SetReceiverInfo(v string) *PostEventDisposeAndWhiteruleListRequest
 	GetReceiverInfo() *string
 	SetRegionId(v string) *PostEventDisposeAndWhiteruleListRequest
 	GetRegionId() *string
 	SetRemark(v string) *PostEventDisposeAndWhiteruleListRequest
 	GetRemark() *string
+	SetResponseSource(v string) *PostEventDisposeAndWhiteruleListRequest
+	GetResponseSource() *string
 	SetRoleFor(v int64) *PostEventDisposeAndWhiteruleListRequest
 	GetRoleFor() *int64
 	SetRoleType(v int32) *PostEventDisposeAndWhiteruleListRequest
@@ -30,6 +36,7 @@ type iPostEventDisposeAndWhiteruleListRequest interface {
 }
 
 type PostEventDisposeAndWhiteruleListRequest struct {
+	DisposeStrategyIds *string `json:"DisposeStrategyIds,omitempty" xml:"DisposeStrategyIds,omitempty"`
 	// The configuration of event handling. The value is a JSON object.
 	//
 	// example:
@@ -90,6 +97,10 @@ type PostEventDisposeAndWhiteruleListRequest struct {
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// example:
+	//
+	// 1234567890xxxxxx
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The configuration of the alert recipient. The value is a JSON object.
 	//
 	// example:
@@ -119,7 +130,8 @@ type PostEventDisposeAndWhiteruleListRequest struct {
 	// example:
 	//
 	// dealed
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Remark         *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResponseSource *string `json:"ResponseSource,omitempty" xml:"ResponseSource,omitempty"`
 	// The ID of the account that you switch from the management account.
 	//
 	// example:
@@ -161,12 +173,20 @@ func (s PostEventDisposeAndWhiteruleListRequest) GoString() string {
 	return s.String()
 }
 
+func (s *PostEventDisposeAndWhiteruleListRequest) GetDisposeStrategyIds() *string {
+	return s.DisposeStrategyIds
+}
+
 func (s *PostEventDisposeAndWhiteruleListRequest) GetEventDispose() *string {
 	return s.EventDispose
 }
 
 func (s *PostEventDisposeAndWhiteruleListRequest) GetIncidentUuid() *string {
 	return s.IncidentUuid
+}
+
+func (s *PostEventDisposeAndWhiteruleListRequest) GetOwner() *string {
+	return s.Owner
 }
 
 func (s *PostEventDisposeAndWhiteruleListRequest) GetReceiverInfo() *string {
@@ -179,6 +199,10 @@ func (s *PostEventDisposeAndWhiteruleListRequest) GetRegionId() *string {
 
 func (s *PostEventDisposeAndWhiteruleListRequest) GetRemark() *string {
 	return s.Remark
+}
+
+func (s *PostEventDisposeAndWhiteruleListRequest) GetResponseSource() *string {
+	return s.ResponseSource
 }
 
 func (s *PostEventDisposeAndWhiteruleListRequest) GetRoleFor() *int64 {
@@ -197,6 +221,11 @@ func (s *PostEventDisposeAndWhiteruleListRequest) GetThreatLevel() *string {
 	return s.ThreatLevel
 }
 
+func (s *PostEventDisposeAndWhiteruleListRequest) SetDisposeStrategyIds(v string) *PostEventDisposeAndWhiteruleListRequest {
+	s.DisposeStrategyIds = &v
+	return s
+}
+
 func (s *PostEventDisposeAndWhiteruleListRequest) SetEventDispose(v string) *PostEventDisposeAndWhiteruleListRequest {
 	s.EventDispose = &v
 	return s
@@ -204,6 +233,11 @@ func (s *PostEventDisposeAndWhiteruleListRequest) SetEventDispose(v string) *Pos
 
 func (s *PostEventDisposeAndWhiteruleListRequest) SetIncidentUuid(v string) *PostEventDisposeAndWhiteruleListRequest {
 	s.IncidentUuid = &v
+	return s
+}
+
+func (s *PostEventDisposeAndWhiteruleListRequest) SetOwner(v string) *PostEventDisposeAndWhiteruleListRequest {
+	s.Owner = &v
 	return s
 }
 
@@ -219,6 +253,11 @@ func (s *PostEventDisposeAndWhiteruleListRequest) SetRegionId(v string) *PostEve
 
 func (s *PostEventDisposeAndWhiteruleListRequest) SetRemark(v string) *PostEventDisposeAndWhiteruleListRequest {
 	s.Remark = &v
+	return s
+}
+
+func (s *PostEventDisposeAndWhiteruleListRequest) SetResponseSource(v string) *PostEventDisposeAndWhiteruleListRequest {
+	s.ResponseSource = &v
 	return s
 }
 

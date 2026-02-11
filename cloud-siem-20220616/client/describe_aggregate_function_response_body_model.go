@@ -112,7 +112,16 @@ func (s *DescribeAggregateFunctionResponseBody) SetSuccess(v bool) *DescribeAggr
 }
 
 func (s *DescribeAggregateFunctionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAggregateFunctionResponseBodyData struct {

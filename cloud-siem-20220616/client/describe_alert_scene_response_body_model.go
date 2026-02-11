@@ -112,7 +112,16 @@ func (s *DescribeAlertSceneResponseBody) SetSuccess(v bool) *DescribeAlertSceneR
 }
 
 func (s *DescribeAlertSceneResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAlertSceneResponseBodyData struct {
@@ -232,7 +241,16 @@ func (s *DescribeAlertSceneResponseBodyData) SetTargets(v []*DescribeAlertSceneR
 }
 
 func (s *DescribeAlertSceneResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Targets != nil {
+		for _, item := range s.Targets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAlertSceneResponseBodyDataTargets struct {
