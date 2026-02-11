@@ -17,10 +17,14 @@ type iCreateHttpApiRequest interface {
 	GetAuthConfig() *AuthConfig
 	SetBasePath(v string) *CreateHttpApiRequest
 	GetBasePath() *string
+	SetBelongGatewayId(v string) *CreateHttpApiRequest
+	GetBelongGatewayId() *string
 	SetDeployConfigs(v []*HttpApiDeployConfig) *CreateHttpApiRequest
 	GetDeployConfigs() []*HttpApiDeployConfig
 	SetDescription(v string) *CreateHttpApiRequest
 	GetDescription() *string
+	SetDryRun(v bool) *CreateHttpApiRequest
+	GetDryRun() *bool
 	SetEnableAuth(v bool) *CreateHttpApiRequest
 	GetEnableAuth() *bool
 	SetFirstByteTimeout(v int32) *CreateHttpApiRequest
@@ -37,6 +41,8 @@ type iCreateHttpApiRequest interface {
 	GetRemoveBasePathOnForward() *bool
 	SetResourceGroupId(v string) *CreateHttpApiRequest
 	GetResourceGroupId() *string
+	SetStrategy(v string) *CreateHttpApiRequest
+	GetStrategy() *string
 	SetType(v string) *CreateHttpApiRequest
 	GetType() *string
 	SetVersionConfig(v *HttpApiVersionConfig) *CreateHttpApiRequest
@@ -55,7 +61,8 @@ type CreateHttpApiRequest struct {
 	// example:
 	//
 	// /v1
-	BasePath *string `json:"basePath,omitempty" xml:"basePath,omitempty"`
+	BasePath        *string `json:"basePath,omitempty" xml:"basePath,omitempty"`
+	BelongGatewayId *string `json:"belongGatewayId,omitempty" xml:"belongGatewayId,omitempty"`
 	// $.parameters[0].schema.example
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
 	// $.parameters[0].schema.properties.aiProtocols.items.description
@@ -64,6 +71,7 @@ type CreateHttpApiRequest struct {
 	//
 	// $.parameters[0].schema.properties.aiProtocols.items.example
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	DryRun      *bool   `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 	// Create an API of HTTP type
 	//
 	// example:
@@ -106,6 +114,7 @@ type CreateHttpApiRequest struct {
 	//
 	// rg-xxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Strategy        *string `json:"strategy,omitempty" xml:"strategy,omitempty"`
 	// $.parameters[0].schema.properties.deployConfigs.description
 	//
 	// example:
@@ -140,12 +149,20 @@ func (s *CreateHttpApiRequest) GetBasePath() *string {
 	return s.BasePath
 }
 
+func (s *CreateHttpApiRequest) GetBelongGatewayId() *string {
+	return s.BelongGatewayId
+}
+
 func (s *CreateHttpApiRequest) GetDeployConfigs() []*HttpApiDeployConfig {
 	return s.DeployConfigs
 }
 
 func (s *CreateHttpApiRequest) GetDescription() *string {
 	return s.Description
+}
+
+func (s *CreateHttpApiRequest) GetDryRun() *bool {
+	return s.DryRun
 }
 
 func (s *CreateHttpApiRequest) GetEnableAuth() *bool {
@@ -180,6 +197,10 @@ func (s *CreateHttpApiRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
 
+func (s *CreateHttpApiRequest) GetStrategy() *string {
+	return s.Strategy
+}
+
 func (s *CreateHttpApiRequest) GetType() *string {
 	return s.Type
 }
@@ -208,6 +229,11 @@ func (s *CreateHttpApiRequest) SetBasePath(v string) *CreateHttpApiRequest {
 	return s
 }
 
+func (s *CreateHttpApiRequest) SetBelongGatewayId(v string) *CreateHttpApiRequest {
+	s.BelongGatewayId = &v
+	return s
+}
+
 func (s *CreateHttpApiRequest) SetDeployConfigs(v []*HttpApiDeployConfig) *CreateHttpApiRequest {
 	s.DeployConfigs = v
 	return s
@@ -215,6 +241,11 @@ func (s *CreateHttpApiRequest) SetDeployConfigs(v []*HttpApiDeployConfig) *Creat
 
 func (s *CreateHttpApiRequest) SetDescription(v string) *CreateHttpApiRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateHttpApiRequest) SetDryRun(v bool) *CreateHttpApiRequest {
+	s.DryRun = &v
 	return s
 }
 
@@ -255,6 +286,11 @@ func (s *CreateHttpApiRequest) SetRemoveBasePathOnForward(v bool) *CreateHttpApi
 
 func (s *CreateHttpApiRequest) SetResourceGroupId(v string) *CreateHttpApiRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateHttpApiRequest) SetStrategy(v string) *CreateHttpApiRequest {
+	s.Strategy = &v
 	return s
 }
 

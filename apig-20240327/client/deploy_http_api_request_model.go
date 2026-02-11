@@ -136,7 +136,8 @@ type DeployHttpApiRequestRestApiConfig struct {
 	// example:
 	//
 	// gw-cvn2u46m1hkun04oll8g
-	GatewayId            *string                                                  `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// Operation-level deployment control list
 	OperationDeployments []*DeployHttpApiRequestRestApiConfigOperationDeployments `json:"operationDeployments,omitempty" xml:"operationDeployments,omitempty" type:"Repeated"`
 	// Deprecated
 	//
@@ -437,13 +438,17 @@ func (s *DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs) Validate() 
 }
 
 type DeployHttpApiRequestRestApiConfigOperationDeployments struct {
+	// Operation type
+	//
 	// example:
 	//
 	// Publish
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// Unique identifier of the operation
+	//
 	// example:
 	//
-	// op-d5s57hmm1hks653u9dkg
+	// op-xxx
 	OperationId *string `json:"operationId,omitempty" xml:"operationId,omitempty"`
 }
 

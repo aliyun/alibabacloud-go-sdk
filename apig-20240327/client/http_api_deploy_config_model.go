@@ -1401,6 +1401,12 @@ func (s *HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigRules) Validate()
 }
 
 type HttpApiDeployConfigServiceConfigs struct {
+	// Legacy gateway service ID for backward compatibility
+	//
+	// example:
+	//
+	// gw-svc-abc123
+	GatewayServiceId *string `json:"gatewayServiceId,omitempty" xml:"gatewayServiceId,omitempty"`
 	// Intent classification code
 	//
 	// example:
@@ -1421,12 +1427,44 @@ type HttpApiDeployConfigServiceConfigs struct {
 	//
 	// qwen-*
 	ModelNamePattern *string `json:"modelNamePattern,omitempty" xml:"modelNamePattern,omitempty"`
+	// Multi-service routing strategy type
+	//
+	// example:
+	//
+	// ByWeight
+	MultiServiceRouteStrategy *string `json:"multiServiceRouteStrategy,omitempty" xml:"multiServiceRouteStrategy,omitempty"`
+	// Service display name
+	//
+	// example:
+	//
+	// Qwen-Max-Service
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Observability metrics-based routing config
+	ObservabilityRouteConfig *HttpApiDeployConfigServiceConfigsObservabilityRouteConfig `json:"observabilityRouteConfig,omitempty" xml:"observabilityRouteConfig,omitempty" type:"Struct"`
+	// Service port number
+	//
+	// example:
+	//
+	// 80
+	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// Service protocol
+	//
+	// example:
+	//
+	// HTTP
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	// The service ID.
 	//
 	// example:
 	//
 	// svc-xxx
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// Service version tag for tag-based routing scenarios
+	//
+	// example:
+	//
+	// v2
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 	// The service weight.
 	//
 	// example:
@@ -1441,6 +1479,10 @@ func (s HttpApiDeployConfigServiceConfigs) String() string {
 
 func (s HttpApiDeployConfigServiceConfigs) GoString() string {
 	return s.String()
+}
+
+func (s *HttpApiDeployConfigServiceConfigs) GetGatewayServiceId() *string {
+	return s.GatewayServiceId
 }
 
 func (s *HttpApiDeployConfigServiceConfigs) GetIntentCode() *string {
@@ -1459,12 +1501,41 @@ func (s *HttpApiDeployConfigServiceConfigs) GetModelNamePattern() *string {
 	return s.ModelNamePattern
 }
 
+func (s *HttpApiDeployConfigServiceConfigs) GetMultiServiceRouteStrategy() *string {
+	return s.MultiServiceRouteStrategy
+}
+
+func (s *HttpApiDeployConfigServiceConfigs) GetName() *string {
+	return s.Name
+}
+
+func (s *HttpApiDeployConfigServiceConfigs) GetObservabilityRouteConfig() *HttpApiDeployConfigServiceConfigsObservabilityRouteConfig {
+	return s.ObservabilityRouteConfig
+}
+
+func (s *HttpApiDeployConfigServiceConfigs) GetPort() *int32 {
+	return s.Port
+}
+
+func (s *HttpApiDeployConfigServiceConfigs) GetProtocol() *string {
+	return s.Protocol
+}
+
 func (s *HttpApiDeployConfigServiceConfigs) GetServiceId() *string {
 	return s.ServiceId
 }
 
+func (s *HttpApiDeployConfigServiceConfigs) GetVersion() *string {
+	return s.Version
+}
+
 func (s *HttpApiDeployConfigServiceConfigs) GetWeight() *int64 {
 	return s.Weight
+}
+
+func (s *HttpApiDeployConfigServiceConfigs) SetGatewayServiceId(v string) *HttpApiDeployConfigServiceConfigs {
+	s.GatewayServiceId = &v
+	return s
 }
 
 func (s *HttpApiDeployConfigServiceConfigs) SetIntentCode(v string) *HttpApiDeployConfigServiceConfigs {
@@ -1487,8 +1558,38 @@ func (s *HttpApiDeployConfigServiceConfigs) SetModelNamePattern(v string) *HttpA
 	return s
 }
 
+func (s *HttpApiDeployConfigServiceConfigs) SetMultiServiceRouteStrategy(v string) *HttpApiDeployConfigServiceConfigs {
+	s.MultiServiceRouteStrategy = &v
+	return s
+}
+
+func (s *HttpApiDeployConfigServiceConfigs) SetName(v string) *HttpApiDeployConfigServiceConfigs {
+	s.Name = &v
+	return s
+}
+
+func (s *HttpApiDeployConfigServiceConfigs) SetObservabilityRouteConfig(v *HttpApiDeployConfigServiceConfigsObservabilityRouteConfig) *HttpApiDeployConfigServiceConfigs {
+	s.ObservabilityRouteConfig = v
+	return s
+}
+
+func (s *HttpApiDeployConfigServiceConfigs) SetPort(v int32) *HttpApiDeployConfigServiceConfigs {
+	s.Port = &v
+	return s
+}
+
+func (s *HttpApiDeployConfigServiceConfigs) SetProtocol(v string) *HttpApiDeployConfigServiceConfigs {
+	s.Protocol = &v
+	return s
+}
+
 func (s *HttpApiDeployConfigServiceConfigs) SetServiceId(v string) *HttpApiDeployConfigServiceConfigs {
 	s.ServiceId = &v
+	return s
+}
+
+func (s *HttpApiDeployConfigServiceConfigs) SetVersion(v string) *HttpApiDeployConfigServiceConfigs {
+	s.Version = &v
 	return s
 }
 
@@ -1503,7 +1604,72 @@ func (s *HttpApiDeployConfigServiceConfigs) Validate() error {
 			return err
 		}
 	}
+	if s.ObservabilityRouteConfig != nil {
+		if err := s.ObservabilityRouteConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
+}
+
+type HttpApiDeployConfigServiceConfigsObservabilityRouteConfig struct {
+	// Routing mode
+	//
+	// example:
+	//
+	// LeastBusy
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// Queue size
+	//
+	// example:
+	//
+	// 100
+	QueueSize *int32 `json:"queueSize,omitempty" xml:"queueSize,omitempty"`
+	// Max traffic ratio per single service
+	//
+	// example:
+	//
+	// 0.8
+	RateLimit *float32 `json:"rateLimit,omitempty" xml:"rateLimit,omitempty"`
+}
+
+func (s HttpApiDeployConfigServiceConfigsObservabilityRouteConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s HttpApiDeployConfigServiceConfigsObservabilityRouteConfig) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiDeployConfigServiceConfigsObservabilityRouteConfig) GetMode() *string {
+	return s.Mode
+}
+
+func (s *HttpApiDeployConfigServiceConfigsObservabilityRouteConfig) GetQueueSize() *int32 {
+	return s.QueueSize
+}
+
+func (s *HttpApiDeployConfigServiceConfigsObservabilityRouteConfig) GetRateLimit() *float32 {
+	return s.RateLimit
+}
+
+func (s *HttpApiDeployConfigServiceConfigsObservabilityRouteConfig) SetMode(v string) *HttpApiDeployConfigServiceConfigsObservabilityRouteConfig {
+	s.Mode = &v
+	return s
+}
+
+func (s *HttpApiDeployConfigServiceConfigsObservabilityRouteConfig) SetQueueSize(v int32) *HttpApiDeployConfigServiceConfigsObservabilityRouteConfig {
+	s.QueueSize = &v
+	return s
+}
+
+func (s *HttpApiDeployConfigServiceConfigsObservabilityRouteConfig) SetRateLimit(v float32) *HttpApiDeployConfigServiceConfigsObservabilityRouteConfig {
+	s.RateLimit = &v
+	return s
+}
+
+func (s *HttpApiDeployConfigServiceConfigsObservabilityRouteConfig) Validate() error {
+	return dara.Validate(s)
 }
 
 type HttpApiDeployConfigSubDomains struct {

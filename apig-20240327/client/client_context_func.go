@@ -710,12 +710,20 @@ func (client *Client) CreateHttpApiWithContext(ctx context.Context, request *Cre
 		body["basePath"] = request.BasePath
 	}
 
+	if !dara.IsNil(request.BelongGatewayId) {
+		body["belongGatewayId"] = request.BelongGatewayId
+	}
+
 	if !dara.IsNil(request.DeployConfigs) {
 		body["deployConfigs"] = request.DeployConfigs
 	}
 
 	if !dara.IsNil(request.Description) {
 		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		body["dryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.EnableAuth) {
@@ -748,6 +756,10 @@ func (client *Client) CreateHttpApiWithContext(ctx context.Context, request *Cre
 
 	if !dara.IsNil(request.ResourceGroupId) {
 		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Strategy) {
+		body["strategy"] = request.Strategy
 	}
 
 	if !dara.IsNil(request.Type) {
