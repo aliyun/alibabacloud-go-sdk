@@ -13,6 +13,8 @@ type iListWuyingServerRequest interface {
 	GetAddVirtualNodePoolStatusList() []*string
 	SetBizRegionId(v string) *ListWuyingServerRequest
 	GetBizRegionId() *string
+	SetBizType(v int32) *ListWuyingServerRequest
+	GetBizType() *int32
 	SetChargeType(v string) *ListWuyingServerRequest
 	GetChargeType() *string
 	SetImageId(v string) *ListWuyingServerRequest
@@ -23,10 +25,14 @@ type iListWuyingServerRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListWuyingServerRequest
 	GetPageSize() *int32
+	SetProductType(v string) *ListWuyingServerRequest
+	GetProductType() *string
 	SetServerInstanceType(v string) *ListWuyingServerRequest
 	GetServerInstanceType() *string
 	SetStatus(v string) *ListWuyingServerRequest
 	GetStatus() *string
+	SetUsers(v []*string) *ListWuyingServerRequest
+	GetUsers() []*string
 	SetVirtualNodePoolId(v string) *ListWuyingServerRequest
 	GetVirtualNodePoolId() *string
 	SetWuyingServerIdList(v []*string) *ListWuyingServerRequest
@@ -43,6 +49,7 @@ type ListWuyingServerRequest struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	BizType     *int32  `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The billing method of the Internet access package.
 	//
 	// example:
@@ -72,7 +79,8 @@ type ListWuyingServerRequest struct {
 	// example:
 	//
 	// 100
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// Workstation specifications.
 	//
 	// example:
@@ -84,8 +92,9 @@ type ListWuyingServerRequest struct {
 	// example:
 	//
 	// RUNNING
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VirtualNodePoolId *string `json:"VirtualNodePoolId,omitempty" xml:"VirtualNodePoolId,omitempty"`
+	Status            *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Users             []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	VirtualNodePoolId *string   `json:"VirtualNodePoolId,omitempty" xml:"VirtualNodePoolId,omitempty"`
 	// The list of workstation IDs.
 	WuyingServerIdList []*string `json:"WuyingServerIdList,omitempty" xml:"WuyingServerIdList,omitempty" type:"Repeated"`
 	// The workstation name or workstation ID.
@@ -112,6 +121,10 @@ func (s *ListWuyingServerRequest) GetBizRegionId() *string {
 	return s.BizRegionId
 }
 
+func (s *ListWuyingServerRequest) GetBizType() *int32 {
+	return s.BizType
+}
+
 func (s *ListWuyingServerRequest) GetChargeType() *string {
 	return s.ChargeType
 }
@@ -132,12 +145,20 @@ func (s *ListWuyingServerRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListWuyingServerRequest) GetProductType() *string {
+	return s.ProductType
+}
+
 func (s *ListWuyingServerRequest) GetServerInstanceType() *string {
 	return s.ServerInstanceType
 }
 
 func (s *ListWuyingServerRequest) GetStatus() *string {
 	return s.Status
+}
+
+func (s *ListWuyingServerRequest) GetUsers() []*string {
+	return s.Users
 }
 
 func (s *ListWuyingServerRequest) GetVirtualNodePoolId() *string {
@@ -159,6 +180,11 @@ func (s *ListWuyingServerRequest) SetAddVirtualNodePoolStatusList(v []*string) *
 
 func (s *ListWuyingServerRequest) SetBizRegionId(v string) *ListWuyingServerRequest {
 	s.BizRegionId = &v
+	return s
+}
+
+func (s *ListWuyingServerRequest) SetBizType(v int32) *ListWuyingServerRequest {
+	s.BizType = &v
 	return s
 }
 
@@ -187,6 +213,11 @@ func (s *ListWuyingServerRequest) SetPageSize(v int32) *ListWuyingServerRequest 
 	return s
 }
 
+func (s *ListWuyingServerRequest) SetProductType(v string) *ListWuyingServerRequest {
+	s.ProductType = &v
+	return s
+}
+
 func (s *ListWuyingServerRequest) SetServerInstanceType(v string) *ListWuyingServerRequest {
 	s.ServerInstanceType = &v
 	return s
@@ -194,6 +225,11 @@ func (s *ListWuyingServerRequest) SetServerInstanceType(v string) *ListWuyingSer
 
 func (s *ListWuyingServerRequest) SetStatus(v string) *ListWuyingServerRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListWuyingServerRequest) SetUsers(v []*string) *ListWuyingServerRequest {
+	s.Users = v
 	return s
 }
 

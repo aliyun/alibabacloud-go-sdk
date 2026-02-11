@@ -11,6 +11,8 @@ type iStopWuyingServerRequest interface {
 	GoString() string
 	SetForce(v bool) *StopWuyingServerRequest
 	GetForce() *bool
+	SetProductType(v string) *StopWuyingServerRequest
+	GetProductType() *string
 	SetWuyingServerIdList(v []*string) *StopWuyingServerRequest
 	GetWuyingServerIdList() []*string
 }
@@ -27,7 +29,8 @@ type StopWuyingServerRequest struct {
 	// example:
 	//
 	// True
-	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	Force       *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The list of workstation IDs.
 	WuyingServerIdList []*string `json:"WuyingServerIdList,omitempty" xml:"WuyingServerIdList,omitempty" type:"Repeated"`
 }
@@ -44,12 +47,21 @@ func (s *StopWuyingServerRequest) GetForce() *bool {
 	return s.Force
 }
 
+func (s *StopWuyingServerRequest) GetProductType() *string {
+	return s.ProductType
+}
+
 func (s *StopWuyingServerRequest) GetWuyingServerIdList() []*string {
 	return s.WuyingServerIdList
 }
 
 func (s *StopWuyingServerRequest) SetForce(v bool) *StopWuyingServerRequest {
 	s.Force = &v
+	return s
+}
+
+func (s *StopWuyingServerRequest) SetProductType(v string) *StopWuyingServerRequest {
+	s.ProductType = &v
 	return s
 }
 

@@ -136,7 +136,7 @@ func (client *Client) ApproveOtaTask(request *ApproveOtaTaskRequest) (_result *A
 
 // Summary:
 //
-// 授权用户
+// Adds assigned users to or removes assigned users from a delivery group. Only users added to the assigned user list can access App Streaming.
 //
 // @param tmpReq - AuthorizeInstanceGroupRequest
 //
@@ -221,7 +221,7 @@ func (client *Client) AuthorizeInstanceGroupWithOptions(tmpReq *AuthorizeInstanc
 
 // Summary:
 //
-// 授权用户
+// Adds assigned users to or removes assigned users from a delivery group. Only users added to the assigned user list can access App Streaming.
 //
 // @param request - AuthorizeInstanceGroupRequest
 //
@@ -2761,6 +2761,10 @@ func (client *Client) ListWuyingServerWithOptions(request *ListWuyingServerReque
 		body["BizRegionId"] = request.BizRegionId
 	}
 
+	if !dara.IsNil(request.BizType) {
+		body["BizType"] = request.BizType
+	}
+
 	if !dara.IsNil(request.ChargeType) {
 		body["ChargeType"] = request.ChargeType
 	}
@@ -2781,12 +2785,20 @@ func (client *Client) ListWuyingServerWithOptions(request *ListWuyingServerReque
 		body["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
 	if !dara.IsNil(request.ServerInstanceType) {
 		body["ServerInstanceType"] = request.ServerInstanceType
 	}
 
 	if !dara.IsNil(request.Status) {
 		body["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Users) {
+		bodyFlat["Users"] = request.Users
 	}
 
 	if !dara.IsNil(request.VirtualNodePoolId) {
@@ -3493,6 +3505,10 @@ func (client *Client) ModifyWuyingServerAttributeWithOptions(request *ModifyWuyi
 		body["Password"] = request.Password
 	}
 
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
 	if !dara.IsNil(request.WuyingServerId) {
 		body["WuyingServerId"] = request.WuyingServerId
 	}
@@ -3819,6 +3835,10 @@ func (client *Client) RestartWuyingServerWithOptions(request *RestartWuyingServe
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
 	bodyFlat := map[string]interface{}{}
 	if !dara.IsNil(request.WuyingServerIdList) {
 		bodyFlat["WuyingServerIdList"] = request.WuyingServerIdList
@@ -3966,6 +3986,10 @@ func (client *Client) StartWuyingServerWithOptions(request *StartWuyingServerReq
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
 	bodyFlat := map[string]interface{}{}
 	if !dara.IsNil(request.WuyingServerIdList) {
 		bodyFlat["WuyingServerIdList"] = request.WuyingServerIdList
@@ -4035,6 +4059,10 @@ func (client *Client) StopWuyingServerWithOptions(request *StopWuyingServerReque
 		body["Force"] = request.Force
 	}
 
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
 	bodyFlat := map[string]interface{}{}
 	if !dara.IsNil(request.WuyingServerIdList) {
 		bodyFlat["WuyingServerIdList"] = request.WuyingServerIdList
@@ -4085,7 +4113,7 @@ func (client *Client) StopWuyingServer(request *StopWuyingServerRequest) (_resul
 
 // Summary:
 //
-// 为云资源创建并绑定标签
+// Creates and adds tags to cloud resources and updates the values of existing cloud resource tags.
 //
 // @param request - TagCloudResourcesRequest
 //
@@ -4137,7 +4165,7 @@ func (client *Client) TagCloudResourcesWithOptions(request *TagCloudResourcesReq
 
 // Summary:
 //
-// 为云资源创建并绑定标签
+// Creates and adds tags to cloud resources and updates the values of existing cloud resource tags.
 //
 // @param request - TagCloudResourcesRequest
 //

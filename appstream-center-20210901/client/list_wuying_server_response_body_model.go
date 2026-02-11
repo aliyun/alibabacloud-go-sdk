@@ -118,6 +118,8 @@ func (s *ListWuyingServerResponseBody) Validate() error {
 
 type ListWuyingServerResponseBodyWuyingServerList struct {
 	AddVirtualNodePoolStatus *string `json:"AddVirtualNodePoolStatus,omitempty" xml:"AddVirtualNodePoolStatus,omitempty"`
+	AliUid                   *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	Bandwidth                *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// Region.
 	//
 	// example:
@@ -144,6 +146,7 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// 2025-09-03T16:00:00.000+00:00
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	FotaVersion *string `json:"FotaVersion,omitempty" xml:"FotaVersion,omitempty"`
 	// The ID of the custom image.
 	//
 	// example:
@@ -184,10 +187,13 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	// example:
 	//
 	// Linux
-	OsType           *string   `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	OsType                *string   `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	PolicyGroupIdList     []*string `json:"PolicyGroupIdList,omitempty" xml:"PolicyGroupIdList,omitempty" type:"Repeated"`
+	ResourceSessionStatus *string   `json:"ResourceSessionStatus,omitempty" xml:"ResourceSessionStatus,omitempty"`
+	SecurityGroupIds      []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
 	// The specifications.
 	ServerInstanceTypeInfo *ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo `json:"ServerInstanceTypeInfo,omitempty" xml:"ServerInstanceTypeInfo,omitempty" type:"Struct"`
+	Sessions               []*ListWuyingServerResponseBodyWuyingServerListSessions             `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
 	// The status of the workstation.
 	//
 	// example:
@@ -201,6 +207,7 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// cloud_auto
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
+	SystemDiskId       *string `json:"SystemDiskId,omitempty" xml:"SystemDiskId,omitempty"`
 	// The performance level (PL) of the system disk.
 	//
 	// example:
@@ -212,9 +219,11 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	// example:
 	//
 	// 100
-	SystemDiskSize    *int32  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	VirtualKubeletIp  *string `json:"VirtualKubeletIp,omitempty" xml:"VirtualKubeletIp,omitempty"`
-	VirtualNodePoolId *string `json:"VirtualNodePoolId,omitempty" xml:"VirtualNodePoolId,omitempty"`
+	SystemDiskSize    *int32    `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	TimerGroupId      *string   `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
+	Users             []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	VirtualKubeletIp  *string   `json:"VirtualKubeletIp,omitempty" xml:"VirtualKubeletIp,omitempty"`
+	VirtualNodePoolId *string   `json:"VirtualNodePoolId,omitempty" xml:"VirtualNodePoolId,omitempty"`
 	// The ID of the workstation.
 	//
 	// example:
@@ -241,6 +250,14 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) GetAddVirtualNodePoolStat
 	return s.AddVirtualNodePoolStatus
 }
 
+func (s *ListWuyingServerResponseBodyWuyingServerList) GetAliUid() *int64 {
+	return s.AliUid
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) GetBandwidth() *int32 {
+	return s.Bandwidth
+}
+
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetBizRegionId() *string {
 	return s.BizRegionId
 }
@@ -259,6 +276,10 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) GetDataDisk() []*ListWuyi
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetExpiredTime() *string {
 	return s.ExpiredTime
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) GetFotaVersion() *string {
+	return s.FotaVersion
 }
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetImageId() *string {
@@ -297,12 +318,24 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) GetOsType() *string {
 	return s.OsType
 }
 
+func (s *ListWuyingServerResponseBodyWuyingServerList) GetPolicyGroupIdList() []*string {
+	return s.PolicyGroupIdList
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) GetResourceSessionStatus() *string {
+	return s.ResourceSessionStatus
+}
+
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetSecurityGroupIds() []*string {
 	return s.SecurityGroupIds
 }
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetServerInstanceTypeInfo() *ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo {
 	return s.ServerInstanceTypeInfo
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) GetSessions() []*ListWuyingServerResponseBodyWuyingServerListSessions {
+	return s.Sessions
 }
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetStatus() *string {
@@ -317,12 +350,24 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) GetSystemDiskCategory() *
 	return s.SystemDiskCategory
 }
 
+func (s *ListWuyingServerResponseBodyWuyingServerList) GetSystemDiskId() *string {
+	return s.SystemDiskId
+}
+
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetSystemDiskPerformanceLevel() *string {
 	return s.SystemDiskPerformanceLevel
 }
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetSystemDiskSize() *int32 {
 	return s.SystemDiskSize
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) GetTimerGroupId() *string {
+	return s.TimerGroupId
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) GetUsers() []*string {
+	return s.Users
 }
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetVirtualKubeletIp() *string {
@@ -343,6 +388,16 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) GetWuyingServerName() *st
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) SetAddVirtualNodePoolStatus(v string) *ListWuyingServerResponseBodyWuyingServerList {
 	s.AddVirtualNodePoolStatus = &v
+	return s
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) SetAliUid(v int64) *ListWuyingServerResponseBodyWuyingServerList {
+	s.AliUid = &v
+	return s
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) SetBandwidth(v int32) *ListWuyingServerResponseBodyWuyingServerList {
+	s.Bandwidth = &v
 	return s
 }
 
@@ -368,6 +423,11 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) SetDataDisk(v []*ListWuyi
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) SetExpiredTime(v string) *ListWuyingServerResponseBodyWuyingServerList {
 	s.ExpiredTime = &v
+	return s
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) SetFotaVersion(v string) *ListWuyingServerResponseBodyWuyingServerList {
+	s.FotaVersion = &v
 	return s
 }
 
@@ -416,6 +476,16 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) SetOsType(v string) *List
 	return s
 }
 
+func (s *ListWuyingServerResponseBodyWuyingServerList) SetPolicyGroupIdList(v []*string) *ListWuyingServerResponseBodyWuyingServerList {
+	s.PolicyGroupIdList = v
+	return s
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) SetResourceSessionStatus(v string) *ListWuyingServerResponseBodyWuyingServerList {
+	s.ResourceSessionStatus = &v
+	return s
+}
+
 func (s *ListWuyingServerResponseBodyWuyingServerList) SetSecurityGroupIds(v []*string) *ListWuyingServerResponseBodyWuyingServerList {
 	s.SecurityGroupIds = v
 	return s
@@ -423,6 +493,11 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) SetSecurityGroupIds(v []*
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) SetServerInstanceTypeInfo(v *ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo) *ListWuyingServerResponseBodyWuyingServerList {
 	s.ServerInstanceTypeInfo = v
+	return s
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) SetSessions(v []*ListWuyingServerResponseBodyWuyingServerListSessions) *ListWuyingServerResponseBodyWuyingServerList {
+	s.Sessions = v
 	return s
 }
 
@@ -441,6 +516,11 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) SetSystemDiskCategory(v s
 	return s
 }
 
+func (s *ListWuyingServerResponseBodyWuyingServerList) SetSystemDiskId(v string) *ListWuyingServerResponseBodyWuyingServerList {
+	s.SystemDiskId = &v
+	return s
+}
+
 func (s *ListWuyingServerResponseBodyWuyingServerList) SetSystemDiskPerformanceLevel(v string) *ListWuyingServerResponseBodyWuyingServerList {
 	s.SystemDiskPerformanceLevel = &v
 	return s
@@ -448,6 +528,16 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) SetSystemDiskPerformanceL
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) SetSystemDiskSize(v int32) *ListWuyingServerResponseBodyWuyingServerList {
 	s.SystemDiskSize = &v
+	return s
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) SetTimerGroupId(v string) *ListWuyingServerResponseBodyWuyingServerList {
+	s.TimerGroupId = &v
+	return s
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) SetUsers(v []*string) *ListWuyingServerResponseBodyWuyingServerList {
+	s.Users = v
 	return s
 }
 
@@ -495,6 +585,15 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) Validate() error {
 			return err
 		}
 	}
+	if s.Sessions != nil {
+		for _, item := range s.Sessions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	return nil
 }
 
@@ -505,6 +604,8 @@ type ListWuyingServerResponseBodyWuyingServerListDataDisk struct {
 	//
 	// cloud_auto
 	DataDiskCategory *string `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
+	DataDiskId       *string `json:"DataDiskId,omitempty" xml:"DataDiskId,omitempty"`
+	DataDiskNo       *string `json:"DataDiskNo,omitempty" xml:"DataDiskNo,omitempty"`
 	// The PL of the data disk.
 	//
 	// example:
@@ -531,6 +632,14 @@ func (s *ListWuyingServerResponseBodyWuyingServerListDataDisk) GetDataDiskCatego
 	return s.DataDiskCategory
 }
 
+func (s *ListWuyingServerResponseBodyWuyingServerListDataDisk) GetDataDiskId() *string {
+	return s.DataDiskId
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerListDataDisk) GetDataDiskNo() *string {
+	return s.DataDiskNo
+}
+
 func (s *ListWuyingServerResponseBodyWuyingServerListDataDisk) GetDataDiskPerformanceLevel() *string {
 	return s.DataDiskPerformanceLevel
 }
@@ -541,6 +650,16 @@ func (s *ListWuyingServerResponseBodyWuyingServerListDataDisk) GetDataDiskSize()
 
 func (s *ListWuyingServerResponseBodyWuyingServerListDataDisk) SetDataDiskCategory(v string) *ListWuyingServerResponseBodyWuyingServerListDataDisk {
 	s.DataDiskCategory = &v
+	return s
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerListDataDisk) SetDataDiskId(v string) *ListWuyingServerResponseBodyWuyingServerListDataDisk {
+	s.DataDiskId = &v
+	return s
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerListDataDisk) SetDataDiskNo(v string) *ListWuyingServerResponseBodyWuyingServerListDataDisk {
+	s.DataDiskNo = &v
 	return s
 }
 
@@ -621,7 +740,8 @@ type ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo struct {
 	// example:
 	//
 	// 196,608
-	GpuMemory *int32 `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
+	GpuMemory *int32  `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
+	GpuSpec   *string `json:"GpuSpec,omitempty" xml:"GpuSpec,omitempty"`
 	// The memory size. Unit: MB.
 	//
 	// example:
@@ -656,6 +776,10 @@ func (s *ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo) Get
 	return s.GpuMemory
 }
 
+func (s *ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo) GetGpuSpec() *string {
+	return s.GpuSpec
+}
+
 func (s *ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo) GetMemory() *int32 {
 	return s.Memory
 }
@@ -679,6 +803,11 @@ func (s *ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo) Set
 	return s
 }
 
+func (s *ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo) SetGpuSpec(v string) *ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo {
+	s.GpuSpec = &v
+	return s
+}
+
 func (s *ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo) SetMemory(v int32) *ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo {
 	s.Memory = &v
 	return s
@@ -690,5 +819,40 @@ func (s *ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo) Set
 }
 
 func (s *ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListWuyingServerResponseBodyWuyingServerListSessions struct {
+	ResourceSessionStartTime *string `json:"ResourceSessionStartTime,omitempty" xml:"ResourceSessionStartTime,omitempty"`
+	UserId                   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListWuyingServerResponseBodyWuyingServerListSessions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListWuyingServerResponseBodyWuyingServerListSessions) GoString() string {
+	return s.String()
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerListSessions) GetResourceSessionStartTime() *string {
+	return s.ResourceSessionStartTime
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerListSessions) GetUserId() *string {
+	return s.UserId
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerListSessions) SetResourceSessionStartTime(v string) *ListWuyingServerResponseBodyWuyingServerListSessions {
+	s.ResourceSessionStartTime = &v
+	return s
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerListSessions) SetUserId(v string) *ListWuyingServerResponseBodyWuyingServerListSessions {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerListSessions) Validate() error {
 	return dara.Validate(s)
 }

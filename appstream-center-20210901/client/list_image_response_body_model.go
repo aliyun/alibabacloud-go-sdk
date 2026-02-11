@@ -394,7 +394,8 @@ type ListImageResponseBodyData struct {
 	// example:
 	//
 	// SINGLE_SESSION
-	SessionType *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
+	SessionType  *string                                  `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
+	SnapshotList []*ListImageResponseBodyDataSnapshotList `json:"SnapshotList,omitempty" xml:"SnapshotList,omitempty" type:"Repeated"`
 	// The state of the image.
 	//
 	// example:
@@ -600,6 +601,10 @@ func (s *ListImageResponseBodyData) GetScene() *string {
 
 func (s *ListImageResponseBodyData) GetSessionType() *string {
 	return s.SessionType
+}
+
+func (s *ListImageResponseBodyData) GetSnapshotList() []*ListImageResponseBodyDataSnapshotList {
+	return s.SnapshotList
 }
 
 func (s *ListImageResponseBodyData) GetStatus() *string {
@@ -829,6 +834,11 @@ func (s *ListImageResponseBodyData) SetSessionType(v string) *ListImageResponseB
 	return s
 }
 
+func (s *ListImageResponseBodyData) SetSnapshotList(v []*ListImageResponseBodyDataSnapshotList) *ListImageResponseBodyData {
+	s.SnapshotList = v
+	return s
+}
+
 func (s *ListImageResponseBodyData) SetStatus(v string) *ListImageResponseBodyData {
 	s.Status = &v
 	return s
@@ -881,6 +891,15 @@ func (s *ListImageResponseBodyData) Validate() error {
 	}
 	if s.ImageRegionDistributeList != nil {
 		for _, item := range s.ImageRegionDistributeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SnapshotList != nil {
+		for _, item := range s.SnapshotList {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -1032,6 +1051,91 @@ func (s *ListImageResponseBodyDataImageRegionDistributeList) SetVersionId(v stri
 }
 
 func (s *ListImageResponseBodyDataImageRegionDistributeList) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListImageResponseBodyDataSnapshotList struct {
+	BindType     *string `json:"BindType,omitempty" xml:"BindType,omitempty"`
+	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
+	DiskSubType  *string `json:"DiskSubType,omitempty" xml:"DiskSubType,omitempty"`
+	DiskType     *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	Size         *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	SnapshotId   *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	VersionId    *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+}
+
+func (s ListImageResponseBodyDataSnapshotList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListImageResponseBodyDataSnapshotList) GoString() string {
+	return s.String()
+}
+
+func (s *ListImageResponseBodyDataSnapshotList) GetBindType() *string {
+	return s.BindType
+}
+
+func (s *ListImageResponseBodyDataSnapshotList) GetDiskCategory() *string {
+	return s.DiskCategory
+}
+
+func (s *ListImageResponseBodyDataSnapshotList) GetDiskSubType() *string {
+	return s.DiskSubType
+}
+
+func (s *ListImageResponseBodyDataSnapshotList) GetDiskType() *string {
+	return s.DiskType
+}
+
+func (s *ListImageResponseBodyDataSnapshotList) GetSize() *int32 {
+	return s.Size
+}
+
+func (s *ListImageResponseBodyDataSnapshotList) GetSnapshotId() *string {
+	return s.SnapshotId
+}
+
+func (s *ListImageResponseBodyDataSnapshotList) GetVersionId() *string {
+	return s.VersionId
+}
+
+func (s *ListImageResponseBodyDataSnapshotList) SetBindType(v string) *ListImageResponseBodyDataSnapshotList {
+	s.BindType = &v
+	return s
+}
+
+func (s *ListImageResponseBodyDataSnapshotList) SetDiskCategory(v string) *ListImageResponseBodyDataSnapshotList {
+	s.DiskCategory = &v
+	return s
+}
+
+func (s *ListImageResponseBodyDataSnapshotList) SetDiskSubType(v string) *ListImageResponseBodyDataSnapshotList {
+	s.DiskSubType = &v
+	return s
+}
+
+func (s *ListImageResponseBodyDataSnapshotList) SetDiskType(v string) *ListImageResponseBodyDataSnapshotList {
+	s.DiskType = &v
+	return s
+}
+
+func (s *ListImageResponseBodyDataSnapshotList) SetSize(v int32) *ListImageResponseBodyDataSnapshotList {
+	s.Size = &v
+	return s
+}
+
+func (s *ListImageResponseBodyDataSnapshotList) SetSnapshotId(v string) *ListImageResponseBodyDataSnapshotList {
+	s.SnapshotId = &v
+	return s
+}
+
+func (s *ListImageResponseBodyDataSnapshotList) SetVersionId(v string) *ListImageResponseBodyDataSnapshotList {
+	s.VersionId = &v
+	return s
+}
+
+func (s *ListImageResponseBodyDataSnapshotList) Validate() error {
 	return dara.Validate(s)
 }
 

@@ -11,6 +11,8 @@ type iModifyWuyingServerAttributeRequest interface {
 	GoString() string
 	SetPassword(v string) *ModifyWuyingServerAttributeRequest
 	GetPassword() *string
+	SetProductType(v string) *ModifyWuyingServerAttributeRequest
+	GetProductType() *string
 	SetWuyingServerId(v string) *ModifyWuyingServerAttributeRequest
 	GetWuyingServerId() *string
 	SetWuyingServerName(v string) *ModifyWuyingServerAttributeRequest
@@ -23,7 +25,8 @@ type ModifyWuyingServerAttributeRequest struct {
 	// example:
 	//
 	// yourPassword
-	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Password    *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The ID of the workstation.
 	//
 	// example:
@@ -50,6 +53,10 @@ func (s *ModifyWuyingServerAttributeRequest) GetPassword() *string {
 	return s.Password
 }
 
+func (s *ModifyWuyingServerAttributeRequest) GetProductType() *string {
+	return s.ProductType
+}
+
 func (s *ModifyWuyingServerAttributeRequest) GetWuyingServerId() *string {
 	return s.WuyingServerId
 }
@@ -60,6 +67,11 @@ func (s *ModifyWuyingServerAttributeRequest) GetWuyingServerName() *string {
 
 func (s *ModifyWuyingServerAttributeRequest) SetPassword(v string) *ModifyWuyingServerAttributeRequest {
 	s.Password = &v
+	return s
+}
+
+func (s *ModifyWuyingServerAttributeRequest) SetProductType(v string) *ModifyWuyingServerAttributeRequest {
+	s.ProductType = &v
 	return s
 }
 
