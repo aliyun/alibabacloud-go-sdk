@@ -29,8 +29,7 @@ type GetInviteStatusResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *GetInviteStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
 	//
@@ -149,30 +148,10 @@ func (s *GetInviteStatusResponseBodyData) Validate() error {
 }
 
 type GetInviteStatusResponseBodyDataInviteStatus struct {
-	// Result Code. Value Range:
-	//
-	// 	- 200 OK
-	//
-	// 	- 1109 system error
-	//
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// List of Invitation Status result
+	Code             *string                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	InviteStatusList *GetInviteStatusResponseBodyDataInviteStatusInviteStatusList `json:"InviteStatusList,omitempty" xml:"InviteStatusList,omitempty" type:"Struct"`
-	// The message returned.
-	//
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Message          *string                                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	Success          *bool                                                        `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetInviteStatusResponseBodyDataInviteStatus) String() string {
@@ -229,64 +208,13 @@ func (s *GetInviteStatusResponseBodyDataInviteStatus) Validate() error {
 }
 
 type GetInviteStatusResponseBodyDataInviteStatusInviteStatusList struct {
-	// The time that Distribution Customer successfully associated with Distributor.</br>
-	//
-	// This value will be empty if there is no existing association.
-	//
-	// example:
-	//
-	// 2018-02-13
 	AssociationSuccessTime *string `json:"AssociationSuccessTime,omitempty" xml:"AssociationSuccessTime,omitempty"`
-	// Distribution Customer\\"s CID
-	//
-	// example:
-	//
-	// 1234567890123
-	Cid *int64 `json:"Cid,omitempty" xml:"Cid,omitempty"`
-	// The time of email been sent out.
-	//
-	// example:
-	//
-	// 2018-02-12
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The parent organization ID.
-	//
-	// example:
-	//
-	// 1093238769140523
-	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// Invitation Status:
-	//
-	// 	- 0 No visit on registration URL
-	//
-	// 	- 1 Successful Registration
-	//
-	// 	- 2 Unsuccessful Registration
-	//
-	// 	- 3 Registration URL have been visited, but no submitted sheet/ticket.
-	//
-	// example:
-	//
-	// 2
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Account Type:
-	//
-	// - 1 Agency\\"s End User
-	//
-	// - 2 Reseller\\"s End User
-	//
-	// - 5 T2 Reseller Partner
-	//
-	// example:
-	//
-	// 1
-	SubAccountType *string `json:"SubAccountType,omitempty" xml:"SubAccountType,omitempty"`
-	// Distribution Customer\\"s UID
-	//
-	// example:
-	//
-	// 1234567890123
-	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	Cid                    *int64  `json:"Cid,omitempty" xml:"Cid,omitempty"`
+	GmtCreate              *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	ParentId               *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	Status                 *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubAccountType         *string `json:"SubAccountType,omitempty" xml:"SubAccountType,omitempty"`
+	Uid                    *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s GetInviteStatusResponseBodyDataInviteStatusInviteStatusList) String() string {

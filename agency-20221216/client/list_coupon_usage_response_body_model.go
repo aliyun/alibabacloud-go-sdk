@@ -22,13 +22,24 @@ type iListCouponUsageResponseBody interface {
 }
 
 type ListCouponUsageResponseBody struct {
+	// 接口状态码
+	//
 	// example:
 	//
 	// 200
-	Code     *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data     []*ListCouponUsageResponseBodyData   `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message  *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 返回数据
+	Data []*ListCouponUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// 接口返回提示信息
+	//
+	// example:
+	//
+	// 成功
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 分页信息
 	PageInfo *ListCouponUsageResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// 接口请求id返回问题提供查询使用
+	//
 	// example:
 	//
 	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
@@ -107,36 +118,70 @@ func (s *ListCouponUsageResponseBody) Validate() error {
 }
 
 type ListCouponUsageResponseBodyData struct {
+	// 阿里云账号
+	//
 	// example:
 	//
 	// oqevfbveuadcrduzmf@ttirv.net
-	Account *string  `json:"Account,omitempty" xml:"Account,omitempty"`
-	Amount  *float64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// 优惠券面额
+	//
+	// example:
+	//
+	// 200
+	Amount *float64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// 余额
+	//
 	// example:
 	//
 	// 0.01
 	Balance *float64 `json:"Balance,omitempty" xml:"Balance,omitempty"`
+	// 优惠券id
+	//
 	// example:
 	//
 	// 59226280
 	CouponId *string `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
+	// 优惠券模版id
+	//
 	// example:
 	//
 	// 503802
 	CouponTemplateId *int64 `json:"CouponTemplateId,omitempty" xml:"CouponTemplateId,omitempty"`
+	// 优惠券有效期
+	//
 	// example:
 	//
 	// 2023-04-06 00:00:00 ~ 2023-04-07 00:00:00
 	EffDate *string `json:"EffDate,omitempty" xml:"EffDate,omitempty"`
+	// 优惠券发放时间
+	//
 	// example:
 	//
 	// 2023-04-06 19:32:10
 	PublishDate *string `json:"PublishDate,omitempty" xml:"PublishDate,omitempty"`
+	// 优惠券状态 </br>
+	//
+	// AVAILABLE 正常 </br>
+	//
+	// EXHAUSTED 已用完 </br>
+	//
+	// EXPIRED 已过期 </br>
+	//
+	// ABANDONED 已作废 </br>
+	//
 	// example:
 	//
 	// AVAILABLE
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 二级分销商Uid
+	//
+	// example:
+	//
+	// 5248516956402795
 	T2PartnerUid *string `json:"T2PartnerUid,omitempty" xml:"T2PartnerUid,omitempty"`
+	// 阿里云uid
+	//
 	// example:
 	//
 	// 1647668856741998
@@ -246,14 +291,20 @@ func (s *ListCouponUsageResponseBodyData) Validate() error {
 }
 
 type ListCouponUsageResponseBodyPageInfo struct {
+	// 分页，当前页
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// 分页，每页数量
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 分页，总量
+	//
 	// example:
 	//
 	// 300

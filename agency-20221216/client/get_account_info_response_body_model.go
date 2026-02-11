@@ -24,7 +24,6 @@ type iGetAccountInfoResponseBody interface {
 }
 
 type GetAccountInfoResponseBody struct {
-	// List of Account Information
 	AccountInfoList *GetAccountInfoResponseBodyAccountInfoList `json:"AccountInfoList,omitempty" xml:"AccountInfoList,omitempty" type:"Struct"`
 	// Result Code - Error Code. Value Range:
 	//
@@ -175,128 +174,22 @@ func (s *GetAccountInfoResponseBodyAccountInfoList) Validate() error {
 }
 
 type GetAccountInfoResponseBodyAccountInfoListAccountInfo struct {
-	// The name of Sub Account.
-	//
-	// - Enterprise Customer: Name of Company
-	//
-	// - T2 Reseller: Name of Partner
-	//
-	// example:
-	//
-	// XXX Technology LTD.
-	AccountNickname *string `json:"AccountNickname,omitempty" xml:"AccountNickname,omitempty"`
-	// Alibaba Cloud Login name of Distribution Customer.
-	//
-	// example:
-	//
-	// 1234@qq.com
-	AliyunId *string `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
-	// The time that Distribution Customer successfully associated with Distributor.
-	//
-	// example:
-	//
-	// 2021-01-01
-	AssociationSuccessTime *string `json:"AssociationSuccessTime,omitempty" xml:"AssociationSuccessTime,omitempty"`
-	// Account CID of Distribution Customer.
-	//
-	// example:
-	//
-	// 61479572
-	Cid *int64 `json:"Cid,omitempty" xml:"Cid,omitempty"`
-	// Type of customer\\"s account, 0 Individual, 1 Enterprise
-	//
-	// example:
-	//
-	// 1
-	CustomerAccountType *int32 `json:"CustomerAccountType,omitempty" xml:"CustomerAccountType,omitempty"`
-	// Customer\\"s Sales Manager
-	//
-	// example:
-	//
-	// Tommy
-	CustomerBd *string `json:"CustomerBd,omitempty" xml:"CustomerBd,omitempty"`
-	// Whether the customer has completed Enterprise Real-name Authentication, 0 No, 1 Yes
-	//
-	// example:
-	//
-	// 1
-	CustomerEnterpriseCertified *int32 `json:"CustomerEnterpriseCertified,omitempty" xml:"CustomerEnterpriseCertified,omitempty"`
-	// When Shutdown Policy is delayStop, this number refer to Shutdown-delay Credit (overdraft limit).
-	//
-	// example:
-	//
-	// 600
-	DelayAmount *string `json:"DelayAmount,omitempty" xml:"DelayAmount,omitempty"`
-	// There are a value for Shutdown Policy Management towards Sub Account.
-	//
-	// - 1 immediatelyStop,  immediately shutdown the instance once customer\\"s quota is ran out.
-	//
-	// - 2 delayStop, delay shutdown the instance until customer\\"s Shutdown-delay Credit is ran out. Please refer to DelayAmount.
-	//
-	// - 3 noStop, customer\\"s instance status is rely on manual control instead of auto setting.
-	//
-	// example:
-	//
-	// immediatelyStop
-	DelayStatus *string `json:"DelayStatus,omitempty" xml:"DelayStatus,omitempty"`
-	// The E-mail of Distribution Customer.
-	//
-	// example:
-	//
-	// 1234@qq.com
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The contact number of Distribution Customer.
-	//
-	// example:
-	//
-	// 13641588680
-	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// Purchase Control, Value Range:
-	//
-	// - Purchase Forbidden
-	//
-	// - Normal (Purchase is allowed)
-	//
-	// example:
-	//
-	// Normal
-	NewBuyStatus *string `json:"NewBuyStatus,omitempty" xml:"NewBuyStatus,omitempty"`
-	// The Country Code where the customer\\"s account is registered.
-	//
-	// example:
-	//
-	// CN
-	RegisterCountryCode *string `json:"RegisterCountryCode,omitempty" xml:"RegisterCountryCode,omitempty"`
-	// Description of Distribution Customer.
-	//
-	// example:
-	//
-	// Sub Account
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// Account Type:
-	//
-	// - 1 Agency\\"s End User
-	//
-	// - 2 Reseller\\"s End User
-	//
-	// - 3 Enterprise
-	//
-	// - 4 T2 Agency Partner
-	//
-	// - 5 T2 Reseller Partner
-	//
-	// - 6 T2 Agency+Reseller Partner
-	//
-	// example:
-	//
-	// 1
-	SubAccountType *int32 `json:"SubAccountType,omitempty" xml:"SubAccountType,omitempty"`
-	// Account UID of Distribution Customer.
-	//
-	// example:
-	//
-	// 1415740779475837
-	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	AccountNickname             *string `json:"AccountNickname,omitempty" xml:"AccountNickname,omitempty"`
+	AliyunId                    *string `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
+	AssociationSuccessTime      *string `json:"AssociationSuccessTime,omitempty" xml:"AssociationSuccessTime,omitempty"`
+	Cid                         *int64  `json:"Cid,omitempty" xml:"Cid,omitempty"`
+	CustomerAccountType         *int32  `json:"CustomerAccountType,omitempty" xml:"CustomerAccountType,omitempty"`
+	CustomerBd                  *string `json:"CustomerBd,omitempty" xml:"CustomerBd,omitempty"`
+	CustomerEnterpriseCertified *int32  `json:"CustomerEnterpriseCertified,omitempty" xml:"CustomerEnterpriseCertified,omitempty"`
+	DelayAmount                 *string `json:"DelayAmount,omitempty" xml:"DelayAmount,omitempty"`
+	DelayStatus                 *string `json:"DelayStatus,omitempty" xml:"DelayStatus,omitempty"`
+	Email                       *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Mobile                      *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	NewBuyStatus                *string `json:"NewBuyStatus,omitempty" xml:"NewBuyStatus,omitempty"`
+	RegisterCountryCode         *string `json:"RegisterCountryCode,omitempty" xml:"RegisterCountryCode,omitempty"`
+	Remark                      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SubAccountType              *int32  `json:"SubAccountType,omitempty" xml:"SubAccountType,omitempty"`
+	Uid                         *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s GetAccountInfoResponseBodyAccountInfoListAccountInfo) String() string {

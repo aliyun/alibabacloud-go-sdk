@@ -33,8 +33,7 @@ type GetUnassociatedCustomerResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// List of Invitation Information
+	Code           *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	InviteInfoList *GetUnassociatedCustomerResponseBodyInviteInfoList `json:"InviteInfoList,omitempty" xml:"InviteInfoList,omitempty" type:"Struct"`
 	// Message information
 	//
@@ -169,44 +168,11 @@ func (s *GetUnassociatedCustomerResponseBodyInviteInfoList) Validate() error {
 }
 
 type GetUnassociatedCustomerResponseBodyInviteInfoListInviteInfo struct {
-	// The name of Customer who are to be invited.
-	//
-	// example:
-	//
-	// My Client
 	AccountNickname *string `json:"AccountNickname,omitempty" xml:"AccountNickname,omitempty"`
-	// The Email of Customer who are to be invited.
-	//
-	// example:
-	//
-	// 12345@qq.com
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The time of email been sent out.
-	//
-	// example:
-	//
-	// 2023-05-10
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Invitation ID
-	//
-	// example:
-	//
-	// 190
-	InviteId *int64 `json:"InviteId,omitempty" xml:"InviteId,omitempty"`
-	// Invitation Status:
-	//
-	// 	- 0 No visit on registration URL
-	//
-	// 	- 1 Successful Registration
-	//
-	// 	- 2 Unsuccessful Registration
-	//
-	// 	- 3 Registration URL have been visited, but no submitted sheet/ticket.
-	//
-	// example:
-	//
-	// 1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Email           *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	GmtCreate       *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	InviteId        *int64  `json:"InviteId,omitempty" xml:"InviteId,omitempty"`
+	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetUnassociatedCustomerResponseBodyInviteInfoListInviteInfo) String() string {

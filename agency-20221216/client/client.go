@@ -960,7 +960,7 @@ func (client *Client) EditZeroCreditShutdown(request *EditZeroCreditShutdownRequ
 
 // Summary:
 //
-// Export quota amount adjustment history as a Distribution Customer from International Site. Only available on International Site.
+// The ExportCustomerQuotaRecord interface corresponds to the export function of "Quota Adjust Details" on ACPN.
 //
 // Description:
 //
@@ -1024,7 +1024,7 @@ func (client *Client) ExportCustomerQuotaRecordWithOptions(request *ExportCustom
 
 // Summary:
 //
-// Export quota amount adjustment history as a Distribution Customer from International Site. Only available on International Site.
+// The ExportCustomerQuotaRecord interface corresponds to the export function of "Quota Adjust Details" on ACPN.
 //
 // Description:
 //
@@ -1046,7 +1046,7 @@ func (client *Client) ExportCustomerQuotaRecord(request *ExportCustomerQuotaReco
 
 // Summary:
 //
-// 额度冲减明细列表导出接口
+// The ExportReversedDeductionHistory interface corresponds to the export function of "Quota Offsetting Details" on ACPN.
 //
 // @param request - ExportReversedDeductionHistoryRequest
 //
@@ -1102,7 +1102,7 @@ func (client *Client) ExportReversedDeductionHistoryWithOptions(request *ExportR
 
 // Summary:
 //
-// 额度冲减明细列表导出接口
+// The ExportReversedDeductionHistory interface corresponds to the export function of "Quota Offsetting Details" on ACPN.
 //
 // @param request - ExportReversedDeductionHistoryRequest
 //
@@ -2185,6 +2185,12 @@ func (client *Client) ListCountries() (_result *ListCountriesResponse, _err erro
 //
 // 优惠券使用量列表查询
 //
+// Description:
+//
+// 确保当前调用账号身份为分销伙伴
+//
+// <notice>仅国际提供
+//
 // @param request - ListCouponUsageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2253,6 +2259,12 @@ func (client *Client) ListCouponUsageWithOptions(request *ListCouponUsageRequest
 //
 // 优惠券使用量列表查询
 //
+// Description:
+//
+// 确保当前调用账号身份为分销伙伴
+//
+// <notice>仅国际提供
+//
 // @param request - ListCouponUsageRequest
 //
 // @return ListCouponUsageResponse
@@ -2269,7 +2281,7 @@ func (client *Client) ListCouponUsage(request *ListCouponUsageRequest) (_result 
 
 // Summary:
 //
-// 通用查询导出任务列表
+// Query the list of exported files.
 //
 // @param request - ListExportTasksRequest
 //
@@ -2329,7 +2341,7 @@ func (client *Client) ListExportTasksWithOptions(request *ListExportTasksRequest
 
 // Summary:
 //
-// 通用查询导出任务列表
+// Query the list of exported files.
 //
 // @param request - ListExportTasksRequest
 //

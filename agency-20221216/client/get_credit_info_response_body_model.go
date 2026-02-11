@@ -159,6 +159,7 @@ type GetCreditInfoResponseBodyData struct {
 	//
 	// 200
 	OutstandingBalance *string `json:"OutstandingBalance,omitempty" xml:"OutstandingBalance,omitempty"`
+	PAYGFreezeStatus   *string `json:"PAYGFreezeStatus,omitempty" xml:"PAYGFreezeStatus,omitempty"`
 	// The systematic controlling policy for resource management, specifically when the available Credit of Sub Account falls to 0 or less.</br>
 	//
 	// - 1: delayStop. The account have Shutdown-delay Privilege,  After Shutdown-delay Credit is ran out, Alibaba Cloud will take over resources and keep the instance for 15 days. In addition, the instance will be released if Sub Account failed to pay the bill within these 15 days.</br>
@@ -215,6 +216,10 @@ func (s *GetCreditInfoResponseBodyData) GetOutstandingBalance() *string {
 	return s.OutstandingBalance
 }
 
+func (s *GetCreditInfoResponseBodyData) GetPAYGFreezeStatus() *string {
+	return s.PAYGFreezeStatus
+}
+
 func (s *GetCreditInfoResponseBodyData) GetZeroCreditShutdownPolicy() *string {
 	return s.ZeroCreditShutdownPolicy
 }
@@ -250,6 +255,11 @@ func (s *GetCreditInfoResponseBodyData) SetCreditLine(v string) *GetCreditInfoRe
 
 func (s *GetCreditInfoResponseBodyData) SetOutstandingBalance(v string) *GetCreditInfoResponseBodyData {
 	s.OutstandingBalance = &v
+	return s
+}
+
+func (s *GetCreditInfoResponseBodyData) SetPAYGFreezeStatus(v string) *GetCreditInfoResponseBodyData {
+	s.PAYGFreezeStatus = &v
 	return s
 }
 

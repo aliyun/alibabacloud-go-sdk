@@ -43,9 +43,8 @@ type InviteSubAccountResponseBody struct {
 	// example:
 	//
 	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// List of invitation sending results
-	Results *InviteSubAccountResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results   *InviteSubAccountResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
 	// Candidate Values: True/False, this value states if the current API calling action is successful. It does not guarantee the success of subsequent business operations.
 	//
 	// example:
@@ -151,26 +150,10 @@ func (s *InviteSubAccountResponseBodyResults) Validate() error {
 }
 
 type InviteSubAccountResponseBodyResultsResult struct {
-	// Error Code, 200 OK
-	//
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Message, Notes of Code
-	//
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Returning Message of Invitation Results
-	Result *InviteSubAccountResponseBodyResultsResultResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Always true.
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code    *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	Result  *InviteSubAccountResponseBodyResultsResultResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s InviteSubAccountResponseBodyResultsResult) String() string {
@@ -227,24 +210,9 @@ func (s *InviteSubAccountResponseBodyResultsResult) Validate() error {
 }
 
 type InviteSubAccountResponseBodyResultsResultResult struct {
-	// Valid days of registration URL, count on daily basis.
-	//
-	// example:
-	//
-	// 15
-	Days *int32 `json:"Days,omitempty" xml:"Days,omitempty"`
-	// Invitation ID, The invitation status tracking code.
-	//
-	// example:
-	//
-	// 12345
-	InviteId *int64 `json:"InviteId,omitempty" xml:"InviteId,omitempty"`
-	// URL for Partner Customer Registration.
-	//
-	// example:
-	//
-	// http://agency-intl.console.aliyun.com/customer/register?intl=true&fxinfo=-4uT%2FMWHnnUdvr5GXVd1AYK8luTnGgH3M7Y3lSCd5M1fxRwAkViTWtDJDpckh0HL
-	RegUrl *string `json:"RegUrl,omitempty" xml:"RegUrl,omitempty"`
+	Days     *int32  `json:"Days,omitempty" xml:"Days,omitempty"`
+	InviteId *int64  `json:"InviteId,omitempty" xml:"InviteId,omitempty"`
+	RegUrl   *string `json:"RegUrl,omitempty" xml:"RegUrl,omitempty"`
 }
 
 func (s InviteSubAccountResponseBodyResultsResultResult) String() string {
