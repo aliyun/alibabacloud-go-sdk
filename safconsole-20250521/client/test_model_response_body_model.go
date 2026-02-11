@@ -22,19 +22,32 @@ type iTestModelResponseBody interface {
 }
 
 type TestModelResponseBody struct {
+	// Status code. A return value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 4A91D2D1-AEC9-1658-ABCE-5A39DE66A5C2
-	RequestId    *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return result.
 	ResultObject *TestModelResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+	// Indicates whether the call was successful.
+	//
+	// - **true**: Call succeeded.
+	//
+	// - **false**: Call failed.
+	//
 	// example:
 	//
 	// true
@@ -104,15 +117,22 @@ func (s *TestModelResponseBody) Validate() error {
 }
 
 type TestModelResponseBodyResultObject struct {
+	// Number of consistencies.
+	//
 	// example:
 	//
 	// 49.0
 	ConsistencyCount *int64 `json:"ConsistencyCount,omitempty" xml:"ConsistencyCount,omitempty"`
+	// Consistency rate.
+	//
 	// example:
 	//
 	// 98.0
-	ConsistencyRate *float64                                       `json:"ConsistencyRate,omitempty" xml:"ConsistencyRate,omitempty"`
-	TestResult      []*TestModelResponseBodyResultObjectTestResult `json:"TestResult,omitempty" xml:"TestResult,omitempty" type:"Repeated"`
+	ConsistencyRate *float64 `json:"ConsistencyRate,omitempty" xml:"ConsistencyRate,omitempty"`
+	// Test results.
+	TestResult []*TestModelResponseBodyResultObjectTestResult `json:"TestResult,omitempty" xml:"TestResult,omitempty" type:"Repeated"`
+	// Total number.
+	//
 	// example:
 	//
 	// 50
@@ -177,18 +197,26 @@ func (s *TestModelResponseBodyResultObject) Validate() error {
 }
 
 type TestModelResponseBodyResultObjectTestResult struct {
+	// Actual output.
+	//
 	// example:
 	//
 	// 0.00
 	ActualResult *string `json:"ActualResult,omitempty" xml:"ActualResult,omitempty"`
+	// Whether it is consistent.
+	//
 	// example:
 	//
 	// true
 	Consistency *bool `json:"Consistency,omitempty" xml:"Consistency,omitempty"`
+	// Test output.
+	//
 	// example:
 	//
 	// 0.00
 	TestResult *string `json:"TestResult,omitempty" xml:"TestResult,omitempty"`
+	// Training output.
+	//
 	// example:
 	//
 	// 0.00

@@ -22,19 +22,32 @@ type iDescribeCustomerModuleMetaInfoResponseBody interface {
 }
 
 type DescribeCustomerModuleMetaInfoResponseBody struct {
+	// Status code. A return value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 055f1546-f465-4c92-a2da-bfb86abe6f56
-	RequestId    *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return result.
 	ResultObject *DescribeCustomerModuleMetaInfoResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+	// Indicates whether the call was successful.
+	//
+	// - **true**: Call succeeded.
+	//
+	// - **false**: Call failed.
+	//
 	// example:
 	//
 	// true
@@ -104,7 +117,10 @@ func (s *DescribeCustomerModuleMetaInfoResponseBody) Validate() error {
 }
 
 type DescribeCustomerModuleMetaInfoResponseBodyResultObject struct {
+	// Feature list.
 	FeatureList []*DescribeCustomerModuleMetaInfoResponseBodyResultObjectFeatureList `json:"FeatureList,omitempty" xml:"FeatureList,omitempty" type:"Repeated"`
+	// Feature template.
+	//
 	// example:
 	//
 	// FINANCE_60
@@ -151,18 +167,26 @@ func (s *DescribeCustomerModuleMetaInfoResponseBodyResultObject) Validate() erro
 }
 
 type DescribeCustomerModuleMetaInfoResponseBodyResultObjectFeatureList struct {
+	// Default value of the feature.
+	//
 	// example:
 	//
 	// 0.1
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// Feature mapping name.
+	//
 	// example:
 	//
 	// f1
 	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// Feature type.
+	//
 	// example:
 	//
 	// double
 	FeatureType *string `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	// Feature name.
+	//
 	// example:
 	//
 	// f1

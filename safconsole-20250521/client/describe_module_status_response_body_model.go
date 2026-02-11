@@ -22,22 +22,32 @@ type iDescribeModuleStatusResponseBody interface {
 }
 
 type DescribeModuleStatusResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 4A91D2D1-AEC9-1658-ABCE-5A39DE66A5C2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned result.
+	//
 	// example:
 	//
 	// true
 	ResultObject *string `json:"ResultObject,omitempty" xml:"ResultObject,omitempty"`
+	// Whether the operation was successful
+	//
 	// example:
 	//
 	// true

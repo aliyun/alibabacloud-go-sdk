@@ -36,31 +36,50 @@ type DescribeUserModelListResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Current page.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Pagination parameter: number of items per page, default value is 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 4A91D2D1-AEC9-1658-ABCE-5A39DE66A5C2
-	RequestId    *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return result.
 	ResultObject []*DescribeUserModelListResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful, with values as follows:
+	//
+	// - true, request succeeded
+	//
+	// - false, request failed
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 1
 	TotalItem *int64 `json:"TotalItem,omitempty" xml:"TotalItem,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -170,47 +189,74 @@ func (s *DescribeUserModelListResponseBody) Validate() error {
 }
 
 type DescribeUserModelListResponseBodyResultObject struct {
+	// Authorization type.
+	//
 	// example:
 	//
 	// READ
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// Model name.
+	//
 	// example:
 	//
 	// Model_A
 	CustomerModuleName *string `json:"CustomerModuleName,omitempty" xml:"CustomerModuleName,omitempty"`
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Remarks.
+	//
+	// example:
+	//
+	// 备注。
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Associated features.
+	//
 	// example:
 	//
 	// template_a
 	FeatureTemplate *string `json:"FeatureTemplate,omitempty" xml:"FeatureTemplate,omitempty"`
+	// Modification time.
+	//
 	// example:
 	//
 	// 1673578656000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Primary key ID of the model.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Publication status.
+	//
 	// example:
 	//
 	// ONLINE
 	InnerDefineStatus *string `json:"InnerDefineStatus,omitempty" xml:"InnerDefineStatus,omitempty"`
+	// Model identifier.
+	//
 	// example:
 	//
 	// inner_model_a
 	InnerModuleName *string `json:"InnerModuleName,omitempty" xml:"InnerModuleName,omitempty"`
+	// Whether iteration is allowed.
+	//
 	// example:
 	//
 	// true
 	IsAllowIterate *bool `json:"IsAllowIterate,omitempty" xml:"IsAllowIterate,omitempty"`
+	// Whether rollback is allowed.
+	//
 	// example:
 	//
 	// true
 	IsAllowRollback *bool `json:"IsAllowRollback,omitempty" xml:"IsAllowRollback,omitempty"`
+	// Iteration version.
+	//
 	// example:
 	//
 	// 1
 	IterationVersion *int64 `json:"IterationVersion,omitempty" xml:"IterationVersion,omitempty"`
+	// Root model ID.
+	//
 	// example:
 	//
 	// 10

@@ -22,19 +22,28 @@ type iDescribeFeatureTemplateListResponseBody interface {
 }
 
 type DescribeFeatureTemplateListResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 4A91D2D1-AEC9-1658-ABCE-5A39DE66A5C2
-	RequestId    *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned result.
 	ResultObject []*DescribeFeatureTemplateListResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Repeated"`
+	// Success flag
+	//
 	// example:
 	//
 	// true
@@ -108,7 +117,14 @@ func (s *DescribeFeatureTemplateListResponseBody) Validate() error {
 }
 
 type DescribeFeatureTemplateListResponseBodyResultObject struct {
+	// Parameter label.
+	//
+	// example:
+	//
+	// 51维特征
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// Label value.
+	//
 	// example:
 	//
 	// FINANCE_51

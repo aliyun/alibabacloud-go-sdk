@@ -14,6 +14,8 @@ type iParseExpressionParametersRequest interface {
 }
 
 type ParseExpressionParametersRequest struct {
+	// Expression.
+	//
 	// example:
 	//
 	// score

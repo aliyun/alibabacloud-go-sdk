@@ -14,6 +14,8 @@ type iDescribeModuleStatusRequest interface {
 }
 
 type DescribeModuleStatusRequest struct {
+	// Customer model ID
+	//
 	// example:
 	//
 	// 456

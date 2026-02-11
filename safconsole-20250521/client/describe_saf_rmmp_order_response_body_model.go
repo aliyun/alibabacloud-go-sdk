@@ -22,19 +22,32 @@ type iDescribeSafRmmpOrderResponseBody interface {
 }
 
 type DescribeSafRmmpOrderResponseBody struct {
+	// Status code. A return value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 4A91D2D1-AEC9-1658-ABCE-5A39DE66A5C2
-	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return result.
 	ResultObject *DescribeSafRmmpOrderResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+	// Indicates whether the call was successful.
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -104,6 +117,8 @@ func (s *DescribeSafRmmpOrderResponseBody) Validate() error {
 }
 
 type DescribeSafRmmpOrderResponseBodyResultObject struct {
+	// Indicates whether there is functional permission.
+	//
 	// example:
 	//
 	// true

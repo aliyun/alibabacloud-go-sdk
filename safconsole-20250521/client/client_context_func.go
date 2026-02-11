@@ -9,6 +9,182 @@ import (
 
 // Summary:
 //
+// # Apply for Bastion Host Account
+//
+// Description:
+//
+// ## Request Description
+//
+// - This interface is used for customers to create a modeling project for the first time.
+//
+// - `projectName` is a required field, with a maximum length of 50 characters.
+//
+// - `remark` and `instanceSpec` are optional, where `remark` has a maximum length of 200 characters.
+//
+// - The available values for `instanceSpec` include `SECURE_ENV_LITE` and `SECURE_ENV_PRO`.
+//
+// @param request - ApplyBastionAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyBastionAccountResponse
+func (client *Client) ApplyBastionAccountWithContext(ctx context.Context, request *ApplyBastionAccountRequest, runtime *dara.RuntimeOptions) (_result *ApplyBastionAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Mobile) {
+		query["Mobile"] = request.Mobile
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ApplyBastionAccount"),
+		Version:     dara.String("2025-05-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ApplyBastionAccountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Associate Retrospective Task
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 本接口用于客户首次创建建模项目。
+//
+// - `projectName` 是必填项，长度不超过50个字符。
+//
+// - `remark` 和 `instanceSpec` 为可选项，其中 `remark` 长度不超过200个字符。
+//
+// - `instanceSpec` 可选值包括 `SECURE_ENV_LITE` 和 `SECURE_ENV_PRO`。
+//
+// @param request - AssociatePocTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssociatePocTaskResponse
+func (client *Client) AssociatePocTaskWithContext(ctx context.Context, request *AssociatePocTaskRequest, runtime *dara.RuntimeOptions) (_result *AssociatePocTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AssociatePocTask"),
+		Version:     dara.String("2025-05-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AssociatePocTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Complete project and release resources.
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 本接口用于客户首次创建建模项目。
+//
+// - `projectName` 是必填项，长度不超过50个字符。
+//
+// - `remark` 和 `instanceSpec` 为可选项，其中 `remark` 长度不超过200个字符。
+//
+// - `instanceSpec` 可选值包括 `SECURE_ENV_LITE` 和 `SECURE_ENV_PRO`。
+//
+// @param request - CompleteModelingProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CompleteModelingProjectResponse
+func (client *Client) CompleteModelingProjectWithContext(ctx context.Context, request *CompleteModelingProjectRequest, runtime *dara.RuntimeOptions) (_result *CompleteModelingProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CompleteModelingProject"),
+		Version:     dara.String("2025-05-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CompleteModelingProjectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Create basic model information
 //
 // @param request - CreateCustomerModuleBasicInfoRequest
@@ -183,6 +359,70 @@ func (client *Client) CreateCustomerModuleOutputInfoWithContext(ctx context.Cont
 
 // Summary:
 //
+// Initialize a modeling project.
+//
+// Description:
+//
+// ## Request Description
+//
+// - This interface is used for customers to create a modeling project for the first time.
+//
+// - `projectName` is a required field, with a maximum length of 50 characters.
+//
+// - `remark` and `instanceSpec` are optional, where `remark` has a maximum length of 200 characters.
+//
+// - The available values for `instanceSpec` include `SECURE_ENV_LITE` and `SECURE_ENV_PRO`.
+//
+// @param request - CreateModelingProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateModelingProjectResponse
+func (client *Client) CreateModelingProjectWithContext(ctx context.Context, request *CreateModelingProjectRequest, runtime *dara.RuntimeOptions) (_result *CreateModelingProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceSpec) {
+		query["InstanceSpec"] = request.InstanceSpec
+	}
+
+	if !dara.IsNil(request.ProjectName) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateModelingProject"),
+		Version:     dara.String("2025-05-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateModelingProjectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes the specified customer model based on the provided customer model ID.
 //
 // Description:
@@ -225,6 +465,66 @@ func (client *Client) DeleteModelWithContext(ctx context.Context, request *Delet
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteModelResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Deploy Model File
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 本接口用于客户首次创建建模项目。
+//
+// - `projectName` 是必填项，长度不超过50个字符。
+//
+// - `remark` 和 `instanceSpec` 为可选项，其中 `remark` 长度不超过200个字符。
+//
+// - `instanceSpec` 可选值包括 `SECURE_ENV_LITE` 和 `SECURE_ENV_PRO`。
+//
+// @param request - DeployModelFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeployModelFileResponse
+func (client *Client) DeployModelFileWithContext(ctx context.Context, request *DeployModelFileRequest, runtime *dara.RuntimeOptions) (_result *DeployModelFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GroupId) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeployModelFile"),
+		Version:     dara.String("2025-05-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeployModelFileResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -289,13 +589,13 @@ func (client *Client) DescribeCustomerModuleBasicInfoWithContext(ctx context.Con
 
 // Summary:
 //
-// 根据客户模型ID查询模型特征信息
+// # Query model feature information based on the customer model ID
 //
 // Description:
 //
-// ## 请求说明
+// ## Request Description
 //
-// 通过提供`customerModuleId`参数，可以查询指定客户模型的当前状态。状态值可能包括但不限于"EDIT"、"ONLINE"等。
+// By providing the `customerModuleId` parameter, you can query the current status of a specified customer model. The status values may include, but are not limited to, "EDIT", "ONLINE", etc.
 //
 // @param request - DescribeCustomerModuleMetaInfoRequest
 //
@@ -339,13 +639,13 @@ func (client *Client) DescribeCustomerModuleMetaInfoWithContext(ctx context.Cont
 
 // Summary:
 //
-// 根据客户模型ID查询模型出参信息
+// # Query model output information based on the customer model ID
 //
 // Description:
 //
-// ## 请求说明
+// ## Request Description
 //
-// 通过提供`customerModuleId`参数，可以查询指定客户模型的当前状态。状态值可能包括但不限于"EDIT"、"ONLINE"等。
+// By providing the `customerModuleId` parameter, you can query the current status of a specified customer model. The status values may include but are not limited to "EDIT", "ONLINE", etc.
 //
 // @param request - DescribeCustomerModuleOutputInfoRequest
 //
@@ -393,17 +693,17 @@ func (client *Client) DescribeCustomerModuleOutputInfoWithContext(ctx context.Co
 
 // Summary:
 //
-// 根据特征模板返回特征模板具体特征选项
+// # Return specific feature options based on the feature template
 //
 // Description:
 //
-// ## 请求说明
+// ## Request Description
 //
-// - 该接口用于查询系统中所有可用的特征模板。
+// - This interface is used to query all available feature templates in the system.
 //
-// - 请求方式为 GET，无需提供额外参数。
+// - The request method is GET, and no additional parameters are required.
 //
-// - 返回结果包含多个特征模板选项，每个选项包括标签（label）和值（value）。
+// - The returned result includes multiple feature template options, each of which includes a label (label) and a value (value).
 //
 // @param request - DescribeFeatureOptionRequest
 //
@@ -447,17 +747,77 @@ func (client *Client) DescribeFeatureOptionWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 渲染模型的特征配置
+// # Get File Download Link
 //
 // Description:
 //
 // ## 请求说明
 //
-// - 该接口用于查询系统中所有可用的特征模板。
+// - 本接口用于客户首次创建建模项目。
 //
-// - 请求方式为 GET，无需提供额外参数。
+// - `projectName` 是必填项，长度不超过50个字符。
 //
-// - 返回结果包含多个特征模板选项，每个选项包括标签（label）和值（value）。
+// - `remark` 和 `instanceSpec` 为可选项，其中 `remark` 长度不超过200个字符。
+//
+// - `instanceSpec` 可选值包括 `SECURE_ENV_LITE` 和 `SECURE_ENV_PRO`。
+//
+// @param request - DescribeFileDownloadUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFileDownloadUrlResponse
+func (client *Client) DescribeFileDownloadUrlWithContext(ctx context.Context, request *DescribeFileDownloadUrlRequest, runtime *dara.RuntimeOptions) (_result *DescribeFileDownloadUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeFileDownloadUrl"),
+		Version:     dara.String("2025-05-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeFileDownloadUrlResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Render the feature configuration of the model
+//
+// Description:
+//
+// ## Request Description
+//
+// - This interface is used to query all available feature templates in the system.
+//
+// - The request method is GET, and no additional parameters are required.
+//
+// - The returned result includes multiple feature template options, each including a label (label) and value (value).
 //
 // @param request - DescribeModelFeatureRequest
 //
@@ -505,19 +865,139 @@ func (client *Client) DescribeModelFeatureWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 根据客户模型ID查询指定模型对应服务是否存在
+// # Get detailed project data
 //
 // Description:
 //
 // ## 请求说明
 //
-// 该接口用于通过提供的`customerModuleId`来检查特定的模型服务是否已经存在。如果存在，则返回`true`；反之则返回`false`。
+// - 本接口用于客户首次创建建模项目。
 //
-// ### 注意事项
+// - `projectName` 是必填项，长度不超过50个字符。
 //
-// - `customerModuleId`是必须提供的参数，且为字符串类型。
+// - `remark` 和 `instanceSpec` 为可选项，其中 `remark` 长度不超过200个字符。
 //
-// - 此API主要用于前端页面展示或逻辑判断时使用，以确认用户所选模型是否有对应的服务被创建。
+// - `instanceSpec` 可选值包括 `SECURE_ENV_LITE` 和 `SECURE_ENV_PRO`。
+//
+// @param request - DescribeModelingProjectDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeModelingProjectDetailResponse
+func (client *Client) DescribeModelingProjectDetailWithContext(ctx context.Context, request *DescribeModelingProjectDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeModelingProjectDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeModelingProjectDetail"),
+		Version:     dara.String("2025-05-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeModelingProjectDetailResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Paginated query for the list of modeling projects under the current user.
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该API用于获取指定租户下的所有建模项目的概览信息。
+//
+// - 支持通过`pageSize`和`currentPage`参数进行分页查询，默认每页显示10条记录。
+//
+// - 可选地，使用`status`参数来过滤特定状态（如`active`, `released`等）的项目。
+//
+// - 返回结果中包含每个项目的ID、名称、环境状态、建模状态、开始时间及结束时间（如果有的话），以及创建该项目的登录账号。
+//
+// @param request - DescribeModelingProjectListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeModelingProjectListResponse
+func (client *Client) DescribeModelingProjectListWithContext(ctx context.Context, request *DescribeModelingProjectListRequest, runtime *dara.RuntimeOptions) (_result *DescribeModelingProjectListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeModelingProjectList"),
+		Version:     dara.String("2025-05-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeModelingProjectListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query Whether the Service Corresponding to a Specific Model Exists Based on Customer Model ID
+//
+// Description:
+//
+// ## Request Description
+//
+// This interface is used to check whether a specific model service exists by providing the `customerModuleId`. If it exists, it returns `true`; otherwise, it returns `false`.
+//
+// ### Notes
+//
+// - `customerModuleId` is a required parameter and must be of string type.
+//
+// - This API is mainly used for front-end page display or logical judgment to confirm whether the service corresponding to the user\\"s selected model has been created.
 //
 // @param request - DescribeModuleServiceExistRequest
 //
@@ -561,13 +1041,13 @@ func (client *Client) DescribeModuleServiceExistWithContext(ctx context.Context,
 
 // Summary:
 //
-// 根据客户模型ID查询模型当前状态
+// # Query the current status of a model based on the customer model ID
 //
 // Description:
 //
-// ## 请求说明
+// ## Request Description
 //
-// 通过提供`customerModuleId`参数，可以查询指定客户模型的当前状态。状态值可能包括但不限于"EDIT"、"ONLINE"等。
+// By providing the `customerModuleId` parameter, you can query the current status of a specified customer model. The status values may include, but are not limited to, "EDIT", "ONLINE", etc.
 //
 // @param request - DescribeModuleStatusRequest
 //
@@ -611,7 +1091,7 @@ func (client *Client) DescribeModuleStatusWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询场景和服务
+// # Query Scene and Service
 //
 // @param request - DescribeServiceAndSceneRequest
 //
@@ -659,21 +1139,21 @@ func (client *Client) DescribeServiceAndSceneWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取指定用户下的所有模型信息，支持分页查询
+// # Get all model information for a specified user, supporting pagination
 //
 // Description:
 //
-// ## 请求说明
+// ## Request Description
 //
-// 该 API 用于查询特定用户下的所有模型信息，并支持通过分页参数进行分页查询。可以通过 `name` 参数进行模糊搜索。
+// This API is used to query all model information under a specific user and supports pagination through page parameters. Fuzzy search can be performed using the `name` parameter.
 //
-// - `regId`: 地域标识，必填。
+// - `regId`: Region identifier, required.
 //
-// - `pageSize`: 每页显示的条目数，必填。
+// - `pageSize`: Number of items per page, required.
 //
-// - `currentPage`: 当前页码，从1开始计数，必填。
+// - `currentPage`: Current page number, starting from 1, required.
 //
-// - `userId`: 用户ID，必填。
+// - `userId`: User ID, required.
 //
 // @param request - DescribeUserModelListRequest
 //
@@ -729,15 +1209,15 @@ func (client *Client) DescribeUserModelListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 迭代模型
+// # Iterate Model
 //
 // Description:
 //
-// ## 请求说明
+// ## Request Description
 //
-// 本API用于从系统中删除指定的客户模型。调用时必须提供`customerModuleId`参数，该参数标识了要删除的具体模型。
+// This API is used to delete a specified customer model from the system. When calling, you must provide the `customerModuleId` parameter, which identifies the specific model to be deleted.
 //
-// - **注意**：删除操作不可逆，请谨慎使用。
+// - **Note**: The deletion operation is irreversible, please use with caution.
 //
 // @param request - DuplicateModelRequest
 //
@@ -781,7 +1261,7 @@ func (client *Client) DuplicateModelWithContext(ctx context.Context, request *Du
 
 // Summary:
 //
-// 编辑模型
+// # Edit Model
 //
 // @param request - EditModelRequest
 //
@@ -825,15 +1305,71 @@ func (client *Client) EditModelWithContext(ctx context.Context, request *EditMod
 
 // Summary:
 //
-// 迭代模型
+// # View Bastion Host Initial Password
 //
 // Description:
 //
 // ## 请求说明
 //
-// 本API用于从系统中删除指定的客户模型。调用时必须提供`customerModuleId`参数，该参数标识了要删除的具体模型。
+// - 本接口用于客户首次创建建模项目。
 //
-// - **注意**：删除操作不可逆，请谨慎使用。
+// - `projectName` 是必填项，长度不超过50个字符。
+//
+// - `remark` 和 `instanceSpec` 为可选项，其中 `remark` 长度不超过200个字符。
+//
+// - `instanceSpec` 可选值包括 `SECURE_ENV_LITE` 和 `SECURE_ENV_PRO`。
+//
+// @param request - GetBastionHostCertificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBastionHostCertificationResponse
+func (client *Client) GetBastionHostCertificationWithContext(ctx context.Context, request *GetBastionHostCertificationRequest, runtime *dara.RuntimeOptions) (_result *GetBastionHostCertificationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetBastionHostCertification"),
+		Version:     dara.String("2025-05-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetBastionHostCertificationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Iterate Model
+//
+// Description:
+//
+// ## Request Description
+//
+// This API is used to delete a specified customer model from the system. When calling, you must provide the `customerModuleId` parameter, which identifies the specific model to be deleted.
+//
+// - **Note**: The deletion operation is irreversible, please use with caution.
 //
 // @param request - IterateModelRequest
 //
@@ -877,7 +1413,7 @@ func (client *Client) IterateModelWithContext(ctx context.Context, request *Iter
 
 // Summary:
 //
-// 下线模型
+// # Offline Model
 //
 // @param request - OfflineModelRequest
 //
@@ -921,15 +1457,15 @@ func (client *Client) OfflineModelWithContext(ctx context.Context, request *Offl
 
 // Summary:
 //
-// 上线模型
+// # Online Model
 //
 // Description:
 //
-// ## 请求说明
+// ## Request Description
 //
-// 本API用于从系统中删除指定的客户模型。调用时必须提供`customerModuleId`参数，该参数标识了要删除的具体模型。
+// This API is used to delete a specified customer model from the system. When calling, you must provide the `customerModuleId` parameter, which identifies the specific model to be deleted.
 //
-// - **注意**：删除操作不可逆，请谨慎使用。
+// - **Note**: Deletion is irreversible, please use with caution.
 //
 // @param request - OnlineModelRequest
 //
@@ -973,17 +1509,17 @@ func (client *Client) OnlineModelWithContext(ctx context.Context, request *Onlin
 
 // Summary:
 //
-// 解析表达式参数
+// # Parse Expression Parameters
 //
 // Description:
 //
-// ## 请求说明
+// ## Request Description
 //
-// - 该接口用于查询系统中所有可用的特征模板。
+// - This interface is used to query all available feature templates in the system.
 //
-// - 请求方式为 GET，无需提供额外参数。
+// - The request method is GET, and no additional parameters are required.
 //
-// - 返回结果包含多个特征模板选项，每个选项包括标签（label）和值（value）。
+// - The returned result includes multiple feature template options, each of which includes a label (label) and a value (value).
 //
 // @param request - ParseExpressionParametersRequest
 //
@@ -1027,7 +1563,7 @@ func (client *Client) ParseExpressionParametersWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 预发布模型
+// # Pre-release Model
 //
 // @param request - PrepublishModelRequest
 //
@@ -1061,6 +1597,62 @@ func (client *Client) PrepublishModelWithContext(ctx context.Context, request *P
 		BodyType:    dara.String("json"),
 	}
 	_result = &PrepublishModelResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Request to Sync Model Files
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 本接口用于客户首次创建建模项目。
+//
+// - `projectName` 是必填项，长度不超过50个字符。
+//
+// - `remark` 和 `instanceSpec` 为可选项，其中 `remark` 长度不超过200个字符。
+//
+// - `instanceSpec` 可选值包括 `SECURE_ENV_LITE` 和 `SECURE_ENV_PRO`。
+//
+// @param request - RequestModelFileSyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RequestModelFileSyncResponse
+func (client *Client) RequestModelFileSyncWithContext(ctx context.Context, request *RequestModelFileSyncRequest, runtime *dara.RuntimeOptions) (_result *RequestModelFileSyncResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RequestModelFileSync"),
+		Version:     dara.String("2025-05-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RequestModelFileSyncResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1123,17 +1715,17 @@ func (client *Client) RollbackModelWithContext(ctx context.Context, request *Rol
 
 // Summary:
 //
-// 预发布测试模型
+// # Pre-release Model Testing
 //
 // Description:
 //
-// ## 请求说明
+// ## Request Description
 //
-// - 该接口用于查询系统中所有可用的特征模板。
+// - This interface is used to query all available feature templates in the system.
 //
-// - 请求方式为 GET，无需提供额外参数。
+// - The request method is GET, and no additional parameters are required.
 //
-// - 返回结果包含多个特征模板选项，每个选项包括标签（label）和值（value）。
+// - The returned result includes multiple feature template options, each of which includes a label (label) and a value (value).
 //
 // @param request - TestModelRequest
 //
@@ -1177,17 +1769,17 @@ func (client *Client) TestModelWithContext(ctx context.Context, request *TestMod
 
 // Summary:
 //
-// 预发布测试模型
+// # Pre-release Test Model
 //
 // Description:
 //
-// ## 请求说明
+// ## Request Description
 //
-// - 该接口用于查询系统中所有可用的特征模板。
+// - This interface is used to query all available feature templates in the system.
 //
-// - 请求方式为 GET，无需提供额外参数。
+// - The request method is GET, and no additional parameters are required.
 //
-// - 返回结果包含多个特征模板选项，每个选项包括标签（label）和值（value）。
+// - The returned result includes multiple feature template options, each of which includes a label (label) and a value (value).
 //
 // @param request - TestPreModelRequest
 //
@@ -1231,17 +1823,17 @@ func (client *Client) TestPreModelWithContext(ctx context.Context, request *Test
 
 // Summary:
 //
-// 测试表达式
+// # Test Expression
 //
 // Description:
 //
-// ## 请求说明
+// ## Request Description
 //
-// - 该接口用于查询系统中所有可用的特征模板。
+// - This interface is used to query all available feature templates in the system.
 //
-// - 请求方式为 GET，无需提供额外参数。
+// - The request method is GET, and no additional parameters are required.
 //
-// - 返回结果包含多个特征模板选项，每个选项包括标签（label）和值（value）。
+// - The returned result includes multiple feature template options, each of which includes a label (label) and a value (value).
 //
 // @param request - TestProcessExpressionRequest
 //

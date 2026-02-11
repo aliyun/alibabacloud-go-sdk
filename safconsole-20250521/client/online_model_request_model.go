@@ -14,6 +14,8 @@ type iOnlineModelRequest interface {
 }
 
 type OnlineModelRequest struct {
+	// Customer model ID
+	//
 	// example:
 	//
 	// 456

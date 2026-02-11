@@ -20,18 +20,26 @@ type iDescribeUserModelListRequest interface {
 }
 
 type DescribeUserModelListRequest struct {
+	// Authorization type.
+	//
 	// example:
 	//
 	// READ
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Model name.
+	//
 	// example:
 	//
 	// StudyX
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Pagination parameter: number of items per page, default value 10.
+	//
 	// example:
 	//
 	// 10

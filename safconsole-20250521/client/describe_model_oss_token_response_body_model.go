@@ -34,43 +34,68 @@ type iDescribeModelOssTokenResponseBody interface {
 }
 
 type DescribeModelOssTokenResponseBody struct {
+	// AccessKeyId for uploading files to OSS.
+	//
 	// example:
 	//
 	// Lxxxxxxxxxxxxxxxxxxxxx
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	// Status code. A return value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// OSS domain name.
+	//
 	// example:
 	//
 	// https://safxxxxxxxxx.aliyuncs.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Key required for file upload.
+	//
 	// example:
 	//
 	// saf/xxxxxx/xxxxxx
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Authorization policy for security group control rules.
+	//
 	// example:
 	//
 	// eyJleHBpcmF0aW9uIjoiMxxxxxxxxxxxxxxxxxxxxxxxxxxx
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 4A91D2D1-AEC9-1658-ABCE-5A39DE66A5C2
-	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned result.
 	ResultObject *DescribeModelOssTokenResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+	// OSS signature.
+	//
 	// example:
 	//
 	// lUxxxxxxxxxxxxxxxxxxxx
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	// Indicates whether the call was successful.
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Temporary authorization token for OSS.
+	//
 	// example:
 	//
 	// smxxxxxxxxxxx
@@ -194,26 +219,38 @@ func (s *DescribeModelOssTokenResponseBody) Validate() error {
 }
 
 type DescribeModelOssTokenResponseBodyResultObject struct {
+	// AccessKeyId for uploading files to OSS.
+	//
 	// example:
 	//
 	// Lxxxxxxxxxxxxxxxxxxxxx
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	// OSS domain name.
+	//
 	// example:
 	//
 	// https://safxxxxxxxxx.aliyuncs.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// Key required for file upload.
+	//
 	// example:
 	//
 	// saf/xxxxxx/xxxxxx
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Authorization policy for security group control rules.
+	//
 	// example:
 	//
 	// eyJleHBpcmF0aW9uIjoiMxxxxxxxxxxxxxxxxxxxxxxxxxxx
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// OSS signature.
+	//
 	// example:
 	//
 	// lUxxxxxxxxxxxxxxxxxxxx
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	// Temporary authorization token for OSS.
+	//
 	// example:
 	//
 	// smxxxxxxxxxxx

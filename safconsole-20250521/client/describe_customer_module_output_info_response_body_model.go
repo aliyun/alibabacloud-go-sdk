@@ -24,23 +24,38 @@ type iDescribeCustomerModuleOutputInfoResponseBody interface {
 }
 
 type DescribeCustomerModuleOutputInfoResponseBody struct {
+	// Status code. A return value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 055f1546-f465-4c92-a2da-bfb86abe6f56
-	RequestId    *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned result.
 	ResultObject *DescribeCustomerModuleOutputInfoResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+	// Indicates whether the request was successful, with possible values as follows:
+	//
+	// - true, indicating the request was successful
+	//
+	// - false, indicating the request failed
+	//
 	// example:
 	//
 	// true
@@ -119,14 +134,20 @@ func (s *DescribeCustomerModuleOutputInfoResponseBody) Validate() error {
 }
 
 type DescribeCustomerModuleOutputInfoResponseBodyResultObject struct {
+	// Number of decimal places for the output.
+	//
 	// example:
 	//
 	// 2
 	FinalScoreFormat *string `json:"FinalScoreFormat,omitempty" xml:"FinalScoreFormat,omitempty"`
+	// Score processing logic.
+	//
 	// example:
 	//
 	// score
 	ProcessExpression *string `json:"ProcessExpression,omitempty" xml:"ProcessExpression,omitempty"`
+	// Test file.
+	//
 	// example:
 	//
 	// customer/xxxxxxxxx/xxxxxxxx.pmml

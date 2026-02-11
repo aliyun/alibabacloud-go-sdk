@@ -22,22 +22,36 @@ type iIterateModelResponseBody interface {
 }
 
 type IterateModelResponseBody struct {
+	// Status code. A return value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 4A91D2D1-AEC9-1658-ABCE-5A39DE66A5C2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Result object.
+	//
 	// example:
 	//
 	// true
 	ResultObject *string `json:"ResultObject,omitempty" xml:"ResultObject,omitempty"`
+	// Whether the call was successful.
+	//
+	// - **true**: Call succeeded.
+	//
+	// - **false**: Call failed.
+	//
 	// example:
 	//
 	// true

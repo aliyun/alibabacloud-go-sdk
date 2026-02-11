@@ -14,6 +14,8 @@ type iTestModelRequest interface {
 }
 
 type TestModelRequest struct {
+	// Customer model ID
+	//
 	// example:
 	//
 	// 456

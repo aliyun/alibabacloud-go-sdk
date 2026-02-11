@@ -14,6 +14,8 @@ type iDescribeCustomerModuleMetaInfoRequest interface {
 }
 
 type DescribeCustomerModuleMetaInfoRequest struct {
+	// Customer model ID
+	//
 	// example:
 	//
 	// 456

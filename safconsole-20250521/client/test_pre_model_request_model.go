@@ -14,6 +14,8 @@ type iTestPreModelRequest interface {
 }
 
 type TestPreModelRequest struct {
+	// Customer model ID
+	//
 	// example:
 	//
 	// 456

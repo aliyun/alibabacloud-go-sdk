@@ -14,6 +14,8 @@ type iPrepublishModelRequest interface {
 }
 
 type PrepublishModelRequest struct {
+	// Customer model ID
+	//
 	// example:
 	//
 	// 456

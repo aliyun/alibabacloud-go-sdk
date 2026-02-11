@@ -14,6 +14,8 @@ type iDuplicateModelRequest interface {
 }
 
 type DuplicateModelRequest struct {
+	// Customer model ID
+	//
 	// example:
 	//
 	// 456

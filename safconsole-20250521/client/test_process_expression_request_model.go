@@ -16,10 +16,14 @@ type iTestProcessExpressionRequest interface {
 }
 
 type TestProcessExpressionRequest struct {
+	// Expression.
+	//
 	// example:
 	//
 	// score
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// Parameter list.
+	//
 	// example:
 	//
 	// {"score": "1"}

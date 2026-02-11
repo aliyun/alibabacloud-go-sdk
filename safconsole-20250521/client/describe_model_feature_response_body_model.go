@@ -22,19 +22,32 @@ type iDescribeModelFeatureResponseBody interface {
 }
 
 type DescribeModelFeatureResponseBody struct {
+	// Status code. A return value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 4A91D2D1-AEC9-1658-ABCE-5A39DE66A5C2
-	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return result.
 	ResultObject []*DescribeModelFeatureResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Repeated"`
+	// Whether the call was successful.
+	//
+	// - **true**: Call succeeded.
+	//
+	// - **false**: Call failed.
+	//
 	// example:
 	//
 	// true
@@ -108,18 +121,26 @@ func (s *DescribeModelFeatureResponseBody) Validate() error {
 }
 
 type DescribeModelFeatureResponseBodyResultObject struct {
+	// Default value of the feature.
+	//
 	// example:
 	//
 	// 0.1
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// Feature mapping name.
+	//
 	// example:
 	//
 	// f1
 	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// Feature type.
+	//
 	// example:
 	//
 	// double
 	FeatureType *string `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	// Feature name.
+	//
 	// example:
 	//
 	// f1

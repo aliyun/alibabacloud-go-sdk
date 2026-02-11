@@ -14,6 +14,8 @@ type iIterateModelRequest interface {
 }
 
 type IterateModelRequest struct {
+	// Customer model ID
+	//
 	// example:
 	//
 	// 456

@@ -16,10 +16,14 @@ type iDescribeServiceAndSceneRequest interface {
 }
 
 type DescribeServiceAndSceneRequest struct {
+	// Authorization type.
+	//
 	// example:
 	//
 	// READ
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// Customer model ID
+	//
 	// example:
 	//
 	// 456

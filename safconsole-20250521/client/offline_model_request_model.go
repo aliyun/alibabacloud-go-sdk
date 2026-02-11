@@ -14,6 +14,8 @@ type iOfflineModelRequest interface {
 }
 
 type OfflineModelRequest struct {
+	// Customer model ID
+	//
 	// example:
 	//
 	// 456

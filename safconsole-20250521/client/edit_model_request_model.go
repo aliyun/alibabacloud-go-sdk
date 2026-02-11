@@ -14,6 +14,8 @@ type iEditModelRequest interface {
 }
 
 type EditModelRequest struct {
+  // Customer model ID
+  // 
   // example:
   // 
   // 456

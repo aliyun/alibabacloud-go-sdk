@@ -14,6 +14,8 @@ type iDescribeFeatureOptionRequest interface {
 }
 
 type DescribeFeatureOptionRequest struct {
+	// Feature template.
+	//
 	// This parameter is required.
 	//
 	// example:

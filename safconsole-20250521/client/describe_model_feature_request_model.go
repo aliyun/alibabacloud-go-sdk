@@ -16,10 +16,14 @@ type iDescribeModelFeatureRequest interface {
 }
 
 type DescribeModelFeatureRequest struct {
+	// Customer model ID
+	//
 	// example:
 	//
 	// 456
 	CustomerModuleId *int32 `json:"CustomerModuleId,omitempty" xml:"CustomerModuleId,omitempty"`
+	// Feature template.
+	//
 	// example:
 	//
 	// FINANCE_51

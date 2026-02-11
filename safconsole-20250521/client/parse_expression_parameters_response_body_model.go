@@ -22,19 +22,32 @@ type iParseExpressionParametersResponseBody interface {
 }
 
 type ParseExpressionParametersResponseBody struct {
+	// Status code. A return of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 4A91D2D1-AEC9-1658-ABCE-5A39DE66A5C2
-	RequestId    *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return result.
 	ResultObject *ParseExpressionParametersResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+	// Indicates whether the call was successful.
+	//
+	// - **true**: Call succeeded.
+	//
+	// - **false**: Call failed.
+	//
 	// example:
 	//
 	// true
@@ -104,6 +117,7 @@ func (s *ParseExpressionParametersResponseBody) Validate() error {
 }
 
 type ParseExpressionParametersResponseBodyResultObject struct {
+	// List of parameters.
 	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 }
 
