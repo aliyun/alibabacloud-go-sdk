@@ -67,6 +67,8 @@ type iListJobsShrinkRequest interface {
 	GetStatus() *string
 	SetTagsShrink(v string) *ListJobsShrinkRequest
 	GetTagsShrink() *string
+	SetTemplateId(v string) *ListJobsShrinkRequest
+	GetTemplateId() *string
 	SetTimeRangeField(v string) *ListJobsShrinkRequest
 	GetTimeRangeField() *string
 	SetUserCommandSearch(v string) *ListJobsShrinkRequest
@@ -278,6 +280,7 @@ type ListJobsShrinkRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tags.
 	TagsShrink        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TemplateId        *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TimeRangeField    *string `json:"TimeRangeField,omitempty" xml:"TimeRangeField,omitempty"`
 	UserCommandSearch *string `json:"UserCommandSearch,omitempty" xml:"UserCommandSearch,omitempty"`
 	// The user ID used to filter jobs.
@@ -422,6 +425,10 @@ func (s *ListJobsShrinkRequest) GetStatus() *string {
 
 func (s *ListJobsShrinkRequest) GetTagsShrink() *string {
 	return s.TagsShrink
+}
+
+func (s *ListJobsShrinkRequest) GetTemplateId() *string {
+	return s.TemplateId
 }
 
 func (s *ListJobsShrinkRequest) GetTimeRangeField() *string {
@@ -586,6 +593,11 @@ func (s *ListJobsShrinkRequest) SetStatus(v string) *ListJobsShrinkRequest {
 
 func (s *ListJobsShrinkRequest) SetTagsShrink(v string) *ListJobsShrinkRequest {
 	s.TagsShrink = &v
+	return s
+}
+
+func (s *ListJobsShrinkRequest) SetTemplateId(v string) *ListJobsShrinkRequest {
+	s.TemplateId = &v
 	return s
 }
 

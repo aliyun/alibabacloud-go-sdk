@@ -43,6 +43,10 @@ type iCreateJobRequest interface {
 	GetSettings() *JobSettings
 	SetSuccessPolicy(v string) *CreateJobRequest
 	GetSuccessPolicy() *string
+	SetTemplateId(v string) *CreateJobRequest
+	GetTemplateId() *string
+	SetTemplateVersion(v int32) *CreateJobRequest
+	GetTemplateVersion() *int32
 	SetThirdpartyLibDir(v string) *CreateJobRequest
 	GetThirdpartyLibDir() *string
 	SetThirdpartyLibs(v []*string) *CreateJobRequest
@@ -187,6 +191,18 @@ type CreateJobRequest struct {
 	//
 	// AllWorkers
 	SuccessPolicy *string `json:"SuccessPolicy,omitempty" xml:"SuccessPolicy,omitempty"`
+	// 任务模板的 ID。指定后将基于模板创建作业，作业参数需符合模板约束规则。
+	//
+	// example:
+	//
+	// tplxxxxxxxxxxxxxxxx
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// 指定使用的模板版本号，不传则使用模板默认版本。
+	//
+	// example:
+	//
+	// 1
+	TemplateVersion *int32 `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 	// The folder in which the third-party Python library file requirements.txt is stored. Before the startup command specified by the UserCommand parameter is run on each node, DLC fetches the requirements.txt file from the folder and runs `pip install -r` to install the required package and library.
 	//
 	// example:
@@ -287,6 +303,14 @@ func (s *CreateJobRequest) GetSettings() *JobSettings {
 
 func (s *CreateJobRequest) GetSuccessPolicy() *string {
 	return s.SuccessPolicy
+}
+
+func (s *CreateJobRequest) GetTemplateId() *string {
+	return s.TemplateId
+}
+
+func (s *CreateJobRequest) GetTemplateVersion() *int32 {
+	return s.TemplateVersion
 }
 
 func (s *CreateJobRequest) GetThirdpartyLibDir() *string {
@@ -391,6 +415,16 @@ func (s *CreateJobRequest) SetSettings(v *JobSettings) *CreateJobRequest {
 
 func (s *CreateJobRequest) SetSuccessPolicy(v string) *CreateJobRequest {
 	s.SuccessPolicy = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetTemplateId(v string) *CreateJobRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetTemplateVersion(v int32) *CreateJobRequest {
+	s.TemplateVersion = &v
 	return s
 }
 

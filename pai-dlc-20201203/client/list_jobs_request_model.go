@@ -67,6 +67,8 @@ type iListJobsRequest interface {
 	GetStatus() *string
 	SetTags(v map[string]*string) *ListJobsRequest
 	GetTags() map[string]*string
+	SetTemplateId(v string) *ListJobsRequest
+	GetTemplateId() *string
 	SetTimeRangeField(v string) *ListJobsRequest
 	GetTimeRangeField() *string
 	SetUserCommandSearch(v string) *ListJobsRequest
@@ -278,6 +280,7 @@ type ListJobsRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tags.
 	Tags              map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TemplateId        *string            `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TimeRangeField    *string            `json:"TimeRangeField,omitempty" xml:"TimeRangeField,omitempty"`
 	UserCommandSearch *string            `json:"UserCommandSearch,omitempty" xml:"UserCommandSearch,omitempty"`
 	// The user ID used to filter jobs.
@@ -422,6 +425,10 @@ func (s *ListJobsRequest) GetStatus() *string {
 
 func (s *ListJobsRequest) GetTags() map[string]*string {
 	return s.Tags
+}
+
+func (s *ListJobsRequest) GetTemplateId() *string {
+	return s.TemplateId
 }
 
 func (s *ListJobsRequest) GetTimeRangeField() *string {
@@ -586,6 +593,11 @@ func (s *ListJobsRequest) SetStatus(v string) *ListJobsRequest {
 
 func (s *ListJobsRequest) SetTags(v map[string]*string) *ListJobsRequest {
 	s.Tags = v
+	return s
+}
+
+func (s *ListJobsRequest) SetTemplateId(v string) *ListJobsRequest {
+	s.TemplateId = &v
 	return s
 }
 

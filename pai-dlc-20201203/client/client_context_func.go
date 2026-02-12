@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Creates a job that runs in a cluster. You can configure the data source, code source, startup command, and compute resources of each node on which a job runs.
+// Creates a job that runs in a cluster. You can configure the data source, code source, startup command, and computing resources of each node on which a job runs.
 //
 // Description:
 //
@@ -96,6 +96,14 @@ func (client *Client) CreateJobWithContext(ctx context.Context, request *CreateJ
 
 	if !dara.IsNil(request.SuccessPolicy) {
 		body["SuccessPolicy"] = request.SuccessPolicy
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.TemplateVersion) {
+		body["TemplateVersion"] = request.TemplateVersion
 	}
 
 	if !dara.IsNil(request.ThirdpartyLibDir) {
@@ -1262,6 +1270,10 @@ func (client *Client) ListJobsWithContext(ctx context.Context, tmpReq *ListJobsR
 
 	if !dara.IsNil(request.TagsShrink) {
 		query["Tags"] = request.TagsShrink
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
 	}
 
 	if !dara.IsNil(request.TimeRangeField) {

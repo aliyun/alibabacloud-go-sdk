@@ -99,6 +99,10 @@ type iJobItem interface {
 	GetSubStatus() *string
 	SetSystemEnvs(v map[string]*string) *JobItem
 	GetSystemEnvs() map[string]*string
+	SetTemplateId(v string) *JobItem
+	GetTemplateId() *string
+	SetTemplateName(v string) *JobItem
+	GetTemplateName() *string
 	SetTenantId(v string) *JobItem
 	GetTenantId() *string
 	SetThirdpartyLibDir(v string) *JobItem
@@ -372,7 +376,9 @@ type JobItem struct {
 	// Restarting
 	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
 	// The system environment variables configured.
-	SystemEnvs map[string]*string `json:"SystemEnvs,omitempty" xml:"SystemEnvs,omitempty"`
+	SystemEnvs   map[string]*string `json:"SystemEnvs,omitempty" xml:"SystemEnvs,omitempty"`
+	TemplateId   *string            `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName *string            `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The tenant ID.
 	//
 	// example:
@@ -629,6 +635,14 @@ func (s *JobItem) GetSubStatus() *string {
 
 func (s *JobItem) GetSystemEnvs() map[string]*string {
 	return s.SystemEnvs
+}
+
+func (s *JobItem) GetTemplateId() *string {
+	return s.TemplateId
+}
+
+func (s *JobItem) GetTemplateName() *string {
+	return s.TemplateName
 }
 
 func (s *JobItem) GetTenantId() *string {
@@ -901,6 +915,16 @@ func (s *JobItem) SetSubStatus(v string) *JobItem {
 
 func (s *JobItem) SetSystemEnvs(v map[string]*string) *JobItem {
 	s.SystemEnvs = v
+	return s
+}
+
+func (s *JobItem) SetTemplateId(v string) *JobItem {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *JobItem) SetTemplateName(v string) *JobItem {
+	s.TemplateName = &v
 	return s
 }
 
