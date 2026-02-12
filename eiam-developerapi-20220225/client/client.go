@@ -2215,6 +2215,81 @@ func (client *Client) ObtainCloudAccountRoleAccessCredential(instanceId *string,
 
 // Summary:
 //
+// 获取凭据明文。
+//
+// @param request - ObtainCredentialRequest
+//
+// @param headers - ObtainCredentialHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ObtainCredentialResponse
+func (client *Client) ObtainCredentialWithOptions(instanceId *string, request *ObtainCredentialRequest, headers *ObtainCredentialHeaders, runtime *dara.RuntimeOptions) (_result *ObtainCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CredentialIdentifier) {
+		query["credentialIdentifier"] = request.CredentialIdentifier
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Authorization) {
+		realHeaders["Authorization"] = dara.String(dara.ToString(dara.StringValue(headers.Authorization)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ObtainCredential"),
+		Version:     dara.String("2022-02-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/credentials/_/actions/obtain"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("Anonymous"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ObtainCredentialResponse{}
+	_body, _err := client.DoROARequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取凭据明文。
+//
+// @param request - ObtainCredentialRequest
+//
+// @return ObtainCredentialResponse
+func (client *Client) ObtainCredential(instanceId *string, request *ObtainCredentialRequest) (_result *ObtainCredentialResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &ObtainCredentialHeaders{}
+	_result = &ObtainCredentialResponse{}
+	_body, _err := client.ObtainCredentialWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies information about an Employee Identity and Access Management (EIAM) group.
 //
 // @param request - PatchGroupRequest
