@@ -1,3 +1,6 @@
+2026-02-12 Version: v5.3.8
+- Generated golang 2025-09-10 for AgentRun.
+
 2026-02-11 Version: v5.3.7
 - Update API ListAgentRuntimes: add request parameters workspaceId.
 

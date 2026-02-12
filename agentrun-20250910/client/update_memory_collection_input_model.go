@@ -13,6 +13,10 @@ type iUpdateMemoryCollectionInput interface {
 	GetDescription() *string
 	SetEmbedderConfig(v *EmbedderConfig) *UpdateMemoryCollectionInput
 	GetEmbedderConfig() *EmbedderConfig
+	SetEnableConversationHistory(v bool) *UpdateMemoryCollectionInput
+	GetEnableConversationHistory() *bool
+	SetEnableConversationState(v bool) *UpdateMemoryCollectionInput
+	GetEnableConversationState() *bool
 	SetExecutionRoleArn(v string) *UpdateMemoryCollectionInput
 	GetExecutionRoleArn() *string
 	SetLlmConfig(v *LLMConfig) *UpdateMemoryCollectionInput
@@ -24,12 +28,14 @@ type iUpdateMemoryCollectionInput interface {
 }
 
 type UpdateMemoryCollectionInput struct {
-	Description          *string               `json:"description,omitempty" xml:"description,omitempty"`
-	EmbedderConfig       *EmbedderConfig       `json:"embedderConfig,omitempty" xml:"embedderConfig,omitempty"`
-	ExecutionRoleArn     *string               `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
-	LlmConfig            *LLMConfig            `json:"llmConfig,omitempty" xml:"llmConfig,omitempty"`
-	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
-	VectorStoreConfig    *VectorStoreConfig    `json:"vectorStoreConfig,omitempty" xml:"vectorStoreConfig,omitempty"`
+	Description               *string               `json:"description,omitempty" xml:"description,omitempty"`
+	EmbedderConfig            *EmbedderConfig       `json:"embedderConfig,omitempty" xml:"embedderConfig,omitempty"`
+	EnableConversationHistory *bool                 `json:"enableConversationHistory,omitempty" xml:"enableConversationHistory,omitempty"`
+	EnableConversationState   *bool                 `json:"enableConversationState,omitempty" xml:"enableConversationState,omitempty"`
+	ExecutionRoleArn          *string               `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
+	LlmConfig                 *LLMConfig            `json:"llmConfig,omitempty" xml:"llmConfig,omitempty"`
+	NetworkConfiguration      *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
+	VectorStoreConfig         *VectorStoreConfig    `json:"vectorStoreConfig,omitempty" xml:"vectorStoreConfig,omitempty"`
 }
 
 func (s UpdateMemoryCollectionInput) String() string {
@@ -46,6 +52,14 @@ func (s *UpdateMemoryCollectionInput) GetDescription() *string {
 
 func (s *UpdateMemoryCollectionInput) GetEmbedderConfig() *EmbedderConfig {
 	return s.EmbedderConfig
+}
+
+func (s *UpdateMemoryCollectionInput) GetEnableConversationHistory() *bool {
+	return s.EnableConversationHistory
+}
+
+func (s *UpdateMemoryCollectionInput) GetEnableConversationState() *bool {
+	return s.EnableConversationState
 }
 
 func (s *UpdateMemoryCollectionInput) GetExecutionRoleArn() *string {
@@ -71,6 +85,16 @@ func (s *UpdateMemoryCollectionInput) SetDescription(v string) *UpdateMemoryColl
 
 func (s *UpdateMemoryCollectionInput) SetEmbedderConfig(v *EmbedderConfig) *UpdateMemoryCollectionInput {
 	s.EmbedderConfig = v
+	return s
+}
+
+func (s *UpdateMemoryCollectionInput) SetEnableConversationHistory(v bool) *UpdateMemoryCollectionInput {
+	s.EnableConversationHistory = &v
+	return s
+}
+
+func (s *UpdateMemoryCollectionInput) SetEnableConversationState(v bool) *UpdateMemoryCollectionInput {
+	s.EnableConversationState = &v
 	return s
 }
 

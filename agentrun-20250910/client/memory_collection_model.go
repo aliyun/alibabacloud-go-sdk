@@ -15,6 +15,10 @@ type iMemoryCollection interface {
 	GetDescription() *string
 	SetEmbedderConfig(v *EmbedderConfig) *MemoryCollection
 	GetEmbedderConfig() *EmbedderConfig
+	SetEnableConversationHistory(v bool) *MemoryCollection
+	GetEnableConversationHistory() *bool
+	SetEnableConversationState(v bool) *MemoryCollection
+	GetEnableConversationState() *bool
 	SetExecutionRoleArn(v string) *MemoryCollection
 	GetExecutionRoleArn() *string
 	SetLastUpdatedAt(v string) *MemoryCollection
@@ -32,16 +36,18 @@ type iMemoryCollection interface {
 }
 
 type MemoryCollection struct {
-	CreatedAt            *string               `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	Description          *string               `json:"description,omitempty" xml:"description,omitempty"`
-	EmbedderConfig       *EmbedderConfig       `json:"embedderConfig,omitempty" xml:"embedderConfig,omitempty"`
-	ExecutionRoleArn     *string               `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
-	LastUpdatedAt        *string               `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
-	LlmConfig            *LLMConfig            `json:"llmConfig,omitempty" xml:"llmConfig,omitempty"`
-	MemoryCollectionId   *string               `json:"memoryCollectionId,omitempty" xml:"memoryCollectionId,omitempty"`
-	MemoryCollectionName *string               `json:"memoryCollectionName,omitempty" xml:"memoryCollectionName,omitempty"`
-	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
-	VectorStoreConfig    *VectorStoreConfig    `json:"vectorStoreConfig,omitempty" xml:"vectorStoreConfig,omitempty"`
+	CreatedAt                 *string               `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Description               *string               `json:"description,omitempty" xml:"description,omitempty"`
+	EmbedderConfig            *EmbedderConfig       `json:"embedderConfig,omitempty" xml:"embedderConfig,omitempty"`
+	EnableConversationHistory *bool                 `json:"enableConversationHistory,omitempty" xml:"enableConversationHistory,omitempty"`
+	EnableConversationState   *bool                 `json:"enableConversationState,omitempty" xml:"enableConversationState,omitempty"`
+	ExecutionRoleArn          *string               `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
+	LastUpdatedAt             *string               `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
+	LlmConfig                 *LLMConfig            `json:"llmConfig,omitempty" xml:"llmConfig,omitempty"`
+	MemoryCollectionId        *string               `json:"memoryCollectionId,omitempty" xml:"memoryCollectionId,omitempty"`
+	MemoryCollectionName      *string               `json:"memoryCollectionName,omitempty" xml:"memoryCollectionName,omitempty"`
+	NetworkConfiguration      *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
+	VectorStoreConfig         *VectorStoreConfig    `json:"vectorStoreConfig,omitempty" xml:"vectorStoreConfig,omitempty"`
 }
 
 func (s MemoryCollection) String() string {
@@ -62,6 +68,14 @@ func (s *MemoryCollection) GetDescription() *string {
 
 func (s *MemoryCollection) GetEmbedderConfig() *EmbedderConfig {
 	return s.EmbedderConfig
+}
+
+func (s *MemoryCollection) GetEnableConversationHistory() *bool {
+	return s.EnableConversationHistory
+}
+
+func (s *MemoryCollection) GetEnableConversationState() *bool {
+	return s.EnableConversationState
 }
 
 func (s *MemoryCollection) GetExecutionRoleArn() *string {
@@ -104,6 +118,16 @@ func (s *MemoryCollection) SetDescription(v string) *MemoryCollection {
 
 func (s *MemoryCollection) SetEmbedderConfig(v *EmbedderConfig) *MemoryCollection {
 	s.EmbedderConfig = v
+	return s
+}
+
+func (s *MemoryCollection) SetEnableConversationHistory(v bool) *MemoryCollection {
+	s.EnableConversationHistory = &v
+	return s
+}
+
+func (s *MemoryCollection) SetEnableConversationState(v bool) *MemoryCollection {
+	s.EnableConversationState = &v
 	return s
 }
 
