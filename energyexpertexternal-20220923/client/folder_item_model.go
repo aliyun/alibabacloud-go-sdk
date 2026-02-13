@@ -44,22 +44,69 @@ type iFolderItem interface {
 }
 
 type FolderItem struct {
-	CurrentLevel      *int32        `json:"currentLevel,omitempty" xml:"currentLevel,omitempty"`
-	DocCount          *int32        `json:"docCount,omitempty" xml:"docCount,omitempty"`
-	FolderDefault     *int32        `json:"folderDefault,omitempty" xml:"folderDefault,omitempty"`
-	FolderId          *string       `json:"folderId,omitempty" xml:"folderId,omitempty"`
-	FolderName        *string       `json:"folderName,omitempty" xml:"folderName,omitempty"`
-	FolderNum         *int32        `json:"folderNum,omitempty" xml:"folderNum,omitempty"`
-	OssDomain         *string       `json:"ossDomain,omitempty" xml:"ossDomain,omitempty"`
-	OssPath           *string       `json:"ossPath,omitempty" xml:"ossPath,omitempty"`
-	OssUpdateBy       *string       `json:"ossUpdateBy,omitempty" xml:"ossUpdateBy,omitempty"`
-	ParentFolderId    *string       `json:"parentFolderId,omitempty" xml:"parentFolderId,omitempty"`
-	ResourcePath      *string       `json:"resourcePath,omitempty" xml:"resourcePath,omitempty"`
-	StorageType       *int32        `json:"storageType,omitempty" xml:"storageType,omitempty"`
-	SubFolderList     []*FolderItem `json:"subFolderList,omitempty" xml:"subFolderList,omitempty" type:"Repeated"`
-	SyncParsingStatus *int32        `json:"syncParsingStatus,omitempty" xml:"syncParsingStatus,omitempty"`
-	SyncStatus        *int32        `json:"syncStatus,omitempty" xml:"syncStatus,omitempty"`
-	TaskId            *int64        `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentLevel *int32 `json:"currentLevel,omitempty" xml:"currentLevel,omitempty"`
+	// example:
+	//
+	// 0
+	DocCount *int32 `json:"docCount,omitempty" xml:"docCount,omitempty"`
+	// example:
+	//
+	// 0
+	FolderDefault *int32 `json:"folderDefault,omitempty" xml:"folderDefault,omitempty"`
+	// example:
+	//
+	// 4b648f6d11344f258df876cbdc24dc1f
+	FolderId *string `json:"folderId,omitempty" xml:"folderId,omitempty"`
+	// example:
+	//
+	// “abc” “1234”
+	FolderName *string `json:"folderName,omitempty" xml:"folderName,omitempty"`
+	// example:
+	//
+	// 2
+	FolderNum *int32 `json:"folderNum,omitempty" xml:"folderNum,omitempty"`
+	// example:
+	//
+	// aidoc-energy-api-example.oss-cn-hangzhou.aliyuncs.com
+	OssDomain *string `json:"ossDomain,omitempty" xml:"ossDomain,omitempty"`
+	// example:
+	//
+	// test/
+	OssPath *string `json:"ossPath,omitempty" xml:"ossPath,omitempty"`
+	// example:
+	//
+	// 1696462764375572
+	OssUpdateBy *string `json:"ossUpdateBy,omitempty" xml:"ossUpdateBy,omitempty"`
+	// example:
+	//
+	// "0" ：parent folder is root
+	//
+	// "4b648f6d11344f258df876cbdc24dc1f" ： folderId
+	ParentFolderId *string `json:"parentFolderId,omitempty" xml:"parentFolderId,omitempty"`
+	// example:
+	//
+	// folder/manual/
+	ResourcePath *string `json:"resourcePath,omitempty" xml:"resourcePath,omitempty"`
+	// example:
+	//
+	// 0
+	StorageType   *int32        `json:"storageType,omitempty" xml:"storageType,omitempty"`
+	SubFolderList []*FolderItem `json:"subFolderList,omitempty" xml:"subFolderList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// -1
+	SyncParsingStatus *int32 `json:"syncParsingStatus,omitempty" xml:"syncParsingStatus,omitempty"`
+	// example:
+	//
+	// -1
+	SyncStatus *int32 `json:"syncStatus,omitempty" xml:"syncStatus,omitempty"`
+	// example:
+	//
+	// 0
+	TaskId *int64 `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 
 func (s FolderItem) String() string {

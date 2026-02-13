@@ -18,8 +18,19 @@ type iChatFolderItem interface {
 }
 
 type ChatFolderItem struct {
-	FolderId   *string     `json:"folderId,omitempty" xml:"folderId,omitempty"`
-	FolderName *string     `json:"folderName,omitempty" xml:"folderName,omitempty"`
+	// Folder ID.
+	//
+	// example:
+	//
+	// aaa
+	FolderId *string `json:"folderId,omitempty" xml:"folderId,omitempty"`
+	// Folder name.
+	//
+	// example:
+	//
+	// default folder
+	FolderName *string `json:"folderName,omitempty" xml:"folderName,omitempty"`
+	// Subfolder list.
 	SubFolders []*ChatItem `json:"subFolders,omitempty" xml:"subFolders,omitempty" type:"Repeated"`
 }
 

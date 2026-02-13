@@ -16,7 +16,13 @@ type iChatRefDocPageNum interface {
 }
 
 type ChatRefDocPageNum struct {
-	Num *int32                 `json:"num,omitempty" xml:"num,omitempty"`
+	// Page numbers of content related to Q&A.
+	//
+	// example:
+	//
+	// 123
+	Num *int32 `json:"num,omitempty" xml:"num,omitempty"`
+	// List of location information for related documents.
 	Pos [][]*ChatRefDocPostion `json:"pos,omitempty" xml:"pos,omitempty" type:"Repeated"`
 }
 

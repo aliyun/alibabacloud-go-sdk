@@ -20,12 +20,22 @@ type iContentItem interface {
 }
 
 type ContentItem struct {
+	// The coordinates of the text are in list format.
 	ExtInfo []*ContentItemExtInfo `json:"extInfo,omitempty" xml:"extInfo,omitempty" type:"Repeated"`
+	// Recall confidence
+	//
 	// example:
 	//
 	// 0.45
 	Score *float64 `json:"score,omitempty" xml:"score,omitempty"`
-	Text  *string  `json:"text,omitempty" xml:"text,omitempty"`
+	// Recall text.
+	//
+	// example:
+	//
+	// content
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+	// Text sources: img, table, para.
+	//
 	// example:
 	//
 	// img
@@ -90,32 +100,48 @@ func (s *ContentItem) Validate() error {
 }
 
 type ContentItemExtInfo struct {
+	// Enumeration values for page alignment options: center, left, and right.
+	//
 	// example:
 	//
 	// center
 	Alignment *string `json:"alignment,omitempty" xml:"alignment,omitempty"`
+	// The index of the layout in the text.
+	//
 	// example:
 	//
 	// 8
 	Index *int64 `json:"index,omitempty" xml:"index,omitempty"`
+	// Hierarchy of the layout.
+	//
 	// example:
 	//
 	// 2
-	Level   *int64                   `json:"level,omitempty" xml:"level,omitempty"`
-	PageNum []*int64                 `json:"pageNum,omitempty" xml:"pageNum,omitempty" type:"Repeated"`
-	Pos     []*ContentItemExtInfoPos `json:"pos,omitempty" xml:"pos,omitempty" type:"Repeated"`
+	Level *int64 `json:"level,omitempty" xml:"level,omitempty"`
+	// Page numbers of the layout, which may include multiple page numbers.
+	PageNum []*int64 `json:"pageNum,omitempty" xml:"pageNum,omitempty" type:"Repeated"`
+	// Position information of the layout, in list format.
+	Pos []*ContentItemExtInfoPos `json:"pos,omitempty" xml:"pos,omitempty" type:"Repeated"`
+	// Enumeration values for the layout subtypes: picture, para, none
+	//
 	// example:
 	//
 	// picture
 	SubType *string `json:"subType,omitempty" xml:"subType,omitempty"`
+	// text
+	//
 	// example:
 	//
-	// 版面内容
+	// content
 	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+	// Enumeration values for the layout types: table, figure, text, and none.
+	//
 	// example:
 	//
 	// table
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Unique layout ID.
+	//
 	// example:
 	//
 	// 88c712db271443dd4e3697cb9b5dab3a
@@ -225,10 +251,14 @@ func (s *ContentItemExtInfo) Validate() error {
 }
 
 type ContentItemExtInfoPos struct {
+	// X coordinate of the layout.
+	//
 	// example:
 	//
 	// 1
 	X *int64 `json:"x,omitempty" xml:"x,omitempty"`
+	// Y coordinate of the layout.
+	//
 	// example:
 	//
 	// 2

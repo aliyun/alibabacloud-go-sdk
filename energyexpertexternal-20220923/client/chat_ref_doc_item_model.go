@@ -26,13 +26,40 @@ type iChatRefDocItem interface {
 }
 
 type ChatRefDocItem struct {
-	DocInfo       *ChatRefDocInfo        `json:"docInfo,omitempty" xml:"docInfo,omitempty"`
-	DocName       *string                `json:"docName,omitempty" xml:"docName,omitempty"`
-	DocUrl        *string                `json:"docUrl,omitempty" xml:"docUrl,omitempty"`
-	OriginDocName *string                `json:"originDocName,omitempty" xml:"originDocName,omitempty"`
-	OriginDocUrl  *string                `json:"originDocUrl,omitempty" xml:"originDocUrl,omitempty"`
-	PageNum       []*ChatDocumentPageNum `json:"pageNum,omitempty" xml:"pageNum,omitempty" type:"Repeated"`
-	SourceType    *string                `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// Related document information.
+	DocInfo *ChatRefDocInfo `json:"docInfo,omitempty" xml:"docInfo,omitempty"`
+	// Document name. If the original file is of types like doc, it will be converted to PDF for easier document location. This file should be used for document location information.
+	//
+	// example:
+	//
+	// a.pdf
+	DocName *string `json:"docName,omitempty" xml:"docName,omitempty"`
+	// Document link.
+	//
+	// example:
+	//
+	// https://carbon-aidoc.oss-accelerate.aliyuncs.com/jobs/42dbc7-3a9e-4e18-8939-3fd2d247bd3c/document/97178d94c75941d3b932883c810c5e.pdf
+	DocUrl *string `json:"docUrl,omitempty" xml:"docUrl,omitempty"`
+	// Original document name.
+	//
+	// example:
+	//
+	// a.doc
+	OriginDocName *string `json:"originDocName,omitempty" xml:"originDocName,omitempty"`
+	// Original document link.
+	//
+	// example:
+	//
+	// https://carbon-aidoc.oss-accelerate.aliyuncs.com/jobs/42dbc7-3a9e-4e18-8939-3fd2d247bd3c/document/97178d94c75941d3b932883c810c5e.doc
+	OriginDocUrl *string `json:"originDocUrl,omitempty" xml:"originDocUrl,omitempty"`
+	// Page number information.
+	PageNum []*ChatDocumentPageNum `json:"pageNum,omitempty" xml:"pageNum,omitempty" type:"Repeated"`
+	// Return file type: \\"doc\\" for document files, \\"web\\" for internet information.
+	//
+	// example:
+	//
+	// doc
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 }
 
 func (s ChatRefDocItem) String() string {

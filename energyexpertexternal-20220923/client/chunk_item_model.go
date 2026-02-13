@@ -30,15 +30,33 @@ type iChunkItem interface {
 }
 
 type ChunkItem struct {
-	ChunkContent  *string   `json:"chunkContent,omitempty" xml:"chunkContent,omitempty"`
-	ChunkId       *string   `json:"chunkId,omitempty" xml:"chunkId,omitempty"`
-	DocElsIds     []*string `json:"docElsIds,omitempty" xml:"docElsIds,omitempty" type:"Repeated"`
-	DocId         *string   `json:"docId,omitempty" xml:"docId,omitempty"`
-	DocName       *string   `json:"docName,omitempty" xml:"docName,omitempty"`
-	DocUrl        *string   `json:"docUrl,omitempty" xml:"docUrl,omitempty"`
-	RerankScore   *float32  `json:"rerankScore,omitempty" xml:"rerankScore,omitempty"`
-	Score         *float32  `json:"score,omitempty" xml:"score,omitempty"`
-	WeightedScore *float32  `json:"weightedScore,omitempty" xml:"weightedScore,omitempty"`
+	ChunkContent *string `json:"chunkContent,omitempty" xml:"chunkContent,omitempty"`
+	// example:
+	//
+	// b0x7,b1x10
+	ChunkId   *string   `json:"chunkId,omitempty" xml:"chunkId,omitempty"`
+	DocElsIds []*string `json:"docElsIds,omitempty" xml:"docElsIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// b4620821aea92c062d8d19ad793243669cf9ae2b900e6967dee6ee9f3bf5feed
+	DocId   *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	DocName *string `json:"docName,omitempty" xml:"docName,omitempty"`
+	// example:
+	//
+	// jobs/a4123b3f-9287-4c61-b59d-32e40fcb0a31/document/8b24a2e06669427fb3dc9812374d9d1a.pdf
+	DocUrl *string `json:"docUrl,omitempty" xml:"docUrl,omitempty"`
+	// example:
+	//
+	// 0.5053711
+	RerankScore *float32 `json:"rerankScore,omitempty" xml:"rerankScore,omitempty"`
+	// example:
+	//
+	// 0.4295678
+	Score *float32 `json:"score,omitempty" xml:"score,omitempty"`
+	// example:
+	//
+	// 0.47252458
+	WeightedScore *float32 `json:"weightedScore,omitempty" xml:"weightedScore,omitempty"`
 }
 
 func (s ChunkItem) String() string {

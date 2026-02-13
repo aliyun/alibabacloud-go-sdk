@@ -137,6 +137,399 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 添加AISearch项目中的结构化元素
+//
+// @param request - AISearchResourceAddRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AISearchResourceAddResponse
+func (client *Client) AISearchResourceAddWithOptions(request *AISearchResourceAddRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AISearchResourceAddResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Data) {
+		body["data"] = request.Data
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AISearchResourceAdd"),
+		Version:     dara.String("2022-09-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/aiSearch/resource/add"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AISearchResourceAddResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加AISearch项目中的结构化元素
+//
+// @param request - AISearchResourceAddRequest
+//
+// @return AISearchResourceAddResponse
+func (client *Client) AISearchResourceAdd(request *AISearchResourceAddRequest) (_result *AISearchResourceAddResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AISearchResourceAddResponse{}
+	_body, _err := client.AISearchResourceAddWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除AISearch项目中的结构化元素
+//
+// @param request - AISearchResourceDeleteRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AISearchResourceDeleteResponse
+func (client *Client) AISearchResourceDeleteWithOptions(request *AISearchResourceDeleteRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AISearchResourceDeleteResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ResourceId) {
+		query["resourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AISearchResourceDelete"),
+		Version:     dara.String("2022-09-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/aiSearch/resource/delete"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AISearchResourceDeleteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除AISearch项目中的结构化元素
+//
+// @param request - AISearchResourceDeleteRequest
+//
+// @return AISearchResourceDeleteResponse
+func (client *Client) AISearchResourceDelete(request *AISearchResourceDeleteRequest) (_result *AISearchResourceDeleteResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AISearchResourceDeleteResponse{}
+	_body, _err := client.AISearchResourceDeleteWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查找AISearch资源
+//
+// @param tmpReq - AISearchResourceGetListRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AISearchResourceGetListResponse
+func (client *Client) AISearchResourceGetListWithOptions(tmpReq *AISearchResourceGetListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AISearchResourceGetListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AISearchResourceGetListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ResourceIds) {
+		request.ResourceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceIds, dara.String("resourceIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["currentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ResourceIdsShrink) {
+		query["resourceIds"] = request.ResourceIdsShrink
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AISearchResourceGetList"),
+		Version:     dara.String("2022-09-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/aiSearch/resource/list"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AISearchResourceGetListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查找AISearch资源
+//
+// @param request - AISearchResourceGetListRequest
+//
+// @return AISearchResourceGetListResponse
+func (client *Client) AISearchResourceGetList(request *AISearchResourceGetListRequest) (_result *AISearchResourceGetListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AISearchResourceGetListResponse{}
+	_body, _err := client.AISearchResourceGetListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改AISearch项目中的结构化元素
+//
+// @param request - AISearchResourceUpdateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AISearchResourceUpdateResponse
+func (client *Client) AISearchResourceUpdateWithOptions(request *AISearchResourceUpdateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AISearchResourceUpdateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Data) {
+		body["data"] = request.Data
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		body["resourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AISearchResourceUpdate"),
+		Version:     dara.String("2022-09-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/aiSearch/resource/update"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AISearchResourceUpdateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改AISearch项目中的结构化元素
+//
+// @param request - AISearchResourceUpdateRequest
+//
+// @return AISearchResourceUpdateResponse
+func (client *Client) AISearchResourceUpdate(request *AISearchResourceUpdateRequest) (_result *AISearchResourceUpdateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AISearchResourceUpdateResponse{}
+	_body, _err := client.AISearchResourceUpdateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// aisearch问答接口
+//
+// @param request - AISearchStreamRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AISearchStreamResponse
+func (client *Client) AISearchStreamWithSSE(request *AISearchStreamRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *AISearchStreamResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.aISearchStreamWithSSE_opYieldFunc(_yield, _yieldErr, request, headers, runtime)
+	return
+}
+
+// Summary:
+//
+// aisearch问答接口
+//
+// @param request - AISearchStreamRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AISearchStreamResponse
+func (client *Client) AISearchStreamWithOptions(request *AISearchStreamRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AISearchStreamResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FolderId) {
+		body["folderId"] = request.FolderId
+	}
+
+	if !dara.IsNil(request.Message) {
+		body["message"] = request.Message
+	}
+
+	if !dara.IsNil(request.Question) {
+		body["question"] = request.Question
+	}
+
+	if !dara.IsNil(request.ResourceTypeNeeded) {
+		body["resourceTypeNeeded"] = request.ResourceTypeNeeded
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AISearchStream"),
+		Version:     dara.String("2022-09-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/aiSearch/searchStream"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AISearchStreamResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// aisearch问答接口
+//
+// @param request - AISearchStreamRequest
+//
+// @return AISearchStreamResponse
+func (client *Client) AISearchStream(request *AISearchStreamRequest) (_result *AISearchStreamResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AISearchStreamResponse{}
+	_body, _err := client.AISearchStreamWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建文件夹
 //
 // @param request - AddFolderRequest
@@ -682,7 +1075,7 @@ func (client *Client) Chat(request *ChatRequest) (_result *ChatResponse, _err er
 
 // Summary:
 //
-// Knowledge Base Q&A
+// Knowledge Base Q\\&A
 //
 // Description:
 //
@@ -707,7 +1100,7 @@ func (client *Client) ChatStreamWithSSE(request *ChatStreamRequest, headers map[
 
 // Summary:
 //
-// Knowledge Base Q&A
+// Knowledge Base Q\\&A
 //
 // Description:
 //
@@ -770,7 +1163,7 @@ func (client *Client) ChatStreamWithOptions(request *ChatStreamRequest, headers 
 
 // Summary:
 //
-// Knowledge Base Q&A
+// Knowledge Base Q\\&A
 //
 // Description:
 //
@@ -797,7 +1190,7 @@ func (client *Client) ChatStream(request *ChatStreamRequest) (_result *ChatStrea
 
 // Summary:
 //
-// Create Q&A Window
+// Create Q\\&A Window
 //
 // @param request - CreateChatSessionRequest
 //
@@ -852,7 +1245,7 @@ func (client *Client) CreateChatSessionWithOptions(request *CreateChatSessionReq
 
 // Summary:
 //
-// Create Q&A Window
+// Create Q\\&A Window
 //
 // @param request - CreateChatSessionRequest
 //
@@ -1451,7 +1844,7 @@ func (client *Client) GetCarbonEmissionTrend(request *GetCarbonEmissionTrendRequ
 
 // Summary:
 //
-// Get Q&A folder List
+// Get Q\\&A folder List
 //
 // @param headers - map
 //
@@ -1484,7 +1877,7 @@ func (client *Client) GetChatFolderListWithOptions(headers map[string]*string, r
 
 // Summary:
 //
-// Get Q&A folder List
+// Get Q\\&A folder List
 //
 // @return GetChatFolderListResponse
 func (client *Client) GetChatFolderList() (_result *GetChatFolderListResponse, _err error) {
@@ -1591,7 +1984,7 @@ func (client *Client) GetChatList(request *GetChatListRequest) (_result *GetChat
 
 // Summary:
 //
-// Get Q&A Session List
+// Get Q\\&A Session List
 //
 // @param request - GetChatSessionListRequest
 //
@@ -1650,7 +2043,7 @@ func (client *Client) GetChatSessionListWithOptions(request *GetChatSessionListR
 
 // Summary:
 //
-// Get Q&A Session List
+// Get Q\\&A Session List
 //
 // @param request - GetChatSessionListRequest
 //
@@ -2169,7 +2562,7 @@ func (client *Client) GetDocParsingResult(request *GetDocParsingResultRequest) (
 
 // Summary:
 //
-// [Important] The api is no longer maintained, please use GetDocExtractionResult, GetVLExtractionResult to get the extraction results.
+// null null
 //
 // @param request - GetDocumentAnalyzeResultRequest
 //
@@ -2216,7 +2609,7 @@ func (client *Client) GetDocumentAnalyzeResultWithOptions(request *GetDocumentAn
 
 // Summary:
 //
-// [Important] The api is no longer maintained, please use GetDocExtractionResult, GetVLExtractionResult to get the extraction results.
+// null null
 //
 // @param request - GetDocumentAnalyzeResultRequest
 //
@@ -4081,7 +4474,7 @@ func (client *Client) Retrieve(request *RetrieveRequest) (_result *RetrieveRespo
 
 // Summary:
 //
-// [Important] This api is no longer maintained, please use the Chat api.
+// null null
 //
 // @param request - SendDocumentAskQuestionRequest
 //
@@ -4136,7 +4529,7 @@ func (client *Client) SendDocumentAskQuestionWithOptions(request *SendDocumentAs
 
 // Summary:
 //
-// [Important] This api is no longer maintained, please use the Chat api.
+// null null
 //
 // @param request - SendDocumentAskQuestionRequest
 //
@@ -4679,11 +5072,7 @@ func (client *Client) SubmitDocParsingTaskAdvance(request *SubmitDocParsingTaskA
 
 // Summary:
 //
-// [Important] The api is no longer maintained, please use the following api:
-//
-// Document parsing using SubmitDocParsingTask.
-//
-// Document extraction using SubmitVLExtractionTask, SubmitDocExtractionTask.
+// The document parsing operation is used to extract the key content of a document and extract the key-value information from the document based on the preset key-value template. The document parsing operation is an asynchronous operation. You need to call the asynchronous submission service for document parsing and then call the GetDocumentAnalyzeResult operation to perform result polling. The asynchronous submission service supports two methods: local files and URL files. Call the SubmitDocumentAnalyzeJob operation to upload URL files. Call the SubmitDocumentAnalyzeJobAdvance operation to upload local files.
 //
 // @param request - SubmitDocumentAnalyzeJobRequest
 //
@@ -4746,11 +5135,7 @@ func (client *Client) SubmitDocumentAnalyzeJobWithOptions(request *SubmitDocumen
 
 // Summary:
 //
-// [Important] The api is no longer maintained, please use the following api:
-//
-// Document parsing using SubmitDocParsingTask.
-//
-// Document extraction using SubmitVLExtractionTask, SubmitDocExtractionTask.
+// The document parsing operation is used to extract the key content of a document and extract the key-value information from the document based on the preset key-value template. The document parsing operation is an asynchronous operation. You need to call the asynchronous submission service for document parsing and then call the GetDocumentAnalyzeResult operation to perform result polling. The asynchronous submission service supports two methods: local files and URL files. Call the SubmitDocumentAnalyzeJob operation to upload URL files. Call the SubmitDocumentAnalyzeJobAdvance operation to upload local files.
 //
 // @param request - SubmitDocumentAnalyzeJobRequest
 //
@@ -5100,6 +5485,67 @@ func _postOSSObject_opResponse(response_ *dara.Response) (_result map[string]int
 	return _result, _err
 }
 
+func (client *Client) aISearchStreamWithSSE_opYieldFunc(_yield chan *AISearchStreamResponse, _yieldErr chan error, request *AISearchStreamRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FolderId) {
+		body["folderId"] = request.FolderId
+	}
+
+	if !dara.IsNil(request.Message) {
+		body["message"] = request.Message
+	}
+
+	if !dara.IsNil(request.Question) {
+		body["question"] = request.Question
+	}
+
+	if !dara.IsNil(request.ResourceTypeNeeded) {
+		body["resourceTypeNeeded"] = request.ResourceTypeNeeded
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AISearchStream"),
+		Version:     dara.String("2022-09-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/aiSearch/searchStream"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
+}
+
 func (client *Client) chatStreamWithSSE_opYieldFunc(_yield chan *ChatStreamResponse, _yieldErr chan error, request *ChatStreamRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err := request.Validate()
@@ -5139,18 +5585,20 @@ func (client *Client) chatStreamWithSSE_opYieldFunc(_yield chan *ChatStreamRespo
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }

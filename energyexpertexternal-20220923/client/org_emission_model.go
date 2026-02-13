@@ -30,15 +30,52 @@ type iOrgEmission interface {
 }
 
 type OrgEmission struct {
-	CarbonEmissionData          *float64                         `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
-	ModuleEmissionList          []*OrgEmissionModuleEmissionList `json:"moduleEmissionList,omitempty" xml:"moduleEmissionList,omitempty" type:"Repeated"`
-	Name                        *string                          `json:"name,omitempty" xml:"name,omitempty"`
-	NameKey                     *string                          `json:"nameKey,omitempty" xml:"nameKey,omitempty"`
-	Ratio                       *float64                         `json:"ratio,omitempty" xml:"ratio,omitempty"`
-	SubEmissionItems            []*OrgEmission                   `json:"subEmissionItems,omitempty" xml:"subEmissionItems,omitempty" type:"Repeated"`
-	WeightingCarbonEmissionData *float64                         `json:"weightingCarbonEmissionData,omitempty" xml:"weightingCarbonEmissionData,omitempty"`
-	WeightingProportion         *float64                         `json:"weightingProportion,omitempty" xml:"weightingProportion,omitempty"`
-	WeightingRatio              *float64                         `json:"weightingRatio,omitempty" xml:"weightingRatio,omitempty"`
+	// Carbon Equivalent
+	//
+	// example:
+	//
+	// 1.2
+	CarbonEmissionData *float64 `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
+	// Sub-module carbon emission data
+	ModuleEmissionList []*OrgEmissionModuleEmissionList `json:"moduleEmissionList,omitempty" xml:"moduleEmissionList,omitempty" type:"Repeated"`
+	// The name of the organization.
+	//
+	// example:
+	//
+	// EnterpriseZ
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Enterprise type
+	//
+	// example:
+	//
+	// Z-20240115-4
+	NameKey *string `json:"nameKey,omitempty" xml:"nameKey,omitempty"`
+	// Proportion of carbon emissions
+	//
+	// example:
+	//
+	// 0.2
+	Ratio *float64 `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	// Sub-level data, that is, site data under the organization
+	SubEmissionItems []*OrgEmission `json:"subEmissionItems,omitempty" xml:"subEmissionItems,omitempty" type:"Repeated"`
+	// Calculate carbon emissions by share ratio
+	//
+	// example:
+	//
+	// 2.3
+	WeightingCarbonEmissionData *float64 `json:"weightingCarbonEmissionData,omitempty" xml:"weightingCarbonEmissionData,omitempty"`
+	// Weight ratio
+	//
+	// example:
+	//
+	// 0.3
+	WeightingProportion *float64 `json:"weightingProportion,omitempty" xml:"weightingProportion,omitempty"`
+	// Share ratio Carbon emissions YoY
+	//
+	// example:
+	//
+	// 0.4
+	WeightingRatio *float64 `json:"weightingRatio,omitempty" xml:"weightingRatio,omitempty"`
 }
 
 func (s OrgEmission) String() string {
@@ -153,10 +190,30 @@ func (s *OrgEmission) Validate() error {
 }
 
 type OrgEmissionModuleEmissionList struct {
+	// Carbon emissions
+	//
+	// example:
+	//
+	// 1.2
 	CarbonEmissionData *float64 `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
-	Name               *string  `json:"name,omitempty" xml:"name,omitempty"`
-	NameKey            *string  `json:"nameKey,omitempty" xml:"nameKey,omitempty"`
-	Ratio              *float64 `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	// module name
+	//
+	// example:
+	//
+	// Scope 1: Direct GHG emissions
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Module key
+	//
+	// example:
+	//
+	// carbonInventory.check.scope_1_direct_ghg_emissions
+	NameKey *string `json:"nameKey,omitempty" xml:"nameKey,omitempty"`
+	// Proportion of carbon emissions
+	//
+	// example:
+	//
+	// 0.2
+	Ratio *float64 `json:"ratio,omitempty" xml:"ratio,omitempty"`
 }
 
 func (s OrgEmissionModuleEmissionList) String() string {

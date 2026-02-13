@@ -37,18 +37,47 @@ type iDocumentDetailItem interface {
 
 type DocumentDetailItem struct {
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
-	CreateTime    *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	DocHash       *string `json:"docHash,omitempty" xml:"docHash,omitempty"`
-	DocName       *string `json:"docName,omitempty" xml:"docName,omitempty"`
-	DocUrl        *string `json:"docUrl,omitempty" xml:"docUrl,omitempty"`
-	FolderId      *string `json:"folderId,omitempty" xml:"folderId,omitempty"`
-	FolderName    *string `json:"folderName,omitempty" xml:"folderName,omitempty"`
-	Id            *int64  `json:"id,omitempty" xml:"id,omitempty"`
-	JobId         *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	//
+	// example:
+	//
+	// 2025-09-08T17:04:28.000+08:00
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 5335c8828ccf735a500ed636590c713a94daf6cdacc90237733035cc5a152afb_1760513801010
+	DocHash *string `json:"docHash,omitempty" xml:"docHash,omitempty"`
+	DocName *string `json:"docName,omitempty" xml:"docName,omitempty"`
+	// example:
+	//
+	// https://carbon-aidoc.oss-cn-hangzhou.aliyuncs.com/jobs/jobid/document/documentid/docName
+	DocUrl *string `json:"docUrl,omitempty" xml:"docUrl,omitempty"`
+	// example:
+	//
+	// adafb91d4e014e2eb4d0a5375b547115
+	FolderId   *string `json:"folderId,omitempty" xml:"folderId,omitempty"`
+	FolderName *string `json:"folderName,omitempty" xml:"folderName,omitempty"`
+	// example:
+	//
+	// 6731
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 74ec62f4f4e74e5882d4086a40f2b9c6
+	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// example:
+	//
+	// PARSING_COMPLETED
 	JobStatus     *string `json:"jobStatus,omitempty" xml:"jobStatus,omitempty"`
 	OriginDocName *string `json:"originDocName,omitempty" xml:"originDocName,omitempty"`
-	OriginDocUrl  *string `json:"originDocUrl,omitempty" xml:"originDocUrl,omitempty"`
+	// example:
+	//
+	// https://carbon-aidoc.oss-cn-hangzhou.aliyuncs.com/jobs/jobid/document/documentid/originDocName
+	OriginDocUrl *string `json:"originDocUrl,omitempty" xml:"originDocUrl,omitempty"`
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	//
+	// example:
+	//
+	// 2025-09-08T17:04:28.000+08:00
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 

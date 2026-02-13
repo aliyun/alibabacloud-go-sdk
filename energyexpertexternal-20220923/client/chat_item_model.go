@@ -24,11 +24,39 @@ type iChatItem interface {
 }
 
 type ChatItem struct {
-	Answer     *string           `json:"answer,omitempty" xml:"answer,omitempty"`
-	CreateTime *int64            `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	FolderId   *string           `json:"folderId,omitempty" xml:"folderId,omitempty"`
-	FolderName *string           `json:"folderName,omitempty" xml:"folderName,omitempty"`
-	Question   *string           `json:"question,omitempty" xml:"question,omitempty"`
+	// The content of the answer to the question.
+	//
+	// example:
+	//
+	// No related content found.
+	Answer *string `json:"answer,omitempty" xml:"answer,omitempty"`
+	// Q&A time, in milliseconds timestamp.
+	//
+	// example:
+	//
+	// 1747280158000
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Folder selected for the Q&A.
+	//
+	// example:
+	//
+	// 7708fddb-21dc-4403-a4ea-5b94eccce4c3
+	FolderId *string `json:"folderId,omitempty" xml:"folderId,omitempty"`
+	// Name of the folder selected for the Q&A.
+	//
+	// example:
+	//
+	// deafult folder
+	FolderName *string `json:"folderName,omitempty" xml:"folderName,omitempty"`
+	// Question content.
+	//
+	// example:
+	//
+	// How to use the knowledge base.
+	Question *string `json:"question,omitempty" xml:"question,omitempty"`
+	// - List of files related to the Q&A.
+	//
+	// - If streaming question answering is used, only the first shard contains data.
 	RefDocList []*ChatRefDocItem `json:"refDocList,omitempty" xml:"refDocList,omitempty" type:"Repeated"`
 }
 

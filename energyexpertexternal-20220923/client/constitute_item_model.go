@@ -34,17 +34,64 @@ type iConstituteItem interface {
 }
 
 type ConstituteItem struct {
-	CarbonEmissionData *float64                         `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
-	DataUnit           *string                          `json:"dataUnit,omitempty" xml:"dataUnit,omitempty"`
-	EmissionSource     *string                          `json:"emissionSource,omitempty" xml:"emissionSource,omitempty"`
-	EmissionSourceKey  *string                          `json:"emissionSourceKey,omitempty" xml:"emissionSourceKey,omitempty"`
-	EnterpriseName     *string                          `json:"enterpriseName,omitempty" xml:"enterpriseName,omitempty"`
-	EnvGasEmissions    []*ConstituteItemEnvGasEmissions `json:"envGasEmissions,omitempty" xml:"envGasEmissions,omitempty" type:"Repeated"`
-	Name               *string                          `json:"name,omitempty" xml:"name,omitempty"`
-	NameKey            *string                          `json:"nameKey,omitempty" xml:"nameKey,omitempty"`
-	Ratio              *float64                         `json:"ratio,omitempty" xml:"ratio,omitempty"`
-	RawData            *float64                         `json:"rawData,omitempty" xml:"rawData,omitempty"`
-	SubConstituteItems []*ConstituteItem                `json:"subConstituteItems,omitempty" xml:"subConstituteItems,omitempty" type:"Repeated"`
+	// Carbon emission
+	//
+	// example:
+	//
+	// 3.222
+	CarbonEmissionData *float64 `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
+	// Data Unit
+	//
+	// example:
+	//
+	// kWh
+	DataUnit *string `json:"dataUnit,omitempty" xml:"dataUnit,omitempty"`
+	// Emission source
+	//
+	// example:
+	//
+	// GEC
+	EmissionSource *string `json:"emissionSource,omitempty" xml:"emissionSource,omitempty"`
+	// Unique identification of emission source.
+	//
+	// example:
+	//
+	// carbonInventory.check.by_electricity_properties/carbonInventory.check.wind_electricity/carbonInventory.check.gec
+	EmissionSourceKey *string `json:"emissionSourceKey,omitempty" xml:"emissionSourceKey,omitempty"`
+	// The name of enterprise.
+	//
+	// example:
+	//
+	// EnterpriseA
+	EnterpriseName *string `json:"enterpriseName,omitempty" xml:"enterpriseName,omitempty"`
+	// Gas Emissions Detail List.
+	EnvGasEmissions []*ConstituteItemEnvGasEmissions `json:"envGasEmissions,omitempty" xml:"envGasEmissions,omitempty" type:"Repeated"`
+	// The name.
+	//
+	// example:
+	//
+	// Scope 1: Direct GHG emissions
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The unique identifier of name.
+	//
+	// example:
+	//
+	// carbonInventory.check.indirect_emissions_from_imported_electricity
+	NameKey *string `json:"nameKey,omitempty" xml:"nameKey,omitempty"`
+	// Ratio.example value: 0.5 (i. e. 50%).
+	//
+	// example:
+	//
+	// 0.5
+	Ratio *float64 `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	// Raw data
+	//
+	// example:
+	//
+	// 1.2
+	RawData *float64 `json:"rawData,omitempty" xml:"rawData,omitempty"`
+	// The child detail list.
+	SubConstituteItems []*ConstituteItem `json:"subConstituteItems,omitempty" xml:"subConstituteItems,omitempty" type:"Repeated"`
 }
 
 func (s ConstituteItem) String() string {
@@ -177,10 +224,30 @@ func (s *ConstituteItem) Validate() error {
 }
 
 type ConstituteItemEnvGasEmissions struct {
+	// Carbon emissions.
+	//
+	// example:
+	//
+	// 1.2
 	CarbonEmissionData *float64 `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
-	GasEmissionData    *float64 `json:"gasEmissionData,omitempty" xml:"gasEmissionData,omitempty"`
-	Name               *string  `json:"name,omitempty" xml:"name,omitempty"`
-	Type               *string  `json:"type,omitempty" xml:"type,omitempty"`
+	// Gas emissions.
+	//
+	// example:
+	//
+	// 4.33
+	GasEmissionData *float64 `json:"gasEmissionData,omitempty" xml:"gasEmissionData,omitempty"`
+	// Name of gas.
+	//
+	// example:
+	//
+	// CO₂
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// A unique key that identifies the gas type.
+	//
+	// example:
+	//
+	// 1
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ConstituteItemEnvGasEmissions) String() string {

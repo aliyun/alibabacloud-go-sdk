@@ -26,13 +26,40 @@ type iGwpInventoryConstitute interface {
 }
 
 type GwpInventoryConstitute struct {
-	ByResourceType []*GwpResourceConstitute  `json:"byResourceType,omitempty" xml:"byResourceType,omitempty" type:"Repeated"`
-	CarbonEmission *float64                  `json:"carbonEmission,omitempty" xml:"carbonEmission,omitempty"`
-	Items          []*GwpInventoryConstitute `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	Name           *string                   `json:"name,omitempty" xml:"name,omitempty"`
-	Percent        *float64                  `json:"percent,omitempty" xml:"percent,omitempty"`
-	ResourceType   *int32                    `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	Unit           *string                   `json:"unit,omitempty" xml:"unit,omitempty"`
+	// Grouped by inventory resource type, this data reveals emissions details for each category. It serves the "By type" analysis in the composition breakdown. A nested structure is employed: total carbon emissions are organized first by inventory type, forming a two-level hierarchy, with the innermost level \\"byResource\\" currently empty.
+	ByResourceType []*GwpResourceConstitute `json:"byResourceType,omitempty" xml:"byResourceType,omitempty" type:"Repeated"`
+	// Emission quantity
+	//
+	// example:
+	//
+	// 1009.976265540000000000000000000000
+	CarbonEmission *float64 `json:"carbonEmission,omitempty" xml:"carbonEmission,omitempty"`
+	// Organized hierarchically, it cascades from high to low: flow-> process-> inventory level. Employed for "By inventory" analysis in compositional breakdowns, the innermost layer of this nested structure is empty.
+	Items []*GwpInventoryConstitute `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// Name
+	//
+	// example:
+	//
+	// Acquisition of Raw Materials
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Percentage of emissions, for example 100.00 means 100.00%.
+	//
+	// example:
+	//
+	// 100.00
+	Percent *float64 `json:"percent,omitempty" xml:"percent,omitempty"`
+	// Resouce type of inventory.
+	//
+	// example:
+	//
+	// 1
+	ResourceType *int32 `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// Unit
+	//
+	// example:
+	//
+	// kgCO₂e/kg
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
 }
 
 func (s GwpInventoryConstitute) String() string {

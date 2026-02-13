@@ -22,11 +22,36 @@ type iGwpResourceConstitute interface {
 }
 
 type GwpResourceConstitute struct {
+	// The carbon emissions. To ensure accuracy, retain 24 decimal places. We recommend that you intercept the carbon emissions.
+	//
+	// example:
+	//
+	// 1009.976265540000000000000000000000
 	CarbonEmission *float64 `json:"carbonEmission,omitempty" xml:"carbonEmission,omitempty"`
-	Name           *string  `json:"name,omitempty" xml:"name,omitempty"`
-	Percent        *string  `json:"percent,omitempty" xml:"percent,omitempty"`
-	ResourceType   *int32   `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	Unit           *string  `json:"unit,omitempty" xml:"unit,omitempty"`
+	// Name signifies a concept with distinct layers of meaning, where the outermost layer represents the overall carbon emissions.
+	//
+	// example:
+	//
+	// Energy
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Percentage of emissions. 98.76 indicates the proportion of 98.76%.
+	//
+	// example:
+	//
+	// 98.76
+	Percent *string `json:"percent,omitempty" xml:"percent,omitempty"`
+	// The type of the inventory. It is meaningful at the inventory layer and can be empty at other layers.
+	//
+	// example:
+	//
+	// 1
+	ResourceType *int32 `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// unit of emissions.
+	//
+	// example:
+	//
+	// kgCO₂e/Piece(s)
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
 }
 
 func (s GwpResourceConstitute) String() string {

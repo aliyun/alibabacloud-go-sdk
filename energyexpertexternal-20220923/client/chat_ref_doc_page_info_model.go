@@ -28,14 +28,56 @@ type iChatRefDocPageInfo interface {
 }
 
 type ChatRefDocPageInfo struct {
-	Angle            *float64 `json:"angle,omitempty" xml:"angle,omitempty"`
-	ExcelParseResult *string  `json:"excelParseResult,omitempty" xml:"excelParseResult,omitempty"`
-	ImageHeight      *int32   `json:"imageHeight,omitempty" xml:"imageHeight,omitempty"`
-	ImageUrl         *string  `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
-	ImageWidth       *int32   `json:"imageWidth,omitempty" xml:"imageWidth,omitempty"`
-	PageIdCurDoc     *int32   `json:"pageIdCurDoc,omitempty" xml:"pageIdCurDoc,omitempty"`
-	PdfParseResult   *string  `json:"pdfParseResult,omitempty" xml:"pdfParseResult,omitempty"`
-	WordParseResult  *string  `json:"wordParseResult,omitempty" xml:"wordParseResult,omitempty"`
+	// The rotation angle of the image after the page is converted to an image.
+	//
+	// example:
+	//
+	// 0.0
+	Angle *float64 `json:"angle,omitempty" xml:"angle,omitempty"`
+	// Reserved, can be unused for now.
+	//
+	// example:
+	//
+	// null
+	ExcelParseResult *string `json:"excelParseResult,omitempty" xml:"excelParseResult,omitempty"`
+	// The height of the page turns to image.
+	//
+	// example:
+	//
+	// 22
+	ImageHeight *int32 `json:"imageHeight,omitempty" xml:"imageHeight,omitempty"`
+	// - The image URL after the page is converted to an image.
+	//
+	// - Note: The image URL will be inaccessible after 24 hours, so you need to save it promptly.
+	//
+	// example:
+	//
+	// 2
+	ImageUrl *string `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
+	// The width of the page turns to image
+	//
+	// example:
+	//
+	// 23
+	ImageWidth *int32 `json:"imageWidth,omitempty" xml:"imageWidth,omitempty"`
+	// The page index in the current document, starting from 0.
+	//
+	// example:
+	//
+	// 2
+	PageIdCurDoc *int32 `json:"pageIdCurDoc,omitempty" xml:"pageIdCurDoc,omitempty"`
+	// Reserved, can be unused for now.
+	//
+	// example:
+	//
+	// null
+	PdfParseResult *string `json:"pdfParseResult,omitempty" xml:"pdfParseResult,omitempty"`
+	// Reserved, can be unused for now.
+	//
+	// example:
+	//
+	// null
+	WordParseResult *string `json:"wordParseResult,omitempty" xml:"wordParseResult,omitempty"`
 }
 
 func (s ChatRefDocPageInfo) String() string {

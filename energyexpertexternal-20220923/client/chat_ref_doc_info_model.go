@@ -16,8 +16,14 @@ type iChatRefDocInfo interface {
 }
 
 type ChatRefDocInfo struct {
+	// Detailed information for each page of the document.
 	PageListInfo []*ChatRefDocPageInfo `json:"pageListInfo,omitempty" xml:"pageListInfo,omitempty" type:"Repeated"`
-	Pages        *int64                `json:"pages,omitempty" xml:"pages,omitempty"`
+	// Total number of pages in the current document.
+	//
+	// example:
+	//
+	// 23
+	Pages *int64 `json:"pages,omitempty" xml:"pages,omitempty"`
 }
 
 func (s ChatRefDocInfo) String() string {

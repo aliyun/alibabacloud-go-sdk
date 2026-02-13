@@ -16,7 +16,17 @@ type iChatRefDocPostion interface {
 }
 
 type ChatRefDocPostion struct {
+	// The x-coordinate of the layout.
+	//
+	// example:
+	//
+	// 22
 	X *int32 `json:"x,omitempty" xml:"x,omitempty"`
+	// The y-coordinate of the layout.
+	//
+	// example:
+	//
+	// 86
 	Y *int32 `json:"y,omitempty" xml:"y,omitempty"`
 }
 
