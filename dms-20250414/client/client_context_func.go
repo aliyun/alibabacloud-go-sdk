@@ -434,6 +434,108 @@ func (client *Client) CreateAirflowLoginTokenWithContext(ctx context.Context, re
 
 // Summary:
 //
+// # CreateCustomAgent
+//
+// @param tmpReq - CreateCustomAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCustomAgentResponse
+func (client *Client) CreateCustomAgentWithContext(ctx context.Context, tmpReq *CreateCustomAgentRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateCustomAgentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ExecutionConfig) {
+		request.ExecutionConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExecutionConfig, dara.String("ExecutionConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.KnowledgeConfigList) {
+		request.KnowledgeConfigListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KnowledgeConfigList, dara.String("KnowledgeConfigList"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ScheduleTaskConfig) {
+		request.ScheduleTaskConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScheduleTaskConfig, dara.String("ScheduleTaskConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.DataJson) {
+		query["DataJson"] = request.DataJson
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ExecutionConfigShrink) {
+		query["ExecutionConfig"] = request.ExecutionConfigShrink
+	}
+
+	if !dara.IsNil(request.Instruction) {
+		query["Instruction"] = request.Instruction
+	}
+
+	if !dara.IsNil(request.Knowledge) {
+		query["Knowledge"] = request.Knowledge
+	}
+
+	if !dara.IsNil(request.KnowledgeConfigListShrink) {
+		query["KnowledgeConfigList"] = request.KnowledgeConfigListShrink
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ScheduleTaskConfigShrink) {
+		query["ScheduleTaskConfig"] = request.ScheduleTaskConfigShrink
+	}
+
+	if !dara.IsNil(request.TextReportConfig) {
+		query["TextReportConfig"] = request.TextReportConfig
+	}
+
+	if !dara.IsNil(request.WebReportConfig) {
+		query["WebReportConfig"] = request.WebReportConfig
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCustomAgent"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCustomAgentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # CreateDataAgentSession
 //
 // @param tmpReq - CreateDataAgentSessionRequest
@@ -884,6 +986,54 @@ func (client *Client) DeleteAirflowWithContext(ctx context.Context, request *Del
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAirflowResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteCustomAgent
+//
+// @param request - DeleteCustomAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCustomAgentResponse
+func (client *Client) DeleteCustomAgentWithContext(ctx context.Context, request *DeleteCustomAgentRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomAgentId) {
+		query["CustomAgentId"] = request.CustomAgentId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCustomAgent"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCustomAgentResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2439,6 +2589,142 @@ func (client *Client) ListDataAgentWorkspaceMemberWithContext(ctx context.Contex
 
 // Summary:
 //
+// # ListDataCenterDatabase
+//
+// @param request - ListDataCenterDatabaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataCenterDatabaseResponse
+func (client *Client) ListDataCenterDatabaseWithContext(ctx context.Context, request *ListDataCenterDatabaseRequest, runtime *dara.RuntimeOptions) (_result *ListDataCenterDatabaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CallFrom) {
+		query["CallFrom"] = request.CallFrom
+	}
+
+	if !dara.IsNil(request.DmsUnit) {
+		query["DmsUnit"] = request.DmsUnit
+	}
+
+	if !dara.IsNil(request.ImportType) {
+		query["ImportType"] = request.ImportType
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.SearchKey) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataCenterDatabase"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataCenterDatabaseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListDataCenterTable
+//
+// @param request - ListDataCenterTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataCenterTableResponse
+func (client *Client) ListDataCenterTableWithContext(ctx context.Context, request *ListDataCenterTableRequest, runtime *dara.RuntimeOptions) (_result *ListDataCenterTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CallFrom) {
+		query["CallFrom"] = request.CallFrom
+	}
+
+	if !dara.IsNil(request.DatabaseName) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !dara.IsNil(request.DmsUnit) {
+		query["DmsUnit"] = request.DmsUnit
+	}
+
+	if !dara.IsNil(request.ImportType) {
+		query["ImportType"] = request.ImportType
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SearchKey) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !dara.IsNil(request.TableName) {
+		query["TableName"] = request.TableName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataCenterTable"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataCenterTableResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取uc的数据库目录列表
 //
 // @param request - ListDataLakeCatalogRequest
@@ -3187,6 +3473,164 @@ func (client *Client) ListFileUploadWithContext(ctx context.Context, request *Li
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListFileUploadResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ModifyCustomAgent
+//
+// @param tmpReq - ModifyCustomAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyCustomAgentResponse
+func (client *Client) ModifyCustomAgentWithContext(ctx context.Context, tmpReq *ModifyCustomAgentRequest, runtime *dara.RuntimeOptions) (_result *ModifyCustomAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ModifyCustomAgentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ExecutionConfig) {
+		request.ExecutionConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExecutionConfig, dara.String("ExecutionConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.KnowledgeConfigList) {
+		request.KnowledgeConfigListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KnowledgeConfigList, dara.String("KnowledgeConfigList"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ScheduleTaskConfig) {
+		request.ScheduleTaskConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScheduleTaskConfig, dara.String("ScheduleTaskConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomAgentId) {
+		query["CustomAgentId"] = request.CustomAgentId
+	}
+
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.DataJson) {
+		query["DataJson"] = request.DataJson
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ExecutionConfigShrink) {
+		query["ExecutionConfig"] = request.ExecutionConfigShrink
+	}
+
+	if !dara.IsNil(request.Instruction) {
+		query["Instruction"] = request.Instruction
+	}
+
+	if !dara.IsNil(request.Knowledge) {
+		query["Knowledge"] = request.Knowledge
+	}
+
+	if !dara.IsNil(request.KnowledgeConfigListShrink) {
+		query["KnowledgeConfigList"] = request.KnowledgeConfigListShrink
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ScheduleTaskConfigShrink) {
+		query["ScheduleTaskConfig"] = request.ScheduleTaskConfigShrink
+	}
+
+	if !dara.IsNil(request.TextReportConfig) {
+		query["TextReportConfig"] = request.TextReportConfig
+	}
+
+	if !dara.IsNil(request.WebReportConfig) {
+		query["WebReportConfig"] = request.WebReportConfig
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyCustomAgent"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyCustomAgentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # OperateCustomAgent
+//
+// @param request - OperateCustomAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateCustomAgentResponse
+func (client *Client) OperateCustomAgentWithContext(ctx context.Context, request *OperateCustomAgentRequest, runtime *dara.RuntimeOptions) (_result *OperateCustomAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomAgentId) {
+		query["CustomAgentId"] = request.CustomAgentId
+	}
+
+	if !dara.IsNil(request.OperateType) {
+		query["OperateType"] = request.OperateType
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OperateCustomAgent"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OperateCustomAgentResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
