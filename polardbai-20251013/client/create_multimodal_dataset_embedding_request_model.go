@@ -17,6 +17,8 @@ type iCreateMultimodalDatasetEmbeddingRequest interface {
 	GetModel() *string
 	SetModelMode(v string) *CreateMultimodalDatasetEmbeddingRequest
 	GetModelMode() *string
+	SetSourceRegionId(v string) *CreateMultimodalDatasetEmbeddingRequest
+	GetSourceRegionId() *string
 }
 
 type CreateMultimodalDatasetEmbeddingRequest struct {
@@ -40,6 +42,10 @@ type CreateMultimodalDatasetEmbeddingRequest struct {
 	//
 	// flash
 	ModelMode *string `json:"ModelMode,omitempty" xml:"ModelMode,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 }
 
 func (s CreateMultimodalDatasetEmbeddingRequest) String() string {
@@ -66,6 +72,10 @@ func (s *CreateMultimodalDatasetEmbeddingRequest) GetModelMode() *string {
 	return s.ModelMode
 }
 
+func (s *CreateMultimodalDatasetEmbeddingRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *CreateMultimodalDatasetEmbeddingRequest) SetDBClusterId(v string) *CreateMultimodalDatasetEmbeddingRequest {
 	s.DBClusterId = &v
 	return s
@@ -83,6 +93,11 @@ func (s *CreateMultimodalDatasetEmbeddingRequest) SetModel(v string) *CreateMult
 
 func (s *CreateMultimodalDatasetEmbeddingRequest) SetModelMode(v string) *CreateMultimodalDatasetEmbeddingRequest {
 	s.ModelMode = &v
+	return s
+}
+
+func (s *CreateMultimodalDatasetEmbeddingRequest) SetSourceRegionId(v string) *CreateMultimodalDatasetEmbeddingRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

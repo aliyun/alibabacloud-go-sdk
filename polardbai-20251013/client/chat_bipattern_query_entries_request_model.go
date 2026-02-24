@@ -23,6 +23,8 @@ type iChatBIPatternQueryEntriesRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ChatBIPatternQueryEntriesRequest
 	GetPageSize() *int32
+	SetSourceRegionId(v string) *ChatBIPatternQueryEntriesRequest
+	GetSourceRegionId() *string
 	SetTableName(v string) *ChatBIPatternQueryEntriesRequest
 	GetTableName() *string
 }
@@ -54,6 +56,10 @@ type ChatBIPatternQueryEntriesRequest struct {
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -98,6 +104,10 @@ func (s *ChatBIPatternQueryEntriesRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ChatBIPatternQueryEntriesRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ChatBIPatternQueryEntriesRequest) GetTableName() *string {
 	return s.TableName
 }
@@ -134,6 +144,11 @@ func (s *ChatBIPatternQueryEntriesRequest) SetPageNumber(v int32) *ChatBIPattern
 
 func (s *ChatBIPatternQueryEntriesRequest) SetPageSize(v int32) *ChatBIPatternQueryEntriesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ChatBIPatternQueryEntriesRequest) SetSourceRegionId(v string) *ChatBIPatternQueryEntriesRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

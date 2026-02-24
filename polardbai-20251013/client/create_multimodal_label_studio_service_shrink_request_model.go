@@ -15,6 +15,8 @@ type iCreateMultimodalLabelStudioServiceShrinkRequest interface {
 	GetDatasetIdsShrink() *string
 	SetPassword(v string) *CreateMultimodalLabelStudioServiceShrinkRequest
 	GetPassword() *string
+	SetSourceRegionId(v string) *CreateMultimodalLabelStudioServiceShrinkRequest
+	GetSourceRegionId() *string
 	SetUsername(v string) *CreateMultimodalLabelStudioServiceShrinkRequest
 	GetUsername() *string
 }
@@ -34,6 +36,10 @@ type CreateMultimodalLabelStudioServiceShrinkRequest struct {
 	//
 	// *****
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -62,6 +68,10 @@ func (s *CreateMultimodalLabelStudioServiceShrinkRequest) GetPassword() *string 
 	return s.Password
 }
 
+func (s *CreateMultimodalLabelStudioServiceShrinkRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *CreateMultimodalLabelStudioServiceShrinkRequest) GetUsername() *string {
 	return s.Username
 }
@@ -78,6 +88,11 @@ func (s *CreateMultimodalLabelStudioServiceShrinkRequest) SetDatasetIdsShrink(v 
 
 func (s *CreateMultimodalLabelStudioServiceShrinkRequest) SetPassword(v string) *CreateMultimodalLabelStudioServiceShrinkRequest {
 	s.Password = &v
+	return s
+}
+
+func (s *CreateMultimodalLabelStudioServiceShrinkRequest) SetSourceRegionId(v string) *CreateMultimodalLabelStudioServiceShrinkRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

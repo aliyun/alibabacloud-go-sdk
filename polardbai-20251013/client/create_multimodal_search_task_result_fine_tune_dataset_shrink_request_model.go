@@ -19,6 +19,8 @@ type iCreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest interface {
 	GetResultIndexShrink() *string
 	SetResultMode(v string) *CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest
 	GetResultMode() *string
+	SetSourceRegionId(v string) *CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest
+	GetSourceRegionId() *string
 	SetTaskId(v string) *CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest
 	GetTaskId() *string
 	SetTopN(v int32) *CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest
@@ -45,6 +47,10 @@ type CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest struct {
 	//
 	// ["raw", "rerank"]
 	ResultMode *string `json:"ResultMode,omitempty" xml:"ResultMode,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -85,6 +91,10 @@ func (s *CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest) GetResult
 	return s.ResultMode
 }
 
+func (s *CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest) GetTaskId() *string {
 	return s.TaskId
 }
@@ -115,6 +125,11 @@ func (s *CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest) SetResult
 
 func (s *CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest) SetResultMode(v string) *CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest {
 	s.ResultMode = &v
+	return s
+}
+
+func (s *CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest) SetSourceRegionId(v string) *CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

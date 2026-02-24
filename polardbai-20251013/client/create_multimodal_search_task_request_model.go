@@ -21,6 +21,8 @@ type iCreateMultimodalSearchTaskRequest interface {
 	GetQuery() *string
 	SetSearchModel(v string) *CreateMultimodalSearchTaskRequest
 	GetSearchModel() *string
+	SetSourceRegionId(v string) *CreateMultimodalSearchTaskRequest
+	GetSourceRegionId() *string
 	SetTopK(v int32) *CreateMultimodalSearchTaskRequest
 	GetTopK() *int32
 }
@@ -52,6 +54,10 @@ type CreateMultimodalSearchTaskRequest struct {
 	//
 	// Multimodal-Search
 	SearchModel *string `json:"SearchModel,omitempty" xml:"SearchModel,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	// example:
 	//
 	// 20
@@ -90,6 +96,10 @@ func (s *CreateMultimodalSearchTaskRequest) GetSearchModel() *string {
 	return s.SearchModel
 }
 
+func (s *CreateMultimodalSearchTaskRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *CreateMultimodalSearchTaskRequest) GetTopK() *int32 {
 	return s.TopK
 }
@@ -121,6 +131,11 @@ func (s *CreateMultimodalSearchTaskRequest) SetQuery(v string) *CreateMultimodal
 
 func (s *CreateMultimodalSearchTaskRequest) SetSearchModel(v string) *CreateMultimodalSearchTaskRequest {
 	s.SearchModel = &v
+	return s
+}
+
+func (s *CreateMultimodalSearchTaskRequest) SetSourceRegionId(v string) *CreateMultimodalSearchTaskRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

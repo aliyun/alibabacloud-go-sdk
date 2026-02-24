@@ -15,6 +15,8 @@ type iAddOSSMultimodalFineTuneDatasetRequest interface {
 	GetDatasetId() *string
 	SetOssUrl(v string) *AddOSSMultimodalFineTuneDatasetRequest
 	GetOssUrl() *string
+	SetSourceRegionId(v string) *AddOSSMultimodalFineTuneDatasetRequest
+	GetSourceRegionId() *string
 }
 
 type AddOSSMultimodalFineTuneDatasetRequest struct {
@@ -32,6 +34,10 @@ type AddOSSMultimodalFineTuneDatasetRequest struct {
 	//
 	// https://bucket-name.oss-cn-beijing.aliyuncs.com/005ed960-6a07-11ef-ab81-f32551c4afe8
 	OssUrl *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 }
 
 func (s AddOSSMultimodalFineTuneDatasetRequest) String() string {
@@ -54,6 +60,10 @@ func (s *AddOSSMultimodalFineTuneDatasetRequest) GetOssUrl() *string {
 	return s.OssUrl
 }
 
+func (s *AddOSSMultimodalFineTuneDatasetRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *AddOSSMultimodalFineTuneDatasetRequest) SetDBClusterId(v string) *AddOSSMultimodalFineTuneDatasetRequest {
 	s.DBClusterId = &v
 	return s
@@ -66,6 +76,11 @@ func (s *AddOSSMultimodalFineTuneDatasetRequest) SetDatasetId(v string) *AddOSSM
 
 func (s *AddOSSMultimodalFineTuneDatasetRequest) SetOssUrl(v string) *AddOSSMultimodalFineTuneDatasetRequest {
 	s.OssUrl = &v
+	return s
+}
+
+func (s *AddOSSMultimodalFineTuneDatasetRequest) SetSourceRegionId(v string) *AddOSSMultimodalFineTuneDatasetRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

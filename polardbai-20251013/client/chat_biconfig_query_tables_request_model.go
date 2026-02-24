@@ -19,6 +19,8 @@ type iChatBIConfigQueryTablesRequest interface {
 	GetInputField() *string
 	SetInstanceName(v string) *ChatBIConfigQueryTablesRequest
 	GetInstanceName() *string
+	SetSourceRegionId(v string) *ChatBIConfigQueryTablesRequest
+	GetSourceRegionId() *string
 }
 
 type ChatBIConfigQueryTablesRequest struct {
@@ -40,6 +42,10 @@ type ChatBIConfigQueryTablesRequest struct {
 	//
 	// pc-2ze454l20me07****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 }
 
 func (s ChatBIConfigQueryTablesRequest) String() string {
@@ -70,6 +76,10 @@ func (s *ChatBIConfigQueryTablesRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
+func (s *ChatBIConfigQueryTablesRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ChatBIConfigQueryTablesRequest) SetAuthMessage(v string) *ChatBIConfigQueryTablesRequest {
 	s.AuthMessage = &v
 	return s
@@ -92,6 +102,11 @@ func (s *ChatBIConfigQueryTablesRequest) SetInputField(v string) *ChatBIConfigQu
 
 func (s *ChatBIConfigQueryTablesRequest) SetInstanceName(v string) *ChatBIConfigQueryTablesRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *ChatBIConfigQueryTablesRequest) SetSourceRegionId(v string) *ChatBIConfigQueryTablesRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

@@ -21,6 +21,8 @@ type iListMultimodalSearchTaskShrinkRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListMultimodalSearchTaskShrinkRequest
 	GetPageSize() *int32
+	SetSourceRegionId(v string) *ListMultimodalSearchTaskShrinkRequest
+	GetSourceRegionId() *string
 }
 
 type ListMultimodalSearchTaskShrinkRequest struct {
@@ -47,6 +49,10 @@ type ListMultimodalSearchTaskShrinkRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 }
 
 func (s ListMultimodalSearchTaskShrinkRequest) String() string {
@@ -81,6 +87,10 @@ func (s *ListMultimodalSearchTaskShrinkRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListMultimodalSearchTaskShrinkRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ListMultimodalSearchTaskShrinkRequest) SetDBClusterId(v string) *ListMultimodalSearchTaskShrinkRequest {
 	s.DBClusterId = &v
 	return s
@@ -108,6 +118,11 @@ func (s *ListMultimodalSearchTaskShrinkRequest) SetPageNumber(v int32) *ListMult
 
 func (s *ListMultimodalSearchTaskShrinkRequest) SetPageSize(v int32) *ListMultimodalSearchTaskShrinkRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListMultimodalSearchTaskShrinkRequest) SetSourceRegionId(v string) *ListMultimodalSearchTaskShrinkRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

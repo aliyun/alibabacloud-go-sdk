@@ -19,6 +19,8 @@ type iChatBIPatternIndexCreateRequest interface {
 	GetInstanceName() *string
 	SetPatternTableName(v string) *ChatBIPatternIndexCreateRequest
 	GetPatternTableName() *string
+	SetSourceRegionId(v string) *ChatBIPatternIndexCreateRequest
+	GetSourceRegionId() *string
 	SetTableNameSuffix(v string) *ChatBIPatternIndexCreateRequest
 	GetTableNameSuffix() *string
 }
@@ -42,6 +44,10 @@ type ChatBIPatternIndexCreateRequest struct {
 	//
 	// polar4ai_nl2sql_pattern, polar4ai_nl2sql_pattern_1
 	PatternTableName *string `json:"PatternTableName,omitempty" xml:"PatternTableName,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	// example:
 	//
 	// 空字符串
@@ -76,6 +82,10 @@ func (s *ChatBIPatternIndexCreateRequest) GetPatternTableName() *string {
 	return s.PatternTableName
 }
 
+func (s *ChatBIPatternIndexCreateRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ChatBIPatternIndexCreateRequest) GetTableNameSuffix() *string {
 	return s.TableNameSuffix
 }
@@ -102,6 +112,11 @@ func (s *ChatBIPatternIndexCreateRequest) SetInstanceName(v string) *ChatBIPatte
 
 func (s *ChatBIPatternIndexCreateRequest) SetPatternTableName(v string) *ChatBIPatternIndexCreateRequest {
 	s.PatternTableName = &v
+	return s
+}
+
+func (s *ChatBIPatternIndexCreateRequest) SetSourceRegionId(v string) *ChatBIPatternIndexCreateRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

@@ -19,6 +19,8 @@ type iChatBISchemaIndexCreateRequest interface {
 	GetDbName() *string
 	SetInstanceName(v string) *ChatBISchemaIndexCreateRequest
 	GetInstanceName() *string
+	SetSourceRegionId(v string) *ChatBISchemaIndexCreateRequest
+	GetSourceRegionId() *string
 	SetTableNameSuffix(v string) *ChatBISchemaIndexCreateRequest
 	GetTableNameSuffix() *string
 	SetTablesIncluded(v string) *ChatBISchemaIndexCreateRequest
@@ -46,6 +48,10 @@ type ChatBISchemaIndexCreateRequest struct {
 	//
 	// pc-2ze454l20me07****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	// example:
 	//
 	// 空字符串
@@ -88,6 +94,10 @@ func (s *ChatBISchemaIndexCreateRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
+func (s *ChatBISchemaIndexCreateRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ChatBISchemaIndexCreateRequest) GetTableNameSuffix() *string {
 	return s.TableNameSuffix
 }
@@ -122,6 +132,11 @@ func (s *ChatBISchemaIndexCreateRequest) SetDbName(v string) *ChatBISchemaIndexC
 
 func (s *ChatBISchemaIndexCreateRequest) SetInstanceName(v string) *ChatBISchemaIndexCreateRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *ChatBISchemaIndexCreateRequest) SetSourceRegionId(v string) *ChatBISchemaIndexCreateRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

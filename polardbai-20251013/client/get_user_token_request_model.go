@@ -13,6 +13,8 @@ type iGetUserTokenRequest interface {
 	GetDBClusterId() *string
 	SetPassword(v string) *GetUserTokenRequest
 	GetPassword() *string
+	SetSourceRegionId(v string) *GetUserTokenRequest
+	GetSourceRegionId() *string
 	SetUsername(v string) *GetUserTokenRequest
 	GetUsername() *string
 }
@@ -30,6 +32,10 @@ type GetUserTokenRequest struct {
 	//
 	// ****
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -54,6 +60,10 @@ func (s *GetUserTokenRequest) GetPassword() *string {
 	return s.Password
 }
 
+func (s *GetUserTokenRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *GetUserTokenRequest) GetUsername() *string {
 	return s.Username
 }
@@ -65,6 +75,11 @@ func (s *GetUserTokenRequest) SetDBClusterId(v string) *GetUserTokenRequest {
 
 func (s *GetUserTokenRequest) SetPassword(v string) *GetUserTokenRequest {
 	s.Password = &v
+	return s
+}
+
+func (s *GetUserTokenRequest) SetSourceRegionId(v string) *GetUserTokenRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

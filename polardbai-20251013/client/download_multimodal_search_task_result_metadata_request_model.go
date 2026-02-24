@@ -11,6 +11,8 @@ type iDownloadMultimodalSearchTaskResultMetadataRequest interface {
 	GoString() string
 	SetDBClusterId(v string) *DownloadMultimodalSearchTaskResultMetadataRequest
 	GetDBClusterId() *string
+	SetSourceRegionId(v string) *DownloadMultimodalSearchTaskResultMetadataRequest
+	GetSourceRegionId() *string
 	SetTaskId(v string) *DownloadMultimodalSearchTaskResultMetadataRequest
 	GetTaskId() *string
 }
@@ -22,6 +24,10 @@ type DownloadMultimodalSearchTaskResultMetadataRequest struct {
 	//
 	// pc-2ze454l20me07****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	// example:
 	//
 	// 白色汽车
@@ -40,12 +46,21 @@ func (s *DownloadMultimodalSearchTaskResultMetadataRequest) GetDBClusterId() *st
 	return s.DBClusterId
 }
 
+func (s *DownloadMultimodalSearchTaskResultMetadataRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *DownloadMultimodalSearchTaskResultMetadataRequest) GetTaskId() *string {
 	return s.TaskId
 }
 
 func (s *DownloadMultimodalSearchTaskResultMetadataRequest) SetDBClusterId(v string) *DownloadMultimodalSearchTaskResultMetadataRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *DownloadMultimodalSearchTaskResultMetadataRequest) SetSourceRegionId(v string) *DownloadMultimodalSearchTaskResultMetadataRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

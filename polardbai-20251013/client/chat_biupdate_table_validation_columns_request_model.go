@@ -17,6 +17,8 @@ type iChatBIUpdateTableValidationColumnsRequest interface {
 	GetDbName() *string
 	SetInstanceName(v string) *ChatBIUpdateTableValidationColumnsRequest
 	GetInstanceName() *string
+	SetSourceRegionId(v string) *ChatBIUpdateTableValidationColumnsRequest
+	GetSourceRegionId() *string
 	SetTableName(v string) *ChatBIUpdateTableValidationColumnsRequest
 	GetTableName() *string
 	SetTableType(v string) *ChatBIUpdateTableValidationColumnsRequest
@@ -38,6 +40,10 @@ type ChatBIUpdateTableValidationColumnsRequest struct {
 	//
 	// pc-2ze454l20me07****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -76,6 +82,10 @@ func (s *ChatBIUpdateTableValidationColumnsRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
+func (s *ChatBIUpdateTableValidationColumnsRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ChatBIUpdateTableValidationColumnsRequest) GetTableName() *string {
 	return s.TableName
 }
@@ -101,6 +111,11 @@ func (s *ChatBIUpdateTableValidationColumnsRequest) SetDbName(v string) *ChatBIU
 
 func (s *ChatBIUpdateTableValidationColumnsRequest) SetInstanceName(v string) *ChatBIUpdateTableValidationColumnsRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *ChatBIUpdateTableValidationColumnsRequest) SetSourceRegionId(v string) *ChatBIUpdateTableValidationColumnsRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

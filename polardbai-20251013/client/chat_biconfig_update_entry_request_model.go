@@ -25,6 +25,8 @@ type iChatBIConfigUpdateEntryRequest interface {
 	GetIsFunctional() *int32
 	SetQueryFunction(v string) *ChatBIConfigUpdateEntryRequest
 	GetQueryFunction() *string
+	SetSourceRegionId(v string) *ChatBIConfigUpdateEntryRequest
+	GetSourceRegionId() *string
 	SetSqlCondition(v string) *ChatBIConfigUpdateEntryRequest
 	GetSqlCondition() *string
 	SetSqlFunction(v string) *ChatBIConfigUpdateEntryRequest
@@ -74,6 +76,10 @@ type ChatBIConfigUpdateEntryRequest struct {
 	//
 	// 问题李四今年总销售额多少？：在text_condition匹配时，会最终被处理为b今年总销售额是多少一二。
 	QueryFunction *string `json:"QueryFunction,omitempty" xml:"QueryFunction,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -148,6 +154,10 @@ func (s *ChatBIConfigUpdateEntryRequest) GetQueryFunction() *string {
 	return s.QueryFunction
 }
 
+func (s *ChatBIConfigUpdateEntryRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ChatBIConfigUpdateEntryRequest) GetSqlCondition() *string {
 	return s.SqlCondition
 }
@@ -197,6 +207,11 @@ func (s *ChatBIConfigUpdateEntryRequest) SetIsFunctional(v int32) *ChatBIConfigU
 
 func (s *ChatBIConfigUpdateEntryRequest) SetQueryFunction(v string) *ChatBIConfigUpdateEntryRequest {
 	s.QueryFunction = &v
+	return s
+}
+
+func (s *ChatBIConfigUpdateEntryRequest) SetSourceRegionId(v string) *ChatBIConfigUpdateEntryRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

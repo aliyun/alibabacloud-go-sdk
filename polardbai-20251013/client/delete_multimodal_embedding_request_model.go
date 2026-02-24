@@ -13,6 +13,8 @@ type iDeleteMultimodalEmbeddingRequest interface {
 	GetDBClusterId() *string
 	SetEmbedding(v string) *DeleteMultimodalEmbeddingRequest
 	GetEmbedding() *string
+	SetSourceRegionId(v string) *DeleteMultimodalEmbeddingRequest
+	GetSourceRegionId() *string
 }
 
 type DeleteMultimodalEmbeddingRequest struct {
@@ -28,6 +30,10 @@ type DeleteMultimodalEmbeddingRequest struct {
 	//
 	// polar4ai_multimodal_embedding_****
 	Embedding *string `json:"Embedding,omitempty" xml:"Embedding,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 }
 
 func (s DeleteMultimodalEmbeddingRequest) String() string {
@@ -46,6 +52,10 @@ func (s *DeleteMultimodalEmbeddingRequest) GetEmbedding() *string {
 	return s.Embedding
 }
 
+func (s *DeleteMultimodalEmbeddingRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *DeleteMultimodalEmbeddingRequest) SetDBClusterId(v string) *DeleteMultimodalEmbeddingRequest {
 	s.DBClusterId = &v
 	return s
@@ -53,6 +63,11 @@ func (s *DeleteMultimodalEmbeddingRequest) SetDBClusterId(v string) *DeleteMulti
 
 func (s *DeleteMultimodalEmbeddingRequest) SetEmbedding(v string) *DeleteMultimodalEmbeddingRequest {
 	s.Embedding = &v
+	return s
+}
+
+func (s *DeleteMultimodalEmbeddingRequest) SetSourceRegionId(v string) *DeleteMultimodalEmbeddingRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

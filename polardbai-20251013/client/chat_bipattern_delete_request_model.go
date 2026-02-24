@@ -17,6 +17,8 @@ type iChatBIPatternDeleteRequest interface {
 	GetDbName() *string
 	SetInstanceName(v string) *ChatBIPatternDeleteRequest
 	GetInstanceName() *string
+	SetSourceRegionId(v string) *ChatBIPatternDeleteRequest
+	GetSourceRegionId() *string
 	SetTableName(v string) *ChatBIPatternDeleteRequest
 	GetTableName() *string
 }
@@ -36,6 +38,10 @@ type ChatBIPatternDeleteRequest struct {
 	//
 	// pc-2ze454l20me07****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -68,6 +74,10 @@ func (s *ChatBIPatternDeleteRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
+func (s *ChatBIPatternDeleteRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ChatBIPatternDeleteRequest) GetTableName() *string {
 	return s.TableName
 }
@@ -89,6 +99,11 @@ func (s *ChatBIPatternDeleteRequest) SetDbName(v string) *ChatBIPatternDeleteReq
 
 func (s *ChatBIPatternDeleteRequest) SetInstanceName(v string) *ChatBIPatternDeleteRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *ChatBIPatternDeleteRequest) SetSourceRegionId(v string) *ChatBIPatternDeleteRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

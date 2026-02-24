@@ -17,6 +17,8 @@ type iValidateDatabaseUserTokenRequest interface {
 	GetDBClusterId() *string
 	SetDBName(v string) *ValidateDatabaseUserTokenRequest
 	GetDBName() *string
+	SetSourceRegionId(v string) *ValidateDatabaseUserTokenRequest
+	GetSourceRegionId() *string
 }
 
 type ValidateDatabaseUserTokenRequest struct {
@@ -44,6 +46,10 @@ type ValidateDatabaseUserTokenRequest struct {
 	//
 	// ai_test
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 }
 
 func (s ValidateDatabaseUserTokenRequest) String() string {
@@ -70,6 +76,10 @@ func (s *ValidateDatabaseUserTokenRequest) GetDBName() *string {
 	return s.DBName
 }
 
+func (s *ValidateDatabaseUserTokenRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ValidateDatabaseUserTokenRequest) SetAuthMessage(v string) *ValidateDatabaseUserTokenRequest {
 	s.AuthMessage = &v
 	return s
@@ -87,6 +97,11 @@ func (s *ValidateDatabaseUserTokenRequest) SetDBClusterId(v string) *ValidateDat
 
 func (s *ValidateDatabaseUserTokenRequest) SetDBName(v string) *ValidateDatabaseUserTokenRequest {
 	s.DBName = &v
+	return s
+}
+
+func (s *ValidateDatabaseUserTokenRequest) SetSourceRegionId(v string) *ValidateDatabaseUserTokenRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

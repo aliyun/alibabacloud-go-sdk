@@ -17,6 +17,8 @@ type iChatBIConfigDeleteRequest interface {
 	GetDbName() *string
 	SetInstanceName(v string) *ChatBIConfigDeleteRequest
 	GetInstanceName() *string
+	SetSourceRegionId(v string) *ChatBIConfigDeleteRequest
+	GetSourceRegionId() *string
 }
 
 type ChatBIConfigDeleteRequest struct {
@@ -34,6 +36,10 @@ type ChatBIConfigDeleteRequest struct {
 	//
 	// pc-2ze454l20me07****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 }
 
 func (s ChatBIConfigDeleteRequest) String() string {
@@ -60,6 +66,10 @@ func (s *ChatBIConfigDeleteRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
+func (s *ChatBIConfigDeleteRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ChatBIConfigDeleteRequest) SetAuthMessage(v string) *ChatBIConfigDeleteRequest {
 	s.AuthMessage = &v
 	return s
@@ -77,6 +87,11 @@ func (s *ChatBIConfigDeleteRequest) SetDbName(v string) *ChatBIConfigDeleteReque
 
 func (s *ChatBIConfigDeleteRequest) SetInstanceName(v string) *ChatBIConfigDeleteRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *ChatBIConfigDeleteRequest) SetSourceRegionId(v string) *ChatBIConfigDeleteRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

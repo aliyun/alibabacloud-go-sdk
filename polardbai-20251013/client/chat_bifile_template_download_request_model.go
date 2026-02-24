@@ -15,6 +15,8 @@ type iChatBIFileTemplateDownloadRequest interface {
 	GetAuthType() *string
 	SetInstanceName(v string) *ChatBIFileTemplateDownloadRequest
 	GetInstanceName() *string
+	SetSourceRegionId(v string) *ChatBIFileTemplateDownloadRequest
+	GetSourceRegionId() *string
 	SetTableType(v string) *ChatBIFileTemplateDownloadRequest
 	GetTableType() *string
 }
@@ -28,6 +30,10 @@ type ChatBIFileTemplateDownloadRequest struct {
 	//
 	// pc-2ze454l20me07****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -56,6 +62,10 @@ func (s *ChatBIFileTemplateDownloadRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
+func (s *ChatBIFileTemplateDownloadRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ChatBIFileTemplateDownloadRequest) GetTableType() *string {
 	return s.TableType
 }
@@ -72,6 +82,11 @@ func (s *ChatBIFileTemplateDownloadRequest) SetAuthType(v string) *ChatBIFileTem
 
 func (s *ChatBIFileTemplateDownloadRequest) SetInstanceName(v string) *ChatBIFileTemplateDownloadRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *ChatBIFileTemplateDownloadRequest) SetSourceRegionId(v string) *ChatBIFileTemplateDownloadRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

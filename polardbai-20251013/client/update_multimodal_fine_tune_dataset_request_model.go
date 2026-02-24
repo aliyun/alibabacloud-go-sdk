@@ -17,6 +17,8 @@ type iUpdateMultimodalFineTuneDatasetRequest interface {
 	GetDatasetId() *string
 	SetDatasetName(v string) *UpdateMultimodalFineTuneDatasetRequest
 	GetDatasetName() *string
+	SetSourceRegionId(v string) *UpdateMultimodalFineTuneDatasetRequest
+	GetSourceRegionId() *string
 }
 
 type UpdateMultimodalFineTuneDatasetRequest struct {
@@ -38,6 +40,10 @@ type UpdateMultimodalFineTuneDatasetRequest struct {
 	//
 	// 车辆
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 }
 
 func (s UpdateMultimodalFineTuneDatasetRequest) String() string {
@@ -64,6 +70,10 @@ func (s *UpdateMultimodalFineTuneDatasetRequest) GetDatasetName() *string {
 	return s.DatasetName
 }
 
+func (s *UpdateMultimodalFineTuneDatasetRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *UpdateMultimodalFineTuneDatasetRequest) SetDBClusterId(v string) *UpdateMultimodalFineTuneDatasetRequest {
 	s.DBClusterId = &v
 	return s
@@ -81,6 +91,11 @@ func (s *UpdateMultimodalFineTuneDatasetRequest) SetDatasetId(v string) *UpdateM
 
 func (s *UpdateMultimodalFineTuneDatasetRequest) SetDatasetName(v string) *UpdateMultimodalFineTuneDatasetRequest {
 	s.DatasetName = &v
+	return s
+}
+
+func (s *UpdateMultimodalFineTuneDatasetRequest) SetSourceRegionId(v string) *UpdateMultimodalFineTuneDatasetRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

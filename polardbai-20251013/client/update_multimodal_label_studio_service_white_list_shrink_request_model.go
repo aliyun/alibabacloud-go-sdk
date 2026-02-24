@@ -11,6 +11,8 @@ type iUpdateMultimodalLabelStudioServiceWhiteListShrinkRequest interface {
 	GoString() string
 	SetDBClusterId(v string) *UpdateMultimodalLabelStudioServiceWhiteListShrinkRequest
 	GetDBClusterId() *string
+	SetSourceRegionId(v string) *UpdateMultimodalLabelStudioServiceWhiteListShrinkRequest
+	GetSourceRegionId() *string
 	SetWhiteListShrink(v string) *UpdateMultimodalLabelStudioServiceWhiteListShrinkRequest
 	GetWhiteListShrink() *string
 }
@@ -21,7 +23,11 @@ type UpdateMultimodalLabelStudioServiceWhiteListShrinkRequest struct {
 	// example:
 	//
 	// pc-2ze454l20me07****
-	DBClusterId     *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId  *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	WhiteListShrink *string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
 }
 
@@ -37,12 +43,21 @@ func (s *UpdateMultimodalLabelStudioServiceWhiteListShrinkRequest) GetDBClusterI
 	return s.DBClusterId
 }
 
+func (s *UpdateMultimodalLabelStudioServiceWhiteListShrinkRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *UpdateMultimodalLabelStudioServiceWhiteListShrinkRequest) GetWhiteListShrink() *string {
 	return s.WhiteListShrink
 }
 
 func (s *UpdateMultimodalLabelStudioServiceWhiteListShrinkRequest) SetDBClusterId(v string) *UpdateMultimodalLabelStudioServiceWhiteListShrinkRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *UpdateMultimodalLabelStudioServiceWhiteListShrinkRequest) SetSourceRegionId(v string) *UpdateMultimodalLabelStudioServiceWhiteListShrinkRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

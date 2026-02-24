@@ -27,6 +27,8 @@ type iChatBIPatternUpdateEntryRequest interface {
 	GetPatternQuestion() *string
 	SetPatternSql(v string) *ChatBIPatternUpdateEntryRequest
 	GetPatternSql() *string
+	SetSourceRegionId(v string) *ChatBIPatternUpdateEntryRequest
+	GetSourceRegionId() *string
 	SetTableName(v string) *ChatBIPatternUpdateEntryRequest
 	GetTableName() *string
 }
@@ -82,6 +84,10 @@ type ChatBIPatternUpdateEntryRequest struct {
 	//
 	// AND status=#{statusCode}
 	PatternSql *string `json:"PatternSql,omitempty" xml:"PatternSql,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -134,6 +140,10 @@ func (s *ChatBIPatternUpdateEntryRequest) GetPatternSql() *string {
 	return s.PatternSql
 }
 
+func (s *ChatBIPatternUpdateEntryRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ChatBIPatternUpdateEntryRequest) GetTableName() *string {
 	return s.TableName
 }
@@ -180,6 +190,11 @@ func (s *ChatBIPatternUpdateEntryRequest) SetPatternQuestion(v string) *ChatBIPa
 
 func (s *ChatBIPatternUpdateEntryRequest) SetPatternSql(v string) *ChatBIPatternUpdateEntryRequest {
 	s.PatternSql = &v
+	return s
+}
+
+func (s *ChatBIPatternUpdateEntryRequest) SetSourceRegionId(v string) *ChatBIPatternUpdateEntryRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

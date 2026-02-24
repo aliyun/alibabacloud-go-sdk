@@ -15,6 +15,8 @@ type iCreateMultimodalLabelStudioServiceRequest interface {
 	GetDatasetIds() []*string
 	SetPassword(v string) *CreateMultimodalLabelStudioServiceRequest
 	GetPassword() *string
+	SetSourceRegionId(v string) *CreateMultimodalLabelStudioServiceRequest
+	GetSourceRegionId() *string
 	SetUsername(v string) *CreateMultimodalLabelStudioServiceRequest
 	GetUsername() *string
 }
@@ -34,6 +36,10 @@ type CreateMultimodalLabelStudioServiceRequest struct {
 	//
 	// *****
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -62,6 +68,10 @@ func (s *CreateMultimodalLabelStudioServiceRequest) GetPassword() *string {
 	return s.Password
 }
 
+func (s *CreateMultimodalLabelStudioServiceRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *CreateMultimodalLabelStudioServiceRequest) GetUsername() *string {
 	return s.Username
 }
@@ -78,6 +88,11 @@ func (s *CreateMultimodalLabelStudioServiceRequest) SetDatasetIds(v []*string) *
 
 func (s *CreateMultimodalLabelStudioServiceRequest) SetPassword(v string) *CreateMultimodalLabelStudioServiceRequest {
 	s.Password = &v
+	return s
+}
+
+func (s *CreateMultimodalLabelStudioServiceRequest) SetSourceRegionId(v string) *CreateMultimodalLabelStudioServiceRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

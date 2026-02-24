@@ -17,6 +17,8 @@ type iChatBISchemaIndexDeleteRequest interface {
 	GetDbName() *string
 	SetInstanceName(v string) *ChatBISchemaIndexDeleteRequest
 	GetInstanceName() *string
+	SetSourceRegionId(v string) *ChatBISchemaIndexDeleteRequest
+	GetSourceRegionId() *string
 	SetTableName(v string) *ChatBISchemaIndexDeleteRequest
 	GetTableName() *string
 }
@@ -36,6 +38,10 @@ type ChatBISchemaIndexDeleteRequest struct {
 	//
 	// pc-2ze2ak7avn731y760
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -68,6 +74,10 @@ func (s *ChatBISchemaIndexDeleteRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
+func (s *ChatBISchemaIndexDeleteRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ChatBISchemaIndexDeleteRequest) GetTableName() *string {
 	return s.TableName
 }
@@ -89,6 +99,11 @@ func (s *ChatBISchemaIndexDeleteRequest) SetDbName(v string) *ChatBISchemaIndexD
 
 func (s *ChatBISchemaIndexDeleteRequest) SetInstanceName(v string) *ChatBISchemaIndexDeleteRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *ChatBISchemaIndexDeleteRequest) SetSourceRegionId(v string) *ChatBISchemaIndexDeleteRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

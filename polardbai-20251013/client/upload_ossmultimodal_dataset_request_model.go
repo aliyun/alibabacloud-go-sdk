@@ -15,6 +15,8 @@ type iUploadOSSMultimodalDatasetRequest interface {
 	GetDatasetId() *string
 	SetOssUrl(v string) *UploadOSSMultimodalDatasetRequest
 	GetOssUrl() *string
+	SetSourceRegionId(v string) *UploadOSSMultimodalDatasetRequest
+	GetSourceRegionId() *string
 }
 
 type UploadOSSMultimodalDatasetRequest struct {
@@ -32,6 +34,10 @@ type UploadOSSMultimodalDatasetRequest struct {
 	//
 	// https://bucket-name.oss-cn-beijing.aliyuncs.com/005ed960-6a07-11ef-ab81-f32551c4afe8
 	OssUrl *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 }
 
 func (s UploadOSSMultimodalDatasetRequest) String() string {
@@ -54,6 +60,10 @@ func (s *UploadOSSMultimodalDatasetRequest) GetOssUrl() *string {
 	return s.OssUrl
 }
 
+func (s *UploadOSSMultimodalDatasetRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *UploadOSSMultimodalDatasetRequest) SetDBClusterId(v string) *UploadOSSMultimodalDatasetRequest {
 	s.DBClusterId = &v
 	return s
@@ -66,6 +76,11 @@ func (s *UploadOSSMultimodalDatasetRequest) SetDatasetId(v string) *UploadOSSMul
 
 func (s *UploadOSSMultimodalDatasetRequest) SetOssUrl(v string) *UploadOSSMultimodalDatasetRequest {
 	s.OssUrl = &v
+	return s
+}
+
+func (s *UploadOSSMultimodalDatasetRequest) SetSourceRegionId(v string) *UploadOSSMultimodalDatasetRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

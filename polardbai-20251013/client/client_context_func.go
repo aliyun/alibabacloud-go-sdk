@@ -37,6 +37,10 @@ func (client *Client) AddOSSMultimodalFineTuneDatasetWithContext(ctx context.Con
 		query["OssUrl"] = request.OssUrl
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -93,6 +97,10 @@ func (client *Client) ChatBIConfigCreateWithContext(ctx context.Context, request
 		query["InstanceName"] = request.InstanceName
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -147,6 +155,10 @@ func (client *Client) ChatBIConfigDeleteWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.InstanceName) {
 		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -207,6 +219,10 @@ func (client *Client) ChatBIConfigDeleteEntryWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.InstanceName) {
 		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -277,6 +293,10 @@ func (client *Client) ChatBIConfigQueryEntriesWithContext(ctx context.Context, r
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -335,6 +355,10 @@ func (client *Client) ChatBIConfigQueryTablesWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.InstanceName) {
 		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -409,6 +433,10 @@ func (client *Client) ChatBIConfigUpdateEntryWithContext(ctx context.Context, re
 		query["QueryFunction"] = request.QueryFunction
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	if !dara.IsNil(request.SqlCondition) {
 		query["SqlCondition"] = request.SqlCondition
 	}
@@ -473,6 +501,10 @@ func (client *Client) ChatBIFileTemplateDownloadWithContext(ctx context.Context,
 		query["InstanceName"] = request.InstanceName
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	if !dara.IsNil(request.TableType) {
 		query["TableType"] = request.TableType
 	}
@@ -531,6 +563,10 @@ func (client *Client) ChatBIFileUploadWithContext(ctx context.Context, request *
 
 	if !dara.IsNil(request.InstanceName) {
 		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -597,6 +633,10 @@ func (client *Client) ChatBIFileUploadCallbackWithContext(ctx context.Context, r
 		query["InstanceName"] = request.InstanceName
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	if !dara.IsNil(request.TableName) {
 		query["TableName"] = request.TableName
 	}
@@ -661,6 +701,10 @@ func (client *Client) ChatBIPatternCreateWithContext(ctx context.Context, reques
 		query["InstanceName"] = request.InstanceName
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	if !dara.IsNil(request.TableNameSuffix) {
 		query["TableNameSuffix"] = request.TableNameSuffix
 	}
@@ -719,6 +763,10 @@ func (client *Client) ChatBIPatternDeleteWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.InstanceName) {
 		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	if !dara.IsNil(request.TableName) {
@@ -785,6 +833,10 @@ func (client *Client) ChatBIPatternDeleteEntryWithContext(ctx context.Context, r
 		query["InstanceName"] = request.InstanceName
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	if !dara.IsNil(request.TableName) {
 		query["TableName"] = request.TableName
 	}
@@ -849,6 +901,10 @@ func (client *Client) ChatBIPatternIndexCreateWithContext(ctx context.Context, r
 		query["PatternTableName"] = request.PatternTableName
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	if !dara.IsNil(request.TableNameSuffix) {
 		query["TableNameSuffix"] = request.TableNameSuffix
 	}
@@ -907,6 +963,10 @@ func (client *Client) ChatBIPatternIndexDeleteWithContext(ctx context.Context, r
 
 	if !dara.IsNil(request.InstanceName) {
 		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	if !dara.IsNil(request.TableName) {
@@ -981,6 +1041,10 @@ func (client *Client) ChatBIPatternIndexQueryTablesWithContext(ctx context.Conte
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1047,6 +1111,10 @@ func (client *Client) ChatBIPatternQueryEntriesWithContext(ctx context.Context, 
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	if !dara.IsNil(request.TableName) {
@@ -1119,6 +1187,10 @@ func (client *Client) ChatBIPatternQueryTablesWithContext(ctx context.Context, r
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1195,6 +1267,10 @@ func (client *Client) ChatBIPatternUpdateEntryWithContext(ctx context.Context, r
 
 	if !dara.IsNil(request.PatternSql) {
 		query["PatternSql"] = request.PatternSql
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	if !dara.IsNil(request.TableName) {
@@ -1306,6 +1382,10 @@ func (client *Client) ChatBIPredictSseWithContext(ctx context.Context, tmpReq *C
 		query["SelectData"] = request.SelectData
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	if !dara.IsNil(request.ThinkingMode) {
 		query["ThinkingMode"] = request.ThinkingMode
 	}
@@ -1368,6 +1448,10 @@ func (client *Client) ChatBISchemaIndexCreateWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.InstanceName) {
 		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	if !dara.IsNil(request.TableNameSuffix) {
@@ -1436,6 +1520,10 @@ func (client *Client) ChatBISchemaIndexDeleteWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.InstanceName) {
 		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	if !dara.IsNil(request.TableName) {
@@ -1510,6 +1598,10 @@ func (client *Client) ChatBISchemaIndexQueryTablesWithContext(ctx context.Contex
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1564,6 +1656,10 @@ func (client *Client) ChatBIUpdateTableValidationColumnsWithContext(ctx context.
 
 	if !dara.IsNil(request.InstanceName) {
 		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	if !dara.IsNil(request.TableName) {
@@ -1626,6 +1722,10 @@ func (client *Client) CreateMultimodalDatasetWithContext(ctx context.Context, re
 		query["DatasetName"] = request.DatasetName
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1682,6 +1782,10 @@ func (client *Client) CreateMultimodalDatasetEmbeddingWithContext(ctx context.Co
 		query["ModelMode"] = request.ModelMode
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1732,6 +1836,10 @@ func (client *Client) CreateMultimodalFineTuneDatasetWithContext(ctx context.Con
 
 	if !dara.IsNil(request.DatasetName) {
 		query["DatasetName"] = request.DatasetName
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1790,6 +1898,10 @@ func (client *Client) CreateMultimodalLabelStudioServiceWithContext(ctx context.
 
 	if !dara.IsNil(request.Password) {
 		query["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	if !dara.IsNil(request.Username) {
@@ -1866,6 +1978,10 @@ func (client *Client) CreateMultimodalSearchTaskWithContext(ctx context.Context,
 		query["SearchModel"] = request.SearchModel
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	if !dara.IsNil(request.TopK) {
 		query["TopK"] = request.TopK
 	}
@@ -1936,6 +2052,10 @@ func (client *Client) CreateMultimodalSearchTaskResultFineTuneDatasetWithContext
 		query["ResultMode"] = request.ResultMode
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	if !dara.IsNil(request.TaskId) {
 		query["TaskId"] = request.TaskId
 	}
@@ -1992,6 +2112,10 @@ func (client *Client) DeleteMultimodalDatasetWithContext(ctx context.Context, re
 		query["DatasetId"] = request.DatasetId
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2038,6 +2162,10 @@ func (client *Client) DeleteMultimodalEmbeddingWithContext(ctx context.Context, 
 
 	if !dara.IsNil(request.Embedding) {
 		query["Embedding"] = request.Embedding
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2088,6 +2216,10 @@ func (client *Client) DeleteMultimodalFineTuneDatasetWithContext(ctx context.Con
 		query["DatasetId"] = request.DatasetId
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2130,6 +2262,10 @@ func (client *Client) DeleteMultimodalLabelStudioServiceWithContext(ctx context.
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2184,6 +2320,10 @@ func (client *Client) DeleteOSSMultimodalFineTuneDatasetWithContext(ctx context.
 		query["OssUrl"] = request.OssUrl
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2226,6 +2366,10 @@ func (client *Client) DownloadMultimodalSearchTaskResultMetadataWithContext(ctx 
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	if !dara.IsNil(request.TaskId) {
@@ -2278,6 +2422,10 @@ func (client *Client) GetUserTokenWithContext(ctx context.Context, request *GetU
 
 	if !dara.IsNil(request.Password) {
 		query["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	if !dara.IsNil(request.Username) {
@@ -2340,6 +2488,10 @@ func (client *Client) ListMultimodalDatasetWithContext(ctx context.Context, requ
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2392,6 +2544,10 @@ func (client *Client) ListMultimodalEmbeddingModelWithContext(ctx context.Contex
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2434,6 +2590,10 @@ func (client *Client) ListMultimodalEmbeddingModelModeWithContext(ctx context.Co
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2492,6 +2652,10 @@ func (client *Client) ListMultimodalFineTuneDatasetWithContext(ctx context.Conte
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2534,6 +2698,10 @@ func (client *Client) ListMultimodalLabelStudioServiceWithContext(ctx context.Co
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2586,6 +2754,10 @@ func (client *Client) ListMultimodalSearchModelWithContext(ctx context.Context, 
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2658,6 +2830,10 @@ func (client *Client) ListMultimodalSearchTaskWithContext(ctx context.Context, t
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2708,6 +2884,10 @@ func (client *Client) ListMultimodalSearchTaskResultWithContext(ctx context.Cont
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	if !dara.IsNil(request.TaskId) {
@@ -2770,6 +2950,10 @@ func (client *Client) UpdateMultimodalDatasetWithContext(ctx context.Context, re
 		query["DatasetName"] = request.DatasetName
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2826,6 +3010,10 @@ func (client *Client) UpdateMultimodalFineTuneDatasetWithContext(ctx context.Con
 		query["DatasetName"] = request.DatasetName
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2874,6 +3062,10 @@ func (client *Client) UpdateMultimodalLabelStudioServiceWhiteListWithContext(ctx
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	if !dara.IsNil(request.WhiteListShrink) {
@@ -2932,6 +3124,10 @@ func (client *Client) UploadOSSMultimodalDatasetWithContext(ctx context.Context,
 		query["OssUrl"] = request.OssUrl
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2988,6 +3184,10 @@ func (client *Client) ValidateDatabaseUserTokenWithContext(ctx context.Context, 
 		query["DBName"] = request.DBName
 	}
 
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3038,6 +3238,10 @@ func (client *Client) ValidateUserTokenWithContext(ctx context.Context, request 
 
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3120,6 +3324,10 @@ func (client *Client) chatBIPredictSseWithSSECtx_opYieldFunc(_yield chan *ChatBI
 
 	if !dara.IsNil(request.SelectData) {
 		query["SelectData"] = request.SelectData
+	}
+
+	if !dara.IsNil(request.SourceRegionId) {
+		query["SourceRegionId"] = request.SourceRegionId
 	}
 
 	if !dara.IsNil(request.ThinkingMode) {

@@ -17,6 +17,8 @@ type iChatBIFileUploadRequest interface {
 	GetFileName() *string
 	SetInstanceName(v string) *ChatBIFileUploadRequest
 	GetInstanceName() *string
+	SetSourceRegionId(v string) *ChatBIFileUploadRequest
+	GetSourceRegionId() *string
 }
 
 type ChatBIFileUploadRequest struct {
@@ -32,6 +34,10 @@ type ChatBIFileUploadRequest struct {
 	//
 	// pc-2ze454l20me07****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 }
 
 func (s ChatBIFileUploadRequest) String() string {
@@ -58,6 +64,10 @@ func (s *ChatBIFileUploadRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
+func (s *ChatBIFileUploadRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ChatBIFileUploadRequest) SetAuthMessage(v string) *ChatBIFileUploadRequest {
 	s.AuthMessage = &v
 	return s
@@ -75,6 +85,11 @@ func (s *ChatBIFileUploadRequest) SetFileName(v string) *ChatBIFileUploadRequest
 
 func (s *ChatBIFileUploadRequest) SetInstanceName(v string) *ChatBIFileUploadRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *ChatBIFileUploadRequest) SetSourceRegionId(v string) *ChatBIFileUploadRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

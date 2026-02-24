@@ -17,6 +17,8 @@ type iChatBIPatternCreateRequest interface {
 	GetDbName() *string
 	SetInstanceName(v string) *ChatBIPatternCreateRequest
 	GetInstanceName() *string
+	SetSourceRegionId(v string) *ChatBIPatternCreateRequest
+	GetSourceRegionId() *string
 	SetTableNameSuffix(v string) *ChatBIPatternCreateRequest
 	GetTableNameSuffix() *string
 }
@@ -36,6 +38,10 @@ type ChatBIPatternCreateRequest struct {
 	//
 	// pc-2ze454l20me07****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	// example:
 	//
 	// 空字符串
@@ -66,6 +72,10 @@ func (s *ChatBIPatternCreateRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
+func (s *ChatBIPatternCreateRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ChatBIPatternCreateRequest) GetTableNameSuffix() *string {
 	return s.TableNameSuffix
 }
@@ -87,6 +97,11 @@ func (s *ChatBIPatternCreateRequest) SetDbName(v string) *ChatBIPatternCreateReq
 
 func (s *ChatBIPatternCreateRequest) SetInstanceName(v string) *ChatBIPatternCreateRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *ChatBIPatternCreateRequest) SetSourceRegionId(v string) *ChatBIPatternCreateRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

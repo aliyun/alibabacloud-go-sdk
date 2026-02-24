@@ -15,6 +15,8 @@ type iCreateMultimodalFineTuneDatasetRequest interface {
 	GetDatasetDescription() *string
 	SetDatasetName(v string) *CreateMultimodalFineTuneDatasetRequest
 	GetDatasetName() *string
+	SetSourceRegionId(v string) *CreateMultimodalFineTuneDatasetRequest
+	GetSourceRegionId() *string
 }
 
 type CreateMultimodalFineTuneDatasetRequest struct {
@@ -32,6 +34,10 @@ type CreateMultimodalFineTuneDatasetRequest struct {
 	//
 	// 用户输入数据集名
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 }
 
 func (s CreateMultimodalFineTuneDatasetRequest) String() string {
@@ -54,6 +60,10 @@ func (s *CreateMultimodalFineTuneDatasetRequest) GetDatasetName() *string {
 	return s.DatasetName
 }
 
+func (s *CreateMultimodalFineTuneDatasetRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *CreateMultimodalFineTuneDatasetRequest) SetDBClusterId(v string) *CreateMultimodalFineTuneDatasetRequest {
 	s.DBClusterId = &v
 	return s
@@ -66,6 +76,11 @@ func (s *CreateMultimodalFineTuneDatasetRequest) SetDatasetDescription(v string)
 
 func (s *CreateMultimodalFineTuneDatasetRequest) SetDatasetName(v string) *CreateMultimodalFineTuneDatasetRequest {
 	s.DatasetName = &v
+	return s
+}
+
+func (s *CreateMultimodalFineTuneDatasetRequest) SetSourceRegionId(v string) *CreateMultimodalFineTuneDatasetRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

@@ -15,6 +15,8 @@ type iListMultimodalEmbeddingModelRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListMultimodalEmbeddingModelRequest
 	GetPageSize() *int32
+	SetSourceRegionId(v string) *ListMultimodalEmbeddingModelRequest
+	GetSourceRegionId() *string
 }
 
 type ListMultimodalEmbeddingModelRequest struct {
@@ -32,6 +34,10 @@ type ListMultimodalEmbeddingModelRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 }
 
 func (s ListMultimodalEmbeddingModelRequest) String() string {
@@ -54,6 +60,10 @@ func (s *ListMultimodalEmbeddingModelRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListMultimodalEmbeddingModelRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ListMultimodalEmbeddingModelRequest) SetDBClusterId(v string) *ListMultimodalEmbeddingModelRequest {
 	s.DBClusterId = &v
 	return s
@@ -66,6 +76,11 @@ func (s *ListMultimodalEmbeddingModelRequest) SetPageNumber(v int32) *ListMultim
 
 func (s *ListMultimodalEmbeddingModelRequest) SetPageSize(v int32) *ListMultimodalEmbeddingModelRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListMultimodalEmbeddingModelRequest) SetSourceRegionId(v string) *ListMultimodalEmbeddingModelRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

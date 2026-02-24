@@ -15,6 +15,8 @@ type iValidateUserTokenRequest interface {
 	GetAuthType() *string
 	SetDBClusterId(v string) *ValidateUserTokenRequest
 	GetDBClusterId() *string
+	SetSourceRegionId(v string) *ValidateUserTokenRequest
+	GetSourceRegionId() *string
 }
 
 type ValidateUserTokenRequest struct {
@@ -36,6 +38,10 @@ type ValidateUserTokenRequest struct {
 	//
 	// pc-2ze454l20me07****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 }
 
 func (s ValidateUserTokenRequest) String() string {
@@ -58,6 +64,10 @@ func (s *ValidateUserTokenRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
 
+func (s *ValidateUserTokenRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ValidateUserTokenRequest) SetAuthMessage(v string) *ValidateUserTokenRequest {
 	s.AuthMessage = &v
 	return s
@@ -70,6 +80,11 @@ func (s *ValidateUserTokenRequest) SetAuthType(v string) *ValidateUserTokenReque
 
 func (s *ValidateUserTokenRequest) SetDBClusterId(v string) *ValidateUserTokenRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *ValidateUserTokenRequest) SetSourceRegionId(v string) *ValidateUserTokenRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

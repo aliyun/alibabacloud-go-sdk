@@ -21,6 +21,8 @@ type iChatBIFileUploadCallbackRequest interface {
 	GetFileName() *string
 	SetInstanceName(v string) *ChatBIFileUploadCallbackRequest
 	GetInstanceName() *string
+	SetSourceRegionId(v string) *ChatBIFileUploadCallbackRequest
+	GetSourceRegionId() *string
 	SetTableName(v string) *ChatBIFileUploadCallbackRequest
 	GetTableName() *string
 	SetTableType(v string) *ChatBIFileUploadCallbackRequest
@@ -52,6 +54,10 @@ type ChatBIFileUploadCallbackRequest struct {
 	//
 	// pc-2ze454l20me07****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -98,6 +104,10 @@ func (s *ChatBIFileUploadCallbackRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
+func (s *ChatBIFileUploadCallbackRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ChatBIFileUploadCallbackRequest) GetTableName() *string {
 	return s.TableName
 }
@@ -133,6 +143,11 @@ func (s *ChatBIFileUploadCallbackRequest) SetFileName(v string) *ChatBIFileUploa
 
 func (s *ChatBIFileUploadCallbackRequest) SetInstanceName(v string) *ChatBIFileUploadCallbackRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *ChatBIFileUploadCallbackRequest) SetSourceRegionId(v string) *ChatBIFileUploadCallbackRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

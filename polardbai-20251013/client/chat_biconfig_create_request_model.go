@@ -17,6 +17,8 @@ type iChatBIConfigCreateRequest interface {
 	GetDbName() *string
 	SetInstanceName(v string) *ChatBIConfigCreateRequest
 	GetInstanceName() *string
+	SetSourceRegionId(v string) *ChatBIConfigCreateRequest
+	GetSourceRegionId() *string
 }
 
 type ChatBIConfigCreateRequest struct {
@@ -34,6 +36,10 @@ type ChatBIConfigCreateRequest struct {
 	//
 	// pc-2ze454l20me07****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 }
 
 func (s ChatBIConfigCreateRequest) String() string {
@@ -60,6 +66,10 @@ func (s *ChatBIConfigCreateRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
+func (s *ChatBIConfigCreateRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ChatBIConfigCreateRequest) SetAuthMessage(v string) *ChatBIConfigCreateRequest {
 	s.AuthMessage = &v
 	return s
@@ -77,6 +87,11 @@ func (s *ChatBIConfigCreateRequest) SetDbName(v string) *ChatBIConfigCreateReque
 
 func (s *ChatBIConfigCreateRequest) SetInstanceName(v string) *ChatBIConfigCreateRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *ChatBIConfigCreateRequest) SetSourceRegionId(v string) *ChatBIConfigCreateRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

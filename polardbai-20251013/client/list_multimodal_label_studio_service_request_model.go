@@ -11,6 +11,8 @@ type iListMultimodalLabelStudioServiceRequest interface {
 	GoString() string
 	SetDBClusterId(v string) *ListMultimodalLabelStudioServiceRequest
 	GetDBClusterId() *string
+	SetSourceRegionId(v string) *ListMultimodalLabelStudioServiceRequest
+	GetSourceRegionId() *string
 }
 
 type ListMultimodalLabelStudioServiceRequest struct {
@@ -20,6 +22,10 @@ type ListMultimodalLabelStudioServiceRequest struct {
 	//
 	// pc-2ze454l20me07****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 }
 
 func (s ListMultimodalLabelStudioServiceRequest) String() string {
@@ -34,8 +40,17 @@ func (s *ListMultimodalLabelStudioServiceRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
 
+func (s *ListMultimodalLabelStudioServiceRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ListMultimodalLabelStudioServiceRequest) SetDBClusterId(v string) *ListMultimodalLabelStudioServiceRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *ListMultimodalLabelStudioServiceRequest) SetSourceRegionId(v string) *ListMultimodalLabelStudioServiceRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

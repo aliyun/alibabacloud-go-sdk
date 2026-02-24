@@ -13,6 +13,8 @@ type iDeleteMultimodalFineTuneDatasetRequest interface {
 	GetDBClusterId() *string
 	SetDatasetId(v string) *DeleteMultimodalFineTuneDatasetRequest
 	GetDatasetId() *string
+	SetSourceRegionId(v string) *DeleteMultimodalFineTuneDatasetRequest
+	GetSourceRegionId() *string
 }
 
 type DeleteMultimodalFineTuneDatasetRequest struct {
@@ -28,6 +30,10 @@ type DeleteMultimodalFineTuneDatasetRequest struct {
 	//
 	// ds-***
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 }
 
 func (s DeleteMultimodalFineTuneDatasetRequest) String() string {
@@ -46,6 +52,10 @@ func (s *DeleteMultimodalFineTuneDatasetRequest) GetDatasetId() *string {
 	return s.DatasetId
 }
 
+func (s *DeleteMultimodalFineTuneDatasetRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *DeleteMultimodalFineTuneDatasetRequest) SetDBClusterId(v string) *DeleteMultimodalFineTuneDatasetRequest {
 	s.DBClusterId = &v
 	return s
@@ -53,6 +63,11 @@ func (s *DeleteMultimodalFineTuneDatasetRequest) SetDBClusterId(v string) *Delet
 
 func (s *DeleteMultimodalFineTuneDatasetRequest) SetDatasetId(v string) *DeleteMultimodalFineTuneDatasetRequest {
 	s.DatasetId = &v
+	return s
+}
+
+func (s *DeleteMultimodalFineTuneDatasetRequest) SetSourceRegionId(v string) *DeleteMultimodalFineTuneDatasetRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

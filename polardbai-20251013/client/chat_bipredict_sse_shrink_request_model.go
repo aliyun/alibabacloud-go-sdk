@@ -31,6 +31,8 @@ type iChatBIPredictSseShrinkRequest interface {
 	GetSchemaIndexTableName() *string
 	SetSelectData(v bool) *ChatBIPredictSseShrinkRequest
 	GetSelectData() *bool
+	SetSourceRegionId(v string) *ChatBIPredictSseShrinkRequest
+	GetSourceRegionId() *string
 	SetThinkingMode(v bool) *ChatBIPredictSseShrinkRequest
 	GetThinkingMode() *bool
 }
@@ -77,6 +79,10 @@ type ChatBIPredictSseShrinkRequest struct {
 	//
 	// true
 	SelectData *bool `json:"SelectData,omitempty" xml:"SelectData,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	// example:
 	//
 	// false
@@ -135,6 +141,10 @@ func (s *ChatBIPredictSseShrinkRequest) GetSelectData() *bool {
 	return s.SelectData
 }
 
+func (s *ChatBIPredictSseShrinkRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ChatBIPredictSseShrinkRequest) GetThinkingMode() *bool {
 	return s.ThinkingMode
 }
@@ -191,6 +201,11 @@ func (s *ChatBIPredictSseShrinkRequest) SetSchemaIndexTableName(v string) *ChatB
 
 func (s *ChatBIPredictSseShrinkRequest) SetSelectData(v bool) *ChatBIPredictSseShrinkRequest {
 	s.SelectData = &v
+	return s
+}
+
+func (s *ChatBIPredictSseShrinkRequest) SetSourceRegionId(v string) *ChatBIPredictSseShrinkRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

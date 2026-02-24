@@ -31,6 +31,8 @@ type iChatBIPredictSseRequest interface {
 	GetSchemaIndexTableName() *string
 	SetSelectData(v bool) *ChatBIPredictSseRequest
 	GetSelectData() *bool
+	SetSourceRegionId(v string) *ChatBIPredictSseRequest
+	GetSourceRegionId() *string
 	SetThinkingMode(v bool) *ChatBIPredictSseRequest
 	GetThinkingMode() *bool
 }
@@ -77,6 +79,10 @@ type ChatBIPredictSseRequest struct {
 	//
 	// true
 	SelectData *bool `json:"SelectData,omitempty" xml:"SelectData,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	// example:
 	//
 	// false
@@ -135,6 +141,10 @@ func (s *ChatBIPredictSseRequest) GetSelectData() *bool {
 	return s.SelectData
 }
 
+func (s *ChatBIPredictSseRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ChatBIPredictSseRequest) GetThinkingMode() *bool {
 	return s.ThinkingMode
 }
@@ -191,6 +201,11 @@ func (s *ChatBIPredictSseRequest) SetSchemaIndexTableName(v string) *ChatBIPredi
 
 func (s *ChatBIPredictSseRequest) SetSelectData(v bool) *ChatBIPredictSseRequest {
 	s.SelectData = &v
+	return s
+}
+
+func (s *ChatBIPredictSseRequest) SetSourceRegionId(v string) *ChatBIPredictSseRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

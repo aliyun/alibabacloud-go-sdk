@@ -11,6 +11,8 @@ type iDeleteMultimodalLabelStudioServiceRequest interface {
 	GoString() string
 	SetDBClusterId(v string) *DeleteMultimodalLabelStudioServiceRequest
 	GetDBClusterId() *string
+	SetSourceRegionId(v string) *DeleteMultimodalLabelStudioServiceRequest
+	GetSourceRegionId() *string
 }
 
 type DeleteMultimodalLabelStudioServiceRequest struct {
@@ -20,6 +22,10 @@ type DeleteMultimodalLabelStudioServiceRequest struct {
 	//
 	// pc-2ze454l20me07****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 }
 
 func (s DeleteMultimodalLabelStudioServiceRequest) String() string {
@@ -34,8 +40,17 @@ func (s *DeleteMultimodalLabelStudioServiceRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
 
+func (s *DeleteMultimodalLabelStudioServiceRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *DeleteMultimodalLabelStudioServiceRequest) SetDBClusterId(v string) *DeleteMultimodalLabelStudioServiceRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *DeleteMultimodalLabelStudioServiceRequest) SetSourceRegionId(v string) *DeleteMultimodalLabelStudioServiceRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

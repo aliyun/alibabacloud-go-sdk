@@ -15,6 +15,8 @@ type iCreateMultimodalDatasetRequest interface {
 	GetDatasetDescription() *string
 	SetDatasetName(v string) *CreateMultimodalDatasetRequest
 	GetDatasetName() *string
+	SetSourceRegionId(v string) *CreateMultimodalDatasetRequest
+	GetSourceRegionId() *string
 }
 
 type CreateMultimodalDatasetRequest struct {
@@ -32,6 +34,10 @@ type CreateMultimodalDatasetRequest struct {
 	//
 	// 用户输入数据集名
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 }
 
 func (s CreateMultimodalDatasetRequest) String() string {
@@ -54,6 +60,10 @@ func (s *CreateMultimodalDatasetRequest) GetDatasetName() *string {
 	return s.DatasetName
 }
 
+func (s *CreateMultimodalDatasetRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *CreateMultimodalDatasetRequest) SetDBClusterId(v string) *CreateMultimodalDatasetRequest {
 	s.DBClusterId = &v
 	return s
@@ -66,6 +76,11 @@ func (s *CreateMultimodalDatasetRequest) SetDatasetDescription(v string) *Create
 
 func (s *CreateMultimodalDatasetRequest) SetDatasetName(v string) *CreateMultimodalDatasetRequest {
 	s.DatasetName = &v
+	return s
+}
+
+func (s *CreateMultimodalDatasetRequest) SetSourceRegionId(v string) *CreateMultimodalDatasetRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iListMultimodalEmbeddingModelModeRequest interface {
 	GoString() string
 	SetDBClusterId(v string) *ListMultimodalEmbeddingModelModeRequest
 	GetDBClusterId() *string
+	SetSourceRegionId(v string) *ListMultimodalEmbeddingModelModeRequest
+	GetSourceRegionId() *string
 }
 
 type ListMultimodalEmbeddingModelModeRequest struct {
@@ -20,6 +22,10 @@ type ListMultimodalEmbeddingModelModeRequest struct {
 	//
 	// pc-2ze454l20me07****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 }
 
 func (s ListMultimodalEmbeddingModelModeRequest) String() string {
@@ -34,8 +40,17 @@ func (s *ListMultimodalEmbeddingModelModeRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
 
+func (s *ListMultimodalEmbeddingModelModeRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ListMultimodalEmbeddingModelModeRequest) SetDBClusterId(v string) *ListMultimodalEmbeddingModelModeRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *ListMultimodalEmbeddingModelModeRequest) SetSourceRegionId(v string) *ListMultimodalEmbeddingModelModeRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

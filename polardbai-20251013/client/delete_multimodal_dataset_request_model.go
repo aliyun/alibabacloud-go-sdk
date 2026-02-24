@@ -13,6 +13,8 @@ type iDeleteMultimodalDatasetRequest interface {
 	GetDBClusterId() *string
 	SetDatasetId(v string) *DeleteMultimodalDatasetRequest
 	GetDatasetId() *string
+	SetSourceRegionId(v string) *DeleteMultimodalDatasetRequest
+	GetSourceRegionId() *string
 }
 
 type DeleteMultimodalDatasetRequest struct {
@@ -28,6 +30,10 @@ type DeleteMultimodalDatasetRequest struct {
 	//
 	// ds-*****ab0
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 }
 
 func (s DeleteMultimodalDatasetRequest) String() string {
@@ -46,6 +52,10 @@ func (s *DeleteMultimodalDatasetRequest) GetDatasetId() *string {
 	return s.DatasetId
 }
 
+func (s *DeleteMultimodalDatasetRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *DeleteMultimodalDatasetRequest) SetDBClusterId(v string) *DeleteMultimodalDatasetRequest {
 	s.DBClusterId = &v
 	return s
@@ -53,6 +63,11 @@ func (s *DeleteMultimodalDatasetRequest) SetDBClusterId(v string) *DeleteMultimo
 
 func (s *DeleteMultimodalDatasetRequest) SetDatasetId(v string) *DeleteMultimodalDatasetRequest {
 	s.DatasetId = &v
+	return s
+}
+
+func (s *DeleteMultimodalDatasetRequest) SetSourceRegionId(v string) *DeleteMultimodalDatasetRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

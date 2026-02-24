@@ -17,6 +17,8 @@ type iListMultimodalDatasetRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListMultimodalDatasetRequest
 	GetPageSize() *int32
+	SetSourceRegionId(v string) *ListMultimodalDatasetRequest
+	GetSourceRegionId() *string
 }
 
 type ListMultimodalDatasetRequest struct {
@@ -38,6 +40,10 @@ type ListMultimodalDatasetRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 }
 
 func (s ListMultimodalDatasetRequest) String() string {
@@ -64,6 +70,10 @@ func (s *ListMultimodalDatasetRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListMultimodalDatasetRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ListMultimodalDatasetRequest) SetDBClusterId(v string) *ListMultimodalDatasetRequest {
 	s.DBClusterId = &v
 	return s
@@ -81,6 +91,11 @@ func (s *ListMultimodalDatasetRequest) SetPageNumber(v int32) *ListMultimodalDat
 
 func (s *ListMultimodalDatasetRequest) SetPageSize(v int32) *ListMultimodalDatasetRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListMultimodalDatasetRequest) SetSourceRegionId(v string) *ListMultimodalDatasetRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

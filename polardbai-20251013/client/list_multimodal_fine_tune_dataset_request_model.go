@@ -17,6 +17,8 @@ type iListMultimodalFineTuneDatasetRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListMultimodalFineTuneDatasetRequest
 	GetPageSize() *int32
+	SetSourceRegionId(v string) *ListMultimodalFineTuneDatasetRequest
+	GetSourceRegionId() *string
 }
 
 type ListMultimodalFineTuneDatasetRequest struct {
@@ -38,6 +40,10 @@ type ListMultimodalFineTuneDatasetRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 }
 
 func (s ListMultimodalFineTuneDatasetRequest) String() string {
@@ -64,6 +70,10 @@ func (s *ListMultimodalFineTuneDatasetRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListMultimodalFineTuneDatasetRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *ListMultimodalFineTuneDatasetRequest) SetDBClusterId(v string) *ListMultimodalFineTuneDatasetRequest {
 	s.DBClusterId = &v
 	return s
@@ -81,6 +91,11 @@ func (s *ListMultimodalFineTuneDatasetRequest) SetPageNumber(v int32) *ListMulti
 
 func (s *ListMultimodalFineTuneDatasetRequest) SetPageSize(v int32) *ListMultimodalFineTuneDatasetRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListMultimodalFineTuneDatasetRequest) SetSourceRegionId(v string) *ListMultimodalFineTuneDatasetRequest {
+	s.SourceRegionId = &v
 	return s
 }
 

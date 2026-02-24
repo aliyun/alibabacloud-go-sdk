@@ -17,6 +17,8 @@ type iUpdateMultimodalDatasetRequest interface {
 	GetDatasetId() *string
 	SetDatasetName(v string) *UpdateMultimodalDatasetRequest
 	GetDatasetName() *string
+	SetSourceRegionId(v string) *UpdateMultimodalDatasetRequest
+	GetSourceRegionId() *string
 }
 
 type UpdateMultimodalDatasetRequest struct {
@@ -38,6 +40,10 @@ type UpdateMultimodalDatasetRequest struct {
 	//
 	// 车辆图片
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 }
 
 func (s UpdateMultimodalDatasetRequest) String() string {
@@ -64,6 +70,10 @@ func (s *UpdateMultimodalDatasetRequest) GetDatasetName() *string {
 	return s.DatasetName
 }
 
+func (s *UpdateMultimodalDatasetRequest) GetSourceRegionId() *string {
+	return s.SourceRegionId
+}
+
 func (s *UpdateMultimodalDatasetRequest) SetDBClusterId(v string) *UpdateMultimodalDatasetRequest {
 	s.DBClusterId = &v
 	return s
@@ -81,6 +91,11 @@ func (s *UpdateMultimodalDatasetRequest) SetDatasetId(v string) *UpdateMultimoda
 
 func (s *UpdateMultimodalDatasetRequest) SetDatasetName(v string) *UpdateMultimodalDatasetRequest {
 	s.DatasetName = &v
+	return s
+}
+
+func (s *UpdateMultimodalDatasetRequest) SetSourceRegionId(v string) *UpdateMultimodalDatasetRequest {
+	s.SourceRegionId = &v
 	return s
 }
 
