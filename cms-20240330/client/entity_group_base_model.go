@@ -29,12 +29,24 @@ type iEntityGroupBase interface {
 
 type EntityGroupBase struct {
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // example:
+  // 
+  // eg-1234567890
   EntityGroupId *string `json:"entityGroupId,omitempty" xml:"entityGroupId,omitempty"`
   EntityGroupName *string `json:"entityGroupName,omitempty" xml:"entityGroupName,omitempty"`
   EntityQueries []*EntityGroupBaseEntityQueries `json:"entityQueries,omitempty" xml:"entityQueries,omitempty" type:"Repeated"`
   EntityRules *EntityDiscoverRule `json:"entityRules,omitempty" xml:"entityRules,omitempty"`
+  // example:
+  // 
+  // cn-heyuan
   RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+  // example:
+  // 
+  // 1654218***343050
   UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+  // example:
+  // 
+  // default-cms-1654218***343050-cn-hangzhou
   Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
@@ -137,7 +149,13 @@ func (s *EntityGroupBase) Validate() error {
 }
 
 type EntityGroupBaseEntityQueries struct {
+  // example:
+  // 
+  // acs.ecs.instance
   EntityType *string `json:"entityType,omitempty" xml:"entityType,omitempty"`
+  // example:
+  // 
+  // .entity with(type=\\"acs.ecs.instance\\") | where region_id in (\\"cn-beijing\\")
   Spl *string `json:"spl,omitempty" xml:"spl,omitempty"`
 }
 

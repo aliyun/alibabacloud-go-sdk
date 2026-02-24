@@ -52,28 +52,149 @@ type iAlertRuleQuery interface {
 }
 
 type AlertRuleQuery struct {
-	CheckAfterDataComplete *bool                         `json:"checkAfterDataComplete,omitempty" xml:"checkAfterDataComplete,omitempty"`
-	Dimensions             []map[string]*string          `json:"dimensions,omitempty" xml:"dimensions,omitempty" type:"Repeated"`
-	Domain                 *string                       `json:"domain,omitempty" xml:"domain,omitempty"`
-	Duration               *int64                        `json:"duration,omitempty" xml:"duration,omitempty"`
-	EntityFields           []*AlertRuleQueryEntityFields `json:"entityFields,omitempty" xml:"entityFields,omitempty" type:"Repeated"`
-	EntityFilter           *AlertRuleQueryEntityFilter   `json:"entityFilter,omitempty" xml:"entityFilter,omitempty" type:"Struct"`
-	Expr                   *string                       `json:"expr,omitempty" xml:"expr,omitempty"`
-	FirstJoin              *AlertRuleSlsQueryJoin        `json:"firstJoin,omitempty" xml:"firstJoin,omitempty"`
-	GroupFieldList         []*string                     `json:"groupFieldList,omitempty" xml:"groupFieldList,omitempty" type:"Repeated"`
-	GroupId                *string                       `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	GroupType              *string                       `json:"groupType,omitempty" xml:"groupType,omitempty"`
-	LabelFilters           []*AlertRuleQueryLabelFilters `json:"labelFilters,omitempty" xml:"labelFilters,omitempty" type:"Repeated"`
-	Metric                 *string                       `json:"metric,omitempty" xml:"metric,omitempty"`
-	MetricSet              *string                       `json:"metricSet,omitempty" xml:"metricSet,omitempty"`
-	Namespace              *string                       `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	Queries                []*AlertRuleQueryQueries      `json:"queries,omitempty" xml:"queries,omitempty" type:"Repeated"`
-	RelationType           *string                       `json:"relationType,omitempty" xml:"relationType,omitempty"`
-	SecondJoin             *AlertRuleSlsQueryJoin        `json:"secondJoin,omitempty" xml:"secondJoin,omitempty"`
-	ServiceIds             []*string                     `json:"serviceIds,omitempty" xml:"serviceIds,omitempty" type:"Repeated"`
-	// 查询类型
+	// Applicable query type: PROMQL_QUERY.
+	//
+	// Whether to perform alert evaluation only after data completeness is ensured.
+	//
+	// example:
+	//
+	// true
+	CheckAfterDataComplete *bool `json:"checkAfterDataComplete,omitempty" xml:"checkAfterDataComplete,omitempty"`
+	// Applicable query type: CMS_BASIC_QUERY.
+	//
+	// List of filtering dimensions for the resource.
+	Dimensions []map[string]*string `json:"dimensions,omitempty" xml:"dimensions,omitempty" type:"Repeated"`
+	// 资源所属的领域。
+	//
+	// example:
+	//
+	// rum
+	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// Applicable query type: PROMQL_QUERY.
+	//
+	// Duration of alert data, in seconds.
+	//
+	// example:
+	//
+	// 60
+	Duration     *int64                        `json:"duration,omitempty" xml:"duration,omitempty"`
+	EntityFields []*AlertRuleQueryEntityFields `json:"entityFields,omitempty" xml:"entityFields,omitempty" type:"Repeated"`
+	// 资源过滤器，用于筛选目标资源。
+	EntityFilter *AlertRuleQueryEntityFilter `json:"entityFilter,omitempty" xml:"entityFilter,omitempty" type:"Struct"`
+	// Applicable query type: PROMQL_QUERY.
+	//
+	// Query expression (PromQL).
+	//
+	// example:
+	//
+	// sum(sum(max_over_time(kube_pod_status_phase{phase=~\\"Pending\\",job=\\"_kube-state-metrics\\"}[5m])) by (pod)) > 1000
+	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
+	// Applicable query type: SLS_MULTI_QUERY.
+	//
+	// Configuration for the set join operation between the results of subquery 1 (queries[0]) and subquery 2 (queries[1]).
+	FirstJoin *AlertRuleSlsQueryJoin `json:"firstJoin,omitempty" xml:"firstJoin,omitempty"`
+	// Applicable query type: SLS_MULTI_QUERY.
+	//
+	// List of grouping field names.
+	GroupFieldList []*string `json:"groupFieldList,omitempty" xml:"groupFieldList,omitempty" type:"Repeated"`
+	// Applicable query type: CMS_BASIC_QUERY.
+	//
+	// Associated application group ID, valid only when relationType = GROUP.
+	//
+	// example:
+	//
+	// 23423
+	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// Applicable query type: SLS_MULTI_QUERY.
+	//
+	// Grouping type, with the following possible values:
+	//
+	// - none: No grouping.
+	//
+	// - label: Automatic label grouping.
+	//
+	// - custom: Custom label grouping.
+	//
+	// example:
+	//
+	// label
+	GroupType    *string                       `json:"groupType,omitempty" xml:"groupType,omitempty"`
+	LabelFilters []*AlertRuleQueryLabelFilters `json:"labelFilters,omitempty" xml:"labelFilters,omitempty" type:"Repeated"`
+	// 指标名。
+	//
+	// example:
+	//
+	// memory
+	Metric *string `json:"metric,omitempty" xml:"metric,omitempty"`
+	// 监控指标集合。
+	//
+	// example:
+	//
+	// cpu_usage
+	MetricSet *string `json:"metricSet,omitempty" xml:"metricSet,omitempty"`
+	// Applicable query type: CMS_BASIC_QUERY.
+	//
+	// Namespace of the metric.
+	//
+	// example:
+	//
+	// acs_ecs_dashboard
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// Applicable query types: SLS_MULTI_QUERY, APM_MULTI_QUERY.
+	//
+	// List of subqueries.
+	//
+	// For the SLS_MULTI_QUERY type, the list can contain up to three subqueries, and the number and order of subqueries must match the sub-datasource configurations in datasource.dsList.
+	Queries []*AlertRuleQueryQueries `json:"queries,omitempty" xml:"queries,omitempty" type:"Repeated"`
+	// Applicable query type: CMS_BASIC_QUERY.
+	//
+	// Resource scope for the rule query, with the following allowed values:
+	//
+	// - USER: All resources under the user\\"s UID.
+	//
+	// - GROUP: Application group.
+	//
+	// - INSTANCE: Specified list of instances.
+	//
+	// example:
+	//
+	// USER
+	RelationType *string `json:"relationType,omitempty" xml:"relationType,omitempty"`
+	// Applicable query type: SLS_MULTI_QUERY.
+	//
+	// Configuration for the set join operation between the results of subquery 2 (queries[2]) and subquery 3 (queries[3]).
+	SecondJoin *AlertRuleSlsQueryJoin `json:"secondJoin,omitempty" xml:"secondJoin,omitempty"`
+	// Service ID list.
+	ServiceIds []*string `json:"serviceIds,omitempty" xml:"serviceIds,omitempty" type:"Repeated"`
+	// Query type.
+	//
+	// Valid values:
+	//
+	// - PROMQL_QUERY: PromQL query
+	//
+	// - SLS_MULTI_QUERY: SLS query
+	//
+	// - APM_MULTI_QUERY: APM query
+	//
+	// - CMS_BASIC_QUERY: Basic CloudMonitor query
+	//
+	// The valid fields within the query object vary depending on the query type. Refer to the "Applicable query type" description in each field\\"s documentation for details.
+	//
+	// The query type must match the data source type, with the following correspondences:
+	//
+	// - Prometheus data source (PROMETHEUS_DS): PROMQL_QUERY
+	//
+	// - APM data source (APM_DS): APM_MULTI_QUERY
+	//
+	// - SLS data source (SLS_MULTI_DS): SLS_MULTI_QUERY
+	//
+	// - Basic CloudMonitor data source (CMS_BASIC_DS): CMS_BASIC_QUERY.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// PROMQL_QUERY
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -347,9 +468,20 @@ func (s *AlertRuleQueryEntityFields) Validate() error {
 }
 
 type AlertRuleQueryEntityFilter struct {
-	Domain  *string                              `json:"domain,omitempty" xml:"domain,omitempty"`
+	// 资源类型域。
+	//
+	// example:
+	//
+	// rum
+	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// 过滤条件列表，用于进一步筛选资源。
 	Filters []*AlertRuleQueryEntityFilterFilters `json:"filters,omitempty" xml:"filters,omitempty" type:"Repeated"`
-	Type    *string                              `json:"type,omitempty" xml:"type,omitempty"`
+	// 资源类型。
+	//
+	// example:
+	//
+	// apm
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s AlertRuleQueryEntityFilter) String() string {
@@ -401,9 +533,24 @@ func (s *AlertRuleQueryEntityFilter) Validate() error {
 }
 
 type AlertRuleQueryEntityFilterFilters struct {
-	Field    *string `json:"field,omitempty" xml:"field,omitempty"`
+	// 字段
+	//
+	// example:
+	//
+	// instanceId
+	Field *string `json:"field,omitempty" xml:"field,omitempty"`
+	// 比较运算符。
+	//
+	// example:
+	//
+	// =
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
+	// 匹配的值。
+	//
+	// example:
+	//
+	// wait_throw
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s AlertRuleQueryEntityFilterFilters) String() string {
@@ -491,19 +638,77 @@ func (s *AlertRuleQueryLabelFilters) Validate() error {
 }
 
 type AlertRuleQueryQueries struct {
-	ApmAlertMetricId *string                            `json:"apmAlertMetricId,omitempty" xml:"apmAlertMetricId,omitempty"`
-	ApmFilters       []*AlertRuleQueryQueriesApmFilters `json:"apmFilters,omitempty" xml:"apmFilters,omitempty" type:"Repeated"`
-	ApmGroupBy       []*string                          `json:"apmGroupBy,omitempty" xml:"apmGroupBy,omitempty" type:"Repeated"`
-	Duration         *int64                             `json:"duration,omitempty" xml:"duration,omitempty"`
-	// 时间偏移结束时间(相对)，如果指定了start、end，则不指定window。
+	// Applicable query type: APM_MULTI_QUERY.
+	//
+	// ID of the APM predefined metric.
+	//
+	// example:
+	//
+	// appstat.jvm.ThreadNewCount
+	ApmAlertMetricId *string `json:"apmAlertMetricId,omitempty" xml:"apmAlertMetricId,omitempty"`
+	// Applicable query type: ARMS_MULTI_QUERY.
+	//
+	// Dimension filter configuration for APM metrics. Must be used in conjunction with apmAlertMetricId.
+	ApmFilters []*AlertRuleQueryQueriesApmFilters `json:"apmFilters,omitempty" xml:"apmFilters,omitempty" type:"Repeated"`
+	// Applicable query type: ARMS_MULTI_QUERY.
+	//
+	// List of aggregation dimensions for the query, i.e., the dimensions by which the metric is aggregated.
+	ApmGroupBy []*string `json:"apmGroupBy,omitempty" xml:"apmGroupBy,omitempty" type:"Repeated"`
+	// Applicable query type: ARMS_MULTI_QUERY.
+	//
+	// Alert (data) duration.
+	//
+	// example:
+	//
+	// 120
+	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
+	// Applicable query type: SLS_MULTI_QUERY.
+	//
+	// Time offset end time (relative).
+	//
+	// If start and end are specified, do not specify window.
+	//
+	// example:
+	//
+	// 0
 	End *int64 `json:"end,omitempty" xml:"end,omitempty"`
-	// 查询表达式
+	// Applicable query types: APM_MULTI_QUERY, SLS_MULTI_QUERY.
+	//
+	// Query expression.
+	//
+	// - For APM_MULTI_QUERY, this field is optional and contains the PromQL generated for predefined metrics (used for data preview).
+	//
+	// - For SLS_MULTI_QUERY, this field contains the SQL query statement.
+	//
+	// example:
+	//
+	// sum by (rpc,acs_arms_service_id,pid,rpcType) (sum_over_time_lorc(arms_app_requests_count_ign_destid_endpoint_parent_ppid_prpc{callKind=~\\"http|rpc|custom_entry|server|consumer\\",pid=\\"gaddp9ap8q@cb005ffdf44b8ac\\",source=\\"apm\\"}[1m]))
 	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
-	// sls查询的时间偏移开始时间(相对)，如果指定了start、end，则不指定window。  例如：start=15， timeUnit=minute，表示15分钟前
+	// Applicable query type: SLS_MULTI_QUERY.
+	//
+	// SLS query time offset start time (relative).
+	//
+	// If start and end are specified, do not specify window. For example: start=15, timeUnit=minute, which means 15 minutes ago.
+	//
+	// example:
+	//
+	// 15
 	Start *int64 `json:"start,omitempty" xml:"start,omitempty"`
-	// start和end、window的时间单位： day/hour/minute/second
+	// Applicable query type: SLS_MULTI_QUERY.
+	//
+	// Time units for the start, end, and window parameters: day/hour/minute/second.
+	//
+	// example:
+	//
+	// hour
 	TimeUnit *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
-	// 整点时间查询区间。  如果指定了window则不指定start、end
+	// Applicable query type: SLS_MULTI_QUERY.
+	//
+	// Exact-hour time query interval. If window is specified, start and end should not be specified.
+	//
+	// example:
+	//
+	// 1
 	Window *int64 `json:"window,omitempty" xml:"window,omitempty"`
 }
 
@@ -610,8 +815,31 @@ func (s *AlertRuleQueryQueries) Validate() error {
 }
 
 type AlertRuleQueryQueriesApmFilters struct {
-	Dim   *string `json:"dim,omitempty" xml:"dim,omitempty"`
-	Type  *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Dimension in APM metrics.
+	//
+	// example:
+	//
+	// rpcType
+	Dim *string `json:"dim,omitempty" xml:"dim,omitempty"`
+	// Filter operation types:
+	//
+	// - eq: equals.
+	//
+	// - neq: not equals.
+	//
+	// - match: regular expression match.
+	//
+	// - nmatch: regular expression not match.
+	//
+	// example:
+	//
+	// eq
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The corresponding value for the filter operation.
+	//
+	// example:
+	//
+	// h3ji7a0y9i@2ac80e27fdfd0a2
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

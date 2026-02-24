@@ -56,28 +56,91 @@ type iCmsEventForView interface {
 }
 
 type CmsEventForView struct {
-	Annotations     map[string]interface{}     `json:"annotations,omitempty" xml:"annotations,omitempty"`
-	Data            interface{}                `json:"data,omitempty" xml:"data,omitempty"`
-	Datacontenttype *string                    `json:"datacontenttype,omitempty" xml:"datacontenttype,omitempty"`
-	Dataschema      *string                    `json:"dataschema,omitempty" xml:"dataschema,omitempty"`
-	DedupId         *string                    `json:"dedupId,omitempty" xml:"dedupId,omitempty"`
-	Id              *string                    `json:"id,omitempty" xml:"id,omitempty"`
-	IntegrationUuid *string                    `json:"integrationUuid,omitempty" xml:"integrationUuid,omitempty"`
-	Labels          map[string]interface{}     `json:"labels,omitempty" xml:"labels,omitempty"`
-	ReceiveTime     *int64                     `json:"receiveTime,omitempty" xml:"receiveTime,omitempty"`
-	Resource        *EventResourceForEventView `json:"resource,omitempty" xml:"resource,omitempty"`
-	Severity        *string                    `json:"severity,omitempty" xml:"severity,omitempty"`
-	Source          *string                    `json:"source,omitempty" xml:"source,omitempty"`
-	Sourcetype      *string                    `json:"sourcetype,omitempty" xml:"sourcetype,omitempty"`
-	Status          *string                    `json:"status,omitempty" xml:"status,omitempty"`
-	Subject         *string                    `json:"subject,omitempty" xml:"subject,omitempty"`
-	Subtype         *string                    `json:"subtype,omitempty" xml:"subtype,omitempty"`
-	SysId           *string                    `json:"sysId,omitempty" xml:"sysId,omitempty"`
-	Time            *string                    `json:"time,omitempty" xml:"time,omitempty"`
-	Timestamp       *int64                     `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
-	Type            *string                    `json:"type,omitempty" xml:"type,omitempty"`
-	Workspace       *string                    `json:"workspace,omitempty" xml:"workspace,omitempty"`
-	WorkspaceTags   map[string]interface{}     `json:"workspaceTags,omitempty" xml:"workspaceTags,omitempty"`
+	// example:
+	//
+	// { "description": "High load detected on server", "operator": "auto" }
+	Annotations map[string]interface{} `json:"annotations,omitempty" xml:"annotations,omitempty"`
+	// example:
+	//
+	// { "metricName": "cpu_usage", "value": 95.2, "threshold": 80 }
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// "application/json"
+	Datacontenttype *string `json:"datacontenttype,omitempty" xml:"datacontenttype,omitempty"`
+	// example:
+	//
+	// "https://schema.alibabacloud.com/cms/alert/v1"
+	Dataschema *string `json:"dataschema,omitempty" xml:"dataschema,omitempty"`
+	// example:
+	//
+	// "dedup-abc123"
+	DedupId *string `json:"dedupId,omitempty" xml:"dedupId,omitempty"`
+	// example:
+	//
+	// "event-1234567890"
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// "integration-xyz"
+	IntegrationUuid *string `json:"integrationUuid,omitempty" xml:"integrationUuid,omitempty"`
+	// example:
+	//
+	// {\\"source\\": \\"system\\"}
+	Labels map[string]interface{} `json:"labels,omitempty" xml:"labels,omitempty"`
+	// example:
+	//
+	// 1743846610000
+	ReceiveTime *int64                     `json:"receiveTime,omitempty" xml:"receiveTime,omitempty"`
+	Resource    *EventResourceForEventView `json:"resource,omitempty" xml:"resource,omitempty"`
+	// example:
+	//
+	// "CRITICAL"
+	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
+	// example:
+	//
+	// "ECS"
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// example:
+	//
+	// "CloudMonitor"
+	Sourcetype *string `json:"sourcetype,omitempty" xml:"sourcetype,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// "Instance cpu usage exceeds threshold"
+	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	// example:
+	//
+	// "HighCPUUsage"
+	Subtype *string `json:"subtype,omitempty" xml:"subtype,omitempty"`
+	// example:
+	//
+	// "sys-event-987654321"
+	SysId *string `json:"sysId,omitempty" xml:"sysId,omitempty"`
+	// example:
+	//
+	// "2025-04-05T10:30:00Z"
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+	// example:
+	//
+	// 1743846600000
+	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	// example:
+	//
+	// "Alert"
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// "ws-abc123"
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// example:
+	//
+	// { "department": "finance", "project": "payment-gateway" }
+	WorkspaceTags map[string]interface{} `json:"workspaceTags,omitempty" xml:"workspaceTags,omitempty"`
 }
 
 func (s CmsEventForView) String() string {

@@ -36,19 +36,72 @@ type iTransformerForView interface {
 }
 
 type TransformerForView struct {
-	Actions        []*TransformAction `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	CreateTime     *string            `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description    *string            `json:"description,omitempty" xml:"description,omitempty"`
-	Enable         *bool              `json:"enable,omitempty" xml:"enable,omitempty"`
-	FilterSetting  *FilterSetting     `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	QuitAfterMatch *bool              `json:"quitAfterMatch,omitempty" xml:"quitAfterMatch,omitempty"`
-	SortId         *int32             `json:"sortId,omitempty" xml:"sortId,omitempty"`
-	TransformerId  *string            `json:"transformerId,omitempty" xml:"transformerId,omitempty"`
+	// Transformation operation.
+	Actions []*TransformAction `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
+	// Create Time.
+	//
+	// example:
+	//
+	// 2025-03-11T08:21:58Z
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Description.
+	//
+	// example:
+	//
+	// workspace test
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Whether enabled.
+	//
+	// example:
+	//
+	// false
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// Filter Setting.
+	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
+	// Exit after matching processing.
+	//
+	// example:
+	//
+	// false
+	QuitAfterMatch *bool `json:"quitAfterMatch,omitempty" xml:"quitAfterMatch,omitempty"`
+	// Sort order.
+	//
+	// example:
+	//
+	// 1
+	SortId *int32 `json:"sortId,omitempty" xml:"sortId,omitempty"`
+	// transformer Id
+	//
+	// example:
+	//
+	// 1123123123123
+	TransformerId *string `json:"transformerId,omitempty" xml:"transformerId,omitempty"`
+	// Name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Test processing flow.
 	TransformerName *string `json:"transformerName,omitempty" xml:"transformerName,omitempty"`
-	UpdateTime      *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	UserId          *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	Workspace       *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// Update Time.
+	//
+	// example:
+	//
+	// 2025-01-16T02:27:01Z
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// User ID.
+	//
+	// example:
+	//
+	// 123123123**
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// workspace
+	//
+	// example:
+	//
+	// workspace-test
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s TransformerForView) String() string {

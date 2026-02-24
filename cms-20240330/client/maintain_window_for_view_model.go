@@ -38,20 +38,78 @@ type iMaintainWindowForView interface {
 }
 
 type MaintainWindowForView struct {
-	CreateTime       *string                               `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description      *string                               `json:"description,omitempty" xml:"description,omitempty"`
-	EffectTimeRange  *MaintainWindowForViewEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
-	Effective        *string                               `json:"effective,omitempty" xml:"effective,omitempty"`
-	Enable           *bool                                 `json:"enable,omitempty" xml:"enable,omitempty"`
-	EndTime          *string                               `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	FilterSetting    *FilterSetting                        `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	MaintainWindowId *string                               `json:"maintainWindowId,omitempty" xml:"maintainWindowId,omitempty"`
+	// Creation time.
+	//
+	// example:
+	//
+	// 2025-03-11T08:21:58Z
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Description.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Effective time range.
+	EffectTimeRange *MaintainWindowForViewEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
+	// Crontab expression.
+	//
+	// example:
+	//
+	// 	- 	- 14-18 ? 	- *
+	Effective *string `json:"effective,omitempty" xml:"effective,omitempty"`
+	// Whether enabled.
+	//
+	// example:
+	//
+	// true
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// Effective end time.
+	//
+	// example:
+	//
+	// 2024-11-26 12:02:01
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// Filtering conditions.
+	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
+	// UUID
+	//
+	// example:
+	//
+	// 123-12-312-31-23123
+	MaintainWindowId *string `json:"maintainWindowId,omitempty" xml:"maintainWindowId,omitempty"`
+	// Name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Test policy.
 	MaintainWindowName *string `json:"maintainWindowName,omitempty" xml:"maintainWindowName,omitempty"`
-	StartTime          *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	UpdateTime         *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	UserId             *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	Workspace          *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// Effective start time.
+	//
+	// example:
+	//
+	// 2024-11-26 10:02:01
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// Update time.
+	//
+	// example:
+	//
+	// 2025-05-07T02:19:05Z
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// User ID.
+	//
+	// example:
+	//
+	// 12312312***
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// workspace
+	//
+	// example:
+	//
+	// workspace-test
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s MaintainWindowForView) String() string {
@@ -194,10 +252,26 @@ func (s *MaintainWindowForView) Validate() error {
 }
 
 type MaintainWindowForViewEffectTimeRange struct {
-	DayInWeek         []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
-	EndTimeInMinute   *int32   `json:"endTimeInMinute,omitempty" xml:"endTimeInMinute,omitempty"`
-	StartTimeInMinute *int32   `json:"startTimeInMinute,omitempty" xml:"startTimeInMinute,omitempty"`
-	TimeZone          *string  `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+	// Effective days (Monday to Sunday).
+	DayInWeek []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
+	// End time (in minutes).
+	//
+	// example:
+	//
+	// 360
+	EndTimeInMinute *int32 `json:"endTimeInMinute,omitempty" xml:"endTimeInMinute,omitempty"`
+	// Start time (in minutes).
+	//
+	// example:
+	//
+	// 60
+	StartTimeInMinute *int32 `json:"startTimeInMinute,omitempty" xml:"startTimeInMinute,omitempty"`
+	// Time Zone.
+	//
+	// example:
+	//
+	// +08:00
+	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
 }
 
 func (s MaintainWindowForViewEffectTimeRange) String() string {

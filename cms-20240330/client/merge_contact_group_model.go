@@ -26,13 +26,25 @@ type iMergeContactGroup interface {
 }
 
 type MergeContactGroup struct {
-	Contacts    []*string              `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
-	Extend      map[string]interface{} `json:"extend,omitempty" xml:"extend,omitempty"`
-	GmtCreate   *string                `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	GmtModified *string                `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	Identifier  *string                `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	Name        *string                `json:"name,omitempty" xml:"name,omitempty"`
-	Source      *string                `json:"source,omitempty" xml:"source,omitempty"`
+	Contacts []*string              `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
+	Extend   map[string]interface{} `json:"extend,omitempty" xml:"extend,omitempty"`
+	// example:
+	//
+	// 2025-03-11T08:21:58.789Z
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// 2025-03-11T08:21:58.789Z
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// example:
+	//
+	// group-12345
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// dingtalk
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
 }
 
 func (s MergeContactGroup) String() string {

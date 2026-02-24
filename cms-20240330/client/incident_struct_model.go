@@ -32,16 +32,54 @@ type iIncidentStruct interface {
 }
 
 type IncidentStruct struct {
-	Content      *string                     `json:"content,omitempty" xml:"content,omitempty"`
-	Escalations  []*IncidentEscalationStruct `json:"escalations,omitempty" xml:"escalations,omitempty" type:"Repeated"`
-	IncidentId   *string                     `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	IncidentPlan *IncidentPlanStruct         `json:"incidentPlan,omitempty" xml:"incidentPlan,omitempty"`
-	Resource     *IncidentResourceDetail     `json:"resource,omitempty" xml:"resource,omitempty"`
-	Severity     *string                     `json:"severity,omitempty" xml:"severity,omitempty"`
-	Status       *string                     `json:"status,omitempty" xml:"status,omitempty"`
-	Time         *int64                      `json:"time,omitempty" xml:"time,omitempty"`
-	Title        *string                     `json:"title,omitempty" xml:"title,omitempty"`
-	UserId       *string                     `json:"userId,omitempty" xml:"userId,omitempty"`
+	// Content.
+	//
+	// example:
+	//
+	// Detected that the connection count of RDS instance rds-bp1234567890abcdef has reached 1000, triggering an alert.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// List of escalation policies.
+	Escalations []*IncidentEscalationStruct `json:"escalations,omitempty" xml:"escalations,omitempty" type:"Repeated"`
+	// Incident ID.
+	//
+	// example:
+	//
+	// incident-001
+	IncidentId *string `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// Associated incident contingency plan.
+	IncidentPlan *IncidentPlanStruct `json:"incidentPlan,omitempty" xml:"incidentPlan,omitempty"`
+	// Associated resource details.
+	Resource *IncidentResourceDetail `json:"resource,omitempty" xml:"resource,omitempty"`
+	// Incident severity level.
+	//
+	// example:
+	//
+	// P1
+	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
+	// Status.
+	//
+	// example:
+	//
+	// OPEN
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Time.
+	//
+	// example:
+	//
+	// 1741234567890
+	Time *int64 `json:"time,omitempty" xml:"time,omitempty"`
+	// Title.
+	//
+	// example:
+	//
+	// Excessively high database connection count.
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// User ID.
+	//
+	// example:
+	//
+	// user-12345
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s IncidentStruct) String() string {

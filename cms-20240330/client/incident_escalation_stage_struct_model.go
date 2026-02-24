@@ -30,15 +30,56 @@ type iIncidentEscalationStageStruct interface {
 }
 
 type IncidentEscalationStageStruct struct {
-	Contact             []*IncidentContactStruct `json:"contact,omitempty" xml:"contact,omitempty" type:"Repeated"`
-	CycleNotifyCount    *int32                   `json:"cycleNotifyCount,omitempty" xml:"cycleNotifyCount,omitempty"`
-	CycleNotifyTime     *int32                   `json:"cycleNotifyTime,omitempty" xml:"cycleNotifyTime,omitempty"`
-	Description         *string                  `json:"description,omitempty" xml:"description,omitempty"`
-	EffectTime          *string                  `json:"effectTime,omitempty" xml:"effectTime,omitempty"`
-	Name                *string                  `json:"name,omitempty" xml:"name,omitempty"`
-	StageIndex          *int32                   `json:"stageIndex,omitempty" xml:"stageIndex,omitempty"`
-	TimeZone            *string                  `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
-	WaitToNextStageTime *int32                   `json:"waitToNextStageTime,omitempty" xml:"waitToNextStageTime,omitempty"`
+	// Contact list.
+	Contact []*IncidentContactStruct `json:"contact,omitempty" xml:"contact,omitempty" type:"Repeated"`
+	// Number of recurring notification attempts.
+	//
+	// example:
+	//
+	// 3
+	CycleNotifyCount *int32 `json:"cycleNotifyCount,omitempty" xml:"cycleNotifyCount,omitempty"`
+	// Recurring notification interval.
+	//
+	// example:
+	//
+	// 300
+	CycleNotifyTime *int32 `json:"cycleNotifyTime,omitempty" xml:"cycleNotifyTime,omitempty"`
+	// Description.
+	//
+	// example:
+	//
+	// Primary owner responsible for handling production environment alerts.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Effective time period.
+	//
+	// example:
+	//
+	// 2025-04-05T00:00:00Z
+	EffectTime *string `json:"effectTime,omitempty" xml:"effectTime,omitempty"`
+	// Name.
+	//
+	// example:
+	//
+	// Operations team.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Phase index.
+	//
+	// example:
+	//
+	// 1
+	StageIndex *int32 `json:"stageIndex,omitempty" xml:"stageIndex,omitempty"`
+	// Time zone.
+	//
+	// example:
+	//
+	// Asia/Shanghai
+	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+	// Time to wait before proceeding to the next phase.
+	//
+	// example:
+	//
+	// 600
+	WaitToNextStageTime *int32 `json:"waitToNextStageTime,omitempty" xml:"waitToNextStageTime,omitempty"`
 }
 
 func (s IncidentEscalationStageStruct) String() string {

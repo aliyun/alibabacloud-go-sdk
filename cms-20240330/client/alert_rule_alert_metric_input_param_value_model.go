@@ -17,8 +17,16 @@ type iAlertRuleAlertMetricInputParamValue interface {
 
 type AlertRuleAlertMetricInputParamValue struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// paramName
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// paramValue
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

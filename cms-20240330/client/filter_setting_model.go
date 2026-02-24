@@ -19,8 +19,14 @@ type iFilterSetting interface {
 
 type FilterSetting struct {
 	Conditions []*FilterSettingConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	Expression *string                    `json:"expression,omitempty" xml:"expression,omitempty"`
-	Relation   *string                    `json:"relation,omitempty" xml:"relation,omitempty"`
+	// example:
+	//
+	// 1 and 2 or 3
+	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
+	// example:
+	//
+	// AND
+	Relation *string `json:"relation,omitempty" xml:"relation,omitempty"`
 }
 
 func (s FilterSetting) String() string {
@@ -72,8 +78,17 @@ func (s *FilterSetting) Validate() error {
 }
 
 type FilterSettingConditions struct {
+	// example:
+	//
+	// severity
 	Field *string `json:"field,omitempty" xml:"field,omitempty"`
-	Op    *string `json:"op,omitempty" xml:"op,omitempty"`
+	// example:
+	//
+	// EQ
+	Op *string `json:"op,omitempty" xml:"op,omitempty"`
+	// example:
+	//
+	// CRITICAL
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

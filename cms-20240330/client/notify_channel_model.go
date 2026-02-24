@@ -18,6 +18,9 @@ type iNotifyChannel interface {
 }
 
 type NotifyChannel struct {
+	// example:
+	//
+	// "DingTalk"
 	ChannelType        *string   `json:"channelType,omitempty" xml:"channelType,omitempty"`
 	EnabledSubChannels []*string `json:"enabledSubChannels,omitempty" xml:"enabledSubChannels,omitempty" type:"Repeated"`
 	Receivers          []*string `json:"receivers,omitempty" xml:"receivers,omitempty" type:"Repeated"`

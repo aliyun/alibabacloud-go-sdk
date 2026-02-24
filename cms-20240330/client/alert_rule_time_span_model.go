@@ -20,10 +20,26 @@ type iAlertRuleTimeSpan interface {
 }
 
 type AlertRuleTimeSpan struct {
+	// Day of the week.
 	DayOfWeek []*int32 `json:"dayOfWeek,omitempty" xml:"dayOfWeek,omitempty" type:"Repeated"`
-	EndTime   *string  `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	GmtOffset *string  `json:"gmtOffset,omitempty" xml:"gmtOffset,omitempty"`
-	StartTime *string  `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// End time, in HH:mm format.
+	//
+	// example:
+	//
+	// 23:00
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// Default time zone is Beijing Time: +0800.
+	//
+	// example:
+	//
+	// +0800
+	GmtOffset *string `json:"gmtOffset,omitempty" xml:"gmtOffset,omitempty"`
+	// Start time, in HH:mm format.
+	//
+	// example:
+	//
+	// 09:00
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
 func (s AlertRuleTimeSpan) String() string {

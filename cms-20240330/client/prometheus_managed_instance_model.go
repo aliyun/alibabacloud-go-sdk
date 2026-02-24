@@ -26,13 +26,34 @@ type iPrometheusManagedInstance interface {
 }
 
 type PrometheusManagedInstance struct {
-	CreateTime             *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	InstanceType           *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	PrometheusInstanceId   *string `json:"prometheusInstanceId,omitempty" xml:"prometheusInstanceId,omitempty"`
+	// example:
+	//
+	// 2025-03-11T08:21:58Z
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// test
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// example:
+	//
+	// rum-xxx
+	PrometheusInstanceId *string `json:"prometheusInstanceId,omitempty" xml:"prometheusInstanceId,omitempty"`
+	// example:
+	//
+	// rum-xxx
 	PrometheusInstanceName *string `json:"prometheusInstanceName,omitempty" xml:"prometheusInstanceName,omitempty"`
-	RegionId               *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	Status                 *string `json:"status,omitempty" xml:"status,omitempty"`
-	Workspace              *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// workspace-test
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s PrometheusManagedInstance) String() string {

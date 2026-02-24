@@ -40,20 +40,47 @@ type iAddonMeta interface {
 }
 
 type AddonMeta struct {
-	Alias                   *string                  `json:"alias,omitempty" xml:"alias,omitempty"`
-	Categories              []*string                `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
-	Dashboards              []*AddonMetaDashboards   `json:"dashboards,omitempty" xml:"dashboards,omitempty" type:"Repeated"`
-	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
-	Environments            []*AddonMetaEnvironments `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
-	Icon                    *string                  `json:"icon,omitempty" xml:"icon,omitempty"`
-	Keywords                []*string                `json:"keywords,omitempty" xml:"keywords,omitempty" type:"Repeated"`
-	Language                *string                  `json:"language,omitempty" xml:"language,omitempty"`
-	LatestReleaseCreateTime *string                  `json:"latestReleaseCreateTime,omitempty" xml:"latestReleaseCreateTime,omitempty"`
-	Name                    *string                  `json:"name,omitempty" xml:"name,omitempty"`
-	Once                    *bool                    `json:"once,omitempty" xml:"once,omitempty"`
-	Scene                   *string                  `json:"scene,omitempty" xml:"scene,omitempty"`
-	Version                 *string                  `json:"version,omitempty" xml:"version,omitempty"`
-	Weight                  *int32                   `json:"weight,omitempty" xml:"weight,omitempty"`
+	Alias      *string                `json:"alias,omitempty" xml:"alias,omitempty"`
+	Categories []*string              `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
+	Dashboards []*AddonMetaDashboards `json:"dashboards,omitempty" xml:"dashboards,omitempty" type:"Repeated"`
+	// example:
+	//
+	// The out-of-the-box and comprehensive ECS observe dashboards and alarm rules. Based on AliYun CloudMonitor agentless metrics, exporter agent metrics, host audit logs, host events and other data.
+	Description  *string                  `json:"description,omitempty" xml:"description,omitempty"`
+	Environments []*AddonMetaEnvironments `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
+	// example:
+	//
+	// assets/logos/ecs.svg
+	Icon     *string   `json:"icon,omitempty" xml:"icon,omitempty"`
+	Keywords []*string `json:"keywords,omitempty" xml:"keywords,omitempty" type:"Repeated"`
+	// example:
+	//
+	// zh
+	Language *string `json:"language,omitempty" xml:"language,omitempty"`
+	// example:
+	//
+	// 2025-10-25 09:12:12
+	LatestReleaseCreateTime *string `json:"latestReleaseCreateTime,omitempty" xml:"latestReleaseCreateTime,omitempty"`
+	// example:
+	//
+	// cloud-acs-ecs
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// true/false
+	Once *bool `json:"once,omitempty" xml:"once,omitempty"`
+	// example:
+	//
+	// feature
+	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// example:
+	//
+	// 0.0.1
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// example:
+	//
+	// 1000
+	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
 }
 
 func (s AddonMeta) String() string {
@@ -215,7 +242,10 @@ func (s *AddonMeta) Validate() error {
 type AddonMetaDashboards struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
-	Url         *string `json:"url,omitempty" xml:"url,omitempty"`
+	// example:
+	//
+	// assets/dashboards/ecs.png
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s AddonMetaDashboards) String() string {
@@ -261,11 +291,20 @@ type AddonMetaEnvironments struct {
 	CommonSchemaRefs []*AddonMetaEnvironmentsCommonSchemaRefs `json:"commonSchemaRefs,omitempty" xml:"commonSchemaRefs,omitempty" type:"Repeated"`
 	Dependencies     *AddonMetaEnvironmentsDependencies       `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Struct"`
 	Description      *string                                  `json:"description,omitempty" xml:"description,omitempty"`
-	Enable           *bool                                    `json:"enable,omitempty" xml:"enable,omitempty"`
-	Label            *string                                  `json:"label,omitempty" xml:"label,omitempty"`
-	Name             *string                                  `json:"name,omitempty" xml:"name,omitempty"`
-	Policies         *AddonMetaEnvironmentsPolicies           `json:"policies,omitempty" xml:"policies,omitempty" type:"Struct"`
-	PolicyType       *string                                  `json:"policyType,omitempty" xml:"policyType,omitempty"`
+	// example:
+	//
+	// true/false
+	Enable *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
+	Label  *string `json:"label,omitempty" xml:"label,omitempty"`
+	// example:
+	//
+	// CS/ECS/Cloud/Client
+	Name     *string                        `json:"name,omitempty" xml:"name,omitempty"`
+	Policies *AddonMetaEnvironmentsPolicies `json:"policies,omitempty" xml:"policies,omitempty" type:"Struct"`
+	// example:
+	//
+	// ECS
+	PolicyType *string `json:"policyType,omitempty" xml:"policyType,omitempty"`
 }
 
 func (s AddonMetaEnvironments) String() string {
@@ -372,7 +411,13 @@ func (s *AddonMetaEnvironments) Validate() error {
 }
 
 type AddonMetaEnvironmentsCommonSchemaRefs struct {
-	Group   *string `json:"group,omitempty" xml:"group,omitempty"`
+	// example:
+	//
+	// acs-ecs
+	Group *string `json:"group,omitempty" xml:"group,omitempty"`
+	// example:
+	//
+	// 0.1.0
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -452,15 +497,33 @@ func (s *AddonMetaEnvironmentsDependencies) Validate() error {
 }
 
 type AddonMetaEnvironmentsPolicies struct {
-	AlertDefaultStatus          *string                                       `json:"alertDefaultStatus,omitempty" xml:"alertDefaultStatus,omitempty"`
-	BindDefaultPolicy           *bool                                         `json:"bindDefaultPolicy,omitempty" xml:"bindDefaultPolicy,omitempty"`
-	BindEntity                  *AddonMetaEnvironmentsPoliciesBindEntity      `json:"bindEntity,omitempty" xml:"bindEntity,omitempty" type:"Struct"`
-	DefaultInstall              *bool                                         `json:"defaultInstall,omitempty" xml:"defaultInstall,omitempty"`
-	EnableServiceAccount        *bool                                         `json:"enableServiceAccount,omitempty" xml:"enableServiceAccount,omitempty"`
-	MetricCheckRule             *AddonMetaEnvironmentsPoliciesMetricCheckRule `json:"metricCheckRule,omitempty" xml:"metricCheckRule,omitempty" type:"Struct"`
-	NeedRestartAfterIntegration *bool                                         `json:"needRestartAfterIntegration,omitempty" xml:"needRestartAfterIntegration,omitempty"`
-	Protocols                   []*AddonMetaEnvironmentsPoliciesProtocols     `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
-	TargetAddonName             *string                                       `json:"targetAddonName,omitempty" xml:"targetAddonName,omitempty"`
+	// example:
+	//
+	// RUNNING
+	AlertDefaultStatus *string `json:"alertDefaultStatus,omitempty" xml:"alertDefaultStatus,omitempty"`
+	// example:
+	//
+	// true/false
+	BindDefaultPolicy *bool                                    `json:"bindDefaultPolicy,omitempty" xml:"bindDefaultPolicy,omitempty"`
+	BindEntity        *AddonMetaEnvironmentsPoliciesBindEntity `json:"bindEntity,omitempty" xml:"bindEntity,omitempty" type:"Struct"`
+	// example:
+	//
+	// true/false
+	DefaultInstall *bool `json:"defaultInstall,omitempty" xml:"defaultInstall,omitempty"`
+	// example:
+	//
+	// true/false
+	EnableServiceAccount *bool                                         `json:"enableServiceAccount,omitempty" xml:"enableServiceAccount,omitempty"`
+	MetricCheckRule      *AddonMetaEnvironmentsPoliciesMetricCheckRule `json:"metricCheckRule,omitempty" xml:"metricCheckRule,omitempty" type:"Struct"`
+	// example:
+	//
+	// true/false
+	NeedRestartAfterIntegration *bool                                     `json:"needRestartAfterIntegration,omitempty" xml:"needRestartAfterIntegration,omitempty"`
+	Protocols                   []*AddonMetaEnvironmentsPoliciesProtocols `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cloud-acs-ecs
+	TargetAddonName *string `json:"targetAddonName,omitempty" xml:"targetAddonName,omitempty"`
 }
 
 func (s AddonMetaEnvironmentsPolicies) String() string {
@@ -576,10 +639,22 @@ func (s *AddonMetaEnvironmentsPolicies) Validate() error {
 }
 
 type AddonMetaEnvironmentsPoliciesBindEntity struct {
-	EntityGroupMode  *bool   `json:"entityGroupMode,omitempty" xml:"entityGroupMode,omitempty"`
-	EntityType       *string `json:"entityType,omitempty" xml:"entityType,omitempty"`
-	SingleEntityMode *bool   `json:"singleEntityMode,omitempty" xml:"singleEntityMode,omitempty"`
-	VpcIdFieldKey    *string `json:"vpcIdFieldKey,omitempty" xml:"vpcIdFieldKey,omitempty"`
+	// example:
+	//
+	// true/false
+	EntityGroupMode *bool `json:"entityGroupMode,omitempty" xml:"entityGroupMode,omitempty"`
+	// example:
+	//
+	// acs.ecs.instance
+	EntityType *string `json:"entityType,omitempty" xml:"entityType,omitempty"`
+	// example:
+	//
+	// true/false
+	SingleEntityMode *bool `json:"singleEntityMode,omitempty" xml:"singleEntityMode,omitempty"`
+	// example:
+	//
+	// vpcId
+	VpcIdFieldKey *string `json:"vpcIdFieldKey,omitempty" xml:"vpcIdFieldKey,omitempty"`
 }
 
 func (s AddonMetaEnvironmentsPoliciesBindEntity) String() string {
@@ -657,9 +732,15 @@ func (s *AddonMetaEnvironmentsPoliciesMetricCheckRule) Validate() error {
 
 type AddonMetaEnvironmentsPoliciesProtocols struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	Icon        *string `json:"icon,omitempty" xml:"icon,omitempty"`
-	Label       *string `json:"label,omitempty" xml:"label,omitempty"`
-	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// assets/logos/ecs.svg
+	Icon  *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	Label *string `json:"label,omitempty" xml:"label,omitempty"`
+	// example:
+	//
+	// Prometheus
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s AddonMetaEnvironmentsPoliciesProtocols) String() string {

@@ -15,15 +15,25 @@ type iAlertRuleSend interface {
 	GetNotification() *AlertRuleNotification
 	SetNotifyStrategies(v []*string) *AlertRuleSend
 	GetNotifyStrategies() []*string
+	SetRcaConfig(v *AlertRuleRcaConfig) *AlertRuleSend
+	GetRcaConfig() *AlertRuleRcaConfig
 	SetSendToArms(v bool) *AlertRuleSend
 	GetSendToArms() *bool
 }
 
 type AlertRuleSend struct {
-	Action           *AlertRuleAction       `json:"action,omitempty" xml:"action,omitempty"`
+	// Alert Action Integration Configuration.
+	Action *AlertRuleAction `json:"action,omitempty" xml:"action,omitempty"`
+	// Alert Notification Configuration.
 	Notification     *AlertRuleNotification `json:"notification,omitempty" xml:"notification,omitempty"`
 	NotifyStrategies []*string              `json:"notifyStrategies,omitempty" xml:"notifyStrategies,omitempty" type:"Repeated"`
-	SendToArms       *bool                  `json:"sendToArms,omitempty" xml:"sendToArms,omitempty"`
+	RcaConfig        *AlertRuleRcaConfig    `json:"rcaConfig,omitempty" xml:"rcaConfig,omitempty"`
+	// Whether to deliver alert events to ARMS Alert Management.
+	//
+	// example:
+	//
+	// true
+	SendToArms *bool `json:"sendToArms,omitempty" xml:"sendToArms,omitempty"`
 }
 
 func (s AlertRuleSend) String() string {
@@ -46,6 +56,10 @@ func (s *AlertRuleSend) GetNotifyStrategies() []*string {
 	return s.NotifyStrategies
 }
 
+func (s *AlertRuleSend) GetRcaConfig() *AlertRuleRcaConfig {
+	return s.RcaConfig
+}
+
 func (s *AlertRuleSend) GetSendToArms() *bool {
 	return s.SendToArms
 }
@@ -65,6 +79,11 @@ func (s *AlertRuleSend) SetNotifyStrategies(v []*string) *AlertRuleSend {
 	return s
 }
 
+func (s *AlertRuleSend) SetRcaConfig(v *AlertRuleRcaConfig) *AlertRuleSend {
+	s.RcaConfig = v
+	return s
+}
+
 func (s *AlertRuleSend) SetSendToArms(v bool) *AlertRuleSend {
 	s.SendToArms = &v
 	return s
@@ -78,6 +97,11 @@ func (s *AlertRuleSend) Validate() error {
 	}
 	if s.Notification != nil {
 		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RcaConfig != nil {
+		if err := s.RcaConfig.Validate(); err != nil {
 			return err
 		}
 	}

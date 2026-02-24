@@ -36,18 +36,48 @@ type iMergeContact interface {
 }
 
 type MergeContact struct {
-	Email       *string                `json:"email,omitempty" xml:"email,omitempty"`
+	// example:
+	//
+	// zhangsan@company.com
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// example:
+	//
+	// true
 	EmailVerify *bool                  `json:"emailVerify,omitempty" xml:"emailVerify,omitempty"`
 	Extend      map[string]interface{} `json:"extend,omitempty" xml:"extend,omitempty"`
-	GmtCreate   *string                `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	GmtModified *string                `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	Identifier  *string                `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	Lang        *string                `json:"lang,omitempty" xml:"lang,omitempty"`
-	Name        *string                `json:"name,omitempty" xml:"name,omitempty"`
-	Phone       *string                `json:"phone,omitempty" xml:"phone,omitempty"`
-	PhoneCode   *string                `json:"phoneCode,omitempty" xml:"phoneCode,omitempty"`
-	PhoneVerify *bool                  `json:"phoneVerify,omitempty" xml:"phoneVerify,omitempty"`
-	Source      *string                `json:"source,omitempty" xml:"source,omitempty"`
+	// example:
+	//
+	// 2025-03-11T08:21:58.789Z
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// 2025-03-11T08:21:58.789Z
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// example:
+	//
+	// user-12345
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// example:
+	//
+	// zh-CN
+	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 13800138000
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// example:
+	//
+	// 86
+	PhoneCode *string `json:"phoneCode,omitempty" xml:"phoneCode,omitempty"`
+	// example:
+	//
+	// true
+	PhoneVerify *bool `json:"phoneVerify,omitempty" xml:"phoneVerify,omitempty"`
+	// example:
+	//
+	// dingtalk
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
 }
 
 func (s MergeContact) String() string {

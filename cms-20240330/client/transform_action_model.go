@@ -30,15 +30,36 @@ type iTransformAction interface {
 }
 
 type TransformAction struct {
-	FilterSetting *FilterSetting     `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	LabelKey      *string            `json:"labelKey,omitempty" xml:"labelKey,omitempty"`
-	Mapping       map[string]*string `json:"mapping,omitempty" xml:"mapping,omitempty"`
-	RegExp        *string            `json:"regExp,omitempty" xml:"regExp,omitempty"`
-	Source        *string            `json:"source,omitempty" xml:"source,omitempty"`
-	Target        *string            `json:"target,omitempty" xml:"target,omitempty"`
-	Type          *string            `json:"type,omitempty" xml:"type,omitempty"`
-	Value         *string            `json:"value,omitempty" xml:"value,omitempty"`
-	Variable      *string            `json:"variable,omitempty" xml:"variable,omitempty"`
+	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
+	// example:
+	//
+	// labelkey1
+	LabelKey *string            `json:"labelKey,omitempty" xml:"labelKey,omitempty"`
+	Mapping  map[string]*string `json:"mapping,omitempty" xml:"mapping,omitempty"`
+	// example:
+	//
+	// (.*):(.*)
+	RegExp *string `json:"regExp,omitempty" xml:"regExp,omitempty"`
+	// example:
+	//
+	// data.subject
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// example:
+	//
+	// SUBJECT
+	Target *string `json:"target,omitempty" xml:"target,omitempty"`
+	// example:
+	//
+	// SET_FIELD
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// value1
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	// example:
+	//
+	// var1
+	Variable *string `json:"variable,omitempty" xml:"variable,omitempty"`
 }
 
 func (s TransformAction) String() string {

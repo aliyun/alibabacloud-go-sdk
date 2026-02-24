@@ -18,9 +18,24 @@ type iIncidentResourceDetail interface {
 }
 
 type IncidentResourceDetail struct {
-	ExtraId    *string                `json:"extraId,omitempty" xml:"extraId,omitempty"`
+	// Additional resource identifier.
+	//
+	// example:
+	//
+	// app-prod-web-01
+	ExtraId *string `json:"extraId,omitempty" xml:"extraId,omitempty"`
+	// Resource ID object.
+	//
+	// example:
+	//
+	// { "type": "ecs", "id": "i-bp1234567890abcdef" }
 	ResourceId map[string]interface{} `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	Type       *string                `json:"type,omitempty" xml:"type,omitempty"`
+	// Resource type, indicating which cloud product the resource belongs to.
+	//
+	// example:
+	//
+	// ecs
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s IncidentResourceDetail) String() string {

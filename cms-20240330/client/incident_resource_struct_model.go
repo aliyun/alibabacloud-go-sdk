@@ -26,13 +26,44 @@ type iIncidentResourceStruct interface {
 }
 
 type IncidentResourceStruct struct {
-	Description        *string                 `json:"description,omitempty" xml:"description,omitempty"`
-	IncidentId         *string                 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	IncidentResourceId *string                 `json:"incidentResourceId,omitempty" xml:"incidentResourceId,omitempty"`
-	Resource           *IncidentResourceDetail `json:"resource,omitempty" xml:"resource,omitempty"`
-	Source             *string                 `json:"source,omitempty" xml:"source,omitempty"`
-	Time               *int64                  `json:"time,omitempty" xml:"time,omitempty"`
-	UserId             *int64                  `json:"userId,omitempty" xml:"userId,omitempty"`
+	// Description information.
+	//
+	// example:
+	//
+	// Production environment web server.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Incident ID.
+	//
+	// example:
+	//
+	// incident-001
+	IncidentId *string `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// The unique ID of this resource in the event.
+	//
+	// example:
+	//
+	// res-001
+	IncidentResourceId *string `json:"incidentResourceId,omitempty" xml:"incidentResourceId,omitempty"`
+	// Event resource details object.
+	Resource *IncidentResourceDetail `json:"resource,omitempty" xml:"resource,omitempty"`
+	// Source.
+	//
+	// example:
+	//
+	// cloudmonitor
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// Time.
+	//
+	// example:
+	//
+	// 1741234567890
+	Time *int64 `json:"time,omitempty" xml:"time,omitempty"`
+	// User ID.
+	//
+	// example:
+	//
+	// user-12345
+	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s IncidentResourceStruct) String() string {

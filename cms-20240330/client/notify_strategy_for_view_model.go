@@ -52,29 +52,80 @@ type iNotifyStrategyForView interface {
 }
 
 type NotifyStrategyForView struct {
-	AutoRecoverSeconds    *int32                                        `json:"autoRecoverSeconds,omitempty" xml:"autoRecoverSeconds,omitempty"`
-	CreateTime            *string                                       `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	AutoRecoverSeconds *int32 `json:"autoRecoverSeconds,omitempty" xml:"autoRecoverSeconds,omitempty"`
+	// Create Time.
+	//
+	// example:
+	//
+	// 2025-03-11T08:21:58Z
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Notification channel template.
 	CustomTemplateEntries []*NotifyStrategyForViewCustomTemplateEntries `json:"customTemplateEntries,omitempty" xml:"customTemplateEntries,omitempty" type:"Repeated"`
-	Description           *string                                       `json:"description,omitempty" xml:"description,omitempty"`
-	Enable                *bool                                         `json:"enable,omitempty" xml:"enable,omitempty"`
-	FilterSetting         *FilterSetting                                `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
+	// Description.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Whether enabled.
+	//
+	// example:
+	//
+	// false
+	Enable        *bool          `json:"enable,omitempty" xml:"enable,omitempty"`
+	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
+	// Grouping Setting.
+	//
 	// This parameter is required.
-	GroupingSetting            *NotifyStrategyForViewGroupingSetting `json:"groupingSetting,omitempty" xml:"groupingSetting,omitempty" type:"Struct"`
-	IgnoreRestoredNotification *bool                                 `json:"ignoreRestoredNotification,omitempty" xml:"ignoreRestoredNotification,omitempty"`
-	IncidentEscalationPolicies []interface{}                         `json:"incidentEscalationPolicies,omitempty" xml:"incidentEscalationPolicies,omitempty" type:"Repeated"`
-	NotifyStrategyId           *string                               `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
+	GroupingSetting *NotifyStrategyForViewGroupingSetting `json:"groupingSetting,omitempty" xml:"groupingSetting,omitempty" type:"Struct"`
+	// Whether to notify on recovery.
+	//
+	// example:
+	//
+	// true
+	IgnoreRestoredNotification *bool         `json:"ignoreRestoredNotification,omitempty" xml:"ignoreRestoredNotification,omitempty"`
+	IncidentEscalationPolicies []interface{} `json:"incidentEscalationPolicies,omitempty" xml:"incidentEscalationPolicies,omitempty" type:"Repeated"`
+	// UUID
+	//
+	// example:
+	//
+	// 12312-31-23-123-1-23123
+	NotifyStrategyId *string `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
+	// Name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Test policy.
 	NotifyStrategyName  *string                                   `json:"notifyStrategyName,omitempty" xml:"notifyStrategyName,omitempty"`
 	PushingSetting      *NotifyStrategyForViewPushingSetting      `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty" type:"Struct"`
 	ReceiverNames       []*string                                 `json:"receiverNames,omitempty" xml:"receiverNames,omitempty" type:"Repeated"`
 	RepeatNotifySetting *NotifyStrategyForViewRepeatNotifySetting `json:"repeatNotifySetting,omitempty" xml:"repeatNotifySetting,omitempty" type:"Struct"`
+	// Notification channel routing configuration.
+	//
 	// This parameter is required.
-	Routes                 []*NotifyStrategyForViewRoutes `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
-	SyncFromType           *string                        `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
-	UpdateTime             *string                        `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	UserId                 *string                        `json:"userId,omitempty" xml:"userId,omitempty"`
-	Workspace              *string                        `json:"workspace,omitempty" xml:"workspace,omitempty"`
-	WorkspaceFilterSetting *WorkspaceFilterSetting        `json:"workspaceFilterSetting,omitempty" xml:"workspaceFilterSetting,omitempty"`
+	Routes       []*NotifyStrategyForViewRoutes `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
+	SyncFromType *string                        `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
+	// Update Time.
+	//
+	// example:
+	//
+	// 2025-05-30T02:29:09Z
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// User ID.
+	//
+	// example:
+	//
+	// 123123****
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// workspace
+	//
+	// example:
+	//
+	// workspace-test
+	Workspace              *string                 `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	WorkspaceFilterSetting *WorkspaceFilterSetting `json:"workspaceFilterSetting,omitempty" xml:"workspaceFilterSetting,omitempty"`
 }
 
 func (s NotifyStrategyForView) String() string {
@@ -313,9 +364,21 @@ func (s *NotifyStrategyForView) Validate() error {
 }
 
 type NotifyStrategyForViewCustomTemplateEntries struct {
+	// Notification type.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// SMS
 	TargetType *string `json:"targetType,omitempty" xml:"targetType,omitempty"`
+	// Template UUID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123-12-312-312-31-23
 	TemplateUuid *string `json:"templateUuid,omitempty" xml:"templateUuid,omitempty"`
 }
 
@@ -350,10 +413,26 @@ func (s *NotifyStrategyForViewCustomTemplateEntries) Validate() error {
 }
 
 type NotifyStrategyForViewGroupingSetting struct {
+	// Grouping Keys
 	GroupingKeys []*string `json:"groupingKeys,omitempty" xml:"groupingKeys,omitempty" type:"Repeated"`
-	PeriodMin    *int32    `json:"periodMin,omitempty" xml:"periodMin,omitempty"`
-	SilenceSec   *int32    `json:"silenceSec,omitempty" xml:"silenceSec,omitempty"`
-	Times        *int32    `json:"times,omitempty" xml:"times,omitempty"`
+	// Check interval in minutes.
+	//
+	// example:
+	//
+	// 5
+	PeriodMin *int32 `json:"periodMin,omitempty" xml:"periodMin,omitempty"`
+	// Silence duration in seconds.
+	//
+	// example:
+	//
+	// 300
+	SilenceSec *int32 `json:"silenceSec,omitempty" xml:"silenceSec,omitempty"`
+	// Trigger count.
+	//
+	// example:
+	//
+	// 3
+	Times *int32 `json:"times,omitempty" xml:"times,omitempty"`
 }
 
 func (s NotifyStrategyForViewGroupingSetting) String() string {
@@ -485,12 +564,16 @@ func (s *NotifyStrategyForViewRepeatNotifySetting) Validate() error {
 }
 
 type NotifyStrategyForViewRoutes struct {
-	Channels            []*NotifyStrategyForViewRoutesChannels      `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
-	DigitalEmployeeName *string                                     `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
-	EffectTimeRange     *NotifyStrategyForViewRoutesEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
-	EnableRca           *bool                                       `json:"enableRca,omitempty" xml:"enableRca,omitempty"`
-	FilterSetting       *FilterSetting                              `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	Severities          []*string                                   `json:"severities,omitempty" xml:"severities,omitempty" type:"Repeated"`
+	// Notification channel.
+	Channels            []*NotifyStrategyForViewRoutesChannels `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
+	DigitalEmployeeName *string                                `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
+	// Field.
+	EffectTimeRange *NotifyStrategyForViewRoutesEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
+	EnableRca       *bool                                       `json:"enableRca,omitempty" xml:"enableRca,omitempty"`
+	// Routing settings.
+	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
+	// Severity level list.
+	Severities []*string `json:"severities,omitempty" xml:"severities,omitempty" type:"Repeated"`
 }
 
 func (s NotifyStrategyForViewRoutes) String() string {
@@ -579,9 +662,18 @@ func (s *NotifyStrategyForViewRoutes) Validate() error {
 }
 
 type NotifyStrategyForViewRoutesChannels struct {
+	// Channel type.
+	//
 	// This parameter is required.
-	ChannelType        *string   `json:"channelType,omitempty" xml:"channelType,omitempty"`
+	//
+	// example:
+	//
+	// CONTACT
+	ChannelType *string `json:"channelType,omitempty" xml:"channelType,omitempty"`
+	// Enabled notification types.
 	EnabledSubChannels []*string `json:"enabledSubChannels,omitempty" xml:"enabledSubChannels,omitempty" type:"Repeated"`
+	// Channel recipient.
+	//
 	// This parameter is required.
 	Receivers []*string `json:"receivers,omitempty" xml:"receivers,omitempty" type:"Repeated"`
 }
@@ -626,10 +718,26 @@ func (s *NotifyStrategyForViewRoutesChannels) Validate() error {
 }
 
 type NotifyStrategyForViewRoutesEffectTimeRange struct {
-	DayInWeek         []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
-	EndTimeInMinute   *int32   `json:"endTimeInMinute,omitempty" xml:"endTimeInMinute,omitempty"`
-	StartTimeInMinute *int32   `json:"startTimeInMinute,omitempty" xml:"startTimeInMinute,omitempty"`
-	TimeZone          *string  `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+	// Effective days (Monday to Sunday).
+	DayInWeek []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
+	// End time (in minutes).
+	//
+	// example:
+	//
+	// 60
+	EndTimeInMinute *int32 `json:"endTimeInMinute,omitempty" xml:"endTimeInMinute,omitempty"`
+	// Start time (in minutes).
+	//
+	// example:
+	//
+	// 60
+	StartTimeInMinute *int32 `json:"startTimeInMinute,omitempty" xml:"startTimeInMinute,omitempty"`
+	// Time Zone.
+	//
+	// example:
+	//
+	// +08:00
+	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
 }
 
 func (s NotifyStrategyForViewRoutesEffectTimeRange) String() string {

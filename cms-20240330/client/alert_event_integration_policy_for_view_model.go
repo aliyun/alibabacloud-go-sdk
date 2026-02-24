@@ -38,20 +38,54 @@ type iAlertEventIntegrationPolicyForView interface {
 }
 
 type AlertEventIntegrationPolicyForView struct {
+	// UUID
+	//
+	// example:
+	//
+	// 123123123
 	AlertEventIntegrationPolicyId *string `json:"alertEventIntegrationPolicyId,omitempty" xml:"alertEventIntegrationPolicyId,omitempty"`
 	// This parameter is required.
-	AlertEventIntegrationPolicyName *string            `json:"alertEventIntegrationPolicyName,omitempty" xml:"alertEventIntegrationPolicyName,omitempty"`
-	CreateTime                      *string            `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description                     *string            `json:"description,omitempty" xml:"description,omitempty"`
-	Enable                          *bool              `json:"enable,omitempty" xml:"enable,omitempty"`
-	FilterSetting                   *FilterSetting     `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	IntegrationSetting              *string            `json:"integrationSetting,omitempty" xml:"integrationSetting,omitempty"`
-	Token                           *string            `json:"token,omitempty" xml:"token,omitempty"`
-	TransformerSetting              []*TransformAction `json:"transformerSetting,omitempty" xml:"transformerSetting,omitempty" type:"Repeated"`
-	Type                            *string            `json:"type,omitempty" xml:"type,omitempty"`
-	UpdateTime                      *string            `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	UserId                          *string            `json:"userId,omitempty" xml:"userId,omitempty"`
-	Workspace                       *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	AlertEventIntegrationPolicyName *string `json:"alertEventIntegrationPolicyName,omitempty" xml:"alertEventIntegrationPolicyName,omitempty"`
+	// example:
+	//
+	// 2025-03-11T08:21:58Z
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// workspace test
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// true
+	Enable        *bool          `json:"enable,omitempty" xml:"enable,omitempty"`
+	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
+	// example:
+	//
+	// {"region":"cn-hangzhou"}
+	IntegrationSetting *string `json:"integrationSetting,omitempty" xml:"integrationSetting,omitempty"`
+	// example:
+	//
+	// 10-16818f1445e10a1d012922b285bfb334
+	Token              *string            `json:"token,omitempty" xml:"token,omitempty"`
+	TransformerSetting []*TransformAction `json:"transformerSetting,omitempty" xml:"transformerSetting,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ALERT_CUSTOM
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 2024-12-16T02:00:23Z
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// example:
+	//
+	// 123123
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// workspace
+	//
+	// example:
+	//
+	// workspace-test
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s AlertEventIntegrationPolicyForView) String() string {

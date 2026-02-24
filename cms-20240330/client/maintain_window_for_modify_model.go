@@ -26,14 +26,42 @@ type iMaintainWindowForModify interface {
 }
 
 type MaintainWindowForModify struct {
-	Description     *string                                 `json:"description,omitempty" xml:"description,omitempty"`
+	// Description.
+	//
+	// example:
+	//
+	// workspace test
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Effective time range.
 	EffectTimeRange *MaintainWindowForModifyEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
-	Effective       *string                                 `json:"effective,omitempty" xml:"effective,omitempty"`
-	EndTime         *string                                 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	FilterSetting   *FilterSetting                          `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
+	// Crontab expression.
+	//
+	// example:
+	//
+	// 	- 	- 14-18 ? 	- *
+	Effective *string `json:"effective,omitempty" xml:"effective,omitempty"`
+	// Effective end time.
+	//
+	// example:
+	//
+	// 2024-09-05 09:30:40
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// Filtering conditions.
+	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
+	// Name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test strategy
 	MaintainWindowName *string `json:"maintainWindowName,omitempty" xml:"maintainWindowName,omitempty"`
-	StartTime          *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// Effective start time.
+	//
+	// example:
+	//
+	// 2025-04-11 07:55:00
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
 func (s MaintainWindowForModify) String() string {
@@ -122,10 +150,26 @@ func (s *MaintainWindowForModify) Validate() error {
 }
 
 type MaintainWindowForModifyEffectTimeRange struct {
-	DayInWeek         []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
-	EndTimeInMinute   *int32   `json:"endTimeInMinute,omitempty" xml:"endTimeInMinute,omitempty"`
-	StartTimeInMinute *int32   `json:"startTimeInMinute,omitempty" xml:"startTimeInMinute,omitempty"`
-	TimeZone          *string  `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+	// Effective days (Monday to Sunday).
+	DayInWeek []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
+	// End time (in minutes).
+	//
+	// example:
+	//
+	// 60
+	EndTimeInMinute *int32 `json:"endTimeInMinute,omitempty" xml:"endTimeInMinute,omitempty"`
+	// Start time (in minutes).
+	//
+	// example:
+	//
+	// 60
+	StartTimeInMinute *int32 `json:"startTimeInMinute,omitempty" xml:"startTimeInMinute,omitempty"`
+	// Time zone.
+	//
+	// example:
+	//
+	// +08:00
+	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
 }
 
 func (s MaintainWindowForModifyEffectTimeRange) String() string {

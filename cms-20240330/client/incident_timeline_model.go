@@ -30,15 +30,60 @@ type iIncidentTimeline interface {
 }
 
 type IncidentTimeline struct {
-	ChildType          *string `json:"childType,omitempty" xml:"childType,omitempty"`
-	Content            *string `json:"content,omitempty" xml:"content,omitempty"`
-	IncidentId         *string `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// Subtype.
+	//
+	// example:
+	//
+	// comment
+	ChildType *string `json:"childType,omitempty" xml:"childType,omitempty"`
+	// Content.
+	//
+	// example:
+	//
+	// The operations team has been notified to investigate.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// Incident ID.
+	//
+	// example:
+	//
+	// incident-001
+	IncidentId *string `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// Timeline node unique ID.
+	//
+	// example:
+	//
+	// timeline-001
 	IncidentTimelineId *string `json:"incidentTimelineId,omitempty" xml:"incidentTimelineId,omitempty"`
-	Time               *int64  `json:"time,omitempty" xml:"time,omitempty"`
-	TimelineId         *string `json:"timelineId,omitempty" xml:"timelineId,omitempty"`
-	Title              *string `json:"title,omitempty" xml:"title,omitempty"`
-	Type               *string `json:"type,omitempty" xml:"type,omitempty"`
-	UserId             *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// Time.
+	//
+	// example:
+	//
+	// 1741234567890
+	Time *int64 `json:"time,omitempty" xml:"time,omitempty"`
+	// Parent timeline ID.
+	//
+	// example:
+	//
+	// timeline-main-001
+	TimelineId *string `json:"timelineId,omitempty" xml:"timelineId,omitempty"`
+	// Title.
+	//
+	// example:
+	//
+	// The operations team has been contacted.
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// Type.
+	//
+	// example:
+	//
+	// ACTION
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// User ID.
+	//
+	// example:
+	//
+	// user-12345
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s IncidentTimeline) String() string {

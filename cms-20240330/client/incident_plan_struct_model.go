@@ -40,20 +40,74 @@ type iIncidentPlanStruct interface {
 }
 
 type IncidentPlanStruct struct {
-	AutoRecoverSeconds *int32                           `json:"autoRecoverSeconds,omitempty" xml:"autoRecoverSeconds,omitempty"`
-	CloseExpire        *int64                           `json:"closeExpire,omitempty" xml:"closeExpire,omitempty"`
-	Corporation        []*IncidentPlanCorporationStruct `json:"corporation,omitempty" xml:"corporation,omitempty" type:"Repeated"`
-	Description        *string                          `json:"description,omitempty" xml:"description,omitempty"`
-	EscalationId       []*string                        `json:"escalationId,omitempty" xml:"escalationId,omitempty" type:"Repeated"`
-	GmtCreate          *int64                           `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	GmtModified        *int64                           `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	GroupBy            []*IncidentPlanFieldPath         `json:"groupBy,omitempty" xml:"groupBy,omitempty" type:"Repeated"`
-	IncidentPlanId     *string                          `json:"incidentPlanId,omitempty" xml:"incidentPlanId,omitempty"`
-	Name               *string                          `json:"name,omitempty" xml:"name,omitempty"`
-	ResourceFiled      []*IncidentPlanFieldPath         `json:"resourceFiled,omitempty" xml:"resourceFiled,omitempty" type:"Repeated"`
-	Status             *string                          `json:"status,omitempty" xml:"status,omitempty"`
-	UserId             *int64                           `json:"userId,omitempty" xml:"userId,omitempty"`
-	Workspace          *string                          `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// Automatic recovery wait time.
+	//
+	// example:
+	//
+	// 3600
+	AutoRecoverSeconds *int32 `json:"autoRecoverSeconds,omitempty" xml:"autoRecoverSeconds,omitempty"`
+	// Event closure timeout.
+	//
+	// example:
+	//
+	// 86400000
+	CloseExpire *int64 `json:"closeExpire,omitempty" xml:"closeExpire,omitempty"`
+	// List of teams or roles involved in collaboration.
+	Corporation []*IncidentPlanCorporationStruct `json:"corporation,omitempty" xml:"corporation,omitempty" type:"Repeated"`
+	// Contingency plan description.
+	//
+	// example:
+	//
+	// Emergency response plan for excessively high database connection count.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// List of escalation policy IDs.
+	EscalationId []*string `json:"escalationId,omitempty" xml:"escalationId,omitempty" type:"Repeated"`
+	// Creation time.
+	//
+	// example:
+	//
+	// 1741234567890
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// Last modification time.
+	//
+	// example:
+	//
+	// 1741234567890
+	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// Grouping field path.
+	GroupBy []*IncidentPlanFieldPath `json:"groupBy,omitempty" xml:"groupBy,omitempty" type:"Repeated"`
+	// Event contingency plan ID.
+	//
+	// example:
+	//
+	// plan-001
+	IncidentPlanId *string `json:"incidentPlanId,omitempty" xml:"incidentPlanId,omitempty"`
+	// Contingency plan name.
+	//
+	// example:
+	//
+	// Database connection count alert contingency plan.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// List of resource field mapping paths.
+	ResourceFiled []*IncidentPlanFieldPath `json:"resourceFiled,omitempty" xml:"resourceFiled,omitempty" type:"Repeated"`
+	// Status.
+	//
+	// example:
+	//
+	// Running
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// User ID.
+	//
+	// example:
+	//
+	// uesr-12345
+	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
+	// Workspace name.
+	//
+	// example:
+	//
+	// workspace-test
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s IncidentPlanStruct) String() string {

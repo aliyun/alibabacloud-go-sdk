@@ -18,10 +18,27 @@ type iAlertRuleAlertMetricInputFilterValue interface {
 }
 
 type AlertRuleAlertMetricInputFilterValue struct {
+	// Dimension of the filter condition.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rootIp
 	Dim *string `json:"dim,omitempty" xml:"dim,omitempty"`
+	// Filter Condition Operator.
+	//
 	// This parameter is required.
-	Opt   *string `json:"opt,omitempty" xml:"opt,omitempty"`
+	//
+	// example:
+	//
+	// ALL
+	Opt *string `json:"opt,omitempty" xml:"opt,omitempty"`
+	// Filter Condition Value.
+	//
+	// example:
+	//
+	// 127.0.0.1
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

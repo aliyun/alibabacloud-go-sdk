@@ -28,13 +28,49 @@ type iAlertRuleAlertMetricFilterDef interface {
 }
 
 type AlertRuleAlertMetricFilterDef struct {
-	Dim           *string                                       `json:"dim,omitempty" xml:"dim,omitempty"`
-	DimDisabled   *bool                                         `json:"dimDisabled,omitempty" xml:"dimDisabled,omitempty"`
-	DisplayNameCn *string                                       `json:"displayNameCn,omitempty" xml:"displayNameCn,omitempty"`
-	DisplayNameEn *string                                       `json:"displayNameEn,omitempty" xml:"displayNameEn,omitempty"`
-	Hidden        *bool                                         `json:"hidden,omitempty" xml:"hidden,omitempty"`
-	LabelDisabled *bool                                         `json:"labelDisabled,omitempty" xml:"labelDisabled,omitempty"`
-	Opt           *string                                       `json:"opt,omitempty" xml:"opt,omitempty"`
+	// Dimension in APM metrics.
+	//
+	// example:
+	//
+	// status
+	Dim *string `json:"dim,omitempty" xml:"dim,omitempty"`
+	// When true, the filter item will not appear in the GROUP BY clause of the PromQL.
+	//
+	// example:
+	//
+	// true
+	DimDisabled *bool `json:"dimDisabled,omitempty" xml:"dimDisabled,omitempty"`
+	// Display Name (Chinese).
+	//
+	// example:
+	//
+	// Application Status
+	DisplayNameCn *string `json:"displayNameCn,omitempty" xml:"displayNameCn,omitempty"`
+	// Display Name (English).
+	//
+	// example:
+	//
+	// Application Status
+	DisplayNameEn *string `json:"displayNameEn,omitempty" xml:"displayNameEn,omitempty"`
+	// Whether to hide. If hidden, it will not be displayed in the frontend UI, but its value can still be included when rendering the PromQL. A typical example is the "pid" filter condition in APM scenarios, which is generally not exposed through configurable UI elements but instead presented as a separate application search list in the frontend.
+	//
+	// example:
+	//
+	// true
+	Hidden *bool `json:"hidden,omitempty" xml:"hidden,omitempty"`
+	// When true, the filter item will not appear in the label filter of the PromQL.
+	//
+	// example:
+	//
+	// true
+	LabelDisabled *bool `json:"labelDisabled,omitempty" xml:"labelDisabled,omitempty"`
+	// Filter Condition Operator.
+	//
+	// example:
+	//
+	// =
+	Opt *string `json:"opt,omitempty" xml:"opt,omitempty"`
+	// List of supported options.
 	SupportedOpts []*AlertRuleAlertMetricFilterDefSupportedOpts `json:"supportedOpts,omitempty" xml:"supportedOpts,omitempty" type:"Repeated"`
 }
 
@@ -132,9 +168,24 @@ func (s *AlertRuleAlertMetricFilterDef) Validate() error {
 }
 
 type AlertRuleAlertMetricFilterDefSupportedOpts struct {
+	// Display Name (Chinese).
+	//
+	// example:
+	//
+	// Online
 	DisplayNameCn *string `json:"displayNameCn,omitempty" xml:"displayNameCn,omitempty"`
+	// Display Name (English).
+	//
+	// example:
+	//
+	// Online
 	DisplayNameEn *string `json:"displayNameEn,omitempty" xml:"displayNameEn,omitempty"`
-	Value         *string `json:"value,omitempty" xml:"value,omitempty"`
+	// Matching value.
+	//
+	// example:
+	//
+	// online
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s AlertRuleAlertMetricFilterDefSupportedOpts) String() string {

@@ -16,8 +16,14 @@ type iIncidentPlanFieldPath interface {
 }
 
 type IncidentPlanFieldPath struct {
-	FieldAlias *string   `json:"fieldAlias,omitempty" xml:"fieldAlias,omitempty"`
-	FieldPath  []*string `json:"fieldPath,omitempty" xml:"fieldPath,omitempty" type:"Repeated"`
+	// Field alias.
+	//
+	// example:
+	//
+	// Service name.
+	FieldAlias *string `json:"fieldAlias,omitempty" xml:"fieldAlias,omitempty"`
+	// List of field paths.
+	FieldPath []*string `json:"fieldPath,omitempty" xml:"fieldPath,omitempty" type:"Repeated"`
 }
 
 func (s IncidentPlanFieldPath) String() string {

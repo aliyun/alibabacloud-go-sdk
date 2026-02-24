@@ -20,10 +20,22 @@ type iAlertRuleAlertMetricInput interface {
 }
 
 type AlertRuleAlertMetricInput struct {
+	// List of user-provided filter conditions. The supported parameters and filter conditions for the metric can be queried via ListAlertMetrics.
 	FilterValues []*AlertRuleAlertMetricInputFilterValue `json:"filterValues,omitempty" xml:"filterValues,omitempty" type:"Repeated"`
-	GroupId      *string                                 `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	MetricId     *string                                 `json:"metricId,omitempty" xml:"metricId,omitempty"`
-	ParamValues  []*AlertRuleAlertMetricInputParamValue  `json:"paramValues,omitempty" xml:"paramValues,omitempty" type:"Repeated"`
+	// Key of the metric group selected by the user.
+	//
+	// example:
+	//
+	// apm.jvm
+	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// Key of the predefined metric selected by the user.
+	//
+	// example:
+	//
+	// appstat.jvm.GcPsMarkSweepCount
+	MetricId *string `json:"metricId,omitempty" xml:"metricId,omitempty"`
+	// List of input parameters. The metric\\"s supported parameters and filter conditions can be queried via ListAlertMetrics.
+	ParamValues []*AlertRuleAlertMetricInputParamValue `json:"paramValues,omitempty" xml:"paramValues,omitempty" type:"Repeated"`
 }
 
 func (s AlertRuleAlertMetricInput) String() string {

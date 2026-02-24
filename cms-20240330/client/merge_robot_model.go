@@ -30,15 +30,36 @@ type iMergeRobot interface {
 }
 
 type MergeRobot struct {
-	CreateTime  *string           `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Extend      *MergeRobotExtend `json:"extend,omitempty" xml:"extend,omitempty" type:"Struct"`
-	GmtModified *string           `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	Identifier  *string           `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	Lang        *string           `json:"lang,omitempty" xml:"lang,omitempty"`
-	Name        *string           `json:"name,omitempty" xml:"name,omitempty"`
-	Source      *string           `json:"source,omitempty" xml:"source,omitempty"`
-	Type        *string           `json:"type,omitempty" xml:"type,omitempty"`
-	Webhook     *string           `json:"webhook,omitempty" xml:"webhook,omitempty"`
+	// example:
+	//
+	// 2025-03-11T08:21:58.789Z
+	CreateTime *string           `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Extend     *MergeRobotExtend `json:"extend,omitempty" xml:"extend,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2025-03-11T08:21:58.789Z
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// example:
+	//
+	// robot-12345
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// example:
+	//
+	// zh-CN
+	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// dingtalk
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// example:
+	//
+	// dingtalk
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// https://oapi.dingtalk.com/robot/send?access_token=abc123
+	Webhook *string `json:"webhook,omitempty" xml:"webhook,omitempty"`
 }
 
 func (s MergeRobot) String() string {
@@ -140,12 +161,30 @@ func (s *MergeRobot) Validate() error {
 }
 
 type MergeRobotExtend struct {
-	CardTemplate   *string `json:"cardTemplate,omitempty" xml:"cardTemplate,omitempty"`
-	DailyNoc       *bool   `json:"dailyNoc,omitempty" xml:"dailyNoc,omitempty"`
-	DailyNocTime   *string `json:"dailyNocTime,omitempty" xml:"dailyNocTime,omitempty"`
-	DingSignKey    *string `json:"dingSignKey,omitempty" xml:"dingSignKey,omitempty"`
-	EnableOutgoing *bool   `json:"enableOutgoing,omitempty" xml:"enableOutgoing,omitempty"`
-	Token          *string `json:"token,omitempty" xml:"token,omitempty"`
+	// example:
+	//
+	// incident-card-template
+	CardTemplate *string `json:"cardTemplate,omitempty" xml:"cardTemplate,omitempty"`
+	// example:
+	//
+	// true
+	DailyNoc *bool `json:"dailyNoc,omitempty" xml:"dailyNoc,omitempty"`
+	// example:
+	//
+	// 09:00
+	DailyNocTime *string `json:"dailyNocTime,omitempty" xml:"dailyNocTime,omitempty"`
+	// example:
+	//
+	// abc123
+	DingSignKey *string `json:"dingSignKey,omitempty" xml:"dingSignKey,omitempty"`
+	// example:
+	//
+	// false
+	EnableOutgoing *bool `json:"enableOutgoing,omitempty" xml:"enableOutgoing,omitempty"`
+	// example:
+	//
+	// token-abc123
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
 }
 
 func (s MergeRobotExtend) String() string {

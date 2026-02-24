@@ -26,13 +26,44 @@ type iIncidentNoteStruct interface {
 }
 
 type IncidentNoteStruct struct {
-	Content    *string                     `json:"content,omitempty" xml:"content,omitempty"`
-	Format     *string                     `json:"format,omitempty" xml:"format,omitempty"`
-	IncidentId *string                     `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	NoteId     *string                     `json:"noteId,omitempty" xml:"noteId,omitempty"`
-	Operator   *IncidentNoteStructOperator `json:"operator,omitempty" xml:"operator,omitempty" type:"Struct"`
-	Time       *int64                      `json:"time,omitempty" xml:"time,omitempty"`
-	Type       *string                     `json:"type,omitempty" xml:"type,omitempty"`
+	// Content.
+	//
+	// example:
+	//
+	// The operations team has been contacted and is currently investigating the issue.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// Content format.
+	//
+	// example:
+	//
+	// markdown
+	Format *string `json:"format,omitempty" xml:"format,omitempty"`
+	// Incident ID.
+	//
+	// example:
+	//
+	// incident-001
+	IncidentId *string `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// Note ID.
+	//
+	// example:
+	//
+	// note-001
+	NoteId *string `json:"noteId,omitempty" xml:"noteId,omitempty"`
+	// Operator.
+	Operator *IncidentNoteStructOperator `json:"operator,omitempty" xml:"operator,omitempty" type:"Struct"`
+	// Time.
+	//
+	// example:
+	//
+	// 1741234567890
+	Time *int64 `json:"time,omitempty" xml:"time,omitempty"`
+	// Type.
+	//
+	// example:
+	//
+	// apm
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s IncidentNoteStruct) String() string {
@@ -116,10 +147,30 @@ func (s *IncidentNoteStruct) Validate() error {
 }
 
 type IncidentNoteStructOperator struct {
-	Contact   *string `json:"contact,omitempty" xml:"contact,omitempty"`
+	// Contact.
+	//
+	// example:
+	//
+	// {\\"mobile_phone_num\\":\\"153xxxx8040\\",\\"mobile_country_code\\":\\"86\\",\\"email\\":\\"flightxxg@dida.com\\"}
+	Contact *string `json:"contact,omitempty" xml:"contact,omitempty"`
+	// Contact ID.
+	//
+	// example:
+	//
+	// user-12345
 	ContactId *string `json:"contactId,omitempty" xml:"contactId,omitempty"`
-	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
-	UserId    *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
+	// Name.
+	//
+	// example:
+	//
+	// Zhang San.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// User ID.
+	//
+	// example:
+	//
+	// 4123456
+	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s IncidentNoteStructOperator) String() string {

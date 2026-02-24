@@ -32,16 +32,29 @@ type iAlertRuleNotification interface {
 }
 
 type AlertRuleNotification struct {
-	Contacts            []*string          `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
-	CustomWebhooks      []*string          `json:"customWebhooks,omitempty" xml:"customWebhooks,omitempty" type:"Repeated"`
-	DingCoolAppWebhooks []*string          `json:"dingCoolAppWebhooks,omitempty" xml:"dingCoolAppWebhooks,omitempty" type:"Repeated"`
-	DingWebhooks        []*string          `json:"dingWebhooks,omitempty" xml:"dingWebhooks,omitempty" type:"Repeated"`
-	FsWebhooks          []*string          `json:"fsWebhooks,omitempty" xml:"fsWebhooks,omitempty" type:"Repeated"`
-	Groups              []*string          `json:"groups,omitempty" xml:"groups,omitempty" type:"Repeated"`
-	NotifyTime          *AlertRuleTimeSpan `json:"notifyTime,omitempty" xml:"notifyTime,omitempty"`
-	SilenceTime         *int64             `json:"silenceTime,omitempty" xml:"silenceTime,omitempty"`
-	SlackWebhooks       []*string          `json:"slackWebhooks,omitempty" xml:"slackWebhooks,omitempty" type:"Repeated"`
-	WxWebhooks          []*string          `json:"wxWebhooks,omitempty" xml:"wxWebhooks,omitempty" type:"Repeated"`
+	// List of contact IDs.
+	Contacts []*string `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
+	// List of custom webhook notification object IDs.
+	CustomWebhooks      []*string `json:"customWebhooks,omitempty" xml:"customWebhooks,omitempty" type:"Repeated"`
+	DingCoolAppWebhooks []*string `json:"dingCoolAppWebhooks,omitempty" xml:"dingCoolAppWebhooks,omitempty" type:"Repeated"`
+	// List of DingTalk webhook notification object IDs.
+	DingWebhooks []*string `json:"dingWebhooks,omitempty" xml:"dingWebhooks,omitempty" type:"Repeated"`
+	// List of Feishu webhook notification object IDs.
+	FsWebhooks []*string `json:"fsWebhooks,omitempty" xml:"fsWebhooks,omitempty" type:"Repeated"`
+	// List of contact group IDs.
+	Groups []*string `json:"groups,omitempty" xml:"groups,omitempty" type:"Repeated"`
+	// Notification time window; notifications are sent only during this period.
+	NotifyTime *AlertRuleTimeSpan `json:"notifyTime,omitempty" xml:"notifyTime,omitempty"`
+	// Notification silence duration, in seconds.
+	//
+	// example:
+	//
+	// 86400
+	SilenceTime *int64 `json:"silenceTime,omitempty" xml:"silenceTime,omitempty"`
+	// List of Slack webhook notification object IDs.
+	SlackWebhooks []*string `json:"slackWebhooks,omitempty" xml:"slackWebhooks,omitempty" type:"Repeated"`
+	// List of WeChat webhook notification object IDs.
+	WxWebhooks []*string `json:"wxWebhooks,omitempty" xml:"wxWebhooks,omitempty" type:"Repeated"`
 }
 
 func (s AlertRuleNotification) String() string {

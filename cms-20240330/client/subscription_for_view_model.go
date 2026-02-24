@@ -38,18 +38,66 @@ type iSubscriptionForView interface {
 }
 
 type SubscriptionForView struct {
-	CreateTime       *string                            `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description      *string                            `json:"description,omitempty" xml:"description,omitempty"`
-	Enable           *bool                              `json:"enable,omitempty" xml:"enable,omitempty"`
-	FilterSetting    *FilterSetting                     `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	NotifyStrategyId *string                            `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
-	PushingSetting   *SubscriptionForViewPushingSetting `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty" type:"Struct"`
-	SubscriptionId   *string                            `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
+	// Create Time.
+	//
+	// example:
+	//
+	// 2025-03-11T08:21:58Z
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Description.
+	//
+	// example:
+	//
+	// workspace test
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Whether enabled.
+	//
+	// example:
+	//
+	// false
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// Filtering settings.
+	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
+	// Notification policy UUID.
+	//
+	// example:
+	//
+	// 23123123
+	NotifyStrategyId *string `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
+	// Push settings.
+	PushingSetting *SubscriptionForViewPushingSetting `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty" type:"Struct"`
+	// UUID
+	//
+	// example:
+	//
+	// 123123123123
+	SubscriptionId *string `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
+	// Name.
+	//
 	// This parameter is required.
-	SubscriptionName       *string                 `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
-	SyncFromType           *string                 `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
-	UpdateTime             *string                 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	UserId                 *string                 `json:"userId,omitempty" xml:"userId,omitempty"`
+	//
+	// example:
+	//
+	// Subscription test.
+	SubscriptionName *string `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
+	SyncFromType     *string `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
+	// Update Time.
+	//
+	// example:
+	//
+	// 2025-05-23T02:29:02Z
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// User ID.
+	//
+	// example:
+	//
+	// 123123123
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// workspace
+	//
+	// example:
+	//
+	// workspace-test
 	Workspace              *string                 `json:"workspace,omitempty" xml:"workspace,omitempty"`
 	WorkspaceFilterSetting *WorkspaceFilterSetting `json:"workspaceFilterSetting,omitempty" xml:"workspaceFilterSetting,omitempty"`
 }
@@ -199,10 +247,22 @@ func (s *SubscriptionForView) Validate() error {
 }
 
 type SubscriptionForViewPushingSetting struct {
-	AlertActionIds   []*string `json:"alertActionIds,omitempty" xml:"alertActionIds,omitempty" type:"Repeated"`
-	ResponsePlanId   *string   `json:"responsePlanId,omitempty" xml:"responsePlanId,omitempty"`
+	// Alert push action integration ID list.
+	AlertActionIds []*string `json:"alertActionIds,omitempty" xml:"alertActionIds,omitempty" type:"Repeated"`
+	// Action plan ID.
+	//
+	// example:
+	//
+	// 123123123
+	ResponsePlanId *string `json:"responsePlanId,omitempty" xml:"responsePlanId,omitempty"`
+	// Recovery push action integration ID list.
 	RestoreActionIds []*string `json:"restoreActionIds,omitempty" xml:"restoreActionIds,omitempty" type:"Repeated"`
-	TemplateUuid     *string   `json:"templateUuid,omitempty" xml:"templateUuid,omitempty"`
+	// Template UUID.
+	//
+	// example:
+	//
+	// 123123123
+	TemplateUuid *string `json:"templateUuid,omitempty" xml:"templateUuid,omitempty"`
 }
 
 func (s SubscriptionForViewPushingSetting) String() string {

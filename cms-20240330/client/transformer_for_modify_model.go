@@ -24,12 +24,35 @@ type iTransformerForModify interface {
 }
 
 type TransformerForModify struct {
-	Actions        []*TransformAction `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	Description    *string            `json:"description,omitempty" xml:"description,omitempty"`
-	FilterSetting  *FilterSetting     `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	QuitAfterMatch *bool              `json:"quitAfterMatch,omitempty" xml:"quitAfterMatch,omitempty"`
-	SortId         *int32             `json:"sortId,omitempty" xml:"sortId,omitempty"`
+	// Transformation operation.
+	Actions []*TransformAction `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
+	// Description.
+	//
+	// example:
+	//
+	// workspace test
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Filter Setting.
+	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
+	// Exit after matching processing.
+	//
+	// example:
+	//
+	// true
+	QuitAfterMatch *bool `json:"quitAfterMatch,omitempty" xml:"quitAfterMatch,omitempty"`
+	// Sort order.
+	//
+	// example:
+	//
+	// 1
+	SortId *int32 `json:"sortId,omitempty" xml:"sortId,omitempty"`
+	// Name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// name
 	TransformerName *string `json:"transformerName,omitempty" xml:"transformerName,omitempty"`
 }
 

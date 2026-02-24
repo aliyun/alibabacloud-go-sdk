@@ -25,12 +25,25 @@ type iAlertEventIntegrationPolicyForModify interface {
 
 type AlertEventIntegrationPolicyForModify struct {
 	// This parameter is required.
-	AlertEventIntegrationPolicyName *string            `json:"alertEventIntegrationPolicyName,omitempty" xml:"alertEventIntegrationPolicyName,omitempty"`
-	Description                     *string            `json:"description,omitempty" xml:"description,omitempty"`
-	FilterSetting                   *FilterSetting     `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	IntegrationSetting              *string            `json:"integrationSetting,omitempty" xml:"integrationSetting,omitempty"`
-	TransformerSetting              []*TransformAction `json:"transformerSetting,omitempty" xml:"transformerSetting,omitempty" type:"Repeated"`
-	Type                            *string            `json:"type,omitempty" xml:"type,omitempty"`
+	//
+	// example:
+	//
+	// test integration
+	AlertEventIntegrationPolicyName *string `json:"alertEventIntegrationPolicyName,omitempty" xml:"alertEventIntegrationPolicyName,omitempty"`
+	// example:
+	//
+	// test
+	Description   *string        `json:"description,omitempty" xml:"description,omitempty"`
+	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
+	// example:
+	//
+	// {"region":"cn-hangzhou"}
+	IntegrationSetting *string            `json:"integrationSetting,omitempty" xml:"integrationSetting,omitempty"`
+	TransformerSetting []*TransformAction `json:"transformerSetting,omitempty" xml:"transformerSetting,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ALERT_CUSTOM
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s AlertEventIntegrationPolicyForModify) String() string {

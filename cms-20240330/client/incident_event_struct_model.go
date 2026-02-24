@@ -40,20 +40,78 @@ type iIncidentEventStruct interface {
 }
 
 type IncidentEventStruct struct {
-	AutoRecoverTime *int64             `json:"autoRecoverTime,omitempty" xml:"autoRecoverTime,omitempty"`
-	Content         *string            `json:"content,omitempty" xml:"content,omitempty"`
-	Count           *int32             `json:"count,omitempty" xml:"count,omitempty"`
-	Dimension       map[string]*string `json:"dimension,omitempty" xml:"dimension,omitempty"`
-	GroupBy         map[string]*string `json:"groupBy,omitempty" xml:"groupBy,omitempty"`
-	IncidentEventId *string            `json:"incidentEventId,omitempty" xml:"incidentEventId,omitempty"`
-	IncidentId      *string            `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	LastTime        *int64             `json:"lastTime,omitempty" xml:"lastTime,omitempty"`
-	RecoverTime     *int64             `json:"recoverTime,omitempty" xml:"recoverTime,omitempty"`
-	Resource        map[string]*string `json:"resource,omitempty" xml:"resource,omitempty"`
-	Status          *int64             `json:"status,omitempty" xml:"status,omitempty"`
-	Time            *string            `json:"time,omitempty" xml:"time,omitempty"`
-	Title           *string            `json:"title,omitempty" xml:"title,omitempty"`
-	UserId          *string            `json:"userId,omitempty" xml:"userId,omitempty"`
+	// Automatic recovery time.
+	//
+	// example:
+	//
+	// 1741234567890
+	AutoRecoverTime *int64 `json:"autoRecoverTime,omitempty" xml:"autoRecoverTime,omitempty"`
+	// Content.
+	//
+	// example:
+	//
+	// Detected that the CPU usage of the user-service instance i-abc123 has reached 95%, triggering an alert.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// Count.
+	//
+	// example:
+	//
+	// 6
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// Dimension.
+	Dimension map[string]*string `json:"dimension,omitempty" xml:"dimension,omitempty"`
+	// Used for grouping dimensions.
+	GroupBy map[string]*string `json:"groupBy,omitempty" xml:"groupBy,omitempty"`
+	// Incident Event Id.
+	//
+	// example:
+	//
+	// event-001
+	IncidentEventId *string `json:"incidentEventId,omitempty" xml:"incidentEventId,omitempty"`
+	// Incident Id.
+	//
+	// example:
+	//
+	// incident-001
+	IncidentId *string `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// Last time.
+	//
+	// example:
+	//
+	// 1741234567890
+	LastTime *int64 `json:"lastTime,omitempty" xml:"lastTime,omitempty"`
+	// Manual recovery time.
+	//
+	// example:
+	//
+	// 1741234567890
+	RecoverTime *int64 `json:"recoverTime,omitempty" xml:"recoverTime,omitempty"`
+	// Describes the resource information associated with the event.
+	Resource map[string]*string `json:"resource,omitempty" xml:"resource,omitempty"`
+	// Status.
+	//
+	// example:
+	//
+	// Running
+	Status *int64 `json:"status,omitempty" xml:"status,omitempty"`
+	// Time.
+	//
+	// example:
+	//
+	// 2025-03-11T08:21:58Z
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+	// Title.
+	//
+	// example:
+	//
+	// User service CPU usage is too high.
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// User ID.
+	//
+	// example:
+	//
+	// user-12345
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s IncidentEventStruct) String() string {

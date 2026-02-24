@@ -36,18 +36,51 @@ type iMergeWebhook interface {
 }
 
 type MergeWebhook struct {
-	ContentType *string                `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	Extend      *string                `json:"extend,omitempty" xml:"extend,omitempty"`
-	GmtCreate   *string                `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// application/json
+	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// example:
+	//
+	// {"timeout": 3000}
+	Extend *string `json:"extend,omitempty" xml:"extend,omitempty"`
+	// example:
+	//
+	// 2025-03-11T08:21:58.789Z
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// 2025-03-11T08:21:58.789Z
 	GmtModified map[string]interface{} `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	Headers     *string                `json:"headers,omitempty" xml:"headers,omitempty"`
-	Identifier  *string                `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	Lang        *string                `json:"lang,omitempty" xml:"lang,omitempty"`
-	Method      *string                `json:"method,omitempty" xml:"method,omitempty"`
-	Name        *string                `json:"name,omitempty" xml:"name,omitempty"`
-	Source      *string                `json:"source,omitempty" xml:"source,omitempty"`
-	Type        *string                `json:"type,omitempty" xml:"type,omitempty"`
-	Webhook     *string                `json:"webhook,omitempty" xml:"webhook,omitempty"`
+	// example:
+	//
+	// {"Authorization": "Bearer abc123"}
+	Headers *string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// example:
+	//
+	// webhook-12345
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// example:
+	//
+	// zh-CN
+	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
+	// example:
+	//
+	// POST
+	Method *string `json:"method,omitempty" xml:"method,omitempty"`
+	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// dingtalk
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// example:
+	//
+	// dingtalk
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// https://oapi.dingtalk.com/robot/send?access_token=abc123
+	Webhook *string `json:"webhook,omitempty" xml:"webhook,omitempty"`
 }
 
 func (s MergeWebhook) String() string {

@@ -17,7 +17,10 @@ type iAlertRuleLabelFilter interface {
 
 type AlertRuleLabelFilter struct {
 	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
-	Opt    *string            `json:"opt,omitempty" xml:"opt,omitempty"`
+	// example:
+	//
+	// AND
+	Opt *string `json:"opt,omitempty" xml:"opt,omitempty"`
 }
 
 func (s AlertRuleLabelFilter) String() string {

@@ -18,9 +18,18 @@ type iRumDnsResponse interface {
 }
 
 type RumDnsResponse struct {
-	Domain  *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// example:
+	//
+	// rum
+	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// example:
+	//
+	// ""
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	Result  *bool   `json:"result,omitempty" xml:"result,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s RumDnsResponse) String() string {

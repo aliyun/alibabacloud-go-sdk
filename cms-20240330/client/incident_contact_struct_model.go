@@ -18,9 +18,20 @@ type iIncidentContactStruct interface {
 }
 
 type IncidentContactStruct struct {
-	Channel     []*string `json:"channel,omitempty" xml:"channel,omitempty" type:"Repeated"`
-	ContactId   *string   `json:"contactId,omitempty" xml:"contactId,omitempty"`
-	ContactType *string   `json:"contactType,omitempty" xml:"contactType,omitempty"`
+	// Channel list.
+	Channel []*string `json:"channel,omitempty" xml:"channel,omitempty" type:"Repeated"`
+	// Contact ID.
+	//
+	// example:
+	//
+	// 627415
+	ContactId *string `json:"contactId,omitempty" xml:"contactId,omitempty"`
+	// Contact type.
+	//
+	// example:
+	//
+	// GROUP
+	ContactType *string `json:"contactType,omitempty" xml:"contactType,omitempty"`
 }
 
 func (s IncidentContactStruct) String() string {

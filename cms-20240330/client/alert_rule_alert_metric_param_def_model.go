@@ -28,14 +28,32 @@ type iAlertRuleAlertMetricParamDef interface {
 }
 
 type AlertRuleAlertMetricParamDef struct {
-	MaxWidth      *int32                                `json:"maxWidth,omitempty" xml:"maxWidth,omitempty"`
-	MinWidth      *int32                                `json:"minWidth,omitempty" xml:"minWidth,omitempty"`
-	Name          *string                               `json:"name,omitempty" xml:"name,omitempty"`
-	PlaceholderCn *string                               `json:"placeholderCn,omitempty" xml:"placeholderCn,omitempty"`
-	PlaceholderEn *string                               `json:"placeholderEn,omitempty" xml:"placeholderEn,omitempty"`
-	Type          *string                               `json:"type,omitempty" xml:"type,omitempty"`
-	Value         *string                               `json:"value,omitempty" xml:"value,omitempty"`
-	Values        []*AlertRuleAlertMetricParamDefValues `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	MaxWidth *int32 `json:"maxWidth,omitempty" xml:"maxWidth,omitempty"`
+	// example:
+	//
+	// 100
+	MinWidth *int32 `json:"minWidth,omitempty" xml:"minWidth,omitempty"`
+	// example:
+	//
+	// env
+	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
+	PlaceholderCn *string `json:"placeholderCn,omitempty" xml:"placeholderCn,omitempty"`
+	// example:
+	//
+	// Enter value
+	PlaceholderEn *string `json:"placeholderEn,omitempty" xml:"placeholderEn,omitempty"`
+	// example:
+	//
+	// TEXT_PARAM
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// staging
+	Value  *string                               `json:"value,omitempty" xml:"value,omitempty"`
+	Values []*AlertRuleAlertMetricParamDefValues `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 
 func (s AlertRuleAlertMetricParamDef) String() string {
@@ -133,8 +151,14 @@ func (s *AlertRuleAlertMetricParamDef) Validate() error {
 
 type AlertRuleAlertMetricParamDefValues struct {
 	LabelCn *string `json:"labelCn,omitempty" xml:"labelCn,omitempty"`
+	// example:
+	//
+	// Staging
 	LabelEn *string `json:"labelEn,omitempty" xml:"labelEn,omitempty"`
-	Value   *string `json:"value,omitempty" xml:"value,omitempty"`
+	// example:
+	//
+	// staging
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s AlertRuleAlertMetricParamDefValues) String() string {
