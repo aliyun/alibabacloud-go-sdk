@@ -34,7 +34,7 @@ type iGetAggregateResourceComplianceTimelineRequest interface {
 type GetAggregateResourceComplianceTimelineRequest struct {
 	// The ID of the account group.
 	//
-	// For information about how to obtain the ID of the account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
 	//
 	// This parameter is required.
 	//
@@ -42,19 +42,19 @@ type GetAggregateResourceComplianceTimelineRequest struct {
 	//
 	// ca-5885626622af0008****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The end of the time range to query. The default value indicates the time when the GetAggregateResourceConfigurationTimeline operation is called. Unit: milliseconds.
+	// The end timestamp. By default, data up to the current time is queried. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1625821156000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The maximum number of entries returned for a single request. Valid values: 1 to 100.
+	// The maximum number of entries to return on each page. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The `token` that is used to initiate the next request if the response of the current request is truncated. You can use the token to initiate another request and obtain the remaining records.
+	// If the output of a request is truncated, you can use this token to query the next page of results.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type GetAggregateResourceComplianceTimelineRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region where the resource resides.
 	//
-	// For more information about how to obtain the ID of a region, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
+	// For more information about how to obtain the ID of the region where a resource resides, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
 	//
 	// This parameter is required.
 	//
@@ -70,9 +70,9 @@ type GetAggregateResourceComplianceTimelineRequest struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the Alibaba Cloud account to which the resources in the account group belong.
+	// The ID of the Alibaba Cloud account to which the resource in the account group belongs.
 	//
-	// > You can use either the ResourceAccountId or ResourceOwnerId parameter. We recommend that you use the ResourceAccountId parameter.
+	// > Set either the ResourceAccountId or ResourceOwnerId parameter. This parameter is recommended.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type GetAggregateResourceComplianceTimelineRequest struct {
 	ResourceAccountId *int64 `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
 	// The resource ID.
 	//
-	// For more information about how to query the ID of a resource, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
+	// For more information about how to obtain the resource ID, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
 	//
 	// This parameter is required.
 	//
@@ -92,7 +92,7 @@ type GetAggregateResourceComplianceTimelineRequest struct {
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The resource type.
 	//
-	// For more information about how to obtain the type of a resource, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
+	// For more information about how to obtain the resource type, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
 	//
 	// This parameter is required.
 	//
@@ -100,7 +100,7 @@ type GetAggregateResourceComplianceTimelineRequest struct {
 	//
 	// ACS::OSS::Bucket
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The beginning of the time range to query. By default, Cloud Config retrieves the configuration changes in the last 30 days for the specified resource. Unit: milliseconds.
+	// The start timestamp. By default, data from the last 30 days is queried. Unit: milliseconds.
 	//
 	// example:
 	//

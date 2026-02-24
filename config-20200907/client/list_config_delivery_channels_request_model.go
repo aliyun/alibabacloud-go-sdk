@@ -14,7 +14,7 @@ type iListConfigDeliveryChannelsRequest interface {
 }
 
 type ListConfigDeliveryChannelsRequest struct {
-	// The ID of the delivery channel. Separate multiple IDs with commas (,).
+	// The ID of the delivery channel. Separate multiple delivery channel IDs with a comma (,).
 	//
 	// example:
 	//

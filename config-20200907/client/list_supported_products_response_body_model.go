@@ -24,13 +24,13 @@ type ListSupportedProductsResponseBody struct {
 	//
 	// example:
 	//
-	// 100
+	// 200
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
-	// D3AjqMNSy0ls7zBNCf3a****
+	// D99AjqMNSy0ls7zBNCfcs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The cloud services that are supported by Cloud Config.
 	Products []*ListSupportedProductsResponseBodyProducts `json:"Products,omitempty" xml:"Products,omitempty" type:"Repeated"`
@@ -38,7 +38,7 @@ type ListSupportedProductsResponseBody struct {
 	//
 	// example:
 	//
-	// 610B0276-ABEE-57DF-9C13-C2324FADA9D7
+	// 610B0276-ABEE-57DF-9C13-C2415FADA7D6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

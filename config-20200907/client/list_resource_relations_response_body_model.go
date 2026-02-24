@@ -16,13 +16,7 @@ type iListResourceRelationsResponseBody interface {
 }
 
 type ListResourceRelationsResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 6525F8DE-5A8B-5AD3-A241-BBF5A259E5B2
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the relationship.
+	RequestId         *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceRelations *ListResourceRelationsResponseBodyResourceRelations `json:"ResourceRelations,omitempty" xml:"ResourceRelations,omitempty" type:"Struct"`
 }
 
@@ -62,19 +56,8 @@ func (s *ListResourceRelationsResponseBody) Validate() error {
 }
 
 type ListResourceRelationsResponseBodyResourceRelations struct {
-	// The maximum number of entries returned on each page.
-	//
-	// example:
-	//
-	// 10
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that was used to initiate the next request.
-	//
-	// example:
-	//
-	// C2DjqMYSy0is7zSMGf21****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// An array that contains the relationships.
+	MaxResults           *int32                                                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken            *string                                                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	ResourceRelationList []*ListResourceRelationsResponseBodyResourceRelationsResourceRelationList `json:"ResourceRelationList,omitempty" xml:"ResourceRelationList,omitempty" type:"Repeated"`
 }
 
@@ -127,58 +110,13 @@ func (s *ListResourceRelationsResponseBodyResourceRelations) Validate() error {
 }
 
 type ListResourceRelationsResponseBodyResourceRelationsResourceRelationList struct {
-	// The ID of the Alibaba Cloud account to which the resource belongs.
-	//
-	// example:
-	//
-	// 100931896542****
-	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The type of the relationship between the resource and the object.
-	//
-	// Valid values:
-	//
-	// 	- IsContained: The object is included as part of the resource.
-	//
-	// 	- IsAttachedTo: The object is added to the resource.
-	//
-	// 	- IsAssociatedIn: The object is associated with the resource.
-	//
-	// 	- Contains: The object contains the resource.
-	//
-	// example:
-	//
-	// IsAttachedTo
-	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
-	// The resource ID.
-	//
-	// example:
-	//
-	// i-j6cajg9yrfoh4sas****
-	SourceResourceId *string `json:"SourceResourceId,omitempty" xml:"SourceResourceId,omitempty"`
-	// The ID of the region in which the resource resides.
-	//
-	// example:
-	//
-	// cn-shanghai
+	AccountId              *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	RelationType           *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	SourceResourceId       *string `json:"SourceResourceId,omitempty" xml:"SourceResourceId,omitempty"`
 	SourceResourceRegionId *string `json:"SourceResourceRegionId,omitempty" xml:"SourceResourceRegionId,omitempty"`
-	// The type of the resource.
-	//
-	// example:
-	//
-	// ACS::ECS::Instance
-	SourceResourceType *string `json:"SourceResourceType,omitempty" xml:"SourceResourceType,omitempty"`
-	// The ID of the associated resource.
-	//
-	// example:
-	//
-	// d-j6c8k731qbrc7fxi****
-	TargetResourceId *string `json:"TargetResourceId,omitempty" xml:"TargetResourceId,omitempty"`
-	// The type of the associated resource.
-	//
-	// example:
-	//
-	// ACS::ECS::Disk
-	TargetResourceType *string `json:"TargetResourceType,omitempty" xml:"TargetResourceType,omitempty"`
+	SourceResourceType     *string `json:"SourceResourceType,omitempty" xml:"SourceResourceType,omitempty"`
+	TargetResourceId       *string `json:"TargetResourceId,omitempty" xml:"TargetResourceId,omitempty"`
+	TargetResourceType     *string `json:"TargetResourceType,omitempty" xml:"TargetResourceType,omitempty"`
 }
 
 func (s ListResourceRelationsResponseBodyResourceRelationsResourceRelationList) String() string {

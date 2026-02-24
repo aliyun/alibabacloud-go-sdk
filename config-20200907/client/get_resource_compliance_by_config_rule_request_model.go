@@ -16,27 +16,8 @@ type iGetResourceComplianceByConfigRuleRequest interface {
 }
 
 type GetResourceComplianceByConfigRuleRequest struct {
-	// The compliance evaluation result. Valid values:
-	//
-	// 	- COMPLIANT: The resources are evaluated as compliant.
-	//
-	// 	- NON_COMPLIANT: The resources are evaluated as non-compliant.
-	//
-	// 	- NOT_APPLICABLE: The rule does not apply to the resources.
-	//
-	// 	- INSUFFICIENT_DATA: No data is available.
-	//
-	// example:
-	//
-	// COMPLIANT
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	// The rule ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cr-d369626622af008e****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
 }
 

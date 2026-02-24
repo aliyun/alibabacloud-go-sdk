@@ -28,69 +28,16 @@ type iListResourceRelationsRequest interface {
 }
 
 type ListResourceRelationsRequest struct {
-	// The maximum number of entries to return in a request. Valid values: 1 to 1000.
-	//
-	// example:
-	//
-	// 10
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
-	//
-	// example:
-	//
-	// C2DjqMYSy0is7zSMGf21****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region in which the resource resides.
-	//
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-shanghai
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The type of the relationship between the resource and the object.
-	//
-	// Valid values:
-	//
-	// 	- IsContained: The object is included as part of the resource.
-	//
-	// 	- IsAttachedTo: The object is added to the resource.
-	//
-	// 	- IsAssociatedIn: The object is associated with the resource.
-	//
-	// 	- Contains: The object contains the resource.
-	//
-	// example:
-	//
-	// IsAttachedTo
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
-	// The resource ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// i-j6cajg9yrfoh4sas****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ACS::ECS::Instance
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The ID of the resource that is associated with the object.
-	//
-	// example:
-	//
-	// d-j6c8k731qbrc7fxi****
-	TargetResourceId *string `json:"TargetResourceId,omitempty" xml:"TargetResourceId,omitempty"`
-	// The type of the resource that is associated with the object.
-	//
-	// example:
-	//
-	// ACS::ECS::Disk
+	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TargetResourceId   *string `json:"TargetResourceId,omitempty" xml:"TargetResourceId,omitempty"`
 	TargetResourceType *string `json:"TargetResourceType,omitempty" xml:"TargetResourceType,omitempty"`
 }
 

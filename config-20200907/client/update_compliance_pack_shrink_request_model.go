@@ -46,15 +46,15 @@ type iUpdateCompliancePackShrinkRequest interface {
 }
 
 type UpdateCompliancePackShrinkRequest struct {
-	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
+	// A client token to ensure the idempotence of the request. Generate a unique token for each request. The `ClientToken` value can contain only ASCII characters and must be no more than 64 characters long.
 	//
 	// example:
 	//
 	// 1594295238-f9361358-5843-4294-8d30-b5183fac****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the compliance package.
+	// The ID of the compliance pack.
 	//
-	// For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
+	// For more information, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
 	//
 	// This parameter is required.
 	//
@@ -62,69 +62,69 @@ type UpdateCompliancePackShrinkRequest struct {
 	//
 	// cp-a8a8626622af0082****
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	// The name of the compliance package.
+	// The name of the compliance pack.
 	//
-	// For more information about how to obtain the name of a compliance package, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
+	// For more information, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
 	//
 	// example:
 	//
-	// The name of the compliance package.
+	// 等保三级预检合规包
 	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
-	// The rules in the compliance package.
+	// The rules in the compliance pack.
 	//
-	// If you leave this parameter empty, the rules in the compliance package remain unchanged. If you configure this parameter, Cloud Config replaces the existing rules in the compliance package with the specified rules.
+	// If you leave this parameter empty when you modify the compliance pack, the original rules are retained. If you specify new rules, they replace the original rules.
 	ConfigRulesShrink *string `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty"`
-	// The description of the compliance package.
+	// The description of the compliance pack.
 	//
 	// example:
 	//
-	// The description of the compliance package.
+	// 基于等保2.0三级标准，提供持续检测合规性的建议模板，帮助您提前自检并修复问题，以便快速通过正式检测。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The IDs of the regions to which the rule not applies. Separate multiple region IDs with commas (,).
+	// The compliance pack does not evaluate resources in the specified regions. Separate multiple region IDs with commas (,).
 	//
 	// example:
 	//
 	// cn-shanghai
 	ExcludeRegionIdsScope *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
-	// ExcludeResourceGroupIdsScope. Separate multiple resource group IDs with commas (,).
+	// The compliance pack does not evaluate resources in the specified resource groups. Separate multiple resource group IDs with commas (,).
 	//
 	// example:
 	//
 	// rg-bnczc6r7rml****
 	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
-	// The ID of the resource that you do not want to evaluate by using the compliance package. Separate multiple resource IDs with commas (,).
+	// The compliance pack does not evaluate the specified resources. Separate multiple resource IDs with commas (,).
 	//
 	// example:
 	//
 	// 23642660635687****
 	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	// ExcludeTagsScope
+	// The excluded tag scope.
 	ExcludeTagsScope []*UpdateCompliancePackShrinkRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
-	// The ID of the region whose resources you want to evaluate by using the compliance package. Separate multiple region IDs with commas (,).
+	// The compliance pack evaluates only resources in the specified regions. Separate multiple region IDs with commas (,).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	// The ID of the resource group whose resources you want to evaluate by using the compliance package. Separate multiple resource group IDs with commas (,).
+	// The compliance pack evaluates only resources in the specified resource groups. Separate multiple resource group IDs with commas (,).
 	//
 	// example:
 	//
 	// rg-aekzdibsjjc****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	// The IDs of the resources included from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
+	// The compliance pack evaluates only the specified resources. Separate multiple resource IDs with commas (,).
 	//
 	// example:
 	//
 	// lb-5cmbowstbkss9ta03****
 	ResourceIdsScope *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
-	// The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
+	// The risk level of the compliance pack. Valid values:
 	//
-	// 	- 1: high risk level
+	// - 1: High risk.
 	//
-	// 	- 2: medium risk level
+	// - 2: Medium risk.
 	//
-	// 	- 3: low risk level
+	// - 3: Low risk.
 	//
 	// example:
 	//
@@ -132,25 +132,25 @@ type UpdateCompliancePackShrinkRequest struct {
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// Deprecated
 	//
-	// The tags of the resource.
+	// The tags of the resource. This parameter is deprecated. Ignore this parameter because it is no longer valid.
 	//
-	// You can add up to 20 tags to a resource.
+	// You can add up to 20 tags.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The tag key of the resource that you want to evaluate by using the compliance package.
+	// The compliance pack evaluates only resources that have the specified tag key.
 	//
 	// example:
 	//
 	// ECS
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	// The tag value of the resource that you want to evaluate by using the compliance package.
+	// The compliance pack evaluates only resources that have the specified tag key and value.
 	//
-	// >  You must configure the TagValueScope parameter together with the TagValueScope parameter.
+	// > You must use TagValueScope with TagKeyScope.
 	//
 	// example:
 	//
 	// test
 	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
-	// TagsScope
+	// The tag scope.
 	TagsScope []*UpdateCompliancePackShrinkRequestTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 }
 

@@ -16,7 +16,10 @@ type iGetReportTemplateResponseBody interface {
 }
 
 type GetReportTemplateResponseBody struct {
+	// Report template.
 	ReportTemplate *GetReportTemplateResponseBodyReportTemplate `json:"ReportTemplate,omitempty" xml:"ReportTemplate,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// A7A0FFF8-0B44-40C6-8BBF-3A185EFDF3F7
@@ -59,28 +62,70 @@ func (s *GetReportTemplateResponseBody) Validate() error {
 }
 
 type GetReportTemplateResponseBodyReportTemplate struct {
+	// Report file format.
+	//
 	// example:
 	//
 	// excel
 	ReportFileFormats *string `json:"ReportFileFormats,omitempty" xml:"ReportFileFormats,omitempty"`
+	// Aggregation granularity of the report.
+	//
 	// example:
 	//
 	// AllInOne
-	ReportGranularity *string                                                   `json:"ReportGranularity,omitempty" xml:"ReportGranularity,omitempty"`
-	ReportLanguage    *string                                                   `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
-	ReportScope       []*GetReportTemplateResponseBodyReportTemplateReportScope `json:"ReportScope,omitempty" xml:"ReportScope,omitempty" type:"Repeated"`
+	ReportGranularity *string `json:"ReportGranularity,omitempty" xml:"ReportGranularity,omitempty"`
+	// Report language. Valid values: zh-CN and en-US. Default is en-US if empty.
+	//
+	// example:
+	//
+	// en-US
+	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
+	// Array of report scopes. Each scope defines a set of rules included in the audit report. Scopes use OR logic. That is, rules from all scopes are combined.
+	//
+	// > If the array has two items, and the first specifies RuleId cr-1 while the second specifies RuleId cr-2, then the report covers both cr-1 and cr-2.
+	ReportScope []*GetReportTemplateResponseBodyReportTemplateReportScope `json:"ReportScope,omitempty" xml:"ReportScope,omitempty" type:"Repeated"`
+	// Description of the report template.
+	//
 	// example:
 	//
 	// test-description
 	ReportTemplateDescription *string `json:"ReportTemplateDescription,omitempty" xml:"ReportTemplateDescription,omitempty"`
+	// ID of the report template.
+	//
 	// example:
 	//
 	// crt-xxx
 	ReportTemplateId *string `json:"ReportTemplateId,omitempty" xml:"ReportTemplateId,omitempty"`
+	// Name of the report template.
+	//
 	// example:
 	//
 	// test-name
 	ReportTemplateName *string `json:"ReportTemplateName,omitempty" xml:"ReportTemplateName,omitempty"`
+	// Subscription frequency for the report. If this field is not empty, it contains a Quartz-formatted cron expression that triggers notifications.
+	//
+	// The format is: seconds minutes hours day-of-month month day-of-week. Common examples include the following:
+	//
+	// - Run daily at 00:00: 0 0 0 \\	- \\	- ?
+	//
+	// - Run every Monday at 15:30: 0 30 15 ? \\	- MON
+	//
+	// - Run on the first day of each month at 02:00: 0 0 2 1 \\	- ?
+	//
+	// Where:
+	//
+	// - "\\*" means any value.
+	//
+	// - "?" means no specific value for the day-of-month or day-of-week field.
+	//
+	// - MON means Monday.
+	//
+	// > Trigger times are in UTC+8. Adjust your cron expression based on your time zone.
+	//
+	// > The system tries to trigger notifications as close as possible to the scheduled time. Delays may occur due to report generation status. A single template can trigger at most one notification per day.
+	//
+	// > In Quartz, days of the week are numbered: 1 = Sunday, 2 = Monday, 3 = Tuesday, 4 = Wednesday, 5 = Thursday, 6 = Friday, 7 = Saturday.
+	//
 	// example:
 	//
 	// 0 0 0 	- 	- ?
@@ -181,14 +226,26 @@ func (s *GetReportTemplateResponseBodyReportTemplate) Validate() error {
 }
 
 type GetReportTemplateResponseBodyReportTemplateReportScope struct {
+	// Key for the report scope. Supported keys:
+	//
+	// - AggregatorId
+	//
+	// - CompliancePackId
+	//
+	// - RuleId
+	//
 	// example:
 	//
 	// RuleId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Matching logic. Only In is supported.
+	//
 	// example:
 	//
 	// In
 	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// Value for the report scope. For multiple values of the same type, such as multiple rule IDs, separate them with commas.
+	//
 	// example:
 	//
 	// cr-1,cr-2

@@ -16,21 +16,7 @@ type iStartRemediationResponseBody interface {
 }
 
 type StartRemediationResponseBody struct {
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- true: The request was successful.
-	//
-	// 	- false: The request failed.
-	//
-	// example:
-	//
-	// true
-	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// C7817373-78CB-4F9A-8AFA-E7A88E9D64A2
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

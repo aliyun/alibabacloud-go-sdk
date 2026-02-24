@@ -14,11 +14,6 @@ type iCreateAdvancedSearchFileResponseBody interface {
 }
 
 type CreateAdvancedSearchFileResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// D231366D-E2AD-559E-9C29-58FF7F4B1F5D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

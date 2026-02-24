@@ -16,14 +16,8 @@ type iGetDiscoveredResourceCountsGroupByRegionResponseBody interface {
 }
 
 type GetDiscoveredResourceCountsGroupByRegionResponseBody struct {
-	// The statistics on the resources.
 	DiscoveredResourceCountsSummary []*GetDiscoveredResourceCountsGroupByRegionResponseBodyDiscoveredResourceCountsSummary `json:"DiscoveredResourceCountsSummary,omitempty" xml:"DiscoveredResourceCountsSummary,omitempty" type:"Repeated"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 399BD94C-D20C-4D27-88D4-89E8D75C0595
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId                       *string                                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDiscoveredResourceCountsGroupByRegionResponseBody) String() string {
@@ -66,26 +60,9 @@ func (s *GetDiscoveredResourceCountsGroupByRegionResponseBody) Validate() error 
 }
 
 type GetDiscoveredResourceCountsGroupByRegionResponseBodyDiscoveredResourceCountsSummary struct {
-	// The dimension by which statistics are collected.
-	//
-	// >  In most cases, the `Region` parameter instead of the GroupName parameter is returned.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The ID of the region by which statistics are collected.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The total number of resources.
-	//
-	// example:
-	//
-	// 10
-	ResourceCount *int64 `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
+	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceCount *int64  `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
 }
 
 func (s GetDiscoveredResourceCountsGroupByRegionResponseBodyDiscoveredResourceCountsSummary) String() string {

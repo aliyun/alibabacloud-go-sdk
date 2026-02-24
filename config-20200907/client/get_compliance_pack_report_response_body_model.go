@@ -16,14 +16,8 @@ type iGetCompliancePackReportResponseBody interface {
 }
 
 type GetCompliancePackReportResponseBody struct {
-	// The information about the compliance evaluation report.
 	CompliancePackReport *GetCompliancePackReportResponseBodyCompliancePackReport `json:"CompliancePackReport,omitempty" xml:"CompliancePackReport,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 6EC7AED1-172F-42AE-9C12-295BC2ADB751
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId            *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetCompliancePackReportResponseBody) String() string {
@@ -62,38 +56,11 @@ func (s *GetCompliancePackReportResponseBody) Validate() error {
 }
 
 type GetCompliancePackReportResponseBodyCompliancePackReport struct {
-	// The ID of the Alibaba Cloud account to which the compliance package belongs.
-	//
-	// example:
-	//
-	// 120886317861****
-	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ID of the compliance package.
-	//
-	// example:
-	//
-	// cp-fdc8626622af00f9****
-	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	// The timestamp when the compliance evaluation report was generated. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1624329965857
-	ReportCreateTimestamp *int64 `json:"ReportCreateTimestamp,omitempty" xml:"ReportCreateTimestamp,omitempty"`
-	// The status of the compliance evaluation report. Valid values:
-	//
-	// 	- NONE: The compliance evaluation report is not generated.
-	//
-	// 	- CREATING: The compliance evaluation report is being generated.
-	//
-	// 	- COMPLETE: The compliance evaluation report is generated.
-	//
-	// example:
-	//
-	// COMPLETE
-	ReportStatus *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
-	// The URL that is used to download the compliance evaluation report.
-	ReportUrl *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
+	AccountId             *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	CompliancePackId      *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	ReportCreateTimestamp *int64  `json:"ReportCreateTimestamp,omitempty" xml:"ReportCreateTimestamp,omitempty"`
+	ReportStatus          *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
+	ReportUrl             *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
 }
 
 func (s GetCompliancePackReportResponseBodyCompliancePackReport) String() string {

@@ -20,7 +20,7 @@ type iGetAggregateCompliancePackShrinkRequest interface {
 type GetAggregateCompliancePackShrinkRequest struct {
 	// The ID of the account group.
 	//
-	// For more information about how to obtain the ID of the account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
 	//
 	// This parameter is required.
 	//
@@ -28,9 +28,9 @@ type GetAggregateCompliancePackShrinkRequest struct {
 	//
 	// ca-f632626622af0079****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The ID of the compliance package.
+	// The ID of the compliance pack.
 	//
-	// For more information about how to obtain the ID of a compliance package, see [ListAggregateCompliancePacks](https://help.aliyun.com/document_detail/262059.html).
+	// For more information about how to obtain the ID of a compliance pack, see [ListAggregateCompliancePacks](https://help.aliyun.com/document_detail/262059.html).
 	//
 	// This parameter is required.
 	//
@@ -40,9 +40,9 @@ type GetAggregateCompliancePackShrinkRequest struct {
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
 	// Deprecated
 	//
-	// The tags of the resource.
+	// The tags of the resource. This parameter is deprecated and no longer takes effect.
 	//
-	// You can add up to 20 tags to a resource.
+	// You can attach up to 20 tags to a resource.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 

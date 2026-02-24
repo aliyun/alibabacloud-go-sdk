@@ -34,11 +34,7 @@ type iListConfigRulesRequest interface {
 }
 
 type ListConfigRulesRequest struct {
-	// The compliance package ID.
-	//
-	// For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](https://help.aliyun.com/document_detail/606968.html).
-	//
-	// >  You must configure either the `CompliancePackId` or `ConfigRuleId` parameter.
+	// The ID of the compliance package.
 	//
 	// example:
 	//
@@ -46,13 +42,13 @@ type ListConfigRulesRequest struct {
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
 	// The compliance evaluation result of the rule. Valid values:
 	//
-	// 	- COMPLIANT: The resources are evaluated as compliant.
+	// - COMPLIANT: Compliant.
 	//
-	// 	- NON_COMPLIANT: The resources are evaluated as non-compliant.
+	// - NON_COMPLIANT: Non-compliant.
 	//
-	// 	- NOT_APPLICABLE: The rule does not apply to the resources.
+	// - NOT_APPLICABLE: Not applicable.
 	//
-	// 	- INSUFFICIENT_DATA: No resource data is available.
+	// - INSUFFICIENT_DATA: Insufficient data.
 	//
 	// example:
 	//
@@ -62,25 +58,25 @@ type ListConfigRulesRequest struct {
 	//
 	// example:
 	//
-	// test-rule-name
+	// The name of the rule.
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	// The status of the rule. Valid values:
+	// The state of the rule. Valid values:
 	//
-	// 	- ACTIVE: The rule is enabled.
+	// - ACTIVE: The rule is enabled.
 	//
-	// 	- DELETING: The rule is being deleted.
+	// - DELETING: The rule is being deleted.
 	//
-	// 	- EVALUATING: The rule is being used to evaluate resource configurations.
+	// - EVALUATING: The rule is being evaluated.
 	//
-	// 	- INACTIVE: The rule is disabled.
+	// - INACTIVE: The rule is disabled.
 	//
 	// example:
 	//
 	// ACTIVE
 	ConfigRuleState *string `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
-	// The query keyword.
+	// The keyword for the fuzzy query.
 	//
-	// You can perform a fuzzy search by rule ID, rule name, rule description, or managed rule ID.
+	// Supports fuzzy queries by rule ID, rule name, rule description, or rule template identifier.
 	//
 	// example:
 	//
@@ -88,42 +84,47 @@ type ListConfigRulesRequest struct {
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The page number.
 	//
-	// Page numbers start from 1. Default value: 1.
+	// The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
-	// Valid values: 1 to 100. A minimum of 1 entry can be returned per page. Default value: 10.
+	// Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the resources to be evaluated based on the rule.
+	// The type of resource evaluated by the rule.
 	//
 	// example:
 	//
 	// ACS::ECS::Instance
 	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
-	// The risk level of the resources that are not compliant with the rule. Valid values:
+	// The risk level of the rule. Valid values:
 	//
-	// 	- 1: high
+	// - 1: High risk.
 	//
-	// 	- 2: medium
+	// - 2: Medium risk.
 	//
-	// 	- 3: low
+	// - 3: Low risk.
 	//
 	// example:
 	//
 	// 1
-	RiskLevel *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	SortBy    *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The sorting method. This parameter is not required. Set the value to `CreateDate-Desc` to sort the rules by creation time in descending order.
+	//
+	// example:
+	//
+	// CreateDate-Desc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The tags of the resource.
 	//
-	// You can add up to 20 tags to a resource.
+	// A maximum of 20 tags can be attached.
 	Tag []*ListConfigRulesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -250,17 +251,11 @@ func (s *ListConfigRulesRequest) Validate() error {
 type ListConfigRulesRequestTag struct {
 	// The tag key.
 	//
-	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
-	//
-	// You can specify at most 20 tag keys.
-	//
 	// example:
 	//
 	// key-1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
-	//
-	// The tag value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The tag value must start with a letter but cannot start with `aliyun` or `acs:`. The tag value cannot contain `http://` or `https://`.
+	// The tag value.
 	//
 	// example:
 	//

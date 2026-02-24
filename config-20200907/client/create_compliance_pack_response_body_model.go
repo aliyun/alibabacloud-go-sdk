@@ -16,18 +16,8 @@ type iCreateCompliancePackResponseBody interface {
 }
 
 type CreateCompliancePackResponseBody struct {
-	// The compliance package ID.
-	//
-	// example:
-	//
-	// cp-a8a8626622af0082****
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 6EC7AED1-172F-42AE-9C12-295BC2ADB751
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateCompliancePackResponseBody) String() string {

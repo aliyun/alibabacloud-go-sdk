@@ -18,34 +18,10 @@ type iActiveAggregateConfigRulesRequest interface {
 }
 
 type ActiveAggregateConfigRulesRequest struct {
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- true: The request was successful.
-	//
-	// 	- false: The request failed.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ca-a4e5626622af0079****
-	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The rule ID.
-	//
-	// example:
-	//
-	// cp-fe416457e0d90022****
+	AggregatorId     *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	// The error code returned.
-	//
-	// 	- If the rule is enabled, no error code is returned.
-	//
-	// 	- If the rule fails to be enabled, an error code is returned. For more information about error codes, see [Error codes](https://error-center.alibabacloud.com/status/product/Config).
-	//
-	// example:
-	//
-	// cr-5772ba41209e007b****
-	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
+	ConfigRuleIds    *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
 }
 
 func (s ActiveAggregateConfigRulesRequest) String() string {

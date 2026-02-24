@@ -28,7 +28,7 @@ type ListAggregateRemediationsRequest struct {
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 	// The rule IDs. Separate multiple rule IDs with commas (,).
 	//
-	// For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html).
+	// For more information about how to obtain a rule ID, see [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html).
 	//
 	// example:
 	//

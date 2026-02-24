@@ -16,14 +16,8 @@ type iAttachAggregateConfigRuleToCompliancePackResponseBody interface {
 }
 
 type AttachAggregateConfigRuleToCompliancePackResponseBody struct {
-	// The results of the operations to add one or more rules.
 	OperateRuleResult *AttachAggregateConfigRuleToCompliancePackResponseBodyOperateRuleResult `json:"OperateRuleResult,omitempty" xml:"OperateRuleResult,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// DE72B7B5-D0EA-15E6-A359-EDECBB9BDFA3
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId         *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AttachAggregateConfigRuleToCompliancePackResponseBody) String() string {
@@ -62,7 +56,6 @@ func (s *AttachAggregateConfigRuleToCompliancePackResponseBody) Validate() error
 }
 
 type AttachAggregateConfigRuleToCompliancePackResponseBodyOperateRuleResult struct {
-	// The result of the operation to add the rule.
 	OperateRuleItemList []*AttachAggregateConfigRuleToCompliancePackResponseBodyOperateRuleResultOperateRuleItemList `json:"OperateRuleItemList,omitempty" xml:"OperateRuleItemList,omitempty" type:"Repeated"`
 }
 
@@ -97,32 +90,9 @@ func (s *AttachAggregateConfigRuleToCompliancePackResponseBodyOperateRuleResult)
 }
 
 type AttachAggregateConfigRuleToCompliancePackResponseBodyOperateRuleResultOperateRuleItemList struct {
-	// The rule ID.
-	//
-	// example:
-	//
-	// cr-a124626622af00e7****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The error code.
-	//
-	// 	- This parameter is empty if the rule is added to the compliance package.
-	//
-	// 	- An error code is returned if the rule fails to be added to the compliance package. For more information about error codes, see [Error codes](https://error-center.alibabacloud.com/status/product/Config).
-	//
-	// example:
-	//
-	// ConfigRuleNotExists
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AttachAggregateConfigRuleToCompliancePackResponseBodyOperateRuleResultOperateRuleItemList) String() string {

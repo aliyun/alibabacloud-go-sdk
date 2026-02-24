@@ -26,27 +26,13 @@ type iCreateAggregatorRequest interface {
 }
 
 type CreateAggregatorRequest struct {
-	// The information about the member accounts in the account group. Example:
+	// The member accounts of the account group.
 	//
-	//     [{
+	// > - If you set `AggregatorType` to \\`RD, you can leave this parameter empty. This indicates that all members in the resource directory are added to the global account group.
 	//
-	//     	"accountId": 171322098523****,
+	// >
 	//
-	//     	"accountType":"ResourceDirectory",
-	//
-	//                     "accountName":"Alice"
-	//
-	//     }, {
-	//
-	//     	"accountId": 100532098349****,
-	//
-	//     	"accountType":"ResourceDirectory",
-	//
-	//                     "accountName":"Tom"
-	//
-	//     }]
-	//
-	// >  If `AggregatorType` is set to `RD` or `FOLDER`, this parameter can be left empty, which indicates that all accounts in the resource directory are added to the global account group.
+	// > - If you set `AggregatorType` to `FOLDER`, you can leave this parameter empty. This indicates that all members in a specific folder in the resource directory are added to the folder account group.
 	//
 	// if can be null:
 	// false
@@ -57,21 +43,21 @@ type CreateAggregatorRequest struct {
 	//
 	// example:
 	//
-	// Test_Group
+	// Example_Aggregator
 	AggregatorName *string `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
 	// The type of the account group. Valid values:
 	//
-	// 	- RD: global account group.
+	// - RD: global account group.
 	//
-	// 	- FOLDER: account group of the folder.
+	// - FOLDER: folder account group. You must also set the `FolderId` parameter. For more information about how to obtain a folder ID, see [ListAccounts](https://help.aliyun.com/document_detail/160016.html).
 	//
-	// 	- CUSTOM (default): custom account group.
+	// - CUSTOM (default): custom account group. You must also set the `AccountId` and `AccountType` parameters for `AggregatorAccounts`.
 	//
 	// example:
 	//
 	// CUSTOM
 	AggregatorType *string `json:"AggregatorType,omitempty" xml:"AggregatorType,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The `token` can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token that is used to ensure the idempotence of the request. You must make sure that the token is unique for different requests. The `ClientToken` parameter can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
@@ -81,9 +67,11 @@ type CreateAggregatorRequest struct {
 	//
 	// example:
 	//
-	// Aggregator description.
+	// Example aggregator used to demonstrate how to create an aggregator.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the folder to which the account group is attached. You must specify this parameter if `AggregatorType` is set to `FOLDER`. Multiple resource folder IDs should be separated by commas (,).
+	// The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,).
+	//
+	// This parameter is required if you set `AggregatorType` to `FOLDER`.
 	//
 	// example:
 	//
@@ -91,7 +79,7 @@ type CreateAggregatorRequest struct {
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	// The tags of the resource.
 	//
-	// You can add up to 20 tags to a resource.
+	// You can attach a maximum of 20 tags.
 	Tag []*CreateAggregatorRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -189,19 +177,19 @@ func (s *CreateAggregatorRequest) Validate() error {
 }
 
 type CreateAggregatorRequestAggregatorAccounts struct {
-	// The member account ID. For more information about how to obtain the ID of a member account, see [ListAccounts](https://help.aliyun.com/document_detail/160016.html).
+	// The member ID. For more information about how to obtain the member ID, see [ListAccounts](https://help.aliyun.com/document_detail/160016.html).
 	//
 	// example:
 	//
 	// 171322098523****
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The name of the member account. For more information about how to obtain the name of a member account, see [ListAccounts](https://help.aliyun.com/document_detail/160016.html).
+	// The member name. For more information about how to obtain the member name, see [ListAccounts](https://help.aliyun.com/document_detail/160016.html).
 	//
 	// example:
 	//
 	// Alice
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The type of the member account. Set this parameter to ResourceDirectory.
+	// The affiliation of the member. Only `ResourceDirectory` is supported.
 	//
 	// example:
 	//
@@ -249,19 +237,17 @@ func (s *CreateAggregatorRequestAggregatorAccounts) Validate() error {
 }
 
 type CreateAggregatorRequestTag struct {
-	// The tag key of the resource. You can specify up to 20 tag keys.
+	// The tag key of the resource. You can specify a maximum of 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http\\:// or https\\://.
 	//
 	// example:
 	//
 	// key-1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag values.
+	// The tag value of the resource. You can specify a maximum of 20 tag values. The tag value can be an empty string.
 	//
-	// The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
-	//
-	// Each key-value must be unique. You can specify at most 20 tag values in each call.
+	// A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

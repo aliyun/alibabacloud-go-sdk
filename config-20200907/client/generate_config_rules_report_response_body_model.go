@@ -16,17 +16,7 @@ type iGenerateConfigRulesReportResponseBody interface {
 }
 
 type GenerateConfigRulesReportResponseBody struct {
-	// The ID of the compliance evaluation report.
-	//
-	// example:
-	//
-	// crp-88176457e0d900c9****
-	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 6EC7AED1-172F-42AE-9C12-295BC2ADB751
+	ReportId  *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

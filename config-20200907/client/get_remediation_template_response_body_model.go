@@ -22,7 +22,7 @@ type GetRemediationTemplateResponseBody struct {
 	//
 	// example:
 	//
-	// E232FC35-BD40-51E3-B2EB-09416A234939
+	// E232FC35-BD40-51E3-B2EB-09416A23****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -66,7 +66,7 @@ func (s *GetRemediationTemplateResponseBody) Validate() error {
 }
 
 type GetRemediationTemplateResponseBodyRemediationTemplates struct {
-	// The ID of the supported rule template.
+	// The identifier of the supported rule template.
 	//
 	// This parameter is required.
 	//
@@ -74,17 +74,17 @@ type GetRemediationTemplateResponseBodyRemediationTemplates struct {
 	//
 	// alb-delete-protection-enabled
 	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
-	// The type of the automatic remediation template. The value is set to OOS.
+	// The type of the automatic remediation template. Valid value: OOS (Operation Orchestration).
 	//
 	// example:
 	//
 	// OOS
 	RemediationType *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
-	// The parameters of the automatic remediation template.
+	// The definition of the template parameters.
 	//
 	// example:
 	//
-	// {\\"Parameters\\":{\\"regionId\\":{\\"AssociationProperty\\":\\"RegionId\\",\\"CreateDated\\":\\"2023-09-08T16:36:15\\",\\"Default\\":\\"{regionId}\\",\\"Description\\":{\\"en\\":\\"regionId\\",\\"zh-cn\\":\\"regionId\\"},\\"Id\\":538,\\"MaxKeyLength\\":\\"125\\",\\"MaxValueLength\\":\\"255\\",\\"ModifiedDate\\":\\"2023-09-08T16:36:15\\",\\"Name\\":\\"regionId\\",\\"Optional\\":1,\\"TemplateIdentifier\\":\\"ACS-ALB-BulkyEnableDeletionProtection\\",\\"Type\\":\\"String\\",\\"Version\\":\\"LASTEST\\"},\\"loadBalancerIds\\":{\\"CreateDated\\":\\"2023-09-08T16:36:16\\",\\"Default\\":\\"[\\\\\\"{resourceId}\\\\\\"]\\",\\"Description\\":{\\"en\\":\\"loadBalancerIds\\",\\"zh-cn\\":\\"loadBalancerIds\\"},\\"Id\\":539,\\"MaxKeyLength\\":\\"125\\",\\"MaxValueLength\\":\\"255\\",\\"ModifiedDate\\":\\"2023-09-08T16:36:16\\",\\"Name\\":\\"loadBalancerIds\\",\\"Optional\\":1,\\"TemplateIdentifier\\":\\"ACS-ALB-BulkyEnableDeletionProtection\\",\\"Type\\":\\"ARRAY\\",\\"Version\\":\\"LASTEST\\"}}}
+	// {\\"Parameters\\":{\\"regionId\\":{\\"AllowValues\\":\\"\\",\\"AssociationProperty\\":\\"RegionId\\",\\"CreateDated\\":\\"2025-08-04T09:54:57\\",\\"Default\\":\\"{regionId}\\",\\"Description\\":{\\"en\\":\\"regionId\\",\\"zh-cn\\":\\"regionId\\"},\\"Id\\":688,\\"MaxKeyLength\\":\\"125\\",\\"MaxValueLength\\":\\"255\\",\\"ModifiedDate\\":\\"2025-08-04T09:54:57\\",\\"Name\\":\\"regionId\\",\\"Optional\\":1,\\"TemplateIdentifier\\":\\"ACS-ALB-BulkyEnableDeletionProtection\\",\\"Type\\":\\"String\\",\\"Version\\":\\"LASTEST\\"},\\"loadBalancerIds\\":{\\"AllowValues\\":\\"\\",\\"AssociationProperty\\":\\"\\",\\"CreateDated\\":\\"2025-08-04T09:54:57\\",\\"Default\\":\\"[\\\\\\"{resourceId}\\\\\\"]\\",\\"Description\\":{\\"en\\":\\"loadBalancerIds\\",\\"zh-cn\\":\\"loadBalancerIds\\"},\\"Id\\":689,\\"MaxKeyLength\\":\\"125\\",\\"MaxValueLength\\":\\"255\\",\\"ModifiedDate\\":\\"2025-08-04T09:54:57\\",\\"Name\\":\\"loadBalancerIds\\",\\"Optional\\":1,\\"TemplateIdentifier\\":\\"ACS-ALB-BulkyEnableDeletionProtection\\",\\"Type\\":\\"ARRAY\\",\\"Version\\":\\"LASTEST\\"}}}
 	TemplateDefinition *string `json:"TemplateDefinition,omitempty" xml:"TemplateDefinition,omitempty"`
 	// The description of the automatic remediation template.
 	//
@@ -92,9 +92,9 @@ type GetRemediationTemplateResponseBodyRemediationTemplates struct {
 	//
 	// example:
 	//
-	// 调用接口EnableDeletionProtection，开启ALB实例删除保护，请您知晓风险谨慎操作。
+	// Call the EnableDeletionProtection interface to enable ALB instance deletion protection. Be aware of the risks and exercise caution.
 	TemplateDescription *string `json:"TemplateDescription,omitempty" xml:"TemplateDescription,omitempty"`
-	// The ID of the automatic remediation template.
+	// The identifier of the automatic remediation template.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type GetRemediationTemplateResponseBodyRemediationTemplates struct {
 	//
 	// example:
 	//
-	// 开启ALB实例删除保护
+	// Enable ALB instance deletion protection
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 

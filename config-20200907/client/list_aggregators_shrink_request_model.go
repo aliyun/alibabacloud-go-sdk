@@ -18,24 +18,10 @@ type iListAggregatorsShrinkRequest interface {
 }
 
 type ListAggregatorsShrinkRequest struct {
-	// The maximum number of entries to return in a request. Valid values: 1 to 100.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 10
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
-	//
-	// example:
-	//
-	// TGlzdFJlc291cmNlU2hhcmVzJjE1MTI2NjY4NzY5MTAzOTEmMiZORnI4NDhVeEtrUT0
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The tags of the resource.
-	//
-	// You can add up to 20 tags to a resource.
-	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	TagShrink  *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s ListAggregatorsShrinkRequest) String() string {

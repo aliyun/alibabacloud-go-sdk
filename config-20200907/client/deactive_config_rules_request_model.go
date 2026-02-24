@@ -16,22 +16,8 @@ type iDeactiveConfigRulesRequest interface {
 }
 
 type DeactiveConfigRulesRequest struct {
-	// The ID of the compliance package.
-	//
-	// For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
-	//
-	// example:
-	//
-	// cp-fe416457e0d90022****
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	// The ID of the rule. Separate multiple rule IDs with commas (,).
-	//
-	// For more information about how to obtain the ID of a rule, see [ListConfigRules](https://help.aliyun.com/document_detail/169607.html).
-	//
-	// example:
-	//
-	// cr-19a56457e0d90058****
-	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
+	ConfigRuleIds    *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
 }
 
 func (s DeactiveConfigRulesRequest) String() string {

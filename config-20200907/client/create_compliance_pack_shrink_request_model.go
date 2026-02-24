@@ -50,125 +50,28 @@ type iCreateCompliancePackShrinkRequest interface {
 }
 
 type CreateCompliancePackShrinkRequest struct {
-	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
-	//
-	// example:
-	//
-	// 1594295238-f9361358-5843-4294-8d30-b5183fac****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The name of the compliance package.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test-pack-name
-	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
-	// The ID of the compliance package template.
-	//
-	// You can call the [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html) operation to obtain the ID of the compliance package.
-	//
-	// example:
-	//
-	// ct-5f26ff4e06a300c4****
+	CompliancePackName       *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
 	CompliancePackTemplateId *string `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
-	// The rules in the compliance package. You must specify either this parameter or TemplateContent.
-	//
 	// if can be null:
 	// false
-	ConfigRulesShrink *string `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty"`
-	// Specifies whether to enable the rule together with the compliance package. Valid values:
-	//
-	// 	- true: The system enables the rule together with the compliance package.
-	//
-	// 	- false: The system does not enable the rule together with the compliance package.
-	//
-	// example:
-	//
-	// false
-	DefaultEnable *bool `json:"DefaultEnable,omitempty" xml:"DefaultEnable,omitempty"`
-	// The description of the compliance package.
-	//
-	// example:
-	//
-	// Test pack description.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// ExcludeRegionIdsScope
-	//
-	// example:
-	//
-	// cn-hangzhou
-	ExcludeRegionIdsScope *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
-	// ExcludeResourceGroupIdsScope. Separate multiple resource group IDs with commas (,).
-	//
-	// example:
-	//
-	// rg-bnczc6r7rml****
-	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
-	// The ID of the resource that you do not want to evaluate by using the compliance package. Separate multiple resource IDs with commas (,).
-	//
-	// example:
-	//
-	// eip-8vbf3x310fn56ijfd****
-	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	// ExcludeTagsScope
-	ExcludeTagsScope []*CreateCompliancePackShrinkRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
-	// The ID of the region whose resources you want to evaluate by using the compliance package. Separate multiple region IDs with commas (,).
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	// The ID of the resource group whose resources you want to evaluate by using the compliance package. Separate multiple resource group IDs with commas (,).
-	//
-	// example:
-	//
-	// rg-aekzdibsjjc****
-	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	// ResourceIdsScope
-	//
-	// example:
-	//
-	// eip-8vbf3x310fn56ijfd****
-	ResourceIdsScope *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
-	// The risk level of the resources that are not compliant with the rules in the compliance package. Default value: 2. Valid values:
-	//
-	// 	- 1: high.
-	//
-	// 	- 2: medium.
-	//
-	// 	- 3: low.
-	//
-	// example:
-	//
-	// 1
-	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The tags of the resource.
-	//
-	// You can add up to 20 tags to a resource.
-	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The tag key of the resource that you want to evaluate by using the compliance package.
-	//
-	// example:
-	//
-	// ECS
-	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	// The tag value of the resource that you want to evaluate by using the compliance package.
-	//
-	// >  You must configure the TagValueScope parameter together with the TagKeyScope parameter.
-	//
-	// example:
-	//
-	// test
-	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
-	// TagsScope
-	TagsScope []*CreateCompliancePackShrinkRequestTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
-	// The information about the template that is used to generate the compliance package. You can call an API operation to view the details of an existing compliance package or write a compliance package template. For more information, see [Write a compliance package template in a configuration file](https://help.aliyun.com/document_detail/2659733.html). You must specify one of ConfigRules and TemplateContent.
-	//
-	// example:
-	//
-	// { "configRuleTemplates": [ { "configRuleName": "condition-rule-example", "scope": { "complianceResourceTypes": [ "ACS::ECS::Instance" ] }, "description": "", "source": { "owner": "CUSTOM_CONFIGURATION", "identifier": "acs-config-configuration", "sourceDetails": [ { "messageType": "ScheduledNotification", "maximumExecutionFrequency": "Twelve_Hours" }, { "messageType": "ConfigurationItemChangeNotification" } ], "conditions": "{\\\\"ComplianceConditions\\\\":\\\\"{\\\\\\\\\\"operator\\\\\\\\\\":\\\\\\\\\\"and\\\\\\\\\\",\\\\\\\\\\"children\\\\\\\\\\":[{\\\\\\\\\\"operator\\\\\\\\\\":\\\\\\\\\\"GreaterOrEquals\\\\\\\\\\",\\\\\\\\\\"featurePath\\\\\\\\\\":\\\\\\\\\\"$.Cpu\\\\\\\\\\",\\\\\\\\\\"featureSource\\\\\\\\\\":\\\\\\\\\\"CONFIGURATION\\\\\\\\\\",\\\\\\\\\\"desired\\\\\\\\\\":\\\\\\\\\\"2\\\\\\\\\\"}]}\\\\"}" }, "inputParameters": {} }, { "configRuleName": "oss-bucket-referer-limit", "scope": { "complianceResourceTypes": [ "ACS::OSS::Bucket" ] }, "description": "If the hotlink protection feature is enabled for the Object Storage Service (OSS) bucket and the Referer is added to a specific whitelist, the evaluation result is compliant.", "source": { "owner": "ALIYUN", "identifier": "oss-bucket-referer-limit", "sourceDetails": [ { "messageType": "ConfigurationItemChangeNotification" } ] }, "inputParameters": { "allowEmptyReferer": "true", "allowReferers": "http://www.aliyun.com" } } ] }
-	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
+	ConfigRulesShrink            *string                                              `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty"`
+	DefaultEnable                *bool                                                `json:"DefaultEnable,omitempty" xml:"DefaultEnable,omitempty"`
+	Description                  *string                                              `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeRegionIdsScope        *string                                              `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
+	ExcludeResourceGroupIdsScope *string                                              `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
+	ExcludeResourceIdsScope      *string                                              `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeTagsScope             []*CreateCompliancePackShrinkRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
+	RegionIdsScope               *string                                              `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	ResourceGroupIdsScope        *string                                              `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	ResourceIdsScope             *string                                              `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
+	RiskLevel                    *int32                                               `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	TagShrink                    *string                                              `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	TagKeyScope                  *string                                              `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	TagValueScope                *string                                              `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagsScope                    []*CreateCompliancePackShrinkRequestTagsScope        `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
+	TemplateContent              *string                                              `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
 }
 
 func (s CreateCompliancePackShrinkRequest) String() string {
@@ -373,17 +276,7 @@ func (s *CreateCompliancePackShrinkRequest) Validate() error {
 }
 
 type CreateCompliancePackShrinkRequestExcludeTagsScope struct {
-	// TagKey
-	//
-	// example:
-	//
-	// key-2
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// TagValue
-	//
-	// example:
-	//
-	// value-2
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -418,17 +311,7 @@ func (s *CreateCompliancePackShrinkRequestExcludeTagsScope) Validate() error {
 }
 
 type CreateCompliancePackShrinkRequestTagsScope struct {
-	// Tagkey
-	//
-	// example:
-	//
-	// key-1
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// TagValue
-	//
-	// example:
-	//
-	// value-1
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

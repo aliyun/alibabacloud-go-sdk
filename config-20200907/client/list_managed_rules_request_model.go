@@ -24,51 +24,51 @@ type iListManagedRulesRequest interface {
 }
 
 type ListManagedRulesRequest struct {
-	// The scope for filtering managed rules allows you to filter out managed rules without resource coverage. The possible values are:
-	//
-	//  - ALL: All rules.
-	//
-	//  - UNCOVERED_RESOURCE: Filters managed rules where some resources are not covered.
+	// The scope of the filter.
 	//
 	// example:
 	//
-	// ALL
+	// 托管规则筛选范围，可以筛选无资源覆盖的托管规则。取值：
+	//
+	// - ALL 全部
+	//
+	// - UNCOVERED_RESOURCE 筛选有资源未覆盖的托管规则
 	FilterType *string `json:"FilterType,omitempty" xml:"FilterType,omitempty"`
-	// The keyword of the managed rule.
+	// The keyword of the rule template.
 	//
 	// example:
 	//
 	// CDN
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The page number of the page to return.
+	// The page number.
 	//
-	// Pages start from page 1. Default value: 1
+	// The value must be greater than or equal to 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
-	// Valid values: 1 to 100. Minimum value: 1. Default value: 10.
+	// Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the resources to be evaluated based on the rule.
+	// The resource type that is evaluated by the rule.
 	//
 	// example:
 	//
 	// ACS::ECS::Instance
 	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
-	// The risk level of the managed rule. Valid values:
+	// The risk level of the rule template. Valid values:
 	//
-	// 	- 1: high
+	// - 1: high
 	//
-	// 	- 2: medium
+	// - 2: medium
 	//
-	// 	- 3: low
+	// - 3: low
 	//
 	// example:
 	//

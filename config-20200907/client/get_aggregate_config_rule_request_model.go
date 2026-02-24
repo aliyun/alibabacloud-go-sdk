@@ -20,7 +20,7 @@ type iGetAggregateConfigRuleRequest interface {
 type GetAggregateConfigRuleRequest struct {
 	// The ID of the account group.
 	//
-	// For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+	// For more information, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
 	//
 	// This parameter is required.
 	//
@@ -28,9 +28,9 @@ type GetAggregateConfigRuleRequest struct {
 	//
 	// ca-7f00626622af0041****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The ID of the rule.
+	// The rule ID.
 	//
-	// You can call the [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html) operation to obtain the rule ID.
+	// For more information, see [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html).
 	//
 	// This parameter is required.
 	//
@@ -40,9 +40,9 @@ type GetAggregateConfigRuleRequest struct {
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
 	// Deprecated
 	//
-	// The tags of the resource.
+	// The tags.
 	//
-	// You can add up to 20 tags to a resource.
+	// This parameter is deprecated. If you specify this parameter, the value does not take effect.
 	Tag []*GetAggregateConfigRuleRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -95,19 +95,17 @@ func (s *GetAggregateConfigRuleRequest) Validate() error {
 }
 
 type GetAggregateConfigRuleRequestTag struct {
-	// The tag key of the resource. You can specify up to 20 tag keys.
+	// The tag key of the resource.
 	//
-	// The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
+	// You can add a maximum of 20 tag keys.
 	//
 	// example:
 	//
 	// key-1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag values.
+	// The tag value of the resource.
 	//
-	// The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
-	//
-	// Each key-value must be unique. You can specify at most 20 tag values in each call.
+	// You can add a maximum of 20 tag values.
 	//
 	// example:
 	//

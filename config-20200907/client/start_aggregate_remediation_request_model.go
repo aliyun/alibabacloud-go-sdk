@@ -18,34 +18,11 @@ type iStartAggregateRemediationRequest interface {
 }
 
 type StartAggregateRemediationRequest struct {
-	// The ID of the account group.
-	//
-	// For information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ca-6b4a626622af0012****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The rule ID.
-	//
-	// For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cr-6b7c626622af00b4****
-	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the resources to be remediated belong. If this parameter is left empty, non-compliant resources of all accounts in the account group are remediated.
-	//
-	// > You must specify the ID of the current management account or a member account in the account group of the management account.
-	//
-	// example:
-	//
-	// 100271897542****
-	ResourceAccountId *int64 `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+	ConfigRuleId      *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
 }
 
 func (s StartAggregateRemediationRequest) String() string {

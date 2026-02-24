@@ -22,37 +22,13 @@ type iListRemediationsResponseBody interface {
 }
 
 type ListRemediationsResponseBody struct {
-	// The page number. Pages start from page 1.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 50.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The converted configuration of the remediation template. This parameter is returned only for an OOS remediation template.
+	PageSize     *int64                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Remediations []*ListRemediationsResponseBodyRemediations `json:"Remediations,omitempty" xml:"Remediations,omitempty" type:"Repeated"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 0146963A-20C0-4E75-B93A-7D622B5FD7C8
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of remediation settings.
-	//
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -123,98 +99,17 @@ func (s *ListRemediationsResponseBody) Validate() error {
 }
 
 type ListRemediationsResponseBodyRemediations struct {
-	// The ID of the Alibaba Cloud account to which the resource belongs.
-	//
-	// example:
-	//
-	// 100931896542****
-	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The rule ID.
-	//
-	// example:
-	//
-	// cr-6b7c626622af00b4****
-	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The execution mode of the remediation template. Valid values:
-	//
-	// 	- NON_EXECUTION: The remediation template was not executed.
-	//
-	// 	- AUTO_EXECUTION: The remediation template was automatically executed.
-	//
-	// 	- MANUAL_EXECUTION: The remediation template was manually executed.
-	//
-	// 	- NOT_CONFIG: The execution mode was not specified.
-	//
-	// example:
-	//
-	// AUTO_EXECUTION
-	InvokeType *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
-	// The ID of the last successful execution of the remediation template.
-	//
-	// example:
-	//
-	// bd7629fb-cac8-42fe-bcb1-e362c5a6****
-	LastSuccessfulInvocationId *string `json:"LastSuccessfulInvocationId,omitempty" xml:"LastSuccessfulInvocationId,omitempty"`
-	// The timestamp of the last successful execution of the remediation template Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1625451393589
-	LastSuccessfulInvocationTime *int64 `json:"LastSuccessfulInvocationTime,omitempty" xml:"LastSuccessfulInvocationTime,omitempty"`
-	// The mode of the last successful execution of the remediation template. Valid values:
-	//
-	// 	- NON_EXECUTION: The remediation template was not executed.
-	//
-	// 	- AUTO_EXECUTION: The remediation template was automatically executed.
-	//
-	// 	- MANUAL_EXECUTION: The remediation template was manually executed.
-	//
-	// 	- NOT_CONFIG: The execution mode was not specified.
-	//
-	// example:
-	//
-	// AUTO_EXECUTION
+	AccountId                    *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	ConfigRuleId                 *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	InvokeType                   *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
+	LastSuccessfulInvocationId   *string `json:"LastSuccessfulInvocationId,omitempty" xml:"LastSuccessfulInvocationId,omitempty"`
+	LastSuccessfulInvocationTime *int64  `json:"LastSuccessfulInvocationTime,omitempty" xml:"LastSuccessfulInvocationTime,omitempty"`
 	LastSuccessfulInvocationType *string `json:"LastSuccessfulInvocationType,omitempty" xml:"LastSuccessfulInvocationType,omitempty"`
-	// The ID of the remediation template.
-	//
-	// example:
-	//
-	// crr-6b7c626622af0026****
-	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
-	// The converted configuration of the remediation template. This parameter is available only for an OOS remediation template.
-	//
-	// example:
-	//
-	// {"bucketName": "{resourceId}", "regionId": "{regionId}", "permissionName": "private"}
-	RemediationOriginParams *string `json:"RemediationOriginParams,omitempty" xml:"RemediationOriginParams,omitempty"`
-	// The source of remediation. Valid values:
-	//
-	// 	- ALIYUN: official template.
-	//
-	// 	- CUSTOM: custom template.
-	//
-	// 	- NONE: none.
-	//
-	// example:
-	//
-	// ALIYUN
-	RemediationSourceType *string `json:"RemediationSourceType,omitempty" xml:"RemediationSourceType,omitempty"`
-	// The ID of the remediation template.
-	//
-	// example:
-	//
-	// ACS-OSS-PutBucketAcl
-	RemediationTemplateId *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
-	// The type of the remediation template. Valid values:
-	//
-	// 	- OOS: Operation Orchestration Service (official remediation)
-	//
-	// 	- FC: Function Compute (custom remediation)
-	//
-	// example:
-	//
-	// OOS
-	RemediationType *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
+	RemediationId                *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
+	RemediationOriginParams      *string `json:"RemediationOriginParams,omitempty" xml:"RemediationOriginParams,omitempty"`
+	RemediationSourceType        *string `json:"RemediationSourceType,omitempty" xml:"RemediationSourceType,omitempty"`
+	RemediationTemplateId        *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
+	RemediationType              *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
 }
 
 func (s ListRemediationsResponseBodyRemediations) String() string {

@@ -16,13 +16,7 @@ type iListAggregateResourceRelationsResponseBody interface {
 }
 
 type ListAggregateResourceRelationsResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 7A25F9DE-4C8B-5AD3-A241-FFF5A259E5A1
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the relationship.
+	RequestId         *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceRelations *ListAggregateResourceRelationsResponseBodyResourceRelations `json:"ResourceRelations,omitempty" xml:"ResourceRelations,omitempty" type:"Struct"`
 }
 
@@ -62,19 +56,8 @@ func (s *ListAggregateResourceRelationsResponseBody) Validate() error {
 }
 
 type ListAggregateResourceRelationsResponseBodyResourceRelations struct {
-	// The maximum number of entries returned on each page.
-	//
-	// example:
-	//
-	// 10
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that was used to initiate the next request.
-	//
-	// example:
-	//
-	// AcBjqMYSy0is7zSMGu16****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// An array that contains the relationships.
+	MaxResults           *int32                                                                             `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken            *string                                                                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	ResourceRelationList []*ListAggregateResourceRelationsResponseBodyResourceRelationsResourceRelationList `json:"ResourceRelationList,omitempty" xml:"ResourceRelationList,omitempty" type:"Repeated"`
 }
 
@@ -127,58 +110,13 @@ func (s *ListAggregateResourceRelationsResponseBodyResourceRelations) Validate()
 }
 
 type ListAggregateResourceRelationsResponseBodyResourceRelationsResourceRelationList struct {
-	// The Alibaba Cloud account ID of the resource owner.
-	//
-	// example:
-	//
-	// 100931896542****
-	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The type of the relationship between the resource and the object.
-	//
-	// Valid values:
-	//
-	// 	- IsContained: The object is included as part of the resource.
-	//
-	// 	- IsAttachedTo: The object is added to the resource.
-	//
-	// 	- IsAssociatedIn: The object is associated with the resource.
-	//
-	// 	- Contains: The object contains the resource.
-	//
-	// example:
-	//
-	// IsAttachedTo
-	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
-	// The resource ID of the current resource.
-	//
-	// example:
-	//
-	// i-j6cajg9yrfoh4sas****
-	SourceResourceId *string `json:"SourceResourceId,omitempty" xml:"SourceResourceId,omitempty"`
-	// The region ID of the current resource.
-	//
-	// example:
-	//
-	// cn-shanghai
+	AccountId              *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	RelationType           *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	SourceResourceId       *string `json:"SourceResourceId,omitempty" xml:"SourceResourceId,omitempty"`
 	SourceResourceRegionId *string `json:"SourceResourceRegionId,omitempty" xml:"SourceResourceRegionId,omitempty"`
-	// The type of the resource.
-	//
-	// example:
-	//
-	// ACS::ECS::Instance
-	SourceResourceType *string `json:"SourceResourceType,omitempty" xml:"SourceResourceType,omitempty"`
-	// The resource ID of the resource that is associated with the object.
-	//
-	// example:
-	//
-	// d-j6c8k731qbrc7fxi****
-	TargetResourceId *string `json:"TargetResourceId,omitempty" xml:"TargetResourceId,omitempty"`
-	// The type of the resource that is associated with the object.
-	//
-	// example:
-	//
-	// ACS::ECS::Disk
-	TargetResourceType *string `json:"TargetResourceType,omitempty" xml:"TargetResourceType,omitempty"`
+	SourceResourceType     *string `json:"SourceResourceType,omitempty" xml:"SourceResourceType,omitempty"`
+	TargetResourceId       *string `json:"TargetResourceId,omitempty" xml:"TargetResourceId,omitempty"`
+	TargetResourceType     *string `json:"TargetResourceType,omitempty" xml:"TargetResourceType,omitempty"`
 }
 
 func (s ListAggregateResourceRelationsResponseBodyResourceRelationsResourceRelationList) String() string {

@@ -16,13 +16,7 @@ type iGetAdvancedSearchFileResponseBody interface {
 }
 
 type GetAdvancedSearchFileResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 9366FE45-3C83-54FB-8BB1-44176B200706
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the resource file.
+	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceSearch *GetAdvancedSearchFileResponseBodyResourceSearch `json:"ResourceSearch,omitempty" xml:"ResourceSearch,omitempty" type:"Struct"`
 }
 
@@ -62,24 +56,9 @@ func (s *GetAdvancedSearchFileResponseBody) Validate() error {
 }
 
 type GetAdvancedSearchFileResponseBodyResourceSearch struct {
-	// The download URL of the resource file.
-	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The time when the resource file was generated. The value is a timestamp. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1688281755480
-	ResourceInventoryGenerateTime *int64 `json:"ResourceInventoryGenerateTime,omitempty" xml:"ResourceInventoryGenerateTime,omitempty"`
-	// The generation status of the resource file. Valid values:
-	//
-	// 	- CREATING: The resource file is being generated.
-	//
-	// 	- COMPLETE: The resource file is generated.
-	//
-	// example:
-	//
-	// COMPLETE
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	DownloadUrl                   *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	ResourceInventoryGenerateTime *int64  `json:"ResourceInventoryGenerateTime,omitempty" xml:"ResourceInventoryGenerateTime,omitempty"`
+	Status                        *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetAdvancedSearchFileResponseBodyResourceSearch) String() string {

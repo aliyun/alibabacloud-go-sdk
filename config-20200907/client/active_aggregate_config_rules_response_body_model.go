@@ -16,14 +16,8 @@ type iActiveAggregateConfigRulesResponseBody interface {
 }
 
 type ActiveAggregateConfigRulesResponseBody struct {
-	// The results of the operations.
 	OperateRuleResult *ActiveAggregateConfigRulesResponseBodyOperateRuleResult `json:"OperateRuleResult,omitempty" xml:"OperateRuleResult,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 6EC7AED1-172F-42AE-9C12-295BC2ADB751
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId         *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ActiveAggregateConfigRulesResponseBody) String() string {
@@ -62,7 +56,6 @@ func (s *ActiveAggregateConfigRulesResponseBody) Validate() error {
 }
 
 type ActiveAggregateConfigRulesResponseBodyOperateRuleResult struct {
-	// The result information about the operation.
 	OperateRuleItemList []*ActiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList `json:"OperateRuleItemList,omitempty" xml:"OperateRuleItemList,omitempty" type:"Repeated"`
 }
 
@@ -97,28 +90,9 @@ func (s *ActiveAggregateConfigRulesResponseBodyOperateRuleResult) Validate() err
 }
 
 type ActiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList struct {
-	// The rule ID.
-	//
-	// example:
-	//
-	// cr-5772ba41209e007b****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The error code.
-	//
-	// example:
-	//
-	// ConfigRuleNotExists
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// false
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ActiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) String() string {

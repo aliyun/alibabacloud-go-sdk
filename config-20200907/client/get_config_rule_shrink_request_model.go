@@ -18,7 +18,7 @@ type iGetConfigRuleShrinkRequest interface {
 type GetConfigRuleShrinkRequest struct {
 	// The rule ID.
 	//
-	// For more information about how to obtain the ID of a rule, see [ListConfigRules](https://help.aliyun.com/document_detail/169607.html).
+	// For more information, see [ListConfigRules](https://help.aliyun.com/document_detail/169607.html).
 	//
 	// This parameter is required.
 	//
@@ -28,9 +28,9 @@ type GetConfigRuleShrinkRequest struct {
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
 	// Deprecated
 	//
-	// The tags of the resource.
+	// The tags of the resource. This parameter is deprecated and has no effect.
 	//
-	// You can add up to 20 tags to a resource.
+	// You can add a maximum of 20 tags to a resource.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 

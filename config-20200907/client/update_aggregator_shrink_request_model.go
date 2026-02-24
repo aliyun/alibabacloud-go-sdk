@@ -28,7 +28,7 @@ type iUpdateAggregatorShrinkRequest interface {
 type UpdateAggregatorShrinkRequest struct {
 	// The members in the account group.
 	//
-	// >  When you modify the configurations of an account group, this parameter can be left empty. In this case, the member list is not updated. If you want to update the member list, you must configure both the `AccountId` and `AccountType` parameters.
+	// > You can leave this parameter empty to skip updating the member list. To update the member list, you must specify both `AccountId` and `AccountType`.
 	//
 	// if can be null:
 	// false
@@ -51,7 +51,7 @@ type UpdateAggregatorShrinkRequest struct {
 	//
 	// Test_Group
 	AggregatorName *string `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token that ensures the idempotence of the request. Generate a unique token for each request. The token can contain only ASCII characters and must be no more than 64 characters in length.
 	//
 	// example:
 	//
@@ -63,9 +63,9 @@ type UpdateAggregatorShrinkRequest struct {
 	//
 	// example:
 	//
-	// Test_Aggregator_Description
+	// 测试组
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The folder ID. Separate multiple folder IDs with commas (,).
+	// The ID of the folder. You can enter multiple folder IDs. Separate the IDs with commas (,).
 	//
 	// example:
 	//
@@ -73,9 +73,9 @@ type UpdateAggregatorShrinkRequest struct {
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	// Deprecated
 	//
-	// The tags of the resource.
+	// The tags of the resource. This parameter is deprecated and no longer takes effect. Ignore this parameter.
 	//
-	// You can add up to 20 tags to a resource.
+	// You can attach up to 20 tags.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 

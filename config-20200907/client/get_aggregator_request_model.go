@@ -26,9 +26,9 @@ type GetAggregatorRequest struct {
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 	// Deprecated
 	//
-	// The tags of the resource.
+	// The tags of the resource. This parameter is deprecated and is not in use.
 	//
-	// You can add up to 20 tags to a resource.
+	// A maximum of 20 tags can be attached.
 	Tag []*GetAggregatorRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -72,21 +72,17 @@ func (s *GetAggregatorRequest) Validate() error {
 }
 
 type GetAggregatorRequestTag struct {
-	// The tag key.
+	// The tag key of the resource.
 	//
-	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
-	//
-	// You can specify at most 20 tag keys.
+	// A maximum of 20 tag keys can be attached.
 	//
 	// example:
 	//
 	// key-1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag values.
+	// The tag value of the resource.
 	//
-	// The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
-	//
-	// Each key-value must be unique. You can specify at most 20 tag values in each call.
+	// A maximum of 20 tag values can be attached.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type GetResourceInventoryResponseBody struct {
 	//
 	// 89E2F38F-4EE4-545A-BD56-92E007ECFEE9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the resource inventory.
+	// The information about the global resource inventory.
 	ResourceInventory *GetResourceInventoryResponseBodyResourceInventory `json:"ResourceInventory,omitempty" xml:"ResourceInventory,omitempty" type:"Struct"`
 }
 
@@ -62,19 +62,19 @@ func (s *GetResourceInventoryResponseBody) Validate() error {
 }
 
 type GetResourceInventoryResponseBodyResourceInventory struct {
-	// The download URL of the resource inventory.
+	// The download URL of the global resource inventory.
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The time when the resource inventory was generated. The value is a timestamp.
+	// The UNIX timestamp when the inventory started to be generated.
 	//
 	// example:
 	//
 	// 1687674634220
 	ResourceInventoryGenerateTime *int64 `json:"ResourceInventoryGenerateTime,omitempty" xml:"ResourceInventoryGenerateTime,omitempty"`
-	// The generation status of the resource inventory. Valid values:
+	// The generation status of the inventory. Valid values:
 	//
-	// 	- CREATING: The resource inventory is being generated.
+	// - CREATING: The inventory is being generated.
 	//
-	// 	- COMPLETE: The resource inventory is generated.
+	// - COMPLETE: The inventory is generated.
 	//
 	// example:
 	//

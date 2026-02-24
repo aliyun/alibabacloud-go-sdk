@@ -20,36 +20,11 @@ type iListRemediationExecutionsRequest interface {
 }
 
 type ListRemediationExecutionsRequest struct {
-	// The rule ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cr-5392626622af0000****
-	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The status of the remediation. Valid values:
-	//
-	// 	- Success
-	//
-	// 	- Failed
-	//
-	// example:
-	//
-	// Success
+	ConfigRuleId    *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
 	ExecutionStatus *string `json:"ExecutionStatus,omitempty" xml:"ExecutionStatus,omitempty"`
-	// The maximum number of entries to return for a single request. Valid values: 10 to 100.
-	//
-	// example:
-	//
-	// 10
-	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
-	//
-	// example:
-	//
-	// aVCjqNaSy0Ps7zSMGu25****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	MaxResults      *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListRemediationExecutionsRequest) String() string {

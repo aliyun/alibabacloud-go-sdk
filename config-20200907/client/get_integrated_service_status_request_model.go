@@ -14,14 +14,6 @@ type iGetIntegratedServiceStatusRequest interface {
 }
 
 type GetIntegratedServiceStatusRequest struct {
-	// The identity of the cloud service that is integrated with Cloud Config. Valid values:
-	//
-	// 	- eventbridge: EventBridge
-	//
-	// 	- cms: CloudMonitor
-	//
-	// 	- bpstudio: Cloud Architect Design Tools (CADT)
-	//
 	// This parameter is required.
 	//
 	// example:

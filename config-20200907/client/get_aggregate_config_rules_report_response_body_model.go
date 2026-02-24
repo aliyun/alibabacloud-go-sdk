@@ -16,14 +16,8 @@ type iGetAggregateConfigRulesReportResponseBody interface {
 }
 
 type GetAggregateConfigRulesReportResponseBody struct {
-	// The compliance evaluation report.
 	ConfigRulesReport *GetAggregateConfigRulesReportResponseBodyConfigRulesReport `json:"ConfigRulesReport,omitempty" xml:"ConfigRulesReport,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// F0BCC7B2-D0E4-49B0-95D2-6689CFB08D31
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId         *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAggregateConfigRulesReportResponseBody) String() string {
@@ -62,44 +56,12 @@ func (s *GetAggregateConfigRulesReportResponseBody) Validate() error {
 }
 
 type GetAggregateConfigRulesReportResponseBodyConfigRulesReport struct {
-	// The ID of the management account to which the rules belong.
-	//
-	// example:
-	//
-	// 100931896542****
-	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ID of the account group.
-	//
-	// example:
-	//
-	// ca-f632626622af0079****
-	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The timestamp when the compliance evaluation report was generated. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1624332329593
-	ReportCreateTimestamp *int64 `json:"ReportCreateTimestamp,omitempty" xml:"ReportCreateTimestamp,omitempty"`
-	// The ID of the compliance evaluation report.
-	//
-	// example:
-	//
-	// crp-88176457e0d900c9****
-	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	// The status of the compliance evaluation report. Valid values:
-	//
-	// 	- NONE: The compliance evaluation report is not generated.
-	//
-	// 	- CREATING: The compliance evaluation report is being generated.
-	//
-	// 	- COMPLETE: The compliance evaluation report was generated.
-	//
-	// example:
-	//
-	// CREATING
-	ReportStatus *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
-	// The URL used to download the compliance evaluation report.
-	ReportUrl *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
+	AccountId             *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AggregatorId          *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	ReportCreateTimestamp *int64  `json:"ReportCreateTimestamp,omitempty" xml:"ReportCreateTimestamp,omitempty"`
+	ReportId              *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	ReportStatus          *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
+	ReportUrl             *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
 }
 
 func (s GetAggregateConfigRulesReportResponseBodyConfigRulesReport) String() string {

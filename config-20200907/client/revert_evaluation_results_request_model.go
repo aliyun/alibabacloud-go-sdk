@@ -16,18 +16,8 @@ type iRevertEvaluationResultsRequest interface {
 }
 
 type RevertEvaluationResultsRequest struct {
-	// The rule ID.
-	//
-	// For more information about how to obtain the ID of a rule, see [ListConfigRules](https://help.aliyun.com/document_detail/169607.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cr-7e72626622af0051****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The resources that are to be re-evaluated.
-	//
 	// This parameter is required.
 	Resources []*RevertEvaluationResultsRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
@@ -72,43 +62,13 @@ func (s *RevertEvaluationResultsRequest) Validate() error {
 }
 
 type RevertEvaluationResultsRequestResources struct {
-	// The ID of the region in which the resource resides.
-	//
-	// For more information about how to obtain the ID of the region in which a resource resides, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the Alibaba Cloud account to which the resource belongs.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 100931896542****
 	ResourceAccountId *int64 `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
-	// The resource ID.
-	//
-	// For more information about how to obtain the ID of a resource, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// lb-hp3a3b4ztyfm2plgm****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type.
-	//
-	// For more information about how to query the type of a resource, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ACS::SLB::LoadBalancer
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 

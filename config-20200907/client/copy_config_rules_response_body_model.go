@@ -16,22 +16,8 @@ type iCopyConfigRulesResponseBody interface {
 }
 
 type CopyConfigRulesResponseBody struct {
-	// Indicates whether the rules are replicated. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	CopyRulesResult *bool `json:"CopyRulesResult,omitempty" xml:"CopyRulesResult,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 7BD81ECF-3194-5A6B-8719-9FC283167AD4
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CopyRulesResult *bool   `json:"CopyRulesResult,omitempty" xml:"CopyRulesResult,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CopyConfigRulesResponseBody) String() string {

@@ -14,6 +14,8 @@ type iGenerateReportFromTemplateResponseBody interface {
 }
 
 type GenerateReportFromTemplateResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 6CE4ABA1-9A57-41A9-8EA9-E8B17D4671CD

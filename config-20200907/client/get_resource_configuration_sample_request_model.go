@@ -16,10 +16,22 @@ type iGetResourceConfigurationSampleRequest interface {
 }
 
 type GetResourceConfigurationSampleRequest struct {
+	// Specifies whether to obtain only mock data, which is not real resource data.
+	//
+	// Valid values:
+	//
+	// - true
+	//
+	// - false
+	//
 	// example:
 	//
-	// true
+	// false
 	MockOnly *string `json:"MockOnly,omitempty" xml:"MockOnly,omitempty"`
+	// The resource type.
+	//
+	// For more information about how to obtain the resource type, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
+	//
 	// This parameter is required.
 	//
 	// example:

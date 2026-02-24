@@ -16,25 +16,9 @@ type iGetAggregateAccountComplianceByPackRequest interface {
 }
 
 type GetAggregateAccountComplianceByPackRequest struct {
-	// The ID of the account group.
-	//
-	// For more information about how to obtain the ID of the account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ca-04b3fd170e340007****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The ID of the compliance package.
-	//
-	// For more information about how to obtain the ID of a compliance package, see [ListAggregateCompliancePacks](https://help.aliyun.com/document_detail/262059.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cp-541e626622af0087****
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
 }
 

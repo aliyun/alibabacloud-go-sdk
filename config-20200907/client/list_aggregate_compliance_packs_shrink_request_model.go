@@ -34,9 +34,9 @@ type ListAggregateCompliancePacksShrinkRequest struct {
 	//
 	// ca-f632626622af0079****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
-	// Pages start from page 1. Default value: 1.
+	// Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
@@ -44,24 +44,37 @@ type ListAggregateCompliancePacksShrinkRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
 	//
-	// Valid values: 1 to 100. Default value: 10.
+	// Valid values: 1 to 100. Minimum value: 1. Default value: 10.
 	//
 	// example:
 	//
 	// 20
-	PageSize  *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The risk level of the compliance pack. Valid values:
+	//
+	// - 1: high
+	//
+	// - 2: medium
+	//
+	// - 3: low
+	//
+	// example:
+	//
+	// 1
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The status of the one or more compliance packages to be queried. Valid values:
+	// The status of the compliance pack. Valid values:
 	//
-	// 	- ACTIVE: compliance packages that are available for use.
+	// - ACTIVE: The compliance pack is active.
 	//
-	// 	- CREATING: compliance packages that are being created.
+	// - CREATING: The compliance pack is being created.
 	//
 	// example:
 	//
 	// ACTIVE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags.
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 

@@ -22,7 +22,7 @@ type GetAggregateResourceComplianceTimelineResponseBody struct {
 	//
 	// 8D53A78F-1EB8-4264-A554-72F07E34FAE6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the compliance timeline.
+	// The compliance timeline of the resource.
 	ResourceComplianceTimeline *GetAggregateResourceComplianceTimelineResponseBodyResourceComplianceTimeline `json:"ResourceComplianceTimeline,omitempty" xml:"ResourceComplianceTimeline,omitempty" type:"Struct"`
 }
 
@@ -62,19 +62,15 @@ func (s *GetAggregateResourceComplianceTimelineResponseBody) Validate() error {
 }
 
 type GetAggregateResourceComplianceTimelineResponseBodyResourceComplianceTimeline struct {
-	// The status of the resource. The parameter value varies based on the resource type and may be left empty. Examples:
-	//
-	// 	- If the value of the ResourceType parameter is ACS::ECS::Instance, the resource is an Elastic Compute Service (ECS) instance that has a specific state. In this case, the valid values of this parameter are Running and Stopped.
-	//
-	// 	- If the value of the ResourceType parameter is ACS::OSS::Bucket, the resource is an Object Storage Service (OSS) bucket that is not in a specific state. In this case, this parameter is empty.
+	// A list of compliance timeline entries.
 	ComplianceList []*GetAggregateResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList `json:"ComplianceList,omitempty" xml:"ComplianceList,omitempty" type:"Repeated"`
-	// The maximum number of entries returned for a single request.
+	// The maximum number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The token used to query the next page.
 	//
 	// example:
 	//
@@ -137,7 +133,7 @@ type GetAggregateResourceComplianceTimelineResponseBodyResourceComplianceTimelin
 	//
 	// 100931896542****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ID of the zone in which the resource resides.
+	// The zone where the resource resides.
 	//
 	// example:
 	//
@@ -149,77 +145,19 @@ type GetAggregateResourceComplianceTimelineResponseBodyResourceComplianceTimelin
 	//
 	// 1625200295276
 	CaptureTime *int64 `json:"CaptureTime,omitempty" xml:"CaptureTime,omitempty"`
-	// The information about the rules that evaluated the resource and the compliance evaluation result.
+	// A list of rules associated with the resource and their compliance details.
 	//
 	// example:
 	//
-	// {
-	//
-	//     "AccessControlList": {
-	//
-	//         "Grant": "private"
-	//
-	//     },
-	//
-	//     "ServerSideEncryptionRule": {
-	//
-	//         "SSEAlgorithm": "None"
-	//
-	//     },
-	//
-	//     "Comment": "",
-	//
-	//     "Owner": {
-	//
-	//         "DisplayName": "126672004088****",
-	//
-	//         "ID": "126672004088****"
-	//
-	//     },
-	//
-	//     "ResourceGroupId": "rg-acfmy4dfoau****",
-	//
-	//     "StorageClass": "Standard",
-	//
-	//     "DataRedundancyType": "LRS",
-	//
-	//     "AllowEmptyReferer": "true",
-	//
-	//     "Name": "test-private-oss****",
-	//
-	//     "BucketPolicy": {
-	//
-	//         "LogPrefix": "",
-	//
-	//         "LogBucket": ""
-	//
-	//     },
-	//
-	//     "ExtranetEndpoint": "oss-cn-hangzhou.aliyuncs.com",
-	//
-	//     "IntranetEndpoint": "oss-cn-hangzhou-internal.aliyuncs.com",
-	//
-	//     "Location": "oss-cn-hangzhou"
-	//
-	// }
+	// {\\"Compliance\\":{\\"complianceType\\":\\"COMPLIANT\\",\\"count\\":1},\\"ConfigRuleList\\":[{\\"accountId\\":100931896542****,\\"configRuleId\\":\\"cr-9524626622af003d****\\",\\"configRuleArn\\":\\"acs:config::100931896542****:rule/cr-9524626622af003d****\\",\\"configRuleName\\":\\"OSS存储空间ACL禁止公共读写\\",\\"complianceType\\":\\"COMPLIANT\\",\\"riskLevel\\":1,\\"annotation\\":\\"\\",\\"invokingEventMessageType\\":\\"ScheduledNotification\\"}]}
 	Configuration *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
-	// The details of the resource change that triggered the compliance evaluation.
+	// The details of the resource change that triggered this evaluation.
 	//
 	// example:
 	//
-	// {
-	//
-	//     "ResourceGroupId": [
-	//
-	//         "rg-acfmy4dfoau****",
-	//
-	//         "rg-a3dmy4lksta****"
-	//
-	//     ]
-	//
-	// }
+	// {\\"OSS存储空间ACL禁止公共读写\\":[{\\"accountId\\":100931896542****,\\"configRuleId\\":\\"cr-965f626622af003d****\\",\\"configRuleArn\\":\\"acs:config::100931896542****:rule/cr-965f626622af003d****\\",\\"configRuleName\\":\\"OSS存储空间ACL禁止公共读写\\",\\"complianceType\\":\\"COMPLIANT\\",\\"riskLevel\\":1,\\"annotation\\":\\"\\",\\"invokingEventMessageType\\":\\"ScheduledNotification\\"},{}]}
 	ConfigurationDiff *string `json:"ConfigurationDiff,omitempty" xml:"ConfigurationDiff,omitempty"`
-	// The ID of the region in which the resource resides.
+	// The ID of the region where the resource resides.
 	//
 	// example:
 	//
@@ -231,29 +169,29 @@ type GetAggregateResourceComplianceTimelineResponseBodyResourceComplianceTimelin
 	//
 	// 1624961112000
 	ResourceCreateTime *int64 `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty"`
-	// The ID of the resource.
+	// The resource ID.
 	//
 	// example:
 	//
-	// test-private-oss****
+	// new-bucket
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The name of the resource.
+	// The resource name.
 	//
 	// example:
 	//
-	// test-private-oss****
+	// new-bucket
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The status of the resource. The parameter value varies based on the resource type and may be left empty. Examples:
+	// The status of the resource. The status of a resource is defined by the corresponding Alibaba Cloud service. This parameter can be empty. For example:
 	//
-	// 	- If the ResourceType parameter is set to ACS::ECS::Instance, the resource is an Elastic Compute Service (ECS) instance that has a specific state. In this case, the valid values of this parameter are Running and Stopped.
+	// - If the resource type is ACS::ECS::Instance, this parameter can be Running or Stopped because an ECS instance is stateful.
 	//
-	// 	- If the ResourceType parameter is set to ACS::OSS::Bucket, the resource is an OSS bucket that does not have a specific state. In this case, this parameter is left empty.
+	// - If the resource type is ACS::OSS::Bucket, this parameter is empty because an OSS bucket is stateless.
 	//
 	// example:
 	//
-	// Running
+	// null
 	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
-	// The type of the resource.
+	// The resource type.
 	//
 	// example:
 	//

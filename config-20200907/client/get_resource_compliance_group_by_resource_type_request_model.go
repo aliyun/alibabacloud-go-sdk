@@ -14,11 +14,6 @@ type iGetResourceComplianceGroupByResourceTypeRequest interface {
 }
 
 type GetResourceComplianceGroupByResourceTypeRequest struct {
-	// The rule IDs. Separate multiple rule IDs with commas (,).
-	//
-	// example:
-	//
-	// cr-a5c6626622af0058****
 	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
 }
 

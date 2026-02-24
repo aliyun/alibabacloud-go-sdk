@@ -16,18 +16,8 @@ type iUpdateAggregateConfigDeliveryChannelResponseBody interface {
 }
 
 type UpdateAggregateConfigDeliveryChannelResponseBody struct {
-	// The ID of the delivery channel.
-	//
-	// example:
-	//
-	// cdc-8e45ff4e06a3a8****
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// A7A0FFF8-0B44-40C6-8BBF-3A185EFDERTHG
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateAggregateConfigDeliveryChannelResponseBody) String() string {

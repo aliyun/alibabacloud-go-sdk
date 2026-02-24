@@ -16,9 +16,9 @@ type iListCompliancePackTemplatesResponseBody interface {
 }
 
 type ListCompliancePackTemplatesResponseBody struct {
-	// The information about the compliance package templates returned.
+	// The details of the compliance pack templates.
 	CompliancePackTemplatesResult *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResult `json:"CompliancePackTemplatesResult,omitempty" xml:"CompliancePackTemplatesResult,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *ListCompliancePackTemplatesResponseBody) Validate() error {
 }
 
 type ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResult struct {
-	// The compliance package templates.
+	// A list of compliance pack templates.
 	CompliancePackTemplates []*ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplates `json:"CompliancePackTemplates,omitempty" xml:"CompliancePackTemplates,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -70,13 +70,13 @@ type ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResult struct
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of the compliance package templates returned.
+	// The total number of compliance pack templates.
 	//
 	// example:
 	//
@@ -142,45 +142,45 @@ func (s *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResult) V
 }
 
 type ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplates struct {
-	// The ID of the compliance package template.
+	// The ID of the compliance pack template.
 	//
 	// example:
 	//
-	// ct-d254ff4e06a300cf****
+	// ct-5f26ff4e06a300c4****
 	CompliancePackTemplateId *string `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
-	// The name of the compliance package template.
+	// The name of the compliance pack template.
 	//
 	// example:
 	//
-	// BestPracticesForResourceStability
+	// ClassifiedProtectionPreCheck
 	CompliancePackTemplateName *string `json:"CompliancePackTemplateName,omitempty" xml:"CompliancePackTemplateName,omitempty"`
-	// The default rules in the compliance package.
+	// A list of default rules in the compliance pack.
 	ConfigRules []*ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
-	// The description of the compliance package.
+	// The description of the compliance pack.
 	//
 	// example:
 	//
-	// example-description
+	// Checks the compliance of Alibaba Cloud resources based on the specific requirements of MLPS 2.0 Level 3.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The tag of the compliance package.
+	// The classification labels of the compliance pack.
 	//
 	// example:
 	//
-	// tagKey-1
+	// Regulation
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The time when the compliance package was last updated.
+	// The UNIX timestamp when the compliance pack was last updated.
 	//
 	// example:
 	//
-	// 1663408308
+	// 1747983081
 	LastUpdate *int32 `json:"LastUpdate,omitempty" xml:"LastUpdate,omitempty"`
-	// The risk level of the managed rule in the compliance package. Valid values:
+	// The risk level of the rules in the compliance pack. Valid values:
 	//
-	// 	- 1: high
+	// - 1: high
 	//
-	// 	- 2: medium
+	// - 2: medium
 	//
-	// 	- 3: low
+	// - 3: low
 	//
 	// example:
 	//
@@ -273,27 +273,27 @@ func (s *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCom
 }
 
 type ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRules struct {
-	// The input parameter of the managed rule.
+	// The parameters of the managed rule.
 	ConfigRuleParameters []*ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
-	// The description of the regulation. This parameter is available only for regulation compliance packages.
+	// The description of the control. This parameter is returned only for compliance packs that are created based on a regulation.
 	//
 	// example:
 	//
-	// No classic networks exist.
+	// e) Possible known vulnerabilities should be found and remedied in a timely manner after adequate testing and evaluation.\\nf) It shall be able to detect intrusion into important nodes and provide an alarm in case of serious intrusion events.
 	ControlDescription *string `json:"ControlDescription,omitempty" xml:"ControlDescription,omitempty"`
-	// The regulation ID.
+	// The ID of the control.
 	//
-	// >  This parameter is available only for regulation compliance packages.
+	// > This parameter appears only for regulatory compliance packages.
 	//
 	// example:
 	//
-	// 3.1
+	// 8.1.4.4
 	ControlId *string `json:"ControlId,omitempty" xml:"ControlId,omitempty"`
-	// Indicates whether the rules are enabled together with the compliance package. Valid values:
+	// Indicates whether the rule can be quickly enabled. Valid values:
 	//
-	// 	- true
+	// - true: The rule can be quickly enabled.
 	//
-	// 	- false
+	// - false: The rule cannot be quickly enabled.
 	//
 	// example:
 	//
@@ -303,37 +303,37 @@ type ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultComplia
 	//
 	// example:
 	//
-	// If the expiration time of the SLB certificate is later than the specified number of days after the check time, the configuration is considered compliant. Default value: 90 days.
+	// If no vulnerabilities that are of the specified type and severity level and to be fixed exist on the running ECS instances that are protected by Security Center, the configuration is considered compliant. This rule does not apply to ECS instances that are not in the running state.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The identifier of the managed rule.
 	//
 	// example:
 	//
-	// slb-servercertificate-expired-check
+	// ecs-instance-updated-security-vul
 	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
 	// The name of the managed rule.
 	//
 	// example:
 	//
-	// slb-servercertificate-expired-check
+	// ecs-instance-updated-security-vul
 	ManagedRuleName *string `json:"ManagedRuleName,omitempty" xml:"ManagedRuleName,omitempty"`
-	// The types of the resources evaluated based on the rule.
+	// The resource types that are evaluated by the rule.
 	//
 	// example:
 	//
-	// ACS::SLB::ServerCertificate
+	// ACS::ECS::Instance
 	ResourceTypesScope *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
 	// The risk level of the managed rule. Valid values:
 	//
-	// 	- 1: high
+	// - 1: high
 	//
-	// 	- 2: medium
+	// - 2: medium
 	//
-	// 	- 3: low
+	// - 3: low
 	//
 	// example:
 	//
-	// 1
+	// 2
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
@@ -440,23 +440,23 @@ func (s *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCom
 }
 
 type ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRulesConfigRuleParameters struct {
-	// The name of the input parameter of the managed rule.
+	// The name of the parameter for the managed rule.
 	//
 	// example:
 	//
-	// days
+	// necessity
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The value of the input parameter of the managed rule.
+	// The value of the parameter for the managed rule.
 	//
 	// example:
 	//
-	// 90
+	// asap
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
-	// Indicates whether the parameter is required in the managed rule. Valid values:
+	// Indicates whether the parameter is required for the managed rule. Valid values:
 	//
-	// 	- true: required
+	// - true: The parameter is required.
 	//
-	// 	- false: optional
+	// - false: The parameter is not required.
 	//
 	// example:
 	//

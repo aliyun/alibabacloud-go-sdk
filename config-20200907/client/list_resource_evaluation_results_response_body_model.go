@@ -16,9 +16,9 @@ type iListResourceEvaluationResultsResponseBody interface {
 }
 
 type ListResourceEvaluationResultsResponseBody struct {
-	// The information about the compliance evaluation results returned.
+	// The resource evaluation results.
 	EvaluationResults *ListResourceEvaluationResultsResponseBodyEvaluationResults `json:"EvaluationResults,omitempty" xml:"EvaluationResults,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,15 +62,15 @@ func (s *ListResourceEvaluationResultsResponseBody) Validate() error {
 }
 
 type ListResourceEvaluationResultsResponseBodyEvaluationResults struct {
-	// The details of the compliance evaluation result.
+	// The list of resource evaluation results.
 	EvaluationResultList []*ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList `json:"EvaluationResultList,omitempty" xml:"EvaluationResultList,omitempty" type:"Repeated"`
-	// The maximum number of entries to return for a single request.
+	// The maximum number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that was used to initiate the next request.
+	// The token that is used to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -127,89 +127,93 @@ func (s *ListResourceEvaluationResultsResponseBodyEvaluationResults) Validate() 
 }
 
 type ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList struct {
-	// The annotation to the resource that is evaluated as incompliant. The following section describes the parameters that can be returned:
+	// Additional information about the non-compliant resource. The value of this parameter can contain the following information:
 	//
-	// 	- `configuration`: the current resource configuration that is evaluated as incompliant by using the rule.
+	// - `configuration`: The current configuration of the resource, which is the non-compliant configuration.
 	//
-	// 	- `desiredValue`: the expected resource configuration that is evaluated as compliant by using the rule.
+	// - `desiredValue`: The expected configuration of the resource, which is the compliant configuration.
 	//
-	// 	- `operator`: the operator that is used to compare the current configuration with the expected configuration of the resource.
+	// - `operator`: The comparison operator that is used to compare the current configuration with the expected configuration.
 	//
-	// 	- `property`: the JSON path of the current configuration in the resource property struct.
+	// - `property`: The JSON path of the current configuration in the resource property struct.
 	//
-	// 	- `reason`: the reason why the resource is evaluated as incompliant.
+	// - `reason`: The reason why the resource is non-compliant.
 	//
 	// example:
 	//
 	// {\\"configuration\\":\\"false\\",\\"desiredValue\\":\\"True\\",\\"operator\\":\\"StringEquals\\",\\"property\\":\\"$.LoginProfile.MFABindRequired\\"}
 	Annotation *string `json:"Annotation,omitempty" xml:"Annotation,omitempty"`
-	// The compliance evaluation result of the resources. Valid values:
+	// The compliance evaluation result. Valid values:
 	//
-	// 	- COMPLIANT: The resources are evaluated as compliant.
+	// - COMPLIANT: The resource is compliant.
 	//
-	// 	- NON_COMPLIANT: The resources are evaluated as incompliant.
+	// - NON_COMPLIANT: The resource is non-compliant.
 	//
-	// 	- NOT_APPLICABLE: The rule does not apply to your resources.
+	// - NOT_APPLICABLE: The rule does not apply to the resource.
 	//
-	// 	- INSUFFICIENT_DATA: No resource data is available.
+	// - INSUFFICIENT_DATA: The data is insufficient.
 	//
-	// 	- IGNORED: The resource is ignored during compliance evaluation.
+	// - IGNORED: The evaluation result is ignored.
 	//
 	// example:
 	//
 	// NON_COMPLIANT
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	// The timestamp when the rule was triggered for the compliance evaluation. Unit: milliseconds.
+	// The timestamp when the rule was triggered for evaluation. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1624932227157
 	ConfigRuleInvokedTimestamp *int64 `json:"ConfigRuleInvokedTimestamp,omitempty" xml:"ConfigRuleInvokedTimestamp,omitempty"`
+	// The unique ID of the evaluation result.
+	//
 	// example:
 	//
 	// 00000089-4e0d-58b5-a96a-8e54112110f3
 	EvaluationId *string `json:"EvaluationId,omitempty" xml:"EvaluationId,omitempty"`
-	// The identifying information about the compliance evaluation result.
+	// The identifier of the resource evaluation result.
 	EvaluationResultIdentifier *ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier `json:"EvaluationResultIdentifier,omitempty" xml:"EvaluationResultIdentifier,omitempty" type:"Struct"`
-	// The trigger type of the managed rule. Valid values:
+	// The trigger type of the rule. Valid values:
 	//
-	// 	- ConfigurationItemChangeNotification: The managed rule is triggered by configuration changes.
+	// - ConfigurationItemChangeNotification: The rule is triggered by a configuration change.
 	//
-	// 	- ScheduledNotification: The managed rule is periodically triggered.
+	// - ScheduledNotification: The rule is triggered periodically.
 	//
-	// 	- Manual: The rule is manually triggered.
+	// - Manual: The rule is triggered manually.
 	//
 	// example:
 	//
 	// ScheduledNotification
 	InvokingEventMessageType *string `json:"InvokingEventMessageType,omitempty" xml:"InvokingEventMessageType,omitempty"`
+	// The start time of the last non-compliance.
+	//
 	// example:
 	//
 	// 1744696393000
 	LastNonCompliantRecordTimestamp *int64 `json:"LastNonCompliantRecordTimestamp,omitempty" xml:"LastNonCompliantRecordTimestamp,omitempty"`
-	// Indicates whether the remediation template is enabled. Valid values:
+	// Indicates whether the remediation setting is enabled. Valid values:
 	//
-	// - true: The remediation template is enabled.
+	// - true: The remediation setting is enabled.
 	//
-	// - false: The remediation template is disabled.
+	// - false: The remediation setting is not enabled.
 	//
 	// example:
 	//
 	// true
 	RemediationEnabled *bool `json:"RemediationEnabled,omitempty" xml:"RemediationEnabled,omitempty"`
-	// The timestamp when the compliance evaluation result was recorded. Unit: milliseconds.
+	// The timestamp when the resource evaluation result was generated. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1624932227595
 	ResultRecordedTimestamp *int64 `json:"ResultRecordedTimestamp,omitempty" xml:"ResultRecordedTimestamp,omitempty"`
-	// The risk level of the resources that do not comply with the rule. Valid values:
+	// The risk level of the rule. Valid values:
 	//
-	// 	- 1: high risk level
+	// - 1: high risk.
 	//
-	// 	- 2: medium risk level
+	// - 2: medium risk.
 	//
-	// 	- 3: low risk level
+	// - 3: low risk.
 	//
 	// example:
 	//
@@ -325,9 +329,9 @@ func (s *ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationRes
 }
 
 type ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier struct {
-	// The information about the evaluated resource returned in the compliance evaluation result.
+	// The resource information in the evaluation result.
 	EvaluationResultQualifier *ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier `json:"EvaluationResultQualifier,omitempty" xml:"EvaluationResultQualifier,omitempty" type:"Struct"`
-	// The timestamp when the compliance evaluation was performed. Unit: milliseconds.
+	// The timestamp that is displayed on the timeline. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -371,51 +375,51 @@ func (s *ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationRes
 }
 
 type ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier struct {
-	// The Alibaba Cloud Resource Name (ARN) of the rule.
+	// The ARN of the rule.
 	//
 	// example:
 	//
 	// acs:config::100931896542****:rule/cr-7f7d626622af0041****
 	ConfigRuleArn *string `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//
 	// cr-7f7d626622af0041****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The name of the monitoring rule.
+	// The rule name.
 	//
 	// example:
 	//
-	// test-rule-name
+	// ram-user-mfa-check
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	// The date from which the system automatically re-evaluates the ignored incompliant resources.
+	// The date when the ignored evaluation result is automatically resumed.
 	//
-	// >  If the value of this parameter is left empty, the system does not automatically re-evaluate the ignored incompliant resources. You must re-evaluate the ignored incompliant resources.
+	// > If this parameter is empty, the evaluation result is not automatically resumed. You must manually resume the result.
 	//
 	// example:
 	//
 	// 2022-06-01
 	IgnoreDate *string `json:"IgnoreDate,omitempty" xml:"IgnoreDate,omitempty"`
-	// The ID of the region where your resources reside.
+	// The ID of the region where the resource resides.
 	//
 	// example:
 	//
 	// global
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource.
+	// The resource ID.
 	//
 	// example:
 	//
 	// 23642660635396****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The name of the resource.
+	// The resource name.
 	//
 	// example:
 	//
 	// Alice
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The type of the resource.
+	// The resource type.
 	//
 	// example:
 	//

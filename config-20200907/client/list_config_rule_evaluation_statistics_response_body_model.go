@@ -16,14 +16,8 @@ type iListConfigRuleEvaluationStatisticsResponseBody interface {
 }
 
 type ListConfigRuleEvaluationStatisticsResponseBody struct {
-	// The statistics of compliance evaluation results.
 	EvaluationResults []*ListConfigRuleEvaluationStatisticsResponseBodyEvaluationResults `json:"EvaluationResults,omitempty" xml:"EvaluationResults,omitempty" type:"Repeated"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 4FF2B787-347E-5299-A196-2C0448DEA341
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId         *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListConfigRuleEvaluationStatisticsResponseBody) String() string {
@@ -66,36 +60,11 @@ func (s *ListConfigRuleEvaluationStatisticsResponseBody) Validate() error {
 }
 
 type ListConfigRuleEvaluationStatisticsResponseBodyEvaluationResults struct {
-	// The number of resources that are evaluated as non-compliant.
-	//
-	// example:
-	//
-	// 30
-	NonCompliantResourceCnt *int32 `json:"NonCompliantResourceCnt,omitempty" xml:"NonCompliantResourceCnt,omitempty"`
-	// The number of rules based on which resources are evaluated as non-compliant.
-	//
-	// example:
-	//
-	// 5
-	NonCompliantRuleCnt *int32 `json:"NonCompliantRuleCnt,omitempty" xml:"NonCompliantRuleCnt,omitempty"`
-	// The date on which the statistics are obtained.
-	//
-	// example:
-	//
-	// 2023-06-27
-	StatisticDate *string `json:"StatisticDate,omitempty" xml:"StatisticDate,omitempty"`
-	// The total number of resources.
-	//
-	// example:
-	//
-	// 91
-	TotalResourceCnt *int32 `json:"TotalResourceCnt,omitempty" xml:"TotalResourceCnt,omitempty"`
-	// The total number of rules.
-	//
-	// example:
-	//
-	// 13
-	TotalRuleCnt *int32 `json:"TotalRuleCnt,omitempty" xml:"TotalRuleCnt,omitempty"`
+	NonCompliantResourceCnt *int32  `json:"NonCompliantResourceCnt,omitempty" xml:"NonCompliantResourceCnt,omitempty"`
+	NonCompliantRuleCnt     *int32  `json:"NonCompliantRuleCnt,omitempty" xml:"NonCompliantRuleCnt,omitempty"`
+	StatisticDate           *string `json:"StatisticDate,omitempty" xml:"StatisticDate,omitempty"`
+	TotalResourceCnt        *int32  `json:"TotalResourceCnt,omitempty" xml:"TotalResourceCnt,omitempty"`
+	TotalRuleCnt            *int32  `json:"TotalRuleCnt,omitempty" xml:"TotalRuleCnt,omitempty"`
 }
 
 func (s ListConfigRuleEvaluationStatisticsResponseBodyEvaluationResults) String() string {

@@ -16,9 +16,9 @@ type iGetAggregateConfigRuleResponseBody interface {
 }
 
 type GetAggregateConfigRuleResponseBody struct {
-	// The information about the rules.
+	// The details of the rule.
 	ConfigRule *GetAggregateConfigRuleResponseBodyConfigRule `json:"ConfigRule,omitempty" xml:"ConfigRule,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -68,43 +68,43 @@ type GetAggregateConfigRuleResponseBodyConfigRule struct {
 	//
 	// 120886317861****
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The IDs of the members to which the rule applies. Separate multiple member IDs with commas (,).
+	// The rule applies only to resources in the specified member accounts. Separate multiple member account IDs with a comma (,).
 	//
 	// example:
 	//
 	// 120886317861****
 	AccountIdsScope *string `json:"AccountIdsScope,omitempty" xml:"AccountIdsScope,omitempty"`
-	// The details of compliance evaluation results.
+	// The compliance statistics of the rule.
 	Compliance *GetAggregateConfigRuleResponseBodyConfigRuleCompliance `json:"Compliance,omitempty" xml:"Compliance,omitempty" type:"Struct"`
-	// The ARN of the managed rule.
+	// The ARN of the rule.
 	//
 	// example:
 	//
 	// acs:config::100931896542****:rule/cr-7f7d626622af0041****
 	ConfigRuleArn *string `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
-	// The information about compliance evaluations performed by the rule.
+	// The execution status of the rule.
 	ConfigRuleEvaluationStatus *GetAggregateConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus `json:"ConfigRuleEvaluationStatus,omitempty" xml:"ConfigRuleEvaluationStatus,omitempty" type:"Struct"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//
 	// cr-7f7d626622af0041****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The name of the monitoring rule.
+	// The name of the rule.
 	//
 	// example:
 	//
-	// The name of the rule.
+	// RAM用户开启MFA
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 	// The status of the rule. Valid values:
 	//
-	// 	- ACTIVE: The rule is being used to monitor resource configurations.
+	// - ACTIVE: The rule is enabled.
 	//
-	// 	- DELETING: The rule is being deleted.
+	// - DELETING: The rule is being deleted.
 	//
-	// 	- EVALUATING: The rule is triggered and is being used to monitor resource configurations.
+	// - EVALUATING: The rule is being evaluated.
 	//
-	// 	- INACTIVE: The rule is disabled and is no longer used to monitor resource configurations.
+	// - INACTIVE: The rule is disabled.
 	//
 	// example:
 	//
@@ -112,15 +112,15 @@ type GetAggregateConfigRuleResponseBodyConfigRule struct {
 	ConfigRuleState *string `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
 	// The trigger type of the rule. Valid values:
 	//
-	// 	- ConfigurationItemChangeNotification: The managed rule is triggered by configuration changes.
+	// - ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
 	//
-	// 	- ScheduledNotification: The managed rule is periodically triggered.
+	// - ScheduledNotification: The rule is triggered periodically.
 	//
 	// example:
 	//
 	// ConfigurationItemChangeNotification
 	ConfigRuleTriggerTypes *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
-	// The information about the creation of the rule.
+	// The information about the creator of the rule.
 	CreateBy *GetAggregateConfigRuleResponseBodyConfigRuleCreateBy `json:"CreateBy,omitempty" xml:"CreateBy,omitempty" type:"Struct"`
 	// The timestamp when the rule was created. Unit: milliseconds.
 	//
@@ -128,65 +128,51 @@ type GetAggregateConfigRuleResponseBodyConfigRule struct {
 	//
 	// 1604684022000
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The description of the managed rule.
+	// The description of the rule.
 	//
 	// example:
 	//
-	// The description of the managed rule.
+	// RAM用户开启MFA，视为“合规”。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the member account to which the rule does not apply, which means that the resources within the member account are not evaluated based on the rule.
-	//
-	// >  This parameter applies only to a managed rule.
+	// The rule does not apply to resources in the specified member accounts. The system does not evaluate resources in these accounts.
 	//
 	// example:
 	//
 	// 120886317861****
 	ExcludeAccountIdsScope *string `json:"ExcludeAccountIdsScope,omitempty" xml:"ExcludeAccountIdsScope,omitempty"`
-	// The ID of the resource directory to which the rule does not apply, which means that the resources within member accounts in the resource directory are not evaluated based on the rule.
-	//
-	// >
-	//
-	// 	- This parameter applies only to a rule of a global account group.
-	//
-	// 	- This parameter applies only to a managed rule.
+	// The rule does not apply to resources within the member accounts in the specified folders of the resource directory. The system does not evaluate resources in these folders.
 	//
 	// example:
 	//
 	// fd-pWmkqZ****
 	ExcludeFolderIdsScope *string `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
-	// The IDs of the regions excluded from the compliance evaluations performed by the rule. Separate multiple region IDs with commas (,).
+	// The rule does not apply to resources in the specified regions. The system does not evaluate resources in these regions. Separate multiple region IDs with a comma (,).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ExcludeRegionIdsScope *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
-	// The IDs of the resource groups excluded from the compliance evaluations performed by the rule. Separate multiple resource group IDs with commas (,).
+	// The rule does not apply to resources in the specified resource groups. The system does not evaluate resources in these resource groups. Separate multiple resource group IDs with a comma (,).
 	//
 	// example:
 	//
 	// rg-aekzdibsjjc****
 	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
-	// The ID of the resource excluded from the compliance evaluations performed by the rule.
+	// The IDs of the resources that are not evaluated by the rule.
 	//
 	// example:
 	//
 	// 23642660635687****
 	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	// The scope of the tag that is excluded.
+	// The excluded scope of the tags.
 	ExcludeTagsScope []*GetAggregateConfigRuleResponseBodyConfigRuleExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
-	// The extended content, which is temporarily only used to configure the trigger time with a 24-hour cycle trigger.
+	// The extended content. This parameter is used to configure the trigger time for a rule that is triggered on a 24-hour cycle.
 	//
 	// example:
 	//
 	// {"fixedHour":"12"}
 	ExtendContent *string `json:"ExtendContent,omitempty" xml:"ExtendContent,omitempty"`
-	// The ID of the resource directory to which the rule applies, which means that the resources within member accounts in the resource directory are evaluated based on the rule.
-	//
-	// >
-	//
-	// 	- This parameter applies only to rules of a global account group.
-	//
-	// 	- This parameter applies only to managed rules.
+	// The rule applies only to resources within the member accounts in the specified folders of the resource directory.
 	//
 	// example:
 	//
@@ -200,17 +186,17 @@ type GetAggregateConfigRuleResponseBodyConfigRule struct {
 	InputParameters map[string]interface{} `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
 	// The details of the managed rule.
 	ManagedRule *GetAggregateConfigRuleResponseBodyConfigRuleManagedRule `json:"ManagedRule,omitempty" xml:"ManagedRule,omitempty" type:"Struct"`
-	// The intervals at which the managed rule is triggered. Valid values:
+	// The frequency at which the rule is executed.
 	//
-	// 	- One_Hour: 1 hour.
+	// - One_Hour: 1 hour.
 	//
-	// 	- Three_Hours: 3 hours.
+	// - Three_Hours: 3 hours.
 	//
-	// 	- Six_Hours: 6 hours.
+	// - Six_Hours: 6 hours.
 	//
-	// 	- Twelve_Hours: 12 hours
+	// - Twelve_Hours: 12 hours.
 	//
-	// 	- TwentyFour_Hours: 24 hours
+	// - TwentyFour_Hours: 24 hours.
 	//
 	// example:
 	//
@@ -222,25 +208,25 @@ type GetAggregateConfigRuleResponseBodyConfigRule struct {
 	//
 	// 1614687022000
 	ModifiedTimestamp *int64 `json:"ModifiedTimestamp,omitempty" xml:"ModifiedTimestamp,omitempty"`
-	// The ID of the region to which the rule applies.
+	// The rule applies only to resources in the specified regions.
 	//
 	// example:
 	//
 	// global
 	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	// The ID of the resource group to which the rule applies.
+	// The rule applies only to resources in the specified resource groups.
 	//
 	// example:
 	//
 	// rg-aekzdibsjjc****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	// The IDs of the resources to which the rule applies. Separate multiple resource IDs with commas (,).
+	// The rule applies only to the specified resources. Separate multiple resource IDs with a comma (,).
 	//
 	// example:
 	//
 	// eip-8vbf3x310fn56ijfd****
 	ResourceIdsScope *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
-	// The names of the resource to which the rule applies.
+	// The rule applies only to resources that have the specified names.
 	//
 	// if can be null:
 	// true
@@ -249,35 +235,35 @@ type GetAggregateConfigRuleResponseBodyConfigRule struct {
 	//
 	// i-xxx
 	ResourceNameScope *string `json:"ResourceNameScope,omitempty" xml:"ResourceNameScope,omitempty"`
-	// The type of the resource evaluated by the rule.
+	// The resource types that are evaluated by the rule.
 	//
 	// example:
 	//
 	// ACS::RAM::User
 	ResourceTypesScope *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
-	// The risk level of the resources that are not compliant with the rule. Valid values:
+	// The risk level of the rule. Valid values:
 	//
-	// 	- 1: high risk level
+	// - 1: high
 	//
-	// 	- 2: medium risk level
+	// - 2: medium
 	//
-	// 	- 3: low risk level
+	// - 3: low
 	//
 	// example:
 	//
 	// 1
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The information about how the rule was created.
+	// The source of the rule.
 	Source *GetAggregateConfigRuleResponseBodyConfigRuleSource `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
-	// When retrieving details of rules created using the parameter `TagsScope`, this field will not be returned.
+	// This parameter is not returned for rules that are created using the `TagsScope` parameter.
 	//
-	// To retrieve rules created using the deprecated field `TagKeyScope` (not recommended): for example, when the parameter `TagKeyScope` has a value of ECS,OSS, if this parameter is set to `AND`, it means that the rule only applies to resources bound with both labels ECS and OSS.
+	// This parameter is returned only for rules that are created using the deprecated `TagKeyScope` parameter. For example, if `TagKeyScope` is set to `ECS,OSS` and this parameter is set to `AND`, the rule applies to resources that have both the `ECS` and `OSS` tags.
 	//
-	// Values:
+	// Valid values:
 	//
-	//  - AND: And.
+	// - AND
 	//
-	//  - OR: Or.
+	// - OR
 	//
 	// example:
 	//
@@ -285,9 +271,9 @@ type GetAggregateConfigRuleResponseBodyConfigRule struct {
 	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
 	// Deprecated
 	//
-	// This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+	// This parameter is deprecated. Use the `TagsScope` parameter instead.
 	//
-	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
+	// The rule applies only to resources that have the specified tag key.
 	//
 	// example:
 	//
@@ -295,17 +281,17 @@ type GetAggregateConfigRuleResponseBodyConfigRule struct {
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
 	// Deprecated
 	//
-	// This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+	// This parameter is deprecated. Use the `TagsScope` parameter instead.
 	//
-	// The tag value used to filter resources. The rule applies only to the resources with the specified tag value.
+	// The rule applies only to resources that have the specified tag value.
 	//
 	// example:
 	//
 	// MFA
 	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
-	// The list of tags.
+	// The resource tags.
 	Tags []*GetAggregateConfigRuleResponseBodyConfigRuleTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The tag scope.
+	// The scope of the tags.
 	TagsScope []*GetAggregateConfigRuleResponseBodyConfigRuleTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 }
 
@@ -698,21 +684,21 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRule) Validate() error {
 }
 
 type GetAggregateConfigRuleResponseBodyConfigRuleCompliance struct {
-	// The statistics on the compliance evaluation results by compliance type. Valid values:
+	// The compliance evaluation result. Valid values:
 	//
-	// 	- COMPLIANT: The resources are evaluated as compliant.
+	// - COMPLIANT: The resource is compliant.
 	//
-	// 	- NON_COMPLIANT: The resources are evaluated as non-compliant.
+	// - NON_COMPLIANT: The resource is not compliant.
 	//
-	// 	- NOT_APPLICABLE: The rule does not apply to your resources.
+	// - NOT_APPLICABLE: The rule does not apply to the resource.
 	//
-	// 	- INSUFFICIENT_DATA: No resource data is available.
+	// - INSUFFICIENT_DATA: No data is available.
 	//
 	// example:
 	//
 	// NON_COMPLIANT
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	// The number of evaluated resources.
+	// The number of resources that have the corresponding compliance evaluation result.
 	//
 	// example:
 	//
@@ -751,53 +737,53 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRuleCompliance) Validate() erro
 }
 
 type GetAggregateConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus struct {
-	// The timestamp when the rule was first triggered.
+	// The timestamp when the rule was first activated.
 	//
 	// example:
 	//
 	// 1624932221993
 	FirstActivatedTimestamp *int64 `json:"FirstActivatedTimestamp,omitempty" xml:"FirstActivatedTimestamp,omitempty"`
-	// Indicates whether resources were evaluated based on the rule. Valid values:
+	// Indicates whether the rule has been evaluated. Valid values:
 	//
-	// 	- true: Resources were evaluated based on the rule.
+	// - true: The rule has been evaluated.
 	//
-	// 	- false: Resources were not evaluated based on the rule.
+	// - false: The rule has not been evaluated.
 	//
 	// example:
 	//
 	// true
 	FirstEvaluationStarted *bool `json:"FirstEvaluationStarted,omitempty" xml:"FirstEvaluationStarted,omitempty"`
-	// The error code returned for the last failed compliance evaluation.
+	// The error code returned for the last failed execution of the rule.
 	//
 	// example:
 	//
 	// TimeOut
 	LastErrorCode *string `json:"LastErrorCode,omitempty" xml:"LastErrorCode,omitempty"`
-	// The error message returned for the last failed compliance evaluation.
+	// The error message returned for the last failed execution of the rule.
 	//
 	// example:
 	//
 	// time out
 	LastErrorMessage *string `json:"LastErrorMessage,omitempty" xml:"LastErrorMessage,omitempty"`
-	// The timestamp when the last failed compliance evaluation of the rule ended. Unit: milliseconds.
+	// The timestamp of the last failed evaluation. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1614687022000
 	LastFailedEvaluationTimestamp *int64 `json:"LastFailedEvaluationTimestamp,omitempty" xml:"LastFailedEvaluationTimestamp,omitempty"`
-	// The timestamp when the last failed compliance evaluation of the rule started. Unit: milliseconds.
+	// The timestamp of the last failed invocation. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1614687022000
 	LastFailedInvocationTimestamp *int64 `json:"LastFailedInvocationTimestamp,omitempty" xml:"LastFailedInvocationTimestamp,omitempty"`
-	// The timestamp when the last successful compliance evaluation of the rule ended. Unit: milliseconds.
+	// The timestamp of the last successful evaluation. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1624932227486
 	LastSuccessfulEvaluationTimestamp *int64 `json:"LastSuccessfulEvaluationTimestamp,omitempty" xml:"LastSuccessfulEvaluationTimestamp,omitempty"`
-	// The timestamp when the last successful compliance evaluation of the rule started. Unit: milliseconds.
+	// The timestamp of the last successful invocation. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -912,21 +898,21 @@ type GetAggregateConfigRuleResponseBodyConfigRuleCreateBy struct {
 	//
 	// example:
 	//
-	// The name of the compliance package.
+	// OSS合规基线
 	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
-	// The ID of the account that was used to create the rule.
+	// The ID of the account that created the rule.
 	//
 	// example:
 	//
 	// 100931896542****
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The name of the account that was used to create the rule.
+	// The name of the rule creator.
 	//
 	// example:
 	//
 	// Alice
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// The type of the entity to which the rule belongs. The value is fixed to `AGGREGATOR`, which indicates an account group.
+	// The type of the rule creator. Only `AGGREGATOR` (account group) is supported.
 	//
 	// example:
 	//
@@ -1010,13 +996,13 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRuleCreateBy) Validate() error 
 }
 
 type GetAggregateConfigRuleResponseBodyConfigRuleExcludeTagsScope struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// key-2
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//
@@ -1055,7 +1041,7 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRuleExcludeTagsScope) Validate(
 }
 
 type GetAggregateConfigRuleResponseBodyConfigRuleManagedRule struct {
-	// The required input parameters of the managed rule.
+	// The details of the required input parameters for the managed rule.
 	//
 	// example:
 	//
@@ -1065,7 +1051,7 @@ type GetAggregateConfigRuleResponseBodyConfigRuleManagedRule struct {
 	//
 	// example:
 	//
-	// The description of the managed rule.
+	// ECS磁盘未因欠费或安全等原因而被锁定，视为“合规”。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The identifier of the managed rule.
 	//
@@ -1073,21 +1059,21 @@ type GetAggregateConfigRuleResponseBodyConfigRuleManagedRule struct {
 	//
 	// ram-user-mfa-check
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	// The tags of the managed rule.
+	// A list of labels for the managed rule.
 	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The name of the managed rule.
 	//
 	// example:
 	//
-	// ram-user-mfa-check
+	// RAM用户开启MFA
 	ManagedRuleName *string `json:"ManagedRuleName,omitempty" xml:"ManagedRuleName,omitempty"`
-	// The optional input parameters of the managed rule.
+	// The details of the optional input parameters for the managed rule.
 	//
 	// example:
 	//
 	// {}
 	OptionalInputParameterDetails map[string]interface{} `json:"OptionalInputParameterDetails,omitempty" xml:"OptionalInputParameterDetails,omitempty"`
-	// The details of the source of the managed rule.
+	// The details of the managed rule source.
 	SourceDetails []*GetAggregateConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails `json:"SourceDetails,omitempty" xml:"SourceDetails,omitempty" type:"Repeated"`
 }
 
@@ -1176,25 +1162,25 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRuleManagedRule) Validate() err
 }
 
 type GetAggregateConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails struct {
-	// The event source of the managed rule.
+	// The event source.
 	//
-	// >  Only events related to Cloud Config are supported. The value is fixed to aliyun.config.
+	// > Only Cloud Config events are supported: aliyun.config.
 	//
 	// example:
 	//
 	// aliyun.config
 	EventSource *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
-	// The intervals at which the managed rule is triggered. Valid values:
+	// The frequency at which the rule is executed.
 	//
-	// 	- One_Hour: 1 hour.
+	// - One_Hour: 1 hour.
 	//
-	// 	- Three_Hours: 3 hours.
+	// - Three_Hours: 3 hours.
 	//
-	// 	- Six_Hours: 6 hours.
+	// - Six_Hours: 6 hours.
 	//
-	// 	- Twelve_Hours: 12 hours
+	// - Twelve_Hours: 12 hours.
 	//
-	// 	- TwentyFour_Hours: 24 hours
+	// - TwentyFour_Hours: 24 hours.
 	//
 	// example:
 	//
@@ -1202,9 +1188,9 @@ type GetAggregateConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails struct
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
 	// The trigger type of the rule. Valid values:
 	//
-	// 	- ConfigurationItemChangeNotification: The managed rule is triggered by configuration changes.
+	// - ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
 	//
-	// 	- ScheduledNotification: The managed rule is periodically triggered.
+	// - ScheduledNotification: The rule is triggered periodically.
 	//
 	// example:
 	//
@@ -1254,25 +1240,25 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails) V
 type GetAggregateConfigRuleResponseBodyConfigRuleSource struct {
 	// The identifier of the rule.
 	//
-	// 	- If the rule was created based on a managed rule, the value of this parameter is the name of the managed rule.
+	// - If the rule is a managed rule, the value of this parameter is the identifier of the managed rule.
 	//
-	// 	- If the rule is a custom rule, the value of this parameter is the Alibaba Cloud Resource Name (ARN) of the relevant function in Function Compute.
+	// - If the rule is a custom rule, the value of this parameter is the Alibaba Cloud Resource Name (ARN) of the function.
 	//
 	// example:
 	//
 	// acs:fc:cn-hangzhou:100931896542****:services/ConfigService.LATEST/functions/specific-config
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	// The way in which the rule was created. Valid values:
+	// The owner of the rule. Valid values:
 	//
-	// 	- CUSTOM_FC: The rule is a custom rule.
+	// - CUSTOM_FC: a custom rule.
 	//
-	// 	- ALIYUN: The rule was created based on a managed rule of Alibaba Cloud.
+	// - ALIYUN: a managed rule.
 	//
 	// example:
 	//
 	// ALIYUN
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The details of the source of the rule.
+	// The details of the rule source.
 	SourceDetails []*GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceDetails `json:"SourceDetails,omitempty" xml:"SourceDetails,omitempty" type:"Repeated"`
 }
 
@@ -1325,25 +1311,25 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRuleSource) Validate() error {
 }
 
 type GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceDetails struct {
-	// The event source of the managed rule.
+	// The event source.
 	//
-	// >  Only events related to Cloud Config are supported. The value is fixed to aliyun.config.
+	// > Only Cloud Config events are supported: aliyun.config.
 	//
 	// example:
 	//
 	// aliyun.config
 	EventSource *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
-	// The intervals at which the managed rule is triggered. Valid values:
+	// The frequency at which the rule is executed. Valid values:
 	//
-	// 	- One_Hour: 1 hour.
+	// - One_Hour: 1 hour.
 	//
-	// 	- Three_Hours: 3 hours.
+	// - Three_Hours: 3 hours.
 	//
-	// 	- Six_Hours: 6 hours.
+	// - Six_Hours: 6 hours.
 	//
-	// 	- Twelve_Hours: 12 hours
+	// - Twelve_Hours: 12 hours.
 	//
-	// 	- TwentyFour_Hours: 24 hours
+	// - TwentyFour_Hours: 24 hours.
 	//
 	// example:
 	//
@@ -1351,9 +1337,9 @@ type GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceDetails struct {
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
 	// The trigger type of the rule. Valid values:
 	//
-	// 	- ConfigurationItemChangeNotification: The managed rule is triggered by configuration changes.
+	// - ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
 	//
-	// 	- ScheduledNotification: The managed rule is periodically triggered.
+	// - ScheduledNotification: The rule is triggered periodically.
 	//
 	// example:
 	//
@@ -1446,13 +1432,13 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRuleTags) Validate() error {
 }
 
 type GetAggregateConfigRuleResponseBodyConfigRuleTagsScope struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// key-1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

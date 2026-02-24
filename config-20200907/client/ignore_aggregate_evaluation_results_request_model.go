@@ -22,42 +22,12 @@ type iIgnoreAggregateEvaluationResultsRequest interface {
 }
 
 type IgnoreAggregateEvaluationResultsRequest struct {
-	// The ID of the account group.
-	//
-	// For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ca-5b6c626622af008f****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The ID of the rule.
-	//
-	// For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cr-7e72626622af0051****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The date from which the system automatically re-evaluates the ignored incompliant resources.
-	//
-	// >  If you leave this parameter empty, the system does not automatically re-evaluate the ignored incompliant resources. You must manually re-evaluate the ignored incompliant resources.
-	//
-	// example:
-	//
-	// 2022-06-01
-	IgnoreDate *string `json:"IgnoreDate,omitempty" xml:"IgnoreDate,omitempty"`
-	// The reason why you ignore the resource.
-	//
-	// example:
-	//
-	// The reason why you ignore the resource.
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The resources to be ignored.
-	//
+	IgnoreDate   *string `json:"IgnoreDate,omitempty" xml:"IgnoreDate,omitempty"`
+	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// This parameter is required.
 	Resources []*IgnoreAggregateEvaluationResultsRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
@@ -129,45 +99,13 @@ func (s *IgnoreAggregateEvaluationResultsRequest) Validate() error {
 }
 
 type IgnoreAggregateEvaluationResultsRequestResources struct {
-	// The ID of the region in which the resource resides.
-	//
-	// For more information about how to obtain the ID of a region, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the Alibaba Cloud account to which the resources belong.
-	//
-	// >  You must specify the ID of the current management account or a member account in the account group of the management account.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 120886317861****
 	ResourceAccountId *int64 `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
-	// The ID of the resource.
-	//
-	// For more information about how to query the ID of a resource, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// lb-hp3a3b4ztyfm2plgm****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource.
-	//
-	// For more information about how to query the type of a resource, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ACS::SLB::LoadBalancer
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 

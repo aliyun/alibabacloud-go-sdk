@@ -16,45 +16,49 @@ type iGetResourceTypePropertiesResponseBody interface {
 }
 
 type GetResourceTypePropertiesResponseBody struct {
+	// The property descriptions of the resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// [
 	//
-	//     {
+	//   {
 	//
-	//       "description": "The ID of the resource group to which the instance belongs.\\n",
+	//     "description": "The ID of the resource group to which the instance belongs.\\n",
 	//
-	//       "title": "ResourceGroupId",
+	//     "title": "ResourceGroupId",
 	//
-	//       "type": "String",
+	//     "type": "String",
 	//
-	//       "key": "ResourceGroupId",
+	//     "key": "ResourceGroupId",
 	//
-	//       "example": "rg-bp67acfmxazb4p****"
+	//     "example": "rg-bp67acfmxazb4p****"
 	//
-	//     },
+	//   },
 	//
-	//     {
+	//   {
 	//
-	//       "description": "The billing method of the instance. Valid values:\\n\\n	- PrePaid: subscription\\n	- PostPaid: pay-as-you-go\\n",
+	//     "description": "The billing method of the instance. Valid values:\\n\\n	- PrePaid: subscription\\n	- PostPaid: pay-as-you-go\\n",
 	//
-	//       "title": "InstanceChargeType",
+	//     "title": "InstanceChargeType",
 	//
-	//       "type": "String",
+	//     "type": "String",
 	//
-	//       "key": "InstanceChargeType",
+	//     "key": "InstanceChargeType",
 	//
-	//       "example": "PostPaid"
+	//     "example": "PostPaid"
 	//
-	//     }]
+	//   }
+	//
+	// ]
 	Configuration *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
-	// 0C2868BF-47EE-5441-B34B-17F080B10DC7
+	// 0C2868BF-47EE-5441-B34B-17F080B1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

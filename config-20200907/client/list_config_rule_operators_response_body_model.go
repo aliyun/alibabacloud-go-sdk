@@ -16,12 +16,13 @@ type iListConfigRuleOperatorsResponseBody interface {
 }
 
 type ListConfigRuleOperatorsResponseBody struct {
+	// A list of operators.
 	Operators []*ListConfigRuleOperatorsResponseBodyOperators `json:"Operators,omitempty" xml:"Operators,omitempty" type:"Repeated"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
-	// A68DD98C-DE65-46AC-B2D2-04A4A9AB5B99
+	// A68DD98C-DE65-46AC-B2D2-04A4A9AB****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -65,15 +66,80 @@ func (s *ListConfigRuleOperatorsResponseBody) Validate() error {
 }
 
 type ListConfigRuleOperatorsResponseBodyOperators struct {
+	// The data type that the operator applies to.
+	//
 	// example:
 	//
 	// String
-	DataType    *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The description of the operator, which can be used to explain why a resource is non-compliant.
+	//
+	// example:
+	//
+	// The current value must equal the target value (case insensitive)
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the operator.
+	//
 	// example:
 	//
 	// StringEquals
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The operator for the rule\\"s input parameter. The available operators vary based on the data type retrieved using SelectPath.
+	//
+	// - If the data type is String, valid values are:
+	//
+	//   - StringEquals: equals.
+	//
+	//   - NotStringEquals: does not equal.
+	//
+	//   - StringIn: is in.
+	//
+	//   - NotStringIn: is not in.
+	//
+	//   - StringContains: contains.
+	//
+	//   - NotStringContains: does not contain.
+	//
+	// - If the data type is Number, valid values are:
+	//
+	//   - Equals: equals.
+	//
+	//   - NotEquals: does not equal.
+	//
+	//   - Less: is less than.
+	//
+	//   - LessOrEquals: is less than or equal to.
+	//
+	//   - Greater: is greater than.
+	//
+	//   - GreaterOrEquals: is greater than or equal to.
+	//
+	// - If the data type is a Base64-encoded string, valid values are:
+	//
+	//   - Base64Contains: contains.
+	//
+	//   - NotBase64Contains: does not contain.
+	//
+	//   - Base64ContainsAll: contains all.
+	//
+	//   - Base64ExcludeAll: excludes all.
+	//
+	// - If the data type is Array, valid values are:
+	//
+	//   - Contains: contains.
+	//
+	//   - NotContains: does not contain.
+	//
+	//   - In: is in.
+	//
+	//   - NotIn: is not in.
+	//
+	//   - ContainsAll: contains all.
+	//
+	//   - ExcludeAll: excludes all.
+	//
+	//   - IsEmpty: is empty.
+	//
 	// example:
 	//
 	// StringEquals

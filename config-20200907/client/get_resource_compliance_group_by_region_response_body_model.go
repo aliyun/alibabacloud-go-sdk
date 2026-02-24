@@ -16,14 +16,8 @@ type iGetResourceComplianceGroupByRegionResponseBody interface {
 }
 
 type GetResourceComplianceGroupByRegionResponseBody struct {
-	// The queried evaluation results.
 	ComplianceResult *GetResourceComplianceGroupByRegionResponseBodyComplianceResult `json:"ComplianceResult,omitempty" xml:"ComplianceResult,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 0FDF8006-34A0-5334-8C79-48F64EAB34F1
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId        *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetResourceComplianceGroupByRegionResponseBody) String() string {
@@ -62,7 +56,6 @@ func (s *GetResourceComplianceGroupByRegionResponseBody) Validate() error {
 }
 
 type GetResourceComplianceGroupByRegionResponseBodyComplianceResult struct {
-	// The evaluation results grouped by region.
 	ComplianceResultList []*GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList `json:"ComplianceResultList,omitempty" xml:"ComplianceResultList,omitempty" type:"Repeated"`
 }
 
@@ -97,14 +90,8 @@ func (s *GetResourceComplianceGroupByRegionResponseBodyComplianceResult) Validat
 }
 
 type GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList struct {
-	// The queried evaluation results.
 	Compliances []*GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances `json:"Compliances,omitempty" xml:"Compliances,omitempty" type:"Repeated"`
-	// The region ID of the evaluated resource.
-	//
-	// example:
-	//
-	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string                                                                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList) String() string {
@@ -147,26 +134,8 @@ func (s *GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianc
 }
 
 type GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances struct {
-	// The evaluation result. Valid values:
-	//
-	// 	- COMPLIANT: The resources are evaluated as compliant.
-	//
-	// 	- NON_COMPLIANT: The resources are evaluated as non-compliant.
-	//
-	// 	- NOT_APPLICABLE: The rule does not apply to the resources.
-	//
-	// 	- INSUFFICIENT_DATA: No resource data is available.
-	//
-	// example:
-	//
-	// COMPLIANT
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	// The total number of evaluation results.
-	//
-	// example:
-	//
-	// 1
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count          *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
 func (s GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances) String() string {

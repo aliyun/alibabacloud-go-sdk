@@ -26,9 +26,9 @@ type GetAggregatorShrinkRequest struct {
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 	// Deprecated
 	//
-	// The tags of the resource.
+	// The tags of the resource. This parameter is deprecated and is not in use.
 	//
-	// You can add up to 20 tags to a resource.
+	// A maximum of 20 tags can be attached.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 

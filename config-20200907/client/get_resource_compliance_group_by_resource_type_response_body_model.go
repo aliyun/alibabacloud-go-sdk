@@ -16,14 +16,8 @@ type iGetResourceComplianceGroupByResourceTypeResponseBody interface {
 }
 
 type GetResourceComplianceGroupByResourceTypeResponseBody struct {
-	// The queried evaluation results.
 	ComplianceResult *GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResult `json:"ComplianceResult,omitempty" xml:"ComplianceResult,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 84610B68-2DD3-5AF0-B68D-E1FA8F051F7D
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId        *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetResourceComplianceGroupByResourceTypeResponseBody) String() string {
@@ -62,7 +56,6 @@ func (s *GetResourceComplianceGroupByResourceTypeResponseBody) Validate() error 
 }
 
 type GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResult struct {
-	// The evaluation results grouped by resource type.
 	ComplianceResultList []*GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList `json:"ComplianceResultList,omitempty" xml:"ComplianceResultList,omitempty" type:"Repeated"`
 }
 
@@ -97,14 +90,8 @@ func (s *GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResult) V
 }
 
 type GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList struct {
-	// The queried evaluation results.
-	Compliances []*GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances `json:"Compliances,omitempty" xml:"Compliances,omitempty" type:"Repeated"`
-	// The type of the evaluated resource.
-	//
-	// example:
-	//
-	// ACS::ECS::Instance
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Compliances  []*GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances `json:"Compliances,omitempty" xml:"Compliances,omitempty" type:"Repeated"`
+	ResourceType *string                                                                                                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList) String() string {
@@ -147,26 +134,8 @@ func (s *GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultCom
 }
 
 type GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances struct {
-	// The evaluation result. Valid values:
-	//
-	// 	- COMPLIANT: The resource is evaluated as compliant.
-	//
-	// 	- NON_COMPLIANT: The resource is evaluated as non-compliant.
-	//
-	// 	- NOT_APPLICABLE: The rule does not apply to the resource.
-	//
-	// 	- INSUFFICIENT_DATA: No data is available.
-	//
-	// example:
-	//
-	// COMPLIANT
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	// The total number of evaluation results.
-	//
-	// example:
-	//
-	// 1
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count          *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
 func (s GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances) String() string {

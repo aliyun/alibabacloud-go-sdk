@@ -62,125 +62,223 @@ type CreateAggregateCompliancePackRequest struct {
 	//
 	// ca-f632626622af0079****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
+	// A client token. It is used to ensure the idempotence of the request. Generate a value from your client to make sure that the value is unique among different requests. `ClientToken` supports only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// 1594295238-f9361358-5843-4294-8d30-b5183fac****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The name of the compliance package.
+	// The name of the compliance pack.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// test-compliance-pack-name
+	// 等保三级预检合规包
 	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
-	// The ID of the compliance package template from which you want to create a compliance package.
+	// The ID of the compliance pack template.
 	//
-	// For more information about how to obtain the ID of a compliance package template, see [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html).
+	// For more information about how to obtain the ID of a compliance pack template, see [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html).
 	//
 	// example:
 	//
 	// ct-5f26ff4e06a300c4****
 	CompliancePackTemplateId *string `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
-	// The rules in the compliance package.
+	// The rules in the compliance pack.
 	//
-	// >  You must configure this parameter or the `TemplateContent` parameter.
+	// > Specify either this parameter or `TemplateContent`.
 	ConfigRules []*CreateAggregateCompliancePackRequestConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
-	// Specifies whether to enable the rule together with the compliance package. Valid values:
+	// Indicates whether the rule is enabled for quick activation. Valid values:
 	//
-	// 	- true: The system enables the rule together with the compliance package.
+	// - true: The rule is enabled when you quickly activate the compliance pack.
 	//
-	// 	- false: The system does not enable the rule together with the compliance package.
+	// - false (default): The rule is not enabled.
 	//
 	// example:
 	//
 	// false
 	DefaultEnable *bool `json:"DefaultEnable,omitempty" xml:"DefaultEnable,omitempty"`
-	// The description of the compliance package.
+	// The description of the compliance pack.
 	//
 	// example:
 	//
-	// Test compliance pack descripaiton.
+	// 基于等保三级的部分要求，对阿里云上资源的合规性做检测。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The IDs of the regions excluded from the compliance evaluations performed by the compliance package. Separate multiple region IDs with commas (,).
+	// The compliance pack does not take effect for resources in the specified regions. The resources in these regions are not evaluated. Separate multiple region IDs with commas (,).
 	//
 	// example:
 	//
 	// cn-shanghai
 	ExcludeRegionIdsScope *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
-	// The IDs of the resource groups excluded from the compliance evaluations performed by the rule. Separate multiple resource group IDs with commas (,).
+	// The compliance pack does not take effect for resources in the specified resource groups. The resources in these resource groups are not evaluated. Separate multiple resource group IDs with commas (,).
 	//
 	// example:
 	//
 	// rg-bnczc6r7rml****
 	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
-	// The ID of the resource that you do not want to evaluate by using the compliance package. Separate multiple resource IDs with commas (,).
+	// The compliance pack does not take effect for the specified resources. The resources are not evaluated. Separate multiple resource IDs with commas (,).
 	//
 	// example:
 	//
 	// eip-8vbf3x310fn56ijfd****
 	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	// The tags that are excluded.
+	// The excluded tags.
 	ExcludeTagsScope []*CreateAggregateCompliancePackRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
-	// The ID of the region whose resources you want to evaluate by using the compliance package. Separate multiple region IDs with commas (,).
+	// The compliance pack takes effect only for resources in the specified regions. Separate multiple region IDs with commas (,).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	// The ID of the resource group whose resources you want to evaluate by using the compliance package. Separate multiple resource group IDs with commas (,).
+	// The compliance pack takes effect only for resources in the specified resource groups. Separate multiple resource group IDs with commas (,).
 	//
 	// example:
 	//
 	// rg-aekzc7r7rhx****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	// The IDs of the resources to which the rule applies. Separate multiple resource IDs with commas (,).
+	// The compliance pack takes effect only for the specified resources. Separate multiple resource IDs with commas (,).
 	//
 	// example:
 	//
 	// lb-5cmbowstbkss9ta03****
 	ResourceIdsScope *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
-	// The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
+	// The risk level of the compliance pack. Valid values:
 	//
-	// 	- 1: high
+	// - 1: High
 	//
-	// 	- 2 (default): medium
+	// - 2 (default): Medium
 	//
-	// 	- 3: low
+	// - 3: Low
 	//
 	// example:
 	//
-	// 1
+	// 2
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The tags of the resource.
 	//
-	// You can add up to 20 tags to a resource.
+	// You can add up to 20 tags.
 	Tag []*CreateAggregateCompliancePackRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The tag key of the resource that you want to evaluate by using the compliance package.
+	// The compliance pack takes effect only for resources that have the specified tag key.
 	//
 	// example:
 	//
 	// ECS
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	// The tag value of the resource that you want to evaluate by using the compliance package.
+	// The compliance pack takes effect only for resources that have the specified tag key-value pair.
 	//
-	// >  You must configure the TagValueScope parameter together with the TagKeyScope parameter.
+	// > TagValueScope must be used with TagKeyScope.
 	//
 	// example:
 	//
 	// test
 	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
-	// The tag scope.
+	// The effective tags.
 	TagsScope []*CreateAggregateCompliancePackRequestTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
-	// The information about the template that is used to create the compliance package. You can call the GetAggregateCompliancePack operation to view the details of an existing compliance package. You can also write a compliance package template. For more information, see [Write a compliance package template in a configuration file](https://help.aliyun.com/document_detail/2659733.html).
+	// The template information that is used to generate the compliance pack. You can view the template content in the details of an existing compliance pack or create a template. For more information, see [Create a configurable compliance pack template](https://help.aliyun.com/document_detail/2659733.html).
 	//
-	// >  You must configure this parameter or the `TemplateContent` parameter.
+	// > Specify either this parameter or `ConfigRules`.
 	//
 	// example:
 	//
-	// { "configRuleTemplates": [ { "configRuleName": "condition-rule-example", "scope": { "complianceResourceTypes": [ "ACS::ECS::Instance" ] }, "description": "", "source": { "owner": "CUSTOM_CONFIGURATION", "identifier": "acs-config-configuration", "sourceDetails": [ { "messageType": "ScheduledNotification", "maximumExecutionFrequency": "Twelve_Hours" }, { "messageType": "ConfigurationItemChangeNotification" } ], "conditions": "{\\\\"ComplianceConditions\\\\":\\\\"{\\\\\\\\\\"operator\\\\\\\\\\":\\\\\\\\\\"and\\\\\\\\\\",\\\\\\\\\\"children\\\\\\\\\\":[{\\\\\\\\\\"operator\\\\\\\\\\":\\\\\\\\\\"GreaterOrEquals\\\\\\\\\\",\\\\\\\\\\"featurePath\\\\\\\\\\":\\\\\\\\\\"$.Cpu\\\\\\\\\\",\\\\\\\\\\"featureSource\\\\\\\\\\":\\\\\\\\\\"CONFIGURATION\\\\\\\\\\",\\\\\\\\\\"desired\\\\\\\\\\":\\\\\\\\\\"2\\\\\\\\\\"}]}\\\\"}" }, "inputParameters": {} }, { "configRuleName": "oss-bucket-referer-limit", "scope": { "complianceResourceTypes": [ "ACS::OSS::Bucket" ] }, "description": "If the hotlink protection feature is enabled for the Object Storage Service (OSS) bucket and the Referer is added to a specific whitelist, the evaluation result is compliant.", "source": { "owner": "ALIYUN", "identifier": "oss-bucket-referer-limit", "sourceDetails": [ { "messageType": "ConfigurationItemChangeNotification" } ] }, "inputParameters": { "allowEmptyReferer": "true", "allowReferers": "http://www.aliyun.com" } } ] }
+	// {
+	//
+	//     "configRuleTemplates": [
+	//
+	//         {
+	//
+	//             "configRuleName": "自定义条件规则示例",
+	//
+	//             "scope": {
+	//
+	//                 "complianceResourceTypes": [
+	//
+	//                     "ACS::ECS::Instance"
+	//
+	//                 ]
+	//
+	//             },
+	//
+	//             "description": "",
+	//
+	//             "source": {
+	//
+	//                 "owner": "CUSTOM_CONFIGURATION",
+	//
+	//                 "identifier": "acs-config-configuration",
+	//
+	//                 "sourceDetails": [
+	//
+	//                     {
+	//
+	//                         "messageType": "ScheduledNotification",
+	//
+	//                         "maximumExecutionFrequency": "Twelve_Hours"
+	//
+	//                     },
+	//
+	//                     {
+	//
+	//                         "messageType": "ConfigurationItemChangeNotification"
+	//
+	//                     }
+	//
+	//                 ],
+	//
+	//                 "conditions": "{\\"ComplianceConditions\\":\\"{\\\\\\"operator\\\\\\":\\\\\\"and\\\\\\",\\\\\\"children\\\\\\":[{\\\\\\"operator\\\\\\":\\\\\\"GreaterOrEquals\\\\\\",\\\\\\"featurePath\\\\\\":\\\\\\"$.Cpu\\\\\\",\\\\\\"featureSource\\\\\\":\\\\\\"CONFIGURATION\\\\\\",\\\\\\"desired\\\\\\":\\\\\\"2\\\\\\"}]}\\"}"
+	//
+	//             },
+	//
+	//             "inputParameters": {}
+	//
+	//         },
+	//
+	//         {
+	//
+	//             "configRuleName": "OSS存储空间Referer在指定的防盗链白名单中",
+	//
+	//             "scope": {
+	//
+	//                 "complianceResourceTypes": [
+	//
+	//                     "ACS::OSS::Bucket"
+	//
+	//                 ]
+	//
+	//             },
+	//
+	//             "description": "OSS存储空间开启防盗链并且Referer在指定白名单中，视为“合规”。",
+	//
+	//             "source": {
+	//
+	//                 "owner": "ALIYUN",
+	//
+	//                 "identifier": "oss-bucket-referer-limit",
+	//
+	//                 "sourceDetails": [
+	//
+	//                     {
+	//
+	//                         "messageType": "ConfigurationItemChangeNotification"
+	//
+	//                     }
+	//
+	//                 ]
+	//
+	//             },
+	//
+	//             "inputParameters": {
+	//
+	//                 "allowEmptyReferer": "true",
+	//
+	//                 "allowReferers": "http://www.aliyun.com"
+	//
+	//             }
+	//
+	//         }
+	//
+	//     ]
+	//
+	// }
 	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
 }
 
@@ -413,43 +511,43 @@ func (s *CreateAggregateCompliancePackRequest) Validate() error {
 }
 
 type CreateAggregateCompliancePackRequestConfigRules struct {
-	// The rule ID. If you configure this parameter, Cloud Config adds the rule that has the specified ID to the compliance package.
+	// The rule ID. CloudConfig adds an existing rule to the compliance pack.
 	//
-	// You need to only configure the `ManagedRuleIdentifier` or `ConfigRuleId` parameter. If you configure both parameters, the value of the `ConfigRuleId` parameter takes precedence. For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html).
+	// Specify either `ManagedRuleIdentifier` or `ConfigRuleId`. If both parameters are specified, `ConfigRuleId` is used.
 	//
 	// example:
 	//
 	// cr-e918626622af000f****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The rule name.
+	// The name of the rule.
 	//
 	// example:
 	//
-	// eip-bandwidth-limit
+	// 弹性IP实例带宽满足最低要求
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	// The input parameters of the rule.
+	// The parameters of the rule.
 	ConfigRuleParameters []*CreateAggregateCompliancePackRequestConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
-	// The rule description.
+	// The description of the rule.
 	//
 	// example:
 	//
-	// Test rule description.
+	// 弹性公网已绑定到ECS或者NAT实例，非闲置状态，视为“合规”。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The identifier of the managed rule. Cloud Config automatically creates a rule based on the identifier of the managed rule and adds the rule to the current compliance package.
+	// The identifier of the rule template. CloudConfig automatically creates a rule based on the rule template identifier and adds the rule to the compliance pack.
 	//
-	// You need to only configure the `ManagedRuleIdentifier` or `ConfigRuleId` parameter. If you configure both parameters, the value of the `ConfigRuleId` parameter takes precedence. For more information about how to obtain the identifier of a managed rule, see [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html).
+	// Specify either `ManagedRuleIdentifier` or `ConfigRuleId`. If both parameters are specified, `ConfigRuleId` is used.
 	//
 	// example:
 	//
 	// eip-bandwidth-limit
 	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
-	// The risk level of the resources that do not comply with the rule. Valid values:
+	// The risk level of the rule. Valid values:
 	//
-	// 	- 1: high
+	// - 1: High
 	//
-	// 	- 2: medium
+	// - 2: Medium
 	//
-	// 	- 3: low
+	// - 3: Low
 	//
 	// example:
 	//
@@ -533,17 +631,17 @@ func (s *CreateAggregateCompliancePackRequestConfigRules) Validate() error {
 }
 
 type CreateAggregateCompliancePackRequestConfigRulesConfigRuleParameters struct {
-	// The name of the input parameter.
+	// The name of the rule parameter.
 	//
-	// You must configure the `ParameterName` and `ParameterValue` parameters or neither of them. If the managed rule has an input parameter but no default value exists, you must configure this parameter. For more information about how to obtain the name of an input parameter for a managed rule, see [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html).
+	// Specify both `ParameterName` and `ParameterValue`, or leave both empty. If a rule template has a parameter that does not have a default value, the parameter is required.
 	//
 	// example:
 	//
 	// bandwidth
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The value of the input parameter.
+	// The value of the rule parameter.
 	//
-	// You must configure the `ParameterName` and `ParameterValue` parameters or neither of them. If the managed rule has an input parameter but no default value exists, you must configure this parameter. For more information about how to obtain the value of an input parameter for a managed rule, see [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html).
+	// Specify both `ParameterName` and `ParameterValue`, or leave both empty. If a rule template has a parameter that does not have a default value, the parameter is required.
 	//
 	// example:
 	//
@@ -582,13 +680,13 @@ func (s *CreateAggregateCompliancePackRequestConfigRulesConfigRuleParameters) Va
 }
 
 type CreateAggregateCompliancePackRequestExcludeTagsScope struct {
-	// The tag key.
+	// The tag key of the resource.
 	//
 	// example:
 	//
 	// 4
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
+	// The tag value of the resource.
 	//
 	// example:
 	//
@@ -627,17 +725,17 @@ func (s *CreateAggregateCompliancePackRequestExcludeTagsScope) Validate() error 
 }
 
 type CreateAggregateCompliancePackRequestTag struct {
-	// The key of the tag that is added to the resource.
+	// The tag key of the resource.
 	//
-	// You can add up to 20 tag keys to a resource.
+	// You can add up to 20 tag keys.
 	//
 	// example:
 	//
 	// key-1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag that is added to the resource.
+	// The tag value of the resource.
 	//
-	// You can add up to 20 tag values to a resource.
+	// You can add up to 20 tag values.
 	//
 	// example:
 	//
@@ -676,13 +774,13 @@ func (s *CreateAggregateCompliancePackRequestTag) Validate() error {
 }
 
 type CreateAggregateCompliancePackRequestTagsScope struct {
-	// The tag key.
+	// The tag key of the resource.
 	//
 	// example:
 	//
 	// tagKey1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
+	// The tag value of the resource.
 	//
 	// example:
 	//

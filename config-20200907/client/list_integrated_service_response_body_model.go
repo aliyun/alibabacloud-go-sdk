@@ -16,7 +16,7 @@ type iListIntegratedServiceResponseBody interface {
 }
 
 type ListIntegratedServiceResponseBody struct {
-	// The information about the cloud service that can be integrated.
+	// The information about the integrated services.
 	Data []*ListIntegratedServiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,47 +66,47 @@ func (s *ListIntegratedServiceResponseBody) Validate() error {
 }
 
 type ListIntegratedServiceResponseBodyData struct {
-	// The type of the event that is integrated across accounts. Valid values:
+	// The event type for cross-account integration. Supported event types:
 	//
-	// 	- NonCompliantNotification: non-compliance event
+	// - NonCompliantNotification: non-compliance events.
 	//
 	// example:
 	//
 	// NonCompliantNotification
 	AggregatorDeliveryDataType *string `json:"AggregatorDeliveryDataType,omitempty" xml:"AggregatorDeliveryDataType,omitempty"`
-	// The types of the integrated events. Separate multiple event types with commas (,). Valid values:
+	// The event types for the integration. Separate multiple types with commas (,). Supported event types:
 	//
-	// 	- ConfigurationItemChangeNotification: resource change event
+	// - ConfigurationItemChangeNotification: resource change events.
 	//
-	// 	- NonCompliantNotification: non-compliance event
+	// - NonCompliantNotification: non-compliance events.
 	//
 	// example:
 	//
 	// NonCompliantNotification
 	IntegratedTypes *string `json:"IntegratedTypes,omitempty" xml:"IntegratedTypes,omitempty"`
-	// The identifier of the cloud service. Valid values:
+	// The identifier of the integrable Alibaba Cloud service. Valid values:
 	//
-	// 	- eventbridge: EventBridge
+	// - eventbridge: EventBridge.
 	//
-	// 	- cms: CloudMonitor
+	// - cms: Cloud Monitor.
 	//
-	// 	- bpstudio: Cloud Architect Design Tools
+	// - bpstudio: Cloud Architect Design Tools.
 	//
 	// example:
 	//
 	// cms
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// The name of the cloud service.
+	// The name of the integrated service.
 	//
 	// example:
 	//
-	// cms
+	// 云监控
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The integration status of the cloud service. Valid values:
+	// The integration status of the Alibaba Cloud service. Valid values:
 	//
-	// 	- true
+	// - true: The service is integrated.
 	//
-	// 	- false
+	// - false: The service is not integrated.
 	//
 	// example:
 	//

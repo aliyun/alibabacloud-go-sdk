@@ -16,19 +16,7 @@ type iGenerateConfigRulesReportRequest interface {
 }
 
 type GenerateConfigRulesReportRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-	//
-	// example:
-	//
-	// AAAAAdDWBF2****
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the rule. Separate multiple rule IDs with commas (,).
-	//
-	// For more information about how to query the ID of a rule, see [ListConfigRules](https://help.aliyun.com/document_detail/169607.html).
-	//
-	// example:
-	//
-	// cr-25d86457e0d900b5****
+	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
 }
 

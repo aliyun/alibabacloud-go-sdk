@@ -16,10 +16,14 @@ type iDeleteReportTemplateResponseBody interface {
 }
 
 type DeleteReportTemplateResponseBody struct {
+	// The ID of the report template.
+	//
 	// example:
 	//
 	// crt-xxx
 	ReportTemplateId *string `json:"ReportTemplateId,omitempty" xml:"ReportTemplateId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// DE9FFFE5-FCAD-4B24-9546-BF49273C562B

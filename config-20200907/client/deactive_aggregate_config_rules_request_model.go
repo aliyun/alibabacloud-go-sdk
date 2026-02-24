@@ -18,32 +18,10 @@ type iDeactiveAggregateConfigRulesRequest interface {
 }
 
 type DeactiveAggregateConfigRulesRequest struct {
-	// The ID of the account group.
-	//
-	// For more information about how to obtain the ID of the account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ca-04b3fd170e340007****
-	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The ID of the compliance package.
-	//
-	// For more information about how to obtain the ID of a compliance package, see [ListAggregateCompliancePacks](https://help.aliyun.com/document_detail/262059.html).
-	//
-	// example:
-	//
-	// cp-fe416457e0d90022****
+	AggregatorId     *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	// The rule ID. Separate multiple rule IDs with commas (,).
-	//
-	// For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html).
-	//
-	// example:
-	//
-	// cr-5772ba41209e007b****
-	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
+	ConfigRuleIds    *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
 }
 
 func (s DeactiveAggregateConfigRulesRequest) String() string {

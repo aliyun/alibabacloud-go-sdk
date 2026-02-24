@@ -18,26 +18,10 @@ type iRevertAggregateEvaluationResultsShrinkRequest interface {
 }
 
 type RevertAggregateEvaluationResultsShrinkRequest struct {
-	// The ID of the account group.
-	//
-	// For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ca-5b6c626622af008f****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The ID of the rule in the account group.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cr-7e72626622af0051****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The resources that you want to re-evaluate.
-	//
 	// This parameter is required.
 	ResourcesShrink *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 }

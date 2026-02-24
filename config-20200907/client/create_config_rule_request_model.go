@@ -11,6 +11,8 @@ type iCreateConfigRuleRequest interface {
 	GoString() string
 	SetClientToken(v string) *CreateConfigRuleRequest
 	GetClientToken() *string
+	SetConditions(v string) *CreateConfigRuleRequest
+	GetConditions() *string
 	SetConfigRuleName(v string) *CreateConfigRuleRequest
 	GetConfigRuleName() *string
 	SetConfigRuleTriggerTypes(v string) *CreateConfigRuleRequest
@@ -60,27 +62,31 @@ type iCreateConfigRuleRequest interface {
 }
 
 type CreateConfigRuleRequest struct {
-	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
+	// A client token. It is used to ensure the idempotence of the request. You can use the client to generate a token, but you must make sure that the token is unique among different requests. The `ClientToken` parameter can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// 1594295238-f9361358-5843-4294-8d30-b5183fac****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// {"ComplianceConditions":"{\"operator\":\"and\",\"children\":[{\"operator\":\"StringEquals\",\"featurePath\":\"$.Status\",\"desired\":\"1\",\"featureSource\":\"CONFIGURATION\"}]}"}
+	Conditions *string `json:"Conditions,omitempty" xml:"Conditions,omitempty"`
 	// The name of the rule.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// required-tags
+	// 存在所有指定标签
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	// The trigger type of the rule. Valid values:
+	// The trigger that invokes the rule. Valid values:
 	//
-	// 	- ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
+	// - ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
 	//
-	// 	- ScheduledNotification: The rule is periodically triggered.
+	// - ScheduledNotification: The rule is triggered on a regular basis.
 	//
-	// >  If a rule supports the preceding trigger types, separate the types with a comma (,).
+	// > If a rule has multiple triggers, separate them with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -92,83 +98,87 @@ type CreateConfigRuleRequest struct {
 	//
 	// example:
 	//
-	// example-description
+	// 最多可以定义6组标签。如果资源同时具有指定的所有标签，则视为“合规”。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// ExcludeRegionIdsScope
+	// The rule does not apply to resources in the specified regions. The compliance of resources in these regions is not evaluated. Separate multiple region IDs with commas (,).
 	//
 	// example:
 	//
 	// cn-shanghai
 	ExcludeRegionIdsScope *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
-	// ExcludeResourceGroupIdsScope
+	// The rule does not apply to resources in the specified resource groups. The compliance of resources in these resource groups is not evaluated. Separate multiple resource group IDs with commas (,).
 	//
 	// example:
 	//
 	// rg-bnczc6r7rml****
 	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
-	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
+	// The rule does not apply to the specified resources. The compliance of these resources is not evaluated. Separate multiple resource IDs with commas (,).
 	//
-	// >  This parameter applies only to managed rules.
+	// > This parameter applies only to rule templates.
 	//
 	// example:
 	//
 	// lb-t4nbowvtbkss7t326****
 	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	// ExcludeTagsScope
+	// The scope of the tags to exclude.
 	ExcludeTagsScope []*CreateConfigRuleRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
-	// Optional field, only used in conjunction with the 24-hour cycle execution to set the trigger time.
+	// Extended content. This parameter is used only to specify the trigger time for a 24-hour evaluation cycle.
 	//
 	// example:
 	//
 	// {"fixedHour":"13"}
 	ExtendContent *string `json:"ExtendContent,omitempty" xml:"ExtendContent,omitempty"`
-	// The input parameter of the rule.
+	// The input parameters of the rule.
+	//
+	// You can obtain the input parameters of a rule by calling the [GetManagedRule](https://help.aliyun.com/document_detail/606993.html) operation. View the `CompulsoryInputParameterDetails` and `OptionalInputParameterDetails` parameters to learn about the required and optional parameters.
+	//
+	// The format of the input parameters is `{"Parameter 1 Name":"Parameter 1 Value","Parameter 2 Name":"Parameter 2 Value"}`.
 	//
 	// example:
 	//
-	// {"tag1Key":"ECS","tag1Value":"test"}
+	// {"key1":"value1","key2":"value2"}
 	InputParameters map[string]interface{} `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
-	// The intervals at which the rule is triggered. Valid values:
+	// The frequency at which the rule is executed. Valid values:
 	//
-	// 	- One_Hour: 1 hour.
+	// - One_Hour: 1 hour.
 	//
-	// 	- Three_Hours: 3 hours.
+	// - Three_Hours: 3 hours.
 	//
-	// 	- Six_Hours: 6 hours.
+	// - Six_Hours: 6 hours.
 	//
-	// 	- Twelve_Hours: 12 hours.
+	// - Twelve_Hours: 12 hours.
 	//
-	// 	- TwentyFour_Hours (default): 24 hours.
+	// - TwentyFour_Hours (default): 24 hours.
 	//
-	// >  This parameter is required if the ConfigRuleTriggerTypes parameter is set to ScheduledNotification.
+	// > This parameter is required if you set ConfigRuleTriggerTypes to ScheduledNotification.
 	//
 	// example:
 	//
 	// One_Hour
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
-	// The ID of the region to which the rule applies. Separate multiple region IDs with commas (,).
+	// The rule applies only to resources in the specified regions. Separate multiple region IDs with commas (,).
 	//
-	// >  This parameter applies only to managed rules.
+	// > This parameter applies only to rule templates.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	// The ID of the resource group to which the rule applies. Separate multiple resource group IDs with commas (,).
+	// The rule applies only to resources in the specified resource groups. Separate multiple resource group IDs with commas (,).
 	//
-	// >  This parameter applies only to managed rules.
+	// > This parameter applies only to rule templates.
 	//
 	// example:
 	//
 	// rg-aekzc7r7rhx****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	// ResourceIdsScope
+	// The rule applies to the specified resources. Separate multiple resource IDs with commas (,).
 	//
 	// example:
 	//
 	// lb-5cmbowstbkss9ta03****
 	ResourceIdsScope *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
-	// The names of the resource to which the rule applies.
+	// The rule applies only to resources that have the specified names.
 	//
 	// if can be null:
 	// true
@@ -177,7 +187,7 @@ type CreateConfigRuleRequest struct {
 	//
 	// i-xxx
 	ResourceNameScope *string `json:"ResourceNameScope,omitempty" xml:"ResourceNameScope,omitempty"`
-	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
+	// The resource types to be evaluated by the rule. Separate multiple resource types with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -185,13 +195,13 @@ type CreateConfigRuleRequest struct {
 	//
 	// ACS::ECS::Instance
 	ResourceTypesScope []*string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty" type:"Repeated"`
-	// The risk level of the resources that do not comply with the rule. Valid values:
+	// The risk level of the rule. Valid values:
 	//
-	// 	- 1: high.
+	// - 1: high.
 	//
-	// 	- 2: medium.
+	// - 2: medium.
 	//
-	// 	- 3: low.
+	// - 3: low.
 	//
 	// This parameter is required.
 	//
@@ -199,13 +209,17 @@ type CreateConfigRuleRequest struct {
 	//
 	// 1
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The ID of the rule.
+	// The identifier of the rule.
 	//
-	// 	- If you set the SourceOwner parameter to ALIYUN, set this parameter to the name of the managed rule.
+	// - If you set `SourceOwner` to `ALIYUN`, specify the identifier of the rule template. Example: `required-tags`.
 	//
-	// 	- If you set the SourceOwner parameter to CUSTOM_FC, set this parameter to the Alibaba Cloud Resource Name (ARN) of the relevant function in Function Compute.
+	//   > To query the identifier of a rule template, see [List of rule templates](https://help.aliyun.com/document_detail/127404.html).
 	//
-	// For more information about how to query the name of a managed rule, see [Managed rules](https://help.aliyun.com/document_detail/127404.html).
+	// - If you set `SourceOwner` to `CUSTOM_FC`, specify the Alibaba Cloud Resource Name (ARN) of the function.
+	//
+	//   The ARN must be in the format of `acs:fc:{Region}:{AccountID}:services/{ServiceName}.LATEST/functions/{FunctionName}`. Example: `acs:fc:cn-hangzhou:120886317861****:services/service-test.LATEST/functions/config-test`.
+	//
+	//   > To obtain the ARN of a function, see [ListFunctions](https://help.aliyun.com/document_detail/415752.html).
 	//
 	// This parameter is required.
 	//
@@ -213,11 +227,11 @@ type CreateConfigRuleRequest struct {
 	//
 	// required-tags
 	SourceIdentifier *string `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
-	// The type of the rule Valid values:
+	// The type of the rule to create. Valid values:
 	//
-	// 	- ALIYUN: managed rule.
+	// - ALIYUN: rule template.
 	//
-	// 	- CUSTOM_FC: custom rule.
+	// - CUSTOM_FC: custom rule.
 	//
 	// This parameter is required.
 	//
@@ -225,17 +239,17 @@ type CreateConfigRuleRequest struct {
 	//
 	// ALIYUN
 	SourceOwner *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
-	// rule attached tags
+	// The tags of the rule to be created.
 	Tag []*CreateConfigRuleRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The logical relationship when parameter `TagsScope` takes multiple values, for example: When the parameter `TagsScope` is `"TagsScope.1.TagKey":"a", "TagsScope.1.TagValue":"a", "TagsScope.2.TagKey":"b", "TagsScope.2.TagValue":"b"`, if this parameter is set to` AND`, it means that the rule only applies to resources bound with both tags `a:a` and `b:b`. If not specified, the default logic is `OR`.
+	// The logical operator that applies if you specify multiple tags for the `TagsScope` parameter. For example, if you set `TagsScope` to `"TagsScope.1.TagKey":"a","TagsScope.1.TagValue":"a","TagsScope.2.TagKey":"b","TagsScope.2.TagValue":"b"` and set this parameter to `AND`, the rule applies only to resources that have both the `a:a` and `b:b` tags. If you do not specify this parameter, the default value `OR` is used.
 	//
-	// It can also be used for the deprecated field `TagKeyScope` (not recommended), for example: When the parameter `TagKeyScope` has a value of `ECS`,`OSS`, if this parameter is set to `AND`, it means that the rule only applies to resources bound with both labels `ECS` and `OSS`.
+	// This parameter also works with the deprecated `TagKeyScope` parameter. For example, if you set `TagKeyScope` to `ECS,OSS` and set this parameter to `AND`, the rule applies only to resources that have both the `ECS` and `OSS` tags.
 	//
-	// Values:
+	// Valid values:
 	//
-	//  - AND: And.
+	// - AND: The AND logic applies.
 	//
-	//  - OR: Or.
+	// - OR: The OR logic applies.
 	//
 	// example:
 	//
@@ -243,9 +257,11 @@ type CreateConfigRuleRequest struct {
 	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
 	// Deprecated
 	//
-	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
+	// This parameter is deprecated. Use the `TagsScope` parameter instead.
 	//
-	// >  This parameter applies only to managed rules. You must specify both `TagKeyScope` and `TagValueScope`.
+	// The rule applies only to resources that have the specified tag key.
+	//
+	// > This parameter applies only to managed rules. You must set both `TagKeyScope` and `TagValueScope`.
 	//
 	// example:
 	//
@@ -253,15 +269,17 @@ type CreateConfigRuleRequest struct {
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
 	// Deprecated
 	//
-	// The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
+	// This parameter is deprecated. Use the `TagsScope` parameter instead.
 	//
-	// >  This parameter applies only to managed rules. You must specify both `TagKeyScope` and `TagValueScope`.
+	// The rule applies only to resources that have the specified tag value.
+	//
+	// > This parameter applies only to rule templates. You must set both `TagKeyScope` and `TagValueScope`.
 	//
 	// example:
 	//
 	// test
 	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
-	// TagsScope
+	// The scope of the tags.
 	TagsScope []*CreateConfigRuleRequestTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 }
 
@@ -275,6 +293,10 @@ func (s CreateConfigRuleRequest) GoString() string {
 
 func (s *CreateConfigRuleRequest) GetClientToken() *string {
 	return s.ClientToken
+}
+
+func (s *CreateConfigRuleRequest) GetConditions() *string {
+	return s.Conditions
 }
 
 func (s *CreateConfigRuleRequest) GetConfigRuleName() *string {
@@ -371,6 +393,11 @@ func (s *CreateConfigRuleRequest) GetTagsScope() []*CreateConfigRuleRequestTagsS
 
 func (s *CreateConfigRuleRequest) SetClientToken(v string) *CreateConfigRuleRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateConfigRuleRequest) SetConditions(v string) *CreateConfigRuleRequest {
+	s.Conditions = &v
 	return s
 }
 
@@ -521,13 +548,13 @@ func (s *CreateConfigRuleRequest) Validate() error {
 }
 
 type CreateConfigRuleRequestExcludeTagsScope struct {
-	// TagKey
+	// The tag key.
 	//
 	// example:
 	//
 	// key-2
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// TagValue
+	// The tag value.
 	//
 	// example:
 	//
@@ -566,19 +593,17 @@ func (s *CreateConfigRuleRequestExcludeTagsScope) Validate() error {
 }
 
 type CreateConfigRuleRequestTag struct {
-	// The tag keys.
+	// The tag key of the resource.
 	//
-	// The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length. The tag keys cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
-	//
-	// You can specify at most 20 tag keys in each call.
+	// You can attach up to 20 tag keys.
 	//
 	// example:
 	//
 	// key-1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource.
 	//
-	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
+	// You can attach up to 20 tag values.
 	//
 	// example:
 	//
@@ -617,13 +642,13 @@ func (s *CreateConfigRuleRequestTag) Validate() error {
 }
 
 type CreateConfigRuleRequestTagsScope struct {
-	// TagKey
+	// The tag key.
 	//
 	// example:
 	//
 	// key-1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// TagValue
+	// The tag value.
 	//
 	// example:
 	//

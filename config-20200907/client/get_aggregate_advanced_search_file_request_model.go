@@ -14,15 +14,7 @@ type iGetAggregateAdvancedSearchFileRequest interface {
 }
 
 type GetAggregateAdvancedSearchFileRequest struct {
-	// The ID of the account group.
-	//
-	// For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ca-4b1b626622af000c****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 }
 

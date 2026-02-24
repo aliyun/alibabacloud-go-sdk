@@ -16,7 +16,7 @@ type iCreateAggregatorResponseBody interface {
 }
 
 type CreateAggregatorResponseBody struct {
-	// The account group ID.
+	// The ID of the account group.
 	//
 	// example:
 	//

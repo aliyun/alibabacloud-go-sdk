@@ -22,7 +22,7 @@ type EvaluatePreConfigRulesResponseBody struct {
   // 
   // 129ECF1C-7897-1131-BD0F-4B588AC05400
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // The details of the compliance evaluation result.
+  // The array that contains the compliance evaluation results.
   ResourceEvaluations []*EvaluatePreConfigRulesResponseBodyResourceEvaluations `json:"ResourceEvaluations,omitempty" xml:"ResourceEvaluations,omitempty" type:"Repeated"`
 }
 
@@ -68,7 +68,7 @@ func (s *EvaluatePreConfigRulesResponseBody) Validate() error {
 type EvaluatePreConfigRulesResponseBodyResourceEvaluations struct {
   // The logical ID of the resource.
   // 
-  // >  If the ResourceLogicalId request parameter is left empty, the value of the ResourceLogicalId response parameter is generated based on the value of the `ResourceProperties` parameter.
+  // > If the request parameter is empty, it is automatically generated based on the Base64 value of `ResourceProperties`.
   // 
   // example:
   // 
@@ -141,23 +141,23 @@ type EvaluatePreConfigRulesResponseBodyResourceEvaluationsRules struct {
   Annotation *string `json:"Annotation,omitempty" xml:"Annotation,omitempty"`
   // The compliance type of the resource that was evaluated by using the evaluation rule. Valid values:
   // 
-  // 	- COMPLIANT: The resource was evaluated as compliant.
+  // - COMPLIANT: The resource is evaluated as compliant.
   // 
-  // 	- NON_COMPLIANT: The resource was evaluated as incompliant.
+  // - NON_COMPLIANT: The resource is evaluated as non-compliant.
   // 
-  // 	- NOT_APPLICABLE: The evaluation rule does not apply to the resource.
+  // - NOT_APPLICABLE: The rule does not apply to the resource.
   // 
   // example:
   // 
   // NON_COMPLIANT
   ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-  // The URL of the topic that describes how the managed rule remediates the incompliant configurations.
+  // The URL of the topic that describes how the managed rule remediates the non-compliant configurations.
   // 
   // example:
   // 
   // https://example.aliyundoc.com
   HelpUrl *string `json:"HelpUrl,omitempty" xml:"HelpUrl,omitempty"`
-  // The identifier of the evaluation rule.
+  // The identifier of the rule.
   // 
   // example:
   // 

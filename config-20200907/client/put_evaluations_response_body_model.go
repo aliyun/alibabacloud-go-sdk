@@ -16,22 +16,8 @@ type iPutEvaluationsResponseBody interface {
 }
 
 type PutEvaluationsResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// EDB324E2-A202-5FE4-A9BC-31E2C34F78A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the evaluation results of the custom rule are submitted. Valid values:
-	//
-	// 	- true: The evaluation results are submitted.
-	//
-	// 	- false: The evaluation results fail to be submitted.
-	//
-	// example:
-	//
-	// true
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s PutEvaluationsResponseBody) String() string {

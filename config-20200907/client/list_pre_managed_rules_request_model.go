@@ -18,9 +18,9 @@ type iListPreManagedRulesRequest interface {
 }
 
 type ListPreManagedRulesRequest struct {
-	// The number of the page to return.
+	// The page number.
 	//
-	// Pages start from page 1. Default value: 1.
+	// The value starts from 1. The default value is 1.
 	//
 	// example:
 	//
@@ -28,13 +28,13 @@ type ListPreManagedRulesRequest struct {
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
 	//
-	// Default value: 10.
+	// The default value is 10.
 	//
 	// example:
 	//
 	// 1
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the resource.
+	// A list of resource types.
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
 }
 

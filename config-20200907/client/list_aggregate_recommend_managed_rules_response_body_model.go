@@ -16,12 +16,13 @@ type iListAggregateRecommendManagedRulesResponseBody interface {
 }
 
 type ListAggregateRecommendManagedRulesResponseBody struct {
+	// The list of rules.
 	RecommendedManagedRules *ListAggregateRecommendManagedRulesResponseBodyRecommendedManagedRules `json:"RecommendedManagedRules,omitempty" xml:"RecommendedManagedRules,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
-	// 6CE4ABA1-9A57-41A9-8EA9-E8B17D4671CD
+	// 6CE4ABA1-9A57-41A9-8EA9-E8B17D46****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -61,18 +62,25 @@ func (s *ListAggregateRecommendManagedRulesResponseBody) Validate() error {
 }
 
 type ListAggregateRecommendManagedRulesResponseBodyRecommendedManagedRules struct {
+	// The maximum number of entries returned per page.
+	//
 	// example:
 	//
-	// 10
+	// 200
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// If the return results are truncated, you can use NextToken to initiate another request to retrieve the remaining results.
+	//
 	// example:
 	//
-	// zXZXbg4Mra0kOrhpwl21Lw==
-	NextToken                  *string                                                                                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// zXZXbg4Mra0kOrhpwl21****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The list of managed rules.
 	RecommendedManagedRuleList []*ListAggregateRecommendManagedRulesResponseBodyRecommendedManagedRulesRecommendedManagedRuleList `json:"RecommendedManagedRuleList,omitempty" xml:"RecommendedManagedRuleList,omitempty" type:"Repeated"`
+	// The total number of rule templates.
+	//
 	// example:
 	//
-	// 0
+	// 1
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -134,18 +142,29 @@ func (s *ListAggregateRecommendManagedRulesResponseBodyRecommendedManagedRules) 
 }
 
 type ListAggregateRecommendManagedRulesResponseBodyRecommendedManagedRulesRecommendedManagedRuleList struct {
+	// The name of the rule.
+	//
 	// example:
 	//
-	// TagPolicy-1759141226889097
+	// ram-policy-in-use-check
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the rule.
+	//
 	// example:
 	//
-	// ram-user-last-login-expired-check
+	// If the permission policy is bound to one or more RAM user groups, RAM roles, or RAM users, the configuration is considered compliant.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The identifier of the rule.
+	//
+	// example:
+	//
+	// ram-policy-in-use-check
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
-	// ACS::RAM::User
+	// ACS::RAM::Policy
 	ResourceTypeScope *string `json:"ResourceTypeScope,omitempty" xml:"ResourceTypeScope,omitempty"`
 }
 

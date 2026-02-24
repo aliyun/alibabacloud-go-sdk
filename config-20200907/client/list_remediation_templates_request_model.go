@@ -20,35 +20,12 @@ type iListRemediationTemplatesRequest interface {
 }
 
 type ListRemediationTemplatesRequest struct {
-	// The identifier of the managed rule.
-	//
-	// You can call the [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html) operation to obtain the managed rule identifier.
-	//
 	// if can be null:
 	// true
-	//
-	// example:
-	//
-	// oss-bucket-public-write-prohibited
 	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
-	// The page number. Pages start from 1.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the remediation template. Valid value: OOS, which stands for Operation Orchestration Service.
-	//
-	// example:
-	//
-	// OOS
-	RemediationType *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
+	PageNumber            *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize              *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RemediationType       *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
 }
 
 func (s ListRemediationTemplatesRequest) String() string {

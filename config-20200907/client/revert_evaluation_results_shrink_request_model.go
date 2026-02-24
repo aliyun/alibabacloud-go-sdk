@@ -16,18 +16,8 @@ type iRevertEvaluationResultsShrinkRequest interface {
 }
 
 type RevertEvaluationResultsShrinkRequest struct {
-	// The rule ID.
-	//
-	// For more information about how to obtain the ID of a rule, see [ListConfigRules](https://help.aliyun.com/document_detail/169607.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cr-7e72626622af0051****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The resources that are to be re-evaluated.
-	//
 	// This parameter is required.
 	ResourcesShrink *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 }

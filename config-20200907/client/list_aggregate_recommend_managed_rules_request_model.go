@@ -32,42 +32,68 @@ type iListAggregateRecommendManagedRulesRequest interface {
 }
 
 type ListAggregateRecommendManagedRulesRequest struct {
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+	//
 	// example:
 	//
 	// ca-f632626622af0079****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The compliance package is invalid for resources in the specified region. The resources in the specified region are not evaluated. Separate multiple region IDs with commas (,).
+	//
 	// example:
 	//
 	// cn-shanghai
 	ExcludeRegionIdsScope *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
+	// The rule is invalid for resources in the specified resource group. The resources in the specified resource group are not evaluated. Separate multiple resource group IDs with commas (,).
+	//
 	// example:
 	//
 	// rg-bnczc6r7rml****
 	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
+	// The rule is invalid for the specified resource. The specified resource is not evaluated. Separate multiple resource IDs with commas (,).
+	//
+	// > This parameter applies only to rule templates.
+	//
 	// example:
 	//
 	// lb-t4nbowvtbkss7t326****
 	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	// The maximum number of entries to return for a single request. Default value: 200.
+	//
 	// example:
 	//
-	// 10
+	// 200
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. It indicates the position where the current query begins. If you leave this parameter empty, the query starts from the beginning.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The rule is effective only for resources in the specified region. Separate multiple region IDs with commas (,).
+	//
+	// > This parameter applies only to rule templates.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	// The rule is effective only for resources in the specified resource group. Separate multiple resource group IDs with commas (,).
+	//
 	// example:
 	//
 	// rg-aekzc7r7rhx****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	// The rule is effective for the specified resource. Separate multiple resource IDs with commas (,).
+	//
 	// example:
 	//
 	// lb-5cmbowstbkss9ta03****
 	ResourceIdsScope *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
+	// The selected managed rules.
+	//
 	// example:
 	//
 	// ram-user-mfa-check-v2,ram-user-last-login-expired-check

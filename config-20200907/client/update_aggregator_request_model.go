@@ -28,7 +28,7 @@ type iUpdateAggregatorRequest interface {
 type UpdateAggregatorRequest struct {
 	// The members in the account group.
 	//
-	// >  When you modify the configurations of an account group, this parameter can be left empty. In this case, the member list is not updated. If you want to update the member list, you must configure both the `AccountId` and `AccountType` parameters.
+	// > You can leave this parameter empty to skip updating the member list. To update the member list, you must specify both `AccountId` and `AccountType`.
 	//
 	// if can be null:
 	// false
@@ -51,7 +51,7 @@ type UpdateAggregatorRequest struct {
 	//
 	// Test_Group
 	AggregatorName *string `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token that ensures the idempotence of the request. Generate a unique token for each request. The token can contain only ASCII characters and must be no more than 64 characters in length.
 	//
 	// example:
 	//
@@ -63,9 +63,9 @@ type UpdateAggregatorRequest struct {
 	//
 	// example:
 	//
-	// Test_Aggregator_Description
+	// 测试组
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The folder ID. Separate multiple folder IDs with commas (,).
+	// The ID of the folder. You can enter multiple folder IDs. Separate the IDs with commas (,).
 	//
 	// example:
 	//
@@ -73,9 +73,9 @@ type UpdateAggregatorRequest struct {
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	// Deprecated
 	//
-	// The tags of the resource.
+	// The tags of the resource. This parameter is deprecated and no longer takes effect. Ignore this parameter.
 	//
-	// You can add up to 20 tags to a resource.
+	// You can attach up to 20 tags.
 	Tag []*UpdateAggregatorRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -177,25 +177,25 @@ type UpdateAggregatorRequestAggregatorAccounts struct {
 	//
 	// For more information about how to obtain the ID of a member, see [ListAccounts](https://help.aliyun.com/document_detail/160016.html).
 	//
-	// >  If you want to update the member list, you must configure both the `AccountId` and `AccountType` parameters.
+	// > To update the member list, you must specify both `AccountId` and `AccountType`.
 	//
 	// example:
 	//
 	// 173808452267****
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The display name of the member.
+	// The name of the member.
 	//
 	// For more information about how to obtain the name of a member, see [ListAccounts](https://help.aliyun.com/document_detail/160016.html).
 	//
-	// >  If you want to update the member list, you must configure both the `AccountId` and `AccountType` parameters.
+	// > To update the member list, you must specify both `AccountId` and `AccountType`.
 	//
 	// example:
 	//
 	// Tony
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The resource directory to which the member belongs. Valid value: ResourceDirectory. ResourceDirectory indicates that the member belongs to a resource directory.
+	// The affiliation of the member. Only ResourceDirectory is supported.
 	//
-	// >  If you want to update the member list, you must configure both the `AccountId` and `AccountType` parameters.
+	// > To update the member list, you must specify both `AccountId` and `AccountType`.
 	//
 	// example:
 	//
@@ -243,19 +243,15 @@ func (s *UpdateAggregatorRequestAggregatorAccounts) Validate() error {
 }
 
 type UpdateAggregatorRequestTag struct {
-	// The tag key of the resource. You can specify up to 20 tag keys.
+	// The key of the tag. A tag key cannot be an empty string.
 	//
-	// The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// key-1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag values.
-	//
-	// The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
-	//
-	// Each key-value must be unique. You can specify at most 20 tag values in each call.
+	// The tag value can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

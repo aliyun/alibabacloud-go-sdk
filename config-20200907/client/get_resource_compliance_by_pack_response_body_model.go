@@ -22,7 +22,7 @@ type GetResourceComplianceByPackResponseBody struct {
 	//
 	// 6EC7AED1-172F-42AE-9C12-295BC2ADB751
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The compliance evaluation results returned.
+	// The compliance results of the resources in the compliance package.
 	ResourceComplianceResult *GetResourceComplianceByPackResponseBodyResourceComplianceResult `json:"ResourceComplianceResult,omitempty" xml:"ResourceComplianceResult,omitempty" type:"Struct"`
 }
 
@@ -67,16 +67,40 @@ type GetResourceComplianceByPackResponseBodyResourceComplianceResult struct {
 	// example:
 	//
 	// cp-541e626622af0087****
-	CompliancePackId      *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	CompliantCount        *int32  `json:"CompliantCount,omitempty" xml:"CompliantCount,omitempty"`
-	IgnoredCount          *int32  `json:"IgnoredCount,omitempty" xml:"IgnoredCount,omitempty"`
-	InsufficientDataCount *int32  `json:"InsufficientDataCount,omitempty" xml:"InsufficientDataCount,omitempty"`
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The number of compliant resources.
+	//
+	// > Note: A resource is counted each time a rule evaluates it as compliant. For example, if a resource is evaluated as compliant by two rules, it is counted twice.
+	//
+	// example:
+	//
+	// 1
+	CompliantCount *int32 `json:"CompliantCount,omitempty" xml:"CompliantCount,omitempty"`
+	// The number of resources whose evaluation results are ignored.
+	//
+	// example:
+	//
+	// 1
+	IgnoredCount *int32 `json:"IgnoredCount,omitempty" xml:"IgnoredCount,omitempty"`
+	// The total number of resources that the rules in the compliance package evaluate as Insufficient Data.
+	//
+	// example:
+	//
+	// 1
+	InsufficientDataCount *int32 `json:"InsufficientDataCount,omitempty" xml:"InsufficientDataCount,omitempty"`
 	// The number of non-compliant resources.
 	//
 	// example:
 	//
 	// 7
-	NonCompliantCount  *int32 `json:"NonCompliantCount,omitempty" xml:"NonCompliantCount,omitempty"`
+	NonCompliantCount *int32 `json:"NonCompliantCount,omitempty" xml:"NonCompliantCount,omitempty"`
+	// The number of resources that are not applicable.
+	//
+	// > Note: A resource is counted each time a rule evaluates it as not applicable. For example, if a resource is evaluated as not applicable by two rules, it is counted twice.
+	//
+	// example:
+	//
+	// 1
 	NotApplicableCount *int32 `json:"NotApplicableCount,omitempty" xml:"NotApplicableCount,omitempty"`
 	// The total number of resources.
 	//

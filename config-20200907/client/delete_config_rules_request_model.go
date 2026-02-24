@@ -14,15 +14,7 @@ type iDeleteConfigRulesRequest interface {
 }
 
 type DeleteConfigRulesRequest struct {
-	// The rule IDs. Separate multiple rule IDs with commas (,).
-	//
-	// For more information about how to obtain the ID of a rule, see [ListConfigRules](https://help.aliyun.com/document_detail/609222.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cr-9908626622af0035****
 	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
 }
 

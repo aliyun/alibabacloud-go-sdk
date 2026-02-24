@@ -14,13 +14,7 @@ type iCreateAdvancedSearchFileRequest interface {
 }
 
 type CreateAdvancedSearchFileRequest struct {
-	// The SQL statement used to query resources.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// SELECT 	- WHERE ResourceType = \\"ACS::ECS::Instance\\"
 	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
 }
 

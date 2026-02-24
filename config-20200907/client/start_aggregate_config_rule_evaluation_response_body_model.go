@@ -16,22 +16,8 @@ type iStartAggregateConfigRuleEvaluationResponseBody interface {
 }
 
 type StartAggregateConfigRuleEvaluationResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// ABC0FFF8-0B44-40C6-8BBF-3A185EFDD212
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the involved resources were evaluated. Valid values:
-	//
-	// 	- true: The involved resources were evaluated.
-	//
-	// 	- false: The involved resources were not evaluated
-	//
-	// example:
-	//
-	// true
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s StartAggregateConfigRuleEvaluationResponseBody) String() string {

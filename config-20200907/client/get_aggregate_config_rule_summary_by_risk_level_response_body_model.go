@@ -16,14 +16,8 @@ type iGetAggregateConfigRuleSummaryByRiskLevelResponseBody interface {
 }
 
 type GetAggregateConfigRuleSummaryByRiskLevelResponseBody struct {
-	// The summary of compliance evaluation results by rule risk level.
 	ConfigRuleSummaries []*GetAggregateConfigRuleSummaryByRiskLevelResponseBodyConfigRuleSummaries `json:"ConfigRuleSummaries,omitempty" xml:"ConfigRuleSummaries,omitempty" type:"Repeated"`
-	// The request ID.
-	//
-	// example:
-	//
-	// A3CDD98C-DE65-46AC-B2D2-04A4A9AB5B73
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId           *string                                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAggregateConfigRuleSummaryByRiskLevelResponseBody) String() string {
@@ -66,30 +60,9 @@ func (s *GetAggregateConfigRuleSummaryByRiskLevelResponseBody) Validate() error 
 }
 
 type GetAggregateConfigRuleSummaryByRiskLevelResponseBodyConfigRuleSummaries struct {
-	// The number of rules against which specific resources are evaluated as compliant.
-	//
-	// example:
-	//
-	// 3
-	CompliantCount *int32 `json:"CompliantCount,omitempty" xml:"CompliantCount,omitempty"`
-	// The number of rules against which specific resources are evaluated as non-compliant.
-	//
-	// example:
-	//
-	// 1
+	CompliantCount    *int32 `json:"CompliantCount,omitempty" xml:"CompliantCount,omitempty"`
 	NonCompliantCount *int32 `json:"NonCompliantCount,omitempty" xml:"NonCompliantCount,omitempty"`
-	// The risk level of the resources that do not comply with the rule. Valid values:
-	//
-	// 	- 1: high
-	//
-	// 	- 2: medium
-	//
-	// 	- 3: low
-	//
-	// example:
-	//
-	// 1
-	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	RiskLevel         *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s GetAggregateConfigRuleSummaryByRiskLevelResponseBodyConfigRuleSummaries) String() string {

@@ -16,14 +16,8 @@ type iGetDiscoveredResourceCountsGroupByResourceTypeResponseBody interface {
 }
 
 type GetDiscoveredResourceCountsGroupByResourceTypeResponseBody struct {
-	// The statistics on the resources.
 	DiscoveredResourceCountsSummary []*GetDiscoveredResourceCountsGroupByResourceTypeResponseBodyDiscoveredResourceCountsSummary `json:"DiscoveredResourceCountsSummary,omitempty" xml:"DiscoveredResourceCountsSummary,omitempty" type:"Repeated"`
-	// The request ID.
-	//
-	// example:
-	//
-	// AC9BD94C-D20C-4D27-88D4-89E8D75C051B
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId                       *string                                                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDiscoveredResourceCountsGroupByResourceTypeResponseBody) String() string {
@@ -66,26 +60,9 @@ func (s *GetDiscoveredResourceCountsGroupByResourceTypeResponseBody) Validate() 
 }
 
 type GetDiscoveredResourceCountsGroupByResourceTypeResponseBodyDiscoveredResourceCountsSummary struct {
-	// The resource type by which the statistics are collected.
-	//
-	// > We recommend that you use the `ResourceType` parameter.
-	//
-	// example:
-	//
-	// ACS::ECS::Instance
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The total number of resources.
-	//
-	// example:
-	//
-	// 10
-	ResourceCount *int64 `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
-	// The resource type by which the statistics are collected.
-	//
-	// example:
-	//
-	// ACS::ECS::Instance
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	ResourceCount *int64  `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
+	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s GetDiscoveredResourceCountsGroupByResourceTypeResponseBodyDiscoveredResourceCountsSummary) String() string {

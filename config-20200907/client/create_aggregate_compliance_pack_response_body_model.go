@@ -16,7 +16,7 @@ type iCreateAggregateCompliancePackResponseBody interface {
 }
 
 type CreateAggregateCompliancePackResponseBody struct {
-	// The compliance package ID.
+	// The ID of the compliance pack.
 	//
 	// example:
 	//

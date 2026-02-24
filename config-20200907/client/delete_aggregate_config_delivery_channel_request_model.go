@@ -16,23 +16,9 @@ type iDeleteAggregateConfigDeliveryChannelRequest interface {
 }
 
 type DeleteAggregateConfigDeliveryChannelRequest struct {
-	// The ID of the account group.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ca-23c6626622af0041****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The ID of the delivery channel.
-	//
-	// For more information about how to obtain the ID of a delivery channel, see [ListAggregateConfigDeliveryChannels](https://help.aliyun.com/document_detail/429842.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cdc-38c3013b46c9002c****
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
 }
 

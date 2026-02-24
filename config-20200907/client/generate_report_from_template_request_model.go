@@ -14,6 +14,8 @@ type iGenerateReportFromTemplateRequest interface {
 }
 
 type GenerateReportFromTemplateRequest struct {
+	// Report template ID.
+	//
 	// This parameter is required.
 	//
 	// example:

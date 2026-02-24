@@ -20,40 +20,10 @@ type iGetIntegratedServiceStatusResponseBody interface {
 }
 
 type GetIntegratedServiceStatusResponseBody struct {
-	// The type of the event that is integrated across accounts. Valid values:
-	//
-	// 	- NonCompliantNotification: non-compliance event
-	//
-	// example:
-	//
-	// NonCompliantNotification
 	AggregatorDeliveryDataType *string `json:"AggregatorDeliveryDataType,omitempty" xml:"AggregatorDeliveryDataType,omitempty"`
-	// Indicates whether the product has been integrated. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The types of the integrated events. Separate multiple event types with commas (,). Valid values:
-	//
-	// 	- ConfigurationItemChangeNotification: resource change event
-	//
-	// 	- NonCompliantNotification: non-compliance event
-	//
-	// example:
-	//
-	// NonCompliantNotification
-	IntegratedTypes *string `json:"IntegratedTypes,omitempty" xml:"IntegratedTypes,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 2E396C84-8D50-5F95-97FA-C0367181BA8A
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data                       *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	IntegratedTypes            *string `json:"IntegratedTypes,omitempty" xml:"IntegratedTypes,omitempty"`
+	RequestId                  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetIntegratedServiceStatusResponseBody) String() string {

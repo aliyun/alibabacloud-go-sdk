@@ -16,10 +16,13 @@ type iGetReportFromTemplateResponseBody interface {
 }
 
 type GetReportFromTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// DE9FFFE5-FCAD-4B24-9546-BF49273C562B
-	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The report generated from the template.
 	TemplateReport *GetReportFromTemplateResponseBodyTemplateReport `json:"TemplateReport,omitempty" xml:"TemplateReport,omitempty" type:"Struct"`
 }
 
@@ -59,30 +62,52 @@ func (s *GetReportFromTemplateResponseBody) Validate() error {
 }
 
 type GetReportFromTemplateResponseBodyTemplateReport struct {
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 1478085326082xxx
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The timestamp when the report was generated. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1763540426815
 	ReportCreateEndTimestamp *int64 `json:"ReportCreateEndTimestamp,omitempty" xml:"ReportCreateEndTimestamp,omitempty"`
+	// The timestamp when the report started to be generated. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1763540421815
 	ReportCreateStartTimestamp *int64 `json:"ReportCreateStartTimestamp,omitempty" xml:"ReportCreateStartTimestamp,omitempty"`
+	// The ID of the report template.
+	//
 	// example:
 	//
 	// crt-xxx
 	ReportTemplateId *string `json:"ReportTemplateId,omitempty" xml:"ReportTemplateId,omitempty"`
+	// The download URL of the report.
+	//
 	// example:
 	//
 	// https://xxx
 	ReportUrl *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
+	// The status of the report. Valid values:
+	//
+	// - COMPLETE: The report is generated.
+	//
+	// - CREATING: The report is being generated.
+	//
+	// - FAILED: The report failed to be generated.
+	//
+	// - TIMEOUT: The request timed out.
+	//
 	// example:
 	//
 	// COMPLETE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the report generated from the template.
+	//
 	// example:
 	//
 	// crtr-xxx

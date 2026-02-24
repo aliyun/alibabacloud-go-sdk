@@ -14,11 +14,6 @@ type iGetConfigRulesReportRequest interface {
 }
 
 type GetConfigRulesReportRequest struct {
-	// The ID of the compliance evaluation report.
-	//
-	// example:
-	//
-	// crp-88176457e0d900c9****
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
 }
 

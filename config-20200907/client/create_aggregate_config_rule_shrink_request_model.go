@@ -15,6 +15,8 @@ type iCreateAggregateConfigRuleShrinkRequest interface {
 	GetAggregatorId() *string
 	SetClientToken(v string) *CreateAggregateConfigRuleShrinkRequest
 	GetClientToken() *string
+	SetConditions(v string) *CreateAggregateConfigRuleShrinkRequest
+	GetConditions() *string
 	SetConfigRuleName(v string) *CreateAggregateConfigRuleShrinkRequest
 	GetConfigRuleName() *string
 	SetConfigRuleTriggerTypes(v string) *CreateAggregateConfigRuleShrinkRequest
@@ -70,7 +72,9 @@ type iCreateAggregateConfigRuleShrinkRequest interface {
 }
 
 type CreateAggregateConfigRuleShrinkRequest struct {
-	// The IDs of the member accounts to which the rule applies, which means that the resources within the member accounts are evaluated based on the rule. Separate multiple member account IDs with commas (,).
+	// The rule is effective only for resources of the specified member accounts. Separate multiple member account IDs with commas (,).
+	//
+	// > This parameter applies only to rule templates.
 	//
 	// example:
 	//
@@ -78,7 +82,7 @@ type CreateAggregateConfigRuleShrinkRequest struct {
 	AccountIdsScope *string `json:"AccountIdsScope,omitempty" xml:"AccountIdsScope,omitempty"`
 	// The ID of the account group.
 	//
-	// For more information about how to obtain the ID of the account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
 	//
 	// This parameter is required.
 	//
@@ -86,25 +90,29 @@ type CreateAggregateConfigRuleShrinkRequest struct {
 	//
 	// ca-a4e5626622af0079****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The `token` can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token to ensure that the request is idempotent. Generate a unique value from your client for each request. The `ClientToken` parameter must contain only ASCII characters and be no more than 64 characters long.
 	//
 	// example:
 	//
 	// 1594295238-f9361358-5843-4294-8d30-b5183fac****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The rule name.
+	// example:
+	//
+	// {"ComplianceConditions":"{\"operator\":\"and\",\"children\":[{\"operator\":\"StringEquals\",\"featurePath\":\"$.Status\",\"desired\":\"1\",\"featureSource\":\"CONFIGURATION\"}]}"}
+	Conditions *string `json:"Conditions,omitempty" xml:"Conditions,omitempty"`
+	// The name of the rule.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// oss-default-encryption-kms
+	// 存在所有指定标签
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 	// The trigger type of the rule. Valid values:
 	//
-	// 	- ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
+	// - ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
 	//
-	// 	- ScheduledNotification: The rule is periodically triggered.
+	// - ScheduledNotification: The rule is triggered on a regular basis.
 	//
 	// This parameter is required.
 	//
@@ -116,115 +124,109 @@ type CreateAggregateConfigRuleShrinkRequest struct {
 	//
 	// example:
 	//
-	// description of rule
+	// 最多可以定义6组标签。如果资源同时具有指定的所有标签，则视为“合规”。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the member account to which the rule does not apply, which means that the resources within the member account are not evaluated based on the rule. Separate multiple member account IDs with commas (,).
+	// The rule is not effective for resources of the specified member accounts. The resources of the specified member accounts are not evaluated. Separate multiple member account IDs with commas (,).
 	//
-	// > This parameter applies only to a managed rule.
+	// > This parameter applies only to rule templates.
 	//
 	// example:
 	//
 	// 120886317861****
 	ExcludeAccountIdsScope *string `json:"ExcludeAccountIdsScope,omitempty" xml:"ExcludeAccountIdsScope,omitempty"`
-	// The ID of the resource directory to which the rule does not apply, which means that the resources within member accounts in the resource directory are not evaluated based on the rule. Separate multiple resource directory IDs with commas (,).
+	// The rule is not effective for resources of the member accounts in the specified folders. The resources of the member accounts in the specified folders are not evaluated. Separate multiple folder IDs with commas (,).
+	//
+	// > - This parameter applies only to rules of a global account group.
 	//
 	// >
 	//
-	// 	- This parameter applies only to a rule of a global account group.
-	//
-	// 	- This parameter applies only to a managed rule.
+	// > - This parameter applies only to rule templates.
 	//
 	// example:
 	//
 	// fd-pWmkqZ****
 	ExcludeFolderIdsScope *string `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
-	// The IDs of the regions to which the rule not applies. Separate multiple region IDs with commas (,).
+	// The rule is not effective for resources in the specified regions. The resources in the specified regions are not evaluated. Separate multiple region IDs with commas (,).
 	//
 	// example:
 	//
 	// cn-shanghai
 	ExcludeRegionIdsScope *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
-	// ExcludeResourceGroupIdsScope. Separate multiple resource group IDs with commas (,).
+	// The rule is not effective for resources in the specified resource groups. The resources in the specified resource groups are not evaluated. Separate multiple resource group IDs with commas (,).
 	//
 	// example:
 	//
 	// rg-bnczc6r7rml****
 	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
-	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
-	//
-	// > This parameter applies only to a managed rule.
+	// The rule is not effective for the specified resources. The specified resources are not evaluated. Separate multiple resource IDs with commas (,).
 	//
 	// example:
 	//
 	// lb-t4nbowvtbkss7t326****
 	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	// The scope of the tag that is excluded.
+	// The scope of the tags to be excluded.
 	ExcludeTagsScope []*CreateAggregateConfigRuleShrinkRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
-	// The extended content, which is temporarily only used to configure the trigger time with a 24-hour cycle trigger.
+	// The extended content. This parameter specifies the trigger time for a rule that runs on a 24-hour cycle.
 	//
 	// example:
 	//
 	// {"fixedHour":"12"}
 	ExtendContent *string `json:"ExtendContent,omitempty" xml:"ExtendContent,omitempty"`
-	// The ID of the resource directory to which the rule applies, which means that the resources within member accounts in the resource directory are evaluated based on the rule.
+	// The rule is effective only for resources of the member accounts in the specified folders. Separate multiple folder IDs with commas (,).
+	//
+	// > - This parameter applies only to rules of a global account group.
 	//
 	// >
 	//
-	// 	- This parameter applies only to a rule of a global account group.
-	//
-	// 	- This parameter applies only to a managed rule.
+	// > - This parameter applies only to rule templates.
 	//
 	// example:
 	//
 	// fd-ZtHsRH****
 	FolderIdsScope *string `json:"FolderIdsScope,omitempty" xml:"FolderIdsScope,omitempty"`
-	// The input parameter of the rule.
+	// The input parameters of the rule.
 	//
 	// example:
 	//
 	// {"tag1Key":"ECS","tag1Value":"test"}
 	InputParametersShrink *string `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
-	// The interval at which the rule is triggered. Valid values:
+	// The frequency at which the rule is run. Valid values:
 	//
-	// 	- One_Hour
+	// - One_Hour: 1 hour.
 	//
-	// 	- Three_Hours
+	// - Three_Hours: 3 hours.
 	//
-	// 	- Six_Hours
+	// - Six_Hours: 6 hours.
 	//
-	// 	- Twelve_Hours
+	// - Twelve_Hours: 12 hours.
 	//
-	// 	- TwentyFour_Hours (default)
+	// - TwentyFour_Hours (default): 24 hours.
 	//
-	// >  This parameter is required if the `ConfigRuleTriggerTypes` parameter is set to `ScheduledNotification`.
+	// > This parameter is required if you set `ConfigRuleTriggerTypes` to `ScheduledNotification`.
 	//
 	// example:
 	//
 	// One_Hour
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
-	// The ID of the region to which the rule applies. Separate multiple region IDs with commas (,).
-	//
-	// > This parameter applies only to a managed rule.
+	// The rule is effective only for resources in the specified regions. Separate multiple region IDs with commas (,).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	// The ID of the resource group to which the rule applies. Separate multiple resource group IDs with commas (,).
-	//
-	// > This parameter applies only to a managed rule.
+	// The rule is effective only for resources in the specified resource groups. Separate multiple resource group IDs with commas (,).
 	//
 	// example:
 	//
 	// rg-aekzc7r7rhx****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	// The IDs of the resources included from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
+	// The rule is effective only for the specified resources. Separate multiple resource IDs with commas (,).
 	//
 	// example:
 	//
 	// lb-5cmbowstbkss9ta03****
 	ResourceIdsScope *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
-	// The names of the resource to which the rule applies.
+	// The rule is effective only for resources that have the specified names.
 	//
 	// if can be null:
 	// true
@@ -233,7 +235,7 @@ type CreateAggregateConfigRuleShrinkRequest struct {
 	//
 	// i-xxx
 	ResourceNameScope *string `json:"ResourceNameScope,omitempty" xml:"ResourceNameScope,omitempty"`
-	// The type of the resource evaluated by the rule. Separate multiple resource types with commas (,).
+	// The resource types to be evaluated by the rule. Separate multiple resource types with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -241,13 +243,13 @@ type CreateAggregateConfigRuleShrinkRequest struct {
 	//
 	// ACS::ECS::Instance
 	ResourceTypesScopeShrink *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
-	// The risk level of the resources that do not comply with the rule. Valid values:
+	// The risk level of the rule. Valid values:
 	//
-	// 	- 1: high
+	// - 1: high
 	//
-	// 	- 2: medium
+	// - 2: medium
 	//
-	// 	- 3: low
+	// - 3: low
 	//
 	// This parameter is required.
 	//
@@ -257,11 +259,15 @@ type CreateAggregateConfigRuleShrinkRequest struct {
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The identifier of the rule.
 	//
-	// 	- If you set the SourceOwner parameter to ALIYUN, set this parameter to the name of the managed rule.
+	// - If you set `SourceOwner` to `ALIYUN`, enter the identifier of the rule template, such as `required-tags`.
 	//
-	// 	- If you set the SourceOwner parameter to CUSTOM_FC, set this parameter to the Alibaba Cloud Resource Name (ARN) of the relevant function in Function Compute.
+	//   > For more information about how to query the identifier of a rule template, see [List of rule templates](https://help.aliyun.com/document_detail/127404.html).
 	//
-	// For more information about how to query the name of a managed rule, see [Managed rules](https://help.aliyun.com/document_detail/127404.html).
+	// - If you set `SourceOwner` to `CUSTOM_FC`, enter the Alibaba Cloud Resource Name (ARN) of the function in Function Compute.
+	//
+	//   The ARN is in the format of `acs:fc:{region}:{accountId}:services/{serviceName}.LATEST/functions/{functionName}`. For example, `acs:fc:cn-hangzhou:120886317861****:services/service-test.LATEST/functions/config-test`.
+	//
+	//   > For more information about how to obtain the ARN of a function, see [ListFunctions](https://help.aliyun.com/document_detail/415752.html).
 	//
 	// This parameter is required.
 	//
@@ -271,9 +277,9 @@ type CreateAggregateConfigRuleShrinkRequest struct {
 	SourceIdentifier *string `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
 	// The type of the rule. Valid values:
 	//
-	// 	- ALIYUN: a managed rule.
+	// - ALIYUN: rule template
 	//
-	// 	- CUSTOM_FC: a custom rule.
+	// - CUSTOM_FC: custom rule
 	//
 	// This parameter is required.
 	//
@@ -281,17 +287,17 @@ type CreateAggregateConfigRuleShrinkRequest struct {
 	//
 	// ALIYUN
 	SourceOwner *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
-	// The tags.
+	// The tags to add to the rule. You can add up to 20 tags.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The logical relationship when parameter `TagsScope` takes multiple values, for example: When the parameter `TagsScope` is `"TagsScope.1.TagKey":"a", "TagsScope.1.TagValue":"a", "TagsScope.2.TagKey":"b", "TagsScope.2.TagValue":"b"`, if this parameter is set to` AND`, it means that the rule only applies to resources bound with both tags `a:a` and `b:b`. If not specified, the default logic is `OR`.
+	// The logical relationship for multiple tags in the `TagsScope` parameter. For example, if you set the `TagsScope` parameter to `"TagsScope.1.TagKey":"a","TagsScope.1.TagValue":"a","TagsScope.2.TagKey":"b","TagsScope.2.TagValue":"b"` and set this parameter to `AND`, the rule applies only to resources that have both the `a:a` and `b:b` tags. The default value is `OR`.
 	//
-	// It can also be used for the deprecated field `TagKeyScope` (not recommended), for example: When the parameter `TagKeyScope` has a value of `ECS`,`OSS`, if this parameter is set to `AND`, it means that the rule only applies to resources bound with both labels `ECS` and `OSS`.
+	// This parameter can also be used for the deprecated `TagKeyScope` parameter, but this is not recommended. For example, if you set `TagKeyScope` to `ECS,OSS` and set this parameter to `AND`, the rule applies only to resources that have both the `ECS` and `OSS` tags.
 	//
-	// Values:
+	// Valid values:
 	//
-	//  - AND: And.
+	// - AND
 	//
-	//  - OR: Or.
+	// - OR
 	//
 	// example:
 	//
@@ -299,11 +305,11 @@ type CreateAggregateConfigRuleShrinkRequest struct {
 	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
 	// Deprecated
 	//
-	// This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+	// This parameter is deprecated. Use the `TagsScope` parameter.
 	//
-	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key. Separate multiple parameter values with commas (,).
+	// The rule is effective only for resources that have the specified tag keys. Separate multiple tag keys with commas (,).
 	//
-	// >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	// > This parameter applies only to rule templates. The `TagKeyScope` and `TagValueScope` parameters must be used together.
 	//
 	// example:
 	//
@@ -311,17 +317,17 @@ type CreateAggregateConfigRuleShrinkRequest struct {
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
 	// Deprecated
 	//
-	// This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+	// This parameter is deprecated. Use the `TagsScope` parameter.
 	//
-	// The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
+	// The rule is effective only for resources that have the specified tag values.
 	//
-	// >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	// > This parameter applies only to rule templates. The `TagKeyScope` and `TagValueScope` parameters must be used together.
 	//
 	// example:
 	//
 	// test
 	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
-	// The tag scope.
+	// The scope of the tags.
 	TagsScope []*CreateAggregateConfigRuleShrinkRequestTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 }
 
@@ -343,6 +349,10 @@ func (s *CreateAggregateConfigRuleShrinkRequest) GetAggregatorId() *string {
 
 func (s *CreateAggregateConfigRuleShrinkRequest) GetClientToken() *string {
 	return s.ClientToken
+}
+
+func (s *CreateAggregateConfigRuleShrinkRequest) GetConditions() *string {
+	return s.Conditions
 }
 
 func (s *CreateAggregateConfigRuleShrinkRequest) GetConfigRuleName() *string {
@@ -461,6 +471,11 @@ func (s *CreateAggregateConfigRuleShrinkRequest) SetAggregatorId(v string) *Crea
 
 func (s *CreateAggregateConfigRuleShrinkRequest) SetClientToken(v string) *CreateAggregateConfigRuleShrinkRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateAggregateConfigRuleShrinkRequest) SetConditions(v string) *CreateAggregateConfigRuleShrinkRequest {
+	s.Conditions = &v
 	return s
 }
 
@@ -617,13 +632,13 @@ func (s *CreateAggregateConfigRuleShrinkRequest) Validate() error {
 }
 
 type CreateAggregateConfigRuleShrinkRequestExcludeTagsScope struct {
-	// The tag key of the resource that you want to exclude.
+	// The tag key of the resource to be excluded.
 	//
 	// example:
 	//
 	// key-2
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value of the resource that you want to exclude.
+	// The tag value of the resource to be excluded.
 	//
 	// example:
 	//
@@ -662,13 +677,13 @@ func (s *CreateAggregateConfigRuleShrinkRequestExcludeTagsScope) Validate() erro
 }
 
 type CreateAggregateConfigRuleShrinkRequestTagsScope struct {
-	// The tag key.
+	// The tag key of the resource.
 	//
 	// example:
 	//
 	// key-1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
+	// The tag value of the resource.
 	//
 	// example:
 	//

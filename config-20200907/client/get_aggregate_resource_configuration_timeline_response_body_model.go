@@ -22,7 +22,7 @@ type GetAggregateResourceConfigurationTimelineResponseBody struct {
 	//
 	// ED9CD1B3-286C-4E05-A765-5E1E0B9BC2AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The configuration timeline of the resource.
+	// The configuration history of the resource.
 	ResourceConfigurationTimeline *GetAggregateResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline `json:"ResourceConfigurationTimeline,omitempty" xml:"ResourceConfigurationTimeline,omitempty" type:"Struct"`
 }
 
@@ -62,15 +62,15 @@ func (s *GetAggregateResourceConfigurationTimelineResponseBody) Validate() error
 }
 
 type GetAggregateResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline struct {
-	// The resource name.
+	// A list of configuration changes.
 	ConfigurationList []*GetAggregateResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList `json:"ConfigurationList,omitempty" xml:"ConfigurationList,omitempty" type:"Repeated"`
-	// The maximum number of entries returned for a single request.
+	// The maximum number of entries returned on each page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to initiate the next request.
+	// The token used to start the next query.
 	//
 	// example:
 	//
@@ -127,59 +127,59 @@ func (s *GetAggregateResourceConfigurationTimelineResponseBodyResourceConfigurat
 }
 
 type GetAggregateResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList struct {
-	// The ID of the Alibaba Cloud account to which the resource belongs.
+	// The ID of the Alibaba Cloud account that owns the resource.
 	//
 	// example:
 	//
 	// 100931896542****
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ID of the zone in which the resource resides.
+	// The zone.
 	//
 	// example:
 	//
 	// cn-hangzhou-h
 	AvailabilityZone *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
-	// The timestamp when the resource change snapshot was recorded. Unit: milliseconds.
+	// The time when the resource change snapshot was recorded. This is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1624961156000
 	CaptureTime *string `json:"CaptureTime,omitempty" xml:"CaptureTime,omitempty"`
-	// The details of the resource change that triggered the compliance evaluation.
+	// The details of the resource changes that triggered the evaluation.
 	//
 	// example:
 	//
 	// {\\"AccessControlList\\":[null,{\\"Grant\\":\\"private\\"}],\\"ServerSideEncryptionRule\\":[null,{\\"SSEAlgorithm\\":\\"None\\"}],\\"CreationDate\\":[null,\\"2021-06-29T10:05:12.000Z\\"],\\"Owner\\":[null,{\\"DisplayName\\":\\"100931896542****\\",\\"ID\\":\\"100931896542****\\"}],\\"BucketPolicy\\":[null,{\\"LogPrefix\\":\\"\\",\\"LogBucket\\":\\"\\"}],\\"StorageClass\\":[null,\\"Standard\\"],\\"ExtranetEndpoint\\":[null,\\"oss-cn-hangzhou.aliyuncs.com\\"],\\"DataRedundancyType\\":[null,\\"LRS\\"],\\"AllowEmptyReferer\\":[null,\\"true\\"],\\"IntranetEndpoint\\":[null,\\"oss-cn-hangzhou-internal.aliyuncs.com\\"],\\"Name\\":[null,\\"new-bucket\\"],\\"Location\\":[null,\\"oss-cn-hangzhou\\"]}
 	ConfigurationDiff *string `json:"ConfigurationDiff,omitempty" xml:"ConfigurationDiff,omitempty"`
-	// The ID of the region in which the resource resides.
+	// The ID of the region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The timestamp when the resource was created. Unit: milliseconds.
+	// The time when the resource was created. This is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1624961112000
 	ResourceCreateTime *string `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty"`
-	// The type of the resource change event involved. Valid values:
+	// The type of the resource change event. Valid values:
 	//
-	// 	- DISCOVERED: A resource is created.
+	// - DISCOVERED: The resource is discovered by Cloud Config.
 	//
-	// 	- DISCOVERED_REVISED: A resource is created by periodic remediation tasks.
+	// - DISCOVERED_REVISED: The resource is discovered by Cloud Config through a periodic remediation task.
 	//
-	// 	- MODIFY: A resource is modified.
+	// - MODIFY: The resource is modified.
 	//
-	// 	- MODIFY_REVISED: A resource is modified by periodic remediation tasks.
+	// - MODIFY_REVISED: The resource is modified, as detected by a periodic remediation task.
 	//
-	// 	- REMOVE: A resource is deleted.
+	// - REMOVE: The resource is deleted.
+	//
+	// > 	- To ensure data integrity, Cloud Config periodically runs remediation tasks to align data. This process may generate resource discovery events. These events occur infrequently.
 	//
 	// >
 	//
-	// 	- To ensure the integrity of resources, periodic remediation tasks are run to check data and generate events that indicate the creation of new resources. Such events are infrequent.
-	//
-	// 	- The time when a resource change event is generated by a periodic remediation task is considered as the detection time of Cloud Config. The detection time is later than the time when the resource is modified.
+	// > 	- The time when a resource event is generated by a periodic remediation task is the discovery time of the task. This time is later than the actual time of the resource change.
 	//
 	// example:
 	//
@@ -191,13 +191,13 @@ type GetAggregateResourceConfigurationTimelineResponseBodyResourceConfigurationT
 	//
 	// new-bucket
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The name of the resource.
+	// The resource name.
 	//
 	// example:
 	//
 	// new-bucket
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The type of the resource.
+	// The resource type.
 	//
 	// example:
 	//

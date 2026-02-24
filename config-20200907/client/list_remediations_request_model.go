@@ -18,26 +18,9 @@ type iListRemediationsRequest interface {
 }
 
 type ListRemediationsRequest struct {
-	// The rule IDs. Separate multiple rule IDs with commas (,).
-	//
-	// For more information about how to obtain the ID of a rule, see [ListConfigRules](https://help.aliyun.com/document_detail/169607.html).
-	//
-	// example:
-	//
-	// cr-6b7c626622af00b4****
 	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
-	// The page number. Pages start from page 1.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 50.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber    *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListRemediationsRequest) String() string {

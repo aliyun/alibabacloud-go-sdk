@@ -14,6 +14,8 @@ type iDescribeIntegratedServiceStatusRequest interface {
 }
 
 type DescribeIntegratedServiceStatusRequest struct {
+	// The code of the cloud service.
+	//
 	// This parameter is required.
 	//
 	// example:

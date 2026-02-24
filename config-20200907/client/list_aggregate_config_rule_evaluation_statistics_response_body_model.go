@@ -16,14 +16,8 @@ type iListAggregateConfigRuleEvaluationStatisticsResponseBody interface {
 }
 
 type ListAggregateConfigRuleEvaluationStatisticsResponseBody struct {
-	// The statistics of compliance evaluation results.
 	EvaluationResults []*ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResults `json:"EvaluationResults,omitempty" xml:"EvaluationResults,omitempty" type:"Repeated"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 9EFA436B-FC6F-513B-9DB8-C96E6CEBE5E0
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId         *string                                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAggregateConfigRuleEvaluationStatisticsResponseBody) String() string {
@@ -66,42 +60,12 @@ func (s *ListAggregateConfigRuleEvaluationStatisticsResponseBody) Validate() err
 }
 
 type ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResults struct {
-	// The ID of the account group.
-	//
-	// example:
-	//
-	// ca-edd3626622af00b3****
-	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The number of resources that are evaluated as non-compliant.
-	//
-	// example:
-	//
-	// 25
-	NonCompliantResourceCnt *int32 `json:"NonCompliantResourceCnt,omitempty" xml:"NonCompliantResourceCnt,omitempty"`
-	// The number of rules based on which resources are evaluated as non-compliant.
-	//
-	// example:
-	//
-	// 3
-	NonCompliantRuleCnt *int32 `json:"NonCompliantRuleCnt,omitempty" xml:"NonCompliantRuleCnt,omitempty"`
-	// The date on which the statistics are obtained.
-	//
-	// example:
-	//
-	// 2023-06-27
-	StatisticDate *string `json:"StatisticDate,omitempty" xml:"StatisticDate,omitempty"`
-	// The total number of resources.
-	//
-	// example:
-	//
-	// 153
-	TotalResourceCnt *int32 `json:"TotalResourceCnt,omitempty" xml:"TotalResourceCnt,omitempty"`
-	// The total number of rules.
-	//
-	// example:
-	//
-	// 10
-	TotalRuleCnt *int32 `json:"TotalRuleCnt,omitempty" xml:"TotalRuleCnt,omitempty"`
+	AggregatorId            *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	NonCompliantResourceCnt *int32  `json:"NonCompliantResourceCnt,omitempty" xml:"NonCompliantResourceCnt,omitempty"`
+	NonCompliantRuleCnt     *int32  `json:"NonCompliantRuleCnt,omitempty" xml:"NonCompliantRuleCnt,omitempty"`
+	StatisticDate           *string `json:"StatisticDate,omitempty" xml:"StatisticDate,omitempty"`
+	TotalResourceCnt        *int32  `json:"TotalResourceCnt,omitempty" xml:"TotalResourceCnt,omitempty"`
+	TotalRuleCnt            *int32  `json:"TotalRuleCnt,omitempty" xml:"TotalRuleCnt,omitempty"`
 }
 
 func (s ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResults) String() string {

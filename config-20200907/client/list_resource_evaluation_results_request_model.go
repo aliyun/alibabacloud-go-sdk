@@ -28,60 +28,76 @@ type iListResourceEvaluationResultsRequest interface {
 }
 
 type ListResourceEvaluationResultsRequest struct {
-	// The compliance evaluation result of the resource. Valid values:
+	// The compliance evaluation result. Valid values:
 	//
-	// 	- COMPLIANT: The resource is evaluated as compliant.
+	// - COMPLIANT: The resource is compliant.
 	//
-	// 	- NON_COMPLIANT: The resource is evaluated as non-compliant.
+	// - NON_COMPLIANT: The resource is non-compliant.
 	//
-	// 	- NOT_APPLICABLE: The rule does not apply to the resources.
+	// - NOT_APPLICABLE: The rule does not apply to the resource.
 	//
-	// 	- INSUFFICIENT_DATA: No data is available.
+	// - INSUFFICIENT_DATA: No data is available for the resource.
 	//
-	// 	- IGNORED: The resource is ignored during compliance evaluation.
+	// - IGNORED: The evaluation result is ignored.
 	//
 	// example:
 	//
 	// NON_COMPLIANT
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	// The maximum number of entries to return in a request. Valid values: 1 to 100.
+	// The maximum number of entries to return for a single request. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that you want to use to initiate the current request. If the response of the previous request is truncated, you can use this token to initiate another request and obtain the remaining entries.``
+	// If the response is truncated, pass the `NextToken` value in a subsequent request to retrieve the remaining results.
 	//
 	// example:
 	//
 	// IWBjqMYSy0is7zSMGu16****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region where one or more resources you want to query reside. For example, the value `global` indicates global regions and the value `cn-hangzhou` indicates the China (Hangzhou) region.
+	// The ID of the region where the resource resides. For example, `global` indicates Global, and `cn-hangzhou` indicates China (Hangzhou).
 	//
-	// For more information about how to obtain the ID of the region where a resource resides, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
+	// For more information, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
 	//
 	// example:
 	//
 	// global
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the resource.
+	// The resource ID.
 	//
-	// For more information about how to obtain the ID of a resource, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
+	// For more information, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
 	//
 	// example:
 	//
 	// 23642660635396****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource.
+	// The resource type.
 	//
-	// For more information about how to query the type of a resource, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
+	// For more information, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
 	//
 	// example:
 	//
 	// ACS::RAM::User
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	RiskLevel    *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	SortBy       *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The risk level of the rule. Valid values:
+	//
+	// - 1: High risk.
+	//
+	// - 2: Medium risk.
+	//
+	// - 3: Low risk.
+	//
+	// example:
+	//
+	// 1
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// This parameter is optional. The only supported value is `LastNonCompliantRecordTimestamp-Asc`. This value sorts resources based on when they first became non-compliant, with the earliest appearing first. Use this parameter only when you set the `ComplianceType` parameter to `NON_COMPLIANT`.
+	//
+	// example:
+	//
+	// LastNonCompliantRecordTimestamp-Asc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
 func (s ListResourceEvaluationResultsRequest) String() string {

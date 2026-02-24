@@ -22,7 +22,7 @@ type iGenerateAggregateCompliancePackReportRequest interface {
 type GenerateAggregateCompliancePackReportRequest struct {
 	// The ID of the account group.
 	//
-	// For more information about how to obtain the ID of the account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+	// For information about how to obtain the account group ID, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type GenerateAggregateCompliancePackReportRequest struct {
 	//
 	// ca-f632626622af0079****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The `token` can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The `ClientToken` can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type GenerateAggregateCompliancePackReportRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the compliance package.
 	//
-	// For more information about how to obtain the ID of a compliance package, see [ListAggregateCompliancePacks](https://help.aliyun.com/document_detail/262059.html).
+	// For information about how to obtain the compliance package ID, see [ListAggregateCompliancePacks](https://help.aliyun.com/document_detail/262059.html).
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,16 @@ type GenerateAggregateCompliancePackReportRequest struct {
 	//
 	// cp-fdc8626622af00f9****
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	MultiFiles       *bool   `json:"MultiFiles,omitempty" xml:"MultiFiles,omitempty"`
+	// Specifies whether to generate multiple files based on resource ownership user IDs. Valid values:
+	//
+	// - true: generates multiple files (default)
+	//
+	// - false: generates a single file
+	//
+	// example:
+	//
+	// true
+	MultiFiles *bool `json:"MultiFiles,omitempty" xml:"MultiFiles,omitempty"`
 }
 
 func (s GenerateAggregateCompliancePackReportRequest) String() string {

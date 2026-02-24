@@ -16,25 +16,9 @@ type iAttachConfigRuleToCompliancePackRequest interface {
 }
 
 type AttachConfigRuleToCompliancePackRequest struct {
-	// The ID of the compliance package.
-	//
-	// For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cp-5bb1626622af00bd****
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	// The rule ID. Separate multiple rule IDs with commas (,).
-	//
-	// For more information about how to obtain the ID of a rule, see [ListConfigRules](https://help.aliyun.com/document_detail/169607.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cr-6cc4626622af00e7****
 	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
 }
 

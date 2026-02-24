@@ -14,6 +14,8 @@ type iGetReportFromTemplateRequest interface {
 }
 
 type GetReportFromTemplateRequest struct {
+	// The ID of the report template.
+	//
 	// This parameter is required.
 	//
 	// example:

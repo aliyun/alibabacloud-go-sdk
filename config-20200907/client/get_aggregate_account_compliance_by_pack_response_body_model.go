@@ -16,14 +16,8 @@ type iGetAggregateAccountComplianceByPackResponseBody interface {
 }
 
 type GetAggregateAccountComplianceByPackResponseBody struct {
-	// The compliance evaluation results of member accounts for which the compliance package takes effect in an account group.
 	AccountComplianceResult *GetAggregateAccountComplianceByPackResponseBodyAccountComplianceResult `json:"AccountComplianceResult,omitempty" xml:"AccountComplianceResult,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 6EC7AED1-172F-42AE-9C12-295BC2ADB751
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId               *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAggregateAccountComplianceByPackResponseBody) String() string {
@@ -62,26 +56,10 @@ func (s *GetAggregateAccountComplianceByPackResponseBody) Validate() error {
 }
 
 type GetAggregateAccountComplianceByPackResponseBodyAccountComplianceResult struct {
-	// The compliance evaluation result of member accounts.
 	AccountCompliances []*GetAggregateAccountComplianceByPackResponseBodyAccountComplianceResultAccountCompliances `json:"AccountCompliances,omitempty" xml:"AccountCompliances,omitempty" type:"Repeated"`
-	// The ID of the compliance package.
-	//
-	// example:
-	//
-	// cp-541e626622af0087****
-	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	// The number of non-compliant member accounts.
-	//
-	// example:
-	//
-	// 0
-	NonCompliantCount *int32 `json:"NonCompliantCount,omitempty" xml:"NonCompliantCount,omitempty"`
-	// The total number of member accounts.
-	//
-	// example:
-	//
-	// 2
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	CompliancePackId   *string                                                                                     `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	NonCompliantCount  *int32                                                                                      `json:"NonCompliantCount,omitempty" xml:"NonCompliantCount,omitempty"`
+	TotalCount         *int32                                                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetAggregateAccountComplianceByPackResponseBodyAccountComplianceResult) String() string {
@@ -142,31 +120,8 @@ func (s *GetAggregateAccountComplianceByPackResponseBodyAccountComplianceResult)
 }
 
 type GetAggregateAccountComplianceByPackResponseBodyAccountComplianceResultAccountCompliances struct {
-	// The ID of the member account in the account group.
-	//
-	// example:
-	//
-	// 100931896542****
-	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The name of the member account in the account group.
-	//
-	// example:
-	//
-	// Alice
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The compliance evaluation result. Valid values:
-	//
-	// 	- COMPLIANT: The resource was evaluated as compliant.
-	//
-	// 	- NON_COMPLIANT: The resource was evaluated as incompliant.
-	//
-	// 	- NOT_APPLICABLE: The rule did not apply to your resource.
-	//
-	// 	- INSUFFICIENT_DATA: No resource data was available.
-	//
-	// example:
-	//
-	// COMPLIANT
+	AccountId      *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountName    *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
 }
 

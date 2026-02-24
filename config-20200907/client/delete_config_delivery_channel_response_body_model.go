@@ -16,18 +16,8 @@ type iDeleteConfigDeliveryChannelResponseBody interface {
 }
 
 type DeleteConfigDeliveryChannelResponseBody struct {
-	// The ID of the delivery channel.
-	//
-	// example:
-	//
-	// cdc-38c32e87cadb002c****
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 35F1DA37-ECB5-54E9-AC22-0D9111A665AA
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteConfigDeliveryChannelResponseBody) String() string {

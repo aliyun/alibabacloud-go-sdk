@@ -28,7 +28,7 @@ type iUpdateAggregateRemediationRequest interface {
 type UpdateAggregateRemediationRequest struct {
 	// The ID of the account group.
 	//
-	// You can the [ListAggregators](https://help.aliyun.com/document_detail/255797.html) operation to obtain the ID of the account group.
+	// For more information, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
 	//
 	// This parameter is required.
 	//
@@ -38,27 +38,27 @@ type UpdateAggregateRemediationRequest struct {
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 	// The execution mode of the remediation. Valid values:
 	//
-	// 	- NON_EXECUTION: The remediation is not executed.
+	// - NON_EXECUTION: The remediation is not executed.
 	//
-	// 	- AUTO_EXECUTION: The remediation is automatically executed.
+	// - AUTO_EXECUTION: The remediation is automatically executed.
 	//
-	// 	- MANUAL_EXECUTION: The remediation is manually executed.
+	// - MANUAL_EXECUTION: The remediation is manually executed.
 	//
-	// 	- NOT_CONFIG: The execution mode is not specified.
+	// - NOT_CONFIG: The execution mode is not specified.
 	//
 	// example:
 	//
 	// AUTO_EXECUTION
 	InvokeType *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
-	// The desired parameter values of the remediation setting.
+	// The parameters of the remediation setting.
 	//
 	// example:
 	//
-	// {"properties":[{"name":"regionId","type":"STRING","value":"{regionId}","allowedValues":[]},{"name":"bucketName","type":"STRING","value":"{resourceId}","allowedValues":[],"description":"OSS Bucket Name."},{"name":"permissionName","type":"STRING","value":"private","allowedValues":["public-read-write","public-read","private"],"description":"ACL Permission Name."}]}
+	// {"properties":[{"name":"regionId","type":"STRING","value":"{regionId}","allowedValues":[]},{"name":"bucketName","type":"STRING","value":"{resourceId}","allowedValues":[],"description":"OSS Bucket名称。"},{"name":"permissionName","type":"STRING","value":"private","allowedValues":["public-read-write","public-read","private"],"description":"ACL权限名称。"}]}
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	// The ID of the remediation setting.
 	//
-	// You can call the [ListAggregateRemediations](https://help.aliyun.com/document_detail/270036.html) operation to obtain the ID of the remediation setting.
+	// For more information, see [ListAggregateRemediations](https://help.aliyun.com/document_detail/270036.html).
 	//
 	// This parameter is required.
 	//
@@ -68,29 +68,29 @@ type UpdateAggregateRemediationRequest struct {
 	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
 	// The ID of the remediation template.
 	//
-	// You can call the [ListRemediationTemplates](https://help.aliyun.com/document_detail/270066.html) operation to obtain the ID of the remediation template.
+	// For more information, see [ListRemediationTemplates](https://help.aliyun.com/document_detail/270066.html).
 	//
 	// example:
 	//
 	// ACS-OSS-PutBucketAcl
 	RemediationTemplateId *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
-	// The type of the remediation template. Valid values:
+	// The type of the remediation. Valid values:
 	//
-	// 	- OOS: Operation Orchestration Service (OOS)
+	// - OOS: Operation Orchestration Service (OOS) (template-based remediation).
 	//
-	// 	- FC: Function Compute. You can use Function Compute to configure custom remediation settings.
+	// - FC: Function Compute (FC) (custom remediation).
 	//
 	// example:
 	//
 	// OOS
 	RemediationType *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
-	// The type of the rule for which the remediation template is configured. Valid values:
+	// The source of the rule for which the remediation is performed. Valid values:
 	//
-	// 	- ALIYUN: managed rule.
+	// - ALIYUN: rule template.
 	//
-	// 	- CUSTOM: custom rule.
+	// - CUSTOM: custom remediation.
 	//
-	// 	- NONE: The rule is not specified.
+	// - NONE: none.
 	//
 	// example:
 	//

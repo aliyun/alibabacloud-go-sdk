@@ -16,19 +16,8 @@ type iGetAggregateResourceComplianceGroupByResourceTypeRequest interface {
 }
 
 type GetAggregateResourceComplianceGroupByResourceTypeRequest struct {
-	// The ID of the account group.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ca-cdbd626622af0042****
-	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The ID of the rule. Separate multiple rule IDs with commas (,).
-	//
-	// example:
-	//
-	// cr-2541626622af0000****
+	AggregatorId  *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
 }
 

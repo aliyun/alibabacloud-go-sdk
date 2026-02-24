@@ -16,14 +16,8 @@ type iStartConfigurationRecorderResponseBody interface {
 }
 
 type StartConfigurationRecorderResponseBody struct {
-	// The details of the configuration recorder.
 	ConfigurationRecorder *StartConfigurationRecorderResponseBodyConfigurationRecorder `json:"ConfigurationRecorder,omitempty" xml:"ConfigurationRecorder,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 4D994662-6B27-536F-B320-38F4B3D58705
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId             *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s StartConfigurationRecorderResponseBody) String() string {
@@ -62,22 +56,8 @@ func (s *StartConfigurationRecorderResponseBody) Validate() error {
 }
 
 type StartConfigurationRecorderResponseBodyConfigurationRecorder struct {
-	// The status of the configuration recorder. Valid values:
-	//
-	// 	- REGISTRABLE: The configuration recorder has not been registered.
-	//
-	// 	- BUILDING: The configuration recorder is being deployed.
-	//
-	// 	- REGISTERED: The configuration recorder has been registered.
-	//
-	// 	- REBUILDING: The configuration recorder is being redeployed.
-	//
-	// example:
-	//
-	// REGISTERED
-	ConfigurationRecorderStatus *string `json:"ConfigurationRecorderStatus,omitempty" xml:"ConfigurationRecorderStatus,omitempty"`
-	// The types of the resources that are monitored by Cloud Config.
-	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
+	ConfigurationRecorderStatus *string   `json:"ConfigurationRecorderStatus,omitempty" xml:"ConfigurationRecorderStatus,omitempty"`
+	ResourceTypes               []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
 }
 
 func (s StartConfigurationRecorderResponseBodyConfigurationRecorder) String() string {

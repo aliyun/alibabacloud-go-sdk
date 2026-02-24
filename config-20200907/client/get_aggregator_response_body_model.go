@@ -16,7 +16,7 @@ type iGetAggregatorResponseBody interface {
 }
 
 type GetAggregatorResponseBody struct {
-	// The details of the account group.
+	// The information about the account group.
 	Aggregator *GetAggregatorResponseBodyAggregator `json:"Aggregator,omitempty" xml:"Aggregator,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -76,7 +76,7 @@ type GetAggregatorResponseBodyAggregator struct {
 	AggregatorAccountCount *int64 `json:"AggregatorAccountCount,omitempty" xml:"AggregatorAccountCount,omitempty"`
 	// The information about the members in the account group.
 	AggregatorAccounts []*GetAggregatorResponseBodyAggregatorAggregatorAccounts `json:"AggregatorAccounts,omitempty" xml:"AggregatorAccounts,omitempty" type:"Repeated"`
-	// The timestamp generated when the account group was created.
+	// The timestamp when the account group was created.
 	//
 	// Unit: milliseconds.
 	//
@@ -94,13 +94,13 @@ type GetAggregatorResponseBodyAggregator struct {
 	//
 	// example:
 	//
-	// Test-Group
+	// Test_Group
 	AggregatorName *string `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
 	// The status of the account group. Valid values:
 	//
-	// 	- 0: The account group is being created.
+	// - 0: The account group is being created.
 	//
-	// 	- 1: The account group was created.
+	// - 1: The account group is created.
 	//
 	// example:
 	//
@@ -108,11 +108,11 @@ type GetAggregatorResponseBodyAggregator struct {
 	AggregatorStatus *int32 `json:"AggregatorStatus,omitempty" xml:"AggregatorStatus,omitempty"`
 	// The type of the account group. Valid values:
 	//
-	// 	- RD: a global account group.
+	// - RD: global account group.
 	//
-	// 	- FOLDER: an account group for a folder.
+	// - FOLDER: folder account group.
 	//
-	// 	- CUSTOM: a custom account group.
+	// - CUSTOM: custom account group.
 	//
 	// example:
 	//
@@ -122,16 +122,21 @@ type GetAggregatorResponseBodyAggregator struct {
 	//
 	// example:
 	//
-	// The description of the test account group.
+	// The description of the aggregator.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the attached folder of the account group.
+	// The ID of the folder to which the folder account group is attached.
 	//
 	// example:
 	//
 	// fd-brHdgv****
-	FolderId   *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// The name of the folder to which the folder account group is attached. Multiple names are separated by commas (,).
+	//
+	// example:
+	//
+	// Example-name
 	FolderName *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
-	// tags
+	// The resource tags.
 	Tags []*GetAggregatorResponseBodyAggregatorTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -274,13 +279,13 @@ func (s *GetAggregatorResponseBodyAggregator) Validate() error {
 }
 
 type GetAggregatorResponseBodyAggregatorAggregatorAccounts struct {
-	// The ID of the member.
+	// The member ID.
 	//
 	// example:
 	//
 	// 171322098523****
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The display name of the member.
+	// The member name.
 	//
 	// if can be null:
 	// false
@@ -289,21 +294,21 @@ type GetAggregatorResponseBodyAggregatorAggregatorAccounts struct {
 	//
 	// Alice
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The resource directory to which the member belongs. Valid value: ResourceDirectory. ResourceDirectory indicates that the member belongs to a resource directory.
+	// The type of the account. Only ResourceDirectory is supported.
 	//
 	// example:
 	//
 	// ResourceDirectory
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The status of the configuration recorder for the member. Valid values:
+	// The status of Resource Monitoring for the member. Valid values:
 	//
-	// 	- REGISTRABLE: The configuration recorder is not registered.
+	// - REGISTRABLE: Not registered.
 	//
-	// 	- BUILDING: The configuration recorder is being deployed.
+	// - BUILDING: Building.
 	//
-	// 	- REGISTERED: The configuration recorder is registered.
+	// - REGISTERED: Registered.
 	//
-	// 	- REBUILDING: The configuration recorder is being redeployed.
+	// - REBUILDING: Rebuilding.
 	//
 	// example:
 	//

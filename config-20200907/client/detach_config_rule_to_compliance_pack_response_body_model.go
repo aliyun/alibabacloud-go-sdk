@@ -16,9 +16,9 @@ type iDetachConfigRuleToCompliancePackResponseBody interface {
 }
 
 type DetachConfigRuleToCompliancePackResponseBody struct {
-	// The results of the operations to remove one or more rules.
+	// The results of the operation to detach rules.
 	OperateRuleResult *DetachConfigRuleToCompliancePackResponseBodyOperateRuleResult `json:"OperateRuleResult,omitempty" xml:"OperateRuleResult,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *DetachConfigRuleToCompliancePackResponseBody) Validate() error {
 }
 
 type DetachConfigRuleToCompliancePackResponseBodyOperateRuleResult struct {
-	// The result of the operation to remove the rule.
+	// A list of the results of the operation to detach rules.
 	OperateRuleItemList []*DetachConfigRuleToCompliancePackResponseBodyOperateRuleResultOperateRuleItemList `json:"OperateRuleItemList,omitempty" xml:"OperateRuleItemList,omitempty" type:"Repeated"`
 }
 
@@ -103,21 +103,30 @@ type DetachConfigRuleToCompliancePackResponseBodyOperateRuleResultOperateRuleIte
 	//
 	// cr-6cc4626622af00e7****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The error code returned.
+	// The error code.
 	//
-	// 	- This parameter is empty if the rule is removed from the compliance package.
+	// - This parameter is empty if the operation is successful.
 	//
-	// 	- An error code is returned if the rule fails to be removed from the compliance package. For more information about error codes, see [Error codes](https://error-center.alibabacloud.com/status/product/Config).
+	// <props="china">
+	//
+	// - An error code is returned if the operation fails. For more information about error codes, see the [Error Center](https://error-center.aliyun.com/status/product/Config).
+	//
+	//
+	//
+	//
+	// <props="intl">
+	//
+	// - An error code is returned if the operation fails. For more information about error codes, see the [Error Center](https://error-center.alibabacloud.com/status/product/Config).
 	//
 	// example:
 	//
 	// ConfigRuleNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The operation was successful.
 	//
-	// 	- false: The request failed.
+	// - false: The operation failed.
 	//
 	// example:
 	//

@@ -16,14 +16,8 @@ type iListRemediationExecutionsResponseBody interface {
 }
 
 type ListRemediationExecutionsResponseBody struct {
-	// The queried remediation records.
 	RemediationExecutionData *ListRemediationExecutionsResponseBodyRemediationExecutionData `json:"RemediationExecutionData,omitempty" xml:"RemediationExecutionData,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 13E67493-3165-529A-A961-BE9E4B11BA11
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId                *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListRemediationExecutionsResponseBody) String() string {
@@ -62,19 +56,8 @@ func (s *ListRemediationExecutionsResponseBody) Validate() error {
 }
 
 type ListRemediationExecutionsResponseBodyRemediationExecutionData struct {
-	// The maximum number of entries to return for a single request.
-	//
-	// example:
-	//
-	// 10
-	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
-	//
-	// example:
-	//
-	// cMbjqNaYs0Ps7zSNiu37****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The queried remediation records.
+	MaxResults            *int64                                                                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken             *string                                                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RemediationExecutions []*ListRemediationExecutionsResponseBodyRemediationExecutionDataRemediationExecutions `json:"RemediationExecutions,omitempty" xml:"RemediationExecutions,omitempty" type:"Repeated"`
 }
 
@@ -127,45 +110,11 @@ func (s *ListRemediationExecutionsResponseBodyRemediationExecutionData) Validate
 }
 
 type ListRemediationExecutionsResponseBodyRemediationExecutionDataRemediationExecutions struct {
-	// The time when the remediation record was created.
-	//
-	// example:
-	//
-	// 2023-06-25T11:48:15Z
-	ExecutionCreateDate *string `json:"ExecutionCreateDate,omitempty" xml:"ExecutionCreateDate,omitempty"`
-	// The invocation ID of the remediation record.
-	//
-	// example:
-	//
-	// exec-befded3781994ccf****
-	ExecutionInvocationId *string `json:"ExecutionInvocationId,omitempty" xml:"ExecutionInvocationId,omitempty"`
-	// The IDs of the resources to which the remediation belongs. Separate multiple resource IDs with commas (,).
-	//
-	// example:
-	//
-	// rm-0jlk629z240l8****
-	ExecutionResourceIds *string `json:"ExecutionResourceIds,omitempty" xml:"ExecutionResourceIds,omitempty"`
-	// The resource type.
-	//
-	// example:
-	//
-	// ACS::RDS::DBInstance
-	ExecutionResourceType *string `json:"ExecutionResourceType,omitempty" xml:"ExecutionResourceType,omitempty"`
-	// The status of the remediation record. Valid values:
-	//
-	// 	- Success
-	//
-	// 	- Failed
-	//
-	// example:
-	//
-	// Success
-	ExecutionStatus *string `json:"ExecutionStatus,omitempty" xml:"ExecutionStatus,omitempty"`
-	// The error message returned when the remediation fails.
-	//
-	// example:
-	//
-	// Invocation time out.
+	ExecutionCreateDate    *string `json:"ExecutionCreateDate,omitempty" xml:"ExecutionCreateDate,omitempty"`
+	ExecutionInvocationId  *string `json:"ExecutionInvocationId,omitempty" xml:"ExecutionInvocationId,omitempty"`
+	ExecutionResourceIds   *string `json:"ExecutionResourceIds,omitempty" xml:"ExecutionResourceIds,omitempty"`
+	ExecutionResourceType  *string `json:"ExecutionResourceType,omitempty" xml:"ExecutionResourceType,omitempty"`
+	ExecutionStatus        *string `json:"ExecutionStatus,omitempty" xml:"ExecutionStatus,omitempty"`
 	ExecutionStatusMessage *string `json:"ExecutionStatusMessage,omitempty" xml:"ExecutionStatusMessage,omitempty"`
 }
 

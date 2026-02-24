@@ -16,18 +16,8 @@ type iActiveConfigRulesRequest interface {
 }
 
 type ActiveConfigRulesRequest struct {
-	// The ID of the compliance package.
-	//
-	// example:
-	//
-	// cp-fe416457e0d90022****
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	// The rule ID. Separate multiple rule IDs with commas (,).
-	//
-	// example:
-	//
-	// cr-2da35180a8d1008e****,cr-2da35180a8d1008e****
-	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
+	ConfigRuleIds    *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
 }
 
 func (s ActiveConfigRulesRequest) String() string {

@@ -18,14 +18,22 @@ type iListReportTemplatesRequest interface {
 }
 
 type ListReportTemplatesRequest struct {
+	// The keyword for your search.
+	//
+	// You can perform a fuzzy query on template ID, template name, or template description.
+	//
 	// example:
 	//
 	// test-description
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The number of entries to return per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// If the response is truncated, use NextToken to send another request and get results after the truncation point.
+	//
 	// example:
 	//
 	// IWBjqMYSy0is7zSMGu16****

@@ -16,7 +16,7 @@ type iListAggregateRemediationsResponseBody interface {
 }
 
 type ListAggregateRemediationsResponseBody struct {
-	// An array that contains remediation templates.
+	// The remediation settings.
 	Remediations []*ListAggregateRemediationsResponseBodyRemediations `json:"Remediations,omitempty" xml:"Remediations,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,7 +66,7 @@ func (s *ListAggregateRemediationsResponseBody) Validate() error {
 }
 
 type ListAggregateRemediationsResponseBodyRemediations struct {
-	// The ID of the Alibaba Cloud account to which the resource belongs.
+	// The ID of the Alibaba Cloud account.
 	//
 	// example:
 	//
@@ -84,65 +84,65 @@ type ListAggregateRemediationsResponseBodyRemediations struct {
 	//
 	// cr-6b7c626622af00b4****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The execution mode of the remediation template. Valid values:
+	// The execution mode of the remediation. Valid values:
 	//
-	// 	- NON_EXECUTION: The remediation template is not executed.
+	// - NON_EXECUTION: The remediation is not executed.
 	//
-	// 	- AUTO_EXECUTION: The remediation template is automatically executed.
+	// - AUTO_EXECUTION: The remediation is automatically executed.
 	//
-	// 	- MANUAL_EXECUTION: The remediation template is manually executed.
+	// - MANUAL_EXECUTION: The remediation is manually executed.
 	//
-	// 	- NOT_CONFIG: The execution mode is not specified.
+	// - NOT_CONFIG: The remediation is not configured.
 	//
 	// example:
 	//
 	// AUTO_EXECUTION
 	InvokeType *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
-	// The ID of the last successful execution of the remediation template.
+	// The ID of the last successful remediation.
 	//
 	// example:
 	//
 	// bd7629fb-cac8-42fe-bcb1-e362c5a6****
 	LastSuccessfulInvocationId *string `json:"LastSuccessfulInvocationId,omitempty" xml:"LastSuccessfulInvocationId,omitempty"`
-	// The timestamp of the last successful execution of the remediation template. Unit: milliseconds.
+	// The timestamp of the last successful remediation. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1625451393589
 	LastSuccessfulInvocationTime *int64 `json:"LastSuccessfulInvocationTime,omitempty" xml:"LastSuccessfulInvocationTime,omitempty"`
-	// The mode of the last successful execution of the remediation template. Valid values:
+	// The mode of the last successful remediation. Valid values:
 	//
-	// 	- NON_EXECUTION: The remediation template is not executed.
+	// - NON_EXECUTION: The remediation was not executed.
 	//
-	// 	- AUTO_EXECUTION: The remediation template is automatically executed.
+	// - AUTO_EXECUTION: The remediation was automatically executed.
 	//
-	// 	- MANUAL_EXECUTION: The remediation template is manually executed.
+	// - MANUAL_EXECUTION: The remediation was manually executed.
 	//
-	// 	- NOT_CONFIG: The execution mode is not specified.
+	// - NOT_CONFIG: The remediation was not configured.
 	//
 	// example:
 	//
 	// AUTO_EXECUTION
 	LastSuccessfulInvocationType *string `json:"LastSuccessfulInvocationType,omitempty" xml:"LastSuccessfulInvocationType,omitempty"`
-	// The converted configuration of the remediation template. This parameter is returned only for an OOS remediation template.
+	// The converted format of the remediation setting parameters. This parameter is used only to convert the parameters of an OOS template.
 	//
 	// example:
 	//
 	// {"bucketName": "{resourceId}", "regionId": "{regionId}", "permissionName": "private"}
 	RemediaitonOriginParams *string `json:"RemediaitonOriginParams,omitempty" xml:"RemediaitonOriginParams,omitempty"`
-	// The ID of the remediation template.
+	// The ID of the remediation setting.
 	//
 	// example:
 	//
 	// crr-6b7c626622af0026****
 	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
-	// The source of remediation template. Valid values:
+	// The source of the remediation template. Valid values:
 	//
-	// 	- ALIYUN: official template.
+	// - ALIYUN: official template.
 	//
-	// 	- CUSTOM: custom template.
+	// - CUSTOM: custom template.
 	//
-	// 	- NONE: none.
+	// - NONE: none.
 	//
 	// example:
 	//
@@ -154,11 +154,11 @@ type ListAggregateRemediationsResponseBodyRemediations struct {
 	//
 	// ACS-OSS-PutBucketAcl
 	RemediationTemplateId *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
-	// The type of the remediation template. Valid values:
+	// The type of the remediation. Valid values:
 	//
-	// 	- OOS: Operation Orchestration Service (official remediation).
+	// - OOS: Operation Orchestration Service (official remediation).
 	//
-	// 	- FC: Function Compute (custom remediation).
+	// - FC: Function Compute (custom remediation).
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iListAggregateResourcesByAdvancedSearchResponseBody interface {
 }
 
 type ListAggregateResourcesByAdvancedSearchResponseBody struct {
-	// The returned data.
+	// The query results.
 	QueryResults *ListAggregateResourcesByAdvancedSearchResponseBodyQueryResults `json:"QueryResults,omitempty" xml:"QueryResults,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *ListAggregateResourcesByAdvancedSearchResponseBody) Validate() error {
 }
 
 type ListAggregateResourcesByAdvancedSearchResponseBodyQueryResults struct {
-	// The queried resources. A maximum of 1,000 data records can be returned. To view more data, use the download URL of the resource file.
+	// The list of resources returned by the query. A maximum of 1,000 entries are returned. To view more data, download the search file.
 	QueryResultList *ListAggregateResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList `json:"QueryResultList,omitempty" xml:"QueryResultList,omitempty" type:"Struct"`
 }
 
@@ -93,9 +93,9 @@ func (s *ListAggregateResourcesByAdvancedSearchResponseBodyQueryResults) Validat
 }
 
 type ListAggregateResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList struct {
-	// The field names.
+	// The list of field names returned by the search.
 	Columns []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	// The resource data.
+	// The list of resource data returned by the search.
 	Values []interface{} `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

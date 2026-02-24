@@ -16,13 +16,13 @@ type iUpdateAggregateConfigRuleResponseBody interface {
 }
 
 type UpdateAggregateConfigRuleResponseBody struct {
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//
 	// cr-4e3d626622af0080****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

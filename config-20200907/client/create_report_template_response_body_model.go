@@ -16,10 +16,14 @@ type iCreateReportTemplateResponseBody interface {
 }
 
 type CreateReportTemplateResponseBody struct {
+	// Report template ID
+	//
 	// example:
 	//
 	// crt-xxx
 	ReportTemplateId *string `json:"ReportTemplateId,omitempty" xml:"ReportTemplateId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// A7A0FFF8-0B44-40C6-8BBF-3A185EFDFXXX

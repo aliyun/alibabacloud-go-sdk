@@ -16,22 +16,8 @@ type iCopyCompliancePacksResponseBody interface {
 }
 
 type CopyCompliancePacksResponseBody struct {
-	// Indicates whether the compliance packages are replicated. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	CopyRulesResult *bool `json:"CopyRulesResult,omitempty" xml:"CopyRulesResult,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 9E1E69DE-BDED-581E-B559-0C15690901D0
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CopyRulesResult *bool   `json:"CopyRulesResult,omitempty" xml:"CopyRulesResult,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CopyCompliancePacksResponseBody) String() string {

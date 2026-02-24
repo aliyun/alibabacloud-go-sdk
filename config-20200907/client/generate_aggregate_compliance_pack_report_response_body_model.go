@@ -22,7 +22,7 @@ type GenerateAggregateCompliancePackReportResponseBody struct {
 	//
 	// cp-fdc8626622af00f9****
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -14,13 +14,7 @@ type iUpdateConfigurationRecorderRequest interface {
 }
 
 type UpdateConfigurationRecorderRequest struct {
-	// The resource types. Separate multiple resource types with commas (,).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ACS::ECS::Instance
 	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
 }
 

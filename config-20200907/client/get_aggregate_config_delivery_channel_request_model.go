@@ -16,25 +16,9 @@ type iGetAggregateConfigDeliveryChannelRequest interface {
 }
 
 type GetAggregateConfigDeliveryChannelRequest struct {
-	// The ID of the account group.
-	//
-	// For more information about how to obtain the ID of the account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ca-a4e5626622af0079****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The ID of the delivery channel.
-	//
-	// For more information about how to obtain the ID of a delivery channel, see [ListAggregateConfigDeliveryChannels](https://help.aliyun.com/document_detail/429842.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cdc-d9106457e0d900b1****
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
 }
 

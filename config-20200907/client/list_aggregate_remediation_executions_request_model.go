@@ -24,54 +24,14 @@ type iListAggregateRemediationExecutionsRequest interface {
 }
 
 type ListAggregateRemediationExecutionsRequest struct {
-	// The ID of the account group.
-	//
-	// For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ca-edd3626622af00b3****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The rule ID.
-	//
-	// For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cr-2792626622af0c21****
-	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The status of the remediation. Valid values:
-	//
-	// 	- Success
-	//
-	// 	- Failed
-	//
-	// example:
-	//
-	// Success
-	ExecutionStatus *string `json:"ExecutionStatus,omitempty" xml:"ExecutionStatus,omitempty"`
-	// The maximum number of entries to return for a single request. Valid values: 10 to 100.
-	//
-	// example:
-	//
-	// 10
-	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
-	//
-	// example:
-	//
-	// aVCjqFaSy0Ps6zSMGw09****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the member account in the account group. When left unfilled, this rule queries the remediation result for the account that created the rule. If the account is not in the account group, the result will be empty.
-	//
-	// example:
-	//
-	// 126672004088****
-	ResourceAccountId *int64 `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+	ConfigRuleId      *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	ExecutionStatus   *string `json:"ExecutionStatus,omitempty" xml:"ExecutionStatus,omitempty"`
+	MaxResults        *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken         *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
 }
 
 func (s ListAggregateRemediationExecutionsRequest) String() string {

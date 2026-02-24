@@ -18,23 +18,21 @@ type iEvaluatePreConfigRulesRequest interface {
 }
 
 type EvaluatePreConfigRulesRequest struct {
-  // Specifies whether to enable the managed rule. Valid values:
+  // Specifies whether to enable rule templates. Valid values:
   // 
-  // 	- true: enables the managed rule.
+  // - true: enables rule templates.
   // 
-  // 	- false: does not enable the managed rule. This is the default value.
-  // 
-  // >  After you create an evaluation rule, a managed rule that has the same settings as the evaluation rule is created. After you create a resource, the managed rule can be used to continuously check the compliance of the resource.
+  // - false (default): does not enable rule templates.
   // 
   // example:
   // 
   // false
   EnableManagedRules *bool `json:"EnableManagedRules,omitempty" xml:"EnableManagedRules,omitempty"`
-  // The resources that you want to evaluate.
+  // An array that contains the resources that you want to evaluate.
   // 
   // This parameter is required.
   ResourceEvaluateItems []*EvaluatePreConfigRulesRequestResourceEvaluateItems `json:"ResourceEvaluateItems,omitempty" xml:"ResourceEvaluateItems,omitempty" type:"Repeated"`
-  // 下一个查询开始Token
+  // The query start token
   // 
   // example:
   // 
@@ -93,33 +91,31 @@ func (s *EvaluatePreConfigRulesRequest) Validate() error {
 type EvaluatePreConfigRulesRequestResourceEvaluateItems struct {
   // The logical ID of the resource.
   // 
+  // > If this parameter is empty, it is generated based on the Base64 value of `ResourceProperties`.
+  // 
   // example:
   // 
   // ResourceLogicId-test
   ResourceLogicalId *string `json:"ResourceLogicalId,omitempty" xml:"ResourceLogicalId,omitempty"`
-  // The properties of the resource.
+  // The resource configuration items (properties of the resource to be created), such as the specifications, region, name, status, and port or network interface switch status of the resource.
+  // 
+  // > The `ResourceType`, `Identifier`, and `ResourceProperties` parameters must be specified at the same time.
   // 
   // example:
   // 
-  // {
-  // 
-  //     "ImageId": "ubuntu_18_04_64_20G_alibase_20190624.vhd",
-  // 
-  //     "SecurityGroupId": "sg-bp15ed6xe1yxeycg****",
-  // 
-  //     "HostName": "LocalHostName",
-  // 
-  //     "RegionId": "cn-hangzhou"
-  // 
-  // }
+  // {"ResourceGroupId":"","Memory":8192,"InstanceChargeType":"PostPaid","Cpu":2}
   ResourceProperties *string `json:"ResourceProperties,omitempty" xml:"ResourceProperties,omitempty"`
   // The type of the resource.
+  // 
+  // For information about how to obtain the identifier of an evaluation rule, see [ListPreManagedRules](https://help.aliyun.com/document_detail/467810.html).
+  // 
+  // > The `ResourceType`, `Identifier`, and `ResourceProperties` parameters must be specified at the same time.
   // 
   // example:
   // 
   // ACS::ECS::Instance
   ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-  // The evaluation rules.
+  // An array that contains the evaluation rules.
   Rules []*EvaluatePreConfigRulesRequestResourceEvaluateItemsRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -181,15 +177,17 @@ func (s *EvaluatePreConfigRulesRequestResourceEvaluateItems) Validate() error {
 }
 
 type EvaluatePreConfigRulesRequestResourceEvaluateItemsRules struct {
-  // The identifier of the evaluation rule.
+  // The identifier of the rule.
   // 
-  // For more information about how to obtain the identifier of an evaluation rule, see [ListManagedRules](https://help.aliyun.com/document_detail/467810.html).
+  // For information about how to obtain the identifier of a rule, see [ListPreManagedRules](https://help.aliyun.com/document_detail/467810.html).
+  // 
+  // > The `ResourceType`, `Identifier`, and `ResourceProperties` parameters must be specified at the same time.
   // 
   // example:
   // 
   // ecs-instance-deletion-protection-enabled
   Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-  // The input parameters of the evaluation rule.
+  // The input parameters of the rule.
   // 
   // example:
   // 

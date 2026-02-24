@@ -20,9 +20,9 @@ type iIgnoreEvaluationResultsRequest interface {
 }
 
 type IgnoreEvaluationResultsRequest struct {
-	// The ID of the rule.
+	// The rule ID.
 	//
-	// For more information about how to obtain the ID of a rule, see [ListConfigRules](https://help.aliyun.com/document_detail/169607.html).
+	// For more information about how to obtain the rule ID, see [ListConfigRules](https://help.aliyun.com/document_detail/169607.html).
 	//
 	// This parameter is required.
 	//
@@ -30,21 +30,21 @@ type IgnoreEvaluationResultsRequest struct {
 	//
 	// cr-7e72626622af0051****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The date from which the system automatically re-evaluates the ignored incompliant resources.
+	// The date on which the ignored evaluation results are automatically restored.
 	//
-	// >  If you leave this parameter empty, the system does not automatically re-evaluate the ignored incompliant resources. You must manually re-evaluate the ignored incompliant resources.
+	// > If this parameter is left empty, the ignored evaluation results are not automatically restored. You must manually restore them.
 	//
 	// example:
 	//
 	// 2022-06-01
 	IgnoreDate *string `json:"IgnoreDate,omitempty" xml:"IgnoreDate,omitempty"`
-	// The reason why you want to ignore the resource.
+	// The reason for ignoring the resources.
 	//
 	// example:
 	//
-	// Test ignore.
+	// 无需检测。
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The resources to be ignored.
+	// The list of resources to be ignored.
 	//
 	// This parameter is required.
 	Resources []*IgnoreEvaluationResultsRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
@@ -108,9 +108,9 @@ func (s *IgnoreEvaluationResultsRequest) Validate() error {
 }
 
 type IgnoreEvaluationResultsRequestResources struct {
-	// The ID of the region in which the resource resides.
+	// The ID of the region to which the resource belongs.
 	//
-	// For more information about how to obtain the ID of the region in which a resource resides, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
+	// For more information about how to obtain the ID of the region to which the resource belongs, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
 	//
 	// This parameter is required.
 	//
@@ -118,7 +118,7 @@ type IgnoreEvaluationResultsRequestResources struct {
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the Alibaba Cloud account to which the resources belong.
+	// The ID of the Alibaba Cloud account to which the resource belongs.
 	//
 	// This parameter is required.
 	//
@@ -126,9 +126,9 @@ type IgnoreEvaluationResultsRequestResources struct {
 	//
 	// 100931896542****
 	ResourceAccountId *int64 `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
-	// The ID of the resource.
+	// The resource ID.
 	//
-	// For more information about how to obtain the ID of a resource, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
+	// For more information about how to obtain the resource ID, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
 	//
 	// This parameter is required.
 	//
@@ -136,9 +136,9 @@ type IgnoreEvaluationResultsRequestResources struct {
 	//
 	// lb-hp3a3b4ztyfm2plgm****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource.
+	// The resource type.
 	//
-	// For more information about how to obtain the type of a resource, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
+	// For more information about how to obtain the resource type, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
 	//
 	// This parameter is required.
 	//

@@ -16,14 +16,8 @@ type iGetAggregateResourceCountsGroupByResourceTypeResponseBody interface {
 }
 
 type GetAggregateResourceCountsGroupByResourceTypeResponseBody struct {
-	// The resource type by which the statistics are collected.
 	DiscoveredResourceCountsSummary []*GetAggregateResourceCountsGroupByResourceTypeResponseBodyDiscoveredResourceCountsSummary `json:"DiscoveredResourceCountsSummary,omitempty" xml:"DiscoveredResourceCountsSummary,omitempty" type:"Repeated"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 99114B22-1EFF-47DF-B906-1CCE82FF9D60
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId                       *string                                                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAggregateResourceCountsGroupByResourceTypeResponseBody) String() string {
@@ -66,24 +60,9 @@ func (s *GetAggregateResourceCountsGroupByResourceTypeResponseBody) Validate() e
 }
 
 type GetAggregateResourceCountsGroupByResourceTypeResponseBodyDiscoveredResourceCountsSummary struct {
-	// This parameter is expired. The resource type by which statistics are collected.
-	//
-	// example:
-	//
-	// ACS::RAM::Role
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The total number of resources in the region.
-	//
-	// example:
-	//
-	// 7
-	ResourceCount *int64 `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
-	// The resource type by which statistics are collected.
-	//
-	// example:
-	//
-	// ACS::RAM::Role
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	ResourceCount *int64  `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
+	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s GetAggregateResourceCountsGroupByResourceTypeResponseBodyDiscoveredResourceCountsSummary) String() string {

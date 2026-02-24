@@ -16,9 +16,9 @@ type iGetAggregateCompliancePackResponseBody interface {
 }
 
 type GetAggregateCompliancePackResponseBody struct {
-	// The details of the compliance package.
+	// The details of the compliance pack.
 	CompliancePack *GetAggregateCompliancePackResponseBodyCompliancePack `json:"CompliancePack,omitempty" xml:"CompliancePack,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *GetAggregateCompliancePackResponseBody) Validate() error {
 }
 
 type GetAggregateCompliancePackResponseBodyCompliancePack struct {
-	// The ID of the management account to which the compliance package belongs.
+	// The ID of the management account to which the compliance pack belongs.
 	//
 	// example:
 	//
@@ -74,117 +74,165 @@ type GetAggregateCompliancePackResponseBodyCompliancePack struct {
 	//
 	// ca-f632626622af0079****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The ID of the compliance package.
+	// The ID of the compliance pack.
 	//
 	// example:
 	//
 	// cp-fdc8626622af00f9****
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	// The name of the compliance package.
+	// The name of the compliance pack.
 	//
 	// example:
 	//
-	// The name of the compliance package.
+	// 等保三级预检合规包
 	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
-	// The ID of the compliance package template.
+	// The ID of the compliance pack template.
 	//
 	// example:
 	//
 	// ct-5f26ff4e06a300c4****
 	CompliancePackTemplateId *string `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
-	// The rules in the compliance package.
+	// The list of rules in the compliance pack.
 	ConfigRules []*GetAggregateCompliancePackResponseBodyCompliancePackConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
-	// The timestamp when the compliance package was created. Unit: milliseconds.
+	// The timestamp when the compliance pack was created. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1624243657000
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The description of the compliance package.
+	// The description of the compliance pack.
 	//
 	// example:
 	//
-	// The description of the compliance package.
+	// 基于等保2.0三级标准，提供持续检测合规性的建议模板，帮助您提前自检并修复问题，以便快速通过正式检测。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
+	// The risk level of the compliance pack. Valid values:
 	//
-	// 	- 1: high
+	// - 1: high
 	//
-	// 	- 2: medium
+	// - 2: medium
 	//
-	// 	- 3: low
+	// - 3: low
 	//
 	// example:
 	//
 	// 1
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The evaluation scope of the compliance package.
+	// The evaluation scope of the compliance pack.
 	Scope *GetAggregateCompliancePackResponseBodyCompliancePackScope `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Struct"`
-	// The status of the compliance package. Valid values:
+	// The status of the compliance pack. Valid values:
 	//
-	// 	- ACTIVE: The compliance package was normal.
+	// - ACTIVE: The compliance pack is active.
 	//
-	// 	- CREATING: The compliance package was being created.
+	// - CREATING: The compliance pack is being created.
 	//
 	// example:
 	//
 	// ACTIVE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags.
+	// The tags of the resource.
 	Tags []*GetAggregateCompliancePackResponseBodyCompliancePackTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The information about the current compliance package template. The rules in the template do not contain custom function rules. You can quickly create the same compliance package for other accounts or account groups based on the template information.
+	// The information about the compliance pack template. The list of rules in the template does not include user-defined function rules. You can use the template to quickly create the same compliance pack for other accounts or account groups.
 	//
 	// example:
 	//
 	// {
 	//
-	//   "configRuleTemplates": [
+	//     "configRuleTemplates": [
 	//
-	//     {
+	//         {
 	//
-	//       "configRuleName": "OSS-test-name",
+	//             "configRuleName": "自定义条件规则示例",
 	//
-	//       "scope": {
+	//             "scope": {
 	//
-	//         "complianceResourceTypes": [
+	//                 "complianceResourceTypes": [
 	//
-	//           "ACS::OSS::Bucket"
+	//                     "ACS::ECS::Instance"
 	//
-	//         ]
+	//                 ]
 	//
-	//       },
+	//             },
 	//
-	//       "description": "test-description",
+	//             "description": "",
 	//
-	//       "source": {
+	//             "source": {
 	//
-	//         "owner": "ALIYUN",
+	//                 "owner": "CUSTOM_CONFIGURATION",
 	//
-	//         "identifier": "oss-bucket-referer-xxx",
+	//                 "identifier": "acs-config-configuration",
 	//
-	//         "sourceDetails": [
+	//                 "sourceDetails": [
 	//
-	//           {
+	//                     {
 	//
-	//             "messageType": "ConfigurationItemChangeNotification"
+	//                         "messageType": "ScheduledNotification",
 	//
-	//           }
+	//                         "maximumExecutionFrequency": "Twelve_Hours"
 	//
-	//         ]
+	//                     },
 	//
-	//       },
+	//                     {
 	//
-	//       "inputParameters": {
+	//                         "messageType": "ConfigurationItemChangeNotification"
 	//
-	//         "allowEmptyReferer": "true",
+	//                     }
 	//
-	//         "allowReferers": "http://www.aliyun.com"
+	//                 ],
 	//
-	//       }
+	//                 "conditions": "{\\"ComplianceConditions\\":\\"{\\\\\\"operator\\\\\\":\\\\\\"and\\\\\\",\\\\\\"children\\\\\\":[{\\\\\\"operator\\\\\\":\\\\\\"GreaterOrEquals\\\\\\",\\\\\\"featurePath\\\\\\":\\\\\\"$.Cpu\\\\\\",\\\\\\"featureSource\\\\\\":\\\\\\"CONFIGURATION\\\\\\",\\\\\\"desired\\\\\\":\\\\\\"2\\\\\\"}]}\\"}"
 	//
-	//     }
+	//             },
 	//
-	//   ]
+	//             "inputParameters": {}
+	//
+	//         },
+	//
+	//         {
+	//
+	//             "configRuleName": "OSS存储空间Referer在指定的防盗链白名单中",
+	//
+	//             "scope": {
+	//
+	//                 "complianceResourceTypes": [
+	//
+	//                     "ACS::OSS::Bucket"
+	//
+	//                 ]
+	//
+	//             },
+	//
+	//             "description": "OSS存储空间开启防盗链并且Referer在指定白名单中，视为“合规”。",
+	//
+	//             "source": {
+	//
+	//                 "owner": "ALIYUN",
+	//
+	//                 "identifier": "oss-bucket-referer-limit",
+	//
+	//                 "sourceDetails": [
+	//
+	//                     {
+	//
+	//                         "messageType": "ConfigurationItemChangeNotification"
+	//
+	//                     }
+	//
+	//                 ]
+	//
+	//             },
+	//
+	//             "inputParameters": {
+	//
+	//                 "allowEmptyReferer": "true",
+	//
+	//                 "allowReferers": "http://www.aliyun.com"
+	//
+	//             }
+	//
+	//         }
+	//
+	//     ]
 	//
 	// }
 	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
@@ -343,7 +391,7 @@ func (s *GetAggregateCompliancePackResponseBodyCompliancePack) Validate() error 
 }
 
 type GetAggregateCompliancePackResponseBodyCompliancePackConfigRules struct {
-	// The rule ID.
+	// The ID of the rule.
 	//
 	// example:
 	//
@@ -353,35 +401,35 @@ type GetAggregateCompliancePackResponseBodyCompliancePackConfigRules struct {
 	//
 	// example:
 	//
-	// The name of the rule.
+	// 弹性IP实例带宽满足最低要求
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	// The details of the input parameter of the rule.
+	// The input parameters of the rule.
 	ConfigRuleParameters []*GetAggregateCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
 	// The description of the rule.
 	//
 	// example:
 	//
-	// The description of the rule.
+	// 弹性IP实例可用带宽大于等于指定参数值，视为“合规”。默认值：10 MB。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the rule template.
+	// The identifier of the rule.
 	//
 	// example:
 	//
 	// eip-bandwidth-limit
 	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
-	// The type of the resource evaluated based on the rule. Multiple resource types are separated with commas (,).
+	// The types of the resources that are evaluated by the rule. Separate multiple resource types with commas (,).
 	//
 	// example:
 	//
 	// ACS::EIP::EipAddress
 	ResourceTypesScope *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
-	// The risk level of the resources that do not comply with the rule. Valid values:
+	// The risk level of the rule. Valid values:
 	//
-	// 	- 1: high
+	// - 1: high
 	//
-	// 	- 2: medium
+	// - 2: medium
 	//
-	// 	- 3: low
+	// - 3: low
 	//
 	// example:
 	//
@@ -486,11 +534,11 @@ type GetAggregateCompliancePackResponseBodyCompliancePackConfigRulesConfigRulePa
 	//
 	// 10
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
-	// Indicates whether the input parameter was required. Valid values:
+	// Indicates whether the input parameter is required. Valid values:
 	//
-	// 	- true
+	// - true: The input parameter is required.
 	//
-	// 	- false
+	// - false: The input parameter is not required.
 	//
 	// example:
 	//
@@ -538,33 +586,33 @@ func (s *GetAggregateCompliancePackResponseBodyCompliancePackConfigRulesConfigRu
 }
 
 type GetAggregateCompliancePackResponseBodyCompliancePackScope struct {
-	// The IDs of regions that are excluded. Separate multiple region IDs with commas (,).
+	// The IDs of the regions to exclude. Separate multiple region IDs with commas (,).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ExcludeRegionIdsScope *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
-	// The IDs of the resource groups whose resources you do not want to evaluate by using the compliance package. Separate multiple resource group IDs with commas (,).
+	// The IDs of the resource groups to exclude. The compliance pack does not apply to resources in these groups. Separate multiple resource group IDs with commas (,).
 	//
 	// example:
 	//
 	// rg-aekzc7r7rhx****
 	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
-	// The ID of the resource that is not evaluated by using the compliance package.
+	// The IDs of the resources to exclude. The compliance pack does not apply to these resources. Separate multiple resource IDs with commas (,).
 	//
 	// example:
 	//
 	// eip-8vbf3x310fn56ijfd****
 	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	// The scope of the tag that is excluded.
+	// The excluded tag scope.
 	ExcludeTagsScope []*GetAggregateCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
-	// The ID of the region whose resources were evaluated by using the compliance package.
+	// The IDs of the regions where the compliance pack applies. Separate multiple region IDs with commas (,).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	// The ID of the resource group whose resources are evaluated by using the compliance package.
+	// The IDs of the resource groups where the compliance pack applies. Separate multiple resource group IDs with commas (,).
 	//
 	// example:
 	//
@@ -576,13 +624,13 @@ type GetAggregateCompliancePackResponseBodyCompliancePackScope struct {
 	//
 	// eip-8vbf3x310fn56ijfd****
 	ResourceIdsScope *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
-	// The tag key of the resource that is evaluated by using the compliance package.
+	// The tag key of the resources to which the compliance pack applies.
 	//
 	// example:
 	//
 	// ECS
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	// The tag value of the resource that is evaluated by using the compliance package.
+	// The tag value of the resources to which the compliance pack applies.
 	//
 	// example:
 	//
@@ -713,13 +761,13 @@ func (s *GetAggregateCompliancePackResponseBodyCompliancePackScope) Validate() e
 }
 
 type GetAggregateCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// key-2
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//
@@ -758,13 +806,13 @@ func (s *GetAggregateCompliancePackResponseBodyCompliancePackScopeExcludeTagsSco
 }
 
 type GetAggregateCompliancePackResponseBodyCompliancePackScopeTagsScope struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// key-1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//
@@ -803,13 +851,13 @@ func (s *GetAggregateCompliancePackResponseBodyCompliancePackScopeTagsScope) Val
 }
 
 type GetAggregateCompliancePackResponseBodyCompliancePackTags struct {
-	// The tag keys of the resource.
+	// The tag key.
 	//
 	// example:
 	//
 	// key-1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag values of the resource.
+	// The tag value.
 	//
 	// example:
 	//

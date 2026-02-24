@@ -18,26 +18,10 @@ type iRevertAggregateEvaluationResultsRequest interface {
 }
 
 type RevertAggregateEvaluationResultsRequest struct {
-	// The ID of the account group.
-	//
-	// For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ca-5b6c626622af008f****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The ID of the rule in the account group.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cr-7e72626622af0051****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The resources that you want to re-evaluate.
-	//
 	// This parameter is required.
 	Resources []*RevertAggregateEvaluationResultsRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
@@ -91,45 +75,13 @@ func (s *RevertAggregateEvaluationResultsRequest) Validate() error {
 }
 
 type RevertAggregateEvaluationResultsRequestResources struct {
-	// The ID of the region in which your resources reside.
-	//
-	// For more information about how to obtain the ID of the region in which your resources reside, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the Alibaba Cloud account to which the resource belongs.
-	//
-	// >  You must specify the ID of the current management account or a member in the account group of the management account.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 120886317861****
 	ResourceAccountId *int64 `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
-	// The resource ID.
-	//
-	// For more information about how to obtain the ID of a resource, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// lb-hp3a3b4ztyfm2plgm****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource.
-	//
-	// For more information about how to obtain the type of a resource, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ACS::SLB::LoadBalancer
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 

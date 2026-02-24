@@ -16,14 +16,8 @@ type iDeleteAggregateConfigRulesResponseBody interface {
 }
 
 type DeleteAggregateConfigRulesResponseBody struct {
-	// The results of the delete operations.
 	OperateRuleResult *DeleteAggregateConfigRulesResponseBodyOperateRuleResult `json:"OperateRuleResult,omitempty" xml:"OperateRuleResult,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 6EC7AED1-172F-42AE-9C12-295BC2ADB751
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId         *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteAggregateConfigRulesResponseBody) String() string {
@@ -62,7 +56,6 @@ func (s *DeleteAggregateConfigRulesResponseBody) Validate() error {
 }
 
 type DeleteAggregateConfigRulesResponseBodyOperateRuleResult struct {
-	// The details of the result.
 	OperateRuleItemList []*DeleteAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList `json:"OperateRuleItemList,omitempty" xml:"OperateRuleItemList,omitempty" type:"Repeated"`
 }
 
@@ -97,32 +90,9 @@ func (s *DeleteAggregateConfigRulesResponseBodyOperateRuleResult) Validate() err
 }
 
 type DeleteAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList struct {
-	// The rule ID.
-	//
-	// example:
-	//
-	// cr-4e3d626622af0080****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The error code returned.
-	//
-	// 	- If the rule is deleted, no error code is returned.
-	//
-	// 	- If the rule fails to be deleted, an error code is returned. For more information about error codes, see [Error codes](https://error-center.alibabacloud.com/status/product/Config).
-	//
-	// example:
-	//
-	// ConfigRuleCanNotDelete
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- true: The request was successful.
-	//
-	// 	- false: The request failed.
-	//
-	// example:
-	//
-	// false
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) String() string {

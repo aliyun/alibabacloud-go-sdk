@@ -16,22 +16,9 @@ type iGetAggregateConfigRulesReportRequest interface {
 }
 
 type GetAggregateConfigRulesReportRequest struct {
-	// The ID of the account group.
-	//
-	// For more information about how to obtain the ID of the account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ca-f632626622af0079****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The ID of the compliance evaluation report.
-	//
-	// example:
-	//
-	// crp-88176457e0d900c9****
-	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	ReportId     *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
 }
 
 func (s GetAggregateConfigRulesReportRequest) String() string {

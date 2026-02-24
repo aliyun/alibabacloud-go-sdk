@@ -80,11 +80,11 @@ type GetConfigRuleSummaryByRiskLevelResponseBodyConfigRuleSummaries struct {
 	NonCompliantCount *int32 `json:"NonCompliantCount,omitempty" xml:"NonCompliantCount,omitempty"`
 	// The risk level of the resources that are not compliant with the rules. Valid values:
 	//
-	// 	- 1: high risk level.
+	// - 1: high risk level.
 	//
-	// 	- 2: medium risk level.
+	// - 2: medium risk level.
 	//
-	// 	- 3: low risk level.
+	// - 3: low risk level.
 	//
 	// example:
 	//

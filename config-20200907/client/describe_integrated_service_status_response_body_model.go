@@ -18,14 +18,22 @@ type iDescribeIntegratedServiceStatusResponseBody interface {
 }
 
 type DescribeIntegratedServiceStatusResponseBody struct {
+	// The event type for cross-account integration. The supported event type is:
+	//
+	// - NonCompliantNotification: non-compliance events.
+	//
 	// example:
 	//
 	// NonCompliantNotification
 	AggregatorDeliveryDataType *string `json:"AggregatorDeliveryDataType,omitempty" xml:"AggregatorDeliveryDataType,omitempty"`
+	// The enabling status of the integrated service.
+	//
 	// example:
 	//
 	// false
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2E265A38-84D9-5083-A333-B33A2B46D139

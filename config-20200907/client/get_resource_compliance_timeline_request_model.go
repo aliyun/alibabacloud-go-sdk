@@ -26,25 +26,25 @@ type iGetResourceComplianceTimelineRequest interface {
 }
 
 type GetResourceComplianceTimelineRequest struct {
-	// The timestamp that specifies the end of the time range to query. The default value is the time when the GetResourceComplianceTimeline operation is called. Unit: milliseconds.
+	// The end timestamp. If you do not set this parameter, the system queries data generated up to the time of the API call. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1625821156000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The maximum number of entries to return for a single request. Valid values: 1 to 100.
+	// The maximum number of entries to return on a single page. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to initiate the next request. If the response of the current request is truncated, this token is used to initiate another request and obtain the remaining entries.
+	// The pagination token that is used in the next request to retrieve a new page of results. If the return value is truncated, use this token to initiate another request to retrieve the remaining entries.
 	//
 	// example:
 	//
 	// IWBjqMYSy0is7zSMGu16****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region where the resource resides.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -52,9 +52,9 @@ type GetResourceComplianceTimelineRequest struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the resource.
+	// The resource ID.
 	//
-	// For more information about how to obtain the ID of a resource, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
+	// For more information about how to obtain the resource ID, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
 	//
 	// This parameter is required.
 	//
@@ -62,9 +62,9 @@ type GetResourceComplianceTimelineRequest struct {
 	//
 	// new-bucket
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource.
+	// The resource type.
 	//
-	// For more information about how to obtain the type of a resource, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
+	// For more information about how to obtain the resource type, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type GetResourceComplianceTimelineRequest struct {
 	//
 	// ACS::OSS::Bucket
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The timestamp that specifies the beginning of the time range to query. By default, Cloud Config retrieves the compliance evaluations in the last 30 days for the specified resource. Unit: milliseconds.
+	// The start timestamp. If you do not set this parameter, the system queries data from the last 30 days. Unit: milliseconds.
 	//
 	// example:
 	//

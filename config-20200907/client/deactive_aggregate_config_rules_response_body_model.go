@@ -16,14 +16,8 @@ type iDeactiveAggregateConfigRulesResponseBody interface {
 }
 
 type DeactiveAggregateConfigRulesResponseBody struct {
-	// The results of the operations that are performed to disable the specified rules.
 	OperateRuleResult *DeactiveAggregateConfigRulesResponseBodyOperateRuleResult `json:"OperateRuleResult,omitempty" xml:"OperateRuleResult,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 6EC7AED1-172F-42AE-9C12-295BC2ADB751
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId         *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeactiveAggregateConfigRulesResponseBody) String() string {
@@ -62,7 +56,6 @@ func (s *DeactiveAggregateConfigRulesResponseBody) Validate() error {
 }
 
 type DeactiveAggregateConfigRulesResponseBodyOperateRuleResult struct {
-	// The operations that are performed to disable the rule.
 	OperateRuleItemList []*DeactiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList `json:"OperateRuleItemList,omitempty" xml:"OperateRuleItemList,omitempty" type:"Repeated"`
 }
 
@@ -97,32 +90,9 @@ func (s *DeactiveAggregateConfigRulesResponseBodyOperateRuleResult) Validate() e
 }
 
 type DeactiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList struct {
-	// The rule ID.
-	//
-	// example:
-	//
-	// cr-5772ba41209e007b****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The error code.
-	//
-	// 	- If the rule is disabled, no error code is returned.
-	//
-	// 	- If the rule fails to be disabled, an error code is returned. For more information about error codes, see [Error codes](https://error-center.alibabacloud.com/status/product/Config).
-	//
-	// example:
-	//
-	// ConfigRuleNotExists
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// false
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeactiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) String() string {

@@ -40,7 +40,7 @@ type iListAggregateDiscoveredResourcesRequest interface {
 type ListAggregateDiscoveredResourcesRequest struct {
 	// The ID of the account group.
 	//
-	// For more information about how to obtain the ID of the account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
 	//
 	// This parameter is required.
 	//
@@ -48,19 +48,19 @@ type ListAggregateDiscoveredResourcesRequest struct {
 	//
 	// ca-c560626622af0005****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The end time of the time range for querying resources. The value is a timestamp in the UTC format. When you specify this parameter, take note of the following limits:
+	// The end of the time range to query. This is a standard UTC timestamp. The following limits apply:
 	//
-	// 	- The value must be a timestamp in milliseconds.
+	// - The value must be a timestamp in milliseconds.
 	//
-	// 	- The value cannot be less than the value of the StartUpdateTimestamp parameter. The interval between the value and the value of the StartUpdateTimestamp parameter must be less than or equal to 30 days.
+	// - The value cannot be earlier than StartUpdateTimestamp. The interval between StartUpdateTimestamp and EndUpdateTimestamp cannot exceed 30 days.
 	//
-	// 	- The StartUpdateTimestamp and EndUpdateTimestamp parameters must be specified at the same time or left empty at the same time.
+	// - You must specify both StartUpdateTimestamp and EndUpdateTimestamp, or leave both empty.
 	//
 	// example:
 	//
 	// 1724947200000
 	EndUpdateTimestamp *int64 `json:"EndUpdateTimestamp,omitempty" xml:"EndUpdateTimestamp,omitempty"`
-	// The types of resources that are excluded. Separate multiple values with commas (,). If this parameter conflicts with the ResourceTypes parameter, this parameter prevails.
+	// The resource types to exclude. Separate multiple resource types with commas (,). This parameter has a higher priority than the ResourceTypes parameter.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListAggregateDiscoveredResourcesRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The `token` that you want to use to initiate the current request. If the response of the previous request is truncated, you can use this token to initiate another request and obtain the remaining entries.
+	// If the response is truncated, use the `NextToken` to retrieve the next page of results.
 	//
 	// if can be null:
 	// false
@@ -83,13 +83,13 @@ type ListAggregateDiscoveredResourcesRequest struct {
 	//
 	// IWBjqMYSy0is7zSMGu16****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region in which the resource resides. Separate multiple region IDs with commas (,).
+	// The ID of the region where the resource resides. Separate multiple region IDs with commas (,).
 	//
 	// example:
 	//
 	// cn-huhehaote
 	Regions *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
-	// The ID of the Alibaba Cloud account to which the specified resource belongs in the account group.
+	// The ID of the Alibaba Cloud account to which the resources to be queried belong. The account is a member of the account group.
 	//
 	// example:
 	//
@@ -97,9 +97,9 @@ type ListAggregateDiscoveredResourcesRequest struct {
 	ResourceAccountId *int64 `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
 	// The status of the resource. Valid values:
 	//
-	// 	- 0: The resource is deleted. If a resource is deleted from the desired cloud service, **Deleted*	- is displayed in the resource list in the Cloud Config console.
+	// - 0: The resource is deleted. A resource is displayed as Deleted in Cloud Config after it is deleted from the source Alibaba Cloud service.
 	//
-	// 	- 1 (default): The resource is retained. If a resource is managed as expected, **Active*	- is displayed in the resource list in the Cloud Config console.
+	// - 1 (Default): The resource is active. A resource is displayed as Active in Cloud Config if it is properly managed.
 	//
 	// example:
 	//
@@ -110,23 +110,28 @@ type ListAggregateDiscoveredResourcesRequest struct {
 	// example:
 	//
 	// eni-hp31cqoba96jagtz****
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource name.
+	//
+	// example:
+	//
+	// launch-advisor-20200330
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// Deprecated
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource. Separate multiple resource types with commas (,).
+	// The resource type. Separate multiple resource types with commas (,).
 	//
 	// example:
 	//
 	// ACS::ECS::NetworkInterface
 	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
-	// The start time of the time range for querying resources. The value is a timestamp in the Coordinated Universal Time (UTC) format. When you specify this parameter, take note of the following limits:
+	// The start of the time range to query. This is a standard UTC timestamp. The following limits apply:
 	//
-	// 	- The value must be a timestamp in milliseconds.
+	// - The value must be a timestamp in milliseconds.
 	//
-	// 	- The value cannot be greater than the value of the EndUpdateTimestamp parameter. The interval between the value and the value of the EndUpdateTimestamp parameter must be less than or equal to 30 days.
+	// - The value cannot be later than EndUpdateTimestamp. The interval between StartUpdateTimestamp and EndUpdateTimestamp cannot exceed 30 days.
 	//
-	// 	- The StartUpdateTimestamp and EndUpdateTimestamp parameters must be specified at the same time or left empty at the same time.
+	// - You must specify both StartUpdateTimestamp and EndUpdateTimestamp, or leave both empty.
 	//
 	// example:
 	//
