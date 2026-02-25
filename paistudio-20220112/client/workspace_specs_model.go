@@ -18,9 +18,15 @@ type iWorkspaceSpecs interface {
 }
 
 type WorkspaceSpecs struct {
-	Product     *string          `json:"Product,omitempty" xml:"Product,omitempty"`
-	Specs       []*WorkspaceSpec `json:"Specs,omitempty" xml:"Specs,omitempty" type:"Repeated"`
-	WorkspaceId *string          `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// DLC
+	Product *string          `json:"Product,omitempty" xml:"Product,omitempty"`
+	Specs   []*WorkspaceSpec `json:"Specs,omitempty" xml:"Specs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 122421
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s WorkspaceSpecs) String() string {

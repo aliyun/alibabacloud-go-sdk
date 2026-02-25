@@ -26,13 +26,31 @@ type iWorkspaceSpec interface {
 }
 
 type WorkspaceSpec struct {
-	Code              *string         `json:"Code,omitempty" xml:"Code,omitempty"`
-	CodeType          *string         `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
-	IsGuaranteedValid *bool           `json:"IsGuaranteedValid,omitempty" xml:"IsGuaranteedValid,omitempty"`
-	IsOverSoldValid   *bool           `json:"IsOverSoldValid,omitempty" xml:"IsOverSoldValid,omitempty"`
-	Reason            *string         `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Spec              *ResourceAmount `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	SpecName          *string         `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	// example:
+	//
+	// ""
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// ""
+	CodeType *string `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
+	// example:
+	//
+	// true
+	IsGuaranteedValid *bool `json:"IsGuaranteedValid,omitempty" xml:"IsGuaranteedValid,omitempty"`
+	// example:
+	//
+	// true
+	IsOverSoldValid *bool `json:"IsOverSoldValid,omitempty" xml:"IsOverSoldValid,omitempty"`
+	// example:
+	//
+	// ""
+	Reason *string         `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Spec   *ResourceAmount `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// example:
+	//
+	// spec_test
+	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
 }
 
 func (s WorkspaceSpec) String() string {

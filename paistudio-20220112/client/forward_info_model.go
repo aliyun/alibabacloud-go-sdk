@@ -16,8 +16,18 @@ type iForwardInfo interface {
 }
 
 type ForwardInfo struct {
+	// EIP Allocation ID
+	//
+	// example:
+	//
+	// eip-h29r78ieufbih
 	EipAllocationId *string `json:"EipAllocationId,omitempty" xml:"EipAllocationId,omitempty"`
-	NatGatewayId    *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// NAT Gateway ID
+	//
+	// example:
+	//
+	// nat-7j4mka9wguxj
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 }
 
 func (s ForwardInfo) String() string {

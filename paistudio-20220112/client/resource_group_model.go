@@ -30,20 +30,47 @@ type iResourceGroup interface {
 }
 
 type ResourceGroup struct {
-	CreatorID       *string `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
-	GmtCreatedTime  *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
+	// CreatorID
+	//
+	// example:
+	//
+	// 1612285282502324
+	CreatorID *string `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
+	// pai resource created time
+	//
+	// example:
+	//
+	// 2023-06-22T00:00:00Z
+	GmtCreatedTime *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
+	// GmtModified
+	//
+	// example:
+	//
+	// 2023-06-22T00:00:00Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// pai resource group name
+	//
 	// example:
 	//
 	// RG1
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NodeCount *int32  `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// NodeCount
+	//
+	// example:
+	//
+	// 3
+	NodeCount *int32 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// pai resource group id
+	//
 	// example:
 	//
 	// rg17tmvwiokhzaxg
-	ResourceGroupID *string  `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
-	UserVpc         *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
-	Version         *string  `json:"Version,omitempty" xml:"Version,omitempty"`
+	ResourceGroupID *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
+	// UserVpc
+	UserVpc *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
+	Version *string  `json:"Version,omitempty" xml:"Version,omitempty"`
+	// pworkspace id
+	//
 	// example:
 	//
 	// 23000

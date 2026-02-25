@@ -16,8 +16,14 @@ type iGPUInfo interface {
 }
 
 type GPUInfo struct {
-	Count *int64  `json:"count,omitempty" xml:"count,omitempty"`
-	Type  *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 1
+	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	// example:
+	//
+	// T4
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GPUInfo) String() string {

@@ -16,7 +16,13 @@ type iLabel interface {
 }
 
 type Label struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// testAccTag
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// nihao
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

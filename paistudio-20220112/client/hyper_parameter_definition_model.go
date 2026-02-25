@@ -26,14 +26,31 @@ type iHyperParameterDefinition interface {
 }
 
 type HyperParameterDefinition struct {
+	// example:
+	//
+	// 0
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName  *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// Batch Size
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// This parameter is required.
-	Name     *string              `json:"Name,omitempty" xml:"Name,omitempty"`
-	Range    *HyperParameterRange `json:"Range,omitempty" xml:"Range,omitempty"`
-	Required *bool                `json:"Required,omitempty" xml:"Required,omitempty"`
+	//
+	// example:
+	//
+	// batch_size
+	Name  *string              `json:"Name,omitempty" xml:"Name,omitempty"`
+	Range *HyperParameterRange `json:"Range,omitempty" xml:"Range,omitempty"`
+	// example:
+	//
+	// true
+	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Integer
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

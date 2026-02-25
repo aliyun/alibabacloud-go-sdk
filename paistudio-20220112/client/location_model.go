@@ -16,7 +16,13 @@ type iLocation interface {
 }
 
 type Location struct {
-	LocationType  *string                `json:"LocationType,omitempty" xml:"LocationType,omitempty"`
+	// example:
+	//
+	// OSS
+	LocationType *string `json:"LocationType,omitempty" xml:"LocationType,omitempty"`
+	// example:
+	//
+	// oss://${bucket_name}.oss-${region}.aliyuncs.com/oss/location/path/
 	LocationValue map[string]interface{} `json:"LocationValue,omitempty" xml:"LocationValue,omitempty"`
 }
 

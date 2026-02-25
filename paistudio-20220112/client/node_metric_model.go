@@ -18,6 +18,9 @@ type iNodeMetric interface {
 }
 
 type NodeMetric struct {
+	// example:
+	//
+	// GU108
 	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
 	// example:
 	//

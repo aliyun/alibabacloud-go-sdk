@@ -24,10 +24,20 @@ type iChannel interface {
 type Channel struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// This parameter is required.
-	Name                  *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Properties            map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	Required              *bool                  `json:"Required,omitempty" xml:"Required,omitempty"`
-	SupportedChannelTypes []*string              `json:"SupportedChannelTypes,omitempty" xml:"SupportedChannelTypes,omitempty" type:"Repeated"`
+	//
+	// example:
+	//
+	// Model
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// {}
+	Properties map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	// example:
+	//
+	// true
+	Required              *bool     `json:"Required,omitempty" xml:"Required,omitempty"`
+	SupportedChannelTypes []*string `json:"SupportedChannelTypes,omitempty" xml:"SupportedChannelTypes,omitempty" type:"Repeated"`
 }
 
 func (s Channel) String() string {

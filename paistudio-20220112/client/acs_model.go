@@ -16,6 +16,11 @@ type iACS interface {
 }
 
 type ACS struct {
+	// ACS Identifier
+	//
+	// example:
+	//
+	// rq-3kbt2gtimmyw7fgfgothocvh
 	ACSQuotaId         *string   `json:"ACSQuotaId,omitempty" xml:"ACSQuotaId,omitempty"`
 	AssociatedProducts []*string `json:"AssociatedProducts,omitempty" xml:"AssociatedProducts,omitempty" type:"Repeated"`
 }

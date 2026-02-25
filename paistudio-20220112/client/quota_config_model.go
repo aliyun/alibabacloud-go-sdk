@@ -51,7 +51,7 @@ type QuotaConfig struct {
 	ACS *ACS `json:"ACS,omitempty" xml:"ACS,omitempty"`
 	// example:
 	//
-	// ceeb37xxxx
+	// ceeb3724255364664
 	ClusterId             *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ControlPlaneClusterId *string `json:"ControlPlaneClusterId,omitempty" xml:"ControlPlaneClusterId,omitempty"`
 	// example:

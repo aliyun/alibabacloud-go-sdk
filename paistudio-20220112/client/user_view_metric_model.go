@@ -73,17 +73,29 @@ type UserViewMetric struct {
 	NetworkInputRate  *string   `json:"NetworkInputRate,omitempty" xml:"NetworkInputRate,omitempty"`
 	NetworkOutputRate *string   `json:"NetworkOutputRate,omitempty" xml:"NetworkOutputRate,omitempty"`
 	NodeNames         []*string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty" type:"Repeated"`
-	RequestCPU        *int32    `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
-	RequestGPU        *int32    `json:"RequestGPU,omitempty" xml:"RequestGPU,omitempty"`
-	RequestMemory     *int64    `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
+	// example:
+	//
+	// 100
+	RequestCPU *int32 `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
+	// example:
+	//
+	// 10
+	RequestGPU *int32 `json:"RequestGPU,omitempty" xml:"RequestGPU,omitempty"`
+	// example:
+	//
+	// 102400000
+	RequestMemory *int64 `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
 	// example:
 	//
 	// rg17tmvwiokhzaxg
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	TotalCPU        *int32  `json:"TotalCPU,omitempty" xml:"TotalCPU,omitempty"`
-	TotalGPU        *int32  `json:"TotalGPU,omitempty" xml:"TotalGPU,omitempty"`
-	TotalMemory     *int64  `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
-	UserId          *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 1000
+	TotalCPU    *int32  `json:"TotalCPU,omitempty" xml:"TotalCPU,omitempty"`
+	TotalGPU    *int32  `json:"TotalGPU,omitempty" xml:"TotalGPU,omitempty"`
+	TotalMemory *int64  `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s UserViewMetric) String() string {

@@ -72,38 +72,85 @@ type iMachineGroup interface {
 }
 
 type MachineGroup struct {
-	AllocatableCpu    *int64  `json:"AllocatableCpu,omitempty" xml:"AllocatableCpu,omitempty"`
-	AllocatableMemory *int64  `json:"AllocatableMemory,omitempty" xml:"AllocatableMemory,omitempty"`
-	Cpu               *int64  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CreatorID         *string `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
+	AllocatableCpu    *int64 `json:"AllocatableCpu,omitempty" xml:"AllocatableCpu,omitempty"`
+	AllocatableMemory *int64 `json:"AllocatableMemory,omitempty" xml:"AllocatableMemory,omitempty"`
+	Cpu               *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// 1612285282502324
+	CreatorID *string `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
 	// example:
 	//
 	// 470.199.02
-	DefaultDriver   *string `json:"DefaultDriver,omitempty" xml:"DefaultDriver,omitempty"`
-	DiskCapacity    *int64  `json:"DiskCapacity,omitempty" xml:"DiskCapacity,omitempty"`
-	DiskPL          *string `json:"DiskPL,omitempty" xml:"DiskPL,omitempty"`
-	EcsCount        *int64  `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
-	EcsSpec         *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
-	GmtCreatedTime  *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
-	GmtExpiredTime  *string `json:"GmtExpiredTime,omitempty" xml:"GmtExpiredTime,omitempty"`
+	DefaultDriver *string `json:"DefaultDriver,omitempty" xml:"DefaultDriver,omitempty"`
+	DiskCapacity  *int64  `json:"DiskCapacity,omitempty" xml:"DiskCapacity,omitempty"`
+	DiskPL        *string `json:"DiskPL,omitempty" xml:"DiskPL,omitempty"`
+	// example:
+	//
+	// 1
+	EcsCount *int64 `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
+	// example:
+	//
+	// ecs.c6.large
+	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	// example:
+	//
+	// 2023-06-22T00:00:00Z
+	GmtCreatedTime *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
+	// example:
+	//
+	// 2023-08-22T00:00:00Z
+	GmtExpiredTime *string `json:"GmtExpiredTime,omitempty" xml:"GmtExpiredTime,omitempty"`
+	// example:
+	//
+	// 2023-06-22T00:00:00Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	GmtStartedTime  *string `json:"GmtStartedTime,omitempty" xml:"GmtStartedTime,omitempty"`
-	Gpu             *int64  `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	GpuMemory       *int64  `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
-	GpuType         *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
+	// example:
+	//
+	// 2023-06-22T00:00:00Z
+	GmtStartedTime *string `json:"GmtStartedTime,omitempty" xml:"GmtStartedTime,omitempty"`
+	Gpu            *int64  `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	GpuMemory      *int64  `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
+	GpuType        *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
 	// example:
 	//
 	// mg1
-	MachineGroupID       *string   `json:"MachineGroupID,omitempty" xml:"MachineGroupID,omitempty"`
-	Memory               *int64    `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	OrderInstanceId      *string   `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
-	PaymentDuration      *string   `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
-	PaymentDurationUnit  *string   `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
-	PaymentType          *string   `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	ReasonCode           *string   `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	ReasonMessage        *string   `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	ResourceGroupID      *string   `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
-	ResourceType         *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	MachineGroupID *string `json:"MachineGroupID,omitempty" xml:"MachineGroupID,omitempty"`
+	Memory         *int64  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// “”
+	OrderInstanceId *string `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
+	// example:
+	//
+	// 2
+	PaymentDuration *string `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
+	// region ID
+	//
+	// example:
+	//
+	// Monthly
+	PaymentDurationUnit *string `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
+	// example:
+	//
+	// PREPAY
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// example:
+	//
+	// “”
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// example:
+	//
+	// “”
+	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// example:
+	//
+	// rgf0zhfqn1d4ity2
+	ResourceGroupID *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
+	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// Success
 	Status               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
 	SupportedDrivers     []*string `json:"SupportedDrivers,omitempty" xml:"SupportedDrivers,omitempty" type:"Repeated"`
 	SystemReservedCpu    *int64    `json:"SystemReservedCpu,omitempty" xml:"SystemReservedCpu,omitempty"`

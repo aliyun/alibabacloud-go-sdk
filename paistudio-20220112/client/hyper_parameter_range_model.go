@@ -28,14 +28,35 @@ type iHyperParameterRange interface {
 }
 
 type HyperParameterRange struct {
-	Enum             []*string `json:"Enum,omitempty" xml:"Enum,omitempty" type:"Repeated"`
-	ExclusiveMaximum *bool     `json:"ExclusiveMaximum,omitempty" xml:"ExclusiveMaximum,omitempty"`
-	ExclusiveMinimum *bool     `json:"ExclusiveMinimum,omitempty" xml:"ExclusiveMinimum,omitempty"`
-	MaxLength        *int64    `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
-	Maximum          *string   `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
-	MinLength        *int64    `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
-	Minimum          *string   `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
-	Pattern          *string   `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	Enum []*string `json:"Enum,omitempty" xml:"Enum,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	ExclusiveMaximum *bool `json:"ExclusiveMaximum,omitempty" xml:"ExclusiveMaximum,omitempty"`
+	// example:
+	//
+	// true
+	ExclusiveMinimum *bool `json:"ExclusiveMinimum,omitempty" xml:"ExclusiveMinimum,omitempty"`
+	// example:
+	//
+	// 30
+	MaxLength *int64 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	// example:
+	//
+	// 10
+	Maximum *string `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	// example:
+	//
+	// 1
+	MinLength *int64 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
+	// example:
+	//
+	// 0
+	Minimum *string `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
+	// example:
+	//
+	// ^\\+?[1-9][0-9]*$
+	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
 }
 
 func (s HyperParameterRange) String() string {

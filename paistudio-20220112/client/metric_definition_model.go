@@ -18,21 +18,18 @@ type iMetricDefinition interface {
 }
 
 type MetricDefinition struct {
-	// example:
-	//
-	// train dataset oob score
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// train:oob_score
+	// loss
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// .*train:oob_score=([-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?).*
+	// .*train:loss=([-+]?[0-9]*\\\\.?[0-9]+(?:[eE][-+]?[0-9]+)?).*
 	Regex *string `json:"Regex,omitempty" xml:"Regex,omitempty"`
 }
 

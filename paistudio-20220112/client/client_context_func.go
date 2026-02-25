@@ -1786,6 +1786,81 @@ func (client *Client) ListNodesWithContext(ctx context.Context, tmpReq *ListNode
 
 // Summary:
 //
+// 获取当前资源配额用户列表和其所使用的资源
+//
+// @param request - ListQuotaActiveUserUsagesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListQuotaActiveUserUsagesResponse
+func (client *Client) ListQuotaActiveUserUsagesWithContext(ctx context.Context, QuotaId *string, request *ListQuotaActiveUserUsagesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListQuotaActiveUserUsagesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SelfOnly) {
+		query["SelfOnly"] = request.SelfOnly
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	if !dara.IsNil(request.Username) {
+		query["Username"] = request.Username
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListQuotaActiveUserUsages"),
+		Version:     dara.String("2022-01-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/quotas/" + dara.PercentEncode(dara.StringValue(QuotaId)) + "/activeuserusages"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListQuotaActiveUserUsagesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 您可以通过此API获取Quota上的任务信息列表
 //
 // @param request - ListQuotaWorkloadsRequest

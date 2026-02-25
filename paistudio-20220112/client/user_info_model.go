@@ -16,7 +16,13 @@ type iUserInfo interface {
 }
 
 type UserInfo struct {
-	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 161222222222
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// test
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 

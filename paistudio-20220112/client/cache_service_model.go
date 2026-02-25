@@ -17,10 +17,14 @@ type iCacheService interface {
 	GetCreatedBy() *string
 	SetGmtCreated(v string) *CacheService
 	GetGmtCreated() *string
+	SetNetworkType(v string) *CacheService
+	GetNetworkType() *string
 	SetQuotaId(v string) *CacheService
 	GetQuotaId() *string
 	SetStatus(v string) *CacheService
 	GetStatus() *string
+	SetSupportRDMA(v string) *CacheService
+	GetSupportRDMA() *string
 	SetSupportedClientQuotaIds(v []*string) *CacheService
 	GetSupportedClientQuotaIds() []*string
 	SetTenantId(v string) *CacheService
@@ -36,8 +40,10 @@ type CacheService struct {
 	CacheServiceId          *string      `json:"CacheServiceId,omitempty" xml:"CacheServiceId,omitempty"`
 	CreatedBy               *string      `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	GmtCreated              *string      `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	NetworkType             *string      `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	QuotaId                 *string      `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
 	Status                  *string      `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportRDMA             *string      `json:"SupportRDMA,omitempty" xml:"SupportRDMA,omitempty"`
 	SupportedClientQuotaIds []*string    `json:"SupportedClientQuotaIds,omitempty" xml:"SupportedClientQuotaIds,omitempty" type:"Repeated"`
 	TenantId                *string      `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	UserId                  *string      `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -68,12 +74,20 @@ func (s *CacheService) GetGmtCreated() *string {
 	return s.GmtCreated
 }
 
+func (s *CacheService) GetNetworkType() *string {
+	return s.NetworkType
+}
+
 func (s *CacheService) GetQuotaId() *string {
 	return s.QuotaId
 }
 
 func (s *CacheService) GetStatus() *string {
 	return s.Status
+}
+
+func (s *CacheService) GetSupportRDMA() *string {
+	return s.SupportRDMA
 }
 
 func (s *CacheService) GetSupportedClientQuotaIds() []*string {
@@ -112,6 +126,11 @@ func (s *CacheService) SetGmtCreated(v string) *CacheService {
 	return s
 }
 
+func (s *CacheService) SetNetworkType(v string) *CacheService {
+	s.NetworkType = &v
+	return s
+}
+
 func (s *CacheService) SetQuotaId(v string) *CacheService {
 	s.QuotaId = &v
 	return s
@@ -119,6 +138,11 @@ func (s *CacheService) SetQuotaId(v string) *CacheService {
 
 func (s *CacheService) SetStatus(v string) *CacheService {
 	s.Status = &v
+	return s
+}
+
+func (s *CacheService) SetSupportRDMA(v string) *CacheService {
+	s.SupportRDMA = &v
 	return s
 }
 

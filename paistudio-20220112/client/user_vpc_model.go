@@ -27,12 +27,38 @@ type iUserVpc interface {
 
 type UserVpc struct {
 	DefaultForwardInfo *ForwardInfo `json:"DefaultForwardInfo,omitempty" xml:"DefaultForwardInfo,omitempty"`
-	DefaultRoute       *string      `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
-	ExtendedCIDRs      []*string    `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
-	RoleArn            *string      `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	SecurityGroupId    *string      `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SwitchId           *string      `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
-	VpcId              *string      `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// DefaultRoute
+	//
+	// example:
+	//
+	// eth0
+	DefaultRoute *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	// ExtendedCIDRs
+	ExtendedCIDRs []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	// RoleArn
+	//
+	// example:
+	//
+	// acs:ram::25xxxx:role/AliyunPAIDLCDefaultRole
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// SecurityGroupID
+	//
+	// example:
+	//
+	// sg-abcdef****
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// VSW ID
+	//
+	// example:
+	//
+	// vs-abcdef****
+	SwitchId *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
+	// VPC ID
+	//
+	// example:
+	//
+	// vpc-abcdef****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s UserVpc) String() string {

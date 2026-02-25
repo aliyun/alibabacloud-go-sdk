@@ -47,16 +47,27 @@ type AlgorithmSpec struct {
 	Customization   *AlgorithmSpecCustomization   `json:"Customization,omitempty" xml:"Customization,omitempty" type:"Struct"`
 	HyperParameters []*HyperParameterDefinition   `json:"HyperParameters,omitempty" xml:"HyperParameters,omitempty" type:"Repeated"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// registry.cn-shanghai.aliyuncs.com/pai-training/kmeans:v1.0.0
 	Image         *string    `json:"Image,omitempty" xml:"Image,omitempty"`
 	InputChannels []*Channel `json:"InputChannels,omitempty" xml:"InputChannels,omitempty" type:"Repeated"`
 	// This parameter is required.
-	JobType                     *string                           `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	MetricDefinitions           []*MetricDefinition               `json:"MetricDefinitions,omitempty" xml:"MetricDefinitions,omitempty" type:"Repeated"`
-	OutputChannels              []*Channel                        `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
-	ProgressDefinitions         *AlgorithmSpecProgressDefinitions `json:"ProgressDefinitions,omitempty" xml:"ProgressDefinitions,omitempty" type:"Struct"`
-	ResourceRequirements        []*ConditionExpression            `json:"ResourceRequirements,omitempty" xml:"ResourceRequirements,omitempty" type:"Repeated"`
-	SupportedInstanceTypes      []*string                         `json:"SupportedInstanceTypes,omitempty" xml:"SupportedInstanceTypes,omitempty" type:"Repeated"`
-	SupportsDistributedTraining *bool                             `json:"SupportsDistributedTraining,omitempty" xml:"SupportsDistributedTraining,omitempty"`
+	//
+	// example:
+	//
+	// TFJob
+	JobType                *string                           `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MetricDefinitions      []*MetricDefinition               `json:"MetricDefinitions,omitempty" xml:"MetricDefinitions,omitempty" type:"Repeated"`
+	OutputChannels         []*Channel                        `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
+	ProgressDefinitions    *AlgorithmSpecProgressDefinitions `json:"ProgressDefinitions,omitempty" xml:"ProgressDefinitions,omitempty" type:"Struct"`
+	ResourceRequirements   []*ConditionExpression            `json:"ResourceRequirements,omitempty" xml:"ResourceRequirements,omitempty" type:"Repeated"`
+	SupportedInstanceTypes []*string                         `json:"SupportedInstanceTypes,omitempty" xml:"SupportedInstanceTypes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	SupportsDistributedTraining *bool `json:"SupportsDistributedTraining,omitempty" xml:"SupportsDistributedTraining,omitempty"`
 }
 
 func (s AlgorithmSpec) String() string {
@@ -294,9 +305,19 @@ func (s *AlgorithmSpecComputeResource) Validate() error {
 }
 
 type AlgorithmSpecComputeResourcePolicy struct {
+	// Policy Value
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// V1
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -331,6 +352,9 @@ func (s *AlgorithmSpecComputeResourcePolicy) Validate() error {
 }
 
 type AlgorithmSpecCustomization struct {
+	// example:
+	//
+	// true
 	CodeDir *bool `json:"CodeDir,omitempty" xml:"CodeDir,omitempty"`
 }
 
@@ -401,8 +425,14 @@ func (s *AlgorithmSpecProgressDefinitions) Validate() error {
 }
 
 type AlgorithmSpecProgressDefinitionsOverallProgress struct {
+	// example:
+	//
+	// training progress
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Regex       *string `json:"Regex,omitempty" xml:"Regex,omitempty"`
+	// example:
+	//
+	// ^[0-9]+([.][0-9]+){0,1}$
+	Regex *string `json:"Regex,omitempty" xml:"Regex,omitempty"`
 }
 
 func (s AlgorithmSpecProgressDefinitionsOverallProgress) String() string {
@@ -436,8 +466,14 @@ func (s *AlgorithmSpecProgressDefinitionsOverallProgress) Validate() error {
 }
 
 type AlgorithmSpecProgressDefinitionsRemainingTime struct {
+	// example:
+	//
+	// training remaining time
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Regex       *string `json:"Regex,omitempty" xml:"Regex,omitempty"`
+	// example:
+	//
+	// ^[0-9]+([.][0-9]+){0,1}$
+	Regex *string `json:"Regex,omitempty" xml:"Regex,omitempty"`
 }
 
 func (s AlgorithmSpecProgressDefinitionsRemainingTime) String() string {
