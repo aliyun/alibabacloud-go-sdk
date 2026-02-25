@@ -16,7 +16,13 @@ type iListWebApplicationsOutput interface {
 }
 
 type ListWebApplicationsOutput struct {
-	NextToken                       *string                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// A2RN
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The applications.
 	WebApplicationWithInstanceCount []*WebApplicationWithInstanceCount `json:"WebApplicationWithInstanceCount,omitempty" xml:"WebApplicationWithInstanceCount,omitempty" type:"Repeated"`
 }
 

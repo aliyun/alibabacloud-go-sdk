@@ -16,13 +16,21 @@ type iUpdateWebApplicationScalingConfigInput interface {
 }
 
 type UpdateWebApplicationScalingConfigInput struct {
+	// The maximum number of instances.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	MaximumInstanceCount *int64 `json:"MaximumInstanceCount,omitempty" xml:"MaximumInstanceCount,omitempty"`
+	// The minimum number of instances.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	MinimumInstanceCount *int64 `json:"MinimumInstanceCount,omitempty" xml:"MinimumInstanceCount,omitempty"`
 }
 

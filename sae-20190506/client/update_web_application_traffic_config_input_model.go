@@ -20,13 +20,22 @@ type iUpdateWebApplicationTrafficConfigInput interface {
 }
 
 type UpdateWebApplicationTrafficConfigInput struct {
+	// The authentication type. Valid values: Anonymous (default): does not require authentication. Application: requires authentication.
+	//
 	// example:
 	//
 	// Anonymous
-	AuthType               *string             `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	DisableURLInternet     *bool               `json:"DisableURLInternet,omitempty" xml:"DisableURLInternet,omitempty"`
+	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// Specifies whether to disable access to the default Internet domain. If you set this parameter to true, a 403 error is returned if you access the default public URL provided by the application. A value of false does not have affect the running of the function.
+	//
+	// example:
+	//
+	// true
+	DisableURLInternet *bool `json:"DisableURLInternet,omitempty" xml:"DisableURLInternet,omitempty"`
+	// The traffic distribution for the application versions. The sum of traffic percentages for all versions must be equal to 1.
 	RevisionsTrafficWeight map[string]*float32 `json:"RevisionsTrafficWeight,omitempty" xml:"RevisionsTrafficWeight,omitempty"`
-	WebAclConfig           *WebAclConfig       `json:"WebAclConfig,omitempty" xml:"WebAclConfig,omitempty"`
+	// The configurations of the access control list (ACL) that consists of IP addresses.
+	WebAclConfig *WebAclConfig `json:"WebAclConfig,omitempty" xml:"WebAclConfig,omitempty"`
 }
 
 func (s UpdateWebApplicationTrafficConfigInput) String() string {

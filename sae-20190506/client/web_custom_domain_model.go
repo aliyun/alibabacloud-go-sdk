@@ -34,31 +34,52 @@ type iWebCustomDomain interface {
 }
 
 type WebCustomDomain struct {
+	// The time when the custom domain name was created.
+	//
 	// example:
 	//
 	// 2023-03-30T08:02:19Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The name of the application that is forwarded by the domain name by default.
+	//
 	// example:
 	//
 	// appxxxxx
 	DefaultForwardingAppName *string `json:"DefaultForwardingAppName,omitempty" xml:"DefaultForwardingAppName,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The time when the custom domain name was last updated.
+	//
 	// example:
 	//
 	// 2023-03-30T08:02:19Z
 	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	NamespaceId      *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The ID of the namespace to which the domain name belongs.
+	//
+	// example:
+	//
+	// cn-chengdu
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The protocol type that is supported by the custom domain name. HTTP: Only HTTP is supported. HTTPS: Only HTTPS is supported. HTTP, HTTPS: Both HTTP and HTTPS are supported.
+	//
 	// example:
 	//
 	// HTTP
-	Protocol      *string        `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	RouteConfig   *RouteConfig   `json:"RouteConfig,omitempty" xml:"RouteConfig,omitempty"`
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The route configurations.
+	RouteConfig *RouteConfig `json:"RouteConfig,omitempty" xml:"RouteConfig,omitempty"`
+	// The information about the HTTPS certificate.
 	WebCertConfig *WebCertConfig `json:"WebCertConfig,omitempty" xml:"WebCertConfig,omitempty"`
-	WebTLSConfig  *WebTLSConfig  `json:"WebTLSConfig,omitempty" xml:"WebTLSConfig,omitempty"`
-	WebWAFConfig  *WebWAFConfig  `json:"WebWAFConfig,omitempty" xml:"WebWAFConfig,omitempty"`
+	// The Transport Layer Security (TLS) configurations.
+	WebTLSConfig *WebTLSConfig `json:"WebTLSConfig,omitempty" xml:"WebTLSConfig,omitempty"`
+	// The WAF configurations.
+	WebWAFConfig *WebWAFConfig `json:"WebWAFConfig,omitempty" xml:"WebWAFConfig,omitempty"`
+	// The ID of your Alibaba Cloud account
+	//
 	// example:
 	//
 	// 123xxxxxx

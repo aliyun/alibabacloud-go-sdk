@@ -24,12 +24,54 @@ type iSLSCollectConfig interface {
 }
 
 type SLSCollectConfig struct {
-	LogPath      *string `json:"LogPath,omitempty" xml:"LogPath,omitempty"`
-	LogType      *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	// The log path.
+	//
+	// example:
+	//
+	// /test
+	LogPath *string `json:"LogPath,omitempty" xml:"LogPath,omitempty"`
+	// The log type. The following types of logs are supported:
+	//
+	// 	- File collection logs
+	//
+	// 	- Standard output logs
+	//
+	// example:
+	//
+	// file_log
+	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	// The name of the Logstore. The name must meet the following requirements:
+	//
+	// 	- The name must be unique in a project.
+	//
+	// 	- The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	//
+	// 	- The name must start and end with a lowercase letter or a digit.
+	//
+	// 	- The name must be 3 to 63 characters in length.
+	//
+	// example:
+	//
+	// sag-shanghai
 	LogstoreName *string `json:"LogstoreName,omitempty" xml:"LogstoreName,omitempty"`
-	LogtailName  *string `json:"LogtailName,omitempty" xml:"LogtailName,omitempty"`
+	// The name for the Logtail configuration.
+	//
+	// example:
+	//
+	// ******-access-log-collector
+	LogtailName *string `json:"LogtailName,omitempty" xml:"LogtailName,omitempty"`
+	// The name of the machine group of Simple Log Service.
+	//
+	// example:
+	//
+	// Log Service Group
 	MachineGroup *string `json:"MachineGroup,omitempty" xml:"MachineGroup,omitempty"`
-	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The name of the SLS project.
+	//
+	// example:
+	//
+	// test
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s SLSCollectConfig) String() string {

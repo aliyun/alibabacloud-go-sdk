@@ -16,7 +16,13 @@ type iDescribeWebAppStaticsOutput interface {
 }
 
 type DescribeWebAppStaticsOutput struct {
-	Length        *int32            `json:"Length,omitempty" xml:"Length,omitempty"`
+	// The maximum number of entries returned.
+	//
+	// example:
+	//
+	// 20
+	Length *int32 `json:"Length,omitempty" xml:"Length,omitempty"`
+	// The static resources in the web application.
 	WebAppStatics []*WebStaticsInfo `json:"WebAppStatics,omitempty" xml:"WebAppStatics,omitempty" type:"Repeated"`
 }
 

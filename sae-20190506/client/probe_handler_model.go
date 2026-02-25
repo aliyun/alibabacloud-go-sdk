@@ -16,7 +16,9 @@ type iProbeHandler interface {
 }
 
 type ProbeHandler struct {
-	HttpGet   *HTTPGetAction   `json:"HttpGet,omitempty" xml:"HttpGet,omitempty"`
+	// The action that specifies the HTTP request to execute.
+	HttpGet *HTTPGetAction `json:"HttpGet,omitempty" xml:"HttpGet,omitempty"`
+	// The action that specifies the involved TCP port.
 	TcpSocket *TCPSocketAction `json:"TcpSocket,omitempty" xml:"TcpSocket,omitempty"`
 }
 

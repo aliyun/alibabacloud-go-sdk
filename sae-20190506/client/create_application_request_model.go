@@ -87,6 +87,8 @@ type iCreateApplicationRequest interface {
 	GetJdk() *string
 	SetKafkaConfigs(v string) *CreateApplicationRequest
 	GetKafkaConfigs() *string
+	SetLabels(v map[string]*string) *CreateApplicationRequest
+	GetLabels() map[string]*string
 	SetLiveness(v string) *CreateApplicationRequest
 	GetLiveness() *string
 	SetLokiConfigs(v string) *CreateApplicationRequest
@@ -494,7 +496,8 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// {"kafkaEndpoint":"10.0.X.XXX:XXXX,10.0.X.XXX:XXXX,10.0.X.XXX:XXXX\\","kafkaInstanceId":"alikafka_pre-cn-7pp2l8kr****","kafkaConfigs":[{"logType":"file_log","logDir":"/tmp/a.log","kafkaTopic":"test2"},{"logType":"stdout","logDir":"","kafkaTopic":"test"}]}
-	KafkaConfigs *string `json:"KafkaConfigs,omitempty" xml:"KafkaConfigs,omitempty"`
+	KafkaConfigs *string            `json:"KafkaConfigs,omitempty" xml:"KafkaConfigs,omitempty"`
+	Labels       map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	// Container health check. If the container fails this check, it will be revoked and relaunch again. Use one of the following methods to perform the health check:
 	//
 	// 	- Example of **exec**: `{"exec":{"command":["sh","-c","cat/home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}`
@@ -1127,6 +1130,10 @@ func (s *CreateApplicationRequest) GetKafkaConfigs() *string {
 	return s.KafkaConfigs
 }
 
+func (s *CreateApplicationRequest) GetLabels() map[string]*string {
+	return s.Labels
+}
+
 func (s *CreateApplicationRequest) GetLiveness() *string {
 	return s.Liveness
 }
@@ -1507,6 +1514,11 @@ func (s *CreateApplicationRequest) SetJdk(v string) *CreateApplicationRequest {
 
 func (s *CreateApplicationRequest) SetKafkaConfigs(v string) *CreateApplicationRequest {
 	s.KafkaConfigs = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetLabels(v map[string]*string) *CreateApplicationRequest {
+	s.Labels = v
 	return s
 }
 

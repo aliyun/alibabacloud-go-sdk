@@ -18,10 +18,24 @@ type iRevisionConfig interface {
 }
 
 type RevisionConfig struct {
+	// The container configurations. You can deploy only one container for each application. The maximum length of this array is 1.
+	//
 	// This parameter is required.
-	Containers        []*Container      `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
-	EnableArmsMetrics *bool             `json:"EnableArmsMetrics,omitempty" xml:"EnableArmsMetrics,omitempty"`
-	WebNetworkConfig  *WebNetworkConfig `json:"WebNetworkConfig,omitempty" xml:"WebNetworkConfig,omitempty"`
+	Containers []*Container `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
+	// Specifies whether to enable Application Real-Time Monitoring Service (ARMS) monitoring. Valid values:
+	//
+	// 	- **`true`**: Enables the ARMS monitoring.
+	//
+	// 	- **`false`**: Disables the ARMS monitoring.
+	//
+	// example:
+	//
+	// true
+	EnableArmsMetrics *bool `json:"EnableArmsMetrics,omitempty" xml:"EnableArmsMetrics,omitempty"`
+	// The network configurations.
+	//
+	// >  This parameter is used to configure network settings for a version of the application.
+	WebNetworkConfig *WebNetworkConfig `json:"WebNetworkConfig,omitempty" xml:"WebNetworkConfig,omitempty"`
 }
 
 func (s RevisionConfig) String() string {

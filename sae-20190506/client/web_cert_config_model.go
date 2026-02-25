@@ -18,9 +18,30 @@ type iWebCertConfig interface {
 }
 
 type WebCertConfig struct {
-	CertName    *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	// The certificate name.
+	//
+	// example:
+	//
+	// sae-certname
+	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	// The public key of the certificate.
+	//
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----
+	//
+	//  ……
+	//
+	// -----END CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	PrivateKey  *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	// The private key of the certificate.
+	//
+	// example:
+	//
+	// -----BEGIN RSA PRIVATE KEY----- MIIEowIBAAKCAQEA5SIfpNCBoiDrZhX1H39CHwQMVD0kBNeBTWfP9xkeesvfzbOz ******	- POVNFfDf9h7pJtQ5fRZNTYTDs/d+cH62Z3+nS74mNnEfff0nkvne
+	//
+	// -----END RSA PRIVATE KEY-----
+	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
 }
 
 func (s WebCertConfig) String() string {

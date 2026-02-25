@@ -22,11 +22,32 @@ type iStartupProbe interface {
 }
 
 type StartupProbe struct {
-	FailureThreshold    *int32        `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
-	InitialDelaySeconds *int32        `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
-	PeriodSeconds       *int32        `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
-	ProbeHandler        *ProbeHandler `json:"ProbeHandler,omitempty" xml:"ProbeHandler,omitempty"`
-	TimeoutSeconds      *int32        `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+	// The minimum number of consecutive failures that is considered a failure after a successful probe. Default value: 3. Minimum value: 1.
+	//
+	// example:
+	//
+	// 1
+	FailureThreshold *int32 `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
+	// The duration after the container is started before health checks are initiated. For more information, see [Probes](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes).
+	//
+	// example:
+	//
+	// 1
+	InitialDelaySeconds *int32 `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
+	// The health check interval. Default value: 10. Unit: seconds. Minimum value: 1.
+	//
+	// example:
+	//
+	// 1
+	PeriodSeconds *int32 `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	// The operation to determine the health of the container.
+	ProbeHandler *ProbeHandler `json:"ProbeHandler,omitempty" xml:"ProbeHandler,omitempty"`
+	// The timeout period of a health check. Default value: 1. Minimum value: 1. For more information, see [Container probes](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes).
+	//
+	// example:
+	//
+	// 1
+	TimeoutSeconds *int32 `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
 }
 
 func (s StartupProbe) String() string {

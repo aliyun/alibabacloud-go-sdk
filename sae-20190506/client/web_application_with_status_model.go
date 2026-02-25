@@ -16,8 +16,10 @@ type iWebApplicationWithStatus interface {
 }
 
 type WebApplicationWithStatus struct {
-	Status         *WebApplicationStatus `json:"Status,omitempty" xml:"Status,omitempty"`
-	WebApplication *WebApplication       `json:"WebApplication,omitempty" xml:"WebApplication,omitempty"`
+	// The status of the application.
+	Status *WebApplicationStatus `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The details of the application.
+	WebApplication *WebApplication `json:"WebApplication,omitempty" xml:"WebApplication,omitempty"`
 }
 
 func (s WebApplicationWithStatus) String() string {

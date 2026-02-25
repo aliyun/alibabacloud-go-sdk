@@ -475,7 +475,8 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// 	- **kafkaInstanceId**: the ID of the Message Queue for Apache Kafka instance.
 	//
 	// 	- **region**: the region where the Message Queue for Apache Kafka instance resides.
-	KafkaConfigs *string `json:"KafkaConfigs,omitempty" xml:"KafkaConfigs,omitempty"`
+	KafkaConfigs *string            `json:"KafkaConfigs,omitempty" xml:"KafkaConfigs,omitempty"`
+	Labels       map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	// The details of the availability check that was performed on the container. If the container fails this health check multiple times, the system disables and restarts the container. You can use one of the following methods to perform the health check:
 	//
 	// 	- Sample code of the **exec*	- method: `{"exec":{"command":["sh","-c","cat/home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}`
@@ -1142,6 +1143,10 @@ func (s *DescribeApplicationConfigResponseBodyData) GetKafkaConfigs() *string {
 	return s.KafkaConfigs
 }
 
+func (s *DescribeApplicationConfigResponseBodyData) GetLabels() map[string]*string {
+	return s.Labels
+}
+
 func (s *DescribeApplicationConfigResponseBodyData) GetLiveness() *string {
 	return s.Liveness
 }
@@ -1588,6 +1593,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetJdk(v string) *DescribeAp
 
 func (s *DescribeApplicationConfigResponseBodyData) SetKafkaConfigs(v string) *DescribeApplicationConfigResponseBodyData {
 	s.KafkaConfigs = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetLabels(v map[string]*string) *DescribeApplicationConfigResponseBodyData {
+	s.Labels = v
 	return s
 }
 

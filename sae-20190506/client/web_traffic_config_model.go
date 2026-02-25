@@ -20,13 +20,28 @@ type iWebTrafficConfig interface {
 }
 
 type WebTrafficConfig struct {
+	// The authentication type. Valid values:
+	//
+	// 	- **Anonymous**: does not require authentication.
+	//
+	// 	- **Application**: requires authentication.
+	//
+	// >  The default value is **Anonymous**.
+	//
 	// example:
 	//
 	// Anonymous
-	AuthType               *string             `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	DisableInternetURL     *bool               `json:"DisableInternetURL,omitempty" xml:"DisableInternetURL,omitempty"`
+	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// Specifies whether to disable access to the default Internet domain. If you set this parameter to true, a 403 error is returned if you access the default public URL provided by the function. A value of false does not have affect the running of the function.
+	//
+	// example:
+	//
+	// true
+	DisableInternetURL *bool `json:"DisableInternetURL,omitempty" xml:"DisableInternetURL,omitempty"`
+	// Specifies the traffic weight of applications in different versions. The sum of traffic weight for all versions must be 100%.
 	RevisionsTrafficWeight map[string]*float32 `json:"RevisionsTrafficWeight,omitempty" xml:"RevisionsTrafficWeight,omitempty"`
-	WebAclConfig           *WebAclConfig       `json:"WebAclConfig,omitempty" xml:"WebAclConfig,omitempty"`
+	// The configurations of IP ACL whitelist.
+	WebAclConfig *WebAclConfig `json:"WebAclConfig,omitempty" xml:"WebAclConfig,omitempty"`
 }
 
 func (s WebTrafficConfig) String() string {

@@ -16,7 +16,13 @@ type iListWebApplicationRevisionsOutput interface {
 }
 
 type ListWebApplicationRevisionsOutput struct {
-	NextToken *string     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
+	//
+	// example:
+	//
+	// A2RN
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The versions.
 	Revisions []*Revision `json:"Revisions,omitempty" xml:"Revisions,omitempty" type:"Repeated"`
 }
 

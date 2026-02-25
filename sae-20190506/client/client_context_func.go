@@ -329,6 +329,10 @@ func (client *Client) BindNlbWithContext(ctx context.Context, request *BindNlbRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a Server Load Balancer (SLB) instance to the application.
+//
 // @param request - BindSlbRequest
 //
 // @param headers - map
@@ -471,6 +475,10 @@ func (client *Client) CreateApplicationWithContext(ctx context.Context, tmpReq *
 		request.InitContainersConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InitContainersConfig, dara.String("InitContainersConfig"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.Labels) {
+		request.LabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Labels, dara.String("Labels"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.SidecarContainersConfig) {
 		request.SidecarContainersConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SidecarContainersConfig, dara.String("SidecarContainersConfig"), dara.String("json"))
 	}
@@ -602,6 +610,10 @@ func (client *Client) CreateApplicationWithContext(ctx context.Context, tmpReq *
 
 	if !dara.IsNil(request.KafkaConfigs) {
 		query["KafkaConfigs"] = request.KafkaConfigs
+	}
+
+	if !dara.IsNil(request.LabelsShrink) {
+		query["Labels"] = request.LabelsShrink
 	}
 
 	if !dara.IsNil(request.Liveness) {
@@ -1924,7 +1936,7 @@ func (client *Client) DeleteApplicationWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 7171a6ca-d1cd-4928-8642-7d5cfe69\\*\\*\\*\\*
+// 7171a6ca-d1cd-4928-8642-7d5cfe69\\\\*\\\\*\\\\*\\\\*
 //
 // @param request - DeleteApplicationScalingRuleRequest
 //
@@ -2265,7 +2277,7 @@ func (client *Client) DeleteJobWithContext(ctx context.Context, request *DeleteJ
 
 // Summary:
 //
-// Deletes a namespace.
+// Delete a namespace.
 //
 // @param request - DeleteNamespaceRequest
 //
@@ -2593,6 +2605,10 @@ func (client *Client) DeployApplicationWithContext(ctx context.Context, tmpReq *
 		request.InitContainersConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InitContainersConfig, dara.String("InitContainersConfig"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.Labels) {
+		request.LabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Labels, dara.String("Labels"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.SidecarContainersConfig) {
 		request.SidecarContainersConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SidecarContainersConfig, dara.String("SidecarContainersConfig"), dara.String("json"))
 	}
@@ -2716,6 +2732,10 @@ func (client *Client) DeployApplicationWithContext(ctx context.Context, tmpReq *
 
 	if !dara.IsNil(request.KafkaConfigs) {
 		query["KafkaConfigs"] = request.KafkaConfigs
+	}
+
+	if !dara.IsNil(request.LabelsShrink) {
+		query["Labels"] = request.LabelsShrink
 	}
 
 	if !dara.IsNil(request.Liveness) {
@@ -3457,7 +3477,7 @@ func (client *Client) DescribeApplicationScalingRulesWithContext(ctx context.Con
 
 // Summary:
 //
-// 017f39b8-dfa4-4e16-a84b-1dcee4b1\\*\\*\\*\\*
+// Obtain the SLB configuration of an application.
 //
 // @param request - DescribeApplicationSlbsRequest
 //
@@ -4904,6 +4924,10 @@ func (client *Client) DescribeWebInstanceLogsWithContext(ctx context.Context, Ap
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables an auto scaling policy for an application.
+//
 // @param request - DisableApplicationScalingRuleRequest
 //
 // @param headers - map
@@ -5236,7 +5260,7 @@ func (client *Client) GetApplicationWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// The application name.
+// Queries the top N applications in Application Monitoring.
 //
 // @param request - GetArmsTopNMetricRequest
 //
@@ -5500,7 +5524,7 @@ func (client *Client) GetScaleAppMetricWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// The number of Warning events.
+// Queries the top N applications in which Warning events occur.
 //
 // @param request - GetWarningEventMetricRequest
 //
@@ -6031,7 +6055,7 @@ func (client *Client) ListApplicationCenterServiceInstancesWithContext(ctx conte
 
 // Summary:
 //
-// Queries a list of applications.
+// Query a list of applications.
 //
 // @param request - ListApplicationsRequest
 //
@@ -8649,7 +8673,7 @@ func (client *Client) UpdateApplicationVswitchesWithContext(ctx context.Context,
 
 // Summary:
 //
-// Updates a ConfigMap instance.
+// Update a ConfigMap.
 //
 // @param request - UpdateConfigMapRequest
 //
@@ -9123,7 +9147,7 @@ func (client *Client) UpdateJobWithContext(ctx context.Context, request *UpdateJ
 
 // Summary:
 //
-// Updates the information about a namespace.
+// Update the information about a namespace.
 //
 // @param request - UpdateNamespaceRequest
 //
@@ -9186,7 +9210,7 @@ func (client *Client) UpdateNamespaceWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// 更新命名空间级别sls配置
+// Updates the Simple Log Service configuration for a namespace.
 //
 // @param request - UpdateNamespaceSlsConfigsRequest
 //
@@ -9302,13 +9326,13 @@ func (client *Client) UpdateNamespaceVpcWithContext(ctx context.Context, request
 //
 // The HTTP status code. Valid values:
 //
-//   - **2xx**: The call was successful.
+// \\	- \\*\\*2xx\\*\\*: The call was successful.
 //
-//   - **3xx**: The call was redirected.
+// \\	- \\*\\*3xx\\*\\*: The call was redirected.
 //
-//   - **4xx**: The call failed.
+// \\	- \\*\\*4xx\\*\\*: The call failed.
 //
-//   - **5xx**: A server error occurred.
+// \\	- \\*\\*5xx\\*\\*: A server error occurred.
 //
 // @param tmpReq - UpdateSecretRequest
 //

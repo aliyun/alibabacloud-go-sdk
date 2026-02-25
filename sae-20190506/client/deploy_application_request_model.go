@@ -81,6 +81,8 @@ type iDeployApplicationRequest interface {
 	GetJdk() *string
 	SetKafkaConfigs(v string) *DeployApplicationRequest
 	GetKafkaConfigs() *string
+	SetLabels(v map[string]*string) *DeployApplicationRequest
+	GetLabels() map[string]*string
 	SetLiveness(v string) *DeployApplicationRequest
 	GetLiveness() *string
 	SetLokiConfigs(v string) *DeployApplicationRequest
@@ -494,7 +496,8 @@ type DeployApplicationRequest struct {
 	// example:
 	//
 	// {"kafkaEndpoint":"10.0.X.XXX:XXXX,10.0.X.XXX:XXXX,10.0.X.XXX:XXXX\\","kafkaInstanceId":"alikafka_pre-cn-7pp2l8kr****","kafkaConfigs":[{"logType":"file_log","logDir":"/tmp/a.log","kafkaTopic":"test2"},{"logType":"stdout","logDir":"","kafkaTopic":"test"}]}
-	KafkaConfigs *string `json:"KafkaConfigs,omitempty" xml:"KafkaConfigs,omitempty"`
+	KafkaConfigs *string            `json:"KafkaConfigs,omitempty" xml:"KafkaConfigs,omitempty"`
+	Labels       map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	// The details of the availability check that was performed on the container. If the container fails this health check multiple times, the system disables and restarts the container. You can use one of the following methods to perform the health check:
 	//
 	// 	- Example of **exec**: `{"exec":{"command":["sh","-c","cat/home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}`
@@ -1175,6 +1178,10 @@ func (s *DeployApplicationRequest) GetKafkaConfigs() *string {
 	return s.KafkaConfigs
 }
 
+func (s *DeployApplicationRequest) GetLabels() map[string]*string {
+	return s.Labels
+}
+
 func (s *DeployApplicationRequest) GetLiveness() *string {
 	return s.Liveness
 }
@@ -1544,6 +1551,11 @@ func (s *DeployApplicationRequest) SetJdk(v string) *DeployApplicationRequest {
 
 func (s *DeployApplicationRequest) SetKafkaConfigs(v string) *DeployApplicationRequest {
 	s.KafkaConfigs = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetLabels(v map[string]*string) *DeployApplicationRequest {
+	s.Labels = v
 	return s
 }
 

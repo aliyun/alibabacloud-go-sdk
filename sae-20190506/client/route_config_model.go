@@ -14,6 +14,7 @@ type iRouteConfig interface {
 }
 
 type RouteConfig struct {
+	// pathConfig
 	Routes []*PathConfig `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
 }
 

@@ -16,7 +16,17 @@ type iHTTPHeader interface {
 }
 
 type HTTPHeader struct {
-	Name  *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The header name.
+	//
+	// example:
+	//
+	// Content-Type
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The header value.
+	//
+	// example:
+	//
+	// application/json
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

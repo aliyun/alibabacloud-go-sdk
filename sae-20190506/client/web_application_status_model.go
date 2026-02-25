@@ -16,7 +16,13 @@ type iWebApplicationStatus interface {
 }
 
 type WebApplicationStatus struct {
-	InstanceCount    *int64            `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	// The number of application instances.
+	//
+	// example:
+	//
+	// 3
+	InstanceCount *int64 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	// The scaling configurations of the application.
 	WebScalingConfig *WebScalingConfig `json:"WebScalingConfig,omitempty" xml:"WebScalingConfig,omitempty"`
 }
 

@@ -16,7 +16,13 @@ type iWebApplicationWithInstanceCount interface {
 }
 
 type WebApplicationWithInstanceCount struct {
-	InstanceCount  *int64          `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	// The number of application instances.
+	//
+	// example:
+	//
+	// 1
+	InstanceCount *int64 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	// The application information.
 	WebApplication *WebApplication `json:"WebApplication,omitempty" xml:"WebApplication,omitempty"`
 }
 

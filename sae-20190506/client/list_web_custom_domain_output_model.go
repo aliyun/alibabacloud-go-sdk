@@ -16,7 +16,13 @@ type iListWebCustomDomainOutput interface {
 }
 
 type ListWebCustomDomainOutput struct {
-	NextToken        *string            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
+	//
+	// example:
+	//
+	// A2RN
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The custom domain names.
 	WebCustomDomains []*WebCustomDomain `json:"WebCustomDomains,omitempty" xml:"WebCustomDomains,omitempty" type:"Repeated"`
 }
 

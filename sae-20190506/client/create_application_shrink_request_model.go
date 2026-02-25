@@ -87,6 +87,8 @@ type iCreateApplicationShrinkRequest interface {
 	GetJdk() *string
 	SetKafkaConfigs(v string) *CreateApplicationShrinkRequest
 	GetKafkaConfigs() *string
+	SetLabelsShrink(v string) *CreateApplicationShrinkRequest
+	GetLabelsShrink() *string
 	SetLiveness(v string) *CreateApplicationShrinkRequest
 	GetLiveness() *string
 	SetLokiConfigs(v string) *CreateApplicationShrinkRequest
@@ -495,6 +497,7 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// {"kafkaEndpoint":"10.0.X.XXX:XXXX,10.0.X.XXX:XXXX,10.0.X.XXX:XXXX\\","kafkaInstanceId":"alikafka_pre-cn-7pp2l8kr****","kafkaConfigs":[{"logType":"file_log","logDir":"/tmp/a.log","kafkaTopic":"test2"},{"logType":"stdout","logDir":"","kafkaTopic":"test"}]}
 	KafkaConfigs *string `json:"KafkaConfigs,omitempty" xml:"KafkaConfigs,omitempty"`
+	LabelsShrink *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	// Container health check. If the container fails this check, it will be revoked and relaunch again. Use one of the following methods to perform the health check:
 	//
 	// 	- Example of **exec**: `{"exec":{"command":["sh","-c","cat/home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}`
@@ -1127,6 +1130,10 @@ func (s *CreateApplicationShrinkRequest) GetKafkaConfigs() *string {
 	return s.KafkaConfigs
 }
 
+func (s *CreateApplicationShrinkRequest) GetLabelsShrink() *string {
+	return s.LabelsShrink
+}
+
 func (s *CreateApplicationShrinkRequest) GetLiveness() *string {
 	return s.Liveness
 }
@@ -1507,6 +1514,11 @@ func (s *CreateApplicationShrinkRequest) SetJdk(v string) *CreateApplicationShri
 
 func (s *CreateApplicationShrinkRequest) SetKafkaConfigs(v string) *CreateApplicationShrinkRequest {
 	s.KafkaConfigs = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetLabelsShrink(v string) *CreateApplicationShrinkRequest {
+	s.LabelsShrink = &v
 	return s
 }
 

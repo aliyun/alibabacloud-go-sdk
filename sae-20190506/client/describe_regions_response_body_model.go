@@ -39,8 +39,7 @@ type DescribeRegionsResponseBody struct {
 	// example:
 	//
 	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The regions.
+	Message *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
 	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -138,76 +137,10 @@ func (s *DescribeRegionsResponseBodyRegions) Validate() error {
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	// The region name. Valid values:
-	//
-	// 	- **China (Hangzhou)**
-	//
-	// 	- **China (Shanghai)**
-	//
-	// 	- **China (Beijing)**
-	//
-	// 	- **China (Zhangjiakou)**
-	//
-	// 	- **China (Shenzhen)**
-	//
-	// 	- **China (Guangzhou)**
-	//
-	// 	- **China (Hong Kong)**
-	//
-	// 	- **Singapore**
-	//
-	// 	- **US (Silicon Valley)**
-	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The recommended zones.
+	LocalName      *string                                                 `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	RecommendZones *DescribeRegionsResponseBodyRegionsRegionRecommendZones `json:"RecommendZones,omitempty" xml:"RecommendZones,omitempty" type:"Struct"`
-	// The endpoint for the region. Valid values:
-	//
-	// 	- **sae.cn-hangzhou.aliyuncs.com**
-	//
-	// 	- **sae.cn-shanghai.aliyuncs.com**
-	//
-	// 	- **sae.cn-beijing.aliyuncs.com**
-	//
-	// 	- **sae.cn-zhangjiakou.aliyuncs.com**
-	//
-	// 	- **sae.cn-shenzhen.aliyuncs.com**
-	//
-	// 	- **sae.cn-guangzhou.aliyuncs.com**
-	//
-	// 	- **sae.cn-hongkong.aliyuncs.com**
-	//
-	// 	- **sae.ap-southeast-1.aliyuncs.com**
-	//
-	// 	- **sae.us-west-1.aliyuncs.com**
-	//
-	// example:
-	//
-	// sae.cn-shanghai.aliyuncs.com
-	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	// The region ID. Valid values:
-	//
-	// 	- **cn-hangzhou**: the ID of the China (Hangzhou) region
-	//
-	// 	- **cn-shanghai**: the ID of the China (Shanghai) region
-	//
-	// 	- **cn-beijing**: the ID of the China (Beijing) region
-	//
-	// 	- **cn-zhangjiakou**: the ID of the China (Zhangjiakou) region
-	//
-	// 	- **cn-shenzhen**: the ID of the China (Shenzhen) region
-	//
-	// 	- **cn-guangzhou**: the ID of the China (Guangzhou) region
-	//
-	// 	- **cn-hongkong**: the ID of the China (Hong Kong) region
-	//
-	// 	- **ap-southeast-1**: the ID of the Singapore region
-	//
-	// 	- **us-west-1**: the ID of the US (Silicon Valley) region
-	//
-	// example:
-	//
-	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionEndpoint *string                                                 `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
+	RegionId       *string                                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsRegion) String() string {

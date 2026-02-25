@@ -32,16 +32,66 @@ type iSidecarContainerConfig interface {
 }
 
 type SidecarContainerConfig struct {
-	AcrInstanceId      *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
-	Command            *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	CommandArgs        *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
+	// The ID of the Container Registry Enterprise Edition instance. This parameter is required if the ImageUrl parameter is set to the URL of an image in a Container Registry Enterprise Edition instance.
+	//
+	// example:
+	//
+	// cri-xxxxxx
+	AcrInstanceId *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
+	// The startup command of the image.
+	//
+	// example:
+	//
+	// python
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// The parameters of the image startup command.
+	//
+	// example:
+	//
+	// ["a","b"]
+	CommandArgs *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
+	// The description of the ConfigMap mounted to the application.
+	//
+	// example:
+	//
+	// [{"configMapId":16,"key":"test","mountPath":"/tmp"}]
 	ConfigMapMountDesc *string `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty"`
-	Cpu                *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	EmptyDirDesc       *string `json:"EmptyDirDesc,omitempty" xml:"EmptyDirDesc,omitempty"`
-	Envs               *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	ImageUrl           *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	Memory             *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Cpu
+	//
+	// example:
+	//
+	// 1000
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The EmptyDir description.
+	//
+	// example:
+	//
+	// [{\\"name\\":\\"workdir\\",\\"mountPath\\":\\"/usr/local/tomcat/webapps\\"}]
+	EmptyDirDesc *string `json:"EmptyDirDesc,omitempty" xml:"EmptyDirDesc,omitempty"`
+	// The environment variables of the container.
+	//
+	// example:
+	//
+	// [{"name":"TEST_ENV_KEY","value":"TEST_ENV_VAR"}]
+	Envs *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	// The image address.
+	//
+	// example:
+	//
+	// registry-vpc.cn-hangzhou.aliyuncs.com/demo/nginx:latest
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// Memory
+	//
+	// example:
+	//
+	// 1024
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The container name.
+	//
+	// example:
+	//
+	// name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s SidecarContainerConfig) String() string {

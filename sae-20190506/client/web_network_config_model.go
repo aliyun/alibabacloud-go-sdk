@@ -18,15 +18,24 @@ type iWebNetworkConfig interface {
 }
 
 type WebNetworkConfig struct {
+	// Specifies whether to enable Internet access for the application. Valid values:
+	//
+	// 	- **true**: enables Internet access.
+	//
+	// 	- **false**: disables Internet access.
+	//
 	// example:
 	//
 	// true
 	InternetAccess *bool `json:"InternetAccess,omitempty" xml:"InternetAccess,omitempty"`
+	// The ID of a security group.
+	//
 	// example:
 	//
 	// sg-bp18hj1wtxgy3b0***
-	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchIds      []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The list of vSwitches.
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 }
 
 func (s WebNetworkConfig) String() string {

@@ -14,6 +14,7 @@ type iWebOSSConfig interface {
 }
 
 type WebOSSConfig struct {
+	// The mount point.
 	MountPoints []*WebOSSMountPoint `json:"MountPoints,omitempty" xml:"MountPoints,omitempty" type:"Repeated"`
 }
 

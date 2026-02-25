@@ -18,8 +18,11 @@ type iListWebInstancesOutput interface {
 }
 
 type ListWebInstancesOutput struct {
-	CurrentError     *string                      `json:"CurrentError,omitempty" xml:"CurrentError,omitempty"`
-	WebInstances     []*WebInstanceInfo           `json:"WebInstances,omitempty" xml:"WebInstances,omitempty" type:"Repeated"`
+	// The error message of instance creation. If the instance creation was successful, this parameter is not returned.
+	CurrentError *string `json:"CurrentError,omitempty" xml:"CurrentError,omitempty"`
+	// The application instance.
+	WebInstances []*WebInstanceInfo `json:"WebInstances,omitempty" xml:"WebInstances,omitempty" type:"Repeated"`
+	// The instance status.
 	WebVersionStatus map[string]*WebVersionStatus `json:"WebVersionStatus,omitempty" xml:"WebVersionStatus,omitempty"`
 }
 

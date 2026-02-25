@@ -20,10 +20,30 @@ type iWebOSSMountPoint interface {
 }
 
 type WebOSSMountPoint struct {
+	// The name of the bucket.
+	//
+	// example:
+	//
+	// gcx-pic-test
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The storage path in an OSS bucket.
+	//
+	// example:
+	//
+	// billing-2023-11-06_17:30:18-rn7wG8
 	BucketPath *string `json:"BucketPath,omitempty" xml:"BucketPath,omitempty"`
-	MountDir   *string `json:"MountDir,omitempty" xml:"MountDir,omitempty"`
-	ReadOnly   *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	// The local mount directory.
+	//
+	// example:
+	//
+	// /k8s-prod/oms-api-yy-prod/log
+	MountDir *string `json:"MountDir,omitempty" xml:"MountDir,omitempty"`
+	// Specifies whether it is read-only.
+	//
+	// example:
+	//
+	// true
+	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
 }
 
 func (s WebOSSMountPoint) String() string {

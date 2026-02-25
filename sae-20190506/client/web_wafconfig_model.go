@@ -14,6 +14,15 @@ type iWebWAFConfig interface {
 }
 
 type WebWAFConfig struct {
+	// Specifies whether to enable Web Application Firewall (WAF). Valid values:
+	//
+	// 	- **true**: enables WAF.
+	//
+	// 	- **false**: disables WAF.
+	//
+	// example:
+	//
+	// true
 	EnableWAF *bool `json:"EnableWAF,omitempty" xml:"EnableWAF,omitempty"`
 }
 

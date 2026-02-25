@@ -16,10 +16,13 @@ type iUpdateWebApplicationInput interface {
 }
 
 type UpdateWebApplicationInput struct {
+	// The application description.
+	//
 	// example:
 	//
 	// sae-app
-	Description      *string           `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The network configurations of the application.
 	WebNetworkConfig *WebNetworkConfig `json:"WebNetworkConfig,omitempty" xml:"WebNetworkConfig,omitempty"`
 }
 

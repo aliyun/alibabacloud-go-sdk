@@ -20,12 +20,26 @@ type iWebInstanceInfo interface {
 }
 
 type WebInstanceInfo struct {
-	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// The instance image.
+	//
 	// example:
 	//
-	// c-66691780-1522405d-3021e147e0c3
+	// registry.cn-hangzhou.aliyuncs.com/sae_test/******:0.0.1
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// The ID of the application instance.
+	//
+	// example:
+	//
+	// c-66691780-1522405d-3021e1******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The instance status.
+	//
+	// example:
+	//
+	// Idle
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the application version.
+	//
 	// example:
 	//
 	// 1

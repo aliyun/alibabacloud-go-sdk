@@ -14,6 +14,10 @@ type iWebAclEntryConfig interface {
 }
 
 type WebAclEntryConfig struct {
+	// The IP address.
+	//
+	// >  CIDR notation is not supported.
+	//
 	// This parameter is required.
 	//
 	// example:

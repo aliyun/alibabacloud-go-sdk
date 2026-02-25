@@ -16,8 +16,18 @@ type iPathConfig interface {
 }
 
 type PathConfig struct {
+	// applicationName
+	//
+	// example:
+	//
+	// applicationName
 	ApplicationName *string `json:"applicationName,omitempty" xml:"applicationName,omitempty"`
-	Path            *string `json:"path,omitempty" xml:"path,omitempty"`
+	// path
+	//
+	// example:
+	//
+	// /packages
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
 }
 
 func (s PathConfig) String() string {

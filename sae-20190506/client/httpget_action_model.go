@@ -22,11 +22,32 @@ type iHTTPGetAction interface {
 }
 
 type HTTPGetAction struct {
-	Host        *string       `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The hostname to which you want to connect. The default value is the IP address of the pod. You may need to specify Host in HttpHeaders.
+	//
+	// example:
+	//
+	// 172.22.XX.XX
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The custom headers that you need to specify in the request. Duplicate headers are allowed in an HTTP request.
 	HttpHeaders []*HTTPHeader `json:"HttpHeaders,omitempty" xml:"HttpHeaders,omitempty" type:"Repeated"`
-	Path        *string       `json:"Path,omitempty" xml:"Path,omitempty"`
-	Port        *int32        `json:"Port,omitempty" xml:"Port,omitempty"`
-	Scheme      *string       `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
+	// The path of a URL.
+	//
+	// example:
+	//
+	// /path1
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The port range. Valid values: 1 to 65535.
+	//
+	// example:
+	//
+	// 80
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The scheme that you want to use to connect to the host. Default value: http.
+	//
+	// example:
+	//
+	// http
+	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
 }
 
 func (s HTTPGetAction) String() string {

@@ -20,14 +20,28 @@ type iPublishWebApplicationRevisionInput interface {
 }
 
 type PublishWebApplicationRevisionInput struct {
+	// The container configurations of the revision version.
+	//
 	// This parameter is required.
 	Containers []*Container `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
+	// The version description.
+	//
 	// example:
 	//
 	// test version
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnableArmsMetrics *bool   `json:"EnableArmsMetrics,omitempty" xml:"EnableArmsMetrics,omitempty"`
-	TakeEffect        *bool   `json:"TakeEffect,omitempty" xml:"TakeEffect,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable Application Real-Time Monitoring Service (ARMS) monitoring.
+	//
+	// example:
+	//
+	// true
+	EnableArmsMetrics *bool `json:"EnableArmsMetrics,omitempty" xml:"EnableArmsMetrics,omitempty"`
+	// Specifies whether to switch all traffic to a new version after the new version is released. Default value: false.
+	//
+	// example:
+	//
+	// false
+	TakeEffect *bool `json:"TakeEffect,omitempty" xml:"TakeEffect,omitempty"`
 }
 
 func (s PublishWebApplicationRevisionInput) String() string {

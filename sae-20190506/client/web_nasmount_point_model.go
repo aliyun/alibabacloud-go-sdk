@@ -18,9 +18,24 @@ type iWebNASMountPoint interface {
 }
 
 type WebNASMountPoint struct {
+	// The local mount directory.
+	//
+	// example:
+	//
+	// /test/consumer/log
 	MountDir *string `json:"MountDir,omitempty" xml:"MountDir,omitempty"`
-	NasAddr  *string `json:"NasAddr,omitempty" xml:"NasAddr,omitempty"`
-	NasPath  *string `json:"NasPath,omitempty" xml:"NasPath,omitempty"`
+	// The mount target.
+	//
+	// example:
+	//
+	// /home
+	NasAddr *string `json:"NasAddr,omitempty" xml:"NasAddr,omitempty"`
+	// The mount directory.
+	//
+	// example:
+	//
+	// /
+	NasPath *string `json:"NasPath,omitempty" xml:"NasPath,omitempty"`
 }
 
 func (s WebNASMountPoint) String() string {

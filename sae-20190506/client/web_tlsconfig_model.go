@@ -18,9 +18,20 @@ type iWebTLSConfig interface {
 }
 
 type WebTLSConfig struct {
+	// The supported cipher suites.
 	CipherSuites []*string `json:"CipherSuites,omitempty" xml:"CipherSuites,omitempty" type:"Repeated"`
-	MaxVersion   *string   `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
-	MinVersion   *string   `json:"MinVersion,omitempty" xml:"MinVersion,omitempty"`
+	// The supported maximum TLS protocol version.
+	//
+	// example:
+	//
+	// TLSv1.3
+	MaxVersion *string `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
+	// The supported minimum TLS protocol version.
+	//
+	// example:
+	//
+	// TLSv1.0
+	MinVersion *string `json:"MinVersion,omitempty" xml:"MinVersion,omitempty"`
 }
 
 func (s WebTLSConfig) String() string {

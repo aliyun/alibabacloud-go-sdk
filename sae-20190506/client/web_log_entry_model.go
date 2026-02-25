@@ -14,6 +14,15 @@ type iWebLogEntry interface {
 }
 
 type WebLogEntry struct {
+	// The message returned. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.
+	//
+	// 	- If the request failed, an error code is returned.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 

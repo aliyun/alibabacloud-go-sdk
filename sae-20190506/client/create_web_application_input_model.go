@@ -24,20 +24,31 @@ type iCreateWebApplicationInput interface {
 }
 
 type CreateWebApplicationInput struct {
+	// The name of the application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sae-app
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// The description of the application.
+	//
 	// example:
 	//
 	// my sae app
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The configuration on the application revision.
+	//
 	// This parameter is required.
-	RevisionConfig   *RevisionConfig   `json:"RevisionConfig,omitempty" xml:"RevisionConfig,omitempty"`
+	RevisionConfig *RevisionConfig `json:"RevisionConfig,omitempty" xml:"RevisionConfig,omitempty"`
+	// The network configurations.
+	//
+	// >  This field is used to configure network for the application.
 	WebNetworkConfig *WebNetworkConfig `json:"WebNetworkConfig,omitempty" xml:"WebNetworkConfig,omitempty"`
+	// The scaling configurations of the applications.
 	WebScalingConfig *WebScalingConfig `json:"WebScalingConfig,omitempty" xml:"WebScalingConfig,omitempty"`
+	// The traffic configurations of the applications.
 	WebTrafficConfig *WebTrafficConfig `json:"WebTrafficConfig,omitempty" xml:"WebTrafficConfig,omitempty"`
 }
 

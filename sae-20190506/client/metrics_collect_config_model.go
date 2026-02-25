@@ -18,11 +18,24 @@ type iMetricsCollectConfig interface {
 }
 
 type MetricsCollectConfig struct {
+	// Specifies whether to push metric data to Simple Log Service. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	EnablePushToUserSLS *bool `json:"EnablePushToUserSLS,omitempty" xml:"EnablePushToUserSLS,omitempty"`
+	// The name of the Logstore in Simple Log Service to which the metric data is pushed.
+	//
 	// example:
 	//
 	// my-sls-logstorename
 	LogstoreName *string `json:"LogstoreName,omitempty" xml:"LogstoreName,omitempty"`
+	// The name of the project in Simple Log Service to which the metric data is pushed.
+	//
 	// example:
 	//
 	// my-sls-project

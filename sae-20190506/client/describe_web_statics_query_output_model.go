@@ -16,7 +16,13 @@ type iDescribeWebStaticsQueryOutput interface {
 }
 
 type DescribeWebStaticsQueryOutput struct {
-	Length     *int32            `json:"Length,omitempty" xml:"Length,omitempty"`
+	// The maximum number of entries returned.
+	//
+	// example:
+	//
+	// 20
+	Length *int32 `json:"Length,omitempty" xml:"Length,omitempty"`
+	// The statistics.
 	WebStatics []*WebStaticsInfo `json:"WebStatics,omitempty" xml:"WebStatics,omitempty" type:"Repeated"`
 }
 

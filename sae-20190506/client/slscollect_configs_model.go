@@ -14,6 +14,7 @@ type iSLSCollectConfigs interface {
 }
 
 type SLSCollectConfigs struct {
+	// The configurations of log collection.
 	CollectConfigs []*SLSCollectConfig `json:"CollectConfigs,omitempty" xml:"CollectConfigs,omitempty" type:"Repeated"`
 }
 

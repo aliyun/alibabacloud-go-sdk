@@ -16,8 +16,20 @@ type iWebVersionStatus interface {
 }
 
 type WebVersionStatus struct {
+	// The error message of the application execution. If the execution is successful, a null value is returned.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The state of the application execution. Valid values:
+	//
+	// 	- **Completed**: The execution is successful.
+	//
+	// 	- **Updating**:The instance is being updated.
+	//
+	// 	- **Updating**:The execution failed and a non-null error message is returned.
+	//
+	// example:
+	//
+	// Completed
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s WebVersionStatus) String() string {

@@ -14,6 +14,7 @@ type iWebNASConfig interface {
 }
 
 type WebNASConfig struct {
+	// The mount targets.
 	MountPoints []*WebNASMountPoint `json:"MountPoints,omitempty" xml:"MountPoints,omitempty" type:"Repeated"`
 }
 

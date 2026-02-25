@@ -14,6 +14,7 @@ type iDescribeInstanceLogsOutput interface {
 }
 
 type DescribeInstanceLogsOutput struct {
+	// The log entries.
 	WebLogEntrys []*WebLogEntry `json:"WebLogEntrys,omitempty" xml:"WebLogEntrys,omitempty" type:"Repeated"`
 }
 

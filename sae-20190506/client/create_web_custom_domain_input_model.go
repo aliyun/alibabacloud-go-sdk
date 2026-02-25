@@ -26,21 +26,40 @@ type iCreateWebCustomDomainInput interface {
 }
 
 type CreateWebCustomDomainInput struct {
+	// The name of the application to which data is forwarded by the domain name by default.
+	//
+	// example:
+	//
+	// demo-app
 	DefaultForwardingAppName *string `json:"DefaultForwardingAppName,omitempty" xml:"DefaultForwardingAppName,omitempty"`
+	// The domain name. Enter a custom domain name that has obtained an Internet content provider (ICP) filing in the Alibaba Cloud ICP Filing system, or a custom domain name whose ICP filing information includes Alibaba Cloud as a service provider.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The protocol type that is supported by the custom domain name. Valid values:
+	//
+	// 	- **HTTP**: Only HTTP is supported.
+	//
+	// 	- **HTTPS**: Only HTTPS is supported.
+	//
+	// 	- **HTTP,HTTPS**: Both HTTP and HTTPS are supported.
+	//
 	// example:
 	//
 	// HTTP
-	Protocol      *string        `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	RouteConfig   *RouteConfig   `json:"RouteConfig,omitempty" xml:"RouteConfig,omitempty"`
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The route configurations.
+	RouteConfig *RouteConfig `json:"RouteConfig,omitempty" xml:"RouteConfig,omitempty"`
+	// The information about the HTTPS certificate.
 	WebCertConfig *WebCertConfig `json:"WebCertConfig,omitempty" xml:"WebCertConfig,omitempty"`
-	WebTLSConfig  *WebTLSConfig  `json:"WebTLSConfig,omitempty" xml:"WebTLSConfig,omitempty"`
-	WebWAFConfig  *WebWAFConfig  `json:"WebWAFConfig,omitempty" xml:"WebWAFConfig,omitempty"`
+	// The Transport Layer Security (TLS) configurations.
+	WebTLSConfig *WebTLSConfig `json:"WebTLSConfig,omitempty" xml:"WebTLSConfig,omitempty"`
+	// The Web Application Firewall (WAF) configurations.
+	WebWAFConfig *WebWAFConfig `json:"WebWAFConfig,omitempty" xml:"WebWAFConfig,omitempty"`
 }
 
 func (s CreateWebCustomDomainInput) String() string {

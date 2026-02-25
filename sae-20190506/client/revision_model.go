@@ -22,11 +22,32 @@ type iRevision interface {
 }
 
 type Revision struct {
-	CreatedTime    *string         `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	Description    *string         `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the revision version was created.
+	//
+	// example:
+	//
+	// 2021-06-09T14:24:42
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The description of the revision version.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The configurations of the revision version.
 	RevisionConfig *RevisionConfig `json:"RevisionConfig,omitempty" xml:"RevisionConfig,omitempty"`
-	RevisionId     *string         `json:"RevisionId,omitempty" xml:"RevisionId,omitempty"`
-	Weight         *float32        `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The ID of the revision version.
+	//
+	// example:
+	//
+	// 001
+	RevisionId *string `json:"RevisionId,omitempty" xml:"RevisionId,omitempty"`
+	// The traffic weight of the version.
+	//
+	// example:
+	//
+	// 100
+	Weight *float32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s Revision) String() string {

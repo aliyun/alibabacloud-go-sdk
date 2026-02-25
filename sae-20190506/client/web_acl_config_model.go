@@ -14,6 +14,8 @@ type iWebAclConfig interface {
 }
 
 type WebAclConfig struct {
+	// The IP addresses.
+	//
 	// This parameter is required.
 	//
 	// if can be null:

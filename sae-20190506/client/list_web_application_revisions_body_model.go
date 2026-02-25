@@ -22,11 +22,32 @@ type iListWebApplicationRevisionsBody interface {
 }
 
 type ListWebApplicationRevisionsBody struct {
-	Code      *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListWebApplicationRevisionsOutput `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *ListWebApplicationRevisionsOutput `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListWebApplicationRevisionsBody) String() string {

@@ -16,8 +16,18 @@ type iTCPSocketAction interface {
 }
 
 type TCPSocketAction struct {
+	// Optional. The hostname to which you want to connect. The default value is the IP address of the pod.
+	//
+	// example:
+	//
+	// 172.16.XX.XX
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Port *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The port number that you want to access on the container. Valid values: 1 to 65535.
+	//
+	// example:
+	//
+	// 80
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s TCPSocketAction) String() string {

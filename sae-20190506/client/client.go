@@ -492,6 +492,10 @@ func (client *Client) BindNlb(request *BindNlbRequest) (_result *BindNlbResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a Server Load Balancer (SLB) instance to the application.
+//
 // @param request - BindSlbRequest
 //
 // @param headers - map
@@ -559,6 +563,10 @@ func (client *Client) BindSlbWithOptions(request *BindSlbRequest, headers map[st
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a Server Load Balancer (SLB) instance to the application.
+//
 // @param request - BindSlbRequest
 //
 // @return BindSlbResponse
@@ -666,6 +674,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 	openapiutil.Convert(tmpReq, request)
 	if !dara.IsNil(tmpReq.InitContainersConfig) {
 		request.InitContainersConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InitContainersConfig, dara.String("InitContainersConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Labels) {
+		request.LabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Labels, dara.String("Labels"), dara.String("json"))
 	}
 
 	if !dara.IsNil(tmpReq.SidecarContainersConfig) {
@@ -799,6 +811,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 
 	if !dara.IsNil(request.KafkaConfigs) {
 		query["KafkaConfigs"] = request.KafkaConfigs
+	}
+
+	if !dara.IsNil(request.LabelsShrink) {
+		query["Labels"] = request.LabelsShrink
 	}
 
 	if !dara.IsNil(request.Liveness) {
@@ -2394,7 +2410,7 @@ func (client *Client) DeleteApplication(request *DeleteApplicationRequest) (_res
 
 // Summary:
 //
-// 7171a6ca-d1cd-4928-8642-7d5cfe69\\*\\*\\*\\*
+// 7171a6ca-d1cd-4928-8642-7d5cfe69\\\\*\\\\*\\\\*\\\\*
 //
 // @param request - DeleteApplicationScalingRuleRequest
 //
@@ -2445,7 +2461,7 @@ func (client *Client) DeleteApplicationScalingRuleWithOptions(request *DeleteApp
 
 // Summary:
 //
-// 7171a6ca-d1cd-4928-8642-7d5cfe69\\*\\*\\*\\*
+// 7171a6ca-d1cd-4928-8642-7d5cfe69\\\\*\\\\*\\\\*\\\\*
 //
 // @param request - DeleteApplicationScalingRuleRequest
 //
@@ -2868,7 +2884,7 @@ func (client *Client) DeleteJob(request *DeleteJobRequest) (_result *DeleteJobRe
 
 // Summary:
 //
-// Deletes a namespace.
+// Delete a namespace.
 //
 // @param request - DeleteNamespaceRequest
 //
@@ -2919,7 +2935,7 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 
 // Summary:
 //
-// Deletes a namespace.
+// Delete a namespace.
 //
 // @param request - DeleteNamespaceRequest
 //
@@ -3322,6 +3338,10 @@ func (client *Client) DeployApplicationWithOptions(tmpReq *DeployApplicationRequ
 		request.InitContainersConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InitContainersConfig, dara.String("InitContainersConfig"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.Labels) {
+		request.LabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Labels, dara.String("Labels"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.SidecarContainersConfig) {
 		request.SidecarContainersConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SidecarContainersConfig, dara.String("SidecarContainersConfig"), dara.String("json"))
 	}
@@ -3445,6 +3465,10 @@ func (client *Client) DeployApplicationWithOptions(tmpReq *DeployApplicationRequ
 
 	if !dara.IsNil(request.KafkaConfigs) {
 		query["KafkaConfigs"] = request.KafkaConfigs
+	}
+
+	if !dara.IsNil(request.LabelsShrink) {
+		query["Labels"] = request.LabelsShrink
 	}
 
 	if !dara.IsNil(request.Liveness) {
@@ -4376,7 +4400,7 @@ func (client *Client) DescribeApplicationScalingRules(request *DescribeApplicati
 
 // Summary:
 //
-// 017f39b8-dfa4-4e16-a84b-1dcee4b1\\*\\*\\*\\*
+// Obtain the SLB configuration of an application.
 //
 // @param request - DescribeApplicationSlbsRequest
 //
@@ -4423,7 +4447,7 @@ func (client *Client) DescribeApplicationSlbsWithOptions(request *DescribeApplic
 
 // Summary:
 //
-// 017f39b8-dfa4-4e16-a84b-1dcee4b1\\*\\*\\*\\*
+// Obtain the SLB configuration of an application.
 //
 // @param request - DescribeApplicationSlbsRequest
 //
@@ -6396,6 +6420,10 @@ func (client *Client) DescribeWebInstanceLogs(ApplicationId *string, InstanceId 
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables an auto scaling policy for an application.
+//
 // @param request - DisableApplicationScalingRuleRequest
 //
 // @param headers - map
@@ -6443,6 +6471,10 @@ func (client *Client) DisableApplicationScalingRuleWithOptions(request *DisableA
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables an auto scaling policy for an application.
+//
 // @param request - DisableApplicationScalingRuleRequest
 //
 // @return DisableApplicationScalingRuleResponse
@@ -6838,7 +6870,7 @@ func (client *Client) GetApplication(request *GetApplicationRequest) (_result *G
 
 // Summary:
 //
-// The application name.
+// Queries the top N applications in Application Monitoring.
 //
 // @param request - GetArmsTopNMetricRequest
 //
@@ -6909,7 +6941,7 @@ func (client *Client) GetArmsTopNMetricWithOptions(request *GetArmsTopNMetricReq
 
 // Summary:
 //
-// The application name.
+// Queries the top N applications in Application Monitoring.
 //
 // @param request - GetArmsTopNMetricRequest
 //
@@ -7178,7 +7210,7 @@ func (client *Client) GetScaleAppMetric(request *GetScaleAppMetricRequest) (_res
 
 // Summary:
 //
-// The number of Warning events.
+// Queries the top N applications in which Warning events occur.
 //
 // @param request - GetWarningEventMetricRequest
 //
@@ -7245,7 +7277,7 @@ func (client *Client) GetWarningEventMetricWithOptions(request *GetWarningEventM
 
 // Summary:
 //
-// The number of Warning events.
+// Queries the top N applications in which Warning events occur.
 //
 // @param request - GetWarningEventMetricRequest
 //
@@ -7880,7 +7912,7 @@ func (client *Client) ListApplicationCenterServiceInstances(request *ListApplica
 
 // Summary:
 //
-// Queries a list of applications.
+// Query a list of applications.
 //
 // @param request - ListApplicationsRequest
 //
@@ -7971,7 +8003,7 @@ func (client *Client) ListApplicationsWithOptions(request *ListApplicationsReque
 
 // Summary:
 //
-// Queries a list of applications.
+// Query a list of applications.
 //
 // @param request - ListApplicationsRequest
 //
@@ -11393,7 +11425,7 @@ func (client *Client) UpdateApplicationVswitches(request *UpdateApplicationVswit
 
 // Summary:
 //
-// Updates a ConfigMap instance.
+// Update a ConfigMap.
 //
 // @param request - UpdateConfigMapRequest
 //
@@ -11450,7 +11482,7 @@ func (client *Client) UpdateConfigMapWithOptions(request *UpdateConfigMapRequest
 
 // Summary:
 //
-// Updates a ConfigMap instance.
+// Update a ConfigMap.
 //
 // @param request - UpdateConfigMapRequest
 //
@@ -11943,7 +11975,7 @@ func (client *Client) UpdateJob(request *UpdateJobRequest) (_result *UpdateJobRe
 
 // Summary:
 //
-// Updates the information about a namespace.
+// Update the information about a namespace.
 //
 // @param request - UpdateNamespaceRequest
 //
@@ -12006,7 +12038,7 @@ func (client *Client) UpdateNamespaceWithOptions(request *UpdateNamespaceRequest
 
 // Summary:
 //
-// Updates the information about a namespace.
+// Update the information about a namespace.
 //
 // @param request - UpdateNamespaceRequest
 //
@@ -12025,7 +12057,7 @@ func (client *Client) UpdateNamespace(request *UpdateNamespaceRequest) (_result 
 
 // Summary:
 //
-// 更新命名空间级别sls配置
+// Updates the Simple Log Service configuration for a namespace.
 //
 // @param request - UpdateNamespaceSlsConfigsRequest
 //
@@ -12084,7 +12116,7 @@ func (client *Client) UpdateNamespaceSlsConfigsWithOptions(request *UpdateNamesp
 
 // Summary:
 //
-// 更新命名空间级别sls配置
+// Updates the Simple Log Service configuration for a namespace.
 //
 // @param request - UpdateNamespaceSlsConfigsRequest
 //
@@ -12179,13 +12211,13 @@ func (client *Client) UpdateNamespaceVpc(request *UpdateNamespaceVpcRequest) (_r
 //
 // The HTTP status code. Valid values:
 //
-//   - **2xx**: The call was successful.
+// \\	- \\*\\*2xx\\*\\*: The call was successful.
 //
-//   - **3xx**: The call was redirected.
+// \\	- \\*\\*3xx\\*\\*: The call was redirected.
 //
-//   - **4xx**: The call failed.
+// \\	- \\*\\*4xx\\*\\*: The call failed.
 //
-//   - **5xx**: A server error occurred.
+// \\	- \\*\\*5xx\\*\\*: A server error occurred.
 //
 // @param tmpReq - UpdateSecretRequest
 //
@@ -12248,13 +12280,13 @@ func (client *Client) UpdateSecretWithOptions(tmpReq *UpdateSecretRequest, heade
 //
 // The HTTP status code. Valid values:
 //
-//   - **2xx**: The call was successful.
+// \\	- \\*\\*2xx\\*\\*: The call was successful.
 //
-//   - **3xx**: The call was redirected.
+// \\	- \\*\\*3xx\\*\\*: The call was redirected.
 //
-//   - **4xx**: The call failed.
+// \\	- \\*\\*4xx\\*\\*: The call failed.
 //
-//   - **5xx**: A server error occurred.
+// \\	- \\*\\*5xx\\*\\*: A server error occurred.
 //
 // @param request - UpdateSecretRequest
 //

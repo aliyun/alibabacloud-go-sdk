@@ -22,11 +22,48 @@ type iWebApplicationBody interface {
 }
 
 type WebApplicationBody struct {
-	Code      *int32          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *WebApplication `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code. Value description:
+	//
+	// 	- **2xx**: The request was successful.
+	//
+	// 	- **3xx**: The request was redirected.
+	//
+	// 	- **4xx**: The request failed.
+	//
+	// 	- **5xx**: A server error occurred.
+	//
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *WebApplication `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Additional information about the call result. Value description:
+	//
+	// 	- If the request is successful, a success message is returned.
+	//
+	// 	- If the request fails, an error code is returned.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s WebApplicationBody) String() string {

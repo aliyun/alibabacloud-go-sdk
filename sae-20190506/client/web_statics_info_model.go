@@ -20,10 +20,30 @@ type iWebStaticsInfo interface {
 }
 
 type WebStaticsInfo struct {
-	CpuUsage           *int64 `json:"CpuUsage,omitempty" xml:"CpuUsage,omitempty"`
+	// CPU usage
+	//
+	// example:
+	//
+	// 1327
+	CpuUsage *int64 `json:"CpuUsage,omitempty" xml:"CpuUsage,omitempty"`
+	// Indicates outbound traffic.
+	//
+	// example:
+	//
+	// 2792
 	InternetTrafficOut *int64 `json:"InternetTrafficOut,omitempty" xml:"InternetTrafficOut,omitempty"`
-	Invocations        *int64 `json:"Invocations,omitempty" xml:"Invocations,omitempty"`
-	MemoryUsage        *int64 `json:"MemoryUsage,omitempty" xml:"MemoryUsage,omitempty"`
+	// The number of times that the SQL statement is invoked.
+	//
+	// example:
+	//
+	// 2
+	Invocations *int64 `json:"Invocations,omitempty" xml:"Invocations,omitempty"`
+	// The peak memory usage for the query.
+	//
+	// example:
+	//
+	// 5045929297920
+	MemoryUsage *int64 `json:"MemoryUsage,omitempty" xml:"MemoryUsage,omitempty"`
 }
 
 func (s WebStaticsInfo) String() string {
