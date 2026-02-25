@@ -1101,7 +1101,7 @@ func (client *Client) DescribeAppsWithContext(ctx context.Context, request *Desc
 
 // Summary:
 //
-// Queries the details of one or more disks in a dedicated block storage cluster.
+// Queries information about cloud disks in a dedicated block storage cluster.
 //
 // Description:
 //
@@ -1171,7 +1171,7 @@ func (client *Client) DescribeDedicatedBlockStorageClusterDisksWithContext(ctx c
 
 // Summary:
 //
-// Queries the dedicated block storage clusters that are created.
+// Queries dedicated clusters.
 //
 // Description:
 //
@@ -1271,7 +1271,7 @@ func (client *Client) DescribeDedicatedBlockStorageClustersWithContext(ctx conte
 
 // Summary:
 //
-// Queries the risk events of a disk.
+// Queries the risk events of a disk. The operation is getting offline. Switch to the new operation DescribeEvents.
 //
 // Description:
 //
@@ -1349,7 +1349,7 @@ func (client *Client) DescribeDiskEventsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the near real-time monitoring data of a disk.
+// Queries fine-grained monitoring data of a disk.
 //
 // Description:
 //
@@ -1423,7 +1423,7 @@ func (client *Client) DescribeDiskMonitorDataWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the near real-time monitoring data of disks. You can query only the burst performance data of ESSD AutoPL disks. The data is aggregated by hour.
+// Queries fine-grained monitoring data of multiple disks. You can query only the burst performance data of ESSD AutoPL disks. The data is aggregated by hour.
 //
 // Description:
 //
@@ -2225,7 +2225,7 @@ func (client *Client) DescribeReplicaGroupDrillsWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询解决方案实例默认配置
+// Queries the default configurations of a solution.
 //
 // @param request - DescribeSolutionInstanceConfigurationRequest
 //
@@ -2653,7 +2653,7 @@ func (client *Client) ListReplicaEdgeSupportedWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Centralized Role: Query Historical Reports
+// Queries historical reports of a specific application.
 //
 // @param request - ListReportsRequest
 //
@@ -2719,7 +2719,7 @@ func (client *Client) ListReportsWithContext(ctx context.Context, request *ListR
 
 // Summary:
 //
-// Queries the tags that are added to one or more Elastic Block Storage (EBS) resources, or queries the IDs and tags of resources in a specified non-default resource group.
+// Queries the tags that are added to EBS resources, or queries the IDs and tags of resources in a non-default resource group.
 //
 // Description:
 //
@@ -2873,7 +2873,7 @@ func (client *Client) ModifyAppWithContext(ctx context.Context, request *ModifyA
 
 // Summary:
 //
-// 修改专属集群属性OpenApi
+// Modifies the information of a dedicated elastic block storage cluster.
 //
 // Description:
 //
@@ -3151,7 +3151,7 @@ func (client *Client) QueryDedicatedBlockStorageClusterDiskThroughputStatusWithC
 
 // Summary:
 //
-// Query dedicated block storage cluster capacity trend data, includ available capacity size and total capacity size.
+// Queries the capacity trend data of a dedicated Elastic Block Storage (EBS) cluster within a specific time period, including the available capacity and total capacity.
 //
 // Description:
 //
@@ -3483,7 +3483,7 @@ func (client *Client) SetDedicatedBlockStorageClusterDiskThroughputWithContext(c
 
 // Summary:
 //
-// Enables the async replication feature for replication pairs that belong to a replication pair-consistent group. When the async replication feature is enabled for the pairs for the first time, the system first performs a full synchronization to synchronize all data from disks at the primary site (primary disks) to disks at the secondary site (secondary disks) and then periodically synchronizes incremental data based on the recovery point objective (RPO) of the replication pair-consistent group.
+// Enables the async replication feature for replication pairs that belong to a replication pair-consistent group. The first time the async replication feature is enabled for the replication pairs, the system performs a full synchronization to synchronize all data from disks at the primary site (primary disks) to disks at the secondary site (secondary disks). Then, the system periodically synchronizes incremental data based on the recovery point objective (RPO) of the replication pair-consistent group.
 //
 // Description:
 //
@@ -3551,7 +3551,7 @@ func (client *Client) StartDiskReplicaGroupWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Activates a replication pair.
+// Activates the async replication feature for a specific replication pair.
 //
 // Description:
 //
@@ -4147,7 +4147,7 @@ func (client *Client) UpdateEnterpriseSnapshotPolicyWithContext(ctx context.Cont
 
 // Summary:
 //
-// 更新解决方案实例属性
+// Updates the attributes of a solution instance.
 //
 // @param request - UpdateSolutionInstanceAttributeRequest
 //

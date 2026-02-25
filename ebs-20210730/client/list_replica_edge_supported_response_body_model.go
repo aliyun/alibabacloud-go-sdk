@@ -140,6 +140,7 @@ func (s *ListReplicaEdgeSupportedResponseBodySupportedRegions) Validate() error 
 }
 
 type ListReplicaEdgeSupportedResponseBodySupportedRegionsZones struct {
+	SupportRtc *bool `json:"SupportRtc,omitempty" xml:"SupportRtc,omitempty"`
 	// example:
 	//
 	// cn-hangzhou-i
@@ -154,8 +155,17 @@ func (s ListReplicaEdgeSupportedResponseBodySupportedRegionsZones) GoString() st
 	return s.String()
 }
 
+func (s *ListReplicaEdgeSupportedResponseBodySupportedRegionsZones) GetSupportRtc() *bool {
+	return s.SupportRtc
+}
+
 func (s *ListReplicaEdgeSupportedResponseBodySupportedRegionsZones) GetZoneId() *string {
 	return s.ZoneId
+}
+
+func (s *ListReplicaEdgeSupportedResponseBodySupportedRegionsZones) SetSupportRtc(v bool) *ListReplicaEdgeSupportedResponseBodySupportedRegionsZones {
+	s.SupportRtc = &v
+	return s
 }
 
 func (s *ListReplicaEdgeSupportedResponseBodySupportedRegionsZones) SetZoneId(v string) *ListReplicaEdgeSupportedResponseBodySupportedRegionsZones {

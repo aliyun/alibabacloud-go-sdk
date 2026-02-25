@@ -160,7 +160,7 @@ func (client *Client) AddDiskReplicaPair(request *AddDiskReplicaPairRequest) (_r
 
 // Summary:
 //
-// Enables CloudLens for EBS.
+// Cancels Elastic Block Storage data insight (CloudLens for EBS).
 //
 // Description:
 //
@@ -197,7 +197,7 @@ func (client *Client) ApplyLensServiceWithOptions(runtime *dara.RuntimeOptions) 
 
 // Summary:
 //
-// Enables CloudLens for EBS.
+// Cancels Elastic Block Storage data insight (CloudLens for EBS).
 //
 // Description:
 //
@@ -293,7 +293,7 @@ func (client *Client) BindEnterpriseSnapshotPolicy(request *BindEnterpriseSnapsh
 
 // Summary:
 //
-// Disables CloudLens for EBS.
+// Cancels Elastic Block Storage data insight (CloudLens for EBS).
 //
 // Description:
 //
@@ -330,7 +330,7 @@ func (client *Client) CancelLensServiceWithOptions(runtime *dara.RuntimeOptions)
 
 // Summary:
 //
-// Disables CloudLens for EBS.
+// Cancels Elastic Block Storage data insight (CloudLens for EBS).
 //
 // Description:
 //
@@ -1616,7 +1616,7 @@ func (client *Client) DescribeApps(request *DescribeAppsRequest) (_result *Descr
 
 // Summary:
 //
-// Queries the details of one or more disks in a dedicated block storage cluster.
+// Queries information about cloud disks in a dedicated block storage cluster.
 //
 // Description:
 //
@@ -1686,7 +1686,7 @@ func (client *Client) DescribeDedicatedBlockStorageClusterDisksWithOptions(reque
 
 // Summary:
 //
-// Queries the details of one or more disks in a dedicated block storage cluster.
+// Queries information about cloud disks in a dedicated block storage cluster.
 //
 // Description:
 //
@@ -1718,7 +1718,7 @@ func (client *Client) DescribeDedicatedBlockStorageClusterDisks(request *Describ
 
 // Summary:
 //
-// Queries the dedicated block storage clusters that are created.
+// Queries dedicated clusters.
 //
 // Description:
 //
@@ -1818,7 +1818,7 @@ func (client *Client) DescribeDedicatedBlockStorageClustersWithOptions(request *
 
 // Summary:
 //
-// Queries the dedicated block storage clusters that are created.
+// Queries dedicated clusters.
 //
 // Description:
 //
@@ -1846,7 +1846,7 @@ func (client *Client) DescribeDedicatedBlockStorageClusters(request *DescribeDed
 
 // Summary:
 //
-// Queries the risk events of a disk.
+// Queries the risk events of a disk. The operation is getting offline. Switch to the new operation DescribeEvents.
 //
 // Description:
 //
@@ -1924,7 +1924,7 @@ func (client *Client) DescribeDiskEventsWithOptions(request *DescribeDiskEventsR
 
 // Summary:
 //
-// Queries the risk events of a disk.
+// Queries the risk events of a disk. The operation is getting offline. Switch to the new operation DescribeEvents.
 //
 // Description:
 //
@@ -1948,7 +1948,7 @@ func (client *Client) DescribeDiskEvents(request *DescribeDiskEventsRequest) (_r
 
 // Summary:
 //
-// Queries the near real-time monitoring data of a disk.
+// Queries fine-grained monitoring data of a disk.
 //
 // Description:
 //
@@ -2022,7 +2022,7 @@ func (client *Client) DescribeDiskMonitorDataWithOptions(request *DescribeDiskMo
 
 // Summary:
 //
-// Queries the near real-time monitoring data of a disk.
+// Queries fine-grained monitoring data of a disk.
 //
 // Description:
 //
@@ -2050,7 +2050,7 @@ func (client *Client) DescribeDiskMonitorData(request *DescribeDiskMonitorDataRe
 
 // Summary:
 //
-// Queries the near real-time monitoring data of disks. You can query only the burst performance data of ESSD AutoPL disks. The data is aggregated by hour.
+// Queries fine-grained monitoring data of multiple disks. You can query only the burst performance data of ESSD AutoPL disks. The data is aggregated by hour.
 //
 // Description:
 //
@@ -2124,7 +2124,7 @@ func (client *Client) DescribeDiskMonitorDataListWithOptions(request *DescribeDi
 
 // Summary:
 //
-// Queries the near real-time monitoring data of disks. You can query only the burst performance data of ESSD AutoPL disks. The data is aggregated by hour.
+// Queries fine-grained monitoring data of multiple disks. You can query only the burst performance data of ESSD AutoPL disks. The data is aggregated by hour.
 //
 // Description:
 //
@@ -2732,7 +2732,7 @@ func (client *Client) DescribeLensMonitorDisks(request *DescribeLensMonitorDisks
 
 // Summary:
 //
-// 查询用户开通ebs数据洞察服务状态
+// Queries the status of CloudLens for EBS.
 //
 // Description:
 //
@@ -2769,7 +2769,7 @@ func (client *Client) DescribeLensServiceStatusWithOptions(runtime *dara.Runtime
 
 // Summary:
 //
-// 查询用户开通ebs数据洞察服务状态
+// Queries the status of CloudLens for EBS.
 //
 // Description:
 //
@@ -3133,7 +3133,7 @@ func (client *Client) DescribeReplicaGroupDrills(request *DescribeReplicaGroupDr
 
 // Summary:
 //
-// 查询解决方案实例默认配置
+// Queries the default configurations of a solution.
 //
 // @param request - DescribeSolutionInstanceConfigurationRequest
 //
@@ -3189,7 +3189,7 @@ func (client *Client) DescribeSolutionInstanceConfigurationWithOptions(request *
 
 // Summary:
 //
-// 查询解决方案实例默认配置
+// Queries the default configurations of a solution.
 //
 // @param request - DescribeSolutionInstanceConfigurationRequest
 //
@@ -3725,7 +3725,7 @@ func (client *Client) ListReplicaEdgeSupported(request *ListReplicaEdgeSupported
 
 // Summary:
 //
-// Centralized Role: Query Historical Reports
+// Queries historical reports of a specific application.
 //
 // @param request - ListReportsRequest
 //
@@ -3791,7 +3791,7 @@ func (client *Client) ListReportsWithOptions(request *ListReportsRequest, runtim
 
 // Summary:
 //
-// Centralized Role: Query Historical Reports
+// Queries historical reports of a specific application.
 //
 // @param request - ListReportsRequest
 //
@@ -3809,7 +3809,7 @@ func (client *Client) ListReports(request *ListReportsRequest) (_result *ListRep
 
 // Summary:
 //
-// Queries the tags that are added to one or more Elastic Block Storage (EBS) resources, or queries the IDs and tags of resources in a specified non-default resource group.
+// Queries the tags that are added to EBS resources, or queries the IDs and tags of resources in a non-default resource group.
 //
 // Description:
 //
@@ -3883,7 +3883,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// Queries the tags that are added to one or more Elastic Block Storage (EBS) resources, or queries the IDs and tags of resources in a specified non-default resource group.
+// Queries the tags that are added to EBS resources, or queries the IDs and tags of resources in a non-default resource group.
 //
 // Description:
 //
@@ -4009,7 +4009,7 @@ func (client *Client) ModifyApp(request *ModifyAppRequest) (_result *ModifyAppRe
 
 // Summary:
 //
-// 修改专属集群属性OpenApi
+// Modifies the information of a dedicated elastic block storage cluster.
 //
 // Description:
 //
@@ -4073,7 +4073,7 @@ func (client *Client) ModifyDedicatedBlockStorageClusterAttributeWithOptions(req
 
 // Summary:
 //
-// 修改专属集群属性OpenApi
+// Modifies the information of a dedicated elastic block storage cluster.
 //
 // Description:
 //
@@ -4379,7 +4379,7 @@ func (client *Client) QueryDedicatedBlockStorageClusterDiskThroughputStatus(requ
 
 // Summary:
 //
-// Query dedicated block storage cluster capacity trend data, includ available capacity size and total capacity size.
+// Queries the capacity trend data of a dedicated Elastic Block Storage (EBS) cluster within a specific time period, including the available capacity and total capacity.
 //
 // Description:
 //
@@ -4449,7 +4449,7 @@ func (client *Client) QueryDedicatedBlockStorageClusterInventoryDataWithOptions(
 
 // Summary:
 //
-// Query dedicated block storage cluster capacity trend data, includ available capacity size and total capacity size.
+// Queries the capacity trend data of a dedicated Elastic Block Storage (EBS) cluster within a specific time period, including the available capacity and total capacity.
 //
 // Description:
 //
@@ -4841,7 +4841,7 @@ func (client *Client) SetDedicatedBlockStorageClusterDiskThroughput(request *Set
 
 // Summary:
 //
-// Enables the async replication feature for replication pairs that belong to a replication pair-consistent group. When the async replication feature is enabled for the pairs for the first time, the system first performs a full synchronization to synchronize all data from disks at the primary site (primary disks) to disks at the secondary site (secondary disks) and then periodically synchronizes incremental data based on the recovery point objective (RPO) of the replication pair-consistent group.
+// Enables the async replication feature for replication pairs that belong to a replication pair-consistent group. The first time the async replication feature is enabled for the replication pairs, the system performs a full synchronization to synchronize all data from disks at the primary site (primary disks) to disks at the secondary site (secondary disks). Then, the system periodically synchronizes incremental data based on the recovery point objective (RPO) of the replication pair-consistent group.
 //
 // Description:
 //
@@ -4909,7 +4909,7 @@ func (client *Client) StartDiskReplicaGroupWithOptions(request *StartDiskReplica
 
 // Summary:
 //
-// Enables the async replication feature for replication pairs that belong to a replication pair-consistent group. When the async replication feature is enabled for the pairs for the first time, the system first performs a full synchronization to synchronize all data from disks at the primary site (primary disks) to disks at the secondary site (secondary disks) and then periodically synchronizes incremental data based on the recovery point objective (RPO) of the replication pair-consistent group.
+// Enables the async replication feature for replication pairs that belong to a replication pair-consistent group. The first time the async replication feature is enabled for the replication pairs, the system performs a full synchronization to synchronize all data from disks at the primary site (primary disks) to disks at the secondary site (secondary disks). Then, the system periodically synchronizes incremental data based on the recovery point objective (RPO) of the replication pair-consistent group.
 //
 // Description:
 //
@@ -4939,7 +4939,7 @@ func (client *Client) StartDiskReplicaGroup(request *StartDiskReplicaGroupReques
 
 // Summary:
 //
-// Activates a replication pair.
+// Activates the async replication feature for a specific replication pair.
 //
 // Description:
 //
@@ -5005,7 +5005,7 @@ func (client *Client) StartDiskReplicaPairWithOptions(request *StartDiskReplicaP
 
 // Summary:
 //
-// Activates a replication pair.
+// Activates the async replication feature for a specific replication pair.
 //
 // Description:
 //
@@ -5743,7 +5743,7 @@ func (client *Client) UpdateEnterpriseSnapshotPolicy(request *UpdateEnterpriseSn
 
 // Summary:
 //
-// 更新解决方案实例属性
+// Updates the attributes of a solution instance.
 //
 // @param request - UpdateSolutionInstanceAttributeRequest
 //
@@ -5803,7 +5803,7 @@ func (client *Client) UpdateSolutionInstanceAttributeWithOptions(request *Update
 
 // Summary:
 //
-// 更新解决方案实例属性
+// Updates the attributes of a solution instance.
 //
 // @param request - UpdateSolutionInstanceAttributeRequest
 //
