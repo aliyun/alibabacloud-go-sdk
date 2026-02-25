@@ -26,13 +26,62 @@ type iResourceSpec interface {
 }
 
 type ResourceSpec struct {
-	Cu                       *int32  `json:"cu,omitempty" xml:"cu,omitempty"`
-	DiskNumber               *int32  `json:"diskNumber,omitempty" xml:"diskNumber,omitempty"`
+	// The number of CUs. A compute unit (CU) is the basic metering unit of a service. 1 CU = 1 CPU core + 4 GiB of memory.
+	//
+	// example:
+	//
+	// 3
+	Cu *int32 `json:"cu,omitempty" xml:"cu,omitempty"`
+	// The number of disk blocks.
+	//
+	// example:
+	//
+	// 1
+	DiskNumber *int32 `json:"diskNumber,omitempty" xml:"diskNumber,omitempty"`
+	// Local SSD Instance Specification for the node group. This parameter is applicable only when the node group is based on ECS instances and the SpecType is set to \\"Local SSD / Large-capacity Storage\\"
+	//
+	// example:
+	//
+	// local_ssd_4_4xlarge
 	LocalStorageInstanceType *string `json:"localStorageInstanceType,omitempty" xml:"localStorageInstanceType,omitempty"`
-	NodeNumber               *int32  `json:"nodeNumber,omitempty" xml:"nodeNumber,omitempty"`
-	SpecType                 *string `json:"specType,omitempty" xml:"specType,omitempty"`
-	StoragePerformanceLevel  *string `json:"storagePerformanceLevel,omitempty" xml:"storagePerformanceLevel,omitempty"`
-	StorageSize              *int32  `json:"storageSize,omitempty" xml:"storageSize,omitempty"`
+	// The number of nodes.
+	//
+	// example:
+	//
+	// 3
+	NodeNumber *int32 `json:"nodeNumber,omitempty" xml:"nodeNumber,omitempty"`
+	// The type of the node group. The following types are included:
+	//
+	// 	- standard, Standard Edition, ECS + cloud disk.
+	//
+	// 	- localSSD , local SSD.
+	//
+	// 	- bigData, which stores large specifications.
+	//
+	// example:
+	//
+	// standard
+	SpecType *string `json:"specType,omitempty" xml:"specType,omitempty"`
+	// The performance level of the disks. Valid values:
+	//
+	// 	- PL0: A single disk can achieve up to 10,000 random read/write IOPS.
+	//
+	// 	- PL1: A single disk can achieve up to 50,000 random read/write IOPS.
+	//
+	// 	- PL2: A single disk can achieve up to 100,000 random read/write IOPS.
+	//
+	// 	- PL3: A single disk can achieve up to 1 million random read/write IOPS.
+	//
+	// example:
+	//
+	// pl1
+	StoragePerformanceLevel *string `json:"storagePerformanceLevel,omitempty" xml:"storagePerformanceLevel,omitempty"`
+	// The storage size.
+	//
+	// example:
+	//
+	// 100
+	StorageSize *int32 `json:"storageSize,omitempty" xml:"storageSize,omitempty"`
 }
 
 func (s ResourceSpec) String() string {
