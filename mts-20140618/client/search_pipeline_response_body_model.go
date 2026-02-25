@@ -33,8 +33,7 @@ type SearchPipelineResponseBody struct {
 	// example:
 	//
 	// 10
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The MPS queues.
+	PageSize     *int64                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PipelineList *SearchPipelineResponseBodyPipelineList `json:"PipelineList,omitempty" xml:"PipelineList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -147,77 +146,15 @@ func (s *SearchPipelineResponseBodyPipelineList) Validate() error {
 }
 
 type SearchPipelineResponseBodyPipelineListPipeline struct {
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the MPS queue.
-	//
-	// example:
-	//
-	// d1ce4d3efcb549419193f50f1fcd****
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the MPS queue.
-	//
-	// example:
-	//
-	// example-pipeline-****
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The Message Service (MNS) configuration.
-	NotifyConfig *SearchPipelineResponseBodyPipelineListPipelineNotifyConfig `json:"NotifyConfig,omitempty" xml:"NotifyConfig,omitempty" type:"Struct"`
-	// The quota that is allocated to the MPS queue.
-	//
-	// example:
-	//
-	// 10
-	QuotaAllocate *int64 `json:"QuotaAllocate,omitempty" xml:"QuotaAllocate,omitempty"`
-	// The role that is assigned to the current RAM user.
-	//
-	// example:
-	//
-	// AliyunMTSDefaultRole
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The type of the MPS queue. Default value: **Standard**. Valid values:
-	//
-	// 	- **Boost**: MPS queue with transcoding speed boosted
-	//
-	// 	- **Standard**: standard MPS queue
-	//
-	// 	- **NarrowBandHDV2**: MPS queue that supports Narrowband HD 2.0
-	//
-	// 	- **AIVideoCover**: MPS queue for intelligent snapshot capture
-	//
-	// 	- **AIVideoFPShot**: MPS queue for media fingerprinting
-	//
-	// 	- **AIVideoCensor**: MPS queue for automated review
-	//
-	// 	- **AIVideoMCU**: MPS queue for smart tagging
-	//
-	// 	- **AIVideoSummary**: MPS queue for video synopsis
-	//
-	// 	- **AIVideoPorn**: MPS queue for pornography detection in videos
-	//
-	// 	- **AIAudioKWS**: MPS queue for keyword recognition in audio
-	//
-	// 	- **AIAudioASR**: MPS queue for speech-to-text conversion
-	//
-	// example:
-	//
-	// Standard
-	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	// The level of the MPS queue.
-	//
-	// example:
-	//
-	// 1
-	SpeedLevel *int64 `json:"SpeedLevel,omitempty" xml:"SpeedLevel,omitempty"`
-	// The state of the MPS queue. Valid values:
-	//
-	// 	- **Active**: The MPS queue is active.
-	//
-	// 	- **Paused**: The MPS queue is paused.
-	//
-	// example:
-	//
-	// Paused
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	CreationTime  *string                                                     `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Id            *string                                                     `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name          *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	NotifyConfig  *SearchPipelineResponseBodyPipelineListPipelineNotifyConfig `json:"NotifyConfig,omitempty" xml:"NotifyConfig,omitempty" type:"Struct"`
+	QuotaAllocate *int64                                                      `json:"QuotaAllocate,omitempty" xml:"QuotaAllocate,omitempty"`
+	Role          *string                                                     `json:"Role,omitempty" xml:"Role,omitempty"`
+	Speed         *string                                                     `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	SpeedLevel    *int64                                                      `json:"SpeedLevel,omitempty" xml:"SpeedLevel,omitempty"`
+	State         *string                                                     `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s SearchPipelineResponseBodyPipelineListPipeline) String() string {
@@ -319,30 +256,10 @@ func (s *SearchPipelineResponseBodyPipelineListPipeline) Validate() error {
 }
 
 type SearchPipelineResponseBodyPipelineListPipelineNotifyConfig struct {
-	// The tags.
-	//
-	// example:
-	//
-	// mts-test
-	MqTag *string `json:"MqTag,omitempty" xml:"MqTag,omitempty"`
-	// The queue of messages that are received.
-	//
-	// example:
-	//
-	// example1,example2
-	MqTopic *string `json:"MqTopic,omitempty" xml:"MqTopic,omitempty"`
-	// The name of the queue that is created in MNS.
-	//
-	// example:
-	//
-	// example-queue-****
+	MqTag     *string `json:"MqTag,omitempty" xml:"MqTag,omitempty"`
+	MqTopic   *string `json:"MqTopic,omitempty" xml:"MqTopic,omitempty"`
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	// The name of the topic that is created in MNS.
-	//
-	// example:
-	//
-	// example-topic-****
-	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	Topic     *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s SearchPipelineResponseBodyPipelineListPipelineNotifyConfig) String() string {

@@ -18,7 +18,6 @@ type iListAllMediaBucketResponseBody interface {
 }
 
 type ListAllMediaBucketResponseBody struct {
-	// The media buckets returned.
 	MediaBucketList *ListAllMediaBucketResponseBodyMediaBucketList `json:"MediaBucketList,omitempty" xml:"MediaBucketList,omitempty" type:"Struct"`
 	// The returned value of NextPageToken is a pagination token, which can be used in the next request to retrieve a new page of results.
 	//
@@ -113,28 +112,9 @@ func (s *ListAllMediaBucketResponseBodyMediaBucketList) Validate() error {
 }
 
 type ListAllMediaBucketResponseBodyMediaBucketListMediaBucket struct {
-	// The name of the media bucket.
-	//
-	// example:
-	//
-	// example-bucket-****
-	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The settings of Object Storage Service (OSS) hotlink protection. For more information, see [Hotlink protection](https://help.aliyun.com/document_detail/31869.html).
-	//
-	// example:
-	//
-	// http://www.example.com
+	Bucket  *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 	Referer *string `json:"Referer,omitempty" xml:"Referer,omitempty"`
-	// The type of the media bucket. Valid values:
-	//
-	// 	- Input: input media bucket
-	//
-	// 	- Output: output media bucket
-	//
-	// example:
-	//
-	// Input
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListAllMediaBucketResponseBodyMediaBucketListMediaBucket) String() string {

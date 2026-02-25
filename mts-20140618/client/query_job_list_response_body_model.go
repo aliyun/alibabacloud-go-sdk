@@ -18,9 +18,7 @@ type iQueryJobListResponseBody interface {
 }
 
 type QueryJobListResponseBody struct {
-	// The transcoding jobs.
-	JobList *QueryJobListResponseBodyJobList `json:"JobList,omitempty" xml:"JobList,omitempty" type:"Struct"`
-	// The list of nonexistent job IDs. If all queried job IDs exist, the response does not contain this parameter.
+	JobList        *QueryJobListResponseBodyJobList        `json:"JobList,omitempty" xml:"JobList,omitempty" type:"Struct"`
 	NonExistJobIds *QueryJobListResponseBodyNonExistJobIds `json:"NonExistJobIds,omitempty" xml:"NonExistJobIds,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -114,76 +112,18 @@ func (s *QueryJobListResponseBodyJobList) Validate() error {
 }
 
 type QueryJobListResponseBodyJobListJob struct {
-	// The error code returned if the job failed. If the job was successful, this parameter is not returned.
-	//
-	// example:
-	//
-	// InvalidParameter.NullValue
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The time when the job was created.
-	//
-	// example:
-	//
-	// 2014-01-10T12:00:00Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The time when the job was complete.
-	//
-	// example:
-	//
-	// 2014-01-10T12:20:25Z
-	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The information about the job input.
-	Input *QueryJobListResponseBodyJobListJobInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	// The job ID.
-	//
-	// example:
-	//
-	// 31fa3c9ca8134fb4b0b0f7878301****
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The message sent by Message Service (MNS) to notify users of the job result.
+	Code             *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	CreationTime     *string                                             `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	FinishTime       *string                                             `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	Input            *QueryJobListResponseBodyJobListJobInput            `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	JobId            *string                                             `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	MNSMessageResult *QueryJobListResponseBodyJobListJobMNSMessageResult `json:"MNSMessageResult,omitempty" xml:"MNSMessageResult,omitempty" type:"Struct"`
-	// The error message returned if the job failed. If the job was successful, this parameter is not returned.
-	//
-	// example:
-	//
-	// The specified parameter "%s" cannot be null.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The job output.
-	Output *QueryJobListResponseBodyJobListJobOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	// The transcoding progress.
-	//
-	// example:
-	//
-	// 100
-	Percent *int64 `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The ID of the MPS queue that is used to run the job.
-	//
-	// example:
-	//
-	// 88c6ca184c0e47b665e2a1267971****
-	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The job state. Valid values:
-	//
-	// 	- **Submitted**: The job was submitted.
-	//
-	// 	- **Transcoding**: Transcoding is in process.
-	//
-	// 	- **TranscodeSuccess**: The job was successful.
-	//
-	// 	- **TranscodeFail**: The job failed.
-	//
-	// 	- **TranscodeCancelled**: The job was canceled.
-	//
-	// example:
-	//
-	// TranscodeSuccess
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The time when the job was submitted.
-	//
-	// example:
-	//
-	// 2021-03-04T06:44:43Z
-	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	Message          *string                                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	Output           *QueryJobListResponseBodyJobListJobOutput           `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Percent          *int64                                              `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	PipelineId       *string                                             `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	State            *string                                             `json:"State,omitempty" xml:"State,omitempty"`
+	SubmitTime       *string                                             `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
 }
 
 func (s QueryJobListResponseBodyJobListJob) String() string {
@@ -322,24 +262,9 @@ func (s *QueryJobListResponseBodyJobListJob) Validate() error {
 }
 
 type QueryJobListResponseBodyJobListJobInput struct {
-	// The name of the OSS bucket in which the input file is stored.
-	//
-	// example:
-	//
-	// exampleBucket
-	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The OSS region in which the input file resides.
-	//
-	// example:
-	//
-	// oss-cn-shanghai
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The name of the OSS object that is used as the input file.
-	//
-	// example:
-	//
-	// video_01.mp4
-	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
 }
 
 func (s QueryJobListResponseBodyJobListJobInput) String() string {
@@ -382,24 +307,9 @@ func (s *QueryJobListResponseBodyJobListJobInput) Validate() error {
 }
 
 type QueryJobListResponseBodyJobListJobMNSMessageResult struct {
-	// The error code returned if the job failed. This parameter is not returned if the job was successful.
-	//
-	// example:
-	//
-	// InvalidParameter.ResourceNotFound
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the job failed. This parameter is not returned if the job was successful.
-	//
-	// example:
-	//
-	// The resource operated “%s” cannot be found.
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The ID of the message returned if the job was successful.
-	//
-	// example:
-	//
-	// 123
-	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	MessageId    *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 }
 
 func (s QueryJobListResponseBodyJobListJobMNSMessageResult) String() string {
@@ -442,122 +352,34 @@ func (s *QueryJobListResponseBodyJobListJobMNSMessageResult) Validate() error {
 }
 
 type QueryJobListResponseBodyJobListJobOutput struct {
-	// The audio configurations.
-	//
-	// >  If this parameter is specified in the request, the corresponding parameters in the specified transcoding template are overwritten.
-	Audio *QueryJobListResponseBodyJobListJobOutputAudio `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	// The sequence number of the audio stream.
-	//
-	// 	- Format: 0:a:{Sequence number}. Example: 0:a:0.
-	//
-	// 	- The sequence number is the index of the audio stream in the list and starts from 0.
-	//
-	// 	- If no sequence number is specified, the default audio stream is used.
-	//
-	// example:
-	//
-	// 0:a:0
-	AudioStreamMap *string `json:"AudioStreamMap,omitempty" xml:"AudioStreamMap,omitempty"`
-	// The information about clips.
-	Clip *QueryJobListResponseBodyJobListJobOutputClip `json:"Clip,omitempty" xml:"Clip,omitempty" type:"Struct"`
-	// The container format configurations.
-	Container *QueryJobListResponseBodyJobListJobOutputContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	// The configurations of watermark blurring. The value is a JSON object. For more information, see the DeWatermark section of the [Parameter details](https://help.aliyun.com/document_detail/29253.html) topic.
-	//
-	// example:
-	//
-	// {"0":[{"l":10,"t":10,"w":10,"h":10},{"l":100,"t":0.1,"w":10,"h":10}],"128000":[],"250000":[{"l":0.2,"t":0.1,"w":0.01,"h":0.05}]}
-	DeWatermark *string `json:"DeWatermark,omitempty" xml:"DeWatermark,omitempty"`
-	// The encryption configurations. The encrypted video file is generated in the M3U8 format.
-	Encryption *QueryJobListResponseBodyJobListJobOutputEncryption `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
-	// The custom fields.
-	//
-	// example:
-	//
-	// testid-002
-	ExtendData *string `json:"ExtendData,omitempty" xml:"ExtendData,omitempty"`
-	// The non-standard support configurations for M3U8. The value is a JSON object. For more information, see the M3U8NonStandardSupport section of the [Parameter details](https://help.aliyun.com/document_detail/29253.html) topic.
+	Audio                  *QueryJobListResponseBodyJobListJobOutputAudio                  `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
+	AudioStreamMap         *string                                                         `json:"AudioStreamMap,omitempty" xml:"AudioStreamMap,omitempty"`
+	Clip                   *QueryJobListResponseBodyJobListJobOutputClip                   `json:"Clip,omitempty" xml:"Clip,omitempty" type:"Struct"`
+	Container              *QueryJobListResponseBodyJobListJobOutputContainer              `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
+	DeWatermark            *string                                                         `json:"DeWatermark,omitempty" xml:"DeWatermark,omitempty"`
+	Encryption             *QueryJobListResponseBodyJobListJobOutputEncryption             `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
+	ExtendData             *string                                                         `json:"ExtendData,omitempty" xml:"ExtendData,omitempty"`
 	M3U8NonStandardSupport *QueryJobListResponseBodyJobListJobOutputM3U8NonStandardSupport `json:"M3U8NonStandardSupport,omitempty" xml:"M3U8NonStandardSupport,omitempty" type:"Struct"`
-	// The URL of the merging configuration file. Only one of MergeList and MergeConfigUrl takes effect.
-	//
-	// 	- The configuration file specified by MergeConfigUrl can contain up to 50 clips.
-	//
-	// 	- MergeConfigUrl indicates the URL of the configuration file for merging clips. Make sure that the configuration file is stored as an object in OSS and that MPS can access the OSS object. For information about the file content, see the details about merging parameters.
-	//
-	// 	- Example of the content of the merging configuration file: `{"MergeList":[{"MergeURL":"http://exampleBucket****.oss-cn-hangzhou.aliyuncs.com/video_01.mp4"}]}`.
-	//
-	// example:
-	//
-	// https://ceshi-***.oss-cn-shanghai.aliyuncs.com/ccc/p0903q9wkkb.m3u8
-	MergeConfigUrl *string `json:"MergeConfigUrl,omitempty" xml:"MergeConfigUrl,omitempty"`
-	// The configurations of clip merging. Up to four clips can be merged.
-	MergeList *QueryJobListResponseBodyJobListJobOutputMergeList `json:"MergeList,omitempty" xml:"MergeList,omitempty" type:"Struct"`
-	// The information about the high-speed transcoding job. This information is available only for jobs that are submitted by using an MPS queue for high-speed transcoding. This does not support MPS queues for high-speed transcoding of an earlier version.
-	MultiSpeedInfo *QueryJobListResponseBodyJobListJobOutputMultiSpeedInfo `json:"MultiSpeedInfo,omitempty" xml:"MultiSpeedInfo,omitempty" type:"Struct"`
-	// The transmuxing configurations. The transmuxing configurations. If this parameter is specified in the request, the corresponding parameters in the specified transcoding template are overwritten.
-	MuxConfig *QueryJobListResponseBodyJobListJobOutputMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
-	// The opening parts. The value is a JSON object.
-	OpeningList *QueryJobListResponseBodyJobListJobOutputOpeningList `json:"OpeningList,omitempty" xml:"OpeningList,omitempty" type:"Struct"`
-	// The output captions.
-	OutSubtitleList *QueryJobListResponseBodyJobListJobOutputOutSubtitleList `json:"OutSubtitleList,omitempty" xml:"OutSubtitleList,omitempty" type:"Struct"`
-	// The details of the output file.
-	OutputFile *QueryJobListResponseBodyJobListJobOutputOutputFile `json:"OutputFile,omitempty" xml:"OutputFile,omitempty" type:"Struct"`
-	// The priority of the job in the ApsaraVideo Media Processing (MPS) queue to which the job is added.
-	//
-	// 	- A value of 10 indicates the highest priority.
-	//
-	// 	- Default value: **6**.
-	//
-	// example:
-	//
-	// 6
-	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The media properties.
-	Properties *QueryJobListResponseBodyJobListJobOutputProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
-	// The rotation angle of the video.
-	//
-	// example:
-	//
-	// 90
-	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	// The caption configurations.
-	SubtitleConfig *QueryJobListResponseBodyJobListJobOutputSubtitleConfig `json:"SubtitleConfig,omitempty" xml:"SubtitleConfig,omitempty" type:"Struct"`
-	// The configurations for using the resolution of the source video.
-	SuperReso *QueryJobListResponseBodyJobListJobOutputSuperReso `json:"SuperReso,omitempty" xml:"SuperReso,omitempty" type:"Struct"`
-	// The ending parts.
-	TailSlateList *QueryJobListResponseBodyJobListJobOutputTailSlateList `json:"TailSlateList,omitempty" xml:"TailSlateList,omitempty" type:"Struct"`
-	// The template ID.
-	//
-	// example:
-	//
-	// S00000001-200010
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The general transcoding configurations.
-	//
-	// >  If this parameter is specified in the request, the corresponding parameters in the specified transcoding template are overwritten.
-	TransConfig *QueryJobListResponseBodyJobListJobOutputTransConfig `json:"TransConfig,omitempty" xml:"TransConfig,omitempty" type:"Struct"`
-	// The custom data.
-	//
-	// example:
-	//
-	// testid-001
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// The video configurations.
-	Video *QueryJobListResponseBodyJobListJobOutputVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
-	// The sequence number of the video stream. The sequence number is the index of the video stream in the list and starts from 0. If no sequence number is specified, the default video stream is used.
-	//
-	// example:
-	//
-	// 0
-	VideoStreamMap *string `json:"VideoStreamMap,omitempty" xml:"VideoStreamMap,omitempty"`
-	// The URL of the watermark configuration file.
-	//
-	// example:
-	//
-	// http://example.com/configure
-	WaterMarkConfigUrl *string `json:"WaterMarkConfigUrl,omitempty" xml:"WaterMarkConfigUrl,omitempty"`
-	// The watermarks.
-	WaterMarkList *QueryJobListResponseBodyJobListJobOutputWaterMarkList `json:"WaterMarkList,omitempty" xml:"WaterMarkList,omitempty" type:"Struct"`
+	MergeConfigUrl         *string                                                         `json:"MergeConfigUrl,omitempty" xml:"MergeConfigUrl,omitempty"`
+	MergeList              *QueryJobListResponseBodyJobListJobOutputMergeList              `json:"MergeList,omitempty" xml:"MergeList,omitempty" type:"Struct"`
+	MultiSpeedInfo         *QueryJobListResponseBodyJobListJobOutputMultiSpeedInfo         `json:"MultiSpeedInfo,omitempty" xml:"MultiSpeedInfo,omitempty" type:"Struct"`
+	MuxConfig              *QueryJobListResponseBodyJobListJobOutputMuxConfig              `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
+	OpeningList            *QueryJobListResponseBodyJobListJobOutputOpeningList            `json:"OpeningList,omitempty" xml:"OpeningList,omitempty" type:"Struct"`
+	OutSubtitleList        *QueryJobListResponseBodyJobListJobOutputOutSubtitleList        `json:"OutSubtitleList,omitempty" xml:"OutSubtitleList,omitempty" type:"Struct"`
+	OutputFile             *QueryJobListResponseBodyJobListJobOutputOutputFile             `json:"OutputFile,omitempty" xml:"OutputFile,omitempty" type:"Struct"`
+	Priority               *string                                                         `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Properties             *QueryJobListResponseBodyJobListJobOutputProperties             `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
+	Rotate                 *string                                                         `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	SubtitleConfig         *QueryJobListResponseBodyJobListJobOutputSubtitleConfig         `json:"SubtitleConfig,omitempty" xml:"SubtitleConfig,omitempty" type:"Struct"`
+	SuperReso              *QueryJobListResponseBodyJobListJobOutputSuperReso              `json:"SuperReso,omitempty" xml:"SuperReso,omitempty" type:"Struct"`
+	TailSlateList          *QueryJobListResponseBodyJobListJobOutputTailSlateList          `json:"TailSlateList,omitempty" xml:"TailSlateList,omitempty" type:"Struct"`
+	TemplateId             *string                                                         `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TransConfig            *QueryJobListResponseBodyJobListJobOutputTransConfig            `json:"TransConfig,omitempty" xml:"TransConfig,omitempty" type:"Struct"`
+	UserData               *string                                                         `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Video                  *QueryJobListResponseBodyJobListJobOutputVideo                  `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+	VideoStreamMap         *string                                                         `json:"VideoStreamMap,omitempty" xml:"VideoStreamMap,omitempty"`
+	WaterMarkConfigUrl     *string                                                         `json:"WaterMarkConfigUrl,omitempty" xml:"WaterMarkConfigUrl,omitempty"`
+	WaterMarkList          *QueryJobListResponseBodyJobListJobOutputWaterMarkList          `json:"WaterMarkList,omitempty" xml:"WaterMarkList,omitempty" type:"Struct"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutput) String() string {
@@ -915,64 +737,13 @@ func (s *QueryJobListResponseBodyJobListJobOutput) Validate() error {
 }
 
 type QueryJobListResponseBodyJobListJobOutputAudio struct {
-	// The audio bitrate of the output file.
-	//
-	// 	- Unit: Kbit/s.
-	//
-	// 	- Default value: **128**.
-	//
-	// example:
-	//
-	// 128
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The number of sound channels.
-	//
-	// 	- Valid values: 1, 2, 3, 4, 5, 6, 7, and 8.
-	//
-	// 	- Default value: **2**.
-	//
-	// example:
-	//
-	// 2
-	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// The audio codec.
-	//
-	// 	- Valid values: aac, mp3, vorbis, and flac.
-	//
-	// 	- Default value: **aac**.
-	//
-	// example:
-	//
-	// aac
-	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	// The codec profile of the audio. Valid values when the value of Codec is aac: aaclow, aache, aachev2, aacld, and aaceld.
-	//
-	// example:
-	//
-	// aaclow
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// The level of quality control on the audio.
-	//
-	// example:
-	//
-	// 15
-	Qscale *string `json:"Qscale,omitempty" xml:"Qscale,omitempty"`
-	// The sampling rate.
-	//
-	// 	- Valid values: 22050, 32000, 44100, 48000, and 96000.
-	//
-	// 	- Unit: Hz.
-	//
-	// 	- Default value: 44100.
-	//
-	// >  If the video container format is FLV and the audio codec is MP3, the value of this parameter cannot be 32000, 48000, or 96000. If the audio codec is MP3, the value of this parameter cannot be 96000.
-	//
-	// example:
-	//
-	// 44100
-	Samplerate *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	// The volume configurations.
-	Volume *QueryJobListResponseBodyJobListJobOutputAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
+	Bitrate    *string                                              `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Channels   *string                                              `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	Codec      *string                                              `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Profile    *string                                              `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Qscale     *string                                              `json:"Qscale,omitempty" xml:"Qscale,omitempty"`
+	Samplerate *string                                              `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+	Volume     *QueryJobListResponseBodyJobListJobOutputAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputAudio) String() string {
@@ -1056,23 +827,7 @@ func (s *QueryJobListResponseBodyJobListJobOutputAudio) Validate() error {
 }
 
 type QueryJobListResponseBodyJobListJobOutputAudioVolume struct {
-	// The volume adjustment range. Default value: -20. Unit: dB.
-	//
-	// example:
-	//
-	// -20
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The method that is used to adjust the volume. Valid values:
-	//
-	// 	- **auto**
-	//
-	// 	- **dynamic**
-	//
-	// 	- **linear**
-	//
-	// example:
-	//
-	// auto
+	Level  *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
 }
 
@@ -1107,7 +862,6 @@ func (s *QueryJobListResponseBodyJobListJobOutputAudioVolume) Validate() error {
 }
 
 type QueryJobListResponseBodyJobListJobOutputClip struct {
-	// The time span of the clip.
 	TimeSpan *QueryJobListResponseBodyJobListJobOutputClipTimeSpan `json:"TimeSpan,omitempty" xml:"TimeSpan,omitempty" type:"Struct"`
 }
 
@@ -1138,38 +892,8 @@ func (s *QueryJobListResponseBodyJobListJobOutputClip) Validate() error {
 }
 
 type QueryJobListResponseBodyJobListJobOutputClipTimeSpan struct {
-	// The duration of the clip.
-	//
-	// 	- Format: `hh:mm:ss[.SSS]`.
-	//
-	// 	- Example: 01:00:59.999.
-	//
-	// Or
-	//
-	// 	- Format: `sssss[.SSS]`.
-	//
-	// 	- Example: 32000.23.
-	//
-	// example:
-	//
-	// 01:00:59.999
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The point in time when the clip starts.
-	//
-	// 	- Format: `hh:mm:ss[.SSS]`.
-	//
-	// 	- Example: 01:59:59.999.
-	//
-	// Or
-	//
-	// 	- Format: `sssss[.SSS]`.
-	//
-	// 	- Example: 32000.23.
-	//
-	// example:
-	//
-	// 01:59:59.999
-	Seek *string `json:"Seek,omitempty" xml:"Seek,omitempty"`
+	Seek     *string `json:"Seek,omitempty" xml:"Seek,omitempty"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputClipTimeSpan) String() string {
@@ -1203,23 +927,6 @@ func (s *QueryJobListResponseBodyJobListJobOutputClipTimeSpan) Validate() error 
 }
 
 type QueryJobListResponseBodyJobListJobOutputContainer struct {
-	// The container format.
-	//
-	// 	- Default value: mp4.
-	//
-	// 	- Video formats include FLV, MP4, HLS (M3U8 + TS), and MPEG-DASH (MPD + fMP4).
-	//
-	// 	- Audio formats include MP3, MP4, Ogg, FLAC, and M4A.
-	//
-	// 	- Image formats include GIF and WebP. If the container format is GIF, the video codec must be GIF.
-	//
-	// 	- If the container format is WebP, the video codec must be WebP.
-	//
-	// 	- If the container format is FLV, the video codec cannot be H.265.
-	//
-	// example:
-	//
-	// mp4
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
 }
 
@@ -1245,44 +952,12 @@ func (s *QueryJobListResponseBodyJobListJobOutputContainer) Validate() error {
 }
 
 type QueryJobListResponseBodyJobListJobOutputEncryption struct {
-	// The encryption ID.
-	//
-	// example:
-	//
-	// 31fa3c9ca8134f9cec2b4b0b0f78****
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The key that is used to encrypt the video.
-	//
-	// example:
-	//
-	// encryptionkey128
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The key encryption method. Valid values: Base64 and KMS.
-	//
-	// >  For example, if the key is `encryptionkey128`, the key can be encrypted as `Base64("encryptionkey128")` or `KMS(Base64("encryptionkey128")` depending on the encryption method used.
-	//
-	// example:
-	//
-	// Base64
+	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
-	// The URL that is used to request the key. The URL is Base64-encoded.
-	//
-	// example:
-	//
-	// https://1161758785*****.cn-shanghai.fc.aliyuncs.com/2016-08-15/proxy/HLS-decyptServer/decyptServer/
-	KeyUri *string `json:"KeyUri,omitempty" xml:"KeyUri,omitempty"`
-	// The number of unencrypted frames at the beginning of the video. Leaving these frames unencrypted enables video playback to quickly start.
-	//
-	// example:
-	//
-	// 3
+	KeyUri  *string `json:"KeyUri,omitempty" xml:"KeyUri,omitempty"`
 	SkipCnt *string `json:"SkipCnt,omitempty" xml:"SkipCnt,omitempty"`
-	// The encryption type. Only **hls-aes-128*	- may be returned.
-	//
-	// example:
-	//
-	// hls-aes-128
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputEncryption) String() string {
@@ -1352,7 +1027,6 @@ func (s *QueryJobListResponseBodyJobListJobOutputEncryption) Validate() error {
 }
 
 type QueryJobListResponseBodyJobListJobOutputM3U8NonStandardSupport struct {
-	// The non-standard support configurations for TS files. The value is a JSON object. For more information, see the TS section of the [Parameter details](https://help.aliyun.com/document_detail/29253.html) topic.
 	TS *QueryJobListResponseBodyJobListJobOutputM3U8NonStandardSupportTS `json:"TS,omitempty" xml:"TS,omitempty" type:"Struct"`
 }
 
@@ -1383,25 +1057,7 @@ func (s *QueryJobListResponseBodyJobListJobOutputM3U8NonStandardSupport) Validat
 }
 
 type QueryJobListResponseBodyJobListJobOutputM3U8NonStandardSupportTS struct {
-	// Indicates whether the output of the MD5 value of the TS file is supported in the M3U8 file. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	Md5Support *bool `json:"Md5Support,omitempty" xml:"Md5Support,omitempty"`
-	// Indicates whether the output of the size of the TS file is supported in the M3U8 file. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
+	Md5Support  *bool `json:"Md5Support,omitempty" xml:"Md5Support,omitempty"`
 	SizeSupport *bool `json:"SizeSupport,omitempty" xml:"SizeSupport,omitempty"`
 }
 
@@ -1470,42 +1126,10 @@ func (s *QueryJobListResponseBodyJobListJobOutputMergeList) Validate() error {
 }
 
 type QueryJobListResponseBodyJobListJobOutputMergeListMerge struct {
-	// The duration of the clip.
-	//
-	// 	- Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
-	//
-	// 	- Examples: 01:59:59.999 and 32000.23.
-	//
-	// example:
-	//
-	// 01:59:59.999
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The OSS URL of the clip.
-	//
-	// 	- Example: `http://example-bucket-.oss-cn-hangzhou.aliyuncs.com/example-object.flv`.
-	//
-	// 	- The object must be URL-encoded by using the UTF-8 standard. For more information, see [URL encoding](https://help.aliyun.com/document_detail/423796.html).
-	//
-	// example:
-	//
-	// http://example-bucket.oss-cn-hangzhou.aliyuncs.com/example-object.flv
 	MergeURL *string `json:"MergeURL,omitempty" xml:"MergeURL,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role used for delegated authorization.
-	//
-	// example:
-	//
-	// acs:ram::<your uid>:role/<your role name>
-	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	// The start point in time of the clip.
-	//
-	// 	- Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
-	//
-	// 	- Examples: 01:59:59.999 and 32000.23.
-	//
-	// example:
-	//
-	// 01:59:59.999
-	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
+	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	Start    *string `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputMergeListMerge) String() string {
@@ -1557,54 +1181,14 @@ func (s *QueryJobListResponseBodyJobListJobOutputMergeListMerge) Validate() erro
 }
 
 type QueryJobListResponseBodyJobListJobOutputMultiSpeedInfo struct {
-	// The error code returned if high-speed transcoding is not enabled.
-	//
-	// example:
-	//
-	// Boost.NotNeedSpeed
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The downgrade policy if high-speed transcoding is not supported.
-	//
-	// example:
-	//
-	// NormalSpeed
-	DowngradePolicy *string `json:"DowngradePolicy,omitempty" xml:"DowngradePolicy,omitempty"`
-	// The duration of the output video.
-	//
-	// example:
-	//
-	// 21.0
-	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// Indicates whether high-speed transcoding is enabled.
-	//
-	// example:
-	//
-	// true
-	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The error message returned if high-speed transcoding is not enabled.
-	//
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The actual transcoding speed.
-	//
-	// example:
-	//
-	// 6.576886940181647
-	RealSpeed *float64 `json:"RealSpeed,omitempty" xml:"RealSpeed,omitempty"`
-	// The speed setting.
-	//
-	// example:
-	//
-	// 30
-	SettingSpeed *int32 `json:"SettingSpeed,omitempty" xml:"SettingSpeed,omitempty"`
-	// The amount of time consumed.
-	//
-	// example:
-	//
-	// 3.193
-	TimeCost *float64 `json:"TimeCost,omitempty" xml:"TimeCost,omitempty"`
+	Code            *string  `json:"Code,omitempty" xml:"Code,omitempty"`
+	DowngradePolicy *string  `json:"DowngradePolicy,omitempty" xml:"DowngradePolicy,omitempty"`
+	Duration        *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Enable          *string  `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Message         *string  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RealSpeed       *float64 `json:"RealSpeed,omitempty" xml:"RealSpeed,omitempty"`
+	SettingSpeed    *int32   `json:"SettingSpeed,omitempty" xml:"SettingSpeed,omitempty"`
+	TimeCost        *float64 `json:"TimeCost,omitempty" xml:"TimeCost,omitempty"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputMultiSpeedInfo) String() string {
@@ -1692,12 +1276,9 @@ func (s *QueryJobListResponseBodyJobListJobOutputMultiSpeedInfo) Validate() erro
 }
 
 type QueryJobListResponseBodyJobListJobOutputMuxConfig struct {
-	// The transmuxing configurations for GIF.
-	Gif *QueryJobListResponseBodyJobListJobOutputMuxConfigGif `json:"Gif,omitempty" xml:"Gif,omitempty" type:"Struct"`
-	// The segment configurations. The value is a JSON object.
+	Gif     *QueryJobListResponseBodyJobListJobOutputMuxConfigGif     `json:"Gif,omitempty" xml:"Gif,omitempty" type:"Struct"`
 	Segment *QueryJobListResponseBodyJobListJobOutputMuxConfigSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
-	// The transmuxing configurations for WebP.
-	Webp *QueryJobListResponseBodyJobListJobOutputMuxConfigWebp `json:"Webp,omitempty" xml:"Webp,omitempty" type:"Struct"`
+	Webp    *QueryJobListResponseBodyJobListJobOutputMuxConfigWebp    `json:"Webp,omitempty" xml:"Webp,omitempty" type:"Struct"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputMuxConfig) String() string {
@@ -1755,34 +1336,10 @@ func (s *QueryJobListResponseBodyJobListJobOutputMuxConfig) Validate() error {
 }
 
 type QueryJobListResponseBodyJobListJobOutputMuxConfigGif struct {
-	// The color dithering algorithm of the palette. Valid values: sierra and bayer.
-	//
-	// example:
-	//
-	// bayer
-	DitherMode *string `json:"DitherMode,omitempty" xml:"DitherMode,omitempty"`
-	// The duration for which the final frame is paused. Unit: centisecond.
-	//
-	// example:
-	//
-	// 0
-	FinalDelay *string `json:"FinalDelay,omitempty" xml:"FinalDelay,omitempty"`
-	// Indicates whether a custom palette is used. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// false
+	DitherMode      *string `json:"DitherMode,omitempty" xml:"DitherMode,omitempty"`
+	FinalDelay      *string `json:"FinalDelay,omitempty" xml:"FinalDelay,omitempty"`
 	IsCustomPalette *string `json:"IsCustomPalette,omitempty" xml:"IsCustomPalette,omitempty"`
-	// The loop count.
-	//
-	// example:
-	//
-	// 0
-	Loop *string `json:"Loop,omitempty" xml:"Loop,omitempty"`
+	Loop            *string `json:"Loop,omitempty" xml:"Loop,omitempty"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputMuxConfigGif) String() string {
@@ -1834,11 +1391,6 @@ func (s *QueryJobListResponseBodyJobListJobOutputMuxConfigGif) Validate() error 
 }
 
 type QueryJobListResponseBodyJobListJobOutputMuxConfigSegment struct {
-	// The segment length. Unit: seconds.
-	//
-	// example:
-	//
-	// 20
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 }
 
@@ -1864,11 +1416,6 @@ func (s *QueryJobListResponseBodyJobListJobOutputMuxConfigSegment) Validate() er
 }
 
 type QueryJobListResponseBodyJobListJobOutputMuxConfigWebp struct {
-	// The loop count.
-	//
-	// example:
-	//
-	// 0
 	Loop *string `json:"Loop,omitempty" xml:"Loop,omitempty"`
 }
 
@@ -1928,51 +1475,9 @@ func (s *QueryJobListResponseBodyJobListJobOutputOpeningList) Validate() error {
 }
 
 type QueryJobListResponseBodyJobListJobOutputOpeningListOpening struct {
-	// The height of the opening part.
-	//
-	// 	- Valid values: values in the range of (0,4096), -1, and full.
-	//
-	// 	- A value of -1 indicates that the original height of the opening part is retained.
-	//
-	// 	- A value of full indicates that the height of the opening part equals the height of the main part.
-	//
-	// 	- Default value: **-1**.
-	//
-	// example:
-	//
-	// -1
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The amount of time after which the opening part is played.
-	//
-	// 	- The value starts from 0.
-	//
-	// 	- Unit: seconds.
-	//
-	// 	- Default value: **0**.
-	//
-	// example:
-	//
-	// 0
-	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
-	// The width of the opening part.
-	//
-	// 	- Valid values: values in the range of (0,4096), -1, and full.
-	//
-	// 	- A value of -1 indicates that the original width of the opening part is retained.
-	//
-	// 	- A value of full indicates that the width of the opening part equals the width of the main part.
-	//
-	// 	- Default value: **-1**.
-	//
-	// example:
-	//
-	// -1
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
-	// The OSS URL of the opening part.
-	//
-	// example:
-	//
-	// http://example.oss-cn-shanghai.aliyuncs.com/t5.mp4
+	Height  *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	Start   *string `json:"Start,omitempty" xml:"Start,omitempty"`
+	Width   *string `json:"Width,omitempty" xml:"Width,omitempty"`
 	OpenUrl *string `json:"openUrl,omitempty" xml:"openUrl,omitempty"`
 }
 
@@ -2059,30 +1564,10 @@ func (s *QueryJobListResponseBodyJobListJobOutputOutSubtitleList) Validate() err
 }
 
 type QueryJobListResponseBodyJobListJobOutputOutSubtitleListOutSubtitle struct {
-	// The video track. Format: `0:{Stream}:{Stream sequence number}`, which is `0:v:{video_index}`. The value of Stream is v, which indicates a video stream. The sequence number is the index of the video stream in the list and starts from 0.
-	//
-	// example:
-	//
-	// 0:v:0
-	Map *string `json:"Map,omitempty" xml:"Map,omitempty"`
-	// The error message returned if the job failed to be created. This parameter is not returned if the job was created.
-	//
-	// example:
-	//
-	// The specified parameter “%s” cannot be null.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The details of the output caption.
+	Map             *string                                                                            `json:"Map,omitempty" xml:"Map,omitempty"`
+	Message         *string                                                                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	OutSubtitleFile *QueryJobListResponseBodyJobListJobOutputOutSubtitleListOutSubtitleOutSubtitleFile `json:"OutSubtitleFile,omitempty" xml:"OutSubtitleFile,omitempty" type:"Struct"`
-	// Indicates whether the job was successful. Valid values:
-	//
-	// 	- **true**: The job was successful.
-	//
-	// 	- **false**: The job failed.
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success         *bool                                                                              `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputOutSubtitleListOutSubtitle) String() string {
@@ -2139,30 +1624,10 @@ func (s *QueryJobListResponseBodyJobListJobOutputOutSubtitleListOutSubtitle) Val
 }
 
 type QueryJobListResponseBodyJobListJobOutputOutSubtitleListOutSubtitleOutSubtitleFile struct {
-	// The name of the OSS bucket in which the output caption is stored.
-	//
-	// example:
-	//
-	// exampleBucket
-	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The OSS region in which the output caption resides.
-	//
-	// example:
-	//
-	// oss-cn-hangzhou
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The name of the OSS object that is used as the output caption.
-	//
-	// example:
-	//
-	// example.flv
-	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	// The ARN of the RAM role used for delegated authorization.
-	//
-	// example:
-	//
-	// acs:ram::<your uid>:role/<your role name>
-	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputOutSubtitleListOutSubtitleOutSubtitleFile) String() string {
@@ -2214,30 +1679,10 @@ func (s *QueryJobListResponseBodyJobListJobOutputOutSubtitleListOutSubtitleOutSu
 }
 
 type QueryJobListResponseBodyJobListJobOutputOutputFile struct {
-	// The name of the OSS bucket in which the output file is stored.
-	//
-	// example:
-	//
-	// example-bucket
-	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The OSS region in which the output file resides.
-	//
-	// example:
-	//
-	// oss-cn-hangzhou
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The name of the OSS object that is used as the output file.
-	//
-	// example:
-	//
-	// example-output.flv
-	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	// The ARN of the RAM role used for delegated authorization.
-	//
-	// example:
-	//
-	// acs:ram::<your uid>:role/<your role name>
-	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputOutputFile) String() string {
@@ -2289,54 +1734,16 @@ func (s *QueryJobListResponseBodyJobListJobOutputOutputFile) Validate() error {
 }
 
 type QueryJobListResponseBodyJobListJobOutputProperties struct {
-	// The video bitrate.
-	//
-	// example:
-	//
-	// 490
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The video duration.
-	//
-	// example:
-	//
-	// 17
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The video format.
-	//
-	// example:
-	//
-	// mp4
-	FileFormat *string `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
-	// The size of the media file.
-	//
-	// example:
-	//
-	// 1057273
-	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The format information.
-	Format *QueryJobListResponseBodyJobListJobOutputPropertiesFormat `json:"Format,omitempty" xml:"Format,omitempty" type:"Struct"`
-	// The frame rate of the video.
-	//
-	// example:
-	//
-	// 30
-	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// The video height.
-	//
-	// example:
-	//
-	// 1280
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The non-engine layer keywords.
+	Bitrate     *string                                                        `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Duration    *string                                                        `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileFormat  *string                                                        `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
+	FileSize    *string                                                        `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	Format      *QueryJobListResponseBodyJobListJobOutputPropertiesFormat      `json:"Format,omitempty" xml:"Format,omitempty" type:"Struct"`
+	Fps         *string                                                        `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Height      *string                                                        `json:"Height,omitempty" xml:"Height,omitempty"`
 	SourceLogos *QueryJobListResponseBodyJobListJobOutputPropertiesSourceLogos `json:"SourceLogos,omitempty" xml:"SourceLogos,omitempty" type:"Struct"`
-	// The stream information.
-	Streams *QueryJobListResponseBodyJobListJobOutputPropertiesStreams `json:"Streams,omitempty" xml:"Streams,omitempty" type:"Struct"`
-	// The video width.
-	//
-	// example:
-	//
-	// 720
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Streams     *QueryJobListResponseBodyJobListJobOutputPropertiesStreams     `json:"Streams,omitempty" xml:"Streams,omitempty" type:"Struct"`
+	Width       *string                                                        `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputProperties) String() string {
@@ -2457,54 +1864,14 @@ func (s *QueryJobListResponseBodyJobListJobOutputProperties) Validate() error {
 }
 
 type QueryJobListResponseBodyJobListJobOutputPropertiesFormat struct {
-	// The total bitrate.
-	//
-	// example:
-	//
-	// 490.784
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The total duration.
-	//
-	// example:
-	//
-	// 17.234000
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The full name of the container format.
-	//
-	// example:
-	//
-	// QuickTime / MOV
+	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	FormatLongName *string `json:"FormatLongName,omitempty" xml:"FormatLongName,omitempty"`
-	// The short name of the container format. Valid values: mov, mp4, m4a, 3gp, 3g2, and mj2.
-	//
-	// example:
-	//
-	// mov
-	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// The total number of program streams.
-	//
-	// example:
-	//
-	// 0
-	NumPrograms *string `json:"NumPrograms,omitempty" xml:"NumPrograms,omitempty"`
-	// The total number of media streams.
-	//
-	// example:
-	//
-	// 2
-	NumStreams *string `json:"NumStreams,omitempty" xml:"NumStreams,omitempty"`
-	// The size of the media file.
-	//
-	// example:
-	//
-	// 1057273
-	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The start time.
-	//
-	// example:
-	//
-	// -0.064000
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	FormatName     *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	NumPrograms    *string `json:"NumPrograms,omitempty" xml:"NumPrograms,omitempty"`
+	NumStreams     *string `json:"NumStreams,omitempty" xml:"NumStreams,omitempty"`
+	Size           *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputPropertiesFormat) String() string {
@@ -2626,11 +1993,6 @@ func (s *QueryJobListResponseBodyJobListJobOutputPropertiesSourceLogos) Validate
 }
 
 type QueryJobListResponseBodyJobListJobOutputPropertiesSourceLogosSourceLogo struct {
-	// The keyword.
-	//
-	// example:
-	//
-	// example
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
@@ -2656,12 +2018,9 @@ func (s *QueryJobListResponseBodyJobListJobOutputPropertiesSourceLogosSourceLogo
 }
 
 type QueryJobListResponseBodyJobListJobOutputPropertiesStreams struct {
-	// The audio streams.
-	AudioStreamList *QueryJobListResponseBodyJobListJobOutputPropertiesStreamsAudioStreamList `json:"AudioStreamList,omitempty" xml:"AudioStreamList,omitempty" type:"Struct"`
-	// The caption streams.
+	AudioStreamList    *QueryJobListResponseBodyJobListJobOutputPropertiesStreamsAudioStreamList    `json:"AudioStreamList,omitempty" xml:"AudioStreamList,omitempty" type:"Struct"`
 	SubtitleStreamList *QueryJobListResponseBodyJobListJobOutputPropertiesStreamsSubtitleStreamList `json:"SubtitleStreamList,omitempty" xml:"SubtitleStreamList,omitempty" type:"Struct"`
-	// The video streams.
-	VideoStreamList *QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamList `json:"VideoStreamList,omitempty" xml:"VideoStreamList,omitempty" type:"Struct"`
+	VideoStreamList    *QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamList    `json:"VideoStreamList,omitempty" xml:"VideoStreamList,omitempty" type:"Struct"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputPropertiesStreams) String() string {
@@ -2753,102 +2112,22 @@ func (s *QueryJobListResponseBodyJobListJobOutputPropertiesStreamsAudioStreamLis
 }
 
 type QueryJobListResponseBodyJobListJobOutputPropertiesStreamsAudioStreamListAudioStream struct {
-	// The bitrate of the audio stream.
-	//
-	// example:
-	//
-	// 64.136
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The output layout of the sound channels.
-	//
-	// example:
-	//
-	// mono
-	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
-	// The number of sound channels.
-	//
-	// example:
-	//
-	// 1
-	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// The full name of the codec.
-	//
-	// example:
-	//
-	// AAC (Advanced Audio Coding)
-	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// The short name of the codec.
-	//
-	// example:
-	//
-	// aac
-	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// The tag of the codec.
-	//
-	// example:
-	//
-	// 0x6134706d
-	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// The tag string of the codec.
-	//
-	// example:
-	//
-	// mp4
+	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	ChannelLayout  *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	Channels       *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	// The codec time base.
-	//
-	// example:
-	//
-	// 1/32000
-	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// The duration of the audio stream.
-	//
-	// example:
-	//
-	// 17.223562
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The sequence number of the audio stream. The value indicates the position of the audio stream in all audio streams.
-	//
-	// example:
-	//
-	// 1
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The language of the audio stream. For more information, see [FFmpeg documentation](https://www.ffmpeg.org/ffmpeg-all.html#Metadata) and [ISO 639](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
-	//
-	// example:
-	//
-	// und
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The total number of frames.
-	//
-	// example:
-	//
-	// 50
-	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	// The sampling format.
-	//
-	// example:
-	//
-	// fltp
-	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
-	// The sampling rate.
-	//
-	// example:
-	//
-	// 32000
-	Samplerate *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	// The start time.
-	//
-	// example:
-	//
-	// 0.064000
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The time base of the audio stream.
-	//
-	// example:
-	//
-	// 1/32000
-	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	NumFrames      *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	SampleFmt      *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	Samplerate     *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timebase       *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputPropertiesStreamsAudioStreamListAudioStream) String() string {
@@ -3042,18 +2321,8 @@ func (s *QueryJobListResponseBodyJobListJobOutputPropertiesStreamsSubtitleStream
 }
 
 type QueryJobListResponseBodyJobListJobOutputPropertiesStreamsSubtitleStreamListSubtitleStream struct {
-	// The sequence number of the caption stream. The value indicates the position of the caption stream in all caption streams.
-	//
-	// example:
-	//
-	// 1
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The language of the caption stream. For more information, see [FFmpeg documentation](https://www.ffmpeg.org/ffmpeg-all.html#Metadata) and [ISO 639](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
-	//
-	// example:
-	//
-	// eng
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang  *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputPropertiesStreamsSubtitleStreamListSubtitleStream) String() string {
@@ -3121,158 +2390,32 @@ func (s *QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamLis
 }
 
 type QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVideoStream struct {
-	// The average frame rate of the video stream.
-	//
-	// example:
-	//
-	// 30.0
-	AvgFPS *string `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
-	// The video bitrate.
-	//
-	// example:
-	//
-	// 421.117
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The full name of the codec.
-	//
-	// example:
-	//
-	// H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
-	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// The short name of the codec.
-	//
-	// example:
-	//
-	// h264
-	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// The tag of the codec.
-	//
-	// example:
-	//
-	// 0x31637661
-	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// The tag string of the codec.
-	//
-	// example:
-	//
-	// avc1
-	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	// The codec time base.
-	//
-	// example:
-	//
-	// 1/60
-	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// The display aspect ratio (DAR) of the video stream.
-	//
-	// example:
-	//
-	// 9:16
-	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
-	// The duration of the video stream.
-	//
-	// example:
-	//
-	// 17.233333
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The frame rate of the video stream.
-	//
-	// example:
-	//
-	// 30.0
-	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// Indicates whether the video stream contains bidirectional frames (B-frames).
-	//
-	// example:
-	//
-	// 2
-	HasBFrames *string `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
-	// The height of the video stream in pixels.
-	//
-	// example:
-	//
-	// 1280
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The sequence number of the video stream. The value indicates the position of the video stream in all video streams.
-	//
-	// example:
-	//
-	// 0
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The language of the video stream. For more information, see [FFmpeg documentation](https://www.ffmpeg.org/ffmpeg-all.html#Metadata) and [ISO 639](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
-	//
-	// example:
-	//
-	// eng
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The codec level.
-	//
-	// example:
-	//
-	// 31
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The network bandwidth that was consumed.
-	NetworkCost *QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost `json:"NetworkCost,omitempty" xml:"NetworkCost,omitempty" type:"Struct"`
-	// The total number of frames.
-	//
-	// example:
-	//
-	// 30
-	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	// The pixel format of the video stream.
-	//
-	// example:
-	//
-	// yuv420p
-	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// The codec profile.
-	//
-	// example:
-	//
-	// high
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// The sample aspect ratio (SAR) of the video stream.
-	//
-	// example:
-	//
-	// 1:1
-	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
-	// The start time.
-	//
-	// example:
-	//
-	// 0.000000
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The time base of the video stream.
-	//
-	// example:
-	//
-	// 1/15360
-	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
-	// The width of the video stream in pixels.
-	//
-	// example:
-	//
-	// 720
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
-	// The number of binary bits used by each sample or pixel.
-	//
-	// example:
-	//
-	// 8
-	BitsPerRawSample *string `json:"bitsPerRawSample,omitempty" xml:"bitsPerRawSample,omitempty"`
-	// The primary colors.
-	//
-	// example:
-	//
-	// bt709
-	ColorPrimaries *string `json:"colorPrimaries,omitempty" xml:"colorPrimaries,omitempty"`
-	// The color transfer configuration.
-	//
-	// example:
-	//
-	// bt709
-	ColorTransfer *string `json:"colorTransfer,omitempty" xml:"colorTransfer,omitempty"`
+	AvgFPS           *string                                                                                         `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
+	Bitrate          *string                                                                                         `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	CodecLongName    *string                                                                                         `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	CodecName        *string                                                                                         `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CodecTag         *string                                                                                         `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	CodecTagString   *string                                                                                         `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	CodecTimeBase    *string                                                                                         `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	Dar              *string                                                                                         `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	Duration         *string                                                                                         `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Fps              *string                                                                                         `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	HasBFrames       *string                                                                                         `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
+	Height           *string                                                                                         `json:"Height,omitempty" xml:"Height,omitempty"`
+	Index            *string                                                                                         `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang             *string                                                                                         `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Level            *string                                                                                         `json:"Level,omitempty" xml:"Level,omitempty"`
+	NetworkCost      *QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost `json:"NetworkCost,omitempty" xml:"NetworkCost,omitempty" type:"Struct"`
+	NumFrames        *string                                                                                         `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	PixFmt           *string                                                                                         `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Profile          *string                                                                                         `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Sar              *string                                                                                         `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	StartTime        *string                                                                                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timebase         *string                                                                                         `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	Width            *string                                                                                         `json:"Width,omitempty" xml:"Width,omitempty"`
+	BitsPerRawSample *string                                                                                         `json:"bitsPerRawSample,omitempty" xml:"bitsPerRawSample,omitempty"`
+	ColorPrimaries   *string                                                                                         `json:"colorPrimaries,omitempty" xml:"colorPrimaries,omitempty"`
+	ColorTransfer    *string                                                                                         `json:"colorTransfer,omitempty" xml:"colorTransfer,omitempty"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVideoStream) String() string {
@@ -3527,24 +2670,9 @@ func (s *QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamLis
 }
 
 type QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost struct {
-	// The average bitrate.
-	//
-	// example:
-	//
-	// 300
-	AvgBitrate *string `json:"AvgBitrate,omitempty" xml:"AvgBitrate,omitempty"`
-	// The maximum bandwidth that was consumed.
-	//
-	// example:
-	//
-	// 10
+	AvgBitrate    *string `json:"AvgBitrate,omitempty" xml:"AvgBitrate,omitempty"`
 	CostBandwidth *string `json:"CostBandwidth,omitempty" xml:"CostBandwidth,omitempty"`
-	// The amount of time consumed to preload the video stream.
-	//
-	// example:
-	//
-	// 8
-	PreloadTime *string `json:"PreloadTime,omitempty" xml:"PreloadTime,omitempty"`
+	PreloadTime   *string `json:"PreloadTime,omitempty" xml:"PreloadTime,omitempty"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost) String() string {
@@ -3587,10 +2715,8 @@ func (s *QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamLis
 }
 
 type QueryJobListResponseBodyJobListJobOutputSubtitleConfig struct {
-	// The external captions.
 	ExtSubtitleList *QueryJobListResponseBodyJobListJobOutputSubtitleConfigExtSubtitleList `json:"ExtSubtitleList,omitempty" xml:"ExtSubtitleList,omitempty" type:"Struct"`
-	// The captions.
-	SubtitleList *QueryJobListResponseBodyJobListJobOutputSubtitleConfigSubtitleList `json:"SubtitleList,omitempty" xml:"SubtitleList,omitempty" type:"Struct"`
+	SubtitleList    *QueryJobListResponseBodyJobListJobOutputSubtitleConfigSubtitleList    `json:"SubtitleList,omitempty" xml:"SubtitleList,omitempty" type:"Struct"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputSubtitleConfig) String() string {
@@ -3668,30 +2794,9 @@ func (s *QueryJobListResponseBodyJobListJobOutputSubtitleConfigExtSubtitleList) 
 }
 
 type QueryJobListResponseBodyJobListJobOutputSubtitleConfigExtSubtitleListExtSubtitle struct {
-	// The character set used by the external caption.
-	//
-	// 	- Valid values: UTF-8, GBK, BIG5, and auto.
-	//
-	// 	- Default value: **auto**.
-	//
-	// >  If the value of CharEnc is auto, the detected character set may not be the actual character set. We recommend that you set this parameter to another value.
-	//
-	// example:
-	//
-	// auto
-	CharEnc *string `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
-	// The font of the hardcoded captions converted from external captions. Default value: SimSum. For more information, see [Fonts](https://help.aliyun.com/document_detail/59950.html).
-	//
-	// example:
-	//
-	// "WenQuanYi Zen Hei", "Yuanti SC Regular", "SimSun"
-	FontName *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
-	// The input caption file.
-	//
-	// 	- SRT and ASS files are supported. For more information, see the Input section of the [Parameter details](https://help.aliyun.com/document_detail/29253.html) topic.
-	//
-	// 	- Example: `{"Bucket":"example-bucket","Location":"oss-cn-hangzhou","Object":"example.srt"}`.
-	Input *QueryJobListResponseBodyJobListJobOutputSubtitleConfigExtSubtitleListExtSubtitleInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	CharEnc  *string                                                                                `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
+	FontName *string                                                                                `json:"FontName,omitempty" xml:"FontName,omitempty"`
+	Input    *QueryJobListResponseBodyJobListJobOutputSubtitleConfigExtSubtitleListExtSubtitleInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputSubtitleConfigExtSubtitleListExtSubtitle) String() string {
@@ -3739,24 +2844,9 @@ func (s *QueryJobListResponseBodyJobListJobOutputSubtitleConfigExtSubtitleListEx
 }
 
 type QueryJobListResponseBodyJobListJobOutputSubtitleConfigExtSubtitleListExtSubtitleInput struct {
-	// The name of the OSS bucket in which the input caption file is stored.
-	//
-	// example:
-	//
-	// example-bucket-****
-	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The OSS region in which the input caption file resides.
-	//
-	// example:
-	//
-	// oss-cn-hangzhou
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The name of the OSS object that is used as the input caption file.
-	//
-	// example:
-	//
-	// example-output.flv
-	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputSubtitleConfigExtSubtitleListExtSubtitleInput) String() string {
@@ -3833,11 +2923,6 @@ func (s *QueryJobListResponseBodyJobListJobOutputSubtitleConfigSubtitleList) Val
 }
 
 type QueryJobListResponseBodyJobListJobOutputSubtitleConfigSubtitleListSubtitle struct {
-	// The audio track. Format: `0:{Stream}:{Stream sequence number}`, which is `0:a:{audio_index}`. The value of Stream is a, which indicates an audio stream. The sequence number is the index of the audio stream in the list and starts from 0.
-	//
-	// example:
-	//
-	// 0:a:0
 	Map *string `json:"Map,omitempty" xml:"Map,omitempty"`
 }
 
@@ -3863,15 +2948,6 @@ func (s *QueryJobListResponseBodyJobListJobOutputSubtitleConfigSubtitleListSubti
 }
 
 type QueryJobListResponseBodyJobListJobOutputSuperReso struct {
-	// Indicates whether parameters related to the sampling rate are obtained. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
 	IsHalfSample *string `json:"IsHalfSample,omitempty" xml:"IsHalfSample,omitempty"`
 }
 
@@ -3931,66 +3007,13 @@ func (s *QueryJobListResponseBodyJobListJobOutputTailSlateList) Validate() error
 }
 
 type QueryJobListResponseBodyJobListJobOutputTailSlateListTailSlate struct {
-	// The color of the bars that are added to the ending part if the size of the ending part is smaller than that of the main part. Default value: White. For more information, see [Parameter details](https://help.aliyun.com/document_detail/29253.html).
-	//
-	// example:
-	//
-	// White
-	BgColor *string `json:"BgColor,omitempty" xml:"BgColor,omitempty"`
-	// The duration of the transition between the main part and the ending part. A fade transition is used: The last frame of the main part fades out, and the first frame of the ending part fades in. Unit: seconds. Default value: 0.
-	//
-	// example:
-	//
-	// 0
+	BgColor       *string `json:"BgColor,omitempty" xml:"BgColor,omitempty"`
 	BlendDuration *string `json:"BlendDuration,omitempty" xml:"BlendDuration,omitempty"`
-	// The height of the ending part.
-	//
-	// 	- Valid values: values in the range of (0,4096), -1, and full.
-	//
-	// 	- A value of -1 indicates that the original height of the ending part is retained.
-	//
-	// 	- A value of full indicates that the height of the ending part equals the height of the main part.
-	//
-	// 	- Default value: -1.
-	//
-	// example:
-	//
-	// -1
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// Indicates whether the audio content of the ending part is merged. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	IsMergeAudio *bool `json:"IsMergeAudio,omitempty" xml:"IsMergeAudio,omitempty"`
-	// The time when the ending part is played.
-	//
-	// example:
-	//
-	// 00000.00
-	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
-	// The OSS URL of the ending part.
-	//
-	// example:
-	//
-	// http://example-bucket-****.oss-cn-hangzhou.aliyuncs.com/opening_01.flv
-	TailUrl *string `json:"TailUrl,omitempty" xml:"TailUrl,omitempty"`
-	// The width of the ending part. Valid values: values in the range of (0,4096), -1, and full.
-	//
-	// 	- A value of -1 indicates that the original width of the ending part is retained.
-	//
-	// 	- A value of full indicates that the width of the ending part equals the width of the main part.
-	//
-	// 	- Default value: -1.
-	//
-	// example:
-	//
-	// -1
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height        *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	IsMergeAudio  *bool   `json:"IsMergeAudio,omitempty" xml:"IsMergeAudio,omitempty"`
+	Start         *string `json:"Start,omitempty" xml:"Start,omitempty"`
+	TailUrl       *string `json:"TailUrl,omitempty" xml:"TailUrl,omitempty"`
+	Width         *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputTailSlateListTailSlate) String() string {
@@ -4069,98 +3092,14 @@ func (s *QueryJobListResponseBodyJobListJobOutputTailSlateListTailSlate) Validat
 }
 
 type QueryJobListResponseBodyJobListJobOutputTransConfig struct {
-	// The method of resolution adjustment. Default value: **none**. Valid values: rescale, crop, pad, and none.
-	//
-	// example:
-	//
-	// none
-	AdjDarMethod *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
-	// Indicates whether the audio bitrate is checked. If the bitrate of the output audio is higher than that of the input audio, the input bitrate is retained and the specified audio bitrate does not take effect. This parameter has a lower priority than IsCheckAudioBitrateFail. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// 	- Default value:
-	//
-	//     	- If this parameter is empty and the codec of the output audio is different from that of the input audio, the default value is false.
-	//
-	//     	- If this parameter is empty and the codec of the output audio is the same as that of the input audio, the default value is true.
-	//
-	// example:
-	//
-	// false
-	IsCheckAudioBitrate *string `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
-	// Indicates whether the audio bitrate is checked. If the bitrate of the output audio is higher than that of the input audio, the input audio is not transcoded and a transcoding failure is returned. This parameter has a higher priority than IsCheckAudioBitrate. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// 	- Default value: **false**.
-	//
-	// example:
-	//
-	// false
+	AdjDarMethod            *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
+	IsCheckAudioBitrate     *string `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
 	IsCheckAudioBitrateFail *string `json:"IsCheckAudioBitrateFail,omitempty" xml:"IsCheckAudioBitrateFail,omitempty"`
-	// Indicates whether the resolution is checked. If the output resolution is higher than the input resolution based on the width or height, the input resolution is retained. Valid values:
-	//
-	// 	- **true**:
-	//
-	// 	- **false**
-	//
-	// 	- Default value: **false**.
-	//
-	// example:
-	//
-	// false
-	IsCheckReso *string `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
-	// Indicates whether the resolution is checked. If the output resolution is higher than the input resolution based on the width or height, a transcoding failure is returned. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// 	- Default value: **false**.
-	//
-	// example:
-	//
-	// false
-	IsCheckResoFail *string `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
-	// Indicates whether the video bitrate is checked. If the bitrate of the output video is higher than that of the input video, the input bitrate is retained. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// 	- Default value: **false**.
-	//
-	// example:
-	//
-	// false
-	IsCheckVideoBitrate *string `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
-	// Indicates whether the video bitrate is checked. If the bitrate of the output video is higher than that of the input video, the input video is not transcoded and a transcoding failure is returned. This parameter has a higher priority than IsCheckVideoBitrate. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// 	- Default value: **false**.
-	//
-	// example:
-	//
-	// false
+	IsCheckReso             *string `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
+	IsCheckResoFail         *string `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
+	IsCheckVideoBitrate     *string `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
 	IsCheckVideoBitrateFail *string `json:"IsCheckVideoBitrateFail,omitempty" xml:"IsCheckVideoBitrateFail,omitempty"`
-	// The transcoding mode.
-	//
-	// 	- Valid values: onepass, twopass, and CBR.
-	//
-	// 	- Default value: **onepass**.
-	//
-	// example:
-	//
-	// onepass
-	TransMode *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
+	TransMode               *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputTransConfig) String() string {
@@ -4248,196 +3187,26 @@ func (s *QueryJobListResponseBodyJobListJobOutputTransConfig) Validate() error {
 }
 
 type QueryJobListResponseBodyJobListJobOutputVideo struct {
-	// The average bitrate of the video. Unit: Kbit/s.
-	//
-	// example:
-	//
-	// 500
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The average bitrate range of the video.
-	BitrateBnd *QueryJobListResponseBodyJobListJobOutputVideoBitrateBnd `json:"BitrateBnd,omitempty" xml:"BitrateBnd,omitempty" type:"Struct"`
-	// The buffer size.
-	//
-	// 	- Unit: KB.
-	//
-	// 	- Default value: **6000**.
-	//
-	// example:
-	//
-	// 6000
-	Bufsize *string `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
-	// The video codec.
-	//
-	// 	- Valid values: H.264 and H.265.
-	//
-	// 	- Default value: H.264.
-	//
-	// example:
-	//
-	// H.264
-	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	// The constant rate factor.
-	//
-	// 	- Default value when the value of Codec is H.264: **23**, default value when the value of Codec is H.265: **26**.
-	//
-	// 	- If the value of this parameter is returned, the value of Bitrate becomes invalid.
-	//
-	// example:
-	//
-	// 26
-	Crf *string `json:"Crf,omitempty" xml:"Crf,omitempty"`
-	// The method of video cropping. Valid values:
-	//
-	// 	- **border**: automatically detects and removes borders.
-	//
-	// 	- A value in the width:height:left:top format: The video image is cropped based on custom settings.
-	//
-	// example:
-	//
-	// 1280:800:0:140
-	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	// The strength of the independent noise reduction algorithm.
-	//
-	// example:
-	//
-	// 5
-	Degrain *string `json:"Degrain,omitempty" xml:"Degrain,omitempty"`
-	// The frame rate of the video.
-	//
-	// 	- Unit: frames per second.
-	//
-	// 	- The value is 60 if the frame rate of the input file exceeds 60.
-	//
-	// 	- Default value: the frame rate of the input video.
-	//
-	// example:
-	//
-	// 25
-	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// The maximum interval between keyframes or the maximum number of frames in a frame group. Unit: seconds.
-	//
-	// 	- Default value: **250**.
-	//
-	// 	- If the maximum number of frames is returned, the value does not contain a unit.
-	//
-	// example:
-	//
-	// 250
-	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
-	// The height of the video.
-	//
-	// 	- Unit: pixel.
-	//
-	// 	- Default value: the height of the input video.
-	//
-	// example:
-	//
-	// 720
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The maximum frame rate.
-	//
-	// example:
-	//
-	// 60
-	MaxFps *string `json:"MaxFps,omitempty" xml:"MaxFps,omitempty"`
-	// The maximum bitrate of the video. Unit: Kbit/s.
-	//
-	// example:
-	//
-	// 3000
-	Maxrate *string `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
-	// The black bars that are added to the video.
-	//
-	// 	- Unit: pixel.
-	//
-	// 	- Format: width:height:left:top.
-	//
-	// example:
-	//
-	// 1280:800:0:140
-	Pad *string `json:"Pad,omitempty" xml:"Pad,omitempty"`
-	// The pixel format of the video. Valid values: standard pixel formats such as yuv420p and yuvj420p.
-	//
-	// example:
-	//
-	// yuv420p
-	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// The preset video algorithm. Default value: **medium**. Valid values:
-	//
-	// 	- **veryfast**
-	//
-	// 	- **fast**
-	//
-	// 	- **medium**
-	//
-	// 	- **slow**
-	//
-	// 	- **slower**
-	//
-	// example:
-	//
-	// medium
-	Preset *string `json:"Preset,omitempty" xml:"Preset,omitempty"`
-	// The codec profile of the video. Valid values: baseline, main, and high.
-	//
-	// >  If multiple definitions are involved, we recommend that you use baseline for the lowest definition to ensure normal playback on low-end devices, and use main or high for other definitions.
-	//
-	// 	- **baseline**: applicable to mobile devices.
-	//
-	// 	- **main**: applicable to standard-definition devices.
-	//
-	// 	- **high**: applicable to high-definition devices.
-	//
-	// 	- Default value: **high**.
-	//
-	// example:
-	//
-	// high
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// The level of quality control on the video.
-	//
-	// example:
-	//
-	// 15
-	Qscale *string `json:"Qscale,omitempty" xml:"Qscale,omitempty"`
-	// The resource priority.
-	//
-	// example:
-	//
-	// 1
-	ResoPriority *string `json:"ResoPriority,omitempty" xml:"ResoPriority,omitempty"`
-	// The scan mode. Valid values:
-	//
-	// 	- If this parameter is left **empty**, the scan mode of the input video is used.
-	//
-	// 	- **auto**: automatic deinterlacing.
-	//
-	// 	- **progressive**: progressive scan.
-	//
-	// 	- **interlaced**: interlaced scan.
-	//
-	// 	- **By default**, this parameter is left empty.
-	//
-	// **Best practice**: The interlaced scan mode saves data traffic than the progressive scan mode but provides poor image quality. Therefore, the progressive scan mode is commonly used in mainstream video production.
-	//
-	// 	- If **progressive*	- or **interlaced*	- is used when the scan mode of the input video is neither of them, the transcoding job fails.
-	//
-	// 	- We recommend that you use **the scan mode of the input video*	- or **automatic deinterlacing*	- for higher compatibility.
-	//
-	// example:
-	//
-	// interlaced
-	ScanMode *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
-	// The width of the video.
-	//
-	// 	- Unit: pixel.
-	//
-	// 	- Default value: the width of the input video.
-	//
-	// example:
-	//
-	// 1280
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Bitrate      *string                                                  `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	BitrateBnd   *QueryJobListResponseBodyJobListJobOutputVideoBitrateBnd `json:"BitrateBnd,omitempty" xml:"BitrateBnd,omitempty" type:"Struct"`
+	Bufsize      *string                                                  `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
+	Codec        *string                                                  `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Crf          *string                                                  `json:"Crf,omitempty" xml:"Crf,omitempty"`
+	Crop         *string                                                  `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	Degrain      *string                                                  `json:"Degrain,omitempty" xml:"Degrain,omitempty"`
+	Fps          *string                                                  `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Gop          *string                                                  `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	Height       *string                                                  `json:"Height,omitempty" xml:"Height,omitempty"`
+	MaxFps       *string                                                  `json:"MaxFps,omitempty" xml:"MaxFps,omitempty"`
+	Maxrate      *string                                                  `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
+	Pad          *string                                                  `json:"Pad,omitempty" xml:"Pad,omitempty"`
+	PixFmt       *string                                                  `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Preset       *string                                                  `json:"Preset,omitempty" xml:"Preset,omitempty"`
+	Profile      *string                                                  `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Qscale       *string                                                  `json:"Qscale,omitempty" xml:"Qscale,omitempty"`
+	ResoPriority *string                                                  `json:"ResoPriority,omitempty" xml:"ResoPriority,omitempty"`
+	ScanMode     *string                                                  `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
+	Width        *string                                                  `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputVideo) String() string {
@@ -4638,17 +3407,7 @@ func (s *QueryJobListResponseBodyJobListJobOutputVideo) Validate() error {
 }
 
 type QueryJobListResponseBodyJobListJobOutputVideoBitrateBnd struct {
-	// The maximum bitrate.
-	//
-	// example:
-	//
-	// 1000
 	Max *string `json:"Max,omitempty" xml:"Max,omitempty"`
-	// The minimum bitrate.
-	//
-	// example:
-	//
-	// 300
 	Min *string `json:"Min,omitempty" xml:"Min,omitempty"`
 }
 
@@ -4717,110 +3476,14 @@ func (s *QueryJobListResponseBodyJobListJobOutputWaterMarkList) Validate() error
 }
 
 type QueryJobListResponseBodyJobListJobOutputWaterMarkListWaterMark struct {
-	// The horizontal offset of the watermark image relative to the output video. If this parameter is specified in the request, the corresponding parameter in the watermark template is overwritten. Default value: 0. The value can be an integer or a decimal number.
-	//
-	// 	- An integer indicates the pixel value of the horizontal offset.
-	//
-	//     	- Valid values: **[8,4096]**.
-	//
-	//     	- Unit: pixel.
-	//
-	// 	- A decimal number indicates the ratio of the horizontal offset to the width in the output video resolution.
-	//
-	//     	- Valid values: (0,1).
-	//
-	//     	- The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
-	//
-	// example:
-	//
-	// 100
-	Dx *string `json:"Dx,omitempty" xml:"Dx,omitempty"`
-	// The vertical offset of the watermark image relative to the output video. If this parameter is specified in the request, the corresponding parameter in the watermark template is overwritten. The value can be an integer or a decimal number.
-	//
-	// 	- An integer indicates the pixel value of the vertical offset.
-	//
-	//     	- Valid values: **[8,4096]**.
-	//
-	//     	- Unit: pixel.
-	//
-	// 	- A decimal number indicates the ratio of the vertical offset to the height in the output video resolution.
-	//
-	//     	- Valid values: **(0,1)**.
-	//
-	//     	- The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
-	//
-	// example:
-	//
-	// 100
-	Dy *string `json:"Dy,omitempty" xml:"Dy,omitempty"`
-	// The height of the watermark image. If this parameter is specified in the request, the corresponding parameter in the watermark template is overwritten. The value can be an integer or a decimal number.
-	//
-	// 	- An integer indicates the pixel value of the watermark height.
-	//
-	//     	- Valid values: **[8,4096]**.
-	//
-	//     	- Unit: pixel.
-	//
-	// 	- A decimal number indicates the ratio of the watermark height to the height in the output video resolution.
-	//
-	//     	- Valid values: **(0,1)**.
-	//
-	//     	- The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
-	//
-	// example:
-	//
-	// 50
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The watermark input file. PNG images and MOV files are supported.
-	InputFile *QueryJobListResponseBodyJobListJobOutputWaterMarkListWaterMarkInputFile `json:"InputFile,omitempty" xml:"InputFile,omitempty" type:"Struct"`
-	// The position of the watermark. If this parameter is specified in the request, the corresponding parameter in the watermark template is overwritten. Valid values:
-	//
-	// 	- TopRight
-	//
-	// 	- TopLeft
-	//
-	// 	- BottomRight
-	//
-	// 	- BottomLeft
-	//
-	// example:
-	//
-	// TopRight
-	ReferPos *string `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
-	// The type of the watermark. If this parameter is specified in the request, the corresponding parameter in the watermark template is overwritten. For more information, see [Parameter details](https://help.aliyun.com/document_detail/29253.html). Valid values:
-	//
-	// 	- Image
-	//
-	// 	- Text
-	//
-	// example:
-	//
-	// Image
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the watermark template.
-	//
-	// example:
-	//
-	// 88c6ca184c0e47098a5b665e2a12****
-	WaterMarkTemplateId *string `json:"WaterMarkTemplateId,omitempty" xml:"WaterMarkTemplateId,omitempty"`
-	// The width of the watermark image. If this parameter is specified in the request, the corresponding parameter in the watermark template is overwritten. The value can be an integer or a decimal number.
-	//
-	// 	- An integer indicates the pixel value of the watermark width.
-	//
-	//     	- Valid values: **[8,4096]**.
-	//
-	//     	- Unit: pixel.
-	//
-	// 	- A decimal number indicates the ratio of the watermark width to the width in the output video resolution.
-	//
-	//     	- Valid values: **(0,1)**.
-	//
-	//     	- The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
-	//
-	// example:
-	//
-	// 50
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Dx                  *string                                                                  `json:"Dx,omitempty" xml:"Dx,omitempty"`
+	Dy                  *string                                                                  `json:"Dy,omitempty" xml:"Dy,omitempty"`
+	Height              *string                                                                  `json:"Height,omitempty" xml:"Height,omitempty"`
+	InputFile           *QueryJobListResponseBodyJobListJobOutputWaterMarkListWaterMarkInputFile `json:"InputFile,omitempty" xml:"InputFile,omitempty" type:"Struct"`
+	ReferPos            *string                                                                  `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
+	Type                *string                                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
+	WaterMarkTemplateId *string                                                                  `json:"WaterMarkTemplateId,omitempty" xml:"WaterMarkTemplateId,omitempty"`
+	Width               *string                                                                  `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputWaterMarkListWaterMark) String() string {
@@ -4913,24 +3576,9 @@ func (s *QueryJobListResponseBodyJobListJobOutputWaterMarkListWaterMark) Validat
 }
 
 type QueryJobListResponseBodyJobListJobOutputWaterMarkListWaterMarkInputFile struct {
-	// The name of the OSS bucket in which the input file is stored.
-	//
-	// example:
-	//
-	// example-bucket
-	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The OSS region in which the input file resides.
-	//
-	// example:
-	//
-	// oss-cn-hangzhou
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The name of the Object Storage Service (OSS) object that is used as the input file.
-	//
-	// example:
-	//
-	// example-logo-****.png
-	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputWaterMarkListWaterMarkInputFile) String() string {

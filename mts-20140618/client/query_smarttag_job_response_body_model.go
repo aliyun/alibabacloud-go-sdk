@@ -135,13 +135,7 @@ func (s *QuerySmarttagJobResponseBodyResults) Validate() error {
 }
 
 type QuerySmarttagJobResponseBodyResultsResult struct {
-	// example:
-	//
-	// {"title":"example-title-****"}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// example:
-	//
-	// Meta
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

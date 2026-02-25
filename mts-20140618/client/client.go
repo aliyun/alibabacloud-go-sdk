@@ -628,7 +628,7 @@ func (client *Client) AddPipeline(request *AddPipelineRequest) (_result *AddPipe
 
 // Summary:
 //
-// 添加labelVersion、knowledgeConfig配置
+// Adds an analysis template of a smart tagging job.
 //
 // @param request - AddSmarttagTemplateRequest
 //
@@ -748,7 +748,7 @@ func (client *Client) AddSmarttagTemplateWithOptions(request *AddSmarttagTemplat
 
 // Summary:
 //
-// 添加labelVersion、knowledgeConfig配置
+// Adds an analysis template of a smart tagging job.
 //
 // @param request - AddSmarttagTemplateRequest
 //
@@ -1076,7 +1076,7 @@ func (client *Client) BindInputBucket(request *BindInputBucketRequest) (_result 
 
 // Summary:
 //
-// Binds an output media bucket to the media library.
+// Binds an output media bucket. Media buckets are Object Storage Service (OSS) buckets that are used by ApsaraVideo Media Processing (MPS) to store media resources. After you bind an OSS bucket to MPS as an input media bucket or output media bucket, MPS has the permissions to listen to the messages of the bucket, which indicate that files are uploaded to the bucket. This way, MPS can trigger workflows and return files that are processed. You can all this operation to bind an output media bucket to the media library.
 //
 // Description:
 //
@@ -1144,7 +1144,7 @@ func (client *Client) BindOutputBucketWithOptions(request *BindOutputBucketReque
 
 // Summary:
 //
-// Binds an output media bucket to the media library.
+// Binds an output media bucket. Media buckets are Object Storage Service (OSS) buckets that are used by ApsaraVideo Media Processing (MPS) to store media resources. After you bind an OSS bucket to MPS as an input media bucket or output media bucket, MPS has the permissions to listen to the messages of the bucket, which indicate that files are uploaded to the bucket. This way, MPS can trigger workflows and return files that are processed. You can all this operation to bind an output media bucket to the media library.
 //
 // Description:
 //
@@ -1266,6 +1266,10 @@ func (client *Client) CancelJob(request *CancelJobRequest) (_result *CancelJobRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a custom entity in a custom library.
+//
 // @param request - CreateCustomEntityRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1334,6 +1338,10 @@ func (client *Client) CreateCustomEntityWithOptions(request *CreateCustomEntityR
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a custom entity in a custom library.
+//
 // @param request - CreateCustomEntityRequest
 //
 // @return CreateCustomEntityResponse
@@ -1348,6 +1356,10 @@ func (client *Client) CreateCustomEntity(request *CreateCustomEntityRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a custom library.
+//
 // @param request - CreateCustomGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1412,6 +1424,10 @@ func (client *Client) CreateCustomGroupWithOptions(request *CreateCustomGroupReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a custom library.
+//
 // @param request - CreateCustomGroupRequest
 //
 // @return CreateCustomGroupResponse
@@ -1810,6 +1826,10 @@ func (client *Client) DeleteCustomGroup(request *DeleteCustomGroupRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an image of a custom entity in a custom library.
+//
 // @param request - DeleteCustomViewRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1878,6 +1898,10 @@ func (client *Client) DeleteCustomViewWithOptions(request *DeleteCustomViewReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an image of a custom entity in a custom library.
+//
 // @param request - DeleteCustomViewRequest
 //
 // @return DeleteCustomViewResponse
@@ -2962,6 +2986,10 @@ func (client *Client) ListCustomEntities(request *ListCustomEntitiesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of custom libraries.
+//
 // @param request - ListCustomGroupsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3026,6 +3054,10 @@ func (client *Client) ListCustomGroupsWithOptions(request *ListCustomGroupsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of custom libraries.
+//
 // @param request - ListCustomGroupsRequest
 //
 // @return ListCustomGroupsResponse
@@ -3138,6 +3170,10 @@ func (client *Client) ListCustomPersons(request *ListCustomPersonsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of images of an entity in a custom library.
+//
 // @param request - ListCustomViewsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3210,6 +3246,10 @@ func (client *Client) ListCustomViewsWithOptions(request *ListCustomViewsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of images of an entity in a custom library.
+//
 // @param request - ListCustomViewsRequest
 //
 // @return ListCustomViewsResponse
@@ -3858,7 +3898,7 @@ func (client *Client) QueryAnalysisJobList(request *QueryAnalysisJobListRequest)
 
 // Summary:
 //
-// 查询版权水印提取任务
+// Queries jobs for extracting copyright watermarks.
 //
 // @param request - QueryCopyrightExtractJobRequest
 //
@@ -3902,7 +3942,7 @@ func (client *Client) QueryCopyrightExtractJobWithOptions(request *QueryCopyrigh
 
 // Summary:
 //
-// 查询版权水印提取任务
+// Queries jobs for extracting copyright watermarks.
 //
 // @param request - QueryCopyrightExtractJobRequest
 //
@@ -3920,7 +3960,7 @@ func (client *Client) QueryCopyrightExtractJob(request *QueryCopyrightExtractJob
 
 // Summary:
 //
-// 查询视频版权水印任务
+// Queries jobs for adding copyright watermarks to videos.
 //
 // @param request - QueryCopyrightJobRequest
 //
@@ -3984,7 +4024,7 @@ func (client *Client) QueryCopyrightJobWithOptions(request *QueryCopyrightJobReq
 
 // Summary:
 //
-// 查询视频版权水印任务
+// Queries jobs for adding copyright watermarks to videos.
 //
 // @param request - QueryCopyrightJobRequest
 //
@@ -4310,6 +4350,10 @@ func (client *Client) QueryFpShotJobList(request *QueryFpShotJobListRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a smart production job.
+//
 // @param request - QueryIProductionJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4366,6 +4410,10 @@ func (client *Client) QueryIProductionJobWithOptions(request *QueryIProductionJo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a smart production job.
+//
 // @param request - QueryIProductionJobRequest
 //
 // @return QueryIProductionJobResponse
@@ -5324,7 +5372,7 @@ func (client *Client) QueryPipelineList(request *QueryPipelineListRequest) (_res
 
 // Summary:
 //
-// 查询智能标签任务
+// Queries a smart tagging job.
 //
 // @param request - QuerySmarttagJobRequest
 //
@@ -5388,7 +5436,7 @@ func (client *Client) QuerySmarttagJobWithOptions(request *QuerySmarttagJobReque
 
 // Summary:
 //
-// 查询智能标签任务
+// Queries a smart tagging job.
 //
 // @param request - QuerySmarttagJobRequest
 //
@@ -5712,7 +5760,7 @@ func (client *Client) QueryTemplateList(request *QueryTemplateListRequest) (_res
 
 // Summary:
 //
-// 查询视频溯源水印ab流任务
+// Queries jobs for adding tracing watermarks to AB video streams.
 //
 // @param request - QueryTraceAbJobRequest
 //
@@ -5760,7 +5808,7 @@ func (client *Client) QueryTraceAbJobWithOptions(request *QueryTraceAbJobRequest
 
 // Summary:
 //
-// 查询视频溯源水印ab流任务
+// Queries jobs for adding tracing watermarks to AB video streams.
 //
 // @param request - QueryTraceAbJobRequest
 //
@@ -5778,7 +5826,7 @@ func (client *Client) QueryTraceAbJob(request *QueryTraceAbJobRequest) (_result 
 
 // Summary:
 //
-// 查询溯源水印提取任务
+// Queries jobs for extracting tracing watermarks.
 //
 // @param request - QueryTraceExtractJobRequest
 //
@@ -5822,7 +5870,7 @@ func (client *Client) QueryTraceExtractJobWithOptions(request *QueryTraceExtract
 
 // Summary:
 //
-// 查询溯源水印提取任务
+// Queries jobs for extracting tracing watermarks.
 //
 // @param request - QueryTraceExtractJobRequest
 //
@@ -5840,7 +5888,7 @@ func (client *Client) QueryTraceExtractJob(request *QueryTraceExtractJobRequest)
 
 // Summary:
 //
-// 查询视频溯源水印m3u8任务
+// Queries jobs for adding tracing watermarks to M3U8 videos.
 //
 // @param request - QueryTraceM3u8JobRequest
 //
@@ -5900,7 +5948,7 @@ func (client *Client) QueryTraceM3u8JobWithOptions(request *QueryTraceM3u8JobReq
 
 // Summary:
 //
-// 查询视频溯源水印m3u8任务
+// Queries jobs for adding tracing watermarks to M3U8 videos.
 //
 // @param request - QueryTraceM3u8JobRequest
 //
@@ -6122,7 +6170,7 @@ func (client *Client) RegisterCustomFace(request *RegisterCustomFaceRequest) (_r
 
 // Summary:
 //
-// 注册自定义实体项
+// Registers an image of a custom entity.
 //
 // @param request - RegisterCustomViewRequest
 //
@@ -6198,7 +6246,7 @@ func (client *Client) RegisterCustomViewWithOptions(request *RegisterCustomViewR
 
 // Summary:
 //
-// 注册自定义实体项
+// Registers an image of a custom entity.
 //
 // @param request - RegisterCustomViewRequest
 //
@@ -6726,7 +6774,7 @@ func (client *Client) SubmitAnalysisJob(request *SubmitAnalysisJobRequest) (_res
 
 // Summary:
 //
-// 提交版权水印提取任务
+// Submits a job for extracting a copyright watermark.
 //
 // @param request - SubmitCopyrightExtractJobRequest
 //
@@ -6786,7 +6834,7 @@ func (client *Client) SubmitCopyrightExtractJobWithOptions(request *SubmitCopyri
 
 // Summary:
 //
-// 提交版权水印提取任务
+// Submits a job for extracting a copyright watermark.
 //
 // @param request - SubmitCopyrightExtractJobRequest
 //
@@ -6804,7 +6852,7 @@ func (client *Client) SubmitCopyrightExtractJob(request *SubmitCopyrightExtractJ
 
 // Summary:
 //
-// 提交视频版权水印
+// Submits a job for adding a copyright watermark to a video.
 //
 // @param request - SubmitCopyrightJobRequest
 //
@@ -6888,7 +6936,7 @@ func (client *Client) SubmitCopyrightJobWithOptions(request *SubmitCopyrightJobR
 
 // Summary:
 //
-// 提交视频版权水印
+// Submits a job for adding a copyright watermark to a video.
 //
 // @param request - SubmitCopyrightJobRequest
 //
@@ -7258,6 +7306,10 @@ func (client *Client) SubmitFpShotJob(request *SubmitFpShotJobRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a smart production job.
+//
 // Description:
 //
 //	  Jobs that are submitted by calling this operation run in an asynchronous manner. After a job is added to the ApsaraVideo Media Processing (MPS) queue, the job is scheduled to run. You can call the [QueryIProductionJob](https://help.aliyun.com/document_detail/170217.html) operation or configure a callback to query the job result.
@@ -7356,6 +7408,10 @@ func (client *Client) SubmitIProductionJobWithOptions(request *SubmitIProduction
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a smart production job.
+//
 // Description:
 //
 //	  Jobs that are submitted by calling this operation run in an asynchronous manner. After a job is added to the ApsaraVideo Media Processing (MPS) queue, the job is scheduled to run. You can call the [QueryIProductionJob](https://help.aliyun.com/document_detail/170217.html) operation or configure a callback to query the job result.
@@ -7382,7 +7438,7 @@ func (client *Client) SubmitIProductionJob(request *SubmitIProductionJobRequest)
 
 // Summary:
 //
-// 提交图片版权水印任务
+// Generates a transparent image watermark.
 //
 // @param request - SubmitImageCopyrightRequest
 //
@@ -7434,7 +7490,7 @@ func (client *Client) SubmitImageCopyrightWithOptions(request *SubmitImageCopyri
 
 // Summary:
 //
-// 提交图片版权水印任务
+// Generates a transparent image watermark.
 //
 // @param request - SubmitImageCopyrightRequest
 //
@@ -7824,6 +7880,10 @@ func (client *Client) SubmitMediaInfoJob(request *SubmitMediaInfoJobRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a smart tagging job.
+//
 // @param request - SubmitSmarttagJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7920,6 +7980,10 @@ func (client *Client) SubmitSmarttagJobWithOptions(request *SubmitSmarttagJobReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a smart tagging job.
+//
 // @param request - SubmitSmarttagJobRequest
 //
 // @return SubmitSmarttagJobResponse
@@ -8050,7 +8114,7 @@ func (client *Client) SubmitSnapshotJob(request *SubmitSnapshotJobRequest) (_res
 
 // Summary:
 //
-// 提交视频溯源水印ab流任务
+// Submits a job for adding a tracing watermark to an AB video stream.
 //
 // @param request - SubmitTraceAbJobRequest
 //
@@ -8126,7 +8190,7 @@ func (client *Client) SubmitTraceAbJobWithOptions(request *SubmitTraceAbJobReque
 
 // Summary:
 //
-// 提交视频溯源水印ab流任务
+// Submits a job for adding a tracing watermark to an AB video stream.
 //
 // @param request - SubmitTraceAbJobRequest
 //
@@ -8144,7 +8208,7 @@ func (client *Client) SubmitTraceAbJob(request *SubmitTraceAbJobRequest) (_resul
 
 // Summary:
 //
-// 提交溯源水印提取任务
+// Submits a job for extracting a tracing watermark.
 //
 // @param request - SubmitTraceExtractJobRequest
 //
@@ -8204,7 +8268,7 @@ func (client *Client) SubmitTraceExtractJobWithOptions(request *SubmitTraceExtra
 
 // Summary:
 //
-// 提交溯源水印提取任务
+// Submits a job for extracting a tracing watermark.
 //
 // @param request - SubmitTraceExtractJobRequest
 //
@@ -8222,7 +8286,7 @@ func (client *Client) SubmitTraceExtractJob(request *SubmitTraceExtractJobReques
 
 // Summary:
 //
-// 提交视频溯源水印m3u8文件任务
+// Submits a job for adding a tracing watermark to an M3U8 video.
 //
 // @param request - SubmitTraceM3u8JobRequest
 //
@@ -8282,7 +8346,7 @@ func (client *Client) SubmitTraceM3u8JobWithOptions(request *SubmitTraceM3u8JobR
 
 // Summary:
 //
-// 提交视频溯源水印m3u8文件任务
+// Submits a job for adding a tracing watermark to an M3U8 video.
 //
 // @param request - SubmitTraceM3u8JobRequest
 //
@@ -8300,7 +8364,7 @@ func (client *Client) SubmitTraceM3u8Job(request *SubmitTraceM3u8JobRequest) (_r
 
 // Summary:
 //
-// The description of the figure. The description can be up to 512 characters in length.
+// Adds tags to a custom figure library or a figure.
 //
 // Description:
 //
@@ -8384,7 +8448,7 @@ func (client *Client) TagCustomPersonWithOptions(request *TagCustomPersonRequest
 
 // Summary:
 //
-// The description of the figure. The description can be up to 512 characters in length.
+// Adds tags to a custom figure library or a figure.
 //
 // Description:
 //
@@ -8510,9 +8574,9 @@ func (client *Client) UnbindInputBucket(request *UnbindInputBucketRequest) (_res
 //
 // You can call this operation to unbind an output media bucket from the media library based on the name of the output media bucket.
 //
-// ## QPS limit
+// \\## QPS limit
 //
-// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limits](https://www.alibabacloud.com/help/en/apsaravideo-for-media-processing/latest/qps-limit).
+// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limits]\\(https://www.alibabacloud.com/help/en/apsaravideo-for-media-processing/latest/qps-limit).
 //
 // Description:
 //
@@ -8578,9 +8642,9 @@ func (client *Client) UnbindOutputBucketWithOptions(request *UnbindOutputBucketR
 //
 // You can call this operation to unbind an output media bucket from the media library based on the name of the output media bucket.
 //
-// ## QPS limit
+// \\## QPS limit
 //
-// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limits](https://www.alibabacloud.com/help/en/apsaravideo-for-media-processing/latest/qps-limit).
+// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limits]\\(https://www.alibabacloud.com/help/en/apsaravideo-for-media-processing/latest/qps-limit).
 //
 // Description:
 //
@@ -9442,7 +9506,7 @@ func (client *Client) UpdatePipeline(request *UpdatePipelineRequest) (_result *U
 
 // Summary:
 //
-// 更新智能标签模板接口支持cpv
+// Updates the analysis template of a smart tagging job.
 //
 // @param request - UpdateSmarttagTemplateRequest
 //
@@ -9558,7 +9622,7 @@ func (client *Client) UpdateSmarttagTemplateWithOptions(request *UpdateSmarttagT
 
 // Summary:
 //
-// 更新智能标签模板接口支持cpv
+// Updates the analysis template of a smart tagging job.
 //
 // @param request - UpdateSmarttagTemplateRequest
 //

@@ -18,9 +18,7 @@ type iQueryMediaListByURLResponseBody interface {
 }
 
 type QueryMediaListByURLResponseBody struct {
-	// The list of media files.
-	MediaList *QueryMediaListByURLResponseBodyMediaList `json:"MediaList,omitempty" xml:"MediaList,omitempty" type:"Struct"`
-	// The IDs of the media files that do not exist. This parameter is not returned if all specified media files exist.
+	MediaList        *QueryMediaListByURLResponseBodyMediaList        `json:"MediaList,omitempty" xml:"MediaList,omitempty" type:"Struct"`
 	NonExistFileURLs *QueryMediaListByURLResponseBodyNonExistFileURLs `json:"NonExistFileURLs,omitempty" xml:"NonExistFileURLs,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -114,122 +112,28 @@ func (s *QueryMediaListByURLResponseBodyMediaList) Validate() error {
 }
 
 type QueryMediaListByURLResponseBodyMediaListMedia struct {
-	// The bitrate.
-	//
-	// example:
-	//
-	// 593.192
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The ID of the category to which the media file belongs.
-	//
-	// example:
-	//
-	// 123
-	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The review status of the media file. Valid values:
-	//
-	// 	- **Initiated**: The media file is uploaded but not reviewed.
-	//
-	// 	- **Pass**: The media file is uploaded and passes the review.
-	//
-	// example:
-	//
-	// Initiated
-	CensorState *string `json:"CensorState,omitempty" xml:"CensorState,omitempty"`
-	// The OSS URL of the thumbnail.
-	//
-	// example:
-	//
-	// http://example-bucket1-****.oss-cn-hangzhou.aliyuncs.com//example-****.png
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the media file was created.
-	//
-	// example:
-	//
-	// 2021-07-14T13:05:00Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description.
-	//
-	// example:
-	//
-	// This is description ****
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The duration.
-	//
-	// example:
-	//
-	// 79.204000
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The details of the input file.
-	File *QueryMediaListByURLResponseBodyMediaListMediaFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
-	// The encoding format. Valid values: mov, mp4, m4a, 3gp, 3g2, and mj2.
-	//
-	// example:
-	//
-	// mov
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The frame rate.
-	//
-	// example:
-	//
-	// 15.0
-	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// The height of the queried media file.
-	//
-	// example:
-	//
-	// 360
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The ID of the media file.
-	//
-	// example:
-	//
-	// 52d7e98b05e648199612290bb819****
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The media information.
-	MediaInfo *QueryMediaListByURLResponseBodyMediaListMediaMediaInfo `json:"MediaInfo,omitempty" xml:"MediaInfo,omitempty" type:"Struct"`
-	// The playlist.
-	PlayList *QueryMediaListByURLResponseBodyMediaListMediaPlayList `json:"PlayList,omitempty" xml:"PlayList,omitempty" type:"Struct"`
-	// The publishing status of the media file. Valid values:
-	//
-	// - **Initiated**: The media file is in the initial state.
-	//
-	// - **UnPublish**: The media file has not been published, and the playback permission on the OSS object is Private.
-	//
-	// - **Published**: The media file has been published, and the playback permission on the OSS object is Default.
-	//
-	// - **Deleted**: The file is deleted.
-	//
-	// example:
-	//
-	// Published
-	PublishState *string `json:"PublishState,omitempty" xml:"PublishState,omitempty"`
-	// The IDs of the media workflow execution instances.
-	RunIdList *QueryMediaListByURLResponseBodyMediaListMediaRunIdList `json:"RunIdList,omitempty" xml:"RunIdList,omitempty" type:"Struct"`
-	// The size of the file.
-	//
-	// example:
-	//
-	// 5872904
-	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The list of snapshots.
+	Bitrate      *string                                                    `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	CateId       *int64                                                     `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	CensorState  *string                                                    `json:"CensorState,omitempty" xml:"CensorState,omitempty"`
+	CoverURL     *string                                                    `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	CreationTime *string                                                    `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description  *string                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
+	Duration     *string                                                    `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	File         *QueryMediaListByURLResponseBodyMediaListMediaFile         `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	Format       *string                                                    `json:"Format,omitempty" xml:"Format,omitempty"`
+	Fps          *string                                                    `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Height       *string                                                    `json:"Height,omitempty" xml:"Height,omitempty"`
+	MediaId      *string                                                    `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaInfo    *QueryMediaListByURLResponseBodyMediaListMediaMediaInfo    `json:"MediaInfo,omitempty" xml:"MediaInfo,omitempty" type:"Struct"`
+	PlayList     *QueryMediaListByURLResponseBodyMediaListMediaPlayList     `json:"PlayList,omitempty" xml:"PlayList,omitempty" type:"Struct"`
+	PublishState *string                                                    `json:"PublishState,omitempty" xml:"PublishState,omitempty"`
+	RunIdList    *QueryMediaListByURLResponseBodyMediaListMediaRunIdList    `json:"RunIdList,omitempty" xml:"RunIdList,omitempty" type:"Struct"`
+	Size         *string                                                    `json:"Size,omitempty" xml:"Size,omitempty"`
 	SnapshotList *QueryMediaListByURLResponseBodyMediaListMediaSnapshotList `json:"SnapshotList,omitempty" xml:"SnapshotList,omitempty" type:"Struct"`
-	// The list of video summaries.
-	SummaryList *QueryMediaListByURLResponseBodyMediaListMediaSummaryList `json:"SummaryList,omitempty" xml:"SummaryList,omitempty" type:"Struct"`
-	// The tags of the media file.
-	Tags *QueryMediaListByURLResponseBodyMediaListMediaTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The title.
-	//
-	// example:
-	//
-	// kled.mp4
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The width.
-	//
-	// example:
-	//
-	// 640
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	SummaryList  *QueryMediaListByURLResponseBodyMediaListMediaSummaryList  `json:"SummaryList,omitempty" xml:"SummaryList,omitempty" type:"Struct"`
+	Tags         *QueryMediaListByURLResponseBodyMediaListMediaTags         `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	Title        *string                                                    `json:"Title,omitempty" xml:"Title,omitempty"`
+	Width        *string                                                    `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s QueryMediaListByURLResponseBodyMediaListMedia) String() string {
@@ -478,22 +382,8 @@ func (s *QueryMediaListByURLResponseBodyMediaListMedia) Validate() error {
 }
 
 type QueryMediaListByURLResponseBodyMediaListMediaFile struct {
-	// The status of the media file. Valid values:
-	//
-	// 	- **Normal**: The file is normal.
-	//
-	// 	- **Deleted**: The file is deleted.
-	//
-	// example:
-	//
-	// Normal
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The OSS URL of the input file.
-	//
-	// example:
-	//
-	// http://example-bucket-****.oss-cn-hangzhou.aliyuncs.com//example-****.mp4
-	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
+	URL   *string `json:"URL,omitempty" xml:"URL,omitempty"`
 }
 
 func (s QueryMediaListByURLResponseBodyMediaListMediaFile) String() string {
@@ -527,9 +417,7 @@ func (s *QueryMediaListByURLResponseBodyMediaListMediaFile) Validate() error {
 }
 
 type QueryMediaListByURLResponseBodyMediaListMediaMediaInfo struct {
-	// The format information.
-	Format *QueryMediaListByURLResponseBodyMediaListMediaMediaInfoFormat `json:"Format,omitempty" xml:"Format,omitempty" type:"Struct"`
-	// The stream information.
+	Format  *QueryMediaListByURLResponseBodyMediaListMediaMediaInfoFormat  `json:"Format,omitempty" xml:"Format,omitempty" type:"Struct"`
 	Streams *QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreams `json:"Streams,omitempty" xml:"Streams,omitempty" type:"Struct"`
 }
 
@@ -574,54 +462,14 @@ func (s *QueryMediaListByURLResponseBodyMediaListMediaMediaInfo) Validate() erro
 }
 
 type QueryMediaListByURLResponseBodyMediaListMediaMediaInfoFormat struct {
-	// The bitrate.
-	//
-	// example:
-	//
-	// 593.192
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The duration.
-	//
-	// example:
-	//
-	// 79.204000
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The full name of the encoding format.
-	//
-	// example:
-	//
-	// QuickTime/MOV
+	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	FormatLongName *string `json:"FormatLongName,omitempty" xml:"FormatLongName,omitempty"`
-	// The short name of the container format. Valid values: mov, mp4, m4a, 3gp, 3g2, and mj2.
-	//
-	// example:
-	//
-	// mov
-	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// The total number of program streams.
-	//
-	// example:
-	//
-	// 0
-	NumPrograms *string `json:"NumPrograms,omitempty" xml:"NumPrograms,omitempty"`
-	// The total number of media streams.
-	//
-	// example:
-	//
-	// 2
-	NumStreams *string `json:"NumStreams,omitempty" xml:"NumStreams,omitempty"`
-	// The size.
-	//
-	// example:
-	//
-	// 5872904
-	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The start time.
-	//
-	// example:
-	//
-	// 0.000000
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	FormatName     *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	NumPrograms    *string `json:"NumPrograms,omitempty" xml:"NumPrograms,omitempty"`
+	NumStreams     *string `json:"NumStreams,omitempty" xml:"NumStreams,omitempty"`
+	Size           *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s QueryMediaListByURLResponseBodyMediaListMediaMediaInfoFormat) String() string {
@@ -709,12 +557,9 @@ func (s *QueryMediaListByURLResponseBodyMediaListMediaMediaInfoFormat) Validate(
 }
 
 type QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreams struct {
-	// The list of audio streams.
-	AudioStreamList *QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsAudioStreamList `json:"AudioStreamList,omitempty" xml:"AudioStreamList,omitempty" type:"Struct"`
-	// The list of subtitle streams.
+	AudioStreamList    *QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsAudioStreamList    `json:"AudioStreamList,omitempty" xml:"AudioStreamList,omitempty" type:"Struct"`
 	SubtitleStreamList *QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsSubtitleStreamList `json:"SubtitleStreamList,omitempty" xml:"SubtitleStreamList,omitempty" type:"Struct"`
-	// The list of video streams.
-	VideoStreamList *QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsVideoStreamList `json:"VideoStreamList,omitempty" xml:"VideoStreamList,omitempty" type:"Struct"`
+	VideoStreamList    *QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsVideoStreamList    `json:"VideoStreamList,omitempty" xml:"VideoStreamList,omitempty" type:"Struct"`
 }
 
 func (s QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreams) String() string {
@@ -806,102 +651,22 @@ func (s *QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsAudioStrea
 }
 
 type QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsAudioStreamListAudioStream struct {
-	// The bitrate.
-	//
-	// example:
-	//
-	// 76.356
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The output layout of the sound channels.
-	//
-	// example:
-	//
-	// stereo
-	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
-	// The number of sound channels.
-	//
-	// example:
-	//
-	// 2
-	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// The full name of the encoding format.
-	//
-	// example:
-	//
-	// AAC (Advanced Audio Coding)
-	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// The short name of the encoding format. Valid values: H264, mov, aac, avc, and mpeg.
-	//
-	// example:
-	//
-	// aac
-	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// The tag of the encoding format.
-	//
-	// example:
-	//
-	// 0x6134706d
-	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// The tag string of the encoding format.
-	//
-	// example:
-	//
-	// mp4a
+	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	ChannelLayout  *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	Channels       *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	// The codec time base.
-	//
-	// example:
-	//
-	// 1/44100
-	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// The duration of the media file.
-	//
-	// example:
-	//
-	// 79.203265
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The sequence number of the audio stream. The value indicates the position of the audio stream in all audio streams.
-	//
-	// example:
-	//
-	// 1
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The language. For more information, see [FFmpeg language definition](https://www.ffmpeg.org/ffmpeg-all.html#Metadata).
-	//
-	// example:
-	//
-	// und
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The total number of frames.
-	//
-	// example:
-	//
-	// 100
-	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	// The sampling format.
-	//
-	// example:
-	//
-	// fltp
-	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
-	// The sampling rate.
-	//
-	// example:
-	//
-	// 44100
-	Samplerate *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	// The start time.
-	//
-	// example:
-	//
-	// 0.000000
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The time base.
-	//
-	// example:
-	//
-	// 1/44100
-	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	NumFrames      *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	SampleFmt      *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	Samplerate     *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timebase       *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
 }
 
 func (s QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsAudioStreamListAudioStream) String() string {
@@ -1095,18 +860,8 @@ func (s *QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsSubtitleSt
 }
 
 type QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsSubtitleStreamListSubtitleStream struct {
-	// The sequence number of the subtitle stream. The value indicates the position of the subtitle stream in all subtitle streams.
-	//
-	// example:
-	//
-	// 1
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The language. For more information, see [FFmpeg language definition](https://www.ffmpeg.org/ffmpeg-all.html#Metadata).
-	//
-	// example:
-	//
-	// und
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang  *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsSubtitleStreamListSubtitleStream) String() string {
@@ -1174,146 +929,30 @@ func (s *QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsVideoStrea
 }
 
 type QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsVideoStreamListVideoStream struct {
-	// The average frame rate.
-	//
-	// example:
-	//
-	// 15.0
-	AvgFPS *string `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
-	// The bitrate.
-	//
-	// example:
-	//
-	// 512.701
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The full name of the encoding format.
-	//
-	// example:
-	//
-	// H.264/AVC/MPEG-4 AVC/MPEG-4 part 10
-	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// The short name of the encoding format. Valid values: H264, mov, aac, avc, and mpeg.
-	//
-	// example:
-	//
-	// H264
-	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// The tag of the encoding format.
-	//
-	// example:
-	//
-	// 0x31637661
-	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// The tag string of the encoding format.
-	//
-	// example:
-	//
-	// avc1
-	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	// The codec time base.
-	//
-	// example:
-	//
-	// 1/30
-	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// The display aspect ratio (DAR) of the video stream.
-	//
-	// example:
-	//
-	// 16:9
-	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
-	// The duration.
-	//
-	// example:
-	//
-	// 79.200000
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The frame rate.
-	//
-	// example:
-	//
-	// 15.0
-	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// Indicates whether the video stream contains bidirectional frames (B-frames). A value of **1*	- indicates that the video stream contains B-frames. A value of **2*	- indicates that the video stream does not contain B-frames.
-	//
-	// example:
-	//
-	// 2
-	HasBFrames *string `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
-	// The latter number in the video resolution. The number indicates the video height.
-	//
-	// example:
-	//
-	// 360
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The sequence number of the video stream. The value indicates the position of the video stream in all video streams.
-	//
-	// example:
-	//
-	// 5
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The language. For more information, see [FFmpeg documentation](https://www.ffmpeg.org/ffmpeg-all.html#Metadata).
-	//
-	// example:
-	//
-	// und
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The codec level.
-	//
-	// example:
-	//
-	// 31
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The network bandwidth consumption.
-	NetworkCost *QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsVideoStreamListVideoStreamNetworkCost `json:"NetworkCost,omitempty" xml:"NetworkCost,omitempty" type:"Struct"`
-	// The total number of frames.
-	//
-	// example:
-	//
-	// 12
-	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	// The pixel format of the video stream.
-	//
-	// example:
-	//
-	// yuv420p
-	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// The codec profile.
-	//
-	// example:
-	//
-	// High
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// The rotation angle of the video.
-	//
-	// example:
-	//
-	// 90
-	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	// The sample aspect ratio (SAR).
-	//
-	// example:
-	//
-	// 1:1
-	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
-	// The start time.
-	//
-	// example:
-	//
-	// 0.046029
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The time base.
-	//
-	// example:
-	//
-	// 1/15360
-	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
-	// The former number in the video resolution. The number indicates the video width and cannot be negative.
-	//
-	// example:
-	//
-	// 640
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	AvgFPS         *string                                                                                             `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
+	Bitrate        *string                                                                                             `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	CodecLongName  *string                                                                                             `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	CodecName      *string                                                                                             `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CodecTag       *string                                                                                             `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	CodecTagString *string                                                                                             `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	CodecTimeBase  *string                                                                                             `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	Dar            *string                                                                                             `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	Duration       *string                                                                                             `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Fps            *string                                                                                             `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	HasBFrames     *string                                                                                             `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
+	Height         *string                                                                                             `json:"Height,omitempty" xml:"Height,omitempty"`
+	Index          *string                                                                                             `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string                                                                                             `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Level          *string                                                                                             `json:"Level,omitempty" xml:"Level,omitempty"`
+	NetworkCost    *QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsVideoStreamListVideoStreamNetworkCost `json:"NetworkCost,omitempty" xml:"NetworkCost,omitempty" type:"Struct"`
+	NumFrames      *string                                                                                             `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	PixFmt         *string                                                                                             `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Profile        *string                                                                                             `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Rotate         *string                                                                                             `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	Sar            *string                                                                                             `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	StartTime      *string                                                                                             `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timebase       *string                                                                                             `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	Width          *string                                                                                             `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsVideoStreamListVideoStream) String() string {
@@ -1550,24 +1189,9 @@ func (s *QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsVideoStrea
 }
 
 type QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsVideoStreamListVideoStreamNetworkCost struct {
-	// The average bitrate of the video stream.
-	//
-	// example:
-	//
-	// 2659.326
-	AvgBitrate *string `json:"AvgBitrate,omitempty" xml:"AvgBitrate,omitempty"`
-	// The maximum bandwidth that was consumed.
-	//
-	// example:
-	//
-	// 100
+	AvgBitrate    *string `json:"AvgBitrate,omitempty" xml:"AvgBitrate,omitempty"`
 	CostBandwidth *string `json:"CostBandwidth,omitempty" xml:"CostBandwidth,omitempty"`
-	// The amount of preload time.
-	//
-	// example:
-	//
-	// 0.01
-	PreloadTime *string `json:"PreloadTime,omitempty" xml:"PreloadTime,omitempty"`
+	PreloadTime   *string `json:"PreloadTime,omitempty" xml:"PreloadTime,omitempty"`
 }
 
 func (s QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsVideoStreamListVideoStreamNetworkCost) String() string {
@@ -1644,78 +1268,18 @@ func (s *QueryMediaListByURLResponseBodyMediaListMediaPlayList) Validate() error
 }
 
 type QueryMediaListByURLResponseBodyMediaListMediaPlayListPlay struct {
-	// The name of the workflow activity.
-	//
-	// example:
-	//
-	// test name
-	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
-	// The bitrate of the media file.
-	//
-	// example:
-	//
-	// 25.067
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The duration.
-	//
-	// example:
-	//
-	// 7.965000
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// Indicates whether the media file is encrypted. Valid values:
-	//
-	// 	- **0**: The media file is not encrypted.
-	//
-	// 	- **1**: The media file is encrypted.
-	//
-	// example:
-	//
-	// 1
-	Encryption *string `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
-	// The playback file.
-	File *QueryMediaListByURLResponseBodyMediaListMediaPlayListPlayFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
-	// The encoding format of the media file. Valid values: mov, mp4, m4a, 3gp, 3g2, and mj2.
-	//
-	// example:
-	//
-	// mov
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The frame rate.
-	//
-	// example:
-	//
-	// 25.0
-	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// The height of the media file.
-	//
-	// example:
-	//
-	// 10
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The ID of the workflow that generates the playback file.
-	//
-	// example:
-	//
-	// 6cc3aa66d1cb4bb2adf14e726c0a****
-	MediaWorkflowId *string `json:"MediaWorkflowId,omitempty" xml:"MediaWorkflowId,omitempty"`
-	// The name of the workflow that generates the playback file.
-	//
-	// example:
-	//
-	// example-mediaworkflow-****
-	MediaWorkflowName *string `json:"MediaWorkflowName,omitempty" xml:"MediaWorkflowName,omitempty"`
-	// The size.
-	//
-	// example:
-	//
-	// 100
-	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The width.
-	//
-	// example:
-	//
-	// 11
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	ActivityName      *string                                                        `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
+	Bitrate           *string                                                        `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Duration          *string                                                        `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Encryption        *string                                                        `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
+	File              *QueryMediaListByURLResponseBodyMediaListMediaPlayListPlayFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	Format            *string                                                        `json:"Format,omitempty" xml:"Format,omitempty"`
+	Fps               *string                                                        `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Height            *string                                                        `json:"Height,omitempty" xml:"Height,omitempty"`
+	MediaWorkflowId   *string                                                        `json:"MediaWorkflowId,omitempty" xml:"MediaWorkflowId,omitempty"`
+	MediaWorkflowName *string                                                        `json:"MediaWorkflowName,omitempty" xml:"MediaWorkflowName,omitempty"`
+	Size              *string                                                        `json:"Size,omitempty" xml:"Size,omitempty"`
+	Width             *string                                                        `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s QueryMediaListByURLResponseBodyMediaListMediaPlayListPlay) String() string {
@@ -1844,22 +1408,8 @@ func (s *QueryMediaListByURLResponseBodyMediaListMediaPlayListPlay) Validate() e
 }
 
 type QueryMediaListByURLResponseBodyMediaListMediaPlayListPlayFile struct {
-	// The status of the media file. Valid values:
-	//
-	// 	- **Normal**: The file is normal.
-	//
-	// 	- **Deleted**: The file is deleted.
-	//
-	// example:
-	//
-	// Normal
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The OSS URL of the playback file.
-	//
-	// example:
-	//
-	// http://example-bucket-****.oss-cn-hangzhou.aliyuncs.com//example-****.mp4l-test/in/1.mp4
-	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
+	URL   *string `json:"URL,omitempty" xml:"URL,omitempty"`
 }
 
 func (s QueryMediaListByURLResponseBodyMediaListMediaPlayListPlayFile) String() string {
@@ -1952,42 +1502,12 @@ func (s *QueryMediaListByURLResponseBodyMediaListMediaSnapshotList) Validate() e
 }
 
 type QueryMediaListByURLResponseBodyMediaListMediaSnapshotListSnapshot struct {
-	// The name of the workflow activity that generates the snapshot.
-	//
-	// example:
-	//
-	// example-activity1-****
-	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
-	// The number of snapshots. This parameter is valid only when the value of the **Type*	- parameter is **Sequence**.
-	//
-	// example:
-	//
-	// 3
-	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The snapshot.
-	File *QueryMediaListByURLResponseBodyMediaListMediaSnapshotListSnapshotFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
-	// The ID of the workflow that generates the snapshot.
-	//
-	// example:
-	//
-	// 6cc3aa66d1cb4bb2adf14e726c0a****
-	MediaWorkflowId *string `json:"MediaWorkflowId,omitempty" xml:"MediaWorkflowId,omitempty"`
-	// The name of the workflow that generates the snapshot.
-	//
-	// example:
-	//
-	// example-workflow-****
-	MediaWorkflowName *string `json:"MediaWorkflowName,omitempty" xml:"MediaWorkflowName,omitempty"`
-	// The type of the snapshot. Valid values:
-	//
-	// - **Single**: a single snapshot
-	//
-	// - **Sequence**: snapshots in sequence
-	//
-	// example:
-	//
-	// Single
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	ActivityName      *string                                                                `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
+	Count             *string                                                                `json:"Count,omitempty" xml:"Count,omitempty"`
+	File              *QueryMediaListByURLResponseBodyMediaListMediaSnapshotListSnapshotFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	MediaWorkflowId   *string                                                                `json:"MediaWorkflowId,omitempty" xml:"MediaWorkflowId,omitempty"`
+	MediaWorkflowName *string                                                                `json:"MediaWorkflowName,omitempty" xml:"MediaWorkflowName,omitempty"`
+	Type              *string                                                                `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s QueryMediaListByURLResponseBodyMediaListMediaSnapshotListSnapshot) String() string {
@@ -2062,22 +1582,8 @@ func (s *QueryMediaListByURLResponseBodyMediaListMediaSnapshotListSnapshot) Vali
 }
 
 type QueryMediaListByURLResponseBodyMediaListMediaSnapshotListSnapshotFile struct {
-	// The status of the file. Valid values:
-	//
-	// - **Normal**: The file is normal.
-	//
-	// - **Deleted**: The file is deleted.
-	//
-	// example:
-	//
-	// Normal
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The OSS URL of the snapshot.
-	//
-	// example:
-	//
-	// http://example1-bucket1-****.oss-cn-hangzhou.aliyuncs.com//example111-****.png
-	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
+	URL   *string `json:"URL,omitempty" xml:"URL,omitempty"`
 }
 
 func (s QueryMediaListByURLResponseBodyMediaListMediaSnapshotListSnapshotFile) String() string {
@@ -2145,36 +1651,11 @@ func (s *QueryMediaListByURLResponseBodyMediaListMediaSummaryList) Validate() er
 }
 
 type QueryMediaListByURLResponseBodyMediaListMediaSummaryListSummary struct {
-	// The name of the workflow activity.
-	//
-	// example:
-	//
-	// example-activity-****
-	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
-	// The information about the input file.
-	File *QueryMediaListByURLResponseBodyMediaListMediaSummaryListSummaryFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
-	// The ID of the workflow that generates the summary.
-	//
-	// example:
-	//
-	// 93ab850b4f6f44eab54b6e91d24d****
-	MediaWorkflowId *string `json:"MediaWorkflowId,omitempty" xml:"MediaWorkflowId,omitempty"`
-	// The name of the workflow that generates the summary.
-	//
-	// example:
-	//
-	// example-mediaworkflow-****
-	MediaWorkflowName *string `json:"MediaWorkflowName,omitempty" xml:"MediaWorkflowName,omitempty"`
-	// The type of the summary. Valid values:
-	//
-	// 	- **Video**: video
-	//
-	// 	- **Gif**: dynamic image
-	//
-	// example:
-	//
-	// Gif
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	ActivityName      *string                                                              `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
+	File              *QueryMediaListByURLResponseBodyMediaListMediaSummaryListSummaryFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	MediaWorkflowId   *string                                                              `json:"MediaWorkflowId,omitempty" xml:"MediaWorkflowId,omitempty"`
+	MediaWorkflowName *string                                                              `json:"MediaWorkflowName,omitempty" xml:"MediaWorkflowName,omitempty"`
+	Type              *string                                                              `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s QueryMediaListByURLResponseBodyMediaListMediaSummaryListSummary) String() string {
@@ -2240,22 +1721,8 @@ func (s *QueryMediaListByURLResponseBodyMediaListMediaSummaryListSummary) Valida
 }
 
 type QueryMediaListByURLResponseBodyMediaListMediaSummaryListSummaryFile struct {
-	// The status of the media file. Valid values:
-	//
-	// 	- **Normal**: The file is normal.
-	//
-	// 	- **Deleted**: The file is deleted.
-	//
-	// example:
-	//
-	// Normal
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The OSS URL of the input file.
-	//
-	// example:
-	//
-	// http://example-bucket-****.o
-	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
+	URL   *string `json:"URL,omitempty" xml:"URL,omitempty"`
 }
 
 func (s QueryMediaListByURLResponseBodyMediaListMediaSummaryListSummaryFile) String() string {

@@ -139,11 +139,8 @@ func (s *ListCustomGroupsResponseBodyCustomGroups) Validate() error {
 
 type ListCustomGroupsResponseBodyCustomGroupsCustomGroup struct {
 	CustomGroupDescription *string `json:"CustomGroupDescription,omitempty" xml:"CustomGroupDescription,omitempty"`
-	// example:
-	//
-	// 1
-	CustomGroupId   *string `json:"CustomGroupId,omitempty" xml:"CustomGroupId,omitempty"`
-	CustomGroupName *string `json:"CustomGroupName,omitempty" xml:"CustomGroupName,omitempty"`
+	CustomGroupId          *string `json:"CustomGroupId,omitempty" xml:"CustomGroupId,omitempty"`
+	CustomGroupName        *string `json:"CustomGroupName,omitempty" xml:"CustomGroupName,omitempty"`
 }
 
 func (s ListCustomGroupsResponseBodyCustomGroupsCustomGroup) String() string {

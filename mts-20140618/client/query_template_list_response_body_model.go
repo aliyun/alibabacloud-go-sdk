@@ -18,15 +18,13 @@ type iQueryTemplateListResponseBody interface {
 }
 
 type QueryTemplateListResponseBody struct {
-	// The IDs of the templates that do not exist. This parameter is not returned if all specified transcoding templates are found.
 	NonExistTids *QueryTemplateListResponseBodyNonExistTids `json:"NonExistTids,omitempty" xml:"NonExistTids,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
 	//
 	// BC860F04-778A-472F-AB39-E1BF329C1EA8
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The transcoding templates.
+	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TemplateList *QueryTemplateListResponseBodyTemplateList `json:"TemplateList,omitempty" xml:"TemplateList,omitempty" type:"Struct"`
 }
 
@@ -139,44 +137,15 @@ func (s *QueryTemplateListResponseBodyTemplateList) Validate() error {
 }
 
 type QueryTemplateListResponseBodyTemplateListTemplate struct {
-	// The audio codec configurations.
-	Audio *QueryTemplateListResponseBodyTemplateListTemplateAudio `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	// The container format configurations.
-	Container *QueryTemplateListResponseBodyTemplateListTemplateContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	// The time when the template was created.
-	//
-	// example:
-	//
-	// 2021-03-04T06:44:43Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The transcoding template ID.
-	//
-	// example:
-	//
-	// 16f01ad6175e4230ac42bb5182cd****
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The transmuxing configurations.
-	MuxConfig *QueryTemplateListResponseBodyTemplateListTemplateMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
-	// The name of the template.
-	//
-	// example:
-	//
-	// MPS-example
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The status of the template. Valid values:
-	//
-	// 	- **Normal**
-	//
-	// 	- **Deleted**
-	//
-	// example:
-	//
-	// Normal
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The general transcoding configurations.
-	TransConfig *QueryTemplateListResponseBodyTemplateListTemplateTransConfig `json:"TransConfig,omitempty" xml:"TransConfig,omitempty" type:"Struct"`
-	// The video codec configurations.
-	Video *QueryTemplateListResponseBodyTemplateListTemplateVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+	Audio        *QueryTemplateListResponseBodyTemplateListTemplateAudio       `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
+	Container    *QueryTemplateListResponseBodyTemplateListTemplateContainer   `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
+	CreationTime *string                                                       `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Id           *string                                                       `json:"Id,omitempty" xml:"Id,omitempty"`
+	MuxConfig    *QueryTemplateListResponseBodyTemplateListTemplateMuxConfig   `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
+	Name         *string                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	State        *string                                                       `json:"State,omitempty" xml:"State,omitempty"`
+	TransConfig  *QueryTemplateListResponseBodyTemplateListTemplateTransConfig `json:"TransConfig,omitempty" xml:"TransConfig,omitempty" type:"Struct"`
+	Video        *QueryTemplateListResponseBodyTemplateListTemplateVideo       `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
 func (s QueryTemplateListResponseBodyTemplateListTemplate) String() string {
@@ -298,84 +267,14 @@ func (s *QueryTemplateListResponseBodyTemplateListTemplate) Validate() error {
 }
 
 type QueryTemplateListResponseBodyTemplateListTemplateAudio struct {
-	// The audio bitrate of the output file.
-	//
-	// 	- Valid values: **[8,1000]**.
-	//
-	// 	- Unit: Kbit/s.
-	//
-	// 	- Default value: **128**.
-	//
-	// example:
-	//
-	// 500
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The number of sound channels. Default value: **2**.
-	//
-	// example:
-	//
-	// 2
-	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// The audio codec format. Default value: **aac**. Valid values:
-	//
-	// 	- **aac**
-	//
-	// 	- **mp3**
-	//
-	// 	- **vorbis**
-	//
-	// 	- **flac**
-	//
-	// example:
-	//
-	// aac
-	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	// The codec profile of the audio. Valid values when the value of Codec is aac:
-	//
-	// 	- **aac_low**
-	//
-	// 	- **aac_he**
-	//
-	// 	- **aac_he_v2**
-	//
-	// 	- **aac_ld**
-	//
-	// 	- **aac_eld**
-	//
-	// example:
-	//
-	// aac_low
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// The strength of the independent denoising algorithm.
-	//
-	// example:
-	//
-	// 1
-	Qscale *string `json:"Qscale,omitempty" xml:"Qscale,omitempty"`
-	// Indicates whether the audio stream is deleted. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// 	- Default value: **false**.
-	//
-	// example:
-	//
-	// false
-	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
-	// The sampling rate.
-	//
-	// 	- Unit: Hz
-	//
-	// 	- Default value: **44100**.
-	//
-	// example:
-	//
-	// 44100
-	Samplerate *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	// The volume control configurations.
-	Volume *QueryTemplateListResponseBodyTemplateListTemplateAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
+	Bitrate    *string                                                       `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Channels   *string                                                       `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	Codec      *string                                                       `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Profile    *string                                                       `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Qscale     *string                                                       `json:"Qscale,omitempty" xml:"Qscale,omitempty"`
+	Remove     *string                                                       `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	Samplerate *string                                                       `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+	Volume     *QueryTemplateListResponseBodyTemplateListTemplateAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
 }
 
 func (s QueryTemplateListResponseBodyTemplateListTemplateAudio) String() string {
@@ -468,88 +367,12 @@ func (s *QueryTemplateListResponseBodyTemplateListTemplateAudio) Validate() erro
 }
 
 type QueryTemplateListResponseBodyTemplateListTemplateAudioVolume struct {
-	// The output volume.
-	//
-	// 	- This parameter takes effect only if the value of Method is dynamic.
-	//
-	// 	- Unit: dB.
-	//
-	// 	- Valid values: [-70,-5].
-	//
-	// 	- Default value: -6.
-	//
-	// example:
-	//
-	// -6
 	IntegratedLoudnessTarget *string `json:"IntegratedLoudnessTarget,omitempty" xml:"IntegratedLoudnessTarget,omitempty"`
-	// The increased volume relative to the volume of the input audio.
-	//
-	// 	- This parameter takes effect only if the value of Method is linear.
-	//
-	// 	- Unit: dB.
-	//
-	// 	- Valid values: less than or equal to 20.
-	//
-	// 	- Default value: -20.
-	//
-	// example:
-	//
-	// -20
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The range of the volume relative to the output volume.
-	//
-	// 	- This parameter takes effect only if the value of Method is dynamic.
-	//
-	// 	- Unit: dB.
-	//
-	// 	- Valid values: [1,20].
-	//
-	// 	- Default value: 8.
-	//
-	// example:
-	//
-	// 8
-	LoudnessRangeTarget *string `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
-	// The method that is used to adjust the volume. Valid values:
-	//
-	// 	- **auto**
-	//
-	// 	- **dynamic**
-	//
-	// 	- **linear**
-	//
-	// 	- Default value: dynamic.
-	//
-	// example:
-	//
-	// auto
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The volume adjustment coefficient.
-	//
-	// This parameter takes effect only if the value of Method is adaptive.
-	//
-	// Valid values: [0,1].
-	//
-	// Default value: 0.9.
-	//
-	// example:
-	//
-	// 0.9
-	PeakLevel *string `json:"PeakLevel,omitempty" xml:"PeakLevel,omitempty"`
-	// The peak volume.
-	//
-	// 	- This parameter takes effect only if the value of Method is dynamic.
-	//
-	// 	- Unit: dB.
-	//
-	// 	- Valid values: [-9,0].
-	//
-	// 	- Default value: -1.
-	//
-	// example:
-	//
-	// -1
-	TruePeak *string `json:"TruePeak,omitempty" xml:"TruePeak,omitempty"`
+	Level                    *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	LoudnessRangeTarget      *string `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
+	Method                   *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	PeakLevel                *string `json:"PeakLevel,omitempty" xml:"PeakLevel,omitempty"`
+	TruePeak                 *string `json:"TruePeak,omitempty" xml:"TruePeak,omitempty"`
 }
 
 func (s QueryTemplateListResponseBodyTemplateListTemplateAudioVolume) String() string {
@@ -619,11 +442,6 @@ func (s *QueryTemplateListResponseBodyTemplateListTemplateAudioVolume) Validate(
 }
 
 type QueryTemplateListResponseBodyTemplateListTemplateContainer struct {
-	// The format of the container. Valid values: flv, mp4, ts, m3u8, gif, mp3, ogg, and flac.
-	//
-	// example:
-	//
-	// flv
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
 }
 
@@ -649,12 +467,9 @@ func (s *QueryTemplateListResponseBodyTemplateListTemplateContainer) Validate() 
 }
 
 type QueryTemplateListResponseBodyTemplateListTemplateMuxConfig struct {
-	// The transmuxing configurations for GIF.
-	Gif *QueryTemplateListResponseBodyTemplateListTemplateMuxConfigGif `json:"Gif,omitempty" xml:"Gif,omitempty" type:"Struct"`
-	// The segment configurations.
+	Gif     *QueryTemplateListResponseBodyTemplateListTemplateMuxConfigGif     `json:"Gif,omitempty" xml:"Gif,omitempty" type:"Struct"`
 	Segment *QueryTemplateListResponseBodyTemplateListTemplateMuxConfigSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
-	// The transmuxing configurations for WebP.
-	Webp *QueryTemplateListResponseBodyTemplateListTemplateMuxConfigWebp `json:"Webp,omitempty" xml:"Webp,omitempty" type:"Struct"`
+	Webp    *QueryTemplateListResponseBodyTemplateListTemplateMuxConfigWebp    `json:"Webp,omitempty" xml:"Webp,omitempty" type:"Struct"`
 }
 
 func (s QueryTemplateListResponseBodyTemplateListTemplateMuxConfig) String() string {
@@ -712,30 +527,10 @@ func (s *QueryTemplateListResponseBodyTemplateListTemplateMuxConfig) Validate() 
 }
 
 type QueryTemplateListResponseBodyTemplateListTemplateMuxConfigGif struct {
-	// The color dithering algorithm of the palette. Valid values: sierra and bayer.
-	//
-	// example:
-	//
-	// sierra
-	DitherMode *string `json:"DitherMode,omitempty" xml:"DitherMode,omitempty"`
-	// The duration for which the final frame is paused.
-	//
-	// example:
-	//
-	// 0
-	FinalDelay *string `json:"FinalDelay,omitempty" xml:"FinalDelay,omitempty"`
-	// Indicates whether a custom palette is used.
-	//
-	// example:
-	//
-	// false
+	DitherMode      *string `json:"DitherMode,omitempty" xml:"DitherMode,omitempty"`
+	FinalDelay      *string `json:"FinalDelay,omitempty" xml:"FinalDelay,omitempty"`
 	IsCustomPalette *string `json:"IsCustomPalette,omitempty" xml:"IsCustomPalette,omitempty"`
-	// The loop count.
-	//
-	// example:
-	//
-	// 0
-	Loop *string `json:"Loop,omitempty" xml:"Loop,omitempty"`
+	Loop            *string `json:"Loop,omitempty" xml:"Loop,omitempty"`
 }
 
 func (s QueryTemplateListResponseBodyTemplateListTemplateMuxConfigGif) String() string {
@@ -787,11 +582,6 @@ func (s *QueryTemplateListResponseBodyTemplateListTemplateMuxConfigGif) Validate
 }
 
 type QueryTemplateListResponseBodyTemplateListTemplateMuxConfigSegment struct {
-	// The length of the segment. Unit: seconds.
-	//
-	// example:
-	//
-	// 10
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 }
 
@@ -817,11 +607,6 @@ func (s *QueryTemplateListResponseBodyTemplateListTemplateMuxConfigSegment) Vali
 }
 
 type QueryTemplateListResponseBodyTemplateListTemplateMuxConfigWebp struct {
-	// The loop count.
-	//
-	// example:
-	//
-	// 0
 	Loop *string `json:"Loop,omitempty" xml:"Loop,omitempty"`
 }
 
@@ -847,106 +632,14 @@ func (s *QueryTemplateListResponseBodyTemplateListTemplateMuxConfigWebp) Validat
 }
 
 type QueryTemplateListResponseBodyTemplateListTemplateTransConfig struct {
-	// The method of resolution adjustment. Default value: **none**. Valid values:
-	//
-	// 	- rescale
-	//
-	// 	- crop
-	//
-	// 	- none
-	//
-	// example:
-	//
-	// none
-	AdjDarMethod *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
-	// Indicates whether the audio bitrate is checked. If the bitrate of the output audio is higher than that of the input audio, the input bitrate is retained and the specified audio bitrate does not take effect. This parameter has a lower priority than IsCheckAudioBitrateFail. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// 	- Default value:
-	//
-	//     	- If this parameter is not specified and the codec of the output audio is different from that of the input audio, the default value is false.
-	//
-	//     	- If this parameter is not specified and the codec of the output audio is the same as that of the input audio, the default value is true.
-	//
-	// example:
-	//
-	// false
-	IsCheckAudioBitrate *string `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
-	// Indicates whether audio bitrate check errors are allowed. This parameter has a greater priority than IsCheckAudioBitrate. Valid values:
-	//
-	// 	- **true**: If the audio bitrate check fails, the input file is not transcoded.
-	//
-	// 	- **false**: The audio bitrate is not checked.
-	//
-	// 	- Default value: **false**.
-	//
-	// example:
-	//
-	// false
+	AdjDarMethod            *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
+	IsCheckAudioBitrate     *string `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
 	IsCheckAudioBitrateFail *string `json:"IsCheckAudioBitrateFail,omitempty" xml:"IsCheckAudioBitrateFail,omitempty"`
-	// Indicates whether the resolution is checked. If the output resolution is higher than the input resolution based on the width or height, the input resolution is retained. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// 	- Default value: **false**.
-	//
-	// example:
-	//
-	// false
-	IsCheckReso *string `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
-	// Indicates whether the resolution is checked. If the output resolution is higher than the input resolution based on the width or height, a transcoding failure is returned. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// 	- Default value: **false**.
-	//
-	// example:
-	//
-	// false
-	IsCheckResoFail *string `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
-	// Indicates whether the video bitrate is checked. If the bitrate of the output video is higher than that of the input video, the input bitrate is retained. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// 	- Default value: **false**.
-	//
-	// example:
-	//
-	// false
-	IsCheckVideoBitrate *string `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
-	// Indicates whether video bitrate check errors are allowed. This parameter has a higher priority than IsCheckVideoBitrate. Valid values:
-	//
-	// 	- **true**: If the video bitrate check fails, the input file is not transcoded.
-	//
-	// 	- **false**: The video bitrate is not checked.
-	//
-	// 	- Default value: **false**.
-	//
-	// example:
-	//
-	// false
+	IsCheckReso             *string `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
+	IsCheckResoFail         *string `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
+	IsCheckVideoBitrate     *string `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
 	IsCheckVideoBitrateFail *string `json:"IsCheckVideoBitrateFail,omitempty" xml:"IsCheckVideoBitrateFail,omitempty"`
-	// The transcoding mode. Default value: **onepass**. Valid values:
-	//
-	// 	- **onepass**
-	//
-	// 	- **twopass**
-	//
-	// 	- **CBR**
-	//
-	// example:
-	//
-	// onepass
-	TransMode *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
+	TransMode               *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
 }
 
 func (s QueryTemplateListResponseBodyTemplateListTemplateTransConfig) String() string {
@@ -1034,192 +727,30 @@ func (s *QueryTemplateListResponseBodyTemplateListTemplateTransConfig) Validate(
 }
 
 type QueryTemplateListResponseBodyTemplateListTemplateVideo struct {
-	// The average bitrate of the video. Unit: Kbit/s.
-	//
-	// example:
-	//
-	// 200
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The average bitrate range of the video.
-	BitrateBnd *QueryTemplateListResponseBodyTemplateListTemplateVideoBitrateBnd `json:"BitrateBnd,omitempty" xml:"BitrateBnd,omitempty" type:"Struct"`
-	// The buffer size.
-	//
-	// 	- Unit: KB.
-	//
-	// 	- Default value: **6000**.
-	//
-	// example:
-	//
-	// 6000
-	Bufsize *string `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
-	// The codec. Default value: **H.264**.
-	//
-	// example:
-	//
-	// H.264
-	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	// The constant rate factor.
-	//
-	// 	- Default value when the encoding format is H.264: **23**. Default value when the encoding format is H.265: **26**.
-	//
-	// 	- If this parameter is set, the value of Bitrate becomes invalid.
-	//
-	// example:
-	//
-	// 15
-	Crf *string `json:"Crf,omitempty" xml:"Crf,omitempty"`
-	// The method of video cropping. Valid values:
-	//
-	// 	- **border**: automatically detects and removes black bars.
-	//
-	// 	- **Value in the width:height:left:top format**: crops the video based on custom settings. Format: width:height:left:top. Example: 1280:800:0:140.
-	//
-	// example:
-	//
-	// border
-	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	// The level of video quality control.
-	//
-	// example:
-	//
-	// 10
-	Degrain *string `json:"Degrain,omitempty" xml:"Degrain,omitempty"`
-	// The frame rate.
-	//
-	// 	- The value is 60 if the frame rate of the input file exceeds 60.
-	//
-	// 	- Default value: **the frame rate of the input file**.
-	//
-	// example:
-	//
-	// 25
-	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// The maximum number of frames between two keyframes. Default value: **250**.
-	//
-	// example:
-	//
-	// 10
-	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
-	// Indicates whether the HDR2SDR conversion feature is enabled. If this feature is enabled, high dynamic range (HDR) videos are transcoded to standard dynamic range (SDR) videos.
-	//
-	// example:
-	//
-	// true
-	Hdr2sdr *string `json:"Hdr2sdr,omitempty" xml:"Hdr2sdr,omitempty"`
-	// The height of the video.
-	//
-	// 	- Unit: pixel.
-	//
-	// 	- Default value: **the height of the input video**.
-	//
-	// example:
-	//
-	// 800
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// Indicates whether the auto-rotate screen feature is enabled.
-	//
-	// 	- If this feature is enabled, the width of the output video corresponds to the long side of the input video, which is the height of the input video in portrait mode. The height of the output video corresponds to the short side of the input video, which is the width of the input video in portrait mode. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// 	- Default value: **false**.
-	//
-	// example:
-	//
-	// false
-	LongShortMode *string `json:"LongShortMode,omitempty" xml:"LongShortMode,omitempty"`
-	// The maximum frame rate.
-	//
-	// example:
-	//
-	// 60
-	MaxFps *string `json:"MaxFps,omitempty" xml:"MaxFps,omitempty"`
-	// The maximum bitrate of the video. Unit: Kbit/s.
-	//
-	// example:
-	//
-	// 500
-	Maxrate *string `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
-	// The Narrowband HD settings.
-	NarrowBand *QueryTemplateListResponseBodyTemplateListTemplateVideoNarrowBand `json:"NarrowBand,omitempty" xml:"NarrowBand,omitempty" type:"Struct"`
-	// The black bars that are added to the video. Format: width:height:left:top. Example: 1280:800:0:140.
-	//
-	// example:
-	//
-	// 1280:800:0:140
-	Pad *string `json:"Pad,omitempty" xml:"Pad,omitempty"`
-	// The pixel format of the video. Valid values: standard pixel formats such as yuv420p and yuvj420p.
-	//
-	// example:
-	//
-	// yuv420p
-	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// The preset video algorithm. Valid values: veryfast, fast, medium, slow, and slower. Default value: **medium**.
-	//
-	// example:
-	//
-	// medium
-	Preset *string `json:"Preset,omitempty" xml:"Preset,omitempty"`
-	// The encoding profile. Valid values:
-	//
-	// 	- **baseline**: applicable to mobile devices.
-	//
-	// 	- **main**: applicable to standard-definition devices.
-	//
-	// 	- **high**: applicable to high-definition devices.
-	//
-	// 	- Default value: **high**.
-	//
-	// example:
-	//
-	// high
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// The strength of the independent denoising algorithm.
-	//
-	// example:
-	//
-	// 1
-	Qscale *string `json:"Qscale,omitempty" xml:"Qscale,omitempty"`
-	// Indicates whether the video stream is deleted. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// 	- Default value: **false**.
-	//
-	// example:
-	//
-	// false
-	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
-	// The policy of resolution adjustment. Valid values: cropFirst, widthFirst, and heightFirst.
-	//
-	// example:
-	//
-	// heightFirst
-	ResoPriority *string `json:"ResoPriority,omitempty" xml:"ResoPriority,omitempty"`
-	// The scan mode. Valid values:
-	//
-	// 	- **interlaced**
-	//
-	// 	- **progressive**
-	//
-	// example:
-	//
-	// interlaced
-	ScanMode *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
-	// The width of the video.
-	//
-	// 	- Unit: pixel.
-	//
-	// 	- Default value: **the width of the input video**.
-	//
-	// example:
-	//
-	// 256
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Bitrate       *string                                                           `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	BitrateBnd    *QueryTemplateListResponseBodyTemplateListTemplateVideoBitrateBnd `json:"BitrateBnd,omitempty" xml:"BitrateBnd,omitempty" type:"Struct"`
+	Bufsize       *string                                                           `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
+	Codec         *string                                                           `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Crf           *string                                                           `json:"Crf,omitempty" xml:"Crf,omitempty"`
+	Crop          *string                                                           `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	Degrain       *string                                                           `json:"Degrain,omitempty" xml:"Degrain,omitempty"`
+	Fps           *string                                                           `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Gop           *string                                                           `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	Hdr2sdr       *string                                                           `json:"Hdr2sdr,omitempty" xml:"Hdr2sdr,omitempty"`
+	Height        *string                                                           `json:"Height,omitempty" xml:"Height,omitempty"`
+	LongShortMode *string                                                           `json:"LongShortMode,omitempty" xml:"LongShortMode,omitempty"`
+	MaxFps        *string                                                           `json:"MaxFps,omitempty" xml:"MaxFps,omitempty"`
+	Maxrate       *string                                                           `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
+	NarrowBand    *QueryTemplateListResponseBodyTemplateListTemplateVideoNarrowBand `json:"NarrowBand,omitempty" xml:"NarrowBand,omitempty" type:"Struct"`
+	Pad           *string                                                           `json:"Pad,omitempty" xml:"Pad,omitempty"`
+	PixFmt        *string                                                           `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Preset        *string                                                           `json:"Preset,omitempty" xml:"Preset,omitempty"`
+	Profile       *string                                                           `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Qscale        *string                                                           `json:"Qscale,omitempty" xml:"Qscale,omitempty"`
+	Remove        *string                                                           `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	ResoPriority  *string                                                           `json:"ResoPriority,omitempty" xml:"ResoPriority,omitempty"`
+	ScanMode      *string                                                           `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
+	Width         *string                                                           `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s QueryTemplateListResponseBodyTemplateListTemplateVideo) String() string {
@@ -1461,17 +992,7 @@ func (s *QueryTemplateListResponseBodyTemplateListTemplateVideo) Validate() erro
 }
 
 type QueryTemplateListResponseBodyTemplateListTemplateVideoBitrateBnd struct {
-	// The upper limit of the total bitrate. Unit: Kbit/s.
-	//
-	// example:
-	//
-	// 100
 	Max *string `json:"Max,omitempty" xml:"Max,omitempty"`
-	// The lower limit of the total bitrate. Unit: Kbit/s.
-	//
-	// example:
-	//
-	// 500
 	Min *string `json:"Min,omitempty" xml:"Min,omitempty"`
 }
 
@@ -1506,24 +1027,9 @@ func (s *QueryTemplateListResponseBodyTemplateListTemplateVideoBitrateBnd) Valid
 }
 
 type QueryTemplateListResponseBodyTemplateListTemplateVideoNarrowBand struct {
-	// The upper limit of the dynamic bitrate. If this parameter is set, the average bitrate is in the range of (0, 1000000].
-	//
-	// example:
-	//
-	// 3000
-	Abrmax *float32 `json:"Abrmax,omitempty" xml:"Abrmax,omitempty"`
-	// The maximum ratio of the upper limit of dynamic bitrate. If this parameter is set, the value of Abrmax does not exceed x times of the source video bitrate. Valid values: (0,1.0].
-	//
-	// example:
-	//
-	// 1.0
+	Abrmax      *float32 `json:"Abrmax,omitempty" xml:"Abrmax,omitempty"`
 	MaxAbrRatio *float32 `json:"MaxAbrRatio,omitempty" xml:"MaxAbrRatio,omitempty"`
-	// The Narrowband HD version. Only 1.0 may be returned.
-	//
-	// example:
-	//
-	// 1.0
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Version     *string  `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s QueryTemplateListResponseBodyTemplateListTemplateVideoNarrowBand) String() string {

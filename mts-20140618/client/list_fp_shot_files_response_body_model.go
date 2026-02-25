@@ -18,7 +18,6 @@ type iListFpShotFilesResponseBody interface {
 }
 
 type ListFpShotFilesResponseBody struct {
-	// The media fingerprint files. For more information, see the "FpShotFile" section of the [Data types](https://help.aliyun.com/document_detail/29251.html) topic.
 	FpShotFileList *ListFpShotFilesResponseBodyFpShotFileList `json:"FpShotFileList,omitempty" xml:"FpShotFileList,omitempty" type:"Struct"`
 	// The returned value of NextPageToken is a pagination token, which can be used in the next request to retrieve a new page of results.
 	//
@@ -113,28 +112,10 @@ func (s *ListFpShotFilesResponseBodyFpShotFileList) Validate() error {
 }
 
 type ListFpShotFilesResponseBodyFpShotFileListFpShotFile struct {
-	// The ID of the video file.
-	//
-	// example:
-	//
-	// 41e6536e4f2250e2e9bf26cdea19****
-	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The information about the input file.
-	InputFile *ListFpShotFilesResponseBodyFpShotFileListFpShotFileInputFile `json:"InputFile,omitempty" xml:"InputFile,omitempty" type:"Struct"`
-	// The unique primary key of the input video.
-	//
-	// example:
-	//
-	// fb712a6890464059b1b2ea7c8647****
-	PrimaryKey *string `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
-	// The time when the media fingerprint file was stored. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
-	//
-	// > This parameter is available only in the China (Beijing), China (Hangzhou), and China (Shanghai) regions.
-	//
-	// example:
-	//
-	// 2022-09-08T23:32:56Z
-	StoreTime *string `json:"StoreTime,omitempty" xml:"StoreTime,omitempty"`
+	FileId     *string                                                       `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	InputFile  *ListFpShotFilesResponseBodyFpShotFileListFpShotFileInputFile `json:"InputFile,omitempty" xml:"InputFile,omitempty" type:"Struct"`
+	PrimaryKey *string                                                       `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	StoreTime  *string                                                       `json:"StoreTime,omitempty" xml:"StoreTime,omitempty"`
 }
 
 func (s ListFpShotFilesResponseBodyFpShotFileListFpShotFile) String() string {
@@ -191,24 +172,9 @@ func (s *ListFpShotFilesResponseBodyFpShotFileListFpShotFile) Validate() error {
 }
 
 type ListFpShotFilesResponseBodyFpShotFileListFpShotFileInputFile struct {
-	// The name of the OSS bucket in which the input file is stored.
-	//
-	// example:
-	//
-	// example-bucket-****
-	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The ID of the OSS region in which the input file resides.
-	//
-	// example:
-	//
-	// oss-cn-beijing
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The name of the OSS object that is used as the input file.
-	//
-	// example:
-	//
-	// example-****.mp4
-	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
 }
 
 func (s ListFpShotFilesResponseBodyFpShotFileListFpShotFileInputFile) String() string {

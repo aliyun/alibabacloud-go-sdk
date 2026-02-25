@@ -20,16 +20,14 @@ type iQueryFpShotJobListResponseBody interface {
 }
 
 type QueryFpShotJobListResponseBody struct {
-	// The information about media fingerprint analysis jobs.
 	FpShotJobList *QueryFpShotJobListResponseBodyFpShotJobList `json:"FpShotJobList,omitempty" xml:"FpShotJobList,omitempty" type:"Struct"`
 	// The token that is used to retrieve the next page of the query results. The value is a 32-bit UUID. If the returned query results cannot be displayed within one page, this parameter is returned. The value of this parameter is updated for each query.
 	//
 	// example:
 	//
 	// b11c171cced04565b1f38f1ecc39****
-	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	// The IDs of the jobs that do not exist.
-	NonExistIds *QueryFpShotJobListResponseBodyNonExistIds `json:"NonExistIds,omitempty" xml:"NonExistIds,omitempty" type:"Struct"`
+	NextPageToken *string                                    `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	NonExistIds   *QueryFpShotJobListResponseBodyNonExistIds `json:"NonExistIds,omitempty" xml:"NonExistIds,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -131,88 +129,20 @@ func (s *QueryFpShotJobListResponseBodyFpShotJobList) Validate() error {
 }
 
 type QueryFpShotJobListResponseBodyFpShotJobListFpShotJob struct {
-	// The error code returned if the job fails.
-	//
-	// example:
-	//
-	// InvalidParameter.UUIDFormatInvalid
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The time when the job was created.
-	//
-	// example:
-	//
-	// 2017-01-10T12:00:00Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The length of the input file.
-	//
-	// Unit: seconds.
-	//
-	// example:
-	//
-	// 5
-	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The ID of the uploaded file.
-	//
-	// example:
-	//
-	// ebb51ee30f0b49aba959823fa991****
-	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The time when the job was complete.
-	//
-	// example:
-	//
-	// 0
-	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The configurations of the job.
+	Code         *string                                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	CreationTime *string                                                           `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Duration     *int32                                                            `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileId       *string                                                           `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	FinishTime   *string                                                           `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
 	FpShotConfig *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotConfig `json:"FpShotConfig,omitempty" xml:"FpShotConfig,omitempty" type:"Struct"`
-	// The results of the media fingerprint analysis job.
 	FpShotResult *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResult `json:"FpShotResult,omitempty" xml:"FpShotResult,omitempty" type:"Struct"`
-	// The ID of the job.
-	//
-	// example:
-	//
-	// 88c6ca184c0e47098a5b665e2a12****
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The information about the job input.
-	//
-	// example:
-	//
-	// {"Bucket":"oss-test","Location":"oss-cn-beijing","Object":"test.mp4"}
-	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The information about the job input.
-	InputFile *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobInputFile `json:"InputFile,omitempty" xml:"InputFile,omitempty" type:"Struct"`
-	// The error message returned if the job fails. This parameter is not returned if the job is successful.
-	//
-	// example:
-	//
-	// The parameter \\"Id\\" is invalid.A uuid must:1)be comprised of chracters[a-f],numbers[0-9];2)be 32 characters long
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the MPS queue to which the analysis job is submitted.
-	//
-	// example:
-	//
-	// 88c6ca184c0e47098a5b665e2a12****
-	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The status of the job. Valid values:
-	//
-	// 	- **Queuing**: The job is waiting in the queue.
-	//
-	// 	- **Analysing**: The job is in progress.
-	//
-	// 	- **Success**: The job is successful.
-	//
-	// 	- **Fail**: The job fails.
-	//
-	// example:
-	//
-	// Success
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The custom data.
-	//
-	// example:
-	//
-	// testid-001
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Id           *string                                                           `json:"Id,omitempty" xml:"Id,omitempty"`
+	Input        *string                                                           `json:"Input,omitempty" xml:"Input,omitempty"`
+	InputFile    *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobInputFile    `json:"InputFile,omitempty" xml:"InputFile,omitempty" type:"Struct"`
+	Message      *string                                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	PipelineId   *string                                                           `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	State        *string                                                           `json:"State,omitempty" xml:"State,omitempty"`
+	UserData     *string                                                           `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s QueryFpShotJobListResponseBodyFpShotJobListFpShotJob) String() string {
@@ -369,30 +299,9 @@ func (s *QueryFpShotJobListResponseBodyFpShotJobListFpShotJob) Validate() error 
 }
 
 type QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotConfig struct {
-	// The ID of the media fingerprint library.
-	//
-	// example:
-	//
-	// 2288c6ca184c0e47098a5b665e2a12****
-	FpDBId *string `json:"FpDBId,omitempty" xml:"FpDBId,omitempty"`
-	// The unique primary key of the video.
-	//
-	// example:
-	//
-	// 3ca84a39a9024f19853b21be9cf9****
+	FpDBId     *string `json:"FpDBId,omitempty" xml:"FpDBId,omitempty"`
 	PrimaryKey *string `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
-	// The storage type. Valid values:
-	//
-	// 	- **nosave**: The fingerprints of the job input are not saved to the media fingerprint library.
-	//
-	// 	- **save**: The fingerprints of the job input are saved to the media fingerprint library only if the job input is not duplicated with media content in the media fingerprint library.
-	//
-	// 	- **forcesave**: The fingerprints of the job input are forcibly saved to the media fingerprint library.
-	//
-	// example:
-	//
-	// save
-	SaveType *string `json:"SaveType,omitempty" xml:"SaveType,omitempty"`
+	SaveType   *string `json:"SaveType,omitempty" xml:"SaveType,omitempty"`
 }
 
 func (s QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotConfig) String() string {
@@ -435,12 +344,9 @@ func (s *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotConfig) Valid
 }
 
 type QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResult struct {
-	// The audio fingerprint analysis results.
 	AudioFpShots *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFpShots `json:"AudioFpShots,omitempty" xml:"AudioFpShots,omitempty" type:"Struct"`
-	// The video fingerprint analysis results.
-	FpShots *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShots `json:"FpShots,omitempty" xml:"FpShots,omitempty" type:"Struct"`
-	// The text fingerprint analysis results.
-	TextFpShots *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultTextFpShots `json:"TextFpShots,omitempty" xml:"TextFpShots,omitempty" type:"Struct"`
+	FpShots      *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShots      `json:"FpShots,omitempty" xml:"FpShots,omitempty" type:"Struct"`
+	TextFpShots  *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultTextFpShots  `json:"TextFpShots,omitempty" xml:"TextFpShots,omitempty" type:"Struct"`
 }
 
 func (s QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResult) String() string {
@@ -532,20 +438,9 @@ func (s *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFp
 }
 
 type QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFpShotsFpShot struct {
-	// The audio files that have similar fingerprints to the input audio in the audio fingerprint library.
 	FpShotSlices *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFpShotsFpShotFpShotSlices `json:"FpShotSlices,omitempty" xml:"FpShotSlices,omitempty" type:"Struct"`
-	// The unique primary key of the input audio.
-	//
-	// example:
-	//
-	// 498ac941373341599c4777c8d884****
-	PrimaryKey *string `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
-	// The overall similarity of the input audio against audio files that have similar fingerprints to the input audio in the audio fingerprint library.
-	//
-	// example:
-	//
-	// 0
-	Similarity *string `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
+	PrimaryKey   *string                                                                                         `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	Similarity   *string                                                                                         `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
 }
 
 func (s QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFpShotsFpShot) String() string {
@@ -627,16 +522,9 @@ func (s *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFp
 }
 
 type QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFpShotsFpShotFpShotSlicesFpShotSlice struct {
-	// The start point in time and duration of the similar audio clip in the audio file that has similar fingerprints to the input audio in the audio fingerprint library.
 	Duplication *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFpShotsFpShotFpShotSlicesFpShotSliceDuplication `json:"Duplication,omitempty" xml:"Duplication,omitempty" type:"Struct"`
-	// The start point in time and duration of the similar audio clip in the input audio.
-	Input *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFpShotsFpShotFpShotSlicesFpShotSliceInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	// The similarity of the input audio against the audio file that has similar fingerprints to the input audio in the audio fingerprint library.
-	//
-	// example:
-	//
-	// 0
-	Similarity *string `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
+	Input       *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFpShotsFpShotFpShotSlicesFpShotSliceInput       `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	Similarity  *string                                                                                                               `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
 }
 
 func (s QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFpShotsFpShotFpShotSlicesFpShotSlice) String() string {
@@ -689,18 +577,8 @@ func (s *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFp
 }
 
 type QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFpShotsFpShotFpShotSlicesFpShotSliceDuplication struct {
-	// The duration of the similar audio clip in the audio file that has similar fingerprints to the input audio in the audio fingerprint library.
-	//
-	// example:
-	//
-	// 3
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The start point in time of the similar audio clip in the audio file that has similar fingerprints to the input audio in the audio fingerprint library.
-	//
-	// example:
-	//
-	// 0
-	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
+	Start    *string `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFpShotsFpShotFpShotSlicesFpShotSliceDuplication) String() string {
@@ -734,18 +612,8 @@ func (s *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFp
 }
 
 type QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFpShotsFpShotFpShotSlicesFpShotSliceInput struct {
-	// The duration of the similar audio clip in the input audio.
-	//
-	// example:
-	//
-	// 5
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The start point in time of the similar audio clip in the input audio.
-	//
-	// example:
-	//
-	// 0
-	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
+	Start    *string `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFpShotsFpShotFpShotSlicesFpShotSliceInput) String() string {
@@ -813,22 +681,9 @@ func (s *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShots
 }
 
 type QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShotsFpShot struct {
-	// The video files that have similar fingerprints to the input video in the video fingerprint library.
 	FpShotSlices *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShotsFpShotFpShotSlices `json:"FpShotSlices,omitempty" xml:"FpShotSlices,omitempty" type:"Struct"`
-	// The unique primary key of the input video.
-	//
-	// example:
-	//
-	// 498ac941373341599c4777c8d884****
-	PrimaryKey *string `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
-	// The overall similarity of the input video against video files that have similar fingerprints to the input video in the video fingerprint library.
-	//
-	// >  The overall similarity is the average value of the similarities of the input video clips with the clips of the video that has a similar fingerprint. If multiple video files that have similar fingerprints to the input video exist in the video fingerprint library, the similarities of the input video against multiple similar video clips are returned.
-	//
-	// example:
-	//
-	// 0.8914769887924194
-	Similarity *string `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
+	PrimaryKey   *string                                                                                    `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	Similarity   *string                                                                                    `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
 }
 
 func (s QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShotsFpShot) String() string {
@@ -910,16 +765,9 @@ func (s *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShots
 }
 
 type QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShotsFpShotFpShotSlicesFpShotSlice struct {
-	// The start point in time and duration of the similar video clip in the video file that has similar fingerprints to the input video in the video fingerprint library.
 	Duplication *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShotsFpShotFpShotSlicesFpShotSliceDuplication `json:"Duplication,omitempty" xml:"Duplication,omitempty" type:"Struct"`
-	// The start time and duration of the similar video clip in the input video.
-	Input *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShotsFpShotFpShotSlicesFpShotSliceInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	// The similarity of the input video clip against the video file that has similar fingerprints to the input video in the video fingerprint library.
-	//
-	// example:
-	//
-	// 0
-	Similarity *string `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
+	Input       *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShotsFpShotFpShotSlicesFpShotSliceInput       `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	Similarity  *string                                                                                                          `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
 }
 
 func (s QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShotsFpShotFpShotSlicesFpShotSlice) String() string {
@@ -972,18 +820,8 @@ func (s *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShots
 }
 
 type QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShotsFpShotFpShotSlicesFpShotSliceDuplication struct {
-	// The duration of the similar video clip in the video file that has similar fingerprints to the input video in the video fingerprint library.
-	//
-	// example:
-	//
-	// 48
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The start point in time of the similar video clip in the video file that has similar fingerprints to the input video in the video fingerprint library.
-	//
-	// example:
-	//
-	// 1260
-	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
+	Start    *string `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShotsFpShotFpShotSlicesFpShotSliceDuplication) String() string {
@@ -1017,18 +855,8 @@ func (s *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShots
 }
 
 type QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShotsFpShotFpShotSlicesFpShotSliceInput struct {
-	// The duration of the similar video clip in the input video.
-	//
-	// example:
-	//
-	// 48
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The start point in time of the similar video clip in the input video.
-	//
-	// example:
-	//
-	// 46
-	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
+	Start    *string `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShotsFpShotFpShotSlicesFpShotSliceInput) String() string {
@@ -1096,19 +924,8 @@ func (s *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultTextFpS
 }
 
 type QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultTextFpShotsTextFpShot struct {
-	// The unique primary key of the input text.
-	//
-	// example:
-	//
-	// 3e34ac649945b53a1b0f863ce030****
-	PrimaryKey *string `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
-	// The similarity of the input text against text snippets that have similar fingerprints to the input text in the text fingerprint library.
-	//
-	// example:
-	//
-	// 1.0
-	Similarity *string `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
-	// The text snippets that have similar fingerprints to the input text in the text fingerprint library.
+	PrimaryKey       *string                                                                                                `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	Similarity       *string                                                                                                `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
 	TextFpShotSlices *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultTextFpShotsTextFpShotTextFpShotSlices `json:"TextFpShotSlices,omitempty" xml:"TextFpShotSlices,omitempty" type:"Struct"`
 }
 
@@ -1191,26 +1008,10 @@ func (s *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultTextFpS
 }
 
 type QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultTextFpShotsTextFpShotTextFpShotSlicesTextFpShotSlice struct {
-	// The text snippet that has similar fingerprints to the input text in the text fingerprint library.
-	//
-	// example:
-	//
-	// It\\"s snowy today.
-	DuplicationText *string `json:"DuplicationText,omitempty" xml:"DuplicationText,omitempty"`
-	// The start point in time and duration of the similar text snippet in the input text.
-	InputFragment *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultTextFpShotsTextFpShotTextFpShotSlicesTextFpShotSliceInputFragment `json:"InputFragment,omitempty" xml:"InputFragment,omitempty" type:"Struct"`
-	// The input text for text fingerprint analysis.
-	//
-	// example:
-	//
-	// It\\"s snowy today.
-	InputText *string `json:"InputText,omitempty" xml:"InputText,omitempty"`
-	// The similarity of the input text against the text snippet that has similar fingerprints to the input text in the text fingerprint library.
-	//
-	// example:
-	//
-	// 1.0
-	Similarity *string `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
+	DuplicationText *string                                                                                                                            `json:"DuplicationText,omitempty" xml:"DuplicationText,omitempty"`
+	InputFragment   *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultTextFpShotsTextFpShotTextFpShotSlicesTextFpShotSliceInputFragment `json:"InputFragment,omitempty" xml:"InputFragment,omitempty" type:"Struct"`
+	InputText       *string                                                                                                                            `json:"InputText,omitempty" xml:"InputText,omitempty"`
+	Similarity      *string                                                                                                                            `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
 }
 
 func (s QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultTextFpShotsTextFpShotTextFpShotSlicesTextFpShotSlice) String() string {
@@ -1267,18 +1068,8 @@ func (s *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultTextFpS
 }
 
 type QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultTextFpShotsTextFpShotTextFpShotSlicesTextFpShotSliceInputFragment struct {
-	// The duration of the similar text snippet in the input text.
-	//
-	// example:
-	//
-	// 3
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The start time of the similar text snippet in the input text.
-	//
-	// example:
-	//
-	// 0
-	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
+	Start    *string `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultTextFpShotsTextFpShotTextFpShotSlicesTextFpShotSliceInputFragment) String() string {
@@ -1312,24 +1103,9 @@ func (s *QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultTextFpS
 }
 
 type QueryFpShotJobListResponseBodyFpShotJobListFpShotJobInputFile struct {
-	// The OSS bucket in which the job input resides.
-	//
-	// example:
-	//
-	// oss-test
-	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The OSS region in which the job input resides.
-	//
-	// example:
-	//
-	// oss-cn-beijing
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The Object Storage Service (OSS) object that is used as the job input.
-	//
-	// example:
-	//
-	// test.mp4
-	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
 }
 
 func (s QueryFpShotJobListResponseBodyFpShotJobListFpShotJobInputFile) String() string {

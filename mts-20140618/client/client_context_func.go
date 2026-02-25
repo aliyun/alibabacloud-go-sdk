@@ -409,7 +409,7 @@ func (client *Client) AddPipelineWithContext(ctx context.Context, request *AddPi
 
 // Summary:
 //
-// 添加labelVersion、knowledgeConfig配置
+// Adds an analysis template of a smart tagging job.
 //
 // @param request - AddSmarttagTemplateRequest
 //
@@ -761,7 +761,7 @@ func (client *Client) BindInputBucketWithContext(ctx context.Context, request *B
 
 // Summary:
 //
-// Binds an output media bucket to the media library.
+// Binds an output media bucket. Media buckets are Object Storage Service (OSS) buckets that are used by ApsaraVideo Media Processing (MPS) to store media resources. After you bind an OSS bucket to MPS as an input media bucket or output media bucket, MPS has the permissions to listen to the messages of the bucket, which indicate that files are uploaded to the bucket. This way, MPS can trigger workflows and return files that are processed. You can all this operation to bind an output media bucket to the media library.
 //
 // Description:
 //
@@ -897,6 +897,10 @@ func (client *Client) CancelJobWithContext(ctx context.Context, request *CancelJ
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a custom entity in a custom library.
+//
 // @param request - CreateCustomEntityRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -965,6 +969,10 @@ func (client *Client) CreateCustomEntityWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a custom library.
+//
 // @param request - CreateCustomGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1317,6 +1325,10 @@ func (client *Client) DeleteCustomGroupWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an image of a custom entity in a custom library.
+//
 // @param request - DeleteCustomViewRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2173,6 +2185,10 @@ func (client *Client) ListCustomEntitiesWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of custom libraries.
+//
 // @param request - ListCustomGroupsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2309,6 +2325,10 @@ func (client *Client) ListCustomPersonsWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of images of an entity in a custom library.
+//
 // @param request - ListCustomViewsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2851,7 +2871,7 @@ func (client *Client) QueryAnalysisJobListWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询版权水印提取任务
+// Queries jobs for extracting copyright watermarks.
 //
 // @param request - QueryCopyrightExtractJobRequest
 //
@@ -2895,7 +2915,7 @@ func (client *Client) QueryCopyrightExtractJobWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询视频版权水印任务
+// Queries jobs for adding copyright watermarks to videos.
 //
 // @param request - QueryCopyrightJobRequest
 //
@@ -3187,6 +3207,10 @@ func (client *Client) QueryFpShotJobListWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a smart production job.
+//
 // @param request - QueryIProductionJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3937,7 +3961,7 @@ func (client *Client) QueryPipelineListWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询智能标签任务
+// Queries a smart tagging job.
 //
 // @param request - QuerySmarttagJobRequest
 //
@@ -4229,7 +4253,7 @@ func (client *Client) QueryTemplateListWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询视频溯源水印ab流任务
+// Queries jobs for adding tracing watermarks to AB video streams.
 //
 // @param request - QueryTraceAbJobRequest
 //
@@ -4277,7 +4301,7 @@ func (client *Client) QueryTraceAbJobWithContext(ctx context.Context, request *Q
 
 // Summary:
 //
-// 查询溯源水印提取任务
+// Queries jobs for extracting tracing watermarks.
 //
 // @param request - QueryTraceExtractJobRequest
 //
@@ -4321,7 +4345,7 @@ func (client *Client) QueryTraceExtractJobWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询视频溯源水印m3u8任务
+// Queries jobs for adding tracing watermarks to M3U8 videos.
 //
 // @param request - QueryTraceM3u8JobRequest
 //
@@ -4531,7 +4555,7 @@ func (client *Client) RegisterCustomFaceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 注册自定义实体项
+// Registers an image of a custom entity.
 //
 // @param request - RegisterCustomViewRequest
 //
@@ -4993,7 +5017,7 @@ func (client *Client) SubmitAnalysisJobWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 提交版权水印提取任务
+// Submits a job for extracting a copyright watermark.
 //
 // @param request - SubmitCopyrightExtractJobRequest
 //
@@ -5053,7 +5077,7 @@ func (client *Client) SubmitCopyrightExtractJobWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 提交视频版权水印
+// Submits a job for adding a copyright watermark to a video.
 //
 // @param request - SubmitCopyrightJobRequest
 //
@@ -5395,6 +5419,10 @@ func (client *Client) SubmitFpShotJobWithContext(ctx context.Context, request *S
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a smart production job.
+//
 // Description:
 //
 //	  Jobs that are submitted by calling this operation run in an asynchronous manner. After a job is added to the ApsaraVideo Media Processing (MPS) queue, the job is scheduled to run. You can call the [QueryIProductionJob](https://help.aliyun.com/document_detail/170217.html) operation or configure a callback to query the job result.
@@ -5495,7 +5523,7 @@ func (client *Client) SubmitIProductionJobWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 提交图片版权水印任务
+// Generates a transparent image watermark.
 //
 // @param request - SubmitImageCopyrightRequest
 //
@@ -5827,6 +5855,10 @@ func (client *Client) SubmitMediaInfoJobWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a smart tagging job.
+//
 // @param request - SubmitSmarttagJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6009,7 +6041,7 @@ func (client *Client) SubmitSnapshotJobWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 提交视频溯源水印ab流任务
+// Submits a job for adding a tracing watermark to an AB video stream.
 //
 // @param request - SubmitTraceAbJobRequest
 //
@@ -6085,7 +6117,7 @@ func (client *Client) SubmitTraceAbJobWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 提交溯源水印提取任务
+// Submits a job for extracting a tracing watermark.
 //
 // @param request - SubmitTraceExtractJobRequest
 //
@@ -6145,7 +6177,7 @@ func (client *Client) SubmitTraceExtractJobWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 提交视频溯源水印m3u8文件任务
+// Submits a job for adding a tracing watermark to an M3U8 video.
 //
 // @param request - SubmitTraceM3u8JobRequest
 //
@@ -6205,7 +6237,7 @@ func (client *Client) SubmitTraceM3u8JobWithContext(ctx context.Context, request
 
 // Summary:
 //
-// The description of the figure. The description can be up to 512 characters in length.
+// Adds tags to a custom figure library or a figure.
 //
 // Description:
 //
@@ -6365,9 +6397,9 @@ func (client *Client) UnbindInputBucketWithContext(ctx context.Context, request 
 //
 // You can call this operation to unbind an output media bucket from the media library based on the name of the output media bucket.
 //
-// ## QPS limit
+// \\## QPS limit
 //
-// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limits](https://www.alibabacloud.com/help/en/apsaravideo-for-media-processing/latest/qps-limit).
+// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limits]\\(https://www.alibabacloud.com/help/en/apsaravideo-for-media-processing/latest/qps-limit).
 //
 // Description:
 //
@@ -7057,7 +7089,7 @@ func (client *Client) UpdatePipelineWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// 更新智能标签模板接口支持cpv
+// Updates the analysis template of a smart tagging job.
 //
 // @param request - UpdateSmarttagTemplateRequest
 //

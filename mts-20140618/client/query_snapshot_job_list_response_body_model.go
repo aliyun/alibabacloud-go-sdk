@@ -25,20 +25,14 @@ type QuerySnapshotJobListResponseBody struct {
 	// example:
 	//
 	// b11c171cced04565b1f38f1ecc39****
-	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	// The OSS object that is generated as the output file of the tiling job.
+	NextPageToken          *string                                                 `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	NonExistSnapshotJobIds *QuerySnapshotJobListResponseBodyNonExistSnapshotJobIds `json:"NonExistSnapshotJobIds,omitempty" xml:"NonExistSnapshotJobIds,omitempty" type:"Struct"`
 	// The ID of the snapshot job.
 	//
 	// example:
 	//
 	// 34BCAB31-2833-43A7-9FBD-B34302AB23EQ
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The distance between images.
-	//
-	// 	- Default value: **0**.
-	//
-	// 	- Unit: pixel.
+	RequestId       *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SnapshotJobList *QuerySnapshotJobListResponseBodySnapshotJobList `json:"SnapshotJobList,omitempty" xml:"SnapshotJobList,omitempty" type:"Struct"`
 }
 
@@ -160,71 +154,18 @@ func (s *QuerySnapshotJobListResponseBodySnapshotJobList) Validate() error {
 }
 
 type QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJob struct {
-	// You can call this operation to query up to 10 snapshot jobs at a time.
-	//
-	//
-	// ## Limits on QPS
-	//
-	// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](https://www.alibabacloud.com/help/en/apsaravideo-for-media-processing/latest/qps-limit).
-	//
-	// example:
-	//
-	// InvalidParameter
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 1
-	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The stride of a single image.
-	//
-	// example:
-	//
-	// 2021-06-30T12:34:29Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The OSS output file of the tiling job.
-	//
-	// example:
-	//
-	// cc6cbef8e8d5481ca536f5d2a466****
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The number of snapshots that are contained in the tiled image.
-	Input *QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	// The OSS object that is used as the input file.
+	Code             *string                                                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Count            *string                                                                     `json:"Count,omitempty" xml:"Count,omitempty"`
+	CreationTime     *string                                                                     `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Id               *string                                                                     `json:"Id,omitempty" xml:"Id,omitempty"`
+	Input            *QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobInput            `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
 	MNSMessageResult *QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobMNSMessageResult `json:"MNSMessageResult,omitempty" xml:"MNSMessageResult,omitempty" type:"Struct"`
-	// The ARN of the specified RAM role. Format: acs:ram::$accountID:role/$roleName.
-	//
-	// example:
-	//
-	// The resource operated InputFile is bad
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The start time for taking snapshots. Unit: milliseconds.
-	//
-	// example:
-	//
-	// b11c171cced04565b1f38f1ecc39****
-	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The height of a single image. The default value is the height of the output snapshot.
-	SnapshotConfig *QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfig `json:"SnapshotConfig,omitempty" xml:"SnapshotConfig,omitempty" type:"Struct"`
-	// The information about the job input.
-	//
-	// example:
-	//
-	// Snapshoting
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The snapshot job IDs that do not exist. This parameter is not returned if all specified snapshot jobs are found.
-	//
-	// example:
-	//
-	// 7
-	TileCount *string `json:"TileCount,omitempty" xml:"TileCount,omitempty"`
-	// The token that is used to retrieve the next page of the query results. The value is a 32-bit UUID. If the returned query results cannot be displayed within one page, this parameter is returned. The value of this parameter is updated for each query.
-	//
-	// example:
-	//
-	// testid-001
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Message          *string                                                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	PipelineId       *string                                                                     `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	SnapshotConfig   *QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfig   `json:"SnapshotConfig,omitempty" xml:"SnapshotConfig,omitempty" type:"Struct"`
+	State            *string                                                                     `json:"State,omitempty" xml:"State,omitempty"`
+	TileCount        *string                                                                     `json:"TileCount,omitempty" xml:"TileCount,omitempty"`
+	UserData         *string                                                                     `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJob) String() string {
@@ -363,30 +304,10 @@ func (s *QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJob) Validate() 
 }
 
 type QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobInput struct {
-	// The ID of the snapshot job.
-	//
-	// example:
-	//
-	// example
-	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The ID of the MPS queue to which the snapshot job was submitted.
-	//
-	// example:
-	//
-	// example-location
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The error code returned when the job fails. This parameter is not returned if the job is successfully processed.
-	//
-	// example:
-	//
-	// example.flv
-	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	// The custom data.
-	//
-	// example:
-	//
-	// acs:ram::1:role/testrole
-	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 }
 
 func (s QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobInput) String() string {
@@ -438,24 +359,9 @@ func (s *QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobInput) Valida
 }
 
 type QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobMNSMessageResult struct {
-	// The number of snapshots that were taken.
-	//
-	// example:
-	//
-	// InvalidParameter
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The OSS bucket that stores the input file.
-	//
-	// example:
-	//
-	// The resource operated InputFile is bad
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The ID of the region in which the input OSS bucket is located.
-	//
-	// example:
-	//
-	// 799454621135656C7F815F198A76****
-	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	MessageId    *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 }
 
 func (s QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobMNSMessageResult) String() string {
@@ -498,61 +404,16 @@ func (s *QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobMNSMessageRes
 }
 
 type QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfig struct {
-	// The ID of the region in which the output OSS bucket is located.
-	//
-	// example:
-	//
-	// intra
-	FrameType *string `json:"FrameType,omitempty" xml:"FrameType,omitempty"`
-	// The number of snapshots to take. If the Num parameter is set in the request, snapshots are taken at intervals.
-	//
-	// example:
-	//
-	// 8
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The OSS object that is generated as the output file of the snapshot job.
-	//
-	// example:
-	//
-	// 10
-	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The status of the snapshot job.
-	//
-	// - **Submitted**: The job was submitted.
-	//
-	// - **Snapshoting**: The job is being processed.
-	//
-	// - **Success**: The job was successfully processed.
-	//
-	// - **Fail**: The job failed.
-	//
-	// example:
-	//
-	// 10
-	Num *string `json:"Num,omitempty" xml:"Num,omitempty"`
-	// The OSS output file of the tiling job.
-	OutputFile *QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfigOutputFile `json:"OutputFile,omitempty" xml:"OutputFile,omitempty" type:"Struct"`
-	// The margin width of the tiled image.
-	//
-	// 	- Default value: **0**.
-	//
-	// 	- Unit: pixel.
-	TileOut *QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfigTileOut `json:"TileOut,omitempty" xml:"TileOut,omitempty" type:"Struct"`
-	// The error message returned when the job fails. This parameter is not returned if the job is successfully processed.
+	FrameType      *string                                                                                 `json:"FrameType,omitempty" xml:"FrameType,omitempty"`
+	Height         *string                                                                                 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Interval       *string                                                                                 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Num            *string                                                                                 `json:"Num,omitempty" xml:"Num,omitempty"`
+	OutputFile     *QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfigOutputFile     `json:"OutputFile,omitempty" xml:"OutputFile,omitempty" type:"Struct"`
+	TileOut        *QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfigTileOut        `json:"TileOut,omitempty" xml:"TileOut,omitempty" type:"Struct"`
 	TileOutputFile *QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfigTileOutputFile `json:"TileOutputFile,omitempty" xml:"TileOutputFile,omitempty" type:"Struct"`
-	// The width of a single image. The default value is the width of the output snapshot.
-	//
-	// example:
-	//
-	// 4
-	Time      *string                                                                            `json:"Time,omitempty" xml:"Time,omitempty"`
-	TimeArray *QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfigTimeArray `json:"TimeArray,omitempty" xml:"TimeArray,omitempty" type:"Struct"`
-	// The OSS bucket that stores the output file.
-	//
-	// example:
-	//
-	// 8
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Time           *string                                                                                 `json:"Time,omitempty" xml:"Time,omitempty"`
+	TimeArray      *QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfigTimeArray      `json:"TimeArray,omitempty" xml:"TimeArray,omitempty" type:"Struct"`
+	Width          *string                                                                                 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfig) String() string {
@@ -678,30 +539,10 @@ func (s *QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfi
 }
 
 type QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfigOutputFile struct {
-	// The OSS bucket that stores the output file.
-	//
-	// example:
-	//
-	// example
-	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The ID of the region in which the output OSS bucket is located.
-	//
-	// example:
-	//
-	// example-location
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The OSS object that is generated as the output file of the tiling job.
-	//
-	// example:
-	//
-	// example.png
-	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	// The ARN of the specified RAM role. Format: acs:ram::$accountID:role/$roleName.
-	//
-	// example:
-	//
-	// acs:ram::1:role/testrole
-	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 }
 
 func (s QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfigOutputFile) String() string {
@@ -753,72 +594,15 @@ func (s *QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfi
 }
 
 type QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfigTileOut struct {
-	// The interval for taking snapshots.
-	//
-	// 	- If this Interval parameter is specified in the request, snapshots are taken at intervals. The value must be greater than 0.
-	//
-	// 	- Unit: seconds.
-	//
-	// 	- Default value: **10**.
-	//
-	// example:
-	//
-	// 8
-	CellHeight *string `json:"CellHeight,omitempty" xml:"CellHeight,omitempty"`
-	// The number of rows that the tiled image can contain. Default value: **10**.
-	//
-	// example:
-	//
-	// 3
-	CellSelStep *string `json:"CellSelStep,omitempty" xml:"CellSelStep,omitempty"`
-	// The type of the snapshot. Valid values:
-	//
-	// 	- **normal**: normal frames.
-	//
-	// 	- **intra**: I-frames.
-	//
-	// 	- Default value: **intra**.
-	//
-	// example:
-	//
-	// 8
-	CellWidth *string `json:"CellWidth,omitempty" xml:"CellWidth,omitempty"`
-	// Indicates whether the single images are retained. Default value: **true**.
-	//
-	// example:
-	//
-	// black
-	Color *string `json:"Color,omitempty" xml:"Color,omitempty"`
-	// The height of the output snapshot.
-	//
-	// example:
-	//
-	// 10
-	Columns *string `json:"Columns,omitempty" xml:"Columns,omitempty"`
-	// The Object Storage Service (OSS) output file of the snapshot job.
-	//
-	// example:
-	//
-	// false
+	CellHeight    *string `json:"CellHeight,omitempty" xml:"CellHeight,omitempty"`
+	CellSelStep   *string `json:"CellSelStep,omitempty" xml:"CellSelStep,omitempty"`
+	CellWidth     *string `json:"CellWidth,omitempty" xml:"CellWidth,omitempty"`
+	Color         *string `json:"Color,omitempty" xml:"Color,omitempty"`
+	Columns       *string `json:"Columns,omitempty" xml:"Columns,omitempty"`
 	IsKeepCellPic *string `json:"IsKeepCellPic,omitempty" xml:"IsKeepCellPic,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the specified RAM role. Format: acs:ram::$accountID:role/$roleName.
-	//
-	// example:
-	//
-	// 10
-	Lines *string `json:"Lines,omitempty" xml:"Lines,omitempty"`
-	// The width of the output snapshot.
-	//
-	// example:
-	//
-	// 0
-	Margin *string `json:"Margin,omitempty" xml:"Margin,omitempty"`
-	// The number of columns that the tiled image can contain. Default value: **10**.
-	//
-	// example:
-	//
-	// 0
-	Padding *string `json:"Padding,omitempty" xml:"Padding,omitempty"`
+	Lines         *string `json:"Lines,omitempty" xml:"Lines,omitempty"`
+	Margin        *string `json:"Margin,omitempty" xml:"Margin,omitempty"`
+	Padding       *string `json:"Padding,omitempty" xml:"Padding,omitempty"`
 }
 
 func (s QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfigTileOut) String() string {
@@ -915,30 +699,10 @@ func (s *QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfi
 }
 
 type QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfigTileOutputFile struct {
-	// The error code returned when the job fails. This parameter is not returned if the job is successfully processed.
-	//
-	// example:
-	//
-	// example
-	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The error message returned when the job fails. This parameter is not returned if the job is successfully processed.
-	//
-	// example:
-	//
-	// example-location
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The ID of the message. This parameter is not returned if the job fails.
-	//
-	// example:
-	//
-	// example.png
-	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	// The message sent by MNS to notify the user of the job result.
-	//
-	// example:
-	//
-	// acs:ram::1:role/testrole
-	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 }
 
 func (s QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfigTileOutputFile) String() string {

@@ -138,17 +138,8 @@ func (s *ListCustomEntitiesResponseBodyCustomEntities) Validate() error {
 }
 
 type ListCustomEntitiesResponseBodyCustomEntitiesCustomEntity struct {
-	// example:
-	//
-	// 1
-	CustomEntityId *string `json:"CustomEntityId,omitempty" xml:"CustomEntityId,omitempty"`
-	// example:
-	//
-	// { "finegrainName":"example" }
+	CustomEntityId   *string `json:"CustomEntityId,omitempty" xml:"CustomEntityId,omitempty"`
 	CustomEntityInfo *string `json:"CustomEntityInfo,omitempty" xml:"CustomEntityInfo,omitempty"`
-	// example:
-	//
-	// exampleName
 	CustomEntityName *string `json:"CustomEntityName,omitempty" xml:"CustomEntityName,omitempty"`
 }
 

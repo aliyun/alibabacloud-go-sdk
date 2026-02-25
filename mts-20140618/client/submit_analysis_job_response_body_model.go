@@ -127,8 +127,7 @@ type SubmitAnalysisJobResponseBodyAnalysisJob struct {
 	// example:
 	//
 	// Success
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The matched preset templates.
+	State        *string                                               `json:"State,omitempty" xml:"State,omitempty"`
 	TemplateList *SubmitAnalysisJobResponseBodyAnalysisJobTemplateList `json:"TemplateList,omitempty" xml:"TemplateList,omitempty" type:"Struct"`
 	// The custom data.
 	//
@@ -696,38 +695,14 @@ func (s *SubmitAnalysisJobResponseBodyAnalysisJobTemplateList) Validate() error 
 }
 
 type SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplate struct {
-	// The audio codec configurations.
-	Audio *SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateAudio `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	// The container format configurations.
-	Container *SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	// The ID of the transcoding template.
-	//
-	// example:
-	//
-	// S00000000-00****
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The transmuxing configurations.
-	MuxConfig *SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
-	// The name of the template.
-	//
-	// example:
-	//
-	// FLV-UD
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The status of the template.
-	//
-	// 	- **Normal**: The template is normal.
-	//
-	// 	- **Deleted**: The template is deleted.
-	//
-	// example:
-	//
-	// Normal
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The general transcoding configurations.
+	Audio       *SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateAudio       `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
+	Container   *SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateContainer   `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
+	Id          *string                                                                  `json:"Id,omitempty" xml:"Id,omitempty"`
+	MuxConfig   *SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateMuxConfig   `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
+	Name        *string                                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	State       *string                                                                  `json:"State,omitempty" xml:"State,omitempty"`
 	TransConfig *SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateTransConfig `json:"TransConfig,omitempty" xml:"TransConfig,omitempty" type:"Struct"`
-	// The video codec configurations.
-	Video *SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+	Video       *SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateVideo       `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
 func (s SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplate) String() string {
@@ -840,49 +815,11 @@ func (s *SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplate) Validate(
 }
 
 type SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateAudio struct {
-	// The audio bitrate of the output file.
-	//
-	// 	- Unit: Kbit/s.
-	//
-	// 	- Default value: **128**.
-	//
-	// example:
-	//
-	// 8
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The number of sound channels. Default value: **2**.
-	//
-	// example:
-	//
-	// 1
-	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// The audio codec format. Default value: **acc**.
-	//
-	// example:
-	//
-	// mp3
-	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	// The codec profile of the audio. Valid values if the **Codec*	- parameter is set to **aac**: aac_low, aac_he, aac_he_v2, aac_ld, and aac_eld.
-	//
-	// example:
-	//
-	// aac_low
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// The level of quality control on the audio.
-	//
-	// example:
-	//
-	// 10
-	Qscale *string `json:"Qscale,omitempty" xml:"Qscale,omitempty"`
-	// The sampling rate.
-	//
-	// 	- Unit: Hz.
-	//
-	// 	- Default value: **44100**.
-	//
-	// example:
-	//
-	// 32000
+	Bitrate    *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Channels   *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	Codec      *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Profile    *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Qscale     *string `json:"Qscale,omitempty" xml:"Qscale,omitempty"`
 	Samplerate *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
 }
 
@@ -953,11 +890,6 @@ func (s *SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateAudio) Vali
 }
 
 type SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateContainer struct {
-	// The container format.
-	//
-	// example:
-	//
-	// flv
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
 }
 
@@ -983,9 +915,7 @@ func (s *SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateContainer) 
 }
 
 type SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateMuxConfig struct {
-	// The transmuxing configurations for the GIF format.
-	Gif *SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateMuxConfigGif `json:"Gif,omitempty" xml:"Gif,omitempty" type:"Struct"`
-	// The segment configurations.
+	Gif     *SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateMuxConfigGif     `json:"Gif,omitempty" xml:"Gif,omitempty" type:"Struct"`
 	Segment *SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateMuxConfigSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
 }
 
@@ -1030,18 +960,8 @@ func (s *SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateMuxConfig) 
 }
 
 type SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateMuxConfigGif struct {
-	// The interval between two consecutive loops for the GIF format. Unit: 0.01s. For example, a value of 500 indicates 5 seconds.
-	//
-	// example:
-	//
-	// 0
 	FinalDelay *string `json:"FinalDelay,omitempty" xml:"FinalDelay,omitempty"`
-	// The number of loops for the GIF or WebP format. Default value: 0.
-	//
-	// example:
-	//
-	// 0
-	Loop *string `json:"Loop,omitempty" xml:"Loop,omitempty"`
+	Loop       *string `json:"Loop,omitempty" xml:"Loop,omitempty"`
 }
 
 func (s SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateMuxConfigGif) String() string {
@@ -1075,11 +995,6 @@ func (s *SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateMuxConfigGi
 }
 
 type SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateMuxConfigSegment struct {
-	// The length of the segment. Unit: seconds.
-	//
-	// example:
-	//
-	// 60
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 }
 
@@ -1105,11 +1020,6 @@ func (s *SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateMuxConfigSe
 }
 
 type SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateTransConfig struct {
-	// The transcoding mode. Valid values: onepass, twopass, and CBR. Default value: **onepass**.
-	//
-	// example:
-	//
-	// onepass
 	TransMode *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
 }
 
@@ -1135,130 +1045,22 @@ func (s *SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateTransConfig
 }
 
 type SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateVideo struct {
-	// The average bitrate of the video. Unit: Kbit/s.
-	//
-	// example:
-	//
-	// 10
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The average bitrate range of the video.
+	Bitrate    *string                                                                      `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
 	BitrateBnd *SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateVideoBitrateBnd `json:"BitrateBnd,omitempty" xml:"BitrateBnd,omitempty" type:"Struct"`
-	// The size of the buffer.
-	//
-	// 	- Unit: KB.
-	//
-	// 	- Default value: **6000**.
-	//
-	// example:
-	//
-	// 5000
-	Bufsize *string `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
-	// The video codec. Default value: **H.264**.
-	//
-	// example:
-	//
-	// H.264
-	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	// The constant rate factor.
-	//
-	// 	- Default value if the Codec parameter is set to H.264: **23**. Default value if the Codec parameter is set to H.265: **26**.
-	//
-	// 	- If this parameter is returned, the setting of the Bitrate parameter is invalid.
-	//
-	// example:
-	//
-	// 27
-	Crf *string `json:"Crf,omitempty" xml:"Crf,omitempty"`
-	// The strength of the independent noise reduction algorithm.
-	//
-	// example:
-	//
-	// 5
-	Degrain *string `json:"Degrain,omitempty" xml:"Degrain,omitempty"`
-	// The frame rate.
-	//
-	// 	- The value is 60 if the frame rate of the input video exceeds 60.
-	//
-	// 	- Default value: the frame rate of the input video.
-	//
-	// example:
-	//
-	// 60
-	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// The maximum number of frames between two keyframes. Default value: **250**.
-	//
-	// example:
-	//
-	// 1
-	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
-	// The height of the video.
-	//
-	// 	- Unit: pixel.
-	//
-	// 	- Default value: the height of the input video.
-	//
-	// example:
-	//
-	// 1880
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The maximum bitrate of the video. Unit: Kbit/s.
-	//
-	// example:
-	//
-	// 10
-	Maxrate *string `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
-	// The pixel format for video color encoding. Valid values: standard pixel formats such as yuv420p and yuvj420p.
-	//
-	// example:
-	//
-	// yuvj420p
-	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// The preset video algorithm. Valid values: veryfast, fast, medium, slow, and slower. Default value: **medium**.
-	//
-	// example:
-	//
-	// medium
-	Preset *string `json:"Preset,omitempty" xml:"Preset,omitempty"`
-	// The codec profile. Valid values:
-	//
-	// 	- **baseline**: applicable to mobile devices.
-	//
-	// 	- **main**: applicable to standard-definition devices.
-	//
-	// 	- **high**: applicable to high-definition devices.
-	//
-	// 	- Default value: **high**.
-	//
-	// example:
-	//
-	// baseline
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// The level of quality control on the video.
-	//
-	// example:
-	//
-	// 15
-	Qscale *string `json:"Qscale,omitempty" xml:"Qscale,omitempty"`
-	// The scan mode. Valid values:
-	//
-	// 	- **interlaced**
-	//
-	// 	- **progressive**
-	//
-	// example:
-	//
-	// progressive
-	ScanMode *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
-	// The width of the video.
-	//
-	// 	- Unit: pixel.
-	//
-	// 	- Default value: the width of the input video.
-	//
-	// example:
-	//
-	// 1990
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Bufsize    *string                                                                      `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
+	Codec      *string                                                                      `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Crf        *string                                                                      `json:"Crf,omitempty" xml:"Crf,omitempty"`
+	Degrain    *string                                                                      `json:"Degrain,omitempty" xml:"Degrain,omitempty"`
+	Fps        *string                                                                      `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Gop        *string                                                                      `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	Height     *string                                                                      `json:"Height,omitempty" xml:"Height,omitempty"`
+	Maxrate    *string                                                                      `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
+	PixFmt     *string                                                                      `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Preset     *string                                                                      `json:"Preset,omitempty" xml:"Preset,omitempty"`
+	Profile    *string                                                                      `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Qscale     *string                                                                      `json:"Qscale,omitempty" xml:"Qscale,omitempty"`
+	ScanMode   *string                                                                      `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
+	Width      *string                                                                      `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateVideo) String() string {
@@ -1423,17 +1225,7 @@ func (s *SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateVideo) Vali
 }
 
 type SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateVideoBitrateBnd struct {
-	// The upper limit of the total bitrate. Unit: Kbit/s.
-	//
-	// example:
-	//
-	// 20
 	Max *string `json:"Max,omitempty" xml:"Max,omitempty"`
-	// The lower limit of the total bitrate. Unit: Kbit/s.
-	//
-	// example:
-	//
-	// 10
 	Min *string `json:"Min,omitempty" xml:"Min,omitempty"`
 }
 

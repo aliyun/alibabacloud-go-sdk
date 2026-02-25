@@ -18,15 +18,13 @@ type iQueryWaterMarkTemplateListResponseBody interface {
 }
 
 type QueryWaterMarkTemplateListResponseBody struct {
-	// The IDs of the templates that do not exist.
 	NonExistWids *QueryWaterMarkTemplateListResponseBodyNonExistWids `json:"NonExistWids,omitempty" xml:"NonExistWids,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
 	//
 	// 17079AF5-6276-51A9-B755-D26594C93F3C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the watermark templates.
+	RequestId             *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	WaterMarkTemplateList *QueryWaterMarkTemplateListResponseBodyWaterMarkTemplateList `json:"WaterMarkTemplateList,omitempty" xml:"WaterMarkTemplateList,omitempty" type:"Struct"`
 }
 
@@ -139,90 +137,17 @@ func (s *QueryWaterMarkTemplateListResponseBodyWaterMarkTemplateList) Validate()
 }
 
 type QueryWaterMarkTemplateListResponseBodyWaterMarkTemplateListWaterMarkTemplate struct {
-	// The horizontal offset. Unit: pixel.
-	//
-	// example:
-	//
-	// 100
-	Dx *string `json:"Dx,omitempty" xml:"Dx,omitempty"`
-	// The vertical offset. Unit: pixel.
-	//
-	// example:
-	//
-	// 100
-	Dy *string `json:"Dy,omitempty" xml:"Dy,omitempty"`
-	// The height of the watermark image. Unit: pixel.
-	//
-	// example:
-	//
-	// 8
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The ID of the watermark template.
-	//
-	// example:
-	//
-	// 3780bd69b2b74540bc7b1096f564****
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the watermark template.
-	//
-	// example:
-	//
-	// example-watermark
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The values of the Height, Width, Dx, and Dy parameters relative to the reference edges. If the values of the Height, Width, Dx, and Dy parameters are decimals between 0 and 1, the values are calculated by referring to the following edges in sequence:
-	//
-	// 	- **Width**: the width edge.
-	//
-	// 	- **Height**: the height edge.
-	//
-	// 	- **Long**: the long edge.
-	//
-	// 	- **Short**: the short edge.
+	Dx         *string                                                                                 `json:"Dx,omitempty" xml:"Dx,omitempty"`
+	Dy         *string                                                                                 `json:"Dy,omitempty" xml:"Dy,omitempty"`
+	Height     *string                                                                                 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Id         *string                                                                                 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name       *string                                                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
 	RatioRefer *QueryWaterMarkTemplateListResponseBodyWaterMarkTemplateListWaterMarkTemplateRatioRefer `json:"RatioRefer,omitempty" xml:"RatioRefer,omitempty" type:"Struct"`
-	// The position of the watermark. Valid values:
-	//
-	// 	- **TopRight**: the upper-right corner.
-	//
-	// 	- **TopLeft**: the upper-left corner.
-	//
-	// 	- **BottomRight**: the lower-right corner.
-	//
-	// 	- **BottomLeft**: the lower-left corner.
-	//
-	// example:
-	//
-	// TopRight
-	ReferPos *string `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
-	// The status of the watermark template. Valid values: Valid values:
-	//
-	// 	- **Normal**: The watermark template is normal.
-	//
-	// 	- **Deleted**: The watermark template is deleted.
-	//
-	// example:
-	//
-	// Normal
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The timeline of the watermark.
-	Timeline *QueryWaterMarkTemplateListResponseBodyWaterMarkTemplateListWaterMarkTemplateTimeline `json:"Timeline,omitempty" xml:"Timeline,omitempty" type:"Struct"`
-	// The type of the watermark. Valid values:
-	//
-	// 	- Image: an image watermark.
-	//
-	// 	- Text: a text watermark.
-	//
-	// > Only watermarks of the **Image*	- type are supported.
-	//
-	// example:
-	//
-	// Image
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The width of the watermark image. Unit: pixel.
-	//
-	// example:
-	//
-	// 8
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	ReferPos   *string                                                                                 `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
+	State      *string                                                                                 `json:"State,omitempty" xml:"State,omitempty"`
+	Timeline   *QueryWaterMarkTemplateListResponseBodyWaterMarkTemplateListWaterMarkTemplateTimeline   `json:"Timeline,omitempty" xml:"Timeline,omitempty" type:"Struct"`
+	Type       *string                                                                                 `json:"Type,omitempty" xml:"Type,omitempty"`
+	Width      *string                                                                                 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s QueryWaterMarkTemplateListResponseBodyWaterMarkTemplateListWaterMarkTemplate) String() string {
@@ -347,46 +272,10 @@ func (s *QueryWaterMarkTemplateListResponseBodyWaterMarkTemplateListWaterMarkTem
 }
 
 type QueryWaterMarkTemplateListResponseBodyWaterMarkTemplateListWaterMarkTemplateRatioRefer struct {
-	// The horizontal offset of the watermark relative to the output video image. Default value: **0**. The default value indicates no offset. The value can be an integer or a decimal.
-	//
-	// 	- **Integer**: the vertical offset. This indicates the absolute position. Unit: pixel.
-	//
-	// 	- **Decimal**: the ratio of the horizontal offset to the width of the output video. The ratio varies based on the size of the video. Four decimal places are supported, such as 0.9999. More decimal places are discarded.
-	//
-	// example:
-	//
-	// 0.51
-	Dx *string `json:"Dx,omitempty" xml:"Dx,omitempty"`
-	// The vertical offset of the watermark relative to the output video image. Default value: **0**. The default value indicates no offset. The value can be an integer or a decimal.
-	//
-	// 	- **Integer**: the vertical offset. This indicates the absolute position. Unit: pixel.
-	//
-	// 	- **Decimal**: the ratio of the vertical offset to the height of the output video. The ratio varies based on the size of the video. Four decimal places are supported, such as 0.9999. More decimal places are discarded.
-	//
-	// example:
-	//
-	// 0.4
-	Dy *string `json:"Dy,omitempty" xml:"Dy,omitempty"`
-	// The height of the watermark image in the output video. The value can be an integer or a decimal.
-	//
-	// 	- **Integer**: the height of the watermark image. This indicates the absolute position. Unit: pixel.
-	//
-	// 	- **Decimal**: the ratio of the height of the watermark image to the height of the output video. The ratio varies based on the size of the video. Four decimal places are supported, such as 0.9999. More decimal places are discarded.
-	//
-	// example:
-	//
-	// 0.33
+	Dx     *string `json:"Dx,omitempty" xml:"Dx,omitempty"`
+	Dy     *string `json:"Dy,omitempty" xml:"Dy,omitempty"`
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The width of the watermark image in the output video. The value can be an integer or a decimal.
-	//
-	// 	- **Integer**: the width of the watermark image. This indicates the absolute position. Unit: pixel.
-	//
-	// 	- **Decimal**: the ratio of the width of the watermark image to the width of the output video. The ratio varies based on the size of the video. Four decimal places are supported, such as 0.9999. More decimal places are discarded.
-	//
-	// example:
-	//
-	// 0.36
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Width  *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s QueryWaterMarkTemplateListResponseBodyWaterMarkTemplateListWaterMarkTemplateRatioRefer) String() string {
@@ -438,22 +327,8 @@ func (s *QueryWaterMarkTemplateListResponseBodyWaterMarkTemplateListWaterMarkTem
 }
 
 type QueryWaterMarkTemplateListResponseBodyWaterMarkTemplateListWaterMarkTemplateTimeline struct {
-	// The display duration of the watermark. Default value: **ToEND**. The default value indicates that the watermark is displayed until the video ends.
-	//
-	// example:
-	//
-	// 10
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The beginning of the time range during which the watermark is displayed.
-	//
-	// 	- Unit: seconds.
-	//
-	// 	- Default value: **0**.
-	//
-	// example:
-	//
-	// 0
-	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
+	Start    *string `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s QueryWaterMarkTemplateListResponseBodyWaterMarkTemplateListWaterMarkTemplateTimeline) String() string {

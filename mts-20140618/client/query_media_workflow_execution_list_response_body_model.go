@@ -18,10 +18,8 @@ type iQueryMediaWorkflowExecutionListResponseBody interface {
 }
 
 type QueryMediaWorkflowExecutionListResponseBody struct {
-	// The details of the media workflows.
 	MediaWorkflowExecutionList *QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionList `json:"MediaWorkflowExecutionList,omitempty" xml:"MediaWorkflowExecutionList,omitempty" type:"Struct"`
-	// The IDs of the execution instances that do not exist.
-	NonExistRunIds *QueryMediaWorkflowExecutionListResponseBodyNonExistRunIds `json:"NonExistRunIds,omitempty" xml:"NonExistRunIds,omitempty" type:"Struct"`
+	NonExistRunIds             *QueryMediaWorkflowExecutionListResponseBodyNonExistRunIds             `json:"NonExistRunIds,omitempty" xml:"NonExistRunIds,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -114,54 +112,14 @@ func (s *QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionList) 
 }
 
 type QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMediaWorkflowExecution struct {
-	// The methods that are called in the media workflow.
-	ActivityList *QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMediaWorkflowExecutionActivityList `json:"ActivityList,omitempty" xml:"ActivityList,omitempty" type:"Struct"`
-	// The time when the media workflow was created.
-	//
-	// example:
-	//
-	// 016-04-01T06:53:43Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The input data of the media workflow.
-	Input *QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMediaWorkflowExecutionInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	// The ID of the media asset. A media file contains all the information about a media workflow.
-	//
-	// example:
-	//
-	// 512046582a924698a41e0f8b0d2b****
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The ID of the media workflow.
-	//
-	// example:
-	//
-	// 93ab850b4f6f44eab54b6e91****81d4
-	MediaWorkflowId *string `json:"MediaWorkflowId,omitempty" xml:"MediaWorkflowId,omitempty"`
-	// The name of the media workflow.
-	//
-	// example:
-	//
-	// example-mediaworkflow-****
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the execution instance.
-	//
-	// example:
-	//
-	// 48e33690ac19445488c706924321****
-	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
-	// The status of the media workflow. Valid values:
-	//
-	// 	- Running: The media workflow is running.
-	//
-	// 	- Completed: The media workflow is complete.
-	//
-	// > Completed only indicates that the media workflow is complete. View the status of each method in the workflow, such as the transcode and snapshot methods, to check whether the method is called.
-	//
-	// 	- Fail: The media workflow fails.
-	//
-	// example:
-	//
-	// Completed
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	ActivityList    *QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMediaWorkflowExecutionActivityList `json:"ActivityList,omitempty" xml:"ActivityList,omitempty" type:"Struct"`
+	CreationTime    *string                                                                                                  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Input           *QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMediaWorkflowExecutionInput        `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	MediaId         *string                                                                                                  `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaWorkflowId *string                                                                                                  `json:"MediaWorkflowId,omitempty" xml:"MediaWorkflowId,omitempty"`
+	Name            *string                                                                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	RunId           *string                                                                                                  `json:"RunId,omitempty" xml:"RunId,omitempty"`
+	State           *string                                                                                                  `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMediaWorkflowExecution) String() string {
@@ -293,76 +251,15 @@ func (s *QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMe
 }
 
 type QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMediaWorkflowExecutionActivityListActivity struct {
-	// The error code.
-	//
-	// 	- This parameter is returned only if **Fail*	- is returned for the State parameter.
-	//
-	// 	- This parameter is not returned if the method status is **Success**.
-	//
-	// example:
-	//
-	// InvalidParameter.ResourceContentBad
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The time when the method ends.
-	//
-	// example:
-	//
-	// 2016-04-01T06:53:44Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The IDs of the jobs that are generated when the methods are called, such as the job IDs for the analysis, transcode, and snapshot methods.
-	//
-	// example:
-	//
-	// 2376030d9d0849399cd20e20f4f3****
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The message sent by Message Service (MNS) to notify the user of the job result.
+	Code             *string                                                                                                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	EndTime          *string                                                                                                                          `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	JobId            *string                                                                                                                          `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	MNSMessageResult *QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMediaWorkflowExecutionActivityListActivityMNSMessageResult `json:"MNSMessageResult,omitempty" xml:"MNSMessageResult,omitempty" type:"Struct"`
-	// The error message.
-	//
-	// 	- This parameter is returned only if **Fail*	- is returned for the State parameter.
-	//
-	// 	- This parameter is not returned if the method status is **Success**.
-	//
-	// example:
-	//
-	// The resource operated InputFile is bad
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The name of the method.
-	//
-	// > The name of each method in a media workflow is unique.
-	//
-	// example:
-	//
-	// Start
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the method is called.
-	//
-	// example:
-	//
-	// 2016-04-01T06:53:44Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the workflow method. Valid values:
-	//
-	// 	- Running: The method is being called.
-	//
-	// 	- Success: The method is called.
-	//
-	// 	- Fail: The method failed to be called.
-	//
-	// 	- Skipped: The method is skipped.
-	//
-	// > For example, after the analysis is complete, the transcode method is called and high-definition and standard-definition transcoding jobs are created. The system determines whether to run the jobs based on the analysis result. If the resolution of the input video is low, the high-definition transcoding job may be skipped.
-	//
-	// example:
-	//
-	// Running
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The methods that are supported in the media workflow. Valid values: Start, Snapshot, Transcode, Analysis, and Report. For more information, see [Methods supported for media workflows](https://help.aliyun.com/document_detail/68494.html).
-	//
-	// example:
-	//
-	// Start
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Message          *string                                                                                                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	Name             *string                                                                                                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	StartTime        *string                                                                                                                          `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	State            *string                                                                                                                          `json:"State,omitempty" xml:"State,omitempty"`
+	Type             *string                                                                                                                          `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMediaWorkflowExecutionActivityListActivity) String() string {
@@ -464,24 +361,9 @@ func (s *QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMe
 }
 
 type QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMediaWorkflowExecutionActivityListActivityMNSMessageResult struct {
-	// The error code returned if the MNS message fails to be sent. This parameter is not returned if the MNS message is sent.
-	//
-	// example:
-	//
-	// The Topic/Queue config is empty, not send message
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the MNS message fails to be sent. This parameter is not returned if the MNS message is sent.
-	//
-	// example:
-	//
-	// MessageConfigEmpty
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The ID of the message that indicates the MNS message is sent. This parameter is not returned if the MNS message fails to be sent.
-	//
-	// example:
-	//
-	// 4f3bc83233de4e2f81c7dade443e****
-	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	MessageId    *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 }
 
 func (s QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMediaWorkflowExecutionActivityListActivityMNSMessageResult) String() string {
@@ -524,14 +406,8 @@ func (s *QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMe
 }
 
 type QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMediaWorkflowExecutionInput struct {
-	// The input file of the media workflow.
 	InputFile *QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMediaWorkflowExecutionInputInputFile `json:"InputFile,omitempty" xml:"InputFile,omitempty" type:"Struct"`
-	// The user-defined data.
-	//
-	// example:
-	//
-	// example data ****
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserData  *string                                                                                                    `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMediaWorkflowExecutionInput) String() string {
@@ -570,20 +446,9 @@ func (s *QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMe
 }
 
 type QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMediaWorkflowExecutionInputInputFile struct {
-	// The name of the OSS bucket in which the input file is stored.
-	//
-	// example:
-	//
-	// example-bucket-****
-	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The ID of the OSS region in which the input file resides.
-	//
-	// example:
-	//
-	// mps-cn-shanghai
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The name of the OSS object that is used as the input file.
-	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
 }
 
 func (s QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMediaWorkflowExecutionInputInputFile) String() string {

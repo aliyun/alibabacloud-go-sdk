@@ -18,9 +18,7 @@ type iQueryMediaInfoJobListResponseBody interface {
 }
 
 type QueryMediaInfoJobListResponseBody struct {
-	// The details of each returned media information analysis job.
-	MediaInfoJobList *QueryMediaInfoJobListResponseBodyMediaInfoJobList `json:"MediaInfoJobList,omitempty" xml:"MediaInfoJobList,omitempty" type:"Struct"`
-	// Nonexistent media information analysis jobs.
+	MediaInfoJobList        *QueryMediaInfoJobListResponseBodyMediaInfoJobList        `json:"MediaInfoJobList,omitempty" xml:"MediaInfoJobList,omitempty" type:"Struct"`
 	NonExistMediaInfoJobIds *QueryMediaInfoJobListResponseBodyNonExistMediaInfoJobIds `json:"NonExistMediaInfoJobIds,omitempty" xml:"NonExistMediaInfoJobIds,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -114,66 +112,17 @@ func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobList) Validate() error {
 }
 
 type QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJob struct {
-	// Indicates whether the job is in asynchronous mode.
-	//
-	// example:
-	//
-	// true
-	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
-	// The error code returned if the job fails.
-	//
-	// example:
-	//
-	// InvalidParameter.JsonObjectFormatInvalid
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The time when the job was created.
-	//
-	// example:
-	//
-	// 2014-01-10T12:00:00Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The information about the job input.
-	Input *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	// The ID of the job.
-	//
-	// example:
-	//
-	// 23ca1d184c0e4341e5b665e2a12****
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The message sent by MNS to notify you of the job result.
+	Async            *bool                                                                          `json:"Async,omitempty" xml:"Async,omitempty"`
+	Code             *string                                                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	CreationTime     *string                                                                        `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Input            *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobInput            `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	JobId            *string                                                                        `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	MNSMessageResult *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobMNSMessageResult `json:"MNSMessageResult,omitempty" xml:"MNSMessageResult,omitempty" type:"Struct"`
-	// The error message returned if the job fails.
-	//
-	// example:
-	//
-	// The parameter ”*” does not conform to the JSON Object specification
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the MPS queue.
-	//
-	// example:
-	//
-	// 88c6ca184c0e432bbf5b665e2a15****
-	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The information about the input file. For more information, see [AliyunProperties](https://help.aliyun.com/document_detail/29251.html).
-	Properties *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
-	// The status of the job.
-	//
-	// 	- **Analyzing**: The job is being run.
-	//
-	// 	- **Success**: The job is successful.
-	//
-	// 	- **Fail**: The job fails.
-	//
-	// example:
-	//
-	// Success
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The custom data.
-	//
-	// example:
-	//
-	// testid-001
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Message          *string                                                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	PipelineId       *string                                                                        `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	Properties       *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobProperties       `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
+	State            *string                                                                        `json:"State,omitempty" xml:"State,omitempty"`
+	UserData         *string                                                                        `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJob) String() string {
@@ -303,24 +252,9 @@ func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJob) Validate
 }
 
 type QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobInput struct {
-	// The OSS bucket in which the input file is stored.
-	//
-	// example:
-	//
-	// example-bucket
-	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The ID of the OSS region.
-	//
-	// example:
-	//
-	// oss-cn-hangzhou
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The name of the Object Storage Service (OSS) object that is used as the input file.
-	//
-	// example:
-	//
-	// example.mp4
-	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
 }
 
 func (s QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobInput) String() string {
@@ -363,24 +297,9 @@ func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobInput) Val
 }
 
 type QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobMNSMessageResult struct {
-	// The error code returned if the job failed. This parameter is not returned if the job is successful.
-	//
-	// example:
-	//
-	// InvalidParameter.JsonObjectFormatInvalid
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the job failed. This parameter is not returned if the job is successful.
-	//
-	// example:
-	//
-	// The parameter \\"Input\\" does not conform to the JSON Object specification
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The ID of the message returned if the job was successful. This parameter is not returned if the job fails.
-	//
-	// example:
-	//
-	// 123
-	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	MessageId    *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 }
 
 func (s QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobMNSMessageResult) String() string {
@@ -423,53 +342,16 @@ func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobMNSMessage
 }
 
 type QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobProperties struct {
-	// The bitrate of the media file.
-	//
-	// example:
-	//
-	// 1630.045
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The duration of the media file.
-	//
-	// example:
-	//
-	// 17.226000
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The format of the input media file.
-	//
-	// example:
-	//
-	// QuickTime/MOV
-	FileFormat *string `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
-	FileMd5    *string `json:"FileMd5,omitempty" xml:"FileMd5,omitempty"`
-	// The size of the image file.
-	//
-	// example:
-	//
-	// 3509895
-	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The format information.
-	Format *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesFormat `json:"Format,omitempty" xml:"Format,omitempty" type:"Struct"`
-	// The frame rate of the media file.
-	//
-	// example:
-	//
-	// 25
-	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// The height of the video. Unit: pixel.
-	//
-	// example:
-	//
-	// 720
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The media streams that are contained in the input media file.
-	Streams *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreams `json:"Streams,omitempty" xml:"Streams,omitempty" type:"Struct"`
-	// The width of the video. Unit: pixel.
-	//
-	// example:
-	//
-	// 1280
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Bitrate    *string                                                                         `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Duration   *string                                                                         `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileFormat *string                                                                         `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
+	FileMd5    *string                                                                         `json:"FileMd5,omitempty" xml:"FileMd5,omitempty"`
+	FileSize   *string                                                                         `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	Format     *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesFormat  `json:"Format,omitempty" xml:"Format,omitempty" type:"Struct"`
+	Fps        *string                                                                         `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Height     *string                                                                         `json:"Height,omitempty" xml:"Height,omitempty"`
+	Streams    *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreams `json:"Streams,omitempty" xml:"Streams,omitempty" type:"Struct"`
+	Width      *string                                                                         `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobProperties) String() string {
@@ -585,54 +467,15 @@ func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobProperties
 }
 
 type QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesFormat struct {
-	// The total bitrate.
-	//
-	// example:
-	//
-	// 1630.045
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The total duration.
-	//
-	// example:
-	//
-	// 17.226000
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The full name of the container format.
-	//
-	// example:
-	//
-	// QuickTime/MOV
-	FormatLongName *string `json:"FormatLongName,omitempty" xml:"FormatLongName,omitempty"`
-	// The short name of the container format.
-	//
-	// example:
-	//
-	// mov
-	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// The total number of program streams.
-	//
-	// example:
-	//
-	// 2
-	NumPrograms *string `json:"NumPrograms,omitempty" xml:"NumPrograms,omitempty"`
-	// The total number of media streams.
-	//
-	// example:
-	//
-	// 1
-	NumStreams *string `json:"NumStreams,omitempty" xml:"NumStreams,omitempty"`
-	// The size of the image file.
-	//
-	// example:
-	//
-	// 3509895
-	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The start time.
-	//
-	// example:
-	//
-	// 0.042000
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Bitrate        *string                `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Duration       *string                `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FormatLongName *string                `json:"FormatLongName,omitempty" xml:"FormatLongName,omitempty"`
+	FormatName     *string                `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	NumPrograms    *string                `json:"NumPrograms,omitempty" xml:"NumPrograms,omitempty"`
+	NumStreams     *string                `json:"NumStreams,omitempty" xml:"NumStreams,omitempty"`
+	Size           *string                `json:"Size,omitempty" xml:"Size,omitempty"`
+	StartTime      *string                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Tags           map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesFormat) String() string {
@@ -675,6 +518,10 @@ func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobProperties
 	return s.StartTime
 }
 
+func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesFormat) GetTags() map[string]interface{} {
+	return s.Tags
+}
+
 func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesFormat) SetBitrate(v string) *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesFormat {
 	s.Bitrate = &v
 	return s
@@ -715,17 +562,19 @@ func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobProperties
 	return s
 }
 
+func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesFormat) SetTags(v map[string]interface{}) *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesFormat {
+	s.Tags = v
+	return s
+}
+
 func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesFormat) Validate() error {
 	return dara.Validate(s)
 }
 
 type QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreams struct {
-	// The information about each audio stream.
-	AudioStreamList *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsAudioStreamList `json:"AudioStreamList,omitempty" xml:"AudioStreamList,omitempty" type:"Struct"`
-	// The information about each subtitle stream.
+	AudioStreamList    *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsAudioStreamList    `json:"AudioStreamList,omitempty" xml:"AudioStreamList,omitempty" type:"Struct"`
 	SubtitleStreamList *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsSubtitleStreamList `json:"SubtitleStreamList,omitempty" xml:"SubtitleStreamList,omitempty" type:"Struct"`
-	// The information about each video stream.
-	VideoStreamList *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamList `json:"VideoStreamList,omitempty" xml:"VideoStreamList,omitempty" type:"Struct"`
+	VideoStreamList    *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamList    `json:"VideoStreamList,omitempty" xml:"VideoStreamList,omitempty" type:"Struct"`
 }
 
 func (s QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreams) String() string {
@@ -817,113 +666,23 @@ func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobProperties
 }
 
 type QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsAudioStreamListAudioStream struct {
-	// The bitrate of the media file.
-	//
-	// example:
-	//
-	// 1536000
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The number of sound channels.
-	//
-	// example:
-	//
-	// 5.1(side)
-	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
-	// The output layout of the sound channels.
-	//
-	// example:
-	//
-	// 2
-	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// The full name of the encoding format.
-	//
-	// example:
-	//
-	// DCA (DTS Coherent Acoustics)
-	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// The short name of the encoding format. Valid values:
-	//
-	// 	- **acc**
-	//
-	// 	- **mp3**
-	//
-	// 	- **mp4**
-	//
-	// 	- **ogg**
-	//
-	// 	- **flac**
-	//
-	// example:
-	//
-	// acc
-	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// The tag of the encoding format.
-	//
-	// example:
-	//
-	// 0x0000
-	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// The tag string of the encoding format.
-	//
-	// example:
-	//
-	// [0][0][0][0]
-	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	// The codec time base.
-	//
-	// example:
-	//
-	// 1/48000
-	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// The duration of the media file.
-	//
-	// example:
-	//
-	// 123
+	Bitrate            *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	ChannelLayout      *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	Channels           *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	CodecLongName      *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	CodecName          *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CodecTag           *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	CodecTagString     *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	CodecTimeBase      *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
 	Duration           *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	DurationInaccurate *string `json:"DurationInaccurate,omitempty" xml:"DurationInaccurate,omitempty"`
-	// The sequence number of the audio stream. The value indicates the position of the audio stream in all audio streams.
-	//
-	// example:
-	//
-	// 1
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The language. For more information, see [FFmpeg documentation](https://www.ffmpeg.org/ffmpeg-all.html?spm=a2c4g.11186623.2.66.243851cd2SntfN#Metadata).
-	//
-	// example:
-	//
-	// eng
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The total number of frames.
-	//
-	// example:
-	//
-	// 123
-	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	// The sampling format.
-	//
-	// example:
-	//
-	// fltp
-	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
-	// The sampling rate.
-	//
-	// example:
-	//
-	// 48000
-	Samplerate *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	// The start time.
-	//
-	// example:
-	//
-	// 0.042000
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The time base.
-	//
-	// example:
-	//
-	// 1/1000
-	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	Index              *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang               *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	NumFrames          *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	SampleFmt          *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	Samplerate         *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+	StartTime          *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timebase           *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
 }
 
 func (s QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsAudioStreamListAudioStream) String() string {
@@ -1126,70 +885,16 @@ func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobProperties
 }
 
 type QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsSubtitleStreamListSubtitleStream struct {
-	// The full name of the encoding format.
-	//
-	// example:
-	//
-	// ASS (Advanced SSA) subtitle
-	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// The short name of the encoding format. Valid values:
-	//
-	// 	- **srt**
-	//
-	// 	- **ass**
-	//
-	// example:
-	//
-	// ass
-	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// The tag of the encoding format.
-	//
-	// example:
-	//
-	// 0x0000
-	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// The tag string of the encoding format.
-	//
-	// example:
-	//
-	// [0][0][0][0]
+	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	// The codec time base.
-	//
-	// example:
-	//
-	// 0/1
-	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// The duration. Unit: seconds.
-	//
-	// example:
-	//
-	// 1370.116000
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The sequence number of the subtitle stream. The value indicates the position of the subtitle stream in all subtitle streams.
-	//
-	// example:
-	//
-	// 3
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The language.
-	//
-	// example:
-	//
-	// eng
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The start time.
-	//
-	// example:
-	//
-	// 0.000000
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The time base.
-	//
-	// example:
-	//
-	// 1/1000
-	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timebase       *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
 }
 
 func (s QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsSubtitleStreamListSubtitleStream) String() string {
@@ -1329,173 +1034,35 @@ func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobProperties
 }
 
 type QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStream struct {
-	// The average frame rate.
-	//
-	// example:
-	//
-	// 24000/1001
-	AvgFPS *string `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
-	// The bitrate of the media file.
-	//
-	// example:
-	//
-	// 30541090
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The full name of the encoding format.
-	//
-	// example:
-	//
-	// H.264/AVC/MPEG-4 AVC/MPEG-4 part 10
-	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// The short name of the encoding format. Valid values:
-	//
-	// 	- **h264**
-	//
-	// 	- **h265**
-	//
-	// 	- **gif**
-	//
-	// 	- **webp**
-	//
-	// example:
-	//
-	// h264
-	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// The tag of the encoding format.
-	//
-	// example:
-	//
-	// 0x0000
-	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// The tag string of the encoding format.
-	//
-	// example:
-	//
-	// [0][0][0][0]
-	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	// The codec time base.
-	//
-	// example:
-	//
-	// 1001/48000
-	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// The level of color reconstruction.
-	//
-	// example:
-	//
-	// 700
-	ColorPrimaries *string `json:"ColorPrimaries,omitempty" xml:"ColorPrimaries,omitempty"`
-	// The color range.
-	//
-	// example:
-	//
-	// 700
-	ColorRange *string `json:"ColorRange,omitempty" xml:"ColorRange,omitempty"`
-	// The color channel.
-	//
-	// example:
-	//
-	// R255 G83 B170
-	ColorTransfer *string `json:"ColorTransfer,omitempty" xml:"ColorTransfer,omitempty"`
-	// The display aspect ratio (DAR).
-	//
-	// example:
-	//
-	// 16:9
-	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
-	// The duration of the media file.
-	//
-	// example:
-	//
-	// 100
-	Duration           *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	DurationInaccurate *string `json:"DurationInaccurate,omitempty" xml:"DurationInaccurate,omitempty"`
-	// The frame rate of the media file.
-	//
-	// example:
-	//
-	// 25
-	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// Indicates whether the video stream contains bidirectional frames (B-frames). A value of 1 indicates that the video stream contains B-frames. A value of 0 indicates that the video stream does not contain B-frames.
-	//
-	// example:
-	//
-	// 0
-	HasBFrames *string `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
-	// The height of the video stream in pixels.
-	//
-	// example:
-	//
-	// 1080
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The sequence number of the video stream. The value indicates the position of the video stream in all video streams.
-	//
-	// example:
-	//
-	// 1
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The language.
-	//
-	// example:
-	//
-	// eng
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The codec level.
-	//
-	// example:
-	//
-	// 41
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The network bandwidth that is consumed.
-	NetworkCost *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStreamNetworkCost `json:"NetworkCost,omitempty" xml:"NetworkCost,omitempty" type:"Struct"`
-	// The total number of frames.
-	//
-	// example:
-	//
-	// 100
-	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	// The pixel format.
-	//
-	// example:
-	//
-	// yuv420p
-	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// The codec profile.
-	//
-	// example:
-	//
-	// High
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// The rotation angle of the video.
-	//
-	// example:
-	//
-	// 180
-	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	// The sample aspect ratio (SAR).
-	//
-	// example:
-	//
-	// 1:1
-	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
-	// The start time.
-	//
-	// example:
-	//
-	// 0.042000
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The time base.
-	//
-	// example:
-	//
-	// 1/1000
-	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
-	// The width of the video in pixels.
-	//
-	// example:
-	//
-	// 1920
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	AvgFPS             *string                                                                                                              `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
+	Bitrate            *string                                                                                                              `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	CodecLongName      *string                                                                                                              `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	CodecName          *string                                                                                                              `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CodecTag           *string                                                                                                              `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	CodecTagString     *string                                                                                                              `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	CodecTimeBase      *string                                                                                                              `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	ColorPrimaries     *string                                                                                                              `json:"ColorPrimaries,omitempty" xml:"ColorPrimaries,omitempty"`
+	ColorRange         *string                                                                                                              `json:"ColorRange,omitempty" xml:"ColorRange,omitempty"`
+	ColorTransfer      *string                                                                                                              `json:"ColorTransfer,omitempty" xml:"ColorTransfer,omitempty"`
+	Dar                *string                                                                                                              `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	DolbyVision        *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStreamDolbyVision `json:"DolbyVision,omitempty" xml:"DolbyVision,omitempty" type:"Struct"`
+	Duration           *string                                                                                                              `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	DurationInaccurate *string                                                                                                              `json:"DurationInaccurate,omitempty" xml:"DurationInaccurate,omitempty"`
+	Fps                *string                                                                                                              `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	HasBFrames         *string                                                                                                              `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
+	Height             *string                                                                                                              `json:"Height,omitempty" xml:"Height,omitempty"`
+	Index              *string                                                                                                              `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang               *string                                                                                                              `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Level              *string                                                                                                              `json:"Level,omitempty" xml:"Level,omitempty"`
+	NetworkCost        *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStreamNetworkCost `json:"NetworkCost,omitempty" xml:"NetworkCost,omitempty" type:"Struct"`
+	NumFrames          *string                                                                                                              `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	PixFmt             *string                                                                                                              `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Profile            *string                                                                                                              `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Rotate             *string                                                                                                              `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	Sar                *string                                                                                                              `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	StartTime          *string                                                                                                              `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timebase           *string                                                                                                              `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	Width              *string                                                                                                              `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStream) String() string {
@@ -1548,6 +1115,10 @@ func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobProperties
 
 func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStream) GetDar() *string {
 	return s.Dar
+}
+
+func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStream) GetDolbyVision() *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStreamDolbyVision {
+	return s.DolbyVision
 }
 
 func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStream) GetDuration() *string {
@@ -1673,6 +1244,11 @@ func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobProperties
 	return s
 }
 
+func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStream) SetDolbyVision(v *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStreamDolbyVision) *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStream {
+	s.DolbyVision = v
+	return s
+}
+
 func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStream) SetDuration(v string) *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStream {
 	s.Duration = &v
 	return s
@@ -1759,6 +1335,11 @@ func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobProperties
 }
 
 func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStream) Validate() error {
+	if s.DolbyVision != nil {
+		if err := s.DolbyVision.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.NetworkCost != nil {
 		if err := s.NetworkCost.Validate(); err != nil {
 			return err
@@ -1767,25 +1348,45 @@ func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobProperties
 	return nil
 }
 
+type QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStreamDolbyVision struct {
+	Level   *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+}
+
+func (s QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStreamDolbyVision) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStreamDolbyVision) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStreamDolbyVision) GetLevel() *string {
+	return s.Level
+}
+
+func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStreamDolbyVision) GetProfile() *string {
+	return s.Profile
+}
+
+func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStreamDolbyVision) SetLevel(v string) *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStreamDolbyVision {
+	s.Level = &v
+	return s
+}
+
+func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStreamDolbyVision) SetProfile(v string) *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStreamDolbyVision {
+	s.Profile = &v
+	return s
+}
+
+func (s *QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStreamDolbyVision) Validate() error {
+	return dara.Validate(s)
+}
+
 type QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStreamNetworkCost struct {
-	// The average bitrate of the video stream.
-	//
-	// example:
-	//
-	// 300.34
-	AvgBitrate *string `json:"AvgBitrate,omitempty" xml:"AvgBitrate,omitempty"`
-	// The maximum bandwidth that is consumed.
-	//
-	// example:
-	//
-	// 10
+	AvgBitrate    *string `json:"AvgBitrate,omitempty" xml:"AvgBitrate,omitempty"`
 	CostBandwidth *string `json:"CostBandwidth,omitempty" xml:"CostBandwidth,omitempty"`
-	// The time consumed to preload the video.
-	//
-	// example:
-	//
-	// 8
-	PreloadTime *string `json:"PreloadTime,omitempty" xml:"PreloadTime,omitempty"`
+	PreloadTime   *string `json:"PreloadTime,omitempty" xml:"PreloadTime,omitempty"`
 }
 
 func (s QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamListVideoStreamNetworkCost) String() string {

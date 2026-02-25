@@ -18,10 +18,8 @@ type iQueryFpFileDeleteJobListResponseBody interface {
 }
 
 type QueryFpFileDeleteJobListResponseBody struct {
-	// The jobs of deleting media files from a media fingerprint library. For more information, see the "FpFileDeleteJob" section of the [Data types](https://help.aliyun.com/document_detail/93555.html) topic.
 	FpFileDeleteJobList *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobList `json:"FpFileDeleteJobList,omitempty" xml:"FpFileDeleteJobList,omitempty" type:"Struct"`
-	// The response parameters.
-	NonExistIds *QueryFpFileDeleteJobListResponseBodyNonExistIds `json:"NonExistIds,omitempty" xml:"NonExistIds,omitempty" type:"Struct"`
+	NonExistIds         *QueryFpFileDeleteJobListResponseBodyNonExistIds         `json:"NonExistIds,omitempty" xml:"NonExistIds,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -114,74 +112,16 @@ func (s *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobList) Validate() err
 }
 
 type QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob struct {
-	// The error code returned if the job fails. This parameter is not returned if the job is successful.
-	//
-	// example:
-	//
-	// ServiceUnavailable
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The time when the job was created.
-	//
-	// example:
-	//
-	// 2020-06-30T00:33:18Z
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the file.
-	//
-	// example:
-	//
-	// 41e6536e4f2250e2e9bf26cdea19****
-	FileIds *string `json:"FileIds,omitempty" xml:"FileIds,omitempty"`
-	// The time when the job was complete.
-	//
-	// example:
-	//
-	// 2020-06-30T00:34:02Z
-	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The ID of the media fingerprint library.
-	//
-	// example:
-	//
-	// 88c6ca184c0e47098a5b665e2a12****
-	FpDBId *string `json:"FpDBId,omitempty" xml:"FpDBId,omitempty"`
-	// The ID of the job.
-	//
-	// example:
-	//
-	// 25bacf2824614bcf9273dc0744db****
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The error message returned if the job fails. This parameter is not returned if the job is successful.
-	//
-	// example:
-	//
-	// The request has failed due to a temporary failure of the server.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the ApsaraVideo Media Processing (MPS) queue to which the job was submitted.
-	//
-	// example:
-	//
-	// fb712a6890464059b1b2ea7c8647****
-	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The status of the job. Valid values: Valid values:
-	//
-	// 	- **Queuing**: The job is waiting in the queue.
-	//
-	// 	- **Analysing**: The job is in progress.
-	//
-	// 	- **Success**: The job is successful.
-	//
-	// 	- **Fail**: The job fails.
-	//
-	// example:
-	//
-	// Success
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The user-defined data.
-	//
-	// example:
-	//
-	// example data
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	FileIds      *string `json:"FileIds,omitempty" xml:"FileIds,omitempty"`
+	FinishTime   *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	FpDBId       *string `json:"FpDBId,omitempty" xml:"FpDBId,omitempty"`
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	PipelineId   *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob) String() string {

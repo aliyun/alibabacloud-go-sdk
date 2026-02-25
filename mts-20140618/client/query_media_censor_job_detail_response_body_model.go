@@ -70,8 +70,7 @@ type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetail struct {
 	// example:
 	//
 	// InvalidParameter.ResourceNotFound
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The moderation results of thumbnails.
+	Code                    *string                                                                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	CoverImageCensorResults *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorResults `json:"CoverImageCensorResults,omitempty" xml:"CoverImageCensorResults,omitempty" type:"Struct"`
 	// The time when the job was created.
 	//
@@ -615,26 +614,10 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCens
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorResultsCoverImageCensorResult struct {
-	// The OSS bucket that stores the video thumbnail.
-	//
-	// example:
-	//
-	// bucket-out-test-****
-	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The OSS region in which the video thumbnail resides.
-	//
-	// example:
-	//
-	// oss-cn-shanghai
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The Object Storage Service (OSS) object that is used as the video thumbnail.
-	//
-	// example:
-	//
-	// test/ai/censor/v2/vme-****.jpg
-	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	// The moderation results.
-	Results *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorResultsCoverImageCensorResultResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
+	Bucket   *string                                                                                                        `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	Location *string                                                                                                        `json:"Location,omitempty" xml:"Location,omitempty"`
+	Object   *string                                                                                                        `json:"Object,omitempty" xml:"Object,omitempty"`
+	Results  *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorResultsCoverImageCensorResultResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
 }
 
 func (s QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorResultsCoverImageCensorResult) String() string {
@@ -725,127 +708,9 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCens
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorResultsCoverImageCensorResultResultsResult struct {
-	// The labels of the moderation result. Multiple labels are separated with commas (,).
-	//
-	// 	- Valid values in the pornographic content moderation scenario:
-	//
-	//     	- **normal**: normal content
-	//
-	//     	- **sexy**: sexy content
-	//
-	//     	- **porn**: pornographic content
-	//
-	// 	- Valid values in the terrorist content moderation scenario:
-	//
-	//     	- **narmal**: normal content
-	//
-	//     	- **bloody**: bloody content
-	//
-	//     	- **explosion**: explosion and smoke
-	//
-	//     	- **outfit**: special costume
-	//
-	//     	- **logo**: special logo
-	//
-	//     	- **weapon**: weapon
-	//
-	//     	- **politics**: political content
-	//
-	//     	- **violence**: violence
-	//
-	//     	- **crowd**: crowd
-	//
-	//     	- **parade**: parade
-	//
-	//     	- **carcrash**: car accident
-	//
-	//     	- **flag**: flag
-	//
-	//     	- **location**: landmark
-	//
-	//     	- **others**: other content
-	//
-	// 	- Valid values in the ad moderation scenario:
-	//
-	//     	- **normal**: normal content
-	//
-	//     	- **ad**: other ads
-	//
-	//     	- **politics**: political content in text
-	//
-	//     	- **porn**: pornographic content in text
-	//
-	//     	- **abuse**: abuse in text
-	//
-	//     	- **terrorism**: terrorist content in text
-	//
-	//     	- **contraband**: prohibited content in text
-	//
-	//     	- **spam**: spam in text
-	//
-	//     	- **npx**: illegal ads
-	//
-	//     	- **qrcode**: QR code
-	//
-	//     	- **programCode**: mini program code
-	//
-	// 	- Valid values in the live moderation scenario:
-	//
-	//     	- **normal**: normal content
-	//
-	//     	- **meaningless**: meaningless content, such as a black or white screen
-	//
-	//     	- **PIP**: picture-in-picture
-	//
-	//     	- **smoking**: smoking
-	//
-	//     	- **drivelive**: live broadcasting in a running vehicle
-	//
-	// 	- Valid values in the logo moderation scenario:
-	//
-	//     	- **normal**: normal content
-	//
-	//     	- **TV**: controlled TV station logo
-	//
-	//     	- **trademark**: trademark
-	//
-	// example:
-	//
-	// normal
-	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The score. Valid values: **0 to 100**.
-	//
-	// example:
-	//
-	// 100
-	Rate *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
-	// The moderation scenario. Valid values:
-	//
-	// 	- **porn**: pornographic content moderation
-	//
-	// 	- **terrorism**: terrorist content moderation
-	//
-	// 	- **ad**: ad violation moderation
-	//
-	// 	- **live**: undesirable scene moderation
-	//
-	// 	- **logo**: logo moderation
-	//
-	// example:
-	//
-	// porn
-	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	// The recommended subsequent operation. Valid values:
-	//
-	// 	- **pass**: The content passes the moderation.
-	//
-	// 	- **review**: The content needs to be manually reviewed again.
-	//
-	// 	- **block**: The content needs to be blocked.
-	//
-	// example:
-	//
-	// pass
+	Label      *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Rate       *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	Scene      *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
 }
 
@@ -1148,15 +1013,13 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailTitleCensorRes
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResult struct {
-	// A collection of the moderation results. The information includes the summary of various scenarios such as pornographic content and terrorist content.
 	CensorResults *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultCensorResults `json:"CensorResults,omitempty" xml:"CensorResults,omitempty" type:"Struct"`
 	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
 	// ea04afcca7cd4e80b9ece8fbb251****
-	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	// The moderation results that are sorted in ascending order by time.
+	NextPageToken  *string                                                                                    `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	VideoTimelines *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultVideoTimelines `json:"VideoTimelines,omitempty" xml:"VideoTimelines,omitempty" type:"Struct"`
 }
 
@@ -1244,127 +1107,9 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorRe
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultCensorResultsCensorResult struct {
-	// The labels of the moderation result. Multiple labels are separated with commas (,). Valid values:
-	//
-	// 	- Valid values in the pornographic content moderation scenario:
-	//
-	//     	- **porn**: pornographic content
-	//
-	//     	- **sexy**: sexy content
-	//
-	//     	- **normal**: normal content
-	//
-	// 	- Valid values in the terrorist content moderation scenario:
-	//
-	//     	- **normal**: normal content
-	//
-	//     	- **bloody**: bloody content
-	//
-	//     	- **explosion**: explosion and smoke
-	//
-	//     	- **outfit**: special costume
-	//
-	//     	- **logo**: special logo
-	//
-	//     	- **weapon**: weapon
-	//
-	//     	- **politics**: political content
-	//
-	//     	- **violence**: violence
-	//
-	//     	- **crowd**: crowd
-	//
-	//     	- **parade**: parade
-	//
-	//     	- **carcrash**: car accident
-	//
-	//     	- **flag**: flag
-	//
-	//     	- **location**: landmark
-	//
-	//     	- **others**: other content
-	//
-	// 	- Valid values in the ad moderation scenario:
-	//
-	//     	- **normal**: normal content
-	//
-	//     	- **ad**: other ads
-	//
-	//     	- **politics**: political content in text
-	//
-	//     	- **porn**: pornographic content in text
-	//
-	//     	- **abuse**: abuse in text
-	//
-	//     	- **terrorism**: terrorist content in text
-	//
-	//     	- **contraband**: prohibited content in text
-	//
-	//     	- **spam**: spam in text
-	//
-	//     	- **npx**: illegal ads
-	//
-	//     	- **qrcode**: QR code
-	//
-	//     	- **programCode**: mini program code
-	//
-	// 	- Valid values in the live moderation scenario:
-	//
-	//     	- **normal**: normal content
-	//
-	//     	- **meaningless**: meaningless content, such as a black or white screen
-	//
-	//     	- **PIP**: picture-in-picture
-	//
-	//     	- **smoking**: smoking
-	//
-	//     	- **drivelive**: live broadcasting in a running vehicle
-	//
-	// 	- Valid values in the logo moderation scenario:
-	//
-	//     	- **normal**: normal content
-	//
-	//     	- **TV**: controlled TV station logo
-	//
-	//     	- **trademark**: trademark
-	//
-	// example:
-	//
-	// meaningless
-	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The score.
-	//
-	// example:
-	//
-	// 100
-	Rate *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
-	// The moderation scenario. Valid values:
-	//
-	// 	- **porn**: pornographic content moderation
-	//
-	// 	- **terrorism**: terrorist content moderation
-	//
-	// 	- **ad**: ad violation moderation
-	//
-	// 	- **live**: undesirable scene moderation
-	//
-	// 	- **logo**: logo moderation
-	//
-	// example:
-	//
-	// terrorism
-	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	// The recommended subsequent operation. Valid values:
-	//
-	// 	- **pass**: The content passes the moderation.
-	//
-	// 	- **review**: The content needs to be manually reviewed again.
-	//
-	// 	- **block**: The content needs to be blocked.
-	//
-	// example:
-	//
-	// review
+	Label      *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Rate       *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	Scene      *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
 }
 
@@ -1451,22 +1196,9 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorRe
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultVideoTimelinesVideoTimeline struct {
-	// The moderation results that include information such as labels and scores.
 	CensorResults *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultVideoTimelinesVideoTimelineCensorResults `json:"CensorResults,omitempty" xml:"CensorResults,omitempty" type:"Struct"`
-	// The one or more OSS objects that are generated as the output snapshots.
-	//
-	// > In the example, {Count} is a placeholder. The OSS objects that are generated as output snapshots are named `output00001-****.jpg`, `output00002-****.jpg`, and so on.
-	//
-	// example:
-	//
-	// output{Count}.jpg
-	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	// The position in the video. Format: `hh:mm:ss[.SSS]`.
-	//
-	// example:
-	//
-	// 00:02:59.999
-	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Object        *string                                                                                                              `json:"Object,omitempty" xml:"Object,omitempty"`
+	Timestamp     *string                                                                                                              `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultVideoTimelinesVideoTimeline) String() string {
@@ -1548,127 +1280,9 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorRe
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultVideoTimelinesVideoTimelineCensorResultsCensorResult struct {
-	// The labels of the moderation result. Multiple labels are separated with commas (,). Valid values:
-	//
-	// 	- Valid values in the pornographic content moderation scenario:
-	//
-	//     	- **porn**: pornographic content
-	//
-	//     	- **sexy**: sexy content
-	//
-	//     	- **normal**: normal content
-	//
-	// 	- Valid values in the terrorist content moderation scenario:
-	//
-	//     	- **normal**: normal content
-	//
-	//     	- **bloody**: bloody content
-	//
-	//     	- **explosion**: explosion and smoke
-	//
-	//     	- **outfit**: special costume
-	//
-	//     	- **logo**: special logo
-	//
-	//     	- **weapon**: weapon
-	//
-	//     	- **politics**: political content
-	//
-	//     	- **violence**: violence
-	//
-	//     	- **crowd**: crowd
-	//
-	//     	- **parade**: parade
-	//
-	//     	- **carcrash**: car accident
-	//
-	//     	- **flag**: flag
-	//
-	//     	- **location**: landmark
-	//
-	//     	- **others**: other content
-	//
-	// 	- Valid values in the ad moderation scenario:
-	//
-	//     	- **normal**: normal content
-	//
-	//     	- **ad**: other ads
-	//
-	//     	- **politics**: political content in text
-	//
-	//     	- **porn**: pornographic content in text
-	//
-	//     	- **abuse**: abuse in text
-	//
-	//     	- **terrorism**: terrorist content in text
-	//
-	//     	- **contraband**: prohibited content in text
-	//
-	//     	- **spam**: spam in text
-	//
-	//     	- **npx**: illegal ads
-	//
-	//     	- **qrcode**: QR code
-	//
-	//     	- **programCode**: mini program code
-	//
-	// 	- Valid values in the live moderation scenario:
-	//
-	//     	- **normal**: normal content
-	//
-	//     	- **meaningless**: meaningless content, such as a black or white screen
-	//
-	//     	- **PIP**: picture-in-picture
-	//
-	//     	- **smoking**: smoking
-	//
-	//     	- **drivelive**: live broadcasting in a running vehicle
-	//
-	// 	- Valid values in the logo moderation scenario:
-	//
-	//     	- **normal**: normal content
-	//
-	//     	- **TV**: controlled TV station logo
-	//
-	//     	- **trademark**: trademark
-	//
-	// example:
-	//
-	// porn,ad
-	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The score.
-	//
-	// example:
-	//
-	// 99.99
-	Rate *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
-	// The moderation scenario. Valid values:
-	//
-	// 	- **porn**: pornographic content moderation
-	//
-	// 	- **terrorism**: terrorist content moderation
-	//
-	// 	- **ad**: ad violation moderation
-	//
-	// 	- **live**: undesirable scene moderation
-	//
-	// 	- **logo**: logo moderation
-	//
-	// example:
-	//
-	// porn
-	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	// The recommended subsequent operation. Valid values:
-	//
-	// 	- **pass**: The content passes the moderation.
-	//
-	// 	- **review**: The content needs to be manually reviewed again.
-	//
-	// 	- **block**: The content needs to be blocked.
-	//
-	// example:
-	//
-	// block
+	Label      *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Rate       *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	Scene      *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
 }
 

@@ -16,7 +16,6 @@ type iListCustomPersonsResponseBody interface {
 }
 
 type ListCustomPersonsResponseBody struct {
-	// The array of the figure libraries.
 	Categories *ListCustomPersonsResponseBodyCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,26 +95,10 @@ func (s *ListCustomPersonsResponseBodyCategories) Validate() error {
 }
 
 type ListCustomPersonsResponseBodyCategoriesCategory struct {
-	// The description of the figure library.
-	//
-	// example:
-	//
-	// CategoryDescription-****
-	CategoryDescription *string `json:"CategoryDescription,omitempty" xml:"CategoryDescription,omitempty"`
-	// The ID of the figure library.
-	//
-	// example:
-	//
-	// CategoryId-****
-	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The name of the figure library.
-	//
-	// example:
-	//
-	// CategoryName-****
-	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The array of the figures.
-	Persons *ListCustomPersonsResponseBodyCategoriesCategoryPersons `json:"Persons,omitempty" xml:"Persons,omitempty" type:"Struct"`
+	CategoryDescription *string                                                 `json:"CategoryDescription,omitempty" xml:"CategoryDescription,omitempty"`
+	CategoryId          *string                                                 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CategoryName        *string                                                 `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	Persons             *ListCustomPersonsResponseBodyCategoriesCategoryPersons `json:"Persons,omitempty" xml:"Persons,omitempty" type:"Struct"`
 }
 
 func (s ListCustomPersonsResponseBodyCategoriesCategory) String() string {
@@ -206,26 +189,10 @@ func (s *ListCustomPersonsResponseBodyCategoriesCategoryPersons) Validate() erro
 }
 
 type ListCustomPersonsResponseBodyCategoriesCategoryPersonsPerson struct {
-	// The array of the faces.
-	Faces *ListCustomPersonsResponseBodyCategoriesCategoryPersonsPersonFaces `json:"Faces,omitempty" xml:"Faces,omitempty" type:"Struct"`
-	// The description of the figure.
-	//
-	// example:
-	//
-	// PersonDescription-****
-	PersonDescription *string `json:"PersonDescription,omitempty" xml:"PersonDescription,omitempty"`
-	// The ID of the figure.
-	//
-	// example:
-	//
-	// PersonId-****
-	PersonId *string `json:"PersonId,omitempty" xml:"PersonId,omitempty"`
-	// The name of the figure.
-	//
-	// example:
-	//
-	// PersonName-****
-	PersonName *string `json:"PersonName,omitempty" xml:"PersonName,omitempty"`
+	Faces             *ListCustomPersonsResponseBodyCategoriesCategoryPersonsPersonFaces `json:"Faces,omitempty" xml:"Faces,omitempty" type:"Struct"`
+	PersonDescription *string                                                            `json:"PersonDescription,omitempty" xml:"PersonDescription,omitempty"`
+	PersonId          *string                                                            `json:"PersonId,omitempty" xml:"PersonId,omitempty"`
+	PersonName        *string                                                            `json:"PersonName,omitempty" xml:"PersonName,omitempty"`
 }
 
 func (s ListCustomPersonsResponseBodyCategoriesCategoryPersonsPerson) String() string {
@@ -316,17 +283,7 @@ func (s *ListCustomPersonsResponseBodyCategoriesCategoryPersonsPersonFaces) Vali
 }
 
 type ListCustomPersonsResponseBodyCategoriesCategoryPersonsPersonFacesFace struct {
-	// The ID of the face.
-	//
-	// example:
-	//
-	// 15****
-	FaceId *string `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
-	// The URL of the facial image that was registered for the figure.
-	//
-	// example:
-	//
-	// http://example-****.jpeg
+	FaceId   *string `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 }
 

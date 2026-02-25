@@ -147,16 +147,14 @@ type UpdateMediaResponseBodyMedia struct {
 	// example:
 	//
 	// Published
-	PublishState *string `json:"PublishState,omitempty" xml:"PublishState,omitempty"`
-	// The IDs of the media workflow execution instances.
-	RunIdList *UpdateMediaResponseBodyMediaRunIdList `json:"RunIdList,omitempty" xml:"RunIdList,omitempty" type:"Struct"`
+	PublishState *string                                `json:"PublishState,omitempty" xml:"PublishState,omitempty"`
+	RunIdList    *UpdateMediaResponseBodyMediaRunIdList `json:"RunIdList,omitempty" xml:"RunIdList,omitempty" type:"Struct"`
 	// The size of the media file.
 	//
 	// example:
 	//
 	// 2647692
-	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The information about the tags.
+	Size *string                           `json:"Size,omitempty" xml:"Size,omitempty"`
 	Tags *UpdateMediaResponseBodyMediaTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The title of the media file.
 	//

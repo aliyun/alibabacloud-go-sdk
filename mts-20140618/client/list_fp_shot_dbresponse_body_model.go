@@ -18,10 +18,8 @@ type iListFpShotDBResponseBody interface {
 }
 
 type ListFpShotDBResponseBody struct {
-	// The media fingerprint libraries.
 	FpShotDBList *ListFpShotDBResponseBodyFpShotDBList `json:"FpShotDBList,omitempty" xml:"FpShotDBList,omitempty" type:"Struct"`
-	// The IDs of the media fingerprint libraries that do not exist.
-	NonExistIds *ListFpShotDBResponseBodyNonExistIds `json:"NonExistIds,omitempty" xml:"NonExistIds,omitempty" type:"Struct"`
+	NonExistIds  *ListFpShotDBResponseBodyNonExistIds  `json:"NonExistIds,omitempty" xml:"NonExistIds,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -114,44 +112,11 @@ func (s *ListFpShotDBResponseBodyFpShotDBList) Validate() error {
 }
 
 type ListFpShotDBResponseBodyFpShotDBListFpShotDB struct {
-	// The description of the media fingerprint library.
-	//
-	// example:
-	//
-	// The library is a text fingerprint library.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the media fingerprint library.
-	//
-	// example:
-	//
-	// 88c6ca184c0e47098a5b665e2a12****
-	FpDBId *string `json:"FpDBId,omitempty" xml:"FpDBId,omitempty"`
-	// The model ID of the media fingerprint library. A value of **11*	- indicates that the library is a text fingerprint library. A value of **12*	- indicates that the library is a video fingerprint library. A value of **13*	- indicates that the library is an audio fingerprint library. A value of **14*	- indicates that the library is an image fingerprint library.
-	//
-	// example:
-	//
-	// 11
-	ModelId *int32 `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	// The name of the media fingerprint library.
-	//
-	// example:
-	//
-	// test-****
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The status of the media fingerprint library. Default value: **offline**. ****Valid values:
-	//
-	// 	- **offline**: The media fingerprint library is offline.
-	//
-	// 	- **active**: The media fingerprint library is online.
-	//
-	// 	- **paused**: The media fingerprint library is paused.
-	//
-	// 	- **deleted**: The media fingerprint library is deleted.
-	//
-	// example:
-	//
-	// active
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	FpDBId      *string `json:"FpDBId,omitempty" xml:"FpDBId,omitempty"`
+	ModelId     *int32  `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListFpShotDBResponseBodyFpShotDBListFpShotDB) String() string {

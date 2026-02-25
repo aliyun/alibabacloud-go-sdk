@@ -138,14 +138,8 @@ func (s *ListCustomViewsResponseBodyCustomViews) Validate() error {
 }
 
 type ListCustomViewsResponseBodyCustomViewsCustomView struct {
-	// example:
-	//
-	// 1
 	CustomViewId *string `json:"CustomViewId,omitempty" xml:"CustomViewId,omitempty"`
-	// example:
-	//
-	// http://``127.66.**.**``/photo.jpeg
-	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	ImageUrl     *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 }
 
 func (s ListCustomViewsResponseBodyCustomViewsCustomView) String() string {
