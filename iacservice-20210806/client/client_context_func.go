@@ -124,6 +124,61 @@ func (client *Client) AssociateGroupWithContext(ctx context.Context, groupId *st
 
 // Summary:
 //
+// 将参数集关联资源
+//
+// @param request - AssociateParameterSetRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssociateParameterSetResponse
+func (client *Client) AssociateParameterSetWithContext(ctx context.Context, request *AssociateParameterSetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AssociateParameterSetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ParameterSetIds) {
+		body["parameterSetIds"] = request.ParameterSetIds
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		body["resourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		body["resourceType"] = request.ResourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AssociateParameterSet"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/parameterSets/operations/associate"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AssociateParameterSetResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 取消资源导出任务
 //
 // @param request - CancelResourceExportTaskRequest
@@ -333,7 +388,7 @@ func (client *Client) CreateJobWithContext(ctx context.Context, taskId *string, 
 
 // Summary:
 //
-// 创建模板
+// # Create Module
 //
 // @param request - CreateModuleRequest
 //
@@ -457,6 +512,65 @@ func (client *Client) CreateModuleVersionWithContext(ctx context.Context, module
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateModuleVersionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建参数集
+//
+// @param request - CreateParameterSetRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateParameterSetResponse
+func (client *Client) CreateParameterSetWithContext(ctx context.Context, request *CreateParameterSetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateParameterSetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["clientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Parameters) {
+		body["parameters"] = request.Parameters
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateParameterSet"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/parameterSets"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateParameterSetResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -912,6 +1026,39 @@ func (client *Client) DeleteModuleWithContext(ctx context.Context, moduleId *str
 
 // Summary:
 //
+// 删除参数集
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteParameterSetResponse
+func (client *Client) DeleteParameterSetWithContext(ctx context.Context, parameterSetId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteParameterSetResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteParameterSet"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/parameterSets/" + dara.PercentEncode(dara.StringValue(parameterSetId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteParameterSetResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除项目
 //
 // @param headers - map
@@ -1155,6 +1302,61 @@ func (client *Client) DissociateGroupWithContext(ctx context.Context, projectId 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DissociateGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 解除参数集关联资源关系
+//
+// @param request - DissociateParameterSetRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DissociateParameterSetResponse
+func (client *Client) DissociateParameterSetWithContext(ctx context.Context, request *DissociateParameterSetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DissociateParameterSetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ParameterSetIds) {
+		body["parameterSetIds"] = request.ParameterSetIds
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		body["resourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		body["resourceType"] = request.ResourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DissociateParameterSet"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/parameterSets/operations/dissociate"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DissociateParameterSetResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1608,7 +1810,7 @@ func (client *Client) GetJobWithContext(ctx context.Context, taskId *string, job
 
 // Summary:
 //
-// 获取模板详情
+// # Get Module Details
 //
 // @param headers - map
 //
@@ -1664,6 +1866,39 @@ func (client *Client) GetModuleVersionWithContext(ctx context.Context, moduleId 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetModuleVersionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 参数集详情
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetParameterSetResponse
+func (client *Client) GetParameterSetWithContext(ctx context.Context, parameterSetId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetParameterSetResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetParameterSet"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/parameterSets/" + dara.PercentEncode(dara.StringValue(parameterSetId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetParameterSetResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2396,6 +2631,112 @@ func (client *Client) ListModulesWithContext(ctx context.Context, tmpReq *ListMo
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListModulesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 关联到资源的参数集列表
+//
+// @param request - ListParameterSetRelationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListParameterSetRelationResponse
+func (client *Client) ListParameterSetRelationWithContext(ctx context.Context, request *ListParameterSetRelationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListParameterSetRelationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ResourceId) {
+		query["resourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["resourceType"] = request.ResourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListParameterSetRelation"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/parameterSets/operations/relation"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListParameterSetRelationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 参数集列表
+//
+// @param request - ListParameterSetsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListParameterSetsResponse
+func (client *Client) ListParameterSetsWithContext(ctx context.Context, request *ListParameterSetsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListParameterSetsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Keyword) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListParameterSets"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/parameterSets"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListParameterSetsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3478,7 +3819,7 @@ func (client *Client) UpdateGroupWithContext(ctx context.Context, groupId *strin
 
 // Summary:
 //
-// 更新模板
+// # Update Module
 //
 // @param request - UpdateModuleAttributeRequest
 //
@@ -3543,6 +3884,61 @@ func (client *Client) UpdateModuleAttributeWithContext(ctx context.Context, modu
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateModuleAttributeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新参数集
+//
+// @param request - UpdateParameterSetAttributeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateParameterSetAttributeResponse
+func (client *Client) UpdateParameterSetAttributeWithContext(ctx context.Context, parameterSetId *string, request *UpdateParameterSetAttributeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateParameterSetAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Parameters) {
+		body["parameters"] = request.Parameters
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateParameterSetAttribute"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/parameterSets/" + dara.PercentEncode(dara.StringValue(parameterSetId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateParameterSetAttributeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4025,18 +4421,20 @@ func (client *Client) validateModuleWithSSECtx_opYieldFunc(_yield chan *Validate
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }
