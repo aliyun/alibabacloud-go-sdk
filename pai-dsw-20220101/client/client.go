@@ -1496,6 +1496,10 @@ func (client *Client) GetMetrics(InstanceId *string, request *GetMetricsRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取资源组统计
+//
 // @param request - GetResourceGroupStatisticsRequest
 //
 // @param headers - map
@@ -1551,6 +1555,10 @@ func (client *Client) GetResourceGroupStatisticsWithOptions(request *GetResource
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取资源组统计
+//
 // @param request - GetResourceGroupStatisticsRequest
 //
 // @return GetResourceGroupStatisticsResponse
@@ -1712,7 +1720,7 @@ func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenRespo
 
 // Summary:
 //
-// 获取自定义用户命令
+// # Get the user defined command
 //
 // @param request - GetUserCommandRequest
 //
@@ -1763,7 +1771,7 @@ func (client *Client) GetUserCommandWithOptions(UserCommandId *string, request *
 
 // Summary:
 //
-// 获取自定义用户命令
+// # Get the user defined command
 //
 // @param request - GetUserCommandRequest
 //

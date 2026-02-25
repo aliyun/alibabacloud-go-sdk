@@ -16,8 +16,15 @@ type iDynamicMountPoint interface {
 }
 
 type DynamicMountPoint struct {
+	// example:
+	//
+	// {}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// /mnt/dynamic/
 	RootPath *string `json:"RootPath,omitempty" xml:"RootPath,omitempty"`
 }
 

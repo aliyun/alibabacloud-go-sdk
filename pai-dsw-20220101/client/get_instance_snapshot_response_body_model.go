@@ -77,7 +77,7 @@ type GetInstanceSnapshotResponseBody struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// example:
 	//
-	// {\"foo\": \"bar\"}
+	// {\\"foo\\": \\"bar\\"}
 	Labels []*GetInstanceSnapshotResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// example:
 	//

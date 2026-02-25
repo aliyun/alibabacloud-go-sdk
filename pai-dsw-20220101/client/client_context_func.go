@@ -1077,6 +1077,10 @@ func (client *Client) GetMetricsWithContext(ctx context.Context, InstanceId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取资源组统计
+//
 // @param request - GetResourceGroupStatisticsRequest
 //
 // @param headers - map
@@ -1240,7 +1244,7 @@ func (client *Client) GetTokenWithContext(ctx context.Context, request *GetToken
 
 // Summary:
 //
-// 获取自定义用户命令
+// # Get the user defined command
 //
 // @param request - GetUserCommandRequest
 //

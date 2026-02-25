@@ -16,6 +16,9 @@ type iDynamicMount interface {
 }
 
 type DynamicMount struct {
+	// example:
+	//
+	// true
 	Enable      *bool                `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	MountPoints []*DynamicMountPoint `json:"MountPoints,omitempty" xml:"MountPoints,omitempty" type:"Repeated"`
 }

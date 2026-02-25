@@ -62,6 +62,9 @@ type ForwardInfoResponse struct {
 	//
 	// ngw-bp1uewa15k4iy5770****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// example:
+	//
+	// ssh-rsa AAAAB3****************************
 	SSHPublicKey *string `json:"SSHPublicKey,omitempty" xml:"SSHPublicKey,omitempty"`
 }
 

@@ -242,7 +242,7 @@ type CredentialConfigConfigsRolesUserInfo struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// example:
 	//
-	// sub
+	// S
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
