@@ -37,9 +37,8 @@ type DescribeSlowLogRecordsResponseBody struct {
 	// example:
 	//
 	// MySQL
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// An array that consists of the information about each slow log.
-	Items *DescribeSlowLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	Engine *string                                  `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	Items  *DescribeSlowLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
 	// example:
@@ -181,139 +180,26 @@ func (s *DescribeSlowLogRecordsResponseBodyItems) Validate() error {
 }
 
 type DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord struct {
-	// The name of the application that is connected to the instance.
-	//
-	// > This parameter is returned only for instances that run SQL Server.
-	//
-	// example:
-	//
-	// example
-	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// The hostname of the client.
-	//
-	// > This parameter is returned only for instances that run SQL Server.
-	//
-	// example:
-	//
-	// example
-	ClientHostName *string `json:"ClientHostName,omitempty" xml:"ClientHostName,omitempty"`
-	// The duration during which the SQL statement is processed by the CPU. Unit: milliseconds.
-	//
-	// > This parameter is returned only for instances that run SQL Server.
-	//
-	// example:
-	//
-	// 0.002
-	CpuTime *int64 `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// testDB
-	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The time when the execution of the SQL statement started. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2020-06-18T01:40:44Z
-	ExecutionStartTime *string `json:"ExecutionStartTime,omitempty" xml:"ExecutionStartTime,omitempty"`
-	// The name and IP address of the client that is connected to the database.
-	//
-	// example:
-	//
-	// xxx[xxx] @  [1xx.xxx.xxx.xx]
-	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	// The number of rows that are affected by the last SQL statement.
-	//
-	// > This parameter is returned only for instances that run SQL Server.
-	//
-	// example:
-	//
-	// 2
-	LastRowsAffectedCount *int64 `json:"LastRowsAffectedCount,omitempty" xml:"LastRowsAffectedCount,omitempty"`
-	LockTimeMS            *int64 `json:"LockTimeMS,omitempty" xml:"LockTimeMS,omitempty"`
-	// The lock duration of the query. Unit: seconds.
-	//
-	// example:
-	//
-	// 0
-	LockTimes *int64 `json:"LockTimes,omitempty" xml:"LockTimes,omitempty"`
-	// The number of logical reads.
-	//
-	// > This parameter is returned only for instances that run SQL Server.
-	//
-	// example:
-	//
-	// 383
-	LogicalIORead *int64 `json:"LogicalIORead,omitempty" xml:"LogicalIORead,omitempty"`
-	// The number of parsed rows.
-	//
-	// example:
-	//
-	// 1
-	ParseRowCounts *int64 `json:"ParseRowCounts,omitempty" xml:"ParseRowCounts,omitempty"`
-	// The number of physical reads.
-	//
-	// > This parameter is returned only for instances that run SQL Server.
-	//
-	// example:
-	//
-	// 200
-	PhysicalIORead *int64 `json:"PhysicalIORead,omitempty" xml:"PhysicalIORead,omitempty"`
-	// The execution duration of the query. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 2001
-	QueryTimeMS *int64 `json:"QueryTimeMS,omitempty" xml:"QueryTimeMS,omitempty"`
-	// The execution duration of the query. Unit: seconds.
-	//
-	// example:
-	//
-	// 2
-	QueryTimes *int64 `json:"QueryTimes,omitempty" xml:"QueryTimes,omitempty"`
-	// The number of rows returned.
-	//
-	// example:
-	//
-	// 1
-	ReturnRowCounts *int64 `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
-	// The number of affected rows.
-	//
-	// > This parameter is returned only for instances that run SQL Server.
-	//
-	// example:
-	//
-	// 34
-	RowsAffectedCount *int64 `json:"RowsAffectedCount,omitempty" xml:"RowsAffectedCount,omitempty"`
-	// The unique ID of the SQL statement.
-	//
-	// example:
-	//
-	// U2FsdGVk****
-	SQLHash *string `json:"SQLHash,omitempty" xml:"SQLHash,omitempty"`
-	// The details of the SQL statement.
-	//
-	// example:
-	//
-	// select sleep(2)
-	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	// The name of the user.
-	//
-	// > This parameter is returned only for instances that run SQL Server.
-	//
-	// example:
-	//
-	// user
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The number of I/O writes.
-	//
-	// > This parameter is returned only for instances that run SQL Server.
-	//
-	// example:
-	//
-	// 22
-	WriteIOCount *int64 `json:"WriteIOCount,omitempty" xml:"WriteIOCount,omitempty"`
+	ApplicationName       *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	ClientHostName        *string `json:"ClientHostName,omitempty" xml:"ClientHostName,omitempty"`
+	CpuTime               *int64  `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
+	DBName                *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	ExecutionStartTime    *string `json:"ExecutionStartTime,omitempty" xml:"ExecutionStartTime,omitempty"`
+	HostAddress           *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
+	LastRowsAffectedCount *int64  `json:"LastRowsAffectedCount,omitempty" xml:"LastRowsAffectedCount,omitempty"`
+	LockTimeMS            *int64  `json:"LockTimeMS,omitempty" xml:"LockTimeMS,omitempty"`
+	LockTimes             *int64  `json:"LockTimes,omitempty" xml:"LockTimes,omitempty"`
+	LogicalIORead         *int64  `json:"LogicalIORead,omitempty" xml:"LogicalIORead,omitempty"`
+	ParseRowCounts        *int64  `json:"ParseRowCounts,omitempty" xml:"ParseRowCounts,omitempty"`
+	PhysicalIORead        *int64  `json:"PhysicalIORead,omitempty" xml:"PhysicalIORead,omitempty"`
+	QueryTimeMS           *int64  `json:"QueryTimeMS,omitempty" xml:"QueryTimeMS,omitempty"`
+	QueryTimes            *int64  `json:"QueryTimes,omitempty" xml:"QueryTimes,omitempty"`
+	ReturnRowCounts       *int64  `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
+	RowsAffectedCount     *int64  `json:"RowsAffectedCount,omitempty" xml:"RowsAffectedCount,omitempty"`
+	SQLHash               *string `json:"SQLHash,omitempty" xml:"SQLHash,omitempty"`
+	SQLText               *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
+	UserName              *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	WriteIOCount          *int64  `json:"WriteIOCount,omitempty" xml:"WriteIOCount,omitempty"`
 }
 
 func (s DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) String() string {

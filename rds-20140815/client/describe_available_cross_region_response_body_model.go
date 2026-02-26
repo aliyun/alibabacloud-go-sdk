@@ -16,7 +16,6 @@ type iDescribeAvailableCrossRegionResponseBody interface {
 }
 
 type DescribeAvailableCrossRegionResponseBody struct {
-	// An array that consists of destination regions for cross-region backups.
 	Regions *DescribeAvailableCrossRegionResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 	// The ID of the request.
 	//

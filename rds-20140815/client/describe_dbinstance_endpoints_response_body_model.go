@@ -62,7 +62,6 @@ func (s *DescribeDBInstanceEndpointsResponseBody) Validate() error {
 }
 
 type DescribeDBInstanceEndpointsResponseBodyData struct {
-	// The information of the endpoints of the instance.
 	DBInstanceEndpoints *DescribeDBInstanceEndpointsResponseBodyDataDBInstanceEndpoints `json:"DBInstanceEndpoints,omitempty" xml:"DBInstanceEndpoints,omitempty" type:"Struct"`
 	// The name of the instance.
 	//
@@ -161,32 +160,11 @@ func (s *DescribeDBInstanceEndpointsResponseBodyDataDBInstanceEndpoints) Validat
 }
 
 type DescribeDBInstanceEndpointsResponseBodyDataDBInstanceEndpointsDBInstanceEndpoint struct {
-	// The information about the endpoint.
-	AddressItems *DescribeDBInstanceEndpointsResponseBodyDataDBInstanceEndpointsDBInstanceEndpointAddressItems `json:"AddressItems,omitempty" xml:"AddressItems,omitempty" type:"Struct"`
-	// The user-defined description of the endpoint.
-	//
-	// example:
-	//
-	// for readonly business
-	EndpointDescription *string `json:"EndpointDescription,omitempty" xml:"EndpointDescription,omitempty"`
-	// The endpoint ID of the instance.
-	//
-	// example:
-	//
-	// ep-****
-	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The type of the endpoint. Valid values:
-	//
-	// 	- **Primary**: the read/write endpoint of the instance
-	//
-	// 	- **Readonly**: the read-only endpoint of the instance
-	//
-	// example:
-	//
-	// Readonly
-	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// The information about the node that is configured for the endpoint.
-	NodeItems *DescribeDBInstanceEndpointsResponseBodyDataDBInstanceEndpointsDBInstanceEndpointNodeItems `json:"NodeItems,omitempty" xml:"NodeItems,omitempty" type:"Struct"`
+	AddressItems        *DescribeDBInstanceEndpointsResponseBodyDataDBInstanceEndpointsDBInstanceEndpointAddressItems `json:"AddressItems,omitempty" xml:"AddressItems,omitempty" type:"Struct"`
+	EndpointDescription *string                                                                                       `json:"EndpointDescription,omitempty" xml:"EndpointDescription,omitempty"`
+	EndpointId          *string                                                                                       `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	EndpointType        *string                                                                                       `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	NodeItems           *DescribeDBInstanceEndpointsResponseBodyDataDBInstanceEndpointsDBInstanceEndpointNodeItems    `json:"NodeItems,omitempty" xml:"NodeItems,omitempty" type:"Struct"`
 }
 
 func (s DescribeDBInstanceEndpointsResponseBodyDataDBInstanceEndpointsDBInstanceEndpoint) String() string {
@@ -291,46 +269,12 @@ func (s *DescribeDBInstanceEndpointsResponseBodyDataDBInstanceEndpointsDBInstanc
 }
 
 type DescribeDBInstanceEndpointsResponseBodyDataDBInstanceEndpointsDBInstanceEndpointAddressItemsAddressItem struct {
-	// The endpoints of the instance.
-	//
-	// example:
-	//
-	// rm****.mysql.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The IP address.
-	//
-	// example:
-	//
-	// 10.71.XX.XX
-	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	// The type of the IP address. Valid values:
-	//
-	// 	- **Public**: Internet
-	//
-	// 	- **Private**: internal network
-	//
-	// example:
-	//
-	// Private
-	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	// The port number of the endpoint.
-	//
-	// example:
-	//
-	// 3306
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The vSwitch ID.
-	//
-	// example:
-	//
-	// vsw-bp12u14ecz****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC ID.
-	//
-	// example:
-	//
-	// vpc-bp17xdic25d****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	IpAddress        *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	IpType           *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	Port             *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId            *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeDBInstanceEndpointsResponseBodyDataDBInstanceEndpointsDBInstanceEndpointAddressItemsAddressItem) String() string {
@@ -434,26 +378,9 @@ func (s *DescribeDBInstanceEndpointsResponseBodyDataDBInstanceEndpointsDBInstanc
 }
 
 type DescribeDBInstanceEndpointsResponseBodyDataDBInstanceEndpointsDBInstanceEndpointNodeItemsNodeItem struct {
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-u****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The node ID.
-	//
-	// example:
-	//
-	// rn-****13p6tum4289h
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The weight of the node. Read requests are distributed based on the weight.
-	//
-	// Valid values: 0 to 100.
-	//
-	// example:
-	//
-	// 50
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Weight       *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s DescribeDBInstanceEndpointsResponseBodyDataDBInstanceEndpointsDBInstanceEndpointNodeItemsNodeItem) String() string {

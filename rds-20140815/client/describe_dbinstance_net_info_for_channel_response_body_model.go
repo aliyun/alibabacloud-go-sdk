@@ -18,7 +18,6 @@ type iDescribeDBInstanceNetInfoForChannelResponseBody interface {
 }
 
 type DescribeDBInstanceNetInfoForChannelResponseBody struct {
-	// The information about the instance connection.
 	DBInstanceNetInfos *DescribeDBInstanceNetInfoForChannelResponseBodyDBInstanceNetInfos `json:"DBInstanceNetInfos,omitempty" xml:"DBInstanceNetInfos,omitempty" type:"Struct"`
 	// The network type of the instance. Valid values:
 	//
@@ -117,102 +116,20 @@ func (s *DescribeDBInstanceNetInfoForChannelResponseBodyDBInstanceNetInfos) Vali
 }
 
 type DescribeDBInstanceNetInfoForChannelResponseBodyDBInstanceNetInfosDBInstanceNetInfo struct {
-	// The availability of the instance. Valid values:
-	//
-	// 	- **Unavailable**
-	//
-	// 	- **Available**
-	//
-	// example:
-	//
-	// Unavailable
-	Availability *string `json:"Availability,omitempty" xml:"Availability,omitempty"`
-	// The endpoint of the instance.
-	//
-	// example:
-	//
-	// rm-uf6w*****.mysql.rds.aliyuncs.com
-	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The type of the endpoint. Valid values:
-	//
-	// 	- **Normal**: a regular endpoint
-	//
-	// 	- **ReadWriteSplitting**: a read/write splitting endpoint that is assigned after the shared proxy feature is enabled.
-	//
-	// example:
-	//
-	// Normal
-	ConnectionStringType *string `json:"ConnectionStringType,omitempty" xml:"ConnectionStringType,omitempty"`
-	// The information about read weights to implement read/write splitting after the shared proxy feature is enabled.
-	DBInstanceWeights *DescribeDBInstanceNetInfoForChannelResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeights `json:"DBInstanceWeights,omitempty" xml:"DBInstanceWeights,omitempty" type:"Struct"`
-	// The policy that is used to assign read weights. This parameter is returned only for a read/write splitting endpoint that is assigned after the shared proxy feature is enabled. Valid values:
-	//
-	// 	- **Standard**: The system automatically allocates read weights to the instance and its read-only instances based on the specifications of the instances.
-	//
-	// 	- **Custom**: You must manually allocate read weights to the instance and its read-only instances.
-	//
-	// example:
-	//
-	// Standard
-	DistributionType *string `json:"DistributionType,omitempty" xml:"DistributionType,omitempty"`
-	// The IP address of the instance.
-	//
-	// example:
-	//
-	// 172.16.XX.XX
-	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
-	// The network type of the IP address. Valid values:
-	//
-	// 	- **Public**: the Internet
-	//
-	// 	- **Inner**: the classic network
-	//
-	// 	- **Private**: a virtual private cloud (VPC)
-	//
-	// example:
-	//
-	// Inner
-	IPType *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
-	// The latency threshold that is allowed for read/write splitting of the shared proxy feature. Unit: seconds.
-	//
-	// >  This parameter is returned only when **ConnectionStringType*	- is set to **ReadWriteSplitting**.
-	//
-	// example:
-	//
-	// 12
-	MaxDelayTime *string `json:"MaxDelayTime,omitempty" xml:"MaxDelayTime,omitempty"`
-	// The port number of the instance.
-	//
-	// example:
-	//
-	// 6379
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The details of the IP address whitelist.
-	SecurityIPGroups *DescribeDBInstanceNetInfoForChannelResponseBodyDBInstanceNetInfosDBInstanceNetInfoSecurityIPGroups `json:"SecurityIPGroups,omitempty" xml:"SecurityIPGroups,omitempty" type:"Struct"`
-	// An internal parameter. You do not need to specify this parameter.
-	//
-	// example:
-	//
-	// Disabled
-	Upgradeable *string `json:"Upgradeable,omitempty" xml:"Upgradeable,omitempty"`
-	// The VPC ID of the instance.
-	//
-	// example:
-	//
-	// vpc-bp1nme44gek34slfc****
-	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The vSwitch ID of the instance.
-	//
-	// example:
-	//
-	// vsw-bp1e7clcw529l773d****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The expiration time of the endpoint of the classic network type. Unit: seconds.
-	//
-	// example:
-	//
-	// 5183779
-	ExpiredTime *string `json:"expiredTime,omitempty" xml:"expiredTime,omitempty"`
+	Availability         *string                                                                                              `json:"Availability,omitempty" xml:"Availability,omitempty"`
+	ConnectionString     *string                                                                                              `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	ConnectionStringType *string                                                                                              `json:"ConnectionStringType,omitempty" xml:"ConnectionStringType,omitempty"`
+	DBInstanceWeights    *DescribeDBInstanceNetInfoForChannelResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeights `json:"DBInstanceWeights,omitempty" xml:"DBInstanceWeights,omitempty" type:"Struct"`
+	DistributionType     *string                                                                                              `json:"DistributionType,omitempty" xml:"DistributionType,omitempty"`
+	IPAddress            *string                                                                                              `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
+	IPType               *string                                                                                              `json:"IPType,omitempty" xml:"IPType,omitempty"`
+	MaxDelayTime         *string                                                                                              `json:"MaxDelayTime,omitempty" xml:"MaxDelayTime,omitempty"`
+	Port                 *string                                                                                              `json:"Port,omitempty" xml:"Port,omitempty"`
+	SecurityIPGroups     *DescribeDBInstanceNetInfoForChannelResponseBodyDBInstanceNetInfosDBInstanceNetInfoSecurityIPGroups  `json:"SecurityIPGroups,omitempty" xml:"SecurityIPGroups,omitempty" type:"Struct"`
+	Upgradeable          *string                                                                                              `json:"Upgradeable,omitempty" xml:"Upgradeable,omitempty"`
+	VPCId                *string                                                                                              `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId            *string                                                                                              `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ExpiredTime          *string                                                                                              `json:"expiredTime,omitempty" xml:"expiredTime,omitempty"`
 }
 
 func (s DescribeDBInstanceNetInfoForChannelResponseBodyDBInstanceNetInfosDBInstanceNetInfo) String() string {
@@ -398,38 +315,10 @@ func (s *DescribeDBInstanceNetInfoForChannelResponseBodyDBInstanceNetInfosDBInst
 }
 
 type DescribeDBInstanceNetInfoForChannelResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeightsDBInstanceWeight struct {
-	// The availability of the instance. Valid values:
-	//
-	// 	- **Unavailable**
-	//
-	// 	- **Available**
-	//
-	// example:
-	//
-	// Unavailable
-	Availability *string `json:"Availability,omitempty" xml:"Availability,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf6wjk5*****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The instance type. Valid values:
-	//
-	// 	- **Master**: primary instance
-	//
-	// 	- **Readonly**: read-only instance
-	//
-	// example:
-	//
-	// Master
+	Availability   *string `json:"Availability,omitempty" xml:"Availability,omitempty"`
+	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
-	// The weight of the instance.
-	//
-	// example:
-	//
-	// 100
-	Weight *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Weight         *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s DescribeDBInstanceNetInfoForChannelResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeightsDBInstanceWeight) String() string {
@@ -515,18 +404,8 @@ func (s *DescribeDBInstanceNetInfoForChannelResponseBodyDBInstanceNetInfosDBInst
 }
 
 type DescribeDBInstanceNetInfoForChannelResponseBodyDBInstanceNetInfosDBInstanceNetInfoSecurityIPGroupsSecurityIPGroup struct {
-	// The name of the IP address whitelist.
-	//
-	// example:
-	//
-	// Default
 	SecurityIPGroupName *string `json:"SecurityIPGroupName,omitempty" xml:"SecurityIPGroupName,omitempty"`
-	// The IP addresses that is contained in the IP address whitelist.
-	//
-	// example:
-	//
-	// 127.0.XX.XX
-	SecurityIPs *string `json:"SecurityIPs,omitempty" xml:"SecurityIPs,omitempty"`
+	SecurityIPs         *string `json:"SecurityIPs,omitempty" xml:"SecurityIPs,omitempty"`
 }
 
 func (s DescribeDBInstanceNetInfoForChannelResponseBodyDBInstanceNetInfosDBInstanceNetInfoSecurityIPGroupsSecurityIPGroup) String() string {

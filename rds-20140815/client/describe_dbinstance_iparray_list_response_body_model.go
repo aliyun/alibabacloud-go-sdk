@@ -16,7 +16,6 @@ type iDescribeDBInstanceIPArrayListResponseBody interface {
 }
 
 type DescribeDBInstanceIPArrayListResponseBody struct {
-	// An array that consists of the details about the IP address whitelists.
 	Items *DescribeDBInstanceIPArrayListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,32 +95,10 @@ func (s *DescribeDBInstanceIPArrayListResponseBodyItems) Validate() error {
 }
 
 type DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray struct {
-	// The attribute of the IP address whitelist. By default, this parameter is empty.
-	//
-	// >  A whitelist with the hidden attribute does not appear in the console. Such IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
-	//
-	// example:
-	//
-	// hidden
 	DBInstanceIPArrayAttribute *string `json:"DBInstanceIPArrayAttribute,omitempty" xml:"DBInstanceIPArrayAttribute,omitempty"`
-	// The name of the IP address whitelist.
-	//
-	// example:
-	//
-	// rds_default
-	DBInstanceIPArrayName *string `json:"DBInstanceIPArrayName,omitempty" xml:"DBInstanceIPArrayName,omitempty"`
-	// The IP addresses in the IP address whitelist.
-	//
-	// example:
-	//
-	// 192.168.1.0/24
-	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// The type of the IP address.
-	//
-	// example:
-	//
-	// IPv4
-	SecurityIPType *string `json:"SecurityIPType,omitempty" xml:"SecurityIPType,omitempty"`
+	DBInstanceIPArrayName      *string `json:"DBInstanceIPArrayName,omitempty" xml:"DBInstanceIPArrayName,omitempty"`
+	SecurityIPList             *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	SecurityIPType             *string `json:"SecurityIPType,omitempty" xml:"SecurityIPType,omitempty"`
 }
 
 func (s DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray) String() string {

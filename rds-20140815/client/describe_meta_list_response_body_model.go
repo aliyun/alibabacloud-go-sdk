@@ -31,9 +31,8 @@ type DescribeMetaListResponseBody struct {
 	// example:
 	//
 	// rm-uf6wjk5xxxxxxx
-	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The information about the databases and tables whose data is included in the backup set.
-	Items *DescribeMetaListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	DBInstanceName *string                            `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	Items          *DescribeMetaListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
 	// example:
@@ -181,24 +180,9 @@ func (s *DescribeMetaListResponseBodyItems) Validate() error {
 }
 
 type DescribeMetaListResponseBodyItemsMeta struct {
-	// The database name.
-	//
-	// example:
-	//
-	// testdb1
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The table size. Unit: KB.
-	//
-	// example:
-	//
-	// 64
-	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The table name.
-	//
-	// example:
-	//
-	// test1
-	Tables *string `json:"Tables,omitempty" xml:"Tables,omitempty"`
+	Size     *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	Tables   *string `json:"Tables,omitempty" xml:"Tables,omitempty"`
 }
 
 func (s DescribeMetaListResponseBodyItemsMeta) String() string {

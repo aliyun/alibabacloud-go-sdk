@@ -16,7 +16,6 @@ type iGetDbProxyInstanceSslResponseBody interface {
 }
 
 type GetDbProxyInstanceSslResponseBody struct {
-	// An array that consists of SSL encryption settings.
 	DbProxyCertListItems *GetDbProxyInstanceSslResponseBodyDbProxyCertListItems `json:"DbProxyCertListItems,omitempty" xml:"DbProxyCertListItems,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,35 +95,10 @@ func (s *GetDbProxyInstanceSslResponseBodyDbProxyCertListItems) Validate() error
 }
 
 type GetDbProxyInstanceSslResponseBodyDbProxyCertListItemsDbProxyCertListItems struct {
-	// The dedicated proxy endpoint for which SSL encryption is enabled.
-	//
-	// example:
-	//
-	// test1234.rwlb.rds.aliyuncs.com
 	CertCommonName *string `json:"CertCommonName,omitempty" xml:"CertCommonName,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-t4n3axxxxx
 	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
-	// The ID of the dedicated proxy endpoint.
-	//
-	// example:
-	//
-	// buxxxxxxx
-	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// The default identifier of the dedicated proxy endpoint. The value is fixed as **RWSplit**.
-	//
-	// example:
-	//
-	// RWSplit
-	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// The time at which the certificate expires.
-	//
-	// example:
-	//
-	// 2021-12-16T08:43:20Z
+	EndpointName   *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
+	EndpointType   *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	SslExpiredTime *string `json:"SslExpiredTime,omitempty" xml:"SslExpiredTime,omitempty"`
 }
 

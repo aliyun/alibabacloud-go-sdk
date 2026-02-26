@@ -20,7 +20,6 @@ type iDescribeDBInstanceNetInfoResponseBody interface {
 }
 
 type DescribeDBInstanceNetInfoResponseBody struct {
-	// The information about the endpoints of the instance.
 	DBInstanceNetInfos *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos `json:"DBInstanceNetInfos,omitempty" xml:"DBInstanceNetInfos,omitempty" type:"Struct"`
 	// The network type of the instance. Valid values:
 	//
@@ -138,122 +137,21 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos) Validate() err
 }
 
 type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo struct {
-	// The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
-	//
-	// >  This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://help.aliyun.com/document_detail/428613.html).
-	//
-	// example:
-	//
-	// 1433
-	BabelfishPort *string `json:"BabelfishPort,omitempty" xml:"BabelfishPort,omitempty"`
-	// The endpoint of the instance.
-	//
-	// example:
-	//
-	// rm-uf6w*****.mysql.rds.aliyuncs.com
-	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The type of the endpoint. Valid values:
-	//
-	// 	- **Normal**: a regular endpoint
-	//
-	// 	- **ReadWriteSplitting**: a read/write splitting endpoint
-	//
-	// example:
-	//
-	// Normal
-	ConnectionStringType *string `json:"ConnectionStringType,omitempty" xml:"ConnectionStringType,omitempty"`
-	// The information about the instance weight.
-	//
-	// >  This parameter is returned only when the read/write splitting feature is enabled for the instance.
-	DBInstanceWeights *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeights `json:"DBInstanceWeights,omitempty" xml:"DBInstanceWeights,omitempty" type:"Struct"`
-	// The policy that is used to assign read weights. This parameter is returned only for a read/write splitting endpoint. Valid values:
-	//
-	// 	- **Standard**: The system automatically allocates read weights to the instance and its read-only instances based on the specifications of the instances.
-	//
-	// 	- **Custom**: You must manually allocate read weights to the instance and its read-only instances.
-	//
-	// example:
-	//
-	// Standard
-	DistributionType *string `json:"DistributionType,omitempty" xml:"DistributionType,omitempty"`
-	// The remaining validity period of the instance in the classic network in hybrid access mode. Unit: seconds.
-	//
-	// example:
-	//
-	// 1209534
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The IP address.
-	//
-	// example:
-	//
-	// 192.168.XX.XX
-	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
-	// The network type.
-	//
-	// 	- Valid values when the instance resides in the classic network:
-	//
-	//     	- **Inner**
-	//
-	//     	- **Public**
-	//
-	// 	- Valid values when the instance resides in a virtual private cloud (VPC):
-	//
-	//     	- **Private**
-	//
-	//     	- **Public**
-	//
-	// example:
-	//
-	// Public
-	IPType *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
-	// The latency threshold. This parameter is returned only for a read/write splitting endpoint. Unit: seconds.
-	//
-	// >  If the latency on a read-only instance exceeds the specified threshold, ApsaraDB RDS no longer forwards read requests to the read-only instance.
-	//
-	// example:
-	//
-	// 12
-	MaxDelayTime *string `json:"MaxDelayTime,omitempty" xml:"MaxDelayTime,omitempty"`
-	// The PgBouncer port.
-	//
-	// >  This parameter is returned only when PgBouncer is enabled for the instance that runs PostgreSQL.
-	//
-	// example:
-	//
-	// 6432
-	PGBouncerPort *string `json:"PGBouncerPort,omitempty" xml:"PGBouncerPort,omitempty"`
-	// The port that is used to connect to the instance.
-	//
-	// example:
-	//
-	// 3306
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The IP addresses in the whitelist for the instance.
-	SecurityIPGroups *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoSecurityIPGroups `json:"SecurityIPGroups,omitempty" xml:"SecurityIPGroups,omitempty" type:"Struct"`
-	// Indicates whether the IP version can be updated. Valid values:
-	//
-	// 	- **Enable**
-	//
-	// 	- **Disabled**
-	//
-	// >  The IP version can be updated from IPv4 to IPv6.
-	//
-	// example:
-	//
-	// Disabled
-	Upgradeable *string `json:"Upgradeable,omitempty" xml:"Upgradeable,omitempty"`
-	// The VPC ID of the instance.
-	//
-	// example:
-	//
-	// vpc-uf6f7l4fg90*****
-	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The vSwitch ID.
-	//
-	// example:
-	//
-	// vsw-uf6adz52c2p*****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	BabelfishPort        *string                                                                                    `json:"BabelfishPort,omitempty" xml:"BabelfishPort,omitempty"`
+	ConnectionString     *string                                                                                    `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	ConnectionStringType *string                                                                                    `json:"ConnectionStringType,omitempty" xml:"ConnectionStringType,omitempty"`
+	DBInstanceWeights    *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeights `json:"DBInstanceWeights,omitempty" xml:"DBInstanceWeights,omitempty" type:"Struct"`
+	DistributionType     *string                                                                                    `json:"DistributionType,omitempty" xml:"DistributionType,omitempty"`
+	ExpiredTime          *string                                                                                    `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	IPAddress            *string                                                                                    `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
+	IPType               *string                                                                                    `json:"IPType,omitempty" xml:"IPType,omitempty"`
+	MaxDelayTime         *string                                                                                    `json:"MaxDelayTime,omitempty" xml:"MaxDelayTime,omitempty"`
+	PGBouncerPort        *string                                                                                    `json:"PGBouncerPort,omitempty" xml:"PGBouncerPort,omitempty"`
+	Port                 *string                                                                                    `json:"Port,omitempty" xml:"Port,omitempty"`
+	SecurityIPGroups     *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoSecurityIPGroups  `json:"SecurityIPGroups,omitempty" xml:"SecurityIPGroups,omitempty" type:"Struct"`
+	Upgradeable          *string                                                                                    `json:"Upgradeable,omitempty" xml:"Upgradeable,omitempty"`
+	VPCId                *string                                                                                    `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId            *string                                                                                    `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo) String() string {
@@ -448,44 +346,11 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInf
 }
 
 type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeightsDBInstanceWeight struct {
-	// The availability of the instance. Valid values:
-	//
-	// 	- **Unavailable**
-	//
-	// 	- **Available**
-	//
-	// example:
-	//
-	// Unavailable
-	Availability *string `json:"Availability,omitempty" xml:"Availability,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf6wjk5*****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The type of the instance. Valid values:
-	//
-	// 	- **Master**: primary instance
-	//
-	// 	- **Readonly**: read-only instance
-	//
-	// example:
-	//
-	// Master
+	Availability   *string `json:"Availability,omitempty" xml:"Availability,omitempty"`
+	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
-	// A deprecated parameter.
-	//
-	// example:
-	//
-	// None
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The weight of the instance.
-	//
-	// example:
-	//
-	// 100
-	Weight *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Role           *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Weight         *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeightsDBInstanceWeight) String() string {
@@ -580,18 +445,8 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInf
 }
 
 type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoSecurityIPGroupsSecurityIPGroup struct {
-	// The name of the IP address whitelist.
-	//
-	// example:
-	//
-	// Default
 	SecurityIPGroupName *string `json:"SecurityIPGroupName,omitempty" xml:"SecurityIPGroupName,omitempty"`
-	// The IP address in the whitelist.
-	//
-	// example:
-	//
-	// 127.0.XX.XX
-	SecurityIPs *string `json:"SecurityIPs,omitempty" xml:"SecurityIPs,omitempty"`
+	SecurityIPs         *string `json:"SecurityIPs,omitempty" xml:"SecurityIPs,omitempty"`
 }
 
 func (s DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoSecurityIPGroupsSecurityIPGroup) String() string {

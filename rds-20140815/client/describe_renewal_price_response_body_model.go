@@ -25,9 +25,8 @@ type DescribeRenewalPriceResponseBody struct {
 	// example:
 	//
 	// DC9F4EF6-D038-4405-B497-1F48E722C9F2
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of the details of the promotion rule.
-	Rules *DescribeRenewalPriceResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rules     *DescribeRenewalPriceResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 }
 
 func (s DescribeRenewalPriceResponseBody) String() string {
@@ -82,8 +81,7 @@ func (s *DescribeRenewalPriceResponseBody) Validate() error {
 type DescribeRenewalPriceResponseBodyPriceInfo struct {
 	// The information about the promotion.
 	ActivityInfo *DescribeRenewalPriceResponseBodyPriceInfoActivityInfo `json:"ActivityInfo,omitempty" xml:"ActivityInfo,omitempty" type:"Struct"`
-	// An array that consists of information about the coupon.
-	Coupons *DescribeRenewalPriceResponseBodyPriceInfoCoupons `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Struct"`
+	Coupons      *DescribeRenewalPriceResponseBodyPriceInfoCoupons      `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Struct"`
 	// The currency unit.
 	//
 	// example:
@@ -101,9 +99,8 @@ type DescribeRenewalPriceResponseBodyPriceInfo struct {
 	// example:
 	//
 	// 138
-	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	// An array that consists of the ID of the promotion rule.
-	RuleIds *DescribeRenewalPriceResponseBodyPriceInfoRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
+	OriginalPrice *float32                                          `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	RuleIds       *DescribeRenewalPriceResponseBodyPriceInfoRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
 	// The transaction price, which is equal to the original price minus the discount.
 	//
 	// example:
@@ -297,30 +294,10 @@ func (s *DescribeRenewalPriceResponseBodyPriceInfoCoupons) Validate() error {
 }
 
 type DescribeRenewalPriceResponseBodyPriceInfoCouponsCoupon struct {
-	// The coupon ID.
-	//
-	// example:
-	//
-	// 123456
-	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	// The description of the coupon.
-	//
-	// example:
-	//
-	// test
+	CouponNo    *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the coupon is selected.
-	//
-	// example:
-	//
-	// true
-	IsSelected *string `json:"IsSelected,omitempty" xml:"IsSelected,omitempty"`
-	// The name of the coupon.
-	//
-	// example:
-	//
-	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	IsSelected  *string `json:"IsSelected,omitempty" xml:"IsSelected,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeRenewalPriceResponseBodyPriceInfoCouponsCoupon) String() string {
@@ -431,24 +408,9 @@ func (s *DescribeRenewalPriceResponseBodyRules) Validate() error {
 }
 
 type DescribeRenewalPriceResponseBodyRulesRule struct {
-	// The description of the activity.
-	//
-	// example:
-	//
-	// Content
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the rule.
-	//
-	// example:
-	//
-	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the promotion rule.
-	//
-	// example:
-	//
-	// 1001199213
-	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s DescribeRenewalPriceResponseBodyRulesRule) String() string {

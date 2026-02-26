@@ -22,7 +22,6 @@ type iDescribeSQLLogRecordsResponseBody interface {
 }
 
 type DescribeSQLLogRecordsResponseBody struct {
-	// The details about each SQL audit log entry.
 	Items *DescribeSQLLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,54 +146,14 @@ func (s *DescribeSQLLogRecordsResponseBodyItems) Validate() error {
 }
 
 type DescribeSQLLogRecordsResponseBodyItemsSQLRecord struct {
-	// The username of the account that is recorded in the SQL audit log entry.
-	//
-	// example:
-	//
-	// accounttest
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The database name.
-	//
-	// example:
-	//
-	// testDB
-	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The time at which the SQL statement was executed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2011-06-11T15:00:23Z
-	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	// The IP address of the client that is connected to the instance.
-	//
-	// example:
-	//
-	// 192.168.0.121
-	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	// The number of SQL audit log entries that are returned.
-	//
-	// example:
-	//
-	// 30
-	ReturnRowCounts *int64 `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
-	// The SQL statement.
-	//
-	// example:
-	//
-	// update test.zxb set id=0 limit 1
-	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	// The thread ID.
-	//
-	// example:
-	//
-	// 1025865428
-	ThreadID *string `json:"ThreadID,omitempty" xml:"ThreadID,omitempty"`
-	// The execution duration of the SQL statement. Unit: microseconds.
-	//
-	// example:
-	//
-	// 600
-	TotalExecutionTimes *int64 `json:"TotalExecutionTimes,omitempty" xml:"TotalExecutionTimes,omitempty"`
+	AccountName         *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	DBName              *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	ExecuteTime         *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	HostAddress         *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
+	ReturnRowCounts     *int64  `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
+	SQLText             *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
+	ThreadID            *string `json:"ThreadID,omitempty" xml:"ThreadID,omitempty"`
+	TotalExecutionTimes *int64  `json:"TotalExecutionTimes,omitempty" xml:"TotalExecutionTimes,omitempty"`
 }
 
 func (s DescribeSQLLogRecordsResponseBodyItemsSQLRecord) String() string {

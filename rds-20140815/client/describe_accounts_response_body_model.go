@@ -26,7 +26,6 @@ type iDescribeAccountsResponseBody interface {
 }
 
 type DescribeAccountsResponseBody struct {
-	// The information about the account.
 	Accounts *DescribeAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -189,136 +188,20 @@ func (s *DescribeAccountsResponseBodyAccounts) Validate() error {
 }
 
 type DescribeAccountsResponseBodyAccountsDBInstanceAccount struct {
-	// The description of the account.
-	//
-	// example:
-	//
-	// Test account
-	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The name of the database account.
-	//
-	// example:
-	//
-	// test1
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The status of the account. Valid values:
-	//
-	// 	- **Unavailable**
-	//
-	// 	- **Available**
-	//
-	// example:
-	//
-	// Available
-	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
-	// The type of the account. Valid values:
-	//
-	// 	- **Normal**: standard account
-	//
-	// 	- **Super**: privileged account
-	//
-	// 	- **Sysadmin**: system admin account, which is supported only for instances running SQL Server
-	//
-	// example:
-	//
-	// Normal
-	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// Indicates whether the account has the row-level security (RLS) permissions. Valid values:
-	//
-	// 	- **t**: The account has the RLS permissions.
-	//
-	// 	- **f**: The account does not have the RLS permissions.
-	//
-	// >  This parameter is returned only for instances that run PostgreSQL.
-	//
-	// example:
-	//
-	// f
-	BypassRLS *string `json:"BypassRLS,omitempty" xml:"BypassRLS,omitempty"`
-	// Indicates whether the password policy is applied.
-	//
-	// >  This parameter is returned only for instances that run SQL Server.
-	//
-	// example:
-	//
-	// true
-	CheckPolicy *bool `json:"CheckPolicy,omitempty" xml:"CheckPolicy,omitempty"`
-	// Indicates whether the account has the permissions to create databases. Valid values:
-	//
-	// 	- **t**: The account has the permissions to create databases.
-	//
-	// 	- **f**: The account does not have the permissions to create databases.
-	//
-	// >  This parameter is returned only for instances that run PostgreSQL.
-	//
-	// example:
-	//
-	// t
-	CreateDB *string `json:"CreateDB,omitempty" xml:"CreateDB,omitempty"`
-	// Indicates whether the account has the permissions to create roles. Valid values:
-	//
-	// 	- **t**: The account has the permissions to create roles.
-	//
-	// 	- **f**: The account does not have the permissions to create roles.
-	//
-	// >  This parameter is returned only for instances that run PostgreSQL.
-	//
-	// example:
-	//
-	// t
-	CreateRole *string `json:"CreateRole,omitempty" xml:"CreateRole,omitempty"`
-	// The ID of the instance to which the account belongs.
-	//
-	// example:
-	//
-	// rm-uf6wjk5*****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The details about the permissions that are granted to the account.
+	AccountDescription *string                                                                  `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
+	AccountName        *string                                                                  `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountStatus      *string                                                                  `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
+	AccountType        *string                                                                  `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	BypassRLS          *string                                                                  `json:"BypassRLS,omitempty" xml:"BypassRLS,omitempty"`
+	CheckPolicy        *bool                                                                    `json:"CheckPolicy,omitempty" xml:"CheckPolicy,omitempty"`
+	CreateDB           *string                                                                  `json:"CreateDB,omitempty" xml:"CreateDB,omitempty"`
+	CreateRole         *string                                                                  `json:"CreateRole,omitempty" xml:"CreateRole,omitempty"`
+	DBInstanceId       *string                                                                  `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	DatabasePrivileges *DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivileges `json:"DatabasePrivileges,omitempty" xml:"DatabasePrivileges,omitempty" type:"Struct"`
-	// The expiration time of the password.
-	//
-	// >  This parameter is returned only for instances that run SQL Server.
-	//
-	// example:
-	//
-	// 2024-10-21
-	PasswordExpireTime *string `json:"PasswordExpireTime,omitempty" xml:"PasswordExpireTime,omitempty"`
-	// Indicates whether the number of databases that are managed by the account exceeds the upper limit. Valid values:
-	//
-	// 	- **1**: The number of databases that are managed by the account exceeds the upper limit.
-	//
-	// 	- **0**: The number of databases that are managed by the account does not exceed the upper limit.
-	//
-	// example:
-	//
-	// 0
-	PrivExceeded *string `json:"PrivExceeded,omitempty" xml:"PrivExceeded,omitempty"`
-	// Indicates whether the account has the replication permissions. Valid values:
-	//
-	// 	- **t**: The account has the replication permissions.
-	//
-	// 	- **f**: The account does not have the replication permissions.
-	//
-	// >  This parameter is returned only for instances that run PostgreSQL.
-	//
-	// example:
-	//
-	// t
-	Replication *string `json:"Replication,omitempty" xml:"Replication,omitempty"`
-	// The expiration time of the password. Valid values:
-	//
-	// 	- **infinity**: The password never expires.
-	//
-	// 	- **Empty**: The expiration time is not specified.
-	//
-	// 	- **Actual expiration time**: in the format of *yyyy-MM-dd*T*HH:mm:ss*Z in UTC. Example: 2022-10-01T00:00:00Z.
-	//
-	// >  This parameter is returned only for instances that run PostgreSQL.
-	//
-	// example:
-	//
-	// 2022-10-01T00:00:00Z
-	ValidUntil *string `json:"ValidUntil,omitempty" xml:"ValidUntil,omitempty"`
+	PasswordExpireTime *string                                                                  `json:"PasswordExpireTime,omitempty" xml:"PasswordExpireTime,omitempty"`
+	PrivExceeded       *string                                                                  `json:"PrivExceeded,omitempty" xml:"PrivExceeded,omitempty"`
+	Replication        *string                                                                  `json:"Replication,omitempty" xml:"Replication,omitempty"`
+	ValidUntil         *string                                                                  `json:"ValidUntil,omitempty" xml:"ValidUntil,omitempty"`
 }
 
 func (s DescribeAccountsResponseBodyAccountsDBInstanceAccount) String() string {
@@ -499,34 +382,9 @@ func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivileges
 }
 
 type DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivilegesDatabasePrivilege struct {
-	// The type of the permissions. Valid values:
-	//
-	// 	- **ReadWrite**: read and write permissions.
-	//
-	// 	- **ReadOnly**: read-only permissions.
-	//
-	// 	- **DDLOnly**: DDL-only permissions.
-	//
-	// 	- **DMLOnly**: DML-only permissions.
-	//
-	// 	- **Custom**: custom permissions. You can modify the permissions of the account by using SQL commands.
-	//
-	// example:
-	//
-	// ReadWrite
-	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
-	// The permissions that are granted to the account. For more information, see [Account permissions](https://help.aliyun.com/document_detail/146395.html).
-	//
-	// example:
-	//
-	// SELECT,INSERT
+	AccountPrivilege       *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
 	AccountPrivilegeDetail *string `json:"AccountPrivilegeDetail,omitempty" xml:"AccountPrivilegeDetail,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// test1
-	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	DBName                 *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 }
 
 func (s DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivilegesDatabasePrivilege) String() string {

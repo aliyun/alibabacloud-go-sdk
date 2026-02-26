@@ -18,7 +18,6 @@ type iPreCheckCreateOrderForDeleteDBNodesResponseBody interface {
 }
 
 type PreCheckCreateOrderForDeleteDBNodesResponseBody struct {
-	// The information about the failed order.
 	Failures *PreCheckCreateOrderForDeleteDBNodesResponseBodyFailures `json:"Failures,omitempty" xml:"Failures,omitempty" type:"Struct"`
 	// The precheck result.
 	//
@@ -113,27 +112,7 @@ func (s *PreCheckCreateOrderForDeleteDBNodesResponseBodyFailures) Validate() err
 }
 
 type PreCheckCreateOrderForDeleteDBNodesResponseBodyFailuresFailures struct {
-	// The response code. Valid values:
-	//
-	// 	- **200**: success
-	//
-	// 	- **400**: client error
-	//
-	// 	- **401**: identity authentication failed
-	//
-	// 	- **404**: requested page not found
-	//
-	// 	- **500**: server error
-	//
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
-	//
-	// example:
-	//
-	// success
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 

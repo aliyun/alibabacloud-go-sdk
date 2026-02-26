@@ -115,9 +115,8 @@ type DescribeDBProxyEndpointResponseBody struct {
 	// example:
 	//
 	// TransactionReadSqlRouteOptimizeStatus:1;ConnectionPersist:0;ReadWriteSpliting:1
-	DBProxyFeatures *string `json:"DBProxyFeatures,omitempty" xml:"DBProxyFeatures,omitempty"`
-	// The proxy nodes that are associated with the proxy terminal.
-	DBProxyNodes *DescribeDBProxyEndpointResponseBodyDBProxyNodes `json:"DBProxyNodes,omitempty" xml:"DBProxyNodes,omitempty" type:"Struct"`
+	DBProxyFeatures *string                                          `json:"DBProxyFeatures,omitempty" xml:"DBProxyFeatures,omitempty"`
+	DBProxyNodes    *DescribeDBProxyEndpointResponseBodyDBProxyNodes `json:"DBProxyNodes,omitempty" xml:"DBProxyNodes,omitempty" type:"Struct"`
 	// The description of the proxy terminal.
 	//
 	// example:
@@ -151,9 +150,8 @@ type DescribeDBProxyEndpointResponseBody struct {
 	// example:
 	//
 	// cn-hangzhou-c
-	DbProxyEndpointZoneId *string `json:"DbProxyEndpointZoneId,omitempty" xml:"DbProxyEndpointZoneId,omitempty"`
-	// An array that consists of the information about the proxy endpoint.
-	EndpointConnectItems *DescribeDBProxyEndpointResponseBodyEndpointConnectItems `json:"EndpointConnectItems,omitempty" xml:"EndpointConnectItems,omitempty" type:"Struct"`
+	DbProxyEndpointZoneId *string                                                  `json:"DbProxyEndpointZoneId,omitempty" xml:"DbProxyEndpointZoneId,omitempty"`
+	EndpointConnectItems  *DescribeDBProxyEndpointResponseBodyEndpointConnectItems `json:"EndpointConnectItems,omitempty" xml:"EndpointConnectItems,omitempty" type:"Struct"`
 	// The method that is used to assign read weights. For more information, see [Modify the latency threshold and read weights of ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/96076.html). Valid values:
 	//
 	// 	- **Standard**: The system automatically assigns read weights to the instance and its read-only instances based on the specifications of these instances.
@@ -422,24 +420,9 @@ func (s *DescribeDBProxyEndpointResponseBodyDBProxyNodes) Validate() error {
 }
 
 type DescribeDBProxyEndpointResponseBodyDBProxyNodesDBProxyNodes struct {
-	// The number of CPU cores of the node.
-	//
-	// example:
-	//
-	// 2
 	CpuCores *string `json:"cpuCores,omitempty" xml:"cpuCores,omitempty"`
-	// The ID of the node in the zone.
-	//
-	// example:
-	//
-	// pn-xxxxxxx01
-	NodeId *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
-	// The zone ID of the node.
-	//
-	// example:
-	//
-	// cn-hangzhou-c
-	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+	NodeId   *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
+	ZoneId   *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 
 func (s DescribeDBProxyEndpointResponseBodyDBProxyNodesDBProxyNodes) String() string {
@@ -516,30 +499,9 @@ func (s *DescribeDBProxyEndpointResponseBodyEndpointConnectItems) Validate() err
 }
 
 type DescribeDBProxyEndpointResponseBodyEndpointConnectItemsEndpointConnectItems struct {
-	// The proxy endpoint queried.
-	//
-	// example:
-	//
-	// testproxy****.rwlb.rds.aliyuncs.com
 	DbProxyEndpointConnectString *string `json:"DbProxyEndpointConnectString,omitempty" xml:"DbProxyEndpointConnectString,omitempty"`
-	// The network type of the instance. Valid values:
-	//
-	// 	- **0**: Internet
-	//
-	// 	- **1**: classic network
-	//
-	// 	- **2**: virtual private cloud (VPC)
-	//
-	// example:
-	//
-	// 2
-	DbProxyEndpointNetType *string `json:"DbProxyEndpointNetType,omitempty" xml:"DbProxyEndpointNetType,omitempty"`
-	// The port number that is associated with the proxy endpoint. Default value: **3306**.
-	//
-	// example:
-	//
-	// 3306
-	DbProxyEndpointPort *string `json:"DbProxyEndpointPort,omitempty" xml:"DbProxyEndpointPort,omitempty"`
+	DbProxyEndpointNetType       *string `json:"DbProxyEndpointNetType,omitempty" xml:"DbProxyEndpointNetType,omitempty"`
+	DbProxyEndpointPort          *string `json:"DbProxyEndpointPort,omitempty" xml:"DbProxyEndpointPort,omitempty"`
 }
 
 func (s DescribeDBProxyEndpointResponseBodyEndpointConnectItemsEndpointConnectItems) String() string {

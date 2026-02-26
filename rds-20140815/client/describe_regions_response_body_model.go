@@ -16,7 +16,6 @@ type iDescribeRegionsResponseBody interface {
 }
 
 type DescribeRegionsResponseBody struct {
-	// The available regions and zones.
 	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,44 +95,11 @@ func (s *DescribeRegionsResponseBodyRegions) Validate() error {
 }
 
 type DescribeRegionsResponseBodyRegionsRDSRegion struct {
-	// The region name. The return value of this parameter is in the language that is specified by the **AcceptLanguage*	- parameter. For example, if the value of the RegionId parameter in the response is cn-hangzhou, the following values are returned for the LocalName parameter:
-	//
-	// 	- If the value of the **AcceptLanguage*	- parameter is **zh-CN**, the value  1()is returned for the LocalName parameter.
-	//
-	// 	- If the value of the **AcceptLanguage*	- parameter is **en-US**, the value China (Hangzhou) is returned for the LocalName parameter.
-	//
-	// example:
-	//
-	// China (Hangzhou)
-	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The endpoint that is used to connect to Alibaba Cloud services in the region. For more information, see [Endpoints](https://help.aliyun.com/document_detail/610370.html).
-	//
-	// example:
-	//
-	// rds.aliyuncs.com
+	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The zone ID.
-	//
-	// example:
-	//
-	// cn-hangzhou-h
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The zone name. The return value of this parameter is in the language that is specified by the **AcceptLanguage*	- parameter. For example, if the value of the ZoneId parameter in the response is cn-hangzhou-j, the following values are returned for the ZoneName parameter:
-	//
-	// 	- If the value of the **AcceptLanguage*	- parameter is **zh-CN**, the value   J is returned for the ZoneName parameter.
-	//
-	// 	- If the value of the **AcceptLanguage*	- parameter is **en-US**, the value Hangzhou Zone J is returned for the ZoneName parameter.
-	//
-	// example:
-	//
-	// Hangzhou Zone H
-	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ZoneId         *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneName       *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsRDSRegion) String() string {

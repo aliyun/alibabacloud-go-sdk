@@ -22,7 +22,6 @@ type iDescribeSQLLogFilesResponseBody interface {
 }
 
 type DescribeSQLLogFilesResponseBody struct {
-	// An array that consists of the returned audit log files.
 	Items *DescribeSQLLogFilesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,48 +146,12 @@ func (s *DescribeSQLLogFilesResponseBodyItems) Validate() error {
 }
 
 type DescribeSQLLogFilesResponseBodyItemsLogFile struct {
-	// The file name.
-	//
-	// example:
-	//
-	// custinsxxxxx.csv
-	FileID *string `json:"FileID,omitempty" xml:"FileID,omitempty"`
-	// The download URL of the file. If the audit log file cannot be downloaded, this parameter is null.
-	//
-	// example:
-	//
-	// http://rdslog-hz-v3.oss-cn-hangzhou.aliyuncs.com/xxxxx
+	FileID         *string `json:"FileID,omitempty" xml:"FileID,omitempty"`
 	LogDownloadURL *string `json:"LogDownloadURL,omitempty" xml:"LogDownloadURL,omitempty"`
-	// The time at which the last SQL statement recorded in the audit log file was executed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2015-05-24T07:00:00Z
-	LogEndTime *string `json:"LogEndTime,omitempty" xml:"LogEndTime,omitempty"`
-	// The size of the audit log file. Unit: bytes.
-	//
-	// example:
-	//
-	// 3000
-	LogSize *string `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
-	// The time at which the first SQL statement recorded in the audit log file was executed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2015-05-23T07:00:00Z
-	LogStartTime *string `json:"LogStartTime,omitempty" xml:"LogStartTime,omitempty"`
-	// The status of the audit log file. Valid values:
-	//
-	// 	- **Success**
-	//
-	// 	- **Failed**
-	//
-	// 	- **Generating**
-	//
-	// example:
-	//
-	// Success
-	LogStatus *string `json:"LogStatus,omitempty" xml:"LogStatus,omitempty"`
+	LogEndTime     *string `json:"LogEndTime,omitempty" xml:"LogEndTime,omitempty"`
+	LogSize        *string `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
+	LogStartTime   *string `json:"LogStartTime,omitempty" xml:"LogStartTime,omitempty"`
+	LogStatus      *string `json:"LogStatus,omitempty" xml:"LogStatus,omitempty"`
 }
 
 func (s DescribeSQLLogFilesResponseBodyItemsLogFile) String() string {

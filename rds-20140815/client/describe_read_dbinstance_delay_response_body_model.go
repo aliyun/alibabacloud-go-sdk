@@ -33,9 +33,8 @@ type DescribeReadDBInstanceDelayResponseBody struct {
 	// example:
 	//
 	// 0
-	DelayTime *int32 `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
-	// The latency information.
-	Items *DescribeReadDBInstanceDelayResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	DelayTime *int32                                        `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
+	Items     *DescribeReadDBInstanceDelayResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The read-only instance ID.
 	//
 	// example:
@@ -147,19 +146,9 @@ func (s *DescribeReadDBInstanceDelayResponseBodyItems) Validate() error {
 }
 
 type DescribeReadDBInstanceDelayResponseBodyItemsItems struct {
-	// The primary instance ID.
-	//
-	// example:
-	//
-	// rm-bp*****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// An array that consists of information about the read-only instance.
-	ReadDBInstanceNames *DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDBInstanceNames `json:"ReadDBInstanceNames,omitempty" xml:"ReadDBInstanceNames,omitempty" type:"Struct"`
-	// The latency of data replication.
-	ReadDelayTimes *DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDelayTimes `json:"ReadDelayTimes,omitempty" xml:"ReadDelayTimes,omitempty" type:"Struct"`
-	// The information about the write-ahead log (WAL) latency.
-	//
-	// >  This parameter is returned only when the primary instance runs PostgreSQL.
+	DBInstanceId          *string                                                                 `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	ReadDBInstanceNames   *DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDBInstanceNames   `json:"ReadDBInstanceNames,omitempty" xml:"ReadDBInstanceNames,omitempty" type:"Struct"`
+	ReadDelayTimes        *DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDelayTimes        `json:"ReadDelayTimes,omitempty" xml:"ReadDelayTimes,omitempty" type:"Struct"`
 	ReadonlyInstanceDelay *DescribeReadDBInstanceDelayResponseBodyItemsItemsReadonlyInstanceDelay `json:"ReadonlyInstanceDelay,omitempty" xml:"ReadonlyInstanceDelay,omitempty" type:"Struct"`
 }
 
@@ -311,54 +300,14 @@ func (s *DescribeReadDBInstanceDelayResponseBodyItemsItemsReadonlyInstanceDelay)
 }
 
 type DescribeReadDBInstanceDelayResponseBodyItemsItemsReadonlyInstanceDelayReadonlyInstanceDelay struct {
-	// The duration that is allowed for the latency in the persistence of WAL data. Unit: seconds.
-	//
-	// example:
-	//
-	// 0
-	FlushLag *string `json:"FlushLag,omitempty" xml:"FlushLag,omitempty"`
-	// The data size that is allowed for the latency in the persistence of WAL data. Unit: MB.
-	//
-	// example:
-	//
-	// 0
-	FlushLatency *string `json:"FlushLatency,omitempty" xml:"FlushLatency,omitempty"`
-	// The read-only instance ID.
-	//
-	// example:
-	//
-	// rr-bp*****
+	FlushLag           *string `json:"FlushLag,omitempty" xml:"FlushLag,omitempty"`
+	FlushLatency       *string `json:"FlushLatency,omitempty" xml:"FlushLatency,omitempty"`
 	ReadDBInstanceName *string `json:"ReadDBInstanceName,omitempty" xml:"ReadDBInstanceName,omitempty"`
-	// The duration that is allowed for the latency in the playback of WAL data. Unit: seconds.
-	//
-	// example:
-	//
-	// 0
-	ReplayLag *string `json:"ReplayLag,omitempty" xml:"ReplayLag,omitempty"`
-	// The data size that is allowed for the latency in the playback of WAL data. Unit: MB.
-	//
-	// example:
-	//
-	// 0
-	ReplayLatency *string `json:"ReplayLatency,omitempty" xml:"ReplayLatency,omitempty"`
-	// The data size that is allowed for the latency in the sending of WAL data. Unit: MB.
-	//
-	// example:
-	//
-	// 0
-	SendLatency *string `json:"SendLatency,omitempty" xml:"SendLatency,omitempty"`
-	// The duration that is allowed for the latency in the write-back of WAL data. Unit: seconds.
-	//
-	// example:
-	//
-	// 0
-	WriteLag *string `json:"WriteLag,omitempty" xml:"WriteLag,omitempty"`
-	// The data size that is allowed for the latency in the write-back of WAL data. Unit: MB.
-	//
-	// example:
-	//
-	// 0
-	WriteLatency *string `json:"WriteLatency,omitempty" xml:"WriteLatency,omitempty"`
+	ReplayLag          *string `json:"ReplayLag,omitempty" xml:"ReplayLag,omitempty"`
+	ReplayLatency      *string `json:"ReplayLatency,omitempty" xml:"ReplayLatency,omitempty"`
+	SendLatency        *string `json:"SendLatency,omitempty" xml:"SendLatency,omitempty"`
+	WriteLag           *string `json:"WriteLag,omitempty" xml:"WriteLag,omitempty"`
+	WriteLatency       *string `json:"WriteLatency,omitempty" xml:"WriteLatency,omitempty"`
 }
 
 func (s DescribeReadDBInstanceDelayResponseBodyItemsItemsReadonlyInstanceDelayReadonlyInstanceDelay) String() string {

@@ -22,7 +22,6 @@ type iDescribeSQLLogReportListResponseBody interface {
 }
 
 type DescribeSQLLogReportListResponseBody struct {
-	// An array that consists of SQL log reports.
 	Items *DescribeSQLLogReportListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,16 +146,9 @@ func (s *DescribeSQLLogReportListResponseBodyItems) Validate() error {
 }
 
 type DescribeSQLLogReportListResponseBodyItemsItem struct {
-	// An array that consists of SQL statements executed with the highest latency.
 	LatencyTopNItems *DescribeSQLLogReportListResponseBodyItemsItemLatencyTopNItems `json:"LatencyTopNItems,omitempty" xml:"LatencyTopNItems,omitempty" type:"Struct"`
-	// An array that consists of SQL statements executed the most frequently.
-	QPSTopNItems *DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItems `json:"QPSTopNItems,omitempty" xml:"QPSTopNItems,omitempty" type:"Struct"`
-	// The time when the report was generated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-03-27T16:00:00Z
-	ReportTime *string `json:"ReportTime,omitempty" xml:"ReportTime,omitempty"`
+	QPSTopNItems     *DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItems     `json:"QPSTopNItems,omitempty" xml:"QPSTopNItems,omitempty" type:"Struct"`
+	ReportTime       *string                                                        `json:"ReportTime,omitempty" xml:"ReportTime,omitempty"`
 }
 
 func (s DescribeSQLLogReportListResponseBodyItemsItem) String() string {
@@ -243,26 +235,9 @@ func (s *DescribeSQLLogReportListResponseBodyItemsItemLatencyTopNItems) Validate
 }
 
 type DescribeSQLLogReportListResponseBodyItemsItemLatencyTopNItemsLatencyTopNItem struct {
-	// The average time that is required to execute the SQL statement. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 500
-	AvgLatency *int64 `json:"AvgLatency,omitempty" xml:"AvgLatency,omitempty"`
-	// The number of times that the SQL statement is executed.
-	//
-	// example:
-	//
-	// 5
-	SQLExecuteTimes *int64 `json:"SQLExecuteTimes,omitempty" xml:"SQLExecuteTimes,omitempty"`
-	// The SQL statement.
-	//
-	// >  Only the first 128 characters of the SQL statement are returned. In addition, only the SQL statements that take more than 100 ms to execute are returned.
-	//
-	// example:
-	//
-	// SELECT 	- FROM table_name;
-	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
+	AvgLatency      *int64  `json:"AvgLatency,omitempty" xml:"AvgLatency,omitempty"`
+	SQLExecuteTimes *int64  `json:"SQLExecuteTimes,omitempty" xml:"SQLExecuteTimes,omitempty"`
+	SQLText         *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
 }
 
 func (s DescribeSQLLogReportListResponseBodyItemsItemLatencyTopNItemsLatencyTopNItem) String() string {
@@ -339,20 +314,8 @@ func (s *DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItems) Validate() e
 }
 
 type DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItemsQPSTopNItem struct {
-	// The number of times that the SQL statement is executed.
-	//
-	// example:
-	//
-	// 5
-	SQLExecuteTimes *int64 `json:"SQLExecuteTimes,omitempty" xml:"SQLExecuteTimes,omitempty"`
-	// The SQL statement.
-	//
-	// >  Only the first 128 characters of the SQL statement are returned. In addition, only the SQL statements that take more than 5 ms to execute are returned.
-	//
-	// example:
-	//
-	// SELECT 	- FROM table_name;
-	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
+	SQLExecuteTimes *int64  `json:"SQLExecuteTimes,omitempty" xml:"SQLExecuteTimes,omitempty"`
+	SQLText         *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
 }
 
 func (s DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItemsQPSTopNItem) String() string {

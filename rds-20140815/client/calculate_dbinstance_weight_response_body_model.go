@@ -16,7 +16,6 @@ type iCalculateDBInstanceWeightResponseBody interface {
 }
 
 type CalculateDBInstanceWeightResponseBody struct {
-	// An array that consists of information about the system-assigned read weight.
 	Items *CalculateDBInstanceWeightResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,34 +95,10 @@ func (s *CalculateDBInstanceWeightResponseBodyItems) Validate() error {
 }
 
 type CalculateDBInstanceWeightResponseBodyItemsDBInstanceWeight struct {
-	// The instance ID
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The type of the instance. Valid values:
-	//
-	// 	- **Master**: primary instance
-	//
-	// 	- **Readonly**: read-only instance
-	//
-	// example:
-	//
-	// Master
-	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
-	// The latency at which the read-only instances replicate data. The read-only instances replicate data from the primary instance at the latency that is specified by the **ReadonlyInstanceSQLDelayedTime*	- parameter. Unit: seconds.
-	//
-	// example:
-	//
-	// 30
+	DBInstanceId                   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceType                 *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
 	ReadonlyInstanceSQLDelayedTime *string `json:"ReadonlyInstanceSQLDelayedTime,omitempty" xml:"ReadonlyInstanceSQLDelayedTime,omitempty"`
-	// The read weight that the system calculates in real time for the instance.
-	//
-	// example:
-	//
-	// 100
-	Weight *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Weight                         *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s CalculateDBInstanceWeightResponseBodyItemsDBInstanceWeight) String() string {

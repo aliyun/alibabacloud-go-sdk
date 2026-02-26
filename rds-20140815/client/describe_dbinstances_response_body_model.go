@@ -24,7 +24,6 @@ type iDescribeDBInstancesResponseBody interface {
 }
 
 type DescribeDBInstancesResponseBody struct {
-	// The information about the instances.
 	Items *DescribeDBInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The token that is used to display the next page. If the returned entries are displayed on multiple pages, the next page can be displayed when you call this operation again with **NextToken*	- specified.
 	//
@@ -168,402 +167,65 @@ func (s *DescribeDBInstancesResponseBodyItems) Validate() error {
 }
 
 type DescribeDBInstancesResponseBodyItemsDBInstance struct {
-	AutoRenewal             *bool   `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	BlueGreenDeploymentName *string `json:"BlueGreenDeploymentName,omitempty" xml:"BlueGreenDeploymentName,omitempty"`
-	BlueInstanceName        *string `json:"BlueInstanceName,omitempty" xml:"BlueInstanceName,omitempty"`
-	// A deprecated parameter.
-	//
-	// example:
-	//
-	// 0
-	BpeEnabled *string `json:"BpeEnabled,omitempty" xml:"BpeEnabled,omitempty"`
-	// Indicates whether the I/O burst feature is enabled. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// false
-	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
-	// The RDS edition of the instance. Valid values:
-	//
-	// 	- **Basic**: RDS Basic Edition
-	//
-	// 	- **HighAvailability**: RDS High-availability Edition
-	//
-	// 	- **Finance**: RDS Enterprise Edition
-	//
-	// >  This parameter is returned only when the **InstanceLevel*	- parameter is set to **1**.
-	//
-	// example:
-	//
-	// Basic
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// A reserved parameter.
-	//
-	// example:
-	//
-	// false
-	ColdDataEnabled *bool `json:"ColdDataEnabled,omitempty" xml:"ColdDataEnabled,omitempty"`
-	// The connection mode of the instance. Valid values:
-	//
-	// 	- **Standard**: standard mode
-	//
-	// 	- **Safe**: database proxy mode
-	//
-	// example:
-	//
-	// Standard
-	ConnectionMode *string `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
-	// The endpoint of the instance.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx.mysql.rds.aliyuncs.com
-	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The creation time of the instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2018-11-05T11:26:02Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The number of CPU instances.
-	//
-	// Returns only when the InstanceLevel parameter is 1.
-	//
-	// example:
-	//
-	// 2
-	DBInstanceCPU *string `json:"DBInstanceCPU,omitempty" xml:"DBInstanceCPU,omitempty"`
-	// The instance type of the instance. For information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
-	//
-	// example:
-	//
-	// rds.mys2.small
-	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	// The instance description.
-	//
-	// example:
-	//
-	// Test database
-	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The memory size of the node. Unit: MB.
-	//
-	// Returns only when the InstanceLevel parameter is 1.
-	//
-	// example:
-	//
-	// 4096
-	DBInstanceMemory *int32 `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
-	// The type of the network connection to the instance. Valid values:
-	//
-	// 	- **Internet**
-	//
-	// 	- **Intranet**
-	//
-	// example:
-	//
-	// Internet
-	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
-	// The instance status. For more information, see [Instance statuses](https://help.aliyun.com/document_detail/26315.html).
-	//
-	// example:
-	//
-	// Running
-	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	// The storage type of the instance.
-	//
-	// example:
-	//
-	// ModuleList.4.ModuleCode
-	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
-	// The type of the instance. Valid values:
-	//
-	// 	- **Primary**: primary instance
-	//
-	// 	- **Readonly**: read-only instance
-	//
-	// 	- **Guard**: disaster recovery instance
-	//
-	// 	- **Temp**: temporary instance
-	//
-	// example:
-	//
-	// Primary
-	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
-	// The ID of the dedicated cluster.
-	//
-	// example:
-	//
-	// dhg-7a9xxxxxxxx
-	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// The name of the dedicated cluster.
-	//
-	// example:
-	//
-	// testhostgroup
-	DedicatedHostGroupName *string `json:"DedicatedHostGroupName,omitempty" xml:"DedicatedHostGroupName,omitempty"`
-	// The ID of the host on which the logger instance resides.
-	//
-	// example:
-	//
-	// dh-bpxxxx
-	DedicatedHostIdForLog *string `json:"DedicatedHostIdForLog,omitempty" xml:"DedicatedHostIdForLog,omitempty"`
-	// The ID of the host on which the primary instance resides.
-	//
-	// example:
-	//
-	// dh-bpxxxx
-	DedicatedHostIdForMaster *string `json:"DedicatedHostIdForMaster,omitempty" xml:"DedicatedHostIdForMaster,omitempty"`
-	// The ID of the host on which the secondary instance resides.
-	//
-	// example:
-	//
-	// dh-bpxxxx
-	DedicatedHostIdForSlave *string `json:"DedicatedHostIdForSlave,omitempty" xml:"DedicatedHostIdForSlave,omitempty"`
-	// The name of the host on which the logger instance resides.
-	//
-	// example:
-	//
-	// testlog
-	DedicatedHostNameForLog *string `json:"DedicatedHostNameForLog,omitempty" xml:"DedicatedHostNameForLog,omitempty"`
-	// The name of the host on which the primary instance resides.
-	//
-	// example:
-	//
-	// testmaster
-	DedicatedHostNameForMaster *string `json:"DedicatedHostNameForMaster,omitempty" xml:"DedicatedHostNameForMaster,omitempty"`
-	// The name of the host on which the secondary instance resides.
-	//
-	// example:
-	//
-	// testslave
-	DedicatedHostNameForSlave *string `json:"DedicatedHostNameForSlave,omitempty" xml:"DedicatedHostNameForSlave,omitempty"`
-	// The zone ID of the host on which the logger instance resides.
-	//
-	// example:
-	//
-	// cn-hangzhou-b
-	DedicatedHostZoneIdForLog *string `json:"DedicatedHostZoneIdForLog,omitempty" xml:"DedicatedHostZoneIdForLog,omitempty"`
-	// The zone ID of the host on which the primary instance resides.
-	//
-	// example:
-	//
-	// cn-hangzhou-c
-	DedicatedHostZoneIdForMaster *string `json:"DedicatedHostZoneIdForMaster,omitempty" xml:"DedicatedHostZoneIdForMaster,omitempty"`
-	// The zone ID of the host on which the secondary instance resides.
-	//
-	// example:
-	//
-	// cn-hangzhou-d
-	DedicatedHostZoneIdForSlave *string `json:"DedicatedHostZoneIdForSlave,omitempty" xml:"DedicatedHostZoneIdForSlave,omitempty"`
-	// Indicates whether the release protection feature is enabled for the instance. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// false
-	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// The time when the instance was destroyed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2018-11-05T11:26:02Z
-	DestroyTime *string `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
-	// The database engine of the instance.
-	//
-	// example:
-	//
-	// MySQL
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version.
-	//
-	// example:
-	//
-	// 5.7
-	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The expiration time of the instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// >  Pay-as-you-go instances never expire.
-	//
-	// example:
-	//
-	// 2019-02-27T16:00:00Z
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The name of the dedicated cluster to which the instance belongs. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition.
-	//
-	// example:
-	//
-	// TestGroup
-	GeneralGroupName  *string `json:"GeneralGroupName,omitempty" xml:"GeneralGroupName,omitempty"`
-	GreenInstanceName *string `json:"GreenInstanceName,omitempty" xml:"GreenInstanceName,omitempty"`
-	// The ID of the disaster recovery instance. This parameter is returned only when the instance is a primary instance and has a disaster recovery instance attached.
-	//
-	// example:
-	//
-	// rm-uf64zsuxxxxxxxxxx
-	GuardDBInstanceId *string `json:"GuardDBInstanceId,omitempty" xml:"GuardDBInstanceId,omitempty"`
-	// The network type of the instance. Valid values:
-	//
-	// 	- **Classic**
-	//
-	// 	- **VPC**
-	//
-	// example:
-	//
-	// Classic
-	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	// Indicates whether the I/O acceleration feature is enabled. Valid values:
-	//
-	// 	- 1: enabled
-	//
-	// 	- 0: disabled
-	//
-	// example:
-	//
-	// 0
-	IoAccelerationEnabled *string `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
-	IsAnalyticIns         *string `json:"IsAnalyticIns,omitempty" xml:"IsAnalyticIns,omitempty"`
-	IsAnalyticReadOnlyIns *bool   `json:"IsAnalyticReadOnlyIns,omitempty" xml:"IsAnalyticReadOnlyIns,omitempty"`
-	// The lock mode of the instance. Valid values:
-	//
-	// 	- **Unlock**: The instance is not locked.
-	//
-	// 	- **ManualLock**: The instance is manually locked.
-	//
-	// 	- **LockByExpiration**: The instance is automatically locked due to instance expiration.
-	//
-	// 	- **LockByRestoration**: The instance is automatically locked before the instance is rolled back.
-	//
-	// 	- **LockByDiskQuota**: The instance is automatically locked due to exhausted storage capacity.
-	//
-	// 	- **Released**: The instance is released. After an instance is released, the instance cannot be unlocked. You can only restore the backup data of the instance to a new instance. This process requires a long period of time.
-	//
-	// example:
-	//
-	// Unlock
-	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The reason why the instance was locked.
-	//
-	// example:
-	//
-	// instance_expired
-	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The ID of the primary instance. If this parameter is null, the instance is a primary instance.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxxxxx
-	MasterInstanceId *string `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
-	// Indicates whether the multi-zone deployment method is used for the instance. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// >  If the multi-zone deployment method is used for the instance, the zone ID of the instance contains MAZ. Example: `cn-hangzhou-MAZ10(h,i)`.
-	//
-	// example:
-	//
-	// true
-	MutriORsignle *bool `json:"MutriORsignle,omitempty" xml:"MutriORsignle,omitempty"`
-	// The billing method of the instance. Valid values:
-	//
-	// 	- **Postpaid**: pay-as-you-go
-	//
-	// 	- **Prepaid**: subscription
-	//
-	// example:
-	//
-	// Postpaid
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The IDs of the read-only instances. This parameter is returned only when the instance is a primary instance and has the read-only instances attached.
-	ReadOnlyDBInstanceIds *DescribeDBInstancesResponseBodyItemsDBInstanceReadOnlyDBInstanceIds `json:"ReadOnlyDBInstanceIds,omitempty" xml:"ReadOnlyDBInstanceIds,omitempty" type:"Struct"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
-	//
-	// example:
-	//
-	// rg-acfmyxxxxxxx
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Indicates whether the instance supports weight-based switchovers for high availability. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition. Valid values:
-	//
-	// 	- **100**: The instance supports weight-based switchovers for high availability.
-	//
-	// 	- **0**: The instance does not support weight-based switchovers for high availability.
-	//
-	// example:
-	//
-	// 100
-	SwitchWeight *int32 `json:"SwitchWeight,omitempty" xml:"SwitchWeight,omitempty"`
-	// The ID of the temporary instance. This parameter is returned only when the instance is a primary instance and has a temporary instance attached.
-	//
-	// example:
-	//
-	// rm-uf64zsuxxxxxxxxxx
-	TempDBInstanceId *string `json:"TempDBInstanceId,omitempty" xml:"TempDBInstanceId,omitempty"`
-	// The information about the exception that is detected on the instance. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition.
-	//
-	// example:
-	//
-	// Run as expected.
-	Tips *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
-	// The severity of the exception that is detected on the instance. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition. Valid values:
-	//
-	// 	- **1**: The instance is normal.
-	//
-	// 	- **2**: The specifications of the read-only instances do not match the specifications of the primary instance, and instance performance may be affected. You must adjust the specifications of these instances based on your business requirements.
-	//
-	// example:
-	//
-	// 1
-	TipsLevel *int32 `json:"TipsLevel,omitempty" xml:"TipsLevel,omitempty"`
-	// The vSwitch ID.
-	//
-	// example:
-	//
-	// vsw-uf6adz52c2pxxxxxxx
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the instance. This parameter is returned only when the instance resides in a VPC.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx
-	VpcCloudInstanceId *string `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
-	// The virtual private cloud (VPC) ID.
-	//
-	// example:
-	//
-	// vpc-uf6f7l4fg90xxxxxxx
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The VPC name.
-	//
-	// example:
-	//
-	// test-huadong
-	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-	// The zone ID.
-	//
-	// example:
-	//
-	// cn-hangzhou-a
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AutoRenewal                  *bool                                                                `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	BlueGreenDeploymentName      *string                                                              `json:"BlueGreenDeploymentName,omitempty" xml:"BlueGreenDeploymentName,omitempty"`
+	BlueInstanceName             *string                                                              `json:"BlueInstanceName,omitempty" xml:"BlueInstanceName,omitempty"`
+	BpeEnabled                   *string                                                              `json:"BpeEnabled,omitempty" xml:"BpeEnabled,omitempty"`
+	BurstingEnabled              *bool                                                                `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
+	Category                     *string                                                              `json:"Category,omitempty" xml:"Category,omitempty"`
+	ColdDataEnabled              *bool                                                                `json:"ColdDataEnabled,omitempty" xml:"ColdDataEnabled,omitempty"`
+	ConnectionMode               *string                                                              `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
+	ConnectionString             *string                                                              `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	CreateTime                   *string                                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DBInstanceCPU                *string                                                              `json:"DBInstanceCPU,omitempty" xml:"DBInstanceCPU,omitempty"`
+	DBInstanceClass              *string                                                              `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	DBInstanceDescription        *string                                                              `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	DBInstanceId                 *string                                                              `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceMemory             *int32                                                               `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
+	DBInstanceNetType            *string                                                              `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
+	DBInstanceStatus             *string                                                              `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	DBInstanceStorageType        *string                                                              `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
+	DBInstanceType               *string                                                              `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
+	DedicatedHostGroupId         *string                                                              `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
+	DedicatedHostGroupName       *string                                                              `json:"DedicatedHostGroupName,omitempty" xml:"DedicatedHostGroupName,omitempty"`
+	DedicatedHostIdForLog        *string                                                              `json:"DedicatedHostIdForLog,omitempty" xml:"DedicatedHostIdForLog,omitempty"`
+	DedicatedHostIdForMaster     *string                                                              `json:"DedicatedHostIdForMaster,omitempty" xml:"DedicatedHostIdForMaster,omitempty"`
+	DedicatedHostIdForSlave      *string                                                              `json:"DedicatedHostIdForSlave,omitempty" xml:"DedicatedHostIdForSlave,omitempty"`
+	DedicatedHostNameForLog      *string                                                              `json:"DedicatedHostNameForLog,omitempty" xml:"DedicatedHostNameForLog,omitempty"`
+	DedicatedHostNameForMaster   *string                                                              `json:"DedicatedHostNameForMaster,omitempty" xml:"DedicatedHostNameForMaster,omitempty"`
+	DedicatedHostNameForSlave    *string                                                              `json:"DedicatedHostNameForSlave,omitempty" xml:"DedicatedHostNameForSlave,omitempty"`
+	DedicatedHostZoneIdForLog    *string                                                              `json:"DedicatedHostZoneIdForLog,omitempty" xml:"DedicatedHostZoneIdForLog,omitempty"`
+	DedicatedHostZoneIdForMaster *string                                                              `json:"DedicatedHostZoneIdForMaster,omitempty" xml:"DedicatedHostZoneIdForMaster,omitempty"`
+	DedicatedHostZoneIdForSlave  *string                                                              `json:"DedicatedHostZoneIdForSlave,omitempty" xml:"DedicatedHostZoneIdForSlave,omitempty"`
+	DeletionProtection           *bool                                                                `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	DestroyTime                  *string                                                              `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
+	Engine                       *string                                                              `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion                *string                                                              `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	ExpireTime                   *string                                                              `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	GeneralGroupName             *string                                                              `json:"GeneralGroupName,omitempty" xml:"GeneralGroupName,omitempty"`
+	GreenInstanceName            *string                                                              `json:"GreenInstanceName,omitempty" xml:"GreenInstanceName,omitempty"`
+	GuardDBInstanceId            *string                                                              `json:"GuardDBInstanceId,omitempty" xml:"GuardDBInstanceId,omitempty"`
+	InstanceNetworkType          *string                                                              `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	IoAccelerationEnabled        *string                                                              `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
+	IsAnalyticIns                *string                                                              `json:"IsAnalyticIns,omitempty" xml:"IsAnalyticIns,omitempty"`
+	IsAnalyticReadOnlyIns        *bool                                                                `json:"IsAnalyticReadOnlyIns,omitempty" xml:"IsAnalyticReadOnlyIns,omitempty"`
+	LockMode                     *string                                                              `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	LockReason                   *string                                                              `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	MasterInstanceId             *string                                                              `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
+	MutriORsignle                *bool                                                                `json:"MutriORsignle,omitempty" xml:"MutriORsignle,omitempty"`
+	PayType                      *string                                                              `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	ReadOnlyDBInstanceIds        *DescribeDBInstancesResponseBodyItemsDBInstanceReadOnlyDBInstanceIds `json:"ReadOnlyDBInstanceIds,omitempty" xml:"ReadOnlyDBInstanceIds,omitempty" type:"Struct"`
+	RegionId                     *string                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId              *string                                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SwitchWeight                 *int32                                                               `json:"SwitchWeight,omitempty" xml:"SwitchWeight,omitempty"`
+	TempDBInstanceId             *string                                                              `json:"TempDBInstanceId,omitempty" xml:"TempDBInstanceId,omitempty"`
+	Tips                         *string                                                              `json:"Tips,omitempty" xml:"Tips,omitempty"`
+	TipsLevel                    *int32                                                               `json:"TipsLevel,omitempty" xml:"TipsLevel,omitempty"`
+	VSwitchId                    *string                                                              `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcCloudInstanceId           *string                                                              `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
+	VpcId                        *string                                                              `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName                      *string                                                              `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	ZoneId                       *string                                                              `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBInstancesResponseBodyItemsDBInstance) String() string {
@@ -1149,11 +811,6 @@ func (s *DescribeDBInstancesResponseBodyItemsDBInstanceReadOnlyDBInstanceIds) Va
 }
 
 type DescribeDBInstancesResponseBodyItemsDBInstanceReadOnlyDBInstanceIdsReadOnlyDBInstanceId struct {
-	// The read-only instance ID.
-	//
-	// example:
-	//
-	// rr-uf6wjk5xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 

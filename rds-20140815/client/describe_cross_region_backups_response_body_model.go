@@ -33,9 +33,8 @@ type DescribeCrossRegionBackupsResponseBody struct {
 	// example:
 	//
 	// 2019-06-15T12:10:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The cross-region data backup files.
-	Items *DescribeCrossRegionBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	EndTime *string                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Items   *DescribeCrossRegionBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number. Pages start from page 1.
 	//
 	// Default value: **1**.
@@ -200,144 +199,25 @@ func (s *DescribeCrossRegionBackupsResponseBodyItems) Validate() error {
 }
 
 type DescribeCrossRegionBackupsResponseBodyItemsItem struct {
-	// The time when the cross-region data backup file was generated.
-	//
-	// example:
-	//
-	// 2019-06-15T12:10:00Z
-	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
-	// The method that is used to generate the cross-region data backup file. Valid values:
-	//
-	// 	- **L**: logical backup
-	//
-	// 	- **P**: physical backup
-	//
-	// example:
-	//
-	// P
-	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	// The level at which the cross-region data backup file is generated.
-	//
-	// 	- **0**: instance-level backup
-	//
-	// 	- **1**: database-level backup
-	//
-	// example:
-	//
-	// 0
-	BackupSetScale *int32 `json:"BackupSetScale,omitempty" xml:"BackupSetScale,omitempty"`
-	// The status of the cross-region data backup. Valid values:
-	//
-	// 	- **0**: The cross-region data backup is successful.
-	//
-	// 	- **1**: The cross-region data backup failed.
-	//
-	// example:
-	//
-	// 0
-	BackupSetStatus *int32 `json:"BackupSetStatus,omitempty" xml:"BackupSetStatus,omitempty"`
-	// The time when the cross-region data backup started.
-	//
-	// example:
-	//
-	// 2019-05-30T12:10:00Z
-	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	// The type of the cross-region data backup. Valid values:
-	//
-	// 	- **F**: full data backup
-	//
-	// 	- **I**: incremental data backup
-	//
-	// example:
-	//
-	// F
-	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The RDS edition of the instance. Valid values:
-	//
-	// 	- **Basic**: RDS Basic Edition.
-	//
-	// 	- **HighAvailability**: RDS High-availability Edition.
-	//
-	// 	- **Finance**: RDS Enterprise Edition. This edition is available only for the China site (aliyun.com).
-	//
-	// example:
-	//
-	// HighAvailability
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The point in time that is indicated by the data in the cross-region data backup file.
-	//
-	// example:
-	//
-	// 2019-06-12T05:44:46Z
-	ConsistentTime *string `json:"ConsistentTime,omitempty" xml:"ConsistentTime,omitempty"`
-	// The external URL from which you can download the cross-region data backup file.
-	//
-	// example:
-	//
-	// http://rdsddrbak-shanghai.oss-cn-shanghai.aliyuncs.com/xxxxx
-	CrossBackupDownloadLink *string `json:"CrossBackupDownloadLink,omitempty" xml:"CrossBackupDownloadLink,omitempty"`
-	// The ID of the cross-region data backup file.
-	//
-	// example:
-	//
-	// 14377
-	CrossBackupId *int32 `json:"CrossBackupId,omitempty" xml:"CrossBackupId,omitempty"`
-	// The ID of the region in which the cross-region backup files of the instance are stored.
-	//
-	// example:
-	//
-	// cn-shanghai
-	CrossBackupRegion *string `json:"CrossBackupRegion,omitempty" xml:"CrossBackupRegion,omitempty"`
-	// The name of the compressed package that contains the cross-region data backup file.
-	//
-	// example:
-	//
-	// cn-hangzhou_rm-xxxxx_hins81xxx_data_20190612134426_qp.xb
-	CrossBackupSetFile *string `json:"CrossBackupSetFile,omitempty" xml:"CrossBackupSetFile,omitempty"`
-	// The location where the cross-region data backup file is stored.
-	//
-	// example:
-	//
-	// oss
-	CrossBackupSetLocation *string `json:"CrossBackupSetLocation,omitempty" xml:"CrossBackupSetLocation,omitempty"`
-	// The size of the cross-region data backup file. Unit: bytes.
-	//
-	// example:
-	//
-	// 5312836
-	CrossBackupSetSize *int64 `json:"CrossBackupSetSize,omitempty" xml:"CrossBackupSetSize,omitempty"`
-	// The storage type. Valid values:
-	//
-	// 	- **local_ssd**: local SSDs. This is the recommended storage type.
-	//
-	// 	- **cloud_ssd**: standard SSD.
-	//
-	// 	- **cloud_essd**: enhanced SSD (ESSD).
-	//
-	// example:
-	//
-	// ssd
-	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
-	// The database engine of the instance.
-	//
-	// example:
-	//
-	// mysql
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version.
-	//
-	// example:
-	//
-	// 5.6
-	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The instance ID. This parameter is used to determine whether the instance that generates the cross-region data backup file is a primary or secondary instance.
-	//
-	// example:
-	//
-	// 8161055
-	InstanceId *int32 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The regions to which the cross-region data backup file can be restored.
-	RestoreRegions *DescribeCrossRegionBackupsResponseBodyItemsItemRestoreRegions `json:"RestoreRegions,omitempty" xml:"RestoreRegions,omitempty" type:"Struct"`
+	BackupEndTime           *string                                                        `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
+	BackupMethod            *string                                                        `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	BackupSetScale          *int32                                                         `json:"BackupSetScale,omitempty" xml:"BackupSetScale,omitempty"`
+	BackupSetStatus         *int32                                                         `json:"BackupSetStatus,omitempty" xml:"BackupSetStatus,omitempty"`
+	BackupStartTime         *string                                                        `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	BackupType              *string                                                        `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	Category                *string                                                        `json:"Category,omitempty" xml:"Category,omitempty"`
+	ConsistentTime          *string                                                        `json:"ConsistentTime,omitempty" xml:"ConsistentTime,omitempty"`
+	CrossBackupDownloadLink *string                                                        `json:"CrossBackupDownloadLink,omitempty" xml:"CrossBackupDownloadLink,omitempty"`
+	CrossBackupId           *int32                                                         `json:"CrossBackupId,omitempty" xml:"CrossBackupId,omitempty"`
+	CrossBackupRegion       *string                                                        `json:"CrossBackupRegion,omitempty" xml:"CrossBackupRegion,omitempty"`
+	CrossBackupSetFile      *string                                                        `json:"CrossBackupSetFile,omitempty" xml:"CrossBackupSetFile,omitempty"`
+	CrossBackupSetLocation  *string                                                        `json:"CrossBackupSetLocation,omitempty" xml:"CrossBackupSetLocation,omitempty"`
+	CrossBackupSetSize      *int64                                                         `json:"CrossBackupSetSize,omitempty" xml:"CrossBackupSetSize,omitempty"`
+	DBInstanceStorageType   *string                                                        `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
+	Engine                  *string                                                        `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion           *string                                                        `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	InstanceId              *int32                                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RestoreRegions          *DescribeCrossRegionBackupsResponseBodyItemsItemRestoreRegions `json:"RestoreRegions,omitempty" xml:"RestoreRegions,omitempty" type:"Struct"`
 }
 
 func (s DescribeCrossRegionBackupsResponseBodyItemsItem) String() string {

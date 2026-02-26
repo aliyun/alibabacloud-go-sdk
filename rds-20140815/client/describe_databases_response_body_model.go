@@ -16,7 +16,6 @@ type iDescribeDatabasesResponseBody interface {
 }
 
 type DescribeDatabasesResponseBody struct {
-	// The information about the databases.
 	Databases *DescribeDatabasesResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,117 +95,24 @@ func (s *DescribeDatabasesResponseBodyDatabases) Validate() error {
 }
 
 type DescribeDatabasesResponseBodyDatabasesDatabase struct {
-	// The information about the account. Each account has specific permissions on the database.
-	Accounts *DescribeDatabasesResponseBodyDatabasesDatabaseAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
-	// The advanced information about the database.
-	//
-	// >  This parameter is returned only for instances that run SQL Server.
-	AdvancedInfo *DescribeDatabasesResponseBodyDatabasesDatabaseAdvancedInfo `json:"AdvancedInfo,omitempty" xml:"AdvancedInfo,omitempty" type:"Struct"`
-	// The basic information about the database.
-	//
-	// >  This parameter is returned only for instances that run SQL Server.
-	BasicInfo *DescribeDatabasesResponseBodyDatabasesDatabaseBasicInfo `json:"BasicInfo,omitempty" xml:"BasicInfo,omitempty" type:"Struct"`
-	// The name of the character set.
-	//
-	// example:
-	//
-	// utf8
-	CharacterSetName *string `json:"CharacterSetName,omitempty" xml:"CharacterSetName,omitempty"`
-	// The collation of the character set. The example value C indicates localization.
-	//
-	// >  This parameter is returned only for instances that run PostgreSQL.
-	//
-	// example:
-	//
-	// C
-	Collate *string `json:"Collate,omitempty" xml:"Collate,omitempty"`
-	// The limit on the number of concurrent requests. The value -1 indicates that the number of concurrent requests is unlimited.
-	//
-	// >  This parameter is returned only for instances that run PostgreSQL.
-	//
-	// example:
-	//
-	// -1
-	ConnLimit *string `json:"ConnLimit,omitempty" xml:"ConnLimit,omitempty"`
-	// The type of the character set.
-	//
-	// >  This parameter is returned only for instances that run PostgreSQL.
-	//
-	// example:
-	//
-	// en_US.utf8
-	Ctype *string `json:"Ctype,omitempty" xml:"Ctype,omitempty"`
-	// The description of the database.
-	//
-	// example:
-	//
-	// testdb
-	DBDescription *string `json:"DBDescription,omitempty" xml:"DBDescription,omitempty"`
-	// The ID of the instance to which the database belongs.
-	//
-	// example:
-	//
-	// rm-uf6wjk5****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The database name.
-	//
-	// example:
-	//
-	// testDB01
-	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The database status. Valid values:
-	//
-	// 	- **Creating**
-	//
-	// 	- **Running**
-	//
-	// 	- **Deleting**
-	//
-	// 	- **Cold**
-	//
-	// example:
-	//
-	// Creating
-	DBStatus      *string `json:"DBStatus,omitempty" xml:"DBStatus,omitempty"`
-	DuckDBEnabled *bool   `json:"DuckDBEnabled,omitempty" xml:"DuckDBEnabled,omitempty"`
-	// The database engine of the instance.
-	//
-	// example:
-	//
-	// MySQL
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The page number of the page to return.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 30
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The runtime information about the database.
-	//
-	// >  This parameter is returned only for instances that run SQL Server.
-	RuntimeInfo *DescribeDatabasesResponseBodyDatabasesDatabaseRuntimeInfo `json:"RuntimeInfo,omitempty" xml:"RuntimeInfo,omitempty" type:"Struct"`
-	// The database tablespace.
-	//
-	// >  This parameter is returned only for instances that run PostgreSQL.
-	//
-	// example:
-	//
-	// pg_default
-	Tablespace *string `json:"Tablespace,omitempty" xml:"Tablespace,omitempty"`
-	// The total number of entries returned.
-	//
-	// >  This parameter is returned only for instances that run SQL Server.
-	//
-	// example:
-	//
-	// 100
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Accounts         *DescribeDatabasesResponseBodyDatabasesDatabaseAccounts     `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
+	AdvancedInfo     *DescribeDatabasesResponseBodyDatabasesDatabaseAdvancedInfo `json:"AdvancedInfo,omitempty" xml:"AdvancedInfo,omitempty" type:"Struct"`
+	BasicInfo        *DescribeDatabasesResponseBodyDatabasesDatabaseBasicInfo    `json:"BasicInfo,omitempty" xml:"BasicInfo,omitempty" type:"Struct"`
+	CharacterSetName *string                                                     `json:"CharacterSetName,omitempty" xml:"CharacterSetName,omitempty"`
+	Collate          *string                                                     `json:"Collate,omitempty" xml:"Collate,omitempty"`
+	ConnLimit        *string                                                     `json:"ConnLimit,omitempty" xml:"ConnLimit,omitempty"`
+	Ctype            *string                                                     `json:"Ctype,omitempty" xml:"Ctype,omitempty"`
+	DBDescription    *string                                                     `json:"DBDescription,omitempty" xml:"DBDescription,omitempty"`
+	DBInstanceId     *string                                                     `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBName           *string                                                     `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	DBStatus         *string                                                     `json:"DBStatus,omitempty" xml:"DBStatus,omitempty"`
+	DuckDBEnabled    *bool                                                       `json:"DuckDBEnabled,omitempty" xml:"DuckDBEnabled,omitempty"`
+	Engine           *string                                                     `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	PageNumber       *int32                                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int32                                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RuntimeInfo      *DescribeDatabasesResponseBodyDatabasesDatabaseRuntimeInfo  `json:"RuntimeInfo,omitempty" xml:"RuntimeInfo,omitempty" type:"Struct"`
+	Tablespace       *string                                                     `json:"Tablespace,omitempty" xml:"Tablespace,omitempty"`
+	TotalCount       *int32                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDatabasesResponseBodyDatabasesDatabase) String() string {
@@ -438,31 +344,8 @@ func (s *DescribeDatabasesResponseBodyDatabasesDatabaseAccounts) Validate() erro
 }
 
 type DescribeDatabasesResponseBodyDatabasesDatabaseAccountsAccountPrivilegeInfo struct {
-	// The account username.
-	//
-	// example:
-	//
-	// test
-	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The permissions that the account has on the database. Valid values:
-	//
-	// 	- **ReadWrite**: read and write permissions
-	//
-	// 	- **ReadOnly**: read-only permissions
-	//
-	// 	- **DMLOnly**: DML-only permissions
-	//
-	// 	- **DDLOnly**: DDL-only permissions
-	//
-	// example:
-	//
-	// DMLOnly
-	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
-	// The permission that the account has on the database.
-	//
-	// example:
-	//
-	// SELECT
+	Account                *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	AccountPrivilege       *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
 	AccountPrivilegeDetail *string `json:"AccountPrivilegeDetail,omitempty" xml:"AccountPrivilegeDetail,omitempty"`
 }
 

@@ -24,7 +24,6 @@ type iDescribeBackupsResponseBody interface {
 }
 
 type DescribeBackupsResponseBody struct {
-	// The returned backup sets.
 	Items *DescribeBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -164,205 +163,31 @@ func (s *DescribeBackupsResponseBodyItems) Validate() error {
 }
 
 type DescribeBackupsResponseBodyItemsBackup struct {
-	// An array consisting of URLs from which you can download backup sets of individual databases.
-	BackupDownloadLinkByDB *DescribeBackupsResponseBodyItemsBackupBackupDownloadLinkByDB `json:"BackupDownloadLinkByDB,omitempty" xml:"BackupDownloadLinkByDB,omitempty" type:"Struct"`
-	// The URL that is used to download the backup set over the Internet. If the backup set cannot be downloaded, null is returned.
-	//
-	// >  For example, if BackupMethod of an ApsaraDB RDS for SQL Server instance is set to **Snapshot**, a null string is returned.
-	//
-	// example:
-	//
-	// http://rdsbak-hz-v3.oss-cn-hangzhou.aliyuncs.com/xxxxx
-	BackupDownloadURL *string `json:"BackupDownloadURL,omitempty" xml:"BackupDownloadURL,omitempty"`
-	// The end time of the backup task. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-02-13T12:20:00Z
-	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
-	// The ID of the backup set.
-	//
-	// example:
-	//
-	// 321020562
-	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The initiator of the backup task. Valid values:
-	//
-	// 	- **System**
-	//
-	// 	- **User**
-	//
-	// example:
-	//
-	// System
-	BackupInitiator *string `json:"BackupInitiator,omitempty" xml:"BackupInitiator,omitempty"`
-	// The URL that is used to download the backup set over an internal network. If the backup set cannot be downloaded, null is returned.
-	//
-	// >  For example, if BackupMethod of an ApsaraDB RDS for SQL Server instance is set to **Snapshot**, a null string is returned.
-	//
-	// example:
-	//
-	// http://rdsbak-hz-v3.oss-cn-hangzhou-internal.aliyuncs.com/xxxxx
-	BackupIntranetDownloadURL *string `json:"BackupIntranetDownloadURL,omitempty" xml:"BackupIntranetDownloadURL,omitempty"`
-	// The method that is used to generate the backup set. Valid values:
-	//
-	// 	- **Logical**: logical backup
-	//
-	// 	- **Physical**: physical backup
-	//
-	// 	- **Snapshot**: snapshot backup
-	//
-	// example:
-	//
-	// Physical
-	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	// The backup mode of the backup set. Valid values:
-	//
-	// 	- **Automated**
-	//
-	// 	- **Manual**
-	//
-	// example:
-	//
-	// Automated
-	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	// The size of the data backup file. Unit: bytes.
-	//
-	// example:
-	//
-	// 2167808
-	BackupSize *int64 `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	// The start time of the backup. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-02-03T12:20:00Z
-	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	// The state of the backup set.
-	//
-	// example:
-	//
-	// Success
-	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	// The backup type of the backup set. Valid values:
-	//
-	// 	- **FullBackup**
-	//
-	// 	- **IncrementalBackup**
-	//
-	// example:
-	//
-	// FullBackup
-	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The checksum. The value of this parameter is calculated by using the CRC64 algorithm.
-	//
-	// example:
-	//
-	// 1835830439**********
-	Checksum *string `json:"Checksum,omitempty" xml:"Checksum,omitempty"`
-	// The point in time at which the data in the backup set is consistent. The return value of this parameter is a timestamp.
-	//
-	// >  If the instance runs MySQL 5.6, a timestamp is returned. Otherwise, the value 0 is returned.
-	//
-	// example:
-	//
-	// 1576506856
-	ConsistentTime *int64 `json:"ConsistentTime,omitempty" xml:"ConsistentTime,omitempty"`
-	// The backup mode of the backup set. Valid values:
-	//
-	// 	- 0: the standard mode. This mode supports full backups and incremental backups.
-	//
-	// 	- 1: the copy-only mode. This mode supports only full backups.
-	//
-	// >  This parameter is returned only when the instance runs SQL Server.
-	//
-	// example:
-	//
-	// 0
-	CopyOnlyBackup *string `json:"CopyOnlyBackup,omitempty" xml:"CopyOnlyBackup,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The encryption information about the backup set.
-	//
-	// example:
-	//
-	// {}
-	Encryption *string `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
-	// The type of the database engine. Valid values:
-	//
-	// 	- MySQL
-	//
-	// 	- SQLServer
-	//
-	// 	- PostgreSQL
-	//
-	// 	- MariaDB
-	//
-	// example:
-	//
-	// MySQL
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The version of the database engine.
-	//
-	// example:
-	//
-	// 8.0
-	EngineVersion    *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ExpectExpireTime *string `json:"ExpectExpireTime,omitempty" xml:"ExpectExpireTime,omitempty"`
-	// The ID of the instance that generates the backup set. This parameter is used to indicate whether the instance that generates the backup set is a primary instance or a secondary instance.
-	//
-	// example:
-	//
-	// 5882781
-	HostInstanceID *string `json:"HostInstanceID,omitempty" xml:"HostInstanceID,omitempty"`
-	// Indicates whether the backup set is available. Valid values:
-	//
-	// 	- **0**: The backup set is unavailable.
-	//
-	// 	- **1**: The backup set is available.
-	//
-	// example:
-	//
-	// 1
-	IsAvail *int32 `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
-	// The status of the backup set that is used to restore individual databases or tables. Valid values:
-	//
-	// 	- **OK**: The data backup file is normal.
-	//
-	// 	- **LARGE**: The data backup file contains an abnormally large number of tables. It cannot be used to restore individual databases or tables.
-	//
-	// 	- **EMPTY**: The data backup file is generated from a failed backup task.
-	//
-	// >  If an empty string is returned, the data backup file cannot be used to restore individual databases or tables.
-	//
-	// example:
-	//
-	// OK
-	MetaStatus *string `json:"MetaStatus,omitempty" xml:"MetaStatus,omitempty"`
-	// The storage class of the backup set. Valid values:
-	//
-	// 	- **0**: regular storage
-	//
-	// 	- **1**: archive storage
-	//
-	// example:
-	//
-	// 0
-	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
-	// Indicates whether the backup set can be deleted. Valid values:
-	//
-	// 	- **Enabled**: The backup set can be deleted.
-	//
-	// 	- **Disabled**: The backup set cannot be deleted.
-	//
-	// example:
-	//
-	// Disabled
-	StoreStatus *string `json:"StoreStatus,omitempty" xml:"StoreStatus,omitempty"`
+	BackupDownloadLinkByDB    *DescribeBackupsResponseBodyItemsBackupBackupDownloadLinkByDB `json:"BackupDownloadLinkByDB,omitempty" xml:"BackupDownloadLinkByDB,omitempty" type:"Struct"`
+	BackupDownloadURL         *string                                                       `json:"BackupDownloadURL,omitempty" xml:"BackupDownloadURL,omitempty"`
+	BackupEndTime             *string                                                       `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
+	BackupId                  *string                                                       `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	BackupInitiator           *string                                                       `json:"BackupInitiator,omitempty" xml:"BackupInitiator,omitempty"`
+	BackupIntranetDownloadURL *string                                                       `json:"BackupIntranetDownloadURL,omitempty" xml:"BackupIntranetDownloadURL,omitempty"`
+	BackupMethod              *string                                                       `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	BackupMode                *string                                                       `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	BackupSize                *int64                                                        `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
+	BackupStartTime           *string                                                       `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	BackupStatus              *string                                                       `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	BackupType                *string                                                       `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	Checksum                  *string                                                       `json:"Checksum,omitempty" xml:"Checksum,omitempty"`
+	ConsistentTime            *int64                                                        `json:"ConsistentTime,omitempty" xml:"ConsistentTime,omitempty"`
+	CopyOnlyBackup            *string                                                       `json:"CopyOnlyBackup,omitempty" xml:"CopyOnlyBackup,omitempty"`
+	DBInstanceId              *string                                                       `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Encryption                *string                                                       `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
+	Engine                    *string                                                       `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion             *string                                                       `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	ExpectExpireTime          *string                                                       `json:"ExpectExpireTime,omitempty" xml:"ExpectExpireTime,omitempty"`
+	HostInstanceID            *string                                                       `json:"HostInstanceID,omitempty" xml:"HostInstanceID,omitempty"`
+	IsAvail                   *int32                                                        `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
+	MetaStatus                *string                                                       `json:"MetaStatus,omitempty" xml:"MetaStatus,omitempty"`
+	StorageClass              *string                                                       `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
+	StoreStatus               *string                                                       `json:"StoreStatus,omitempty" xml:"StoreStatus,omitempty"`
 }
 
 func (s DescribeBackupsResponseBodyItemsBackup) String() string {
@@ -642,23 +467,8 @@ func (s *DescribeBackupsResponseBodyItemsBackupBackupDownloadLinkByDB) Validate(
 }
 
 type DescribeBackupsResponseBodyItemsBackupBackupDownloadLinkByDBBackupDownloadLinkByDB struct {
-	// The name of the database.
-	//
-	// example:
-	//
-	// dbs
-	DataBase *string `json:"DataBase,omitempty" xml:"DataBase,omitempty"`
-	// The public URL from which you can download the backup set.
-	//
-	// example:
-	//
-	// https://cn-hangzhou.bak.rds.aliyuncs.com/custins53664665/hins18676859_2021072909473127987849.zip?Expires=*****&dbList=tb1
-	DownloadLink *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
-	// The internal URL from which you can download the backup set.
-	//
-	// example:
-	//
-	// https://cn-hangzhou-internal.bak.rds.aliyuncs.com/custins53664665/hins18676859_2021072909473127987849.zip?Expires=*****&dbList=tb1
+	DataBase             *string `json:"DataBase,omitempty" xml:"DataBase,omitempty"`
+	DownloadLink         *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
 	IntranetDownloadLink *string `json:"IntranetDownloadLink,omitempty" xml:"IntranetDownloadLink,omitempty"`
 }
 

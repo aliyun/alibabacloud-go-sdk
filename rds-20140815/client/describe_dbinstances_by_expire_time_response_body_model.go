@@ -22,7 +22,6 @@ type iDescribeDBInstancesByExpireTimeResponseBody interface {
 }
 
 type DescribeDBInstancesByExpireTimeResponseBody struct {
-	// The details of the instances.
 	Items *DescribeDBInstancesByExpireTimeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page. Valid values: any **non-zero*	- positive integer.
 	//
@@ -149,60 +148,12 @@ func (s *DescribeDBInstancesByExpireTimeResponseBodyItems) Validate() error {
 }
 
 type DescribeDBInstancesByExpireTimeResponseBodyItemsDBInstanceExpireTime struct {
-	// The description of the instance.
-	//
-	// example:
-	//
-	// Test database
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The status of the instance. For more information, see [Instance state table](https://help.aliyun.com/document_detail/26315.html).
-	//
-	// example:
-	//
-	// Running
-	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	// The expiration time of the instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// > : Pay-as-you-go instances never expire.
-	//
-	// example:
-	//
-	// 2019-03-27T16:00:00Z
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The lock mode of the instance. Valid values:
-	//
-	// 	- **Unlock**: The instance is not locked.
-	//
-	// 	- **ManualLock**: The instance is manually locked.
-	//
-	// 	- **LockByExpiration**: The instance is automatically locked after it expires.
-	//
-	// 	- **LockByRestoration**: The instance is automatically locked before it is rolled back.
-	//
-	// 	- **LockByDiskQuota**: The instance is automatically locked after its storage capacity is exhausted.
-	//
-	// 	- **LockReadInstanceByDiskQuota**: The instance is a read-only instance and is automatically locked after its storage capacity is exhausted.
-	//
-	// example:
-	//
-	// Unlock
-	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The billing method of the instance. Valid values:
-	//
-	// 	- **Postpaid**: pay-as-you-go.
-	//
-	// 	- **Prepaid**: subscription.
-	//
-	// example:
-	//
-	// Prepaid
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	DBInstanceId          *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceStatus      *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	ExpireTime            *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	LockMode              *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	PayType               *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 }
 
 func (s DescribeDBInstancesByExpireTimeResponseBodyItemsDBInstanceExpireTime) String() string {

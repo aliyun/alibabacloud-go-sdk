@@ -45,9 +45,8 @@ type DescribeModifyParameterLogResponseBody struct {
 	// example:
 	//
 	// 5.6
-	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The log entries.
-	Items *DescribeModifyParameterLogResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	EngineVersion *string                                      `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	Items         *DescribeModifyParameterLogResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
 	// example:
@@ -198,40 +197,11 @@ func (s *DescribeModifyParameterLogResponseBodyItems) Validate() error {
 }
 
 type DescribeModifyParameterLogResponseBodyItemsParameterChangeLog struct {
-	// The time when the parameter was modified. This value is a UNIX timestamp. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1584076066000
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The new value of the parameter.
-	//
-	// example:
-	//
-	// 3
+	ModifyTime        *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	NewParameterValue *string `json:"NewParameterValue,omitempty" xml:"NewParameterValue,omitempty"`
-	// The original value of the parameter.
-	//
-	// example:
-	//
-	// 8
 	OldParameterValue *string `json:"OldParameterValue,omitempty" xml:"OldParameterValue,omitempty"`
-	// The name of the parameter.
-	//
-	// example:
-	//
-	// innodb_stats_sample_pages
-	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The status. Valid values:
-	//
-	// 	- **Applied:*	- The new value has taken effect.
-	//
-	// 	- **Syncing:*	- The new value is being applied and has not taken effect.
-	//
-	// example:
-	//
-	// Syncing
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ParameterName     *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeModifyParameterLogResponseBodyItemsParameterChangeLog) String() string {

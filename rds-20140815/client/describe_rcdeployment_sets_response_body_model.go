@@ -24,7 +24,6 @@ type iDescribeRCDeploymentSetsResponseBody interface {
 }
 
 type DescribeRCDeploymentSetsResponseBody struct {
-	// The details of the deployment set.
 	DeploymentSets *DescribeRCDeploymentSetsResponseBodyDeploymentSets `json:"DeploymentSets,omitempty" xml:"DeploymentSets,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -164,73 +163,19 @@ func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSets) Validate() error {
 }
 
 type DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet struct {
-	// The details of the capacities of the deployment set. This parameter is valid only when the deployment set contains existing RDS Custom instances. The value contains the details of the capacities of the deployment set in different zones.
-	Capacities *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacities `json:"Capacities,omitempty" xml:"Capacities,omitempty" type:"Struct"`
-	// The time when the deployment set was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2024-06-19T07:15:44Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The deployment set description.
-	//
-	// example:
-	//
-	// test
-	DeploymentSetDescription *string `json:"DeploymentSetDescription,omitempty" xml:"DeploymentSetDescription,omitempty"`
-	// The deployment set ID.
-	//
-	// example:
-	//
-	// ds-ob5n4rbgy****
-	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
-	// The deployment set name.
-	//
-	// example:
-	//
-	// deployment_test
-	DeploymentSetName *string `json:"DeploymentSetName,omitempty" xml:"DeploymentSetName,omitempty"`
-	// The deployment strategy. The return value of this parameter is the value of the `Strategy` request parameter.
-	//
-	// example:
-	//
-	// Availability
-	DeploymentStrategy *string `json:"DeploymentStrategy,omitempty" xml:"DeploymentStrategy,omitempty"`
-	// The deployment domain.
-	//
-	// example:
-	//
-	// default
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The deployment granularity.
-	//
-	// example:
-	//
-	// None
-	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	// The number of groups in the deployment set.
-	//
-	// >  This parameter is valid only when the Strategy request parameter is set to AvailabilityGroup.
-	//
-	// example:
-	//
-	// 3
-	GroupCount *int32 `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
-	// The number of RDS Custom instances in the deployment set.
-	//
-	// example:
-	//
-	// 1
-	InstanceAmount *int32 `json:"InstanceAmount,omitempty" xml:"InstanceAmount,omitempty"`
-	// The ID of the RDS Custom instance in the deployment set.
-	InstanceIds *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
-	// The deployment strategy.
-	//
-	// example:
-	//
-	// LooseDispersion
-	Strategy *string                                                              `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
-	Tags     *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	Capacities               *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacities  `json:"Capacities,omitempty" xml:"Capacities,omitempty" type:"Struct"`
+	CreateTime               *string                                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeploymentSetDescription *string                                                                     `json:"DeploymentSetDescription,omitempty" xml:"DeploymentSetDescription,omitempty"`
+	DeploymentSetId          *string                                                                     `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
+	DeploymentSetName        *string                                                                     `json:"DeploymentSetName,omitempty" xml:"DeploymentSetName,omitempty"`
+	DeploymentStrategy       *string                                                                     `json:"DeploymentStrategy,omitempty" xml:"DeploymentStrategy,omitempty"`
+	Domain                   *string                                                                     `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Granularity              *string                                                                     `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	GroupCount               *int32                                                                      `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
+	InstanceAmount           *int32                                                                      `json:"InstanceAmount,omitempty" xml:"InstanceAmount,omitempty"`
+	InstanceIds              *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
+	Strategy                 *string                                                                     `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	Tags                     *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTags        `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) String() string {
@@ -412,24 +357,9 @@ func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapaciti
 }
 
 type DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacitiesCapacity struct {
-	// The number of RDS Custom instances that reside in the zone and can be added to the deployment set.
-	//
-	// example:
-	//
-	// 18
-	AvailableAmount *int32 `json:"AvailableAmount,omitempty" xml:"AvailableAmount,omitempty"`
-	// The number of RDS Custom instances that reside in the zone in the deployment set.
-	//
-	// example:
-	//
-	// 2
-	UsedAmount *int32 `json:"UsedAmount,omitempty" xml:"UsedAmount,omitempty"`
-	// The zone ID. Only the IDs of the zones to which the existing RDS Custom instances in the deployment set belong are returned.
-	//
-	// example:
-	//
-	// cn-hangzhou-j
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AvailableAmount *int32  `json:"AvailableAmount,omitempty" xml:"AvailableAmount,omitempty"`
+	UsedAmount      *int32  `json:"UsedAmount,omitempty" xml:"UsedAmount,omitempty"`
+	ZoneId          *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacitiesCapacity) String() string {

@@ -16,7 +16,6 @@ type iDescribeRdsResourceSettingsResponseBody interface {
 }
 
 type DescribeRdsResourceSettingsResponseBody struct {
-	// The details about notification settings for an instance.
 	RdsInstanceResourceSettings *DescribeRdsResourceSettingsResponseBodyRdsInstanceResourceSettings `json:"RdsInstanceResourceSettings,omitempty" xml:"RdsInstanceResourceSettings,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,50 +95,15 @@ func (s *DescribeRdsResourceSettingsResponseBodyRdsInstanceResourceSettings) Val
 }
 
 type DescribeRdsResourceSettingsResponseBodyRdsInstanceResourceSettingsRdsInstanceResourceSetting struct {
-	// The end date.
-	//
-	// example:
-	//
-	// 2024-04-25
-	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// Specifies whether to pin the notification at the top.
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	IsTop *string `json:"IsTop,omitempty" xml:"IsTop,omitempty"`
-	// The notification text.
-	NoticeBarContent *string `json:"NoticeBarContent,omitempty" xml:"NoticeBarContent,omitempty"`
-	// The text of the popup button.
+	EndDate            *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	IsTop              *string `json:"IsTop,omitempty" xml:"IsTop,omitempty"`
+	NoticeBarContent   *string `json:"NoticeBarContent,omitempty" xml:"NoticeBarContent,omitempty"`
 	PoppedUpButtonText *string `json:"PoppedUpButtonText,omitempty" xml:"PoppedUpButtonText,omitempty"`
-	// The type of the popup button.
-	//
-	// 	- BUY
-	//
-	// 	- RENEW
-	//
-	// 	- UPGRADE
 	PoppedUpButtonType *string `json:"PoppedUpButtonType,omitempty" xml:"PoppedUpButtonType,omitempty"`
-	// The link of the popup button.
-	//
-	// example:
-	//
-	// https://www.example.com/subscribe
-	PoppedUpButtonUrl *string `json:"PoppedUpButtonUrl,omitempty" xml:"PoppedUpButtonUrl,omitempty"`
-	// The text of the popup.
-	PoppedUpContent *string `json:"PoppedUpContent,omitempty" xml:"PoppedUpContent,omitempty"`
-	// The location of the notification.
-	ResourceNiche *string `json:"ResourceNiche,omitempty" xml:"ResourceNiche,omitempty"`
-	// The effective date.
-	//
-	// example:
-	//
-	// 2024-04-21
-	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	PoppedUpButtonUrl  *string `json:"PoppedUpButtonUrl,omitempty" xml:"PoppedUpButtonUrl,omitempty"`
+	PoppedUpContent    *string `json:"PoppedUpContent,omitempty" xml:"PoppedUpContent,omitempty"`
+	ResourceNiche      *string `json:"ResourceNiche,omitempty" xml:"ResourceNiche,omitempty"`
+	StartDate          *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s DescribeRdsResourceSettingsResponseBodyRdsInstanceResourceSettingsRdsInstanceResourceSetting) String() string {

@@ -18,7 +18,6 @@ type iDescribeParameterGroupsResponseBody interface {
 }
 
 type DescribeParameterGroupsResponseBody struct {
-	// The details of the parameter templates.
 	ParameterGroups *DescribeParameterGroupsResponseBodyParameterGroups `json:"ParameterGroups,omitempty" xml:"ParameterGroups,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -119,82 +118,16 @@ func (s *DescribeParameterGroupsResponseBodyParameterGroups) Validate() error {
 }
 
 type DescribeParameterGroupsResponseBodyParameterGroupsParameterGroup struct {
-	// The time when the parameter template was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-11-21T01:48:39Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The database engine of the instance.
-	//
-	// example:
-	//
-	// mysql
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version.
-	//
-	// example:
-	//
-	// 5.7
-	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// Indicates whether the restart of an instance is required for the parameter template to take effect. Valid values:
-	//
-	// 	- 0: A restart is not required.
-	//
-	// 	- 1: A restart is required.
-	//
-	// example:
-	//
-	// 1
-	ForceRestart *int32 `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
-	// The number of parameters in the parameter template.
-	//
-	// example:
-	//
-	// 2
-	ParamCounts *int32 `json:"ParamCounts,omitempty" xml:"ParamCounts,omitempty"`
-	// The type of the parameter template. Valid values:
-	//
-	// 	- 0: the default parameter template.
-	//
-	// 	- 1: a custom parameter template.
-	//
-	// 	- 2: an automatic backup parameter template. After you apply this type of template, the system automatically backs up the original parameter settings and saves the backup as a template.
-	//
-	// example:
-	//
-	// 1
+	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Engine             *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion      *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	ForceRestart       *int32  `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
+	ParamCounts        *int32  `json:"ParamCounts,omitempty" xml:"ParamCounts,omitempty"`
 	ParameterGroupDesc *string `json:"ParameterGroupDesc,omitempty" xml:"ParameterGroupDesc,omitempty"`
-	// The ID of the parameter template.
-	//
-	// example:
-	//
-	// rpg-****
-	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
-	// The name of the parameter template.
-	//
-	// example:
-	//
-	// test1234
+	ParameterGroupId   *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
 	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
-	// The type of the parameter template. Valid values:
-	//
-	// 	- 0: the default parameter template.
-	//
-	// 	- 1: a custom parameter template.
-	//
-	// 	- 2: an automatic backup parameter template. After you apply this type of template, the system automatically backs up the original parameter settings and saves the backup as a template.
-	//
-	// example:
-	//
-	// 1
-	ParameterGroupType *int32 `json:"ParameterGroupType,omitempty" xml:"ParameterGroupType,omitempty"`
-	// The time when the parameter template was last updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-11-21T02:21:35Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	ParameterGroupType *int32  `json:"ParameterGroupType,omitempty" xml:"ParameterGroupType,omitempty"`
+	UpdateTime         *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeParameterGroupsResponseBodyParameterGroupsParameterGroup) String() string {

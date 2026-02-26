@@ -23,9 +23,8 @@ type ModifySecurityGroupConfigurationResponseBody struct {
 	// example:
 	//
 	// rm-uf6wjk5xxxxxx
-	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// An array that consists of information about the ECS security group.
-	Items *ModifySecurityGroupConfigurationResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	DBInstanceName *string                                            `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	Items          *ModifySecurityGroupConfigurationResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
@@ -113,27 +112,8 @@ func (s *ModifySecurityGroupConfigurationResponseBodyItems) Validate() error {
 }
 
 type ModifySecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelation struct {
-	// The network type of the ECS security group. Valid values:
-	//
-	// 	- **Classic**
-	//
-	// 	- **VPC**
-	//
-	// example:
-	//
-	// VPC
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the ECS security group.
-	//
-	// example:
-	//
-	// sg-xxxxxxx
+	NetworkType     *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 }
 

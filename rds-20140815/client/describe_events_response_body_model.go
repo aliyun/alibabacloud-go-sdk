@@ -22,7 +22,6 @@ type iDescribeEventsResponseBody interface {
 }
 
 type DescribeEventsResponseBody struct {
-	// The events.
 	EventItems *DescribeEventsResponseBodyEventItems `json:"EventItems,omitempty" xml:"EventItems,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,78 +146,18 @@ func (s *DescribeEventsResponseBodyEventItems) Validate() error {
 }
 
 type DescribeEventsResponseBodyEventItemsEventItems struct {
-	// The ID of the user who executed the event.
-	//
-	// example:
-	//
-	// 22973492**********
-	CallerUid *int64 `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
-	// The event ID.
-	//
-	// example:
-	//
-	// 11000053
-	EventId *int32 `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The event name.
-	//
-	// example:
-	//
-	// ModifySecurityIPList
-	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The request or context parameters of the event.
-	//
-	// example:
-	//
-	// {\\"Domain\\": \\"rds-inc-share.aliyuncs.com\\", \\"Api\\": \\"ReleaseInstancePublicConnection\\"}
-	EventPayload *string `json:"EventPayload,omitempty" xml:"EventPayload,omitempty"`
-	// The source of the event.
-	//
-	// example:
-	//
-	// FROM_USER
-	EventReason *string `json:"EventReason,omitempty" xml:"EventReason,omitempty"`
-	// The time when the event was recorded. The time is slightly later than the time the event occurred.
-	//
-	// example:
-	//
-	// 2019-08-20T01:12:49Z
+	CallerUid       *int64  `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
+	EventId         *int32  `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventName       *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	EventPayload    *string `json:"EventPayload,omitempty" xml:"EventPayload,omitempty"`
+	EventReason     *string `json:"EventReason,omitempty" xml:"EventReason,omitempty"`
 	EventRecordTime *string `json:"EventRecordTime,omitempty" xml:"EventRecordTime,omitempty"`
-	// The time when the event occurred.
-	//
-	// example:
-	//
-	// 2019-08-20T01:08:22Z
-	EventTime *string `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
-	// The event type.
-	//
-	// example:
-	//
-	// NetworkManagement
-	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The type of the user who executed the event.
-	//
-	// example:
-	//
-	// SYSTEM
-	EventUserType *string `json:"EventUserType,omitempty" xml:"EventUserType,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the resource associated with the event. Only instance IDs are supported for this parameter.
-	//
-	// example:
-	//
-	// rm-bp1z3065m9976ix8a
-	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The type of the resource associated with the event. Only instances are supported for this parameter.
-	//
-	// example:
-	//
-	// instance
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	EventTime       *string `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
+	EventType       *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	EventUserType   *string `json:"EventUserType,omitempty" xml:"EventUserType,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceName    *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s DescribeEventsResponseBodyEventItemsEventItems) String() string {

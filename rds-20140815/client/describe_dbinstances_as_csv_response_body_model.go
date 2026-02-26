@@ -16,7 +16,6 @@ type iDescribeDBInstancesAsCsvResponseBody interface {
 }
 
 type DescribeDBInstancesAsCsvResponseBody struct {
-	// An array that consists of the fields in **DBInstanceAttribute**.
 	Items *DescribeDBInstancesAsCsvResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,277 +95,50 @@ func (s *DescribeDBInstancesAsCsvResponseBodyItems) Validate() error {
 }
 
 type DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute struct {
-	// The maximum number of accounts.
-	//
-	// example:
-	//
-	// 500
-	AccountMaxQuantity *int32 `json:"AccountMaxQuantity,omitempty" xml:"AccountMaxQuantity,omitempty"`
-	// The type of the account.
-	//
-	// example:
-	//
-	// super
-	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The service availability of the instance in percentage.
-	//
-	// example:
-	//
-	// 100
-	AvailabilityValue *string `json:"AvailabilityValue,omitempty" xml:"AvailabilityValue,omitempty"`
-	// The category of the instance.
-	//
-	// example:
-	//
-	// 0
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The connection mode of the instance. Valid values:
-	//
-	// 	- **Performance**: standard mode.
-	//
-	// 	- **Safety**: enhanced mode
-	//
-	// example:
-	//
-	// Performance
-	ConnectionMode *string `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
-	// The internal endpoint.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxxxxx.mysql.rds.aliyuncs.com
-	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The creation time.
-	//
-	// example:
-	//
-	// 2011-05-30T12:11:04Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The number of CPU cores.
-	//
-	// example:
-	//
-	// 2
-	DBInstanceCPU *string `json:"DBInstanceCPU,omitempty" xml:"DBInstanceCPU,omitempty"`
-	// The instance type of the instance.
-	//
-	// example:
-	//
-	// rds.mys2.small
-	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	// The instance family.
-	//
-	// example:
-	//
-	// s
-	DBInstanceClassType *string `json:"DBInstanceClassType,omitempty" xml:"DBInstanceClassType,omitempty"`
-	// The instance description.
-	//
-	// example:
-	//
-	// 0
-	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The memory capacity of the instance. Unit: MB.
-	//
-	// example:
-	//
-	// 4096
-	DBInstanceMemory *int64 `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
-	// The network type of the instance. Valid values:
-	//
-	// 	- **Internet**
-	//
-	// 	- **Intranet**
-	//
-	// example:
-	//
-	// Internet
-	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
-	// The instance status.
-	//
-	// example:
-	//
-	// Running
-	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	// The storage capacity of the instance. Unit: GB.
-	//
-	// example:
-	//
-	// 10
-	DBInstanceStorage     *int32  `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
-	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
-	// The instance type. Valid values:
-	//
-	// 	- **Primary**: primary instance
-	//
-	// 	- **ReadOnly**: read-only instance
-	//
-	// 	- **Guard**: disaster recovery instance
-	//
-	// 	- **Temp**: temporary instance
-	//
-	// example:
-	//
-	// Primary
-	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
-	// The maximum number of databases that can be created on the instance.
-	//
-	// example:
-	//
-	// 200
-	DBMaxQuantity *int32 `json:"DBMaxQuantity,omitempty" xml:"DBMaxQuantity,omitempty"`
-	// The database engine of the instance.
-	//
-	// example:
-	//
-	// MySQL
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The engine version.
-	//
-	// example:
-	//
-	// 8.0
-	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The expiration time.
-	//
-	// example:
-	//
-	// 2019-03-27T16:00:00Z
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// A deprecated parameter. You do not need to specify this parameter.
-	//
-	// example:
-	//
-	// API
-	ExportKey *string `json:"ExportKey,omitempty" xml:"ExportKey,omitempty"`
-	// The ID of the disaster recovery instance that is attached to the primary instance.
-	//
-	// example:
-	//
-	// rm-uf64zsuxxxxxxxxxx
-	GuardDBInstanceId *string `json:"GuardDBInstanceId,omitempty" xml:"GuardDBInstanceId,omitempty"`
-	// The ID of the instance from which incremental data comes. The incremental data of a disaster recovery instance comes from its primary instance. The incremental data of a read-only instance comes from its primary instance. If this parameter is not returned, the instance is a primary instance.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxxxxx
-	IncrementSourceDBInstanceId *string `json:"IncrementSourceDBInstanceId,omitempty" xml:"IncrementSourceDBInstanceId,omitempty"`
-	// The network type.
-	//
-	// example:
-	//
-	// VPC
-	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	// The lock mode of the instance.
-	//
-	// example:
-	//
-	// Unlock
-	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The reason why the instance was locked.
-	//
-	// example:
-	//
-	// instance_expired
-	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The maintenance window of the instance. The time follows the ISO 8601 standard and is displayed in UTC. In the ApsaraDB RDS console, the maintenance window is displayed in UTC+8.
-	//
-	// example:
-	//
-	// 00:00Z-02:00Z
-	MaintainTime *string `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
-	// The primary instance ID.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxxxxx
-	MasterInstanceId *string `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
-	// The maximum number of concurrent connections.
-	//
-	// example:
-	//
-	// 60
-	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	// The maximum number of I/O requests per second.
-	//
-	// example:
-	//
-	// 150
-	MaxIOPS *int32 `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
-	// The billing method of the instance.
-	//
-	// example:
-	//
-	// Postpaid
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The port that is used to connect to the instance over an internal network.
-	//
-	// example:
-	//
-	// 3306
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The latency of data replication from the primary instance to the read-only instance. This parameter is valid for read-only instances.
-	//
-	// example:
-	//
-	// 0
-	ReadDelayTime *string `json:"ReadDelayTime,omitempty" xml:"ReadDelayTime,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IP addresses in the whitelist.
-	//
-	// example:
-	//
-	// 42.xx.xx.xx
-	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// A deprecated parameter. You do not need to specify this parameter.
-	SlaveZones *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttributeSlaveZones `json:"SlaveZones,omitempty" xml:"SlaveZones,omitempty" type:"Struct"`
-	// N/A.
-	//
-	// example:
-	//
-	// No
-	SupportUpgradeAccountType *string `json:"SupportUpgradeAccountType,omitempty" xml:"SupportUpgradeAccountType,omitempty"`
-	// The tags.
-	//
-	// example:
-	//
-	// 0
-	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The ID of the temporary instance that is attached to the primary instance.
-	//
-	// example:
-	//
-	// rm-uf64zsuxxxxxxxxxx
-	TempDBInstanceId *string `json:"TempDBInstanceId,omitempty" xml:"TempDBInstanceId,omitempty"`
-	// The vSwitch ID.
-	//
-	// example:
-	//
-	// vsw-uf6adz52c2pxxxxxxxxxx
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The virtual private cloud (VPC) ID.
-	//
-	// example:
-	//
-	// vpc-uf6f7l4fg90xxxxxxxxxx
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The zone ID.
-	//
-	// example:
-	//
-	// cn-hangzhou-h
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AccountMaxQuantity          *int32                                                                  `json:"AccountMaxQuantity,omitempty" xml:"AccountMaxQuantity,omitempty"`
+	AccountType                 *string                                                                 `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	AvailabilityValue           *string                                                                 `json:"AvailabilityValue,omitempty" xml:"AvailabilityValue,omitempty"`
+	Category                    *string                                                                 `json:"Category,omitempty" xml:"Category,omitempty"`
+	ConnectionMode              *string                                                                 `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
+	ConnectionString            *string                                                                 `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	CreationTime                *string                                                                 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DBInstanceCPU               *string                                                                 `json:"DBInstanceCPU,omitempty" xml:"DBInstanceCPU,omitempty"`
+	DBInstanceClass             *string                                                                 `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	DBInstanceClassType         *string                                                                 `json:"DBInstanceClassType,omitempty" xml:"DBInstanceClassType,omitempty"`
+	DBInstanceDescription       *string                                                                 `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	DBInstanceId                *string                                                                 `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceMemory            *int64                                                                  `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
+	DBInstanceNetType           *string                                                                 `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
+	DBInstanceStatus            *string                                                                 `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	DBInstanceStorage           *int32                                                                  `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
+	DBInstanceStorageType       *string                                                                 `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
+	DBInstanceType              *string                                                                 `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
+	DBMaxQuantity               *int32                                                                  `json:"DBMaxQuantity,omitempty" xml:"DBMaxQuantity,omitempty"`
+	Engine                      *string                                                                 `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion               *string                                                                 `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	ExpireTime                  *string                                                                 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExportKey                   *string                                                                 `json:"ExportKey,omitempty" xml:"ExportKey,omitempty"`
+	GuardDBInstanceId           *string                                                                 `json:"GuardDBInstanceId,omitempty" xml:"GuardDBInstanceId,omitempty"`
+	IncrementSourceDBInstanceId *string                                                                 `json:"IncrementSourceDBInstanceId,omitempty" xml:"IncrementSourceDBInstanceId,omitempty"`
+	InstanceNetworkType         *string                                                                 `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	LockMode                    *string                                                                 `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	LockReason                  *string                                                                 `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	MaintainTime                *string                                                                 `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
+	MasterInstanceId            *string                                                                 `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
+	MaxConnections              *int32                                                                  `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	MaxIOPS                     *int32                                                                  `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
+	PayType                     *string                                                                 `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Port                        *string                                                                 `json:"Port,omitempty" xml:"Port,omitempty"`
+	ReadDelayTime               *string                                                                 `json:"ReadDelayTime,omitempty" xml:"ReadDelayTime,omitempty"`
+	RegionId                    *string                                                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityIPList              *string                                                                 `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	SlaveZones                  *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttributeSlaveZones `json:"SlaveZones,omitempty" xml:"SlaveZones,omitempty" type:"Struct"`
+	SupportUpgradeAccountType   *string                                                                 `json:"SupportUpgradeAccountType,omitempty" xml:"SupportUpgradeAccountType,omitempty"`
+	Tags                        *string                                                                 `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TempDBInstanceId            *string                                                                 `json:"TempDBInstanceId,omitempty" xml:"TempDBInstanceId,omitempty"`
+	VSwitchId                   *string                                                                 `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                       *string                                                                 `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId                      *string                                                                 `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute) String() string {

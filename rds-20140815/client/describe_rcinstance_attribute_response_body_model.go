@@ -141,10 +141,9 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	// example:
 	//
 	// None
-	CreditSpecification *string `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
-	// The details of the data disk.
-	DataDisks *DescribeRCInstanceAttributeResponseBodyDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Struct"`
-	DbType    *string                                           `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	CreditSpecification *string                                           `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
+	DataDisks           *DescribeRCInstanceAttributeResponseBodyDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Struct"`
+	DbType              *string                                           `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	// The attributes of the dedicated hosts.
 	//
 	// if can be null:
@@ -216,8 +215,7 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	// example:
 	//
 	// m-2oqiu973jwcxe****
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The private IP addresses of the instance in the classic network.
+	ImageId            *string                                                `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	InnerIpAddress     *DescribeRCInstanceAttributeResponseBodyInnerIpAddress `json:"InnerIpAddress,omitempty" xml:"InnerIpAddress,omitempty" type:"Struct"`
 	InstanceChargeType *string                                                `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	// The instance ID.
@@ -293,11 +291,9 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	// example:
 	//
 	// 8192
-	Memory   *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The reasons why the instance is locked.
-	OperationLocks *DescribeRCInstanceAttributeResponseBodyOperationLocks `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Struct"`
-	// The public IP address of the instance.
+	Memory          *int32                                                  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	NodeType        *string                                                 `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	OperationLocks  *DescribeRCInstanceAttributeResponseBodyOperationLocks  `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Struct"`
 	PublicIpAddress *DescribeRCInstanceAttributeResponseBodyPublicIpAddress `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty" type:"Struct"`
 	// The region ID.
 	//
@@ -310,9 +306,8 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	// example:
 	//
 	// EA2D4F34-01A7-46EB-A339-D80882135206
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The security groups.
+	RequestId        *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId  *string                                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SecurityGroupIds *DescribeRCInstanceAttributeResponseBodySecurityGroupIds `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
 	// The serial number of the instance.
 	//
@@ -929,48 +924,15 @@ func (s *DescribeRCInstanceAttributeResponseBodyDataDisks) Validate() error {
 }
 
 type DescribeRCInstanceAttributeResponseBodyDataDisksDataDisk struct {
-	// The category of the data disk.
-	//
-	// example:
-	//
-	// cloud_essd
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// Indicates whether the data disk is released when the instance is released. Valid values:
-	//
-	// 	- **true**: The data disk is released when the instance is released.
-	//
-	// 	- **false**: The data disk is reserved when the instance is released.
-	//
-	// example:
-	//
-	// true
-	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	Category           *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	DeleteWithInstance *bool   `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
 	// example:
 	//
 	// /dev/xvdb
-	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
-	// Indicates whether the data disk is encrypted. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	Encrypted *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The performance level of data disk. This parameter is available when the data disk is an Enterprise SSD (ESSD).
-	//
-	// example:
-	//
-	// PL1
+	Device           *string `json:"Device,omitempty" xml:"Device,omitempty"`
+	Encrypted        *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The size of the data disk. Unit: GiB.
-	//
-	// example:
-	//
-	// 40
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	Size             *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 	// example:
 	//
 	// rcds-bp18um4r4f2fve24**
@@ -1238,21 +1200,6 @@ func (s *DescribeRCInstanceAttributeResponseBodyOperationLocks) Validate() error
 }
 
 type DescribeRCInstanceAttributeResponseBodyOperationLocksLockReason struct {
-	// The reason why the instance is locked. Valid values:
-	//
-	// 	- **financial**: The instance is locked due to overdue payments.
-	//
-	// 	- **security**: The instance is locked for security purposes.
-	//
-	// 	- **recycling**: The instance is locked because the instance is a preemptible instance and pending to be released.
-	//
-	// 	- **dedicatedhostfinancial**: The instance is locked due to overdue payments for the dedicated host.
-	//
-	// 	- **refunded**: The instance is locked because a refund was made for the instance.
-	//
-	// example:
-	//
-	// None
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 }
 
@@ -1487,8 +1434,7 @@ type DescribeRCInstanceAttributeResponseBodyVpcAttributes struct {
 	// example:
 	//
 	// None
-	NatIpAddress *string `json:"NatIpAddress,omitempty" xml:"NatIpAddress,omitempty"`
-	// The private IP addresses of the instance.
+	NatIpAddress     *string                                                               `json:"NatIpAddress,omitempty" xml:"NatIpAddress,omitempty"`
 	PrivateIpAddress *DescribeRCInstanceAttributeResponseBodyVpcAttributesPrivateIpAddress `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty" type:"Struct"`
 	// The vSwitch ID.
 	//

@@ -48,9 +48,7 @@ type iDescribeDBProxyResponseBody interface {
 }
 
 type DescribeDBProxyResponseBody struct {
-	// The list of zones that are available for the database proxy.
-	DBProxyAVZones *DescribeDBProxyResponseBodyDBProxyAVZones `json:"DBProxyAVZones,omitempty" xml:"DBProxyAVZones,omitempty" type:"Struct"`
-	// An array consisting of the information about the database proxy endpoint that is created for the instance.
+	DBProxyAVZones            *DescribeDBProxyResponseBodyDBProxyAVZones            `json:"DBProxyAVZones,omitempty" xml:"DBProxyAVZones,omitempty" type:"Struct"`
 	DBProxyConnectStringItems *DescribeDBProxyResponseBodyDBProxyConnectStringItems `json:"DBProxyConnectStringItems,omitempty" xml:"DBProxyConnectStringItems,omitempty" type:"Struct"`
 	// An internal parameter. You can ignore this parameter.
 	//
@@ -126,9 +124,8 @@ type DescribeDBProxyResponseBody struct {
 	// example:
 	//
 	// 18
-	DBProxyKindCode *string `json:"DBProxyKindCode,omitempty" xml:"DBProxyKindCode,omitempty"`
-	// The proxy nodes.
-	DBProxyNodes *DescribeDBProxyResponseBodyDBProxyNodes `json:"DBProxyNodes,omitempty" xml:"DBProxyNodes,omitempty" type:"Struct"`
+	DBProxyKindCode *string                                  `json:"DBProxyKindCode,omitempty" xml:"DBProxyKindCode,omitempty"`
+	DBProxyNodes    *DescribeDBProxyResponseBodyDBProxyNodes `json:"DBProxyNodes,omitempty" xml:"DBProxyNodes,omitempty" type:"Struct"`
 	// The status of persistence connections. Valid values:
 	//
 	// 	- **Enabled**
@@ -150,8 +147,7 @@ type DescribeDBProxyResponseBody struct {
 	// example:
 	//
 	// Startup
-	DBProxyServiceStatus *string `json:"DBProxyServiceStatus,omitempty" xml:"DBProxyServiceStatus,omitempty"`
-	// The proxy terminals of the instance.
+	DBProxyServiceStatus *string                                          `json:"DBProxyServiceStatus,omitempty" xml:"DBProxyServiceStatus,omitempty"`
 	DbProxyEndpointItems *DescribeDBProxyResponseBodyDbProxyEndpointItems `json:"DbProxyEndpointItems,omitempty" xml:"DbProxyEndpointItems,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -426,70 +422,15 @@ func (s *DescribeDBProxyResponseBodyDBProxyConnectStringItems) Validate() error 
 }
 
 type DescribeDBProxyResponseBodyDBProxyConnectStringItemsDBProxyConnectStringItems struct {
-	// The database proxy endpoint.
-	//
-	// example:
-	//
-	// gos787jog2wk0ye1****-rw4rm.rwlb.rds.aliyuncs.com
-	DBProxyConnectString *string `json:"DBProxyConnectString,omitempty" xml:"DBProxyConnectString,omitempty"`
-	// The network type of the database proxy endpoint. A database proxy endpoint is formerly referred to as a proxy terminal. Valid values:
-	//
-	// 	- OuterString: Internet
-	//
-	// 	- InnerString: internal network
-	//
-	// example:
-	//
-	// InnerString
-	DBProxyConnectStringNetType *string `json:"DBProxyConnectStringNetType,omitempty" xml:"DBProxyConnectStringNetType,omitempty"`
-	// The network type of the database proxy. Valid values:
-	//
-	// 	- 0: Internet
-	//
-	// 	- 1: classic network
-	//
-	// 	- 2: virtual private cloud (VPC)
-	//
-	// example:
-	//
-	// 2
+	DBProxyConnectString            *string `json:"DBProxyConnectString,omitempty" xml:"DBProxyConnectString,omitempty"`
+	DBProxyConnectStringNetType     *string `json:"DBProxyConnectStringNetType,omitempty" xml:"DBProxyConnectStringNetType,omitempty"`
 	DBProxyConnectStringNetWorkType *string `json:"DBProxyConnectStringNetWorkType,omitempty" xml:"DBProxyConnectStringNetWorkType,omitempty"`
-	// The port that is associated with the database proxy endpoint.
-	//
-	// example:
-	//
-	// 3306
-	DBProxyConnectStringPort *string `json:"DBProxyConnectStringPort,omitempty" xml:"DBProxyConnectStringPort,omitempty"`
-	// The ID of the backend database proxy endpoint.
-	//
-	// example:
-	//
-	// 20****
-	DBProxyEndpointId *string `json:"DBProxyEndpointId,omitempty" xml:"DBProxyEndpointId,omitempty"`
-	// The name of the database proxy endpoint. The name can be replaced by the ID of the database proxy endpoint.
-	//
-	// example:
-	//
-	// gos787jog2wk0ye1****
-	DBProxyEndpointName *string `json:"DBProxyEndpointName,omitempty" xml:"DBProxyEndpointName,omitempty"`
-	// The VPC of the database proxy.
-	//
-	// example:
-	//
-	// vpc-uf6oobt****
-	DBProxyVpcId *string `json:"DBProxyVpcId,omitempty" xml:"DBProxyVpcId,omitempty"`
-	// The ID of the database proxy instance.
-	//
-	// example:
-	//
-	// rm-bp145737x5****131161274792****
-	DBProxyVpcInstanceId *string `json:"DBProxyVpcInstanceId,omitempty" xml:"DBProxyVpcInstanceId,omitempty"`
-	// The vSwitch of the database proxy.
-	//
-	// example:
-	//
-	// vsw-uf6l0pic17****
-	DBProxyVswitchId *string `json:"DBProxyVswitchId,omitempty" xml:"DBProxyVswitchId,omitempty"`
+	DBProxyConnectStringPort        *string `json:"DBProxyConnectStringPort,omitempty" xml:"DBProxyConnectStringPort,omitempty"`
+	DBProxyEndpointId               *string `json:"DBProxyEndpointId,omitempty" xml:"DBProxyEndpointId,omitempty"`
+	DBProxyEndpointName             *string `json:"DBProxyEndpointName,omitempty" xml:"DBProxyEndpointName,omitempty"`
+	DBProxyVpcId                    *string `json:"DBProxyVpcId,omitempty" xml:"DBProxyVpcId,omitempty"`
+	DBProxyVpcInstanceId            *string `json:"DBProxyVpcInstanceId,omitempty" xml:"DBProxyVpcInstanceId,omitempty"`
+	DBProxyVswitchId                *string `json:"DBProxyVswitchId,omitempty" xml:"DBProxyVswitchId,omitempty"`
 }
 
 func (s DescribeDBProxyResponseBodyDBProxyConnectStringItemsDBProxyConnectStringItems) String() string {
@@ -645,23 +586,11 @@ func (s *DescribeDBProxyResponseBodyDBProxyNodes) Validate() error {
 }
 
 type DescribeDBProxyResponseBodyDBProxyNodesDBProxyNodes struct {
-	// The number of CPU cores of the node.
-	//
-	// example:
-	//
-	// 2
 	CpuCores *string `json:"cpuCores,omitempty" xml:"cpuCores,omitempty"`
-	// The ID of the proxy node.
-	//
 	// example:
 	//
 	// pn-xxxxxxx01
 	NodeId *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
-	// The ID of the zone in which the node is deployed.
-	//
-	// example:
-	//
-	// cn-hangzhou-c
 	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 
@@ -739,38 +668,10 @@ func (s *DescribeDBProxyResponseBodyDbProxyEndpointItems) Validate() error {
 }
 
 type DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems struct {
-	// The description of the database proxy endpoint.
-	//
-	// example:
-	//
-	// proxy-test
 	DbProxyEndpointAliases *string `json:"DbProxyEndpointAliases,omitempty" xml:"DbProxyEndpointAliases,omitempty"`
-	// The ID of the database proxy endpoint.
-	//
-	// example:
-	//
-	// gos787jog2wk0ye1****
-	DbProxyEndpointName *string `json:"DbProxyEndpointName,omitempty" xml:"DbProxyEndpointName,omitempty"`
-	// The type of the database proxy endpoint. Valid values:
-	//
-	// 	- Custom: custom database proxy endpoint
-	//
-	// 	- RWSplit: default database proxy endpoint
-	//
-	// example:
-	//
-	// RWSplit
-	DbProxyEndpointType *string `json:"DbProxyEndpointType,omitempty" xml:"DbProxyEndpointType,omitempty"`
-	// The read and write attributes of the database proxy endpoint.
-	//
-	// 	- ReadOnly
-	//
-	// 	- ReadWrite
-	//
-	// example:
-	//
-	// ReadWrite
-	DbProxyReadWriteMode *string `json:"DbProxyReadWriteMode,omitempty" xml:"DbProxyReadWriteMode,omitempty"`
+	DbProxyEndpointName    *string `json:"DbProxyEndpointName,omitempty" xml:"DbProxyEndpointName,omitempty"`
+	DbProxyEndpointType    *string `json:"DbProxyEndpointType,omitempty" xml:"DbProxyEndpointType,omitempty"`
+	DbProxyReadWriteMode   *string `json:"DbProxyReadWriteMode,omitempty" xml:"DbProxyReadWriteMode,omitempty"`
 }
 
 func (s DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems) String() string {

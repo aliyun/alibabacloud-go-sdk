@@ -93,9 +93,6 @@ func (s *DescribeSQLServerUpgradeVersionsResponseBodyItems) Validate() error {
 }
 
 type DescribeSQLServerUpgradeVersionsResponseBodyItemsItem struct {
-	// example:
-	//
-	// 2016_web
 	CurrentVersion           *string                                                                        `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
 	SQLServerUpgradeVersions *DescribeSQLServerUpgradeVersionsResponseBodyItemsItemSQLServerUpgradeVersions `json:"SQLServerUpgradeVersions,omitempty" xml:"SQLServerUpgradeVersions,omitempty" type:"Struct"`
 }
@@ -171,14 +168,8 @@ func (s *DescribeSQLServerUpgradeVersionsResponseBodyItemsItemSQLServerUpgradeVe
 
 type DescribeSQLServerUpgradeVersionsResponseBodyItemsItemSQLServerUpgradeVersionsSQLServerUpgradeVersion struct {
 	DBInstanceClassItems *DescribeSQLServerUpgradeVersionsResponseBodyItemsItemSQLServerUpgradeVersionsSQLServerUpgradeVersionDBInstanceClassItems `json:"DBInstanceClassItems,omitempty" xml:"DBInstanceClassItems,omitempty" type:"Struct"`
-	// example:
-	//
-	// NO/YES
-	EnableUpgrade *string `json:"EnableUpgrade,omitempty" xml:"EnableUpgrade,omitempty"`
-	// example:
-	//
-	// 2016_std
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	EnableUpgrade        *string                                                                                                                   `json:"EnableUpgrade,omitempty" xml:"EnableUpgrade,omitempty"`
+	Version              *string                                                                                                                   `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeSQLServerUpgradeVersionsResponseBodyItemsItemSQLServerUpgradeVersionsSQLServerUpgradeVersion) String() string {
@@ -260,23 +251,11 @@ func (s *DescribeSQLServerUpgradeVersionsResponseBodyItemsItemSQLServerUpgradeVe
 }
 
 type DescribeSQLServerUpgradeVersionsResponseBodyItemsItemSQLServerUpgradeVersionsSQLServerUpgradeVersionDBInstanceClassItemsDBInstanceClassItem struct {
-	// example:
-	//
-	// 2
-	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	// example:
-	//
-	// mssql.x4.medium.s2
+	CPU                 *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
 	DBInstanceClass     *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	DBInstanceClassType *string `json:"DBInstanceClassType,omitempty" xml:"DBInstanceClassType,omitempty"`
-	// example:
-	//
-	// 2
-	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	// example:
-	//
-	// 8GB
-	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Group               *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	Memory              *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
 }
 
 func (s DescribeSQLServerUpgradeVersionsResponseBodyItemsItemSQLServerUpgradeVersionsSQLServerUpgradeVersionDBInstanceClassItemsDBInstanceClassItem) String() string {

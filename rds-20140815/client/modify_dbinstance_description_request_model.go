@@ -24,9 +24,23 @@ type iModifyDBInstanceDescriptionRequest interface {
 }
 
 type ModifyDBInstanceDescriptionRequest struct {
+	// The name of the instance.
+	//
+	// > The name must be 2 to 64 characters in length.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Instance in Alibaba Cloud test environment
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	// The ID of the instance.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-uf6wjk5****
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

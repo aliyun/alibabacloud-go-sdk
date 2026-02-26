@@ -22,7 +22,6 @@ type iDescribeTasksResponseBody interface {
 }
 
 type DescribeTasksResponseBody struct {
-	// The details of the task execution.
 	Items *DescribeTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,106 +146,21 @@ func (s *DescribeTasksResponseBodyItems) Validate() error {
 }
 
 type DescribeTasksResponseBodyItemsTaskProgressInfo struct {
-	// The start time of the task. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2020-11-20T01:00Z
-	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// The name of the subtask.
-	//
-	// example:
-	//
-	// create_instance
-	CurrentStepName *string `json:"CurrentStepName,omitempty" xml:"CurrentStepName,omitempty"`
-	// The name of the database. If the task involves a database, the database name is returned.
-	//
-	// example:
-	//
-	// DBtest
-	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The estimated end time of the task.
-	//
-	// >  In most cases, this parameter is empty.
-	//
-	// example:
-	//
-	// null
+	BeginTime          *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	CurrentStepName    *string `json:"CurrentStepName,omitempty" xml:"CurrentStepName,omitempty"`
+	DBName             *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	ExpectedFinishTime *string `json:"ExpectedFinishTime,omitempty" xml:"ExpectedFinishTime,omitempty"`
-	// The end time of the task. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2020-11-20T02:00Z
-	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The task progress in percentage.
-	//
-	// example:
-	//
-	// 100
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The description of the task progress.
-	//
-	// >  If no progress description is provided for the task, this parameter is empty.
-	//
-	// example:
-	//
-	// null
-	ProgressInfo *string `json:"ProgressInfo,omitempty" xml:"ProgressInfo,omitempty"`
-	// The estimated remaining time of the task. Unit: seconds.
-	//
-	// >  If the task is not running, this parameter is not returned or the returned value is **0**.
-	//
-	// example:
-	//
-	// 60
-	Remain *int32 `json:"Remain,omitempty" xml:"Remain,omitempty"`
-	// The status of the task.
-	//
-	// example:
-	//
-	// 2
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The progress of the subtask. For example, a value of `1/4` indicates that the task consists of four subtasks and the first subtask is in progress.
-	//
-	// example:
-	//
-	// 1/4
-	StepProgressInfo *string `json:"StepProgressInfo,omitempty" xml:"StepProgressInfo,omitempty"`
-	// The details of the subtasks.
-	//
-	// example:
-	//
-	// null
-	StepsInfo *string `json:"StepsInfo,omitempty" xml:"StepsInfo,omitempty"`
-	// The operation that is used by the task, such as **CreateDBInstance**.
-	//
-	// example:
-	//
-	// CreateDBInstance
-	TaskAction *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
-	// The error code that is returned when an error occurs.
-	//
-	// >  This parameter is returned only when an error occurs.
-	//
-	// example:
-	//
-	// null
-	TaskErrorCode *string `json:"TaskErrorCode,omitempty" xml:"TaskErrorCode,omitempty"`
-	// The error message that is returned when an error occurs.
-	//
-	// >  This parameter is returned only when an error occurs.
-	//
-	// example:
-	//
-	// null
-	TaskErrorMessage *string `json:"TaskErrorMessage,omitempty" xml:"TaskErrorMessage,omitempty"`
-	// The task ID. You can use one of the following methods to obtain the task ID:
-	//
-	// example:
-	//
-	// 3472xxxxx
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	FinishTime         *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	Progress           *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	ProgressInfo       *string `json:"ProgressInfo,omitempty" xml:"ProgressInfo,omitempty"`
+	Remain             *int32  `json:"Remain,omitempty" xml:"Remain,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StepProgressInfo   *string `json:"StepProgressInfo,omitempty" xml:"StepProgressInfo,omitempty"`
+	StepsInfo          *string `json:"StepsInfo,omitempty" xml:"StepsInfo,omitempty"`
+	TaskAction         *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
+	TaskErrorCode      *string `json:"TaskErrorCode,omitempty" xml:"TaskErrorCode,omitempty"`
+	TaskErrorMessage   *string `json:"TaskErrorMessage,omitempty" xml:"TaskErrorMessage,omitempty"`
+	TaskId             *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DescribeTasksResponseBodyItemsTaskProgressInfo) String() string {

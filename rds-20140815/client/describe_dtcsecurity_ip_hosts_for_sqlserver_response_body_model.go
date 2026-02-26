@@ -31,9 +31,8 @@ type DescribeDTCSecurityIpHostsForSQLServerResponseBody struct {
 	// example:
 	//
 	// 1
-	IpHostPairNum *string `json:"IpHostPairNum,omitempty" xml:"IpHostPairNum,omitempty"`
-	// Details of distributed transaction whitelists.
-	Items *DescribeDTCSecurityIpHostsForSQLServerResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	IpHostPairNum *string                                                  `json:"IpHostPairNum,omitempty" xml:"IpHostPairNum,omitempty"`
+	Items         *DescribeDTCSecurityIpHostsForSQLServerResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
@@ -130,17 +129,7 @@ func (s *DescribeDTCSecurityIpHostsForSQLServerResponseBodyItems) Validate() err
 }
 
 type DescribeDTCSecurityIpHostsForSQLServerResponseBodyItemsWhiteListGroups struct {
-	// The IP address of the ECS instance and the hostname of the Windows computer. Format: `IP address,Hostname`. Multiple values are separated with semicolons (;).
-	//
-	// example:
-	//
-	// 192.168.1.100,k3ecstest
-	SecurityIpHosts *string `json:"SecurityIpHosts,omitempty" xml:"SecurityIpHosts,omitempty"`
-	// The name of the distributed transaction whitelist.
-	//
-	// example:
-	//
-	// test1
+	SecurityIpHosts    *string `json:"SecurityIpHosts,omitempty" xml:"SecurityIpHosts,omitempty"`
 	WhitelistGroupName *string `json:"WhitelistGroupName,omitempty" xml:"WhitelistGroupName,omitempty"`
 }
 

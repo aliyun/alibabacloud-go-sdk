@@ -18,7 +18,6 @@ type iRunRCInstancesResponseBody interface {
 }
 
 type RunRCInstancesResponseBody struct {
-	// The instance IDs (InstanceIdSet).
 	InstanceIdSets *RunRCInstancesResponseBodyInstanceIdSets `json:"InstanceIdSets,omitempty" xml:"InstanceIdSets,omitempty" type:"Struct"`
 	// The order ID.
 	//

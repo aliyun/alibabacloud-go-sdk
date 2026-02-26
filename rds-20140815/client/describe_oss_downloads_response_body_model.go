@@ -25,9 +25,8 @@ type DescribeOssDownloadsResponseBody struct {
 	// example:
 	//
 	// rm-uf6wjk5xxxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Details of the backup file.
-	Items *DescribeOssDownloadsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	DBInstanceId *string                                `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Items        *DescribeOssDownloadsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The ID of the migration task.
 	//
 	// example:
@@ -130,84 +129,14 @@ func (s *DescribeOssDownloadsResponseBodyItems) Validate() error {
 }
 
 type DescribeOssDownloadsResponseBodyItemsOssDownload struct {
-	// The backup type. Valid values:
-	//
-	// 	- **Database**: full backup file
-	//
-	// 	- **Differential_Database**: incremental backup file
-	//
-	// 	- **Transaction_Log**: log backup file
-	//
-	// example:
-	//
-	// Database
-	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	// The time when the backup file was created in the download list. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2017-08-17T12:45:15Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the backup file.
-	//
-	// example:
-	//
-	// App description
+	BackupMode  *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The end of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2017-08-27T12:45:15Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the backup file stored in the Object Storage Service (OSS) bucket.
-	//
-	// example:
-	//
-	// test
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The size of the backup file. Unit: MB
-	//
-	// example:
-	//
-	// 2
-	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// Indicates whether the backup file is available. Valid values: **True and False**.
-	//
-	// example:
-	//
-	// True
+	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	FileName    *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileSize    *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
 	IsAvailable *string `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
-	// The state of the backup file. Valid values:
-	//
-	// 	- **NoStart**
-	//
-	// 	- **Downloading**
-	//
-	// 	- **Finished**
-	//
-	// 	- **DownloadFailed**
-	//
-	// 	- **VerifyFailed**
-	//
-	// 	- **Deleted**
-	//
-	// 	- **DeleteFailed**
-	//
-	// 	- **CheckSuccess**
-	//
-	// 	- **CheckFailed**
-	//
-	// 	- **Restoring**
-	//
-	// 	- **Restored**
-	//
-	// 	- **RestoreFailed**
-	//
-	// example:
-	//
-	// Finished
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeOssDownloadsResponseBodyItemsOssDownload) String() string {

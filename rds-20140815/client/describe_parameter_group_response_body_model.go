@@ -18,11 +18,7 @@ type iDescribeParameterGroupResponseBody interface {
 }
 
 type DescribeParameterGroupResponseBody struct {
-	// The information about the parameter template.
-	ParamGroup *DescribeParameterGroupResponseBodyParamGroup `json:"ParamGroup,omitempty" xml:"ParamGroup,omitempty" type:"Struct"`
-	// The information about the instance to which the parameter template is applied.
-	//
-	// >  This parameter is available only for ApsaraDB RDS for PostgreSQL instances.
+	ParamGroup         *DescribeParameterGroupResponseBodyParamGroup         `json:"ParamGroup,omitempty" xml:"ParamGroup,omitempty" type:"Struct"`
 	RelatedCustinsInfo *DescribeParameterGroupResponseBodyRelatedCustinsInfo `json:"RelatedCustinsInfo,omitempty" xml:"RelatedCustinsInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -116,78 +112,17 @@ func (s *DescribeParameterGroupResponseBodyParamGroup) Validate() error {
 }
 
 type DescribeParameterGroupResponseBodyParamGroupParameterGroup struct {
-	// The time when the parameter template was created.
-	//
-	// example:
-	//
-	// 2019-10-22T06:02:53Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The database engine of the instance.
-	//
-	// example:
-	//
-	// mysql
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version of the instance.
-	//
-	// example:
-	//
-	// 5.6
-	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// Indicates whether the restart of an instance is required for the parameter template to take effect. Valid values:
-	//
-	// 	- **0**: A restart is not required.
-	//
-	// 	- **1**: A restart is required.
-	//
-	// example:
-	//
-	// 1
-	ForceRestart *int32 `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
-	// The number of parameters in the parameter template.
-	//
-	// example:
-	//
-	// 2
-	ParamCounts *int32 `json:"ParamCounts,omitempty" xml:"ParamCounts,omitempty"`
-	// The details of the parameters.
-	ParamDetail *DescribeParameterGroupResponseBodyParamGroupParameterGroupParamDetail `json:"ParamDetail,omitempty" xml:"ParamDetail,omitempty" type:"Struct"`
-	// The description of the parameter template.
-	//
-	// example:
-	//
-	// testGroup1
-	ParameterGroupDesc *string `json:"ParameterGroupDesc,omitempty" xml:"ParameterGroupDesc,omitempty"`
-	// The ID of the parameter template.
-	//
-	// example:
-	//
-	// rpg-dp****
-	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
-	// The name of the parameter template.
-	//
-	// example:
-	//
-	// test123456
-	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
-	// The type of the parameter template. Valid values:
-	//
-	// 	- **0**: the default parameter template.
-	//
-	// 	- **1**: a custom parameter template.
-	//
-	// 	- **2**: an automatic backup parameter template. After you apply this type of template, the system automatically backs up the original parameter settings and saves the backup as a template.
-	//
-	// example:
-	//
-	// 1
-	ParameterGroupType *int32 `json:"ParameterGroupType,omitempty" xml:"ParameterGroupType,omitempty"`
-	// The time when the parameter template was last updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-10-22T06:07:54Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	CreateTime         *string                                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Engine             *string                                                                `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion      *string                                                                `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	ForceRestart       *int32                                                                 `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
+	ParamCounts        *int32                                                                 `json:"ParamCounts,omitempty" xml:"ParamCounts,omitempty"`
+	ParamDetail        *DescribeParameterGroupResponseBodyParamGroupParameterGroupParamDetail `json:"ParamDetail,omitempty" xml:"ParamDetail,omitempty" type:"Struct"`
+	ParameterGroupDesc *string                                                                `json:"ParameterGroupDesc,omitempty" xml:"ParameterGroupDesc,omitempty"`
+	ParameterGroupId   *string                                                                `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
+	ParameterGroupName *string                                                                `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
+	ParameterGroupType *int32                                                                 `json:"ParameterGroupType,omitempty" xml:"ParameterGroupType,omitempty"`
+	UpdateTime         *string                                                                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeParameterGroupResponseBodyParamGroupParameterGroup) String() string {
@@ -341,17 +276,7 @@ func (s *DescribeParameterGroupResponseBodyParamGroupParameterGroupParamDetail) 
 }
 
 type DescribeParameterGroupResponseBodyParamGroupParameterGroupParamDetailParameterDetail struct {
-	// The name of the parameter.
-	//
-	// example:
-	//
-	// back_log
-	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
-	// The value of the parameter.
-	//
-	// example:
-	//
-	// 2000
+	ParamName  *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
 	ParamValue *string `json:"ParamValue,omitempty" xml:"ParamValue,omitempty"`
 }
 
@@ -420,17 +345,7 @@ func (s *DescribeParameterGroupResponseBodyRelatedCustinsInfo) Validate() error 
 }
 
 type DescribeParameterGroupResponseBodyRelatedCustinsInfoRelatedCustinsInfo struct {
-	// The time when the parameter template was applied.
-	//
-	// example:
-	//
-	// 2022-10-17T03:19:02Z
-	AppliedTime *string `json:"AppliedTime,omitempty" xml:"AppliedTime,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-bp170****
+	AppliedTime    *string `json:"AppliedTime,omitempty" xml:"AppliedTime,omitempty"`
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 }
 

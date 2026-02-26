@@ -22,7 +22,6 @@ type iDescribeDBInstanceByTagsResponseBody interface {
 }
 
 type DescribeDBInstanceByTagsResponseBody struct {
-	// The details about the instance.
 	Items *DescribeDBInstanceByTagsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,14 +146,8 @@ func (s *DescribeDBInstanceByTagsResponseBodyItems) Validate() error {
 }
 
 type DescribeDBInstanceByTagsResponseBodyItemsDBInstanceTag struct {
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf6w**********
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The details about the tag.
-	Tags *DescribeDBInstanceByTagsResponseBodyItemsDBInstanceTagTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	DBInstanceId *string                                                     `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Tags         *DescribeDBInstanceByTagsResponseBodyItemsDBInstanceTagTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeDBInstanceByTagsResponseBodyItemsDBInstanceTag) String() string {
@@ -227,17 +220,7 @@ func (s *DescribeDBInstanceByTagsResponseBodyItemsDBInstanceTagTags) Validate() 
 }
 
 type DescribeDBInstanceByTagsResponseBodyItemsDBInstanceTagTagsTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// key1
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// value1
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

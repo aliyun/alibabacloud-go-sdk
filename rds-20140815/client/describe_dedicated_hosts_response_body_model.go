@@ -23,9 +23,8 @@ type DescribeDedicatedHostsResponseBody struct {
 	// example:
 	//
 	// dhg-7a9xxxxxxxx
-	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// The host information.
-	DedicatedHosts *DescribeDedicatedHostsResponseBodyDedicatedHosts `json:"DedicatedHosts,omitempty" xml:"DedicatedHosts,omitempty" type:"Struct"`
+	DedicatedHostGroupId *string                                           `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
+	DedicatedHosts       *DescribeDedicatedHostsResponseBodyDedicatedHosts `json:"DedicatedHosts,omitempty" xml:"DedicatedHosts,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
@@ -113,208 +112,34 @@ func (s *DescribeDedicatedHostsResponseBodyDedicatedHosts) Validate() error {
 }
 
 type DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts struct {
-	// The host account. You can call the [CreateDedicatedHostAccount](https://help.aliyun.com/document_detail/196877.html) operation to create a host account.
-	//
-	// example:
-	//
-	// test123
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// Specifies whether instances can be deployed on the host. Valid values:
-	//
-	// 	- **0**: Instances cannot be deployed on the host.
-	//
-	// 	- **1**: Instances can be deployed on the host.
-	//
-	// example:
-	//
-	// 1
-	AllocationStatus *string `json:"AllocationStatus,omitempty" xml:"AllocationStatus,omitempty"`
-	// The bastion host ID.
-	//
-	// example:
-	//
-	// bastionhost-cn-m7xxxxxxxx
-	BastionInstanceId *string `json:"BastionInstanceId,omitempty" xml:"BastionInstanceId,omitempty"`
-	// The core overcommitment ratio of the dedicated cluster. Unit: percentage. For more information about the core overcommitment ratio, see [Manage a dedicated cluster](https://help.aliyun.com/document_detail/182328.html).
-	//
-	// example:
-	//
-	// 200
-	CPUAllocationRatio *string `json:"CPUAllocationRatio,omitempty" xml:"CPUAllocationRatio,omitempty"`
-	// The number of used CPU cores on the host. Unit: cores.
-	//
-	// example:
-	//
-	// 4
-	CpuUsed *string `json:"CpuUsed,omitempty" xml:"CpuUsed,omitempty"`
-	// The time when the host was created.
-	//
-	// example:
-	//
-	// 2021-03-25 17:29:06.0
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The dedicated cluster ID.
-	//
-	// example:
-	//
-	// dhg-7a9xxxxxxxx
+	AccountName          *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AllocationStatus     *string `json:"AllocationStatus,omitempty" xml:"AllocationStatus,omitempty"`
+	BastionInstanceId    *string `json:"BastionInstanceId,omitempty" xml:"BastionInstanceId,omitempty"`
+	CPUAllocationRatio   *string `json:"CPUAllocationRatio,omitempty" xml:"CPUAllocationRatio,omitempty"`
+	CpuUsed              *string `json:"CpuUsed,omitempty" xml:"CpuUsed,omitempty"`
+	CreatedTime          *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// The host ID.
-	//
-	// example:
-	//
-	// i-bpxxxxxxx
-	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	// The disk overcommitment ratio of the dedicated cluster. Unit: percentage. For more information about the core overcommitment ratio, see [Manage a dedicated cluster](https://help.aliyun.com/document_detail/182328.html).
-	//
-	// example:
-	//
-	// 200
-	DiskAllocationRatio *string `json:"DiskAllocationRatio,omitempty" xml:"DiskAllocationRatio,omitempty"`
-	// The time when the host expires.
-	//
-	// example:
-	//
-	// 2021-04-25T16:00:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The database engine of instances that are created on the host.
-	//
-	// example:
-	//
-	// mysql
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The total number of CPU cores that are configured for the host. Unit: cores.
-	//
-	// example:
-	//
-	// 8
-	HostCPU *string `json:"HostCPU,omitempty" xml:"HostCPU,omitempty"`
-	// The instance type of the host.
-	//
-	// example:
-	//
-	// ecs.i2.16xlarge
-	HostClass *string `json:"HostClass,omitempty" xml:"HostClass,omitempty"`
-	// The total memory space of the host. Unit: MB.
-	//
-	// example:
-	//
-	// 32238
-	HostMem *string `json:"HostMem,omitempty" xml:"HostMem,omitempty"`
-	// The host name.
-	//
-	// example:
-	//
-	// testHost1
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The status of the host. Valid values:
-	//
-	// 	- **0**: creating
-	//
-	// 	- **1**: running
-	//
-	// 	- **2**: faulty
-	//
-	// 	- **3**: being replaced
-	//
-	// 	- **4**: deprecated
-	//
-	// 	- **5**: deleting
-	//
-	// 	- **6**: restarting
-	//
-	// example:
-	//
-	// 1
-	HostStatus *string `json:"HostStatus,omitempty" xml:"HostStatus,omitempty"`
-	// The storage capacity of the host. Unit: MB.
-	//
-	// example:
-	//
-	// 2097152
-	HostStorage *string `json:"HostStorage,omitempty" xml:"HostStorage,omitempty"`
-	// The storage type of the host. Valid values:
-	//
-	// 	- **dhg_cloud_ssd**: ESSD
-	//
-	// 	- **dhg_local_ssd**: local SSD
-	//
-	// example:
-	//
-	// dhg_cloud_ssd
-	HostType *string `json:"HostType,omitempty" xml:"HostType,omitempty"`
-	// The internal IP address of the host.
-	//
-	// example:
-	//
-	// 192.xx.xx.xx
-	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
-	// The host image. This parameter is returned only when the **Engine*	- parameter is set to **mssql**. Valid values:
-	//
-	// 	- **WindowsWithMssqlStdLicense**: a Windows image that contains the licenses of SQL Server Standard Edition
-	//
-	// 	- **WindowsWithMssqlEntLisence**: a Windows image that contains the licenses of SQL Server Enterprise Edition
-	//
-	// 	- **WindowsWithMssqlWebLisence**: a Windows image that contains the licenses of SQL Server Web Edition
-	//
-	// example:
-	//
-	// WindowsWithMssqlStdLicense
-	ImageCategory *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
-	// The total number of instances that are created on the host.
-	//
-	// example:
-	//
-	// 4
-	InstanceNumber *string `json:"InstanceNumber,omitempty" xml:"InstanceNumber,omitempty"`
-	// The maximum memory usage per host in the dedicated cluster.
-	//
-	// example:
-	//
-	// 90
-	MemAllocationRatio *string `json:"MemAllocationRatio,omitempty" xml:"MemAllocationRatio,omitempty"`
-	// The size of the used memory. Unit: MB.
-	//
-	// example:
-	//
-	// 16384
-	MemoryUsed *string `json:"MemoryUsed,omitempty" xml:"MemoryUsed,omitempty"`
-	// Indicates whether the feature that allows you to have the OS permissions on the host is enabled. Valid values:
-	//
-	// 	- **0*	- or **null**: The permissions cannot be granted.
-	//
-	// 	- **1**: The permissions can be granted.
-	//
-	// 	- **3**: The permissions have been granted.
-	//
-	// example:
-	//
-	// 3
-	OpenPermission *string `json:"OpenPermission,omitempty" xml:"OpenPermission,omitempty"`
-	// The amount of used storage space on the host.
-	//
-	// example:
-	//
-	// 0
-	StorageUsed *string `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
-	// The ID of the virtual private cloud (VPC) to which the host belongs.
-	//
-	// example:
-	//
-	// vpc-bpxxxxxxx
-	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The ID of the vSwitch associated with the specified VPC.
-	//
-	// example:
-	//
-	// vsw-bpxxxxxxx
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The zone ID of the host.
-	//
-	// example:
-	//
-	// cn-hangzhou-i
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	DedicatedHostId      *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	DiskAllocationRatio  *string `json:"DiskAllocationRatio,omitempty" xml:"DiskAllocationRatio,omitempty"`
+	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Engine               *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	HostCPU              *string `json:"HostCPU,omitempty" xml:"HostCPU,omitempty"`
+	HostClass            *string `json:"HostClass,omitempty" xml:"HostClass,omitempty"`
+	HostMem              *string `json:"HostMem,omitempty" xml:"HostMem,omitempty"`
+	HostName             *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	HostStatus           *string `json:"HostStatus,omitempty" xml:"HostStatus,omitempty"`
+	HostStorage          *string `json:"HostStorage,omitempty" xml:"HostStorage,omitempty"`
+	HostType             *string `json:"HostType,omitempty" xml:"HostType,omitempty"`
+	IPAddress            *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
+	ImageCategory        *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
+	InstanceNumber       *string `json:"InstanceNumber,omitempty" xml:"InstanceNumber,omitempty"`
+	MemAllocationRatio   *string `json:"MemAllocationRatio,omitempty" xml:"MemAllocationRatio,omitempty"`
+	MemoryUsed           *string `json:"MemoryUsed,omitempty" xml:"MemoryUsed,omitempty"`
+	OpenPermission       *string `json:"OpenPermission,omitempty" xml:"OpenPermission,omitempty"`
+	StorageUsed          *string `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
+	VPCId                *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts) String() string {

@@ -43,9 +43,8 @@ type DescribePriceResponseBody struct {
 	// example:
 	//
 	// CA0ADDDC-0BEB-4381-A3ED-73B4C79B8CC6
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the promotion rule.
-	Rules *DescribePriceResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rules     *DescribePriceResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 	// The pricing information about a serverless RDS instance.
 	ServerlessPrice *DescribePriceResponseBodyServerlessPrice `json:"ServerlessPrice,omitempty" xml:"ServerlessPrice,omitempty" type:"Struct"`
 	// Indicates whether discounts can be used.
@@ -170,8 +169,7 @@ func (s *DescribePriceResponseBody) Validate() error {
 type DescribePriceResponseBodyPriceInfo struct {
 	// The information about the promotion.
 	ActivityInfo *DescribePriceResponseBodyPriceInfoActivityInfo `json:"ActivityInfo,omitempty" xml:"ActivityInfo,omitempty" type:"Struct"`
-	// The information about the coupon.
-	Coupons *DescribePriceResponseBodyPriceInfoCoupons `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Struct"`
+	Coupons      *DescribePriceResponseBodyPriceInfoCoupons      `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Struct"`
 	// The currency unit.
 	//
 	// example:
@@ -195,9 +193,8 @@ type DescribePriceResponseBodyPriceInfo struct {
 	// example:
 	//
 	// 2504
-	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	// An array that consists of the ID of the promotion rule.
-	RuleIds *DescribePriceResponseBodyPriceInfoRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
+	OriginalPrice *float32                                   `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	RuleIds       *DescribePriceResponseBodyPriceInfoRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
 	// The estimated hourly cost that is calculated based on the maximum number of RCUs you specify.
 	//
 	// example:
@@ -430,30 +427,10 @@ func (s *DescribePriceResponseBodyPriceInfoCoupons) Validate() error {
 }
 
 type DescribePriceResponseBodyPriceInfoCouponsCoupon struct {
-	// The coupon ID.
-	//
-	// example:
-	//
-	// 123456
-	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	// The description of the coupon.
-	//
-	// example:
-	//
-	// test
+	CouponNo    *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the coupon is selected.
-	//
-	// example:
-	//
-	// true
-	IsSelected *string `json:"IsSelected,omitempty" xml:"IsSelected,omitempty"`
-	// The coupon name.
-	//
-	// example:
-	//
-	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	IsSelected  *string `json:"IsSelected,omitempty" xml:"IsSelected,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribePriceResponseBodyPriceInfoCouponsCoupon) String() string {
@@ -564,24 +541,9 @@ func (s *DescribePriceResponseBodyRules) Validate() error {
 }
 
 type DescribePriceResponseBodyRulesRule struct {
-	// The description of the promotion rule.
-	//
-	// example:
-	//
-	// Activity Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the promotion rule.
-	//
-	// example:
-	//
-	// Rule1
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the promotion rule.
-	//
-	// example:
-	//
-	// 1020021003939076
-	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s DescribePriceResponseBodyRulesRule) String() string {

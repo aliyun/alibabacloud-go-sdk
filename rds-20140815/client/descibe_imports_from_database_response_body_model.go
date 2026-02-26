@@ -22,7 +22,6 @@ type iDescibeImportsFromDatabaseResponseBody interface {
 }
 
 type DescibeImportsFromDatabaseResponseBody struct {
-	// The migration tasks.
 	Items *DescibeImportsFromDatabaseResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,60 +146,11 @@ func (s *DescibeImportsFromDatabaseResponseBodyItems) Validate() error {
 }
 
 type DescibeImportsFromDatabaseResponseBodyItemsImportResultFromDB struct {
-	// The status of the migration task. Valid values:
-	//
-	// 	- **NotStart**: The migration task has not started.
-	//
-	// 	- **FullExporting**: The migration task is exporting full data.
-	//
-	// 	- **FullImporting**: The migration task is importing full data.
-	//
-	// 	- **Success**: The migration task is successful.
-	//
-	// 	- **Failed**: The migration task failed.
-	//
-	// 	- **Canceled**: The migration task is canceled.
-	//
-	// 	- **Canceling**: The migration task is being canceled.
-	//
-	// 	- **IncrementalWaiting**: The migration task is waiting to synchronize incremental data.
-	//
-	// 	- **IncrementalImporting**: The migration task is synchronizing incremental data.
-	//
-	// 	- **StopSyncing**: The migration task stops synchronizing data.
-	//
-	// example:
-	//
-	// NotStart
-	ImportDataStatus *string `json:"ImportDataStatus,omitempty" xml:"ImportDataStatus,omitempty"`
-	// The description of the migration task.
-	//
-	// example:
-	//
-	// Description
+	ImportDataStatus            *string `json:"ImportDataStatus,omitempty" xml:"ImportDataStatus,omitempty"`
 	ImportDataStatusDescription *string `json:"ImportDataStatusDescription,omitempty" xml:"ImportDataStatusDescription,omitempty"`
-	// The type of the migration task. Valid values:
-	//
-	// 	- **Full**: full migration
-	//
-	// 	- **Incremental:**: incremental migration
-	//
-	// example:
-	//
-	// Full
-	ImportDataType *string `json:"ImportDataType,omitempty" xml:"ImportDataType,omitempty"`
-	// The ID of the migration task.
-	//
-	// example:
-	//
-	// 123
-	ImportId *int32 `json:"ImportId,omitempty" xml:"ImportId,omitempty"`
-	// The time when the migration task synchronized incremental data. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2011-06-11T15:00Z
-	IncrementalImportingTime *string `json:"IncrementalImportingTime,omitempty" xml:"IncrementalImportingTime,omitempty"`
+	ImportDataType              *string `json:"ImportDataType,omitempty" xml:"ImportDataType,omitempty"`
+	ImportId                    *int32  `json:"ImportId,omitempty" xml:"ImportId,omitempty"`
+	IncrementalImportingTime    *string `json:"IncrementalImportingTime,omitempty" xml:"IncrementalImportingTime,omitempty"`
 }
 
 func (s DescibeImportsFromDatabaseResponseBodyItemsImportResultFromDB) String() string {

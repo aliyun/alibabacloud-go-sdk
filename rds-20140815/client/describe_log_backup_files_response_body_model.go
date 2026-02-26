@@ -24,7 +24,6 @@ type iDescribeLogBackupFilesResponseBody interface {
 }
 
 type DescribeLogBackupFilesResponseBody struct {
-	// The details of log files.
 	Items *DescribeLogBackupFilesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the page returned.
 	//
@@ -164,42 +163,12 @@ func (s *DescribeLogBackupFilesResponseBodyItems) Validate() error {
 }
 
 type DescribeLogBackupFilesResponseBodyItemsBinLogFile struct {
-	// The HTTP-based download URL of the log file. If the log file cannot be downloaded, an empty string is returned.
-	//
-	// example:
-	//
-	// http://rdsbak-hz-v3.oss-cn-hangzhou.aliyuncs.com/xxxxx
-	DownloadLink *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
-	// The size of the log file. Unit: bytes.
-	//
-	// example:
-	//
-	// 788480
-	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The URL that is used to download the log file over an internal network. If the log file cannot be downloaded, an empty string is returned. This URL is valid for one hour.
-	//
-	// example:
-	//
-	// http://rdsbak-hz-v3.oss-cn-hangzhou.aliyuncs.com/xxxxx
+	DownloadLink         *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
+	FileSize             *int64  `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
 	IntranetDownloadLink *string `json:"IntranetDownloadLink,omitempty" xml:"IntranetDownloadLink,omitempty"`
-	// The expiration time of the URL. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-03-01T15:04:13Z
-	LinkExpiredTime *string `json:"LinkExpiredTime,omitempty" xml:"LinkExpiredTime,omitempty"`
-	// The start time of the log file. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2018-10-31T08:40Z
-	LogBeginTime *string `json:"LogBeginTime,omitempty" xml:"LogBeginTime,omitempty"`
-	// The end time of the log file. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2018-10-31T08:40Z
-	LogEndTime *string `json:"LogEndTime,omitempty" xml:"LogEndTime,omitempty"`
+	LinkExpiredTime      *string `json:"LinkExpiredTime,omitempty" xml:"LinkExpiredTime,omitempty"`
+	LogBeginTime         *string `json:"LogBeginTime,omitempty" xml:"LogBeginTime,omitempty"`
+	LogEndTime           *string `json:"LogEndTime,omitempty" xml:"LogEndTime,omitempty"`
 }
 
 func (s DescribeLogBackupFilesResponseBodyItemsBinLogFile) String() string {

@@ -25,9 +25,8 @@ type DescribeModifyPGHbaConfigLogResponseBody struct {
 	// example:
 	//
 	// pgm-bp1lymyn1v3i****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// An array that consists of the modifications to the pg_hba.conf file.
-	HbaLogItems *DescribeModifyPGHbaConfigLogResponseBodyHbaLogItems `json:"HbaLogItems,omitempty" xml:"HbaLogItems,omitempty" type:"Struct"`
+	DBInstanceId *string                                              `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	HbaLogItems  *DescribeModifyPGHbaConfigLogResponseBodyHbaLogItems `json:"HbaLogItems,omitempty" xml:"HbaLogItems,omitempty" type:"Struct"`
 	// The number of modification records.
 	//
 	// example:
@@ -130,34 +129,11 @@ func (s *DescribeModifyPGHbaConfigLogResponseBodyHbaLogItems) Validate() error {
 }
 
 type DescribeModifyPGHbaConfigLogResponseBodyHbaLogItemsHbaLogItem struct {
-	// The configurations of the pg_hba.conf file after modification.
-	AfterHbaItems *DescribeModifyPGHbaConfigLogResponseBodyHbaLogItemsHbaLogItemAfterHbaItems `json:"AfterHbaItems,omitempty" xml:"AfterHbaItems,omitempty" type:"Struct"`
-	// The configurations of the pg_hba.conf file before modification.
+	AfterHbaItems  *DescribeModifyPGHbaConfigLogResponseBodyHbaLogItemsHbaLogItemAfterHbaItems  `json:"AfterHbaItems,omitempty" xml:"AfterHbaItems,omitempty" type:"Struct"`
 	BeforeHbaItems *DescribeModifyPGHbaConfigLogResponseBodyHbaLogItemsHbaLogItemBeforeHbaItems `json:"BeforeHbaItems,omitempty" xml:"BeforeHbaItems,omitempty" type:"Struct"`
-	// The status of the modification.
-	//
-	// 	- **success**: The modification is successful.
-	//
-	// 	- **failed**: The modification failed.
-	//
-	// 	- **setting**: The modification is being applied.
-	//
-	// example:
-	//
-	// success
-	ModifyStatus *string `json:"ModifyStatus,omitempty" xml:"ModifyStatus,omitempty"`
-	// The time when the pg_hba.conf file was modified. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-11-25T06:00:40Z
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The reason why the modification failed.
-	//
-	// example:
-	//
-	// null
-	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	ModifyStatus   *string                                                                      `json:"ModifyStatus,omitempty" xml:"ModifyStatus,omitempty"`
+	ModifyTime     *string                                                                      `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	StatusReason   *string                                                                      `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
 }
 
 func (s DescribeModifyPGHbaConfigLogResponseBodyHbaLogItemsHbaLogItem) String() string {
@@ -262,54 +238,14 @@ func (s *DescribeModifyPGHbaConfigLogResponseBodyHbaLogItemsHbaLogItemAfterHbaIt
 }
 
 type DescribeModifyPGHbaConfigLogResponseBodyHbaLogItemsHbaLogItemAfterHbaItemsHbaItem struct {
-	// The IP address.
-	//
-	// example:
-	//
-	// 0.0.0.0/0
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// all
-	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The mask of the IP address.
-	//
-	// example:
-	//
-	// null
-	Mask *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
-	// The authentication method.
-	//
-	// example:
-	//
-	// ldap
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The value of this parameter was set based on the value of the Method parameter.
-	//
-	// example:
-	//
-	// null
-	Option *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	// The priority.
-	//
-	// example:
-	//
-	// 0
-	PriorityId *int32 `json:"PriorityId,omitempty" xml:"PriorityId,omitempty"`
-	// The connection type.
-	//
-	// example:
-	//
-	// host
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The username of the account.
-	//
-	// example:
-	//
-	// ldapuser
-	User *string `json:"User,omitempty" xml:"User,omitempty"`
+	Address    *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Database   *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	Mask       *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	Method     *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Option     *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	PriorityId *int32  `json:"PriorityId,omitempty" xml:"PriorityId,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	User       *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DescribeModifyPGHbaConfigLogResponseBodyHbaLogItemsHbaLogItemAfterHbaItemsHbaItem) String() string {
@@ -431,54 +367,14 @@ func (s *DescribeModifyPGHbaConfigLogResponseBodyHbaLogItemsHbaLogItemBeforeHbaI
 }
 
 type DescribeModifyPGHbaConfigLogResponseBodyHbaLogItemsHbaLogItemBeforeHbaItemsHbaItem struct {
-	// The IP address.
-	//
-	// example:
-	//
-	// 0.0.0.0/0
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// all
-	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The mask of the IP address.
-	//
-	// example:
-	//
-	// null
-	Mask *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
-	// The authentication method.
-	//
-	// example:
-	//
-	// md5
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The value of this parameter varies based on the value of the Method parameter.
-	//
-	// example:
-	//
-	// null
-	Option *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	// The priority.
-	//
-	// example:
-	//
-	// 0
-	PriorityId *int32 `json:"PriorityId,omitempty" xml:"PriorityId,omitempty"`
-	// The connection type.
-	//
-	// example:
-	//
-	// host
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The username of the account.
-	//
-	// example:
-	//
-	// all
-	User *string `json:"User,omitempty" xml:"User,omitempty"`
+	Address    *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Database   *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	Mask       *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	Method     *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Option     *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	PriorityId *int32  `json:"PriorityId,omitempty" xml:"PriorityId,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	User       *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DescribeModifyPGHbaConfigLogResponseBodyHbaLogItemsHbaLogItemBeforeHbaItemsHbaItem) String() string {

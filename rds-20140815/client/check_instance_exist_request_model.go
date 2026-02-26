@@ -20,7 +20,13 @@ type iCheckInstanceExistRequest interface {
 }
 
 type CheckInstanceExistRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-uf6wjk5****
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

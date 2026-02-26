@@ -39,9 +39,8 @@ type DescribeParameterTemplatesResponseBody struct {
 	// example:
 	//
 	// 2
-	ParameterCount *string `json:"ParameterCount,omitempty" xml:"ParameterCount,omitempty"`
-	// The details of the parameters.
-	Parameters *DescribeParameterTemplatesResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
+	ParameterCount *string                                           `json:"ParameterCount,omitempty" xml:"ParameterCount,omitempty"`
+	Parameters     *DescribeParameterTemplatesResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
@@ -147,50 +146,12 @@ func (s *DescribeParameterTemplatesResponseBodyParameters) Validate() error {
 }
 
 type DescribeParameterTemplatesResponseBodyParametersTemplateRecord struct {
-	// The valid values of the parameter.
-	//
-	// example:
-	//
-	// [0-1024]
-	CheckingCode *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
-	// Indicates whether the parameter can be modified. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	ForceModify *string `json:"ForceModify,omitempty" xml:"ForceModify,omitempty"`
-	// Indicates whether you must restart the instance for the modifications to take effect. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// false
-	ForceRestart *string `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
-	// The description of the parameter.
-	//
-	// example:
-	//
-	// Page numbers of multi blocks reading once in some ddl query.
+	CheckingCode         *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
+	ForceModify          *string `json:"ForceModify,omitempty" xml:"ForceModify,omitempty"`
+	ForceRestart         *string `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	// The name of the parameter.
-	//
-	// example:
-	//
-	// loose_multi_blocks_ddl_count
-	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The default value of the parameter.
-	//
-	// example:
-	//
-	// 0
-	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	ParameterValue       *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
 func (s DescribeParameterTemplatesResponseBodyParametersTemplateRecord) String() string {

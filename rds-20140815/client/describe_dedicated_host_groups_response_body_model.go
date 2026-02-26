@@ -16,7 +16,6 @@ type iDescribeDedicatedHostGroupsResponseBody interface {
 }
 
 type DescribeDedicatedHostGroupsResponseBody struct {
-	// The information about dedicated clusters returned.
 	DedicatedHostGroups *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroups `json:"DedicatedHostGroups,omitempty" xml:"DedicatedHostGroups,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,182 +95,33 @@ func (s *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroups) Validate() 
 }
 
 type DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups struct {
-	// The policy based on which the system allocates resources in the dedicated cluster. Valid values:
-	//
-	// 	- **Evenly**: The system evenly allocates the resources to all the hosts in the dedicated cluster.
-	//
-	// 	- **Intensively**: The system preferentially allocates the resources to the heavily loaded hosts in the dedicated cluster.
-	//
-	// example:
-	//
-	// Evenly
-	AllocationPolicy *string `json:"AllocationPolicy,omitempty" xml:"AllocationPolicy,omitempty"`
-	// The ID of the bastion host.
-	//
-	// example:
-	//
-	// bastionhost-cn-m7xxxxxxxx
-	BastionInstanceId *string `json:"BastionInstanceId,omitempty" xml:"BastionInstanceId,omitempty"`
-	// The percentage of allocated cores in the dedicated cluster. Unit: %.
-	//
-	// example:
-	//
-	// 25
-	CpuAllocateRation *float32 `json:"CpuAllocateRation,omitempty" xml:"CpuAllocateRation,omitempty"`
-	// The number of allocated cores in the dedicated cluster.
-	//
-	// example:
-	//
-	// 8
-	CpuAllocatedAmount *float32 `json:"CpuAllocatedAmount,omitempty" xml:"CpuAllocatedAmount,omitempty"`
-	// The core overcommitment ratio of the dedicated cluster. Unit: %. For more information about the core overcommitment ratio, see [Manage a dedicated cluster](https://help.aliyun.com/document_detail/182328.html).
-	//
-	// example:
-	//
-	// 200
-	CpuAllocationRatio *int32 `json:"CpuAllocationRatio,omitempty" xml:"CpuAllocationRatio,omitempty"`
-	// The timestamp when the dedicated cluster was created.
-	//
-	// example:
-	//
-	// 1571125370000
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The type of storage media that is used for the hosts in the dedicated cluster. Valid values:
-	//
-	// 	- **dhg_cloud_ssd**: cloud disks
-	//
-	// 	- **dhg_local_ssd**: local disks
-	//
-	// example:
-	//
-	// dhg_cloud_ssd
-	DedicatedHostCountGroupByHostType map[string]interface{} `json:"DedicatedHostCountGroupByHostType,omitempty" xml:"DedicatedHostCountGroupByHostType,omitempty"`
-	// The name of the dedicated cluster.
-	//
-	// example:
-	//
-	// testHostGroup
-	DedicatedHostGroupDesc *string `json:"DedicatedHostGroupDesc,omitempty" xml:"DedicatedHostGroupDesc,omitempty"`
-	// The ID of the dedicated cluster.
-	//
-	// example:
-	//
-	// dhg-7a9xxxxxxxx
-	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// The percentage of allocated disk space in the dedicated cluster. Unit: %.
-	//
-	// example:
-	//
-	// 0.49
-	DiskAllocateRation *float32 `json:"DiskAllocateRation,omitempty" xml:"DiskAllocateRation,omitempty"`
-	// The amount of allocated disk space in the dedicated cluster. Unit: GB.
-	//
-	// example:
-	//
-	// 200
-	DiskAllocatedAmount *float32 `json:"DiskAllocatedAmount,omitempty" xml:"DiskAllocatedAmount,omitempty"`
-	// The disk overcommitment ratio of the dedicated cluster. Unit: %. For more information about the core overcommitment ratio, see [Manage a dedicated cluster](https://help.aliyun.com/document_detail/182328.html).
-	//
-	// example:
-	//
-	// 200
-	DiskAllocationRatio *int32 `json:"DiskAllocationRatio,omitempty" xml:"DiskAllocationRatio,omitempty"`
-	// The amount of used disk space in the dedicated cluster. Unit: GB.
-	//
-	// example:
-	//
-	// 20
-	DiskUsedAmount *float32 `json:"DiskUsedAmount,omitempty" xml:"DiskUsedAmount,omitempty"`
-	// The disk usage of the dedicated cluster. Unit: %.
-	//
-	// example:
-	//
-	// 0
-	DiskUtility *float32 `json:"DiskUtility,omitempty" xml:"DiskUtility,omitempty"`
-	// The database engine of the instances in the dedicated cluster.
-	//
-	// example:
-	//
-	// MySQL
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The total number of hosts in the dedicated cluster.
-	//
-	// example:
-	//
-	// 3
-	HostNumber *int32 `json:"HostNumber,omitempty" xml:"HostNumber,omitempty"`
-	// The policy that is used to handle host failures. Valid values:
-	//
-	// 	- **Auto**: The system automatically replaces faulty hosts.
-	//
-	// 	- **Manual**: You must manually replace faulty hosts.
-	//
-	// example:
-	//
-	// Auto
-	HostReplacePolicy *string `json:"HostReplacePolicy,omitempty" xml:"HostReplacePolicy,omitempty"`
-	// The total number of instances in the dedicated cluster.
-	//
-	// example:
-	//
-	// 4
-	InstanceNumber *int32 `json:"InstanceNumber,omitempty" xml:"InstanceNumber,omitempty"`
-	// The percentage of allocated memory space in the dedicated cluster. Unit: %.
-	//
-	// example:
-	//
-	// 33.7
-	MemAllocateRation *float32 `json:"MemAllocateRation,omitempty" xml:"MemAllocateRation,omitempty"`
-	// The amount of allocated memory space in the dedicated cluster.
-	//
-	// example:
-	//
-	// 16384
-	MemAllocatedAmount *float32 `json:"MemAllocatedAmount,omitempty" xml:"MemAllocatedAmount,omitempty"`
-	// The memory overcommitment ratio of the dedicated cluster. Unit: %. For more information about the core overcommitment ratio, see [Manage a dedicated cluster](https://help.aliyun.com/document_detail/182328.html).
-	//
-	// example:
-	//
-	// 90
-	MemAllocationRatio *int32 `json:"MemAllocationRatio,omitempty" xml:"MemAllocationRatio,omitempty"`
-	// The amount of used memory space in the dedicated cluster. Unit: MB.
-	//
-	// example:
-	//
-	// 0
-	MemUsedAmount *float32 `json:"MemUsedAmount,omitempty" xml:"MemUsedAmount,omitempty"`
-	// The memory usage of the dedicated cluster. Unit: %.
-	//
-	// example:
-	//
-	// 0
-	MemUtility *float32 `json:"MemUtility,omitempty" xml:"MemUtility,omitempty"`
-	// Indicates whether the feature that allows you to have the OS permissions on the host is enabled. Valid values:
-	//
-	// 	- **0*	- or **null**: The permissions cannot be granted.
-	//
-	// 	- **1**: The permissions can be granted.
-	//
-	// 	- **3**: The permissions have been granted.
-	//
-	// example:
-	//
-	// 3
-	OpenPermission *string `json:"OpenPermission,omitempty" xml:"OpenPermission,omitempty"`
-	// The name and ID of the dedicated cluster. The value consists of **DedicatedHostGroupDesc*	- and **DedicatedHostGroupId**. Format: DedicatedHostGroupDesc/DedicatedHostGroupId.
-	//
-	// example:
-	//
-	// testHostGroup/dhg-7a9xxxxxxxx
-	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The ID of the virtual private cloud (VPC) to which the dedicated cluster belongs.
-	//
-	// example:
-	//
-	// vpc-bp1oxxxxxx
-	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The zones to which the hosts of the dedicated cluster belong.
-	ZoneIDList *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroupsZoneIDList `json:"ZoneIDList,omitempty" xml:"ZoneIDList,omitempty" type:"Struct"`
+	AllocationPolicy                  *string                                                                                  `json:"AllocationPolicy,omitempty" xml:"AllocationPolicy,omitempty"`
+	BastionInstanceId                 *string                                                                                  `json:"BastionInstanceId,omitempty" xml:"BastionInstanceId,omitempty"`
+	CpuAllocateRation                 *float32                                                                                 `json:"CpuAllocateRation,omitempty" xml:"CpuAllocateRation,omitempty"`
+	CpuAllocatedAmount                *float32                                                                                 `json:"CpuAllocatedAmount,omitempty" xml:"CpuAllocatedAmount,omitempty"`
+	CpuAllocationRatio                *int32                                                                                   `json:"CpuAllocationRatio,omitempty" xml:"CpuAllocationRatio,omitempty"`
+	CreateTime                        *string                                                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DedicatedHostCountGroupByHostType map[string]interface{}                                                                   `json:"DedicatedHostCountGroupByHostType,omitempty" xml:"DedicatedHostCountGroupByHostType,omitempty"`
+	DedicatedHostGroupDesc            *string                                                                                  `json:"DedicatedHostGroupDesc,omitempty" xml:"DedicatedHostGroupDesc,omitempty"`
+	DedicatedHostGroupId              *string                                                                                  `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
+	DiskAllocateRation                *float32                                                                                 `json:"DiskAllocateRation,omitempty" xml:"DiskAllocateRation,omitempty"`
+	DiskAllocatedAmount               *float32                                                                                 `json:"DiskAllocatedAmount,omitempty" xml:"DiskAllocatedAmount,omitempty"`
+	DiskAllocationRatio               *int32                                                                                   `json:"DiskAllocationRatio,omitempty" xml:"DiskAllocationRatio,omitempty"`
+	DiskUsedAmount                    *float32                                                                                 `json:"DiskUsedAmount,omitempty" xml:"DiskUsedAmount,omitempty"`
+	DiskUtility                       *float32                                                                                 `json:"DiskUtility,omitempty" xml:"DiskUtility,omitempty"`
+	Engine                            *string                                                                                  `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	HostNumber                        *int32                                                                                   `json:"HostNumber,omitempty" xml:"HostNumber,omitempty"`
+	HostReplacePolicy                 *string                                                                                  `json:"HostReplacePolicy,omitempty" xml:"HostReplacePolicy,omitempty"`
+	InstanceNumber                    *int32                                                                                   `json:"InstanceNumber,omitempty" xml:"InstanceNumber,omitempty"`
+	MemAllocateRation                 *float32                                                                                 `json:"MemAllocateRation,omitempty" xml:"MemAllocateRation,omitempty"`
+	MemAllocatedAmount                *float32                                                                                 `json:"MemAllocatedAmount,omitempty" xml:"MemAllocatedAmount,omitempty"`
+	MemAllocationRatio                *int32                                                                                   `json:"MemAllocationRatio,omitempty" xml:"MemAllocationRatio,omitempty"`
+	MemUsedAmount                     *float32                                                                                 `json:"MemUsedAmount,omitempty" xml:"MemUsedAmount,omitempty"`
+	MemUtility                        *float32                                                                                 `json:"MemUtility,omitempty" xml:"MemUtility,omitempty"`
+	OpenPermission                    *string                                                                                  `json:"OpenPermission,omitempty" xml:"OpenPermission,omitempty"`
+	Text                              *string                                                                                  `json:"Text,omitempty" xml:"Text,omitempty"`
+	VPCId                             *string                                                                                  `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	ZoneIDList                        *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroupsZoneIDList `json:"ZoneIDList,omitempty" xml:"ZoneIDList,omitempty" type:"Struct"`
 }
 
 func (s DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups) String() string {

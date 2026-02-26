@@ -24,9 +24,6 @@ type iDescribeParametersResponseBody interface {
 }
 
 type DescribeParametersResponseBody struct {
-	// The list of parameters that are being synchronized.
-	//
-	// > After you modify and submit the parameters, you must wait for the parameters to be synchronized to the instance. After the synchronization, you can delete the parameters from the list.
 	ConfigParameters *DescribeParametersResponseBodyConfigParameters `json:"ConfigParameters,omitempty" xml:"ConfigParameters,omitempty" type:"Struct"`
 	// The type of the database engine.
 	//
@@ -47,8 +44,7 @@ type DescribeParametersResponseBody struct {
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The parameters that are in use.
+	RequestId         *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RunningParameters *DescribeParametersResponseBodyRunningParameters `json:"RunningParameters,omitempty" xml:"RunningParameters,omitempty" type:"Struct"`
 }
 
@@ -168,24 +164,9 @@ func (s *DescribeParametersResponseBodyConfigParameters) Validate() error {
 }
 
 type DescribeParametersResponseBodyConfigParametersDBInstanceParameter struct {
-	// The description of the parameter.
-	//
-	// example:
-	//
-	// This parameter sets the default fill factor value at the server scope. A fill factor is provided to optimize index data storage and performance.
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	// The name of the parameter.
-	//
-	// example:
-	//
-	// fill factor
-	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The value of the parameter.
-	//
-	// example:
-	//
-	// 50
-	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	ParameterValue       *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
 func (s DescribeParametersResponseBodyConfigParametersDBInstanceParameter) String() string {
@@ -337,36 +318,11 @@ func (s *DescribeParametersResponseBodyRunningParameters) Validate() error {
 }
 
 type DescribeParametersResponseBodyRunningParametersDBInstanceParameter struct {
-	// The default value of the parameter.
-	//
-	// example:
-	//
-	// 100
 	ParameterDefaultValue *string `json:"ParameterDefaultValue,omitempty" xml:"ParameterDefaultValue,omitempty"`
-	// The description of the parameter.
-	//
-	// example:
-	//
-	// This parameter sets the default fill factor value at the server scope. A fill factor is provided to optimize index data storage and performance.
-	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	// The name of the parameter.
-	//
-	// example:
-	//
-	// fill factor
-	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The value of the parameter.
-	//
-	// example:
-	//
-	// 0
-	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
-	// The valid values of the parameter.
-	//
-	// example:
-	//
-	// 1~100
-	ParameterValueRange *string `json:"ParameterValueRange,omitempty" xml:"ParameterValueRange,omitempty"`
+	ParameterDescription  *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
+	ParameterName         *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	ParameterValue        *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	ParameterValueRange   *string `json:"ParameterValueRange,omitempty" xml:"ParameterValueRange,omitempty"`
 }
 
 func (s DescribeParametersResponseBodyRunningParametersDBInstanceParameter) String() string {

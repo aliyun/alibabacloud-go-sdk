@@ -29,9 +29,8 @@ type DescribeMigrateTasksResponseBody struct {
 	// example:
 	//
 	// rm-uf6wjk5xxxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The details of the migration task.
-	Items *DescribeMigrateTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	DBInstanceId *string                                `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Items        *DescribeMigrateTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
 	// example:
@@ -164,68 +163,14 @@ func (s *DescribeMigrateTasksResponseBodyItems) Validate() error {
 }
 
 type DescribeMigrateTasksResponseBodyItemsMigrateTask struct {
-	// The migration task type. Valid values:
-	//
-	// 	- **FULL**: The migration task migrates full backup files that can be used to restore the full data of the instance.
-	//
-	// 	- **UPDF**: The migration task migrates incremental or log backup files that can be used to restore the incremental data of the instance.
-	//
-	// example:
-	//
-	// FULL
-	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	// The time when the migration task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2017-05-30T12:11:04Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The database name.
-	//
-	// example:
-	//
-	// testDB
-	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The description of the migration task.
-	//
-	// example:
-	//
-	// Api description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the migration task was completed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2017-05-30T13:11:04Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Indicates whether the imported data overwrites the existing data.
-	//
-	// example:
-	//
-	// True
-	IsDBReplaced *string `json:"IsDBReplaced,omitempty" xml:"IsDBReplaced,omitempty"`
-	// The migration task ID.
-	//
-	// example:
-	//
-	// 564522545
+	BackupMode    *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DBName        *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IsDBReplaced  *string `json:"IsDBReplaced,omitempty" xml:"IsDBReplaced,omitempty"`
 	MigrateTaskId *string `json:"MigrateTaskId,omitempty" xml:"MigrateTaskId,omitempty"`
-	// The status of the migration task. Valid values:
-	//
-	// 	- **NoStart**: The task is not started.
-	//
-	// 	- **Running**:The task is in progress.
-	//
-	// 	- **Success**: The task is successful.
-	//
-	// 	- **Failed**: The task failed.
-	//
-	// 	- **Waiting**: The task is waiting for an incremental backup file to be imported.
-	//
-	// example:
-	//
-	// Success
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeMigrateTasksResponseBodyItemsMigrateTask) String() string {

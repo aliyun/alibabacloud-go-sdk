@@ -22,7 +22,6 @@ type iDescribeDBInstancesByPerformanceResponseBody interface {
 }
 
 type DescribeDBInstancesByPerformanceResponseBody struct {
-	// The details about the instance.
 	Items *DescribeDBInstancesByPerformanceResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,42 +146,12 @@ func (s *DescribeDBInstancesByPerformanceResponseBodyItems) Validate() error {
 }
 
 type DescribeDBInstancesByPerformanceResponseBodyItemsDBInstancePerformance struct {
-	// The CPU utilization of the instance in percentage.
-	//
-	// example:
-	//
-	// 0.70
-	CPUUsage *string `json:"CPUUsage,omitempty" xml:"CPUUsage,omitempty"`
-	// The name of the instance.
-	//
-	// example:
-	//
-	// DatabaseTest
+	CPUUsage              *string `json:"CPUUsage,omitempty" xml:"CPUUsage,omitempty"`
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The disk usage of the instance in percentage.
-	//
-	// example:
-	//
-	// 14.56
-	DiskUsage *string `json:"DiskUsage,omitempty" xml:"DiskUsage,omitempty"`
-	// The IOPS usage of the instance in percentage.
-	//
-	// example:
-	//
-	// 0.15
-	IOPSUsage *string `json:"IOPSUsage,omitempty" xml:"IOPSUsage,omitempty"`
-	// The number of sessions.
-	//
-	// example:
-	//
-	// 0.10
-	SessionUsage *string `json:"SessionUsage,omitempty" xml:"SessionUsage,omitempty"`
+	DBInstanceId          *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DiskUsage             *string `json:"DiskUsage,omitempty" xml:"DiskUsage,omitempty"`
+	IOPSUsage             *string `json:"IOPSUsage,omitempty" xml:"IOPSUsage,omitempty"`
+	SessionUsage          *string `json:"SessionUsage,omitempty" xml:"SessionUsage,omitempty"`
 }
 
 func (s DescribeDBInstancesByPerformanceResponseBodyItemsDBInstancePerformance) String() string {

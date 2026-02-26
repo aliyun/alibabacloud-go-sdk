@@ -39,8 +39,7 @@ type DescribeDBInstanceHAConfigResponseBody struct {
 	// example:
 	//
 	// RPO
-	HAMode *string `json:"HAMode,omitempty" xml:"HAMode,omitempty"`
-	// An array that consists of the information of the primary and secondary instances.
+	HAMode            *string                                                  `json:"HAMode,omitempty" xml:"HAMode,omitempty"`
 	HostInstanceInfos *DescribeDBInstanceHAConfigResponseBodyHostInstanceInfos `json:"HostInstanceInfos,omitempty" xml:"HostInstanceInfos,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -161,60 +160,13 @@ func (s *DescribeDBInstanceHAConfigResponseBodyHostInstanceInfos) Validate() err
 }
 
 type DescribeDBInstanceHAConfigResponseBodyHostInstanceInfosNodeInfo struct {
-	// The time when the secondary instance completed the synchronization of data from the primary instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2018-05-05T15:15:00Z
 	DataSyncTime *string `json:"DataSyncTime,omitempty" xml:"DataSyncTime,omitempty"`
-	// The time when the secondary instance received logs from the primary instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2018-05-05T15:15:00Z
-	LogSyncTime *string `json:"LogSyncTime,omitempty" xml:"LogSyncTime,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// 3397027
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The type of the node. Valid values:
-	//
-	// 	- **Master**: the primary node
-	//
-	// 	- **Slave**: the secondary node
-	//
-	// example:
-	//
-	// Master
-	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The region ID of the instance.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The synchronization status. Valid values:
-	//
-	// 	- **NotAvailable**: The synchronization fails. This means that faults occur.
-	//
-	// 	- **Syncing**: The synchronization is in process. In this case, a primary/secondary switchover may cause data losses.
-	//
-	// 	- **Synchronized**: The synchronization is completed.
-	//
-	// 	- **NotSupport**: The database engine or database engine version does not involve the synchronization between the primary and secondary instances.
-	//
-	// example:
-	//
-	// NotAvailable
-	SyncStatus *string `json:"SyncStatus,omitempty" xml:"SyncStatus,omitempty"`
-	// The ID of the zone.
-	//
-	// example:
-	//
-	// cn-hangzhou-b
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	LogSyncTime  *string `json:"LogSyncTime,omitempty" xml:"LogSyncTime,omitempty"`
+	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeType     *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SyncStatus   *string `json:"SyncStatus,omitempty" xml:"SyncStatus,omitempty"`
+	ZoneId       *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBInstanceHAConfigResponseBodyHostInstanceInfosNodeInfo) String() string {

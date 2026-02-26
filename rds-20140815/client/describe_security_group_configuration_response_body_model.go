@@ -23,9 +23,8 @@ type DescribeSecurityGroupConfigurationResponseBody struct {
 	// example:
 	//
 	// rm-uf6wjk5xxxxxx
-	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The information about the ECS security group.
-	Items *DescribeSecurityGroupConfigurationResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	DBInstanceName *string                                              `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	Items          *DescribeSecurityGroupConfigurationResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -113,33 +112,9 @@ func (s *DescribeSecurityGroupConfigurationResponseBodyItems) Validate() error {
 }
 
 type DescribeSecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelation struct {
-	// The network type of the ECS security group. Valid values:
-	//
-	// 	- **Classic**
-	//
-	// 	- **VPC**
-	//
-	// example:
-	//
-	// VPC
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the ECS security group.
-	//
-	// example:
-	//
-	// sg-xxxxxxx
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The security group name.
-	//
-	// example:
-	//
-	// security-group-emraccess
+	NetworkType       *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityGroupId   *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	SecurityGroupName *string `json:"SecurityGroupName,omitempty" xml:"SecurityGroupName,omitempty"`
 }
 

@@ -31,9 +31,8 @@ type DescribeCrossBackupMetaListResponseBody struct {
 	// example:
 	//
 	// rm-uf6wjk5xxxxxxx
-	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// An array that consists of the information about the databases and tables whose data is included in the cross-region backup file.
-	Items *DescribeCrossBackupMetaListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	DBInstanceName *string                                       `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	Items          *DescribeCrossBackupMetaListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
 	// example:
@@ -181,24 +180,9 @@ func (s *DescribeCrossBackupMetaListResponseBodyItems) Validate() error {
 }
 
 type DescribeCrossBackupMetaListResponseBodyItemsMeta struct {
-	// The name of the database.
-	//
-	// example:
-	//
-	// testdb1
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The size of the table. Unit: KB. If the database contains more than one table, the names of these tables are separated by commas (,).
-	//
-	// example:
-	//
-	// 1000
-	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	// An array that consists of the names of the tables that the database contains. If the database contains more than one table, the names of these tables are separated by commas (,).
-	//
-	// example:
-	//
-	// test1,test2
-	Tables *string `json:"Tables,omitempty" xml:"Tables,omitempty"`
+	Size     *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	Tables   *string `json:"Tables,omitempty" xml:"Tables,omitempty"`
 }
 
 func (s DescribeCrossBackupMetaListResponseBodyItemsMeta) String() string {

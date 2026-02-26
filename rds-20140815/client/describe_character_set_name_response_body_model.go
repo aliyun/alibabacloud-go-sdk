@@ -18,7 +18,6 @@ type iDescribeCharacterSetNameResponseBody interface {
 }
 
 type DescribeCharacterSetNameResponseBody struct {
-	// The character sets that are supported.
 	CharacterSetNameItems *DescribeCharacterSetNameResponseBodyCharacterSetNameItems `json:"CharacterSetNameItems,omitempty" xml:"CharacterSetNameItems,omitempty" type:"Struct"`
 	// The type of the database engine.
 	//

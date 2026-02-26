@@ -16,7 +16,6 @@ type iDescribeTagsResponseBody interface {
 }
 
 type DescribeTagsResponseBody struct {
-	// The tags that are added to the instance.
 	Items *DescribeTagsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,20 +95,9 @@ func (s *DescribeTagsResponseBodyItems) Validate() error {
 }
 
 type DescribeTagsResponseBodyItemsTagInfos struct {
-	// The IDs of the instances to which the tag is added.
 	DBInstanceIds *DescribeTagsResponseBodyItemsTagInfosDBInstanceIds `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty" type:"Struct"`
-	// The tag key.
-	//
-	// example:
-	//
-	// key1
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// value1
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	TagKey        *string                                             `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue      *string                                             `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s DescribeTagsResponseBodyItemsTagInfos) String() string {

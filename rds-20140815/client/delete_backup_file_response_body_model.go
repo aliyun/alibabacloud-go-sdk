@@ -16,7 +16,6 @@ type iDeleteBackupFileResponseBody interface {
 }
 
 type DeleteBackupFileResponseBody struct {
-	// An array that consists of the IDs of deleted backup sets.
 	DeletedBaksetIds *DeleteBackupFileResponseBodyDeletedBaksetIds `json:"DeletedBaksetIds,omitempty" xml:"DeletedBaksetIds,omitempty" type:"Struct"`
 	// The request ID.
 	//

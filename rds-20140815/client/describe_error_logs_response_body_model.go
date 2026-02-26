@@ -22,7 +22,6 @@ type iDescribeErrorLogsResponseBody interface {
 }
 
 type DescribeErrorLogsResponseBody struct {
-	// Details about the log entries returned.
 	Items *DescribeErrorLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,21 +146,11 @@ func (s *DescribeErrorLogsResponseBodyItems) Validate() error {
 }
 
 type DescribeErrorLogsResponseBodyItemsErrorLog struct {
-	// The time when the error log entry was generated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2011-05-30T12:11:04Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Database   *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The error log information.
-	//
-	// example:
-	//
-	// spid52 DBCC TRACEON 3499, server process ID (SPID) 52. This is an informational message only; no user action is required
-	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
-	User      *string `json:"User,omitempty" xml:"User,omitempty"`
-	UserIp    *string `json:"UserIp,omitempty" xml:"UserIp,omitempty"`
+	ErrorInfo  *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	User       *string `json:"User,omitempty" xml:"User,omitempty"`
+	UserIp     *string `json:"UserIp,omitempty" xml:"UserIp,omitempty"`
 }
 
 func (s DescribeErrorLogsResponseBodyItemsErrorLog) String() string {

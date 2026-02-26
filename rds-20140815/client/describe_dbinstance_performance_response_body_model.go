@@ -41,8 +41,7 @@ type DescribeDBInstancePerformanceResponseBody struct {
 	// example:
 	//
 	// MySQL
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// Details of the performance metrics.
+	Engine          *string                                                   `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	PerformanceKeys *DescribeDBInstancePerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -164,28 +163,10 @@ func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeys) Validate() er
 }
 
 type DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey struct {
-	// The name of the performance metric.
-	//
-	// example:
-	//
-	// MySQL_Sessions
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The unit of the performance metrics.
-	//
-	// example:
-	//
-	// KB
-	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	// The format in which the value of the performance metric is returned.
-	//
-	// >  If a performance metric value consists of multiple fields, the values are separated with ampersands (&). Example: com_delete\\&com_insert\\&com_insert_select\\&com_replace.
-	//
-	// example:
-	//
-	// recv_k&sent_k
-	ValueFormat *string `json:"ValueFormat,omitempty" xml:"ValueFormat,omitempty"`
-	// The performance metric values.
-	Values *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Struct"`
+	Key         *string                                                                       `json:"Key,omitempty" xml:"Key,omitempty"`
+	Unit        *string                                                                       `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	ValueFormat *string                                                                       `json:"ValueFormat,omitempty" xml:"ValueFormat,omitempty"`
+	Values      *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Struct"`
 }
 
 func (s DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey) String() string {
@@ -276,17 +257,7 @@ func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyV
 }
 
 type DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyValuesPerformanceValue struct {
-	// The date and time when the value of the performance metric was recorded. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2011-05-30T03:29:00Z
-	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// The value of the performance metric.
-	//
-	// example:
-	//
-	// 0.0&13.6
+	Date  *string `json:"Date,omitempty" xml:"Date,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

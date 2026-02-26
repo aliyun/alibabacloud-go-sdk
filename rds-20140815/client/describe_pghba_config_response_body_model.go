@@ -31,8 +31,7 @@ type DescribePGHbaConfigResponseBody struct {
 	// example:
 	//
 	// rm-bp1*****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The default configuration items of the pg_hba.conf file.
+	DBInstanceId    *string                                         `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	DefaultHbaItems *DescribePGHbaConfigResponseBodyDefaultHbaItems `json:"DefaultHbaItems,omitempty" xml:"DefaultHbaItems,omitempty" type:"Struct"`
 	// The time when the previous modification was made to the pg_hba.conf file.
 	//
@@ -63,8 +62,7 @@ type DescribePGHbaConfigResponseBody struct {
 	// example:
 	//
 	// A147A124-A147-5CCF-9609-B73C028848DF
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The current configuration items of the pg_hba.conf file.
+	RequestId       *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RunningHbaItems *DescribePGHbaConfigResponseBodyRunningHbaItems `json:"RunningHbaItems,omitempty" xml:"RunningHbaItems,omitempty" type:"Struct"`
 }
 
@@ -188,54 +186,14 @@ func (s *DescribePGHbaConfigResponseBodyDefaultHbaItems) Validate() error {
 }
 
 type DescribePGHbaConfigResponseBodyDefaultHbaItemsHbaItem struct {
-	// The IP addresses from which the specified users can access the specified databases. The value is fixed as 0.0.0.0/0.
-	//
-	// example:
-	//
-	// 0.0.0.0/0
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The names of the databases that the specified users are allowed to access. The value is fixed as all or replication.
-	//
-	// example:
-	//
-	// all
-	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The mask of the instance. The value is fixed as null.
-	//
-	// example:
-	//
-	// null
-	Mask *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
-	// The authentication method. The value is fixed as md5.
-	//
-	// example:
-	//
-	// md5
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The value of this parameter is based on the value of the Method parameter. The value is fixed as null.
-	//
-	// example:
-	//
-	// null
-	Option *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	// The priority of the configuration items in the pg_hba.conf file. This value is automatically generated.
-	//
-	// example:
-	//
-	// 0
-	PriorityId *int32 `json:"PriorityId,omitempty" xml:"PriorityId,omitempty"`
-	// The type of connection to the instance. The value is fixed as host.
-	//
-	// example:
-	//
-	// host
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The user that is allowed to access the instance. The value is fixed as all.
-	//
-	// example:
-	//
-	// all
-	User *string `json:"User,omitempty" xml:"User,omitempty"`
+	Address    *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Database   *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	Mask       *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	Method     *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Option     *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	PriorityId *int32  `json:"PriorityId,omitempty" xml:"PriorityId,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	User       *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DescribePGHbaConfigResponseBodyDefaultHbaItemsHbaItem) String() string {
@@ -357,60 +315,14 @@ func (s *DescribePGHbaConfigResponseBodyRunningHbaItems) Validate() error {
 }
 
 type DescribePGHbaConfigResponseBodyRunningHbaItemsHbaItem struct {
-	// The IP address of the client.
-	//
-	// example:
-	//
-	// 0.0.0.0/0
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// all
-	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The mask of the IP address.
-	//
-	// example:
-	//
-	// null
-	Mask *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
-	// The authentication method.
-	//
-	// example:
-	//
-	// md5
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The value of this parameter varies based on the value of the Method parameter. The value is fixed as null.
-	//
-	// example:
-	//
-	// null
-	Option *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	// The priority.
-	//
-	// example:
-	//
-	// 3
-	PriorityId *int32 `json:"PriorityId,omitempty" xml:"PriorityId,omitempty"`
-	// The connection type. Valor:
-	//
-	// 	- **host**: The record matches TCP/IP connections, including SSL connections and non-SSL connections.
-	//
-	// 	- **hostssl**: The record matches only TCP/IP connections that are established over SSL.
-	//
-	// 	- **hostnossl**: The record matches only TCP/IP connections that are not established over SSL connections.
-	//
-	// example:
-	//
-	// host
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The username of the account.
-	//
-	// example:
-	//
-	// all
-	User *string `json:"User,omitempty" xml:"User,omitempty"`
+	Address    *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Database   *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	Mask       *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	Method     *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Option     *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	PriorityId *int32  `json:"PriorityId,omitempty" xml:"PriorityId,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	User       *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DescribePGHbaConfigResponseBodyRunningHbaItemsHbaItem) String() string {

@@ -29,8 +29,7 @@ type ListTagResourcesResponseBody struct {
 	// example:
 	//
 	// 47A514A1-4B77-4E30-B4C5-2A880650B3FD
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of queried instances and tags.
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -113,30 +112,10 @@ func (s *ListTagResourcesResponseBodyTagResources) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type. The value `ALIYUN::RDS::INSTANCE` indicates ApsaraDB RDS instances.
-	//
-	// example:
-	//
-	// ALIYUN::RDS::INSTANCE
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag key.
-	//
-	// example:
-	//
-	// testkey1
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value that is associated with the specified tag key.
-	//
-	// example:
-	//
-	// testvalue1
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {

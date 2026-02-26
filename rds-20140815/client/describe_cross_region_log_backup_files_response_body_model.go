@@ -41,9 +41,8 @@ type DescribeCrossRegionLogBackupFilesResponseBody struct {
 	// example:
 	//
 	// 2019-06-15T12:10:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The cross-region log backup files.
-	Items *DescribeCrossRegionLogBackupFilesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	EndTime *string                                             `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Items   *DescribeCrossRegionLogBackupFilesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number. Pages start from page 1.
 	//
 	// Default value: **1**.
@@ -217,66 +216,16 @@ func (s *DescribeCrossRegionLogBackupFilesResponseBodyItems) Validate() error {
 }
 
 type DescribeCrossRegionLogBackupFilesResponseBodyItemsItem struct {
-	// The ID of the destination region within which the cross-region backup file is stored.
-	//
-	// example:
-	//
-	// cn-shanghai
-	CrossBackupRegion *string `json:"CrossBackupRegion,omitempty" xml:"CrossBackupRegion,omitempty"`
-	// The external URL from which you can download the cross-region log backup file.
-	//
-	// example:
-	//
-	// http://rdsddrlog-zb.oss-cn-zhangjiakou.aliyuncs.com/xxxxx
-	CrossDownloadLink *string `json:"CrossDownloadLink,omitempty" xml:"CrossDownloadLink,omitempty"`
-	// The internal URL from which you can download the cross-region log backup file.
-	//
-	// example:
-	//
-	// http://rdsddrlog-zb.oss-cn-zhangjiakou-internal.aliyuncs.com/xxxxx
+	CrossBackupRegion         *string `json:"CrossBackupRegion,omitempty" xml:"CrossBackupRegion,omitempty"`
+	CrossDownloadLink         *string `json:"CrossDownloadLink,omitempty" xml:"CrossDownloadLink,omitempty"`
 	CrossIntranetDownloadLink *string `json:"CrossIntranetDownloadLink,omitempty" xml:"CrossIntranetDownloadLink,omitempty"`
-	// The ID of the cross-region log backup file.
-	//
-	// example:
-	//
-	// 14567
-	CrossLogBackupId *int32 `json:"CrossLogBackupId,omitempty" xml:"CrossLogBackupId,omitempty"`
-	// The size of the cross-region log backup file. Unit: bytes.
-	//
-	// example:
-	//
-	// 5312836
-	CrossLogBackupSize *int64 `json:"CrossLogBackupSize,omitempty" xml:"CrossLogBackupSize,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// 8161055
-	InstanceId *int32 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the URL expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-06-30T15:00:00Z
-	LinkExpiredTime *string `json:"LinkExpiredTime,omitempty" xml:"LinkExpiredTime,omitempty"`
-	// The start time of the cross-region log backup file. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-05-30T12:10:00Z
-	LogBeginTime *string `json:"LogBeginTime,omitempty" xml:"LogBeginTime,omitempty"`
-	// The end time of the cross-region log backup file. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-05-30T20:10:00Z
-	LogEndTime *string `json:"LogEndTime,omitempty" xml:"LogEndTime,omitempty"`
-	// The name of the cross-region log backup file.
-	//
-	// example:
-	//
-	// cn-hangzhou_rm-bpxxxxx_7198739_mysql-bin.000230
-	LogFileName *string `json:"LogFileName,omitempty" xml:"LogFileName,omitempty"`
+	CrossLogBackupId          *int32  `json:"CrossLogBackupId,omitempty" xml:"CrossLogBackupId,omitempty"`
+	CrossLogBackupSize        *int64  `json:"CrossLogBackupSize,omitempty" xml:"CrossLogBackupSize,omitempty"`
+	InstanceId                *int32  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LinkExpiredTime           *string `json:"LinkExpiredTime,omitempty" xml:"LinkExpiredTime,omitempty"`
+	LogBeginTime              *string `json:"LogBeginTime,omitempty" xml:"LogBeginTime,omitempty"`
+	LogEndTime                *string `json:"LogEndTime,omitempty" xml:"LogEndTime,omitempty"`
+	LogFileName               *string `json:"LogFileName,omitempty" xml:"LogFileName,omitempty"`
 }
 
 func (s DescribeCrossRegionLogBackupFilesResponseBodyItemsItem) String() string {

@@ -1291,7 +1291,7 @@ func (client *Client) CalculateDBInstanceWeight(request *CalculateDBInstanceWeig
 
 // Summary:
 //
-// Cancels O\\&M tasks that are not started.
+// Cancels O\\\\\\&M tasks that are not started.
 //
 // Description:
 //
@@ -1389,7 +1389,7 @@ func (client *Client) CancelActiveOperationTasksWithOptions(request *CancelActiv
 
 // Summary:
 //
-// Cancels O\\&M tasks that are not started.
+// Cancels O\\\\\\&M tasks that are not started.
 //
 // Description:
 //
@@ -4192,6 +4192,96 @@ func (client *Client) CreateDBInstanceForRebuild(request *CreateDBInstanceForReb
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateDBInstanceForRebuildResponse{}
 	_body, _err := client.CreateDBInstanceForRebuildWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 原生复制实例创建复制通道
+//
+// @param request - CreateDBInstanceReplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDBInstanceReplicationResponse
+func (client *Client) CreateDBInstanceReplicationWithOptions(request *CreateDBInstanceReplicationRequest, runtime *dara.RuntimeOptions) (_result *CreateDBInstanceReplicationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ChannelName) {
+		query["ChannelName"] = request.ChannelName
+	}
+
+	if !dara.IsNil(request.DbInstanceId) {
+		query["DbInstanceId"] = request.DbInstanceId
+	}
+
+	if !dara.IsNil(request.MasterHost) {
+		query["MasterHost"] = request.MasterHost
+	}
+
+	if !dara.IsNil(request.MasterPassword) {
+		query["MasterPassword"] = request.MasterPassword
+	}
+
+	if !dara.IsNil(request.MasterPort) {
+		query["MasterPort"] = request.MasterPort
+	}
+
+	if !dara.IsNil(request.MasterUser) {
+		query["MasterUser"] = request.MasterUser
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDBInstanceReplication"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDBInstanceReplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 原生复制实例创建复制通道
+//
+// @param request - CreateDBInstanceReplicationRequest
+//
+// @return CreateDBInstanceReplicationResponse
+func (client *Client) CreateDBInstanceReplication(request *CreateDBInstanceReplicationRequest) (_result *CreateDBInstanceReplicationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateDBInstanceReplicationResponse{}
+	_body, _err := client.CreateDBInstanceReplicationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8339,6 +8429,80 @@ func (client *Client) DeleteDBInstanceEndpointAddress(request *DeleteDBInstanceE
 
 // Summary:
 //
+// 原生复制实例删除复制通道
+//
+// @param request - DeleteDBInstanceReplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDBInstanceReplicationResponse
+func (client *Client) DeleteDBInstanceReplicationWithOptions(request *DeleteDBInstanceReplicationRequest, runtime *dara.RuntimeOptions) (_result *DeleteDBInstanceReplicationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ChannelName) {
+		query["ChannelName"] = request.ChannelName
+	}
+
+	if !dara.IsNil(request.DbInstanceId) {
+		query["DbInstanceId"] = request.DbInstanceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDBInstanceReplication"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDBInstanceReplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 原生复制实例删除复制通道
+//
+// @param request - DeleteDBInstanceReplicationRequest
+//
+// @return DeleteDBInstanceReplicationResponse
+func (client *Client) DeleteDBInstanceReplication(request *DeleteDBInstanceReplicationRequest) (_result *DeleteDBInstanceReplicationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteDBInstanceReplicationResponse{}
+	_body, _err := client.DeleteDBInstanceReplicationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a security group rule that is configured for an ApsaraDB RDS for SQL Server instance.
 //
 // Description:
@@ -10523,7 +10687,7 @@ func (client *Client) DescribeADInfo(request *DescribeADInfoRequest) (_result *D
 
 // Summary:
 //
-// 查询全密态用户权限
+// Query the encryption or data masking permission configuration of an account in a specified instance.
 //
 // @param request - DescribeAccountMaskingPrivilegeRequest
 //
@@ -10591,7 +10755,7 @@ func (client *Client) DescribeAccountMaskingPrivilegeWithOptions(request *Descri
 
 // Summary:
 //
-// 查询全密态用户权限
+// Query the encryption or data masking permission configuration of an account in a specified instance.
 //
 // @param request - DescribeAccountMaskingPrivilegeRequest
 //
@@ -15462,7 +15626,19 @@ func (client *Client) DescribeDBInstanceReplicationWithOptions(request *Describe
 			return _result, _err
 		}
 	}
-	query := openapiutil.Query(dara.ToMap(request))
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15471,7 +15647,7 @@ func (client *Client) DescribeDBInstanceReplicationWithOptions(request *Describe
 		Version:     dara.String("2014-08-15"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
+		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("RPC"),
 		ReqBodyType: dara.String("formData"),
@@ -27807,7 +27983,7 @@ func (client *Client) ImportUserBackupFile(request *ImportUserBackupFileRequest)
 
 // Summary:
 //
-// 为实例安装云助手Agent
+// Installs Cloud Assistant Agent on one or more RDS Custom instances. After you install Cloud Assistant Agent on RDS Custom instances, restart the instances for the installation to take effect.
 //
 // @param tmpReq - InstallRCCloudAssistantRequest
 //
@@ -27861,7 +28037,7 @@ func (client *Client) InstallRCCloudAssistantWithOptions(tmpReq *InstallRCCloudA
 
 // Summary:
 //
-// 为实例安装云助手Agent
+// Installs Cloud Assistant Agent on one or more RDS Custom instances. After you install Cloud Assistant Agent on RDS Custom instances, restart the instances for the installation to take effect.
 //
 // @param request - InstallRCCloudAssistantRequest
 //
@@ -29767,7 +29943,7 @@ func (client *Client) ModifyActionEventPolicy(request *ModifyActionEventPolicyRe
 
 // Summary:
 //
-// Changes the switching time of scheduled O\\\\\\&M tasks for an instance.
+// Changes the switching time of scheduled O\\\\\\\\\\\\&M tasks for an instance.
 //
 // Description:
 //
@@ -29863,7 +30039,7 @@ func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiv
 
 // Summary:
 //
-// Changes the switching time of scheduled O\\\\\\&M tasks for an instance.
+// Changes the switching time of scheduled O\\\\\\\\\\\\&M tasks for an instance.
 //
 // Description:
 //
@@ -43922,6 +44098,100 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	runtime := &dara.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
 	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 原生复制实例更新复制通道
+//
+// @param request - UpdateDBInstanceReplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDBInstanceReplicationResponse
+func (client *Client) UpdateDBInstanceReplicationWithOptions(request *UpdateDBInstanceReplicationRequest, runtime *dara.RuntimeOptions) (_result *UpdateDBInstanceReplicationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ChannelName) {
+		query["ChannelName"] = request.ChannelName
+	}
+
+	if !dara.IsNil(request.DbInstanceId) {
+		query["DbInstanceId"] = request.DbInstanceId
+	}
+
+	if !dara.IsNil(request.MasterHost) {
+		query["MasterHost"] = request.MasterHost
+	}
+
+	if !dara.IsNil(request.MasterPassword) {
+		query["MasterPassword"] = request.MasterPassword
+	}
+
+	if !dara.IsNil(request.MasterPort) {
+		query["MasterPort"] = request.MasterPort
+	}
+
+	if !dara.IsNil(request.MasterUser) {
+		query["MasterUser"] = request.MasterUser
+	}
+
+	if !dara.IsNil(request.Operation) {
+		query["Operation"] = request.Operation
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDBInstanceReplication"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDBInstanceReplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 原生复制实例更新复制通道
+//
+// @param request - UpdateDBInstanceReplicationRequest
+//
+// @return UpdateDBInstanceReplicationResponse
+func (client *Client) UpdateDBInstanceReplication(request *UpdateDBInstanceReplicationRequest) (_result *UpdateDBInstanceReplicationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateDBInstanceReplicationResponse{}
+	_body, _err := client.UpdateDBInstanceReplicationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

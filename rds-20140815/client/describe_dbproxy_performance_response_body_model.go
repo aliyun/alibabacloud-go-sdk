@@ -41,8 +41,7 @@ type DescribeDBProxyPerformanceResponseBody struct {
 	// example:
 	//
 	// 2019-09-21T18:00:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The performance list.
+	EndTime         *string                                                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	PerformanceKeys *DescribeDBProxyPerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -164,28 +163,12 @@ func (s *DescribeDBProxyPerformanceResponseBodyPerformanceKeys) Validate() error
 }
 
 type DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKey struct {
-	// The performance parameter.
-	//
-	// example:
-	//
-	// cpu_ratio
-	Key    *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Node   *string `json:"Node,omitempty" xml:"Node,omitempty"`
-	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
-	// The service dimension.
-	//
-	// example:
-	//
-	// reserve_3
-	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// The format in which the value of the performance metric is returned.
-	//
-	// example:
-	//
-	// docker_container_cpu
-	ValueFormat *string `json:"ValueFormat,omitempty" xml:"ValueFormat,omitempty"`
-	// The performance metrics.
-	Values *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKeyValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Struct"`
+	Key         *string                                                                    `json:"Key,omitempty" xml:"Key,omitempty"`
+	Node        *string                                                                    `json:"Node,omitempty" xml:"Node,omitempty"`
+	Server      *string                                                                    `json:"Server,omitempty" xml:"Server,omitempty"`
+	Service     *string                                                                    `json:"Service,omitempty" xml:"Service,omitempty"`
+	ValueFormat *string                                                                    `json:"ValueFormat,omitempty" xml:"ValueFormat,omitempty"`
+	Values      *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKeyValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Struct"`
 }
 
 func (s DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKey) String() string {
@@ -294,17 +277,7 @@ func (s *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKeyValu
 }
 
 type DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKeyValuesPerformanceValue struct {
-	// The date and time when the value of the performance metric was recorded. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-10-10T09:00:00Z
-	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// The value of the performance metric.
-	//
-	// example:
-	//
-	// 2.83
+	Date  *string `json:"Date,omitempty" xml:"Date,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

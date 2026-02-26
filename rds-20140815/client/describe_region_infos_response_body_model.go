@@ -16,7 +16,6 @@ type iDescribeRegionInfosResponseBody interface {
 }
 
 type DescribeRegionInfosResponseBody struct {
-	// A list of regions.
 	Regions *DescribeRegionInfosResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,11 +95,6 @@ func (s *DescribeRegionInfosResponseBodyRegions) Validate() error {
 }
 
 type DescribeRegionInfosResponseBodyRegionsRDSRegion struct {
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

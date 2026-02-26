@@ -22,7 +22,6 @@ type iDescribeDetachedBackupsResponseBody interface {
 }
 
 type DescribeDetachedBackupsResponseBody struct {
-	// The queried backup sets.
 	Items *DescribeDetachedBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,144 +146,23 @@ func (s *DescribeDetachedBackupsResponseBodyItems) Validate() error {
 }
 
 type DescribeDetachedBackupsResponseBodyItemsBackup struct {
-	// The URL that is used to download the diagnostic report over the Internet. If the diagnostic report cannot be downloaded, an empty string is returned.
-	//
-	// example:
-	//
-	// http://rdsbak-hz-v3.oss-cn-hangzhou.aliyuncs.com/xxxxx
-	BackupDownloadURL *string `json:"BackupDownloadURL,omitempty" xml:"BackupDownloadURL,omitempty"`
-	// The end time of the backup task.
-	//
-	// The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-02-13T12:20:00Z
-	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
-	// The ID of the backup set.
-	//
-	// example:
-	//
-	// 321020562
-	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The URL that is used to download the log file over an internal network. If the log file cannot be downloaded, an empty string is returned.
-	//
-	// example:
-	//
-	// http://rdsbak-hz-v3.oss-cn-hangzhou-internal.aliyuncs.com/xxxxx
+	BackupDownloadURL         *string `json:"BackupDownloadURL,omitempty" xml:"BackupDownloadURL,omitempty"`
+	BackupEndTime             *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
+	BackupId                  *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	BackupIntranetDownloadURL *string `json:"BackupIntranetDownloadURL,omitempty" xml:"BackupIntranetDownloadURL,omitempty"`
-	// The method that is used to generate the data backup file. Valid values:
-	//
-	// 	- **Logical**: logical backup
-	//
-	// 	- **Physical**: physical backup
-	//
-	// example:
-	//
-	// Physical
-	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	// The backup method. Valid values:
-	//
-	// 	- **Automated**
-	//
-	// 	- **Manual**
-	//
-	// example:
-	//
-	// Automated
-	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	// The backup size. Unit: bytes.
-	//
-	// example:
-	//
-	// 2167808
-	BackupSize *int64 `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	// The start time of the backup task.
-	//
-	// The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-02-03T12:20:00Z
-	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	// The status of the backup set. Valid values:
-	//
-	// 	- **Success**
-	//
-	// 	- **Failed**
-	//
-	// example:
-	//
-	// Success
-	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	// The backup type of the backup file. Valid values:
-	//
-	// 	- **FullBackup**
-	//
-	// 	- **IncrementalBackup**
-	//
-	// example:
-	//
-	// FullBackup
-	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The point in time at which the data in the backup set is consistent. The return value of this parameter is a timestamp.
-	//
-	// >  If the instance runs MySQL 5.6, a timestamp is returned. Otherwise, the value 0 is returned.
-	//
-	// example:
-	//
-	// 1576506856
-	ConsistentTime *int64 `json:"ConsistentTime,omitempty" xml:"ConsistentTime,omitempty"`
-	// The description of the instance.
-	//
-	// example:
-	//
-	// test
-	DBInstanceComment *string `json:"DBInstanceComment,omitempty" xml:"DBInstanceComment,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the instance that generates the backup set. This parameter is used to indicate whether the instance that generates the backup set is a primary instance or a secondary instance.
-	//
-	// example:
-	//
-	// 5882781
-	HostInstanceID *string `json:"HostInstanceID,omitempty" xml:"HostInstanceID,omitempty"`
-	// Indicates whether the backup set is available. Valid values:
-	//
-	// 	- **0**: The backup set is unavailable.
-	//
-	// 	- **1**: The backup set is available.
-	//
-	// example:
-	//
-	// 1
-	IsAvail *int32 `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
-	// The status of the backup set that is used to restore individual databases or tables. Valid values:
-	//
-	// 	- **OK**: The backup set is normal.
-	//
-	// 	- **LARGE**: The backup set contains an abnormally large number of tables. It cannot be used to restore individual databases or tables.
-	//
-	// 	- **EMPTY**: The backup set is generated from a failed backup task.
-	//
-	// example:
-	//
-	// OK
-	MetaStatus *string `json:"MetaStatus,omitempty" xml:"MetaStatus,omitempty"`
-	// Indicates whether the data backup file can be deleted. Valid values:
-	//
-	// 	- **Enabled**
-	//
-	// 	- **Disabled**
-	//
-	// example:
-	//
-	// Disabled
-	StoreStatus *string `json:"StoreStatus,omitempty" xml:"StoreStatus,omitempty"`
+	BackupMethod              *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	BackupMode                *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	BackupSize                *int64  `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
+	BackupStartTime           *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	BackupStatus              *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	BackupType                *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	ConsistentTime            *int64  `json:"ConsistentTime,omitempty" xml:"ConsistentTime,omitempty"`
+	DBInstanceComment         *string `json:"DBInstanceComment,omitempty" xml:"DBInstanceComment,omitempty"`
+	DBInstanceId              *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	HostInstanceID            *string `json:"HostInstanceID,omitempty" xml:"HostInstanceID,omitempty"`
+	IsAvail                   *int32  `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
+	MetaStatus                *string `json:"MetaStatus,omitempty" xml:"MetaStatus,omitempty"`
+	StoreStatus               *string `json:"StoreStatus,omitempty" xml:"StoreStatus,omitempty"`
 }
 
 func (s DescribeDetachedBackupsResponseBodyItemsBackup) String() string {

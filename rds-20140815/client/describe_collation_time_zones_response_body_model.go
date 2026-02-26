@@ -16,7 +16,6 @@ type iDescribeCollationTimeZonesResponseBody interface {
 }
 
 type DescribeCollationTimeZonesResponseBody struct {
-	// The list of the character set collations and time zones that are available.
 	CollationTimeZones *DescribeCollationTimeZonesResponseBodyCollationTimeZones `json:"CollationTimeZones,omitempty" xml:"CollationTimeZones,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,24 +95,9 @@ func (s *DescribeCollationTimeZonesResponseBodyCollationTimeZones) Validate() er
 }
 
 type DescribeCollationTimeZonesResponseBodyCollationTimeZonesCollationTimeZone struct {
-	// The description.
-	//
-	// example:
-	//
-	// Kabul
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The offset of the UTC time. The offset is in the following format: (UTC+*HH:mm*).
-	//
-	// example:
-	//
-	// (UTC+04:30)
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	StandardTimeOffset *string `json:"StandardTimeOffset,omitempty" xml:"StandardTimeOffset,omitempty"`
-	// The time zone.
-	//
-	// example:
-	//
-	// Afghanistan Standard Time
-	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+	TimeZone           *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 
 func (s DescribeCollationTimeZonesResponseBodyCollationTimeZonesCollationTimeZone) String() string {

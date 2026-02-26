@@ -22,9 +22,6 @@ type iDescribeDBInstanceTDEResponseBody interface {
 }
 
 type DescribeDBInstanceTDEResponseBody struct {
-	// The TDE status at the database level.
-	//
-	// >  If your instance runs SQL Server 2019 SE or SQL Server EE, you can specify whether to enable TDE at the database level when you enable TDE at the instance level.
 	Databases *DescribeDBInstanceTDEResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Struct"`
 	// The ID of the custom key.
 	//
@@ -159,21 +156,7 @@ func (s *DescribeDBInstanceTDEResponseBodyDatabases) Validate() error {
 }
 
 type DescribeDBInstanceTDEResponseBodyDatabasesDatabase struct {
-	// The name of the database.
-	//
-	// example:
-	//
-	// test02
-	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The TDE status at the database level. Valid values:
-	//
-	// 	- **Enabled**
-	//
-	// 	- **Disabled**
-	//
-	// example:
-	//
-	// Enabled
+	DBName    *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	TDEStatus *string `json:"TDEStatus,omitempty" xml:"TDEStatus,omitempty"`
 }
 

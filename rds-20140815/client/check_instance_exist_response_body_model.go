@@ -16,8 +16,22 @@ type iCheckInstanceExistResponseBody interface {
 }
 
 type CheckInstanceExistResponseBody struct {
-	IsExistInstance *bool   `json:"IsExistInstance,omitempty" xml:"IsExistInstance,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the instance exists. Valid values:
+	//
+	// - **true**: The instance exists.
+	//
+	// - **false**: The instance does not exist.
+	//
+	// example:
+	//
+	// true
+	IsExistInstance *bool `json:"IsExistInstance,omitempty" xml:"IsExistInstance,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 11439B36-F703-49EB-8656-D3C87BE28B57
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CheckInstanceExistResponseBody) String() string {
