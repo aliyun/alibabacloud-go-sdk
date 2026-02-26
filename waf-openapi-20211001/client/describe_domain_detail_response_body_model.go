@@ -356,7 +356,10 @@ type DescribeDomainDetailResponseBodyListen struct {
 	// example:
 	//
 	// true
-	FocusHttps *bool `json:"FocusHttps,omitempty" xml:"FocusHttps,omitempty"`
+	FocusHttps           *bool  `json:"FocusHttps,omitempty" xml:"FocusHttps,omitempty"`
+	HstsIncludeSubDomain *bool  `json:"HstsIncludeSubDomain,omitempty" xml:"HstsIncludeSubDomain,omitempty"`
+	HstsMaxAge           *int64 `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
+	HstsPreload          *bool  `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
 	// Indicates whether HTTP/2 is enabled. Valid values:
 	//
 	// 	- **true:*	- HTTP/2 is enabled.
@@ -477,6 +480,18 @@ func (s *DescribeDomainDetailResponseBodyListen) GetFocusHttps() *bool {
 	return s.FocusHttps
 }
 
+func (s *DescribeDomainDetailResponseBodyListen) GetHstsIncludeSubDomain() *bool {
+	return s.HstsIncludeSubDomain
+}
+
+func (s *DescribeDomainDetailResponseBodyListen) GetHstsMaxAge() *int64 {
+	return s.HstsMaxAge
+}
+
+func (s *DescribeDomainDetailResponseBodyListen) GetHstsPreload() *bool {
+	return s.HstsPreload
+}
+
 func (s *DescribeDomainDetailResponseBodyListen) GetHttp2Enabled() *bool {
 	return s.Http2Enabled
 }
@@ -548,6 +563,21 @@ func (s *DescribeDomainDetailResponseBodyListen) SetExclusiveIp(v bool) *Describ
 
 func (s *DescribeDomainDetailResponseBodyListen) SetFocusHttps(v bool) *DescribeDomainDetailResponseBodyListen {
 	s.FocusHttps = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyListen) SetHstsIncludeSubDomain(v bool) *DescribeDomainDetailResponseBodyListen {
+	s.HstsIncludeSubDomain = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyListen) SetHstsMaxAge(v int64) *DescribeDomainDetailResponseBodyListen {
+	s.HstsMaxAge = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyListen) SetHstsPreload(v bool) *DescribeDomainDetailResponseBodyListen {
+	s.HstsPreload = &v
 	return s
 }
 
@@ -684,7 +714,8 @@ type DescribeDomainDetailResponseBodyRedirect struct {
 	// example:
 	//
 	// 2
-	MaxBodySize *int32 `json:"MaxBodySize,omitempty" xml:"MaxBodySize,omitempty"`
+	MaxBodySize   *int32 `json:"MaxBodySize,omitempty" xml:"MaxBodySize,omitempty"`
+	ProxyProtocol *bool  `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
 	// The read timeout period. Unit: seconds. Valid values: 5 to 1800.
 	//
 	// example:
@@ -805,6 +836,10 @@ func (s *DescribeDomainDetailResponseBodyRedirect) GetMaxBodySize() *int32 {
 	return s.MaxBodySize
 }
 
+func (s *DescribeDomainDetailResponseBodyRedirect) GetProxyProtocol() *bool {
+	return s.ProxyProtocol
+}
+
 func (s *DescribeDomainDetailResponseBodyRedirect) GetReadTimeout() *int32 {
 	return s.ReadTimeout
 }
@@ -916,6 +951,11 @@ func (s *DescribeDomainDetailResponseBodyRedirect) SetLoadbalance(v string) *Des
 
 func (s *DescribeDomainDetailResponseBodyRedirect) SetMaxBodySize(v int32) *DescribeDomainDetailResponseBodyRedirect {
 	s.MaxBodySize = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirect) SetProxyProtocol(v bool) *DescribeDomainDetailResponseBodyRedirect {
+	s.ProxyProtocol = &v
 	return s
 }
 

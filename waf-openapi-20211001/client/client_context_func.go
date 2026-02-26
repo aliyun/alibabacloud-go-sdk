@@ -2381,7 +2381,7 @@ func (client *Client) DeleteHybridCloudGroupWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 删除日志外发配置
+// Delets a hybrid cloud log delivery configuration.
 //
 // @param request - DeleteLogDeliveryConfigRequest
 //
@@ -4833,7 +4833,7 @@ func (client *Client) DescribeChargeResultWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries a port of the cloud service that is added to Web Application Firewall (WAF). This operation is supported for only Elastic Compute Service (ECS) and Classic Load Balancer (CLB).
+// Queries the port details of a cloud service instance that is added to Web Application Firewall (WAF). This operation is supported only for Elastic Compute Service (ECS), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances.
 //
 // @param request - DescribeCloudResourceAccessPortDetailsRequest
 //

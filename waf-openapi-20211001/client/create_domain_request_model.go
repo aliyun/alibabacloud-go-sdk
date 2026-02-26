@@ -245,7 +245,13 @@ type CreateDomainRequestListen struct {
 	// example:
 	//
 	// true
-	FocusHttps *bool `json:"FocusHttps,omitempty" xml:"FocusHttps,omitempty"`
+	FocusHttps           *bool `json:"FocusHttps,omitempty" xml:"FocusHttps,omitempty"`
+	HstsIncludeSubDomain *bool `json:"HstsIncludeSubDomain,omitempty" xml:"HstsIncludeSubDomain,omitempty"`
+	// example:
+	//
+	// 365000
+	HstsMaxAge  *int64 `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
+	HstsPreload *bool  `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
 	// Specifies whether to enable HTTP/2. This parameter is available only if you specify **HttpsPorts**. Valid values:
 	//
 	// 	- **true**
@@ -371,6 +377,18 @@ func (s *CreateDomainRequestListen) GetFocusHttps() *bool {
 	return s.FocusHttps
 }
 
+func (s *CreateDomainRequestListen) GetHstsIncludeSubDomain() *bool {
+	return s.HstsIncludeSubDomain
+}
+
+func (s *CreateDomainRequestListen) GetHstsMaxAge() *int64 {
+	return s.HstsMaxAge
+}
+
+func (s *CreateDomainRequestListen) GetHstsPreload() *bool {
+	return s.HstsPreload
+}
+
 func (s *CreateDomainRequestListen) GetHttp2Enabled() *bool {
 	return s.Http2Enabled
 }
@@ -442,6 +460,21 @@ func (s *CreateDomainRequestListen) SetExclusiveIp(v bool) *CreateDomainRequestL
 
 func (s *CreateDomainRequestListen) SetFocusHttps(v bool) *CreateDomainRequestListen {
 	s.FocusHttps = &v
+	return s
+}
+
+func (s *CreateDomainRequestListen) SetHstsIncludeSubDomain(v bool) *CreateDomainRequestListen {
+	s.HstsIncludeSubDomain = &v
+	return s
+}
+
+func (s *CreateDomainRequestListen) SetHstsMaxAge(v int64) *CreateDomainRequestListen {
+	s.HstsMaxAge = &v
+	return s
+}
+
+func (s *CreateDomainRequestListen) SetHstsPreload(v bool) *CreateDomainRequestListen {
+	s.HstsPreload = &v
 	return s
 }
 
@@ -584,7 +617,8 @@ type CreateDomainRequestRedirect struct {
 	// example:
 	//
 	// 2
-	MaxBodySize *int32 `json:"MaxBodySize,omitempty" xml:"MaxBodySize,omitempty"`
+	MaxBodySize   *int32 `json:"MaxBodySize,omitempty" xml:"MaxBodySize,omitempty"`
+	ProxyProtocol *bool  `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
 	// The timeout period of read connections. Unit: seconds. Valid values: 1 to 3600.
 	//
 	// example:
@@ -733,6 +767,10 @@ func (s *CreateDomainRequestRedirect) GetMaxBodySize() *int32 {
 	return s.MaxBodySize
 }
 
+func (s *CreateDomainRequestRedirect) GetProxyProtocol() *bool {
+	return s.ProxyProtocol
+}
+
 func (s *CreateDomainRequestRedirect) GetReadTimeout() *int32 {
 	return s.ReadTimeout
 }
@@ -843,6 +881,11 @@ func (s *CreateDomainRequestRedirect) SetLoadbalance(v string) *CreateDomainRequ
 
 func (s *CreateDomainRequestRedirect) SetMaxBodySize(v int32) *CreateDomainRequestRedirect {
 	s.MaxBodySize = &v
+	return s
+}
+
+func (s *CreateDomainRequestRedirect) SetProxyProtocol(v bool) *CreateDomainRequestRedirect {
+	s.ProxyProtocol = &v
 	return s
 }
 
