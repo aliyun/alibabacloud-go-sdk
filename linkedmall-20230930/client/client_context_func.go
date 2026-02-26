@@ -2,115 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-hangzhou":                 dara.String("linkedmall.aliyuncs.com"),
-		"cn-shanghai":                 dara.String("linkedmall.aliyuncs.com"),
-		"ap-northeast-1":              dara.String("linkedmall.aliyuncs.com"),
-		"ap-northeast-2-pop":          dara.String("linkedmall.aliyuncs.com"),
-		"ap-south-1":                  dara.String("linkedmall.aliyuncs.com"),
-		"ap-southeast-1":              dara.String("linkedmall.aliyuncs.com"),
-		"ap-southeast-2":              dara.String("linkedmall.aliyuncs.com"),
-		"ap-southeast-3":              dara.String("linkedmall.aliyuncs.com"),
-		"ap-southeast-5":              dara.String("linkedmall.aliyuncs.com"),
-		"cn-beijing":                  dara.String("linkedmall.aliyuncs.com"),
-		"cn-beijing-finance-1":        dara.String("linkedmall.aliyuncs.com"),
-		"cn-beijing-finance-pop":      dara.String("linkedmall.aliyuncs.com"),
-		"cn-beijing-gov-1":            dara.String("linkedmall.aliyuncs.com"),
-		"cn-beijing-nu16-b01":         dara.String("linkedmall.aliyuncs.com"),
-		"cn-chengdu":                  dara.String("linkedmall.aliyuncs.com"),
-		"cn-edge-1":                   dara.String("linkedmall.aliyuncs.com"),
-		"cn-fujian":                   dara.String("linkedmall.aliyuncs.com"),
-		"cn-haidian-cm12-c01":         dara.String("linkedmall.aliyuncs.com"),
-		"cn-hangzhou-bj-b01":          dara.String("linkedmall.aliyuncs.com"),
-		"cn-hangzhou-finance":         dara.String("linkedmall.aliyuncs.com"),
-		"cn-hangzhou-internal-prod-1": dara.String("linkedmall.aliyuncs.com"),
-		"cn-hangzhou-internal-test-1": dara.String("linkedmall.aliyuncs.com"),
-		"cn-hangzhou-internal-test-2": dara.String("linkedmall.aliyuncs.com"),
-		"cn-hangzhou-internal-test-3": dara.String("linkedmall.aliyuncs.com"),
-		"cn-hangzhou-test-306":        dara.String("linkedmall.aliyuncs.com"),
-		"cn-hongkong":                 dara.String("linkedmall.aliyuncs.com"),
-		"cn-hongkong-finance-pop":     dara.String("linkedmall.aliyuncs.com"),
-		"cn-huhehaote":                dara.String("linkedmall.aliyuncs.com"),
-		"cn-north-2-gov-1":            dara.String("linkedmall.aliyuncs.com"),
-		"cn-qingdao":                  dara.String("linkedmall.aliyuncs.com"),
-		"cn-qingdao-nebula":           dara.String("linkedmall.aliyuncs.com"),
-		"cn-shanghai-et15-b01":        dara.String("linkedmall.aliyuncs.com"),
-		"cn-shanghai-et2-b01":         dara.String("linkedmall.aliyuncs.com"),
-		"cn-shanghai-finance-1":       dara.String("linkedmall.aliyuncs.com"),
-		"cn-shanghai-inner":           dara.String("linkedmall.aliyuncs.com"),
-		"cn-shanghai-internal-test-1": dara.String("linkedmall.aliyuncs.com"),
-		"cn-shenzhen":                 dara.String("linkedmall.aliyuncs.com"),
-		"cn-shenzhen-finance-1":       dara.String("linkedmall.aliyuncs.com"),
-		"cn-shenzhen-inner":           dara.String("linkedmall.aliyuncs.com"),
-		"cn-shenzhen-st4-d01":         dara.String("linkedmall.aliyuncs.com"),
-		"cn-shenzhen-su18-b01":        dara.String("linkedmall.aliyuncs.com"),
-		"cn-wuhan":                    dara.String("linkedmall.aliyuncs.com"),
-		"cn-yushanfang":               dara.String("linkedmall.aliyuncs.com"),
-		"cn-zhangbei-na61-b01":        dara.String("linkedmall.aliyuncs.com"),
-		"cn-zhangjiakou":              dara.String("linkedmall.aliyuncs.com"),
-		"cn-zhangjiakou-na62-a01":     dara.String("linkedmall.aliyuncs.com"),
-		"cn-zhengzhou-nebula-1":       dara.String("linkedmall.aliyuncs.com"),
-		"eu-central-1":                dara.String("linkedmall.aliyuncs.com"),
-		"eu-west-1":                   dara.String("linkedmall.aliyuncs.com"),
-		"eu-west-1-oxs":               dara.String("linkedmall.aliyuncs.com"),
-		"me-east-1":                   dara.String("linkedmall.aliyuncs.com"),
-		"rus-west-1-pop":              dara.String("linkedmall.aliyuncs.com"),
-		"us-east-1":                   dara.String("linkedmall.aliyuncs.com"),
-		"us-west-1":                   dara.String("linkedmall.aliyuncs.com"),
-	}
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("linkedmall"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -121,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelRefundOrderResponse
-func (client *Client) CancelRefundOrderWithOptions(disputeId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CancelRefundOrderResponse, _err error) {
+func (client *Client) CancelRefundOrderWithContext(ctx context.Context, disputeId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CancelRefundOrderResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -137,28 +32,11 @@ func (client *Client) CancelRefundOrderWithOptions(disputeId *string, headers ma
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelRefundOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 取消逆向单
-//
-// @return CancelRefundOrderResponse
-func (client *Client) CancelRefundOrder(disputeId *string) (_result *CancelRefundOrderResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CancelRefundOrderResponse{}
-	_body, _err := client.CancelRefundOrderWithOptions(disputeId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -173,7 +51,7 @@ func (client *Client) CancelRefundOrder(disputeId *string) (_result *CancelRefun
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConfirmDisburseResponse
-func (client *Client) ConfirmDisburseWithOptions(request *ConfirmDisburseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ConfirmDisburseResponse, _err error) {
+func (client *Client) ConfirmDisburseWithContext(ctx context.Context, request *ConfirmDisburseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ConfirmDisburseResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -196,30 +74,11 @@ func (client *Client) ConfirmDisburseWithOptions(request *ConfirmDisburseRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ConfirmDisburseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 确认收货（订单）
-//
-// @param request - ConfirmDisburseRequest
-//
-// @return ConfirmDisburseResponse
-func (client *Client) ConfirmDisburse(request *ConfirmDisburseRequest) (_result *ConfirmDisburseResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ConfirmDisburseResponse{}
-	_body, _err := client.ConfirmDisburseWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -234,7 +93,7 @@ func (client *Client) ConfirmDisburse(request *ConfirmDisburseRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateGoodsShippingNoticeResponse
-func (client *Client) CreateGoodsShippingNoticeWithOptions(request *CreateGoodsShippingNoticeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGoodsShippingNoticeResponse, _err error) {
+func (client *Client) CreateGoodsShippingNoticeWithContext(ctx context.Context, request *CreateGoodsShippingNoticeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGoodsShippingNoticeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -257,30 +116,11 @@ func (client *Client) CreateGoodsShippingNoticeWithOptions(request *CreateGoodsS
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateGoodsShippingNoticeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 提交运单信息
-//
-// @param request - CreateGoodsShippingNoticeRequest
-//
-// @return CreateGoodsShippingNoticeResponse
-func (client *Client) CreateGoodsShippingNotice(request *CreateGoodsShippingNoticeRequest) (_result *CreateGoodsShippingNoticeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateGoodsShippingNoticeResponse{}
-	_body, _err := client.CreateGoodsShippingNoticeWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -295,7 +135,7 @@ func (client *Client) CreateGoodsShippingNotice(request *CreateGoodsShippingNoti
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePurchaseOrderResponse
-func (client *Client) CreatePurchaseOrderWithOptions(request *CreatePurchaseOrderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePurchaseOrderResponse, _err error) {
+func (client *Client) CreatePurchaseOrderWithContext(ctx context.Context, request *CreatePurchaseOrderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePurchaseOrderResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -318,30 +158,11 @@ func (client *Client) CreatePurchaseOrderWithOptions(request *CreatePurchaseOrde
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePurchaseOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建采购单
-//
-// @param request - CreatePurchaseOrderRequest
-//
-// @return CreatePurchaseOrderResponse
-func (client *Client) CreatePurchaseOrder(request *CreatePurchaseOrderRequest) (_result *CreatePurchaseOrderResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreatePurchaseOrderResponse{}
-	_body, _err := client.CreatePurchaseOrderWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -356,7 +177,7 @@ func (client *Client) CreatePurchaseOrder(request *CreatePurchaseOrderRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRefundOrderResponse
-func (client *Client) CreateRefundOrderWithOptions(request *CreateRefundOrderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateRefundOrderResponse, _err error) {
+func (client *Client) CreateRefundOrderWithContext(ctx context.Context, request *CreateRefundOrderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateRefundOrderResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -379,30 +200,11 @@ func (client *Client) CreateRefundOrderWithOptions(request *CreateRefundOrderReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRefundOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建逆向单
-//
-// @param request - CreateRefundOrderRequest
-//
-// @return CreateRefundOrderResponse
-func (client *Client) CreateRefundOrder(request *CreateRefundOrderRequest) (_result *CreateRefundOrderResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateRefundOrderResponse{}
-	_body, _err := client.CreateRefundOrderWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -415,7 +217,7 @@ func (client *Client) CreateRefundOrder(request *CreateRefundOrderRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetOrderResponse
-func (client *Client) GetOrderWithOptions(orderId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetOrderResponse, _err error) {
+func (client *Client) GetOrderWithContext(ctx context.Context, orderId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetOrderResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -431,28 +233,11 @@ func (client *Client) GetOrderWithOptions(orderId *string, headers map[string]*s
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询主单详情
-//
-// @return GetOrderResponse
-func (client *Client) GetOrder(orderId *string) (_result *GetOrderResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetOrderResponse{}
-	_body, _err := client.GetOrderWithOptions(orderId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -465,7 +250,7 @@ func (client *Client) GetOrder(orderId *string) (_result *GetOrderResponse, _err
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPurchaseOrderStatusResponse
-func (client *Client) GetPurchaseOrderStatusWithOptions(purchaseOrderId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPurchaseOrderStatusResponse, _err error) {
+func (client *Client) GetPurchaseOrderStatusWithContext(ctx context.Context, purchaseOrderId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPurchaseOrderStatusResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -481,28 +266,11 @@ func (client *Client) GetPurchaseOrderStatusWithOptions(purchaseOrderId *string,
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPurchaseOrderStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询采购单状态
-//
-// @return GetPurchaseOrderStatusResponse
-func (client *Client) GetPurchaseOrderStatus(purchaseOrderId *string) (_result *GetPurchaseOrderStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetPurchaseOrderStatusResponse{}
-	_body, _err := client.GetPurchaseOrderStatusWithOptions(purchaseOrderId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -515,7 +283,7 @@ func (client *Client) GetPurchaseOrderStatus(purchaseOrderId *string) (_result *
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPurchaserShopResponse
-func (client *Client) GetPurchaserShopWithOptions(purchaserId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPurchaserShopResponse, _err error) {
+func (client *Client) GetPurchaserShopWithContext(ctx context.Context, purchaserId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPurchaserShopResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -531,28 +299,11 @@ func (client *Client) GetPurchaserShopWithOptions(purchaserId *string, headers m
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPurchaserShopResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询分销商店铺
-//
-// @return GetPurchaserShopResponse
-func (client *Client) GetPurchaserShop(purchaserId *string) (_result *GetPurchaserShopResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetPurchaserShopResponse{}
-	_body, _err := client.GetPurchaserShopWithOptions(purchaserId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -565,7 +316,7 @@ func (client *Client) GetPurchaserShop(purchaserId *string) (_result *GetPurchas
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRefundOrderResponse
-func (client *Client) GetRefundOrderWithOptions(disputeId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRefundOrderResponse, _err error) {
+func (client *Client) GetRefundOrderWithContext(ctx context.Context, disputeId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRefundOrderResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -581,28 +332,11 @@ func (client *Client) GetRefundOrderWithOptions(disputeId *string, headers map[s
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRefundOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询逆向单详情
-//
-// @return GetRefundOrderResponse
-func (client *Client) GetRefundOrder(disputeId *string) (_result *GetRefundOrderResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetRefundOrderResponse{}
-	_body, _err := client.GetRefundOrderWithOptions(disputeId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -617,7 +351,7 @@ func (client *Client) GetRefundOrder(disputeId *string) (_result *GetRefundOrder
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSelectionProductResponse
-func (client *Client) GetSelectionProductWithOptions(productId *string, request *GetSelectionProductRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSelectionProductResponse, _err error) {
+func (client *Client) GetSelectionProductWithContext(ctx context.Context, productId *string, request *GetSelectionProductRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSelectionProductResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -649,30 +383,11 @@ func (client *Client) GetSelectionProductWithOptions(productId *string, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSelectionProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询选品池商品详情
-//
-// @param request - GetSelectionProductRequest
-//
-// @return GetSelectionProductResponse
-func (client *Client) GetSelectionProduct(productId *string, request *GetSelectionProductRequest) (_result *GetSelectionProductResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetSelectionProductResponse{}
-	_body, _err := client.GetSelectionProductWithOptions(productId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -687,7 +402,7 @@ func (client *Client) GetSelectionProduct(productId *string, request *GetSelecti
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSelectionProductSaleInfoResponse
-func (client *Client) GetSelectionProductSaleInfoWithOptions(productId *string, request *GetSelectionProductSaleInfoRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSelectionProductSaleInfoResponse, _err error) {
+func (client *Client) GetSelectionProductSaleInfoWithContext(ctx context.Context, productId *string, request *GetSelectionProductSaleInfoRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSelectionProductSaleInfoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -719,30 +434,11 @@ func (client *Client) GetSelectionProductSaleInfoWithOptions(productId *string, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSelectionProductSaleInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询选品池商品库存
-//
-// @param request - GetSelectionProductSaleInfoRequest
-//
-// @return GetSelectionProductSaleInfoResponse
-func (client *Client) GetSelectionProductSaleInfo(productId *string, request *GetSelectionProductSaleInfoRequest) (_result *GetSelectionProductSaleInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetSelectionProductSaleInfoResponse{}
-	_body, _err := client.GetSelectionProductSaleInfoWithOptions(productId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -757,7 +453,7 @@ func (client *Client) GetSelectionProductSaleInfo(productId *string, request *Ge
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListCategoriesResponse
-func (client *Client) ListCategoriesWithOptions(request *ListCategoriesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListCategoriesResponse, _err error) {
+func (client *Client) ListCategoriesWithContext(ctx context.Context, request *ListCategoriesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListCategoriesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -780,30 +476,11 @@ func (client *Client) ListCategoriesWithOptions(request *ListCategoriesRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListCategoriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询类目
-//
-// @param request - ListCategoriesRequest
-//
-// @return ListCategoriesResponse
-func (client *Client) ListCategories(request *ListCategoriesRequest) (_result *ListCategoriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListCategoriesResponse{}
-	_body, _err := client.ListCategoriesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -816,7 +493,7 @@ func (client *Client) ListCategories(request *ListCategoriesRequest) (_result *L
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListLogisticsOrdersResponse
-func (client *Client) ListLogisticsOrdersWithOptions(orderId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListLogisticsOrdersResponse, _err error) {
+func (client *Client) ListLogisticsOrdersWithContext(ctx context.Context, orderId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListLogisticsOrdersResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -832,28 +509,11 @@ func (client *Client) ListLogisticsOrdersWithOptions(orderId *string, headers ma
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListLogisticsOrdersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询物流信息（订单）
-//
-// @return ListLogisticsOrdersResponse
-func (client *Client) ListLogisticsOrders(orderId *string) (_result *ListLogisticsOrdersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListLogisticsOrdersResponse{}
-	_body, _err := client.ListLogisticsOrdersWithOptions(orderId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -868,7 +528,7 @@ func (client *Client) ListLogisticsOrders(orderId *string) (_result *ListLogisti
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPurchaserShopsResponse
-func (client *Client) ListPurchaserShopsWithOptions(request *ListPurchaserShopsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPurchaserShopsResponse, _err error) {
+func (client *Client) ListPurchaserShopsWithContext(ctx context.Context, request *ListPurchaserShopsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPurchaserShopsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -900,30 +560,11 @@ func (client *Client) ListPurchaserShopsWithOptions(request *ListPurchaserShopsR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPurchaserShopsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 采购方店铺列表查询
-//
-// @param request - ListPurchaserShopsRequest
-//
-// @return ListPurchaserShopsResponse
-func (client *Client) ListPurchaserShops(request *ListPurchaserShopsRequest) (_result *ListPurchaserShopsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListPurchaserShopsResponse{}
-	_body, _err := client.ListPurchaserShopsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -938,7 +579,7 @@ func (client *Client) ListPurchaserShops(request *ListPurchaserShopsRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSelectionProductSaleInfosResponse
-func (client *Client) ListSelectionProductSaleInfosWithOptions(request *ListSelectionProductSaleInfosRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSelectionProductSaleInfosResponse, _err error) {
+func (client *Client) ListSelectionProductSaleInfosWithContext(ctx context.Context, request *ListSelectionProductSaleInfosRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSelectionProductSaleInfosResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -961,30 +602,11 @@ func (client *Client) ListSelectionProductSaleInfosWithOptions(request *ListSele
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListSelectionProductSaleInfosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 批量查询选品池商品库存
-//
-// @param request - ListSelectionProductSaleInfosRequest
-//
-// @return ListSelectionProductSaleInfosResponse
-func (client *Client) ListSelectionProductSaleInfos(request *ListSelectionProductSaleInfosRequest) (_result *ListSelectionProductSaleInfosResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListSelectionProductSaleInfosResponse{}
-	_body, _err := client.ListSelectionProductSaleInfosWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -999,7 +621,7 @@ func (client *Client) ListSelectionProductSaleInfos(request *ListSelectionProduc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSelectionProductsResponse
-func (client *Client) ListSelectionProductsWithOptions(request *ListSelectionProductsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSelectionProductsResponse, _err error) {
+func (client *Client) ListSelectionProductsWithContext(ctx context.Context, request *ListSelectionProductsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSelectionProductsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1035,30 +657,11 @@ func (client *Client) ListSelectionProductsWithOptions(request *ListSelectionPro
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListSelectionProductsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询商品列表
-//
-// @param request - ListSelectionProductsRequest
-//
-// @return ListSelectionProductsResponse
-func (client *Client) ListSelectionProducts(request *ListSelectionProductsRequest) (_result *ListSelectionProductsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListSelectionProductsResponse{}
-	_body, _err := client.ListSelectionProductsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1073,7 +676,7 @@ func (client *Client) ListSelectionProducts(request *ListSelectionProductsReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSelectionSkuSaleInfosResponse
-func (client *Client) ListSelectionSkuSaleInfosWithOptions(request *ListSelectionSkuSaleInfosRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSelectionSkuSaleInfosResponse, _err error) {
+func (client *Client) ListSelectionSkuSaleInfosWithContext(ctx context.Context, request *ListSelectionSkuSaleInfosRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSelectionSkuSaleInfosResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1096,30 +699,11 @@ func (client *Client) ListSelectionSkuSaleInfosWithOptions(request *ListSelectio
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListSelectionSkuSaleInfosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 批量查询选品池商品SKU库存
-//
-// @param request - ListSelectionSkuSaleInfosRequest
-//
-// @return ListSelectionSkuSaleInfosResponse
-func (client *Client) ListSelectionSkuSaleInfos(request *ListSelectionSkuSaleInfosRequest) (_result *ListSelectionSkuSaleInfosResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListSelectionSkuSaleInfosResponse{}
-	_body, _err := client.ListSelectionSkuSaleInfosWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1134,7 +718,7 @@ func (client *Client) ListSelectionSkuSaleInfos(request *ListSelectionSkuSaleInf
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryChildDivisionCodeResponse
-func (client *Client) QueryChildDivisionCodeWithOptions(request *QueryChildDivisionCodeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryChildDivisionCodeResponse, _err error) {
+func (client *Client) QueryChildDivisionCodeWithContext(ctx context.Context, request *QueryChildDivisionCodeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryChildDivisionCodeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1157,30 +741,11 @@ func (client *Client) QueryChildDivisionCodeWithOptions(request *QueryChildDivis
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryChildDivisionCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询地址divisionCode
-//
-// @param request - QueryChildDivisionCodeRequest
-//
-// @return QueryChildDivisionCodeResponse
-func (client *Client) QueryChildDivisionCode(request *QueryChildDivisionCodeRequest) (_result *QueryChildDivisionCodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &QueryChildDivisionCodeResponse{}
-	_body, _err := client.QueryChildDivisionCodeWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1195,7 +760,7 @@ func (client *Client) QueryChildDivisionCode(request *QueryChildDivisionCodeRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryOrdersResponse
-func (client *Client) QueryOrdersWithOptions(request *QueryOrdersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryOrdersResponse, _err error) {
+func (client *Client) QueryOrdersWithContext(ctx context.Context, request *QueryOrdersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryOrdersResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1218,30 +783,11 @@ func (client *Client) QueryOrdersWithOptions(request *QueryOrdersRequest, header
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryOrdersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询主单列表
-//
-// @param request - QueryOrdersRequest
-//
-// @return QueryOrdersResponse
-func (client *Client) QueryOrders(request *QueryOrdersRequest) (_result *QueryOrdersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &QueryOrdersResponse{}
-	_body, _err := client.QueryOrdersWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1256,7 +802,7 @@ func (client *Client) QueryOrders(request *QueryOrdersRequest) (_result *QueryOr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RenderPurchaseOrderResponse
-func (client *Client) RenderPurchaseOrderWithOptions(request *RenderPurchaseOrderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RenderPurchaseOrderResponse, _err error) {
+func (client *Client) RenderPurchaseOrderWithContext(ctx context.Context, request *RenderPurchaseOrderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RenderPurchaseOrderResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1279,30 +825,11 @@ func (client *Client) RenderPurchaseOrderWithOptions(request *RenderPurchaseOrde
 		BodyType:    dara.String("json"),
 	}
 	_result = &RenderPurchaseOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 渲染采购单
-//
-// @param request - RenderPurchaseOrderRequest
-//
-// @return RenderPurchaseOrderResponse
-func (client *Client) RenderPurchaseOrder(request *RenderPurchaseOrderRequest) (_result *RenderPurchaseOrderResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RenderPurchaseOrderResponse{}
-	_body, _err := client.RenderPurchaseOrderWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1317,7 +844,7 @@ func (client *Client) RenderPurchaseOrder(request *RenderPurchaseOrderRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RenderRefundOrderResponse
-func (client *Client) RenderRefundOrderWithOptions(request *RenderRefundOrderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RenderRefundOrderResponse, _err error) {
+func (client *Client) RenderRefundOrderWithContext(ctx context.Context, request *RenderRefundOrderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RenderRefundOrderResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1340,30 +867,11 @@ func (client *Client) RenderRefundOrderWithOptions(request *RenderRefundOrderReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &RenderRefundOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 逆向单渲染
-//
-// @param request - RenderRefundOrderRequest
-//
-// @return RenderRefundOrderResponse
-func (client *Client) RenderRefundOrder(request *RenderRefundOrderRequest) (_result *RenderRefundOrderResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RenderRefundOrderResponse{}
-	_body, _err := client.RenderRefundOrderWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1378,7 +886,7 @@ func (client *Client) RenderRefundOrder(request *RenderRefundOrderRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchProductsResponse
-func (client *Client) SearchProductsWithOptions(request *SearchProductsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SearchProductsResponse, _err error) {
+func (client *Client) SearchProductsWithContext(ctx context.Context, request *SearchProductsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SearchProductsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1522,30 +1030,11 @@ func (client *Client) SearchProductsWithOptions(request *SearchProductsRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchProductsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 搜索商品
-//
-// @param request - SearchProductsRequest
-//
-// @return SearchProductsResponse
-func (client *Client) SearchProducts(request *SearchProductsRequest) (_result *SearchProductsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &SearchProductsResponse{}
-	_body, _err := client.SearchProductsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1560,7 +1049,7 @@ func (client *Client) SearchProducts(request *SearchProductsRequest) (_result *S
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SelectionGroupAddProductResponse
-func (client *Client) SelectionGroupAddProductWithOptions(request *SelectionGroupAddProductRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SelectionGroupAddProductResponse, _err error) {
+func (client *Client) SelectionGroupAddProductWithContext(ctx context.Context, request *SelectionGroupAddProductRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SelectionGroupAddProductResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1592,30 +1081,11 @@ func (client *Client) SelectionGroupAddProductWithOptions(request *SelectionGrou
 		BodyType:    dara.String("json"),
 	}
 	_result = &SelectionGroupAddProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 入库操作
-//
-// @param request - SelectionGroupAddProductRequest
-//
-// @return SelectionGroupAddProductResponse
-func (client *Client) SelectionGroupAddProduct(request *SelectionGroupAddProductRequest) (_result *SelectionGroupAddProductResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &SelectionGroupAddProductResponse{}
-	_body, _err := client.SelectionGroupAddProductWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1630,7 +1100,7 @@ func (client *Client) SelectionGroupAddProduct(request *SelectionGroupAddProduct
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SelectionGroupRemoveProductResponse
-func (client *Client) SelectionGroupRemoveProductWithOptions(request *SelectionGroupRemoveProductRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SelectionGroupRemoveProductResponse, _err error) {
+func (client *Client) SelectionGroupRemoveProductWithContext(ctx context.Context, request *SelectionGroupRemoveProductRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SelectionGroupRemoveProductResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1662,30 +1132,11 @@ func (client *Client) SelectionGroupRemoveProductWithOptions(request *SelectionG
 		BodyType:    dara.String("json"),
 	}
 	_result = &SelectionGroupRemoveProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 出库操作
-//
-// @param request - SelectionGroupRemoveProductRequest
-//
-// @return SelectionGroupRemoveProductResponse
-func (client *Client) SelectionGroupRemoveProduct(request *SelectionGroupRemoveProductRequest) (_result *SelectionGroupRemoveProductResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &SelectionGroupRemoveProductResponse{}
-	_body, _err := client.SelectionGroupRemoveProductWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1700,7 +1151,7 @@ func (client *Client) SelectionGroupRemoveProduct(request *SelectionGroupRemoveP
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SplitPurchaseOrderResponse
-func (client *Client) SplitPurchaseOrderWithOptions(request *SplitPurchaseOrderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SplitPurchaseOrderResponse, _err error) {
+func (client *Client) SplitPurchaseOrderWithContext(ctx context.Context, request *SplitPurchaseOrderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SplitPurchaseOrderResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1723,29 +1174,10 @@ func (client *Client) SplitPurchaseOrderWithOptions(request *SplitPurchaseOrderR
 		BodyType:    dara.String("json"),
 	}
 	_result = &SplitPurchaseOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 渲染拆分采购单
-//
-// @param request - SplitPurchaseOrderRequest
-//
-// @return SplitPurchaseOrderResponse
-func (client *Client) SplitPurchaseOrder(request *SplitPurchaseOrderRequest) (_result *SplitPurchaseOrderResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &SplitPurchaseOrderResponse{}
-	_body, _err := client.SplitPurchaseOrderWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }

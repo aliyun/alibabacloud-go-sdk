@@ -1,0 +1,68 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iQueryOrdersResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *QueryOrdersResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *QueryOrdersResponse
+	GetStatusCode() *int32
+	SetBody(v *OrderListResult) *QueryOrdersResponse
+	GetBody() *OrderListResult
+}
+
+type QueryOrdersResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *OrderListResult   `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryOrdersResponse) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryOrdersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrdersResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *QueryOrdersResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *QueryOrdersResponse) GetBody() *OrderListResult {
+	return s.Body
+}
+
+func (s *QueryOrdersResponse) SetHeaders(v map[string]*string) *QueryOrdersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryOrdersResponse) SetStatusCode(v int32) *QueryOrdersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryOrdersResponse) SetBody(v *OrderListResult) *QueryOrdersResponse {
+	s.Body = v
+	return s
+}
+
+func (s *QueryOrdersResponse) Validate() error {
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
