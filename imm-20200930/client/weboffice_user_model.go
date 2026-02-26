@@ -18,9 +18,28 @@ type iWebofficeUser interface {
 }
 
 type WebofficeUser struct {
+	// The custom URL of the avatar picture. The avatar picture is displayed on the WebOffice page.
+	//
+	// example:
+	//
+	// http://example.com/?id=user1
 	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
-	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The custom user ID. The user ID is displayed on the WebOffice page. A user ID can contain letters and digits and cannot exceed 15 characters in length.
+	//
+	// example:
+	//
+	// user1
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The custom username. The username is displayed on the WebOffice page. The username must meet the following requirements:
+	//
+	// 	- A username can contain digits, letters, hyphens (-), underscores (_), plus signs (+), forward slashes (/), equal signs (=), and at signs (@).
+	//
+	// 	- A username can contain up to 32 characters.
+	//
+	// example:
+	//
+	// test-user1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s WebofficeUser) String() string {

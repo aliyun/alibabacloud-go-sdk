@@ -16,8 +16,12 @@ type iModelSpecification interface {
 }
 
 type ModelSpecification struct {
+	// The basic model information.
+	//
 	// This parameter is required.
 	MetaData *MetaData `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	// The model specification information.
+	//
 	// This parameter is required.
 	Spec *Spec `json:"Spec,omitempty" xml:"Spec,omitempty"`
 }

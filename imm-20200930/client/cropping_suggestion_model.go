@@ -18,9 +18,20 @@ type iCroppingSuggestion interface {
 }
 
 type CroppingSuggestion struct {
-	AspectRatio *string   `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
-	Boundary    *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
-	Confidence  *float32  `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The aspect ratio.
+	//
+	// example:
+	//
+	// 2:3
+	AspectRatio *string `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
+	// The boundary of the cropping.
+	Boundary *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
+	// The confidence score. Valid values: 0 to 1. A higher score indicates greater confidence in the result.
+	//
+	// example:
+	//
+	// 0.7079545259475708
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
 }
 
 func (s CroppingSuggestion) String() string {

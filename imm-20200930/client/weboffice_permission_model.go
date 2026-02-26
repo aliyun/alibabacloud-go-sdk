@@ -24,12 +24,68 @@ type iWebofficePermission interface {
 }
 
 type WebofficePermission struct {
-	Copy     *bool `json:"Copy,omitempty" xml:"Copy,omitempty"`
-	Export   *bool `json:"Export,omitempty" xml:"Export,omitempty"`
-	History  *bool `json:"History,omitempty" xml:"History,omitempty"`
-	Print    *bool `json:"Print,omitempty" xml:"Print,omitempty"`
+	// Specifies whether the user has the copy permission. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	Copy *bool `json:"Copy,omitempty" xml:"Copy,omitempty"`
+	// Specifies whether the user has the permission to export the file as a PDF file. Valid values:
+	//
+	// 	- true: The user has the permission to export the file as a PDF file. If you set this parameter to true, you must set the Print parameter to true.
+	//
+	// 	- false: The user does not have the permission to export the file as a PDF file.
+	//
+	// example:
+	//
+	// false
+	Export *bool `json:"Export,omitempty" xml:"Export,omitempty"`
+	// Specifies whether the user has the permission to view historical versions. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	History *bool `json:"History,omitempty" xml:"History,omitempty"`
+	// Specifies whether the user has the printing permission. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	Print *bool `json:"Print,omitempty" xml:"Print,omitempty"`
+	// Specifies whether the user has read-only access to the file. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
 	Readonly *bool `json:"Readonly,omitempty" xml:"Readonly,omitempty"`
-	Rename   *bool `json:"Rename,omitempty" xml:"Rename,omitempty"`
+	// Specifies whether the user has the permission to rename a file. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// >  You can query the operation information only based a notification sent to Simple Message Queue (SMQ). A rename event is included in the notification.
+	//
+	// example:
+	//
+	// true
+	Rename *bool `json:"Rename,omitempty" xml:"Rename,omitempty"`
 }
 
 func (s WebofficePermission) String() string {

@@ -20,10 +20,32 @@ type iCodes interface {
 }
 
 type Codes struct {
-	Boundary   *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
-	Confidence *float32  `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Content    *string   `json:"Content,omitempty" xml:"Content,omitempty"`
-	Type       *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The boundary of the code.
+	Boundary *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
+	// The confidence level of the code. A greater value indicates a higher confidence level. A value exceeding 0.8 signifies a high degree of confidence in the result.
+	//
+	// example:
+	//
+	// 0.9
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The content of the code.
+	//
+	// example:
+	//
+	// https://www.example.com
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The type of the code.
+	//
+	// Enumerated values:
+	//
+	// 	- qrcode
+	//
+	// 	- barcode
+	//
+	// example:
+	//
+	// qrcode
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s Codes) String() string {

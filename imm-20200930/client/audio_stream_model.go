@@ -46,23 +46,108 @@ type iAudioStream interface {
 }
 
 type AudioStream struct {
-	Bitrate        *int64   `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	ChannelLayout  *string  `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
-	Channels       *int64   `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	CodecLongName  *string  `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	CodecName      *string  `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	CodecTag       *string  `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	CodecTagString *string  `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	CodecTimeBase  *string  `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	Duration       *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	FrameCount     *int64   `json:"FrameCount,omitempty" xml:"FrameCount,omitempty"`
-	Index          *int64   `json:"Index,omitempty" xml:"Index,omitempty"`
-	Language       *string  `json:"Language,omitempty" xml:"Language,omitempty"`
-	Lyric          *string  `json:"Lyric,omitempty" xml:"Lyric,omitempty"`
-	SampleFormat   *string  `json:"SampleFormat,omitempty" xml:"SampleFormat,omitempty"`
-	SampleRate     *int64   `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
-	StartTime      *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TimeBase       *string  `json:"TimeBase,omitempty" xml:"TimeBase,omitempty"`
+	// The bitrate. Unit: bit/s.
+	//
+	// example:
+	//
+	// 320087
+	Bitrate *int64 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The sound channel layout.
+	//
+	// example:
+	//
+	// stereo
+	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	// The number of sound channels.
+	//
+	// example:
+	//
+	// 2
+	Channels *int64 `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// The full name of the codec.
+	//
+	// example:
+	//
+	// AAC (Advanced Audio Coding)
+	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	// The abbreviated name of the codec.
+	//
+	// example:
+	//
+	// aac
+	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	// The tag of the codec.
+	//
+	// example:
+	//
+	// 0x6134706d
+	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	// The description of the codec tag.
+	//
+	// example:
+	//
+	// mp4a
+	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	// The time base of the codec.
+	//
+	// example:
+	//
+	// 1/44100
+	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	// The duration of the audio stream in seconds.
+	//
+	// example:
+	//
+	// 3.690667
+	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The number of frames.
+	//
+	// example:
+	//
+	// 173
+	FrameCount *int64 `json:"FrameCount,omitempty" xml:"FrameCount,omitempty"`
+	// The index number of the audio stream.
+	//
+	// example:
+	//
+	// 1
+	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The audio language in the BCP 47 standard.
+	//
+	// example:
+	//
+	// en
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The lyric.
+	//
+	// example:
+	//
+	// test
+	Lyric *string `json:"Lyric,omitempty" xml:"Lyric,omitempty"`
+	// The sample format.
+	//
+	// example:
+	//
+	// fltp
+	SampleFormat *string `json:"SampleFormat,omitempty" xml:"SampleFormat,omitempty"`
+	// The sampling rate. Unit: Hz.
+	//
+	// example:
+	//
+	// 48000
+	SampleRate *int64 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	// The start time of the audio stream in seconds.
+	//
+	// example:
+	//
+	// 0.0235
+	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time base.
+	//
+	// example:
+	//
+	// 1/48000
+	TimeBase *string `json:"TimeBase,omitempty" xml:"TimeBase,omitempty"`
 }
 
 func (s AudioStream) String() string {

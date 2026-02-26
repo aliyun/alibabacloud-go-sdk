@@ -30,28 +30,42 @@ type iSpec interface {
 }
 
 type Spec struct {
+	// The custom parameters for model training.
 	Backbone *CustomParams `json:"Backbone,omitempty" xml:"Backbone,omitempty"`
+	// The number of output classes of the last layer.
+	//
 	// example:
 	//
 	// 10
-	ClassNum *int64        `json:"ClassNum,omitempty" xml:"ClassNum,omitempty"`
-	Head     *CustomParams `json:"Head,omitempty" xml:"Head,omitempty"`
+	ClassNum *int64 `json:"ClassNum,omitempty" xml:"ClassNum,omitempty"`
+	// The custom parameters for model training.
+	Head *CustomParams `json:"Head,omitempty" xml:"Head,omitempty"`
+	// 3
+	//
 	// example:
 	//
 	// 3
-	InputChannel *int64        `json:"InputChannel,omitempty" xml:"InputChannel,omitempty"`
-	Loss         *CustomParams `json:"Loss,omitempty" xml:"Loss,omitempty"`
+	InputChannel *int64 `json:"InputChannel,omitempty" xml:"InputChannel,omitempty"`
+	// The custom parameters for model training.
+	Loss *CustomParams `json:"Loss,omitempty" xml:"Loss,omitempty"`
+	// The name of the model. The available model names vary with the model category.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ClsResNet
-	Name *string       `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The custom parameters for model training.
 	Neck *CustomParams `json:"Neck,omitempty" xml:"Neck,omitempty"`
+	// The number of face landmarks. This parameter is required for face detection. In most cases, you can set the parameter to 5.
+	//
 	// example:
 	//
 	// 5
 	NumLandmarks *int64 `json:"NumLandmarks,omitempty" xml:"NumLandmarks,omitempty"`
+	// The path to the pretrained model.
+	//
 	// example:
 	//
 	// oss://bucket/abc/xxx.json

@@ -36,18 +36,78 @@ type iMessage interface {
 }
 
 type Message struct {
-	AssistantType *string  `json:"AssistantType,omitempty" xml:"AssistantType,omitempty"`
-	Content       *string  `json:"Content,omitempty" xml:"Content,omitempty"`
-	CreateTime    *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DatasetName   *string  `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Language      *string  `json:"Language,omitempty" xml:"Language,omitempty"`
-	Regenerate    *bool    `json:"Regenerate,omitempty" xml:"Regenerate,omitempty"`
-	Reply         *string  `json:"Reply,omitempty" xml:"Reply,omitempty"`
-	Score         *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	SourceURI     *string  `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	Suggestion    *string  `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	Tone          *string  `json:"Tone,omitempty" xml:"Tone,omitempty"`
-	Topic         *string  `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// Assistant type.
+	//
+	// example:
+	//
+	// doc/translate
+	AssistantType *string `json:"AssistantType,omitempty" xml:"AssistantType,omitempty"`
+	// The content of the question.
+	//
+	// example:
+	//
+	// Hello, which park is closest to me?
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The time when the message was created.
+	//
+	// example:
+	//
+	// 2022-01-14T10:10:52.83948013+08:00
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The dataset that the answer references to.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The language of the answer.
+	//
+	// example:
+	//
+	// zh-Hans
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// Indicates whether the message is a regenerated answer.
+	//
+	// example:
+	//
+	// false
+	Regenerate *bool `json:"Regenerate,omitempty" xml:"Regenerate,omitempty"`
+	// The answer.
+	//
+	// example:
+	//
+	// Hello, I\\"m your assistant.
+	Reply *string `json:"Reply,omitempty" xml:"Reply,omitempty"`
+	// Rate
+	//
+	// example:
+	//
+	// 0.99
+	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The URI of the source file from which the answer was generated.
+	//
+	// example:
+	//
+	// oss://test-bucket/sample.docx
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The compliance check results. Valid values: pass block
+	//
+	// example:
+	//
+	// pass
+	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	// The tone of the answer.
+	//
+	// example:
+	//
+	// professional
+	Tone *string `json:"Tone,omitempty" xml:"Tone,omitempty"`
+	// The topic in the question.
+	//
+	// example:
+	//
+	// The value varies based on the value of the AssistantType parameter.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s Message) String() string {

@@ -16,7 +16,10 @@ type iSmartClusterRule interface {
 }
 
 type SmartClusterRule struct {
+	// Keywords
 	Keywords []*string `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
+	// Sensitivity
+	//
 	// example:
 	//
 	// 0.5

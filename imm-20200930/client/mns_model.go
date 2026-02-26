@@ -14,6 +14,11 @@ type iMNS interface {
 }
 
 type MNS struct {
+	// The SMQ topic. You can check topics within a region in the [SMQ console](https://mns.console.aliyun.com/). This parameter is required if you want to use SMQ for notifications.
+	//
+	// example:
+	//
+	// topic1
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
 }
 

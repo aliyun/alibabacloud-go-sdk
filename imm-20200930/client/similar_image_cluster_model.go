@@ -22,11 +22,28 @@ type iSimilarImageCluster interface {
 }
 
 type SimilarImageCluster struct {
-	CreateTime   *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2023-02-08T09:42:34.354969088+08:00
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The custom tag.
 	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	Files        []*SimilarImage        `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	ObjectId     *string                `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	UpdateTime   *string                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The similar images.
+	Files []*SimilarImage `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// The ID of the cluster.
+	//
+	// example:
+	//
+	// SimilarImageCluster-748a041e-4ebc-4487-9e74-9c89b1****
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The time when the cluster was updated.
+	//
+	// example:
+	//
+	// 2023-02-08T09:42:34.354969088+08:00
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s SimilarImageCluster) String() string {

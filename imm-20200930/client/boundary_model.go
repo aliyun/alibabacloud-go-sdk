@@ -22,11 +22,34 @@ type iBoundary interface {
 }
 
 type Boundary struct {
-	Height  *int64        `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left    *int64        `json:"Left,omitempty" xml:"Left,omitempty"`
+	// The height. Unit: pixel.
+	//
+	// example:
+	//
+	// 300
+	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The distance from the X-coordinate of the vertex to the left edge.
+	//
+	// example:
+	//
+	// 10
+	Left *int64 `json:"Left,omitempty" xml:"Left,omitempty"`
+	// The polygon formed by a number of points. This parameter takes effect only when the boundary describes a polygon rather than a rectangle.
+	//
+	// >  This parameter is mutually exclusive to the following parameters that form a rectangle: Width, Height, Left, and Top. A boundary describes only a rectangle or a polygon.
 	Polygon []*PointInt64 `json:"Polygon,omitempty" xml:"Polygon,omitempty" type:"Repeated"`
-	Top     *int64        `json:"Top,omitempty" xml:"Top,omitempty"`
-	Width   *int64        `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The distance from the Y-coordinate of the vertex to the top.
+	//
+	// example:
+	//
+	// 30
+	Top *int64 `json:"Top,omitempty" xml:"Top,omitempty"`
+	// The width. Unit: pixel.
+	//
+	// example:
+	//
+	// 200
+	Width *int64 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s Boundary) String() string {

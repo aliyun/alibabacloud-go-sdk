@@ -16,8 +16,14 @@ type iAssumeRoleChain interface {
 }
 
 type AssumeRoleChain struct {
-	Chain  []*AssumeRoleChainNode `json:"Chain,omitempty" xml:"Chain,omitempty" type:"Repeated"`
-	Policy *string                `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The authorization chains.
+	Chain []*AssumeRoleChainNode `json:"Chain,omitempty" xml:"Chain,omitempty" type:"Repeated"`
+	// The policy.
+	//
+	// example:
+	//
+	// test
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 }
 
 func (s AssumeRoleChain) String() string {

@@ -18,12 +18,24 @@ type iKdtreeOption interface {
 }
 
 type KdtreeOption struct {
+	// The compression level. Valid values: 0 to 10. A greater value specifies a higher compression ratio and ensures better detail effects.
+	//
+	// example:
+	//
+	// 1
 	CompressionLevel *int32 `json:"CompressionLevel,omitempty" xml:"CompressionLevel,omitempty"`
+	// The name of the library supported by a k-d tree. Set the value to draco. Default value: draco.
+	//
 	// example:
 	//
 	// draco
-	LibraryName      *string `json:"LibraryName,omitempty" xml:"LibraryName,omitempty"`
-	QuantizationBits *int32  `json:"QuantizationBits,omitempty" xml:"QuantizationBits,omitempty"`
+	LibraryName *string `json:"LibraryName,omitempty" xml:"LibraryName,omitempty"`
+	// The number of bits for quantization. Valid values: 0 to 31. A greater value ensures that more details are retained. A value of 0 specifies that vertex compression is not performed.
+	//
+	// example:
+	//
+	// 1
+	QuantizationBits *int32 `json:"QuantizationBits,omitempty" xml:"QuantizationBits,omitempty"`
 }
 
 func (s KdtreeOption) String() string {

@@ -16,10 +16,13 @@ type iCustomParams interface {
 }
 
 type CustomParams struct {
+	// The name of the parameter.
+	//
 	// example:
 	//
 	// Normalize
-	Name       *string     `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The properties.
 	Properties []*Property `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
 }
 

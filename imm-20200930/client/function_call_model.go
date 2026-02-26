@@ -16,8 +16,15 @@ type iFunctionCall interface {
 }
 
 type FunctionCall struct {
+	// The parameters detected by the large language model.
 	Arguments *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
+	// The function name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// search_file
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

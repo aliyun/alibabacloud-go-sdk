@@ -16,7 +16,17 @@ type iPointInt64 interface {
 }
 
 type PointInt64 struct {
+	// The distance from the X-coordinate of the vertex to the left edge. Unit: pixel.
+	//
+	// example:
+	//
+	// 10
 	X *int64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The distance from the Y-coordinate of the vertex to the top. Unit: pixel.
+	//
+	// example:
+	//
+	// 10
 	Y *int64 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 

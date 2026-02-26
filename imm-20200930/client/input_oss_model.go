@@ -18,10 +18,22 @@ type iInputOSS interface {
 }
 
 type InputOSS struct {
+	// The name of the OSS bucket.
+	//
 	// This parameter is required.
-	Bucket           *string   `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	//
+	// example:
+	//
+	// test-bucket
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The match expressions.
 	MatchExpressions []*string `json:"MatchExpressions,omitempty" xml:"MatchExpressions,omitempty" type:"Repeated"`
-	Prefix           *string   `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	// The object key prefix.
+	//
+	// example:
+	//
+	// test-object
+	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
 }
 
 func (s InputOSS) String() string {

@@ -24,26 +24,38 @@ type iResource interface {
 }
 
 type Resource struct {
+	// The number of CPU cores. Valid values: 4 to 96.
+	//
 	// example:
 	//
 	// 2
 	CPU *int64 `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// The Elastic Compute Service (ECS) instance.
+	//
 	// example:
 	//
 	// ecs.gn5i-c2g1.large
 	ECSInstance *string `json:"ECSInstance,omitempty" xml:"ECSInstance,omitempty"`
+	// The GPU.
+	//
 	// example:
 	//
 	// string	NVIDIA_P4
 	GPUModel *string `json:"GPUModel,omitempty" xml:"GPUModel,omitempty"`
+	// The number of GPUs.
+	//
 	// example:
 	//
 	// 1
 	GPUNum *int64 `json:"GPUNum,omitempty" xml:"GPUNum,omitempty"`
+	// The displayed name of the resource.
+	//
 	// example:
 	//
 	// string	ecs.gn5i-c2g1.large-2vCPU-8GB-1*NVIDIA_P4
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The RAM size. Unit: GB. Valid values: 30 to 736.
+	//
 	// example:
 	//
 	// 8

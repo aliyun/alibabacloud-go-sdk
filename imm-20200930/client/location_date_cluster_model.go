@@ -32,16 +32,74 @@ type iLocationDateCluster interface {
 }
 
 type LocationDateCluster struct {
-	Addresses                    []*Address             `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	CreateTime                   *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CustomId                     *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
-	CustomLabels                 map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	LocationDateClusterEndTime   *string                `json:"LocationDateClusterEndTime,omitempty" xml:"LocationDateClusterEndTime,omitempty"`
-	LocationDateClusterLevel     *string                `json:"LocationDateClusterLevel,omitempty" xml:"LocationDateClusterLevel,omitempty"`
-	LocationDateClusterStartTime *string                `json:"LocationDateClusterStartTime,omitempty" xml:"LocationDateClusterStartTime,omitempty"`
-	ObjectId                     *string                `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	Title                        *string                `json:"Title,omitempty" xml:"Title,omitempty"`
-	UpdateTime                   *string                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The addresses.
+	Addresses []*Address `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// The time when the spatiotemporal cluster was created.
+	//
+	// example:
+	//
+	// 2022-11-16T13:14:34.882523669+08:00
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The custom ID.
+	//
+	// example:
+	//
+	// user-01
+	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// The custom labels.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "User": "Jane"
+	//
+	// }
+	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// The end time of the spatiotemporal cluster.
+	//
+	// example:
+	//
+	// 2022-05-02T23:59:59.999999999+08:00
+	LocationDateClusterEndTime *string `json:"LocationDateClusterEndTime,omitempty" xml:"LocationDateClusterEndTime,omitempty"`
+	// The administrative level of the spatiotemporal cluster.
+	//
+	// Enumerated values:
+	//
+	// 	- country
+	//
+	// 	- province
+	//
+	// 	- city
+	//
+	// 	- district
+	//
+	// 	- township
+	//
+	// example:
+	//
+	// province
+	LocationDateClusterLevel *string `json:"LocationDateClusterLevel,omitempty" xml:"LocationDateClusterLevel,omitempty"`
+	// The start time of the spatiotemporal cluster.
+	//
+	// example:
+	//
+	// 2022-05-01T00:00:00+08:00
+	LocationDateClusterStartTime *string `json:"LocationDateClusterStartTime,omitempty" xml:"LocationDateClusterStartTime,omitempty"`
+	// The cluster ID.
+	//
+	// example:
+	//
+	// location-date-cluster-14f48cb3-079d-4595-80c4-5735284b****
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The custom title.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The time when the spatiotemporal cluster was updated.
+	//
+	// example:
+	//
+	// 2022-11-16T13:15:05.65746784+08:00
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s LocationDateCluster) String() string {

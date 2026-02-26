@@ -48,24 +48,116 @@ type iProject interface {
 }
 
 type Project struct {
-	CreateTime              *string        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DatasetCount            *int64         `json:"DatasetCount,omitempty" xml:"DatasetCount,omitempty"`
-	DatasetMaxBindCount     *int64         `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
-	DatasetMaxEntityCount   *int64         `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
-	DatasetMaxFileCount     *int64         `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
-	DatasetMaxRelationCount *int64         `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	DatasetMaxTotalFileSize *int64         `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
-	Description             *string        `json:"Description,omitempty" xml:"Description,omitempty"`
-	EngineConcurrency       *int64         `json:"EngineConcurrency,omitempty" xml:"EngineConcurrency,omitempty"`
-	FileCount               *int64         `json:"FileCount,omitempty" xml:"FileCount,omitempty"`
-	ProjectMaxDatasetCount  *int64         `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
-	ProjectName             *string        `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ProjectQueriesPerSecond *int64         `json:"ProjectQueriesPerSecond,omitempty" xml:"ProjectQueriesPerSecond,omitempty"`
-	ServiceRole             *string        `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
-	Tags                    []*ProjectTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TemplateId              *string        `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TotalFileSize           *int64         `json:"TotalFileSize,omitempty" xml:"TotalFileSize,omitempty"`
-	UpdateTime              *string        `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The timestamp when the project was created. The timestamp is in the RFC3339Nano format.
+	//
+	// example:
+	//
+	// 2021-06-29T14:50:13.011643661+08:00
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The current number of datasets in the project.
+	//
+	// example:
+	//
+	// 5
+	DatasetCount *int64 `json:"DatasetCount,omitempty" xml:"DatasetCount,omitempty"`
+	// The maximum number of bindings that a dataset can have. Valid values: 1 to 10. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
+	// The maximum number of metadata entities in a dataset. Default value: 10000000000.
+	//
+	// >  This parameter is reserved and does not actually apply a limit.
+	//
+	// example:
+	//
+	// 10000000000
+	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
+	// The maximum number of files in a dataset. Valid values: 1 to 100000000. Default value: 100000000.
+	//
+	// example:
+	//
+	// 100000000
+	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
+	// The maximum number of metadata relationships in a dataset. Default value: 100000000000.
+	//
+	// >  This parameter is reserved and does not actually apply a limit.
+	//
+	// example:
+	//
+	// 100000000000
+	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
+	// The maximum total file size for a dataset. If the total file size exceeds this limit, indexes can no longer be added. Default value: 90000000000000000. Unit: bytes.
+	//
+	// example:
+	//
+	// 90000000000000000
+	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
+	// The project description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The maximum number of tasks that the project can process per second. This corresponds to the maximum number of operators that can run in parallel in the project. Default value: 100.
+	//
+	// 	- If the number of synchronous tasks that run in parallel exceeds this limit, the task execution time will be extended until a timeout occurs.
+	//
+	// 	- If the number of asynchronous tasks that run in parallel exceeds this limit, the tasks will be queued. This causes delayed task completion. If a task remains in the queue for longer than the specified time limit (usually dozens of seconds), the task will fail.
+	//
+	// example:
+	//
+	// 100
+	EngineConcurrency *int64 `json:"EngineConcurrency,omitempty" xml:"EngineConcurrency,omitempty"`
+	// The current number of files in the project.
+	//
+	// example:
+	//
+	// 10
+	FileCount *int64 `json:"FileCount,omitempty" xml:"FileCount,omitempty"`
+	// The maximum number of datasets that a project can contain. Valid values: 1 to 1000000000. Default value: 1000000000.
+	//
+	// example:
+	//
+	// 1000000000
+	ProjectMaxDatasetCount *int64 `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
+	// The name of the project.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The maximum number of requests that can be processed by the project per second. This corresponds to the maximum number of API operations that can be called in the project per second. Default value: 100.
+	//
+	// example:
+	//
+	// 100
+	ProjectQueriesPerSecond *int64 `json:"ProjectQueriesPerSecond,omitempty" xml:"ProjectQueriesPerSecond,omitempty"`
+	// The service role.
+	//
+	// example:
+	//
+	// AliyunIMMDefaultRole
+	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	// The tag list.
+	Tags []*ProjectTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The ID of the workflow template.
+	//
+	// example:
+	//
+	// DefaultId
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The current total size of files in the project. Unit: bytes.
+	//
+	// example:
+	//
+	// 100000
+	TotalFileSize *int64 `json:"TotalFileSize,omitempty" xml:"TotalFileSize,omitempty"`
+	// The timestamp when the project was last modified. The timestamp is in the RFC3339Nano format.
+	//
+	// >  If a project is not modified after it is created, the timestamp when the project was created is the same as the timestamp when the project was last modified.
+	//
+	// example:
+	//
+	// 2021-06-29T14:50:13.011643661+08:00
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s Project) String() string {
@@ -252,7 +344,17 @@ func (s *Project) Validate() error {
 }
 
 type ProjectTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// TestKey
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// TestValue
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

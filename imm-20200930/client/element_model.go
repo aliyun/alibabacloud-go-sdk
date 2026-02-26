@@ -22,10 +22,27 @@ type iElement interface {
 }
 
 type Element struct {
+  // The element contents.
   ElementContents []*ElementContent `json:"ElementContents,omitempty" xml:"ElementContents,omitempty" type:"Repeated"`
+  // The relationships between the current element and other elements.
   ElementRelations []*ElementRelation `json:"ElementRelations,omitempty" xml:"ElementRelations,omitempty" type:"Repeated"`
+  // The element type.
+  // 
+  // example:
+  // 
+  // title; image; table; narrative-text
   ElementType *string `json:"ElementType,omitempty" xml:"ElementType,omitempty"`
+  // The unique ID of the element.
+  // 
+  // example:
+  // 
+  // id1
   ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+  // The similarity between the current file and its extracted semantics.
+  // 
+  // example:
+  // 
+  // 0.8
   SemanticSimilarity *float32 `json:"SemanticSimilarity,omitempty" xml:"SemanticSimilarity,omitempty"`
 }
 

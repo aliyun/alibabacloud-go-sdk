@@ -18,11 +18,12 @@ type iContextualMessage interface {
 }
 
 type ContextualMessage struct {
-	// example:
+	// The message content.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The files involved in the dialogue.
+	Files []*ContextualFile `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// The role in the dialogue.
 	//
-	// 你好
-	Content *string           `json:"Content,omitempty" xml:"Content,omitempty"`
-	Files   []*ContextualFile `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
 	// example:
 	//
 	// user

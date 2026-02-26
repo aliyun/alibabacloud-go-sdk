@@ -16,8 +16,14 @@ type iRegionType interface {
 }
 
 type RegionType struct {
+	// The name of the region.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s RegionType) String() string {

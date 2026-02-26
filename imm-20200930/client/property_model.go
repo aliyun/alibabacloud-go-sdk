@@ -20,18 +20,26 @@ type iProperty interface {
 }
 
 type Property struct {
+	// If you set the ValueType field to array, you must specify the type of the elements within the array. The enumerated values include float, integer, and string.
+	//
 	// example:
 	//
 	// float
 	ItemsType *string `json:"ItemsType,omitempty" xml:"ItemsType,omitempty"`
+	// The property name.
+	//
 	// example:
 	//
 	// channels
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value.
+	//
 	// example:
 	//
 	// [40, 80, 160, 320]
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The type of the property. Supported enumerated values: float, integer, string, and array.
+	//
 	// example:
 	//
 	// array

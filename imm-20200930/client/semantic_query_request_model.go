@@ -61,11 +61,28 @@ type SemanticQueryRequest struct {
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The content of the query that you input.
-	Query     *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	// The fields that you want to include in the response. Including only necessary metadata fields can help reduce the size of the response.
 	//
-	// If you do not specify this parameter or set the value to null, all existing metadata fields are returned.
+	// example:
+	//
+	// Scenery of Hangzhou in April 2021
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// > Either this parameter or the Query parameter must be specified. This parameter is valid only for image searches on datasets configured with a search-by-image workflow.
+	//
+	// >
+	//
+	// URI of the source data for retrieval.
+	//
+	// The URI must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the full path of the file that contains the file name extension.
+	//
+	// Contact us if you need to configure a workflow template.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-object
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// >  Either this parameter or the SourceURI parameter must be specified.
+	//
+	// The content of the query that you input.
 	WithFields []*string `json:"WithFields,omitempty" xml:"WithFields,omitempty" type:"Repeated"`
 }
 

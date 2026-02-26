@@ -26,13 +26,66 @@ type iCar interface {
 }
 
 type Car struct {
-	Boundary           *Boundary       `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
-	CarColor           *string         `json:"CarColor,omitempty" xml:"CarColor,omitempty"`
-	CarColorConfidence *float64        `json:"CarColorConfidence,omitempty" xml:"CarColorConfidence,omitempty"`
-	CarType            *string         `json:"CarType,omitempty" xml:"CarType,omitempty"`
-	CarTypeConfidence  *float64        `json:"CarTypeConfidence,omitempty" xml:"CarTypeConfidence,omitempty"`
-	Confidence         *float64        `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	LicensePlates      []*LicensePlate `json:"LicensePlates,omitempty" xml:"LicensePlates,omitempty" type:"Repeated"`
+	// The boundary information.
+	Boundary *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
+	// The vehicle color. Valid values
+	//
+	// 	- white
+	//
+	// 	- grey
+	//
+	// 	- yellow
+	//
+	// 	- red
+	//
+	// 	- green
+	//
+	// 	- blue
+	//
+	// 	- black
+	//
+	// 	- purple
+	//
+	// 	- brown
+	//
+	// example:
+	//
+	// white
+	CarColor *string `json:"CarColor,omitempty" xml:"CarColor,omitempty"`
+	// The confidence level of the vehicle color. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+	//
+	// example:
+	//
+	// 0.604
+	CarColorConfidence *float64 `json:"CarColorConfidence,omitempty" xml:"CarColorConfidence,omitempty"`
+	// The vehicle type. Valid values:
+	//
+	// 	- car
+	//
+	// 	- bus
+	//
+	// 	- truck
+	//
+	// 	- van
+	//
+	// example:
+	//
+	// van
+	CarType *string `json:"CarType,omitempty" xml:"CarType,omitempty"`
+	// The confidence level of the vehicle type. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+	//
+	// example:
+	//
+	// 0.516
+	CarTypeConfidence *float64 `json:"CarTypeConfidence,omitempty" xml:"CarTypeConfidence,omitempty"`
+	// The confidence level of the vehicle detection result. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+	//
+	// example:
+	//
+	// 0.999
+	Confidence *float64 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The license plates.
+	LicensePlates []*LicensePlate `json:"LicensePlates,omitempty" xml:"LicensePlates,omitempty" type:"Repeated"`
 }
 
 func (s Car) String() string {

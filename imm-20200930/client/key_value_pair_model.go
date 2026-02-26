@@ -16,7 +16,17 @@ type iKeyValuePair interface {
 }
 
 type KeyValuePair struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key.
+	//
+	// example:
+	//
+	// bucket
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value.
+	//
+	// example:
+	//
+	// testbucket
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

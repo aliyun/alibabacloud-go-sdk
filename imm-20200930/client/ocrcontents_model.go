@@ -20,10 +20,22 @@ type iOCRContents interface {
 }
 
 type OCRContents struct {
-	Boundary   *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
-	Confidence *float32  `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Contents   *string   `json:"Contents,omitempty" xml:"Contents,omitempty"`
-	Language   *string   `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The boundary information.
+	Boundary *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
+	// The confidence level of the content. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+	//
+	// example:
+	//
+	// 0.8254936695098877
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The content.
+	Contents *string `json:"Contents,omitempty" xml:"Contents,omitempty"`
+	// The BCP 47 language code. This parameter is not supported in the current version.
+	//
+	// example:
+	//
+	// zh-hans
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 }
 
 func (s OCRContents) String() string {

@@ -36,18 +36,74 @@ type iSubtitleStream interface {
 }
 
 type SubtitleStream struct {
-	Bitrate        *int64   `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	CodecLongName  *string  `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	CodecName      *string  `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	CodecTag       *string  `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	CodecTagString *string  `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	Content        *string  `json:"Content,omitempty" xml:"Content,omitempty"`
-	Duration       *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Height         *int64   `json:"Height,omitempty" xml:"Height,omitempty"`
-	Index          *int64   `json:"Index,omitempty" xml:"Index,omitempty"`
-	Language       *string  `json:"Language,omitempty" xml:"Language,omitempty"`
-	StartTime      *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Width          *int64   `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The bitrate. Unit: bit/s.
+	//
+	// example:
+	//
+	// 74
+	Bitrate *int64 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The full name of the codec.
+	//
+	// example:
+	//
+	// MOV text
+	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	// The abbreviated name of the codec.
+	//
+	// example:
+	//
+	// mov_text
+	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	// The tag of the codec.
+	//
+	// example:
+	//
+	// 0x67337874
+	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	// The description of the codec tag.
+	//
+	// example:
+	//
+	// tx3g
+	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	// The subtitle content.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The duration of the subtitle stream in seconds.
+	//
+	// example:
+	//
+	// 71.378
+	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The height of the subtitles. Unit: pixels.
+	//
+	// example:
+	//
+	// 30
+	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The index number of the subtitle stream.
+	//
+	// example:
+	//
+	// 2
+	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The subtitle language in the BCP 47 standard.
+	//
+	// example:
+	//
+	// en
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The start time of the subtitle stream in seconds.
+	//
+	// example:
+	//
+	// 0.000000
+	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The width of the subtitles. Unit: pixels.
+	//
+	// example:
+	//
+	// 600
+	Width *int64 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s SubtitleStream) String() string {

@@ -26,13 +26,24 @@ type iAddress interface {
 }
 
 type Address struct {
+	// The full address.
 	AddressLine *string `json:"AddressLine,omitempty" xml:"AddressLine,omitempty"`
-	City        *string `json:"City,omitempty" xml:"City,omitempty"`
-	Country     *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	District    *string `json:"District,omitempty" xml:"District,omitempty"`
-	Language    *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	Province    *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	Township    *string `json:"Township,omitempty" xml:"Township,omitempty"`
+	// The city.
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// The country or region.
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// The district.
+	District *string `json:"District,omitempty" xml:"District,omitempty"`
+	// The BCP 47 language code.
+	//
+	// example:
+	//
+	// zh-hans
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The province.
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// The street.
+	Township *string `json:"Township,omitempty" xml:"Township,omitempty"`
 }
 
 func (s Address) String() string {

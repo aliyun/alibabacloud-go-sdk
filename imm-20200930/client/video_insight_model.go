@@ -16,9 +16,15 @@ type iVideoInsight interface {
 }
 
 type VideoInsight struct {
+	// Video summary.
+	//
 	// if can be null:
 	// true
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	// The description of the video file.
+	//
+	// >  Not supported.
+	//
 	// if can be null:
 	// true
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`

@@ -64,32 +64,190 @@ type iFigure interface {
 }
 
 type Figure struct {
-	Age                     *int64    `json:"Age,omitempty" xml:"Age,omitempty"`
-	AgeSD                   *float32  `json:"AgeSD,omitempty" xml:"AgeSD,omitempty"`
-	Attractive              *float32  `json:"Attractive,omitempty" xml:"Attractive,omitempty"`
-	Beard                   *string   `json:"Beard,omitempty" xml:"Beard,omitempty"`
-	BeardConfidence         *float32  `json:"BeardConfidence,omitempty" xml:"BeardConfidence,omitempty"`
-	Boundary                *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
-	Emotion                 *string   `json:"Emotion,omitempty" xml:"Emotion,omitempty"`
-	EmotionConfidence       *float32  `json:"EmotionConfidence,omitempty" xml:"EmotionConfidence,omitempty"`
-	FaceQuality             *float32  `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty"`
-	FigureClusterConfidence *float32  `json:"FigureClusterConfidence,omitempty" xml:"FigureClusterConfidence,omitempty"`
-	FigureClusterId         *string   `json:"FigureClusterId,omitempty" xml:"FigureClusterId,omitempty"`
-	FigureConfidence        *float32  `json:"FigureConfidence,omitempty" xml:"FigureConfidence,omitempty"`
-	FigureId                *string   `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
-	FigureType              *string   `json:"FigureType,omitempty" xml:"FigureType,omitempty"`
-	Gender                  *string   `json:"Gender,omitempty" xml:"Gender,omitempty"`
-	GenderConfidence        *float32  `json:"GenderConfidence,omitempty" xml:"GenderConfidence,omitempty"`
-	Glasses                 *string   `json:"Glasses,omitempty" xml:"Glasses,omitempty"`
-	GlassesConfidence       *float32  `json:"GlassesConfidence,omitempty" xml:"GlassesConfidence,omitempty"`
-	Hat                     *string   `json:"Hat,omitempty" xml:"Hat,omitempty"`
-	HatConfidence           *float32  `json:"HatConfidence,omitempty" xml:"HatConfidence,omitempty"`
-	HeadPose                *HeadPose `json:"HeadPose,omitempty" xml:"HeadPose,omitempty"`
-	Mask                    *string   `json:"Mask,omitempty" xml:"Mask,omitempty"`
-	MaskConfidence          *float32  `json:"MaskConfidence,omitempty" xml:"MaskConfidence,omitempty"`
-	Mouth                   *string   `json:"Mouth,omitempty" xml:"Mouth,omitempty"`
-	MouthConfidence         *float32  `json:"MouthConfidence,omitempty" xml:"MouthConfidence,omitempty"`
-	Sharpness               *float32  `json:"Sharpness,omitempty" xml:"Sharpness,omitempty"`
+	// The age.
+	//
+	// example:
+	//
+	// 29
+	Age *int64 `json:"Age,omitempty" xml:"Age,omitempty"`
+	// The standard deviation of the age.
+	//
+	// example:
+	//
+	// 5
+	AgeSD *float32 `json:"AgeSD,omitempty" xml:"AgeSD,omitempty"`
+	// The face attractiveness. A high score indicates strong attractiveness. Valid values: 0 to 1.
+	//
+	// example:
+	//
+	// 0.96
+	Attractive *float32 `json:"Attractive,omitempty" xml:"Attractive,omitempty"`
+	// Specifies whether the figure has a beard. Valid values:
+	//
+	// 	- beard
+	//
+	// 	- none
+	//
+	// example:
+	//
+	// none
+	Beard *string `json:"Beard,omitempty" xml:"Beard,omitempty"`
+	// The confidence level of detecting whether the figure has a beard. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+	//
+	// example:
+	//
+	// 1
+	BeardConfidence *float32 `json:"BeardConfidence,omitempty" xml:"BeardConfidence,omitempty"`
+	// The face boundary information.
+	Boundary *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
+	// The emotion. Valid values:
+	//
+	// 	- happiness
+	//
+	// 	- none
+	//
+	// example:
+	//
+	// happiness
+	Emotion *string `json:"Emotion,omitempty" xml:"Emotion,omitempty"`
+	// The confidence level of the emotion. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+	//
+	// example:
+	//
+	// 0.707845687866210
+	EmotionConfidence *float32 `json:"EmotionConfidence,omitempty" xml:"EmotionConfidence,omitempty"`
+	// The face quality.
+	//
+	// example:
+	//
+	// 0.960875928401947
+	FaceQuality *float32 `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty"`
+	// The confidence level of the face clustering task. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+	//
+	// example:
+	//
+	// 1
+	FigureClusterConfidence *float32 `json:"FigureClusterConfidence,omitempty" xml:"FigureClusterConfidence,omitempty"`
+	// The ID of the face clustering task. The following IDs of special face clustering tasks are reserved:
+	//
+	// 	- figure-cluster-id-independent: the ID of a face clustering task in which faces do not belong to any face group. After images are added to a dataset, the faces may be categorized into different face groups when you perform face clustering.
+	//
+	// 	- figure-cluster-id-unavailable: the ID of a face clustering task in which face clustering is not performed after images are added to a dataset.
+	//
+	// example:
+	//
+	// Cluster-dbe72fec-b84c-4ab6-885b-3678e64****
+	FigureClusterId *string `json:"FigureClusterId,omitempty" xml:"FigureClusterId,omitempty"`
+	// The confidence level of the figure. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+	//
+	// example:
+	//
+	// 1
+	FigureConfidence *float32 `json:"FigureConfidence,omitempty" xml:"FigureConfidence,omitempty"`
+	// The figure ID.
+	//
+	// example:
+	//
+	// 868a9e74-cde5-4c7a-9013-28bb984****
+	FigureId *string `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
+	// The figure type.
+	//
+	// Set this parameter to face.
+	//
+	// example:
+	//
+	// face
+	FigureType *string `json:"FigureType,omitempty" xml:"FigureType,omitempty"`
+	// The gender. Valid values:
+	//
+	// 	- female
+	//
+	// 	- male
+	//
+	// example:
+	//
+	// female
+	Gender *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	// The confidence level of the gender. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+	//
+	// example:
+	//
+	// 1
+	GenderConfidence *float32 `json:"GenderConfidence,omitempty" xml:"GenderConfidence,omitempty"`
+	// Specifies whether the figure wears glasses. Valid values:
+	//
+	// 	- glasses
+	//
+	// 	- sunglasses
+	//
+	// 	- none
+	//
+	// example:
+	//
+	// none
+	Glasses *string `json:"Glasses,omitempty" xml:"Glasses,omitempty"`
+	// The confidence level of detecting whether the figure wears glasses. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+	//
+	// example:
+	//
+	// 0.8
+	GlassesConfidence *float32 `json:"GlassesConfidence,omitempty" xml:"GlassesConfidence,omitempty"`
+	// Specifies whether the figure wears a hat. Valid values:
+	//
+	// 	- hat
+	//
+	// 	- none
+	//
+	// example:
+	//
+	// none
+	Hat *string `json:"Hat,omitempty" xml:"Hat,omitempty"`
+	// The confidence level of detecting whether the figure wears a hat.
+	//
+	// example:
+	//
+	// 1
+	HatConfidence *float32 `json:"HatConfidence,omitempty" xml:"HatConfidence,omitempty"`
+	// The head orientation.
+	HeadPose *HeadPose `json:"HeadPose,omitempty" xml:"HeadPose,omitempty"`
+	// Specifies whether the figure wears a mask. Valid values:
+	//
+	// 	- mask
+	//
+	// 	- none
+	//
+	// example:
+	//
+	// none
+	Mask *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	// The confidence level of detecting whether the figure wears a mask. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+	//
+	// example:
+	//
+	// 1
+	MaskConfidence *float32 `json:"MaskConfidence,omitempty" xml:"MaskConfidence,omitempty"`
+	// Specifies whether the mouth is open. Valid values:
+	//
+	// 	- open
+	//
+	// 	- close
+	//
+	// example:
+	//
+	// close
+	Mouth *string `json:"Mouth,omitempty" xml:"Mouth,omitempty"`
+	// The confidence level of detecting whether the mouth is open. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+	//
+	// example:
+	//
+	// 1
+	MouthConfidence *float32 `json:"MouthConfidence,omitempty" xml:"MouthConfidence,omitempty"`
+	// The clarity.
+	//
+	// example:
+	//
+	// 0.7
+	Sharpness *float32 `json:"Sharpness,omitempty" xml:"Sharpness,omitempty"`
 }
 
 func (s Figure) String() string {

@@ -180,92 +180,521 @@ type iFile interface {
 }
 
 type File struct {
-	AccessControlAllowOrigin   *string                `json:"AccessControlAllowOrigin,omitempty" xml:"AccessControlAllowOrigin,omitempty"`
-	AccessControlRequestMethod *string                `json:"AccessControlRequestMethod,omitempty" xml:"AccessControlRequestMethod,omitempty"`
-	Addresses                  []*Address             `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	Album                      *string                `json:"Album,omitempty" xml:"Album,omitempty"`
-	AlbumArtist                *string                `json:"AlbumArtist,omitempty" xml:"AlbumArtist,omitempty"`
-	Artist                     *string                `json:"Artist,omitempty" xml:"Artist,omitempty"`
-	AudioCovers                []*Image               `json:"AudioCovers,omitempty" xml:"AudioCovers,omitempty" type:"Repeated"`
-	AudioStreams               []*AudioStream         `json:"AudioStreams,omitempty" xml:"AudioStreams,omitempty" type:"Repeated"`
-	Bitrate                    *int64                 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	CacheControl               *string                `json:"CacheControl,omitempty" xml:"CacheControl,omitempty"`
-	Composer                   *string                `json:"Composer,omitempty" xml:"Composer,omitempty"`
-	ContentDisposition         *string                `json:"ContentDisposition,omitempty" xml:"ContentDisposition,omitempty"`
-	ContentEncoding            *string                `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	ContentLanguage            *string                `json:"ContentLanguage,omitempty" xml:"ContentLanguage,omitempty"`
-	ContentMd5                 *string                `json:"ContentMd5,omitempty" xml:"ContentMd5,omitempty"`
-	ContentType                *string                `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	CreateTime                 *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CroppingSuggestions        []*CroppingSuggestion  `json:"CroppingSuggestions,omitempty" xml:"CroppingSuggestions,omitempty" type:"Repeated"`
-	CustomId                   *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
-	CustomLabels               map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	DatasetName                *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Duration                   *float64               `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	ETag                       *string                `json:"ETag,omitempty" xml:"ETag,omitempty"`
-	EXIF                       *string                `json:"EXIF,omitempty" xml:"EXIF,omitempty"`
-	Elements                   []*Element             `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
-	FigureCount                *int64                 `json:"FigureCount,omitempty" xml:"FigureCount,omitempty"`
-	Figures                    []*Figure              `json:"Figures,omitempty" xml:"Figures,omitempty" type:"Repeated"`
-	FileAccessTime             *string                `json:"FileAccessTime,omitempty" xml:"FileAccessTime,omitempty"`
-	FileCreateTime             *string                `json:"FileCreateTime,omitempty" xml:"FileCreateTime,omitempty"`
-	FileHash                   *string                `json:"FileHash,omitempty" xml:"FileHash,omitempty"`
-	FileModifiedTime           *string                `json:"FileModifiedTime,omitempty" xml:"FileModifiedTime,omitempty"`
-	Filename                   *string                `json:"Filename,omitempty" xml:"Filename,omitempty"`
-	FormatLongName             *string                `json:"FormatLongName,omitempty" xml:"FormatLongName,omitempty"`
-	FormatName                 *string                `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	ImageHeight                *int64                 `json:"ImageHeight,omitempty" xml:"ImageHeight,omitempty"`
-	ImageScore                 *ImageScore            `json:"ImageScore,omitempty" xml:"ImageScore,omitempty"`
-	ImageWidth                 *int64                 `json:"ImageWidth,omitempty" xml:"ImageWidth,omitempty"`
+	// The origin allowed in cross-origin requests.
+	//
+	// example:
+	//
+	// https://aliyundoc.com
+	AccessControlAllowOrigin *string `json:"AccessControlAllowOrigin,omitempty" xml:"AccessControlAllowOrigin,omitempty"`
+	// The method to be used in the actual cross-origin request.
+	//
+	// example:
+	//
+	// PUT
+	AccessControlRequestMethod *string `json:"AccessControlRequestMethod,omitempty" xml:"AccessControlRequestMethod,omitempty"`
+	// The addresses.
+	Addresses []*Address `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// The album.
+	//
+	// example:
+	//
+	// FirstAlbum
+	Album *string `json:"Album,omitempty" xml:"Album,omitempty"`
+	// The singer.
+	//
+	// example:
+	//
+	// Jane
+	AlbumArtist *string `json:"AlbumArtist,omitempty" xml:"AlbumArtist,omitempty"`
+	// The artist.
+	//
+	// example:
+	//
+	// Jane
+	Artist *string `json:"Artist,omitempty" xml:"Artist,omitempty"`
+	// The audio covers.
+	AudioCovers []*Image `json:"AudioCovers,omitempty" xml:"AudioCovers,omitempty" type:"Repeated"`
+	// The list of audio streams.
+	AudioStreams []*AudioStream `json:"AudioStreams,omitempty" xml:"AudioStreams,omitempty" type:"Repeated"`
+	// The bitrate. Unit: bit/s.
+	//
+	// example:
+	//
+	// 13091201
+	Bitrate *int64 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The caching behavior of the web page when the object is downloaded.
+	//
+	// This parameter corresponds to the Cache-Control HTTP header of the OSS object. For more information, see [Manage object metadata](https://help.aliyun.com/document_detail/31859.html).
+	//
+	// example:
+	//
+	// no-cache
+	CacheControl *string `json:"CacheControl,omitempty" xml:"CacheControl,omitempty"`
+	// The composer.
+	//
+	// example:
+	//
+	// Jane
+	Composer *string `json:"Composer,omitempty" xml:"Composer,omitempty"`
+	// The name of the object during the download.
+	//
+	// This parameter corresponds to the Content-Disposition HTTP header of the OSS object. For more information, see [Manage object metadata](https://help.aliyun.com/document_detail/31859.html).
+	//
+	// example:
+	//
+	// attachment; filename =test.jpg
+	ContentDisposition *string `json:"ContentDisposition,omitempty" xml:"ContentDisposition,omitempty"`
+	// The content encoding format of the object when the object is downloaded.
+	//
+	// This parameter corresponds to the Content-Encoding HTTP header of the OSS object. For more information, see [Manage object metadata](https://help.aliyun.com/document_detail/31859.html).
+	//
+	// example:
+	//
+	// UTF-8
+	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
+	// The language of the object content.
+	//
+	// This parameter corresponds to the Content-Language HTTP header of the OSS object. For more information, see [Manage object metadata](https://help.aliyun.com/document_detail/31859.html).
+	//
+	// example:
+	//
+	// zh-CN
+	ContentLanguage *string `json:"ContentLanguage,omitempty" xml:"ContentLanguage,omitempty"`
+	// The MD5 value.
+	//
+	// example:
+	//
+	// HZwoCnxPZ/fvhz4oRJ2+Fw==
+	ContentMd5 *string `json:"ContentMd5,omitempty" xml:"ContentMd5,omitempty"`
+	// The Multipurpose Internet Mail Extensions (MIME) type of the file.
+	//
+	// example:
+	//
+	// image/jpeg
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// The RFC3339Nano timestamp when the metadata was created.
+	//
+	// example:
+	//
+	// 2021-06-29T14:50:13.011643661+08:00
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The cropping suggestions for the image.
+	//
+	// > Not supported.
+	CroppingSuggestions []*CroppingSuggestion `json:"CroppingSuggestions,omitempty" xml:"CroppingSuggestions,omitempty" type:"Repeated"`
+	// The custom ID of the file. When the cluster is indexed into the dataset, the custom ID is stored as the data attribute. You can map the custom ID to other data in your business system. Configure this parameter based on your business requirements. For example, you can associate a URI with an ID in your system. We recommend that you set this parameter to a globally unique value.
+	//
+	// example:
+	//
+	// member-image-id-0001
+	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// The custom labels of the file. This parameter is optional. The parameter stores custom key-value labels, which can be used to filter data.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "MemberName": "Tim",
+	//
+	//       "Enabled": "True",
+	//
+	//       "ItemCount": "10"
+	//
+	// }
+	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The total duration of the video. Unit: seconds.
+	//
+	// example:
+	//
+	// 15.263000
+	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The ETag of the object. ETags are used to identify the content of objects.
+	//
+	// example:
+	//
+	// "1D9C280A7C4F67F7EF873E28449****"
+	ETag *string `json:"ETag,omitempty" xml:"ETag,omitempty"`
+	// The original EXIF information about the image. The EXIF information is stored in the serialized JSON format. For more information, see [Query image information](https://help.aliyun.com/document_detail/44975.html).
+	//
+	// example:
+	//
+	// {"Compression":{"value":"6"},"DateTime":{"value":"2020:08:19 17:11:11"}}
+	EXIF *string `json:"EXIF,omitempty" xml:"EXIF,omitempty"`
+	// The document elements that match the current query content when you call the SemanticQuery operation for semantic search.
+	Elements []*Element `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
+	// The number of persons.
+	//
+	// example:
+	//
+	// 10
+	FigureCount *int64 `json:"FigureCount,omitempty" xml:"FigureCount,omitempty"`
+	// The list of persons. The persons are detected via AI models.
+	Figures []*Figure `json:"Figures,omitempty" xml:"Figures,omitempty" type:"Repeated"`
+	// The RFC3339Nano timestamp when the file was accessed.
+	//
+	// example:
+	//
+	// 2021-06-29T14:50:13.011643661+08:00
+	FileAccessTime *string `json:"FileAccessTime,omitempty" xml:"FileAccessTime,omitempty"`
+	// The RFC3339Nano timestamp when the file was created.
+	//
+	// example:
+	//
+	// 2021-06-29T14:50:13.011643661+08:00
+	FileCreateTime *string `json:"FileCreateTime,omitempty" xml:"FileCreateTime,omitempty"`
+	// The hash value of the file.
+	//
+	// example:
+	//
+	// 1d9c280a7c4f67f7ef873e28449dbe17
+	FileHash *string `json:"FileHash,omitempty" xml:"FileHash,omitempty"`
+	// The RFC3339Nano timestamp when the file was last modified.
+	//
+	// example:
+	//
+	// 2021-06-29T14:50:13.011643661+08:00
+	FileModifiedTime *string `json:"FileModifiedTime,omitempty" xml:"FileModifiedTime,omitempty"`
+	// The name of the object. For an OSS object, the value of this parameter is the object name.
+	//
+	// example:
+	//
+	// sampleobject.jpg
+	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	// The full name of the media format.
+	//
+	// example:
+	//
+	// QuickTime / MOV
+	FormatLongName *string `json:"FormatLongName,omitempty" xml:"FormatLongName,omitempty"`
+	// The name of the media format.
+	//
+	// example:
+	//
+	// mov
+	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// The height of the image. Unit: pixels.
+	//
+	// example:
+	//
+	// 500
+	ImageHeight *int64 `json:"ImageHeight,omitempty" xml:"ImageHeight,omitempty"`
+	// The score of the image. The score is calculated by using AI models.
+	ImageScore *ImageScore `json:"ImageScore,omitempty" xml:"ImageScore,omitempty"`
+	// The width of the image. Unit: pixels.
+	//
+	// example:
+	//
+	// 270
+	ImageWidth *int64 `json:"ImageWidth,omitempty" xml:"ImageWidth,omitempty"`
+	// Summary and description of the file.
+	//
+	// > Not supported.
+	//
 	// if can be null:
 	// true
-	Insights                              *Insights              `json:"Insights,omitempty" xml:"Insights,omitempty"`
-	Labels                                []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Language                              *string                `json:"Language,omitempty" xml:"Language,omitempty"`
-	LatLong                               *string                `json:"LatLong,omitempty" xml:"LatLong,omitempty"`
-	MediaType                             *string                `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	OCRContents                           []*OCRContents         `json:"OCRContents,omitempty" xml:"OCRContents,omitempty" type:"Repeated"`
-	OCRTexts                              *string                `json:"OCRTexts,omitempty" xml:"OCRTexts,omitempty"`
-	OSSCRC64                              *string                `json:"OSSCRC64,omitempty" xml:"OSSCRC64,omitempty"`
-	OSSDeleteMarker                       *string                `json:"OSSDeleteMarker,omitempty" xml:"OSSDeleteMarker,omitempty"`
-	OSSExpiration                         *string                `json:"OSSExpiration,omitempty" xml:"OSSExpiration,omitempty"`
-	OSSObjectType                         *string                `json:"OSSObjectType,omitempty" xml:"OSSObjectType,omitempty"`
-	OSSStorageClass                       *string                `json:"OSSStorageClass,omitempty" xml:"OSSStorageClass,omitempty"`
-	OSSTagging                            map[string]interface{} `json:"OSSTagging,omitempty" xml:"OSSTagging,omitempty"`
-	OSSTaggingCount                       *int64                 `json:"OSSTaggingCount,omitempty" xml:"OSSTaggingCount,omitempty"`
-	OSSURI                                *string                `json:"OSSURI,omitempty" xml:"OSSURI,omitempty"`
-	OSSUserMeta                           map[string]interface{} `json:"OSSUserMeta,omitempty" xml:"OSSUserMeta,omitempty"`
-	OSSVersionId                          *string                `json:"OSSVersionId,omitempty" xml:"OSSVersionId,omitempty"`
-	ObjectACL                             *string                `json:"ObjectACL,omitempty" xml:"ObjectACL,omitempty"`
-	ObjectId                              *string                `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	ObjectStatus                          *string                `json:"ObjectStatus,omitempty" xml:"ObjectStatus,omitempty"`
-	ObjectType                            *string                `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	Orientation                           *int64                 `json:"Orientation,omitempty" xml:"Orientation,omitempty"`
-	OwnerId                               *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageCount                             *int64                 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
-	Performer                             *string                `json:"Performer,omitempty" xml:"Performer,omitempty"`
-	ProduceTime                           *string                `json:"ProduceTime,omitempty" xml:"ProduceTime,omitempty"`
-	ProgramCount                          *int64                 `json:"ProgramCount,omitempty" xml:"ProgramCount,omitempty"`
-	ProjectName                           *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Reason                                *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	SceneElements                         []*SceneElement        `json:"SceneElements,omitempty" xml:"SceneElements,omitempty" type:"Repeated"`
-	SemanticTypes                         []*string              `json:"SemanticTypes,omitempty" xml:"SemanticTypes,omitempty" type:"Repeated"`
-	ServerSideDataEncryption              *string                `json:"ServerSideDataEncryption,omitempty" xml:"ServerSideDataEncryption,omitempty"`
-	ServerSideEncryption                  *string                `json:"ServerSideEncryption,omitempty" xml:"ServerSideEncryption,omitempty"`
-	ServerSideEncryptionCustomerAlgorithm *string                `json:"ServerSideEncryptionCustomerAlgorithm,omitempty" xml:"ServerSideEncryptionCustomerAlgorithm,omitempty"`
-	ServerSideEncryptionKeyId             *string                `json:"ServerSideEncryptionKeyId,omitempty" xml:"ServerSideEncryptionKeyId,omitempty"`
-	Size                                  *int64                 `json:"Size,omitempty" xml:"Size,omitempty"`
-	StartTime                             *float64               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StreamCount                           *int64                 `json:"StreamCount,omitempty" xml:"StreamCount,omitempty"`
-	Subtitles                             []*SubtitleStream      `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
-	Timezone                              *string                `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	Title                                 *string                `json:"Title,omitempty" xml:"Title,omitempty"`
-	TravelClusterId                       *string                `json:"TravelClusterId,omitempty" xml:"TravelClusterId,omitempty"`
-	URI                                   *string                `json:"URI,omitempty" xml:"URI,omitempty"`
-	UpdateTime                            *string                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	VideoHeight                           *int64                 `json:"VideoHeight,omitempty" xml:"VideoHeight,omitempty"`
-	VideoStreams                          []*VideoStream         `json:"VideoStreams,omitempty" xml:"VideoStreams,omitempty" type:"Repeated"`
-	VideoWidth                            *int64                 `json:"VideoWidth,omitempty" xml:"VideoWidth,omitempty"`
+	Insights *Insights `json:"Insights,omitempty" xml:"Insights,omitempty"`
+	// The labels of the file. The labels are detected via AI models.
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The language specified by using a BCP 47 language tag.
+	//
+	// example:
+	//
+	// eng
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The latitude and longitude.
+	//
+	// example:
+	//
+	// 30.134390,120.074997
+	LatLong *string `json:"LatLong,omitempty" xml:"LatLong,omitempty"`
+	// The media type of the file.
+	//
+	// Valid values:
+	//
+	// 	- image
+	//
+	// 	- other
+	//
+	// 	- document
+	//
+	// 	- archive
+	//
+	// 	- audio
+	//
+	// 	- video
+	//
+	// example:
+	//
+	// image
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The Optical Character Recognition (OCR) results.
+	//
+	// > Not supported.
+	OCRContents []*OCRContents `json:"OCRContents,omitempty" xml:"OCRContents,omitempty" type:"Repeated"`
+	// The text detected in the image.
+	//
+	// example:
+	//
+	// Alibaba Cloud IMM
+	OCRTexts *string `json:"OCRTexts,omitempty" xml:"OCRTexts,omitempty"`
+	// The CRC64 value.
+	//
+	// example:
+	//
+	// 559890638950338001
+	OSSCRC64 *string `json:"OSSCRC64,omitempty" xml:"OSSCRC64,omitempty"`
+	// The delete marker of the object.
+	//
+	// example:
+	//
+	// CAEQMhiBgIDXiaaB0BYiIGQzYmRkZGUxMTM1ZDRjOTZhNjk4YjRjMTAyZjhl****
+	OSSDeleteMarker *string `json:"OSSDeleteMarker,omitempty" xml:"OSSDeleteMarker,omitempty"`
+	// The expiration time of the OSS object.
+	//
+	// This parameter corresponds to the Expires HTTP header of the OSS object. For more information, see [Manage object metadata](https://help.aliyun.com/document_detail/31859.html).
+	//
+	// example:
+	//
+	// 2120-01-01T12:00:00.000Z
+	OSSExpiration *string `json:"OSSExpiration,omitempty" xml:"OSSExpiration,omitempty"`
+	// The type of the OSS object. Set the value to `Normal`.
+	//
+	// example:
+	//
+	// Normal
+	OSSObjectType *string `json:"OSSObjectType,omitempty" xml:"OSSObjectType,omitempty"`
+	// The storage class of the OSS bucket.
+	//
+	// example:
+	//
+	// Standard
+	OSSStorageClass *string `json:"OSSStorageClass,omitempty" xml:"OSSStorageClass,omitempty"`
+	// The tag of the object.
+	//
+	// For more information, see [Add tags to an object](https://help.aliyun.com/document_detail/106678.html).
+	//
+	// example:
+	//
+	// {"key": "val"}
+	OSSTagging map[string]interface{} `json:"OSSTagging,omitempty" xml:"OSSTagging,omitempty"`
+	// The number of OSS object tags.
+	//
+	// This parameter is available only if tags are added to the corresponding OSS object. For more information, see [Add tags to an object](https://help.aliyun.com/document_detail/106678.html).
+	//
+	// example:
+	//
+	// 2
+	OSSTaggingCount *int64 `json:"OSSTaggingCount,omitempty" xml:"OSSTaggingCount,omitempty"`
+	// The URI of the OSS object. This parameter is available only if the value of the URI parameter is the URI of a file in Photo and Drive Service.
+	//
+	// example:
+	//
+	// oss://examplebucket/sampleobject.jpg
+	OSSURI *string `json:"OSSURI,omitempty" xml:"OSSURI,omitempty"`
+	// The user metadata of the OSS object.
+	//
+	// This parameter is available only if user metadata is configured for the OSS object. For more information, see [Manage object metadata](https://help.aliyun.com/document_detail/31859.html).
+	//
+	// example:
+	//
+	// {"key": "val"}
+	OSSUserMeta map[string]interface{} `json:"OSSUserMeta,omitempty" xml:"OSSUserMeta,omitempty"`
+	// The version of the object.
+	//
+	// This parameter is available only if versioning is enabled for the bucket. For more information, see [Overview](https://help.aliyun.com/document_detail/109695.html).
+	//
+	// example:
+	//
+	// CAEQNhiBgMDJgZCA0BYiIDc4MGZjZGI2OTBjOTRmNTE5NmU5NmFhZjhjYmY0****
+	OSSVersionId *string `json:"OSSVersionId,omitempty" xml:"OSSVersionId,omitempty"`
+	// The access control list (ACL) of the OSS object.
+	//
+	// example:
+	//
+	// default
+	ObjectACL *string `json:"ObjectACL,omitempty" xml:"ObjectACL,omitempty"`
+	// The unique ID of the object.
+	//
+	// example:
+	//
+	// 75d5de2c50754e3dadd5c35dbca5f9949369e37eb342a73821f690c94c36c7f7
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The status of the object.
+	//
+	// example:
+	//
+	// Indexed
+	ObjectStatus *string `json:"ObjectStatus,omitempty" xml:"ObjectStatus,omitempty"`
+	// The type of the object. Set the value to **file**.
+	//
+	// example:
+	//
+	// file
+	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// The image rotation angle. You can obtain the value from the exchangeable image file format (EXIF).
+	//
+	// If the EXIF metadata does not contain the image rotation angle, this parameter is not included in the response.
+	//
+	// example:
+	//
+	// 0
+	Orientation *int64 `json:"Orientation,omitempty" xml:"Orientation,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 102321002467****
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number of pages.
+	//
+	// > Not supported.
+	//
+	// example:
+	//
+	// 5
+	PageCount *int64 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	// The performer.
+	//
+	// example:
+	//
+	// Jane
+	Performer *string `json:"Performer,omitempty" xml:"Performer,omitempty"`
+	// The time when the image was taken.
+	//
+	// example:
+	//
+	// 2021-06-29T14:50:13.011643661+08:00
+	ProduceTime *string `json:"ProduceTime,omitempty" xml:"ProduceTime,omitempty"`
+	// The number of programs in the media container.
+	//
+	// example:
+	//
+	// 1
+	ProgramCount *int64 `json:"ProgramCount,omitempty" xml:"ProgramCount,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The reason why the file failed to run the index.
+	//
+	// example:
+	//
+	// [InternalError] The request has been failed due to some unknown error. status: 500, requestId: CC5ACFBD-BB7A-496D-A9D6-****
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The elements in the video segment, which are scene elements that you can extract from the video by using an AI model.
+	SceneElements []*SceneElement `json:"SceneElements,omitempty" xml:"SceneElements,omitempty" type:"Repeated"`
+	// The reasons for which the current file is included in the search results when you call the SemanticQuery operation for semantic search.
+	SemanticTypes []*string `json:"SemanticTypes,omitempty" xml:"SemanticTypes,omitempty" type:"Repeated"`
+	// The encryption method of the object.
+	//
+	// This parameter is available only if server encryption is configured for the OSS bucket. For more information, see [Server-side encryption](https://help.aliyun.com/document_detail/31871.html).
+	//
+	// example:
+	//
+	// SM4
+	ServerSideDataEncryption *string `json:"ServerSideDataEncryption,omitempty" xml:"ServerSideDataEncryption,omitempty"`
+	// The encryption method on the server side.
+	//
+	// This parameter is available only if server encryption is configured for the OSS bucket. For more information, see [Server-side encryption](https://help.aliyun.com/document_detail/31871.html).
+	//
+	// example:
+	//
+	// AES256
+	ServerSideEncryption *string `json:"ServerSideEncryption,omitempty" xml:"ServerSideEncryption,omitempty"`
+	// The algorithm that is used to encrypt the file on the server side.
+	//
+	// example:
+	//
+	// SM4
+	ServerSideEncryptionCustomerAlgorithm *string `json:"ServerSideEncryptionCustomerAlgorithm,omitempty" xml:"ServerSideEncryptionCustomerAlgorithm,omitempty"`
+	// The ID of the customer master key (CMK) managed by Key Management Service (KMS).
+	//
+	// This parameter is available only if server encryption is configured for the OSS bucket. For more information, see [Server-side encryption](https://help.aliyun.com/document_detail/31871.html).
+	//
+	// example:
+	//
+	// 9468da86-3509-4f8d-a61e-6eab1eac****
+	ServerSideEncryptionKeyId *string `json:"ServerSideEncryptionKeyId,omitempty" xml:"ServerSideEncryptionKeyId,omitempty"`
+	// The size of the object. Unit: bytes.
+	//
+	// example:
+	//
+	// 1000
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The time of the first frame. Unit: seconds.
+	//
+	// example:
+	//
+	// 0.000000
+	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The number of media streams in the media container.
+	//
+	// example:
+	//
+	// 1
+	StreamCount *int64 `json:"StreamCount,omitempty" xml:"StreamCount,omitempty"`
+	// The list of subtitle streams.
+	Subtitles []*SubtitleStream `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
+	// The time zone.
+	//
+	// >  Not supported.
+	//
+	// example:
+	//
+	// ""
+	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	// The title of the file.
+	//
+	// example:
+	//
+	// test
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// A reserved parameter.
+	//
+	// > Not supported.
+	//
+	// example:
+	//
+	// -
+	TravelClusterId *string `json:"TravelClusterId,omitempty" xml:"TravelClusterId,omitempty"`
+	// The URI of the file.
+	//
+	// The URI of an OSS object follows the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
+	// The URI of a file in Photo and Drive Service follows the pds://domains/${domain}/drives/${drive}/files/${file}/revisions/${revision} format.
+	//
+	// example:
+	//
+	// oss://examplebucket/sampleobject.jpg
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// The RFC3339Nano timestamp when the metadata was modified.
+	//
+	// example:
+	//
+	// 2021-06-29T14:50:13.011643661+08:00
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The height of the video. Unit: pixels.
+	//
+	// example:
+	//
+	// 1920
+	VideoHeight *int64 `json:"VideoHeight,omitempty" xml:"VideoHeight,omitempty"`
+	// The list of video streams.
+	VideoStreams []*VideoStream `json:"VideoStreams,omitempty" xml:"VideoStreams,omitempty" type:"Repeated"`
+	// The width of the video. Unit: pixels.
+	//
+	// example:
+	//
+	// 1080
+	VideoWidth *int64 `json:"VideoWidth,omitempty" xml:"VideoWidth,omitempty"`
 }
 
 func (s File) String() string {

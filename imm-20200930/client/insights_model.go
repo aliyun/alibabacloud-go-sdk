@@ -16,9 +16,13 @@ type iInsights interface {
 }
 
 type Insights struct {
+	// The summary and description of the image.
+	//
 	// if can be null:
 	// true
 	Image *ImageInsight `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The summary and description of the video.
+	//
 	// if can be null:
 	// true
 	Video *VideoInsight `json:"Video,omitempty" xml:"Video,omitempty"`

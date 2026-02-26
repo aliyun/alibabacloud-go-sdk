@@ -632,7 +632,7 @@ func (client *Client) CompareImageFacesWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Phase II of AI Assistant, Q\\&A API
+// Phase II of AI Assistant, Q\\\\\\&A API
 //
 // Description:
 //
@@ -663,7 +663,7 @@ func (client *Client) ContextualAnswerWithSSECtx(ctx context.Context, tmpReq *Co
 
 // Summary:
 //
-// Phase II of AI Assistant, Q\\&A API
+// Phase II of AI Assistant, Q\\\\\\&A API
 //
 // Description:
 //
@@ -1293,7 +1293,7 @@ func (client *Client) CreateCustomizedStoryWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// # Create Dataset
+// Creates a dataset.
 //
 // Description:
 //
@@ -1319,11 +1319,19 @@ func (client *Client) CreateDatasetWithContext(ctx context.Context, tmpReq *Crea
 	}
 	request := &CreateDatasetShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DatasetConfig) {
+		request.DatasetConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DatasetConfig, dara.String("DatasetConfig"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.WorkflowParameters) {
 		request.WorkflowParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WorkflowParameters, dara.String("WorkflowParameters"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DatasetConfigShrink) {
+		query["DatasetConfig"] = request.DatasetConfigShrink
+	}
+
 	if !dara.IsNil(request.DatasetMaxBindCount) {
 		query["DatasetMaxBindCount"] = request.DatasetMaxBindCount
 	}
@@ -2423,7 +2431,7 @@ func (client *Client) CreateLocationDateClusteringTaskWithContext(ctx context.Co
 
 // Summary:
 //
-// # Create Transcoding Service
+// Creates an asynchronous media transcoding task to provide audio and video file processing abilities, such as media transcoding, media splicing, video frame capturing, and video to GIF conversion.
 //
 // Description:
 //
@@ -4913,7 +4921,7 @@ func (client *Client) GenerateVideoPlaylistWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Generates an access token for document preview or editing.
+// # Obtain Document Preview and Edit Token
 //
 // Description:
 //
@@ -5179,7 +5187,7 @@ func (client *Client) GetBindingWithContext(ctx context.Context, request *GetBin
 //
 // Summary:
 //
-// drmlicense获取
+// Obtains a Digital Rights Management (DRM) license for encrypted video playback.
 //
 // @param request - GetDRMLicenseRequest
 //
@@ -7889,11 +7897,19 @@ func (client *Client) UpdateDatasetWithContext(ctx context.Context, tmpReq *Upda
 	}
 	request := &UpdateDatasetShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DatasetConfig) {
+		request.DatasetConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DatasetConfig, dara.String("DatasetConfig"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.WorkflowParameters) {
 		request.WorkflowParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WorkflowParameters, dara.String("WorkflowParameters"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DatasetConfigShrink) {
+		query["DatasetConfig"] = request.DatasetConfigShrink
+	}
+
 	if !dara.IsNil(request.DatasetMaxBindCount) {
 		query["DatasetMaxBindCount"] = request.DatasetMaxBindCount
 	}
@@ -8471,18 +8487,20 @@ func (client *Client) contextualAnswerWithSSECtx_opYieldFunc(_yield chan *Contex
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }

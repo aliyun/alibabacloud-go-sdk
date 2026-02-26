@@ -20,8 +20,6 @@ type iGetBindingRequest interface {
 type GetBindingRequest struct {
 	// The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// dataset001

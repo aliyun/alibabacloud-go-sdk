@@ -18,9 +18,20 @@ type iCredentialConfig interface {
 }
 
 type CredentialConfig struct {
-	Chain       []*CredentialConfigChain `json:"Chain,omitempty" xml:"Chain,omitempty" type:"Repeated"`
-	Policy      *string                  `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	ServiceRole *string                  `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	// The authorization chains. All roles in the array must have the `sts:AssumeRole` permission. You need to only grant other permissions, such as read and write permissions on OSS, to the last role in the array. You can grant permissions in the RAM console.
+	Chain []*CredentialConfigChain `json:"Chain,omitempty" xml:"Chain,omitempty" type:"Repeated"`
+	// The policy that is attached to the role specified by the ServiceRole parameter. For example, the policy allows access to OSS. This parameter is optional.
+	//
+	// example:
+	//
+	// {"Statement": [{"Action": "oss:*","Effect": "Allow","Resource": "*"}],"Version": "1"}
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The service role in the account that is used to call an IMM API operation. The role must have the `sts:AssumeRole` permission. You can configure permissions for the role in the Resource Access Management (RAM) console.
+	//
+	// example:
+	//
+	// AliyunSTSAssumeForIMMServiceRole
+	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
 }
 
 func (s CredentialConfig) String() string {
@@ -72,9 +83,28 @@ func (s *CredentialConfig) Validate() error {
 }
 
 type CredentialConfigChain struct {
+	// The ID of the account that you use to grant permissions.
+	//
+	// example:
+	//
+	// 10232100246xxxxx
 	AssumeRoleFor *string `json:"AssumeRoleFor,omitempty" xml:"AssumeRoleFor,omitempty"`
-	Role          *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	RoleType      *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The RAM role that can be assumed.
+	//
+	// example:
+	//
+	// AliyunOSSRole
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The role type. Valid values:
+	//
+	// 	- user: Alibaba Cloud account.
+	//
+	// 	- service: Alibaba Cloud service.
+	//
+	// example:
+	//
+	// user
+	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s CredentialConfigChain) String() string {

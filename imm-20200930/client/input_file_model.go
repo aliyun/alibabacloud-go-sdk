@@ -48,24 +48,134 @@ type iInputFile interface {
 }
 
 type InputFile struct {
-	Addresses    []*Address             `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	Album        *string                `json:"Album,omitempty" xml:"Album,omitempty"`
-	AlbumArtist  *string                `json:"AlbumArtist,omitempty" xml:"AlbumArtist,omitempty"`
-	Artist       *string                `json:"Artist,omitempty" xml:"Artist,omitempty"`
-	Composer     *string                `json:"Composer,omitempty" xml:"Composer,omitempty"`
-	ContentType  *string                `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	CustomId     *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// The addresses.
+	Addresses []*Address `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// The album.
+	//
+	// example:
+	//
+	// FirstAlbum
+	Album *string `json:"Album,omitempty" xml:"Album,omitempty"`
+	// The album artist.
+	//
+	// example:
+	//
+	// Jane
+	AlbumArtist *string `json:"AlbumArtist,omitempty" xml:"AlbumArtist,omitempty"`
+	// The artist.
+	//
+	// example:
+	//
+	// Jane
+	Artist *string `json:"Artist,omitempty" xml:"Artist,omitempty"`
+	// The composer.
+	//
+	// example:
+	//
+	// Jane
+	Composer *string `json:"Composer,omitempty" xml:"Composer,omitempty"`
+	// In most cases, you can leave this parameter empty. The Multipurpose Internet Mail Extensions (MIME) type of the file.
+	//
+	// example:
+	//
+	// image/jpeg
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// The custom ID of the file. This parameter is optional. When the metadata of the file is indexed into the dataset, the custom ID is stored as the data attribute. You can map the custom ID to other data in your business system. You can configure this parameter based on your business requirements. For example, you can associate a URI with an ID in your business system. We recommend that you set this parameter to a unique value.
+	//
+	// This parameter supports prefix searches and sorting during queries. For more information, see [Supported fields and operators](https://help.aliyun.com/document_detail/252856.html).
+	//
+	// example:
+	//
+	// member-image-id-0001
+	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// The custom labels of the file. This parameter is optional. The parameter stores custom key-value labels, which can be used to filter data. For more information, see [Supported fields and operators](https://help.aliyun.com/document_detail/252856.html).
+	//
+	// example:
+	//
+	// {
+	//
+	//       "MemberName": "Tim",
+	//
+	//       "Enabled": "True",
+	//
+	//       "ItemCount": "10"
+	//
+	// }
 	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	Figures      []*InputFileFigures    `json:"Figures,omitempty" xml:"Figures,omitempty" type:"Repeated"`
-	FileHash     *string                `json:"FileHash,omitempty" xml:"FileHash,omitempty"`
-	Labels       []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	LatLong      *string                `json:"LatLong,omitempty" xml:"LatLong,omitempty"`
-	MediaType    *string                `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	OSSURI       *string                `json:"OSSURI,omitempty" xml:"OSSURI,omitempty"`
-	Performer    *string                `json:"Performer,omitempty" xml:"Performer,omitempty"`
-	ProduceTime  *string                `json:"ProduceTime,omitempty" xml:"ProduceTime,omitempty"`
-	Title        *string                `json:"Title,omitempty" xml:"Title,omitempty"`
-	URI          *string                `json:"URI,omitempty" xml:"URI,omitempty"`
+	// This parameter is optional. The persons. This parameter is used to remove a face from a face group or modify a face group. For more information, see [Face clustering](https://help.aliyun.com/document_detail/477175.html).
+	//
+	// >  This parameter takes effect only for the UpdateFileMeta or BatchUpdateFileMeta operation.
+	Figures []*InputFileFigures `json:"Figures,omitempty" xml:"Figures,omitempty" type:"Repeated"`
+	// The file hash. In most cases, you can leave this parameter empty. This parameter is required only when the URI parameter specifies a file in Photo and Drive Service.
+	//
+	// example:
+	//
+	// 1d9c280a7c4f67f7ef873e28449dbe17
+	FileHash *string `json:"FileHash,omitempty" xml:"FileHash,omitempty"`
+	// The intelligent labels.
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The GPS latitude and longitude information.
+	//
+	// example:
+	//
+	// 30.134390,120.074997
+	LatLong *string `json:"LatLong,omitempty" xml:"LatLong,omitempty"`
+	// In most cases, you can leave this parameter empty. The media type of the file.
+	//
+	// Enumerated values:
+	//
+	// 	- image
+	//
+	// 	- other
+	//
+	// 	- document
+	//
+	// 	- archive
+	//
+	// 	- video
+	//
+	// 	- audio
+	//
+	// example:
+	//
+	// image
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The path of the OSS object. In most cases, you can leave this parameter empty. You can specify this parameter only if the URI parameter specifies a file in Photo and Drive Service.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-object.jpg
+	OSSURI *string `json:"OSSURI,omitempty" xml:"OSSURI,omitempty"`
+	// The performer.
+	//
+	// example:
+	//
+	// Jane
+	Performer *string `json:"Performer,omitempty" xml:"Performer,omitempty"`
+	// The time when the image was taken.
+	//
+	// example:
+	//
+	// 2021-06-29T14:50:13.011643661+08:00
+	ProduceTime *string `json:"ProduceTime,omitempty" xml:"ProduceTime,omitempty"`
+	// The file title.
+	//
+	// example:
+	//
+	// test
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URI of the file for which you want to create or update an index in the request. This parameter is required. The URI can represent an object in Object Storage Service (OSS) or a file in Photo and Drive Service.
+	//
+	// The OSS URI must be in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that is in the same region as the current project. `${Object}` specifies the full file path that contains the object name extension.
+	//
+	// The URI of a file in Photo and Drive Service must be in the `pds://domains/${domain}/drives/${drive}/files/${file}/revisions/${revision}` format.
+	//
+	// >  URIs that start with HTTP are not supported.
+	//
+	// example:
+	//
+	// oss://examplebucket/sampleobject.jpg
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s InputFile) String() string {
@@ -270,9 +380,28 @@ func (s *InputFile) Validate() error {
 }
 
 type InputFileFigures struct {
+	// The ID of the face cluster. The following IDs of special face clusters are reserved:
+	//
+	// 	- figure-cluster-id-independent: indicates that the face does not belong to any face cluster. The face may be added to a face cluster in subsequent face clustering tasks after new images are added to the dataset.
+	//
+	// 	- figure-cluster-id-unavailable: indicates that the face has not been included in a face clustering task since a new image was added to the dataset.
+	//
+	// example:
+	//
+	// Cluster-dbe72fec-b84c-4ab6-885b-3678e64****
 	FigureClusterId *string `json:"FigureClusterId,omitempty" xml:"FigureClusterId,omitempty"`
-	FigureId        *string `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
-	FigureType      *string `json:"FigureType,omitempty" xml:"FigureType,omitempty"`
+	// The person ID.
+	//
+	// example:
+	//
+	// 2cb3c51e-b406-4b0c-af1b-897d88e1****
+	FigureId *string `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
+	// The figure type. Set this parameter to `face`.
+	//
+	// example:
+	//
+	// face
+	FigureType *string `json:"FigureType,omitempty" xml:"FigureType,omitempty"`
 }
 
 func (s InputFileFigures) String() string {

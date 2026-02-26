@@ -16,10 +16,14 @@ type iOptimization interface {
 }
 
 type Optimization struct {
+	// The initial learning rate.
+	//
 	// example:
 	//
 	// 0.01
 	LearningRate *float32 `json:"LearningRate,omitempty" xml:"LearningRate,omitempty"`
+	// The optimization method.
+	//
 	// example:
 	//
 	// SGD

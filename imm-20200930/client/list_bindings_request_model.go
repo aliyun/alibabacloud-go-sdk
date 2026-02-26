@@ -22,8 +22,6 @@ type iListBindingsRequest interface {
 type ListBindingsRequest struct {
 	// The name of the dataset.[](~~478160~~)
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// test-dataset

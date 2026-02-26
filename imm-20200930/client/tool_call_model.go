@@ -16,8 +16,14 @@ type iToolCall interface {
 }
 
 type ToolCall struct {
+	// The definition of the function that can be called by the AI assistant.
 	Function *FunctionCall `json:"Function,omitempty" xml:"Function,omitempty"`
-	Type     *string       `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of the tool.
+	//
+	// example:
+	//
+	// function
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ToolCall) String() string {

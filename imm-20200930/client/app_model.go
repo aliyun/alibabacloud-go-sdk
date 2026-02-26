@@ -30,15 +30,52 @@ type iApp interface {
 }
 
 type App struct {
+	// AppDescription
 	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
-	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppKey         *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AppRegion      *int64  `json:"AppRegion,omitempty" xml:"AppRegion,omitempty"`
-	AppType        *int64  `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	EnglishName    *string `json:"EnglishName,omitempty" xml:"EnglishName,omitempty"`
-	OwnerId        *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PackageName    *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	// AppId
+	//
+	// example:
+	//
+	// 1234567890
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// AppKey
+	//
+	// example:
+	//
+	// ryBOBW0Z6NnQ3fV9
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// AppName
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// AppRegion
+	//
+	// example:
+	//
+	// 0
+	AppRegion *int64 `json:"AppRegion,omitempty" xml:"AppRegion,omitempty"`
+	// AppType
+	//
+	// example:
+	//
+	// 0
+	AppType *int64 `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// EnglishName
+	//
+	// example:
+	//
+	// Taobao
+	EnglishName *string `json:"EnglishName,omitempty" xml:"EnglishName,omitempty"`
+	// OwnerId
+	//
+	// example:
+	//
+	// 1023210024677934
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// PackageName
+	//
+	// example:
+	//
+	// ThisIsAPackageName
+	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
 }
 
 func (s App) String() string {

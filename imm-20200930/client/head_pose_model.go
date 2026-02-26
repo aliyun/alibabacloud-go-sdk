@@ -18,9 +18,24 @@ type iHeadPose interface {
 }
 
 type HeadPose struct {
+	// The angel of elevation or depression of the head. Unit: degree. Valid values: -180 to 180. A recommended range for reliable results is from -30 to 30.
+	//
+	// example:
+	//
+	// 18.385589599609375
 	Pitch *float32 `json:"Pitch,omitempty" xml:"Pitch,omitempty"`
-	Roll  *float32 `json:"Roll,omitempty" xml:"Roll,omitempty"`
-	Yaw   *float32 `json:"Yaw,omitempty" xml:"Yaw,omitempty"`
+	// The angle of the tilt to the side. Unit: degree. Valid values: -180 to 180. A recommended range for reliable results is from -45 to 45.
+	//
+	// example:
+	//
+	// 4.204030513763428
+	Roll *float32 `json:"Roll,omitempty" xml:"Roll,omitempty"`
+	// The angle of leftward or rightward rotation of the head. Unit: degree. Valid values: -180 to 180. A recommended range for reliable results is from -80 to 80.
+	//
+	// example:
+	//
+	// 2.4945924282073975
+	Yaw *float32 `json:"Yaw,omitempty" xml:"Yaw,omitempty"`
 }
 
 func (s HeadPose) String() string {

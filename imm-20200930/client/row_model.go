@@ -16,8 +16,16 @@ type iRow interface {
 }
 
 type Row struct {
+	// The custom labels.
 	CustomLabels []*KeyValuePair `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty" type:"Repeated"`
-	URI          *string         `json:"URI,omitempty" xml:"URI,omitempty"`
+	// The OSS URI of the file.
+	//
+	// The OSS URI is in the `oss://${bucketname}/${objectname}` format, where `${bucketname}` is the name of the OSS bucket that is in the same region as the current project and `${objectname}` is the path of the file.
+	//
+	// example:
+	//
+	// oss://examplebucket/exampleobject.jpg
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s Row) String() string {

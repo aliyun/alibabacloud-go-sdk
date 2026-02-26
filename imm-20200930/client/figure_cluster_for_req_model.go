@@ -24,12 +24,38 @@ type iFigureClusterForReq interface {
 }
 
 type FigureClusterForReq struct {
-	Cover           *FigureClusterForReqCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
-	CustomId        *string                   `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
-	CustomLabels    map[string]interface{}    `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	MetaLockVersion *int64                    `json:"MetaLockVersion,omitempty" xml:"MetaLockVersion,omitempty"`
-	Name            *string                   `json:"Name,omitempty" xml:"Name,omitempty"`
-	ObjectId        *string                   `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The cover image.
+	Cover *FigureClusterForReqCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
+	// The custom ID.
+	//
+	// example:
+	//
+	// abc
+	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// The custom labels. You can search for the cluster by label.
+	//
+	// example:
+	//
+	// {"Bucket": "examplebucket"}
+	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// The version of the metadata lock. A metadata lock version can be obtained by using a get or list operation. If you include the MetaLockVersion parameter in a request to update the cluster, the server checks consistency between the MetaLockVersion parameter value sent in the request and the one on the server side and updates the cluster only when they are consistent. This parameter is used to prevent update conflicts in concurrent scenarios. The initial version is 0. The version is automatically increased by 1 after each successful update.
+	//
+	// example:
+	//
+	// 1
+	MetaLockVersion *int64 `json:"MetaLockVersion,omitempty" xml:"MetaLockVersion,omitempty"`
+	// The name of the cluster.
+	//
+	// example:
+	//
+	// abc
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the face cluster.
+	//
+	// example:
+	//
+	// Cluster-99b1c333-86dc-45da-8c6****
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
 }
 
 func (s FigureClusterForReq) String() string {
@@ -104,6 +130,7 @@ func (s *FigureClusterForReq) Validate() error {
 }
 
 type FigureClusterForReqCover struct {
+	// The persons.
 	Figures []*FigureClusterForReqCoverFigures `json:"Figures,omitempty" xml:"Figures,omitempty" type:"Repeated"`
 }
 
@@ -138,6 +165,11 @@ func (s *FigureClusterForReqCover) Validate() error {
 }
 
 type FigureClusterForReqCoverFigures struct {
+	// The person ID.
+	//
+	// example:
+	//
+	// 2cb3c51e-b406-4b0c-af1b-897d88e1****
 	FigureId *string `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
 }
 

@@ -9,6 +9,8 @@ type iCreateDatasetShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDatasetConfigShrink(v string) *CreateDatasetShrinkRequest
+	GetDatasetConfigShrink() *string
 	SetDatasetMaxBindCount(v int64) *CreateDatasetShrinkRequest
 	GetDatasetMaxBindCount() *int64
 	SetDatasetMaxEntityCount(v int64) *CreateDatasetShrinkRequest
@@ -32,6 +34,7 @@ type iCreateDatasetShrinkRequest interface {
 }
 
 type CreateDatasetShrinkRequest struct {
+	DatasetConfigShrink *string `json:"DatasetConfig,omitempty" xml:"DatasetConfig,omitempty"`
 	// The maximum number of bindings per dataset. The range is 1~10, with a default value of 10.
 	//
 	// example:
@@ -108,6 +111,10 @@ func (s CreateDatasetShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateDatasetShrinkRequest) GetDatasetConfigShrink() *string {
+	return s.DatasetConfigShrink
+}
+
 func (s *CreateDatasetShrinkRequest) GetDatasetMaxBindCount() *int64 {
 	return s.DatasetMaxBindCount
 }
@@ -146,6 +153,11 @@ func (s *CreateDatasetShrinkRequest) GetTemplateId() *string {
 
 func (s *CreateDatasetShrinkRequest) GetWorkflowParametersShrink() *string {
 	return s.WorkflowParametersShrink
+}
+
+func (s *CreateDatasetShrinkRequest) SetDatasetConfigShrink(v string) *CreateDatasetShrinkRequest {
+	s.DatasetConfigShrink = &v
+	return s
 }
 
 func (s *CreateDatasetShrinkRequest) SetDatasetMaxBindCount(v int64) *CreateDatasetShrinkRequest {

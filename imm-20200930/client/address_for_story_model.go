@@ -22,10 +22,15 @@ type iAddressForStory interface {
 }
 
 type AddressForStory struct {
-	City     *string `json:"City,omitempty" xml:"City,omitempty"`
-	Country  *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// The city.
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// The country.
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// The district.
 	District *string `json:"District,omitempty" xml:"District,omitempty"`
+	// The province.
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// The township.
 	Township *string `json:"Township,omitempty" xml:"Township,omitempty"`
 }
 

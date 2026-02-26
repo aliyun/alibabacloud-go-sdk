@@ -20,9 +20,35 @@ type iElementContent interface {
 }
 
 type ElementContent struct {
+  // The content of the element.
+  // 
+  // If the value of the Type parameter is image or link, this parameter indicates the placeholder text.
+  // 
+  // example:
+  // 
+  // Text
   Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+  // The time range. The array length is fixed to 2. One element indicates the start time and the other one indicates the end time. Unit: milliseconds.
   TimeRange []*int64 `json:"TimeRange,omitempty" xml:"TimeRange,omitempty" type:"Repeated"`
+  // The type of the element content.
+  // 
+  // Valid values:
+  // 
+  // 	- text
+  // 
+  // 	- image
+  // 
+  // 	- link
+  // 
+  // example:
+  // 
+  // text
   Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+  // The link to the element content. This parameter takes effect only if the Type parameter is set to image or link.
+  // 
+  // example:
+  // 
+  // http://aliyun.com
   URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
 }
 

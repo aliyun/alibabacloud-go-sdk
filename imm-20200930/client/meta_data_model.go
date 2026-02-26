@@ -18,14 +18,20 @@ type iMetaData interface {
 }
 
 type MetaData struct {
+	// The model type identifier.
+	//
 	// example:
 	//
 	// detection
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The model provider.
+	//
 	// example:
 	//
 	// imm
 	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// The model version.
+	//
 	// example:
 	//
 	// v1

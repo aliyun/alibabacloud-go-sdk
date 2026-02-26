@@ -18,14 +18,20 @@ type iDatasetTaskStatus interface {
 }
 
 type DatasetTaskStatus struct {
+	// The time of the last completion.
+	//
 	// example:
 	//
 	// 2024-06-29T14:50:13.011643661+08:00
 	LastSucceededTime *string `json:"LastSucceededTime,omitempty" xml:"LastSucceededTime,omitempty"`
+	// The start time of the task.
+	//
 	// example:
 	//
 	// 2024-06-29T14:50:13.011643661+08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the task.
+	//
 	// example:
 	//
 	// Succeeded

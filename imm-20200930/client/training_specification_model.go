@@ -30,30 +30,54 @@ type iTrainingSpecification interface {
 }
 
 type TrainingSpecification struct {
+	// Name of the dataset
+	//
+	// example:
+	//
+	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The endpoint of the storage where the dataset is stored.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// http://1111111111.mns.cn-hangzhou.aliyuncs.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The model specification details.
+	//
 	// This parameter is required.
 	ModelSpecification *ModelSpecification `json:"ModelSpecification,omitempty" xml:"ModelSpecification,omitempty"`
+	// The information about the runtime for model training.
+	//
 	// This parameter is required.
 	Runtime *Runtime `json:"Runtime,omitempty" xml:"Runtime,omitempty"`
+	// URI of the dataset
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://imm-alg-dataset-bj/cifar10/test_index.json
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The storage path to the model data. Only an Object Storage Service (OSS) path is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://imm-alg-dataset-bj/model_training_test/
-	TargetURI  *string         `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// Local preprocessing parameters for the dataset.
 	Transforms []*CustomParams `json:"Transforms,omitempty" xml:"Transforms,omitempty" type:"Repeated"`
+	// The URI of the evaluation dataset. You must specify this parameter or the ValidationSplit parameter.
+	//
 	// example:
 	//
 	// oss://imm-alg-dataset-bj/cifar10/test_index.json
 	ValidationSourceURI *string `json:"ValidationSourceURI,omitempty" xml:"ValidationSourceURI,omitempty"`
+	// The ratio for splitting the training dataset into the evaluation dataset. You must specify this parameter or the ValidationSourceURI parameter.
+	//
 	// example:
 	//
 	// 0.95

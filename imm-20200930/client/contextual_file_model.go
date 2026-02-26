@@ -30,15 +30,70 @@ type iContextualFile interface {
 }
 
 type ContextualFile struct {
-	ContentType *string    `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	DatasetName *string    `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Elements    []*Element `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
-	MediaType   *string    `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	OSSURI      *string    `json:"OSSURI,omitempty" xml:"OSSURI,omitempty"`
-	ObjectId    *string    `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	OwnerId     *string    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProjectName *string    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	URI         *string    `json:"URI,omitempty" xml:"URI,omitempty"`
+	// The Multipurpose Internet Mail Extensions (MIME) type of the file.
+	//
+	// example:
+	//
+	// text/x-imm-faq
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// Name of the dataset
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// Elements
+	Elements []*Element `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
+	// Media type of the current file
+	//
+	// Valid values:
+	//
+	// 	- image
+	//
+	// 	- other
+	//
+	// 	- document
+	//
+	// 	- archive
+	//
+	// 	- audio
+	//
+	// 	- video
+	//
+	// example:
+	//
+	// document
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The URI of the OSS object. This parameter is available only if the value of the URI parameter is the URI of a file in Photo and Drive Service.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-object.jpg
+	OSSURI *string `json:"OSSURI,omitempty" xml:"OSSURI,omitempty"`
+	// The identifier of the corresponding file that exists in the dataset.
+	//
+	// example:
+	//
+	// 0939d7ed-73fa-4009-bbe6-fbbe07b92b2e
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// User ID
+	//
+	// example:
+	//
+	// 1482910009923706
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Name of the project
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// URI of the file. Specify the OSS URI in the oss://${bucketname}/${objectname} format, where ${bucketname} is the name of the bucket in the same region as the current project and ${objectname} is the path of the object. The URI of a file in Photo and Drive Service follows the pds://domains/${domain}/drives/${drive}/files/${file}/revisions/${revision} format.
+	//
+	// example:
+	//
+	// oss://test-bucket
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s ContextualFile) String() string {

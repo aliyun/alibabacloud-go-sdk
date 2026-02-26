@@ -18,14 +18,20 @@ type iSchedule interface {
 }
 
 type Schedule struct {
+	// The learning rate decay. This parameter takes effect only when LRScheduler is set to StepLR.
+	//
 	// example:
 	//
 	// 0.97
 	Gamma *float32 `json:"Gamma,omitempty" xml:"Gamma,omitempty"`
+	// The learning rate scheduler.
+	//
 	// example:
 	//
 	// StepLR
 	LRScheduler *string `json:"LRScheduler,omitempty" xml:"LRScheduler,omitempty"`
+	// The number of epochs the learning rate is changed after. This parameter takes effect only when LRScheduler is set to StepLR.
+	//
 	// example:
 	//
 	// 1

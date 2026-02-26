@@ -16,8 +16,18 @@ type iFileSmartCluster interface {
 }
 
 type FileSmartCluster struct {
-	Similarity     *float32 `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
-	SmartClusterId *string  `json:"SmartClusterId,omitempty" xml:"SmartClusterId,omitempty"`
+	// Similarity
+	//
+	// example:
+	//
+	// 0.9
+	Similarity *float32 `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
+	// SmartClusterId
+	//
+	// example:
+	//
+	// SmartCluster-12cd1645-deae-4b5e-9434-613747b75f6d
+	SmartClusterId *string `json:"SmartClusterId,omitempty" xml:"SmartClusterId,omitempty"`
 }
 
 func (s FileSmartCluster) String() string {

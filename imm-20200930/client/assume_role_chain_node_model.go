@@ -18,18 +18,28 @@ type iAssumeRoleChainNode interface {
 }
 
 type AssumeRoleChainNode struct {
+	// The UID of the account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1023210024677934
+	// 10232100********
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The role.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-role
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The type of the account. Valid values:
+	//
+	// 	- user: Alibaba Cloud account.
+	//
+	// 	- service: Alibaba Cloud service.
+	//
 	// This parameter is required.
 	//
 	// example:

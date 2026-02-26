@@ -26,19 +26,54 @@ type iWebofficeWatermark interface {
 }
 
 type WebofficeWatermark struct {
+	// The color and transparency of the text watermark.
+	//
 	// example:
 	//
 	// rgba(192, 192, 192, 0.6)
 	FillStyle *string `json:"FillStyle,omitempty" xml:"FillStyle,omitempty"`
+	// The font of the text watermark.
+	//
 	// example:
 	//
 	// bold 20px Serif
-	Font       *string  `json:"Font,omitempty" xml:"Font,omitempty"`
-	Horizontal *int64   `json:"Horizontal,omitempty" xml:"Horizontal,omitempty"`
-	Rotate     *float32 `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	Type       *int64   `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value      *string  `json:"Value,omitempty" xml:"Value,omitempty"`
-	Vertical   *int64   `json:"Vertical,omitempty" xml:"Vertical,omitempty"`
+	Font *string `json:"Font,omitempty" xml:"Font,omitempty"`
+	// The horizontal spacing of the text watermark. Unit: pixel.
+	//
+	// example:
+	//
+	// 50
+	Horizontal *int64 `json:"Horizontal,omitempty" xml:"Horizontal,omitempty"`
+	// The rotation of the text watermark. Unit: radian.
+	//
+	// example:
+	//
+	// -0.7853982
+	Rotate *float32 `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	// The watermark type. Valid values:
+	//
+	// 	- 0: no watermark.
+	//
+	// 	- 1: text watermark.
+	//
+	// example:
+	//
+	// 1
+	Type *int64 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The watermark text.
+	//
+	// >  This parameter takes effect only if you set the Type parameter to 1.
+	//
+	// example:
+	//
+	// example
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The vertical spacing of the text watermark. Unit: pixel.
+	//
+	// example:
+	//
+	// 100
+	Vertical *int64 `json:"Vertical,omitempty" xml:"Vertical,omitempty"`
 }
 
 func (s WebofficeWatermark) String() string {

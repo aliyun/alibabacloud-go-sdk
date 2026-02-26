@@ -18,9 +18,12 @@ type iTargetImage interface {
 }
 
 type TargetImage struct {
+	// The animated images.
 	Animations []*TargetImageAnimations `json:"Animations,omitempty" xml:"Animations,omitempty" type:"Repeated"`
-	Snapshots  []*TargetImageSnapshots  `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
-	Sprites    []*TargetImageSprites    `json:"Sprites,omitempty" xml:"Sprites,omitempty" type:"Repeated"`
+	// The frames.
+	Snapshots []*TargetImageSnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
+	// The sprites.
+	Sprites []*TargetImageSprites `json:"Sprites,omitempty" xml:"Sprites,omitempty" type:"Repeated"`
 }
 
 func (s TargetImage) String() string {
@@ -90,16 +93,85 @@ func (s *TargetImage) Validate() error {
 }
 
 type TargetImageAnimations struct {
+	// The format of the animated image. Valid values:
+	//
+	// 	- gif
+	//
+	// 	- webp
+	//
 	// This parameter is required.
-	Format    *string  `json:"Format,omitempty" xml:"Format,omitempty"`
+	//
+	// example:
+	//
+	// gif
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The frame rate of the animated image. You can use this parameter together with the Interval parameter to slow down the animation.
+	//
+	// example:
+	//
+	// 25
 	FrameRate *float64 `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
-	Height    *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Interval  *float64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Number    *int32   `json:"Number,omitempty" xml:"Number,omitempty"`
-	ScaleType *string  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	// The height of the animated image. By default, the animated image has the same height as the source video. The value of the parameter can be an integer or a decimal.
+	//
+	// 	- An integer: the number of pixels. Valid values: [1,4096].
+	//
+	// 	- A decimal: the ratio relative to the height of the target image resolution. Valid values: (0,1).
+	//
+	// example:
+	//
+	// 960
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The time interval for extracting frames. Unit: seconds.
+	//
+	// example:
+	//
+	// 0.5
+	Interval *float64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The number of extracted frames. The default value is 0, which indicates that frames are extracted until the end of the video.
+	//
+	// example:
+	//
+	// 100
+	Number *int32 `json:"Number,omitempty" xml:"Number,omitempty"`
+	// The resizing mode. Valid values:
+	//
+	// 	- stretch: stretches the image to fill the entire space. This is the default value.
+	//
+	// 	- crop: resizes and crops the image.
+	//
+	// 	- fill: resizes the image and keeps the black border.
+	//
+	// 	- fit: resizes the image and removes the black border.
+	//
+	// example:
+	//
+	// crop
+	ScaleType *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	// The start time for extracting frames. Unit: seconds. Default value: 0.
+	//
+	// example:
+	//
+	// 0
 	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The URI of the animated image.
+	//
+	// The OSS URI follows the oss://bucket/object format, where bucket is the name of the bucket in the same region as the current project and object is the path of the object with the extension included.
+	//
 	// This parameter is required.
-	URI   *string  `json:"URI,omitempty" xml:"URI,omitempty"`
+	//
+	// example:
+	//
+	// oss://test-bucket/animations
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// The width of the animated image. By default, the animated image has the same width as the source video. The value of the parameter can be an integer or a decimal.
+	//
+	// 	- An integer: the number of pixels. Valid values: [1,4096].
+	//
+	// 	- A decimal: the ratio relative to the width of the target image resolution. Valid values: (0,1).
+	//
+	// example:
+	//
+	// 1280
 	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
@@ -197,17 +269,87 @@ func (s *TargetImageAnimations) Validate() error {
 }
 
 type TargetImageSnapshots struct {
+	// The format of the frame. Valid values:
+	//
+	// 	- jpg
+	//
+	// 	- png
+	//
 	// This parameter is required.
-	Format    *string  `json:"Format,omitempty" xml:"Format,omitempty"`
-	Height    *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Interval  *float64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Mode      *string  `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Number    *int32   `json:"Number,omitempty" xml:"Number,omitempty"`
-	ScaleType *string  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	//
+	// example:
+	//
+	// jpg
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The height of the frame image. By default, the image has the same height as the source video. The value of the parameter can be an integer or a decimal.
+	//
+	// 	- An integer: the number of pixels. Valid values: [1,4096].
+	//
+	// 	- A decimal: the ratio relative to the height of the target image resolution. Valid values: (0,1).
+	//
+	// example:
+	//
+	// 960
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The time interval of frame capturing in seconds.
+	//
+	// example:
+	//
+	// 0.5
+	Interval *float64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// interval
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The number of frames. The default value is 0, which indicates that frames are captured until the end of the video.
+	//
+	// example:
+	//
+	// 10
+	Number *int32 `json:"Number,omitempty" xml:"Number,omitempty"`
+	// The resizing mode. Valid values:
+	//
+	// 	- stretch: stretches the image to fill the entire space. This is the default value.
+	//
+	// 	- crop: resizes and crops the image.
+	//
+	// 	- fill: resizes the image and keeps the black border.
+	//
+	// 	- fit: resizes the image and removes the black border.
+	//
+	// example:
+	//
+	// crop
+	ScaleType *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	// The time in seconds at which frame capturing starts. The default value is 0, which indicates that frame capturing starts at the beginning of the video.
+	//
+	// example:
+	//
+	// 0
 	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Threshold *int32   `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// example:
+	//
+	// 0
+	Threshold *int32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The OSS URI of the frame.
+	//
+	// The OSS URI follows the oss://bucket/object format, where bucket is the name of the bucket in the same region as the current project and object is the path of the object with the extension included.
+	//
 	// This parameter is required.
-	URI   *string  `json:"URI,omitempty" xml:"URI,omitempty"`
+	//
+	// example:
+	//
+	// oss://test-bucket/snapshots
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// The width of the frame image. By default, the image has the same width as the source video. The value of the parameter can be an integer or a decimal.
+	//
+	// 	- An integer: the number of pixels. Valid values: [1,4096].
+	//
+	// 	- A decimal: the ratio relative to the width of the target image resolution. Valid values: (0,1).
+	//
+	// example:
+	//
+	// 1280
 	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
@@ -314,21 +456,111 @@ func (s *TargetImageSnapshots) Validate() error {
 }
 
 type TargetImageSprites struct {
+	// The format of the sprite. Valid values:
+	//
+	// 	- jpg
+	//
+	// 	- png
+	//
 	// This parameter is required.
-	Format      *string  `json:"Format,omitempty" xml:"Format,omitempty"`
-	Interval    *float64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Margin      *int32   `json:"Margin,omitempty" xml:"Margin,omitempty"`
-	Mode        *string  `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Number      *int32   `json:"Number,omitempty" xml:"Number,omitempty"`
-	Pad         *int32   `json:"Pad,omitempty" xml:"Pad,omitempty"`
+	//
+	// example:
+	//
+	// jpg
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The time interval of frame capturing in seconds.
+	//
+	// example:
+	//
+	// 1
+	Interval *float64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The margin between the small images and the edges of the sprite. Default value: 2.
+	//
+	// example:
+	//
+	// 2
+	Margin *int32 `json:"Margin,omitempty" xml:"Margin,omitempty"`
+	// example:
+	//
+	// interval
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The number of small images in the sprite. The default value is 0, which indicates that frames are captured until the end of the video.
+	//
+	// example:
+	//
+	// 0
+	Number *int32 `json:"Number,omitempty" xml:"Number,omitempty"`
+	// The padding between small images. Default value: 2.
+	//
+	// example:
+	//
+	// 2
+	Pad *int32 `json:"Pad,omitempty" xml:"Pad,omitempty"`
+	// The height of individual small images. The default value is 1. The value can be an integer or a decimal.
+	//
+	// 	- An integer: the number of pixels. Valid values: (1,4096).
+	//
+	// 	- A decimal: the ratio relative to the height of the target video resolution. Valid values: (0,1].
+	//
+	// example:
+	//
+	// 960
 	ScaleHeight *float32 `json:"ScaleHeight,omitempty" xml:"ScaleHeight,omitempty"`
-	ScaleType   *string  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
-	ScaleWidth  *float32 `json:"ScaleWidth,omitempty" xml:"ScaleWidth,omitempty"`
-	StartTime   *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Threshold   *int32   `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	TileHeight  *int32   `json:"TileHeight,omitempty" xml:"TileHeight,omitempty"`
-	TileWidth   *int32   `json:"TileWidth,omitempty" xml:"TileWidth,omitempty"`
+	// The resizing mode. Valid values:
+	//
+	// 	- stretch: stretches the image to fill the entire space. This is the default value.
+	//
+	// 	- crop: resizes and crops the image.
+	//
+	// 	- fill: resizes the image and keeps the black border.
+	//
+	// 	- fit: resizes the image and removes the black border.
+	//
+	// example:
+	//
+	// crop
+	ScaleType *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	// The width of individual small images. The default value is 1. The value can be an integer or a decimal.
+	//
+	// 	- An integer: the number of pixels. Valid values: (1,4096).
+	//
+	// 	- A decimal: the ratio relative to the width of the target video resolution. Valid values: (0,1].
+	//
+	// example:
+	//
+	// 1280
+	ScaleWidth *float32 `json:"ScaleWidth,omitempty" xml:"ScaleWidth,omitempty"`
+	// The time in seconds at which frame capturing starts. The default value is 0, which indicates that frame capturing starts at the beginning of the video.
+	//
+	// example:
+	//
+	// 0
+	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 0
+	Threshold *int32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The number of small images in each column. Default value: 6.
+	//
+	// example:
+	//
+	// 6
+	TileHeight *int32 `json:"TileHeight,omitempty" xml:"TileHeight,omitempty"`
+	// The number of small images in each row. Default value: 6.
+	//
+	// example:
+	//
+	// 6
+	TileWidth *int32 `json:"TileWidth,omitempty" xml:"TileWidth,omitempty"`
+	// The URI of the sprite in Object Storage Service (OSS).
+	//
+	// The OSS URI follows the oss://bucket/object format, where bucket is the name of the bucket in the same region as the current project and object is the path of the object with the extension included.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test-bucket/sprites
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 

@@ -16,8 +16,12 @@ type iRuntime interface {
 }
 
 type Runtime struct {
+	// The hyperparameters.
+	//
 	// This parameter is required.
 	Hyperparameters *Hyperparameters `json:"Hyperparameters,omitempty" xml:"Hyperparameters,omitempty"`
+	// The resource.
+	//
 	// This parameter is required.
 	Resource *Resource `json:"Resource,omitempty" xml:"Resource,omitempty"`
 }

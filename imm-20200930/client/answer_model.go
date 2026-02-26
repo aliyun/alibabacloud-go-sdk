@@ -16,10 +16,13 @@ type iAnswer interface {
 }
 
 type Answer struct {
+	// The answer.
+	//
 	// example:
 	//
-	// 你好
-	Content    *string          `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Hello
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The reference sources of the answer.
 	References []*ReferenceFile `json:"References,omitempty" xml:"References,omitempty" type:"Repeated"`
 }
 

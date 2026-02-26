@@ -34,17 +34,64 @@ type iSmartCluster interface {
 }
 
 type SmartCluster struct {
-	CreateTime   *string           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DatasetName  *string           `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Description  *string           `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name         *string           `json:"Name,omitempty" xml:"Name,omitempty"`
-	ObjectId     *string           `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	ObjectStatus *string           `json:"ObjectStatus,omitempty" xml:"ObjectStatus,omitempty"`
-	ObjectType   *string           `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	OwnerId      *string           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProjectName  *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Rule         *SmartClusterRule `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	UpdateTime   *string           `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the cluster was created.
+	//
+	// example:
+	//
+	// 2022-01-14T10:17:18.102700407+08:00
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The name of the dataset.
+	//
+	// example:
+	//
+	// MyDataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The description of the cluster.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the cluster.
+	//
+	// example:
+	//
+	// MySmartCluster1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the cluster.
+	//
+	// example:
+	//
+	// SmartCluster-12cd1645-deae-4b5e-9434-613747b75f6d
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The status of the cluster.
+	//
+	// example:
+	//
+	// Succeeded
+	ObjectStatus *string `json:"ObjectStatus,omitempty" xml:"ObjectStatus,omitempty"`
+	// The type of the cluster.
+	//
+	// example:
+	//
+	// smart-cluster
+	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// The user ID.
+	//
+	// example:
+	//
+	// 1023210024677934
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The name of the project.
+	//
+	// example:
+	//
+	// MyProject
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The clustering rule.
+	Rule *SmartClusterRule `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// The time when the cluster was updated.
+	//
+	// example:
+	//
+	// 2022-01-14T10:17:18.102700407+08:00
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s SmartCluster) String() string {

@@ -16,8 +16,14 @@ type iBody interface {
 }
 
 type Body struct {
-	Boundary   *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
-	Confidence *float32  `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The boundary of the human body.
+	Boundary *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
+	// The confidence level of the result. A higher value indicates greater confidence. Specifically, a value exceeding 0.8 signifies a high degree of confidence in the result.
+	//
+	// example:
+	//
+	// 0.75
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
 }
 
 func (s Body) String() string {

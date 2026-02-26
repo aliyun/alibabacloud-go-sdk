@@ -30,32 +30,48 @@ type iAlgorithmDefinition interface {
 }
 
 type AlgorithmDefinition struct {
+	// The ID of the algorithm definition.
+	//
 	// example:
 	//
 	// 8fc6e718-8d19-495f-a510-bcee3c598588
 	AlgorithmDefinitionId *string `json:"AlgorithmDefinitionId,omitempty" xml:"AlgorithmDefinitionId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2023-05-31T10:19:40.572325888+08:00
-	CreateTime   *string              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Custom labels.
 	CustomLabels []map[string]*string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty" type:"Repeated"`
+	// The description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the algorithm.
+	//
 	// example:
 	//
 	// algoName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// user1
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The name of the project.
+	//
 	// example:
 	//
 	// traningtest
-	ProjectName           *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The model training parameters.
 	TrainingSpecification *TrainingSpecification `json:"TrainingSpecification,omitempty" xml:"TrainingSpecification,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2023-05-31T10:19:40.572325888+08:00

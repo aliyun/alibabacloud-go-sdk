@@ -9,6 +9,8 @@ type iCreateDatasetRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDatasetConfig(v *DatasetConfig) *CreateDatasetRequest
+	GetDatasetConfig() *DatasetConfig
 	SetDatasetMaxBindCount(v int64) *CreateDatasetRequest
 	GetDatasetMaxBindCount() *int64
 	SetDatasetMaxEntityCount(v int64) *CreateDatasetRequest
@@ -32,6 +34,7 @@ type iCreateDatasetRequest interface {
 }
 
 type CreateDatasetRequest struct {
+	DatasetConfig *DatasetConfig `json:"DatasetConfig,omitempty" xml:"DatasetConfig,omitempty"`
 	// The maximum number of bindings per dataset. The range is 1~10, with a default value of 10.
 	//
 	// example:
@@ -108,6 +111,10 @@ func (s CreateDatasetRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateDatasetRequest) GetDatasetConfig() *DatasetConfig {
+	return s.DatasetConfig
+}
+
 func (s *CreateDatasetRequest) GetDatasetMaxBindCount() *int64 {
 	return s.DatasetMaxBindCount
 }
@@ -146,6 +153,11 @@ func (s *CreateDatasetRequest) GetTemplateId() *string {
 
 func (s *CreateDatasetRequest) GetWorkflowParameters() []*WorkflowParameter {
 	return s.WorkflowParameters
+}
+
+func (s *CreateDatasetRequest) SetDatasetConfig(v *DatasetConfig) *CreateDatasetRequest {
+	s.DatasetConfig = v
+	return s
 }
 
 func (s *CreateDatasetRequest) SetDatasetMaxBindCount(v int64) *CreateDatasetRequest {
@@ -199,6 +211,11 @@ func (s *CreateDatasetRequest) SetWorkflowParameters(v []*WorkflowParameter) *Cr
 }
 
 func (s *CreateDatasetRequest) Validate() error {
+	if s.DatasetConfig != nil {
+		if err := s.DatasetConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.WorkflowParameters != nil {
 		for _, item := range s.WorkflowParameters {
 			if item != nil {

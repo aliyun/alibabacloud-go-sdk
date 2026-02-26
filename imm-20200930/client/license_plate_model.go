@@ -18,11 +18,15 @@ type iLicensePlate interface {
 }
 
 type LicensePlate struct {
-	Boundary   *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
-	Confidence *float64  `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The boundary information of the license plate.
+	Boundary *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
+	// The confidence level.
+	//
 	// example:
 	//
-	// 川A0123
+	// 0.789
+	Confidence *float64 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The license plate number.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 }
 

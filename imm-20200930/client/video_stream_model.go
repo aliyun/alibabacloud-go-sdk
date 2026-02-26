@@ -68,34 +68,174 @@ type iVideoStream interface {
 }
 
 type VideoStream struct {
-	AverageFrameRate   *string  `json:"AverageFrameRate,omitempty" xml:"AverageFrameRate,omitempty"`
-	BitDepth           *int64   `json:"BitDepth,omitempty" xml:"BitDepth,omitempty"`
-	Bitrate            *int64   `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	CodecLongName      *string  `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	CodecName          *string  `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	CodecTag           *string  `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	CodecTagString     *string  `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	CodecTimeBase      *string  `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	ColorPrimaries     *string  `json:"ColorPrimaries,omitempty" xml:"ColorPrimaries,omitempty"`
-	ColorRange         *string  `json:"ColorRange,omitempty" xml:"ColorRange,omitempty"`
-	ColorSpace         *string  `json:"ColorSpace,omitempty" xml:"ColorSpace,omitempty"`
-	ColorTransfer      *string  `json:"ColorTransfer,omitempty" xml:"ColorTransfer,omitempty"`
-	DisplayAspectRatio *string  `json:"DisplayAspectRatio,omitempty" xml:"DisplayAspectRatio,omitempty"`
-	Duration           *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	FrameCount         *int64   `json:"FrameCount,omitempty" xml:"FrameCount,omitempty"`
-	FrameRate          *string  `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
-	HasBFrames         *int64   `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
-	Height             *int64   `json:"Height,omitempty" xml:"Height,omitempty"`
-	Index              *int64   `json:"Index,omitempty" xml:"Index,omitempty"`
-	Language           *string  `json:"Language,omitempty" xml:"Language,omitempty"`
-	Level              *int64   `json:"Level,omitempty" xml:"Level,omitempty"`
-	PixelFormat        *string  `json:"PixelFormat,omitempty" xml:"PixelFormat,omitempty"`
-	Profile            *string  `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	Rotate             *string  `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	SampleAspectRatio  *string  `json:"SampleAspectRatio,omitempty" xml:"SampleAspectRatio,omitempty"`
-	StartTime          *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TimeBase           *string  `json:"TimeBase,omitempty" xml:"TimeBase,omitempty"`
-	Width              *int64   `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The average frame rate of the video stream.
+	//
+	// example:
+	//
+	// 25/1
+	AverageFrameRate *string `json:"AverageFrameRate,omitempty" xml:"AverageFrameRate,omitempty"`
+	// The bit depth.
+	//
+	// example:
+	//
+	// 8
+	BitDepth *int64 `json:"BitDepth,omitempty" xml:"BitDepth,omitempty"`
+	// The bitrate. Unit: bit/s.
+	//
+	// example:
+	//
+	// 5407765
+	Bitrate *int64 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The full name of the codec.
+	//
+	// example:
+	//
+	// H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
+	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	// The abbreviated name of the codec.
+	//
+	// example:
+	//
+	// h264
+	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	// The tag of the codec.
+	//
+	// example:
+	//
+	// 0x31637661
+	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	// The description of the codec tag.
+	//
+	// example:
+	//
+	// avc1
+	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	// The time base of the codec.
+	//
+	// example:
+	//
+	// 1373627/83160000
+	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	// The primary colors.
+	//
+	// example:
+	//
+	// bt709
+	ColorPrimaries *string `json:"ColorPrimaries,omitempty" xml:"ColorPrimaries,omitempty"`
+	// The color range.
+	//
+	// example:
+	//
+	// tv
+	ColorRange *string `json:"ColorRange,omitempty" xml:"ColorRange,omitempty"`
+	// The color space.
+	//
+	// example:
+	//
+	// bt709
+	ColorSpace *string `json:"ColorSpace,omitempty" xml:"ColorSpace,omitempty"`
+	// The color transfer function.
+	//
+	// example:
+	//
+	// bt709
+	ColorTransfer *string `json:"ColorTransfer,omitempty" xml:"ColorTransfer,omitempty"`
+	// The display aspect ratio of the video stream.
+	//
+	// example:
+	//
+	// 16:9
+	DisplayAspectRatio *string `json:"DisplayAspectRatio,omitempty" xml:"DisplayAspectRatio,omitempty"`
+	// The duration of the video stream. Unit: seconds.
+	//
+	// example:
+	//
+	// 22.88
+	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The number of frames.
+	//
+	// example:
+	//
+	// 572
+	FrameCount *int64 `json:"FrameCount,omitempty" xml:"FrameCount,omitempty"`
+	// The frame rate of the video stream.
+	//
+	// example:
+	//
+	// 25/1
+	FrameRate *string `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	// Specifies whether the video stream contains B frames.
+	//
+	// example:
+	//
+	// 2
+	HasBFrames *int64 `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
+	// The image height of the video stream. Unit: pixels.
+	//
+	// example:
+	//
+	// 720
+	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The index number of the video stream.
+	//
+	// example:
+	//
+	// 0
+	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The language used in the video stream. The language is indicated by using a BCP 47 language tag.
+	//
+	// example:
+	//
+	// en
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The level.
+	//
+	// example:
+	//
+	// 40
+	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The pixel format of the video stream.
+	//
+	// example:
+	//
+	// yuv420p
+	PixelFormat *string `json:"PixelFormat,omitempty" xml:"PixelFormat,omitempty"`
+	// The profile.
+	//
+	// example:
+	//
+	// High
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The image rotation angle of the video stream.
+	//
+	// example:
+	//
+	// 90
+	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	// The sampling aspect ratio of the video stream.
+	//
+	// example:
+	//
+	// 1:1
+	SampleAspectRatio *string `json:"SampleAspectRatio,omitempty" xml:"SampleAspectRatio,omitempty"`
+	// The start time of the video stream. Unit: seconds.
+	//
+	// example:
+	//
+	// 0.000000
+	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time base.
+	//
+	// example:
+	//
+	// 1/12800
+	TimeBase *string `json:"TimeBase,omitempty" xml:"TimeBase,omitempty"`
+	// The image width of the video stream. Unit: pixels.
+	//
+	// example:
+	//
+	// 1280
+	Width *int64 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s VideoStream) String() string {

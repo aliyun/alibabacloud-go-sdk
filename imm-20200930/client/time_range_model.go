@@ -16,7 +16,17 @@ type iTimeRange interface {
 }
 
 type TimeRange struct {
-	End   *string `json:"End,omitempty" xml:"End,omitempty"`
+	// The end time.
+	//
+	// example:
+	//
+	// 2016-12-31T00:00:00+08:00
+	End *string `json:"End,omitempty" xml:"End,omitempty"`
+	// The start time.
+	//
+	// example:
+	//
+	// 2016-12-31T00:00:00+08:00
 	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 

@@ -16,8 +16,18 @@ type iSimilarImage interface {
 }
 
 type SimilarImage struct {
+	// The aesthetic score.
+	//
+	// example:
+	//
+	// 0.709
 	ImageScore *float64 `json:"ImageScore,omitempty" xml:"ImageScore,omitempty"`
-	URI        *string  `json:"URI,omitempty" xml:"URI,omitempty"`
+	// The URI of the image.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-object
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s SimilarImage) String() string {

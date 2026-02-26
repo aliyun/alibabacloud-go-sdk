@@ -20,18 +20,26 @@ type iReferenceFile interface {
 }
 
 type ReferenceFile struct {
+	// The name of the dataset.
+	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The unique ID of the file.
+	//
 	// example:
 	//
 	// 75d5de2c50754e3dadd5c35dbca5f9949369e37eb342a73821f690c94c36c7f7
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The name of the project.
+	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The URI of the file.
+	//
 	// example:
 	//
 	// oss://test-bucket/test-object.jpg

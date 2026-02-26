@@ -16,7 +16,17 @@ type iElementRelation interface {
 }
 
 type ElementRelation struct {
+  // The ID of the element.
+  // 
+  // example:
+  // 
+  // id1
   ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+  // The type.
+  // 
+  // example:
+  // 
+  // child，parent
   Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

@@ -22,11 +22,32 @@ type iClusterForReq interface {
 }
 
 type ClusterForReq struct {
-	Cover        *ClusterForReqCover    `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
-	CustomId     *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// The cover.
+	Cover *ClusterForReqCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
+	// The custom ID.
+	//
+	// example:
+	//
+	// abc
+	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// The custom labels.
+	//
+	// example:
+	//
+	// {"Bucket": "examplebucket"}
 	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	Name         *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	ObjectId     *string                `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The name of the cluster.
+	//
+	// example:
+	//
+	// abc
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the cluster.
+	//
+	// example:
+	//
+	// Cluster-99b1c333-86dc-45da-8c6****
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
 }
 
 func (s ClusterForReq) String() string {
@@ -92,6 +113,7 @@ func (s *ClusterForReq) Validate() error {
 }
 
 type ClusterForReqCover struct {
+	// The persons.
 	Figures []*ClusterForReqCoverFigures `json:"Figures,omitempty" xml:"Figures,omitempty" type:"Repeated"`
 }
 
@@ -126,6 +148,11 @@ func (s *ClusterForReqCover) Validate() error {
 }
 
 type ClusterForReqCoverFigures struct {
+	// The person ID.
+	//
+	// example:
+	//
+	// 2cb3c51e-b406-4b0c-af1b-897d88e1****
 	FigureId *string `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
 }
 

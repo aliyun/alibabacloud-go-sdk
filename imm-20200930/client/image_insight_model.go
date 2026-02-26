@@ -16,9 +16,15 @@ type iImageInsight interface {
 }
 
 type ImageInsight struct {
+	// Image summary.
+	//
+	// >  Not supported.
+	//
 	// if can be null:
 	// true
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	// The description of the image.
+	//
 	// if can be null:
 	// true
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`

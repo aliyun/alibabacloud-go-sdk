@@ -50,25 +50,116 @@ type iFigureCluster interface {
 }
 
 type FigureCluster struct {
-	AverageAge      *float32               `json:"AverageAge,omitempty" xml:"AverageAge,omitempty"`
-	Cover           *File                  `json:"Cover,omitempty" xml:"Cover,omitempty"`
-	CreateTime      *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CustomId        *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
-	CustomLabels    map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	DatasetName     *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	FaceCount       *int64                 `json:"FaceCount,omitempty" xml:"FaceCount,omitempty"`
-	Gender          *string                `json:"Gender,omitempty" xml:"Gender,omitempty"`
-	ImageCount      *int64                 `json:"ImageCount,omitempty" xml:"ImageCount,omitempty"`
-	MaxAge          *float32               `json:"MaxAge,omitempty" xml:"MaxAge,omitempty"`
-	MetaLockVersion *int64                 `json:"MetaLockVersion,omitempty" xml:"MetaLockVersion,omitempty"`
-	MinAge          *float32               `json:"MinAge,omitempty" xml:"MinAge,omitempty"`
-	Name            *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	ObjectId        *string                `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	ObjectType      *string                `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	OwnerId         *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProjectName     *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	UpdateTime      *string                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	VideoCount      *int64                 `json:"VideoCount,omitempty" xml:"VideoCount,omitempty"`
+	// The average age.
+	//
+	// example:
+	//
+	// 26
+	AverageAge *float32 `json:"AverageAge,omitempty" xml:"AverageAge,omitempty"`
+	// The cover image.
+	Cover *File `json:"Cover,omitempty" xml:"Cover,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2022-01-14T10:10:52.83948013+08:00
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The custom ID.
+	//
+	// example:
+	//
+	// abc
+	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// The custom labels. You can search for clusters by label.
+	//
+	// example:
+	//
+	// {"Bucket": "examplebucket"}
+	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// The name of the dataset.
+	//
+	// example:
+	//
+	// dataset001
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The number of faces.
+	//
+	// example:
+	//
+	// 3
+	FaceCount *int64 `json:"FaceCount,omitempty" xml:"FaceCount,omitempty"`
+	// The gender.
+	//
+	// example:
+	//
+	// female
+	Gender *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	// The number of images.
+	//
+	// example:
+	//
+	// 5
+	ImageCount *int64 `json:"ImageCount,omitempty" xml:"ImageCount,omitempty"`
+	// The maximum age.
+	//
+	// example:
+	//
+	// 44
+	MaxAge *float32 `json:"MaxAge,omitempty" xml:"MaxAge,omitempty"`
+	// The version of the metadata lock. A metadata lock version can be obtained by using a get or list operation. If you include the MetaLockVersion parameter in a request to update the cluster, the server checks consistency between the MetaLockVersion parameter value sent in the request and the one on the server side and updates the cluster only when they are consistent. This parameter prevents update conflicts in concurrent scenarios. The initial version is 0. The version is automatically increased by 1 after each successful update.
+	//
+	// example:
+	//
+	// 0
+	MetaLockVersion *int64 `json:"MetaLockVersion,omitempty" xml:"MetaLockVersion,omitempty"`
+	// The minimum age.
+	//
+	// example:
+	//
+	// 12
+	MinAge *float32 `json:"MinAge,omitempty" xml:"MinAge,omitempty"`
+	// The name of the cluster.
+	//
+	// example:
+	//
+	// abc
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the cluster.
+	//
+	// example:
+	//
+	// Cluster-ae6e3472-999e-410b-b54e-cd5dba****
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The type of the cluster.
+	//
+	// example:
+	//
+	// figure-cluster
+	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// The user ID.
+	//
+	// example:
+	//
+	// 102321002****
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The name of the project.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The update time.
+	//
+	// example:
+	//
+	// 2022-01-14T10:10:52.83948013+08:00
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The number of videos.
+	//
+	// example:
+	//
+	// 3
+	VideoCount *int64 `json:"VideoCount,omitempty" xml:"VideoCount,omitempty"`
 }
 
 func (s FigureCluster) String() string {

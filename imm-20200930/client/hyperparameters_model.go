@@ -28,28 +28,42 @@ type iHyperparameters interface {
 }
 
 type Hyperparameters struct {
+	// The frequency at which the model configuration is saved. If you set this parameter to 1, model configuration is saved every epoch.
+	//
 	// example:
 	//
 	// 1
 	BackupInterval *int64 `json:"BackupInterval,omitempty" xml:"BackupInterval,omitempty"`
+	// The batch size for model training.
+	//
 	// example:
 	//
 	// 32
 	BatchSize *int64 `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
+	// The number of threads used to read the training data.
+	//
 	// example:
 	//
 	// 4
 	DataLoaderWorkers *int64 `json:"DataLoaderWorkers,omitempty" xml:"DataLoaderWorkers,omitempty"`
+	// The custom parameters for model training.
+	//
 	// This parameter is required.
 	Evaluator *CustomParams `json:"Evaluator,omitempty" xml:"Evaluator,omitempty"`
+	// The image size. The array contains the width and height of the image.
+	//
 	// This parameter is required.
 	InputSize []*int64 `json:"InputSize,omitempty" xml:"InputSize,omitempty" type:"Repeated"`
+	// The number of epochs.
+	//
 	// example:
 	//
 	// 10
-	MaxEpoch     *int64        `json:"MaxEpoch,omitempty" xml:"MaxEpoch,omitempty"`
+	MaxEpoch *int64 `json:"MaxEpoch,omitempty" xml:"MaxEpoch,omitempty"`
+	// The optimization algorithm.
 	Optimization *Optimization `json:"Optimization,omitempty" xml:"Optimization,omitempty"`
-	Schedule     *Schedule     `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	// The learning rate scheduler.
+	Schedule *Schedule `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
 }
 
 func (s Hyperparameters) String() string {

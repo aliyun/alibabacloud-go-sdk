@@ -14,6 +14,14 @@ type iFastFailPolicy interface {
 }
 
 type FastFailPolicy struct {
+	// The action when the batch processor or trigger encounters an error.
+	//
+	// Enumerated values:
+	//
+	// 	- abort: stops running.
+	//
+	// 	- ignore: ignores the error and keeps running.
+	//
 	// example:
 	//
 	// abort

@@ -48,24 +48,98 @@ type iStory interface {
 }
 
 type Story struct {
-	Addresses        []*Address             `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	Cover            *File                  `json:"Cover,omitempty" xml:"Cover,omitempty"`
-	CreateTime       *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CustomId         *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
-	CustomLabels     map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	DatasetName      *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	FigureClusterIds []*string              `json:"FigureClusterIds,omitempty" xml:"FigureClusterIds,omitempty" type:"Repeated"`
-	Files            []*File                `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	ObjectId         *string                `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	ObjectType       *string                `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	OwnerId          *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProjectName      *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	StoryEndTime     *string                `json:"StoryEndTime,omitempty" xml:"StoryEndTime,omitempty"`
-	StoryName        *string                `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
-	StoryStartTime   *string                `json:"StoryStartTime,omitempty" xml:"StoryStartTime,omitempty"`
-	StorySubType     *string                `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
-	StoryType        *string                `json:"StoryType,omitempty" xml:"StoryType,omitempty"`
-	UpdateTime       *string                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The addresses.
+	Addresses []*Address `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// The story cover.
+	Cover *File `json:"Cover,omitempty" xml:"Cover,omitempty"`
+	// The time when the story was created.
+	//
+	// example:
+	//
+	// 2022-01-14T10:17:18.102700407+08:00
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The custom ID.
+	//
+	// example:
+	//
+	// test
+	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// The custom labels.
+	//
+	// example:
+	//
+	// {"key": "val"}
+	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// The name of the dataset.
+	//
+	// example:
+	//
+	// dataset001
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The fluster IDs.
+	FigureClusterIds []*string `json:"FigureClusterIds,omitempty" xml:"FigureClusterIds,omitempty" type:"Repeated"`
+	// The story files.
+	Files []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// The ID of the story object.
+	//
+	// example:
+	//
+	// id1
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The type of the object.
+	//
+	// example:
+	//
+	// story
+	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// The ID of the owner to which the story belongs.
+	//
+	// example:
+	//
+	// 102321002****
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The name of the project.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The time when the story ends.
+	//
+	// example:
+	//
+	// 2022-01-14T10:17:18.102700407+08:00
+	StoryEndTime *string `json:"StoryEndTime,omitempty" xml:"StoryEndTime,omitempty"`
+	// The name of the story.
+	//
+	// example:
+	//
+	// name1
+	StoryName *string `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
+	// The time when the story starts.
+	//
+	// example:
+	//
+	// 2022-01-14T10:17:18.102700407+08:00
+	StoryStartTime *string `json:"StoryStartTime,omitempty" xml:"StoryStartTime,omitempty"`
+	// The subtype of the story.
+	//
+	// example:
+	//
+	// ImportantPerson
+	StorySubType *string `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
+	// The story type.
+	//
+	// example:
+	//
+	// PeopleMemory
+	StoryType *string `json:"StoryType,omitempty" xml:"StoryType,omitempty"`
+	// The time when the story was updated.
+	//
+	// example:
+	//
+	// 2022-01-14T10:17:18.102700407+08:00
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s Story) String() string {

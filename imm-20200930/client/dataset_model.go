@@ -13,6 +13,8 @@ type iDataset interface {
 	GetBindCount() *int64
 	SetCreateTime(v string) *Dataset
 	GetCreateTime() *string
+	SetDatasetConfig(v *DatasetConfig) *Dataset
+	GetDatasetConfig() *DatasetConfig
 	SetDatasetMaxBindCount(v int64) *Dataset
 	GetDatasetMaxBindCount() *int64
 	SetDatasetMaxEntityCount(v int64) *Dataset
@@ -42,20 +44,91 @@ type iDataset interface {
 }
 
 type Dataset struct {
-	BindCount               *int64  `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
-	CreateTime              *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DatasetMaxBindCount     *int64  `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
-	DatasetMaxEntityCount   *int64  `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
-	DatasetMaxFileCount     *int64  `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
-	DatasetMaxRelationCount *int64  `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	DatasetMaxTotalFileSize *int64  `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
-	DatasetName             *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	FileCount               *int64  `json:"FileCount,omitempty" xml:"FileCount,omitempty"`
-	ProjectName             *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	TemplateId              *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TotalFileSize           *int64  `json:"TotalFileSize,omitempty" xml:"TotalFileSize,omitempty"`
-	UpdateTime              *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The current number of OSS buckets that are bound to the dataset.
+	//
+	// example:
+	//
+	// 2
+	BindCount *int64 `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
+	// The timestamp when the dataset was created. The timestamp must be in the RFC3339Nano format.
+	//
+	// example:
+	//
+	// 2021-06-29T14:50:13.011643661+08:00
+	CreateTime    *string        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DatasetConfig *DatasetConfig `json:"DatasetConfig,omitempty" xml:"DatasetConfig,omitempty"`
+	// The maximum number of bindings for the dataset.
+	//
+	// example:
+	//
+	// 10
+	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
+	// The maximum number of metadata entities for the dataset.
+	//
+	// example:
+	//
+	// 10000000000
+	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
+	// The maximum number of files for the dataset.
+	//
+	// example:
+	//
+	// 100000000
+	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
+	// The maximum number of metadata relationships for the dataset.
+	//
+	// example:
+	//
+	// 100000000000
+	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
+	// The maximum total size of files in the dataset. Unit: bytes.
+	//
+	// example:
+	//
+	// 90000000000000000
+	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
+	// The name of the dataset.
+	//
+	// example:
+	//
+	// dataset001
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The dataset description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The current number of files in the dataset.
+	//
+	// example:
+	//
+	// 10
+	FileCount *int64 `json:"FileCount,omitempty" xml:"FileCount,omitempty"`
+	// The name of the project.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The ID of the workflow template.
+	//
+	// example:
+	//
+	// DefaultId
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The total size of files in the dataset. Unit: bytes.
+	//
+	// example:
+	//
+	// 100000
+	TotalFileSize *int64 `json:"TotalFileSize,omitempty" xml:"TotalFileSize,omitempty"`
+	// The timestamp when the dataset was last modified. The timestamp must be in the RFC3339Nano format.
+	//
+	// >  If a dataset has never been modified after it was created, the timestamp when the dataset was last modified is the same as the timestamp when the dataset was created.
+	//
+	// example:
+	//
+	// 2021-06-29T14:50:13.011643661+08:00
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// 自定义参数
+	//
 	// if can be null:
 	// true
 	WorkflowParameters []*WorkflowParameter `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty" type:"Repeated"`
@@ -75,6 +148,10 @@ func (s *Dataset) GetBindCount() *int64 {
 
 func (s *Dataset) GetCreateTime() *string {
 	return s.CreateTime
+}
+
+func (s *Dataset) GetDatasetConfig() *DatasetConfig {
+	return s.DatasetConfig
 }
 
 func (s *Dataset) GetDatasetMaxBindCount() *int64 {
@@ -136,6 +213,11 @@ func (s *Dataset) SetBindCount(v int64) *Dataset {
 
 func (s *Dataset) SetCreateTime(v string) *Dataset {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *Dataset) SetDatasetConfig(v *DatasetConfig) *Dataset {
+	s.DatasetConfig = v
 	return s
 }
 
@@ -205,6 +287,11 @@ func (s *Dataset) SetWorkflowParameters(v []*WorkflowParameter) *Dataset {
 }
 
 func (s *Dataset) Validate() error {
+	if s.DatasetConfig != nil {
+		if err := s.DatasetConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.WorkflowParameters != nil {
 		for _, item := range s.WorkflowParameters {
 			if item != nil {

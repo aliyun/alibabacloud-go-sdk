@@ -34,17 +34,84 @@ type iTaskInfo interface {
 }
 
 type TaskInfo struct {
-	Code                  *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	EndTime               *string                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Message               *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	Progress              *int32                 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	StartTime             *string                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status                *string                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags                  map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TaskId                *string                `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskRequestDefinition *string                `json:"TaskRequestDefinition,omitempty" xml:"TaskRequestDefinition,omitempty"`
-	TaskType              *string                `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	UserData              *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// ResourceNotFound
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The end time of the task.
+	//
+	// example:
+	//
+	// 2021-12-24T03:01:49.480109219Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// The specified resource project is not found.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The progress of the task.
+	//
+	// example:
+	//
+	// 0
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The start time of the task.
+	//
+	// example:
+	//
+	// 2021-12-24T03:01:41.662060377Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// 	- Running: The task is running.
+	//
+	// 	- Succeeded: The task is successful.
+	//
+	// 	- Failed: The task failed.
+	//
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags of the task. You can search for tasks by tag.
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The ID of the task.
+	//
+	// example:
+	//
+	// c2b277b9-0d30-4882-ad6d-ad661382****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The parameter definition in the JSON string format. For more information, see the Request parameters section of the topic about an asynchronous processing task.
+	//
+	// example:
+	//
+	// {
+	//
+	// 	"ProjectName":"test-project",
+	//
+	// 	"CompressedFormat":"zip",
+	//
+	// 	"TargetURI":"oss://test-bucket/output/test.zip",
+	//
+	// 	"Sources":[{"URI":"oss://test-bucket/input/test.jpg"}]
+	//
+	// }
+	TaskRequestDefinition *string `json:"TaskRequestDefinition,omitempty" xml:"TaskRequestDefinition,omitempty"`
+	// The type of the task.
+	//
+	// example:
+	//
+	// VideoLabelClassification
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The custom user data.
+	//
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s TaskInfo) String() string {

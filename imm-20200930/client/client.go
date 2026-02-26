@@ -903,7 +903,7 @@ func (client *Client) CompareImageFaces(request *CompareImageFacesRequest) (_res
 
 // Summary:
 //
-// Phase II of AI Assistant, Q\\&A API
+// Phase II of AI Assistant, Q\\\\\\&A API
 //
 // Description:
 //
@@ -934,7 +934,7 @@ func (client *Client) ContextualAnswerWithSSE(tmpReq *ContextualAnswerRequest, r
 
 // Summary:
 //
-// Phase II of AI Assistant, Q\\&A API
+// Phase II of AI Assistant, Q\\\\\\&A API
 //
 // Description:
 //
@@ -1014,7 +1014,7 @@ func (client *Client) ContextualAnswerWithOptions(tmpReq *ContextualAnswerReques
 
 // Summary:
 //
-// Phase II of AI Assistant, Q\\&A API
+// Phase II of AI Assistant, Q\\\\\\&A API
 //
 // Description:
 //
@@ -1776,7 +1776,7 @@ func (client *Client) CreateCustomizedStory(request *CreateCustomizedStoryReques
 
 // Summary:
 //
-// # Create Dataset
+// Creates a dataset.
 //
 // Description:
 //
@@ -1802,11 +1802,19 @@ func (client *Client) CreateDatasetWithOptions(tmpReq *CreateDatasetRequest, run
 	}
 	request := &CreateDatasetShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DatasetConfig) {
+		request.DatasetConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DatasetConfig, dara.String("DatasetConfig"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.WorkflowParameters) {
 		request.WorkflowParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WorkflowParameters, dara.String("WorkflowParameters"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DatasetConfigShrink) {
+		query["DatasetConfig"] = request.DatasetConfigShrink
+	}
+
 	if !dara.IsNil(request.DatasetMaxBindCount) {
 		query["DatasetMaxBindCount"] = request.DatasetMaxBindCount
 	}
@@ -1872,7 +1880,7 @@ func (client *Client) CreateDatasetWithOptions(tmpReq *CreateDatasetRequest, run
 
 // Summary:
 //
-// # Create Dataset
+// Creates a dataset.
 //
 // Description:
 //
@@ -3280,7 +3288,7 @@ func (client *Client) CreateLocationDateClusteringTask(request *CreateLocationDa
 
 // Summary:
 //
-// # Create Transcoding Service
+// Creates an asynchronous media transcoding task to provide audio and video file processing abilities, such as media transcoding, media splicing, video frame capturing, and video to GIF conversion.
 //
 // Description:
 //
@@ -3388,7 +3396,7 @@ func (client *Client) CreateMediaConvertTaskWithOptions(tmpReq *CreateMediaConve
 
 // Summary:
 //
-// # Create Transcoding Service
+// Creates an asynchronous media transcoding task to provide audio and video file processing abilities, such as media transcoding, media splicing, video frame capturing, and video to GIF conversion.
 //
 // Description:
 //
@@ -6652,7 +6660,7 @@ func (client *Client) GenerateVideoPlaylist(request *GenerateVideoPlaylistReques
 
 // Summary:
 //
-// Generates an access token for document preview or editing.
+// # Obtain Document Preview and Edit Token
 //
 // Description:
 //
@@ -6810,7 +6818,7 @@ func (client *Client) GenerateWebofficeTokenWithOptions(tmpReq *GenerateWeboffic
 
 // Summary:
 //
-// Generates an access token for document preview or editing.
+// # Obtain Document Preview and Edit Token
 //
 // Description:
 //
@@ -7010,7 +7018,7 @@ func (client *Client) GetBinding(request *GetBindingRequest) (_result *GetBindin
 //
 // Summary:
 //
-// drmlicense获取
+// Obtains a Digital Rights Management (DRM) license for encrypted video playback.
 //
 // @param request - GetDRMLicenseRequest
 //
@@ -7072,7 +7080,7 @@ func (client *Client) GetDRMLicenseWithOptions(request *GetDRMLicenseRequest, ru
 //
 // Summary:
 //
-// drmlicense获取
+// Obtains a Digital Rights Management (DRM) license for encrypted video playback.
 //
 // @param request - GetDRMLicenseRequest
 //
@@ -10765,11 +10773,19 @@ func (client *Client) UpdateDatasetWithOptions(tmpReq *UpdateDatasetRequest, run
 	}
 	request := &UpdateDatasetShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DatasetConfig) {
+		request.DatasetConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DatasetConfig, dara.String("DatasetConfig"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.WorkflowParameters) {
 		request.WorkflowParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WorkflowParameters, dara.String("WorkflowParameters"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DatasetConfigShrink) {
+		query["DatasetConfig"] = request.DatasetConfigShrink
+	}
+
 	if !dara.IsNil(request.DatasetMaxBindCount) {
 		query["DatasetMaxBindCount"] = request.DatasetMaxBindCount
 	}
@@ -11519,18 +11535,20 @@ func (client *Client) contextualAnswerWithSSE_opYieldFunc(_yield chan *Contextua
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }

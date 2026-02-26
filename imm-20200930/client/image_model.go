@@ -24,12 +24,30 @@ type iImage interface {
 }
 
 type Image struct {
+	// The image cropping suggestions. This parameter is reserved and not available.
 	CroppingSuggestions []*CroppingSuggestion `json:"CroppingSuggestions,omitempty" xml:"CroppingSuggestions,omitempty" type:"Repeated"`
-	EXIF                *string               `json:"EXIF,omitempty" xml:"EXIF,omitempty"`
-	ImageHeight         *int64                `json:"ImageHeight,omitempty" xml:"ImageHeight,omitempty"`
-	ImageScore          *ImageScore           `json:"ImageScore,omitempty" xml:"ImageScore,omitempty"`
-	ImageWidth          *int64                `json:"ImageWidth,omitempty" xml:"ImageWidth,omitempty"`
-	OCRContents         []*OCRContents        `json:"OCRContents,omitempty" xml:"OCRContents,omitempty" type:"Repeated"`
+	// The original EXIF information about the image. The EXIF information is stored in the serialized JSON format. For more information, see [Query image information](https://help.aliyun.com/document_detail/44975.html).
+	//
+	// example:
+	//
+	// {"FileSize":{"value":"29304"},"Format":{"value":"jpg"}}
+	EXIF *string `json:"EXIF,omitempty" xml:"EXIF,omitempty"`
+	// The height of the image. Unit: pixels.
+	//
+	// example:
+	//
+	// 820
+	ImageHeight *int64 `json:"ImageHeight,omitempty" xml:"ImageHeight,omitempty"`
+	// The image scoring information.
+	ImageScore *ImageScore `json:"ImageScore,omitempty" xml:"ImageScore,omitempty"`
+	// The width of the image. Unit: pixels.
+	//
+	// example:
+	//
+	// 500
+	ImageWidth *int64 `json:"ImageWidth,omitempty" xml:"ImageWidth,omitempty"`
+	// The results of optical character recognition (OCR). This parameter is reserved and not available.
+	OCRContents []*OCRContents `json:"OCRContents,omitempty" xml:"OCRContents,omitempty" type:"Repeated"`
 }
 
 func (s Image) String() string {
