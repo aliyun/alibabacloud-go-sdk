@@ -76,9 +76,9 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	//
 	// 115748125982****
 	AccountIdsScope *string `json:"AccountIdsScope,omitempty" xml:"AccountIdsScope,omitempty"`
-	// The ID of the account group.
+	// The account group ID.
 	//
-	// For more information, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+	// For more information, see [ListAggregators]().
 	//
 	// This parameter is required.
 	//
@@ -92,13 +92,15 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	//
 	// 1594295238-f9361358-5843-4294-8d30-b5183fac****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The conditions for the custom rule, specified in JSON format.
+	//
 	// example:
 	//
-	// {"ComplianceConditions":"{\"operator\":\"and\",\"children\":[{\"operator\":\"StringEquals\",\"featurePath\":\"$.Status\",\"desired\":\"1\",\"featureSource\":\"CONFIGURATION\"}]}"}
+	// {"ComplianceConditions":"{\\"operator\\":\\"and\\",\\"children\\":[{\\"operator\\":\\"StringEquals\\",\\"featurePath\\":\\"$.Status\\",\\"desired\\":\\"1\\",\\"featureSource\\":\\"CONFIGURATION\\"}]}"}
 	Conditions *string `json:"Conditions,omitempty" xml:"Conditions,omitempty"`
 	// The rule ID.
 	//
-	// For more information, see [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html).
+	// For more information, see [ListAggregateConfigRules]().
 	//
 	// This parameter is required.
 	//
@@ -106,19 +108,19 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	//
 	// cr-4e3d626622af0080****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
-	// For more information, see [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html).
+	// For more information, see [ListAggregateConfigRules]().
 	//
 	// example:
 	//
 	// 存在所有指定标签
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	// The trigger type of the rule. Valid values:
+	// The trigger mechanism of the rule. Valid values:
 	//
-	// - ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
+	// - ConfigurationItemChangeNotification: Configuration changes.
 	//
-	// - ScheduledNotification: The rule is triggered on a regular basis.
+	// - ScheduledNotification: Scheduled execution.
 	//
 	// > You can modify this parameter only for custom rules.
 	//
@@ -174,7 +176,7 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
 	// The excluded tag scope.
 	ExcludeTagsScope []*UpdateAggregateConfigRuleShrinkRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
-	// The rule applies only to resources of member accounts in the specified folders.
+	// The rule applies only to resources of member accounts in the specified resource directory IDs.
 	//
 	// > - This parameter applies only to rules in a global account group.
 	//
@@ -186,13 +188,13 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	//
 	// fd-ZtHsRH****
 	FolderIdsScope *string `json:"FolderIdsScope,omitempty" xml:"FolderIdsScope,omitempty"`
-	// The input parameters of the rule.
+	// The rule parameters.
 	//
 	// example:
 	//
 	// {"tag1Key":"ECS","tag1Value":"test"}
 	InputParametersShrink *string `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
-	// The frequency at which the rule is run. Valid values:
+	// The frequency at which the rule runs. Valid values:
 	//
 	// - One_Hour: 1 hour.
 	//
@@ -210,7 +212,7 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	//
 	// One_Hour
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
-	// The rule applies only to resources in the specified regions. Separate multiple region IDs with a comma (,).
+	// The rule applies only to resources in the specified region IDs. Separate multiple region IDs with a comma (,).
 	//
 	// > This parameter applies only to rule templates.
 	//
@@ -218,7 +220,7 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	// The rule applies only to resources in the specified resource groups. Separate multiple resource group IDs with a comma (,).
+	// The rule applies only to resources in the specified resource group IDs. Separate multiple resource group IDs with a comma (,).
 	//
 	// > This parameter applies only to rule templates.
 	//
@@ -226,13 +228,13 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	//
 	// rg-aekzc7r7rhx****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	// The rule applies only to the specified resources. Separate multiple resource IDs with a comma (,).
+	// The rule applies only to the specified resource IDs. Separate multiple resource IDs with a comma (,).
 	//
 	// example:
 	//
 	// lb-5cmbowstbkss9ta03****
 	ResourceIdsScope *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
-	// The rule applies only to resources with the specified name.
+	// The rule applies only to resources with the specified resource name.
 	//
 	// if can be null:
 	// true
@@ -261,19 +263,17 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// Deprecated
 	//
-	// The tags of the resource. This input parameter is deprecated and is ignored if specified.
-	//
-	// A maximum of 20 tags can be attached.
+	// The rule applies only to resources with the specified resource name.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The logical relationship for multiple tags in the `TagsScope` parameter. For example, if you set the `TagsScope` parameter to `"TagsScope.1.TagKey":"a","TagsScope.1.TagValue":"a","TagsScope.2.TagKey":"b","TagsScope.2.TagValue":"b"` and set this parameter to `AND`, the rule applies only to resources that have both the `a:a` and `b:b` tags. If you do not set this parameter, the default value is `OR`.
 	//
-	// This parameter also works with the deprecated `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and set this parameter to `AND`, the rule applies only to resources that have both the `ECS` and `OSS` tags.
+	// This parameter also works with the deprecated `TagKeyScope` parameter (not recommended). For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and set this parameter to `AND`, the rule applies only to resources that have both the `ECS` and `OSS` tags.
 	//
 	// Valid values:
 	//
-	// - AND
+	// - AND: Logical AND.
 	//
-	// - OR
+	// - OR: Logical OR.
 	//
 	// example:
 	//
@@ -283,7 +283,7 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	//
 	// This parameter is deprecated. Use the `TagsScope` parameter instead.
 	//
-	// The rule applies only to resources that have the specified tag.
+	// The rule applies only to resources with the specified tag.
 	//
 	// > This parameter applies only to rule templates. You must specify both `TagKeyScope` and `TagValueScope`.
 	//
@@ -295,7 +295,7 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	//
 	// This parameter is deprecated. Use the `TagsScope` parameter instead.
 	//
-	// The rule applies only to resources that have the specified tag.
+	// The rule applies only to resources with the specified tag.
 	//
 	// > This parameter applies only to rule templates. You must specify both `TagKeyScope` and `TagValueScope`.
 	//
