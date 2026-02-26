@@ -2822,6 +2822,66 @@ func (client *Client) GetOssCheckTaskInfoWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 测试特性配置
+//
+// @param request - GetPromptTestResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPromptTestResultResponse
+func (client *Client) GetPromptTestResultWithContext(ctx context.Context, request *GetPromptTestResultRequest, runtime *dara.RuntimeOptions) (_result *GetPromptTestResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		query["Config"] = request.Config
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.ServiceCode) {
+		query["ServiceCode"] = request.ServiceCode
+	}
+
+	if !dara.IsNil(request.Text) {
+		query["Text"] = request.Text
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPromptTestResult"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPromptTestResultResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # User OSS Check Task Pending Inspection Information
 //
 // @param request - GetScanNumRequest
