@@ -223,7 +223,8 @@ type GetInstanceFeatureGateResponseBodyData struct {
 	// example:
 	//
 	// true
-	UseComputeNode *bool `json:"UseComputeNode,omitempty" xml:"UseComputeNode,omitempty"`
+	UseComputeNode           *bool `json:"UseComputeNode,omitempty" xml:"UseComputeNode,omitempty"`
+	SupportCompactionService *bool `json:"supportCompactionService,omitempty" xml:"supportCompactionService,omitempty"`
 }
 
 func (s GetInstanceFeatureGateResponseBodyData) String() string {
@@ -308,6 +309,10 @@ func (s *GetInstanceFeatureGateResponseBodyData) GetSupportMultiAZ() *bool {
 
 func (s *GetInstanceFeatureGateResponseBodyData) GetUseComputeNode() *bool {
 	return s.UseComputeNode
+}
+
+func (s *GetInstanceFeatureGateResponseBodyData) GetSupportCompactionService() *bool {
+	return s.SupportCompactionService
 }
 
 func (s *GetInstanceFeatureGateResponseBodyData) SetConsoleControlRestart(v bool) *GetInstanceFeatureGateResponseBodyData {
@@ -402,6 +407,11 @@ func (s *GetInstanceFeatureGateResponseBodyData) SetSupportMultiAZ(v bool) *GetI
 
 func (s *GetInstanceFeatureGateResponseBodyData) SetUseComputeNode(v bool) *GetInstanceFeatureGateResponseBodyData {
 	s.UseComputeNode = &v
+	return s
+}
+
+func (s *GetInstanceFeatureGateResponseBodyData) SetSupportCompactionService(v bool) *GetInstanceFeatureGateResponseBodyData {
+	s.SupportCompactionService = &v
 	return s
 }
 
