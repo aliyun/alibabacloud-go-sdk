@@ -140,85 +140,31 @@ func (s *DescribeAIDBClustersResponseBodyItems) Validate() error {
 }
 
 type DescribeAIDBClustersResponseBodyItemsDBCluster struct {
-	// example:
-	//
-	// vnode
-	AiNodeType *string `json:"AiNodeType,omitempty" xml:"AiNodeType,omitempty"`
-	// example:
-	//
-	// 2021-09-13T15:45:27Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// ocpx
+	AiNodeType           *string `json:"AiNodeType,omitempty" xml:"AiNodeType,omitempty"`
+	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterStatus      *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
+	DBNodeClass          *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
+	DBType               *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	ExpireTime           *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	Expired              *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	KubeClusterId        *string `json:"KubeClusterId,omitempty" xml:"KubeClusterId,omitempty"`
+	LockMode             *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	ModelType            *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// example:
 	//
 	// pc-**************
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// example:
-	//
-	// Creating
-	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
-	// example:
-	//
-	// polar.pg.g8.8xlarge.gu30
-	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	// example:
-	//
-	// polardb_ai
-	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// example:
-	//
-	// 2028-09-01T16:00:00Z
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// example:
-	//
-	// False
-	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// example:
-	//
-	// xxxxxxxxxxxx
-	KubeClusterId *string `json:"KubeClusterId,omitempty" xml:"KubeClusterId,omitempty"`
-	// example:
-	//
-	// Unlock
-	LockMode  *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
-	// example:
-	//
-	// Postpaid
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// example:
-	//
-	// pc-**************
-	RelativeDBClusterId *string `json:"RelativeDBClusterId,omitempty" xml:"RelativeDBClusterId,omitempty"`
-	// example:
-	//
-	// container
-	RunType *string `json:"RunType,omitempty" xml:"RunType,omitempty"`
-	// example:
-	//
-	// 10
-	StorageSpace *int32 `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
-	// example:
-	//
-	// essdpl0
-	StorageType *string                                             `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	Tags        *DescribeAIDBClustersResponseBodyItemsDBClusterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// example:
-	//
-	// vpc-***************
-	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	// example:
-	//
-	// cn-hangzhou-j
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	RelativeDBClusterId *string                                             `json:"RelativeDBClusterId,omitempty" xml:"RelativeDBClusterId,omitempty"`
+	RunType             *string                                             `json:"RunType,omitempty" xml:"RunType,omitempty"`
+	StorageSpace        *int32                                              `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
+	StorageType         *string                                             `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Tags                *DescribeAIDBClustersResponseBodyItemsDBClusterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VpcId               *string                                             `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswitchId           *string                                             `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	ZoneId              *string                                             `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeAIDBClustersResponseBodyItemsDBCluster) String() string {

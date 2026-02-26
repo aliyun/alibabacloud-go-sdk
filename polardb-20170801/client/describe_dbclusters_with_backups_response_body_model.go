@@ -22,7 +22,6 @@ type iDescribeDBClustersWithBackupsResponseBody interface {
 }
 
 type DescribeDBClustersWithBackupsResponseBody struct {
-	// The details about the cluster.
 	Items *DescribeDBClustersWithBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The total number of returned pages.
 	//
@@ -147,164 +146,25 @@ func (s *DescribeDBClustersWithBackupsResponseBodyItems) Validate() error {
 }
 
 type DescribeDBClustersWithBackupsResponseBodyItemsDBCluster struct {
-	// The time when the cluster was created.
-	//
-	// example:
-	//
-	// 2022-05-09T09:33:51Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The name of the cluster.
-	//
-	// example:
-	//
-	// test
+	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	// The ID of cluster.
-	//
-	// example:
-	//
-	// pc-****************
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The network type of the cluster.
-	//
-	// example:
-	//
-	// VPC
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	DBClusterNetworkType *string `json:"DBClusterNetworkType,omitempty" xml:"DBClusterNetworkType,omitempty"`
-	// The status of the cluster. Valid values:
-	//
-	// 	- Creating: The cluster is being created.
-	//
-	// 	- Running: The cluster is running.
-	//
-	// 	- Deleting: The cluster is being released.
-	//
-	// 	- Rebooting: The cluster is restarting.
-	//
-	// 	- DBNodeCreating: The node is being added.
-	//
-	// 	- DBNodeDeleting: The node is being deleted.
-	//
-	// 	- ClassChanging: The specifications of the node are being changed.
-	//
-	// 	- NetAddressCreating: The network connection is being created.
-	//
-	// 	- NetAddressDeleting: The network connection is being deleted.
-	//
-	// 	- NetAddressModifying: The network connection is being modified.
-	//
-	// 	- Deleted: The cluster has been released.
-	//
-	// example:
-	//
-	// Running
-	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
-	// The specifications of the node.
-	//
-	// example:
-	//
-	// polar.mysql.x4.medium
-	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	// The type of the database engine.
-	//
-	// example:
-	//
-	// MySQL
-	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The version of the database engine.
-	//
-	// example:
-	//
-	// 8.0
-	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// The time when the cluster was deleted.
-	//
-	// example:
-	//
-	// 2022-05-12T03:25:37Z
-	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
-	// Indicates whether the cluster is locked and can be deleted. Valid values:
-	//
-	// 	- **0**: The cluster is not locked and can be deleted.
-	//
-	// 	- **1**: The cluster is locked and cannot be deleted.
-	//
-	// example:
-	//
-	// 0
-	DeletionLock *int32 `json:"DeletionLock,omitempty" xml:"DeletionLock,omitempty"`
-	// The type of the database engine.
-	//
-	// example:
-	//
-	// POLARDB
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The time when the cluster expires.
-	//
-	// > A specific value will be returned only for subscription clusters. For pay-as-you-go clusters, an empty string will be returned.
-	//
-	// example:
-	//
-	// 2022-09-14T16:00:00Z
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Indicates whether the cluster has expired.
-	//
-	// > A specific value will be returned only for subscription clusters.
-	//
-	// example:
-	//
-	// false
-	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// Indicates whether the cluster was released. Valid values:
-	//
-	// 	- 1: released
-	//
-	// 	- 0: not released
-	//
-	// example:
-	//
-	// 1
-	IsDeleted *int32 `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	// The state of the cluster lock. Valid values:
-	//
-	// 	- **Unlock**: The cluster is not locked.
-	//
-	// 	- **ManualLock**: The cluster is manually locked.
-	//
-	// 	- **LockByExpiration**: The cluster is automatically locked after the cluster expires.
-	//
-	// example:
-	//
-	// Unlock
-	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The billing method. Valid values:
-	//
-	// 	- **Postpaid**: pay-as-you-go.
-	//
-	// 	- **Prepaid**: subscription
-	//
-	// example:
-	//
-	// Postpaid
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The region ID of the cluster.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The VPC ID of the cluster.
-	//
-	// example:
-	//
-	// vpc-******************
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the zone in which the instance is located.
-	//
-	// example:
-	//
-	// cn-hangzhou-h
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	DBClusterStatus      *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
+	DBNodeClass          *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
+	DBType               *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	DBVersion            *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	DeletedTime          *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	DeletionLock         *int32  `json:"DeletionLock,omitempty" xml:"DeletionLock,omitempty"`
+	Engine               *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	ExpireTime           *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	Expired              *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	IsDeleted            *int32  `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	LockMode             *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBClustersWithBackupsResponseBodyItemsDBCluster) String() string {

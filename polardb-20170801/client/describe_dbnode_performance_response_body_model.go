@@ -49,8 +49,7 @@ type DescribeDBNodePerformanceResponseBody struct {
 	// example:
 	//
 	// 2020-09-23T01:01:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The cluster performance metrics.
+	EndTime         *string                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	PerformanceKeys *DescribeDBNodePerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -181,20 +180,9 @@ func (s *DescribeDBNodePerformanceResponseBodyPerformanceKeys) Validate() error 
 }
 
 type DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItem struct {
-	// The performance metrics that you want to query.
-	//
-	// example:
-	//
-	// PolarDBDiskUsage
-	Measurement *string `json:"Measurement,omitempty" xml:"Measurement,omitempty"`
-	// The name of the performance metric.
-	//
-	// example:
-	//
-	// mean_sys_dir_size
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The performance metrics.
-	Points *DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItemPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Struct"`
+	Measurement *string                                                                    `json:"Measurement,omitempty" xml:"Measurement,omitempty"`
+	MetricName  *string                                                                    `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Points      *DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItemPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Struct"`
 }
 
 func (s DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItem) String() string {
@@ -276,18 +264,8 @@ func (s *DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItemPoin
 }
 
 type DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue struct {
-	// The timestamp of the metric. This value is a UNIX timestamp. Unit: millisecond.
-	//
-	// example:
-	//
-	// 1600822800000
-	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The value of the metric.
-	//
-	// example:
-	//
-	// 9.33
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Timestamp *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue) String() string {

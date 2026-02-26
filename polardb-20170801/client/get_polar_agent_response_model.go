@@ -13,6 +13,10 @@ type iGetPolarAgentResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *GetPolarAgentResponse
 	GetStatusCode() *int32
+	SetId(v string) *GetPolarAgentResponse
+	GetId() *string
+	SetEvent(v string) *GetPolarAgentResponse
+	GetEvent() *string
 	SetBody(v *GetPolarAgentResponseBody) *GetPolarAgentResponse
 	GetBody() *GetPolarAgentResponseBody
 }
@@ -20,6 +24,8 @@ type iGetPolarAgentResponse interface {
 type GetPolarAgentResponse struct {
 	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                    `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                    `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *GetPolarAgentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *GetPolarAgentResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *GetPolarAgentResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *GetPolarAgentResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *GetPolarAgentResponse) GetBody() *GetPolarAgentResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *GetPolarAgentResponse) SetHeaders(v map[string]*string) *GetPolarAgentR
 
 func (s *GetPolarAgentResponse) SetStatusCode(v int32) *GetPolarAgentResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPolarAgentResponse) SetId(v string) *GetPolarAgentResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *GetPolarAgentResponse) SetEvent(v string) *GetPolarAgentResponse {
+	s.Event = &v
 	return s
 }
 

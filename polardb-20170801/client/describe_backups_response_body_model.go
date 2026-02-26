@@ -24,7 +24,6 @@ type iDescribeBackupsResponseBody interface {
 }
 
 type DescribeBackupsResponseBody struct {
-	// The queried backup sets.
 	Items *DescribeBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -162,134 +161,20 @@ func (s *DescribeBackupsResponseBodyItems) Validate() error {
 }
 
 type DescribeBackupsResponseBodyItemsBackup struct {
-	// The end time of the backup task. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2020-11-15T07:30:20Z
-	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
-	// The ID of the backup set.
-	//
-	// example:
-	//
-	// 61*******
-	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The backup method. Only **Snapshot*	- may be returned.
-	//
-	// example:
-	//
-	// Snapshot
-	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	// The backup mode. Valid values:
-	//
-	// 	- **Automated**
-	//
-	// 	- **Manual**
-	//
-	// example:
-	//
-	// Automated
-	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	// The size of the backup set. Unit: bytes.
-	//
-	// > After you delete the target snapshot backups, the storage space that is consumed by the backups is released. The released storage space is smaller than the size of the backup file, because the snapshots share specific data blocks. For more information, see [FAQ about backup](https://help.aliyun.com/document_detail/164881.html).
-	//
-	// example:
-	//
-	// 4639948800
-	BackupSetSize *string `json:"BackupSetSize,omitempty" xml:"BackupSetSize,omitempty"`
-	// The start time of the backup task. The time is displayed in UTC. Unit: seconds.
-	//
-	// example:
-	//
-	// 2020-11-15T07:30:05Z
-	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	// The status of the backup set. Valid values:
-	//
-	// 	- **Success**
-	//
-	// 	- **Failed**
-	//
-	// example:
-	//
-	// Success
-	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	// The type of the backup. Only **FullBackup*	- may be returned.
-	//
-	// example:
-	//
-	// FullBackup
-	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The level of the backup set. Valid values:
-	//
-	// 	- **Level-1**
-	//
-	// 	- **Level-2**
-	//
-	// example:
-	//
-	// Level-1
-	BackupsLevel *string `json:"BackupsLevel,omitempty" xml:"BackupsLevel,omitempty"`
-	// The snapshot checkpoint time. The value follows the Unix time format. Unit: seconds.
-	//
-	// example:
-	//
-	// 1605425407
-	ConsistentTime *string `json:"ConsistentTime,omitempty" xml:"ConsistentTime,omitempty"`
-	// The ID of the cluster.
-	//
-	// example:
-	//
-	// pc-****************
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The expected expiration time of the backup set (This parameter is supported only for clusters for which sparse backup is enabled).
-	//
-	// example:
-	//
-	// 2022-10-24T08:13:23Z
+	BackupEndTime    *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
+	BackupId         *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	BackupMethod     *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	BackupMode       *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	BackupSetSize    *string `json:"BackupSetSize,omitempty" xml:"BackupSetSize,omitempty"`
+	BackupStartTime  *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	BackupStatus     *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	BackupType       *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	BackupsLevel     *string `json:"BackupsLevel,omitempty" xml:"BackupsLevel,omitempty"`
+	ConsistentTime   *string `json:"ConsistentTime,omitempty" xml:"ConsistentTime,omitempty"`
+	DBClusterId      *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	ExpectExpireTime *string `json:"ExpectExpireTime,omitempty" xml:"ExpectExpireTime,omitempty"`
-	// The expected expiration type of the backup set (This parameter is supported only for instances that are enabled with sparse backup).
-	//
-	// Valid values:
-	//
-	// 	- NEVER
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- EXPIRED
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- DELAY
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// example:
-	//
-	// EXPIRED
 	ExpectExpireType *string `json:"ExpectExpireType,omitempty" xml:"ExpectExpireType,omitempty"`
-	// Indicates whether the backup set is available. Valid values:
-	//
-	// 	- **0**: The backup set is unavailable.
-	//
-	// 	- **1**: The backup set is available.
-	//
-	// example:
-	//
-	// 0
-	IsAvail *string `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
+	IsAvail          *string `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
 }
 
 func (s DescribeBackupsResponseBodyItemsBackup) String() string {

@@ -125,34 +125,13 @@ func (s *DescribeDBClusterNetInfoResponseBodyDBClusterNetInfos) Validate() error
 }
 
 type DescribeDBClusterNetInfoResponseBodyDBClusterNetInfosDBClusterNetInfo struct {
-	// example:
-	//
-	// pc-****************.pg.polardb.pre.rds.aliyuncs.com
-	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// example:
-	//
-	// MPP
+	ConnectionString     *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	ConnectionStringType *string `json:"ConnectionStringType,omitempty" xml:"ConnectionStringType,omitempty"`
-	// example:
-	//
-	// 121.*.*.173
-	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
-	// example:
-	//
-	// Public
-	IPType *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
-	// example:
-	//
-	// 1521
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// example:
-	//
-	// vpc-***************
-	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// example:
-	//
-	// vsw-bp1li3eavsz8oaexq15dw
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	IPAddress            *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
+	IPType               *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
+	Port                 *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	VPCId                *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s DescribeDBClusterNetInfoResponseBodyDBClusterNetInfosDBClusterNetInfo) String() string {
@@ -265,15 +244,9 @@ func (s *DescribeDBClusterNetInfoResponseBodyDBNodeNetInfos) Validate() error {
 }
 
 type DescribeDBClusterNetInfoResponseBodyDBNodeNetInfosDBNodeNetInfo struct {
-	// example:
-	//
-	// pc-*************
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// example:
-	//
-	// Writer
-	DBNodeRole *string                                                                  `json:"DBNodeRole,omitempty" xml:"DBNodeRole,omitempty"`
-	NetInfos   *DescribeDBClusterNetInfoResponseBodyDBNodeNetInfosDBNodeNetInfoNetInfos `json:"NetInfos,omitempty" xml:"NetInfos,omitempty" type:"Struct"`
+	DBInstanceId *string                                                                  `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBNodeRole   *string                                                                  `json:"DBNodeRole,omitempty" xml:"DBNodeRole,omitempty"`
+	NetInfos     *DescribeDBClusterNetInfoResponseBodyDBNodeNetInfosDBNodeNetInfoNetInfos `json:"NetInfos,omitempty" xml:"NetInfos,omitempty" type:"Struct"`
 }
 
 func (s DescribeDBClusterNetInfoResponseBodyDBNodeNetInfosDBNodeNetInfo) String() string {
@@ -355,30 +328,12 @@ func (s *DescribeDBClusterNetInfoResponseBodyDBNodeNetInfosDBNodeNetInfoNetInfos
 }
 
 type DescribeDBClusterNetInfoResponseBodyDBNodeNetInfosDBNodeNetInfoNetInfosNetInfo struct {
-	// example:
-	//
-	// pc-****************.pg.polardb.pre.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// example:
-	//
-	// 47.*.*.203
-	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
-	// example:
-	//
-	// Public
-	IPType *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
-	// example:
-	//
-	// 5432
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// example:
-	//
-	// vpc-****************
-	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// example:
-	//
-	// vsw-*************
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	IPAddress        *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
+	IPType           *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
+	Port             *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	VPCId            *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s DescribeDBClusterNetInfoResponseBodyDBNodeNetInfosDBNodeNetInfoNetInfosNetInfo) String() string {

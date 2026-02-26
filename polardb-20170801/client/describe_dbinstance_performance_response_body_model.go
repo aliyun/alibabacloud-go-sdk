@@ -183,15 +183,9 @@ func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeys) Validate() er
 }
 
 type DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceItem struct {
-	// example:
-	//
-	// PolarDBDiskUsage
-	Measurement *string `json:"Measurement,omitempty" xml:"Measurement,omitempty"`
-	// example:
-	//
-	// mean_data_size
-	MetricName *string                                                                        `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	Points     *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceItemPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Struct"`
+	Measurement *string                                                                        `json:"Measurement,omitempty" xml:"Measurement,omitempty"`
+	MetricName  *string                                                                        `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Points      *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceItemPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Struct"`
 }
 
 func (s DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceItem) String() string {
@@ -273,14 +267,8 @@ func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceItem
 }
 
 type DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue struct {
-	// example:
-	//
-	// 1737424822
-	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// example:
-	//
-	// 12.33
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Timestamp *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue) String() string {

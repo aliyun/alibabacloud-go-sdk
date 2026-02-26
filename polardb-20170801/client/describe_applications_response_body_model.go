@@ -138,60 +138,24 @@ func (s *DescribeApplicationsResponseBodyItems) Validate() error {
 }
 
 type DescribeApplicationsResponseBodyItemsApplications struct {
-	// example:
-	//
-	// pa-**************
-	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// example:
-	//
-	// supabase
+	ApplicationId   *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	// example:
-	//
-	// 2025-03-25T09:37:10Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CreationTime    *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// example:
 	//
 	// pc-xxxxxx
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// example:
-	//
-	// myapp
-	Description *string                                                     `json:"Description,omitempty" xml:"Description,omitempty"`
-	Endpoints   *DescribeApplicationsResponseBodyItemsApplicationsEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
-	// example:
-	//
-	// 1.0.0
-	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// example:
-	//
-	// 2025-06-25T09:37:10Z
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// example:
-	//
-	// false
-	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// example:
-	//
-	// Postpaid
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// example:
-	//
-	// pcs-**************
-	PolarFSInstanceId *string `json:"PolarFSInstanceId,omitempty" xml:"PolarFSInstanceId,omitempty"`
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// example:
-	//
-	// Activated
-	Status *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   *DescribeApplicationsResponseBodyItemsApplicationsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// example:
-	//
-	// cn-hangzhou-b
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	DBClusterId       *string                                                     `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Description       *string                                                     `json:"Description,omitempty" xml:"Description,omitempty"`
+	Endpoints         *DescribeApplicationsResponseBodyItemsApplicationsEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
+	EngineVersion     *string                                                     `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	ExpireTime        *string                                                     `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	Expired           *string                                                     `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	PayType           *string                                                     `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PolarFSInstanceId *string                                                     `json:"PolarFSInstanceId,omitempty" xml:"PolarFSInstanceId,omitempty"`
+	RegionId          *string                                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status            *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags              *DescribeApplicationsResponseBodyItemsApplicationsTags      `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	ZoneId            *string                                                     `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeApplicationsResponseBodyItemsApplications) String() string {
@@ -386,18 +350,9 @@ func (s *DescribeApplicationsResponseBodyItemsApplicationsEndpoints) Validate() 
 }
 
 type DescribeApplicationsResponseBodyItemsApplicationsEndpointsEndpoint struct {
-	// example:
-	//
-	// 192.168.0.3
-	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// example:
-	//
-	// Public
+	IP      *string `json:"IP,omitempty" xml:"IP,omitempty"`
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// example:
-	//
-	// 8080
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Port    *string `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s DescribeApplicationsResponseBodyItemsApplicationsEndpointsEndpoint) String() string {

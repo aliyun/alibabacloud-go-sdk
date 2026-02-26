@@ -79,16 +79,14 @@ type DescribeDBClusterParametersResponseBody struct {
 	// example:
 	//
 	// 1
-	ParameterNumbers *string `json:"ParameterNumbers,omitempty" xml:"ParameterNumbers,omitempty"`
-	// A comparison of parameters between the source RDS instance and the destination PolarDB cluster.
-	Parameters *DescribeDBClusterParametersResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
+	ParameterNumbers *string                                            `json:"ParameterNumbers,omitempty" xml:"ParameterNumbers,omitempty"`
+	Parameters       *DescribeDBClusterParametersResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
 	//
 	// EBEAA83D-1734-42E3-85E3-E25F6E******
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The parameters of the PolarDB cluster.
+	RequestId         *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RunningParameters *DescribeDBClusterParametersResponseBodyRunningParameters `json:"RunningParameters,omitempty" xml:"RunningParameters,omitempty" type:"Struct"`
 }
 
@@ -221,104 +219,19 @@ func (s *DescribeDBClusterParametersResponseBodyParameters) Validate() error {
 }
 
 type DescribeDBClusterParametersResponseBodyParametersParameters struct {
-	// Indicates whether the source and current parameters have the same value.
-	//
-	// example:
-	//
-	// true
-	IsEqual *string `json:"IsEqual,omitempty" xml:"IsEqual,omitempty"`
-	// Indicate whether the parameter is a primary parameter of the destination cluster. Valid values:
-	//
-	// 	- **1**: The parameter is a primary parameter of the destination cluster.
-	//
-	// 	- **0**: The parameter is not a primary parameter of the destination cluster.
-	//
-	// example:
-	//
-	// 1
-	IsInstancePolarDBKey *string `json:"IsInstancePolarDBKey,omitempty" xml:"IsInstancePolarDBKey,omitempty"`
-	// Indicate whether the parameter is a primary parameter of the source instance. Valid values:
-	//
-	// 	- **1**: The parameter is a primary parameter of the source instance.
-	//
-	// 	- **0**: The parameter is not a primary parameter of the source instance.
-	//
-	// example:
-	//
-	// 0
-	IsInstanceRdsKey *string `json:"IsInstanceRdsKey,omitempty" xml:"IsInstanceRdsKey,omitempty"`
-	// Indicate whether the parameter is a primary parameter of the destination cluster. Valid values:
-	//
-	// 	- **1**: The parameter is a primary parameter of the destination cluster.
-	//
-	// 	- **0**: The parameter is not a primary parameter of the destination cluster.
-	//
-	// example:
-	//
-	// 0
-	IsPolarDBKey *string `json:"IsPolarDBKey,omitempty" xml:"IsPolarDBKey,omitempty"`
-	// Indicate whether the parameter is a primary parameter of the source instance. Valid values:
-	//
-	// 	- **1**: The parameter is a primary parameter of the source instance.
-	//
-	// 	- **0**: The parameter is not a primary parameter of the source instance.
-	//
-	// example:
-	//
-	// 1
-	IsRdsKey *string `json:"IsRdsKey,omitempty" xml:"IsRdsKey,omitempty"`
-	// The description of the parameter of the destination cluster.
-	//
-	// example:
-	//
-	// The server\\"s default character set.
+	IsEqual                  *string `json:"IsEqual,omitempty" xml:"IsEqual,omitempty"`
+	IsInstancePolarDBKey     *string `json:"IsInstancePolarDBKey,omitempty" xml:"IsInstancePolarDBKey,omitempty"`
+	IsInstanceRdsKey         *string `json:"IsInstanceRdsKey,omitempty" xml:"IsInstanceRdsKey,omitempty"`
+	IsPolarDBKey             *string `json:"IsPolarDBKey,omitempty" xml:"IsPolarDBKey,omitempty"`
+	IsRdsKey                 *string `json:"IsRdsKey,omitempty" xml:"IsRdsKey,omitempty"`
 	DistParameterDescription *string `json:"distParameterDescription,omitempty" xml:"distParameterDescription,omitempty"`
-	// The name of the parameter of the destination cluster.
-	//
-	// example:
-	//
-	// character_set_server
-	DistParameterName *string `json:"distParameterName,omitempty" xml:"distParameterName,omitempty"`
-	// The valid values of the parameter of the destination cluster.
-	//
-	// example:
-	//
-	// - utf8
-	//
-	// - gbk
-	DistParameterOptional *string `json:"distParameterOptional,omitempty" xml:"distParameterOptional,omitempty"`
-	// The value of the parameter of the destination cluster.
-	//
-	// example:
-	//
-	// utf8
-	DistParameterValue *string `json:"distParameterValue,omitempty" xml:"distParameterValue,omitempty"`
-	// The description of the parameter of the source instance.
-	//
-	// example:
-	//
-	// The server\\"s default character set.
-	RdsParameterDescription *string `json:"rdsParameterDescription,omitempty" xml:"rdsParameterDescription,omitempty"`
-	// The name of the parameter of the source instance.
-	//
-	// example:
-	//
-	// character_set_server
-	RdsParameterName *string `json:"rdsParameterName,omitempty" xml:"rdsParameterName,omitempty"`
-	// The valid values of the parameter of the source instance.
-	//
-	// example:
-	//
-	// - utf8
-	//
-	// - gbk
-	RdsParameterOptional *string `json:"rdsParameterOptional,omitempty" xml:"rdsParameterOptional,omitempty"`
-	// The value of the parameter of the source instance.
-	//
-	// example:
-	//
-	// utf8
-	RdsParameterValue *string `json:"rdsParameterValue,omitempty" xml:"rdsParameterValue,omitempty"`
+	DistParameterName        *string `json:"distParameterName,omitempty" xml:"distParameterName,omitempty"`
+	DistParameterOptional    *string `json:"distParameterOptional,omitempty" xml:"distParameterOptional,omitempty"`
+	DistParameterValue       *string `json:"distParameterValue,omitempty" xml:"distParameterValue,omitempty"`
+	RdsParameterDescription  *string `json:"rdsParameterDescription,omitempty" xml:"rdsParameterDescription,omitempty"`
+	RdsParameterName         *string `json:"rdsParameterName,omitempty" xml:"rdsParameterName,omitempty"`
+	RdsParameterOptional     *string `json:"rdsParameterOptional,omitempty" xml:"rdsParameterOptional,omitempty"`
+	RdsParameterValue        *string `json:"rdsParameterValue,omitempty" xml:"rdsParameterValue,omitempty"`
 }
 
 func (s DescribeDBClusterParametersResponseBodyParametersParameters) String() string {
@@ -485,100 +398,18 @@ func (s *DescribeDBClusterParametersResponseBodyRunningParameters) Validate() er
 }
 
 type DescribeDBClusterParametersResponseBodyRunningParametersParameter struct {
-	// The valid values of the parameter.
-	//
-	// example:
-	//
-	// [utf8|latin1|gbk|utf8mb4]
-	CheckingCode *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
-	// The data type of the parameter value. Valid values:
-	//
-	// 	- **INT**
-	//
-	// 	- **STRING**
-	//
-	// 	- **B**
-	//
-	// example:
-	//
-	// INT
-	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The default value of the parameter.
-	//
-	// example:
-	//
-	// utf8
+	CheckingCode          *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
+	DataType              *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	DefaultParameterValue *string `json:"DefaultParameterValue,omitempty" xml:"DefaultParameterValue,omitempty"`
-	// A divisor of the parameter. For a parameter of the integer or byte type, the valid values must be a multiple of Factor unless you set Factor to 0.
-	//
-	// example:
-	//
-	// 20
-	Factor *string `json:"Factor,omitempty" xml:"Factor,omitempty"`
-	// Indicates whether a cluster restart is required for the parameter modification to take effect. Valid values:
-	//
-	// 	- **false**
-	//
-	// 	- **true**
-	//
-	// example:
-	//
-	// true
-	ForceRestart *bool `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
-	// Indicates whether the parameter can be modified. Valid values:
-	//
-	// 	- **false**
-	//
-	// 	- **true**
-	//
-	// example:
-	//
-	// true
-	IsModifiable *bool `json:"IsModifiable,omitempty" xml:"IsModifiable,omitempty"`
-	// Indicates whether the parameter is a global parameter. Valid values:
-	//
-	// 	- **0**: The parameter is a global parameter. The modified parameter value is synchronized to other nodes.
-	//
-	// 	- **1**: The parameter is not a global parameter. You can specify the nodes to which the modified parameter value can be synchronized.
-	//
-	// example:
-	//
-	// 0
-	IsNodeAvailable *string `json:"IsNodeAvailable,omitempty" xml:"IsNodeAvailable,omitempty"`
-	// The dependencies of the parameter.
-	//
-	// example:
-	//
-	// utf8
-	ParamRelyRule *string `json:"ParamRelyRule,omitempty" xml:"ParamRelyRule,omitempty"`
-	// The description of the parameter.
-	//
-	// example:
-	//
-	// The server\\"s default character set.
-	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	// The name of the parameter.
-	//
-	// example:
-	//
-	// character_set_server
-	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The status of the parameter. Valid values:
-	//
-	// 	- **Normal**
-	//
-	// 	- **Modifying**
-	//
-	// example:
-	//
-	// Normal
-	ParameterStatus *string `json:"ParameterStatus,omitempty" xml:"ParameterStatus,omitempty"`
-	// The value of the parameter.
-	//
-	// example:
-	//
-	// utf8
-	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	Factor                *string `json:"Factor,omitempty" xml:"Factor,omitempty"`
+	ForceRestart          *bool   `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
+	IsModifiable          *bool   `json:"IsModifiable,omitempty" xml:"IsModifiable,omitempty"`
+	IsNodeAvailable       *string `json:"IsNodeAvailable,omitempty" xml:"IsNodeAvailable,omitempty"`
+	ParamRelyRule         *string `json:"ParamRelyRule,omitempty" xml:"ParamRelyRule,omitempty"`
+	ParameterDescription  *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
+	ParameterName         *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	ParameterStatus       *string `json:"ParameterStatus,omitempty" xml:"ParameterStatus,omitempty"`
+	ParameterValue        *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
 func (s DescribeDBClusterParametersResponseBodyRunningParametersParameter) String() string {

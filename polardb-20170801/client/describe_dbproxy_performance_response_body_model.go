@@ -49,8 +49,7 @@ type DescribeDBProxyPerformanceResponseBody struct {
 	// example:
 	//
 	// 2020-09-23T01:01:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Details about the performance metrics.
+	EndTime         *string                                                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	PerformanceKeys *DescribeDBProxyPerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -181,26 +180,10 @@ func (s *DescribeDBProxyPerformanceResponseBodyPerformanceKeys) Validate() error
 }
 
 type DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceItem struct {
-	// The ID of the node.
-	//
-	// example:
-	//
-	// pi-*************
-	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
-	// The performance metric.
-	//
-	// example:
-	//
-	// PolarProxy_CpuUsage
-	Measurement *string `json:"Measurement,omitempty" xml:"Measurement,omitempty"`
-	// The name of the performance metric.
-	//
-	// example:
-	//
-	// service_connections_ps
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The list of the performance metrics.
-	Points *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceItemPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Struct"`
+	DBNodeId    *string                                                                     `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
+	Measurement *string                                                                     `json:"Measurement,omitempty" xml:"Measurement,omitempty"`
+	MetricName  *string                                                                     `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Points      *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceItemPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Struct"`
 }
 
 func (s DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceItem) String() string {
@@ -291,18 +274,8 @@ func (s *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceItemPoi
 }
 
 type DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue struct {
-	// The time when the metric value was collected. This value is a timestamp in milliseconds.
-	//
-	// example:
-	//
-	// 1600822800000
-	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The value of the metric.
-	//
-	// example:
-	//
-	// 10
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Timestamp *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue) String() string {

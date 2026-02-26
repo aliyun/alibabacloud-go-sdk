@@ -25,9 +25,8 @@ type CreateDBNodesResponseBody struct {
 	// example:
 	//
 	// pc-***************
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Details about the nodes.
-	DBNodeIds *CreateDBNodesResponseBodyDBNodeIds `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty" type:"Struct"`
+	DBClusterId *string                             `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBNodeIds   *CreateDBNodesResponseBodyDBNodeIds `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty" type:"Struct"`
 	// The ID of the order.
 	//
 	// example:

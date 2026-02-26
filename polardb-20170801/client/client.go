@@ -583,7 +583,7 @@ func (client *Client) AttachApplicationPolarFS(request *AttachApplicationPolarFS
 
 // Summary:
 //
-// Cancels O\\&M events at a time.
+// Cancels O\\\\\\&M events at a time.
 //
 // @param request - CancelActiveOperationTasksRequest
 //
@@ -651,7 +651,7 @@ func (client *Client) CancelActiveOperationTasksWithOptions(request *CancelActiv
 
 // Summary:
 //
-// Cancels O\\&M events at a time.
+// Cancels O\\\\\\&M events at a time.
 //
 // @param request - CancelActiveOperationTasksRequest
 //
@@ -1555,7 +1555,7 @@ func (client *Client) ClonePolarFsBasicSnapshot(request *ClonePolarFsBasicSnapsh
 
 // Summary:
 //
-// 关闭DB4AI
+// Disables the PolarDB for AI feature for a cluster.
 //
 // @param request - CloseAITaskRequest
 //
@@ -1619,7 +1619,7 @@ func (client *Client) CloseAITaskWithOptions(request *CloseAITaskRequest, runtim
 
 // Summary:
 //
-// 关闭DB4AI
+// Disables the PolarDB for AI feature for a cluster.
 //
 // @param request - CloseAITaskRequest
 //
@@ -4043,7 +4043,7 @@ func (client *Client) CreateExtensions(request *CreateExtensionsRequest) (_resul
 
 // Summary:
 //
-// 创建全球数据网络
+// Creates a global data network (GDN).
 //
 // @param request - CreateGlobalDataNetworkRequest
 //
@@ -4123,7 +4123,7 @@ func (client *Client) CreateGlobalDataNetworkWithOptions(request *CreateGlobalDa
 
 // Summary:
 //
-// 创建全球数据网络
+// Creates a global data network (GDN).
 //
 // @param request - CreateGlobalDataNetworkRequest
 //
@@ -6331,7 +6331,7 @@ func (client *Client) DeleteFirewallRules(request *DeleteFirewallRulesRequest) (
 
 // Summary:
 //
-// # DeleteGlobalDataNetwork
+// Deletes a global data network (GDN).
 //
 // @param request - DeleteGlobalDataNetworkRequest
 //
@@ -6375,7 +6375,7 @@ func (client *Client) DeleteGlobalDataNetworkWithOptions(request *DeleteGlobalDa
 
 // Summary:
 //
-// # DeleteGlobalDataNetwork
+// Deletes a global data network (GDN).
 //
 // @param request - DeleteGlobalDataNetworkRequest
 //
@@ -6749,7 +6749,7 @@ func (client *Client) DeleteNetworkChannel(request *DeleteNetworkChannelRequest)
 
 // Summary:
 //
-// Deletes a parameter template of a PolarDB cluster.
+// Deletes a parameter template from a PolarDB cluster.
 //
 // Description:
 //
@@ -6823,7 +6823,7 @@ func (client *Client) DeleteParameterGroupWithOptions(request *DeleteParameterGr
 
 // Summary:
 //
-// Deletes a parameter template of a PolarDB cluster.
+// Deletes a parameter template from a PolarDB cluster.
 //
 // Description:
 //
@@ -7961,7 +7961,7 @@ func (client *Client) DescribeActiveOperationMaintainConf(request *DescribeActiv
 
 // Summary:
 //
-// 用户侧查询运维任务
+// Queries the O\\\\\\&M event details of an instance.
 //
 // @param request - DescribeActiveOperationTasksRequest
 //
@@ -8061,7 +8061,7 @@ func (client *Client) DescribeActiveOperationTasksWithOptions(request *DescribeA
 
 // Summary:
 //
-// 用户侧查询运维任务
+// Queries the O\\\\\\&M event details of an instance.
 //
 // @param request - DescribeActiveOperationTasksRequest
 //
@@ -8791,7 +8791,7 @@ func (client *Client) DescribeBackupRegions(request *DescribeBackupRegionsReques
 
 // Summary:
 //
-// Queries the backup tasks of a PolarDB cluster.
+// Queries the details of backup tasks of a cluster.
 //
 // @param request - DescribeBackupTasksRequest
 //
@@ -8859,7 +8859,7 @@ func (client *Client) DescribeBackupTasksWithOptions(request *DescribeBackupTask
 
 // Summary:
 //
-// Queries the backup tasks of a PolarDB cluster.
+// Queries the details of backup tasks of a cluster.
 //
 // @param request - DescribeBackupTasksRequest
 //
@@ -11765,7 +11765,7 @@ func (client *Client) DescribeDBInstancePerformance(request *DescribeDBInstanceP
 
 // Summary:
 //
-// Queries the database links of a PolarDB for PostgreSQL (Compatible with Oracle) cluster.
+// Queries the database links of a PolarDB for Oracle cluster.
 //
 // Description:
 //
@@ -11833,7 +11833,7 @@ func (client *Client) DescribeDBLinksWithOptions(request *DescribeDBLinksRequest
 
 // Summary:
 //
-// Queries the database links of a PolarDB for PostgreSQL (Compatible with Oracle) cluster.
+// Queries the database links of a PolarDB for Oracle cluster.
 //
 // Description:
 //
@@ -11855,7 +11855,7 @@ func (client *Client) DescribeDBLinks(request *DescribeDBLinksRequest) (_result 
 
 // Summary:
 //
-// 查询实例日志
+// Queries logs for a PolarDB cluster such as primary/secondary switchover logs.
 //
 // @param request - DescribeDBLogFilesRequest
 //
@@ -11955,7 +11955,7 @@ func (client *Client) DescribeDBLogFilesWithOptions(request *DescribeDBLogFilesR
 
 // Summary:
 //
-// 查询实例日志
+// Queries logs for a PolarDB cluster such as primary/secondary switchover logs.
 //
 // @param request - DescribeDBLogFilesRequest
 //
@@ -13159,7 +13159,7 @@ func (client *Client) DescribeFirewallRules(request *DescribeFirewallRulesReques
 
 // Summary:
 //
-// # DescribeGlobalDataNetworkList
+// Queries the PolarFS global data network (GDN) details in all regions.
 //
 // @param request - DescribeGlobalDataNetworkListRequest
 //
@@ -13207,7 +13207,7 @@ func (client *Client) DescribeGlobalDataNetworkListWithOptions(request *Describe
 
 // Summary:
 //
-// # DescribeGlobalDataNetworkList
+// Queries the PolarFS global data network (GDN) details in all regions.
 //
 // @param request - DescribeGlobalDataNetworkListRequest
 //
@@ -13597,7 +13597,7 @@ func (client *Client) DescribeGlobalSecurityIPGroupRelation(request *DescribeGlo
 
 // Summary:
 //
-// 查询实例高可用相关日志
+// Queries the HA logs of a cluster.
 //
 // @param request - DescribeHALogsRequest
 //
@@ -13665,7 +13665,7 @@ func (client *Client) DescribeHALogsWithOptions(request *DescribeHALogsRequest, 
 
 // Summary:
 //
-// 查询实例高可用相关日志
+// Queries the HA logs of a cluster.
 //
 // @param request - DescribeHALogsRequest
 //
@@ -13801,7 +13801,7 @@ func (client *Client) DescribeHistoryEvents(request *DescribeHistoryEventsReques
 
 // Summary:
 //
-// 任务中心任务列表
+// Queries historical tasks.
 //
 // @param request - DescribeHistoryTasksRequest
 //
@@ -13909,7 +13909,7 @@ func (client *Client) DescribeHistoryTasksWithOptions(request *DescribeHistoryTa
 
 // Summary:
 //
-// 任务中心任务列表
+// Queries historical tasks.
 //
 // @param request - DescribeHistoryTasksRequest
 //
@@ -15787,7 +15787,7 @@ func (client *Client) DescribeRdsVpcs(request *DescribeRdsVpcsRequest) (_result 
 
 // Summary:
 //
-// Queries the regions and zones available for PolarDB.
+// Queries the regions and zones that are supported by PolarDB.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -15843,7 +15843,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 // Summary:
 //
-// Queries the regions and zones available for PolarDB.
+// Queries the regions and zones that are supported by PolarDB.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -17054,6 +17054,68 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 
 // Summary:
 //
+// 关闭DynamoDB兼容性能力
+//
+// @param request - DisableDBClusterDynamoDBRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableDBClusterDynamoDBResponse
+func (client *Client) DisableDBClusterDynamoDBWithOptions(request *DisableDBClusterDynamoDBRequest, runtime *dara.RuntimeOptions) (_result *DisableDBClusterDynamoDBResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableDBClusterDynamoDB"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableDBClusterDynamoDBResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 关闭DynamoDB兼容性能力
+//
+// @param request - DisableDBClusterDynamoDBRequest
+//
+// @return DisableDBClusterDynamoDBResponse
+func (client *Client) DisableDBClusterDynamoDB(request *DisableDBClusterDynamoDBRequest) (_result *DisableDBClusterDynamoDBResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DisableDBClusterDynamoDBResponse{}
+	_body, _err := client.DisableDBClusterDynamoDBWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 关闭集群的关系性
 //
 // @param request - DisableDBClusterOrcaRequest
@@ -17205,6 +17267,68 @@ func (client *Client) DisableDBClusterServerless(request *DisableDBClusterServer
 	runtime := &dara.RuntimeOptions{}
 	_result = &DisableDBClusterServerlessResponse{}
 	_body, _err := client.DisableDBClusterServerlessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启DynamoDB兼容性能力
+//
+// @param request - EnableDBClusterDynamoDBRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableDBClusterDynamoDBResponse
+func (client *Client) EnableDBClusterDynamoDBWithOptions(request *EnableDBClusterDynamoDBRequest, runtime *dara.RuntimeOptions) (_result *EnableDBClusterDynamoDBResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableDBClusterDynamoDB"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableDBClusterDynamoDBResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启DynamoDB兼容性能力
+//
+// @param request - EnableDBClusterDynamoDBRequest
+//
+// @return EnableDBClusterDynamoDBResponse
+func (client *Client) EnableDBClusterDynamoDB(request *EnableDBClusterDynamoDBRequest) (_result *EnableDBClusterDynamoDBResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EnableDBClusterDynamoDBResponse{}
+	_body, _err := client.EnableDBClusterDynamoDBWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19319,7 +19443,7 @@ func (client *Client) ModifyActiveOperationMaintainConf(request *ModifyActiveOpe
 
 // Summary:
 //
-// Modifies the switching time of scheduled O\\&M events for an instance.
+// Modifies the switching time of scheduled O\\\\\\&M events for an instance.
 //
 // @param request - ModifyActiveOperationTasksRequest
 //
@@ -19395,7 +19519,7 @@ func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiv
 
 // Summary:
 //
-// Modifies the switching time of scheduled O\\&M events for an instance.
+// Modifies the switching time of scheduled O\\\\\\&M events for an instance.
 //
 // @param request - ModifyActiveOperationTasksRequest
 //
@@ -22045,7 +22169,7 @@ func (client *Client) ModifyDBClusterServerlessConf(request *ModifyDBClusterServ
 
 // Summary:
 //
-// 修改存储性能
+// Changes the storage performance of a PolarDB for MySQL cluster.
 //
 // @param request - ModifyDBClusterStoragePerformanceRequest
 //
@@ -22121,7 +22245,7 @@ func (client *Client) ModifyDBClusterStoragePerformanceWithOptions(request *Modi
 
 // Summary:
 //
-// 修改存储性能
+// Changes the storage performance of a PolarDB for MySQL cluster.
 //
 // @param request - ModifyDBClusterStoragePerformanceRequest
 //
@@ -25885,6 +26009,10 @@ func (client *Client) SetPolarFsFileQuota(request *SetPolarFsFileQuotaRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Switches over the primary and secondary clusters in a global database network (GDN).
+//
 // @param request - SwitchOverGlobalDatabaseNetworkRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -25961,6 +26089,10 @@ func (client *Client) SwitchOverGlobalDatabaseNetworkWithOptions(request *Switch
 	return _result, _err
 }
 
+// Summary:
+//
+// Switches over the primary and secondary clusters in a global database network (GDN).
+//
 // @param request - SwitchOverGlobalDatabaseNetworkRequest
 //
 // @return SwitchOverGlobalDatabaseNetworkResponse
@@ -26779,18 +26911,20 @@ func (client *Client) getPolarAgentWithSSE_opYieldFunc(_yield chan *GetPolarAgen
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }

@@ -22,7 +22,6 @@ type iDescribeDBClustersResponseBody interface {
 }
 
 type DescribeDBClustersResponseBody struct {
-	// The information about the clusters.
 	Items *DescribeDBClustersResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The number of the page to return.
 	//
@@ -147,269 +146,42 @@ func (s *DescribeDBClustersResponseBodyItems) Validate() error {
 }
 
 type DescribeDBClustersResponseBodyItemsDBCluster struct {
-	// The type of the AI node. Valid values:
-	//
-	// 	- SearchNode: search node
-	//
-	// 	- DLNode: AI node
-	//
-	// Enumeration values:
-	//
-	// 	- SearchNode | DLNode: both
-	//
-	// 	- DLNode: AI node
-	//
-	// 	- SearchNode: search node
-	//
-	// example:
-	//
-	// SearchNode
-	AiType *string `json:"AiType,omitempty" xml:"AiType,omitempty"`
-	// The edition of the cluster. Valid values:
-	//
-	// 	- **Normal**: Cluster Edition
-	//
-	// 	- **Basic**: Single Node Edition
-	//
-	// 	- **Archive**: X-Engine Edition
-	//
-	// 	- **NormalMultimaster**: Multi-master Cluster (Database/Table) Edition
-	//
-	// example:
-	//
-	// Normal
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The number of CPU cores.
-	//
-	// example:
-	//
-	// 1
-	CpuCores *string `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
-	// The time when the cluster was created.
-	//
-	// example:
-	//
-	// 2020-08-14T05:58:42Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the cluster.
-	//
-	// example:
-	//
-	// GDN-1
-	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	// The cluster ID.
-	//
-	// example:
-	//
-	// pc-****************
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The network type of the cluster.
-	//
-	// example:
-	//
-	// VPC
-	DBClusterNetworkType *string `json:"DBClusterNetworkType,omitempty" xml:"DBClusterNetworkType,omitempty"`
-	// The state of the cluster.
-	//
-	// example:
-	//
-	// Running
-	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
-	// The specifications of the node.
-	//
-	// example:
-	//
-	// polar.mysql.x4.large
-	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	// The number of nodes.
-	//
-	// example:
-	//
-	// 2
-	DBNodeNumber *int32 `json:"DBNodeNumber,omitempty" xml:"DBNodeNumber,omitempty"`
-	// The information about the nodes.
-	DBNodes *DescribeDBClustersResponseBodyItemsDBClusterDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Struct"`
-	// The type of the database engine.
-	//
-	// example:
-	//
-	// MySQL
-	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The version of the database engine.
-	//
-	// example:
-	//
-	// 5.6
-	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// Indicates whether the cluster is protected from deletion. Valid values:
-	//
-	// 	- **0**: The cluster is not protected from deletion.
-	//
-	// 	- **1**: The cluster is protected from deletion.
-	//
-	// >  You cannot delete clusters that are protected from deletion.
-	//
-	// example:
-	//
-	// 0
-	DeletionLock *int32 `json:"DeletionLock,omitempty" xml:"DeletionLock,omitempty"`
-	// The database engine of the cluster.
-	//
-	// example:
-	//
-	// POLARDB
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The expiration time of the cluster.
-	//
-	// >  A specific value is returned only for subscription (**Prepaid**) clusters. For pay-as-you-go (**Postpaid**) clusters, no value is returned.
-	//
-	// example:
-	//
-	// 2020-11-14T16:00:00Z
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Indicates whether the cluster has expired. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// >  A specific value is returned only for subscription (**Prepaid**) clusters.
-	//
-	// example:
-	//
-	// false
-	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// Indicates whether the hot standby storage cluster feature is enabled. Valid values:
-	//
-	// 	- ON
-	//
-	// 	- OFF
-	//
-	// example:
-	//
-	// OFF
-	HotStandbyCluster *string `json:"HotStandbyCluster,omitempty" xml:"HotStandbyCluster,omitempty"`
-	// The lock state of the cluster. Valid values:
-	//
-	// 	- **Unlock**: The cluster is unlocked.
-	//
-	// 	- **ManualLock**: The cluster is manually locked.
-	//
-	// 	- **LockByExpiration**: The cluster is locked due to cluster expiration.
-	//
-	// example:
-	//
-	// Unlock
-	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The memory size for local operations. Unit: MB.
-	//
-	// example:
-	//
-	// 2048
-	MemorySize *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
-	// The billing method of the cluster. Valid values:
-	//
-	// 	- **Postpaid**: pay-as-you-go
-	//
-	// 	- **Prepaid**: subscription
-	//
-	// example:
-	//
-	// Prepaid
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The region ID of the cluster.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The memory size for distributed operations. Unit: MB.
-	//
-	// example:
-	//
-	// 3612
-	RemoteMemorySize *string `json:"RemoteMemorySize,omitempty" xml:"RemoteMemorySize,omitempty"`
-	// The ID of the resource group.
-	//
-	// example:
-	//
-	// rg-************
-	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SearchStorageUsed *int64  `json:"SearchStorageUsed,omitempty" xml:"SearchStorageUsed,omitempty"`
-	// Indicates whether the cluster is a serverless cluster. **AgileServerless*	- indicates the cluster is a serverless cluster. No value is returned for a common cluster.
-	//
-	// example:
-	//
-	// AgileServerless
-	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
-	// The storage billing method of the cluster. Valid values:
-	//
-	// 	- **Postpaid**: pay-as-you-go
-	//
-	// 	- **Prepaid**: subscription
-	//
-	// example:
-	//
-	// Prepaid
-	StoragePayType *string `json:"StoragePayType,omitempty" xml:"StoragePayType,omitempty"`
-	// The storage that is billed based on the subscription billing method. Unit: bytes.
-	//
-	// example:
-	//
-	// 50
-	StorageSpace *int64 `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
-	// The storage type.
-	//
-	// example:
-	//
-	// essdautopl
-	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The used storage. Unit: bytes.
-	//
-	// example:
-	//
-	// 3009413120
-	StorageUsed *int64 `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
-	// Indicates whether multi-zone data consistency is enabled for the cluster. Valid values:
-	//
-	// 	- **ON**: Multi-zone data consistency is enabled. For Standard Edition clusters of Multi-zone Edition, this value is returned.
-	//
-	// 	- **OFF**: Multi-zone data consistency is disabled.
-	//
-	// example:
-	//
-	// ON
-	StrictConsistency *string `json:"StrictConsistency,omitempty" xml:"StrictConsistency,omitempty"`
-	// The specification type of the compute node. Valid values:
-	//
-	// 	- **Exclusive**: dedicated.
-	//
-	// 	- **General**: general-purpose.
-	//
-	// example:
-	//
-	// Exclusive
-	SubCategory *string `json:"SubCategory,omitempty" xml:"SubCategory,omitempty"`
-	// The information about the tags.
-	Tags *DescribeDBClustersResponseBodyItemsDBClusterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The virtual private cloud (VPC) ID of the cluster.
-	//
-	// example:
-	//
-	// vpc-****************
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The vSwitch ID of the cluster.
-	//
-	// example:
-	//
-	// vsw-***************
-	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	// The zone ID of the cluster.
-	//
-	// example:
-	//
-	// cn-hangzhou-i
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AiType               *string                                              `json:"AiType,omitempty" xml:"AiType,omitempty"`
+	Category             *string                                              `json:"Category,omitempty" xml:"Category,omitempty"`
+	CpuCores             *string                                              `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
+	CreateTime           *string                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DBClusterDescription *string                                              `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
+	DBClusterId          *string                                              `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterNetworkType *string                                              `json:"DBClusterNetworkType,omitempty" xml:"DBClusterNetworkType,omitempty"`
+	DBClusterStatus      *string                                              `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
+	DBNodeClass          *string                                              `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
+	DBNodeNumber         *int32                                               `json:"DBNodeNumber,omitempty" xml:"DBNodeNumber,omitempty"`
+	DBNodes              *DescribeDBClustersResponseBodyItemsDBClusterDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Struct"`
+	DBType               *string                                              `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	DBVersion            *string                                              `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	DeletionLock         *int32                                               `json:"DeletionLock,omitempty" xml:"DeletionLock,omitempty"`
+	Engine               *string                                              `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	ExpireTime           *string                                              `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	Expired              *string                                              `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	HotStandbyCluster    *string                                              `json:"HotStandbyCluster,omitempty" xml:"HotStandbyCluster,omitempty"`
+	LockMode             *string                                              `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	MemorySize           *string                                              `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	PayType              *string                                              `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	RegionId             *string                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RemoteMemorySize     *string                                              `json:"RemoteMemorySize,omitempty" xml:"RemoteMemorySize,omitempty"`
+	ResourceGroupId      *string                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SearchStorageUsed    *int64                                               `json:"SearchStorageUsed,omitempty" xml:"SearchStorageUsed,omitempty"`
+	ServerlessType       *string                                              `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
+	StoragePayType       *string                                              `json:"StoragePayType,omitempty" xml:"StoragePayType,omitempty"`
+	StorageSpace         *int64                                               `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
+	StorageType          *string                                              `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	StorageUsed          *int64                                               `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
+	StrictConsistency    *string                                              `json:"StrictConsistency,omitempty" xml:"StrictConsistency,omitempty"`
+	SubCategory          *string                                              `json:"SubCategory,omitempty" xml:"SubCategory,omitempty"`
+	Tags                 *DescribeDBClustersResponseBodyItemsDBClusterTags    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VpcId                *string                                              `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswitchId            *string                                              `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	ZoneId               *string                                              `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBClustersResponseBodyItemsDBCluster) String() string {
@@ -793,74 +565,14 @@ func (s *DescribeDBClustersResponseBodyItemsDBClusterDBNodes) Validate() error {
 }
 
 type DescribeDBClustersResponseBodyItemsDBClusterDBNodesDBNode struct {
-	// The specifications of the node.
-	//
-	// example:
-	//
-	// polar.mysql.x4.large
-	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	// The ID of the node.
-	//
-	// example:
-	//
-	// pi-****************
-	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
-	// The role of the node. Valid values:
-	//
-	// 	- **Writer**: primary node
-	//
-	// 	- **Reader**: read-only node
-	//
-	// 	- **ColumnReader**: column store read-only node
-	//
-	// 	- **AI**: AI node
-	//
-	// example:
-	//
-	// Reader
-	DBNodeRole *string `json:"DBNodeRole,omitempty" xml:"DBNodeRole,omitempty"`
-	// Indicates whether the hot standby feature is enabled. Valid values:
-	//
-	// 	- **ON**
-	//
-	// 	- **OFF**
-	//
-	// example:
-	//
-	// OFF
+	DBNodeClass    *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
+	DBNodeId       *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
+	DBNodeRole     *string `json:"DBNodeRole,omitempty" xml:"DBNodeRole,omitempty"`
 	HotReplicaMode *string `json:"HotReplicaMode,omitempty" xml:"HotReplicaMode,omitempty"`
-	// Indicates whether the In-Memory Column Index (IMCI) feature is enabled. Valid values:
-	//
-	// 	- **ON**
-	//
-	// 	- **OFF**
-	//
-	// example:
-	//
-	// OFF
-	ImciSwitch *string `json:"ImciSwitch,omitempty" xml:"ImciSwitch,omitempty"`
-	// The region ID of the cluster.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Indicates whether the serverless feature is enabled for the node.
-	//
-	// 	- **ON*	- indicates that the serverless feature is enabled.
-	//
-	// 	- No value is returned if the serverless feature is disabled.
-	//
-	// example:
-	//
-	// ON
-	Serverless *string `json:"Serverless,omitempty" xml:"Serverless,omitempty"`
-	// The zone ID of the cluster.
-	//
-	// example:
-	//
-	// cn-hangzhou-i
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ImciSwitch     *string `json:"ImciSwitch,omitempty" xml:"ImciSwitch,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Serverless     *string `json:"Serverless,omitempty" xml:"Serverless,omitempty"`
+	ZoneId         *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBClustersResponseBodyItemsDBClusterDBNodesDBNode) String() string {
@@ -982,17 +694,7 @@ func (s *DescribeDBClustersResponseBodyItemsDBClusterTags) Validate() error {
 }
 
 type DescribeDBClustersResponseBodyItemsDBClusterTagsTag struct {
-	// The key of the tag.
-	//
-	// example:
-	//
-	// MySQL
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
-	//
-	// example:
-	//
-	// 5.6
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

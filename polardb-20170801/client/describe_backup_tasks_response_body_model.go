@@ -16,7 +16,6 @@ type iDescribeBackupTasksResponseBody interface {
 }
 
 type DescribeBackupTasksResponseBody struct {
-	// The details of the backup task.
 	Items *DescribeBackupTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,62 +95,12 @@ func (s *DescribeBackupTasksResponseBodyItems) Validate() error {
 }
 
 type DescribeBackupTasksResponseBodyItemsBackupJob struct {
-	// The ID of the backup task.
-	//
-	// example:
-	//
-	// 11111111
-	BackupJobId *string `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
-	// The state of the backup task. Valid values:
-	//
-	// 	- **NoStart**
-	//
-	// 	- **Preparing**
-	//
-	// 	- **Waiting**
-	//
-	// 	- **Uploading**
-	//
-	// 	- **Checking**
-	//
-	// 	- **Finished**
-	//
-	// example:
-	//
-	// NoStart
+	BackupJobId          *string `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
 	BackupProgressStatus *string `json:"BackupProgressStatus,omitempty" xml:"BackupProgressStatus,omitempty"`
-	// The backup mode. Valid values:
-	//
-	// 	- **Automated**
-	//
-	// 	- **Manual**
-	//
-	// example:
-	//
-	// Automated
-	JobMode *string `json:"JobMode,omitempty" xml:"JobMode,omitempty"`
-	// The progress of the backup task in percentage.
-	//
-	// example:
-	//
-	// 0
-	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	// The time when the backup task started. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2020-08-08T07:24:01Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of the backup task. Valid values:
-	//
-	// 	- **TempBackupTask**: The backup task is an adhoc backup task.
-	//
-	// 	- **NormalBackupTask**: The backup task is a common backup task.
-	//
-	// example:
-	//
-	// NormalBackupTask
-	TaskAction *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
+	JobMode              *string `json:"JobMode,omitempty" xml:"JobMode,omitempty"`
+	Process              *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	StartTime            *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TaskAction           *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
 }
 
 func (s DescribeBackupTasksResponseBodyItemsBackupJob) String() string {

@@ -49,8 +49,7 @@ type DescribeDBClusterPerformanceResponseBody struct {
 	// example:
 	//
 	// 2020-09-23T01:01:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The cluster performance metrics.
+	EndTime         *string                                                  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	PerformanceKeys *DescribeDBClusterPerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -181,28 +180,10 @@ func (s *DescribeDBClusterPerformanceResponseBodyPerformanceKeys) Validate() err
 }
 
 type DescribeDBClusterPerformanceResponseBodyPerformanceKeysPerformanceItem struct {
-	// The ID of the cluster node.
-	//
-	// >  The value of this parameter is not returned if the `Key` parameter is set to `PolarDBDiskUsage`.
-	//
-	// example:
-	//
-	// pi-*************
-	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
-	// The performance metrics that are returned.
-	//
-	// example:
-	//
-	// PolarDBDiskUsage
-	Measurement *string `json:"Measurement,omitempty" xml:"Measurement,omitempty"`
-	// The name of the performance metric.
-	//
-	// example:
-	//
-	// mean_data_size
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The performance metrics.
-	Points *DescribeDBClusterPerformanceResponseBodyPerformanceKeysPerformanceItemPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Struct"`
+	DBNodeId    *string                                                                       `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
+	Measurement *string                                                                       `json:"Measurement,omitempty" xml:"Measurement,omitempty"`
+	MetricName  *string                                                                       `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Points      *DescribeDBClusterPerformanceResponseBodyPerformanceKeysPerformanceItemPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Struct"`
 }
 
 func (s DescribeDBClusterPerformanceResponseBodyPerformanceKeysPerformanceItem) String() string {
@@ -293,18 +274,8 @@ func (s *DescribeDBClusterPerformanceResponseBodyPerformanceKeysPerformanceItemP
 }
 
 type DescribeDBClusterPerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue struct {
-	// The timestamp of the metric. This value is a UNIX timestamp. Unit: millisecond.
-	//
-	// example:
-	//
-	// 1600822800000
-	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The value of the metric.
-	//
-	// example:
-	//
-	// 42.38
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Timestamp *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDBClusterPerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue) String() string {

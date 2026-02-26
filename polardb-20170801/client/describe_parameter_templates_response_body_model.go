@@ -47,9 +47,8 @@ type DescribeParameterTemplatesResponseBody struct {
 	// example:
 	//
 	// 183
-	ParameterCount *string `json:"ParameterCount,omitempty" xml:"ParameterCount,omitempty"`
-	// The details of the parameters.
-	Parameters *DescribeParameterTemplatesResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
+	ParameterCount *string                                           `json:"ParameterCount,omitempty" xml:"ParameterCount,omitempty"`
+	Parameters     *DescribeParameterTemplatesResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
@@ -164,66 +163,14 @@ func (s *DescribeParameterTemplatesResponseBodyParameters) Validate() error {
 }
 
 type DescribeParameterTemplatesResponseBodyParametersTemplateRecord struct {
-	// The valid values of the parameter.
-	//
-	// example:
-	//
-	// [ROW|STATEMENT|MIXED]
-	CheckingCode *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
-	// Indicates whether the parameter setting can be modified. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	ForceModify *string `json:"ForceModify,omitempty" xml:"ForceModify,omitempty"`
-	// Indicates whether a cluster restart is required to make the parameter modification take effect. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// false
-	ForceRestart *string `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
-	// Indicates whether the parameter is a global parameter. Valid values:
-	//
-	// 	- **0**: yes. The modified parameter value is synchronized to other nodes by default.
-	//
-	// 	- **1**: no. You can customize the nodes to which the modified parameter value can be synchronized.
-	//
-	// example:
-	//
-	// 1
-	IsNodeAvailable *string `json:"IsNodeAvailable,omitempty" xml:"IsNodeAvailable,omitempty"`
-	// The parameter dependencies.
-	//
-	// example:
-	//
-	// utf8
-	ParamRelyRule *string `json:"ParamRelyRule,omitempty" xml:"ParamRelyRule,omitempty"`
-	// The description of the parameter.
-	//
-	// example:
-	//
-	// What form of binary logging the master will use.
+	CheckingCode         *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
+	ForceModify          *string `json:"ForceModify,omitempty" xml:"ForceModify,omitempty"`
+	ForceRestart         *string `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
+	IsNodeAvailable      *string `json:"IsNodeAvailable,omitempty" xml:"IsNodeAvailable,omitempty"`
+	ParamRelyRule        *string `json:"ParamRelyRule,omitempty" xml:"ParamRelyRule,omitempty"`
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	// The name of the parameter.
-	//
-	// example:
-	//
-	// binlog_format
-	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The default value of the parameter.
-	//
-	// example:
-	//
-	// ROW
-	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	ParameterValue       *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
 func (s DescribeParameterTemplatesResponseBodyParametersTemplateRecord) String() string {

@@ -20,7 +20,6 @@ type iDescribeDatabasesResponseBody interface {
 }
 
 type DescribeDatabasesResponseBody struct {
-	// Details about databases.
 	Databases *DescribeDatabasesResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -130,58 +129,13 @@ func (s *DescribeDatabasesResponseBodyDatabases) Validate() error {
 }
 
 type DescribeDatabasesResponseBodyDatabasesDatabase struct {
-	// Details about the accounts.
-	//
-	// > A PolarDB for MySQL cluster does not support privileged accounts.
-	Accounts *DescribeDatabasesResponseBodyDatabasesDatabaseAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
-	// The character set that the database uses. For more information, see [Character set tables](https://help.aliyun.com/document_detail/99716.html).
-	//
-	// example:
-	//
-	// utf8mb4
-	CharacterSetName *string `json:"CharacterSetName,omitempty" xml:"CharacterSetName,omitempty"`
-	// The description of the database.
-	//
-	// example:
-	//
-	// test_des
-	DBDescription *string `json:"DBDescription,omitempty" xml:"DBDescription,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// test_db
-	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The state of the database. Valid values:
-	//
-	// 	- **Creating**
-	//
-	// 	- **Running**
-	//
-	// 	- **Deleting**
-	//
-	// example:
-	//
-	// Running
-	DBStatus *string `json:"DBStatus,omitempty" xml:"DBStatus,omitempty"`
-	// The type of the database engine. Valid values:
-	//
-	// 	- **MySQL**
-	//
-	// 	- **Oracle**
-	//
-	// 	- **PostgreSQL**
-	//
-	// example:
-	//
-	// MySQL
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The ID of the primary node in the cluster of Multi-master Cluster (Database/Table) Edition.
-	//
-	// example:
-	//
-	// 2
-	MasterID *string `json:"MasterID,omitempty" xml:"MasterID,omitempty"`
+	Accounts         *DescribeDatabasesResponseBodyDatabasesDatabaseAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
+	CharacterSetName *string                                                 `json:"CharacterSetName,omitempty" xml:"CharacterSetName,omitempty"`
+	DBDescription    *string                                                 `json:"DBDescription,omitempty" xml:"DBDescription,omitempty"`
+	DBName           *string                                                 `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	DBStatus         *string                                                 `json:"DBStatus,omitempty" xml:"DBStatus,omitempty"`
+	Engine           *string                                                 `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	MasterID         *string                                                 `json:"MasterID,omitempty" xml:"MasterID,omitempty"`
 }
 
 func (s DescribeDatabasesResponseBodyDatabasesDatabase) String() string {
@@ -299,54 +253,10 @@ func (s *DescribeDatabasesResponseBodyDatabasesDatabaseAccounts) Validate() erro
 }
 
 type DescribeDatabasesResponseBodyDatabasesDatabaseAccountsAccount struct {
-	// The username of the account.
-	//
-	// > A PolarDB for MySQL cluster does not support privileged accounts.
-	//
-	// example:
-	//
-	// test_acc
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The permissions that are granted to the account. Valid values:
-	//
-	// 	- **ReadWrite**: read and write permissions
-	//
-	// 	- **ReadOnly**: read-only permissions
-	//
-	// 	- **DMLOnly**: The account is granted the permissions to execute only DML statements on the database.
-	//
-	// 	- **DDLOnly**: The account is granted the permissions to execute only DDL statements on the database.
-	//
-	// 	- **ReadIndex**: The account has the read and index permissions on the database.
-	//
-	// example:
-	//
-	// ReadOnly
+	AccountName      *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
-	// The state of the account. Valid values:
-	//
-	// 	- **Creating**
-	//
-	// 	- **Available**
-	//
-	// 	- **Deleting**
-	//
-	// example:
-	//
-	// Available
-	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
-	// The authorization state of the account. Valid values:
-	//
-	// 	- **Empowering**: The system is granting permissions to the account.
-	//
-	// 	- **Empowered**: Permissions are granted to the account.
-	//
-	// 	- **Removing**: The system is revoking permissions from the account.
-	//
-	// example:
-	//
-	// Empowered
-	PrivilegeStatus *string `json:"PrivilegeStatus,omitempty" xml:"PrivilegeStatus,omitempty"`
+	AccountStatus    *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
+	PrivilegeStatus  *string `json:"PrivilegeStatus,omitempty" xml:"PrivilegeStatus,omitempty"`
 }
 
 func (s DescribeDatabasesResponseBodyDatabasesDatabaseAccountsAccount) String() string {

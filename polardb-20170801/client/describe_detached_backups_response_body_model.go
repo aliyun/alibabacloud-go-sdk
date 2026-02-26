@@ -22,7 +22,6 @@ type iDescribeDetachedBackupsResponseBody interface {
 }
 
 type DescribeDetachedBackupsResponseBody struct {
-	// Details about the backup sets.
 	Items *DescribeDetachedBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,106 +146,19 @@ func (s *DescribeDetachedBackupsResponseBodyItems) Validate() error {
 }
 
 type DescribeDetachedBackupsResponseBodyItemsBackup struct {
-	// The end time of the backup task. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2020-05-12T03:25:55Z
-	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
-	// The ID of the backup set.
-	//
-	// example:
-	//
-	// 111111111
-	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The backup method. Only snapshot backups are supported. The value is set to **Snapshot**.
-	//
-	// example:
-	//
-	// Snapshot
-	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	// The backup mode. Valid values:
-	//
-	// 	- **Automated**
-	//
-	// 	- **Manual**
-	//
-	// example:
-	//
-	// Manual
-	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	// The size of the backup set. Unit: bytes.
-	//
-	// > After you delete the target snapshot backups, the storage space consumed by the backups is released. The released storage space is smaller than the size of the backup file, because the snapshots share certain data blocks.
-	//
-	// example:
-	//
-	// 7251056
-	BackupSetSize *string `json:"BackupSetSize,omitempty" xml:"BackupSetSize,omitempty"`
-	// The start time of the backup task. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2020-05-12T03:25:44Z
+	BackupEndTime   *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
+	BackupId        *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	BackupMethod    *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	BackupMode      *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	BackupSetSize   *string `json:"BackupSetSize,omitempty" xml:"BackupSetSize,omitempty"`
 	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	// The status of the backup set. Valid values:
-	//
-	// 	- **Success**
-	//
-	// 	- **Failed**
-	//
-	// example:
-	//
-	// Success
-	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	// The type of the backup. Only full backups are supported. The value is set to **FullBackup**.
-	//
-	// example:
-	//
-	// FullBackup
-	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The level of the backup set. Valid values:
-	//
-	// 	- **Level-1**: level-1 backup set
-	//
-	// 	- **Level-2**: level-2 backup set
-	//
-	// example:
-	//
-	// Level-2
-	BackupsLevel *string `json:"BackupsLevel,omitempty" xml:"BackupsLevel,omitempty"`
-	// The snapshot checkpoint time. The value is a Unix timestamp.
-	//
-	// example:
-	//
-	// 1589253947
-	ConsistentTime *string `json:"ConsistentTime,omitempty" xml:"ConsistentTime,omitempty"`
-	// The ID of the cluster.
-	//
-	// example:
-	//
-	// pc-**************
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Indicates whether the backup set is available. Valid values:
-	//
-	// 	- **0**: The data backup set is unavailable.
-	//
-	// 	- **1**: The data backup set is available.
-	//
-	// example:
-	//
-	// 1
-	IsAvail *string `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
-	// Indicates whether the backup set can be deleted. Valid values:
-	//
-	// 	- **Enabled**: The backup set can be deleted.
-	//
-	// 	- **Disabled**: The backup set cannot be deleted.
-	//
-	// example:
-	//
-	// Disabled
-	StoreStatus *string `json:"StoreStatus,omitempty" xml:"StoreStatus,omitempty"`
+	BackupStatus    *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	BackupType      *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	BackupsLevel    *string `json:"BackupsLevel,omitempty" xml:"BackupsLevel,omitempty"`
+	ConsistentTime  *string `json:"ConsistentTime,omitempty" xml:"ConsistentTime,omitempty"`
+	DBClusterId     *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	IsAvail         *string `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
+	StoreStatus     *string `json:"StoreStatus,omitempty" xml:"StoreStatus,omitempty"`
 }
 
 func (s DescribeDetachedBackupsResponseBodyItemsBackup) String() string {

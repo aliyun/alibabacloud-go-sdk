@@ -47,9 +47,8 @@ type DescribeSlowLogsResponseBody struct {
 	// example:
 	//
 	// polardb_mysql
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// Details about slow query logs.
-	Items *DescribeSlowLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	Engine *string                            `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	Items  *DescribeSlowLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The number of the returned page.
 	//
 	// example:
@@ -215,91 +214,21 @@ func (s *DescribeSlowLogsResponseBodyItems) Validate() error {
 }
 
 type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
-	// The date when the data was generated.
-	//
-	// example:
-	//
-	// 2021-05-30Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// PolarDB_MySQL
-	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The ID of the node.
-	//
-	// example:
-	//
-	// pi-***************
-	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
-	// The longest execution duration of a specific SQL statement in the query. Unit: seconds.
-	//
-	// example:
-	//
-	// 60
-	MaxExecutionTime   *int64  `json:"MaxExecutionTime,omitempty" xml:"MaxExecutionTime,omitempty"`
-	MaxExecutionTimeMs *string `json:"MaxExecutionTimeMs,omitempty" xml:"MaxExecutionTimeMs,omitempty"`
-	// The longest lock duration that was caused by a specific SQL statement in the query. Unit: seconds.
-	//
-	// example:
-	//
-	// 1
-	MaxLockTime *int64 `json:"MaxLockTime,omitempty" xml:"MaxLockTime,omitempty"`
-	// The largest number of rows that were parsed by a specific SQL statement in the query.
-	//
-	// example:
-	//
-	// 1
-	ParseMaxRowCount *int64 `json:"ParseMaxRowCount,omitempty" xml:"ParseMaxRowCount,omitempty"`
-	// The total number of rows that were parsed by all SQL statements in the query.
-	//
-	// example:
-	//
-	// 2
-	ParseTotalRowCounts *int64 `json:"ParseTotalRowCounts,omitempty" xml:"ParseTotalRowCounts,omitempty"`
-	// The largest number of rows that were returned by a specific SQL statement in the query.
-	//
-	// example:
-	//
-	// 3
-	ReturnMaxRowCount *int64 `json:"ReturnMaxRowCount,omitempty" xml:"ReturnMaxRowCount,omitempty"`
-	// The total number of rows that were returned by all SQL statements in the query.
-	//
-	// example:
-	//
-	// 1
-	ReturnTotalRowCounts *int64 `json:"ReturnTotalRowCounts,omitempty" xml:"ReturnTotalRowCounts,omitempty"`
-	// The unique ID of the SQL statement. The ID is used to obtain the slow query logs of the SQL statement.
-	//
-	// example:
-	//
-	// U2FsdGVkxxxx
-	SQLHASH *string `json:"SQLHASH,omitempty" xml:"SQLHASH,omitempty"`
-	// The SQL statement that is executed in the query.
-	//
-	// example:
-	//
-	// select id,name from tb_table
-	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	// The total number of executions of the SQL statements.
-	//
-	// example:
-	//
-	// 2
-	TotalExecutionCounts *int64 `json:"TotalExecutionCounts,omitempty" xml:"TotalExecutionCounts,omitempty"`
-	// The total duration that was caused by all SQL statements in the query. Unit: seconds.
-	//
-	// example:
-	//
-	// 2
-	TotalExecutionTimes *int64 `json:"TotalExecutionTimes,omitempty" xml:"TotalExecutionTimes,omitempty"`
-	// The total lock duration that was caused by all SQL statements in the query. Unit: seconds.
-	//
-	// example:
-	//
-	// 1
-	TotalLockTimes *int64 `json:"TotalLockTimes,omitempty" xml:"TotalLockTimes,omitempty"`
+	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DBName               *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	DBNodeId             *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
+	MaxExecutionTime     *int64  `json:"MaxExecutionTime,omitempty" xml:"MaxExecutionTime,omitempty"`
+	MaxExecutionTimeMs   *string `json:"MaxExecutionTimeMs,omitempty" xml:"MaxExecutionTimeMs,omitempty"`
+	MaxLockTime          *int64  `json:"MaxLockTime,omitempty" xml:"MaxLockTime,omitempty"`
+	ParseMaxRowCount     *int64  `json:"ParseMaxRowCount,omitempty" xml:"ParseMaxRowCount,omitempty"`
+	ParseTotalRowCounts  *int64  `json:"ParseTotalRowCounts,omitempty" xml:"ParseTotalRowCounts,omitempty"`
+	ReturnMaxRowCount    *int64  `json:"ReturnMaxRowCount,omitempty" xml:"ReturnMaxRowCount,omitempty"`
+	ReturnTotalRowCounts *int64  `json:"ReturnTotalRowCounts,omitempty" xml:"ReturnTotalRowCounts,omitempty"`
+	SQLHASH              *string `json:"SQLHASH,omitempty" xml:"SQLHASH,omitempty"`
+	SQLText              *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
+	TotalExecutionCounts *int64  `json:"TotalExecutionCounts,omitempty" xml:"TotalExecutionCounts,omitempty"`
+	TotalExecutionTimes  *int64  `json:"TotalExecutionTimes,omitempty" xml:"TotalExecutionTimes,omitempty"`
+	TotalLockTimes       *int64  `json:"TotalLockTimes,omitempty" xml:"TotalLockTimes,omitempty"`
 }
 
 func (s DescribeSlowLogsResponseBodyItemsSQLSlowLog) String() string {

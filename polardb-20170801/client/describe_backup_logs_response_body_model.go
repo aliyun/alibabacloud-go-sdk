@@ -22,7 +22,6 @@ type iDescribeBackupLogsResponseBody interface {
 }
 
 type DescribeBackupLogsResponseBody struct {
-	// The details of the backup logs.
 	Items *DescribeBackupLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,54 +146,14 @@ func (s *DescribeBackupLogsResponseBodyItems) Validate() error {
 }
 
 type DescribeBackupLogsResponseBodyItemsBackupLog struct {
-	// The time when the backup task ended. The time follows the ISO 8601 standard in the `YYYY-MM-DD\\"T\\"HH:mm:ssZ` format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2020-02-12T03:55:31Z
-	BackupLogEndTime *string `json:"BackupLogEndTime,omitempty" xml:"BackupLogEndTime,omitempty"`
-	// The ID of the backup log.
-	//
-	// example:
-	//
-	// 1111111111
-	BackupLogId *string `json:"BackupLogId,omitempty" xml:"BackupLogId,omitempty"`
-	// The name of the backup log.
-	//
-	// example:
-	//
-	// ib_logfile1
-	BackupLogName *string `json:"BackupLogName,omitempty" xml:"BackupLogName,omitempty"`
-	// The size of the backup log. Unit: bytes.
-	//
-	// example:
-	//
-	// 1073741824
-	BackupLogSize *string `json:"BackupLogSize,omitempty" xml:"BackupLogSize,omitempty"`
-	// The time when the backup task started. The time follows the ISO 8601 standard in the `YYYY-MM-DD\\"T\\"HH:mm:ssZ` format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2020-02-12T03:54:43Z
-	BackupLogStartTime *string `json:"BackupLogStartTime,omitempty" xml:"BackupLogStartTime,omitempty"`
-	// The public URL used to download the backup log.
-	//
-	// example:
-	//
-	// http://***********.oss-cn-hangzhou.aliyuncs.com
-	DownloadLink *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
-	// The internal URL used to download the backup log.
-	//
-	// example:
-	//
-	// http://***********.oss-cn-hangzhou-internal.aliyuncs.com
+	BackupLogEndTime     *string `json:"BackupLogEndTime,omitempty" xml:"BackupLogEndTime,omitempty"`
+	BackupLogId          *string `json:"BackupLogId,omitempty" xml:"BackupLogId,omitempty"`
+	BackupLogName        *string `json:"BackupLogName,omitempty" xml:"BackupLogName,omitempty"`
+	BackupLogSize        *string `json:"BackupLogSize,omitempty" xml:"BackupLogSize,omitempty"`
+	BackupLogStartTime   *string `json:"BackupLogStartTime,omitempty" xml:"BackupLogStartTime,omitempty"`
+	DownloadLink         *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
 	IntranetDownloadLink *string `json:"IntranetDownloadLink,omitempty" xml:"IntranetDownloadLink,omitempty"`
-	// The time when the download URL expires.
-	//
-	// example:
-	//
-	// 2020-02-14T08:40:50Z
-	LinkExpiredTime *string `json:"LinkExpiredTime,omitempty" xml:"LinkExpiredTime,omitempty"`
+	LinkExpiredTime      *string `json:"LinkExpiredTime,omitempty" xml:"LinkExpiredTime,omitempty"`
 }
 
 func (s DescribeBackupLogsResponseBodyItemsBackupLog) String() string {

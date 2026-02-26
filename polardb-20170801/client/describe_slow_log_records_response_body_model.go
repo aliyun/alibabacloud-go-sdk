@@ -37,9 +37,8 @@ type DescribeSlowLogRecordsResponseBody struct {
 	// example:
 	//
 	// polardb_mysql
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// List of slow log details.
-	Items *DescribeSlowLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	Engine *string                                  `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	Items  *DescribeSlowLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// Page number.
 	//
 	// example:
@@ -181,69 +180,18 @@ func (s *DescribeSlowLogRecordsResponseBodyItems) Validate() error {
 }
 
 type DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord struct {
-	// Database name.
-	//
-	// example:
-	//
-	// testdb
-	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// Node ID.
-	//
-	// example:
-	//
-	// pi-*****************
-	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
-	// Time when the SQL starts execution. The format is `YYYY-MM-DDThh:mmZ` (UTC time).
-	//
-	// example:
-	//
-	// 2021-04-07T03:47Z
+	DBName             *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	DBNodeId           *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	ExecutionStartTime *string `json:"ExecutionStartTime,omitempty" xml:"ExecutionStartTime,omitempty"`
-	// Client address connecting to the database.
-	//
-	// example:
-	//
-	// testdb[testdb] @  [100.**.**.242]
-	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	LockTimeMS  *int64  `json:"LockTimeMS,omitempty" xml:"LockTimeMS,omitempty"`
-	// SQL lock duration in seconds.
-	//
-	// example:
-	//
-	// 0
-	LockTimes *int64 `json:"LockTimes,omitempty" xml:"LockTimes,omitempty"`
-	// Number of rows parsed.
-	//
-	// example:
-	//
-	// 0
-	ParseRowCounts *int64 `json:"ParseRowCounts,omitempty" xml:"ParseRowCounts,omitempty"`
-	// Query time. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 100
-	QueryTimeMS *int64 `json:"QueryTimeMS,omitempty" xml:"QueryTimeMS,omitempty"`
-	// SQL execution duration, in seconds.
-	//
-	// example:
-	//
-	// 20
-	QueryTimes *int64 `json:"QueryTimes,omitempty" xml:"QueryTimes,omitempty"`
-	// Number of rows returned.
-	//
-	// example:
-	//
-	// 0
-	ReturnRowCounts *int64 `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
-	// Unique identifier for the SQL statement in slow log statistics.
-	//
-	// example:
-	//
-	// U2FsdGVk****
-	SQLHash *string `json:"SQLHash,omitempty" xml:"SQLHash,omitempty"`
-	// Query statement.
-	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
+	HostAddress        *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
+	LockTimeMS         *int64  `json:"LockTimeMS,omitempty" xml:"LockTimeMS,omitempty"`
+	LockTimes          *int64  `json:"LockTimes,omitempty" xml:"LockTimes,omitempty"`
+	ParseRowCounts     *int64  `json:"ParseRowCounts,omitempty" xml:"ParseRowCounts,omitempty"`
+	QueryTimeMS        *int64  `json:"QueryTimeMS,omitempty" xml:"QueryTimeMS,omitempty"`
+	QueryTimes         *int64  `json:"QueryTimes,omitempty" xml:"QueryTimes,omitempty"`
+	ReturnRowCounts    *int64  `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
+	SQLHash            *string `json:"SQLHash,omitempty" xml:"SQLHash,omitempty"`
+	SQLText            *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
 }
 
 func (s DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) String() string {
