@@ -9,11 +9,14 @@ type iUpdateDiscoveryEndpointsInput interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCredentialName(v string) *UpdateDiscoveryEndpointsInput
+	GetCredentialName() *string
 	SetDiscoveryEndpoints(v []*DiscoveryEndpoint) *UpdateDiscoveryEndpointsInput
 	GetDiscoveryEndpoints() []*DiscoveryEndpoint
 }
 
 type UpdateDiscoveryEndpointsInput struct {
+	CredentialName     *string              `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
 	DiscoveryEndpoints []*DiscoveryEndpoint `json:"discoveryEndpoints,omitempty" xml:"discoveryEndpoints,omitempty" type:"Repeated"`
 }
 
@@ -25,8 +28,17 @@ func (s UpdateDiscoveryEndpointsInput) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateDiscoveryEndpointsInput) GetCredentialName() *string {
+	return s.CredentialName
+}
+
 func (s *UpdateDiscoveryEndpointsInput) GetDiscoveryEndpoints() []*DiscoveryEndpoint {
 	return s.DiscoveryEndpoints
+}
+
+func (s *UpdateDiscoveryEndpointsInput) SetCredentialName(v string) *UpdateDiscoveryEndpointsInput {
+	s.CredentialName = &v
+	return s
 }
 
 func (s *UpdateDiscoveryEndpointsInput) SetDiscoveryEndpoints(v []*DiscoveryEndpoint) *UpdateDiscoveryEndpointsInput {

@@ -23,6 +23,8 @@ type iUpdateAgentRuntimeInput interface {
 	GetCredentialName() *string
 	SetDescription(v string) *UpdateAgentRuntimeInput
 	GetDescription() *string
+	SetDiskSize(v int32) *UpdateAgentRuntimeInput
+	GetDiskSize() *int32
 	SetEnvironmentVariables(v map[string]*string) *UpdateAgentRuntimeInput
 	GetEnvironmentVariables() map[string]*string
 	SetExecutionRoleArn(v string) *UpdateAgentRuntimeInput
@@ -90,6 +92,7 @@ type UpdateAgentRuntimeInput struct {
 	//
 	// 更新后的智能体运行时描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	DiskSize    *int32  `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
 	// 智能体运行时的环境变量配置，用于在运行时传递配置参数
 	//
 	// example:
@@ -203,6 +206,10 @@ func (s *UpdateAgentRuntimeInput) GetDescription() *string {
 	return s.Description
 }
 
+func (s *UpdateAgentRuntimeInput) GetDiskSize() *int32 {
+	return s.DiskSize
+}
+
 func (s *UpdateAgentRuntimeInput) GetEnvironmentVariables() map[string]*string {
 	return s.EnvironmentVariables
 }
@@ -291,6 +298,11 @@ func (s *UpdateAgentRuntimeInput) SetCredentialName(v string) *UpdateAgentRuntim
 
 func (s *UpdateAgentRuntimeInput) SetDescription(v string) *UpdateAgentRuntimeInput {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateAgentRuntimeInput) SetDiskSize(v int32) *UpdateAgentRuntimeInput {
+	s.DiskSize = &v
 	return s
 }
 

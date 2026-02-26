@@ -43,6 +43,8 @@ type iUpdateTemplateInput interface {
 	GetSandboxTTLInSeconds() *int32
 	SetTemplateConfiguration(v map[string]interface{}) *UpdateTemplateInput
 	GetTemplateConfiguration() map[string]interface{}
+	SetWorkspaceId(v string) *UpdateTemplateInput
+	GetWorkspaceId() *string
 }
 
 type UpdateTemplateInput struct {
@@ -73,6 +75,7 @@ type UpdateTemplateInput struct {
 	SandboxTTLInSeconds *int32 `json:"sandboxTTLInSeconds,omitempty" xml:"sandboxTTLInSeconds,omitempty"`
 	// 模板配置（灵活的对象结构，根据 templateType 不同而不同）
 	TemplateConfiguration map[string]interface{} `json:"templateConfiguration,omitempty" xml:"templateConfiguration,omitempty"`
+	WorkspaceId           *string                `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s UpdateTemplateInput) String() string {
@@ -149,6 +152,10 @@ func (s *UpdateTemplateInput) GetSandboxTTLInSeconds() *int32 {
 
 func (s *UpdateTemplateInput) GetTemplateConfiguration() map[string]interface{} {
 	return s.TemplateConfiguration
+}
+
+func (s *UpdateTemplateInput) GetWorkspaceId() *string {
+	return s.WorkspaceId
 }
 
 func (s *UpdateTemplateInput) SetAllowAnonymousManage(v bool) *UpdateTemplateInput {
@@ -233,6 +240,11 @@ func (s *UpdateTemplateInput) SetSandboxTTLInSeconds(v int32) *UpdateTemplateInp
 
 func (s *UpdateTemplateInput) SetTemplateConfiguration(v map[string]interface{}) *UpdateTemplateInput {
 	s.TemplateConfiguration = v
+	return s
+}
+
+func (s *UpdateTemplateInput) SetWorkspaceId(v string) *UpdateTemplateInput {
+	s.WorkspaceId = &v
 	return s
 }
 

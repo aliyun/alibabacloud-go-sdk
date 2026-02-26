@@ -31,6 +31,8 @@ type iAgentRuntime interface {
 	GetCredentialName() *string
 	SetDescription(v string) *AgentRuntime
 	GetDescription() *string
+	SetDiskSize(v int) *AgentRuntime
+	GetDiskSize() *int
 	SetEnvironmentVariables(v map[string]*string) *AgentRuntime
 	GetEnvironmentVariables() map[string]*string
 	SetExecutionRoleArn(v string) *AgentRuntime
@@ -136,6 +138,7 @@ type AgentRuntime struct {
 	//
 	// AI agent runtime for customer service automation
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	DiskSize    *int    `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
 	// 智能体运行时的环境变量配置
 	//
 	// example:
@@ -294,6 +297,10 @@ func (s *AgentRuntime) GetDescription() *string {
 	return s.Description
 }
 
+func (s *AgentRuntime) GetDiskSize() *int {
+	return s.DiskSize
+}
+
 func (s *AgentRuntime) GetEnvironmentVariables() map[string]*string {
 	return s.EnvironmentVariables
 }
@@ -418,6 +425,11 @@ func (s *AgentRuntime) SetCredentialName(v string) *AgentRuntime {
 
 func (s *AgentRuntime) SetDescription(v string) *AgentRuntime {
 	s.Description = &v
+	return s
+}
+
+func (s *AgentRuntime) SetDiskSize(v int) *AgentRuntime {
+	s.DiskSize = &v
 	return s
 }
 

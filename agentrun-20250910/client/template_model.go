@@ -67,6 +67,8 @@ type iTemplate interface {
 	GetTemplateType() *string
 	SetTemplateVersion(v string) *Template
 	GetTemplateVersion() *string
+	SetWorkspaceId(v string) *Template
+	GetWorkspaceId() *string
 }
 
 type Template struct {
@@ -104,6 +106,7 @@ type Template struct {
 	TemplateName    *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
 	TemplateType    *string `json:"templateType,omitempty" xml:"templateType,omitempty"`
 	TemplateVersion *string `json:"templateVersion,omitempty" xml:"templateVersion,omitempty"`
+	WorkspaceId     *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s Template) String() string {
@@ -228,6 +231,10 @@ func (s *Template) GetTemplateType() *string {
 
 func (s *Template) GetTemplateVersion() *string {
 	return s.TemplateVersion
+}
+
+func (s *Template) GetWorkspaceId() *string {
+	return s.WorkspaceId
 }
 
 func (s *Template) SetAllowAnonymousManage(v bool) *Template {
@@ -372,6 +379,11 @@ func (s *Template) SetTemplateType(v string) *Template {
 
 func (s *Template) SetTemplateVersion(v string) *Template {
 	s.TemplateVersion = &v
+	return s
+}
+
+func (s *Template) SetWorkspaceId(v string) *Template {
+	s.WorkspaceId = &v
 	return s
 }
 

@@ -3397,6 +3397,10 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, he
 		query["templateType"] = request.TemplateType
 	}
 
+	if !dara.IsNil(request.WorkspaceId) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),

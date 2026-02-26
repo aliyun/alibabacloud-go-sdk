@@ -49,6 +49,8 @@ type iCreateTemplateInput interface {
 	GetTemplateName() *string
 	SetTemplateType(v string) *CreateTemplateInput
 	GetTemplateType() *string
+	SetWorkspaceId(v string) *CreateTemplateInput
+	GetWorkspaceId() *string
 }
 
 type CreateTemplateInput struct {
@@ -125,6 +127,7 @@ type CreateTemplateInput struct {
 	//
 	// Browser
 	TemplateType *string `json:"templateType,omitempty" xml:"templateType,omitempty"`
+	WorkspaceId  *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s CreateTemplateInput) String() string {
@@ -213,6 +216,10 @@ func (s *CreateTemplateInput) GetTemplateName() *string {
 
 func (s *CreateTemplateInput) GetTemplateType() *string {
 	return s.TemplateType
+}
+
+func (s *CreateTemplateInput) GetWorkspaceId() *string {
+	return s.WorkspaceId
 }
 
 func (s *CreateTemplateInput) SetAllowAnonymousManage(v bool) *CreateTemplateInput {
@@ -312,6 +319,11 @@ func (s *CreateTemplateInput) SetTemplateName(v string) *CreateTemplateInput {
 
 func (s *CreateTemplateInput) SetTemplateType(v string) *CreateTemplateInput {
 	s.TemplateType = &v
+	return s
+}
+
+func (s *CreateTemplateInput) SetWorkspaceId(v string) *CreateTemplateInput {
+	s.WorkspaceId = &v
 	return s
 }
 

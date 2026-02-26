@@ -19,6 +19,8 @@ type iListTemplatesRequest interface {
 	GetTemplateName() *string
 	SetTemplateType(v string) *ListTemplatesRequest
 	GetTemplateType() *string
+	SetWorkspaceId(v string) *ListTemplatesRequest
+	GetWorkspaceId() *string
 }
 
 type ListTemplatesRequest struct {
@@ -48,6 +50,10 @@ type ListTemplatesRequest struct {
 	//
 	// Browser
 	TemplateType *string `json:"templateType,omitempty" xml:"templateType,omitempty"`
+	// example:
+	//
+	// aaa
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s ListTemplatesRequest) String() string {
@@ -78,6 +84,10 @@ func (s *ListTemplatesRequest) GetTemplateType() *string {
 	return s.TemplateType
 }
 
+func (s *ListTemplatesRequest) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *ListTemplatesRequest) SetPageNumber(v int32) *ListTemplatesRequest {
 	s.PageNumber = &v
 	return s
@@ -100,6 +110,11 @@ func (s *ListTemplatesRequest) SetTemplateName(v string) *ListTemplatesRequest {
 
 func (s *ListTemplatesRequest) SetTemplateType(v string) *ListTemplatesRequest {
 	s.TemplateType = &v
+	return s
+}
+
+func (s *ListTemplatesRequest) SetWorkspaceId(v string) *ListTemplatesRequest {
+	s.WorkspaceId = &v
 	return s
 }
 

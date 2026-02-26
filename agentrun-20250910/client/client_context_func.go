@@ -2345,6 +2345,10 @@ func (client *Client) ListTemplatesWithContext(ctx context.Context, request *Lis
 		query["templateType"] = request.TemplateType
 	}
 
+	if !dara.IsNil(request.WorkspaceId) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
