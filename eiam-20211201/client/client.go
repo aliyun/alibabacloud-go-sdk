@@ -2466,6 +2466,104 @@ func (client *Client) CreateConditionalAccessPolicy(request *CreateConditionalAc
 
 // Summary:
 //
+// 创建凭据
+//
+// @param request - CreateCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCredentialResponse
+func (client *Client) CreateCredentialWithOptions(request *CreateCredentialRequest, runtime *dara.RuntimeOptions) (_result *CreateCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CredentialContent) {
+		query["CredentialContent"] = request.CredentialContent
+	}
+
+	if !dara.IsNil(request.CredentialIdentifier) {
+		query["CredentialIdentifier"] = request.CredentialIdentifier
+	}
+
+	if !dara.IsNil(request.CredentialName) {
+		query["CredentialName"] = request.CredentialName
+	}
+
+	if !dara.IsNil(request.CredentialScenarioLabel) {
+		query["CredentialScenarioLabel"] = request.CredentialScenarioLabel
+	}
+
+	if !dara.IsNil(request.CredentialSubjectId) {
+		query["CredentialSubjectId"] = request.CredentialSubjectId
+	}
+
+	if !dara.IsNil(request.CredentialSubjectType) {
+		query["CredentialSubjectType"] = request.CredentialSubjectType
+	}
+
+	if !dara.IsNil(request.CredentialType) {
+		query["CredentialType"] = request.CredentialType
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCredential"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCredentialResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建凭据
+//
+// @param request - CreateCredentialRequest
+//
+// @return CreateCredentialResponse
+func (client *Client) CreateCredential(request *CreateCredentialRequest) (_result *CreateCredentialResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateCredentialResponse{}
+	_body, _err := client.CreateCredentialWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建扩展字段
 //
 // @param request - CreateCustomFieldRequest
@@ -4568,6 +4666,72 @@ func (client *Client) DeleteConditionalAccessPolicy(request *DeleteConditionalAc
 
 // Summary:
 //
+// 删除凭据
+//
+// @param request - DeleteCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCredentialResponse
+func (client *Client) DeleteCredentialWithOptions(request *DeleteCredentialRequest, runtime *dara.RuntimeOptions) (_result *DeleteCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CredentialId) {
+		query["CredentialId"] = request.CredentialId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCredential"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCredentialResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除凭据
+//
+// @param request - DeleteCredentialRequest
+//
+// @return DeleteCredentialResponse
+func (client *Client) DeleteCredential(request *DeleteCredentialRequest) (_result *DeleteCredentialResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteCredentialResponse{}
+	_body, _err := client.DeleteCredentialWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除扩展字段
 //
 // @param request - DeleteCustomFieldRequest
@@ -6614,6 +6778,76 @@ func (client *Client) DisableConditionalAccessPolicy(request *DisableConditional
 
 // Summary:
 //
+// 禁用凭据
+//
+// @param request - DisableCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableCredentialResponse
+func (client *Client) DisableCredentialWithOptions(request *DisableCredentialRequest, runtime *dara.RuntimeOptions) (_result *DisableCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CredentialId) {
+		query["CredentialId"] = request.CredentialId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableCredential"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableCredentialResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用凭据
+//
+// @param request - DisableCredentialRequest
+//
+// @return DisableCredentialResponse
+func (client *Client) DisableCredential(request *DisableCredentialRequest) (_result *DisableCredentialResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DisableCredentialResponse{}
+	_body, _err := client.DisableCredentialWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 禁用字段
 //
 // @param request - DisableCustomFieldRequest
@@ -8297,6 +8531,76 @@ func (client *Client) EnableConditionalAccessPolicy(request *EnableConditionalAc
 	runtime := &dara.RuntimeOptions{}
 	_result = &EnableConditionalAccessPolicyResponse{}
 	_body, _err := client.EnableConditionalAccessPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用凭据
+//
+// @param request - EnableCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableCredentialResponse
+func (client *Client) EnableCredentialWithOptions(request *EnableCredentialRequest, runtime *dara.RuntimeOptions) (_result *EnableCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CredentialId) {
+		query["CredentialId"] = request.CredentialId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableCredential"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableCredentialResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用凭据
+//
+// @param request - EnableCredentialRequest
+//
+// @return EnableCredentialResponse
+func (client *Client) EnableCredential(request *EnableCredentialRequest) (_result *EnableCredentialResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EnableCredentialResponse{}
+	_body, _err := client.EnableCredentialWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10519,6 +10823,72 @@ func (client *Client) GetConditionalAccessPolicy(request *GetConditionalAccessPo
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetConditionalAccessPolicyResponse{}
 	_body, _err := client.GetConditionalAccessPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取凭据
+//
+// @param request - GetCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCredentialResponse
+func (client *Client) GetCredentialWithOptions(request *GetCredentialRequest, runtime *dara.RuntimeOptions) (_result *GetCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CredentialId) {
+		query["CredentialId"] = request.CredentialId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCredential"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCredentialResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取凭据
+//
+// @param request - GetCredentialRequest
+//
+// @return GetCredentialResponse
+func (client *Client) GetCredential(request *GetCredentialRequest) (_result *GetCredentialResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetCredentialResponse{}
+	_body, _err := client.GetCredentialWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14810,6 +15180,88 @@ func (client *Client) ListConditionalAccessPoliciesForUser(request *ListConditio
 
 // Summary:
 //
+// 查询凭据列表
+//
+// @param request - ListCredentialsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCredentialsResponse
+func (client *Client) ListCredentialsWithOptions(request *ListCredentialsRequest, runtime *dara.RuntimeOptions) (_result *ListCredentialsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CredentialIds) {
+		query["CredentialIds"] = request.CredentialIds
+	}
+
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Statuses) {
+		query["Statuses"] = request.Statuses
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCredentials"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCredentialsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询凭据列表
+//
+// @param request - ListCredentialsRequest
+//
+// @return ListCredentialsResponse
+func (client *Client) ListCredentials(request *ListCredentialsRequest) (_result *ListCredentialsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCredentialsResponse{}
+	_body, _err := client.ListCredentialsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 自定义条款列表查询。
 //
 // @param request - ListCustomPrivacyPoliciesRequest
@@ -17520,6 +17972,72 @@ func (client *Client) ObtainApplicationToken(request *ObtainApplicationTokenRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &ObtainApplicationTokenResponse{}
 	_body, _err := client.ObtainApplicationTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取凭据
+//
+// @param request - ObtainCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ObtainCredentialResponse
+func (client *Client) ObtainCredentialWithOptions(request *ObtainCredentialRequest, runtime *dara.RuntimeOptions) (_result *ObtainCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CredentialId) {
+		query["CredentialId"] = request.CredentialId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ObtainCredential"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ObtainCredentialResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取凭据
+//
+// @param request - ObtainCredentialRequest
+//
+// @return ObtainCredentialResponse
+func (client *Client) ObtainCredential(request *ObtainCredentialRequest) (_result *ObtainCredentialResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ObtainCredentialResponse{}
+	_body, _err := client.ObtainCredentialWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22330,6 +22848,158 @@ func (client *Client) UpdateConditionalAccessPolicyDescription(request *UpdateCo
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateConditionalAccessPolicyDescriptionResponse{}
 	_body, _err := client.UpdateConditionalAccessPolicyDescriptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新凭据
+//
+// @param request - UpdateCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCredentialResponse
+func (client *Client) UpdateCredentialWithOptions(request *UpdateCredentialRequest, runtime *dara.RuntimeOptions) (_result *UpdateCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CredentialContent) {
+		query["CredentialContent"] = request.CredentialContent
+	}
+
+	if !dara.IsNil(request.CredentialId) {
+		query["CredentialId"] = request.CredentialId
+	}
+
+	if !dara.IsNil(request.CredentialName) {
+		query["CredentialName"] = request.CredentialName
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCredential"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCredentialResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新凭据
+//
+// @param request - UpdateCredentialRequest
+//
+// @return UpdateCredentialResponse
+func (client *Client) UpdateCredential(request *UpdateCredentialRequest) (_result *UpdateCredentialResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateCredentialResponse{}
+	_body, _err := client.UpdateCredentialWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新凭据描述
+//
+// @param request - UpdateCredentialDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCredentialDescriptionResponse
+func (client *Client) UpdateCredentialDescriptionWithOptions(request *UpdateCredentialDescriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateCredentialDescriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CredentialId) {
+		query["CredentialId"] = request.CredentialId
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCredentialDescription"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCredentialDescriptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新凭据描述
+//
+// @param request - UpdateCredentialDescriptionRequest
+//
+// @return UpdateCredentialDescriptionResponse
+func (client *Client) UpdateCredentialDescription(request *UpdateCredentialDescriptionRequest) (_result *UpdateCredentialDescriptionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateCredentialDescriptionResponse{}
+	_body, _err := client.UpdateCredentialDescriptionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
