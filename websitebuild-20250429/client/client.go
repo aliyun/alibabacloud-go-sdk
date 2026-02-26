@@ -2408,7 +2408,7 @@ func (client *Client) QueryMaterialFileDetail(request *QueryMaterialFileDetailRe
 
 // Summary:
 //
-// 查询素材文件列表
+// # Query Material File List
 //
 // @param tmpReq - QueryMaterialFileListRequest
 //
@@ -2518,7 +2518,7 @@ func (client *Client) QueryMaterialFileListWithOptions(tmpReq *QueryMaterialFile
 
 // Summary:
 //
-// 查询素材文件列表
+// # Query Material File List
 //
 // @param request - QueryMaterialFileListRequest
 //

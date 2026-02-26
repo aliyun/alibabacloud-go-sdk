@@ -1783,7 +1783,7 @@ func (client *Client) QueryMaterialFileDetailWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询素材文件列表
+// # Query Material File List
 //
 // @param tmpReq - QueryMaterialFileListRequest
 //

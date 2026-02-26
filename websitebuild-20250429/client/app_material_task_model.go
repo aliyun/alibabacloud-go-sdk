@@ -32,16 +32,34 @@ type iAppMaterialTask interface {
 }
 
 type AppMaterialTask struct {
+	// example:
+	//
+	// 2025-12-26 11:30:05
 	CompleteTime       *string   `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
 	CompleteTimeFormat *string   `json:"CompleteTimeFormat,omitempty" xml:"CompleteTimeFormat,omitempty"`
 	FailReason         *string   `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
 	FinalFileUrls      []*string `json:"FinalFileUrls,omitempty" xml:"FinalFileUrls,omitempty" type:"Repeated"`
-	Status             *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubStatus          *string   `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
-	SubmitTime         *string   `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
-	TaskId             *string   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskParam          *string   `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
-	TaskType           *string   `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// PENDING
+	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	// example:
+	//
+	// 2025-12-26 11:30:05
+	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	// example:
+	//
+	// 81d04d62c3483b32bacf1d306d2622b2
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskParam *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
+	// example:
+	//
+	// IMAGE_LOGO
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s AppMaterialTask) String() string {

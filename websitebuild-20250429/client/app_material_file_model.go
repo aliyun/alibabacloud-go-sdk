@@ -40,20 +40,59 @@ type iAppMaterialFile interface {
 }
 
 type AppMaterialFile struct {
-	BizId       *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// WD20250703155602000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// image/png
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2025-11-03 02:05:01
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2025-11-03 02:05:01
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	// example:
+	//
+	// ddddwww
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	FileId      *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	FileUrl     *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	Height      *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// d75e1e9693cc460da218419d67735567
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// example:
+	//
+	// https://demo-moshicloud-test.oss-cn-hangzhou-internal.aliyuncs.com/document/testcase/aliyun/api_case/pdf_angle90_page1.pdf
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// 1280
+	Height *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// NORMAL
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 23M
 	StorageSize *string `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	Suffix      *string `json:"Suffix,omitempty" xml:"Suffix,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Width       *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// png
+	Suffix *string `json:"Suffix,omitempty" xml:"Suffix,omitempty"`
+	// example:
+	//
+	// IMAGE
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1920
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s AppMaterialFile) String() string {

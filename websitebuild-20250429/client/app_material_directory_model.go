@@ -24,12 +24,24 @@ type iAppMaterialDirectory interface {
 }
 
 type AppMaterialDirectory struct {
-	BizId       *string                 `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	Children    []*AppMaterialDirectory `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
-	DirectoryId *string                 `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	Name        *string                 `json:"Name,omitempty" xml:"Name,omitempty"`
-	SortNum     *string                 `json:"SortNum,omitempty" xml:"SortNum,omitempty"`
-	Type        *string                 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// WD20250814102215000001
+	BizId    *string                 `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	Children []*AppMaterialDirectory `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
+	// example:
+	//
+	// WS20260206134746000001-system
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	SortNum *string `json:"SortNum,omitempty" xml:"SortNum,omitempty"`
+	// example:
+	//
+	// CUSTOM
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s AppMaterialDirectory) String() string {
