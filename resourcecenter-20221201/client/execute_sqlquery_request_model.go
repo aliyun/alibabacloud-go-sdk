@@ -34,9 +34,9 @@ type ExecuteSQLQueryRequest struct {
   Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
   // The number of entries per page.
   // 
-  // 	- Valid values: 1 to 1000.
+  // - Valid values: 1 to 1000.
   // 
-  // 	- Default value: 1000.
+  // - Default value: 1000.
   // 
   // example:
   // 

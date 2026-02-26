@@ -18,20 +18,9 @@ type iListFiltersResponseBody interface {
 }
 
 type ListFiltersResponseBody struct {
-	// The name of the default filter.
-	//
-	// example:
-	//
-	// My Filters
-	DefaultFilterName *string `json:"DefaultFilterName,omitempty" xml:"DefaultFilterName,omitempty"`
-	// The configurations of the filter.
-	Filters []*ListFiltersResponseBodyFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// The request ID.
-	//
-	// example:
-	//
-	// AA39FB9C-CB74-5E73-8DFE-3A2B096F0759
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DefaultFilterName *string                           `json:"DefaultFilterName,omitempty" xml:"DefaultFilterName,omitempty"`
+	Filters           []*ListFiltersResponseBodyFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	RequestId         *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListFiltersResponseBody) String() string {
@@ -83,38 +72,9 @@ func (s *ListFiltersResponseBody) Validate() error {
 }
 
 type ListFiltersResponseBodyFilters struct {
-	// The configurations of the filter.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// {
-	//
-	//   "regions": [],
-	//
-	//   "tagFilters": [
-	//
-	//     [{ "type": "notContainTagKey", "tagKey": "xxx", "tagValue": "" }],
-	//
-	//     [{ "tagKey": "xxx", "tagValue": "xxx" }]
-	//
-	//   ],
-	//
-	//   "resourceTypes": [
-	//
-	//     "ACS::ECS::AutoSnapshotPolicy"
-	//
-	//   ]
-	//
-	// }
 	FilterConfiguration *string `json:"FilterConfiguration,omitempty" xml:"FilterConfiguration,omitempty"`
-	// The name of the filter.
-	//
-	// example:
-	//
-	// My devices
-	FilterName *string `json:"FilterName,omitempty" xml:"FilterName,omitempty"`
+	FilterName          *string `json:"FilterName,omitempty" xml:"FilterName,omitempty"`
 }
 
 func (s ListFiltersResponseBodyFilters) String() string {

@@ -22,9 +22,9 @@ type iListTagKeysRequest interface {
 type ListTagKeysRequest struct {
 	// The matching mode. Valid values:
 	//
-	// 	- Equals: equal match
+	// - Equals: equal match
 	//
-	// 	- Prefix: match by prefix
+	// - Prefix: match by prefix
 	//
 	// example:
 	//

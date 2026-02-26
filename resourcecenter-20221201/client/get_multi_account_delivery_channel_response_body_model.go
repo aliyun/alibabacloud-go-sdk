@@ -27,6 +27,10 @@ type iGetMultiAccountDeliveryChannelResponseBody interface {
 
 type GetMultiAccountDeliveryChannelResponseBody struct {
 	// The description of the delivery channel.
+	//
+	// example:
+	//
+	// 投递描述
 	DeliveryChannelDescription *string `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
 	// The effective scope of the delivery channel.
 	DeliveryChannelFilter *GetMultiAccountDeliveryChannelResponseBodyDeliveryChannelFilter `json:"DeliveryChannelFilter,omitempty" xml:"DeliveryChannelFilter,omitempty" type:"Struct"`
@@ -48,9 +52,9 @@ type GetMultiAccountDeliveryChannelResponseBody struct {
 	//
 	// FE3EAB47-D3A6-5FEA-8353-31C8C0D36***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The configurations for delivery of resource configuration change events.
+	// The delivery of resource configuration changes.
 	ResourceChangeDelivery *GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery `json:"ResourceChangeDelivery,omitempty" xml:"ResourceChangeDelivery,omitempty" type:"Struct"`
-	// The configurations for delivery of scheduled resource snapshots.
+	// The configurations of scheduled delivery of resource snapshots.
 	ResourceSnapshotDelivery *GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery `json:"ResourceSnapshotDelivery,omitempty" xml:"ResourceSnapshotDelivery,omitempty" type:"Struct"`
 }
 
@@ -145,9 +149,9 @@ func (s *GetMultiAccountDeliveryChannelResponseBody) Validate() error {
 }
 
 type GetMultiAccountDeliveryChannelResponseBodyDeliveryChannelFilter struct {
-	// The effective account scopes of the delivery channel.
+	// The accounts within the delivery scope.
 	AccountScopes []*string `json:"AccountScopes,omitempty" xml:"AccountScopes,omitempty" type:"Repeated"`
-	// The effective resource types of the delivery channel.
+	// The types of delivered resources.
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
 }
 
@@ -182,8 +186,17 @@ func (s *GetMultiAccountDeliveryChannelResponseBodyDeliveryChannelFilter) Valida
 }
 
 type GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery struct {
+	// Indicates whether to deliver resource configuration changes. Valid values:
+	//
+	// - true
+	//
+	// - false
+	//
+	// example:
+	//
+	// true
 	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The Simple Log Service configurations.
+	// The Simple Log Service (SLS) configuration.
 	SlsProperties *GetMultiAccountDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
 	// The ARN of the delivery destination.
 	//
@@ -191,7 +204,7 @@ type GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery struct {
 	//
 	// acs:log:cn-hangzhou: 1911422487776***:project/delivery/logstore/resourcecenter-sls
 	TargetArn *string `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
-	// The type of the destination.
+	// The type of the delivery destination.
 	//
 	// example:
 	//
@@ -253,7 +266,7 @@ func (s *GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery) Valid
 }
 
 type GetMultiAccountDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties struct {
-	// The Alibaba Cloud Resource Name (ARN) of the destination to which large files are delivered.
+	// The ARN of the Object Storage Service (OSS) bucket to which oversized data is delivered.
 	//
 	// example:
 	//
@@ -295,8 +308,17 @@ type GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery struct {
 	//
 	// 09:00Z
 	DeliveryTime *string `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
-	Enabled      *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The Simple Log Service configurations.
+	// Indicates whether to enable the scheduled delivery of resource snapshots. Valid values:
+	//
+	// - true
+	//
+	// - false
+	//
+	// example:
+	//
+	// true
+	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The SLS configuration.
 	SlsProperties *GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
 	// The ARN of the delivery destination.
 	//
@@ -304,7 +326,7 @@ type GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery struct {
 	//
 	// acs:oss:cn-hangzhou:1911422487776***:resourcecenter-oss
 	TargetArn *string `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
-	// The type of the destination.
+	// The type of the delivery destination.
 	//
 	// example:
 	//
@@ -384,7 +406,7 @@ func (s *GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery) Val
 }
 
 type GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties struct {
-	// The ARN of the destination to which large files are delivered.
+	// The ARN of the OSS bucket to which oversized data is delivered.
 	//
 	// example:
 	//

@@ -23,6 +23,10 @@ type iCreateDeliveryChannelRequest interface {
 
 type CreateDeliveryChannelRequest struct {
 	// The description of the delivery channel.
+	//
+	// example:
+	//
+	// 测试投递
 	DeliveryChannelDescription *string `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
 	// The effective scope of the delivery channel.
 	//
@@ -36,9 +40,9 @@ type CreateDeliveryChannelRequest struct {
 	//
 	// test-delivery
 	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
-	// The configurations for delivery of resource configuration change events.
+	// The delivery of resource configuration changes.
 	ResourceChangeDelivery *CreateDeliveryChannelRequestResourceChangeDelivery `json:"ResourceChangeDelivery,omitempty" xml:"ResourceChangeDelivery,omitempty" type:"Struct"`
-	// The configurations for delivery of scheduled resource snapshots.
+	// The scheduled delivery of resource snapshots.
 	ResourceSnapshotDelivery *CreateDeliveryChannelRequestResourceSnapshotDelivery `json:"ResourceSnapshotDelivery,omitempty" xml:"ResourceSnapshotDelivery,omitempty" type:"Struct"`
 }
 
@@ -115,11 +119,7 @@ func (s *CreateDeliveryChannelRequest) Validate() error {
 }
 
 type CreateDeliveryChannelRequestDeliveryChannelFilter struct {
-	// An array of effective resource types for the delivery channel.
-	//
-	// 	- Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
-	//
-	// 	- If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
+	// The list of resource types to be delivered.
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
 }
 
@@ -145,23 +145,21 @@ func (s *CreateDeliveryChannelRequestDeliveryChannelFilter) Validate() error {
 }
 
 type CreateDeliveryChannelRequestResourceChangeDelivery struct {
-	// The Simple Log Service configurations.
+	// The SLS configurations.
 	SlsProperties *CreateDeliveryChannelRequestResourceChangeDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
-	// The ARN of the delivery destination.
+	// The ARN of the destination. Valid values:
 	//
-	// 	- If you set `TargetType` to `OSS`, you must set `TargetArn` to the ARN of a bucket whose name is prefixed with resourcecenter-.
+	// - If you set `TargetType` to `OSS`, set `TargetArn` to the ARN of an OSS bucket that has the `resourcecenter-` prefix.
 	//
-	// 	- If you set `TargetType` to `SLS`, you must set `TargetArn` to the ARN of a Logstore whose name is prefixed with resourcecenter-.
+	// - If you set `TargetType` to `SLS`, set `TargetArn` to the ARN of an SLS Logstore that has the `resourcecenter-` prefix.
 	//
 	// example:
 	//
 	// acs:log:cn-hangzhou: 191142248777****:project/delivery/logstore/resourcecenter-sls
 	TargetArn *string `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
-	// The type of the delivery destination.
+	// The type of the destination.
 	//
-	// Valid values:
-	//
-	// 	- `SLS`
+	// Valid value: `SLS`.
 	//
 	// example:
 	//
@@ -214,11 +212,9 @@ func (s *CreateDeliveryChannelRequestResourceChangeDelivery) Validate() error {
 }
 
 type CreateDeliveryChannelRequestResourceChangeDeliverySlsProperties struct {
-	// The ARN of the destination to which large files are delivered.
+	// The ARN of the destination OSS bucket for oversized files.
 	//
-	// 	- If the size of a resource configuration change event exceeds 1 MB, the event is delivered as an OSS object.
-	//
-	// 	- You need to set this parameter to the ARN of a bucket whose name is prefixed with resourcecenter-.
+	// If the size of a resource configuration change event exceeds 1 MB, the event is delivered as an OSS object. Set this parameter to the ARN of an OSS bucket that has the `resourcecenter-` prefix.
 	//
 	// example:
 	//
@@ -260,25 +256,23 @@ type CreateDeliveryChannelRequestResourceSnapshotDelivery struct {
 	//
 	// 09:00Z
 	DeliveryTime *string `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
-	// The Simple Log Service configurations.
+	// The SLS configurations.
 	SlsProperties *CreateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
-	// The Alibaba Cloud Resource Name (ARN) of the delivery destination.
+	// The Alibaba Cloud Resource Name (ARN) of the destination. Valid values:
 	//
-	// 	- If you set `TargetType` to `OSS`, you must set `TargetArn` to the ARN of a bucket whose name is prefixed with resourcecenter-.
+	// - If you set `TargetType` to `OSS`, set `TargetArn` to the ARN of an Object Storage Service (OSS) bucket that has the `resourcecenter-` prefix. Example: `acs:oss:cn-hangzhou:191142248777****:resourcecenter-oss`.
 	//
-	// 	- If you set `TargetType` to `SLS`, you must set `TargetArn` to the ARN of a Logstore whose name is prefixed with resourcecenter-.
+	// - If you set `TargetType` to `SLS`, set `TargetArn` to the ARN of a Simple Log Service (SLS) Logstore that has the `resourcecenter-` prefix. Example: `acs:log:cn-hangzhou: 191142248777****:project/delivery/logstore/resourcecenter-sls`.
 	//
 	// example:
 	//
 	// acs:log:cn-hangzhou: 191142248777****:project/delivery/logstore/resourcecenter-sls
 	TargetArn *string `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
-	// The type of the delivery destination.
+	// The type of the destination. Valid values:
 	//
-	// Valid values:
+	// - For standard scheduled delivery, set this parameter to `OSS`.
 	//
-	// 	- `OSS` for standard delivery
-	//
-	// 	- `OSS` or `SLS` for custom delivery
+	// - For custom scheduled delivery, set this parameter to `OSS` or `SLS`.
 	//
 	// example:
 	//
@@ -349,13 +343,11 @@ func (s *CreateDeliveryChannelRequestResourceSnapshotDelivery) Validate() error 
 }
 
 type CreateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties struct {
-	// The ARN of the destination to which large files are delivered.
+	// The ARN of the destination OSS bucket for oversized files.
 	//
-	// 	- If the size of a resource configuration change event exceeds 1 MB, the event is delivered as an OSS object.
+	// If the size of a resource configuration change event exceeds 1 MB, the event is delivered as an OSS object. Set this parameter to the ARN of an OSS bucket that has the `resourcecenter-` prefix.
 	//
-	// 	- You need to set this parameter to the ARN of a bucket whose name is prefixed with resourcecenter-.
-	//
-	// 	- This parameter takes effect only if you use custom delivery for scheduled resource snapshots. You do not need to configure this parameter if you use standard delivery for scheduled resource snapshots.
+	// > This parameter is valid only for custom scheduled delivery. You do not need to specify this parameter for standard scheduled delivery.
 	//
 	// example:
 	//

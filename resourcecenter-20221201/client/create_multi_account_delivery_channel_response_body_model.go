@@ -16,7 +16,7 @@ type iCreateMultiAccountDeliveryChannelResponseBody interface {
 }
 
 type CreateMultiAccountDeliveryChannelResponseBody struct {
-	// The ID of the delivery channel.
+	// The delivery channel ID.
 	//
 	// example:
 	//

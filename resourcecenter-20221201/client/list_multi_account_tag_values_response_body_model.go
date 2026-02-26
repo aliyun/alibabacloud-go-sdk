@@ -18,19 +18,8 @@ type iListMultiAccountTagValuesResponseBody interface {
 }
 
 type ListMultiAccountTagValuesResponseBody struct {
-	// The pagination token that is used in the next request to retrieve a new page of results.
-	//
-	// example:
-	//
-	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 36A3D9BE-B607-5993-B546-7E19EF65DC00
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tag values.
+	NextToken *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagValues []*string `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Repeated"`
 }
 

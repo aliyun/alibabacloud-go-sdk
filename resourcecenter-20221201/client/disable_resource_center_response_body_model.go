@@ -14,11 +14,6 @@ type iDisableResourceCenterResponseBody interface {
 }
 
 type DisableResourceCenterResponseBody struct {
-	// The ID of the request.
-	//
-	// example:
-	//
-	// D170D58E-6256-5344-8F5E-922EC9ECB7EA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

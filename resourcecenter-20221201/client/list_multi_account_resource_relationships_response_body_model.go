@@ -22,40 +22,11 @@ type iListMultiAccountResourceRelationshipsResponseBody interface {
 }
 
 type ListMultiAccountResourceRelationshipsResponseBody struct {
-	// The maximum number of entries per page.
-	//
-	// example:
-	//
-	// 10
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
-	//
-	// example:
-	//
-	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// BCAB07BA-82FA-5DC0-9322-FB7ED726481D
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource relationships.
+	MaxResults            *int32                                                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken             *string                                                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId             *string                                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceRelationships []*ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships `json:"ResourceRelationships,omitempty" xml:"ResourceRelationships,omitempty" type:"Repeated"`
-	// The search scope. Valid values:
-	//
-	// 	- ID of a resource directory: Resources within the management account and all members of the resource directory are searched.
-	//
-	// 	- ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched.
-	//
-	// 	- ID of a folder: Resources within all members in the folder are searched.
-	//
-	// 	- ID of a member: Resources within the member are searched.
-	//
-	// example:
-	//
-	// rd-r4****
-	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	Scope                 *string                                                                   `json:"Scope,omitempty" xml:"Scope,omitempty"`
 }
 
 func (s ListMultiAccountResourceRelationshipsResponseBody) String() string {
@@ -125,48 +96,13 @@ func (s *ListMultiAccountResourceRelationshipsResponseBody) Validate() error {
 }
 
 type ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships struct {
-	// The ID of the management account or member.
-	//
-	// example:
-	//
-	// 193396142051****
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The region ID of the resource.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the associated resource.
-	//
-	// example:
-	//
-	// vpc-uf6m5okksddm6c9lh7***
-	RelatedResourceId *string `json:"RelatedResourceId,omitempty" xml:"RelatedResourceId,omitempty"`
-	// The region ID of the associated resource.
-	//
-	// example:
-	//
-	// cn-shanghai
+	AccountId               *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RelatedResourceId       *string `json:"RelatedResourceId,omitempty" xml:"RelatedResourceId,omitempty"`
 	RelatedResourceRegionId *string `json:"RelatedResourceRegionId,omitempty" xml:"RelatedResourceRegionId,omitempty"`
-	// The type of the associated resource.
-	//
-	// example:
-	//
-	// ACS::VPC::VPC
-	RelatedResourceType *string `json:"RelatedResourceType,omitempty" xml:"RelatedResourceType,omitempty"`
-	// The ID of the resource.
-	//
-	// example:
-	//
-	// m-eb3hji****
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource.
-	//
-	// example:
-	//
-	// ACS::ACK::Cluster
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	RelatedResourceType     *string `json:"RelatedResourceType,omitempty" xml:"RelatedResourceType,omitempty"`
+	ResourceId              *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType            *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships) String() string {

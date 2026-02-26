@@ -20,13 +20,13 @@ type CreateDeliveryChannelResponseBody struct {
 	//
 	// example:
 	//
-	// dc-0bzhsqpnk***
+	// dc-0bzhsqpn****
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
-	// 42A89312-0616-591E-B614-07BC87D3D***
+	// 42A89312-0616-591E-B614-07BC87D3D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

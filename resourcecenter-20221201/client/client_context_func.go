@@ -53,17 +53,61 @@ func (client *Client) AssociateDefaultFilterWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Creates a single-account delivery channel.
+// Queries the configurations of multiple resources in your account.
+//
+// @param request - BatchGetResourceConfigurationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchGetResourceConfigurationsResponse
+func (client *Client) BatchGetResourceConfigurationsWithContext(ctx context.Context, request *BatchGetResourceConfigurationsRequest, runtime *dara.RuntimeOptions) (_result *BatchGetResourceConfigurationsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Resources) {
+		query["Resources"] = request.Resources
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchGetResourceConfigurations"),
+		Version:     dara.String("2022-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchGetResourceConfigurationsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a resource delivery channel for the current account.
 //
 // Description:
 //
-// Resource delivery supports the delivery of resource configuration change events and scheduled resource snapshots.
+// Resource delivery supports the scheduled delivery of resource snapshots and the delivery of resource configuration changes.
 //
-// Scheduled resource snapshots support the following delivery scenarios:
+// Scheduled delivery of resource snapshots supports two scenarios:
 //
-//   - Standard delivery: Leave the ResourceSnapshotDelivery.CustomExpression parameter empty.
+// - Standard delivery: Leave the `ResourceSnapshotDelivery.CustomExpression` parameter empty.
 //
-//   - Custom delivery: Set the ResourceSnapshotDelivery.CustomExpression parameter to an appropriate value.
+// - Custom delivery: Set the `ResourceSnapshotDelivery.CustomExpression` parameter to an appropriate value.
 //
 // @param request - CreateDeliveryChannelRequest
 //
@@ -175,13 +219,13 @@ func (client *Client) CreateFilterWithContext(ctx context.Context, request *Crea
 //
 // Description:
 //
-// In Resource Center, you can create multi-account delivery channels by using the management account of your resource directory or the delegated administrator account of Resource Center to deliver resource configuration change events and scheduled resource snapshots within the members in your resource directory to Object Storage Service (OSS) or Simple Log Service. Then, other Alibaba Cloud services consume standardized resource information from OSS or Simple Log Service.
+// In Resource Center, you can create multi-account delivery channels by using the management account of your resource directory or the delegated administrator account of Resource Center to deliver resource configuration change events and scheduled resource snapshots within the members in your resource directory to Object Storage Service (OSS) or Simple Log Service (SLS). Then, other Alibaba Cloud services consume standardized resource information from OSS or Simple Log Service.
 //
 // Scheduled resource snapshots support the following delivery scenarios:
 //
-//   - Standard delivery: Leave the `ResourceSnapshotDelivery.CustomExpression` parameter empty.
+// - Standard delivery: Leave the `ResourceSnapshotDelivery.CustomExpression` parameter empty.
 //
-//   - Custom delivery: Set the `ResourceSnapshotDelivery.CustomExpression` parameter to an appropriate value.
+// - Custom delivery: Set the `ResourceSnapshotDelivery.CustomExpression` parameter to an appropriate value.
 //
 // @param request - CreateMultiAccountDeliveryChannelRequest
 //
@@ -469,7 +513,7 @@ func (client *Client) DeleteSavedQueryWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Executes an SQL statement to query resources across accounts.
+// 执行多账号查询
 //
 // @param request - ExecuteMultiAccountSQLQueryRequest
 //
@@ -581,7 +625,7 @@ func (client *Client) ExecuteSQLQueryWithContext(ctx context.Context, request *E
 
 // Summary:
 //
-// Queries the information about a single-account delivery channel.
+// Queries the information about a delivery channel within the current account.
 //
 // @param request - GetDeliveryChannelRequest
 //
@@ -625,7 +669,7 @@ func (client *Client) GetDeliveryChannelWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the statistics on a single-account delivery channel.
+// Queries the statistics of a resource delivery channel in the current account.
 //
 // @param request - GetDeliveryChannelStatisticsRequest
 //
@@ -713,7 +757,7 @@ func (client *Client) GetExampleQueryWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Queries the information about a multi-account delivery channel.
+// Queries the information about a cross-account resource delivery channel.
 //
 // @param request - GetMultiAccountDeliveryChannelRequest
 //
@@ -857,7 +901,11 @@ func (client *Client) GetMultiAccountResourceConfigurationWithContext(ctx contex
 
 // Summary:
 //
-// 获取多账号资源数量
+// Queries the number of resources within the management account and multiple members of a resource directory.
+//
+// Description:
+//
+// You can query only resources supported by Resource Center. For more information, see [Services that work with Resource Center](https://help.aliyun.com/document_detail/477798.html).
 //
 // @param request - GetMultiAccountResourceCountsRequest
 //
@@ -909,7 +957,7 @@ func (client *Client) GetMultiAccountResourceCountsWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the configurations of a resource within the current account.
+// 获取资源配置
 //
 // @param request - GetResourceConfigurationRequest
 //
@@ -961,7 +1009,13 @@ func (client *Client) GetResourceConfigurationWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the numbers of resources on which the current account has access permissions.
+// Queries the number of resources in your account that you have permission to access.
+//
+// Description:
+//
+// - You can query the number of resources in your account that you have permission to access.
+//
+// - You can query only the [Alibaba Cloud services and resource types that are supported by Resource Center](https://help.aliyun.com/document_detail/477798.html).
 //
 // @param request - GetResourceCountsRequest
 //
@@ -1061,7 +1115,7 @@ func (client *Client) GetSavedQueryWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// Queries a list of single-account delivery channels.
+// Queries a list of delivery channels within the current account.
 //
 // @param request - ListDeliveryChannelsRequest
 //
@@ -1157,7 +1211,7 @@ func (client *Client) ListExampleQueriesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries a list of multi-account delivery channels.
+// Queries a list of delivery channels in resource directory mode.
 //
 // @param request - ListMultiAccountDeliveryChannelsRequest
 //
@@ -1205,7 +1259,7 @@ func (client *Client) ListMultiAccountDeliveryChannelsWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the resource groups within the management account or a member of a resource directory by using the management account of the resource directory or a delegated administrator account of Resource Center.
+// Queries the resource groups within the management account or a member in a resource directory.
 //
 // @param request - ListMultiAccountResourceGroupsRequest
 //
@@ -1261,17 +1315,7 @@ func (client *Client) ListMultiAccountResourceGroupsWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the relationships between resources within the management account or members of your resource directory.
-//
-// Description:
-//
-//	  Before you use a RAM user or a RAM role to call the operation, you must make sure that the RAM user or RAM role is granted the required permissions. For more information, see [Grant a RAM user the permissions to use Resource Center](https://help.aliyun.com/document_detail/600556.html).
-//
-//		- By default, the operation returns up to 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
-//
-//		- If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
-//
-//		- You can specify one or more filter conditions to narrow the search. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
+// 跨账号列出资源关系
 //
 // @param request - ListMultiAccountResourceRelationshipsRequest
 //
@@ -1339,7 +1383,7 @@ func (client *Client) ListMultiAccountResourceRelationshipsWithContext(ctx conte
 
 // Summary:
 //
-// Queries the tag keys of resources within the management account or a member of your resource directory.
+// 查询多账号标签键
 //
 // @param request - ListMultiAccountTagKeysRequest
 //
@@ -1399,7 +1443,7 @@ func (client *Client) ListMultiAccountTagKeysWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the tag values of resources within the management account or a member of a resource directory by using the management account of the resource directory or a delegated administrator account of Resource Center.
+// 查询多账号标签值
 //
 // @param request - ListMultiAccountTagValuesRequest
 //
@@ -1463,17 +1507,7 @@ func (client *Client) ListMultiAccountTagValuesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries a list of resource relationships on which the current account has access permissions.
-//
-// Description:
-//
-//	  You can call this operation to query only the resource relationships on which the current account has access permissions.
-//
-//		- By default, this operation returns up to 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
-//
-//		- If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
-//
-//		- You can specify one or more filter conditions to narrow the query scope. For information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only entries that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Entries that meet any value of the filter condition are returned.
+// 列出资源关系
 //
 // @param request - ListResourceRelationshipsRequest
 //
@@ -1693,7 +1727,7 @@ func (client *Client) ListTagKeysWithContext(ctx context.Context, request *ListT
 
 // Summary:
 //
-// Queries the tag values of resources within the current account.
+// 查询标签值
 //
 // @param request - ListTagValuesRequest
 //
@@ -1753,21 +1787,21 @@ func (client *Client) ListTagValuesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Searches for resources within the management account or members of a resource directory.
+// Searches for resources in the management account and multiple member accounts of a resource directory.
 //
 // Description:
 //
-//	  You can use this operation to search for only resources whose types are supported by Resource Center in services that work with Resource Center. For more information about the services and the resource types that are supported by Resource Center, see [Services that work with Resource Center](https://help.aliyun.com/document_detail/477798.html).
+// - You can search only for [Services that work with Resource Center](https://help.aliyun.com/document_detail/477798.html).
 //
-//		- Before you use a RAM user or a RAM role to call the operation, you must make sure that the RAM user or RAM role is granted the required permissions. For more information, see [Grant a RAM user the permissions to use Resource Center](https://help.aliyun.com/document_detail/600556.html).
+// - To search for resources across accounts as a RAM user or RAM role, you must have been attached the `resourcecenter:SearchMultiAccountResources` policy. For more information, see [Grant a RAM user the permissions to use Resource Center](https://help.aliyun.com/document_detail/600556.html).
 //
-//		- By default, the operation returns a maximum of 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
+// - By default, this operation returns a maximum of 20 entries. To change the maximum number of entries that can be returned, specify the `MaxResults` parameter.
 //
-//		- If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
+// - If the response does not include `NextToken`, no more data is available. To query the next page of results, set the `NextToken` parameter to the value that was returned from the previous call. If you do not specify the `NextToken` parameter, the first page of data is returned by default.
 //
-//		- You can specify one or more filter conditions to narrow the search scope. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
+// - You can set one or more filter conditions to narrow the search scope. For information about supported filter parameters and matching methods, see the information below. Multiple filter conditions are joined by a logical `AND`. Only resources that meet all filter conditions are returned. The values within a single filter condition are joined by a logical `OR`. Resources that meet any value for a filter condition are returned.
 //
-//		- You can visit [Sample Code Center](https://api.alibabacloud.com/api-tools/demo/ResourceCenter) to view more sample queries.
+// - For more query examples, visit <props="china">[示例中心](https://api.aliyun.com/api-tools/demo/ResourceCenter) <props="intl">[OpenAPI Portal](https://api.alibabacloud.com/api-tools/demo/ResourceCenter).
 //
 // @param request - SearchMultiAccountResourcesRequest
 //
@@ -1827,19 +1861,21 @@ func (client *Client) SearchMultiAccountResourcesWithContext(ctx context.Context
 
 // Summary:
 //
-// Search for resources that you can access within the current account.
+// Searches for resources in your current account that you are permitted to access.
 //
 // Description:
 //
-//	  You can use this operation to search for only resources whose types are supported by Resource Center in services that work with Resource Center. For more information about the services and the resource types that are supported by Resource Center, see [Services that work with Resource Center](https://help.aliyun.com/document_detail/477798.html).
+// - You can search only for resources in your current account that you are permitted to access.
 //
-//		- By default, the operation returns a maximum of 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
+// - You can search only for the [Alibaba Cloud services and resource types that are supported by Resource Center](https://help.aliyun.com/document_detail/477798.html).
 //
-//		- If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
+// - By default, the SearchResources operation returns a maximum of 20 entries. You can specify the `MaxResults` parameter to change the maximum number of entries that are returned.
 //
-//		- You can specify one or more filter conditions to narrow the search scope. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
+// - If the response does not include a `NextToken` value, no more results are available. To retrieve the next page of results, include the `NextToken` value from the previous response in your next request. If you do not specify the `NextToken` parameter, the first page of results is returned.
 //
-//		- You can visit [Sample Code Center](https://api.aliyun.com/api-tools/demo/ResourceCenter) to view more sample queries.
+// - You can set one or more filter conditions to narrow the search scope. For information about the supported filter parameters and matching methods, see the following sections. Multiple filter conditions are combined by a logical `AND`. Only resources that meet all filter conditions are returned. The values within a filter condition are combined by a logical `OR`. Resources that meet any value of the filter condition are returned.
+//
+// - For more query examples, see [API Explorer](https://api.aliyun.com/api-tools/demo/ResourceCenter).
 //
 // @param request - SearchResourcesRequest
 //
@@ -1907,17 +1943,7 @@ func (client *Client) SearchResourcesWithContext(ctx context.Context, request *S
 
 // Summary:
 //
-// Updates a single-account delivery channel.
-//
-// Description:
-//
-// Resource delivery supports the delivery of resource configuration change events and scheduled resource snapshots.
-//
-// Scheduled resource snapshots support the following delivery scenarios:
-//
-//   - Standard delivery: Leave the `ResourceSnapshotDelivery.CustomExpression` parameter empty.
-//
-//   - Custom delivery: Set the `ResourceSnapshotDelivery.CustomExpression` parameter to an appropriate value.
+// 更新投递渠道
 //
 // @param request - UpdateDeliveryChannelRequest
 //
@@ -2037,9 +2063,9 @@ func (client *Client) UpdateFilterWithContext(ctx context.Context, request *Upda
 //
 // Scheduled resource snapshots support the following delivery scenarios:
 //
-//   - Standard delivery: Leave the `ResourceSnapshotDelivery.CustomExpression` parameter empty.
+// - Standard delivery: Leave the `ResourceSnapshotDelivery.CustomExpression` parameter empty.
 //
-//   - Custom delivery: Set the `ResourceSnapshotDelivery.CustomExpression` parameter to an appropriate value.
+// - Custom delivery: Set the `ResourceSnapshotDelivery.CustomExpression` parameter to an appropriate value.
 //
 // @param request - UpdateMultiAccountDeliveryChannelRequest
 //

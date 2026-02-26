@@ -18,31 +18,11 @@ type iGetResourceConfigurationRequest interface {
 }
 
 type GetResourceConfigurationRequest struct {
-	// The ID of the resource.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// eip-bp1kyg72m****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The region ID of the resource.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-shanghai
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
-	// The type of the resource.
-	//
-	// For more information about the resource types supported by Resource Center, see [Services that work with Resource Center](https://help.aliyun.com/document_detail/477798.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ACS::VPC::RouteTable
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 

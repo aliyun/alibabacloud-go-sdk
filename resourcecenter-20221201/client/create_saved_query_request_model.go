@@ -24,9 +24,9 @@ type CreateSavedQueryRequest struct {
 	//
 	// example:
 	//
-	// Queries all resources on which you have permissions and sorts the resources by resource type and resource ID.
+	// 查询所有资源。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The query statement in the template.
+	// The expression of the template.
 	//
 	// This parameter is required.
 	//
@@ -36,17 +36,17 @@ type CreateSavedQueryRequest struct {
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The name of the template.
 	//
-	// 	- The name must be 1 to 64 characters in length.
+	// - The name must be 1 to 64 characters in length.
 	//
-	// 	- The name can contain letters, digits, underscores (_), and hyphens (-).
+	// - The name can contain letters, digits, underscores (_), and hyphens (-).
 	//
-	// 	- The name must be unique.
+	// - The template name must be unique.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Query of All Alibaba Cloud Resources
+	// 查询我的所有资源。
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

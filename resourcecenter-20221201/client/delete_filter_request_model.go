@@ -20,7 +20,7 @@ type DeleteFilterRequest struct {
 	//
 	// example:
 	//
-	// ECS
+	// 我的筛选条件
 	FilterName *string `json:"FilterName,omitempty" xml:"FilterName,omitempty"`
 }
 

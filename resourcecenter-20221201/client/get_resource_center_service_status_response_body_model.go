@@ -18,27 +18,27 @@ type iGetResourceCenterServiceStatusResponseBody interface {
 }
 
 type GetResourceCenterServiceStatusResponseBody struct {
-	// The initialization status of the service. Valid values:
+	// The initialization status. Valid values:
 	//
-	// 	- Pending: The service is being initialized.
+	// - Pending
 	//
-	// 	- Finished: The service is initialized.
+	// - Finished
 	//
 	// example:
 	//
 	// Pending
 	InitialStatus *string `json:"InitialStatus,omitempty" xml:"InitialStatus,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// AD5F848D-CCDC-5464-93E1-4BA50A4826DD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the service. Valid values:
+	// The service status. Valid values:
 	//
-	// 	- Enabled: The service is activated.
+	// - Enabled
 	//
-	// 	- Disabled: The service is deactivated.
+	// - Disabled
 	//
 	// example:
 	//

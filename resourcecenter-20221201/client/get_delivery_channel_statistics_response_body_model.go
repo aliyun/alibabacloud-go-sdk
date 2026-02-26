@@ -16,7 +16,7 @@ type iGetDeliveryChannelStatisticsResponseBody interface {
 }
 
 type GetDeliveryChannelStatisticsResponseBody struct {
-	// The statistics on the delivery channel.
+	// The statistics of the delivery channel.
 	DeliveryChannelStatistics *GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics `json:"DeliveryChannelStatistics,omitempty" xml:"DeliveryChannelStatistics,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -74,13 +74,13 @@ type GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics struct {
 	//
 	// test-delivery-channel
 	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
-	// The last delivery time of resource configuration change events.
+	// The last time a resource configuration change was delivered.
 	//
 	// example:
 	//
 	// 2025-06-03T16:05:15Z
 	LatestChangeDeliveryTime *string `json:"LatestChangeDeliveryTime,omitempty" xml:"LatestChangeDeliveryTime,omitempty"`
-	// The last delivery time of scheduled resource snapshots.
+	// The last time a scheduled resource snapshot was delivered.
 	//
 	// example:
 	//

@@ -72,9 +72,9 @@ type GetSavedQueryResponseBodySavedQuery struct {
 	//
 	// example:
 	//
-	// Queries all resources on which you have permissions and sorts the resources by resource type and resource ID.
+	// 查询我的所有资源，返回所有的列。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The query statement in the template.
+	// The expression of the template.
 	//
 	// example:
 	//
@@ -84,15 +84,15 @@ type GetSavedQueryResponseBodySavedQuery struct {
 	//
 	// example:
 	//
-	// Query of All Alibaba Cloud Resources
+	// 查询我的所有资源。
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The template ID.
+	// The ID of the template.
 	//
 	// example:
 	//
-	// sq-GeAck****
+	// cq-GeAck****
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
-	// The time when the template was updated. The time is displayed in UTC.
+	// The time when the template was last updated. The time is displayed in UTC.
 	//
 	// example:
 	//

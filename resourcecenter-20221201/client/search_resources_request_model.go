@@ -27,11 +27,20 @@ type iSearchResourcesRequest interface {
 
 type SearchResourcesRequest struct {
 	// The filter conditions.
-	Filter                  []*SearchResourcesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	IncludeDeletedResources *bool                           `json:"IncludeDeletedResources,omitempty" xml:"IncludeDeletedResources,omitempty"`
+	Filter []*SearchResourcesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// Specifies whether to include deleted resources. Valid values:
+	//
+	// - true
+	//
+	// - false
+	//
+	// example:
+	//
+	// true
+	IncludeDeletedResources *bool `json:"IncludeDeletedResources,omitempty" xml:"IncludeDeletedResources,omitempty"`
 	// The maximum number of entries per page.
 	//
-	// Valid values: 1 to 100.
+	// Valid values: 1 to 500.
 	//
 	// Default value: 20.
 	//
@@ -39,9 +48,7 @@ type SearchResourcesRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
-	//
-	// If the total number of entries returned for the current request exceeds the value of the `MaxResults` parameter, the entries are truncated. In this case, you can use the `token` to initiate another request and obtain the remaining entries.
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
 	//
 	// example:
 	//
@@ -52,9 +59,16 @@ type SearchResourcesRequest struct {
 	// example:
 	//
 	// rg-acfmzawhxxc****
-	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The search keyword. Resource Center filters and sorts the search results based on relevance.
+	//
+	// If you do not specify a sorting parameter, resources that better match the keyword are displayed with higher priority.
+	//
+	// example:
+	//
+	// keywords
 	SearchExpression *string `json:"SearchExpression,omitempty" xml:"SearchExpression,omitempty"`
-	// The method that is used to sort the entries returned.
+	// The sorting parameters.
 	SortCriterion *SearchResourcesRequestSortCriterion `json:"SortCriterion,omitempty" xml:"SortCriterion,omitempty" type:"Struct"`
 }
 
@@ -148,21 +162,31 @@ func (s *SearchResourcesRequest) Validate() error {
 }
 
 type SearchResourcesRequestFilter struct {
-	// The key of the filter condition. For more information, see `Supported filter parameters`.
+	// The key of the filter condition. For more information about the valid values, see the "`Supported filter parameters`" section below.
 	//
 	// example:
 	//
 	// RegionId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The matching mode.
+	// The matching method. Valid values:
 	//
-	// The value Equals indicates an equal match.
+	// - Equals: Exact match.
+	//
+	// - Prefix: Prefix match.
+	//
+	// - Contains: Contains a value.
+	//
+	// - NotContains: Does not contain a value.
+	//
+	// - Exists: The key exists.
+	//
+	// - NotExists: The key does not exist.
 	//
 	// example:
 	//
 	// Equals
 	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	// The values of the filter condition.
+	// The value of the filter condition.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
@@ -206,19 +230,21 @@ func (s *SearchResourcesRequestFilter) Validate() error {
 }
 
 type SearchResourcesRequestSortCriterion struct {
-	// The attribute based on which the entries are sorted.
+	// The sort key.
 	//
-	// The value CreateTime indicates the creation time of resources.
+	// Set this parameter to `CreateTime`, which means the results are sorted by resource creation time.
 	//
 	// example:
 	//
 	// CreateTime
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The order in which the entries are sorted. Valid values:
+	// The sort order. Valid values:
 	//
-	// 	- ASC: The entries are sorted in ascending order. This value is the default value.
+	// - ASC: Ascending order.
 	//
-	// 	- DESC: The entries are sorted in descending order.
+	// - DESC: Descending order.
+	//
+	// Default value: ASC.
 	//
 	// example:
 	//

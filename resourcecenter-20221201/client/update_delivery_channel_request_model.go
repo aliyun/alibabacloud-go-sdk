@@ -25,6 +25,10 @@ type iUpdateDeliveryChannelRequest interface {
 
 type UpdateDeliveryChannelRequest struct {
 	// The description of the delivery channel.
+	//
+	// example:
+	//
+	// 投递描述
 	DeliveryChannelDescription *string `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
 	// The effective scope of the delivery channel.
 	DeliveryChannelFilter *UpdateDeliveryChannelRequestDeliveryChannelFilter `json:"DeliveryChannelFilter,omitempty" xml:"DeliveryChannelFilter,omitempty" type:"Struct"`

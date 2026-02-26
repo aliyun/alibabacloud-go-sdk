@@ -14,15 +14,15 @@ type iGetSavedQueryRequest interface {
 }
 
 type GetSavedQueryRequest struct {
-	// The template ID.
+	// The ID of the template.
 	//
-	// >  You can call the [ListSavedQueries](~~ListSavedQueries~~) operation to query the ID.
+	// > You can call the [ListSavedQueries](~~ListSavedQueries~~) operation to obtain the ID of the template.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// sq-GeAck****
+	// cq-GeAck****
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 }
 

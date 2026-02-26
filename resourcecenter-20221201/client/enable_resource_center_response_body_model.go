@@ -16,7 +16,7 @@ type iEnableResourceCenterResponseBody interface {
 }
 
 type EnableResourceCenterResponseBody struct {
-  // The ID of the request.
+  // The request ID.
   // 
   // example:
   // 
@@ -24,9 +24,9 @@ type EnableResourceCenterResponseBody struct {
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
   // The activation status of the service. Valid values:
   // 
-  // 	- Pending: The service is being activated.
+  // - Pending: The service is being activated.
   // 
-  // 	- Enabled: The service is activated.
+  // - Enabled: The service is activated.
   // 
   // example:
   // 

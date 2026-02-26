@@ -16,21 +16,7 @@ type iEnableMultiAccountResourceCenterResponseBody interface {
 }
 
 type EnableMultiAccountResourceCenterResponseBody struct {
-  // The ID of the request.
-  // 
-  // example:
-  // 
-  // 767038B7-2027-5508-858B-E213232D57D5
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // The status of the feature. Valid values:
-  // 
-  // 	- Pending: The feature is being enabled.
-  // 
-  // 	- Enabled: The feature is enabled.
-  // 
-  // example:
-  // 
-  // Pending
   Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

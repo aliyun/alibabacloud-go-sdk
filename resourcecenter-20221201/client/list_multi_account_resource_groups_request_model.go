@@ -20,7 +20,7 @@ type iListMultiAccountResourceGroupsRequest interface {
 }
 
 type ListMultiAccountResourceGroupsRequest struct {
-	// The ID of the management account or member of the resource directory.
+	// The ID of the management account or a member in the resource directory.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type ListMultiAccountResourceGroupsRequest struct {
 	//
 	// 1394339739****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The maximum number of entries to return on each page.
+	// The number of entries to return on each page.
 	//
 	// Maximum value: 100. Default value: 10.
 	//
@@ -42,7 +42,7 @@ type ListMultiAccountResourceGroupsRequest struct {
 	//
 	// AAAAAS2Nboi3t4xGrdlG5/Ks/Q1xPG9jzviYEuZydevXIkgF
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The IDs of resource groups.
+	// The resource group IDs.
 	ResourceGroupIds []*string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
 }
 

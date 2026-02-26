@@ -16,7 +16,7 @@ type iGetExampleQueryRequest interface {
 type GetExampleQueryRequest struct {
 	// The ID of the template.
 	//
-	// >  You can call the [ListExampleQueries](~~ListExampleQueries~~) operation to obtain the template ID.
+	// > You can call the [ListExampleQueries](~~ListExampleQueries~~) operation to obtain the template ID.
 	//
 	// This parameter is required.
 	//

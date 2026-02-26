@@ -27,6 +27,10 @@ type iGetDeliveryChannelResponseBody interface {
 
 type GetDeliveryChannelResponseBody struct {
 	// The description of the delivery channel.
+	//
+	// example:
+	//
+	// This is a description.
 	DeliveryChannelDescription *string `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
 	// The effective scope of the delivery channel.
 	DeliveryChannelFilter *GetDeliveryChannelResponseBodyDeliveryChannelFilter `json:"DeliveryChannelFilter,omitempty" xml:"DeliveryChannelFilter,omitempty" type:"Struct"`
@@ -48,9 +52,9 @@ type GetDeliveryChannelResponseBody struct {
 	//
 	// 17502A1B-7026-5551-8E1C-CCABD0CBC***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The configurations for delivery of resource configuration change events.
+	// The settings for delivering resource configuration changes.
 	ResourceChangeDelivery *GetDeliveryChannelResponseBodyResourceChangeDelivery `json:"ResourceChangeDelivery,omitempty" xml:"ResourceChangeDelivery,omitempty" type:"Struct"`
-	// The configurations for delivery of scheduled resource snapshots.
+	// The settings for the scheduled delivery of resource snapshots.
 	ResourceSnapshotDelivery *GetDeliveryChannelResponseBodyResourceSnapshotDelivery `json:"ResourceSnapshotDelivery,omitempty" xml:"ResourceSnapshotDelivery,omitempty" type:"Struct"`
 }
 
@@ -145,7 +149,7 @@ func (s *GetDeliveryChannelResponseBody) Validate() error {
 }
 
 type GetDeliveryChannelResponseBodyDeliveryChannelFilter struct {
-	// The effective resource types of the delivery channel.
+	// The resource types that are delivered.
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
 }
 
@@ -171,8 +175,19 @@ func (s *GetDeliveryChannelResponseBodyDeliveryChannelFilter) Validate() error {
 }
 
 type GetDeliveryChannelResponseBodyResourceChangeDelivery struct {
+	// Indicates whether to deliver resource configuration changes.
+	//
+	// Valid values:
+	//
+	// - true
+	//
+	// - false
+	//
+	// example:
+	//
+	// true
 	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The Simple Log Service configurations.
+	// The Simple Log Service (SLS) configurations.
 	SlsProperties *GetDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
 	// The ARN of the delivery destination.
 	//
@@ -180,7 +195,7 @@ type GetDeliveryChannelResponseBodyResourceChangeDelivery struct {
 	//
 	// acs:log:cn-hangzhou: 1911422487776***:project/delivery/logstore/resourcecenter-sls
 	TargetArn *string `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
-	// The type of the destination.
+	// The type of the delivery destination.
 	//
 	// example:
 	//
@@ -242,7 +257,7 @@ func (s *GetDeliveryChannelResponseBodyResourceChangeDelivery) Validate() error 
 }
 
 type GetDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties struct {
-	// The Alibaba Cloud Resource Name (ARN) of the destination to which large files are delivered.
+	// The Alibaba Cloud Resource Name (ARN) of the Object Storage Service (OSS) bucket to which oversized data is delivered.
 	//
 	// example:
 	//
@@ -278,14 +293,25 @@ type GetDeliveryChannelResponseBodyResourceSnapshotDelivery struct {
 	//
 	// select 	- from resources limit 100;
 	CustomExpression *string `json:"CustomExpression,omitempty" xml:"CustomExpression,omitempty"`
-	// The delivery time.
+	// The time when resource snapshots are delivered.
 	//
 	// example:
 	//
 	// 09:00Z
 	DeliveryTime *string `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
-	Enabled      *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The Simple Log Service configurations.
+	// Indicates whether to enable the scheduled delivery of resource snapshots.
+	//
+	// Valid values:
+	//
+	// - true
+	//
+	// - false
+	//
+	// example:
+	//
+	// true
+	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The SLS configurations.
 	SlsProperties *GetDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
 	// The ARN of the delivery destination.
 	//
@@ -293,7 +319,7 @@ type GetDeliveryChannelResponseBodyResourceSnapshotDelivery struct {
 	//
 	// acs:oss:cn-hangzhou:1911422487776***:resourcecenter-oss
 	TargetArn *string `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
-	// The type of the destination.
+	// The type of the delivery destination.
 	//
 	// example:
 	//
@@ -373,7 +399,7 @@ func (s *GetDeliveryChannelResponseBodyResourceSnapshotDelivery) Validate() erro
 }
 
 type GetDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties struct {
-	// The ARN of the destination to which large files are delivered.
+	// The ARN of the OSS bucket to which oversized data is delivered.
 	//
 	// example:
 	//

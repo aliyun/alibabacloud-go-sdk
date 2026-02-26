@@ -16,7 +16,7 @@ type iListSavedQueriesRequest interface {
 }
 
 type ListSavedQueriesRequest struct {
-	// The maximum number of entries per page.
+	// The maximum number of entries to return on each page.
 	//
 	// Valid values: 1 to 50.
 	//
@@ -26,7 +26,7 @@ type ListSavedQueriesRequest struct {
 	//
 	// 10
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
 	//
 	// example:
 	//

@@ -14,11 +14,6 @@ type iDisableMultiAccountResourceCenterResponseBody interface {
 }
 
 type DisableMultiAccountResourceCenterResponseBody struct {
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 4951F920-48DB-5731-96AA-3A7C8AE617D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

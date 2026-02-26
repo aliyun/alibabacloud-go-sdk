@@ -40,76 +40,20 @@ type iGetResourceConfigurationResponseBody interface {
 }
 
 type GetResourceConfigurationResponseBody struct {
-	// The ID of the Alibaba Cloud account to which the resource belongs.
-	//
-	// example:
-	//
-	// 151266687691****
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The configurations of the resource.
-	Configuration map[string]interface{} `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
-	// The time when the resource was created.
-	//
-	// example:
-	//
-	// 2021-06-30T09:20:08Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the resource expires.
-	//
-	// example:
-	//
-	// 2021-07-30T09:20:08Z
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The attributes of the IP address.
+	AccountId           *string                                                    `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	Configuration       map[string]interface{}                                     `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	CreateTime          *string                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExpireTime          *string                                                    `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	IpAddressAttributes []*GetResourceConfigurationResponseBodyIpAddressAttributes `json:"IpAddressAttributes,omitempty" xml:"IpAddressAttributes,omitempty" type:"Repeated"`
-	// The IP addresses.
-	//
-	// > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
-	IpAddresses []*string `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
-	// The region ID of the resource.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// F1CE0D52-32DA-531A-87A4-B9A5B68D5D8E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group to which the resource belongs.
-	//
-	// example:
-	//
-	// rg-acfmv4k****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the resource.
-	//
-	// example:
-	//
-	// vtb-uf6978gdqbi****
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The name of the resource.
-	//
-	// example:
-	//
-	// group1
-	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The type of the resource.
-	//
-	// example:
-	//
-	// ACS::VPC::VSwitch
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags of the resource.
-	Tags []*GetResourceConfigurationResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The zone ID of the resource.
-	//
-	// example:
-	//
-	// cn-hangzhou-k
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	IpAddresses         []*string                                                  `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
+	RegionId            *string                                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId           *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId     *string                                                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceId          *string                                                    `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName        *string                                                    `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceType        *string                                                    `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tags                []*GetResourceConfigurationResponseBodyTags                `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ZoneId              *string                                                    `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetResourceConfigurationResponseBody) String() string {
@@ -269,28 +213,9 @@ func (s *GetResourceConfigurationResponseBody) Validate() error {
 }
 
 type GetResourceConfigurationResponseBodyIpAddressAttributes struct {
-	// The IP address.
-	//
-	// example:
-	//
-	// 192.168.1.2
-	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	// The network type. Valid values:
-	//
-	// 	- **Public**: the Internet
-	//
-	// 	- **Private**: internal network
-	//
-	// example:
-	//
-	// Public
+	IpAddress   *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The version.
-	//
-	// example:
-	//
-	// Ipv4
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetResourceConfigurationResponseBodyIpAddressAttributes) String() string {
@@ -333,17 +258,7 @@ func (s *GetResourceConfigurationResponseBodyIpAddressAttributes) Validate() err
 }
 
 type GetResourceConfigurationResponseBodyTags struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// test-key
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// test-value
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

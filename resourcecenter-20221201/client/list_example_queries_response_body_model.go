@@ -104,13 +104,13 @@ type ListExampleQueriesResponseBodyExampleQueries struct {
 	//
 	// example:
 	//
-	// Queries all resources on which you have permissions and sorts the resources by resource type and resource ID.
+	// 返回所有有权限的资源，并按照资源类型和资源ID排列。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the template.
 	//
 	// example:
 	//
-	// Query of All Alibaba Cloud Resources
+	// 列出所有阿里云资源
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the template.
 	//

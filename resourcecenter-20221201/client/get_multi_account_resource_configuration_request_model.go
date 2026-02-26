@@ -20,7 +20,7 @@ type iGetMultiAccountResourceConfigurationRequest interface {
 }
 
 type GetMultiAccountResourceConfigurationRequest struct {
-	// The ID of the management account or member of the resource directory.
+	// The ID of the management account or member.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type GetMultiAccountResourceConfigurationRequest struct {
 	//
 	// 1619302****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ID of the resource.
+	// The resource ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type GetMultiAccountResourceConfigurationRequest struct {
 	//
 	// m-eb3hji****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The region ID of the resource.
+	// The ID of the region where the resource resides.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type GetMultiAccountResourceConfigurationRequest struct {
 	//
 	// cn-shanghai
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
-	// The type of the resource.
+	// The resource type.
 	//
 	// This parameter is required.
 	//

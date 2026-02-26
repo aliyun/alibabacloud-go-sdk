@@ -22,16 +22,34 @@ type iGetMultiAccountResourceCountsResponseBody interface {
 }
 
 type GetMultiAccountResourceCountsResponseBody struct {
+	// The filter condition.
 	Filters []*GetMultiAccountResourceCountsResponseBodyFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// The dimension by which resources are queried.
+	//
 	// example:
 	//
 	// ResourceType
 	GroupByKey *string `json:"GroupByKey,omitempty" xml:"GroupByKey,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EFA806B9-7F36-55AB-8B7A-D680C2C5EE57
-	RequestId      *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The numbers of resources.
 	ResourceCounts []*GetMultiAccountResourceCountsResponseBodyResourceCounts `json:"ResourceCounts,omitempty" xml:"ResourceCounts,omitempty" type:"Repeated"`
+	// The search scope. Valid values:
+	//
+	// - ID of a resource directory: Resources within the management account and all members of the resource directory are searched.
+	//
+	// - ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched.
+	//
+	// - ID of a folder: Resources within all members in the folder are searched.
+	//
+	// - ID of a member: Resources within the member are searched.
+	//
+	// For information about how to obtain the ID of a resource directory, the Root folder, a folder, or a member, see [GetResourceDirectory](https://help.aliyun.com/document_detail/159995.html), [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html), or [ListAccounts](https://help.aliyun.com/document_detail/160016.html).
+	//
 	// example:
 	//
 	// rd-r4****
@@ -114,10 +132,13 @@ func (s *GetMultiAccountResourceCountsResponseBody) Validate() error {
 }
 
 type GetMultiAccountResourceCountsResponseBodyFilters struct {
+	// The key of the filter condition.
+	//
 	// example:
 	//
 	// RegionId
-	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The values of the filter condition.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -152,10 +173,14 @@ func (s *GetMultiAccountResourceCountsResponseBodyFilters) Validate() error {
 }
 
 type GetMultiAccountResourceCountsResponseBodyResourceCounts struct {
+	// The number of resources.
+	//
 	// example:
 	//
 	// 2
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The group name.
+	//
 	// example:
 	//
 	// ACS::ECS::NetworkInterface

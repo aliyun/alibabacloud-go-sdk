@@ -24,13 +24,13 @@ type ListMultiAccountResourceGroupsResponseBody struct {
 	//
 	// AAAAAU5VsT9R1adMTuz9GzginZ3Y+7Y/5JATS+6q5GK9kT75
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0FF0A66E-781F-51EE-9531-928F197558F2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the resource groups.
+	// The resource groups.
 	ResourceGroups []*ListMultiAccountResourceGroupsResponseBodyResourceGroups `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty" type:"Repeated"`
 }
 
@@ -83,7 +83,7 @@ func (s *ListMultiAccountResourceGroupsResponseBody) Validate() error {
 }
 
 type ListMultiAccountResourceGroupsResponseBodyResourceGroups struct {
-	// The ID of the management account or member of the resource directory.
+	// The ID of the management account or a member in the resource directory.
 	//
 	// example:
 	//
@@ -101,7 +101,7 @@ type ListMultiAccountResourceGroupsResponseBodyResourceGroups struct {
 	//
 	// group1
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -113,13 +113,13 @@ type ListMultiAccountResourceGroupsResponseBodyResourceGroups struct {
 	//
 	// my-project
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The status of the resource group. Valid values:
+	// The status of the resource group.
 	//
-	// 	- Creating: The resource group is being created.
+	// - Creating: The resource group is being created.
 	//
-	// 	- OK: The resource group is created.
+	// - OK: The resource group is created.
 	//
-	// 	- PendingDelete: The resource group is waiting to be deleted.
+	// - PendingDelete: The resource group is pending deletion.
 	//
 	// example:
 	//

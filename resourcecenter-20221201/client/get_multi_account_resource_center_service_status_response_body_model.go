@@ -18,31 +18,8 @@ type iGetMultiAccountResourceCenterServiceStatusResponseBody interface {
 }
 
 type GetMultiAccountResourceCenterServiceStatusResponseBody struct {
-	// The initialization status of the feature. Valid values:
-	//
-	// 	- Pending: The feature is being initialized.
-	//
-	// 	- Finished: The feature is initialized.
-	//
-	// example:
-	//
-	// Pending
 	InitialStatus *string `json:"InitialStatus,omitempty" xml:"InitialStatus,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 81671397-1425-51F1-A144-4799E01BEBFF
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the feature. Valid values:
-	//
-	// 	- Enabled: The feature is enabled.
-	//
-	// 	- Disabled: The feature is disabled.
-	//
-	// example:
-	//
-	// Enabled
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
 }
 
