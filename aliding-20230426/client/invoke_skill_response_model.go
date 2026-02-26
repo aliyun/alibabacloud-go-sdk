@@ -13,6 +13,10 @@ type iInvokeSkillResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *InvokeSkillResponse
 	GetStatusCode() *int32
+	SetId(v string) *InvokeSkillResponse
+	GetId() *string
+	SetEvent(v string) *InvokeSkillResponse
+	GetEvent() *string
 	SetBody(v *InvokeSkillResponseBody) *InvokeSkillResponse
 	GetBody() *InvokeSkillResponseBody
 }
@@ -20,6 +24,8 @@ type iInvokeSkillResponse interface {
 type InvokeSkillResponse struct {
 	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                  `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                  `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *InvokeSkillResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *InvokeSkillResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *InvokeSkillResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *InvokeSkillResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *InvokeSkillResponse) GetBody() *InvokeSkillResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *InvokeSkillResponse) SetHeaders(v map[string]*string) *InvokeSkillRespo
 
 func (s *InvokeSkillResponse) SetStatusCode(v int32) *InvokeSkillResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *InvokeSkillResponse) SetId(v string) *InvokeSkillResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *InvokeSkillResponse) SetEvent(v string) *InvokeSkillResponse {
+	s.Event = &v
 	return s
 }
 

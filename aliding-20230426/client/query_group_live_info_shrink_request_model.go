@@ -22,13 +22,13 @@ type QueryGroupLiveInfoShrinkRequest struct {
 	//
 	// example:
 	//
-	// 333d
+	// Eijxxx
 	AnchorUnionId *string `json:"AnchorUnionId,omitempty" xml:"AnchorUnionId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 4d38xxxxx
+	// 123456
 	LiveUuid            *string `json:"LiveUuid,omitempty" xml:"LiveUuid,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

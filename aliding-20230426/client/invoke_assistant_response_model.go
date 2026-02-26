@@ -13,6 +13,10 @@ type iInvokeAssistantResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *InvokeAssistantResponse
 	GetStatusCode() *int32
+	SetId(v string) *InvokeAssistantResponse
+	GetId() *string
+	SetEvent(v string) *InvokeAssistantResponse
+	GetEvent() *string
 	SetBody(v *InvokeAssistantResponseBody) *InvokeAssistantResponse
 	GetBody() *InvokeAssistantResponseBody
 }
@@ -20,6 +24,8 @@ type iInvokeAssistantResponse interface {
 type InvokeAssistantResponse struct {
 	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                      `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                      `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *InvokeAssistantResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *InvokeAssistantResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *InvokeAssistantResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *InvokeAssistantResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *InvokeAssistantResponse) GetBody() *InvokeAssistantResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *InvokeAssistantResponse) SetHeaders(v map[string]*string) *InvokeAssist
 
 func (s *InvokeAssistantResponse) SetStatusCode(v int32) *InvokeAssistantResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *InvokeAssistantResponse) SetId(v string) *InvokeAssistantResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *InvokeAssistantResponse) SetEvent(v string) *InvokeAssistantResponse {
+	s.Event = &v
 	return s
 }
 

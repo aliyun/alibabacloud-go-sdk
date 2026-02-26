@@ -13,6 +13,8 @@ type iInvokeAssistantHeaders interface {
 	GetCommonHeaders() map[string]*string
 	SetAccountId(v string) *InvokeAssistantHeaders
 	GetAccountId() *string
+	SetAlidingSsoTicket(v string) *InvokeAssistantHeaders
+	GetAlidingSsoTicket() *string
 }
 
 type InvokeAssistantHeaders struct {
@@ -20,7 +22,8 @@ type InvokeAssistantHeaders struct {
 	// example:
 	//
 	// 123456
-	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	AccountId        *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	AlidingSsoTicket *string `json:"alidingSsoTicket,omitempty" xml:"alidingSsoTicket,omitempty"`
 }
 
 func (s InvokeAssistantHeaders) String() string {
@@ -39,6 +42,10 @@ func (s *InvokeAssistantHeaders) GetAccountId() *string {
 	return s.AccountId
 }
 
+func (s *InvokeAssistantHeaders) GetAlidingSsoTicket() *string {
+	return s.AlidingSsoTicket
+}
+
 func (s *InvokeAssistantHeaders) SetCommonHeaders(v map[string]*string) *InvokeAssistantHeaders {
 	s.CommonHeaders = v
 	return s
@@ -46,6 +53,11 @@ func (s *InvokeAssistantHeaders) SetCommonHeaders(v map[string]*string) *InvokeA
 
 func (s *InvokeAssistantHeaders) SetAccountId(v string) *InvokeAssistantHeaders {
 	s.AccountId = &v
+	return s
+}
+
+func (s *InvokeAssistantHeaders) SetAlidingSsoTicket(v string) *InvokeAssistantHeaders {
+	s.AlidingSsoTicket = &v
 	return s
 }
 

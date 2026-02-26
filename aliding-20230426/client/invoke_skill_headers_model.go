@@ -61,8 +61,9 @@ type InvokeSkillHeadersAccountContext struct {
 	// example:
 	//
 	// 012345
-	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	SsoTicket *string `json:"ssoTicket,omitempty" xml:"ssoTicket,omitempty"`
+	AccountId        *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	AlidingSsoTicket *string `json:"alidingSsoTicket,omitempty" xml:"alidingSsoTicket,omitempty"`
+	SsoTicket        *string `json:"ssoTicket,omitempty" xml:"ssoTicket,omitempty"`
 }
 
 func (s InvokeSkillHeadersAccountContext) String() string {
@@ -77,12 +78,21 @@ func (s *InvokeSkillHeadersAccountContext) GetAccountId() *string {
 	return s.AccountId
 }
 
+func (s *InvokeSkillHeadersAccountContext) GetAlidingSsoTicket() *string {
+	return s.AlidingSsoTicket
+}
+
 func (s *InvokeSkillHeadersAccountContext) GetSsoTicket() *string {
 	return s.SsoTicket
 }
 
 func (s *InvokeSkillHeadersAccountContext) SetAccountId(v string) *InvokeSkillHeadersAccountContext {
 	s.AccountId = &v
+	return s
+}
+
+func (s *InvokeSkillHeadersAccountContext) SetAlidingSsoTicket(v string) *InvokeSkillHeadersAccountContext {
+	s.AlidingSsoTicket = &v
 	return s
 }
 
