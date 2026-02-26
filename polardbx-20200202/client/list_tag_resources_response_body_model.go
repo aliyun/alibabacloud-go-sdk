@@ -108,22 +108,10 @@ func (s *ListTagResourcesResponseBodyTagResources) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	// example:
-	//
-	// pxc-xxxx
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// example:
-	//
-	// PolarDBXInstance
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// example:
-	//
-	// 1
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// example:
-	//
-	// 1
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {

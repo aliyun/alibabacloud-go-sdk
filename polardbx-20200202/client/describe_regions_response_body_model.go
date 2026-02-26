@@ -153,17 +153,8 @@ func (s *DescribeRegionsResponseBodyRegions) Validate() error {
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	// example:
-	//
-	// ch-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// example:
-	//
-	// true
-	SupportPolarx10 *bool `json:"SupportPolarx10,omitempty" xml:"SupportPolarx10,omitempty"`
-	// example:
-	//
-	// true
+	RegionId        *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SupportPolarx10 *bool                                          `json:"SupportPolarx10,omitempty" xml:"SupportPolarx10,omitempty"`
 	SupportPolarx20 *bool                                          `json:"SupportPolarx20,omitempty" xml:"SupportPolarx20,omitempty"`
 	Zones           *DescribeRegionsResponseBodyRegionsRegionZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
@@ -256,14 +247,8 @@ func (s *DescribeRegionsResponseBodyRegionsRegionZones) Validate() error {
 }
 
 type DescribeRegionsResponseBodyRegionsRegionZonesZone struct {
-	// example:
-	//
-	// true
-	VpcEnabled *bool `json:"VpcEnabled,omitempty" xml:"VpcEnabled,omitempty"`
-	// example:
-	//
-	// cn-hangzhou-a
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	VpcEnabled *bool   `json:"VpcEnabled,omitempty" xml:"VpcEnabled,omitempty"`
+	ZoneId     *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsRegionZonesZone) String() string {

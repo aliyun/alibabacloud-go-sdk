@@ -97,6 +97,7 @@ type DescribeBackupPolicyResponseBodyData struct {
 	ColdDataBackupInterval         *int32  `json:"ColdDataBackupInterval,omitempty" xml:"ColdDataBackupInterval,omitempty"`
 	ColdDataBackupRetention        *int32  `json:"ColdDataBackupRetention,omitempty" xml:"ColdDataBackupRetention,omitempty"`
 	CrossRegionDataBackupRetention *int32  `json:"CrossRegionDataBackupRetention,omitempty" xml:"CrossRegionDataBackupRetention,omitempty"`
+	CrossRegionFilterValue         *string `json:"CrossRegionFilterValue,omitempty" xml:"CrossRegionFilterValue,omitempty"`
 	CrossRegionLogBackupRetention  *int32  `json:"CrossRegionLogBackupRetention,omitempty" xml:"CrossRegionLogBackupRetention,omitempty"`
 	DBInstanceName                 *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	DestCrossRegion                *string `json:"DestCrossRegion,omitempty" xml:"DestCrossRegion,omitempty"`
@@ -148,6 +149,10 @@ func (s *DescribeBackupPolicyResponseBodyData) GetColdDataBackupRetention() *int
 
 func (s *DescribeBackupPolicyResponseBodyData) GetCrossRegionDataBackupRetention() *int32 {
 	return s.CrossRegionDataBackupRetention
+}
+
+func (s *DescribeBackupPolicyResponseBodyData) GetCrossRegionFilterValue() *string {
+	return s.CrossRegionFilterValue
 }
 
 func (s *DescribeBackupPolicyResponseBodyData) GetCrossRegionLogBackupRetention() *int32 {
@@ -231,6 +236,11 @@ func (s *DescribeBackupPolicyResponseBodyData) SetColdDataBackupRetention(v int3
 
 func (s *DescribeBackupPolicyResponseBodyData) SetCrossRegionDataBackupRetention(v int32) *DescribeBackupPolicyResponseBodyData {
 	s.CrossRegionDataBackupRetention = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBodyData) SetCrossRegionFilterValue(v string) *DescribeBackupPolicyResponseBodyData {
+	s.CrossRegionFilterValue = &v
 	return s
 }
 

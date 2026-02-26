@@ -1101,7 +1101,7 @@ func (client *Client) CreateDB(request *CreateDBRequest) (_result *CreateDBRespo
 
 // Summary:
 //
-// 创建实例
+// Creates a PolarDB-X instance.
 //
 // @param tmpReq - CreateDBInstanceRequest
 //
@@ -1263,7 +1263,7 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 
 // Summary:
 //
-// 创建实例
+// Creates a PolarDB-X instance.
 //
 // @param request - CreateDBInstanceRequest
 //
@@ -2757,6 +2757,10 @@ func (client *Client) DescribeAvailableCrossRegions(request *DescribeAvailableCr
 	return _result, _err
 }
 
+// Summary:
+//
+// 描述备份策略
+//
 // @param request - DescribeBackupPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2801,6 +2805,10 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 	return _result, _err
 }
 
+// Summary:
+//
+// 描述备份策略
+//
 // @param request - DescribeBackupPolicyRequest
 //
 // @return DescribeBackupPolicyResponse
@@ -9346,6 +9354,10 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新备份策略
+//
 // @param request - UpdateBackupPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9389,6 +9401,10 @@ func (client *Client) UpdateBackupPolicyWithOptions(request *UpdateBackupPolicyR
 
 	if !dara.IsNil(request.CrossRegionDataBackupRetention) {
 		query["CrossRegionDataBackupRetention"] = request.CrossRegionDataBackupRetention
+	}
+
+	if !dara.IsNil(request.CrossRegionFilterValue) {
+		query["CrossRegionFilterValue"] = request.CrossRegionFilterValue
 	}
 
 	if !dara.IsNil(request.CrossRegionLogBackupRetention) {
@@ -9462,6 +9478,10 @@ func (client *Client) UpdateBackupPolicyWithOptions(request *UpdateBackupPolicyR
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新备份策略
+//
 // @param request - UpdateBackupPolicyRequest
 //
 // @return UpdateBackupPolicyResponse

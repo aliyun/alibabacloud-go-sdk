@@ -785,7 +785,7 @@ func (client *Client) CreateDBWithContext(ctx context.Context, request *CreateDB
 
 // Summary:
 //
-// 创建实例
+// Creates a PolarDB-X instance.
 //
 // @param tmpReq - CreateDBInstanceRequest
 //
@@ -2079,6 +2079,10 @@ func (client *Client) DescribeAvailableCrossRegionsWithContext(ctx context.Conte
 	return _result, _err
 }
 
+// Summary:
+//
+// 描述备份策略
+//
 // @param request - DescribeBackupPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7107,6 +7111,10 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新备份策略
+//
 // @param request - UpdateBackupPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7150,6 +7158,10 @@ func (client *Client) UpdateBackupPolicyWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.CrossRegionDataBackupRetention) {
 		query["CrossRegionDataBackupRetention"] = request.CrossRegionDataBackupRetention
+	}
+
+	if !dara.IsNil(request.CrossRegionFilterValue) {
+		query["CrossRegionFilterValue"] = request.CrossRegionFilterValue
 	}
 
 	if !dara.IsNil(request.CrossRegionLogBackupRetention) {

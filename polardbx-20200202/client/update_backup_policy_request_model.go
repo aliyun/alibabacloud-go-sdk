@@ -25,6 +25,8 @@ type iUpdateBackupPolicyRequest interface {
 	GetColdDataBackupRetention() *int32
 	SetCrossRegionDataBackupRetention(v int32) *UpdateBackupPolicyRequest
 	GetCrossRegionDataBackupRetention() *int32
+	SetCrossRegionFilterValue(v string) *UpdateBackupPolicyRequest
+	GetCrossRegionFilterValue() *string
 	SetCrossRegionLogBackupRetention(v int32) *UpdateBackupPolicyRequest
 	GetCrossRegionLogBackupRetention() *int32
 	SetDBInstanceName(v string) *UpdateBackupPolicyRequest
@@ -79,9 +81,10 @@ type UpdateBackupPolicyRequest struct {
 	// example:
 	//
 	// 30
-	ColdDataBackupRetention        *int32 `json:"ColdDataBackupRetention,omitempty" xml:"ColdDataBackupRetention,omitempty"`
-	CrossRegionDataBackupRetention *int32 `json:"CrossRegionDataBackupRetention,omitempty" xml:"CrossRegionDataBackupRetention,omitempty"`
-	CrossRegionLogBackupRetention  *int32 `json:"CrossRegionLogBackupRetention,omitempty" xml:"CrossRegionLogBackupRetention,omitempty"`
+	ColdDataBackupRetention        *int32  `json:"ColdDataBackupRetention,omitempty" xml:"ColdDataBackupRetention,omitempty"`
+	CrossRegionDataBackupRetention *int32  `json:"CrossRegionDataBackupRetention,omitempty" xml:"CrossRegionDataBackupRetention,omitempty"`
+	CrossRegionFilterValue         *string `json:"CrossRegionFilterValue,omitempty" xml:"CrossRegionFilterValue,omitempty"`
+	CrossRegionLogBackupRetention  *int32  `json:"CrossRegionLogBackupRetention,omitempty" xml:"CrossRegionLogBackupRetention,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -158,6 +161,10 @@ func (s *UpdateBackupPolicyRequest) GetColdDataBackupRetention() *int32 {
 
 func (s *UpdateBackupPolicyRequest) GetCrossRegionDataBackupRetention() *int32 {
 	return s.CrossRegionDataBackupRetention
+}
+
+func (s *UpdateBackupPolicyRequest) GetCrossRegionFilterValue() *string {
+	return s.CrossRegionFilterValue
 }
 
 func (s *UpdateBackupPolicyRequest) GetCrossRegionLogBackupRetention() *int32 {
@@ -245,6 +252,11 @@ func (s *UpdateBackupPolicyRequest) SetColdDataBackupRetention(v int32) *UpdateB
 
 func (s *UpdateBackupPolicyRequest) SetCrossRegionDataBackupRetention(v int32) *UpdateBackupPolicyRequest {
 	s.CrossRegionDataBackupRetention = &v
+	return s
+}
+
+func (s *UpdateBackupPolicyRequest) SetCrossRegionFilterValue(v string) *UpdateBackupPolicyRequest {
+	s.CrossRegionFilterValue = &v
 	return s
 }
 

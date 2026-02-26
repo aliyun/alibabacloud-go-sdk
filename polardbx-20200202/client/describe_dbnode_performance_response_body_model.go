@@ -138,19 +138,10 @@ func (s *DescribeDBNodePerformanceResponseBodyPerformanceKeys) Validate() error 
 }
 
 type DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItem struct {
-	// example:
-	//
-	// pxc-i-********
-	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
-	// example:
-	//
-	// Logic_TPS
-	Measurement *string `json:"Measurement,omitempty" xml:"Measurement,omitempty"`
-	// example:
-	//
-	// logic_tps
-	MetricName *string                                                                    `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	Points     *DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItemPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Struct"`
+	DBNodeId    *string                                                                    `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
+	Measurement *string                                                                    `json:"Measurement,omitempty" xml:"Measurement,omitempty"`
+	MetricName  *string                                                                    `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Points      *DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItemPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Struct"`
 }
 
 func (s DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItem) String() string {
@@ -241,14 +232,8 @@ func (s *DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItemPoin
 }
 
 type DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue struct {
-	// example:
-	//
-	// 1600822800000
-	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// example:
-	//
-	// 42.38
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Timestamp *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue) String() string {
