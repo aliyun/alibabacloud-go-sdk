@@ -11,8 +11,8 @@ type iModifyCreateVulWhitelistResponseBody interface {
 	GoString() string
 	SetRequestId(v string) *ModifyCreateVulWhitelistResponseBody
 	GetRequestId() *string
-	SetVulWhitelistList(v []*ModifyCreateVulWhitelistResponseBodyVulWhitelistList) *ModifyCreateVulWhitelistResponseBody
-	GetVulWhitelistList() []*ModifyCreateVulWhitelistResponseBodyVulWhitelistList
+	SetVulWhitelistList(v *ModifyCreateVulWhitelistResponseBodyVulWhitelistList) *ModifyCreateVulWhitelistResponseBody
+	GetVulWhitelistList() *ModifyCreateVulWhitelistResponseBodyVulWhitelistList
 }
 
 type ModifyCreateVulWhitelistResponseBody struct {
@@ -23,7 +23,7 @@ type ModifyCreateVulWhitelistResponseBody struct {
 	// 6B23A612-D997-5176-8C3B-D640DFD65772
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// An array that consists of the information about the whitelist.
-	VulWhitelistList []*ModifyCreateVulWhitelistResponseBodyVulWhitelistList `json:"VulWhitelistList,omitempty" xml:"VulWhitelistList,omitempty" type:"Repeated"`
+	VulWhitelistList *ModifyCreateVulWhitelistResponseBodyVulWhitelistList `json:"VulWhitelistList,omitempty" xml:"VulWhitelistList,omitempty" type:"Struct"`
 }
 
 func (s ModifyCreateVulWhitelistResponseBody) String() string {
@@ -38,7 +38,7 @@ func (s *ModifyCreateVulWhitelistResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *ModifyCreateVulWhitelistResponseBody) GetVulWhitelistList() []*ModifyCreateVulWhitelistResponseBodyVulWhitelistList {
+func (s *ModifyCreateVulWhitelistResponseBody) GetVulWhitelistList() *ModifyCreateVulWhitelistResponseBodyVulWhitelistList {
 	return s.VulWhitelistList
 }
 
@@ -47,30 +47,24 @@ func (s *ModifyCreateVulWhitelistResponseBody) SetRequestId(v string) *ModifyCre
 	return s
 }
 
-func (s *ModifyCreateVulWhitelistResponseBody) SetVulWhitelistList(v []*ModifyCreateVulWhitelistResponseBodyVulWhitelistList) *ModifyCreateVulWhitelistResponseBody {
+func (s *ModifyCreateVulWhitelistResponseBody) SetVulWhitelistList(v *ModifyCreateVulWhitelistResponseBodyVulWhitelistList) *ModifyCreateVulWhitelistResponseBody {
 	s.VulWhitelistList = v
 	return s
 }
 
 func (s *ModifyCreateVulWhitelistResponseBody) Validate() error {
 	if s.VulWhitelistList != nil {
-		for _, item := range s.VulWhitelistList {
-			if item != nil {
-				if err := item.Validate(); err != nil {
-					return err
-				}
-			}
+		if err := s.VulWhitelistList.Validate(); err != nil {
+			return err
 		}
 	}
 	return nil
 }
 
 type ModifyCreateVulWhitelistResponseBodyVulWhitelistList struct {
-	// The ID of the whitelist.
-	//
 	// example:
 	//
-	// 30376
+	// 1002
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 

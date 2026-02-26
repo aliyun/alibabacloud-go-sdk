@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/sas-20181203/v8
+module github.com/alibabacloud-go/sas-20181203/v9
 
 go 1.14
 
