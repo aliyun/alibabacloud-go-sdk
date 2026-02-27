@@ -20,18 +20,30 @@ type iAddon interface {
 }
 
 type Addon struct {
+	// The configuration of the component.
+	//
 	// example:
 	//
-	// {\"IngressSlbNetworkType\":\"internet\"}
+	// {\\"IngressSlbNetworkType\\":\\"internet\\"}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
+	// Specifies whether to disable automatic installation. When you create a cluster, some additional log components are automatically installed in addition to the required components. You can disable the automatic installations of a component and install the component later by calling the component API or in the corresponding console. Valid values:
+	//
+	// 	- `true`: disables the automatic installation of a component.
+	//
+	// 	- `false`: allows the automatic installation of a component.
+	//
 	// example:
 	//
 	// false
 	Disabled *bool `json:"disabled,omitempty" xml:"disabled,omitempty"`
+	// The component name.
+	//
 	// example:
 	//
 	// nginx-ingress-controller
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The version of the component.
+	//
 	// example:
 	//
 	// v1.9.3-aliyun.1

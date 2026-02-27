@@ -149,8 +149,6 @@ func (s *CreateAutoRepairPolicyRequestRules) Validate() error {
 }
 
 type CreateAutoRepairPolicyRequestRulesIncidents struct {
-	Conditions []*CreateAutoRepairPolicyRequestRulesIncidentsConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	Events     []*CreateAutoRepairPolicyRequestRulesIncidentsEvents     `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
 	// example:
 	//
 	// Node.FaultNeedReboot.HOST
@@ -169,30 +167,12 @@ func (s CreateAutoRepairPolicyRequestRulesIncidents) GoString() string {
 	return s.String()
 }
 
-func (s *CreateAutoRepairPolicyRequestRulesIncidents) GetConditions() []*CreateAutoRepairPolicyRequestRulesIncidentsConditions {
-	return s.Conditions
-}
-
-func (s *CreateAutoRepairPolicyRequestRulesIncidents) GetEvents() []*CreateAutoRepairPolicyRequestRulesIncidentsEvents {
-	return s.Events
-}
-
 func (s *CreateAutoRepairPolicyRequestRulesIncidents) GetName() *string {
 	return s.Name
 }
 
 func (s *CreateAutoRepairPolicyRequestRulesIncidents) GetType() *string {
 	return s.Type
-}
-
-func (s *CreateAutoRepairPolicyRequestRulesIncidents) SetConditions(v []*CreateAutoRepairPolicyRequestRulesIncidentsConditions) *CreateAutoRepairPolicyRequestRulesIncidents {
-	s.Conditions = v
-	return s
-}
-
-func (s *CreateAutoRepairPolicyRequestRulesIncidents) SetEvents(v []*CreateAutoRepairPolicyRequestRulesIncidentsEvents) *CreateAutoRepairPolicyRequestRulesIncidents {
-	s.Events = v
-	return s
 }
 
 func (s *CreateAutoRepairPolicyRequestRulesIncidents) SetName(v string) *CreateAutoRepairPolicyRequestRulesIncidents {
@@ -206,119 +186,6 @@ func (s *CreateAutoRepairPolicyRequestRulesIncidents) SetType(v string) *CreateA
 }
 
 func (s *CreateAutoRepairPolicyRequestRulesIncidents) Validate() error {
-	if s.Conditions != nil {
-		for _, item := range s.Conditions {
-			if item != nil {
-				if err := item.Validate(); err != nil {
-					return err
-				}
-			}
-		}
-	}
-	if s.Events != nil {
-		for _, item := range s.Events {
-			if item != nil {
-				if err := item.Validate(); err != nil {
-					return err
-				}
-			}
-		}
-	}
-	return nil
-}
-
-type CreateAutoRepairPolicyRequestRulesIncidentsConditions struct {
-	// example:
-	//
-	// xxx
-	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
-	// example:
-	//
-	// False
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// KubeletReady
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s CreateAutoRepairPolicyRequestRulesIncidentsConditions) String() string {
-	return dara.Prettify(s)
-}
-
-func (s CreateAutoRepairPolicyRequestRulesIncidentsConditions) GoString() string {
-	return s.String()
-}
-
-func (s *CreateAutoRepairPolicyRequestRulesIncidentsConditions) GetReason() *string {
-	return s.Reason
-}
-
-func (s *CreateAutoRepairPolicyRequestRulesIncidentsConditions) GetStatus() *string {
-	return s.Status
-}
-
-func (s *CreateAutoRepairPolicyRequestRulesIncidentsConditions) GetType() *string {
-	return s.Type
-}
-
-func (s *CreateAutoRepairPolicyRequestRulesIncidentsConditions) SetReason(v string) *CreateAutoRepairPolicyRequestRulesIncidentsConditions {
-	s.Reason = &v
-	return s
-}
-
-func (s *CreateAutoRepairPolicyRequestRulesIncidentsConditions) SetStatus(v string) *CreateAutoRepairPolicyRequestRulesIncidentsConditions {
-	s.Status = &v
-	return s
-}
-
-func (s *CreateAutoRepairPolicyRequestRulesIncidentsConditions) SetType(v string) *CreateAutoRepairPolicyRequestRulesIncidentsConditions {
-	s.Type = &v
-	return s
-}
-
-func (s *CreateAutoRepairPolicyRequestRulesIncidentsConditions) Validate() error {
-	return dara.Validate(s)
-}
-
-type CreateAutoRepairPolicyRequestRulesIncidentsEvents struct {
-	// example:
-	//
-	// xxx
-	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
-	// example:
-	//
-	// xxx
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s CreateAutoRepairPolicyRequestRulesIncidentsEvents) String() string {
-	return dara.Prettify(s)
-}
-
-func (s CreateAutoRepairPolicyRequestRulesIncidentsEvents) GoString() string {
-	return s.String()
-}
-
-func (s *CreateAutoRepairPolicyRequestRulesIncidentsEvents) GetReason() *string {
-	return s.Reason
-}
-
-func (s *CreateAutoRepairPolicyRequestRulesIncidentsEvents) GetType() *string {
-	return s.Type
-}
-
-func (s *CreateAutoRepairPolicyRequestRulesIncidentsEvents) SetReason(v string) *CreateAutoRepairPolicyRequestRulesIncidentsEvents {
-	s.Reason = &v
-	return s
-}
-
-func (s *CreateAutoRepairPolicyRequestRulesIncidentsEvents) SetType(v string) *CreateAutoRepairPolicyRequestRulesIncidentsEvents {
-	s.Type = &v
-	return s
-}
-
-func (s *CreateAutoRepairPolicyRequestRulesIncidentsEvents) Validate() error {
 	return dara.Validate(s)
 }
 

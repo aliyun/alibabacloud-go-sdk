@@ -102,27 +102,8 @@ func (s *DeleteAlertContactResponseBody) Validate() error {
 }
 
 type DeleteAlertContactResponseBodyResult struct {
-	// The deletion status.
-	//
-	// 	- true: The alert contact was deleted.
-	//
-	// 	- false: The alert contact failed to be deleted.
-	//
-	// example:
-	//
-	// true
-	Status *bool `json:"status,omitempty" xml:"status,omitempty"`
-	// The error message returned if the call fails.
-	//
-	// example:
-	//
-	// Delete contact resource failed.
-	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
-	// An alert contact ID.
-	//
-	// example:
-	//
-	// 12345
+	Status    *bool   `json:"status,omitempty" xml:"status,omitempty"`
+	Msg       *string `json:"msg,omitempty" xml:"msg,omitempty"`
 	ContactId *string `json:"contact_id,omitempty" xml:"contact_id,omitempty"`
 }
 

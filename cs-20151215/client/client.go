@@ -90,7 +90,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Adds existing Elastic Compute Service (ECS) instances to a Container Service for Kubernetes (ACK) cluster.
+// Adds existing Elastic Compute Service (ECS) instances to a Container Service for Kubernetes (ACK) cluster. When you need to add an ECS instance as a worker node to an ACK cluster or re-add a worker node to the cluster, you can call this operation.
 //
 // @param request - AttachInstancesRequest
 //
@@ -185,7 +185,7 @@ func (client *Client) AttachInstancesWithOptions(ClusterId *string, request *Att
 
 // Summary:
 //
-// Adds existing Elastic Compute Service (ECS) instances to a Container Service for Kubernetes (ACK) cluster.
+// Adds existing Elastic Compute Service (ECS) instances to a Container Service for Kubernetes (ACK) cluster. When you need to add an ECS instance as a worker node to an ACK cluster or re-add a worker node to the cluster, you can call this operation.
 //
 // @param request - AttachInstancesRequest
 //
@@ -392,7 +392,7 @@ func (client *Client) CancelComponentUpgrade(clusterId *string, componentId *str
 
 // Summary:
 //
-// You can call the CancelOperationPlan operation to cancel a pending auto O\\\\\\\\\\\\&M plan.
+// You can call the CancelOperationPlan operation to cancel a pending auto O\\\\\\\\\\\\\\\\\\\\&M plan.
 //
 // @param headers - map
 //
@@ -425,7 +425,7 @@ func (client *Client) CancelOperationPlanWithOptions(planId *string, headers map
 
 // Summary:
 //
-// You can call the CancelOperationPlan operation to cancel a pending auto O\\\\\\\\\\\\&M plan.
+// You can call the CancelOperationPlan operation to cancel a pending auto O\\\\\\\\\\\\\\\\\\\\&M plan.
 //
 // @return CancelOperationPlanResponse
 func (client *Client) CancelOperationPlan(planId *string) (_result *CancelOperationPlanResponse, _err error) {
@@ -1640,7 +1640,7 @@ func (client *Client) CreateClusterInspectConfig(clusterId *string, request *Cre
 
 // Summary:
 //
-// Creates a node pool for a Container Service for Kubernetes (ACK) cluster. You can use node pools to facilitate node management. For example, you can schedule, configure, or maintain nodes by node pool, and enable auto scaling for a node pool. We recommend that you use a managed node pool, which can help automate specific O\\\\\\&M tasks for nodes, such as Common Vulnerabilities and Exposures (CVE) patching and node repair. This reduces your O\\\\\\&M workload.
+// Creates a node pool for a Container Service for Kubernetes (ACK) cluster. You can use node pools to facilitate node management. For example, you can schedule, configure, or maintain nodes by node pool, and enable auto scaling for a node pool. We recommend that you use a managed node pool, which can help automate specific O\\\\\\\\\\\\&M tasks for nodes, such as Common Vulnerabilities and Exposures (CVE) patching and node repair. This reduces your O\\\\\\\\\\\\&M workload.
 //
 // @param request - CreateClusterNodePoolRequest
 //
@@ -1747,7 +1747,7 @@ func (client *Client) CreateClusterNodePoolWithOptions(ClusterId *string, reques
 
 // Summary:
 //
-// Creates a node pool for a Container Service for Kubernetes (ACK) cluster. You can use node pools to facilitate node management. For example, you can schedule, configure, or maintain nodes by node pool, and enable auto scaling for a node pool. We recommend that you use a managed node pool, which can help automate specific O\\\\\\&M tasks for nodes, such as Common Vulnerabilities and Exposures (CVE) patching and node repair. This reduces your O\\\\\\&M workload.
+// Creates a node pool for a Container Service for Kubernetes (ACK) cluster. You can use node pools to facilitate node management. For example, you can schedule, configure, or maintain nodes by node pool, and enable auto scaling for a node pool. We recommend that you use a managed node pool, which can help automate specific O\\\\\\\\\\\\&M tasks for nodes, such as Common Vulnerabilities and Exposures (CVE) patching and node repair. This reduces your O\\\\\\\\\\\\&M workload.
 //
 // @param request - CreateClusterNodePoolRequest
 //
@@ -2369,7 +2369,7 @@ func (client *Client) DeleteClusterInspectConfig(clusterId *string) (_result *De
 
 // Summary:
 //
-// null
+// Deletes unused node pools. Deleting a node pool terminates all pods on its nodes, which triggers pod rescheduling. Insufficient cluster resources may cause scheduling failures and business impact.
 //
 // @param request - DeleteClusterNodepoolRequest
 //
@@ -2416,7 +2416,7 @@ func (client *Client) DeleteClusterNodepoolWithOptions(ClusterId *string, Nodepo
 
 // Summary:
 //
-// null
+// Deletes unused node pools. Deleting a node pool terminates all pods on its nodes, which triggers pod rescheduling. Insufficient cluster resources may cause scheduling failures and business impact.
 //
 // @param request - DeleteClusterNodepoolRequest
 //
@@ -6415,7 +6415,7 @@ func (client *Client) GetUpgradeStatus(ClusterId *string) (_result *GetUpgradeSt
 
 // Summary:
 //
-// Updates the role-based access control (RBAC) permissions of a Resource Access Management (RAM) user or RAM role. By default, you do not have the RBAC permissions on a Container Service for Kubernetes (ACK) cluster if you are not the cluster owner or you are not using an Alibaba Cloud account. You can call this operation to specify the resources that can be accessed, permission scope, and predefined roles. This helps you better manage the access control on resources in ACK clusters.
+// By default, RAM users or roles who aren\\"t cluster creators and haven\\"t been granted full cluster permissions have no RBAC permissions in the cluster. You can call this interface to update RBAC access permissions for RAM users/roles, including accessible resources, permission scopes, and preset roles, for enhanced security control on resources in Container Service for Kubernetes (ACK) clusters.
 //
 // Description:
 //
@@ -6463,7 +6463,7 @@ func (client *Client) GrantPermissionsWithOptions(uid *string, request *GrantPer
 
 // Summary:
 //
-// Updates the role-based access control (RBAC) permissions of a Resource Access Management (RAM) user or RAM role. By default, you do not have the RBAC permissions on a Container Service for Kubernetes (ACK) cluster if you are not the cluster owner or you are not using an Alibaba Cloud account. You can call this operation to specify the resources that can be accessed, permission scope, and predefined roles. This helps you better manage the access control on resources in ACK clusters.
+// By default, RAM users or roles who aren\\"t cluster creators and haven\\"t been granted full cluster permissions have no RBAC permissions in the cluster. You can call this interface to update RBAC access permissions for RAM users/roles, including accessible resources, permission scopes, and preset roles, for enhanced security control on resources in Container Service for Kubernetes (ACK) clusters.
 //
 // Description:
 //
@@ -6488,7 +6488,7 @@ func (client *Client) GrantPermissions(uid *string, request *GrantPermissionsReq
 
 // Summary:
 //
-// 为了增强Kubernetes能力，ACK集群支持了多种组件，例如托管的核心组件，应用、日志和监控、网络、存储、安全组件等。您可以调用InstallClusterAddons接口，通过组件名称和版本安装组件。
+// Installs a component by specifying the name and version of the component. To enhance Kubernetes capabilities, you can install a variety of components in Container Service for Kubernetes (ACK) clusters, such as fully-managed core components and application, logging and monitoring, network, storage, and security group components.
 //
 // @param request - InstallClusterAddonsRequest
 //
@@ -6530,7 +6530,7 @@ func (client *Client) InstallClusterAddonsWithOptions(ClusterId *string, request
 
 // Summary:
 //
-// 为了增强Kubernetes能力，ACK集群支持了多种组件，例如托管的核心组件，应用、日志和监控、网络、存储、安全组件等。您可以调用InstallClusterAddons接口，通过组件名称和版本安装组件。
+// Installs a component by specifying the name and version of the component. To enhance Kubernetes capabilities, you can install a variety of components in Container Service for Kubernetes (ACK) clusters, such as fully-managed core components and application, logging and monitoring, network, storage, and security group components.
 //
 // @param request - InstallClusterAddonsRequest
 //
@@ -9431,7 +9431,7 @@ func (client *Client) SyncClusterNodePool(ClusterId *string) (_result *SyncClust
 
 // Summary:
 //
-// You can add labels in key-value pairs to clusters. This allows cluster developers or O\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the TagResources operation to add labels to a cluster.
+// You can add labels in key-value pairs to clusters. This allows cluster developers or O\\\\\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the TagResources operation to add labels to a cluster.
 //
 // @param request - TagResourcesRequest
 //
@@ -9490,7 +9490,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 
 // Summary:
 //
-// You can add labels in key-value pairs to clusters. This allows cluster developers or O\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the TagResources operation to add labels to a cluster.
+// You can add labels in key-value pairs to clusters. This allows cluster developers or O\\\\\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the TagResources operation to add labels to a cluster.
 //
 // @param request - TagResourcesRequest
 //
@@ -10052,6 +10052,76 @@ func (client *Client) UpdateK8sClusterUserConfigExpire(ClusterId *string, reques
 
 // Summary:
 //
+// 更新 Secret 落盘加密配置
+//
+// @param request - UpdateKMSEncryptionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateKMSEncryptionResponse
+func (client *Client) UpdateKMSEncryptionWithOptions(ClusterId *string, request *UpdateKMSEncryptionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateKMSEncryptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DisableEncryption) {
+		body["disable_encryption"] = request.DisableEncryption
+	}
+
+	if !dara.IsNil(request.KmsKeyId) {
+		body["kms_key_id"] = request.KmsKeyId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateKMSEncryption"),
+		Version:     dara.String("2015-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/clusters/" + dara.PercentEncode(dara.StringValue(ClusterId)) + "/kms"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &UpdateKMSEncryptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新 Secret 落盘加密配置
+//
+// @param request - UpdateKMSEncryptionRequest
+//
+// @return UpdateKMSEncryptionResponse
+func (client *Client) UpdateKMSEncryption(ClusterId *string, request *UpdateKMSEncryptionRequest) (_result *UpdateKMSEncryptionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateKMSEncryptionResponse{}
+	_body, _err := client.UpdateKMSEncryptionWithOptions(ClusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新节点组件
 //
 // @param request - UpdateNodePoolComponentRequest
@@ -10298,7 +10368,7 @@ func (client *Client) UpdateTemplate(TemplateId *string, request *UpdateTemplate
 
 // Summary:
 //
-// Updates the role-based access control (RBAC) permissions of a Resource Access Management (RAM) user or RAM role. By default, you do not have the RBAC permissions on a Container Service for Kubernetes (ACK) cluster if you are not the cluster owner or you are not using an Alibaba Cloud account. You can call this operation to specify the resources that can be accessed, permission scope, and predefined roles. This helps you better manage the access control on resources in ACK clusters.
+// In a Container Service for Kubernetes (ACK) cluster, non-cluster creators, Resource Access Management (RAM) users, and RAM roles do not have any Role-Based Access Control (RBAC) permissions in the cluster by default. You can call this operation to specify the resources that can be accessed, permission scope, and predefined roles. This helps you better manage the access control on resources in ACK clusters.
 //
 // Description:
 //
@@ -10352,7 +10422,7 @@ func (client *Client) UpdateUserPermissionsWithOptions(uid *string, request *Upd
 
 // Summary:
 //
-// Updates the role-based access control (RBAC) permissions of a Resource Access Management (RAM) user or RAM role. By default, you do not have the RBAC permissions on a Container Service for Kubernetes (ACK) cluster if you are not the cluster owner or you are not using an Alibaba Cloud account. You can call this operation to specify the resources that can be accessed, permission scope, and predefined roles. This helps you better manage the access control on resources in ACK clusters.
+// In a Container Service for Kubernetes (ACK) cluster, non-cluster creators, Resource Access Management (RAM) users, and RAM roles do not have any Role-Based Access Control (RBAC) permissions in the cluster by default. You can call this operation to specify the resources that can be accessed, permission scope, and predefined roles. This helps you better manage the access control on resources in ACK clusters.
 //
 // Description:
 //
@@ -10483,7 +10553,7 @@ func (client *Client) UpgradeCluster(ClusterId *string, request *UpgradeClusterR
 
 // Summary:
 //
-// Updates cluster components to use new features and patch vulnerabilities. You must update cluster components one after one and update a component only after the previous one is successfully updated. Before you update a component, we recommend that you read the update notes for each component. Cluster component updates may affect your businesses. Assess the impact, back up data, and perform the update during off-peak hours.
+// Updates cluster add-ons to newer versions for enhanced functionality.
 //
 // @param request - UpgradeClusterAddonsRequest
 //
@@ -10525,7 +10595,7 @@ func (client *Client) UpgradeClusterAddonsWithOptions(ClusterId *string, request
 
 // Summary:
 //
-// Updates cluster components to use new features and patch vulnerabilities. You must update cluster components one after one and update a component only after the previous one is successfully updated. Before you update a component, we recommend that you read the update notes for each component. Cluster component updates may affect your businesses. Assess the impact, back up data, and perform the update during off-peak hours.
+// Updates cluster add-ons to newer versions for enhanced functionality.
 //
 // @param request - UpgradeClusterAddonsRequest
 //

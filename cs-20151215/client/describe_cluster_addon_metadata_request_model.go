@@ -14,6 +14,11 @@ type iDescribeClusterAddonMetadataRequest interface {
 }
 
 type DescribeClusterAddonMetadataRequest struct {
+	// The component version.
+	//
+	// example:
+	//
+	// 1.8.4.1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 

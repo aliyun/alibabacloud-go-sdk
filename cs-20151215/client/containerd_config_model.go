@@ -26,13 +26,15 @@ type iContainerdConfig interface {
 }
 
 type ContainerdConfig struct {
-	IgnoreImageDefinedVolume *bool     `json:"ignoreImageDefinedVolume,omitempty" xml:"ignoreImageDefinedVolume,omitempty"`
-	InsecureRegistries       []*string `json:"insecureRegistries,omitempty" xml:"insecureRegistries,omitempty" type:"Repeated"`
-	LimitCore                *int64    `json:"limitCore,omitempty" xml:"limitCore,omitempty"`
-	LimitMemLock             *int64    `json:"limitMemLock,omitempty" xml:"limitMemLock,omitempty"`
-	LimitNoFile              *int64    `json:"limitNoFile,omitempty" xml:"limitNoFile,omitempty"`
-	MaxConcurrentDownloads   *int64    `json:"maxConcurrentDownloads,omitempty" xml:"maxConcurrentDownloads,omitempty"`
-	RegistryMirrors          []*string `json:"registryMirrors,omitempty" xml:"registryMirrors,omitempty" type:"Repeated"`
+	IgnoreImageDefinedVolume *bool `json:"ignoreImageDefinedVolume,omitempty" xml:"ignoreImageDefinedVolume,omitempty"`
+	// Insecure image repositories that skipped the TLS certificate verification.
+	InsecureRegistries     []*string `json:"insecureRegistries,omitempty" xml:"insecureRegistries,omitempty" type:"Repeated"`
+	LimitCore              *int64    `json:"limitCore,omitempty" xml:"limitCore,omitempty"`
+	LimitMemLock           *int64    `json:"limitMemLock,omitempty" xml:"limitMemLock,omitempty"`
+	LimitNoFile            *int64    `json:"limitNoFile,omitempty" xml:"limitNoFile,omitempty"`
+	MaxConcurrentDownloads *int64    `json:"maxConcurrentDownloads,omitempty" xml:"maxConcurrentDownloads,omitempty"`
+	// The image accelerator configuration.
+	RegistryMirrors []*string `json:"registryMirrors,omitempty" xml:"registryMirrors,omitempty" type:"Repeated"`
 }
 
 func (s ContainerdConfig) String() string {

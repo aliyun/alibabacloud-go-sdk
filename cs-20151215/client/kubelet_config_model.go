@@ -76,101 +76,153 @@ type iKubeletConfig interface {
 }
 
 type KubeletConfig struct {
+	// The whitelisted unsafe sysctls.
 	AllowedUnsafeSysctls []*string `json:"allowedUnsafeSysctls,omitempty" xml:"allowedUnsafeSysctls,omitempty" type:"Repeated"`
-	ClusterDNS           []*string `json:"clusterDNS,omitempty" xml:"clusterDNS,omitempty" type:"Repeated"`
+	// The list of IP addresses of the DNS servers.
+	ClusterDNS []*string `json:"clusterDNS,omitempty" xml:"clusterDNS,omitempty" type:"Repeated"`
+	// The maximum number of log files that can be stored in each container.
+	//
 	// example:
 	//
 	// 5
 	ContainerLogMaxFiles *int64 `json:"containerLogMaxFiles,omitempty" xml:"containerLogMaxFiles,omitempty"`
+	// The maximum size that a log file can reach before it is rotated.
+	//
 	// example:
 	//
 	// 10Mi
 	ContainerLogMaxSize *string `json:"containerLogMaxSize,omitempty" xml:"containerLogMaxSize,omitempty"`
+	// The maximum number of concurrent programs that rotate logs
+	//
 	// example:
 	//
 	// 1
 	ContainerLogMaxWorkers *int32 `json:"containerLogMaxWorkers,omitempty" xml:"containerLogMaxWorkers,omitempty"`
+	// The duration at which the container logs are monitored for rotating logs.
+	//
 	// example:
 	//
 	// 10s
 	ContainerLogMonitorInterval *string `json:"containerLogMonitorInterval,omitempty" xml:"containerLogMonitorInterval,omitempty"`
+	// Specifies whether to use Completely Fair Scheduler (CFS) quota to enforce pod CPU limits.
+	//
 	// example:
 	//
 	// true
 	CpuCFSQuota *bool `json:"cpuCFSQuota,omitempty" xml:"cpuCFSQuota,omitempty"`
+	// The duration for the CPU CFS quota.
+	//
 	// example:
 	//
 	// 100ms
 	CpuCFSQuotaPeriod *string `json:"cpuCFSQuotaPeriod,omitempty" xml:"cpuCFSQuotaPeriod,omitempty"`
+	// The CPU management policy used by kubelet.
+	//
 	// example:
 	//
 	// none
 	CpuManagerPolicy *string `json:"cpuManagerPolicy,omitempty" xml:"cpuManagerPolicy,omitempty"`
+	// The maximum number of burst peaks for the event records.
+	//
 	// example:
 	//
 	// 10
 	EventBurst *int64 `json:"eventBurst,omitempty" xml:"eventBurst,omitempty"`
+	// Specifies the maximum number of events that can be generated per second.
+	//
 	// example:
 	//
 	// 5
-	EventRecordQPS          *int64                 `json:"eventRecordQPS,omitempty" xml:"eventRecordQPS,omitempty"`
-	EvictionHard            map[string]interface{} `json:"evictionHard,omitempty" xml:"evictionHard,omitempty"`
-	EvictionSoft            map[string]interface{} `json:"evictionSoft,omitempty" xml:"evictionSoft,omitempty"`
+	EventRecordQPS *int64 `json:"eventRecordQPS,omitempty" xml:"eventRecordQPS,omitempty"`
+	// A set of eviction thresholds that will trigger a pod eviction if met.
+	EvictionHard map[string]interface{} `json:"evictionHard,omitempty" xml:"evictionHard,omitempty"`
+	// A set of eviction thresholds that will trigger a pod eviction if met over a corresponding grace period.
+	EvictionSoft map[string]interface{} `json:"evictionSoft,omitempty" xml:"evictionSoft,omitempty"`
+	// A set of grace periods for eviction thresholds.
 	EvictionSoftGracePeriod map[string]interface{} `json:"evictionSoftGracePeriod,omitempty" xml:"evictionSoftGracePeriod,omitempty"`
-	FeatureGates            map[string]interface{} `json:"featureGates,omitempty" xml:"featureGates,omitempty"`
+	// A feature gate that is used to enable an experimental feature.
+	FeatureGates map[string]interface{} `json:"featureGates,omitempty" xml:"featureGates,omitempty"`
+	// The percentage of disk usage after which image garbage collection always runs.
+	//
 	// example:
 	//
 	// 85
 	ImageGCHighThresholdPercent *int32 `json:"imageGCHighThresholdPercent,omitempty" xml:"imageGCHighThresholdPercent,omitempty"`
+	// The percentage of disk usage before which image garbage collection never runs.
+	//
 	// example:
 	//
 	// 80
 	ImageGCLowThresholdPercent *int32 `json:"imageGCLowThresholdPercent,omitempty" xml:"imageGCLowThresholdPercent,omitempty"`
+	// The maximum number of burst requests sent to the API server per second.
+	//
 	// example:
 	//
 	// 10
 	KubeAPIBurst *int64 `json:"kubeAPIBurst,omitempty" xml:"kubeAPIBurst,omitempty"`
+	// The QPS when kubelet communicates with the Kubernetes API server.
+	//
 	// example:
 	//
 	// 5
-	KubeAPIQPS   *int64                 `json:"kubeAPIQPS,omitempty" xml:"kubeAPIQPS,omitempty"`
+	KubeAPIQPS *int64 `json:"kubeAPIQPS,omitempty" xml:"kubeAPIQPS,omitempty"`
+	// A set of configurations that specify resources reserved for the Kubernetes system.
 	KubeReserved map[string]interface{} `json:"kubeReserved,omitempty" xml:"kubeReserved,omitempty"`
+	// The maximum number of running pods.
+	//
 	// example:
 	//
 	// 110
 	MaxPods *int64 `json:"maxPods,omitempty" xml:"maxPods,omitempty"`
+	// The name of the policy to be used by the memory manager.
+	//
 	// example:
 	//
 	// none
 	MemoryManagerPolicy *string `json:"memoryManagerPolicy,omitempty" xml:"memoryManagerPolicy,omitempty"`
+	// The maximum number of processes per pod.
+	//
 	// example:
 	//
 	// -1
 	PodPidsLimit *int64 `json:"podPidsLimit,omitempty" xml:"podPidsLimit,omitempty"`
+	// The read-only port.
+	//
 	// example:
 	//
 	// 0
 	ReadOnlyPort *int64 `json:"readOnlyPort,omitempty" xml:"readOnlyPort,omitempty"`
+	// The maximum number of images that can be pulled from bursty image pulls.
+	//
 	// example:
 	//
 	// 10
 	RegistryBurst *int64 `json:"registryBurst,omitempty" xml:"registryBurst,omitempty"`
+	// The maximum queries per second (QPS) of the image repository.
+	//
 	// example:
 	//
 	// 5
-	RegistryPullQPS *int64                         `json:"registryPullQPS,omitempty" xml:"registryPullQPS,omitempty"`
-	ReservedMemory  []*KubeletConfigReservedMemory `json:"reservedMemory,omitempty" xml:"reservedMemory,omitempty" type:"Repeated"`
+	RegistryPullQPS *int64 `json:"registryPullQPS,omitempty" xml:"registryPullQPS,omitempty"`
+	// A list of configurations that specify memory reservations for non-uniform memory access (NUMA) nodes.
+	ReservedMemory []*KubeletConfigReservedMemory `json:"reservedMemory,omitempty" xml:"reservedMemory,omitempty" type:"Repeated"`
+	// Specifies whether to pull one image at a time.
+	//
 	// example:
 	//
 	// true
-	SerializeImagePulls *bool                  `json:"serializeImagePulls,omitempty" xml:"serializeImagePulls,omitempty"`
-	ServerTLSBootstrap  *bool                  `json:"serverTLSBootstrap,omitempty" xml:"serverTLSBootstrap,omitempty"`
-	SystemReserved      map[string]interface{} `json:"systemReserved,omitempty" xml:"systemReserved,omitempty"`
+	SerializeImagePulls *bool `json:"serializeImagePulls,omitempty" xml:"serializeImagePulls,omitempty"`
+	ServerTLSBootstrap  *bool `json:"serverTLSBootstrap,omitempty" xml:"serverTLSBootstrap,omitempty"`
+	// A set of configurations that specify reserved resources for the system.
+	SystemReserved map[string]interface{} `json:"systemReserved,omitempty" xml:"systemReserved,omitempty"`
+	// The name of the Topology Manager policy that you want to use.
+	//
 	// example:
 	//
 	// restricted
-	TopologyManagerPolicy *string               `json:"topologyManagerPolicy,omitempty" xml:"topologyManagerPolicy,omitempty"`
-	Tracing               *KubeletConfigTracing `json:"tracing,omitempty" xml:"tracing,omitempty" type:"Struct"`
+	TopologyManagerPolicy *string `json:"topologyManagerPolicy,omitempty" xml:"topologyManagerPolicy,omitempty"`
+	// The versioned configuration information for the Managed Service for OpenTelemetry client.
+	Tracing *KubeletConfigTracing `json:"tracing,omitempty" xml:"tracing,omitempty" type:"Struct"`
 }
 
 func (s KubeletConfig) String() string {
@@ -488,8 +540,18 @@ func (s *KubeletConfig) Validate() error {
 }
 
 type KubeletConfigReservedMemory struct {
-	Limits   map[string]interface{} `json:"limits,omitempty" xml:"limits,omitempty"`
-	NumaNode *int32                 `json:"numaNode,omitempty" xml:"numaNode,omitempty"`
+	// The memory limit.
+	//
+	// example:
+	//
+	// {"memory": "1Gi"}
+	Limits map[string]interface{} `json:"limits,omitempty" xml:"limits,omitempty"`
+	// The NUMA node identifier.
+	//
+	// example:
+	//
+	// 0
+	NumaNode *int32 `json:"numaNode,omitempty" xml:"numaNode,omitempty"`
 }
 
 func (s KubeletConfigReservedMemory) String() string {
@@ -523,11 +585,18 @@ func (s *KubeletConfigReservedMemory) Validate() error {
 }
 
 type KubeletConfigTracing struct {
+	// The endpoint of the collector.
+	//
 	// example:
 	//
 	// localhost:4317
-	Endpoint               *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	SamplingRatePerMillion *int32  `json:"samplingRatePerMillion,omitempty" xml:"samplingRatePerMillion,omitempty"`
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The number of samples to be collected per million spans.
+	//
+	// example:
+	//
+	// 200000
+	SamplingRatePerMillion *int32 `json:"samplingRatePerMillion,omitempty" xml:"samplingRatePerMillion,omitempty"`
 }
 
 func (s KubeletConfigTracing) String() string {

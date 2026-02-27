@@ -173,8 +173,6 @@ func (s *DescribeAutoRepairPolicyResponseBodyRules) Validate() error {
 }
 
 type DescribeAutoRepairPolicyResponseBodyRulesIncidents struct {
-	Conditions []*DescribeAutoRepairPolicyResponseBodyRulesIncidentsConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	Events     []*DescribeAutoRepairPolicyResponseBodyRulesIncidentsEvents     `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
 	// example:
 	//
 	// Node.FaultNeedReboot.HOST
@@ -193,30 +191,12 @@ func (s DescribeAutoRepairPolicyResponseBodyRulesIncidents) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAutoRepairPolicyResponseBodyRulesIncidents) GetConditions() []*DescribeAutoRepairPolicyResponseBodyRulesIncidentsConditions {
-	return s.Conditions
-}
-
-func (s *DescribeAutoRepairPolicyResponseBodyRulesIncidents) GetEvents() []*DescribeAutoRepairPolicyResponseBodyRulesIncidentsEvents {
-	return s.Events
-}
-
 func (s *DescribeAutoRepairPolicyResponseBodyRulesIncidents) GetName() *string {
 	return s.Name
 }
 
 func (s *DescribeAutoRepairPolicyResponseBodyRulesIncidents) GetType() *string {
 	return s.Type
-}
-
-func (s *DescribeAutoRepairPolicyResponseBodyRulesIncidents) SetConditions(v []*DescribeAutoRepairPolicyResponseBodyRulesIncidentsConditions) *DescribeAutoRepairPolicyResponseBodyRulesIncidents {
-	s.Conditions = v
-	return s
-}
-
-func (s *DescribeAutoRepairPolicyResponseBodyRulesIncidents) SetEvents(v []*DescribeAutoRepairPolicyResponseBodyRulesIncidentsEvents) *DescribeAutoRepairPolicyResponseBodyRulesIncidents {
-	s.Events = v
-	return s
 }
 
 func (s *DescribeAutoRepairPolicyResponseBodyRulesIncidents) SetName(v string) *DescribeAutoRepairPolicyResponseBodyRulesIncidents {
@@ -230,119 +210,6 @@ func (s *DescribeAutoRepairPolicyResponseBodyRulesIncidents) SetType(v string) *
 }
 
 func (s *DescribeAutoRepairPolicyResponseBodyRulesIncidents) Validate() error {
-	if s.Conditions != nil {
-		for _, item := range s.Conditions {
-			if item != nil {
-				if err := item.Validate(); err != nil {
-					return err
-				}
-			}
-		}
-	}
-	if s.Events != nil {
-		for _, item := range s.Events {
-			if item != nil {
-				if err := item.Validate(); err != nil {
-					return err
-				}
-			}
-		}
-	}
-	return nil
-}
-
-type DescribeAutoRepairPolicyResponseBodyRulesIncidentsConditions struct {
-	// example:
-	//
-	// xxxx
-	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
-	// example:
-	//
-	// False
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// KubeletReady
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s DescribeAutoRepairPolicyResponseBodyRulesIncidentsConditions) String() string {
-	return dara.Prettify(s)
-}
-
-func (s DescribeAutoRepairPolicyResponseBodyRulesIncidentsConditions) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAutoRepairPolicyResponseBodyRulesIncidentsConditions) GetReason() *string {
-	return s.Reason
-}
-
-func (s *DescribeAutoRepairPolicyResponseBodyRulesIncidentsConditions) GetStatus() *string {
-	return s.Status
-}
-
-func (s *DescribeAutoRepairPolicyResponseBodyRulesIncidentsConditions) GetType() *string {
-	return s.Type
-}
-
-func (s *DescribeAutoRepairPolicyResponseBodyRulesIncidentsConditions) SetReason(v string) *DescribeAutoRepairPolicyResponseBodyRulesIncidentsConditions {
-	s.Reason = &v
-	return s
-}
-
-func (s *DescribeAutoRepairPolicyResponseBodyRulesIncidentsConditions) SetStatus(v string) *DescribeAutoRepairPolicyResponseBodyRulesIncidentsConditions {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeAutoRepairPolicyResponseBodyRulesIncidentsConditions) SetType(v string) *DescribeAutoRepairPolicyResponseBodyRulesIncidentsConditions {
-	s.Type = &v
-	return s
-}
-
-func (s *DescribeAutoRepairPolicyResponseBodyRulesIncidentsConditions) Validate() error {
-	return dara.Validate(s)
-}
-
-type DescribeAutoRepairPolicyResponseBodyRulesIncidentsEvents struct {
-	// example:
-	//
-	// xxxx
-	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
-	// example:
-	//
-	// xxxx
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s DescribeAutoRepairPolicyResponseBodyRulesIncidentsEvents) String() string {
-	return dara.Prettify(s)
-}
-
-func (s DescribeAutoRepairPolicyResponseBodyRulesIncidentsEvents) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAutoRepairPolicyResponseBodyRulesIncidentsEvents) GetReason() *string {
-	return s.Reason
-}
-
-func (s *DescribeAutoRepairPolicyResponseBodyRulesIncidentsEvents) GetType() *string {
-	return s.Type
-}
-
-func (s *DescribeAutoRepairPolicyResponseBodyRulesIncidentsEvents) SetReason(v string) *DescribeAutoRepairPolicyResponseBodyRulesIncidentsEvents {
-	s.Reason = &v
-	return s
-}
-
-func (s *DescribeAutoRepairPolicyResponseBodyRulesIncidentsEvents) SetType(v string) *DescribeAutoRepairPolicyResponseBodyRulesIncidentsEvents {
-	s.Type = &v
-	return s
-}
-
-func (s *DescribeAutoRepairPolicyResponseBodyRulesIncidentsEvents) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -404,7 +271,7 @@ type DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureIntervention struct
 	// example:
 	//
 	// true
-	Enable         *string                                                                             `json:"enable,omitempty" xml:"enable,omitempty"`
+	Enable         *bool                                                                               `json:"enable,omitempty" xml:"enable,omitempty"`
 	InquiringLabel *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureInterventionInquiringLabel `json:"inquiring_label,omitempty" xml:"inquiring_label,omitempty" type:"Struct"`
 	// example:
 	//
@@ -424,7 +291,7 @@ func (s *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureIntervention) G
 	return s.ApprovedLabel
 }
 
-func (s *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureIntervention) GetEnable() *string {
+func (s *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureIntervention) GetEnable() *bool {
 	return s.Enable
 }
 
@@ -441,7 +308,7 @@ func (s *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureIntervention) S
 	return s
 }
 
-func (s *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureIntervention) SetEnable(v string) *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureIntervention {
+func (s *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureIntervention) SetEnable(v bool) *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureIntervention {
 	s.Enable = &v
 	return s
 }

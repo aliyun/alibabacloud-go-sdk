@@ -22,22 +22,48 @@ type iMaintenanceWindow interface {
 }
 
 type MaintenanceWindow struct {
+	// The duration of the cluster maintenance window.
+	//
+	// Valid values: 1 to 24.
+	//
+	// Unit: hours.
+	//
+	// Default value: 3.
+	//
 	// example:
 	//
 	// 3h
 	Duration *string `json:"duration,omitempty" xml:"duration,omitempty"`
+	// Specifies whether to enable the cluster maintenance window. Valid values:
+	//
+	// 	- `true`: enables the cluster maintenance window.
+	//
+	// 	- `false`: disables the cluster maintenance window.
+	//
+	// Default value: `false`.
+	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The start time of the cluster maintenance window. The value follows a standard time format in Golang. Example: 15:04:05Z.
+	//
 	// example:
 	//
-	// 2020-10-15T12:31:00.000+08:00
+	// 03:00:00Z
 	MaintenanceTime *string `json:"maintenance_time,omitempty" xml:"maintenance_time,omitempty"`
+	// Defines a maintenance window recurrence rule by using the RFC5545 recurrence rule. Currently, only FREQ=WEEKLY is supported, and you cannot specify COUNT or UNTIL.
+	//
 	// example:
 	//
 	// FREQ=WEEKLY;INTERVAL=4;BYDAY=MO,TU
 	Recurrence *string `json:"recurrence,omitempty" xml:"recurrence,omitempty"`
+	// The day of the week when maintenance is performed. Separate multiple days with commas (,).
+	//
+	// Valid values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday.
+	//
+	// Default value: `Thursday`.
+	//
 	// example:
 	//
 	// Monday,Thursday
