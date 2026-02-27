@@ -59,5 +59,10 @@ func (s *ListInstanceRecordsResponse) SetBody(v *ListInstanceRecordsResponseBody
 }
 
 func (s *ListInstanceRecordsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

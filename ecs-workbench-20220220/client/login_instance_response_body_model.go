@@ -94,7 +94,12 @@ func (s *LoginInstanceResponseBody) SetSuccess(v string) *LoginInstanceResponseB
 }
 
 func (s *LoginInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Root != nil {
+		if err := s.Root.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type LoginInstanceResponseBodyRoot struct {
@@ -139,7 +144,26 @@ func (s *LoginInstanceResponseBodyRoot) SetSessionControl(v *LoginInstanceRespon
 }
 
 func (s *LoginInstanceResponseBodyRoot) Validate() error {
-	return dara.Validate(s)
+	if s.DisposableAccount != nil {
+		if err := s.DisposableAccount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceLoginInfoList != nil {
+		for _, item := range s.InstanceLoginInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SessionControl != nil {
+		if err := s.SessionControl.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type LoginInstanceResponseBodyRootDisposableAccount struct {
@@ -244,7 +268,12 @@ func (s *LoginInstanceResponseBodyRootInstanceLoginInfoList) SetLoginSuccess(v b
 }
 
 func (s *LoginInstanceResponseBodyRootInstanceLoginInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceLoginView != nil {
+		if err := s.InstanceLoginView.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type LoginInstanceResponseBodyRootInstanceLoginInfoListInstanceLoginView struct {

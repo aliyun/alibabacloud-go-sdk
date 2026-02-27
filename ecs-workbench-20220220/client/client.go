@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -65,9 +66,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return GetInstanceRecordConfigResponse
 func (client *Client) GetInstanceRecordConfigWithOptions(request *GetInstanceRecordConfigRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceRecordConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -129,9 +132,11 @@ func (client *Client) GetInstanceRecordConfig(request *GetInstanceRecordConfigRe
 //
 // @return ListInstanceRecordsResponse
 func (client *Client) ListInstanceRecordsWithOptions(request *ListInstanceRecordsRequest, runtime *dara.RuntimeOptions) (_result *ListInstanceRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -201,9 +206,11 @@ func (client *Client) ListInstanceRecords(request *ListInstanceRecordsRequest) (
 //
 // @return ListTerminalCommandsResponse
 func (client *Client) ListTerminalCommandsWithOptions(request *ListTerminalCommandsRequest, runtime *dara.RuntimeOptions) (_result *ListTerminalCommandsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -273,9 +280,11 @@ func (client *Client) ListTerminalCommands(request *ListTerminalCommandsRequest)
 //
 // @return LoginInstanceResponse
 func (client *Client) LoginInstanceWithOptions(request *LoginInstanceRequest, runtime *dara.RuntimeOptions) (_result *LoginInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceLoginInfo) {
@@ -341,9 +350,11 @@ func (client *Client) LoginInstance(request *LoginInstanceRequest) (_result *Log
 //
 // @return SetInstanceRecordConfigResponse
 func (client *Client) SetInstanceRecordConfigWithOptions(request *SetInstanceRecordConfigRequest, runtime *dara.RuntimeOptions) (_result *SetInstanceRecordConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Enabled) {
@@ -364,6 +375,10 @@ func (client *Client) SetInstanceRecordConfigWithOptions(request *SetInstanceRec
 
 	if !dara.IsNil(request.RegionId) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceRegionId) {
+		body["ResourceRegionId"] = request.ResourceRegionId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -417,9 +432,11 @@ func (client *Client) SetInstanceRecordConfig(request *SetInstanceRecordConfigRe
 //
 // @return ViewInstanceRecordsResponse
 func (client *Client) ViewInstanceRecordsWithOptions(request *ViewInstanceRecordsRequest, runtime *dara.RuntimeOptions) (_result *ViewInstanceRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {

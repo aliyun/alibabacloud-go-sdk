@@ -95,7 +95,12 @@ func (s *GetInstanceRecordConfigResponseBody) SetSuccess(v bool) *GetInstanceRec
 }
 
 func (s *GetInstanceRecordConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Root != nil {
+		if err := s.Root.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceRecordConfigResponseBodyRoot struct {

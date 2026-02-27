@@ -59,7 +59,22 @@ func (s *LoginInstanceRequest) SetUserAccount(v *LoginInstanceRequestUserAccount
 }
 
 func (s *LoginInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceLoginInfo != nil {
+		if err := s.InstanceLoginInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PartnerInfo != nil {
+		if err := s.PartnerInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserAccount != nil {
+		if err := s.UserAccount.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type LoginInstanceRequestInstanceLoginInfo struct {
@@ -361,7 +376,17 @@ func (s *LoginInstanceRequestInstanceLoginInfo) SetVpcId(v string) *LoginInstanc
 }
 
 func (s *LoginInstanceRequestInstanceLoginInfo) Validate() error {
-	return dara.Validate(s)
+	if s.EncryptionOptions != nil {
+		if err := s.EncryptionOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Options != nil {
+		if err := s.Options.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type LoginInstanceRequestInstanceLoginInfoEncryptionOptions struct {
@@ -546,7 +571,12 @@ func (s *LoginInstanceRequestInstanceLoginInfoOptions) SetVideoFreezeSeconds(v i
 }
 
 func (s *LoginInstanceRequestInstanceLoginInfoOptions) Validate() error {
-	return dara.Validate(s)
+	if s.ContainerInfo != nil {
+		if err := s.ContainerInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type LoginInstanceRequestInstanceLoginInfoOptionsContainerInfo struct {
@@ -835,7 +865,12 @@ func (s *LoginInstanceRequestUserAccount) SetParentId(v int64) *LoginInstanceReq
 }
 
 func (s *LoginInstanceRequestUserAccount) Validate() error {
-	return dara.Validate(s)
+	if s.Options != nil {
+		if err := s.Options.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type LoginInstanceRequestUserAccountOptions struct {

@@ -95,7 +95,16 @@ func (s *ListTerminalCommandsResponseBody) SetTotalCount(v int32) *ListTerminalC
 }
 
 func (s *ListTerminalCommandsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TerminalCommandList != nil {
+		for _, item := range s.TerminalCommandList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTerminalCommandsResponseBodyTerminalCommandList struct {

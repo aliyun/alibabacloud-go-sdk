@@ -19,6 +19,8 @@ type iSetInstanceRecordConfigRequest interface {
 	GetRecordStorageTarget() *string
 	SetRegionId(v string) *SetInstanceRecordConfigRequest
 	GetRegionId() *string
+	SetResourceRegionId(v string) *SetInstanceRecordConfigRequest
+	GetResourceRegionId() *string
 }
 
 type SetInstanceRecordConfigRequest struct {
@@ -45,7 +47,8 @@ type SetInstanceRecordConfigRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
 }
 
 func (s SetInstanceRecordConfigRequest) String() string {
@@ -76,6 +79,10 @@ func (s *SetInstanceRecordConfigRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *SetInstanceRecordConfigRequest) GetResourceRegionId() *string {
+	return s.ResourceRegionId
+}
+
 func (s *SetInstanceRecordConfigRequest) SetEnabled(v bool) *SetInstanceRecordConfigRequest {
 	s.Enabled = &v
 	return s
@@ -98,6 +105,11 @@ func (s *SetInstanceRecordConfigRequest) SetRecordStorageTarget(v string) *SetIn
 
 func (s *SetInstanceRecordConfigRequest) SetRegionId(v string) *SetInstanceRecordConfigRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *SetInstanceRecordConfigRequest) SetResourceRegionId(v string) *SetInstanceRecordConfigRequest {
+	s.ResourceRegionId = &v
 	return s
 }
 

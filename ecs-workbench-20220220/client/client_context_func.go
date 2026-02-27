@@ -17,9 +17,11 @@ import (
 //
 // @return GetInstanceRecordConfigResponse
 func (client *Client) GetInstanceRecordConfigWithContext(ctx context.Context, request *GetInstanceRecordConfigRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceRecordConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -63,9 +65,11 @@ func (client *Client) GetInstanceRecordConfigWithContext(ctx context.Context, re
 //
 // @return ListInstanceRecordsResponse
 func (client *Client) ListInstanceRecordsWithContext(ctx context.Context, request *ListInstanceRecordsRequest, runtime *dara.RuntimeOptions) (_result *ListInstanceRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -117,9 +121,11 @@ func (client *Client) ListInstanceRecordsWithContext(ctx context.Context, reques
 //
 // @return ListTerminalCommandsResponse
 func (client *Client) ListTerminalCommandsWithContext(ctx context.Context, request *ListTerminalCommandsRequest, runtime *dara.RuntimeOptions) (_result *ListTerminalCommandsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -171,9 +177,11 @@ func (client *Client) ListTerminalCommandsWithContext(ctx context.Context, reque
 //
 // @return LoginInstanceResponse
 func (client *Client) LoginInstanceWithContext(ctx context.Context, request *LoginInstanceRequest, runtime *dara.RuntimeOptions) (_result *LoginInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceLoginInfo) {
@@ -221,9 +229,11 @@ func (client *Client) LoginInstanceWithContext(ctx context.Context, request *Log
 //
 // @return SetInstanceRecordConfigResponse
 func (client *Client) SetInstanceRecordConfigWithContext(ctx context.Context, request *SetInstanceRecordConfigRequest, runtime *dara.RuntimeOptions) (_result *SetInstanceRecordConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Enabled) {
@@ -244,6 +254,10 @@ func (client *Client) SetInstanceRecordConfigWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.RegionId) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceRegionId) {
+		body["ResourceRegionId"] = request.ResourceRegionId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -279,9 +293,11 @@ func (client *Client) SetInstanceRecordConfigWithContext(ctx context.Context, re
 //
 // @return ViewInstanceRecordsResponse
 func (client *Client) ViewInstanceRecordsWithContext(ctx context.Context, request *ViewInstanceRecordsRequest, runtime *dara.RuntimeOptions) (_result *ViewInstanceRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {

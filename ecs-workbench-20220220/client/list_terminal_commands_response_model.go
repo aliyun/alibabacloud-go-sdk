@@ -59,5 +59,10 @@ func (s *ListTerminalCommandsResponse) SetBody(v *ListTerminalCommandsResponseBo
 }
 
 func (s *ListTerminalCommandsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

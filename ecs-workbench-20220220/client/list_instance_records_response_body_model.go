@@ -95,7 +95,12 @@ func (s *ListInstanceRecordsResponseBody) SetSuccess(v bool) *ListInstanceRecord
 }
 
 func (s *ListInstanceRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Root != nil {
+		if err := s.Root.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListInstanceRecordsResponseBodyRoot struct {
@@ -133,7 +138,16 @@ func (s *ListInstanceRecordsResponseBodyRoot) SetTotalCount(v int32) *ListInstan
 }
 
 func (s *ListInstanceRecordsResponseBodyRoot) Validate() error {
-	return dara.Validate(s)
+	if s.RecordList != nil {
+		for _, item := range s.RecordList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstanceRecordsResponseBodyRootRecordList struct {
