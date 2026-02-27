@@ -611,6 +611,90 @@ func (client *Client) CreateScheduledTask(request *CreateScheduledTaskRequest) (
 
 // Summary:
 //
+// 创建Skill
+//
+// @param tmpReq - CreateSkillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSkillResponse
+func (client *Client) CreateSkillWithOptions(tmpReq *CreateSkillRequest, runtime *dara.RuntimeOptions) (_result *CreateSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateSkillShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Content) {
+		request.ContentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Content, dara.String("Content"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Dbtypes) {
+		request.DbtypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Dbtypes, dara.String("Dbtypes"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ContentShrink) {
+		query["Content"] = request.ContentShrink
+	}
+
+	if !dara.IsNil(request.DbtypesShrink) {
+		query["Dbtypes"] = request.DbtypesShrink
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSkill"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Skill
+//
+// @param request - CreateSkillRequest
+//
+// @return CreateSkillResponse
+func (client *Client) CreateSkill(request *CreateSkillRequest) (_result *CreateSkillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateSkillResponse{}
+	_body, _err := client.CreateSkillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an RDS Supabase instance.
 //
 // Description:
@@ -824,6 +908,68 @@ func (client *Client) DeleteScheduledTask(request *DeleteScheduledTaskRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteScheduledTaskResponse{}
 	_body, _err := client.DeleteScheduledTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Skill
+//
+// @param request - DeleteSkillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSkillResponse
+func (client *Client) DeleteSkillWithOptions(request *DeleteSkillRequest, runtime *dara.RuntimeOptions) (_result *DeleteSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SkillId) {
+		query["SkillId"] = request.SkillId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSkill"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Skill
+//
+// @param request - DeleteSkillRequest
+//
+// @return DeleteSkillResponse
+func (client *Client) DeleteSkill(request *DeleteSkillRequest) (_result *DeleteSkillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteSkillResponse{}
+	_body, _err := client.DeleteSkillWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2027,6 +2173,72 @@ func (client *Client) GetScheduledReports(request *GetScheduledReportsRequest) (
 
 // Summary:
 //
+// 获取Skill详情
+//
+// @param request - GetSkillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSkillResponse
+func (client *Client) GetSkillWithOptions(request *GetSkillRequest, runtime *dara.RuntimeOptions) (_result *GetSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.SkillId) {
+		query["SkillId"] = request.SkillId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSkill"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Skill详情
+//
+// @param request - GetSkillRequest
+//
+// @return GetSkillResponse
+func (client *Client) GetSkill(request *GetSkillRequest) (_result *GetSkillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetSkillResponse{}
+	_body, _err := client.GetSkillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询指定用户下所有非定时任务的单独巡检报告列表，支持分页
 //
 // @param request - GetStandAloneReportsRequest
@@ -2275,6 +2487,76 @@ func (client *Client) ListScheduledTasks(request *ListScheduledTasksRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListScheduledTasksResponse{}
 	_body, _err := client.ListScheduledTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Skill列表
+//
+// @param request - ListSkillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSkillResponse
+func (client *Client) ListSkillWithOptions(request *ListSkillRequest, runtime *dara.RuntimeOptions) (_result *ListSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSkill"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Skill列表
+//
+// @param request - ListSkillRequest
+//
+// @return ListSkillResponse
+func (client *Client) ListSkill(request *ListSkillRequest) (_result *ListSkillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListSkillResponse{}
+	_body, _err := client.ListSkillWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3560,6 +3842,94 @@ func (client *Client) UpdateCustomAgent(request *UpdateCustomAgentRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新Skill
+//
+// @param tmpReq - UpdateSkillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSkillResponse
+func (client *Client) UpdateSkillWithOptions(tmpReq *UpdateSkillRequest, runtime *dara.RuntimeOptions) (_result *UpdateSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateSkillShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Content) {
+		request.ContentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Content, dara.String("Content"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Dbtypes) {
+		request.DbtypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Dbtypes, dara.String("Dbtypes"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ContentShrink) {
+		query["Content"] = request.ContentShrink
+	}
+
+	if !dara.IsNil(request.DbtypesShrink) {
+		query["Dbtypes"] = request.DbtypesShrink
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.SkillId) {
+		query["SkillId"] = request.SkillId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateSkill"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Skill
+//
+// @param request - UpdateSkillRequest
+//
+// @return UpdateSkillResponse
+func (client *Client) UpdateSkill(request *UpdateSkillRequest) (_result *UpdateSkillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateSkillResponse{}
+	_body, _err := client.UpdateSkillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) chatMessagesWithSSE_opYieldFunc(_yield chan *ChatMessagesResponse, _yieldErr chan error, tmpReq *ChatMessagesRequest, runtime *dara.RuntimeOptions) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err := tmpReq.Validate()
@@ -3612,18 +3982,20 @@ func (client *Client) chatMessagesWithSSE_opYieldFunc(_yield chan *ChatMessagesR
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }
