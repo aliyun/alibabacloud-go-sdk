@@ -47,7 +47,16 @@ func (s *AddTerminalsRequest) SetMainBizType(v string) *AddTerminalsRequest {
 }
 
 func (s *AddTerminalsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AddTerminalParams != nil {
+		for _, item := range s.AddTerminalParams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddTerminalsRequestAddTerminalParams struct {

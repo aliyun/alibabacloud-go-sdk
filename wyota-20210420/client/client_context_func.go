@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("wyota"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -65,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddTerminalResponse
-func (client *Client) AddTerminalWithOptions(request *AddTerminalRequest, runtime *dara.RuntimeOptions) (_result *AddTerminalResponse, _err error) {
+func (client *Client) AddTerminalWithContext(ctx context.Context, request *AddTerminalRequest, runtime *dara.RuntimeOptions) (_result *AddTerminalResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -112,29 +63,11 @@ func (client *Client) AddTerminalWithOptions(request *AddTerminalRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddTerminalResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 添加终端
-//
-// @param request - AddTerminalRequest
-//
-// @return AddTerminalResponse
-func (client *Client) AddTerminal(request *AddTerminalRequest) (_result *AddTerminalResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddTerminalResponse{}
-	_body, _err := client.AddTerminalWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -147,7 +80,7 @@ func (client *Client) AddTerminal(request *AddTerminalRequest) (_result *AddTerm
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddTerminalsResponse
-func (client *Client) AddTerminalsWithOptions(request *AddTerminalsRequest, runtime *dara.RuntimeOptions) (_result *AddTerminalsResponse, _err error) {
+func (client *Client) AddTerminalsWithContext(ctx context.Context, request *AddTerminalsRequest, runtime *dara.RuntimeOptions) (_result *AddTerminalsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -181,29 +114,11 @@ func (client *Client) AddTerminalsWithOptions(request *AddTerminalsRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddTerminalsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 添加终端
-//
-// @param request - AddTerminalsRequest
-//
-// @return AddTerminalsResponse
-func (client *Client) AddTerminals(request *AddTerminalsRequest) (_result *AddTerminalsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddTerminalsResponse{}
-	_body, _err := client.AddTerminalsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -216,7 +131,7 @@ func (client *Client) AddTerminals(request *AddTerminalsRequest) (_result *AddTe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindAccountLessLoginUserResponse
-func (client *Client) BindAccountLessLoginUserWithOptions(request *BindAccountLessLoginUserRequest, runtime *dara.RuntimeOptions) (_result *BindAccountLessLoginUserResponse, _err error) {
+func (client *Client) BindAccountLessLoginUserWithContext(ctx context.Context, request *BindAccountLessLoginUserRequest, runtime *dara.RuntimeOptions) (_result *BindAccountLessLoginUserResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -251,29 +166,11 @@ func (client *Client) BindAccountLessLoginUserWithOptions(request *BindAccountLe
 		BodyType:    dara.String("json"),
 	}
 	_result = &BindAccountLessLoginUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 绑定免账号登录用户
-//
-// @param request - BindAccountLessLoginUserRequest
-//
-// @return BindAccountLessLoginUserResponse
-func (client *Client) BindAccountLessLoginUser(request *BindAccountLessLoginUserRequest) (_result *BindAccountLessLoginUserResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BindAccountLessLoginUserResponse{}
-	_body, _err := client.BindAccountLessLoginUserWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -286,7 +183,7 @@ func (client *Client) BindAccountLessLoginUser(request *BindAccountLessLoginUser
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindPasswordFreeLoginUserResponse
-func (client *Client) BindPasswordFreeLoginUserWithOptions(request *BindPasswordFreeLoginUserRequest, runtime *dara.RuntimeOptions) (_result *BindPasswordFreeLoginUserResponse, _err error) {
+func (client *Client) BindPasswordFreeLoginUserWithContext(ctx context.Context, request *BindPasswordFreeLoginUserRequest, runtime *dara.RuntimeOptions) (_result *BindPasswordFreeLoginUserResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -325,29 +222,11 @@ func (client *Client) BindPasswordFreeLoginUserWithOptions(request *BindPassword
 		BodyType:    dara.String("json"),
 	}
 	_result = &BindPasswordFreeLoginUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 绑定免账号登录用户
-//
-// @param request - BindPasswordFreeLoginUserRequest
-//
-// @return BindPasswordFreeLoginUserResponse
-func (client *Client) BindPasswordFreeLoginUser(request *BindPasswordFreeLoginUserRequest) (_result *BindPasswordFreeLoginUserResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BindPasswordFreeLoginUserResponse{}
-	_body, _err := client.BindPasswordFreeLoginUserWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -360,7 +239,7 @@ func (client *Client) BindPasswordFreeLoginUser(request *BindPasswordFreeLoginUs
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDeviceSeatsResponse
-func (client *Client) DescribeDeviceSeatsWithOptions(request *DescribeDeviceSeatsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDeviceSeatsResponse, _err error) {
+func (client *Client) DescribeDeviceSeatsWithContext(ctx context.Context, request *DescribeDeviceSeatsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDeviceSeatsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -407,29 +286,11 @@ func (client *Client) DescribeDeviceSeatsWithOptions(request *DescribeDeviceSeat
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDeviceSeatsResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.DoRPCRequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询设备座位
-//
-// @param request - DescribeDeviceSeatsRequest
-//
-// @return DescribeDeviceSeatsResponse
-func (client *Client) DescribeDeviceSeats(request *DescribeDeviceSeatsRequest) (_result *DescribeDeviceSeatsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDeviceSeatsResponse{}
-	_body, _err := client.DescribeDeviceSeatsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -442,7 +303,7 @@ func (client *Client) DescribeDeviceSeats(request *DescribeDeviceSeatsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTerminalResponse
-func (client *Client) ListTerminalWithOptions(request *ListTerminalRequest, runtime *dara.RuntimeOptions) (_result *ListTerminalResponse, _err error) {
+func (client *Client) ListTerminalWithContext(ctx context.Context, request *ListTerminalRequest, runtime *dara.RuntimeOptions) (_result *ListTerminalResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -517,29 +378,11 @@ func (client *Client) ListTerminalWithOptions(request *ListTerminalRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTerminalResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询终端列表
-//
-// @param request - ListTerminalRequest
-//
-// @return ListTerminalResponse
-func (client *Client) ListTerminal(request *ListTerminalRequest) (_result *ListTerminalResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTerminalResponse{}
-	_body, _err := client.ListTerminalWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -552,7 +395,7 @@ func (client *Client) ListTerminal(request *ListTerminalRequest) (_result *ListT
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SendOpsMessageToTerminalsResponse
-func (client *Client) SendOpsMessageToTerminalsWithOptions(request *SendOpsMessageToTerminalsRequest, runtime *dara.RuntimeOptions) (_result *SendOpsMessageToTerminalsResponse, _err error) {
+func (client *Client) SendOpsMessageToTerminalsWithContext(ctx context.Context, request *SendOpsMessageToTerminalsRequest, runtime *dara.RuntimeOptions) (_result *SendOpsMessageToTerminalsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -600,29 +443,11 @@ func (client *Client) SendOpsMessageToTerminalsWithOptions(request *SendOpsMessa
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendOpsMessageToTerminalsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 向终端发送运维命令
-//
-// @param request - SendOpsMessageToTerminalsRequest
-//
-// @return SendOpsMessageToTerminalsResponse
-func (client *Client) SendOpsMessageToTerminals(request *SendOpsMessageToTerminalsRequest) (_result *SendOpsMessageToTerminalsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SendOpsMessageToTerminalsResponse{}
-	_body, _err := client.SendOpsMessageToTerminalsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -635,7 +460,7 @@ func (client *Client) SendOpsMessageToTerminals(request *SendOpsMessageToTermina
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnbindAccountLessLoginUserResponse
-func (client *Client) UnbindAccountLessLoginUserWithOptions(request *UnbindAccountLessLoginUserRequest, runtime *dara.RuntimeOptions) (_result *UnbindAccountLessLoginUserResponse, _err error) {
+func (client *Client) UnbindAccountLessLoginUserWithContext(ctx context.Context, request *UnbindAccountLessLoginUserRequest, runtime *dara.RuntimeOptions) (_result *UnbindAccountLessLoginUserResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -666,29 +491,11 @@ func (client *Client) UnbindAccountLessLoginUserWithOptions(request *UnbindAccou
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnbindAccountLessLoginUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 解绑免账号登录用户
-//
-// @param request - UnbindAccountLessLoginUserRequest
-//
-// @return UnbindAccountLessLoginUserResponse
-func (client *Client) UnbindAccountLessLoginUser(request *UnbindAccountLessLoginUserRequest) (_result *UnbindAccountLessLoginUserResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnbindAccountLessLoginUserResponse{}
-	_body, _err := client.UnbindAccountLessLoginUserWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -701,7 +508,7 @@ func (client *Client) UnbindAccountLessLoginUser(request *UnbindAccountLessLogin
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnbindDeviceSeatsResponse
-func (client *Client) UnbindDeviceSeatsWithOptions(tmpReq *UnbindDeviceSeatsRequest, runtime *dara.RuntimeOptions) (_result *UnbindDeviceSeatsResponse, _err error) {
+func (client *Client) UnbindDeviceSeatsWithContext(ctx context.Context, tmpReq *UnbindDeviceSeatsRequest, runtime *dara.RuntimeOptions) (_result *UnbindDeviceSeatsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -734,29 +541,11 @@ func (client *Client) UnbindDeviceSeatsWithOptions(tmpReq *UnbindDeviceSeatsRequ
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnbindDeviceSeatsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 解绑设备座位
-//
-// @param request - UnbindDeviceSeatsRequest
-//
-// @return UnbindDeviceSeatsResponse
-func (client *Client) UnbindDeviceSeats(request *UnbindDeviceSeatsRequest) (_result *UnbindDeviceSeatsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnbindDeviceSeatsResponse{}
-	_body, _err := client.UnbindDeviceSeatsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -769,7 +558,7 @@ func (client *Client) UnbindDeviceSeats(request *UnbindDeviceSeatsRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnbindPasswordFreeLoginUserResponse
-func (client *Client) UnbindPasswordFreeLoginUserWithOptions(request *UnbindPasswordFreeLoginUserRequest, runtime *dara.RuntimeOptions) (_result *UnbindPasswordFreeLoginUserResponse, _err error) {
+func (client *Client) UnbindPasswordFreeLoginUserWithContext(ctx context.Context, request *UnbindPasswordFreeLoginUserRequest, runtime *dara.RuntimeOptions) (_result *UnbindPasswordFreeLoginUserResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -804,28 +593,10 @@ func (client *Client) UnbindPasswordFreeLoginUserWithOptions(request *UnbindPass
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnbindPasswordFreeLoginUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 解绑免密登录用户
-//
-// @param request - UnbindPasswordFreeLoginUserRequest
-//
-// @return UnbindPasswordFreeLoginUserResponse
-func (client *Client) UnbindPasswordFreeLoginUser(request *UnbindPasswordFreeLoginUserRequest) (_result *UnbindPasswordFreeLoginUserResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnbindPasswordFreeLoginUserResponse{}
-	_body, _err := client.UnbindPasswordFreeLoginUserWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
