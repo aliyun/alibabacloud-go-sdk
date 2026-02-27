@@ -10636,6 +10636,80 @@ func (client *Client) QueryAuditTask(request *QueryAuditTaskRequest) (_result *Q
 
 // Summary:
 //
+// 查询视频审校结果
+//
+// Description:
+//
+// 根据任务ID查询视频审校结果，包含视频信息、分镜信息和审核结果
+//
+// @param request - QueryVideoAuditResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryVideoAuditResultResponse
+func (client *Client) QueryVideoAuditResultWithOptions(request *QueryVideoAuditResultRequest, runtime *dara.RuntimeOptions) (_result *QueryVideoAuditResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryVideoAuditResult"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryVideoAuditResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询视频审校结果
+//
+// Description:
+//
+// 根据任务ID查询视频审校结果，包含视频信息、分镜信息和审核结果
+//
+// @param request - QueryVideoAuditResultRequest
+//
+// @return QueryVideoAuditResultResponse
+func (client *Client) QueryVideoAuditResult(request *QueryVideoAuditResultRequest) (_result *QueryVideoAuditResultResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryVideoAuditResultResponse{}
+	_body, _err := client.QueryVideoAuditResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 内容缩写
 //
 // @param request - RunAbbreviationContentRequest
@@ -16298,6 +16372,92 @@ func (client *Client) SubmitTopicSelectionPerspectiveAnalysisTask(request *Submi
 	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitTopicSelectionPerspectiveAnalysisTaskResponse{}
 	_body, _err := client.SubmitTopicSelectionPerspectiveAnalysisTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交视频审校
+//
+// Description:
+//
+// 提交视频审校任务，支持传入fileKey或url，系统会对视频进行分镜检测、抽帧审核，返回任务ID
+//
+// @param request - SubmitVideoAuditRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitVideoAuditResponse
+func (client *Client) SubmitVideoAuditWithOptions(request *SubmitVideoAuditRequest, runtime *dara.RuntimeOptions) (_result *SubmitVideoAuditResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Ext) {
+		body["Ext"] = request.Ext
+	}
+
+	if !dara.IsNil(request.FileKey) {
+		body["FileKey"] = request.FileKey
+	}
+
+	if !dara.IsNil(request.SnapshotInterval) {
+		body["SnapshotInterval"] = request.SnapshotInterval
+	}
+
+	if !dara.IsNil(request.Url) {
+		body["Url"] = request.Url
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitVideoAudit"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitVideoAuditResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交视频审校
+//
+// Description:
+//
+// 提交视频审校任务，支持传入fileKey或url，系统会对视频进行分镜检测、抽帧审核，返回任务ID
+//
+// @param request - SubmitVideoAuditRequest
+//
+// @return SubmitVideoAuditResponse
+func (client *Client) SubmitVideoAudit(request *SubmitVideoAuditRequest) (_result *SubmitVideoAuditResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitVideoAuditResponse{}
+	_body, _err := client.SubmitVideoAuditWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
