@@ -63,6 +63,8 @@ type iRunRCInstancesRequest interface {
 	GetPeriod() *int32
 	SetPeriodUnit(v string) *RunRCInstancesRequest
 	GetPeriodUnit() *string
+	SetPrivateIpAddress(v string) *RunRCInstancesRequest
+	GetPrivateIpAddress() *string
 	SetPromotionCode(v string) *RunRCInstancesRequest
 	GetPromotionCode() *string
 	SetRegionId(v string) *RunRCInstancesRequest
@@ -75,6 +77,8 @@ type iRunRCInstancesRequest interface {
 	GetSecurityEnhancementStrategy() *string
 	SetSecurityGroupId(v string) *RunRCInstancesRequest
 	GetSecurityGroupId() *string
+	SetSecurityGroupIds(v []*string) *RunRCInstancesRequest
+	GetSecurityGroupIds() []*string
 	SetSpotStrategy(v string) *RunRCInstancesRequest
 	GetSpotStrategy() *string
 	SetSupportCase(v string) *RunRCInstancesRequest
@@ -236,8 +240,12 @@ type RunRCInstancesRequest struct {
 	// example:
 	//
 	// Year
-	PeriodUnit    *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// example:
+	//
+	// ``10.1.**.**``
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	PromotionCode    *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
 	//
 	// This parameter is required.
@@ -264,9 +272,10 @@ type RunRCInstancesRequest struct {
 	// example:
 	//
 	// sg-uf6av412xaxixuezol6w
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SpotStrategy    *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	SupportCase     *string `json:"SupportCase,omitempty" xml:"SupportCase,omitempty"`
+	SecurityGroupId  *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	SpotStrategy     *string   `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	SupportCase      *string   `json:"SupportCase,omitempty" xml:"SupportCase,omitempty"`
 	// The specification of the system disk.
 	SystemDisk       *RunRCInstancesRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
 	Tag              []*RunRCInstancesRequestTag      `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -408,6 +417,10 @@ func (s *RunRCInstancesRequest) GetPeriodUnit() *string {
 	return s.PeriodUnit
 }
 
+func (s *RunRCInstancesRequest) GetPrivateIpAddress() *string {
+	return s.PrivateIpAddress
+}
+
 func (s *RunRCInstancesRequest) GetPromotionCode() *string {
 	return s.PromotionCode
 }
@@ -430,6 +443,10 @@ func (s *RunRCInstancesRequest) GetSecurityEnhancementStrategy() *string {
 
 func (s *RunRCInstancesRequest) GetSecurityGroupId() *string {
 	return s.SecurityGroupId
+}
+
+func (s *RunRCInstancesRequest) GetSecurityGroupIds() []*string {
+	return s.SecurityGroupIds
 }
 
 func (s *RunRCInstancesRequest) GetSpotStrategy() *string {
@@ -599,6 +616,11 @@ func (s *RunRCInstancesRequest) SetPeriodUnit(v string) *RunRCInstancesRequest {
 	return s
 }
 
+func (s *RunRCInstancesRequest) SetPrivateIpAddress(v string) *RunRCInstancesRequest {
+	s.PrivateIpAddress = &v
+	return s
+}
+
 func (s *RunRCInstancesRequest) SetPromotionCode(v string) *RunRCInstancesRequest {
 	s.PromotionCode = &v
 	return s
@@ -626,6 +648,11 @@ func (s *RunRCInstancesRequest) SetSecurityEnhancementStrategy(v string) *RunRCI
 
 func (s *RunRCInstancesRequest) SetSecurityGroupId(v string) *RunRCInstancesRequest {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetSecurityGroupIds(v []*string) *RunRCInstancesRequest {
+	s.SecurityGroupIds = v
 	return s
 }
 

@@ -117,6 +117,7 @@ func (s *DescribeRCInstancesResponseBody) Validate() error {
 }
 
 type DescribeRCInstancesResponseBodyRCInstances struct {
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// The cluster name.
 	//
 	// example:
@@ -237,6 +238,10 @@ func (s DescribeRCInstancesResponseBodyRCInstances) String() string {
 
 func (s DescribeRCInstancesResponseBodyRCInstances) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeRCInstancesResponseBodyRCInstances) GetAutoRenew() *bool {
+	return s.AutoRenew
 }
 
 func (s *DescribeRCInstancesResponseBodyRCInstances) GetClusterName() *string {
@@ -369,6 +374,11 @@ func (s *DescribeRCInstancesResponseBodyRCInstances) GetVpcId() *string {
 
 func (s *DescribeRCInstancesResponseBodyRCInstances) GetZoneId() *string {
 	return s.ZoneId
+}
+
+func (s *DescribeRCInstancesResponseBodyRCInstances) SetAutoRenew(v bool) *DescribeRCInstancesResponseBodyRCInstances {
+	s.AutoRenew = &v
+	return s
 }
 
 func (s *DescribeRCInstancesResponseBodyRCInstances) SetClusterName(v string) *DescribeRCInstancesResponseBodyRCInstances {

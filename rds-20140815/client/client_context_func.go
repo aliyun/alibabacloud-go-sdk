@@ -31157,6 +31157,10 @@ func (client *Client) RunRCInstancesWithContext(ctx context.Context, tmpReq *Run
 		request.DataDiskShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataDisk, dara.String("DataDisk"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.SecurityGroupIds) {
+		request.SecurityGroupIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SecurityGroupIds, dara.String("SecurityGroupIds"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.SystemDisk) {
 		request.SystemDiskShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SystemDisk, dara.String("SystemDisk"), dara.String("json"))
 	}
@@ -31270,6 +31274,10 @@ func (client *Client) RunRCInstancesWithContext(ctx context.Context, tmpReq *Run
 		query["PeriodUnit"] = request.PeriodUnit
 	}
 
+	if !dara.IsNil(request.PrivateIpAddress) {
+		query["PrivateIpAddress"] = request.PrivateIpAddress
+	}
+
 	if !dara.IsNil(request.PromotionCode) {
 		query["PromotionCode"] = request.PromotionCode
 	}
@@ -31292,6 +31300,10 @@ func (client *Client) RunRCInstancesWithContext(ctx context.Context, tmpReq *Run
 
 	if !dara.IsNil(request.SecurityGroupId) {
 		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !dara.IsNil(request.SecurityGroupIdsShrink) {
+		query["SecurityGroupIds"] = request.SecurityGroupIdsShrink
 	}
 
 	if !dara.IsNil(request.SpotStrategy) {

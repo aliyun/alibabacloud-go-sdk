@@ -63,6 +63,8 @@ type iRunRCInstancesShrinkRequest interface {
 	GetPeriod() *int32
 	SetPeriodUnit(v string) *RunRCInstancesShrinkRequest
 	GetPeriodUnit() *string
+	SetPrivateIpAddress(v string) *RunRCInstancesShrinkRequest
+	GetPrivateIpAddress() *string
 	SetPromotionCode(v string) *RunRCInstancesShrinkRequest
 	GetPromotionCode() *string
 	SetRegionId(v string) *RunRCInstancesShrinkRequest
@@ -75,6 +77,8 @@ type iRunRCInstancesShrinkRequest interface {
 	GetSecurityEnhancementStrategy() *string
 	SetSecurityGroupId(v string) *RunRCInstancesShrinkRequest
 	GetSecurityGroupId() *string
+	SetSecurityGroupIdsShrink(v string) *RunRCInstancesShrinkRequest
+	GetSecurityGroupIdsShrink() *string
 	SetSpotStrategy(v string) *RunRCInstancesShrinkRequest
 	GetSpotStrategy() *string
 	SetSupportCase(v string) *RunRCInstancesShrinkRequest
@@ -236,8 +240,12 @@ type RunRCInstancesShrinkRequest struct {
 	// example:
 	//
 	// Year
-	PeriodUnit    *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// example:
+	//
+	// ``10.1.**.**``
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	PromotionCode    *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
 	//
 	// This parameter is required.
@@ -264,9 +272,10 @@ type RunRCInstancesShrinkRequest struct {
 	// example:
 	//
 	// sg-uf6av412xaxixuezol6w
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SpotStrategy    *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	SupportCase     *string `json:"SupportCase,omitempty" xml:"SupportCase,omitempty"`
+	SecurityGroupId        *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityGroupIdsShrink *string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty"`
+	SpotStrategy           *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	SupportCase            *string `json:"SupportCase,omitempty" xml:"SupportCase,omitempty"`
 	// The specification of the system disk.
 	SystemDiskShrink *string                           `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
 	Tag              []*RunRCInstancesShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -408,6 +417,10 @@ func (s *RunRCInstancesShrinkRequest) GetPeriodUnit() *string {
 	return s.PeriodUnit
 }
 
+func (s *RunRCInstancesShrinkRequest) GetPrivateIpAddress() *string {
+	return s.PrivateIpAddress
+}
+
 func (s *RunRCInstancesShrinkRequest) GetPromotionCode() *string {
 	return s.PromotionCode
 }
@@ -430,6 +443,10 @@ func (s *RunRCInstancesShrinkRequest) GetSecurityEnhancementStrategy() *string {
 
 func (s *RunRCInstancesShrinkRequest) GetSecurityGroupId() *string {
 	return s.SecurityGroupId
+}
+
+func (s *RunRCInstancesShrinkRequest) GetSecurityGroupIdsShrink() *string {
+	return s.SecurityGroupIdsShrink
 }
 
 func (s *RunRCInstancesShrinkRequest) GetSpotStrategy() *string {
@@ -599,6 +616,11 @@ func (s *RunRCInstancesShrinkRequest) SetPeriodUnit(v string) *RunRCInstancesShr
 	return s
 }
 
+func (s *RunRCInstancesShrinkRequest) SetPrivateIpAddress(v string) *RunRCInstancesShrinkRequest {
+	s.PrivateIpAddress = &v
+	return s
+}
+
 func (s *RunRCInstancesShrinkRequest) SetPromotionCode(v string) *RunRCInstancesShrinkRequest {
 	s.PromotionCode = &v
 	return s
@@ -626,6 +648,11 @@ func (s *RunRCInstancesShrinkRequest) SetSecurityEnhancementStrategy(v string) *
 
 func (s *RunRCInstancesShrinkRequest) SetSecurityGroupId(v string) *RunRCInstancesShrinkRequest {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetSecurityGroupIdsShrink(v string) *RunRCInstancesShrinkRequest {
+	s.SecurityGroupIdsShrink = &v
 	return s
 }
 
