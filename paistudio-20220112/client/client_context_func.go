@@ -1664,6 +1664,10 @@ func (client *Client) ListNodesWithContext(ctx context.Context, tmpReq *ListNode
 		query["CliqueID"] = request.CliqueID
 	}
 
+	if !dara.IsNil(request.DiskPL) {
+		query["DiskPL"] = request.DiskPL
+	}
+
 	if !dara.IsNil(request.FilterByQuotaId) {
 		query["FilterByQuotaId"] = request.FilterByQuotaId
 	}
@@ -1736,6 +1740,10 @@ func (client *Client) ListNodesWithContext(ctx context.Context, tmpReq *ListNode
 		query["PaymentType"] = request.PaymentType
 	}
 
+	if !dara.IsNil(request.PodNum) {
+		query["PodNum"] = request.PodNum
+	}
+
 	if !dara.IsNil(request.QuotaId) {
 		query["QuotaId"] = request.QuotaId
 	}
@@ -1748,12 +1756,20 @@ func (client *Client) ListNodesWithContext(ctx context.Context, tmpReq *ListNode
 		query["ResourceGroupIds"] = request.ResourceGroupIds
 	}
 
+	if !dara.IsNil(request.ResourceGroupName) {
+		query["ResourceGroupName"] = request.ResourceGroupName
+	}
+
 	if !dara.IsNil(request.SortBy) {
 		query["SortBy"] = request.SortBy
 	}
 
 	if !dara.IsNil(request.Verbose) {
 		query["Verbose"] = request.Verbose
+	}
+
+	if !dara.IsNil(request.WorkloadNum) {
+		query["WorkloadNum"] = request.WorkloadNum
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
@@ -1831,6 +1847,10 @@ func (client *Client) ListQuotaActiveUserUsagesWithContext(ctx context.Context, 
 		query["Username"] = request.Username
 	}
 
+	if !dara.IsNil(request.WorkloadCount) {
+		query["WorkloadCount"] = request.WorkloadCount
+	}
+
 	if !dara.IsNil(request.WorkspaceId) {
 		query["WorkspaceId"] = request.WorkspaceId
 	}
@@ -1894,6 +1914,10 @@ func (client *Client) ListQuotaWorkloadsWithContext(ctx context.Context, QuotaId
 		query["GmtPositionModifiedTimeRange"] = request.GmtPositionModifiedTimeRange
 	}
 
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	if !dara.IsNil(request.NodeName) {
 		query["NodeName"] = request.NodeName
 	}
@@ -1908,6 +1932,14 @@ func (client *Client) ListQuotaWorkloadsWithContext(ctx context.Context, QuotaId
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Position) {
+		query["Position"] = request.Position
+	}
+
+	if !dara.IsNil(request.Priority) {
+		query["Priority"] = request.Priority
 	}
 
 	if !dara.IsNil(request.ShowOwn) {
@@ -1926,6 +1958,10 @@ func (client *Client) ListQuotaWorkloadsWithContext(ctx context.Context, QuotaId
 		query["SubQuotaIds"] = request.SubQuotaIds
 	}
 
+	if !dara.IsNil(request.UseOversoldResource) {
+		query["UseOversoldResource"] = request.UseOversoldResource
+	}
+
 	if !dara.IsNil(request.UserIds) {
 		query["UserIds"] = request.UserIds
 	}
@@ -1940,6 +1976,10 @@ func (client *Client) ListQuotaWorkloadsWithContext(ctx context.Context, QuotaId
 
 	if !dara.IsNil(request.WorkloadIds) {
 		query["WorkloadIds"] = request.WorkloadIds
+	}
+
+	if !dara.IsNil(request.WorkloadNames) {
+		query["WorkloadNames"] = request.WorkloadNames
 	}
 
 	if !dara.IsNil(request.WorkloadStatuses) {
@@ -1999,6 +2039,10 @@ func (client *Client) ListQuotasWithContext(ctx context.Context, request *ListQu
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterType) {
 		query["ClusterType"] = request.ClusterType
+	}
+
+	if !dara.IsNil(request.GPUType) {
+		query["GPUType"] = request.GPUType
 	}
 
 	if !dara.IsNil(request.HasResource) {
@@ -2110,6 +2154,10 @@ func (client *Client) ListResourceGroupMachineGroupsWithContext(ctx context.Cont
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreatorID) {
 		query["CreatorID"] = request.CreatorID
+	}
+
+	if !dara.IsNil(request.DiskPL) {
+		query["DiskPL"] = request.DiskPL
 	}
 
 	if !dara.IsNil(request.EcsSpec) {

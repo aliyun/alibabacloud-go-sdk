@@ -11,6 +11,8 @@ type iListQuotasRequest interface {
 	GoString() string
 	SetClusterType(v string) *ListQuotasRequest
 	GetClusterType() *string
+	SetGPUType(v string) *ListQuotasRequest
+	GetGPUType() *string
 	SetHasResource(v string) *ListQuotasRequest
 	GetHasResource() *string
 	SetLabels(v string) *ListQuotasRequest
@@ -50,6 +52,7 @@ type ListQuotasRequest struct {
 	//
 	// RayCluster
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	GPUType     *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
 	HasResource *string `json:"HasResource,omitempty" xml:"HasResource,omitempty"`
 	// example:
 	//
@@ -114,6 +117,10 @@ func (s ListQuotasRequest) GoString() string {
 
 func (s *ListQuotasRequest) GetClusterType() *string {
 	return s.ClusterType
+}
+
+func (s *ListQuotasRequest) GetGPUType() *string {
+	return s.GPUType
 }
 
 func (s *ListQuotasRequest) GetHasResource() *string {
@@ -182,6 +189,11 @@ func (s *ListQuotasRequest) GetWorkspaceName() *string {
 
 func (s *ListQuotasRequest) SetClusterType(v string) *ListQuotasRequest {
 	s.ClusterType = &v
+	return s
+}
+
+func (s *ListQuotasRequest) SetGPUType(v string) *ListQuotasRequest {
+	s.GPUType = &v
 	return s
 }
 

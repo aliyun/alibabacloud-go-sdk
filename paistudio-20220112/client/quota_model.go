@@ -15,6 +15,8 @@ type iQuota interface {
 	GetCreatorId() *string
 	SetDescription(v string) *Quota
 	GetDescription() *string
+	SetGPUType(v string) *Quota
+	GetGPUType() *string
 	SetGmtCreatedTime(v string) *Quota
 	GetGmtCreatedTime() *string
 	SetGmtModifiedTime(v string) *Quota
@@ -63,6 +65,7 @@ type Quota struct {
 	AllocateStrategy  *string       `json:"AllocateStrategy,omitempty" xml:"AllocateStrategy,omitempty"`
 	CreatorId         *string       `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	Description       *string       `json:"Description,omitempty" xml:"Description,omitempty"`
+	GPUType           *string       `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
 	GmtCreatedTime    *string       `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
 	GmtModifiedTime   *string       `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	HyperZones        []*string     `json:"HyperZones,omitempty" xml:"HyperZones,omitempty" type:"Repeated"`
@@ -110,6 +113,10 @@ func (s *Quota) GetCreatorId() *string {
 
 func (s *Quota) GetDescription() *string {
 	return s.Description
+}
+
+func (s *Quota) GetGPUType() *string {
+	return s.GPUType
 }
 
 func (s *Quota) GetGmtCreatedTime() *string {
@@ -208,6 +215,11 @@ func (s *Quota) SetCreatorId(v string) *Quota {
 
 func (s *Quota) SetDescription(v string) *Quota {
 	s.Description = &v
+	return s
+}
+
+func (s *Quota) SetGPUType(v string) *Quota {
+	s.GPUType = &v
 	return s
 }
 

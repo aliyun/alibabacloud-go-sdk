@@ -11,6 +11,8 @@ type iListResourceGroupMachineGroupsRequest interface {
 	GoString() string
 	SetCreatorID(v string) *ListResourceGroupMachineGroupsRequest
 	GetCreatorID() *string
+	SetDiskPL(v string) *ListResourceGroupMachineGroupsRequest
+	GetDiskPL() *string
 	SetEcsSpec(v string) *ListResourceGroupMachineGroupsRequest
 	GetEcsSpec() *string
 	SetMachineGroupIDs(v string) *ListResourceGroupMachineGroupsRequest
@@ -42,6 +44,7 @@ type ListResourceGroupMachineGroupsRequest struct {
 	//
 	// 1612285282502326
 	CreatorID *string `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
+	DiskPL    *string `json:"DiskPL,omitempty" xml:"DiskPL,omitempty"`
 	// example:
 	//
 	// ecs.c6.large
@@ -101,6 +104,10 @@ func (s *ListResourceGroupMachineGroupsRequest) GetCreatorID() *string {
 	return s.CreatorID
 }
 
+func (s *ListResourceGroupMachineGroupsRequest) GetDiskPL() *string {
+	return s.DiskPL
+}
+
 func (s *ListResourceGroupMachineGroupsRequest) GetEcsSpec() *string {
 	return s.EcsSpec
 }
@@ -151,6 +158,11 @@ func (s *ListResourceGroupMachineGroupsRequest) GetStatus() *string {
 
 func (s *ListResourceGroupMachineGroupsRequest) SetCreatorID(v string) *ListResourceGroupMachineGroupsRequest {
 	s.CreatorID = &v
+	return s
+}
+
+func (s *ListResourceGroupMachineGroupsRequest) SetDiskPL(v string) *ListResourceGroupMachineGroupsRequest {
+	s.DiskPL = &v
 	return s
 }
 

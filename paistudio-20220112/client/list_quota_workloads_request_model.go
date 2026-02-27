@@ -17,6 +17,8 @@ type iListQuotaWorkloadsRequest interface {
 	GetGmtEnqueuedTimeRange() *TimeRangeFilter
 	SetGmtPositionModifiedTimeRange(v *TimeRangeFilter) *ListQuotaWorkloadsRequest
 	GetGmtPositionModifiedTimeRange() *TimeRangeFilter
+	SetInstanceId(v string) *ListQuotaWorkloadsRequest
+	GetInstanceId() *string
 	SetNodeName(v string) *ListQuotaWorkloadsRequest
 	GetNodeName() *string
 	SetOrder(v string) *ListQuotaWorkloadsRequest
@@ -25,6 +27,10 @@ type iListQuotaWorkloadsRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListQuotaWorkloadsRequest
 	GetPageSize() *int32
+	SetPosition(v int32) *ListQuotaWorkloadsRequest
+	GetPosition() *int32
+	SetPriority(v int32) *ListQuotaWorkloadsRequest
+	GetPriority() *int32
 	SetShowOwn(v bool) *ListQuotaWorkloadsRequest
 	GetShowOwn() *bool
 	SetSortBy(v string) *ListQuotaWorkloadsRequest
@@ -33,6 +39,8 @@ type iListQuotaWorkloadsRequest interface {
 	GetStatus() *string
 	SetSubQuotaIds(v string) *ListQuotaWorkloadsRequest
 	GetSubQuotaIds() *string
+	SetUseOversoldResource(v bool) *ListQuotaWorkloadsRequest
+	GetUseOversoldResource() *bool
 	SetUserIds(v string) *ListQuotaWorkloadsRequest
 	GetUserIds() *string
 	SetWithHistoricalData(v bool) *ListQuotaWorkloadsRequest
@@ -41,6 +49,8 @@ type iListQuotaWorkloadsRequest interface {
 	GetWorkloadCreatedTimeRange() *TimeRangeFilter
 	SetWorkloadIds(v string) *ListQuotaWorkloadsRequest
 	GetWorkloadIds() *string
+	SetWorkloadNames(v string) *ListQuotaWorkloadsRequest
+	GetWorkloadNames() *string
 	SetWorkloadStatuses(v string) *ListQuotaWorkloadsRequest
 	GetWorkloadStatuses() *string
 	SetWorkloadType(v string) *ListQuotaWorkloadsRequest
@@ -57,6 +67,7 @@ type ListQuotaWorkloadsRequest struct {
 	GmtDequeuedTimeRange         *TimeRangeFilter `json:"GmtDequeuedTimeRange,omitempty" xml:"GmtDequeuedTimeRange,omitempty"`
 	GmtEnqueuedTimeRange         *TimeRangeFilter `json:"GmtEnqueuedTimeRange,omitempty" xml:"GmtEnqueuedTimeRange,omitempty"`
 	GmtPositionModifiedTimeRange *TimeRangeFilter `json:"GmtPositionModifiedTimeRange,omitempty" xml:"GmtPositionModifiedTimeRange,omitempty"`
+	InstanceId                   *string          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// example:
 	//
 	// lrn48278127617
@@ -73,6 +84,8 @@ type ListQuotaWorkloadsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Position *int32 `json:"Position,omitempty" xml:"Position,omitempty"`
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// example:
 	//
 	// true
@@ -88,7 +101,8 @@ type ListQuotaWorkloadsRequest struct {
 	// example:
 	//
 	// quota12344666,quota64432233
-	SubQuotaIds *string `json:"SubQuotaIds,omitempty" xml:"SubQuotaIds,omitempty"`
+	SubQuotaIds         *string `json:"SubQuotaIds,omitempty" xml:"SubQuotaIds,omitempty"`
+	UseOversoldResource *bool   `json:"UseOversoldResource,omitempty" xml:"UseOversoldResource,omitempty"`
 	// example:
 	//
 	// 29043893812,23829093093
@@ -98,7 +112,8 @@ type ListQuotaWorkloadsRequest struct {
 	// example:
 	//
 	// dlc12344556
-	WorkloadIds *string `json:"WorkloadIds,omitempty" xml:"WorkloadIds,omitempty"`
+	WorkloadIds   *string `json:"WorkloadIds,omitempty" xml:"WorkloadIds,omitempty"`
+	WorkloadNames *string `json:"WorkloadNames,omitempty" xml:"WorkloadNames,omitempty"`
 	// example:
 	//
 	// Pending
@@ -137,6 +152,10 @@ func (s *ListQuotaWorkloadsRequest) GetGmtPositionModifiedTimeRange() *TimeRange
 	return s.GmtPositionModifiedTimeRange
 }
 
+func (s *ListQuotaWorkloadsRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
 func (s *ListQuotaWorkloadsRequest) GetNodeName() *string {
 	return s.NodeName
 }
@@ -151,6 +170,14 @@ func (s *ListQuotaWorkloadsRequest) GetPageNumber() *int32 {
 
 func (s *ListQuotaWorkloadsRequest) GetPageSize() *int32 {
 	return s.PageSize
+}
+
+func (s *ListQuotaWorkloadsRequest) GetPosition() *int32 {
+	return s.Position
+}
+
+func (s *ListQuotaWorkloadsRequest) GetPriority() *int32 {
+	return s.Priority
 }
 
 func (s *ListQuotaWorkloadsRequest) GetShowOwn() *bool {
@@ -169,6 +196,10 @@ func (s *ListQuotaWorkloadsRequest) GetSubQuotaIds() *string {
 	return s.SubQuotaIds
 }
 
+func (s *ListQuotaWorkloadsRequest) GetUseOversoldResource() *bool {
+	return s.UseOversoldResource
+}
+
 func (s *ListQuotaWorkloadsRequest) GetUserIds() *string {
 	return s.UserIds
 }
@@ -183,6 +214,10 @@ func (s *ListQuotaWorkloadsRequest) GetWorkloadCreatedTimeRange() *TimeRangeFilt
 
 func (s *ListQuotaWorkloadsRequest) GetWorkloadIds() *string {
 	return s.WorkloadIds
+}
+
+func (s *ListQuotaWorkloadsRequest) GetWorkloadNames() *string {
+	return s.WorkloadNames
 }
 
 func (s *ListQuotaWorkloadsRequest) GetWorkloadStatuses() *string {
@@ -217,6 +252,11 @@ func (s *ListQuotaWorkloadsRequest) SetGmtPositionModifiedTimeRange(v *TimeRange
 	return s
 }
 
+func (s *ListQuotaWorkloadsRequest) SetInstanceId(v string) *ListQuotaWorkloadsRequest {
+	s.InstanceId = &v
+	return s
+}
+
 func (s *ListQuotaWorkloadsRequest) SetNodeName(v string) *ListQuotaWorkloadsRequest {
 	s.NodeName = &v
 	return s
@@ -234,6 +274,16 @@ func (s *ListQuotaWorkloadsRequest) SetPageNumber(v int32) *ListQuotaWorkloadsRe
 
 func (s *ListQuotaWorkloadsRequest) SetPageSize(v int32) *ListQuotaWorkloadsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListQuotaWorkloadsRequest) SetPosition(v int32) *ListQuotaWorkloadsRequest {
+	s.Position = &v
+	return s
+}
+
+func (s *ListQuotaWorkloadsRequest) SetPriority(v int32) *ListQuotaWorkloadsRequest {
+	s.Priority = &v
 	return s
 }
 
@@ -257,6 +307,11 @@ func (s *ListQuotaWorkloadsRequest) SetSubQuotaIds(v string) *ListQuotaWorkloads
 	return s
 }
 
+func (s *ListQuotaWorkloadsRequest) SetUseOversoldResource(v bool) *ListQuotaWorkloadsRequest {
+	s.UseOversoldResource = &v
+	return s
+}
+
 func (s *ListQuotaWorkloadsRequest) SetUserIds(v string) *ListQuotaWorkloadsRequest {
 	s.UserIds = &v
 	return s
@@ -274,6 +329,11 @@ func (s *ListQuotaWorkloadsRequest) SetWorkloadCreatedTimeRange(v *TimeRangeFilt
 
 func (s *ListQuotaWorkloadsRequest) SetWorkloadIds(v string) *ListQuotaWorkloadsRequest {
 	s.WorkloadIds = &v
+	return s
+}
+
+func (s *ListQuotaWorkloadsRequest) SetWorkloadNames(v string) *ListQuotaWorkloadsRequest {
+	s.WorkloadNames = &v
 	return s
 }
 

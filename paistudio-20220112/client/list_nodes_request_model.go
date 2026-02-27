@@ -15,6 +15,8 @@ type iListNodesRequest interface {
 	GetAvailabilityZone() *string
 	SetCliqueID(v string) *ListNodesRequest
 	GetCliqueID() *string
+	SetDiskPL(v string) *ListNodesRequest
+	GetDiskPL() *string
 	SetFilterByQuotaId(v string) *ListNodesRequest
 	GetFilterByQuotaId() *string
 	SetFilterByResourceGroupIds(v string) *ListNodesRequest
@@ -51,16 +53,22 @@ type iListNodesRequest interface {
 	GetPageSize() *int32
 	SetPaymentType(v string) *ListNodesRequest
 	GetPaymentType() *string
+	SetPodNum(v int32) *ListNodesRequest
+	GetPodNum() *int32
 	SetQuotaId(v string) *ListNodesRequest
 	GetQuotaId() *string
 	SetReasonCodes(v string) *ListNodesRequest
 	GetReasonCodes() *string
 	SetResourceGroupIds(v string) *ListNodesRequest
 	GetResourceGroupIds() *string
+	SetResourceGroupName(v string) *ListNodesRequest
+	GetResourceGroupName() *string
 	SetSortBy(v string) *ListNodesRequest
 	GetSortBy() *string
 	SetVerbose(v bool) *ListNodesRequest
 	GetVerbose() *bool
+	SetWorkloadNum(v int32) *ListNodesRequest
+	GetWorkloadNum() *int32
 	SetWorkspaceId(v string) *ListNodesRequest
 	GetWorkspaceId() *string
 }
@@ -72,6 +80,7 @@ type ListNodesRequest struct {
 	AcceleratorType  *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
 	AvailabilityZone *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
 	CliqueID         *string `json:"CliqueID,omitempty" xml:"CliqueID,omitempty"`
+	DiskPL           *string `json:"DiskPL,omitempty" xml:"DiskPL,omitempty"`
 	// example:
 	//
 	// quotamtl37ge7gkvdz
@@ -123,6 +132,7 @@ type ListNodesRequest struct {
 	// 10
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	PodNum      *int32  `json:"PodNum,omitempty" xml:"PodNum,omitempty"`
 	// example:
 	//
 	// quotamtl37ge7gkvdz
@@ -131,7 +141,8 @@ type ListNodesRequest struct {
 	// example:
 	//
 	// rg69rj0leslwdnbe
-	ResourceGroupIds *string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty"`
+	ResourceGroupIds  *string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty"`
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 	// example:
 	//
 	// GmtCreateTime
@@ -140,6 +151,7 @@ type ListNodesRequest struct {
 	//
 	// false
 	Verbose     *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	WorkloadNum *int32  `json:"WorkloadNum,omitempty" xml:"WorkloadNum,omitempty"`
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -161,6 +173,10 @@ func (s *ListNodesRequest) GetAvailabilityZone() *string {
 
 func (s *ListNodesRequest) GetCliqueID() *string {
 	return s.CliqueID
+}
+
+func (s *ListNodesRequest) GetDiskPL() *string {
+	return s.DiskPL
 }
 
 func (s *ListNodesRequest) GetFilterByQuotaId() *string {
@@ -235,6 +251,10 @@ func (s *ListNodesRequest) GetPaymentType() *string {
 	return s.PaymentType
 }
 
+func (s *ListNodesRequest) GetPodNum() *int32 {
+	return s.PodNum
+}
+
 func (s *ListNodesRequest) GetQuotaId() *string {
 	return s.QuotaId
 }
@@ -247,12 +267,20 @@ func (s *ListNodesRequest) GetResourceGroupIds() *string {
 	return s.ResourceGroupIds
 }
 
+func (s *ListNodesRequest) GetResourceGroupName() *string {
+	return s.ResourceGroupName
+}
+
 func (s *ListNodesRequest) GetSortBy() *string {
 	return s.SortBy
 }
 
 func (s *ListNodesRequest) GetVerbose() *bool {
 	return s.Verbose
+}
+
+func (s *ListNodesRequest) GetWorkloadNum() *int32 {
+	return s.WorkloadNum
 }
 
 func (s *ListNodesRequest) GetWorkspaceId() *string {
@@ -271,6 +299,11 @@ func (s *ListNodesRequest) SetAvailabilityZone(v string) *ListNodesRequest {
 
 func (s *ListNodesRequest) SetCliqueID(v string) *ListNodesRequest {
 	s.CliqueID = &v
+	return s
+}
+
+func (s *ListNodesRequest) SetDiskPL(v string) *ListNodesRequest {
+	s.DiskPL = &v
 	return s
 }
 
@@ -364,6 +397,11 @@ func (s *ListNodesRequest) SetPaymentType(v string) *ListNodesRequest {
 	return s
 }
 
+func (s *ListNodesRequest) SetPodNum(v int32) *ListNodesRequest {
+	s.PodNum = &v
+	return s
+}
+
 func (s *ListNodesRequest) SetQuotaId(v string) *ListNodesRequest {
 	s.QuotaId = &v
 	return s
@@ -379,6 +417,11 @@ func (s *ListNodesRequest) SetResourceGroupIds(v string) *ListNodesRequest {
 	return s
 }
 
+func (s *ListNodesRequest) SetResourceGroupName(v string) *ListNodesRequest {
+	s.ResourceGroupName = &v
+	return s
+}
+
 func (s *ListNodesRequest) SetSortBy(v string) *ListNodesRequest {
 	s.SortBy = &v
 	return s
@@ -386,6 +429,11 @@ func (s *ListNodesRequest) SetSortBy(v string) *ListNodesRequest {
 
 func (s *ListNodesRequest) SetVerbose(v bool) *ListNodesRequest {
 	s.Verbose = &v
+	return s
+}
+
+func (s *ListNodesRequest) SetWorkloadNum(v int32) *ListNodesRequest {
+	s.WorkloadNum = &v
 	return s
 }
 

@@ -15,6 +15,8 @@ type iListNodesShrinkRequest interface {
 	GetAvailabilityZone() *string
 	SetCliqueID(v string) *ListNodesShrinkRequest
 	GetCliqueID() *string
+	SetDiskPL(v string) *ListNodesShrinkRequest
+	GetDiskPL() *string
 	SetFilterByQuotaId(v string) *ListNodesShrinkRequest
 	GetFilterByQuotaId() *string
 	SetFilterByResourceGroupIds(v string) *ListNodesShrinkRequest
@@ -51,16 +53,22 @@ type iListNodesShrinkRequest interface {
 	GetPageSize() *int32
 	SetPaymentType(v string) *ListNodesShrinkRequest
 	GetPaymentType() *string
+	SetPodNum(v int32) *ListNodesShrinkRequest
+	GetPodNum() *int32
 	SetQuotaId(v string) *ListNodesShrinkRequest
 	GetQuotaId() *string
 	SetReasonCodes(v string) *ListNodesShrinkRequest
 	GetReasonCodes() *string
 	SetResourceGroupIds(v string) *ListNodesShrinkRequest
 	GetResourceGroupIds() *string
+	SetResourceGroupName(v string) *ListNodesShrinkRequest
+	GetResourceGroupName() *string
 	SetSortBy(v string) *ListNodesShrinkRequest
 	GetSortBy() *string
 	SetVerbose(v bool) *ListNodesShrinkRequest
 	GetVerbose() *bool
+	SetWorkloadNum(v int32) *ListNodesShrinkRequest
+	GetWorkloadNum() *int32
 	SetWorkspaceId(v string) *ListNodesShrinkRequest
 	GetWorkspaceId() *string
 }
@@ -72,6 +80,7 @@ type ListNodesShrinkRequest struct {
 	AcceleratorType  *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
 	AvailabilityZone *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
 	CliqueID         *string `json:"CliqueID,omitempty" xml:"CliqueID,omitempty"`
+	DiskPL           *string `json:"DiskPL,omitempty" xml:"DiskPL,omitempty"`
 	// example:
 	//
 	// quotamtl37ge7gkvdz
@@ -123,6 +132,7 @@ type ListNodesShrinkRequest struct {
 	// 10
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	PodNum      *int32  `json:"PodNum,omitempty" xml:"PodNum,omitempty"`
 	// example:
 	//
 	// quotamtl37ge7gkvdz
@@ -131,7 +141,8 @@ type ListNodesShrinkRequest struct {
 	// example:
 	//
 	// rg69rj0leslwdnbe
-	ResourceGroupIds *string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty"`
+	ResourceGroupIds  *string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty"`
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 	// example:
 	//
 	// GmtCreateTime
@@ -140,6 +151,7 @@ type ListNodesShrinkRequest struct {
 	//
 	// false
 	Verbose     *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	WorkloadNum *int32  `json:"WorkloadNum,omitempty" xml:"WorkloadNum,omitempty"`
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -161,6 +173,10 @@ func (s *ListNodesShrinkRequest) GetAvailabilityZone() *string {
 
 func (s *ListNodesShrinkRequest) GetCliqueID() *string {
 	return s.CliqueID
+}
+
+func (s *ListNodesShrinkRequest) GetDiskPL() *string {
+	return s.DiskPL
 }
 
 func (s *ListNodesShrinkRequest) GetFilterByQuotaId() *string {
@@ -235,6 +251,10 @@ func (s *ListNodesShrinkRequest) GetPaymentType() *string {
 	return s.PaymentType
 }
 
+func (s *ListNodesShrinkRequest) GetPodNum() *int32 {
+	return s.PodNum
+}
+
 func (s *ListNodesShrinkRequest) GetQuotaId() *string {
 	return s.QuotaId
 }
@@ -247,12 +267,20 @@ func (s *ListNodesShrinkRequest) GetResourceGroupIds() *string {
 	return s.ResourceGroupIds
 }
 
+func (s *ListNodesShrinkRequest) GetResourceGroupName() *string {
+	return s.ResourceGroupName
+}
+
 func (s *ListNodesShrinkRequest) GetSortBy() *string {
 	return s.SortBy
 }
 
 func (s *ListNodesShrinkRequest) GetVerbose() *bool {
 	return s.Verbose
+}
+
+func (s *ListNodesShrinkRequest) GetWorkloadNum() *int32 {
+	return s.WorkloadNum
 }
 
 func (s *ListNodesShrinkRequest) GetWorkspaceId() *string {
@@ -271,6 +299,11 @@ func (s *ListNodesShrinkRequest) SetAvailabilityZone(v string) *ListNodesShrinkR
 
 func (s *ListNodesShrinkRequest) SetCliqueID(v string) *ListNodesShrinkRequest {
 	s.CliqueID = &v
+	return s
+}
+
+func (s *ListNodesShrinkRequest) SetDiskPL(v string) *ListNodesShrinkRequest {
+	s.DiskPL = &v
 	return s
 }
 
@@ -364,6 +397,11 @@ func (s *ListNodesShrinkRequest) SetPaymentType(v string) *ListNodesShrinkReques
 	return s
 }
 
+func (s *ListNodesShrinkRequest) SetPodNum(v int32) *ListNodesShrinkRequest {
+	s.PodNum = &v
+	return s
+}
+
 func (s *ListNodesShrinkRequest) SetQuotaId(v string) *ListNodesShrinkRequest {
 	s.QuotaId = &v
 	return s
@@ -379,6 +417,11 @@ func (s *ListNodesShrinkRequest) SetResourceGroupIds(v string) *ListNodesShrinkR
 	return s
 }
 
+func (s *ListNodesShrinkRequest) SetResourceGroupName(v string) *ListNodesShrinkRequest {
+	s.ResourceGroupName = &v
+	return s
+}
+
 func (s *ListNodesShrinkRequest) SetSortBy(v string) *ListNodesShrinkRequest {
 	s.SortBy = &v
 	return s
@@ -386,6 +429,11 @@ func (s *ListNodesShrinkRequest) SetSortBy(v string) *ListNodesShrinkRequest {
 
 func (s *ListNodesShrinkRequest) SetVerbose(v bool) *ListNodesShrinkRequest {
 	s.Verbose = &v
+	return s
+}
+
+func (s *ListNodesShrinkRequest) SetWorkloadNum(v int32) *ListNodesShrinkRequest {
+	s.WorkloadNum = &v
 	return s
 }
 

@@ -23,6 +23,8 @@ type iListQuotaActiveUserUsagesRequest interface {
 	GetUserId() *string
 	SetUsername(v string) *ListQuotaActiveUserUsagesRequest
 	GetUsername() *string
+	SetWorkloadCount(v int32) *ListQuotaActiveUserUsagesRequest
+	GetWorkloadCount() *int32
 	SetWorkspaceId(v string) *ListQuotaActiveUserUsagesRequest
 	GetWorkspaceId() *string
 }
@@ -55,7 +57,8 @@ type ListQuotaActiveUserUsagesRequest struct {
 	// example:
 	//
 	// test
-	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	Username      *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	WorkloadCount *int32  `json:"WorkloadCount,omitempty" xml:"WorkloadCount,omitempty"`
 	// example:
 	//
 	// 12345
@@ -98,6 +101,10 @@ func (s *ListQuotaActiveUserUsagesRequest) GetUsername() *string {
 	return s.Username
 }
 
+func (s *ListQuotaActiveUserUsagesRequest) GetWorkloadCount() *int32 {
+	return s.WorkloadCount
+}
+
 func (s *ListQuotaActiveUserUsagesRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
@@ -134,6 +141,11 @@ func (s *ListQuotaActiveUserUsagesRequest) SetUserId(v string) *ListQuotaActiveU
 
 func (s *ListQuotaActiveUserUsagesRequest) SetUsername(v string) *ListQuotaActiveUserUsagesRequest {
 	s.Username = &v
+	return s
+}
+
+func (s *ListQuotaActiveUserUsagesRequest) SetWorkloadCount(v int32) *ListQuotaActiveUserUsagesRequest {
+	s.WorkloadCount = &v
 	return s
 }
 
