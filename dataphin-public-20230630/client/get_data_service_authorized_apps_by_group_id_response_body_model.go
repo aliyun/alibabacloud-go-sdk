@@ -122,12 +122,18 @@ func (s *GetDataServiceAuthorizedAppsByGroupIdResponseBody) Validate() error {
 }
 
 type GetDataServiceAuthorizedAppsByGroupIdResponseBodyAppInfoList struct {
+	// Deprecated
+	//
 	// AppKey
 	//
 	// example:
 	//
 	// 202212
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// example:
+	//
+	// app12345
+	AppKeyStr *string `json:"AppKeyStr,omitempty" xml:"AppKeyStr,omitempty"`
 	// AppId
 	//
 	// example:
@@ -152,6 +158,10 @@ func (s *GetDataServiceAuthorizedAppsByGroupIdResponseBodyAppInfoList) GetAppKey
 	return s.AppKey
 }
 
+func (s *GetDataServiceAuthorizedAppsByGroupIdResponseBodyAppInfoList) GetAppKeyStr() *string {
+	return s.AppKeyStr
+}
+
 func (s *GetDataServiceAuthorizedAppsByGroupIdResponseBodyAppInfoList) GetId() *int32 {
 	return s.Id
 }
@@ -162,6 +172,11 @@ func (s *GetDataServiceAuthorizedAppsByGroupIdResponseBodyAppInfoList) GetName()
 
 func (s *GetDataServiceAuthorizedAppsByGroupIdResponseBodyAppInfoList) SetAppKey(v int64) *GetDataServiceAuthorizedAppsByGroupIdResponseBodyAppInfoList {
 	s.AppKey = &v
+	return s
+}
+
+func (s *GetDataServiceAuthorizedAppsByGroupIdResponseBodyAppInfoList) SetAppKeyStr(v string) *GetDataServiceAuthorizedAppsByGroupIdResponseBodyAppInfoList {
+	s.AppKeyStr = &v
 	return s
 }
 

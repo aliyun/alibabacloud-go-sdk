@@ -18,8 +18,6 @@ type iGetDataServiceAuthorizedAppsByGroupIdRequest interface {
 }
 
 type GetDataServiceAuthorizedAppsByGroupIdRequest struct {
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 202102

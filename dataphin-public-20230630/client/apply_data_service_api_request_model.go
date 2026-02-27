@@ -87,12 +87,17 @@ type ApplyDataServiceApiRequestApplyCommand struct {
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// AppId
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1203
-	AppId        *int32                                                `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId     *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ApplyDev  *bool  `json:"ApplyDev,omitempty" xml:"ApplyDev,omitempty"`
+	ApplyProd *bool  `json:"ApplyProd,omitempty" xml:"ApplyProd,omitempty"`
+	// example:
+	//
+	// APP
+	ApplyType    *string                                               `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
+	AuthTypes    []*string                                             `json:"AuthTypes,omitempty" xml:"AuthTypes,omitempty" type:"Repeated"`
 	DevFieldList []*ApplyDataServiceApiRequestApplyCommandDevFieldList `json:"DevFieldList,omitempty" xml:"DevFieldList,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
@@ -125,6 +130,22 @@ func (s *ApplyDataServiceApiRequestApplyCommand) GetAppId() *int32 {
 	return s.AppId
 }
 
+func (s *ApplyDataServiceApiRequestApplyCommand) GetApplyDev() *bool {
+	return s.ApplyDev
+}
+
+func (s *ApplyDataServiceApiRequestApplyCommand) GetApplyProd() *bool {
+	return s.ApplyProd
+}
+
+func (s *ApplyDataServiceApiRequestApplyCommand) GetApplyType() *string {
+	return s.ApplyType
+}
+
+func (s *ApplyDataServiceApiRequestApplyCommand) GetAuthTypes() []*string {
+	return s.AuthTypes
+}
+
 func (s *ApplyDataServiceApiRequestApplyCommand) GetDevFieldList() []*ApplyDataServiceApiRequestApplyCommandDevFieldList {
 	return s.DevFieldList
 }
@@ -148,6 +169,26 @@ func (s *ApplyDataServiceApiRequestApplyCommand) SetApiId(v int64) *ApplyDataSer
 
 func (s *ApplyDataServiceApiRequestApplyCommand) SetAppId(v int32) *ApplyDataServiceApiRequestApplyCommand {
 	s.AppId = &v
+	return s
+}
+
+func (s *ApplyDataServiceApiRequestApplyCommand) SetApplyDev(v bool) *ApplyDataServiceApiRequestApplyCommand {
+	s.ApplyDev = &v
+	return s
+}
+
+func (s *ApplyDataServiceApiRequestApplyCommand) SetApplyProd(v bool) *ApplyDataServiceApiRequestApplyCommand {
+	s.ApplyProd = &v
+	return s
+}
+
+func (s *ApplyDataServiceApiRequestApplyCommand) SetApplyType(v string) *ApplyDataServiceApiRequestApplyCommand {
+	s.ApplyType = &v
+	return s
+}
+
+func (s *ApplyDataServiceApiRequestApplyCommand) SetAuthTypes(v []*string) *ApplyDataServiceApiRequestApplyCommand {
+	s.AuthTypes = v
 	return s
 }
 
@@ -194,8 +235,6 @@ func (s *ApplyDataServiceApiRequestApplyCommand) Validate() error {
 }
 
 type ApplyDataServiceApiRequestApplyCommandDevFieldList struct {
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 22
@@ -224,8 +263,6 @@ func (s *ApplyDataServiceApiRequestApplyCommandDevFieldList) Validate() error {
 }
 
 type ApplyDataServiceApiRequestApplyCommandProdFieldList struct {
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 22

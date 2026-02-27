@@ -173,10 +173,16 @@ type ListDataServiceApiCallsResponseBodyPageResultCallLogList struct {
 	//
 	// test
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// 201211
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// example:
+	//
+	// abc12345
+	AppKeyStr *string `json:"AppKeyStr,omitempty" xml:"AppKeyStr,omitempty"`
 	// example:
 	//
 	// test
@@ -292,6 +298,10 @@ func (s *ListDataServiceApiCallsResponseBodyPageResultCallLogList) GetAppKey() *
 	return s.AppKey
 }
 
+func (s *ListDataServiceApiCallsResponseBodyPageResultCallLogList) GetAppKeyStr() *string {
+	return s.AppKeyStr
+}
+
 func (s *ListDataServiceApiCallsResponseBodyPageResultCallLogList) GetAppName() *string {
 	return s.AppName
 }
@@ -400,6 +410,11 @@ func (s *ListDataServiceApiCallsResponseBodyPageResultCallLogList) SetApiName(v 
 
 func (s *ListDataServiceApiCallsResponseBodyPageResultCallLogList) SetAppKey(v int64) *ListDataServiceApiCallsResponseBodyPageResultCallLogList {
 	s.AppKey = &v
+	return s
+}
+
+func (s *ListDataServiceApiCallsResponseBodyPageResultCallLogList) SetAppKeyStr(v string) *ListDataServiceApiCallsResponseBodyPageResultCallLogList {
+	s.AppKeyStr = &v
 	return s
 }
 

@@ -62,9 +62,9 @@ func (s *ListApiByAppRequest) Validate() error {
 }
 
 type ListApiByAppRequestPageQuery struct {
-	// appKey
+	// Deprecated
 	//
-	// This parameter is required.
+	// appKey
 	//
 	// example:
 	//
@@ -72,16 +72,16 @@ type ListApiByAppRequestPageQuery struct {
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 	// example:
 	//
+	// app12345
+	AppKeyStr *string `json:"AppKeyStr,omitempty" xml:"AppKeyStr,omitempty"`
+	// example:
+	//
 	// apiName
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 20
@@ -100,6 +100,10 @@ func (s *ListApiByAppRequestPageQuery) GetAppKey() *int64 {
 	return s.AppKey
 }
 
+func (s *ListApiByAppRequestPageQuery) GetAppKeyStr() *string {
+	return s.AppKeyStr
+}
+
 func (s *ListApiByAppRequestPageQuery) GetKeyword() *string {
 	return s.Keyword
 }
@@ -114,6 +118,11 @@ func (s *ListApiByAppRequestPageQuery) GetPageSize() *int32 {
 
 func (s *ListApiByAppRequestPageQuery) SetAppKey(v int64) *ListApiByAppRequestPageQuery {
 	s.AppKey = &v
+	return s
+}
+
+func (s *ListApiByAppRequestPageQuery) SetAppKeyStr(v string) *ListApiByAppRequestPageQuery {
+	s.AppKeyStr = &v
 	return s
 }
 

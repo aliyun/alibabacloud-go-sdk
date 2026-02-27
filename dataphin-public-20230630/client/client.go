@@ -58,6 +58,80 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 新增数据服务应用的普通成员。
+//
+// @param tmpReq - AddDataServiceAppMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddDataServiceAppMemberResponse
+func (client *Client) AddDataServiceAppMemberWithOptions(tmpReq *AddDataServiceAppMemberRequest, runtime *dara.RuntimeOptions) (_result *AddDataServiceAppMemberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AddDataServiceAppMemberShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AddCommand) {
+		request.AddCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AddCommand, dara.String("AddCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AddCommandShrink) {
+		body["AddCommand"] = request.AddCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddDataServiceAppMember"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddDataServiceAppMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增数据服务应用的普通成员。
+//
+// @param request - AddDataServiceAppMemberRequest
+//
+// @return AddDataServiceAppMemberResponse
+func (client *Client) AddDataServiceAppMember(request *AddDataServiceAppMemberRequest) (_result *AddDataServiceAppMemberResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddDataServiceAppMemberResponse{}
+	_body, _err := client.AddDataServiceAppMemberWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 添加数据服务项目用户并设置角色。
 //
 // @param tmpReq - AddDataServiceProjectMemberRequest
@@ -1743,6 +1817,146 @@ func (client *Client) CreateDataServiceApi(request *CreateDataServiceApiRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateDataServiceApiResponse{}
 	_body, _err := client.CreateDataServiceApiWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据服务应用。
+//
+// @param tmpReq - CreateDataServiceAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataServiceAppResponse
+func (client *Client) CreateDataServiceAppWithOptions(tmpReq *CreateDataServiceAppRequest, runtime *dara.RuntimeOptions) (_result *CreateDataServiceAppResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateDataServiceAppShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDataServiceApp"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDataServiceAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据服务应用。
+//
+// @param request - CreateDataServiceAppRequest
+//
+// @return CreateDataServiceAppResponse
+func (client *Client) CreateDataServiceApp(request *CreateDataServiceAppRequest) (_result *CreateDataServiceAppResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateDataServiceAppResponse{}
+	_body, _err := client.CreateDataServiceAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据服务应用分组。
+//
+// @param request - CreateDataServiceAppGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataServiceAppGroupResponse
+func (client *Client) CreateDataServiceAppGroupWithOptions(request *CreateDataServiceAppGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateDataServiceAppGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDataServiceAppGroup"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDataServiceAppGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据服务应用分组。
+//
+// @param request - CreateDataServiceAppGroupRequest
+//
+// @return CreateDataServiceAppGroupResponse
+func (client *Client) CreateDataServiceAppGroup(request *CreateDataServiceAppGroupRequest) (_result *CreateDataServiceAppGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateDataServiceAppGroupResponse{}
+	_body, _err := client.CreateDataServiceAppGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3885,6 +4099,138 @@ func (client *Client) DeleteDataDomain(request *DeleteDataDomainRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteDataDomainResponse{}
 	_body, _err := client.DeleteDataDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据服务应用。
+//
+// @param request - DeleteDataServiceAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataServiceAppResponse
+func (client *Client) DeleteDataServiceAppWithOptions(request *DeleteDataServiceAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataServiceAppResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDataServiceApp"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDataServiceAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据服务应用。
+//
+// @param request - DeleteDataServiceAppRequest
+//
+// @return DeleteDataServiceAppResponse
+func (client *Client) DeleteDataServiceApp(request *DeleteDataServiceAppRequest) (_result *DeleteDataServiceAppResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteDataServiceAppResponse{}
+	_body, _err := client.DeleteDataServiceAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据服务应用分组。
+//
+// @param request - DeleteDataServiceAppGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataServiceAppGroupResponse
+func (client *Client) DeleteDataServiceAppGroupWithOptions(request *DeleteDataServiceAppGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataServiceAppGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GroupId) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDataServiceAppGroup"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDataServiceAppGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据服务应用分组。
+//
+// @param request - DeleteDataServiceAppGroupRequest
+//
+// @return DeleteDataServiceAppGroupResponse
+func (client *Client) DeleteDataServiceAppGroup(request *DeleteDataServiceAppGroupRequest) (_result *DeleteDataServiceAppGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteDataServiceAppGroupResponse{}
+	_body, _err := client.DeleteDataServiceAppGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7514,6 +7860,72 @@ func (client *Client) GetDataServiceApiGroups(request *GetDataServiceApiGroupsRe
 
 // Summary:
 //
+// 查询数据服务应用详情。
+//
+// @param request - GetDataServiceAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataServiceAppResponse
+func (client *Client) GetDataServiceAppWithOptions(request *GetDataServiceAppRequest, runtime *dara.RuntimeOptions) (_result *GetDataServiceAppResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataServiceApp"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDataServiceAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数据服务应用详情。
+//
+// @param request - GetDataServiceAppRequest
+//
+// @return GetDataServiceAppResponse
+func (client *Client) GetDataServiceApp(request *GetDataServiceAppRequest) (_result *GetDataServiceAppResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetDataServiceAppResponse{}
+	_body, _err := client.GetDataServiceAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取应用有权限的用户列表。
 //
 // @param request - GetDataServiceAppAuthorizedUsersRequest
@@ -7641,6 +8053,72 @@ func (client *Client) GetDataServiceAppGroups(request *GetDataServiceAppGroupsRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetDataServiceAppGroupsResponse{}
 	_body, _err := client.GetDataServiceAppGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数据服务应用的成员列表。
+//
+// @param request - GetDataServiceAppMembersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataServiceAppMembersResponse
+func (client *Client) GetDataServiceAppMembersWithOptions(request *GetDataServiceAppMembersRequest, runtime *dara.RuntimeOptions) (_result *GetDataServiceAppMembersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataServiceAppMembers"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDataServiceAppMembersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数据服务应用的成员列表。
+//
+// @param request - GetDataServiceAppMembersRequest
+//
+// @return GetDataServiceAppMembersResponse
+func (client *Client) GetDataServiceAppMembers(request *GetDataServiceAppMembersRequest) (_result *GetDataServiceAppMembersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetDataServiceAppMembersResponse{}
+	_body, _err := client.GetDataServiceAppMembersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10626,6 +11104,80 @@ func (client *Client) GetResourceByVersion(request *GetResourceByVersionRequest)
 
 // Summary:
 //
+// 根据表Guid检索行级权限
+//
+// @param tmpReq - GetRowPermissionByTableGuidsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRowPermissionByTableGuidsResponse
+func (client *Client) GetRowPermissionByTableGuidsWithOptions(tmpReq *GetRowPermissionByTableGuidsRequest, runtime *dara.RuntimeOptions) (_result *GetRowPermissionByTableGuidsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetRowPermissionByTableGuidsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.GetRowPermissionByTableGuidsQuery) {
+		request.GetRowPermissionByTableGuidsQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GetRowPermissionByTableGuidsQuery, dara.String("GetRowPermissionByTableGuidsQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GetRowPermissionByTableGuidsQueryShrink) {
+		body["GetRowPermissionByTableGuidsQuery"] = request.GetRowPermissionByTableGuidsQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRowPermissionByTableGuids"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRowPermissionByTableGuidsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据表Guid检索行级权限
+//
+// @param request - GetRowPermissionByTableGuidsRequest
+//
+// @return GetRowPermissionByTableGuidsResponse
+func (client *Client) GetRowPermissionByTableGuids(request *GetRowPermissionByTableGuidsRequest) (_result *GetRowPermissionByTableGuidsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetRowPermissionByTableGuidsResponse{}
+	_body, _err := client.GetRowPermissionByTableGuidsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取数据分类详情。
 //
 // @param request - GetSecurityClassifyRequest
@@ -13493,6 +14045,80 @@ func (client *Client) ListDataServiceApiImpacts(request *ListDataServiceApiImpac
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListDataServiceApiImpactsResponse{}
 	_body, _err := client.ListDataServiceApiImpactsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询租户下所有的应用列表。
+//
+// @param tmpReq - ListDataServiceAppsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataServiceAppsResponse
+func (client *Client) ListDataServiceAppsWithOptions(tmpReq *ListDataServiceAppsRequest, runtime *dara.RuntimeOptions) (_result *ListDataServiceAppsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListDataServiceAppsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataServiceApps"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataServiceAppsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询租户下所有的应用列表。
+//
+// @param request - ListDataServiceAppsRequest
+//
+// @return ListDataServiceAppsResponse
+func (client *Client) ListDataServiceApps(request *ListDataServiceAppsRequest) (_result *ListDataServiceAppsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDataServiceAppsResponse{}
+	_body, _err := client.ListDataServiceAppsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16592,6 +17218,80 @@ func (client *Client) PublishStandard(request *PublishStandardRequest) (_result 
 
 // Summary:
 //
+// 删除数据服务应用的普通成员。
+//
+// @param tmpReq - RemoveDataServiceAppMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveDataServiceAppMemberResponse
+func (client *Client) RemoveDataServiceAppMemberWithOptions(tmpReq *RemoveDataServiceAppMemberRequest, runtime *dara.RuntimeOptions) (_result *RemoveDataServiceAppMemberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &RemoveDataServiceAppMemberShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RemoveCommand) {
+		request.RemoveCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RemoveCommand, dara.String("RemoveCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.RemoveCommandShrink) {
+		body["RemoveCommand"] = request.RemoveCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveDataServiceAppMember"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveDataServiceAppMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据服务应用的普通成员。
+//
+// @param request - RemoveDataServiceAppMemberRequest
+//
+// @return RemoveDataServiceAppMemberResponse
+func (client *Client) RemoveDataServiceAppMember(request *RemoveDataServiceAppMemberRequest) (_result *RemoveDataServiceAppMemberResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RemoveDataServiceAppMemberResponse{}
+	_body, _err := client.RemoveDataServiceAppMemberWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除项目成员。
 //
 // @param tmpReq - RemoveProjectMemberRequest
@@ -16961,6 +17661,80 @@ func (client *Client) ReplaceProjectWhiteLists(request *ReplaceProjectWhiteLists
 	runtime := &dara.RuntimeOptions{}
 	_result = &ReplaceProjectWhiteListsResponse{}
 	_body, _err := client.ReplaceProjectWhiteListsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 重置数据服务应用密钥。
+//
+// @param tmpReq - ResetDataServiceAppSecretRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetDataServiceAppSecretResponse
+func (client *Client) ResetDataServiceAppSecretWithOptions(tmpReq *ResetDataServiceAppSecretRequest, runtime *dara.RuntimeOptions) (_result *ResetDataServiceAppSecretResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ResetDataServiceAppSecretShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResetDataServiceAppSecret"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResetDataServiceAppSecretResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重置数据服务应用密钥。
+//
+// @param request - ResetDataServiceAppSecretRequest
+//
+// @return ResetDataServiceAppSecretResponse
+func (client *Client) ResetDataServiceAppSecret(request *ResetDataServiceAppSecretRequest) (_result *ResetDataServiceAppSecretResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ResetDataServiceAppSecretResponse{}
+	_body, _err := client.ResetDataServiceAppSecretWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18371,6 +19145,228 @@ func (client *Client) UpdateDataDomain(request *UpdateDataDomainRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateDataDomainResponse{}
 	_body, _err := client.UpdateDataDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据服务应用。
+//
+// @param tmpReq - UpdateDataServiceAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataServiceAppResponse
+func (client *Client) UpdateDataServiceAppWithOptions(tmpReq *UpdateDataServiceAppRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataServiceAppResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateDataServiceAppShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDataServiceApp"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDataServiceAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据服务应用。
+//
+// @param request - UpdateDataServiceAppRequest
+//
+// @return UpdateDataServiceAppResponse
+func (client *Client) UpdateDataServiceApp(request *UpdateDataServiceAppRequest) (_result *UpdateDataServiceAppResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateDataServiceAppResponse{}
+	_body, _err := client.UpdateDataServiceAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据服务应用分组。
+//
+// @param tmpReq - UpdateDataServiceAppGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataServiceAppGroupResponse
+func (client *Client) UpdateDataServiceAppGroupWithOptions(tmpReq *UpdateDataServiceAppGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataServiceAppGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateDataServiceAppGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDataServiceAppGroup"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDataServiceAppGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据服务应用分组。
+//
+// @param request - UpdateDataServiceAppGroupRequest
+//
+// @return UpdateDataServiceAppGroupResponse
+func (client *Client) UpdateDataServiceAppGroup(request *UpdateDataServiceAppGroupRequest) (_result *UpdateDataServiceAppGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateDataServiceAppGroupResponse{}
+	_body, _err := client.UpdateDataServiceAppGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据服务应用的普通成员。
+//
+// @param tmpReq - UpdateDataServiceAppMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataServiceAppMemberResponse
+func (client *Client) UpdateDataServiceAppMemberWithOptions(tmpReq *UpdateDataServiceAppMemberRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataServiceAppMemberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateDataServiceAppMemberShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDataServiceAppMember"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDataServiceAppMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据服务应用的普通成员。
+//
+// @param request - UpdateDataServiceAppMemberRequest
+//
+// @return UpdateDataServiceAppMemberResponse
+func (client *Client) UpdateDataServiceAppMember(request *UpdateDataServiceAppMemberRequest) (_result *UpdateDataServiceAppMemberResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateDataServiceAppMemberResponse{}
+	_body, _err := client.UpdateDataServiceAppMemberWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

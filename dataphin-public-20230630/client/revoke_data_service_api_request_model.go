@@ -85,18 +85,32 @@ type RevokeDataServiceApiRequestRevokeCommand struct {
 	//
 	// 1021
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1203
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// USE
+	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// example:
+	//
+	// DEV
+	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// example:
+	//
+	// APP
+	GranteeType *string `json:"GranteeType,omitempty" xml:"GranteeType,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// example:
+	//
+	// 12345
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s RevokeDataServiceApiRequestRevokeCommand) String() string {
@@ -115,8 +129,24 @@ func (s *RevokeDataServiceApiRequestRevokeCommand) GetAppId() *int32 {
 	return s.AppId
 }
 
+func (s *RevokeDataServiceApiRequestRevokeCommand) GetAuthType() *string {
+	return s.AuthType
+}
+
+func (s *RevokeDataServiceApiRequestRevokeCommand) GetEnv() *string {
+	return s.Env
+}
+
+func (s *RevokeDataServiceApiRequestRevokeCommand) GetGranteeType() *string {
+	return s.GranteeType
+}
+
 func (s *RevokeDataServiceApiRequestRevokeCommand) GetReason() *string {
 	return s.Reason
+}
+
+func (s *RevokeDataServiceApiRequestRevokeCommand) GetUserId() *string {
+	return s.UserId
 }
 
 func (s *RevokeDataServiceApiRequestRevokeCommand) SetApiId(v int64) *RevokeDataServiceApiRequestRevokeCommand {
@@ -129,8 +159,28 @@ func (s *RevokeDataServiceApiRequestRevokeCommand) SetAppId(v int32) *RevokeData
 	return s
 }
 
+func (s *RevokeDataServiceApiRequestRevokeCommand) SetAuthType(v string) *RevokeDataServiceApiRequestRevokeCommand {
+	s.AuthType = &v
+	return s
+}
+
+func (s *RevokeDataServiceApiRequestRevokeCommand) SetEnv(v string) *RevokeDataServiceApiRequestRevokeCommand {
+	s.Env = &v
+	return s
+}
+
+func (s *RevokeDataServiceApiRequestRevokeCommand) SetGranteeType(v string) *RevokeDataServiceApiRequestRevokeCommand {
+	s.GranteeType = &v
+	return s
+}
+
 func (s *RevokeDataServiceApiRequestRevokeCommand) SetReason(v string) *RevokeDataServiceApiRequestRevokeCommand {
 	s.Reason = &v
+	return s
+}
+
+func (s *RevokeDataServiceApiRequestRevokeCommand) SetUserId(v string) *RevokeDataServiceApiRequestRevokeCommand {
+	s.UserId = &v
 	return s
 }
 

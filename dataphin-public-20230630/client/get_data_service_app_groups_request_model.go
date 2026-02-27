@@ -22,7 +22,7 @@ type GetDataServiceAppGroupsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// This parameter is required.
+	// Deprecated
 	//
 	// example:
 	//

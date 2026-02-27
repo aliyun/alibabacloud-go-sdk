@@ -84,8 +84,6 @@ type CreateDataServiceApiRequestCreateCommand struct {
 	ApiType *int32 `json:"ApiType,omitempty" xml:"ApiType,omitempty"`
 	// This parameter is required.
 	BizProtocol []*int32 `json:"BizProtocol,omitempty" xml:"BizProtocol,omitempty" type:"Repeated"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 600
@@ -98,7 +96,8 @@ type CreateDataServiceApiRequestCreateCommand struct {
 	// example:
 	//
 	// test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	DmlConfig   *CreateDataServiceApiRequestCreateCommandDmlConfig `json:"DmlConfig,omitempty" xml:"DmlConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// 30
@@ -120,7 +119,9 @@ type CreateDataServiceApiRequestCreateCommand struct {
 	// example:
 	//
 	// 1
-	RequestType *int32 `json:"RequestType,omitempty" xml:"RequestType,omitempty"`
+	RequestType      *int32   `json:"RequestType,omitempty" xml:"RequestType,omitempty"`
+	ReturnSqlSwitch  *bool    `json:"ReturnSqlSwitch,omitempty" xml:"ReturnSqlSwitch,omitempty"`
+	RowPermissionIds []*int64 `json:"RowPermissionIds,omitempty" xml:"RowPermissionIds,omitempty" type:"Repeated"`
 	// This parameter is required.
 	ScriptDetails *CreateDataServiceApiRequestCreateCommandScriptDetails `json:"ScriptDetails,omitempty" xml:"ScriptDetails,omitempty" type:"Struct"`
 	// This parameter is required.
@@ -185,6 +186,10 @@ func (s *CreateDataServiceApiRequestCreateCommand) GetDescription() *string {
 	return s.Description
 }
 
+func (s *CreateDataServiceApiRequestCreateCommand) GetDmlConfig() *CreateDataServiceApiRequestCreateCommandDmlConfig {
+	return s.DmlConfig
+}
+
 func (s *CreateDataServiceApiRequestCreateCommand) GetExecutionTimeout() *int32 {
 	return s.ExecutionTimeout
 }
@@ -199,6 +204,14 @@ func (s *CreateDataServiceApiRequestCreateCommand) GetProjectId() *int64 {
 
 func (s *CreateDataServiceApiRequestCreateCommand) GetRequestType() *int32 {
 	return s.RequestType
+}
+
+func (s *CreateDataServiceApiRequestCreateCommand) GetReturnSqlSwitch() *bool {
+	return s.ReturnSqlSwitch
+}
+
+func (s *CreateDataServiceApiRequestCreateCommand) GetRowPermissionIds() []*int64 {
+	return s.RowPermissionIds
 }
 
 func (s *CreateDataServiceApiRequestCreateCommand) GetScriptDetails() *CreateDataServiceApiRequestCreateCommandScriptDetails {
@@ -262,6 +275,11 @@ func (s *CreateDataServiceApiRequestCreateCommand) SetDescription(v string) *Cre
 	return s
 }
 
+func (s *CreateDataServiceApiRequestCreateCommand) SetDmlConfig(v *CreateDataServiceApiRequestCreateCommandDmlConfig) *CreateDataServiceApiRequestCreateCommand {
+	s.DmlConfig = v
+	return s
+}
+
 func (s *CreateDataServiceApiRequestCreateCommand) SetExecutionTimeout(v int32) *CreateDataServiceApiRequestCreateCommand {
 	s.ExecutionTimeout = &v
 	return s
@@ -279,6 +297,16 @@ func (s *CreateDataServiceApiRequestCreateCommand) SetProjectId(v int64) *Create
 
 func (s *CreateDataServiceApiRequestCreateCommand) SetRequestType(v int32) *CreateDataServiceApiRequestCreateCommand {
 	s.RequestType = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommand) SetReturnSqlSwitch(v bool) *CreateDataServiceApiRequestCreateCommand {
+	s.ReturnSqlSwitch = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommand) SetRowPermissionIds(v []*int64) *CreateDataServiceApiRequestCreateCommand {
+	s.RowPermissionIds = v
 	return s
 }
 
@@ -303,12 +331,110 @@ func (s *CreateDataServiceApiRequestCreateCommand) SetVersion(v string) *CreateD
 }
 
 func (s *CreateDataServiceApiRequestCreateCommand) Validate() error {
+	if s.DmlConfig != nil {
+		if err := s.DmlConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.ScriptDetails != nil {
 		if err := s.ScriptDetails.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type CreateDataServiceApiRequestCreateCommandDmlConfig struct {
+	// example:
+	//
+	// 1000
+	BatchInputDataSize *int32 `json:"BatchInputDataSize,omitempty" xml:"BatchInputDataSize,omitempty"`
+	// example:
+	//
+	// 1
+	DataVolumeType *int32 `json:"DataVolumeType,omitempty" xml:"DataVolumeType,omitempty"`
+	// example:
+	//
+	// 1
+	ErrorHandlingType *int32 `json:"ErrorHandlingType,omitempty" xml:"ErrorHandlingType,omitempty"`
+	// example:
+	//
+	// 1000
+	MaxInputDataSize *int32 `json:"MaxInputDataSize,omitempty" xml:"MaxInputDataSize,omitempty"`
+	// example:
+	//
+	// 1
+	ParallelNum *int32 `json:"ParallelNum,omitempty" xml:"ParallelNum,omitempty"`
+	// example:
+	//
+	// 1
+	TransactionType *int32 `json:"TransactionType,omitempty" xml:"TransactionType,omitempty"`
+}
+
+func (s CreateDataServiceApiRequestCreateCommandDmlConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDataServiceApiRequestCreateCommandDmlConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandDmlConfig) GetBatchInputDataSize() *int32 {
+	return s.BatchInputDataSize
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandDmlConfig) GetDataVolumeType() *int32 {
+	return s.DataVolumeType
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandDmlConfig) GetErrorHandlingType() *int32 {
+	return s.ErrorHandlingType
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandDmlConfig) GetMaxInputDataSize() *int32 {
+	return s.MaxInputDataSize
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandDmlConfig) GetParallelNum() *int32 {
+	return s.ParallelNum
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandDmlConfig) GetTransactionType() *int32 {
+	return s.TransactionType
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandDmlConfig) SetBatchInputDataSize(v int32) *CreateDataServiceApiRequestCreateCommandDmlConfig {
+	s.BatchInputDataSize = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandDmlConfig) SetDataVolumeType(v int32) *CreateDataServiceApiRequestCreateCommandDmlConfig {
+	s.DataVolumeType = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandDmlConfig) SetErrorHandlingType(v int32) *CreateDataServiceApiRequestCreateCommandDmlConfig {
+	s.ErrorHandlingType = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandDmlConfig) SetMaxInputDataSize(v int32) *CreateDataServiceApiRequestCreateCommandDmlConfig {
+	s.MaxInputDataSize = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandDmlConfig) SetParallelNum(v int32) *CreateDataServiceApiRequestCreateCommandDmlConfig {
+	s.ParallelNum = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandDmlConfig) SetTransactionType(v int32) *CreateDataServiceApiRequestCreateCommandDmlConfig {
+	s.TransactionType = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandDmlConfig) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateDataServiceApiRequestCreateCommandScriptDetails struct {
@@ -331,10 +457,8 @@ type CreateDataServiceApiRequestCreateCommandScriptDetails struct {
 	// example:
 	//
 	// select a,b,c from table1 where d = ${d}
-	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
-	// This parameter is required.
-	ScriptRequestParameters []*CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters `json:"ScriptRequestParameters,omitempty" xml:"ScriptRequestParameters,omitempty" type:"Repeated"`
-	// This parameter is required.
+	Script                   *string                                                                          `json:"Script,omitempty" xml:"Script,omitempty"`
+	ScriptRequestParameters  []*CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters  `json:"ScriptRequestParameters,omitempty" xml:"ScriptRequestParameters,omitempty" type:"Repeated"`
 	ScriptResponseParameters []*CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters `json:"ScriptResponseParameters,omitempty" xml:"ScriptResponseParameters,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -453,6 +577,10 @@ func (s *CreateDataServiceApiRequestCreateCommandScriptDetails) Validate() error
 type CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters struct {
 	// example:
 	//
+	// 123
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// example:
+	//
 	// test
 	ExampleValue *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
 	// This parameter is required.
@@ -490,6 +618,10 @@ func (s CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParame
 	return s.String()
 }
 
+func (s *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters) GetDefaultValue() *string {
+	return s.DefaultValue
+}
+
 func (s *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters) GetExampleValue() *string {
 	return s.ExampleValue
 }
@@ -512,6 +644,11 @@ func (s *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParam
 
 func (s *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters) GetParameterValueType() *string {
 	return s.ParameterValueType
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters) SetDefaultValue(v string) *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters {
+	s.DefaultValue = &v
+	return s
 }
 
 func (s *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters) SetExampleValue(v string) *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters {
@@ -560,6 +697,10 @@ type CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParamete
 	// STRING
 	ParameterDataType    *string `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
+	// example:
+	//
+	// success
+	ParameterLocation *string `json:"ParameterLocation,omitempty" xml:"ParameterLocation,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -588,6 +729,10 @@ func (s *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponsePara
 	return s.ParameterDescription
 }
 
+func (s *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters) GetParameterLocation() *string {
+	return s.ParameterLocation
+}
+
 func (s *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters) GetParameterName() *string {
 	return s.ParameterName
 }
@@ -604,6 +749,11 @@ func (s *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponsePara
 
 func (s *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters) SetParameterDescription(v string) *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters {
 	s.ParameterDescription = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters) SetParameterLocation(v string) *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters {
+	s.ParameterLocation = &v
 	return s
 }
 

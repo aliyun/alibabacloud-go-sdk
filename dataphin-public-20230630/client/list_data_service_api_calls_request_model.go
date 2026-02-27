@@ -87,12 +87,18 @@ type ListDataServiceApiCallsRequestListQuery struct {
 	//
 	// test
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// Deprecated
+	//
 	// appKey
 	//
 	// example:
 	//
 	// 1021
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// example:
+	//
+	// app12345
+	AppKeyStr *string `json:"AppKeyStr,omitempty" xml:"AppKeyStr,omitempty"`
 	// example:
 	//
 	// 192.168.1.1
@@ -140,6 +146,10 @@ func (s *ListDataServiceApiCallsRequestListQuery) GetAppKey() *int64 {
 	return s.AppKey
 }
 
+func (s *ListDataServiceApiCallsRequestListQuery) GetAppKeyStr() *string {
+	return s.AppKeyStr
+}
+
 func (s *ListDataServiceApiCallsRequestListQuery) GetClientIp() *string {
 	return s.ClientIp
 }
@@ -176,6 +186,11 @@ func (s *ListDataServiceApiCallsRequestListQuery) SetApiName(v string) *ListData
 
 func (s *ListDataServiceApiCallsRequestListQuery) SetAppKey(v int64) *ListDataServiceApiCallsRequestListQuery {
 	s.AppKey = &v
+	return s
+}
+
+func (s *ListDataServiceApiCallsRequestListQuery) SetAppKeyStr(v string) *ListDataServiceApiCallsRequestListQuery {
+	s.AppKeyStr = &v
 	return s
 }
 

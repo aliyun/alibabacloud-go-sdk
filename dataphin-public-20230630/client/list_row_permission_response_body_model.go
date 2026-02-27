@@ -385,8 +385,12 @@ func (s *ListRowPermissionResponseBodyPageResultDataMappingColumns) Validate() e
 
 type ListRowPermissionResponseBodyPageResultDataRules struct {
 	Expressions []*ListRowPermissionResponseBodyPageResultDataRulesExpressions `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
-	IsDelete    *bool                                                          `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
-	RuleName    *string                                                        `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 123
+	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	IsDelete *bool   `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// example:
 	//
 	// SELECT_COLUMN
@@ -408,6 +412,10 @@ func (s ListRowPermissionResponseBodyPageResultDataRules) GoString() string {
 
 func (s *ListRowPermissionResponseBodyPageResultDataRules) GetExpressions() []*ListRowPermissionResponseBodyPageResultDataRulesExpressions {
 	return s.Expressions
+}
+
+func (s *ListRowPermissionResponseBodyPageResultDataRules) GetId() *int64 {
+	return s.Id
 }
 
 func (s *ListRowPermissionResponseBodyPageResultDataRules) GetIsDelete() *bool {
@@ -432,6 +440,11 @@ func (s *ListRowPermissionResponseBodyPageResultDataRules) GetUserMappingList() 
 
 func (s *ListRowPermissionResponseBodyPageResultDataRules) SetExpressions(v []*ListRowPermissionResponseBodyPageResultDataRulesExpressions) *ListRowPermissionResponseBodyPageResultDataRules {
 	s.Expressions = v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultDataRules) SetId(v int64) *ListRowPermissionResponseBodyPageResultDataRules {
+	s.Id = &v
 	return s
 }
 

@@ -284,6 +284,10 @@ type ListRowPermissionByUserIdResponseBodyPageResultDataRules struct {
 	Expressions []*ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
 	// example:
 	//
+	// 123
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
 	// 0
 	IsDelete *bool   `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
@@ -310,6 +314,10 @@ func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRules) GetExpression
 	return s.Expressions
 }
 
+func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRules) GetId() *int64 {
+	return s.Id
+}
+
 func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRules) GetIsDelete() *bool {
 	return s.IsDelete
 }
@@ -332,6 +340,11 @@ func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRules) GetUserMappin
 
 func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRules) SetExpressions(v []*ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions) *ListRowPermissionByUserIdResponseBodyPageResultDataRules {
 	s.Expressions = v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRules) SetId(v int64) *ListRowPermissionByUserIdResponseBodyPageResultDataRules {
+	s.Id = &v
 	return s
 }
 

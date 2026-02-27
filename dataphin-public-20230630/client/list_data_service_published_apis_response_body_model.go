@@ -476,12 +476,18 @@ type ListDataServicePublishedApisResponseBodyPageResultApiListAppInfoList struct
 	//
 	// 10211
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Deprecated
+	//
 	// appKey
 	//
 	// example:
 	//
 	// 1201
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// example:
+	//
+	// app12345
+	AppKeyStr *string `json:"AppKeyStr,omitempty" xml:"AppKeyStr,omitempty"`
 	// example:
 	//
 	// test
@@ -504,6 +510,10 @@ func (s *ListDataServicePublishedApisResponseBodyPageResultApiListAppInfoList) G
 	return s.AppKey
 }
 
+func (s *ListDataServicePublishedApisResponseBodyPageResultApiListAppInfoList) GetAppKeyStr() *string {
+	return s.AppKeyStr
+}
+
 func (s *ListDataServicePublishedApisResponseBodyPageResultApiListAppInfoList) GetAppName() *string {
 	return s.AppName
 }
@@ -515,6 +525,11 @@ func (s *ListDataServicePublishedApisResponseBodyPageResultApiListAppInfoList) S
 
 func (s *ListDataServicePublishedApisResponseBodyPageResultApiListAppInfoList) SetAppKey(v int64) *ListDataServicePublishedApisResponseBodyPageResultApiListAppInfoList {
 	s.AppKey = &v
+	return s
+}
+
+func (s *ListDataServicePublishedApisResponseBodyPageResultApiListAppInfoList) SetAppKeyStr(v string) *ListDataServicePublishedApisResponseBodyPageResultApiListAppInfoList {
+	s.AppKeyStr = &v
 	return s
 }
 

@@ -87,21 +87,24 @@ type GrantDataServiceApiRequestGrantCommand struct {
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// AppID
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1201
 	AppId        *int32                                                `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	ApplyDev     *bool                                                 `json:"ApplyDev,omitempty" xml:"ApplyDev,omitempty"`
 	ApplyProd    *bool                                                 `json:"ApplyProd,omitempty" xml:"ApplyProd,omitempty"`
+	AuthTypes    []*string                                             `json:"AuthTypes,omitempty" xml:"AuthTypes,omitempty" type:"Repeated"`
 	DevFieldList []*GrantDataServiceApiRequestGrantCommandDevFieldList `json:"DevFieldList,omitempty" xml:"DevFieldList,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2025-06-30
-	ExpireDate    *string                                                `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// example:
+	//
+	// APP
+	GranteeType   *string                                                `json:"GranteeType,omitempty" xml:"GranteeType,omitempty"`
 	ProdFieldList []*GrantDataServiceApiRequestGrantCommandProdFieldList `json:"ProdFieldList,omitempty" xml:"ProdFieldList,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
@@ -109,6 +112,10 @@ type GrantDataServiceApiRequestGrantCommand struct {
 	//
 	// test
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// example:
+	//
+	// 12345
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GrantDataServiceApiRequestGrantCommand) String() string {
@@ -135,6 +142,10 @@ func (s *GrantDataServiceApiRequestGrantCommand) GetApplyProd() *bool {
 	return s.ApplyProd
 }
 
+func (s *GrantDataServiceApiRequestGrantCommand) GetAuthTypes() []*string {
+	return s.AuthTypes
+}
+
 func (s *GrantDataServiceApiRequestGrantCommand) GetDevFieldList() []*GrantDataServiceApiRequestGrantCommandDevFieldList {
 	return s.DevFieldList
 }
@@ -143,12 +154,20 @@ func (s *GrantDataServiceApiRequestGrantCommand) GetExpireDate() *string {
 	return s.ExpireDate
 }
 
+func (s *GrantDataServiceApiRequestGrantCommand) GetGranteeType() *string {
+	return s.GranteeType
+}
+
 func (s *GrantDataServiceApiRequestGrantCommand) GetProdFieldList() []*GrantDataServiceApiRequestGrantCommandProdFieldList {
 	return s.ProdFieldList
 }
 
 func (s *GrantDataServiceApiRequestGrantCommand) GetReason() *string {
 	return s.Reason
+}
+
+func (s *GrantDataServiceApiRequestGrantCommand) GetUserId() *string {
+	return s.UserId
 }
 
 func (s *GrantDataServiceApiRequestGrantCommand) SetApiId(v int64) *GrantDataServiceApiRequestGrantCommand {
@@ -171,6 +190,11 @@ func (s *GrantDataServiceApiRequestGrantCommand) SetApplyProd(v bool) *GrantData
 	return s
 }
 
+func (s *GrantDataServiceApiRequestGrantCommand) SetAuthTypes(v []*string) *GrantDataServiceApiRequestGrantCommand {
+	s.AuthTypes = v
+	return s
+}
+
 func (s *GrantDataServiceApiRequestGrantCommand) SetDevFieldList(v []*GrantDataServiceApiRequestGrantCommandDevFieldList) *GrantDataServiceApiRequestGrantCommand {
 	s.DevFieldList = v
 	return s
@@ -181,6 +205,11 @@ func (s *GrantDataServiceApiRequestGrantCommand) SetExpireDate(v string) *GrantD
 	return s
 }
 
+func (s *GrantDataServiceApiRequestGrantCommand) SetGranteeType(v string) *GrantDataServiceApiRequestGrantCommand {
+	s.GranteeType = &v
+	return s
+}
+
 func (s *GrantDataServiceApiRequestGrantCommand) SetProdFieldList(v []*GrantDataServiceApiRequestGrantCommandProdFieldList) *GrantDataServiceApiRequestGrantCommand {
 	s.ProdFieldList = v
 	return s
@@ -188,6 +217,11 @@ func (s *GrantDataServiceApiRequestGrantCommand) SetProdFieldList(v []*GrantData
 
 func (s *GrantDataServiceApiRequestGrantCommand) SetReason(v string) *GrantDataServiceApiRequestGrantCommand {
 	s.Reason = &v
+	return s
+}
+
+func (s *GrantDataServiceApiRequestGrantCommand) SetUserId(v string) *GrantDataServiceApiRequestGrantCommand {
+	s.UserId = &v
 	return s
 }
 
@@ -214,7 +248,6 @@ func (s *GrantDataServiceApiRequestGrantCommand) Validate() error {
 }
 
 type GrantDataServiceApiRequestGrantCommandDevFieldList struct {
-	// This parameter is required.
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -240,7 +273,6 @@ func (s *GrantDataServiceApiRequestGrantCommandDevFieldList) Validate() error {
 }
 
 type GrantDataServiceApiRequestGrantCommandProdFieldList struct {
-	// This parameter is required.
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 

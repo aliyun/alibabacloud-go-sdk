@@ -179,7 +179,8 @@ type ListApiByAppResponseBodyListResultData struct {
 	// example:
 	//
 	// exampleApp
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppName   *string   `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AuthTypes []*string `json:"AuthTypes,omitempty" xml:"AuthTypes,omitempty" type:"Repeated"`
 	// example:
 	//
 	// exampleModule
@@ -344,6 +345,10 @@ func (s *ListApiByAppResponseBodyListResultData) GetApiTimeout() *int64 {
 
 func (s *ListApiByAppResponseBodyListResultData) GetAppName() *string {
 	return s.AppName
+}
+
+func (s *ListApiByAppResponseBodyListResultData) GetAuthTypes() []*string {
+	return s.AuthTypes
 }
 
 func (s *ListApiByAppResponseBodyListResultData) GetBizModuleEnName() *string {
@@ -514,6 +519,11 @@ func (s *ListApiByAppResponseBodyListResultData) SetApiTimeout(v int64) *ListApi
 
 func (s *ListApiByAppResponseBodyListResultData) SetAppName(v string) *ListApiByAppResponseBodyListResultData {
 	s.AppName = &v
+	return s
+}
+
+func (s *ListApiByAppResponseBodyListResultData) SetAuthTypes(v []*string) *ListApiByAppResponseBodyListResultData {
+	s.AuthTypes = v
 	return s
 }
 

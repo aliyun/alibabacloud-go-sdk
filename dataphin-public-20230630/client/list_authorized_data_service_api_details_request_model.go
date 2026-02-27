@@ -62,14 +62,18 @@ func (s *ListAuthorizedDataServiceApiDetailsRequest) Validate() error {
 }
 
 type ListAuthorizedDataServiceApiDetailsRequestListQuery struct {
-	// AppKey
+	// Deprecated
 	//
-	// This parameter is required.
+	// AppKey
 	//
 	// example:
 	//
 	// 200000000
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// example:
+	//
+	// app12345
+	AppKeyStr *string `json:"AppKeyStr,omitempty" xml:"AppKeyStr,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -96,6 +100,10 @@ func (s *ListAuthorizedDataServiceApiDetailsRequestListQuery) GetAppKey() *int64
 	return s.AppKey
 }
 
+func (s *ListAuthorizedDataServiceApiDetailsRequestListQuery) GetAppKeyStr() *string {
+	return s.AppKeyStr
+}
+
 func (s *ListAuthorizedDataServiceApiDetailsRequestListQuery) GetPage() *int32 {
 	return s.Page
 }
@@ -106,6 +114,11 @@ func (s *ListAuthorizedDataServiceApiDetailsRequestListQuery) GetPageSize() *int
 
 func (s *ListAuthorizedDataServiceApiDetailsRequestListQuery) SetAppKey(v int64) *ListAuthorizedDataServiceApiDetailsRequestListQuery {
 	s.AppKey = &v
+	return s
+}
+
+func (s *ListAuthorizedDataServiceApiDetailsRequestListQuery) SetAppKeyStr(v string) *ListAuthorizedDataServiceApiDetailsRequestListQuery {
+	s.AppKeyStr = &v
 	return s
 }
 
