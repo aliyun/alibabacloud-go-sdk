@@ -27,6 +27,8 @@ type iForwardInfoResponse interface {
 	GetName() *string
 	SetNatGatewayId(v string) *ForwardInfoResponse
 	GetNatGatewayId() *string
+	SetNlbGatewayId(v string) *ForwardInfoResponse
+	GetNlbGatewayId() *string
 	SetSSHPublicKey(v string) *ForwardInfoResponse
 	GetSSHPublicKey() *string
 }
@@ -62,6 +64,7 @@ type ForwardInfoResponse struct {
 	//
 	// ngw-bp1uewa15k4iy5770****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	NlbGatewayId *string `json:"NlbGatewayId,omitempty" xml:"NlbGatewayId,omitempty"`
 	// example:
 	//
 	// ssh-rsa AAAAB3****************************
@@ -112,6 +115,10 @@ func (s *ForwardInfoResponse) GetNatGatewayId() *string {
 	return s.NatGatewayId
 }
 
+func (s *ForwardInfoResponse) GetNlbGatewayId() *string {
+	return s.NlbGatewayId
+}
+
 func (s *ForwardInfoResponse) GetSSHPublicKey() *string {
 	return s.SSHPublicKey
 }
@@ -158,6 +165,11 @@ func (s *ForwardInfoResponse) SetName(v string) *ForwardInfoResponse {
 
 func (s *ForwardInfoResponse) SetNatGatewayId(v string) *ForwardInfoResponse {
 	s.NatGatewayId = &v
+	return s
+}
+
+func (s *ForwardInfoResponse) SetNlbGatewayId(v string) *ForwardInfoResponse {
+	s.NlbGatewayId = &v
 	return s
 }
 
