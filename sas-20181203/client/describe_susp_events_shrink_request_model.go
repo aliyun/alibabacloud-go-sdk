@@ -23,6 +23,8 @@ type iDescribeSuspEventsShrinkRequest interface {
 	GetCurrentPage() *string
 	SetDealed(v string) *DescribeSuspEventsShrinkRequest
 	GetDealed() *string
+	SetDetectSource(v string) *DescribeSuspEventsShrinkRequest
+	GetDetectSource() *string
 	SetEventNames(v string) *DescribeSuspEventsShrinkRequest
 	GetEventNames() *string
 	SetFrom(v string) *DescribeSuspEventsShrinkRequest
@@ -151,7 +153,8 @@ type DescribeSuspEventsShrinkRequest struct {
 	// example:
 	//
 	// N
-	Dealed *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	Dealed       *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	DetectSource *string `json:"DetectSource,omitempty" xml:"DetectSource,omitempty"`
 	// The subtype of the alert event. Separate multiple subtypes with commas (,).
 	//
 	// example:
@@ -460,6 +463,10 @@ func (s *DescribeSuspEventsShrinkRequest) GetDealed() *string {
 	return s.Dealed
 }
 
+func (s *DescribeSuspEventsShrinkRequest) GetDetectSource() *string {
+	return s.DetectSource
+}
+
 func (s *DescribeSuspEventsShrinkRequest) GetEventNames() *string {
 	return s.EventNames
 }
@@ -608,6 +615,11 @@ func (s *DescribeSuspEventsShrinkRequest) SetCurrentPage(v string) *DescribeSusp
 
 func (s *DescribeSuspEventsShrinkRequest) SetDealed(v string) *DescribeSuspEventsShrinkRequest {
 	s.Dealed = &v
+	return s
+}
+
+func (s *DescribeSuspEventsShrinkRequest) SetDetectSource(v string) *DescribeSuspEventsShrinkRequest {
+	s.DetectSource = &v
 	return s
 }
 

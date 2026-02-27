@@ -22,7 +22,9 @@ type ModifyCreateVulWhitelistResponseBody struct {
 	//
 	// 6B23A612-D997-5176-8C3B-D640DFD65772
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of the information about the whitelist.
+	// Vulnerability whitelist information.
+	//
+	// <notice> This data is not returned when adding or updating the vulnerability whitelist in batches, it is only returned when adding or updating a single vulnerability whitelist entry. </notice>
 	VulWhitelistList *ModifyCreateVulWhitelistResponseBodyVulWhitelistList `json:"VulWhitelistList,omitempty" xml:"VulWhitelistList,omitempty" type:"Struct"`
 }
 
@@ -62,6 +64,8 @@ func (s *ModifyCreateVulWhitelistResponseBody) Validate() error {
 }
 
 type ModifyCreateVulWhitelistResponseBodyVulWhitelistList struct {
+	// Vulnerability whitelist ID.
+	//
 	// example:
 	//
 	// 1002

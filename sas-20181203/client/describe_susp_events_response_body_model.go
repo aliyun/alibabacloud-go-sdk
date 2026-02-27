@@ -243,7 +243,8 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	// webshell
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	// The details of the alert event.
-	Details []*DescribeSuspEventsResponseBodySuspEventsDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	Details      []*DescribeSuspEventsResponseBodySuspEventsDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	DetectSource *string                                            `json:"DetectSource,omitempty" xml:"DetectSource,omitempty"`
 	// Indicates whether the alert event can be detected by cloud sandbox. Valid values:
 	//
 	// 	- **true**
@@ -592,6 +593,10 @@ func (s *DescribeSuspEventsResponseBodySuspEvents) GetDetails() []*DescribeSuspE
 	return s.Details
 }
 
+func (s *DescribeSuspEventsResponseBodySuspEvents) GetDetectSource() *string {
+	return s.DetectSource
+}
+
 func (s *DescribeSuspEventsResponseBodySuspEvents) GetDisplaySandboxResult() *bool {
 	return s.DisplaySandboxResult
 }
@@ -830,6 +835,11 @@ func (s *DescribeSuspEventsResponseBodySuspEvents) SetDesc(v string) *DescribeSu
 
 func (s *DescribeSuspEventsResponseBodySuspEvents) SetDetails(v []*DescribeSuspEventsResponseBodySuspEventsDetails) *DescribeSuspEventsResponseBodySuspEvents {
 	s.Details = v
+	return s
+}
+
+func (s *DescribeSuspEventsResponseBodySuspEvents) SetDetectSource(v string) *DescribeSuspEventsResponseBodySuspEvents {
+	s.DetectSource = &v
 	return s
 }
 

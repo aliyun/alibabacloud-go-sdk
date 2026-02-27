@@ -23,6 +23,8 @@ type iDescribeSuspEventsRequest interface {
 	GetCurrentPage() *string
 	SetDealed(v string) *DescribeSuspEventsRequest
 	GetDealed() *string
+	SetDetectSource(v string) *DescribeSuspEventsRequest
+	GetDetectSource() *string
 	SetEventNames(v string) *DescribeSuspEventsRequest
 	GetEventNames() *string
 	SetFrom(v string) *DescribeSuspEventsRequest
@@ -151,7 +153,8 @@ type DescribeSuspEventsRequest struct {
 	// example:
 	//
 	// N
-	Dealed *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	Dealed       *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	DetectSource *string `json:"DetectSource,omitempty" xml:"DetectSource,omitempty"`
 	// The subtype of the alert event. Separate multiple subtypes with commas (,).
 	//
 	// example:
@@ -460,6 +463,10 @@ func (s *DescribeSuspEventsRequest) GetDealed() *string {
 	return s.Dealed
 }
 
+func (s *DescribeSuspEventsRequest) GetDetectSource() *string {
+	return s.DetectSource
+}
+
 func (s *DescribeSuspEventsRequest) GetEventNames() *string {
 	return s.EventNames
 }
@@ -608,6 +615,11 @@ func (s *DescribeSuspEventsRequest) SetCurrentPage(v string) *DescribeSuspEvents
 
 func (s *DescribeSuspEventsRequest) SetDealed(v string) *DescribeSuspEventsRequest {
 	s.Dealed = &v
+	return s
+}
+
+func (s *DescribeSuspEventsRequest) SetDetectSource(v string) *DescribeSuspEventsRequest {
+	s.DetectSource = &v
 	return s
 }
 

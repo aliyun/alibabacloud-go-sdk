@@ -21912,6 +21912,10 @@ func (client *Client) DescribeSuspEventsWithContext(ctx context.Context, tmpReq 
 		query["Dealed"] = request.Dealed
 	}
 
+	if !dara.IsNil(request.DetectSource) {
+		query["DetectSource"] = request.DetectSource
+	}
+
 	if !dara.IsNil(request.EventNames) {
 		query["EventNames"] = request.EventNames
 	}

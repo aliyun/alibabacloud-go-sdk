@@ -30374,6 +30374,10 @@ func (client *Client) DescribeSuspEventsWithOptions(tmpReq *DescribeSuspEventsRe
 		query["Dealed"] = request.Dealed
 	}
 
+	if !dara.IsNil(request.DetectSource) {
+		query["DetectSource"] = request.DetectSource
+	}
+
 	if !dara.IsNil(request.EventNames) {
 		query["EventNames"] = request.EventNames
 	}
