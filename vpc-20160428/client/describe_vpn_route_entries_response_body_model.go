@@ -47,12 +47,8 @@ type DescribeVpnRouteEntriesResponseBody struct {
 	// example:
 	//
 	// 1
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The information about route entries of the VPN gateway in dual-tunnel mode.
-	//
-	// > This parameter is returned only if the VPN gateway supports IPsec-VPN connections in dual-tunnel mode.
-	VpnRouteCounts *DescribeVpnRouteEntriesResponseBodyVpnRouteCounts `json:"VpnRouteCounts,omitempty" xml:"VpnRouteCounts,omitempty" type:"Struct"`
-	// The route entry list.
+	TotalCount      *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	VpnRouteCounts  *DescribeVpnRouteEntriesResponseBodyVpnRouteCounts  `json:"VpnRouteCounts,omitempty" xml:"VpnRouteCounts,omitempty" type:"Struct"`
 	VpnRouteEntries *DescribeVpnRouteEntriesResponseBodyVpnRouteEntries `json:"VpnRouteEntries,omitempty" xml:"VpnRouteEntries,omitempty" type:"Struct"`
 }
 
@@ -167,32 +163,9 @@ func (s *DescribeVpnRouteEntriesResponseBodyVpnRouteCounts) Validate() error {
 }
 
 type DescribeVpnRouteEntriesResponseBodyVpnRouteCountsVpnRouteCount struct {
-	// The number of route entries.
-	//
-	// example:
-	//
-	// 3
-	RouteCount *int32 `json:"RouteCount,omitempty" xml:"RouteCount,omitempty"`
-	// The route type. Valid values:
-	//
-	// 	- **custom*	- (default): destination-based route.
-	//
-	// 	- **bgp*	- : BGP route entry.
-	//
-	// example:
-	//
-	// bgp
+	RouteCount     *int32  `json:"RouteCount,omitempty" xml:"RouteCount,omitempty"`
 	RouteEntryType *string `json:"RouteEntryType,omitempty" xml:"RouteEntryType,omitempty"`
-	// The source of the BGP route. Valid values:
-	//
-	// 	- **CLOUD**: advertised from a cloud service associated with the VPN gateway.
-	//
-	// 	- **VPN_BGP**: indicates that the current route is learned by using BGP of the VPN gateway. For example, the BGP is used to learn the route of the on-premises data center.
-	//
-	// example:
-	//
-	// VPN_BGP
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Source         *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s DescribeVpnRouteEntriesResponseBodyVpnRouteCountsVpnRouteCount) String() string {
@@ -269,91 +242,17 @@ func (s *DescribeVpnRouteEntriesResponseBodyVpnRouteEntries) Validate() error {
 }
 
 type DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry struct {
-	// The AS path of the route entry.
-	//
-	// example:
-	//
-	// 65501,65001,60011
-	AsPath *string `json:"AsPath,omitempty" xml:"AsPath,omitempty"`
-	// The community attributes of the route entry.
-	//
-	// example:
-	//
-	// 65001:1000,65501:2000
-	Community *string `json:"Community,omitempty" xml:"Community,omitempty"`
-	// The timestamp when the route entry was created.
-	//
-	// example:
-	//
-	// 1563874074000
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The next hop of the route entry.
-	//
-	// example:
-	//
-	// vco-bp1tui07ob10fmuro****
-	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The ID of the tunnel associated with the next hop.
-	//
-	//
-	// > This parameter is returned only if the VPN gateway supports the dual-tunnel mode.
-	//
-	// example:
-	//
-	// tun-36cfgpwjn58axj****
+	AsPath          *string `json:"AsPath,omitempty" xml:"AsPath,omitempty"`
+	Community       *string `json:"Community,omitempty" xml:"Community,omitempty"`
+	CreateTime      *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	NextHop         *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
 	NextHopTunnelId *string `json:"NextHopTunnelId,omitempty" xml:"NextHopTunnelId,omitempty"`
-	// The destination CIDR block of the route entry.
-	//
-	// example:
-	//
-	// 10.0.0.0/24
-	RouteDest *string `json:"RouteDest,omitempty" xml:"RouteDest,omitempty"`
-	// The type of the route entry. Valid values:
-	//
-	// 	- **Custom**: custom
-	//
-	// 	- **System**: system
-	//
-	// example:
-	//
-	// System
-	RouteEntryType *string `json:"RouteEntryType,omitempty" xml:"RouteEntryType,omitempty"`
-	// The source of the BGP route. Valid values:
-	//
-	// 	- **CLOUD**: advertised from a cloud service associated with the VPN gateway.
-	//
-	// 	- **VPN_BGP**: indicates that the current route is learned by using BGP of the VPN gateway. For example, the BGP is used to learn the route of the on-premises data center.
-	//
-	// example:
-	//
-	// 192.168.10.0/24
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The status of the route entry. Valid values:
-	//
-	// 	- **published**: advertised
-	//
-	// 	- **normal**: not advertised
-	//
-	// example:
-	//
-	// normal
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The ID of the VPN gateway.
-	//
-	// example:
-	//
-	// vpn-bp1cmw7jh1nfe43m9****
-	VpnInstanceId *string `json:"VpnInstanceId,omitempty" xml:"VpnInstanceId,omitempty"`
-	// The weight of the route entry. Valid values: **0*	- and **100**.
-	//
-	// 	- **0**: a low priority
-	//
-	// 	- **100**: a high priority
-	//
-	// example:
-	//
-	// 100
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	RouteDest       *string `json:"RouteDest,omitempty" xml:"RouteDest,omitempty"`
+	RouteEntryType  *string `json:"RouteEntryType,omitempty" xml:"RouteEntryType,omitempty"`
+	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	State           *string `json:"State,omitempty" xml:"State,omitempty"`
+	VpnInstanceId   *string `json:"VpnInstanceId,omitempty" xml:"VpnInstanceId,omitempty"`
+	Weight          *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry) String() string {

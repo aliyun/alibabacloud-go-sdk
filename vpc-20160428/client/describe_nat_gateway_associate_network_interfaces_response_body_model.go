@@ -26,7 +26,6 @@ type iDescribeNatGatewayAssociateNetworkInterfacesResponseBody interface {
 }
 
 type DescribeNatGatewayAssociateNetworkInterfacesResponseBody struct {
-	// The ENIs associated with the VPC NAT gateway.
 	AssociateNetworkInterfaces *DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfaces `json:"AssociateNetworkInterfaces,omitempty" xml:"AssociateNetworkInterfaces,omitempty" type:"Struct"`
 	// Number of associated ENIs.
 	//
@@ -185,44 +184,13 @@ func (s *DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetwor
 }
 
 type DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfacesAssociateNetworkInterface struct {
-	// The IPv4 addresses of the ENIs.
-	IPv4Sets *DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfacesAssociateNetworkInterfaceIPv4Sets `json:"IPv4Sets,omitempty" xml:"IPv4Sets,omitempty" type:"Struct"`
-	// The ID of the ENI.
-	//
-	// example:
-	//
-	// eni-gw8g131ef2dnbu3k****
-	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The ID of the service resource.
-	//
-	// example:
-	//
-	// ep-8psre8c8936596cd****
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The UID of the account to which the service resource belongs.
-	//
-	// example:
-	//
-	// 138859086900****
-	ResourceOwnerId *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the service resource.
-	//
-	// example:
-	//
-	// PrivateLink
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// VPC ID of the service resource
-	//
-	// example:
-	//
-	// vpc-bp1di7uewzmtvfuq8****
-	ResourceVpcId *string `json:"ResourceVpcId,omitempty" xml:"ResourceVpcId,omitempty"`
-	// The ID of the tunnel index.
-	//
-	// example:
-	//
-	// 41a5489ea2a0****
-	TunnelIndex *string `json:"TunnelIndex,omitempty" xml:"TunnelIndex,omitempty"`
+	IPv4Sets           *DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfacesAssociateNetworkInterfaceIPv4Sets `json:"IPv4Sets,omitempty" xml:"IPv4Sets,omitempty" type:"Struct"`
+	NetworkInterfaceId *string                                                                                                              `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	ResourceId         *string                                                                                                              `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceOwnerId    *string                                                                                                              `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceType       *string                                                                                                              `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceVpcId      *string                                                                                                              `json:"ResourceVpcId,omitempty" xml:"ResourceVpcId,omitempty"`
+	TunnelIndex        *string                                                                                                              `json:"TunnelIndex,omitempty" xml:"TunnelIndex,omitempty"`
 }
 
 func (s DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfacesAssociateNetworkInterface) String() string {
@@ -340,22 +308,8 @@ func (s *DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetwor
 }
 
 type DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfacesAssociateNetworkInterfaceIPv4SetsIPv4Set struct {
-	// The primary private IP address of the ENI.
-	//
-	// example:
-	//
-	// ``172.17.**.**``
 	IPv4Address *string `json:"IPv4Address,omitempty" xml:"IPv4Address,omitempty"`
-	// Indicates whether the IP address is the primary private IP address. Valid values:
-	//
-	// 	- true: Primary private IP address
-	//
-	// 	- false: Secondary private IP addresses
-	//
-	// example:
-	//
-	// true
-	Primary *bool `json:"Primary,omitempty" xml:"Primary,omitempty"`
+	Primary     *bool   `json:"Primary,omitempty" xml:"Primary,omitempty"`
 }
 
 func (s DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfacesAssociateNetworkInterfaceIPv4SetsIPv4Set) String() string {

@@ -99,9 +99,8 @@ type Describe95TrafficResponseBodyTraffic95Summary struct {
 	// example:
 	//
 	// 0.0
-	MinimumConsumeBandwidth *string `json:"MinimumConsumeBandwidth,omitempty" xml:"MinimumConsumeBandwidth,omitempty"`
-	// The average bandwidth every 5 minutes in the inbound and outbound directions.
-	Traffic95DetailList *Describe95TrafficResponseBodyTraffic95SummaryTraffic95DetailList `json:"Traffic95DetailList,omitempty" xml:"Traffic95DetailList,omitempty" type:"Struct"`
+	MinimumConsumeBandwidth *string                                                           `json:"MinimumConsumeBandwidth,omitempty" xml:"MinimumConsumeBandwidth,omitempty"`
+	Traffic95DetailList     *Describe95TrafficResponseBodyTraffic95SummaryTraffic95DetailList `json:"Traffic95DetailList,omitempty" xml:"Traffic95DetailList,omitempty" type:"Struct"`
 }
 
 func (s Describe95TrafficResponseBodyTraffic95Summary) String() string {
@@ -210,30 +209,10 @@ func (s *Describe95TrafficResponseBodyTraffic95SummaryTraffic95DetailList) Valid
 }
 
 type Describe95TrafficResponseBodyTraffic95SummaryTraffic95DetailListTraffic95Detail struct {
-	// The sampled bandwidth value, which is the larger bandwidth value in the inbound and outbound directions within a sampling interval. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 118.5090322113037
 	BillBandwidth *string `json:"BillBandwidth,omitempty" xml:"BillBandwidth,omitempty"`
-	// The inbound bandwidth. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 118.5090322113037
-	InBandwidth *string `json:"InBandwidth,omitempty" xml:"InBandwidth,omitempty"`
-	// The outbound bandwidth. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 96.41217480977376
-	OutBandwidth *string `json:"OutBandwidth,omitempty" xml:"OutBandwidth,omitempty"`
-	// The statistical time. The value is a string.
-	//
-	// example:
-	//
-	// 2024-01-01T00:00:00Z
-	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	InBandwidth   *string `json:"InBandwidth,omitempty" xml:"InBandwidth,omitempty"`
+	OutBandwidth  *string `json:"OutBandwidth,omitempty" xml:"OutBandwidth,omitempty"`
+	Time          *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s Describe95TrafficResponseBodyTraffic95SummaryTraffic95DetailListTraffic95Detail) String() string {

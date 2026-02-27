@@ -157,10 +157,7 @@ type ModifyVpnConnectionAttributeResponseBody struct {
 	// example:
 	//
 	// rg-acfmzs372yg****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tunnel configuration of the IPsec-VPN connection.
-	//
-	// **TunnelOptionsSpecification*	- parameters are returned only for dual-tunnel IPsec-VPN connections.
+	ResourceGroupId            *string                                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	TunnelOptionsSpecification *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecification `json:"TunnelOptionsSpecification,omitempty" xml:"TunnelOptionsSpecification,omitempty" type:"Struct"`
 	// The health check configuration.
 	//
@@ -662,86 +659,18 @@ func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecification) Val
 }
 
 type ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions struct {
-	// The ID of the customer gateway associated with the tunnel.
-	//
-	// example:
-	//
-	// cgw-p0wy363lucf1uyae8****
-	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	// Indicates whether the DPD feature is enabled for the tunnel. Valid values:
-	//
-	// 	- **false**
-	//
-	// 	- **true**
-	//
-	// example:
-	//
-	// true
-	EnableDpd *bool `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
-	// Indicates whether NAT traversal is enabled for the tunnel. Valid values:
-	//
-	// 	- **false**
-	//
-	// 	- **true**
-	//
-	// example:
-	//
-	// true
-	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
-	// The IP address on the Alibaba Cloud side.
-	//
-	// example:
-	//
-	// 47.21.XX.XX
-	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The CA certificate of the tunnel peer.
-	//
-	// This parameter is returned only if the VPN gateway is of the SM type.
-	//
-	// example:
-	//
-	// -----BEGIN CERTIFICATE----- MIIB7zCCAZW***	- -----END CERTIFICATE-----
-	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
-	// The tunnel role. Valid values:
-	//
-	// 	- **master**: The tunnel is an active tunnel.
-	//
-	// 	- **slave**: The tunnel is a standby tunnel.
-	//
-	// example:
-	//
-	// master
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The tunnel status. Valid values:
-	//
-	// 	- **active**
-	//
-	// 	- **updating**
-	//
-	// 	- **deleting**
-	//
-	// example:
-	//
-	// active
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The BGP configuration.
-	TunnelBgpConfig *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig `json:"TunnelBgpConfig,omitempty" xml:"TunnelBgpConfig,omitempty" type:"Struct"`
-	// The tunnel ID.
-	//
-	// example:
-	//
-	// tun-opsqc4d97wni27****
-	TunnelId *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
-	// The configuration of Phase 1 negotiations.
-	TunnelIkeConfig *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig `json:"TunnelIkeConfig,omitempty" xml:"TunnelIkeConfig,omitempty" type:"Struct"`
-	// The configuration of Phase 2 negotiations.
-	TunnelIpsecConfig *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig `json:"TunnelIpsecConfig,omitempty" xml:"TunnelIpsecConfig,omitempty" type:"Struct"`
-	// The zone of the tunnel.
-	//
-	// example:
-	//
-	// ap-southeast-5a
-	ZoneNo *string `json:"ZoneNo,omitempty" xml:"ZoneNo,omitempty"`
+	CustomerGatewayId   *string                                                                                           `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
+	EnableDpd           *bool                                                                                             `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
+	EnableNatTraversal  *bool                                                                                             `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
+	InternetIp          *string                                                                                           `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	RemoteCaCertificate *string                                                                                           `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
+	Role                *string                                                                                           `json:"Role,omitempty" xml:"Role,omitempty"`
+	State               *string                                                                                           `json:"State,omitempty" xml:"State,omitempty"`
+	TunnelBgpConfig     *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig   `json:"TunnelBgpConfig,omitempty" xml:"TunnelBgpConfig,omitempty" type:"Struct"`
+	TunnelId            *string                                                                                           `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
+	TunnelIkeConfig     *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig   `json:"TunnelIkeConfig,omitempty" xml:"TunnelIkeConfig,omitempty" type:"Struct"`
+	TunnelIpsecConfig   *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig `json:"TunnelIpsecConfig,omitempty" xml:"TunnelIpsecConfig,omitempty" type:"Struct"`
+	ZoneNo              *string                                                                                           `json:"ZoneNo,omitempty" xml:"ZoneNo,omitempty"`
 }
 
 func (s ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions) String() string {
@@ -880,35 +809,10 @@ func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunne
 }
 
 type ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig struct {
-	// The ASN of the tunnel on the Alibaba Cloud side.
-	//
-	// example:
-	//
-	// 65530
-	LocalAsn *int64 `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
-	// The BGP IP address of the tunnel on the Alibaba Cloud side.
-	//
-	// example:
-	//
-	// 169.254.10.1
+	LocalAsn   *int64  `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
 	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
-	// The ASN of the tunnel peer.
-	//
-	// example:
-	//
-	// 65531
-	PeerAsn *int64 `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
-	// The BGP IP address of the tunnel peer.
-	//
-	// example:
-	//
-	// 169.254.10.2
-	PeerBgpIp *string `json:"PeerBgpIp,omitempty" xml:"PeerBgpIp,omitempty"`
-	// The BGP CIDR block of the tunnel.
-	//
-	// example:
-	//
-	// 169.254.10.0/30
+	PeerAsn    *int64  `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
+	PeerBgpIp  *string `json:"PeerBgpIp,omitempty" xml:"PeerBgpIp,omitempty"`
 	TunnelCidr *string `json:"TunnelCidr,omitempty" xml:"TunnelCidr,omitempty"`
 }
 
@@ -970,64 +874,15 @@ func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunne
 }
 
 type ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig struct {
-	// The authentication algorithm in the IKE phase.
-	//
-	// example:
-	//
-	// sha1
-	IkeAuthAlg *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
-	// The encryption algorithm in the IKE phase.
-	//
-	// example:
-	//
-	// aes
-	IkeEncAlg *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
-	// The lifetime in the IKE phase. Unit: seconds.
-	//
-	// example:
-	//
-	// 86400
-	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
-	// The IKE negotiation mode.
-	//
-	// 	- **main:*	- This mode offers higher security during negotiations.
-	//
-	// 	- **aggressive**: This mode is faster and has a higher success rate.
-	//
-	// example:
-	//
-	// main
-	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
-	// The DH group in the IKE phase.
-	//
-	// example:
-	//
-	// group2
-	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
-	// The version of the IKE protocol.
-	//
-	// example:
-	//
-	// ikev1
-	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
-	// The identifier of the tunnel on the Alibaba Cloud side.
-	//
-	// example:
-	//
-	// 47.21.XX.XX
-	LocalId *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
-	// The pre-shared key.
-	//
-	// example:
-	//
-	// 123456****
-	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// The identifier of the tunnel peer.
-	//
-	// example:
-	//
-	// 47.42.XX.XX
-	RemoteId *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
+	IkeAuthAlg  *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
+	IkeEncAlg   *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
+	IkeLifetime *int64  `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
+	IkeMode     *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
+	IkePfs      *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
+	IkeVersion  *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
+	LocalId     *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
+	Psk         *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
+	RemoteId    *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
 }
 
 func (s ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) String() string {
@@ -1124,30 +979,10 @@ func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunne
 }
 
 type ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig struct {
-	// The authentication algorithm in the IPsec phase.
-	//
-	// example:
-	//
-	// sha1
-	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
-	// The encryption algorithm in the IPsec phase.
-	//
-	// example:
-	//
-	// aes
-	IpsecEncAlg *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
-	// The lifetime in the IPsec phase. Unit: seconds.
-	//
-	// example:
-	//
-	// 86400
-	IpsecLifetime *int64 `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
-	// The DH group in the IPsec phase.
-	//
-	// example:
-	//
-	// group2
-	IpsecPfs *string `json:"IpsecPfs,omitempty" xml:"IpsecPfs,omitempty"`
+	IpsecAuthAlg  *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
+	IpsecEncAlg   *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
+	IpsecLifetime *int64  `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
+	IpsecPfs      *string `json:"IpsecPfs,omitempty" xml:"IpsecPfs,omitempty"`
 }
 
 func (s ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig) String() string {

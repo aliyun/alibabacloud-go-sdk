@@ -22,7 +22,6 @@ type iDescribeIPv6TranslatorEntriesResponseBody interface {
 }
 
 type DescribeIPv6TranslatorEntriesResponseBody struct {
-	// The IPv6 mapping entries that are queried.
 	Ipv6TranslatorEntries *DescribeIPv6TranslatorEntriesResponseBodyIpv6TranslatorEntries `json:"Ipv6TranslatorEntries,omitempty" xml:"Ipv6TranslatorEntries,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,100 +146,21 @@ func (s *DescribeIPv6TranslatorEntriesResponseBodyIpv6TranslatorEntries) Validat
 }
 
 type DescribeIPv6TranslatorEntriesResponseBodyIpv6TranslatorEntriesIpv6TranslatorEntry struct {
-	// The ID of the associated ACL.
-	//
-	// example:
-	//
-	// ipv6transacl-bp1de2****
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// Indicates whether ACLs are enabled.
-	//
-	// example:
-	//
-	// on
-	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// The ACL type.
-	//
-	// 	- **white**: a whitelist. IPv6 addresses in the ACL are allowed to access backend services.
-	//
-	// 	- **black**: a blacklist. IPv6 addresses in the ACL are not allowed to access backend services.
-	//
-	// example:
-	//
-	// white
-	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// The IPv6 address allocated to the IPv6 Translation Service instance.
-	//
-	// example:
-	//
-	// 2400:3200:1600::XX
-	AllocateIpv6Addr *string `json:"AllocateIpv6Addr,omitempty" xml:"AllocateIpv6Addr,omitempty"`
-	// The port used by the IPv6 address allocated to the IPv6 Translation Service instance.
-	//
-	// example:
-	//
-	// 80
-	AllocateIpv6Port *int32 `json:"AllocateIpv6Port,omitempty" xml:"AllocateIpv6Port,omitempty"`
-	// The public IP address of the backend IPv4 server.
-	//
-	// example:
-	//
-	// 47.99.XX.XX
-	BackendIpv4Addr *string `json:"BackendIpv4Addr,omitempty" xml:"BackendIpv4Addr,omitempty"`
-	// The public IPv4 port used by the IPv4 server that needs to provide IPv6 access.
-	//
-	// example:
-	//
-	// 80
-	BackendIpv4Port *string `json:"BackendIpv4Port,omitempty" xml:"BackendIpv4Port,omitempty"`
-	// The bandwidth specified in the IPv6 mapping entry.
-	//
-	// example:
-	//
-	// 1
-	EntryBandwidth *string `json:"EntryBandwidth,omitempty" xml:"EntryBandwidth,omitempty"`
-	// The description of the IPv6 mapping entry.
-	//
-	// example:
-	//
-	// description
-	EntryDescription *string `json:"EntryDescription,omitempty" xml:"EntryDescription,omitempty"`
-	// The name of the IPv6 mapping entry.
-	//
-	// example:
-	//
-	// name
-	EntryName *string `json:"EntryName,omitempty" xml:"EntryName,omitempty"`
-	// The status of the IPv6 mapping entry.
-	//
-	// example:
-	//
-	// active
-	EntryStatus *string `json:"EntryStatus,omitempty" xml:"EntryStatus,omitempty"`
-	// The ID of the IPv6 mapping entry.
-	//
-	// example:
-	//
-	// ipv6transentry-bp1g8bhrde****
+	AclId                 *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclStatus             *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	AclType               *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	AllocateIpv6Addr      *string `json:"AllocateIpv6Addr,omitempty" xml:"AllocateIpv6Addr,omitempty"`
+	AllocateIpv6Port      *int32  `json:"AllocateIpv6Port,omitempty" xml:"AllocateIpv6Port,omitempty"`
+	BackendIpv4Addr       *string `json:"BackendIpv4Addr,omitempty" xml:"BackendIpv4Addr,omitempty"`
+	BackendIpv4Port       *string `json:"BackendIpv4Port,omitempty" xml:"BackendIpv4Port,omitempty"`
+	EntryBandwidth        *string `json:"EntryBandwidth,omitempty" xml:"EntryBandwidth,omitempty"`
+	EntryDescription      *string `json:"EntryDescription,omitempty" xml:"EntryDescription,omitempty"`
+	EntryName             *string `json:"EntryName,omitempty" xml:"EntryName,omitempty"`
+	EntryStatus           *string `json:"EntryStatus,omitempty" xml:"EntryStatus,omitempty"`
 	Ipv6TranslatorEntryId *string `json:"Ipv6TranslatorEntryId,omitempty" xml:"Ipv6TranslatorEntryId,omitempty"`
-	// The ID of the IPv6 Translation Service instance to which the IPv6 mapping entry belongs.
-	//
-	// example:
-	//
-	// ipv6trans-bp1858ys****
-	Ipv6TranslatorId *string `json:"Ipv6TranslatorId,omitempty" xml:"Ipv6TranslatorId,omitempty"`
-	// The region of the IPv6 Translation Service instance.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The protocol.
-	//
-	// example:
-	//
-	// tcp
-	TransProtocol *string `json:"TransProtocol,omitempty" xml:"TransProtocol,omitempty"`
+	Ipv6TranslatorId      *string `json:"Ipv6TranslatorId,omitempty" xml:"Ipv6TranslatorId,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TransProtocol         *string `json:"TransProtocol,omitempty" xml:"TransProtocol,omitempty"`
 }
 
 func (s DescribeIPv6TranslatorEntriesResponseBodyIpv6TranslatorEntriesIpv6TranslatorEntry) String() string {

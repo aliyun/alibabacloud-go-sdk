@@ -89,9 +89,8 @@ type DescribeCustomerGatewayResponseBody struct {
 	// example:
 	//
 	// rg-acfmzs372yg****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The list of tags added to the customer gateway.
-	Tags *DescribeCustomerGatewayResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	ResourceGroupId *string                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags            *DescribeCustomerGatewayResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeCustomerGatewayResponseBody) String() string {
@@ -236,17 +235,7 @@ func (s *DescribeCustomerGatewayResponseBodyTags) Validate() error {
 }
 
 type DescribeCustomerGatewayResponseBodyTagsTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// TagKey
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// TagValue
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

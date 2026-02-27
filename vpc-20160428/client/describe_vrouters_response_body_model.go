@@ -45,9 +45,8 @@ type DescribeVRoutersResponseBody struct {
 	// example:
 	//
 	// 1
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The details about the vRouters.
-	VRouters *DescribeVRoutersResponseBodyVRouters `json:"VRouters,omitempty" xml:"VRouters,omitempty" type:"Struct"`
+	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	VRouters   *DescribeVRoutersResponseBodyVRouters `json:"VRouters,omitempty" xml:"VRouters,omitempty" type:"Struct"`
 }
 
 func (s DescribeVRoutersResponseBody) String() string {
@@ -147,44 +146,13 @@ func (s *DescribeVRoutersResponseBodyVRouters) Validate() error {
 }
 
 type DescribeVRoutersResponseBodyVRoutersVRouter struct {
-	// The time when the vRouter was created.
-	//
-	// example:
-	//
-	// 2018-03-22T07:46:20Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the vRouter.
-	//
-	// example:
-	//
-	// abc
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The region to which the vRouter belongs.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the route tables.
+	CreationTime  *string                                                   `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description   *string                                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	RegionId      *string                                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RouteTableIds *DescribeVRoutersResponseBodyVRoutersVRouterRouteTableIds `json:"RouteTableIds,omitempty" xml:"RouteTableIds,omitempty" type:"Struct"`
-	// The ID of the vRouter.
-	//
-	// example:
-	//
-	// vrt-rj98khsezfqpjrxmv****
-	VRouterId *string `json:"VRouterId,omitempty" xml:"VRouterId,omitempty"`
-	// The name of the vRouter.
-	//
-	// example:
-	//
-	// doctest
-	VRouterName *string `json:"VRouterName,omitempty" xml:"VRouterName,omitempty"`
-	// The ID of the virtual private cloud (VPC) to which the vRouter belongs.
-	//
-	// example:
-	//
-	// vpc-rj905wotv6y030t1****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VRouterId     *string                                                   `json:"VRouterId,omitempty" xml:"VRouterId,omitempty"`
+	VRouterName   *string                                                   `json:"VRouterName,omitempty" xml:"VRouterName,omitempty"`
+	VpcId         *string                                                   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeVRoutersResponseBodyVRoutersVRouter) String() string {

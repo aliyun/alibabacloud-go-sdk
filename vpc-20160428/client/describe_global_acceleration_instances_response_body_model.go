@@ -22,7 +22,6 @@ type iDescribeGlobalAccelerationInstancesResponseBody interface {
 }
 
 type DescribeGlobalAccelerationInstancesResponseBody struct {
-	// The details of the GA instances.
 	GlobalAccelerationInstances *DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstances `json:"GlobalAccelerationInstances,omitempty" xml:"GlobalAccelerationInstances,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,106 +146,22 @@ func (s *DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstan
 }
 
 type DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstancesGlobalAccelerationInstance struct {
-	// The acceleration area of the GA instance.
-	//
-	// example:
-	//
-	// china-mainland
-	AccelerationLocation *string `json:"AccelerationLocation,omitempty" xml:"AccelerationLocation,omitempty"`
-	// The details about the backend servers of the GA instance.
-	BackendServers *DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstancesGlobalAccelerationInstanceBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
-	// The maximum bandwidth of the GA instance.
-	//
-	// example:
-	//
-	// 10
-	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The bandwidth type of the GA instance.
-	//
-	// 	- **Sharing**
-	//
-	// 	- **Exclusive*	- (default)
-	//
-	// example:
-	//
-	// Exclusive
-	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
-	// The billing method of the GA instance.
-	//
-	// example:
-	//
-	// PrePaid
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The time when the GA instance was created. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2018-07-05T03:39:31Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the GA instance.
-	//
-	// example:
-	//
-	// apiDescription
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the instance expires.
-	//
-	// example:
-	//
-	// 2018-08-05T16:00Z
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The ID of the GA instance.
-	//
-	// example:
-	//
-	// ga-bp1x99kj7kl1ziw5x****
-	GlobalAccelerationInstanceId *string `json:"GlobalAccelerationInstanceId,omitempty" xml:"GlobalAccelerationInstanceId,omitempty"`
-	// The billing method of the GA instance.
-	//
-	// example:
-	//
-	// PayByBandwidth
-	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The public IP address of the dedicated GA instance.
-	//
-	// example:
-	//
-	// 47.xx.xx.99
-	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	// The name of the GA instance.
-	//
-	// example:
-	//
-	// instanceName
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The public IP address.
-	PublicIpAddresses *DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstancesGlobalAccelerationInstancePublicIpAddresses `json:"PublicIpAddresses,omitempty" xml:"PublicIpAddresses,omitempty" type:"Struct"`
-	// The region ID of the GA instance.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The service area of the GA instance.
-	//
-	// example:
-	//
-	// china-mainland
-	ServiceLocation *string `json:"ServiceLocation,omitempty" xml:"ServiceLocation,omitempty"`
-	// The status of the GA instance.
-	//
-	// 	- **Available**
-	//
-	// 	- **Inuse**
-	//
-	// 	- **Associating**
-	//
-	// 	- **Unassociating**
-	//
-	// example:
-	//
-	// InUse
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	AccelerationLocation         *string                                                                                                                `json:"AccelerationLocation,omitempty" xml:"AccelerationLocation,omitempty"`
+	BackendServers               *DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstancesGlobalAccelerationInstanceBackendServers    `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
+	Bandwidth                    *string                                                                                                                `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	BandwidthType                *string                                                                                                                `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
+	ChargeType                   *string                                                                                                                `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	CreationTime                 *string                                                                                                                `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description                  *string                                                                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExpiredTime                  *string                                                                                                                `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	GlobalAccelerationInstanceId *string                                                                                                                `json:"GlobalAccelerationInstanceId,omitempty" xml:"GlobalAccelerationInstanceId,omitempty"`
+	InternetChargeType           *string                                                                                                                `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	IpAddress                    *string                                                                                                                `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	Name                         *string                                                                                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	PublicIpAddresses            *DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstancesGlobalAccelerationInstancePublicIpAddresses `json:"PublicIpAddresses,omitempty" xml:"PublicIpAddresses,omitempty" type:"Struct"`
+	RegionId                     *string                                                                                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceLocation              *string                                                                                                                `json:"ServiceLocation,omitempty" xml:"ServiceLocation,omitempty"`
+	Status                       *string                                                                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstancesGlobalAccelerationInstance) String() string {
@@ -450,34 +365,10 @@ func (s *DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstan
 }
 
 type DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstancesGlobalAccelerationInstanceBackendServersBackendServer struct {
-	// The region where the backend servers are deployed.
-	//
-	// example:
-	//
-	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the backend server.
-	//
-	// example:
-	//
-	// i-2zeg83zvn5d4ed4y****
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The IP address of the backend server.
-	//
-	// example:
-	//
-	// 172.xx.xx.109
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServerId        *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 	ServerIpAddress *string `json:"ServerIpAddress,omitempty" xml:"ServerIpAddress,omitempty"`
-	// The type of the backend server.
-	//
-	// 	- **EcsInstance**: Elastic Compute Service (ECS) instance
-	//
-	// 	- **SlbInstance**: Server Load Balancer (SLB) instance
-	//
-	// example:
-	//
-	// EcsInstance
-	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	ServerType      *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
 }
 
 func (s DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstancesGlobalAccelerationInstanceBackendServersBackendServer) String() string {
@@ -563,18 +454,8 @@ func (s *DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstan
 }
 
 type DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstancesGlobalAccelerationInstancePublicIpAddressesPublicIpAddress struct {
-	// The ID of the public IP address of the GA instance.
-	//
-	// example:
-	//
-	// eip-bp19yqraac4w3y0jd****
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The public IP address of the GA instance.
-	//
-	// example:
-	//
-	// 12.xx.xx.78
-	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	IpAddress    *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 }
 
 func (s DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstancesGlobalAccelerationInstancePublicIpAddressesPublicIpAddress) String() string {

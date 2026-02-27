@@ -133,9 +133,8 @@ type DescribeIpv6GatewayAttributeResponseBody struct {
 	// example:
 	//
 	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The information about the tags.
-	Tags *DescribeIpv6GatewayAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	Status *string                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   *DescribeIpv6GatewayAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The ID of the virtual private cloud (VPC) to which the IPv6 gateway belongs.
 	//
 	// example:
@@ -331,21 +330,7 @@ func (s *DescribeIpv6GatewayAttributeResponseBodyTags) Validate() error {
 }
 
 type DescribeIpv6GatewayAttributeResponseBodyTagsTag struct {
-	// The key of tag N. You can specify at most 20 tag keys. The tag key cannot be an empty string.
-	//
-	// The tag key can be up to 128 characters in length. It must start with a letter and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
-	//
-	// example:
-	//
-	// FinanceDept
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N. You can specify at most 20 tag values. The tag value can be an empty string.
-	//
-	// The tag value can be up to 128 characters in length. It must start with a letter and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
-	//
-	// example:
-	//
-	// FinanceJoshua
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

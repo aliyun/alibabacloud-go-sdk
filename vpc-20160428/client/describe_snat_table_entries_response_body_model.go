@@ -39,8 +39,7 @@ type DescribeSnatTableEntriesResponseBody struct {
 	// example:
 	//
 	// 6D7E89B1-1C5B-412B-8585-4908E222EED5
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details of SNAT entries.
+	RequestId        *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SnatTableEntries *DescribeSnatTableEntriesResponseBodySnatTableEntries `json:"SnatTableEntries,omitempty" xml:"SnatTableEntries,omitempty" type:"Struct"`
 	// The number of returned entries.
 	//
@@ -147,80 +146,16 @@ func (s *DescribeSnatTableEntriesResponseBodySnatTableEntries) Validate() error 
 }
 
 type DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry struct {
-	// Whether to enable IP affinity. Values:
-	//
-	// - **0**: Disable IP affinity. - **1**: Enable IP affinity.
-	//
-	// > After enabling the IP affinity switch, if an SNAT entry is bound to multiple EIPs or NAT IPs, the same client will use the same EIP or NAT IP for access. Otherwise, the client will randomly select from the bound EIPs or NAT IPs for access.
-	//
-	// example:
-	//
-	// 1
-	EipAffinity *string `json:"EipAffinity,omitempty" xml:"EipAffinity,omitempty"`
-	// The ID of the NAT gateway to which the SNAT entry belongs.
-	//
-	// example:
-	//
-	// ngw-bp1uewa15k4iy5770****
-	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// Elastic Network Interface ID
-	//
-	// example:
-	//
-	// eni-gw8g131ef2dnbu3k****
+	EipAffinity        *string `json:"EipAffinity,omitempty" xml:"EipAffinity,omitempty"`
+	NatGatewayId       *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The ID of the SNAT entry.
-	//
-	// example:
-	//
-	// snat-kmd6nv8fy****
-	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
-	// The name of the SNAT entry.
-	//
-	// example:
-	//
-	// SnatEntry-1
-	SnatEntryName *string `json:"SnatEntryName,omitempty" xml:"SnatEntryName,omitempty"`
-	// 	- When you query SNAT entries of Internet NAT gateways, this parameter indicates the EIP in an SNAT entry.
-	//
-	// 	- When you query SNAT entries of VPC NAT gateways, this parameter indicates the NAT IP address in an SNAT entry.
-	//
-	// example:
-	//
-	// 116.22.XX.XX
-	SnatIp *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
-	// The ID of the SNAT table to which the SNAT entry belongs.
-	//
-	// example:
-	//
-	// stb-gz3r3odawdgffde****
-	SnatTableId *string `json:"SnatTableId,omitempty" xml:"SnatTableId,omitempty"`
-	// The source CIDR block specified in the SNAT entry.
-	//
-	// example:
-	//
-	// 116.22.XX.XX/24
-	SourceCIDR *string `json:"SourceCIDR,omitempty" xml:"SourceCIDR,omitempty"`
-	// 	- When you query SNAT entries of Internet NAT gateways, this parameter indicates the ID of the vSwitch that uses SNAT to access the Internet.
-	//
-	// 	- When you query SNAT entries of VPC NAT gateways, this parameter indicates the ID of the vSwitch that uses SNAT to access external networks.
-	//
-	// example:
-	//
-	// vsw-3xbdsffvfgdfds****
-	SourceVSwitchId *string `json:"SourceVSwitchId,omitempty" xml:"SourceVSwitchId,omitempty"`
-	// The status of the SNAT entry. Valid values:
-	//
-	// 	- **Pending**
-	//
-	// 	- **Available**
-	//
-	// 	- **Deleting**
-	//
-	// example:
-	//
-	// Pending
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SnatEntryId        *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
+	SnatEntryName      *string `json:"SnatEntryName,omitempty" xml:"SnatEntryName,omitempty"`
+	SnatIp             *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
+	SnatTableId        *string `json:"SnatTableId,omitempty" xml:"SnatTableId,omitempty"`
+	SourceCIDR         *string `json:"SourceCIDR,omitempty" xml:"SourceCIDR,omitempty"`
+	SourceVSwitchId    *string `json:"SourceVSwitchId,omitempty" xml:"SourceVSwitchId,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry) String() string {

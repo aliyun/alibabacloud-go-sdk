@@ -147,9 +147,8 @@ type DescribeVSwitchAttributesResponseBody struct {
 	// example:
 	//
 	// Pending
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The information about the tags.
-	Tags *DescribeVSwitchAttributesResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	Status *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   *DescribeVSwitchAttributesResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The vSwitch ID.
 	//
 	// example:
@@ -453,17 +452,7 @@ func (s *DescribeVSwitchAttributesResponseBodyTags) Validate() error {
 }
 
 type DescribeVSwitchAttributesResponseBodyTagsTag struct {
-	// The key of tag N added to the resource.
-	//
-	// example:
-	//
-	// FinanceDept
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N added to the resource.
-	//
-	// example:
-	//
-	// FinanceJoshua
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

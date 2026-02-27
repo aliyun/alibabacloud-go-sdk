@@ -33,9 +33,8 @@ type DescribeTagKeysForExpressConnectResponseBody struct {
 	// example:
 	//
 	// 54B48E3D-DF70-471B-AA93-08E683A1B45
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tag keys.
-	TagKeys *DescribeTagKeysForExpressConnectResponseBodyTagKeys `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Struct"`
+	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagKeys   *DescribeTagKeysForExpressConnectResponseBodyTagKeys `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Struct"`
 }
 
 func (s DescribeTagKeysForExpressConnectResponseBody) String() string {
@@ -117,18 +116,8 @@ func (s *DescribeTagKeysForExpressConnectResponseBodyTagKeys) Validate() error {
 }
 
 type DescribeTagKeysForExpressConnectResponseBodyTagKeysTagKey struct {
-	// The key of the tag.
-	//
-	// example:
-	//
-	// FinanceDept
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The type of the resource. The value is set to **PHYSICALCONNECTION**, which indicates an Express Connect circuit.
-	//
-	// example:
-	//
-	// PHYSICALCONNECTION
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeTagKeysForExpressConnectResponseBodyTagKeysTagKey) String() string {

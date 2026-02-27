@@ -507,9 +507,8 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	// example:
 	//
 	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The tag of the resource.
-	Tags *DescribeRouterInterfaceAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	Success *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	Tags    *DescribeRouterInterfaceAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The ID of the virtual private cloud (VPC) to which the router interface belongs.
 	//
 	// example:
@@ -984,21 +983,7 @@ func (s *DescribeRouterInterfaceAttributeResponseBodyTags) Validate() error {
 }
 
 type DescribeRouterInterfaceAttributeResponseBodyTagsTags struct {
-	// The key of tag N added to the resource. You must enter at least one tag key and at most 20 tag keys. The tag key cannot be an empty string.
-	//
-	// The tag key can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
-	//
-	// example:
-	//
-	// FinanceDept
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N added to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
-	//
-	// It can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
-	//
-	// example:
-	//
-	// FinanceJoshua
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

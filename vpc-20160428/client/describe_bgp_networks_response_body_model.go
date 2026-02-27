@@ -22,7 +22,6 @@ type iDescribeBgpNetworksResponseBody interface {
 }
 
 type DescribeBgpNetworksResponseBody struct {
-	// BGP networks.
 	BgpNetworks *DescribeBgpNetworksResponseBodyBgpNetworks `json:"BgpNetworks,omitempty" xml:"BgpNetworks,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,30 +146,10 @@ func (s *DescribeBgpNetworksResponseBodyBgpNetworks) Validate() error {
 }
 
 type DescribeBgpNetworksResponseBodyBgpNetworksBgpNetwork struct {
-	// The CIDR block of the advertised BGP network.
-	//
-	// example:
-	//
-	// 10.1.XX.XX/24
 	DstCidrBlock *string `json:"DstCidrBlock,omitempty" xml:"DstCidrBlock,omitempty"`
-	// The ID of the VBR.
-	//
-	// example:
-	//
-	// vrt-bp1lhl0taikrteen8****
-	RouterId *string `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
-	// The status of the advertised BGP network.
-	//
-	// example:
-	//
-	// Enabled
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the virtual private cloud (VPC) in which the master instance resides.
-	//
-	// example:
-	//
-	// vpc-bp1qpo0kug3a2*****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	RouterId     *string `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VpcId        *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeBgpNetworksResponseBodyBgpNetworksBgpNetwork) String() string {

@@ -22,7 +22,6 @@ type iDescribeEipAddressesResponseBody interface {
 }
 
 type DescribeEipAddressesResponseBody struct {
-	// Details of the EIPs.
 	EipAddresses *DescribeEipAddressesResponseBodyEipAddresses `json:"EipAddresses,omitempty" xml:"EipAddresses,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,358 +146,48 @@ func (s *DescribeEipAddressesResponseBodyEipAddresses) Validate() error {
 }
 
 type DescribeEipAddressesResponseBodyEipAddressesEipAddress struct {
-	// The ID of the EIP.
-	//
-	// example:
-	//
-	// eip-2zeerraiwb7ujcdvf****
-	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The time when the EIP was created. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format.
-	//
-	// example:
-	//
-	// 2021-04-23T01:37:38Z
-	AllocationTime *string `json:"AllocationTime,omitempty" xml:"AllocationTime,omitempty"`
-	// The maximum bandwidth of the EIP. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 5
-	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The maximum bandwidth of the Internet Shared Bandwidth instance with which the EIP is associated. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 50
-	BandwidthPackageBandwidth *string `json:"BandwidthPackageBandwidth,omitempty" xml:"BandwidthPackageBandwidth,omitempty"`
-	// The ID of the Internet Shared Bandwidth instance.
-	//
-	// example:
-	//
-	// cbwp-bp1ego3i4j07ccdvf****
-	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The type of the bandwidth. Only **CommonBandwidthPackage*	- may be returned, which indicates Internet Shared Bandwidth.
-	//
-	// example:
-	//
-	// CommonBandwidthPackage
-	BandwidthPackageType *string `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
-	// The service type. Valid values:
-	//
-	// 	- **CloudBox*	- Only cloud box users can select this type.
-	//
-	// 	- **Default*	- (default)
-	//
-	// example:
-	//
-	// CloudBox
-	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The service status of the EIP. Valid values:
-	//
-	// 	- **Normal**
-	//
-	// 	- **OperationLock**
-	//
-	// 	- **Unactivated**
-	//
-	// example:
-	//
-	// Normal
-	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The billing method of the EIP. Valid values:
-	//
-	// 	- **PostPaid**: pay-as-you-go.
-	//
-	// 	- **PrePaid**: subscription.
-	//
-	// example:
-	//
-	// PostPaid
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// Indicates whether deletion protection is enabled. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// The description of the EIP.
-	//
-	// example:
-	//
-	// abc
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The maximum bandwidth of the EIP when it is not associated with an Internet Shared Bandwidth instance. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 101
-	EipBandwidth *string `json:"EipBandwidth,omitempty" xml:"EipBandwidth,omitempty"`
-	// The time when the EIP expires. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format.
-	//
-	// example:
-	//
-	// 2021-05-23T02:00:00Z
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// Indicates whether fine-grained monitoring is enabled for the EIP. Valid values:
-	//
-	// 	- **false**
-	//
-	// 	- **true**
-	//
-	// example:
-	//
-	// false
-	HDMonitorStatus *string `json:"HDMonitorStatus,omitempty" xml:"HDMonitorStatus,omitempty"`
-	// Indicates whether renewal data is included. Valid values:
-	//
-	// 	- **false**
-	//
-	// 	- **true*	- A value of **true*	- is returned only when **IncludeReservationData*	- is set to **true*	- and some orders have not taken effect.
-	//
-	// example:
-	//
-	// false
-	HasReservationData *string `json:"HasReservationData,omitempty" xml:"HasReservationData,omitempty"`
-	// The line type. Valid values:
-	//
-	// 	- **BGP**: BGP (Multi-ISP). The BGP (Multi-ISP) line is supported in all regions.
-	//
-	// 	- **BGP_PRO**: BGP (Multi-ISP) Pro lines. BGP (Multi-ISP) Pro line is supported only in the China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
-	//
-	// For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see the [Line types](https://help.aliyun.com/document_detail/32321.html) section of the "What is EIP?" topic.
-	//
-	// If you are allowed to use single-ISP bandwidth, one of the following values may be returned:
-	//
-	// 	- **ChinaTelecom**
-	//
-	// 	- **ChinaUnicom**
-	//
-	// 	- **ChinaMobile**
-	//
-	// 	- **ChinaTelecom_L2**
-	//
-	// 	- **ChinaUnicom_L2**
-	//
-	// 	- **ChinaMobile_L2**
-	//
-	// If your services are deployed in China East 1 Finance, **BGP_FinanceCloud*	- is returned.
-	//
-	// example:
-	//
-	// BGP
-	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	// The ID of the associated instance.
-	//
-	// example:
-	//
-	// i-bp15zckdt37cdvf****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the associated instance.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	InstanceRegionId *string `json:"InstanceRegionId,omitempty" xml:"InstanceRegionId,omitempty"`
-	// The type of the associated instance. Valid values:
-	//
-	// 	- **EcsInstance**: an ECS instance in a VPC.
-	//
-	// 	- **SlbInstance**: a CLB instance in a VPC.
-	//
-	// 	- **Nat**: a NAT gateway.
-	//
-	// 	- **HaVip**: an HAVIP.
-	//
-	// 	- **NetworkInterface**: a secondary ENI.
-	//
-	// 	- **IpAddress**: an IP address.
-	//
-	// example:
-	//
-	// EcsInstance
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The metering method of the EIP. Valid values:
-	//
-	// 	- **PayByBandwidth**
-	//
-	// 	- **PayByTraffic**
-	//
-	// example:
-	//
-	// PayByBandwidth
-	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The EIP.
-	//
-	// example:
-	//
-	// 47.75.XX.XX
-	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	// The association mode. Valid values:
-	//
-	// - **NAT**: NAT mode
-	//
-	// - **MULTI_BINDED**: multi-EIP-to-ENI mode
-	//
-	// - **BINDED**: cut-through mode
-	//
-	// example:
-	//
-	// NAT
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The name of the EIP.
-	//
-	// example:
-	//
-	// EIP-01
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The network type. Only **public*	- may be returned.
-	//
-	// example:
-	//
-	// public
-	Netmode *string `json:"Netmode,omitempty" xml:"Netmode,omitempty"`
-	// The details about the locked EIP.
-	OperationLocks *DescribeEipAddressesResponseBodyEipAddressesEipAddressOperationLocks `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Struct"`
-	// The private IP address of the secondary ENI with which the EIP is associated.
-	//
-	// example:
-	//
-	// 192.168.XX.XX
-	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The ID of the IP address pool to which the EIP belongs.
-	//
-	// example:
-	//
-	// pippool-2vc0kxcedhquybdsz****
-	PublicIpAddressPoolId *string `json:"PublicIpAddressPoolId,omitempty" xml:"PublicIpAddressPoolId,omitempty"`
-	// The region ID of the EIP.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The time when the renewal took effect. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format.
-	//
-	// example:
-	//
-	// 2021-05-23T16:00:00Z
-	ReservationActiveTime *string `json:"ReservationActiveTime,omitempty" xml:"ReservationActiveTime,omitempty"`
-	// The maximum bandwidth after the renewal takes effect. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 12
-	ReservationBandwidth *string `json:"ReservationBandwidth,omitempty" xml:"ReservationBandwidth,omitempty"`
-	// The metering method that is used after the renewal takes effect. Valid values:
-	//
-	// 	- **PayByBandwidth**
-	//
-	// 	- **PayByTraffic**
-	//
-	// example:
-	//
-	// PayByBandwidth
-	ReservationInternetChargeType *string `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
-	// The type of the renewal order. Valid values:
-	//
-	// 	- **RENEWCHANGE**: renewal with an upgrade or a downgrade.
-	//
-	// 	- **TEMP_UPGRADE**: temporary upgrade.
-	//
-	// 	- **UPGRADE**: upgrade.
-	//
-	// example:
-	//
-	// RENEWCHANGE
-	ReservationOrderType *string `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
-	// The resource group ID.
-	//
-	// example:
-	//
-	// rg-acfmxazcdxs****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Indicates whether level-2 throttling is configured. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// false
-	SecondLimited *bool `json:"SecondLimited,omitempty" xml:"SecondLimited,omitempty"`
-	// The edition of Anti-DDoS.
-	//
-	// 	- If an empty value is returned, it indicates that Anti-DDoS Origin Basic is used.
-	//
-	// 	- If **AntiDDoS_Enhanced*	- is returned, it indicates that Anti-DDoS Pro/Premium is used.
-	SecurityProtectionTypes *DescribeEipAddressesResponseBodyEipAddressesEipAddressSecurityProtectionTypes `json:"SecurityProtectionTypes,omitempty" xml:"SecurityProtectionTypes,omitempty" type:"Struct"`
-	// The ID of the contiguous EIP group.
-	//
-	// This value is returned only when you query contiguous EIPs.
-	//
-	// example:
-	//
-	// eipsg-t4nr90yik5oy38xd****
-	SegmentInstanceId *string `json:"SegmentInstanceId,omitempty" xml:"SegmentInstanceId,omitempty"`
-	// The ID of the service provider to which the managed instance belongs.
-	//
-	// > This is only valid when the ServiceManaged parameter is set to True.
-	//
-	// example:
-	//
-	// 197*************
-	ServiceID *int64 `json:"ServiceID,omitempty" xml:"ServiceID,omitempty"`
-	// Indicates whether the instance is managed. Valid values:
-	//
-	// 	- **1**: yes
-	//
-	// 	- **0**: no
-	//
-	// example:
-	//
-	// 0
-	ServiceManaged *int32 `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// The status of the EIP. Valid values:
-	//
-	// 	- **Associating**
-	//
-	// 	- **Unassociating**
-	//
-	// 	- **InUse**
-	//
-	// 	- **Available**
-	//
-	// 	- **Releasing**
-	//
-	// example:
-	//
-	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the EIP.
-	Tags *DescribeEipAddressesResponseBodyEipAddressesEipAddressTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The ID of the VPC in which an IPv4 gateway is created and that is deployed in the same region as the EIP.
-	//
-	// When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations.
-	//
-	// >  This parameter is returned if the value of **InstanceType*	- is **IpAddress**. In this case, the EIP is associated with an IP address.
-	//
-	// example:
-	//
-	// vpc-bp15zckdt37pq72zv****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The zone of the EIP.
-	//
-	// This parameter is returned only when the service type is CloudBox.
-	//
-	// example:
-	//
-	// cn-hangzhou-a
-	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	AllocationId                  *string                                                                        `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	AllocationTime                *string                                                                        `json:"AllocationTime,omitempty" xml:"AllocationTime,omitempty"`
+	Bandwidth                     *string                                                                        `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	BandwidthPackageBandwidth     *string                                                                        `json:"BandwidthPackageBandwidth,omitempty" xml:"BandwidthPackageBandwidth,omitempty"`
+	BandwidthPackageId            *string                                                                        `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	BandwidthPackageType          *string                                                                        `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
+	BizType                       *string                                                                        `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	BusinessStatus                *string                                                                        `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	ChargeType                    *string                                                                        `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	DeletionProtection            *bool                                                                          `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	Description                   *string                                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	EipBandwidth                  *string                                                                        `json:"EipBandwidth,omitempty" xml:"EipBandwidth,omitempty"`
+	ExpiredTime                   *string                                                                        `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	HDMonitorStatus               *string                                                                        `json:"HDMonitorStatus,omitempty" xml:"HDMonitorStatus,omitempty"`
+	HasReservationData            *string                                                                        `json:"HasReservationData,omitempty" xml:"HasReservationData,omitempty"`
+	ISP                           *string                                                                        `json:"ISP,omitempty" xml:"ISP,omitempty"`
+	InstanceId                    *string                                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceRegionId              *string                                                                        `json:"InstanceRegionId,omitempty" xml:"InstanceRegionId,omitempty"`
+	InstanceType                  *string                                                                        `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetChargeType            *string                                                                        `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	IpAddress                     *string                                                                        `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	Mode                          *string                                                                        `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Name                          *string                                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	Netmode                       *string                                                                        `json:"Netmode,omitempty" xml:"Netmode,omitempty"`
+	OperationLocks                *DescribeEipAddressesResponseBodyEipAddressesEipAddressOperationLocks          `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Struct"`
+	PrivateIpAddress              *string                                                                        `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	PublicIpAddressPoolId         *string                                                                        `json:"PublicIpAddressPoolId,omitempty" xml:"PublicIpAddressPoolId,omitempty"`
+	RegionId                      *string                                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReservationActiveTime         *string                                                                        `json:"ReservationActiveTime,omitempty" xml:"ReservationActiveTime,omitempty"`
+	ReservationBandwidth          *string                                                                        `json:"ReservationBandwidth,omitempty" xml:"ReservationBandwidth,omitempty"`
+	ReservationInternetChargeType *string                                                                        `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
+	ReservationOrderType          *string                                                                        `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
+	ResourceGroupId               *string                                                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecondLimited                 *bool                                                                          `json:"SecondLimited,omitempty" xml:"SecondLimited,omitempty"`
+	SecurityProtectionTypes       *DescribeEipAddressesResponseBodyEipAddressesEipAddressSecurityProtectionTypes `json:"SecurityProtectionTypes,omitempty" xml:"SecurityProtectionTypes,omitempty" type:"Struct"`
+	SegmentInstanceId             *string                                                                        `json:"SegmentInstanceId,omitempty" xml:"SegmentInstanceId,omitempty"`
+	ServiceID                     *int64                                                                         `json:"ServiceID,omitempty" xml:"ServiceID,omitempty"`
+	ServiceManaged                *int32                                                                         `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	Status                        *string                                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                          *DescribeEipAddressesResponseBodyEipAddressesEipAddressTags                    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VpcId                         *string                                                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Zone                          *string                                                                        `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s DescribeEipAddressesResponseBodyEipAddressesEipAddress) String() string {
@@ -941,17 +630,6 @@ func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddressOperationLocks) V
 }
 
 type DescribeEipAddressesResponseBodyEipAddressesEipAddressOperationLocksLockReason struct {
-	// The reason why the EIP is locked. Valid values:
-	//
-	// 	- **financial**: The EIP is locked due to overdue payments.
-	//
-	// 	- **security**: The instance is locked for security purposes.
-	//
-	// 	- **sharedPool**: The shared IP address pool is locked due to overdue payments.
-	//
-	// example:
-	//
-	// financial
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 }
 
@@ -1036,17 +714,7 @@ func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddressTags) Validate() 
 }
 
 type DescribeEipAddressesResponseBodyEipAddressesEipAddressTagsTag struct {
-	// The tag key of the EIP.
-	//
-	// example:
-	//
-	// KeyTest
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the EIP.
-	//
-	// example:
-	//
-	// ValueTest
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

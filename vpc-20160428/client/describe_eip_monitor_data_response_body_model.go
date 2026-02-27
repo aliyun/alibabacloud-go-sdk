@@ -16,7 +16,6 @@ type iDescribeEipMonitorDataResponseBody interface {
 }
 
 type DescribeEipMonitorDataResponseBody struct {
-	// The detailed information about the monitoring data of the EIP.
 	EipMonitorDatas *DescribeEipMonitorDataResponseBodyEipMonitorDatas `json:"EipMonitorDatas,omitempty" xml:"EipMonitorDatas,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,40 +95,12 @@ func (s *DescribeEipMonitorDataResponseBodyEipMonitorDatas) Validate() error {
 }
 
 type DescribeEipMonitorDataResponseBodyEipMonitorDatasEipMonitorData struct {
-	// example:
-	//
-	// 10
-	EipBandwidth *int32 `json:"EipBandwidth,omitempty" xml:"EipBandwidth,omitempty"`
-	// The sum of inbound and outbound traffic.
-	//
-	// example:
-	//
-	// 465
-	EipFlow *int64 `json:"EipFlow,omitempty" xml:"EipFlow,omitempty"`
-	// The number of packets.
-	//
-	// example:
-	//
-	// 3434
-	EipPackets *int32 `json:"EipPackets,omitempty" xml:"EipPackets,omitempty"`
-	// The inbound traffic. Unit: bytes.
-	//
-	// example:
-	//
-	// 122
-	EipRX *int64 `json:"EipRX,omitempty" xml:"EipRX,omitempty"`
-	// The outbound traffic. Unit: bytes.
-	//
-	// example:
-	//
-	// 343
-	EipTX *int64 `json:"EipTX,omitempty" xml:"EipTX,omitempty"`
-	// The timestamp of the monitoring data. Specify the time in the ISO8601 standard. Example: `2020-01-21T09:50:23Z`.
-	//
-	// example:
-	//
-	// 2020-01-21T09:50:23Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	EipBandwidth *int32  `json:"EipBandwidth,omitempty" xml:"EipBandwidth,omitempty"`
+	EipFlow      *int64  `json:"EipFlow,omitempty" xml:"EipFlow,omitempty"`
+	EipPackets   *int32  `json:"EipPackets,omitempty" xml:"EipPackets,omitempty"`
+	EipRX        *int64  `json:"EipRX,omitempty" xml:"EipRX,omitempty"`
+	EipTX        *int64  `json:"EipTX,omitempty" xml:"EipTX,omitempty"`
+	TimeStamp    *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeEipMonitorDataResponseBodyEipMonitorDatasEipMonitorData) String() string {

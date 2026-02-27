@@ -39,8 +39,7 @@ type DescribeRouteTablesResponseBody struct {
 	// example:
 	//
 	// DC668356-BCB4-42FD-9BC3-FA2B2E04B634
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The detailed information about the route tables.
+	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouteTables *DescribeRouteTablesResponseBodyRouteTables `json:"RouteTables,omitempty" xml:"RouteTables,omitempty" type:"Struct"`
 	// The total number of entries returned.
 	//
@@ -147,56 +146,14 @@ func (s *DescribeRouteTablesResponseBodyRouteTables) Validate() error {
 }
 
 type DescribeRouteTablesResponseBodyRouteTablesRouteTable struct {
-	// The time when the route table was created.
-	//
-	// The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format in UTC.
-	//
-	// example:
-	//
-	// 2017-08-22T10:40:25Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the resource group to which the route table belongs.
-	//
-	// example:
-	//
-	// rg-acfmxazb4ph****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The information about the route.
-	RouteEntrys *DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrys `json:"RouteEntrys,omitempty" xml:"RouteEntrys,omitempty" type:"Struct"`
-	// The ID of the route table.
-	//
-	// example:
-	//
-	// vtb-bp145q7glnuzdvzu2****
-	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// The type of the route table. Valid values:
-	//
-	// 	- **Custom**
-	//
-	// 	- **System**
-	//
-	// example:
-	//
-	// System
-	RouteTableType *string `json:"RouteTableType,omitempty" xml:"RouteTableType,omitempty"`
-	// The status of the route table. Valid values:
-	//
-	// 	- **Pending**
-	//
-	// 	- **Available**
-	//
-	// example:
-	//
-	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The vRouter ID.
-	//
-	// example:
-	//
-	// vrt-bp1lhl0taikrteen8****
-	VRouterId *string `json:"VRouterId,omitempty" xml:"VRouterId,omitempty"`
-	// The vSwitch ID.
-	VSwitchIds *DescribeRouteTablesResponseBodyRouteTablesRouteTableVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
+	CreationTime    *string                                                          `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	ResourceGroupId *string                                                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	RouteEntrys     *DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrys `json:"RouteEntrys,omitempty" xml:"RouteEntrys,omitempty" type:"Struct"`
+	RouteTableId    *string                                                          `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	RouteTableType  *string                                                          `json:"RouteTableType,omitempty" xml:"RouteTableType,omitempty"`
+	Status          *string                                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	VRouterId       *string                                                          `json:"VRouterId,omitempty" xml:"VRouterId,omitempty"`
+	VSwitchIds      *DescribeRouteTablesResponseBodyRouteTablesRouteTableVSwitchIds  `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
 }
 
 func (s DescribeRouteTablesResponseBodyRouteTablesRouteTable) String() string {
@@ -328,98 +285,16 @@ func (s *DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrys) Valida
 }
 
 type DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrysRouteEntry struct {
-	// The description of the route. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
-	//
-	// example:
-	//
-	// RouteEntryDescription
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination CIDR block of the route. The destination CIDR block supports IPv4 and IPv6. Make sure that the destination CIDR block meets the following requirements:
-	//
-	// 	- The destination CIDR block is not 100.64.0.0/10 or a subset of 100.64.0.0/10.
-	//
-	// 	- The destination CIDR block of each route in the route table is unique.
-	//
-	// example:
-	//
-	// 192.168.0.1/24
-	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The ID of the instance associated with the next hop.
-	//
-	// example:
-	//
-	// ri-2zeo3xzyf38r4urzd****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the next hop. Valid values:
-	//
-	// 	- **Instance*	- (default): an Elastic Compute Service (ECS) instance
-	//
-	// 	- **HaVip**: a high-availability virtual IP address (HaVip).
-	//
-	// 	- **VpnGateway**: a VPN gateway
-	//
-	// 	- **NatGateway**: a NAT gateway
-	//
-	// 	- **NetworkInterface**: a secondary elastic network interface (ENI)
-	//
-	// 	- **RouterInterface**: a router interface
-	//
-	// 	- **IPv6Gateway**: an IPv6 gateway
-	//
-	// 	- **Attachment**: a transit router
-	//
-	// example:
-	//
-	// local
-	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// The information about the next hop.
-	NextHops *DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrysRouteEntryNextHops `json:"NextHops,omitempty" xml:"NextHops,omitempty" type:"Struct"`
-	// The ID of the route.
-	//
-	// example:
-	//
-	// rte-bp1mnnr2al0naomnpxxx
-	RouteEntryId *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
-	// The route name.
-	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
-	//
-	// example:
-	//
-	// test
-	RouteEntryName *string `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
-	// The route table ID.
-	//
-	// example:
-	//
-	// vtb-bp145q7glnuzdvzu2****
-	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// The route status. Valid values:
-	//
-	// 	- **Pending**
-	//
-	// 	- **Available**
-	//
-	// 	- **Modifying**
-	//
-	// example:
-	//
-	// Pending
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The route type. Valid values:
-	//
-	// 	- **Custom**
-	//
-	// 	- **System**
-	//
-	// 	- **BGP**
-	//
-	// 	- **CEN**
-	//
-	// example:
-	//
-	// System
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Description          *string                                                                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestinationCidrBlock *string                                                                            `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	InstanceId           *string                                                                            `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NextHopType          *string                                                                            `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	NextHops             *DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrysRouteEntryNextHops `json:"NextHops,omitempty" xml:"NextHops,omitempty" type:"Struct"`
+	RouteEntryId         *string                                                                            `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
+	RouteEntryName       *string                                                                            `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
+	RouteTableId         *string                                                                            `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	Status               *string                                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                 *string                                                                            `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrysRouteEntry) String() string {
@@ -564,50 +439,10 @@ func (s *DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrysRouteEnt
 }
 
 type DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrysRouteEntryNextHopsNextHop struct {
-	// Indicates whether the route is available. Valid values:
-	//
-	// 	- **0**: unavailable
-	//
-	// 	- **1**: available
-	//
-	// example:
-	//
-	// 0
-	Enabled *int32 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The ID of the next hop.
-	//
-	// example:
-	//
-	// ri-2zeo3xzyf38r4urzdpvqw
-	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	// The type of the next hop. Valid values:
-	//
-	// 	- **Instance**: an ECS instance
-	//
-	// 	- **HaVip**: an HaVip
-	//
-	// 	- **VpnGateway**: a VPN gateway
-	//
-	// 	- **NatGateway**: a NAT gateway
-	//
-	// 	- **NetworkInterface**: a secondary ENI
-	//
-	// 	- **RouterInterface**: a router interface
-	//
-	// 	- **IPv6Gateway**: an IPv6 gateway
-	//
-	// 	- **Attachment**: a transit router
-	//
-	// example:
-	//
-	// HaVip
+	Enabled     *int32  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	NextHopId   *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
 	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// The weight of the route.
-	//
-	// example:
-	//
-	// 80
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrysRouteEntryNextHopsNextHop) String() string {

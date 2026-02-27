@@ -39,8 +39,7 @@ type DescribeSslVpnClientCertsResponseBody struct {
 	// example:
 	//
 	// 5BE01CD7-5A50-472D-AC14-CA181C5C03BE
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the SSL client certificates.
+	RequestId            *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SslVpnClientCertKeys *DescribeSslVpnClientCertsResponseBodySslVpnClientCertKeys `json:"SslVpnClientCertKeys,omitempty" xml:"SslVpnClientCertKeys,omitempty" type:"Struct"`
 	// The number of entries returned.
 	//
@@ -147,66 +146,14 @@ func (s *DescribeSslVpnClientCertsResponseBodySslVpnClientCertKeys) Validate() e
 }
 
 type DescribeSslVpnClientCertsResponseBodySslVpnClientCertKeysSslVpnClientCertKey struct {
-	// The timestamp generated when the SSL client certificate was created. Unit: milliseconds.
-	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1492747187000
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The timestamp generated when the SSL client certificate expires. Unit: milliseconds.
-	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1494966335000
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the SSL client certificate.
-	//
-	// example:
-	//
-	// cert1
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The region ID of the SSL client certificate.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the SSL client certificate belongs.
-	//
-	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
-	//
-	// example:
-	//
-	// rg-acfmzs372yg****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the SSL client certificate.
-	//
-	// example:
-	//
-	// vsc-bp1n8wcf134yl0osr****
+	CreateTime         *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EndTime            *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId    *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SslVpnClientCertId *string `json:"SslVpnClientCertId,omitempty" xml:"SslVpnClientCertId,omitempty"`
-	// The ID of the SSL server.
-	//
-	// example:
-	//
-	// vss-bp18q7hzj6largv4v****
-	SslVpnServerId *string `json:"SslVpnServerId,omitempty" xml:"SslVpnServerId,omitempty"`
-	// The status of the SSL client certificate. Valid values:
-	//
-	// 	- **expiring-soon**: The certificate expires in one week.
-	//
-	// 	- **normal**
-	//
-	// 	- **expired**
-	//
-	// example:
-	//
-	// normal
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SslVpnServerId     *string `json:"SslVpnServerId,omitempty" xml:"SslVpnServerId,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeSslVpnClientCertsResponseBodySslVpnClientCertKeysSslVpnClientCertKey) String() string {

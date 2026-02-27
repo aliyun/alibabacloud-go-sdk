@@ -45,8 +45,7 @@ type DescribeVpnConnectionsResponseBody struct {
 	// example:
 	//
 	// 2
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The information about the IPsec-VPN connections.
+	TotalCount     *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	VpnConnections *DescribeVpnConnectionsResponseBodyVpnConnections `json:"VpnConnections,omitempty" xml:"VpnConnections,omitempty" type:"Struct"`
 }
 
@@ -147,226 +146,235 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnections) Validate() error {
 }
 
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection struct {
-	// The ID of the CEN instance to which the transit router belongs.
+	// 转发路由器实例所属的云企业网实例ID。
 	//
 	// example:
 	//
 	// cen-lxxpbpalc776qz****
 	AttachInstanceId *string `json:"AttachInstanceId,omitempty" xml:"AttachInstanceId,omitempty"`
-	// The type of resource that is associated with the IPsec-VPN connection. Valid values:
+	// IPsec连接绑定的资源类型。
 	//
-	// 	- **CEN**: indicates that the IPsec-VPN connection is associated with a transit router of a Cloud Enterprise Network (CEN) instance.
+	// - **CEN**：表示IPsec连接已绑定云企业网实例下的转发路由器实例。
 	//
-	// 	- **NO_ASSOCIATED**: indicates that the IPsec-VPN connection is not associated with any resource.
+	// - **NO_ASSOCIATED**：表示IPsec连接未绑定任何资源。
 	//
-	// 	- **VPNGW**: indicates that the IPsec-VPN connection is associated with a VPN gateway.
+	// - **VPNGW**：表示IPsec连接绑定了VPN网关实例。
 	//
 	// example:
 	//
 	// CEN
 	AttachType *string `json:"AttachType,omitempty" xml:"AttachType,omitempty"`
-	// The timestamp generated when the IPsec-VPN connection was established. Unit: milliseconds.
+	// 创建IPsec连接的时间戳。单位：毫秒。
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// 时间戳的格式采用Unix时间戳，表示从格林威治时间1970年01月01日00时00分00秒至创建IPsec连接时的总时长。
 	//
 	// example:
 	//
 	// 1492753817000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether the IPsec-VPN connection is associated with a transit router that belongs to another Alibaba Cloud account. Valid values:
+	// IPsec连接是否绑定了跨账号的转发路由器实例。
 	//
-	// 	- **true**
+	// - **true**：是。
 	//
-	// 	- **false**
+	// - **false**：否。
 	//
 	// example:
 	//
 	// false
 	CrossAccountAuthorized *bool `json:"CrossAccountAuthorized,omitempty" xml:"CrossAccountAuthorized,omitempty"`
-	// The ID of the customer gateway associated with the IPsec-VPN connection.
+	// IPsec连接关联的用户网关的实例ID。
 	//
 	// example:
 	//
 	// cgw-bp1mvj4g9kogw****
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	// Indicates whether IPsec negotiations immediately start.
+	// IPsec连接的配置是否立即生效。
 	//
-	// 	- **true**: Negotiations are reinitiated after the configuration is changed.
+	// - **true**：是，配置变更完成后触发重连。
 	//
-	// 	- **false**: Negotiations are reinitiated after traffic is detected.
+	// - **false**：否，有流量时触发重连。
 	//
 	// example:
 	//
 	// true
 	EffectImmediately *bool `json:"EffectImmediately,omitempty" xml:"EffectImmediately,omitempty"`
-	// Indicates whether dead peer detection (DPD) is enabled for the IPsec-VPN connection. Valid values:
+	// IPsec连接是否已开启DPD（对等体存活检测）功能。
 	//
-	// 	- **true**
+	// - **true**：开启DPD功能。
 	//
-	//     The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within a specific period of time, the connection fails. Then, the ISAKMP security association (SA), IPsec SA, and IPsec tunnel are deleted.
+	//     IPsec发起端会发送DPD报文用来检测对端的设备是否存活，如果在设定时间内未收到正确回应则认为对端已经断线，IPsec将删除ISAKMP SA和相应的IPsec SA，安全隧道同样也会被删除。
 	//
-	// 	- **false**
+	// - **false**：不开启DPD功能，IPsec发起端不会发送DPD探测报文。
 	//
 	// example:
 	//
 	// true
 	EnableDpd *bool `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
-	// Indicates whether NAT traversal is enabled for the IPsec-VPN connection.
+	// IPsec连接是否已开启NAT穿越功能。
 	//
-	// 	- **true**
+	// - **true**：开启NAT穿越功能。
 	//
-	//     After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec tunnel.
+	//    开启后，IKE协商过程会删除对UDP端口号的验证过程，同时实现对VPN隧道中NAT网关设备的发现功能。
 	//
-	// 	- **false**
+	// - **false**：不开启NAT穿越功能。
 	//
 	// example:
 	//
 	// true
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
-	// Indicates whether BGP is enabled for the tunnel. Valid values:
+	// 隧道BGP的开启状态。
 	//
-	// 	- **true**
+	// - **true**：已开启。
 	//
-	// 	- **false**
+	// - **false**：未开启。
 	//
 	// example:
 	//
 	// true
 	EnableTunnelsBgp *bool `json:"EnableTunnelsBgp,omitempty" xml:"EnableTunnelsBgp,omitempty"`
-	// The configurations of Phase 1 negotiations.
+	// 第一阶段协商的配置。
 	IkeConfig *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIkeConfig `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty" type:"Struct"`
-	// The gateway IP address of the IPsec-VPN connection.
+	// IPsec连接的网关IP地址。
 	//
-	// >  This parameter is returned only if the IPsec-VPN connection is associated with a transit router.
+	// > 仅IPsec连接绑定转发路由器实例时会返回当前参数。
 	//
 	// example:
 	//
 	// 10.XX.XX.10
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The configurations of Phase 2 negotiations.
+	// 第二阶段协商的配置。
 	IpsecConfig *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIpsecConfig `json:"IpsecConfig,omitempty" xml:"IpsecConfig,omitempty" type:"Struct"`
-	// The CIDR block on the Alibaba Cloud side.
+	// IPsec连接阿里云侧的网段。
 	//
-	// Multiple CIDR blocks are separated by commas (,).
+	// 在多个网段的情况下，网段之间使用半角逗号（,）分隔。
 	//
 	// example:
 	//
 	// 192.168.0.0/16,172.17.0.0/16
 	LocalSubnet *string `json:"LocalSubnet,omitempty" xml:"LocalSubnet,omitempty"`
-	// The name of the IPsec-VPN connection.
+	// IPsec连接的名称。
 	//
 	// example:
 	//
 	// nametest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The network type of the IPsec-VPN connection. Valid values:
+	// IPsec连接的网络类型。
 	//
-	// 	- **public**
+	// - **public**：公网，表示IPsec连接通过公网建立加密通信通道。
 	//
-	// 	- **private**
+	// - **private**：私网，表示IPsec连接通过私网建立加密通信通道。
 	//
 	// example:
 	//
 	// public
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The certificate authority (CA) certificate of the peer.
+	// 对端的CA证书。
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE----- MIIB7zCCAZW***	- -----END CERTIFICATE-----
 	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
-	// The CIDR block of the data center.
+	// 本地数据中心侧的网段。
 	//
-	// Multiple CIDR blocks are separated by commas (,).
+	// 在多个网段的情况下，网段之间使用半角逗号（,）分隔。
 	//
 	// example:
 	//
 	// 10.0.0.0/8,172.16.0.0/16
 	RemoteSubnet *string `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
-	// The ID of the resource group to which the IPsec-VPN connection belongs.
+	// IPsec连接所属的资源组ID。
 	//
-	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group information.
+	// 您可以调用[ListResourceGroups](https://help.aliyun.com/document_detail/158855.html)接口查询资源组信息。
 	//
 	// example:
 	//
 	// rg-acfmzs372yg****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The bandwidth specification of the IPsec-VPN connection. Unit: **Mbit/s**.
+	// IPsec连接的带宽规格。单位：**Mbps**。
 	//
 	// example:
 	//
 	// 1000M
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The association state of the IPsec-VPN connection. Valid values:
+	// IPsec连接与转发路由器实例的绑定状态。
 	//
-	// 	- **active**: The IPsec-VPN connection is associated with a VPN gateway.
+	// - **active**：IPsec连接已与VPN网关实例绑定，状态正常。
 	//
-	// 	- **init**: The IPsec-VPN connection is not associated with any resource and is being initialized.
+	// - **init**：IPsec连接未绑定任何资源，IPsec连接初始化。
 	//
-	// 	- **attaching**: The IPsec-VPN connection is being associated with a transit router.
+	// - **attaching**：IPsec连接与转发路由器实例绑定中。
 	//
-	// 	- **attached**: The IPsec-VPN connection is associated with a transit router.
+	// - **attached**：IPsec连接已与转发路由器实例绑定。
 	//
-	// 	- **detaching**: The IPsec-VPN connection is being disassociated from a transit router.
+	// - **detaching**：IPsec连接与转发路由器实例解绑中。
 	//
-	// 	- **financialLocked**: The IPsec-VPN connection is locked due to overdue payments.
+	// - **financialLocked**：欠费锁定。
 	//
-	// 	- **provisioning**: The IPsec-VPN connection is being prepared.
+	// - **provisioning**：资源准备中。
 	//
-	// 	- **updating**: The IPsec-VPN connection is being updated.
+	// - **updating**：更新中。
 	//
-	// 	- **Upgrading**: The IPsec-VPN connection is being upgraded.
+	// - **upgrading**：升级中。
 	//
-	// 	- **deleted**: The IPsec-VPN connection is deleted.
+	// - **deleted**：已删除。
 	//
 	// example:
 	//
 	// attached
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The status of the IPsec-VPN connection. Valid values:
+	// IPsec连接的状态。
 	//
-	// 	- **ike_sa_not_established**: Phase 1 negotiations failed.
+	// - **ike_sa_not_established**：第一阶段协商失败。
 	//
-	// 	- **ike_sa_established**: Phase 1 negotiations succeeded.
+	// - **ike_sa_established**：第一阶段协商成功。
 	//
-	// 	- **ipsec_sa_not_established**: Phase 2 negotiations failed.
+	// - **ipsec_sa_not_established**：第二阶段协商失败。
 	//
-	// 	- **ipsec_sa_established**: Phase 2 negotiations succeeded.
+	// - **ipsec_sa_established**：第二阶段协商成功。
 	//
 	// example:
 	//
 	// ipsec_sa_established
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The list of tags to be added to the IPsec-VPN connection.
+	// IPsec连接绑定的标签列表。
 	Tag *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
-	// The ID of the transit router with which the IPsec-VPN connection is associated.
+	// IPsec连接绑定的转发路由器实例ID。
 	//
 	// example:
 	//
 	// tr-p0we2edef9qr44a85****
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	// The name of the transit router.
+	// 转发路由器实例的名称。
 	//
 	// example:
 	//
 	// nametest
 	TransitRouterName *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
-	TunnelBandwidth   *string `json:"TunnelBandwidth,omitempty" xml:"TunnelBandwidth,omitempty"`
-	// The tunnel configurations of the IPsec-VPN connection.
+	// 用于说明VPN单条隧道的带宽规格，取值：
 	//
-	// Parameters in **TunnelOptionsSpecification*	- are returned only if you query an IPsec-VPN connection in dual-tunnel mode.
+	// Standard（默认值）：标准型，默认带宽1Gbps
+	//
+	// Large（大型）：大型，默认带宽3Gbps
+	//
+	// example:
+	//
+	// Standard
+	TunnelBandwidth *string `json:"TunnelBandwidth,omitempty" xml:"TunnelBandwidth,omitempty"`
+	// IPsec连接的隧道配置信息。
+	//
+	// 仅查询双隧道模式的IPsec连接会返回**TunnelOptionsSpecification**数组下的参数。
 	TunnelOptionsSpecification *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecification `json:"TunnelOptionsSpecification,omitempty" xml:"TunnelOptionsSpecification,omitempty" type:"Struct"`
-	// The health check configuration of the IPsec-VPN connection.
+	// IPsec连接的健康检查配置。
 	VcoHealthCheck *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionVcoHealthCheck `json:"VcoHealthCheck,omitempty" xml:"VcoHealthCheck,omitempty" type:"Struct"`
-	// The BGP configuration of the IPsec-VPN connection.
+	// IPsec连接BGP路由协议的配置。
 	VpnBgpConfig *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionVpnBgpConfig `json:"VpnBgpConfig,omitempty" xml:"VpnBgpConfig,omitempty" type:"Struct"`
-	// The ID of the IPsec-VPN connection.
+	// IPsec连接的ID。
 	//
 	// example:
 	//
 	// vco-bp10lz7aejumd****
 	VpnConnectionId *string `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
-	// The ID of the VPN gateway.
+	// VPN网关的实例ID。
 	//
 	// example:
 	//
@@ -687,65 +695,65 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection) Validate
 }
 
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIkeConfig struct {
-	// The authentication algorithm in the IKE phase.
+	// IKE阶段认证算法。
 	//
 	// example:
 	//
 	// sha1
 	IkeAuthAlg *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
-	// The encryption algorithm in the IKE phase.
+	// IKE阶段加密算法。
 	//
 	// example:
 	//
 	// aes
 	IkeEncAlg *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
-	// The lifetime in the IKE phase. Unit: seconds.
+	// IKE阶段生存时间。单位：秒。
 	//
 	// example:
 	//
 	// 86400
 	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
-	// The IKE negotiation mode.
+	// IKE阶段协商模式。
 	//
-	// 	- **main**: This mode offers higher security during negotiations.
+	// - **main**：主模式，协商过程安全性高。
 	//
-	// 	- **aggressive**: This mode is faster and has a higher success rate.
+	// - **aggressive**：野蛮模式，协商快速且协商成功率高。
 	//
 	// example:
 	//
 	// main
 	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
-	// The DH group in the IKE phase.
+	// IKE阶段DH分组。
 	//
 	// example:
 	//
 	// group2
 	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
-	// The version of the IKE protocol.
+	// IKE协议版本。
 	//
-	// 	- **ikev1**
+	// - **ikev1**
 	//
-	// 	- **ikev2**
+	// - **ikev2**
 	//
-	// Compared with IKEv1, IKEv2 simplifies the SA negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
+	// 相对于IKEv1版本，IKEv2版本简化了SA的协商过程并且对于多网段的场景提供了更好的支持。
 	//
 	// example:
 	//
 	// ikev1
 	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
-	// The identifier of the IPsec-VPN connection on the data center side.
+	// IPsec连接对端本地数据中心侧的标识。
 	//
 	// example:
 	//
 	// 116.64.XX.XX
 	LocalId *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
-	// The pre-shared key.
+	// 预共享密钥。
 	//
 	// example:
 	//
 	// pgw6dy7****
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// The identifier of the IPsec-VPN connection on the Alibaba Cloud side.
+	// IPsec连接阿里云侧的标识。
 	//
 	// example:
 	//
@@ -847,25 +855,25 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIkeConfig)
 }
 
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIpsecConfig struct {
-	// The authentication algorithm in the IPsec phase.
+	// IPsec阶段认证算法。
 	//
 	// example:
 	//
 	// sha1
 	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
-	// The encryption algorithm in the IPsec phase.
+	// IPsec阶段加密算法。
 	//
 	// example:
 	//
 	// aes
 	IpsecEncAlg *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
-	// The lifetime in the IPsec phase. Unit: seconds.
+	// IPsec阶段生存时间。单位：秒。
 	//
 	// example:
 	//
 	// 86400
 	IpsecLifetime *int64 `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
-	// The DH group in the IPsec phase.
+	// IPsec阶段DH分组。
 	//
 	// example:
 	//
@@ -956,13 +964,13 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTag) Valid
 }
 
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTagTag struct {
-	// The tag key of the IPsec-VPN connection.
+	// 标签键。
 	//
 	// example:
 	//
 	// TagKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the IPsec-VPN connection.
+	// 标签值。
 	//
 	// example:
 	//
@@ -1035,107 +1043,107 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOpti
 }
 
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions struct {
-	// The ID of the customer gateway associated with the tunnel.
+	// 隧道关联的用户网关ID。
 	//
 	// example:
 	//
 	// cgw-p0wy363lucf1uyae8****
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	// Indicates whether the DPD feature is enabled for the tunnel. Valid values:
+	// 隧道是否已开启DPD（对等体存活检测）功能。
 	//
-	// 	- **false**
+	// - **false**：未开启。
 	//
-	// 	- **true**
+	// - **true**：已开启。
 	//
 	// example:
 	//
 	// true
 	EnableDpd *string `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
-	// Indicates whether NAT traversal is enabled for the tunnel. Valid values:
+	// 隧道是否已开启NAT穿越功能。
 	//
-	// 	- **false**
+	// - **false**：未开启。
 	//
-	// 	- **true**
+	// - **true**：已开启。
 	//
 	// example:
 	//
 	// true
 	EnableNatTraversal *string `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
-	// The tunnel IP address.
+	// 隧道的IP地址。
 	//
 	// example:
 	//
 	// 47.21.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The CA certificate of the tunnel peer.
+	// 隧道对端的CA证书。
 	//
-	// This parameter is returned only if the VPN gateway is of the SM type.
+	// 仅VPN网关实例的类型为国密型时才会返回当前参数。
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE----- MIIB7zCCAZW***	- -----END CERTIFICATE-----
 	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
-	// The tunnel role. Valid values:
+	// 隧道的角色。
 	//
-	// 	- **master**: The tunnel is an active tunnel.
+	// - **master**：表示当前隧道为主隧道。
 	//
-	// 	- **slave**: The tunnel is a standby tunnel.
+	// - **slave**：表示当前隧道为备隧道。
 	//
 	// example:
 	//
 	// master
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The tunnel status. Valid values:
+	// 隧道的状态。
 	//
-	// 	- **active**
+	// - **active**：状态正常。
 	//
-	// 	- **updating**
+	// - **updating**：更新中。
 	//
-	// 	- **deleting**
+	// - **deleting**：删除中。
 	//
 	// example:
 	//
 	// active
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The state of the IPsec-VPN connection. Valid values:
+	// IPsec连接的状态。
 	//
-	// 	- **ike_sa_not_established**: Phase 1 negotiations failed.
+	// - **ike_sa_not_established**：第一阶段协商失败。
 	//
-	// 	- **ike_sa_established**: Phase 1 negotiations succeeded.
+	// - **ike_sa_established**：第一阶段协商成功。
 	//
-	// 	- **ipsec_sa_not_established**: Phase 2 negotiations failed.
+	// - **ipsec_sa_not_established**：第二阶段协商失败。
 	//
-	// 	- **ipsec_sa_established**: Phase 2 negotiations succeeded.
+	// - **ipsec_sa_established**：第二阶段协商成功。
 	//
 	// example:
 	//
 	// ipsec_sa_established
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The BGP configurations.
+	// 隧道的BGP配置信息。
 	TunnelBgpConfig *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig `json:"TunnelBgpConfig,omitempty" xml:"TunnelBgpConfig,omitempty" type:"Struct"`
-	// The tunnel ID.
+	// 隧道ID。
 	//
 	// example:
 	//
 	// tun-opsqc4d97wni27****
 	TunnelId *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
-	// The configuration of Phase 1 negotiations.
+	// 第一阶段协商的配置。
 	TunnelIkeConfig *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig `json:"TunnelIkeConfig,omitempty" xml:"TunnelIkeConfig,omitempty" type:"Struct"`
-	// The order in which the tunnel is created.
+	// 隧道的创建顺序。
 	//
-	// 	- **1**: Tunnel 1.
+	// - **1**：第一条隧道。
 	//
-	// 	- **2**: Tunnel 2.
+	// - **2**：第二条隧道。
 	//
-	// >  This parameter is returned only if the IPsec-VPN connection is associated with a transit router.
+	// > 仅IPsec连接绑定转发路由器时会返回该参数。
 	//
 	// example:
 	//
 	// 1
 	TunnelIndex *int32 `json:"TunnelIndex,omitempty" xml:"TunnelIndex,omitempty"`
-	// The configurations of Phase 2 negotiations.
+	// 第二阶段协商的配置。
 	TunnelIpsecConfig *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig `json:"TunnelIpsecConfig,omitempty" xml:"TunnelIpsecConfig,omitempty" type:"Struct"`
-	// The zone of the tunnel.
+	// 隧道部署的可用区。
 	//
 	// example:
 	//
@@ -1297,41 +1305,41 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOpti
 }
 
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig struct {
-	// The negotiation state of BGP. Valid values:
+	// BGP的协商状态。
 	//
-	// 	- **success**
+	// - **success**：正常。
 	//
-	// 	- **false**
+	// - **failed**：异常。
 	//
 	// example:
 	//
 	// success
 	BgpStatus *string `json:"BgpStatus,omitempty" xml:"BgpStatus,omitempty"`
-	// The ASN on the Alibaba Cloud side.
+	// 隧道本端（阿里云侧）的自治系统号。
 	//
 	// example:
 	//
 	// 65530
 	LocalAsn *string `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
-	// The BGP address on the Alibaba Cloud side.
+	// 隧道本端（阿里云侧）的BGP地址。
 	//
 	// example:
 	//
 	// 169.254.10.1
 	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
-	// The ASN of the tunnel peer.
+	// 隧道对端的自治系统号。
 	//
 	// example:
 	//
 	// 65531
 	PeerAsn *string `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
-	// The BGP IP address of the tunnel peer.
+	// 隧道对端的BGP地址。
 	//
 	// example:
 	//
 	// 169.254.10.2
 	PeerBgpIp *string `json:"PeerBgpIp,omitempty" xml:"PeerBgpIp,omitempty"`
-	// The BGP CIDR block of the tunnel.
+	// 隧道的BGP网段。
 	//
 	// example:
 	//
@@ -1406,59 +1414,59 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOpti
 }
 
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig struct {
-	// The authentication algorithm in the IKE phase.
+	// IKE阶段认证算法。
 	//
 	// example:
 	//
 	// sha1
 	IkeAuthAlg *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
-	// The encryption algorithm in the IKE phase.
+	// IKE阶段加密算法。
 	//
 	// example:
 	//
 	// aes
 	IkeEncAlg *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
-	// The lifetime in the IKE phase. Unit: seconds.
+	// IKE阶段生存时间。单位：秒。
 	//
 	// example:
 	//
 	// 86400
 	IkeLifetime *string `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
-	// The IKE negotiation mode.
+	// IKE协商模式。
 	//
-	// 	- **main**: This mode offers higher security during negotiations.
+	// - **main**：主模式，协商过程安全性高。
 	//
-	// 	- **aggressive**: This mode is faster and has a higher success rate.
+	// - **aggressive**：野蛮模式，协商快速且协商成功率高。
 	//
 	// example:
 	//
 	// main
 	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
-	// The DH group in the IKE phase.
+	// IKE阶段DH分组。
 	//
 	// example:
 	//
 	// group2
 	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
-	// The version of the IKE protocol.
+	// IKE协议版本。
 	//
 	// example:
 	//
 	// ikev1
 	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
-	// The identifier of the tunnel on the Alibaba Cloud side.
+	// 隧道本端（阿里云侧）的标识。
 	//
 	// example:
 	//
 	// 47.21.XX.XX
 	LocalId *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
-	// The pre-shared key.
+	// 预共享密钥。
 	//
 	// example:
 	//
 	// 123456****
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// The identifier of the tunnel peer.
+	// 隧道对端的标识。
 	//
 	// example:
 	//
@@ -1560,25 +1568,25 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOpti
 }
 
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig struct {
-	// The authentication algorithm in the IPsec phase.
+	// IPsec阶段认证算法。
 	//
 	// example:
 	//
 	// sha1
 	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
-	// The encryption algorithm in the IPsec phase.
+	// IPsec阶段加密算法。
 	//
 	// example:
 	//
 	// aes
 	IpsecEncAlg *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
-	// The lifetime in the IPsec phase. Unit: seconds.
+	// IPsec阶段生存时间。单位：秒。
 	//
 	// example:
 	//
 	// 86400
 	IpsecLifetime *string `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
-	// The DH group in the IPsec phase.
+	// IPsec阶段DH分组。
 	//
 	// example:
 	//
@@ -1635,55 +1643,55 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOpti
 }
 
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionVcoHealthCheck struct {
-	// The destination IP address.
+	// 目的IP地址。
 	//
 	// example:
 	//
 	// 192.168.0.1
 	Dip *string `json:"Dip,omitempty" xml:"Dip,omitempty"`
-	// Indicates whether the health check feature is enabled.
+	// 健康检查的开启状态。
 	//
-	// 	- **true**
+	// - **true**：已开启。
 	//
-	// 	- **false**
+	// - **false**：未开启。
 	//
 	// example:
 	//
 	// true
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The interval between two consecutive health checks. Unit: seconds.
+	// 健康检查的时间间隔。单位：秒。
 	//
 	// example:
 	//
 	// 2
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// Indicates whether advertised routes are withdrawn when the health check fails.
+	// 健康检查失败时是否撤销已发布的路由。
 	//
-	// 	- **revoke_route**: Advertised routes are withdrawn.
+	// - **revoke_route**：撤销路由。
 	//
-	// 	- **reserve_route**: Advertised routes are not withdrawn.
+	// - **reserve_route**：不撤销路由。
 	//
 	// example:
 	//
 	// revoke_route
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The maximum number of health check retries.
+	// 健康检查的重试发包次数。
 	//
 	// example:
 	//
 	// 3
 	Retry *int32 `json:"Retry,omitempty" xml:"Retry,omitempty"`
-	// The source IP address.
+	// 源IP地址。
 	//
 	// example:
 	//
 	// 192.168.0.50
 	Sip *string `json:"Sip,omitempty" xml:"Sip,omitempty"`
-	// The state of the health check. Valid values:
+	// 健康检查状态。
 	//
-	// 	- **success**
+	// - **success**：正常。
 	//
-	// 	- **failed**
+	// - **failed**：异常。
 	//
 	// example:
 	//
@@ -1767,47 +1775,47 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionVcoHealthC
 }
 
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionVpnBgpConfig struct {
-	// The authentication key of the BGP routing protocol.
+	// BGP路由协议的认证密钥。
 	//
 	// example:
 	//
 	// AuthKey****
 	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
-	// The ASN on the Alibaba Cloud side.
+	// 阿里云侧自治系统号。
 	//
 	// example:
 	//
 	// 65531
 	LocalAsn *int64 `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
-	// The BGP IP address on the Alibaba Cloud side.
+	// 阿里云侧BGP地址。
 	//
 	// example:
 	//
 	// 169.254.10.2
 	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
-	// The ASN of the peer.
+	// 对端自治系统号。
 	//
 	// example:
 	//
 	// 65530
 	PeerAsn *int64 `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
-	// The BGP IP address of the peer.
+	// 对端BGP地址。
 	//
 	// example:
 	//
 	// 169.254.10.1
 	PeerBgpIp *string `json:"PeerBgpIp,omitempty" xml:"PeerBgpIp,omitempty"`
-	// The negotiation state of the BGP routing protocol. Valid values:
+	// BGP路由协议的协商状态。
 	//
-	// 	- **success**
+	// - **success**：正常。
 	//
-	// 	- **false**
+	// - **false**：异常。
 	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The BGP CIDR block of the IPsec-VPN connection. The CIDR block falls within 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
+	// IPsec连接BGP网段。该网段是一个在169.254.0.0/16内的子网掩码长度为30的网段。
 	//
 	// example:
 	//

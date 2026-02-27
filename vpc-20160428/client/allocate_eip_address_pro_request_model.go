@@ -144,9 +144,9 @@ type AllocateEipAddressProRequest struct {
 	//
 	// 	- **PayByTraffic**: pay-by-data-transfer.
 	//
-	// When **InstanceChargeType*	- is set to **PrePaid**, you must set **InternetChargeType*	- to **PayByBandwidth**.
+	// If **InstanceChargeType*	- is set to **PrePaid**, you must set **InternetChargeType*	- to **PayByBandwidth**.
 	//
-	// When **InstanceChargeType*	- is set to **PostPaid**, set **InternetChargeType*	- to **PayByBandwidth*	- or **PayByTraffic**.
+	// If **InstanceChargeType*	- is set to **PostPaid**, **InternetChargeType*	- can be set to **PayByBandwidth*	- or **PayByTraffic**.
 	//
 	// example:
 	//
@@ -198,7 +198,7 @@ type AllocateEipAddressProRequest struct {
 	//
 	// The EIP is allocated from the IP address pool.
 	//
-	// By default, you cannot use the IP address pool. To use this feature, apply for the privilege in the Quota Center console. For more information, see the "Request a quota increase in the Quota Center console" section of [Manage EIP quotas](https://help.aliyun.com/document_detail/108213.html).
+	// By default, the IP address pool feature is unavailable. If you need to use this feature, contact your account manager.
 	//
 	// example:
 	//
@@ -435,7 +435,13 @@ func (s *AllocateEipAddressProRequest) Validate() error {
 }
 
 type AllocateEipAddressProRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// FinanceDept
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// FinanceJoshua
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

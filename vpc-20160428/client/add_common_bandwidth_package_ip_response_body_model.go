@@ -14,8 +14,6 @@ type iAddCommonBandwidthPackageIpResponseBody interface {
 }
 
 type AddCommonBandwidthPackageIpResponseBody struct {
-	// The request ID.
-	//
 	// example:
 	//
 	// 01FDDD49-C4B7-4D2A-A8E5-A93915C450A6

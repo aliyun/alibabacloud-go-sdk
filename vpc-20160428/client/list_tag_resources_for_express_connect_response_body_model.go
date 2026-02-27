@@ -33,8 +33,7 @@ type ListTagResourcesForExpressConnectResponseBody struct {
 	// example:
 	//
 	// 54B48E3D-DF70-471B-AA93-08E683A1B45
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tags that are added to the resource.
+	RequestId    *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagResources *ListTagResourcesForExpressConnectResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -117,36 +116,10 @@ func (s *ListTagResourcesForExpressConnectResponseBodyTagResources) Validate() e
 }
 
 type ListTagResourcesForExpressConnectResponseBodyTagResourcesTagResource struct {
-	// The resource ID.
-	//
-	// example:
-	//
-	// pc-bp16qjewdsunr41m1****
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource. Valid values:
-	//
-	// 	- **PHYSICALCONNECTION**: Express Connect circuit.
-	//
-	// 	- **VIRTUALBORDERROUTER**: VBR.
-	//
-	// 	- **ROUTERINTERFACE**: router interface.
-	//
-	// example:
-	//
-	// PHYSICALCONNECTION
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The key of the tag that is added to the resource.
-	//
-	// example:
-	//
-	// FinanceDept
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag that is added to the resource.
-	//
-	// example:
-	//
-	// FinanceJoshua
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesForExpressConnectResponseBodyTagResourcesTagResource) String() string {

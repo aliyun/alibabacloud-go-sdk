@@ -29,9 +29,8 @@ type DescribeVpnConnectionLogsResponseBody struct {
 	// example:
 	//
 	// 10
-	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The log list.
-	Data *DescribeVpnConnectionLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Count *int32                                     `json:"Count,omitempty" xml:"Count,omitempty"`
+	Data  *DescribeVpnConnectionLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Indicates whether the log is accurate. Valid values:
 	//
 	// 	- **true**

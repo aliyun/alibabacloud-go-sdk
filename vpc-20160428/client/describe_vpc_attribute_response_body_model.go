@@ -68,11 +68,7 @@ type iDescribeVpcAttributeResponseBody interface {
 }
 
 type DescribeVpcAttributeResponseBody struct {
-	// The list of Cloud Enterprise Network (CEN) instances to which the VPC is attached.
-	//
-	// If the VPC is not attached to a CEN instance, the parameter is not returned.
-	AssociatedCens *DescribeVpcAttributeResponseBodyAssociatedCens `json:"AssociatedCens,omitempty" xml:"AssociatedCens,omitempty" type:"Struct"`
-	// The route source associated with the VPC.
+	AssociatedCens               *DescribeVpcAttributeResponseBodyAssociatedCens               `json:"AssociatedCens,omitempty" xml:"AssociatedCens,omitempty" type:"Struct"`
 	AssociatedPropagationSources *DescribeVpcAttributeResponseBodyAssociatedPropagationSources `json:"AssociatedPropagationSources,omitempty" xml:"AssociatedPropagationSources,omitempty" type:"Struct"`
 	// The IPv4 CIDR block of the VPC.
 	//
@@ -80,6 +76,8 @@ type DescribeVpcAttributeResponseBody struct {
 	//
 	// 192.168.0.0/16
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// Deprecated
+	//
 	// Indicates whether the ClassicLink feature is enabled. Valid values:
 	//
 	// 	- **true**
@@ -89,9 +87,8 @@ type DescribeVpcAttributeResponseBody struct {
 	// example:
 	//
 	// false
-	ClassicLinkEnabled *bool `json:"ClassicLinkEnabled,omitempty" xml:"ClassicLinkEnabled,omitempty"`
-	// The list of resources deployed in the VPC.
-	CloudResources *DescribeVpcAttributeResponseBodyCloudResources `json:"CloudResources,omitempty" xml:"CloudResources,omitempty" type:"Struct"`
+	ClassicLinkEnabled *bool                                           `json:"ClassicLinkEnabled,omitempty" xml:"ClassicLinkEnabled,omitempty"`
+	CloudResources     *DescribeVpcAttributeResponseBodyCloudResources `json:"CloudResources,omitempty" xml:"CloudResources,omitempty" type:"Struct"`
 	// The time when the VPC was created.
 	//
 	// example:
@@ -151,8 +148,7 @@ type DescribeVpcAttributeResponseBody struct {
 	// example:
 	//
 	// 2408:XXXX:0:a600::/56
-	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
-	// The IPv6 CIDR block of the VPC.
+	Ipv6CidrBlock  *string                                         `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
 	Ipv6CidrBlocks *DescribeVpcAttributeResponseBodyIpv6CidrBlocks `json:"Ipv6CidrBlocks,omitempty" xml:"Ipv6CidrBlocks,omitempty" type:"Struct"`
 	// Indicates whether the VPC is the default VPC. Valid values:
 	//
@@ -187,8 +183,7 @@ type DescribeVpcAttributeResponseBody struct {
 	// example:
 	//
 	// rg-acfmxazbvgb4ph****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The secondary IPv4 CIDR block of the VPC.
+	ResourceGroupId     *string                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SecondaryCidrBlocks *DescribeVpcAttributeResponseBodySecondaryCidrBlocks `json:"SecondaryCidrBlocks,omitempty" xml:"SecondaryCidrBlocks,omitempty" type:"Struct"`
 	// The status of the VPC. Valid values:
 	//
@@ -209,18 +204,15 @@ type DescribeVpcAttributeResponseBody struct {
 	// example:
 	//
 	// true
-	SupportIpv4Gateway *bool `json:"SupportIpv4Gateway,omitempty" xml:"SupportIpv4Gateway,omitempty"`
-	// The information about the tags.
-	Tags *DescribeVpcAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The user CIDR block. Multiple CIDR blocks are separated by commas (,). At most three CIDR blocks are returned.
-	UserCidrs *DescribeVpcAttributeResponseBodyUserCidrs `json:"UserCidrs,omitempty" xml:"UserCidrs,omitempty" type:"Struct"`
+	SupportIpv4Gateway *bool                                      `json:"SupportIpv4Gateway,omitempty" xml:"SupportIpv4Gateway,omitempty"`
+	Tags               *DescribeVpcAttributeResponseBodyTags      `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	UserCidrs          *DescribeVpcAttributeResponseBodyUserCidrs `json:"UserCidrs,omitempty" xml:"UserCidrs,omitempty" type:"Struct"`
 	// The ID of the vRouter that belongs to the VPC.
 	//
 	// example:
 	//
 	// vrt-bp1jso6ng1at0ajsc****
-	VRouterId *string `json:"VRouterId,omitempty" xml:"VRouterId,omitempty"`
-	// The list of vSwitches deployed in the VPC.
+	VRouterId  *string                                     `json:"VRouterId,omitempty" xml:"VRouterId,omitempty"`
 	VSwitchIds *DescribeVpcAttributeResponseBodyVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
 	// The ID of the VPC.
 	//
@@ -575,26 +567,9 @@ func (s *DescribeVpcAttributeResponseBodyAssociatedCens) Validate() error {
 }
 
 type DescribeVpcAttributeResponseBodyAssociatedCensAssociatedCen struct {
-	// The ID of the CEN instance to which the VPC is attached.
-	//
-	// example:
-	//
-	// cen-7qthudw0ll6jmc****
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the account to which the CEN instance belongs.
-	//
-	// example:
-	//
-	// 28311773240248****
-	CenOwnerId *int64 `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
-	// The status of the CEN instance.
-	//
-	// **Attached*	- is returned only when the VPC is attached to a CEN instance.
-	//
-	// example:
-	//
-	// Attached
-	CenStatus *string `json:"CenStatus,omitempty" xml:"CenStatus,omitempty"`
+	CenId      *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CenOwnerId *int64  `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
+	CenStatus  *string `json:"CenStatus,omitempty" xml:"CenStatus,omitempty"`
 }
 
 func (s DescribeVpcAttributeResponseBodyAssociatedCensAssociatedCen) String() string {
@@ -671,50 +646,11 @@ func (s *DescribeVpcAttributeResponseBodyAssociatedPropagationSources) Validate(
 }
 
 type DescribeVpcAttributeResponseBodyAssociatedPropagationSourcesAssociatedPropagationSources struct {
-	// Indicates whether routes are advertised to the VPC.
-	//
-	// example:
-	//
-	// true
-	RoutePropagated *bool `json:"RoutePropagated,omitempty" xml:"RoutePropagated,omitempty"`
-	// The instance ID of the source.
-	//
-	// example:
-	//
-	// cen-dc4vwznpwbobrl****
+	RoutePropagated  *bool   `json:"RoutePropagated,omitempty" xml:"RoutePropagated,omitempty"`
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
-	// The account ID of the source.
-	//
-	// example:
-	//
-	// 153980532164****
-	SourceOwnerId *int64 `json:"SourceOwnerId,omitempty" xml:"SourceOwnerId,omitempty"`
-	// The source type.
-	//
-	// 	- **CEN**
-	//
-	// 	- **VPN**
-	//
-	// 	- **TR**
-	//
-	// 	- **ECR**
-	//
-	// example:
-	//
-	// CEN
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The binding status.
-	//
-	// 	- **Attaching**
-	//
-	// 	- **Attached**
-	//
-	// 	- **Detaching**
-	//
-	// example:
-	//
-	// Attaching
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SourceOwnerId    *int64  `json:"SourceOwnerId,omitempty" xml:"SourceOwnerId,omitempty"`
+	SourceType       *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeVpcAttributeResponseBodyAssociatedPropagationSourcesAssociatedPropagationSources) String() string {
@@ -809,24 +745,8 @@ func (s *DescribeVpcAttributeResponseBodyCloudResources) Validate() error {
 }
 
 type DescribeVpcAttributeResponseBodyCloudResourcesCloudResourceSetType struct {
-	// The number of resources in the VPC.
-	//
-	// example:
-	//
-	// 1
-	ResourceCount *int32 `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
-	// The type of resource deployed in the VPC. Valid values: Valid values:
-	//
-	// 	- **VSwitch**
-	//
-	// 	- **VRouter**
-	//
-	// 	- **RouteTable**
-	//
-	// example:
-	//
-	// VSwitch
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceCount *int32  `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
+	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s DescribeVpcAttributeResponseBodyCloudResourcesCloudResourceSetType) String() string {
@@ -894,28 +814,8 @@ func (s *DescribeVpcAttributeResponseBodyIpv6CidrBlocks) Validate() error {
 }
 
 type DescribeVpcAttributeResponseBodyIpv6CidrBlocksIpv6CidrBlock struct {
-	// The IPv6 CIDR block of the VPC.
-	//
-	// example:
-	//
-	// 2408:XXXX:0:6a::/56
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
-	// The IPv6 CIDR block type of the VPC. Valid values:
-	//
-	// 	- **BGP*	- (default)
-	//
-	// 	- **ChinaMobile**
-	//
-	// 	- **ChinaUnicom**
-	//
-	// 	- **ChinaTelecom**
-	//
-	// >  If you are allowed to use single-ISP bandwidth, valid values are **ChinaTelecom**, **ChinaUnicom**, and **ChinaMobile**
-	//
-	// example:
-	//
-	// BGP
-	Ipv6Isp *string `json:"Ipv6Isp,omitempty" xml:"Ipv6Isp,omitempty"`
+	Ipv6Isp       *string `json:"Ipv6Isp,omitempty" xml:"Ipv6Isp,omitempty"`
 }
 
 func (s DescribeVpcAttributeResponseBodyIpv6CidrBlocksIpv6CidrBlock) String() string {
@@ -1008,17 +908,7 @@ func (s *DescribeVpcAttributeResponseBodyTags) Validate() error {
 }
 
 type DescribeVpcAttributeResponseBodyTagsTag struct {
-	// The key of tag N.
-	//
-	// example:
-	//
-	// FinanceDept
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N.
-	//
-	// example:
-	//
-	// FinanceJoshua
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

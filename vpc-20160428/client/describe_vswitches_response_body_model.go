@@ -45,9 +45,8 @@ type DescribeVSwitchesResponseBody struct {
 	// example:
 	//
 	// 1
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The details about the vSwitch.
-	VSwitches *DescribeVSwitchesResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Struct"`
+	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	VSwitches  *DescribeVSwitchesResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Struct"`
 }
 
 func (s DescribeVSwitchesResponseBody) String() string {
@@ -147,124 +146,24 @@ func (s *DescribeVSwitchesResponseBodyVSwitches) Validate() error {
 }
 
 type DescribeVSwitchesResponseBodyVSwitchesVSwitch struct {
-	// The number of available IP addresses in the vSwitch.
-	//
-	// example:
-	//
-	// 1
-	AvailableIpAddressCount *int64 `json:"AvailableIpAddressCount,omitempty" xml:"AvailableIpAddressCount,omitempty"`
-	// The IPv4 CIDR block of the vSwitch.
-	//
-	// example:
-	//
-	// 172.16.0.0/24
-	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The time when the vSwitch was created.
-	//
-	// example:
-	//
-	// 2022-01-18T12:43:57Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the vSwitch.
-	//
-	// example:
-	//
-	// VSwitchDescription
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether IPv6 is enabled for the vSwitch. If you enable IPv6, you must configure an IPv6 CIDR block for the vSwitch. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	EnabledIpv6 *bool `json:"EnabledIpv6,omitempty" xml:"EnabledIpv6,omitempty"`
-	// The IPv6 CIDR block of the vSwitch.
-	//
-	// example:
-	//
-	// 2408:4002:10c4:4e03::/64
-	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
-	// Indicates whether the vSwitch is the default vSwitch. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The ID of the network access control list (ACL).
-	//
-	// example:
-	//
-	// nacl-a2do9e413e0spzasx****
-	NetworkAclId *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the resource belongs.
-	//
-	// example:
-	//
-	// 25346073170691****
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the resource group to which the vSwitch belongs.
-	//
-	// example:
-	//
-	// rg-acfmxazb4ph6aiy****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The information about the route table.
-	RouteTable *DescribeVSwitchesResponseBodyVSwitchesVSwitchRouteTable `json:"RouteTable,omitempty" xml:"RouteTable,omitempty" type:"Struct"`
-	// Indicates whether the vSwitch is shared.
-	//
-	// 	- If no value is returned, the vSwitch is a regular vSwitch.
-	//
-	// 	- If **Shared*	- is returned, the vSwitch is shared.
-	//
-	// 	- If **Sharing*	- is returned, the vSwitch is being shared.
-	//
-	// example:
-	//
-	// Shared
-	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	// The status of the vSwitch. Valid values:
-	//
-	// 	- **Pending**
-	//
-	// 	- **Available**
-	//
-	// example:
-	//
-	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the vSwitch.
-	Tags *DescribeVSwitchesResponseBodyVSwitchesVSwitchTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The vSwitch ID.
-	//
-	// example:
-	//
-	// vsw-25bcdxs7pv1****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The vSwitch name.
-	//
-	// example:
-	//
-	// vSwitch
-	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
-	// The ID of the VPC to which the vSwitch belongs.
-	//
-	// example:
-	//
-	// vpc-257gcdcdq64****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the zone to which the vSwitch belongs.
-	//
-	// example:
-	//
-	// cn-hangzhou-d
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AvailableIpAddressCount *int64                                                   `json:"AvailableIpAddressCount,omitempty" xml:"AvailableIpAddressCount,omitempty"`
+	CidrBlock               *string                                                  `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	CreationTime            *string                                                  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description             *string                                                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnabledIpv6             *bool                                                    `json:"EnabledIpv6,omitempty" xml:"EnabledIpv6,omitempty"`
+	Ipv6CidrBlock           *string                                                  `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
+	IsDefault               *bool                                                    `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	NetworkAclId            *string                                                  `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
+	OwnerId                 *int64                                                   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId         *string                                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	RouteTable              *DescribeVSwitchesResponseBodyVSwitchesVSwitchRouteTable `json:"RouteTable,omitempty" xml:"RouteTable,omitempty" type:"Struct"`
+	ShareType               *string                                                  `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	Status                  *string                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                    *DescribeVSwitchesResponseBodyVSwitchesVSwitchTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VSwitchId               *string                                                  `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchName             *string                                                  `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
+	VpcId                   *string                                                  `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId                  *string                                                  `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeVSwitchesResponseBodyVSwitchesVSwitch) String() string {
@@ -452,21 +351,7 @@ func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) Validate() error {
 }
 
 type DescribeVSwitchesResponseBodyVSwitchesVSwitchRouteTable struct {
-	// The ID of the route table that is associated with the vSwitch.
-	//
-	// example:
-	//
-	// vrt-bp145q7glnuzdv****
-	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// The type of the route table. Valid values:
-	//
-	// 	- **System**
-	//
-	// 	- **Custom**
-	//
-	// example:
-	//
-	// System
+	RouteTableId   *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
 	RouteTableType *string `json:"RouteTableType,omitempty" xml:"RouteTableType,omitempty"`
 }
 
@@ -535,17 +420,7 @@ func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitchTags) Validate() error {
 }
 
 type DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// department
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// dev
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

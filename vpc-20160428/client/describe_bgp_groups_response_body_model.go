@@ -22,7 +22,6 @@ type iDescribeBgpGroupsResponseBody interface {
 }
 
 type DescribeBgpGroupsResponseBody struct {
-	// The detailed information about the BGP group.
 	BgpGroups *DescribeBgpGroupsResponseBodyBgpGroups `json:"BgpGroups,omitempty" xml:"BgpGroups,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,100 +146,20 @@ func (s *DescribeBgpGroupsResponseBodyBgpGroups) Validate() error {
 }
 
 type DescribeBgpGroupsResponseBodyBgpGroupsBgpGroup struct {
-	// The key used by the BGP group.
-	//
-	// example:
-	//
-	// !PWZ****
-	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
-	// The ID of the BGP group.
-	//
-	// example:
-	//
-	// bgpg-bp1k25cyp26cllath****
-	BgpGroupId *string `json:"BgpGroupId,omitempty" xml:"BgpGroupId,omitempty"`
-	// The description of the BGP group.
-	//
-	// example:
-	//
-	// The description of the BGP group.
+	AuthKey     *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
+	BgpGroupId  *string `json:"BgpGroupId,omitempty" xml:"BgpGroupId,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The hold time to receive BGP messages. Unit: seconds.
-	//
-	// >  If no message is received within the hold time, the BGP peer is considered disconnected.
-	//
-	// example:
-	//
-	// 30
-	Hold *string `json:"Hold,omitempty" xml:"Hold,omitempty"`
-	// The IP version of the BGP group. Valid values:
-	//
-	// 	- **ipv4**: IPv4
-	//
-	// 	- **ipv6**: IPv6. IPv6 is supported only if the VBR of the BGP group has IPv6 enabled.
-	//
-	// example:
-	//
-	// IPv4
-	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// Indicates whether the ASN is fake. Valid values:
-	//
-	// 	- **false**
-	//
-	// 	- **true**
-	//
-	// example:
-	//
-	// true
-	IsFake *string `json:"IsFake,omitempty" xml:"IsFake,omitempty"`
-	// The keepalive time. Unit: seconds.
-	//
-	// example:
-	//
-	// 10
-	Keepalive *string `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
-	// The ASN of the device on the Alibaba Cloud side.
-	//
-	// example:
-	//
-	// 45104
-	LocalAsn *string `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
-	// The name of the BGP group.
-	//
-	// example:
-	//
-	// name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The autonomous system number (ASN) of the on-premises device in the data center.
-	//
-	// example:
-	//
-	// 1****
-	PeerAsn *string `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
-	// The ID of the region to which the BGP group belongs.
-	//
-	// example:
-	//
-	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The maximum number of route entries for BGP dynamic route learning.
-	//
-	// example:
-	//
-	// 99
-	RouteLimit *string `json:"RouteLimit,omitempty" xml:"RouteLimit,omitempty"`
-	// The ID of the VBR.
-	//
-	// example:
-	//
-	// vbr-bp1ctxy813985gkuk****
-	RouterId *string `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
-	// The status of the BGP group.
-	//
-	// example:
-	//
-	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Hold        *string `json:"Hold,omitempty" xml:"Hold,omitempty"`
+	IpVersion   *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	IsFake      *string `json:"IsFake,omitempty" xml:"IsFake,omitempty"`
+	Keepalive   *string `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
+	LocalAsn    *string `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PeerAsn     *string `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RouteLimit  *string `json:"RouteLimit,omitempty" xml:"RouteLimit,omitempty"`
+	RouterId    *string `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeBgpGroupsResponseBodyBgpGroupsBgpGroup) String() string {

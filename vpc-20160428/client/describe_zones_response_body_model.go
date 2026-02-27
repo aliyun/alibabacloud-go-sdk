@@ -21,9 +21,8 @@ type DescribeZonesResponseBody struct {
 	// example:
 	//
 	// 6FEA0CF3-D3B9-43E5-A304-D217037876A8
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The zone list.
-	Zones *DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Zones     *DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
 
 func (s DescribeZonesResponseBody) String() string {
@@ -96,24 +95,9 @@ func (s *DescribeZonesResponseBodyZones) Validate() error {
 }
 
 type DescribeZonesResponseBodyZonesZone struct {
-	// The zone name.
-	//
-	// example:
-	//
-	// Hangzhou Zone B
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The zone ID.
-	//
-	// example:
-	//
-	// cn-hangzhou-b
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The zone type. Default value: **AvailabilityZone**.
-	//
-	// example:
-	//
-	// AvailabilityZone
-	ZoneType *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneType  *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
 }
 
 func (s DescribeZonesResponseBodyZonesZone) String() string {

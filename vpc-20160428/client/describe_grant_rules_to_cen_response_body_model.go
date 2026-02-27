@@ -22,7 +22,6 @@ type iDescribeGrantRulesToCenResponseBody interface {
 }
 
 type DescribeGrantRulesToCenResponseBody struct {
-	// The information about the authorization.
 	CenGrantRules *DescribeGrantRulesToCenResponseBodyCenGrantRules `json:"CenGrantRules,omitempty" xml:"CenGrantRules,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,24 +146,9 @@ func (s *DescribeGrantRulesToCenResponseBodyCenGrantRules) Validate() error {
 }
 
 type DescribeGrantRulesToCenResponseBodyCenGrantRulesCbnGrantRule struct {
-	// The ID of the authorized CEN instance.
-	//
-	// example:
-	//
-	// cen-9gsm1q2yh1prpt****
 	CenInstanceId *string `json:"CenInstanceId,omitempty" xml:"CenInstanceId,omitempty"`
-	// The UID of the Alibaba Cloud account to which the authorized CEN instance belongs.
-	//
-	// example:
-	//
-	// 132193271328****
-	CenOwnerId *int64 `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
-	// The time when the instance was created.
-	//
-	// example:
-	//
-	// 2019-11-15T09:26:36Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CenOwnerId    *int64  `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
+	CreationTime  *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 }
 
 func (s DescribeGrantRulesToCenResponseBodyCenGrantRulesCbnGrantRule) String() string {

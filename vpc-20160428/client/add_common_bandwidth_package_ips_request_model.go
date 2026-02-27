@@ -54,7 +54,7 @@ type AddCommonBandwidthPackageIpsRequest struct {
 	//
 	// This parameter is required.
 	IpInstanceIds []*string `json:"IpInstanceIds,omitempty" xml:"IpInstanceIds,omitempty" type:"Repeated"`
-	// The type of the IP address. Set the value to **EIP*	- to associate EIPs with the EIP bandwidth plan.
+	// The IP type. Set the value to **EIP**, which indicates that an EIP is added to the Shared Bandwidth.
 	//
 	// example:
 	//

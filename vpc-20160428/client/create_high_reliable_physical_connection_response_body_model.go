@@ -18,17 +18,7 @@ type iCreateHighReliablePhysicalConnectionResponseBody interface {
 }
 
 type CreateHighReliablePhysicalConnectionResponseBody struct {
-	// If the request fails the dry run, the following error codes and error messages may be returned:
-	//
-	// - pconn.high.reliable.dryrun.error.disable.outbound.data.transfer.billing. Billing for outbound data transfer is not enabled.
-	//
-	// - pconn.high.reliable.dryrun.error.incompatable.device.capacity. No device in the access point supports advanced features.
-	//
-	// - pconn.high.reliable.dryrun.error.quota.exceeded. The quota is insufficient.
-	//
-	// - pconn.high.reliable.dryrun.error.not.enough.resource. The access point resources are insufficient.
-	ErrorInfoList *CreateHighReliablePhysicalConnectionResponseBodyErrorInfoList `json:"ErrorInfoList,omitempty" xml:"ErrorInfoList,omitempty" type:"Struct"`
-	// The Express Connect circuits.
+	ErrorInfoList          *CreateHighReliablePhysicalConnectionResponseBodyErrorInfoList          `json:"ErrorInfoList,omitempty" xml:"ErrorInfoList,omitempty" type:"Struct"`
 	PhysicalConnectionList *CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionList `json:"PhysicalConnectionList,omitempty" xml:"PhysicalConnectionList,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -122,24 +112,9 @@ func (s *CreateHighReliablePhysicalConnectionResponseBodyErrorInfoList) Validate
 }
 
 type CreateHighReliablePhysicalConnectionResponseBodyErrorInfoListErrorInfoList struct {
-	// Error codes.
-	//
-	// example:
-	//
-	// pconn.high.reliable.dryrun.error.disable.outbound.data.transfer.billing
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned error message.
-	//
-	// example:
-	//
-	// pconn.high.reliable.dryrun.error.disable.outbound.data.transfer.billing
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The ID of the Express Connect circuit.
-	//
-	// example:
-	//
-	// pc-j5e5qqo616p81ncspbll1
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s CreateHighReliablePhysicalConnectionResponseBodyErrorInfoListErrorInfoList) String() string {
@@ -216,18 +191,8 @@ func (s *CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionList)
 }
 
 type CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionListPhysicalConnectionList struct {
-	// The ID of the Express Connect circuit.
-	//
-	// example:
-	//
-	// pc-j5e5qqo616p81ncspbll1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the Express Connect circuit.
-	//
-	// example:
-	//
-	// cn-shanghai
-	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	RegionNo   *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 }
 
 func (s CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionListPhysicalConnectionList) String() string {

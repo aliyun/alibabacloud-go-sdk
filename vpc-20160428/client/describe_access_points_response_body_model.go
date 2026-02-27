@@ -22,7 +22,6 @@ type iDescribeAccessPointsResponseBody interface {
 }
 
 type DescribeAccessPointsResponseBody struct {
-	// The information about the access point.
 	AccessPointSet *DescribeAccessPointsResponseBodyAccessPointSet `json:"AccessPointSet,omitempty" xml:"AccessPointSet,omitempty" type:"Struct"`
 	// The page number. Default value: **1**.
 	//
@@ -147,64 +146,15 @@ func (s *DescribeAccessPointsResponseBodyAccessPointSet) Validate() error {
 }
 
 type DescribeAccessPointsResponseBodyAccessPointSetAccessPointType struct {
-	// The feature model of the access point.
 	AccessPointFeatureModels *DescribeAccessPointsResponseBodyAccessPointSetAccessPointTypeAccessPointFeatureModels `json:"AccessPointFeatureModels,omitempty" xml:"AccessPointFeatureModels,omitempty" type:"Struct"`
-	// The ID of the access point.
-	//
-	// example:
-	//
-	// ap-cn-hangzhou-****
-	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
-	// The region ID of the access point.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	AttachedRegionNo *string `json:"AttachedRegionNo,omitempty" xml:"AttachedRegionNo,omitempty"`
-	// The description of the access point.
-	//
-	// example:
-	//
-	// The description of the access point.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The Internet service provider (ISP) of the access point. Valid values:
-	//
-	// example:
-	//
-	// Telehouse
-	HostOperator *string `json:"HostOperator,omitempty" xml:"HostOperator,omitempty"`
-	// The location of the access point.
-	//
-	// example:
-	//
-	// Hangzhou
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The name of the access point.
-	//
-	// example:
-	//
-	// Name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The status of the access point. Valid values:
-	//
-	// 	- **recommended**: The access point is ready for use.
-	//
-	// 	- **hot**: A large number of Express Connect circuits are connected to the access point.
-	//
-	// 	- **full**: The number of Express Connect circuits connected to the access point has reached the upper limit.
-	//
-	// 	- **disabled**: The access point is unavailable.
-	//
-	// example:
-	//
-	// recommended
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The network type of the Express Connect circuit. Default value: **VPC**.
-	//
-	// example:
-	//
-	// VPC
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AccessPointId            *string                                                                                `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	AttachedRegionNo         *string                                                                                `json:"AttachedRegionNo,omitempty" xml:"AttachedRegionNo,omitempty"`
+	Description              *string                                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	HostOperator             *string                                                                                `json:"HostOperator,omitempty" xml:"HostOperator,omitempty"`
+	Location                 *string                                                                                `json:"Location,omitempty" xml:"Location,omitempty"`
+	Name                     *string                                                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status                   *string                                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                     *string                                                                                `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeAccessPointsResponseBodyAccessPointSetAccessPointType) String() string {
@@ -340,17 +290,7 @@ func (s *DescribeAccessPointsResponseBodyAccessPointSetAccessPointTypeAccessPoin
 }
 
 type DescribeAccessPointsResponseBodyAccessPointSetAccessPointTypeAccessPointFeatureModelsAccessPointFeatureModel struct {
-	// The feature of the access point.
-	//
-	// example:
-	//
-	// AP_Support_VbrBandwidthLimit
-	FeatureKey *string `json:"FeatureKey,omitempty" xml:"FeatureKey,omitempty"`
-	// The feature value of the access point.
-	//
-	// example:
-	//
-	// true
+	FeatureKey   *string `json:"FeatureKey,omitempty" xml:"FeatureKey,omitempty"`
 	FeatureValue *string `json:"FeatureValue,omitempty" xml:"FeatureValue,omitempty"`
 }
 

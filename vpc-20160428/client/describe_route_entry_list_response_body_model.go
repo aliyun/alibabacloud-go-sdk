@@ -33,8 +33,7 @@ type DescribeRouteEntryListResponseBody struct {
 	// example:
 	//
 	// 14A07460-EBE7-47CA-9757-12CC4761D47A
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the routes.
+	RequestId   *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouteEntrys *DescribeRouteEntryListResponseBodyRouteEntrys `json:"RouteEntrys,omitempty" xml:"RouteEntrys,omitempty" type:"Struct"`
 }
 
@@ -117,106 +116,19 @@ func (s *DescribeRouteEntryListResponseBodyRouteEntrys) Validate() error {
 }
 
 type DescribeRouteEntryListResponseBodyRouteEntrysRouteEntry struct {
-	// The description of the route.
-	//
-	// example:
-	//
-	// RouteEntryDescription
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination CIDR block of the route.
-	//
-	// example:
-	//
-	// 192.168.2.0/24
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The time when the route was modified. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
-	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
-	//
-	// example:
-	//
-	// 2022-05-09T03:00:07Z
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The IP version. Valid values: Valid values:
-	//
-	// 	- **ipv4**
-	//
-	// 	- **ipv6**
-	//
-	// example:
-	//
-	// IPv4
-	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The information about the next hops.
-	NextHops *DescribeRouteEntryListResponseBodyRouteEntrysRouteEntryNextHops `json:"NextHops,omitempty" xml:"NextHops,omitempty" type:"Struct"`
-	// The route origin. Valid values:
-	//
-	// 	- **RoutePropagation**: The route is created by a dynamic propagation source.
-	//
-	// 	- **SystemCreate**: The route is created by the system.
-	//
-	// 	- **CustomCreate**: The route is created by a user.
-	//
-	// example:
-	//
-	// RoutePropagation
-	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The ID of the route.
-	//
-	// example:
-	//
-	// rte-bp1mnnr2al0naomnp****
-	RouteEntryId *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
-	// The name of the route.
-	//
-	// example:
-	//
-	// aaa
-	RouteEntryName *string `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
-	// The ID of the route table.
-	//
-	// example:
-	//
-	// vtb-bp15w5q90d2rk3bww****
-	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// Indicates whether the route is hosted. If the parameter is empty, the route is not hosted.
-	//
-	// If **TR*	- is returned, the route is hosted by a transit router.
-	//
-	// example:
-	//
-	// TR
-	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The status of the route entry. Valid values:
-	//
-	// 	- **Pending**
-	//
-	// 	- **Available**
-	//
-	// 	- **Modifying**
-	//
-	// 	- **Deleting**
-	//
-	// example:
-	//
-	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The route type. Valid values:
-	//
-	// 	- **Custom**: custom routes.
-	//
-	// 	- **System**: system routes.
-	//
-	// 	- **BGP**: BGP routes.
-	//
-	// 	- **CEN**: CEN routes.
-	//
-	// 	- **ECR**: ECR routes.
-	//
-	// example:
-	//
-	// Custom
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	GmtModified    *string                                                          `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	IpVersion      *string                                                          `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	NextHops       *DescribeRouteEntryListResponseBodyRouteEntrysRouteEntryNextHops `json:"NextHops,omitempty" xml:"NextHops,omitempty" type:"Struct"`
+	Origin         *string                                                          `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	RouteEntryId   *string                                                          `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
+	RouteEntryName *string                                                          `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
+	RouteTableId   *string                                                          `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	ServiceType    *string                                                          `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Status         *string                                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type           *string                                                          `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeRouteEntryListResponseBodyRouteEntrysRouteEntry) String() string {
@@ -379,72 +291,12 @@ func (s *DescribeRouteEntryListResponseBodyRouteEntrysRouteEntryNextHops) Valida
 }
 
 type DescribeRouteEntryListResponseBodyRouteEntrysRouteEntryNextHopsNextHop struct {
-	// Indicates whether the route is available. Valid values:
-	//
-	// 	- **0**: unavailable
-	//
-	// 	- **1**: available
-	//
-	// >  This parameter is returned when the next hop type is set to **RouterInterface**.
-	//
-	// example:
-	//
-	// 1
-	Enabled *int32 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The ID of the next hop.
-	//
-	// example:
-	//
-	// vpn-bp10zyaph5cc8b7c7****
-	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	// The ID of the region where the next hop is deployed.
-	//
-	// >  This parameter is returned when the next hop type is set to **RouterInterface**.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	NextHopRegionId *string `json:"NextHopRegionId,omitempty" xml:"NextHopRegionId,omitempty"`
-	// The information about the next hop.
+	Enabled            *int32                                                                                    `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	NextHopId          *string                                                                                   `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	NextHopRegionId    *string                                                                                   `json:"NextHopRegionId,omitempty" xml:"NextHopRegionId,omitempty"`
 	NextHopRelatedInfo *DescribeRouteEntryListResponseBodyRouteEntrysRouteEntryNextHopsNextHopNextHopRelatedInfo `json:"NextHopRelatedInfo,omitempty" xml:"NextHopRelatedInfo,omitempty" type:"Struct"`
-	// The next hop type. Valid values:
-	//
-	// 	- **Instance**: an ECS instance.
-	//
-	// 	- **HaVip**: an HaVip.
-	//
-	// 	- **VpnGateway**: a VPN gateway.
-	//
-	// 	- **NatGateway**: a NAT gateway.
-	//
-	// 	- **NetworkInterface**: a secondary ENI.
-	//
-	// 	- **RouterInterface**: a router interface.
-	//
-	// 	- **IPv6Gateway**: an IPv6 gateway.
-	//
-	// 	- **Attachment**: a transit router.
-	//
-	// 	- **Ipv4Gateway**: an IPv4 gateway.
-	//
-	// 	- **GatewayEndpoint**: a gateway endpoint.
-	//
-	// 	- **CenBasic**: CEN does not support transit routers.
-	//
-	// 	- **Ecr**: ECR.
-	//
-	// example:
-	//
-	// Instance
-	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// The weight of the route.
-	//
-	// >  This parameter is returned when the next hop type is set to **RouterInterface**.
-	//
-	// example:
-	//
-	// 100
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	NextHopType        *string                                                                                   `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	Weight             *int32                                                                                    `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s DescribeRouteEntryListResponseBodyRouteEntrysRouteEntryNextHopsNextHop) String() string {
@@ -519,30 +371,9 @@ func (s *DescribeRouteEntryListResponseBodyRouteEntrysRouteEntryNextHopsNextHop)
 }
 
 type DescribeRouteEntryListResponseBodyRouteEntrysRouteEntryNextHopsNextHopNextHopRelatedInfo struct {
-	// The ID of the instance that is associated with the next hop.
-	//
-	// example:
-	//
-	// vpc-bp1t36rn9l53iwbsf****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the instance associated with the next hop. Valid values:
-	//
-	// 	- **VPC**: a VPC
-	//
-	// 	- **VBR**: a VBR
-	//
-	// 	- **PCONN**: an Express Connect circuit
-	//
-	// example:
-	//
-	// VPC
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The region ID of the instance associated with the next hop. Valid values:
-	//
-	// example:
-	//
-	// ch-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRouteEntryListResponseBodyRouteEntrysRouteEntryNextHopsNextHopNextHopRelatedInfo) String() string {

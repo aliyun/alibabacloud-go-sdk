@@ -24,7 +24,6 @@ type iDescribeFlowLogsResponseBody interface {
 }
 
 type DescribeFlowLogsResponseBody struct {
-	// List of flow logs.
 	FlowLogs *DescribeFlowLogsResponseBodyFlowLogs `json:"FlowLogs,omitempty" xml:"FlowLogs,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -168,160 +167,26 @@ func (s *DescribeFlowLogsResponseBodyFlowLogs) Validate() error {
 }
 
 type DescribeFlowLogsResponseBodyFlowLogsFlowLog struct {
-	// The sampling interval of the flow log. Unit: minutes.
-	//
-	// example:
-	//
-	// 10
-	AggregationInterval *int32 `json:"AggregationInterval,omitempty" xml:"AggregationInterval,omitempty"`
-	// The business status. Values:
-	//
-	// - **Normal**: Normal status.
-	//
-	// - **FinancialLocked**: Locked due to unpaid bills.
-	//
-	// example:
-	//
-	// Normal
-	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The creation time of the flow log.
-	//
-	// example:
-	//
-	// 2022-01-21T03:08:50Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the flow log.
-	//
-	// example:
-	//
-	// Description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// When log delivery fails, you can troubleshoot based on the error messages. Possible error messages include:
-	//
-	// - **UnavaliableTarget**: The Logstore of the Log Service SLS is unavailable and cannot receive logs. It is recommended to check if the corresponding Logstore actually exists and is accessible.
-	//
-	// - **ProjectNotExist**: The Project of the Log Service SLS does not exist. It is suggested to delete the original flow log and create a new one pointing to an existing Project.
-	//
-	// - **UnknownError**: An internal error has occurred. Please try again later.
-	//
-	// example:
-	//
-	// UnavaliableTarget
-	FlowLogDeliverErrorMessage *string `json:"FlowLogDeliverErrorMessage,omitempty" xml:"FlowLogDeliverErrorMessage,omitempty"`
-	// The delivery status of the flow log, with values:
-	//
-	// - **SUCCESS**: Delivery succeeded.
-	//
-	// - **FAILED**: Delivery failed.
-	//
-	// example:
-	//
-	// FAILED
-	FlowLogDeliverStatus *string `json:"FlowLogDeliverStatus,omitempty" xml:"FlowLogDeliverStatus,omitempty"`
-	// The ID of the flow log.
-	//
-	// example:
-	//
-	// fl-bp1f6qqhsrc2c12ta****
-	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
-	// The name of the flow log.
-	//
-	// example:
-	//
-	// myFlowlog
-	FlowLogName *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
-	// The type of IP address for collecting flow log traffic.
-	//
-	// example:
-	//
-	// IPv4
-	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The Logstore where the captured traffic is stored.
-	//
-	// example:
-	//
-	// FlowLogStore
-	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The Project that manages the captured traffic.
-	//
-	// example:
-	//
-	// FlowLogProject
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The region ID to which the flow log belongs.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the flow log belongs.
-	//
-	// example:
-	//
-	// rg-bp67acfmxazb4ph****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The resource ID of the traffic captured by the flow log.
-	//
-	// example:
-	//
-	// eni-askldfas****
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type of the traffic captured by the flow log:
-	//
-	// - **NetworkInterface**: Elastic network interface.
-	//
-	// - **VSwitch**: All elastic network interfaces within a VSwitch.
-	//
-	// - **VPC**: All elastic network interfaces within a VPC.
-	//
-	// example:
-	//
-	// NetworkInterface
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The hosting type of the cloud service.
-	//
-	// - It can be empty, indicating that the flow log was created by the user.
-	//
-	// - When not empty, the only supported value is: **sls**, indicating that the flow log was created through the Log Service console.
-	//
-	// > Flow log instances created through the Log Service console can be displayed in the VPC list, but they cannot be modified, started, stopped, or deleted within the VPC. If you need to perform these operations on the flow log, you can log in to the [Log Service console](https://sls.console.aliyun.com) to modify, start, stop, or delete it.
-	//
-	// example:
-	//
-	// sls
-	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The status of the flow log. Values:
-	//
-	// - **Active**: The flow log is in an active state.
-	//
-	// - **Activating**: The flow log is being created.
-	//
-	// - **Inactive**: The flow log is in an inactive state.
-	//
-	// example:
-	//
-	// Active
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// List of tags
-	Tags *DescribeFlowLogsResponseBodyFlowLogsFlowLogTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The path of the captured traffic. Values:
-	//
-	// - **all**: Indicates full collection.
-	//
-	// - **internetGateway**: Indicates public network traffic collection.
-	TrafficPath *DescribeFlowLogsResponseBodyFlowLogsFlowLogTrafficPath `json:"TrafficPath,omitempty" xml:"TrafficPath,omitempty" type:"Struct"`
-	// The type of traffic captured by the flow log. Values:
-	//
-	// - **All**: All traffic.
-	//
-	// - **Allow**: Traffic allowed by access control.
-	//
-	// - **Drop**: Traffic denied by access control.
-	//
-	// example:
-	//
-	// All
-	TrafficType *string `json:"TrafficType,omitempty" xml:"TrafficType,omitempty"`
+	AggregationInterval        *int32                                                  `json:"AggregationInterval,omitempty" xml:"AggregationInterval,omitempty"`
+	BusinessStatus             *string                                                 `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	CreationTime               *string                                                 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description                *string                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	FlowLogDeliverErrorMessage *string                                                 `json:"FlowLogDeliverErrorMessage,omitempty" xml:"FlowLogDeliverErrorMessage,omitempty"`
+	FlowLogDeliverStatus       *string                                                 `json:"FlowLogDeliverStatus,omitempty" xml:"FlowLogDeliverStatus,omitempty"`
+	FlowLogId                  *string                                                 `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
+	FlowLogName                *string                                                 `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
+	IpVersion                  *string                                                 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	LogStoreName               *string                                                 `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	ProjectName                *string                                                 `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	RegionId                   *string                                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId            *string                                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceId                 *string                                                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType               *string                                                 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ServiceType                *string                                                 `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Status                     *string                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                       *DescribeFlowLogsResponseBodyFlowLogsFlowLogTags        `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	TrafficPath                *DescribeFlowLogsResponseBodyFlowLogsFlowLogTrafficPath `json:"TrafficPath,omitempty" xml:"TrafficPath,omitempty" type:"Struct"`
+	TrafficType                *string                                                 `json:"TrafficType,omitempty" xml:"TrafficType,omitempty"`
 }
 
 func (s DescribeFlowLogsResponseBodyFlowLogsFlowLog) String() string {
@@ -561,17 +426,7 @@ func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLogTags) Validate() error {
 }
 
 type DescribeFlowLogsResponseBodyFlowLogsFlowLogTagsTag struct {
-	// Tag key.
-	//
-	// example:
-	//
-	// FinanceDept
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Tag value.
-	//
-	// example:
-	//
-	// FinanceJoshua
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

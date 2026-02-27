@@ -22,7 +22,6 @@ type iDescribeIpv6EgressOnlyRulesResponseBody interface {
 }
 
 type DescribeIpv6EgressOnlyRulesResponseBody struct {
-	// The details about the egress-only rules.
 	Ipv6EgressOnlyRules *DescribeIpv6EgressOnlyRulesResponseBodyIpv6EgressOnlyRules `json:"Ipv6EgressOnlyRules,omitempty" xml:"Ipv6EgressOnlyRules,omitempty" type:"Struct"`
 	// The number of the returned page. Default value: **1**.
 	//
@@ -147,42 +146,12 @@ func (s *DescribeIpv6EgressOnlyRulesResponseBodyIpv6EgressOnlyRules) Validate() 
 }
 
 type DescribeIpv6EgressOnlyRulesResponseBodyIpv6EgressOnlyRulesIpv6EgressOnlyRule struct {
-	// The description of the egress-only rule.
-	//
-	// example:
-	//
-	// ruledescription
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the instance to which the egress-only rule applies.
-	//
-	// example:
-	//
-	// ipv6gw-bp1rhhs9zjlxukc5e****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the instance to which the egress-only rule applies.
-	//
-	// example:
-	//
-	// Ipv6Address
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The ID of the egress-only rule.
-	//
-	// example:
-	//
-	// ipv6py-bp1rr7fq1md8pbb3k****
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceType         *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	Ipv6EgressOnlyRuleId *string `json:"Ipv6EgressOnlyRuleId,omitempty" xml:"Ipv6EgressOnlyRuleId,omitempty"`
-	// The name of the egress-only rule.
-	//
-	// example:
-	//
-	// rulename
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The status of the egress-only rule.
-	//
-	// example:
-	//
-	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeIpv6EgressOnlyRulesResponseBodyIpv6EgressOnlyRulesIpv6EgressOnlyRule) String() string {

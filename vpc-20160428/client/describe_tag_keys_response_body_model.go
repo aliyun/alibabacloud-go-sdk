@@ -33,9 +33,8 @@ type DescribeTagKeysResponseBody struct {
 	// example:
 	//
 	// DE65F6B7-7566-4802-9007-96F2494AC512
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of tag keys.
-	TagKeys *DescribeTagKeysResponseBodyTagKeys `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Struct"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagKeys   *DescribeTagKeysResponseBodyTagKeys `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Struct"`
 }
 
 func (s DescribeTagKeysResponseBody) String() string {
@@ -117,22 +116,8 @@ func (s *DescribeTagKeysResponseBodyTagKeys) Validate() error {
 }
 
 type DescribeTagKeysResponseBodyTagKeysTagKey struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// FinanceDept
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The type of the tag key. Valid values:
-	//
-	// 	- **Custom**: custom
-	//
-	// 	- **System**: system
-	//
-	// example:
-	//
-	// Custom
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeTagKeysResponseBodyTagKeysTagKey) String() string {

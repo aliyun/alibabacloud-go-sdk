@@ -179,7 +179,16 @@ type DescribeVpnAttachmentsResponseBodyVpnAttachments struct {
 	//
 	// nametest2
 	TransitRouterName *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
-	TunnelBandwidth   *string `json:"TunnelBandwidth,omitempty" xml:"TunnelBandwidth,omitempty"`
+	// Specifies the bandwidth specifications for a single tunnel in VPN attachment. Available options:
+	//
+	// - **Standard**: Standard, 1Gbps
+	//
+	// - **Large**:  Large-sized, 3Gbps
+	//
+	// example:
+	//
+	// Standard
+	TunnelBandwidth *string `json:"TunnelBandwidth,omitempty" xml:"TunnelBandwidth,omitempty"`
 }
 
 func (s DescribeVpnAttachmentsResponseBodyVpnAttachments) String() string {

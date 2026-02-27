@@ -45,9 +45,8 @@ type DescribeVpcsResponseBody struct {
 	// example:
 	//
 	// 2
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The details of the VPC.
-	Vpcs *DescribeVpcsResponseBodyVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Struct"`
+	TotalCount *int32                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Vpcs       *DescribeVpcsResponseBodyVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Struct"`
 }
 
 func (s DescribeVpcsResponseBody) String() string {
@@ -147,146 +146,30 @@ func (s *DescribeVpcsResponseBodyVpcs) Validate() error {
 }
 
 type DescribeVpcsResponseBodyVpcsVpc struct {
-	// The status of the Cloud Enterprise Network (CEN) instance to which the VPC is attached. **Attached*	- is returned only if the VPC is attached to a CEN instance.
-	//
-	// example:
-	//
-	// Attached
-	CenStatus *string `json:"CenStatus,omitempty" xml:"CenStatus,omitempty"`
-	// The IPv4 CIDR block of the VPC.
-	//
-	// example:
-	//
-	// 192.168.0.0/16
-	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The time when the VPC was created.
-	//
-	// example:
-	//
-	// 2021-04-18T15:02:37Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the VPC.
-	//
-	// example:
-	//
-	// This is my VPC.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the DHCP options set.
-	//
-	// example:
-	//
-	// dopt-o6w0df4epg9zo8isy****
-	DhcpOptionsSetId *string `json:"DhcpOptionsSetId,omitempty" xml:"DhcpOptionsSetId,omitempty"`
-	// The status of the DHCP options set. Valid values:
-	//
-	// 	- **Available**
-	//
-	// 	- **InUse**
-	//
-	// 	- **Deleted**
-	//
-	// 	- **Pending**
-	//
-	// example:
-	//
-	// Available
-	DhcpOptionsSetStatus *string `json:"DhcpOptionsSetStatus,omitempty" xml:"DhcpOptionsSetStatus,omitempty"`
-	// Indicates whether the Domain Name System (DNS) feature is enabled.
-	//
-	// example:
-	//
-	// DISABLED
-	DnsHostnameStatus *string `json:"DnsHostnameStatus,omitempty" xml:"DnsHostnameStatus,omitempty"`
-	// Indicates whether the IPv6 is enabled.
-	//
-	// Valid values:
-	//
-	// - false: false
-	//
-	// - true: true
-	//
-	// example:
-	//
-	// false
-	EnabledIpv6 *bool `json:"EnabledIpv6,omitempty" xml:"EnabledIpv6,omitempty"`
-	// The IPv6 CIDR block of the VPC.
-	//
-	// example:
-	//
-	// 2408:XXXX:0:a600::/56
-	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
-	// The IPv6 CIDR block of the VPC.
-	Ipv6CidrBlocks *DescribeVpcsResponseBodyVpcsVpcIpv6CidrBlocks `json:"Ipv6CidrBlocks,omitempty" xml:"Ipv6CidrBlocks,omitempty" type:"Struct"`
-	// Indicates whether the VPC is the default VPC in the region. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// false
-	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The ID of the Internet NAT gateway.
-	NatGatewayIds *DescribeVpcsResponseBodyVpcsVpcNatGatewayIds `json:"NatGatewayIds,omitempty" xml:"NatGatewayIds,omitempty" type:"Struct"`
-	// The ID of the Alibaba Cloud account to which the VPC belongs.
-	//
-	// example:
-	//
-	// 253460731706911258
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region to which the VPC belongs.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the VPC belongs.
-	//
-	// example:
-	//
-	// rg-acfmxazb4ph****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The information about the route table.
-	RouterTableIds *DescribeVpcsResponseBodyVpcsVpcRouterTableIds `json:"RouterTableIds,omitempty" xml:"RouterTableIds,omitempty" type:"Struct"`
-	// The information about the secondary CIDR block.
-	SecondaryCidrBlocks *DescribeVpcsResponseBodyVpcsVpcSecondaryCidrBlocks `json:"SecondaryCidrBlocks,omitempty" xml:"SecondaryCidrBlocks,omitempty" type:"Struct"`
-	// The status of the VPC. Valid values:
-	//
-	// 	- **Pending**
-	//
-	// 	- **Available**
-	//
-	// example:
-	//
-	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag information about the VPC.
-	Tags *DescribeVpcsResponseBodyVpcsVpcTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The list of user CIDR blocks.
-	UserCidrs *DescribeVpcsResponseBodyVpcsVpcUserCidrs `json:"UserCidrs,omitempty" xml:"UserCidrs,omitempty" type:"Struct"`
-	// The ID of the vRouter.
-	//
-	// example:
-	//
-	// vrt-bp1jcg5cmxjbl9xgc****
-	VRouterId *string `json:"VRouterId,omitempty" xml:"VRouterId,omitempty"`
-	// The vSwitches in the VPC.
-	//
-	// You can query up to 300 vSwitches in the VPC. The information about the latest vSwitches is returned. If you want to query the information about all vSwitches in a VPC, call the [DescribeVSwitches](https://help.aliyun.com/document_detail/35748.html) operation.
-	VSwitchIds *DescribeVpcsResponseBodyVpcsVpcVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
-	// The VPC ID.
-	//
-	// example:
-	//
-	// vpc-bp1qpo0kug3a20qqe****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The name of the VPC.
-	//
-	// example:
-	//
-	// vpc1
-	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	CenStatus            *string                                             `json:"CenStatus,omitempty" xml:"CenStatus,omitempty"`
+	CidrBlock            *string                                             `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	CreationTime         *string                                             `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description          *string                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	DhcpOptionsSetId     *string                                             `json:"DhcpOptionsSetId,omitempty" xml:"DhcpOptionsSetId,omitempty"`
+	DhcpOptionsSetStatus *string                                             `json:"DhcpOptionsSetStatus,omitempty" xml:"DhcpOptionsSetStatus,omitempty"`
+	DnsHostnameStatus    *string                                             `json:"DnsHostnameStatus,omitempty" xml:"DnsHostnameStatus,omitempty"`
+	EnabledIpv6          *bool                                               `json:"EnabledIpv6,omitempty" xml:"EnabledIpv6,omitempty"`
+	Ipv6CidrBlock        *string                                             `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
+	Ipv6CidrBlocks       *DescribeVpcsResponseBodyVpcsVpcIpv6CidrBlocks      `json:"Ipv6CidrBlocks,omitempty" xml:"Ipv6CidrBlocks,omitempty" type:"Struct"`
+	IsDefault            *bool                                               `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	NatGatewayIds        *DescribeVpcsResponseBodyVpcsVpcNatGatewayIds       `json:"NatGatewayIds,omitempty" xml:"NatGatewayIds,omitempty" type:"Struct"`
+	OwnerId              *int64                                              `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	RouterTableIds       *DescribeVpcsResponseBodyVpcsVpcRouterTableIds      `json:"RouterTableIds,omitempty" xml:"RouterTableIds,omitempty" type:"Struct"`
+	SecondaryCidrBlocks  *DescribeVpcsResponseBodyVpcsVpcSecondaryCidrBlocks `json:"SecondaryCidrBlocks,omitempty" xml:"SecondaryCidrBlocks,omitempty" type:"Struct"`
+	Status               *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                 *DescribeVpcsResponseBodyVpcsVpcTags                `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	UserCidrs            *DescribeVpcsResponseBodyVpcsVpcUserCidrs           `json:"UserCidrs,omitempty" xml:"UserCidrs,omitempty" type:"Struct"`
+	VRouterId            *string                                             `json:"VRouterId,omitempty" xml:"VRouterId,omitempty"`
+	VSwitchIds           *DescribeVpcsResponseBodyVpcsVpcVSwitchIds          `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
+	VpcId                *string                                             `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName              *string                                             `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 }
 
 func (s DescribeVpcsResponseBodyVpcsVpc) String() string {
@@ -587,28 +470,8 @@ func (s *DescribeVpcsResponseBodyVpcsVpcIpv6CidrBlocks) Validate() error {
 }
 
 type DescribeVpcsResponseBodyVpcsVpcIpv6CidrBlocksIpv6CidrBlock struct {
-	// The IPv6 CIDR block of the VPC.
-	//
-	// example:
-	//
-	// 2408:XXXX:0:a600::/56
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
-	// The type of IPv6 CIDR block. Valid values:
-	//
-	// 	- **BGP**
-	//
-	// 	- **ChinaMobile**
-	//
-	// 	- **ChinaUnicom**
-	//
-	// 	- **ChinaTelecom**
-	//
-	// >  If your Alibaba Cloud account is allowed to activate single-ISP bandwidth, you can set this parameter to **ChinaTelecom**, **ChinaUnicom**, or **ChinaMobile**.
-	//
-	// example:
-	//
-	// BGP
-	Ipv6Isp *string `json:"Ipv6Isp,omitempty" xml:"Ipv6Isp,omitempty"`
+	Ipv6Isp       *string `json:"Ipv6Isp,omitempty" xml:"Ipv6Isp,omitempty"`
 }
 
 func (s DescribeVpcsResponseBodyVpcsVpcIpv6CidrBlocksIpv6CidrBlock) String() string {
@@ -751,17 +614,7 @@ func (s *DescribeVpcsResponseBodyVpcsVpcTags) Validate() error {
 }
 
 type DescribeVpcsResponseBodyVpcsVpcTagsTag struct {
-	// The key of tag N.
-	//
-	// example:
-	//
-	// env
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N.
-	//
-	// example:
-	//
-	// internal
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

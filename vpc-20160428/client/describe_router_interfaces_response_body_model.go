@@ -39,8 +39,7 @@ type DescribeRouterInterfacesResponseBody struct {
 	// example:
 	//
 	// C7F6FCBD-F9CC-4501-8EF3-CDC9577CAE45
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the router interface.
+	RequestId          *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouterInterfaceSet *DescribeRouterInterfacesResponseBodyRouterInterfaceSet `json:"RouterInterfaceSet,omitempty" xml:"RouterInterfaceSet,omitempty" type:"Struct"`
 	// The number of entries returned.
 	//
@@ -147,278 +146,47 @@ func (s *DescribeRouterInterfacesResponseBodyRouterInterfaceSet) Validate() erro
 }
 
 type DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceType struct {
-	// The ID of the access point.
-	//
-	// example:
-	//
-	// ap-cn-shanghaiSZ-****
-	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
-	// The bandwidth of the router interface. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 10
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The service status of the router interface. Valid values:
-	//
-	// 	- **Normal**
-	//
-	// 	- **FinancialLocked**
-	//
-	// 	- **SecurityLocked**
-	//
-	// example:
-	//
-	// Normal
-	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The billing method.
-	//
-	// example:
-	//
-	// PayByTraffic
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The time when the connection was established.
-	//
-	// The time follows the ISO8601 standard in the `YYYY-MM-DDThh:mmZ` format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-06-08T12:20:55
-	ConnectedTime *string `json:"ConnectedTime,omitempty" xml:"ConnectedTime,omitempty"`
-	// The time when the route table was created.
-	//
-	// The time follows the ISO8601 standard in the `YYYY-MM-DDThh:mmZ` format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-06-08T12:20:55
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// Indicates whether the connection is a cross-border connection.
-	//
-	// example:
-	//
-	// false
-	CrossBorder *bool `json:"CrossBorder,omitempty" xml:"CrossBorder,omitempty"`
-	// The description of the router interface.
-	//
-	// example:
-	//
-	// The description of the router interface.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The end of the time range during which data was queried.
-	//
-	// The time follows the ISO8601 standard in the `YYYY-MM-DDThh:mmZ` format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-06-08T12:20:55
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Indicates whether the VBR that is created in the Fast Link mode is uplinked to the router interface. The Fast Link mode helps automatically connect router interfaces that are created for the VBR and its peer VPC. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false*	- (default)
-	//
-	// example:
-	//
-	// false
-	FastLinkMode *bool `json:"FastLinkMode,omitempty" xml:"FastLinkMode,omitempty"`
-	// Indicates whether renewal data is included.
-	//
-	// example:
-	//
-	// false
-	HasReservationData *string `json:"HasReservationData,omitempty" xml:"HasReservationData,omitempty"`
-	// The rate of heath checks.
-	//
-	// example:
-	//
-	// 1
-	HcRate *int32 `json:"HcRate,omitempty" xml:"HcRate,omitempty"`
-	// The health check threshold.
-	//
-	// example:
-	//
-	// 2
-	HcThreshold *int32 `json:"HcThreshold,omitempty" xml:"HcThreshold,omitempty"`
-	// The source IP address that is used for the health check.
-	//
-	// example:
-	//
-	// 116.62.XX.XX
-	HealthCheckSourceIp *string `json:"HealthCheckSourceIp,omitempty" xml:"HealthCheckSourceIp,omitempty"`
-	// The destination IP address that is used for the health check.
-	//
-	// example:
-	//
-	// 116.62.XX.XX
-	HealthCheckTargetIp *string `json:"HealthCheckTargetIp,omitempty" xml:"HealthCheckTargetIp,omitempty"`
-	// Indicates whether protection against malicious IPv6 traffic is enabled. Valid values:
-	//
-	// 	- **on**
-	//
-	// 	- **off**
-	//
-	// 	- **unsupport**
-	//
-	// example:
-	//
-	// on
-	Ipv6Status *string `json:"Ipv6Status,omitempty" xml:"Ipv6Status,omitempty"`
-	// The custom name.
-	//
-	// example:
-	//
-	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the peer access point.
-	//
-	// example:
-	//
-	// ap-cn-shanghaiSZ-****
-	OppositeAccessPointId *string `json:"OppositeAccessPointId,omitempty" xml:"OppositeAccessPointId,omitempty"`
-	// The maximum bandwidth of the peer router interface. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 12
-	OppositeBandwidth *int32 `json:"OppositeBandwidth,omitempty" xml:"OppositeBandwidth,omitempty"`
-	// The service status of the peer router interface.
-	//
-	// example:
-	//
-	// Normal
-	OppositeInterfaceBusinessStatus *string `json:"OppositeInterfaceBusinessStatus,omitempty" xml:"OppositeInterfaceBusinessStatus,omitempty"`
-	// The ID of the peer router interface.
-	//
-	// example:
-	//
-	// ri-bp1itx13bwe6f2wfh****
-	OppositeInterfaceId *string `json:"OppositeInterfaceId,omitempty" xml:"OppositeInterfaceId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the peer router interface belongs.
-	//
-	// example:
-	//
-	// 271598332402530847
-	OppositeInterfaceOwnerId *string `json:"OppositeInterfaceOwnerId,omitempty" xml:"OppositeInterfaceOwnerId,omitempty"`
-	// The specification of the peer router interface.
-	//
-	// example:
-	//
-	// Large
-	OppositeInterfaceSpec *string `json:"OppositeInterfaceSpec,omitempty" xml:"OppositeInterfaceSpec,omitempty"`
-	// The status of the peer router interface.
-	//
-	// example:
-	//
-	// Normal
-	OppositeInterfaceStatus *string `json:"OppositeInterfaceStatus,omitempty" xml:"OppositeInterfaceStatus,omitempty"`
-	// The region ID of the peer router interface.
-	//
-	// example:
-	//
-	// cn-shanghai
-	OppositeRegionId *string `json:"OppositeRegionId,omitempty" xml:"OppositeRegionId,omitempty"`
-	// The ID of the router to which the peer router interface belongs.
-	//
-	// example:
-	//
-	// vrt-bp1d3bxtdv68tfd7g****
-	OppositeRouterId *string `json:"OppositeRouterId,omitempty" xml:"OppositeRouterId,omitempty"`
-	// The type of the router to which the peer router interface belongs.
-	//
-	// example:
-	//
-	// VRouter
-	OppositeRouterType *string `json:"OppositeRouterType,omitempty" xml:"OppositeRouterType,omitempty"`
-	// The ID of the peer VPC.
-	//
-	// example:
-	//
-	// vpc-bp1qpo0kug3a20qqe****
-	OppositeVpcInstanceId *string `json:"OppositeVpcInstanceId,omitempty" xml:"OppositeVpcInstanceId,omitempty"`
-	// The time when the renewal takes effect.
-	//
-	// The time follows the ISO8601 standard in the `YYYY-MM-DDThh:mmZ` format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-03-11T16:00:00Z
-	ReservationActiveTime *string `json:"ReservationActiveTime,omitempty" xml:"ReservationActiveTime,omitempty"`
-	// The maximum bandwidth after the renewal takes effect. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 10
-	ReservationBandwidth *string `json:"ReservationBandwidth,omitempty" xml:"ReservationBandwidth,omitempty"`
-	// The metering method that is used after the renewal takes effect. Valid values:
-	//
-	// example:
-	//
-	// PayByBandwidth
-	ReservationInternetChargeType *string `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
-	// The type of the renewal order. Valid values:
-	//
-	// example:
-	//
-	// RENEWCHANGE
-	ReservationOrderType *string `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
-	// Resource Group ID.
-	//
-	// For more information about resource groups, please refer to [What is a Resource Group?](https://help.aliyun.com/document_detail/94475.html)
-	//
-	// example:
-	//
-	// rg-acfmxazb4ph6aiy****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Indicates whether the router interface is the initiator or acceptor of the peering connection.
-	//
-	// example:
-	//
-	// InitiatingSide
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The ID of the router to which the route entry belongs.
-	//
-	// example:
-	//
-	// vrt-bp1d3bxtdv68tfd7g****
-	RouterId *string `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
-	// The ID of the router interface.
-	//
-	// example:
-	//
-	// ri-2zenfgfpyu3v93koa****
-	RouterInterfaceId *string `json:"RouterInterfaceId,omitempty" xml:"RouterInterfaceId,omitempty"`
-	// The type of the router to which the route table belongs. Valid values:
-	//
-	// 	- **VRouter**
-	//
-	// 	- **VBR**
-	//
-	// example:
-	//
-	// VRouter
-	RouterType *string `json:"RouterType,omitempty" xml:"RouterType,omitempty"`
-	// The specification of the router interface.
-	//
-	// example:
-	//
-	// Large
-	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The status of the router interface.
-	//
-	// example:
-	//
-	// active
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the resource.
-	Tags *DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceTypeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The ID of the local virtual private cloud (VPC) in the peering connection.
-	//
-	// example:
-	//
-	// vpc-2ze3tq4uxhysg717x****
-	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
+	AccessPointId                   *string                                                                        `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	Bandwidth                       *int32                                                                         `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	BusinessStatus                  *string                                                                        `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	ChargeType                      *string                                                                        `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ConnectedTime                   *string                                                                        `json:"ConnectedTime,omitempty" xml:"ConnectedTime,omitempty"`
+	CreationTime                    *string                                                                        `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CrossBorder                     *bool                                                                          `json:"CrossBorder,omitempty" xml:"CrossBorder,omitempty"`
+	Description                     *string                                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndTime                         *string                                                                        `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	FastLinkMode                    *bool                                                                          `json:"FastLinkMode,omitempty" xml:"FastLinkMode,omitempty"`
+	HasReservationData              *string                                                                        `json:"HasReservationData,omitempty" xml:"HasReservationData,omitempty"`
+	HcRate                          *int32                                                                         `json:"HcRate,omitempty" xml:"HcRate,omitempty"`
+	HcThreshold                     *int32                                                                         `json:"HcThreshold,omitempty" xml:"HcThreshold,omitempty"`
+	HealthCheckSourceIp             *string                                                                        `json:"HealthCheckSourceIp,omitempty" xml:"HealthCheckSourceIp,omitempty"`
+	HealthCheckTargetIp             *string                                                                        `json:"HealthCheckTargetIp,omitempty" xml:"HealthCheckTargetIp,omitempty"`
+	Ipv6Status                      *string                                                                        `json:"Ipv6Status,omitempty" xml:"Ipv6Status,omitempty"`
+	Name                            *string                                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	OppositeAccessPointId           *string                                                                        `json:"OppositeAccessPointId,omitempty" xml:"OppositeAccessPointId,omitempty"`
+	OppositeBandwidth               *int32                                                                         `json:"OppositeBandwidth,omitempty" xml:"OppositeBandwidth,omitempty"`
+	OppositeInterfaceBusinessStatus *string                                                                        `json:"OppositeInterfaceBusinessStatus,omitempty" xml:"OppositeInterfaceBusinessStatus,omitempty"`
+	OppositeInterfaceId             *string                                                                        `json:"OppositeInterfaceId,omitempty" xml:"OppositeInterfaceId,omitempty"`
+	OppositeInterfaceOwnerId        *string                                                                        `json:"OppositeInterfaceOwnerId,omitempty" xml:"OppositeInterfaceOwnerId,omitempty"`
+	OppositeInterfaceSpec           *string                                                                        `json:"OppositeInterfaceSpec,omitempty" xml:"OppositeInterfaceSpec,omitempty"`
+	OppositeInterfaceStatus         *string                                                                        `json:"OppositeInterfaceStatus,omitempty" xml:"OppositeInterfaceStatus,omitempty"`
+	OppositeRegionId                *string                                                                        `json:"OppositeRegionId,omitempty" xml:"OppositeRegionId,omitempty"`
+	OppositeRouterId                *string                                                                        `json:"OppositeRouterId,omitempty" xml:"OppositeRouterId,omitempty"`
+	OppositeRouterType              *string                                                                        `json:"OppositeRouterType,omitempty" xml:"OppositeRouterType,omitempty"`
+	OppositeVpcInstanceId           *string                                                                        `json:"OppositeVpcInstanceId,omitempty" xml:"OppositeVpcInstanceId,omitempty"`
+	ReservationActiveTime           *string                                                                        `json:"ReservationActiveTime,omitempty" xml:"ReservationActiveTime,omitempty"`
+	ReservationBandwidth            *string                                                                        `json:"ReservationBandwidth,omitempty" xml:"ReservationBandwidth,omitempty"`
+	ReservationInternetChargeType   *string                                                                        `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
+	ReservationOrderType            *string                                                                        `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
+	ResourceGroupId                 *string                                                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Role                            *string                                                                        `json:"Role,omitempty" xml:"Role,omitempty"`
+	RouterId                        *string                                                                        `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
+	RouterInterfaceId               *string                                                                        `json:"RouterInterfaceId,omitempty" xml:"RouterInterfaceId,omitempty"`
+	RouterType                      *string                                                                        `json:"RouterType,omitempty" xml:"RouterType,omitempty"`
+	Spec                            *string                                                                        `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	Status                          *string                                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                            *DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceTypeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VpcInstanceId                   *string                                                                        `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
 }
 
 func (s DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceType) String() string {
@@ -842,21 +610,7 @@ func (s *DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceTy
 }
 
 type DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceTypeTagsTags struct {
-	// The key of the resource tag. At least one tag key must be entered, and a maximum of 20 tag keys are supported. If this value needs to be passed in, it cannot be an empty string.
-	//
-	// A tag key can support up to 128 characters, cannot start with \\"aliyun\\" or \\"acs:\\", and cannot contain \\"http://\\" or \\"https://\\".
-	//
-	// example:
-	//
-	// FinanceDept
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the resource tag. A maximum of 20 tag values can be entered. If this value needs to be passed in, an empty string can be entered.
-	//
-	// A maximum of 128 characters are supported, it cannot start with \\"aliyun\\" or \\"acs:\\", and it cannot contain \\"http://\\" or \\"https://\\".
-	//
-	// example:
-	//
-	// FinanceJoshua
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

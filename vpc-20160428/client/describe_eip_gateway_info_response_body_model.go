@@ -25,8 +25,7 @@ type DescribeEipGatewayInfoResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The detailed information about the EIP.
+	Code     *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	EipInfos *DescribeEipGatewayInfoResponseBodyEipInfos `json:"EipInfos,omitempty" xml:"EipInfos,omitempty" type:"Struct"`
 	// The result of the operation.
 	//
@@ -130,23 +129,8 @@ func (s *DescribeEipGatewayInfoResponseBodyEipInfos) Validate() error {
 }
 
 type DescribeEipGatewayInfoResponseBodyEipInfosEipInfo struct {
-	// The IP address of the EIP.
-	//
-	// example:
-	//
-	// 47.XX.XX.236
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The IP address of the gateway that is associated with the EIP.
-	//
-	// example:
-	//
-	// 47.XX.XX.1
-	IpGw *string `json:"IpGw,omitempty" xml:"IpGw,omitempty"`
-	// The subnet mask of the EIP.
-	//
-	// example:
-	//
-	// 255.255.255.0
+	Ip     *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	IpGw   *string `json:"IpGw,omitempty" xml:"IpGw,omitempty"`
 	IpMask *string `json:"IpMask,omitempty" xml:"IpMask,omitempty"`
 }
 

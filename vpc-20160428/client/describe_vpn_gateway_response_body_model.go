@@ -96,7 +96,7 @@ type DescribeVpnGatewayResponseBody struct {
 	//
 	// example:
 	//
-	// China site (aliyun.com): Prepay. International site (alibabacloud.com): POSTPAY.
+	// 中国站示例值：Prepay，国际站示例值：POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The timestamp when the VPN gateway was created. Unit: milliseconds.
 	//
@@ -145,10 +145,18 @@ type DescribeVpnGatewayResponseBody struct {
 	// example:
 	//
 	// 1544666102000
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ENIs created by the system for the VPN gateway.
+	EndTime        *int64                                        `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	EniInstanceIds *DescribeVpnGatewayResponseBodyEniInstanceIds `json:"EniInstanceIds,omitempty" xml:"EniInstanceIds,omitempty" type:"Struct"`
-	GatewayType    *string                                       `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	// Type of VPN gateway:
+	//
+	// - **Traditional**: Traditional-type VPN gateway, supports both IPSec and SSL.
+	//
+	// - **Enhanced.SiteToSite**: Enhanced Site-to-Site VPN gateway, only supports IPSec.
+	//
+	// example:
+	//
+	// Enhanced.SiteToSite
+	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
 	// 	- If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection.
 	//
 	// 	- If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the address is the first IP address used to create an IPsec-VPN connection. The address cannot be used to create an SSL-VPN connection.
@@ -287,9 +295,8 @@ type DescribeVpnGatewayResponseBody struct {
 	//
 	// example:
 	//
-	// {\\"VpnEnableBgp\\":\\"true\\",\\"VisuallySsl\\":\\"true\\",\\"PbrPriority\\":\\"true\\",\\"VpnNewImage\\":\\"true\\",\\"description\\":\\"forwarding1.3.7\\",\\"VpnVersion\\":\\"v1.2.4\\"}
-	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The tags that are added to the VPN gateway.
+	// {\\"VpnEnableBgp\\":\\"true\\",\\"VisuallySsl\\":\\"true\\",\\"PbrPriority\\":\\"true\\",\\"VpnNewImage\\":\\"true\\",\\"description\\":\\"转发1.3.24\\",\\"VpnVersion\\":\\"v1.2.4\\",\\"IDaaSNewVersion\\":\\"true\\"}
+	Tag  *string                             `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	Tags *DescribeVpnGatewayResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The ID of the vSwitch to which the VPN gateway belongs.
 	//
@@ -805,13 +812,13 @@ func (s *DescribeVpnGatewayResponseBodyTags) Validate() error {
 }
 
 type DescribeVpnGatewayResponseBodyTagsTag struct {
-	// The tag key.
+	// 标签键。
 	//
 	// example:
 	//
 	// aaa
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// 标签值。
 	//
 	// example:
 	//

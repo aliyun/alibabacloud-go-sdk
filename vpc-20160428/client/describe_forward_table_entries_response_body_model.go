@@ -22,7 +22,6 @@ type iDescribeForwardTableEntriesResponseBody interface {
 }
 
 type DescribeForwardTableEntriesResponseBody struct {
-	// The details of DNAT entries.
 	ForwardTableEntries *DescribeForwardTableEntriesResponseBodyForwardTableEntries `json:"ForwardTableEntries,omitempty" xml:"ForwardTableEntries,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,88 +146,16 @@ func (s *DescribeForwardTableEntriesResponseBodyForwardTableEntries) Validate() 
 }
 
 type DescribeForwardTableEntriesResponseBodyForwardTableEntriesForwardTableEntry struct {
-	// 	- The EIPs that can be accessed over the Internet when you query DNAT entries of Internet NAT gateways.
-	//
-	// 	- The NAT IP addresses that can be accessed by external networks when you query DNAT entries of VPC NAT gateways.
-	//
-	// example:
-	//
-	// 139.79.XX.XX
-	ExternalIp *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
-	// 	- The external port or port range that is used for port forwarding when you query DNAT entries of Internet NAT gateways.
-	//
-	// 	- The port that is used when the NAT IP address can be accessed by external networks when you query DNAT entries of VPC NAT gateways.
-	//
-	// example:
-	//
-	// 80
-	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
-	// The ID of the DNAT entry.
-	//
-	// example:
-	//
-	// fwd-119smw5tk****
-	ForwardEntryId *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
-	// The name of the DNAT entry.
-	//
-	// example:
-	//
-	// ForwardEntry-1
+	ExternalIp       *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
+	ExternalPort     *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
+	ForwardEntryId   *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
 	ForwardEntryName *string `json:"ForwardEntryName,omitempty" xml:"ForwardEntryName,omitempty"`
-	// The ID of the DNAT table to which the DNAT entry belongs.
-	//
-	// example:
-	//
-	// ftb-11tc6xgmv****
-	ForwardTableId *string `json:"ForwardTableId,omitempty" xml:"ForwardTableId,omitempty"`
-	// The private IP address.
-	//
-	// 	- The private IP address of the ECS instance that uses DNAT entries to communicate with the Internet when you query DNAT entries of Internet NAT gateways.
-	//
-	// 	- The private IP address that uses DNAT entries when you query DNAT entries of VPC NAT gateways.
-	//
-	// example:
-	//
-	// 192.168.XX.XX
-	InternalIp *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
-	// 	- The internal port or port range that is used for port forwarding when you query DNAT entries of Internet NAT gateways.
-	//
-	// 	- The destination ECS instance port to be mapped when you query DNAT entries of VPC NAT gateways.
-	//
-	// example:
-	//
-	// 25
-	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
-	// The protocol. Valid values:
-	//
-	// 	- **TCP**
-	//
-	// 	- **UDP**
-	//
-	// 	- **Any**
-	//
-	// example:
-	//
-	// TCP
-	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The ID of the NAT gateway to which the DNAT entry belongs.
-	//
-	// example:
-	//
-	// ngw-bp1uewa15k4iy5770****
-	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The status of the DNAT entry. Valid values:
-	//
-	// 	- **Pending**
-	//
-	// 	- **Available**
-	//
-	// 	- **Deleting**
-	//
-	// example:
-	//
-	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ForwardTableId   *string `json:"ForwardTableId,omitempty" xml:"ForwardTableId,omitempty"`
+	InternalIp       *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
+	InternalPort     *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
+	IpProtocol       *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	NatGatewayId     *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeForwardTableEntriesResponseBodyForwardTableEntriesForwardTableEntry) String() string {

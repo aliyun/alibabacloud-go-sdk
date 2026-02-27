@@ -22,7 +22,6 @@ type iDescribeIPv6TranslatorsResponseBody interface {
 }
 
 type DescribeIPv6TranslatorsResponseBody struct {
-	// The list of IPv6 Translation Service instances.
 	Ipv6Translators *DescribeIPv6TranslatorsResponseBodyIpv6Translators `json:"Ipv6Translators,omitempty" xml:"Ipv6Translators,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,100 +146,21 @@ func (s *DescribeIPv6TranslatorsResponseBodyIpv6Translators) Validate() error {
 }
 
 type DescribeIPv6TranslatorsResponseBodyIpv6TranslatorsIpv6Translator struct {
-	// The IPv4 address allocated to the IPv6 Translation Service instance.
-	//
-	// example:
-	//
-	// 47.99.XX.XX
-	AllocateIpv4Addr *string `json:"AllocateIpv4Addr,omitempty" xml:"AllocateIpv4Addr,omitempty"`
-	// The IPv6 address allocated to the IPv6 Translation Service instance.
-	//
-	// example:
-	//
-	// 2400:3200:1600::XXXX
-	AllocateIpv6Addr *string `json:"AllocateIpv6Addr,omitempty" xml:"AllocateIpv6Addr,omitempty"`
-	// The bandwidth of the IPv6 Translation Service instance.
-	//
-	// example:
-	//
-	// 1
-	AvailableBandwidth *string `json:"AvailableBandwidth,omitempty" xml:"AvailableBandwidth,omitempty"`
-	// The bandwidth of the IPv6 Translation Service instance. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 1
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The business status of the IPv6 Translation Service instance. Valid values:
-	//
-	// 	- **Normal**
-	//
-	// 	- **FinancialLocked**
-	//
-	// example:
-	//
-	// Normal
-	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The timestamp when the IPv6 Translation Service instance was created.
-	//
-	// example:
-	//
-	// 1537151540000
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the IPv6 Translation Service instance.
-	//
-	// example:
-	//
-	// descriptionforinstance
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The timestamp when IPv6 Translation Service instance expires.
-	//
-	// example:
-	//
-	// 1539792000000
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The IDs of IPv6 mapping entries of the IPv6 Translation Service instance.
+	AllocateIpv4Addr       *string                                                                                 `json:"AllocateIpv4Addr,omitempty" xml:"AllocateIpv4Addr,omitempty"`
+	AllocateIpv6Addr       *string                                                                                 `json:"AllocateIpv6Addr,omitempty" xml:"AllocateIpv6Addr,omitempty"`
+	AvailableBandwidth     *string                                                                                 `json:"AvailableBandwidth,omitempty" xml:"AvailableBandwidth,omitempty"`
+	Bandwidth              *int32                                                                                  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	BusinessStatus         *string                                                                                 `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	CreateTime             *int64                                                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description            *string                                                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndTime                *int64                                                                                  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Ipv6TranslatorEntryIds *DescribeIPv6TranslatorsResponseBodyIpv6TranslatorsIpv6TranslatorIpv6TranslatorEntryIds `json:"Ipv6TranslatorEntryIds,omitempty" xml:"Ipv6TranslatorEntryIds,omitempty" type:"Struct"`
-	// The ID of the IPv6 Translation Service instance.
-	//
-	// example:
-	//
-	// ipv6trans-bp1858ys*****
-	Ipv6TranslatorId *string `json:"Ipv6TranslatorId,omitempty" xml:"Ipv6TranslatorId,omitempty"`
-	// The name of the IPv6 Translation Service instance.
-	//
-	// example:
-	//
-	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The billing method of the IPv6 Translation Service instance.
-	//
-	// 	- **Prepay**: subscription
-	//
-	// 	- **Postpay**: pay-as-you-go
-	//
-	// example:
-	//
-	// Prepay
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The region of the IPv6 Translation Service instance.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The specification of the IPv6 Translation Service instance.
-	//
-	// example:
-	//
-	// small
-	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The status of the IPv6 Translation Service instance.
-	//
-	// example:
-	//
-	// active
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Ipv6TranslatorId       *string                                                                                 `json:"Ipv6TranslatorId,omitempty" xml:"Ipv6TranslatorId,omitempty"`
+	Name                   *string                                                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	PayType                *string                                                                                 `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	RegionId               *string                                                                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Spec                   *string                                                                                 `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	Status                 *string                                                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeIPv6TranslatorsResponseBodyIpv6TranslatorsIpv6Translator) String() string {

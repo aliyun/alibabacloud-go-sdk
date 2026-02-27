@@ -155,6 +155,11 @@ func (s *ListFullNatEntriesResponseBody) Validate() error {
 }
 
 type ListFullNatEntriesResponseBodyFullNatEntries struct {
+	// The backend domain name for FULLNAT address translation in a FULLNAT entry.
+	//
+	// example:
+	//
+	// xxx.com
 	AccessDomain *string `json:"AccessDomain,omitempty" xml:"AccessDomain,omitempty"`
 	// The backend IP address that is used for FULLNAT address translation in FULLNAT entries.
 	//
@@ -173,7 +178,12 @@ type ListFullNatEntriesResponseBodyFullNatEntries struct {
 	// example:
 	//
 	// 2021-10-27T02:44:40Z
-	CreationTime  *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The IP resolved from the backend domain name for address translation in the FULLNAT entry.
+	//
+	// example:
+	//
+	// 192.168.XX.XX
 	DomainResolve *string `json:"DomainResolve,omitempty" xml:"DomainResolve,omitempty"`
 	// The description of the FULLNAT entry.
 	//

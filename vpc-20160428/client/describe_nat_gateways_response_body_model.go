@@ -22,7 +22,6 @@ type iDescribeNatGatewaysResponseBody interface {
 }
 
 type DescribeNatGatewaysResponseBody struct {
-	// The details about the NAT gateway.
 	NatGateways *DescribeNatGatewaysResponseBodyNatGateways `json:"NatGateways,omitempty" xml:"NatGateways,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,230 +146,41 @@ func (s *DescribeNatGatewaysResponseBodyNatGateways) Validate() error {
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGateway struct {
-	// Access mode for reverse access to VPC NAT gateway.
-	AccessMode *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayAccessMode `json:"AccessMode,omitempty" xml:"AccessMode,omitempty" type:"Struct"`
-	// Indicates whether automatic payment is enabled. Valid values:
-	//
-	// 	- **false**: no
-	//
-	// 	- **true**: yes
-	//
-	// example:
-	//
-	// false
-	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The status of the NAT gateway. Valid values:
-	//
-	// 	- **Normal**: normal
-	//
-	// 	- **FinancialLocked**: locked due to overdue payments
-	//
-	// example:
-	//
-	// Normal
-	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The time when the NAT gateway was created.
-	//
-	// example:
-	//
-	// 2021-06-08T12:20:20Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// Indicates whether the deletion protection feature is enabled. Valid values:
-	//
-	// 	- **true**: yes
-	//
-	// 	- **false**: no
-	//
-	// example:
-	//
-	// true
-	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// The description of the NAT gateway.
-	//
-	// example:
-	//
-	// NAT
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the traffic monitoring feature is enabled. Valid values:
-	//
-	// 	- **true**: yes
-	//
-	// 	- **false**: no
-	//
-	// example:
-	//
-	// true
-	EcsMetricEnabled *bool `json:"EcsMetricEnabled,omitempty" xml:"EcsMetricEnabled,omitempty"`
-	// The mode in which the NAT gateway is associated with an elastic IP address (EIP). Valid values:
-	//
-	// 	- **MULTI_BINDED**: multi-EIP-to-ENI mode
-	//
-	// 	- **NAT**: NAT mode, which is compatible with IPv4 addresses.
-	//
-	// >  Note: If you use the NAT mode, the EIP occupies one private IP address on the vSwitch of the NAT gateway. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the NAT gateway fails to be associated with the EIP. In NAT mode, you can associate a NAT gateway with up to 50 EIPs.
-	//
+	AccessMode         *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayAccessMode `json:"AccessMode,omitempty" xml:"AccessMode,omitempty" type:"Struct"`
+	AutoPay            *bool                                                           `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	BusinessStatus     *string                                                         `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	CreationTime       *string                                                         `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DeletionProtection *bool                                                           `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	Description        *string                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	EcsMetricEnabled   *bool                                                           `json:"EcsMetricEnabled,omitempty" xml:"EcsMetricEnabled,omitempty"`
 	// example:
 	//
 	// MULTI_BINDED
-	EipBindMode *string `json:"EipBindMode,omitempty" xml:"EipBindMode,omitempty"`
-	// Whether to enable session logging, with values:
-	//
-	// - **true**: Session logging is enabled.
-	//
-	// - **false**: Session logging is disabled.
-	//
-	// example:
-	//
-	// true
-	EnableSessionLog *string `json:"EnableSessionLog,omitempty" xml:"EnableSessionLog,omitempty"`
-	// The time when the NAT gateway expires.
-	//
-	// example:
-	//
-	// 2021-08-26T16:00Z
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The ID of the DNAT table.
-	ForwardTableIds *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayForwardTableIds `json:"ForwardTableIds,omitempty" xml:"ForwardTableIds,omitempty" type:"Struct"`
-	// The ID of the FULLNAT table.
-	FullNatTableIds *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayFullNatTableIds `json:"FullNatTableIds,omitempty" xml:"FullNatTableIds,omitempty" type:"Struct"`
-	// Indicates whether the ICMP non-retrieval feature is enabled. Valid values:
-	//
-	// 	- **true**: yes
-	//
-	// 	- **false**: no
-	//
-	// example:
-	//
-	// false
-	IcmpReplyEnabled *bool `json:"IcmpReplyEnabled,omitempty" xml:"IcmpReplyEnabled,omitempty"`
-	// The billing method of the NAT gateway. The value is set to **PostPaid**, which indicates the pay-as-you-go billing method.
-	//
-	// example:
-	//
-	// PostPaid
-	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The metering method of the NAT gateway. Valid values:
-	//
-	// 	- **PayBySpec**: pay-by-specification
-	//
-	// 	- **PayByLcu**: pay-by-CU
-	//
-	// example:
-	//
-	// PayByLcu
-	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The list of elastic IP addresses (EIPs) that are associated with the Internet NAT gateway.
-	IpLists *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpLists `json:"IpLists,omitempty" xml:"IpLists,omitempty" type:"Struct"`
-	// List of NAT IP prefix address segments.
-	IpPrefixList *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixList `json:"IpPrefixList,omitempty" xml:"IpPrefixList,omitempty" type:"Struct"`
-	// The name of the NAT gateway.
-	//
-	// example:
-	//
-	// abc
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the NAT gateway.
-	//
-	// example:
-	//
-	// ngw-bp1047e2d4z7kf2ki****
-	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The private network information about the enhanced Internet NAT gateway.
-	//
-	// >  If **NatType*	- is set to **Normal**, all parameters returned in this list are empty.
-	NatGatewayPrivateInfo *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayNatGatewayPrivateInfo `json:"NatGatewayPrivateInfo,omitempty" xml:"NatGatewayPrivateInfo,omitempty" type:"Struct"`
-	// The type of the NAT gateway. The value is set to **Enhanced*	- (enhanced NAT gateway).
-	//
-	// example:
-	//
-	// Enhanced
-	NatType *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
-	// The type of NAT gateway. Valid values:
-	//
-	// 	- **internet**: an Internet NAT gateway
-	//
-	// 	- **intranet**: a VPC NAT gateway
-	//
-	// example:
-	//
-	// internet
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// Indicates whether the NAT gateway supports PrivateLink. Valid values:
-	//
-	// 	- **true**: yes
-	//
-	// 	- **false**: no
-	//
-	// example:
-	//
-	// true
-	PrivateLinkEnabled *bool `json:"PrivateLinkEnabled,omitempty" xml:"PrivateLinkEnabled,omitempty"`
-	// The mode that is used by PrivateLink. Valid values:
-	//
-	// 	- **FullNat**: the FULLNAT mode
-	//
-	// 	- **Geneve**: the GENEVE mode
-	//
-	// example:
-	//
-	// FullNat
-	PrivateLinkMode *string `json:"PrivateLinkMode,omitempty" xml:"PrivateLinkMode,omitempty"`
-	// The ID of the region where the NAT gateway is deployed.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the contiguous EIP group belongs.
-	//
-	// example:
-	//
-	// rg-bp67acfmxazb4ph****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Indicates whether the firewall feature is enabled. Valid values:
-	//
-	// 	- **false**: no
-	//
-	// 	- **true**: yes
-	//
-	// example:
-	//
-	// false
-	SecurityProtectionEnabled *bool `json:"SecurityProtectionEnabled,omitempty" xml:"SecurityProtectionEnabled,omitempty"`
-	// The ID of the SNAT table of the NAT gateway.
-	SnatTableIds *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewaySnatTableIds `json:"SnatTableIds,omitempty" xml:"SnatTableIds,omitempty" type:"Struct"`
-	// The size of the NAT gateway. An empty value is returned for the parameter.
-	//
-	// If **InternetChargeType*	- is set to **PayByLcu**, an empty value is returned.
-	//
-	// example:
-	//
-	// Small
-	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The status of the NAT gateway. Valid values:
-	//
-	// 	- **Creating**: After you send a request to create a NAT gateway, the system creates the NAT gateway in the background. The NAT gateway remains in the Creating state until the operation is completed.
-	//
-	// 	- **Available**: The NAT gateway remains in a stable state after the NAT gateway is created.
-	//
-	// 	- **Modifying**: After you send a request to modify a NAT gateway, the system modifies the NAT gateway in the background. The NAT gateway remains in the Modifying state until the operation is completed.
-	//
-	// 	- **Deleting**: After you send a request to delete a NAT gateway, the system deletes the NAT gateway in the background. The NAT gateway remains in the Deleting state until the operation is completed.
-	//
-	// 	- **Converting**: After you send a request to upgrade a standard NAT gateway to an enhanced NAT gateway, the system upgrades the NAT gateway in the background. The NAT gateway remains in the Converting state until the operation is completed.
-	//
-	// example:
-	//
-	// Creating
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags that are added to the resource group.
-	Tags *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The ID of the VPC where the NAT gateway is deployed.
-	//
-	// example:
-	//
-	// vpc-bp15zckdt37pq72z****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	EipBindMode               *string                                                                    `json:"EipBindMode,omitempty" xml:"EipBindMode,omitempty"`
+	EnableSessionLog          *string                                                                    `json:"EnableSessionLog,omitempty" xml:"EnableSessionLog,omitempty"`
+	ExpiredTime               *string                                                                    `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	ForwardTableIds           *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayForwardTableIds       `json:"ForwardTableIds,omitempty" xml:"ForwardTableIds,omitempty" type:"Struct"`
+	FullNatTableIds           *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayFullNatTableIds       `json:"FullNatTableIds,omitempty" xml:"FullNatTableIds,omitempty" type:"Struct"`
+	IcmpReplyEnabled          *bool                                                                      `json:"IcmpReplyEnabled,omitempty" xml:"IcmpReplyEnabled,omitempty"`
+	InstanceChargeType        *string                                                                    `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	InternetChargeType        *string                                                                    `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	IpLists                   *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpLists               `json:"IpLists,omitempty" xml:"IpLists,omitempty" type:"Struct"`
+	IpPrefixList              *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixList          `json:"IpPrefixList,omitempty" xml:"IpPrefixList,omitempty" type:"Struct"`
+	Name                      *string                                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	NatGatewayId              *string                                                                    `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	NatGatewayPrivateInfo     *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayNatGatewayPrivateInfo `json:"NatGatewayPrivateInfo,omitempty" xml:"NatGatewayPrivateInfo,omitempty" type:"Struct"`
+	NatType                   *string                                                                    `json:"NatType,omitempty" xml:"NatType,omitempty"`
+	NetworkType               *string                                                                    `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	PrivateLinkEnabled        *bool                                                                      `json:"PrivateLinkEnabled,omitempty" xml:"PrivateLinkEnabled,omitempty"`
+	PrivateLinkMode           *string                                                                    `json:"PrivateLinkMode,omitempty" xml:"PrivateLinkMode,omitempty"`
+	RegionId                  *string                                                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId           *string                                                                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityProtectionEnabled *bool                                                                      `json:"SecurityProtectionEnabled,omitempty" xml:"SecurityProtectionEnabled,omitempty"`
+	SnatTableIds              *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewaySnatTableIds          `json:"SnatTableIds,omitempty" xml:"SnatTableIds,omitempty" type:"Struct"`
+	Spec                      *string                                                                    `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	Status                    *string                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                      *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTags                  `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VpcId                     *string                                                                    `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) String() string {
@@ -714,23 +524,7 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) Validate() error 
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayAccessMode struct {
-	// Access mode, with values:
-	//
-	// - **route**: Route mode.
-	//
-	// - **tunnel**: Tunnel mode.
-	//
-	// example:
-	//
-	// route
-	ModeValue *string `json:"ModeValue,omitempty" xml:"ModeValue,omitempty"`
-	// Tunnel mode type:
-	//
-	// - **geneve**: Geneve type.
-	//
-	// example:
-	//
-	// geneve
+	ModeValue  *string `json:"ModeValue,omitempty" xml:"ModeValue,omitempty"`
 	TunnelType *string `json:"TunnelType,omitempty" xml:"TunnelType,omitempty"`
 }
 
@@ -849,48 +643,11 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpLists) Validate()
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpListsIpList struct {
-	// The ID of the EIP associated with the NAT gateway.
-	//
-	// example:
-	//
-	// eip-m5egzuvp3dgixen6****
-	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The IP address of the EIP associated with the NAT gateway.
-	//
-	// example:
-	//
-	// 116.62.XX.XX
-	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	// The private IP address of the NAT gateway.
-	//
-	// example:
-	//
-	// 192.168.XX.XX
+	AllocationId     *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	IpAddress        *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// Indicates whether IP addresses that are used in DNAT entries can be specified in SNAT entries. Valid values:
-	//
-	// 	- **true**: yes
-	//
-	// 	- **false**: no
-	//
-	// example:
-	//
-	// false
-	SnatEntryEnabled *bool `json:"SnatEntryEnabled,omitempty" xml:"SnatEntryEnabled,omitempty"`
-	// The association between the EIP and the Internet NAT gateway. Valid values:
-	//
-	// 	- **UsedByForwardTable**: The EIP is specified in a DNAT entry.
-	//
-	// 	- **UsedBySnatTable**: The EIP is specified in an SNAT entry.
-	//
-	// 	- **UsedByForwardSnatTable**: The EIP is specified in both an SNAT entry and a DNAT entry.
-	//
-	// 	- **Idle**: The EIP is not specified in a DNAT or SNAT entry.
-	//
-	// example:
-	//
-	// UsedByForwardTable
-	UsingStatus *string `json:"UsingStatus,omitempty" xml:"UsingStatus,omitempty"`
+	SnatEntryEnabled *bool   `json:"SnatEntryEnabled,omitempty" xml:"SnatEntryEnabled,omitempty"`
+	UsingStatus      *string `json:"UsingStatus,omitempty" xml:"UsingStatus,omitempty"`
 }
 
 func (s DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpListsIpList) String() string {
@@ -985,11 +742,6 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixList) Valid
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixListIpPrefixList struct {
-	// NAT IP prefix address range
-	//
-	// example:
-	//
-	// 192.168.0.0/28
 	IpPrefix *string `json:"IpPrefix,omitempty" xml:"IpPrefix,omitempty"`
 }
 
@@ -1015,58 +767,14 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixListIpPrefi
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayNatGatewayPrivateInfo struct {
-	// The ID of the elastic network interface (ENI).
-	//
-	// example:
-	//
-	// eni-m5eg4ozy5st8q3q4****
-	EniInstanceId *string `json:"EniInstanceId,omitempty" xml:"EniInstanceId,omitempty"`
-	// The mode in which the ENI is associated with the NAT gateway.
-	//
-	// 	- **indirect**: non-cut-through mode
-	//
-	// 	- If an empty value is returned, it indicates that the cut-through mode is used.
-	//
-	// example:
-	//
-	// indirect
-	EniType *string `json:"EniType,omitempty" xml:"EniType,omitempty"`
-	// The zone to which the NAT gateway belongs.
-	//
-	// example:
-	//
-	// cn-hangzhou-b
-	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
-	// The maximum bandwidth. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 5120
-	MaxBandwidth *int32 `json:"MaxBandwidth,omitempty" xml:"MaxBandwidth,omitempty"`
-	// The number of new connections to the NAT gateway. Unit: connections per second.
-	//
-	// example:
-	//
-	// 100000
-	MaxSessionEstablishRate *int32 `json:"MaxSessionEstablishRate,omitempty" xml:"MaxSessionEstablishRate,omitempty"`
-	// The number of concurrent connections to the NAT gateway. Unit: connections.
-	//
-	// example:
-	//
-	// 2000000
-	MaxSessionQuota *int32 `json:"MaxSessionQuota,omitempty" xml:"MaxSessionQuota,omitempty"`
-	// The private IP address.
-	//
-	// example:
-	//
-	// 192.168.XX.XX
-	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The ID of the vSwitch to which the NAT gateway belongs.
-	//
-	// example:
-	//
-	// vsw-bp1s2laxhdf9ayjbo****
-	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	EniInstanceId           *string `json:"EniInstanceId,omitempty" xml:"EniInstanceId,omitempty"`
+	EniType                 *string `json:"EniType,omitempty" xml:"EniType,omitempty"`
+	IzNo                    *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
+	MaxBandwidth            *int32  `json:"MaxBandwidth,omitempty" xml:"MaxBandwidth,omitempty"`
+	MaxSessionEstablishRate *int32  `json:"MaxSessionEstablishRate,omitempty" xml:"MaxSessionEstablishRate,omitempty"`
+	MaxSessionQuota         *int32  `json:"MaxSessionQuota,omitempty" xml:"MaxSessionQuota,omitempty"`
+	PrivateIpAddress        *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	VswitchId               *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
 func (s DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayNatGatewayPrivateInfo) String() string {
@@ -1213,17 +921,7 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTags) Validate() er
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTagsTag struct {
-	// The tag key of the instance.
-	//
-	// example:
-	//
-	// KeyTest
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value of the instance.
-	//
-	// example:
-	//
-	// valueTest
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

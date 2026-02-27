@@ -138,8 +138,7 @@ type DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType struct {
 	// example:
 	//
 	// http://******
-	LoaUrl *string `json:"LoaUrl,omitempty" xml:"LoaUrl,omitempty"`
-	// The information about the construction workers.
+	LoaUrl *string                                                                   `json:"LoaUrl,omitempty" xml:"LoaUrl,omitempty"`
 	PMInfo *DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOATypePMInfo `json:"PMInfo,omitempty" xml:"PMInfo,omitempty" type:"Struct"`
 	// The on-site construction company.
 	//
@@ -347,46 +346,11 @@ func (s *DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOATypePMInf
 }
 
 type DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOATypePMInfoPMInfo struct {
-	// The identity document number of the construction worker.
-	//
-	// example:
-	//
-	// 12345671****
-	PMCertificateNo *string `json:"PMCertificateNo,omitempty" xml:"PMCertificateNo,omitempty"`
-	// The identity document type of the construction worker. Valid values:
-	//
-	// 	- **IDCard**
-	//
-	// 	- **Passport**
-	//
-	// 	- **Other**
-	//
-	// example:
-	//
-	// Other
+	PMCertificateNo   *string `json:"PMCertificateNo,omitempty" xml:"PMCertificateNo,omitempty"`
 	PMCertificateType *string `json:"PMCertificateType,omitempty" xml:"PMCertificateType,omitempty"`
-	// The phone number of the construction worker.
-	//
-	// example:
-	//
-	// 18910010****
-	PMContactInfo *string `json:"PMContactInfo,omitempty" xml:"PMContactInfo,omitempty"`
-	// The gender of the construction worker. Valid values:
-	//
-	// 	- **Male**
-	//
-	// 	- **Female**
-	//
-	// example:
-	//
-	// Male
-	PMGender *string `json:"PMGender,omitempty" xml:"PMGender,omitempty"`
-	// The name of the construction worker.
-	//
-	// example:
-	//
-	// name
-	PMName *string `json:"PMName,omitempty" xml:"PMName,omitempty"`
+	PMContactInfo     *string `json:"PMContactInfo,omitempty" xml:"PMContactInfo,omitempty"`
+	PMGender          *string `json:"PMGender,omitempty" xml:"PMGender,omitempty"`
+	PMName            *string `json:"PMName,omitempty" xml:"PMName,omitempty"`
 }
 
 func (s DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOATypePMInfoPMInfo) String() string {

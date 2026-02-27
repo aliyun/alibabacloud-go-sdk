@@ -33,8 +33,7 @@ type DescribePhysicalConnectionsResponseBody struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of Express Connect circuits.
+	PageSize              *int32                                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PhysicalConnectionSet *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSet `json:"PhysicalConnectionSet,omitempty" xml:"PhysicalConnectionSet,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -147,331 +146,45 @@ func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSet) Validate(
 }
 
 type DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType struct {
-	// The ID of the Express Connect circuit.
-	//
-	// example:
-	//
-	// ap-cn-hangzhou-finance-yh-E
-	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
-	// The type of the access point.
-	//
-	// example:
-	//
-	// VPC
-	AccessPointType *string `json:"AccessPointType,omitempty" xml:"AccessPointType,omitempty"`
-	// The information about the data center and rack.
-	//
-	// example:
-	//
-	// Position 30, Server Rack JXX, Booth ET135ET135-XX-2, Room XX, Building 10, XX Road, XX Town, XX District, Hangzhou, Zhejiang Province
-	AdDetailLocation *string `json:"AdDetailLocation,omitempty" xml:"AdDetailLocation,omitempty"`
-	// The location of the access point.
-	//
-	// example:
-	//
-	// Number 10, XX Road, XX Town, XX District, Hangzhou City, Zhejiang Province.
-	AdLocation *string `json:"AdLocation,omitempty" xml:"AdLocation,omitempty"`
-	// The maximum bandwidth of the Express Connect circuit.
-	//
-	// Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 10
-	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The status of the Express Connect circuit. Valid values:
-	//
-	// 	- **Normal**: enabled
-	//
-	// 	- **FinancialLocked**: locked due to overdue payments
-	//
-	// 	- **SecurityLocked**: locked for security reasons
-	//
-	// example:
-	//
-	// Normal
-	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The billing method of the Express Connect circuit.
-	//
-	// If **Prepaid*	- is returned, it indicates that the Express Connect circuit is billed on a subscription basis.
-	//
-	// example:
-	//
-	// Prepaid
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The circuit code of the Express Connect circuit. The circuit code is provided by the connectivity provider.
-	//
-	// example:
-	//
-	// longtel001
-	CircuitCode *string `json:"CircuitCode,omitempty" xml:"CircuitCode,omitempty"`
-	// The time when the Express Connect circuit was created.
-	//
-	// example:
-	//
-	// 2021-08-24T07:30:58Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the Express Connect circuit.
-	//
-	// example:
-	//
-	// desctest
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the Express Connect circuit was enabled.
-	//
-	// example:
-	//
-	// 2021-08-24T07:33:18Z
-	EnabledTime *string `json:"EnabledTime,omitempty" xml:"EnabledTime,omitempty"`
-	// The time when the Express Connect circuit expires.
-	//
-	// example:
-	//
-	// 2022-04-24T16:00:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The estimated maximum bandwidth of the shared Express Connect circuit. The estimated bandwidth takes effect after you complete the payment.
-	//
-	// Unit: **M*	- (Mbit/s) and **G*	- (Gbit/s).
-	//
-	// example:
-	//
-	// 50M
-	ExpectSpec *string `json:"ExpectSpec,omitempty" xml:"ExpectSpec,omitempty"`
-	// Indicates whether the data about pending orders is returned. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// false
-	HasReservationData *string `json:"HasReservationData,omitempty" xml:"HasReservationData,omitempty"`
-	// The connectivity provider of the Express Connect circuit. Valid values:
-	//
-	// 	- **CT**: China Telecom.
-	//
-	// 	- **CU**: China Unicom.
-	//
-	// 	- **CM**: China Mobile.
-	//
-	// 	- **CO**: other connectivity providers in the Chinese mainland.
-	//
-	// 	- **Equinix**: Equinix.
-	//
-	// 	- **Other**: other connectivity providers outside the Chinese mainland.
-	//
-	// example:
-	//
-	// CT
-	LineOperator *string `json:"LineOperator,omitempty" xml:"LineOperator,omitempty"`
-	// The status of the letter of authorization (LOA). Valid values:
-	//
-	// 	- **Applying**: The LOA is pending for approval.
-	//
-	// 	- **Accept**: The LOA is approved.
-	//
-	// 	- **Available**: The LOA is available.
-	//
-	// 	- **Rejected**: The LOA is rejected.
-	//
-	// 	- **Completing**: The Express Connect circuit is under construction.
-	//
-	// 	- **Complete**: The Express Connect circuit is installed.
-	//
-	// 	- **Deleted**: The LOA is deleted.
-	//
-	// example:
-	//
-	// Available
-	LoaStatus *string `json:"LoaStatus,omitempty" xml:"LoaStatus,omitempty"`
-	// The name of the Express Connect circuit.
-	//
-	// example:
-	//
-	// nametest
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OpticalModuleModel *string `json:"OpticalModuleModel,omitempty" xml:"OpticalModuleModel,omitempty"`
-	// The payer for the hosted connection. Valid values:
-	//
-	// 	- **PayByPhysicalConnectionOwner**: The partner pays for the shared Express Connect circuit.
-	//
-	// 	- **PayByVirtualPhysicalConnectionOwner**: The tenant pays for the shared Express Connect circuit.
-	//
-	// example:
-	//
-	// PayByPhysicalConnectionOwner
-	OrderMode *string `json:"OrderMode,omitempty" xml:"OrderMode,omitempty"`
-	// The ID of the Alibaba Cloud account to which the parent Express Connect circuit belongs.
-	//
-	// example:
-	//
-	// 283117732402483989
-	ParentPhysicalConnectionAliUid *int64 `json:"ParentPhysicalConnectionAliUid,omitempty" xml:"ParentPhysicalConnectionAliUid,omitempty"`
-	// The ID of the parent Express Connect circuit.
-	//
-	// example:
-	//
-	// pc-bp1ciz7ekd2grn1as****
-	ParentPhysicalConnectionId *string `json:"ParentPhysicalConnectionId,omitempty" xml:"ParentPhysicalConnectionId,omitempty"`
-	// The geographical location of the data center.
-	//
-	// example:
-	//
-	// XX Number, XX Road, XX Town, XX District, Hangzhou City, Zhejiang Province.
-	PeerLocation *string `json:"PeerLocation,omitempty" xml:"PeerLocation,omitempty"`
-	// The ID of the Express Connect circuit.
-	//
-	// example:
-	//
-	// pc-bp1ciz7ekd2grn1as****
-	PhysicalConnectionId *string `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
-	// The ID of the port on the access device.
-	//
-	// example:
-	//
-	// 1/1/1
-	PortNumber *string `json:"PortNumber,omitempty" xml:"PortNumber,omitempty"`
-	// The port type of the Express Connect circuit. Valid values:
-	//
-	// 	- **100Base-T**: 100 Mbit/s copper Ethernet port
-	//
-	// 	- **1000Base-T**: 1,000 Mbit/s copper Ethernet port
-	//
-	// 	- **1000Base-LX**: 1,000 Mbit/s single-mode optical port (10 km)
-	//
-	// 	- **10GBase-T**: 10,000 Mbit/s copper Ethernet port
-	//
-	// 	- **10GBase-LR**: 10,000 Mbit/s single-mode optical port (10 km)
-	//
-	// 	- **40GBase-LR**: 40,000 Mbit/s single-mode optical port
-	//
-	// 	- **100GBase-LR**: 100,000 Mbit/s single-mode optical port
-	//
-	// > Whether 40GBase-LR and 100GBase-LR ports can be created depends on resource supplies. For more information, contact your account manager.
-	//
-	// example:
-	//
-	// 10GBase-LR
-	PortType *string `json:"PortType,omitempty" xml:"PortType,omitempty"`
-	// The type of the Express Connect circuit. Valid values:
-	//
-	// 	- **VirtualPhysicalConnection**: shared Express Connect circuit
-	//
-	// 	- **PhysicalConnection**: dedicated Express Connect circuit
-	//
-	// example:
-	//
-	// PhysicalConnection
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The ID of the QoS policy.
-	//
-	// example:
-	//
-	// qos-bp10s3szn8rgnxuw7****
-	QosId *string `json:"QosId,omitempty" xml:"QosId,omitempty"`
-	// The ID of the standby Express Connect circuit.
-	//
-	// example:
-	//
-	// pc-119mfjzm****
-	RedundantPhysicalConnectionId *string `json:"RedundantPhysicalConnectionId,omitempty" xml:"RedundantPhysicalConnectionId,omitempty"`
-	// The time when the pending order takes effect.
-	//
-	// example:
-	//
-	// 2022-02-25T11:01:04Z
-	ReservationActiveTime *string `json:"ReservationActiveTime,omitempty" xml:"ReservationActiveTime,omitempty"`
-	// The billing method of the pending order.
-	//
-	// If **PayByBandwidth*	- is returned, it indicates that the Express Connect circuit is billed on a pay-by-bandwidth basis.
-	//
-	// example:
-	//
-	// PayByBandwidth
-	ReservationInternetChargeType *string `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
-	// The type of the pending order.
-	//
-	// If the value is **RENEW**, it indicates that the order is placed for service renewal.
-	//
-	// example:
-	//
-	// RENEW
-	ReservationOrderType *string `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
-	// The resource group ID to which the instance belongs.
-	//
-	// example:
-	//
-	// rg-acfmwu3k52prgdi
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The specification of the Express Connect circuit.
-	//
-	// Unit: **G*	- (Gbit/s).
-	//
-	// example:
-	//
-	// 10G
-	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The status of the Express Connect circuit. Valid values:
-	//
-	// 	- **Initial**
-	//
-	// 	- **Approved**
-	//
-	// 	- **Allocating**
-	//
-	// 	- **Allocated**
-	//
-	// 	- **Confirmed**
-	//
-	// 	- **Enabled**
-	//
-	// 	- **Rejected**
-	//
-	// 	- **Canceled**
-	//
-	// 	- **Allocation Failed**
-	//
-	// 	- **Terminating**
-	//
-	// 	- **Terminated**
-	//
-	// example:
-	//
-	// Enabled
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags that are added to the cluster.
-	Tags *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The type of resource to which the Express Connect circuit is connected. Only **VPC*	- may be returned.
-	//
-	// example:
-	//
-	// VPC
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The number of Express Connect circuits that are established.
-	//
-	// example:
-	//
-	// 0
-	VirtualPhysicalConnectionCount *int32 `json:"VirtualPhysicalConnectionCount,omitempty" xml:"VirtualPhysicalConnectionCount,omitempty"`
-	// The VLAN ID of the shared Express Connect circuit.
-	//
-	// example:
-	//
-	// 10
-	VlanId *string `json:"VlanId,omitempty" xml:"VlanId,omitempty"`
-	// The status of the shared Express Connect circuit. Valid values:
-	//
-	// 	- **Confirmed**
-	//
-	// 	- **UnConfirmed**
-	//
-	// 	- **Deleted**
-	//
-	// example:
-	//
-	// Confirmed
-	VpconnStatus *string `json:"VpconnStatus,omitempty" xml:"VpconnStatus,omitempty"`
+	AccessPointId                  *string                                                                                 `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	AccessPointType                *string                                                                                 `json:"AccessPointType,omitempty" xml:"AccessPointType,omitempty"`
+	AdDetailLocation               *string                                                                                 `json:"AdDetailLocation,omitempty" xml:"AdDetailLocation,omitempty"`
+	AdLocation                     *string                                                                                 `json:"AdLocation,omitempty" xml:"AdLocation,omitempty"`
+	Bandwidth                      *int64                                                                                  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	BusinessStatus                 *string                                                                                 `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	ChargeType                     *string                                                                                 `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	CircuitCode                    *string                                                                                 `json:"CircuitCode,omitempty" xml:"CircuitCode,omitempty"`
+	CreationTime                   *string                                                                                 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description                    *string                                                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnabledTime                    *string                                                                                 `json:"EnabledTime,omitempty" xml:"EnabledTime,omitempty"`
+	EndTime                        *string                                                                                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExpectSpec                     *string                                                                                 `json:"ExpectSpec,omitempty" xml:"ExpectSpec,omitempty"`
+	HasReservationData             *string                                                                                 `json:"HasReservationData,omitempty" xml:"HasReservationData,omitempty"`
+	LineOperator                   *string                                                                                 `json:"LineOperator,omitempty" xml:"LineOperator,omitempty"`
+	LoaStatus                      *string                                                                                 `json:"LoaStatus,omitempty" xml:"LoaStatus,omitempty"`
+	Name                           *string                                                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	OpticalModuleModel             *string                                                                                 `json:"OpticalModuleModel,omitempty" xml:"OpticalModuleModel,omitempty"`
+	OrderMode                      *string                                                                                 `json:"OrderMode,omitempty" xml:"OrderMode,omitempty"`
+	ParentPhysicalConnectionAliUid *int64                                                                                  `json:"ParentPhysicalConnectionAliUid,omitempty" xml:"ParentPhysicalConnectionAliUid,omitempty"`
+	ParentPhysicalConnectionId     *string                                                                                 `json:"ParentPhysicalConnectionId,omitempty" xml:"ParentPhysicalConnectionId,omitempty"`
+	PeerLocation                   *string                                                                                 `json:"PeerLocation,omitempty" xml:"PeerLocation,omitempty"`
+	PhysicalConnectionId           *string                                                                                 `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
+	PortNumber                     *string                                                                                 `json:"PortNumber,omitempty" xml:"PortNumber,omitempty"`
+	PortType                       *string                                                                                 `json:"PortType,omitempty" xml:"PortType,omitempty"`
+	ProductType                    *string                                                                                 `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	QosId                          *string                                                                                 `json:"QosId,omitempty" xml:"QosId,omitempty"`
+	RedundantPhysicalConnectionId  *string                                                                                 `json:"RedundantPhysicalConnectionId,omitempty" xml:"RedundantPhysicalConnectionId,omitempty"`
+	ReservationActiveTime          *string                                                                                 `json:"ReservationActiveTime,omitempty" xml:"ReservationActiveTime,omitempty"`
+	ReservationInternetChargeType  *string                                                                                 `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
+	ReservationOrderType           *string                                                                                 `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
+	ResourceGroupId                *string                                                                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Spec                           *string                                                                                 `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	Status                         *string                                                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                           *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	Type                           *string                                                                                 `json:"Type,omitempty" xml:"Type,omitempty"`
+	VirtualPhysicalConnectionCount *int32                                                                                  `json:"VirtualPhysicalConnectionCount,omitempty" xml:"VirtualPhysicalConnectionCount,omitempty"`
+	VlanId                         *string                                                                                 `json:"VlanId,omitempty" xml:"VlanId,omitempty"`
+	VpconnStatus                   *string                                                                                 `json:"VpconnStatus,omitempty" xml:"VpconnStatus,omitempty"`
 }
 
 func (s DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType) String() string {
@@ -877,21 +590,7 @@ func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalCon
 }
 
 type DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeTagsTags struct {
-	// The key of tag N added to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
-	//
-	// The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
-	//
-	// example:
-	//
-	// FinanceDept
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N added to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
-	//
-	// The tag value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
-	//
-	// example:
-	//
-	// FinanceJoshua
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

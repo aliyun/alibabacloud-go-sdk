@@ -90,10 +90,7 @@ type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig struct {
 	// example:
 	//
 	// 192.168.0.0/16
-	RemoteSubnet *string `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
-	// The tunnel configurations of the peer gateway device.
-	//
-	// The parameters in **TunnelsConfig*	- are returned only when the IPsec-VPN connection supports the dual-tunnel mode.
+	RemoteSubnet  *string                                                                  `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
 	TunnelsConfig *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig `json:"TunnelsConfig,omitempty" xml:"TunnelsConfig,omitempty" type:"Struct"`
 }
 
@@ -574,23 +571,23 @@ func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig
 }
 
 type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig struct {
-	// The configurations of Phase 1 negotiations.
+	// 第一阶段协商的配置信息。
 	IkeConfig *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty" type:"Struct"`
-	// The configurations of Phase 2 negotiations.
+	// 第二阶段协商的配置信息。
 	IpsecConfig *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIpsecConfig `json:"IpsecConfig,omitempty" xml:"IpsecConfig,omitempty" type:"Struct"`
-	// The identifier of the tunnel on the data center side.
+	// 本地IDC侧隧道的标识。
 	//
 	// example:
 	//
 	// 47.21.XX.XX
 	Local *string `json:"Local,omitempty" xml:"Local,omitempty"`
-	// The identifier of the tunnel on the Alibaba Cloud side.
+	// 阿里云侧隧道的标识。
 	//
 	// example:
 	//
 	// 47.24.XX.XX
 	Remote *string `json:"Remote,omitempty" xml:"Remote,omitempty"`
-	// The tunnel ID.
+	// 隧道ID。
 	//
 	// example:
 	//
@@ -666,59 +663,59 @@ func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig
 }
 
 type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig struct {
-	// The authentication algorithm in the IKE phase.
+	// IKE阶段认证算法。
 	//
 	// example:
 	//
 	// sha1
 	IkeAuthAlg *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
-	// The encryption algorithm in the IKE phase.
+	// IKE阶段加密算法。
 	//
 	// example:
 	//
 	// aes
 	IkeEncAlg *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
-	// The lifetime in the IKE phase. Unit: seconds.
+	// IKE阶段生存时间。单位：秒。
 	//
 	// example:
 	//
 	// 86400
 	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
-	// The IKE negotiation mode. Valid values:
+	// IKE协商模式。
 	//
-	// 	- **main**: This mode offers higher security during negotiations.
+	// - **main**：主模式，协商过程安全性高。
 	//
-	// 	- **aggressive**: This mode is faster and has a higher success rate.
+	// - **aggressive**：野蛮模式，协商快速且协商成功率高。
 	//
 	// example:
 	//
 	// main
 	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
-	// The DH group in the IKE phase.
+	// IKE阶段DH分组。
 	//
 	// example:
 	//
 	// group2
 	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
-	// The IKE version.
+	// IKE协议的版本。
 	//
 	// example:
 	//
-	// ikev1
+	// ikev2
 	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
-	// The identifier of the tunnel on the data center side.
+	// 本地IDC侧隧道的标识。
 	//
 	// example:
 	//
 	// 47.21.XX.XX
 	LocalId *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
-	// The pre-shared key.
+	// 预共享密钥。
 	//
 	// example:
 	//
 	// pgw6dy7d1i8i****
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// The identifier of the tunnel on the Alibaba Cloud side.
+	// 阿里云侧隧道的标识。
 	//
 	// example:
 	//
@@ -820,25 +817,25 @@ func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig
 }
 
 type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIpsecConfig struct {
-	// The authentication algorithm in the IPsec phase.
+	// IPsec阶段认证算法。
 	//
 	// example:
 	//
 	// sha1
 	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
-	// The encryption algorithm in the IPsec phase.
+	// IPsec阶段加密算法。
 	//
 	// example:
 	//
 	// aes
 	IpsecEncAlg *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
-	// The lifetime in the IPsec phase. Unit: seconds.
+	// IPsec阶段生存时间。单位：秒。
 	//
 	// example:
 	//
 	// 86400
 	IpsecLifetime *int64 `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
-	// The DH group in the IPsec phase.
+	// IPsec阶段DH分组。
 	//
 	// example:
 	//

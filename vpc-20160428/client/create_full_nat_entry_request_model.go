@@ -46,6 +46,11 @@ type iCreateFullNatEntryRequest interface {
 }
 
 type CreateFullNatEntryRequest struct {
+	// The backend domain name for FULLNAT address translation.
+	//
+	// example:
+	//
+	// xxx.com
 	AccessDomain *string `json:"AccessDomain,omitempty" xml:"AccessDomain,omitempty"`
 	// The backend IP address to be modified in FULLNAT address translation.
 	//

@@ -90,10 +90,8 @@ type CreateNetworkAclResponseBodyNetworkAclAttribute struct {
 	// example:
 	//
 	// This is my NetworkAcl.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The outbound rules.
-	EgressAclEntries *CreateNetworkAclResponseBodyNetworkAclAttributeEgressAclEntries `json:"EgressAclEntries,omitempty" xml:"EgressAclEntries,omitempty" type:"Struct"`
-	// The inbound rules.
+	Description       *string                                                           `json:"Description,omitempty" xml:"Description,omitempty"`
+	EgressAclEntries  *CreateNetworkAclResponseBodyNetworkAclAttributeEgressAclEntries  `json:"EgressAclEntries,omitempty" xml:"EgressAclEntries,omitempty" type:"Struct"`
 	IngressAclEntries *CreateNetworkAclResponseBodyNetworkAclAttributeIngressAclEntries `json:"IngressAclEntries,omitempty" xml:"IngressAclEntries,omitempty" type:"Struct"`
 	// The ID of the network ACL.
 	//
@@ -112,8 +110,7 @@ type CreateNetworkAclResponseBodyNetworkAclAttribute struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The information about the associated resources.
+	RegionId  *string                                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Resources *CreateNetworkAclResponseBodyNetworkAclAttributeResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
 	// The status of the network ACL. Valid values:
 	//
@@ -285,66 +282,13 @@ func (s *CreateNetworkAclResponseBodyNetworkAclAttributeEgressAclEntries) Valida
 }
 
 type CreateNetworkAclResponseBodyNetworkAclAttributeEgressAclEntriesEgressAclEntry struct {
-	// The description of the outbound rule.
-	//
-	// example:
-	//
-	// This is EgressAclEntries.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination CIDR block.
-	//
-	// example:
-	//
-	// 10.0.0.0/24
-	DestinationCidrIp *string `json:"DestinationCidrIp,omitempty" xml:"DestinationCidrIp,omitempty"`
-	// The ID of the outbound rule.
-	//
-	// example:
-	//
-	// nae-a2d447uw4tillxsdc****
-	NetworkAclEntryId *string `json:"NetworkAclEntryId,omitempty" xml:"NetworkAclEntryId,omitempty"`
-	// The name of the outbound rule.
-	//
-	// example:
-	//
-	// acl-2
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestinationCidrIp   *string `json:"DestinationCidrIp,omitempty" xml:"DestinationCidrIp,omitempty"`
+	NetworkAclEntryId   *string `json:"NetworkAclEntryId,omitempty" xml:"NetworkAclEntryId,omitempty"`
 	NetworkAclEntryName *string `json:"NetworkAclEntryName,omitempty" xml:"NetworkAclEntryName,omitempty"`
-	// The action to be performed on network traffic that matches the rule. Valid values:
-	//
-	// 	- **accept**
-	//
-	// 	- **drop**
-	//
-	// example:
-	//
-	// accept
-	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The destination port range of the outbound traffic.
-	//
-	// 	- If the **protocol*	- of the outbound rule is set to **all**, **icmp**, or **gre**, the port range is -1/-1, which specified all ports.
-	//
-	// 	- If the **protocol*	- of the outbound rule is set to **tcp*	- or **udp**, set the port range in the following format: **1/200*	- or **80/80**, which specifies port 1 to port 200 or port 80. Valid values for a port: **1*	- to **65535**.
-	//
-	// example:
-	//
-	// -1/-1
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The protocol. Valid values:
-	//
-	// 	- **icmp**
-	//
-	// 	- **gre**
-	//
-	// 	- **tcp**
-	//
-	// 	- **udp**
-	//
-	// 	- **all**
-	//
-	// example:
-	//
-	// all
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Policy              *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Port                *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Protocol            *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
 func (s CreateNetworkAclResponseBodyNetworkAclAttributeEgressAclEntriesEgressAclEntry) String() string {
@@ -457,66 +401,13 @@ func (s *CreateNetworkAclResponseBodyNetworkAclAttributeIngressAclEntries) Valid
 }
 
 type CreateNetworkAclResponseBodyNetworkAclAttributeIngressAclEntriesIngressAclEntry struct {
-	// The description of the inbound rule.
-	//
-	// example:
-	//
-	// This is IngressAclEntries.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the inbound rule.
-	//
-	// example:
-	//
-	// nae-a2dk86arlydmexscd****
-	NetworkAclEntryId *string `json:"NetworkAclEntryId,omitempty" xml:"NetworkAclEntryId,omitempty"`
-	// The name of the inbound rule.
-	//
-	// example:
-	//
-	// acl-3
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	NetworkAclEntryId   *string `json:"NetworkAclEntryId,omitempty" xml:"NetworkAclEntryId,omitempty"`
 	NetworkAclEntryName *string `json:"NetworkAclEntryName,omitempty" xml:"NetworkAclEntryName,omitempty"`
-	// The action to be performed on network traffic that matches the rule. Valid values:
-	//
-	// 	- **accept**
-	//
-	// 	- **drop**
-	//
-	// example:
-	//
-	// accept
-	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The destination port range of the inbound traffic.
-	//
-	// 	- If the **protocol*	- of the inbound rule is set to **all**, **icmp**, or **gre**, the port range is -1/-1, which specifies all ports.
-	//
-	// 	- If the **protocol*	- of the inbound rule is set to **tcp*	- or **udp**, set the port range in the following format: **1/200*	- or **80/80**, which specifies port 1 to port 200 or port 80. Valid ports: **1*	- to **65535**.
-	//
-	// example:
-	//
-	// -1/-1
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The protocol. Valid values:
-	//
-	// 	- **icmp**
-	//
-	// 	- **gre**
-	//
-	// 	- **tcp**
-	//
-	// 	- **udp**
-	//
-	// 	- **all**
-	//
-	// example:
-	//
-	// all
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The source CIDR block.
-	//
-	// example:
-	//
-	// 10.0.0.0/24
-	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+	Policy              *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Port                *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Protocol            *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	SourceCidrIp        *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
 }
 
 func (s CreateNetworkAclResponseBodyNetworkAclAttributeIngressAclEntriesIngressAclEntry) String() string {
@@ -629,30 +520,9 @@ func (s *CreateNetworkAclResponseBodyNetworkAclAttributeResources) Validate() er
 }
 
 type CreateNetworkAclResponseBodyNetworkAclAttributeResourcesResource struct {
-	// The ID of the associated resource.
-	//
-	// example:
-	//
-	// vsw-bp1de348lntdwgthy****
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of resource with which you want to associate the network ACL.
-	//
-	// example:
-	//
-	// VSwitch
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The association status of the resource. Valid values:
-	//
-	// 	- **BINDED**
-	//
-	// 	- **BINDING**
-	//
-	// 	- **UNBINDING**
-	//
-	// example:
-	//
-	// BINDED
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateNetworkAclResponseBodyNetworkAclAttributeResourcesResource) String() string {

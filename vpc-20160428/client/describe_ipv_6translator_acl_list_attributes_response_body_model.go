@@ -26,7 +26,6 @@ type iDescribeIPv6TranslatorAclListAttributesResponseBody interface {
 }
 
 type DescribeIPv6TranslatorAclListAttributesResponseBody struct {
-	// The ACLs.
 	AclEntries *DescribeIPv6TranslatorAclListAttributesResponseBodyAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Struct"`
 	// The ACL ID.
 	//
@@ -181,24 +180,9 @@ func (s *DescribeIPv6TranslatorAclListAttributesResponseBodyAclEntries) Validate
 }
 
 type DescribeIPv6TranslatorAclListAttributesResponseBodyAclEntriesAclEntry struct {
-	// The remarks of the ACL entry.
-	//
-	// example:
-	//
-	// client IP
 	AclEntryComment *string `json:"AclEntryComment,omitempty" xml:"AclEntryComment,omitempty"`
-	// The ID of the ACL entry.
-	//
-	// example:
-	//
-	// ipv6transaclentry-bp105jrs****
-	AclEntryId *string `json:"AclEntryId,omitempty" xml:"AclEntryId,omitempty"`
-	// The IP address specified in the ACL entry.
-	//
-	// example:
-	//
-	// 12ab:0:0:XXXX::0102/128
-	AclEntryIp *string `json:"AclEntryIp,omitempty" xml:"AclEntryIp,omitempty"`
+	AclEntryId      *string `json:"AclEntryId,omitempty" xml:"AclEntryId,omitempty"`
+	AclEntryIp      *string `json:"AclEntryIp,omitempty" xml:"AclEntryIp,omitempty"`
 }
 
 func (s DescribeIPv6TranslatorAclListAttributesResponseBodyAclEntriesAclEntry) String() string {

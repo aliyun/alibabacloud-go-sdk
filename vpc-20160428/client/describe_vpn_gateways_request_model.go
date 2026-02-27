@@ -52,7 +52,12 @@ type DescribeVpnGatewaysRequest struct {
 	//
 	// Normal
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	GatewayType    *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	// VPN 网关类型，取值：
+	//
+	// Traditional：传统型VPN网关，覆盖IPsec功能和SSL功能
+	//
+	// Enhance.SiteToSite：增强型站点入云VPN，只覆盖IPsec功能
+	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
 	// Specifies whether to return information about pending orders. Valid values:
 	//
 	// 	- **false*	- (default)
@@ -85,7 +90,7 @@ type DescribeVpnGatewaysRequest struct {
 	//
 	// example:
 	//
-	// cn-zhangjiakou
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the VPN gateway belongs.
 	//

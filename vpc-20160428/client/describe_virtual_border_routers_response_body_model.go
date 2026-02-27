@@ -45,8 +45,7 @@ type DescribeVirtualBorderRoutersResponseBody struct {
 	// example:
 	//
 	// 1
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The information about the VBR.
+	TotalCount             *int32                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	VirtualBorderRouterSet *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSet `json:"VirtualBorderRouterSet,omitempty" xml:"VirtualBorderRouterSet,omitempty" type:"Struct"`
 }
 
@@ -147,307 +146,48 @@ func (s *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSet) Validat
 }
 
 type DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterType struct {
-	// The ID of the access point.
-	//
-	// example:
-	//
-	// ap-cn-kojok1x****
-	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
-	// The time when the VBR was activated for the first time.
-	//
-	// example:
-	//
-	// 2021-06-08T12:20:55
-	ActivationTime *string `json:"ActivationTime,omitempty" xml:"ActivationTime,omitempty"`
-	// The information about the Cloud Enterprise Network (CEN) instance to which the VBR is attached.
-	AssociatedCens *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeAssociatedCens `json:"AssociatedCens,omitempty" xml:"AssociatedCens,omitempty" type:"Struct"`
-	// The information about the Express Connect circuit that is associated with the VBR.
-	AssociatedPhysicalConnections *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeAssociatedPhysicalConnections `json:"AssociatedPhysicalConnections,omitempty" xml:"AssociatedPhysicalConnections,omitempty" type:"Struct"`
-	// The bandwidth value of the VBR. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 50
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The circuit code of the Express Connect circuit, which is provided by the connectivity provider.
-	//
-	// example:
-	//
-	// longtel0****
-	CircuitCode *string `json:"CircuitCode,omitempty" xml:"CircuitCode,omitempty"`
-	// The ID of the cloud box.
-	//
-	// example:
-	//
-	// cb-****
-	CloudBoxInstanceId *string `json:"CloudBoxInstanceId,omitempty" xml:"CloudBoxInstanceId,omitempty"`
-	// The time when the VBR was created.
-	//
-	// example:
-	//
-	// 2020-06-08T12:20:55
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the VBR.
-	//
-	// example:
-	//
-	// desc
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The multiple of the detection time.
-	//
-	// This value indicates the maximum number of dropped packets that is allowed by the receiver when the initiator transmits packets. This value can be used to check whether the connection works as expected.
-	//
-	// Valid values: **3 to 10**.
-	//
-	// example:
-	//
-	// 3
-	DetectMultiplier *int64 `json:"DetectMultiplier,omitempty" xml:"DetectMultiplier,omitempty"`
-	// The ID of the Express Cloud Connect (ECC) instance.
-	//
-	// example:
-	//
-	// ecc-h****
-	EccId *string `json:"EccId,omitempty" xml:"EccId,omitempty"`
-	// The status of the ECR. Valid values:
-	//
-	// 	- **Attached**
-	//
-	// 	- **Attaching**
-	//
-	// 	- **Detached**
-	//
-	// 	- **Detaching**
-	//
-	// 	- If no value is returned, the VBR is not attached to a CEN instance.
-	//
-	// example:
-	//
-	// Attached
-	EcrAttatchStatus *string `json:"EcrAttatchStatus,omitempty" xml:"EcrAttatchStatus,omitempty"`
-	// The ID of the Express Connect Router (ECR).
-	//
-	// example:
-	//
-	// ecr-7vrbqv9lcgvzqbwwkm
-	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	// The ID of the Alibaba Cloud account (primary account)  to which the ECR belongs.
-	//
-	// example:
-	//
-	// 192732132151xxxx
-	EcrOwnerId *string `json:"EcrOwnerId,omitempty" xml:"EcrOwnerId,omitempty"`
-	// Indicates whether IPv6 is enabled. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// false
-	EnableIpv6 *bool `json:"EnableIpv6,omitempty" xml:"EnableIpv6,omitempty"`
-	// The IPv4 address of the VBR on the Alibaba Cloud side.
-	//
-	// example:
-	//
-	// 192.168.XX.XX
-	LocalGatewayIp *string `json:"LocalGatewayIp,omitempty" xml:"LocalGatewayIp,omitempty"`
-	// The IPv6 address of the VBR on the Alibaba Cloud side.
-	//
-	// example:
-	//
-	// 2001:XXXX:3c4d:0015:0000:0000:0000:1a2b
-	LocalIpv6GatewayIp *string `json:"LocalIpv6GatewayIp,omitempty" xml:"LocalIpv6GatewayIp,omitempty"`
-	// The time interval to receive BFD packets. Valid values: **200 to 1000**. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 300
-	MinRxInterval *int64 `json:"MinRxInterval,omitempty" xml:"MinRxInterval,omitempty"`
-	// The time interval to send Bidirectional Forwarding Detection (BFD) packets. Valid values: **200 to 1000**. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 300
-	MinTxInterval *int64 `json:"MinTxInterval,omitempty" xml:"MinTxInterval,omitempty"`
-	Mtu           *int32 `json:"Mtu,omitempty" xml:"Mtu,omitempty"`
-	// The VBR name.
-	//
-	// example:
-	//
-	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The billing method of the VBR. Valid values:
-	//
-	// 	- **PrePaid:*	- subscription. If you choose this billing method, make sure that your account supports balance payments or credit payments.
-	//
-	// 	- **PostPaid:*	- pay-as-you-go.
-	//
-	// example:
-	//
-	// PrePaid
-	PConnVbrChargeType *string `json:"PConnVbrChargeType,omitempty" xml:"PConnVbrChargeType,omitempty"`
-	// The time when the VBR expires.
-	//
-	// example:
-	//
-	// 2021-06-08T12:20:55
-	PConnVbrExpireTime *string `json:"PConnVbrExpireTime,omitempty" xml:"PConnVbrExpireTime,omitempty"`
-	// The IPv4 address of the VBR on the user side.
-	//
-	// example:
-	//
-	// 192.168.XX.XX
-	PeerGatewayIp *string `json:"PeerGatewayIp,omitempty" xml:"PeerGatewayIp,omitempty"`
-	// The IPv6 address of the VBR on the user side.
-	//
-	// example:
-	//
-	// 2001:XXXX:3c4d:0015:0000:0000:0000:1a2b
-	PeerIpv6GatewayIp *string `json:"PeerIpv6GatewayIp,omitempty" xml:"PeerIpv6GatewayIp,omitempty"`
-	// The subnet mask for the IPv6 addresses on the user side and on the Alibaba Cloud side.
-	//
-	// example:
-	//
-	// 2000:1234:0:a000::/55
-	PeeringIpv6SubnetMask *string `json:"PeeringIpv6SubnetMask,omitempty" xml:"PeeringIpv6SubnetMask,omitempty"`
-	// The subnet mask for the IPv4 addresses on the Alibaba Cloud side and on the user side.
-	//
-	// example:
-	//
-	// 255.255.255.252
-	PeeringSubnetMask *string `json:"PeeringSubnetMask,omitempty" xml:"PeeringSubnetMask,omitempty"`
-	// The business status of the Express Connect circuit. Valid values:
-	//
-	// 	- **Normal:*	- The Express Connect circuit is running as normal.
-	//
-	// 	- **FinancialLocked:*	- The Express Connect circuit is locked due to overdue payments.
-	//
-	// example:
-	//
-	// Normal
-	PhysicalConnectionBusinessStatus *string `json:"PhysicalConnectionBusinessStatus,omitempty" xml:"PhysicalConnectionBusinessStatus,omitempty"`
-	// The ID of the Express Connect circuit to which the VBR belongs.
-	//
-	// example:
-	//
-	// pc-119mfjzm7x****
-	PhysicalConnectionId *string `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
-	// The ID of the account to which the Express Connect circuit belongs.
-	//
-	// example:
-	//
-	// 1688000000000****
-	PhysicalConnectionOwnerUid *string `json:"PhysicalConnectionOwnerUid,omitempty" xml:"PhysicalConnectionOwnerUid,omitempty"`
-	// The status of the Express Connect circuit. Valid values:
-	//
-	// 	- **Initial:*	- The application is under review.
-	//
-	// 	- **Approved**: The application is approved.
-	//
-	// 	- **Allocating**: The system is allocating resources.
-	//
-	// 	- **Allocated**: The Express Connect circuit is under construction.
-	//
-	// 	- **Confirmed**: The Express Connect circuit is to be confirmed.
-	//
-	// 	- **Enabled**: The Express Connect circuit is enabled.
-	//
-	// 	- **Rejected**: The application is rejected.
-	//
-	// 	- **Canceled**: The application is canceled.
-	//
-	// 	- **Allocation Failed:*	- The system failed to allocate resources.
-	//
-	// 	- **Terminated:*	- The Express Connect circuit is disabled.
-	//
-	// example:
-	//
-	// Normal
-	PhysicalConnectionStatus *string `json:"PhysicalConnectionStatus,omitempty" xml:"PhysicalConnectionStatus,omitempty"`
-	// The last time when the status of the VBR changed from **terminated*	- to **active**.
-	//
-	// example:
-	//
-	// 2021-05-08T12:20:55
-	RecoveryTime *string `json:"RecoveryTime,omitempty" xml:"RecoveryTime,omitempty"`
-	// The resource group ID.
-	//
-	// For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/94475.html).
-	//
-	// example:
-	//
-	// rg-acfmxazb4ph6aiy****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the route table of the VBR.
-	//
-	// example:
-	//
-	// rtb-bp1****
-	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// Indicates whether to allow service access between data centers. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// >  If no value is returned, service access between data centers is not allowed.
-	//
-	// example:
-	//
-	// false
-	SitelinkEnable *bool `json:"SitelinkEnable,omitempty" xml:"SitelinkEnable,omitempty"`
-	// The status of the VBR. Valid values:
-	//
-	// 	- **unconfirmed**
-	//
-	// 	- **active**
-	//
-	// 	- **terminating**
-	//
-	// 	- **terminated**
-	//
-	// 	- **recovering**
-	//
-	// 	- **deleting:**
-	//
-	// example:
-	//
-	// active
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag of the resource.
-	Tags *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The last time when the VBR was terminated.
-	//
-	// example:
-	//
-	// 2021-06-08T12:20:55
-	TerminationTime *string `json:"TerminationTime,omitempty" xml:"TerminationTime,omitempty"`
-	// The VBR type.
-	//
-	// example:
-	//
-	// pconnVBR
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The VBR ID.
-	//
-	// example:
-	//
-	// vbr-bp1jcg5cmxjbl9xgc****
-	VbrId *string `json:"VbrId,omitempty" xml:"VbrId,omitempty"`
-	// The VLAN ID of the VBR.
-	//
-	// example:
-	//
-	// 10
-	VlanId *int32 `json:"VlanId,omitempty" xml:"VlanId,omitempty"`
-	// The ID of the VBR interface.
-	//
-	// example:
-	//
-	// ri-2zeo3xzyf38r4xx****
-	VlanInterfaceId *string `json:"VlanInterfaceId,omitempty" xml:"VlanInterfaceId,omitempty"`
+	AccessPointId                    *string                                                                                                             `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	ActivationTime                   *string                                                                                                             `json:"ActivationTime,omitempty" xml:"ActivationTime,omitempty"`
+	AssociatedCens                   *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeAssociatedCens                `json:"AssociatedCens,omitempty" xml:"AssociatedCens,omitempty" type:"Struct"`
+	AssociatedPhysicalConnections    *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeAssociatedPhysicalConnections `json:"AssociatedPhysicalConnections,omitempty" xml:"AssociatedPhysicalConnections,omitempty" type:"Struct"`
+	Bandwidth                        *int32                                                                                                              `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	CircuitCode                      *string                                                                                                             `json:"CircuitCode,omitempty" xml:"CircuitCode,omitempty"`
+	CloudBoxInstanceId               *string                                                                                                             `json:"CloudBoxInstanceId,omitempty" xml:"CloudBoxInstanceId,omitempty"`
+	CreationTime                     *string                                                                                                             `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description                      *string                                                                                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	DetectMultiplier                 *int64                                                                                                              `json:"DetectMultiplier,omitempty" xml:"DetectMultiplier,omitempty"`
+	EccId                            *string                                                                                                             `json:"EccId,omitempty" xml:"EccId,omitempty"`
+	EcrAttatchStatus                 *string                                                                                                             `json:"EcrAttatchStatus,omitempty" xml:"EcrAttatchStatus,omitempty"`
+	EcrId                            *string                                                                                                             `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	EcrOwnerId                       *string                                                                                                             `json:"EcrOwnerId,omitempty" xml:"EcrOwnerId,omitempty"`
+	EnableIpv6                       *bool                                                                                                               `json:"EnableIpv6,omitempty" xml:"EnableIpv6,omitempty"`
+	LocalGatewayIp                   *string                                                                                                             `json:"LocalGatewayIp,omitempty" xml:"LocalGatewayIp,omitempty"`
+	LocalIpv6GatewayIp               *string                                                                                                             `json:"LocalIpv6GatewayIp,omitempty" xml:"LocalIpv6GatewayIp,omitempty"`
+	MinRxInterval                    *int64                                                                                                              `json:"MinRxInterval,omitempty" xml:"MinRxInterval,omitempty"`
+	MinTxInterval                    *int64                                                                                                              `json:"MinTxInterval,omitempty" xml:"MinTxInterval,omitempty"`
+	Mtu                              *int32                                                                                                              `json:"Mtu,omitempty" xml:"Mtu,omitempty"`
+	Name                             *string                                                                                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	PConnVbrChargeType               *string                                                                                                             `json:"PConnVbrChargeType,omitempty" xml:"PConnVbrChargeType,omitempty"`
+	PConnVbrExpireTime               *string                                                                                                             `json:"PConnVbrExpireTime,omitempty" xml:"PConnVbrExpireTime,omitempty"`
+	PeerGatewayIp                    *string                                                                                                             `json:"PeerGatewayIp,omitempty" xml:"PeerGatewayIp,omitempty"`
+	PeerIpv6GatewayIp                *string                                                                                                             `json:"PeerIpv6GatewayIp,omitempty" xml:"PeerIpv6GatewayIp,omitempty"`
+	PeeringIpv6SubnetMask            *string                                                                                                             `json:"PeeringIpv6SubnetMask,omitempty" xml:"PeeringIpv6SubnetMask,omitempty"`
+	PeeringSubnetMask                *string                                                                                                             `json:"PeeringSubnetMask,omitempty" xml:"PeeringSubnetMask,omitempty"`
+	PhysicalConnectionBusinessStatus *string                                                                                                             `json:"PhysicalConnectionBusinessStatus,omitempty" xml:"PhysicalConnectionBusinessStatus,omitempty"`
+	PhysicalConnectionId             *string                                                                                                             `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
+	PhysicalConnectionOwnerUid       *string                                                                                                             `json:"PhysicalConnectionOwnerUid,omitempty" xml:"PhysicalConnectionOwnerUid,omitempty"`
+	PhysicalConnectionStatus         *string                                                                                                             `json:"PhysicalConnectionStatus,omitempty" xml:"PhysicalConnectionStatus,omitempty"`
+	RecoveryTime                     *string                                                                                                             `json:"RecoveryTime,omitempty" xml:"RecoveryTime,omitempty"`
+	ResourceGroupId                  *string                                                                                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	RouteTableId                     *string                                                                                                             `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	SitelinkEnable                   *bool                                                                                                               `json:"SitelinkEnable,omitempty" xml:"SitelinkEnable,omitempty"`
+	Status                           *string                                                                                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                             *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeTags                          `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	TerminationTime                  *string                                                                                                             `json:"TerminationTime,omitempty" xml:"TerminationTime,omitempty"`
+	Type                             *string                                                                                                             `json:"Type,omitempty" xml:"Type,omitempty"`
+	VbrId                            *string                                                                                                             `json:"VbrId,omitempty" xml:"VbrId,omitempty"`
+	VlanId                           *int32                                                                                                              `json:"VlanId,omitempty" xml:"VlanId,omitempty"`
+	VlanInterfaceId                  *string                                                                                                             `json:"VlanInterfaceId,omitempty" xml:"VlanInterfaceId,omitempty"`
 }
 
 func (s DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterType) String() string {
@@ -890,34 +630,9 @@ func (s *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBo
 }
 
 type DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeAssociatedCensAssociatedCen struct {
-	// The CEN instance ID.
-	//
-	// example:
-	//
-	// cen-kojok19xxx****
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the account to which the CEN instance belongs.
-	//
-	// example:
-	//
-	// 1688000000000****
-	CenOwnerId *int64 `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
-	// The status of the CEN instance. Valid values:
-	//
-	// 	- **Attached**
-	//
-	// 	- **Attaching**
-	//
-	// 	- **Detached**
-	//
-	// 	- **Detaching**
-	//
-	// 	- If no value is returned, the VBR is not attached to a CEN instance.
-	//
-	// example:
-	//
-	// Attached
-	CenStatus *string `json:"CenStatus,omitempty" xml:"CenStatus,omitempty"`
+	CenId      *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CenOwnerId *int64  `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
+	CenStatus  *string `json:"CenStatus,omitempty" xml:"CenStatus,omitempty"`
 }
 
 func (s DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeAssociatedCensAssociatedCen) String() string {
@@ -994,140 +709,21 @@ func (s *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBo
 }
 
 type DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeAssociatedPhysicalConnectionsAssociatedPhysicalConnection struct {
-	// The circuit code of the Express Connect circuit, which is provided by the connectivity provider.
-	//
-	// example:
-	//
-	// longtel0**
-	CircuitCode *string `json:"CircuitCode,omitempty" xml:"CircuitCode,omitempty"`
-	// Indicates whether IPv6 is enabled. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	EnableIpv6 *bool `json:"EnableIpv6,omitempty" xml:"EnableIpv6,omitempty"`
-	// The IPv4 address of the VBR on the Alibaba Cloud side.
-	//
-	// example:
-	//
-	// 192.168.XX.XX
-	LocalGatewayIp *string `json:"LocalGatewayIp,omitempty" xml:"LocalGatewayIp,omitempty"`
-	// The IPv6 address of the VBR on the Alibaba Cloud side.
-	//
-	// example:
-	//
-	// 2001:XXXX:3c4d:0015:0000:0000:0000:1a2b
-	LocalIpv6GatewayIp *string `json:"LocalIpv6GatewayIp,omitempty" xml:"LocalIpv6GatewayIp,omitempty"`
-	// The IPv4 address of the VBR on the user side.
-	//
-	// example:
-	//
-	// 116.62.XX.XX
-	PeerGatewayIp *string `json:"PeerGatewayIp,omitempty" xml:"PeerGatewayIp,omitempty"`
-	// The IPv6 address of the VBR on the user side.
-	//
-	// example:
-	//
-	// 2001:XXXX:3c4d:0015:0000:0000:0000:1a2b
-	PeerIpv6GatewayIp *string `json:"PeerIpv6GatewayIp,omitempty" xml:"PeerIpv6GatewayIp,omitempty"`
-	// The subnet mask for the IPv6 addresses on the user side and on the Alibaba Cloud side.
-	//
-	// Both IPv6 addresses must belong to the same subnet.
-	//
-	// example:
-	//
-	// 2408:4004:cc:400::/56
-	PeeringIpv6SubnetMask *string `json:"PeeringIpv6SubnetMask,omitempty" xml:"PeeringIpv6SubnetMask,omitempty"`
-	// The subnet mask for the IPv4 addresses of the VBR on the user side and on the Alibaba Cloud side.
-	//
-	// Both IPv4 addresses must belong to the same subnet.
-	//
-	// example:
-	//
-	// 255.255.255.252
-	PeeringSubnetMask *string `json:"PeeringSubnetMask,omitempty" xml:"PeeringSubnetMask,omitempty"`
-	// The business status of the Express Connect circuit. Valid values:
-	//
-	// 	- **Normal:*	- The Express Connect circuit is running as normal.
-	//
-	// 	- **FinancialLocked:*	- The Express Connect circuit is locked due to overdue payments.
-	//
-	// example:
-	//
-	// Normal
+	CircuitCode                      *string `json:"CircuitCode,omitempty" xml:"CircuitCode,omitempty"`
+	EnableIpv6                       *bool   `json:"EnableIpv6,omitempty" xml:"EnableIpv6,omitempty"`
+	LocalGatewayIp                   *string `json:"LocalGatewayIp,omitempty" xml:"LocalGatewayIp,omitempty"`
+	LocalIpv6GatewayIp               *string `json:"LocalIpv6GatewayIp,omitempty" xml:"LocalIpv6GatewayIp,omitempty"`
+	PeerGatewayIp                    *string `json:"PeerGatewayIp,omitempty" xml:"PeerGatewayIp,omitempty"`
+	PeerIpv6GatewayIp                *string `json:"PeerIpv6GatewayIp,omitempty" xml:"PeerIpv6GatewayIp,omitempty"`
+	PeeringIpv6SubnetMask            *string `json:"PeeringIpv6SubnetMask,omitempty" xml:"PeeringIpv6SubnetMask,omitempty"`
+	PeeringSubnetMask                *string `json:"PeeringSubnetMask,omitempty" xml:"PeeringSubnetMask,omitempty"`
 	PhysicalConnectionBusinessStatus *string `json:"PhysicalConnectionBusinessStatus,omitempty" xml:"PhysicalConnectionBusinessStatus,omitempty"`
-	// The ID of the Express Connect circuit.
-	//
-	// example:
-	//
-	// pc-119mfjzm7****
-	PhysicalConnectionId *string `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
-	// The ID of the account to which the Express Connect circuit belongs.
-	//
-	// example:
-	//
-	// 12345678****
-	PhysicalConnectionOwnerUid *string `json:"PhysicalConnectionOwnerUid,omitempty" xml:"PhysicalConnectionOwnerUid,omitempty"`
-	// The status of the Express Connect circuit. Valid values:
-	//
-	// 	- **Initial:*	- The application is under review.
-	//
-	// 	- **Approved**: The application is approved.
-	//
-	// 	- **Allocating**: The system is allocating resources.
-	//
-	// 	- **Allocated**: The Express Connect circuit is under construction.
-	//
-	// 	- **Confirmed**: The Express Connect circuit is to be confirmed.
-	//
-	// 	- **Enabled**: The Express Connect circuit is enabled.
-	//
-	// 	- **Rejected**: The application is rejected.
-	//
-	// 	- **Canceled**: The application is canceled.
-	//
-	// 	- **Allocation Failed:*	- The system failed to allocate resources.
-	//
-	// 	- **Terminated:*	- The Express Connect circuit is disabled.
-	//
-	// example:
-	//
-	// Enabled
-	PhysicalConnectionStatus *string `json:"PhysicalConnectionStatus,omitempty" xml:"PhysicalConnectionStatus,omitempty"`
-	// The status of the VBR. Valid values:
-	//
-	// 	- **unconfirmed**
-	//
-	// 	- **active:**
-	//
-	// 	- **terminating**
-	//
-	// 	- **terminated**
-	//
-	// 	- **recovering**
-	//
-	// 	- **deleting:**
-	//
-	// example:
-	//
-	// active
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The VLAN ID of the VBR.
-	//
-	// example:
-	//
-	// 0
-	VlanId *string `json:"VlanId,omitempty" xml:"VlanId,omitempty"`
-	// The ID of the VBR interface, which can be used as a next hop of a VBR route.
-	//
-	// example:
-	//
-	// ri-kojok19x3j0q6k****
-	VlanInterfaceId *string `json:"VlanInterfaceId,omitempty" xml:"VlanInterfaceId,omitempty"`
+	PhysicalConnectionId             *string `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
+	PhysicalConnectionOwnerUid       *string `json:"PhysicalConnectionOwnerUid,omitempty" xml:"PhysicalConnectionOwnerUid,omitempty"`
+	PhysicalConnectionStatus         *string `json:"PhysicalConnectionStatus,omitempty" xml:"PhysicalConnectionStatus,omitempty"`
+	Status                           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VlanId                           *string `json:"VlanId,omitempty" xml:"VlanId,omitempty"`
+	VlanInterfaceId                  *string `json:"VlanInterfaceId,omitempty" xml:"VlanInterfaceId,omitempty"`
 }
 
 func (s DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeAssociatedPhysicalConnectionsAssociatedPhysicalConnection) String() string {
@@ -1312,17 +908,7 @@ func (s *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBo
 }
 
 type DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeTagsTags struct {
-	// The tag key of the resource.
-	//
-	// example:
-	//
-	// FinanceDept
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the resource.
-	//
-	// example:
-	//
-	// FinanceJoshua
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

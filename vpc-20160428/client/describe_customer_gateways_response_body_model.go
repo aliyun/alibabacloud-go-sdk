@@ -22,7 +22,6 @@ type iDescribeCustomerGatewaysResponseBody interface {
 }
 
 type DescribeCustomerGatewaysResponseBody struct {
-	// The information about customer gateways.
 	CustomerGateways *DescribeCustomerGatewaysResponseBodyCustomerGateways `json:"CustomerGateways,omitempty" xml:"CustomerGateways,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,60 +146,15 @@ func (s *DescribeCustomerGatewaysResponseBodyCustomerGateways) Validate() error 
 }
 
 type DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway struct {
-	// The autonomous system number (ASN) of the gateway device in the data center.
-	//
-	// example:
-	//
-	// 65530
-	Asn *int64 `json:"Asn,omitempty" xml:"Asn,omitempty"`
-	// The authentication key that is used to connect to the gateway device in the data center by using Border Gateway Protocol (BGP).
-	//
-	// example:
-	//
-	// AuthKey****
-	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
-	// The time when the customer gateway was created. Unit: millisecond.
-	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1492747187000
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The customer gateway ID.
-	//
-	// example:
-	//
-	// cgw-bp1pvpl9r9adju6l5****
-	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	// The description of the customer gateway.
-	//
-	// example:
-	//
-	// desctest
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The IP address of the gateway device in the data center.
-	//
-	// example:
-	//
-	// 139.32.XX.XX
-	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	// The name of the customer gateway.
-	//
-	// example:
-	//
-	// nametest
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the resource group to which the customer gateway belongs.
-	//
-	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
-	//
-	// example:
-	//
-	// rg-acfmzs372yg****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags that are added to the customer gateway.
-	Tags *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	Asn               *int64                                                                   `json:"Asn,omitempty" xml:"Asn,omitempty"`
+	AuthKey           *string                                                                  `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
+	CreateTime        *int64                                                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CustomerGatewayId *string                                                                  `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
+	Description       *string                                                                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	IpAddress         *string                                                                  `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	Name              *string                                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResourceGroupId   *string                                                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags              *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway) String() string {
@@ -336,17 +290,7 @@ func (s *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTags
 }
 
 type DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTagsTag struct {
-	// The key of the tag.
-	//
-	// example:
-	//
-	// TagKey
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
-	//
-	// example:
-	//
-	// TagValue
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

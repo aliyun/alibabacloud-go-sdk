@@ -30,66 +30,42 @@ type iCreateVcoRouteEntryResponseBody interface {
 }
 
 type CreateVcoRouteEntryResponseBody struct {
-	// The timestamp when the destination-based route was created. Unit: milliseconds.
-	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
 	// example:
 	//
 	// 1658387202664
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the destination-based route.
-	//
 	// example:
 	//
 	// desctest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The next hop of the destination-based route.
-	//
 	// example:
 	//
 	// vco-p0w2jpkhi2eeop6q6****
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The tunneling protocol.
-	//
-	// The value is set to **Ipsec**, which indicates the IPsec tunneling protocol.
-	//
 	// example:
 	//
 	// Ipsec
 	OverlayMode *string `json:"OverlayMode,omitempty" xml:"OverlayMode,omitempty"`
-	// The request ID.
-	//
 	// example:
 	//
 	// CFC4D13B-E680-3985-95B1-87AA155481DF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The destination CIDR block of the destination-based route.
+	// The description of the destination-based route.
 	//
 	// example:
 	//
 	// 192.168.10.0/24
 	RouteDest *string `json:"RouteDest,omitempty" xml:"RouteDest,omitempty"`
-	// The status of the destination-based route.
-	//
-	// Only **published*	- is returned, which indicates that the current route is published to the transit router.
-	//
 	// example:
 	//
 	// published
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The ID of the IPsec-VPN connection.
+	// The request ID.
 	//
 	// example:
 	//
 	// vco-p0w2jpkhi2eeop6q6****
 	VpnConnectionId *string `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
-	// The weight of the destination-based route. Valid values:
-	//
-	// 	- **0**: a low priority.
-	//
-	// 	- **100**: a high priority.
-	//
 	// example:
 	//
 	// 100

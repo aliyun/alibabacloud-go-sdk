@@ -22,7 +22,6 @@ type iDescribeHaVipsResponseBody interface {
 }
 
 type DescribeHaVipsResponseBody struct {
-	// The details about the HaVip.
 	HaVips *DescribeHaVipsResponseBodyHaVips `json:"HaVips,omitempty" xml:"HaVips,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,100 +146,22 @@ func (s *DescribeHaVipsResponseBodyHaVips) Validate() error {
 }
 
 type DescribeHaVipsResponseBodyHaVipsHaVip struct {
-	// The list of EIPs associated with the HaVip.
 	AssociatedEipAddresses *DescribeHaVipsResponseBodyHaVipsHaVipAssociatedEipAddresses `json:"AssociatedEipAddresses,omitempty" xml:"AssociatedEipAddresses,omitempty" type:"Struct"`
-	// The type of the instance with which the HaVip is associated. Valid values:
-	//
-	// 	- **EcsInstance**: Elastic Compute Service (ECS) instance
-	//
-	// 	- **NetworkInterface**: elastic network interface (ENI)
-	//
-	// example:
-	//
-	// EcsInstance
-	AssociatedInstanceType *string `json:"AssociatedInstanceType,omitempty" xml:"AssociatedInstanceType,omitempty"`
-	// The information about the instance associated with the HaVip.
-	AssociatedInstances *DescribeHaVipsResponseBodyHaVipsHaVipAssociatedInstances `json:"AssociatedInstances,omitempty" xml:"AssociatedInstances,omitempty" type:"Struct"`
-	// The parameter is invalid. No value is returned.
-	//
-	// example:
-	//
-	// none
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The time when the HaVip was created.
-	//
-	// example:
-	//
-	// 2021-07-03T14:25:26Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the HaVip.
-	//
-	// example:
-	//
-	// My HaVip
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the HaVip.
-	//
-	// example:
-	//
-	// havip-bp149uyvut73dpld****
-	HaVipId *string `json:"HaVipId,omitempty" xml:"HaVipId,omitempty"`
-	// The private IP address of the HaVip.
-	//
-	// example:
-	//
-	// 192.168.24.5
-	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	// The ID of the active instance that is associated with the HaVip.
-	//
-	// example:
-	//
-	// i-bp145q7glnuzdvz****
-	MasterInstanceId *string `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
-	// The name of the HaVip.
-	//
-	// example:
-	//
-	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the region to which the HaVip belongs.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the HaVip belongs.
-	//
-	// example:
-	//
-	// rg-bp67acfmxazb4ph****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the HaVip. Valid values:
-	//
-	// 	- **Creating**: The server group is being created.
-	//
-	// 	- **Available**: The FULLNAT entry is available.
-	//
-	// 	- **Deleting**
-	//
-	// example:
-	//
-	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag list.
-	Tags *DescribeHaVipsResponseBodyHaVipsHaVipTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The ID of the vSwitch to which the HaVip belongs.
-	//
-	// example:
-	//
-	// vsw-bp1pkt1fba8e824ez****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC to which the HaVip belongs.
-	//
-	// example:
-	//
-	// vpc-bp1kcm36tevkpms97****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	AssociatedInstanceType *string                                                      `json:"AssociatedInstanceType,omitempty" xml:"AssociatedInstanceType,omitempty"`
+	AssociatedInstances    *DescribeHaVipsResponseBodyHaVipsHaVipAssociatedInstances    `json:"AssociatedInstances,omitempty" xml:"AssociatedInstances,omitempty" type:"Struct"`
+	ChargeType             *string                                                      `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	CreateTime             *string                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description            *string                                                      `json:"Description,omitempty" xml:"Description,omitempty"`
+	HaVipId                *string                                                      `json:"HaVipId,omitempty" xml:"HaVipId,omitempty"`
+	IpAddress              *string                                                      `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	MasterInstanceId       *string                                                      `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
+	Name                   *string                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId               *string                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId        *string                                                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status                 *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                   *DescribeHaVipsResponseBodyHaVipsHaVipTags                   `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VSwitchId              *string                                                      `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                  *string                                                      `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeHaVipsResponseBodyHaVipsHaVip) String() string {
@@ -499,17 +420,7 @@ func (s *DescribeHaVipsResponseBodyHaVipsHaVipTags) Validate() error {
 }
 
 type DescribeHaVipsResponseBodyHaVipsHaVipTagsTag struct {
-	// The key of tag N added to the resource.
-	//
-	// example:
-	//
-	// FinanceDept
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N added to the resource.
-	//
-	// example:
-	//
-	// FinanceJoshua
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

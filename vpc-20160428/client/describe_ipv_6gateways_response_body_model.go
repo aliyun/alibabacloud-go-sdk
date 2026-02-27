@@ -22,7 +22,6 @@ type iDescribeIpv6GatewaysResponseBody interface {
 }
 
 type DescribeIpv6GatewaysResponseBody struct {
-	// The information about the IPv6 gateway.
 	Ipv6Gateways *DescribeIpv6GatewaysResponseBodyIpv6Gateways `json:"Ipv6Gateways,omitempty" xml:"Ipv6Gateways,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,87 +146,19 @@ func (s *DescribeIpv6GatewaysResponseBodyIpv6Gateways) Validate() error {
 }
 
 type DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway struct {
-	// The status of the IPv6 gateway. Valid values:
-	//
-	// 	- **Normal**
-	//
-	// 	- **FinancialLocked**
-	//
-	// 	- **SecurityLocked**
-	//
-	// example:
-	//
-	// Normal
-	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The time when the IPv6 gateway was created.
-	//
-	// example:
-	//
-	// 2020-12-20T14:51:23Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the IPv6 gateway.
-	//
-	// example:
-	//
-	// descriptionforIPv6GW
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the IPv6 gateway expires.
-	//
-	// example:
-	//
-	// 2021-12-20T14:51:23Z
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The billing method of the IPv6 gateway.
-	//
-	// Only **PostPaid*	- may be returned, which indicates that the IPv6 gateway uses the pay-as-you-go billing method.
-	//
-	// example:
-	//
-	// PostPaid
-	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The ID of the IPv6 gateway.
-	//
-	// example:
-	//
-	// ipv6gw-hp3rwmtmfhgisipv6gw-hp3rwmtmfhgis****
-	Ipv6GatewayId *string `json:"Ipv6GatewayId,omitempty" xml:"Ipv6GatewayId,omitempty"`
-	// The name of the IPv6 gateway.
-	//
-	// example:
-	//
-	// ipv6GW
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region in which the IPv6 gateway is deployed.
-	//
-	// example:
-	//
-	// cn-huhehaote
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
-	//
-	// example:
-	//
-	// rg-bp67acfmxazb4ph****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the IPv6 gateway. Valid values:
-	//
-	// 	- **Pending**
-	//
-	// 	- **Available**
-	//
-	// example:
-	//
-	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The information about the tags.
-	Tags *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The ID of the VPC to which the IPv6 gateway belongs.
-	//
-	// example:
-	//
-	// vpc-123sedrfswd23****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	BusinessStatus     *string                                                      `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	CreationTime       *string                                                      `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description        *string                                                      `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExpiredTime        *string                                                      `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	InstanceChargeType *string                                                      `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	Ipv6GatewayId      *string                                                      `json:"Ipv6GatewayId,omitempty" xml:"Ipv6GatewayId,omitempty"`
+	Name               *string                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId            *int64                                                       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId           *string                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId    *string                                                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status             *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags               *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VpcId              *string                                                      `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway) String() string {
@@ -399,17 +330,7 @@ func (s *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTags) Validate()
 }
 
 type DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTagsTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// FinanceDept
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// FinanceJoshua
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

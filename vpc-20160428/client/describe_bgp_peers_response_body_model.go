@@ -22,7 +22,6 @@ type iDescribeBgpPeersResponseBody interface {
 }
 
 type DescribeBgpPeersResponseBody struct {
-	// The information about the BGP peer.
 	BgpPeers *DescribeBgpPeersResponseBodyBgpPeers `json:"BgpPeers,omitempty" xml:"BgpPeers,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,168 +146,29 @@ func (s *DescribeBgpPeersResponseBodyBgpPeers) Validate() error {
 }
 
 type DescribeBgpPeersResponseBodyBgpPeersBgpPeer struct {
-	// The number of advertised routes.
-	//
-	// example:
-	//
-	// 0
-	AdvertisedRouteCount *int32 `json:"AdvertisedRouteCount,omitempty" xml:"AdvertisedRouteCount,omitempty"`
-	// The authentication key of the BGP group.
-	//
-	// example:
-	//
-	// !PWZ****
-	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
-	// The Bidirectional Forwarding Detection (BFD) hop count.
-	//
-	// example:
-	//
-	// 3
-	BfdMultiHop *int32 `json:"BfdMultiHop,omitempty" xml:"BfdMultiHop,omitempty"`
-	// The ID of the BGP group.
-	//
-	// example:
-	//
-	// bgpg-2zev8h2wo414sfh****
-	BgpGroupId *string `json:"BgpGroupId,omitempty" xml:"BgpGroupId,omitempty"`
-	// The ID of the BGP peer.
-	//
-	// example:
-	//
-	// bgp-2ze3un0ft1jd1xd****
-	BgpPeerId *string `json:"BgpPeerId,omitempty" xml:"BgpPeerId,omitempty"`
-	// The status of the BGP connection. Valid values:
-	//
-	// 	- **Idle**: The BGP connection is not used.
-	//
-	// 	- **Connect**: The BGP connection is used.
-	//
-	// 	- **Active**: The BGP connection is available.
-	//
-	// 	- **Established**: The BGP connection is established.
-	//
-	// 	- **Down**: The BGP connection is unavailable.
-	//
-	// example:
-	//
-	// Connect
-	BgpStatus *string `json:"BgpStatus,omitempty" xml:"BgpStatus,omitempty"`
-	// The description of the BGP group.
-	//
-	// example:
-	//
-	// test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether BFD is enabled. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	EnableBfd *bool `json:"EnableBfd,omitempty" xml:"EnableBfd,omitempty"`
-	// The time when the BGP peer is modified.
-	//
+	AdvertisedRouteCount *int32  `json:"AdvertisedRouteCount,omitempty" xml:"AdvertisedRouteCount,omitempty"`
+	AuthKey              *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
+	BfdMultiHop          *int32  `json:"BfdMultiHop,omitempty" xml:"BfdMultiHop,omitempty"`
+	BgpGroupId           *string `json:"BgpGroupId,omitempty" xml:"BgpGroupId,omitempty"`
+	BgpPeerId            *string `json:"BgpPeerId,omitempty" xml:"BgpPeerId,omitempty"`
+	BgpStatus            *string `json:"BgpStatus,omitempty" xml:"BgpStatus,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableBfd            *bool   `json:"EnableBfd,omitempty" xml:"EnableBfd,omitempty"`
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
-	//
-	// example:
-	//
-	// 2022-05-20T07:29:08Z
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The hold time.
-	//
-	// example:
-	//
-	// 30
-	Hold *string `json:"Hold,omitempty" xml:"Hold,omitempty"`
-	// The version of the IP address.
-	//
-	// example:
-	//
-	// ipv4
-	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// Indicates whether a fake autonomous system number (ASN) is used. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	IsFake *bool `json:"IsFake,omitempty" xml:"IsFake,omitempty"`
-	// The Keepalive interval.
-	//
-	// example:
-	//
-	// 10
-	Keepalive *string `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
-	// The ASN of the device on the Alibaba Cloud side.
-	//
-	// example:
-	//
-	// 45104
-	LocalAsn *string `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
-	// The name of the BGP peer.
-	//
-	// example:
-	//
-	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The autonomous system number (ASN)of the BGP peer.
-	//
-	// example:
-	//
-	// 65515
-	PeerAsn *string `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
-	// The IP address of the BGP peer.
-	//
-	// example:
-	//
-	// 116.62.XX.XX
-	PeerIpAddress *string `json:"PeerIpAddress,omitempty" xml:"PeerIpAddress,omitempty"`
-	// The number of received routes.
-	//
-	// example:
-	//
-	// 0
-	ReceivedRouteCount *int32 `json:"ReceivedRouteCount,omitempty" xml:"ReceivedRouteCount,omitempty"`
-	// The ID of the region to which the BGP group belongs.
-	//
-	// example:
-	//
-	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The maximum number of routes.
-	//
-	// example:
-	//
-	// 110
-	RouteLimit *string `json:"RouteLimit,omitempty" xml:"RouteLimit,omitempty"`
-	// The Router ID.
-	//
-	// example:
-	//
-	// vbr-2zecmmvg5gvu8i4te****
-	RouterId *string `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
-	// The status of the BGP peer. Valid values:
-	//
-	// 	- **Pending**
-	//
-	// 	- **Available**
-	//
-	// 	- **Modifying**
-	//
-	// 	- **Deleting**
-	//
-	// 	- **Deleted**
-	//
-	// example:
-	//
-	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	GmtModified        *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Hold               *string `json:"Hold,omitempty" xml:"Hold,omitempty"`
+	IpVersion          *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	IsFake             *bool   `json:"IsFake,omitempty" xml:"IsFake,omitempty"`
+	Keepalive          *string `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
+	LocalAsn           *string `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PeerAsn            *string `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
+	PeerIpAddress      *string `json:"PeerIpAddress,omitempty" xml:"PeerIpAddress,omitempty"`
+	ReceivedRouteCount *int32  `json:"ReceivedRouteCount,omitempty" xml:"ReceivedRouteCount,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RouteLimit         *string `json:"RouteLimit,omitempty" xml:"RouteLimit,omitempty"`
+	RouterId           *string `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeBgpPeersResponseBodyBgpPeersBgpPeer) String() string {

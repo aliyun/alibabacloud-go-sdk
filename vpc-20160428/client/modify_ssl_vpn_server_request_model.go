@@ -150,7 +150,16 @@ type ModifySslVpnServerRequest struct {
 	//
 	// true
 	Compress *bool `json:"Compress,omitempty" xml:"Compress,omitempty"`
-	DryRun   *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Specifies whether to only precheck the request. Valid values:
+	//
+	// 	- **true**: prechecks the request without performing the operation. The system prechecks the required parameters, request syntax, and limits. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): sends the request. After the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to enable two-factor authentication. To enable two-factor authentication, you need to specify **IDaaSInstanceId**, **IDaaSRegionId**, and **IDaaSApplicationId**. Valid values:
 	//
 	// 	- **true**: enables the feature.

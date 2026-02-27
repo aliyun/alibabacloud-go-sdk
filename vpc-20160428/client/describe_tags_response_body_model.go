@@ -33,8 +33,7 @@ type DescribeTagsResponseBody struct {
 	// example:
 	//
 	// C46FF5A8-C5F0-4024-8262-B16B639225A0
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of tags that meet the filter conditions.
+	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagResources *DescribeTagsResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -117,17 +116,7 @@ func (s *DescribeTagsResponseBodyTagResources) Validate() error {
 }
 
 type DescribeTagsResponseBodyTagResourcesTagResource struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// FinanceDept
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// FinanceJoshua
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

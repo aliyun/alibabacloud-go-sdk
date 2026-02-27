@@ -22,7 +22,6 @@ type iDescribeIPv6TranslatorAclListsResponseBody interface {
 }
 
 type DescribeIPv6TranslatorAclListsResponseBody struct {
-	// The list of network ACLs.
 	Ipv6TranslatorAcls *DescribeIPv6TranslatorAclListsResponseBodyIpv6TranslatorAcls `json:"Ipv6TranslatorAcls,omitempty" xml:"Ipv6TranslatorAcls,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,17 +146,7 @@ func (s *DescribeIPv6TranslatorAclListsResponseBodyIpv6TranslatorAcls) Validate(
 }
 
 type DescribeIPv6TranslatorAclListsResponseBodyIpv6TranslatorAclsIPv6TranslatorAcl struct {
-	// The ACL ID.
-	//
-	// example:
-	//
-	// ipv6transacl-bp1de2****
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The ACL name.
-	//
-	// example:
-	//
-	// acl1
+	AclId   *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
 }
 

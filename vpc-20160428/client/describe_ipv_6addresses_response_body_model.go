@@ -22,7 +22,6 @@ type iDescribeIpv6AddressesResponseBody interface {
 }
 
 type DescribeIpv6AddressesResponseBody struct {
-	// The details of the IPv6 address.
 	Ipv6Addresses *DescribeIpv6AddressesResponseBodyIpv6Addresses `json:"Ipv6Addresses,omitempty" xml:"Ipv6Addresses,omitempty" type:"Struct"`
 	// The page number of the returned page. Default value: **1**.
 	//
@@ -147,136 +146,25 @@ func (s *DescribeIpv6AddressesResponseBodyIpv6Addresses) Validate() error {
 }
 
 type DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address struct {
-	// The type of IPv6 address. Valid values:
-	//
-	// 	- IPv6Address (default): indicates a single IPv6 IP.
-	//
-	// 	- IPv6Prefix: indicates IPv6 CIDR.
-	//
-	// example:
-	//
-	// IPv6Address
-	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// The time when the IPv6 address was created.
-	//
-	// example:
-	//
-	// 2020-12-20T14:56:09Z
-	AllocationTime *string `json:"AllocationTime,omitempty" xml:"AllocationTime,omitempty"`
-	// The ID of the instance associated with the IPv6 address.
-	//
-	// example:
-	//
-	// i-2ze72wuqj4y3jl4f****
-	AssociatedInstanceId *string `json:"AssociatedInstanceId,omitempty" xml:"AssociatedInstanceId,omitempty"`
-	// The type of instance associated with the IPv6 address.
-	//
-	// example:
-	//
-	// EcsInstance
-	AssociatedInstanceType *string `json:"AssociatedInstanceType,omitempty" xml:"AssociatedInstanceType,omitempty"`
-	// The IPv6 address.
-	//
-	// example:
-	//
-	// 2408:XXXX:153:3921:851c:c435:7b12:1c5f
-	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
-	// The description of the IPv6 address.
-	//
-	// example:
-	//
-	// test
-	Ipv6AddressDescription *string `json:"Ipv6AddressDescription,omitempty" xml:"Ipv6AddressDescription,omitempty"`
-	// The ID of the IPv6 address.
-	//
-	// example:
-	//
-	// ipv6-2zen5j4axcp5l5qyy****
-	Ipv6AddressId *string `json:"Ipv6AddressId,omitempty" xml:"Ipv6AddressId,omitempty"`
-	// The name of the IPv6 address.
-	//
-	// example:
-	//
-	// test
-	Ipv6AddressName *string `json:"Ipv6AddressName,omitempty" xml:"Ipv6AddressName,omitempty"`
-	// The ID of the IPv6 gateway to which the IPv6 address belongs.
-	//
-	// example:
-	//
-	// ipv6gw-2zewg0l66s73b4k2q****
-	Ipv6GatewayId *string `json:"Ipv6GatewayId,omitempty" xml:"Ipv6GatewayId,omitempty"`
-	// The Internet bandwidth of the IPv6 address.
-	Ipv6InternetBandwidth *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth `json:"Ipv6InternetBandwidth,omitempty" xml:"Ipv6InternetBandwidth,omitempty" type:"Struct"`
-	// The ISP of the IPv6 address. Valid values:
-	//
-	// 	- **BGP*	- (default)
-	//
-	// 	- **ChinaMobile**
-	//
-	// 	- **ChinaUnicom**
-	//
-	// 	- **ChinaTelecom**
-	//
-	// example:
-	//
-	// BGP
-	Ipv6Isp *string `json:"Ipv6Isp,omitempty" xml:"Ipv6Isp,omitempty"`
-	// The type of connection supported by the IPv6 address. Valid values:
-	//
-	// 	- **Private**
-	//
-	// 	- **Public**
-	//
-	// example:
-	//
-	// Private
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The peak bandwidth of the IPv6 address.
-	//
-	// example:
-	//
-	// 5
-	RealBandwidth *int32 `json:"RealBandwidth,omitempty" xml:"RealBandwidth,omitempty"`
-	// The ID of the resource group to which the IPv6 gateway belongs.
-	//
-	// example:
-	//
-	// rg-bp67acfmxazb4ph****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Indicates whether the instance is managed. Valid values:
-	//
-	// 	- **1**: yes
-	//
-	// 	- **0**: no
-	//
-	// example:
-	//
-	// 1
-	ServiceManaged *int32 `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// The status of the IPv6 address.
-	//
-	// 	- **Pending**
-	//
-	// 	- **Available**
-	//
-	// example:
-	//
-	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag list.
-	Tags *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The ID of the vSwitch to which the IPv6 address belongs.
-	//
-	// example:
-	//
-	// vsw-25navfgbue4g****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC to which the IPv6 address belongs.
-	//
-	// example:
-	//
-	// vpc-bp15zckdt37pq72zv****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	AddressType            *string                                                                         `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	AllocationTime         *string                                                                         `json:"AllocationTime,omitempty" xml:"AllocationTime,omitempty"`
+	AssociatedInstanceId   *string                                                                         `json:"AssociatedInstanceId,omitempty" xml:"AssociatedInstanceId,omitempty"`
+	AssociatedInstanceType *string                                                                         `json:"AssociatedInstanceType,omitempty" xml:"AssociatedInstanceType,omitempty"`
+	Ipv6Address            *string                                                                         `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
+	Ipv6AddressDescription *string                                                                         `json:"Ipv6AddressDescription,omitempty" xml:"Ipv6AddressDescription,omitempty"`
+	Ipv6AddressId          *string                                                                         `json:"Ipv6AddressId,omitempty" xml:"Ipv6AddressId,omitempty"`
+	Ipv6AddressName        *string                                                                         `json:"Ipv6AddressName,omitempty" xml:"Ipv6AddressName,omitempty"`
+	Ipv6GatewayId          *string                                                                         `json:"Ipv6GatewayId,omitempty" xml:"Ipv6GatewayId,omitempty"`
+	Ipv6InternetBandwidth  *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth `json:"Ipv6InternetBandwidth,omitempty" xml:"Ipv6InternetBandwidth,omitempty" type:"Struct"`
+	Ipv6Isp                *string                                                                         `json:"Ipv6Isp,omitempty" xml:"Ipv6Isp,omitempty"`
+	NetworkType            *string                                                                         `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	RealBandwidth          *int32                                                                          `json:"RealBandwidth,omitempty" xml:"RealBandwidth,omitempty"`
+	ResourceGroupId        *string                                                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServiceManaged         *int32                                                                          `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	Status                 *string                                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                   *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressTags                  `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VSwitchId              *string                                                                         `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                  *string                                                                         `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address) String() string {
@@ -473,86 +361,16 @@ func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address) Validate() e
 }
 
 type DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth struct {
-	// The dedicated Internet bandwidth of the IPv6 address. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 5
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The status of the Internet bandwidth of the IPv6 address. Valid values:
-	//
-	// 	- **Normal**
-	//
-	// 	- **FinancialLocked**
-	//
-	// 	- **SecurityLocked**
-	//
-	// example:
-	//
-	// Normal
-	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// Indicates whether renewal data is included. Valid values:
-	//
-	// 	- **false**
-	//
-	// 	- **true*	- **true*	- is returned only when **IncludeReservationData*	- is set to **true*	- and some orders have not taken effect.
-	//
-	// example:
-	//
-	// false
-	HasReservationData *bool `json:"HasReservationData,omitempty" xml:"HasReservationData,omitempty"`
-	// The billing method of the Internet bandwidth of the IPv6 address. Valid values:
-	//
-	// Only **PostPaid*	- may be returned, which indicates the pay-as-you-go billing method.
-	//
-	// example:
-	//
-	// PostPaid
-	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The billing method of the Internet bandwidth of the IPv6 address. Valid values:
-	//
-	// 	- **PayByTraffic**
-	//
-	// 	- **PayByBandwidth**
-	//
-	// example:
-	//
-	// PayByTraffic
-	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The Internet bandwidth ID of the IPv6 address.
-	//
-	// example:
-	//
-	// ipv6bw-hp3b35oq1fj50kbv****
-	Ipv6InternetBandwidthId *string `json:"Ipv6InternetBandwidthId,omitempty" xml:"Ipv6InternetBandwidthId,omitempty"`
-	// The time when the renewal takes effect. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
-	//
-	// example:
-	//
-	// 2021-05-23T16:00:00Z
-	ReservationActiveTime *string `json:"ReservationActiveTime,omitempty" xml:"ReservationActiveTime,omitempty"`
-	// The maximum bandwidth after the renewal takes effect. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 12
-	ReservationBandwidth *int64 `json:"ReservationBandwidth,omitempty" xml:"ReservationBandwidth,omitempty"`
-	// The metering method that is used after the renewal takes effect.
-	//
-	// 	- **PayByTraffic**
-	//
-	// 	- **PayByBandwidth**
-	//
-	// example:
-	//
-	// PayByTraffic
+	Bandwidth                     *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	BusinessStatus                *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	HasReservationData            *bool   `json:"HasReservationData,omitempty" xml:"HasReservationData,omitempty"`
+	InstanceChargeType            *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	InternetChargeType            *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	Ipv6InternetBandwidthId       *string `json:"Ipv6InternetBandwidthId,omitempty" xml:"Ipv6InternetBandwidthId,omitempty"`
+	ReservationActiveTime         *string `json:"ReservationActiveTime,omitempty" xml:"ReservationActiveTime,omitempty"`
+	ReservationBandwidth          *int64  `json:"ReservationBandwidth,omitempty" xml:"ReservationBandwidth,omitempty"`
 	ReservationInternetChargeType *string `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
-	// The type of the renewal order. Only **RENEW*	- may be returned, which indicates that the order is placed for service renewal.
-	//
-	// example:
-	//
-	// RENEW
-	ReservationOrderType *string `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
+	ReservationOrderType          *string `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
 }
 
 func (s DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth) String() string {
@@ -692,23 +510,7 @@ func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressTags) Validate
 }
 
 type DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressTagsTag struct {
-	// The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
-	//
-	// The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
-	//
-	// example:
-	//
-	// FinanceDept
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// The tag value can be up to 128 characters in length. It can be an empty string. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
-	//
-	// Each tag key corresponds to one tag value. You can specify at most 20 tag values at a time.
-	//
-	// example:
-	//
-	// yunke
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

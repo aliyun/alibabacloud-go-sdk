@@ -229,21 +229,7 @@ func (client *Client) AddBgpNetworkWithContext(ctx context.Context, request *Add
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
-//
-//   - When you call this operation to associate an EIP with an Internet Shared Bandwidth instance, make sure that the EIP meets the following requirements:
-//
-//   - The EIP uses the pay-as-you-go billing method.
-//
-//   - The EIP and the Internet Shared Bandwidth instance belong to the same region.
-//
-//   - The line type of the EIPs is the same as that of the Internet Shared Bandwidth instance.
-//
-//   - **AddCommonBandwidthPackageIp*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](https://help.aliyun.com/document_detail/120309.html) operation to query the status of the operation.
-//
-//   - If the Internet Shared Bandwidth instance is in the **BINDING*	- state, the EIP is being associated with the Internet Shared Bandwidth instance. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
-//
-//   - If the Internet Shared Bandwidth instance is in the **BINDED*	- state, the EIP is associated with the Internet Shared Bandwidth instance.
+// Associates an elastic IP address (EIP) with an Internet Shared Bandwidth instance.
 //
 // @param request - AddCommonBandwidthPackageIpRequest
 //
@@ -2443,7 +2429,7 @@ func (client *Client) AssociateVpnGatewayWithCertificateWithContext(ctx context.
 
 // Summary:
 //
-// 将DHCP选项集与VPC关联
+// Associates a DHCP options set with a virtual private cloud (VPC).
 //
 // Description:
 //
@@ -5473,7 +5459,7 @@ func (client *Client) CreateIpsecServerWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 创建IPv4网关。
+// Creates an IPv4 gateway.
 //
 // Description:
 //
@@ -6999,7 +6985,7 @@ func (client *Client) CreateRouteTableWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Create Route Target Group
+// Creates a route target group instance.
 //
 // Description:
 //
@@ -7903,7 +7889,7 @@ func (client *Client) CreateTrafficMirrorSessionWithContext(ctx context.Context,
 
 // Summary:
 //
-// 创建交换机。
+// Creates a vSwitch.
 //
 // Description:
 //
@@ -8231,19 +8217,7 @@ func (client *Client) CreateVbrHaWithContext(ctx context.Context, request *Creat
 //
 // Description:
 //
-//	  The IPsec-VPN connection must be associated with a transit router. For more information, see [CreateTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/468249.html).
-//
-//		- You cannot create a destination-based route whose destination CIDR block is 0.0.0.0/0.
-//
-//		- Do not add a destination-based route whose destination CIDR block is 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10 or belongs to 100.64.0.0/10. Such a route will make the console fail to display the status of the IPsec-VPN connection or cause IPsec negotiation failures.
-//
-//		- **CreateVcoRouteEntry*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnConnection](https://help.aliyun.com/document_detail/53046.html) to query the status of the task.
-//
-//	    	- If the IPsec-VPN connection is in the **updating*	- state, the destination-based route is being created.
-//
-//	    	- If the IPsec-VPN connection is in the **attached*	- state, the destination-based route is created.
-//
-//		- You cannot repeatedly call **CreateVcoRouteEntry*	- within the specified period of time.
+// Adds a destination-based route for an IPsec-VPN connection.
 //
 // @param request - CreateVcoRouteEntryRequest
 //
@@ -9441,17 +9415,7 @@ func (client *Client) CreateVpnGatewayWithContext(ctx context.Context, request *
 //
 // Description:
 //
-//	  Before you call this operation, make sure that you are familiar with the match rules of and limits on policy-based routes. For more information, see [Manage policy-based routes](https://help.aliyun.com/document_detail/110777.html).
-//
-//		- Before you create a policy-based route, make sure that an IPsec-VPN connection is created. For more information, see [CreateVpnConnection](https://help.aliyun.com/document_detail/120391.html).
-//
-//		- **CreateVpnPbrRouteEntry*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) operation to query the status of the VPN gateway.
-//
-//	    	- If the VPN gateway is in the **updating*	- state, the policy-based route is being created.
-//
-//	    	- If the VPN gateway is in the **active*	- state, the policy-based route is created.
-//
-//		- You cannot call the **CreateVpnPbrRouteEntry*	- operation to create multiple policy-based routes for a VPN gateway at a time.
+// Creates a policy-based route for a VPN gateway.
 //
 // @param request - CreateVpnPbrRouteEntryRequest
 //
@@ -9661,7 +9625,7 @@ func (client *Client) CreateVpnRouteEntryWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 冻结路由器接口
+// Deactivates a router interface.
 //
 // @param request - DeactivateRouterInterfaceRequest
 //
@@ -10839,7 +10803,7 @@ func (client *Client) DeleteFullNatEntryWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes a Global Accelerator (GA) instance.
+// Deletes a GA instance.
 //
 // Description:
 //
@@ -12489,7 +12453,7 @@ func (client *Client) DeleteRouteTableWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Delete Route Target Group
+// Deletes a route target group.
 //
 // Description:
 //
@@ -12797,7 +12761,7 @@ func (client *Client) DeleteSslVpnClientCertWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Deletes an SSL server.
+// Deletes an SSL server. The system automatically deletes all SSL client certificates that are associated with the SSL server. In this case, the SSL-VPN connections of the clients on which the SSL client certificates are installed are automatically disconnected.
 //
 // Description:
 //
@@ -14189,7 +14153,7 @@ func (client *Client) DeleteVpnRouteEntryWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 设置实例删除保护功能。
+// Set the deletion protection feature for an instance.
 //
 // Description:
 //
@@ -14409,7 +14373,7 @@ func (client *Client) DescribeAccessPointsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries Border Gateway Protocol (BGP) groups in a region.
+// Queries BGP groups in a specified region.
 //
 // @param request - DescribeBgpGroupsRequest
 //
@@ -15161,7 +15125,7 @@ func (client *Client) DescribeEipGatewayInfoWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the monitoring data of an elastic IP address (EIP). You can query monitoring data within the last 30 days, and obtain up to 400 data points in each request.
+// Queries the monitoring data of an elastic IP address (EIP). You can query monitoring data within the last 30 days, and get up to 400 data points in each request.
 //
 // Description:
 //
@@ -15925,7 +15889,7 @@ func (client *Client) DescribeForwardTableEntriesWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries Global Accelerator (GA) instances.
+// Queries created GA instances.
 //
 // @param request - DescribeGlobalAccelerationInstancesRequest
 //
@@ -16025,7 +15989,7 @@ func (client *Client) DescribeGlobalAccelerationInstancesWithContext(ctx context
 
 // Summary:
 //
-// 查询指定网络实例（VPC、VBR）的云企业网跨账号授权信息
+// Queries cross-account authorization on virtual private clouds (VPCs), virtual border routers (VBRs), and Cloud Connect Network (CCN) instances.
 //
 // @param request - DescribeGrantRulesToCenRequest
 //
@@ -17455,7 +17419,7 @@ func (client *Client) DescribeNetworkAclsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询物理专线LOA信息
+// Queries the LOA information about an Express Connect circuit.
 //
 // @param request - DescribePhysicalConnectionLOARequest
 //
@@ -18213,7 +18177,7 @@ func (client *Client) DescribeRouterInterfacesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries Global Accelerator (GA) instances that are associated with a backend server.
+// Queries the GA instances that are associated with a specified backend server.
 //
 // Description:
 //
@@ -20513,7 +20477,7 @@ func (client *Client) DescribeVpnRouteEntriesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the log entries of an SSL server.
+// Queries the log of an SSL server.
 //
 // @param request - DescribeVpnSslServerLogsRequest
 //
@@ -20669,7 +20633,7 @@ func (client *Client) DescribeZonesWithContext(ctx context.Context, request *Des
 
 // Summary:
 //
-// Disassociates a DHCP options set from a virtual private cloud (VPC).
+// Disassociates a DHCP options set from a VPC.
 //
 // Description:
 //
@@ -20895,9 +20859,11 @@ func (client *Client) DiagnoseVpnGatewayWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DisableVpcClassicLink is deprecated
+//
 // Summary:
 //
-// Disables ClassicLink for a virtual private cloud (VPC).
+// Disables ClassicLink for a VPC.
 //
 // @param request - DisableVpcClassicLinkRequest
 //
@@ -21345,6 +21311,8 @@ func (client *Client) EnablePhysicalConnectionWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Deprecated: OpenAPI EnableVpcClassicLink is deprecated
+//
 // Summary:
 //
 // Enables ClassicLink for a VPC.
@@ -21779,7 +21747,7 @@ func (client *Client) GetNatGatewayAttributeWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 查询是否开通了出云流量服务
+// Checks whether outbound data transfer billing is enabled for the current account.
 //
 // Description:
 //
@@ -21911,7 +21879,7 @@ func (client *Client) GetPublicIpAddressPoolServiceStatusWithContext(ctx context
 
 // Summary:
 //
-// # Get the route target group
+// Gets the information of a route target group.
 //
 // Description:
 //
@@ -22319,7 +22287,7 @@ func (client *Client) GetVpcPrefixListEntriesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询路由类型的明细。
+// Queries route types.
 //
 // @param request - GetVpcRouteEntrySummaryRequest
 //
@@ -22451,7 +22419,7 @@ func (client *Client) GetVpnGatewayDiagnoseResultWithContext(ctx context.Context
 
 // Summary:
 //
-// Grants permissions to a Cloud Enterprise Network (CEN) instance.
+// Grants permissions to a CEN instance.
 //
 // Description:
 //
@@ -22663,7 +22631,7 @@ func (client *Client) ListBusinessAccessPointsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Query the list of regions available for an Express Connect circuit.
+// Queries the list of regions available for an Express Connect circuit.
 //
 // @param request - ListBusinessRegionsRequest
 //
@@ -23491,7 +23459,7 @@ func (client *Client) ListNatIpsWithContext(ctx context.Context, request *ListNa
 
 // Summary:
 //
-// Querying the connection features supported by a Express Connect circuit.
+// Queries he connection features supported by a Express Connect circuit.
 //
 // @param request - ListPhysicalConnectionFeaturesRequest
 //
@@ -23643,7 +23611,7 @@ func (client *Client) ListPrefixListsWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// 查询IP地址池中的IP地址网段信息
+// Queries CIDR blocks in an IP address pool.
 //
 // @param request - ListPublicIpAddressPoolCidrBlocksRequest
 //
@@ -23823,7 +23791,7 @@ func (client *Client) ListPublicIpAddressPoolsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Batch query for route target groups
+// Queries the list of route target groups.
 //
 // Description:
 //
@@ -24619,7 +24587,7 @@ func (client *Client) ListVpcGatewayEndpointsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries advertised routes.
+// # Query the route publishing status
 //
 // @param request - ListVpcPublishedRouteEntriesRequest
 //
@@ -28501,7 +28469,7 @@ func (client *Client) ModifyVRouterAttributeWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 修改VSwitch属性
+// Modifies the name and description of a vSwitch.
 //
 // Description:
 //
@@ -28595,7 +28563,7 @@ func (client *Client) ModifyVSwitchAttributeWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 修改交换机预留网段的名称和描述信息。
+// Modifies the name and description of a CIDR block reserved for a vSwitch.
 //
 // Description:
 //
@@ -28931,7 +28899,7 @@ func (client *Client) ModifyVirtualBorderRouterAttributeWithContext(ctx context.
 
 // Summary:
 //
-// Modifies the name and description of a virtual private cloud (VPC).
+// Modifies the configurations of a specified VPC.
 //
 // Description:
 //
@@ -29429,7 +29397,7 @@ func (client *Client) ModifyVpnConnectionAttributeWithContext(ctx context.Contex
 
 // Summary:
 //
-// Modifies the name and description of a VPN gateway.
+// Modifies the name and description of a VPN Gateway or the automatic route advertisement feature.
 //
 // Description:
 //
@@ -30361,7 +30329,7 @@ func (client *Client) OpenTrafficMirrorServiceWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Advertises VPC routes to an external component.
+// # Publish VPC Routes
 //
 // @param request - PublishVpcRouteEntriesRequest
 //
@@ -30973,6 +30941,10 @@ func (client *Client) RemoveCommonBandwidthPackageIpWithContext(ctx context.Cont
 	return _result, _err
 }
 
+// Summary:
+//
+// Disassociates an EIP from a shared-bandwidth GA instance.
+//
 // @param request - RemoveGlobalAccelerationInstanceIpRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -31197,7 +31169,7 @@ func (client *Client) RemoveSourcesFromTrafficMirrorSessionWithContext(ctx conte
 
 // Summary:
 //
-// 更改DHCP选项集与VPC的关联。
+// Replaces the DHCP options set that is associated with a virtual private cloud (VPC).
 //
 // Description:
 //
@@ -31855,7 +31827,7 @@ func (client *Client) StopFailoverTestJobWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Switch Active and Standby For RouteTargetGroup.
+// Performs primary and secondary switchover for the route target group.
 //
 // Description:
 //
@@ -33053,7 +33025,7 @@ func (client *Client) UntagResourcesForExpressConnectWithContext(ctx context.Con
 
 // Summary:
 //
-// 修改Dhcp选项集信息
+// Modifies the configuration of a DHCP options set.
 //
 // @param request - UpdateDhcpOptionsSetAttributeRequest
 //
@@ -33817,7 +33789,7 @@ func (client *Client) UpdatePublicIpAddressPoolAttributeWithContext(ctx context.
 
 // Summary:
 //
-// # Update Route Target Group
+// Updates the information about a routing target group instance, including the name, description, and members that are not enabled.
 //
 // Description:
 //
@@ -33973,7 +33945,7 @@ func (client *Client) UpdateTrafficMirrorFilterAttributeWithContext(ctx context.
 
 // Summary:
 //
-// Modifies the configuration of an inbound or outbound rule for traffic mirroring.
+// Modifies the configuration of an inbound or outbound rule for traffic mirror.
 //
 // Description:
 //
@@ -34433,7 +34405,7 @@ func (client *Client) UpdateVpcGatewayEndpointAttributeWithContext(ctx context.C
 
 // Summary:
 //
-// 查看eni quota
+// Queries the quota of endpoints that can be created in the reversely accessed VPC NAT gateway.
 //
 // Description:
 //

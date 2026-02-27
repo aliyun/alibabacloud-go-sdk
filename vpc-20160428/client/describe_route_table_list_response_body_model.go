@@ -39,8 +39,7 @@ type DescribeRouteTableListResponseBody struct {
 	// example:
 	//
 	// DC668356-BCB4-42FD-9BC3-FA2B2E04B634
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The detailed information about the route tables.
+	RequestId       *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouterTableList *DescribeRouteTableListResponseBodyRouterTableList `json:"RouterTableList,omitempty" xml:"RouterTableList,omitempty" type:"Struct"`
 	// The total number of entries returned.
 	//
@@ -147,112 +146,22 @@ func (s *DescribeRouteTableListResponseBodyRouterTableList) Validate() error {
 }
 
 type DescribeRouteTableListResponseBodyRouterTableListRouterTableListType struct {
-	// The type of the cloud resource with which the route table is associated. Valid values:
-	//
-	// 	- **VSwitch**: vSwitch
-	//
-	// 	- **Gateway**: IPv4 gateway
-	//
-	// example:
-	//
-	// VSwitch
-	AssociateType *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
-	// The time when the route table was created.
-	//
-	// example:
-	//
-	// 2021-08-22T10:40:25Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The information about the route table.
-	//
-	// example:
-	//
-	// This is Route Table.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The detailed information about the IPv4 gateway.
-	GatewayIds *DescribeRouteTableListResponseBodyRouterTableListRouterTableListTypeGatewayIds `json:"GatewayIds,omitempty" xml:"GatewayIds,omitempty" type:"Struct"`
-	// The ID of the Alibaba Cloud account to which the route table belongs.
-	//
-	// example:
-	//
-	// 253460731706911258
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the resource group to which the route table belongs.
-	//
-	// example:
-	//
-	// rg-acfmxazb4ph****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Whether to receive the propagation routes. Valid Values:
-	//
-	// 	- **true**: received.
-	//
-	// 	- **false**: not received.
-	//
-	// example:
-	//
-	// true
-	RoutePropagationEnable *bool `json:"RoutePropagationEnable,omitempty" xml:"RoutePropagationEnable,omitempty"`
-	// The ID of the route table.
-	//
-	// example:
-	//
-	// vtb-bp145q7glnuzdvzu2****
-	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// The name of the route table.
-	//
-	// example:
-	//
-	// doctest
-	RouteTableName *string `json:"RouteTableName,omitempty" xml:"RouteTableName,omitempty"`
-	// The type of the route table. Valid values:
-	//
-	// 	- **Custom**
-	//
-	// 	- **System**
-	//
-	// example:
-	//
-	// System
-	RouteTableType *string `json:"RouteTableType,omitempty" xml:"RouteTableType,omitempty"`
-	// The ID of the vRouter to which the route table belongs.
-	//
-	// example:
-	//
-	// vrt-bp1lhl0taikrteen8****
-	RouterId *string `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
-	// The type of the vRouter to which the route table belongs. Valid values:
-	//
-	// - **VRouter**: a vRouter.
-	//
-	// - **VBR**: a VBR.
-	//
-	// example:
-	//
-	// VRouter
-	RouterType *string `json:"RouterType,omitempty" xml:"RouterType,omitempty"`
-	// The status of the route table. Valid values:
-	//
-	// 	- **Pending**
-	//
-	// 	- **Available**
-	//
-	// 	- **Deleting**
-	//
-	// example:
-	//
-	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags.
-	Tags *DescribeRouteTableListResponseBodyRouterTableListRouterTableListTypeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The vSwitch IDs.
-	VSwitchIds *DescribeRouteTableListResponseBodyRouterTableListRouterTableListTypeVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
-	// The ID of the VPC to which the route table belongs.
-	//
-	// example:
-	//
-	// vpc-bp15zckdt37pq72****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	AssociateType          *string                                                                         `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
+	CreationTime           *string                                                                         `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description            *string                                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	GatewayIds             *DescribeRouteTableListResponseBodyRouterTableListRouterTableListTypeGatewayIds `json:"GatewayIds,omitempty" xml:"GatewayIds,omitempty" type:"Struct"`
+	OwnerId                *int64                                                                          `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId        *string                                                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	RoutePropagationEnable *bool                                                                           `json:"RoutePropagationEnable,omitempty" xml:"RoutePropagationEnable,omitempty"`
+	RouteTableId           *string                                                                         `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	RouteTableName         *string                                                                         `json:"RouteTableName,omitempty" xml:"RouteTableName,omitempty"`
+	RouteTableType         *string                                                                         `json:"RouteTableType,omitempty" xml:"RouteTableType,omitempty"`
+	RouterId               *string                                                                         `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
+	RouterType             *string                                                                         `json:"RouterType,omitempty" xml:"RouterType,omitempty"`
+	Status                 *string                                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                   *DescribeRouteTableListResponseBodyRouterTableListRouterTableListTypeTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VSwitchIds             *DescribeRouteTableListResponseBodyRouterTableListRouterTableListTypeVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
+	VpcId                  *string                                                                         `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeRouteTableListResponseBodyRouterTableListRouterTableListType) String() string {
@@ -486,17 +395,7 @@ func (s *DescribeRouteTableListResponseBodyRouterTableListRouterTableListTypeTag
 }
 
 type DescribeRouteTableListResponseBodyRouterTableListRouterTableListTypeTagsTag struct {
-	// The key of the tag that is added to the route table.
-	//
-	// example:
-	//
-	// type
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag that is added to the route table.
-	//
-	// example:
-	//
-	// ingress
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

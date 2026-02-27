@@ -48,6 +48,11 @@ type iModifyFullNatEntryAttributeRequest interface {
 }
 
 type ModifyFullNatEntryAttributeRequest struct {
+	// The backend domain name of the FULLNAT address translation that needs to be modified.
+	//
+	// example:
+	//
+	// xxx.com
 	AccessDomain *string `json:"AccessDomain,omitempty" xml:"AccessDomain,omitempty"`
 	// The backend IP address to be modified in FULLNAT address translation.
 	//

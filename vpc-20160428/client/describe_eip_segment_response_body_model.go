@@ -22,7 +22,6 @@ type iDescribeEipSegmentResponseBody interface {
 }
 
 type DescribeEipSegmentResponseBody struct {
-	// The details of the contiguous EIP group.
 	EipSegments *DescribeEipSegmentResponseBodyEipSegments `json:"EipSegments,omitempty" xml:"EipSegments,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,66 +146,15 @@ func (s *DescribeEipSegmentResponseBodyEipSegments) Validate() error {
 }
 
 type DescribeEipSegmentResponseBodyEipSegmentsEipSegment struct {
-	// The time when the contiguous EIP group was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2020-03-06T12:30:07Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the contiguous EIP group.
-	//
-	// example:
-	//
-	// MyEipSegment
-	Descritpion *string `json:"Descritpion,omitempty" xml:"Descritpion,omitempty"`
-	// The ID of the contiguous EIP group.
-	//
-	// example:
-	//
-	// eipsg-2zett8ba055tbsxme****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of EIPs in the contiguous EIP group.
-	//
-	// example:
-	//
-	// 16
-	IpCount *string `json:"IpCount,omitempty" xml:"IpCount,omitempty"`
-	// The name of the contiguous EIP group.
-	//
-	// example:
-	//
-	// MyEipSegment
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the region to which the contiguous EIP group belongs.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The CIDR block and mask of the contiguous EIP group.
-	//
-	// example:
-	//
-	// 161.xx.xx.32/28
-	Segment *string `json:"Segment,omitempty" xml:"Segment,omitempty"`
-	// The status of the contiguous EIP group. Valid values:
-	//
-	// 	- **Allocating**
-	//
-	// 	- **Allocated**
-	//
-	// 	- **Releasing**
-	//
-	// example:
-	//
-	// Allocated
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The zone of the contiguous EIP group.
-	//
-	// example:
-	//
-	// cn-hangzhou-a
-	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	Descritpion  *string `json:"Descritpion,omitempty" xml:"Descritpion,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IpCount      *string `json:"IpCount,omitempty" xml:"IpCount,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Segment      *string `json:"Segment,omitempty" xml:"Segment,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Zone         *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s DescribeEipSegmentResponseBodyEipSegmentsEipSegment) String() string {

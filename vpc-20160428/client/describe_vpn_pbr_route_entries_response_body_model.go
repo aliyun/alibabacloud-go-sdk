@@ -45,8 +45,7 @@ type DescribeVpnPbrRouteEntriesResponseBody struct {
 	// example:
 	//
 	// 1
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of policy-based routes.
+	TotalCount         *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	VpnPbrRouteEntries *DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntries `json:"VpnPbrRouteEntries,omitempty" xml:"VpnPbrRouteEntries,omitempty" type:"Struct"`
 }
 
@@ -147,78 +146,15 @@ func (s *DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntries) Validate() er
 }
 
 type DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry struct {
-	// The time when the policy-based route was created. Unit: millisecond.
-	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1492747187000
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The next hop of the policy-based route.
-	//
-	// example:
-	//
-	// vco-bp15oes1py4i66rmd****
-	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The ID of the tunnel associated with the next hop of the policy-based route.
-	//
-	// This parameter is returned only if the VPN gateway supports IPsec-VPN connections in dual-tunnel mode.
-	//
-	// example:
-	//
-	// tun-opsqc4d97wni2****
+	CreateTime      *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	NextHop         *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
 	NextHopTunnelId *string `json:"NextHopTunnelId,omitempty" xml:"NextHopTunnelId,omitempty"`
-	// The priority of the policy-based route.
-	//
-	// A smaller value indicates a higher priority.
-	//
-	// example:
-	//
-	// 10
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The destination CIDR block of the policy-based route.
-	//
-	// example:
-	//
-	// 10.0.0.0/24
-	RouteDest *string `json:"RouteDest,omitempty" xml:"RouteDest,omitempty"`
-	// The source CIDR block of the policy-based route.
-	//
-	// example:
-	//
-	// 192.168.0.0/24
-	RouteSource *string `json:"RouteSource,omitempty" xml:"RouteSource,omitempty"`
-	// The status of the policy-based route. Valid values:
-	//
-	// 	- **published**: advertised to the VPC route table.
-	//
-	// 	- **normal**: not advertised to the VPC route table.
-	//
-	// example:
-	//
-	// published
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The ID of the VPN gateway.
-	//
-	// example:
-	//
-	// vpn-bp1a3kqjiiq9legfx****
-	VpnInstanceId *string `json:"VpnInstanceId,omitempty" xml:"VpnInstanceId,omitempty"`
-	// The weight of the policy-based route.
-	//
-	// For a VPN gateway that supports IPsec-VPN connections in single-tunnel mode, the weight of a policy-based route indicates the priority of the route.
-	//
-	// 	- **100**: a high priority If multiple policy-based routes with the same source CIDR block and destination CIDR block exist, the IPsec-VPN connection associated with the policy-based route is the active connection.
-	//
-	// 	- **0**: a low priority If multiple policy-based routes with the same source CIDR block and destination CIDR block exist, the IPsec-VPN connection associated with the policy-based route is the standby connection.
-	//
-	// >  For a VPN gateway that does not support IPsec-VPN connections in single-tunnel mode, this parameter does not take effect.
-	//
-	// example:
-	//
-	// 0
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Priority        *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RouteDest       *string `json:"RouteDest,omitempty" xml:"RouteDest,omitempty"`
+	RouteSource     *string `json:"RouteSource,omitempty" xml:"RouteSource,omitempty"`
+	State           *string `json:"State,omitempty" xml:"State,omitempty"`
+	VpnInstanceId   *string `json:"VpnInstanceId,omitempty" xml:"VpnInstanceId,omitempty"`
+	Weight          *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry) String() string {

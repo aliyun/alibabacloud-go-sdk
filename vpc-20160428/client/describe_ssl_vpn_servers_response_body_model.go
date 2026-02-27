@@ -39,8 +39,7 @@ type DescribeSslVpnServersResponseBody struct {
 	// example:
 	//
 	// D350187B-EA41-4577-950B-95434C8302E1
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The detailed information about the SSL-VPN servers.
+	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SslVpnServers *DescribeSslVpnServersResponseBodySslVpnServers `json:"SslVpnServers,omitempty" xml:"SslVpnServers,omitempty" type:"Struct"`
 	// The number of entries returned.
 	//
@@ -147,140 +146,26 @@ func (s *DescribeSslVpnServersResponseBodySslVpnServers) Validate() error {
 }
 
 type DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer struct {
-	// The encryption algorithm.
-	//
-	// example:
-	//
-	// AES-128-CBC
-	Cipher *string `json:"Cipher,omitempty" xml:"Cipher,omitempty"`
-	// The client CIDR block.
-	//
-	// example:
-	//
-	// 10.10.1.0/24
-	ClientIpPool *string `json:"ClientIpPool,omitempty" xml:"ClientIpPool,omitempty"`
-	// Indicates whether data compression is enabled. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false*	- (default)
-	//
-	// example:
-	//
-	// false
-	Compress *bool `json:"Compress,omitempty" xml:"Compress,omitempty"`
-	// The total number of current connections.
-	//
-	// example:
-	//
-	// 0
-	Connections *int32 `json:"Connections,omitempty" xml:"Connections,omitempty"`
-	// The timestamp generated when the SSL-VPN server was created.
-	//
-	// example:
-	//
-	// 1613800884000
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether two-factor authentication is enabled.
-	//
-	// 	- **true**
-	//
-	// 	- **false*	- (default)
-	//
-	// example:
-	//
-	// true
-	EnableMultiFactorAuth *bool `json:"EnableMultiFactorAuth,omitempty" xml:"EnableMultiFactorAuth,omitempty"`
-	// The ID of the IDaaS application.
-	//
-	// example:
-	//
-	// app_my6g4qmvnwxzj2f****
-	IDaaSApplicationId *string `json:"IDaaSApplicationId,omitempty" xml:"IDaaSApplicationId,omitempty"`
-	// The ID of the IDaaS EIAM instance.
-	//
-	// example:
-	//
-	// idaas-cn-hangzhou-****
-	IDaaSInstanceId *string `json:"IDaaSInstanceId,omitempty" xml:"IDaaSInstanceId,omitempty"`
-	// The version of the IDaaS EIAM instance.
-	//
-	// 	- This parameter is returned only if the SSL server is associated with an IDaaS EIAM 2.0 instance. Only **EIAM 2.0*	- is returned.
-	//
-	// 	- If the SSL server is associated with an IDaaS EIAM 1.0 instance, no value is returned.
-	//
-	// example:
-	//
-	// EIAM 2.0
-	IDaaSInstanceVersion *string `json:"IDaaSInstanceVersion,omitempty" xml:"IDaaSInstanceVersion,omitempty"`
-	// The region ID of the IDaaS EIAM instance.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	IDaaSRegionId *string `json:"IDaaSRegionId,omitempty" xml:"IDaaSRegionId,omitempty"`
-	// The public IP address of the VPN gateway.
-	//
-	// example:
-	//
-	// 47.5.XX.XX
-	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The local CIDR block.
-	//
-	// example:
-	//
-	// 192.168.0.0/24
-	LocalSubnet *string `json:"LocalSubnet,omitempty" xml:"LocalSubnet,omitempty"`
-	// The maximum number of connections.
-	//
-	// example:
-	//
-	// 5
-	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	// The name of the SSL server.
-	//
-	// example:
-	//
-	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The port that is used by the SSL-VPN server.
-	//
-	// example:
-	//
-	// 1194
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The protocol that is used by the SSL server.
-	//
-	// example:
-	//
-	// UDP
-	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// The region ID of the SSL server.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID of the SSL server.
-	//
-	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
-	//
-	// example:
-	//
-	// rg-acfmzs372yg****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the SSL server.
-	//
-	// example:
-	//
-	// vss-bp15j3du13gq1dgey****
-	SslVpnServerId *string `json:"SslVpnServerId,omitempty" xml:"SslVpnServerId,omitempty"`
-	// The ID of the VPN gateway.
-	//
-	// example:
-	//
-	// vpn-bp1on0xae9d771ggi****
-	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
+	Cipher                *string `json:"Cipher,omitempty" xml:"Cipher,omitempty"`
+	ClientIpPool          *string `json:"ClientIpPool,omitempty" xml:"ClientIpPool,omitempty"`
+	Compress              *bool   `json:"Compress,omitempty" xml:"Compress,omitempty"`
+	Connections           *int32  `json:"Connections,omitempty" xml:"Connections,omitempty"`
+	CreateTime            *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnableMultiFactorAuth *bool   `json:"EnableMultiFactorAuth,omitempty" xml:"EnableMultiFactorAuth,omitempty"`
+	IDaaSApplicationId    *string `json:"IDaaSApplicationId,omitempty" xml:"IDaaSApplicationId,omitempty"`
+	IDaaSInstanceId       *string `json:"IDaaSInstanceId,omitempty" xml:"IDaaSInstanceId,omitempty"`
+	IDaaSInstanceVersion  *string `json:"IDaaSInstanceVersion,omitempty" xml:"IDaaSInstanceVersion,omitempty"`
+	IDaaSRegionId         *string `json:"IDaaSRegionId,omitempty" xml:"IDaaSRegionId,omitempty"`
+	InternetIp            *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	LocalSubnet           *string `json:"LocalSubnet,omitempty" xml:"LocalSubnet,omitempty"`
+	MaxConnections        *int32  `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	Name                  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Port                  *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Proto                 *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SslVpnServerId        *string `json:"SslVpnServerId,omitempty" xml:"SslVpnServerId,omitempty"`
+	VpnGatewayId          *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
 }
 
 func (s DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer) String() string {

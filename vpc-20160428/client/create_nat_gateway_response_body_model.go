@@ -22,9 +22,7 @@ type iCreateNatGatewayResponseBody interface {
 }
 
 type CreateNatGatewayResponseBody struct {
-	// A list of DNAT entries.
 	ForwardTableIds *CreateNatGatewayResponseBodyForwardTableIds `json:"ForwardTableIds,omitempty" xml:"ForwardTableIds,omitempty" type:"Struct"`
-	// A list of FULLNAT entries.
 	FullNatTableIds *CreateNatGatewayResponseBodyFullNatTableIds `json:"FullNatTableIds,omitempty" xml:"FullNatTableIds,omitempty" type:"Struct"`
 	// The ID of the NAT gateway.
 	//
@@ -37,8 +35,7 @@ type CreateNatGatewayResponseBody struct {
 	// example:
 	//
 	// 2315DEB7-5E92-423A-91F7-4C1EC9AD97C3
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of SNAT entries.
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SnatTableIds *CreateNatGatewayResponseBodySnatTableIds `json:"SnatTableIds,omitempty" xml:"SnatTableIds,omitempty" type:"Struct"`
 }
 
