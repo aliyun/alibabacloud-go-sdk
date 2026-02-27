@@ -2358,7 +2358,7 @@ func (client *Client) DeleteRegistrationPolicies(request *DeleteRegistrationPoli
 
 // Summary:
 //
-// 批量删除用户非在线设备
+// Deletes multiple user terminals at a time.
 //
 // @param request - DeleteUserDevicesRequest
 //
@@ -2405,7 +2405,7 @@ func (client *Client) DeleteUserDevicesWithOptions(request *DeleteUserDevicesReq
 
 // Summary:
 //
-// 批量删除用户非在线设备
+// Deletes multiple user terminals at a time.
 //
 // @param request - DeleteUserDevicesRequest
 //
@@ -2756,7 +2756,7 @@ func (client *Client) EnableEnterpriseAcceleratePolicy(request *EnableEnterprise
 
 // Summary:
 //
-// 批量查询用户设备列表
+// Exports the information about user terminals in an Excel file.
 //
 // @param request - ExportUserDevicesRequest
 //
@@ -2859,7 +2859,7 @@ func (client *Client) ExportUserDevicesWithOptions(request *ExportUserDevicesReq
 
 // Summary:
 //
-// 批量查询用户设备列表
+// Exports the information about user terminals in an Excel file.
 //
 // @param request - ExportUserDevicesRequest
 //
@@ -3145,7 +3145,7 @@ func (client *Client) GetBootAndAntiUninstallPolicy() (_result *GetBootAndAntiUn
 
 // Summary:
 //
-// 查询自定义身份源指定用户
+// # Query a specified user from a custom identity source
 //
 // @param request - GetClientUserRequest
 //
@@ -3185,7 +3185,7 @@ func (client *Client) GetClientUserWithOptions(request *GetClientUserRequest, ru
 
 // Summary:
 //
-// 查询自定义身份源指定用户
+// # Query a specified user from a custom identity source
 //
 // @param request - GetClientUserRequest
 //

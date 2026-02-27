@@ -25,6 +25,8 @@ type iIdpConfig interface {
 	GetIdaasConfig() *IdpIdaas2SubConfig
 	SetIdpConfigId(v string) *IdpConfig
 	GetIdpConfigId() *string
+	SetIdpId(v int64) *IdpConfig
+	GetIdpId() *int64
 	SetLastSyncTimeUnix(v int64) *IdpConfig
 	GetLastSyncTimeUnix() *int64
 	SetLdapConfig(v *IdpLdapSubConfig) *IdpConfig
@@ -56,6 +58,7 @@ type IdpConfig struct {
 	FeishuConfig     *IdpFeishuSubConfig           `json:"FeishuConfig,omitempty" xml:"FeishuConfig,omitempty"`
 	IdaasConfig      *IdpIdaas2SubConfig           `json:"IdaasConfig,omitempty" xml:"IdaasConfig,omitempty"`
 	IdpConfigId      *string                       `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	IdpId            *int64                        `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
 	LastSyncTimeUnix *int64                        `json:"LastSyncTimeUnix,omitempty" xml:"LastSyncTimeUnix,omitempty"`
 	LdapConfig       *IdpLdapSubConfig             `json:"LdapConfig,omitempty" xml:"LdapConfig,omitempty"`
 	LoginConfig      *IdpLoginConfig               `json:"LoginConfig,omitempty" xml:"LoginConfig,omitempty"`
@@ -106,6 +109,10 @@ func (s *IdpConfig) GetIdaasConfig() *IdpIdaas2SubConfig {
 
 func (s *IdpConfig) GetIdpConfigId() *string {
 	return s.IdpConfigId
+}
+
+func (s *IdpConfig) GetIdpId() *int64 {
+	return s.IdpId
 }
 
 func (s *IdpConfig) GetLastSyncTimeUnix() *int64 {
@@ -185,6 +192,11 @@ func (s *IdpConfig) SetIdaasConfig(v *IdpIdaas2SubConfig) *IdpConfig {
 
 func (s *IdpConfig) SetIdpConfigId(v string) *IdpConfig {
 	s.IdpConfigId = &v
+	return s
+}
+
+func (s *IdpConfig) SetIdpId(v int64) *IdpConfig {
+	s.IdpId = &v
 	return s
 }
 

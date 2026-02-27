@@ -31,12 +31,15 @@ type iPAL7Config interface {
 
 type PAL7Config struct {
 	BypassConfig *PAL7ConfigBypassConfig `json:"BypassConfig,omitempty" xml:"BypassConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// cert-xxxx
 	CertId       *string                 `json:"CertId,omitempty" xml:"CertId,omitempty"`
 	DnsConfig    *PAL7ConfigDnsConfig    `json:"DnsConfig,omitempty" xml:"DnsConfig,omitempty" type:"Struct"`
 	JsHookConfig *PAL7ConfigJsHookConfig `json:"JsHookConfig,omitempty" xml:"JsHookConfig,omitempty" type:"Struct"`
 	// example:
 	//
-	// 逗号分隔的枚举值：automatic,custom
+	// automatic
 	ProxyDomainTypes            []byte                                 `json:"ProxyDomainTypes,omitempty" xml:"ProxyDomainTypes,omitempty"`
 	RequestHeaderRewriteConfig  *PAL7ConfigRequestHeaderRewriteConfig  `json:"RequestHeaderRewriteConfig,omitempty" xml:"RequestHeaderRewriteConfig,omitempty" type:"Struct"`
 	RequestQueryRewriteConfig   *PAL7ConfigRequestQueryRewriteConfig   `json:"RequestQueryRewriteConfig,omitempty" xml:"RequestQueryRewriteConfig,omitempty" type:"Struct"`
@@ -173,7 +176,10 @@ func (s *PAL7Config) Validate() error {
 }
 
 type PAL7ConfigBypassConfig struct {
-	AppBypassFroms []*string                               `json:"AppBypassFroms,omitempty" xml:"AppBypassFroms,omitempty" type:"Repeated"`
+	AppBypassFroms []*string `json:"AppBypassFroms,omitempty" xml:"AppBypassFroms,omitempty" type:"Repeated"`
+	// example:
+	//
+	// disabled
 	Mode           *string                                 `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	UrlBypassRules []*PAL7ConfigBypassConfigUrlBypassRules `json:"UrlBypassRules,omitempty" xml:"UrlBypassRules,omitempty" type:"Repeated"`
 }
@@ -287,6 +293,9 @@ func (s *PAL7ConfigDnsConfig) Validate() error {
 }
 
 type PAL7ConfigJsHookConfig struct {
+	// example:
+	//
+	// disabled
 	Mode         *string                  `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	ReplaceRules []*PAL7ConfigReplaceRule `json:"ReplaceRules,omitempty" xml:"ReplaceRules,omitempty" type:"Repeated"`
 }
@@ -433,6 +442,9 @@ func (s *PAL7ConfigResponseHeaderRewriteConfig) Validate() error {
 }
 
 type PAL7ConfigResponseRewriteConfig struct {
+	// example:
+	//
+	// auto
 	Mode         *string                  `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	ReplaceRules []*PAL7ConfigReplaceRule `json:"ReplaceRules,omitempty" xml:"ReplaceRules,omitempty" type:"Repeated"`
 }

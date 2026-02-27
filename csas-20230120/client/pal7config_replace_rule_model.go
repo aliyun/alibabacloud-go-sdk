@@ -18,11 +18,11 @@ type iPAL7ConfigReplaceRule interface {
 type PAL7ConfigReplaceRule struct {
 	// example:
 	//
-	// aaa
+	// before
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
 	// example:
 	//
-	// bbb
+	// after
 	To *string `json:"To,omitempty" xml:"To,omitempty"`
 }
 

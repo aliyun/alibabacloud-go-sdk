@@ -22,13 +22,25 @@ type iPAL7ConfigRewriteOp interface {
 }
 
 type PAL7ConfigRewriteOp struct {
-	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// X-Test-Param
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// old_value
 	OldValue *string `json:"OldValue,omitempty" xml:"OldValue,omitempty"`
 	// example:
 	//
-	// add,set,delete,replace
-	Op            *string `json:"Op,omitempty" xml:"Op,omitempty"`
-	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// add
+	Op *string `json:"Op,omitempty" xml:"Op,omitempty"`
+	// example:
+	//
+	// new_value
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// sase_app_name
 	ValueVariable *string `json:"ValueVariable,omitempty" xml:"ValueVariable,omitempty"`
 }
 

@@ -9,6 +9,8 @@ type iListUserApplicationsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAddress(v string) *ListUserApplicationsRequest
+	GetAddress() *string
 	SetCurrentPage(v int32) *ListUserApplicationsRequest
 	GetCurrentPage() *int32
 	SetName(v string) *ListUserApplicationsRequest
@@ -20,6 +22,7 @@ type iListUserApplicationsRequest interface {
 }
 
 type ListUserApplicationsRequest struct {
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -52,6 +55,10 @@ func (s ListUserApplicationsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListUserApplicationsRequest) GetAddress() *string {
+	return s.Address
+}
+
 func (s *ListUserApplicationsRequest) GetCurrentPage() *int32 {
 	return s.CurrentPage
 }
@@ -66,6 +73,11 @@ func (s *ListUserApplicationsRequest) GetPageSize() *int32 {
 
 func (s *ListUserApplicationsRequest) GetSaseUserId() *string {
 	return s.SaseUserId
+}
+
+func (s *ListUserApplicationsRequest) SetAddress(v string) *ListUserApplicationsRequest {
+	s.Address = &v
+	return s
 }
 
 func (s *ListUserApplicationsRequest) SetCurrentPage(v int32) *ListUserApplicationsRequest {

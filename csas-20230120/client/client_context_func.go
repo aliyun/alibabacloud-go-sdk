@@ -1797,7 +1797,7 @@ func (client *Client) DeleteRegistrationPoliciesWithContext(ctx context.Context,
 
 // Summary:
 //
-// 批量删除用户非在线设备
+// Deletes multiple user terminals at a time.
 //
 // @param request - DeleteUserDevicesRequest
 //
@@ -2084,7 +2084,7 @@ func (client *Client) EnableEnterpriseAcceleratePolicyWithContext(ctx context.Co
 
 // Summary:
 //
-// 批量查询用户设备列表
+// Exports the information about user terminals in an Excel file.
 //
 // @param request - ExportUserDevicesRequest
 //
@@ -2307,7 +2307,7 @@ func (client *Client) GetApprovalSchemaWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询自定义身份源指定用户
+// # Query a specified user from a custom identity source
 //
 // @param request - GetClientUserRequest
 //

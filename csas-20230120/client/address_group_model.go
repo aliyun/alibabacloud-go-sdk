@@ -60,8 +60,14 @@ func (s *AddressGroup) Validate() error {
 }
 
 type AddressGroupPorts struct {
+	// example:
+	//
+	// 123
 	Begin *int32 `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	End   *int32 `json:"End,omitempty" xml:"End,omitempty"`
+	// example:
+	//
+	// 1234
+	End *int32 `json:"End,omitempty" xml:"End,omitempty"`
 }
 
 func (s AddressGroupPorts) String() string {
