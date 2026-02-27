@@ -16,7 +16,6 @@ type iListControlPolicyAttachmentsForTargetResponseBody interface {
 }
 
 type ListControlPolicyAttachmentsForTargetResponseBody struct {
-	// The attached access control policies.
 	ControlPolicyAttachments *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachments `json:"ControlPolicyAttachments,omitempty" xml:"ControlPolicyAttachments,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,50 +95,12 @@ func (s *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmen
 }
 
 type ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment struct {
-	// The time when the access control policy was attached.
-	//
-	// example:
-	//
-	// 2021-03-19T02:56:24Z
-	AttachDate *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
-	// The description of the access control policy.
-	//
-	// example:
-	//
-	// ExampleControlPolicy
+	AttachDate  *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The effective scope of the access control policy. Valid values:
-	//
-	// 	- All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
-	//
-	// 	- RAM: The access control policy is in effect only for RAM users and RAM roles.
-	//
-	// example:
-	//
-	// RAM
 	EffectScope *string `json:"EffectScope,omitempty" xml:"EffectScope,omitempty"`
-	// The ID of the access control policy.
-	//
-	// example:
-	//
-	// cp-jExXAqIYkwHN****
-	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The name of the access control policy.
-	//
-	// example:
-	//
-	// ExampleControlPolicy
-	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The type of the access control policy. Valid values:
-	//
-	// 	- System: system access control policy
-	//
-	// 	- Custom: custom access control policy
-	//
-	// example:
-	//
-	// Custom
-	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	PolicyId    *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyName  *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType  *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
 func (s ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment) String() string {

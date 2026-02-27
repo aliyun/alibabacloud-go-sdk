@@ -39,9 +39,8 @@ type ListRolesResponseBody struct {
 	// example:
 	//
 	// 7B8A4E7D-6CFF-471D-84DF-195A7A241ECB
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the roles.
-	Roles *ListRolesResponseBodyRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Struct"`
+	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Roles     *ListRolesResponseBodyRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Struct"`
 	// The total number of roles.
 	//
 	// example:
@@ -147,62 +146,16 @@ func (s *ListRolesResponseBodyRoles) Validate() error {
 }
 
 type ListRolesResponseBodyRolesRole struct {
-	// The Alibaba Cloud Resource Name (ARN) of the role.
-	//
-	// example:
-	//
-	// acs:ram::123456789012****:role/ECSAdmin
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The time when the role was created.
-	//
-	// example:
-	//
-	// 2015-01-23T12:33:18Z
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The description of the role.
-	//
-	// example:
-	//
-	// ECS administrator
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the role is a service-linked role.
-	//
-	// example:
-	//
-	// true
-	IsServiceLinkedRole *bool `json:"IsServiceLinkedRole,omitempty" xml:"IsServiceLinkedRole,omitempty"`
-	// The information of the most recent deletion task.
-	LatestDeletionTask *ListRolesResponseBodyRolesRoleLatestDeletionTask `json:"LatestDeletionTask,omitempty" xml:"LatestDeletionTask,omitempty" type:"Struct"`
-	// The maximum session duration of the role.
-	//
-	// example:
-	//
-	// 3600
-	MaxSessionDuration *int64 `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
-	// The ID of the role.
-	//
-	// example:
-	//
-	// 90123456789****
-	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	// The name of the role.
-	//
-	// example:
-	//
-	// ECSAdmin
-	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// The name of the role after authorization.
-	//
-	// example:
-	//
-	// ECSAdmin@role.123456.onaliyunservice.com
-	RolePrincipalName *string `json:"RolePrincipalName,omitempty" xml:"RolePrincipalName,omitempty"`
-	// The time when the role was updated.
-	//
-	// example:
-	//
-	// 2016-01-23T12:33:18Z
-	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	Arn                 *string                                           `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	CreateDate          *string                                           `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	Description         *string                                           `json:"Description,omitempty" xml:"Description,omitempty"`
+	IsServiceLinkedRole *bool                                             `json:"IsServiceLinkedRole,omitempty" xml:"IsServiceLinkedRole,omitempty"`
+	LatestDeletionTask  *ListRolesResponseBodyRolesRoleLatestDeletionTask `json:"LatestDeletionTask,omitempty" xml:"LatestDeletionTask,omitempty" type:"Struct"`
+	MaxSessionDuration  *int64                                            `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
+	RoleId              *string                                           `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleName            *string                                           `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	RolePrincipalName   *string                                           `json:"RolePrincipalName,omitempty" xml:"RolePrincipalName,omitempty"`
+	UpdateDate          *string                                           `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s ListRolesResponseBodyRolesRole) String() string {
@@ -313,17 +266,7 @@ func (s *ListRolesResponseBodyRolesRole) Validate() error {
 }
 
 type ListRolesResponseBodyRolesRoleLatestDeletionTask struct {
-	// The time when the deletion task was created.
-	//
-	// example:
-	//
-	// 2018-10-23T12:33:18Z
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The ID of the deletion task.
-	//
-	// example:
-	//
-	// ECSAdmin/cc61514b-26eb-4453-ab53-b142eb70****
+	CreateDate     *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	DeletionTaskId *string `json:"DeletionTaskId,omitempty" xml:"DeletionTaskId,omitempty"`
 }
 

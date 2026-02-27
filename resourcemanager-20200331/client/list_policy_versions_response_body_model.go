@@ -16,7 +16,6 @@ type iListPolicyVersionsResponseBody interface {
 }
 
 type ListPolicyVersionsResponseBody struct {
-	// The information about the policy version.
 	PolicyVersions *ListPolicyVersionsResponseBodyPolicyVersions `json:"PolicyVersions,omitempty" xml:"PolicyVersions,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,24 +95,9 @@ func (s *ListPolicyVersionsResponseBodyPolicyVersions) Validate() error {
 }
 
 type ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion struct {
-	// The time when the policy version was created.
-	//
-	// example:
-	//
-	// 2015-01-23T12:33:18Z
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// Indicates whether the policy version is the default version.
-	//
-	// example:
-	//
-	// false
-	IsDefaultVersion *bool `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
-	// The ID of the policy version.
-	//
-	// example:
-	//
-	// v3
-	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	IsDefaultVersion *bool   `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
+	VersionId        *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion) String() string {

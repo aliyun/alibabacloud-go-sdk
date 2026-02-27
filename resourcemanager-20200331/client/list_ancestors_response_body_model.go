@@ -16,7 +16,6 @@ type iListAncestorsResponseBody interface {
 }
 
 type ListAncestorsResponseBody struct {
-	// The information of the folders.
 	Folders *ListAncestorsResponseBodyFolders `json:"Folders,omitempty" xml:"Folders,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,23 +95,8 @@ func (s *ListAncestorsResponseBodyFolders) Validate() error {
 }
 
 type ListAncestorsResponseBodyFoldersFolder struct {
-	// The time when the folder was created.
-	//
-	// example:
-	//
-	// 2019-01-18T10:03:35.217Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the folder.
-	//
-	// example:
-	//
-	// r-b1****
-	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The name of the folder.
-	//
-	// example:
-	//
-	// root
+	FolderId   *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	FolderName *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
 }
 

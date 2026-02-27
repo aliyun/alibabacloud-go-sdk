@@ -16,9 +16,6 @@ type iListDelegatedServicesForAccountResponseBody interface {
 }
 
 type ListDelegatedServicesForAccountResponseBody struct {
-	// The trusted services.
-	//
-	// >  If the value of this parameter is empty, the member is not specified as a delegated administrator account.
 	DelegatedServices *ListDelegatedServicesForAccountResponseBodyDelegatedServices `json:"DelegatedServices,omitempty" xml:"DelegatedServices,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -98,28 +95,9 @@ func (s *ListDelegatedServicesForAccountResponseBodyDelegatedServices) Validate(
 }
 
 type ListDelegatedServicesForAccountResponseBodyDelegatedServicesDelegatedService struct {
-	// The time when the member was specified as a delegated administrator account of the trusted service.
-	//
-	// example:
-	//
-	// 1616652684164
 	DelegationEnabledTime *string `json:"DelegationEnabledTime,omitempty" xml:"DelegationEnabledTime,omitempty"`
-	// The identification of the trusted service.
-	//
-	// example:
-	//
-	// cloudfw.aliyuncs.com
-	ServicePrincipal *string `json:"ServicePrincipal,omitempty" xml:"ServicePrincipal,omitempty"`
-	// The status of the trusted service. Valid values:
-	//
-	// 	- ENABLED: enabled
-	//
-	// 	- DISABLED: disabled
-	//
-	// example:
-	//
-	// ENABLED
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ServicePrincipal      *string `json:"ServicePrincipal,omitempty" xml:"ServicePrincipal,omitempty"`
+	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListDelegatedServicesForAccountResponseBodyDelegatedServicesDelegatedService) String() string {

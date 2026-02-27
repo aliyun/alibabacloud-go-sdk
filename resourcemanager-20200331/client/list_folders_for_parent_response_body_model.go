@@ -22,7 +22,6 @@ type iListFoldersForParentResponseBody interface {
 }
 
 type ListFoldersForParentResponseBody struct {
-	// The information of the folders.
 	Folders *ListFoldersForParentResponseBodyFolders `json:"Folders,omitempty" xml:"Folders,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,23 +146,8 @@ func (s *ListFoldersForParentResponseBodyFolders) Validate() error {
 }
 
 type ListFoldersForParentResponseBodyFoldersFolder struct {
-	// The time when the folder was created.
-	//
-	// example:
-	//
-	// 2015-01-23T12:33:18Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the folder.
-	//
-	// example:
-	//
-	// rd-evic31****
-	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The name of the folder.
-	//
-	// example:
-	//
-	// project-1
+	FolderId   *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	FolderName *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
 }
 

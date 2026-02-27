@@ -57,6 +57,10 @@ func (client *Client) AcceptHandshakeWithContext(ctx context.Context, request *A
 	return _result, _err
 }
 
+// Summary:
+//
+// Attaches an access control policy.
+//
 // Description:
 //
 // After you attach an access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
@@ -179,7 +183,7 @@ func (client *Client) AttachPolicyWithContext(ctx context.Context, request *Atta
 
 // Summary:
 //
-// 设置安全手机号
+// Binds a mobile phone number to a member of the resource account type in a resource directory for security purposes.
 //
 // Description:
 //
@@ -239,7 +243,7 @@ func (client *Client) BindSecureMobilePhoneWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 取消修改邮箱
+// Cancels the email address change of a member.
 //
 // @param request - CancelChangeAccountEmailRequest
 //
@@ -283,7 +287,7 @@ func (client *Client) CancelChangeAccountEmailWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 取消创建云账号类型的成员
+// Cancels the creation of a cloud account.
 //
 // @param request - CancelCreateCloudAccountRequest
 //
@@ -375,7 +379,7 @@ func (client *Client) CancelHandshakeWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 取消升级资源账号
+// Cancels the upgrade from a resource account to a cloud account.
 //
 // @param request - CancelPromoteResourceAccountRequest
 //
@@ -419,7 +423,7 @@ func (client *Client) CancelPromoteResourceAccountWithContext(ctx context.Contex
 
 // Summary:
 //
-// 成员账号设置安全邮箱
+// Changes the email address that is bound to a member.
 //
 // @param request - ChangeAccountEmailRequest
 //
@@ -609,7 +613,7 @@ func (client *Client) CreateAutoGroupingRuleWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 创建云账号
+// Creates a cloud account.
 //
 // Description:
 //
@@ -673,6 +677,10 @@ func (client *Client) CreateCloudAccountWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a custom access control policy.
+//
 // Description:
 //
 // This topic provides an example on how to call the API operation to create a custom access control policy named `ExampleControlPolicy`. This access control policy is used to prohibit modifications to the ResourceDirectoryAccountAccessRole role and the permissions of the role.
@@ -729,6 +737,10 @@ func (client *Client) CreateControlPolicyWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a folder.
+//
 // Description:
 //
 // >  A maximum of five levels of folders can be created under the root folder.
@@ -1161,11 +1173,13 @@ func (client *Client) DeclineHandshakeWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 账号一键删除
+// Deletes a member of the resource account type.
 //
 // Description:
 //
-// The ID of the member that you want to delete.
+// Before you delete a member, we recommend that you call the [CheckAccountDelete](https://help.aliyun.com/document_detail/448542.html) and [GetAccountDeletionCheckResult](https://help.aliyun.com/document_detail/448775.html) operations to check whether the member meets deletion requirements. You can call the DeleteAccount operation to delete only members that meet the deletion requirements.
+//
+// After you submit a deletion request for a member, you can call the [GetAccountDeletionStatus](https://help.aliyun.com/document_detail/449001.html) operation to query the deletion status of the member. After a member is deleted, the resources and data within the member are deleted, and you can no longer use the member to log on to the Alibaba Cloud Management Console. In addition, the member cannot be recovered. Proceed with caution. For more information about how to delete a member, see [Delete a member of the resource account type](https://help.aliyun.com/document_detail/446078.html).
 //
 // @param tmpReq - DeleteAccountRequest
 //
@@ -1263,7 +1277,7 @@ func (client *Client) DeleteAutoGroupingRuleWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 删除管控策略
+// Deletes a custom control policy.
 //
 // Description:
 //
@@ -1311,6 +1325,10 @@ func (client *Client) DeleteControlPolicyWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a folder.
+//
 // Description:
 //
 // >  Before you delete a folder, make sure that the folder does not contain any member accounts or child folders.
@@ -1599,7 +1617,7 @@ func (client *Client) DeleteServiceLinkedRoleWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 注销代理管理员
+// Removes a delegated administrator account for a trusted service.
 //
 // Description:
 //
@@ -1653,7 +1671,7 @@ func (client *Client) DeregisterDelegatedAdministratorWithContext(ctx context.Co
 
 // Summary:
 //
-// 解绑管控策略
+// Detaches an access control policy.
 //
 // Description:
 //
@@ -1769,7 +1787,7 @@ func (client *Client) DetachPolicyWithContext(ctx context.Context, request *Deta
 
 // Summary:
 //
-// 开启RD
+// Enables a resource directory.
 //
 // Description:
 //
@@ -1829,6 +1847,10 @@ func (client *Client) EnableResourceDirectoryWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of a member.
+//
 // Description:
 //
 // This topic provides an example on how to call the API operation to query the information of the member whose Alibaba Cloud account ID is `181761095690****`.
@@ -2019,6 +2041,10 @@ func (client *Client) GetAutoGroupingRuleWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an access control policy.
+//
 // Description:
 //
 // This topic provides an example on how to call the API operation to query the details of the access control policy whose ID is `cp-SImPt8GCEwiq****`.
@@ -2067,6 +2093,10 @@ func (client *Client) GetControlPolicyWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of a folder.
+//
 // Description:
 //
 // In this example, the information of the folder `fd-Jyl5U7****` is queried.
@@ -2159,6 +2189,10 @@ func (client *Client) GetHandshakeWithContext(ctx context.Context, request *GetH
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of a settlement account.
+//
 // @param request - GetPayerForAccountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2683,6 +2717,10 @@ func (client *Client) ListAccountsForParentWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of all the parent folders of a specified folder. The system returns the information of the folders based on their top-down hierarchy.
+//
 // @param request - ListAncestorsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2919,6 +2957,10 @@ func (client *Client) ListControlPoliciesWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the access control policies that are attached to a folder or member.
+//
 // Description:
 //
 // This topic provides an example on how to call the API operation to query the access control policies that are attached to the folder `fd-ZDNPiT****`.
@@ -2969,7 +3011,7 @@ func (client *Client) ListControlPolicyAttachmentsForTargetWithContext(ctx conte
 
 // Summary:
 //
-// 列出所有的代理管理员
+// Queries delegated administrator accounts.
 //
 // Description:
 //
@@ -3025,7 +3067,7 @@ func (client *Client) ListDelegatedAdministratorsWithContext(ctx context.Context
 
 // Summary:
 //
-// 查看指定账号被设置为哪些可信服务的委派管理员
+// Queries the trusted services for which a member is specified as a delegated administrator account.
 //
 // Description:
 //
@@ -3071,6 +3113,10 @@ func (client *Client) ListDelegatedServicesForAccountWithContext(ctx context.Con
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of all subfolders of a folder.
+//
 // Description:
 //
 // >  You can view the information of only the first-level subfolders of a folder.
@@ -3415,7 +3461,7 @@ func (client *Client) ListPolicyVersionsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 列出资源组能力项
+// Queries whether a specific resource type or a given cloud service supports resource group events.
 //
 // @param request - ListResourceGroupCapabilityRequest
 //
@@ -3465,6 +3511,10 @@ func (client *Client) ListResourceGroupCapabilityWithContext(ctx context.Context
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries resource groups.
+//
 // Description:
 //
 // You can call this API operation to query all resource groups within the current account. You can also call this API operation to query a specific resource group based on the status, ID, identifier, or display name of the resource group.
@@ -3545,7 +3595,7 @@ func (client *Client) ListResourceGroupsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 列出资源组与用户授权信息
+// Queries resource groups and their user authorization information.
 //
 // @param request - ListResourceGroupsWithAuthDetailsRequest
 //
@@ -3755,7 +3805,7 @@ func (client *Client) ListRolesWithContext(ctx context.Context, request *ListRol
 
 // Summary:
 //
-// 列出所有的Tag key
+// Queries tag keys.
 //
 // Description:
 //
@@ -3879,7 +3929,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 列出所有的Tag values
+// Queries the tag values of a tag key.
 //
 // Description:
 //
@@ -3997,6 +4047,10 @@ func (client *Client) ListTargetAttachmentsForControlPolicyWithContext(ctx conte
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the trusted services that are enabled within an enterprise management account or delegated administrator account.
+//
 // Description:
 //
 // >  Only an enterprise management account or delegated administrator account can be used to call this operation.
@@ -4053,7 +4107,7 @@ func (client *Client) ListTrustedServiceStatusWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询资源组事件
+// Queries the events of resource groups.
 //
 // @param request - LookupResourceGroupEventsRequest
 //
@@ -4125,7 +4179,7 @@ func (client *Client) LookupResourceGroupEventsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 移动账号
+// Moves a member account from a folder to another.
 //
 // @param request - MoveAccountRequest
 //
@@ -4227,7 +4281,7 @@ func (client *Client) MoveResourcesWithContext(ctx context.Context, request *Mov
 
 // Summary:
 //
-// 升级资源账号
+// Upgrades a resource account to a cloud account.
 //
 // @param request - PromoteResourceAccountRequest
 //
@@ -4273,6 +4327,10 @@ func (client *Client) PromoteResourceAccountWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Specifies a member in a resource directory as a delegated administrator account of a trusted service.
+//
 // Description:
 //
 // The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory.
@@ -4331,6 +4389,10 @@ func (client *Client) RegisterDelegatedAdministratorWithContext(ctx context.Cont
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes a member of the cloud account type. After you remove a member of the cloud account type, the member is no longer managed by the management account of the resource directory to which the member belonged.
+//
 // Description:
 //
 // This topic provides an example on how to call the API operation to remove the member `177242285274****` from a resource directory.
@@ -4377,7 +4439,7 @@ func (client *Client) RemoveCloudAccountWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 重新发送创建云账号的邮箱验证
+// Resends an email that is used to confirm the creation of a cloud account.
 //
 // @param request - ResendCreateCloudAccountEmailRequest
 //
@@ -4421,7 +4483,7 @@ func (client *Client) ResendCreateCloudAccountEmailWithContext(ctx context.Conte
 
 // Summary:
 //
-// 重新发送升级资源账号的邮箱验证
+// Resends an email that is used to confirm the upgrade from a resource account to a cloud account.
 //
 // @param request - ResendPromoteResourceAccountEmailRequest
 //
@@ -4465,7 +4527,7 @@ func (client *Client) ResendPromoteResourceAccountEmailWithContext(ctx context.C
 
 // Summary:
 //
-// 重新发送确认邮件
+// Resends a verification email for the email address change of a member.
 //
 // @param request - RetryChangeAccountEmailRequest
 //
@@ -4509,7 +4571,7 @@ func (client *Client) RetryChangeAccountEmailWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 发送绑定安全手机验证码
+// Sends a verification code to the mobile phone number that you want to bind to a resource account in a resource directory for security purposes.
 //
 // Description:
 //
@@ -4563,7 +4625,7 @@ func (client *Client) SendVerificationCodeForBindSecureMobilePhoneWithContext(ct
 
 // Summary:
 //
-// 发送开启资源目录短信
+// Sends a verification code to the mobile phone number bound to a newly created account when you use the account to enable a resource directory.
 //
 // Description:
 //
@@ -4659,7 +4721,7 @@ func (client *Client) SetDefaultPolicyVersionWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 开启或关闭成员删除许可
+// Enables or disables the member deletion feature.
 //
 // Description:
 //
@@ -4821,6 +4883,10 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the display name of a member, or switches the type of a member.
+//
 // Description:
 //
 //	  To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
@@ -5063,6 +5129,10 @@ func (client *Client) UpdateAutoGroupingRuleWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a custom access control policy.
+//
 // Description:
 //
 // In this example, the name of the access control policy whose ID is `cp-jExXAqIYkwHN****` is changed to `NewControlPolicy`.
@@ -5119,6 +5189,10 @@ func (client *Client) UpdateControlPolicyWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the name of a folder.
+//
 // @param request - UpdateFolderRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5163,6 +5237,10 @@ func (client *Client) UpdateFolderWithContext(ctx context.Context, request *Upda
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the basic information of a resource group.
+//
 // Description:
 //
 // In this example, the display name of the resource group `rg-9gLOoK****` is changed to `project`.

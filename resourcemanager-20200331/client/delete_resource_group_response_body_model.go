@@ -91,8 +91,7 @@ type DeleteResourceGroupResponseBodyResourceGroup struct {
 	// example:
 	//
 	// my-project
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The status of the resource group in all regions.
+	Name           *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionStatuses *DeleteResourceGroupResponseBodyResourceGroupRegionStatuses `json:"RegionStatuses,omitempty" xml:"RegionStatuses,omitempty" type:"Struct"`
 	// The status of the resource group. Valid values:
 	//
@@ -223,26 +222,8 @@ func (s *DeleteResourceGroupResponseBodyResourceGroupRegionStatuses) Validate() 
 }
 
 type DeleteResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus struct {
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-qingdao
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the resource group. Valid values:
-	//
-	// 	- Creating: The resource group is being created.
-	//
-	// 	- OK: The resource group is created.
-	//
-	// 	- PendingDelete: The resource group is waiting to be deleted.
-	//
-	// 	- Deleting: The resource group is being deleted.
-	//
-	// example:
-	//
-	// PendingDelete
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DeleteResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus) String() string {

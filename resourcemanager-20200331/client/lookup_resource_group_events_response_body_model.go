@@ -18,11 +18,16 @@ type iLookupResourceGroupEventsResponseBody interface {
 }
 
 type LookupResourceGroupEventsResponseBody struct {
+	// The queried events.
 	Events []*LookupResourceGroupEventsResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// TGlzdFJlc291cm****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F7701451-340B-5CB3-AEA7-7D831F7F****
@@ -78,39 +83,61 @@ func (s *LookupResourceGroupEventsResponseBody) Validate() error {
 }
 
 type LookupResourceGroupEventsResponseBodyEvents struct {
+	// The type of the resource change event.
+	//
 	// example:
 	//
 	// Add
 	ChangeType *string `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
+	// The time when the event was triggered.
+	//
 	// example:
 	//
 	// 2025-12-04T18:35:17Z
 	EventTime *string `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-qingdao
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group name.
+	//
 	// example:
 	//
 	// ProjectA
 	ResourceGroupDisplayName *string `json:"ResourceGroupDisplayName,omitempty" xml:"ResourceGroupDisplayName,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-acfm2sohr74****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// i-wz9fpfe64****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type.
+	//
+	// You can obtain the resource type from the **Resource type*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	//
 	// example:
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The service code.
+	//
+	// You can obtain the code from the **Service code*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	//
 	// example:
 	//
 	// ecs
-	Service                 *string                                                             `json:"Service,omitempty" xml:"Service,omitempty"`
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// The source resource group.
 	SourceResourceGroupInfo *LookupResourceGroupEventsResponseBodyEventsSourceResourceGroupInfo `json:"SourceResourceGroupInfo,omitempty" xml:"SourceResourceGroupInfo,omitempty" type:"Struct"`
+	// The destination resource group.
 	TargetResourceGroupInfo *LookupResourceGroupEventsResponseBodyEventsTargetResourceGroupInfo `json:"TargetResourceGroupInfo,omitempty" xml:"TargetResourceGroupInfo,omitempty" type:"Struct"`
 }
 
@@ -227,10 +254,14 @@ func (s *LookupResourceGroupEventsResponseBodyEvents) Validate() error {
 }
 
 type LookupResourceGroupEventsResponseBodyEventsSourceResourceGroupInfo struct {
+	// The resource group name.
+	//
 	// example:
 	//
 	// TestGroupA
 	ResourceGroupDisplayName *string `json:"ResourceGroupDisplayName,omitempty" xml:"ResourceGroupDisplayName,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-aekz25pfurj****
@@ -268,10 +299,14 @@ func (s *LookupResourceGroupEventsResponseBodyEventsSourceResourceGroupInfo) Val
 }
 
 type LookupResourceGroupEventsResponseBodyEventsTargetResourceGroupInfo struct {
+	// The resource group name.
+	//
 	// example:
 	//
 	// TestGroupB
 	ResourceGroupDisplayName *string `json:"ResourceGroupDisplayName,omitempty" xml:"ResourceGroupDisplayName,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-acfmwfrxcre****

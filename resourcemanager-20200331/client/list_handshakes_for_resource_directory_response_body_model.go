@@ -22,7 +22,6 @@ type iListHandshakesForResourceDirectoryResponseBody interface {
 }
 
 type ListHandshakesForResourceDirectoryResponseBody struct {
-	// The information of the invitations.
 	Handshakes *ListHandshakesForResourceDirectoryResponseBodyHandshakes `json:"Handshakes,omitempty" xml:"Handshakes,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,86 +146,17 @@ func (s *ListHandshakesForResourceDirectoryResponseBodyHandshakes) Validate() er
 }
 
 type ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake struct {
-	// The time when the invitation was created. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2018-08-10T09:55:41Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the invitation expires. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2018-08-24T09:55:41Z
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The ID of the invitation.
-	//
-	// example:
-	//
-	// h-ycm4rp****
-	HandshakeId *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
-	// The ID of the management account of the resource directory.
-	//
-	// example:
-	//
-	// 172841235500****
-	MasterAccountId *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
-	// The name of the management account of the resource directory.
-	//
-	// example:
-	//
-	// Alice
-	MasterAccountName *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
-	// The time when the invitation was modified. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2018-08-10T09:55:41Z
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The comment on the invitation.
-	//
-	// example:
-	//
-	// Welcome
-	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The ID of the resource directory.
-	//
-	// example:
-	//
-	// rd-abcdef****
+	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExpireTime          *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	HandshakeId         *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
+	MasterAccountId     *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
+	MasterAccountName   *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
+	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	Note                *string `json:"Note,omitempty" xml:"Note,omitempty"`
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	// The status of the invitation. Valid values:
-	//
-	// 	- Pending: The invitation is waiting for confirmation.
-	//
-	// 	- Accepted: The invitation is accepted.
-	//
-	// 	- Cancelled: The invitation is canceled.
-	//
-	// 	- Declined: The invitation is rejected.
-	//
-	// 	- Expired: The invitation expires.
-	//
-	// example:
-	//
-	// Pending
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID or logon email address of the invited account.
-	//
-	// example:
-	//
-	// someone@example.com
-	TargetEntity *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
-	// The type of the invited account. Valid values:
-	//
-	// 	- Account: indicates the ID of the account.
-	//
-	// 	- Email: indicates the logon email address of the account.
-	//
-	// example:
-	//
-	// Email
-	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetEntity        *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
+	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake) String() string {

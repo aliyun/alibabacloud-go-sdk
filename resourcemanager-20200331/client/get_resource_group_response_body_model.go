@@ -91,8 +91,7 @@ type GetResourceGroupResponseBodyResourceGroup struct {
 	// example:
 	//
 	// my-project
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The status of the resource group in all regions.
+	Name           *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionStatuses *GetResourceGroupResponseBodyResourceGroupRegionStatuses `json:"RegionStatuses,omitempty" xml:"RegionStatuses,omitempty" type:"Struct"`
 	// The status of the resource group. Valid values:
 	//
@@ -105,9 +104,8 @@ type GetResourceGroupResponseBodyResourceGroup struct {
 	// example:
 	//
 	// OK
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags that are added to the resource group.
-	Tags *GetResourceGroupResponseBodyResourceGroupTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	Status *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   *GetResourceGroupResponseBodyResourceGroupTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s GetResourceGroupResponseBodyResourceGroup) String() string {
@@ -239,26 +237,8 @@ func (s *GetResourceGroupResponseBodyResourceGroupRegionStatuses) Validate() err
 }
 
 type GetResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus struct {
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-qingdao
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the resource group. Valid values:
-	//
-	// 	- Creating: The resource group is being created.
-	//
-	// 	- OK: The resource group is created.
-	//
-	// 	- PendingDelete: The resource group is waiting to be deleted.
-	//
-	// 	- Deleting: The resource group is being deleted.
-	//
-	// example:
-	//
-	// OK
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus) String() string {
@@ -326,17 +306,7 @@ func (s *GetResourceGroupResponseBodyResourceGroupTags) Validate() error {
 }
 
 type GetResourceGroupResponseBodyResourceGroupTagsTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// k1
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// v1
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

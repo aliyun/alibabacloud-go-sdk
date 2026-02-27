@@ -22,7 +22,6 @@ type iListTrustedServiceStatusResponseBody interface {
 }
 
 type ListTrustedServiceStatusResponseBody struct {
-	// The trusted services that are enabled.
 	EnabledServicePrincipals *ListTrustedServiceStatusResponseBodyEnabledServicePrincipals `json:"EnabledServicePrincipals,omitempty" xml:"EnabledServicePrincipals,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,17 +146,7 @@ func (s *ListTrustedServiceStatusResponseBodyEnabledServicePrincipals) Validate(
 }
 
 type ListTrustedServiceStatusResponseBodyEnabledServicePrincipalsEnabledServicePrincipal struct {
-	// The time when the trusted service was enabled.
-	//
-	// example:
-	//
-	// 2019-02-18T15:32:10.473Z
-	EnableTime *string `json:"EnableTime,omitempty" xml:"EnableTime,omitempty"`
-	// The identification of the trusted service.
-	//
-	// example:
-	//
-	// config.aliyuncs.com
+	EnableTime       *string `json:"EnableTime,omitempty" xml:"EnableTime,omitempty"`
 	ServicePrincipal *string `json:"ServicePrincipal,omitempty" xml:"ServicePrincipal,omitempty"`
 }
 

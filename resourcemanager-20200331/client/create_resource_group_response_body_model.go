@@ -221,8 +221,22 @@ func (s *CreateResourceGroupResponseBodyResourceGroupRegionStatuses) Validate() 
 }
 
 type CreateResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus struct {
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-qingdao
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the resource group. Valid values:
+	//
+	// 	- Creating: The resource group is being created.
+	//
+	// 	- OK: The resource group is created.
+	//
+	// example:
+	//
+	// Creating
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus) String() string {

@@ -39,8 +39,7 @@ type ListResourceGroupsResponseBody struct {
 	// example:
 	//
 	// 4B450CA1-36E8-4AA2-8461-86B42BF4CC4E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the resource groups.
+	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceGroups *ListResourceGroupsResponseBodyResourceGroups `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty" type:"Struct"`
 	// The total number of entries returned.
 	//
@@ -147,50 +146,13 @@ func (s *ListResourceGroupsResponseBodyResourceGroups) Validate() error {
 }
 
 type ListResourceGroupsResponseBodyResourceGroupsResourceGroup struct {
-	// The ID of the Alibaba Cloud account to which the resource group belongs.
-	//
-	// example:
-	//
-	// 123456789****
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The time when the resource group was created. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2015-01-23T12:33:18Z
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The display name of the resource group.
-	//
-	// example:
-	//
-	// my-project
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The ID of the resource group.
-	//
-	// example:
-	//
-	// rg-9gLOoK****
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The identifier of the resource group.
-	//
-	// example:
-	//
-	// my-project
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The status of the resource group. Valid values:
-	//
-	// 	- Creating: The resource group is being created.
-	//
-	// 	- OK: The resource group is created.
-	//
-	// 	- PendingDelete: The resource group is waiting to be deleted.
-	//
-	// example:
-	//
-	// OK
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags that are added to the resource group.
-	Tags *ListResourceGroupsResponseBodyResourceGroupsResourceGroupTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	AccountId   *string                                                        `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	CreateDate  *string                                                        `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	DisplayName *string                                                        `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Id          *string                                                        `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status      *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags        *ListResourceGroupsResponseBodyResourceGroupsResourceGroupTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s ListResourceGroupsResponseBodyResourceGroupsResourceGroup) String() string {
@@ -308,17 +270,7 @@ func (s *ListResourceGroupsResponseBodyResourceGroupsResourceGroupTags) Validate
 }
 
 type ListResourceGroupsResponseBodyResourceGroupsResourceGroupTagsTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// k1
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// v1
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

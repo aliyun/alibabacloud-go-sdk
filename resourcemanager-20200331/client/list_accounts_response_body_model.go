@@ -22,7 +22,6 @@ type iListAccountsResponseBody interface {
 }
 
 type ListAccountsResponseBody struct {
-	// The members returned.
 	Accounts *ListAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,86 +146,17 @@ func (s *ListAccountsResponseBodyAccounts) Validate() error {
 }
 
 type ListAccountsResponseBodyAccountsAccount struct {
-	// The Alibaba Cloud account ID of the member.
-	//
-	// example:
-	//
-	// 181761095690****
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The display name of the member.
-	//
-	// example:
-	//
-	// test
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The ID of the folder.
-	//
-	// example:
-	//
-	// fd-QRzuim****
-	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The way in which the member joins the resource directory. Valid values:
-	//
-	// 	- invited: The member is invited to join the resource directory.
-	//
-	// 	- created: The member is directly created in the resource directory.
-	//
-	// example:
-	//
-	// created
-	JoinMethod *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
-	// The time when the member joined the resource directory. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-01-18T08:01:50.522Z
-	JoinTime *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
-	// The time when the member was modified. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-01-18T08:04:37.668Z
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The ID of the resource directory.
-	//
-	// example:
-	//
-	// rd-3G****
-	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	// The path of the member in the resource directory.
-	ResourceDirectoryPath *string `json:"ResourceDirectoryPath,omitempty" xml:"ResourceDirectoryPath,omitempty"`
-	// The status of the member. Valid values:
-	//
-	// 	- CreateSuccess: The member is created.
-	//
-	// 	- PromoteVerifying: The upgrade of the member is being confirmed.
-	//
-	// 	- PromoteFailed: The upgrade of the member fails.
-	//
-	// 	- PromoteExpired: The upgrade of the member expires.
-	//
-	// 	- PromoteCancelled: The upgrade of the member is canceled.
-	//
-	// 	- PromoteSuccess: The member is upgraded.
-	//
-	// 	- InviteSuccess: The member accepts the invitation.
-	//
-	// example:
-	//
-	// CreateSuccess
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags that are added to the member.
-	Tags *ListAccountsResponseBodyAccountsAccountTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The type of the member. Valid values:
-	//
-	// 	- CloudAccount: cloud account
-	//
-	// 	- ResourceAccount: resource account
-	//
-	// example:
-	//
-	// ResourceAccount
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AccountId             *string                                      `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	DisplayName           *string                                      `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	FolderId              *string                                      `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	JoinMethod            *string                                      `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
+	JoinTime              *string                                      `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
+	ModifyTime            *string                                      `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	ResourceDirectoryId   *string                                      `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	ResourceDirectoryPath *string                                      `json:"ResourceDirectoryPath,omitempty" xml:"ResourceDirectoryPath,omitempty"`
+	Status                *string                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                  *ListAccountsResponseBodyAccountsAccountTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	Type                  *string                                      `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListAccountsResponseBodyAccountsAccount) String() string {
@@ -380,17 +310,7 @@ func (s *ListAccountsResponseBodyAccountsAccountTags) Validate() error {
 }
 
 type ListAccountsResponseBodyAccountsAccountTagsTag struct {
-	// A tag key.
-	//
-	// example:
-	//
-	// tag_key
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// A tag value.
-	//
-	// example:
-	//
-	// tag_value
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

@@ -32,37 +32,70 @@ type iListResourceGroupsWithAuthDetailsRequest interface {
 }
 
 type ListResourceGroupsWithAuthDetailsRequest struct {
+	// The display name of the resource group. This parameter specifies a filter condition for the query. Fuzzy search is supported.
+	//
+	// The display name can be a maximum of 50 characters in length.
+	//
 	// example:
 	//
 	// TestRG-BVT1
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Specifies whether to return the information of tags. Valid values:
+	//
+	// 	- false (default)
+	//
+	// 	- true
+	//
+	// >  If you set a tag filter condition, the tag information is returned regardless of the `IncludeTags` value.
+	//
 	// example:
 	//
 	// true
 	IncludeTags *bool `json:"IncludeTags,omitempty" xml:"IncludeTags,omitempty"`
+	// The identifier of the resource group. This parameter specifies a filter condition for the query. Fuzzy search is supported.
+	//
+	// The identifier can be a maximum of 50 characters in length and can contain letters, digits, and hyphens (-).
+	//
 	// example:
 	//
 	// prod-rg
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize         *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The IDs of the resource groups that you want to query.
 	ResourceGroupIds []*string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
+	// The ID of the region where the resource resides.
+	//
 	// example:
 	//
 	// cn-shenzhen
-	ResourceRegionId *string                                                  `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
-	ResourceTypes    []*ListResourceGroupsWithAuthDetailsRequestResourceTypes `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
+	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// The resource types.
+	ResourceTypes []*ListResourceGroupsWithAuthDetailsRequestResourceTypes `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
+	// The status of the resource group. This parameter specifies a filter condition for the query. Valid values:
+	//
+	// 	- Creating: The resource group is being created.
+	//
+	// 	- OK: The resource group is created.
+	//
+	// 	- PendingDelete: The resource group is waiting to be deleted.
+	//
 	// example:
 	//
 	// OK
-	Status *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag    []*ListResourceGroupsWithAuthDetailsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
+	Tag []*ListResourceGroupsWithAuthDetailsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListResourceGroupsWithAuthDetailsRequest) String() string {
@@ -186,10 +219,18 @@ func (s *ListResourceGroupsWithAuthDetailsRequest) Validate() error {
 }
 
 type ListResourceGroupsWithAuthDetailsRequestResourceTypes struct {
+	// The resource type.
+	//
+	// You can obtain the resource type from the **Resource type*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	//
 	// example:
 	//
 	// instance
 	ResourceTypeCode *string `json:"ResourceTypeCode,omitempty" xml:"ResourceTypeCode,omitempty"`
+	// The service code.
+	//
+	// You can obtain the code from the **Service code*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	//
 	// example:
 	//
 	// ecs
@@ -227,10 +268,14 @@ func (s *ListResourceGroupsWithAuthDetailsRequestResourceTypes) Validate() error
 }
 
 type ListResourceGroupsWithAuthDetailsRequestTag struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// v1

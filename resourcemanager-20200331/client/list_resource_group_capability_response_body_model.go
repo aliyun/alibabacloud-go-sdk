@@ -16,7 +16,10 @@ type iListResourceGroupCapabilityResponseBody interface {
 }
 
 type ListResourceGroupCapabilityResponseBody struct {
+	// Indicates whether a specific resource type or cloud service supports resource group events.
 	Capabilities []*ListResourceGroupCapabilityResponseBodyCapabilities `json:"Capabilities,omitempty" xml:"Capabilities,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2CB870A2-DF0F-5338-8223-F64737FF****
@@ -65,12 +68,26 @@ func (s *ListResourceGroupCapabilityResponseBody) Validate() error {
 type ListResourceGroupCapabilityResponseBodyCapabilities struct {
 	// example:
 	//
+	// ACS::ECS::Instance
+	ResourceCenterResourceType *string `json:"ResourceCenterResourceType,omitempty" xml:"ResourceCenterResourceType,omitempty"`
+	// The resource type.
+	//
+	// You can obtain the resource type from the **Resource type*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	//
+	// example:
+	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The service code.
+	//
+	// You can obtain the code from the **Service code*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	//
 	// example:
 	//
 	// ecs
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// Indicates whether a specific resource type or cloud service supports resource group events.
+	//
 	// example:
 	//
 	// true
@@ -85,6 +102,10 @@ func (s ListResourceGroupCapabilityResponseBodyCapabilities) GoString() string {
 	return s.String()
 }
 
+func (s *ListResourceGroupCapabilityResponseBodyCapabilities) GetResourceCenterResourceType() *string {
+	return s.ResourceCenterResourceType
+}
+
 func (s *ListResourceGroupCapabilityResponseBodyCapabilities) GetResourceType() *string {
 	return s.ResourceType
 }
@@ -95,6 +116,11 @@ func (s *ListResourceGroupCapabilityResponseBodyCapabilities) GetService() *stri
 
 func (s *ListResourceGroupCapabilityResponseBodyCapabilities) GetSupportResourceGroupEvent() *bool {
 	return s.SupportResourceGroupEvent
+}
+
+func (s *ListResourceGroupCapabilityResponseBodyCapabilities) SetResourceCenterResourceType(v string) *ListResourceGroupCapabilityResponseBodyCapabilities {
+	s.ResourceCenterResourceType = &v
+	return s
 }
 
 func (s *ListResourceGroupCapabilityResponseBodyCapabilities) SetResourceType(v string) *ListResourceGroupCapabilityResponseBodyCapabilities {

@@ -28,33 +28,50 @@ type iLookupResourceGroupEventsRequest interface {
 }
 
 type LookupResourceGroupEventsRequest struct {
+	// The end of the time range to query. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2025-11-30 23:43:16
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The event type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MemberShipChange
-	EventCategory    *string                                             `json:"EventCategory,omitempty" xml:"EventCategory,omitempty"`
+	EventCategory *string `json:"EventCategory,omitempty" xml:"EventCategory,omitempty"`
+	// The attributes used for advanced search.
 	LookupAttributes []*LookupResourceGroupEventsRequestLookupAttributes `json:"LookupAttributes,omitempty" xml:"LookupAttributes,omitempty" type:"Repeated"`
+	// The number of entries per page.
+	//
+	// Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// TGlzdFJlc291cm****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The resource group name.
+	//
 	// example:
 	//
 	// ProjectA
 	ResourceGroupDisplayName *string `json:"ResourceGroupDisplayName,omitempty" xml:"ResourceGroupDisplayName,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-9gLOoK****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The beginning of the time range to query. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2025-11-30 23:43:16
@@ -155,10 +172,14 @@ func (s *LookupResourceGroupEventsRequest) Validate() error {
 }
 
 type LookupResourceGroupEventsRequestLookupAttributes struct {
+	// The key of the attribute.
+	//
 	// example:
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the attribute.
+	//
 	// example:
 	//
 	// value

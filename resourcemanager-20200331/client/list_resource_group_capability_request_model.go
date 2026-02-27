@@ -18,14 +18,24 @@ type iListResourceGroupCapabilityRequest interface {
 }
 
 type ListResourceGroupCapabilityRequest struct {
+	// The resource type.
+	//
+	// You can obtain the resource type from the **Resource type*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	//
 	// example:
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The ID of the Alibaba Cloud service.
+	//
+	// You can obtain the service code from the **Service code*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	//
 	// example:
 	//
 	// ecs
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// Specifies whether a specific resource type or cloud service supports resource group events.
+	//
 	// example:
 	//
 	// true

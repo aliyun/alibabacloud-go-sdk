@@ -22,7 +22,6 @@ type iListControlPoliciesResponseBody interface {
 }
 
 type ListControlPoliciesResponseBody struct {
-	// The access control policies.
 	ControlPolicies *ListControlPoliciesResponseBodyControlPolicies `json:"ControlPolicies,omitempty" xml:"ControlPolicies,omitempty" type:"Struct"`
 	// The number of the returned page.
 	//
@@ -147,62 +146,14 @@ func (s *ListControlPoliciesResponseBodyControlPolicies) Validate() error {
 }
 
 type ListControlPoliciesResponseBodyControlPoliciesControlPolicy struct {
-	// The number of times that the access control policy is referenced.
-	//
-	// example:
-	//
-	// 44
 	AttachmentCount *string `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
-	// The time when the access control policy was created.
-	//
-	// example:
-	//
-	// 2020-08-05T06:32:24Z
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The description of the access control policy.
-	//
-	// example:
-	//
-	// System access control policy available for all operations on the cloud
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The effective scope of the access control policy. Valid values:
-	//
-	// - All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
-	//
-	// - RAM: The access control policy is in effect only for RAM users and RAM roles.
-	//
-	// example:
-	//
-	// All
-	EffectScope *string `json:"EffectScope,omitempty" xml:"EffectScope,omitempty"`
-	// The ID of the access control policy.
-	//
-	// example:
-	//
-	// cp-FullAliyunAccess
-	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The name of the access control policy.
-	//
-	// example:
-	//
-	// FullAliyunAccess
-	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The type of the access control policy. Valid values:
-	//
-	// - System: system access control policy
-	//
-	// - Custom: custom access control policy
-	//
-	// example:
-	//
-	// System
-	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The time when the access control policy was updated.
-	//
-	// example:
-	//
-	// 2020-08-05T06:32:24Z
-	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EffectScope     *string `json:"EffectScope,omitempty" xml:"EffectScope,omitempty"`
+	PolicyId        *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s ListControlPoliciesResponseBodyControlPoliciesControlPolicy) String() string {

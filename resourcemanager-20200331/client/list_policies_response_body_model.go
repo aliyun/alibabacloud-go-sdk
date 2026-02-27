@@ -33,8 +33,7 @@ type ListPoliciesResponseBody struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The information about the permission policies.
+	PageSize *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Policies *ListPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -147,52 +146,13 @@ func (s *ListPoliciesResponseBodyPolicies) Validate() error {
 }
 
 type ListPoliciesResponseBodyPoliciesPolicy struct {
-	// The number of references to the permission policy.
-	//
-	// example:
-	//
-	// 1
-	AttachmentCount *int32 `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
-	// The time when the permission policy was created.
-	//
-	// example:
-	//
-	// 2015-01-23T12:33:18Z
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The default version of the permission policy.
-	//
-	// example:
-	//
-	// v1
-	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	// The description of the permission policy.
-	//
-	// example:
-	//
-	// OSS administrator
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the permission policy.
-	//
-	// example:
-	//
-	// OSS-Administrator
-	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The type of the permission policy. Valid values:
-	//
-	// 	- Custom
-	//
-	// 	- System
-	//
-	// example:
-	//
-	// Custom
-	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The time when the permission policy was updated.
-	//
-	// example:
-	//
-	// 2016-02-11T18:39:12Z
-	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	AttachmentCount *int32  `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
+	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	DefaultVersion  *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s ListPoliciesResponseBodyPoliciesPolicy) String() string {

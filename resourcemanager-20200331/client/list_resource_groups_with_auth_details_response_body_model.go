@@ -24,11 +24,16 @@ type iListResourceGroupsWithAuthDetailsResponseBody interface {
 }
 
 type ListResourceGroupsWithAuthDetailsResponseBody struct {
+	// The authorization details for resource groups.
 	AuthDetails []*ListResourceGroupsWithAuthDetailsResponseBodyAuthDetails `json:"AuthDetails,omitempty" xml:"AuthDetails,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 10
@@ -38,8 +43,11 @@ type ListResourceGroupsWithAuthDetailsResponseBody struct {
 	// example:
 	//
 	// 4141780B-4E3D-5D2A-A8F4-44D6D34F****
-	RequestId      *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the resource groups.
 	ResourceGroups []*ListResourceGroupsWithAuthDetailsResponseBodyResourceGroups `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 10
@@ -131,12 +139,22 @@ func (s *ListResourceGroupsWithAuthDetailsResponseBody) Validate() error {
 }
 
 type ListResourceGroupsWithAuthDetailsResponseBodyAuthDetails struct {
-	AccountScopeAuth     *bool                                                                           `json:"AccountScopeAuth,omitempty" xml:"AccountScopeAuth,omitempty"`
+	// Indicates whether the user has account-level authorization for this resource type.
+	AccountScopeAuth *bool `json:"AccountScopeAuth,omitempty" xml:"AccountScopeAuth,omitempty"`
+	// The permission details for the resource groups on the specified resource types.
 	AuthOfResourceGroups []*ListResourceGroupsWithAuthDetailsResponseBodyAuthDetailsAuthOfResourceGroups `json:"AuthOfResourceGroups,omitempty" xml:"AuthOfResourceGroups,omitempty" type:"Repeated"`
+	// The resource type.
+	//
+	// You can obtain the resource type from the **Resource type*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	//
 	// example:
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The ID of the Alibaba Cloud service.
+	//
+	// You can obtain the ID from the **Service code*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	//
 	// example:
 	//
 	// ecs
@@ -201,10 +219,14 @@ func (s *ListResourceGroupsWithAuthDetailsResponseBodyAuthDetails) Validate() er
 }
 
 type ListResourceGroupsWithAuthDetailsResponseBodyAuthDetailsAuthOfResourceGroups struct {
+	// Indicates whether the user has permissions on the resource group for the specified resource type.
+	//
 	// example:
 	//
 	// true
 	HasPermission *bool `json:"HasPermission,omitempty" xml:"HasPermission,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-aekzscexx6w3u2y
@@ -242,31 +264,50 @@ func (s *ListResourceGroupsWithAuthDetailsResponseBodyAuthDetailsAuthOfResourceG
 }
 
 type ListResourceGroupsWithAuthDetailsResponseBodyResourceGroups struct {
+	// The ID of the Alibaba Cloud account to which the resource group belongs.
+	//
 	// example:
 	//
 	// 123456789****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The time when the resource group was created. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2015-01-23T12:33:18Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The display name of the resource group.
+	//
 	// example:
 	//
 	// my-project
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The ID of your Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-9gLOoK****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The unique identifier of the resource group.
+	//
 	// example:
 	//
 	// my-project
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The status of the resource group. Valid values:
+	//
+	// 	- Creating: The resource group is being created.
+	//
+	// 	- OK: The resource group is created.
+	//
+	// 	- PendingDelete: The resource group is waiting to be deleted.
+	//
 	// example:
 	//
 	// OK
-	Status *string                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*ListResourceGroupsWithAuthDetailsResponseBodyResourceGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
+	Tags []*ListResourceGroupsWithAuthDetailsResponseBodyResourceGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListResourceGroupsWithAuthDetailsResponseBodyResourceGroups) String() string {
@@ -354,10 +395,14 @@ func (s *ListResourceGroupsWithAuthDetailsResponseBodyResourceGroups) Validate()
 }
 
 type ListResourceGroupsWithAuthDetailsResponseBodyResourceGroupsTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// k1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// v1

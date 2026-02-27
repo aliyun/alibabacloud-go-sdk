@@ -39,8 +39,7 @@ type ListResourcesResponseBody struct {
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the resources.
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Resources *ListResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
 	// The total number of entries returned.
 	//
@@ -147,42 +146,12 @@ func (s *ListResourcesResponseBodyResources) Validate() error {
 }
 
 type ListResourcesResponseBodyResourcesResource struct {
-	// The time when the resource was created. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2015-01-23T12:33:18Z
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
-	//
-	// example:
-	//
-	// rg-uPJpP****
+	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the resource.
-	//
-	// example:
-	//
-	// i-23v38****
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type.
-	//
-	// example:
-	//
-	// instance
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The ID of the Alibaba Cloud service.
-	//
-	// example:
-	//
-	// ecs
-	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Service         *string `json:"Service,omitempty" xml:"Service,omitempty"`
 }
 
 func (s ListResourcesResponseBodyResourcesResource) String() string {

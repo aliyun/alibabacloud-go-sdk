@@ -94,8 +94,7 @@ type GetServiceLinkedRoleDeletionStatusResponseBodyReason struct {
 	// example:
 	//
 	// Service-Linked Role acs:ram::196813227629****:role/aliyunserviceroleforhdr cannot be deleted as it is in use by hdr.aliyuncs.com.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The information about the resources that the service-linked role can use.
+	Message    *string                                                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	RoleUsages *GetServiceLinkedRoleDeletionStatusResponseBodyReasonRoleUsages `json:"RoleUsages,omitempty" xml:"RoleUsages,omitempty" type:"Struct"`
 }
 
@@ -169,13 +168,7 @@ func (s *GetServiceLinkedRoleDeletionStatusResponseBodyReasonRoleUsages) Validat
 }
 
 type GetServiceLinkedRoleDeletionStatusResponseBodyReasonRoleUsagesRoleUsage struct {
-	// The region.
-	//
-	// example:
-	//
-	// global
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The information about resources.
+	Region    *string                                                                           `json:"Region,omitempty" xml:"Region,omitempty"`
 	Resources *GetServiceLinkedRoleDeletionStatusResponseBodyReasonRoleUsagesRoleUsageResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
 }
 

@@ -33,8 +33,7 @@ type ListPolicyAttachmentsResponseBody struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The information about the permission policies.
+	PageSize          *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PolicyAttachments *ListPolicyAttachmentsResponseBodyPolicyAttachments `json:"PolicyAttachments,omitempty" xml:"PolicyAttachments,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -147,57 +146,12 @@ func (s *ListPolicyAttachmentsResponseBodyPolicyAttachments) Validate() error {
 }
 
 type ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment struct {
-	// The time when the permission policy is attached.
-	//
-	// example:
-	//
-	// 2015-01-23T12:33:18Z
-	AttachDate *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
-	// The description of the permission policy.
-	//
-	// example:
-	//
-	// The description of the policy.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the permission policy.
-	//
-	// example:
-	//
-	// AdministratorAccess
-	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The type of the permission policy. Valid values:
-	//
-	// 	- Custom
-	//
-	// 	- System
-	//
-	// example:
-	//
-	// System
-	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The name of the object to which the permission policy is attached.
-	//
-	// example:
-	//
-	// alice@demo.onaliyun.com
-	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
-	// The type of the object to which the permission policy is attached. Valid values:
-	//
-	// 	- IMSUser: RAM user
-	//
-	// 	- IMSGroup: RAM user group
-	//
-	// 	- ServiceRole: RAM role
-	//
-	// example:
-	//
-	// IMSUser
-	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	// The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
-	//
-	// example:
-	//
-	// rg-9gLOoK****
+	AttachDate      *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	PrincipalName   *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	PrincipalType   *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 

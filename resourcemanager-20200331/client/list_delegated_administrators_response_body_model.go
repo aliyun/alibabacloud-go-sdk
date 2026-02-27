@@ -22,7 +22,6 @@ type iListDelegatedAdministratorsResponseBody interface {
 }
 
 type ListDelegatedAdministratorsResponseBody struct {
-	// The information of the delegated administrator accounts.
 	Accounts *ListDelegatedAdministratorsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,40 +146,11 @@ func (s *ListDelegatedAdministratorsResponseBodyAccounts) Validate() error {
 }
 
 type ListDelegatedAdministratorsResponseBodyAccountsAccount struct {
-	// The ID of the member.
-	//
-	// example:
-	//
-	// 138660628348****
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The time when the member was specified as a delegated administrator account.
-	//
-	// example:
-	//
-	// 1616652684164
+	AccountId             *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	DelegationEnabledTime *string `json:"DelegationEnabledTime,omitempty" xml:"DelegationEnabledTime,omitempty"`
-	// The display name of the member.
-	//
-	// example:
-	//
-	// abc
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The way in which the member joins the resource directory. Valid values:
-	//
-	// 	- invited: The member is invited to join the resource directory.
-	//
-	// 	- created: The member is directly created in the resource directory.
-	//
-	// example:
-	//
-	// created
-	JoinMethod *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
-	// The identifier of the trusted service.
-	//
-	// example:
-	//
-	// cloudfw.aliyuncs.com
-	ServicePrincipal *string `json:"ServicePrincipal,omitempty" xml:"ServicePrincipal,omitempty"`
+	DisplayName           *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	JoinMethod            *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
+	ServicePrincipal      *string `json:"ServicePrincipal,omitempty" xml:"ServicePrincipal,omitempty"`
 }
 
 func (s ListDelegatedAdministratorsResponseBodyAccountsAccount) String() string {

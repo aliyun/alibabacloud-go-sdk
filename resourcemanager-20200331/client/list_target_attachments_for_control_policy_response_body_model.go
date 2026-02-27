@@ -39,8 +39,7 @@ type ListTargetAttachmentsForControlPolicyResponseBody struct {
 	// example:
 	//
 	// B32BD3D6-1089-41F3-8E70-E0079BC7D760
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of objects to which the control policy is attached.
+	RequestId         *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TargetAttachments *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachments `json:"TargetAttachments,omitempty" xml:"TargetAttachments,omitempty" type:"Struct"`
 	// The total number of objects to which the control policy is attached.
 	//
@@ -147,35 +146,9 @@ func (s *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachments) Val
 }
 
 type ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment struct {
-	// The time when the control policy was attached to the object.
-	//
-	// example:
-	//
-	// 2021-03-19T02:56:24Z
 	AttachDate *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
-	// The ID of the object.
-	//
-	// example:
-	//
-	// fd-ZDNPiT****
-	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The name of the object.
-	//
-	// example:
-	//
-	// Dev_Department
+	TargetId   *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	// The type of the object. Valid values:
-	//
-	// 	- Root: Root folder
-	//
-	// 	- Folder: child folder of the Root folder
-	//
-	// 	- Account: member account
-	//
-	// example:
-	//
-	// Folder
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 

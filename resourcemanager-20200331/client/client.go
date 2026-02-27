@@ -130,6 +130,10 @@ func (client *Client) AcceptHandshake(request *AcceptHandshakeRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Attaches an access control policy.
+//
 // Description:
 //
 // After you attach an access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
@@ -186,6 +190,10 @@ func (client *Client) AttachControlPolicyWithOptions(request *AttachControlPolic
 	return _result, _err
 }
 
+// Summary:
+//
+// Attaches an access control policy.
+//
 // Description:
 //
 // After you attach an access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
@@ -300,7 +308,7 @@ func (client *Client) AttachPolicy(request *AttachPolicyRequest) (_result *Attac
 
 // Summary:
 //
-// 设置安全手机号
+// Binds a mobile phone number to a member of the resource account type in a resource directory for security purposes.
 //
 // Description:
 //
@@ -360,7 +368,7 @@ func (client *Client) BindSecureMobilePhoneWithOptions(request *BindSecureMobile
 
 // Summary:
 //
-// 设置安全手机号
+// Binds a mobile phone number to a member of the resource account type in a resource directory for security purposes.
 //
 // Description:
 //
@@ -386,7 +394,7 @@ func (client *Client) BindSecureMobilePhone(request *BindSecureMobilePhoneReques
 
 // Summary:
 //
-// 取消修改邮箱
+// Cancels the email address change of a member.
 //
 // @param request - CancelChangeAccountEmailRequest
 //
@@ -430,7 +438,7 @@ func (client *Client) CancelChangeAccountEmailWithOptions(request *CancelChangeA
 
 // Summary:
 //
-// 取消修改邮箱
+// Cancels the email address change of a member.
 //
 // @param request - CancelChangeAccountEmailRequest
 //
@@ -448,7 +456,7 @@ func (client *Client) CancelChangeAccountEmail(request *CancelChangeAccountEmail
 
 // Summary:
 //
-// 取消创建云账号类型的成员
+// Cancels the creation of a cloud account.
 //
 // @param request - CancelCreateCloudAccountRequest
 //
@@ -492,7 +500,7 @@ func (client *Client) CancelCreateCloudAccountWithOptions(request *CancelCreateC
 
 // Summary:
 //
-// 取消创建云账号类型的成员
+// Cancels the creation of a cloud account.
 //
 // @param request - CancelCreateCloudAccountRequest
 //
@@ -580,7 +588,7 @@ func (client *Client) CancelHandshake(request *CancelHandshakeRequest) (_result 
 
 // Summary:
 //
-// 取消升级资源账号
+// Cancels the upgrade from a resource account to a cloud account.
 //
 // @param request - CancelPromoteResourceAccountRequest
 //
@@ -624,7 +632,7 @@ func (client *Client) CancelPromoteResourceAccountWithOptions(request *CancelPro
 
 // Summary:
 //
-// 取消升级资源账号
+// Cancels the upgrade from a resource account to a cloud account.
 //
 // @param request - CancelPromoteResourceAccountRequest
 //
@@ -642,7 +650,7 @@ func (client *Client) CancelPromoteResourceAccount(request *CancelPromoteResourc
 
 // Summary:
 //
-// 成员账号设置安全邮箱
+// Changes the email address that is bound to a member.
 //
 // @param request - ChangeAccountEmailRequest
 //
@@ -690,7 +698,7 @@ func (client *Client) ChangeAccountEmailWithOptions(request *ChangeAccountEmailR
 
 // Summary:
 //
-// 成员账号设置安全邮箱
+// Changes the email address that is bound to a member.
 //
 // @param request - ChangeAccountEmailRequest
 //
@@ -896,7 +904,7 @@ func (client *Client) CreateAutoGroupingRule(request *CreateAutoGroupingRuleRequ
 
 // Summary:
 //
-// 创建云账号
+// Creates a cloud account.
 //
 // Description:
 //
@@ -962,7 +970,7 @@ func (client *Client) CreateCloudAccountWithOptions(request *CreateCloudAccountR
 
 // Summary:
 //
-// 创建云账号
+// Creates a cloud account.
 //
 // Description:
 //
@@ -988,6 +996,10 @@ func (client *Client) CreateCloudAccount(request *CreateCloudAccountRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a custom access control policy.
+//
 // Description:
 //
 // This topic provides an example on how to call the API operation to create a custom access control policy named `ExampleControlPolicy`. This access control policy is used to prohibit modifications to the ResourceDirectoryAccountAccessRole role and the permissions of the role.
@@ -1044,6 +1056,10 @@ func (client *Client) CreateControlPolicyWithOptions(request *CreateControlPolic
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a custom access control policy.
+//
 // Description:
 //
 // This topic provides an example on how to call the API operation to create a custom access control policy named `ExampleControlPolicy`. This access control policy is used to prohibit modifications to the ResourceDirectoryAccountAccessRole role and the permissions of the role.
@@ -1062,6 +1078,10 @@ func (client *Client) CreateControlPolicy(request *CreateControlPolicyRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a folder.
+//
 // Description:
 //
 // >  A maximum of five levels of folders can be created under the root folder.
@@ -1112,6 +1132,10 @@ func (client *Client) CreateFolderWithOptions(request *CreateFolderRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a folder.
+//
 // Description:
 //
 // >  A maximum of five levels of folders can be created under the root folder.
@@ -1648,11 +1672,13 @@ func (client *Client) DeclineHandshake(request *DeclineHandshakeRequest) (_resul
 
 // Summary:
 //
-// 账号一键删除
+// Deletes a member of the resource account type.
 //
 // Description:
 //
-// The ID of the member that you want to delete.
+// Before you delete a member, we recommend that you call the [CheckAccountDelete](https://help.aliyun.com/document_detail/448542.html) and [GetAccountDeletionCheckResult](https://help.aliyun.com/document_detail/448775.html) operations to check whether the member meets deletion requirements. You can call the DeleteAccount operation to delete only members that meet the deletion requirements.
+//
+// After you submit a deletion request for a member, you can call the [GetAccountDeletionStatus](https://help.aliyun.com/document_detail/449001.html) operation to query the deletion status of the member. After a member is deleted, the resources and data within the member are deleted, and you can no longer use the member to log on to the Alibaba Cloud Management Console. In addition, the member cannot be recovered. Proceed with caution. For more information about how to delete a member, see [Delete a member of the resource account type](https://help.aliyun.com/document_detail/446078.html).
 //
 // @param tmpReq - DeleteAccountRequest
 //
@@ -1706,11 +1732,13 @@ func (client *Client) DeleteAccountWithOptions(tmpReq *DeleteAccountRequest, run
 
 // Summary:
 //
-// 账号一键删除
+// Deletes a member of the resource account type.
 //
 // Description:
 //
-// The ID of the member that you want to delete.
+// Before you delete a member, we recommend that you call the [CheckAccountDelete](https://help.aliyun.com/document_detail/448542.html) and [GetAccountDeletionCheckResult](https://help.aliyun.com/document_detail/448775.html) operations to check whether the member meets deletion requirements. You can call the DeleteAccount operation to delete only members that meet the deletion requirements.
+//
+// After you submit a deletion request for a member, you can call the [GetAccountDeletionStatus](https://help.aliyun.com/document_detail/449001.html) operation to query the deletion status of the member. After a member is deleted, the resources and data within the member are deleted, and you can no longer use the member to log on to the Alibaba Cloud Management Console. In addition, the member cannot be recovered. Proceed with caution. For more information about how to delete a member, see [Delete a member of the resource account type](https://help.aliyun.com/document_detail/446078.html).
 //
 // @param request - DeleteAccountRequest
 //
@@ -1790,7 +1818,7 @@ func (client *Client) DeleteAutoGroupingRule(request *DeleteAutoGroupingRuleRequ
 
 // Summary:
 //
-// 删除管控策略
+// Deletes a custom control policy.
 //
 // Description:
 //
@@ -1840,7 +1868,7 @@ func (client *Client) DeleteControlPolicyWithOptions(request *DeleteControlPolic
 
 // Summary:
 //
-// 删除管控策略
+// Deletes a custom control policy.
 //
 // Description:
 //
@@ -1862,6 +1890,10 @@ func (client *Client) DeleteControlPolicy(request *DeleteControlPolicyRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a folder.
+//
 // Description:
 //
 // >  Before you delete a folder, make sure that the folder does not contain any member accounts or child folders.
@@ -1906,6 +1938,10 @@ func (client *Client) DeleteFolderWithOptions(request *DeleteFolderRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a folder.
+//
 // Description:
 //
 // >  Before you delete a folder, make sure that the folder does not contain any member accounts or child folders.
@@ -2276,7 +2312,7 @@ func (client *Client) DeleteServiceLinkedRole(request *DeleteServiceLinkedRoleRe
 
 // Summary:
 //
-// 注销代理管理员
+// Removes a delegated administrator account for a trusted service.
 //
 // Description:
 //
@@ -2330,7 +2366,7 @@ func (client *Client) DeregisterDelegatedAdministratorWithOptions(request *Dereg
 
 // Summary:
 //
-// 注销代理管理员
+// Removes a delegated administrator account for a trusted service.
 //
 // Description:
 //
@@ -2352,6 +2388,10 @@ func (client *Client) DeregisterDelegatedAdministrator(request *DeregisterDelega
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables a resource directory. This operation cannot be undone. Therefore, exercise caution when you perform it.
+//
 // Description:
 //
 // Before you disable a resource directory, make sure that the following requirements are met:
@@ -2387,6 +2427,10 @@ func (client *Client) DestroyResourceDirectoryWithOptions(runtime *dara.RuntimeO
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables a resource directory. This operation cannot be undone. Therefore, exercise caution when you perform it.
+//
 // Description:
 //
 // Before you disable a resource directory, make sure that the following requirements are met:
@@ -2409,7 +2453,7 @@ func (client *Client) DestroyResourceDirectory() (_result *DestroyResourceDirect
 
 // Summary:
 //
-// 解绑管控策略
+// Detaches an access control policy.
 //
 // Description:
 //
@@ -2465,7 +2509,7 @@ func (client *Client) DetachControlPolicyWithOptions(request *DetachControlPolic
 
 // Summary:
 //
-// 解绑管控策略
+// Detaches an access control policy.
 //
 // Description:
 //
@@ -2663,7 +2707,7 @@ func (client *Client) DisableAutoGrouping() (_result *DisableAutoGroupingRespons
 
 // Summary:
 //
-// 禁用管控策略
+// Disables the Control Policy feature.
 //
 // Description:
 //
@@ -2700,7 +2744,7 @@ func (client *Client) DisableControlPolicyWithOptions(runtime *dara.RuntimeOptio
 
 // Summary:
 //
-// 禁用管控策略
+// Disables the Control Policy feature.
 //
 // Description:
 //
@@ -2918,7 +2962,7 @@ func (client *Client) EnableControlPolicy() (_result *EnableControlPolicyRespons
 
 // Summary:
 //
-// 开启RD
+// Enables a resource directory.
 //
 // Description:
 //
@@ -2980,7 +3024,7 @@ func (client *Client) EnableResourceDirectoryWithOptions(request *EnableResource
 
 // Summary:
 //
-// 开启RD
+// Enables a resource directory.
 //
 // Description:
 //
@@ -3049,6 +3093,10 @@ func (client *Client) EnableResourceGroupNotification() (_result *EnableResource
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of a member.
+//
 // Description:
 //
 // This topic provides an example on how to call the API operation to query the information of the member whose Alibaba Cloud account ID is `181761095690****`.
@@ -3097,6 +3145,10 @@ func (client *Client) GetAccountWithOptions(request *GetAccountRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of a member.
+//
 // Description:
 //
 // This topic provides an example on how to call the API operation to query the information of the member whose Alibaba Cloud account ID is `181761095690****`.
@@ -3368,6 +3420,10 @@ func (client *Client) GetAutoGroupingStatus() (_result *GetAutoGroupingStatusRes
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an access control policy.
+//
 // Description:
 //
 // This topic provides an example on how to call the API operation to query the details of the access control policy whose ID is `cp-SImPt8GCEwiq****`.
@@ -3416,6 +3472,10 @@ func (client *Client) GetControlPolicyWithOptions(request *GetControlPolicyReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an access control policy.
+//
 // Description:
 //
 // This topic provides an example on how to call the API operation to query the details of the access control policy whose ID is `cp-SImPt8GCEwiq****`.
@@ -3481,6 +3541,10 @@ func (client *Client) GetControlPolicyEnablementStatus() (_result *GetControlPol
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of a folder.
+//
 // Description:
 //
 // In this example, the information of the folder `fd-Jyl5U7****` is queried.
@@ -3525,6 +3589,10 @@ func (client *Client) GetFolderWithOptions(request *GetFolderRequest, runtime *d
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of a folder.
+//
 // Description:
 //
 // In this example, the information of the folder `fd-Jyl5U7****` is queried.
@@ -3613,6 +3681,10 @@ func (client *Client) GetHandshake(request *GetHandshakeRequest) (_result *GetHa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of a settlement account.
+//
 // @param request - GetPayerForAccountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3653,6 +3725,10 @@ func (client *Client) GetPayerForAccountWithOptions(request *GetPayerForAccountR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of a settlement account.
+//
 // @param request - GetPayerForAccountRequest
 //
 // @return GetPayerForAccountResponse
@@ -4533,6 +4609,10 @@ func (client *Client) ListAccountsForParent(request *ListAccountsForParentReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of all the parent folders of a specified folder. The system returns the information of the folders based on their top-down hierarchy.
+//
 // @param request - ListAncestorsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4573,6 +4653,10 @@ func (client *Client) ListAncestorsWithOptions(request *ListAncestorsRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of all the parent folders of a specified folder. The system returns the information of the folders based on their top-down hierarchy.
+//
 // @param request - ListAncestorsRequest
 //
 // @return ListAncestorsResponse
@@ -4888,6 +4972,10 @@ func (client *Client) ListControlPolicies(request *ListControlPoliciesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the access control policies that are attached to a folder or member.
+//
 // Description:
 //
 // This topic provides an example on how to call the API operation to query the access control policies that are attached to the folder `fd-ZDNPiT****`.
@@ -4936,6 +5024,10 @@ func (client *Client) ListControlPolicyAttachmentsForTargetWithOptions(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the access control policies that are attached to a folder or member.
+//
 // Description:
 //
 // This topic provides an example on how to call the API operation to query the access control policies that are attached to the folder `fd-ZDNPiT****`.
@@ -4956,7 +5048,7 @@ func (client *Client) ListControlPolicyAttachmentsForTarget(request *ListControl
 
 // Summary:
 //
-// 列出所有的代理管理员
+// Queries delegated administrator accounts.
 //
 // Description:
 //
@@ -5012,7 +5104,7 @@ func (client *Client) ListDelegatedAdministratorsWithOptions(request *ListDelega
 
 // Summary:
 //
-// 列出所有的代理管理员
+// Queries delegated administrator accounts.
 //
 // Description:
 //
@@ -5034,7 +5126,7 @@ func (client *Client) ListDelegatedAdministrators(request *ListDelegatedAdminist
 
 // Summary:
 //
-// 查看指定账号被设置为哪些可信服务的委派管理员
+// Queries the trusted services for which a member is specified as a delegated administrator account.
 //
 // Description:
 //
@@ -5082,7 +5174,7 @@ func (client *Client) ListDelegatedServicesForAccountWithOptions(request *ListDe
 
 // Summary:
 //
-// 查看指定账号被设置为哪些可信服务的委派管理员
+// Queries the trusted services for which a member is specified as a delegated administrator account.
 //
 // Description:
 //
@@ -5102,6 +5194,10 @@ func (client *Client) ListDelegatedServicesForAccount(request *ListDelegatedServ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of all subfolders of a folder.
+//
 // Description:
 //
 // >  You can view the information of only the first-level subfolders of a folder.
@@ -5158,6 +5254,10 @@ func (client *Client) ListFoldersForParentWithOptions(request *ListFoldersForPar
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of all subfolders of a folder.
+//
 // Description:
 //
 // >  You can view the information of only the first-level subfolders of a folder.
@@ -5568,7 +5668,7 @@ func (client *Client) ListPolicyVersions(request *ListPolicyVersionsRequest) (_r
 
 // Summary:
 //
-// 列出资源组能力项
+// Queries whether a specific resource type or a given cloud service supports resource group events.
 //
 // @param request - ListResourceGroupCapabilityRequest
 //
@@ -5620,7 +5720,7 @@ func (client *Client) ListResourceGroupCapabilityWithOptions(request *ListResour
 
 // Summary:
 //
-// 列出资源组能力项
+// Queries whether a specific resource type or a given cloud service supports resource group events.
 //
 // @param request - ListResourceGroupCapabilityRequest
 //
@@ -5636,6 +5736,10 @@ func (client *Client) ListResourceGroupCapability(request *ListResourceGroupCapa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries resource groups.
+//
 // Description:
 //
 // You can call this API operation to query all resource groups within the current account. You can also call this API operation to query a specific resource group based on the status, ID, identifier, or display name of the resource group.
@@ -5714,6 +5818,10 @@ func (client *Client) ListResourceGroupsWithOptions(request *ListResourceGroupsR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries resource groups.
+//
 // Description:
 //
 // You can call this API operation to query all resource groups within the current account. You can also call this API operation to query a specific resource group based on the status, ID, identifier, or display name of the resource group.
@@ -5736,7 +5844,7 @@ func (client *Client) ListResourceGroups(request *ListResourceGroupsRequest) (_r
 
 // Summary:
 //
-// 列出资源组与用户授权信息
+// Queries resource groups and their user authorization information.
 //
 // @param request - ListResourceGroupsWithAuthDetailsRequest
 //
@@ -5816,7 +5924,7 @@ func (client *Client) ListResourceGroupsWithAuthDetailsWithOptions(request *List
 
 // Summary:
 //
-// 列出资源组与用户授权信息
+// Queries resource groups and their user authorization information.
 //
 // @param request - ListResourceGroupsWithAuthDetailsRequest
 //
@@ -6006,7 +6114,7 @@ func (client *Client) ListRoles(request *ListRolesRequest) (_result *ListRolesRe
 
 // Summary:
 //
-// 列出所有的Tag key
+// Queries tag keys.
 //
 // Description:
 //
@@ -6066,7 +6174,7 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 
 // Summary:
 //
-// 列出所有的Tag key
+// Queries tag keys.
 //
 // Description:
 //
@@ -6174,7 +6282,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// 列出所有的Tag values
+// Queries the tag values of a tag key.
 //
 // Description:
 //
@@ -6238,7 +6346,7 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 
 // Summary:
 //
-// 列出所有的Tag values
+// Queries the tag values of a tag key.
 //
 // Description:
 //
@@ -6336,6 +6444,10 @@ func (client *Client) ListTargetAttachmentsForControlPolicy(request *ListTargetA
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the trusted services that are enabled within an enterprise management account or delegated administrator account.
+//
 // Description:
 //
 // >  Only an enterprise management account or delegated administrator account can be used to call this operation.
@@ -6390,6 +6502,10 @@ func (client *Client) ListTrustedServiceStatusWithOptions(request *ListTrustedSe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the trusted services that are enabled within an enterprise management account or delegated administrator account.
+//
 // Description:
 //
 // >  Only an enterprise management account or delegated administrator account can be used to call this operation.
@@ -6412,7 +6528,7 @@ func (client *Client) ListTrustedServiceStatus(request *ListTrustedServiceStatus
 
 // Summary:
 //
-// 查询资源组事件
+// Queries the events of resource groups.
 //
 // @param request - LookupResourceGroupEventsRequest
 //
@@ -6484,7 +6600,7 @@ func (client *Client) LookupResourceGroupEventsWithOptions(request *LookupResour
 
 // Summary:
 //
-// 查询资源组事件
+// Queries the events of resource groups.
 //
 // @param request - LookupResourceGroupEventsRequest
 //
@@ -6502,7 +6618,7 @@ func (client *Client) LookupResourceGroupEvents(request *LookupResourceGroupEven
 
 // Summary:
 //
-// 移动账号
+// Moves a member account from a folder to another.
 //
 // @param request - MoveAccountRequest
 //
@@ -6550,7 +6666,7 @@ func (client *Client) MoveAccountWithOptions(request *MoveAccountRequest, runtim
 
 // Summary:
 //
-// 移动账号
+// Moves a member account from a folder to another.
 //
 // @param request - MoveAccountRequest
 //
@@ -6646,7 +6762,7 @@ func (client *Client) MoveResources(request *MoveResourcesRequest) (_result *Mov
 
 // Summary:
 //
-// 升级资源账号
+// Upgrades a resource account to a cloud account.
 //
 // @param request - PromoteResourceAccountRequest
 //
@@ -6694,7 +6810,7 @@ func (client *Client) PromoteResourceAccountWithOptions(request *PromoteResource
 
 // Summary:
 //
-// 升级资源账号
+// Upgrades a resource account to a cloud account.
 //
 // @param request - PromoteResourceAccountRequest
 //
@@ -6710,6 +6826,10 @@ func (client *Client) PromoteResourceAccount(request *PromoteResourceAccountRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Specifies a member in a resource directory as a delegated administrator account of a trusted service.
+//
 // Description:
 //
 // The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory.
@@ -6768,6 +6888,10 @@ func (client *Client) RegisterDelegatedAdministratorWithOptions(request *Registe
 	return _result, _err
 }
 
+// Summary:
+//
+// Specifies a member in a resource directory as a delegated administrator account of a trusted service.
+//
 // Description:
 //
 // The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory.
@@ -6796,6 +6920,10 @@ func (client *Client) RegisterDelegatedAdministrator(request *RegisterDelegatedA
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes a member of the cloud account type. After you remove a member of the cloud account type, the member is no longer managed by the management account of the resource directory to which the member belonged.
+//
 // Description:
 //
 // This topic provides an example on how to call the API operation to remove the member `177242285274****` from a resource directory.
@@ -6840,6 +6968,10 @@ func (client *Client) RemoveCloudAccountWithOptions(request *RemoveCloudAccountR
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes a member of the cloud account type. After you remove a member of the cloud account type, the member is no longer managed by the management account of the resource directory to which the member belonged.
+//
 // Description:
 //
 // This topic provides an example on how to call the API operation to remove the member `177242285274****` from a resource directory.
@@ -6860,7 +6992,7 @@ func (client *Client) RemoveCloudAccount(request *RemoveCloudAccountRequest) (_r
 
 // Summary:
 //
-// 重新发送创建云账号的邮箱验证
+// Resends an email that is used to confirm the creation of a cloud account.
 //
 // @param request - ResendCreateCloudAccountEmailRequest
 //
@@ -6904,7 +7036,7 @@ func (client *Client) ResendCreateCloudAccountEmailWithOptions(request *ResendCr
 
 // Summary:
 //
-// 重新发送创建云账号的邮箱验证
+// Resends an email that is used to confirm the creation of a cloud account.
 //
 // @param request - ResendCreateCloudAccountEmailRequest
 //
@@ -6922,7 +7054,7 @@ func (client *Client) ResendCreateCloudAccountEmail(request *ResendCreateCloudAc
 
 // Summary:
 //
-// 重新发送升级资源账号的邮箱验证
+// Resends an email that is used to confirm the upgrade from a resource account to a cloud account.
 //
 // @param request - ResendPromoteResourceAccountEmailRequest
 //
@@ -6966,7 +7098,7 @@ func (client *Client) ResendPromoteResourceAccountEmailWithOptions(request *Rese
 
 // Summary:
 //
-// 重新发送升级资源账号的邮箱验证
+// Resends an email that is used to confirm the upgrade from a resource account to a cloud account.
 //
 // @param request - ResendPromoteResourceAccountEmailRequest
 //
@@ -6984,7 +7116,7 @@ func (client *Client) ResendPromoteResourceAccountEmail(request *ResendPromoteRe
 
 // Summary:
 //
-// 重新发送确认邮件
+// Resends a verification email for the email address change of a member.
 //
 // @param request - RetryChangeAccountEmailRequest
 //
@@ -7028,7 +7160,7 @@ func (client *Client) RetryChangeAccountEmailWithOptions(request *RetryChangeAcc
 
 // Summary:
 //
-// 重新发送确认邮件
+// Resends a verification email for the email address change of a member.
 //
 // @param request - RetryChangeAccountEmailRequest
 //
@@ -7046,7 +7178,7 @@ func (client *Client) RetryChangeAccountEmail(request *RetryChangeAccountEmailRe
 
 // Summary:
 //
-// 发送绑定安全手机验证码
+// Sends a verification code to the mobile phone number that you want to bind to a resource account in a resource directory for security purposes.
 //
 // Description:
 //
@@ -7100,7 +7232,7 @@ func (client *Client) SendVerificationCodeForBindSecureMobilePhoneWithOptions(re
 
 // Summary:
 //
-// 发送绑定安全手机验证码
+// Sends a verification code to the mobile phone number that you want to bind to a resource account in a resource directory for security purposes.
 //
 // Description:
 //
@@ -7124,7 +7256,7 @@ func (client *Client) SendVerificationCodeForBindSecureMobilePhone(request *Send
 
 // Summary:
 //
-// 发送开启资源目录短信
+// Sends a verification code to the mobile phone number bound to a newly created account when you use the account to enable a resource directory.
 //
 // Description:
 //
@@ -7172,7 +7304,7 @@ func (client *Client) SendVerificationCodeForEnableRDWithOptions(request *SendVe
 
 // Summary:
 //
-// 发送开启资源目录短信
+// Sends a verification code to the mobile phone number bound to a newly created account when you use the account to enable a resource directory.
 //
 // Description:
 //
@@ -7260,7 +7392,7 @@ func (client *Client) SetDefaultPolicyVersion(request *SetDefaultPolicyVersionRe
 
 // Summary:
 //
-// 开启或关闭成员删除许可
+// Enables or disables the member deletion feature.
 //
 // Description:
 //
@@ -7308,7 +7440,7 @@ func (client *Client) SetMemberDeletionPermissionWithOptions(request *SetMemberD
 
 // Summary:
 //
-// 开启或关闭成员删除许可
+// Enables or disables the member deletion feature.
 //
 // Description:
 //
@@ -7488,6 +7620,10 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the display name of a member, or switches the type of a member.
+//
 // Description:
 //
 //	  To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
@@ -7546,6 +7682,10 @@ func (client *Client) UpdateAccountWithOptions(request *UpdateAccountRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the display name of a member, or switches the type of a member.
+//
 // Description:
 //
 //	  To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
@@ -7812,6 +7952,10 @@ func (client *Client) UpdateAutoGroupingRule(request *UpdateAutoGroupingRuleRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a custom access control policy.
+//
 // Description:
 //
 // In this example, the name of the access control policy whose ID is `cp-jExXAqIYkwHN****` is changed to `NewControlPolicy`.
@@ -7868,6 +8012,10 @@ func (client *Client) UpdateControlPolicyWithOptions(request *UpdateControlPolic
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a custom access control policy.
+//
 // Description:
 //
 // In this example, the name of the access control policy whose ID is `cp-jExXAqIYkwHN****` is changed to `NewControlPolicy`.
@@ -7886,6 +8034,10 @@ func (client *Client) UpdateControlPolicy(request *UpdateControlPolicyRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the name of a folder.
+//
 // @param request - UpdateFolderRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7930,6 +8082,10 @@ func (client *Client) UpdateFolderWithOptions(request *UpdateFolderRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the name of a folder.
+//
 // @param request - UpdateFolderRequest
 //
 // @return UpdateFolderResponse
@@ -7944,6 +8100,10 @@ func (client *Client) UpdateFolder(request *UpdateFolderRequest) (_result *Updat
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the basic information of a resource group.
+//
 // Description:
 //
 // In this example, the display name of the resource group `rg-9gLOoK****` is changed to `project`.
@@ -7992,6 +8152,10 @@ func (client *Client) UpdateResourceGroupWithOptions(request *UpdateResourceGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the basic information of a resource group.
+//
 // Description:
 //
 // In this example, the display name of the resource group `rg-9gLOoK****` is changed to `project`.
