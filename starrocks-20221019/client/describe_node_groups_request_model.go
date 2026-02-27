@@ -25,6 +25,8 @@ type iDescribeNodeGroupsRequest interface {
 	GetNodeGroupName() *string
 	SetStatus(v string) *DescribeNodeGroupsRequest
 	GetStatus() *string
+	SetTags(v []*DescribeNodeGroupsRequestTags) *DescribeNodeGroupsRequest
+	GetTags() []*DescribeNodeGroupsRequestTags
 }
 
 type DescribeNodeGroupsRequest struct {
@@ -56,7 +58,8 @@ type DescribeNodeGroupsRequest struct {
 	// example:
 	//
 	// RUNNING
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Status *string                          `json:"status,omitempty" xml:"status,omitempty"`
+	Tags   []*DescribeNodeGroupsRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeNodeGroupsRequest) String() string {
@@ -99,6 +102,10 @@ func (s *DescribeNodeGroupsRequest) GetStatus() *string {
 	return s.Status
 }
 
+func (s *DescribeNodeGroupsRequest) GetTags() []*DescribeNodeGroupsRequestTags {
+	return s.Tags
+}
+
 func (s *DescribeNodeGroupsRequest) SetClusterId(v string) *DescribeNodeGroupsRequest {
 	s.ClusterId = &v
 	return s
@@ -139,6 +146,55 @@ func (s *DescribeNodeGroupsRequest) SetStatus(v string) *DescribeNodeGroupsReque
 	return s
 }
 
+func (s *DescribeNodeGroupsRequest) SetTags(v []*DescribeNodeGroupsRequestTags) *DescribeNodeGroupsRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeNodeGroupsRequest) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeNodeGroupsRequestTags struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s DescribeNodeGroupsRequestTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeNodeGroupsRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNodeGroupsRequestTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeNodeGroupsRequestTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeNodeGroupsRequestTags) SetKey(v string) *DescribeNodeGroupsRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeNodeGroupsRequestTags) SetValue(v string) *DescribeNodeGroupsRequestTags {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeNodeGroupsRequestTags) Validate() error {
 	return dara.Validate(s)
 }

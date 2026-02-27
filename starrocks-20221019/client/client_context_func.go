@@ -505,6 +505,10 @@ func (client *Client) DescribeNodeGroupsWithContext(ctx context.Context, request
 		body["status"] = request.Status
 	}
 
+	if !dara.IsNil(request.Tags) {
+		body["tags"] = request.Tags
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
