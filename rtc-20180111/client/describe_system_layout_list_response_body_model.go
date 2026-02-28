@@ -123,18 +123,10 @@ func (s *DescribeSystemLayoutListResponseBodyLayouts) Validate() error {
 }
 
 type DescribeSystemLayoutListResponseBodyLayoutsLayout struct {
-	// AudioMixCount。
-	//
-	// example:
-	//
-	// 3
-	AudioMixCount *int32 `json:"AudioMixCount,omitempty" xml:"AudioMixCount,omitempty"`
-	// example:
-	//
-	// 22
-	LayoutId *int64                                                  `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
-	Name     *string                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
-	Panes    *DescribeSystemLayoutListResponseBodyLayoutsLayoutPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Struct"`
+	AudioMixCount *int32                                                  `json:"AudioMixCount,omitempty" xml:"AudioMixCount,omitempty"`
+	LayoutId      *int64                                                  `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+	Name          *string                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	Panes         *DescribeSystemLayoutListResponseBodyLayoutsLayoutPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Struct"`
 }
 
 func (s DescribeSystemLayoutListResponseBodyLayoutsLayout) String() string {
@@ -228,13 +220,8 @@ type DescribeSystemLayoutListResponseBodyLayoutsLayoutPanesPanes struct {
 	// example:
 	//
 	// 0.25
-	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// MajorPane。
-	//
-	// example:
-	//
-	// 0
-	MajorPane *int32 `json:"MajorPane,omitempty" xml:"MajorPane,omitempty"`
+	Height    *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	MajorPane *int32   `json:"MajorPane,omitempty" xml:"MajorPane,omitempty"`
 	// example:
 	//
 	// 0

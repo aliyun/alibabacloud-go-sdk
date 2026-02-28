@@ -343,7 +343,7 @@ type StartCloudNoteRequestCustomPromptCustomPromptContents struct {
 	//
 	// example:
 	//
-	// 请帮我将下面的对话进行总结，根据发言人来总结:\n {Transcription}
+	// 请帮我将下面的对话进行总结，根据发言人来总结:\\n {Transcription}
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 	// example:
 	//

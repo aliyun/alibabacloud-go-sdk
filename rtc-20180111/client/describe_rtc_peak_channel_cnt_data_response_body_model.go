@@ -93,18 +93,9 @@ func (s *DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerInterval)
 }
 
 type DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerIntervalPeakChannelCntModule struct {
-	// example:
-	//
-	// 10
-	ActiveChannelPeak *int64 `json:"ActiveChannelPeak,omitempty" xml:"ActiveChannelPeak,omitempty"`
-	// example:
-	//
-	// 2018-01-29T00:01:00Z
+	ActiveChannelPeak     *int64  `json:"ActiveChannelPeak,omitempty" xml:"ActiveChannelPeak,omitempty"`
 	ActiveChannelPeakTime *string `json:"ActiveChannelPeakTime,omitempty" xml:"ActiveChannelPeakTime,omitempty"`
-	// example:
-	//
-	// 2018-01-29T00:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TimeStamp             *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerIntervalPeakChannelCntModule) String() string {

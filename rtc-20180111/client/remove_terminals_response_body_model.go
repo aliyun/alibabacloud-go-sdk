@@ -93,17 +93,8 @@ func (s *RemoveTerminalsResponseBodyTerminals) Validate() error {
 }
 
 type RemoveTerminalsResponseBodyTerminalsTerminal struct {
-	// example:
-	//
-	// 0
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// 1811****
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// Success
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 

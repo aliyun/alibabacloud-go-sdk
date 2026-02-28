@@ -27,9 +27,8 @@ type DescribeRecordTemplatesRequest struct {
 	// example:
 	//
 	// yourAppId
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 1
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// example:
 	//
 	// 1

@@ -634,7 +634,9 @@ type StartAgentRequestVoiceChatConfigLLMConfig struct {
 	// example:
 	//
 	// 0.7
-	Temperature *float64 `json:"Temperature,omitempty" xml:"Temperature,omitempty"`
+	Temperature         *float64      `json:"Temperature,omitempty" xml:"Temperature,omitempty"`
+	ToolExecutionConfig interface{}   `json:"ToolExecutionConfig,omitempty" xml:"ToolExecutionConfig,omitempty"`
+	Tools               []interface{} `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 0.8
@@ -689,6 +691,14 @@ func (s *StartAgentRequestVoiceChatConfigLLMConfig) GetTemperature() *float64 {
 	return s.Temperature
 }
 
+func (s *StartAgentRequestVoiceChatConfigLLMConfig) GetToolExecutionConfig() interface{} {
+	return s.ToolExecutionConfig
+}
+
+func (s *StartAgentRequestVoiceChatConfigLLMConfig) GetTools() []interface{} {
+	return s.Tools
+}
+
 func (s *StartAgentRequestVoiceChatConfigLLMConfig) GetTopP() *float64 {
 	return s.TopP
 }
@@ -738,6 +748,16 @@ func (s *StartAgentRequestVoiceChatConfigLLMConfig) SetPrompt(v string) *StartAg
 
 func (s *StartAgentRequestVoiceChatConfigLLMConfig) SetTemperature(v float64) *StartAgentRequestVoiceChatConfigLLMConfig {
 	s.Temperature = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigLLMConfig) SetToolExecutionConfig(v interface{}) *StartAgentRequestVoiceChatConfigLLMConfig {
+	s.ToolExecutionConfig = v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigLLMConfig) SetTools(v []interface{}) *StartAgentRequestVoiceChatConfigLLMConfig {
+	s.Tools = v
 	return s
 }
 

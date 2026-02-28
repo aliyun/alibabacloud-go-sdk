@@ -93,14 +93,8 @@ func (s *DescribeRtcUserCntDataResponseBodyUserCntDataPerInterval) Validate() er
 }
 
 type DescribeRtcUserCntDataResponseBodyUserCntDataPerIntervalUserCntModule struct {
-	// example:
-	//
-	// 10
-	ActiveUserCnt *int64 `json:"ActiveUserCnt,omitempty" xml:"ActiveUserCnt,omitempty"`
-	// example:
-	//
-	// 2018-01-29T00:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	ActiveUserCnt *int64  `json:"ActiveUserCnt,omitempty" xml:"ActiveUserCnt,omitempty"`
+	TimeStamp     *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeRtcUserCntDataResponseBodyUserCntDataPerIntervalUserCntModule) String() string {

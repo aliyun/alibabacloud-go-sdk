@@ -123,32 +123,14 @@ func (s *DescribeAppsResponseBodyAppList) Validate() error {
 }
 
 type DescribeAppsResponseBodyAppListApp struct {
-	// example:
-	//
-	// rgf1****"
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// Default AppName
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// example:
-	//
-	// universal
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// example:
-	//
-	// paybyduration
-	BillType *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
-	// example:
-	//
-	// 2020-01-09T02:02:29Z
+	AppId        *string                                         `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName      *string                                         `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppType      *string                                         `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	BillType     *string                                         `json:"BillType,omitempty" xml:"BillType,omitempty"`
 	CreateTime   *string                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	ServiceAreas *DescribeAppsResponseBodyAppListAppServiceAreas `json:"ServiceAreas,omitempty" xml:"ServiceAreas,omitempty" type:"Struct"`
-	// example:
-	//
-	// 1
-	Status  *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Status       *int32                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	Version      *string                                         `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeAppsResponseBodyAppListApp) String() string {

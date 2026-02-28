@@ -23,9 +23,8 @@ type DeleteRecordTemplateRequest struct {
 	// example:
 	//
 	// yourAppId
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 1
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
 	//
 	// example:

@@ -123,19 +123,10 @@ func (s *DescribeMPULayoutInfoListResponseBodyLayouts) Validate() error {
 }
 
 type DescribeMPULayoutInfoListResponseBodyLayoutsLayout struct {
-	// example:
-	//
-	// 3
-	AudioMixCount *int32 `json:"AudioMixCount,omitempty" xml:"AudioMixCount,omitempty"`
-	// example:
-	//
-	// 2
-	LayoutId *int64 `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
-	// example:
-	//
-	// LayoutName
-	Name  *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Panes *DescribeMPULayoutInfoListResponseBodyLayoutsLayoutPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Struct"`
+	AudioMixCount *int32                                                   `json:"AudioMixCount,omitempty" xml:"AudioMixCount,omitempty"`
+	LayoutId      *int64                                                   `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+	Name          *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Panes         *DescribeMPULayoutInfoListResponseBodyLayoutsLayoutPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Struct"`
 }
 
 func (s DescribeMPULayoutInfoListResponseBodyLayoutsLayout) String() string {
@@ -226,34 +217,13 @@ func (s *DescribeMPULayoutInfoListResponseBodyLayoutsLayoutPanes) Validate() err
 }
 
 type DescribeMPULayoutInfoListResponseBodyLayoutsLayoutPanesPanes struct {
-	// example:
-	//
-	// 0.5
-	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// example:
-	//
-	// 0
-	MajorPane *int32 `json:"MajorPane,omitempty" xml:"MajorPane,omitempty"`
-	// example:
-	//
-	// 0
-	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
-	// example:
-	//
-	// 0.5
-	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	// example:
-	//
-	// 0.5
-	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	// example:
-	//
-	// 0.5
-	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	// example:
-	//
-	// 0
-	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	Height    *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	MajorPane *int32   `json:"MajorPane,omitempty" xml:"MajorPane,omitempty"`
+	PaneId    *int32   `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	Width     *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	X         *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y         *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	ZOrder    *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s DescribeMPULayoutInfoListResponseBodyLayoutsLayoutPanesPanes) String() string {

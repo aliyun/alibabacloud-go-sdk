@@ -138,23 +138,11 @@ func (s *DescribeRtcChannelListResponseBodyChannelList) Validate() error {
 }
 
 type DescribeRtcChannelListResponseBodyChannelListChannelList struct {
-	CallArea *DescribeRtcChannelListResponseBodyChannelListChannelListCallArea `json:"CallArea,omitempty" xml:"CallArea,omitempty" type:"Struct"`
-	// example:
-	//
-	// testChannel
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// example:
-	//
-	// 2018-01-29T02:00:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// example:
-	//
-	// 2018-01-29T01:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// example:
-	//
-	// 2
-	TotalUserCnt *int64 `json:"TotalUserCnt,omitempty" xml:"TotalUserCnt,omitempty"`
+	CallArea     *DescribeRtcChannelListResponseBodyChannelListChannelListCallArea `json:"CallArea,omitempty" xml:"CallArea,omitempty" type:"Struct"`
+	ChannelId    *string                                                           `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	EndTime      *string                                                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime    *string                                                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TotalUserCnt *int64                                                            `json:"TotalUserCnt,omitempty" xml:"TotalUserCnt,omitempty"`
 }
 
 func (s DescribeRtcChannelListResponseBodyChannelListChannelList) String() string {

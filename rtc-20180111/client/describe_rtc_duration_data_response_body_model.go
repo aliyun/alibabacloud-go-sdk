@@ -93,34 +93,13 @@ func (s *DescribeRtcDurationDataResponseBodyDurationDataPerInterval) Validate() 
 }
 
 type DescribeRtcDurationDataResponseBodyDurationDataPerIntervalDurationModule struct {
-	// example:
-	//
-	// 200
-	AudioDuration *int64 `json:"AudioDuration,omitempty" xml:"AudioDuration,omitempty"`
-	// example:
-	//
-	// 200
-	ContentDuration *int64 `json:"ContentDuration,omitempty" xml:"ContentDuration,omitempty"`
-	// example:
-	//
-	// 2020-02-04T05:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// example:
-	//
-	// 1000
-	TotalDuration *int64 `json:"TotalDuration,omitempty" xml:"TotalDuration,omitempty"`
-	// example:
-	//
-	// 300
-	V1080Duration *int64 `json:"V1080Duration,omitempty" xml:"V1080Duration,omitempty"`
-	// example:
-	//
-	// 300
-	V360Duration *int64 `json:"V360Duration,omitempty" xml:"V360Duration,omitempty"`
-	// example:
-	//
-	// 200
-	V720Duration *int64 `json:"V720Duration,omitempty" xml:"V720Duration,omitempty"`
+	AudioDuration   *int64  `json:"AudioDuration,omitempty" xml:"AudioDuration,omitempty"`
+	ContentDuration *int64  `json:"ContentDuration,omitempty" xml:"ContentDuration,omitempty"`
+	TimeStamp       *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TotalDuration   *int64  `json:"TotalDuration,omitempty" xml:"TotalDuration,omitempty"`
+	V1080Duration   *int64  `json:"V1080Duration,omitempty" xml:"V1080Duration,omitempty"`
+	V360Duration    *int64  `json:"V360Duration,omitempty" xml:"V360Duration,omitempty"`
+	V720Duration    *int64  `json:"V720Duration,omitempty" xml:"V720Duration,omitempty"`
 }
 
 func (s DescribeRtcDurationDataResponseBodyDurationDataPerIntervalDurationModule) String() string {
