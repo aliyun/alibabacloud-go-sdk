@@ -9,6 +9,8 @@ type iGetConversationDetailRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentId(v string) *GetConversationDetailRequest
+	GetAgentId() *string
 	SetContactId(v string) *GetConversationDetailRequest
 	GetContactId() *string
 	SetInstanceId(v string) *GetConversationDetailRequest
@@ -16,6 +18,10 @@ type iGetConversationDetailRequest interface {
 }
 
 type GetConversationDetailRequest struct {
+	// example:
+	//
+	// agent@ccc-test
+	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -38,12 +44,21 @@ func (s GetConversationDetailRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetConversationDetailRequest) GetAgentId() *string {
+	return s.AgentId
+}
+
 func (s *GetConversationDetailRequest) GetContactId() *string {
 	return s.ContactId
 }
 
 func (s *GetConversationDetailRequest) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *GetConversationDetailRequest) SetAgentId(v string) *GetConversationDetailRequest {
+	s.AgentId = &v
+	return s
 }
 
 func (s *GetConversationDetailRequest) SetContactId(v string) *GetConversationDetailRequest {

@@ -23,6 +23,8 @@ type iCreateUserRequest interface {
 	GetLoginName() *string
 	SetMobile(v string) *CreateUserRequest
 	GetMobile() *string
+	SetNeedEmailNotification(v string) *CreateUserRequest
+	GetNeedEmailNotification() *string
 	SetNickname(v string) *CreateUserRequest
 	GetNickname() *string
 	SetResetPassword(v bool) *CreateUserRequest
@@ -64,8 +66,12 @@ type CreateUserRequest struct {
 	// example:
 	//
 	// 1382114****
-	Mobile   *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	Nickname *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// example:
+	//
+	// true
+	NeedEmailNotification *string `json:"NeedEmailNotification,omitempty" xml:"NeedEmailNotification,omitempty"`
+	Nickname              *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
 	// example:
 	//
 	// false
@@ -122,6 +128,10 @@ func (s *CreateUserRequest) GetMobile() *string {
 	return s.Mobile
 }
 
+func (s *CreateUserRequest) GetNeedEmailNotification() *string {
+	return s.NeedEmailNotification
+}
+
 func (s *CreateUserRequest) GetNickname() *string {
 	return s.Nickname
 }
@@ -174,6 +184,11 @@ func (s *CreateUserRequest) SetLoginName(v string) *CreateUserRequest {
 
 func (s *CreateUserRequest) SetMobile(v string) *CreateUserRequest {
 	s.Mobile = &v
+	return s
+}
+
+func (s *CreateUserRequest) SetNeedEmailNotification(v string) *CreateUserRequest {
+	s.NeedEmailNotification = &v
 	return s
 }
 

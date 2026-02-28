@@ -2838,6 +2838,10 @@ func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建坐席
+//
 // @param request - CreateUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2877,6 +2881,10 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 
 	if !dara.IsNil(request.Mobile) {
 		query["Mobile"] = request.Mobile
+	}
+
+	if !dara.IsNil(request.NeedEmailNotification) {
+		query["NeedEmailNotification"] = request.NeedEmailNotification
 	}
 
 	if !dara.IsNil(request.Nickname) {
@@ -2922,6 +2930,10 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建坐席
+//
 // @param request - CreateUserRequest
 //
 // @return CreateUserResponse
@@ -4956,6 +4968,10 @@ func (client *Client) GetConversationDetailWithOptions(request *GetConversationD
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
 	if !dara.IsNil(request.ContactId) {
 		query["ContactId"] = request.ContactId
 	}
@@ -7005,6 +7021,10 @@ func (client *Client) ImportContactFlow(request *ImportContactFlowRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 导入自有线路号码
+//
 // @param request - ImportCorpNumbersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7065,6 +7085,10 @@ func (client *Client) ImportCorpNumbersWithOptions(request *ImportCorpNumbersReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 导入自有线路号码
+//
 // @param request - ImportCorpNumbersRequest
 //
 // @return ImportCorpNumbersResponse
@@ -10851,6 +10875,10 @@ func (client *Client) ListLegacyQueueEventLogs(request *ListLegacyQueueEventLogs
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取单轨录音
+//
 // @param request - ListMonoRecordingsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10864,6 +10892,14 @@ func (client *Client) ListMonoRecordingsWithOptions(request *ListMonoRecordingsR
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentChannelId) {
+		query["AgentChannelId"] = request.AgentChannelId
+	}
+
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
 	if !dara.IsNil(request.ContactId) {
 		query["ContactId"] = request.ContactId
 	}
@@ -10895,6 +10931,10 @@ func (client *Client) ListMonoRecordingsWithOptions(request *ListMonoRecordingsR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取单轨录音
+//
 // @param request - ListMonoRecordingsRequest
 //
 // @return ListMonoRecordingsResponse
@@ -10909,6 +10949,10 @@ func (client *Client) ListMonoRecordings(request *ListMonoRecordingsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取分轨录音
+//
 // @param request - ListMultiChannelRecordingsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10922,6 +10966,14 @@ func (client *Client) ListMultiChannelRecordingsWithOptions(request *ListMultiCh
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentChannelId) {
+		query["AgentChannelId"] = request.AgentChannelId
+	}
+
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
 	if !dara.IsNil(request.ContactId) {
 		query["ContactId"] = request.ContactId
 	}
@@ -10953,6 +11005,10 @@ func (client *Client) ListMultiChannelRecordingsWithOptions(request *ListMultiCh
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取分轨录音
+//
 // @param request - ListMultiChannelRecordingsRequest
 //
 // @return ListMultiChannelRecordingsResponse
@@ -11971,6 +12027,10 @@ func (client *Client) ListSkillLevelsOfUser(request *ListSkillLevelsOfUserReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 使用ListSmsMetadata获取短信配置信息。
+//
 // @param request - ListSmsMetadataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12023,6 +12083,10 @@ func (client *Client) ListSmsMetadataWithOptions(request *ListSmsMetadataRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 使用ListSmsMetadata获取短信配置信息。
+//
 // @param request - ListSmsMetadataRequest
 //
 // @return ListSmsMetadataResponse
@@ -12587,6 +12651,10 @@ func (client *Client) ListVisitorChatMessages(request *ListVisitorChatMessagesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询语音信箱列表
+//
 // @param request - ListVoicemailsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12655,6 +12723,10 @@ func (client *Client) ListVoicemailsWithOptions(request *ListVoicemailsRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询语音信箱列表
+//
 // @param request - ListVoicemailsRequest
 //
 // @return ListVoicemailsResponse

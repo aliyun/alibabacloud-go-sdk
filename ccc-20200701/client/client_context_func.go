@@ -2195,6 +2195,10 @@ func (client *Client) CreateTicketWithContext(ctx context.Context, request *Crea
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建坐席
+//
 // @param request - CreateUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2234,6 +2238,10 @@ func (client *Client) CreateUserWithContext(ctx context.Context, request *Create
 
 	if !dara.IsNil(request.Mobile) {
 		query["Mobile"] = request.Mobile
+	}
+
+	if !dara.IsNil(request.NeedEmailNotification) {
+		query["NeedEmailNotification"] = request.NeedEmailNotification
 	}
 
 	if !dara.IsNil(request.Nickname) {
@@ -3812,6 +3820,10 @@ func (client *Client) GetConversationDetailWithContext(ctx context.Context, requ
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
 	if !dara.IsNil(request.ContactId) {
 		query["ContactId"] = request.ContactId
 	}
@@ -5359,6 +5371,10 @@ func (client *Client) ImportContactFlowWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 导入自有线路号码
+//
 // @param request - ImportCorpNumbersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8387,6 +8403,10 @@ func (client *Client) ListLegacyQueueEventLogsWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取单轨录音
+//
 // @param request - ListMonoRecordingsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8400,6 +8420,14 @@ func (client *Client) ListMonoRecordingsWithContext(ctx context.Context, request
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentChannelId) {
+		query["AgentChannelId"] = request.AgentChannelId
+	}
+
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
 	if !dara.IsNil(request.ContactId) {
 		query["ContactId"] = request.ContactId
 	}
@@ -8431,6 +8459,10 @@ func (client *Client) ListMonoRecordingsWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取分轨录音
+//
 // @param request - ListMultiChannelRecordingsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8444,6 +8476,14 @@ func (client *Client) ListMultiChannelRecordingsWithContext(ctx context.Context,
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentChannelId) {
+		query["AgentChannelId"] = request.AgentChannelId
+	}
+
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
 	if !dara.IsNil(request.ContactId) {
 		query["ContactId"] = request.ContactId
 	}
@@ -9261,6 +9301,10 @@ func (client *Client) ListSkillLevelsOfUserWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 使用ListSmsMetadata获取短信配置信息。
+//
 // @param request - ListSmsMetadataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9757,6 +9801,10 @@ func (client *Client) ListVisitorChatMessagesWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询语音信箱列表
+//
 // @param request - ListVoicemailsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
