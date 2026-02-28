@@ -9,6 +9,8 @@ type iSetPasswordComplexityConfigurationRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDisabledWeakPasswordLogin(v bool) *SetPasswordComplexityConfigurationRequest
+	GetDisabledWeakPasswordLogin() *bool
 	SetInstanceId(v string) *SetPasswordComplexityConfigurationRequest
 	GetInstanceId() *string
 	SetPasswordComplexityRules(v []*SetPasswordComplexityConfigurationRequestPasswordComplexityRules) *SetPasswordComplexityConfigurationRequest
@@ -18,6 +20,7 @@ type iSetPasswordComplexityConfigurationRequest interface {
 }
 
 type SetPasswordComplexityConfigurationRequest struct {
+	DisabledWeakPasswordLogin *bool `json:"DisabledWeakPasswordLogin,omitempty" xml:"DisabledWeakPasswordLogin,omitempty"`
 	// The instance ID.
 	//
 	// This parameter is required.
@@ -46,6 +49,10 @@ func (s SetPasswordComplexityConfigurationRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SetPasswordComplexityConfigurationRequest) GetDisabledWeakPasswordLogin() *bool {
+	return s.DisabledWeakPasswordLogin
+}
+
 func (s *SetPasswordComplexityConfigurationRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -56,6 +63,11 @@ func (s *SetPasswordComplexityConfigurationRequest) GetPasswordComplexityRules()
 
 func (s *SetPasswordComplexityConfigurationRequest) GetPasswordMinLength() *int32 {
 	return s.PasswordMinLength
+}
+
+func (s *SetPasswordComplexityConfigurationRequest) SetDisabledWeakPasswordLogin(v bool) *SetPasswordComplexityConfigurationRequest {
+	s.DisabledWeakPasswordLogin = &v
+	return s
 }
 
 func (s *SetPasswordComplexityConfigurationRequest) SetInstanceId(v string) *SetPasswordComplexityConfigurationRequest {

@@ -15166,6 +15166,10 @@ func (client *Client) SetPasswordComplexityConfigurationWithContext(ctx context.
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DisabledWeakPasswordLogin) {
+		query["DisabledWeakPasswordLogin"] = request.DisabledWeakPasswordLogin
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}

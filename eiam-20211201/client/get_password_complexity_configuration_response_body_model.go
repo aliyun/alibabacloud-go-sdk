@@ -62,6 +62,8 @@ func (s *GetPasswordComplexityConfigurationResponseBody) Validate() error {
 }
 
 type GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfiguration struct {
+	DisabledWeakPasswordLogin          *bool  `json:"DisabledWeakPasswordLogin,omitempty" xml:"DisabledWeakPasswordLogin,omitempty"`
+	DisabledWeakPasswordLoginStartedAt *int64 `json:"DisabledWeakPasswordLoginStartedAt,omitempty" xml:"DisabledWeakPasswordLoginStartedAt,omitempty"`
 	// The password complexity rules.
 	PasswordComplexityRules []*GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfigurationPasswordComplexityRules `json:"PasswordComplexityRules,omitempty" xml:"PasswordComplexityRules,omitempty" type:"Repeated"`
 	// The minimum number of characters in a password.
@@ -80,12 +82,30 @@ func (s GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfigur
 	return s.String()
 }
 
+func (s *GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfiguration) GetDisabledWeakPasswordLogin() *bool {
+	return s.DisabledWeakPasswordLogin
+}
+
+func (s *GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfiguration) GetDisabledWeakPasswordLoginStartedAt() *int64 {
+	return s.DisabledWeakPasswordLoginStartedAt
+}
+
 func (s *GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfiguration) GetPasswordComplexityRules() []*GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfigurationPasswordComplexityRules {
 	return s.PasswordComplexityRules
 }
 
 func (s *GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfiguration) GetPasswordMinLength() *int32 {
 	return s.PasswordMinLength
+}
+
+func (s *GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfiguration) SetDisabledWeakPasswordLogin(v bool) *GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfiguration {
+	s.DisabledWeakPasswordLogin = &v
+	return s
+}
+
+func (s *GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfiguration) SetDisabledWeakPasswordLoginStartedAt(v int64) *GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfiguration {
+	s.DisabledWeakPasswordLoginStartedAt = &v
+	return s
 }
 
 func (s *GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfiguration) SetPasswordComplexityRules(v []*GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfigurationPasswordComplexityRules) *GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfiguration {
