@@ -721,6 +721,54 @@ func (client *Client) GetAppInstanceWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
+// 生码-获取插件配置信息
+//
+// @param request - GetAppPluginConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppPluginConfigResponse
+func (client *Client) GetAppPluginConfigWithContext(ctx context.Context, request *GetAppPluginConfigRequest, runtime *dara.RuntimeOptions) (_result *GetAppPluginConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		body["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.PluginId) {
+		body["PluginId"] = request.PluginId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppPluginConfig"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppPluginConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询Logo创建任务
 //
 // @param request - GetCreateLogoTaskRequest
