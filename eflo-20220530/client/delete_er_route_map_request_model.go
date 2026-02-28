@@ -27,7 +27,12 @@ type DeleteErRouteMapRequest struct {
 	// example:
 	//
 	// er-kkopgtne
-	ErId         *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	ErId *string `json:"ErId,omitempty" xml:"ErId,omitempty"`
+	// routing policy ID
+	//
+	// example:
+	//
+	// er-rmap-uwglhzom
 	ErRouteMapId *string `json:"ErRouteMapId,omitempty" xml:"ErRouteMapId,omitempty"`
 	// routing policy Instance ID List
 	ErRouteMapIds []*string `json:"ErRouteMapIds,omitempty" xml:"ErRouteMapIds,omitempty" type:"Repeated"`
