@@ -51,6 +51,8 @@ type iService interface {
 	GetUnhealthyEndpoints() []*string
 	SetUpdateTimestamp(v int64) *Service
 	GetUpdateTimestamp() *int64
+	SetVersions(v []*ServiceVersions) *Service
+	GetVersions() []*ServiceVersions
 }
 
 type Service struct {
@@ -153,7 +155,8 @@ type Service struct {
 	// example:
 	//
 	// 1725868548440
-	UpdateTimestamp *int64 `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
+	UpdateTimestamp *int64             `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
+	Versions        []*ServiceVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
 }
 
 func (s Service) String() string {
@@ -246,6 +249,10 @@ func (s *Service) GetUnhealthyEndpoints() []*string {
 
 func (s *Service) GetUpdateTimestamp() *int64 {
 	return s.UpdateTimestamp
+}
+
+func (s *Service) GetVersions() []*ServiceVersions {
+	return s.Versions
 }
 
 func (s *Service) SetAddresses(v []*string) *Service {
@@ -353,6 +360,11 @@ func (s *Service) SetUpdateTimestamp(v int64) *Service {
 	return s
 }
 
+func (s *Service) SetVersions(v []*ServiceVersions) *Service {
+	s.Versions = v
+	return s
+}
+
 func (s *Service) Validate() error {
 	if s.AgentServiceConfig != nil {
 		if err := s.AgentServiceConfig.Validate(); err != nil {
@@ -380,6 +392,15 @@ func (s *Service) Validate() error {
 	}
 	if s.Ports != nil {
 		for _, item := range s.Ports {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Versions != nil {
+		for _, item := range s.Versions {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -447,5 +468,84 @@ func (s *ServicePorts) SetProtocol(v string) *ServicePorts {
 }
 
 func (s *ServicePorts) Validate() error {
+	return dara.Validate(s)
+}
+
+type ServiceVersions struct {
+	Labels []*ServiceVersionsLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	Name   *string                  `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ServiceVersions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ServiceVersions) GoString() string {
+	return s.String()
+}
+
+func (s *ServiceVersions) GetLabels() []*ServiceVersionsLabels {
+	return s.Labels
+}
+
+func (s *ServiceVersions) GetName() *string {
+	return s.Name
+}
+
+func (s *ServiceVersions) SetLabels(v []*ServiceVersionsLabels) *ServiceVersions {
+	s.Labels = v
+	return s
+}
+
+func (s *ServiceVersions) SetName(v string) *ServiceVersions {
+	s.Name = &v
+	return s
+}
+
+func (s *ServiceVersions) Validate() error {
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ServiceVersionsLabels struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ServiceVersionsLabels) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ServiceVersionsLabels) GoString() string {
+	return s.String()
+}
+
+func (s *ServiceVersionsLabels) GetKey() *string {
+	return s.Key
+}
+
+func (s *ServiceVersionsLabels) GetValue() *string {
+	return s.Value
+}
+
+func (s *ServiceVersionsLabels) SetKey(v string) *ServiceVersionsLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *ServiceVersionsLabels) SetValue(v string) *ServiceVersionsLabels {
+	s.Value = &v
+	return s
+}
+
+func (s *ServiceVersionsLabels) Validate() error {
 	return dara.Validate(s)
 }

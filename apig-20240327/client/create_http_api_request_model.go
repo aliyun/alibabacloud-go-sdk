@@ -71,7 +71,8 @@ type CreateHttpApiRequest struct {
 	//
 	// $.parameters[0].schema.properties.aiProtocols.items.example
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	DryRun      *bool   `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// Deprecated
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 	// Create an API of HTTP type
 	//
 	// example:

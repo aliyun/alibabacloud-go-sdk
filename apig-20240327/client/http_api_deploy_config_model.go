@@ -331,6 +331,7 @@ type HttpApiDeployConfigPolicyConfigs struct {
 	AiFallbackConfig *HttpApiDeployConfigPolicyConfigsAiFallbackConfig `json:"aiFallbackConfig,omitempty" xml:"aiFallbackConfig,omitempty" type:"Struct"`
 	// AI Security Guard configuration
 	AiSecurityGuardConfig *HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfig `json:"aiSecurityGuardConfig,omitempty" xml:"aiSecurityGuardConfig,omitempty" type:"Struct"`
+	AiStatisticsConfig    *HttpApiDeployConfigPolicyConfigsAiStatisticsConfig    `json:"aiStatisticsConfig,omitempty" xml:"aiStatisticsConfig,omitempty" type:"Struct"`
 	// AI Token Rate Limit configuration
 	AiTokenRateLimitConfig *HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfig `json:"aiTokenRateLimitConfig,omitempty" xml:"aiTokenRateLimitConfig,omitempty" type:"Struct"`
 	// Specifies whether to enable the policy.
@@ -363,6 +364,10 @@ func (s *HttpApiDeployConfigPolicyConfigs) GetAiSecurityGuardConfig() *HttpApiDe
 	return s.AiSecurityGuardConfig
 }
 
+func (s *HttpApiDeployConfigPolicyConfigs) GetAiStatisticsConfig() *HttpApiDeployConfigPolicyConfigsAiStatisticsConfig {
+	return s.AiStatisticsConfig
+}
+
 func (s *HttpApiDeployConfigPolicyConfigs) GetAiTokenRateLimitConfig() *HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfig {
 	return s.AiTokenRateLimitConfig
 }
@@ -382,6 +387,11 @@ func (s *HttpApiDeployConfigPolicyConfigs) SetAiFallbackConfig(v *HttpApiDeployC
 
 func (s *HttpApiDeployConfigPolicyConfigs) SetAiSecurityGuardConfig(v *HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfig) *HttpApiDeployConfigPolicyConfigs {
 	s.AiSecurityGuardConfig = v
+	return s
+}
+
+func (s *HttpApiDeployConfigPolicyConfigs) SetAiStatisticsConfig(v *HttpApiDeployConfigPolicyConfigsAiStatisticsConfig) *HttpApiDeployConfigPolicyConfigs {
+	s.AiStatisticsConfig = v
 	return s
 }
 
@@ -408,6 +418,11 @@ func (s *HttpApiDeployConfigPolicyConfigs) Validate() error {
 	}
 	if s.AiSecurityGuardConfig != nil {
 		if err := s.AiSecurityGuardConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AiStatisticsConfig != nil {
+		if err := s.AiStatisticsConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -1117,6 +1132,41 @@ func (s *HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigRiskConfigConsumer
 }
 
 func (s *HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigRiskConfigConsumerRules) Validate() error {
+	return dara.Validate(s)
+}
+
+type HttpApiDeployConfigPolicyConfigsAiStatisticsConfig struct {
+	LogRequestContent  *bool `json:"logRequestContent,omitempty" xml:"logRequestContent,omitempty"`
+	LogResponseContent *bool `json:"logResponseContent,omitempty" xml:"logResponseContent,omitempty"`
+}
+
+func (s HttpApiDeployConfigPolicyConfigsAiStatisticsConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s HttpApiDeployConfigPolicyConfigsAiStatisticsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiDeployConfigPolicyConfigsAiStatisticsConfig) GetLogRequestContent() *bool {
+	return s.LogRequestContent
+}
+
+func (s *HttpApiDeployConfigPolicyConfigsAiStatisticsConfig) GetLogResponseContent() *bool {
+	return s.LogResponseContent
+}
+
+func (s *HttpApiDeployConfigPolicyConfigsAiStatisticsConfig) SetLogRequestContent(v bool) *HttpApiDeployConfigPolicyConfigsAiStatisticsConfig {
+	s.LogRequestContent = &v
+	return s
+}
+
+func (s *HttpApiDeployConfigPolicyConfigsAiStatisticsConfig) SetLogResponseContent(v bool) *HttpApiDeployConfigPolicyConfigsAiStatisticsConfig {
+	s.LogResponseContent = &v
+	return s
+}
+
+func (s *HttpApiDeployConfigPolicyConfigsAiStatisticsConfig) Validate() error {
 	return dara.Validate(s)
 }
 
