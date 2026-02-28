@@ -362,8 +362,9 @@ type ListApplicationsResponseBodyDataApplications struct {
 	// example:
 	//
 	// 2
-	Instances  *int32 `json:"Instances,omitempty" xml:"Instances,omitempty"`
-	IsStateful *bool  `json:"IsStateful,omitempty" xml:"IsStateful,omitempty"`
+	Instances  *int32             `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	IsStateful *bool              `json:"IsStateful,omitempty" xml:"IsStateful,omitempty"`
+	Labels     map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	// The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
 	//
 	// 	- This parameter is set to **1024*	- if the Cpu parameter is set to 500 or 1000.
@@ -519,6 +520,10 @@ func (s *ListApplicationsResponseBodyDataApplications) GetIsStateful() *bool {
 	return s.IsStateful
 }
 
+func (s *ListApplicationsResponseBodyDataApplications) GetLabels() map[string]*string {
+	return s.Labels
+}
+
 func (s *ListApplicationsResponseBodyDataApplications) GetMem() *int32 {
 	return s.Mem
 }
@@ -633,6 +638,11 @@ func (s *ListApplicationsResponseBodyDataApplications) SetInstances(v int32) *Li
 
 func (s *ListApplicationsResponseBodyDataApplications) SetIsStateful(v bool) *ListApplicationsResponseBodyDataApplications {
 	s.IsStateful = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplications) SetLabels(v map[string]*string) *ListApplicationsResponseBodyDataApplications {
+	s.Labels = v
 	return s
 }
 
