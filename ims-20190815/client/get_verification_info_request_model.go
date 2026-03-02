@@ -14,11 +14,6 @@ type iGetVerificationInfoRequest interface {
 }
 
 type GetVerificationInfoRequest struct {
-	// The logon name of the RAM user.
-	//
-	// example:
-	//
-	// test@example.onaliyun.com
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 

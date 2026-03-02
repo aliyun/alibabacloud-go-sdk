@@ -22,42 +22,11 @@ type iGetCredentialReportResponseBody interface {
 }
 
 type GetCredentialReportResponseBody struct {
-	// The content of the user credential report.
-	//
-	// The report is Base64-encoded. After you decode the report, the credential report is in the CSV format.
-	//
-	// example:
-	//
-	// OVZWK4RMOVZW****
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The time when the user credential report was generated.
-	//
-	// example:
-	//
-	// 2020-10-19T15:06:52Z
+	Content       *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	GeneratedTime *string `json:"GeneratedTime,omitempty" xml:"GeneratedTime,omitempty"`
-	// Indicates whether the response is truncated. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	IsTruncated *string `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The parameter that is used to obtain the truncated part. This parameter takes effect only when `IsTruncated` is set to true.
-	//
-	// example:
-	//
-	// EXAMPLE
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 7A01826E-7601-44B0-B4DF-2B0C509836DE
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	IsTruncated   *string `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetCredentialReportResponseBody) String() string {

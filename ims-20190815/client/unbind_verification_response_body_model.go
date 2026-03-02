@@ -14,11 +14,6 @@ type iUnbindVerificationResponseBody interface {
 }
 
 type UnbindVerificationResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// B182C041-8C64-5F2F-A07B-FC67FAF89CF9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

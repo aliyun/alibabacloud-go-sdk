@@ -16,13 +16,7 @@ type iCreateVirtualMFADeviceResponseBody interface {
 }
 
 type CreateVirtualMFADeviceResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// C609CC97-10FE-43EB-BE32-BDC219D8F1E4
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the MFA device.
+	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	VirtualMFADevice *CreateVirtualMFADeviceResponseBodyVirtualMFADevice `json:"VirtualMFADevice,omitempty" xml:"VirtualMFADevice,omitempty" type:"Struct"`
 }
 
@@ -62,24 +56,9 @@ func (s *CreateVirtualMFADeviceResponseBody) Validate() error {
 }
 
 type CreateVirtualMFADeviceResponseBodyVirtualMFADevice struct {
-	// The key of the MFA device.
-	//
-	// example:
-	//
-	// LD3CJ23Z2VGEX6R7ZTQCOA4XL2KODS5PKH7442NLKYX2PVHSHYB7UT3TS5HA****
 	Base32StringSeed *string `json:"Base32StringSeed,omitempty" xml:"Base32StringSeed,omitempty"`
-	// The Base64-encoded QR code of the key.
-	//
-	// example:
-	//
-	// YXNkZmFzZDlmeW5hc2Q5OGZoODd4bXJmcThhaGU5aSBmYXNkZiBzYWRmIGFGIDRxd2VjIGEgdHEz****
-	QRCodePNG *string `json:"QRCodePNG,omitempty" xml:"QRCodePNG,omitempty"`
-	// The serial number of the MFA device.
-	//
-	// example:
-	//
-	// acs:ram::177242285274****:mfa/device001
-	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	QRCodePNG        *string `json:"QRCodePNG,omitempty" xml:"QRCodePNG,omitempty"`
+	SerialNumber     *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 }
 
 func (s CreateVirtualMFADeviceResponseBodyVirtualMFADevice) String() string {

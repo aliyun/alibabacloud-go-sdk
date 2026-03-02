@@ -20,10 +20,19 @@ type iUpdateSAMLProviderRequest interface {
 }
 
 type UpdateSAMLProviderRequest struct {
+	// The signature algorithm supported by the Alibaba Cloud service provider (SP). Valid values:
+	//
+	// - rsa-sha256
+	//
+	// - rsa-sha1
+	//
+	// example:
+	//
+	// rsa-sha1
 	AuthnSignAlgo *string `json:"AuthnSignAlgo,omitempty" xml:"AuthnSignAlgo,omitempty"`
 	// The new description.
 	//
-	// >  You must specify at least one of the `NewDescription` and `NewEncodedSAMLMetadataDocument` parameters.
+	// > Specify at least one of the `NewDescription` and `NewEncodedSAMLMetadataDocument` parameters.
 	//
 	// example:
 	//
@@ -31,13 +40,13 @@ type UpdateSAMLProviderRequest struct {
 	NewDescription *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
 	// The new metadata file.
 	//
-	// >  You must specify at least one of the `NewDescription` and `NewEncodedSAMLMetadataDocument` parameters.
+	// > Specify at least one of the `NewDescription` and `NewEncodedSAMLMetadataDocument` parameters.
 	//
 	// example:
 	//
 	// PD94bWwgdmVy****
 	NewEncodedSAMLMetadataDocument *string `json:"NewEncodedSAMLMetadataDocument,omitempty" xml:"NewEncodedSAMLMetadataDocument,omitempty"`
-	// The name of the IdP whose information you want to modify.
+	// The name of the identity provider to modify.
 	//
 	// This parameter is required.
 	//

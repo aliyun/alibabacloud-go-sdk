@@ -20,32 +20,10 @@ type iListUsersForGroupResponseBody interface {
 }
 
 type ListUsersForGroupResponseBody struct {
-	// Indicates whether the response is truncated. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
-	//
-	// >  This parameter is returned only when `IsTruncated` is `true`.
-	//
-	// example:
-	//
-	// EXAMPLE
-	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 789FF581-B3C8-43A8-9115-54304B46D05C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the RAM users.
-	Users *ListUsersForGroupResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
+	IsTruncated *bool                               `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	Marker      *string                             `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	RequestId   *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Users       *ListUsersForGroupResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
 }
 
 func (s ListUsersForGroupResponseBody) String() string {
@@ -136,29 +114,9 @@ func (s *ListUsersForGroupResponseBodyUsers) Validate() error {
 }
 
 type ListUsersForGroupResponseBodyUsersUser struct {
-	// The display name of the RAM user.
-	//
-	// example:
-	//
-	// test
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The time when the RAM user was added to the RAM user group. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2020-10-20T06:57:00Z
-	JoinDate *string `json:"JoinDate,omitempty" xml:"JoinDate,omitempty"`
-	// The ID of the RAM user.
-	//
-	// example:
-	//
-	// 20732900249392****
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The logon name of the RAM user.
-	//
-	// example:
-	//
-	// test@example.onaliyun.com
+	DisplayName       *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	JoinDate          *string `json:"JoinDate,omitempty" xml:"JoinDate,omitempty"`
+	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 

@@ -16,14 +16,8 @@ type iUnbindMFADeviceResponseBody interface {
 }
 
 type UnbindMFADeviceResponseBody struct {
-	// The information about the MFA device.
 	MFADevice *UnbindMFADeviceResponseBodyMFADevice `json:"MFADevice,omitempty" xml:"MFADevice,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// A26CB3E9-1021-452A-AC57-3134B3BA0E4C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UnbindMFADeviceResponseBody) String() string {
@@ -62,11 +56,6 @@ func (s *UnbindMFADeviceResponseBody) Validate() error {
 }
 
 type UnbindMFADeviceResponseBodyMFADevice struct {
-	// The serial number of the MFA device.
-	//
-	// example:
-	//
-	// acs:ram::151298381312****:mfa/device001
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 }
 

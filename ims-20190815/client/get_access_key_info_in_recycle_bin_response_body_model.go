@@ -16,14 +16,8 @@ type iGetAccessKeyInfoInRecycleBinResponseBody interface {
 }
 
 type GetAccessKeyInfoInRecycleBinResponseBody struct {
-	// The information about the AccessKey pair.
 	AccessKey *GetAccessKeyInfoInRecycleBinResponseBodyAccessKey `json:"AccessKey,omitempty" xml:"AccessKey,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 4507D1CD-526A-4E2B-A1E2-3AB045D1EE0B
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAccessKeyInfoInRecycleBinResponseBody) String() string {
@@ -62,52 +56,13 @@ func (s *GetAccessKeyInfoInRecycleBinResponseBody) Validate() error {
 }
 
 type GetAccessKeyInfoInRecycleBinResponseBodyAccessKey struct {
-	// The AccessKey ID.
-	//
-	// example:
-	//
-	// LTAI*******************
-	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	// The time when the AccessKey pair was created.
-	//
-	// example:
-	//
-	// 2020-10-12T09:12:00Z
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The time when the AccessKey pair will be permanently deleted from the recycle bin.
-	//
-	// example:
-	//
-	// 2020-11-12T10:12:00Z
-	DeleteDate *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
-	// The time when the AccessKey pair was deleted and moved to the recycle bin.
-	//
-	// example:
-	//
-	// 2020-10-12T10:12:00Z
-	RecycleDate *string `json:"RecycleDate,omitempty" xml:"RecycleDate,omitempty"`
-	// The ID of the RAM user.
-	//
-	// example:
-	//
-	// 20732900249392****
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The logon name of the RAM user.
-	//
-	// example:
-	//
-	// test@example.onaliyun.com
+	AccessKeyId       *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	CreateDate        *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	DeleteDate        *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
+	RecycleDate       *string `json:"RecycleDate,omitempty" xml:"RecycleDate,omitempty"`
+	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
-	// Indicates whether the RAM user to which the AccessKey pair belongs is in the recycle bin. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	UserRecycled *bool `json:"UserRecycled,omitempty" xml:"UserRecycled,omitempty"`
+	UserRecycled      *bool   `json:"UserRecycled,omitempty" xml:"UserRecycled,omitempty"`
 }
 
 func (s GetAccessKeyInfoInRecycleBinResponseBodyAccessKey) String() string {

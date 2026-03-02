@@ -22,15 +22,15 @@ type iListUserBasicInfosResponseBody interface {
 type ListUserBasicInfosResponseBody struct {
 	// Indicates whether the response is truncated. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
 	// true
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The `marker`. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.``
+	// The `marker`. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.\\`\\`
 	//
 	// example:
 	//
@@ -41,8 +41,7 @@ type ListUserBasicInfosResponseBody struct {
 	// example:
 	//
 	// EF2B25FD-CADE-445B-BE4D-E082E0FF1A0F
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The basic information about the RAM users.
+	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UserBasicInfos *ListUserBasicInfosResponseBodyUserBasicInfos `json:"UserBasicInfos,omitempty" xml:"UserBasicInfos,omitempty" type:"Struct"`
 }
 
@@ -134,29 +133,9 @@ func (s *ListUserBasicInfosResponseBodyUserBasicInfos) Validate() error {
 }
 
 type ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo struct {
-	// The display name of the RAM user.
-	//
-	// example:
-	//
-	// test
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The status of the RAM user.
-	//
-	// example:
-	//
-	// active
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the RAM user.
-	//
-	// example:
-	//
-	// 20732900249392****
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The logon name of the RAM user.
-	//
-	// example:
-	//
-	// test@example.onaliyun.com
+	DisplayName       *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 

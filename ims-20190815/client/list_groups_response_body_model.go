@@ -20,13 +20,12 @@ type iListGroupsResponseBody interface {
 }
 
 type ListGroupsResponseBody struct {
-	// The information about the RAM user groups.
 	Groups *ListGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
 	// Indicates whether the response is truncated. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -134,42 +133,12 @@ func (s *ListGroupsResponseBodyGroups) Validate() error {
 }
 
 type ListGroupsResponseBodyGroupsGroup struct {
-	// The description.
-	//
-	// example:
-	//
-	// Dev-Team
-	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	// The creation time.
-	//
-	// example:
-	//
-	// 2020-10-19T12:33:18Z
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The display name of the RAM user group.
-	//
-	// example:
-	//
-	// Dev-Team
+	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The ID of the RAM user group.
-	//
-	// example:
-	//
-	// 740317625433843****
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the RAM user group.
-	//
-	// example:
-	//
-	// dev-team
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The update time.
-	//
-	// example:
-	//
-	// 2020-10-19T12:33:18Z
-	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	UpdateDate  *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s ListGroupsResponseBodyGroupsGroup) String() string {

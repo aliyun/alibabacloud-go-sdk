@@ -22,7 +22,7 @@ type SetSecurityPreferenceResponseBody struct {
 	//
 	// 17494710-B4BA-4185-BBBB-C1A6ABDE1639
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of security preferences.
+	// The security preferences.
 	SecurityPreference *SetSecurityPreferenceResponseBodySecurityPreference `json:"SecurityPreference,omitempty" xml:"SecurityPreference,omitempty" type:"Struct"`
 }
 
@@ -62,17 +62,17 @@ func (s *SetSecurityPreferenceResponseBody) Validate() error {
 }
 
 type SetSecurityPreferenceResponseBodySecurityPreference struct {
-	// The AccessKey pair preference.
+	// The AccessKey pair preferences.
 	AccessKeyPreference *SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference `json:"AccessKeyPreference,omitempty" xml:"AccessKeyPreference,omitempty" type:"Struct"`
-	// The logon preference.
+	// The logon preferences.
 	LoginProfilePreference *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference `json:"LoginProfilePreference,omitempty" xml:"LoginProfilePreference,omitempty" type:"Struct"`
-	// The MFA preference.
+	// The MFA preferences.
 	MFAPreference *SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference `json:"MFAPreference,omitempty" xml:"MFAPreference,omitempty" type:"Struct"`
-	// The maximum idle periods. Unit: days.
+	// The configuration of the maximum idle period in days.
 	MaxIdleDays *SetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays `json:"MaxIdleDays,omitempty" xml:"MaxIdleDays,omitempty" type:"Struct"`
-	// The personal information preference.
+	// The personal information preferences.
 	PersonalInfoPreference *SetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference `json:"PersonalInfoPreference,omitempty" xml:"PersonalInfoPreference,omitempty" type:"Struct"`
-	// The MFA method preference.
+	// The preferences for MFA methods.
 	VerificationPreference *SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference `json:"VerificationPreference,omitempty" xml:"VerificationPreference,omitempty" type:"Struct"`
 }
 
@@ -173,7 +173,11 @@ func (s *SetSecurityPreferenceResponseBodySecurityPreference) Validate() error {
 }
 
 type SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference struct {
-	// Indicates whether RAM users can manage their AccessKey pairs.
+	// Indicates whether RAM users can manage their own AccessKey pairs. Valid values:
+	//
+	// - true
+	//
+	// - false
 	//
 	// example:
 	//
@@ -203,37 +207,55 @@ func (s *SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference)
 }
 
 type SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference struct {
-	// Indicates whether RAM users can change their passwords.
+	// Indicates whether RAM users can manage their own passwords.
+	//
+	// Valid values:
+	//
+	// - true
+	//
+	// - false
 	//
 	// example:
 	//
 	// true
 	AllowUserToChangePassword *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
-	// Indicates whether a RAM user can use a passkey for logon.
+	// Indicates whether RAM users can log on directly using passkeys.
+	//
+	// Valid values:
+	//
+	// - true
+	//
+	// - false
 	//
 	// example:
 	//
 	// false
 	AllowUserToLoginWithPasskey *bool `json:"AllowUserToLoginWithPasskey,omitempty" xml:"AllowUserToLoginWithPasskey,omitempty"`
-	// Indicates whether RAM users can remember the MFA devices for seven days.
+	// Indicates whether the MFA status is saved for seven days after a RAM user logs on using MFA.
+	//
+	// Valid values:
+	//
+	// - true
+	//
+	// - false
 	//
 	// example:
 	//
 	// false
 	EnableSaveMFATicket *bool `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
-	// The subnet mask.
+	// The IP addresses or CIDR blocks from which RAM users are allowed to sign in to the Alibaba Cloud console.
 	//
 	// example:
 	//
 	// 10.0.0.0/8
 	LoginNetworkMasks *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
-	// The validity period of the logon session of RAM users.
+	// The duration of a logon session for a RAM user.
 	//
 	// example:
 	//
 	// 6
 	LoginSessionDuration *int32 `json:"LoginSessionDuration,omitempty" xml:"LoginSessionDuration,omitempty"`
-	// Indicates whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console.
+	// Indicates whether MFA is required for logon. This parameter replaces `EnforceMFAForLogin`. The `EnforceMFAForLogin` parameter is still valid, but using this new parameter is recommended.
 	//
 	// example:
 	//
@@ -241,7 +263,7 @@ type SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference s
 	MFAOperationForLogin *string `json:"MFAOperationForLogin,omitempty" xml:"MFAOperationForLogin,omitempty"`
 	// Deprecated
 	//
-	// Indicates whether to enable MFA for RAM users who initiated unusual logons.
+	// This parameter is deprecated.
 	//
 	// example:
 	//
@@ -325,7 +347,13 @@ func (s *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreferen
 }
 
 type SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference struct {
-	// Indicates whether RAM users can manage their MFA devices.
+	// Indicates whether RAM users can manage their own MFA devices.
+	//
+	// Valid values:
+	//
+	// - true
+	//
+	// - false
 	//
 	// example:
 	//
@@ -355,13 +383,21 @@ func (s *SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) Valid
 }
 
 type SetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays struct {
-	// The maximum number of days that the AccessKey pair of a RAM user can stay unused. If an AccessKey pair is not used in the previous specified number of days, the AccessKey pair is automatically disabled on the next day. The default value is 730. You cannot change the value.
+	// The maximum idle period for the AccessKey pair of a RAM user. If an AccessKey pair remains unused for this period, it is automatically disabled the next day.
+	//
+	// Default value: 730.
+	//
+	// Unit: days.
 	//
 	// example:
 	//
 	// 730
 	MaxIdleDaysForAccessKeys *int32 `json:"MaxIdleDaysForAccessKeys,omitempty" xml:"MaxIdleDaysForAccessKeys,omitempty"`
-	// The maximum number of days that a RAM user can stay idle. If a RAM user for whom console logon is enabled does not log on to the console in the previous specified number of days, console logon is automatically disabled for the RAM user on the next day. SSO is not involved. The default value is 730. You cannot change the value.
+	// The maximum idle period for RAM users. If a RAM user with console logon enabled remains inactive for this period, their console logon is automatically disabled the next day. This does not apply to single sign-on (SSO) logons.
+	//
+	// Default value: 730.
+	//
+	// Unit: days.
 	//
 	// example:
 	//
@@ -400,7 +436,13 @@ func (s *SetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays) Validat
 }
 
 type SetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference struct {
-	// Indicates whether RAM users can manage their personal DingTalk accounts, such as binding and unbinding of the accounts.
+	// Indicates whether RAM users can attach or detach their personal DingTalk accounts.
+	//
+	// Valid values:
+	//
+	// - true
+	//
+	// - false
 	//
 	// example:
 	//

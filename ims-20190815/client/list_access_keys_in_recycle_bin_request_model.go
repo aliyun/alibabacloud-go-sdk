@@ -14,11 +14,6 @@ type iListAccessKeysInRecycleBinRequest interface {
 }
 
 type ListAccessKeysInRecycleBinRequest struct {
-	// The ID of the Resource Access Management (RAM) user.
-	//
-	// example:
-	//
-	// 20732900249392****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 

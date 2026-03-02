@@ -20,29 +20,9 @@ type iListSAMLProvidersResponseBody interface {
 }
 
 type ListSAMLProvidersResponseBody struct {
-	// Indicates whether the response is truncated. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The `marker`. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.``
-	//
-	// example:
-	//
-	// EXAMPLE
-	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 2D8B70D3-E194-41C9-93C5-F6A10D716D24
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about IdPs.
+	IsTruncated   *bool                                       `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	Marker        *string                                     `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	RequestId     *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SAMLProviders *ListSAMLProvidersResponseBodySAMLProviders `json:"SAMLProviders,omitempty" xml:"SAMLProviders,omitempty" type:"Struct"`
 }
 
@@ -134,36 +114,11 @@ func (s *ListSAMLProvidersResponseBodySAMLProviders) Validate() error {
 }
 
 type ListSAMLProvidersResponseBodySAMLProvidersSAMLProvider struct {
-	// The Alibaba Cloud Resource Name (ARN) of the IdP.
-	//
-	// example:
-	//
-	// acs:ram::177242285274****:saml-provider/test-provider
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The creation time.
-	//
-	// example:
-	//
-	// 2020-10-22T06:26:15Z
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The description.
-	//
-	// example:
-	//
-	// This is a provider.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the IdP.
-	//
-	// example:
-	//
-	// test-provider
+	Arn              *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	SAMLProviderName *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
-	// The update time.
-	//
-	// example:
-	//
-	// 2020-10-22T06:26:15Z
-	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	UpdateDate       *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s ListSAMLProvidersResponseBodySAMLProvidersSAMLProvider) String() string {

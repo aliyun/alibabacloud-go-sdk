@@ -23,8 +23,7 @@ type ListRecentGovernanceMetricsResponseBody struct {
 	// example:
 	//
 	// 2025-02-10T02:11:23Z
-	GenerateTime *string `json:"GenerateTime,omitempty" xml:"GenerateTime,omitempty"`
-	// The metric values of all governance items. The value of the parameter is an array, and each row in the array contains the metric value of a governance item.
+	GenerateTime      *string                                                   `json:"GenerateTime,omitempty" xml:"GenerateTime,omitempty"`
 	GovernanceMetrics *ListRecentGovernanceMetricsResponseBodyGovernanceMetrics `json:"GovernanceMetrics,omitempty" xml:"GovernanceMetrics,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -113,30 +112,9 @@ func (s *ListRecentGovernanceMetricsResponseBodyGovernanceMetrics) Validate() er
 }
 
 type ListRecentGovernanceMetricsResponseBodyGovernanceMetricsGovernanceMetric struct {
-	// The name of the governance item.
-	//
-	// example:
-	//
-	// RecentAccountLoginTimes
-	GovernanceItem *string `json:"GovernanceItem,omitempty" xml:"GovernanceItem,omitempty"`
-	// The type of the metric value. Valid values:
-	//
-	// 	- Number
-	//
-	// 	- String
-	//
-	// 	- Boolean
-	//
-	// example:
-	//
-	// Number
-	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	// The metric value. The type of the metric value is determined by `MetricType`.
-	//
-	// example:
-	//
-	// 5
-	MetricValue interface{} `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
+	GovernanceItem *string     `json:"GovernanceItem,omitempty" xml:"GovernanceItem,omitempty"`
+	MetricType     *string     `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	MetricValue    interface{} `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
 }
 
 func (s ListRecentGovernanceMetricsResponseBodyGovernanceMetricsGovernanceMetric) String() string {

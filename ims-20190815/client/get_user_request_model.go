@@ -18,33 +18,8 @@ type iGetUserRequest interface {
 }
 
 type GetUserRequest struct {
-	// The AccessKey ID of the RAM user.
-	//
-	// > You must specify only one of the following parameters: `UserPrincipalName`, `UserId`, and `UserAccessKeyId`.
-	//
-	// example:
-	//
-	// LTAI*******************
-	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
-	// The ID of the RAM user.
-	//
-	// > You must specify only one of the following parameters: `UserPrincipalName`, `UserId`, and `UserAccessKeyId`.
-	//
-	// example:
-	//
-	// 20732900249392****
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The logon name of the RAM user.
-	//
-	// The name is in the format of `<username>@<AccountAlias>.onaliyun.com`. `<username>` indicates the name of the RAM user. `<AccountAlias>.onaliyun.com` indicates the default domain name.
-	//
-	// The value of `UserPrincipalName` must be `1 to 128` characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The value of `<username>` must be `1 to 64` characters in length.
-	//
-	// > You must specify only one of the following parameters: `UserPrincipalName`, `UserId`, and `UserAccessKeyId`.
-	//
-	// example:
-	//
-	// test@example.onaliyun.com
+	UserAccessKeyId   *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
+	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 

@@ -14,11 +14,6 @@ type iDeprovisionExternalApplicationResponseBody interface {
 }
 
 type DeprovisionExternalApplicationResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 4507D1CD-526A-4E2B-A1C2-3AB045D1AE0B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

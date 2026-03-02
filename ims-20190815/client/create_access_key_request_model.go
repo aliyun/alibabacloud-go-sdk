@@ -14,13 +14,6 @@ type iCreateAccessKeyRequest interface {
 }
 
 type CreateAccessKeyRequest struct {
-	// The logon name of the RAM user.
-	//
-	// If this parameter is empty, an AccessKey pair is created for the current user.
-	//
-	// example:
-	//
-	// test@example.onaliyun.com
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 

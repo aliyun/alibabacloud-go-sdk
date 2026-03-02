@@ -30,26 +30,48 @@ type iGetGovernanceItemReportResponseBody interface {
 type GetGovernanceItemReportResponseBody struct {
 	ColumnsSchema *GetGovernanceItemReportResponseBodyColumnsSchema `json:"ColumnsSchema,omitempty" xml:"ColumnsSchema,omitempty" type:"Struct"`
 	ColumnsValue  *GetGovernanceItemReportResponseBodyColumnsValue  `json:"ColumnsValue,omitempty" xml:"ColumnsValue,omitempty" type:"Struct"`
+	// The time when the report for the check item was generated.
+	//
 	// example:
 	//
 	// 2020-10-19T15:06:52Z
 	GenerateTime *string `json:"GenerateTime,omitempty" xml:"GenerateTime,omitempty"`
+	// Indicates whether the response is truncated. Valid values:
+	//
+	// - true
+	//
+	// - false
+	//
 	// example:
 	//
 	// true
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// This parameter is returned only when `IsTruncated` is set to true. Use this parameter to retrieve the truncated content.
+	//
 	// example:
 	//
 	// EXAMPLE
 	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The data type of the metric value. Valid values:
+	//
+	// - Number: the numeric type.
+	//
+	// - String: the string type.
+	//
+	// - Boolean: the Boolean type.
+	//
 	// example:
 	//
 	// Number
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// The metric value.
+	//
 	// example:
 	//
 	// 100
 	MetricValue interface{} `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F2CE9688-AA85-5F23-8C22-0EC23473405F
@@ -185,13 +207,7 @@ func (s *GetGovernanceItemReportResponseBodyColumnsSchema) Validate() error {
 }
 
 type GetGovernanceItemReportResponseBodyColumnsSchemaColumnSchema struct {
-	// example:
-	//
-	// UserPrincipalName
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// example:
-	//
-	// String
 	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
 }
 

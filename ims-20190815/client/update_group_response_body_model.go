@@ -16,14 +16,8 @@ type iUpdateGroupResponseBody interface {
 }
 
 type UpdateGroupResponseBody struct {
-	// The information about the RAM user group.
-	Group *UpdateGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// CDA656E3-3CE9-4A03-A8A3-B42A0C3C3287
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Group     *UpdateGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateGroupResponseBody) String() string {
@@ -62,42 +56,12 @@ func (s *UpdateGroupResponseBody) Validate() error {
 }
 
 type UpdateGroupResponseBodyGroup struct {
-	// The description.
-	//
-	// example:
-	//
-	// Test-Team
-	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	// The creation time.
-	//
-	// example:
-	//
-	// 2020-10-19T16:15:17Z
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The display name of the RAM user group.
-	//
-	// example:
-	//
-	// Test-Team
+	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The ID of the RAM user group.
-	//
-	// example:
-	//
-	// 740317625433843****
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the RAM user group.
-	//
-	// example:
-	//
-	// Test-Team
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The update time.
-	//
-	// example:
-	//
-	// 2020-10-20T03:44:27Z
-	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	UpdateDate  *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s UpdateGroupResponseBodyGroup) String() string {

@@ -16,22 +16,8 @@ type iGetAccountMFAInfoResponseBody interface {
 }
 
 type GetAccountMFAInfoResponseBody struct {
-	// Indicates whether MFA devices are enabled. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// false
-	IsMFAEnable *bool `json:"IsMFAEnable,omitempty" xml:"IsMFAEnable,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 4BE83135-0B08-467C-B3A2-27B312FD0F57
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	IsMFAEnable *bool   `json:"IsMFAEnable,omitempty" xml:"IsMFAEnable,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAccountMFAInfoResponseBody) String() string {

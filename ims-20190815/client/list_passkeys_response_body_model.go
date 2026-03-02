@@ -16,14 +16,8 @@ type iListPasskeysResponseBody interface {
 }
 
 type ListPasskeysResponseBody struct {
-	// The information about the passkeys.
-	Passkeys []*ListPasskeysResponseBodyPasskeys `json:"Passkeys,omitempty" xml:"Passkeys,omitempty" type:"Repeated"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 04F0F334-1335-436C-A1D7-6C044FE73368
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Passkeys  []*ListPasskeysResponseBodyPasskeys `json:"Passkeys,omitempty" xml:"Passkeys,omitempty" type:"Repeated"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPasskeysResponseBody) String() string {
@@ -66,29 +60,9 @@ func (s *ListPasskeysResponseBody) Validate() error {
 }
 
 type ListPasskeysResponseBodyPasskeys struct {
-	// The time when the passkey was created. The value is a timestamp.
-	//
-	// example:
-	//
-	// 1737450279
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The time when the passkey was last used. The value is a timestamp.
-	//
-	// example:
-	//
-	// 1737450390
+	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	LastUseDate *string `json:"LastUseDate,omitempty" xml:"LastUseDate,omitempty"`
-	// The ID of the passkey.
-	//
-	// example:
-	//
-	// PASSKEY-CuZjEHhWcr7GIQOMGvkS
-	PasskeyId *string `json:"PasskeyId,omitempty" xml:"PasskeyId,omitempty"`
-	// The name of the passkey.
-	//
-	// example:
-	//
-	// device1
+	PasskeyId   *string `json:"PasskeyId,omitempty" xml:"PasskeyId,omitempty"`
 	PasskeyName *string `json:"PasskeyName,omitempty" xml:"PasskeyName,omitempty"`
 }
 

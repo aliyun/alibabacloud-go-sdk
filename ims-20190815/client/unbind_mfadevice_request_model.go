@@ -14,13 +14,7 @@ type iUnbindMFADeviceRequest interface {
 }
 
 type UnbindMFADeviceRequest struct {
-	// The logon name of the RAM user.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test@example.onaliyun.com
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 

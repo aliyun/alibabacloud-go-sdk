@@ -14,13 +14,6 @@ type iListAccessKeysRequest interface {
 }
 
 type ListAccessKeysRequest struct {
-	// The logon name of the RAM user.
-	//
-	// If this parameter is empty, the AccessKey pairs of the current user are queried.
-	//
-	// example:
-	//
-	// test@example.onaliyun.com
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 

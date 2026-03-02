@@ -20,30 +20,10 @@ type iListOIDCProvidersResponseBody interface {
 }
 
 type ListOIDCProvidersResponseBody struct {
-	// Indicates whether the response is truncated. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// false
-	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The `marker`. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.``
-	//
-	// example:
-	//
-	// EXAMPLE
-	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The information about the OIDC IdP.
+	IsTruncated   *bool                                       `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	Marker        *string                                     `json:"Marker,omitempty" xml:"Marker,omitempty"`
 	OIDCProviders *ListOIDCProvidersResponseBodyOIDCProviders `json:"OIDCProviders,omitempty" xml:"OIDCProviders,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// D2148337-B86A-57F0-8B31-EB7BE0125226
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId     *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListOIDCProvidersResponseBody) String() string {
@@ -134,72 +114,17 @@ func (s *ListOIDCProvidersResponseBodyOIDCProviders) Validate() error {
 }
 
 type ListOIDCProvidersResponseBodyOIDCProvidersOIDCProvider struct {
-	// The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
-	//
-	// example:
-	//
-	// acs:ram::177242285274****:oidc-provider/TestOIDCProvider
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The ID of the client, If you want to specify multiple client IDs, separate the client IDs with commas (,).
-	//
-	// example:
-	//
-	// 498469743454717****
-	ClientIds *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
-	// The time when the OIDC IdP was created. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-11-11T06:56:03Z
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The description of the OIDC IdP.
-	//
-	// example:
-	//
-	// This is a new OIDC Provider.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The fingerprint of the HTTPS certificate. If multiple fingerprints are returned, the fingerprints are separated by commas (,).
-	//
-	// example:
-	//
-	// 902ef2deeb3c5b13ea4c3d5193629309e231****
-	Fingerprints *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
-	// The timestamp when the OIDC IdP was created.
-	//
-	// example:
-	//
-	// 1636613763000
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The timestamp when the OIDC IdP was modified.
-	//
-	// example:
-	//
-	// 1636706309000
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The earliest time when an external IdP can issue an ID token. If the value of the iat field in the ID token is later than the current time, the request is rejected. Unit: hours. Valid values: 1 to 168.
-	//
-	// example:
-	//
-	// 12
-	IssuanceLimitTime *int64 `json:"IssuanceLimitTime,omitempty" xml:"IssuanceLimitTime,omitempty"`
-	// The URL of the issuer.
-	//
-	// example:
-	//
-	// https://dev-xxxxxx.okta.com
-	IssuerUrl *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
-	// The name of the OIDC IdP.
-	//
-	// example:
-	//
-	// TestOIDCProvider
-	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
-	// The time when the OIDC IdP was modified. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-11-12T08:38:29Z
-	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	Arn               *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	ClientIds         *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	CreateDate        *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Fingerprints      *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
+	GmtCreate         *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified       *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	IssuanceLimitTime *int64  `json:"IssuanceLimitTime,omitempty" xml:"IssuanceLimitTime,omitempty"`
+	IssuerUrl         *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
+	OIDCProviderName  *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
+	UpdateDate        *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s ListOIDCProvidersResponseBodyOIDCProvidersOIDCProvider) String() string {

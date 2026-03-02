@@ -20,37 +20,10 @@ type iBindMFADeviceRequest interface {
 }
 
 type BindMFADeviceRequest struct {
-	// The first verification code.
-	//
-	// >  You can call the [CreateVirtualMFADevice](https://help.aliyun.com/document_detail/186179.html) operation to create an MFA device and generate a key (value of `Base32StringSeed`). Then, use the key on the Alibaba Cloud app to manually add an MFA device, and obtain the two consecutive verification codes.
-	//
-	// example:
-	//
-	// 123456
 	AuthenticationCode1 *string `json:"AuthenticationCode1,omitempty" xml:"AuthenticationCode1,omitempty"`
-	// The second verification code.
-	//
-	// >  You can call the [CreateVirtualMFADevice](https://help.aliyun.com/document_detail/186179.html) operation to create an MFA device and generate a key (value of `Base32StringSeed`). Then, use the key on the Alibaba Cloud app to manually add an MFA device, and obtain the two consecutive verification codes.
-	//
-	// example:
-	//
-	// 654321
 	AuthenticationCode2 *string `json:"AuthenticationCode2,omitempty" xml:"AuthenticationCode2,omitempty"`
-	// The serial number of the MFA device.
-	//
-	// >  You can call the [CreateVirtualMFADevice](https://help.aliyun.com/document_detail/186179.html) operation to obtain the serial number of the MFA device.
-	//
-	// example:
-	//
-	// acs:ram::177242285274****:mfa/device001
-	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	// The logon name of the RAM user.
-	//
+	SerialNumber        *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test@example.onaliyun.com
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 

@@ -16,7 +16,7 @@ type iGetPasswordPolicyResponseBody interface {
 }
 
 type GetPasswordPolicyResponseBody struct {
-	// The details of the password policy.
+	// The password strength policy information.
 	PasswordPolicy *GetPasswordPolicyResponseBodyPasswordPolicy `json:"PasswordPolicy,omitempty" xml:"PasswordPolicy,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,44 +62,63 @@ func (s *GetPasswordPolicyResponseBody) Validate() error {
 }
 
 type GetPasswordPolicyResponseBodyPasswordPolicy struct {
-	// Indicates whether to disable logon after the password expires.
+	// Indicates whether logon is restricted after the password expires.
 	//
 	// example:
 	//
 	// false
-	HardExpire         *bool  `json:"HardExpire,omitempty" xml:"HardExpire,omitempty"`
+	HardExpire *bool `json:"HardExpire,omitempty" xml:"HardExpire,omitempty"`
+	// The validity period of the initial password.
+	//
+	// example:
+	//
+	// 14
 	InitialPasswordAge *int32 `json:"InitialPasswordAge,omitempty" xml:"InitialPasswordAge,omitempty"`
-	// The maximum number of password retries.
+	// Indicates whether to block threat passwords when a password is set using OpenAPI.
+	//
+	// Valid values:
+	//
+	// - true: Threat passwords are blocked when you set a password using OpenAPI.
+	//
+	// - false: Threat passwords are not blocked when you set a password using OpenAPI.
+	//
+	// Default value: false
+	//
+	// example:
+	//
+	// false
+	InterceptRiskPasswordOnApi *bool `json:"InterceptRiskPasswordOnApi,omitempty" xml:"InterceptRiskPasswordOnApi,omitempty"`
+	// The maximum number of logon attempts.
 	//
 	// example:
 	//
 	// 0
 	MaxLoginAttemps *int32 `json:"MaxLoginAttemps,omitempty" xml:"MaxLoginAttemps,omitempty"`
-	// The validity period of the password.
+	// The password validity period.
 	//
 	// example:
 	//
 	// 0
 	MaxPasswordAge *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
-	// The minimum number of unique characters in the password.
+	// The minimum number of different characters in the password.
 	//
 	// example:
 	//
 	// 0
 	MinimumPasswordDifferentCharacter *int32 `json:"MinimumPasswordDifferentCharacter,omitempty" xml:"MinimumPasswordDifferentCharacter,omitempty"`
-	// The minimum required number of characters in a password.
+	// The minimum password length.
 	//
 	// example:
 	//
 	// 8
 	MinimumPasswordLength *int32 `json:"MinimumPasswordLength,omitempty" xml:"MinimumPasswordLength,omitempty"`
-	// Indicates whether to exclude the username from the password.
+	// Indicates whether the password must not contain the username.
 	//
 	// example:
 	//
 	// false
 	PasswordNotContainUserName *bool `json:"PasswordNotContainUserName,omitempty" xml:"PasswordNotContainUserName,omitempty"`
-	// The policy for password history check.
+	// The password reuse prevention policy.
 	//
 	// example:
 	//
@@ -111,13 +130,13 @@ type GetPasswordPolicyResponseBodyPasswordPolicy struct {
 	//
 	// false
 	RequireLowercaseCharacters *bool `json:"RequireLowercaseCharacters,omitempty" xml:"RequireLowercaseCharacters,omitempty"`
-	// Indicates whether the password must contain digits.
+	// Indicates whether the password must contain numbers.
 	//
 	// example:
 	//
 	// false
 	RequireNumbers *bool `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
-	// Indicates whether the password must contain special characters.
+	// Indicates whether the password must contain symbols.
 	//
 	// example:
 	//
@@ -145,6 +164,10 @@ func (s *GetPasswordPolicyResponseBodyPasswordPolicy) GetHardExpire() *bool {
 
 func (s *GetPasswordPolicyResponseBodyPasswordPolicy) GetInitialPasswordAge() *int32 {
 	return s.InitialPasswordAge
+}
+
+func (s *GetPasswordPolicyResponseBodyPasswordPolicy) GetInterceptRiskPasswordOnApi() *bool {
+	return s.InterceptRiskPasswordOnApi
 }
 
 func (s *GetPasswordPolicyResponseBodyPasswordPolicy) GetMaxLoginAttemps() *int32 {
@@ -194,6 +217,11 @@ func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetHardExpire(v bool) *Get
 
 func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetInitialPasswordAge(v int32) *GetPasswordPolicyResponseBodyPasswordPolicy {
 	s.InitialPasswordAge = &v
+	return s
+}
+
+func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetInterceptRiskPasswordOnApi(v bool) *GetPasswordPolicyResponseBodyPasswordPolicy {
+	s.InterceptRiskPasswordOnApi = &v
 	return s
 }
 

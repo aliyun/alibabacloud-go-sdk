@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Adds a client ID to an OpenID Connect (OIDC) identity provider (IdP).
+// 为OIDC身份提供商添加指定客户端ID
 //
 // @param request - AddClientIdToOIDCProviderRequest
 //
@@ -57,13 +57,7 @@ func (client *Client) AddClientIdToOIDCProviderWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Adds a fingerprint to an OpenID Connect (OIDC) identity provider (IdP).
-//
-// Description:
-//
-// ###
-//
-// This topic provides an example on how to add the fingerprint `902ef2deeb3c5b13ea4c3d5193629309e231****` to the OIDC IdP named `TestOIDCProvider`.
+// 为OIDC身份提供商添加验证指纹
 //
 // @param request - AddFingerprintToOIDCProviderRequest
 //
@@ -111,7 +105,7 @@ func (client *Client) AddFingerprintToOIDCProviderWithContext(ctx context.Contex
 
 // Summary:
 //
-// Adds a Resource Access Management (RAM) user to a RAM user group.
+// 将RAM用户添加到指定的用户组
 //
 // @param request - AddUserToGroupRequest
 //
@@ -159,7 +153,7 @@ func (client *Client) AddUserToGroupWithContext(ctx context.Context, request *Ad
 
 // Summary:
 //
-// Binds a multi-factor authentication (MFA) device to a Resource Access Management (RAM) user.
+// 为RAM用户绑定多因素认证设备
 //
 // @param request - BindMFADeviceRequest
 //
@@ -215,11 +209,7 @@ func (client *Client) BindMFADeviceWithContext(ctx context.Context, request *Bin
 
 // Summary:
 //
-// Changes the password that is used to log on to the console for a Resource Access Management (RAM) user.
-//
-// Description:
-//
-// >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can manage their passwords.
+// 修改RAM用户的登录密码
 //
 // @param request - ChangePasswordRequest
 //
@@ -267,7 +257,7 @@ func (client *Client) ChangePasswordWithContext(ctx context.Context, request *Ch
 
 // Summary:
 //
-// Creates an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
+// 创建主账号或RAM用户访问密钥
 //
 // @param request - CreateAccessKeyRequest
 //
@@ -311,7 +301,7 @@ func (client *Client) CreateAccessKeyWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Creates an application secret for an application.
+// 为指定的应用创建应用密钥
 //
 // @param request - CreateAppSecretRequest
 //
@@ -439,7 +429,7 @@ func (client *Client) CreateApplicationWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates a Resource Access Management (RAM) user group.
+// 创建用户组
 //
 // @param request - CreateGroupRequest
 //
@@ -491,7 +481,7 @@ func (client *Client) CreateGroupWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// Enables logon to the console for a Resource Access Management (RAM) user.
+// Creates a logon configuration for a Resource Access Management (RAM) user.
 //
 // @param request - CreateLoginProfileRequest
 //
@@ -551,25 +541,7 @@ func (client *Client) CreateLoginProfileWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates an OpenID Connect (OIDC) identity provider (IdP) to configure a trust relationship between Alibaba Cloud and an external IdP. This topic provides an example on how to create an IdP named TestOIDCProvider to configure a trust relationship between the external IdP Okta and Alibaba Cloud.
-//
-// Description:
-//
-// ### [](#)Prerequisites
-//
-// Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificate authority (CA) certificates, and the client IDs are obtained from an external IdP, such as Google Workspace or Okta.
-//
-// ### [](#)Limits
-//
-//   - You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
-//
-//   - You can add a maximum of 50 client IDs to an OIDC IdP.
-//
-//   - You can add a maximum of five fingerprints to an OIDC IdP.
-//
-// ### [](#)Operation description
-//
-// This topic provides an example on how to create an IdP named `TestOIDCProvider` to configure a trust relationship between the external IdP and Alibaba Cloud.
+// 创建OIDC身份供应商
 //
 // @param request - CreateOIDCProviderRequest
 //
@@ -689,11 +661,7 @@ func (client *Client) CreateSAMLProviderWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates a RAM user.
-//
-// Description:
-//
-// This topic provides an example on how to create a RAM user named `test`.
+// 创建RAM用户
 //
 // @param request - CreateUserRequest
 //
@@ -757,7 +725,7 @@ func (client *Client) CreateUserWithContext(ctx context.Context, request *Create
 
 // Summary:
 //
-// Creates a virtual multi-factor authentication (MFA) device.
+// 创建多因素认证设备
 //
 // @param request - CreateVirtualMFADeviceRequest
 //
@@ -801,7 +769,7 @@ func (client *Client) CreateVirtualMFADeviceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Deletes an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
+// 删除用户的访问密钥
 //
 // @param request - DeleteAccessKeyRequest
 //
@@ -849,7 +817,7 @@ func (client *Client) DeleteAccessKeyWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Deletes a specific AccessKey pair that belongs to a Resource Access Management (RAM) user from the recycle bin.
+// 删除回收站中的访问密钥
 //
 // @param request - DeleteAccessKeyInRecycleBinRequest
 //
@@ -897,7 +865,7 @@ func (client *Client) DeleteAccessKeyInRecycleBinWithContext(ctx context.Context
 
 // Summary:
 //
-// Deletes the application secret of an application.
+// 删除指定应用的应用密钥
 //
 // @param request - DeleteAppSecretRequest
 //
@@ -945,7 +913,7 @@ func (client *Client) DeleteAppSecretWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Deletes an application.
+// 删除指定的应用
 //
 // @param request - DeleteApplicationRequest
 //
@@ -989,11 +957,7 @@ func (client *Client) DeleteApplicationWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deletes a Resource Access Management (RAM) user group.
-//
-// Description:
-//
-// Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
+// 删除指定的用户组
 //
 // @param request - DeleteGroupRequest
 //
@@ -1037,7 +1001,7 @@ func (client *Client) DeleteGroupWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
-// Disables logon to the console for a Resource Access Management (RAM) user.
+// 关闭指定RAM用户的控制台登录
 //
 // @param request - DeleteLoginProfileRequest
 //
@@ -1081,13 +1045,7 @@ func (client *Client) DeleteLoginProfileWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes an OpenID Connect (OIDC) identity provider (IdP).
-//
-// Description:
-//
-// ###
-//
-// This topic provides an example on how to remove the OIDC IdP named `TestOIDCProvider`.
+// 删除指定的角色SSO身份提供商
 //
 // @param request - DeleteOIDCProviderRequest
 //
@@ -1131,7 +1089,7 @@ func (client *Client) DeleteOIDCProviderWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes a passkey for a Resource Access Management (RAM) user.
+// 删除Passkey
 //
 // @param request - DeletePasskeyRequest
 //
@@ -1179,7 +1137,7 @@ func (client *Client) DeletePasskeyWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// Deletes an identity provider (IdP) for role-based single sign-on (SSO).
+// 删除指定的角色SSO身份提供商
 //
 // @param request - DeleteSAMLProviderRequest
 //
@@ -1223,7 +1181,7 @@ func (client *Client) DeleteSAMLProviderWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes a Resource Access Management (RAM) user.
+// 删除RAM用户
 //
 // @param request - DeleteUserRequest
 //
@@ -1271,7 +1229,7 @@ func (client *Client) DeleteUserWithContext(ctx context.Context, request *Delete
 
 // Summary:
 //
-// Deletes a specific Resource Access Management (RAM) user from the recycle bin.
+// 删除回收站中的用户
 //
 // @param request - DeleteUserInRecycleBinRequest
 //
@@ -1315,7 +1273,7 @@ func (client *Client) DeleteUserInRecycleBinWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Deletes a multi-factor authentication (MFA) device.
+// 删除多因素认证设备
 //
 // @param request - DeleteVirtualMFADeviceRequest
 //
@@ -1359,13 +1317,7 @@ func (client *Client) DeleteVirtualMFADeviceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Uninstalls an external application or an internal application of the ServerApp type.
-//
-// Description:
-//
-// If you want to call this operation to uninstall an internal application, the type of the internal application must be **ServerApp**. Otherwise, an error occurs when you call this operation.
-//
-// >  For **internal applications**, only internal applications of the ServerApp type need to be **installed or provisioned**. Therefore, only internal applications of the ServerApp type **can be uninstalled**. Internal applications of the WebApp and NativeApp types **do not need to and cannot be uninstalled**.
+// 解除安装应用
 //
 // @param request - DeprovisionApplicationRequest
 //
@@ -1409,7 +1361,7 @@ func (client *Client) DeprovisionApplicationWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Deletes an installed external application.
+// 解除安装外部应用
 //
 // @param request - DeprovisionExternalApplicationRequest
 //
@@ -1453,7 +1405,7 @@ func (client *Client) DeprovisionExternalApplicationWithContext(ctx context.Cont
 
 // Summary:
 //
-// Unbinds and deletes a multi-factor authentication (MFA) device from a Resource Access Management (RAM) user.
+// 解绑并删除多因素认证设备
 //
 // @param request - DisableVirtualMFARequest
 //
@@ -1497,7 +1449,7 @@ func (client *Client) DisableVirtualMFAWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries information about a specific AccessKey pair of a Resource Access Management (RAM) user in the recycle bin.
+// 查询回收站中的访问密钥信息
 //
 // @param request - GetAccessKeyInfoInRecycleBinRequest
 //
@@ -1541,7 +1493,7 @@ func (client *Client) GetAccessKeyInfoInRecycleBinWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the time when an AccessKey pair was used for the last time.
+// 查询指定访问密钥的最后使用时间
 //
 // @param request - GetAccessKeyLastUsedRequest
 //
@@ -1589,7 +1541,7 @@ func (client *Client) GetAccessKeyLastUsedWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the details of an application secret.
+// 查询指定应用密钥信息
 //
 // @param request - GetAppSecretRequest
 //
@@ -1637,11 +1589,11 @@ func (client *Client) GetAppSecretWithContext(ctx context.Context, request *GetA
 
 // Summary:
 //
-// Queries the configuration information about an application.
+// Queries the configuration information of a specified application.
 //
 // Description:
 //
-// This topic provides an example on how to query the configurations of an application named `472457090344041****`.
+// This topic provides an example of how to query the configuration information of the application `472457090344041****`.
 //
 // @param request - GetApplicationRequest
 //
@@ -1685,7 +1637,7 @@ func (client *Client) GetApplicationWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Queries installation information about a specified installed application.
+// 查询应用安装信息
 //
 // @param request - GetApplicationProvisionInfoRequest
 //
@@ -1729,7 +1681,7 @@ func (client *Client) GetApplicationProvisionInfoWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the user credential reports of an Alibaba Cloud account.
+// 查询用户凭证报告内容
 //
 // @param request - GetCredentialReportRequest
 //
@@ -1777,7 +1729,7 @@ func (client *Client) GetCredentialReportWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries information about an installed external application.
+// 查询外部应用
 //
 // @param request - GetExternalApplicationRequest
 //
@@ -1821,7 +1773,7 @@ func (client *Client) GetExternalApplicationWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 查询用户的单项ram治理报告
+// Queries the details of a specific check item in an identity and access governance report.
 //
 // @param request - GetGovernanceItemReportRequest
 //
@@ -1873,7 +1825,7 @@ func (client *Client) GetGovernanceItemReportWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the information about a Resource Access Management (RAM) user group.
+// 查询指定用户组信息
 //
 // @param request - GetGroupRequest
 //
@@ -1917,7 +1869,7 @@ func (client *Client) GetGroupWithContext(ctx context.Context, request *GetGroup
 
 // Summary:
 //
-// Queries the logon configurations of a Resource Access Management (RAM) user.
+// Retrieves the logon information for a specified Resource Access Management (RAM) user.
 //
 // @param request - GetLoginProfileRequest
 //
@@ -1961,13 +1913,7 @@ func (client *Client) GetLoginProfileWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Queries the information about an OIDC IdP.
-//
-// Description:
-//
-// ###
-//
-// This topic provides an example on how to query the information about an OpenID Connect (OIDC) identity provider (IdP) named `TestOIDCProvider`.
+// 查询OIDC身份提供商信息
 //
 // @param request - GetOIDCProviderRequest
 //
@@ -2011,7 +1957,7 @@ func (client *Client) GetOIDCProviderWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Queries the information about an identity provider (IdP) for role-based single sign-on (SSO).
+// Retrieves information about a specified SAML provider for role-based SSO.
 //
 // @param request - GetSAMLProviderRequest
 //
@@ -2055,7 +2001,7 @@ func (client *Client) GetSAMLProviderWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Queries the information about a RAM user.
+// 查询RAM用户的详细信息
 //
 // @param request - GetUserRequest
 //
@@ -2107,7 +2053,7 @@ func (client *Client) GetUserWithContext(ctx context.Context, request *GetUserRe
 
 // Summary:
 //
-// Queries information about a specific Resource Access Management (RAM) user in the recycle bin.
+// 获取回收站中的用户
 //
 // @param request - GetUserInRecycleBinRequest
 //
@@ -2155,7 +2101,7 @@ func (client *Client) GetUserInRecycleBinWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries information about the multi-factor authentication (MFA) device that is bound to a Resource Access Management (RAM) user.
+// 查询RAM用户多因素认证设备信息
 //
 // @param request - GetUserMFAInfoRequest
 //
@@ -2199,7 +2145,7 @@ func (client *Client) GetUserMFAInfoWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Queries the status of the mobile phone or email that is bound to a Resource Access Management (RAM) user.
+// 获取用户安全认证的信息
 //
 // @param request - GetVerificationInfoRequest
 //
@@ -2243,7 +2189,7 @@ func (client *Client) GetVerificationInfoWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the AccessKey pairs of an Alibaba Cloud account or a Resource Access Management (RAM) user.
+// 查询主账号或RAM用户访问密钥列表
 //
 // @param request - ListAccessKeysRequest
 //
@@ -2287,7 +2233,7 @@ func (client *Client) ListAccessKeysWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// Queries the AccessKey pairs of a specific Resource Access Management (RAM) user in the recycle bin.
+// 列出回收站中访问密钥列表
 //
 // @param request - ListAccessKeysInRecycleBinRequest
 //
@@ -2331,7 +2277,7 @@ func (client *Client) ListAccessKeysInRecycleBinWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the secret IDs of an application.
+// 查询指定应用的应用密钥ID列表
 //
 // @param request - ListAppSecretIdsRequest
 //
@@ -2467,7 +2413,7 @@ func (client *Client) ListGroupsWithContext(ctx context.Context, request *ListGr
 
 // Summary:
 //
-// Queries the Resource Access Management (RAM) user groups to which a RAM user belongs.
+// 查询RAM用户加入的用户组列表
 //
 // @param request - ListGroupsForUserRequest
 //
@@ -2511,13 +2457,7 @@ func (client *Client) ListGroupsForUserWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries OIDC IdPs.
-//
-// Description:
-//
-// ###
-//
-// This topic provides an example on how to query all OpenID Connect (OIDC) identity providers (IdPs) within your Alibaba Cloud account. The response shows that your Alibaba Cloud account has only one OIDC IdP named `TestOIDCProvider`.
+// 查询OIDC身份提供商列表
 //
 // @param request - ListOIDCProvidersRequest
 //
@@ -2565,7 +2505,7 @@ func (client *Client) ListOIDCProvidersWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the information about the passkeys that are bound to a Resource Access Management (RAM) user.
+// 查询Passkey
 //
 // @param request - ListPasskeysRequest
 //
@@ -2653,7 +2593,7 @@ func (client *Client) ListPredefinedScopesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries information about identity providers (IdPs) for role-based single sign-on (SSO).
+// 查询角色SSO身份提供商列表
 //
 // @param request - ListSAMLProvidersRequest
 //
@@ -2701,19 +2641,7 @@ func (client *Client) ListSAMLProvidersWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the tags that are added resources.
-//
-// Description:
-//
-// ###
-//
-// You must specify at least one of the following parameters or parameter pairs in a request to determine a query object:
-//
-//   - `ResourceId.N`
-//
-//   - `Tag.N.Key`
-//
-//   - `Tag.N.Key` and `Tag.N.Value`
+// 查询资源与标签的关系
 //
 // @param request - ListTagResourcesRequest
 //
@@ -2783,9 +2711,9 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 //
 // You can call the following API operations to query information about all RAM users:
 //
-//   - ListUsers: queries the details of all RAM users.
+// - ListUsers: queries the details of all RAM users.
 //
-//   - ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
+// - ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
 //
 // @param request - ListUserBasicInfosRequest
 //
@@ -2849,9 +2777,9 @@ func (client *Client) ListUserBasicInfosWithContext(ctx context.Context, request
 //
 // You can call the following API operations to query the details of all RAM users:
 //
-//   - ListUsers: queries the details of all RAM users.
+// - ListUsers: queries the details of all RAM users.
 //
-//   - ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
+// - ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
 //
 // @param request - ListUsersRequest
 //
@@ -2907,7 +2835,7 @@ func (client *Client) ListUsersWithContext(ctx context.Context, request *ListUse
 
 // Summary:
 //
-// Queries Resource Access Management (RAM) users in a RAM user group.
+// 查询用户组中用户列表
 //
 // @param request - ListUsersForGroupRequest
 //
@@ -2959,7 +2887,7 @@ func (client *Client) ListUsersForGroupWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the basic information about all Resource Access Management (RAM) users in the recycle bin.
+// 查询回收站中用户列表
 //
 // @param request - ListUsersInRecycleBinRequest
 //
@@ -3059,7 +2987,7 @@ func (client *Client) ListVirtualMFADevicesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Installs an application.
+// 安装应用
 //
 // @param request - ProvisionApplicationRequest
 //
@@ -3107,7 +3035,7 @@ func (client *Client) ProvisionApplicationWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Installs an external application.
+// 安装外部应用
 //
 // @param request - ProvisionExternalApplicationRequest
 //
@@ -3155,13 +3083,7 @@ func (client *Client) ProvisionExternalApplicationWithContext(ctx context.Contex
 
 // Summary:
 //
-// Removes a client ID from an OpenID Connect (OIDC) identity provider (IdP).
-//
-// Description:
-//
-// ###
-//
-// This topic provides an example on how to remove the client ID `498469743454717****` from the OIDC IdP named `TestOIDCProvider`.
+// 移除OIDC身份提供商中的指定客户端ID
 //
 // @param request - RemoveClientIdFromOIDCProviderRequest
 //
@@ -3209,13 +3131,7 @@ func (client *Client) RemoveClientIdFromOIDCProviderWithContext(ctx context.Cont
 
 // Summary:
 //
-// Removes a fingerprint from an OpenID Connect (OIDC) identity provider (IdP).
-//
-// Description:
-//
-// ###
-//
-// This topic provides an example on how to remove the fingerprint `6938fd4d98bab03faadb97b34396831e3780****` from the OIDC IdP named `TestOIDCProvider`.
+// 移除OIDC身份提供商中指定的验证指纹
 //
 // @param request - RemoveFingerprintFromOIDCProviderRequest
 //
@@ -3263,7 +3179,7 @@ func (client *Client) RemoveFingerprintFromOIDCProviderWithContext(ctx context.C
 
 // Summary:
 //
-// Removes a Resource Access Management (RAM) user from a RAM user group.
+// 将RAM用户从用户组中移除
 //
 // @param request - RemoveUserFromGroupRequest
 //
@@ -3311,7 +3227,7 @@ func (client *Client) RemoveUserFromGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Restores a specific AccessKey pair that belongs to a Resource Access Management (RAM) user from the recycle bin.
+// 清空回收站中的访问密钥
 //
 // @param request - RestoreAccessKeyFromRecycleBinRequest
 //
@@ -3359,7 +3275,7 @@ func (client *Client) RestoreAccessKeyFromRecycleBinWithContext(ctx context.Cont
 
 // Summary:
 //
-// Restores a specific Resource Access Management (RAM) user from the recycle bin.
+// 清空回收站中的用户
 //
 // @param request - RestoreUserFromRecycleBinRequest
 //
@@ -3403,7 +3319,7 @@ func (client *Client) RestoreUserFromRecycleBinWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Configures the default domain name for an Alibaba Cloud account.
+// 设置默认域名
 //
 // @param request - SetDefaultDomainRequest
 //
@@ -3447,7 +3363,7 @@ func (client *Client) SetDefaultDomainWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Configures the password policy for Resource Access Management (RAM) users.
+// Sets the password strength policy for RAM users.
 //
 // @param request - SetPasswordPolicyRequest
 //
@@ -3468,6 +3384,10 @@ func (client *Client) SetPasswordPolicyWithContext(ctx context.Context, request 
 
 	if !dara.IsNil(request.InitialPasswordAge) {
 		query["InitialPasswordAge"] = request.InitialPasswordAge
+	}
+
+	if !dara.IsNil(request.InterceptRiskPasswordOnApi) {
+		query["InterceptRiskPasswordOnApi"] = request.InterceptRiskPasswordOnApi
 	}
 
 	if !dara.IsNil(request.MaxLoginAttemps) {
@@ -3535,13 +3455,7 @@ func (client *Client) SetPasswordPolicyWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Configures security preferences for a RAM user.
-//
-// Description:
-//
-// ###
-//
-// This topic provides an example on how to enable multi-factor authentication (MFA) only for RAM users who initiated unusual logons.
+// Configures the global security preferences for a Resource Access Management (RAM) user.
 //
 // @param tmpReq - SetSecurityPreferenceRequest
 //
@@ -3639,7 +3553,7 @@ func (client *Client) SetSecurityPreferenceWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Configures information about user-based single sign-on (SSO).
+// Sets the identity provider (IdP) settings for user-based single sign-on (SSO).
 //
 // @param request - SetUserSsoSettingsRequest
 //
@@ -3699,7 +3613,7 @@ func (client *Client) SetUserSsoSettingsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Binds a mobile phone or email to a Resource Access Management (RAM) user.
+// 新增录入/修改安全手机号码、安全邮箱的API
 //
 // @param request - SetVerificationInfoRequest
 //
@@ -3755,7 +3669,7 @@ func (client *Client) SetVerificationInfoWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Adds tags to resources.
+// 资源打上标签
 //
 // @param request - TagResourcesRequest
 //
@@ -3811,7 +3725,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// Unbinds a multi-factor authentication (MFA) device from a Resource Access Management (RAM) user.
+// 为RAM用户解绑多因素认证设备
 //
 // @param request - UnbindMFADeviceRequest
 //
@@ -3855,7 +3769,7 @@ func (client *Client) UnbindMFADeviceWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// Unbinds a mobile phone or email from a Resource Access Management (RAM) user.
+// 删除用户的安全认证
 //
 // @param request - UnbindVerificationRequest
 //
@@ -3911,7 +3825,7 @@ func (client *Client) UnbindVerificationWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Removes tags from a resource.
+// 解绑资源的标签
 //
 // @param request - UntagResourcesRequest
 //
@@ -3971,7 +3885,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// Modifies the status of an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
+// 修改访问密钥状态
 //
 // @param request - UpdateAccessKeyRequest
 //
@@ -4023,7 +3937,7 @@ func (client *Client) UpdateAccessKeyWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// Modifies the information about a specified application.
+// Updates the configuration of a specified application.
 //
 // @param request - UpdateApplicationRequest
 //
@@ -4099,7 +4013,7 @@ func (client *Client) UpdateApplicationWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Modifies information about a Resource Access Management (RAM) user group.
+// 修改指定用户组的信息
 //
 // @param request - UpdateGroupRequest
 //
@@ -4155,7 +4069,7 @@ func (client *Client) UpdateGroupWithContext(ctx context.Context, request *Updat
 
 // Summary:
 //
-// Modifies the console logon configurations of a Resource Access Management (RAM) user.
+// Modifies the console logon information for a specified Resource Access Management (RAM) user.
 //
 // @param request - UpdateLoginProfileRequest
 //
@@ -4215,13 +4129,7 @@ func (client *Client) UpdateLoginProfileWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modifies the description and client IDs of an OpenID Connect (OIDC) identity provider (IdP).
-//
-// Description:
-//
-// ###
-//
-// This topic provides an example on how to change the description of the OIDC IdP named `TestOIDCProvider` to `This is a new OIDC Provider.`
+// 修改OIDC身份提供商的描述和客户端ID
 //
 // @param request - UpdateOIDCProviderRequest
 //
@@ -4277,7 +4185,7 @@ func (client *Client) UpdateOIDCProviderWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Updates the name of a passkey.
+// 更新Passkey
 //
 // @param request - UpdatePasskeyRequest
 //
@@ -4329,11 +4237,11 @@ func (client *Client) UpdatePasskeyWithContext(ctx context.Context, request *Upd
 
 // Summary:
 //
-// Modifies information about an identity provider (IdP) for role-based single sign-on (SSO).
+// Updates the information about a specified identity provider for role-based single sign-on (SSO).
 //
 // Description:
 //
-// This topic provides an example on how to change the description of an IdP named `test-provider` to `This is a new provider.`
+// This example shows how to change the description of the identity provider `test-provider` to `This is a new provider.`.
 //
 // @param request - UpdateSAMLProviderRequest
 //
@@ -4389,11 +4297,7 @@ func (client *Client) UpdateSAMLProviderWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modifies the information about a RAM user.
-//
-// Description:
-//
-// This topic provides an example to show how to modify the name of a RAM user from `test@example.onaliyun.com` to `new@example.onaliyun.com`.
+// 修改RAM用户信息
 //
 // @param request - UpdateUserRequest
 //

@@ -16,24 +16,8 @@ type iGenerateCredentialReportResponseBody interface {
 }
 
 type GenerateCredentialReportResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// BBCCA90A-A1F0-4B16-B355-692247197805
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The generation status of the user credential report. Valid values:
-	//
-	// 	- STARTED: The system starts to generate the user credential report.
-	//
-	// 	- INPROGRESS: The user credential report is being generated.
-	//
-	// 	- COMPLETED: The user credential report is generated.
-	//
-	// example:
-	//
-	// STARTED
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	State     *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s GenerateCredentialReportResponseBody) String() string {

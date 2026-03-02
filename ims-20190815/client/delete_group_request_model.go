@@ -14,11 +14,6 @@ type iDeleteGroupRequest interface {
 }
 
 type DeleteGroupRequest struct {
-	// The name of the RAM user group.
-	//
-	// example:
-	//
-	// Dev-Team
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 

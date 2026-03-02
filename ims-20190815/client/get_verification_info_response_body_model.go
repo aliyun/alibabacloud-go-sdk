@@ -18,15 +18,8 @@ type iGetVerificationInfoResponseBody interface {
 }
 
 type GetVerificationInfoResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// B182C041-8C64-5F2F-A07B-FC67FAF89CF9
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the email.
+	RequestId           *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecurityEmailDevice *GetVerificationInfoResponseBodySecurityEmailDevice `json:"SecurityEmailDevice,omitempty" xml:"SecurityEmailDevice,omitempty" type:"Struct"`
-	// The information about the mobile phone.
 	SecurityPhoneDevice *GetVerificationInfoResponseBodySecurityPhoneDevice `json:"SecurityPhoneDevice,omitempty" xml:"SecurityPhoneDevice,omitempty" type:"Struct"`
 }
 
@@ -80,21 +73,7 @@ func (s *GetVerificationInfoResponseBody) Validate() error {
 }
 
 type GetVerificationInfoResponseBodySecurityEmailDevice struct {
-	// The email address.
-	//
-	// example:
-	//
-	// username@example.com
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The status of the email. Valid values:
-	//
-	// 	- active: The email is activated.
-	//
-	// 	- pending: The email is pending for activation.
-	//
-	// example:
-	//
-	// active
+	Email  *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -129,28 +108,9 @@ func (s *GetVerificationInfoResponseBodySecurityEmailDevice) Validate() error {
 }
 
 type GetVerificationInfoResponseBodySecurityPhoneDevice struct {
-	// The international dialing code.
-	//
-	// example:
-	//
-	// 86
-	AreaCode *string `json:"AreaCode,omitempty" xml:"AreaCode,omitempty"`
-	// The mobile phone number.
-	//
-	// example:
-	//
-	// 13900001234
+	AreaCode    *string `json:"AreaCode,omitempty" xml:"AreaCode,omitempty"`
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The status of the mobile phone. Valid values:
-	//
-	// 	- active: The mobile phone is activated.
-	//
-	// 	- pending: The mobile phone is pending for activation.
-	//
-	// example:
-	//
-	// active
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetVerificationInfoResponseBodySecurityPhoneDevice) String() string {

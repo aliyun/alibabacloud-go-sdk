@@ -16,14 +16,8 @@ type iListGroupsForUserResponseBody interface {
 }
 
 type ListGroupsForUserResponseBody struct {
-	// The information about the RAM user groups.
-	Groups *ListGroupsForUserResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 7158A935-FB5E-49A7-8E52-FDA5B2B67247
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Groups    *ListGroupsForUserResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListGroupsForUserResponseBody) String() string {
@@ -96,36 +90,11 @@ func (s *ListGroupsForUserResponseBodyGroups) Validate() error {
 }
 
 type ListGroupsForUserResponseBodyGroupsGroup struct {
-	// The description.
-	//
-	// example:
-	//
-	// Test-Team
-	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	// The display name of the RAM user group.
-	//
-	// example:
-	//
-	// Test-Team
+	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The ID of the RAM user group.
-	//
-	// example:
-	//
-	// 740317625433843****
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the RAM user group.
-	//
-	// example:
-	//
-	// Test-Team
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The time when the RAM user was added.
-	//
-	// example:
-	//
-	// 2020-10-20T06:57:00Z
-	JoinDate *string `json:"JoinDate,omitempty" xml:"JoinDate,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	JoinDate    *string `json:"JoinDate,omitempty" xml:"JoinDate,omitempty"`
 }
 
 func (s ListGroupsForUserResponseBodyGroupsGroup) String() string {

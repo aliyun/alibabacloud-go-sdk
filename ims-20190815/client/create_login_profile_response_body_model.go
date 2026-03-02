@@ -16,7 +16,7 @@ type iCreateLoginProfileResponseBody interface {
 }
 
 type CreateLoginProfileResponseBody struct {
-	// The logon information.
+	// The logon information for the console.
 	LoginProfile *CreateLoginProfileResponseBodyLoginProfile `json:"LoginProfile,omitempty" xml:"LoginProfile,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,26 +62,39 @@ func (s *CreateLoginProfileResponseBody) Validate() error {
 }
 
 type CreateLoginProfileResponseBodyLoginProfile struct {
-	// Indicates whether to forcefully enable MFA for the RAM user.
+	// Indicates whether the RAM user is required to enable MFA.
 	//
 	// example:
 	//
 	// false
 	MFABindRequired *bool `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
-	// Indicates whether the RAM user is required to reset the password upon the next logon.
+	// Indicates whether the RAM user must reset the password at the next logon.
 	//
 	// example:
 	//
 	// false
-	PasswordResetRequired *bool   `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
-	PasswordStatus        *string `json:"PasswordStatus,omitempty" xml:"PasswordStatus,omitempty"`
-	// Indicates whether to enable password-based logons to the console.
+	PasswordResetRequired *bool `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
+	// The status of the initial password. This password is set when a logon configuration is created or when console logon is re-enabled.
+	//
+	// Valid values
+	//
+	// - "NotInitial": The password is not an initial password.
+	//
+	// - "InitialValid": The initial password is valid.
+	//
+	// - "InitialExpired": The initial password has expired.
+	//
+	// example:
+	//
+	// NotInitial
+	PasswordStatus *string `json:"PasswordStatus,omitempty" xml:"PasswordStatus,omitempty"`
+	// Indicates whether password-based logon for the console is enabled or disabled.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The update time.
+	// The time when the logon configuration was last updated.
 	//
 	// example:
 	//

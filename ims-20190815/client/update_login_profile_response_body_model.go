@@ -16,7 +16,7 @@ type iUpdateLoginProfileResponseBody interface {
 }
 
 type UpdateLoginProfileResponseBody struct {
-	// The console logon configurations.
+	// The console logon information.
 	LoginProfile *UpdateLoginProfileResponseBodyLoginProfile `json:"LoginProfile,omitempty" xml:"LoginProfile,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,32 +62,45 @@ func (s *UpdateLoginProfileResponseBody) Validate() error {
 }
 
 type UpdateLoginProfileResponseBodyLoginProfile struct {
-	// Indicates whether console logon is automatically disabled if a RAM user does not log on to the console in the previous specified number of days. The number of days is specified by MaxIdleDaysForUsers. The default value is true, and you cannot change the value.
+	// Indicates whether to automatically disable console logon for an inactive account. This feature is enabled by default and cannot be disabled.
 	//
 	// example:
 	//
 	// true
 	AutoDisableLoginStatus *string `json:"AutoDisableLoginStatus,omitempty" xml:"AutoDisableLoginStatus,omitempty"`
-	// Indicates whether MFA must be enabled.
+	// Indicates whether MFA is enforced for the user.
 	//
 	// example:
 	//
 	// false
 	MFABindRequired *bool `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
-	// Indicates whether the RAM user is required to reset the password upon the next logon.
+	// Indicates whether the RAM user must reset the password at the next logon.
 	//
 	// example:
 	//
 	// false
-	PasswordResetRequired *bool   `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
-	PasswordStatus        *string `json:"PasswordStatus,omitempty" xml:"PasswordStatus,omitempty"`
-	// Indicates whether to enable password-based logons to the console.
+	PasswordResetRequired *bool `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
+	// The status of the initial password. An initial password is the one set when a logon profile is created or console logon is re-enabled.
+	//
+	// Valid values:
+	//
+	// - "NotInitial": Not an initial password.
+	//
+	// - "InitialValid": The initial password is valid.
+	//
+	// - "InitialExpired": The initial password has expired.
+	//
+	// example:
+	//
+	// NotInitial
+	PasswordStatus *string `json:"PasswordStatus,omitempty" xml:"PasswordStatus,omitempty"`
+	// Specifies whether password logon to the console is enabled or disabled.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The modification time.
+	// The time when the logon profile was updated.
 	//
 	// example:
 	//

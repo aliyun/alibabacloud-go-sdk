@@ -20,34 +20,10 @@ type iTagResourcesRequest interface {
 }
 
 type TagResourcesRequest struct {
-	// The ID of resource N.
-	//
-	// Valid values of N: 1 to 50. If the ResourceType parameter is set to user, the resource ID is the ID of the RAM user.
-	//
-	// >  You must specify only one of the following parameters: `ResourceId` and `ResourcePrincipalName`.
-	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The name of resource N.
-	//
-	// Valid values of N: 1 to 50. If the ResourceType parameter is set to user, the resource name is the name of the RAM user.
-	//
-	// >  You must specify only one of the following parameters: `ResourceId` and `ResourcePrincipalName`.
-	//
-	// example:
-	//
-	// TagResources
-	ResourcePrincipalName []*string `json:"ResourcePrincipalName,omitempty" xml:"ResourcePrincipalName,omitempty" type:"Repeated"`
-	// The type of the resource. Valid value:
-	//
-	// 	- user: a Resource Access Management (RAM) user.
-	//
-	// example:
-	//
-	// user
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The key of tag N.
-	//
-	// Valid values of N: 1 to 20. You cannot specify empty strings as tag keys. The tag key can be up to 128 characters in length. The tag key cannot start with aliyun or acs: and cannot contain `http://` or `https://`.
-	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceId            []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourcePrincipalName []*string                 `json:"ResourcePrincipalName,omitempty" xml:"ResourcePrincipalName,omitempty" type:"Repeated"`
+	ResourceType          *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag                   []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -108,21 +84,7 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The key of tag N.
-	//
-	// Valid values of N: 1 to 20. You cannot specify empty strings as tag keys. The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
-	//
-	// example:
-	//
-	// operator
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N.
-	//
-	// Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
-	//
-	// example:
-	//
-	// alice
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

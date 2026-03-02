@@ -16,21 +16,8 @@ type iGetAccessKeyLastUsedRequest interface {
 }
 
 type GetAccessKeyLastUsedRequest struct {
-	// The ID of the AccessKey pair that you want to query.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// LTAI*******************
-	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
-	// The logon name of the RAM user.
-	//
-	// If you do not specify this parameter, the AccessKey pair of the current user is queried.
-	//
-	// example:
-	//
-	// test@example.onaliyun.com
+	UserAccessKeyId   *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 

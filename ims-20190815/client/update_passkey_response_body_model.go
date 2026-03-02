@@ -14,11 +14,6 @@ type iUpdatePasskeyResponseBody interface {
 }
 
 type UpdatePasskeyResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 85836703-8D4F-485F-9726-4D1C730F957E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

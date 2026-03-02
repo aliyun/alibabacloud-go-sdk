@@ -22,9 +22,9 @@ type iListVirtualMFADevicesResponseBody interface {
 type ListVirtualMFADevicesResponseBody struct {
 	// Indicates whether the response is truncated. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type ListVirtualMFADevicesResponseBody struct {
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
-	// >  This parameter is returned only when `IsTruncated` is `true`.
+	// > This parameter is returned only when `IsTruncated` is `true`.
 	//
 	// example:
 	//
@@ -43,8 +43,7 @@ type ListVirtualMFADevicesResponseBody struct {
 	// example:
 	//
 	// 32272612-DF82-485E-8BA9-AFA4E0C3D0BA
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the MFA device.
+	RequestId         *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	VirtualMFADevices *ListVirtualMFADevicesResponseBodyVirtualMFADevices `json:"VirtualMFADevices,omitempty" xml:"VirtualMFADevices,omitempty" type:"Struct"`
 }
 
@@ -136,20 +135,9 @@ func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevices) Validate() error {
 }
 
 type ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice struct {
-	// The time when the MFA device was activated.
-	//
-	// example:
-	//
-	// 2020-10-16T06:02:09Z
-	ActivateDate *string `json:"ActivateDate,omitempty" xml:"ActivateDate,omitempty"`
-	// The serial number of the MFA device.
-	//
-	// example:
-	//
-	// acs:ram::177242285274****:mfa/test
-	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	// The information of the RAM user that has an MFA device bound.
-	User *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+	ActivateDate *string                                                                 `json:"ActivateDate,omitempty" xml:"ActivateDate,omitempty"`
+	SerialNumber *string                                                                 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	User         *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
 func (s ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice) String() string {
@@ -197,23 +185,8 @@ func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice) Val
 }
 
 type ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser struct {
-	// The display name of the RAM user.
-	//
-	// example:
-	//
-	// test
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The ID of the RAM user.
-	//
-	// example:
-	//
-	// 20732900249392****
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The logon name of the RAM user.
-	//
-	// example:
-	//
-	// test@177242285274****.onaliyun.com
+	DisplayName       *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 

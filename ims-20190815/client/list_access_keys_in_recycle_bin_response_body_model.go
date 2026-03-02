@@ -16,14 +16,8 @@ type iListAccessKeysInRecycleBinResponseBody interface {
 }
 
 type ListAccessKeysInRecycleBinResponseBody struct {
-	// The information about the AccessKey pairs.
 	AccessKeys *ListAccessKeysInRecycleBinResponseBodyAccessKeys `json:"AccessKeys,omitempty" xml:"AccessKeys,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 4507D1CD-526A-4E2B-A1E2-3AB045D1EE0B
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAccessKeysInRecycleBinResponseBody) String() string {
@@ -96,29 +90,9 @@ func (s *ListAccessKeysInRecycleBinResponseBodyAccessKeys) Validate() error {
 }
 
 type ListAccessKeysInRecycleBinResponseBodyAccessKeysAccessKey struct {
-	// The AccessKey ID.
-	//
-	// example:
-	//
-	// LTAI*******************
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	// The time when the AccessKey pair was created.
-	//
-	// example:
-	//
-	// 2020-10-11T09:12:00Z
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The time when the AccessKey pair will be permanently deleted from the recycle bin.
-	//
-	// example:
-	//
-	// 2020-11-12T09:12:00Z
-	DeleteDate *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
-	// The time when the AccessKey pair was deleted and moved to the recycle bin.
-	//
-	// example:
-	//
-	// 2020-10-12T09:12:00Z
+	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	DeleteDate  *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
 	RecycleDate *string `json:"RecycleDate,omitempty" xml:"RecycleDate,omitempty"`
 }
 

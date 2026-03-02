@@ -16,18 +16,8 @@ type iSetDefaultDomainResponseBody interface {
 }
 
 type SetDefaultDomainResponseBody struct {
-	// The default domain name.
-	//
-	// example:
-	//
-	// examplecompany.onaliyun.com
 	DefaultDomainName *string `json:"DefaultDomainName,omitempty" xml:"DefaultDomainName,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 66815255-7CCE-4759-AC37-9755794C3626
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SetDefaultDomainResponseBody) String() string {

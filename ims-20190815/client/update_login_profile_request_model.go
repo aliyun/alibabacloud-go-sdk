@@ -22,39 +22,39 @@ type iUpdateLoginProfileRequest interface {
 }
 
 type UpdateLoginProfileRequest struct {
-	// Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
+	// Specifies whether to enforce multi-factor authentication (MFA) for the RAM user. Valid values:
 	//
-	// 	- true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
+	// - true: Enforce MFA. The RAM user must attach an MFA device at the next logon.
 	//
-	// 	- false: does not forcefully enable MFA for the RAM user.
+	// - false: Do not enforce MFA.
 	//
 	// example:
 	//
 	// false
 	MFABindRequired *bool `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
-	// The new password that is used to log on to the console.
+	// The new console logon password for the RAM user.
 	//
-	// The new password must meet the complexity requirements.
+	// The password must meet the password strength requirements.
 	//
 	// example:
 	//
 	// mypassword
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// Specifies whether the RAM user is required to reset the password upon the next logon. Valid values:
+	// Specifies whether the RAM user must reset the password at the next logon. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
 	// false
 	PasswordResetRequired *bool `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
-	// Specifies whether to enable password-based logons to the console. Valid values:
+	// Specifies whether to enable or disable password-based logon to the console. Valid values:
 	//
-	// 	- Active: enables password-based logons to the console.
+	// - Active: Enabled.
 	//
-	// 	- Inactive: disables password-based logons to the console.
+	// - Inactive: Disabled.
 	//
 	// example:
 	//

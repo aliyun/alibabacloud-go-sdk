@@ -17,12 +17,8 @@ type iGetSAMLProviderResponseBody interface {
 
 type GetSAMLProviderResponseBody struct {
 	// The request ID.
-	//
-	// example:
-	//
-	// BAADB995-0C7A-476D-B293-7E94568EEDFB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the IdP.
+	// The information about the SAML provider.
 	SAMLProvider *GetSAMLProviderResponseBodySAMLProvider `json:"SAMLProvider,omitempty" xml:"SAMLProvider,omitempty" type:"Struct"`
 }
 
@@ -62,42 +58,23 @@ func (s *GetSAMLProviderResponseBody) Validate() error {
 }
 
 type GetSAMLProviderResponseBodySAMLProvider struct {
-	// The Alibaba Cloud Resource Name (ARN) of the IdP.
+	// The Alibaba Cloud Resource Name (ARN) of the SAML provider.
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The signature algorithm supported by the Alibaba Cloud service provider (SP). Valid values:
 	//
-	// example:
+	// - rsa-sha256
 	//
-	// acs:ram::177242285274****:saml-provider/test-provider
-	Arn           *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// - rsa-sha1
 	AuthnSignAlgo *string `json:"AuthnSignAlgo,omitempty" xml:"AuthnSignAlgo,omitempty"`
-	// The creation time.
-	//
-	// example:
-	//
-	// 2020-10-22T02:37:05Z
+	// The time when the SAML provider was created.
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	// The description.
-	//
-	// example:
-	//
-	// This is a provider.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The metadata file, which is Base64 encoded.
-	//
-	// example:
-	//
-	// PD94bWwgdmVy****
+	// The Base64-encoded metadata file.
 	EncodedSAMLMetadataDocument *string `json:"EncodedSAMLMetadataDocument,omitempty" xml:"EncodedSAMLMetadataDocument,omitempty"`
-	// The name of the IdP.
-	//
-	// example:
-	//
-	// test-provider
+	// The name of the SAML provider.
 	SAMLProviderName *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
-	// The update time.
-	//
-	// example:
-	//
-	// 2020-10-22T02:51:20Z
+	// The time when the SAML provider was last updated.
 	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 

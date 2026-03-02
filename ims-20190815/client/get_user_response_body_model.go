@@ -16,14 +16,8 @@ type iGetUserResponseBody interface {
 }
 
 type GetUserResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 4507D1CD-526A-4E2B-A1E2-3AB045D1EE0B
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the RAM user.
-	User *GetUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	User      *GetUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
 func (s GetUserResponseBody) String() string {
@@ -62,84 +56,18 @@ func (s *GetUserResponseBody) Validate() error {
 }
 
 type GetUserResponseBodyUser struct {
-	// The description.
-	//
-	// example:
-	//
-	// This is a cloud computing engineer.
-	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	// The time when the RAM user was created.
-	//
-	// example:
-	//
-	// 2020-10-12T09:12:00Z
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The display name of the RAM user.
-	//
-	// example:
-	//
-	// test
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The email address of the RAM user.
-	//
-	// > This parameter is valid only on the China site (aliyun.com).
-	//
-	// example:
-	//
-	// alice@example.com
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The last time when the RAM user logged on to the Alibaba Cloud Management Console.
-	//
-	// example:
-	//
-	// 2020-10-12T09:12:00Z
-	LastLoginDate *string `json:"LastLoginDate,omitempty" xml:"LastLoginDate,omitempty"`
-	// The mobile phone number of the RAM user.
-	//
-	// > This parameter is valid only on the China site (aliyun.com).
-	//
-	// example:
-	//
-	// 86-1868888****
-	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	// The source of the RAM user. Valid value:
-	//
-	// 	- Manual: The RAM user is manually created in the RAM console.
-	//
-	// 	- SCIM: The RAM user is mapped by using System for Cross-domain Identity Management (SCIM).
-	//
-	// 	- CloudSSO: The RAM user is mapped from a CloudSSO user.
-	//
-	// example:
-	//
-	// CloudSSO
-	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	// The tags.
-	Tags *GetUserResponseBodyUserTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The time when the information about the RAM user was updated.
-	//
-	// example:
-	//
-	// 2020-10-13T07:39:22Z
-	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	// The ID of the RAM user.
-	//
-	// example:
-	//
-	// 20732900249392****
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The username of the RAM user, which is the prefix of the logon name of the RAM user.
-	//
-	// example:
-	//
-	// test
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The logon name of the RAM user.
-	//
-	// example:
-	//
-	// test@example.onaliyun.com
-	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+	Comments          *string                      `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	CreateDate        *string                      `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	DisplayName       *string                      `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Email             *string                      `json:"Email,omitempty" xml:"Email,omitempty"`
+	LastLoginDate     *string                      `json:"LastLoginDate,omitempty" xml:"LastLoginDate,omitempty"`
+	MobilePhone       *string                      `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	ProvisionType     *string                      `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
+	Tags              *GetUserResponseBodyUserTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	UpdateDate        *string                      `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	UserId            *string                      `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName          *string                      `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	UserPrincipalName *string                      `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
 func (s GetUserResponseBodyUser) String() string {
@@ -302,17 +230,7 @@ func (s *GetUserResponseBodyUserTags) Validate() error {
 }
 
 type GetUserResponseBodyUserTagsTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// operator
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// alice
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

@@ -22,39 +22,39 @@ type iCreateLoginProfileRequest interface {
 }
 
 type CreateLoginProfileRequest struct {
-	// Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
+	// Specifies whether the RAM user must enable multi-factor authentication (MFA). Valid values:
 	//
-	// 	- true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
+	// - true: MFA is required. The RAM user must bind an MFA device at the next logon.
 	//
-	// 	- false (default): does not forcefully enable MFA for the RAM user.
+	// - false (default): MFA is not required.
 	//
 	// example:
 	//
 	// false
 	MFABindRequired *bool `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
-	// The password that the RAM user uses to log on to the console.
+	// The logon password for the RAM user.
 	//
-	// The password must meet the complexity requirements.
+	// The password must meet the password strength requirements.
 	//
 	// example:
 	//
 	// mypassword
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// Specifies whether the RAM user is required to reset the password upon the next logon. Valid values:
+	// Specifies whether the RAM user must reset the password at the next logon. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false (default)
+	// - false (default)
 	//
 	// example:
 	//
 	// false
 	PasswordResetRequired *bool `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
-	// Specifies whether to enable password-based logons to the console. Valid values:
+	// Specifies whether to enable password-based logon for the console. Valid values:
 	//
-	// 	- Active: Password-based logon is enabled. This is the default value.
+	// - Active (default): Enables logon.
 	//
-	// 	- Inactive: Password-based logon is disabled.
+	// - Inactive: Disables logon.
 	//
 	// example:
 	//

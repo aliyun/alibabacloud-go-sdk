@@ -18,24 +18,9 @@ type iGetUserMFAInfoResponseBody interface {
 }
 
 type GetUserMFAInfoResponseBody struct {
-	// Indicates whether the MFA device is enabled. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	IsMFAEnable *bool `json:"IsMFAEnable,omitempty" xml:"IsMFAEnable,omitempty"`
-	// The information about the MFA device.
-	MFADevice *GetUserMFAInfoResponseBodyMFADevice `json:"MFADevice,omitempty" xml:"MFADevice,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// FCF7322A-20A9-4F68-8B7F-F86958839BC0
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	IsMFAEnable *bool                                `json:"IsMFAEnable,omitempty" xml:"IsMFAEnable,omitempty"`
+	MFADevice   *GetUserMFAInfoResponseBodyMFADevice `json:"MFADevice,omitempty" xml:"MFADevice,omitempty" type:"Struct"`
+	RequestId   *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetUserMFAInfoResponseBody) String() string {
@@ -83,22 +68,8 @@ func (s *GetUserMFAInfoResponseBody) Validate() error {
 }
 
 type GetUserMFAInfoResponseBodyMFADevice struct {
-	// The serial number of the MFA device.
-	//
-	// example:
-	//
-	// acs:ram::177242285274****:mfa/device001
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	// The type of the MFA device. Valid values:
-	//
-	// 	- VMFA: virtual MFA device.
-	//
-	// 	- U2F: Universal 2nd Factor (U2F) security key.
-	//
-	// example:
-	//
-	// VMFA
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetUserMFAInfoResponseBodyMFADevice) String() string {

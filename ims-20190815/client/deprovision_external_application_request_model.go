@@ -14,13 +14,7 @@ type iDeprovisionExternalApplicationRequest interface {
 }
 
 type DeprovisionExternalApplicationRequest struct {
-	// The ID of the application.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 417273362044613****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 

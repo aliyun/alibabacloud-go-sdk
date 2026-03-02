@@ -20,30 +20,10 @@ type iListUsersInRecycleBinResponseBody interface {
 }
 
 type ListUsersInRecycleBinResponseBody struct {
-	// Indicates whether the response is truncated. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The parameter that is used to obtain the truncated part. It takes effect only when `IsTruncated` is set to `true`.
-	//
-	// example:
-	//
-	// EXAMPLE
-	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 3687BD52-49FD-585B-AB14-CD05B7C76963
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the RAM users.
-	Users *ListUsersInRecycleBinResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
+	IsTruncated *bool                                   `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	Marker      *string                                 `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	RequestId   *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Users       *ListUsersInRecycleBinResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
 }
 
 func (s ListUsersInRecycleBinResponseBody) String() string {
@@ -134,41 +114,11 @@ func (s *ListUsersInRecycleBinResponseBodyUsers) Validate() error {
 }
 
 type ListUsersInRecycleBinResponseBodyUsersUser struct {
-	// The time when the RAM user was created.
-	//
-	// example:
-	//
-	// 2020-10-12T09:12:00Z
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The time when the RAM user will be permanently deleted from the recycle bin.
-	//
-	// example:
-	//
-	// 2020-11-15T09:12:00Z
-	DeleteDate *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
-	// The display name of the RAM user.
-	//
-	// example:
-	//
-	// test@example.onaliyun.com
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The time when the RAM user was deleted and moved to the recycle bin.
-	//
-	// example:
-	//
-	// 2020-10-15T09:12:00Z
-	RecycleDate *string `json:"RecycleDate,omitempty" xml:"RecycleDate,omitempty"`
-	// The ID of the RAM user.
-	//
-	// example:
-	//
-	// 20732900249392****
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The logon name of the RAM user.
-	//
-	// example:
-	//
-	// test@example.onaliyun.com
+	CreateDate        *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	DeleteDate        *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
+	DisplayName       *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	RecycleDate       *string `json:"RecycleDate,omitempty" xml:"RecycleDate,omitempty"`
+	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 

@@ -16,14 +16,8 @@ type iProvisionApplicationResponseBody interface {
 }
 
 type ProvisionApplicationResponseBody struct {
-	// The installation information of the application.
 	ApplicationProvisionInfo *ProvisionApplicationResponseBodyApplicationProvisionInfo `json:"ApplicationProvisionInfo,omitempty" xml:"ApplicationProvisionInfo,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// C8AE06ED-9593-5BF9-8D4A-68D5DDCC90AB
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId                *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ProvisionApplicationResponseBody) String() string {
@@ -62,56 +56,15 @@ func (s *ProvisionApplicationResponseBody) Validate() error {
 }
 
 type ProvisionApplicationResponseBodyApplicationProvisionInfo struct {
-	// The ID of the Alibaba Cloud account.
-	//
-	// example:
-	//
-	// 177242285274****
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ID of the application.
-	//
-	// example:
-	//
-	// 452392483381546****
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
-	//
-	// example:
-	//
-	// GiteePrd
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The name of the application principal. The value is in the `<app_name>@app.<account_id>.onaliyun.com` format.
-	//
-	// example:
-	//
-	// GiteePrd@app.177242285274****.onaliyun.com
-	AppPrincipalName *string `json:"AppPrincipalName,omitempty" xml:"AppPrincipalName,omitempty"`
-	// The time when the application was installed. The value is a timestamp.
-	//
-	// example:
-	//
-	// 1603693518000
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The information about the permissions that are granted to the application.
-	DelegatedScope *ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScope `json:"DelegatedScope,omitempty" xml:"DelegatedScope,omitempty" type:"Struct"`
-	// The display name of the application.
-	//
-	// example:
-	//
-	// GiteeAliyun
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The ID of the Alibaba Cloud account for which the application was installed.
-	//
-	// example:
-	//
-	// 177242285274****
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The update time. The value is a timestamp.
-	//
-	// example:
-	//
-	// 1603693518000
-	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	AccountId        *string                                                                 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AppId            *string                                                                 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName          *string                                                                 `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppPrincipalName *string                                                                 `json:"AppPrincipalName,omitempty" xml:"AppPrincipalName,omitempty"`
+	CreateDate       *string                                                                 `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	DelegatedScope   *ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScope `json:"DelegatedScope,omitempty" xml:"DelegatedScope,omitempty" type:"Struct"`
+	DisplayName      *string                                                                 `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	TenantId         *string                                                                 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	UpdateDate       *string                                                                 `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s ProvisionApplicationResponseBodyApplicationProvisionInfo) String() string {
@@ -213,7 +166,6 @@ func (s *ProvisionApplicationResponseBodyApplicationProvisionInfo) Validate() er
 }
 
 type ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScope struct {
-	// The information about the permissions that are granted to the application.
 	PredefinedScopes *ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopes `json:"PredefinedScopes,omitempty" xml:"PredefinedScopes,omitempty" type:"Struct"`
 }
 
@@ -278,18 +230,8 @@ func (s *ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopeP
 }
 
 type ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope struct {
-	// The description of the permission.
-	//
-	// example:
-	//
-	// Obtains the OpenID of the user. This is the default scope and cannot be deleted.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the permission.
-	//
-	// example:
-	//
-	// openid
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope) String() string {

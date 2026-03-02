@@ -16,7 +16,7 @@ type iSetPasswordPolicyResponseBody interface {
 }
 
 type SetPasswordPolicyResponseBody struct {
-	// The details of the password policy.
+	// The password strength policy.
 	PasswordPolicy *SetPasswordPolicyResponseBodyPasswordPolicy `json:"PasswordPolicy,omitempty" xml:"PasswordPolicy,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,14 +62,20 @@ func (s *SetPasswordPolicyResponseBody) Validate() error {
 }
 
 type SetPasswordPolicyResponseBodyPasswordPolicy struct {
-	// Indicates whether to disable logon after the password expires.
+	// Indicates whether logon is prevented after the password expires.
 	//
 	// example:
 	//
 	// false
-	HardExpire         *bool  `json:"HardExpire,omitempty" xml:"HardExpire,omitempty"`
-	InitialPasswordAge *int32 `json:"InitialPasswordAge,omitempty" xml:"InitialPasswordAge,omitempty"`
-	// The maximum number of password retries.
+	HardExpire *bool `json:"HardExpire,omitempty" xml:"HardExpire,omitempty"`
+	// The validity period of the initial password.
+	//
+	// example:
+	//
+	// 14
+	InitialPasswordAge         *int32 `json:"InitialPasswordAge,omitempty" xml:"InitialPasswordAge,omitempty"`
+	InterceptRiskPasswordOnApi *bool  `json:"InterceptRiskPasswordOnApi,omitempty" xml:"InterceptRiskPasswordOnApi,omitempty"`
+	// The maximum number of consecutive logon failures that are allowed.
 	//
 	// example:
 	//
@@ -87,19 +93,19 @@ type SetPasswordPolicyResponseBodyPasswordPolicy struct {
 	//
 	// 0
 	MinimumPasswordDifferentCharacter *int32 `json:"MinimumPasswordDifferentCharacter,omitempty" xml:"MinimumPasswordDifferentCharacter,omitempty"`
-	// The minimum number of characters in the password.
+	// The minimum length of the password.
 	//
 	// example:
 	//
 	// 8
 	MinimumPasswordLength *int32 `json:"MinimumPasswordLength,omitempty" xml:"MinimumPasswordLength,omitempty"`
-	// Indicates whether to exclude the username from the password.
+	// Prevents passwords from containing the username.
 	//
 	// example:
 	//
 	// false
 	PasswordNotContainUserName *bool `json:"PasswordNotContainUserName,omitempty" xml:"PasswordNotContainUserName,omitempty"`
-	// The policy for password history check.
+	// The number of previous passwords that cannot be reused.
 	//
 	// example:
 	//
@@ -117,7 +123,7 @@ type SetPasswordPolicyResponseBodyPasswordPolicy struct {
 	//
 	// false
 	RequireNumbers *bool `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
-	// Indicates whether the password must contain special characters.
+	// Indicates whether the password must contain symbols.
 	//
 	// example:
 	//
@@ -145,6 +151,10 @@ func (s *SetPasswordPolicyResponseBodyPasswordPolicy) GetHardExpire() *bool {
 
 func (s *SetPasswordPolicyResponseBodyPasswordPolicy) GetInitialPasswordAge() *int32 {
 	return s.InitialPasswordAge
+}
+
+func (s *SetPasswordPolicyResponseBodyPasswordPolicy) GetInterceptRiskPasswordOnApi() *bool {
+	return s.InterceptRiskPasswordOnApi
 }
 
 func (s *SetPasswordPolicyResponseBodyPasswordPolicy) GetMaxLoginAttemps() *int32 {
@@ -194,6 +204,11 @@ func (s *SetPasswordPolicyResponseBodyPasswordPolicy) SetHardExpire(v bool) *Set
 
 func (s *SetPasswordPolicyResponseBodyPasswordPolicy) SetInitialPasswordAge(v int32) *SetPasswordPolicyResponseBodyPasswordPolicy {
 	s.InitialPasswordAge = &v
+	return s
+}
+
+func (s *SetPasswordPolicyResponseBodyPasswordPolicy) SetInterceptRiskPasswordOnApi(v bool) *SetPasswordPolicyResponseBodyPasswordPolicy {
+	s.InterceptRiskPasswordOnApi = &v
 	return s
 }
 

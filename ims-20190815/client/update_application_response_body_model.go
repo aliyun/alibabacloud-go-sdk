@@ -16,7 +16,7 @@ type iUpdateApplicationResponseBody interface {
 }
 
 type UpdateApplicationResponseBody struct {
-	// The information about the application.
+	// The application information.
 	Application *UpdateApplicationResponseBodyApplication `json:"Application,omitempty" xml:"Application,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -74,7 +74,7 @@ type UpdateApplicationResponseBodyApplication struct {
 	//
 	// 177242285274****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
@@ -92,13 +92,13 @@ type UpdateApplicationResponseBodyApplication struct {
 	//
 	// WebApp
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// The creation time.
+	// The time when the application was created.
 	//
 	// example:
 	//
 	// 2020-10-23T08:06:57Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The information about the permissions that are granted on the application.
+	// The information about the permission scopes of the application.
 	DelegatedScope *UpdateApplicationResponseBodyApplicationDelegatedScope `json:"DelegatedScope,omitempty" xml:"DelegatedScope,omitempty" type:"Struct"`
 	// The display name of the application.
 	//
@@ -106,28 +106,36 @@ type UpdateApplicationResponseBodyApplication struct {
 	//
 	// NewApp
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// Indicates whether the application can be installed by using other Alibaba Cloud accounts.
+	// Indicates whether the application can be installed by other Alibaba Cloud accounts.
 	//
 	// example:
 	//
 	// true
-	IsMultiTenant   *bool   `json:"IsMultiTenant,omitempty" xml:"IsMultiTenant,omitempty"`
-	ProtocolVersion *string `json:"ProtocolVersion,omitempty" xml:"ProtocolVersion,omitempty"`
-	// The callback URLs.
-	RedirectUris *UpdateApplicationResponseBodyApplicationRedirectUris `json:"RedirectUris,omitempty" xml:"RedirectUris,omitempty" type:"Struct"`
+	IsMultiTenant *bool `json:"IsMultiTenant,omitempty" xml:"IsMultiTenant,omitempty"`
+	// The OAuth protocol version of the application. Valid values:
+	//
+	// - `2.0`: OAuth 2.0.
+	//
+	// - `2.1`: OAuth 2.1.
+	//
+	// example:
+	//
+	// 2.0
+	ProtocolVersion *string                                               `json:"ProtocolVersion,omitempty" xml:"ProtocolVersion,omitempty"`
+	RedirectUris    *UpdateApplicationResponseBodyApplicationRedirectUris `json:"RedirectUris,omitempty" xml:"RedirectUris,omitempty" type:"Struct"`
 	// The validity period of the refresh token. Unit: seconds.
 	//
 	// example:
 	//
 	// 7776000
 	RefreshTokenValidity *int32 `json:"RefreshTokenValidity,omitempty" xml:"RefreshTokenValidity,omitempty"`
-	// Indicates whether a secret is required.
+	// Indicates whether an application key is required.
 	//
 	// example:
 	//
 	// true
 	SecretRequired *bool `json:"SecretRequired,omitempty" xml:"SecretRequired,omitempty"`
-	// The update time.
+	// The time when the application was updated.
 	//
 	// example:
 	//
@@ -284,7 +292,6 @@ func (s *UpdateApplicationResponseBodyApplication) Validate() error {
 }
 
 type UpdateApplicationResponseBodyApplicationDelegatedScope struct {
-	// The information about the permissions that are granted on the application.
 	PredefinedScopes *UpdateApplicationResponseBodyApplicationDelegatedScopePredefinedScopes `json:"PredefinedScopes,omitempty" xml:"PredefinedScopes,omitempty" type:"Struct"`
 }
 
@@ -349,30 +356,9 @@ func (s *UpdateApplicationResponseBodyApplicationDelegatedScopePredefinedScopes)
 }
 
 type UpdateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefinedScope struct {
-	// The description of the permission.
-	//
-	// example:
-	//
-	// Obtain the OpenID of the user. This is the default permission that you cannot remove.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the permission.
-	//
-	// example:
-	//
-	// openid
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the permission is automatically selected by default when you install the application. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// `openid` is required by default.
-	//
-	// example:
-	//
-	// true
-	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Required    *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
 func (s UpdateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefinedScope) String() string {

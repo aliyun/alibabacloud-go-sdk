@@ -14,11 +14,6 @@ type iDeleteUserInRecycleBinRequest interface {
 }
 
 type DeleteUserInRecycleBinRequest struct {
-	// The ID of the RAM user.
-	//
-	// example:
-	//
-	// 20732900249392****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 

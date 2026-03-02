@@ -18,7 +18,7 @@ type iGetApplicationResponseBody interface {
 type GetApplicationResponseBody struct {
 	// The information about the application.
 	Application *GetApplicationResponseBodyApplication `json:"Application,omitempty" xml:"Application,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -74,37 +74,37 @@ type GetApplicationResponseBodyApplication struct {
 	//
 	// 177242285274****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// 472457090344041****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// myapp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The type of the application. Valid values:
+	// The application type. Valid values:
 	//
-	// 	- WebApp: a web application.
+	// - WebApp: a web application that is based on browser interaction.
 	//
-	// 	- NativeApp: a native application that runs on an operating system, such as a desktop or mobile operating system.
+	// - NativeApp: a native application that runs on an operating system, such as a desktop or mobile operating system.
 	//
-	// 	- ServerApp: an application that can access Alibaba Cloud services without the need for user logon. Only applications that synchronize user information based on the System for Cross-domain Identity Management (SCIM) protocol are supported.
+	// - ServerApp: an application that can directly access Alibaba Cloud services without user logon. Currently, only applications that use the System for Cross-domain Identity Management (SCIM) for user synchronization are supported.
 	//
 	// example:
 	//
 	// WebApp
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// The creation time.
+	// The time when the application was created.
 	//
 	// example:
 	//
 	// 2020-10-23T08:06:57Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The information about the permissions that are granted on the application.
+	// The permission scopes of the application.
 	DelegatedScope *GetApplicationResponseBodyApplicationDelegatedScope `json:"DelegatedScope,omitempty" xml:"DelegatedScope,omitempty" type:"Struct"`
 	// The display name of the application.
 	//
@@ -112,28 +112,36 @@ type GetApplicationResponseBodyApplication struct {
 	//
 	// myapp
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// Indicates whether the application can be installed by using other Alibaba Cloud accounts.
+	// Indicates whether the application can be installed by other Alibaba Cloud accounts.
 	//
 	// example:
 	//
 	// true
-	IsMultiTenant   *bool   `json:"IsMultiTenant,omitempty" xml:"IsMultiTenant,omitempty"`
-	ProtocolVersion *string `json:"ProtocolVersion,omitempty" xml:"ProtocolVersion,omitempty"`
-	// The callback URL.
-	RedirectUris *GetApplicationResponseBodyApplicationRedirectUris `json:"RedirectUris,omitempty" xml:"RedirectUris,omitempty" type:"Struct"`
+	IsMultiTenant *bool `json:"IsMultiTenant,omitempty" xml:"IsMultiTenant,omitempty"`
+	// The OAuth protocol version of the application. Valid values:
+	//
+	// - `2.0`: OAuth 2.0.
+	//
+	// - `2.1`: OAuth 2.1.
+	//
+	// example:
+	//
+	// 2.0
+	ProtocolVersion *string                                            `json:"ProtocolVersion,omitempty" xml:"ProtocolVersion,omitempty"`
+	RedirectUris    *GetApplicationResponseBodyApplicationRedirectUris `json:"RedirectUris,omitempty" xml:"RedirectUris,omitempty" type:"Struct"`
 	// The validity period of the refresh token. Unit: seconds.
 	//
 	// example:
 	//
 	// 7776000
 	RefreshTokenValidity *int32 `json:"RefreshTokenValidity,omitempty" xml:"RefreshTokenValidity,omitempty"`
-	// Indicates whether a secret is required.
+	// Indicates whether an application key is required.
 	//
 	// example:
 	//
 	// true
 	SecretRequired *bool `json:"SecretRequired,omitempty" xml:"SecretRequired,omitempty"`
-	// The update time.
+	// The time when the application was last updated.
 	//
 	// example:
 	//
@@ -290,7 +298,6 @@ func (s *GetApplicationResponseBodyApplication) Validate() error {
 }
 
 type GetApplicationResponseBodyApplicationDelegatedScope struct {
-	// The information about the permissions that are granted on the application.
 	PredefinedScopes *GetApplicationResponseBodyApplicationDelegatedScopePredefinedScopes `json:"PredefinedScopes,omitempty" xml:"PredefinedScopes,omitempty" type:"Struct"`
 }
 
@@ -355,30 +362,9 @@ func (s *GetApplicationResponseBodyApplicationDelegatedScopePredefinedScopes) Va
 }
 
 type GetApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefinedScope struct {
-	// The description of the permission.
-	//
-	// example:
-	//
-	// Obtain the OpenID of the user. This is the default permission that you cannot remove.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the permission.
-	//
-	// example:
-	//
-	// openid
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the permission is automatically selected by default when you install the application. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// `openid` is required by default.
-	//
-	// example:
-	//
-	// true
-	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Required    *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
 func (s GetApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefinedScope) String() string {

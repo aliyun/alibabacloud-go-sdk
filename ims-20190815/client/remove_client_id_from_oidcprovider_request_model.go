@@ -16,21 +16,7 @@ type iRemoveClientIdFromOIDCProviderRequest interface {
 }
 
 type RemoveClientIdFromOIDCProviderRequest struct {
-	// The client ID that you want to remove.
-	//
-	// The client ID can contain letters, digits, and special characters and cannot start with the special characters. The special characters are `periods, (.), hyphens (-), underscores (_), colons (:), and forward slashes (/)`.``
-	//
-	// The client ID can be up to 128 characters in length.
-	//
-	// example:
-	//
-	// 498469743454717****
-	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The name of the OIDC IdP.
-	//
-	// example:
-	//
-	// TestOIDCProvider
+	ClientId         *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
 }
 

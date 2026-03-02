@@ -16,7 +16,6 @@ type iListPredefinedScopesResponseBody interface {
 }
 
 type ListPredefinedScopesResponseBody struct {
-	// The information about application permissions.
 	PredefinedScopes *ListPredefinedScopesResponseBodyPredefinedScopes `json:"PredefinedScopes,omitempty" xml:"PredefinedScopes,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,18 +95,8 @@ func (s *ListPredefinedScopesResponseBodyPredefinedScopes) Validate() error {
 }
 
 type ListPredefinedScopesResponseBodyPredefinedScopesPredefinedScope struct {
-	// The description of the permission scope.
-	//
-	// example:
-	//
-	// Obtain the OpenID of the user. This is the default permission that you cannot remove.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the permission scope.
-	//
-	// example:
-	//
-	// openid
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ListPredefinedScopesResponseBodyPredefinedScopesPredefinedScope) String() string {

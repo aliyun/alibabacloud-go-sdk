@@ -26,66 +26,13 @@ type iUpdateUserRequest interface {
 }
 
 type UpdateUserRequest struct {
-	// The new description of the RAM user.
-	//
-	// The description must be 1 to 128 characters in length.
-	//
-	// example:
-	//
-	// This is a cloud computing engineer.
-	NewComments *string `json:"NewComments,omitempty" xml:"NewComments,omitempty"`
-	// The new display name of the RAM user.
-	//
-	// The name must be 1 to 24 characters in length.
-	//
-	// example:
-	//
-	// new
-	NewDisplayName *string `json:"NewDisplayName,omitempty" xml:"NewDisplayName,omitempty"`
-	// The new email address of the RAM user.
-	//
-	// > This parameter is valid only on the China site (aliyun.com).
-	//
-	// example:
-	//
-	// alice@example.com
-	NewEmail *string `json:"NewEmail,omitempty" xml:"NewEmail,omitempty"`
-	// The new mobile phone number of the RAM user.
-	//
-	// Format: \\<Country code>-\\<Mobile phone number>.
-	//
-	// > This parameter is valid only on the China site (aliyun.com).
-	//
-	// example:
-	//
-	// 86-1868888****
-	NewMobilePhone *string `json:"NewMobilePhone,omitempty" xml:"NewMobilePhone,omitempty"`
-	// The new logon name of the RAM user.
-	//
-	// The name is in the format of `<username>@<AccountAlias>.onaliyun.com`. `<username>` indicates the name of the RAM user. `<AccountAlias>.onaliyun.com` indicates the default domain name.
-	//
-	// The value of `NewUserPrincipalName` must be `1 to 128` characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The value of `<username>` must be `1 to 64` characters in length.
-	//
-	// example:
-	//
-	// new@example.onaliyun.com
+	NewComments          *string `json:"NewComments,omitempty" xml:"NewComments,omitempty"`
+	NewDisplayName       *string `json:"NewDisplayName,omitempty" xml:"NewDisplayName,omitempty"`
+	NewEmail             *string `json:"NewEmail,omitempty" xml:"NewEmail,omitempty"`
+	NewMobilePhone       *string `json:"NewMobilePhone,omitempty" xml:"NewMobilePhone,omitempty"`
 	NewUserPrincipalName *string `json:"NewUserPrincipalName,omitempty" xml:"NewUserPrincipalName,omitempty"`
-	// The ID of the RAM user.
-	//
-	// > You must specify only one of the following parameters: `UserPrincipalName` and `UserId`.
-	//
-	// example:
-	//
-	// 20732900249392****
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The logon name of the RAM user.
-	//
-	// > You must specify only one of the following parameters: `UserPrincipalName` and `UserId`.
-	//
-	// example:
-	//
-	// test@example.onaliyun.com
-	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+	UserId               *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserPrincipalName    *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
 func (s UpdateUserRequest) String() string {

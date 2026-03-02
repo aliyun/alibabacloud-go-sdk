@@ -16,14 +16,8 @@ type iListAppSecretIdsResponseBody interface {
 }
 
 type ListAppSecretIdsResponseBody struct {
-	// The details of the application secret.
 	AppSecrets *ListAppSecretIdsResponseBodyAppSecrets `json:"AppSecrets,omitempty" xml:"AppSecrets,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 5F2FD500-7173-47D6-BD2F-EB60879B4F16
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAppSecretIdsResponseBody) String() string {
@@ -96,24 +90,9 @@ func (s *ListAppSecretIdsResponseBodyAppSecrets) Validate() error {
 }
 
 type ListAppSecretIdsResponseBodyAppSecretsAppSecret struct {
-	// The ID of the application.
-	//
-	// example:
-	//
-	// 472457090344041****
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the application secret.
-	//
-	// example:
-	//
-	// 2efd5004-005c-4f05-83c6-5b1dd176****
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AppSecretId *string `json:"AppSecretId,omitempty" xml:"AppSecretId,omitempty"`
-	// The creation time.
-	//
-	// example:
-	//
-	// 2020-10-26T03:18:39Z
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 }
 
 func (s ListAppSecretIdsResponseBodyAppSecretsAppSecret) String() string {

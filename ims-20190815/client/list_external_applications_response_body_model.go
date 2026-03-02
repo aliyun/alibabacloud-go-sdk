@@ -20,13 +20,12 @@ type iListExternalApplicationsResponseBody interface {
 }
 
 type ListExternalApplicationsResponseBody struct {
-	// The information about the external applications.
 	ExternalApplications *ListExternalApplicationsResponseBodyExternalApplications `json:"ExternalApplications,omitempty" xml:"ExternalApplications,omitempty" type:"Struct"`
 	// Indicates whether the response is truncated. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -34,7 +33,7 @@ type ListExternalApplicationsResponseBody struct {
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
-	// >  This parameter is returned only when `IsTruncated` is `true`.
+	// > This parameter is returned only when `IsTruncated` is `true`.
 	//
 	// example:
 	//
@@ -136,44 +135,13 @@ func (s *ListExternalApplicationsResponseBodyExternalApplications) Validate() er
 }
 
 type ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication struct {
-	// The name of the external application principal. The value is in the `<app_name>@app.<account_id>.onaliyun.com` format.
-	//
-	// example:
-	//
-	// GiteePrd@app.153082740420****.onaliyun.com
-	AppPrincipalName *string `json:"AppPrincipalName,omitempty" xml:"AppPrincipalName,omitempty"`
-	// The time when the external application was installed. The value is a timestamp.
-	//
-	// example:
-	//
-	// 1603693318000
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The information about the permissions that are granted to the external application.
-	DelegatedScope *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScope `json:"DelegatedScope,omitempty" xml:"DelegatedScope,omitempty" type:"Struct"`
-	// The display name of the external application.
-	//
-	// example:
-	//
-	// GiteeAliyun
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The ID of the external application.
-	//
-	// example:
-	//
-	// 407426893752729****
-	ForeignAppId *string `json:"ForeignAppId,omitempty" xml:"ForeignAppId,omitempty"`
-	// The ID of the Alibaba Cloud account for which the external application was installed.
-	//
-	// example:
-	//
-	// 173082740420****
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The update time of the external application. The value is a timestamp.
-	//
-	// example:
-	//
-	// 1603693518000
-	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	AppPrincipalName *string                                                                                    `json:"AppPrincipalName,omitempty" xml:"AppPrincipalName,omitempty"`
+	CreateDate       *string                                                                                    `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	DelegatedScope   *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScope `json:"DelegatedScope,omitempty" xml:"DelegatedScope,omitempty" type:"Struct"`
+	DisplayName      *string                                                                                    `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	ForeignAppId     *string                                                                                    `json:"ForeignAppId,omitempty" xml:"ForeignAppId,omitempty"`
+	TenantId         *string                                                                                    `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	UpdateDate       *string                                                                                    `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication) String() string {
@@ -257,7 +225,6 @@ func (s *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplica
 }
 
 type ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScope struct {
-	// The information about the permissions that are granted to the external application.
 	PredefinedScopes *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopes `json:"PredefinedScopes,omitempty" xml:"PredefinedScopes,omitempty" type:"Struct"`
 }
 
@@ -322,18 +289,8 @@ func (s *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplica
 }
 
 type ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopesPredefinedScope struct {
-	// The description of the permission.
-	//
-	// example:
-	//
-	// Obtains the OpenID of the user. This is the default scope and cannot be deleted.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the permission.
-	//
-	// example:
-	//
-	// openid
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopesPredefinedScope) String() string {
