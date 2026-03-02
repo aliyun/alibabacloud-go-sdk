@@ -136,6 +136,10 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccessRestrictionRules) {
+		body["AccessRestrictionRules"] = request.AccessRestrictionRules
+	}
+
 	if !dara.IsNil(request.Accessibility) {
 		body["Accessibility"] = request.Accessibility
 	}
@@ -158,6 +162,10 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 
 	if !dara.IsNil(request.Datasets) {
 		body["Datasets"] = request.Datasets
+	}
+
+	if !dara.IsNil(request.DockerConfig) {
+		body["DockerConfig"] = request.DockerConfig
 	}
 
 	if !dara.IsNil(request.Driver) {

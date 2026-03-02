@@ -9,6 +9,8 @@ type iCreateInstanceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessRestrictionRules(v map[string]*string) *CreateInstanceRequest
+	GetAccessRestrictionRules() map[string]*string
 	SetAccessibility(v string) *CreateInstanceRequest
 	GetAccessibility() *string
 	SetAffinity(v *CreateInstanceRequestAffinity) *CreateInstanceRequest
@@ -21,6 +23,8 @@ type iCreateInstanceRequest interface {
 	GetCredentialConfig() *CredentialConfig
 	SetDatasets(v []*CreateInstanceRequestDatasets) *CreateInstanceRequest
 	GetDatasets() []*CreateInstanceRequestDatasets
+	SetDockerConfig(v *CreateInstanceRequestDockerConfig) *CreateInstanceRequest
+	GetDockerConfig() *CreateInstanceRequestDockerConfig
 	SetDriver(v string) *CreateInstanceRequest
 	GetDriver() *string
 	SetDynamicMount(v *DynamicMount) *CreateInstanceRequest
@@ -66,6 +70,7 @@ type iCreateInstanceRequest interface {
 }
 
 type CreateInstanceRequest struct {
+	AccessRestrictionRules map[string]*string `json:"AccessRestrictionRules,omitempty" xml:"AccessRestrictionRules,omitempty"`
 	// The instance accessibility.
 	//
 	// Valid values:
@@ -90,7 +95,8 @@ type CreateInstanceRequest struct {
 	// The credential configuration.
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	// The datasets.
-	Datasets []*CreateInstanceRequestDatasets `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	Datasets     []*CreateInstanceRequestDatasets   `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	DockerConfig *CreateInstanceRequestDockerConfig `json:"DockerConfig,omitempty" xml:"DockerConfig,omitempty" type:"Struct"`
 	// The NVIDIA driver configuration.
 	//
 	// example:
@@ -219,6 +225,10 @@ func (s CreateInstanceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateInstanceRequest) GetAccessRestrictionRules() map[string]*string {
+	return s.AccessRestrictionRules
+}
+
 func (s *CreateInstanceRequest) GetAccessibility() *string {
 	return s.Accessibility
 }
@@ -241,6 +251,10 @@ func (s *CreateInstanceRequest) GetCredentialConfig() *CredentialConfig {
 
 func (s *CreateInstanceRequest) GetDatasets() []*CreateInstanceRequestDatasets {
 	return s.Datasets
+}
+
+func (s *CreateInstanceRequest) GetDockerConfig() *CreateInstanceRequestDockerConfig {
+	return s.DockerConfig
 }
 
 func (s *CreateInstanceRequest) GetDriver() *string {
@@ -327,6 +341,11 @@ func (s *CreateInstanceRequest) GetWorkspaceSource() *string {
 	return s.WorkspaceSource
 }
 
+func (s *CreateInstanceRequest) SetAccessRestrictionRules(v map[string]*string) *CreateInstanceRequest {
+	s.AccessRestrictionRules = v
+	return s
+}
+
 func (s *CreateInstanceRequest) SetAccessibility(v string) *CreateInstanceRequest {
 	s.Accessibility = &v
 	return s
@@ -354,6 +373,11 @@ func (s *CreateInstanceRequest) SetCredentialConfig(v *CredentialConfig) *Create
 
 func (s *CreateInstanceRequest) SetDatasets(v []*CreateInstanceRequestDatasets) *CreateInstanceRequest {
 	s.Datasets = v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetDockerConfig(v *CreateInstanceRequestDockerConfig) *CreateInstanceRequest {
+	s.DockerConfig = v
 	return s
 }
 
@@ -494,6 +518,11 @@ func (s *CreateInstanceRequest) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.DockerConfig != nil {
+		if err := s.DockerConfig.Validate(); err != nil {
+			return err
 		}
 	}
 	if s.DynamicMount != nil {
@@ -979,6 +1008,54 @@ func (s *CreateInstanceRequestDatasets) SetUri(v string) *CreateInstanceRequestD
 }
 
 func (s *CreateInstanceRequestDatasets) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateInstanceRequestDockerConfig struct {
+	// example:
+	//
+	// 10
+	ContainersLimit       *int64  `json:"ContainersLimit,omitempty" xml:"ContainersLimit,omitempty"`
+	Enable                *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	MountAccessConfigPath *string `json:"MountAccessConfigPath,omitempty" xml:"MountAccessConfigPath,omitempty"`
+}
+
+func (s CreateInstanceRequestDockerConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateInstanceRequestDockerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestDockerConfig) GetContainersLimit() *int64 {
+	return s.ContainersLimit
+}
+
+func (s *CreateInstanceRequestDockerConfig) GetEnable() *bool {
+	return s.Enable
+}
+
+func (s *CreateInstanceRequestDockerConfig) GetMountAccessConfigPath() *string {
+	return s.MountAccessConfigPath
+}
+
+func (s *CreateInstanceRequestDockerConfig) SetContainersLimit(v int64) *CreateInstanceRequestDockerConfig {
+	s.ContainersLimit = &v
+	return s
+}
+
+func (s *CreateInstanceRequestDockerConfig) SetEnable(v bool) *CreateInstanceRequestDockerConfig {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateInstanceRequestDockerConfig) SetMountAccessConfigPath(v string) *CreateInstanceRequestDockerConfig {
+	s.MountAccessConfigPath = &v
+	return s
+}
+
+func (s *CreateInstanceRequestDockerConfig) Validate() error {
 	return dara.Validate(s)
 }
 

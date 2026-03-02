@@ -11,6 +11,8 @@ type iGetInstanceResponseBody interface {
 	GoString() string
 	SetAcceleratorType(v string) *GetInstanceResponseBody
 	GetAcceleratorType() *string
+	SetAccessRestrictionRules(v map[string]*string) *GetInstanceResponseBody
+	GetAccessRestrictionRules() map[string]*string
 	SetAccessibility(v string) *GetInstanceResponseBody
 	GetAccessibility() *string
 	SetAccumulatedRunningTimeInMs(v int64) *GetInstanceResponseBody
@@ -25,6 +27,8 @@ type iGetInstanceResponseBody interface {
 	GetCredentialConfig() *CredentialConfig
 	SetDatasets(v []*GetInstanceResponseBodyDatasets) *GetInstanceResponseBody
 	GetDatasets() []*GetInstanceResponseBodyDatasets
+	SetDockerConfig(v *GetInstanceResponseBodyDockerConfig) *GetInstanceResponseBody
+	GetDockerConfig() *GetInstanceResponseBodyDockerConfig
 	SetDriver(v string) *GetInstanceResponseBody
 	GetDriver() *string
 	SetDynamicMount(v *DynamicMount) *GetInstanceResponseBody
@@ -131,7 +135,8 @@ type GetInstanceResponseBody struct {
 	// example:
 	//
 	// CPU
-	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	AcceleratorType        *string            `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	AccessRestrictionRules map[string]*string `json:"AccessRestrictionRules,omitempty" xml:"AccessRestrictionRules,omitempty"`
 	// The accessibility. Valid values:
 	//
 	// 	- PRIVATE: Accessible only to you and the administrator of the workspace.
@@ -169,7 +174,8 @@ type GetInstanceResponseBody struct {
 	// The credential injection configuration.
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	// The datasets.
-	Datasets []*GetInstanceResponseBodyDatasets `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	Datasets     []*GetInstanceResponseBodyDatasets   `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	DockerConfig *GetInstanceResponseBodyDockerConfig `json:"DockerConfig,omitempty" xml:"DockerConfig,omitempty" type:"Struct"`
 	// The NVIDIA driver configuration.
 	//
 	// example:
@@ -468,6 +474,10 @@ func (s *GetInstanceResponseBody) GetAcceleratorType() *string {
 	return s.AcceleratorType
 }
 
+func (s *GetInstanceResponseBody) GetAccessRestrictionRules() map[string]*string {
+	return s.AccessRestrictionRules
+}
+
 func (s *GetInstanceResponseBody) GetAccessibility() *string {
 	return s.Accessibility
 }
@@ -494,6 +504,10 @@ func (s *GetInstanceResponseBody) GetCredentialConfig() *CredentialConfig {
 
 func (s *GetInstanceResponseBody) GetDatasets() []*GetInstanceResponseBodyDatasets {
 	return s.Datasets
+}
+
+func (s *GetInstanceResponseBody) GetDockerConfig() *GetInstanceResponseBodyDockerConfig {
+	return s.DockerConfig
 }
 
 func (s *GetInstanceResponseBody) GetDriver() *string {
@@ -685,6 +699,11 @@ func (s *GetInstanceResponseBody) SetAcceleratorType(v string) *GetInstanceRespo
 	return s
 }
 
+func (s *GetInstanceResponseBody) SetAccessRestrictionRules(v map[string]*string) *GetInstanceResponseBody {
+	s.AccessRestrictionRules = v
+	return s
+}
+
 func (s *GetInstanceResponseBody) SetAccessibility(v string) *GetInstanceResponseBody {
 	s.Accessibility = &v
 	return s
@@ -717,6 +736,11 @@ func (s *GetInstanceResponseBody) SetCredentialConfig(v *CredentialConfig) *GetI
 
 func (s *GetInstanceResponseBody) SetDatasets(v []*GetInstanceResponseBodyDatasets) *GetInstanceResponseBody {
 	s.Datasets = v
+	return s
+}
+
+func (s *GetInstanceResponseBody) SetDockerConfig(v *GetInstanceResponseBodyDockerConfig) *GetInstanceResponseBody {
+	s.DockerConfig = v
 	return s
 }
 
@@ -977,6 +1001,11 @@ func (s *GetInstanceResponseBody) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.DockerConfig != nil {
+		if err := s.DockerConfig.Validate(); err != nil {
+			return err
 		}
 	}
 	if s.DynamicMount != nil {
@@ -1406,6 +1435,57 @@ func (s *GetInstanceResponseBodyDatasets) SetUri(v string) *GetInstanceResponseB
 }
 
 func (s *GetInstanceResponseBodyDatasets) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetInstanceResponseBodyDockerConfig struct {
+	// example:
+	//
+	// 10
+	ContainersLimit *int64 `json:"ContainersLimit,omitempty" xml:"ContainersLimit,omitempty"`
+	Enable          *bool  `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// /etc/docker/dockerboard/mount_access.json
+	MountAccessConfigPath *string `json:"MountAccessConfigPath,omitempty" xml:"MountAccessConfigPath,omitempty"`
+}
+
+func (s GetInstanceResponseBodyDockerConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyDockerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyDockerConfig) GetContainersLimit() *int64 {
+	return s.ContainersLimit
+}
+
+func (s *GetInstanceResponseBodyDockerConfig) GetEnable() *bool {
+	return s.Enable
+}
+
+func (s *GetInstanceResponseBodyDockerConfig) GetMountAccessConfigPath() *string {
+	return s.MountAccessConfigPath
+}
+
+func (s *GetInstanceResponseBodyDockerConfig) SetContainersLimit(v int64) *GetInstanceResponseBodyDockerConfig {
+	s.ContainersLimit = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDockerConfig) SetEnable(v bool) *GetInstanceResponseBodyDockerConfig {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDockerConfig) SetMountAccessConfigPath(v string) *GetInstanceResponseBodyDockerConfig {
+	s.MountAccessConfigPath = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDockerConfig) Validate() error {
 	return dara.Validate(s)
 }
 
