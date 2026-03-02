@@ -156,6 +156,7 @@ type DescribeAttacksResponseBodyAttacks struct {
 	//
 	// 1.0
 	LanguageVersion *string `json:"LanguageVersion,omitempty" xml:"LanguageVersion,omitempty"`
+	LlmAsset        *bool   `json:"LlmAsset,omitempty" xml:"LlmAsset,omitempty"`
 	// example:
 	//
 	// 1727281449756
@@ -340,6 +341,10 @@ func (s *DescribeAttacksResponseBodyAttacks) GetLanguage() *string {
 
 func (s *DescribeAttacksResponseBodyAttacks) GetLanguageVersion() *string {
 	return s.LanguageVersion
+}
+
+func (s *DescribeAttacksResponseBodyAttacks) GetLlmAsset() *bool {
+	return s.LlmAsset
 }
 
 func (s *DescribeAttacksResponseBodyAttacks) GetMaxTimestamp() *int64 {
@@ -540,6 +545,11 @@ func (s *DescribeAttacksResponseBodyAttacks) SetLanguage(v string) *DescribeAtta
 
 func (s *DescribeAttacksResponseBodyAttacks) SetLanguageVersion(v string) *DescribeAttacksResponseBodyAttacks {
 	s.LanguageVersion = &v
+	return s
+}
+
+func (s *DescribeAttacksResponseBodyAttacks) SetLlmAsset(v bool) *DescribeAttacksResponseBodyAttacks {
+	s.LlmAsset = &v
 	return s
 }
 
