@@ -28,10 +28,7 @@ type RestoreOssImageRequest struct {
 	//
 	// test-sddp
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// example:
-	//
-	// zh
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// This parameter is required.
 	//
 	// example:

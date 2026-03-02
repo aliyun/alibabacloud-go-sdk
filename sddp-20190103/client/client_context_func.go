@@ -972,6 +972,10 @@ func (client *Client) DescribeColumnsWithContext(ctx context.Context, request *D
 		query["SensLevelName"] = request.SensLevelName
 	}
 
+	if !dara.IsNil(request.ServiceRegionId) {
+		query["ServiceRegionId"] = request.ServiceRegionId
+	}
+
 	if !dara.IsNil(request.TableId) {
 		query["TableId"] = request.TableId
 	}
@@ -1277,7 +1281,7 @@ func (client *Client) DescribeDataLimitDetailWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries data assets, such as instances, databases, and Object Storage Service (OSS) buckets, that you authorize Data Security Center (DSC) to scan in a service.
+// Queries assets that Data Security Center (DSC) is authorized to scan, or the regions that DSC supports.
 //
 // Description:
 //
@@ -1770,8 +1774,20 @@ func (client *Client) DescribeDataObjectsWithContext(ctx context.Context, reques
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.APIVersion) {
+		query["APIVersion"] = request.APIVersion
+	}
+
+	if !dara.IsNil(request.Bucket) {
+		query["Bucket"] = request.Bucket
+	}
+
 	if !dara.IsNil(request.CurrentPage) {
 		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.DbName) {
+		query["DbName"] = request.DbName
 	}
 
 	if !dara.IsNil(request.DomainId) {
@@ -1798,6 +1814,14 @@ func (client *Client) DescribeDataObjectsWithContext(ctx context.Context, reques
 		query["Lang"] = request.Lang
 	}
 
+	if !dara.IsNil(request.LogStore) {
+		query["LogStore"] = request.LogStore
+	}
+
+	if !dara.IsNil(request.LogStoreFlag) {
+		query["LogStoreFlag"] = request.LogStoreFlag
+	}
+
 	if !dara.IsNil(request.MemberAccount) {
 		query["MemberAccount"] = request.MemberAccount
 	}
@@ -1818,20 +1842,52 @@ func (client *Client) DescribeDataObjectsWithContext(ctx context.Context, reques
 		query["ParentCategoryIds"] = request.ParentCategoryIds
 	}
 
+	if !dara.IsNil(request.Path) {
+		query["Path"] = request.Path
+	}
+
+	if !dara.IsNil(request.ProductId) {
+		query["ProductId"] = request.ProductId
+	}
+
 	if !dara.IsNil(request.ProductIds) {
 		query["ProductIds"] = request.ProductIds
+	}
+
+	if !dara.IsNil(request.Project) {
+		query["Project"] = request.Project
 	}
 
 	if !dara.IsNil(request.QueryName) {
 		query["QueryName"] = request.QueryName
 	}
 
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RiskLevelIdList) {
+		query["RiskLevelIdList"] = request.RiskLevelIdList
+	}
+
 	if !dara.IsNil(request.RiskLevels) {
 		query["RiskLevels"] = request.RiskLevels
 	}
 
+	if !dara.IsNil(request.RuleIds) {
+		query["RuleIds"] = request.RuleIds
+	}
+
 	if !dara.IsNil(request.ServiceRegionId) {
 		query["ServiceRegionId"] = request.ServiceRegionId
+	}
+
+	if !dara.IsNil(request.TableName) {
+		query["TableName"] = request.TableName
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
 	}
 
 	if !dara.IsNil(request.TemplateId) {
@@ -2927,7 +2983,7 @@ func (client *Client) DescribeRulesWithContext(ctx context.Context, request *Des
 
 // Summary:
 //
-// Queries tables in data assets, such as MaxCompute projects and ApsaraDB RDS instances, that you authorize Data Security Center (DSC) to access.
+// Queries tables in data assets such as MaxCompute projects and ApsaraDB RDS instances that Data Security Center (DSC) is authorized to access.
 //
 // Description:
 //

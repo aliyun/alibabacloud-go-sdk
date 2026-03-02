@@ -35,12 +35,9 @@ type MaskOssImageRequest struct {
 	// example:
 	//
 	// true
-	IsAlwaysUpload   *bool `json:"IsAlwaysUpload,omitempty" xml:"IsAlwaysUpload,omitempty"`
-	IsSupportRestore *bool `json:"IsSupportRestore,omitempty" xml:"IsSupportRestore,omitempty"`
-	// example:
-	//
-	// zh
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	IsAlwaysUpload   *bool   `json:"IsAlwaysUpload,omitempty" xml:"IsAlwaysUpload,omitempty"`
+	IsSupportRestore *bool   `json:"IsSupportRestore,omitempty" xml:"IsSupportRestore,omitempty"`
+	Lang             *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// This parameter is required.
 	//
 	// example:

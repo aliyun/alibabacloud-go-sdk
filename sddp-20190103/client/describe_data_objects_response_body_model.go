@@ -119,6 +119,22 @@ func (s *DescribeDataObjectsResponseBody) Validate() error {
 type DescribeDataObjectsResponseBodyItems struct {
 	// List of industry categories for the sensitive data.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 备注
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// varchar
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// example:
+	//
+	// DataBaseName
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// example:
+	//
+	// 1
+	FileCategoryCode *int32 `json:"FileCategoryCode,omitempty" xml:"FileCategoryCode,omitempty"`
 	// The unique identifier ID of the data object.
 	//
 	// example:
@@ -137,6 +153,10 @@ type DescribeDataObjectsResponseBodyItems struct {
 	//
 	// rm-12*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// -1
+	IsRevision *int32 `json:"IsRevision,omitempty" xml:"IsRevision,omitempty"`
 	// Latest file modification time, in milliseconds.
 	//
 	// example:
@@ -149,6 +169,14 @@ type DescribeDataObjectsResponseBodyItems struct {
 	//
 	// 1687676649830
 	LastScanTime *int64 `json:"LastScanTime,omitempty" xml:"LastScanTime,omitempty"`
+	// example:
+	//
+	// logStore
+	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
+	// example:
+	//
+	// -1
+	MaskStatus *int32 `json:"MaskStatus,omitempty" xml:"MaskStatus,omitempty"`
 	// Member account ID.
 	//
 	// example:
@@ -241,6 +269,10 @@ type DescribeDataObjectsResponseBodyItems struct {
 	//
 	// 5
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// example:
+	//
+	// project
+	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
 	// The region ID to which the OSS storage object belongs.
 	//
 	// example:
@@ -253,6 +285,14 @@ type DescribeDataObjectsResponseBodyItems struct {
 	//
 	// cn-hangzhou
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	// example:
+	//
+	// 1
+	RiskLevelId *int32 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// example:
+	//
+	// 10
+	RuleCount *int32 `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
 	// List of matched identification models.
 	RuleList []*DescribeDataObjectsResponseBodyItemsRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
 	// Number of sensitive data items.
@@ -261,12 +301,40 @@ type DescribeDataObjectsResponseBodyItems struct {
 	//
 	// 1
 	SensitiveCount *int32 `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
+	// example:
+	//
+	// 1000
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// 1,2,3
+	Sx *string `json:"Sx,omitempty" xml:"Sx,omitempty"`
+	// example:
+	//
+	// tableName
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// 1
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 任务名
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// example:
+	//
+	// 1000
+	TaskNumber *int64 `json:"TaskNumber,omitempty" xml:"TaskNumber,omitempty"`
 	// Industry template ID
 	//
 	// example:
 	//
 	// 1
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// 模板名
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s DescribeDataObjectsResponseBodyItems) String() string {
@@ -281,6 +349,22 @@ func (s *DescribeDataObjectsResponseBodyItems) GetCategories() []*string {
 	return s.Categories
 }
 
+func (s *DescribeDataObjectsResponseBodyItems) GetComment() *string {
+	return s.Comment
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) GetDataType() *string {
+	return s.DataType
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) GetDbName() *string {
+	return s.DbName
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) GetFileCategoryCode() *int32 {
+	return s.FileCategoryCode
+}
+
 func (s *DescribeDataObjectsResponseBodyItems) GetId() *string {
 	return s.Id
 }
@@ -293,12 +377,24 @@ func (s *DescribeDataObjectsResponseBodyItems) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *DescribeDataObjectsResponseBodyItems) GetIsRevision() *int32 {
+	return s.IsRevision
+}
+
 func (s *DescribeDataObjectsResponseBodyItems) GetLastModifiedTime() *int64 {
 	return s.LastModifiedTime
 }
 
 func (s *DescribeDataObjectsResponseBodyItems) GetLastScanTime() *int64 {
 	return s.LastScanTime
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) GetLogStore() *string {
+	return s.LogStore
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) GetMaskStatus() *int32 {
+	return s.MaskStatus
 }
 
 func (s *DescribeDataObjectsResponseBodyItems) GetMemberAccount() *int64 {
@@ -333,12 +429,24 @@ func (s *DescribeDataObjectsResponseBodyItems) GetProductId() *int64 {
 	return s.ProductId
 }
 
+func (s *DescribeDataObjectsResponseBodyItems) GetProject() *string {
+	return s.Project
+}
+
 func (s *DescribeDataObjectsResponseBodyItems) GetRegionId() *string {
 	return s.RegionId
 }
 
 func (s *DescribeDataObjectsResponseBodyItems) GetRegionName() *string {
 	return s.RegionName
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) GetRiskLevelId() *int32 {
+	return s.RiskLevelId
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) GetRuleCount() *int32 {
+	return s.RuleCount
 }
 
 func (s *DescribeDataObjectsResponseBodyItems) GetRuleList() []*DescribeDataObjectsResponseBodyItemsRuleList {
@@ -349,12 +457,60 @@ func (s *DescribeDataObjectsResponseBodyItems) GetSensitiveCount() *int32 {
 	return s.SensitiveCount
 }
 
+func (s *DescribeDataObjectsResponseBodyItems) GetSize() *int64 {
+	return s.Size
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) GetSx() *string {
+	return s.Sx
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) GetTableName() *string {
+	return s.TableName
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) GetTaskId() *int64 {
+	return s.TaskId
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) GetTaskName() *string {
+	return s.TaskName
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) GetTaskNumber() *int64 {
+	return s.TaskNumber
+}
+
 func (s *DescribeDataObjectsResponseBodyItems) GetTemplateId() *int64 {
 	return s.TemplateId
 }
 
+func (s *DescribeDataObjectsResponseBodyItems) GetTemplateName() *string {
+	return s.TemplateName
+}
+
 func (s *DescribeDataObjectsResponseBodyItems) SetCategories(v []*string) *DescribeDataObjectsResponseBodyItems {
 	s.Categories = v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetComment(v string) *DescribeDataObjectsResponseBodyItems {
+	s.Comment = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetDataType(v string) *DescribeDataObjectsResponseBodyItems {
+	s.DataType = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetDbName(v string) *DescribeDataObjectsResponseBodyItems {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetFileCategoryCode(v int32) *DescribeDataObjectsResponseBodyItems {
+	s.FileCategoryCode = &v
 	return s
 }
 
@@ -373,6 +529,11 @@ func (s *DescribeDataObjectsResponseBodyItems) SetInstanceId(v string) *Describe
 	return s
 }
 
+func (s *DescribeDataObjectsResponseBodyItems) SetIsRevision(v int32) *DescribeDataObjectsResponseBodyItems {
+	s.IsRevision = &v
+	return s
+}
+
 func (s *DescribeDataObjectsResponseBodyItems) SetLastModifiedTime(v int64) *DescribeDataObjectsResponseBodyItems {
 	s.LastModifiedTime = &v
 	return s
@@ -380,6 +541,16 @@ func (s *DescribeDataObjectsResponseBodyItems) SetLastModifiedTime(v int64) *Des
 
 func (s *DescribeDataObjectsResponseBodyItems) SetLastScanTime(v int64) *DescribeDataObjectsResponseBodyItems {
 	s.LastScanTime = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetLogStore(v string) *DescribeDataObjectsResponseBodyItems {
+	s.LogStore = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetMaskStatus(v int32) *DescribeDataObjectsResponseBodyItems {
+	s.MaskStatus = &v
 	return s
 }
 
@@ -423,6 +594,11 @@ func (s *DescribeDataObjectsResponseBodyItems) SetProductId(v int64) *DescribeDa
 	return s
 }
 
+func (s *DescribeDataObjectsResponseBodyItems) SetProject(v string) *DescribeDataObjectsResponseBodyItems {
+	s.Project = &v
+	return s
+}
+
 func (s *DescribeDataObjectsResponseBodyItems) SetRegionId(v string) *DescribeDataObjectsResponseBodyItems {
 	s.RegionId = &v
 	return s
@@ -430,6 +606,16 @@ func (s *DescribeDataObjectsResponseBodyItems) SetRegionId(v string) *DescribeDa
 
 func (s *DescribeDataObjectsResponseBodyItems) SetRegionName(v string) *DescribeDataObjectsResponseBodyItems {
 	s.RegionName = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetRiskLevelId(v int32) *DescribeDataObjectsResponseBodyItems {
+	s.RiskLevelId = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetRuleCount(v int32) *DescribeDataObjectsResponseBodyItems {
+	s.RuleCount = &v
 	return s
 }
 
@@ -443,8 +629,43 @@ func (s *DescribeDataObjectsResponseBodyItems) SetSensitiveCount(v int32) *Descr
 	return s
 }
 
+func (s *DescribeDataObjectsResponseBodyItems) SetSize(v int64) *DescribeDataObjectsResponseBodyItems {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetSx(v string) *DescribeDataObjectsResponseBodyItems {
+	s.Sx = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetTableName(v string) *DescribeDataObjectsResponseBodyItems {
+	s.TableName = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetTaskId(v int64) *DescribeDataObjectsResponseBodyItems {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetTaskName(v string) *DescribeDataObjectsResponseBodyItems {
+	s.TaskName = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetTaskNumber(v int64) *DescribeDataObjectsResponseBodyItems {
+	s.TaskNumber = &v
+	return s
+}
+
 func (s *DescribeDataObjectsResponseBodyItems) SetTemplateId(v int64) *DescribeDataObjectsResponseBodyItems {
 	s.TemplateId = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetTemplateName(v string) *DescribeDataObjectsResponseBodyItems {
+	s.TemplateName = &v
 	return s
 }
 
@@ -560,6 +781,10 @@ type DescribeDataObjectsResponseBodyItemsRuleList struct {
 	//
 	// S1
 	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
+	// example:
+	//
+	// “个人信息”-“身份证”
+	RuleCategoryNameList *string `json:"RuleCategoryNameList,omitempty" xml:"RuleCategoryNameList,omitempty"`
 	// Number of matched identification models.
 	//
 	// example:
@@ -578,6 +803,10 @@ type DescribeDataObjectsResponseBodyItemsRuleList struct {
 	//
 	// name
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// ["张三"，"李四"]
+	SampleList *string `json:"SampleList,omitempty" xml:"SampleList,omitempty"`
 }
 
 func (s DescribeDataObjectsResponseBodyItemsRuleList) String() string {
@@ -596,6 +825,10 @@ func (s *DescribeDataObjectsResponseBodyItemsRuleList) GetRiskLevelName() *strin
 	return s.RiskLevelName
 }
 
+func (s *DescribeDataObjectsResponseBodyItemsRuleList) GetRuleCategoryNameList() *string {
+	return s.RuleCategoryNameList
+}
+
 func (s *DescribeDataObjectsResponseBodyItemsRuleList) GetRuleCount() *int32 {
 	return s.RuleCount
 }
@@ -608,6 +841,10 @@ func (s *DescribeDataObjectsResponseBodyItemsRuleList) GetRuleName() *string {
 	return s.RuleName
 }
 
+func (s *DescribeDataObjectsResponseBodyItemsRuleList) GetSampleList() *string {
+	return s.SampleList
+}
+
 func (s *DescribeDataObjectsResponseBodyItemsRuleList) SetRiskLevelId(v int64) *DescribeDataObjectsResponseBodyItemsRuleList {
 	s.RiskLevelId = &v
 	return s
@@ -615,6 +852,11 @@ func (s *DescribeDataObjectsResponseBodyItemsRuleList) SetRiskLevelId(v int64) *
 
 func (s *DescribeDataObjectsResponseBodyItemsRuleList) SetRiskLevelName(v string) *DescribeDataObjectsResponseBodyItemsRuleList {
 	s.RiskLevelName = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItemsRuleList) SetRuleCategoryNameList(v string) *DescribeDataObjectsResponseBodyItemsRuleList {
+	s.RuleCategoryNameList = &v
 	return s
 }
 
@@ -630,6 +872,11 @@ func (s *DescribeDataObjectsResponseBodyItemsRuleList) SetRuleId(v int64) *Descr
 
 func (s *DescribeDataObjectsResponseBodyItemsRuleList) SetRuleName(v string) *DescribeDataObjectsResponseBodyItemsRuleList {
 	s.RuleName = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItemsRuleList) SetSampleList(v string) *DescribeDataObjectsResponseBodyItemsRuleList {
+	s.SampleList = &v
 	return s
 }
 

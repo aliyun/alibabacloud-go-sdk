@@ -37,6 +37,8 @@ type iDescribeColumnsRequest interface {
 	GetRuleName() *string
 	SetSensLevelName(v string) *DescribeColumnsRequest
 	GetSensLevelName() *string
+	SetServiceRegionId(v string) *DescribeColumnsRequest
+	GetServiceRegionId() *string
 	SetTableId(v int64) *DescribeColumnsRequest
 	GetTableId() *int64
 	SetTableName(v string) *DescribeColumnsRequest
@@ -200,6 +202,10 @@ type DescribeColumnsRequest struct {
 	//
 	// S2
 	SensLevelName *string `json:"SensLevelName,omitempty" xml:"SensLevelName,omitempty"`
+	// example:
+	//
+	// cn-zhangjiakou
+	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
 	// The ID of the table to which the column belongs.
 	//
 	// > You can call the [DescribeTables](~~DescribeTables~~) operation to query the IDs of tables.
@@ -296,6 +302,10 @@ func (s *DescribeColumnsRequest) GetSensLevelName() *string {
 	return s.SensLevelName
 }
 
+func (s *DescribeColumnsRequest) GetServiceRegionId() *string {
+	return s.ServiceRegionId
+}
+
 func (s *DescribeColumnsRequest) GetTableId() *int64 {
 	return s.TableId
 }
@@ -379,6 +389,11 @@ func (s *DescribeColumnsRequest) SetRuleName(v string) *DescribeColumnsRequest {
 
 func (s *DescribeColumnsRequest) SetSensLevelName(v string) *DescribeColumnsRequest {
 	s.SensLevelName = &v
+	return s
+}
+
+func (s *DescribeColumnsRequest) SetServiceRegionId(v string) *DescribeColumnsRequest {
+	s.ServiceRegionId = &v
 	return s
 }
 

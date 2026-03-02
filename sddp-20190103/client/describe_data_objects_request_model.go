@@ -9,8 +9,14 @@ type iDescribeDataObjectsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAPIVersion(v int32) *DescribeDataObjectsRequest
+	GetAPIVersion() *int32
+	SetBucket(v string) *DescribeDataObjectsRequest
+	GetBucket() *string
 	SetCurrentPage(v int32) *DescribeDataObjectsRequest
 	GetCurrentPage() *int32
+	SetDbName(v string) *DescribeDataObjectsRequest
+	GetDbName() *string
 	SetDomainId(v int64) *DescribeDataObjectsRequest
 	GetDomainId() *int64
 	SetFeatureType(v int32) *DescribeDataObjectsRequest
@@ -23,6 +29,10 @@ type iDescribeDataObjectsRequest interface {
 	GetInstanceId() *string
 	SetLang(v string) *DescribeDataObjectsRequest
 	GetLang() *string
+	SetLogStore(v string) *DescribeDataObjectsRequest
+	GetLogStore() *string
+	SetLogStoreFlag(v int32) *DescribeDataObjectsRequest
+	GetLogStoreFlag() *int32
 	SetMemberAccount(v int64) *DescribeDataObjectsRequest
 	GetMemberAccount() *int64
 	SetModelIds(v string) *DescribeDataObjectsRequest
@@ -33,25 +43,53 @@ type iDescribeDataObjectsRequest interface {
 	GetPageSize() *int32
 	SetParentCategoryIds(v string) *DescribeDataObjectsRequest
 	GetParentCategoryIds() *string
+	SetPath(v string) *DescribeDataObjectsRequest
+	GetPath() *string
+	SetProductId(v int32) *DescribeDataObjectsRequest
+	GetProductId() *int32
 	SetProductIds(v string) *DescribeDataObjectsRequest
 	GetProductIds() *string
+	SetProject(v string) *DescribeDataObjectsRequest
+	GetProject() *string
 	SetQueryName(v string) *DescribeDataObjectsRequest
 	GetQueryName() *string
+	SetRegionId(v string) *DescribeDataObjectsRequest
+	GetRegionId() *string
+	SetRiskLevelIdList(v string) *DescribeDataObjectsRequest
+	GetRiskLevelIdList() *string
 	SetRiskLevels(v string) *DescribeDataObjectsRequest
 	GetRiskLevels() *string
+	SetRuleIds(v string) *DescribeDataObjectsRequest
+	GetRuleIds() *string
 	SetServiceRegionId(v string) *DescribeDataObjectsRequest
 	GetServiceRegionId() *string
+	SetTableName(v string) *DescribeDataObjectsRequest
+	GetTableName() *string
+	SetTaskId(v int64) *DescribeDataObjectsRequest
+	GetTaskId() *int64
 	SetTemplateId(v int64) *DescribeDataObjectsRequest
 	GetTemplateId() *int64
 }
 
 type DescribeDataObjectsRequest struct {
+	// example:
+	//
+	// 1
+	APIVersion *int32 `json:"APIVersion,omitempty" xml:"APIVersion,omitempty"`
+	// example:
+	//
+	// bucketName
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 	// Page number for the paginated query. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// dataBaseName
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// ID of the data domain to which the data asset belongs.
 	//
 	// example:
@@ -94,6 +132,14 @@ type DescribeDataObjectsRequest struct {
 	//
 	// zh_cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// logstore
+	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
+	// example:
+	//
+	// 1
+	LogStoreFlag *int32 `json:"LogStoreFlag,omitempty" xml:"LogStoreFlag,omitempty"`
 	// Member account ID.
 	//
 	// example:
@@ -132,6 +178,14 @@ type DescribeDataObjectsRequest struct {
 	//
 	// 234,236,238
 	ParentCategoryIds *string `json:"ParentCategoryIds,omitempty" xml:"ParentCategoryIds,omitempty"`
+	// example:
+	//
+	// road
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// 5
+	ProductId *int32 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 	// It is recommended to fill in the list of product IDs to be queried, separated by commas. Values:
 	//
 	// - **1**: MaxCompute
@@ -164,12 +218,24 @@ type DescribeDataObjectsRequest struct {
 	//
 	// 1,5
 	ProductIds *string `json:"ProductIds,omitempty" xml:"ProductIds,omitempty"`
+	// example:
+	//
+	// project
+	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
 	// Keyword for the data object to be queried.
 	//
 	// example:
 	//
 	// t_sddp_selfmysql_pers0
 	QueryName *string `json:"QueryName,omitempty" xml:"QueryName,omitempty"`
+	// example:
+	//
+	// cn-zhangjiakou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 1,2,3
+	RiskLevelIdList *string `json:"RiskLevelIdList,omitempty" xml:"RiskLevelIdList,omitempty"`
 	// Specify the risk levels of the data assets to be queried, separated by commas if multiple.
 	//
 	// - **2**: S1, low risk level.
@@ -184,6 +250,10 @@ type DescribeDataObjectsRequest struct {
 	//
 	// 2
 	RiskLevels *string `json:"RiskLevels,omitempty" xml:"RiskLevels,omitempty"`
+	// example:
+	//
+	// 1,2,3
+	RuleIds *string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty"`
 	// Region where the asset is located. Values:
 	//
 	// - **cn-beijing**: North China 2 (Beijing).
@@ -204,6 +274,14 @@ type DescribeDataObjectsRequest struct {
 	//
 	// cn-hangzhou
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+	// example:
+	//
+	// TableName
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// 1
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// Industry template ID.
 	//
 	// > You can obtain the industry template identifier ID by calling [DescribeCategoryTemplateList](https://help.aliyun.com/document_detail/2399296.html).
@@ -224,8 +302,20 @@ func (s DescribeDataObjectsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDataObjectsRequest) GetAPIVersion() *int32 {
+	return s.APIVersion
+}
+
+func (s *DescribeDataObjectsRequest) GetBucket() *string {
+	return s.Bucket
+}
+
 func (s *DescribeDataObjectsRequest) GetCurrentPage() *int32 {
 	return s.CurrentPage
+}
+
+func (s *DescribeDataObjectsRequest) GetDbName() *string {
+	return s.DbName
 }
 
 func (s *DescribeDataObjectsRequest) GetDomainId() *int64 {
@@ -252,6 +342,14 @@ func (s *DescribeDataObjectsRequest) GetLang() *string {
 	return s.Lang
 }
 
+func (s *DescribeDataObjectsRequest) GetLogStore() *string {
+	return s.LogStore
+}
+
+func (s *DescribeDataObjectsRequest) GetLogStoreFlag() *int32 {
+	return s.LogStoreFlag
+}
+
 func (s *DescribeDataObjectsRequest) GetMemberAccount() *int64 {
 	return s.MemberAccount
 }
@@ -272,28 +370,75 @@ func (s *DescribeDataObjectsRequest) GetParentCategoryIds() *string {
 	return s.ParentCategoryIds
 }
 
+func (s *DescribeDataObjectsRequest) GetPath() *string {
+	return s.Path
+}
+
+func (s *DescribeDataObjectsRequest) GetProductId() *int32 {
+	return s.ProductId
+}
+
 func (s *DescribeDataObjectsRequest) GetProductIds() *string {
 	return s.ProductIds
+}
+
+func (s *DescribeDataObjectsRequest) GetProject() *string {
+	return s.Project
 }
 
 func (s *DescribeDataObjectsRequest) GetQueryName() *string {
 	return s.QueryName
 }
 
+func (s *DescribeDataObjectsRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *DescribeDataObjectsRequest) GetRiskLevelIdList() *string {
+	return s.RiskLevelIdList
+}
+
 func (s *DescribeDataObjectsRequest) GetRiskLevels() *string {
 	return s.RiskLevels
+}
+
+func (s *DescribeDataObjectsRequest) GetRuleIds() *string {
+	return s.RuleIds
 }
 
 func (s *DescribeDataObjectsRequest) GetServiceRegionId() *string {
 	return s.ServiceRegionId
 }
 
+func (s *DescribeDataObjectsRequest) GetTableName() *string {
+	return s.TableName
+}
+
+func (s *DescribeDataObjectsRequest) GetTaskId() *int64 {
+	return s.TaskId
+}
+
 func (s *DescribeDataObjectsRequest) GetTemplateId() *int64 {
 	return s.TemplateId
 }
 
+func (s *DescribeDataObjectsRequest) SetAPIVersion(v int32) *DescribeDataObjectsRequest {
+	s.APIVersion = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetBucket(v string) *DescribeDataObjectsRequest {
+	s.Bucket = &v
+	return s
+}
+
 func (s *DescribeDataObjectsRequest) SetCurrentPage(v int32) *DescribeDataObjectsRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetDbName(v string) *DescribeDataObjectsRequest {
+	s.DbName = &v
 	return s
 }
 
@@ -327,6 +472,16 @@ func (s *DescribeDataObjectsRequest) SetLang(v string) *DescribeDataObjectsReque
 	return s
 }
 
+func (s *DescribeDataObjectsRequest) SetLogStore(v string) *DescribeDataObjectsRequest {
+	s.LogStore = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetLogStoreFlag(v int32) *DescribeDataObjectsRequest {
+	s.LogStoreFlag = &v
+	return s
+}
+
 func (s *DescribeDataObjectsRequest) SetMemberAccount(v int64) *DescribeDataObjectsRequest {
 	s.MemberAccount = &v
 	return s
@@ -352,8 +507,23 @@ func (s *DescribeDataObjectsRequest) SetParentCategoryIds(v string) *DescribeDat
 	return s
 }
 
+func (s *DescribeDataObjectsRequest) SetPath(v string) *DescribeDataObjectsRequest {
+	s.Path = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetProductId(v int32) *DescribeDataObjectsRequest {
+	s.ProductId = &v
+	return s
+}
+
 func (s *DescribeDataObjectsRequest) SetProductIds(v string) *DescribeDataObjectsRequest {
 	s.ProductIds = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetProject(v string) *DescribeDataObjectsRequest {
+	s.Project = &v
 	return s
 }
 
@@ -362,13 +532,38 @@ func (s *DescribeDataObjectsRequest) SetQueryName(v string) *DescribeDataObjects
 	return s
 }
 
+func (s *DescribeDataObjectsRequest) SetRegionId(v string) *DescribeDataObjectsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetRiskLevelIdList(v string) *DescribeDataObjectsRequest {
+	s.RiskLevelIdList = &v
+	return s
+}
+
 func (s *DescribeDataObjectsRequest) SetRiskLevels(v string) *DescribeDataObjectsRequest {
 	s.RiskLevels = &v
 	return s
 }
 
+func (s *DescribeDataObjectsRequest) SetRuleIds(v string) *DescribeDataObjectsRequest {
+	s.RuleIds = &v
+	return s
+}
+
 func (s *DescribeDataObjectsRequest) SetServiceRegionId(v string) *DescribeDataObjectsRequest {
 	s.ServiceRegionId = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetTableName(v string) *DescribeDataObjectsRequest {
+	s.TableName = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetTaskId(v int64) *DescribeDataObjectsRequest {
+	s.TaskId = &v
 	return s
 }
 
