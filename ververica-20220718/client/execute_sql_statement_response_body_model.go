@@ -24,6 +24,7 @@ type iExecuteSqlStatementResponseBody interface {
 }
 
 type ExecuteSqlStatementResponseBody struct {
+  // The result of executing the SQL statement to query the metadata.
   Data *SqlStatementExecuteResult `json:"data,omitempty" xml:"data,omitempty"`
   // example:
   // 

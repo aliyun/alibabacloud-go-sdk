@@ -24,13 +24,35 @@ type iTableColumn interface {
 }
 
 type TableColumn struct {
-	Expression   *string       `json:"expression,omitempty" xml:"expression,omitempty"`
-	LogicalType  *string       `json:"logicalType,omitempty" xml:"logicalType,omitempty"`
+	// The computed column.
+	//
+	// example:
+	//
+	// “”
+	Expression  *string `json:"expression,omitempty" xml:"expression,omitempty"`
+	LogicalType *string `json:"logicalType,omitempty" xml:"logicalType,omitempty"`
+	// The metadata information.
 	MetadataInfo *MetadataInfo `json:"metadataInfo,omitempty" xml:"metadataInfo,omitempty"`
+	// The column name.
+	//
 	// This parameter is required.
-	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
-	Nullable *bool   `json:"nullable,omitempty" xml:"nullable,omitempty"`
-	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
+	//
+	// example:
+	//
+	// name
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Specifies whether the column can have a null value.
+	//
+	// example:
+	//
+	// true
+	Nullable *bool `json:"nullable,omitempty" xml:"nullable,omitempty"`
+	// The data type of the column.
+	//
+	// example:
+	//
+	// string
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s TableColumn) String() string {

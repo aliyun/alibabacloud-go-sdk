@@ -18,9 +18,20 @@ type iHotUpdateJobStatus interface {
 }
 
 type HotUpdateJobStatus struct {
-	Failure   *HotUpdateJobFailureInfo `json:"failure,omitempty" xml:"failure,omitempty"`
-	RequestId *string                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Status    *string                  `json:"status,omitempty" xml:"status,omitempty"`
+	// The error message of the dynamical update.
+	Failure *HotUpdateJobFailureInfo `json:"failure,omitempty" xml:"failure,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The status of the dynamic update.
+	//
+	// example:
+	//
+	// HOT_UPDATED
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s HotUpdateJobStatus) String() string {

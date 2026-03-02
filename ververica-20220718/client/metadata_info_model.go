@@ -16,8 +16,14 @@ type iMetadataInfo interface {
 }
 
 type MetadataInfo struct {
-	Key     *string `json:"key,omitempty" xml:"key,omitempty"`
-	Virtual *bool   `json:"virtual,omitempty" xml:"virtual,omitempty"`
+	// The metadata field.
+	//
+	// example:
+	//
+	// topic
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// Specifies whether the metadata is read only.
+	Virtual *bool `json:"virtual,omitempty" xml:"virtual,omitempty"`
 }
 
 func (s MetadataInfo) String() string {

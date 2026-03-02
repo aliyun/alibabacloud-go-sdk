@@ -17,6 +17,8 @@ type iCreateFolderHeaders interface {
 
 type CreateFolderHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The name of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

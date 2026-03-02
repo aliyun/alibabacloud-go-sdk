@@ -36,44 +36,72 @@ type iSavepoint interface {
 }
 
 type Savepoint struct {
+	// The time when the savepoint was created.
+	//
 	// example:
 	//
 	// 1659066711
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The deployment ID.
+	//
 	// example:
 	//
 	// 1d716b22-6aad-4be2-85c2-50cfc757****
 	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
-	Description  *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The description of the savepoint.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// 5af678c0-7db0-4650-94c2-d2604f0a****
 	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// The time when the savepoint was last modified.
+	//
 	// example:
 	//
 	// 1659069473
 	ModifiedAt *int64 `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
+	// The name of the namespace.
+	//
 	// example:
 	//
 	// namespacetest
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// Specifies whether the savepoint is in native format.
+	//
 	// example:
 	//
 	// TRUE
 	NativeFormat *bool `json:"nativeFormat,omitempty" xml:"nativeFormat,omitempty"`
+	// The savepoint ID.
+	//
 	// example:
 	//
 	// 354dde66-a3ae-463e-967a-0b4107fd****
 	SavepointId *string `json:"savepointId,omitempty" xml:"savepointId,omitempty"`
+	// The storage URL of the savepoint.
+	//
 	// example:
 	//
 	// https://oss/bucket/flink/flink-jobs/namespaces/vvp-team/deployments/5a19a71b-1c42-4f34-94fd-86cf60782c81/checkpoints/sp-3285
 	SavepointLocation *string `json:"savepointLocation,omitempty" xml:"savepointLocation,omitempty"`
+	// The method that is used to create a savepoint.
+	//
+	// 	- `USER_REQUEST`: The savepoint is manually created.
+	//
+	// 	- `STOP_WITH_SAVEPOINT`: The savepoint is created when you cancel the deployment.
+	//
+	// 	- `RETAINED_CHECKPOINT`: The savepoint is created based on the returned checkpoint.
+	//
 	// example:
 	//
 	// USER_REQUEST
-	SavepointOrigin *string          `json:"savepointOrigin,omitempty" xml:"savepointOrigin,omitempty"`
-	Status          *SavepointStatus `json:"status,omitempty" xml:"status,omitempty"`
+	SavepointOrigin *string `json:"savepointOrigin,omitempty" xml:"savepointOrigin,omitempty"`
+	// The status of the savepoint.
+	Status *SavepointStatus `json:"status,omitempty" xml:"status,omitempty"`
+	// Specifies whether to use the stop-with-drain mode.
+	//
 	// example:
 	//
 	// TRUE

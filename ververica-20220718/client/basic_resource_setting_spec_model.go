@@ -16,13 +16,17 @@ type iBasicResourceSettingSpec interface {
 }
 
 type BasicResourceSettingSpec struct {
+	// The number of CPU cores.
+	//
 	// example:
 	//
 	// 2.0
 	Cpu *float64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The capacity of the memory. Unit: GiB.
+	//
 	// example:
 	//
-	// 4Gi
+	// 4 GiB
 	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
 }
 

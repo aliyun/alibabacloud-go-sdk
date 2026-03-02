@@ -26,27 +26,40 @@ type iUpdateVariableResponseBody interface {
 }
 
 type UpdateVariableResponseBody struct {
+	// The details of the access denial. This parameter is returned in scenarios where the account is not authorized to perform operations.
+	//
 	// example:
 	//
 	// “”
-	AccessDeniedDetail *string   `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	Data               *Variable `json:"data,omitempty" xml:"data,omitempty"`
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	// The variable structure after the update.
+	Data *Variable `json:"data,omitempty" xml:"data,omitempty"`
+	// If the value of success was false, an error code was returned. If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// If the value of success was false, an error message was returned. If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1EF03B0C-F44F-47AD-BB48-D002D0F7B8C9
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

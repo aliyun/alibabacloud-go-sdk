@@ -28,14 +28,60 @@ type iGetLineageInfoParams interface {
 }
 
 type GetLineageInfoParams struct {
-	Depth         *int64  `json:"depth,omitempty" xml:"depth,omitempty"`
-	Direction     *string `json:"direction,omitempty" xml:"direction,omitempty"`
-	Id            *string `json:"id,omitempty" xml:"id,omitempty"`
-	IdType        *string `json:"idType,omitempty" xml:"idType,omitempty"`
-	IsColumnLevel *bool   `json:"isColumnLevel,omitempty" xml:"isColumnLevel,omitempty"`
-	IsTemporary   *bool   `json:"isTemporary,omitempty" xml:"isTemporary,omitempty"`
-	Namespace     *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	Workspace     *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// The depth of the data lineage.
+	//
+	// example:
+	//
+	// 1
+	Depth *int64 `json:"depth,omitempty" xml:"depth,omitempty"`
+	// The direction of the lineage. Valid values:
+	//
+	// 	- UPSTREAM: searches for upstream operators.
+	//
+	// 	- DOWNSTREAM: searches for downstream operators.
+	//
+	// 	- BOTH: searches for both upstream and downstream operators.
+	//
+	// example:
+	//
+	// Both
+	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
+	// The job ID or the table ID. You can call the ListJobs operation to obtain the job ID or call the ListTables operation to obtain the table ID.
+	//
+	// example:
+	//
+	// 664cc64d-5dea-4ad3-9ee4-8432a874****
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The data type of the job or table. If the id parameter is set to the job ID, the value of this parameter is the data type of the job. If the id parameter is set to the table ID, the value of this parameter is the data type of the table.
+	//
+	// example:
+	//
+	// JOB
+	IdType *string `json:"idType,omitempty" xml:"idType,omitempty"`
+	// The lineage type. The value true indicates a field-level lineage. The value false indicates a table-level lineage.
+	//
+	// example:
+	//
+	// true
+	IsColumnLevel *bool `json:"isColumnLevel,omitempty" xml:"isColumnLevel,omitempty"`
+	// Indicates whether the table was a temporary table.
+	//
+	// example:
+	//
+	// true
+	IsTemporary *bool `json:"isTemporary,omitempty" xml:"isTemporary,omitempty"`
+	// The name of the namespace.
+	//
+	// example:
+	//
+	// default-namespace
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s GetLineageInfoParams) String() string {

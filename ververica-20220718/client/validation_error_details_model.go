@@ -22,11 +22,36 @@ type iValidationErrorDetails interface {
 }
 
 type ValidationErrorDetails struct {
-	ColumnNumber    *string `json:"columnNumber,omitempty" xml:"columnNumber,omitempty"`
+	// The number of the column at which the error starts.
+	//
+	// example:
+	//
+	// 10
+	ColumnNumber *string `json:"columnNumber,omitempty" xml:"columnNumber,omitempty"`
+	// The number of the column at which the error ends.
+	//
+	// example:
+	//
+	// 5
 	EndColumnNumber *string `json:"endColumnNumber,omitempty" xml:"endColumnNumber,omitempty"`
-	EndLineNumber   *string `json:"endLineNumber,omitempty" xml:"endLineNumber,omitempty"`
-	LineNumber      *string `json:"lineNumber,omitempty" xml:"lineNumber,omitempty"`
-	Message         *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The number of the row at which the error ends.
+	//
+	// example:
+	//
+	// 4
+	EndLineNumber *string `json:"endLineNumber,omitempty" xml:"endLineNumber,omitempty"`
+	// The number the row at which the error starts.
+	//
+	// example:
+	//
+	// 3
+	LineNumber *string `json:"lineNumber,omitempty" xml:"lineNumber,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// “”
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 }
 
 func (s ValidationErrorDetails) String() string {

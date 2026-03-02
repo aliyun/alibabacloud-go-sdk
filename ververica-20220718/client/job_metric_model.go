@@ -16,10 +16,14 @@ type iJobMetric interface {
 }
 
 type JobMetric struct {
+	// The number of CPU cores.
+	//
 	// example:
 	//
 	// 2
 	TotalCpu *float64 `json:"totalCpu,omitempty" xml:"totalCpu,omitempty"`
+	// The memory size. Unit: bytes.
+	//
 	// example:
 	//
 	// 4096

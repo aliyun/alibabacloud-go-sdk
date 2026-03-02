@@ -11,6 +11,8 @@ type iGetEventsRequest interface {
 	GoString() string
 	SetDeploymentId(v string) *GetEventsRequest
 	GetDeploymentId() *string
+	SetDeploymentName(v string) *GetEventsRequest
+	GetDeploymentName() *string
 	SetPageIndex(v int32) *GetEventsRequest
 	GetPageIndex() *int32
 	SetPageSize(v int32) *GetEventsRequest
@@ -21,7 +23,8 @@ type GetEventsRequest struct {
 	// example:
 	//
 	// 58718c99-3b29-4c5e-93bb-c9fc4ec6****
-	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	DeploymentId   *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	DeploymentName *string `json:"deploymentName,omitempty" xml:"deploymentName,omitempty"`
 	// example:
 	//
 	// 1
@@ -44,6 +47,10 @@ func (s *GetEventsRequest) GetDeploymentId() *string {
 	return s.DeploymentId
 }
 
+func (s *GetEventsRequest) GetDeploymentName() *string {
+	return s.DeploymentName
+}
+
 func (s *GetEventsRequest) GetPageIndex() *int32 {
 	return s.PageIndex
 }
@@ -54,6 +61,11 @@ func (s *GetEventsRequest) GetPageSize() *int32 {
 
 func (s *GetEventsRequest) SetDeploymentId(v string) *GetEventsRequest {
 	s.DeploymentId = &v
+	return s
+}
+
+func (s *GetEventsRequest) SetDeploymentName(v string) *GetEventsRequest {
+	s.DeploymentName = &v
 	return s
 }
 

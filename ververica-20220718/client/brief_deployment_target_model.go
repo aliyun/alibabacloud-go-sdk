@@ -16,7 +16,17 @@ type iBriefDeploymentTarget interface {
 }
 
 type BriefDeploymentTarget struct {
+	// The deployment mode.
+	//
+	// example:
+	//
+	// PER_JOB
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// The name of the queue used for the deployment.
+	//
+	// example:
+	//
+	// vvp-workload
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

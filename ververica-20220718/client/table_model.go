@@ -26,13 +26,29 @@ type iTable interface {
 }
 
 type Table struct {
+	// The comment.
 	Comment  *string            `json:"comment,omitempty" xml:"comment,omitempty"`
 	Metadata map[string]*string `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	// The name of the table.
+	//
 	// This parameter is required.
-	Name          *string                `json:"name,omitempty" xml:"name,omitempty"`
-	PartitionKeys []*string              `json:"partitionKeys,omitempty" xml:"partitionKeys,omitempty" type:"Repeated"`
-	Properties    map[string]interface{} `json:"properties,omitempty" xml:"properties,omitempty"`
-	Schema        *Schema                `json:"schema,omitempty" xml:"schema,omitempty"`
+	//
+	// example:
+	//
+	// order-test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The partition key column.
+	PartitionKeys []*string `json:"partitionKeys,omitempty" xml:"partitionKeys,omitempty" type:"Repeated"`
+	// The parameter configurations of the table.
+	Properties map[string]interface{} `json:"properties,omitempty" xml:"properties,omitempty"`
+	// The schema information about the table.
+	Schema *Schema `json:"schema,omitempty" xml:"schema,omitempty"`
+	// TABLE;
+	//
+	//   MATERIALIZED_TABLE;
+	//
+	//   VIEW;
+	//
 	// This parameter is required.
 	TableType *string `json:"tableType,omitempty" xml:"tableType,omitempty"`
 }

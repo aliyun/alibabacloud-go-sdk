@@ -18,12 +18,24 @@ type iJobFailure interface {
 }
 
 type JobFailure struct {
+	// The time when the deployment fails.
+	//
 	// example:
 	//
 	// 1660120062
-	FailedAt *int64  `json:"failedAt,omitempty" xml:"failedAt,omitempty"`
-	Message  *string `json:"message,omitempty" xml:"message,omitempty"`
-	Reason   *string `json:"reason,omitempty" xml:"reason,omitempty"`
+	FailedAt *int64 `json:"failedAt,omitempty" xml:"failedAt,omitempty"`
+	// The details of the failure.
+	//
+	// example:
+	//
+	// Kubernetes deployment resource with name job-8b7db913-5b1f-4ac5-a332-8d50f342***	- is not progressing.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The reason for the failure.
+	//
+	// example:
+	//
+	// KubernetesDeploymentNotProgressing
+	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
 }
 
 func (s JobFailure) String() string {

@@ -28,25 +28,46 @@ type iFolder interface {
 }
 
 type Folder struct {
+	// The time when the folder was created.
+	//
+	// example:
+	//
+	// 1723537978
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The ID of the folder.
+	//
 	// example:
 	//
 	// 00000000-0000-0000-0000-0000012312****
-	FolderId   *string `json:"folderId,omitempty" xml:"folderId,omitempty"`
-	ModifiedAt *int64  `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
+	FolderId *string `json:"folderId,omitempty" xml:"folderId,omitempty"`
+	// The time when the folder was modified.
+	//
+	// example:
+	//
+	// 1723537978
+	ModifiedAt *int64 `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
+	// The name of the folder.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The name of the namespace.
+	//
 	// example:
 	//
 	// default-namespace
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The ID of the parent folder.
+	//
 	// example:
 	//
 	// 00000000-0000-0000-0000-0000012390****
-	ParentId  *string      `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	// The list of subfolders.
 	SubFolder []*SubFolder `json:"subFolder,omitempty" xml:"subFolder,omitempty" type:"Repeated"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// edcef******b4f

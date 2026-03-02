@@ -22,12 +22,59 @@ type iSqlStatementWithContext interface {
 }
 
 type SqlStatementWithContext struct {
+	// The additional dependencies.
 	AdditionalDependencies []*string `json:"additionalDependencies,omitempty" xml:"additionalDependencies,omitempty" type:"Repeated"`
+	// Specifies whether the deployment is a batch deployment.
+	//
 	// This parameter is required.
-	BatchMode          *bool                  `json:"batchMode,omitempty" xml:"batchMode,omitempty"`
+	//
+	// example:
+	//
+	// false
+	BatchMode *bool `json:"batchMode,omitempty" xml:"batchMode,omitempty"`
+	// The Realtime Compute for Apache Flink configuration.
 	FlinkConfiguration map[string]interface{} `json:"flinkConfiguration,omitempty" xml:"flinkConfiguration,omitempty"`
+	// The code of the deployment.
+	//
 	// This parameter is required.
-	Statement   *string `json:"statement,omitempty" xml:"statement,omitempty"`
+	//
+	// example:
+	//
+	// CREATE TEMPORARY TABLE datagen_source (
+	//
+	//     name VARCHAR,
+	//
+	//     score BIGINT
+	//
+	// ) WITH (
+	//
+	//    \\"connector\\" = \\"datagen\\"
+	//
+	// );
+	//
+	// CREATE TEMPORARY TABLE print_table (
+	//
+	//    name VARCHAR,
+	//
+	//    score BIGINT
+	//
+	// ) WITH (
+	//
+	//   \\"connector\\"=\\"print\\",
+	//
+	//   \\"logger\\"=\\"true\\"
+	//
+	// );
+	//
+	// INSERT INTO print_table
+	//
+	// select 	- from datagen_source;
+	Statement *string `json:"statement,omitempty" xml:"statement,omitempty"`
+	// The engine version.
+	//
+	// example:
+	//
+	// vvr-8.0.6-flink-1.17
 	VersionName *string `json:"versionName,omitempty" xml:"versionName,omitempty"`
 }
 

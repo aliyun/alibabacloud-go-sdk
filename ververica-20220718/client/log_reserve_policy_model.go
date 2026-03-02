@@ -16,10 +16,16 @@ type iLogReservePolicy interface {
 }
 
 type LogReservePolicy struct {
+	// The number of days for which logs are retained after you enable the
+	//
+	// log archiving feature.
+	//
 	// example:
 	//
 	// 7
 	ExpirationDays *int64 `json:"expirationDays,omitempty" xml:"expirationDays,omitempty"`
+	// Specifies whether to enable the log archiving feature.
+	//
 	// example:
 	//
 	// true

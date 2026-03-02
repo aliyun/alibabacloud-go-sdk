@@ -18,11 +18,15 @@ type iBasicResourceSetting interface {
 }
 
 type BasicResourceSetting struct {
+	// The resource configuration of the JobManager.
 	JobmanagerResourceSettingSpec *BasicResourceSettingSpec `json:"jobmanagerResourceSettingSpec,omitempty" xml:"jobmanagerResourceSettingSpec,omitempty"`
+	// The parallelism for a deployment.
+	//
 	// example:
 	//
 	// 4
-	Parallelism                    *int64                    `json:"parallelism,omitempty" xml:"parallelism,omitempty"`
+	Parallelism *int64 `json:"parallelism,omitempty" xml:"parallelism,omitempty"`
+	// The resource configuration of a TaskManager.
 	TaskmanagerResourceSettingSpec *BasicResourceSettingSpec `json:"taskmanagerResourceSettingSpec,omitempty" xml:"taskmanagerResourceSettingSpec,omitempty"`
 }
 

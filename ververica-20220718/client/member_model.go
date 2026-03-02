@@ -16,12 +16,24 @@ type iMember interface {
 }
 
 type Member struct {
+	// The member ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// user: 181319557522****
 	Member *string `json:"member,omitempty" xml:"member,omitempty"`
+	// The role of the member.
+	//
+	// Valid values:
+	//
+	// 	- EDITOR
+	//
+	// 	- VIEWER
+	//
+	// 	- ADMIN
+	//
 	// example:
 	//
 	// VIEWER

@@ -36,18 +36,66 @@ type iConnector interface {
 }
 
 type Connector struct {
-	Creator          *string     `json:"creator,omitempty" xml:"creator,omitempty"`
-	CreatorName      *string     `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
-	Dependencies     []*string   `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Repeated"`
-	Lookup           *bool       `json:"lookup,omitempty" xml:"lookup,omitempty"`
-	Modifier         *string     `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	ModifierName     *string     `json:"modifierName,omitempty" xml:"modifierName,omitempty"`
-	Name             *string     `json:"name,omitempty" xml:"name,omitempty"`
-	Properties       []*Property `json:"properties,omitempty" xml:"properties,omitempty" type:"Repeated"`
-	Sink             *bool       `json:"sink,omitempty" xml:"sink,omitempty"`
-	Source           *bool       `json:"source,omitempty" xml:"source,omitempty"`
-	SupportedFormats []*string   `json:"supportedFormats,omitempty" xml:"supportedFormats,omitempty" type:"Repeated"`
-	Type             *string     `json:"type,omitempty" xml:"type,omitempty"`
+	// The ID of the user who creates the connector.
+	//
+	// example:
+	//
+	// 183899668*******
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// The nickname of the user who creates the connector.
+	//
+	// example:
+	//
+	// userA
+	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
+	// The additional dependency files.
+	Dependencies []*string `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Repeated"`
+	// Indicates whether the connector can be used as a lookup table.
+	//
+	// example:
+	//
+	// true
+	Lookup *bool `json:"lookup,omitempty" xml:"lookup,omitempty"`
+	// The ID of the user who modifies the connector.
+	//
+	// example:
+	//
+	// 183899668*******
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// The nickname of the user who modifies the connector.
+	//
+	// example:
+	//
+	// userA
+	ModifierName *string `json:"modifierName,omitempty" xml:"modifierName,omitempty"`
+	// The name of the connector.
+	//
+	// example:
+	//
+	// mysql-test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The parameter configurations.
+	Properties []*Property `json:"properties,omitempty" xml:"properties,omitempty" type:"Repeated"`
+	// Indicates whether the connector can be used as the sink.
+	//
+	// example:
+	//
+	// true
+	Sink *bool `json:"sink,omitempty" xml:"sink,omitempty"`
+	// Indicates whether the connector can be used as the source.
+	//
+	// example:
+	//
+	// flase
+	Source *bool `json:"source,omitempty" xml:"source,omitempty"`
+	// The array of formats that are supported by the connector.
+	SupportedFormats []*string `json:"supportedFormats,omitempty" xml:"supportedFormats,omitempty" type:"Repeated"`
+	// The type of the connector.
+	//
+	// example:
+	//
+	// mysql-test
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s Connector) String() string {

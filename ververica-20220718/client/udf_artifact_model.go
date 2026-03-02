@@ -30,15 +30,52 @@ type iUdfArtifact interface {
 }
 
 type UdfArtifact struct {
-	ArtifactType      *string     `json:"artifactType,omitempty" xml:"artifactType,omitempty"`
-	CreatedAt         *int64      `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	Creator           *string     `json:"creator,omitempty" xml:"creator,omitempty"`
-	DependencyJarUris []*string   `json:"dependencyJarUris,omitempty" xml:"dependencyJarUris,omitempty" type:"Repeated"`
-	JarUrl            *string     `json:"jarUrl,omitempty" xml:"jarUrl,omitempty"`
-	ModifiedAt        *int64      `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
-	Name              *string     `json:"name,omitempty" xml:"name,omitempty"`
-	Namespace         *string     `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	UdfClasses        []*UdfClass `json:"udfClasses,omitempty" xml:"udfClasses,omitempty" type:"Repeated"`
+	// The type of the JAR file.
+	//
+	// example:
+	//
+	// ARTIFACT_TYPE_JAVA
+	ArtifactType *string `json:"artifactType,omitempty" xml:"artifactType,omitempty"`
+	// The time when the JAR file was created.
+	//
+	// example:
+	//
+	// 1723532876
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The user that creates the JAR file.
+	//
+	// example:
+	//
+	// userA
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// The list of paths in which the additional dependencies of the JAR file are stored.
+	DependencyJarUris []*string `json:"dependencyJarUris,omitempty" xml:"dependencyJarUris,omitempty" type:"Repeated"`
+	// The path in which the JAR file is stored.
+	//
+	// example:
+	//
+	// oss://bucket/udfCollection.jar
+	JarUrl *string `json:"jarUrl,omitempty" xml:"jarUrl,omitempty"`
+	// The time when the JAR file was modified.
+	//
+	// example:
+	//
+	// 1723537876
+	ModifiedAt *int64 `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
+	// The name of the JAR file.
+	//
+	// example:
+	//
+	// udfCollection.jar
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The namespace.
+	//
+	// example:
+	//
+	// default-namespace
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The list of the class name of the JAR file.
+	UdfClasses []*UdfClass `json:"udfClasses,omitempty" xml:"udfClasses,omitempty" type:"Repeated"`
 }
 
 func (s UdfArtifact) String() string {

@@ -22,11 +22,24 @@ type iLineageTable interface {
 }
 
 type LineageTable struct {
-	Columns    []*LineageColumn       `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
-	Id         *string                `json:"id,omitempty" xml:"id,omitempty"`
+	// The information about columns.
+	Columns []*LineageColumn `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
+	// The table ID.
+	//
+	// example:
+	//
+	// 434508
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The information about the table. The information includes the user who creates the table, the user who modifies the table, and the creation time and modification time of the table.
 	Properties map[string]interface{} `json:"properties,omitempty" xml:"properties,omitempty"`
-	TableName  *string                `json:"tableName,omitempty" xml:"tableName,omitempty"`
-	With       map[string]interface{} `json:"with,omitempty" xml:"with,omitempty"`
+	// The name of the table.
+	//
+	// example:
+	//
+	// order-test
+	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	// The parameters of the table.
+	With map[string]interface{} `json:"with,omitempty" xml:"with,omitempty"`
 }
 
 func (s LineageTable) String() string {

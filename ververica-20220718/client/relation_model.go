@@ -18,9 +18,18 @@ type iRelation interface {
 }
 
 type Relation struct {
+	// example:
+	//
+	// TableB
 	Destination *string `json:"destination,omitempty" xml:"destination,omitempty"`
-	JobId       *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
-	Source      *string `json:"source,omitempty" xml:"source,omitempty"`
+	// example:
+	//
+	// 664cc64d-5dea-4ad3-9ee4-8432a874****
+	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// example:
+	//
+	// TableA
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
 }
 
 func (s Relation) String() string {

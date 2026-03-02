@@ -24,11 +24,37 @@ type iErrorDetails interface {
 }
 
 type ErrorDetails struct {
+  // The number of the column at which the error starts.
+  // 
+  // example:
+  // 
+  // 2
   ColumnNumber *string `json:"columnNumber,omitempty" xml:"columnNumber,omitempty"`
+  // The number of the column at which the error ends.
+  // 
+  // example:
+  // 
+  // 11
   EndColumnNumber *string `json:"endColumnNumber,omitempty" xml:"endColumnNumber,omitempty"`
+  // The number of the row at which the error ends.
+  // 
+  // example:
+  // 
+  // 5
   EndLineNumber *string `json:"endLineNumber,omitempty" xml:"endLineNumber,omitempty"`
+  // The list of invalid configurations of Realtime Compute for Apache Flink.
   InvalidflinkConf []*string `json:"invalidflinkConf,omitempty" xml:"invalidflinkConf,omitempty" type:"Repeated"`
+  // The number the row at which the error starts.
+  // 
+  // example:
+  // 
+  // 3
   LineNumber *string `json:"lineNumber,omitempty" xml:"lineNumber,omitempty"`
+  // The error message.
+  // 
+  // example:
+  // 
+  // ""
   Message *string `json:"message,omitempty" xml:"message,omitempty"`
 }
 

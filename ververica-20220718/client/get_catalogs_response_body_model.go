@@ -24,6 +24,7 @@ type iGetCatalogsResponseBody interface {
 }
 
 type GetCatalogsResponseBody struct {
+	// If the value of success was true, the list of catalogs that meet the specified condition was returned. If the value of success was false, a null value was returned.
 	Data []*Catalog `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// example:
 	//

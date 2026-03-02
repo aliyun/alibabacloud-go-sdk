@@ -18,8 +18,17 @@ type iUdfFunction interface {
 }
 
 type UdfFunction struct {
-	ClassName       *string `json:"className,omitempty" xml:"className,omitempty"`
-	FunctionName    *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	// example:
+	//
+	// myFunctionTest
+	ClassName *string `json:"className,omitempty" xml:"className,omitempty"`
+	// example:
+	//
+	// myFunction
+	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	// example:
+	//
+	// udfCollection.jar
 	UdfArtifactName *string `json:"udfArtifactName,omitempty" xml:"udfArtifactName,omitempty"`
 }
 

@@ -14,6 +14,8 @@ type iUpdateFolderRequest interface {
 }
 
 type UpdateFolderRequest struct {
+	// The data structure of the folder.
+	//
 	// This parameter is required.
 	Body *Folder `json:"body,omitempty" xml:"body,omitempty"`
 }

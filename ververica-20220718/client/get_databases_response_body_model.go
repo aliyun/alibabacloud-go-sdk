@@ -24,6 +24,7 @@ type iGetDatabasesResponseBody interface {
 }
 
 type GetDatabasesResponseBody struct {
+	// If the value of success was true, the list of databases that meet the specified condition was returned. If the value of success was false, a null value was returned.
 	Data []*Database `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// example:
 	//

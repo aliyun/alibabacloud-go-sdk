@@ -20,6 +20,10 @@ type iCatalog interface {
 type Catalog struct {
 	ExtensionConf map[string]*string `json:"extensionConf,omitempty" xml:"extensionConf,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// paimon-test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// This parameter is required.
 	Properties map[string]interface{} `json:"properties,omitempty" xml:"properties,omitempty"`

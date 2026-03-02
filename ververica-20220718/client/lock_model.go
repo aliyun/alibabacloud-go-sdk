@@ -22,11 +22,36 @@ type iLock interface {
 }
 
 type Lock struct {
-	HolderId   *string `json:"holderId,omitempty" xml:"holderId,omitempty"`
+	// The ID of the lock holder.
+	//
+	// example:
+	//
+	// 18389966****
+	HolderId *string `json:"holderId,omitempty" xml:"holderId,omitempty"`
+	// The username of the lock holder.
+	//
+	// example:
+	//
+	// userA
 	HolderName *string `json:"holderName,omitempty" xml:"holderName,omitempty"`
-	Id         *string `json:"id,omitempty" xml:"id,omitempty"`
-	Namespace  *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	Workspace  *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// The lock ID.
+	//
+	// example:
+	//
+	// stt-fu1658tbk6mnkk2****
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The name of the namespace.
+	//
+	// example:
+	//
+	// default-namespace
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s Lock) String() string {

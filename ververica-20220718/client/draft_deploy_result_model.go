@@ -20,15 +20,22 @@ type iDraftDeployResult interface {
 }
 
 type DraftDeployResult struct {
+	// The verification result of the SQL syntax.
 	ArtifactValidationDetail *ValidateStatementResult `json:"artifactValidationDetail,omitempty" xml:"artifactValidationDetail,omitempty"`
+	// The deployment ID.
+	//
 	// example:
 	//
 	// 58718c99-3b29-4c5e-93bb-c9fc4ec6****
 	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	// The deployment information.
+	//
 	// example:
 	//
 	// ""
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

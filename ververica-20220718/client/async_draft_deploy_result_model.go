@@ -22,19 +22,28 @@ type iAsyncDraftDeployResult interface {
 }
 
 type AsyncDraftDeployResult struct {
+	// The verification result of the SQL syntax.
 	ArtifactValidationDetail *ValidateStatementResult `json:"artifactValidationDetail,omitempty" xml:"artifactValidationDetail,omitempty"`
+	// The deployment ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	// The information about the deployment result.
+	//
 	// example:
 	//
 	// "Validation error: SQL validate failed"
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The state of the execution.
+	//
 	// example:
 	//
 	// FINISHED

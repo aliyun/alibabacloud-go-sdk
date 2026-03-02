@@ -9,6 +9,8 @@ type iTableSchema interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCollectSinkOperatorId(v string) *TableSchema
+	GetCollectSinkOperatorId() *string
 	SetSchema(v *Schema) *TableSchema
 	GetSchema() *Schema
 	SetTableName(v string) *TableSchema
@@ -16,8 +18,9 @@ type iTableSchema interface {
 }
 
 type TableSchema struct {
-	Schema    *Schema `json:"schema,omitempty" xml:"schema,omitempty"`
-	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	CollectSinkOperatorId *string `json:"collectSinkOperatorId,omitempty" xml:"collectSinkOperatorId,omitempty"`
+	Schema                *Schema `json:"schema,omitempty" xml:"schema,omitempty"`
+	TableName             *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
 }
 
 func (s TableSchema) String() string {
@@ -28,12 +31,21 @@ func (s TableSchema) GoString() string {
 	return s.String()
 }
 
+func (s *TableSchema) GetCollectSinkOperatorId() *string {
+	return s.CollectSinkOperatorId
+}
+
 func (s *TableSchema) GetSchema() *Schema {
 	return s.Schema
 }
 
 func (s *TableSchema) GetTableName() *string {
 	return s.TableName
+}
+
+func (s *TableSchema) SetCollectSinkOperatorId(v string) *TableSchema {
+	s.CollectSinkOperatorId = &v
+	return s
 }
 
 func (s *TableSchema) SetSchema(v *Schema) *TableSchema {

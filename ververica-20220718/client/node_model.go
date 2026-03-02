@@ -24,12 +24,38 @@ type iNode interface {
 }
 
 type Node struct {
-	CatalogName  *string         `json:"catalogName,omitempty" xml:"catalogName,omitempty"`
-	Connector    *string         `json:"connector,omitempty" xml:"connector,omitempty"`
-	DatabaseName *string         `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
-	Id           *string         `json:"id,omitempty" xml:"id,omitempty"`
-	IsTemporary  *bool           `json:"isTemporary,omitempty" xml:"isTemporary,omitempty"`
-	Tables       []*LineageTable `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
+	// The name of the catalog.
+	//
+	// example:
+	//
+	// paimon
+	CatalogName *string `json:"catalogName,omitempty" xml:"catalogName,omitempty"`
+	// The name of the connector.
+	//
+	// example:
+	//
+	// paimon
+	Connector *string `json:"connector,omitempty" xml:"connector,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// paimon-ods
+	DatabaseName *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
+	// The ID of the node.
+	//
+	// example:
+	//
+	// 97383
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// Specifies whether the table is a temporary table.
+	//
+	// example:
+	//
+	// false
+	IsTemporary *bool `json:"isTemporary,omitempty" xml:"isTemporary,omitempty"`
+	// The information about the table.
+	Tables []*LineageTable `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
 }
 
 func (s Node) String() string {

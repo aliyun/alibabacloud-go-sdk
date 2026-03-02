@@ -23,6 +23,10 @@ type PrimaryKey struct {
 	// This parameter is required.
 	Columns []*string `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// pk
 	ConstraintName *string `json:"constraintName,omitempty" xml:"constraintName,omitempty"`
 	// This parameter is required.
 	ConstraintType *string `json:"constraintType,omitempty" xml:"constraintType,omitempty"`

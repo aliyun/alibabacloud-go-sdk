@@ -24,23 +24,38 @@ type iCreateFolderResponseBody interface {
 }
 
 type CreateFolderResponseBody struct {
+	// The structure of data in the folder.
 	Data *Folder `json:"data,omitempty" xml:"data,omitempty"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The HTTP status code. If this parameter was not empty and the value of this parameter was not 200, the request failed.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

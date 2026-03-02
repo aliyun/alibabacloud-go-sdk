@@ -20,22 +20,30 @@ type iVariable interface {
 }
 
 type Variable struct {
+	// The description of the variable.
+	//
 	// example:
 	//
 	// This is a variable description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The type of the variable. Valid value: Plain.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Plain
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
+	// The name of the variable.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// variableName
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The value of the variable.
+	//
 	// This parameter is required.
 	//
 	// example:

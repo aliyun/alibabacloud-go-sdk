@@ -9,6 +9,8 @@ type iTableResult interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCollectSinkOperatorId(v string) *TableResult
+	GetCollectSinkOperatorId() *string
 	SetRowUpdates(v []*RowUpdate) *TableResult
 	GetRowUpdates() []*RowUpdate
 	SetTableName(v string) *TableResult
@@ -16,8 +18,9 @@ type iTableResult interface {
 }
 
 type TableResult struct {
-	RowUpdates []*RowUpdate `json:"rowUpdates,omitempty" xml:"rowUpdates,omitempty" type:"Repeated"`
-	TableName  *string      `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	CollectSinkOperatorId *string      `json:"collectSinkOperatorId,omitempty" xml:"collectSinkOperatorId,omitempty"`
+	RowUpdates            []*RowUpdate `json:"rowUpdates,omitempty" xml:"rowUpdates,omitempty" type:"Repeated"`
+	TableName             *string      `json:"tableName,omitempty" xml:"tableName,omitempty"`
 }
 
 func (s TableResult) String() string {
@@ -28,12 +31,21 @@ func (s TableResult) GoString() string {
 	return s.String()
 }
 
+func (s *TableResult) GetCollectSinkOperatorId() *string {
+	return s.CollectSinkOperatorId
+}
+
 func (s *TableResult) GetRowUpdates() []*RowUpdate {
 	return s.RowUpdates
 }
 
 func (s *TableResult) GetTableName() *string {
 	return s.TableName
+}
+
+func (s *TableResult) SetCollectSinkOperatorId(v string) *TableResult {
+	s.CollectSinkOperatorId = &v
+	return s
 }
 
 func (s *TableResult) SetRowUpdates(v []*RowUpdate) *TableResult {

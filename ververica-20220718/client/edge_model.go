@@ -16,7 +16,9 @@ type iEdge interface {
 }
 
 type Edge struct {
+  // The field-level data lineage.
   ColumnLineage []*Relation `json:"columnLineage,omitempty" xml:"columnLineage,omitempty" type:"Repeated"`
+  // The table-level data lineage.
   TableLineage []*Relation `json:"tableLineage,omitempty" xml:"tableLineage,omitempty" type:"Repeated"`
 }
 

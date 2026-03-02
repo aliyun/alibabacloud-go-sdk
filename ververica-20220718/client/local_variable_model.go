@@ -16,10 +16,14 @@ type iLocalVariable interface {
 }
 
 type LocalVariable struct {
+	// The name of the variable.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The value of the variable.
+	//
 	// example:
 	//
 	// datagen

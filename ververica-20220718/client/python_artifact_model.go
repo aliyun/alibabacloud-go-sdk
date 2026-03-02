@@ -24,14 +24,29 @@ type iPythonArtifact interface {
 }
 
 type PythonArtifact struct {
-	AdditionalDependencies    []*string `json:"additionalDependencies,omitempty" xml:"additionalDependencies,omitempty" type:"Repeated"`
-	AdditionalPythonArchives  []*string `json:"additionalPythonArchives,omitempty" xml:"additionalPythonArchives,omitempty" type:"Repeated"`
+	// The URL of the additional dependency file.
+	AdditionalDependencies []*string `json:"additionalDependencies,omitempty" xml:"additionalDependencies,omitempty" type:"Repeated"`
+	// The Python archive file on which the deployment depends.
+	AdditionalPythonArchives []*string `json:"additionalPythonArchives,omitempty" xml:"additionalPythonArchives,omitempty" type:"Repeated"`
+	// The Python library file on which the deployment depends.
 	AdditionalPythonLibraries []*string `json:"additionalPythonLibraries,omitempty" xml:"additionalPythonLibraries,omitempty" type:"Repeated"`
-	EntryModule               *string   `json:"entryModule,omitempty" xml:"entryModule,omitempty"`
-	MainArgs                  *string   `json:"mainArgs,omitempty" xml:"mainArgs,omitempty"`
+	// The startup module for the Python deployment.
+	//
 	// example:
 	//
-	// https://oss//bucket//test.py
+	// test.py
+	EntryModule *string `json:"entryModule,omitempty" xml:"entryModule,omitempty"`
+	// The startup parameter.
+	//
+	// example:
+	//
+	// start from main
+	MainArgs *string `json:"mainArgs,omitempty" xml:"mainArgs,omitempty"`
+	// The full URL for the Python deployment.
+	//
+	// example:
+	//
+	// https://oss/bucket/test.py
 	PythonArtifactUri *string `json:"pythonArtifactUri,omitempty" xml:"pythonArtifactUri,omitempty"`
 }
 

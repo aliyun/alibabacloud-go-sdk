@@ -20,15 +20,25 @@ type iJarArtifact interface {
 }
 
 type JarArtifact struct {
+	// The full URL of the additional dependency file. You can enter the dependency file for the JAR deployment.
 	AdditionalDependencies []*string `json:"additionalDependencies,omitempty" xml:"additionalDependencies,omitempty" type:"Repeated"`
+	// The entry class. You must enter the full name of the class.
+	//
 	// example:
 	//
 	// org.apapche.flink.test
 	EntryClass *string `json:"entryClass,omitempty" xml:"entryClass,omitempty"`
+	// The full URL for the JAR deployment.
+	//
 	// example:
 	//
-	// https://oss//bucket//test.jar
-	JarUri   *string `json:"jarUri,omitempty" xml:"jarUri,omitempty"`
+	// https://oss/bucket/test.jar
+	JarUri *string `json:"jarUri,omitempty" xml:"jarUri,omitempty"`
+	// The parameters required by the entry class.
+	//
+	// example:
+	//
+	// start from main
 	MainArgs *string `json:"mainArgs,omitempty" xml:"mainArgs,omitempty"`
 }
 

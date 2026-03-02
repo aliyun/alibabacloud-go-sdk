@@ -16,10 +16,14 @@ type iJobStatusRunning interface {
 }
 
 type JobStatusRunning struct {
+	// The number of times the job is restarted.
+	//
 	// example:
 	//
 	// 4
 	ObservedFlinkJobRestarts *int64 `json:"observedFlinkJobRestarts,omitempty" xml:"observedFlinkJobRestarts,omitempty"`
+	// The status of the Flink job.
+	//
 	// example:
 	//
 	// RUNNING

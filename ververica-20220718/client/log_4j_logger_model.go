@@ -16,10 +16,14 @@ type iLog4jLogger interface {
 }
 
 type Log4jLogger struct {
+	// The level of the output log.
+	//
 	// example:
 	//
 	// ERROR
 	LoggerLevel *string `json:"loggerLevel,omitempty" xml:"loggerLevel,omitempty"`
+	// The name of the class of the output log.
+	//
 	// example:
 	//
 	// StdOutErrConsoleAppender

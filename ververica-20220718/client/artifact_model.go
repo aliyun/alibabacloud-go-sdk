@@ -20,13 +20,24 @@ type iArtifact interface {
 }
 
 type Artifact struct {
+	// The information required for the SQL deployment.
 	JarArtifact *JarArtifact `json:"jarArtifact,omitempty" xml:"jarArtifact,omitempty"`
+	// The type of the deployment. This parameter is required and cannot be modified after the deployment is created.
+	//
+	// 	- SQLSCRIPT
+	//
+	// 	- JAR
+	//
+	// 	- PYTHON
+	//
 	// example:
 	//
 	// SQLSCRIPT
-	Kind           *string         `json:"kind,omitempty" xml:"kind,omitempty"`
+	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
+	// The information required for the Python deployment.
 	PythonArtifact *PythonArtifact `json:"pythonArtifact,omitempty" xml:"pythonArtifact,omitempty"`
-	SqlArtifact    *SqlArtifact    `json:"sqlArtifact,omitempty" xml:"sqlArtifact,omitempty"`
+	// The information required for the JAR deployment.
+	SqlArtifact *SqlArtifact `json:"sqlArtifact,omitempty" xml:"sqlArtifact,omitempty"`
 }
 
 func (s Artifact) String() string {

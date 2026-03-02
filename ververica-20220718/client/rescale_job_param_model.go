@@ -14,6 +14,9 @@ type iRescaleJobParam interface {
 }
 
 type RescaleJobParam struct {
+	// example:
+	//
+	// 10
 	JobParallelism *int64 `json:"jobParallelism,omitempty" xml:"jobParallelism,omitempty"`
 }
 

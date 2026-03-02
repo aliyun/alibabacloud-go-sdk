@@ -18,13 +18,26 @@ type iEngineVersionMetadata interface {
 }
 
 type EngineVersionMetadata struct {
+  // The engine version.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // vvr-6.0.0-flink-1.15
   EngineVersion *string `json:"engineVersion,omitempty" xml:"engineVersion,omitempty"`
+  // The features supported by the engine version.
   Features *EngineVersionSupportedFeatures `json:"features,omitempty" xml:"features,omitempty"`
+  // The status of the engine version.
+  // 
+  // 	- STABLE
+  // 
+  // 	- BETA
+  // 
+  // 	- DEPRECATED
+  // 
+  // 	- EXPIRED
+  // 
   // This parameter is required.
   // 
   // example:

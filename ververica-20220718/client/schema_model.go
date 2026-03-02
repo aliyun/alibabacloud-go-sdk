@@ -18,8 +18,11 @@ type iSchema interface {
 }
 
 type Schema struct {
-	Columns        []*TableColumn   `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
-	PrimaryKey     *PrimaryKey      `json:"primaryKey,omitempty" xml:"primaryKey,omitempty"`
+	// The information about columns.
+	Columns []*TableColumn `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
+	// The information about the primary key.
+	PrimaryKey *PrimaryKey `json:"primaryKey,omitempty" xml:"primaryKey,omitempty"`
+	// The watermark information.
 	WatermarkSpecs []*WatermarkSpec `json:"watermarkSpecs,omitempty" xml:"watermarkSpecs,omitempty" type:"Repeated"`
 }
 

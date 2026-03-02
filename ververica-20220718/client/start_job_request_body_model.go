@@ -18,12 +18,16 @@ type iStartJobRequestBody interface {
 }
 
 type StartJobRequestBody struct {
+	// The deployment ID.
+	//
 	// example:
 	//
-	// 5a19a71b-1c42-4f34-94fd-86cf60782c81
-	DeploymentId        *string                    `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
-	ResourceSettingSpec *BriefResourceSetting      `json:"resourceSettingSpec,omitempty" xml:"resourceSettingSpec,omitempty"`
-	RestoreStrategy     *DeploymentRestoreStrategy `json:"restoreStrategy,omitempty" xml:"restoreStrategy,omitempty"`
+	// 5a19a71b-1c42-4f34-94fd-86cf6078****
+	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	// The resource configuration of the deployment.
+	ResourceSettingSpec *BriefResourceSetting `json:"resourceSettingSpec,omitempty" xml:"resourceSettingSpec,omitempty"`
+	// The start offset of the job.
+	RestoreStrategy *DeploymentRestoreStrategy `json:"restoreStrategy,omitempty" xml:"restoreStrategy,omitempty"`
 }
 
 func (s StartJobRequestBody) String() string {

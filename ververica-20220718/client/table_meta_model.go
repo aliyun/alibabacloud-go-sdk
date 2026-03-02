@@ -18,9 +18,18 @@ type iTableMeta interface {
 }
 
 type TableMeta struct {
-	CatalogName  *string `json:"catalogName,omitempty" xml:"catalogName,omitempty"`
+	// example:
+	//
+	// paimon
+	CatalogName *string `json:"catalogName,omitempty" xml:"catalogName,omitempty"`
+	// example:
+	//
+	// paimon-ods
 	DatabaseName *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
-	TableName    *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	// example:
+	//
+	// order-table
+	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
 }
 
 func (s TableMeta) String() string {

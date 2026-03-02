@@ -18,8 +18,15 @@ type iBriefResourceSetting interface {
 }
 
 type BriefResourceSetting struct {
-	BatchResourceSetting     *BatchResourceSetting     `json:"batchResourceSetting,omitempty" xml:"batchResourceSetting,omitempty"`
-	FlinkConf                map[string]interface{}    `json:"flinkConf,omitempty" xml:"flinkConf,omitempty"`
+	// The resource configuration for the deployment in batch mode. This parameter is required for a deployment in batch mode.
+	BatchResourceSetting *BatchResourceSetting `json:"batchResourceSetting,omitempty" xml:"batchResourceSetting,omitempty"`
+	// The Realtime Compute for Apache Flink configuration.
+	//
+	// example:
+	//
+	// “execution.checkpointing.interval: 180s”
+	FlinkConf map[string]interface{} `json:"flinkConf,omitempty" xml:"flinkConf,omitempty"`
+	// The resource configuration for the deployment in streaming mode. This parameter is required for a deployment in streaming mode.
 	StreamingResourceSetting *StreamingResourceSetting `json:"streamingResourceSetting,omitempty" xml:"streamingResourceSetting,omitempty"`
 }
 

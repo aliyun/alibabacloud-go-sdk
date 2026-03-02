@@ -20,12 +20,18 @@ type iLogging interface {
 }
 
 type Logging struct {
-	// example:
+	// Custom log templates.
+	Log4j2ConfigurationTemplate *string `json:"log4j2ConfigurationTemplate,omitempty" xml:"log4j2ConfigurationTemplate,omitempty"`
+	// The Log4j configuration.
+	Log4jLoggers []*Log4jLogger `json:"log4jLoggers,omitempty" xml:"log4jLoggers,omitempty" type:"Repeated"`
+	// The log retention policy.
+	LogReservePolicy *LogReservePolicy `json:"logReservePolicy,omitempty" xml:"logReservePolicy,omitempty"`
+	// The type of the system log template.
 	//
-	// xml格式文本
-	Log4j2ConfigurationTemplate *string           `json:"log4j2ConfigurationTemplate,omitempty" xml:"log4j2ConfigurationTemplate,omitempty"`
-	Log4jLoggers                []*Log4jLogger    `json:"log4jLoggers,omitempty" xml:"log4jLoggers,omitempty" type:"Repeated"`
-	LogReservePolicy            *LogReservePolicy `json:"logReservePolicy,omitempty" xml:"logReservePolicy,omitempty"`
+	// 	- default: The default template is used.
+	//
+	// 	- oss: Logs are delivered to Object Storage Service (OSS).
+	//
 	// example:
 	//
 	// oss

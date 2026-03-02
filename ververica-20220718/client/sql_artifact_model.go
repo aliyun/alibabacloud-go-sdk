@@ -16,8 +16,14 @@ type iSqlArtifact interface {
 }
 
 type SqlArtifact struct {
+	// The additional dependency files. If you want to use dependencies such as UDFs, connectors, and formats that are not registered on Ververica Platform (VVP), you need to configure this parameter. You do not need to configure this parameter for dependencies that are registered on VVP.
 	AdditionalDependencies []*string `json:"additionalDependencies,omitempty" xml:"additionalDependencies,omitempty" type:"Repeated"`
-	SqlScript              *string   `json:"sqlScript,omitempty" xml:"sqlScript,omitempty"`
+	// The script of the SQL deployment.
+	//
+	// example:
+	//
+	// CREATE TEMPORARY TABLE datagen_source(   name VARCHAR ) WITH (   \\"connector\\" = \\"datagen\\" ); CREATE TEMPORARY TABLE blackhole_sink(   name  VARCHAR ) with (   \\"connector\\" = \\"blackhole\\" ); INSERT INTO blackhole_sink SELECT name from datagen_source;
+	SqlScript *string `json:"sqlScript,omitempty" xml:"sqlScript,omitempty"`
 }
 
 func (s SqlArtifact) String() string {

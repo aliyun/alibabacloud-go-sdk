@@ -14,6 +14,8 @@ type iUpdateVariableRequest interface {
 }
 
 type UpdateVariableRequest struct {
+	// The information about the variable after the update.
+	//
 	// This parameter is required.
 	Body *Variable `json:"body,omitempty" xml:"body,omitempty"`
 }

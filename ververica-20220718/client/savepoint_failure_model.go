@@ -18,12 +18,24 @@ type iSavepointFailure interface {
 }
 
 type SavepointFailure struct {
+	// The time when the deployment fails.
+	//
 	// example:
 	//
 	// 1655006835
-	FailedAt *int64  `json:"failedAt,omitempty" xml:"failedAt,omitempty"`
-	Message  *string `json:"message,omitempty" xml:"message,omitempty"`
-	Reason   *string `json:"reason,omitempty" xml:"reason,omitempty"`
+	FailedAt *int64 `json:"failedAt,omitempty" xml:"failedAt,omitempty"`
+	// The failure information.
+	//
+	// example:
+	//
+	// create savepoint failed
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The reason for the failure.
+	//
+	// example:
+	//
+	// IO Exception
+	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
 }
 
 func (s SavepointFailure) String() string {

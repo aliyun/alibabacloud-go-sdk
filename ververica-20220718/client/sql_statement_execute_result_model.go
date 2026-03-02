@@ -18,9 +18,20 @@ type iSqlStatementExecuteResult interface {
 }
 
 type SqlStatementExecuteResult struct {
-	ErrorDetails   *ErrorDetails `json:"errorDetails,omitempty" xml:"errorDetails,omitempty"`
-	ExecuteSuccess *bool         `json:"executeSuccess,omitempty" xml:"executeSuccess,omitempty"`
-	Statement      *string       `json:"statement,omitempty" xml:"statement,omitempty"`
+	// The error details returned.
+	ErrorDetails *ErrorDetails `json:"errorDetails,omitempty" xml:"errorDetails,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	ExecuteSuccess *bool `json:"executeSuccess,omitempty" xml:"executeSuccess,omitempty"`
+	// The statement that was executed.
+	//
+	// example:
+	//
+	// “show create table order”
+	Statement *string `json:"statement,omitempty" xml:"statement,omitempty"`
 }
 
 func (s SqlStatementExecuteResult) String() string {

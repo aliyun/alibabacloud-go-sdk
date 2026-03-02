@@ -18,7 +18,13 @@ type iWatermarkSpec interface {
 }
 
 type WatermarkSpec struct {
-	Column              *string `json:"column,omitempty" xml:"column,omitempty"`
+	// example:
+	//
+	// time
+	Column *string `json:"column,omitempty" xml:"column,omitempty"`
+	// example:
+	//
+	// INTERVAL \\"5\\" SECOND
 	WatermarkExpression *string `json:"watermarkExpression,omitempty" xml:"watermarkExpression,omitempty"`
 	WatermarkType       *string `json:"watermarkType,omitempty" xml:"watermarkType,omitempty"`
 }

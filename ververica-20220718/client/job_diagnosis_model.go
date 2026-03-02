@@ -24,12 +24,46 @@ type iJobDiagnosis interface {
 }
 
 type JobDiagnosis struct {
-	DiagnoseId   *string               `json:"diagnoseId,omitempty" xml:"diagnoseId,omitempty"`
-	DiagnoseTime *int64                `json:"diagnoseTime,omitempty" xml:"diagnoseTime,omitempty"`
-	Namespace    *string               `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	RiskLevel    *string               `json:"riskLevel,omitempty" xml:"riskLevel,omitempty"`
-	Symptoms     *JobDiagnosisSymptoms `json:"symptoms,omitempty" xml:"symptoms,omitempty"`
-	Workspace    *string               `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// The diagnostic task ID.
+	//
+	// example:
+	//
+	// ba30cd99-37a5-4a20-8cd9-ed4b*****
+	DiagnoseId *string `json:"diagnoseId,omitempty" xml:"diagnoseId,omitempty"`
+	// The time when the deployment is diagnosed.
+	//
+	// example:
+	//
+	// 1740389560871
+	DiagnoseTime *int64 `json:"diagnoseTime,omitempty" xml:"diagnoseTime,omitempty"`
+	// The namespace.
+	//
+	// example:
+	//
+	// default-namespace-*****
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The severity level of the risk.
+	//
+	// Valid values:
+	//
+	// 	- RISK_LEVEL_HIGH
+	//
+	// 	- RISK_LEVEL_MID
+	//
+	// 	- RISK_LEVEL_LOW
+	//
+	// example:
+	//
+	// RISK_LEVEL_LOW
+	RiskLevel *string `json:"riskLevel,omitempty" xml:"riskLevel,omitempty"`
+	// The diagnostic details.
+	Symptoms *JobDiagnosisSymptoms `json:"symptoms,omitempty" xml:"symptoms,omitempty"`
+	// The workspace to which the deployment belongs.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s JobDiagnosis) String() string {

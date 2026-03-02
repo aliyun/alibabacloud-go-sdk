@@ -48,56 +48,94 @@ type iDeploymentDraft interface {
 }
 
 type DeploymentDraft struct {
-	Artifact  *Artifact `json:"artifact,omitempty" xml:"artifact,omitempty"`
-	CreatedAt *int64    `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The script of the SQL deployment.
+	Artifact *Artifact `json:"artifact,omitempty" xml:"artifact,omitempty"`
+	// The time when the draft was created.
+	//
+	// example:
+	//
+	// 1723537978
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The ID of the account that is used to create the draft.
+	//
 	// example:
 	//
 	// 27846363877456****
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// The name of the account that is used to create the draft.
+	//
 	// example:
 	//
 	// ****@streamcompute.onaliyun.com
 	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
+	// The draft ID.
+	//
 	// example:
 	//
 	// 00000000-0000-0000-0000-00000012****
 	DeploymentDraftId *string `json:"deploymentDraftId,omitempty" xml:"deploymentDraftId,omitempty"`
+	// The engine version of the deployment.
+	//
 	// example:
 	//
 	// vvr-6.0.7-flink-1.15
 	EngineVersion *string `json:"engineVersion,omitempty" xml:"engineVersion,omitempty"`
+	// The execution mode.
+	//
 	// example:
 	//
 	// STREAMING
-	ExecutionMode  *string                `json:"executionMode,omitempty" xml:"executionMode,omitempty"`
-	Labels         map[string]interface{} `json:"labels,omitempty" xml:"labels,omitempty"`
-	LocalVariables []*LocalVariable       `json:"localVariables,omitempty" xml:"localVariables,omitempty" type:"Repeated"`
-	Lock           *Lock                  `json:"lock,omitempty" xml:"lock,omitempty"`
-	ModifiedAt     *int64                 `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
+	ExecutionMode *string `json:"executionMode,omitempty" xml:"executionMode,omitempty"`
+	// The labels of the deployment.
+	Labels map[string]interface{} `json:"labels,omitempty" xml:"labels,omitempty"`
+	// The variables.
+	LocalVariables []*LocalVariable `json:"localVariables,omitempty" xml:"localVariables,omitempty" type:"Repeated"`
+	// The lock of the draft.
+	Lock *Lock `json:"lock,omitempty" xml:"lock,omitempty"`
+	// The time when the draft was modified.
+	//
+	// example:
+	//
+	// 1723537978
+	ModifiedAt *int64 `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
+	// The ID of the account that is used to modify the draft.
+	//
 	// example:
 	//
 	// 27846363877456****
 	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// The name of the account that is used to modify the draft.
+	//
 	// example:
 	//
 	// ****@streamcompute.onaliyun.com
 	ModifierName *string `json:"modifierName,omitempty" xml:"modifierName,omitempty"`
+	// The name of the draft.
+	//
 	// example:
 	//
 	// test-draft
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The name of the namespace.
+	//
 	// example:
 	//
 	// default-namespace
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The ID of the parent folder.
+	//
 	// example:
 	//
 	// 00000000-0000-0000-0000-00000013****
 	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	// The ID of the associated deployment.
+	//
 	// example:
 	//
 	// 00000000-0000-0000-0000-0000012312****
 	ReferencedDeploymentId *string `json:"referencedDeploymentId,omitempty" xml:"referencedDeploymentId,omitempty"`
+	// The workspace.
+	//
 	// example:
 	//
 	// edcef******b4f

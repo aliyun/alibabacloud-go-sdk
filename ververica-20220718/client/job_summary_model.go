@@ -24,26 +24,38 @@ type iJobSummary interface {
 }
 
 type JobSummary struct {
+	// The number of jobs that are in the cancelled state.
+	//
 	// example:
 	//
-	// 1
+	// 5
 	Cancelled *int32 `json:"cancelled,omitempty" xml:"cancelled,omitempty"`
+	// The number of jobs that are in the cancelling state.
+	//
 	// example:
 	//
-	// 1
+	// 0
 	Cancelling *int32 `json:"cancelling,omitempty" xml:"cancelling,omitempty"`
+	// The number of jobs that are in the failed state.
+	//
 	// example:
 	//
-	// 1
+	// 6
 	Failed *int32 `json:"failed,omitempty" xml:"failed,omitempty"`
+	// The number of jobs that are in the finished state.
+	//
 	// example:
 	//
-	// 1
+	// 4
 	Finished *int32 `json:"finished,omitempty" xml:"finished,omitempty"`
+	// The number of jobs that are in the running state.
+	//
 	// example:
 	//
-	// 1
+	// 2
 	Running *int32 `json:"running,omitempty" xml:"running,omitempty"`
+	// The number of jobs that are in the starting state.
+	//
 	// example:
 	//
 	// 1

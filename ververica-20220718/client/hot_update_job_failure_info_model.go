@@ -18,9 +18,18 @@ type iHotUpdateJobFailureInfo interface {
 }
 
 type HotUpdateJobFailureInfo struct {
+	// example:
+	//
+	// LOW
 	FailureSeverity *string `json:"failureSeverity,omitempty" xml:"failureSeverity,omitempty"`
-	Message         *string `json:"message,omitempty" xml:"message,omitempty"`
-	Reason          *string `json:"reason,omitempty" xml:"reason,omitempty"`
+	// example:
+	//
+	// “”
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// “”
+	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
 }
 
 func (s HotUpdateJobFailureInfo) String() string {

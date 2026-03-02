@@ -18,8 +18,11 @@ type iJobDiagnosisSymptom interface {
 }
 
 type JobDiagnosisSymptom struct {
-	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
-	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The diagnostic result.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The diagnostic task name.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The fixing suggestions.
 	Recommendation *string `json:"recommendation,omitempty" xml:"recommendation,omitempty"`
 }
 

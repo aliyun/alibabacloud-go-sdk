@@ -22,14 +22,23 @@ type iJobStartParameters interface {
 }
 
 type JobStartParameters struct {
-	DeploymentId   *string          `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
-	JobId          *string          `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// The deployment ID.
+	//
+	// example:
+	//
+	// 737d0921-c5ac-47fc-9ba9-07a1e0b4****
+	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	JobId        *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// The variables.
 	LocalVariables []*LocalVariable `json:"localVariables,omitempty" xml:"localVariables,omitempty" type:"Repeated"`
+	// The queue in which the deployment is running.
+	//
 	// example:
 	//
 	// default-queue
-	ResourceQueueName *string                    `json:"resourceQueueName,omitempty" xml:"resourceQueueName,omitempty"`
-	RestoreStrategy   *DeploymentRestoreStrategy `json:"restoreStrategy,omitempty" xml:"restoreStrategy,omitempty"`
+	ResourceQueueName *string `json:"resourceQueueName,omitempty" xml:"resourceQueueName,omitempty"`
+	// The configuration of the start offset of the deployment.
+	RestoreStrategy *DeploymentRestoreStrategy `json:"restoreStrategy,omitempty" xml:"restoreStrategy,omitempty"`
 }
 
 func (s JobStartParameters) String() string {

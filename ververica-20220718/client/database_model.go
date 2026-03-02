@@ -18,8 +18,19 @@ type iDatabase interface {
 }
 
 type Database struct {
-	Comment    *string                `json:"comment,omitempty" xml:"comment,omitempty"`
-	Name       *string                `json:"name,omitempty" xml:"name,omitempty"`
+	// The comment.
+	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// database-test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The parameters of the database.
+	//
+	// example:
+	//
+	// “”
 	Properties map[string]interface{} `json:"properties,omitempty" xml:"properties,omitempty"`
 }
 

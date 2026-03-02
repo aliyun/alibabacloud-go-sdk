@@ -16,10 +16,14 @@ type iEngineVersionSupportedFeatures interface {
 }
 
 type EngineVersionSupportedFeatures struct {
+  // Specifies whether the engine version can be used to create a native savepoint.
+  // 
   // example:
   // 
   // true
   SupportNativeSavepoint *bool `json:"supportNativeSavepoint,omitempty" xml:"supportNativeSavepoint,omitempty"`
+  // Specifies whether the engine version can be used to submit an SQL deployment.
+  // 
   // example:
   // 
   // true

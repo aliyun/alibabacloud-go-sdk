@@ -22,14 +22,30 @@ type iJobStatus interface {
 }
 
 type JobStatus struct {
+	// The status of the current job. Valid values:
+	//
+	// 	- STARTING
+	//
+	// 	- RUNNING
+	//
+	// 	- CANCELLING
+	//
+	// 	- FAILED
+	//
+	// 	- CANCELLED
+	//
+	// 	- FINISHED
+	//
 	// example:
 	//
 	// RUNNING
-	CurrentJobStatus *string           `json:"currentJobStatus,omitempty" xml:"currentJobStatus,omitempty"`
-	Failure          *JobFailure       `json:"failure,omitempty" xml:"failure,omitempty"`
-	HealthScore      *int32            `json:"healthScore,omitempty" xml:"healthScore,omitempty"`
-	RiskLevel        *string           `json:"riskLevel,omitempty" xml:"riskLevel,omitempty"`
-	Running          *JobStatusRunning `json:"running,omitempty" xml:"running,omitempty"`
+	CurrentJobStatus *string `json:"currentJobStatus,omitempty" xml:"currentJobStatus,omitempty"`
+	// The information about the job failure. This parameter is valid when the value of the currentJobStatus parameter is FAILED.
+	Failure     *JobFailure `json:"failure,omitempty" xml:"failure,omitempty"`
+	HealthScore *int32      `json:"healthScore,omitempty" xml:"healthScore,omitempty"`
+	RiskLevel   *string     `json:"riskLevel,omitempty" xml:"riskLevel,omitempty"`
+	// The details of the job. This parameter is valid when the value of the currentJobStatus parameter is RUNNING.
+	Running *JobStatusRunning `json:"running,omitempty" xml:"running,omitempty"`
 }
 
 func (s JobStatus) String() string {

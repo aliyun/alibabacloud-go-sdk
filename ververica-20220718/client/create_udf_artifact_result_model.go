@@ -20,10 +20,22 @@ type iCreateUdfArtifactResult interface {
 }
 
 type CreateUdfArtifactResult struct {
-	CollidingClasses []*UdfClass  `json:"collidingClasses,omitempty" xml:"collidingClasses,omitempty" type:"Repeated"`
-	CreateSuccess    *bool        `json:"createSuccess,omitempty" xml:"createSuccess,omitempty"`
-	Message          *string      `json:"message,omitempty" xml:"message,omitempty"`
-	UdfArtifact      *UdfArtifact `json:"udfArtifact,omitempty" xml:"udfArtifact,omitempty"`
+	// All classes in conflict.
+	CollidingClasses []*UdfClass `json:"collidingClasses,omitempty" xml:"collidingClasses,omitempty" type:"Repeated"`
+	// Indicates whether the JAR file was created.
+	//
+	// example:
+	//
+	// true
+	CreateSuccess *bool `json:"createSuccess,omitempty" xml:"createSuccess,omitempty"`
+	// The message used to create the JAR file.
+	//
+	// example:
+	//
+	// “”
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The JAR file that you created.
+	UdfArtifact *UdfArtifact `json:"udfArtifact,omitempty" xml:"udfArtifact,omitempty"`
 }
 
 func (s CreateUdfArtifactResult) String() string {

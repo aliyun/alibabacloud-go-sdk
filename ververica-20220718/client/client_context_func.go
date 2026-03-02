@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 执行定时计划
+// Executes a scheduled plan.
 //
 // @param headers - ApplyScheduledPlanHeaders
 //
@@ -166,7 +166,7 @@ func (client *Client) CreateDeploymentWithContext(ctx context.Context, namespace
 
 // Summary:
 //
-// create a deploymentDraft
+// Creates an SQL draft.
 //
 // @param request - CreateDeploymentDraftRequest
 //
@@ -217,7 +217,7 @@ func (client *Client) CreateDeploymentDraftWithContext(ctx context.Context, name
 
 // Summary:
 //
-// 创建deploymentTarget
+// Creates a deployment target.
 //
 // @param request - CreateDeploymentTargetRequest
 //
@@ -331,7 +331,7 @@ func (client *Client) CreateDeploymentTargetV2WithContext(ctx context.Context, n
 
 // Summary:
 //
-// create a folder
+// Creates a folder.
 //
 // @param request - CreateFolderRequest
 //
@@ -497,7 +497,7 @@ func (client *Client) CreateSavepointWithContext(ctx context.Context, namespace 
 
 // Summary:
 //
-// 创建定时执行计划
+// Creates a scheduled tuning plan.
 //
 // @param request - CreateScheduledPlanRequest
 //
@@ -548,7 +548,7 @@ func (client *Client) CreateScheduledPlanWithContext(ctx context.Context, namesp
 
 // Summary:
 //
-// 创建session集群
+// # Create a session cluster
 //
 // @param request - CreateSessionClusterRequest
 //
@@ -785,7 +785,7 @@ func (client *Client) DeleteDeploymentWithContext(ctx context.Context, namespace
 
 // Summary:
 //
-// delete a deploymentDraft
+// Deletes an SQL draft. If the draft is deployed as a deployment and the deployment is published or the deployment status is RUNNING, the deployment for the draft cannot be deleted.
 //
 // @param headers - DeleteDeploymentDraftHeaders
 //
@@ -827,7 +827,7 @@ func (client *Client) DeleteDeploymentDraftWithContext(ctx context.Context, name
 
 // Summary:
 //
-// 删除deploymentTarget
+// Deletes a deployment target.
 //
 // @param headers - DeleteDeploymentTargetHeaders
 //
@@ -869,7 +869,7 @@ func (client *Client) DeleteDeploymentTargetWithContext(ctx context.Context, nam
 
 // Summary:
 //
-// delete a folder
+// Deletes an empty folder. If files or folders exist in a folder, the folder cannot be deleted.
 //
 // @param headers - DeleteFolderHeaders
 //
@@ -1037,7 +1037,7 @@ func (client *Client) DeleteSavepointWithContext(ctx context.Context, namespace 
 
 // Summary:
 //
-// 删除定时执行计划
+// Deletes a scheduled tuning plan.
 //
 // @param headers - DeleteScheduledPlanHeaders
 //
@@ -1079,7 +1079,7 @@ func (client *Client) DeleteScheduledPlanWithContext(ctx context.Context, namesp
 
 // Summary:
 //
-// 删除session集群
+// Deletes a session cluster.
 //
 // @param headers - DeleteSessionClusterHeaders
 //
@@ -1121,7 +1121,7 @@ func (client *Client) DeleteSessionClusterWithContext(ctx context.Context, names
 
 // Summary:
 //
-// 删除UdfArtifact
+// Deletes resources of a user-defined function (UDF) from a namespace. Before you delete the resources of a UDF, you must delete the UDF.
 //
 // @param headers - DeleteUdfArtifactHeaders
 //
@@ -1265,7 +1265,7 @@ func (client *Client) DeleteVariableWithContext(ctx context.Context, namespace *
 
 // Summary:
 //
-// deploy deploymentDraft async
+// Deploys an SQL draft.
 //
 // @param request - DeployDeploymentDraftAsyncRequest
 //
@@ -1316,7 +1316,7 @@ func (client *Client) DeployDeploymentDraftAsyncWithContext(ctx context.Context,
 
 // Summary:
 //
-// 执行sql语句
+// Executes SQL statements to query the metadata. Only DDL and DML statements are supported. DQL statements are not supported.
 //
 // @param request - ExecuteSqlStatementRequest
 //
@@ -1431,7 +1431,7 @@ func (client *Client) FetchSqlPreviewResultsWithContext(ctx context.Context, nam
 
 // Summary:
 //
-// Provides a Flink request proxy.
+// Provides a proxy for Realtime Compute for Apache Flink requests.
 //
 // @param request - FlinkApiProxyRequest
 //
@@ -1550,7 +1550,7 @@ func (client *Client) GenerateResourcePlanWithFlinkConfAsyncWithContext(ctx cont
 
 // Summary:
 //
-// 获取应用中的执行定时计划
+// Queries the scheduled plan of an application.
 //
 // @param request - GetAppliedScheduledPlanRequest
 //
@@ -1606,7 +1606,7 @@ func (client *Client) GetAppliedScheduledPlanWithContext(ctx context.Context, na
 
 // Summary:
 //
-// 获取catalog
+// Obtains details of the specified catalog or all catalogs.
 //
 // @param request - GetCatalogsRequest
 //
@@ -1662,7 +1662,7 @@ func (client *Client) GetCatalogsWithContext(ctx context.Context, namespace *str
 
 // Summary:
 //
-// 获取database
+// Obtains the information about a database in a specified catalog or lists all databases in a specified catalog.
 //
 // @param request - GetDatabasesRequest
 //
@@ -1718,7 +1718,7 @@ func (client *Client) GetDatabasesWithContext(ctx context.Context, namespace *st
 
 // Summary:
 //
-// get deploy deploymentDraft result
+// Obtains the deployment result based on the ID of the asynchronous ticket.
 //
 // @param headers - GetDeployDeploymentDraftResultHeaders
 //
@@ -1802,7 +1802,7 @@ func (client *Client) GetDeploymentWithContext(ctx context.Context, namespace *s
 
 // Summary:
 //
-// get a deploymentDraft
+// Obtains the details of an SQL draft.
 //
 // @param headers - GetDeploymentDraftHeaders
 //
@@ -1844,7 +1844,7 @@ func (client *Client) GetDeploymentDraftWithContext(ctx context.Context, namespa
 
 // Summary:
 //
-// get deploymentDraft lock
+// Obtains the lock that is used to edit a draft. This can prevent operations performed on the page and API operations from affecting each other.
 //
 // @param request - GetDeploymentDraftLockRequest
 //
@@ -2104,7 +2104,7 @@ func (client *Client) GetDeploymentsByNameWithContext(ctx context.Context, names
 
 // Summary:
 //
-// 获取运行事件
+// Queries events.
 //
 // @param request - GetEventsRequest
 //
@@ -2123,6 +2123,10 @@ func (client *Client) GetEventsWithContext(ctx context.Context, namespace *strin
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeploymentId) {
 		query["deploymentId"] = request.DeploymentId
+	}
+
+	if !dara.IsNil(request.DeploymentName) {
+		query["deploymentName"] = request.DeploymentName
 	}
 
 	if !dara.IsNil(request.PageIndex) {
@@ -2168,7 +2172,7 @@ func (client *Client) GetEventsWithContext(ctx context.Context, namespace *strin
 
 // Summary:
 //
-// get a folder
+// Obtains the details of a folder.
 //
 // @param request - GetFolderRequest
 //
@@ -2187,6 +2191,10 @@ func (client *Client) GetFolderWithContext(ctx context.Context, namespace *strin
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FolderId) {
 		query["folderId"] = request.FolderId
+	}
+
+	if !dara.IsNil(request.RootType) {
+		query["rootType"] = request.RootType
 	}
 
 	realHeaders := make(map[string]*string)
@@ -2266,7 +2274,7 @@ func (client *Client) GetGenerateResourcePlanResultWithContext(ctx context.Conte
 
 // Summary:
 //
-// 查询动态更新结果
+// Obtains the dynamic update result of a deployment when you dynamically update the deployment.
 //
 // @param headers - GetHotUpdateJobResultHeaders
 //
@@ -2350,7 +2358,7 @@ func (client *Client) GetJobWithContext(ctx context.Context, namespace *string, 
 
 // Summary:
 //
-// 获取作业诊断信息
+// Queries information about abnormal diagnostic items based on the intelligent deployment diagnostics feature.
 //
 // @param headers - GetJobDiagnosisHeaders
 //
@@ -2625,7 +2633,7 @@ func (client *Client) GetSavepointWithContext(ctx context.Context, namespace *st
 
 // Summary:
 //
-// 获取session集群
+// Queries the information about a session cluster.
 //
 // @param headers - GetSessionClusterHeaders
 //
@@ -2667,7 +2675,7 @@ func (client *Client) GetSessionClusterWithContext(ctx context.Context, namespac
 
 // Summary:
 //
-// 获取table
+// Obtains the details of a specific table in a database of a specific catalog or the information about all tables in a database.
 //
 // @param request - GetTablesRequest
 //
@@ -2905,7 +2913,7 @@ func (client *Client) ListCustomConnectorsWithContext(ctx context.Context, names
 
 // Summary:
 //
-// list deploymentDrafts
+// Queries a list of SQL drafts.
 //
 // @param request - ListDeploymentDraftsRequest
 //
@@ -3422,7 +3430,7 @@ func (client *Client) ListSavepointsWithContext(ctx context.Context, namespace *
 
 // Summary:
 //
-// 列表定时执行计划
+// Obtains a list of scheduled tuning plans.
 //
 // @param request - ListScheduledPlanRequest
 //
@@ -3486,7 +3494,7 @@ func (client *Client) ListScheduledPlanWithContext(ctx context.Context, namespac
 
 // Summary:
 //
-// 获取作业资源变更历史
+// Queries the execution history of a scheduled plan.
 //
 // @param request - ListScheduledPlanExecutedHistoryRequest
 //
@@ -3546,7 +3554,7 @@ func (client *Client) ListScheduledPlanExecutedHistoryWithContext(ctx context.Co
 
 // Summary:
 //
-// 列举session集群
+// Queries a list of session clusters.
 //
 // @param headers - ListSessionClustersHeaders
 //
@@ -3872,7 +3880,7 @@ func (client *Client) StartJobWithParamsWithContext(ctx context.Context, namespa
 
 // Summary:
 //
-// 启动session集群
+// Starts a session cluster.
 //
 // @param headers - StartSessionClusterHeaders
 //
@@ -3914,7 +3922,7 @@ func (client *Client) StartSessionClusterWithContext(ctx context.Context, namesp
 
 // Summary:
 //
-// 停止应用执行定时计划
+// Stops the scheduled plan of an application.
 //
 // @param headers - StopApplyScheduledPlanHeaders
 //
@@ -4007,7 +4015,7 @@ func (client *Client) StopJobWithContext(ctx context.Context, namespace *string,
 
 // Summary:
 //
-// 停止session集群
+// Stops a session cluster.
 //
 // @param headers - StopSessionClusterHeaders
 //
@@ -4157,7 +4165,7 @@ func (client *Client) UpdateDeploymentWithContext(ctx context.Context, namespace
 
 // Summary:
 //
-// update a deploymentDraft
+// Updates an SQL draft.
 //
 // @param request - UpdateDeploymentDraftRequest
 //
@@ -4208,7 +4216,7 @@ func (client *Client) UpdateDeploymentDraftWithContext(ctx context.Context, name
 
 // Summary:
 //
-// 修改deploymentTarget
+// Updates a cluster on which the deployment is deployed.
 //
 // @param request - UpdateDeploymentTargetRequest
 //
@@ -4310,7 +4318,7 @@ func (client *Client) UpdateDeploymentTargetV2WithContext(ctx context.Context, n
 
 // Summary:
 //
-// update a folder
+// Updates a folder.
 //
 // @param request - UpdateFolderRequest
 //
@@ -4412,7 +4420,7 @@ func (client *Client) UpdateMemberWithContext(ctx context.Context, namespace *st
 
 // Summary:
 //
-// 更新定时执行计划
+// Update a scheduled tuning plan.
 //
 // @param request - UpdateScheduledPlanRequest
 //
@@ -4463,7 +4471,7 @@ func (client *Client) UpdateScheduledPlanWithContext(ctx context.Context, namesp
 
 // Summary:
 //
-// 更新session集群
+// Updates a session cluster.
 //
 // @param request - UpdateSessionClusterRequest
 //
@@ -4565,7 +4573,7 @@ func (client *Client) UpdateUdfArtifactWithContext(ctx context.Context, namespac
 
 // Summary:
 //
-// 更新秘钥
+// Updates the information about a variable in a namespace.
 //
 // @param request - UpdateVariableRequest
 //

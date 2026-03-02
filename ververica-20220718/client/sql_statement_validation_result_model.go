@@ -20,10 +20,26 @@ type iSqlStatementValidationResult interface {
 }
 
 type SqlStatementValidationResult struct {
-	ErrorDetails     *ErrorDetails `json:"errorDetails,omitempty" xml:"errorDetails,omitempty"`
-	Message          *string       `json:"message,omitempty" xml:"message,omitempty"`
-	Success          *bool         `json:"success,omitempty" xml:"success,omitempty"`
-	ValidationResult *string       `json:"validationResult,omitempty" xml:"validationResult,omitempty"`
+	// The error message of the verification result.
+	ErrorDetails *ErrorDetails `json:"errorDetails,omitempty" xml:"errorDetails,omitempty"`
+	// The verification information.
+	//
+	// example:
+	//
+	// “”
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// True
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The verification result.
+	//
+	// example:
+	//
+	// VALIDATION_RESULT_INVALID
+	ValidationResult *string `json:"validationResult,omitempty" xml:"validationResult,omitempty"`
 }
 
 func (s SqlStatementValidationResult) String() string {

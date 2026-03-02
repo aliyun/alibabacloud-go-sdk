@@ -18,8 +18,19 @@ type iDeleteUdfArtifactResult interface {
 }
 
 type DeleteUdfArtifactResult struct {
-	DeleteSuccess     *bool       `json:"deleteSuccess,omitempty" xml:"deleteSuccess,omitempty"`
-	Message           *string     `json:"message,omitempty" xml:"message,omitempty"`
+	// Indicates whether the JAR file was deleted.
+	//
+	// example:
+	//
+	// true
+	DeleteSuccess *bool `json:"deleteSuccess,omitempty" xml:"deleteSuccess,omitempty"`
+	// The message used to delete the JAR file.
+	//
+	// example:
+	//
+	// “”
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// All associated classes.
 	ReferencedClasses []*UdfClass `json:"referencedClasses,omitempty" xml:"referencedClasses,omitempty" type:"Repeated"`
 }
 

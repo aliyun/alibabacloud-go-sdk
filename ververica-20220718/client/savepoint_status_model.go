@@ -16,7 +16,16 @@ type iSavepointStatus interface {
 }
 
 type SavepointStatus struct {
+	// The details of the failure to create a savepoint for the deployment.
 	Failure *SavepointFailure `json:"failure,omitempty" xml:"failure,omitempty"`
+	// The status of the savepoint that is created for the deployment. Valid values:
+	//
+	// 	- STARTED
+	//
+	// 	- COMPLETED
+	//
+	// 	- FAILED
+	//
 	// example:
 	//
 	// COMPLETED

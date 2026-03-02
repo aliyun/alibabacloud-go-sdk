@@ -18,9 +18,12 @@ type iLineageInfo interface {
 }
 
 type LineageInfo struct {
-	Edges    *Edge      `json:"edges,omitempty" xml:"edges,omitempty"`
+	// The edge information.
+	Edges *Edge `json:"edges,omitempty" xml:"edges,omitempty"`
+	// The deployments.
 	JobInfos []*JobInfo `json:"jobInfos,omitempty" xml:"jobInfos,omitempty" type:"Repeated"`
-	Nodes    []*Node    `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
+	// The nodes.
+	Nodes []*Node `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
 }
 
 func (s LineageInfo) String() string {

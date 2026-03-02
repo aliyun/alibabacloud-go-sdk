@@ -14,6 +14,9 @@ type iUpdateJobConfigParam interface {
 }
 
 type UpdateJobConfigParam struct {
+	// example:
+	//
+	// {"table.exec.parallelism：4"}
 	NewFlinkConf map[string]interface{} `json:"newFlinkConf,omitempty" xml:"newFlinkConf,omitempty"`
 }
 

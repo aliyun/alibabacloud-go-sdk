@@ -14,6 +14,7 @@ type iCreateFolderRequest interface {
 }
 
 type CreateFolderRequest struct {
+	// The structure of data in the folder.
 	Body *Folder `json:"body,omitempty" xml:"body,omitempty"`
 }
 

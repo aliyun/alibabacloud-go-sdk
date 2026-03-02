@@ -16,10 +16,13 @@ type iEngineVersionMetadataIndex interface {
 }
 
 type EngineVersionMetadataIndex struct {
+  // The default engine version that is used for a deployment.
+  // 
   // example:
   // 
   // vvr-6.0.1-flink-1.15
   DefaultEngineVersion *string `json:"defaultEngineVersion,omitempty" xml:"defaultEngineVersion,omitempty"`
+  // The information about all supported engine versions.
   EngineVersionMetadata []*EngineVersionMetadata `json:"engineVersionMetadata,omitempty" xml:"engineVersionMetadata,omitempty" type:"Repeated"`
 }
 

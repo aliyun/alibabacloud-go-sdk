@@ -24,12 +24,38 @@ type iProperty interface {
 }
 
 type Property struct {
-	DefaultValue  *string `json:"defaultValue,omitempty" xml:"defaultValue,omitempty"`
-	DefinesFormat *bool   `json:"definesFormat,omitempty" xml:"definesFormat,omitempty"`
-	Description   *string `json:"description,omitempty" xml:"description,omitempty"`
-	Key           *string `json:"key,omitempty" xml:"key,omitempty"`
-	Required      *bool   `json:"required,omitempty" xml:"required,omitempty"`
-	Sensitive     *bool   `json:"sensitive,omitempty" xml:"sensitive,omitempty"`
+	// The default value of the parameter.
+	//
+	// example:
+	//
+	// userA
+	DefaultValue *string `json:"defaultValue,omitempty" xml:"defaultValue,omitempty"`
+	// Indicates whether the format is defined.
+	//
+	// example:
+	//
+	// flase
+	DefinesFormat *bool `json:"definesFormat,omitempty" xml:"definesFormat,omitempty"`
+	// The description of the parameter.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The name of the parameter key.
+	//
+	// example:
+	//
+	// username
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// Indicates whether the parameter is required.
+	//
+	// example:
+	//
+	// true
+	Required *bool `json:"required,omitempty" xml:"required,omitempty"`
+	// Indiactes whether the data is sensitive.
+	//
+	// example:
+	//
+	// false
+	Sensitive *bool `json:"sensitive,omitempty" xml:"sensitive,omitempty"`
 }
 
 func (s Property) String() string {

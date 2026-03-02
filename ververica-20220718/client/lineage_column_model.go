@@ -32,16 +32,62 @@ type iLineageColumn interface {
 }
 
 type LineageColumn struct {
-	ColumnName       *string `json:"columnName,omitempty" xml:"columnName,omitempty"`
+	// The name of the column.
+	//
+	// example:
+	//
+	// name
+	ColumnName *string `json:"columnName,omitempty" xml:"columnName,omitempty"`
+	// The original type of the column.
+	//
+	// example:
+	//
+	// string
 	ColumnNativeType *string `json:"columnNativeType,omitempty" xml:"columnNativeType,omitempty"`
-	ColumnType       *string `json:"columnType,omitempty" xml:"columnType,omitempty"`
-	CreatedAt        *int64  `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	Creator          *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
-	Id               *string `json:"id,omitempty" xml:"id,omitempty"`
-	ModifiedAt       *int64  `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
-	Modifier         *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	Nullable         *bool   `json:"nullable,omitempty" xml:"nullable,omitempty"`
+	// The column type.
+	//
+	// example:
+	//
+	// string
+	ColumnType *string `json:"columnType,omitempty" xml:"columnType,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 1723537978
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The user that creates the column.
+	//
+	// example:
+	//
+	// userA
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// The description.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The field ID.
+	//
+	// example:
+	//
+	// 123ss3
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The modification time.
+	//
+	// example:
+	//
+	// 1723537978
+	ModifiedAt *int64 `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
+	// The ID of the account that is used to modify the column.
+	//
+	// example:
+	//
+	// userA
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// Indicates whether the value is nullable.
+	//
+	// example:
+	//
+	// false
+	Nullable *bool `json:"nullable,omitempty" xml:"nullable,omitempty"`
 }
 
 func (s LineageColumn) String() string {

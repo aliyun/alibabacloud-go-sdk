@@ -22,8 +22,14 @@ type iHotUpdateJobResult interface {
 }
 
 type HotUpdateJobResult struct {
-	HotUpdateParams       *HotUpdateJobParams   `json:"hotUpdateParams,omitempty" xml:"hotUpdateParams,omitempty"`
-	JobHotUpdateId        *string               `json:"jobHotUpdateId,omitempty" xml:"jobHotUpdateId,omitempty"`
+	HotUpdateParams *HotUpdateJobParams `json:"hotUpdateParams,omitempty" xml:"hotUpdateParams,omitempty"`
+	// example:
+	//
+	// 123hashd****
+	JobHotUpdateId *string `json:"jobHotUpdateId,omitempty" xml:"jobHotUpdateId,omitempty"`
+	// example:
+	//
+	// 5af678c0-7db0-4650-94c2-d2604f0a****
 	JobId                 *string               `json:"jobId,omitempty" xml:"jobId,omitempty"`
 	Status                *HotUpdateJobStatus   `json:"status,omitempty" xml:"status,omitempty"`
 	TargetResourceSetting *BriefResourceSetting `json:"targetResourceSetting,omitempty" xml:"targetResourceSetting,omitempty"`

@@ -16,7 +16,10 @@ type iValidateStatementResult interface {
 }
 
 type ValidateStatementResult struct {
+	// The details of verification errors of the SQL syntax.
 	ErrorDetails *ValidationErrorDetails `json:"errorDetails,omitempty" xml:"errorDetails,omitempty"`
+	// The verification result.
+	//
 	// example:
 	//
 	// "there have some errors""

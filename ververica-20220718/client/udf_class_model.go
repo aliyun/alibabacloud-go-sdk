@@ -20,10 +20,26 @@ type iUdfClass interface {
 }
 
 type UdfClass struct {
-	ClassName       *string   `json:"className,omitempty" xml:"className,omitempty"`
-	ClassType       *string   `json:"classType,omitempty" xml:"classType,omitempty"`
-	FunctionNames   []*string `json:"functionNames,omitempty" xml:"functionNames,omitempty" type:"Repeated"`
-	UdfArtifactName *string   `json:"udfArtifactName,omitempty" xml:"udfArtifactName,omitempty"`
+	// The name of the class.
+	//
+	// example:
+	//
+	// myfunctionTest
+	ClassName *string `json:"className,omitempty" xml:"className,omitempty"`
+	// The type of the class.
+	//
+	// example:
+	//
+	// UDF_TYPE_TABLE_AGGREGATE
+	ClassType *string `json:"classType,omitempty" xml:"classType,omitempty"`
+	// The list of UDF names.
+	FunctionNames []*string `json:"functionNames,omitempty" xml:"functionNames,omitempty" type:"Repeated"`
+	// The name of the UDF JAR file.
+	//
+	// example:
+	//
+	// udfCollection.jar
+	UdfArtifactName *string `json:"udfArtifactName,omitempty" xml:"udfArtifactName,omitempty"`
 }
 
 func (s UdfClass) String() string {

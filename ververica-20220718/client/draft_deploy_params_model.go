@@ -18,8 +18,16 @@ type iDraftDeployParams interface {
 }
 
 type DraftDeployParams struct {
-	DeploymentDraftId *string                `json:"deploymentDraftId,omitempty" xml:"deploymentDraftId,omitempty"`
-	DeploymentTarget  *BriefDeploymentTarget `json:"deploymentTarget,omitempty" xml:"deploymentTarget,omitempty"`
+	// The draft ID.
+	//
+	// example:
+	//
+	// c84d73be-40ad-4627-8bdd-fa1eba51****
+	DeploymentDraftId *string `json:"deploymentDraftId,omitempty" xml:"deploymentDraftId,omitempty"`
+	// The cluster on which the deployment is deployed.
+	DeploymentTarget *BriefDeploymentTarget `json:"deploymentTarget,omitempty" xml:"deploymentTarget,omitempty"`
+	// Specifies whether to skip the syntax check.
+	//
 	// example:
 	//
 	// false

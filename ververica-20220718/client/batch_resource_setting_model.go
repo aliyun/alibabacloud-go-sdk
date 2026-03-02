@@ -16,7 +16,10 @@ type iBatchResourceSetting interface {
 }
 
 type BatchResourceSetting struct {
+	// The resource parameters in basic mode.
 	BasicResourceSetting *BasicResourceSetting `json:"basicResourceSetting,omitempty" xml:"basicResourceSetting,omitempty"`
+	// The maximum number of slots.
+	//
 	// example:
 	//
 	// 10
