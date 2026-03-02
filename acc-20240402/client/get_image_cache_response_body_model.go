@@ -23,6 +23,8 @@ type iGetImageCacheResponseBody interface {
 	GetNetworkConfig() *GetImageCacheResponseBodyNetworkConfig
 	SetPaymentType(v string) *GetImageCacheResponseBody
 	GetPaymentType() *string
+	SetPlatform(v string) *GetImageCacheResponseBody
+	GetPlatform() *string
 	SetReadyTime(v string) *GetImageCacheResponseBody
 	GetReadyTime() *string
 	SetRegionId(v string) *GetImageCacheResponseBody
@@ -59,6 +61,7 @@ type GetImageCacheResponseBody struct {
 	//
 	// PayAsYouGo
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	Platform    *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	// example:
 	//
 	// 2025-**-**T07:58:25Z
@@ -122,6 +125,10 @@ func (s *GetImageCacheResponseBody) GetPaymentType() *string {
 	return s.PaymentType
 }
 
+func (s *GetImageCacheResponseBody) GetPlatform() *string {
+	return s.Platform
+}
+
 func (s *GetImageCacheResponseBody) GetReadyTime() *string {
 	return s.ReadyTime
 }
@@ -182,6 +189,11 @@ func (s *GetImageCacheResponseBody) SetNetworkConfig(v *GetImageCacheResponseBod
 
 func (s *GetImageCacheResponseBody) SetPaymentType(v string) *GetImageCacheResponseBody {
 	s.PaymentType = &v
+	return s
+}
+
+func (s *GetImageCacheResponseBody) SetPlatform(v string) *GetImageCacheResponseBody {
+	s.Platform = &v
 	return s
 }
 

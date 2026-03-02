@@ -9,6 +9,8 @@ type iListImageCachesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetImage(v string) *ListImageCachesRequest
+	GetImage() *string
 	SetImageCacheName(v string) *ListImageCachesRequest
 	GetImageCacheName() *string
 	SetMaxResults(v int32) *ListImageCachesRequest
@@ -26,6 +28,7 @@ type iListImageCachesRequest interface {
 }
 
 type ListImageCachesRequest struct {
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
 	// example:
 	//
 	// my-imc
@@ -63,6 +66,10 @@ func (s ListImageCachesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListImageCachesRequest) GetImage() *string {
+	return s.Image
+}
+
 func (s *ListImageCachesRequest) GetImageCacheName() *string {
 	return s.ImageCacheName
 }
@@ -89,6 +96,11 @@ func (s *ListImageCachesRequest) GetStatus() *string {
 
 func (s *ListImageCachesRequest) GetTags() []*ListImageCachesRequestTags {
 	return s.Tags
+}
+
+func (s *ListImageCachesRequest) SetImage(v string) *ListImageCachesRequest {
+	s.Image = &v
+	return s
 }
 
 func (s *ListImageCachesRequest) SetImageCacheName(v string) *ListImageCachesRequest {

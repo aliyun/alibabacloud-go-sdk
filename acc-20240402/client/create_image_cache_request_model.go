@@ -21,6 +21,8 @@ type iCreateImageCacheRequest interface {
 	GetImages() []*string
 	SetNetworkConfig(v *CreateImageCacheRequestNetworkConfig) *CreateImageCacheRequest
 	GetNetworkConfig() *CreateImageCacheRequestNetworkConfig
+	SetPlatform(v string) *CreateImageCacheRequest
+	GetPlatform() *string
 	SetRegionId(v string) *CreateImageCacheRequest
 	GetRegionId() *string
 	SetResourceGroupId(v string) *CreateImageCacheRequest
@@ -46,6 +48,7 @@ type CreateImageCacheRequest struct {
 	Images []*string `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	// This parameter is required.
 	NetworkConfig *CreateImageCacheRequestNetworkConfig `json:"NetworkConfig,omitempty" xml:"NetworkConfig,omitempty" type:"Struct"`
+	Platform      *string                               `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -91,6 +94,10 @@ func (s *CreateImageCacheRequest) GetNetworkConfig() *CreateImageCacheRequestNet
 	return s.NetworkConfig
 }
 
+func (s *CreateImageCacheRequest) GetPlatform() *string {
+	return s.Platform
+}
+
 func (s *CreateImageCacheRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -130,6 +137,11 @@ func (s *CreateImageCacheRequest) SetImages(v []*string) *CreateImageCacheReques
 
 func (s *CreateImageCacheRequest) SetNetworkConfig(v *CreateImageCacheRequestNetworkConfig) *CreateImageCacheRequest {
 	s.NetworkConfig = v
+	return s
+}
+
+func (s *CreateImageCacheRequest) SetPlatform(v string) *CreateImageCacheRequest {
+	s.Platform = &v
 	return s
 }
 

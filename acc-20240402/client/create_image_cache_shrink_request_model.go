@@ -21,6 +21,8 @@ type iCreateImageCacheShrinkRequest interface {
 	GetImages() []*string
 	SetNetworkConfigShrink(v string) *CreateImageCacheShrinkRequest
 	GetNetworkConfigShrink() *string
+	SetPlatform(v string) *CreateImageCacheShrinkRequest
+	GetPlatform() *string
 	SetRegionId(v string) *CreateImageCacheShrinkRequest
 	GetRegionId() *string
 	SetResourceGroupId(v string) *CreateImageCacheShrinkRequest
@@ -46,6 +48,7 @@ type CreateImageCacheShrinkRequest struct {
 	Images []*string `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	// This parameter is required.
 	NetworkConfigShrink *string `json:"NetworkConfig,omitempty" xml:"NetworkConfig,omitempty"`
+	Platform            *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -91,6 +94,10 @@ func (s *CreateImageCacheShrinkRequest) GetNetworkConfigShrink() *string {
 	return s.NetworkConfigShrink
 }
 
+func (s *CreateImageCacheShrinkRequest) GetPlatform() *string {
+	return s.Platform
+}
+
 func (s *CreateImageCacheShrinkRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -130,6 +137,11 @@ func (s *CreateImageCacheShrinkRequest) SetImages(v []*string) *CreateImageCache
 
 func (s *CreateImageCacheShrinkRequest) SetNetworkConfigShrink(v string) *CreateImageCacheShrinkRequest {
 	s.NetworkConfigShrink = &v
+	return s
+}
+
+func (s *CreateImageCacheShrinkRequest) SetPlatform(v string) *CreateImageCacheShrinkRequest {
+	s.Platform = &v
 	return s
 }
 

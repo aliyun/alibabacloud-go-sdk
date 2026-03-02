@@ -54,6 +54,10 @@ func (client *Client) CreateImageCacheWithContext(ctx context.Context, tmpReq *C
 		query["NetworkConfig"] = request.NetworkConfigShrink
 	}
 
+	if !dara.IsNil(request.Platform) {
+		query["Platform"] = request.Platform
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -206,6 +210,10 @@ func (client *Client) ListImageCachesWithContext(ctx context.Context, request *L
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Image) {
+		query["Image"] = request.Image
+	}
+
 	if !dara.IsNil(request.ImageCacheName) {
 		query["ImageCacheName"] = request.ImageCacheName
 	}

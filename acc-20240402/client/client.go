@@ -141,6 +141,10 @@ func (client *Client) CreateImageCacheWithOptions(tmpReq *CreateImageCacheReques
 		query["NetworkConfig"] = request.NetworkConfigShrink
 	}
 
+	if !dara.IsNil(request.Platform) {
+		query["Platform"] = request.Platform
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -347,6 +351,10 @@ func (client *Client) ListImageCachesWithOptions(request *ListImageCachesRequest
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Image) {
+		query["Image"] = request.Image
+	}
+
 	if !dara.IsNil(request.ImageCacheName) {
 		query["ImageCacheName"] = request.ImageCacheName
 	}
