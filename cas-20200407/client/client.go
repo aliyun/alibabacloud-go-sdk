@@ -1053,7 +1053,7 @@ func (client *Client) DeleteCertificateRequest(request *DeleteCertificateRequest
 
 // Summary:
 //
-// Deletes a certificate signing request (CSR) file.
+// Deletes a Certificate Signing Request (CSR) that is no longer required.
 //
 // @param request - DeleteCsrRequest
 //
@@ -1097,7 +1097,7 @@ func (client *Client) DeleteCsrWithOptions(request *DeleteCsrRequest, runtime *d
 
 // Summary:
 //
-// Deletes a certificate signing request (CSR) file.
+// Deletes a Certificate Signing Request (CSR) that is no longer required.
 //
 // @param request - DeleteCsrRequest
 //
@@ -1865,7 +1865,54 @@ func (client *Client) Encrypt(request *EncryptRequest) (_result *EncryptResponse
 
 // Summary:
 //
-// Queries the quota for certificate repositories.
+// 统计资产数量
+//
+// @param request - GetAssetCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAssetCountResponse
+func (client *Client) GetAssetCountWithOptions(runtime *dara.RuntimeOptions) (_result *GetAssetCountResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAssetCount"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAssetCountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 统计资产数量
+//
+// @return GetAssetCountResponse
+func (client *Client) GetAssetCount() (_result *GetAssetCountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAssetCountResponse{}
+	_body, _err := client.GetAssetCountWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the API call quota for certificate application repositories. When you call API operations for signature generation, signature verification, data encryption, and data decryption, your API call quota for certificate application repositories is consumed. If your API call quota is exhausted, you can no longer call specific certificate application repository-related operations. You can call this operation to query the API call quota for certificate application repositories.
 //
 // Description:
 //
@@ -1900,7 +1947,7 @@ func (client *Client) GetCertWarehouseQuotaWithOptions(runtime *dara.RuntimeOpti
 
 // Summary:
 //
-// Queries the quota for certificate repositories.
+// Queries the API call quota for certificate application repositories. When you call API operations for signature generation, signature verification, data encryption, and data decryption, your API call quota for certificate application repositories is consumed. If your API call quota is exhausted, you can no longer call specific certificate application repository-related operations. You can call this operation to query the API call quota for certificate application repositories.
 //
 // Description:
 //
@@ -2168,6 +2215,53 @@ func (client *Client) GetInstanceSummary(request *GetInstanceSummaryRequest) (_r
 
 // Summary:
 //
+// 统计风险资产数量
+//
+// @param request - GetRiskCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRiskCountResponse
+func (client *Client) GetRiskCountWithOptions(runtime *dara.RuntimeOptions) (_result *GetRiskCountResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRiskCount"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRiskCountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 统计风险资产数量
+//
+// @return GetRiskCountResponse
+func (client *Client) GetRiskCount() (_result *GetRiskCountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetRiskCountResponse{}
+	_body, _err := client.GetRiskCountWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询异步任务状态
 //
 // @param request - GetTaskAttributeRequest
@@ -2234,7 +2328,7 @@ func (client *Client) GetTaskAttribute(request *GetTaskAttributeRequest) (_resul
 
 // Summary:
 //
-// Queries the details of a certificate.
+// Queries certificate details, including the basic information and public and private key content. You can call this operation to download the certificate and private key.
 //
 // Description:
 //
@@ -2286,7 +2380,7 @@ func (client *Client) GetUserCertificateDetailWithOptions(request *GetUserCertif
 
 // Summary:
 //
-// Queries the details of a certificate.
+// Queries certificate details, including the basic information and public and private key content. You can call this operation to download the certificate and private key.
 //
 // Description:
 //
@@ -2299,6 +2393,80 @@ func (client *Client) GetUserCertificateDetail(request *GetUserCertificateDetail
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetUserCertificateDetailResponse{}
 	_body, _err := client.GetUserCertificateDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询云产品资源统计列表
+//
+// @param request - ListAssetCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAssetCountResponse
+func (client *Client) ListAssetCountWithOptions(request *ListAssetCountRequest, runtime *dara.RuntimeOptions) (_result *ListAssetCountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.ShowSize) {
+		query["ShowSize"] = request.ShowSize
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAssetCount"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAssetCountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询云产品资源统计列表
+//
+// @param request - ListAssetCountRequest
+//
+// @return ListAssetCountResponse
+func (client *Client) ListAssetCount(request *ListAssetCountRequest) (_result *ListAssetCountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAssetCountResponse{}
+	_body, _err := client.ListAssetCountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2818,7 +2986,7 @@ func (client *Client) ListContact(request *ListContactRequest) (_result *ListCon
 
 // Summary:
 //
-// Queries certificate signing requests (CSRs).
+// Queries the details of Certificate Signing Requests (CSRs).
 //
 // @param request - ListCsrRequest
 //
@@ -2874,7 +3042,7 @@ func (client *Client) ListCsrWithOptions(request *ListCsrRequest, runtime *dara.
 
 // Summary:
 //
-// Queries certificate signing requests (CSRs).
+// Queries the details of Certificate Signing Requests (CSRs).
 //
 // @param request - ListCsrRequest
 //
@@ -3738,7 +3906,7 @@ func (client *Client) Sign(request *SignRequest) (_result *SignResponse, _err er
 
 // Summary:
 //
-// Updates the private key of a certificate signing request (CSR).
+// Uploads or updates the private key for a Certificate Signing Request (CSR). If you did not upload the required priviate when you uploaded a CSR, you can call this operation to upload or update the private key.
 //
 // @param request - UpdateCsrRequest
 //
@@ -3786,7 +3954,7 @@ func (client *Client) UpdateCsrWithOptions(request *UpdateCsrRequest, runtime *d
 
 // Summary:
 //
-// Updates the private key of a certificate signing request (CSR).
+// Uploads or updates the private key for a Certificate Signing Request (CSR). If you did not upload the required priviate when you uploaded a CSR, you can call this operation to upload or update the private key.
 //
 // @param request - UpdateCsrRequest
 //
@@ -4140,7 +4308,7 @@ func (client *Client) UpdateWorkerResourceStatus(request *UpdateWorkerResourceSt
 
 // Summary:
 //
-// # Uploads a certificate signing request (CSR) file
+// Uploads an existing Certificate Signing Request (CSR). You can use the CSR when you upload a certificate. You can also manage the uploaded CSRs in a centralized manner.
 //
 // @param request - UploadCsrRequest
 //
@@ -4192,7 +4360,7 @@ func (client *Client) UploadCsrWithOptions(request *UploadCsrRequest, runtime *d
 
 // Summary:
 //
-// # Uploads a certificate signing request (CSR) file
+// Uploads an existing Certificate Signing Request (CSR). You can use the CSR when you upload a certificate. You can also manage the uploaded CSRs in a centralized manner.
 //
 // @param request - UploadCsrRequest
 //

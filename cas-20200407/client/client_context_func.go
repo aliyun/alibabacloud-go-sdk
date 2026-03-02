@@ -701,7 +701,7 @@ func (client *Client) DeleteCertificateRequestWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Deletes a certificate signing request (CSR) file.
+// Deletes a Certificate Signing Request (CSR) that is no longer required.
 //
 // @param request - DeleteCsrRequest
 //
@@ -1499,7 +1499,7 @@ func (client *Client) GetTaskAttributeWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the details of a certificate.
+// Queries certificate details, including the basic information and public and private key content. You can call this operation to download the certificate and private key.
 //
 // Description:
 //
@@ -1541,6 +1541,62 @@ func (client *Client) GetUserCertificateDetailWithContext(ctx context.Context, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetUserCertificateDetailResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询云产品资源统计列表
+//
+// @param request - ListAssetCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAssetCountResponse
+func (client *Client) ListAssetCountWithContext(ctx context.Context, request *ListAssetCountRequest, runtime *dara.RuntimeOptions) (_result *ListAssetCountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.ShowSize) {
+		query["ShowSize"] = request.ShowSize
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAssetCount"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAssetCountResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1941,7 +1997,7 @@ func (client *Client) ListContactWithContext(ctx context.Context, request *ListC
 
 // Summary:
 //
-// Queries certificate signing requests (CSRs).
+// Queries the details of Certificate Signing Requests (CSRs).
 //
 // @param request - ListCsrRequest
 //
@@ -2623,7 +2679,7 @@ func (client *Client) SignWithContext(ctx context.Context, request *SignRequest,
 
 // Summary:
 //
-// Updates the private key of a certificate signing request (CSR).
+// Uploads or updates the private key for a Certificate Signing Request (CSR). If you did not upload the required priviate when you uploaded a CSR, you can call this operation to upload or update the private key.
 //
 // @param request - UpdateCsrRequest
 //
@@ -2935,7 +2991,7 @@ func (client *Client) UpdateWorkerResourceStatusWithContext(ctx context.Context,
 
 // Summary:
 //
-// # Uploads a certificate signing request (CSR) file
+// Uploads an existing Certificate Signing Request (CSR). You can use the CSR when you upload a certificate. You can also manage the uploaded CSRs in a centralized manner.
 //
 // @param request - UploadCsrRequest
 //
