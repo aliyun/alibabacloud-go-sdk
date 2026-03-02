@@ -4,6 +4,12 @@
 - Support API ListAssetCount.
 
 
+2026-03-02 Version: v4.2.0
+- Support API GetAssetCount.
+- Support API GetRiskCount.
+- Support API ListAssetCount.
+
+
 2026-01-31 Version: v4.1.0
 - Support API ApplyCertificate.
 - Support API CancelPendingCertificate.
