@@ -38,8 +38,6 @@ type CreateCommandShrinkRequest struct {
 	//
 	// 659864545
 	DomainCode *string `json:"DomainCode,omitempty" xml:"DomainCode,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// shopping_t

@@ -242,7 +242,25 @@ func (s *DescribeCommandResponseBody) SetToolParams(v []*DescribeCommandResponse
 }
 
 func (s *DescribeCommandResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ToolExamples != nil {
+		for _, item := range s.ToolExamples {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ToolParams != nil {
+		for _, item := range s.ToolParams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCommandResponseBodyToolExamples struct {

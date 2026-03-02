@@ -95,7 +95,16 @@ func (s *ListCommandResponseBody) SetTotalCount(v int32) *ListCommandResponseBod
 }
 
 func (s *ListCommandResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ToolInfoList != nil {
+		for _, item := range s.ToolInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCommandResponseBodyToolInfoList struct {
@@ -286,7 +295,25 @@ func (s *ListCommandResponseBodyToolInfoList) SetToolParams(v []*ListCommandResp
 }
 
 func (s *ListCommandResponseBodyToolInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.ToolExamples != nil {
+		for _, item := range s.ToolExamples {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ToolParams != nil {
+		for _, item := range s.ToolParams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCommandResponseBodyToolInfoListToolExamples struct {

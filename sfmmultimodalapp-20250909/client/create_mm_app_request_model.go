@@ -106,7 +106,22 @@ func (s *CreateMmAppRequest) SetWorkspaceId(v string) *CreateMmAppRequest {
 }
 
 func (s *CreateMmAppRequest) Validate() error {
-	return dara.Validate(s)
+	if s.BindingConfig != nil {
+		if err := s.BindingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ConversationConfig != nil {
+		if err := s.ConversationConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ModelConfig != nil {
+		if err := s.ModelConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateMmAppRequestBindingConfig struct {
@@ -131,7 +146,16 @@ func (s *CreateMmAppRequestBindingConfig) SetCommands(v []*CreateMmAppRequestBin
 }
 
 func (s *CreateMmAppRequestBindingConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Commands != nil {
+		for _, item := range s.Commands {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateMmAppRequestBindingConfigCommands struct {
@@ -186,7 +210,16 @@ func (s *CreateMmAppRequestBindingConfigCommands) SetType(v string) *CreateMmApp
 }
 
 func (s *CreateMmAppRequestBindingConfigCommands) Validate() error {
-	return dara.Validate(s)
+	if s.Tools != nil {
+		for _, item := range s.Tools {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateMmAppRequestBindingConfigCommandsTools struct {

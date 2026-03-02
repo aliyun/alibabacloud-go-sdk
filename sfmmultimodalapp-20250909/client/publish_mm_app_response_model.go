@@ -59,5 +59,10 @@ func (s *PublishMmAppResponse) SetBody(v *PublishMmAppResponseBody) *PublishMmAp
 }
 
 func (s *PublishMmAppResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

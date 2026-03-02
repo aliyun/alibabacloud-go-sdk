@@ -38,8 +38,6 @@ type CreateCommandRequest struct {
 	//
 	// 659864545
 	DomainCode *string `json:"DomainCode,omitempty" xml:"DomainCode,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// shopping_t
@@ -145,7 +143,25 @@ func (s *CreateCommandRequest) SetWorkspaceId(v string) *CreateCommandRequest {
 }
 
 func (s *CreateCommandRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ToolExamples != nil {
+		for _, item := range s.ToolExamples {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ToolParams != nil {
+		for _, item := range s.ToolParams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateCommandRequestToolExamples struct {

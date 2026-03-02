@@ -227,7 +227,17 @@ func (s *DescribeMmAppResponseBody) SetStatus(v string) *DescribeMmAppResponseBo
 }
 
 func (s *DescribeMmAppResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ConversationConfig != nil {
+		if err := s.ConversationConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ModelConfig != nil {
+		if err := s.ModelConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMmAppResponseBodyConversationConfig struct {

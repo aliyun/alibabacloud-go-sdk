@@ -123,7 +123,22 @@ func (s *UpdateMmAppRequest) SetWorkspaceId(v string) *UpdateMmAppRequest {
 }
 
 func (s *UpdateMmAppRequest) Validate() error {
-	return dara.Validate(s)
+	if s.BindingConfig != nil {
+		if err := s.BindingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ConversationConfig != nil {
+		if err := s.ConversationConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ModelConfig != nil {
+		if err := s.ModelConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateMmAppRequestBindingConfig struct {
@@ -148,7 +163,16 @@ func (s *UpdateMmAppRequestBindingConfig) SetCommands(v []*UpdateMmAppRequestBin
 }
 
 func (s *UpdateMmAppRequestBindingConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Commands != nil {
+		for _, item := range s.Commands {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateMmAppRequestBindingConfigCommands struct {
@@ -203,7 +227,16 @@ func (s *UpdateMmAppRequestBindingConfigCommands) SetType(v string) *UpdateMmApp
 }
 
 func (s *UpdateMmAppRequestBindingConfigCommands) Validate() error {
-	return dara.Validate(s)
+	if s.Tools != nil {
+		for _, item := range s.Tools {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateMmAppRequestBindingConfigCommandsTools struct {

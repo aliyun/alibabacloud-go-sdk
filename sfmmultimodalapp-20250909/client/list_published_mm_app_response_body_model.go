@@ -95,7 +95,16 @@ func (s *ListPublishedMmAppResponseBody) SetTotalCount(v int32) *ListPublishedMm
 }
 
 func (s *ListPublishedMmAppResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PublishedVersionInfoList != nil {
+		for _, item := range s.PublishedVersionInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPublishedMmAppResponseBodyPublishedVersionInfoList struct {

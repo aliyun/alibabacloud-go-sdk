@@ -95,7 +95,16 @@ func (s *ListMmAppResponseBody) SetTotalCount(v int32) *ListMmAppResponseBody {
 }
 
 func (s *ListMmAppResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AppInfoList != nil {
+		for _, item := range s.AppInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMmAppResponseBodyAppInfoList struct {
@@ -273,7 +282,17 @@ func (s *ListMmAppResponseBodyAppInfoList) SetStatus(v int32) *ListMmAppResponse
 }
 
 func (s *ListMmAppResponseBodyAppInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.ConversationConfig != nil {
+		if err := s.ConversationConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ModelConfig != nil {
+		if err := s.ModelConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMmAppResponseBodyAppInfoListConversationConfig struct {
