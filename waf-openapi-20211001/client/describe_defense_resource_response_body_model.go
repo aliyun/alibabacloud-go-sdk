@@ -125,7 +125,8 @@ type DescribeDefenseResourceResponseBodyResource struct {
 	// example:
 	//
 	// 1691720010000
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The user ID (UID) of the Alibaba Cloud account to which the protected object belongs.
 	//
 	// example:
@@ -226,6 +227,10 @@ func (s *DescribeDefenseResourceResponseBodyResource) GetGmtModified() *int64 {
 	return s.GmtModified
 }
 
+func (s *DescribeDefenseResourceResponseBodyResource) GetInstanceId() *string {
+	return s.InstanceId
+}
+
 func (s *DescribeDefenseResourceResponseBodyResource) GetOwnerUserId() *string {
 	return s.OwnerUserId
 }
@@ -299,6 +304,11 @@ func (s *DescribeDefenseResourceResponseBodyResource) SetGmtCreate(v int64) *Des
 
 func (s *DescribeDefenseResourceResponseBodyResource) SetGmtModified(v int64) *DescribeDefenseResourceResponseBodyResource {
 	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeDefenseResourceResponseBodyResource) SetInstanceId(v string) *DescribeDefenseResourceResponseBodyResource {
+	s.InstanceId = &v
 	return s
 }
 

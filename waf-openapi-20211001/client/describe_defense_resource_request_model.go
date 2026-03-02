@@ -24,8 +24,6 @@ type DescribeDefenseResourceRequest struct {
 	//
 	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// waf_v3prepaid_public_cn-4xl****i60i

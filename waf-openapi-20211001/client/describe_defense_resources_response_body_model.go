@@ -134,7 +134,8 @@ type DescribeDefenseResourcesResponseBodyResources struct {
 	// example:
 	//
 	// 1665633032000
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The Alibaba Cloud account to which the protected object belongs. You can specify this parameter to query protected objects that belong to a specific Alibaba Cloud account. Exact match is supported.
 	//
 	// example:
@@ -227,6 +228,10 @@ func (s *DescribeDefenseResourcesResponseBodyResources) GetGmtModified() *int64 
 	return s.GmtModified
 }
 
+func (s *DescribeDefenseResourcesResponseBodyResources) GetInstanceId() *string {
+	return s.InstanceId
+}
+
 func (s *DescribeDefenseResourcesResponseBodyResources) GetOwnerUserId() *string {
 	return s.OwnerUserId
 }
@@ -300,6 +305,11 @@ func (s *DescribeDefenseResourcesResponseBodyResources) SetGmtCreate(v int64) *D
 
 func (s *DescribeDefenseResourcesResponseBodyResources) SetGmtModified(v int64) *DescribeDefenseResourcesResponseBodyResources {
 	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeDefenseResourcesResponseBodyResources) SetInstanceId(v string) *DescribeDefenseResourcesResponseBodyResources {
+	s.InstanceId = &v
 	return s
 }
 
