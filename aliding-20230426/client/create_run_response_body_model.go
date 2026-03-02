@@ -15,6 +15,8 @@ type iCreateRunResponseBody interface {
 	GetRequestId() *string
 	SetRun(v *CreateRunResponseBodyRun) *CreateRunResponseBody
 	GetRun() *CreateRunResponseBodyRun
+	SetThread(v *CreateRunResponseBodyThread) *CreateRunResponseBody
+	GetThread() *CreateRunResponseBodyThread
 }
 
 type CreateRunResponseBody struct {
@@ -22,8 +24,9 @@ type CreateRunResponseBody struct {
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
-	RequestId *string                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Run       *CreateRunResponseBodyRun `json:"run,omitempty" xml:"run,omitempty" type:"Struct"`
+	RequestId *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Run       *CreateRunResponseBodyRun    `json:"run,omitempty" xml:"run,omitempty" type:"Struct"`
+	Thread    *CreateRunResponseBodyThread `json:"thread,omitempty" xml:"thread,omitempty" type:"Struct"`
 }
 
 func (s CreateRunResponseBody) String() string {
@@ -46,6 +49,10 @@ func (s *CreateRunResponseBody) GetRun() *CreateRunResponseBodyRun {
 	return s.Run
 }
 
+func (s *CreateRunResponseBody) GetThread() *CreateRunResponseBodyThread {
+	return s.Thread
+}
+
 func (s *CreateRunResponseBody) SetMessages(v []*CreateRunResponseBodyMessages) *CreateRunResponseBody {
 	s.Messages = v
 	return s
@@ -61,6 +68,11 @@ func (s *CreateRunResponseBody) SetRun(v *CreateRunResponseBodyRun) *CreateRunRe
 	return s
 }
 
+func (s *CreateRunResponseBody) SetThread(v *CreateRunResponseBodyThread) *CreateRunResponseBody {
+	s.Thread = v
+	return s
+}
+
 func (s *CreateRunResponseBody) Validate() error {
 	if s.Messages != nil {
 		for _, item := range s.Messages {
@@ -73,6 +85,11 @@ func (s *CreateRunResponseBody) Validate() error {
 	}
 	if s.Run != nil {
 		if err := s.Run.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Thread != nil {
+		if err := s.Thread.Validate(); err != nil {
 			return err
 		}
 	}
@@ -1877,5 +1894,50 @@ func (s *CreateRunResponseBodyRun) SetThreadId(v string) *CreateRunResponseBodyR
 }
 
 func (s *CreateRunResponseBodyRun) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateRunResponseBodyThread struct {
+	CreateAt *int64  `json:"createAt,omitempty" xml:"createAt,omitempty"`
+	Id       *string `json:"id,omitempty" xml:"id,omitempty"`
+	Status   *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s CreateRunResponseBodyThread) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateRunResponseBodyThread) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyThread) GetCreateAt() *int64 {
+	return s.CreateAt
+}
+
+func (s *CreateRunResponseBodyThread) GetId() *string {
+	return s.Id
+}
+
+func (s *CreateRunResponseBodyThread) GetStatus() *string {
+	return s.Status
+}
+
+func (s *CreateRunResponseBodyThread) SetCreateAt(v int64) *CreateRunResponseBodyThread {
+	s.CreateAt = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyThread) SetId(v string) *CreateRunResponseBodyThread {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyThread) SetStatus(v string) *CreateRunResponseBodyThread {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyThread) Validate() error {
 	return dara.Validate(s)
 }

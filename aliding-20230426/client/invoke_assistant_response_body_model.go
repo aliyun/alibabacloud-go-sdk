@@ -15,6 +15,8 @@ type iInvokeAssistantResponseBody interface {
 	GetRequestId() *string
 	SetSessionId(v string) *InvokeAssistantResponseBody
 	GetSessionId() *string
+	SetSessionStatus(v string) *InvokeAssistantResponseBody
+	GetSessionStatus() *string
 	SetStreamEnd(v bool) *InvokeAssistantResponseBody
 	GetStreamEnd() *bool
 }
@@ -29,6 +31,10 @@ type InvokeAssistantResponseBody struct {
 	//
 	// sessionId1
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// done
+	SessionStatus *string `json:"sessionStatus,omitempty" xml:"sessionStatus,omitempty"`
 	// example:
 	//
 	// true
@@ -55,6 +61,10 @@ func (s *InvokeAssistantResponseBody) GetSessionId() *string {
 	return s.SessionId
 }
 
+func (s *InvokeAssistantResponseBody) GetSessionStatus() *string {
+	return s.SessionStatus
+}
+
 func (s *InvokeAssistantResponseBody) GetStreamEnd() *bool {
 	return s.StreamEnd
 }
@@ -71,6 +81,11 @@ func (s *InvokeAssistantResponseBody) SetRequestId(v string) *InvokeAssistantRes
 
 func (s *InvokeAssistantResponseBody) SetSessionId(v string) *InvokeAssistantResponseBody {
 	s.SessionId = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBody) SetSessionStatus(v string) *InvokeAssistantResponseBody {
+	s.SessionStatus = &v
 	return s
 }
 
