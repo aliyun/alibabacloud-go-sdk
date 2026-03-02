@@ -196,48 +196,57 @@ func (s *InstancePreivewResponseBodyDataInstances) Validate() error {
 }
 
 type InstancePreivewResponseBodyDataInstancesInstancesVO struct {
-	AutoRenew                 *bool                                                    `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	CeaseStatus               *bool                                                    `json:"CeaseStatus,omitempty" xml:"CeaseStatus,omitempty"`
-	ClassicEndpoint           *string                                                  `json:"ClassicEndpoint,omitempty" xml:"ClassicEndpoint,omitempty"`
-	EnableDlqTtl              *bool                                                    `json:"EnableDlqTtl,omitempty" xml:"EnableDlqTtl,omitempty"`
-	Encrypted                 *bool                                                    `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	Expire                    *int64                                                   `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	InstanceId                *string                                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName              *string                                                  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceType              *string                                                  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InvisibleTime             *int32                                                   `json:"InvisibleTime,omitempty" xml:"InvisibleTime,omitempty"`
-	KmsKeyId                  *string                                                  `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
-	MaxBindingCount           *int32                                                   `json:"MaxBindingCount,omitempty" xml:"MaxBindingCount,omitempty"`
-	MaxConnectionChannelCount *int32                                                   `json:"MaxConnectionChannelCount,omitempty" xml:"MaxConnectionChannelCount,omitempty"`
-	MaxConnectionCount        *int32                                                   `json:"MaxConnectionCount,omitempty" xml:"MaxConnectionCount,omitempty"`
-	MaxConsumeRetryTime       *int32                                                   `json:"MaxConsumeRetryTime,omitempty" xml:"MaxConsumeRetryTime,omitempty"`
-	MaxEIPTPS                 *int32                                                   `json:"MaxEIPTPS,omitempty" xml:"MaxEIPTPS,omitempty"`
-	MaxExchangeCount          *int32                                                   `json:"MaxExchangeCount,omitempty" xml:"MaxExchangeCount,omitempty"`
-	MaxMsgBodyByte            *int32                                                   `json:"MaxMsgBodyByte,omitempty" xml:"MaxMsgBodyByte,omitempty"`
-	MaxMsgDelayHour           *int32                                                   `json:"MaxMsgDelayHour,omitempty" xml:"MaxMsgDelayHour,omitempty"`
-	MaxMsgTraceTime           *int32                                                   `json:"MaxMsgTraceTime,omitempty" xml:"MaxMsgTraceTime,omitempty"`
-	MaxQueue                  *int32                                                   `json:"MaxQueue,omitempty" xml:"MaxQueue,omitempty"`
-	MaxQueueConsumerCount     *int32                                                   `json:"MaxQueueConsumerCount,omitempty" xml:"MaxQueueConsumerCount,omitempty"`
-	MaxRetryInterval          *int32                                                   `json:"MaxRetryInterval,omitempty" xml:"MaxRetryInterval,omitempty"`
-	MaxRetryTimes             *int32                                                   `json:"MaxRetryTimes,omitempty" xml:"MaxRetryTimes,omitempty"`
-	MaxTPS                    *int32                                                   `json:"MaxTPS,omitempty" xml:"MaxTPS,omitempty"`
-	MaxVhost                  *int32                                                   `json:"MaxVhost,omitempty" xml:"MaxVhost,omitempty"`
-	OrderCreate               *int64                                                   `json:"OrderCreate,omitempty" xml:"OrderCreate,omitempty"`
-	OrderType                 *string                                                  `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	PrivateEndpoint           *string                                                  `json:"PrivateEndpoint,omitempty" xml:"PrivateEndpoint,omitempty"`
-	PublicEndpoint            *string                                                  `json:"PublicEndpoint,omitempty" xml:"PublicEndpoint,omitempty"`
-	ResourceGroupId           *string                                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServerlessRate            *float64                                                 `json:"ServerlessRate,omitempty" xml:"ServerlessRate,omitempty"`
-	ServerlessSwitch          *bool                                                    `json:"ServerlessSwitch,omitempty" xml:"ServerlessSwitch,omitempty"`
-	Status                    *string                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
-	StorageSize               *int32                                                   `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	SupportEIP                *bool                                                    `json:"SupportEIP,omitempty" xml:"SupportEIP,omitempty"`
-	SupportMsgTrace           *bool                                                    `json:"SupportMsgTrace,omitempty" xml:"SupportMsgTrace,omitempty"`
-	SupportOpenSourceAuth     *bool                                                    `json:"SupportOpenSourceAuth,omitempty" xml:"SupportOpenSourceAuth,omitempty"`
-	Tags                      *InstancePreivewResponseBodyDataInstancesInstancesVOTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	UsedQueue                 *int32                                                   `json:"UsedQueue,omitempty" xml:"UsedQueue,omitempty"`
-	UsedVhost                 *int32                                                   `json:"UsedVhost,omitempty" xml:"UsedVhost,omitempty"`
-	Version                   *int32                                                   `json:"Version,omitempty" xml:"Version,omitempty"`
+	AutoRenew       *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	CeaseStatus     *bool   `json:"CeaseStatus,omitempty" xml:"CeaseStatus,omitempty"`
+	ClassicEndpoint *string `json:"ClassicEndpoint,omitempty" xml:"ClassicEndpoint,omitempty"`
+	EnableDlqTtl    *bool   `json:"EnableDlqTtl,omitempty" xml:"EnableDlqTtl,omitempty"`
+	Encrypted       *bool   `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	Expire          *int64  `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InvisibleTime   *int32  `json:"InvisibleTime,omitempty" xml:"InvisibleTime,omitempty"`
+	KmsKeyId        *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// example:
+	//
+	// tcp_and_ssl
+	ListenerMode              *string `json:"ListenerMode,omitempty" xml:"ListenerMode,omitempty"`
+	MaxBindingCount           *int32  `json:"MaxBindingCount,omitempty" xml:"MaxBindingCount,omitempty"`
+	MaxConnectionChannelCount *int32  `json:"MaxConnectionChannelCount,omitempty" xml:"MaxConnectionChannelCount,omitempty"`
+	MaxConnectionCount        *int32  `json:"MaxConnectionCount,omitempty" xml:"MaxConnectionCount,omitempty"`
+	MaxConsumeRetryTime       *int32  `json:"MaxConsumeRetryTime,omitempty" xml:"MaxConsumeRetryTime,omitempty"`
+	MaxEIPTPS                 *int32  `json:"MaxEIPTPS,omitempty" xml:"MaxEIPTPS,omitempty"`
+	MaxExchangeCount          *int32  `json:"MaxExchangeCount,omitempty" xml:"MaxExchangeCount,omitempty"`
+	MaxMsgBodyByte            *int32  `json:"MaxMsgBodyByte,omitempty" xml:"MaxMsgBodyByte,omitempty"`
+	MaxMsgDelayHour           *int32  `json:"MaxMsgDelayHour,omitempty" xml:"MaxMsgDelayHour,omitempty"`
+	MaxMsgTraceTime           *int32  `json:"MaxMsgTraceTime,omitempty" xml:"MaxMsgTraceTime,omitempty"`
+	MaxQueue                  *int32  `json:"MaxQueue,omitempty" xml:"MaxQueue,omitempty"`
+	MaxQueueConsumerCount     *int32  `json:"MaxQueueConsumerCount,omitempty" xml:"MaxQueueConsumerCount,omitempty"`
+	MaxRetryInterval          *int32  `json:"MaxRetryInterval,omitempty" xml:"MaxRetryInterval,omitempty"`
+	MaxRetryTimes             *int32  `json:"MaxRetryTimes,omitempty" xml:"MaxRetryTimes,omitempty"`
+	MaxTPS                    *int32  `json:"MaxTPS,omitempty" xml:"MaxTPS,omitempty"`
+	MaxVhost                  *int32  `json:"MaxVhost,omitempty" xml:"MaxVhost,omitempty"`
+	OrderCreate               *int64  `json:"OrderCreate,omitempty" xml:"OrderCreate,omitempty"`
+	OrderType                 *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	PrivateEndpoint           *string `json:"PrivateEndpoint,omitempty" xml:"PrivateEndpoint,omitempty"`
+	// example:
+	//
+	// pvl
+	PrivateEndpointType   *string                                                       `json:"PrivateEndpointType,omitempty" xml:"PrivateEndpointType,omitempty"`
+	PublicEndpoint        *string                                                       `json:"PublicEndpoint,omitempty" xml:"PublicEndpoint,omitempty"`
+	PvlParams             *InstancePreivewResponseBodyDataInstancesInstancesVOPvlParams `json:"PvlParams,omitempty" xml:"PvlParams,omitempty" type:"Struct"`
+	ResourceGroupId       *string                                                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServerlessRate        *float64                                                      `json:"ServerlessRate,omitempty" xml:"ServerlessRate,omitempty"`
+	ServerlessSwitch      *bool                                                         `json:"ServerlessSwitch,omitempty" xml:"ServerlessSwitch,omitempty"`
+	Status                *string                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageSize           *int32                                                        `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	SupportEIP            *bool                                                         `json:"SupportEIP,omitempty" xml:"SupportEIP,omitempty"`
+	SupportMsgTrace       *bool                                                         `json:"SupportMsgTrace,omitempty" xml:"SupportMsgTrace,omitempty"`
+	SupportOpenSourceAuth *bool                                                         `json:"SupportOpenSourceAuth,omitempty" xml:"SupportOpenSourceAuth,omitempty"`
+	Tags                  *InstancePreivewResponseBodyDataInstancesInstancesVOTags      `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	UsedQueue             *int32                                                        `json:"UsedQueue,omitempty" xml:"UsedQueue,omitempty"`
+	UsedVhost             *int32                                                        `json:"UsedVhost,omitempty" xml:"UsedVhost,omitempty"`
+	Version               *int32                                                        `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s InstancePreivewResponseBodyDataInstancesInstancesVO) String() string {
@@ -290,6 +299,10 @@ func (s *InstancePreivewResponseBodyDataInstancesInstancesVO) GetInvisibleTime()
 
 func (s *InstancePreivewResponseBodyDataInstancesInstancesVO) GetKmsKeyId() *string {
 	return s.KmsKeyId
+}
+
+func (s *InstancePreivewResponseBodyDataInstancesInstancesVO) GetListenerMode() *string {
+	return s.ListenerMode
 }
 
 func (s *InstancePreivewResponseBodyDataInstancesInstancesVO) GetMaxBindingCount() *int32 {
@@ -364,8 +377,16 @@ func (s *InstancePreivewResponseBodyDataInstancesInstancesVO) GetPrivateEndpoint
 	return s.PrivateEndpoint
 }
 
+func (s *InstancePreivewResponseBodyDataInstancesInstancesVO) GetPrivateEndpointType() *string {
+	return s.PrivateEndpointType
+}
+
 func (s *InstancePreivewResponseBodyDataInstancesInstancesVO) GetPublicEndpoint() *string {
 	return s.PublicEndpoint
+}
+
+func (s *InstancePreivewResponseBodyDataInstancesInstancesVO) GetPvlParams() *InstancePreivewResponseBodyDataInstancesInstancesVOPvlParams {
+	return s.PvlParams
 }
 
 func (s *InstancePreivewResponseBodyDataInstancesInstancesVO) GetResourceGroupId() *string {
@@ -471,6 +492,11 @@ func (s *InstancePreivewResponseBodyDataInstancesInstancesVO) SetKmsKeyId(v stri
 	return s
 }
 
+func (s *InstancePreivewResponseBodyDataInstancesInstancesVO) SetListenerMode(v string) *InstancePreivewResponseBodyDataInstancesInstancesVO {
+	s.ListenerMode = &v
+	return s
+}
+
 func (s *InstancePreivewResponseBodyDataInstancesInstancesVO) SetMaxBindingCount(v int32) *InstancePreivewResponseBodyDataInstancesInstancesVO {
 	s.MaxBindingCount = &v
 	return s
@@ -561,8 +587,18 @@ func (s *InstancePreivewResponseBodyDataInstancesInstancesVO) SetPrivateEndpoint
 	return s
 }
 
+func (s *InstancePreivewResponseBodyDataInstancesInstancesVO) SetPrivateEndpointType(v string) *InstancePreivewResponseBodyDataInstancesInstancesVO {
+	s.PrivateEndpointType = &v
+	return s
+}
+
 func (s *InstancePreivewResponseBodyDataInstancesInstancesVO) SetPublicEndpoint(v string) *InstancePreivewResponseBodyDataInstancesInstancesVO {
 	s.PublicEndpoint = &v
+	return s
+}
+
+func (s *InstancePreivewResponseBodyDataInstancesInstancesVO) SetPvlParams(v *InstancePreivewResponseBodyDataInstancesInstancesVOPvlParams) *InstancePreivewResponseBodyDataInstancesInstancesVO {
+	s.PvlParams = v
 	return s
 }
 
@@ -627,12 +663,92 @@ func (s *InstancePreivewResponseBodyDataInstancesInstancesVO) SetVersion(v int32
 }
 
 func (s *InstancePreivewResponseBodyDataInstancesInstancesVO) Validate() error {
+	if s.PvlParams != nil {
+		if err := s.PvlParams.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Tags != nil {
 		if err := s.Tags.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type InstancePreivewResponseBodyDataInstancesInstancesVOPvlParams struct {
+	PvlVO []*InstancePreivewResponseBodyDataInstancesInstancesVOPvlParamsPvlVO `json:"PvlVO,omitempty" xml:"PvlVO,omitempty" type:"Repeated"`
+}
+
+func (s InstancePreivewResponseBodyDataInstancesInstancesVOPvlParams) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InstancePreivewResponseBodyDataInstancesInstancesVOPvlParams) GoString() string {
+	return s.String()
+}
+
+func (s *InstancePreivewResponseBodyDataInstancesInstancesVOPvlParams) GetPvlVO() []*InstancePreivewResponseBodyDataInstancesInstancesVOPvlParamsPvlVO {
+	return s.PvlVO
+}
+
+func (s *InstancePreivewResponseBodyDataInstancesInstancesVOPvlParams) SetPvlVO(v []*InstancePreivewResponseBodyDataInstancesInstancesVOPvlParamsPvlVO) *InstancePreivewResponseBodyDataInstancesInstancesVOPvlParams {
+	s.PvlVO = v
+	return s
+}
+
+func (s *InstancePreivewResponseBodyDataInstancesInstancesVOPvlParams) Validate() error {
+	if s.PvlVO != nil {
+		for _, item := range s.PvlVO {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type InstancePreivewResponseBodyDataInstancesInstancesVOPvlParamsPvlVO struct {
+	// example:
+	//
+	// epId
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// ep-xxx
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s InstancePreivewResponseBodyDataInstancesInstancesVOPvlParamsPvlVO) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InstancePreivewResponseBodyDataInstancesInstancesVOPvlParamsPvlVO) GoString() string {
+	return s.String()
+}
+
+func (s *InstancePreivewResponseBodyDataInstancesInstancesVOPvlParamsPvlVO) GetKey() *string {
+	return s.Key
+}
+
+func (s *InstancePreivewResponseBodyDataInstancesInstancesVOPvlParamsPvlVO) GetValue() *string {
+	return s.Value
+}
+
+func (s *InstancePreivewResponseBodyDataInstancesInstancesVOPvlParamsPvlVO) SetKey(v string) *InstancePreivewResponseBodyDataInstancesInstancesVOPvlParamsPvlVO {
+	s.Key = &v
+	return s
+}
+
+func (s *InstancePreivewResponseBodyDataInstancesInstancesVOPvlParamsPvlVO) SetValue(v string) *InstancePreivewResponseBodyDataInstancesInstancesVOPvlParamsPvlVO {
+	s.Value = &v
+	return s
+}
+
+func (s *InstancePreivewResponseBodyDataInstancesInstancesVOPvlParamsPvlVO) Validate() error {
+	return dara.Validate(s)
 }
 
 type InstancePreivewResponseBodyDataInstancesInstancesVOTags struct {
