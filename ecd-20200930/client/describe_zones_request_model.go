@@ -11,6 +11,8 @@ type iDescribeZonesRequest interface {
 	GoString() string
 	SetRegionId(v string) *DescribeZonesRequest
 	GetRegionId() *string
+	SetVpcAccessZone(v bool) *DescribeZonesRequest
+	GetVpcAccessZone() *bool
 	SetZoneType(v string) *DescribeZonesRequest
 	GetZoneType() *string
 }
@@ -23,7 +25,8 @@ type DescribeZonesRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VpcAccessZone *bool   `json:"VpcAccessZone,omitempty" xml:"VpcAccessZone,omitempty"`
 	// The type of the zone. Default value: `AvailabilityZone`. This value indicates Alibaba Cloud zones.
 	//
 	// example:
@@ -44,12 +47,21 @@ func (s *DescribeZonesRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *DescribeZonesRequest) GetVpcAccessZone() *bool {
+	return s.VpcAccessZone
+}
+
 func (s *DescribeZonesRequest) GetZoneType() *string {
 	return s.ZoneType
 }
 
 func (s *DescribeZonesRequest) SetRegionId(v string) *DescribeZonesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeZonesRequest) SetVpcAccessZone(v bool) *DescribeZonesRequest {
+	s.VpcAccessZone = &v
 	return s
 }
 

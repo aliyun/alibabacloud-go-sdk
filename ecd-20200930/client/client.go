@@ -5604,6 +5604,92 @@ func (client *Client) CreateNetworkPackage(request *CreateNetworkPackageRequest)
 
 // Summary:
 //
+// Enables global acceleration for office networks.
+//
+// Description:
+//
+// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/425831.html) of Global Accelerator (GA).
+//
+// @param request - CreateOfficeSiteAcceleratorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOfficeSiteAcceleratorResponse
+func (client *Client) CreateOfficeSiteAcceleratorWithOptions(request *CreateOfficeSiteAcceleratorRequest, runtime *dara.RuntimeOptions) (_result *CreateOfficeSiteAcceleratorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccelerateRegion) {
+		query["AccelerateRegion"] = request.AccelerateRegion
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OfficeSiteId) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateOfficeSiteAccelerator"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateOfficeSiteAcceleratorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables global acceleration for office networks.
+//
+// Description:
+//
+// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/425831.html) of Global Accelerator (GA).
+//
+// @param request - CreateOfficeSiteAcceleratorRequest
+//
+// @return CreateOfficeSiteAcceleratorResponse
+func (client *Client) CreateOfficeSiteAccelerator(request *CreateOfficeSiteAcceleratorRequest) (_result *CreateOfficeSiteAcceleratorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateOfficeSiteAcceleratorResponse{}
+	_body, _err := client.CreateOfficeSiteAcceleratorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a cloud computer policy.
 //
 // Description:
@@ -8078,6 +8164,72 @@ func (client *Client) DeleteNetworkPackages(request *DeleteNetworkPackagesReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteNetworkPackagesResponse{}
 	_body, _err := client.DeleteNetworkPackagesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes Global Accelerator (GA) configuration.
+//
+// @param request - DeleteOfficeSiteAcceleratorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteOfficeSiteAcceleratorResponse
+func (client *Client) DeleteOfficeSiteAcceleratorWithOptions(request *DeleteOfficeSiteAcceleratorRequest, runtime *dara.RuntimeOptions) (_result *DeleteOfficeSiteAcceleratorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OfficeSiteId) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteOfficeSiteAccelerator"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteOfficeSiteAcceleratorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes Global Accelerator (GA) configuration.
+//
+// @param request - DeleteOfficeSiteAcceleratorRequest
+//
+// @return DeleteOfficeSiteAcceleratorResponse
+func (client *Client) DeleteOfficeSiteAccelerator(request *DeleteOfficeSiteAcceleratorRequest) (_result *DeleteOfficeSiteAcceleratorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteOfficeSiteAcceleratorResponse{}
+	_body, _err := client.DeleteOfficeSiteAcceleratorWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15794,6 +15946,10 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.VpcAccessZone) {
+		query["VpcAccessZone"] = request.VpcAccessZone
+	}
+
 	if !dara.IsNil(request.ZoneType) {
 		query["ZoneType"] = request.ZoneType
 	}
@@ -21607,6 +21763,76 @@ func (client *Client) ModifyNetworkPackageEnabled(request *ModifyNetworkPackageE
 
 // Summary:
 //
+// 修改全球加速配置
+//
+// @param request - ModifyOfficeSiteAcceleratorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyOfficeSiteAcceleratorResponse
+func (client *Client) ModifyOfficeSiteAcceleratorWithOptions(request *ModifyOfficeSiteAcceleratorRequest, runtime *dara.RuntimeOptions) (_result *ModifyOfficeSiteAcceleratorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccelerateRegion) {
+		query["AccelerateRegion"] = request.AccelerateRegion
+	}
+
+	if !dara.IsNil(request.OfficeSiteId) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyOfficeSiteAccelerator"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyOfficeSiteAcceleratorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改全球加速配置
+//
+// @param request - ModifyOfficeSiteAcceleratorRequest
+//
+// @return ModifyOfficeSiteAcceleratorResponse
+func (client *Client) ModifyOfficeSiteAccelerator(request *ModifyOfficeSiteAcceleratorRequest) (_result *ModifyOfficeSiteAcceleratorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyOfficeSiteAcceleratorResponse{}
+	_body, _err := client.ModifyOfficeSiteAcceleratorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the basic properties of an office network, including the name and local administrator permission settings.
 //
 // @param request - ModifyOfficeSiteAttributeRequest
@@ -21668,6 +21894,10 @@ func (client *Client) ModifyOfficeSiteAttributeWithOptions(request *ModifyOffice
 
 	if !dara.IsNil(request.TenantId) {
 		query["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
 	}
 
 	req := &openapiutil.OpenApiRequest{

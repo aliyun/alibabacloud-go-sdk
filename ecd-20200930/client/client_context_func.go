@@ -4481,6 +4481,70 @@ func (client *Client) CreateNetworkPackageWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// Enables global acceleration for office networks.
+//
+// Description:
+//
+// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/425831.html) of Global Accelerator (GA).
+//
+// @param request - CreateOfficeSiteAcceleratorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOfficeSiteAcceleratorResponse
+func (client *Client) CreateOfficeSiteAcceleratorWithContext(ctx context.Context, request *CreateOfficeSiteAcceleratorRequest, runtime *dara.RuntimeOptions) (_result *CreateOfficeSiteAcceleratorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccelerateRegion) {
+		query["AccelerateRegion"] = request.AccelerateRegion
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OfficeSiteId) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateOfficeSiteAccelerator"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateOfficeSiteAcceleratorResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a cloud computer policy.
 //
 // Description:
@@ -6402,6 +6466,54 @@ func (client *Client) DeleteNetworkPackagesWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteNetworkPackagesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes Global Accelerator (GA) configuration.
+//
+// @param request - DeleteOfficeSiteAcceleratorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteOfficeSiteAcceleratorResponse
+func (client *Client) DeleteOfficeSiteAcceleratorWithContext(ctx context.Context, request *DeleteOfficeSiteAcceleratorRequest, runtime *dara.RuntimeOptions) (_result *DeleteOfficeSiteAcceleratorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OfficeSiteId) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteOfficeSiteAccelerator"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteOfficeSiteAcceleratorResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -12487,6 +12599,10 @@ func (client *Client) DescribeZonesWithContext(ctx context.Context, request *Des
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.VpcAccessZone) {
+		query["VpcAccessZone"] = request.VpcAccessZone
+	}
+
 	if !dara.IsNil(request.ZoneType) {
 		query["ZoneType"] = request.ZoneType
 	}
@@ -17032,6 +17148,58 @@ func (client *Client) ModifyNetworkPackageEnabledWithContext(ctx context.Context
 
 // Summary:
 //
+// 修改全球加速配置
+//
+// @param request - ModifyOfficeSiteAcceleratorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyOfficeSiteAcceleratorResponse
+func (client *Client) ModifyOfficeSiteAcceleratorWithContext(ctx context.Context, request *ModifyOfficeSiteAcceleratorRequest, runtime *dara.RuntimeOptions) (_result *ModifyOfficeSiteAcceleratorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccelerateRegion) {
+		query["AccelerateRegion"] = request.AccelerateRegion
+	}
+
+	if !dara.IsNil(request.OfficeSiteId) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyOfficeSiteAccelerator"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyOfficeSiteAcceleratorResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the basic properties of an office network, including the name and local administrator permission settings.
 //
 // @param request - ModifyOfficeSiteAttributeRequest
@@ -17093,6 +17261,10 @@ func (client *Client) ModifyOfficeSiteAttributeWithContext(ctx context.Context, 
 
 	if !dara.IsNil(request.TenantId) {
 		query["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
 	}
 
 	req := &openapiutil.OpenApiRequest{

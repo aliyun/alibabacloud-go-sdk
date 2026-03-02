@@ -33,6 +33,8 @@ type iModifyOfficeSiteAttributeRequest interface {
 	GetRegionId() *string
 	SetTenantId(v string) *ModifyOfficeSiteAttributeRequest
 	GetTenantId() *string
+	SetVSwitchId(v []*string) *ModifyOfficeSiteAttributeRequest
+	GetVSwitchId() []*string
 }
 
 type ModifyOfficeSiteAttributeRequest struct {
@@ -103,8 +105,9 @@ type ModifyOfficeSiteAttributeRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	RegionId  *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TenantId  *string   `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	VSwitchId []*string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty" type:"Repeated"`
 }
 
 func (s ModifyOfficeSiteAttributeRequest) String() string {
@@ -161,6 +164,10 @@ func (s *ModifyOfficeSiteAttributeRequest) GetRegionId() *string {
 
 func (s *ModifyOfficeSiteAttributeRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *ModifyOfficeSiteAttributeRequest) GetVSwitchId() []*string {
+	return s.VSwitchId
 }
 
 func (s *ModifyOfficeSiteAttributeRequest) SetAuthorityHost(v string) *ModifyOfficeSiteAttributeRequest {
@@ -220,6 +227,11 @@ func (s *ModifyOfficeSiteAttributeRequest) SetRegionId(v string) *ModifyOfficeSi
 
 func (s *ModifyOfficeSiteAttributeRequest) SetTenantId(v string) *ModifyOfficeSiteAttributeRequest {
 	s.TenantId = &v
+	return s
+}
+
+func (s *ModifyOfficeSiteAttributeRequest) SetVSwitchId(v []*string) *ModifyOfficeSiteAttributeRequest {
+	s.VSwitchId = v
 	return s
 }
 
