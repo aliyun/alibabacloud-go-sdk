@@ -158,7 +158,11 @@ type ListAivppResourcesResponseBodyData struct {
 	// example:
 	//
 	// 10000
-	ConnectNum *int32  `json:"ConnectNum,omitempty" xml:"ConnectNum,omitempty"`
+	ConnectNum *int32 `json:"ConnectNum,omitempty" xml:"ConnectNum,omitempty"`
+	// example:
+	//
+	// industry-brain.aliyun.com
+	ConsoleUrl *string `json:"ConsoleUrl,omitempty" xml:"ConsoleUrl,omitempty"`
 	Detail     *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	// example:
 	//
@@ -218,6 +222,10 @@ func (s *ListAivppResourcesResponseBodyData) GetConnectNum() *int32 {
 	return s.ConnectNum
 }
 
+func (s *ListAivppResourcesResponseBodyData) GetConsoleUrl() *string {
+	return s.ConsoleUrl
+}
+
 func (s *ListAivppResourcesResponseBodyData) GetDetail() *string {
 	return s.Detail
 }
@@ -268,6 +276,11 @@ func (s *ListAivppResourcesResponseBodyData) GetUserId() *string {
 
 func (s *ListAivppResourcesResponseBodyData) SetConnectNum(v int32) *ListAivppResourcesResponseBodyData {
 	s.ConnectNum = &v
+	return s
+}
+
+func (s *ListAivppResourcesResponseBodyData) SetConsoleUrl(v string) *ListAivppResourcesResponseBodyData {
+	s.ConsoleUrl = &v
 	return s
 }
 
