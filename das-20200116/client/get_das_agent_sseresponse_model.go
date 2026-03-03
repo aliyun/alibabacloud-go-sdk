@@ -13,6 +13,10 @@ type iGetDasAgentSSEResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *GetDasAgentSSEResponse
 	GetStatusCode() *int32
+	SetId(v string) *GetDasAgentSSEResponse
+	GetId() *string
+	SetEvent(v string) *GetDasAgentSSEResponse
+	GetEvent() *string
 	SetBody(v *GetDasAgentSSEResponseBody) *GetDasAgentSSEResponse
 	GetBody() *GetDasAgentSSEResponseBody
 }
@@ -20,6 +24,8 @@ type iGetDasAgentSSEResponse interface {
 type GetDasAgentSSEResponse struct {
 	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                     `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                     `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *GetDasAgentSSEResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *GetDasAgentSSEResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *GetDasAgentSSEResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *GetDasAgentSSEResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *GetDasAgentSSEResponse) GetBody() *GetDasAgentSSEResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *GetDasAgentSSEResponse) SetHeaders(v map[string]*string) *GetDasAgentSS
 
 func (s *GetDasAgentSSEResponse) SetStatusCode(v int32) *GetDasAgentSSEResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDasAgentSSEResponse) SetId(v string) *GetDasAgentSSEResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *GetDasAgentSSEResponse) SetEvent(v string) *GetDasAgentSSEResponse {
+	s.Event = &v
 	return s
 }
 

@@ -122,8 +122,7 @@ type DescribeHotBigKeysResponseBodyData struct {
 	// example:
 	//
 	// current version doesn\\"t support
-	BigKeyMsg *string `json:"BigKeyMsg,omitempty" xml:"BigKeyMsg,omitempty"`
-	// The list of large keys.
+	BigKeyMsg         *string                                            `json:"BigKeyMsg,omitempty" xml:"BigKeyMsg,omitempty"`
 	BigKeys           *DescribeHotBigKeysResponseBodyDataBigKeys         `json:"BigKeys,omitempty" xml:"BigKeys,omitempty" type:"Struct"`
 	HighTrafficKeyMsg *string                                            `json:"HighTrafficKeyMsg,omitempty" xml:"HighTrafficKeyMsg,omitempty"`
 	HighTrafficKeys   *DescribeHotBigKeysResponseBodyDataHighTrafficKeys `json:"HighTrafficKeys,omitempty" xml:"HighTrafficKeys,omitempty" type:"Struct"`
@@ -132,8 +131,7 @@ type DescribeHotBigKeysResponseBodyData struct {
 	// example:
 	//
 	// current version doesn\\"t support
-	HotKeyMsg *string `json:"HotKeyMsg,omitempty" xml:"HotKeyMsg,omitempty"`
-	// The list of hot keys.
+	HotKeyMsg   *string                                      `json:"HotKeyMsg,omitempty" xml:"HotKeyMsg,omitempty"`
 	HotKeys     *DescribeHotBigKeysResponseBodyDataHotKeys   `json:"HotKeys,omitempty" xml:"HotKeys,omitempty" type:"Struct"`
 	LargeKeyMsg *string                                      `json:"LargeKeyMsg,omitempty" xml:"LargeKeyMsg,omitempty"`
 	LargeKeys   *DescribeHotBigKeysResponseBodyDataLargeKeys `json:"LargeKeys,omitempty" xml:"LargeKeys,omitempty" type:"Struct"`
@@ -278,36 +276,11 @@ func (s *DescribeHotBigKeysResponseBodyDataBigKeys) Validate() error {
 }
 
 type DescribeHotBigKeysResponseBodyDataBigKeysBigKey struct {
-	// The database in which the key is stored.
-	//
-	// example:
-	//
-	// 0
-	Db *int32 `json:"Db,omitempty" xml:"Db,omitempty"`
-	// The key.
-	//
-	// example:
-	//
-	// abc:def:eng
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The type of the key.
-	//
-	// example:
-	//
-	// zset
+	Db      *int32  `json:"Db,omitempty" xml:"Db,omitempty"`
+	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
-	// The ID of the data shard on the ApsaraDB for Redis instance.
-	//
-	// example:
-	//
-	// r-x****-db-0
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The number of elements in the key.
-	//
-	// example:
-	//
-	// 2
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	NodeId  *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Size    *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s DescribeHotBigKeysResponseBodyDataBigKeysBigKey) String() string {
@@ -531,43 +504,13 @@ func (s *DescribeHotBigKeysResponseBodyDataHotKeys) Validate() error {
 }
 
 type DescribeHotBigKeysResponseBodyDataHotKeysHotKey struct {
-	// The database in which the key is stored.
-	//
-	// example:
-	//
-	// 0
-	Db *int32 `json:"Db,omitempty" xml:"Db,omitempty"`
-	// The frequency at which the key is accessed, which indicates the queries per second (QPS) of the key.
-	//
-	// example:
-	//
-	// 5500~6000
-	Hot *string `json:"Hot,omitempty" xml:"Hot,omitempty"`
-	// The key.
-	//
-	// example:
-	//
-	// abc:def:eng
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The type of the key.
-	//
-	// example:
-	//
-	// zset
+	Db      *int32  `json:"Db,omitempty" xml:"Db,omitempty"`
+	Hot     *string `json:"Hot,omitempty" xml:"Hot,omitempty"`
+	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
-	// The statistical value that is calculated based on the least frequently used (LFU) caching algorithm.
-	//
-	// example:
-	//
-	// 253
-	Lfu *int32 `json:"Lfu,omitempty" xml:"Lfu,omitempty"`
-	// The ID of the data shard on the ApsaraDB for Redis instance.
-	//
-	// example:
-	//
-	// r-x****-db-0
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	Size   *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Lfu     *int32  `json:"Lfu,omitempty" xml:"Lfu,omitempty"`
+	NodeId  *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Size    *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s DescribeHotBigKeysResponseBodyDataHotKeysHotKey) String() string {

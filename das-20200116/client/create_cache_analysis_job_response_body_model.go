@@ -119,7 +119,6 @@ func (s *CreateCacheAnalysisJobResponseBody) Validate() error {
 }
 
 type CreateCacheAnalysisJobResponseBodyData struct {
-	// The number of elements in the key.
 	BigKeys *CreateCacheAnalysisJobResponseBodyDataBigKeys `json:"BigKeys,omitempty" xml:"BigKeys,omitempty" type:"Struct"`
 	// The instance ID.
 	//
@@ -271,54 +270,14 @@ func (s *CreateCacheAnalysisJobResponseBodyDataBigKeys) Validate() error {
 }
 
 type CreateCacheAnalysisJobResponseBodyDataBigKeysKeyInfo struct {
-	// The number of bytes that are occupied by the key.
-	//
-	// example:
-	//
-	// 12345
-	Bytes *int64 `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
-	// The number of elements in the key.
-	//
-	// example:
-	//
-	// 127
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// 0
-	Db *int32 `json:"Db,omitempty" xml:"Db,omitempty"`
-	// The data type of the key.
-	//
-	// example:
-	//
-	// hashtable
-	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	// The expiration period of the key. Unit: milliseconds. A value of 0 indicates that the key does not expire.
-	//
-	// example:
-	//
-	// 1596256542547
-	ExpirationTimeMillis *int64 `json:"ExpirationTimeMillis,omitempty" xml:"ExpirationTimeMillis,omitempty"`
-	// The name of the key.
-	//
-	// example:
-	//
-	// task_x****
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The ID of the data node on the instance.
-	//
-	// example:
-	//
-	// r-x****-db-0
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The data type of the ApsaraDB for Redis instance.
-	//
-	// example:
-	//
-	// hash
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Bytes                *int64  `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
+	Count                *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Db                   *int32  `json:"Db,omitempty" xml:"Db,omitempty"`
+	Encoding             *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	ExpirationTimeMillis *int64  `json:"ExpirationTimeMillis,omitempty" xml:"ExpirationTimeMillis,omitempty"`
+	Key                  *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Type                 *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateCacheAnalysisJobResponseBodyDataBigKeysKeyInfo) String() string {

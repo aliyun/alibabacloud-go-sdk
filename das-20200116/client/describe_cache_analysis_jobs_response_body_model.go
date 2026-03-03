@@ -124,9 +124,8 @@ type DescribeCacheAnalysisJobsResponseBodyData struct {
 	// example:
 	//
 	// None
-	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// The ID of the data node on the instance.
-	List *DescribeCacheAnalysisJobsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
+	Extra *string                                        `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	List  *DescribeCacheAnalysisJobsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
 	// The page number. The value must be an integer that is greater than 0. Default value: 1.
 	//
 	// example:
@@ -244,50 +243,12 @@ func (s *DescribeCacheAnalysisJobsResponseBodyDataList) Validate() error {
 }
 
 type DescribeCacheAnalysisJobsResponseBodyDataListCacheAnalysisJob struct {
-	// The details about the large keys.
-	//
-	// > The sub-parameters of this parameter and the content of the sub-parameters are not returned. To query the detailed information about the cache analysis tasks, call the [DescribeCacheAnalysisJob](https://help.aliyun.com/document_detail/443012.html) operation.
-	BigKeys *DescribeCacheAnalysisJobsResponseBodyDataListCacheAnalysisJobBigKeys `json:"BigKeys,omitempty" xml:"BigKeys,omitempty" type:"Struct"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// r-bp18ff4a195d****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the cache analysis task.
-	//
-	// example:
-	//
-	// sf79-sd99-sa37-****
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The returned message.
-	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
-	//
-	// example:
-	//
-	// Successful
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the data node on the instance.
-	//
-	// example:
-	//
-	// r-x****-db-0
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The state of the cache analysis task. Valid values:
-	//
-	// 	- **BACKUP**: The data is being backed up.
-	//
-	// 	- **ANALYZING**: The data is being analyzed.
-	//
-	// 	- **FINISHED**: The data is analyzed.
-	//
-	// 	- **FAILED**: An error occurred.
-	//
-	// example:
-	//
-	// BACKUP
-	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
+	BigKeys    *DescribeCacheAnalysisJobsResponseBodyDataListCacheAnalysisJobBigKeys `json:"BigKeys,omitempty" xml:"BigKeys,omitempty" type:"Struct"`
+	InstanceId *string                                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JobId      *string                                                               `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Message    *string                                                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	NodeId     *string                                                               `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	TaskState  *string                                                               `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
 }
 
 func (s DescribeCacheAnalysisJobsResponseBodyDataListCacheAnalysisJob) String() string {
@@ -396,54 +357,14 @@ func (s *DescribeCacheAnalysisJobsResponseBodyDataListCacheAnalysisJobBigKeys) V
 }
 
 type DescribeCacheAnalysisJobsResponseBodyDataListCacheAnalysisJobBigKeysKeyInfo struct {
-	// The number of bytes that are occupied by the key.
-	//
-	// example:
-	//
-	// 12345
-	Bytes *int64 `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
-	// The number of elements in the key.
-	//
-	// example:
-	//
-	// 127
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// 0
-	Db *int32 `json:"Db,omitempty" xml:"Db,omitempty"`
-	// The data type of the key.
-	//
-	// example:
-	//
-	// hashtable
-	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	// The expiration period of the key. Unit: milliseconds. A value of 0 indicates that the key does not expire.
-	//
-	// example:
-	//
-	// 1596256542547
-	ExpirationTimeMillis *int64 `json:"ExpirationTimeMillis,omitempty" xml:"ExpirationTimeMillis,omitempty"`
-	// The name of the key.
-	//
-	// example:
-	//
-	// task_*****
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The ID of the data node on the instance.
-	//
-	// example:
-	//
-	// r-****-db-0
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The data type of the instance.
-	//
-	// example:
-	//
-	// hash
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Bytes                *int64  `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
+	Count                *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Db                   *int32  `json:"Db,omitempty" xml:"Db,omitempty"`
+	Encoding             *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	ExpirationTimeMillis *int64  `json:"ExpirationTimeMillis,omitempty" xml:"ExpirationTimeMillis,omitempty"`
+	Key                  *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Type                 *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeCacheAnalysisJobsResponseBodyDataListCacheAnalysisJobBigKeysKeyInfo) String() string {

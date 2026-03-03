@@ -27,8 +27,7 @@ type CreateCloudBenchTasksResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The detailed information.
+	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *CreateCloudBenchTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//

@@ -27,8 +27,7 @@ type RunCloudBenchTaskResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The detailed information, including the error codes and the number of returned entries.
+	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *RunCloudBenchTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -153,62 +152,12 @@ func (s *RunCloudBenchTaskResponseBodyData) Validate() error {
 }
 
 type RunCloudBenchTaskResponseBodyDataPreCheckItem struct {
-	// The HTTP status code returned.
-	//
-	// example:
-	//
-	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The detailed information of the check item.
-	//
-	// example:
-	//
-	// "Data": { "total": 1, "list":[...] }, "Code": 200, "Success": true }
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
-	// The returned message.
-	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
-	//
-	// example:
-	//
-	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The name of the check item. Valid values:
-	//
-	// 	- **SqlArchiveStatusChecker**: checks whether SQL Explorer is available.
-	//
-	// 	- **BenchClientEnvChecker**: checks whether the runtime environment for programs on the stress testing client is available.
-	//
-	// 	- **SpecChecker**: checks whether the destination instance type and the instance type of the stress testing client support this API operation.
-	//
-	// 	- **SourceInstanceChecker**: checks whether the account of the source instance is available and whether the source instance is connected to the destination instance.
-	//
-	// 	- **BenchTargetChecker**: checks whether the account of the destination instance is available and whether the source instance is connected to the destination instance.
-	//
-	// example:
-	//
-	// BenchTargetChecker
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The sequence number of the check item. Valid values: **0*	- to **10**.
-	//
-	// example:
-	//
-	// 0
-	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The status of the task. Valid values:
-	//
-	// 	- **SUCCESS**: The task is successful.
-	//
-	// 	- **IGNORED**: The task is ignored.
-	//
-	// 	- **RUNNING**: The task is running.
-	//
-	// 	- **EXCEPTION**: An error occurred.
-	//
-	// example:
-	//
-	// SUCCESS
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Order   *int32  `json:"Order,omitempty" xml:"Order,omitempty"`
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s RunCloudBenchTaskResponseBodyDataPreCheckItem) String() string {

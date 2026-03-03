@@ -119,7 +119,6 @@ func (s *GetSqlConcurrencyControlRulesHistoryResponseBody) Validate() error {
 }
 
 type GetSqlConcurrencyControlRulesHistoryResponseBodyData struct {
-	// The list of the queried throttling rules.
 	List *GetSqlConcurrencyControlRulesHistoryResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
 	// The total number of entries returned.
 	//
@@ -199,82 +198,16 @@ func (s *GetSqlConcurrencyControlRulesHistoryResponseBodyDataList) Validate() er
 }
 
 type GetSqlConcurrencyControlRulesHistoryResponseBodyDataListRules struct {
-	// The duration within which the SQL throttling rule takes effect. Unit: seconds.
-	//
-	// >  The throttling rule takes effect only within this duration.
-	//
-	// example:
-	//
-	// 600
-	ConcurrencyControlTime *int64 `json:"ConcurrencyControlTime,omitempty" xml:"ConcurrencyControlTime,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-2ze1jdv45i7l6****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the throttling rule that is applied to the instance.
-	//
-	// example:
-	//
-	// 16
-	ItemId *int64 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	// The hash value of the SQL keywords. The SQL keywords are contained in the SQL statements to which the throttling rule is applied.
-	//
-	// example:
-	//
-	// b0b8aceeb43baea87b219c81767b****
-	KeywordsHash *string `json:"KeywordsHash,omitempty" xml:"KeywordsHash,omitempty"`
-	// The maximum number of concurrent SQL statements. Set this parameter to a positive integer.
-	//
-	// >  When the number of concurrent SQL statements that contain the specified keywords reaches this upper limit, the throttling rule is triggered.
-	//
-	// example:
-	//
-	// 2
-	MaxConcurrency *int64 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
-	// The keywords that are used to identify the SQL statements that need to be throttled.
-	//
-	// > SQL keywords are separated with tildes (~). When the number of concurrent SQL statements that contain all the specified SQL keywords reaches the specified upper limit, the throttling rule is triggered.
-	//
-	// example:
-	//
-	// call~open~api~test~4~from~POP
-	SqlKeywords *string `json:"SqlKeywords,omitempty" xml:"SqlKeywords,omitempty"`
-	// The type of the SQL statements. Valid values:
-	//
-	// 	- **SELECT**
-	//
-	// 	- **UPDATE**
-	//
-	// 	- **DELETE**
-	//
-	// example:
-	//
-	// SELECT
-	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	// The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1608888296000
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The state of the throttling rule. Valid values:
-	//
-	// 	- **Open**: The throttling rule is in effect.
-	//
-	// 	- **Closed**: The throttling rule was in effect.
-	//
-	// example:
-	//
-	// Open
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The user ID.
-	//
-	// example:
-	//
-	// testxxx
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	ConcurrencyControlTime *int64  `json:"ConcurrencyControlTime,omitempty" xml:"ConcurrencyControlTime,omitempty"`
+	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ItemId                 *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	KeywordsHash           *string `json:"KeywordsHash,omitempty" xml:"KeywordsHash,omitempty"`
+	MaxConcurrency         *int64  `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	SqlKeywords            *string `json:"SqlKeywords,omitempty" xml:"SqlKeywords,omitempty"`
+	SqlType                *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	StartTime              *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId                 *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetSqlConcurrencyControlRulesHistoryResponseBodyDataListRules) String() string {

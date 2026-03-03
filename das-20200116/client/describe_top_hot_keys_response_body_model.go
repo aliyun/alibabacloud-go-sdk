@@ -27,8 +27,7 @@ type DescribeTopHotKeysResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The detailed information about the hot keys.
+	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *DescribeTopHotKeysResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -152,42 +151,12 @@ func (s *DescribeTopHotKeysResponseBodyData) Validate() error {
 
 type DescribeTopHotKeysResponseBodyDataHotKey struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The database in which the key is stored.
-	//
-	// example:
-	//
-	// 0
-	Db *int32 `json:"Db,omitempty" xml:"Db,omitempty"`
-	// The frequency at which the key is accessed, which indicates the QPS of the key.
-	//
-	// example:
-	//
-	// 5500~6000
-	Hot     *string `json:"Hot,omitempty" xml:"Hot,omitempty"`
-	InBytes *int64  `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
-	// The key.
-	//
-	// example:
-	//
-	// abc:def:eng
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The type of the key.
-	//
-	// example:
-	//
-	// zset
-	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
-	// The statistical value that is calculated based on the least frequently used (LFU) caching algorithm.
-	//
-	// example:
-	//
-	// 253
-	Lfu *int32 `json:"Lfu,omitempty" xml:"Lfu,omitempty"`
-	// The ID of the data shard on the ApsaraDB for Redis instance.
-	//
-	// example:
-	//
-	// r-x****-db-0
+	Db       *int32  `json:"Db,omitempty" xml:"Db,omitempty"`
+	Hot      *string `json:"Hot,omitempty" xml:"Hot,omitempty"`
+	InBytes  *int64  `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	KeyType  *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
+	Lfu      *int32  `json:"Lfu,omitempty" xml:"Lfu,omitempty"`
 	NodeId   *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OutBytes *int64  `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
 }

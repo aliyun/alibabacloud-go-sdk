@@ -27,10 +27,7 @@ type DescribeTopBigKeysResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The detailed information about the large keys.
-	//
-	// > This parameter is left empty If no large keys exist within the specified time range.
+	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *DescribeTopBigKeysResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -153,36 +150,11 @@ func (s *DescribeTopBigKeysResponseBodyData) Validate() error {
 }
 
 type DescribeTopBigKeysResponseBodyDataBigKey struct {
-	// The database in which the key is stored.
-	//
-	// example:
-	//
-	// 0
-	Db *int32 `json:"Db,omitempty" xml:"Db,omitempty"`
-	// The key.
-	//
-	// example:
-	//
-	// abc:def:eng
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The type of the key.
-	//
-	// example:
-	//
-	// zset
+	Db      *int32  `json:"Db,omitempty" xml:"Db,omitempty"`
+	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
-	// The ID of the data shard on the ApsaraDB for Redis instance.
-	//
-	// example:
-	//
-	// r-x****-db-0
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The number of elements in the key.
-	//
-	// example:
-	//
-	// 2
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	NodeId  *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Size    *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s DescribeTopBigKeysResponseBodyDataBigKey) String() string {

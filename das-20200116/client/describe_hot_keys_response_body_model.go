@@ -27,8 +27,7 @@ type DescribeHotKeysResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the hot keys.
+	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *DescribeHotKeysResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -154,39 +153,14 @@ func (s *DescribeHotKeysResponseBodyData) Validate() error {
 
 type DescribeHotKeysResponseBodyDataHotKey struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The database in which the key is stored.
-	//
-	// example:
-	//
-	// 0
-	Db *int32 `json:"Db,omitempty" xml:"Db,omitempty"`
-	// The frequency at which the key is accessed, which indicates the queries per second (QPS) of the key.
-	//
-	// example:
-	//
-	// 5500~6000
-	Hot     *string `json:"Hot,omitempty" xml:"Hot,omitempty"`
-	InBytes *int64  `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
-	// The name of the key.
-	//
-	// example:
-	//
-	// abc:def:eng
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The type of the key.
-	//
-	// example:
-	//
-	// zset
+	Db       *int32  `json:"Db,omitempty" xml:"Db,omitempty"`
+	Hot      *string `json:"Hot,omitempty" xml:"Hot,omitempty"`
+	InBytes  *int64  `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	KeyType  *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
 	NodeId   *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OutBytes *int64  `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
-	// The number of elements in the key.
-	//
-	// example:
-	//
-	// 2
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	Size     *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s DescribeHotKeysResponseBodyDataHotKey) String() string {

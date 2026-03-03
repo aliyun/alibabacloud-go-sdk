@@ -765,7 +765,7 @@ func (client *Client) CreateKillInstanceSessionTaskWithMaintainUser(request *Cre
 
 // Summary:
 //
-// 创建最近死锁分析任务
+// Creates a recent deadlock analysis task.
 //
 // @param request - CreateLatestDeadLockAnalysisRequest
 //
@@ -813,7 +813,7 @@ func (client *Client) CreateLatestDeadLockAnalysisWithOptions(request *CreateLat
 
 // Summary:
 //
-// 创建最近死锁分析任务
+// Creates a recent deadlock analysis task.
 //
 // @param request - CreateLatestDeadLockAnalysisRequest
 //
@@ -2601,7 +2601,7 @@ func (client *Client) DescribeInstanceDasPro(request *DescribeInstanceDasProRequ
 
 // Summary:
 //
-// 获取执行计划
+// Queries the execution plan of an SQL statement.
 //
 // @param request - DescribeQueryExplainRequest
 //
@@ -2661,7 +2661,7 @@ func (client *Client) DescribeQueryExplainWithOptions(request *DescribeQueryExpl
 
 // Summary:
 //
-// 获取执行计划
+// Queries the execution plan of an SQL statement.
 //
 // @param request - DescribeQueryExplainRequest
 //
@@ -2807,7 +2807,7 @@ func (client *Client) DescribeSecurityIPGroupRelation(request *DescribeSecurityI
 
 // Summary:
 //
-// # DescribeSlowLogHistogramAsync
+// Asynchronously queries the trend data of slow query logs of an instance.
 //
 // @param request - DescribeSlowLogHistogramAsyncRequest
 //
@@ -2867,7 +2867,7 @@ func (client *Client) DescribeSlowLogHistogramAsyncWithOptions(request *Describe
 
 // Summary:
 //
-// # DescribeSlowLogHistogramAsync
+// Asynchronously queries the trend data of slow query logs of an instance.
 //
 // @param request - DescribeSlowLogHistogramAsyncRequest
 //
@@ -2885,7 +2885,7 @@ func (client *Client) DescribeSlowLogHistogramAsync(request *DescribeSlowLogHist
 
 // Summary:
 //
-// 查看慢日志明细接口
+// Queries the slow logs of a database instance. You can filter and sort data by multiple conditions.
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -2963,7 +2963,7 @@ func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLog
 
 // Summary:
 //
-// 查看慢日志明细接口
+// Queries the slow logs of a database instance. You can filter and sort data by multiple conditions.
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -2981,7 +2981,7 @@ func (client *Client) DescribeSlowLogRecords(request *DescribeSlowLogRecordsRequ
 
 // Summary:
 //
-// 慢日志统计信息
+// Queries statistical information about slow query logs.
 //
 // @param request - DescribeSlowLogStatisticRequest
 //
@@ -3065,7 +3065,7 @@ func (client *Client) DescribeSlowLogStatisticWithOptions(request *DescribeSlowL
 
 // Summary:
 //
-// 慢日志统计信息
+// Queries statistical information about slow query logs.
 //
 // @param request - DescribeSlowLogStatisticRequest
 //
@@ -5768,7 +5768,7 @@ func (client *Client) GetDasSQLLogHotData(request *GetDasSQLLogHotDataRequest) (
 
 // Summary:
 //
-// 查询单个死锁详情
+// Queries the details of a deadlock.
 //
 // @param request - GetDeadLockDetailRequest
 //
@@ -5824,7 +5824,7 @@ func (client *Client) GetDeadLockDetailWithOptions(request *GetDeadLockDetailReq
 
 // Summary:
 //
-// 查询单个死锁详情
+// Queries the details of a deadlock.
 //
 // @param request - GetDeadLockDetailRequest
 //
@@ -5940,7 +5940,7 @@ func (client *Client) GetDeadLockDetailList(request *GetDeadLockDetailListReques
 
 // Summary:
 //
-// 获取历史死锁记录
+// Queries the historical tasks of recent deadlock analysis and full deadlock analysis.
 //
 // @param request - GetDeadLockHistoryRequest
 //
@@ -6008,7 +6008,7 @@ func (client *Client) GetDeadLockHistoryWithOptions(request *GetDeadLockHistoryR
 
 // Summary:
 //
-// 获取历史死锁记录
+// Queries the historical tasks of recent deadlock analysis and full deadlock analysis.
 //
 // @param request - GetDeadLockHistoryRequest
 //
@@ -6026,7 +6026,7 @@ func (client *Client) GetDeadLockHistory(request *GetDeadLockHistoryRequest) (_r
 
 // Summary:
 //
-// 查询时间范围内基于错误日志分析的死锁数量
+// Queries the trend of the number of deadlocks in full deadlock analysis within a specified period of time.
 //
 // @param request - GetDeadlockHistogramRequest
 //
@@ -6086,7 +6086,7 @@ func (client *Client) GetDeadlockHistogramWithOptions(request *GetDeadlockHistog
 
 // Summary:
 //
-// 查询时间范围内基于错误日志分析的死锁数量
+// Queries the trend of the number of deadlocks in full deadlock analysis within a specified period of time.
 //
 // @param request - GetDeadlockHistogramRequest
 //
@@ -9768,6 +9768,95 @@ func (client *Client) GetStorageAnalysisResult(request *GetStorageAnalysisResult
 
 // Summary:
 //
+// 瑶池AI助理大模型能力接口
+//
+// @param request - GetYaoChiAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetYaoChiAgentResponse
+func (client *Client) GetYaoChiAgentWithSSE(request *GetYaoChiAgentRequest, runtime *dara.RuntimeOptions, _yield chan *GetYaoChiAgentResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.getYaoChiAgentWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
+}
+
+// Summary:
+//
+// 瑶池AI助理大模型能力接口
+//
+// @param request - GetYaoChiAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetYaoChiAgentResponse
+func (client *Client) GetYaoChiAgentWithOptions(request *GetYaoChiAgentRequest, runtime *dara.RuntimeOptions) (_result *GetYaoChiAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExtraInfo) {
+		query["ExtraInfo"] = request.ExtraInfo
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetYaoChiAgent"),
+		Version:     dara.String("2020-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetYaoChiAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 瑶池AI助理大模型能力接口
+//
+// @param request - GetYaoChiAgentRequest
+//
+// @return GetYaoChiAgentResponse
+func (client *Client) GetYaoChiAgent(request *GetYaoChiAgentRequest) (_result *GetYaoChiAgentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetYaoChiAgentResponse{}
+	_body, _err := client.GetYaoChiAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Terminates all sessions on an instance.
 //
 // Description:
@@ -10810,18 +10899,80 @@ func (client *Client) getDasAgentSSEWithSSE_opYieldFunc(_yield chan *GetDasAgent
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
+}
+
+func (client *Client) getYaoChiAgentWithSSE_opYieldFunc(_yield chan *GetYaoChiAgentResponse, _yieldErr chan error, request *GetYaoChiAgentRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
 		if _err != nil {
 			_yieldErr <- _err
 			return
 		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExtraInfo) {
+		query["ExtraInfo"] = request.ExtraInfo
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetYaoChiAgent"),
+		Version:     dara.String("2020-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
 	}
 }

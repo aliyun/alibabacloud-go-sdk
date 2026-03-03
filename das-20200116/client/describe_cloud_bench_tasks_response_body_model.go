@@ -124,9 +124,8 @@ type DescribeCloudBenchTasksResponseBodyData struct {
 	// example:
 	//
 	// None
-	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// The detailed information of the stress testing task.
-	List *DescribeCloudBenchTasksResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
+	Extra *string                                      `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	List  *DescribeCloudBenchTasksResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
 	// The page number.
 	//
 	// example:
@@ -244,410 +243,47 @@ func (s *DescribeCloudBenchTasksResponseBodyDataList) Validate() error {
 }
 
 type DescribeCloudBenchTasksResponseBodyDataListCloudbenchTasks struct {
-	// The archiving task ID.
-	//
-	// example:
-	//
-	// \\"202105211430070112231480820340758****
-	ArchiveJobId *string `json:"ArchiveJobId,omitempty" xml:"ArchiveJobId,omitempty"`
-	// The name of the table that was archived to Object Storage Service (OSS).
-	//
-	// example:
-	//
-	// custins15546355_161604665****
+	ArchiveJobId        *string `json:"ArchiveJobId,omitempty" xml:"ArchiveJobId,omitempty"`
 	ArchiveOssTableName *string `json:"ArchiveOssTableName,omitempty" xml:"ArchiveOssTableName,omitempty"`
-	// The archiving status of the file that stores the analysis result of full SQL statistics. Valid values:
-	//
-	// 	- **0**: The file archiving is not started.
-	//
-	// 	- **1**: The file is archived.
-	//
-	// 	- **2**: An error occurred.
-	//
-	// 	- **3**: The file is being archived.
-	//
-	// 	- **4**: The archived file does not need to be downloaded.
-	//
-	// example:
-	//
-	// 1
-	ArchiveState *int32 `json:"ArchiveState,omitempty" xml:"ArchiveState,omitempty"`
-	// The ID of the backup set. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/26273.html) operation to query the ID of the backup set.
-	//
-	// example:
-	//
-	// 229132
-	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The backup type. Valid values:
-	//
-	// 	- **TIMESTAMP**: Data is restored to the state at a specific point in time.
-	//
-	// 	- **BACKUPID**: Data is restored from a backup set that is identified by an ID.
-	//
-	// example:
-	//
-	// TIMESTAMP
-	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The substep in the stress testing task. Valid values:
-	//
-	// 	- **NEW**: Initialize the stress testing task.
-	//
-	// 	- **WAIT_BUY_ECS**: Purchase an ECS instance.
-	//
-	// 	- **WAIT_START_ECS**: Start the ECS instance.
-	//
-	// 	- **WAIT_INSTALL_JDK**: Install the Java Development Kit (JDK).
-	//
-	// 	- **WAIT_INSTALL_DBGATEWAY**: Install the database gateway (DBGateway).
-	//
-	// 	- **ADD_SECURITY_IPS_STEP**: Configure the whitelist of the security group.
-	//
-	// 	- **ARCHIVE**: Archive the file that stores the analysis results of full SQL statistics.
-	//
-	// 	- **DOWNLOAD**: Download the file that stores the analysis result of full SQL statistics.
-	//
-	// 	- **PROCEED**: Preprocess the file that stores the analysis result of full SQL statistics.
-	//
-	// 	- **PRE_LOAD**: Preload the file that stores the analysis result of full SQL statistics.
-	//
-	// 	- **VALIDATE**: Verify the functionality of stress testing.
-	//
-	// 	- **PRESSURE**: Start the stress testing task.
-	//
-	// example:
-	//
-	// PROCEED
-	BenchStep *string `json:"BenchStep,omitempty" xml:"BenchStep,omitempty"`
-	// The status that indicates the substep performed for the stress testing task. Valid values:
-	//
-	// 	- **NEW**: The task is being initialized.
-	//
-	// 	- **RUNNING**: The task is running.
-	//
-	// 	- **FAILED**: The task failed.
-	//
-	// 	- **FINISHED**: The task is complete.
-	//
-	// 	- **Terminated**: The task is terminated.
-	//
-	// 	- **Deleted**: The task is deleted.
-	//
-	// example:
-	//
-	// FINISHED
-	BenchStepStatus *string `json:"BenchStepStatus,omitempty" xml:"BenchStepStatus,omitempty"`
-	// The DBGateway ID of the stress testing client.
-	//
-	// example:
-	//
-	// 58598b2af48a0193dfc16fc6964ef****
-	ClientGatewayId *string `json:"ClientGatewayId,omitempty" xml:"ClientGatewayId,omitempty"`
-	// The type of the stress testing client. Valid values:
-	//
-	// 	- **ECS**: indicates that you must prepare the DBGateway.
-	//
-	// 	- **DAS_ECS**: indicates that DAS automatically purchases and deploys an ECS instance for stress testing.
-	//
-	// example:
-	//
-	// ECS
-	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	// The description of the stress testing task.
-	//
-	// example:
-	//
-	// test-das-bench-0501
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The UUID of the destination instance.
-	//
-	// example:
-	//
-	// hdm_d887b5ccf99fa0dc9a1e5aaac368****
-	DstInstanceUuid *string `json:"DstInstanceUuid,omitempty" xml:"DstInstanceUuid,omitempty"`
-	// The reserved parameter.
-	//
-	// example:
-	//
-	// None
-	DstIp *string `json:"DstIp,omitempty" xml:"DstIp,omitempty"`
-	// The port number of the destination instance.
-	//
-	// example:
-	//
-	// 3306
-	DstPort *int32 `json:"DstPort,omitempty" xml:"DstPort,omitempty"`
-	// The type of the identifier that is used to indicate the destination instance. Valid values:
-	//
-	// 	- **Instance*	- (default): the instance ID.
-	//
-	// 	- **ConnectionString**: the endpoint of the instance.
-	//
-	// example:
-	//
-	// Instance
-	DstType *string `json:"DstType,omitempty" xml:"DstType,omitempty"`
-	// The specification of the DTS instance.
-	//
-	// > For more information about the specifications of DTS instances and the test performance of each instance, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html).
-	//
-	// example:
-	//
-	// medium
-	DtsJobClass *string `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
-	// The ID of the DTS migration task.
-	//
-	// example:
-	//
-	// i03e3zty16i****
-	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The name of the Data Transmission Service (DTS) migration task.
-	//
-	// example:
-	//
-	// RDS_TO_RDS_MIGRATION
-	DtsJobName *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
-	// The status of the DTS migration task. Valid values:
-	//
-	// 	- **NOT_STARTED**: The task is not started.
-	//
-	// 	- **PRE_CHECKING**: The task is in precheck.
-	//
-	// 	- **PRE_CHECK_FAILED**: The precheck failed.
-	//
-	// 	- **CHECKING**: The task is being checked.
-	//
-	// 	- **MIGRATING**: The data is being migrated.
-	//
-	// 	- **CATCHED**: The data is migrated from the source instance to the destination instance.
-	//
-	// 	- **SUSPENDING**: The task is suspended.
-	//
-	// 	- **MIGRATION_FAILED**: The data failed to be migrated.
-	//
-	// 	- **FINISHED**: The task is complete.
-	//
-	// 	- **INITIALIZING**: The synchronization is being initialized.
-	//
-	// 	- **INITIALIZE_FAILED**: The synchronization failed to be initialized.
-	//
-	// 	- **SYNCHRONIZING**: The data is being synchronized.
-	//
-	// 	- **MODIFYING**: The roles of the instances are being changed.
-	//
-	// 	- **SWITCHING**: The roles of the instances are being switched.
-	//
-	// 	- **FAILED**: The task failed.
-	//
-	// example:
-	//
-	// CHECKING
-	DtsJobState *int32 `json:"DtsJobState,omitempty" xml:"DtsJobState,omitempty"`
-	// The status of the DTS migration task. Valid values:
-	//
-	// 	- **NOT_STARTED**: The task is not started.
-	//
-	// 	- **PRE_CHECKING**: The task is in precheck.
-	//
-	// 	- **PRE_CHECK_FAILED**: The precheck failed.
-	//
-	// 	- **CHECKING**: The task is being checked.
-	//
-	// 	- **MIGRATING**: The data is being migrated.
-	//
-	// 	- **CATCHED**: The data is migrated from the source instance to the destination instance.
-	//
-	// 	- **SUSPENDING**: The task is suspended.
-	//
-	// 	- **MIGRATION_FAILED**: The data failed to be migrated.
-	//
-	// 	- **FINISHED**: The task is complete.
-	//
-	// 	- **INITIALIZING**: The synchronization is being initialized.
-	//
-	// 	- **INITIALIZE_FAILED**: The synchronization failed to be initialized.
-	//
-	// 	- **SYNCHRONIZING**: The data is being synchronized.
-	//
-	// 	- **MODIFYING**: The roles of the instances are being changed.
-	//
-	// 	- **SWITCHING**: The roles of the instances are being switched.
-	//
-	// 	- **FAILED**: The task failed.
-	//
-	// example:
-	//
-	// PRE_CHECK_FAILED
-	DtsJobStatus *string `json:"DtsJobStatus,omitempty" xml:"DtsJobStatus,omitempty"`
-	// The ID of the Elastic Compute Service (ECS) instance.
-	//
-	// example:
-	//
-	// i-bp1ecr5go2go1****
-	EcsInstanceId *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
-	// The state that indicates the last operation performed for the stress testing task. Valid values:
-	//
-	// 	- **WAIT_TARGET**: prepares the destination instance.
-	//
-	// 	- **WAIT_DBGATEWAY**: prepares the DBGateway.
-	//
-	// 	- **WAIT_SQL**: prepares the full SQL statistics.
-	//
-	// 	- **WAIT_LOGIC**: prepares to replay the traffic.
-	//
-	// > When the state of a stress testing task changes to the state that is specified by the EndState parameter, the stress testing task is complete.
-	//
-	// example:
-	//
-	// WAIT_TARGET
-	EndState *string `json:"EndState,omitempty" xml:"EndState,omitempty"`
-	// The error code returned for the substep of the stress testing task.
-	//
-	// example:
-	//
-	// 10109
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the task failed.
-	//
-	// example:
-	//
-	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\\n\\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The additional information.
-	//
-	// example:
-	//
-	// Null
-	External *string `json:"External,omitempty" xml:"External,omitempty"`
-	// The rate at which the stress testing task replayed the traffic. This value is a positive integer. Valid values: **0*	- to **30**. Default value: **1**.
-	//
-	// example:
-	//
-	// 1
-	Rate *int32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
-	// The duration of the stress testing task. Unit: millisecond.
-	//
-	// example:
-	//
-	// 86400000
-	RequestDuration *int64 `json:"RequestDuration,omitempty" xml:"RequestDuration,omitempty"`
-	// The duration of the stress testing task of the smart pressure test type. Unit: millisecond.
-	//
-	// example:
-	//
-	// 86400000
-	SmartPressureTime *int32 `json:"SmartPressureTime,omitempty" xml:"SmartPressureTime,omitempty"`
-	// The source of the task. Valid values:
-	//
-	// 	- **DAS**
-	//
-	// 	- **OPEN_API**
-	//
-	// example:
-	//
-	// DAS
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The reused information about the analysis result of full SQL statistics.
-	//
-	// example:
-	//
-	// {"sqlUuid":"task_a37d2f07-45cb-4413-a2a6-c66c68****","metaUuid":"task_211e2561-5c0c-486b-864c-56b511****","sqlFile":"cl-1620057600000-1800626.sc","metaFile":"cl-1620057600000-1800626.meta"}
-	SqlCompleteReuse *string `json:"SqlCompleteReuse,omitempty" xml:"SqlCompleteReuse,omitempty"`
-	// The database engine of the source instance. Valid values:
-	//
-	// example:
-	//
-	// RDS
-	SrcInstanceArea *string `json:"SrcInstanceArea,omitempty" xml:"SrcInstanceArea,omitempty"`
-	// The UUID of the source instance.
-	//
-	// example:
-	//
-	// hdm_3063db6792965c080a4bcb6e6304****
-	SrcInstanceUuid *string `json:"SrcInstanceUuid,omitempty" xml:"SrcInstanceUuid,omitempty"`
-	// The reserved parameter.
-	//
-	// example:
-	//
-	// None
-	SrcPublicIp *string `json:"SrcPublicIp,omitempty" xml:"SrcPublicIp,omitempty"`
-	// The state that indicates the operation performed for the stress testing task. Valid values:
-	//
-	// 	- **WAIT_TARGET**: prepares the destination instance.
-	//
-	// 	- **WAIT_DBGATEWAY**: prepares the DBGateway.
-	//
-	// 	- **WAIT_SQL**: prepares the full SQL statistics.
-	//
-	// 	- **WAIT_LOGIC**: prepares to replay the traffic.
-	//
-	// example:
-	//
-	// WAIT_TARGET
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The status of the stress testing task. Valid values:
-	//
-	// 	- **SUCCESS**: The task was successful.
-	//
-	// 	- **IGNORED**: The task was ignored.
-	//
-	// 	- **RUNNING**: The task is running.
-	//
-	// 	- **EXCEPTION**: The task is abnormal.
-	//
-	// example:
-	//
-	// RUNNING
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the table that is used for stress testing.
-	//
-	// example:
-	//
-	// [{"TABLE_NAME":"customer1","TABLE_SCHEMA":"tpcc"}]
-	TableSchema *string `json:"TableSchema,omitempty" xml:"TableSchema,omitempty"`
-	// The task ID.
-	//
-	// example:
-	//
-	// e5cec704-0518-430f-8263-76f4dcds****
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The type of the stress testing task. Valid values:
-	//
-	// 	- **pressure test*	- (default): A task of this type replays the traffic that is captured from the source instance on the destination instance at the maximum playback rate that is supported by the destination instance.
-	//
-	// 	- **smart pressure test**: A task of this type analyzes the traffic that is captured from the source instance over a short period of time and generates traffic on the destination instance for continuous stress testing. The business model based on which the traffic is generated on the destination instance and the traffic distribution are consistent with those on the source instance. Stress testing tasks of this type can help you reduce the amount of time that is consumed to collect data from the source instance and reduce storage costs and performance overheads.
-	//
-	// example:
-	//
-	// pressure test
-	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The topic that contains the consumed data. This topic is a topic in Message Queue for Apache Kafka.
-	//
-	// example:
-	//
-	// das
-	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// The Alibaba Cloud account ID.
-	//
-	// example:
-	//
-	// 1091411816252****
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The version of the stress testing task. Valid values:
-	//
-	// 	- **V2.0**
-	//
-	// 	- **V3.0**
-	//
-	// example:
-	//
-	// V3.0
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The path of the temporary directory that is generated for stress testing.
-	//
-	// example:
-	//
-	// /tmp/bench/
-	WorkDir *string `json:"WorkDir,omitempty" xml:"WorkDir,omitempty"`
+	ArchiveState        *int32  `json:"ArchiveState,omitempty" xml:"ArchiveState,omitempty"`
+	BackupId            *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	BackupType          *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	BenchStep           *string `json:"BenchStep,omitempty" xml:"BenchStep,omitempty"`
+	BenchStepStatus     *string `json:"BenchStepStatus,omitempty" xml:"BenchStepStatus,omitempty"`
+	ClientGatewayId     *string `json:"ClientGatewayId,omitempty" xml:"ClientGatewayId,omitempty"`
+	ClientType          *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DstInstanceUuid     *string `json:"DstInstanceUuid,omitempty" xml:"DstInstanceUuid,omitempty"`
+	DstIp               *string `json:"DstIp,omitempty" xml:"DstIp,omitempty"`
+	DstPort             *int32  `json:"DstPort,omitempty" xml:"DstPort,omitempty"`
+	DstType             *string `json:"DstType,omitempty" xml:"DstType,omitempty"`
+	DtsJobClass         *string `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
+	DtsJobId            *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobName          *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
+	DtsJobState         *int32  `json:"DtsJobState,omitempty" xml:"DtsJobState,omitempty"`
+	DtsJobStatus        *string `json:"DtsJobStatus,omitempty" xml:"DtsJobStatus,omitempty"`
+	EcsInstanceId       *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
+	EndState            *string `json:"EndState,omitempty" xml:"EndState,omitempty"`
+	ErrorCode           *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage        *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	External            *string `json:"External,omitempty" xml:"External,omitempty"`
+	Rate                *int32  `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	RequestDuration     *int64  `json:"RequestDuration,omitempty" xml:"RequestDuration,omitempty"`
+	SmartPressureTime   *int32  `json:"SmartPressureTime,omitempty" xml:"SmartPressureTime,omitempty"`
+	Source              *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SqlCompleteReuse    *string `json:"SqlCompleteReuse,omitempty" xml:"SqlCompleteReuse,omitempty"`
+	SrcInstanceArea     *string `json:"SrcInstanceArea,omitempty" xml:"SrcInstanceArea,omitempty"`
+	SrcInstanceUuid     *string `json:"SrcInstanceUuid,omitempty" xml:"SrcInstanceUuid,omitempty"`
+	SrcPublicIp         *string `json:"SrcPublicIp,omitempty" xml:"SrcPublicIp,omitempty"`
+	State               *string `json:"State,omitempty" xml:"State,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TableSchema         *string `json:"TableSchema,omitempty" xml:"TableSchema,omitempty"`
+	TaskId              *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskType            *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	Topic               *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	UserId              *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Version             *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	WorkDir             *string `json:"WorkDir,omitempty" xml:"WorkDir,omitempty"`
 }
 
 func (s DescribeCloudBenchTasksResponseBodyDataListCloudbenchTasks) String() string {

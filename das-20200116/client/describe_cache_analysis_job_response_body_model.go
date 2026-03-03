@@ -119,11 +119,8 @@ func (s *DescribeCacheAnalysisJobResponseBody) Validate() error {
 }
 
 type DescribeCacheAnalysisJobResponseBodyData struct {
-	// The details of the large keys. The returned large keys are sorted in descending order based on the number of bytes occupied by the keys.
-	BigKeys *DescribeCacheAnalysisJobResponseBodyDataBigKeys `json:"BigKeys,omitempty" xml:"BigKeys,omitempty" type:"Struct"`
-	// The details of the large keys. The returned large keys are sorted in descending order based on the number of keys.
-	BigKeysOfNum *DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNum `json:"BigKeysOfNum,omitempty" xml:"BigKeysOfNum,omitempty" type:"Struct"`
-	// The statistics of the keys that have expired.
+	BigKeys              *DescribeCacheAnalysisJobResponseBodyDataBigKeys              `json:"BigKeys,omitempty" xml:"BigKeys,omitempty" type:"Struct"`
+	BigKeysOfNum         *DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNum         `json:"BigKeysOfNum,omitempty" xml:"BigKeysOfNum,omitempty" type:"Struct"`
 	ExpiryKeysLevelCount *DescribeCacheAnalysisJobResponseBodyDataExpiryKeysLevelCount `json:"ExpiryKeysLevelCount,omitempty" xml:"ExpiryKeysLevelCount,omitempty" type:"Struct"`
 	// The instance ID.
 	//
@@ -136,8 +133,7 @@ type DescribeCacheAnalysisJobResponseBodyData struct {
 	// example:
 	//
 	// sf79-sd99-sa37-****
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The prefixes of the keys.
+	JobId       *string                                              `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	KeyPrefixes *DescribeCacheAnalysisJobResponseBodyDataKeyPrefixes `json:"KeyPrefixes,omitempty" xml:"KeyPrefixes,omitempty" type:"Struct"`
 	// The message that is returned for the request.
 	//
@@ -166,11 +162,9 @@ type DescribeCacheAnalysisJobResponseBodyData struct {
 	// example:
 	//
 	// BACKUP
-	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
-	// The details of permanent keys. The returned keys are sorted in descending order based on the number of bytes occupied by the keys.
+	TaskState          *string                                                     `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
 	UnexBigKeysOfBytes *DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfBytes `json:"UnexBigKeysOfBytes,omitempty" xml:"UnexBigKeysOfBytes,omitempty" type:"Struct"`
-	// The details of permanent keys. The returned keys are sorted in descending order based on the number of keys.
-	UnexBigKeysOfNum *DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfNum `json:"UnexBigKeysOfNum,omitempty" xml:"UnexBigKeysOfNum,omitempty" type:"Struct"`
+	UnexBigKeysOfNum   *DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfNum   `json:"UnexBigKeysOfNum,omitempty" xml:"UnexBigKeysOfNum,omitempty" type:"Struct"`
 }
 
 func (s DescribeCacheAnalysisJobResponseBodyData) String() string {
@@ -349,54 +343,14 @@ func (s *DescribeCacheAnalysisJobResponseBodyDataBigKeys) Validate() error {
 }
 
 type DescribeCacheAnalysisJobResponseBodyDataBigKeysKeyInfo struct {
-	// The number of bytes that are occupied by the key.
-	//
-	// example:
-	//
-	// 12345
-	Bytes *int64 `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
-	// The number of elements in the key.
-	//
-	// example:
-	//
-	// 127
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The database name.
-	//
-	// example:
-	//
-	// 0
-	Db *int32 `json:"Db,omitempty" xml:"Db,omitempty"`
-	// The data type of the key.
-	//
-	// example:
-	//
-	// hashtable
-	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	// The time when the key expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. A value of 0 indicates that the key never expires.
-	//
-	// example:
-	//
-	// 1596256542547
-	ExpirationTimeMillis *int64 `json:"ExpirationTimeMillis,omitempty" xml:"ExpirationTimeMillis,omitempty"`
-	// The key name.
-	//
-	// example:
-	//
-	// task_x****
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The ID of the data node on the instance.
-	//
-	// example:
-	//
-	// r-x****-db-0
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The data type of the instance.
-	//
-	// example:
-	//
-	// hash
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Bytes                *int64  `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
+	Count                *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Db                   *int32  `json:"Db,omitempty" xml:"Db,omitempty"`
+	Encoding             *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	ExpirationTimeMillis *int64  `json:"ExpirationTimeMillis,omitempty" xml:"ExpirationTimeMillis,omitempty"`
+	Key                  *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Type                 *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeCacheAnalysisJobResponseBodyDataBigKeysKeyInfo) String() string {
@@ -518,54 +472,14 @@ func (s *DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNum) Validate() error 
 }
 
 type DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNumKeyInfo struct {
-	// The number of bytes that are occupied by the key.
-	//
-	// example:
-	//
-	// 12345
-	Bytes *int64 `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
-	// The number of elements in the key.
-	//
-	// example:
-	//
-	// 127
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The database name.
-	//
-	// example:
-	//
-	// 0
-	Db *int32 `json:"Db,omitempty" xml:"Db,omitempty"`
-	// The data type of the key.
-	//
-	// example:
-	//
-	// hashtable
-	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	// The time when the key expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. A value of 0 indicates that the key never expires.
-	//
-	// example:
-	//
-	// 1596256542547
-	ExpirationTimeMillis *int64 `json:"ExpirationTimeMillis,omitempty" xml:"ExpirationTimeMillis,omitempty"`
-	// The key name.
-	//
-	// example:
-	//
-	// task_x****
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The ID of the data node on the instance.
-	//
-	// example:
-	//
-	// r-x****-db-0
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The data type of the instance.
-	//
-	// example:
-	//
-	// hash
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Bytes                *int64  `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
+	Count                *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Db                   *int32  `json:"Db,omitempty" xml:"Db,omitempty"`
+	Encoding             *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	ExpirationTimeMillis *int64  `json:"ExpirationTimeMillis,omitempty" xml:"ExpirationTimeMillis,omitempty"`
+	Key                  *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Type                 *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNumKeyInfo) String() string {
@@ -687,48 +601,10 @@ func (s *DescribeCacheAnalysisJobResponseBodyDataExpiryKeysLevelCount) Validate(
 }
 
 type DescribeCacheAnalysisJobResponseBodyDataExpiryKeysLevelCountExpiryLevel struct {
-	// The time when the cache analysis task was complete. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1717469347000
 	AnalysisTs *int64 `json:"AnalysisTs,omitempty" xml:"AnalysisTs,omitempty"`
-	// The expiration level. Valid values:
-	//
-	// 	- **0**: The key never expires.
-	//
-	// 	- **1**: The key has expired.
-	//
-	// 	- **2**: The key has expired for 0 to 1 hour.
-	//
-	// 	- **3**: The key has expired for 1 to 3 hours.
-	//
-	// 	- **4**: The key has expired for 3 to 12 hours.
-	//
-	// 	- **5**: The key has expired for 12 to 24 hours.
-	//
-	// 	- **6**: The key has expired for one to two days.
-	//
-	// 	- **7**: The key has expired for three to seven days.
-	//
-	// 	- **8**: The key has expired for more than seven days.
-	//
-	// example:
-	//
-	// 0
-	Level *int32 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The number of bytes occupied by the keys that have expired.
-	//
-	// example:
-	//
-	// 8064
+	Level      *int32 `json:"Level,omitempty" xml:"Level,omitempty"`
 	TotalBytes *int64 `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
-	// The total number of the keys that have expired.
-	//
-	// example:
-	//
-	// 62
-	TotalKeys *int64 `json:"TotalKeys,omitempty" xml:"TotalKeys,omitempty"`
+	TotalKeys  *int64 `json:"TotalKeys,omitempty" xml:"TotalKeys,omitempty"`
 }
 
 func (s DescribeCacheAnalysisJobResponseBodyDataExpiryKeysLevelCountExpiryLevel) String() string {
@@ -814,36 +690,11 @@ func (s *DescribeCacheAnalysisJobResponseBodyDataKeyPrefixes) Validate() error {
 }
 
 type DescribeCacheAnalysisJobResponseBodyDataKeyPrefixesPrefix struct {
-	// The number of bytes that are occupied by the key.
-	//
-	// example:
-	//
-	// 12345
-	Bytes *int64 `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
-	// The number of elements in the key.
-	//
-	// example:
-	//
-	// 127
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The number of keys that contain the prefix.
-	//
-	// example:
-	//
-	// 123
-	KeyNum *int64 `json:"KeyNum,omitempty" xml:"KeyNum,omitempty"`
-	// The prefix of the key.
-	//
-	// example:
-	//
-	// task_
+	Bytes  *int64  `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
+	Count  *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	KeyNum *int64  `json:"KeyNum,omitempty" xml:"KeyNum,omitempty"`
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	// The data type of the instance.
-	//
-	// example:
-	//
-	// hash
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeCacheAnalysisJobResponseBodyDataKeyPrefixesPrefix) String() string {
@@ -938,54 +789,14 @@ func (s *DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfBytes) Validate() 
 }
 
 type DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfBytesKeyInfo struct {
-	// The number of bytes that are occupied by the key.
-	//
-	// example:
-	//
-	// 12345
-	Bytes *int64 `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
-	// The number of elements in the key.
-	//
-	// example:
-	//
-	// 127
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The database name.
-	//
-	// example:
-	//
-	// 0
-	Db *int32 `json:"Db,omitempty" xml:"Db,omitempty"`
-	// The data type of the key.
-	//
-	// example:
-	//
-	// hashtable
-	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	// The time when the key expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. A value of 0 indicates that the key never expires.
-	//
-	// example:
-	//
-	// 1596256542547
-	ExpirationTimeMillis *int64 `json:"ExpirationTimeMillis,omitempty" xml:"ExpirationTimeMillis,omitempty"`
-	// The key name.
-	//
-	// example:
-	//
-	// task_x****
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The ID of the data node on the instance.
-	//
-	// example:
-	//
-	// r-x****-db-0
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The data type of the instance.
-	//
-	// example:
-	//
-	// hash
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Bytes                *int64  `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
+	Count                *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Db                   *int32  `json:"Db,omitempty" xml:"Db,omitempty"`
+	Encoding             *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	ExpirationTimeMillis *int64  `json:"ExpirationTimeMillis,omitempty" xml:"ExpirationTimeMillis,omitempty"`
+	Key                  *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Type                 *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfBytesKeyInfo) String() string {
@@ -1107,54 +918,14 @@ func (s *DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfNum) Validate() er
 }
 
 type DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfNumKeyInfo struct {
-	// The number of bytes that are occupied by the key.
-	//
-	// example:
-	//
-	// 12345
-	Bytes *int64 `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
-	// The number of elements in the key.
-	//
-	// example:
-	//
-	// 127
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The database name.
-	//
-	// example:
-	//
-	// 0
-	Db *int32 `json:"Db,omitempty" xml:"Db,omitempty"`
-	// The data type of the key.
-	//
-	// example:
-	//
-	// hashtable
-	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	// The time when the key expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. A value of 0 indicates that the key never expires.
-	//
-	// example:
-	//
-	// 1596256542547
-	ExpirationTimeMillis *int64 `json:"ExpirationTimeMillis,omitempty" xml:"ExpirationTimeMillis,omitempty"`
-	// The key name.
-	//
-	// example:
-	//
-	// task_x****
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The ID of the data node on the instance.
-	//
-	// example:
-	//
-	// r-x****-db-0
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The data type of the instance.
-	//
-	// example:
-	//
-	// hash
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Bytes                *int64  `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
+	Count                *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Db                   *int32  `json:"Db,omitempty" xml:"Db,omitempty"`
+	Encoding             *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	ExpirationTimeMillis *int64  `json:"ExpirationTimeMillis,omitempty" xml:"ExpirationTimeMillis,omitempty"`
+	Key                  *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Type                 *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfNumKeyInfo) String() string {

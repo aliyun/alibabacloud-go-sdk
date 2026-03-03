@@ -124,9 +124,8 @@ type GetAutonomousNotifyEventsInRangeResponseBodyData struct {
 	// example:
 	//
 	// None
-	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// The detailed information, including the error codes and the number of entries that are returned.
-	List *GetAutonomousNotifyEventsInRangeResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
+	Extra *string                                               `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	List  *GetAutonomousNotifyEventsInRangeResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
 	// The page number.
 	//
 	// example:

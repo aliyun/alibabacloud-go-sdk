@@ -546,7 +546,7 @@ func (client *Client) CreateKillInstanceSessionTaskWithMaintainUserWithContext(c
 
 // Summary:
 //
-// 创建最近死锁分析任务
+// Creates a recent deadlock analysis task.
 //
 // @param request - CreateLatestDeadLockAnalysisRequest
 //
@@ -1828,7 +1828,7 @@ func (client *Client) DescribeInstanceDasProWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 获取执行计划
+// Queries the execution plan of an SQL statement.
 //
 // @param request - DescribeQueryExplainRequest
 //
@@ -1980,7 +1980,7 @@ func (client *Client) DescribeSecurityIPGroupRelationWithContext(ctx context.Con
 
 // Summary:
 //
-// # DescribeSlowLogHistogramAsync
+// Asynchronously queries the trend data of slow query logs of an instance.
 //
 // @param request - DescribeSlowLogHistogramAsyncRequest
 //
@@ -2040,7 +2040,7 @@ func (client *Client) DescribeSlowLogHistogramAsyncWithContext(ctx context.Conte
 
 // Summary:
 //
-// 查看慢日志明细接口
+// Queries the slow logs of a database instance. You can filter and sort data by multiple conditions.
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -2118,7 +2118,7 @@ func (client *Client) DescribeSlowLogRecordsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 慢日志统计信息
+// Queries statistical information about slow query logs.
 //
 // @param request - DescribeSlowLogStatisticRequest
 //
@@ -4129,7 +4129,7 @@ func (client *Client) GetDasSQLLogHotDataWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询单个死锁详情
+// Queries the details of a deadlock.
 //
 // @param request - GetDeadLockDetailRequest
 //
@@ -4257,7 +4257,7 @@ func (client *Client) GetDeadLockDetailListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取历史死锁记录
+// Queries the historical tasks of recent deadlock analysis and full deadlock analysis.
 //
 // @param request - GetDeadLockHistoryRequest
 //
@@ -4325,7 +4325,7 @@ func (client *Client) GetDeadLockHistoryWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询时间范围内基于错误日志分析的死锁数量
+// Queries the trend of the number of deadlocks in full deadlock analysis within a specified period of time.
 //
 // @param request - GetDeadlockHistogramRequest
 //
@@ -7011,6 +7011,77 @@ func (client *Client) GetStorageAnalysisResultWithContext(ctx context.Context, r
 
 // Summary:
 //
+// 瑶池AI助理大模型能力接口
+//
+// @param request - GetYaoChiAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetYaoChiAgentResponse
+func (client *Client) GetYaoChiAgentWithSSECtx(ctx context.Context, request *GetYaoChiAgentRequest, runtime *dara.RuntimeOptions, _yield chan *GetYaoChiAgentResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.getYaoChiAgentWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, request, runtime)
+	return
+}
+
+// Summary:
+//
+// 瑶池AI助理大模型能力接口
+//
+// @param request - GetYaoChiAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetYaoChiAgentResponse
+func (client *Client) GetYaoChiAgentWithContext(ctx context.Context, request *GetYaoChiAgentRequest, runtime *dara.RuntimeOptions) (_result *GetYaoChiAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExtraInfo) {
+		query["ExtraInfo"] = request.ExtraInfo
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetYaoChiAgent"),
+		Version:     dara.String("2020-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetYaoChiAgentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Terminates all sessions on an instance.
 //
 // Description:
@@ -7767,18 +7838,80 @@ func (client *Client) getDasAgentSSEWithSSECtx_opYieldFunc(_yield chan *GetDasAg
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
+}
+
+func (client *Client) getYaoChiAgentWithSSECtx_opYieldFunc(_yield chan *GetYaoChiAgentResponse, _yieldErr chan error, ctx context.Context, request *GetYaoChiAgentRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
 		if _err != nil {
 			_yieldErr <- _err
 			return
 		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExtraInfo) {
+		query["ExtraInfo"] = request.ExtraInfo
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetYaoChiAgent"),
+		Version:     dara.String("2020-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
 	}
 }
