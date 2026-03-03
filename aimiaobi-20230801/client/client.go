@@ -7976,56 +7976,19 @@ func (client *Client) ListDatasetDocumentsWithOptions(tmpReq *ListDatasetDocumen
 		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("Tags"), dara.String("json"))
 	}
 
-	query := map[string]interface{}{}
+	body := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryUuidsShrink) {
-		query["CategoryUuids"] = request.CategoryUuidsShrink
+		body["CategoryUuids"] = request.CategoryUuidsShrink
 	}
 
 	if !dara.IsNil(request.CreateTimeEnd) {
-		query["CreateTimeEnd"] = request.CreateTimeEnd
+		body["CreateTimeEnd"] = request.CreateTimeEnd
 	}
 
 	if !dara.IsNil(request.CreateTimeStart) {
-		query["CreateTimeStart"] = request.CreateTimeStart
+		body["CreateTimeStart"] = request.CreateTimeStart
 	}
 
-	if !dara.IsNil(request.DocIdsShrink) {
-		query["DocIds"] = request.DocIdsShrink
-	}
-
-	if !dara.IsNil(request.DocUuidsShrink) {
-		query["DocUuids"] = request.DocUuidsShrink
-	}
-
-	if !dara.IsNil(request.EndTime) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !dara.IsNil(request.Extend1) {
-		query["Extend1"] = request.Extend1
-	}
-
-	if !dara.IsNil(request.Extend2) {
-		query["Extend2"] = request.Extend2
-	}
-
-	if !dara.IsNil(request.Extend3) {
-		query["Extend3"] = request.Extend3
-	}
-
-	if !dara.IsNil(request.StartTime) {
-		query["StartTime"] = request.StartTime
-	}
-
-	if !dara.IsNil(request.TagsShrink) {
-		query["Tags"] = request.TagsShrink
-	}
-
-	if !dara.IsNil(request.Title) {
-		query["Title"] = request.Title
-	}
-
-	body := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetDescription) {
 		body["DatasetDescription"] = request.DatasetDescription
 	}
@@ -8038,12 +8001,36 @@ func (client *Client) ListDatasetDocumentsWithOptions(tmpReq *ListDatasetDocumen
 		body["DatasetName"] = request.DatasetName
 	}
 
+	if !dara.IsNil(request.DocIdsShrink) {
+		body["DocIds"] = request.DocIdsShrink
+	}
+
 	if !dara.IsNil(request.DocType) {
 		body["DocType"] = request.DocType
 	}
 
+	if !dara.IsNil(request.DocUuidsShrink) {
+		body["DocUuids"] = request.DocUuidsShrink
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
+	}
+
 	if !dara.IsNil(request.ExcludeFieldsShrink) {
 		body["ExcludeFields"] = request.ExcludeFieldsShrink
+	}
+
+	if !dara.IsNil(request.Extend1) {
+		body["Extend1"] = request.Extend1
+	}
+
+	if !dara.IsNil(request.Extend2) {
+		body["Extend2"] = request.Extend2
+	}
+
+	if !dara.IsNil(request.Extend3) {
+		body["Extend3"] = request.Extend3
 	}
 
 	if !dara.IsNil(request.IncludeFieldsShrink) {
@@ -8062,8 +8049,20 @@ func (client *Client) ListDatasetDocumentsWithOptions(tmpReq *ListDatasetDocumen
 		body["Query"] = request.Query
 	}
 
+	if !dara.IsNil(request.StartTime) {
+		body["StartTime"] = request.StartTime
+	}
+
 	if !dara.IsNil(request.Status) {
 		body["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TagsShrink) {
+		body["Tags"] = request.TagsShrink
+	}
+
+	if !dara.IsNil(request.Title) {
+		body["Title"] = request.Title
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
@@ -8071,8 +8070,7 @@ func (client *Client) ListDatasetDocumentsWithOptions(tmpReq *ListDatasetDocumen
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ListDatasetDocuments"),
@@ -14895,56 +14893,19 @@ func (client *Client) SearchDatasetDocumentsWithOptions(tmpReq *SearchDatasetDoc
 		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("Tags"), dara.String("json"))
 	}
 
-	query := map[string]interface{}{}
+	body := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryUuidsShrink) {
-		query["CategoryUuids"] = request.CategoryUuidsShrink
+		body["CategoryUuids"] = request.CategoryUuidsShrink
 	}
 
 	if !dara.IsNil(request.CreateTimeEnd) {
-		query["CreateTimeEnd"] = request.CreateTimeEnd
+		body["CreateTimeEnd"] = request.CreateTimeEnd
 	}
 
 	if !dara.IsNil(request.CreateTimeStart) {
-		query["CreateTimeStart"] = request.CreateTimeStart
+		body["CreateTimeStart"] = request.CreateTimeStart
 	}
 
-	if !dara.IsNil(request.DocIdsShrink) {
-		query["DocIds"] = request.DocIdsShrink
-	}
-
-	if !dara.IsNil(request.DocTypesShrink) {
-		query["DocTypes"] = request.DocTypesShrink
-	}
-
-	if !dara.IsNil(request.DocUuidsShrink) {
-		query["DocUuids"] = request.DocUuidsShrink
-	}
-
-	if !dara.IsNil(request.EndTime) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !dara.IsNil(request.Extend2) {
-		query["Extend2"] = request.Extend2
-	}
-
-	if !dara.IsNil(request.Extend3) {
-		query["Extend3"] = request.Extend3
-	}
-
-	if !dara.IsNil(request.SearchMode) {
-		query["SearchMode"] = request.SearchMode
-	}
-
-	if !dara.IsNil(request.StartTime) {
-		query["StartTime"] = request.StartTime
-	}
-
-	if !dara.IsNil(request.TagsShrink) {
-		query["Tags"] = request.TagsShrink
-	}
-
-	body := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetId) {
 		body["DatasetId"] = request.DatasetId
 	}
@@ -14953,8 +14914,32 @@ func (client *Client) SearchDatasetDocumentsWithOptions(tmpReq *SearchDatasetDoc
 		body["DatasetName"] = request.DatasetName
 	}
 
+	if !dara.IsNil(request.DocIdsShrink) {
+		body["DocIds"] = request.DocIdsShrink
+	}
+
+	if !dara.IsNil(request.DocTypesShrink) {
+		body["DocTypes"] = request.DocTypesShrink
+	}
+
+	if !dara.IsNil(request.DocUuidsShrink) {
+		body["DocUuids"] = request.DocUuidsShrink
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
+	}
+
 	if !dara.IsNil(request.Extend1) {
 		body["Extend1"] = request.Extend1
+	}
+
+	if !dara.IsNil(request.Extend2) {
+		body["Extend2"] = request.Extend2
+	}
+
+	if !dara.IsNil(request.Extend3) {
+		body["Extend3"] = request.Extend3
 	}
 
 	if !dara.IsNil(request.IncludeContent) {
@@ -14969,13 +14954,24 @@ func (client *Client) SearchDatasetDocumentsWithOptions(tmpReq *SearchDatasetDoc
 		body["Query"] = request.Query
 	}
 
+	if !dara.IsNil(request.SearchMode) {
+		body["SearchMode"] = request.SearchMode
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TagsShrink) {
+		body["Tags"] = request.TagsShrink
+	}
+
 	if !dara.IsNil(request.WorkspaceId) {
 		body["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("SearchDatasetDocuments"),
