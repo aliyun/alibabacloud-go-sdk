@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 检查账号是否存在ServiceLinkedRole授权
+// Checks whether a service-linked role is created for an Alibaba Cloud account.
 //
 // @param request - CheckServiceLinkedRoleForProductRequest
 //
@@ -1005,7 +1005,7 @@ func (client *Client) DisableRuleWithContext(ctx context.Context, request *Disab
 
 // Summary:
 //
-// 发现EventSource(例如：Mysql)的Schema和SimpleData
+// Discovers the schema and simple data of an event source (such as MySQL).
 //
 // @param tmpReq - DiscoverEventSourceRequest
 //
@@ -2759,7 +2759,7 @@ func (client *Client) UpdateEventStreamingWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 查询事件流
+// This API operation allows you to query event streams.
 //
 // @param request - UpdateEventStreamingBusinessOptionRequest
 //

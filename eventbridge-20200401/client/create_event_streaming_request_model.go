@@ -532,9 +532,10 @@ type CreateEventStreamingRequestSink struct {
 	SinkCustomizedKafkaParameters          *CreateEventStreamingRequestSinkSinkCustomizedKafkaParameters          `json:"SinkCustomizedKafkaParameters,omitempty" xml:"SinkCustomizedKafkaParameters,omitempty" type:"Struct"`
 	SinkDashVectorParameters               *CreateEventStreamingRequestSinkSinkDashVectorParameters               `json:"SinkDashVectorParameters,omitempty" xml:"SinkDashVectorParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify DataHub as the event target.
-	SinkDataHubParameters          *CreateEventStreamingRequestSinkSinkDataHubParameters `json:"SinkDataHubParameters,omitempty" xml:"SinkDataHubParameters,omitempty" type:"Struct"`
-	SinkDataWorksTriggerParameters *SinkDataWorksTriggerParameters                       `json:"SinkDataWorksTriggerParameters,omitempty" xml:"SinkDataWorksTriggerParameters,omitempty"`
-	SinkDorisParameters            *CreateEventStreamingRequestSinkSinkDorisParameters   `json:"SinkDorisParameters,omitempty" xml:"SinkDorisParameters,omitempty" type:"Struct"`
+	SinkDataHubParameters          *CreateEventStreamingRequestSinkSinkDataHubParameters    `json:"SinkDataHubParameters,omitempty" xml:"SinkDataHubParameters,omitempty" type:"Struct"`
+	SinkDataWorksTriggerParameters *SinkDataWorksTriggerParameters                          `json:"SinkDataWorksTriggerParameters,omitempty" xml:"SinkDataWorksTriggerParameters,omitempty"`
+	SinkDorisParameters            *CreateEventStreamingRequestSinkSinkDorisParameters      `json:"SinkDorisParameters,omitempty" xml:"SinkDorisParameters,omitempty" type:"Struct"`
+	SinkEventHouseParameters       *CreateEventStreamingRequestSinkSinkEventHouseParameters `json:"SinkEventHouseParameters,omitempty" xml:"SinkEventHouseParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify Function Compute as the event target.
 	SinkFcParameters *CreateEventStreamingRequestSinkSinkFcParameters `json:"SinkFcParameters,omitempty" xml:"SinkFcParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify CloudFlow as the event target.
@@ -606,6 +607,10 @@ func (s *CreateEventStreamingRequestSink) GetSinkDataWorksTriggerParameters() *S
 
 func (s *CreateEventStreamingRequestSink) GetSinkDorisParameters() *CreateEventStreamingRequestSinkSinkDorisParameters {
 	return s.SinkDorisParameters
+}
+
+func (s *CreateEventStreamingRequestSink) GetSinkEventHouseParameters() *CreateEventStreamingRequestSinkSinkEventHouseParameters {
+	return s.SinkEventHouseParameters
 }
 
 func (s *CreateEventStreamingRequestSink) GetSinkFcParameters() *CreateEventStreamingRequestSinkSinkFcParameters {
@@ -715,6 +720,11 @@ func (s *CreateEventStreamingRequestSink) SetSinkDataWorksTriggerParameters(v *S
 
 func (s *CreateEventStreamingRequestSink) SetSinkDorisParameters(v *CreateEventStreamingRequestSinkSinkDorisParameters) *CreateEventStreamingRequestSink {
 	s.SinkDorisParameters = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSink) SetSinkEventHouseParameters(v *CreateEventStreamingRequestSinkSinkEventHouseParameters) *CreateEventStreamingRequestSink {
+	s.SinkEventHouseParameters = v
 	return s
 }
 
@@ -841,6 +851,11 @@ func (s *CreateEventStreamingRequestSink) Validate() error {
 	}
 	if s.SinkDorisParameters != nil {
 		if err := s.SinkDorisParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkEventHouseParameters != nil {
+		if err := s.SinkEventHouseParameters.Validate(); err != nil {
 			return err
 		}
 	}
@@ -3568,6 +3583,189 @@ func (s *CreateEventStreamingRequestSinkSinkDorisParametersVpcId) SetValue(v str
 }
 
 func (s *CreateEventStreamingRequestSinkSinkDorisParametersVpcId) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateEventStreamingRequestSinkSinkEventHouseParameters struct {
+	// example:
+	//
+	// demo
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// example:
+	//
+	// demo-table
+	EventTableName *string                                                                `json:"EventTableName,omitempty" xml:"EventTableName,omitempty"`
+	MappingRules   []*CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRules `json:"MappingRules,omitempty" xml:"MappingRules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// name1
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+}
+
+func (s CreateEventStreamingRequestSinkSinkEventHouseParameters) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSinkSinkEventHouseParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSinkSinkEventHouseParameters) GetCatalogName() *string {
+	return s.CatalogName
+}
+
+func (s *CreateEventStreamingRequestSinkSinkEventHouseParameters) GetEventTableName() *string {
+	return s.EventTableName
+}
+
+func (s *CreateEventStreamingRequestSinkSinkEventHouseParameters) GetMappingRules() []*CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRules {
+	return s.MappingRules
+}
+
+func (s *CreateEventStreamingRequestSinkSinkEventHouseParameters) GetNamespaceName() *string {
+	return s.NamespaceName
+}
+
+func (s *CreateEventStreamingRequestSinkSinkEventHouseParameters) SetCatalogName(v string) *CreateEventStreamingRequestSinkSinkEventHouseParameters {
+	s.CatalogName = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkEventHouseParameters) SetEventTableName(v string) *CreateEventStreamingRequestSinkSinkEventHouseParameters {
+	s.EventTableName = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkEventHouseParameters) SetMappingRules(v []*CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRules) *CreateEventStreamingRequestSinkSinkEventHouseParameters {
+	s.MappingRules = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkEventHouseParameters) SetNamespaceName(v string) *CreateEventStreamingRequestSinkSinkEventHouseParameters {
+	s.NamespaceName = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkEventHouseParameters) Validate() error {
+	if s.MappingRules != nil {
+		for _, item := range s.MappingRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRules struct {
+	// example:
+	//
+	// age
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// example:
+	//
+	// text
+	ColumnType  *string                                                                         `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+	ColumnValue *CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRulesColumnValue `json:"ColumnValue,omitempty" xml:"ColumnValue,omitempty" type:"Struct"`
+}
+
+func (s CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRules) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRules) GetColumnName() *string {
+	return s.ColumnName
+}
+
+func (s *CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRules) GetColumnType() *string {
+	return s.ColumnType
+}
+
+func (s *CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRules) GetColumnValue() *CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRulesColumnValue {
+	return s.ColumnValue
+}
+
+func (s *CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRules) SetColumnName(v string) *CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRules {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRules) SetColumnType(v string) *CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRules {
+	s.ColumnType = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRules) SetColumnValue(v *CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRulesColumnValue) *CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRules {
+	s.ColumnValue = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRules) Validate() error {
+	if s.ColumnValue != nil {
+		if err := s.ColumnValue.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRulesColumnValue struct {
+	// example:
+	//
+	// JSONPATH
+	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// example:
+	//
+	// The value of ${key} is ${value}!
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	// example:
+	//
+	// $.data.value
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRulesColumnValue) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRulesColumnValue) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRulesColumnValue) GetForm() *string {
+	return s.Form
+}
+
+func (s *CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRulesColumnValue) GetTemplate() *string {
+	return s.Template
+}
+
+func (s *CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRulesColumnValue) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRulesColumnValue) SetForm(v string) *CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRulesColumnValue {
+	s.Form = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRulesColumnValue) SetTemplate(v string) *CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRulesColumnValue {
+	s.Template = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRulesColumnValue) SetValue(v string) *CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRulesColumnValue {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRulesColumnValue) Validate() error {
 	return dara.Validate(s)
 }
 
