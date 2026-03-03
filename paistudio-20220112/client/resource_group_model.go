@@ -21,6 +21,10 @@ type iResourceGroup interface {
 	GetNodeCount() *int32
 	SetResourceGroupID(v string) *ResourceGroup
 	GetResourceGroupID() *string
+	SetResourceType(v string) *ResourceGroup
+	GetResourceType() *string
+	SetStatus(v string) *ResourceGroup
+	GetStatus() *string
 	SetUserVpc(v *UserVpc) *ResourceGroup
 	GetUserVpc() *UserVpc
 	SetVersion(v string) *ResourceGroup
@@ -66,6 +70,8 @@ type ResourceGroup struct {
 	//
 	// rg17tmvwiokhzaxg
 	ResourceGroupID *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
+	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// UserVpc
 	UserVpc *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
 	Version *string  `json:"Version,omitempty" xml:"Version,omitempty"`
@@ -109,6 +115,14 @@ func (s *ResourceGroup) GetResourceGroupID() *string {
 	return s.ResourceGroupID
 }
 
+func (s *ResourceGroup) GetResourceType() *string {
+	return s.ResourceType
+}
+
+func (s *ResourceGroup) GetStatus() *string {
+	return s.Status
+}
+
 func (s *ResourceGroup) GetUserVpc() *UserVpc {
 	return s.UserVpc
 }
@@ -148,6 +162,16 @@ func (s *ResourceGroup) SetNodeCount(v int32) *ResourceGroup {
 
 func (s *ResourceGroup) SetResourceGroupID(v string) *ResourceGroup {
 	s.ResourceGroupID = &v
+	return s
+}
+
+func (s *ResourceGroup) SetResourceType(v string) *ResourceGroup {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ResourceGroup) SetStatus(v string) *ResourceGroup {
+	s.Status = &v
 	return s
 }
 

@@ -11,13 +11,16 @@ type iWorkspaceIdName interface {
 	GoString() string
 	SetWorkspaceId(v string) *WorkspaceIdName
 	GetWorkspaceId() *string
+	SetWorkspaceName(v string) *WorkspaceIdName
+	GetWorkspaceName() *string
 }
 
 type WorkspaceIdName struct {
 	// example:
 	//
 	// ws123456
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s WorkspaceIdName) String() string {
@@ -32,8 +35,17 @@ func (s *WorkspaceIdName) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
 
+func (s *WorkspaceIdName) GetWorkspaceName() *string {
+	return s.WorkspaceName
+}
+
 func (s *WorkspaceIdName) SetWorkspaceId(v string) *WorkspaceIdName {
 	s.WorkspaceId = &v
+	return s
+}
+
+func (s *WorkspaceIdName) SetWorkspaceName(v string) *WorkspaceIdName {
+	s.WorkspaceName = &v
 	return s
 }
 

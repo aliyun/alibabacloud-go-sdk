@@ -11,6 +11,8 @@ type iListQuotaActiveUserUsagesResponseBody interface {
 	GoString() string
 	SetQuotaUserUsage(v []*QuotaUser) *ListQuotaActiveUserUsagesResponseBody
 	GetQuotaUserUsage() []*QuotaUser
+	SetQuotaUserUsages(v []*QuotaUser) *ListQuotaActiveUserUsagesResponseBody
+	GetQuotaUserUsages() []*QuotaUser
 	SetRequestId(v string) *ListQuotaActiveUserUsagesResponseBody
 	GetRequestId() *string
 	SetTotalCount(v int32) *ListQuotaActiveUserUsagesResponseBody
@@ -18,7 +20,8 @@ type iListQuotaActiveUserUsagesResponseBody interface {
 }
 
 type ListQuotaActiveUserUsagesResponseBody struct {
-	QuotaUserUsage []*QuotaUser `json:"QuotaUserUsage,omitempty" xml:"QuotaUserUsage,omitempty" type:"Repeated"`
+	QuotaUserUsage  []*QuotaUser `json:"QuotaUserUsage,omitempty" xml:"QuotaUserUsage,omitempty" type:"Repeated"`
+	QuotaUserUsages []*QuotaUser `json:"QuotaUserUsages,omitempty" xml:"QuotaUserUsages,omitempty" type:"Repeated"`
 	// Id of the request
 	//
 	// example:
@@ -43,6 +46,10 @@ func (s *ListQuotaActiveUserUsagesResponseBody) GetQuotaUserUsage() []*QuotaUser
 	return s.QuotaUserUsage
 }
 
+func (s *ListQuotaActiveUserUsagesResponseBody) GetQuotaUserUsages() []*QuotaUser {
+	return s.QuotaUserUsages
+}
+
 func (s *ListQuotaActiveUserUsagesResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
@@ -53,6 +60,11 @@ func (s *ListQuotaActiveUserUsagesResponseBody) GetTotalCount() *int32 {
 
 func (s *ListQuotaActiveUserUsagesResponseBody) SetQuotaUserUsage(v []*QuotaUser) *ListQuotaActiveUserUsagesResponseBody {
 	s.QuotaUserUsage = v
+	return s
+}
+
+func (s *ListQuotaActiveUserUsagesResponseBody) SetQuotaUserUsages(v []*QuotaUser) *ListQuotaActiveUserUsagesResponseBody {
+	s.QuotaUserUsages = v
 	return s
 }
 
@@ -69,6 +81,15 @@ func (s *ListQuotaActiveUserUsagesResponseBody) SetTotalCount(v int32) *ListQuot
 func (s *ListQuotaActiveUserUsagesResponseBody) Validate() error {
 	if s.QuotaUserUsage != nil {
 		for _, item := range s.QuotaUserUsage {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.QuotaUserUsages != nil {
+		for _, item := range s.QuotaUserUsages {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
