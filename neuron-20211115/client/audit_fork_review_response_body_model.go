@@ -16,8 +16,14 @@ type iAuditForkReviewResponseBody interface {
 }
 
 type AuditForkReviewResponseBody struct {
+	// example:
+	//
+	// fsahkfkjsjfsdjlfalsf
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    *string `json:"result,omitempty" xml:"result,omitempty"`
+	// example:
+	//
+	// true
+	Result *string `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s AuditForkReviewResponseBody) String() string {

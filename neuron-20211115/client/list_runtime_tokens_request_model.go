@@ -26,13 +26,34 @@ type iListRuntimeTokensRequest interface {
 }
 
 type ListRuntimeTokensRequest struct {
-	EnterpriseId   *int64  `json:"enterpriseId,omitempty" xml:"enterpriseId,omitempty"`
-	OrderBy        *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	// example:
+	//
+	// 1
+	EnterpriseId *int64 `json:"enterpriseId,omitempty" xml:"enterpriseId,omitempty"`
+	// example:
+	//
+	// gmtCreated
+	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	// example:
+	//
+	// desc
 	OrderDirection *string `json:"orderDirection,omitempty" xml:"orderDirection,omitempty"`
-	PageNumber     *string `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize       *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	PbcId          *int64  `json:"pbcId,omitempty" xml:"pbcId,omitempty"`
-	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PbcId *int64 `json:"pbcId,omitempty" xml:"pbcId,omitempty"`
+	// example:
+	//
+	// 1
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s ListRuntimeTokensRequest) String() string {

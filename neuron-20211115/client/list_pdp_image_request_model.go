@@ -22,11 +22,27 @@ type iListPdpImageRequest interface {
 }
 
 type ListPdpImageRequest struct {
-	OrderBy        *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	// example:
+	//
+	// gmtCreated
+	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	// example:
+	//
+	// desc
 	OrderDirection *string `json:"orderDirection,omitempty" xml:"orderDirection,omitempty"`
-	PageNumber     *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize       *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 

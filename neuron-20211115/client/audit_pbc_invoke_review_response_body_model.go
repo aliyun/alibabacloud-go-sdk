@@ -16,6 +16,9 @@ type iAuditPbcInvokeReviewResponseBody interface {
 }
 
 type AuditPbcInvokeReviewResponseBody struct {
+	// example:
+	//
+	// 210548f617721779253531433de6e0
 	RequestId *string              `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Result    *CatalogCommonResult `json:"result,omitempty" xml:"result,omitempty"`
 }

@@ -5426,6 +5426,14 @@ func (client *Client) GetHistoryDeveloperWithOptions(accountId *string, request 
 		query["enterpriseId"] = request.EnterpriseId
 	}
 
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),

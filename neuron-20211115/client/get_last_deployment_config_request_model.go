@@ -15,6 +15,10 @@ type iGetLastDeploymentConfigRequest interface {
 
 type GetLastDeploymentConfigRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 101
 	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 

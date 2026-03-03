@@ -59,7 +59,10 @@ type ListMonitorTasksRequest struct {
 	// example:
 	//
 	// 2
-	PbcId          *string `json:"pbcId,omitempty" xml:"pbcId,omitempty"`
+	PbcId *string `json:"pbcId,omitempty" xml:"pbcId,omitempty"`
+	// example:
+	//
+	// 1
 	ServiceGroupId *string `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 	// example:
 	//

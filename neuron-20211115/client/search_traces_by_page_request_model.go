@@ -71,6 +71,10 @@ type SearchTracesByPageRequest struct {
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 	// example:
 	//

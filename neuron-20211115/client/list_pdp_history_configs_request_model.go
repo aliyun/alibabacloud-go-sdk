@@ -26,11 +26,26 @@ type iListPdpHistoryConfigsRequest interface {
 }
 
 type ListPdpHistoryConfigsRequest struct {
-	ConfigId       *int64  `json:"configId,omitempty" xml:"configId,omitempty"`
-	OrderBy        *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	ConfigId *int64 `json:"configId,omitempty" xml:"configId,omitempty"`
+	// example:
+	//
+	// gmtCreated
+	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	// example:
+	//
+	// desc
 	OrderDirection *string `json:"orderDirection,omitempty" xml:"orderDirection,omitempty"`
-	PageNumber     *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize       *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 1
 	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 	Type           *string `json:"type,omitempty" xml:"type,omitempty"`
 }

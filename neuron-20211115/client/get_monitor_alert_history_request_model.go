@@ -42,7 +42,13 @@ type GetMonitorAlertHistoryRequest struct {
 	OrderDirection *string `json:"orderDirection,omitempty" xml:"orderDirection,omitempty"`
 	PageNumber     *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	PageSize       *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	PbcId          *int64  `json:"pbcId,omitempty" xml:"pbcId,omitempty"`
+	// example:
+	//
+	// 123
+	PbcId *int64 `json:"pbcId,omitempty" xml:"pbcId,omitempty"`
+	// example:
+	//
+	// 123
 	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 	StartTime      *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// This parameter is required.

@@ -28,14 +28,38 @@ type iListPdpLogsRequest interface {
 }
 
 type ListPdpLogsRequest struct {
-	From           *int64  `json:"from,omitempty" xml:"from,omitempty"`
-	Ip             *string `json:"ip,omitempty" xml:"ip,omitempty"`
-	PageNumber     *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize       *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Query          *string `json:"query,omitempty" xml:"query,omitempty"`
-	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	SourceType     *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	To             *int64  `json:"to,omitempty" xml:"to,omitempty"`
+	// example:
+	//
+	// 12
+	From *int64 `json:"from,omitempty" xml:"from,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// user
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// example:
+	//
+	// 1
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// example:
+	//
+	// 1
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// example:
+	//
+	// 1
+	To *int64 `json:"to,omitempty" xml:"to,omitempty"`
 }
 
 func (s ListPdpLogsRequest) String() string {

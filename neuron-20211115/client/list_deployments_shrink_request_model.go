@@ -27,11 +27,27 @@ type iListDeploymentsShrinkRequest interface {
 
 type ListDeploymentsShrinkRequest struct {
 	ExcludeStatusShrink *string `json:"excludeStatus,omitempty" xml:"excludeStatus,omitempty"`
-	OrderBy             *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
-	OrderDirection      *string `json:"orderDirection,omitempty" xml:"orderDirection,omitempty"`
-	PageNumber          *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize            *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// gmtCreated
+	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	// example:
+	//
+	// desc
+	OrderDirection *string `json:"orderDirection,omitempty" xml:"orderDirection,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 	StatusShrink   *string `json:"status,omitempty" xml:"status,omitempty"`
 }

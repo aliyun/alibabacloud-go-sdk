@@ -24,12 +24,24 @@ type iListMicroServiceRequest interface {
 }
 
 type ListMicroServiceRequest struct {
-	OrderBy        *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	// example:
+	//
+	// gmtCreated
+	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	// example:
+	//
+	// desc
 	OrderDirection *string `json:"orderDirection,omitempty" xml:"orderDirection,omitempty"`
 	PageNumber     *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	PageSize       *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	PbcId          *int64  `json:"pbcId,omitempty" xml:"pbcId,omitempty"`
-	ServiceIds     *string `json:"serviceIds,omitempty" xml:"serviceIds,omitempty"`
+	// example:
+	//
+	// 1
+	PbcId *int64 `json:"pbcId,omitempty" xml:"pbcId,omitempty"`
+	// example:
+	//
+	// 1
+	ServiceIds *string `json:"serviceIds,omitempty" xml:"serviceIds,omitempty"`
 }
 
 func (s ListMicroServiceRequest) String() string {
