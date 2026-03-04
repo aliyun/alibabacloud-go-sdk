@@ -29,6 +29,8 @@ type iCreateMemoryCollectionInput interface {
 	GetType() *string
 	SetVectorStoreConfig(v *VectorStoreConfig) *CreateMemoryCollectionInput
 	GetVectorStoreConfig() *VectorStoreConfig
+	SetWorkspaceId(v string) *CreateMemoryCollectionInput
+	GetWorkspaceId() *string
 }
 
 type CreateMemoryCollectionInput struct {
@@ -42,6 +44,7 @@ type CreateMemoryCollectionInput struct {
 	NetworkConfiguration      *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
 	Type                      *string               `json:"type,omitempty" xml:"type,omitempty"`
 	VectorStoreConfig         *VectorStoreConfig    `json:"vectorStoreConfig,omitempty" xml:"vectorStoreConfig,omitempty"`
+	WorkspaceId               *string               `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s CreateMemoryCollectionInput) String() string {
@@ -92,6 +95,10 @@ func (s *CreateMemoryCollectionInput) GetVectorStoreConfig() *VectorStoreConfig 
 	return s.VectorStoreConfig
 }
 
+func (s *CreateMemoryCollectionInput) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *CreateMemoryCollectionInput) SetDescription(v string) *CreateMemoryCollectionInput {
 	s.Description = &v
 	return s
@@ -139,6 +146,11 @@ func (s *CreateMemoryCollectionInput) SetType(v string) *CreateMemoryCollectionI
 
 func (s *CreateMemoryCollectionInput) SetVectorStoreConfig(v *VectorStoreConfig) *CreateMemoryCollectionInput {
 	s.VectorStoreConfig = v
+	return s
+}
+
+func (s *CreateMemoryCollectionInput) SetWorkspaceId(v string) *CreateMemoryCollectionInput {
+	s.WorkspaceId = &v
 	return s
 }
 

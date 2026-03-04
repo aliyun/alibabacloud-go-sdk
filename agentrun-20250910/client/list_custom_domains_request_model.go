@@ -11,6 +11,8 @@ type iListCustomDomainsRequest interface {
 	GoString() string
 	SetDomainName(v string) *ListCustomDomainsRequest
 	GetDomainName() *string
+	SetDomainType(v string) *ListCustomDomainsRequest
+	GetDomainType() *string
 	SetPageNumber(v int32) *ListCustomDomainsRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListCustomDomainsRequest
@@ -26,6 +28,7 @@ type ListCustomDomainsRequest struct {
 	//
 	// mydomain.com
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	DomainType *string `json:"domainType,omitempty" xml:"domainType,omitempty"`
 	// example:
 	//
 	// 1
@@ -56,6 +59,10 @@ func (s *ListCustomDomainsRequest) GetDomainName() *string {
 	return s.DomainName
 }
 
+func (s *ListCustomDomainsRequest) GetDomainType() *string {
+	return s.DomainType
+}
+
 func (s *ListCustomDomainsRequest) GetPageNumber() *int32 {
 	return s.PageNumber
 }
@@ -74,6 +81,11 @@ func (s *ListCustomDomainsRequest) GetResourceType() *string {
 
 func (s *ListCustomDomainsRequest) SetDomainName(v string) *ListCustomDomainsRequest {
 	s.DomainName = &v
+	return s
+}
+
+func (s *ListCustomDomainsRequest) SetDomainType(v string) *ListCustomDomainsRequest {
+	s.DomainType = &v
 	return s
 }
 

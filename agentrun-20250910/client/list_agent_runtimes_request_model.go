@@ -25,6 +25,8 @@ type iListAgentRuntimesRequest interface {
 	GetStatus() *string
 	SetWorkspaceId(v string) *ListAgentRuntimesRequest
 	GetWorkspaceId() *string
+	SetWorkspaceIds(v string) *ListAgentRuntimesRequest
+	GetWorkspaceIds() *string
 }
 
 type ListAgentRuntimesRequest struct {
@@ -73,7 +75,8 @@ type ListAgentRuntimesRequest struct {
 	// example:
 	//
 	// ws-1234567890abcdef
-	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	WorkspaceId  *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	WorkspaceIds *string `json:"workspaceIds,omitempty" xml:"workspaceIds,omitempty"`
 }
 
 func (s ListAgentRuntimesRequest) String() string {
@@ -116,6 +119,10 @@ func (s *ListAgentRuntimesRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
 
+func (s *ListAgentRuntimesRequest) GetWorkspaceIds() *string {
+	return s.WorkspaceIds
+}
+
 func (s *ListAgentRuntimesRequest) SetAgentRuntimeName(v string) *ListAgentRuntimesRequest {
 	s.AgentRuntimeName = &v
 	return s
@@ -153,6 +160,11 @@ func (s *ListAgentRuntimesRequest) SetStatus(v string) *ListAgentRuntimesRequest
 
 func (s *ListAgentRuntimesRequest) SetWorkspaceId(v string) *ListAgentRuntimesRequest {
 	s.WorkspaceId = &v
+	return s
+}
+
+func (s *ListAgentRuntimesRequest) SetWorkspaceIds(v string) *ListAgentRuntimesRequest {
+	s.WorkspaceIds = &v
 	return s
 }
 

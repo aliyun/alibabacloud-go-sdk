@@ -908,6 +908,75 @@ func (client *Client) CreateTemplate(request *CreateTemplateRequest) (_result *C
 
 // Summary:
 //
+// 创建工作空间
+//
+// Description:
+//
+// 创建工作空间
+//
+// @param request - CreateWorkspaceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWorkspaceResponse
+func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWorkspace"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/workspaces"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建工作空间
+//
+// Description:
+//
+// 创建工作空间
+//
+// @param request - CreateWorkspaceRequest
+//
+// @return CreateWorkspaceResponse
+func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result *CreateWorkspaceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateWorkspaceResponse{}
+	_body, _err := client.CreateWorkspaceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除智能体运行时
 //
 // Description:
@@ -1531,6 +1600,64 @@ func (client *Client) DeleteTemplate(templateName *string) (_result *DeleteTempl
 	headers := make(map[string]*string)
 	_result = &DeleteTemplateResponse{}
 	_body, _err := client.DeleteTemplateWithOptions(templateName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除工作空间
+//
+// Description:
+//
+// 删除工作空间
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWorkspaceResponse
+func (client *Client) DeleteWorkspaceWithOptions(workspaceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteWorkspaceResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteWorkspace"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除工作空间
+//
+// Description:
+//
+// 删除工作空间
+//
+// @return DeleteWorkspaceResponse
+func (client *Client) DeleteWorkspace(workspaceId *string) (_result *DeleteWorkspaceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteWorkspaceResponse{}
+	_body, _err := client.DeleteWorkspaceWithOptions(workspaceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2270,6 +2397,114 @@ func (client *Client) GetTemplate(templateName *string) (_result *GetTemplateRes
 
 // Summary:
 //
+// 查看工作空间
+//
+// Description:
+//
+// 查看工作空间
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkspaceResponse
+func (client *Client) GetWorkspaceWithOptions(workspaceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetWorkspaceResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetWorkspace"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看工作空间
+//
+// Description:
+//
+// 查看工作空间
+//
+// @return GetWorkspaceResponse
+func (client *Client) GetWorkspace(workspaceId *string) (_result *GetWorkspaceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetWorkspaceResponse{}
+	_body, _err := client.GetWorkspaceWithOptions(workspaceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取工作空间下的发现端点
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkspaceDiscoveryEndpointsResponse
+func (client *Client) GetWorkspaceDiscoveryEndpointsWithOptions(workspaceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetWorkspaceDiscoveryEndpointsResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetWorkspaceDiscoveryEndpoints"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/discovery/endpoints"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetWorkspaceDiscoveryEndpointsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取工作空间下的发现端点
+//
+// @return GetWorkspaceDiscoveryEndpointsResponse
+func (client *Client) GetWorkspaceDiscoveryEndpoints(workspaceId *string) (_result *GetWorkspaceDiscoveryEndpointsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetWorkspaceDiscoveryEndpointsResponse{}
+	_body, _err := client.GetWorkspaceDiscoveryEndpointsWithOptions(workspaceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Retrieve the list of access endpoints for an agent runtime
 //
 // Description:
@@ -2477,6 +2712,10 @@ func (client *Client) ListAgentRuntimesWithOptions(request *ListAgentRuntimesReq
 
 	if !dara.IsNil(request.WorkspaceId) {
 		query["workspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.WorkspaceIds) {
+		query["workspaceIds"] = request.WorkspaceIds
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2807,6 +3046,10 @@ func (client *Client) ListCustomDomainsWithOptions(request *ListCustomDomainsReq
 		query["domainName"] = request.DomainName
 	}
 
+	if !dara.IsNil(request.DomainType) {
+		query["domainType"] = request.DomainType
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		query["pageNumber"] = request.PageNumber
 	}
@@ -2977,6 +3220,10 @@ func (client *Client) ListMemoryCollectionsWithOptions(request *ListMemoryCollec
 
 	if !dara.IsNil(request.Type) {
 		query["type"] = request.Type
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["workspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4189,6 +4436,136 @@ func (client *Client) UpdateTemplate(templateName *string, request *UpdateTempla
 	headers := make(map[string]*string)
 	_result = &UpdateTemplateResponse{}
 	_body, _err := client.UpdateTemplateWithOptions(templateName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新工作空间
+//
+// Description:
+//
+// 更新工作空间
+//
+// @param request - UpdateWorkspaceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWorkspaceResponse
+func (client *Client) UpdateWorkspaceWithOptions(workspaceId *string, request *UpdateWorkspaceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateWorkspace"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新工作空间
+//
+// Description:
+//
+// 更新工作空间
+//
+// @param request - UpdateWorkspaceRequest
+//
+// @return UpdateWorkspaceResponse
+func (client *Client) UpdateWorkspace(workspaceId *string, request *UpdateWorkspaceRequest) (_result *UpdateWorkspaceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateWorkspaceResponse{}
+	_body, _err := client.UpdateWorkspaceWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取工作空间下的发现端点
+//
+// @param request - UpdateWorkspaceDiscoveryEndpointsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWorkspaceDiscoveryEndpointsResponse
+func (client *Client) UpdateWorkspaceDiscoveryEndpointsWithOptions(workspaceId *string, request *UpdateWorkspaceDiscoveryEndpointsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateWorkspaceDiscoveryEndpointsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateWorkspaceDiscoveryEndpoints"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/discovery/endpoints"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateWorkspaceDiscoveryEndpointsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取工作空间下的发现端点
+//
+// @param request - UpdateWorkspaceDiscoveryEndpointsRequest
+//
+// @return UpdateWorkspaceDiscoveryEndpointsResponse
+func (client *Client) UpdateWorkspaceDiscoveryEndpoints(workspaceId *string, request *UpdateWorkspaceDiscoveryEndpointsRequest) (_result *UpdateWorkspaceDiscoveryEndpointsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateWorkspaceDiscoveryEndpointsResponse{}
+	_body, _err := client.UpdateWorkspaceDiscoveryEndpointsWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

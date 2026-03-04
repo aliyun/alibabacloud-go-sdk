@@ -15,6 +15,8 @@ type iPathConfig interface {
 	GetMethods() []*string
 	SetPath(v string) *PathConfig
 	GetPath() *string
+	SetRemoveBasePathOnForward(v bool) *PathConfig
+	GetRemoveBasePathOnForward() *bool
 	SetResourceName(v string) *PathConfig
 	GetResourceName() *string
 	SetResourceType(v string) *PathConfig
@@ -35,7 +37,8 @@ type PathConfig struct {
 	// example:
 	//
 	// /login
-	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	Path                    *string `json:"path,omitempty" xml:"path,omitempty"`
+	RemoveBasePathOnForward *bool   `json:"removeBasePathOnForward,omitempty" xml:"removeBasePathOnForward,omitempty"`
 	// 资源名称
 	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
 	// 资源类型（和凭证关联资源类型一致）
@@ -66,6 +69,10 @@ func (s *PathConfig) GetPath() *string {
 	return s.Path
 }
 
+func (s *PathConfig) GetRemoveBasePathOnForward() *bool {
+	return s.RemoveBasePathOnForward
+}
+
 func (s *PathConfig) GetResourceName() *string {
 	return s.ResourceName
 }
@@ -86,6 +93,11 @@ func (s *PathConfig) SetMethods(v []*string) *PathConfig {
 
 func (s *PathConfig) SetPath(v string) *PathConfig {
 	s.Path = &v
+	return s
+}
+
+func (s *PathConfig) SetRemoveBasePathOnForward(v bool) *PathConfig {
+	s.RemoveBasePathOnForward = &v
 	return s
 }
 

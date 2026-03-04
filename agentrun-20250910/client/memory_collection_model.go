@@ -33,6 +33,8 @@ type iMemoryCollection interface {
 	GetNetworkConfiguration() *NetworkConfiguration
 	SetVectorStoreConfig(v *VectorStoreConfig) *MemoryCollection
 	GetVectorStoreConfig() *VectorStoreConfig
+	SetWorkspaceId(v string) *MemoryCollection
+	GetWorkspaceId() *string
 }
 
 type MemoryCollection struct {
@@ -48,6 +50,7 @@ type MemoryCollection struct {
 	MemoryCollectionName      *string               `json:"memoryCollectionName,omitempty" xml:"memoryCollectionName,omitempty"`
 	NetworkConfiguration      *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
 	VectorStoreConfig         *VectorStoreConfig    `json:"vectorStoreConfig,omitempty" xml:"vectorStoreConfig,omitempty"`
+	WorkspaceId               *string               `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s MemoryCollection) String() string {
@@ -104,6 +107,10 @@ func (s *MemoryCollection) GetNetworkConfiguration() *NetworkConfiguration {
 
 func (s *MemoryCollection) GetVectorStoreConfig() *VectorStoreConfig {
 	return s.VectorStoreConfig
+}
+
+func (s *MemoryCollection) GetWorkspaceId() *string {
+	return s.WorkspaceId
 }
 
 func (s *MemoryCollection) SetCreatedAt(v string) *MemoryCollection {
@@ -163,6 +170,11 @@ func (s *MemoryCollection) SetNetworkConfiguration(v *NetworkConfiguration) *Mem
 
 func (s *MemoryCollection) SetVectorStoreConfig(v *VectorStoreConfig) *MemoryCollection {
 	s.VectorStoreConfig = v
+	return s
+}
+
+func (s *MemoryCollection) SetWorkspaceId(v string) *MemoryCollection {
+	s.WorkspaceId = &v
 	return s
 }
 
