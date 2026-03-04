@@ -23,6 +23,8 @@ type iInitContainerConfig interface {
 	GetImageUrl() *string
 	SetName(v string) *InitContainerConfig
 	GetName() *string
+	SetSecretMountDesc(v string) *InitContainerConfig
+	GetSecretMountDesc() *string
 }
 
 type InitContainerConfig struct {
@@ -33,6 +35,7 @@ type InitContainerConfig struct {
 	Envs               *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
 	ImageUrl           *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SecretMountDesc    *string `json:"SecretMountDesc,omitempty" xml:"SecretMountDesc,omitempty"`
 }
 
 func (s InitContainerConfig) String() string {
@@ -71,6 +74,10 @@ func (s *InitContainerConfig) GetName() *string {
 	return s.Name
 }
 
+func (s *InitContainerConfig) GetSecretMountDesc() *string {
+	return s.SecretMountDesc
+}
+
 func (s *InitContainerConfig) SetCommand(v string) *InitContainerConfig {
 	s.Command = &v
 	return s
@@ -103,6 +110,11 @@ func (s *InitContainerConfig) SetImageUrl(v string) *InitContainerConfig {
 
 func (s *InitContainerConfig) SetName(v string) *InitContainerConfig {
 	s.Name = &v
+	return s
+}
+
+func (s *InitContainerConfig) SetSecretMountDesc(v string) *InitContainerConfig {
+	s.SecretMountDesc = &v
 	return s
 }
 

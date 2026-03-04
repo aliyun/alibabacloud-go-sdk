@@ -2132,7 +2132,8 @@ type DescribeApplicationConfigResponseBodyDataInitContainersConfig struct {
 	// example:
 	//
 	// init-container
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name            *string                                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	SecretMountDesc []*DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMountDesc `json:"SecretMountDesc,omitempty" xml:"SecretMountDesc,omitempty" type:"Repeated"`
 }
 
 func (s DescribeApplicationConfigResponseBodyDataInitContainersConfig) String() string {
@@ -2171,6 +2172,10 @@ func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfig) GetName(
 	return s.Name
 }
 
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfig) GetSecretMountDesc() []*DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMountDesc {
+	return s.SecretMountDesc
+}
+
 func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfig) SetCommand(v string) *DescribeApplicationConfigResponseBodyDataInitContainersConfig {
 	s.Command = &v
 	return s
@@ -2206,6 +2211,11 @@ func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfig) SetName(
 	return s
 }
 
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfig) SetSecretMountDesc(v []*DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMountDesc) *DescribeApplicationConfigResponseBodyDataInitContainersConfig {
+	s.SecretMountDesc = v
+	return s
+}
+
 func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfig) Validate() error {
 	if s.ConfigMapMountDesc != nil {
 		for _, item := range s.ConfigMapMountDesc {
@@ -2218,6 +2228,15 @@ func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfig) Validate
 	}
 	if s.EmptyDirDesc != nil {
 		for _, item := range s.EmptyDirDesc {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SecretMountDesc != nil {
+		for _, item := range s.SecretMountDesc {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -2335,6 +2354,61 @@ func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigEmptyDirDe
 }
 
 func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigEmptyDirDesc) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMountDesc struct {
+	Key        *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	MountPath  *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	SecretId   *int64  `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+}
+
+func (s DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMountDesc) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMountDesc) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMountDesc) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMountDesc) GetMountPath() *string {
+	return s.MountPath
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMountDesc) GetSecretId() *int64 {
+	return s.SecretId
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMountDesc) GetSecretName() *string {
+	return s.SecretName
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMountDesc) SetKey(v string) *DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMountDesc {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMountDesc) SetMountPath(v string) *DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMountDesc {
+	s.MountPath = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMountDesc) SetSecretId(v int64) *DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMountDesc {
+	s.SecretId = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMountDesc) SetSecretName(v string) *DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMountDesc {
+	s.SecretName = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMountDesc) Validate() error {
 	return dara.Validate(s)
 }
 

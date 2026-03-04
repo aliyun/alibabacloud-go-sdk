@@ -1,3 +1,7 @@
+2026-03-04 Version: v4.11.4
+- Update API DescribeApplicationConfig: add response parameters Body.Data.InitContainersConfig.$.SecretMountDesc.
+
+
 2026-02-28 Version: v4.11.3
 - Update API ListApplications: add response parameters Body.Data.Applications.$.Labels.
 
