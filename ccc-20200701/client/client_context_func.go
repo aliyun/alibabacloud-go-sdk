@@ -8517,6 +8517,54 @@ func (client *Client) ListMultiChannelRecordingsWithContext(ctx context.Context,
 
 // Summary:
 //
+// 查询消息推送记录
+//
+// @param request - ListNotificationRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNotificationRecordsResponse
+func (client *Client) ListNotificationRecordsWithContext(ctx context.Context, request *ListNotificationRecordsRequest, runtime *dara.RuntimeOptions) (_result *ListNotificationRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NotificationKeys) {
+		query["NotificationKeys"] = request.NotificationKeys
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListNotificationRecords"),
+		Version:     dara.String("2020-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListNotificationRecordsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 该坐席可用的外呼号码列表
 //
 // @param request - ListOutboundNumbersOfUserRequest
@@ -13591,6 +13639,86 @@ func (client *Client) UpdateSchemaPropertyWithContext(ctx context.Context, tmpRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateSchemaPropertyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # UpdateSubscription
+//
+// @param request - UpdateSubscriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSubscriptionResponse
+func (client *Client) UpdateSubscriptionWithContext(ctx context.Context, request *UpdateSubscriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateSubscriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccessPoint) {
+		query["AccessPoint"] = request.AccessPoint
+	}
+
+	if !dara.IsNil(request.AliyunUid) {
+		query["AliyunUid"] = request.AliyunUid
+	}
+
+	if !dara.IsNil(request.DefaultTopic) {
+		query["DefaultTopic"] = request.DefaultTopic
+	}
+
+	if !dara.IsNil(request.EventSubscriptionsJson) {
+		query["EventSubscriptionsJson"] = request.EventSubscriptionsJson
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MqInstanceId) {
+		query["MqInstanceId"] = request.MqInstanceId
+	}
+
+	if !dara.IsNil(request.MqType) {
+		query["MqType"] = request.MqType
+	}
+
+	if !dara.IsNil(request.Password) {
+		query["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.ProducerId) {
+		query["ProducerId"] = request.ProducerId
+	}
+
+	if !dara.IsNil(request.Username) {
+		query["Username"] = request.Username
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateSubscription"),
+		Version:     dara.String("2020-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateSubscriptionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
