@@ -36,18 +36,86 @@ type iAiRtcLicenseInfoDTO interface {
 }
 
 type AiRtcLicenseInfoDTO struct {
-	AvailableCapacity *int64  `json:"AvailableCapacity,omitempty" xml:"AvailableCapacity,omitempty"`
-	BeginOn           *string `json:"BeginOn,omitempty" xml:"BeginOn,omitempty"`
-	ContractNo        *string `json:"ContractNo,omitempty" xml:"ContractNo,omitempty"`
-	CreationTime      *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	ExpiredOn         *string `json:"ExpiredOn,omitempty" xml:"ExpiredOn,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LicenseCount      *int64  `json:"LicenseCount,omitempty" xml:"LicenseCount,omitempty"`
-	LicenseItemId     *string `json:"LicenseItemId,omitempty" xml:"LicenseItemId,omitempty"`
-	ModificationTime  *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	Status            *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type              *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	ValidDays         *int64  `json:"ValidDays,omitempty" xml:"ValidDays,omitempty"`
+	// The remaining usage capacity of the batch.
+	//
+	// example:
+	//
+	// 10000000
+	AvailableCapacity *int64 `json:"AvailableCapacity,omitempty" xml:"AvailableCapacity,omitempty"`
+	// The time when the batch became active.
+	//
+	// example:
+	//
+	// 2020-12-23T13:33:49Z
+	BeginOn *string `json:"BeginOn,omitempty" xml:"BeginOn,omitempty"`
+	// The contract number.
+	//
+	// example:
+	//
+	// 258396267390***
+	ContractNo *string `json:"ContractNo,omitempty" xml:"ContractNo,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2020-12-23T13:33:49Z
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The expiration time.
+	//
+	// example:
+	//
+	// 2021-12-23T13:33:49Z
+	ExpiredOn *string `json:"ExpiredOn,omitempty" xml:"ExpiredOn,omitempty"`
+	// The ID of the instance.
+	//
+	// example:
+	//
+	// ice_CoverAILicense_public_cn***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The total number of licenses contained within this batch.
+	//
+	// example:
+	//
+	// 10000
+	LicenseCount *int64 `json:"LicenseCount,omitempty" xml:"LicenseCount,omitempty"`
+	// The ID of the batch.
+	//
+	// example:
+	//
+	// 17712***
+	LicenseItemId *string `json:"LicenseItemId,omitempty" xml:"LicenseItemId,omitempty"`
+	// The update time.
+	//
+	// example:
+	//
+	// 2020-12-23T13:33:49Z
+	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	// The status of the batch. Valid values:
+	//
+	// 	- 1: Active
+	//
+	// 	- 2\\. Expired
+	//
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The license type. Valid values:
+	//
+	// 	- 1: Audio call
+	//
+	// 	- 2: Vision call
+	//
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The validity period of the licenses in this batch, in days.
+	//
+	// example:
+	//
+	// 365
+	ValidDays *int64 `json:"ValidDays,omitempty" xml:"ValidDays,omitempty"`
 }
 
 func (s AiRtcLicenseInfoDTO) String() string {

@@ -24,12 +24,38 @@ type iMediaConvertOutput interface {
 }
 
 type MediaConvertOutput struct {
-	Features       *string      `json:"Features,omitempty" xml:"Features,omitempty"`
-	Name           *string      `json:"Name,omitempty" xml:"Name,omitempty"`
-	OutputFile     *MediaObject `json:"OutputFile,omitempty" xml:"OutputFile,omitempty"`
-	OverrideParams *string      `json:"OverrideParams,omitempty" xml:"OverrideParams,omitempty"`
-	Priority       *int32       `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	TemplateId     *string      `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The feature parameters.
+	//
+	// example:
+	//
+	// {}
+	Features *string `json:"Features,omitempty" xml:"Features,omitempty"`
+	// The name of the output.
+	//
+	// example:
+	//
+	// output-video
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output file.
+	OutputFile *MediaObject `json:"OutputFile,omitempty" xml:"OutputFile,omitempty"`
+	// A JSON string containing parameters to overwrite the corresponding settings of the template.
+	//
+	// example:
+	//
+	// {}
+	OverrideParams *string `json:"OverrideParams,omitempty" xml:"OverrideParams,omitempty"`
+	// The priority. Valid values: 1 to 10. A larger value indicates a higher priority. Default value: 6.
+	//
+	// example:
+	//
+	// 6
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The ID of the transcoding template.
+	//
+	// example:
+	//
+	// ****96e8864746a0b6f3****
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s MediaConvertOutput) String() string {

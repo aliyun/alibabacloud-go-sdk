@@ -132,7 +132,14 @@ type SubmitMediaProducingJobRequest struct {
 	//
 	// ****96e8864746a0b6f3****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Timeline   *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	// The timeline of the online editing job. For more information about the parameters, see [Timeline configurations](https://help.aliyun.com/document_detail/198823.html).
+	//
+	// > : You must specify one of ProgectId, Timeline, and TempalteId and leave the other two parameters empty.
+	//
+	// example:
+	//
+	// {"VideoTracks":[{"VideoTrackClips":[{"MediaId":"****4d7cf14dc7b83b0e801c****"},{"MediaId":"****4d7cf14dc7b83b0e801c****"}]}]}
+	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
 	// The user-defined data in the JSON format, which can be up to 512 bytes in length. You can specify a custom callback URL. For more information, see [Configure a callback upon editing completion](https://help.aliyun.com/document_detail/451631.html).
 	//
 	// example:

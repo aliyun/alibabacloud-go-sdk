@@ -66,7 +66,12 @@ type UpdateEditingProjectRequest struct {
 	//
 	// ****96e8864746a0b6f3****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Timeline   *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	// The timeline of the online editing project, in the JSON format.
+	//
+	// example:
+	//
+	// {"VideoTracks":[{"VideoTrackClips":[{"MediaId":"****cc3308ac500ca54328bc3443****"},{"MediaId":"****da87a9cff64*d88bc6d8326e4****"}]}]}
+	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
 	// The title of the online editing project.
 	//
 	// example:

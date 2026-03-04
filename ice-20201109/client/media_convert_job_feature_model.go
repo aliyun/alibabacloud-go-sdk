@@ -18,8 +18,19 @@ type iMediaConvertJobFeature interface {
 }
 
 type MediaConvertJobFeature struct {
-	Clip       *MediaConvertJobFeatureClip         `json:"Clip,omitempty" xml:"Clip,omitempty" type:"Struct"`
-	Metadata   map[string]*string                  `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// Configuration for clipping from the source video.
+	Clip *MediaConvertJobFeatureClip `json:"Clip,omitempty" xml:"Clip,omitempty" type:"Struct"`
+	// A map of key-value pairs to be embedded as container-level metadata in the output file. Provided as a JSON string. Example: {"key1":"value1","key2":"value2"}.
+	//
+	// 	- Max key length: 64 characters.
+	//
+	// 	- Max value length: 512 characters.
+	//
+	// Max 4 key-value pairs.
+	Metadata map[string]*string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// Image or text watermarks to add to the video. These parameters override the corresponding settings from a specified watermark template.
+	//
+	// 	- You can add up to four watermarks to a transcoding task.
 	Watermarks []*MediaConvertJobFeatureWatermarks `json:"Watermarks,omitempty" xml:"Watermarks,omitempty" type:"Repeated"`
 }
 
@@ -77,8 +88,20 @@ func (s *MediaConvertJobFeature) Validate() error {
 }
 
 type MediaConvertJobFeatureClip struct {
-	ConfigToClipFirstPart *string                             `json:"ConfigToClipFirstPart,omitempty" xml:"ConfigToClipFirstPart,omitempty"`
-	TimeSpan              *MediaConvertJobFeatureClipTimeSpan `json:"TimeSpan,omitempty" xml:"TimeSpan,omitempty" type:"Struct"`
+	// Specifies the order of operations when concatenating multiple files and clipping.
+	//
+	// 	- true: Clips the first input file before it is concatenated.
+	//
+	// 	- false: Concatenates all input files first, then applies clipping.
+	//
+	// 	- Default value: false.
+	//
+	// example:
+	//
+	// false
+	ConfigToClipFirstPart *string `json:"ConfigToClipFirstPart,omitempty" xml:"ConfigToClipFirstPart,omitempty"`
+	// The time range for the clip.
+	TimeSpan *MediaConvertJobFeatureClipTimeSpan `json:"TimeSpan,omitempty" xml:"TimeSpan,omitempty" type:"Struct"`
 }
 
 func (s MediaConvertJobFeatureClip) String() string {
@@ -117,9 +140,42 @@ func (s *MediaConvertJobFeatureClip) Validate() error {
 }
 
 type MediaConvertJobFeatureClipTimeSpan struct {
+	// The duration of the clip, starting from the Seek time. The default duration is from the Seek time to the end of the video. Duration and End are mutually exclusive. If End is set, Duration is ignored.
+	//
+	// 	- Format: hh:mm:ss[.SSS] or sssss[.SSS].
+	//
+	// 	- Valid values: [00:00:00.000,23:59:59.999] or [0.000,86399.999].
+	//
+	// 	- Example: 00:01:59.99 or 180.30.
+	//
+	// example:
+	//
+	// 60.0
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	End      *string `json:"End,omitempty" xml:"End,omitempty"`
-	Seek     *string `json:"Seek,omitempty" xml:"Seek,omitempty"`
+	// Specifies a duration to trim from the end of the video. Duration and End are mutually exclusive. If End is set, Duration is ignored.
+	//
+	// 	- Format: hh:mm:ss[.SSS] or sssss[.SSS].
+	//
+	// 	- Valid values: [00:00:00.000,23:59:59.999] or [0.000,86399.999].
+	//
+	// 	- Example: 00:01:59.99 or 180.30.
+	//
+	// example:
+	//
+	// 50
+	End *string `json:"End,omitempty" xml:"End,omitempty"`
+	// The start time of the clip. It defaults to the beginning of the video.
+	//
+	// 	- Format: hh:mm:ss[.SSS] or sssss[.SSS].
+	//
+	// 	- Valid values: [00:00:00.000,23:59:59.999] or [0.000,86399.999].
+	//
+	// 	- Example: 00:01:59.99 or 180.30.
+	//
+	// example:
+	//
+	// 180.30
+	Seek *string `json:"Seek,omitempty" xml:"Seek,omitempty"`
 }
 
 func (s MediaConvertJobFeatureClipTimeSpan) String() string {
@@ -162,20 +218,166 @@ func (s *MediaConvertJobFeatureClipTimeSpan) Validate() error {
 }
 
 type MediaConvertJobFeatureWatermarks struct {
-	Adaptive    *string `json:"Adaptive,omitempty" xml:"Adaptive,omitempty"`
+	// Specifies if the font size adapts to the output resolution. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// 	- Default value: false.
+	//
+	// example:
+	//
+	// true
+	Adaptive *string `json:"Adaptive,omitempty" xml:"Adaptive,omitempty"`
+	// The color of the font border.
+	//
+	// 	- Default value: Black.
+	//
+	// example:
+	//
+	// Black
 	BorderColor *string `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
+	// The width of the font border.
+	//
+	// 	- Unit: pixels.
+	//
+	// 	- Valid values: [0,4096].
+	//
+	// 	- Default value: 0.
+	//
+	// example:
+	//
+	// 0
 	BorderWidth *string `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	FontAlpha   *string `json:"FontAlpha,omitempty" xml:"FontAlpha,omitempty"`
-	FontColor   *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	FontName    *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
-	FontSize    *string `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	Height      *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	TemplateId  *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Width       *string `json:"Width,omitempty" xml:"Width,omitempty"`
-	X           *string `json:"X,omitempty" xml:"X,omitempty"`
-	Y           *string `json:"Y,omitempty" xml:"Y,omitempty"`
+	// The text to be displayed as the watermark.
+	//
+	// example:
+	//
+	// TextWatarmark
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The font opacity.
+	//
+	// 	- Valid values: (0,1].
+	//
+	// 	- Default value: 1.0.
+	//
+	// example:
+	//
+	// 1.0
+	FontAlpha *string `json:"FontAlpha,omitempty" xml:"FontAlpha,omitempty"`
+	// The font color of the text watermark.
+	//
+	// 	- Default value: black.
+	//
+	// example:
+	//
+	// black
+	FontColor *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	// The font of the text watermark.
+	//
+	// 	- Default value: SimSum.
+	//
+	// example:
+	//
+	// SimSum
+	FontName *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
+	// The font size of the text watermark.
+	//
+	// 	- Valid values: (4,120).
+	//
+	// 	- Default value: 16.
+	FontSize *string `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// The height of the image watermark. This parameter overrides the corresponding setting from a specified watermark template. The following value types are supported:
+	//
+	// 	- Integer: the pixel value of the watermark height.
+	//
+	//     *
+	//
+	//     	- Valid values: [8,4096].
+	//
+	// 	- Decimal: A decimal of the output video\\"s height.
+	//
+	//     	- Valid values: (0,1).
+	//
+	//     	- The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+	//
+	// example:
+	//
+	// 0.1
+	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The ID of the watermark template.
+	//
+	// example:
+	//
+	// 962e1332fa2d4e12bdfb76dd1402fcfa
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The watermark type.
+	//
+	// 	- Text: a text watermark. In this case, you must specify the parameters related to the text watermark.
+	//
+	// 	- Image: an image watermark. In this case, you must specify the parameters related to the image watermark.
+	//
+	// If not specified, the type is inferred from the TemplateId.
+	//
+	// example:
+	//
+	// Image
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The width of the image watermark. This parameter overrides the corresponding setting from a specified watermark template. The following value types are supported:
+	//
+	// 	- Integer: the pixel value of the watermark width.
+	//
+	//     *
+	//
+	//     	- Valid values: [8,4096].
+	//
+	// 	- Decimal: A decimal of the output video\\"s width.
+	//
+	//     	- Valid values: (0,1).
+	//
+	//     	- The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+	//
+	// example:
+	//
+	// 0.1
+	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The horizontal offset of the image watermark relative to the output video. This parameter overrides the corresponding setting from a specified watermark template. The following value types are supported:
+	//
+	// 	- Integer: the pixel value of the horizontal offset.
+	//
+	//     	- Unit: pixels.
+	//
+	//     	- Valid values: [8,4096].
+	//
+	// 	- Decimal: the ratio of the horizontal offset to the width of the output video.
+	//
+	//     	- Valid values: (0,1).
+	//
+	//     	- The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+	//
+	// example:
+	//
+	// 0.08
+	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// The vertical offset of the image watermark relative to the output video. This parameter overrides the corresponding setting from a specified watermark template. The following value types are supported:
+	//
+	// 	- Integer: the pixel value of the vertical offset.
+	//
+	//     	- Unit: pixels.
+	//
+	//     	- Valid values: [8,4096].
+	//
+	// 	- Decimal: the ratio of the vertical offset to the height of the output video.
+	//
+	//     	- Valid values: (0,1).
+	//
+	//     	- The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+	//
+	// example:
+	//
+	// 0.08
+	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s MediaConvertJobFeatureWatermarks) String() string {

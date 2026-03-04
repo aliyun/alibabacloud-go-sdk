@@ -40,20 +40,88 @@ type iMediaConvertJob interface {
 }
 
 type MediaConvertJob struct {
-	ClientToken        *string                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Code               *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Config             *MediaConvertJobConfig           `json:"Config,omitempty" xml:"Config,omitempty"`
-	CreateTime         *string                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	FinishTime         *string                          `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	JobId              *string                          `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message            *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	OutputDetails      []*MediaConvertOutputDetail      `json:"OutputDetails,omitempty" xml:"OutputDetails,omitempty" type:"Repeated"`
+	// The idempotency key of the request for creating the task.
+	//
+	// example:
+	//
+	// ****12e8864746a0a398****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// An error code returned if the task failed.
+	//
+	// example:
+	//
+	// InvalidParameter.ResourceContentBad
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The task configuration.
+	Config *MediaConvertJobConfig `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The time the task was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2022-07-07T07:16:11Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time the task was completed. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2022-07-07T07:16:11Z
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The ID of the task.
+	//
+	// example:
+	//
+	// ****d80e4e4044975745c14b****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The reason for a failed task.
+	//
+	// example:
+	//
+	// The resource operated InputFile is bad
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// An array containing the results for each output.
+	OutputDetails []*MediaConvertOutputDetail `json:"OutputDetails,omitempty" xml:"OutputDetails,omitempty" type:"Repeated"`
+	// The details of the output groups.
 	OutputGroupDetails []*MediaConvertOutputGroupDetail `json:"OutputGroupDetails,omitempty" xml:"OutputGroupDetails,omitempty" type:"Repeated"`
-	Percent            *int32                           `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	PipelineId         *string                          `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	RequestId          *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	State              *string                          `json:"State,omitempty" xml:"State,omitempty"`
-	UserData           *string                          `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The completion percentage of the task.
+	//
+	// example:
+	//
+	// 0
+	Percent *int32 `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// The ID of the queue that processed the task.
+	//
+	// example:
+	//
+	// ****d80e4e4044975745c14b****
+	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The ID of the API request that created this task.
+	//
+	// example:
+	//
+	// 7B117AF5-2A1******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task status.
+	//
+	// 	- Inited: Initialized
+	//
+	// 	- Running
+	//
+	// 	- Complete
+	//
+	// 	- Error
+	//
+	// 	- Cancelled
+	//
+	// example:
+	//
+	// Finished
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The user-defined data.
+	//
+	// example:
+	//
+	// {}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s MediaConvertJob) String() string {

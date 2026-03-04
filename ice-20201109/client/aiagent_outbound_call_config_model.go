@@ -40,21 +40,38 @@ type iAIAgentOutboundCallConfig interface {
 }
 
 type AIAgentOutboundCallConfig struct {
+	// Configuration for the ambient sound played during the call.
 	AmbientSoundConfig *AIAgentOutboundCallConfigAmbientSoundConfig `json:"AmbientSoundConfig,omitempty" xml:"AmbientSoundConfig,omitempty" type:"Struct"`
-	AsrConfig          *AIAgentOutboundCallConfigAsrConfig          `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
-	AutoSpeechConfig   *AIAgentOutboundCallConfigAutoSpeechConfig   `json:"AutoSpeechConfig,omitempty" xml:"AutoSpeechConfig,omitempty" type:"Struct"`
+	// The configuration for Automatic Speech Recognition (ASR).
+	AsrConfig        *AIAgentOutboundCallConfigAsrConfig        `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
+	AutoSpeechConfig *AIAgentOutboundCallConfigAutoSpeechConfig `json:"AutoSpeechConfig,omitempty" xml:"AutoSpeechConfig,omitempty" type:"Struct"`
 	// Deprecated
-	BackChannelingConfig     *AIAgentOutboundCallConfigBackChannelingConfig    `json:"BackChannelingConfig,omitempty" xml:"BackChannelingConfig,omitempty" type:"Struct"`
-	BackChannelingConfigs    []*AIAgentOutboundCallConfigBackChannelingConfigs `json:"BackChannelingConfigs,omitempty" xml:"BackChannelingConfigs,omitempty" type:"Repeated"`
-	EnableIntelligentSegment *bool                                             `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
-	ExperimentalConfig       *string                                           `json:"ExperimentalConfig,omitempty" xml:"ExperimentalConfig,omitempty"`
-	Greeting                 *string                                           `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
-	GreetingDelay            *int32                                            `json:"GreetingDelay,omitempty" xml:"GreetingDelay,omitempty"`
-	InterruptConfig          *AIAgentOutboundCallConfigInterruptConfig         `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty" type:"Struct"`
-	LlmConfig                *AIAgentOutboundCallConfigLlmConfig               `json:"LlmConfig,omitempty" xml:"LlmConfig,omitempty" type:"Struct"`
-	MaxIdleTime              *int32                                            `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
-	TtsConfig                *AIAgentOutboundCallConfigTtsConfig               `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
-	TurnDetectionConfig      *AIAgentOutboundCallConfigTurnDetectionConfig     `json:"TurnDetectionConfig,omitempty" xml:"TurnDetectionConfig,omitempty" type:"Struct"`
+	BackChannelingConfig  *AIAgentOutboundCallConfigBackChannelingConfig    `json:"BackChannelingConfig,omitempty" xml:"BackChannelingConfig,omitempty" type:"Struct"`
+	BackChannelingConfigs []*AIAgentOutboundCallConfigBackChannelingConfigs `json:"BackChannelingConfigs,omitempty" xml:"BackChannelingConfigs,omitempty" type:"Repeated"`
+	// If enabled, the system intelligently merges short, interim segments into a single sentence. Default value: true.
+	//
+	// example:
+	//
+	// true
+	EnableIntelligentSegment *bool   `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
+	ExperimentalConfig       *string `json:"ExperimentalConfig,omitempty" xml:"ExperimentalConfig,omitempty"`
+	// The welcome message that the agent says upon joining. Changes take effect in the next session. Default value: None.
+	Greeting *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	// The delay before playing the welcome message. Unit: milliseconds. Valid values: 0 to 5000. Default value: 0.
+	//
+	// example:
+	//
+	// 0
+	GreetingDelay *int32 `json:"GreetingDelay,omitempty" xml:"GreetingDelay,omitempty"`
+	// The configuration for the speech interruption strategy.
+	InterruptConfig *AIAgentOutboundCallConfigInterruptConfig `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty" type:"Struct"`
+	// The configuration for the large language model (LLM).
+	LlmConfig   *AIAgentOutboundCallConfigLlmConfig `json:"LlmConfig,omitempty" xml:"LlmConfig,omitempty" type:"Struct"`
+	MaxIdleTime *int32                              `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
+	// The configuration for Text-to-Speech (TTS).
+	TtsConfig *AIAgentOutboundCallConfigTtsConfig `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
+	// The configuration for detecting the end of a user\\"s conversational turn.
+	TurnDetectionConfig *AIAgentOutboundCallConfigTurnDetectionConfig `json:"TurnDetectionConfig,omitempty" xml:"TurnDetectionConfig,omitempty" type:"Struct"`
 }
 
 func (s AIAgentOutboundCallConfig) String() string {
@@ -245,8 +262,18 @@ func (s *AIAgentOutboundCallConfig) Validate() error {
 }
 
 type AIAgentOutboundCallConfigAmbientSoundConfig struct {
+	// The ID of the ambient sound. This ID can be obtained from the advanced settings section of the agent configuration in the console.
+	//
+	// example:
+	//
+	// f67901c595834************
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	Volume     *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	// The volume of the ambient sound. Valid values: [0, 100]. A value of 0 disables the ambient sound.
+	//
+	// example:
+	//
+	// 50
+	Volume *int32 `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
 func (s AIAgentOutboundCallConfigAmbientSoundConfig) String() string {
@@ -280,12 +307,48 @@ func (s *AIAgentOutboundCallConfigAmbientSoundConfig) Validate() error {
 }
 
 type AIAgentOutboundCallConfigAsrConfig struct {
-	AsrHotWords   []*string `json:"AsrHotWords,omitempty" xml:"AsrHotWords,omitempty" type:"Repeated"`
-	AsrLanguageId *string   `json:"AsrLanguageId,omitempty" xml:"AsrLanguageId,omitempty"`
-	AsrMaxSilence *int32    `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
-	CustomParams  *string   `json:"CustomParams,omitempty" xml:"CustomParams,omitempty"`
-	VadDuration   *int32    `json:"VadDuration,omitempty" xml:"VadDuration,omitempty"`
-	VadLevel      *int32    `json:"VadLevel,omitempty" xml:"VadLevel,omitempty"`
+	// Hotwords for ASR to improve recognition accuracy. Maximum of 128 hotwords.
+	AsrHotWords []*string `json:"AsrHotWords,omitempty" xml:"AsrHotWords,omitempty" type:"Repeated"`
+	// The language ID for ASR. Valid values:
+	//
+	// 	- zh_mandarin: Chinese
+	//
+	// 	- en: English
+	//
+	// 	- zh_en: Chinese and English
+	//
+	// 	- es: Spanish
+	//
+	// 	- jp: Japanese
+	//
+	// example:
+	//
+	// zh_mandarin
+	AsrLanguageId *string `json:"AsrLanguageId,omitempty" xml:"AsrLanguageId,omitempty"`
+	// The silence threshold for sentence segmentation. A pause longer than this value is considered a sentence break. Unit: milliseconds. Default value: 400. Valid values: 200 to 1200.
+	//
+	// example:
+	//
+	// 400
+	AsrMaxSilence *int32 `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
+	// Passthrough parameters for ASR.
+	//
+	// example:
+	//
+	// mode=fast&sample=16000&format=wav
+	CustomParams *string `json:"CustomParams,omitempty" xml:"CustomParams,omitempty"`
+	// The minimum duration for voice activity detection, in milliseconds. This parameter controls the sensitivity of interruptions, preventing the agent from cutting off user speech too early during short pauses. 0: Disables this feature. Valid values: 200 to 2000. Recommended: 200 to 500 ms, which typically corresponds to the length of 1 to 4 words. By default, this parameter is left empty, which indicates the feature is disabled.
+	//
+	// example:
+	//
+	// 300
+	VadDuration *int32 `json:"VadDuration,omitempty" xml:"VadDuration,omitempty"`
+	// The VAD threshold for interruption. A higher value makes it harder to trigger interruptions. Valid values: 0 to 10. Default value: 1. The value of 0 specifies to disable the VAD feature.
+	//
+	// example:
+	//
+	// 1
+	VadLevel *int32 `json:"VadLevel,omitempty" xml:"VadLevel,omitempty"`
 }
 
 func (s AIAgentOutboundCallConfigAsrConfig) String() string {
@@ -763,10 +826,16 @@ func (s *AIAgentOutboundCallConfigBackChannelingConfigsWords) Validate() error {
 
 type AIAgentOutboundCallConfigInterruptConfig struct {
 	// Deprecated
-	Eagerness            *string   `json:"Eagerness,omitempty" xml:"Eagerness,omitempty"`
-	EnableVoiceInterrupt *bool     `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
-	InterruptWords       []*string `json:"InterruptWords,omitempty" xml:"InterruptWords,omitempty" type:"Repeated"`
-	NoInterruptMode      *string   `json:"NoInterruptMode,omitempty" xml:"NoInterruptMode,omitempty"`
+	Eagerness *string `json:"Eagerness,omitempty" xml:"Eagerness,omitempty"`
+	// Specifies whether to allow the user to interrupt the agent by speaking. Default value: true.
+	//
+	// example:
+	//
+	// true
+	EnableVoiceInterrupt *bool `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
+	// Words or phrases that will trigger an interruption.
+	InterruptWords  []*string `json:"InterruptWords,omitempty" xml:"InterruptWords,omitempty" type:"Repeated"`
+	NoInterruptMode *string   `json:"NoInterruptMode,omitempty" xml:"NoInterruptMode,omitempty"`
 }
 
 func (s AIAgentOutboundCallConfigInterruptConfig) String() string {
@@ -818,16 +887,45 @@ func (s *AIAgentOutboundCallConfigInterruptConfig) Validate() error {
 }
 
 type AIAgentOutboundCallConfigLlmConfig struct {
-	BailianAppParams   *string                                          `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
+	// Alibaba Cloud Model Studio Application Center parameters. Reference: [Model Studio Application Center Parameter](https://help.aliyun.com/document_detail/2858132.html)
+	BailianAppParams *string `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
+	// Maps agent capabilities to LLM functions. Only supports function calling with custom LLMs that adhere to the OpenAI protocol.
 	FunctionMap        []*AIAgentOutboundCallConfigLlmConfigFunctionMap `json:"FunctionMap,omitempty" xml:"FunctionMap,omitempty" type:"Repeated"`
 	HistorySyncWithTTS *bool                                            `json:"HistorySyncWithTTS,omitempty" xml:"HistorySyncWithTTS,omitempty"`
-	LlmCompleteReply   *bool                                            `json:"LlmCompleteReply,omitempty" xml:"LlmCompleteReply,omitempty"`
-	LlmHistory         []*AIAgentOutboundCallConfigLlmConfigLlmHistory  `json:"LlmHistory,omitempty" xml:"LlmHistory,omitempty" type:"Repeated"`
-	LlmHistoryLimit    *int32                                           `json:"LlmHistoryLimit,omitempty" xml:"LlmHistoryLimit,omitempty"`
-	LlmSystemPrompt    *string                                          `json:"LlmSystemPrompt,omitempty" xml:"LlmSystemPrompt,omitempty"`
-	OpenAIExtraQuery   *string                                          `json:"OpenAIExtraQuery,omitempty" xml:"OpenAIExtraQuery,omitempty"`
-	OutputMaxDelay     *string                                          `json:"OutputMaxDelay,omitempty" xml:"OutputMaxDelay,omitempty"`
-	OutputMinLength    *int32                                           `json:"OutputMinLength,omitempty" xml:"OutputMinLength,omitempty"`
+	// If true, the service sends the complete result from the LLM to the client in a single response after the generation process is finished.
+	//
+	// example:
+	//
+	// true
+	LlmCompleteReply *bool `json:"LlmCompleteReply,omitempty" xml:"LlmCompleteReply,omitempty"`
+	// The LLM/MLLM conversation history context.
+	LlmHistory []*AIAgentOutboundCallConfigLlmConfigLlmHistory `json:"LlmHistory,omitempty" xml:"LlmHistory,omitempty" type:"Repeated"`
+	// The maximum number of conversational turns to retain in the history. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	LlmHistoryLimit *int32 `json:"LlmHistoryLimit,omitempty" xml:"LlmHistoryLimit,omitempty"`
+	// The system prompt for the LLM.
+	LlmSystemPrompt *string `json:"LlmSystemPrompt,omitempty" xml:"LlmSystemPrompt,omitempty"`
+	// Additional query parameters to be sent to the OpenAI-protocol LLM, formatted as a URL query string (key=value pairs separated by &). All values must be strings.
+	//
+	// example:
+	//
+	// api-version=2024-02-01&api-key=sk-xxx
+	OpenAIExtraQuery *string `json:"OpenAIExtraQuery,omitempty" xml:"OpenAIExtraQuery,omitempty"`
+	// The maximum time (in milliseconds) to buffer text before it is forcibly sent to the client. Valid values: [1000,10000]. A value of 0 or an empty string (default) disables this limit.
+	//
+	// example:
+	//
+	// 2000
+	OutputMaxDelay *string `json:"OutputMaxDelay,omitempty" xml:"OutputMaxDelay,omitempty"`
+	// The minimum number of characters that must be buffered before a text chunk is sent. Valid values: [0, 100]. A value of 0 or an empty string (default) disables this limit.
+	//
+	// example:
+	//
+	// 5
+	OutputMinLength *int32 `json:"OutputMinLength,omitempty" xml:"OutputMinLength,omitempty"`
 }
 
 func (s AIAgentOutboundCallConfigLlmConfig) String() string {
@@ -951,7 +1049,17 @@ func (s *AIAgentOutboundCallConfigLlmConfig) Validate() error {
 }
 
 type AIAgentOutboundCallConfigLlmConfigFunctionMap struct {
-	Function      *string `json:"Function,omitempty" xml:"Function,omitempty"`
+	// The name of the built-in agent capability. Only hangup is supported.
+	//
+	// example:
+	//
+	// hangup
+	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
+	// The corresponding user-defined function name in your LLM. When the LLM calls this function, it will trigger the mapped agent capability.[](~~2839094~~)
+	//
+	// example:
+	//
+	// hangup
 	MatchFunction *string `json:"MatchFunction,omitempty" xml:"MatchFunction,omitempty"`
 }
 
@@ -986,8 +1094,26 @@ func (s *AIAgentOutboundCallConfigLlmConfigFunctionMap) Validate() error {
 }
 
 type AIAgentOutboundCallConfigLlmConfigLlmHistory struct {
+	// The actual text content of the message for that role.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Role    *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The role of the participant in the conversation. Valid values:
+	//
+	// 	- user
+	//
+	// 	- assistant
+	//
+	// 	- system
+	//
+	// 	- function
+	//
+	// 	- plugin
+	//
+	// 	- tool
+	//
+	// example:
+	//
+	// user
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 }
 
 func (s AIAgentOutboundCallConfigLlmConfigLlmHistory) String() string {
@@ -1021,13 +1147,106 @@ func (s *AIAgentOutboundCallConfigLlmConfigLlmHistory) Validate() error {
 }
 
 type AIAgentOutboundCallConfigTtsConfig struct {
-	Emotion            *string                                                 `json:"Emotion,omitempty" xml:"Emotion,omitempty"`
-	LanguageId         *string                                                 `json:"LanguageId,omitempty" xml:"LanguageId,omitempty"`
-	ModelId            *string                                                 `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// Applies only to MiniMax models. Seven types of emotions are supported:
+	//
+	// 	- happy
+	//
+	// 	- sad
+	//
+	// 	- angry
+	//
+	// 	- fearful
+	//
+	// 	- disgusted
+	//
+	// 	- surprised
+	//
+	// 	- calm
+	//
+	// example:
+	//
+	// happy
+	Emotion *string `json:"Emotion,omitempty" xml:"Emotion,omitempty"`
+	// Applies only to MiniMax models. By default, this parameter is left empty. This enhances speech recognition accuracy for specific languages and dialects. If the language type is unknown, set it to auto to have the model automatically detect it. Valid values:
+	//
+	// **Supported languages**
+	//
+	// 	- Chinese
+	//
+	// 	- Chinese,Yue
+	//
+	// 	- English
+	//
+	// 	- Arabic
+	//
+	// 	- Russian
+	//
+	// 	- Spanish
+	//
+	// 	- French
+	//
+	// 	- Portuguese
+	//
+	// 	- German
+	//
+	// 	- Turkish
+	//
+	// 	- Dutch
+	//
+	// 	- Ukrainian
+	//
+	// 	- Vietnamese
+	//
+	// 	- Indonesian
+	//
+	// 	- Japanese
+	//
+	// 	- Italian
+	//
+	// 	- Korean
+	//
+	// 	- Thai
+	//
+	// 	- Polish
+	//
+	// 	- Romanian
+	//
+	// 	- Greek
+	//
+	// 	- Czech
+	//
+	// 	- Finnish
+	//
+	// 	- Hindi
+	//
+	// 	- auto
+	//
+	// example:
+	//
+	// Chinese
+	LanguageId *string `json:"LanguageId,omitempty" xml:"LanguageId,omitempty"`
+	// Applies only to MiniMax models. Valid values: speech-01-turbo and speech-02-turbo.
+	//
+	// example:
+	//
+	// speech-01-turbo
+	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// The pronunciation rules, executed in order. Maximum of 20 rules.
 	PronunciationRules []*AIAgentOutboundCallConfigTtsConfigPronunciationRules `json:"PronunciationRules,omitempty" xml:"PronunciationRules,omitempty" type:"Repeated"`
-	SpeechRate         *float64                                                `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	VoiceId            *string                                                 `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
-	VoiceIdList        []*string                                               `json:"VoiceIdList,omitempty" xml:"VoiceIdList,omitempty" type:"Repeated"`
+	// Supports all models. For CosyVoice, the default value is 1.0. Valid values: 0.5 to 2.0. For MiniMax, the default value is 1.0. Valid values: 0.5 to 2.0.
+	//
+	// example:
+	//
+	// 1.0
+	SpeechRate *float64 `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	// The voice ID. Changes take effect on the next sentence. If not set, the system uses the default voice ID specified in the agent template. This parameter takes effect only for the preset TTS model. Max length: 64 characters. Refer to [Intelligent voice samples](https://help.aliyun.com/document_detail/449563.html) for options.
+	//
+	// example:
+	//
+	// longcheng_v2
+	VoiceId *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	// Available voices.
+	VoiceIdList []*string `json:"VoiceIdList,omitempty" xml:"VoiceIdList,omitempty" type:"Repeated"`
 }
 
 func (s AIAgentOutboundCallConfigTtsConfig) String() string {
@@ -1115,9 +1334,18 @@ func (s *AIAgentOutboundCallConfigTtsConfig) Validate() error {
 }
 
 type AIAgentOutboundCallConfigTtsConfigPronunciationRules struct {
+	// The target pronunciation. The value supports up to 10 Chinese characters. Other characters, including spaces, are not supported.
 	Pronunciation *string `json:"Pronunciation,omitempty" xml:"Pronunciation,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Word          *string `json:"Word,omitempty" xml:"Word,omitempty"`
+	// The type of rule. Valid value:
+	//
+	// 	- replacement: replaces every occurrence of Word value with Pronunciation value.
+	//
+	// example:
+	//
+	// replacement
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The word to be replaced. The value supports up to 10 Chinese characters. Other characters, including spaces, are not supported.
+	Word *string `json:"Word,omitempty" xml:"Word,omitempty"`
 }
 
 func (s AIAgentOutboundCallConfigTtsConfigPronunciationRules) String() string {
@@ -1160,10 +1388,33 @@ func (s *AIAgentOutboundCallConfigTtsConfigPronunciationRules) Validate() error 
 }
 
 type AIAgentOutboundCallConfigTurnDetectionConfig struct {
-	Eagerness            *string   `json:"Eagerness,omitempty" xml:"Eagerness,omitempty"`
-	Mode                 *string   `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	SemanticWaitDuration *int32    `json:"SemanticWaitDuration,omitempty" xml:"SemanticWaitDuration,omitempty"`
-	TurnEndWords         []*string `json:"TurnEndWords,omitempty" xml:"TurnEndWords,omitempty" type:"Repeated"`
+	Eagerness *string `json:"Eagerness,omitempty" xml:"Eagerness,omitempty"`
+	// The mode of turn detection.
+	//
+	// 	- Normal: uses simple pause detection.
+	//
+	// 	- Semantic: uses AI to analyze context.
+	//
+	// Default value: Normal.
+	//
+	// example:
+	//
+	// Semantic
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// Specifies how long to wait after a user stops speaking for the agent to decide if the turn is over. Unit: milliseconds. Default value: -1.
+	//
+	// 	- \\-1: AI decides an appropriate wait time automatically.
+	//
+	// 	- 0 to 10000: A custom wait time. Recommended: 0 to 1500 ms.
+	//
+	// Note: In Normal mode, this field is ignored.
+	//
+	// example:
+	//
+	// -1
+	SemanticWaitDuration *int32 `json:"SemanticWaitDuration,omitempty" xml:"SemanticWaitDuration,omitempty"`
+	// Keywords that signify the end of the user\\"s turn.
+	TurnEndWords []*string `json:"TurnEndWords,omitempty" xml:"TurnEndWords,omitempty" type:"Repeated"`
 }
 
 func (s AIAgentOutboundCallConfigTurnDetectionConfig) String() string {

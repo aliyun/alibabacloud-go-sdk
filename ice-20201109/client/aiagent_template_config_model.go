@@ -18,9 +18,12 @@ type iAIAgentTemplateConfig interface {
 }
 
 type AIAgentTemplateConfig struct {
+	// The parameters of the 3D avatar.
 	AvatarChat3D *AIAgentTemplateConfigAvatarChat3D `json:"AvatarChat3D,omitempty" xml:"AvatarChat3D,omitempty" type:"Struct"`
-	VisionChat   *AIAgentTemplateConfigVisionChat   `json:"VisionChat,omitempty" xml:"VisionChat,omitempty" type:"Struct"`
-	VoiceChat    *AIAgentTemplateConfigVoiceChat    `json:"VoiceChat,omitempty" xml:"VoiceChat,omitempty" type:"Struct"`
+	// The parameters of the visual intelligent agent.
+	VisionChat *AIAgentTemplateConfigVisionChat `json:"VisionChat,omitempty" xml:"VisionChat,omitempty" type:"Struct"`
+	// The voice call parameters.
+	VoiceChat *AIAgentTemplateConfigVoiceChat `json:"VoiceChat,omitempty" xml:"VoiceChat,omitempty" type:"Struct"`
 }
 
 func (s AIAgentTemplateConfig) String() string {
@@ -78,32 +81,117 @@ func (s *AIAgentTemplateConfig) Validate() error {
 }
 
 type AIAgentTemplateConfigAvatarChat3D struct {
-	AsrHotWords              []*string                                      `json:"AsrHotWords,omitempty" xml:"AsrHotWords,omitempty" type:"Repeated"`
-	AsrLanguageId            *string                                        `json:"AsrLanguageId,omitempty" xml:"AsrLanguageId,omitempty"`
-	AsrMaxSilence            *int32                                         `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
-	AvatarId                 *string                                        `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
-	BailianAppParams         *string                                        `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
-	CharBreak                *bool                                          `json:"CharBreak,omitempty" xml:"CharBreak,omitempty"`
-	EnableIntelligentSegment *bool                                          `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
-	EnablePushToTalk         *bool                                          `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
-	EnableVoiceInterrupt     *bool                                          `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
-	GracefulShutdown         *bool                                          `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
-	Greeting                 *string                                        `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
-	InterruptWords           []*string                                      `json:"InterruptWords,omitempty" xml:"InterruptWords,omitempty" type:"Repeated"`
-	LlmHistory               []*AIAgentTemplateConfigAvatarChat3DLlmHistory `json:"LlmHistory,omitempty" xml:"LlmHistory,omitempty" type:"Repeated"`
-	LlmHistoryLimit          *int32                                         `json:"LlmHistoryLimit,omitempty" xml:"LlmHistoryLimit,omitempty"`
-	LlmSystemPrompt          *string                                        `json:"LlmSystemPrompt,omitempty" xml:"LlmSystemPrompt,omitempty"`
-	MaxIdleTime              *int32                                         `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
-	UseVoiceprint            *bool                                          `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
-	UserOfflineTimeout       *int32                                         `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
-	UserOnlineTimeout        *int32                                         `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
-	VadLevel                 *int32                                         `json:"VadLevel,omitempty" xml:"VadLevel,omitempty"`
-	VoiceId                  *string                                        `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
-	VoiceIdList              []*string                                      `json:"VoiceIdList,omitempty" xml:"VoiceIdList,omitempty" type:"Repeated"`
-	VoiceprintId             *string                                        `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
-	Volume                   *int64                                         `json:"Volume,omitempty" xml:"Volume,omitempty"`
-	WakeUpQuery              *string                                        `json:"WakeUpQuery,omitempty" xml:"WakeUpQuery,omitempty"`
-	WorkflowOverrideParams   *string                                        `json:"WorkflowOverrideParams,omitempty" xml:"WorkflowOverrideParams,omitempty"`
+	AsrHotWords   []*string `json:"AsrHotWords,omitempty" xml:"AsrHotWords,omitempty" type:"Repeated"`
+	AsrLanguageId *string   `json:"AsrLanguageId,omitempty" xml:"AsrLanguageId,omitempty"`
+	// The threshold used to determine the end of a sentence. If the duration of silence exceeds this threshold, the system determines that a sentence ends. Unit: milliseconds. Default value: 400. Valid values: 200 to 1200.
+	//
+	// example:
+	//
+	// 400
+	AsrMaxSilence *int32 `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
+	// The ID of the avatar.
+	//
+	// example:
+	//
+	// 1231
+	AvatarId *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	// The parameters of the application center of Alibaba Cloud Model Studio. For more information about the parameter format, see [Parameters of the application center of Alibaba Cloud Model Studio](https://help.aliyun.com/document_detail/2858132.html).
+	//
+	// example:
+	//
+	// {}
+	BailianAppParams *string `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
+	CharBreak        *bool   `json:"CharBreak,omitempty" xml:"CharBreak,omitempty"`
+	// example:
+	//
+	// true
+	EnableIntelligentSegment *bool `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
+	// Specifies whether to enable the intercom mode. Default value: false.
+	//
+	// example:
+	//
+	// false
+	EnablePushToTalk *bool `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
+	// Specifies whether the intelligent agent can be interrupted by voice. Default value: true.
+	//
+	// example:
+	//
+	// true
+	EnableVoiceInterrupt *bool `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
+	// Specifies whether the intelligent agent supports graceful shutdown. Default value: false.
+	//
+	// 	- Graceful shutdown: When the intelligent agent is stopped, it completes its current sentence before stopping. However, the intelligent agent can speak for 10 seconds at most.
+	//
+	// example:
+	//
+	// true
+	GracefulShutdown *bool `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
+	// The greetings spoken by the intelligent agent when it joins the meeting. If you do not specify this parameter, the system uses the default greetings specified in the template of the intelligent agent. The greetings can be up to 128 characters in length.
+	Greeting       *string                                        `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	InterruptWords []*string                                      `json:"InterruptWords,omitempty" xml:"InterruptWords,omitempty" type:"Repeated"`
+	LlmHistory     []*AIAgentTemplateConfigAvatarChat3DLlmHistory `json:"LlmHistory,omitempty" xml:"LlmHistory,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	LlmHistoryLimit *int32  `json:"LlmHistoryLimit,omitempty" xml:"LlmHistoryLimit,omitempty"`
+	LlmSystemPrompt *string `json:"LlmSystemPrompt,omitempty" xml:"LlmSystemPrompt,omitempty"`
+	// example:
+	//
+	// 600
+	MaxIdleTime *int32 `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
+	// Specifies whether to enable voiceprint recognition. Default value: false.
+	//
+	// example:
+	//
+	// false
+	UseVoiceprint *bool `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
+	// The timeout period after the user leaves the meeting. Unit: seconds. Default value: 5.
+	//
+	// example:
+	//
+	// 5
+	UserOfflineTimeout *int32 `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
+	// The timeout period before the user joins the meeting. Unit: seconds. Default value: 60.
+	//
+	// example:
+	//
+	// 60
+	UserOnlineTimeout *int32 `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
+	VadLevel          *int32 `json:"VadLevel,omitempty" xml:"VadLevel,omitempty"`
+	// The voice ID of the intelligent agent. The modification takes effect in the next sentence. If you do not specify this parameter, the system uses the default voice ID specified in the template of the intelligent agent. This parameter takes effect only for the preset TTS model. The ID can be up to 64 characters in length. For more information about the available voices, visit [https://help.aliyun.com/zh/ims/developer-reference/smart-voice-effect-example](url).
+	//
+	// example:
+	//
+	// zhixiaoxia
+	VoiceId     *string   `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceIdList []*string `json:"VoiceIdList,omitempty" xml:"VoiceIdList,omitempty" type:"Repeated"`
+	// The unique ID of the voiceprint. This parameter is empty by default.
+	//
+	// example:
+	//
+	// uniqueId
+	VoiceprintId *string `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
+	// The speech volume of the intelligent agent.
+	//
+	// 	- If this parameter is not specified, the adaptive volume mode recommended by Alibaba Cloud is used by default.
+	//
+	// 	- To specify this parameter, enter a value between 0 and 400. The output volume is calculated by using the following formula: Output volume = Voice output volume specified in the workflow × Volume/100. Example:
+	//
+	// 1.  If Volume is set to 0, the output volume is 0.
+	//
+	// 2.  If Volume is set to 100, the output volume is the voice output volume specified in the workflow.
+	//
+	// 3.  If Volume is set to 200, the output volume is twice the voice output volume specified in the workflow.
+	//
+	// example:
+	//
+	// 100
+	Volume      *int64  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	WakeUpQuery *string `json:"WakeUpQuery,omitempty" xml:"WakeUpQuery,omitempty"`
+	// example:
+	//
+	// {}
+	WorkflowOverrideParams *string `json:"WorkflowOverrideParams,omitempty" xml:"WorkflowOverrideParams,omitempty"`
 }
 
 func (s AIAgentTemplateConfigAvatarChat3D) String() string {
@@ -363,7 +451,10 @@ func (s *AIAgentTemplateConfigAvatarChat3D) Validate() error {
 
 type AIAgentTemplateConfigAvatarChat3DLlmHistory struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Role    *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// example:
+	//
+	// user
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 }
 
 func (s AIAgentTemplateConfigAvatarChat3DLlmHistory) String() string {
@@ -397,31 +488,117 @@ func (s *AIAgentTemplateConfigAvatarChat3DLlmHistory) Validate() error {
 }
 
 type AIAgentTemplateConfigVisionChat struct {
-	AsrHotWords              []*string                                    `json:"AsrHotWords,omitempty" xml:"AsrHotWords,omitempty" type:"Repeated"`
-	AsrLanguageId            *string                                      `json:"AsrLanguageId,omitempty" xml:"AsrLanguageId,omitempty"`
-	AsrMaxSilence            *int32                                       `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
-	BailianAppParams         *string                                      `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
-	CharBreak                *bool                                        `json:"CharBreak,omitempty" xml:"CharBreak,omitempty"`
-	EnableIntelligentSegment *bool                                        `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
-	EnablePushToTalk         *bool                                        `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
-	EnableVoiceInterrupt     *bool                                        `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
-	GracefulShutdown         *bool                                        `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
-	Greeting                 *string                                      `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
-	InterruptWords           []*string                                    `json:"InterruptWords,omitempty" xml:"InterruptWords,omitempty" type:"Repeated"`
-	LlmHistory               []*AIAgentTemplateConfigVisionChatLlmHistory `json:"LlmHistory,omitempty" xml:"LlmHistory,omitempty" type:"Repeated"`
-	LlmHistoryLimit          *int32                                       `json:"LlmHistoryLimit,omitempty" xml:"LlmHistoryLimit,omitempty"`
-	LlmSystemPrompt          *string                                      `json:"LlmSystemPrompt,omitempty" xml:"LlmSystemPrompt,omitempty"`
-	MaxIdleTime              *int32                                       `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
-	UseVoiceprint            *bool                                        `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
-	UserOfflineTimeout       *int32                                       `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
-	UserOnlineTimeout        *int32                                       `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
-	VadLevel                 *int32                                       `json:"VadLevel,omitempty" xml:"VadLevel,omitempty"`
-	VoiceId                  *string                                      `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
-	VoiceIdList              []*string                                    `json:"VoiceIdList,omitempty" xml:"VoiceIdList,omitempty" type:"Repeated"`
-	VoiceprintId             *string                                      `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
-	Volume                   *int64                                       `json:"Volume,omitempty" xml:"Volume,omitempty"`
-	WakeUpQuery              *string                                      `json:"WakeUpQuery,omitempty" xml:"WakeUpQuery,omitempty"`
-	WorkflowOverrideParams   *string                                      `json:"WorkflowOverrideParams,omitempty" xml:"WorkflowOverrideParams,omitempty"`
+	AsrHotWords   []*string `json:"AsrHotWords,omitempty" xml:"AsrHotWords,omitempty" type:"Repeated"`
+	AsrLanguageId *string   `json:"AsrLanguageId,omitempty" xml:"AsrLanguageId,omitempty"`
+	// The threshold used to determine the end of a sentence. If the duration of silence exceeds this threshold, the system determines that a sentence ends. Unit: milliseconds. Default value: 400. Valid values: 200 to 1200.
+	//
+	// example:
+	//
+	// 400
+	AsrMaxSilence *int32 `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
+	// The parameters of the application center of Alibaba Cloud Model Studio. For more information about the parameter format, see [Parameters of the application center of Alibaba Cloud Model Studio](https://help.aliyun.com/document_detail/2858132.html).
+	//
+	// example:
+	//
+	// {}
+	BailianAppParams *string `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
+	CharBreak        *bool   `json:"CharBreak,omitempty" xml:"CharBreak,omitempty"`
+	// Specifies whether to enable intelligent sentence segmentation. This feature intelligently combines the segments of a speech into a single sentence if brief pauses occur when users are speaking. Default value: true.
+	//
+	// example:
+	//
+	// true
+	EnableIntelligentSegment *bool `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
+	// Specifies whether to enable the intercom mode. Default value: false.
+	//
+	// example:
+	//
+	// false
+	EnablePushToTalk *bool `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
+	// Specifies whether the intelligent agent can be interrupted by voice. Default value: true.
+	//
+	// example:
+	//
+	// true
+	EnableVoiceInterrupt *bool `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
+	// Specifies whether the intelligent agent supports graceful shutdown. Default value: false.
+	//
+	// Graceful shutdown: When the intelligent agent is stopped, it completes its current sentence before stopping. However, the intelligent agent can speak for 10 seconds at most.
+	//
+	// example:
+	//
+	// false
+	GracefulShutdown *bool `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
+	// The greetings spoken by the intelligent agent when it joins the meeting. If you do not specify this parameter, the system uses the default greetings specified in the template of the intelligent agent. The value can be up to 128 characters in length.
+	//
+	// example:
+	//
+	// Good morning, my friend!
+	Greeting       *string                                      `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	InterruptWords []*string                                    `json:"InterruptWords,omitempty" xml:"InterruptWords,omitempty" type:"Repeated"`
+	LlmHistory     []*AIAgentTemplateConfigVisionChatLlmHistory `json:"LlmHistory,omitempty" xml:"LlmHistory,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	LlmHistoryLimit *int32  `json:"LlmHistoryLimit,omitempty" xml:"LlmHistoryLimit,omitempty"`
+	LlmSystemPrompt *string `json:"LlmSystemPrompt,omitempty" xml:"LlmSystemPrompt,omitempty"`
+	// example:
+	//
+	// 600
+	MaxIdleTime *int32 `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
+	// Specifies whether to enable voiceprint recognition. Default value: false.
+	//
+	// example:
+	//
+	// false
+	UseVoiceprint *bool `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
+	// The timeout period after the user leaves the meeting. Unit: seconds. Default value: 5.
+	//
+	// example:
+	//
+	// 5
+	UserOfflineTimeout *int32 `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
+	// The timeout period before the user joins the meeting. Unit: seconds. Default value: 60.
+	//
+	// example:
+	//
+	// 60
+	UserOnlineTimeout *int32 `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
+	VadLevel          *int32 `json:"VadLevel,omitempty" xml:"VadLevel,omitempty"`
+	// The voice ID of the intelligent agent. The modification takes effect in the next sentence. If you do not specify this parameter, the system uses the default voice ID specified in the template of the intelligent agent. This parameter takes effect only for the preset TTS model. The ID can be up to 64 characters in length. For more information about the available voices, visit [https://help.aliyun.com/zh/ims/developer-reference/smart-voice-effect-example](url).
+	//
+	// example:
+	//
+	// zhixiaoxia
+	VoiceId     *string   `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceIdList []*string `json:"VoiceIdList,omitempty" xml:"VoiceIdList,omitempty" type:"Repeated"`
+	// The unique ID of the voiceprint. This parameter is empty by default.
+	//
+	// example:
+	//
+	// uniqueId
+	VoiceprintId *string `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
+	// The speech volume of the intelligent agent.
+	//
+	// If this parameter is not specified, the adaptive volume mode recommended by Alibaba Cloud is used by default.
+	//
+	// To specify this parameter, enter a value between 0 and 400. The output volume is calculated by using the following formula: Output volume = Voice output volume specified in the workflow × Volume/100. Example:
+	//
+	// If Volume is set to 0, the output volume is 0.
+	//
+	// If Volume is set to 100, the output volume is the voice output volume specified in the workflow.
+	//
+	// If Volume is set to 200, the output volume is twice the voice output volume specified in the workflow.
+	//
+	// example:
+	//
+	// 100
+	Volume      *int64  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	WakeUpQuery *string `json:"WakeUpQuery,omitempty" xml:"WakeUpQuery,omitempty"`
+	// example:
+	//
+	// {}
+	WorkflowOverrideParams *string `json:"WorkflowOverrideParams,omitempty" xml:"WorkflowOverrideParams,omitempty"`
 }
 
 func (s AIAgentTemplateConfigVisionChat) String() string {
@@ -672,7 +849,10 @@ func (s *AIAgentTemplateConfigVisionChat) Validate() error {
 
 type AIAgentTemplateConfigVisionChatLlmHistory struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Role    *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// example:
+	//
+	// user
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 }
 
 func (s AIAgentTemplateConfigVisionChatLlmHistory) String() string {
@@ -706,33 +886,119 @@ func (s *AIAgentTemplateConfigVisionChatLlmHistory) Validate() error {
 }
 
 type AIAgentTemplateConfigVoiceChat struct {
-	AsrHotWords              []*string                                   `json:"AsrHotWords,omitempty" xml:"AsrHotWords,omitempty" type:"Repeated"`
-	AsrLanguageId            *string                                     `json:"AsrLanguageId,omitempty" xml:"AsrLanguageId,omitempty"`
-	AsrMaxSilence            *int32                                      `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
-	AvatarUrl                *string                                     `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
-	AvatarUrlType            *string                                     `json:"AvatarUrlType,omitempty" xml:"AvatarUrlType,omitempty"`
-	BailianAppParams         *string                                     `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
-	CharBreak                *bool                                       `json:"CharBreak,omitempty" xml:"CharBreak,omitempty"`
-	EnableIntelligentSegment *bool                                       `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
-	EnablePushToTalk         *bool                                       `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
-	EnableVoiceInterrupt     *bool                                       `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
-	GracefulShutdown         *bool                                       `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
-	Greeting                 *string                                     `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
-	InterruptWords           []*string                                   `json:"InterruptWords,omitempty" xml:"InterruptWords,omitempty" type:"Repeated"`
-	LlmHistory               []*AIAgentTemplateConfigVoiceChatLlmHistory `json:"LlmHistory,omitempty" xml:"LlmHistory,omitempty" type:"Repeated"`
-	LlmHistoryLimit          *int32                                      `json:"LlmHistoryLimit,omitempty" xml:"LlmHistoryLimit,omitempty"`
-	LlmSystemPrompt          *string                                     `json:"LlmSystemPrompt,omitempty" xml:"LlmSystemPrompt,omitempty"`
-	MaxIdleTime              *int32                                      `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
-	UseVoiceprint            *bool                                       `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
-	UserOfflineTimeout       *int32                                      `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
-	UserOnlineTimeout        *int32                                      `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
-	VadLevel                 *int32                                      `json:"VadLevel,omitempty" xml:"VadLevel,omitempty"`
-	VoiceId                  *string                                     `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
-	VoiceIdList              []*string                                   `json:"VoiceIdList,omitempty" xml:"VoiceIdList,omitempty" type:"Repeated"`
-	VoiceprintId             *string                                     `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
-	Volume                   *int64                                      `json:"Volume,omitempty" xml:"Volume,omitempty"`
-	WakeUpQuery              *string                                     `json:"WakeUpQuery,omitempty" xml:"WakeUpQuery,omitempty"`
-	WorkflowOverrideParams   *string                                     `json:"WorkflowOverrideParams,omitempty" xml:"WorkflowOverrideParams,omitempty"`
+	AsrHotWords   []*string `json:"AsrHotWords,omitempty" xml:"AsrHotWords,omitempty" type:"Repeated"`
+	AsrLanguageId *string   `json:"AsrLanguageId,omitempty" xml:"AsrLanguageId,omitempty"`
+	// The threshold used to determine the end of a sentence. If the duration of silence exceeds this threshold, the system determines that a sentence ends. Unit: milliseconds. Default value: 400. Valid values: 200 to 1200.
+	//
+	// example:
+	//
+	// 400
+	AsrMaxSilence *int32 `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
+	// example:
+	//
+	// http://example.com/a.jpg
+	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	// example:
+	//
+	// USER
+	AvatarUrlType *string `json:"AvatarUrlType,omitempty" xml:"AvatarUrlType,omitempty"`
+	// The parameters of the application center of Alibaba Cloud Model Studio. For more information about the parameter format, see [Parameters of the application center of Alibaba Cloud Model Studio](https://help.aliyun.com/document_detail/2858132.html).
+	//
+	// example:
+	//
+	// {}
+	BailianAppParams *string `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
+	CharBreak        *bool   `json:"CharBreak,omitempty" xml:"CharBreak,omitempty"`
+	// example:
+	//
+	// true
+	EnableIntelligentSegment *bool `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
+	// Specifies whether to enable the intercom mode. Default value: false.
+	//
+	// example:
+	//
+	// false
+	EnablePushToTalk *bool `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
+	// Specifies whether the intelligent agent can be interrupted by voice. Default value: true.
+	//
+	// example:
+	//
+	// true
+	EnableVoiceInterrupt *bool `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
+	// Specifies whether the intelligent agent supports graceful shutdown. Default value: false.
+	//
+	// 	- Graceful shutdown: When the intelligent agent is stopped, it completes its current sentence before stopping. However, the intelligent agent can speak for 10 seconds at most.
+	//
+	// example:
+	//
+	// true
+	GracefulShutdown *bool `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
+	// The greetings spoken by the intelligent agent when it joins the meeting. If you do not specify this parameter, the system uses the default greetings specified in the template of the intelligent agent. The value can be up to 128 characters in length.
+	Greeting       *string                                     `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	InterruptWords []*string                                   `json:"InterruptWords,omitempty" xml:"InterruptWords,omitempty" type:"Repeated"`
+	LlmHistory     []*AIAgentTemplateConfigVoiceChatLlmHistory `json:"LlmHistory,omitempty" xml:"LlmHistory,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	LlmHistoryLimit *int32  `json:"LlmHistoryLimit,omitempty" xml:"LlmHistoryLimit,omitempty"`
+	LlmSystemPrompt *string `json:"LlmSystemPrompt,omitempty" xml:"LlmSystemPrompt,omitempty"`
+	// example:
+	//
+	// 600
+	MaxIdleTime *int32 `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
+	// Specifies whether to enable voiceprint recognition. Default value: false.
+	//
+	// example:
+	//
+	// false
+	UseVoiceprint *bool `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
+	// The timeout period after the user leaves the meeting. Unit: seconds. Default value: 5.
+	//
+	// example:
+	//
+	// 5
+	UserOfflineTimeout *int32 `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
+	// The timeout period before the user joins the meeting. Unit: seconds. Default value: 60.
+	//
+	// example:
+	//
+	// 60
+	UserOnlineTimeout *int32 `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
+	VadLevel          *int32 `json:"VadLevel,omitempty" xml:"VadLevel,omitempty"`
+	// The voice ID of the intelligent agent. The modification takes effect in the next sentence. If you do not specify this parameter, the system uses the default voice ID specified in the template of the intelligent agent. This parameter takes effect only for the preset TTS model. The ID can be up to 64 characters in length. For more information about the available voices, visit [https://help.aliyun.com/zh/ims/developer-reference/smart-voice-effect-example](url).
+	//
+	// example:
+	//
+	// zhixiaoxia
+	VoiceId     *string   `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceIdList []*string `json:"VoiceIdList,omitempty" xml:"VoiceIdList,omitempty" type:"Repeated"`
+	// The unique ID of the voiceprint. This parameter is empty by default.
+	//
+	// example:
+	//
+	// uniqueId
+	VoiceprintId *string `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
+	// The speech volume of the intelligent agent.
+	//
+	// 	- If this parameter is not specified, the adaptive volume mode recommended by Alibaba Cloud is used by default.
+	//
+	// 	- To specify this parameter, enter a value between 0 and 400. The output volume is calculated by using the following formula: Output volume = Voice output volume specified in the workflow × Volume/100. Example:
+	//
+	// 1.  If Volume is set to 0, the output volume is 0.
+	//
+	// 2.  If Volume is set to 100, the output volume is the voice output volume specified in the workflow.
+	//
+	// 3.  If Volume is set to 200, the output volume is twice the voice output volume specified in the workflow.
+	//
+	// example:
+	//
+	// 100
+	Volume      *int64  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	WakeUpQuery *string `json:"WakeUpQuery,omitempty" xml:"WakeUpQuery,omitempty"`
+	// example:
+	//
+	// {}
+	WorkflowOverrideParams *string `json:"WorkflowOverrideParams,omitempty" xml:"WorkflowOverrideParams,omitempty"`
 }
 
 func (s AIAgentTemplateConfigVoiceChat) String() string {
@@ -1001,7 +1267,10 @@ func (s *AIAgentTemplateConfigVoiceChat) Validate() error {
 
 type AIAgentTemplateConfigVoiceChatLlmHistory struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Role    *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// example:
+	//
+	// user
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 }
 
 func (s AIAgentTemplateConfigVoiceChatLlmHistory) String() string {

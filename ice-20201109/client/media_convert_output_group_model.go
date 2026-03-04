@@ -18,9 +18,16 @@ type iMediaConvertOutputGroup interface {
 }
 
 type MediaConvertOutputGroup struct {
-	GroupConfig *MediaConvertOutputGroupConfig   `json:"GroupConfig,omitempty" xml:"GroupConfig,omitempty"`
-	Name        *string                          `json:"Name,omitempty" xml:"Name,omitempty"`
-	Outputs     []*MediaConvertOutputGroupOutput `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
+	// The output group configuration.
+	GroupConfig *MediaConvertOutputGroupConfig `json:"GroupConfig,omitempty" xml:"GroupConfig,omitempty"`
+	// The name of the output group.
+	//
+	// example:
+	//
+	// hls-group
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// A list of individual output stream configurations. Each object in this array defines a specific rendition.
+	Outputs []*MediaConvertOutputGroupOutput `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
 }
 
 func (s MediaConvertOutputGroup) String() string {

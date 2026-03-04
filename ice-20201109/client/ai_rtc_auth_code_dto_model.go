@@ -30,15 +30,44 @@ type iAiRtcAuthCodeDTO interface {
 }
 
 type AiRtcAuthCodeDTO struct {
-	ActivatedTime    *string `json:"ActivatedTime,omitempty" xml:"ActivatedTime,omitempty"`
-	AuthCode         *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	CreationTime     *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	DeviceId         *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	License          *string `json:"License,omitempty" xml:"License,omitempty"`
-	LicenseItemId    *string `json:"LicenseItemId,omitempty" xml:"LicenseItemId,omitempty"`
+	// example:
+	//
+	// 2024-01-01 06:57:43
+	ActivatedTime *string `json:"ActivatedTime,omitempty" xml:"ActivatedTime,omitempty"`
+	// example:
+	//
+	// iU1IeJech7***
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// example:
+	//
+	// 2023-12-23T13:33:49Z
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// example:
+	//
+	// device-***
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// license。
+	//
+	// example:
+	//
+	// a659a06659a***
+	License *string `json:"License,omitempty" xml:"License,omitempty"`
+	// example:
+	//
+	// 11096067***
+	LicenseItemId *string `json:"LicenseItemId,omitempty" xml:"LicenseItemId,omitempty"`
+	// example:
+	//
+	// 2023-12-23T13:33:49Z
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	Status           *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type             *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s AiRtcAuthCodeDTO) String() string {

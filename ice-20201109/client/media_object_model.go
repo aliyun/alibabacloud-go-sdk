@@ -16,8 +16,28 @@ type iMediaObject interface {
 }
 
 type MediaObject struct {
+	// The identifier for the media file.
+	//
+	// 	- If Type is set to OSS, the value is the URL of the media file. The following formats are supported: oss://... and https://...
+	//
+	// 	- If Type is set to Media, the value is the ID of the media asset.
+	//
+	// example:
+	//
+	// http://bucket.loction.aliyuncs.com/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of media source. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
+	// 	- ExternalURL: a publicly accessible external URL. This is not available for public use.
+	//
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s MediaObject) String() string {

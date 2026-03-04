@@ -39,9 +39,8 @@ type ListRecognitionSamplesResponseBody struct {
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The samples.
-	Samples *ListRecognitionSamplesResponseBodySamples `json:"Samples,omitempty" xml:"Samples,omitempty" type:"Struct"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Samples   *ListRecognitionSamplesResponseBodySamples `json:"Samples,omitempty" xml:"Samples,omitempty" type:"Struct"`
 	// The total number of samples.
 	//
 	// example:
@@ -148,18 +147,8 @@ func (s *ListRecognitionSamplesResponseBodySamples) Validate() error {
 
 type ListRecognitionSamplesResponseBodySamplesSample struct {
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The URL of the image sample.
-	//
-	// example:
-	//
-	// https://example.com/sample.png
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	LibId    *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// The sample ID.
-	//
-	// example:
-	//
-	// xxxxxxxxxxxxx
 	SampleId *string `json:"SampleId,omitempty" xml:"SampleId,omitempty"`
 }
 

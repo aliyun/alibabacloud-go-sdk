@@ -28,14 +28,62 @@ type iSource interface {
 }
 
 type Source struct {
-	Arn                       *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	GmtCreate                 *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified               *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ARN of the source.
+	//
+	// example:
+	//
+	// acs:ims:mediaweaver:<regionId>:<userId>:vodSource/mySourceLocation/mySource
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2024-11-07T10:12:01Z
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The modification time.
+	//
+	// example:
+	//
+	// 2024-11-07T10:12:01Z
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The source configuration.
+	//
+	// example:
+	//
+	// [{
+	//
+	// 	"sourceGroupName": "mySourceGroup-1",
+	//
+	// 	"relativePath": "group1/hls.m3u8",
+	//
+	// 	"packageType": "hls"
+	//
+	// }]
 	HttpPackageConfigurations *string `json:"HttpPackageConfigurations,omitempty" xml:"HttpPackageConfigurations,omitempty"`
-	SourceLocationName        *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
-	SourceName                *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
-	SourceType                *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	State                     *int32  `json:"State,omitempty" xml:"State,omitempty"`
+	// The name of the source location.
+	//
+	// example:
+	//
+	// MySourceLocation
+	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	// The name of the source.
+	//
+	// example:
+	//
+	// MyVodSource
+	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	// The source type. Valid values: vodSource and liveSource.
+	//
+	// example:
+	//
+	// vodSource
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The status of the source. 0: normal. 1: deleted.
+	//
+	// example:
+	//
+	// 0
+	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s Source) String() string {

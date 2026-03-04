@@ -27,8 +27,7 @@ type GetCategoriesResponseBody struct {
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The subcategories in the category.
+	RequestId     *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SubCategories *GetCategoriesResponseBodySubCategories `json:"SubCategories,omitempty" xml:"SubCategories,omitempty" type:"Struct"`
 	// The total number of subcategories.
 	//
@@ -221,46 +220,12 @@ func (s *GetCategoriesResponseBodySubCategories) Validate() error {
 }
 
 type GetCategoriesResponseBodySubCategoriesCategory struct {
-	// The category ID.
-	//
-	// example:
-	//
-	// 129
-	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The category name.
-	//
-	// 	- The value can be up to 64 bytes in length.
-	//
-	// 	- The value is encoded in UTF-8.
+	CateId   *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The level of the category. A value of **0*	- indicates a level-1 category, a value of **1*	- indicates a level-2 category, and a value of **2*	- indicates a level-3 category.
-	//
-	// example:
-	//
-	// 1
-	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The ID of the parent category.
-	//
-	// example:
-	//
-	// 46
-	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// The total number of subcategories.
-	//
-	// example:
-	//
-	// 100
-	SubTotal *int64 `json:"SubTotal,omitempty" xml:"SubTotal,omitempty"`
-	// The type of the category. Valid values:
-	//
-	// 	- **default**: audio, video, and image files. This is the default value.
-	//
-	// 	- **material**: short video materials.
-	//
-	// example:
-	//
-	// default
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Level    *int64  `json:"Level,omitempty" xml:"Level,omitempty"`
+	ParentId *int64  `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	SubTotal *int64  `json:"SubTotal,omitempty" xml:"SubTotal,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetCategoriesResponseBodySubCategoriesCategory) String() string {

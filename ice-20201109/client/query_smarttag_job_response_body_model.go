@@ -41,10 +41,9 @@ type QuerySmarttagJobResponseBody struct {
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The analysis results of the smart tagging job. The value is an array.
-	Results *QuerySmarttagJobResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
-	Usages  *QuerySmarttagJobResponseBodyUsages  `json:"Usages,omitempty" xml:"Usages,omitempty" type:"Struct"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results   *QuerySmarttagJobResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
+	Usages    *QuerySmarttagJobResponseBodyUsages  `json:"Usages,omitempty" xml:"Usages,omitempty" type:"Struct"`
 	// The content of callback messages that are sent to Simple Message Queue (SMQ) when the information of the smart tagging job changes. For more information about the parameters contained in the callback message, see the "Callback parameters" section of this topic.
 	//
 	// example:
@@ -155,41 +154,7 @@ func (s *QuerySmarttagJobResponseBodyResults) Validate() error {
 }
 
 type QuerySmarttagJobResponseBodyResultsResult struct {
-	// The details of the analysis result. The value is a JSON string. For more information about the parameters of different result types, see the "Parameters of different result types" section of this topic.
-	//
-	// example:
-	//
-	// {"title":"example-title-****"}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The type of the analysis result.
-	//
-	// 	- The type of the analysis result based on Smart tagging V1.0. Valid values:
-	//
-	// 1.  TextLabel: the text tag.
-	//
-	// 2.  VideoLabel: the video tag.
-	//
-	// 3.  ASR: the original result of automatic speech recognition (ASR). By default, this type of result is not returned.
-	//
-	// 4.  OCR: the original result of optical character recognition (OCR). By default, this type of result is not returned.
-	//
-	// 5.  NLP: the natural language processing (NLP)-based result. By default, this type of result is not returned.
-	//
-	// 	- The type of the analysis result based on Smart tagging V2.0. Valid values:
-	//
-	// 1.  CPVLabel
-	//
-	// 2.  Meta: the information about the video file, such as the title of the video. By default, this type of information is not returned.
-	//
-	// 	- The type of the analysis result based on Smart tagging V2.0-custom. Valid values:
-	//
-	// 1.  CPVLabel
-	//
-	// 2.  Meta: the information about the video file, such as the title of the video. By default, this type of information is not returned.
-	//
-	// example:
-	//
-	// Meta
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

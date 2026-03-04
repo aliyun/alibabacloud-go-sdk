@@ -22,7 +22,6 @@ type iListRecognitionLibsResponseBody interface {
 }
 
 type ListRecognitionLibsResponseBody struct {
-	// The recognition libraries.
 	Libs *ListRecognitionLibsResponseBodyLibs `json:"Libs,omitempty" xml:"Libs,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,16 +146,9 @@ func (s *ListRecognitionLibsResponseBodyLibs) Validate() error {
 }
 
 type ListRecognitionLibsResponseBodyLibsLib struct {
-	// The description of the recognition library.
 	LibDescription *string `json:"LibDescription,omitempty" xml:"LibDescription,omitempty"`
-	// The ID of the recognition library.
-	//
-	// example:
-	//
-	// *************24b47865c6**************
-	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// The name of the recognition library.
-	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+	LibId          *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	LibName        *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 }
 
 func (s ListRecognitionLibsResponseBodyLibsLib) String() string {

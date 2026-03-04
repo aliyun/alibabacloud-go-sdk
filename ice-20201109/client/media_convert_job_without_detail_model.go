@@ -34,17 +34,78 @@ type iMediaConvertJobWithoutDetail interface {
 }
 
 type MediaConvertJobWithoutDetail struct {
-	ClientToken *string                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Code        *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Config      *MediaConvertJobWithoutDetailConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	CreateTime  *string                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	FinishTime  *string                             `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	JobId       *string                             `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message     *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	PipelineId  *string                             `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	RequestId   *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	State       *string                             `json:"State,omitempty" xml:"State,omitempty"`
-	UserData    *string                             `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The idempotency token provided during the task creation request.
+	//
+	// example:
+	//
+	// ****12e8864746a0a398****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The error code for a failed task.
+	//
+	// example:
+	//
+	// InvalidParameter.ResourceNotFound
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The task configuration.
+	Config *MediaConvertJobWithoutDetailConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The time the task was created, in UTC format (*yyyy-MM-dd*T*HH:mm:ss*Z).
+	//
+	// example:
+	//
+	// 2024-12-07T13:01:07Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time the task finished processing, in UTC format (*yyyy-MM-dd*T*HH:mm:ss*Z).
+	//
+	// example:
+	//
+	// 2024-12-07T13:01:07Z
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The ID of the task.
+	//
+	// example:
+	//
+	// ****d80e4e4044975745c14b****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The reason for a task failure.
+	//
+	// example:
+	//
+	// The resource operated "%s" cannot be found
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the queue on which this task was processed.
+	//
+	// example:
+	//
+	// 688c2a8bfa4e44ddbba0c8730db91b0c
+	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The ID of the API request that created this task.
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the task.
+	//
+	// 	- Inited: The task is initialized.
+	//
+	// 	- Running
+	//
+	// 	- Complete
+	//
+	// 	- Error
+	//
+	// 	- Cancelled
+	//
+	// example:
+	//
+	// Inited
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The user-defined data.
+	//
+	// example:
+	//
+	// {"info": "xxx"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s MediaConvertJobWithoutDetail) String() string {
@@ -164,10 +225,18 @@ func (s *MediaConvertJobWithoutDetail) Validate() error {
 }
 
 type MediaConvertJobWithoutDetailConfig struct {
-	Inputs       []*MediaConvertInput       `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
-	JobName      *string                    `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The input files for the task.
+	Inputs []*MediaConvertInput `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
+	// The task name.
+	//
+	// example:
+	//
+	// Name
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The output groups.
 	OutputGroups []*MediaConvertOutputGroup `json:"OutputGroups,omitempty" xml:"OutputGroups,omitempty" type:"Repeated"`
-	Outputs      []*MediaConvertOutput      `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
+	// The output configurations.
+	Outputs []*MediaConvertOutput `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
 }
 
 func (s MediaConvertJobWithoutDetailConfig) String() string {

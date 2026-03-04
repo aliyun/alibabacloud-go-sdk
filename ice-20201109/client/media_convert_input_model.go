@@ -16,8 +16,14 @@ type iMediaConvertInput interface {
 }
 
 type MediaConvertInput struct {
+	// The input file.
 	InputFile *MediaObject `json:"InputFile,omitempty" xml:"InputFile,omitempty"`
-	Name      *string      `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the input file. If Output contains InputRef, use this name to reference the input file.
+	//
+	// example:
+	//
+	// InputVideo
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s MediaConvertInput) String() string {

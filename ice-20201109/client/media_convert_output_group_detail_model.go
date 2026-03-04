@@ -28,14 +28,60 @@ type iMediaConvertOutputGroupDetail interface {
 }
 
 type MediaConvertOutputGroupDetail struct {
-	Code       *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	CreateTime *string                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	FinishTime *string                     `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	Message    *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	Name       *string                     `json:"Name,omitempty" xml:"Name,omitempty"`
-	Outputs    []*MediaConvertOutputDetail `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
-	Status     *string                     `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId     *string                     `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The error code for the failed output group task.
+	//
+	// example:
+	//
+	// InvalidParameter.ResourceContentBad
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The time the task was created.
+	//
+	// example:
+	//
+	// 2025-03-21T01:48:41Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The end time of the task.
+	//
+	// example:
+	//
+	// 2025-03-21T01:48:41Z
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The reason for a task failure.
+	//
+	// example:
+	//
+	// The resource operated "InputFile" is bad
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The name of the output group.
+	//
+	// example:
+	//
+	// hls-group
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output details.
+	Outputs []*MediaConvertOutputDetail `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
+	// The status of the output group task.
+	//
+	// 	- Init: The task is submitted.
+	//
+	// 	- Running
+	//
+	// 	- Success
+	//
+	// 	- Failed
+	//
+	// 	- Skipped
+	//
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the output group task.
+	//
+	// example:
+	//
+	// ******22dad741d086a50325f9******
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s MediaConvertOutputGroupDetail) String() string {

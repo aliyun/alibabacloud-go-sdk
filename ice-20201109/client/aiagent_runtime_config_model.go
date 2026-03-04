@@ -24,14 +24,35 @@ type iAIAgentRuntimeConfig interface {
 }
 
 type AIAgentRuntimeConfig struct {
+	// The name of the agent in the ARTC channel.
+	//
+	// example:
+	//
+	// 877ae632caae49b1afc81c2e8194ffb4
 	AgentUserId *string `json:"AgentUserId,omitempty" xml:"AgentUserId,omitempty"`
-	AuthToken   *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
+	// The authentication token for the agent to join the channel. This must be generated using your AppKey.
+	//
+	// example:
+	//
+	// eyJhcHBpZCI6ICIxMjM0MTIzNxxxxx
+	AuthToken *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
 	// Deprecated
+	//
+	// The runtime parameters of the avatar call.
 	AvatarChat3D *AIAgentRuntimeConfigAvatarChat3D `json:"AvatarChat3D,omitempty" xml:"AvatarChat3D,omitempty" type:"Struct"`
-	ChannelId    *string                           `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The ID of the ARTC channel.
+	//
+	// example:
+	//
+	// 70f22d5784194938a7e387052f2b3208
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	// Deprecated
+	//
+	// The runtime parameters of the vision call.
 	VisionChat *AIAgentRuntimeConfigVisionChat `json:"VisionChat,omitempty" xml:"VisionChat,omitempty" type:"Struct"`
 	// Deprecated
+	//
+	// The runtime parameters of the voice call.
 	VoiceChat *AIAgentRuntimeConfigVoiceChat `json:"VoiceChat,omitempty" xml:"VoiceChat,omitempty" type:"Struct"`
 }
 
@@ -117,9 +138,24 @@ func (s *AIAgentRuntimeConfig) Validate() error {
 }
 
 type AIAgentRuntimeConfigAvatarChat3D struct {
+	// Required. The name of the agent in the ARTC channel.
+	//
+	// example:
+	//
+	// 877ae632caae49b1afc81c2e8194ffb4
 	AgentUserId *string `json:"AgentUserId,omitempty" xml:"AgentUserId,omitempty"`
-	AuthToken   *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
-	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// Required. The authentication token for the agent to join the channel. This must be generated using your AppKey.
+	//
+	// example:
+	//
+	// eyJhcHBpZCI6ICIxMjM0MTIzNxxxxx
+	AuthToken *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
+	// Required. The ID of the ARTC channel.
+	//
+	// example:
+	//
+	// 70f22d5784194938a7e387052f2b3208
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 }
 
 func (s AIAgentRuntimeConfigAvatarChat3D) String() string {
@@ -162,9 +198,24 @@ func (s *AIAgentRuntimeConfigAvatarChat3D) Validate() error {
 }
 
 type AIAgentRuntimeConfigVisionChat struct {
+	// Required. The name of the agent in the ARTC channel.
+	//
+	// example:
+	//
+	// 877ae632caae49b1afc81c2e8194ffb4
 	AgentUserId *string `json:"AgentUserId,omitempty" xml:"AgentUserId,omitempty"`
-	AuthToken   *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
-	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// Required. The authentication token for the agent to join the channel. This must be generated using your AppKey.
+	//
+	// example:
+	//
+	// eyJhcHBpZCI6ICIxMjM0MTIzNxxxxx
+	AuthToken *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
+	// Required. The ID of the ARTC channel.
+	//
+	// example:
+	//
+	// 70f22d5784194938a7e387052f2b3208
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 }
 
 func (s AIAgentRuntimeConfigVisionChat) String() string {
@@ -207,9 +258,24 @@ func (s *AIAgentRuntimeConfigVisionChat) Validate() error {
 }
 
 type AIAgentRuntimeConfigVoiceChat struct {
+	// Required. The name of the agent in the ARTC channel.
+	//
+	// example:
+	//
+	// 877ae632caae49b1afc81c2e8194ffb4
 	AgentUserId *string `json:"AgentUserId,omitempty" xml:"AgentUserId,omitempty"`
-	AuthToken   *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
-	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// Required. The authentication token for the agent to join the channel. This must be generated using your AppKey.
+	//
+	// example:
+	//
+	// eyJhcHBpZCI6ICIxMjM0MTIzNxxxxx
+	AuthToken *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
+	// Required. The ID of the ARTC channel.
+	//
+	// example:
+	//
+	// 70f22d5784194938a7e387052f2b3208
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 }
 
 func (s AIAgentRuntimeConfigVoiceChat) String() string {

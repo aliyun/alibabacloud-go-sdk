@@ -36,18 +36,74 @@ type iChannelAssemblyChannel interface {
 }
 
 type ChannelAssemblyChannel struct {
-	AccessPolicy             *bool                                     `json:"AccessPolicy,omitempty" xml:"AccessPolicy,omitempty"`
-	AccessToken              *string                                   `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	Arn                      *string                                   `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	ChannelName              *string                                   `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	ChannelTier              *string                                   `json:"ChannelTier,omitempty" xml:"ChannelTier,omitempty"`
-	FillerSourceLocationName *string                                   `json:"FillerSourceLocationName,omitempty" xml:"FillerSourceLocationName,omitempty"`
-	FillerSourceName         *string                                   `json:"FillerSourceName,omitempty" xml:"FillerSourceName,omitempty"`
-	GmtCreate                *string                                   `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified              *string                                   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	OutPutConfigList         []*ChannelAssemblyChannelOutPutConfigList `json:"OutPutConfigList,omitempty" xml:"OutPutConfigList,omitempty" type:"Repeated"`
-	PlaybackMode             *string                                   `json:"PlaybackMode,omitempty" xml:"PlaybackMode,omitempty"`
-	State                    *int32                                    `json:"State,omitempty" xml:"State,omitempty"`
+	// Specifies whether to enable access control.
+	//
+	// example:
+	//
+	// true
+	AccessPolicy *bool `json:"AccessPolicy,omitempty" xml:"AccessPolicy,omitempty"`
+	// The token for accessing the channel.
+	//
+	// example:
+	//
+	// xxxxx
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// The ARN of the channel.
+	//
+	// example:
+	//
+	// acs:ims:mediaweaver:<regionId>:<userId>:channel/myChannel
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The name of the channel.
+	//
+	// example:
+	//
+	// MyChannel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// The tier of the channel. Valid values: basic and standard.
+	//
+	// example:
+	//
+	// basic
+	ChannelTier *string `json:"ChannelTier,omitempty" xml:"ChannelTier,omitempty"`
+	// The source location of the filler slate.
+	//
+	// example:
+	//
+	// MySourceLocation
+	FillerSourceLocationName *string `json:"FillerSourceLocationName,omitempty" xml:"FillerSourceLocationName,omitempty"`
+	// The source name of the filler slate.
+	//
+	// example:
+	//
+	// MySource
+	FillerSourceName *string `json:"FillerSourceName,omitempty" xml:"FillerSourceName,omitempty"`
+	// The time when the channel was created.
+	//
+	// example:
+	//
+	// 2024-01-15T03:44:16Z
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the channel was last modified.
+	//
+	// example:
+	//
+	// 2024-09-01T10:09Z
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The channel output configurations.
+	OutPutConfigList []*ChannelAssemblyChannelOutPutConfigList `json:"OutPutConfigList,omitempty" xml:"OutPutConfigList,omitempty" type:"Repeated"`
+	// The playback mode. Valid values: loop and linear.
+	//
+	// example:
+	//
+	// loop
+	PlaybackMode *string `json:"PlaybackMode,omitempty" xml:"PlaybackMode,omitempty"`
+	// The channel status. A value of 0 specifies stopped. A value of 1 specifies running.
+	//
+	// example:
+	//
+	// 0
+	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s ChannelAssemblyChannel) String() string {
@@ -180,12 +236,42 @@ func (s *ChannelAssemblyChannel) Validate() error {
 }
 
 type ChannelAssemblyChannelOutPutConfigList struct {
-	ChannelName      *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	Format           *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	ManifestName     *string `json:"ManifestName,omitempty" xml:"ManifestName,omitempty"`
+	// The name of the channel.
+	//
+	// example:
+	//
+	// MyChannel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// The streaming protocol. Only HTTP Live Streaming (HLS) is supported.
+	//
+	// example:
+	//
+	// hls
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The name of the manifest file.
+	//
+	// example:
+	//
+	// index1
+	ManifestName *string `json:"ManifestName,omitempty" xml:"ManifestName,omitempty"`
+	// The manifest settings.
+	//
+	// example:
+	//
+	// {"WindowDuration": 60,"AdMarkType":"Daterange"}
 	ManifestSettings *string `json:"ManifestSettings,omitempty" xml:"ManifestSettings,omitempty"`
-	PlaybackUrl      *string `json:"PlaybackUrl,omitempty" xml:"PlaybackUrl,omitempty"`
-	SourceGroupName  *string `json:"SourceGroupName,omitempty" xml:"SourceGroupName,omitempty"`
+	// The playback URL.
+	//
+	// example:
+	//
+	// https://xxxxx.com/xxx.m3u8
+	PlaybackUrl *string `json:"PlaybackUrl,omitempty" xml:"PlaybackUrl,omitempty"`
+	// The name of the source group.
+	//
+	// example:
+	//
+	// group1
+	SourceGroupName *string `json:"SourceGroupName,omitempty" xml:"SourceGroupName,omitempty"`
 }
 
 func (s ChannelAssemblyChannelOutPutConfigList) String() string {

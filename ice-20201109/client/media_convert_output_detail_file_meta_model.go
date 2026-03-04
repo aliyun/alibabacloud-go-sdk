@@ -18,8 +18,11 @@ type iMediaConvertOutputDetailFileMeta interface {
 }
 
 type MediaConvertOutputDetailFileMeta struct {
+	// The audio stream information.
 	AudioStreamInfoList []*MediaConvertOutputDetailFileMetaAudioStreamInfoList `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
-	FileBasicInfo       *MediaConvertOutputDetailFileMetaFileBasicInfo         `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
+	// The basic information of the media file.
+	FileBasicInfo *MediaConvertOutputDetailFileMetaFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
+	// The video stream information.
 	VideoStreamInfoList []*MediaConvertOutputDetailFileMetaVideoStreamInfoList `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
 }
 
@@ -86,62 +89,92 @@ func (s *MediaConvertOutputDetailFileMeta) Validate() error {
 }
 
 type MediaConvertOutputDetailFileMetaAudioStreamInfoList struct {
+	// The bitrate.
+	//
 	// example:
 	//
 	// 0.f
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The layout of the audio channels.
+	//
 	// example:
 	//
 	// stereo
 	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	// The number of audio channels.
+	//
 	// example:
 	//
 	// 2
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// The full name of the codec.
+	//
 	// example:
 	//
 	// AAC (Advanced Audio Coding)
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	// The short name of the codec.
+	//
 	// example:
 	//
 	// aac
 	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	// The tag of the codec.
+	//
 	// example:
 	//
 	// 0x000f
 	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	// The tag of the codec.
+	//
 	// example:
 	//
 	// [15][0][0][0]
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	// The time base used by the codec.
+	//
 	// example:
 	//
 	// 1/44100
 	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	// The duration of the stream. Unit: seconds.
+	//
 	// example:
 	//
 	// 403.039989
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The index of this stream within the file.
+	//
 	// example:
 	//
 	// 1
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The language code for the stream.
+	//
 	// example:
 	//
 	// cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The audio sample format.
+	//
 	// example:
 	//
 	// fltp
 	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	// The sample rate. Unit: Hz.
+	//
 	// example:
 	//
 	// 44100
 	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	// The start time of the stream. Unit: seconds.
+	//
 	// example:
 	//
 	// 1.473556
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time base of the stream\\"s presentation timestamps.
+	//
 	// example:
 	//
 	// 1/90000
@@ -296,47 +329,74 @@ func (s *MediaConvertOutputDetailFileMetaAudioStreamInfoList) Validate() error {
 }
 
 type MediaConvertOutputDetailFileMetaFileBasicInfo struct {
+	// The video bitrate.
+	//
 	// example:
 	//
 	// 888.563
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The total duration of the media file. Unit: seconds.
+	//
 	// example:
 	//
 	// 403.039999
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The name of the file.
+	//
 	// example:
 	//
 	// file.m3u8
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file size. Unit: bytes.
+	//
 	// example:
 	//
 	// 31737
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The status of the file.
+	//
 	// example:
 	//
 	// Normal
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
+	// Indicates if this is the source or a transcoded output. Valid values: source_file and transcode_file.
+	//
 	// example:
 	//
 	// source_file
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The URL of the file.
+	//
 	// example:
 	//
 	// http://bucket.oss-cn-shanghai.aliyuncs.com/path/to/file.m3u8
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The container format name.
+	//
 	// example:
 	//
 	// hls,applehttp
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// The height of the video, in pixels.
+	//
 	// example:
 	//
 	// 478
-	Height  *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The ID of the media asset.
+	//
+	// example:
+	//
+	// 9066406c306771f0bfa35107e0c90102
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The storage region of the file.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The width of the video, in pixels.
+	//
 	// example:
 	//
 	// 848
@@ -464,91 +524,146 @@ func (s *MediaConvertOutputDetailFileMetaFileBasicInfo) Validate() error {
 }
 
 type MediaConvertOutputDetailFileMetaVideoStreamInfoList struct {
+	// The average frame rate.
+	//
 	// example:
 	//
 	// 25.0
 	AvgFps *string `json:"Avg_fps,omitempty" xml:"Avg_fps,omitempty"`
+	// The bitrate.
+	//
 	// example:
 	//
 	// 888.563
 	BitRate *string `json:"Bit_rate,omitempty" xml:"Bit_rate,omitempty"`
+	// The full name of the codec.
+	//
 	// example:
 	//
 	// H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
 	CodecLongName *string `json:"Codec_long_name,omitempty" xml:"Codec_long_name,omitempty"`
+	// The short name of the codec.
+	//
 	// example:
 	//
 	// h264
 	CodecName *string `json:"Codec_name,omitempty" xml:"Codec_name,omitempty"`
+	// The tag of the codec.
+	//
 	// example:
 	//
 	// 0x001b
 	CodecTag *string `json:"Codec_tag,omitempty" xml:"Codec_tag,omitempty"`
+	// The tag of the codec.
+	//
 	// example:
 	//
 	// [27][0][0][0]
 	CodecTagString *string `json:"Codec_tag_string,omitempty" xml:"Codec_tag_string,omitempty"`
-	CodecTimeBase  *string `json:"Codec_time_base,omitempty" xml:"Codec_time_base,omitempty"`
+	// The time base used by the codec.
+	//
+	// example:
+	//
+	// 1/50
+	CodecTimeBase *string `json:"Codec_time_base,omitempty" xml:"Codec_time_base,omitempty"`
+	// The display aspect ratio.
+	//
 	// example:
 	//
 	// 16:9
 	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	// The duration of the stream. Unit: seconds.
+	//
 	// example:
 	//
 	// 403.039989
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The frame rate.
+	//
 	// example:
 	//
 	// 25.0
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// Indicates whether the video stream contains B-frames. Valid value:
+	//
+	// 	- 0: None.
+	//
+	// 	- 1: One B-frame.
+	//
+	// 	- 2: Multiple consecutive B-frames.
+	//
 	// example:
 	//
 	// 2
 	HasBFrames *string `json:"Has_b_frames,omitempty" xml:"Has_b_frames,omitempty"`
+	// The height of the video stream, in pixels.
+	//
 	// example:
 	//
 	// 478
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The index of this stream within the file.
+	//
 	// example:
 	//
 	// 0
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The language code for the stream.
+	//
 	// example:
 	//
 	// cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The codec level.
+	//
 	// example:
 	//
 	// 31
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The total number of frames.
+	//
 	// example:
 	//
 	// 10040
 	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	// The pixel format.
+	//
 	// example:
 	//
 	// yuv420p
 	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	// The codec profile.
+	//
 	// example:
 	//
 	// High
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The rotation angle applied to the video. Valid values: 0, 90, 180, and 270. Default value: 0.
+	//
 	// example:
 	//
 	// 0
 	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	// The sample aspect ratio.
+	//
 	// example:
 	//
 	// 478:477
 	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	// The start time of the stream.
+	//
 	// example:
 	//
 	// 1.473556
 	StartTime *string `json:"Start_time,omitempty" xml:"Start_time,omitempty"`
+	// The time base of the stream\\"s presentation timestamps.
+	//
 	// example:
 	//
 	// 1/90000
 	TimeBase *string `json:"Time_base,omitempty" xml:"Time_base,omitempty"`
+	// The width of the video stream, in pixels.
+	//
 	// example:
 	//
 	// 848

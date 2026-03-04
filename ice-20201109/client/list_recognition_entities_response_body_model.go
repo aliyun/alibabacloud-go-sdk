@@ -22,7 +22,6 @@ type iListRecognitionEntitiesResponseBody interface {
 }
 
 type ListRecognitionEntitiesResponseBody struct {
-	// The entities.
 	Entities *ListRecognitionEntitiesResponseBodyEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,19 +146,8 @@ func (s *ListRecognitionEntitiesResponseBodyEntities) Validate() error {
 }
 
 type ListRecognitionEntitiesResponseBodyEntitiesEntity struct {
-	// The ID of the entity.
-	//
-	// example:
-	//
-	// **************544cb84754************
-	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The additional information of the entity, in JSON format.
-	//
-	// example:
-	//
-	// {}
+	EntityId   *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	EntityInfo *string `json:"EntityInfo,omitempty" xml:"EntityInfo,omitempty"`
-	// The name of the entity.
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
 }
 

@@ -26,13 +26,48 @@ type iSourceLocation interface {
 }
 
 type SourceLocation struct {
-	Arn                           *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	BaseUrl                       *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
-	GmtCreate                     *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified                   *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ARN of the source location.
+	//
+	// example:
+	//
+	// acs:ims:mediaweaver:<regionId>:<UserId>:sourcelocation/MySourceLocation
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The base URL of the source location.
+	//
+	// example:
+	//
+	// http://xxxx.com
+	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2023-09-12T07:15:52Z
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The modification time.
+	//
+	// example:
+	//
+	// 2023-10-22T10:49:14Z
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The segment delivery server configurations.
+	//
+	// example:
+	//
+	// http://segmentdelivery.com
 	SegmentDeliveryConfigurations *string `json:"SegmentDeliveryConfigurations,omitempty" xml:"SegmentDeliveryConfigurations,omitempty"`
-	SourceLocationName            *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
-	State                         *int32  `json:"State,omitempty" xml:"State,omitempty"`
+	// The name of the source location.
+	//
+	// example:
+	//
+	// MySourceLocation
+	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	// The status of the source location. 0: normal. 1: deleted.
+	//
+	// example:
+	//
+	// 0
+	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s SourceLocation) String() string {

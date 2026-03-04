@@ -14,6 +14,7 @@ type iMediaConvertJobOverwiteParams interface {
 }
 
 type MediaConvertJobOverwiteParams struct {
+	// Subtitle stream configurations.
 	Subtitles []*MediaConvertJobOverwiteParamsSubtitles `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
 }
 
@@ -48,6 +49,11 @@ func (s *MediaConvertJobOverwiteParams) Validate() error {
 }
 
 type MediaConvertJobOverwiteParamsSubtitles struct {
+	// The encoding format for the subtitle stream.
+	//
+	// example:
+	//
+	// VTT
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
 }
 

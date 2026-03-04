@@ -34,17 +34,68 @@ type iProgram interface {
 }
 
 type Program struct {
-	AdBreaks           []*ProgramAdBreaks `json:"AdBreaks,omitempty" xml:"AdBreaks,omitempty" type:"Repeated"`
-	Arn                *string            `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	ChannelName        *string            `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	ClipRange          *string            `json:"ClipRange,omitempty" xml:"ClipRange,omitempty"`
-	GmtCreate          *string            `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified        *string            `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	ProgramName        *string            `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
-	SourceLocationName *string            `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
-	SourceName         *string            `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
-	SourceType         *string            `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Transition         *string            `json:"Transition,omitempty" xml:"Transition,omitempty"`
+	// The ad breaks.
+	AdBreaks []*ProgramAdBreaks `json:"AdBreaks,omitempty" xml:"AdBreaks,omitempty" type:"Repeated"`
+	// The ARN of the program.
+	//
+	// example:
+	//
+	// acs:ims:mediaweaver:<regionId>:<userId>:program/myChannel/MyProgram
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The name of the channel.
+	//
+	// example:
+	//
+	// MyChannel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// The information about the clip.
+	//
+	// example:
+	//
+	// {StartOffsetMillis: 213123, EndOffsetMillis: 213134}
+	ClipRange *string `json:"ClipRange,omitempty" xml:"ClipRange,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2024-04-02T00:58:19Z
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The modification time.
+	//
+	// example:
+	//
+	// 2024-04-02T00:58:19Z
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The name of the program.
+	//
+	// example:
+	//
+	// program1
+	ProgramName *string `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
+	// The name of the source location.
+	//
+	// example:
+	//
+	// MySourceLocation
+	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	// The name of the source.
+	//
+	// example:
+	//
+	// MySource
+	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	// The source type.
+	//
+	// example:
+	//
+	// vodSource
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The program transition method.
+	//
+	// example:
+	//
+	// {"Type": "RELATIVE", "RelativePosition": "AFTER_PROGRAM", "RelativeProgram": "program2"}
+	Transition *string `json:"Transition,omitempty" xml:"Transition,omitempty"`
 }
 
 func (s Program) String() string {
@@ -168,14 +219,54 @@ func (s *Program) Validate() error {
 }
 
 type ProgramAdBreaks struct {
-	ChannelName          *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	MessageType          *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
-	OffsetMillis         *int64  `json:"OffsetMillis,omitempty" xml:"OffsetMillis,omitempty"`
-	ProgramName          *string `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
-	SourceLocationName   *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
-	SourceName           *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	// The name of the channel.
+	//
+	// example:
+	//
+	// MyChannel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// MessageType
+	//
+	// example:
+	//
+	// SPLICE_INSERT
+	MessageType *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	// The offset.
+	//
+	// example:
+	//
+	// 1000
+	OffsetMillis *int64 `json:"OffsetMillis,omitempty" xml:"OffsetMillis,omitempty"`
+	// The name of the program.
+	//
+	// example:
+	//
+	// program_name
+	ProgramName *string `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
+	// The name of the source location.
+	//
+	// example:
+	//
+	// MySourceLocation
+	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	// The name of the source.
+	//
+	// example:
+	//
+	// MyAdSource
+	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	// The SpliceInsert configurations.
+	//
+	// example:
+	//
+	// {"AvailNumber":0,"AvailExpected":0,"SpliceEventID":1,"UniqueProgramID":0}
 	SpliceInsertSettings *string `json:"SpliceInsertSettings,omitempty" xml:"SpliceInsertSettings,omitempty"`
-	TimeSignalSettings   *string `json:"TimeSignalSettings,omitempty" xml:"TimeSignalSettings,omitempty"`
+	// The TimeSignal configurations.
+	//
+	// example:
+	//
+	// {"segmentationEventID":0,"segmentationUPIDType":14,"segmentationUPID":"upid","segmentationTypeID":48,"segmentNumber":0,"segmentsExpected":0,"subSegmentNumber":1,"subSegmentsExpected":0}
+	TimeSignalSettings *string `json:"TimeSignalSettings,omitempty" xml:"TimeSignalSettings,omitempty"`
 }
 
 func (s ProgramAdBreaks) String() string {

@@ -1112,7 +1112,7 @@ func (client *Client) AlterSearchIndex(request *AlterSearchIndexRequest) (_resul
 
 // Summary:
 //
-// 修改库
+// Modifies a search library.
 //
 // @param request - AlterSearchLibRequest
 //
@@ -1160,7 +1160,7 @@ func (client *Client) AlterSearchLibWithOptions(request *AlterSearchLibRequest, 
 
 // Summary:
 //
-// 修改库
+// Modifies a search library.
 //
 // @param request - AlterSearchLibRequest
 //
@@ -1818,7 +1818,7 @@ func (client *Client) CreateAudit(request *CreateAuditRequest) (_result *CreateA
 
 // Summary:
 //
-// Creates a digital human training job. You can configure the basic information of the digital human and the materials required for the training. Note: This operation is used to initialize the training job. It does not submit the training job. To submit the training job, call the SubmitAvatarTrainingJob operation.
+// Creates an avatar training job. You can configure the basic information of the avatar and the materials required for the training.
 //
 // @param request - CreateAvatarTrainingJobRequest
 //
@@ -1886,7 +1886,7 @@ func (client *Client) CreateAvatarTrainingJobWithOptions(request *CreateAvatarTr
 
 // Summary:
 //
-// Creates a digital human training job. You can configure the basic information of the digital human and the materials required for the training. Note: This operation is used to initialize the training job. It does not submit the training job. To submit the training job, call the SubmitAvatarTrainingJob operation.
+// Creates an avatar training job. You can configure the basic information of the avatar and the materials required for the training.
 //
 // @param request - CreateAvatarTrainingJobRequest
 //
@@ -1994,7 +1994,7 @@ func (client *Client) CreateChannel(request *CreateChannelRequest) (_result *Cre
 
 // Summary:
 //
-// Creates a custom template.
+// Creates a custom media processing template.
 //
 // @param request - CreateCustomTemplateRequest
 //
@@ -2050,7 +2050,7 @@ func (client *Client) CreateCustomTemplateWithOptions(request *CreateCustomTempl
 
 // Summary:
 //
-// Creates a custom template.
+// Creates a custom media processing template.
 //
 // @param request - CreateCustomTemplateRequest
 //
@@ -2420,7 +2420,7 @@ func (client *Client) CreateHotwordLibrary(request *CreateHotwordLibraryRequest)
 
 // Summary:
 //
-// # IPC下单
+// Creates an IPC order. The purchased capacity is shared at the account level.
 //
 // @param request - CreateIpcOrderRequest
 //
@@ -2472,7 +2472,7 @@ func (client *Client) CreateIpcOrderWithOptions(request *CreateIpcOrderRequest, 
 
 // Summary:
 //
-// # IPC下单
+// Creates an IPC order. The purchased capacity is shared at the account level.
 //
 // @param request - CreateIpcOrderRequest
 //
@@ -2974,7 +2974,7 @@ func (client *Client) CreateLiveSnapshotTemplate(request *CreateLiveSnapshotTemp
 
 // Summary:
 //
-// Creates a live stream transcoding template to submit live stream transcoding jobs.
+// Creates a live stream transcoding template, which can be referenced when submitting a transcoding job.
 //
 // @param tmpReq - CreateLiveTranscodeTemplateRequest
 //
@@ -3032,7 +3032,7 @@ func (client *Client) CreateLiveTranscodeTemplateWithOptions(tmpReq *CreateLiveT
 
 // Summary:
 //
-// Creates a live stream transcoding template to submit live stream transcoding jobs.
+// Creates a live stream transcoding template, which can be referenced when submitting a transcoding job.
 //
 // @param request - CreateLiveTranscodeTemplateRequest
 //
@@ -3886,7 +3886,7 @@ func (client *Client) CreateRecognitionSample(request *CreateRecognitionSampleRe
 
 // Summary:
 //
-// 创建搜索索引
+// Creates a search index in a search library. Each search library can contain multiple indexes.
 //
 // Description:
 //
@@ -3946,7 +3946,7 @@ func (client *Client) CreateSearchIndexWithOptions(request *CreateSearchIndexReq
 
 // Summary:
 //
-// 创建搜索索引
+// Creates a search index in a search library. Each search library can contain multiple indexes.
 //
 // Description:
 //
@@ -4548,7 +4548,7 @@ func (client *Client) CreateVodPackagingAsset(request *CreateVodPackagingAssetRe
 
 // Summary:
 //
-// Creates a packaging configuration.
+// Creates a VOD packaging configuration.
 //
 // @param tmpReq - CreateVodPackagingConfigurationRequest
 //
@@ -4614,7 +4614,7 @@ func (client *Client) CreateVodPackagingConfigurationWithOptions(tmpReq *CreateV
 
 // Summary:
 //
-// Creates a packaging configuration.
+// Creates a VOD packaging configuration.
 //
 // @param request - CreateVodPackagingConfigurationRequest
 //
@@ -4632,7 +4632,7 @@ func (client *Client) CreateVodPackagingConfiguration(request *CreateVodPackagin
 
 // Summary:
 //
-// Creates a packaging group.
+// Creates a VOD packaging group.
 //
 // @param request - CreateVodPackagingGroupRequest
 //
@@ -4680,7 +4680,7 @@ func (client *Client) CreateVodPackagingGroupWithOptions(request *CreateVodPacka
 
 // Summary:
 //
-// Creates a packaging group.
+// Creates a VOD packaging group.
 //
 // @param request - CreateVodPackagingGroupRequest
 //
@@ -4689,6 +4689,68 @@ func (client *Client) CreateVodPackagingGroup(request *CreateVodPackagingGroupRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateVodPackagingGroupResponse{}
 	_body, _err := client.CreateVodPackagingGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取一刻媒资上传凭证
+//
+// @param request - CreateYikeAssetUploadRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateYikeAssetUploadResponse
+func (client *Client) CreateYikeAssetUploadWithOptions(request *CreateYikeAssetUploadRequest, runtime *dara.RuntimeOptions) (_result *CreateYikeAssetUploadResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileExt) {
+		query["FileExt"] = request.FileExt
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateYikeAssetUpload"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateYikeAssetUploadResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取一刻媒资上传凭证
+//
+// @param request - CreateYikeAssetUploadRequest
+//
+// @return CreateYikeAssetUploadResponse
+func (client *Client) CreateYikeAssetUpload(request *CreateYikeAssetUploadRequest) (_result *CreateYikeAssetUploadResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateYikeAssetUploadResponse{}
+	_body, _err := client.CreateYikeAssetUploadWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7728,7 +7790,7 @@ func (client *Client) DeleteVodPackagingAsset(request *DeleteVodPackagingAssetRe
 
 // Summary:
 //
-// Deletes a packaging configuration.
+// Deletes a VOD packaging configuration.
 //
 // @param request - DeleteVodPackagingConfigurationRequest
 //
@@ -7772,7 +7834,7 @@ func (client *Client) DeleteVodPackagingConfigurationWithOptions(request *Delete
 
 // Summary:
 //
-// Deletes a packaging configuration.
+// Deletes a VOD packaging configuration.
 //
 // @param request - DeleteVodPackagingConfigurationRequest
 //
@@ -7790,7 +7852,7 @@ func (client *Client) DeleteVodPackagingConfiguration(request *DeleteVodPackagin
 
 // Summary:
 //
-// Deletes a packaging group.
+// Deletes a VOD packaging group.
 //
 // @param request - DeleteVodPackagingGroupRequest
 //
@@ -7834,7 +7896,7 @@ func (client *Client) DeleteVodPackagingGroupWithOptions(request *DeleteVodPacka
 
 // Summary:
 //
-// Deletes a packaging group.
+// Deletes a VOD packaging group.
 //
 // @param request - DeleteVodPackagingGroupRequest
 //
@@ -8460,7 +8522,7 @@ func (client *Client) DescribePlayList(request *DescribePlayListRequest) (_resul
 
 // Summary:
 //
-// 查询实例
+// Queries the information about an AI agent for real-time communication (RTC).
 //
 // @param request - DescribeRtcRobotInstanceRequest
 //
@@ -8504,7 +8566,7 @@ func (client *Client) DescribeRtcRobotInstanceWithOptions(request *DescribeRtcRo
 
 // Summary:
 //
-// 查询实例
+// Queries the information about an AI agent for real-time communication (RTC).
 //
 // @param request - DescribeRtcRobotInstanceRequest
 //
@@ -10548,7 +10610,7 @@ func (client *Client) GetHotwordLibrary(request *GetHotwordLibraryRequest) (_res
 
 // Summary:
 //
-// 查询IPC设备信息
+// Retrieves information about IPC devices.
 //
 // @param request - GetIpcDeviceInfoRequest
 //
@@ -10612,7 +10674,7 @@ func (client *Client) GetIpcDeviceInfoWithOptions(request *GetIpcDeviceInfoReque
 
 // Summary:
 //
-// 查询IPC设备信息
+// Retrieves information about IPC devices.
 //
 // @param request - GetIpcDeviceInfoRequest
 //
@@ -12359,7 +12421,7 @@ func (client *Client) GetPipeline(request *GetPipelineRequest) (_result *GetPipe
 
 // Summary:
 //
-// Queries the playback URL of a video or audio file based on its ID.
+// Queries the playback URL of a video or audio file by its ID. You can use the playback URL to play the audio or video in ApsaraVideo Player SDK (for URL-based playback) or a third-party player.
 //
 // Description:
 //
@@ -12415,7 +12477,7 @@ func (client *Client) GetPlayInfoWithOptions(request *GetPlayInfoRequest, runtim
 
 // Summary:
 //
-// Queries the playback URL of a video or audio file based on its ID.
+// Queries the playback URL of a video or audio file by its ID. You can use the playback URL to play the audio or video in ApsaraVideo Player SDK (for URL-based playback) or a third-party player.
 //
 // Description:
 //
@@ -13751,7 +13813,7 @@ func (client *Client) GetVodPackagingConfiguration(request *GetVodPackagingConfi
 
 // Summary:
 //
-// Queries a packaging group.
+// Queries a VOD packaging group.
 //
 // @param request - GetVodPackagingGroupRequest
 //
@@ -13795,7 +13857,7 @@ func (client *Client) GetVodPackagingGroupWithOptions(request *GetVodPackagingGr
 
 // Summary:
 //
-// Queries a packaging group.
+// Queries a VOD packaging group.
 //
 // @param request - GetVodPackagingGroupRequest
 //
@@ -13866,6 +13928,130 @@ func (client *Client) GetWorkflowTask(request *GetWorkflowTaskRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetWorkflowTaskResponse{}
 	_body, _err := client.GetWorkflowTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取一刻AI应用任务
+//
+// @param request - GetYikeAIAppJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetYikeAIAppJobResponse
+func (client *Client) GetYikeAIAppJobWithOptions(request *GetYikeAIAppJobRequest, runtime *dara.RuntimeOptions) (_result *GetYikeAIAppJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetYikeAIAppJob"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetYikeAIAppJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取一刻AI应用任务
+//
+// @param request - GetYikeAIAppJobRequest
+//
+// @return GetYikeAIAppJobResponse
+func (client *Client) GetYikeAIAppJob(request *GetYikeAIAppJobRequest) (_result *GetYikeAIAppJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetYikeAIAppJobResponse{}
+	_body, _err := client.GetYikeAIAppJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取一刻媒资内容信息
+//
+// @param request - GetYikeAssetMediaInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetYikeAssetMediaInfoResponse
+func (client *Client) GetYikeAssetMediaInfoWithOptions(request *GetYikeAssetMediaInfoRequest, runtime *dara.RuntimeOptions) (_result *GetYikeAssetMediaInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MediaId) {
+		query["MediaId"] = request.MediaId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetYikeAssetMediaInfo"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetYikeAssetMediaInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取一刻媒资内容信息
+//
+// @param request - GetYikeAssetMediaInfoRequest
+//
+// @return GetYikeAssetMediaInfoResponse
+func (client *Client) GetYikeAssetMediaInfo(request *GetYikeAssetMediaInfoRequest) (_result *GetYikeAssetMediaInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetYikeAssetMediaInfoResponse{}
+	_body, _err := client.GetYikeAssetMediaInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14145,7 +14331,7 @@ func (client *Client) ListAIAgentInstance(request *ListAIAgentInstanceRequest) (
 
 // Summary:
 //
-// 罗列用户电话资源接口
+// Lists available phone numbers.
 //
 // @param request - ListAIAgentPhoneNumberRequest
 //
@@ -14201,7 +14387,7 @@ func (client *Client) ListAIAgentPhoneNumberWithOptions(request *ListAIAgentPhon
 
 // Summary:
 //
-// 罗列用户电话资源接口
+// Lists available phone numbers.
 //
 // @param request - ListAIAgentPhoneNumberRequest
 //
@@ -17175,7 +17361,7 @@ func (client *Client) ListMediaProducingJobs(request *ListMediaProducingJobsRequ
 
 // Summary:
 //
-// Queries a list of packaging jobs.
+// Queries packaging jobs.
 //
 // @param request - ListPackageJobsRequest
 //
@@ -17243,7 +17429,7 @@ func (client *Client) ListPackageJobsWithOptions(request *ListPackageJobsRequest
 
 // Summary:
 //
-// Queries a list of packaging jobs.
+// Queries packaging jobs.
 //
 // @param request - ListPackageJobsRequest
 //
@@ -18837,7 +19023,7 @@ func (client *Client) ListVodPackagingAssets(request *ListVodPackagingAssetsRequ
 
 // Summary:
 //
-// Lists packaging configurations.
+// Lists VOD packaging configurations.
 //
 // @param request - ListVodPackagingConfigurationsRequest
 //
@@ -18897,7 +19083,7 @@ func (client *Client) ListVodPackagingConfigurationsWithOptions(request *ListVod
 
 // Summary:
 //
-// Lists packaging configurations.
+// Lists VOD packaging configurations.
 //
 // @param request - ListVodPackagingConfigurationsRequest
 //
@@ -18915,7 +19101,7 @@ func (client *Client) ListVodPackagingConfigurations(request *ListVodPackagingCo
 
 // Summary:
 //
-// Lists packaging groups.
+// Lists VOD packaging groups.
 //
 // @param request - ListVodPackagingGroupsRequest
 //
@@ -18971,7 +19157,7 @@ func (client *Client) ListVodPackagingGroupsWithOptions(request *ListVodPackagin
 
 // Summary:
 //
-// Lists packaging groups.
+// Lists VOD packaging groups.
 //
 // @param request - ListVodPackagingGroupsRequest
 //
@@ -19074,6 +19260,150 @@ func (client *Client) ListWorkflowTasks(request *ListWorkflowTasksRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListWorkflowTasksResponse{}
 	_body, _err := client.ListWorkflowTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取一刻文件夹列表
+//
+// @param request - ListYikeAssetFoldersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListYikeAssetFoldersResponse
+func (client *Client) ListYikeAssetFoldersWithOptions(request *ListYikeAssetFoldersRequest, runtime *dara.RuntimeOptions) (_result *ListYikeAssetFoldersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductionId) {
+		query["ProductionId"] = request.ProductionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListYikeAssetFolders"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListYikeAssetFoldersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取一刻文件夹列表
+//
+// @param request - ListYikeAssetFoldersRequest
+//
+// @return ListYikeAssetFoldersResponse
+func (client *Client) ListYikeAssetFolders(request *ListYikeAssetFoldersRequest) (_result *ListYikeAssetFoldersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListYikeAssetFoldersResponse{}
+	_body, _err := client.ListYikeAssetFoldersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取一刻项目列表
+//
+// @param request - ListYikeProductionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListYikeProductionsResponse
+func (client *Client) ListYikeProductionsWithOptions(request *ListYikeProductionsRequest, runtime *dara.RuntimeOptions) (_result *ListYikeProductionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListYikeProductions"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListYikeProductionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取一刻项目列表
+//
+// @param request - ListYikeProductionsRequest
+//
+// @return ListYikeProductionsResponse
+func (client *Client) ListYikeProductions(request *ListYikeProductionsRequest) (_result *ListYikeProductionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListYikeProductionsResponse{}
+	_body, _err := client.ListYikeProductionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19453,7 +19783,7 @@ func (client *Client) QueryIProductionJob(request *QueryIProductionJobRequest) (
 
 // Summary:
 //
-// 查询IPC用量
+// Queries the usage for the IPC service.
 //
 // @param request - QueryIpcQuotaRequest
 //
@@ -19513,7 +19843,7 @@ func (client *Client) QueryIpcQuotaWithOptions(request *QueryIpcQuotaRequest, ru
 
 // Summary:
 //
-// 查询IPC用量
+// Queries the usage for the IPC service.
 //
 // @param request - QueryIpcQuotaRequest
 //
@@ -20590,6 +20920,80 @@ func (client *Client) RegisterMediaStream(request *RegisterMediaStreamRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &RegisterMediaStreamResponse{}
 	_body, _err := client.RegisterMediaStreamWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 注册一刻媒资
+//
+// @param request - RegisterYikeAssetMediaInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RegisterYikeAssetMediaInfoResponse
+func (client *Client) RegisterYikeAssetMediaInfoWithOptions(request *RegisterYikeAssetMediaInfoRequest, runtime *dara.RuntimeOptions) (_result *RegisterYikeAssetMediaInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FolderId) {
+		query["FolderId"] = request.FolderId
+	}
+
+	if !dara.IsNil(request.InputURL) {
+		query["InputURL"] = request.InputURL
+	}
+
+	if !dara.IsNil(request.MediaType) {
+		query["MediaType"] = request.MediaType
+	}
+
+	if !dara.IsNil(request.ProductionId) {
+		query["ProductionId"] = request.ProductionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RegisterYikeAssetMediaInfo"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RegisterYikeAssetMediaInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 注册一刻媒资
+//
+// @param request - RegisterYikeAssetMediaInfoRequest
+//
+// @return RegisterYikeAssetMediaInfoResponse
+func (client *Client) RegisterYikeAssetMediaInfo(request *RegisterYikeAssetMediaInfoRequest) (_result *RegisterYikeAssetMediaInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RegisterYikeAssetMediaInfoResponse{}
+	_body, _err := client.RegisterYikeAssetMediaInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22541,7 +22945,7 @@ func (client *Client) StartAIAgentInstance(request *StartAIAgentInstanceRequest)
 
 // Summary:
 //
-// 创建一个智能体实例，返回智能体所在的频道、频道内名称以及进入频道所需的token。
+// Initiates an outbound phone call for an AI agent.
 //
 // @param tmpReq - StartAIAgentOutboundCallRequest
 //
@@ -22615,7 +23019,7 @@ func (client *Client) StartAIAgentOutboundCallWithOptions(tmpReq *StartAIAgentOu
 
 // Summary:
 //
-// 创建一个智能体实例，返回智能体所在的频道、频道内名称以及进入频道所需的token。
+// Initiates an outbound phone call for an AI agent.
 //
 // @param request - StartAIAgentOutboundCallRequest
 //
@@ -22855,7 +23259,7 @@ func (client *Client) StartMediaLiveChannel(request *StartMediaLiveChannelReques
 
 // Summary:
 //
-// 开启一个机器人实例
+// Starts an AI agent and joins a real-time communication (RTC) call.
 //
 // @param tmpReq - StartRtcRobotInstanceRequest
 //
@@ -22925,7 +23329,7 @@ func (client *Client) StartRtcRobotInstanceWithOptions(tmpReq *StartRtcRobotInst
 
 // Summary:
 //
-// 开启一个机器人实例
+// Starts an AI agent and joins a real-time communication (RTC) call.
 //
 // @param request - StartRtcRobotInstanceRequest
 //
@@ -23313,7 +23717,7 @@ func (client *Client) StopMediaLiveChannel(request *StopMediaLiveChannelRequest)
 
 // Summary:
 //
-// 停止一个机器人实例
+// Stops an AI agent for real-time communication (RTC).
 //
 // @param request - StopRtcRobotInstanceRequest
 //
@@ -23357,7 +23761,7 @@ func (client *Client) StopRtcRobotInstanceWithOptions(request *StopRtcRobotInsta
 
 // Summary:
 //
-// 停止一个机器人实例
+// Stops an AI agent for real-time communication (RTC).
 //
 // @param request - StopRtcRobotInstanceRequest
 //
@@ -23565,7 +23969,7 @@ func (client *Client) SubmitASRJob(request *SubmitASRJobRequest) (_result *Submi
 
 // Summary:
 //
-// Submits an audio production job that converts text into an audio file.
+// Converts the provided text content into a high-quality audio file.
 //
 // @param request - SubmitAudioProduceJobRequest
 //
@@ -23633,7 +24037,7 @@ func (client *Client) SubmitAudioProduceJobWithOptions(request *SubmitAudioProdu
 
 // Summary:
 //
-// Submits an audio production job that converts text into an audio file.
+// Converts the provided text content into a high-quality audio file.
 //
 // @param request - SubmitAudioProduceJobRequest
 //
@@ -24099,7 +24503,7 @@ func (client *Client) SubmitCopyrightJob(request *SubmitCopyrightJobRequest) (_r
 
 // Summary:
 //
-// Submits a human voice cloning job. The value of VoiceId must be the one used during audio check. The system uses this ID to find the cached audio file for training. After you call this operation, the JobId is returned. The training process is asynchronous. During training, you can call the GetCustomizedVoiceJob operation to query information such as the job state.
+// Submits a basic voice cloning job.
 //
 // @param request - SubmitCustomizedVoiceJobRequest
 //
@@ -24147,7 +24551,7 @@ func (client *Client) SubmitCustomizedVoiceJobWithOptions(request *SubmitCustomi
 
 // Summary:
 //
-// Submits a human voice cloning job. The value of VoiceId must be the one used during audio check. The system uses this ID to find the cached audio file for training. After you call this operation, the JobId is returned. The training process is asynchronous. During training, you can call the GetCustomizedVoiceJob operation to query information such as the job state.
+// Submits a basic voice cloning job.
 //
 // @param request - SubmitCustomizedVoiceJobRequest
 //
@@ -27271,7 +27675,7 @@ func (client *Client) SubmitVideoCognitionJob(request *SubmitVideoCognitionJobRe
 
 // Summary:
 //
-// Submits a video translation job. You can call this operation to translate subtitles in a video and audio to a specific language. Lip-sync adaptation will be supported in the future.
+// Submits a video translation job. You can call this operation to translate video subtitles and speech to a specific language, and synchronize the speakers\\" lip movements with the translated audio.
 //
 // Description:
 //
@@ -27363,7 +27767,7 @@ func (client *Client) SubmitVideoTranslationJobWithOptions(request *SubmitVideoT
 
 // Summary:
 //
-// Submits a video translation job. You can call this operation to translate subtitles in a video and audio to a specific language. Lip-sync adaptation will be supported in the future.
+// Submits a video translation job. You can call this operation to translate video subtitles and speech to a specific language, and synchronize the speakers\\" lip movements with the translated audio.
 //
 // Description:
 //
@@ -27376,6 +27780,80 @@ func (client *Client) SubmitVideoTranslationJob(request *SubmitVideoTranslationJ
 	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitVideoTranslationJobResponse{}
 	_body, _err := client.SubmitVideoTranslationJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交一刻AI应用任务
+//
+// @param request - SubmitYikeAIAppJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitYikeAIAppJobResponse
+func (client *Client) SubmitYikeAIAppJobWithOptions(request *SubmitYikeAIAppJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitYikeAIAppJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AppParams) {
+		body["AppParams"] = request.AppParams
+	}
+
+	if !dara.IsNil(request.FolderId) {
+		body["FolderId"] = request.FolderId
+	}
+
+	if !dara.IsNil(request.ProductionId) {
+		body["ProductionId"] = request.ProductionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitYikeAIAppJob"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitYikeAIAppJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交一刻AI应用任务
+//
+// @param request - SubmitYikeAIAppJobRequest
+//
+// @return SubmitYikeAIAppJobResponse
+func (client *Client) SubmitYikeAIAppJob(request *SubmitYikeAIAppJobRequest) (_result *SubmitYikeAIAppJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitYikeAIAppJobResponse{}
+	_body, _err := client.SubmitYikeAIAppJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29937,7 +30415,7 @@ func (client *Client) UpdateProgram(request *UpdateProgramRequest) (_result *Upd
 
 // Summary:
 //
-// 修改实例的配置
+// Modifies an AI agent for real-time communication (RTC), such as the tone and greeting.
 //
 // @param tmpReq - UpdateRtcRobotInstanceRequest
 //
@@ -29991,7 +30469,7 @@ func (client *Client) UpdateRtcRobotInstanceWithOptions(tmpReq *UpdateRtcRobotIn
 
 // Summary:
 //
-// 修改实例的配置
+// Modifies an AI agent for real-time communication (RTC), such as the tone and greeting.
 //
 // @param request - UpdateRtcRobotInstanceRequest
 //
@@ -30009,7 +30487,7 @@ func (client *Client) UpdateRtcRobotInstance(request *UpdateRtcRobotInstanceRequ
 
 // Summary:
 //
-// Modifies a source in MediaWeaver.
+// Modifies a source.
 //
 // @param request - UpdateSourceRequest
 //
@@ -30065,7 +30543,7 @@ func (client *Client) UpdateSourceWithOptions(request *UpdateSourceRequest, runt
 
 // Summary:
 //
-// Modifies a source in MediaWeaver.
+// Modifies a source.
 //
 // @param request - UpdateSourceRequest
 //

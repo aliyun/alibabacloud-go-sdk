@@ -18,9 +18,26 @@ type iMediaConvertOutputGroupConfig interface {
 }
 
 type MediaConvertOutputGroupConfig struct {
-	ManifestName   *string      `json:"ManifestName,omitempty" xml:"ManifestName,omitempty"`
+	// The filename for the manifest. This parameter is only applicable when Type is set to Hls or Dash.
+	//
+	// example:
+	//
+	// manifest
+	ManifestName *string `json:"ManifestName,omitempty" xml:"ManifestName,omitempty"`
+	// The directory where all files for this output group are stored.
 	OutputFileBase *MediaObject `json:"OutputFileBase,omitempty" xml:"OutputFileBase,omitempty"`
-	Type           *string      `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of the output group. Valid values:
+	//
+	// 	- File: Generates one or more standalone files.
+	//
+	// 	- Hls: Generates HLS manifests.
+	//
+	// 	- Dash: Generates DASH manifests.
+	//
+	// example:
+	//
+	// Hls
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s MediaConvertOutputGroupConfig) String() string {

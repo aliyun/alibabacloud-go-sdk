@@ -22,11 +22,86 @@ type iMediaConvertVolume interface {
 }
 
 type MediaConvertVolume struct {
-	IntegratedLoudnessTarget *int32  `json:"IntegratedLoudnessTarget,omitempty" xml:"IntegratedLoudnessTarget,omitempty"`
-	Level                    *int32  `json:"Level,omitempty" xml:"Level,omitempty"`
-	LoudnessRangeTarget      *int32  `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
-	Method                   *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	TruePeak                 *int32  `json:"TruePeak,omitempty" xml:"TruePeak,omitempty"`
+	// The output volume.
+	//
+	// 	- This parameter takes effect only if Method is set to dynamic.
+	//
+	// 	- Unit: dB.
+	//
+	// 	- Valid values: [-70,-5].
+	//
+	// 	- Default value: -6.
+	//
+	// example:
+	//
+	// -6
+	IntegratedLoudnessTarget *int32 `json:"IntegratedLoudnessTarget,omitempty" xml:"IntegratedLoudnessTarget,omitempty"`
+	// The amount of gain to apply, relative to the input audio.
+	//
+	// 	- This parameter takes effect only if Method is set to linear.
+	//
+	// 	- Unit: dB.
+	//
+	// 	- Valid values: less than or equal to 20.
+	//
+	// 	- Default value: -20.
+	//
+	// example:
+	//
+	// -20
+	Level *int32 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The target loudness range.
+	//
+	// 	- This parameter takes effect only if Method is set to dynamic.
+	//
+	// 	- Unit: dB.
+	//
+	// 	- Valid values: [1,20].
+	//
+	// 	- Default value: 8.
+	//
+	// example:
+	//
+	// 8
+	LoudnessRangeTarget *int32 `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
+	// The volume adjustment method. Valid values:
+	//
+	// 	- auto
+	//
+	// 	- dynamic
+	//
+	// 	- linear
+	//
+	// 	- Default value: dynamic.
+	//
+	// <!---->
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// example:
+	//
+	// linear
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The maximum volume.
+	//
+	// 	- This parameter takes effect only if Method is set to dynamic.
+	//
+	// 	- Unit: dB.
+	//
+	// 	- Valid values: [-9,0].
+	//
+	// 	- Default value: -1.
+	//
+	// example:
+	//
+	// -1
+	TruePeak *int32 `json:"TruePeak,omitempty" xml:"TruePeak,omitempty"`
 }
 
 func (s MediaConvertVolume) String() string {

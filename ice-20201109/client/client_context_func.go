@@ -747,7 +747,7 @@ func (client *Client) AlterSearchIndexWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 修改库
+// Modifies a search library.
 //
 // @param request - AlterSearchLibRequest
 //
@@ -1257,7 +1257,7 @@ func (client *Client) CreateAuditWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// Creates a digital human training job. You can configure the basic information of the digital human and the materials required for the training. Note: This operation is used to initialize the training job. It does not submit the training job. To submit the training job, call the SubmitAvatarTrainingJob operation.
+// Creates an avatar training job. You can configure the basic information of the avatar and the materials required for the training.
 //
 // @param request - CreateAvatarTrainingJobRequest
 //
@@ -1397,7 +1397,7 @@ func (client *Client) CreateChannelWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// Creates a custom template.
+// Creates a custom media processing template.
 //
 // @param request - CreateCustomTemplateRequest
 //
@@ -1729,7 +1729,7 @@ func (client *Client) CreateHotwordLibraryWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// # IPC下单
+// Creates an IPC order. The purchased capacity is shared at the account level.
 //
 // @param request - CreateIpcOrderRequest
 //
@@ -2143,7 +2143,7 @@ func (client *Client) CreateLiveSnapshotTemplateWithContext(ctx context.Context,
 
 // Summary:
 //
-// Creates a live stream transcoding template to submit live stream transcoding jobs.
+// Creates a live stream transcoding template, which can be referenced when submitting a transcoding job.
 //
 // @param tmpReq - CreateLiveTranscodeTemplateRequest
 //
@@ -2831,7 +2831,7 @@ func (client *Client) CreateRecognitionSampleWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 创建搜索索引
+// Creates a search index in a search library. Each search library can contain multiple indexes.
 //
 // Description:
 //
@@ -3321,7 +3321,7 @@ func (client *Client) CreateVodPackagingAssetWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Creates a packaging configuration.
+// Creates a VOD packaging configuration.
 //
 // @param tmpReq - CreateVodPackagingConfigurationRequest
 //
@@ -3387,7 +3387,7 @@ func (client *Client) CreateVodPackagingConfigurationWithContext(ctx context.Con
 
 // Summary:
 //
-// Creates a packaging group.
+// Creates a VOD packaging group.
 //
 // @param request - CreateVodPackagingGroupRequest
 //
@@ -3425,6 +3425,50 @@ func (client *Client) CreateVodPackagingGroupWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVodPackagingGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取一刻媒资上传凭证
+//
+// @param request - CreateYikeAssetUploadRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateYikeAssetUploadResponse
+func (client *Client) CreateYikeAssetUploadWithContext(ctx context.Context, request *CreateYikeAssetUploadRequest, runtime *dara.RuntimeOptions) (_result *CreateYikeAssetUploadResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileExt) {
+		query["FileExt"] = request.FileExt
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateYikeAssetUpload"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateYikeAssetUploadResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5601,7 +5645,7 @@ func (client *Client) DeleteVodPackagingAssetWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Deletes a packaging configuration.
+// Deletes a VOD packaging configuration.
 //
 // @param request - DeleteVodPackagingConfigurationRequest
 //
@@ -5645,7 +5689,7 @@ func (client *Client) DeleteVodPackagingConfigurationWithContext(ctx context.Con
 
 // Summary:
 //
-// Deletes a packaging group.
+// Deletes a VOD packaging group.
 //
 // @param request - DeleteVodPackagingGroupRequest
 //
@@ -6141,7 +6185,7 @@ func (client *Client) DescribePlayListWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询实例
+// Queries the information about an AI agent for real-time communication (RTC).
 //
 // @param request - DescribeRtcRobotInstanceRequest
 //
@@ -7493,7 +7537,7 @@ func (client *Client) GetHotwordLibraryWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询IPC设备信息
+// Retrieves information about IPC devices.
 //
 // @param request - GetIpcDeviceInfoRequest
 //
@@ -8737,7 +8781,7 @@ func (client *Client) GetPipelineWithContext(ctx context.Context, request *GetPi
 
 // Summary:
 //
-// Queries the playback URL of a video or audio file based on its ID.
+// Queries the playback URL of a video or audio file by its ID. You can use the playback URL to play the audio or video in ApsaraVideo Player SDK (for URL-based playback) or a third-party player.
 //
 // Description:
 //
@@ -9747,7 +9791,7 @@ func (client *Client) GetVodPackagingConfigurationWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries a packaging group.
+// Queries a VOD packaging group.
 //
 // @param request - GetVodPackagingGroupRequest
 //
@@ -9825,6 +9869,94 @@ func (client *Client) GetWorkflowTaskWithContext(ctx context.Context, request *G
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetWorkflowTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取一刻AI应用任务
+//
+// @param request - GetYikeAIAppJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetYikeAIAppJobResponse
+func (client *Client) GetYikeAIAppJobWithContext(ctx context.Context, request *GetYikeAIAppJobRequest, runtime *dara.RuntimeOptions) (_result *GetYikeAIAppJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetYikeAIAppJob"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetYikeAIAppJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取一刻媒资内容信息
+//
+// @param request - GetYikeAssetMediaInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetYikeAssetMediaInfoResponse
+func (client *Client) GetYikeAssetMediaInfoWithContext(ctx context.Context, request *GetYikeAssetMediaInfoRequest, runtime *dara.RuntimeOptions) (_result *GetYikeAssetMediaInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MediaId) {
+		query["MediaId"] = request.MediaId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetYikeAssetMediaInfo"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetYikeAssetMediaInfoResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -10041,7 +10173,7 @@ func (client *Client) ListAIAgentInstanceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 罗列用户电话资源接口
+// Lists available phone numbers.
 //
 // @param request - ListAIAgentPhoneNumberRequest
 //
@@ -12339,7 +12471,7 @@ func (client *Client) ListMediaProducingJobsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries a list of packaging jobs.
+// Queries packaging jobs.
 //
 // @param request - ListPackageJobsRequest
 //
@@ -13583,7 +13715,7 @@ func (client *Client) ListVodPackagingAssetsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Lists packaging configurations.
+// Lists VOD packaging configurations.
 //
 // @param request - ListVodPackagingConfigurationsRequest
 //
@@ -13643,7 +13775,7 @@ func (client *Client) ListVodPackagingConfigurationsWithContext(ctx context.Cont
 
 // Summary:
 //
-// Lists packaging groups.
+// Lists VOD packaging groups.
 //
 // @param request - ListVodPackagingGroupsRequest
 //
@@ -13761,6 +13893,114 @@ func (client *Client) ListWorkflowTasksWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListWorkflowTasksResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取一刻文件夹列表
+//
+// @param request - ListYikeAssetFoldersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListYikeAssetFoldersResponse
+func (client *Client) ListYikeAssetFoldersWithContext(ctx context.Context, request *ListYikeAssetFoldersRequest, runtime *dara.RuntimeOptions) (_result *ListYikeAssetFoldersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductionId) {
+		query["ProductionId"] = request.ProductionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListYikeAssetFolders"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListYikeAssetFoldersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取一刻项目列表
+//
+// @param request - ListYikeProductionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListYikeProductionsResponse
+func (client *Client) ListYikeProductionsWithContext(ctx context.Context, request *ListYikeProductionsRequest, runtime *dara.RuntimeOptions) (_result *ListYikeProductionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListYikeProductions"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListYikeProductionsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -14041,7 +14281,7 @@ func (client *Client) QueryIProductionJobWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询IPC用量
+// Queries the usage for the IPC service.
 //
 // @param request - QueryIpcQuotaRequest
 //
@@ -14891,6 +15131,62 @@ func (client *Client) RegisterMediaStreamWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &RegisterMediaStreamResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 注册一刻媒资
+//
+// @param request - RegisterYikeAssetMediaInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RegisterYikeAssetMediaInfoResponse
+func (client *Client) RegisterYikeAssetMediaInfoWithContext(ctx context.Context, request *RegisterYikeAssetMediaInfoRequest, runtime *dara.RuntimeOptions) (_result *RegisterYikeAssetMediaInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FolderId) {
+		query["FolderId"] = request.FolderId
+	}
+
+	if !dara.IsNil(request.InputURL) {
+		query["InputURL"] = request.InputURL
+	}
+
+	if !dara.IsNil(request.MediaType) {
+		query["MediaType"] = request.MediaType
+	}
+
+	if !dara.IsNil(request.ProductionId) {
+		query["ProductionId"] = request.ProductionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RegisterYikeAssetMediaInfo"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RegisterYikeAssetMediaInfoResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -16387,7 +16683,7 @@ func (client *Client) StartAIAgentInstanceWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 创建一个智能体实例，返回智能体所在的频道、频道内名称以及进入频道所需的token。
+// Initiates an outbound phone call for an AI agent.
 //
 // @param tmpReq - StartAIAgentOutboundCallRequest
 //
@@ -16617,7 +16913,7 @@ func (client *Client) StartMediaLiveChannelWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 开启一个机器人实例
+// Starts an AI agent and joins a real-time communication (RTC) call.
 //
 // @param tmpReq - StartRtcRobotInstanceRequest
 //
@@ -16943,7 +17239,7 @@ func (client *Client) StopMediaLiveChannelWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 停止一个机器人实例
+// Stops an AI agent for real-time communication (RTC).
 //
 // @param request - StopRtcRobotInstanceRequest
 //
@@ -17137,7 +17433,7 @@ func (client *Client) SubmitASRJobWithContext(ctx context.Context, request *Subm
 
 // Summary:
 //
-// Submits an audio production job that converts text into an audio file.
+// Converts the provided text content into a high-quality audio file.
 //
 // @param request - SubmitAudioProduceJobRequest
 //
@@ -17543,7 +17839,7 @@ func (client *Client) SubmitCopyrightJobWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Submits a human voice cloning job. The value of VoiceId must be the one used during audio check. The system uses this ID to find the cached audio file for training. After you call this operation, the JobId is returned. The training process is asynchronous. During training, you can call the GetCustomizedVoiceJob operation to query information such as the job state.
+// Submits a basic voice cloning job.
 //
 // @param request - SubmitCustomizedVoiceJobRequest
 //
@@ -19985,7 +20281,7 @@ func (client *Client) SubmitVideoCognitionJobWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Submits a video translation job. You can call this operation to translate subtitles in a video and audio to a specific language. Lip-sync adaptation will be supported in the future.
+// Submits a video translation job. You can call this operation to translate video subtitles and speech to a specific language, and synchronize the speakers\\" lip movements with the translated audio.
 //
 // Description:
 //
@@ -20067,6 +20363,62 @@ func (client *Client) SubmitVideoTranslationJobWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitVideoTranslationJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交一刻AI应用任务
+//
+// @param request - SubmitYikeAIAppJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitYikeAIAppJobResponse
+func (client *Client) SubmitYikeAIAppJobWithContext(ctx context.Context, request *SubmitYikeAIAppJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitYikeAIAppJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AppParams) {
+		body["AppParams"] = request.AppParams
+	}
+
+	if !dara.IsNil(request.FolderId) {
+		body["FolderId"] = request.FolderId
+	}
+
+	if !dara.IsNil(request.ProductionId) {
+		body["ProductionId"] = request.ProductionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitYikeAIAppJob"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitYikeAIAppJobResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -22009,7 +22361,7 @@ func (client *Client) UpdateProgramWithContext(ctx context.Context, request *Upd
 
 // Summary:
 //
-// 修改实例的配置
+// Modifies an AI agent for real-time communication (RTC), such as the tone and greeting.
 //
 // @param tmpReq - UpdateRtcRobotInstanceRequest
 //
@@ -22063,7 +22415,7 @@ func (client *Client) UpdateRtcRobotInstanceWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Modifies a source in MediaWeaver.
+// Modifies a source.
 //
 // @param request - UpdateSourceRequest
 //

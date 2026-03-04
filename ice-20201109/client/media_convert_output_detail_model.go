@@ -28,14 +28,60 @@ type iMediaConvertOutputDetail interface {
 }
 
 type MediaConvertOutputDetail struct {
-	Code       *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	CreateTime *string                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	FinishTime *string                         `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	Message    *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	Name       *string                         `json:"Name,omitempty" xml:"Name,omitempty"`
-	Result     *MediaConvertOutputDetailResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Status     *string                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId     *string                         `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The error code for a failed task.
+	//
+	// example:
+	//
+	// InvalidParameter.ResourceContentBad
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The time the output task was created, in UTC format (*yyyy-MM-dd*T*HH:mm:ss*Z)
+	//
+	// example:
+	//
+	// 2024-12-07T06:06:58Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time the output task finished, in UTC format (*yyyy-MM-dd*T*HH:mm:ss*Z)
+	//
+	// example:
+	//
+	// 2024-12-07T13:01:07Z
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The reason for a task failure.
+	//
+	// example:
+	//
+	// The resource operated InputFile is bad
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The name of the output.
+	//
+	// example:
+	//
+	// 720P-mp4
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The detailed output results.
+	Result *MediaConvertOutputDetailResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The task status. Valid values:
+	//
+	// 	- Init: Initializing the task.
+	//
+	// 	- Scheduled: The task is scheduled for processing.
+	//
+	// 	- Success: The task is completed.
+	//
+	// 	- Failed: The task failed.
+	//
+	// 	- Skipped: The task was skipped.
+	//
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// ******4215e042b3966ca5441e******
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s MediaConvertOutputDetail) String() string {
@@ -128,8 +174,10 @@ func (s *MediaConvertOutputDetail) Validate() error {
 }
 
 type MediaConvertOutputDetailResult struct {
-	OutFileMeta *MediaConvertOutputDetailFileMeta         `json:"OutFileMeta,omitempty" xml:"OutFileMeta,omitempty"`
-	OutputFile  *MediaConvertOutputDetailResultOutputFile `json:"OutputFile,omitempty" xml:"OutputFile,omitempty" type:"Struct"`
+	// The metadata of the audio and video streams.
+	OutFileMeta *MediaConvertOutputDetailFileMeta `json:"OutFileMeta,omitempty" xml:"OutFileMeta,omitempty"`
+	// Details about the generated output file.
+	OutputFile *MediaConvertOutputDetailResultOutputFile `json:"OutputFile,omitempty" xml:"OutputFile,omitempty" type:"Struct"`
 }
 
 func (s MediaConvertOutputDetailResult) String() string {
@@ -173,9 +221,32 @@ func (s *MediaConvertOutputDetailResult) Validate() error {
 }
 
 type MediaConvertOutputDetailResultOutputFile struct {
+	// The value depends on the Type field:
+	//
+	// 	- If Type is set to OSS, the value is the URL of the output file. The following formats are supported: oss://... and https://...
+	//
+	// 	- If Type is set to Media, the value is the ID of the media asset.
+	//
+	// example:
+	//
+	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Url   *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The type of the output file. Valid values:
+	//
+	// 	- OSS: an Object Storage Service (OSS) object.
+	//
+	// 	- Media: a media asset.
+	//
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// If Type is set to Media, this field provides the actual storage URL of the media asset.
+	//
+	// example:
+	//
+	// oss://bucket/path/to/video.mp4
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s MediaConvertOutputDetailResultOutputFile) String() string {

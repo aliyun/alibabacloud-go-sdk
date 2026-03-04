@@ -36,18 +36,74 @@ type iChannel interface {
 }
 
 type Channel struct {
-	AccessPolicy             *bool                      `json:"AccessPolicy,omitempty" xml:"AccessPolicy,omitempty"`
-	AccessToken              *string                    `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	Arn                      *string                    `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	ChannelName              *string                    `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	ChannelTier              *string                    `json:"ChannelTier,omitempty" xml:"ChannelTier,omitempty"`
-	FillerSourceLocationName *string                    `json:"FillerSourceLocationName,omitempty" xml:"FillerSourceLocationName,omitempty"`
-	FillerSourceName         *string                    `json:"FillerSourceName,omitempty" xml:"FillerSourceName,omitempty"`
-	GmtCreate                *string                    `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified              *string                    `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	OutPutConfigList         []*ChannelOutPutConfigList `json:"OutPutConfigList,omitempty" xml:"OutPutConfigList,omitempty" type:"Repeated"`
-	PlaybackMode             *string                    `json:"PlaybackMode,omitempty" xml:"PlaybackMode,omitempty"`
-	State                    *int32                     `json:"State,omitempty" xml:"State,omitempty"`
+	// Specifies whether to enable access control.
+	//
+	// example:
+	//
+	// true
+	AccessPolicy *bool `json:"AccessPolicy,omitempty" xml:"AccessPolicy,omitempty"`
+	// The token for accessing the channel.
+	//
+	// example:
+	//
+	// xxxxx
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// The ARN of the channel.
+	//
+	// example:
+	//
+	// acs:ims:mediaweaver:<regionId>:<userId>:channel/myChannel
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The name of the channel.
+	//
+	// example:
+	//
+	// MyChannel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// The tier of the channel.
+	//
+	// example:
+	//
+	// basic
+	ChannelTier *string `json:"ChannelTier,omitempty" xml:"ChannelTier,omitempty"`
+	// The source location of the filler slate.
+	//
+	// example:
+	//
+	// MySourceLocation
+	FillerSourceLocationName *string `json:"FillerSourceLocationName,omitempty" xml:"FillerSourceLocationName,omitempty"`
+	// The source name of the filler slate.
+	//
+	// example:
+	//
+	// MySource
+	FillerSourceName *string `json:"FillerSourceName,omitempty" xml:"FillerSourceName,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2024-01-15T03:44:16Z
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The modification time.
+	//
+	// example:
+	//
+	// 2024-09-01T10:09Z
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The output configurations.
+	OutPutConfigList []*ChannelOutPutConfigList `json:"OutPutConfigList,omitempty" xml:"OutPutConfigList,omitempty" type:"Repeated"`
+	// The playback mode.
+	//
+	// example:
+	//
+	// loop
+	PlaybackMode *string `json:"PlaybackMode,omitempty" xml:"PlaybackMode,omitempty"`
+	// The state of the channel.
+	//
+	// example:
+	//
+	// 0
+	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s Channel) String() string {
@@ -180,12 +236,42 @@ func (s *Channel) Validate() error {
 }
 
 type ChannelOutPutConfigList struct {
-	ChannelName      *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	Format           *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	ManifestName     *string `json:"ManifestName,omitempty" xml:"ManifestName,omitempty"`
+	// The name of the channel.
+	//
+	// example:
+	//
+	// MyChannel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// The format.
+	//
+	// example:
+	//
+	// hls
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The manifest name.
+	//
+	// example:
+	//
+	// index1
+	ManifestName *string `json:"ManifestName,omitempty" xml:"ManifestName,omitempty"`
+	// The manifest settings.
+	//
+	// example:
+	//
+	// {"WindowDuration": 60,"AdMarkType":"Daterange"}
 	ManifestSettings *string `json:"ManifestSettings,omitempty" xml:"ManifestSettings,omitempty"`
-	PlaybackUrl      *string `json:"PlaybackUrl,omitempty" xml:"PlaybackUrl,omitempty"`
-	SourceGroupName  *string `json:"SourceGroupName,omitempty" xml:"SourceGroupName,omitempty"`
+	// The playback URL.
+	//
+	// example:
+	//
+	// https://xxxxx.com/xxx.m3u8
+	PlaybackUrl *string `json:"PlaybackUrl,omitempty" xml:"PlaybackUrl,omitempty"`
+	// The name of the source group.
+	//
+	// example:
+	//
+	// group1
+	SourceGroupName *string `json:"SourceGroupName,omitempty" xml:"SourceGroupName,omitempty"`
 }
 
 func (s ChannelOutPutConfigList) String() string {

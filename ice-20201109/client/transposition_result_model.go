@@ -16,13 +16,17 @@ type iTranspositionResult interface {
 }
 
 type TranspositionResult struct {
+	// 	- The target language of the translation.
+	//
+	// 	- This field is only used in translation-related scenarios.
+	//
 	// example:
 	//
 	// zh
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	// example:
+	// 	- The translated text corresponding to the matched hotwords. Maximum length: 100 characters.
 	//
-	// 你好
+	// 	- This field is only used in translation-related scenarios.
 	TranslatedText *string `json:"TranslatedText,omitempty" xml:"TranslatedText,omitempty"`
 }
 

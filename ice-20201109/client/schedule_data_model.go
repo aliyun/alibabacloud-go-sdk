@@ -28,14 +28,56 @@ type iScheduleData interface {
 }
 
 type ScheduleData struct {
-	AdBreaks                   []*ScheduleDataAdBreaks `json:"AdBreaks,omitempty" xml:"AdBreaks,omitempty" type:"Repeated"`
-	ApproximateDurationSeconds *int64                  `json:"ApproximateDurationSeconds,omitempty" xml:"ApproximateDurationSeconds,omitempty"`
-	ApproximateStartTime       *string                 `json:"ApproximateStartTime,omitempty" xml:"ApproximateStartTime,omitempty"`
-	EntryType                  *string                 `json:"EntryType,omitempty" xml:"EntryType,omitempty"`
-	ProgramName                *string                 `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
-	SourceLocationName         *string                 `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
-	SourceName                 *string                 `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
-	SourceType                 *string                 `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The information about ad breaks.
+	AdBreaks []*ScheduleDataAdBreaks `json:"AdBreaks,omitempty" xml:"AdBreaks,omitempty" type:"Repeated"`
+	// The scheduled playback duration.
+	//
+	// example:
+	//
+	// 100000
+	ApproximateDurationSeconds *int64 `json:"ApproximateDurationSeconds,omitempty" xml:"ApproximateDurationSeconds,omitempty"`
+	// The scheduled start time.
+	//
+	// example:
+	//
+	// 1989128002313
+	ApproximateStartTime *string `json:"ApproximateStartTime,omitempty" xml:"ApproximateStartTime,omitempty"`
+	// The entry type.
+	//
+	// Valid values:
+	//
+	// 	- FillerSlate
+	//
+	// 	- program
+	//
+	// example:
+	//
+	// program
+	EntryType *string `json:"EntryType,omitempty" xml:"EntryType,omitempty"`
+	// The name of the program.
+	//
+	// example:
+	//
+	// program1
+	ProgramName *string `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
+	// The name of the source location.
+	//
+	// example:
+	//
+	// MySourceLocation
+	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	// The name of the source.
+	//
+	// example:
+	//
+	// MySource
+	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	// The source type.
+	//
+	// example:
+	//
+	// vodSource
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
 func (s ScheduleData) String() string {
@@ -132,12 +174,42 @@ func (s *ScheduleData) Validate() error {
 }
 
 type ScheduleDataAdBreaks struct {
-	MessageType          *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
-	OffsetMillis         *string `json:"OffsetMillis,omitempty" xml:"OffsetMillis,omitempty"`
-	SourceLocationName   *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
-	SourceName           *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	// MessageType
+	//
+	// example:
+	//
+	// SPLICE_INSERT
+	MessageType *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	// The time offset.
+	//
+	// example:
+	//
+	// 100000
+	OffsetMillis *string `json:"OffsetMillis,omitempty" xml:"OffsetMillis,omitempty"`
+	// The name of the source location.
+	//
+	// example:
+	//
+	// MySourceLocation
+	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	// The name of the source.
+	//
+	// example:
+	//
+	// MySource
+	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	// The SpliceInsert configurations.
+	//
+	// example:
+	//
+	// {"AvailNumber":0,"AvailExpected":0,"SpliceEventID":1,"UniqueProgramID":0}
 	SpliceInsertSettings *string `json:"SpliceInsertSettings,omitempty" xml:"SpliceInsertSettings,omitempty"`
-	TimeSignalSettings   *string `json:"TimeSignalSettings,omitempty" xml:"TimeSignalSettings,omitempty"`
+	// The TimeSignal configurations.
+	//
+	// example:
+	//
+	// {"segmentationEventID":0,"segmentationUPIDType":14,"segmentationUPID":"upid","segmentationTypeID":48,"segmentNumber":0,"segmentsExpected":0,"subSegmentNumber":1,"subSegmentsExpected":0}
+	TimeSignalSettings *string `json:"TimeSignalSettings,omitempty" xml:"TimeSignalSettings,omitempty"`
 }
 
 func (s ScheduleDataAdBreaks) String() string {
