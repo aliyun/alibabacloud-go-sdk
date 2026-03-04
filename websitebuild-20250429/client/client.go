@@ -1560,6 +1560,53 @@ func (client *Client) IntrospectAppInstanceTicketForPreview(request *IntrospectA
 
 // Summary:
 //
+// 获取商品配置信息
+//
+// @param request - ListAppCommoditySpecificationsForPartnerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppCommoditySpecificationsForPartnerResponse
+func (client *Client) ListAppCommoditySpecificationsForPartnerWithOptions(runtime *dara.RuntimeOptions) (_result *ListAppCommoditySpecificationsForPartnerResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAppCommoditySpecificationsForPartner"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAppCommoditySpecificationsForPartnerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取商品配置信息
+//
+// @return ListAppCommoditySpecificationsForPartnerResponse
+func (client *Client) ListAppCommoditySpecificationsForPartner() (_result *ListAppCommoditySpecificationsForPartnerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAppCommoditySpecificationsForPartnerResponse{}
+	_body, _err := client.ListAppCommoditySpecificationsForPartnerWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Query the list of domain redirection rules
 //
 // @param request - ListAppDomainRedirectRecordsRequest
