@@ -39,6 +39,8 @@ type iCreateDBInstanceShrinkRequest interface {
 	GetIsReadDBInstance() *bool
 	SetNetworkType(v string) *CreateDBInstanceShrinkRequest
 	GetNetworkType() *string
+	SetOriginMinorVersion(v string) *CreateDBInstanceShrinkRequest
+	GetOriginMinorVersion() *string
 	SetPayType(v string) *CreateDBInstanceShrinkRequest
 	GetPayType() *string
 	SetPeriod(v string) *CreateDBInstanceShrinkRequest
@@ -55,6 +57,8 @@ type iCreateDBInstanceShrinkRequest interface {
 	GetSecondaryZone() *string
 	SetSeries(v string) *CreateDBInstanceShrinkRequest
 	GetSeries() *string
+	SetStorageType(v string) *CreateDBInstanceShrinkRequest
+	GetStorageType() *string
 	SetTertiaryZone(v string) *CreateDBInstanceShrinkRequest
 	GetTertiaryZone() *string
 	SetTopologyType(v string) *CreateDBInstanceShrinkRequest
@@ -107,7 +111,8 @@ type CreateDBInstanceShrinkRequest struct {
 	// example:
 	//
 	// vpc
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	NetworkType        *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	OriginMinorVersion *string `json:"OriginMinorVersion,omitempty" xml:"OriginMinorVersion,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -141,6 +146,7 @@ type CreateDBInstanceShrinkRequest struct {
 	// cn-shenzhen-a
 	SecondaryZone *string `json:"SecondaryZone,omitempty" xml:"SecondaryZone,omitempty"`
 	Series        *string `json:"Series,omitempty" xml:"Series,omitempty"`
+	StorageType   *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// example:
 	//
 	// cn-shenzhen-e
@@ -239,6 +245,10 @@ func (s *CreateDBInstanceShrinkRequest) GetNetworkType() *string {
 	return s.NetworkType
 }
 
+func (s *CreateDBInstanceShrinkRequest) GetOriginMinorVersion() *string {
+	return s.OriginMinorVersion
+}
+
 func (s *CreateDBInstanceShrinkRequest) GetPayType() *string {
 	return s.PayType
 }
@@ -269,6 +279,10 @@ func (s *CreateDBInstanceShrinkRequest) GetSecondaryZone() *string {
 
 func (s *CreateDBInstanceShrinkRequest) GetSeries() *string {
 	return s.Series
+}
+
+func (s *CreateDBInstanceShrinkRequest) GetStorageType() *string {
+	return s.StorageType
 }
 
 func (s *CreateDBInstanceShrinkRequest) GetTertiaryZone() *string {
@@ -370,6 +384,11 @@ func (s *CreateDBInstanceShrinkRequest) SetNetworkType(v string) *CreateDBInstan
 	return s
 }
 
+func (s *CreateDBInstanceShrinkRequest) SetOriginMinorVersion(v string) *CreateDBInstanceShrinkRequest {
+	s.OriginMinorVersion = &v
+	return s
+}
+
 func (s *CreateDBInstanceShrinkRequest) SetPayType(v string) *CreateDBInstanceShrinkRequest {
 	s.PayType = &v
 	return s
@@ -407,6 +426,11 @@ func (s *CreateDBInstanceShrinkRequest) SetSecondaryZone(v string) *CreateDBInst
 
 func (s *CreateDBInstanceShrinkRequest) SetSeries(v string) *CreateDBInstanceShrinkRequest {
 	s.Series = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetStorageType(v string) *CreateDBInstanceShrinkRequest {
+	s.StorageType = &v
 	return s
 }
 

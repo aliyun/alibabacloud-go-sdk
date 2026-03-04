@@ -1182,6 +1182,10 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 		query["NetworkType"] = request.NetworkType
 	}
 
+	if !dara.IsNil(request.OriginMinorVersion) {
+		query["OriginMinorVersion"] = request.OriginMinorVersion
+	}
+
 	if !dara.IsNil(request.PayType) {
 		query["PayType"] = request.PayType
 	}
@@ -1212,6 +1216,10 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 
 	if !dara.IsNil(request.Series) {
 		query["Series"] = request.Series
+	}
+
+	if !dara.IsNil(request.StorageType) {
+		query["StorageType"] = request.StorageType
 	}
 
 	if !dara.IsNil(request.TertiaryZone) {
