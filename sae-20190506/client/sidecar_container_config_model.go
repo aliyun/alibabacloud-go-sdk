@@ -25,10 +25,16 @@ type iSidecarContainerConfig interface {
 	GetEnvs() *string
 	SetImageUrl(v string) *SidecarContainerConfig
 	GetImageUrl() *string
+	SetLiveness(v string) *SidecarContainerConfig
+	GetLiveness() *string
 	SetMemory(v int32) *SidecarContainerConfig
 	GetMemory() *int32
 	SetName(v string) *SidecarContainerConfig
 	GetName() *string
+	SetReadiness(v string) *SidecarContainerConfig
+	GetReadiness() *string
+	SetSecretMountDesc(v string) *SidecarContainerConfig
+	GetSecretMountDesc() *string
 }
 
 type SidecarContainerConfig struct {
@@ -80,6 +86,7 @@ type SidecarContainerConfig struct {
 	//
 	// registry-vpc.cn-hangzhou.aliyuncs.com/demo/nginx:latest
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	Liveness *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
 	// Memory
 	//
 	// example:
@@ -91,7 +98,9 @@ type SidecarContainerConfig struct {
 	// example:
 	//
 	// name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Readiness       *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
+	SecretMountDesc *string `json:"SecretMountDesc,omitempty" xml:"SecretMountDesc,omitempty"`
 }
 
 func (s SidecarContainerConfig) String() string {
@@ -134,12 +143,24 @@ func (s *SidecarContainerConfig) GetImageUrl() *string {
 	return s.ImageUrl
 }
 
+func (s *SidecarContainerConfig) GetLiveness() *string {
+	return s.Liveness
+}
+
 func (s *SidecarContainerConfig) GetMemory() *int32 {
 	return s.Memory
 }
 
 func (s *SidecarContainerConfig) GetName() *string {
 	return s.Name
+}
+
+func (s *SidecarContainerConfig) GetReadiness() *string {
+	return s.Readiness
+}
+
+func (s *SidecarContainerConfig) GetSecretMountDesc() *string {
+	return s.SecretMountDesc
 }
 
 func (s *SidecarContainerConfig) SetAcrInstanceId(v string) *SidecarContainerConfig {
@@ -182,6 +203,11 @@ func (s *SidecarContainerConfig) SetImageUrl(v string) *SidecarContainerConfig {
 	return s
 }
 
+func (s *SidecarContainerConfig) SetLiveness(v string) *SidecarContainerConfig {
+	s.Liveness = &v
+	return s
+}
+
 func (s *SidecarContainerConfig) SetMemory(v int32) *SidecarContainerConfig {
 	s.Memory = &v
 	return s
@@ -189,6 +215,16 @@ func (s *SidecarContainerConfig) SetMemory(v int32) *SidecarContainerConfig {
 
 func (s *SidecarContainerConfig) SetName(v string) *SidecarContainerConfig {
 	s.Name = &v
+	return s
+}
+
+func (s *SidecarContainerConfig) SetReadiness(v string) *SidecarContainerConfig {
+	s.Readiness = &v
+	return s
+}
+
+func (s *SidecarContainerConfig) SetSecretMountDesc(v string) *SidecarContainerConfig {
+	s.SecretMountDesc = &v
 	return s
 }
 

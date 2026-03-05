@@ -2692,6 +2692,7 @@ type DescribeApplicationConfigResponseBodyDataSidecarContainersConfig struct {
 	//
 	// registry.cn-beijing.aliyuncs.com/sae-dev-test/nginx:stable
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	Liveness *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
 	// Set the memory limit of the primary container that can be used by Sidecar container.
 	//
 	// example:
@@ -2703,7 +2704,9 @@ type DescribeApplicationConfigResponseBodyDataSidecarContainersConfig struct {
 	// example:
 	//
 	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name            *string                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Readiness       *string                                                                            `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
+	SecretMountDesc []*DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc `json:"SecretMountDesc,omitempty" xml:"SecretMountDesc,omitempty" type:"Repeated"`
 }
 
 func (s DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) String() string {
@@ -2746,12 +2749,24 @@ func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) GetIm
 	return s.ImageUrl
 }
 
+func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) GetLiveness() *string {
+	return s.Liveness
+}
+
 func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) GetMemory() *int32 {
 	return s.Memory
 }
 
 func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) GetName() *string {
 	return s.Name
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) GetReadiness() *string {
+	return s.Readiness
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) GetSecretMountDesc() []*DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc {
+	return s.SecretMountDesc
 }
 
 func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) SetAcrInstanceId(v string) *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig {
@@ -2794,6 +2809,11 @@ func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) SetIm
 	return s
 }
 
+func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) SetLiveness(v string) *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig {
+	s.Liveness = &v
+	return s
+}
+
 func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) SetMemory(v int32) *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig {
 	s.Memory = &v
 	return s
@@ -2801,6 +2821,16 @@ func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) SetMe
 
 func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) SetName(v string) *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) SetReadiness(v string) *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig {
+	s.Readiness = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) SetSecretMountDesc(v []*DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc) *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig {
+	s.SecretMountDesc = v
 	return s
 }
 
@@ -2816,6 +2846,15 @@ func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) Valid
 	}
 	if s.EmptyDirDesc != nil {
 		for _, item := range s.EmptyDirDesc {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SecretMountDesc != nil {
+		for _, item := range s.SecretMountDesc {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -2943,6 +2982,61 @@ func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfigEmptyDi
 }
 
 func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfigEmptyDirDesc) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc struct {
+	Key        *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	MountPath  *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	SecretId   *int64  `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+}
+
+func (s DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc) GetMountPath() *string {
+	return s.MountPath
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc) GetSecretId() *int64 {
+	return s.SecretId
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc) GetSecretName() *string {
+	return s.SecretName
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc) SetKey(v string) *DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc) SetMountPath(v string) *DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc {
+	s.MountPath = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc) SetSecretId(v int64) *DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc {
+	s.SecretId = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc) SetSecretName(v string) *DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc {
+	s.SecretName = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc) Validate() error {
 	return dara.Validate(s)
 }
 
