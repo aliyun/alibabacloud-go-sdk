@@ -87,8 +87,18 @@ func (s *FetchFileResponseBody) Validate() error {
 }
 
 type FetchFileResponseBodyData struct {
+	// The ID of the cloud phone instance.
+	//
+	// example:
+	//
+	// acp-34pqe4r0kd9kn****
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
-	TaskId            *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the task.
+	//
+	// example:
+	//
+	// t-bp67acfmxazb4p****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s FetchFileResponseBodyData) String() string {

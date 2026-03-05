@@ -532,6 +532,7 @@ type CreateAndroidInstanceGroupRequestNetworkInfo struct {
 	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	Period               *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
 	PeriodUnit           *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	PromotionId          *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	VisibleType          *string `json:"VisibleType,omitempty" xml:"VisibleType,omitempty"`
 }
 
@@ -585,6 +586,10 @@ func (s *CreateAndroidInstanceGroupRequestNetworkInfo) GetPeriod() *int32 {
 
 func (s *CreateAndroidInstanceGroupRequestNetworkInfo) GetPeriodUnit() *string {
 	return s.PeriodUnit
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) GetPromotionId() *string {
+	return s.PromotionId
 }
 
 func (s *CreateAndroidInstanceGroupRequestNetworkInfo) GetVisibleType() *string {
@@ -643,6 +648,11 @@ func (s *CreateAndroidInstanceGroupRequestNetworkInfo) SetPeriod(v int32) *Creat
 
 func (s *CreateAndroidInstanceGroupRequestNetworkInfo) SetPeriodUnit(v string) *CreateAndroidInstanceGroupRequestNetworkInfo {
 	s.PeriodUnit = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) SetPromotionId(v string) *CreateAndroidInstanceGroupRequestNetworkInfo {
+	s.PromotionId = &v
 	return s
 }
 
