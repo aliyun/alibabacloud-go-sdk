@@ -140,6 +140,88 @@ func (client *Client) AllocateSupabaseForAdmin(request *AllocateSupabaseForAdmin
 
 // Summary:
 //
+// 批量校验资源计量
+//
+// @param request - BatchCheckResourceMeasureRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchCheckResourceMeasureResponse
+func (client *Client) BatchCheckResourceMeasureWithOptions(request *BatchCheckResourceMeasureRequest, runtime *dara.RuntimeOptions) (_result *BatchCheckResourceMeasureResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BelongId) {
+		query["BelongId"] = request.BelongId
+	}
+
+	if !dara.IsNil(request.BelongIdType) {
+		query["BelongIdType"] = request.BelongIdType
+	}
+
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.EspBizId) {
+		query["EspBizId"] = request.EspBizId
+	}
+
+	if !dara.IsNil(request.OrderComponentParams) {
+		query["OrderComponentParams"] = request.OrderComponentParams
+	}
+
+	if !dara.IsNil(request.ResourceCheckItems) {
+		query["ResourceCheckItems"] = request.ResourceCheckItems
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchCheckResourceMeasure"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchCheckResourceMeasureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量校验资源计量
+//
+// @param request - BatchCheckResourceMeasureRequest
+//
+// @return BatchCheckResourceMeasureResponse
+func (client *Client) BatchCheckResourceMeasure(request *BatchCheckResourceMeasureRequest) (_result *BatchCheckResourceMeasureResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &BatchCheckResourceMeasureResponse{}
+	_body, _err := client.BatchCheckResourceMeasureWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Bind Application Domain
 //
 // @param request - BindAppDomainRequest
@@ -205,6 +287,92 @@ func (client *Client) BindAppDomain(request *BindAppDomainRequest) (_result *Bin
 	runtime := &dara.RuntimeOptions{}
 	_result = &BindAppDomainResponse{}
 	_body, _err := client.BindAppDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 校验资源计量
+//
+// @param request - CheckResourceMeasureRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckResourceMeasureResponse
+func (client *Client) CheckResourceMeasureWithOptions(request *CheckResourceMeasureRequest, runtime *dara.RuntimeOptions) (_result *CheckResourceMeasureResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BelongId) {
+		query["BelongId"] = request.BelongId
+	}
+
+	if !dara.IsNil(request.BelongIdType) {
+		query["BelongIdType"] = request.BelongIdType
+	}
+
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.EspBizId) {
+		query["EspBizId"] = request.EspBizId
+	}
+
+	if !dara.IsNil(request.OrderComponentParams) {
+		query["OrderComponentParams"] = request.OrderComponentParams
+	}
+
+	if !dara.IsNil(request.ResourceCode) {
+		query["ResourceCode"] = request.ResourceCode
+	}
+
+	if !dara.IsNil(request.ResourceValue) {
+		query["ResourceValue"] = request.ResourceValue
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckResourceMeasure"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckResourceMeasureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 校验资源计量
+//
+// @param request - CheckResourceMeasureRequest
+//
+// @return CheckResourceMeasureResponse
+func (client *Client) CheckResourceMeasure(request *CheckResourceMeasureRequest) (_result *CheckResourceMeasureResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CheckResourceMeasureResponse{}
+	_body, _err := client.CheckResourceMeasureWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -385,6 +553,68 @@ func (client *Client) CreateAppInstanceTicket(request *CreateAppInstanceTicketRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateAppInstanceTicketResponse{}
 	_body, _err := client.CreateAppInstanceTicketWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 万小智开通灵感值服务
+//
+// @param request - CreateAppTokenServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppTokenServiceResponse
+func (client *Client) CreateAppTokenServiceWithOptions(request *CreateAppTokenServiceRequest, runtime *dara.RuntimeOptions) (_result *CreateAppTokenServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CreateAction) {
+		query["CreateAction"] = request.CreateAction
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAppTokenService"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAppTokenServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 万小智开通灵感值服务
+//
+// @param request - CreateAppTokenServiceRequest
+//
+// @return CreateAppTokenServiceResponse
+func (client *Client) CreateAppTokenService(request *CreateAppTokenServiceRequest) (_result *CreateAppTokenServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAppTokenServiceResponse{}
+	_body, _err := client.CreateAppTokenServiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1143,6 +1373,119 @@ func (client *Client) GetAppPluginConfig(request *GetAppPluginConfigRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetAppPluginConfigResponse{}
 	_body, _err := client.GetAppPluginConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询万小智推荐商品
+//
+// @param request - GetAppRecommendedCommoditiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppRecommendedCommoditiesResponse
+func (client *Client) GetAppRecommendedCommoditiesWithOptions(request *GetAppRecommendedCommoditiesRequest, runtime *dara.RuntimeOptions) (_result *GetAppRecommendedCommoditiesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.Scene) {
+		query["Scene"] = request.Scene
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppRecommendedCommodities"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppRecommendedCommoditiesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询万小智推荐商品
+//
+// @param request - GetAppRecommendedCommoditiesRequest
+//
+// @return GetAppRecommendedCommoditiesResponse
+func (client *Client) GetAppRecommendedCommodities(request *GetAppRecommendedCommoditiesRequest) (_result *GetAppRecommendedCommoditiesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAppRecommendedCommoditiesResponse{}
+	_body, _err := client.GetAppRecommendedCommoditiesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询万小智灵感值服务
+//
+// @param request - GetAppTokenServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppTokenServiceResponse
+func (client *Client) GetAppTokenServiceWithOptions(runtime *dara.RuntimeOptions) (_result *GetAppTokenServiceResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppTokenService"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppTokenServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询万小智灵感值服务
+//
+// @return GetAppTokenServiceResponse
+func (client *Client) GetAppTokenService() (_result *GetAppTokenServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAppTokenServiceResponse{}
+	_body, _err := client.GetAppTokenServiceWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2560,6 +2903,319 @@ func (client *Client) OperateSupabaseForAdmin(request *OperateSupabaseForAdminRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &OperateSupabaseForAdminResponse{}
 	_body, _err := client.OperateSupabaseForAdminWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 推送资源计量数据
+//
+// @param request - PushResourceMeasureRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushResourceMeasureResponse
+func (client *Client) PushResourceMeasureWithOptions(request *PushResourceMeasureRequest, runtime *dara.RuntimeOptions) (_result *PushResourceMeasureResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Amount) {
+		query["Amount"] = request.Amount
+	}
+
+	if !dara.IsNil(request.BelongId) {
+		query["BelongId"] = request.BelongId
+	}
+
+	if !dara.IsNil(request.BelongIdType) {
+		query["BelongIdType"] = request.BelongIdType
+	}
+
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.MeasureData) {
+		query["MeasureData"] = request.MeasureData
+	}
+
+	if !dara.IsNil(request.MetaData) {
+		query["MetaData"] = request.MetaData
+	}
+
+	if !dara.IsNil(request.ResourceCode) {
+		query["ResourceCode"] = request.ResourceCode
+	}
+
+	if !dara.IsNil(request.UseTime) {
+		query["UseTime"] = request.UseTime
+	}
+
+	if !dara.IsNil(request.UseType) {
+		query["UseType"] = request.UseType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PushResourceMeasure"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PushResourceMeasureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 推送资源计量数据
+//
+// @param request - PushResourceMeasureRequest
+//
+// @return PushResourceMeasureResponse
+func (client *Client) PushResourceMeasure(request *PushResourceMeasureRequest) (_result *PushResourceMeasureResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &PushResourceMeasureResponse{}
+	_body, _err := client.PushResourceMeasureWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询灵感值获取明细
+//
+// @param request - QueryInspirationAccountDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryInspirationAccountDetailsResponse
+func (client *Client) QueryInspirationAccountDetailsWithOptions(request *QueryInspirationAccountDetailsRequest, runtime *dara.RuntimeOptions) (_result *QueryInspirationAccountDetailsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.OrderColumn) {
+		query["OrderColumn"] = request.OrderColumn
+	}
+
+	if !dara.IsNil(request.OrderType) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SourceType) {
+		query["SourceType"] = request.SourceType
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryInspirationAccountDetails"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryInspirationAccountDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询灵感值获取明细
+//
+// @param request - QueryInspirationAccountDetailsRequest
+//
+// @return QueryInspirationAccountDetailsResponse
+func (client *Client) QueryInspirationAccountDetails(request *QueryInspirationAccountDetailsRequest) (_result *QueryInspirationAccountDetailsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryInspirationAccountDetailsResponse{}
+	_body, _err := client.QueryInspirationAccountDetailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询灵感值余额总览
+//
+// @param request - QueryInspirationBalanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryInspirationBalanceResponse
+func (client *Client) QueryInspirationBalanceWithOptions(runtime *dara.RuntimeOptions) (_result *QueryInspirationBalanceResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryInspirationBalance"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryInspirationBalanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询灵感值余额总览
+//
+// @return QueryInspirationBalanceResponse
+func (client *Client) QueryInspirationBalance() (_result *QueryInspirationBalanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryInspirationBalanceResponse{}
+	_body, _err := client.QueryInspirationBalanceWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询灵感值消耗明细
+//
+// @param request - QueryInspirationConsumeRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryInspirationConsumeRecordsResponse
+func (client *Client) QueryInspirationConsumeRecordsWithOptions(request *QueryInspirationConsumeRecordsRequest, runtime *dara.RuntimeOptions) (_result *QueryInspirationConsumeRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.OrderColumn) {
+		query["OrderColumn"] = request.OrderColumn
+	}
+
+	if !dara.IsNil(request.OrderType) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SceneName) {
+		query["SceneName"] = request.SceneName
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryInspirationConsumeRecords"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryInspirationConsumeRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询灵感值消耗明细
+//
+// @param request - QueryInspirationConsumeRecordsRequest
+//
+// @return QueryInspirationConsumeRecordsResponse
+func (client *Client) QueryInspirationConsumeRecords(request *QueryInspirationConsumeRecordsRequest) (_result *QueryInspirationConsumeRecordsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryInspirationConsumeRecordsResponse{}
+	_body, _err := client.QueryInspirationConsumeRecordsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
