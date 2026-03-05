@@ -32,8 +32,7 @@ type iDescribeBackupsResponseBody interface {
 type DescribeBackupsResponseBody struct {
 	// The following parameters are no longer used. Ignore the parameters.
 	AccessDeniedDetail *DescribeBackupsResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The queried backup sets.
-	Backups *DescribeBackupsResponseBodyBackups `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Struct"`
+	Backups            *DescribeBackupsResponseBodyBackups            `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Struct"`
 	// This parameter does not take effect. Ignore this parameter.
 	//
 	// example:
@@ -340,117 +339,22 @@ func (s *DescribeBackupsResponseBodyBackups) Validate() error {
 }
 
 type DescribeBackupsResponseBodyBackupsBackup struct {
-	// The names of the databases that are backed up. The default value is **all**, which indicates that all databases are backed up.
-	//
-	// example:
-	//
-	// all
-	BackupDBNames *string `json:"BackupDBNames,omitempty" xml:"BackupDBNames,omitempty"`
-	// The public download URL of the backup file.
-	//
-	// example:
-	//
-	// https://rdsbak-hk45-v2.oss-cn-hongkong.aliyuncs.com/********
-	BackupDownloadURL *string `json:"BackupDownloadURL,omitempty" xml:"BackupDownloadURL,omitempty"`
-	// The end time of the backup.
-	//
-	// example:
-	//
-	// 2019-03-14T05:31:13Z
-	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
-	// The ID of the backup file.
-	//
-	// example:
-	//
-	// 165*****50
-	BackupId *int64 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The internal download URL of the backup file.
-	//
-	// >  You can use this URL to download the backup file from an Elastic Compute Service (ECS) instance that is connected to the Tair instance. The ECS instance must belong to the same classic network or reside in the same virtual private cloud (VPC) as the Tair instance.
-	//
-	// example:
-	//
-	// https://rdsbak-hk45-v2.oss-cn-hongkong.aliyuncs.com/********
+	BackupDBNames             *string `json:"BackupDBNames,omitempty" xml:"BackupDBNames,omitempty"`
+	BackupDownloadURL         *string `json:"BackupDownloadURL,omitempty" xml:"BackupDownloadURL,omitempty"`
+	BackupEndTime             *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
+	BackupId                  *int64  `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	BackupIntranetDownloadURL *string `json:"BackupIntranetDownloadURL,omitempty" xml:"BackupIntranetDownloadURL,omitempty"`
-	// The ID of the backup task.
-	//
-	// example:
-	//
-	// 24340
-	BackupJobID *int64 `json:"BackupJobID,omitempty" xml:"BackupJobID,omitempty"`
-	// The backup method. Valid values:
-	//
-	// 	- **Logical**
-	//
-	// 	- **Physical**
-	//
-	// example:
-	//
-	// Physical
-	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	// The backup mode. Valid values:
-	//
-	// 	- **Automated**
-	//
-	// 	- **Manual**
-	//
-	// example:
-	//
-	// Automated
-	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	// The size of the backup file.
-	//
-	// example:
-	//
-	// 1024
-	BackupSize *int64 `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	// The start time of the backup.
-	//
-	// example:
-	//
-	// 2019-03-14T05:28:50Z
-	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	// The status of the backup. Valid values:
-	//
-	// 	- **Success**
-	//
-	// 	- **Failed**
-	//
-	// example:
-	//
-	// Success
-	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	// The backup type. Valid values:
-	//
-	// 	- **FullBackup**
-	//
-	// 	- **IncrementalBackup**
-	//
-	// example:
-	//
-	// FullBackup
-	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The engine version (major version) of the instance.
-	//
-	// example:
-	//
-	// 4.0
-	EngineVersion    *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ExpectExpireTime *string `json:"ExpectExpireTime,omitempty" xml:"ExpectExpireTime,omitempty"`
-	// The node ID.
-	//
-	// >  If the instance uses the standard architecture, this parameter returns the instance ID.
-	//
-	// example:
-	//
-	// r-bp10noxlhcoim2****-db-1
-	NodeInstanceId *string `json:"NodeInstanceId,omitempty" xml:"NodeInstanceId,omitempty"`
-	// If the backup includes account information, kernel parameters and whitelist details.
-	//
-	// example:
-	//
-	// {"whitelist":true,"config":true,"account":true}
-	RecoverConfigMode *string `json:"RecoverConfigMode,omitempty" xml:"RecoverConfigMode,omitempty"`
+	BackupJobID               *int64  `json:"BackupJobID,omitempty" xml:"BackupJobID,omitempty"`
+	BackupMethod              *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	BackupMode                *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	BackupSize                *int64  `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
+	BackupStartTime           *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	BackupStatus              *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	BackupType                *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	EngineVersion             *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	ExpectExpireTime          *string `json:"ExpectExpireTime,omitempty" xml:"ExpectExpireTime,omitempty"`
+	NodeInstanceId            *string `json:"NodeInstanceId,omitempty" xml:"NodeInstanceId,omitempty"`
+	RecoverConfigMode         *string `json:"RecoverConfigMode,omitempty" xml:"RecoverConfigMode,omitempty"`
 }
 
 func (s DescribeBackupsResponseBodyBackupsBackup) String() string {

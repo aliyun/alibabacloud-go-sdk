@@ -41,9 +41,8 @@ type DescribeRunningLogRecordsResponseBody struct {
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Details about the log entries.
-	Items *DescribeRunningLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	InstanceId *string                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Items      *DescribeRunningLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
 	// example:
@@ -215,32 +214,10 @@ func (s *DescribeRunningLogRecordsResponseBodyItems) Validate() error {
 }
 
 type DescribeRunningLogRecordsResponseBodyItemsLogRecords struct {
-	// The content of the log.
-	//
-	// example:
-	//
-	// CONFIG REWRITE executed with success.
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The time when the log was generated. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2018-12-03T07:07:30Z
+	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the node.
-	//
-	// >  If a standard instance is queried, `(null)` is returned.
-	//
-	// example:
-	//
-	// r-bp1zxszhcgatnx****-db-0
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 }
 
 func (s DescribeRunningLogRecordsResponseBodyItemsLogRecords) String() string {

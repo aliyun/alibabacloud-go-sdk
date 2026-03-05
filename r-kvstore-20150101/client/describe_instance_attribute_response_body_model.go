@@ -16,7 +16,6 @@ type iDescribeInstanceAttributeResponseBody interface {
 }
 
 type DescribeInstanceAttributeResponseBody struct {
-	// Details about the instances.
 	Instances *DescribeInstanceAttributeResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,451 +95,63 @@ func (s *DescribeInstanceAttributeResponseBodyInstances) Validate() error {
 }
 
 type DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute struct {
-	// The architecture of the instance. Valid values:
-	//
-	// 	- **cluster**: cluster architecture
-	//
-	// 	- **standard**: standard architecture
-	//
-	// 	- **rwsplit**: read/write splitting architecture
-	//
-	// example:
-	//
-	// standard
-	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
-	// The retention period of audit logs. Unit: day. A value of 0 indicates that the audit log feature is disabled. For information about how to enable the feature, see [Enable the audit log feature](https://help.aliyun.com/document_detail/102015.html).
-	//
-	// example:
-	//
-	// 15
-	AuditLogRetention *string `json:"AuditLogRetention,omitempty" xml:"AuditLogRetention,omitempty"`
-	// Indicates whether a secondary zone is automatically allocated.
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	AutoSecondaryZone *bool `json:"AutoSecondaryZone,omitempty" xml:"AutoSecondaryZone,omitempty"`
-	// The availability metric of the current month.
-	//
-	// example:
-	//
-	// 100%
-	AvailabilityValue *string `json:"AvailabilityValue,omitempty" xml:"AvailabilityValue,omitempty"`
-	// The earliest point in time to which data can be restored. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// >
-	//
-	// 	- This parameter is returned only when the data flashback feature is enabled for the instance. For more information, see [Restore data to a point in time by using the data flashback feature](https://help.aliyun.com/document_detail/148479.html).
-	//
-	// 	- When you call the [RestoreInstance](https://help.aliyun.com/document_detail/473824.html) operation to implement data flashback, you can obtain the earliest point in time for data flashback from the return value of this parameter and set the **RestoreTime*	- parameter to this point in time.
-	//
-	// example:
-	//
-	// 2021-07-06T05:49:55Z
-	BackupLogStartTime *string `json:"BackupLogStartTime,omitempty" xml:"BackupLogStartTime,omitempty"`
-	// The bandwidth of the instance. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 10
-	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The storage capacity of the instance. Unit: MB.
-	//
-	// example:
-	//
-	// 1024
-	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The billing method of the instance. Valid values:
-	//
-	// 	- **PrePaid**: subscription
-	//
-	// 	- **PostPaid**: pay-as-you-go
-	//
-	// example:
-	//
-	// PostPaid
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// This parameter is returned only when the instance is in a cloud box.
-	//
-	// example:
-	//
-	// cloudbox
-	CloudType     *string `json:"CloudType,omitempty" xml:"CloudType,omitempty"`
-	ComputingType *string `json:"ComputingType,omitempty" xml:"ComputingType,omitempty"`
-	// The parameter configurations of the instance in the JSON format. For more information, see [Parameter descriptions](https://help.aliyun.com/document_detail/43885.html). You can use the [DescribeAuditLogConfig](https://help.aliyun.com/document_detail/473830.html) operation to query audit log configurations.
-	//
-	// example:
-	//
-	// {\\"EvictionPolicy\\":\\"volatile-lru\\",\\"hash-max-ziplist-entries\\":512,\\"zset-max-ziplist-entries\\":128,\\"zset-max-ziplist-value\\":64,\\"set-max-intset-entries\\":512,\\"hash-max-ziplist-value\\":64}
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The internal endpoint of the instance.
-	//
-	// example:
-	//
-	// r-bp1d72gwl41z7f****.redis.rds.aliyuncs.com
-	ConnectionDomain *string `json:"ConnectionDomain,omitempty" xml:"ConnectionDomain,omitempty"`
-	// The maximum number of connections supported by the instance.
-	//
-	// example:
-	//
-	// 10000
-	Connections *int64 `json:"Connections,omitempty" xml:"Connections,omitempty"`
-	// The time when the instance was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-03-06T10:42:03Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the subscription expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-04-06T10:42:03Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The database engine of the instance. The return value is **Redis**.
-	//
-	// example:
-	//
-	// Redis
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version of the instance. Valid values: **2.8**, **4.0**, **5.0**, **6.0**, and **7.0**.
-	//
-	// example:
-	//
-	// 4.0
-	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The ID of the distributed instance to which the instance belongs.
-	//
-	// >  This parameter is returned only when the Tair (Redis OSS-compatible) instance is a child instance of a distributed instance.
-	//
-	// example:
-	//
-	// gr-bp14rkqrhac****
-	GlobalInstanceId *string `json:"GlobalInstanceId,omitempty" xml:"GlobalInstanceId,omitempty"`
-	// Indicates whether your Alibaba Cloud account has pending orders for renewal and configuration change. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// false
-	HasRenewChangeOrder *string `json:"HasRenewChangeOrder,omitempty" xml:"HasRenewChangeOrder,omitempty"`
-	// The instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/107984.html).
-	//
-	// example:
-	//
-	// redis.master.small.default
-	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// r-bp1d72gwl41z7f****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the instance.
-	//
-	// example:
-	//
-	// apitest
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Indicates whether the release protection feature is enabled for the instance. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// false
-	InstanceReleaseProtection *bool `json:"InstanceReleaseProtection,omitempty" xml:"InstanceReleaseProtection,omitempty"`
-	// The state of the instance. Valid values:
-	//
-	// 	- **Normal**: The instance is normal.
-	//
-	// 	- **Creating**: The instance is being created.
-	//
-	// 	- **Changing**: The configurations of the instance are being changed.
-	//
-	// 	- **Inactive**: The instance is disabled.
-	//
-	// 	- **Flushing**: The instance is being released.
-	//
-	// 	- **Released**: The instance is released.
-	//
-	// 	- **Transforming**: The billing method of the instance is being changed.
-	//
-	// 	- **Unavailable**: The instance is unavailable.
-	//
-	// 	- **Error**: The instance failed to be created.
-	//
-	// 	- **Migrating**: The instance is being migrated.
-	//
-	// 	- **BackupRecovering**: The instance is being restored from a backup.
-	//
-	// 	- **MinorVersionUpgrading**: The minor version of the instance is being updated.
-	//
-	// 	- **NetworkModifying**: The network type of the instance is being changed.
-	//
-	// 	- **SSLModifying**: The SSL configurations of the instance are being changed.
-	//
-	// 	- **MajorVersionUpgrading**: The major version of the instance is being upgraded. The instance remains accessible during the upgrade.
-	//
-	// >  For more information about instance states, see [Instance states and impacts](https://help.aliyun.com/document_detail/200740.html).
-	//
-	// example:
-	//
-	// Normal
-	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The database engine of the instance. Valid values:
-	//
-	// 	- **Tair**
-	//
-	// 	- **Redis**
-	//
-	// 	- **Memcache**
-	//
-	// example:
-	//
-	// Redis
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// Indicates whether the order for instance configuration change has reached the final state. Valid values:
-	//
-	// 	- **true**: The configuration change has been completed or has not been performed.
-	//
-	// 	- **false**: The configurations of the instance are being changed.
-	//
-	// example:
-	//
-	// true
-	IsOrderCompleted *bool `json:"IsOrderCompleted,omitempty" xml:"IsOrderCompleted,omitempty"`
-	// Indicates whether the instance is managed by ApsaraDB RDS. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	IsRds *bool `json:"IsRds,omitempty" xml:"IsRds,omitempty"`
-	// Indicates whether the transparent data encryption (TDE) feature is supported for the instance. Valid values:
-	//
-	// 	- **true**: This feature is supported only for DRAM-based classic instances.
-	//
-	// 	- **false**: This feature is not supported.
-	//
-	// example:
-	//
-	// true
-	IsSupportTDE *bool `json:"IsSupportTDE,omitempty" xml:"IsSupportTDE,omitempty"`
-	// The end time of the maintenance window. The time is in the *HH:mmZ	- format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 22:00Z
-	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time of the maintenance window. The time is in the *HH:mmZ	- format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 18:00Z
-	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	// The network type of the instance. Valid values:
-	//
-	// 	- **CLASSIC**
-	//
-	// 	- **VPC**
-	//
-	// example:
-	//
-	// CLASSIC
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The node type. Valid values:
-	//
-	// 	- **double**: The instance contains a master node and a replica node.
-	//
-	// 	- **single**: The instance is a standalone instance.
-	//
-	// example:
-	//
-	// double
-	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The plan type. Valid values:
-	//
-	// 	- **standard**: standard plan.
-	//
-	// 	- **customized**: custom plan. This plan type is phased out.
-	//
-	// example:
-	//
-	// standard
-	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// The service port of the instance.
-	//
-	// example:
-	//
-	// 6379
-	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The private IP address of the instance.
-	//
-	// >  This parameter is not returned when the instance is deployed in the classic network.
-	//
-	// example:
-	//
-	// 172.16.49.***
-	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
-	// The expected maximum queries per second (QPS).
-	//
-	// example:
-	//
-	// 100000
-	QPS *int64 `json:"QPS,omitempty" xml:"QPS,omitempty"`
-	// The number of read replicas. This parameter is available only for read/write splitting instances that use cloud disks.
-	//
-	// example:
-	//
-	// 5
-	ReadOnlyCount *int32 `json:"ReadOnlyCount,omitempty" xml:"ReadOnlyCount,omitempty"`
-	// If the instance is a cluster instance that uses cloud disks, this parameter indicates the actual instance type of individual shards in the instance. The InstanceClass parameter indicates the virtual instance type.
-	//
-	// >  To query fees for instances of the instance type, you can specify the instance type that is returned by this parameter in the [DescribePrice](https://help.aliyun.com/document_detail/473807.html) operation.
-	//
-	// example:
-	//
-	// tair.rdb.with.proxy.1g
-	RealInstanceClass *string `json:"RealInstanceClass,omitempty" xml:"RealInstanceClass,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The number of replica nodes in the primary zone.
-	//
-	// >  The **ReplicaCount*	- and **SlaveReplicaCount*	- parameters are applicable only to cloud-native instances. If the instance is a cluster instance, the preceding parameters indicate the number of replica nodes **per node*	- in the primary and secondary zones of the instance.
-	//
-	// example:
-	//
-	// 1
-	ReplicaCount *int32 `json:"ReplicaCount,omitempty" xml:"ReplicaCount,omitempty"`
-	// The ID of the replica node.
-	//
-	// example:
-	//
-	// bls-awxxxxxxxxxxxxx
-	ReplicaId *string `json:"ReplicaId,omitempty" xml:"ReplicaId,omitempty"`
-	// The architecture of the replica node. Valid values:
-	//
-	// 	- **master-slave**: the standard master-replica architecture.
-	//
-	// 	- **cluster**: the cluster architecture, which includes the read/write splitting instances and cluster instances.
-	//
-	// example:
-	//
-	// master-slave
-	ReplicationMode *string `json:"ReplicationMode,omitempty" xml:"ReplicationMode,omitempty"`
-	// The ID of the resource group to which the instance belongs.
-	//
-	// example:
-	//
-	// rg-acfmyiu4ekp****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the secondary zone.
-	//
-	// >  This parameter is returned only if the instance has a secondary zone ID.
-	//
-	// example:
-	//
-	// cn-hongkong-h
-	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
-	// The IP addresses in the whitelist.
-	//
-	// example:
-	//
-	// 127.0.0.1
-	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// The number of shards. This parameter is available only for instances that are purchased on the China site (aliyun.com).
-	//
-	// example:
-	//
-	// 2
-	ShardCount *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
-	// The number of read replicas in the secondary zone. This parameter is returned only after read/write splitting is enabled for the instance across multiple zones.
-	//
-	// example:
-	//
-	// 2
-	SlaveReadOnlyCount *int64 `json:"SlaveReadOnlyCount,omitempty" xml:"SlaveReadOnlyCount,omitempty"`
-	// The number of replica nodes in the secondary zone.
-	//
-	// example:
-	//
-	// 1
-	SlaveReplicaCount *int32 `json:"SlaveReplicaCount,omitempty" xml:"SlaveReplicaCount,omitempty"`
-	// The storage capacity of the cloud disk.
-	//
-	// example:
-	//
-	// 50
-	Storage *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
-	// The storage type.
-	//
-	// example:
-	//
-	// essd_pl1
-	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// Details about the tags.
-	Tags *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The ID of the vSwitch.
-	//
-	// example:
-	//
-	// vsw-bp1e7clcw529l773d****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// Indicates whether password authentication is enabled. Valid values:
-	//
-	// 	- **Open**: Password authentication is enabled.
-	//
-	// 	- **Close**: Password authentication is disabled and [password-free access](https://help.aliyun.com/document_detail/85168.html) is enabled.
-	//
-	// example:
-	//
-	// Open
-	VpcAuthMode *string `json:"VpcAuthMode,omitempty" xml:"VpcAuthMode,omitempty"`
-	// The ID of the instance in the VPC.
-	//
-	// example:
-	//
-	// r-bp1d72gwl41z7f****
-	VpcCloudInstanceId *string `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
-	// The ID of the virtual private cloud (VPC).
-	//
-	// example:
-	//
-	// vpc-bp1nme44gek34slfc****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The zone ID.
-	//
-	// example:
-	//
-	// cn-hongkong-b
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The deployment type of the instance. Valid values:
-	//
-	// 	- **singlezone**: The instance is deployed in a single zone.
-	//
-	// 	- **doublezone**: The instance is deployed in two zones of the same region.
-	//
-	// example:
-	//
-	// singlezone
-	ZoneType *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
+	ArchitectureType          *string                                                                `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
+	AuditLogRetention         *string                                                                `json:"AuditLogRetention,omitempty" xml:"AuditLogRetention,omitempty"`
+	AutoSecondaryZone         *bool                                                                  `json:"AutoSecondaryZone,omitempty" xml:"AutoSecondaryZone,omitempty"`
+	AvailabilityValue         *string                                                                `json:"AvailabilityValue,omitempty" xml:"AvailabilityValue,omitempty"`
+	BackupLogStartTime        *string                                                                `json:"BackupLogStartTime,omitempty" xml:"BackupLogStartTime,omitempty"`
+	Bandwidth                 *int64                                                                 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Capacity                  *int64                                                                 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	ChargeType                *string                                                                `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	CloudType                 *string                                                                `json:"CloudType,omitempty" xml:"CloudType,omitempty"`
+	ComputingType             *string                                                                `json:"ComputingType,omitempty" xml:"ComputingType,omitempty"`
+	Config                    *string                                                                `json:"Config,omitempty" xml:"Config,omitempty"`
+	ConnectionDomain          *string                                                                `json:"ConnectionDomain,omitempty" xml:"ConnectionDomain,omitempty"`
+	Connections               *int64                                                                 `json:"Connections,omitempty" xml:"Connections,omitempty"`
+	CreateTime                *string                                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EndTime                   *string                                                                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Engine                    *string                                                                `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion             *string                                                                `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	GlobalInstanceId          *string                                                                `json:"GlobalInstanceId,omitempty" xml:"GlobalInstanceId,omitempty"`
+	HasRenewChangeOrder       *string                                                                `json:"HasRenewChangeOrder,omitempty" xml:"HasRenewChangeOrder,omitempty"`
+	InstanceClass             *string                                                                `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	InstanceId                *string                                                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName              *string                                                                `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceReleaseProtection *bool                                                                  `json:"InstanceReleaseProtection,omitempty" xml:"InstanceReleaseProtection,omitempty"`
+	InstanceStatus            *string                                                                `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	InstanceType              *string                                                                `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	IsOrderCompleted          *bool                                                                  `json:"IsOrderCompleted,omitempty" xml:"IsOrderCompleted,omitempty"`
+	IsRds                     *bool                                                                  `json:"IsRds,omitempty" xml:"IsRds,omitempty"`
+	IsSupportTDE              *bool                                                                  `json:"IsSupportTDE,omitempty" xml:"IsSupportTDE,omitempty"`
+	MaintainEndTime           *string                                                                `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	MaintainStartTime         *string                                                                `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	NetworkType               *string                                                                `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	NodeType                  *string                                                                `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	PackageType               *string                                                                `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	Port                      *int64                                                                 `json:"Port,omitempty" xml:"Port,omitempty"`
+	PrivateIp                 *string                                                                `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
+	QPS                       *int64                                                                 `json:"QPS,omitempty" xml:"QPS,omitempty"`
+	ReadOnlyCount             *int32                                                                 `json:"ReadOnlyCount,omitempty" xml:"ReadOnlyCount,omitempty"`
+	RealInstanceClass         *string                                                                `json:"RealInstanceClass,omitempty" xml:"RealInstanceClass,omitempty"`
+	RegionId                  *string                                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReplicaCount              *int32                                                                 `json:"ReplicaCount,omitempty" xml:"ReplicaCount,omitempty"`
+	ReplicaId                 *string                                                                `json:"ReplicaId,omitempty" xml:"ReplicaId,omitempty"`
+	ReplicationMode           *string                                                                `json:"ReplicationMode,omitempty" xml:"ReplicationMode,omitempty"`
+	ResourceGroupId           *string                                                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecondaryZoneId           *string                                                                `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
+	SecurityIPList            *string                                                                `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	ShardCount                *int32                                                                 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
+	SlaveReadOnlyCount        *int64                                                                 `json:"SlaveReadOnlyCount,omitempty" xml:"SlaveReadOnlyCount,omitempty"`
+	SlaveReplicaCount         *int32                                                                 `json:"SlaveReplicaCount,omitempty" xml:"SlaveReplicaCount,omitempty"`
+	Storage                   *string                                                                `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	StorageType               *string                                                                `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Tags                      *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VSwitchId                 *string                                                                `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcAuthMode               *string                                                                `json:"VpcAuthMode,omitempty" xml:"VpcAuthMode,omitempty"`
+	VpcCloudInstanceId        *string                                                                `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
+	VpcId                     *string                                                                `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId                    *string                                                                `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneType                  *string                                                                `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
 }
 
 func (s DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute) String() string {
@@ -1108,17 +719,7 @@ func (s *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttributeTags) 
 }
 
 type DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttributeTagsTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// tagkey
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// tagvalue
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

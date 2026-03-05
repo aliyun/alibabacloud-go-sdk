@@ -29,8 +29,7 @@ type ListTagResourcesResponseBody struct {
 	// example:
 	//
 	// 47A514A1-4B77-4E30-B4C5-2A880650****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details about the instances and tags.
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -113,30 +112,10 @@ func (s *ListTagResourcesResponseBodyTagResources) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	// The resource ID, which is also the ID of the instance.
-	//
-	// example:
-	//
-	// r-bp1zxszhcgatnx****
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type. The return value is **ALIYUN::KVSTORE::INSTANCE**. This value indicates a Tair (Redis OSS-compatible) instance.
-	//
-	// example:
-	//
-	// ALIYUN::KVSTORE::INSTANCE
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The keys of the tags.
-	//
-	// example:
-	//
-	// demokey
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The values of the tags.
-	//
-	// example:
-	//
-	// demovalue
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {

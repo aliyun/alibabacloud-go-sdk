@@ -41,6 +41,8 @@ type iCreateTairInstanceRequest interface {
 	GetGlobalSecurityGroupIds() *string
 	SetInstanceClass(v string) *CreateTairInstanceRequest
 	GetInstanceClass() *string
+	SetInstanceEndpointType(v string) *CreateTairInstanceRequest
+	GetInstanceEndpointType() *string
 	SetInstanceName(v string) *CreateTairInstanceRequest
 	GetInstanceName() *string
 	SetInstanceType(v string) *CreateTairInstanceRequest
@@ -247,7 +249,8 @@ type CreateTairInstanceRequest struct {
 	// example:
 	//
 	// tair.scm.standard.4m.32d
-	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	InstanceClass        *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	InstanceEndpointType *string `json:"InstanceEndpointType,omitempty" xml:"InstanceEndpointType,omitempty"`
 	// The name of the instance. The name must meet the following requirements:
 	//
 	// 	- The name must be 2 to 80 characters in length.
@@ -553,6 +556,10 @@ func (s *CreateTairInstanceRequest) GetInstanceClass() *string {
 	return s.InstanceClass
 }
 
+func (s *CreateTairInstanceRequest) GetInstanceEndpointType() *string {
+	return s.InstanceEndpointType
+}
+
 func (s *CreateTairInstanceRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
@@ -750,6 +757,11 @@ func (s *CreateTairInstanceRequest) SetGlobalSecurityGroupIds(v string) *CreateT
 
 func (s *CreateTairInstanceRequest) SetInstanceClass(v string) *CreateTairInstanceRequest {
 	s.InstanceClass = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetInstanceEndpointType(v string) *CreateTairInstanceRequest {
+	s.InstanceEndpointType = &v
 	return s
 }
 

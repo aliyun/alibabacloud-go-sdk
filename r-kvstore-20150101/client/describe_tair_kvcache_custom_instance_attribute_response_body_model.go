@@ -482,18 +482,9 @@ func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisks) Validate()
 }
 
 type DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisksDisk struct {
-	// example:
-	//
-	// d-5v1aggi3ffoxufb57**
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// example:
-	//
-	// 100
-	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	// example:
-	//
-	// data
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Size   *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisksDisk) String() string {
@@ -570,13 +561,7 @@ func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBodyTags) Validate() 
 }
 
 type DescribeTairKVCacheCustomInstanceAttributeResponseBodyTagsTag struct {
-	// example:
-	//
-	// tag1
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// example:
-	//
-	// value1
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

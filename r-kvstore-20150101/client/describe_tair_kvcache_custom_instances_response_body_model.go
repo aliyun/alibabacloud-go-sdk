@@ -138,77 +138,26 @@ func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstances) Validate() err
 }
 
 type DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance struct {
-	// example:
-	//
-	// PrePaid
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// example:
-	//
-	// 2018-11-07T08:49:00Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 2019-04-28T10:03:01Z
-	DestroyTime *string `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
-	// example:
-	//
-	// 2024-05-21T00:00:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// example:
-	//
-	// tair.gpu.test.16g
-	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// example:
-	//
-	// tc-bp1zxszhcgatnx****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// testdb
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// example:
-	//
-	// Normal
-	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// example:
-	//
-	// TairCustom
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// example:
-	//
-	// VPC
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	PrivateIp   *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// example:
-	//
-	// rg-acfmyiu4ekp****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// example:
-	//
-	// 50
-	Storage *int64 `json:"Storage,omitempty" xml:"Storage,omitempty"`
-	// example:
-	//
-	// essd_pl1
-	StorageType *string                                                                     `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	Tags        *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	UseEni      *bool                                                                       `json:"UseEni,omitempty" xml:"UseEni,omitempty"`
-	// example:
-	//
-	// vsw-bp1e7clcw529l773d****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// example:
-	//
-	// vpc-bp1nme44gek34slfc****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// example:
-	//
-	// cn-hangzhou-e
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ChargeType      *string                                                                     `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	CreateTime      *string                                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DestroyTime     *string                                                                     `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
+	EndTime         *string                                                                     `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceClass   *string                                                                     `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	InstanceId      *string                                                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName    *string                                                                     `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceStatus  *string                                                                     `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	InstanceType    *string                                                                     `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	NetworkType     *string                                                                     `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	PrivateIp       *string                                                                     `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
+	RegionId        *string                                                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string                                                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Storage         *int64                                                                      `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	StorageType     *string                                                                     `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Tags            *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	UseEni          *bool                                                                       `json:"UseEni,omitempty" xml:"UseEni,omitempty"`
+	VSwitchId       *string                                                                     `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId           *string                                                                     `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId          *string                                                                     `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance) String() string {
@@ -443,13 +392,7 @@ func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceT
 }
 
 type DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTagsTag struct {
-	// example:
-	//
-	// tagkey
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// example:
-	//
-	// tagvalue
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

@@ -27,9 +27,8 @@ type DescribeDBInstanceNetInfoResponseBody struct {
 	// example:
 	//
 	// CLASSIC
-	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	// The network information about the instance.
-	NetInfoItems *DescribeDBInstanceNetInfoResponseBodyNetInfoItems `json:"NetInfoItems,omitempty" xml:"NetInfoItems,omitempty" type:"Struct"`
+	InstanceNetworkType *string                                            `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	NetInfoItems        *DescribeDBInstanceNetInfoResponseBodyNetInfoItems `json:"NetInfoItems,omitempty" xml:"NetInfoItems,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -117,98 +116,18 @@ func (s *DescribeDBInstanceNetInfoResponseBodyNetInfoItems) Validate() error {
 }
 
 type DescribeDBInstanceNetInfoResponseBodyNetInfoItemsInstanceNetInfo struct {
-	// The endpoint of the instance.
-	//
-	// example:
-	//
-	// r-bp1zxszhcgatnx****.redis.rds.aliyuncs.com
-	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The network type of the instance. Valid values:
-	//
-	// 	- **0**: Internet
-	//
-	// 	- **1**: classic network
-	//
-	// 	- **2**: Virtual Private Cloud (VPC)
-	//
-	// example:
-	//
-	// 1
+	ConnectionString  *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
-	// Indicates whether the address is a private endpoint. Valid values:
-	//
-	// 	- **0**: The address is not a private endpoint.
-	//
-	// 	- **1**: The address is a private endpoint.
-	//
-	// example:
-	//
-	// 0
-	DirectConnection *int32 `json:"DirectConnection,omitempty" xml:"DirectConnection,omitempty"`
-	// The expiration time of the classic network endpoint. Unit: seconds.
-	//
-	// example:
-	//
-	// 5183779
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The IP address.
-	//
-	// example:
-	//
-	// 172.16.49.***
-	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
-	// The network type of the IP address. Valid values:
-	//
-	// 	- **Public**: Internet
-	//
-	// 	- **Inner**: classic network
-	//
-	// 	- **Private**: VPC
-	//
-	// example:
-	//
-	// Inner
-	IPType *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
-	// Indicates whether the address is the endpoint for the secondary zone. Valid values: 1 and 0. A value of 1 indicates that the address is the endpoint for the secondary zone.
-	//
-	// >  This parameter is returned only after you enable the multi-zone read/write splitting architecture for the instance.
-	//
-	// example:
-	//
-	// 1
-	IsSlaveProxy *int32 `json:"IsSlaveProxy,omitempty" xml:"IsSlaveProxy,omitempty"`
-	// The service port of the instance.
-	//
-	// example:
-	//
-	// 6379
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The remaining validity period of the classic network endpoint. Unit: seconds.
-	//
-	// >  **A value of 0 indicates that the endpoint never expires.
-	//
-	// example:
-	//
-	// 0
-	Upgradeable *string `json:"Upgradeable,omitempty" xml:"Upgradeable,omitempty"`
-	// The ID of the VPC to which the instance belongs.
-	//
-	// example:
-	//
-	// vpc-bp1nme44gek34slfc****
-	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// r-bp1ky7j6qc7umk****
-	VPCInstanceId *string `json:"VPCInstanceId,omitempty" xml:"VPCInstanceId,omitempty"`
-	// The ID of the vSwitch.
-	//
-	// example:
-	//
-	// vsw-bp1e7clcw529l773d****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	DirectConnection  *int32  `json:"DirectConnection,omitempty" xml:"DirectConnection,omitempty"`
+	ExpiredTime       *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	IPAddress         *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
+	IPType            *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
+	IsSlaveProxy      *int32  `json:"IsSlaveProxy,omitempty" xml:"IsSlaveProxy,omitempty"`
+	Port              *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Upgradeable       *string `json:"Upgradeable,omitempty" xml:"Upgradeable,omitempty"`
+	VPCId             *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VPCInstanceId     *string `json:"VPCInstanceId,omitempty" xml:"VPCInstanceId,omitempty"`
+	VSwitchId         *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s DescribeDBInstanceNetInfoResponseBodyNetInfoItemsInstanceNetInfo) String() string {

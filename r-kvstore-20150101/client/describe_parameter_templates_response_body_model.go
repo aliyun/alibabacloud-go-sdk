@@ -39,9 +39,8 @@ type DescribeParameterTemplatesResponseBody struct {
 	// example:
 	//
 	// 24
-	ParameterCount *string `json:"ParameterCount,omitempty" xml:"ParameterCount,omitempty"`
-	// An array that consists of the details about the parameters returned.
-	Parameters *DescribeParameterTemplatesResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
+	ParameterCount *string                                           `json:"ParameterCount,omitempty" xml:"ParameterCount,omitempty"`
+	Parameters     *DescribeParameterTemplatesResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -147,50 +146,12 @@ func (s *DescribeParameterTemplatesResponseBodyParameters) Validate() error {
 }
 
 type DescribeParameterTemplatesResponseBodyParametersTemplateRecord struct {
-	// The valid values of the parameter.
-	//
-	// example:
-	//
-	// [yes|no]
-	CheckingCode *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
-	// Indicates whether the parameter can be reconfigured. Valid values:
-	//
-	// 	- **true**: The parameter can be reconfigured.
-	//
-	// 	- **false**: The parameter cannot be reconfigured.
-	//
-	// example:
-	//
-	// true
-	ForceModify *bool `json:"ForceModify,omitempty" xml:"ForceModify,omitempty"`
-	// Indicates whether a restart of the instance is required after the parameter is reconfigured. Valid values:
-	//
-	// 	- **true**: After the parameter is reconfigured, you must restart the instance to make the new value of the parameter take effect.
-	//
-	// 	- **false**: After the parameter is reconfigured, the new value of the parameter immediately takes effect. You do not need to restart the instance.
-	//
-	// example:
-	//
-	// true
-	ForceRestart *bool `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
-	// The description of the parameter.
-	//
-	// example:
-	//
-	// test description
+	CheckingCode         *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
+	ForceModify          *bool   `json:"ForceModify,omitempty" xml:"ForceModify,omitempty"`
+	ForceRestart         *bool   `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	// The name of the parameter. For more information about the parameters and the parameter settings, see [Parameters](https://help.aliyun.com/document_detail/259681.html).
-	//
-	// example:
-	//
-	// appendonly
-	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The default value of the parameter.
-	//
-	// example:
-	//
-	// yes
-	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	ParameterValue       *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
 func (s DescribeParameterTemplatesResponseBodyParametersTemplateRecord) String() string {

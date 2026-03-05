@@ -45,6 +45,8 @@ type iCreateInstanceRequest interface {
 	GetGlobalSecurityGroupIds() *string
 	SetInstanceClass(v string) *CreateInstanceRequest
 	GetInstanceClass() *string
+	SetInstanceEndpointType(v string) *CreateInstanceRequest
+	GetInstanceEndpointType() *string
 	SetInstanceName(v string) *CreateInstanceRequest
 	GetInstanceName() *string
 	SetInstanceType(v string) *CreateInstanceRequest
@@ -279,7 +281,8 @@ type CreateInstanceRequest struct {
 	// example:
 	//
 	// redis.master.small.default
-	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	InstanceClass        *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	InstanceEndpointType *string `json:"InstanceEndpointType,omitempty" xml:"InstanceEndpointType,omitempty"`
 	// The name of the instance. The name must be 2 to 80 characters in length and must start with a letter. It cannot contain spaces or specific special characters. These special characters include `@ / : = " < > { [ ] }`
 	//
 	// example:
@@ -416,8 +419,7 @@ type CreateInstanceRequest struct {
 	//
 	// cn-hangzhou-h
 	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
-	// 系统自动生成的安全 Token，无需传入
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The number of shards. This parameter applies only to cloud-native cluster instances.
 	//
 	// example:
@@ -552,6 +554,10 @@ func (s *CreateInstanceRequest) GetGlobalSecurityGroupIds() *string {
 
 func (s *CreateInstanceRequest) GetInstanceClass() *string {
 	return s.InstanceClass
+}
+
+func (s *CreateInstanceRequest) GetInstanceEndpointType() *string {
+	return s.InstanceEndpointType
 }
 
 func (s *CreateInstanceRequest) GetInstanceName() *string {
@@ -761,6 +767,11 @@ func (s *CreateInstanceRequest) SetGlobalSecurityGroupIds(v string) *CreateInsta
 
 func (s *CreateInstanceRequest) SetInstanceClass(v string) *CreateInstanceRequest {
 	s.InstanceClass = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetInstanceEndpointType(v string) *CreateInstanceRequest {
+	s.InstanceEndpointType = &v
 	return s
 }
 

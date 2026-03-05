@@ -16,7 +16,6 @@ type iDescribeRegionsResponseBody interface {
 }
 
 type DescribeRegionsResponseBody struct {
-	// The **region IDs**.
 	RegionIds *DescribeRegionsResponseBodyRegionIds `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,32 +95,11 @@ func (s *DescribeRegionsResponseBodyRegionIds) Validate() error {
 }
 
 type DescribeRegionsResponseBodyRegionIdsKVStoreRegion struct {
-	// The name of the region.
-	//
-	// example:
-	//
-	// China (Hangzhou)
-	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The endpoint of the region.
-	//
-	// example:
-	//
-	// r-kvstore.aliyuncs.com
-	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The zone IDs.
-	ZoneIdList *DescribeRegionsResponseBodyRegionIdsKVStoreRegionZoneIdList `json:"ZoneIdList,omitempty" xml:"ZoneIdList,omitempty" type:"Struct"`
-	// The IDs of the zones in the region.
-	//
-	// example:
-	//
-	// cn-hangzhou-h
-	ZoneIds *string `json:"ZoneIds,omitempty" xml:"ZoneIds,omitempty"`
+	LocalName      *string                                                      `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	RegionEndpoint *string                                                      `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
+	RegionId       *string                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ZoneIdList     *DescribeRegionsResponseBodyRegionIdsKVStoreRegionZoneIdList `json:"ZoneIdList,omitempty" xml:"ZoneIdList,omitempty" type:"Struct"`
+	ZoneIds        *string                                                      `json:"ZoneIds,omitempty" xml:"ZoneIds,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegionIdsKVStoreRegion) String() string {

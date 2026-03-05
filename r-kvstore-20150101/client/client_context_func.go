@@ -191,7 +191,7 @@ func (client *Client) AllocateDirectConnectionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Applies for a public endpoint for an ApsaraDB for Redis instance.
+// Applies for a public endpoint for a Tair (Redis OSS-compatible) instance.
 //
 // Description:
 //
@@ -906,6 +906,10 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 		query["InstanceClass"] = request.InstanceClass
 	}
 
+	if !dara.IsNil(request.InstanceEndpointType) {
+		query["InstanceEndpointType"] = request.InstanceEndpointType
+	}
+
 	if !dara.IsNil(request.InstanceName) {
 		query["InstanceName"] = request.InstanceName
 	}
@@ -1245,7 +1249,7 @@ func (client *Client) CreateParameterGroupWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 创建TairCustom实例
+// Creates a TairCustom instance.
 //
 // @param request - CreateTCInstanceRequest
 //
@@ -1482,6 +1486,10 @@ func (client *Client) CreateTairInstanceWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.InstanceClass) {
 		query["InstanceClass"] = request.InstanceClass
+	}
+
+	if !dara.IsNil(request.InstanceEndpointType) {
+		query["InstanceEndpointType"] = request.InstanceEndpointType
 	}
 
 	if !dara.IsNil(request.InstanceName) {
@@ -1995,7 +2003,7 @@ func (client *Client) DeleteGlobalSecurityIPGroupWithContext(ctx context.Context
 
 // Summary:
 //
-// Release the Redis instance.
+// Releases a Tair (Redis OSS-compatible) instance.
 //
 // Description:
 //
@@ -2361,7 +2369,7 @@ func (client *Client) DescribeActiveOperationMaintenanceConfigWithContext(ctx co
 
 // Summary:
 //
-// Queries the details of the O\\&M tasks of a Tair (Redis OSS-compatible) instance.
+// Queries the details of the O\\\\\\&M tasks of a Tair (Redis OSS-compatible) instance.
 //
 // Description:
 //
@@ -2509,7 +2517,7 @@ func (client *Client) DescribeActiveOperationTaskCountWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the O\\\\\\\\\\\\&M event details of an instance.
+// Queries the O\\\\\\\\\\\\\\\\\\\\&M event details of an instance.
 //
 // @param request - DescribeActiveOperationTasksRequest
 //
@@ -3489,7 +3497,7 @@ func (client *Client) DescribeDBInstanceMonitorWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the network information of an ApsaraDB for Redis instance.
+// Queries the network information of a Tair (Redis OSS-compatible) instance.
 //
 // @param request - DescribeDBInstanceNetInfoRequest
 //
@@ -4927,7 +4935,7 @@ func (client *Client) DescribeInstanceConfigWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries whether TLS (SSL) encryption is enabled for an instance.
+// Queries whether TLS (SSL) encryption is enabled for a Tair (Redis OSS-compatible) instance.
 //
 // Description:
 //
@@ -5351,7 +5359,7 @@ func (client *Client) DescribeInstancesOverviewWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the internal bandwidth of a Tair (Redis OSS-compatible) instance.
+// Queries the current bandwidth of a Tair (Redis OSS-compatible) instance.
 //
 // Description:
 //
@@ -6215,7 +6223,7 @@ func (client *Client) DescribePriceWithContext(ctx context.Context, request *Des
 
 // Summary:
 //
-// Queries the regions in which ApsaraDB for Redis instances can be created.
+// Queries all regions and zones supported for a Tair (Redis OSS-compatible) instance.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -6845,7 +6853,7 @@ func (client *Client) DescribeTagsWithContext(ctx context.Context, request *Desc
 
 // Summary:
 //
-// 查看TairCustom实例
+// Queries the details of a TairKVCache instance.
 //
 // @param request - DescribeTairKVCacheCustomInstanceAttributeRequest
 //
@@ -6885,7 +6893,7 @@ func (client *Client) DescribeTairKVCacheCustomInstanceAttributeWithContext(ctx 
 
 // Summary:
 //
-// 查询TairCustom主机监控
+// Queries the monitoring data of a Tair-KVCache instance.
 //
 // @param request - DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest
 //
@@ -6925,7 +6933,7 @@ func (client *Client) DescribeTairKVCacheCustomInstanceHistoryMonitorValuesWithC
 
 // Summary:
 //
-// 查看TairCustom实例
+// Queries Tair-KVCache instances.
 //
 // @param request - DescribeTairKVCacheCustomInstancesRequest
 //
@@ -7049,7 +7057,7 @@ func (client *Client) DescribeTairKVCacheInferInstancesWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the zones available for Tair (Redis OSS-compatible).
+// Queries the zones that support Tair (Redis OSS-compatible) in a specific region. To query the zones where Tair (Redis OSS-compatible) instances can be purchased, call the DescribeAvailableResource operation.
 //
 // @param request - DescribeZonesRequest
 //
@@ -7741,7 +7749,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Places a write lock on an instance. After the instance is locked, it supports only read operations.
+// Locks an instance. After the instance is locked, you can only read data from the instance, but cannot write data to the instance.
 //
 // @param request - LockDBInstanceWriteRequest
 //
@@ -8063,7 +8071,7 @@ func (client *Client) ModifyAccountDescriptionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Changes the password of a specific account for a Tair (Redis OSS-compatible) instance.
+// Modifies the password of an account for a Tair (Redis OSS-compatible) instance.
 //
 // @param request - ModifyAccountPasswordRequest
 //
@@ -8223,7 +8231,7 @@ func (client *Client) ModifyActiveOperationMaintainConfigWithContext(ctx context
 
 // Summary:
 //
-// Changes the scheduled switchover time of an O&M task.
+// Changes the scheduled switchover time of an O\\&M task.
 //
 // Description:
 //
@@ -8597,7 +8605,7 @@ func (client *Client) ModifyBackupPolicyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modifies the setting related to the automatic update of minor versions for an instance.
+// Modifies the settings related to the automatic minor version update for an instance.
 //
 // @param request - ModifyDBInstanceAutoUpgradeRequest
 //
@@ -9435,7 +9443,7 @@ func (client *Client) ModifyInstanceConfigWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Modifies the maintenance window of an Tair (Redis OSS-compatible) instance. Alibaba Cloud maintains Tair (Redis OSS-compatible) instances during the specified maintenance window.
+// Modifies the maintenance window of a Tair (Redis OSS-compatible) instance. Alibaba Cloud maintains Tair (Redis OSS-compatible) instances during the specified maintenance window.
 //
 // Description:
 //
@@ -10365,7 +10373,7 @@ func (client *Client) ModifyParameterGroupWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Changes the resource group to which a Tair (Redis OSS-compatible) instance belongs.
+// Modifies the resource group to which a Tair (Redis OSS-compatible) instance belongs.
 //
 // Description:
 //
@@ -10515,7 +10523,7 @@ func (client *Client) ModifySecurityGroupConfigurationWithContext(ctx context.Co
 
 // Summary:
 //
-// Modifies the IP address whitelists of a Tair (Redis OSS-compatible) instance.
+// Configures an IP address whitelist for a Tair (Redis OSS-compatible) instance.
 //
 // Description:
 //
@@ -10599,7 +10607,7 @@ func (client *Client) ModifySecurityIpsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 修改TairCustom实例基本参数
+// Modifies the basic parameters of a Tair-KVCache instance.
 //
 // @param request - ModifyTairKVCacheCustomInstanceAttributeRequest
 //
@@ -10823,7 +10831,7 @@ func (client *Client) RebootProxyWithContext(ctx context.Context, request *Reboo
 
 // Summary:
 //
-// Releases the private endpoint of an ApsaraDB for Redis cluster instance.
+// Releases the private endpoint of a Tair (Redis OSS-compatible) cluster instance.
 //
 // Description:
 //
@@ -11115,7 +11123,7 @@ func (client *Client) RenewAdditionalBandwidthWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Renews an ApsaraDB for Redis instance.
+// Renews a Tair (Redis OSS-compatible) subscription instance.
 //
 // Description:
 //
@@ -11299,7 +11307,7 @@ func (client *Client) ResetAccountPasswordWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 重置TairCustom上主机密码
+// Modifies the basic parameters of a Tair-KVCache instance.
 //
 // @param request - ResetTairKVCacheCustomInstancePasswordRequest
 //
@@ -11371,7 +11379,7 @@ func (client *Client) ResetTairKVCacheCustomInstancePasswordWithContext(ctx cont
 
 // Summary:
 //
-// 变配TairCustom的主机的磁盘
+// Modifies the disk size of a Tair-KVCache instance.
 //
 // @param request - ResizeTairKVCacheCustomInstanceDiskRequest
 //
@@ -11447,7 +11455,7 @@ func (client *Client) ResizeTairKVCacheCustomInstanceDiskWithContext(ctx context
 
 // Summary:
 //
-// Restarts a running ApsaraDB for Redis instance.
+// Restarts a running Tair (Redis OSS-compatible) instance.
 //
 // @param request - RestartInstanceRequest
 //
@@ -11519,7 +11527,7 @@ func (client *Client) RestartInstanceWithContext(ctx context.Context, request *R
 
 // Summary:
 //
-// 重启TairCustom的主机
+// Restarts a Tair-KVCache instance.
 //
 // @param request - RestartTairKVCacheCustomInstanceRequest
 //
@@ -11673,7 +11681,7 @@ func (client *Client) RestoreInstanceWithContext(ctx context.Context, request *R
 
 // Summary:
 //
-// 启动TairCustom的主机
+// Starts a Tair-KVCache instance.
 //
 // @param request - StartTairKVCacheCustomInstanceRequest
 //
@@ -11737,7 +11745,7 @@ func (client *Client) StartTairKVCacheCustomInstanceWithContext(ctx context.Cont
 
 // Summary:
 //
-// 停止TairCustom的主机
+// Stops a Tair-KVCache instance.
 //
 // @param request - StopTairKVCacheCustomInstanceRequest
 //
@@ -12545,7 +12553,7 @@ func (client *Client) TransformToPrePaidWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Removes the write lock from an instance. After the instance is unlocked, it supports both read and write operations.
+// Unlocks a write-locked instance. After the instance is unlocked, you can read and write data to and from the instance.
 //
 // @param request - UnlockDBInstanceWriteRequest
 //

@@ -22,7 +22,6 @@ type iDescribeTairKVCacheInferInstancesResponseBody interface {
 }
 
 type DescribeTairKVCacheInferInstancesResponseBody struct {
-	// The information about the returned Tair (Redis OSS-compatible) KVCache instance.
 	Instances *DescribeTairKVCacheInferInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,158 +146,32 @@ func (s *DescribeTairKVCacheInferInstancesResponseBodyInstances) Validate() erro
 }
 
 type DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO struct {
-	// The ACK cluster ID corresponding to the virtual cluster instance.
-	//
-	// example:
-	//
-	// c809******************************
-	AckId *string `json:"AckId,omitempty" xml:"AckId,omitempty"`
-	// The capacity of the KVCache. Unit: GB.
-	//
-	// example:
-	//
-	// 256
-	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The billing method of the instance.
-	//
-	// example:
-	//
-	// PostPaid
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The number of compute units.
-	//
-	// example:
-	//
-	// 1
-	ComputeUnitNum *int32 `json:"ComputeUnitNum,omitempty" xml:"ComputeUnitNum,omitempty"`
-	// The creation time of the instance.
-	//
-	// example:
-	//
-	// 2025-04-07T04:46Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the instance was deleted.
-	//
-	// example:
-	//
-	// 2025-04-07T04:46Z
-	DestroyTime       *string `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
-	ElasticVNodeCount *int32  `json:"ElasticVNodeCount,omitempty" xml:"ElasticVNodeCount,omitempty"`
-	// The time when the subscription instance expires.
-	//
-	// example:
-	//
-	// 2025-11-04T02:09:26Z
-	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FixedVNodeCount *int32  `json:"FixedVNodeCount,omitempty" xml:"FixedVNodeCount,omitempty"`
-	// The instance type.
-	//
-	// example:
-	//
-	// kvcache.cu.g4b.2
-	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// tk-9dp7e37bab*****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name.
-	//
-	// example:
-	//
-	// kvcache-7
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The instance state. Valid values:
-	//
-	// 	- **Normal**: The instance is normal.
-	//
-	// 	- **Creating**: The instance is being created.
-	//
-	// example:
-	//
-	// Normal
-	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The type of the instance. Valid values:
-	//
-	// 	- **TairInfer**: the inference operator instance
-	//
-	// 	- **TairKVCacheVnode**: the virtual cluster instance.
-	//
-	// 	- **TairKVCacheService**: the cache service instance.
-	//
-	// example:
-	//
-	// TairInfer
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The built-in model of the inference operator instance.
-	//
-	// example:
-	//
-	// DeepSeek-OCR
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The number of model services of the inference operator instance.
-	//
-	// example:
-	//
-	// 1
-	ModelServiceNum *int32 `json:"ModelServiceNum,omitempty" xml:"ModelServiceNum,omitempty"`
-	// The network type of the instance.
-	//
-	// example:
-	//
-	// VPC
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The private IP address of the instance. This parameter is deprecated.
-	//
-	// example:
-	//
-	// 172.16.49.***
-	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
-	// The region ID of the instance.
-	//
-	// example:
-	//
-	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
-	//
-	// example:
-	//
-	// rg-acfm4bdru5z****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Details of the tags.
-	Tags *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTOTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The number of vNodes in the virtual cluster.
-	//
-	// example:
-	//
-	// 2
-	VNodeCount *int32 `json:"VNodeCount,omitempty" xml:"VNodeCount,omitempty"`
-	// The list of vNode instance names under the virtual cluster instance. This parameter is deprecated.
-	//
-	// example:
-	//
-	// tv-xxxxx
-	VNodeName *string `json:"VNodeName,omitempty" xml:"VNodeName,omitempty"`
-	// The vSwitch ID.
-	//
-	// example:
-	//
-	// vsw-8vbf0ksk774ai6q1d****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC ID of the instance.
-	//
-	// example:
-	//
-	// vpc-2zef5w848p4j5g***
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The zone ID.
-	//
-	// example:
-	//
-	// cn-hangzhou-g
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AckId             *string                                                                         `json:"AckId,omitempty" xml:"AckId,omitempty"`
+	Capacity          *int64                                                                          `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	ChargeType        *string                                                                         `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ComputeUnitNum    *int32                                                                          `json:"ComputeUnitNum,omitempty" xml:"ComputeUnitNum,omitempty"`
+	CreateTime        *string                                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DestroyTime       *string                                                                         `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
+	ElasticVNodeCount *int32                                                                          `json:"ElasticVNodeCount,omitempty" xml:"ElasticVNodeCount,omitempty"`
+	EndTime           *string                                                                         `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	FixedVNodeCount   *int32                                                                          `json:"FixedVNodeCount,omitempty" xml:"FixedVNodeCount,omitempty"`
+	InstanceClass     *string                                                                         `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	InstanceId        *string                                                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName      *string                                                                         `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceStatus    *string                                                                         `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	InstanceType      *string                                                                         `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Model             *string                                                                         `json:"Model,omitempty" xml:"Model,omitempty"`
+	ModelServiceNum   *int32                                                                          `json:"ModelServiceNum,omitempty" xml:"ModelServiceNum,omitempty"`
+	NetworkType       *string                                                                         `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	PrivateIp         *string                                                                         `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
+	RegionId          *string                                                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId   *string                                                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags              *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTOTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VNodeCount        *int32                                                                          `json:"VNodeCount,omitempty" xml:"VNodeCount,omitempty"`
+	VNodeName         *string                                                                         `json:"VNodeName,omitempty" xml:"VNodeName,omitempty"`
+	VSwitchId         *string                                                                         `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId             *string                                                                         `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId            *string                                                                         `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) String() string {
@@ -587,17 +460,7 @@ func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstance
 }
 
 type DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTOTagsTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// thread
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// 900
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

@@ -39,9 +39,8 @@ type DescribeAuditRecordsResponseBody struct {
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The collection of returned audit log entries.
-	Items *DescribeAuditRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	InstanceName *string                                `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Items        *DescribeAuditRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
 	// example:
@@ -198,61 +197,14 @@ func (s *DescribeAuditRecordsResponseBodyItems) Validate() error {
 }
 
 type DescribeAuditRecordsResponseBodyItemsSQL struct {
-	// The username of the account.
-	//
-	// example:
-	//
-	// demo
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The database name.
-	//
-	// example:
-	//
-	// demo
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The time when the command was run.
-	//
-	// example:
-	//
-	// 2019-03-25T03:22:08Z
-	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	// The IP address of the client.
-	//
-	// example:
-	//
-	// 127.0.0.1
-	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	// The IP address of the instance.
-	//
-	// example:
-	//
-	// 192.16.100.***
-	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
-	// The ID of the node.
-	//
-	// > A specific node ID is returned only if the instance uses the cluster or read/write splitting architecture.
-	//
-	// example:
-	//
-	// r-bp1zxszhcgatnx****-db-0
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The command that was run.
-	//
-	// example:
-	//
-	// CONFIG GET maxmemory
-	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	// The type of the command.
-	//
-	// example:
-	//
-	// non_read_write
-	SQLType *string `json:"SQLType,omitempty" xml:"SQLType,omitempty"`
-	// The amount of time consumed to run the command.
-	//
-	// example:
-	//
-	// 0
+	AccountName         *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	DatabaseName        *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	ExecuteTime         *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	HostAddress         *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
+	IPAddress           *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
+	NodeId              *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	SQLText             *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
+	SQLType             *string `json:"SQLType,omitempty" xml:"SQLType,omitempty"`
 	TotalExecutionTimes *string `json:"TotalExecutionTimes,omitempty" xml:"TotalExecutionTimes,omitempty"`
 }
 

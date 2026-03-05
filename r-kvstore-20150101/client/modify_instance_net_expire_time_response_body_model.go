@@ -23,8 +23,7 @@ type ModifyInstanceNetExpireTimeResponseBody struct {
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Details about the extension period for which the classic network endpoint of the instance is retained.
+	InstanceId   *string                                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NetInfoItems *ModifyInstanceNetExpireTimeResponseBodyNetInfoItems `json:"NetInfoItems,omitempty" xml:"NetInfoItems,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -113,36 +112,11 @@ func (s *ModifyInstanceNetExpireTimeResponseBodyNetInfoItems) Validate() error {
 }
 
 type ModifyInstanceNetExpireTimeResponseBodyNetInfoItemsNetInfoItem struct {
-	// The endpoint of the classic network.
-	//
-	// example:
-	//
-	// r-bp1zxszhcgatnx****.redis.rds.aliyuncs.com
-	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The network type of the instance. The returned value is **Classic**.
-	//
-	// example:
-	//
-	// Classic
+	ConnectionString  *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
-	// The expiration time of the classic network endpoint.
-	//
-	// example:
-	//
-	// 2019-08-01T09:29:18Z
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The IP address of the instance in the classic network.
-	//
-	// example:
-	//
-	// 100.118.142.***
-	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
-	// The port number that is used to connect to the instance.
-	//
-	// example:
-	//
-	// 6379
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	ExpiredTime       *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	IPAddress         *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
+	Port              *string `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s ModifyInstanceNetExpireTimeResponseBodyNetInfoItemsNetInfoItem) String() string {

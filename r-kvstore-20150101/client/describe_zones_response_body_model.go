@@ -21,9 +21,8 @@ type DescribeZonesResponseBody struct {
 	// example:
 	//
 	// 1D42F072-72FE-4DC4-BB8E-64B1D298****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried zones.
-	Zones *DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Zones     *DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
 
 func (s DescribeZonesResponseBody) String() string {
@@ -96,50 +95,12 @@ func (s *DescribeZonesResponseBodyZones) Validate() error {
 }
 
 type DescribeZonesResponseBodyZonesKVStoreZone struct {
-	// Indicates whether Tair (Redis OSS-compatible) instances can be created in the current zone. Valid values:
-	//
-	// 	- **true**: Tair (Redis OSS-compatible) instances cannot be created in the current zone.
-	//
-	// 	- **false**: Tair (Redis OSS-compatible) instances can be created in the current zone.
-	//
-	// example:
-	//
-	// true
-	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// Indicates whether the zone is managed by ApsaraDB RDS. The return value of this parameter is **true*	- in Tair (Redis OSS-compatible).
-	//
-	// example:
-	//
-	// true
-	IsRds *bool `json:"IsRds,omitempty" xml:"IsRds,omitempty"`
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-huhehaote
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Indicates whether the network type of the instance can be changed from the classic network to Virtual Private Cloud (VPC). Valid values:
-	//
-	// 	- **true**: The network type of the instance can be changed from the classic network to VPC.
-	//
-	// 	- **false**: The network type of the instance cannot be changed from the classic network to VPC.
-	//
-	// example:
-	//
-	// true
-	SwitchNetwork *bool `json:"SwitchNetwork,omitempty" xml:"SwitchNetwork,omitempty"`
-	// The ID of the zone within the specified region.
-	//
-	// example:
-	//
-	// cn-huhehaote-b
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The name of the zone within the specified region.
-	//
-	// example:
-	//
-	// Hohhot Zone B
-	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	Disabled      *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	IsRds         *bool   `json:"IsRds,omitempty" xml:"IsRds,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SwitchNetwork *bool   `json:"SwitchNetwork,omitempty" xml:"SwitchNetwork,omitempty"`
+	ZoneId        *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneName      *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
 func (s DescribeZonesResponseBodyZonesKVStoreZone) String() string {

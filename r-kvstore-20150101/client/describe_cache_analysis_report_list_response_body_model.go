@@ -18,7 +18,6 @@ type iDescribeCacheAnalysisReportListResponseBody interface {
 }
 
 type DescribeCacheAnalysisReportListResponseBody struct {
-	// The list of the offline key analysis reports.
 	DailyTasks *DescribeCacheAnalysisReportListResponseBodyDailyTasks `json:"DailyTasks,omitempty" xml:"DailyTasks,omitempty" type:"Struct"`
 	// The ID of the instance.
 	//
@@ -113,13 +112,7 @@ func (s *DescribeCacheAnalysisReportListResponseBodyDailyTasks) Validate() error
 }
 
 type DescribeCacheAnalysisReportListResponseBodyDailyTasksDailyTask struct {
-	// The date when the offline key analytics task was performed.
-	//
-	// example:
-	//
-	// 2019-08-01Z
-	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// Details about the offline key analysis reports.
+	Date  *string                                                              `json:"Date,omitempty" xml:"Date,omitempty"`
 	Tasks *DescribeCacheAnalysisReportListResponseBodyDailyTasksDailyTaskTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
 }
 
@@ -193,34 +186,10 @@ func (s *DescribeCacheAnalysisReportListResponseBodyDailyTasksDailyTaskTasks) Va
 }
 
 type DescribeCacheAnalysisReportListResponseBodyDailyTasksDailyTaskTasksTask struct {
-	// The ID of the child node in the cluster instance.
-	//
-	// example:
-	//
-	// r-bp1zxszhcgatnx****-db-0
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The start time of the offline key analytics task.
-	//
-	// example:
-	//
-	// 2019-08-01T19:08:49Z
+	NodeId    *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The state of the offline key analytics task. Valid values:
-	//
-	// 	- **success**
-	//
-	// 	- **running**
-	//
-	// example:
-	//
-	// success
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the task.
-	//
-	// example:
-	//
-	// 156465****
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DescribeCacheAnalysisReportListResponseBodyDailyTasksDailyTaskTasksTask) String() string {

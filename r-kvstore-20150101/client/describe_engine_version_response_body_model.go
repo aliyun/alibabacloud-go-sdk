@@ -421,7 +421,6 @@ func (s *DescribeEngineVersionResponseBodyDBLatestMinorVersion) Validate() error
 }
 
 type DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionRelease struct {
-	// The information about the minor versions.
 	ReleaseInfo *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfo `json:"ReleaseInfo,omitempty" xml:"ReleaseInfo,omitempty" type:"Struct"`
 	// The version update level, which indicates how strongly the update is recommended. Valid values:
 	//
@@ -507,35 +506,10 @@ func (s *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseRele
 }
 
 type DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList struct {
-	// The creation time of the instance.
-	//
-	// example:
-	//
-	// 2022-11-21T13:28Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The importance level.
-	//
-	// example:
-	//
-	// 0
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The release notes.
-	//
-	// example:
-	//
-	// netbank1022
-	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
-	// The description of the minor versions to which the instance can be updated.
-	//
-	// example:
-	//
-	// ReleaseNoteEn
-	ReleaseNoteEn *string `json:"ReleaseNoteEn,omitempty" xml:"ReleaseNoteEn,omitempty"`
-	// The release version of EMR.
-	//
-	// example:
-	//
-	// EMR-5.7.0
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Level          *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	ReleaseNote    *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
+	ReleaseNoteEn  *string `json:"ReleaseNoteEn,omitempty" xml:"ReleaseNoteEn,omitempty"`
 	ReleaseVersion *string `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
 }
 
@@ -664,7 +638,6 @@ func (s *DescribeEngineVersionResponseBodyProxyLatestMinorVersion) Validate() er
 }
 
 type DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionRelease struct {
-	// The information about the minor versions.
 	ReleaseInfo *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfo `json:"ReleaseInfo,omitempty" xml:"ReleaseInfo,omitempty" type:"Struct"`
 	// The version update level, which indicates how strongly the update is recommended. Valid values:
 	//
@@ -750,41 +723,10 @@ func (s *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseR
 }
 
 type DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList struct {
-	// The time when the version was released.
-	//
-	// example:
-	//
-	// 2022-08-23T14:26:20Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The version update level. Valid values:
-	//
-	// 	- **0**: regular
-	//
-	// 	- **1**: recommended
-	//
-	// 	- **2**: critical
-	//
-	// example:
-	//
-	// 0
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The release notes.
-	//
-	// example:
-	//
-	// x x x x
-	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
-	// The description of the minor versions to which the instance can be updated.
-	//
-	// example:
-	//
-	// ReleaseNoteEn
-	ReleaseNoteEn *string `json:"ReleaseNoteEn,omitempty" xml:"ReleaseNoteEn,omitempty"`
-	// The release version of EMR.
-	//
-	// example:
-	//
-	// EMR-5.9.1
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Level          *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	ReleaseNote    *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
+	ReleaseNoteEn  *string `json:"ReleaseNoteEn,omitempty" xml:"ReleaseNoteEn,omitempty"`
 	ReleaseVersion *string `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
 }
 

@@ -22,7 +22,6 @@ type iDescribeParametersResponseBody interface {
 }
 
 type DescribeParametersResponseBody struct {
-	// The configuration parameters that have not taken effect.
 	ConfigParameters *DescribeParametersResponseBodyConfigParameters `json:"ConfigParameters,omitempty" xml:"ConfigParameters,omitempty" type:"Struct"`
 	// The database engine that the instance runs.
 	//
@@ -41,8 +40,7 @@ type DescribeParametersResponseBody struct {
 	// example:
 	//
 	// 9C1338BE-8DE8-4890-A900-E1BC06BF****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The running parameters.
+	RequestId         *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RunningParameters *DescribeParametersResponseBodyRunningParameters `json:"RunningParameters,omitempty" xml:"RunningParameters,omitempty" type:"Struct"`
 }
 
@@ -148,50 +146,12 @@ func (s *DescribeParametersResponseBodyConfigParameters) Validate() error {
 }
 
 type DescribeParametersResponseBodyConfigParametersParameter struct {
-	// The check code that indicates the valid values of the parameter.
-	//
-	// example:
-	//
-	// [0|1]
-	CheckingCode *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
-	// Indicates whether the instance must be restarted for the modifications to take effect. Valid values:
-	//
-	// 	- **True**: The instance must be restarted for the modifications to take effect.
-	//
-	// 	- **False**: The instance does not need to be restarted for the modifications to take effect. Modifications immediately take effect.
-	//
-	// example:
-	//
-	// true
-	ForceRestart *bool `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
-	// Indicates whether the parameter can be reset. Valid values:
-	//
-	// 	- **False**: The parameter cannot be reset.
-	//
-	// 	- **True**: The parameter can be reset.
-	//
-	// example:
-	//
-	// true
-	ModifiableStatus *bool `json:"ModifiableStatus,omitempty" xml:"ModifiableStatus,omitempty"`
-	// The description of the parameter.
-	//
-	// example:
-	//
-	// Check all keys passed in the KEYS array map to the same slot.
+	CheckingCode         *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
+	ForceRestart         *bool   `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
+	ModifiableStatus     *bool   `json:"ModifiableStatus,omitempty" xml:"ModifiableStatus,omitempty"`
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	// The name of the parameter.
-	//
-	// example:
-	//
-	// script_check_enable
-	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The value of the parameter.
-	//
-	// example:
-	//
-	// 1
-	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	ParameterValue       *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
 func (s DescribeParametersResponseBodyConfigParametersParameter) String() string {
@@ -295,50 +255,12 @@ func (s *DescribeParametersResponseBodyRunningParameters) Validate() error {
 }
 
 type DescribeParametersResponseBodyRunningParametersParameter struct {
-	// The check code that indicates the valid values of the parameter.
-	//
-	// example:
-	//
-	// [0|1]
-	CheckingCode *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
-	// Indicates whether the instance must be restarted for the modifications to take effect. Valid values:
-	//
-	// 	- **True**: The instance must be restarted for the modifications to take effect.
-	//
-	// 	- **False**: The instance does not need to be restarted for the modifications to take effect. Modifications immediately take effect.
-	//
-	// example:
-	//
-	// true
-	ForceRestart *string `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
-	// Indicates whether the parameter can be reset. Valid values:
-	//
-	// 	- **False**: The parameter cannot be reset.
-	//
-	// 	- **True**: The parameter can be reset.
-	//
-	// example:
-	//
-	// true
-	ModifiableStatus *string `json:"ModifiableStatus,omitempty" xml:"ModifiableStatus,omitempty"`
-	// The description of the parameter.
-	//
-	// example:
-	//
-	// You can disable some dangerous commands, for example \\"keys,flushdb,flushall\\", the commands must be in [flushall,flushdb,keys,hgetall,eval,evalsha,script].
+	CheckingCode         *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
+	ForceRestart         *string `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
+	ModifiableStatus     *string `json:"ModifiableStatus,omitempty" xml:"ModifiableStatus,omitempty"`
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	// The name of the parameter.
-	//
-	// example:
-	//
-	// #no_loose_disabled-commands
-	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The value of the parameter.
-	//
-	// example:
-	//
-	// keys,flushall,flushdb
-	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	ParameterValue       *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
 func (s DescribeParametersResponseBodyRunningParametersParameter) String() string {

@@ -18,7 +18,6 @@ type iCreateInstancesResponseBody interface {
 }
 
 type CreateInstancesResponseBody struct {
-	// The IDs of instances that were created.
 	InstanceIds *CreateInstancesResponseBodyInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
 	// The ID of the order.
 	//

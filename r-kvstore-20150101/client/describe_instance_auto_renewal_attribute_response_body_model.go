@@ -22,7 +22,6 @@ type iDescribeInstanceAutoRenewalAttributeResponseBody interface {
 }
 
 type DescribeInstanceAutoRenewalAttributeResponseBody struct {
-	// Details of the auto-renewal information for the instance.
 	Items *DescribeInstanceAutoRenewalAttributeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,34 +146,10 @@ func (s *DescribeInstanceAutoRenewalAttributeResponseBodyItems) Validate() error
 }
 
 type DescribeInstanceAutoRenewalAttributeResponseBodyItemsItem struct {
-	// Indicates whether auto-renewal is enabled. Valid values:
-	//
-	// 	- **true**: Auto-renewal is enabled.
-	//
-	// 	- **false**: Auto-renewal is disabled.
-	//
-	// example:
-	//
-	// true
-	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// r-bp1zxszhcgatnx****
+	AutoRenew    *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The auto-renewal period. Unit: months.
-	//
-	// example:
-	//
-	// 1
-	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The region ID of the instance.
-	//
-	// example:
-	//
-	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Duration     *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeInstanceAutoRenewalAttributeResponseBodyItemsItem) String() string {

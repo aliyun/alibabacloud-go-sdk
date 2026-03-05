@@ -25,10 +25,8 @@ type DescribeLogicInstanceTopologyResponseBody struct {
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The detailed proxy information, including information about proxy nodes.
+	InstanceId     *string                                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RedisProxyList *DescribeLogicInstanceTopologyResponseBodyRedisProxyList `json:"RedisProxyList,omitempty" xml:"RedisProxyList,omitempty" type:"Struct"`
-	// Details of data shards, which includes node information such as NodeInfo.
 	RedisShardList *DescribeLogicInstanceTopologyResponseBodyRedisShardList `json:"RedisShardList,omitempty" xml:"RedisShardList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -131,40 +129,11 @@ func (s *DescribeLogicInstanceTopologyResponseBodyRedisProxyList) Validate() err
 }
 
 type DescribeLogicInstanceTopologyResponseBodyRedisProxyListNodeInfo struct {
-	// The bandwidth throttling of the node. Unit: MB/s.
-	//
-	// example:
-	//
-	// 96
-	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The storage capacity of the node. Unit: MB.
-	//
-	// example:
-	//
-	// 5120
-	Capacity *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The maximum number of connections.
-	//
-	// example:
-	//
-	// 320000
+	Bandwidth  *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Capacity   *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
 	Connection *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
-	// The ID of the node.
-	//
-	// example:
-	//
-	// r-bp10noxlhcoim2****-proxy-3#542****
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The node type. Valid values:
-	//
-	// 	- **proxy**: proxy node
-	//
-	// 	- **db**: data node
-	//
-	// example:
-	//
-	// proxy
-	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeType   *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 }
 
 func (s DescribeLogicInstanceTopologyResponseBodyRedisProxyListNodeInfo) String() string {
@@ -259,49 +228,11 @@ func (s *DescribeLogicInstanceTopologyResponseBodyRedisShardList) Validate() err
 }
 
 type DescribeLogicInstanceTopologyResponseBodyRedisShardListNodeInfo struct {
-	// The bandwidth throttling of the node. Unit: MB/s.
-	//
-	// example:
-	//
-	// 96
-	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The storage capacity of the node. Unit: MB.
-	//
-	// example:
-	//
-	// 2048
-	Capacity *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The maximum number of connections.
-	//
-	// example:
-	//
-	// 10000
-	Connection *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
-	// The ID of the node.
-	//
-	// example:
-	//
-	// r-bp10noxlhcoim2****-db-0#688****
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The node type. Valid values:
-	//
-	// 	- **proxy**: proxy node
-	//
-	// 	- **db**: data node
-	//
-	// example:
-	//
-	// db
-	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// 子实例类型，返回值：
-	//
-	// 	- **master**：主节点类型。
-	//
-	// 	- **readonly**：只读实例类型。
-	//
-	// example:
-	//
-	// master
+	Bandwidth       *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Capacity        *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	Connection      *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
+	NodeId          *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeType        *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	SubInstanceType *string `json:"SubInstanceType,omitempty" xml:"SubInstanceType,omitempty"`
 }
 

@@ -16,7 +16,6 @@ type iDescribeAvailableResourceResponseBody interface {
 }
 
 type DescribeAvailableResourceResponseBody struct {
-	// Details about the zones.
 	AvailableZones *DescribeAvailableResourceResponseBodyAvailableZones `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,32 +95,11 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZones) Validate() error {
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone struct {
-	// An internal parameter.
-	//
-	// example:
-	//
-	// true
-	IsMainSale *bool `json:"IsMainSale,omitempty" xml:"IsMainSale,omitempty"`
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The supported engines.
+	IsMainSale       *bool                                                                             `json:"IsMainSale,omitempty" xml:"IsMainSale,omitempty"`
+	RegionId         *string                                                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SupportedEngines *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEngines `json:"SupportedEngines,omitempty" xml:"SupportedEngines,omitempty" type:"Struct"`
-	// The ID of the zone in which the instance is located.
-	//
-	// example:
-	//
-	// cn-hangzhou-h
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The name of the zone.
-	//
-	// example:
-	//
-	// Hangzhou Zone H
-	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	ZoneId           *string                                                                           `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneName         *string                                                                           `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) String() string {
@@ -221,13 +199,7 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine struct {
-	// The database engine of the instance.
-	//
-	// example:
-	//
-	// Redis
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The instance edition types.
+	Engine                *string                                                                                                               `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	SupportedEditionTypes *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypes `json:"SupportedEditionTypes,omitempty" xml:"SupportedEditionTypes,omitempty" type:"Struct"`
 }
 
@@ -301,17 +273,7 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionType struct {
-	// The edition of the instance. Valid values:
-	//
-	// 	- **Community**: Community Edition
-	//
-	// 	- **Enterprise**: Enhanced Edition (Tair)
-	//
-	// example:
-	//
-	// Enterprise
-	EditionType *string `json:"EditionType,omitempty" xml:"EditionType,omitempty"`
-	// The instance series types.
+	EditionType          *string                                                                                                                                                       `json:"EditionType,omitempty" xml:"EditionType,omitempty"`
 	SupportedSeriesTypes *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypes `json:"SupportedSeriesTypes,omitempty" xml:"SupportedSeriesTypes,omitempty" type:"Struct"`
 }
 
@@ -385,17 +347,7 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesType struct {
-	// The instance series. Valid values:
-	//
-	// 	- **enhanced_performance_type**: Tair (Enterprise Edition) DRAM-based instance
-	//
-	// 	- **hybrid_storage**: Redis Open-Source Edition hybrid-storage instance
-	//
-	// example:
-	//
-	// enhanced_performance_type
-	SeriesType *string `json:"SeriesType,omitempty" xml:"SeriesType,omitempty"`
-	// The available engine versions.
+	SeriesType              *string                                                                                                                                                                                                 `json:"SeriesType,omitempty" xml:"SeriesType,omitempty"`
 	SupportedEngineVersions *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersions `json:"SupportedEngineVersions,omitempty" xml:"SupportedEngineVersions,omitempty" type:"Struct"`
 }
 
@@ -469,14 +421,8 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersion struct {
-	// The available architectures.
 	SupportedArchitectureTypes *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypes `json:"SupportedArchitectureTypes,omitempty" xml:"SupportedArchitectureTypes,omitempty" type:"Struct"`
-	// The engine version of the instance.
-	//
-	// example:
-	//
-	// 5.0
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Version                    *string                                                                                                                                                                                                                                                 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersion) String() string {
@@ -549,19 +495,7 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureType struct {
-	// The architecture of the instance. Valid values:
-	//
-	// 	- **standard**: standard architecture
-	//
-	// 	- **cluster**: cluster architecture
-	//
-	// 	- **rwsplit**: read/write splitting architecture
-	//
-	// example:
-	//
-	// cluster
-	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// The numbers of available shards.
+	Architecture          *string                                                                                                                                                                                                                                                                                               `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
 	SupportedShardNumbers *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbers `json:"SupportedShardNumbers,omitempty" xml:"SupportedShardNumbers,omitempty" type:"Struct"`
 }
 
@@ -635,13 +569,7 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumber struct {
-	// The number of shards.
-	//
-	// example:
-	//
-	// 8
-	ShardNumber *string `json:"ShardNumber,omitempty" xml:"ShardNumber,omitempty"`
-	// The supported node types.
+	ShardNumber        *string                                                                                                                                                                                                                                                                                                                                     `json:"ShardNumber,omitempty" xml:"ShardNumber,omitempty"`
 	SupportedNodeTypes *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypes `json:"SupportedNodeTypes,omitempty" xml:"SupportedNodeTypes,omitempty" type:"Struct"`
 }
 
@@ -715,18 +643,8 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeType struct {
-	// The available instance types.
 	AvailableResources *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeTypeAvailableResources `json:"AvailableResources,omitempty" xml:"AvailableResources,omitempty" type:"Struct"`
-	// The node type of the instance. Valid values:
-	//
-	// 	- **single**: standalone
-	//
-	// 	- **double**: master-replica
-	//
-	// example:
-	//
-	// double
-	SupportedNodeType *string `json:"SupportedNodeType,omitempty" xml:"SupportedNodeType,omitempty"`
+	SupportedNodeType  *string                                                                                                                                                                                                                                                                                                                                                                        `json:"SupportedNodeType,omitempty" xml:"SupportedNodeType,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeType) String() string {
@@ -799,23 +717,8 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResource struct {
-	// The memory size of the instance. Unit: MB.
-	//
-	// example:
-	//
-	// 16384
-	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The code of the instance type. If you want to view the code of an instance type, you can search for the code of the instance type in Help Center.
-	//
-	// example:
-	//
-	// redis.amber.logic.sharding.2g.8db.0rodb.24proxy.multithread
-	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The description of the instance type.
-	//
-	// example:
-	//
-	// 16 GB cluster instance with 8 nodes (1,920,000 queries per second and 240,000 connections)
+	Capacity            *int64  `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	InstanceClass       *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	InstanceClassRemark *string `json:"InstanceClassRemark,omitempty" xml:"InstanceClassRemark,omitempty"`
 }
 

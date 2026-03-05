@@ -16,7 +16,6 @@ type iDescribeAccountsResponseBody interface {
 }
 
 type DescribeAccountsResponseBody struct {
-	// Details about returned accounts of the instance.
 	Accounts *DescribeAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,46 +95,12 @@ func (s *DescribeAccountsResponseBodyAccounts) Validate() error {
 }
 
 type DescribeAccountsResponseBodyAccountsAccount struct {
-	// The description of the account.
-	//
-	// example:
-	//
-	// testdec
-	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The name of the account.
-	//
-	// example:
-	//
-	// demoaccount
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The state of the account. Valid values:
-	//
-	// 	- **Unavailable**: The account is unavailable.
-	//
-	// 	- **Available**: The account is available.
-	//
-	// example:
-	//
-	// Available
-	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
-	// The type of the account. Valid values:
-	//
-	// 	- **Normal**: standard account
-	//
-	// 	- **Super**: super account
-	//
-	// example:
-	//
-	// Normal
-	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// Details about account permissions.
+	AccountDescription *string                                                        `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
+	AccountName        *string                                                        `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountStatus      *string                                                        `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
+	AccountType        *string                                                        `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	DatabasePrivileges *DescribeAccountsResponseBodyAccountsAccountDatabasePrivileges `json:"DatabasePrivileges,omitempty" xml:"DatabasePrivileges,omitempty" type:"Struct"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// r-bp10noxlhcoim2****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId         *string                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DescribeAccountsResponseBodyAccountsAccount) String() string {
@@ -244,15 +209,6 @@ func (s *DescribeAccountsResponseBodyAccountsAccountDatabasePrivileges) Validate
 }
 
 type DescribeAccountsResponseBodyAccountsAccountDatabasePrivilegesDatabasePrivilege struct {
-	// The permission of the account. Default value: RoleReadWrite. Valid values:
-	//
-	// 	- **RoleReadOnly**: The account has the read-only permissions.
-	//
-	// 	- **RoleReadWrite**: The account has the read and write permissions.
-	//
-	// example:
-	//
-	// RoleReadWrite
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
 }
 

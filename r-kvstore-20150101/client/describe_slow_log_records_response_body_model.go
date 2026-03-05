@@ -41,9 +41,8 @@ type DescribeSlowLogRecordsResponseBody struct {
 	// example:
 	//
 	// r-bp10n********
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The slow query log entries.
-	Items *DescribeSlowLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	InstanceId *string                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Items      *DescribeSlowLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
 	// example:
@@ -215,60 +214,15 @@ func (s *DescribeSlowLogRecordsResponseBodyItems) Validate() error {
 }
 
 type DescribeSlowLogRecordsResponseBodyItemsLogRecords struct {
-	// The ID of the account.
-	//
-	// example:
-	//
-	// 0
-	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The username of the account.
-	//
-	// example:
-	//
-	// demo
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The slow query statement.
-	//
-	// example:
-	//
-	// KEYS *
-	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The database name.
-	//
-	// example:
-	//
-	// -1
-	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The database name. This parameter serves the same purpose as the **DBName*	- parameter. We recommend that you use the **DBName*	- parameter.
-	//
-	// example:
-	//
-	// -1
+	Account      *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	AccountName  *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	Command      *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	DBName       *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	DataBaseName *string `json:"DataBaseName,omitempty" xml:"DataBaseName,omitempty"`
-	// The amount of time consumed to execute the slow query statement. Unit: microseconds.
-	//
-	// example:
-	//
-	// 248
-	ElapsedTime *int64 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
-	// The start time when the slow query statement was executed. The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format.
-	//
-	// example:
-	//
-	// 2019-03-20T09:18:41Z
-	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	// The IP address of the client.
-	//
-	// example:
-	//
-	// 172.16.88.***
-	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
-	// The node ID.
-	//
-	// example:
-	//
-	// r-bp1zxszhcgatnx****-db-0
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	ElapsedTime  *int64  `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
+	ExecuteTime  *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	IPAddress    *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
+	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 }
 
 func (s DescribeSlowLogRecordsResponseBodyItemsLogRecords) String() string {

@@ -21,8 +21,7 @@ type DescribeSecurityIpsResponseBody struct {
 	// example:
 	//
 	// EFC9161F-15E3-4A6E-8A99-C09916D1****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The whitelists of the instance.
+	RequestId        *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecurityIpGroups *DescribeSecurityIpsResponseBodySecurityIpGroups `json:"SecurityIpGroups,omitempty" xml:"SecurityIpGroups,omitempty" type:"Struct"`
 }
 
@@ -96,22 +95,9 @@ func (s *DescribeSecurityIpsResponseBodySecurityIpGroups) Validate() error {
 }
 
 type DescribeSecurityIpsResponseBodySecurityIpGroupsSecurityIpGroup struct {
-	// The attribute of the whitelist. This parameter is empty by default.
-	//
-	// >  If the instance is authorized to use a service such as Database Autonomy Service (DAS), Data Management (DMS), or Data Transmission Service (DTS), this service automatically generates a **hidden*	- whitelist for the instance. This type of whitelists cannot be modified or deleted.
-	//
-	// example:
-	//
-	// hidden
 	SecurityIpGroupAttribute *string `json:"SecurityIpGroupAttribute,omitempty" xml:"SecurityIpGroupAttribute,omitempty"`
-	// The name of the whitelist.
-	//
-	// example:
-	//
-	// default
-	SecurityIpGroupName *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
-	// The IP addresses in the whitelist. A maximum of 1,000 IP addresses can be specified in a whitelist.
-	SecurityIpList *string `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty"`
+	SecurityIpGroupName      *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
+	SecurityIpList           *string `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty"`
 }
 
 func (s DescribeSecurityIpsResponseBodySecurityIpGroupsSecurityIpGroup) String() string {

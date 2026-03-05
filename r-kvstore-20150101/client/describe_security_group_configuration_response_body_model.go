@@ -16,7 +16,6 @@ type iDescribeSecurityGroupConfigurationResponseBody interface {
 }
 
 type DescribeSecurityGroupConfigurationResponseBody struct {
-	// The list of security groups.
 	Items *DescribeSecurityGroupConfigurationResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,27 +95,8 @@ func (s *DescribeSecurityGroupConfigurationResponseBodyItems) Validate() error {
 }
 
 type DescribeSecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelation struct {
-	// The network type of the security group. Valid values:
-	//
-	// 	- **classic**: the classic network.
-	//
-	// 	- **vpc**: the virtual private cloud (VPC).
-	//
-	// example:
-	//
-	// vpc
-	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The ID of the region where the instance is deployed.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the security group.
-	//
-	// example:
-	//
-	// sg-bp14p9y07ns3gwq****
+	NetType         *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 }
 

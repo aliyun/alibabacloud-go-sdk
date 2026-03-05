@@ -18,7 +18,6 @@ type iDescribeDBNodeDirectVipInfoResponseBody interface {
 }
 
 type DescribeDBNodeDirectVipInfoResponseBody struct {
-	// The VIP information of shards in the cluster instance.
 	DirectVipInfo *DescribeDBNodeDirectVipInfoResponseBodyDirectVipInfo `json:"DirectVipInfo,omitempty" xml:"DirectVipInfo,omitempty" type:"Struct"`
 	// The instance ID.
 	//
@@ -113,32 +112,10 @@ func (s *DescribeDBNodeDirectVipInfoResponseBodyDirectVipInfo) Validate() error 
 }
 
 type DescribeDBNodeDirectVipInfoResponseBodyDirectVipInfoVipInfo struct {
-	// The network type of the security group. Valid values:
-	//
-	// 	- **vpc**: Virtual Private Cloud (VPC)
-	//
-	// example:
-	//
-	// vpc
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The shard ID.
-	//
-	// example:
-	//
-	// r-8vb3679b04551444-db-2
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The port number. Valid values: **1024*	- to **65535**. Default value: **6379**.
-	//
-	// example:
-	//
-	// 6379
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The VIP of the shard.
-	//
-	// example:
-	//
-	// 100.115.61.8
-	Vip *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
+	NodeId  *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Port    *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Vip     *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
 }
 
 func (s DescribeDBNodeDirectVipInfoResponseBodyDirectVipInfoVipInfo) String() string {
