@@ -16,9 +16,9 @@ type iGetRequestLogResponseBody interface {
 }
 
 type GetRequestLogResponseBody struct {
-	// The detailed information about the log of the API call.
+	// The details of the API request log.
 	LogInfo *GetRequestLogResponseBodyLogInfo `json:"logInfo,omitempty" xml:"logInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -64,13 +64,13 @@ func (s *GetRequestLogResponseBody) Validate() error {
 type GetRequestLogResponseBodyLogInfo struct {
 	// The authentication information.
 	AuthenticationInfo *GetRequestLogResponseBodyLogInfoAuthenticationInfo `json:"authenticationInfo,omitempty" xml:"authenticationInfo,omitempty" type:"Struct"`
-	// The basic information about the log of the API call.
+	// The basic information about the API request.
 	BasicInfo *GetRequestLogResponseBodyLogInfoBasicInfo `json:"basicInfo,omitempty" xml:"basicInfo,omitempty" type:"Struct"`
 	// The information about the caller.
 	CallerInfo *GetRequestLogResponseBodyLogInfoCallerInfo `json:"callerInfo,omitempty" xml:"callerInfo,omitempty" type:"Struct"`
-	// The information about the request parameters.
+	// The request parameter information.
 	Parameters []*GetRequestLogResponseBodyLogInfoParameters `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Repeated"`
-	// The information that is returned for the request.
+	// The response information that corresponds to the request.
 	Responses *GetRequestLogResponseBodyLogInfoResponses `json:"responses,omitempty" xml:"responses,omitempty" type:"Struct"`
 }
 
@@ -161,29 +161,29 @@ func (s *GetRequestLogResponseBodyLogInfo) Validate() error {
 }
 
 type GetRequestLogResponseBodyLogInfoAuthenticationInfo struct {
-	// The authentication type. Valid values:
+	// The authentication type.
 	//
-	// 	- AK: includes a permanent AccessKey pair, a temporary AccessKey pair, and a STS token.
+	// - AK: An AccessKey pair, which can be a permanent AccessKey pair, a temporary AccessKey pair, or an STS token.
 	//
-	// 	- PRIVATEKEY: an AccessKey pair for an asymmetric cryptography algorithm.
+	// - PRIVATEKEY: An AccessKey pair that uses asymmetric key encryption.
 	//
-	// 	- BEARETOKEN: an authentication mechanism that is widely used in the OAuth 2.0 framework and cloud services.
+	// - BEARERTOKEN: An identity verification mechanism that is widely used in the OAuth 2.0 framework and cloud services.
 	//
-	// 	- CUSTOM_SPI: an efficient and secure authentication method that is suitable for the delivery and management of Software as a Service (SaaS) services in Alibaba Cloud Marketplace.
+	// - CUSTOM_SPI: An efficient and secure authentication method that is used for the delivery and management of Software as a Service (SaaS) products in Alibaba Cloud Marketplace.
 	//
-	// 	- Anonymous: anonymous access.
+	// - Anonymous: Anonymous access.
 	//
-	// 	- DPS: an authentication method that is similar to AK. Its signature algorithm is different from that of Alibaba Cloud services and is exclusive to specific products.
+	// - DPS: Similar to an AccessKey pair, but uses a signature algorithm that is different from the official Alibaba Cloud algorithm. This method is specific to certain products.
 	//
 	// example:
 	//
 	// AK
 	AuthenticationType *string `json:"authenticationType,omitempty" xml:"authenticationType,omitempty"`
-	// The signature algorithm. Valid values:
+	// The signature method.
 	//
-	// 	- HMAC-SHA1
+	// - HMAC-SHA1: The request is signed using the HMAC-SHA1 algorithm.
 	//
-	// 	- HMAC-SHA256
+	// - HMAC-SHA256: The request is signed using the HMAC-SHA256 algorithm.
 	//
 	// example:
 	//
@@ -237,53 +237,53 @@ func (s *GetRequestLogResponseBodyLogInfoAuthenticationInfo) Validate() error {
 }
 
 type GetRequestLogResponseBodyLogInfoBasicInfo struct {
-	// The error message returned if the operator does not have the required permissions. This parameter is available only if an authentication error is reported for the request ID.
+	// The details of the access denied error. This field is returned only if an authentication error occurs for the specified request ID.
 	AccessDeniedDetail *GetRequestLogResponseBodyLogInfoBasicInfoAccessDeniedDetail `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty" type:"Struct"`
-	// The name of the API.
+	// The name of the API that was called.
 	//
 	// example:
 	//
 	// RunInstances
 	Api *string `json:"api,omitempty" xml:"api,omitempty"`
-	// The information about the API documentation.
+	// The API reference information.
 	ApiDoc *GetRequestLogResponseBodyLogInfoBasicInfoApiDoc `json:"apiDoc,omitempty" xml:"apiDoc,omitempty" type:"Struct"`
-	// The API style. Valid values: roa and rpc.
+	// The API style. Valid values: ROA and RPC.
 	//
 	// example:
 	//
 	// roa
 	ApiStyle *string `json:"apiStyle,omitempty" xml:"apiStyle,omitempty"`
-	// The version of the API.
+	// The API version.
 	//
 	// example:
 	//
-	// 2024-11-30
+	// 2014-05-26
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
-	// The endpoint of the service region.
+	// The endpoint of the area where the endpoint is deployed.
 	//
 	// example:
 	//
 	// ecs.cn-hangzhou.aliyuncs.com
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The error code in the log. This parameter is left empty if no error is reported in the API call.
+	// The error code in the log. This field is empty if no error is reported for the request.
 	//
 	// example:
 	//
 	// IncorrectStatus.TransitRouter
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The error message in the log. This parameter is left empty if no error is reported in the API call.
+	// The error message in the log. This field is empty if no error is reported for the request.
 	//
 	// example:
 	//
 	// The resource is not in a valid state for the operation.
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// The time when the gateway receives the request. Indicate the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The time when the gateway received the request. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2025-01-21T07:43:06Z
 	GatewayProcessTime *string `json:"gatewayProcessTime,omitempty" xml:"gatewayProcessTime,omitempty"`
-	// The HTTP request method. Valid values: GET, PUT, and POST.
+	// The HTTP request method. Examples: GET, PUT, and POST.
 	//
 	// example:
 	//
@@ -295,7 +295,7 @@ type GetRequestLogResponseBodyLogInfoBasicInfo struct {
 	//
 	// 404
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The request ID.
+	// The request ID that you specified.
 	//
 	// example:
 	//
@@ -307,27 +307,27 @@ type GetRequestLogResponseBodyLogInfoBasicInfo struct {
 	//
 	// Ecs
 	Product *string `json:"product,omitempty" xml:"product,omitempty"`
-	// The product name, which includes the Chinese name and English name.
+	// The product name, which includes the Chinese and English names.
 	ProductName *GetRequestLogResponseBodyLogInfoBasicInfoProductName `json:"productName,omitempty" xml:"productName,omitempty" type:"Struct"`
-	// The service region ID.
+	// The ID of the area where the endpoint is deployed.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The duration from when the gateway receives the request to when the client receives a response. Unit: milliseconds.
+	// The time that elapses from when the gateway receives a request to when it returns a response. Unit: milliseconds (ms).
 	//
 	// example:
 	//
 	// 188
 	RequestDuration *string `json:"requestDuration,omitempty" xml:"requestDuration,omitempty"`
-	// The time when the request is initiated. Indicate the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The time when the request was initiated. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2025-01-21T07:43:06Z
 	SdkRequestTime *string `json:"sdkRequestTime,omitempty" xml:"sdkRequestTime,omitempty"`
-	// The throttling result. Valid values: FC.PASS: The task is not blocked by throttling. FC.DENY: The task is blocked by throttling.
+	// The result of the throttling check. FC.PASS: The request was not blocked by the throttling check and no rate limiting occurred. FC.DENY: The request was blocked by the throttling check and rate limiting occurred.
 	//
 	// example:
 	//
@@ -525,7 +525,7 @@ func (s *GetRequestLogResponseBodyLogInfoBasicInfo) Validate() error {
 }
 
 type GetRequestLogResponseBodyLogInfoBasicInfoAccessDeniedDetail struct {
-	// The operation that the operator does not have permissions to perform.
+	// The specific operation that is denied.
 	//
 	// example:
 	//
@@ -537,7 +537,7 @@ type GetRequestLogResponseBodyLogInfoBasicInfoAccessDeniedDetail struct {
 	//
 	// 205618123456123456
 	AuthPrincipalDisplayName *string `json:"authPrincipalDisplayName,omitempty" xml:"authPrincipalDisplayName,omitempty"`
-	// The ID of the Alibaba Cloud account to which the current identity belongs.
+	// The UID of the Alibaba Cloud account to which the current identity belongs.
 	//
 	// example:
 	//
@@ -549,19 +549,19 @@ type GetRequestLogResponseBodyLogInfoBasicInfoAccessDeniedDetail struct {
 	//
 	// SubUser
 	AuthPrincipalType *string `json:"authPrincipalType,omitempty" xml:"authPrincipalType,omitempty"`
-	// The information after encoding, which can be used for troubleshooting. You can call the DecodeDiagnosticMessage operation of Resource Access Management (RAM) for further diagnostics.
+	// The encoded diagnostic message. To obtain more diagnostic information, call the DecodeDiagnosticMessage operation of RAM.
 	//
 	// example:
 	//
 	// -
 	EncodedDiagnosticMessage *string `json:"encodedDiagnosticMessage,omitempty" xml:"encodedDiagnosticMessage,omitempty"`
-	// The cause of the permission-related error.
+	// The reason why the access is denied.
 	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"noPermissionType,omitempty" xml:"noPermissionType,omitempty"`
-	// The type of the policy that causes the permission-related error.
+	// The type of the policy that denies the access.
 	//
 	// example:
 	//
@@ -645,13 +645,13 @@ func (s *GetRequestLogResponseBodyLogInfoBasicInfoAccessDeniedDetail) Validate()
 }
 
 type GetRequestLogResponseBodyLogInfoBasicInfoApiDoc struct {
-	// The documentation URL on the international site (alibabacloud.com).
+	// The link to the API reference on the Alibaba Cloud International Website (www\\.alibabacloud.com).
 	//
 	// example:
 	//
 	// https://api.alibabacloud.com/document/Ecs/2014-05-26/RunInstances
 	AlibabacloudSite *string `json:"alibabacloudSite,omitempty" xml:"alibabacloudSite,omitempty"`
-	// The documentation URL on the China site (aliyun.com).
+	// The link to the API reference on the Alibaba Cloud China Website (www\\.aliyun.com).
 	//
 	// example:
 	//
@@ -690,9 +690,13 @@ func (s *GetRequestLogResponseBodyLogInfoBasicInfoApiDoc) Validate() error {
 }
 
 type GetRequestLogResponseBodyLogInfoBasicInfoProductName struct {
-	// The product name in Chinese.
+	// The Chinese name of the product.
+	//
+	// example:
+	//
+	// 云服务器 ECS
 	CnName *string `json:"cnName,omitempty" xml:"cnName,omitempty"`
-	// The product name in English.
+	// The English name of the product.
 	//
 	// example:
 	//
@@ -731,7 +735,7 @@ func (s *GetRequestLogResponseBodyLogInfoBasicInfoProductName) Validate() error 
 }
 
 type GetRequestLogResponseBodyLogInfoCallerInfo struct {
-	// The account ID of the caller.
+	// The ID of the caller\\"s account.
 	//
 	// example:
 	//
@@ -743,13 +747,13 @@ type GetRequestLogResponseBodyLogInfoCallerInfo struct {
 	//
 	// 100.68.xxx.xxx
 	CallerIp *string `json:"callerIp,omitempty" xml:"callerIp,omitempty"`
-	// The type of the caller. Valid values:
+	// The type of the caller.
 	//
-	// 1.  customer: an Alibaba Cloud account
+	// 1. customer: Alibaba Cloud account
 	//
-	// 2.  sub: a RAM user
+	// 2. sub: RAM user
 	//
-	// 3.  AssumedRoleUser: a user that uses a temporary Security Token Service (STS) token
+	// 3. AssumedRoleUser: A temporary identity that is created using a Security Token Service (STS) token.
 	//
 	// example:
 	//
@@ -761,7 +765,7 @@ type GetRequestLogResponseBodyLogInfoCallerInfo struct {
 	//
 	// 1973374733454118
 	MasterAccountId *string `json:"masterAccountId,omitempty" xml:"masterAccountId,omitempty"`
-	// The information about the user agent.
+	// The user agent.
 	//
 	// example:
 	//
@@ -902,7 +906,7 @@ func (s *GetRequestLogResponseBodyLogInfoParameters) Validate() error {
 }
 
 type GetRequestLogResponseBodyLogInfoResponses struct {
-	// The response body.
+	// The response information.
 	//
 	// example:
 	//

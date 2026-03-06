@@ -46,8 +46,12 @@ type iUpdateApiMcpServerRequest interface {
 }
 
 type UpdateApiMcpServerRequest struct {
+	// A list of supplementary API descriptions.
 	AdditionalApiDescriptions []*UpdateApiMcpServerRequestAdditionalApiDescriptions `json:"additionalApiDescriptions,omitempty" xml:"additionalApiDescriptions,omitempty" type:"Repeated"`
-	Apis                      []*UpdateApiMcpServerRequestApis                      `json:"apis,omitempty" xml:"apis,omitempty" type:"Repeated"`
+	// The list of APIs to modify.
+	Apis []*UpdateApiMcpServerRequestApis `json:"apis,omitempty" xml:"apis,omitempty" type:"Repeated"`
+	// An additional policy for role assumption when multi-account access is enabled. If this policy exists, the permissions for the role assumption are based on this policy, which overwrites the permissions defined for the role itself.
+	//
 	// example:
 	//
 	// {
@@ -78,37 +82,72 @@ type UpdateApiMcpServerRequest struct {
 	//
 	// }
 	AssumeRoleExtraPolicy *string `json:"assumeRoleExtraPolicy,omitempty" xml:"assumeRoleExtraPolicy,omitempty"`
+	// The name of the RAM role in the destination account that is assumed for cross-account operations when multi-account access is enabled.
+	//
 	// example:
 	//
 	// test
 	AssumeRoleName *string `json:"assumeRoleName,omitempty" xml:"assumeRoleName,omitempty"`
-	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The description of the API MCP server.
+	//
+	// example:
+	//
+	// 这是一个API MCP服务器。
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Specifies whether to enable multi-account access.
+	//
 	// example:
 	//
 	// true
-	EnableAssumeRole         *bool `json:"enableAssumeRole,omitempty" xml:"enableAssumeRole,omitempty"`
+	EnableAssumeRole *bool `json:"enableAssumeRole,omitempty" xml:"enableAssumeRole,omitempty"`
+	// Specifies whether to enable a custom VPC whitelist. If this is disabled, the account-level configuration is used.
+	//
+	// example:
+	//
+	// true
 	EnableCustomVpcWhitelist *bool `json:"enableCustomVpcWhitelist,omitempty" xml:"enableCustomVpcWhitelist,omitempty"`
+	// The MCP instruction. It prompts the large language model on how to use this MCP. The client must support the Instructions field of the standard MCP protocol.
+	//
 	// example:
 	//
 	// test
 	Instructions *string `json:"instructions,omitempty" xml:"instructions,omitempty"`
+	// The language of the API documentation for the API MCP service. You can select Chinese or English. Different language prompts may affect the AI\\"s response.
+	//
 	// example:
 	//
 	// ZH_CN
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
+	// The custom OAuth client ID to use when you select a custom OAuth configuration.
+	//
+	// `Only web and native applications are supported. The OAuth scope must include /acs/mcp-server.`
+	//
 	// example:
 	//
 	// 403*************370
-	OauthClientId  *string                                    `json:"oauthClientId,omitempty" xml:"oauthClientId,omitempty"`
-	Prompts        []*UpdateApiMcpServerRequestPrompts        `json:"prompts,omitempty" xml:"prompts,omitempty" type:"Repeated"`
-	PublicAccess   *string                                    `json:"publicAccess,omitempty" xml:"publicAccess,omitempty"`
-	SystemTools    []*string                                  `json:"systemTools,omitempty" xml:"systemTools,omitempty" type:"Repeated"`
+	OauthClientId *string `json:"oauthClientId,omitempty" xml:"oauthClientId,omitempty"`
+	// A list of prompt configurations.
+	Prompts []*UpdateApiMcpServerRequestPrompts `json:"prompts,omitempty" xml:"prompts,omitempty" type:"Repeated"`
+	// Specifies whether to enable public network access.
+	//
+	// example:
+	//
+	// on
+	PublicAccess *string `json:"publicAccess,omitempty" xml:"publicAccess,omitempty"`
+	// A list of system tools.
+	SystemTools []*string `json:"systemTools,omitempty" xml:"systemTools,omitempty" type:"Repeated"`
+	// A list of Terraform tools.
 	TerraformTools []*UpdateApiMcpServerRequestTerraformTools `json:"terraformTools,omitempty" xml:"terraformTools,omitempty" type:"Repeated"`
-	VpcWhitelists  []*string                                  `json:"vpcWhitelists,omitempty" xml:"vpcWhitelists,omitempty" type:"Repeated"`
+	// The VPC whitelist that specifies the allowed source VPCs after public network access is disabled. If you do not set this parameter or leave it empty, access from all sources is allowed.
+	VpcWhitelists []*string `json:"vpcWhitelists,omitempty" xml:"vpcWhitelists,omitempty" type:"Repeated"`
+	// A client token that you can use to ensure the idempotence of the request. Generate a unique value from your client. The token can contain only ASCII characters and must be no more than 64 characters long. We recommend that you use a UUID. The token is valid for three days.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// The ID of the API MCP service.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -319,24 +358,48 @@ func (s *UpdateApiMcpServerRequest) Validate() error {
 }
 
 type UpdateApiMcpServerRequestAdditionalApiDescriptions struct {
+	// The API name.
+	//
 	// example:
 	//
 	// DescribeRegions
-	ApiName         *string `json:"apiName,omitempty" xml:"apiName,omitempty"`
+	ApiName *string `json:"apiName,omitempty" xml:"apiName,omitempty"`
+	// The API metadata in JSON format. For more information about the format, see https\\://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json. You can overwrite the summary and parameters fields.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "summary": "本接口支持根据不同请求条件查询实例列表，并关联查询实例的详细信息。"
+	//
+	// }
 	ApiOverrideJson *string `json:"apiOverrideJson,omitempty" xml:"apiOverrideJson,omitempty"`
+	// The POP version of the API that is exposed to the MCP server.
+	//
 	// example:
 	//
 	// 2014-05-26
-	ApiVersion      *string                                                              `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
+	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
+	// A list of constant input parameters. These parameters are not included in the output during API parameter parsing.
 	ConstParameters []*UpdateApiMcpServerRequestAdditionalApiDescriptionsConstParameters `json:"constParameters,omitempty" xml:"constParameters,omitempty" type:"Repeated"`
+	// Specifies whether to return the schema of the response parameters. Returning the response parameter schema increases the overall size of the API MCP server. The default value is null, which means the response parameter schema is not returned.
+	//
 	// example:
 	//
 	// true
 	EnableOutputSchema *bool `json:"enableOutputSchema,omitempty" xml:"enableOutputSchema,omitempty"`
+	// Specifies whether to return the command-line interface (CLI) command for execution. In this mode, the API call is not actually executed. Instead, the corresponding CLI command is returned. This is suitable for long-running tasks that need to be executed using Alibaba Cloud CLI.
+	//
 	// example:
 	//
 	// true
 	ExecuteCliCommand *bool `json:"executeCliCommand,omitempty" xml:"executeCliCommand,omitempty"`
+	// The product code.
+	//
+	// - Call the GetRequestLog operation to obtain the product code from the response.
+	//
+	// - Find the product code from the URL of the product in OpenAPI Explorer. For example, the URL for Short Message Service is https\\://api.alibabacloud.com/product/Dysmsapi. The product code is \\`Dysmsapi\\`.
+	//
 	// example:
 	//
 	// Ecs
@@ -428,10 +491,14 @@ func (s *UpdateApiMcpServerRequestAdditionalApiDescriptions) Validate() error {
 }
 
 type UpdateApiMcpServerRequestAdditionalApiDescriptionsConstParameters struct {
+	// The parameter name. Only first-level parameter names are supported. For ROA-style APIs, you can set parameters such as body.xx. You cannot set values for parameters beyond the top level.
+	//
 	// example:
 	//
 	// InstanceId
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The value of the parameter.
+	//
 	// example:
 	//
 	// 1234
@@ -469,14 +536,23 @@ func (s *UpdateApiMcpServerRequestAdditionalApiDescriptionsConstParameters) Vali
 }
 
 type UpdateApiMcpServerRequestApis struct {
+	// The POP version of the API that is exposed to the MCP server.
+	//
 	// example:
 	//
 	// 2014-05-26
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
+	// The product code.
+	//
+	// - Call the GetRequestLog operation to obtain the product code from the response.
+	//
+	// - Find the product code from the URL of the product in OpenAPI Explorer. For example, the URL for Short Message Service is https\\://api.alibabacloud.com/product/Dysmsapi. The product code is \\`Dysmsapi\\`.
+	//
 	// example:
 	//
 	// Ecs
-	Product   *string   `json:"product,omitempty" xml:"product,omitempty"`
+	Product *string `json:"product,omitempty" xml:"product,omitempty"`
+	// A list of API name matching rules.
 	Selectors []*string `json:"selectors,omitempty" xml:"selectors,omitempty" type:"Repeated"`
 }
 
@@ -520,12 +596,22 @@ func (s *UpdateApiMcpServerRequestApis) Validate() error {
 }
 
 type UpdateApiMcpServerRequestPrompts struct {
+	// A list of parameters that the prompt supports.
 	Arguments []*UpdateApiMcpServerRequestPromptsArguments `json:"arguments,omitempty" xml:"arguments,omitempty" type:"Repeated"`
-	Content   *string                                      `json:"content,omitempty" xml:"content,omitempty"`
+	// The content of the prompt. Variables are specified in the {{xxx}} format. The xxx variable must be defined in the arguments parameter.
+	//
+	// example:
+	//
+	// prompt正文，{{name}}
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// prompt description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The prompt name.
+	//
 	// example:
 	//
 	// test
@@ -590,14 +676,20 @@ func (s *UpdateApiMcpServerRequestPrompts) Validate() error {
 }
 
 type UpdateApiMcpServerRequestPromptsArguments struct {
+	// The description of the parameter.
+	//
 	// example:
 	//
 	// argument description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The parameter name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Specifies whether the parameter is required.
+	//
 	// example:
 	//
 	// true
@@ -644,10 +736,14 @@ func (s *UpdateApiMcpServerRequestPromptsArguments) Validate() error {
 }
 
 type UpdateApiMcpServerRequestTerraformTools struct {
+	// Specifies whether to execute the task asynchronously. If this is enabled, the system immediately proceeds to the next task after it initiates a task execution, without waiting for each resource operation to complete.
+	//
 	// example:
 	//
 	// true
 	Async *bool `json:"async,omitempty" xml:"async,omitempty"`
+	// The Terraform tool code. For more information, see [HCL language overview](https://www.alibabacloud.com/help/en/terraform/latest/hcl-language-overview).
+	//
 	// example:
 	//
 	// variable "name" {
@@ -676,14 +772,26 @@ type UpdateApiMcpServerRequestTerraformTools struct {
 	//
 	// }
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The description of the Terraform tool.
+	//
 	// example:
 	//
 	// Terraform Tool  description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The deletion policy. After a task is executed, the system applies one of the following cleanup policies to the temporary resources based on the task execution status.
+	//
+	// - NEVER: Does not delete any created resources, regardless of whether the task succeeds or fails.
+	//
+	// - ALWAYS: Immediately destroys all related resources after execution, regardless of whether the task succeeds or fails.
+	//
+	// - ON_FAILURE: Deletes related resources only if the task fails. If the task succeeds, the resources are retained.
+	//
 	// example:
 	//
 	// ON_FAILURE
 	DestroyPolicy *string `json:"destroyPolicy,omitempty" xml:"destroyPolicy,omitempty"`
+	// The name of the Terraform tool.
+	//
 	// example:
 	//
 	// test

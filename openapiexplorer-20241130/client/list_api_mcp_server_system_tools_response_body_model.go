@@ -22,19 +22,30 @@ type iListApiMcpServerSystemToolsResponseBody interface {
 }
 
 type ListApiMcpServerSystemToolsResponseBody struct {
+	// The maximum number of entries to return on each page. The maximum value is 100. The default value is 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The NextToken value. Use this value to retrieve more results.
+	//
+	// > If this parameter is not returned, no more results are available.
+	//
 	// example:
 	//
 	// AAAAAZjtYxxxxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9BFC4AC1-6BE4-5405-BDEC-CA288D404812
-	RequestId   *string                                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The list of system tools.
 	SystemTools []*ListApiMcpServerSystemToolsResponseBodySystemTools `json:"systemTools,omitempty" xml:"systemTools,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 22
@@ -108,10 +119,14 @@ func (s *ListApiMcpServerSystemToolsResponseBody) Validate() error {
 }
 
 type ListApiMcpServerSystemToolsResponseBodySystemTools struct {
+	// The description of the system tool.
+	//
 	// example:
 	//
 	// system tool description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The name of the system tool.
+	//
 	// example:
 	//
 	// mcp-system

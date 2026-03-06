@@ -24,26 +24,37 @@ type iGetApiMcpServerUserConfigResponseBody interface {
 }
 
 type GetApiMcpServerUserConfigResponseBody struct {
+	// The ID of your Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 162302724684579*
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	// Specifies whether to enable public network access for all API MCP Servers, including system MCP Servers, under your account. By default, this feature is enabled. If you disable it, you can access the servers only through VPC domain names.
+	//
 	// example:
 	//
 	// true
 	EnablePublicAccess *bool `json:"enablePublicAccess,omitempty" xml:"enablePublicAccess,omitempty"`
+	// The time when the configuration was created.
+	//
 	// example:
 	//
 	// 2025-11-10T06:58:39Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The time when the configuration was last updated.
+	//
 	// example:
 	//
 	// 2025-11-10T06:58:39Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A707AFA8-1A4C-5B2A-A165-8436C1EA38DB
-	RequestId     *string   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The whitelist of source VPCs that are allowed to send requests after public network access is disabled. If you do not set this parameter or leave it empty, requests from all sources are allowed.
 	VpcWhitelists []*string `json:"vpcWhitelists,omitempty" xml:"vpcWhitelists,omitempty" type:"Repeated"`
 }
 

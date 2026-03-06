@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 验证 Terraform HCL 语法
+// Validates the syntax of HashiCorp Configuration Language (HCL) for Terraform.
 //
 // @param request - ApiMcpServerValidateHclRequest
 //
@@ -56,7 +56,7 @@ func (client *Client) ApiMcpServerValidateHclWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 创建ApiMcpServer
+// Creates an API MCP service.
 //
 // @param request - CreateApiMcpServerRequest
 //
@@ -167,7 +167,7 @@ func (client *Client) CreateApiMcpServerWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 删除ApiMcpServer
+// Deletes an API MCP service.
 //
 // @param request - DeleteApiMcpServerRequest
 //
@@ -218,7 +218,7 @@ func (client *Client) DeleteApiMcpServerWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 动态生成Aliyun CLI命令
+// Generates commands for the Alibaba Cloud command-line interface (CLI).
 //
 // @param tmpReq - GenerateCLICommandRequest
 //
@@ -241,6 +241,10 @@ func (client *Client) GenerateCLICommandWithContext(ctx context.Context, tmpReq 
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AggregatePagination) {
+		body["aggregatePagination"] = request.AggregatePagination
+	}
+
 	if !dara.IsNil(request.Api) {
 		body["api"] = request.Api
 	}
@@ -291,7 +295,7 @@ func (client *Client) GenerateCLICommandWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 获取产品相关接口的开放元数据
+// Retrieves the OpenAPI metadata for an API in a product.
 //
 // @param request - GetApiDefinitionRequest
 //
@@ -346,7 +350,7 @@ func (client *Client) GetApiDefinitionWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询 ApiMcpServer
+// Retrieves the details of a specific API MCP service.
 //
 // @param request - GetApiMcpServerRequest
 //
@@ -393,7 +397,7 @@ func (client *Client) GetApiMcpServerWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 查询用户全局API MCP Server配置
+// Queries the global API MCP Server configuration for a user. The configuration includes settings for public network access and the whitelist of source VPC IDs for requests from a VPC.
 //
 // @param headers - map
 //
@@ -489,11 +493,11 @@ func (client *Client) GetErrorCodeSolutionsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the log of an API call performed by using the current account based on the returned request ID of the API to troubleshoot issues.
+// Queries the details of an OpenAPI call log for your account using the request ID returned from an API call. This operation is used for troubleshooting.
 //
 // Description:
 //
-// Permissions on this API cannot be granted to other members.
+// This API does not support authorization.
 //
 // @param request - GetOwnRequestLogRequest
 //
@@ -540,7 +544,7 @@ func (client *Client) GetOwnRequestLogWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取产品的接入点信息
+// Retrieves the endpoint information for a product.
 //
 // @param request - GetProductEndpointsRequest
 //
@@ -587,11 +591,11 @@ func (client *Client) GetProductEndpointsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the log of an API call based on the returned request ID of the API to troubleshoot issues.
+// Queries the details of a request log using the request ID that is returned from an API call. This operation is useful for troubleshooting.
 //
 // Description:
 //
-// You can grant permissions to a Resource Access Management (RAM) user or assume a role to query the log of an API call across RAM users or Alibaba Cloud accounts. For more information, see [Grant permissions to troubleshoot API errors across accounts](https://help.aliyun.com/document_detail/2868101.html).
+// You can query call logs across different RAM users or Alibaba Cloud accounts using RAM authorization or role assumption. For more information, see [Cross-account API error diagnosis authorization](https://help.aliyun.com/document_detail/2868101.html).
 //
 // @param request - GetRequestLogRequest
 //
@@ -638,7 +642,7 @@ func (client *Client) GetRequestLogWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// 获取产品的开放元数据
+// Retrieves the OpenAPI metadata for a product.
 //
 // @param request - ListApiDefinitionsRequest
 //
@@ -689,7 +693,7 @@ func (client *Client) ListApiDefinitionsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询系统工具列表
+// Lists the system tools supported by the MCP service.
 //
 // @param request - ListApiMcpServerSystemToolsRequest
 //
@@ -744,7 +748,7 @@ func (client *Client) ListApiMcpServerSystemToolsWithContext(ctx context.Context
 
 // Summary:
 //
-// 列出资源ApiMcpServer
+// This operation queries a list of all API MCP servers in an Alibaba Cloud account.
 //
 // @param request - ListApiMcpServersRequest
 //
@@ -827,7 +831,7 @@ func (client *Client) ListApiMcpServersWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 更新UpdateApiMcpServer
+// Updates an API MCP service.
 //
 // @param request - UpdateApiMcpServerRequest
 //
@@ -940,7 +944,7 @@ func (client *Client) UpdateApiMcpServerWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 修改用户全局API MCP Server配置
+// Updates the global API MCP Server configuration for a user.
 //
 // @param request - UpdateApiMcpServerUserConfigRequest
 //
