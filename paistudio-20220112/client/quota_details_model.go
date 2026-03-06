@@ -21,6 +21,8 @@ type iQuotaDetails interface {
 	GetDescendantsAllocatedQuota() *ResourceAmount
 	SetDesiredMinQuota(v *ResourceAmount) *QuotaDetails
 	GetDesiredMinQuota() *ResourceAmount
+	SetNodeStatistics(v *QuotaNodeStatistics) *QuotaDetails
+	GetNodeStatistics() *QuotaNodeStatistics
 	SetRequestedQuota(v *ResourceAmount) *QuotaDetails
 	GetRequestedQuota() *ResourceAmount
 	SetSelfAllocatedQuota(v *ResourceAmount) *QuotaDetails
@@ -34,17 +36,18 @@ type iQuotaDetails interface {
 }
 
 type QuotaDetails struct {
-	ActualMinQuota            *ResourceAmount `json:"ActualMinQuota,omitempty" xml:"ActualMinQuota,omitempty"`
-	AllocatableQuota          *ResourceAmount `json:"AllocatableQuota,omitempty" xml:"AllocatableQuota,omitempty"`
-	AllocatedQuota            *ResourceAmount `json:"AllocatedQuota,omitempty" xml:"AllocatedQuota,omitempty"`
-	AncestorsAllocatedQuota   *ResourceAmount `json:"AncestorsAllocatedQuota,omitempty" xml:"AncestorsAllocatedQuota,omitempty"`
-	DescendantsAllocatedQuota *ResourceAmount `json:"DescendantsAllocatedQuota,omitempty" xml:"DescendantsAllocatedQuota,omitempty"`
-	DesiredMinQuota           *ResourceAmount `json:"DesiredMinQuota,omitempty" xml:"DesiredMinQuota,omitempty"`
-	RequestedQuota            *ResourceAmount `json:"RequestedQuota,omitempty" xml:"RequestedQuota,omitempty"`
-	SelfAllocatedQuota        *ResourceAmount `json:"SelfAllocatedQuota,omitempty" xml:"SelfAllocatedQuota,omitempty"`
-	SelfSubmittedQuota        *ResourceAmount `json:"SelfSubmittedQuota,omitempty" xml:"SelfSubmittedQuota,omitempty"`
-	SystemReservedQuota       *ResourceAmount `json:"SystemReservedQuota,omitempty" xml:"SystemReservedQuota,omitempty"`
-	UsedQuota                 *ResourceAmount `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty"`
+	ActualMinQuota            *ResourceAmount      `json:"ActualMinQuota,omitempty" xml:"ActualMinQuota,omitempty"`
+	AllocatableQuota          *ResourceAmount      `json:"AllocatableQuota,omitempty" xml:"AllocatableQuota,omitempty"`
+	AllocatedQuota            *ResourceAmount      `json:"AllocatedQuota,omitempty" xml:"AllocatedQuota,omitempty"`
+	AncestorsAllocatedQuota   *ResourceAmount      `json:"AncestorsAllocatedQuota,omitempty" xml:"AncestorsAllocatedQuota,omitempty"`
+	DescendantsAllocatedQuota *ResourceAmount      `json:"DescendantsAllocatedQuota,omitempty" xml:"DescendantsAllocatedQuota,omitempty"`
+	DesiredMinQuota           *ResourceAmount      `json:"DesiredMinQuota,omitempty" xml:"DesiredMinQuota,omitempty"`
+	NodeStatistics            *QuotaNodeStatistics `json:"NodeStatistics,omitempty" xml:"NodeStatistics,omitempty"`
+	RequestedQuota            *ResourceAmount      `json:"RequestedQuota,omitempty" xml:"RequestedQuota,omitempty"`
+	SelfAllocatedQuota        *ResourceAmount      `json:"SelfAllocatedQuota,omitempty" xml:"SelfAllocatedQuota,omitempty"`
+	SelfSubmittedQuota        *ResourceAmount      `json:"SelfSubmittedQuota,omitempty" xml:"SelfSubmittedQuota,omitempty"`
+	SystemReservedQuota       *ResourceAmount      `json:"SystemReservedQuota,omitempty" xml:"SystemReservedQuota,omitempty"`
+	UsedQuota                 *ResourceAmount      `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty"`
 }
 
 func (s QuotaDetails) String() string {
@@ -77,6 +80,10 @@ func (s *QuotaDetails) GetDescendantsAllocatedQuota() *ResourceAmount {
 
 func (s *QuotaDetails) GetDesiredMinQuota() *ResourceAmount {
 	return s.DesiredMinQuota
+}
+
+func (s *QuotaDetails) GetNodeStatistics() *QuotaNodeStatistics {
+	return s.NodeStatistics
 }
 
 func (s *QuotaDetails) GetRequestedQuota() *ResourceAmount {
@@ -126,6 +133,11 @@ func (s *QuotaDetails) SetDescendantsAllocatedQuota(v *ResourceAmount) *QuotaDet
 
 func (s *QuotaDetails) SetDesiredMinQuota(v *ResourceAmount) *QuotaDetails {
 	s.DesiredMinQuota = v
+	return s
+}
+
+func (s *QuotaDetails) SetNodeStatistics(v *QuotaNodeStatistics) *QuotaDetails {
+	s.NodeStatistics = v
 	return s
 }
 
@@ -182,6 +194,11 @@ func (s *QuotaDetails) Validate() error {
 	}
 	if s.DesiredMinQuota != nil {
 		if err := s.DesiredMinQuota.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeStatistics != nil {
+		if err := s.NodeStatistics.Validate(); err != nil {
 			return err
 		}
 	}
