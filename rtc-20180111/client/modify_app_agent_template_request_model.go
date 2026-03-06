@@ -21,6 +21,8 @@ type iModifyAppAgentTemplateRequest interface {
 	GetBackChannelConfig() *ModifyAppAgentTemplateRequestBackChannelConfig
 	SetChatMode(v int32) *ModifyAppAgentTemplateRequest
 	GetChatMode() *int32
+	SetEnableVideoUnderstanding(v bool) *ModifyAppAgentTemplateRequest
+	GetEnableVideoUnderstanding() *bool
 	SetGreeting(v string) *ModifyAppAgentTemplateRequest
 	GetGreeting() *string
 	SetId(v string) *ModifyAppAgentTemplateRequest
@@ -33,6 +35,8 @@ type iModifyAppAgentTemplateRequest interface {
 	GetLlmConfig() *ModifyAppAgentTemplateRequestLlmConfig
 	SetName(v string) *ModifyAppAgentTemplateRequest
 	GetName() *string
+	SetPreferVideo(v int32) *ModifyAppAgentTemplateRequest
+	GetPreferVideo() *int32
 	SetTtsConfig(v *ModifyAppAgentTemplateRequestTtsConfig) *ModifyAppAgentTemplateRequest
 	GetTtsConfig() *ModifyAppAgentTemplateRequestTtsConfig
 	SetType(v int32) *ModifyAppAgentTemplateRequest
@@ -53,8 +57,9 @@ type ModifyAppAgentTemplateRequest struct {
 	// example:
 	//
 	// 2
-	ChatMode *int32  `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
-	Greeting *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	ChatMode                 *int32  `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
+	EnableVideoUnderstanding *bool   `json:"EnableVideoUnderstanding,omitempty" xml:"EnableVideoUnderstanding,omitempty"`
+	Greeting                 *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -72,8 +77,12 @@ type ModifyAppAgentTemplateRequest struct {
 	// example:
 	//
 	// 智能体模版
-	Name      *string                                 `json:"Name,omitempty" xml:"Name,omitempty"`
-	TtsConfig *ModifyAppAgentTemplateRequestTtsConfig `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 2
+	PreferVideo *int32                                  `json:"PreferVideo,omitempty" xml:"PreferVideo,omitempty"`
+	TtsConfig   *ModifyAppAgentTemplateRequestTtsConfig `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// 1
@@ -112,6 +121,10 @@ func (s *ModifyAppAgentTemplateRequest) GetChatMode() *int32 {
 	return s.ChatMode
 }
 
+func (s *ModifyAppAgentTemplateRequest) GetEnableVideoUnderstanding() *bool {
+	return s.EnableVideoUnderstanding
+}
+
 func (s *ModifyAppAgentTemplateRequest) GetGreeting() *string {
 	return s.Greeting
 }
@@ -134,6 +147,10 @@ func (s *ModifyAppAgentTemplateRequest) GetLlmConfig() *ModifyAppAgentTemplateRe
 
 func (s *ModifyAppAgentTemplateRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *ModifyAppAgentTemplateRequest) GetPreferVideo() *int32 {
+	return s.PreferVideo
 }
 
 func (s *ModifyAppAgentTemplateRequest) GetTtsConfig() *ModifyAppAgentTemplateRequestTtsConfig {
@@ -174,6 +191,11 @@ func (s *ModifyAppAgentTemplateRequest) SetChatMode(v int32) *ModifyAppAgentTemp
 	return s
 }
 
+func (s *ModifyAppAgentTemplateRequest) SetEnableVideoUnderstanding(v bool) *ModifyAppAgentTemplateRequest {
+	s.EnableVideoUnderstanding = &v
+	return s
+}
+
 func (s *ModifyAppAgentTemplateRequest) SetGreeting(v string) *ModifyAppAgentTemplateRequest {
 	s.Greeting = &v
 	return s
@@ -201,6 +223,11 @@ func (s *ModifyAppAgentTemplateRequest) SetLlmConfig(v *ModifyAppAgentTemplateRe
 
 func (s *ModifyAppAgentTemplateRequest) SetName(v string) *ModifyAppAgentTemplateRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequest) SetPreferVideo(v int32) *ModifyAppAgentTemplateRequest {
+	s.PreferVideo = &v
 	return s
 }
 

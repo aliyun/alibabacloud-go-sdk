@@ -21,6 +21,8 @@ type iCreateAppAgentTemplateRequest interface {
 	GetBackChannelConfig() *CreateAppAgentTemplateRequestBackChannelConfig
 	SetChatMode(v int32) *CreateAppAgentTemplateRequest
 	GetChatMode() *int32
+	SetEnableVideoUnderstanding(v bool) *CreateAppAgentTemplateRequest
+	GetEnableVideoUnderstanding() *bool
 	SetGreeting(v string) *CreateAppAgentTemplateRequest
 	GetGreeting() *string
 	SetInterruptConfig(v *CreateAppAgentTemplateRequestInterruptConfig) *CreateAppAgentTemplateRequest
@@ -31,6 +33,8 @@ type iCreateAppAgentTemplateRequest interface {
 	GetLlmConfig() *CreateAppAgentTemplateRequestLlmConfig
 	SetName(v string) *CreateAppAgentTemplateRequest
 	GetName() *string
+	SetPreferVideo(v int32) *CreateAppAgentTemplateRequest
+	GetPreferVideo() *int32
 	SetTtsConfig(v *CreateAppAgentTemplateRequestTtsConfig) *CreateAppAgentTemplateRequest
 	GetTtsConfig() *CreateAppAgentTemplateRequestTtsConfig
 	SetType(v int32) *CreateAppAgentTemplateRequest
@@ -51,9 +55,10 @@ type CreateAppAgentTemplateRequest struct {
 	// example:
 	//
 	// 2
-	ChatMode        *int32                                        `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
-	Greeting        *string                                       `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
-	InterruptConfig *CreateAppAgentTemplateRequestInterruptConfig `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty" type:"Struct"`
+	ChatMode                 *int32                                        `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
+	EnableVideoUnderstanding *bool                                         `json:"EnableVideoUnderstanding,omitempty" xml:"EnableVideoUnderstanding,omitempty"`
+	Greeting                 *string                                       `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	InterruptConfig          *CreateAppAgentTemplateRequestInterruptConfig `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// 2
@@ -64,8 +69,9 @@ type CreateAppAgentTemplateRequest struct {
 	// example:
 	//
 	// 智能体模版
-	Name      *string                                 `json:"Name,omitempty" xml:"Name,omitempty"`
-	TtsConfig *CreateAppAgentTemplateRequestTtsConfig `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
+	Name        *string                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	PreferVideo *int32                                  `json:"PreferVideo,omitempty" xml:"PreferVideo,omitempty"`
+	TtsConfig   *CreateAppAgentTemplateRequestTtsConfig `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// 1
@@ -104,6 +110,10 @@ func (s *CreateAppAgentTemplateRequest) GetChatMode() *int32 {
 	return s.ChatMode
 }
 
+func (s *CreateAppAgentTemplateRequest) GetEnableVideoUnderstanding() *bool {
+	return s.EnableVideoUnderstanding
+}
+
 func (s *CreateAppAgentTemplateRequest) GetGreeting() *string {
 	return s.Greeting
 }
@@ -122,6 +132,10 @@ func (s *CreateAppAgentTemplateRequest) GetLlmConfig() *CreateAppAgentTemplateRe
 
 func (s *CreateAppAgentTemplateRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *CreateAppAgentTemplateRequest) GetPreferVideo() *int32 {
+	return s.PreferVideo
 }
 
 func (s *CreateAppAgentTemplateRequest) GetTtsConfig() *CreateAppAgentTemplateRequestTtsConfig {
@@ -162,6 +176,11 @@ func (s *CreateAppAgentTemplateRequest) SetChatMode(v int32) *CreateAppAgentTemp
 	return s
 }
 
+func (s *CreateAppAgentTemplateRequest) SetEnableVideoUnderstanding(v bool) *CreateAppAgentTemplateRequest {
+	s.EnableVideoUnderstanding = &v
+	return s
+}
+
 func (s *CreateAppAgentTemplateRequest) SetGreeting(v string) *CreateAppAgentTemplateRequest {
 	s.Greeting = &v
 	return s
@@ -184,6 +203,11 @@ func (s *CreateAppAgentTemplateRequest) SetLlmConfig(v *CreateAppAgentTemplateRe
 
 func (s *CreateAppAgentTemplateRequest) SetName(v string) *CreateAppAgentTemplateRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequest) SetPreferVideo(v int32) *CreateAppAgentTemplateRequest {
+	s.PreferVideo = &v
 	return s
 }
 

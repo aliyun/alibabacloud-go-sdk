@@ -190,6 +190,10 @@ func (client *Client) CreateAppAgentTemplateWithContext(ctx context.Context, tmp
 		query["ChatMode"] = request.ChatMode
 	}
 
+	if !dara.IsNil(request.EnableVideoUnderstanding) {
+		query["EnableVideoUnderstanding"] = request.EnableVideoUnderstanding
+	}
+
 	if !dara.IsNil(request.Greeting) {
 		query["Greeting"] = request.Greeting
 	}
@@ -208,6 +212,10 @@ func (client *Client) CreateAppAgentTemplateWithContext(ctx context.Context, tmp
 
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PreferVideo) {
+		query["PreferVideo"] = request.PreferVideo
 	}
 
 	if !dara.IsNil(request.TtsConfigShrink) {
@@ -4894,6 +4902,10 @@ func (client *Client) ModifyAppAgentTemplateWithContext(ctx context.Context, tmp
 		query["ChatMode"] = request.ChatMode
 	}
 
+	if !dara.IsNil(request.EnableVideoUnderstanding) {
+		query["EnableVideoUnderstanding"] = request.EnableVideoUnderstanding
+	}
+
 	if !dara.IsNil(request.Greeting) {
 		query["Greeting"] = request.Greeting
 	}
@@ -4916,6 +4928,10 @@ func (client *Client) ModifyAppAgentTemplateWithContext(ctx context.Context, tmp
 
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PreferVideo) {
+		query["PreferVideo"] = request.PreferVideo
 	}
 
 	if !dara.IsNil(request.TtsConfigShrink) {

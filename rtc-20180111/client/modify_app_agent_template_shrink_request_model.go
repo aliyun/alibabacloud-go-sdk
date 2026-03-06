@@ -21,6 +21,8 @@ type iModifyAppAgentTemplateShrinkRequest interface {
 	GetBackChannelConfigShrink() *string
 	SetChatMode(v int32) *ModifyAppAgentTemplateShrinkRequest
 	GetChatMode() *int32
+	SetEnableVideoUnderstanding(v bool) *ModifyAppAgentTemplateShrinkRequest
+	GetEnableVideoUnderstanding() *bool
 	SetGreeting(v string) *ModifyAppAgentTemplateShrinkRequest
 	GetGreeting() *string
 	SetId(v string) *ModifyAppAgentTemplateShrinkRequest
@@ -33,6 +35,8 @@ type iModifyAppAgentTemplateShrinkRequest interface {
 	GetLlmConfigShrink() *string
 	SetName(v string) *ModifyAppAgentTemplateShrinkRequest
 	GetName() *string
+	SetPreferVideo(v int32) *ModifyAppAgentTemplateShrinkRequest
+	GetPreferVideo() *int32
 	SetTtsConfigShrink(v string) *ModifyAppAgentTemplateShrinkRequest
 	GetTtsConfigShrink() *string
 	SetType(v int32) *ModifyAppAgentTemplateShrinkRequest
@@ -53,8 +57,9 @@ type ModifyAppAgentTemplateShrinkRequest struct {
 	// example:
 	//
 	// 2
-	ChatMode *int32  `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
-	Greeting *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	ChatMode                 *int32  `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
+	EnableVideoUnderstanding *bool   `json:"EnableVideoUnderstanding,omitempty" xml:"EnableVideoUnderstanding,omitempty"`
+	Greeting                 *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -72,7 +77,11 @@ type ModifyAppAgentTemplateShrinkRequest struct {
 	// example:
 	//
 	// 智能体模版
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 2
+	PreferVideo     *int32  `json:"PreferVideo,omitempty" xml:"PreferVideo,omitempty"`
 	TtsConfigShrink *string `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty"`
 	// example:
 	//
@@ -112,6 +121,10 @@ func (s *ModifyAppAgentTemplateShrinkRequest) GetChatMode() *int32 {
 	return s.ChatMode
 }
 
+func (s *ModifyAppAgentTemplateShrinkRequest) GetEnableVideoUnderstanding() *bool {
+	return s.EnableVideoUnderstanding
+}
+
 func (s *ModifyAppAgentTemplateShrinkRequest) GetGreeting() *string {
 	return s.Greeting
 }
@@ -134,6 +147,10 @@ func (s *ModifyAppAgentTemplateShrinkRequest) GetLlmConfigShrink() *string {
 
 func (s *ModifyAppAgentTemplateShrinkRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *ModifyAppAgentTemplateShrinkRequest) GetPreferVideo() *int32 {
+	return s.PreferVideo
 }
 
 func (s *ModifyAppAgentTemplateShrinkRequest) GetTtsConfigShrink() *string {
@@ -174,6 +191,11 @@ func (s *ModifyAppAgentTemplateShrinkRequest) SetChatMode(v int32) *ModifyAppAge
 	return s
 }
 
+func (s *ModifyAppAgentTemplateShrinkRequest) SetEnableVideoUnderstanding(v bool) *ModifyAppAgentTemplateShrinkRequest {
+	s.EnableVideoUnderstanding = &v
+	return s
+}
+
 func (s *ModifyAppAgentTemplateShrinkRequest) SetGreeting(v string) *ModifyAppAgentTemplateShrinkRequest {
 	s.Greeting = &v
 	return s
@@ -201,6 +223,11 @@ func (s *ModifyAppAgentTemplateShrinkRequest) SetLlmConfigShrink(v string) *Modi
 
 func (s *ModifyAppAgentTemplateShrinkRequest) SetName(v string) *ModifyAppAgentTemplateShrinkRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateShrinkRequest) SetPreferVideo(v int32) *ModifyAppAgentTemplateShrinkRequest {
+	s.PreferVideo = &v
 	return s
 }
 

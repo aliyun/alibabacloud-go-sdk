@@ -187,15 +187,17 @@ type StartAgentRequestVoiceChatConfig struct {
 	// example:
 	//
 	// 1
-	ChatMode        *int32                                           `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
-	Greeting        *string                                          `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
-	InterruptConfig *StartAgentRequestVoiceChatConfigInterruptConfig `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty" type:"Struct"`
+	ChatMode                 *int32                                           `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
+	EnableVideoUnderstanding *bool                                            `json:"EnableVideoUnderstanding,omitempty" xml:"EnableVideoUnderstanding,omitempty"`
+	Greeting                 *string                                          `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	InterruptConfig          *StartAgentRequestVoiceChatConfigInterruptConfig `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// 1
 	InterruptMode *int32                                     `json:"InterruptMode,omitempty" xml:"InterruptMode,omitempty"`
 	LLMConfig     *StartAgentRequestVoiceChatConfigLLMConfig `json:"LLMConfig,omitempty" xml:"LLMConfig,omitempty" type:"Struct"`
 	TTSConfig     *StartAgentRequestVoiceChatConfigTTSConfig `json:"TTSConfig,omitempty" xml:"TTSConfig,omitempty" type:"Struct"`
+	PreferVideo   *int32                                     `json:"preferVideo,omitempty" xml:"preferVideo,omitempty"`
 }
 
 func (s StartAgentRequestVoiceChatConfig) String() string {
@@ -226,6 +228,10 @@ func (s *StartAgentRequestVoiceChatConfig) GetChatMode() *int32 {
 	return s.ChatMode
 }
 
+func (s *StartAgentRequestVoiceChatConfig) GetEnableVideoUnderstanding() *bool {
+	return s.EnableVideoUnderstanding
+}
+
 func (s *StartAgentRequestVoiceChatConfig) GetGreeting() *string {
 	return s.Greeting
 }
@@ -244,6 +250,10 @@ func (s *StartAgentRequestVoiceChatConfig) GetLLMConfig() *StartAgentRequestVoic
 
 func (s *StartAgentRequestVoiceChatConfig) GetTTSConfig() *StartAgentRequestVoiceChatConfigTTSConfig {
 	return s.TTSConfig
+}
+
+func (s *StartAgentRequestVoiceChatConfig) GetPreferVideo() *int32 {
+	return s.PreferVideo
 }
 
 func (s *StartAgentRequestVoiceChatConfig) SetASRConfig(v *StartAgentRequestVoiceChatConfigASRConfig) *StartAgentRequestVoiceChatConfig {
@@ -271,6 +281,11 @@ func (s *StartAgentRequestVoiceChatConfig) SetChatMode(v int32) *StartAgentReque
 	return s
 }
 
+func (s *StartAgentRequestVoiceChatConfig) SetEnableVideoUnderstanding(v bool) *StartAgentRequestVoiceChatConfig {
+	s.EnableVideoUnderstanding = &v
+	return s
+}
+
 func (s *StartAgentRequestVoiceChatConfig) SetGreeting(v string) *StartAgentRequestVoiceChatConfig {
 	s.Greeting = &v
 	return s
@@ -293,6 +308,11 @@ func (s *StartAgentRequestVoiceChatConfig) SetLLMConfig(v *StartAgentRequestVoic
 
 func (s *StartAgentRequestVoiceChatConfig) SetTTSConfig(v *StartAgentRequestVoiceChatConfigTTSConfig) *StartAgentRequestVoiceChatConfig {
 	s.TTSConfig = v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfig) SetPreferVideo(v int32) *StartAgentRequestVoiceChatConfig {
+	s.PreferVideo = &v
 	return s
 }
 
@@ -612,8 +632,9 @@ type StartAgentRequestVoiceChatConfigLLMConfig struct {
 	// example:
 	//
 	// xxxxxxxxxxx
-	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ApiKey    *string     `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	AppId     *string     `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	BizParams interface{} `json:"BizParams,omitempty" xml:"BizParams,omitempty"`
 	// example:
 	//
 	// 3
@@ -667,6 +688,10 @@ func (s *StartAgentRequestVoiceChatConfigLLMConfig) GetAppId() *string {
 	return s.AppId
 }
 
+func (s *StartAgentRequestVoiceChatConfigLLMConfig) GetBizParams() interface{} {
+	return s.BizParams
+}
+
 func (s *StartAgentRequestVoiceChatConfigLLMConfig) GetHistoryDepth() *int32 {
 	return s.HistoryDepth
 }
@@ -718,6 +743,11 @@ func (s *StartAgentRequestVoiceChatConfigLLMConfig) SetApiKey(v string) *StartAg
 
 func (s *StartAgentRequestVoiceChatConfigLLMConfig) SetAppId(v string) *StartAgentRequestVoiceChatConfigLLMConfig {
 	s.AppId = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigLLMConfig) SetBizParams(v interface{}) *StartAgentRequestVoiceChatConfigLLMConfig {
+	s.BizParams = v
 	return s
 }
 

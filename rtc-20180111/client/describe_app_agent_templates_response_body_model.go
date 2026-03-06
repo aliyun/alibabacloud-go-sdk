@@ -106,7 +106,8 @@ type DescribeAppAgentTemplatesResponseBodyTemplates struct {
 	// example:
 	//
 	// 2020-09-04T06:22:15Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime               *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnableVideoUnderstanding *bool   `json:"EnableVideoUnderstanding,omitempty" xml:"EnableVideoUnderstanding,omitempty"`
 	// example:
 	//
 	// 你好，机器人。
@@ -124,8 +125,9 @@ type DescribeAppAgentTemplatesResponseBodyTemplates struct {
 	// example:
 	//
 	// 测试
-	Name      *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
-	TtsConfig *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
+	Name        *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	PreferVideo *int32                                                   `json:"PreferVideo,omitempty" xml:"PreferVideo,omitempty"`
+	TtsConfig   *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// 1
@@ -164,6 +166,10 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplates) GetCreateTime() *string
 	return s.CreateTime
 }
 
+func (s *DescribeAppAgentTemplatesResponseBodyTemplates) GetEnableVideoUnderstanding() *bool {
+	return s.EnableVideoUnderstanding
+}
+
 func (s *DescribeAppAgentTemplatesResponseBodyTemplates) GetGreeting() *string {
 	return s.Greeting
 }
@@ -186,6 +192,10 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplates) GetLlmConfig() *Describ
 
 func (s *DescribeAppAgentTemplatesResponseBodyTemplates) GetName() *string {
 	return s.Name
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplates) GetPreferVideo() *int32 {
+	return s.PreferVideo
 }
 
 func (s *DescribeAppAgentTemplatesResponseBodyTemplates) GetTtsConfig() *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig {
@@ -226,6 +236,11 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetCreateTime(v string)
 	return s
 }
 
+func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetEnableVideoUnderstanding(v bool) *DescribeAppAgentTemplatesResponseBodyTemplates {
+	s.EnableVideoUnderstanding = &v
+	return s
+}
+
 func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetGreeting(v string) *DescribeAppAgentTemplatesResponseBodyTemplates {
 	s.Greeting = &v
 	return s
@@ -253,6 +268,11 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetLlmConfig(v *Describ
 
 func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetName(v string) *DescribeAppAgentTemplatesResponseBodyTemplates {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetPreferVideo(v int32) *DescribeAppAgentTemplatesResponseBodyTemplates {
+	s.PreferVideo = &v
 	return s
 }
 
