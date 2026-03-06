@@ -1316,6 +1316,68 @@ func (client *Client) GetAppInstance(request *GetAppInstanceRequest) (_result *G
 
 // Summary:
 //
+// 实例详情查询
+//
+// @param request - GetAppInstanceForPartnerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppInstanceForPartnerResponse
+func (client *Client) GetAppInstanceForPartnerWithOptions(request *GetAppInstanceForPartnerRequest, runtime *dara.RuntimeOptions) (_result *GetAppInstanceForPartnerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppInstanceForPartner"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppInstanceForPartnerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 实例详情查询
+//
+// @param request - GetAppInstanceForPartnerRequest
+//
+// @return GetAppInstanceForPartnerResponse
+func (client *Client) GetAppInstanceForPartner(request *GetAppInstanceForPartnerRequest) (_result *GetAppInstanceForPartnerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAppInstanceForPartnerResponse{}
+	_body, _err := client.GetAppInstanceForPartnerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 生码-获取插件配置信息
 //
 // @param request - GetAppPluginConfigRequest
@@ -1941,6 +2003,72 @@ func (client *Client) ListAppCommoditySpecificationsForPartner() (_result *ListA
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListAppCommoditySpecificationsForPartnerResponse{}
 	_body, _err := client.ListAppCommoditySpecificationsForPartnerWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 网站信息查询
+//
+// @param request - ListAppCommoditySpecificationsV2ForPartnerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppCommoditySpecificationsV2ForPartnerResponse
+func (client *Client) ListAppCommoditySpecificationsV2ForPartnerWithOptions(request *ListAppCommoditySpecificationsV2ForPartnerRequest, runtime *dara.RuntimeOptions) (_result *ListAppCommoditySpecificationsV2ForPartnerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAppCommoditySpecificationsV2ForPartner"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAppCommoditySpecificationsV2ForPartnerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 网站信息查询
+//
+// @param request - ListAppCommoditySpecificationsV2ForPartnerRequest
+//
+// @return ListAppCommoditySpecificationsV2ForPartnerResponse
+func (client *Client) ListAppCommoditySpecificationsV2ForPartner(request *ListAppCommoditySpecificationsV2ForPartnerRequest) (_result *ListAppCommoditySpecificationsV2ForPartnerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAppCommoditySpecificationsV2ForPartnerResponse{}
+	_body, _err := client.ListAppCommoditySpecificationsV2ForPartnerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
