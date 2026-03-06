@@ -3883,6 +3883,174 @@ func (client *Client) QueryMaterialTaskList(request *QueryMaterialTaskListReques
 
 // Summary:
 //
+// 查询Supabase Auth配置信息
+//
+// @param request - QuerySupabaseAuthConfigsForAdminRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySupabaseAuthConfigsForAdminResponse
+func (client *Client) QuerySupabaseAuthConfigsForAdminWithOptions(request *QuerySupabaseAuthConfigsForAdminRequest, runtime *dara.RuntimeOptions) (_result *QuerySupabaseAuthConfigsForAdminResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.OrderColumn) {
+		query["OrderColumn"] = request.OrderColumn
+	}
+
+	if !dara.IsNil(request.OrderType) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QuerySupabaseAuthConfigsForAdmin"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QuerySupabaseAuthConfigsForAdminResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Supabase Auth配置信息
+//
+// @param request - QuerySupabaseAuthConfigsForAdminRequest
+//
+// @return QuerySupabaseAuthConfigsForAdminResponse
+func (client *Client) QuerySupabaseAuthConfigsForAdmin(request *QuerySupabaseAuthConfigsForAdminRequest) (_result *QuerySupabaseAuthConfigsForAdminResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QuerySupabaseAuthConfigsForAdminResponse{}
+	_body, _err := client.QuerySupabaseAuthConfigsForAdminWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Supabase配置信息
+//
+// @param request - QuerySupabaseConfigsForAdminRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySupabaseConfigsForAdminResponse
+func (client *Client) QuerySupabaseConfigsForAdminWithOptions(request *QuerySupabaseConfigsForAdminRequest, runtime *dara.RuntimeOptions) (_result *QuerySupabaseConfigsForAdminResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.OrderColumn) {
+		query["OrderColumn"] = request.OrderColumn
+	}
+
+	if !dara.IsNil(request.OrderType) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QuerySupabaseConfigsForAdmin"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QuerySupabaseConfigsForAdminResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Supabase配置信息
+//
+// @param request - QuerySupabaseConfigsForAdminRequest
+//
+// @return QuerySupabaseConfigsForAdminResponse
+func (client *Client) QuerySupabaseConfigsForAdmin(request *QuerySupabaseConfigsForAdminRequest) (_result *QuerySupabaseConfigsForAdminResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QuerySupabaseConfigsForAdminResponse{}
+	_body, _err := client.QuerySupabaseConfigsForAdminWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询Supabase实例信息
 //
 // @param request - QuerySupabaseInstanceInfoForAdminRequest
