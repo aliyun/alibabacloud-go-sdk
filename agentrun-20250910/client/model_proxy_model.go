@@ -49,6 +49,8 @@ type iModelProxy interface {
 	GetStatus() *string
 	SetStatusReason(v string) *ModelProxy
 	GetStatusReason() *string
+	SetWorkspaceId(v string) *ModelProxy
+	GetWorkspaceId() *string
 }
 
 type ModelProxy struct {
@@ -72,6 +74,7 @@ type ModelProxy struct {
 	ServiceRegionId      *string               `json:"serviceRegionId,omitempty" xml:"serviceRegionId,omitempty"`
 	Status               *string               `json:"status,omitempty" xml:"status,omitempty"`
 	StatusReason         *string               `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
+	WorkspaceId          *string               `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s ModelProxy) String() string {
@@ -160,6 +163,10 @@ func (s *ModelProxy) GetStatus() *string {
 
 func (s *ModelProxy) GetStatusReason() *string {
 	return s.StatusReason
+}
+
+func (s *ModelProxy) GetWorkspaceId() *string {
+	return s.WorkspaceId
 }
 
 func (s *ModelProxy) SetCpu(v float32) *ModelProxy {
@@ -259,6 +266,11 @@ func (s *ModelProxy) SetStatus(v string) *ModelProxy {
 
 func (s *ModelProxy) SetStatusReason(v string) *ModelProxy {
 	s.StatusReason = &v
+	return s
+}
+
+func (s *ModelProxy) SetWorkspaceId(v string) *ModelProxy {
+	s.WorkspaceId = &v
 	return s
 }
 

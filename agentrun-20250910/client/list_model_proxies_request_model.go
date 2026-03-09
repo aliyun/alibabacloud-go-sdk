@@ -17,6 +17,8 @@ type iListModelProxiesRequest interface {
 	GetProxyMode() *string
 	SetStatus(v string) *ListModelProxiesRequest
 	GetStatus() *string
+	SetWorkspaceId(v string) *ListModelProxiesRequest
+	GetWorkspaceId() *string
 }
 
 type ListModelProxiesRequest struct {
@@ -37,7 +39,8 @@ type ListModelProxiesRequest struct {
 	// example:
 	//
 	// CREATING
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s ListModelProxiesRequest) String() string {
@@ -64,6 +67,10 @@ func (s *ListModelProxiesRequest) GetStatus() *string {
 	return s.Status
 }
 
+func (s *ListModelProxiesRequest) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *ListModelProxiesRequest) SetPageNumber(v int32) *ListModelProxiesRequest {
 	s.PageNumber = &v
 	return s
@@ -81,6 +88,11 @@ func (s *ListModelProxiesRequest) SetProxyMode(v string) *ListModelProxiesReques
 
 func (s *ListModelProxiesRequest) SetStatus(v string) *ListModelProxiesRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListModelProxiesRequest) SetWorkspaceId(v string) *ListModelProxiesRequest {
+	s.WorkspaceId = &v
 	return s
 }
 

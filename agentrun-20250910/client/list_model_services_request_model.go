@@ -19,6 +19,8 @@ type iListModelServicesRequest interface {
 	GetProvider() *string
 	SetProviderType(v string) *ListModelServicesRequest
 	GetProviderType() *string
+	SetWorkspaceId(v string) *ListModelServicesRequest
+	GetWorkspaceId() *string
 }
 
 type ListModelServicesRequest struct {
@@ -44,6 +46,7 @@ type ListModelServicesRequest struct {
 	//
 	// providerType
 	ProviderType *string `json:"providerType,omitempty" xml:"providerType,omitempty"`
+	WorkspaceId  *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s ListModelServicesRequest) String() string {
@@ -74,6 +77,10 @@ func (s *ListModelServicesRequest) GetProviderType() *string {
 	return s.ProviderType
 }
 
+func (s *ListModelServicesRequest) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *ListModelServicesRequest) SetModelType(v string) *ListModelServicesRequest {
 	s.ModelType = &v
 	return s
@@ -96,6 +103,11 @@ func (s *ListModelServicesRequest) SetProvider(v string) *ListModelServicesReque
 
 func (s *ListModelServicesRequest) SetProviderType(v string) *ListModelServicesRequest {
 	s.ProviderType = &v
+	return s
+}
+
+func (s *ListModelServicesRequest) SetWorkspaceId(v string) *ListModelServicesRequest {
+	s.WorkspaceId = &v
 	return s
 }
 

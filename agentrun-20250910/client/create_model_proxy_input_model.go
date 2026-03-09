@@ -37,28 +37,77 @@ type iCreateModelProxyInput interface {
 	GetProxyMode() *string
 	SetServiceRegionId(v string) *CreateModelProxyInput
 	GetServiceRegionId() *string
+	SetWorkspaceId(v string) *CreateModelProxyInput
+	GetWorkspaceId() *string
 }
 
 type CreateModelProxyInput struct {
 	ArmsConfiguration *ArmsConfiguration `json:"armsConfiguration,omitempty" xml:"armsConfiguration,omitempty"`
 	// This parameter is required.
-	Cpu              *float32          `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	CredentialName   *string           `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
-	Description      *string           `json:"description,omitempty" xml:"description,omitempty"`
-	ExecutionRoleArn *string           `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
+	//
+	// example:
+	//
+	// 1
+	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// credentialName
+	//
+	// example:
+	//
+	// credentialName
+	CredentialName *string `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
+	// example:
+	//
+	// 1
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// executionRoleArn
+	ExecutionRoleArn *string `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
+	// litellmVersion
+	//
+	// example:
+	//
+	// litellmVersion
 	LitellmVersion   *string           `json:"litellmVersion,omitempty" xml:"litellmVersion,omitempty"`
 	LogConfiguration *LogConfiguration `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 31
 	Memory *int32 `json:"memory,omitempty" xml:"memory,omitempty"`
+	// modelProxyName
+	//
 	// This parameter is required.
-	ModelProxyName       *string               `json:"modelProxyName,omitempty" xml:"modelProxyName,omitempty"`
+	//
+	// example:
+	//
+	// modelProxyName
+	ModelProxyName *string `json:"modelProxyName,omitempty" xml:"modelProxyName,omitempty"`
+	// example:
+	//
+	// system
 	ModelType            *string               `json:"modelType,omitempty" xml:"modelType,omitempty"`
 	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
+	// ProxyConfig
+	//
 	// This parameter is required.
 	ProxyConfig *ProxyConfig `json:"proxyConfig,omitempty" xml:"proxyConfig,omitempty"`
+	// proxyMode
+	//
 	// This parameter is required.
-	ProxyMode       *string `json:"proxyMode,omitempty" xml:"proxyMode,omitempty"`
+	//
+	// example:
+	//
+	// proxyMode
+	ProxyMode *string `json:"proxyMode,omitempty" xml:"proxyMode,omitempty"`
+	// serviceRegionId
+	//
+	// example:
+	//
+	// serviceRegionId
 	ServiceRegionId *string `json:"serviceRegionId,omitempty" xml:"serviceRegionId,omitempty"`
+	WorkspaceId     *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s CreateModelProxyInput) String() string {
@@ -123,6 +172,10 @@ func (s *CreateModelProxyInput) GetProxyMode() *string {
 
 func (s *CreateModelProxyInput) GetServiceRegionId() *string {
 	return s.ServiceRegionId
+}
+
+func (s *CreateModelProxyInput) GetWorkspaceId() *string {
+	return s.WorkspaceId
 }
 
 func (s *CreateModelProxyInput) SetArmsConfiguration(v *ArmsConfiguration) *CreateModelProxyInput {
@@ -192,6 +245,11 @@ func (s *CreateModelProxyInput) SetProxyMode(v string) *CreateModelProxyInput {
 
 func (s *CreateModelProxyInput) SetServiceRegionId(v string) *CreateModelProxyInput {
 	s.ServiceRegionId = &v
+	return s
+}
+
+func (s *CreateModelProxyInput) SetWorkspaceId(v string) *CreateModelProxyInput {
+	s.WorkspaceId = &v
 	return s
 }
 

@@ -23,6 +23,8 @@ type iUpdateModelServiceInput interface {
 	GetStatus() *string
 	SetStatusReason(v string) *UpdateModelServiceInput
 	GetStatusReason() *string
+	SetWorkspaceId(v string) *UpdateModelServiceInput
+	GetWorkspaceId() *string
 }
 
 type UpdateModelServiceInput struct {
@@ -33,6 +35,7 @@ type UpdateModelServiceInput struct {
 	ProviderSettings     *ProviderSettings     `json:"providerSettings,omitempty" xml:"providerSettings,omitempty"`
 	Status               *string               `json:"status,omitempty" xml:"status,omitempty"`
 	StatusReason         *string               `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
+	WorkspaceId          *string               `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s UpdateModelServiceInput) String() string {
@@ -71,6 +74,10 @@ func (s *UpdateModelServiceInput) GetStatusReason() *string {
 	return s.StatusReason
 }
 
+func (s *UpdateModelServiceInput) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *UpdateModelServiceInput) SetCredentialName(v string) *UpdateModelServiceInput {
 	s.CredentialName = &v
 	return s
@@ -103,6 +110,11 @@ func (s *UpdateModelServiceInput) SetStatus(v string) *UpdateModelServiceInput {
 
 func (s *UpdateModelServiceInput) SetStatusReason(v string) *UpdateModelServiceInput {
 	s.StatusReason = &v
+	return s
+}
+
+func (s *UpdateModelServiceInput) SetWorkspaceId(v string) *UpdateModelServiceInput {
+	s.WorkspaceId = &v
 	return s
 }
 

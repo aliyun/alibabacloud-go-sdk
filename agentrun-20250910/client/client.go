@@ -3386,6 +3386,10 @@ func (client *Client) ListModelProxiesWithOptions(request *ListModelProxiesReque
 		query["status"] = request.Status
 	}
 
+	if !dara.IsNil(request.WorkspaceId) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -3466,6 +3470,10 @@ func (client *Client) ListModelServicesWithOptions(request *ListModelServicesReq
 
 	if !dara.IsNil(request.ProviderType) {
 		query["providerType"] = request.ProviderType
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["workspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapiutil.OpenApiRequest{

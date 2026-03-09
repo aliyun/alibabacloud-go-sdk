@@ -23,6 +23,8 @@ type iUpdateModelProxyInput interface {
 	GetNetworkConfiguration() *NetworkConfiguration
 	SetProxyConfig(v *ProxyConfig) *UpdateModelProxyInput
 	GetProxyConfig() *ProxyConfig
+	SetWorkspaceId(v string) *UpdateModelProxyInput
+	GetWorkspaceId() *string
 }
 
 type UpdateModelProxyInput struct {
@@ -33,6 +35,7 @@ type UpdateModelProxyInput struct {
 	LogConfiguration     *LogConfiguration     `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
 	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
 	ProxyConfig          *ProxyConfig          `json:"proxyConfig,omitempty" xml:"proxyConfig,omitempty"`
+	WorkspaceId          *string               `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s UpdateModelProxyInput) String() string {
@@ -71,6 +74,10 @@ func (s *UpdateModelProxyInput) GetProxyConfig() *ProxyConfig {
 	return s.ProxyConfig
 }
 
+func (s *UpdateModelProxyInput) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *UpdateModelProxyInput) SetArmsConfiguration(v *ArmsConfiguration) *UpdateModelProxyInput {
 	s.ArmsConfiguration = v
 	return s
@@ -103,6 +110,11 @@ func (s *UpdateModelProxyInput) SetNetworkConfiguration(v *NetworkConfiguration)
 
 func (s *UpdateModelProxyInput) SetProxyConfig(v *ProxyConfig) *UpdateModelProxyInput {
 	s.ProxyConfig = v
+	return s
+}
+
+func (s *UpdateModelProxyInput) SetWorkspaceId(v string) *UpdateModelProxyInput {
+	s.WorkspaceId = &v
 	return s
 }
 

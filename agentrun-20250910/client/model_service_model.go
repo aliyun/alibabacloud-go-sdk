@@ -35,6 +35,8 @@ type iModelService interface {
 	GetStatus() *string
 	SetStatusReason(v string) *ModelService
 	GetStatusReason() *string
+	SetWorkspaceId(v string) *ModelService
+	GetWorkspaceId() *string
 }
 
 type ModelService struct {
@@ -51,6 +53,7 @@ type ModelService struct {
 	ProviderSettings     *ProviderSettings     `json:"providerSettings,omitempty" xml:"providerSettings,omitempty"`
 	Status               *string               `json:"status,omitempty" xml:"status,omitempty"`
 	StatusReason         *string               `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
+	WorkspaceId          *string               `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s ModelService) String() string {
@@ -111,6 +114,10 @@ func (s *ModelService) GetStatus() *string {
 
 func (s *ModelService) GetStatusReason() *string {
 	return s.StatusReason
+}
+
+func (s *ModelService) GetWorkspaceId() *string {
+	return s.WorkspaceId
 }
 
 func (s *ModelService) SetCreatedAt(v string) *ModelService {
@@ -175,6 +182,11 @@ func (s *ModelService) SetStatus(v string) *ModelService {
 
 func (s *ModelService) SetStatusReason(v string) *ModelService {
 	s.StatusReason = &v
+	return s
+}
+
+func (s *ModelService) SetWorkspaceId(v string) *ModelService {
+	s.WorkspaceId = &v
 	return s
 }
 

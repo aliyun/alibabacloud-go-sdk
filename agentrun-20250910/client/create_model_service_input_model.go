@@ -25,21 +25,47 @@ type iCreateModelServiceInput interface {
 	GetProvider() *string
 	SetProviderSettings(v *ProviderSettings) *CreateModelServiceInput
 	GetProviderSettings() *ProviderSettings
+	SetWorkspaceId(v string) *CreateModelServiceInput
+	GetWorkspaceId() *string
 }
 
 type CreateModelServiceInput struct {
-	CredentialName   *string            `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
-	Description      *string            `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// credentialName
+	CredentialName *string `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
+	// example:
+	//
+	// Auto generate task: Pipeline[pipeline-run-1742178254775] pipelineTemplate[data-export-service-online-iVnQB5] taskTemplate[serverless-runner-task], time[2025-03-17T02:24:36Z]
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// modelInfoConfigs
 	ModelInfoConfigs []*ModelInfoConfig `json:"modelInfoConfigs,omitempty" xml:"modelInfoConfigs,omitempty" type:"Repeated"`
+	// modelServiceName
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// modelServiceName
 	ModelServiceName *string `json:"modelServiceName,omitempty" xml:"modelServiceName,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// system
 	ModelType            *string               `json:"modelType,omitempty" xml:"modelType,omitempty"`
 	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Aliyun
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	// providerSettings
+	//
 	// This parameter is required.
 	ProviderSettings *ProviderSettings `json:"providerSettings,omitempty" xml:"providerSettings,omitempty"`
+	WorkspaceId      *string           `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s CreateModelServiceInput) String() string {
@@ -82,6 +108,10 @@ func (s *CreateModelServiceInput) GetProviderSettings() *ProviderSettings {
 	return s.ProviderSettings
 }
 
+func (s *CreateModelServiceInput) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *CreateModelServiceInput) SetCredentialName(v string) *CreateModelServiceInput {
 	s.CredentialName = &v
 	return s
@@ -119,6 +149,11 @@ func (s *CreateModelServiceInput) SetProvider(v string) *CreateModelServiceInput
 
 func (s *CreateModelServiceInput) SetProviderSettings(v *ProviderSettings) *CreateModelServiceInput {
 	s.ProviderSettings = v
+	return s
+}
+
+func (s *CreateModelServiceInput) SetWorkspaceId(v string) *CreateModelServiceInput {
+	s.WorkspaceId = &v
 	return s
 }
 
