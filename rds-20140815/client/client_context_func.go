@@ -3053,7 +3053,7 @@ func (client *Client) CreateDBInstanceForRebuildWithContext(ctx context.Context,
 
 // Summary:
 //
-// 原生复制实例创建复制通道
+// # Create a replication channel for a native replication instance
 //
 // @param request - CreateDBInstanceReplicationRequest
 //
@@ -6283,7 +6283,7 @@ func (client *Client) DeleteDBInstanceEndpointAddressWithContext(ctx context.Con
 
 // Summary:
 //
-// 原生复制实例删除复制通道
+// # Delete a replication link from a native replication instance
 //
 // @param request - DeleteDBInstanceReplicationRequest
 //
@@ -17457,6 +17457,50 @@ func (client *Client) DescribeRCMetricListWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRCMetricListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DescribeRCNetworkInterfaces
+//
+// @param request - DescribeRCNetworkInterfacesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRCNetworkInterfacesResponse
+func (client *Client) DescribeRCNetworkInterfacesWithContext(ctx context.Context, request *DescribeRCNetworkInterfacesRequest, runtime *dara.RuntimeOptions) (_result *DescribeRCNetworkInterfacesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRCNetworkInterfaces"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRCNetworkInterfacesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -32845,7 +32889,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// 原生复制实例更新复制通道
+// # Update replication channel for a native replication instance
 //
 // @param request - UpdateDBInstanceReplicationRequest
 //
