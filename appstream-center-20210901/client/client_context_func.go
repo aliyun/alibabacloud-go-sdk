@@ -1734,6 +1734,10 @@ func (client *Client) ListNodeInstanceTypeWithContext(ctx context.Context, reque
 		query["GpuMemory"] = request.GpuMemory
 	}
 
+	if !dara.IsNil(request.InstanceTypeForModify) {
+		query["InstanceTypeForModify"] = request.InstanceTypeForModify
+	}
+
 	if !dara.IsNil(request.Language) {
 		query["Language"] = request.Language
 	}
@@ -1752,6 +1756,10 @@ func (client *Client) ListNodeInstanceTypeWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.OrderBy) {
 		query["OrderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.OrderType) {
+		query["OrderType"] = request.OrderType
 	}
 
 	if !dara.IsNil(request.OsType) {

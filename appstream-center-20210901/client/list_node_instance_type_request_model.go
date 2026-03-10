@@ -17,6 +17,8 @@ type iListNodeInstanceTypeRequest interface {
 	GetGpu() *float32
 	SetGpuMemory(v int32) *ListNodeInstanceTypeRequest
 	GetGpuMemory() *int32
+	SetInstanceTypeForModify(v string) *ListNodeInstanceTypeRequest
+	GetInstanceTypeForModify() *string
 	SetLanguage(v string) *ListNodeInstanceTypeRequest
 	GetLanguage() *string
 	SetMemory(v int32) *ListNodeInstanceTypeRequest
@@ -27,6 +29,8 @@ type iListNodeInstanceTypeRequest interface {
 	GetNodeInstanceTypeFamily() *string
 	SetOrderBy(v string) *ListNodeInstanceTypeRequest
 	GetOrderBy() *string
+	SetOrderType(v string) *ListNodeInstanceTypeRequest
+	GetOrderType() *string
 	SetOsType(v string) *ListNodeInstanceTypeRequest
 	GetOsType() *string
 	SetPageNumber(v int32) *ListNodeInstanceTypeRequest
@@ -51,10 +55,11 @@ type ListNodeInstanceTypeRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	BizRegionId *string  `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	Cpu         *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Gpu         *float32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	GpuMemory   *int32   `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
+	BizRegionId           *string  `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	Cpu                   *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Gpu                   *float32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	GpuMemory             *int32   `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
+	InstanceTypeForModify *string  `json:"InstanceTypeForModify,omitempty" xml:"InstanceTypeForModify,omitempty"`
 	// The language that you want to use.
 	//
 	// Valid values:
@@ -76,6 +81,7 @@ type ListNodeInstanceTypeRequest struct {
 	NodeInstanceType       *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
 	NodeInstanceTypeFamily *string `json:"NodeInstanceTypeFamily,omitempty" xml:"NodeInstanceTypeFamily,omitempty"`
 	OrderBy                *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	OrderType              *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	// The operating system that is supported.
 	//
 	// Valid value:
@@ -141,6 +147,10 @@ func (s *ListNodeInstanceTypeRequest) GetGpuMemory() *int32 {
 	return s.GpuMemory
 }
 
+func (s *ListNodeInstanceTypeRequest) GetInstanceTypeForModify() *string {
+	return s.InstanceTypeForModify
+}
+
 func (s *ListNodeInstanceTypeRequest) GetLanguage() *string {
 	return s.Language
 }
@@ -159,6 +169,10 @@ func (s *ListNodeInstanceTypeRequest) GetNodeInstanceTypeFamily() *string {
 
 func (s *ListNodeInstanceTypeRequest) GetOrderBy() *string {
 	return s.OrderBy
+}
+
+func (s *ListNodeInstanceTypeRequest) GetOrderType() *string {
+	return s.OrderType
 }
 
 func (s *ListNodeInstanceTypeRequest) GetOsType() *string {
@@ -201,6 +215,11 @@ func (s *ListNodeInstanceTypeRequest) SetGpuMemory(v int32) *ListNodeInstanceTyp
 	return s
 }
 
+func (s *ListNodeInstanceTypeRequest) SetInstanceTypeForModify(v string) *ListNodeInstanceTypeRequest {
+	s.InstanceTypeForModify = &v
+	return s
+}
+
 func (s *ListNodeInstanceTypeRequest) SetLanguage(v string) *ListNodeInstanceTypeRequest {
 	s.Language = &v
 	return s
@@ -223,6 +242,11 @@ func (s *ListNodeInstanceTypeRequest) SetNodeInstanceTypeFamily(v string) *ListN
 
 func (s *ListNodeInstanceTypeRequest) SetOrderBy(v string) *ListNodeInstanceTypeRequest {
 	s.OrderBy = &v
+	return s
+}
+
+func (s *ListNodeInstanceTypeRequest) SetOrderType(v string) *ListNodeInstanceTypeRequest {
+	s.OrderType = &v
 	return s
 }
 
