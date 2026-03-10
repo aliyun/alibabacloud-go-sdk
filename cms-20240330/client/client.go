@@ -58,6 +58,104 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 添加记忆
+//
+// @param request - AddMemoriesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddMemoriesResponse
+func (client *Client) AddMemoriesWithOptions(workspace *string, memoryStoreName *string, request *AddMemoriesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddMemoriesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		body["agentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.AppId) {
+		body["appId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AsyncMode) {
+		body["asyncMode"] = request.AsyncMode
+	}
+
+	if !dara.IsNil(request.CustomInstructions) {
+		body["customInstructions"] = request.CustomInstructions
+	}
+
+	if !dara.IsNil(request.Infer) {
+		body["infer"] = request.Infer
+	}
+
+	if !dara.IsNil(request.Messages) {
+		body["messages"] = request.Messages
+	}
+
+	if !dara.IsNil(request.Metadata) {
+		body["metadata"] = request.Metadata
+	}
+
+	if !dara.IsNil(request.RunId) {
+		body["runId"] = request.RunId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		body["userId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddMemories"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/memorystore/" + dara.PercentEncode(dara.StringValue(memoryStoreName)) + "/memory"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddMemoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加记忆
+//
+// @param request - AddMemoriesRequest
+//
+// @return AddMemoriesResponse
+func (client *Client) AddMemories(workspace *string, memoryStoreName *string, request *AddMemoriesRequest) (_result *AddMemoriesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AddMemoriesResponse{}
+	_body, _err := client.AddMemoriesWithOptions(workspace, memoryStoreName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 修改资源所属资源组
 //
 // @param request - ChangeResourceGroupRequest
@@ -1010,6 +1108,88 @@ func (client *Client) CreateIntegrationPolicy(request *CreateIntegrationPolicyRe
 	headers := make(map[string]*string)
 	_result = &CreateIntegrationPolicyResponse{}
 	_body, _err := client.CreateIntegrationPolicyWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建记忆库
+//
+// @param request - CreateMemoryStoreRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMemoryStoreResponse
+func (client *Client) CreateMemoryStoreWithOptions(workspace *string, request *CreateMemoryStoreRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateMemoryStoreResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CustomExtractionStrategies) {
+		body["customExtractionStrategies"] = request.CustomExtractionStrategies
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ExtractionStrategies) {
+		body["extractionStrategies"] = request.ExtractionStrategies
+	}
+
+	if !dara.IsNil(request.MemoryStoreName) {
+		body["memoryStoreName"] = request.MemoryStoreName
+	}
+
+	if !dara.IsNil(request.ShortTermTtl) {
+		body["shortTermTtl"] = request.ShortTermTtl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMemoryStore"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/memorystore"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMemoryStoreResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建记忆库
+//
+// @param request - CreateMemoryStoreRequest
+//
+// @return CreateMemoryStoreResponse
+func (client *Client) CreateMemoryStore(workspace *string, request *CreateMemoryStoreRequest) (_result *CreateMemoryStoreResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateMemoryStoreResponse{}
+	_body, _err := client.CreateMemoryStoreWithOptions(workspace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2178,6 +2358,184 @@ func (client *Client) DeleteIntegrationPolicy(policyId *string, request *DeleteI
 	headers := make(map[string]*string)
 	_result = &DeleteIntegrationPolicyResponse{}
 	_body, _err := client.DeleteIntegrationPolicyWithOptions(policyId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除记忆
+//
+// @param request - DeleteMemoriesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMemoriesResponse
+func (client *Client) DeleteMemoriesWithOptions(workspace *string, memoryStoreName *string, request *DeleteMemoriesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoriesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["agentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.AppId) {
+		query["appId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.RunId) {
+		query["runId"] = request.RunId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["userId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMemories"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/memorystore/" + dara.PercentEncode(dara.StringValue(memoryStoreName)) + "/memory"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMemoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除记忆
+//
+// @param request - DeleteMemoriesRequest
+//
+// @return DeleteMemoriesResponse
+func (client *Client) DeleteMemories(workspace *string, memoryStoreName *string, request *DeleteMemoriesRequest) (_result *DeleteMemoriesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteMemoriesResponse{}
+	_body, _err := client.DeleteMemoriesWithOptions(workspace, memoryStoreName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除记忆
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMemoryResponse
+func (client *Client) DeleteMemoryWithOptions(workspace *string, memoryStoreName *string, memoryId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMemory"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/memorystore/" + dara.PercentEncode(dara.StringValue(memoryStoreName)) + "/memory/" + dara.PercentEncode(dara.StringValue(memoryId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMemoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除记忆
+//
+// @return DeleteMemoryResponse
+func (client *Client) DeleteMemory(workspace *string, memoryStoreName *string, memoryId *string) (_result *DeleteMemoryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteMemoryResponse{}
+	_body, _err := client.DeleteMemoryWithOptions(workspace, memoryStoreName, memoryId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除记忆库
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMemoryStoreResponse
+func (client *Client) DeleteMemoryStoreWithOptions(workspace *string, memoryStoreName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryStoreResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMemoryStore"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/memorystore/" + dara.PercentEncode(dara.StringValue(memoryStoreName))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMemoryStoreResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除记忆库
+//
+// @return DeleteMemoryStoreResponse
+func (client *Client) DeleteMemoryStore(workspace *string, memoryStoreName *string) (_result *DeleteMemoryStoreResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteMemoryStoreResponse{}
+	_body, _err := client.DeleteMemoryStoreWithOptions(workspace, memoryStoreName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3647,6 +4005,242 @@ func (client *Client) GetIntegrationVersionForCS(request *GetIntegrationVersionF
 	headers := make(map[string]*string)
 	_result = &GetIntegrationVersionForCSResponse{}
 	_body, _err := client.GetIntegrationVersionForCSWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询全部记忆
+//
+// @param request - GetMemoriesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMemoriesResponse
+func (client *Client) GetMemoriesWithOptions(workspace *string, memoryStoreName *string, request *GetMemoriesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoriesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		body["agentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.AppId) {
+		body["appId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.Page) {
+		body["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RunId) {
+		body["runId"] = request.RunId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		body["userId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMemories"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/memorystore/" + dara.PercentEncode(dara.StringValue(memoryStoreName)) + "/memory/query"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMemoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询全部记忆
+//
+// @param request - GetMemoriesRequest
+//
+// @return GetMemoriesResponse
+func (client *Client) GetMemories(workspace *string, memoryStoreName *string, request *GetMemoriesRequest) (_result *GetMemoriesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMemoriesResponse{}
+	_body, _err := client.GetMemoriesWithOptions(workspace, memoryStoreName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询记忆
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMemoryResponse
+func (client *Client) GetMemoryWithOptions(workspace *string, memoryStoreName *string, memoryId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMemory"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/memorystore/" + dara.PercentEncode(dara.StringValue(memoryStoreName)) + "/memory/" + dara.PercentEncode(dara.StringValue(memoryId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMemoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询记忆
+//
+// @return GetMemoryResponse
+func (client *Client) GetMemory(workspace *string, memoryStoreName *string, memoryId *string) (_result *GetMemoryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMemoryResponse{}
+	_body, _err := client.GetMemoryWithOptions(workspace, memoryStoreName, memoryId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询记忆历史记录
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMemoryHistoryResponse
+func (client *Client) GetMemoryHistoryWithOptions(workspace *string, memoryStoreName *string, memoryId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryHistoryResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMemoryHistory"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/memorystore/" + dara.PercentEncode(dara.StringValue(memoryStoreName)) + "/memory/" + dara.PercentEncode(dara.StringValue(memoryId)) + "/history"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMemoryHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询记忆历史记录
+//
+// @return GetMemoryHistoryResponse
+func (client *Client) GetMemoryHistory(workspace *string, memoryStoreName *string, memoryId *string) (_result *GetMemoryHistoryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMemoryHistoryResponse{}
+	_body, _err := client.GetMemoryHistoryWithOptions(workspace, memoryStoreName, memoryId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询记忆库
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMemoryStoreResponse
+func (client *Client) GetMemoryStoreWithOptions(workspace *string, memoryStoreName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryStoreResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMemoryStore"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/memorystore/" + dara.PercentEncode(dara.StringValue(memoryStoreName))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMemoryStoreResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询记忆库
+//
+// @return GetMemoryStoreResponse
+func (client *Client) GetMemoryStore(workspace *string, memoryStoreName *string) (_result *GetMemoryStoreResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMemoryStoreResponse{}
+	_body, _err := client.GetMemoryStoreWithOptions(workspace, memoryStoreName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5712,6 +6306,80 @@ func (client *Client) ListIntegrationPolicyStorageRequirements(policyId *string,
 
 // Summary:
 //
+// 查询记忆库列表
+//
+// @param request - ListMemoryStoresRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMemoryStoresResponse
+func (client *Client) ListMemoryStoresWithOptions(workspace *string, request *ListMemoryStoresRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMemoryStoresResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.MemoryStoreName) {
+		query["memoryStoreName"] = request.MemoryStoreName
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMemoryStores"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/memorystore"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMemoryStoresResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询记忆库列表
+//
+// @param request - ListMemoryStoresRequest
+//
+// @return ListMemoryStoresResponse
+func (client *Client) ListMemoryStores(workspace *string, request *ListMemoryStoresRequest) (_result *ListMemoryStoresResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMemoryStoresResponse{}
+	_body, _err := client.ListMemoryStoresWithOptions(workspace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Get Prometheus Instance Dashboard List
 //
 // Description:
@@ -6521,6 +7189,100 @@ func (client *Client) PutWorkspace(workspaceName *string, request *PutWorkspaceR
 	headers := make(map[string]*string)
 	_result = &PutWorkspaceResponse{}
 	_body, _err := client.PutWorkspaceWithOptions(workspaceName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 搜索记忆
+//
+// @param request - SearchMemoriesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchMemoriesResponse
+func (client *Client) SearchMemoriesWithOptions(workspace *string, memoryStoreName *string, request *SearchMemoriesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SearchMemoriesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		body["agentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.AppId) {
+		body["appId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.Metadata) {
+		body["metadata"] = request.Metadata
+	}
+
+	if !dara.IsNil(request.Query) {
+		body["query"] = request.Query
+	}
+
+	if !dara.IsNil(request.Rerank) {
+		body["rerank"] = request.Rerank
+	}
+
+	if !dara.IsNil(request.RunId) {
+		body["runId"] = request.RunId
+	}
+
+	if !dara.IsNil(request.TopK) {
+		body["topK"] = request.TopK
+	}
+
+	if !dara.IsNil(request.UserId) {
+		body["userId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SearchMemories"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/memorystore/" + dara.PercentEncode(dara.StringValue(memoryStoreName)) + "/memory/search"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchMemoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 搜索记忆
+//
+// @param request - SearchMemoriesRequest
+//
+// @return SearchMemoriesResponse
+func (client *Client) SearchMemories(workspace *string, memoryStoreName *string, request *SearchMemoriesRequest) (_result *SearchMemoriesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SearchMemoriesResponse{}
+	_body, _err := client.SearchMemoriesWithOptions(workspace, memoryStoreName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7359,6 +8121,154 @@ func (client *Client) UpdateIntegrationPolicy(integrationPolicyId *string, reque
 	headers := make(map[string]*string)
 	_result = &UpdateIntegrationPolicyResponse{}
 	_body, _err := client.UpdateIntegrationPolicyWithOptions(integrationPolicyId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改记忆
+//
+// @param request - UpdateMemoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMemoryResponse
+func (client *Client) UpdateMemoryWithOptions(workspace *string, memoryStoreName *string, memoryId *string, request *UpdateMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Metadata) {
+		body["metadata"] = request.Metadata
+	}
+
+	if !dara.IsNil(request.Text) {
+		body["text"] = request.Text
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMemory"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/memorystore/" + dara.PercentEncode(dara.StringValue(memoryStoreName)) + "/memory/" + dara.PercentEncode(dara.StringValue(memoryId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMemoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改记忆
+//
+// @param request - UpdateMemoryRequest
+//
+// @return UpdateMemoryResponse
+func (client *Client) UpdateMemory(workspace *string, memoryStoreName *string, memoryId *string, request *UpdateMemoryRequest) (_result *UpdateMemoryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateMemoryResponse{}
+	_body, _err := client.UpdateMemoryWithOptions(workspace, memoryStoreName, memoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改记忆库配置
+//
+// @param request - UpdateMemoryStoreRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMemoryStoreResponse
+func (client *Client) UpdateMemoryStoreWithOptions(workspace *string, memoryStoreName *string, request *UpdateMemoryStoreRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMemoryStoreResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CustomExtractionStrategies) {
+		body["customExtractionStrategies"] = request.CustomExtractionStrategies
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ExtractionStrategies) {
+		body["extractionStrategies"] = request.ExtractionStrategies
+	}
+
+	if !dara.IsNil(request.ShortTermTtl) {
+		body["shortTermTtl"] = request.ShortTermTtl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMemoryStore"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/memorystore/" + dara.PercentEncode(dara.StringValue(memoryStoreName))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMemoryStoreResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改记忆库配置
+//
+// @param request - UpdateMemoryStoreRequest
+//
+// @return UpdateMemoryStoreResponse
+func (client *Client) UpdateMemoryStore(workspace *string, memoryStoreName *string, request *UpdateMemoryStoreRequest) (_result *UpdateMemoryStoreResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateMemoryStoreResponse{}
+	_body, _err := client.UpdateMemoryStoreWithOptions(workspace, memoryStoreName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

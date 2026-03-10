@@ -9,14 +9,14 @@ type iIndexJsonKey interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetChn(v string) *IndexJsonKey
-	GetChn() *string
+	SetChn(v bool) *IndexJsonKey
+	GetChn() *bool
 	SetType(v string) *IndexJsonKey
 	GetType() *string
 }
 
 type IndexJsonKey struct {
-	Chn  *string `json:"chn,omitempty" xml:"chn,omitempty"`
+	Chn  *bool   `json:"chn,omitempty" xml:"chn,omitempty"`
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -28,7 +28,7 @@ func (s IndexJsonKey) GoString() string {
 	return s.String()
 }
 
-func (s *IndexJsonKey) GetChn() *string {
+func (s *IndexJsonKey) GetChn() *bool {
 	return s.Chn
 }
 
@@ -36,7 +36,7 @@ func (s *IndexJsonKey) GetType() *string {
 	return s.Type
 }
 
-func (s *IndexJsonKey) SetChn(v string) *IndexJsonKey {
+func (s *IndexJsonKey) SetChn(v bool) *IndexJsonKey {
 	s.Chn = &v
 	return s
 }
