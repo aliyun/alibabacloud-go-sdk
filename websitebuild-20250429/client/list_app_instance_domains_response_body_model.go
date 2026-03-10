@@ -414,7 +414,8 @@ type ListAppInstanceDomainsResponseBodyModuleData struct {
 	// ACTIVE
 	OverallStatus *string `json:"OverallStatus,omitempty" xml:"OverallStatus,omitempty"`
 	// Domain ownership information
-	Ownership *ListAppInstanceDomainsResponseBodyModuleDataOwnership `json:"Ownership,omitempty" xml:"Ownership,omitempty" type:"Struct"`
+	Ownership     *ListAppInstanceDomainsResponseBodyModuleDataOwnership     `json:"Ownership,omitempty" xml:"Ownership,omitempty" type:"Struct"`
+	Qualification *ListAppInstanceDomainsResponseBodyModuleDataQualification `json:"Qualification,omitempty" xml:"Qualification,omitempty" type:"Struct"`
 	// Domain resolution information
 	Resolution *ListAppInstanceDomainsResponseBodyModuleDataResolution `json:"Resolution,omitempty" xml:"Resolution,omitempty" type:"Struct"`
 	// Domain verification information
@@ -447,6 +448,10 @@ func (s *ListAppInstanceDomainsResponseBodyModuleData) GetOverallStatus() *strin
 
 func (s *ListAppInstanceDomainsResponseBodyModuleData) GetOwnership() *ListAppInstanceDomainsResponseBodyModuleDataOwnership {
 	return s.Ownership
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleData) GetQualification() *ListAppInstanceDomainsResponseBodyModuleDataQualification {
+	return s.Qualification
 }
 
 func (s *ListAppInstanceDomainsResponseBodyModuleData) GetResolution() *ListAppInstanceDomainsResponseBodyModuleDataResolution {
@@ -482,6 +487,11 @@ func (s *ListAppInstanceDomainsResponseBodyModuleData) SetOwnership(v *ListAppIn
 	return s
 }
 
+func (s *ListAppInstanceDomainsResponseBodyModuleData) SetQualification(v *ListAppInstanceDomainsResponseBodyModuleDataQualification) *ListAppInstanceDomainsResponseBodyModuleData {
+	s.Qualification = v
+	return s
+}
+
 func (s *ListAppInstanceDomainsResponseBodyModuleData) SetResolution(v *ListAppInstanceDomainsResponseBodyModuleDataResolution) *ListAppInstanceDomainsResponseBodyModuleData {
 	s.Resolution = v
 	return s
@@ -500,6 +510,11 @@ func (s *ListAppInstanceDomainsResponseBodyModuleData) Validate() error {
 	}
 	if s.Ownership != nil {
 		if err := s.Ownership.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Qualification != nil {
+		if err := s.Qualification.Validate(); err != nil {
 			return err
 		}
 	}
@@ -648,6 +663,51 @@ func (s *ListAppInstanceDomainsResponseBodyModuleDataOwnership) SetRootDomain(v 
 }
 
 func (s *ListAppInstanceDomainsResponseBodyModuleDataOwnership) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListAppInstanceDomainsResponseBodyModuleDataQualification struct {
+	IcpRecordNumber     *string `json:"IcpRecordNumber,omitempty" xml:"IcpRecordNumber,omitempty"`
+	IcpSiteRecordNumber *string `json:"IcpSiteRecordNumber,omitempty" xml:"IcpSiteRecordNumber,omitempty"`
+	PoliceRecordNumber  *string `json:"PoliceRecordNumber,omitempty" xml:"PoliceRecordNumber,omitempty"`
+}
+
+func (s ListAppInstanceDomainsResponseBodyModuleDataQualification) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListAppInstanceDomainsResponseBodyModuleDataQualification) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataQualification) GetIcpRecordNumber() *string {
+	return s.IcpRecordNumber
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataQualification) GetIcpSiteRecordNumber() *string {
+	return s.IcpSiteRecordNumber
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataQualification) GetPoliceRecordNumber() *string {
+	return s.PoliceRecordNumber
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataQualification) SetIcpRecordNumber(v string) *ListAppInstanceDomainsResponseBodyModuleDataQualification {
+	s.IcpRecordNumber = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataQualification) SetIcpSiteRecordNumber(v string) *ListAppInstanceDomainsResponseBodyModuleDataQualification {
+	s.IcpSiteRecordNumber = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataQualification) SetPoliceRecordNumber(v string) *ListAppInstanceDomainsResponseBodyModuleDataQualification {
+	s.PoliceRecordNumber = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataQualification) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -930,7 +990,8 @@ type ListAppInstanceDomainsResponseBodyModuleNext struct {
 	// ACTIVE
 	OverallStatus *string `json:"OverallStatus,omitempty" xml:"OverallStatus,omitempty"`
 	// Domain ownership information
-	Ownership *ListAppInstanceDomainsResponseBodyModuleNextOwnership `json:"Ownership,omitempty" xml:"Ownership,omitempty" type:"Struct"`
+	Ownership     *ListAppInstanceDomainsResponseBodyModuleNextOwnership     `json:"Ownership,omitempty" xml:"Ownership,omitempty" type:"Struct"`
+	Qualification *ListAppInstanceDomainsResponseBodyModuleNextQualification `json:"Qualification,omitempty" xml:"Qualification,omitempty" type:"Struct"`
 	// Domain resolution information
 	Resolution *ListAppInstanceDomainsResponseBodyModuleNextResolution `json:"Resolution,omitempty" xml:"Resolution,omitempty" type:"Struct"`
 	// Domain verification information
@@ -963,6 +1024,10 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNext) GetOverallStatus() *strin
 
 func (s *ListAppInstanceDomainsResponseBodyModuleNext) GetOwnership() *ListAppInstanceDomainsResponseBodyModuleNextOwnership {
 	return s.Ownership
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNext) GetQualification() *ListAppInstanceDomainsResponseBodyModuleNextQualification {
+	return s.Qualification
 }
 
 func (s *ListAppInstanceDomainsResponseBodyModuleNext) GetResolution() *ListAppInstanceDomainsResponseBodyModuleNextResolution {
@@ -998,6 +1063,11 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNext) SetOwnership(v *ListAppIn
 	return s
 }
 
+func (s *ListAppInstanceDomainsResponseBodyModuleNext) SetQualification(v *ListAppInstanceDomainsResponseBodyModuleNextQualification) *ListAppInstanceDomainsResponseBodyModuleNext {
+	s.Qualification = v
+	return s
+}
+
 func (s *ListAppInstanceDomainsResponseBodyModuleNext) SetResolution(v *ListAppInstanceDomainsResponseBodyModuleNextResolution) *ListAppInstanceDomainsResponseBodyModuleNext {
 	s.Resolution = v
 	return s
@@ -1016,6 +1086,11 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNext) Validate() error {
 	}
 	if s.Ownership != nil {
 		if err := s.Ownership.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Qualification != nil {
+		if err := s.Qualification.Validate(); err != nil {
 			return err
 		}
 	}
@@ -1149,6 +1224,51 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNextOwnership) SetProvider(v st
 }
 
 func (s *ListAppInstanceDomainsResponseBodyModuleNextOwnership) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListAppInstanceDomainsResponseBodyModuleNextQualification struct {
+	IcpRecordNumber     *string `json:"IcpRecordNumber,omitempty" xml:"IcpRecordNumber,omitempty"`
+	IcpSiteRecordNumber *string `json:"IcpSiteRecordNumber,omitempty" xml:"IcpSiteRecordNumber,omitempty"`
+	PoliceRecordNumber  *string `json:"PoliceRecordNumber,omitempty" xml:"PoliceRecordNumber,omitempty"`
+}
+
+func (s ListAppInstanceDomainsResponseBodyModuleNextQualification) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListAppInstanceDomainsResponseBodyModuleNextQualification) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextQualification) GetIcpRecordNumber() *string {
+	return s.IcpRecordNumber
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextQualification) GetIcpSiteRecordNumber() *string {
+	return s.IcpSiteRecordNumber
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextQualification) GetPoliceRecordNumber() *string {
+	return s.PoliceRecordNumber
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextQualification) SetIcpRecordNumber(v string) *ListAppInstanceDomainsResponseBodyModuleNextQualification {
+	s.IcpRecordNumber = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextQualification) SetIcpSiteRecordNumber(v string) *ListAppInstanceDomainsResponseBodyModuleNextQualification {
+	s.IcpSiteRecordNumber = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextQualification) SetPoliceRecordNumber(v string) *ListAppInstanceDomainsResponseBodyModuleNextQualification {
+	s.PoliceRecordNumber = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextQualification) Validate() error {
 	return dara.Validate(s)
 }
 

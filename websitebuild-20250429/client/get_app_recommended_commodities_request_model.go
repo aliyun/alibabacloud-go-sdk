@@ -11,6 +11,8 @@ type iGetAppRecommendedCommoditiesRequest interface {
 	GoString() string
 	SetBizId(v string) *GetAppRecommendedCommoditiesRequest
 	GetBizId() *string
+	SetResourceConditions(v string) *GetAppRecommendedCommoditiesRequest
+	GetResourceConditions() *string
 	SetScene(v string) *GetAppRecommendedCommoditiesRequest
 	GetScene() *string
 }
@@ -19,7 +21,8 @@ type GetAppRecommendedCommoditiesRequest struct {
 	// example:
 	//
 	// WD20250703155602000001
-	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BizId              *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	ResourceConditions *string `json:"ResourceConditions,omitempty" xml:"ResourceConditions,omitempty"`
 	// example:
 	//
 	// DataworksManualTask
@@ -38,12 +41,21 @@ func (s *GetAppRecommendedCommoditiesRequest) GetBizId() *string {
 	return s.BizId
 }
 
+func (s *GetAppRecommendedCommoditiesRequest) GetResourceConditions() *string {
+	return s.ResourceConditions
+}
+
 func (s *GetAppRecommendedCommoditiesRequest) GetScene() *string {
 	return s.Scene
 }
 
 func (s *GetAppRecommendedCommoditiesRequest) SetBizId(v string) *GetAppRecommendedCommoditiesRequest {
 	s.BizId = &v
+	return s
+}
+
+func (s *GetAppRecommendedCommoditiesRequest) SetResourceConditions(v string) *GetAppRecommendedCommoditiesRequest {
+	s.ResourceConditions = &v
 	return s
 }
 

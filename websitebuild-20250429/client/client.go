@@ -1463,6 +1463,10 @@ func (client *Client) GetAppRecommendedCommoditiesWithOptions(request *GetAppRec
 		query["BizId"] = request.BizId
 	}
 
+	if !dara.IsNil(request.ResourceConditions) {
+		query["ResourceConditions"] = request.ResourceConditions
+	}
+
 	if !dara.IsNil(request.Scene) {
 		query["Scene"] = request.Scene
 	}
