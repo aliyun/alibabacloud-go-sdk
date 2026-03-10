@@ -2692,6 +2692,140 @@ func (client *Client) CreateFileUncompressionTask(request *CreateFileUncompressi
 
 // Summary:
 //
+// 创建高光任务
+//
+// @param tmpReq - CreateHighlightTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHighlightTaskResponse
+func (client *Client) CreateHighlightTaskWithOptions(tmpReq *CreateHighlightTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateHighlightTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateHighlightTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CredentialConfig) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, dara.String("CredentialConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Edit) {
+		request.EditShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Edit, dara.String("Edit"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Highlight) {
+		request.HighlightShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Highlight, dara.String("Highlight"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Notification) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, dara.String("Notification"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Output) {
+		request.OutputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Output, dara.String("Output"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Sources) {
+		request.SourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Sources, dara.String("Sources"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Tags) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("Tags"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectName) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CredentialConfigShrink) {
+		body["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !dara.IsNil(request.EditShrink) {
+		body["Edit"] = request.EditShrink
+	}
+
+	if !dara.IsNil(request.HighlightShrink) {
+		body["Highlight"] = request.HighlightShrink
+	}
+
+	if !dara.IsNil(request.Mode) {
+		body["Mode"] = request.Mode
+	}
+
+	if !dara.IsNil(request.NotificationShrink) {
+		body["Notification"] = request.NotificationShrink
+	}
+
+	if !dara.IsNil(request.OutputShrink) {
+		body["Output"] = request.OutputShrink
+	}
+
+	if !dara.IsNil(request.SourcesShrink) {
+		body["Sources"] = request.SourcesShrink
+	}
+
+	if !dara.IsNil(request.TagsShrink) {
+		body["Tags"] = request.TagsShrink
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	if !dara.IsNil(request.UserData) {
+		body["UserData"] = request.UserData
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateHighlightTask"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateHighlightTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建高光任务
+//
+// @param request - CreateHighlightTaskRequest
+//
+// @return CreateHighlightTaskResponse
+func (client *Client) CreateHighlightTask(request *CreateHighlightTaskRequest) (_result *CreateHighlightTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateHighlightTaskResponse{}
+	_body, _err := client.CreateHighlightTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an image moderation task to ensure image content compliance. You can call this operation to identify inappropriate content, such as pornography, violence, terrorism, politically sensitive content, undesirable scenes, unauthorized logos, and non-compliant ads.
 //
 // Description:

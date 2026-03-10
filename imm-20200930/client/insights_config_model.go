@@ -14,6 +14,9 @@ type iInsightsConfig interface {
 }
 
 type InsightsConfig struct {
+	// example:
+	//
+	// zh-Hans
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 }
 

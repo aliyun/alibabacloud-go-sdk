@@ -16,6 +16,9 @@ type iDocumentParseQuestionOption interface {
 }
 
 type DocumentParseQuestionOption struct {
+	// example:
+	//
+	// 1
 	Count   *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	Extract *bool  `json:"Extract,omitempty" xml:"Extract,omitempty"`
 }
