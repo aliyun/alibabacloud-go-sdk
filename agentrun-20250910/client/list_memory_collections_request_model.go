@@ -21,6 +21,8 @@ type iListMemoryCollectionsRequest interface {
 	GetType() *string
 	SetWorkspaceId(v string) *ListMemoryCollectionsRequest
 	GetWorkspaceId() *string
+	SetWorkspaceIds(v string) *ListMemoryCollectionsRequest
+	GetWorkspaceIds() *string
 }
 
 type ListMemoryCollectionsRequest struct {
@@ -43,8 +45,9 @@ type ListMemoryCollectionsRequest struct {
 	// example:
 	//
 	// mem0
-	Type        *string `json:"type,omitempty" xml:"type,omitempty"`
-	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
+	WorkspaceId  *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	WorkspaceIds *string `json:"workspaceIds,omitempty" xml:"workspaceIds,omitempty"`
 }
 
 func (s ListMemoryCollectionsRequest) String() string {
@@ -79,6 +82,10 @@ func (s *ListMemoryCollectionsRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
 
+func (s *ListMemoryCollectionsRequest) GetWorkspaceIds() *string {
+	return s.WorkspaceIds
+}
+
 func (s *ListMemoryCollectionsRequest) SetMemoryCollectionName(v string) *ListMemoryCollectionsRequest {
 	s.MemoryCollectionName = &v
 	return s
@@ -106,6 +113,11 @@ func (s *ListMemoryCollectionsRequest) SetType(v string) *ListMemoryCollectionsR
 
 func (s *ListMemoryCollectionsRequest) SetWorkspaceId(v string) *ListMemoryCollectionsRequest {
 	s.WorkspaceId = &v
+	return s
+}
+
+func (s *ListMemoryCollectionsRequest) SetWorkspaceIds(v string) *ListMemoryCollectionsRequest {
+	s.WorkspaceIds = &v
 	return s
 }
 

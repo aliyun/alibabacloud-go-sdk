@@ -3226,6 +3226,10 @@ func (client *Client) ListMemoryCollectionsWithOptions(request *ListMemoryCollec
 		query["workspaceId"] = request.WorkspaceId
 	}
 
+	if !dara.IsNil(request.WorkspaceIds) {
+		query["workspaceIds"] = request.WorkspaceIds
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -3390,6 +3394,10 @@ func (client *Client) ListModelProxiesWithOptions(request *ListModelProxiesReque
 		query["workspaceId"] = request.WorkspaceId
 	}
 
+	if !dara.IsNil(request.WorkspaceIds) {
+		query["workspaceIds"] = request.WorkspaceIds
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -3474,6 +3482,10 @@ func (client *Client) ListModelServicesWithOptions(request *ListModelServicesReq
 
 	if !dara.IsNil(request.WorkspaceId) {
 		query["workspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.WorkspaceIds) {
+		query["workspaceIds"] = request.WorkspaceIds
 	}
 
 	req := &openapiutil.OpenApiRequest{
