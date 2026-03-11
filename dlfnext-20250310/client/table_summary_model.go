@@ -55,25 +55,57 @@ type iTableSummary interface {
 
 type TableSummary struct {
 	// Latest snapshot storage size
+	//
+	// example:
+	//
+	// 1744970111419
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
 	// Database name
-	DatabaseName           *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
-	GeneratedDate          *string `json:"generatedDate,omitempty" xml:"generatedDate,omitempty"`
-	LastAccessTime         *int64  `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
-	ObjTypeArchiveSize     *int64  `json:"objTypeArchiveSize,omitempty" xml:"objTypeArchiveSize,omitempty"`
-	ObjTypeColdArchiveSize *int64  `json:"objTypeColdArchiveSize,omitempty" xml:"objTypeColdArchiveSize,omitempty"`
-	ObjTypeIaSize          *int64  `json:"objTypeIaSize,omitempty" xml:"objTypeIaSize,omitempty"`
-	ObjTypeStandardSize    *int64  `json:"objTypeStandardSize,omitempty" xml:"objTypeStandardSize,omitempty"`
+	//
+	// example:
+	//
+	// default
+	DatabaseName *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
+	// example:
+	//
+	// 2025-06-01
+	GeneratedDate *string `json:"generatedDate,omitempty" xml:"generatedDate,omitempty"`
+	// example:
+	//
+	// 1744970111419
+	LastAccessTime         *int64 `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
+	ObjTypeArchiveSize     *int64 `json:"objTypeArchiveSize,omitempty" xml:"objTypeArchiveSize,omitempty"`
+	ObjTypeColdArchiveSize *int64 `json:"objTypeColdArchiveSize,omitempty" xml:"objTypeColdArchiveSize,omitempty"`
+	ObjTypeIaSize          *int64 `json:"objTypeIaSize,omitempty" xml:"objTypeIaSize,omitempty"`
+	ObjTypeStandardSize    *int64 `json:"objTypeStandardSize,omitempty" xml:"objTypeStandardSize,omitempty"`
 	// Creation timestamp in milliseconds
-	PartitionCount         *int64             `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
+	//
+	// example:
+	//
+	// 10
+	PartitionCount *int64 `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
+	// example:
+	//
+	// oss://clg-xxxx/db-xxxx/tbl-xxxx
 	Path                   *string            `json:"path,omitempty" xml:"path,omitempty"`
 	StorageActionParams    map[string]*string `json:"storageActionParams,omitempty" xml:"storageActionParams,omitempty"`
 	StorageActionTimestamp *int64             `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
 	StorageClass           *string            `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
 	// Table name
+	//
+	// example:
+	//
+	// table1
 	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
 	// 30-day access count
-	TotalFileCount       *int64 `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
+	//
+	// example:
+	//
+	// 100
+	TotalFileCount *int64 `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
+	// example:
+	//
+	// 1024
 	TotalFileSizeInBytes *int64 `json:"totalFileSizeInBytes,omitempty" xml:"totalFileSizeInBytes,omitempty"`
 	TotalMetaFileCount   *int64 `json:"totalMetaFileCount,omitempty" xml:"totalMetaFileCount,omitempty"`
 	TotalMetaSizeInBytes *int64 `json:"totalMetaSizeInBytes,omitempty" xml:"totalMetaSizeInBytes,omitempty"`

@@ -42,10 +42,17 @@ type iCatalogSummary interface {
 }
 
 type CatalogSummary struct {
+	// example:
+	//
+	// 1000
 	ApiVisitCountMonthly   *int64     `json:"apiVisitCountMonthly,omitempty" xml:"apiVisitCountMonthly,omitempty"`
 	DatabaseCount          *MoMValues `json:"databaseCount,omitempty" xml:"databaseCount,omitempty"`
 	FileAccessCountMonthly *int64     `json:"fileAccessCountMonthly,omitempty" xml:"fileAccessCountMonthly,omitempty"`
 	// Update date of the statistics
+	//
+	// example:
+	//
+	// 2025-01-01
 	GeneratedDate          *string    `json:"generatedDate,omitempty" xml:"generatedDate,omitempty"`
 	ObjTypeArchiveSize     *int64     `json:"objTypeArchiveSize,omitempty" xml:"objTypeArchiveSize,omitempty"`
 	ObjTypeColdArchiveSize *int64     `json:"objTypeColdArchiveSize,omitempty" xml:"objTypeColdArchiveSize,omitempty"`
@@ -53,11 +60,14 @@ type CatalogSummary struct {
 	ObjTypeStandardSize    *int64     `json:"objTypeStandardSize,omitempty" xml:"objTypeStandardSize,omitempty"`
 	PartitionCount         *MoMValues `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
 	TableCount             *MoMValues `json:"tableCount,omitempty" xml:"tableCount,omitempty"`
-	ThroughputMonthly      *int64     `json:"throughputMonthly,omitempty" xml:"throughputMonthly,omitempty"`
-	TotalFileCount         *MoMValues `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
-	TotalFileSizeInBytes   *MoMValues `json:"totalFileSizeInBytes,omitempty" xml:"totalFileSizeInBytes,omitempty"`
-	TotalMetaFileCount     *MoMValues `json:"totalMetaFileCount,omitempty" xml:"totalMetaFileCount,omitempty"`
-	TotalMetaSizeInBytes   *MoMValues `json:"totalMetaSizeInBytes,omitempty" xml:"totalMetaSizeInBytes,omitempty"`
+	// example:
+	//
+	// 1024
+	ThroughputMonthly    *int64     `json:"throughputMonthly,omitempty" xml:"throughputMonthly,omitempty"`
+	TotalFileCount       *MoMValues `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
+	TotalFileSizeInBytes *MoMValues `json:"totalFileSizeInBytes,omitempty" xml:"totalFileSizeInBytes,omitempty"`
+	TotalMetaFileCount   *MoMValues `json:"totalMetaFileCount,omitempty" xml:"totalMetaFileCount,omitempty"`
+	TotalMetaSizeInBytes *MoMValues `json:"totalMetaSizeInBytes,omitempty" xml:"totalMetaSizeInBytes,omitempty"`
 }
 
 func (s CatalogSummary) String() string {

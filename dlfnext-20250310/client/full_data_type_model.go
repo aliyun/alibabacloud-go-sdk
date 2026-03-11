@@ -25,8 +25,11 @@ type FullDataType struct {
 	Element *FullDataType `json:"element,omitempty" xml:"element,omitempty"`
 	Fields  []*DataField  `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
 	Key     *FullDataType `json:"key,omitempty" xml:"key,omitempty"`
-	Type    *string       `json:"type,omitempty" xml:"type,omitempty"`
-	Value   *FullDataType `json:"value,omitempty" xml:"value,omitempty"`
+	// example:
+	//
+	// STRING
+	Type  *string       `json:"type,omitempty" xml:"type,omitempty"`
+	Value *FullDataType `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s FullDataType) String() string {

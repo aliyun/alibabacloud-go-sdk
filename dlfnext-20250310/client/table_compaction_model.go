@@ -24,20 +24,40 @@ type iTableCompaction interface {
 }
 
 type TableCompaction struct {
-	CatalogId *string  `json:"catalogId,omitempty" xml:"catalogId,omitempty"`
-	CuUsage   *float64 `json:"cuUsage,omitempty" xml:"cuUsage,omitempty"`
+	// example:
+	//
+	// clg-paimon-xxx
+	CatalogId *string `json:"catalogId,omitempty" xml:"catalogId,omitempty"`
+	// example:
+	//
+	// 1
+	CuUsage *float64 `json:"cuUsage,omitempty" xml:"cuUsage,omitempty"`
 	// Deprecated
 	//
 	// if can be null:
 	// true
-	LastCompactedFileTime   *int64 `json:"lastCompactedFileTime,omitempty" xml:"lastCompactedFileTime,omitempty"`
+	//
+	// example:
+	//
+	// 1759111660075
+	LastCompactedFileTime *int64 `json:"lastCompactedFileTime,omitempty" xml:"lastCompactedFileTime,omitempty"`
+	// example:
+	//
+	// 1760321763633
 	LatencyFileEarliestTime *int64 `json:"latencyFileEarliestTime,omitempty" xml:"latencyFileEarliestTime,omitempty"`
 	// Deprecated
 	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// 1
 	MaxLevel0FileCount *string `json:"maxLevel0FileCount,omitempty" xml:"maxLevel0FileCount,omitempty"`
-	TableId            *string `json:"tableId,omitempty" xml:"tableId,omitempty"`
+	// example:
+	//
+	// tbl-xxx
+	TableId *string `json:"tableId,omitempty" xml:"tableId,omitempty"`
 }
 
 func (s TableCompaction) String() string {

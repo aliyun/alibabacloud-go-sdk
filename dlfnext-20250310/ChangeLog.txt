@@ -1,3 +1,7 @@
+2026-03-11 Version: v3.6.0
+- Support API GetVpcConfig.
+
+
 2026-02-03 Version: v3.5.1
 - Generated golang 2025-03-10 for DlfNext.
 

@@ -20,9 +20,21 @@ type iIcebergPartitionField interface {
 }
 
 type IcebergPartitionField struct {
-	FieldId   *int64  `json:"fieldId,omitempty" xml:"fieldId,omitempty"`
-	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
-	SourceId  *int64  `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// example:
+	//
+	// 1
+	FieldId *int64 `json:"fieldId,omitempty" xml:"fieldId,omitempty"`
+	// example:
+	//
+	// ts_day
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 0
+	SourceId *int64 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// example:
+	//
+	// day
 	Transform *string `json:"transform,omitempty" xml:"transform,omitempty"`
 }
 

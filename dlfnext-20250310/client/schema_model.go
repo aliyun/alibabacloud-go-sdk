@@ -22,6 +22,9 @@ type iSchema interface {
 }
 
 type Schema struct {
+	// example:
+	//
+	// description
 	Comment       *string            `json:"comment,omitempty" xml:"comment,omitempty"`
 	Fields        []*DataField       `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
 	Options       map[string]*string `json:"options,omitempty" xml:"options,omitempty"`

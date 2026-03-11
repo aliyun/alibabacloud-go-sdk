@@ -30,14 +30,41 @@ type iUser interface {
 }
 
 type User struct {
-	CreatedAt     *int64  `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CreatedBy     *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	DisplayName   *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Type          *string `json:"type,omitempty" xml:"type,omitempty"`
-	UpdatedAt     *int64  `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	UpdatedBy     *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
-	UserId        *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	UserName      *string `json:"userName,omitempty" xml:"userName,omitempty"`
+	// example:
+	//
+	// 1744970111419
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// example:
+	//
+	// user_display_name
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// example:
+	//
+	// RAM_USER
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 1744970111419
+	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	UpdatedBy *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	// example:
+	//
+	// 222748924538****
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// example:
+	//
+	// user_name
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
+	// example:
+	//
+	// acs:ram::[accountId]:user/user_name
 	UserPrincipal *string `json:"userPrincipal,omitempty" xml:"userPrincipal,omitempty"`
 }
 

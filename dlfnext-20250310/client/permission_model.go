@@ -32,16 +32,31 @@ type iPermission interface {
 }
 
 type Permission struct {
-	Access       *string            `json:"access,omitempty" xml:"access,omitempty"`
-	Columns      *PermissionColumns `json:"columns,omitempty" xml:"columns,omitempty" type:"Struct"`
-	Database     *string            `json:"database,omitempty" xml:"database,omitempty"`
-	ExpireTime   *string            `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	Function     *string            `json:"function,omitempty" xml:"function,omitempty"`
-	Principal    *string            `json:"principal,omitempty" xml:"principal,omitempty"`
-	ResourceType *string            `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	RowFilter    *RowFilter         `json:"rowFilter,omitempty" xml:"rowFilter,omitempty"`
-	Table        *string            `json:"table,omitempty" xml:"table,omitempty"`
-	View         *string            `json:"view,omitempty" xml:"view,omitempty"`
+	// example:
+	//
+	// DROP
+	Access  *string            `json:"access,omitempty" xml:"access,omitempty"`
+	Columns *PermissionColumns `json:"columns,omitempty" xml:"columns,omitempty" type:"Struct"`
+	// example:
+	//
+	// database_name
+	Database   *string `json:"database,omitempty" xml:"database,omitempty"`
+	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	Function   *string `json:"function,omitempty" xml:"function,omitempty"`
+	// example:
+	//
+	// acs:ram::[accountId]:user/user_name
+	Principal *string `json:"principal,omitempty" xml:"principal,omitempty"`
+	// example:
+	//
+	// CATALOG
+	ResourceType *string    `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	RowFilter    *RowFilter `json:"rowFilter,omitempty" xml:"rowFilter,omitempty"`
+	// example:
+	//
+	// table_name
+	Table *string `json:"table,omitempty" xml:"table,omitempty"`
+	View  *string `json:"view,omitempty" xml:"view,omitempty"`
 }
 
 func (s Permission) String() string {

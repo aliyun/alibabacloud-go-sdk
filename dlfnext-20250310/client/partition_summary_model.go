@@ -35,23 +35,54 @@ type iPartitionSummary interface {
 
 type PartitionSummary struct {
 	// Partition creation timestamp in milliseconds
+	//
+	// example:
+	//
+	// 1744970111419
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
 	// Database name
+	//
+	// example:
+	//
+	// default
 	DatabaseName *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
 	// Total files in partition
+	//
+	// example:
+	//
+	// 1744970111419
 	LastAccessTime *int64 `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
 	// Partition identifier
+	//
+	// example:
+	//
+	// hh=18
 	PartitionName          *string            `json:"partitionName,omitempty" xml:"partitionName,omitempty"`
 	StorageActionParams    map[string]*string `json:"storageActionParams,omitempty" xml:"storageActionParams,omitempty"`
 	StorageActionTimestamp *int64             `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
 	StorageClass           *string            `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
 	// Table name
+	//
+	// example:
+	//
+	// table1
 	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
 	// 24h access count
+	//
+	// example:
+	//
+	// 2
 	TotalFileCount *int64 `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
 	// Last data access timestamp in milliseconds
+	//
+	// example:
+	//
+	// 2048
 	TotalFileSizeInBytes *int64 `json:"totalFileSizeInBytes,omitempty" xml:"totalFileSizeInBytes,omitempty"`
-	UpdatedAt            *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// example:
+	//
+	// 1744970111419
+	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
 }
 
 func (s PartitionSummary) String() string {

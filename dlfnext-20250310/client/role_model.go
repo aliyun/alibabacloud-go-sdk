@@ -32,16 +32,43 @@ type iRole interface {
 }
 
 type Role struct {
-	CreatedAt     *int64  `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CreatedBy     *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	Description   *string `json:"description,omitempty" xml:"description,omitempty"`
-	DisplayName   *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	IsPredefined  *string `json:"isPredefined,omitempty" xml:"isPredefined,omitempty"`
-	RoleName      *string `json:"roleName,omitempty" xml:"roleName,omitempty"`
+	// example:
+	//
+	// 1744970111419
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// example:
+	//
+	// role_description
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// role_display_name
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// example:
+	//
+	// true
+	IsPredefined *string `json:"isPredefined,omitempty" xml:"isPredefined,omitempty"`
+	// example:
+	//
+	// role_name
+	RoleName *string `json:"roleName,omitempty" xml:"roleName,omitempty"`
+	// example:
+	//
+	// acs:dlf::[accountId]:role/role_name
 	RolePrincipal *string `json:"rolePrincipal,omitempty" xml:"rolePrincipal,omitempty"`
-	UpdatedAt     *int64  `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	UpdatedBy     *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
-	Users         []*User `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1744970111419
+	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	UpdatedBy *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	Users     []*User `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
 }
 
 func (s Role) String() string {

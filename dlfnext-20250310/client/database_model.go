@@ -30,15 +30,39 @@ type iDatabase interface {
 }
 
 type Database struct {
-	CreatedAt *int64             `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CreatedBy *string            `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	Id        *string            `json:"id,omitempty" xml:"id,omitempty"`
-	Location  *string            `json:"location,omitempty" xml:"location,omitempty"`
-	Name      *string            `json:"name,omitempty" xml:"name,omitempty"`
-	Options   map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
-	Owner     *string            `json:"owner,omitempty" xml:"owner,omitempty"`
-	UpdatedAt *int64             `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	UpdatedBy *string            `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	// example:
+	//
+	// 1744970111419
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// example:
+	//
+	// 1
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// oss://clg-paimon-xxx/db-xxx
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// example:
+	//
+	// test_database
+	Name    *string            `json:"name,omitempty" xml:"name,omitempty"`
+	Options map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// example:
+	//
+	// 1744970111419
+	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	UpdatedBy *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
 }
 
 func (s Database) String() string {

@@ -40,20 +40,58 @@ type iCacheCluster interface {
 }
 
 type CacheCluster struct {
-	ClusterId             *string                  `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	ClusterName           *string                  `json:"clusterName,omitempty" xml:"clusterName,omitempty"`
-	CreatedAt             *int64                   `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CreatedBy             *string                  `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	DeployInstanceVersion *string                  `json:"deployInstanceVersion,omitempty" xml:"deployInstanceVersion,omitempty"`
-	DeployOptionsVersion  *int64                   `json:"deployOptionsVersion,omitempty" xml:"deployOptionsVersion,omitempty"`
-	InstanceVersion       *string                  `json:"instanceVersion,omitempty" xml:"instanceVersion,omitempty"`
-	Options               map[string]*string       `json:"options,omitempty" xml:"options,omitempty"`
-	OptionsVersion        *int64                   `json:"optionsVersion,omitempty" xml:"optionsVersion,omitempty"`
-	Status                *string                  `json:"status,omitempty" xml:"status,omitempty"`
-	UpdatedAt             *int64                   `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	UpdatedBy             *string                  `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
-	VSwitches             []*CacheClusterVSwitches `json:"vSwitches,omitempty" xml:"vSwitches,omitempty" type:"Repeated"`
-	VpcId                 *string                  `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// example:
+	//
+	// dc-wqewqr*****
+	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	// example:
+	//
+	// cluster_name
+	ClusterName *string `json:"clusterName,omitempty" xml:"clusterName,omitempty"`
+	// example:
+	//
+	// 1744970111419
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// example:
+	//
+	// 1.0.0
+	DeployInstanceVersion *string `json:"deployInstanceVersion,omitempty" xml:"deployInstanceVersion,omitempty"`
+	// example:
+	//
+	// 1.0.0
+	DeployOptionsVersion *int64 `json:"deployOptionsVersion,omitempty" xml:"deployOptionsVersion,omitempty"`
+	// example:
+	//
+	// 1.0.0
+	InstanceVersion *string            `json:"instanceVersion,omitempty" xml:"instanceVersion,omitempty"`
+	Options         map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
+	// example:
+	//
+	// 1.0.0
+	OptionsVersion *int64 `json:"optionsVersion,omitempty" xml:"optionsVersion,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 1764555848748
+	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	UpdatedBy *string                  `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	VSwitches []*CacheClusterVSwitches `json:"vSwitches,omitempty" xml:"vSwitches,omitempty" type:"Repeated"`
+	// VPC ID
+	//
+	// example:
+	//
+	// vpc-2ze****
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
 func (s CacheCluster) String() string {
@@ -204,8 +242,14 @@ func (s *CacheCluster) Validate() error {
 }
 
 type CacheClusterVSwitches struct {
+	// example:
+	//
+	// vsw-bp1thxw8sgypzj2j*****
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	Zone      *string `json:"zone,omitempty" xml:"zone,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-e
+	Zone *string `json:"zone,omitempty" xml:"zone,omitempty"`
 }
 
 func (s CacheClusterVSwitches) String() string {

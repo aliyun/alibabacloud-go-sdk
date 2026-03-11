@@ -28,14 +28,35 @@ type iView interface {
 }
 
 type View struct {
-	CreatedAt *int64      `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CreatedBy *string     `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	Id        *string     `json:"id,omitempty" xml:"id,omitempty"`
-	Name      *string     `json:"name,omitempty" xml:"name,omitempty"`
-	Owner     *string     `json:"owner,omitempty" xml:"owner,omitempty"`
-	Schema    *ViewSchema `json:"schema,omitempty" xml:"schema,omitempty"`
-	UpdatedAt *int64      `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	UpdatedBy *string     `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	// example:
+	//
+	// 1744970111419
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// example:
+	//
+	// 1
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// view_test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	Owner  *string     `json:"owner,omitempty" xml:"owner,omitempty"`
+	Schema *ViewSchema `json:"schema,omitempty" xml:"schema,omitempty"`
+	// example:
+	//
+	// 1744970111419
+	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	UpdatedBy *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
 }
 
 func (s View) String() string {

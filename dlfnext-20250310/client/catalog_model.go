@@ -36,18 +36,41 @@ type iCatalog interface {
 }
 
 type Catalog struct {
-	CreatedAt *int64             `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CreatedBy *string            `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	Id        *string            `json:"id,omitempty" xml:"id,omitempty"`
-	IsShared  *bool              `json:"isShared,omitempty" xml:"isShared,omitempty"`
-	Name      *string            `json:"name,omitempty" xml:"name,omitempty"`
-	Options   map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
-	Owner     *string            `json:"owner,omitempty" xml:"owner,omitempty"`
-	ShareId   *string            `json:"shareId,omitempty" xml:"shareId,omitempty"`
-	Status    *string            `json:"status,omitempty" xml:"status,omitempty"`
-	Type      *string            `json:"type,omitempty" xml:"type,omitempty"`
-	UpdatedAt *int64             `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	UpdatedBy *string            `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	// example:
+	//
+	// 1744970111419
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// example:
+	//
+	// clg-paimon-xxxx
+	Id       *string `json:"id,omitempty" xml:"id,omitempty"`
+	IsShared *bool   `json:"isShared,omitempty" xml:"isShared,omitempty"`
+	// example:
+	//
+	// test_catalog
+	Name    *string            `json:"name,omitempty" xml:"name,omitempty"`
+	Options map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
+	// Owner。
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	Owner   *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	ShareId *string `json:"shareId,omitempty" xml:"shareId,omitempty"`
+	Status  *string `json:"status,omitempty" xml:"status,omitempty"`
+	Type    *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 1744970111419
+	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	UpdatedBy *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
 }
 
 func (s Catalog) String() string {

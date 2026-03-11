@@ -32,16 +32,39 @@ type iIcebergSnapshot interface {
 }
 
 type IcebergSnapshot struct {
-	AddedRows       *int64             `json:"addedRows,omitempty" xml:"addedRows,omitempty"`
-	Id              *int64             `json:"id,omitempty" xml:"id,omitempty"`
-	IdString        *string            `json:"idString,omitempty" xml:"idString,omitempty"`
-	Operation       *string            `json:"operation,omitempty" xml:"operation,omitempty"`
-	ParentId        *int64             `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	ParentIdString  *string            `json:"parentIdString,omitempty" xml:"parentIdString,omitempty"`
-	SchemaId        *int64             `json:"schemaId,omitempty" xml:"schemaId,omitempty"`
-	SequenceNumber  *int64             `json:"sequenceNumber,omitempty" xml:"sequenceNumber,omitempty"`
-	Summary         map[string]*string `json:"summary,omitempty" xml:"summary,omitempty"`
-	TimestampMillis *int64             `json:"timestampMillis,omitempty" xml:"timestampMillis,omitempty"`
+	// example:
+	//
+	// 20
+	AddedRows *int64 `json:"addedRows,omitempty" xml:"addedRows,omitempty"`
+	// id
+	//
+	// example:
+	//
+	// 2443368274334000657
+	Id       *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	IdString *string `json:"idString,omitempty" xml:"idString,omitempty"`
+	// example:
+	//
+	// append
+	Operation *string `json:"operation,omitempty" xml:"operation,omitempty"`
+	// example:
+	//
+	// 0
+	ParentId       *int64  `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	ParentIdString *string `json:"parentIdString,omitempty" xml:"parentIdString,omitempty"`
+	// example:
+	//
+	// 0
+	SchemaId *int64 `json:"schemaId,omitempty" xml:"schemaId,omitempty"`
+	// example:
+	//
+	// 1
+	SequenceNumber *int64             `json:"sequenceNumber,omitempty" xml:"sequenceNumber,omitempty"`
+	Summary        map[string]*string `json:"summary,omitempty" xml:"summary,omitempty"`
+	// example:
+	//
+	// 1750313724369
+	TimestampMillis *int64 `json:"timestampMillis,omitempty" xml:"timestampMillis,omitempty"`
 }
 
 func (s IcebergSnapshot) String() string {

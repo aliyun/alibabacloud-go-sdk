@@ -22,11 +22,17 @@ type iViewSchema interface {
 }
 
 type ViewSchema struct {
+	// example:
+	//
+	// comment
 	Comment  *string            `json:"comment,omitempty" xml:"comment,omitempty"`
 	Dialects map[string]*string `json:"dialects,omitempty" xml:"dialects,omitempty"`
 	Fields   []*DataField       `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
 	Options  map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
-	Query    *string            `json:"query,omitempty" xml:"query,omitempty"`
+	// example:
+	//
+	// select id from t1;
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 }
 
 func (s ViewSchema) String() string {

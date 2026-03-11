@@ -26,13 +26,34 @@ type iReceiver interface {
 }
 
 type Receiver struct {
-	Comment          *string `json:"comment,omitempty" xml:"comment,omitempty"`
-	CreatedAt        *int64  `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CreatedBy        *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	ReceiverName     *string `json:"receiverName,omitempty" xml:"receiverName,omitempty"`
-	ReceiverTenantId *int64  `json:"receiverTenantId,omitempty" xml:"receiverTenantId,omitempty"`
-	UpdatedAt        *int64  `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	UpdatedBy        *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	// example:
+	//
+	// comment
+	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// example:
+	//
+	// 1744970111419
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// example:
+	//
+	// receiver_name
+	ReceiverName *string `json:"receiverName,omitempty" xml:"receiverName,omitempty"`
+	// example:
+	//
+	// 1111
+	ReceiverTenantId *int64 `json:"receiverTenantId,omitempty" xml:"receiverTenantId,omitempty"`
+	// example:
+	//
+	// 1744970111419
+	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	UpdatedBy *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
 }
 
 func (s Receiver) String() string {

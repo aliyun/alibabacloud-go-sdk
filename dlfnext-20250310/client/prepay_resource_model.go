@@ -26,12 +26,39 @@ type iPrepayResource interface {
 }
 
 type PrepayResource struct {
-	CatalogId      *string `json:"catalogId,omitempty" xml:"catalogId,omitempty"`
-	CatalogName    *string `json:"catalogName,omitempty" xml:"catalogName,omitempty"`
-	Cu             *int32  `json:"cu,omitempty" xml:"cu,omitempty"`
-	ExpireTime     *int64  `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	GmtCreate      *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	InstanceId     *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// clg-xxxx
+	CatalogId *string `json:"catalogId,omitempty" xml:"catalogId,omitempty"`
+	// example:
+	//
+	// test_catalog
+	CatalogName *string `json:"catalogName,omitempty" xml:"catalogName,omitempty"`
+	// example:
+	//
+	// 10
+	Cu *int32 `json:"cu,omitempty" xml:"cu,omitempty"`
+	// example:
+	//
+	// 1769356800000
+	ExpireTime *int64 `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// example:
+	//
+	// 1764070447351
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// dlf-cu-quota-xxxx
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// RUNNING
+	//
+	// UPGRADING
+	//
+	// CEASED
+	//
+	// RELEASED
 	InstanceStatus *string `json:"instanceStatus,omitempty" xml:"instanceStatus,omitempty"`
 }
 

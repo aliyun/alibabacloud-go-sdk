@@ -40,20 +40,59 @@ type iPartition interface {
 }
 
 type Partition struct {
-	CreatedAt              *int64                 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CreatedBy              *string                `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	Done                   *bool                  `json:"done,omitempty" xml:"done,omitempty"`
-	FileCount              *int64                 `json:"fileCount,omitempty" xml:"fileCount,omitempty"`
-	FileSizeInBytes        *int64                 `json:"fileSizeInBytes,omitempty" xml:"fileSizeInBytes,omitempty"`
-	LastFileCreationTime   *int64                 `json:"lastFileCreationTime,omitempty" xml:"lastFileCreationTime,omitempty"`
-	RecordCount            *int64                 `json:"recordCount,omitempty" xml:"recordCount,omitempty"`
-	Spec                   map[string]interface{} `json:"spec,omitempty" xml:"spec,omitempty"`
-	StorageAction          *string                `json:"storageAction,omitempty" xml:"storageAction,omitempty"`
-	StorageActionTimestamp *int64                 `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
-	StorageClass           *string                `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
-	TotalBuckets           *int32                 `json:"totalBuckets,omitempty" xml:"totalBuckets,omitempty"`
-	UpdatedAt              *int64                 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	UpdatedBy              *string                `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	// example:
+	//
+	// 1747120676378
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// example:
+	//
+	// true
+	Done *bool `json:"done,omitempty" xml:"done,omitempty"`
+	// example:
+	//
+	// 1
+	FileCount *int64 `json:"fileCount,omitempty" xml:"fileCount,omitempty"`
+	// example:
+	//
+	// 1
+	FileSizeInBytes *int64 `json:"fileSizeInBytes,omitempty" xml:"fileSizeInBytes,omitempty"`
+	// example:
+	//
+	// 1741701564261
+	LastFileCreationTime *int64 `json:"lastFileCreationTime,omitempty" xml:"lastFileCreationTime,omitempty"`
+	// example:
+	//
+	// 1
+	RecordCount *int64 `json:"recordCount,omitempty" xml:"recordCount,omitempty"`
+	// example:
+	//
+	// {"year":"2025"}
+	Spec map[string]interface{} `json:"spec,omitempty" xml:"spec,omitempty"`
+	// example:
+	//
+	// COMPLETE
+	StorageAction *string `json:"storageAction,omitempty" xml:"storageAction,omitempty"`
+	// example:
+	//
+	// 1758189669915
+	StorageActionTimestamp *int64 `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
+	// example:
+	//
+	// STANDARD
+	StorageClass *string `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
+	TotalBuckets *int32  `json:"totalBuckets,omitempty" xml:"totalBuckets,omitempty"`
+	// example:
+	//
+	// 1744970111419
+	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	UpdatedBy *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
 }
 
 func (s Partition) String() string {

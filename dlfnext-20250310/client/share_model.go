@@ -32,16 +32,43 @@ type iShare interface {
 }
 
 type Share struct {
-	Comment          *string `json:"comment,omitempty" xml:"comment,omitempty"`
-	CreatedAt        *int64  `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CreatedBy        *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	EnableWrite      *bool   `json:"enableWrite,omitempty" xml:"enableWrite,omitempty"`
-	Owner            *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	ProviderTenantId *int64  `json:"providerTenantId,omitempty" xml:"providerTenantId,omitempty"`
-	ShareId          *string `json:"shareId,omitempty" xml:"shareId,omitempty"`
-	ShareName        *string `json:"shareName,omitempty" xml:"shareName,omitempty"`
-	UpdatedAt        *int64  `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	UpdatedBy        *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	// example:
+	//
+	// demo
+	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// example:
+	//
+	// 1744970111419
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	CreatedBy   *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	EnableWrite *bool   `json:"enableWrite,omitempty" xml:"enableWrite,omitempty"`
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// example:
+	//
+	// 1111
+	ProviderTenantId *int64 `json:"providerTenantId,omitempty" xml:"providerTenantId,omitempty"`
+	// example:
+	//
+	// 1111
+	ShareId *string `json:"shareId,omitempty" xml:"shareId,omitempty"`
+	// example:
+	//
+	// share_name
+	ShareName *string `json:"shareName,omitempty" xml:"shareName,omitempty"`
+	// example:
+	//
+	// 1744970111419
+	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	UpdatedBy *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
 }
 
 func (s Share) String() string {

@@ -16,6 +16,9 @@ type iPartitionSummaries interface {
 }
 
 type PartitionSummaries struct {
+	// example:
+	//
+	// hh=10
 	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
 	// Current page of partition profiles
 	Partitions []*PartitionSummary `json:"partitions,omitempty" xml:"partitions,omitempty" type:"Repeated"`

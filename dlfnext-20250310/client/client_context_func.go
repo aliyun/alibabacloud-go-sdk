@@ -1764,6 +1764,39 @@ func (client *Client) GetUserWithContext(ctx context.Context, request *GetUserRe
 
 // Summary:
 //
+// 获取可信 VPC 配置
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVpcConfigResponse
+func (client *Client) GetVpcConfigWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetVpcConfigResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetVpcConfig"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/auth/vpc"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetVpcConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 批量授予角色权限给用户
 //
 // @param request - GrantRoleToUsersRequest

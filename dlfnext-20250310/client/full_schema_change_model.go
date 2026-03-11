@@ -36,25 +36,56 @@ type iFullSchemaChange interface {
 }
 
 type FullSchemaChange struct {
+	// example:
+	//
+	// setOption
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
 	// required in UpdateComment/AddColumn
+	//
+	// example:
+	//
+	// col_comment
 	Comment  *string       `json:"comment,omitempty" xml:"comment,omitempty"`
 	DataType *FullDataType `json:"dataType,omitempty" xml:"dataType,omitempty"`
 	// required in AddColumn/RenameColumn/DropColumn/UpdateColumnComment/UpdateColumnType/UpdateColumnNullability
 	FieldNames []*string `json:"fieldNames,omitempty" xml:"fieldNames,omitempty" type:"Repeated"`
 	// required in UpdateColumnType
+	//
+	// example:
+	//
+	// true
 	KeepNullability *bool `json:"keepNullability,omitempty" xml:"keepNullability,omitempty"`
 	// required in SetOption/RemoveOption
+	//
+	// example:
+	//
+	// \\"true\\"
 	Key  *string `json:"key,omitempty" xml:"key,omitempty"`
 	Move *Move   `json:"move,omitempty" xml:"move,omitempty"`
 	// required in UpdateColumnComment
+	//
+	// example:
+	//
+	// col_comment_test
 	NewComment  *string       `json:"newComment,omitempty" xml:"newComment,omitempty"`
 	NewDataType *FullDataType `json:"newDataType,omitempty" xml:"newDataType,omitempty"`
 	// required in RenameColumn
+	//
+	// example:
+	//
+	// new_col_test
 	NewName *string `json:"newName,omitempty" xml:"newName,omitempty"`
 	// required in UpdateColumnNullability
+	//
+	// example:
+	//
+	// true
 	NewNullability *bool `json:"newNullability,omitempty" xml:"newNullability,omitempty"`
 	// required in SetOption
+	//
+	// example:
+	//
+	// \\"manifest.delete-file-drop-stats\\"
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

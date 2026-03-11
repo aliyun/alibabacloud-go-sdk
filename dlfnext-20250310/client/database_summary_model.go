@@ -41,22 +41,52 @@ type iDatabaseSummary interface {
 
 type DatabaseSummary struct {
 	// Creation timestamp in milliseconds
+	//
+	// example:
+	//
+	// 1744970111419
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
 	// 库名 - Database name
+	//
+	// example:
+	//
+	// default
 	DatabaseName *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
 	// Last profile update date in format yyyyMMdd
+	//
+	// example:
+	//
+	// 2025-06-01
 	GeneratedDate *string `json:"generatedDate,omitempty" xml:"generatedDate,omitempty"`
 	// Storage location URI
+	//
+	// example:
+	//
+	// oss://clg-paimon-xxx/db-xxx
 	Location               *string `json:"location,omitempty" xml:"location,omitempty"`
 	ObjTypeArchiveSize     *int64  `json:"objTypeArchiveSize,omitempty" xml:"objTypeArchiveSize,omitempty"`
 	ObjTypeColdArchiveSize *int64  `json:"objTypeColdArchiveSize,omitempty" xml:"objTypeColdArchiveSize,omitempty"`
 	ObjTypeIaSize          *int64  `json:"objTypeIaSize,omitempty" xml:"objTypeIaSize,omitempty"`
 	ObjTypeStandardSize    *int64  `json:"objTypeStandardSize,omitempty" xml:"objTypeStandardSize,omitempty"`
-	PartitionCount         *int64  `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
+	// example:
+	//
+	// 1000
+	PartitionCount *int64 `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
 	// Total storage in bytes
-	TableCount     *int64 `json:"tableCount,omitempty" xml:"tableCount,omitempty"`
+	//
+	// example:
+	//
+	// 50
+	TableCount *int64 `json:"tableCount,omitempty" xml:"tableCount,omitempty"`
+	// example:
+	//
+	// 2000
 	TotalFileCount *int64 `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
 	// Total file count
+	//
+	// example:
+	//
+	// 1048576
 	TotalFileSizeInBytes *int64 `json:"totalFileSizeInBytes,omitempty" xml:"totalFileSizeInBytes,omitempty"`
 	TotalMetaFileCount   *int64 `json:"totalMetaFileCount,omitempty" xml:"totalMetaFileCount,omitempty"`
 	TotalMetaSizeInBytes *int64 `json:"totalMetaSizeInBytes,omitempty" xml:"totalMetaSizeInBytes,omitempty"`
