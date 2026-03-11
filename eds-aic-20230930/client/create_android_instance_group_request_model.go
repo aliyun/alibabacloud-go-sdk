@@ -529,6 +529,7 @@ type CreateAndroidInstanceGroupRequestNetworkInfo struct {
 	IpRatio              *int32  `json:"IpRatio,omitempty" xml:"IpRatio,omitempty"`
 	Isp                  *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 	LimitedBandwidth     *int32  `json:"LimitedBandwidth,omitempty" xml:"LimitedBandwidth,omitempty"`
+	PaidCallbackUrl      *string `json:"PaidCallbackUrl,omitempty" xml:"PaidCallbackUrl,omitempty"`
 	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	Period               *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
 	PeriodUnit           *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
@@ -574,6 +575,10 @@ func (s *CreateAndroidInstanceGroupRequestNetworkInfo) GetIsp() *string {
 
 func (s *CreateAndroidInstanceGroupRequestNetworkInfo) GetLimitedBandwidth() *int32 {
 	return s.LimitedBandwidth
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) GetPaidCallbackUrl() *string {
+	return s.PaidCallbackUrl
 }
 
 func (s *CreateAndroidInstanceGroupRequestNetworkInfo) GetPayType() *string {
@@ -633,6 +638,11 @@ func (s *CreateAndroidInstanceGroupRequestNetworkInfo) SetIsp(v string) *CreateA
 
 func (s *CreateAndroidInstanceGroupRequestNetworkInfo) SetLimitedBandwidth(v int32) *CreateAndroidInstanceGroupRequestNetworkInfo {
 	s.LimitedBandwidth = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) SetPaidCallbackUrl(v string) *CreateAndroidInstanceGroupRequestNetworkInfo {
+	s.PaidCallbackUrl = &v
 	return s
 }
 

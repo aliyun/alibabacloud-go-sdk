@@ -591,6 +591,7 @@ type CreateCloudPhoneNodeRequestNetworkInfo struct {
 	IpRatio              *int32  `json:"IpRatio,omitempty" xml:"IpRatio,omitempty"`
 	Isp                  *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 	LimitedBandwidth     *int32  `json:"LimitedBandwidth,omitempty" xml:"LimitedBandwidth,omitempty"`
+	PaidCallbackUrl      *string `json:"PaidCallbackUrl,omitempty" xml:"PaidCallbackUrl,omitempty"`
 	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	VisibleType          *string `json:"VisibleType,omitempty" xml:"VisibleType,omitempty"`
 }
@@ -625,6 +626,10 @@ func (s *CreateCloudPhoneNodeRequestNetworkInfo) GetIsp() *string {
 
 func (s *CreateCloudPhoneNodeRequestNetworkInfo) GetLimitedBandwidth() *int32 {
 	return s.LimitedBandwidth
+}
+
+func (s *CreateCloudPhoneNodeRequestNetworkInfo) GetPaidCallbackUrl() *string {
+	return s.PaidCallbackUrl
 }
 
 func (s *CreateCloudPhoneNodeRequestNetworkInfo) GetPayType() *string {
@@ -662,6 +667,11 @@ func (s *CreateCloudPhoneNodeRequestNetworkInfo) SetIsp(v string) *CreateCloudPh
 
 func (s *CreateCloudPhoneNodeRequestNetworkInfo) SetLimitedBandwidth(v int32) *CreateCloudPhoneNodeRequestNetworkInfo {
 	s.LimitedBandwidth = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeRequestNetworkInfo) SetPaidCallbackUrl(v string) *CreateCloudPhoneNodeRequestNetworkInfo {
+	s.PaidCallbackUrl = &v
 	return s
 }
 
