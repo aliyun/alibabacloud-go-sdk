@@ -562,7 +562,7 @@ func (client *Client) CreateAppInstanceTicket(request *CreateAppInstanceTicketRe
 
 // Summary:
 //
-// 万小智开通灵感值服务
+// # Activate the Wanxiaozhi Inspiration Value service
 //
 // @param request - CreateAppTokenServiceRequest
 //
@@ -606,7 +606,7 @@ func (client *Client) CreateAppTokenServiceWithOptions(request *CreateAppTokenSe
 
 // Summary:
 //
-// 万小智开通灵感值服务
+// # Activate the Wanxiaozhi Inspiration Value service
 //
 // @param request - CreateAppTokenServiceRequest
 //
@@ -1316,7 +1316,73 @@ func (client *Client) GetAppInstance(request *GetAppInstanceRequest) (_result *G
 
 // Summary:
 //
-// 实例详情查询
+// # Query application instance information
+//
+// @param request - GetAppInstanceForAdminRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppInstanceForAdminResponse
+func (client *Client) GetAppInstanceForAdminWithOptions(request *GetAppInstanceForAdminRequest, runtime *dara.RuntimeOptions) (_result *GetAppInstanceForAdminResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.Domain) {
+		query["Domain"] = request.Domain
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppInstanceForAdmin"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppInstanceForAdminResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query application instance information
+//
+// @param request - GetAppInstanceForAdminRequest
+//
+// @return GetAppInstanceForAdminResponse
+func (client *Client) GetAppInstanceForAdmin(request *GetAppInstanceForAdminRequest) (_result *GetAppInstanceForAdminResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAppInstanceForAdminResponse{}
+	_body, _err := client.GetAppInstanceForAdminWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query instance details
 //
 // @param request - GetAppInstanceForPartnerRequest
 //
@@ -1360,7 +1426,7 @@ func (client *Client) GetAppInstanceForPartnerWithOptions(request *GetAppInstanc
 
 // Summary:
 //
-// 实例详情查询
+// # Query instance details
 //
 // @param request - GetAppInstanceForPartnerRequest
 //
