@@ -13,6 +13,8 @@ type iCreateSandboxInput interface {
 	GetNasConfig() *NASConfig
 	SetOssMountConfig(v *OSSMountConfig) *CreateSandboxInput
 	GetOssMountConfig() *OSSMountConfig
+	SetPolarFsConfig(v *PolarFsConfig) *CreateSandboxInput
+	GetPolarFsConfig() *PolarFsConfig
 	SetSandboxId(v string) *CreateSandboxInput
 	GetSandboxId() *string
 	SetSandboxIdleTimeoutInSeconds(v int32) *CreateSandboxInput
@@ -26,6 +28,7 @@ type iCreateSandboxInput interface {
 type CreateSandboxInput struct {
 	NasConfig      *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
 	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	PolarFsConfig  *PolarFsConfig  `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
 	// example:
 	//
 	// 01KE8DAJ35JC8SKP9CNFRZ8CW7
@@ -65,6 +68,10 @@ func (s *CreateSandboxInput) GetOssMountConfig() *OSSMountConfig {
 	return s.OssMountConfig
 }
 
+func (s *CreateSandboxInput) GetPolarFsConfig() *PolarFsConfig {
+	return s.PolarFsConfig
+}
+
 func (s *CreateSandboxInput) GetSandboxId() *string {
 	return s.SandboxId
 }
@@ -88,6 +95,11 @@ func (s *CreateSandboxInput) SetNasConfig(v *NASConfig) *CreateSandboxInput {
 
 func (s *CreateSandboxInput) SetOssMountConfig(v *OSSMountConfig) *CreateSandboxInput {
 	s.OssMountConfig = v
+	return s
+}
+
+func (s *CreateSandboxInput) SetPolarFsConfig(v *PolarFsConfig) *CreateSandboxInput {
+	s.PolarFsConfig = v
 	return s
 }
 
@@ -119,6 +131,11 @@ func (s *CreateSandboxInput) Validate() error {
 	}
 	if s.OssMountConfig != nil {
 		if err := s.OssMountConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PolarFsConfig != nil {
+		if err := s.PolarFsConfig.Validate(); err != nil {
 			return err
 		}
 	}
