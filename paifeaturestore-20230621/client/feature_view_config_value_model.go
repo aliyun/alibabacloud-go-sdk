@@ -19,6 +19,8 @@ type iFeatureViewConfigValue interface {
 	GetUseMock() *bool
 	SetSnapshot(v *FeatureViewConfigValueSnapshot) *FeatureViewConfigValue
 	GetSnapshot() *FeatureViewConfigValueSnapshot
+	SetSecondJoinKey(v string) *FeatureViewConfigValue
+	GetSecondJoinKey() *string
 }
 
 type FeatureViewConfigValue struct {
@@ -30,6 +32,10 @@ type FeatureViewConfigValue struct {
 	Equal     *bool                           `json:"Equal,omitempty" xml:"Equal,omitempty"`
 	UseMock   *bool                           `json:"UseMock,omitempty" xml:"UseMock,omitempty"`
 	Snapshot  *FeatureViewConfigValueSnapshot `json:"Snapshot,omitempty" xml:"Snapshot,omitempty" type:"Struct"`
+	// example:
+	//
+	// request_id
+	SecondJoinKey *string `json:"SecondJoinKey,omitempty" xml:"SecondJoinKey,omitempty"`
 }
 
 func (s FeatureViewConfigValue) String() string {
@@ -60,6 +66,10 @@ func (s *FeatureViewConfigValue) GetSnapshot() *FeatureViewConfigValueSnapshot {
 	return s.Snapshot
 }
 
+func (s *FeatureViewConfigValue) GetSecondJoinKey() *string {
+	return s.SecondJoinKey
+}
+
 func (s *FeatureViewConfigValue) SetPartitions(v map[string]*FeatureViewConfigValuePartitionsValue) *FeatureViewConfigValue {
 	s.Partitions = v
 	return s
@@ -82,6 +92,11 @@ func (s *FeatureViewConfigValue) SetUseMock(v bool) *FeatureViewConfigValue {
 
 func (s *FeatureViewConfigValue) SetSnapshot(v *FeatureViewConfigValueSnapshot) *FeatureViewConfigValue {
 	s.Snapshot = v
+	return s
+}
+
+func (s *FeatureViewConfigValue) SetSecondJoinKey(v string) *FeatureViewConfigValue {
+	s.SecondJoinKey = &v
 	return s
 }
 
