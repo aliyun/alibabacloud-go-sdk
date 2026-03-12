@@ -20,12 +20,18 @@ type iCreateInspectionTaskResponseBody interface {
 }
 
 type CreateInspectionTaskResponseBody struct {
-	Data    *CreateInspectionTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the result is returned.
+	Data *CreateInspectionTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -86,6 +92,8 @@ func (s *CreateInspectionTaskResponseBody) Validate() error {
 }
 
 type CreateInspectionTaskResponseBodyData struct {
+	// The ID of the inspection task.
+	//
 	// example:
 	//
 	// 9adf8567-b619-4d37-8ff2-01d38a76****

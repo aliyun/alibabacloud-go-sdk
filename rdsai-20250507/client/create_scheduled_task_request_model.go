@@ -17,6 +17,8 @@ type iCreateScheduledTaskRequest interface {
 	GetInstanceIds() *string
 	SetName(v string) *CreateScheduledTaskRequest
 	GetName() *string
+	SetReportLanguage(v string) *CreateScheduledTaskRequest
+	GetReportLanguage() *string
 	SetStartTime(v string) *CreateScheduledTaskRequest
 	GetStartTime() *string
 	SetTimeRange(v string) *CreateScheduledTaskRequest
@@ -24,23 +26,51 @@ type iCreateScheduledTaskRequest interface {
 }
 
 type CreateScheduledTaskRequest struct {
+	// The description of the scheduled inspection task.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The new inspection frequency. Separate multiple values with commas (,). Default value: DAILY. Valid values:
+	//
+	// 	- DAILY
+	//
+	// 	- Monday
+	//
+	// 	- Tuesday
+	//
+	// 	- Wednesday
+	//
+	// 	- Thursday
+	//
+	// 	- Friday
+	//
+	// 	- Saturday \\*Sunday
+	//
+	// ### [](#daily--dailymonday--daily-)Note: DAILY takes precedence over other values. For example, if you enter DAILY,Monday, the backend uses DAILY as the inspection frequency.
+	//
 	// example:
 	//
 	// Monday
 	Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	// The IDs of the related instances. Separate multiple IDs with commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-2ze6mk259v322****,rm-2zef3b65430j0****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The name of the scheduled inspection task. The name cannot exceed 64 characters in length.
+	//
 	// This parameter is required.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
+	// The time when the inspection task is executed. Specify the time in the ISO 8601 standard in the HH:mm:ssZ format. The time must be in UTC. Default value: 02:00 AM.
+	//
 	// example:
 	//
 	// 02:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The inspection time range. The default value is the latest 24 hours. Valid values: 1 to 168. The maximum value is 7 days.
+	//
 	// example:
 	//
 	// 24
@@ -71,6 +101,10 @@ func (s *CreateScheduledTaskRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateScheduledTaskRequest) GetReportLanguage() *string {
+	return s.ReportLanguage
+}
+
 func (s *CreateScheduledTaskRequest) GetStartTime() *string {
 	return s.StartTime
 }
@@ -96,6 +130,11 @@ func (s *CreateScheduledTaskRequest) SetInstanceIds(v string) *CreateScheduledTa
 
 func (s *CreateScheduledTaskRequest) SetName(v string) *CreateScheduledTaskRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateScheduledTaskRequest) SetReportLanguage(v string) *CreateScheduledTaskRequest {
+	s.ReportLanguage = &v
 	return s
 }
 

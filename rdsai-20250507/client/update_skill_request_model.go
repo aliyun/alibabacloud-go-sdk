@@ -22,13 +22,20 @@ type iUpdateSkillRequest interface {
 }
 
 type UpdateSkillRequest struct {
-	Content     map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	Dbtypes     []*string              `json:"Dbtypes,omitempty" xml:"Dbtypes,omitempty" type:"Repeated"`
-	Description *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The content of the skill.
+	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The list of database engines.
+	Dbtypes []*string `json:"Dbtypes,omitempty" xml:"Dbtypes,omitempty" type:"Repeated"`
+	// The description of the Skill. It can be up to 1000 characters in length.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the skill, which can contain only lowercase letters, numbers, and hyphens.
+	//
 	// example:
 	//
 	// sql-optimization
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unique identifier of the skill.
+	//
 	// This parameter is required.
 	//
 	// example:

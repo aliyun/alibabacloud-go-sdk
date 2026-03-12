@@ -20,18 +20,26 @@ type iGetStandAloneReportsRequest interface {
 }
 
 type GetStandAloneReportsRequest struct {
+	// The task end time based on which the reports are filtered. If you do not specify this parameter, all reports are returned.
+	//
 	// example:
 	//
 	// 2026-01-19T02:20:20Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number. Pages start from 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records on each page. Default value: 20. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The task start time based on which the reports are filtered. If you do not specify this parameter, all reports are returned.
+	//
 	// example:
 	//
 	// 2025-03-11T02:09:00Z

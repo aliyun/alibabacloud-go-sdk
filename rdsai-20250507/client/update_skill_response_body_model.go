@@ -28,25 +28,38 @@ type iUpdateSkillResponseBody interface {
 }
 
 type UpdateSkillResponseBody struct {
-	Content     map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	Dbtypes     []*string              `json:"Dbtypes,omitempty" xml:"Dbtypes,omitempty" type:"Repeated"`
-	Description *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The content of the skill.
+	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The list of database engines.
+	Dbtypes []*string `json:"Dbtypes,omitempty" xml:"Dbtypes,omitempty" type:"Repeated"`
+	// The description of the skill. It can be up to 1000 characters in length.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The unique identifier of the skill.
+	//
 	// example:
 	//
 	// d1b7d639-f34e-44c7-8231-987da14d****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the skill, which can contain only lowercase letters, numbers, and hyphens.
+	//
 	// example:
 	//
 	// sql-review
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The skill type.
+	//
 	// example:
 	//
 	// user
 	SkillType *string `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
+	// The update time of the skill.
+	//
 	// example:
 	//
 	// 2026-02-04T21:14:45Z

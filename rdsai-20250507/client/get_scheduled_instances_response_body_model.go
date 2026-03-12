@@ -26,24 +26,36 @@ type iGetScheduledInstancesResponseBody interface {
 }
 
 type GetScheduledInstancesResponseBody struct {
+	// The list of instances included in the inspection configuration.
 	Instances []*GetScheduledInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number. Pages start from 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records on each page. Default value: 20. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of records that are returned.
+	//
 	// example:
 	//
 	// 20
@@ -135,19 +147,28 @@ func (s *GetScheduledInstancesResponseBody) Validate() error {
 }
 
 type GetScheduledInstancesResponseBodyInstances struct {
+	// The engine type.
+	//
 	// example:
 	//
 	// MySQL
-	EngineType   *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The instance description.
 	InstanceDesc *string `json:"InstanceDesc,omitempty" xml:"InstanceDesc,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// rm-2zep6e5u6l2yu****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The status of the instance.
+	//
 	// example:
 	//
 	// Running

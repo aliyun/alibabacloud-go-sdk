@@ -22,19 +22,28 @@ type iListSkillResponseBody interface {
 }
 
 type ListSkillResponseBody struct {
+	// The list of skills.
 	Data []*ListSkillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records returned on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of returned records.
+	//
 	// example:
 	//
 	// 20
@@ -108,25 +117,38 @@ func (s *ListSkillResponseBody) Validate() error {
 }
 
 type ListSkillResponseBodyData struct {
+	// The content of the skill.
 	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The creation time of the skill.
+	//
 	// example:
 	//
 	// 2026-02-04T21:14:45Z
-	CreatedAt   *string   `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	Dbtypes     []*string `json:"Dbtypes,omitempty" xml:"Dbtypes,omitempty" type:"Repeated"`
-	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The list of database engines.
+	Dbtypes []*string `json:"Dbtypes,omitempty" xml:"Dbtypes,omitempty" type:"Repeated"`
+	// The description of the skill.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The unique identifier of the skill.
+	//
 	// example:
 	//
 	// 9a2ba261-7bb2-41a7-9c6e-1799fb5b****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the skill.
+	//
 	// example:
 	//
 	// sql-review
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the skill.
+	//
 	// example:
 	//
 	// system
 	SkillType *string `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
+	// The update time of the skill.
+	//
 	// example:
 	//
 	// 2026-02-04T21:14:45Z

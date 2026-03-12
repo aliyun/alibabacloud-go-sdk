@@ -16,10 +16,22 @@ type iGetSkillRequest interface {
 }
 
 type GetSkillRequest struct {
+	// The languages supported by the skill. Valid values:
+	//
+	// 	- zh-CN: Simplified Chinese
+	//
+	// 	- zh-TW: Traditional Chinese
+	//
+	// 	- en-US: English
+	//
+	// 	- ja-JP: Japanese
+	//
 	// example:
 	//
 	// zh-CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The unique identifier of the skill.
+	//
 	// This parameter is required.
 	//
 	// example:

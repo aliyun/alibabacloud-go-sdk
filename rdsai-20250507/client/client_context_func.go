@@ -323,7 +323,7 @@ func (client *Client) CreateCustomAgentWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 创建一个批量实例巡检任务
+// Creates an inspection task for multiple instances.
 //
 // @param request - CreateInspectionTaskRequest
 //
@@ -348,6 +348,10 @@ func (client *Client) CreateInspectionTaskWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.InstanceIds) {
 		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.ReportLanguage) {
+		query["ReportLanguage"] = request.ReportLanguage
 	}
 
 	if !dara.IsNil(request.StartTime) {
@@ -379,7 +383,7 @@ func (client *Client) CreateInspectionTaskWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 创建一个新的批量实例巡检任务
+// Creates a new scheduled inspection configuration for multiple instances.
 //
 // @param request - CreateScheduledTaskRequest
 //
@@ -408,6 +412,10 @@ func (client *Client) CreateScheduledTaskWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ReportLanguage) {
+		query["ReportLanguage"] = request.ReportLanguage
 	}
 
 	if !dara.IsNil(request.StartTime) {
@@ -443,7 +451,7 @@ func (client *Client) CreateScheduledTaskWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 创建Skill
+// Create a user-defined skill.
 //
 // @param tmpReq - CreateSkillRequest
 //
@@ -619,7 +627,7 @@ func (client *Client) DeleteCustomAgentWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 删除指定的巡检任务
+// Deletes a specified inspection configuration.
 //
 // @param request - DeleteScheduledTaskRequest
 //
@@ -663,7 +671,7 @@ func (client *Client) DeleteScheduledTaskWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 删除Skill
+// Deletes the specified skill.
 //
 // @param request - DeleteSkillRequest
 //
@@ -1343,7 +1351,7 @@ func (client *Client) GetCustomAgentWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 获取巡检任务报告结果
+// Queries the content of a specified inspection report.
 //
 // @param request - GetInspectionReportRequest
 //
@@ -1447,7 +1455,7 @@ func (client *Client) GetMessagesWithContext(ctx context.Context, request *GetMe
 
 // Summary:
 //
-// 查询指定定时任务配置中包含的所有实例ID列表，支持分页
+// Queries the IDs of all instances that are included by a specified scheduled inspection configuration.
 //
 // @param request - GetScheduledInstancesRequest
 //
@@ -1499,7 +1507,7 @@ func (client *Client) GetScheduledInstancesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取定时任务的所有巡检报告，支持分页
+// Queries the list of all inspection reports for a specified scheduled task. You can filter and paginate inspection reports by time range.
 //
 // @param request - GetScheduledReportsRequest
 //
@@ -1559,7 +1567,7 @@ func (client *Client) GetScheduledReportsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取Skill详情
+// Obtains the details of a specified skill. You can obtain the details of user-defined skills or the system preset skills.
 //
 // @param request - GetSkillRequest
 //
@@ -1607,7 +1615,7 @@ func (client *Client) GetSkillWithContext(ctx context.Context, request *GetSkill
 
 // Summary:
 //
-// 查询指定用户下所有非定时任务的单独巡检报告列表，支持分页
+// Queries the individual inspection reports of all non-scheduled tasks under a specified user. Pagination is supported.
 //
 // @param request - GetStandAloneReportsRequest
 //
@@ -1711,7 +1719,7 @@ func (client *Client) ListCustomAgentWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// 查询指定用户UID下所有巡检任务的基本信息列表
+// Queries the basic information of all inspection configurations under a specified user.
 //
 // @param request - ListScheduledTasksRequest
 //
@@ -1763,7 +1771,7 @@ func (client *Client) ListScheduledTasksWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 获取Skill列表
+// Obtains the user-defined skills and all system preset skills of the current user.
 //
 // @param request - ListSkillRequest
 //
@@ -2363,7 +2371,7 @@ func (client *Client) ModifyMessagesFeedbacksWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 修改已存在的巡检任务信息
+// Modifies an existing inspection configuration.
 //
 // @param request - ModifyScheduledTaskRequest
 //
@@ -2392,6 +2400,10 @@ func (client *Client) ModifyScheduledTaskWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ReportLanguage) {
+		query["ReportLanguage"] = request.ReportLanguage
 	}
 
 	if !dara.IsNil(request.ScheduledId) {
@@ -2747,7 +2759,7 @@ func (client *Client) UpdateCustomAgentWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 更新Skill
+// Updates the information about a specified skill.
 //
 // @param tmpReq - UpdateSkillRequest
 //

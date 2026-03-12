@@ -20,12 +20,18 @@ type iGetInspectionReportResponseBody interface {
 }
 
 type GetInspectionReportResponseBody struct {
-	Data         []*GetInspectionReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	MarkdownText *string                                `json:"MarkdownText,omitempty" xml:"MarkdownText,omitempty"`
+	// The details of the result.
+	Data []*GetInspectionReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The report text in the markdown format.
+	MarkdownText *string `json:"MarkdownText,omitempty" xml:"MarkdownText,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The inspection report ID.
+	//
 	// example:
 	//
 	// 9d246af2-a0cd-4f69-857d-3785048f****
@@ -90,26 +96,44 @@ func (s *GetInspectionReportResponseBody) Validate() error {
 }
 
 type GetInspectionReportResponseBodyData struct {
+	// The returned results.
 	Data []*GetInspectionReportResponseBodyDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The end time of the inspection. Specify the time in the YYYY-MM-DDTHH:mm:ssZ format.
+	//
 	// example:
 	//
 	// 2026-01-31T02:05:04Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The engine type.
+	//
 	// example:
 	//
 	// MySQL
-	EngineType   *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The description of the instance.
 	InstanceDesc *string `json:"InstanceDesc,omitempty" xml:"InstanceDesc,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// rm-2zep6e5u6l2yu****
-	InstanceId   *string                                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The hierarchical summary of the report.
 	LevelSummary *GetInspectionReportResponseBodyDataLevelSummary `json:"LevelSummary,omitempty" xml:"LevelSummary,omitempty" type:"Struct"`
-	MarkdownText *string                                          `json:"MarkdownText,omitempty" xml:"MarkdownText,omitempty"`
+	// The report text in the markdown format.
+	//
+	// 	- If the InstanceId parameter is not specified, all content of the inspection report is returned. However, the MarkdownText field is empty.
+	//
+	// 	- If the InstanceId parameter is specified, the content related to the instance is returned in the MarkdownText field.
+	MarkdownText *string `json:"MarkdownText,omitempty" xml:"MarkdownText,omitempty"`
+	// The region where the instance resides.
+	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The start time of the inspection task. Specify the time in the YYYY-MM-DDTHH:mm:ssZ format.
+	//
 	// example:
 	//
 	// 2025-11-06T16:00:00Z
@@ -224,10 +248,13 @@ func (s *GetInspectionReportResponseBodyData) Validate() error {
 }
 
 type GetInspectionReportResponseBodyDataData struct {
+	// The group ID.
+	//
 	// example:
 	//
 	// instance_info
-	Group *string                                         `json:"Group,omitempty" xml:"Group,omitempty"`
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The items in the result.
 	Items []*GetInspectionReportResponseBodyDataDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
@@ -271,12 +298,18 @@ func (s *GetInspectionReportResponseBodyDataData) Validate() error {
 }
 
 type GetInspectionReportResponseBodyDataDataItems struct {
+	// The returned results.
 	Data []*GetInspectionReportResponseBodyDataDataItemsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The level of the alert.
+	//
 	// example:
 	//
 	// Normal
-	Level   *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The response message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The name of the category.
+	//
 	// example:
 	//
 	// instance_runningstatus
@@ -341,10 +374,14 @@ func (s *GetInspectionReportResponseBodyDataDataItems) Validate() error {
 }
 
 type GetInspectionReportResponseBodyDataDataItemsData struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// DBInstanceStatus
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// Running
@@ -382,18 +419,26 @@ func (s *GetInspectionReportResponseBodyDataDataItemsData) Validate() error {
 }
 
 type GetInspectionReportResponseBodyDataLevelSummary struct {
+	// The number of errors in the report.
+	//
 	// example:
 	//
 	// 2
 	Error *int64 `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The number of failures in the report.
+	//
 	// example:
 	//
 	// 3
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// The number of normal records in the report.
+	//
 	// example:
 	//
 	// 10
 	Normal *int64 `json:"Normal,omitempty" xml:"Normal,omitempty"`
+	// The number of warnings in the report.
+	//
 	// example:
 	//
 	// 1

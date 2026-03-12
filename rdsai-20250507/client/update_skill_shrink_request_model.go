@@ -22,13 +22,20 @@ type iUpdateSkillShrinkRequest interface {
 }
 
 type UpdateSkillShrinkRequest struct {
+	// The content of the skill.
 	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The list of database engines.
 	DbtypesShrink *string `json:"Dbtypes,omitempty" xml:"Dbtypes,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the Skill. It can be up to 1000 characters in length.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the skill, which can contain only lowercase letters, numbers, and hyphens.
+	//
 	// example:
 	//
 	// sql-optimization
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unique identifier of the skill.
+	//
 	// This parameter is required.
 	//
 	// example:

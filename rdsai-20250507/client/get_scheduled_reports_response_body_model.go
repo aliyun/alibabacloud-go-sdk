@@ -26,24 +26,36 @@ type iGetScheduledReportsResponseBody interface {
 }
 
 type GetScheduledReportsResponseBody struct {
+	// The response message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number. Pages start from 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of reports returned on each page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int64                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Reports  []*GetScheduledReportsResponseBodyReports `json:"Reports,omitempty" xml:"Reports,omitempty" type:"Repeated"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The details of the report.
+	Reports []*GetScheduledReportsResponseBodyReports `json:"Reports,omitempty" xml:"Reports,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of returned reports.
+	//
 	// example:
 	//
 	// 20
@@ -135,22 +147,33 @@ func (s *GetScheduledReportsResponseBody) Validate() error {
 }
 
 type GetScheduledReportsResponseBodyReports struct {
+	// The creation time of the task.
+	//
 	// example:
 	//
 	// 2025-01-01T22:59:59Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The end time of the inspection task. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
+	//
 	// example:
 	//
 	// 2025-01-01T23:59:59Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
+	// The start time of the inspection task. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
+	//
 	// example:
 	//
 	// 2025-01-01T00:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the task.
+	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the report.
+	//
 	// example:
 	//
 	// 65f0053b-f933-49f5-bf65-4e4593e1****
@@ -173,6 +196,10 @@ func (s *GetScheduledReportsResponseBodyReports) GetEndTime() *string {
 	return s.EndTime
 }
 
+func (s *GetScheduledReportsResponseBodyReports) GetReportLanguage() *string {
+	return s.ReportLanguage
+}
+
 func (s *GetScheduledReportsResponseBodyReports) GetStartTime() *string {
 	return s.StartTime
 }
@@ -192,6 +219,11 @@ func (s *GetScheduledReportsResponseBodyReports) SetCreatedTime(v string) *GetSc
 
 func (s *GetScheduledReportsResponseBodyReports) SetEndTime(v string) *GetScheduledReportsResponseBodyReports {
 	s.EndTime = &v
+	return s
+}
+
+func (s *GetScheduledReportsResponseBodyReports) SetReportLanguage(v string) *GetScheduledReportsResponseBodyReports {
+	s.ReportLanguage = &v
 	return s
 }
 

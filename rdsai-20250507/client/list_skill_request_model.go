@@ -18,14 +18,28 @@ type iListSkillRequest interface {
 }
 
 type ListSkillRequest struct {
+	// The languages supported by the skills.
+	//
+	// 	- zh-CN: Simplified Chinese
+	//
+	// 	- zh-TW: Traditional Chinese
+	//
+	// 	- en-US: English
+	//
+	// 	- ja-JP: Japanese
+	//
 	// example:
 	//
 	// zh-CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records to return on each page. Default value: 20. Maximum value: 100.
+	//
 	// example:
 	//
 	// 30

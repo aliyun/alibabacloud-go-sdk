@@ -14,6 +14,8 @@ type iDeleteScheduledTaskRequest interface {
 }
 
 type DeleteScheduledTaskRequest struct {
+	// The ID of the scheduled inspection configuration.
+	//
 	// This parameter is required.
 	//
 	// example:

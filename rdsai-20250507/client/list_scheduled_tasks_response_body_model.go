@@ -26,24 +26,36 @@ type iListScheduledTasksResponseBody interface {
 }
 
 type ListScheduledTasksResponseBody struct {
+	// The response message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records returned on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of scheduled inspection tasks.
 	Schedules []*ListScheduledTasksResponseBodySchedules `json:"Schedules,omitempty" xml:"Schedules,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries that are returned.
+	//
 	// example:
 	//
 	// 20
@@ -135,29 +147,61 @@ func (s *ListScheduledTasksResponseBody) Validate() error {
 }
 
 type ListScheduledTasksResponseBodySchedules struct {
+	// The creation time of the task.
+	//
 	// example:
 	//
 	// 2026-02-04T06:51:24Z
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the inspection task.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The new inspection frequency. Separate multiple values with commas (,). Default value: DAILY. Valid values:
+	//
+	// 	- DAILY
+	//
+	// 	- Monday
+	//
+	// 	- Tuesday
+	//
+	// 	- Wednesday
+	//
+	// 	- Thursday
+	//
+	// 	- Friday
+	//
+	// 	- Saturday
+	//
+	// 	- Sunday
+	//
+	// ### [](#daily--dailymonday--daily-)Note: DAILY takes precedence over other values. For example, if you set this parameter to DAILY,Monday, the backend will use DAILY as the inspection frequency.
+	//
 	// example:
 	//
 	// Monday
 	Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	// The number of instances covered by the task.
+	//
 	// example:
 	//
 	// 1
-	InstanceCount *int64  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	InstanceCount *int64 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	// The name of the task.
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
+	// The ID of the scheduled inspection configuration.
+	//
 	// example:
 	//
 	// 9d246af2-a0cd-4f69-857d-3785048f****
 	ScheduledId *string `json:"ScheduledId,omitempty" xml:"ScheduledId,omitempty"`
+	// The actual start time of the task.
+	//
 	// example:
 	//
 	// 18:00:00Z
 	TaskStartTime *string `json:"TaskStartTime,omitempty" xml:"TaskStartTime,omitempty"`
-	TimeRange     *string `json:"TimeRange,omitempty" xml:"TimeRange,omitempty"`
+	// The inspection time range. The default value is the latest 24 hours. Valid values: 1 to 168. The maximum value is 7 days.
+	TimeRange *string `json:"TimeRange,omitempty" xml:"TimeRange,omitempty"`
 }
 
 func (s ListScheduledTasksResponseBodySchedules) String() string {
@@ -186,6 +230,10 @@ func (s *ListScheduledTasksResponseBodySchedules) GetInstanceCount() *int64 {
 
 func (s *ListScheduledTasksResponseBodySchedules) GetName() *string {
 	return s.Name
+}
+
+func (s *ListScheduledTasksResponseBodySchedules) GetReportLanguage() *string {
+	return s.ReportLanguage
 }
 
 func (s *ListScheduledTasksResponseBodySchedules) GetScheduledId() *string {
@@ -222,6 +270,11 @@ func (s *ListScheduledTasksResponseBodySchedules) SetInstanceCount(v int64) *Lis
 
 func (s *ListScheduledTasksResponseBodySchedules) SetName(v string) *ListScheduledTasksResponseBodySchedules {
 	s.Name = &v
+	return s
+}
+
+func (s *ListScheduledTasksResponseBodySchedules) SetReportLanguage(v string) *ListScheduledTasksResponseBodySchedules {
+	s.ReportLanguage = &v
 	return s
 }
 

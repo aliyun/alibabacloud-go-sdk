@@ -20,15 +20,22 @@ type iCreateScheduledTaskResponseBody interface {
 }
 
 type CreateScheduledTaskResponseBody struct {
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D984FD38-6C2D-55DF-B0D7-8BCAC2E1F8C2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the scheduled inspection configuration.
+	//
 	// example:
 	//
 	// 847268a4-196f-416b-aa12-bfe0c115****
 	ScheduledId *string `json:"ScheduledId,omitempty" xml:"ScheduledId,omitempty"`
+	// The returned results.
+	//
 	// example:
 	//
 	// true

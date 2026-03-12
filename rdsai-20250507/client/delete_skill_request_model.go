@@ -14,6 +14,8 @@ type iDeleteSkillRequest interface {
 }
 
 type DeleteSkillRequest struct {
+	// The unique identifier of the skill.
+	//
 	// This parameter is required.
 	//
 	// example:

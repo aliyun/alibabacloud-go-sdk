@@ -20,11 +20,18 @@ type iCreateSkillRequest interface {
 }
 
 type CreateSkillRequest struct {
+	// The content of the skill.
 	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The list of database engines.
+	//
 	// This parameter is required.
 	Dbtypes []*string `json:"Dbtypes,omitempty" xml:"Dbtypes,omitempty" type:"Repeated"`
+	// The description of the skill. It can be up to 1000 characters in length.
+	//
 	// This parameter is required.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the skill, which can contain only lowercase letters, numbers, and hyphens.
+	//
 	// This parameter is required.
 	//
 	// example:

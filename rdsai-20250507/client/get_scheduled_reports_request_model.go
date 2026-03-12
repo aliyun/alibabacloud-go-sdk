@@ -22,24 +22,34 @@ type iGetScheduledReportsRequest interface {
 }
 
 type GetScheduledReportsRequest struct {
+	// The task end time based on which the reports are filtered. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. If you leave this parameter unspecified, all reports are returned.
+	//
 	// example:
 	//
 	// 2026-01-25T02:02:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number. Pages start from 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of reports returned on each page. Default value: 20. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The inspection task ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 847268a4-196f-416b-aa12-bfe0c115****
 	ScheduledId *string `json:"ScheduledId,omitempty" xml:"ScheduledId,omitempty"`
+	// The task start time based on which the reports are filtered. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. If you leave this parameter unspecified, all reports are returned.
+	//
 	// example:
 	//
 	// 2026-01-25T01:02:00Z

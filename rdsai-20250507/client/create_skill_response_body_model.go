@@ -28,25 +28,38 @@ type iCreateSkillResponseBody interface {
 }
 
 type CreateSkillResponseBody struct {
+	// The database engine-specific content.
 	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The creation time of the skill.
+	//
 	// example:
 	//
 	// 2026-02-04T21:14:45Z
-	CreatedAt   *string   `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	Dbtypes     []*string `json:"Dbtypes,omitempty" xml:"Dbtypes,omitempty" type:"Repeated"`
-	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The list of database engines.
+	Dbtypes []*string `json:"Dbtypes,omitempty" xml:"Dbtypes,omitempty" type:"Repeated"`
+	// The description of the skill.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The unique identifier of the skill.
+	//
 	// example:
 	//
 	// 82cf3d62-0add-47bd-869f-877131f7****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the skill.
+	//
 	// example:
 	//
 	// query-optimization
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The type of the skill.
+	//
 	// example:
 	//
 	// user
