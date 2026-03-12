@@ -67,7 +67,7 @@ func (client *Client) ConvertHybridInstanceWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 按量付费转包年包月
+// Changes the billing method of a workspace from pay-as-you-go to subscription.
 //
 // @param tmpReq - ConvertInstanceRequest
 //
@@ -145,7 +145,7 @@ func (client *Client) ConvertInstanceWithContext(ctx context.Context, tmpReq *Co
 
 // Summary:
 //
-// 包年包月转按量付费
+// Changes the billing method of a workspace from subscription to pay-as-you-go.
 //
 // @param request - ConvertPrepayInstanceRequest
 //
@@ -193,7 +193,7 @@ func (client *Client) ConvertPrepayInstanceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 创建实例
+// Creates a subscription workspace or a pay-as-you-go workspace of Realtime Compute for Apache Flink.
 //
 // @param tmpReq - CreateInstanceRequest
 //
@@ -339,7 +339,7 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, tmpReq *Cre
 
 // Summary:
 //
-// 创建命名空间
+// Creates a namespace in a Realtime Compute for Apache Flink workspace.
 //
 // @param tmpReq - CreateNamespaceRequest
 //
@@ -405,7 +405,7 @@ func (client *Client) CreateNamespaceWithContext(ctx context.Context, tmpReq *Cr
 
 // Summary:
 //
-// 释放按量付费的实例
+// Deletes a pay-as-you-go workspace of Realtime Compute for Apache Flink.
 //
 // @param request - DeleteInstanceRequest
 //
@@ -453,7 +453,7 @@ func (client *Client) DeleteInstanceWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// 删除namespace
+// Deletes a namespace.
 //
 // @param request - DeleteNamespaceRequest
 //
@@ -505,7 +505,7 @@ func (client *Client) DeleteNamespaceWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// instance列表
+// Queries the details of one or more Realtime Compute for Apache Flink workspaces.
 //
 // @param tmpReq - DescribeInstancesRequest
 //
@@ -551,7 +551,7 @@ func (client *Client) DescribeInstancesWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// namespace列表
+// Queries the information about a namespace that belongs to a workspace.
 //
 // @param tmpReq - DescribeNamespacesRequest
 //
@@ -597,7 +597,7 @@ func (client *Client) DescribeNamespacesWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 获取支持的zoneId列表
+// Obtains the zones that are supported by Realtime Compute for Apache Flink.
 //
 // @param request - DescribeSupportedZonesRequest
 //
@@ -637,7 +637,7 @@ func (client *Client) DescribeSupportedZonesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 列举flinkasi标签
+// Queries the tags of specified resources. You can query the key of a tag by tag value, or query the value of a tag by tag key. You can also obtain information about all tags that you use in a workspace in the console of fully managed Flink.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -755,7 +755,7 @@ func (client *Client) ModifyElasticResourceSpecWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 对包年实例升降配，对按量实例修改resource quota
+// Scale in or out a workspace to reconfigure resources for the workspace.
 //
 // @param tmpReq - ModifyInstanceSpecRequest
 //
@@ -983,7 +983,7 @@ func (client *Client) ModifyNamespaceSpecV2WithContext(ctx context.Context, tmpR
 //
 // Summary:
 //
-// 扩容/缩容
+// Modifies the configuration of the computing resources of a subscription fully managed Flink workspace. If the number of computing resources after the modification is less than the current number of computing resources, the scale-in operation is performed. If the number of computing resources after the modification is larger than the current number of computing resources, the scale-out operation is performed.
 //
 // @param tmpReq - ModifyPrepayInstanceSpecRequest
 //
@@ -1067,7 +1067,7 @@ func (client *Client) ModifyPrepayInstanceSpecWithContext(ctx context.Context, t
 //
 // Summary:
 //
-// 修改namespace资源分配
+// Modifies the resource configurations of a namespace in a subscription workspace.
 //
 // @param tmpReq - ModifyPrepayNamespaceSpecRequest
 //
@@ -1129,7 +1129,7 @@ func (client *Client) ModifyPrepayNamespaceSpecWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 按量付费转包年包月询价
+// Queries the fee of switching the billing method of a workspace from pay-as-you-go to subscription.
 //
 // @param tmpReq - QueryConvertInstancePriceRequest
 //
@@ -1207,7 +1207,7 @@ func (client *Client) QueryConvertInstancePriceWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 包年包月转按量付费询价
+// Obtains the estimated refund after the billing method of your Realtime Compute for Apache Flink workspace is changed from subscription to pay-as-you-go. After you change the billing method of your workspace to pay-as-you-go, bills are generated on an hourly basis.
 //
 // @param request - QueryConvertPrepayInstancePriceRequest
 //
@@ -1255,7 +1255,7 @@ func (client *Client) QueryConvertPrepayInstancePriceWithContext(ctx context.Con
 
 // Summary:
 //
-// 获取创建实例的价格
+// Queries the fee of creating a workspace.
 //
 // @param tmpReq - QueryCreateInstancePriceRequest
 //
@@ -1377,7 +1377,7 @@ func (client *Client) QueryCreateInstancePriceWithContext(ctx context.Context, t
 
 // Summary:
 //
-// 查询付费类型为包年包月的实例修改资源规格的价格
+// Queries the fee of modifying the resource configuration of a workspace.
 //
 // @param tmpReq - QueryModifyInstancePriceRequest
 //
@@ -1463,7 +1463,7 @@ func (client *Client) QueryModifyInstancePriceWithContext(ctx context.Context, t
 
 // Summary:
 //
-// 查询付费类型为包年包月的实例续费价格
+// Queries the fee of renewing a subscription workspace.
 //
 // @param request - QueryRenewInstancePriceRequest
 //
@@ -1527,7 +1527,7 @@ func (client *Client) QueryRenewInstancePriceWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 续费
+// Renews a subscription workspace of Realtime Compute for Apache Flink.
 //
 // @param request - RenewInstanceRequest
 //
@@ -1591,7 +1591,7 @@ func (client *Client) RenewInstanceWithContext(ctx context.Context, request *Ren
 
 // Summary:
 //
-// 打标签接口
+// Adds tags to specified resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -1647,7 +1647,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// flinkasi去标签
+// Removes tags from specified resources.
 //
 // @param request - UntagResourcesRequest
 //

@@ -134,7 +134,7 @@ func (client *Client) ConvertHybridInstance(request *ConvertHybridInstanceReques
 
 // Summary:
 //
-// 按量付费转包年包月
+// Changes the billing method of a workspace from pay-as-you-go to subscription.
 //
 // @param tmpReq - ConvertInstanceRequest
 //
@@ -212,7 +212,7 @@ func (client *Client) ConvertInstanceWithOptions(tmpReq *ConvertInstanceRequest,
 
 // Summary:
 //
-// 按量付费转包年包月
+// Changes the billing method of a workspace from pay-as-you-go to subscription.
 //
 // @param request - ConvertInstanceRequest
 //
@@ -230,7 +230,7 @@ func (client *Client) ConvertInstance(request *ConvertInstanceRequest) (_result 
 
 // Summary:
 //
-// 包年包月转按量付费
+// Changes the billing method of a workspace from subscription to pay-as-you-go.
 //
 // @param request - ConvertPrepayInstanceRequest
 //
@@ -278,7 +278,7 @@ func (client *Client) ConvertPrepayInstanceWithOptions(request *ConvertPrepayIns
 
 // Summary:
 //
-// 包年包月转按量付费
+// Changes the billing method of a workspace from subscription to pay-as-you-go.
 //
 // @param request - ConvertPrepayInstanceRequest
 //
@@ -296,7 +296,7 @@ func (client *Client) ConvertPrepayInstance(request *ConvertPrepayInstanceReques
 
 // Summary:
 //
-// 创建实例
+// Creates a subscription workspace or a pay-as-you-go workspace of Realtime Compute for Apache Flink.
 //
 // @param tmpReq - CreateInstanceRequest
 //
@@ -442,7 +442,7 @@ func (client *Client) CreateInstanceWithOptions(tmpReq *CreateInstanceRequest, r
 
 // Summary:
 //
-// 创建实例
+// Creates a subscription workspace or a pay-as-you-go workspace of Realtime Compute for Apache Flink.
 //
 // @param request - CreateInstanceRequest
 //
@@ -460,7 +460,7 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 
 // Summary:
 //
-// 创建命名空间
+// Creates a namespace in a Realtime Compute for Apache Flink workspace.
 //
 // @param tmpReq - CreateNamespaceRequest
 //
@@ -526,7 +526,7 @@ func (client *Client) CreateNamespaceWithOptions(tmpReq *CreateNamespaceRequest,
 
 // Summary:
 //
-// 创建命名空间
+// Creates a namespace in a Realtime Compute for Apache Flink workspace.
 //
 // @param request - CreateNamespaceRequest
 //
@@ -544,7 +544,7 @@ func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result 
 
 // Summary:
 //
-// 释放按量付费的实例
+// Deletes a pay-as-you-go workspace of Realtime Compute for Apache Flink.
 //
 // @param request - DeleteInstanceRequest
 //
@@ -592,7 +592,7 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 
 // Summary:
 //
-// 释放按量付费的实例
+// Deletes a pay-as-you-go workspace of Realtime Compute for Apache Flink.
 //
 // @param request - DeleteInstanceRequest
 //
@@ -610,7 +610,7 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 
 // Summary:
 //
-// 删除namespace
+// Deletes a namespace.
 //
 // @param request - DeleteNamespaceRequest
 //
@@ -662,7 +662,7 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 
 // Summary:
 //
-// 删除namespace
+// Deletes a namespace.
 //
 // @param request - DeleteNamespaceRequest
 //
@@ -680,7 +680,7 @@ func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result 
 
 // Summary:
 //
-// instance列表
+// Queries the details of one or more Realtime Compute for Apache Flink workspaces.
 //
 // @param tmpReq - DescribeInstancesRequest
 //
@@ -726,7 +726,7 @@ func (client *Client) DescribeInstancesWithOptions(tmpReq *DescribeInstancesRequ
 
 // Summary:
 //
-// instance列表
+// Queries the details of one or more Realtime Compute for Apache Flink workspaces.
 //
 // @param request - DescribeInstancesRequest
 //
@@ -744,7 +744,7 @@ func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_res
 
 // Summary:
 //
-// namespace列表
+// Queries the information about a namespace that belongs to a workspace.
 //
 // @param tmpReq - DescribeNamespacesRequest
 //
@@ -790,7 +790,7 @@ func (client *Client) DescribeNamespacesWithOptions(tmpReq *DescribeNamespacesRe
 
 // Summary:
 //
-// namespace列表
+// Queries the information about a namespace that belongs to a workspace.
 //
 // @param request - DescribeNamespacesRequest
 //
@@ -808,7 +808,7 @@ func (client *Client) DescribeNamespaces(request *DescribeNamespacesRequest) (_r
 
 // Summary:
 //
-// 获取支持的region列表
+// Queries the regions that are available in which Realtime Compute for Apache Flink is supported.
 //
 // @param request - DescribeSupportedRegionsRequest
 //
@@ -839,7 +839,7 @@ func (client *Client) DescribeSupportedRegionsWithOptions(runtime *dara.RuntimeO
 
 // Summary:
 //
-// 获取支持的region列表
+// Queries the regions that are available in which Realtime Compute for Apache Flink is supported.
 //
 // @return DescribeSupportedRegionsResponse
 func (client *Client) DescribeSupportedRegions() (_result *DescribeSupportedRegionsResponse, _err error) {
@@ -855,7 +855,7 @@ func (client *Client) DescribeSupportedRegions() (_result *DescribeSupportedRegi
 
 // Summary:
 //
-// 获取支持的zoneId列表
+// Obtains the zones that are supported by Realtime Compute for Apache Flink.
 //
 // @param request - DescribeSupportedZonesRequest
 //
@@ -895,7 +895,7 @@ func (client *Client) DescribeSupportedZonesWithOptions(request *DescribeSupport
 
 // Summary:
 //
-// 获取支持的zoneId列表
+// Obtains the zones that are supported by Realtime Compute for Apache Flink.
 //
 // @param request - DescribeSupportedZonesRequest
 //
@@ -913,7 +913,7 @@ func (client *Client) DescribeSupportedZones(request *DescribeSupportedZonesRequ
 
 // Summary:
 //
-// 列举flinkasi标签
+// Queries the tags of specified resources. You can query the key of a tag by tag value, or query the value of a tag by tag key. You can also obtain information about all tags that you use in a workspace in the console of fully managed Flink.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -973,7 +973,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// 列举flinkasi标签
+// Queries the tags of specified resources. You can query the key of a tag by tag value, or query the value of a tag by tag key. You can also obtain information about all tags that you use in a workspace in the console of fully managed Flink.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -1067,7 +1067,7 @@ func (client *Client) ModifyElasticResourceSpec(request *ModifyElasticResourceSp
 
 // Summary:
 //
-// 对包年实例升降配，对按量实例修改resource quota
+// Scale in or out a workspace to reconfigure resources for the workspace.
 //
 // @param tmpReq - ModifyInstanceSpecRequest
 //
@@ -1153,7 +1153,7 @@ func (client *Client) ModifyInstanceSpecWithOptions(tmpReq *ModifyInstanceSpecRe
 
 // Summary:
 //
-// 对包年实例升降配，对按量实例修改resource quota
+// Scale in or out a workspace to reconfigure resources for the workspace.
 //
 // @param request - ModifyInstanceSpecRequest
 //
@@ -1352,7 +1352,7 @@ func (client *Client) ModifyNamespaceSpecV2(request *ModifyNamespaceSpecV2Reques
 //
 // Summary:
 //
-// 扩容/缩容
+// Modifies the configuration of the computing resources of a subscription fully managed Flink workspace. If the number of computing resources after the modification is less than the current number of computing resources, the scale-in operation is performed. If the number of computing resources after the modification is larger than the current number of computing resources, the scale-out operation is performed.
 //
 // @param tmpReq - ModifyPrepayInstanceSpecRequest
 //
@@ -1436,7 +1436,7 @@ func (client *Client) ModifyPrepayInstanceSpecWithOptions(tmpReq *ModifyPrepayIn
 //
 // Summary:
 //
-// 扩容/缩容
+// Modifies the configuration of the computing resources of a subscription fully managed Flink workspace. If the number of computing resources after the modification is less than the current number of computing resources, the scale-in operation is performed. If the number of computing resources after the modification is larger than the current number of computing resources, the scale-out operation is performed.
 //
 // @param request - ModifyPrepayInstanceSpecRequest
 //
@@ -1457,7 +1457,7 @@ func (client *Client) ModifyPrepayInstanceSpec(request *ModifyPrepayInstanceSpec
 //
 // Summary:
 //
-// 修改namespace资源分配
+// Modifies the resource configurations of a namespace in a subscription workspace.
 //
 // @param tmpReq - ModifyPrepayNamespaceSpecRequest
 //
@@ -1521,7 +1521,7 @@ func (client *Client) ModifyPrepayNamespaceSpecWithOptions(tmpReq *ModifyPrepayN
 //
 // Summary:
 //
-// 修改namespace资源分配
+// Modifies the resource configurations of a namespace in a subscription workspace.
 //
 // @param request - ModifyPrepayNamespaceSpecRequest
 //
@@ -1540,7 +1540,7 @@ func (client *Client) ModifyPrepayNamespaceSpec(request *ModifyPrepayNamespaceSp
 
 // Summary:
 //
-// 按量付费转包年包月询价
+// Queries the fee of switching the billing method of a workspace from pay-as-you-go to subscription.
 //
 // @param tmpReq - QueryConvertInstancePriceRequest
 //
@@ -1618,7 +1618,7 @@ func (client *Client) QueryConvertInstancePriceWithOptions(tmpReq *QueryConvertI
 
 // Summary:
 //
-// 按量付费转包年包月询价
+// Queries the fee of switching the billing method of a workspace from pay-as-you-go to subscription.
 //
 // @param request - QueryConvertInstancePriceRequest
 //
@@ -1636,7 +1636,7 @@ func (client *Client) QueryConvertInstancePrice(request *QueryConvertInstancePri
 
 // Summary:
 //
-// 包年包月转按量付费询价
+// Obtains the estimated refund after the billing method of your Realtime Compute for Apache Flink workspace is changed from subscription to pay-as-you-go. After you change the billing method of your workspace to pay-as-you-go, bills are generated on an hourly basis.
 //
 // @param request - QueryConvertPrepayInstancePriceRequest
 //
@@ -1684,7 +1684,7 @@ func (client *Client) QueryConvertPrepayInstancePriceWithOptions(request *QueryC
 
 // Summary:
 //
-// 包年包月转按量付费询价
+// Obtains the estimated refund after the billing method of your Realtime Compute for Apache Flink workspace is changed from subscription to pay-as-you-go. After you change the billing method of your workspace to pay-as-you-go, bills are generated on an hourly basis.
 //
 // @param request - QueryConvertPrepayInstancePriceRequest
 //
@@ -1702,7 +1702,7 @@ func (client *Client) QueryConvertPrepayInstancePrice(request *QueryConvertPrepa
 
 // Summary:
 //
-// 获取创建实例的价格
+// Queries the fee of creating a workspace.
 //
 // @param tmpReq - QueryCreateInstancePriceRequest
 //
@@ -1824,7 +1824,7 @@ func (client *Client) QueryCreateInstancePriceWithOptions(tmpReq *QueryCreateIns
 
 // Summary:
 //
-// 获取创建实例的价格
+// Queries the fee of creating a workspace.
 //
 // @param request - QueryCreateInstancePriceRequest
 //
@@ -1842,7 +1842,7 @@ func (client *Client) QueryCreateInstancePrice(request *QueryCreateInstancePrice
 
 // Summary:
 //
-// 查询付费类型为包年包月的实例修改资源规格的价格
+// Queries the fee of modifying the resource configuration of a workspace.
 //
 // @param tmpReq - QueryModifyInstancePriceRequest
 //
@@ -1928,7 +1928,7 @@ func (client *Client) QueryModifyInstancePriceWithOptions(tmpReq *QueryModifyIns
 
 // Summary:
 //
-// 查询付费类型为包年包月的实例修改资源规格的价格
+// Queries the fee of modifying the resource configuration of a workspace.
 //
 // @param request - QueryModifyInstancePriceRequest
 //
@@ -1946,7 +1946,7 @@ func (client *Client) QueryModifyInstancePrice(request *QueryModifyInstancePrice
 
 // Summary:
 //
-// 查询付费类型为包年包月的实例续费价格
+// Queries the fee of renewing a subscription workspace.
 //
 // @param request - QueryRenewInstancePriceRequest
 //
@@ -2010,7 +2010,7 @@ func (client *Client) QueryRenewInstancePriceWithOptions(request *QueryRenewInst
 
 // Summary:
 //
-// 查询付费类型为包年包月的实例续费价格
+// Queries the fee of renewing a subscription workspace.
 //
 // @param request - QueryRenewInstancePriceRequest
 //
@@ -2028,7 +2028,7 @@ func (client *Client) QueryRenewInstancePrice(request *QueryRenewInstancePriceRe
 
 // Summary:
 //
-// 续费
+// Renews a subscription workspace of Realtime Compute for Apache Flink.
 //
 // @param request - RenewInstanceRequest
 //
@@ -2092,7 +2092,7 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 
 // Summary:
 //
-// 续费
+// Renews a subscription workspace of Realtime Compute for Apache Flink.
 //
 // @param request - RenewInstanceRequest
 //
@@ -2110,7 +2110,7 @@ func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *Ren
 
 // Summary:
 //
-// 打标签接口
+// Adds tags to specified resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -2166,7 +2166,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 
 // Summary:
 //
-// 打标签接口
+// Adds tags to specified resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -2184,7 +2184,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// flinkasi去标签
+// Removes tags from specified resources.
 //
 // @param request - UntagResourcesRequest
 //
@@ -2244,7 +2244,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// flinkasi去标签
+// Removes tags from specified resources.
 //
 // @param request - UntagResourcesRequest
 //
