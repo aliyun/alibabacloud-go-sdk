@@ -24,12 +24,31 @@ type iElasticDataNodeConfiguration interface {
 }
 
 type ElasticDataNodeConfiguration struct {
+  // example:
+  // 
+  // 3
   Amount *int64 `json:"amount,omitempty" xml:"amount,omitempty"`
+  // example:
+  // 
+  // 20
   Disk *int64 `json:"disk,omitempty" xml:"disk,omitempty"`
+  // example:
+  // 
+  // false
   DiskEncryption *bool `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
+  // example:
+  // 
+  // cloud_ssd
   DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
+  // example:
+  // 
+  // PL1
   PerformanceLevel *string `json:"performanceLevel,omitempty" xml:"performanceLevel,omitempty"`
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // elasticsearch.sn2ne.large
   Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 

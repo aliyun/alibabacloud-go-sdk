@@ -18,9 +18,18 @@ type iReadWritePolicy interface {
 }
 
 type ReadWritePolicy struct {
-	AutoGeneratePk *bool   `json:"autoGeneratePk,omitempty" xml:"autoGeneratePk,omitempty"`
-	WriteHa        *bool   `json:"writeHa,omitempty" xml:"writeHa,omitempty"`
-	WritePolicy    *string `json:"writePolicy,omitempty" xml:"writePolicy,omitempty"`
+	// example:
+	//
+	// true
+	AutoGeneratePk *bool `json:"autoGeneratePk,omitempty" xml:"autoGeneratePk,omitempty"`
+	// example:
+	//
+	// true
+	WriteHa *bool `json:"writeHa,omitempty" xml:"writeHa,omitempty"`
+	// example:
+	//
+	// sync
+	WritePolicy *string `json:"writePolicy,omitempty" xml:"writePolicy,omitempty"`
 }
 
 func (s ReadWritePolicy) String() string {

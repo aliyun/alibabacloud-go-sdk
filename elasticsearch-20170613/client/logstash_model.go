@@ -50,25 +50,64 @@ type iLogstash interface {
 }
 
 type Logstash struct {
-	Config          map[string]*string      `json:"config,omitempty" xml:"config,omitempty"`
-	CreatedAt       *string                 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	DataNode        *bool                   `json:"dataNode,omitempty" xml:"dataNode,omitempty"`
-	Description     *string                 `json:"description,omitempty" xml:"description,omitempty"`
-	EndTime         *int64                  `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	EndpointList    []*LogstashEndpointList `json:"endpointList,omitempty" xml:"endpointList,omitempty" type:"Repeated"`
-	InstanceId      *string                 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	NetworkConfig   *LogstashNetworkConfig  `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
-	NodeAmount      *int64                  `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
-	NodeSpec        *LogstashNodeSpec       `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
-	PaymentType     *string                 `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	Protocol        *string                 `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	ResourceGroupId *string                 `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	Status          *string                 `json:"status,omitempty" xml:"status,omitempty"`
-	Tags            []*LogstashTags         `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	UpdatedAt       *string                 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	Version         *string                 `json:"version,omitempty" xml:"version,omitempty"`
-	ZoneCount       *int64                  `json:"zoneCount,omitempty" xml:"zoneCount,omitempty"`
-	ZoneInfos       []*LogstashZoneInfos    `json:"zoneInfos,omitempty" xml:"zoneInfos,omitempty" type:"Repeated"`
+	Config map[string]*string `json:"config,omitempty" xml:"config,omitempty"`
+	// example:
+	//
+	// 2018-07-13T03:58:07.253Z
+	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// example:
+	//
+	// true
+	DataNode *bool `json:"dataNode,omitempty" xml:"dataNode,omitempty"`
+	// example:
+	//
+	// ls-cn-abc
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// 4749897600000
+	EndTime      *int64                  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	EndpointList []*LogstashEndpointList `json:"endpointList,omitempty" xml:"endpointList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ls-cn-n6w1o5jq****
+	InstanceId    *string                `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	NetworkConfig *LogstashNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2
+	NodeAmount *int64            `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
+	NodeSpec   *LogstashNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
+	// example:
+	//
+	// postpaid
+	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// example:
+	//
+	// HTTP
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// example:
+	//
+	// rg-acfm2h5vbzd****
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// example:
+	//
+	// NORMAL
+	Status *string         `json:"status,omitempty" xml:"status,omitempty"`
+	Tags   []*LogstashTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2018-07-18T10:10:04.484Z
+	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// example:
+	//
+	// 6.7.0_with_X-Pack
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// example:
+	//
+	// 1
+	ZoneCount *int64               `json:"zoneCount,omitempty" xml:"zoneCount,omitempty"`
+	ZoneInfos []*LogstashZoneInfos `json:"zoneInfos,omitempty" xml:"zoneInfos,omitempty" type:"Repeated"`
 }
 
 func (s Logstash) String() string {
@@ -292,8 +331,17 @@ func (s *Logstash) Validate() error {
 }
 
 type LogstashEndpointList struct {
-	Host   *string `json:"host,omitempty" xml:"host,omitempty"`
-	Port   *int64  `json:"port,omitempty" xml:"port,omitempty"`
+	// example:
+	//
+	// 172.16.xx.xx
+	Host *string `json:"host,omitempty" xml:"host,omitempty"`
+	// example:
+	//
+	// 9200
+	Port *int64 `json:"port,omitempty" xml:"port,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-i
 	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 
@@ -337,9 +385,21 @@ func (s *LogstashEndpointList) Validate() error {
 }
 
 type LogstashNetworkConfig struct {
-	Type      *string `json:"type,omitempty" xml:"type,omitempty"`
-	VpcId     *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	VsArea    *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
+	// example:
+	//
+	// vpc
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// vpc-abc
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-*
+	VsArea *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
+	// example:
+	//
+	// vsw-def
 	VswitchId *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
 }
 
@@ -392,9 +452,18 @@ func (s *LogstashNetworkConfig) Validate() error {
 }
 
 type LogstashNodeSpec struct {
-	Disk     *int64  `json:"disk,omitempty" xml:"disk,omitempty"`
+	// example:
+	//
+	// 50
+	Disk *int64 `json:"disk,omitempty" xml:"disk,omitempty"`
+	// example:
+	//
+	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	Spec     *string `json:"spec,omitempty" xml:"spec,omitempty"`
+	// example:
+	//
+	// logstash.n4.small
+	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
 func (s LogstashNodeSpec) String() string {
@@ -437,7 +506,13 @@ func (s *LogstashNodeSpec) Validate() error {
 }
 
 type LogstashTags struct {
-	TagKey   *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// example:
+	//
+	// env
+	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// example:
+	//
+	// dev
 	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
 }
 
@@ -472,7 +547,13 @@ func (s *LogstashTags) Validate() error {
 }
 
 type LogstashZoneInfos struct {
+	// example:
+	//
+	// NORMAL
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-i
 	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 

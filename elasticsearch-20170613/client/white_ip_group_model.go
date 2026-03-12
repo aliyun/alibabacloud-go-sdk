@@ -18,9 +18,15 @@ type iWhiteIpGroup interface {
 }
 
 type WhiteIpGroup struct {
-	WhiteIpType *string   `json:"WhiteIpType,omitempty" xml:"WhiteIpType,omitempty"`
-	GroupName   *string   `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	Ips         []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
+	// example:
+	//
+	// PRIVATE_ES
+	WhiteIpType *string `json:"WhiteIpType,omitempty" xml:"WhiteIpType,omitempty"`
+	// example:
+	//
+	// test_group
+	GroupName *string   `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	Ips       []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
 }
 
 func (s WhiteIpGroup) String() string {

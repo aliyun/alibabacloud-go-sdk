@@ -20,10 +20,22 @@ type iNodeInfo interface {
 }
 
 type NodeInfo struct {
-	Host     *string `json:"host,omitempty" xml:"host,omitempty"`
+	// example:
+	//
+	// 172.16.xx.xx
+	Host *string `json:"host,omitempty" xml:"host,omitempty"`
+	// example:
+	//
+	// es-cn-tl32vdghe0005cd99-data-b-2
 	HostName *string `json:"hostName,omitempty" xml:"hostName,omitempty"`
-	Port     *int64  `json:"port,omitempty" xml:"port,omitempty"`
-	ZoneId   *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+	// example:
+	//
+	// 9200
+	Port *int64 `json:"port,omitempty" xml:"port,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-b
+	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 
 func (s NodeInfo) String() string {

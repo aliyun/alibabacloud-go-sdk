@@ -122,59 +122,158 @@ type iElasticsearch interface {
 }
 
 type Elasticsearch struct {
+  // example:
+  // 
+  // true
   AdvancedDedicateMaster *bool `json:"advancedDedicateMaster,omitempty" xml:"advancedDedicateMaster,omitempty"`
   AdvancedSetting *ElasticsearchAdvancedSetting `json:"advancedSetting,omitempty" xml:"advancedSetting,omitempty" type:"Struct"`
   AliwsDicts []*DictInfo `json:"aliwsDicts,omitempty" xml:"aliwsDicts,omitempty" type:"Repeated"`
   ClientNodeConfiguration *ClientNodeConfiguration `json:"clientNodeConfiguration,omitempty" xml:"clientNodeConfiguration,omitempty"`
+  // example:
+  // 
+  // 2018-07-13T03:58:07.253Z
   CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+  // example:
+  // 
+  // true
   DataNode *bool `json:"dataNode,omitempty" xml:"dataNode,omitempty"`
+  // example:
+  // 
+  // false
   DedicateMaster *bool `json:"dedicateMaster,omitempty" xml:"dedicateMaster,omitempty"`
+  // example:
+  // 
+  // es-cn-abc
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
   DictList []*DictInfo `json:"dictList,omitempty" xml:"dictList,omitempty" type:"Repeated"`
+  // example:
+  // 
+  // es-cn-3h4k3axh33th9****.elasticsearch.aliyuncs.com
   Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
   ElasticDataNodeConfiguration *ElasticDataNodeConfiguration `json:"elasticDataNodeConfiguration,omitempty" xml:"elasticDataNodeConfiguration,omitempty"`
+  // example:
+  // 
+  // false
   EnableKibanaPrivateNetwork *bool `json:"enableKibanaPrivateNetwork,omitempty" xml:"enableKibanaPrivateNetwork,omitempty"`
+  // example:
+  // 
+  // true
   EnableKibanaPublicNetwork *bool `json:"enableKibanaPublicNetwork,omitempty" xml:"enableKibanaPublicNetwork,omitempty"`
+  // example:
+  // 
+  // true
   EnablePublic *bool `json:"enablePublic,omitempty" xml:"enablePublic,omitempty"`
+  // example:
+  // 
+  // 5
   EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
   EsConfig map[string]*string `json:"esConfig,omitempty" xml:"esConfig,omitempty"`
   EsIPWhitelist []*string `json:"esIPWhitelist,omitempty" xml:"esIPWhitelist,omitempty" type:"Repeated"`
+  // example:
+  // 
+  // 6.3.2_with_X-Pack
   EsVersion *string `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
   ExtendConfigs []map[string]interface{} `json:"extendConfigs,omitempty" xml:"extendConfigs,omitempty" type:"Repeated"`
+  // example:
+  // 
+  // false
   HaveClientNode *bool `json:"haveClientNode,omitempty" xml:"haveClientNode,omitempty"`
+  // example:
+  // 
+  // false
   HaveElasticDataNode *bool `json:"haveElasticDataNode,omitempty" xml:"haveElasticDataNode,omitempty"`
+  // example:
+  // 
+  // true
   HaveKibana *bool `json:"haveKibana,omitempty" xml:"haveKibana,omitempty"`
   IkHotDicts []*DictInfo `json:"ikHotDicts,omitempty" xml:"ikHotDicts,omitempty" type:"Repeated"`
+  // example:
+  // 
+  // es-cn-3h4k3axh33th9****
   InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
   KibanaConfiguration *KibanaNodeConfiguration `json:"kibanaConfiguration,omitempty" xml:"kibanaConfiguration,omitempty"`
+  // example:
+  // 
+  // es-cn-3h4k3axh33th9****.kibana.elasticsearch.aliyuncs.com
   KibanaDomain *string `json:"kibanaDomain,omitempty" xml:"kibanaDomain,omitempty"`
   KibanaIPWhitelist []*string `json:"kibanaIPWhitelist,omitempty" xml:"kibanaIPWhitelist,omitempty" type:"Repeated"`
+  // example:
+  // 
+  // 5601
   KibanaPort *int64 `json:"kibanaPort,omitempty" xml:"kibanaPort,omitempty"`
+  // example:
+  // 
+  // es-cn-tl329rbpc0001****-kibana.internal.elasticsearch.aliyuncs.com
   KibanaPrivateDomain *string `json:"kibanaPrivateDomain,omitempty" xml:"kibanaPrivateDomain,omitempty"`
   KibanaPrivateIPWhitelist []*string `json:"kibanaPrivateIPWhitelist,omitempty" xml:"kibanaPrivateIPWhitelist,omitempty" type:"Repeated"`
+  // example:
+  // 
+  // 5601
   KibanaPrivatePort *int64 `json:"kibanaPrivatePort,omitempty" xml:"kibanaPrivatePort,omitempty"`
+  // example:
+  // 
+  // HTTPS
   KibanaProtocol *string `json:"kibanaProtocol,omitempty" xml:"kibanaProtocol,omitempty"`
   MasterConfiguration *MasterNodeConfiguration `json:"masterConfiguration,omitempty" xml:"masterConfiguration,omitempty"`
   NetworkConfig *NetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty"`
+  // example:
+  // 
+  // 2
   NodeAmount *int64 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
   NodeSpec *NodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty"`
+  // example:
+  // 
+  // prepaid
   PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+  // example:
+  // 
+  // 9200
   Port *int64 `json:"port,omitempty" xml:"port,omitempty"`
   PrivateNetworkIpWhiteList []*string `json:"privateNetworkIpWhiteList,omitempty" xml:"privateNetworkIpWhiteList,omitempty" type:"Repeated"`
+  // example:
+  // 
+  // generalBusiness
   ProductType *string `json:"productType,omitempty" xml:"productType,omitempty"`
+  // example:
+  // 
+  // HTTP
   Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+  // example:
+  // 
+  // es-cn-3h4k3axh33th9****.elasticsearch.aliyuncs.com
   PublicDomain *string `json:"publicDomain,omitempty" xml:"publicDomain,omitempty"`
   PublicIpWhitelist []*string `json:"publicIpWhitelist,omitempty" xml:"publicIpWhitelist,omitempty" type:"Repeated"`
+  // example:
+  // 
+  // 9200
   PublicPort *int64 `json:"publicPort,omitempty" xml:"publicPort,omitempty"`
   ReadWritePolicy *ReadWritePolicy `json:"readWritePolicy,omitempty" xml:"readWritePolicy,omitempty"`
+  // example:
+  // 
+  // rg-aekzvowej3i****
   ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+  // example:
+  // 
+  // true
   ServiceVpc *bool `json:"serviceVpc,omitempty" xml:"serviceVpc,omitempty"`
+  // example:
+  // 
+  // active
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
   SynonymsDicts []*DictInfo `json:"synonymsDicts,omitempty" xml:"synonymsDicts,omitempty" type:"Repeated"`
   Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+  // example:
+  // 
+  // 2018-07-13T03:58:07.253Z
   UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+  // example:
+  // 
+  // false
   WarmNode *bool `json:"warmNode,omitempty" xml:"warmNode,omitempty"`
   WarmNodeConfiguration *WarmNodeConfiguration `json:"warmNodeConfiguration,omitempty" xml:"warmNodeConfiguration,omitempty"`
+  // example:
+  // 
+  // 1
   ZoneCount *int64 `json:"zoneCount,omitempty" xml:"zoneCount,omitempty"`
   ZoneInfos []*ZoneInfo `json:"zoneInfos,omitempty" xml:"zoneInfos,omitempty" type:"Repeated"`
 }
@@ -786,6 +885,9 @@ func (s *Elasticsearch) Validate() error {
 }
 
 type ElasticsearchAdvancedSetting struct {
+  // example:
+  // 
+  // CMS
   GcName *string `json:"gcName,omitempty" xml:"gcName,omitempty"`
 }
 

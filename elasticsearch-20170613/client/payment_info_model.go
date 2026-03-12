@@ -20,10 +20,22 @@ type iPaymentInfo interface {
 }
 
 type PaymentInfo struct {
-	AutoRenewDuration *int64  `json:"autoRenewDuration,omitempty" xml:"autoRenewDuration,omitempty"`
-	Duration          *int64  `json:"duration,omitempty" xml:"duration,omitempty"`
-	IsAutoRenew       *bool   `json:"isAutoRenew,omitempty" xml:"isAutoRenew,omitempty"`
-	PricingCycle      *string `json:"pricingCycle,omitempty" xml:"pricingCycle,omitempty"`
+	// example:
+	//
+	// 3
+	AutoRenewDuration *int64 `json:"autoRenewDuration,omitempty" xml:"autoRenewDuration,omitempty"`
+	// example:
+	//
+	// 1
+	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
+	// example:
+	//
+	// true
+	IsAutoRenew *bool `json:"isAutoRenew,omitempty" xml:"isAutoRenew,omitempty"`
+	// example:
+	//
+	// Month
+	PricingCycle *string `json:"pricingCycle,omitempty" xml:"pricingCycle,omitempty"`
 }
 
 func (s PaymentInfo) String() string {

@@ -31,6 +31,10 @@ type CreateIndexTemplateRequest struct {
 	// E1136AE9-4E49-4585-9358-6FDD2A6D****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// false
 	DataStream *bool `json:"dataStream,omitempty" xml:"dataStream,omitempty"`
 	// example:
 	//
@@ -46,7 +50,7 @@ type CreateIndexTemplateRequest struct {
 	IndexTemplate *string `json:"indexTemplate,omitempty" xml:"indexTemplate,omitempty"`
 	// example:
 	//
-	// 100
+	// 30
 	Priority *int32                              `json:"priority,omitempty" xml:"priority,omitempty"`
 	Template *CreateIndexTemplateRequestTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
 }
@@ -134,15 +138,15 @@ func (s *CreateIndexTemplateRequest) Validate() error {
 type CreateIndexTemplateRequestTemplate struct {
 	// example:
 	//
-	// {"mydata": {}}
+	// {\\"mydata\\":{}}
 	Aliases *string `json:"aliases,omitempty" xml:"aliases,omitempty"`
 	// example:
 	//
-	// {"properties": {"created_at": {"type": "date","format": "EEE MMM dd HH:mm:ss Z yyyy"},"host_name": {"type": "keyword"}}}
+	// {\\"properties\\":{\\"created_at\\":{\\"format\\":\\"EEE MMM dd HH:mm:ss Z yyyy\\",\\"type\\":\\"date\\"},\\"host_name\\":{\\"type\\":\\"keyword\\"}}}
 	Mappings *string `json:"mappings,omitempty" xml:"mappings,omitempty"`
 	// example:
 	//
-	// {\"index.refresh_interval\":\"1s\"}
+	// {\\"index.number_of_shards\\":\\"1\\"}
 	Settings *string `json:"settings,omitempty" xml:"settings,omitempty"`
 }
 

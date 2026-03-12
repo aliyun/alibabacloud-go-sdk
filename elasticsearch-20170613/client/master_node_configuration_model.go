@@ -21,12 +21,28 @@ type iMasterNodeConfiguration interface {
 
 type MasterNodeConfiguration struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
 	Amount *int64 `json:"amount,omitempty" xml:"amount,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
 	Disk *int64 `json:"disk,omitempty" xml:"disk,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cloud_essd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// elasticsearch.sn2ne.large
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 

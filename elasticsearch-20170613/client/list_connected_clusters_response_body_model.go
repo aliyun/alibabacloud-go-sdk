@@ -21,9 +21,8 @@ type ListConnectedClustersResponseBody struct {
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D***
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The return results.
-	Result *ListConnectedClustersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ListConnectedClustersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s ListConnectedClustersResponseBody) String() string {
@@ -96,17 +95,7 @@ func (s *ListConnectedClustersResponseBodyResult) Validate() error {
 }
 
 type ListConnectedClustersResponseBodyResultResult struct {
-	// The ID of the remote instance that is connected to the network of the current instance.
-	//
-	// example:
-	//
-	// es-cn-09k1rocex0006****
-	Instances *string `json:"instances,omitempty" xml:"instances,omitempty"`
-	// The network type of the instance.
-	//
-	// example:
-	//
-	// vpc
+	Instances   *string `json:"instances,omitempty" xml:"instances,omitempty"`
 	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
 }
 

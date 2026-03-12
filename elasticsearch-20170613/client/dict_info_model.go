@@ -20,10 +20,22 @@ type iDictInfo interface {
 }
 
 type DictInfo struct {
-	FileSize   *int64  `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 2782602
+	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	// example:
+	//
+	// aliws_ext_dict.txt
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// OSS
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// ALI_WS
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s DictInfo) String() string {

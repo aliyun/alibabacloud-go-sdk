@@ -18,9 +18,19 @@ type iKibanaNodeConfiguration interface {
 }
 
 type KibanaNodeConfiguration struct {
+	// example:
+	//
+	// 2
 	Amount *int64 `json:"amount,omitempty" xml:"amount,omitempty"`
-	Disk   *int64 `json:"disk,omitempty" xml:"disk,omitempty"`
+	// example:
+	//
+	// 20
+	Disk *int64 `json:"disk,omitempty" xml:"disk,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// elasticsearch.sn2ne.large
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 

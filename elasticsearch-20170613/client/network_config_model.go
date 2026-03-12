@@ -33,10 +33,22 @@ type NetworkConfig struct {
 	// example:
 	//
 	// DEFAULT
-	LoadBalanceType  *string         `json:"loadBalanceType,omitempty" xml:"loadBalanceType,omitempty"`
-	Type             *string         `json:"type,omitempty" xml:"type,omitempty"`
-	VpcId            *string         `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	VsArea           *string         `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
+	LoadBalanceType *string `json:"loadBalanceType,omitempty" xml:"loadBalanceType,omitempty"`
+	// example:
+	//
+	// vpc
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// vpc-bp1xk0naij7jx4ph1****
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-e
+	VsArea *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
+	// example:
+	//
+	// vsw-bp1ogpdintii5qvyx****
 	VswitchId        *string         `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
 	WhiteIpGroupList []*WhiteIpGroup `json:"whiteIpGroupList,omitempty" xml:"whiteIpGroupList,omitempty" type:"Repeated"`
 }

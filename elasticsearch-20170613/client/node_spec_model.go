@@ -24,12 +24,28 @@ type iNodeSpec interface {
 }
 
 type NodeSpec struct {
-	Disk             *int32  `json:"disk,omitempty" xml:"disk,omitempty"`
-	DiskEncryption   *bool   `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
-	DiskPreference   *string `json:"diskPreference,omitempty" xml:"diskPreference,omitempty"`
-	DiskType         *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
+	// example:
+	//
+	// 20
+	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
+	// example:
+	//
+	// false
+	DiskEncryption *bool   `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
+	DiskPreference *string `json:"diskPreference,omitempty" xml:"diskPreference,omitempty"`
+	// example:
+	//
+	// cloud_ssd
+	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
+	// example:
+	//
+	// PL1
 	PerformanceLevel *string `json:"performanceLevel,omitempty" xml:"performanceLevel,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// elasticsearch.sn2ne.large
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 

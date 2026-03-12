@@ -16,7 +16,13 @@ type iZoneInfo interface {
 }
 
 type ZoneInfo struct {
+	// example:
+	//
+	// NORMAL
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-b
 	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 
