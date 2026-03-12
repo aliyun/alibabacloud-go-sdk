@@ -374,6 +374,156 @@ func (client *Client) DeleteGatewayWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
+// 查询实例配置历史
+//
+// @param request - DescribeConfigHistoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeConfigHistoryResponse
+func (client *Client) DescribeConfigHistoryWithContext(ctx context.Context, request *DescribeConfigHistoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeConfigHistoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EffectStatuses) {
+		query["EffectStatuses"] = request.EffectStatuses
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NeedTotal) {
+		query["NeedTotal"] = request.NeedTotal
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeConfigHistory"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/config/describeConfigHistory"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeConfigHistoryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例配置
+//
+// @param request - DescribeInstanceConfigsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceConfigsResponse
+func (client *Client) DescribeInstanceConfigsWithContext(ctx context.Context, request *DescribeInstanceConfigsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeInstanceConfigsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AllowModify) {
+		query["AllowModify"] = request.AllowModify
+	}
+
+	if !dara.IsNil(request.ConfigKey) {
+		query["ConfigKey"] = request.ConfigKey
+	}
+
+	if !dara.IsNil(request.ConfigType) {
+		query["ConfigType"] = request.ConfigType
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NeedTotal) {
+		query["NeedTotal"] = request.NeedTotal
+	}
+
+	if !dara.IsNil(request.NodeGroupId) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInstanceConfigs"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/config/describeInstanceConfigs"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInstanceConfigsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // This operation is used to query Serverless StarRocks instances, supporting filtering based on instance name or tags and other information.
 //
 // @param tmpReq - DescribeInstancesRequest
@@ -1300,6 +1450,152 @@ func (client *Client) ModifyDiskTypeWithContext(ctx context.Context, request *Mo
 
 // Summary:
 //
+// 修改实例配置
+//
+// @param request - ModifyInstanceConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstanceConfigResponse
+func (client *Client) ModifyInstanceConfigWithContext(ctx context.Context, request *ModifyInstanceConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyInstanceConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddConfigList) {
+		query["AddConfigList"] = request.AddConfigList
+	}
+
+	if !dara.IsNil(request.ConfigList) {
+		query["ConfigList"] = request.ConfigList
+	}
+
+	if !dara.IsNil(request.DeleteConfigList) {
+		query["DeleteConfigList"] = request.DeleteConfigList
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Reason) {
+		query["Reason"] = request.Reason
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigsToAdd) {
+		body["configsToAdd"] = request.ConfigsToAdd
+	}
+
+	if !dara.IsNil(request.ConfigsToDelete) {
+		body["configsToDelete"] = request.ConfigsToDelete
+	}
+
+	if !dara.IsNil(request.ConfigsToUpdate) {
+		body["configsToUpdate"] = request.ConfigsToUpdate
+	}
+
+	if !dara.IsNil(request.FastMode) {
+		body["fastMode"] = request.FastMode
+	}
+
+	if !dara.IsNil(request.Restart) {
+		body["restart"] = request.Restart
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyInstanceConfig"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/config/modifyInstanceConfig"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyInstanceConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置变更预检查，返回此次变更需要重启的计算组ID
+//
+// @param request - ModifyInstanceConfigPreCheckRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstanceConfigPreCheckResponse
+func (client *Client) ModifyInstanceConfigPreCheckWithContext(ctx context.Context, request *ModifyInstanceConfigPreCheckRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyInstanceConfigPreCheckResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigsToAdd) {
+		body["configsToAdd"] = request.ConfigsToAdd
+	}
+
+	if !dara.IsNil(request.ConfigsToDelete) {
+		body["configsToDelete"] = request.ConfigsToDelete
+	}
+
+	if !dara.IsNil(request.ConfigsToUpdate) {
+		body["configsToUpdate"] = request.ConfigsToUpdate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyInstanceConfigPreCheck"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/config/modifyInstanceConfigPreCheck"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyInstanceConfigPreCheckResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the number of nodes in a warehouse of an E-MapReduce (EMR) Serverless StarRocks instance.
 //
 // Description:
@@ -1833,6 +2129,61 @@ func (client *Client) ResumeInstanceWithContext(ctx context.Context, request *Re
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResumeInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 回滚正在进行中的配置修改
+//
+// @param request - RollbackConfigModificationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RollbackConfigModificationResponse
+func (client *Client) RollbackConfigModificationWithContext(ctx context.Context, request *RollbackConfigModificationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RollbackConfigModificationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigHistoryId) {
+		query["ConfigHistoryId"] = request.ConfigHistoryId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Restart) {
+		query["Restart"] = request.Restart
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RollbackConfigModification"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/config/rollbackConfigModification"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RollbackConfigModificationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
