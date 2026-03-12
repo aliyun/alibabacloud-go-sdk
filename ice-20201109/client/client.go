@@ -1320,6 +1320,130 @@ func (client *Client) BatchGetMediaInfos(request *BatchGetMediaInfosRequest) (_r
 
 // Summary:
 //
+// 批量获取一刻AI应用生成任务
+//
+// @param request - BatchGetYikeAIAppJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchGetYikeAIAppJobResponse
+func (client *Client) BatchGetYikeAIAppJobWithOptions(request *BatchGetYikeAIAppJobRequest, runtime *dara.RuntimeOptions) (_result *BatchGetYikeAIAppJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobIds) {
+		query["JobIds"] = request.JobIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchGetYikeAIAppJob"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchGetYikeAIAppJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量获取一刻AI应用生成任务
+//
+// @param request - BatchGetYikeAIAppJobRequest
+//
+// @return BatchGetYikeAIAppJobResponse
+func (client *Client) BatchGetYikeAIAppJob(request *BatchGetYikeAIAppJobRequest) (_result *BatchGetYikeAIAppJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &BatchGetYikeAIAppJobResponse{}
+	_body, _err := client.BatchGetYikeAIAppJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量获取媒资信息
+//
+// @param request - BatchGetYikeAssetMediaInfosRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchGetYikeAssetMediaInfosResponse
+func (client *Client) BatchGetYikeAssetMediaInfosWithOptions(request *BatchGetYikeAssetMediaInfosRequest, runtime *dara.RuntimeOptions) (_result *BatchGetYikeAssetMediaInfosResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MediaIds) {
+		query["MediaIds"] = request.MediaIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchGetYikeAssetMediaInfos"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchGetYikeAssetMediaInfosResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量获取媒资信息
+//
+// @param request - BatchGetYikeAssetMediaInfosRequest
+//
+// @return BatchGetYikeAssetMediaInfosResponse
+func (client *Client) BatchGetYikeAssetMediaInfos(request *BatchGetYikeAssetMediaInfosRequest) (_result *BatchGetYikeAssetMediaInfosResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &BatchGetYikeAssetMediaInfosResponse{}
+	_body, _err := client.BatchGetYikeAssetMediaInfosWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Cancels a media fingerprint analysis job.
 //
 // Description:
@@ -7905,6 +8029,72 @@ func (client *Client) DeleteVodPackagingGroup(request *DeleteVodPackagingGroupRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteVodPackagingGroupResponse{}
 	_body, _err := client.DeleteVodPackagingGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除媒资信息
+//
+// @param request - DeleteYikeAssetMediaInfosRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteYikeAssetMediaInfosResponse
+func (client *Client) DeleteYikeAssetMediaInfosWithOptions(request *DeleteYikeAssetMediaInfosRequest, runtime *dara.RuntimeOptions) (_result *DeleteYikeAssetMediaInfosResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.LogicDelete) {
+		query["LogicDelete"] = request.LogicDelete
+	}
+
+	if !dara.IsNil(request.MediaIds) {
+		query["MediaIds"] = request.MediaIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteYikeAssetMediaInfos"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteYikeAssetMediaInfosResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除媒资信息
+//
+// @param request - DeleteYikeAssetMediaInfosRequest
+//
+// @return DeleteYikeAssetMediaInfosResponse
+func (client *Client) DeleteYikeAssetMediaInfos(request *DeleteYikeAssetMediaInfosRequest) (_result *DeleteYikeAssetMediaInfosResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteYikeAssetMediaInfosResponse{}
+	_body, _err := client.DeleteYikeAssetMediaInfosWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
