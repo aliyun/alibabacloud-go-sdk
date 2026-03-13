@@ -7547,7 +7547,7 @@ func (client *Client) DescribeNatFirewallTimeTopWithContext(ctx context.Context,
 
 // Summary:
 //
-// 概览页-NAT流量趋势
+// Queries the traffic trend of NAT gateways.
 //
 // @param request - DescribeNatFirewallTrafficTrendRequest
 //
@@ -10609,7 +10609,7 @@ func (client *Client) DescribeSecurityModeWithContext(ctx context.Context, reque
 //
 // Summary:
 //
-// 获取正向代理
+// Queries information about NAT firewalls.
 //
 // @param request - DescribeSecurityProxyRequest
 //

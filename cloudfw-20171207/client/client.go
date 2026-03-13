@@ -10169,7 +10169,7 @@ func (client *Client) DescribeNatFirewallTimeTop(request *DescribeNatFirewallTim
 
 // Summary:
 //
-// 概览页-NAT流量趋势
+// Queries the traffic trend of NAT gateways.
 //
 // @param request - DescribeNatFirewallTrafficTrendRequest
 //
@@ -10209,7 +10209,7 @@ func (client *Client) DescribeNatFirewallTrafficTrendWithOptions(request *Descri
 
 // Summary:
 //
-// 概览页-NAT流量趋势
+// Queries the traffic trend of NAT gateways.
 //
 // @param request - DescribeNatFirewallTrafficTrendRequest
 //
@@ -14097,7 +14097,7 @@ func (client *Client) DescribeSecurityMode(request *DescribeSecurityModeRequest)
 //
 // Summary:
 //
-// 获取正向代理
+// Queries information about NAT firewalls.
 //
 // @param request - DescribeSecurityProxyRequest
 //
@@ -14183,7 +14183,7 @@ func (client *Client) DescribeSecurityProxyWithOptions(request *DescribeSecurity
 //
 // Summary:
 //
-// 获取正向代理
+// Queries information about NAT firewalls.
 //
 // @param request - DescribeSecurityProxyRequest
 //

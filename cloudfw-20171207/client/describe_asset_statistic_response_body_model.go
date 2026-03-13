@@ -9,6 +9,8 @@ type iDescribeAssetStatisticResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoResourceEnable(v bool) *DescribeAssetStatisticResponseBody
+	GetAutoResourceEnable() *bool
 	SetGeneralInstanceSpecStatistic(v *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic) *DescribeAssetStatisticResponseBody
 	GetGeneralInstanceSpecStatistic() *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic
 	SetRequestId(v string) *DescribeAssetStatisticResponseBody
@@ -18,6 +20,7 @@ type iDescribeAssetStatisticResponseBody interface {
 }
 
 type DescribeAssetStatisticResponseBody struct {
+	AutoResourceEnable           *bool                                                           `json:"AutoResourceEnable,omitempty" xml:"AutoResourceEnable,omitempty"`
 	GeneralInstanceSpecStatistic *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic `json:"GeneralInstanceSpecStatistic,omitempty" xml:"GeneralInstanceSpecStatistic,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -37,6 +40,10 @@ func (s DescribeAssetStatisticResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeAssetStatisticResponseBody) GetAutoResourceEnable() *bool {
+	return s.AutoResourceEnable
+}
+
 func (s *DescribeAssetStatisticResponseBody) GetGeneralInstanceSpecStatistic() *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic {
 	return s.GeneralInstanceSpecStatistic
 }
@@ -47,6 +54,11 @@ func (s *DescribeAssetStatisticResponseBody) GetRequestId() *string {
 
 func (s *DescribeAssetStatisticResponseBody) GetResourceSpecStatistic() *DescribeAssetStatisticResponseBodyResourceSpecStatistic {
 	return s.ResourceSpecStatistic
+}
+
+func (s *DescribeAssetStatisticResponseBody) SetAutoResourceEnable(v bool) *DescribeAssetStatisticResponseBody {
+	s.AutoResourceEnable = &v
+	return s
 }
 
 func (s *DescribeAssetStatisticResponseBody) SetGeneralInstanceSpecStatistic(v *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic) *DescribeAssetStatisticResponseBody {
