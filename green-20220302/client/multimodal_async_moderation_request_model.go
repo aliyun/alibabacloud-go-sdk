@@ -16,7 +16,13 @@ type iMultimodalAsyncModerationRequest interface {
 }
 
 type MultimodalAsyncModerationRequest struct {
-	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// example:
+	//
+	// post_text_image_detection
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// example:
+	//
+	// {"mainData":{"mainContent":"testMainContent","mainTitle":"testMainTitle","mainImages":[{"imageUrl":"https://xxxx.com/001.jpg"}]}}
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 

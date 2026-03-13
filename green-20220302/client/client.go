@@ -218,7 +218,7 @@ func (client *Client) DescribeImageModerationResult(request *DescribeImageModera
 
 // Summary:
 //
-// 查询检测结果辅助信息
+// Obtains more auxiliary information that is identified by calling the Image Moderation 2.0 API. The auxiliary information includes the moderation results of images and text and the hit information of custom image libraries.
 //
 // @param request - DescribeImageResultExtRequest
 //
@@ -266,7 +266,7 @@ func (client *Client) DescribeImageResultExtWithOptions(request *DescribeImageRe
 
 // Summary:
 //
-// 查询检测结果辅助信息
+// Obtains more auxiliary information that is identified by calling the Image Moderation 2.0 API. The auxiliary information includes the moderation results of images and text and the hit information of custom image libraries.
 //
 // @param request - DescribeImageResultExtRequest
 //
@@ -346,7 +346,7 @@ func (client *Client) DescribeMultimodalModerationResult(request *DescribeMultim
 
 // Summary:
 //
-// 查询上传token
+// Queries the token for uploading files.
 //
 // @param request - DescribeUploadTokenRequest
 //
@@ -377,7 +377,7 @@ func (client *Client) DescribeUploadTokenWithOptions(runtime *dara.RuntimeOption
 
 // Summary:
 //
-// 查询上传token
+// Queries the token for uploading files.
 //
 // @return DescribeUploadTokenResponse
 func (client *Client) DescribeUploadToken() (_result *DescribeUploadTokenResponse, _err error) {
@@ -471,7 +471,7 @@ func (client *Client) DescribeUrlModerationResult(request *DescribeUrlModeration
 
 // Summary:
 //
-// 文档审核
+// Moderates files.
 //
 // @param request - FileModerationRequest
 //
@@ -519,7 +519,7 @@ func (client *Client) FileModerationWithOptions(request *FileModerationRequest, 
 
 // Summary:
 //
-// 文档审核
+// Moderates files.
 //
 // @param request - FileModerationRequest
 //
@@ -537,7 +537,7 @@ func (client *Client) FileModeration(request *FileModerationRequest) (_result *F
 
 // Summary:
 //
-// 图片异步检测
+// Moderates images in asynchronous mode. An asynchronous image moderation task does not return the moderation results in real time. To obtain moderation results, you can poll the moderation results periodically or enable callback notification. The moderation results are retained for a maximum of 3 days.
 //
 // @param request - ImageAsyncModerationRequest
 //
@@ -585,7 +585,7 @@ func (client *Client) ImageAsyncModerationWithOptions(request *ImageAsyncModerat
 
 // Summary:
 //
-// 图片异步检测
+// Moderates images in asynchronous mode. An asynchronous image moderation task does not return the moderation results in real time. To obtain moderation results, you can poll the moderation results periodically or enable callback notification. The moderation results are retained for a maximum of 3 days.
 //
 // @param request - ImageAsyncModerationRequest
 //
@@ -1437,7 +1437,7 @@ func (client *Client) TextModerationPlus(request *TextModerationPlusRequest) (_r
 
 // Summary:
 //
-// url异步检测
+// Identifies whether URL links contain risks such as fraud, pornographic, and gambling content, to protect the platform content ecosystem.
 //
 // @param request - UrlAsyncModerationRequest
 //
@@ -1485,7 +1485,7 @@ func (client *Client) UrlAsyncModerationWithOptions(request *UrlAsyncModerationR
 
 // Summary:
 //
-// url异步检测
+// Identifies whether URL links contain risks such as fraud, pornographic, and gambling content, to protect the platform content ecosystem.
 //
 // @param request - UrlAsyncModerationRequest
 //
@@ -1503,7 +1503,7 @@ func (client *Client) UrlAsyncModeration(request *UrlAsyncModerationRequest) (_r
 
 // Summary:
 //
-// 视频检测任务提交
+// Identifies risky or illegal content in video files. You can call this operation to submit a moderation task.
 //
 // @param request - VideoModerationRequest
 //
@@ -1551,7 +1551,7 @@ func (client *Client) VideoModerationWithOptions(request *VideoModerationRequest
 
 // Summary:
 //
-// 视频检测任务提交
+// Identifies risky or illegal content in video files. You can call this operation to submit a moderation task.
 //
 // @param request - VideoModerationRequest
 //
@@ -1569,7 +1569,7 @@ func (client *Client) VideoModeration(request *VideoModerationRequest) (_result 
 
 // Summary:
 //
-// 取消视频直播流检测
+// Cancels a live stream moderation task.
 //
 // @param request - VideoModerationCancelRequest
 //
@@ -1617,7 +1617,7 @@ func (client *Client) VideoModerationCancelWithOptions(request *VideoModerationC
 
 // Summary:
 //
-// 取消视频直播流检测
+// Cancels a live stream moderation task.
 //
 // @param request - VideoModerationCancelRequest
 //
@@ -1709,7 +1709,7 @@ func (client *Client) VideoModerationResult(request *VideoModerationResultReques
 
 // Summary:
 //
-// 语音审核
+// Submits a Voice Moderation 2.0 task.
 //
 // @param request - VoiceModerationRequest
 //
@@ -1757,7 +1757,7 @@ func (client *Client) VoiceModerationWithOptions(request *VoiceModerationRequest
 
 // Summary:
 //
-// 语音审核
+// Submits a Voice Moderation 2.0 task.
 //
 // @param request - VoiceModerationRequest
 //
@@ -1775,7 +1775,7 @@ func (client *Client) VoiceModeration(request *VoiceModerationRequest) (_result 
 
 // Summary:
 //
-// 取消检测
+// Cancels a Voice Moderation 2.0 task.
 //
 // @param request - VoiceModerationCancelRequest
 //
@@ -1823,7 +1823,7 @@ func (client *Client) VoiceModerationCancelWithOptions(request *VoiceModerationC
 
 // Summary:
 //
-// 取消检测
+// Cancels a Voice Moderation 2.0 task.
 //
 // @param request - VoiceModerationCancelRequest
 //

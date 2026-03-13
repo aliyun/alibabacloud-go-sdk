@@ -103,7 +103,8 @@ type VideoModerationResultResponseBodyData struct {
 	// example:
 	//
 	// product_content-2055763
-	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DataId *string                                   `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Ext    *VideoModerationResultResponseBodyDataExt `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
 	// The image moderation results. If the call is successful, the HTTP status code 200 and moderation results are returned. The moderation results contain a structure.
 	FrameResult *VideoModerationResultResponseBodyDataFrameResult `json:"FrameResult,omitempty" xml:"FrameResult,omitempty" type:"Struct"`
 	// The unique ID of the live stream.
@@ -143,6 +144,10 @@ func (s *VideoModerationResultResponseBodyData) GetDataId() *string {
 	return s.DataId
 }
 
+func (s *VideoModerationResultResponseBodyData) GetExt() *VideoModerationResultResponseBodyDataExt {
+	return s.Ext
+}
+
 func (s *VideoModerationResultResponseBodyData) GetFrameResult() *VideoModerationResultResponseBodyDataFrameResult {
 	return s.FrameResult
 }
@@ -170,6 +175,11 @@ func (s *VideoModerationResultResponseBodyData) SetAudioResult(v *VideoModeratio
 
 func (s *VideoModerationResultResponseBodyData) SetDataId(v string) *VideoModerationResultResponseBodyData {
 	s.DataId = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyData) SetExt(v *VideoModerationResultResponseBodyDataExt) *VideoModerationResultResponseBodyData {
+	s.Ext = v
 	return s
 }
 
@@ -201,6 +211,11 @@ func (s *VideoModerationResultResponseBodyData) SetTaskId(v string) *VideoModera
 func (s *VideoModerationResultResponseBodyData) Validate() error {
 	if s.AudioResult != nil {
 		if err := s.AudioResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Ext != nil {
+		if err := s.Ext.Validate(); err != nil {
 			return err
 		}
 	}
@@ -549,6 +564,161 @@ func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) SetUrl(v 
 }
 
 func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) Validate() error {
+	return dara.Validate(s)
+}
+
+type VideoModerationResultResponseBodyDataExt struct {
+	AigcData *VideoModerationResultResponseBodyDataExtAigcData `json:"AigcData,omitempty" xml:"AigcData,omitempty" type:"Struct"`
+}
+
+func (s VideoModerationResultResponseBodyDataExt) String() string {
+	return dara.Prettify(s)
+}
+
+func (s VideoModerationResultResponseBodyDataExt) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponseBodyDataExt) GetAigcData() *VideoModerationResultResponseBodyDataExtAigcData {
+	return s.AigcData
+}
+
+func (s *VideoModerationResultResponseBodyDataExt) SetAigcData(v *VideoModerationResultResponseBodyDataExtAigcData) *VideoModerationResultResponseBodyDataExt {
+	s.AigcData = v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataExt) Validate() error {
+	if s.AigcData != nil {
+		if err := s.AigcData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type VideoModerationResultResponseBodyDataExtAigcData struct {
+	AIGC   *VideoModerationResultResponseBodyDataExtAigcDataAIGC `json:"AIGC,omitempty" xml:"AIGC,omitempty" type:"Struct"`
+	Result *string                                               `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s VideoModerationResultResponseBodyDataExtAigcData) String() string {
+	return dara.Prettify(s)
+}
+
+func (s VideoModerationResultResponseBodyDataExtAigcData) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponseBodyDataExtAigcData) GetAIGC() *VideoModerationResultResponseBodyDataExtAigcDataAIGC {
+	return s.AIGC
+}
+
+func (s *VideoModerationResultResponseBodyDataExtAigcData) GetResult() *string {
+	return s.Result
+}
+
+func (s *VideoModerationResultResponseBodyDataExtAigcData) SetAIGC(v *VideoModerationResultResponseBodyDataExtAigcDataAIGC) *VideoModerationResultResponseBodyDataExtAigcData {
+	s.AIGC = v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataExtAigcData) SetResult(v string) *VideoModerationResultResponseBodyDataExtAigcData {
+	s.Result = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataExtAigcData) Validate() error {
+	if s.AIGC != nil {
+		if err := s.AIGC.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type VideoModerationResultResponseBodyDataExtAigcDataAIGC struct {
+	ContentProducer   *string `json:"ContentProducer,omitempty" xml:"ContentProducer,omitempty"`
+	ContentPropagator *string `json:"ContentPropagator,omitempty" xml:"ContentPropagator,omitempty"`
+	Label             *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	ProduceID         *string `json:"ProduceID,omitempty" xml:"ProduceID,omitempty"`
+	PropagateID       *string `json:"PropagateID,omitempty" xml:"PropagateID,omitempty"`
+	ReservedCode1     *string `json:"ReservedCode1,omitempty" xml:"ReservedCode1,omitempty"`
+	ReservedCode2     *string `json:"ReservedCode2,omitempty" xml:"ReservedCode2,omitempty"`
+}
+
+func (s VideoModerationResultResponseBodyDataExtAigcDataAIGC) String() string {
+	return dara.Prettify(s)
+}
+
+func (s VideoModerationResultResponseBodyDataExtAigcDataAIGC) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponseBodyDataExtAigcDataAIGC) GetContentProducer() *string {
+	return s.ContentProducer
+}
+
+func (s *VideoModerationResultResponseBodyDataExtAigcDataAIGC) GetContentPropagator() *string {
+	return s.ContentPropagator
+}
+
+func (s *VideoModerationResultResponseBodyDataExtAigcDataAIGC) GetLabel() *string {
+	return s.Label
+}
+
+func (s *VideoModerationResultResponseBodyDataExtAigcDataAIGC) GetProduceID() *string {
+	return s.ProduceID
+}
+
+func (s *VideoModerationResultResponseBodyDataExtAigcDataAIGC) GetPropagateID() *string {
+	return s.PropagateID
+}
+
+func (s *VideoModerationResultResponseBodyDataExtAigcDataAIGC) GetReservedCode1() *string {
+	return s.ReservedCode1
+}
+
+func (s *VideoModerationResultResponseBodyDataExtAigcDataAIGC) GetReservedCode2() *string {
+	return s.ReservedCode2
+}
+
+func (s *VideoModerationResultResponseBodyDataExtAigcDataAIGC) SetContentProducer(v string) *VideoModerationResultResponseBodyDataExtAigcDataAIGC {
+	s.ContentProducer = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataExtAigcDataAIGC) SetContentPropagator(v string) *VideoModerationResultResponseBodyDataExtAigcDataAIGC {
+	s.ContentPropagator = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataExtAigcDataAIGC) SetLabel(v string) *VideoModerationResultResponseBodyDataExtAigcDataAIGC {
+	s.Label = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataExtAigcDataAIGC) SetProduceID(v string) *VideoModerationResultResponseBodyDataExtAigcDataAIGC {
+	s.ProduceID = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataExtAigcDataAIGC) SetPropagateID(v string) *VideoModerationResultResponseBodyDataExtAigcDataAIGC {
+	s.PropagateID = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataExtAigcDataAIGC) SetReservedCode1(v string) *VideoModerationResultResponseBodyDataExtAigcDataAIGC {
+	s.ReservedCode1 = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataExtAigcDataAIGC) SetReservedCode2(v string) *VideoModerationResultResponseBodyDataExtAigcDataAIGC {
+	s.ReservedCode2 = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataExtAigcDataAIGC) Validate() error {
 	return dara.Validate(s)
 }
 

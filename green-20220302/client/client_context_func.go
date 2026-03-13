@@ -107,7 +107,7 @@ func (client *Client) DescribeImageModerationResultWithContext(ctx context.Conte
 
 // Summary:
 //
-// 查询检测结果辅助信息
+// Obtains more auxiliary information that is identified by calling the Image Moderation 2.0 API. The auxiliary information includes the moderation results of images and text and the hit information of custom image libraries.
 //
 // @param request - DescribeImageResultExtRequest
 //
@@ -251,7 +251,7 @@ func (client *Client) DescribeUrlModerationResultWithContext(ctx context.Context
 
 // Summary:
 //
-// 文档审核
+// Moderates files.
 //
 // @param request - FileModerationRequest
 //
@@ -299,7 +299,7 @@ func (client *Client) FileModerationWithContext(ctx context.Context, request *Fi
 
 // Summary:
 //
-// 图片异步检测
+// Moderates images in asynchronous mode. An asynchronous image moderation task does not return the moderation results in real time. To obtain moderation results, you can poll the moderation results periodically or enable callback notification. The moderation results are retained for a maximum of 3 days.
 //
 // @param request - ImageAsyncModerationRequest
 //
@@ -953,7 +953,7 @@ func (client *Client) TextModerationPlusWithContext(ctx context.Context, request
 
 // Summary:
 //
-// url异步检测
+// Identifies whether URL links contain risks such as fraud, pornographic, and gambling content, to protect the platform content ecosystem.
 //
 // @param request - UrlAsyncModerationRequest
 //
@@ -1001,7 +1001,7 @@ func (client *Client) UrlAsyncModerationWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 视频检测任务提交
+// Identifies risky or illegal content in video files. You can call this operation to submit a moderation task.
 //
 // @param request - VideoModerationRequest
 //
@@ -1049,7 +1049,7 @@ func (client *Client) VideoModerationWithContext(ctx context.Context, request *V
 
 // Summary:
 //
-// 取消视频直播流检测
+// Cancels a live stream moderation task.
 //
 // @param request - VideoModerationCancelRequest
 //
@@ -1149,7 +1149,7 @@ func (client *Client) VideoModerationResultWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 语音审核
+// Submits a Voice Moderation 2.0 task.
 //
 // @param request - VoiceModerationRequest
 //
@@ -1197,7 +1197,7 @@ func (client *Client) VoiceModerationWithContext(ctx context.Context, request *V
 
 // Summary:
 //
-// 取消检测
+// Cancels a Voice Moderation 2.0 task.
 //
 // @param request - VoiceModerationCancelRequest
 //

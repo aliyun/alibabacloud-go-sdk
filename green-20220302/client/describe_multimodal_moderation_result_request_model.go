@@ -14,6 +14,9 @@ type iDescribeMultimodalModerationResultRequest interface {
 }
 
 type DescribeMultimodalModerationResultRequest struct {
+	// example:
+	//
+	// AAAAA-BBBBB-AIXI-1314-CCCCC
 	ReqId *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
 }
 

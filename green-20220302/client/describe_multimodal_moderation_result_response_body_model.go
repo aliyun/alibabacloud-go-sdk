@@ -20,10 +20,19 @@ type iDescribeMultimodalModerationResultResponseBody interface {
 }
 
 type DescribeMultimodalModerationResultResponseBody struct {
-	Code      *int64                                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeMultimodalModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Msg       *string                                             `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DescribeMultimodalModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeMultimodalModerationResultResponseBody) String() string {
@@ -81,10 +90,19 @@ func (s *DescribeMultimodalModerationResultResponseBody) Validate() error {
 
 type DescribeMultimodalModerationResultResponseBodyData struct {
 	CommentDatas []*DescribeMultimodalModerationResultResponseBodyDataCommentDatas `json:"CommentDatas,omitempty" xml:"CommentDatas,omitempty" type:"Repeated"`
-	DataId       *string                                                           `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	MainData     *DescribeMultimodalModerationResultResponseBodyDataMainData       `json:"MainData,omitempty" xml:"MainData,omitempty" type:"Struct"`
-	ReqId        *string                                                           `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
-	RiskLevel    *string                                                           `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// example:
+	//
+	// data1234
+	DataId   *string                                                     `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	MainData *DescribeMultimodalModerationResultResponseBodyDataMainData `json:"MainData,omitempty" xml:"MainData,omitempty" type:"Struct"`
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	ReqId *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s DescribeMultimodalModerationResultResponseBodyData) String() string {
@@ -247,7 +265,10 @@ func (s *DescribeMultimodalModerationResultResponseBodyDataCommentDatasCommentDa
 
 type DescribeMultimodalModerationResultResponseBodyDataCommentDatasCommentDatasResults struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Label       *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// example:
+	//
+	// violent_explosion
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 }
 
 func (s DescribeMultimodalModerationResultResponseBodyDataCommentDatasCommentDatasResults) String() string {
@@ -282,7 +303,10 @@ func (s *DescribeMultimodalModerationResultResponseBodyDataCommentDatasCommentDa
 
 type DescribeMultimodalModerationResultResponseBodyDataCommentDatasResults struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Label       *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// example:
+	//
+	// violent_explosion
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 }
 
 func (s DescribeMultimodalModerationResultResponseBodyDataCommentDatasResults) String() string {
@@ -351,7 +375,10 @@ func (s *DescribeMultimodalModerationResultResponseBodyDataMainData) Validate() 
 
 type DescribeMultimodalModerationResultResponseBodyDataMainDataResults struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Label       *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// example:
+	//
+	// violent_explosion
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 }
 
 func (s DescribeMultimodalModerationResultResponseBodyDataMainDataResults) String() string {

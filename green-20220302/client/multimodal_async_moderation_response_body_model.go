@@ -20,10 +20,21 @@ type iMultimodalAsyncModerationResponseBody interface {
 }
 
 type MultimodalAsyncModerationResponseBody struct {
-	Code      *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *MultimodalAsyncModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Msg       *string                                    `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *MultimodalAsyncModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s MultimodalAsyncModerationResponseBody) String() string {
@@ -80,8 +91,14 @@ func (s *MultimodalAsyncModerationResponseBody) Validate() error {
 }
 
 type MultimodalAsyncModerationResponseBodyData struct {
+	// example:
+	//
+	// 26769ada6e264e7ba9aa048241e12be9
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	ReqId  *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	// example:
+	//
+	// A07B3DB9-D762-5C56-95B1-8EC55CF176D2
+	ReqId *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
 }
 
 func (s MultimodalAsyncModerationResponseBodyData) String() string {
