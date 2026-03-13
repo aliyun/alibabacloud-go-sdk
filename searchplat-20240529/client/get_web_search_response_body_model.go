@@ -119,11 +119,12 @@ func (s *GetWebSearchResponseBodyResult) Validate() error {
 }
 
 type GetWebSearchResponseBodyResultSearchResult struct {
-	Content  *string `json:"content,omitempty" xml:"content,omitempty"`
-	Link     *string `json:"link,omitempty" xml:"link,omitempty"`
-	Position *int64  `json:"position,omitempty" xml:"position,omitempty"`
-	Snippet  *string `json:"snippet,omitempty" xml:"snippet,omitempty"`
-	Tilte    *string `json:"tilte,omitempty" xml:"tilte,omitempty"`
+	Content  *string                `json:"content,omitempty" xml:"content,omitempty"`
+	Link     *string                `json:"link,omitempty" xml:"link,omitempty"`
+	MetaInfo map[string]interface{} `json:"meta_info,omitempty" xml:"meta_info,omitempty"`
+	Position *int64                 `json:"position,omitempty" xml:"position,omitempty"`
+	Snippet  *string                `json:"snippet,omitempty" xml:"snippet,omitempty"`
+	Tilte    *string                `json:"tilte,omitempty" xml:"tilte,omitempty"`
 }
 
 func (s GetWebSearchResponseBodyResultSearchResult) String() string {
@@ -140,6 +141,10 @@ func (s *GetWebSearchResponseBodyResultSearchResult) GetContent() *string {
 
 func (s *GetWebSearchResponseBodyResultSearchResult) GetLink() *string {
 	return s.Link
+}
+
+func (s *GetWebSearchResponseBodyResultSearchResult) GetMetaInfo() map[string]interface{} {
+	return s.MetaInfo
 }
 
 func (s *GetWebSearchResponseBodyResultSearchResult) GetPosition() *int64 {
@@ -161,6 +166,11 @@ func (s *GetWebSearchResponseBodyResultSearchResult) SetContent(v string) *GetWe
 
 func (s *GetWebSearchResponseBodyResultSearchResult) SetLink(v string) *GetWebSearchResponseBodyResultSearchResult {
 	s.Link = &v
+	return s
+}
+
+func (s *GetWebSearchResponseBodyResultSearchResult) SetMetaInfo(v map[string]interface{}) *GetWebSearchResponseBodyResultSearchResult {
+	s.MetaInfo = v
 	return s
 }
 

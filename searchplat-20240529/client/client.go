@@ -252,6 +252,80 @@ func (client *Client) CreateImageAnalyzeTask(workspaceName *string, serviceId *s
 
 // Summary:
 //
+// 创建视频切割异步任务
+//
+// @param request - CreateVideoSegmentationTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVideoSegmentationTaskResponse
+func (client *Client) CreateVideoSegmentationTaskWithOptions(workspaceName *string, serviceId *string, request *CreateVideoSegmentationTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateVideoSegmentationTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Input) {
+		body["input"] = request.Input
+	}
+
+	if !dara.IsNil(request.Output) {
+		body["output"] = request.Output
+	}
+
+	if !dara.IsNil(request.Parameters) {
+		body["parameters"] = request.Parameters
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateVideoSegmentationTask"),
+		Version:     dara.String("2024-05-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v3/openapi/workspaces/" + dara.StringValue(workspaceName) + "/video-segmentation/" + dara.StringValue(serviceId) + "/async"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateVideoSegmentationTaskResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建视频切割异步任务
+//
+// @param request - CreateVideoSegmentationTaskRequest
+//
+// @return CreateVideoSegmentationTaskResponse
+func (client *Client) CreateVideoSegmentationTask(workspaceName *string, serviceId *string, request *CreateVideoSegmentationTaskRequest) (_result *CreateVideoSegmentationTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateVideoSegmentationTaskResponse{}
+	_body, _err := client.CreateVideoSegmentationTaskWithOptions(workspaceName, serviceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建语音转录异步任务
 //
 // @param request - CreateVideoSnapshotTaskRequest
@@ -317,6 +391,80 @@ func (client *Client) CreateVideoSnapshotTask(workspaceName *string, serviceId *
 	headers := make(map[string]*string)
 	_result = &CreateVideoSnapshotTaskResponse{}
 	_body, _err := client.CreateVideoSnapshotTaskWithOptions(workspaceName, serviceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建视频总结异步任务
+//
+// @param request - CreateVideoSummarizationTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVideoSummarizationTaskResponse
+func (client *Client) CreateVideoSummarizationTaskWithOptions(workspaceName *string, serviceId *string, request *CreateVideoSummarizationTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateVideoSummarizationTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Input) {
+		body["input"] = request.Input
+	}
+
+	if !dara.IsNil(request.Output) {
+		body["output"] = request.Output
+	}
+
+	if !dara.IsNil(request.Parameters) {
+		body["parameters"] = request.Parameters
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateVideoSummarizationTask"),
+		Version:     dara.String("2024-05-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v3/openapi/workspaces/" + dara.StringValue(workspaceName) + "/video-summarization/" + dara.StringValue(serviceId) + "/async"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateVideoSummarizationTaskResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建视频总结异步任务
+//
+// @param request - CreateVideoSummarizationTaskRequest
+//
+// @return CreateVideoSummarizationTaskResponse
+func (client *Client) CreateVideoSummarizationTask(workspaceName *string, serviceId *string, request *CreateVideoSummarizationTaskRequest) (_result *CreateVideoSummarizationTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateVideoSummarizationTaskResponse{}
+	_body, _err := client.CreateVideoSummarizationTaskWithOptions(workspaceName, serviceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1318,6 +1466,72 @@ func (client *Client) GetTextSparseEmbedding(workspaceName *string, serviceId *s
 
 // Summary:
 //
+// 获取视频切割异步任务状态
+//
+// @param request - GetVideoSegmentationTaskStatusRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVideoSegmentationTaskStatusResponse
+func (client *Client) GetVideoSegmentationTaskStatusWithOptions(workspaceName *string, serviceId *string, request *GetVideoSegmentationTaskStatusRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetVideoSegmentationTaskStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		query["task_id"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetVideoSegmentationTaskStatus"),
+		Version:     dara.String("2024-05-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v3/openapi/workspaces/" + dara.StringValue(workspaceName) + "/video-segmentation/" + dara.StringValue(serviceId) + "/async/task-status"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetVideoSegmentationTaskStatusResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取视频切割异步任务状态
+//
+// @param request - GetVideoSegmentationTaskStatusRequest
+//
+// @return GetVideoSegmentationTaskStatusResponse
+func (client *Client) GetVideoSegmentationTaskStatus(workspaceName *string, serviceId *string, request *GetVideoSegmentationTaskStatusRequest) (_result *GetVideoSegmentationTaskStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetVideoSegmentationTaskStatusResponse{}
+	_body, _err := client.GetVideoSegmentationTaskStatusWithOptions(workspaceName, serviceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取视频截帧异步提取任务状态
 //
 // @param request - GetVideoSnapshotTaskStatusRequest
@@ -1375,6 +1589,72 @@ func (client *Client) GetVideoSnapshotTaskStatus(workspaceName *string, serviceI
 	headers := make(map[string]*string)
 	_result = &GetVideoSnapshotTaskStatusResponse{}
 	_body, _err := client.GetVideoSnapshotTaskStatusWithOptions(workspaceName, serviceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取视频总结异步任务状态
+//
+// @param request - GetVideoSummarizationTaskStatusRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVideoSummarizationTaskStatusResponse
+func (client *Client) GetVideoSummarizationTaskStatusWithOptions(workspaceName *string, serviceId *string, request *GetVideoSummarizationTaskStatusRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetVideoSummarizationTaskStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		query["task_id"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetVideoSummarizationTaskStatus"),
+		Version:     dara.String("2024-05-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v3/openapi/workspaces/" + dara.StringValue(workspaceName) + "/video-summarization/" + dara.StringValue(serviceId) + "/async/task-status"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetVideoSummarizationTaskStatusResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取视频总结异步任务状态
+//
+// @param request - GetVideoSummarizationTaskStatusRequest
+//
+// @return GetVideoSummarizationTaskStatusResponse
+func (client *Client) GetVideoSummarizationTaskStatus(workspaceName *string, serviceId *string, request *GetVideoSummarizationTaskStatusRequest) (_result *GetVideoSummarizationTaskStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetVideoSummarizationTaskStatusResponse{}
+	_body, _err := client.GetVideoSummarizationTaskStatusWithOptions(workspaceName, serviceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -76,6 +76,7 @@ type CreateAudioAsrTaskRequestInput struct {
 	Content  *string `json:"content,omitempty" xml:"content,omitempty"`
 	FileName *string `json:"file_name,omitempty" xml:"file_name,omitempty"`
 	Oss      *string `json:"oss,omitempty" xml:"oss,omitempty"`
+	Url      *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s CreateAudioAsrTaskRequestInput) String() string {
@@ -98,6 +99,10 @@ func (s *CreateAudioAsrTaskRequestInput) GetOss() *string {
 	return s.Oss
 }
 
+func (s *CreateAudioAsrTaskRequestInput) GetUrl() *string {
+	return s.Url
+}
+
 func (s *CreateAudioAsrTaskRequestInput) SetContent(v string) *CreateAudioAsrTaskRequestInput {
 	s.Content = &v
 	return s
@@ -110,6 +115,11 @@ func (s *CreateAudioAsrTaskRequestInput) SetFileName(v string) *CreateAudioAsrTa
 
 func (s *CreateAudioAsrTaskRequestInput) SetOss(v string) *CreateAudioAsrTaskRequestInput {
 	s.Oss = &v
+	return s
+}
+
+func (s *CreateAudioAsrTaskRequestInput) SetUrl(v string) *CreateAudioAsrTaskRequestInput {
+	s.Url = &v
 	return s
 }
 

@@ -76,6 +76,7 @@ type CreateVideoSnapshotTaskRequestInput struct {
 	Content  *string `json:"content,omitempty" xml:"content,omitempty"`
 	FileName *string `json:"file_name,omitempty" xml:"file_name,omitempty"`
 	Oss      *string `json:"oss,omitempty" xml:"oss,omitempty"`
+	Url      *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s CreateVideoSnapshotTaskRequestInput) String() string {
@@ -98,6 +99,10 @@ func (s *CreateVideoSnapshotTaskRequestInput) GetOss() *string {
 	return s.Oss
 }
 
+func (s *CreateVideoSnapshotTaskRequestInput) GetUrl() *string {
+	return s.Url
+}
+
 func (s *CreateVideoSnapshotTaskRequestInput) SetContent(v string) *CreateVideoSnapshotTaskRequestInput {
 	s.Content = &v
 	return s
@@ -110,6 +115,11 @@ func (s *CreateVideoSnapshotTaskRequestInput) SetFileName(v string) *CreateVideo
 
 func (s *CreateVideoSnapshotTaskRequestInput) SetOss(v string) *CreateVideoSnapshotTaskRequestInput {
 	s.Oss = &v
+	return s
+}
+
+func (s *CreateVideoSnapshotTaskRequestInput) SetUrl(v string) *CreateVideoSnapshotTaskRequestInput {
+	s.Url = &v
 	return s
 }
 

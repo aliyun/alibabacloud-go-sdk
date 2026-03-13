@@ -145,9 +145,10 @@ func (s *GetDocumentAnalyzeTaskStatusResponseBodyResult) Validate() error {
 }
 
 type GetDocumentAnalyzeTaskStatusResponseBodyResultData struct {
-	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
-	ContentType *string `json:"content_type,omitempty" xml:"content_type,omitempty"`
-	PageNum     *int32  `json:"page_num,omitempty" xml:"page_num,omitempty"`
+	Content     *string   `json:"content,omitempty" xml:"content,omitempty"`
+	ContentType *string   `json:"content_type,omitempty" xml:"content_type,omitempty"`
+	PageNum     *int32    `json:"page_num,omitempty" xml:"page_num,omitempty"`
+	Pages       []*string `json:"pages,omitempty" xml:"pages,omitempty" type:"Repeated"`
 }
 
 func (s GetDocumentAnalyzeTaskStatusResponseBodyResultData) String() string {
@@ -170,6 +171,10 @@ func (s *GetDocumentAnalyzeTaskStatusResponseBodyResultData) GetPageNum() *int32
 	return s.PageNum
 }
 
+func (s *GetDocumentAnalyzeTaskStatusResponseBodyResultData) GetPages() []*string {
+	return s.Pages
+}
+
 func (s *GetDocumentAnalyzeTaskStatusResponseBodyResultData) SetContent(v string) *GetDocumentAnalyzeTaskStatusResponseBodyResultData {
 	s.Content = &v
 	return s
@@ -182,6 +187,11 @@ func (s *GetDocumentAnalyzeTaskStatusResponseBodyResultData) SetContentType(v st
 
 func (s *GetDocumentAnalyzeTaskStatusResponseBodyResultData) SetPageNum(v int32) *GetDocumentAnalyzeTaskStatusResponseBodyResultData {
 	s.PageNum = &v
+	return s
+}
+
+func (s *GetDocumentAnalyzeTaskStatusResponseBodyResultData) SetPages(v []*string) *GetDocumentAnalyzeTaskStatusResponseBodyResultData {
+	s.Pages = v
 	return s
 }
 
