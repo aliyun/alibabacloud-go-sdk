@@ -128,7 +128,7 @@ func (client *Client) ApproveProvisionedProductPlan(request *ApproveProvisionedP
 
 // Summary:
 //
-// 将产品组合授权给某个RAM实体
+// Grants a Resource Access Management (RAM) user or RAM role that belongs to the current Alibaba Cloud account the permissions to access a product portfolio.
 //
 // @param request - AssociatePrincipalWithPortfolioRequest
 //
@@ -184,7 +184,7 @@ func (client *Client) AssociatePrincipalWithPortfolioWithOptions(request *Associ
 
 // Summary:
 //
-// 将产品组合授权给某个RAM实体
+// Grants a Resource Access Management (RAM) user or RAM role that belongs to the current Alibaba Cloud account the permissions to access a product portfolio.
 //
 // @param request - AssociatePrincipalWithPortfolioRequest
 //
@@ -2454,7 +2454,7 @@ func (client *Client) ListLaunchOptions(request *ListLaunchOptionsRequest) (_res
 
 // Summary:
 //
-// The number of entries returned per page.
+// Queries product portfolios.
 //
 // @param request - ListPortfoliosRequest
 //
@@ -2522,7 +2522,7 @@ func (client *Client) ListPortfoliosWithOptions(request *ListPortfoliosRequest, 
 
 // Summary:
 //
-// The number of entries returned per page.
+// Queries product portfolios.
 //
 // @param request - ListPortfoliosRequest
 //
@@ -3235,7 +3235,7 @@ func (client *Client) ListTagOptions(request *ListTagOptionsRequest) (_result *L
 
 // Summary:
 //
-// The page number of the returned page.
+// Queries tasks.
 //
 // @param request - ListTasksRequest
 //
@@ -3295,7 +3295,7 @@ func (client *Client) ListTasksWithOptions(request *ListTasksRequest, runtime *d
 
 // Summary:
 //
-// The page number of the returned page.
+// Queries tasks.
 //
 // @param request - ListTasksRequest
 //
@@ -3453,7 +3453,7 @@ func (client *Client) UpdateConstraint(request *UpdateConstraintRequest) (_resul
 
 // Summary:
 //
-// The ID of the product portfolio.
+// Updates the information about a product portfolio.
 //
 // @param request - UpdatePortfolioRequest
 //
@@ -3509,7 +3509,7 @@ func (client *Client) UpdatePortfolioWithOptions(request *UpdatePortfolioRequest
 
 // Summary:
 //
-// The ID of the product portfolio.
+// Updates the information about a product portfolio.
 //
 // @param request - UpdatePortfolioRequest
 //
@@ -3527,7 +3527,7 @@ func (client *Client) UpdatePortfolio(request *UpdatePortfolioRequest) (_result 
 
 // Summary:
 //
-// The ID of the product.
+// Updates the information about a product.
 //
 // @param request - UpdateProductRequest
 //
@@ -3583,7 +3583,7 @@ func (client *Client) UpdateProductWithOptions(request *UpdateProductRequest, ru
 
 // Summary:
 //
-// The ID of the product.
+// Updates the information about a product.
 //
 // @param request - UpdateProductRequest
 //

@@ -61,7 +61,7 @@ func (client *Client) ApproveProvisionedProductPlanWithContext(ctx context.Conte
 
 // Summary:
 //
-// 将产品组合授权给某个RAM实体
+// Grants a Resource Access Management (RAM) user or RAM role that belongs to the current Alibaba Cloud account the permissions to access a product portfolio.
 //
 // @param request - AssociatePrincipalWithPortfolioRequest
 //
@@ -1763,7 +1763,7 @@ func (client *Client) ListLaunchOptionsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// The number of entries returned per page.
+// Queries product portfolios.
 //
 // @param request - ListPortfoliosRequest
 //
@@ -2313,7 +2313,7 @@ func (client *Client) ListTagOptionsWithContext(ctx context.Context, tmpReq *Lis
 
 // Summary:
 //
-// The page number of the returned page.
+// Queries tasks.
 //
 // @param request - ListTasksRequest
 //
@@ -2473,7 +2473,7 @@ func (client *Client) UpdateConstraintWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// The ID of the product portfolio.
+// Updates the information about a product portfolio.
 //
 // @param request - UpdatePortfolioRequest
 //
@@ -2529,7 +2529,7 @@ func (client *Client) UpdatePortfolioWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// The ID of the product.
+// Updates the information about a product.
 //
 // @param request - UpdateProductRequest
 //
