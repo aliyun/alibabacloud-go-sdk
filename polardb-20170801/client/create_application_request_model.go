@@ -543,13 +543,16 @@ func (s *CreateApplicationRequestEndpoints) Validate() error {
 }
 
 type CreateApplicationRequestMemApplicationSpec struct {
-	DbName        *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DbPassword    *string `json:"DbPassword,omitempty" xml:"DbPassword,omitempty"`
-	DbUser        *string `json:"DbUser,omitempty" xml:"DbUser,omitempty"`
-	EmbedderModel *string `json:"EmbedderModel,omitempty" xml:"EmbedderModel,omitempty"`
-	LlmModel      *string `json:"LlmModel,omitempty" xml:"LlmModel,omitempty"`
-	ProjectName   *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RerankerModel *string `json:"RerankerModel,omitempty" xml:"RerankerModel,omitempty"`
+	DbName                 *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	DbPassword             *string `json:"DbPassword,omitempty" xml:"DbPassword,omitempty"`
+	DbUser                 *string `json:"DbUser,omitempty" xml:"DbUser,omitempty"`
+	EmbedderModel          *string `json:"EmbedderModel,omitempty" xml:"EmbedderModel,omitempty"`
+	EmbedderModelDimension *int32  `json:"EmbedderModelDimension,omitempty" xml:"EmbedderModelDimension,omitempty"`
+	GraphLlmModel          *string `json:"GraphLlmModel,omitempty" xml:"GraphLlmModel,omitempty"`
+	LlmModel               *string `json:"LlmModel,omitempty" xml:"LlmModel,omitempty"`
+	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	RerankerModel          *string `json:"RerankerModel,omitempty" xml:"RerankerModel,omitempty"`
+	Shard                  *int32  `json:"Shard,omitempty" xml:"Shard,omitempty"`
 }
 
 func (s CreateApplicationRequestMemApplicationSpec) String() string {
@@ -576,6 +579,14 @@ func (s *CreateApplicationRequestMemApplicationSpec) GetEmbedderModel() *string 
 	return s.EmbedderModel
 }
 
+func (s *CreateApplicationRequestMemApplicationSpec) GetEmbedderModelDimension() *int32 {
+	return s.EmbedderModelDimension
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) GetGraphLlmModel() *string {
+	return s.GraphLlmModel
+}
+
 func (s *CreateApplicationRequestMemApplicationSpec) GetLlmModel() *string {
 	return s.LlmModel
 }
@@ -586,6 +597,10 @@ func (s *CreateApplicationRequestMemApplicationSpec) GetProjectName() *string {
 
 func (s *CreateApplicationRequestMemApplicationSpec) GetRerankerModel() *string {
 	return s.RerankerModel
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) GetShard() *int32 {
+	return s.Shard
 }
 
 func (s *CreateApplicationRequestMemApplicationSpec) SetDbName(v string) *CreateApplicationRequestMemApplicationSpec {
@@ -608,6 +623,16 @@ func (s *CreateApplicationRequestMemApplicationSpec) SetEmbedderModel(v string) 
 	return s
 }
 
+func (s *CreateApplicationRequestMemApplicationSpec) SetEmbedderModelDimension(v int32) *CreateApplicationRequestMemApplicationSpec {
+	s.EmbedderModelDimension = &v
+	return s
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) SetGraphLlmModel(v string) *CreateApplicationRequestMemApplicationSpec {
+	s.GraphLlmModel = &v
+	return s
+}
+
 func (s *CreateApplicationRequestMemApplicationSpec) SetLlmModel(v string) *CreateApplicationRequestMemApplicationSpec {
 	s.LlmModel = &v
 	return s
@@ -620,6 +645,11 @@ func (s *CreateApplicationRequestMemApplicationSpec) SetProjectName(v string) *C
 
 func (s *CreateApplicationRequestMemApplicationSpec) SetRerankerModel(v string) *CreateApplicationRequestMemApplicationSpec {
 	s.RerankerModel = &v
+	return s
+}
+
+func (s *CreateApplicationRequestMemApplicationSpec) SetShard(v int32) *CreateApplicationRequestMemApplicationSpec {
+	s.Shard = &v
 	return s
 }
 
