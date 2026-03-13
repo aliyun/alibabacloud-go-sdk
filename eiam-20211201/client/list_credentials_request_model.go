@@ -11,6 +11,8 @@ type iListCredentialsRequest interface {
 	GoString() string
 	SetCredentialIds(v []*string) *ListCredentialsRequest
 	GetCredentialIds() []*string
+	SetCredentialTypes(v []*string) *ListCredentialsRequest
+	GetCredentialTypes() []*string
 	SetFilter(v []*ListCredentialsRequestFilter) *ListCredentialsRequest
 	GetFilter() []*ListCredentialsRequestFilter
 	SetInstanceId(v string) *ListCredentialsRequest
@@ -24,8 +26,9 @@ type iListCredentialsRequest interface {
 }
 
 type ListCredentialsRequest struct {
-	CredentialIds []*string                       `json:"CredentialIds,omitempty" xml:"CredentialIds,omitempty" type:"Repeated"`
-	Filter        []*ListCredentialsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	CredentialIds   []*string                       `json:"CredentialIds,omitempty" xml:"CredentialIds,omitempty" type:"Repeated"`
+	CredentialTypes []*string                       `json:"CredentialTypes,omitempty" xml:"CredentialTypes,omitempty" type:"Repeated"`
+	Filter          []*ListCredentialsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	// IDaaS EIAM实例的ID。
 	//
 	// This parameter is required.
@@ -61,6 +64,10 @@ func (s *ListCredentialsRequest) GetCredentialIds() []*string {
 	return s.CredentialIds
 }
 
+func (s *ListCredentialsRequest) GetCredentialTypes() []*string {
+	return s.CredentialTypes
+}
+
 func (s *ListCredentialsRequest) GetFilter() []*ListCredentialsRequestFilter {
 	return s.Filter
 }
@@ -83,6 +90,11 @@ func (s *ListCredentialsRequest) GetStatuses() []*string {
 
 func (s *ListCredentialsRequest) SetCredentialIds(v []*string) *ListCredentialsRequest {
 	s.CredentialIds = v
+	return s
+}
+
+func (s *ListCredentialsRequest) SetCredentialTypes(v []*string) *ListCredentialsRequest {
+	s.CredentialTypes = v
 	return s
 }
 
