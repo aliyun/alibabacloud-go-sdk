@@ -16,6 +16,9 @@ type iListScalingConfigsOutput interface {
 }
 
 type ListScalingConfigsOutput struct {
+	// example:
+	//
+	// next_token
 	NextToken      *string                `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	ScalingConfigs []*ScalingConfigStatus `json:"scalingConfigs" xml:"scalingConfigs" type:"Repeated"`
 }

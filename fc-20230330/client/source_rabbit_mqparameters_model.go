@@ -20,18 +20,26 @@ type iSourceRabbitMQParameters interface {
 }
 
 type SourceRabbitMQParameters struct {
+	// The ID of the ApsaraMQ for RabbitMQ instance.
+	//
 	// example:
 	//
 	// amqp-cn-nif22u74****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The queue name of the ApsaraMQ for RabbitMQ instance.
+	//
 	// example:
 	//
 	// demo
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// The region in which the ApsaraMQ for RabbitMQ instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The vhost name of the ApsaraMQ for RabbitMQ instance.
+	//
 	// example:
 	//
 	// eb-connect

@@ -18,12 +18,18 @@ type iTLSConfig interface {
 }
 
 type TLSConfig struct {
+	// The TLS cipher suites.
+	//
 	// This parameter is required.
 	CipherSuites []*string `json:"cipherSuites" xml:"cipherSuites" type:"Repeated"`
+	// The maximum TLS version. Valid values: TLSv1.3 and TLSv1.2.
+	//
 	// example:
 	//
 	// TLSv1.3
 	MaxVersion *string `json:"maxVersion,omitempty" xml:"maxVersion,omitempty"`
+	// The minimum TLS version. Valid values: TLSv1.3 and TLSv1.2.
+	//
 	// This parameter is required.
 	//
 	// example:

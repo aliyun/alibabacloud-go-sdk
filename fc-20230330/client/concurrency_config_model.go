@@ -16,10 +16,14 @@ type iConcurrencyConfig interface {
 }
 
 type ConcurrencyConfig struct {
+	// The Alibaba Cloud Resource Name (ARN).
+	//
 	// example:
 	//
 	// acs:fc:cn-shanghai:123:functions/demo
 	FunctionArn *string `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
+	// The reserved concurrency of the function. Other functions cannot use the concurrency. The reserved concurrency includes the total concurrency of provisioned instances and on-demand instances.
+	//
 	// example:
 	//
 	// 10

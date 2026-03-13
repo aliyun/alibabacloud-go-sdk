@@ -18,9 +18,18 @@ type iMCPStreamableSessionAffinityConfig interface {
 }
 
 type MCPStreamableSessionAffinityConfig struct {
+	// example:
+	//
+	// 20
 	SessionConcurrencyPerInstance *int64 `json:"sessionConcurrencyPerInstance,omitempty" xml:"sessionConcurrencyPerInstance,omitempty"`
-	SessionIdleTimeoutInSeconds   *int64 `json:"sessionIdleTimeoutInSeconds,omitempty" xml:"sessionIdleTimeoutInSeconds,omitempty"`
-	SessionTTLInSeconds           *int64 `json:"sessionTTLInSeconds,omitempty" xml:"sessionTTLInSeconds,omitempty"`
+	// example:
+	//
+	// 1800
+	SessionIdleTimeoutInSeconds *int64 `json:"sessionIdleTimeoutInSeconds,omitempty" xml:"sessionIdleTimeoutInSeconds,omitempty"`
+	// example:
+	//
+	// 21600
+	SessionTTLInSeconds *int64 `json:"sessionTTLInSeconds,omitempty" xml:"sessionTTLInSeconds,omitempty"`
 }
 
 func (s MCPStreamableSessionAffinityConfig) String() string {

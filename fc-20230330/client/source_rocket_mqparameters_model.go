@@ -46,70 +46,104 @@ type iSourceRocketMQParameters interface {
 }
 
 type SourceRocketMQParameters struct {
+	// The authentication type. Set the value to ACL or leave the value empty. The value ACL indicates that authentication is enabled. In this case, you must specify InstanceUsername and InstancePassword.
+	//
 	// example:
 	//
 	// ACL
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The message filter type.
+	//
 	// example:
 	//
 	// Tag
 	FilterType *string `json:"FilterType,omitempty" xml:"FilterType,omitempty"`
+	// The ID of the consumer group of the ApsaraMQ for RocketMQ instance.
+	//
 	// example:
 	//
 	// GID_group1
 	GroupID *string `json:"GroupID,omitempty" xml:"GroupID,omitempty"`
+	// The information about the endpoint of the ApsaraMQ for RocketMQ instance.
+	//
 	// example:
 	//
 	// registry-vpc.cn-hangzhou.aliyuncs.com
 	InstanceEndpoint *string `json:"InstanceEndpoint,omitempty" xml:"InstanceEndpoint,omitempty"`
+	// The ID of the ApsaraMQ for RocketMQ instance.
+	//
 	// example:
 	//
 	// MQ_INST_164901546557****_BAAN****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The network type.
+	//
 	// example:
 	//
 	// PrivateNetwork
 	InstanceNetwork *string `json:"InstanceNetwork,omitempty" xml:"InstanceNetwork,omitempty"`
+	// The password of the ApsaraMQ for RocketMQ instance.
+	//
 	// example:
 	//
 	// 123
 	InstancePassword *string `json:"InstancePassword,omitempty" xml:"InstancePassword,omitempty"`
+	// The security group ID.
+	//
 	// example:
 	//
 	// sg-hp35r2hc3a3sv8q2****
 	InstanceSecurityGroupId *string `json:"InstanceSecurityGroupId,omitempty" xml:"InstanceSecurityGroupId,omitempty"`
+	// The type of ApsaraMQ for RocketMQ instance.
+	//
 	// example:
 	//
 	// Cloud_5
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The username of the ApsaraMQ for RocketMQ instance. If you use the Internet, you must configure the username and password of the instance in the SDK code for authentication.
+	//
 	// example:
 	//
 	// 6W0xz2uPfiwp****
 	InstanceUsername *string `json:"InstanceUsername,omitempty" xml:"InstanceUsername,omitempty"`
+	// The ID of the vSwitch associated with the instance.
+	//
 	// example:
 	//
 	// vsw-uf6gwtbn6etadpvz7****
 	InstanceVSwitchIds *string `json:"InstanceVSwitchIds,omitempty" xml:"InstanceVSwitchIds,omitempty"`
+	// The ID of the virtual private cloud (VPC) associated with the instance.
+	//
 	// example:
 	//
 	// vpc-uf6of9452b2pba82c****
 	InstanceVpcId *string `json:"InstanceVpcId,omitempty" xml:"InstanceVpcId,omitempty"`
+	// The consumer offset of the message. CONSUME_FROM_LAST_OFFSET: consumes messages from the latest offset. This is the default value. CONSUME_FROM_FIRST_OFFSET: consumes messages from the earliest offset. CONSUME_FROM_TIMESTAMP: consumes messages from the offset at the specified point in time.
+	//
 	// example:
 	//
 	// CONSUME_FROM_TIMESTAMP
 	Offset *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// The region to which the ApsaraMQ for RocketMQ queue belongs.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The tags that are used to filter messages.
+	//
 	// example:
 	//
 	// test
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The timestamp. This parameter is valid only when you set Offset to CONSUME_FROM_TIMESTAMP.
+	//
 	// example:
 	//
 	// 1636597951964
 	Timestamp *int32 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The name of the topic in the ApsaraMQ for RocketMQ instance.
+	//
 	// example:
 	//
 	// myTopic

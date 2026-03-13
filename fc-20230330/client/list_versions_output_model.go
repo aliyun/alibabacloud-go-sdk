@@ -18,15 +18,20 @@ type iListVersionsOutput interface {
 }
 
 type ListVersionsOutput struct {
+	// The sorting method of versions.
+	//
 	// example:
 	//
 	// FORWARD
 	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
+	// The ID of the next version.
+	//
 	// example:
 	//
 	// 3
-	NextToken *string    `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	Versions  []*Version `json:"versions" xml:"versions" type:"Repeated"`
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The version IDs.
+	Versions []*Version `json:"versions" xml:"versions" type:"Repeated"`
 }
 
 func (s ListVersionsOutput) String() string {

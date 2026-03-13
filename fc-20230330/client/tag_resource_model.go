@@ -20,18 +20,28 @@ type iTagResource interface {
 }
 
 type TagResource struct {
+	// The Alibaba Cloud Resource Name (ARN) of the resource.
+	//
 	// example:
 	//
 	// acs:fc:cn-shanghai:****:functions/demo
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the resource type.
+	//
+	// The function type in Function Compute 3.0 is ALIYUN::FC::FUNCTION, which is abbreviated as "function".
+	//
 	// example:
 	//
-	// ALIYUN::FC::FUNCTION
+	// function
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag key.
+	//
 	// example:
 	//
 	// key1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// key1

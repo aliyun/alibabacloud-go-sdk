@@ -34,42 +34,62 @@ type iLayer interface {
 }
 
 type Layer struct {
+	// The permission of the layer. Valid value: 0 and 1. 0 specifies that the layer is private, and 1 specifies that the layer is public. By default, public layers are public. Custom layers can be set to private or public.
+	//
 	// example:
 	//
 	// 0
-	Acl  *string             `json:"acl,omitempty" xml:"acl,omitempty"`
+	Acl *string `json:"acl,omitempty" xml:"acl,omitempty"`
+	// The information about the code package of the layer.
 	Code *OutputCodeLocation `json:"code,omitempty" xml:"code,omitempty"`
+	// The crc64 verification code of the layer code package, which is calculated based on ECMA-182.
+	//
 	// example:
 	//
 	// 2825179536350****
 	CodeChecksum *string `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
+	// The size of the layer code package. Unit: bytes.
+	//
 	// example:
 	//
 	// 421
-	CodeSize          *int64    `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
+	CodeSize *int64 `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
+	// The runtimes that are supported by the layer.
 	CompatibleRuntime []*string `json:"compatibleRuntime" xml:"compatibleRuntime" type:"Repeated"`
+	// The time when the layer version was created.
+	//
 	// example:
 	//
 	// 2023-03-30T11:08:00Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the layer version.
+	//
 	// example:
 	//
 	// My first layer
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The name of the layer.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MyLayer
 	LayerName *string `json:"layerName,omitempty" xml:"layerName,omitempty"`
+	// The name of the resource in the layer version. The name is in the acs:fc:{region}:{accountID}:layers/{layerName}/versions/{layerVersion} format.
+	//
 	// example:
 	//
 	// acs:fc:cn-beijing:186824xxxxxx:layers/fc_layer/versions/1
 	LayerVersionArn *string `json:"layerVersionArn,omitempty" xml:"layerVersionArn,omitempty"`
+	// The license agreement.
+	//
 	// example:
 	//
 	// Apache
 	License *string `json:"license,omitempty" xml:"license,omitempty"`
+	// The layer version.
+	//
 	// example:
 	//
 	// 1

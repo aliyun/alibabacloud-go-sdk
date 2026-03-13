@@ -14,6 +14,7 @@ type iListVpcBindingsOutput interface {
 }
 
 type ListVpcBindingsOutput struct {
+	// The VPC IDs.
 	VpcIds []*string `json:"vpcIds" xml:"vpcIds" type:"Repeated"`
 }
 

@@ -14,6 +14,7 @@ type iOSSMountConfig interface {
 }
 
 type OSSMountConfig struct {
+	// The OSS mount targets.
 	MountPoints []*OSSMountPoint `json:"mountPoints" xml:"mountPoints" type:"Repeated"`
 }
 

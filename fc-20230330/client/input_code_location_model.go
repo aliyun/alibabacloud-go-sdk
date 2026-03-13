@@ -20,18 +20,26 @@ type iInputCodeLocation interface {
 }
 
 type InputCodeLocation struct {
+	// The CRC-64 value of the function code package. If checksum is provided, Function Compute checks whether the checksum of the code package is the same as that provided.
+	//
 	// example:
 	//
 	// 2825179536350****
 	Checksum *string `json:"checksum,omitempty" xml:"checksum,omitempty"`
+	// The name of the OSS bucket where the ZIP package of the function code is stored.
+	//
 	// example:
 	//
 	// demo-bucket
 	OssBucketName *string `json:"ossBucketName,omitempty" xml:"ossBucketName,omitempty"`
+	// The name of the OSS object where the ZIP package of the function code is stored.
+	//
 	// example:
 	//
 	// demo-object
 	OssObjectName *string `json:"ossObjectName,omitempty" xml:"ossObjectName,omitempty"`
+	// The ZIP package of the function code that is encoded in Base64 format.
+	//
 	// example:
 	//
 	// UEsDBAoAAAAAANF

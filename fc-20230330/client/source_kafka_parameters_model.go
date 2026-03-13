@@ -30,38 +30,56 @@ type iSourceKafkaParameters interface {
 }
 
 type SourceKafkaParameters struct {
+	// The group ID of the consumer that subscribes to the topic.
+	//
 	// example:
 	//
 	// DEFAULT_GROUP
 	ConsumerGroup *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
+	// The ID of the EventBridge instance.
+	//
 	// example:
 	//
 	// r-8vb64581862c****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The network type. Default value: Default. The value PublicNetwork specifies a virtual private cloud (VPC) network.
+	//
 	// example:
 	//
 	// Default
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// The offset. earliest: consumes messages from the earliest offset. latest: consumes messages from the latest offset.
+	//
 	// example:
 	//
 	// latest
 	OffsetReset *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
+	// The region in which the ApsaraMQ for Kafka instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the security group.
+	//
 	// example:
 	//
 	// sg-bp1iv19sp1msc7zot4****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The name of the topic in the ApsaraMQ for Kafka instance.
+	//
 	// example:
 	//
 	// popvip_center_robot_order
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The ID of the vSwitch.
+	//
 	// example:
 	//
 	// vsw-bp179l3llg3jjxwrq72****
 	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// The ID of the VPC.
+	//
 	// example:
 	//
 	// vpc-8vblalsi0vbhizr77****

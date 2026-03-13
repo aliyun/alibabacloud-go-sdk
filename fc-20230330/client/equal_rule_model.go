@@ -16,12 +16,16 @@ type iEqualRule interface {
 }
 
 type EqualRule struct {
+  // The matching rule.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // /old
   Match *string `json:"match,omitempty" xml:"match,omitempty"`
+  // The replacement rule.
+  // 
   // This parameter is required.
   // 
   // example:

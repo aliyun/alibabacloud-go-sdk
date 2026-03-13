@@ -14,6 +14,7 @@ type iDescribeRegionsOutput interface {
 }
 
 type DescribeRegionsOutput struct {
+	// The region information.
 	Regions *DescribeRegionsOutputRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 }
 
@@ -44,6 +45,7 @@ func (s *DescribeRegionsOutput) Validate() error {
 }
 
 type DescribeRegionsOutputRegions struct {
+	// The collection of region information.
 	Region []*DescribeRegionsOutputRegionsRegion `json:"Region" xml:"Region" type:"Repeated"`
 }
 
@@ -78,8 +80,14 @@ func (s *DescribeRegionsOutputRegions) Validate() error {
 }
 
 type DescribeRegionsOutputRegionsRegion struct {
+	// The region name.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-qingdao
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsOutputRegionsRegion) String() string {

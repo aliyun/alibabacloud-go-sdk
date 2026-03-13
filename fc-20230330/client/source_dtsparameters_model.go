@@ -28,34 +28,50 @@ type iSourceDTSParameters interface {
 }
 
 type SourceDTSParameters struct {
+	// The network address and port number of the change tracking instance.
+	//
 	// example:
 	//
 	// dts-cn-shanghai-vpc.com:18003
 	BrokerUrl *string `json:"BrokerUrl,omitempty" xml:"BrokerUrl,omitempty"`
+	// The UNIX timestamp that is generated when the SDK client consumes the first data record.
+	//
 	// example:
 	//
 	// 1677340805
 	InitCheckPoint *int32 `json:"InitCheckPoint,omitempty" xml:"InitCheckPoint,omitempty"`
+	// The consumer group password.
+	//
 	// example:
 	//
 	// dtsTest123
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The region of the DTS instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The consumer group ID.
+	//
 	// example:
 	//
 	// dtse34j22j025a****
 	Sid *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// e34z2gm325q****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The name of the tracked topic of the change tracking instance.
+	//
 	// example:
 	//
 	// cn_shanghai_vpc_rm_uf6398ykj0218****_dts_trigger_upgrade_from_old_version2
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The account of the consumer group.
+	//
 	// example:
 	//
 	// dts_trigger

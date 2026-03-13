@@ -18,14 +18,20 @@ type iSourceMQTTParameters interface {
 }
 
 type SourceMQTTParameters struct {
+	// The ID of the ApsaraMQ for MQTT instance.
+	//
 	// example:
 	//
 	// mqtt-****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the ApsaraMQ for MQTT instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the topic in the ApsaraMQ for MQTT instance.
+	//
 	// example:
 	//
 	// testTopic

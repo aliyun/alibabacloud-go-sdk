@@ -18,15 +18,20 @@ type iGetResourceTagsOutput interface {
 }
 
 type GetResourceTagsOutput struct {
+	// The name of the resource type. Valid values: ALIYUN::FC::FUNCTION and ALIYUN::FC::SERVICE. The former name is used in Function Compute 3.0, and the latter name is used in earlier versions of Function Compute.
+	//
 	// example:
 	//
 	// ALIYUN::FC::FUNCTION
 	ResouceType *string `json:"resouceType,omitempty" xml:"resouceType,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the resource.
+	//
 	// example:
 	//
 	// acs:fc:cn-shanghai:****:functions/demo
-	ResourceArn *string            `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
-	Tags        map[string]*string `json:"tags" xml:"tags"`
+	ResourceArn *string `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
+	// The tag dictionary.
+	Tags map[string]*string `json:"tags" xml:"tags"`
 }
 
 func (s GetResourceTagsOutput) String() string {

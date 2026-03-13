@@ -16,7 +16,10 @@ type iListFunctionsOutput interface {
 }
 
 type ListFunctionsOutput struct {
+	// The information about functions.
 	Functions []*Function `json:"functions" xml:"functions" type:"Repeated"`
+	// The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// next_function_name

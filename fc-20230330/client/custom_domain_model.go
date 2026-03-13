@@ -38,37 +38,59 @@ type iCustomDomain interface {
 }
 
 type CustomDomain struct {
+	// The ID of your Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 186851234023****
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	// The version of the Function Compute API.
+	//
 	// example:
 	//
 	// 2023-03-30
-	ApiVersion *string     `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
+	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
+	// The configuration of permission authentication.
 	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
+	// The configuration of the HTTPS certificate.
 	CertConfig *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
 	CorsConfig *CORSConfig `json:"corsConfig,omitempty" xml:"corsConfig,omitempty"`
+	// The time when the custom domain name was created.
+	//
 	// example:
 	//
 	// 2023-03-30T08:02:19Z
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	// The time when the custom domain name was last updated.
+	//
 	// example:
 	//
 	// 2023-03-30T08:02:19Z
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// The protocol type that is supported by the custom domain name. Valid values: HTTP HTTPS HTTP,HTTPS
+	//
 	// example:
 	//
 	// HTTP
-	Protocol    *string      `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The route table that maps paths to functions when the function is invoked by using the custom domain name.
 	RouteConfig *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
+	// The number of added subdomains.
+	//
 	// example:
 	//
 	// 1
-	SubdomainCount *string    `json:"subdomainCount,omitempty" xml:"subdomainCount,omitempty"`
-	TlsConfig      *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
-	WafConfig      *WAFConfig `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`
+	SubdomainCount *string `json:"subdomainCount,omitempty" xml:"subdomainCount,omitempty"`
+	// The Transport Layer Security (TLS) configuration.
+	TlsConfig *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	// The Web Application Firewall (WAF) configuration.
+	WafConfig *WAFConfig `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`
 }
 
 func (s CustomDomain) String() string {

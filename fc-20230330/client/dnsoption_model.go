@@ -16,10 +16,14 @@ type iDNSOption interface {
 }
 
 type DNSOption struct {
+	// The name of the configuration item.
+	//
 	// example:
 	//
 	// ndots
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The value of the configuration item.
+	//
 	// example:
 	//
 	// 2

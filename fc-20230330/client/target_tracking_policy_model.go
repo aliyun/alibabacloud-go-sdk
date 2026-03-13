@@ -28,44 +28,60 @@ type iTargetTrackingPolicy interface {
 }
 
 type TargetTrackingPolicy struct {
+	// The end time of the policy, in UTC.
+	//
 	// example:
 	//
-	// 2024-03-10T10:10:10
+	// 2024-03-10T10:10:10Z
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The maximum number of provisioned instances for scale-out.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	MaxCapacity *int64 `json:"maxCapacity,omitempty" xml:"maxCapacity,omitempty"`
+	// The threshold value for metric-based auto scaling.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.6
 	MetricTarget *float32 `json:"metricTarget,omitempty" xml:"metricTarget,omitempty"`
+	// The metric type for tracing. ProvisionedConcurrencyUtilization: the concurrency utilization of provisioned instances. CPUUtilization: the CPU utilization. GPUMemUtilization: the GPU utilization.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CPUUtilization
 	MetricType *string `json:"metricType,omitempty" xml:"metricType,omitempty"`
+	// The minimum number of provisioned instances for scale-in.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	MinCapacity *int64 `json:"minCapacity,omitempty" xml:"minCapacity,omitempty"`
+	// The policy name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The time when the policy starts to take effect, in UTC.
+	//
 	// example:
 	//
-	// 2023-03-10T10:10:10
+	// 2023-03-10T10:10:10Z
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The time zone. If the time zone parameter is empty, the time of startTime and endTime must be in UTC format.
+	//
 	// example:
 	//
 	// Asia/Shanghai

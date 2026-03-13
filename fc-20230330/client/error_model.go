@@ -18,14 +18,20 @@ type iError interface {
 }
 
 type Error struct {
+  // The error code.
+  // 
   // example:
   // 
   // FunctionNotFound
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // The error message.
+  // 
   // example:
   // 
   // function not found
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+  // The request ID.
+  // 
   // example:
   // 
   // 1-64e70cf1-5cbef92ea8fc8c42899cf5d1

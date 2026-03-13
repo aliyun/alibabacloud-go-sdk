@@ -16,10 +16,14 @@ type iFunctionLayer interface {
 }
 
 type FunctionLayer struct {
+	// The resource identifier of the layer version.
+	//
 	// example:
 	//
 	// acs:fc:cn-beijing:186824xxxxxx:layers/fc_layer/versions/1
 	Arn *string `json:"arn,omitempty" xml:"arn,omitempty"`
+	// The size of the layer code package. Unit: bytes.
+	//
 	// example:
 	//
 	// 421

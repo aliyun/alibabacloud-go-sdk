@@ -55,7 +55,7 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 创建函数别名。
+// Creates an alias.
 //
 // @param request - CreateAliasRequest
 //
@@ -189,7 +189,7 @@ func (client *Client) CreateFunctionWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建层版本。
+// Releases a layer version.
 //
 // @param request - CreateLayerVersionRequest
 //
@@ -279,7 +279,7 @@ func (client *Client) CreateSessionWithContext(ctx context.Context, functionName
 
 // Summary:
 //
-// 创建函数触发器。
+// Creates a trigger.
 //
 // @param request - CreateTriggerRequest
 //
@@ -542,7 +542,7 @@ func (client *Client) DeleteFunctionWithContext(ctx context.Context, functionNam
 
 // Summary:
 //
-// http://pre.hhht/#vpc
+// Deletes a function version.
 //
 // @param headers - map
 //
@@ -1749,7 +1749,7 @@ func (client *Client) ListAsyncTasksWithContext(ctx context.Context, functionNam
 
 // Summary:
 //
-// 列出函数并发度配置。
+// Queries a list of concurrency configurations.
 //
 // @param request - ListConcurrencyConfigsRequest
 //
@@ -1914,7 +1914,7 @@ func (client *Client) ListFunctionVersionsWithContext(ctx context.Context, funct
 
 // Summary:
 //
-// 列出函数。
+// Queries a list of functions.
 //
 // Description:
 //
@@ -2540,6 +2540,53 @@ func (client *Client) ListVpcBindingsWithContext(ctx context.Context, functionNa
 
 // Summary:
 //
+// 暂停/保存会话
+//
+// @param request - PauseSessionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PauseSessionResponse
+func (client *Client) PauseSessionWithContext(ctx context.Context, functionName *string, sessionId *string, request *PauseSessionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PauseSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Qualifier) {
+		query["qualifier"] = request.Qualifier
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PauseSession"),
+		Version:     dara.String("2023-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2023-03-30/functions/" + dara.PercentEncode(dara.StringValue(functionName)) + "/sessions/" + dara.PercentEncode(dara.StringValue(sessionId)) + "/pause"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PauseSessionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Publishes a function version.
 //
 // @param request - PublishFunctionVersionRequest
@@ -2809,6 +2856,53 @@ func (client *Client) PutScalingConfigWithContext(ctx context.Context, functionN
 		BodyType:    dara.String("json"),
 	}
 	_result = &PutScalingConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 恢复会话
+//
+// @param request - ResumeSessionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResumeSessionResponse
+func (client *Client) ResumeSessionWithContext(ctx context.Context, functionName *string, sessionId *string, request *ResumeSessionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ResumeSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Qualifier) {
+		query["qualifier"] = request.Qualifier
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResumeSession"),
+		Version:     dara.String("2023-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2023-03-30/functions/" + dara.PercentEncode(dara.StringValue(functionName)) + "/sessions/" + dara.PercentEncode(dara.StringValue(sessionId)) + "/resume"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResumeSessionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

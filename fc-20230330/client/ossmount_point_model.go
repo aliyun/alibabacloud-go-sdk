@@ -22,22 +22,32 @@ type iOSSMountPoint interface {
 }
 
 type OSSMountPoint struct {
+	// The OSS bucket that you want to mount.
+	//
 	// example:
 	//
 	// my-bucket
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	// The path of the mounted OSS bucket.
+	//
 	// example:
 	//
 	// /my-dir
 	BucketPath *string `json:"bucketPath,omitempty" xml:"bucketPath,omitempty"`
+	// The OSS endpoint.
+	//
 	// example:
 	//
 	// http://oss-cn-shanghai.aliyuncs.com
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The mount directory.
+	//
 	// example:
 	//
 	// /mnt/dir
 	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	// Specifies whether it is read-only.
+	//
 	// example:
 	//
 	// true

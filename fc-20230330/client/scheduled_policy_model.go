@@ -24,12 +24,30 @@ type iScheduledPolicy interface {
 }
 
 type ScheduledPolicy struct {
-	EndTime            *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 1633449590000
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// student_app_shop_analyzer
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 。
 	ScheduleExpression *string `json:"scheduleExpression,omitempty" xml:"scheduleExpression,omitempty"`
-	StartTime          *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	Target             *int64  `json:"target,omitempty" xml:"target,omitempty"`
-	TimeZone           *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+	// example:
+	//
+	// 1764432000000
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// 5
+	Target *int64 `json:"target,omitempty" xml:"target,omitempty"`
+	// example:
+	//
+	// 。
+	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
 }
 
 func (s ScheduledPolicy) String() string {

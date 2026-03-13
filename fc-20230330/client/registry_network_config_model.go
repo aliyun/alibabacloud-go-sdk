@@ -18,14 +18,20 @@ type iRegistryNetworkConfig interface {
 }
 
 type RegistryNetworkConfig struct {
+	// The ID of the security group that can be used to connect to the image repository.
+	//
 	// example:
 	//
 	// sg-xxxxxxxxxxxxxx
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	// The ID of the vSwitch that can be used to connect to the image repository.
+	//
 	// example:
 	//
 	// vsw-xxxxxxxxxxxxxx
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// The ID of the virtual private cloud (VPC) that can be used to connect to the image repository.
+	//
 	// example:
 	//
 	// vpc-xxxxxxxxxxxxxx

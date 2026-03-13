@@ -16,12 +16,16 @@ type iRegexRule interface {
 }
 
 type RegexRule struct {
+	// The matching rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ^/api/.+?/(.*)
 	Match *string `json:"match,omitempty" xml:"match,omitempty"`
+	// The replacement rule.
+	//
 	// This parameter is required.
 	//
 	// example:

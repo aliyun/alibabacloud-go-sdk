@@ -32,27 +32,42 @@ type iCustomContainerConfig interface {
 }
 
 type CustomContainerConfig struct {
+	// The information about image acceleration.
 	AccelerationInfo *AccelerationInfo `json:"accelerationInfo,omitempty" xml:"accelerationInfo,omitempty"`
+	// Specifies whether to enable image acceleration. Valid values: Default: enables image acceleration. None: disables image acceleration.
+	//
 	// example:
 	//
-	// deprecated
+	// default
 	AccelerationType *string `json:"accelerationType,omitempty" xml:"accelerationType,omitempty"`
+	// The ID of the image repository for the Container Registry Enterprise Edition. You must specify this parameter if you use an image of Container Registry Enterprise Edition.
+	//
 	// example:
 	//
-	// deprecated
-	AcrInstanceId     *string                  `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
-	Command           []*string                `json:"command" xml:"command" type:"Repeated"`
-	Entrypoint        []*string                `json:"entrypoint" xml:"entrypoint" type:"Repeated"`
+	// cri-xxxxxxxxxx
+	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
+	// The startup parameter of the container.
+	Command []*string `json:"command" xml:"command" type:"Repeated"`
+	// The container startup command.
+	Entrypoint []*string `json:"entrypoint" xml:"entrypoint" type:"Repeated"`
+	// The custom health check configurations of the function.
 	HealthCheckConfig *CustomHealthCheckConfig `json:"healthCheckConfig,omitempty" xml:"healthCheckConfig,omitempty"`
+	// The endpoint of the container image.
+	//
 	// example:
 	//
-	// registry-vpc.cn-hangzhou.aliyuncs.com/fc-demo/helloworld:v1
+	// registry-vpc.cn-hangzhou.aliyuncs.com/fc-demo/helloworld:v1beta1
 	Image *string `json:"image,omitempty" xml:"image,omitempty"`
+	// The port on which the HTTP server listens for the Custom Container runtime.
+	//
 	// example:
 	//
 	// 9000
-	Port           *int32          `json:"port,omitempty" xml:"port,omitempty"`
+	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// registry related
 	RegistryConfig *RegistryConfig `json:"registryConfig,omitempty" xml:"registryConfig,omitempty"`
+	// The actual digest version of the deployed image. The code version specified by digest is actually used when the function starts. This parameter is returned by GetFunction and is not required as a parameter.
+	//
 	// example:
 	//
 	// stand-sh-registry-vpc.cn-shanghai.cr.aliyuncs.com/fc-demo2/springboot-helloworld@sha256:68d1****0d64d6

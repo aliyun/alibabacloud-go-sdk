@@ -16,7 +16,10 @@ type iListLayersOutput interface {
 }
 
 type ListLayersOutput struct {
+	// The layers.
 	Layers []*Layer `json:"layers" xml:"layers" type:"Repeated"`
+	// The name of the start layer for the next query, which is also the token used to obtain more results.
+	//
 	// example:
 	//
 	// next-layer-name

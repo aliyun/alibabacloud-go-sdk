@@ -16,7 +16,9 @@ type iDestinationConfig interface {
 }
 
 type DestinationConfig struct {
+	// The destination struct of a failed callback.
 	OnFailure *Destination `json:"onFailure,omitempty" xml:"onFailure,omitempty"`
+	// The destination struct of a successful callback.
 	OnSuccess *Destination `json:"onSuccess,omitempty" xml:"onSuccess,omitempty"`
 }
 

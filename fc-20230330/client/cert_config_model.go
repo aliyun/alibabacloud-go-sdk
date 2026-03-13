@@ -18,18 +18,24 @@ type iCertConfig interface {
 }
 
 type CertConfig struct {
+	// The name of the certificate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// my-cert
 	CertName *string `json:"certName,omitempty" xml:"certName,omitempty"`
+	// The certificate in the .pem format.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PEM format
 	Certificate *string `json:"certificate,omitempty" xml:"certificate,omitempty"`
+	// The private key in the .pem format.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -14,6 +14,8 @@ type iDestination interface {
 }
 
 type Destination struct {
+	// The descriptor of the destination for the asynchronous invocation.
+	//
 	// example:
 	//
 	// acs:fc:cn-shanghai:xxx:functions/f1

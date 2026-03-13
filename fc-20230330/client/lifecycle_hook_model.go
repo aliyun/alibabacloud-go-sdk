@@ -19,10 +19,14 @@ type iLifecycleHook interface {
 
 type LifecycleHook struct {
 	Command []*string `json:"command" xml:"command" type:"Repeated"`
+	// The handler of the hook. The definition is similar to that of a request handler.
+	//
 	// example:
 	//
 	// index.initializer
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
+	// The timeout period of the hook. Unit: seconds.
+	//
 	// example:
 	//
 	// 10

@@ -32,9 +32,16 @@ type PutProvisionConfigInput struct {
 	//
 	// true
 	AlwaysAllocateGPU *bool `json:"alwaysAllocateGPU,omitempty" xml:"alwaysAllocateGPU,omitempty"`
+	// The number of target provisioned instances. Valid values: [0,10000].
+	//
 	// if can be null:
 	// true
-	DefaultTarget    *int64             `json:"defaultTarget,omitempty" xml:"defaultTarget,omitempty"`
+	//
+	// example:
+	//
+	// 5
+	DefaultTarget *int64 `json:"defaultTarget,omitempty" xml:"defaultTarget,omitempty"`
+	// public
 	ScheduledActions []*ScheduledAction `json:"scheduledActions" xml:"scheduledActions" type:"Repeated"`
 	// Deprecated
 	//

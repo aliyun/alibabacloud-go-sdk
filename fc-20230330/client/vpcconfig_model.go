@@ -20,15 +20,22 @@ type iVPCConfig interface {
 }
 
 type VPCConfig struct {
+	// The RAM role that is assumed by Function Compute to access VPC.
+	//
 	// example:
 	//
 	// acs:ram::188077086902****:role/fc-test
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// The security group ID.
+	//
 	// example:
 	//
 	// sg-bp18hj1wtxgy3b0***
-	SecurityGroupId *string   `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-	VSwitchIds      []*string `json:"vSwitchIds" xml:"vSwitchIds" type:"Repeated"`
+	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	// The list of vSwitches.
+	VSwitchIds []*string `json:"vSwitchIds" xml:"vSwitchIds" type:"Repeated"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-***

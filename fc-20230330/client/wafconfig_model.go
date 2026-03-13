@@ -14,6 +14,8 @@ type iWAFConfig interface {
 }
 
 type WAFConfig struct {
+	// Specifies whether to enable WAF protection.
+	//
 	// example:
 	//
 	// true

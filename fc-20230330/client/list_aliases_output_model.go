@@ -16,7 +16,10 @@ type iListAliasesOutput interface {
 }
 
 type ListAliasesOutput struct {
+	// The information about aliases.
 	Aliases []*Alias `json:"aliases" xml:"aliases" type:"Repeated"`
+	// The next version.
+	//
 	// example:
 	//
 	// test

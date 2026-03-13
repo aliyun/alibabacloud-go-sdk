@@ -16,8 +16,10 @@ type iOSSTriggerConfig interface {
 }
 
 type OSSTriggerConfig struct {
+	// The list of events. Enter an event related to OSS. For more information about event types,see [OSS events](https://help.aliyun.com/document_detail/2513613.html).
 	Events []*string `json:"events" xml:"events" type:"Repeated"`
-	Filter *Filter   `json:"filter,omitempty" xml:"filter,omitempty"`
+	// The event filtering rule.
+	Filter *Filter `json:"filter,omitempty" xml:"filter,omitempty"`
 }
 
 func (s OSSTriggerConfig) String() string {

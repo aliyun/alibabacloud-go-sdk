@@ -16,11 +16,14 @@ type iListTriggersOutput interface {
 }
 
 type ListTriggersOutput struct {
+	// The name of the next trigger. The pagination token that is used in the next request to retrieve a new page of results. If this parameter is not returned, all the layers are returned.
+	//
 	// example:
 	//
 	// next_token
-	NextToken *string    `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	Triggers  []*Trigger `json:"triggers" xml:"triggers" type:"Repeated"`
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The triggers.
+	Triggers []*Trigger `json:"triggers" xml:"triggers" type:"Repeated"`
 }
 
 func (s ListTriggersOutput) String() string {

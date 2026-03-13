@@ -34,17 +34,44 @@ type iScalingConfigStatus interface {
 }
 
 type ScalingConfigStatus struct {
-	CurrentError              *string            `json:"currentError,omitempty" xml:"currentError,omitempty"`
-	CurrentInstances          *int64             `json:"currentInstances,omitempty" xml:"currentInstances,omitempty"`
-	EnableMixMode             *bool              `json:"enableMixMode,omitempty" xml:"enableMixMode,omitempty"`
-	EnableOnDemandScaling     *bool              `json:"enableOnDemandScaling,omitempty" xml:"enableOnDemandScaling,omitempty"`
-	FunctionArn               *string            `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
-	HorizontalScalingPolicies []*ScalingPolicy   `json:"horizontalScalingPolicies" xml:"horizontalScalingPolicies" type:"Repeated"`
-	MinInstances              *int64             `json:"minInstances,omitempty" xml:"minInstances,omitempty"`
-	RequestDispatchPolicy     *string            `json:"requestDispatchPolicy,omitempty" xml:"requestDispatchPolicy,omitempty"`
-	ResidentPoolId            *string            `json:"residentPoolId,omitempty" xml:"residentPoolId,omitempty"`
-	ScheduledPolicies         []*ScheduledPolicy `json:"scheduledPolicies" xml:"scheduledPolicies" type:"Repeated"`
-	TargetInstances           *int64             `json:"targetInstances,omitempty" xml:"targetInstances,omitempty"`
+	// example:
+	//
+	// image not found
+	CurrentError *string `json:"currentError,omitempty" xml:"currentError,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentInstances *int64 `json:"currentInstances,omitempty" xml:"currentInstances,omitempty"`
+	// example:
+	//
+	// False
+	EnableMixMode *bool `json:"enableMixMode,omitempty" xml:"enableMixMode,omitempty"`
+	// example:
+	//
+	// True
+	EnableOnDemandScaling *bool `json:"enableOnDemandScaling,omitempty" xml:"enableOnDemandScaling,omitempty"`
+	// example:
+	//
+	// acs:fc:cn-shanghai:124:functions/myFunction/prod
+	FunctionArn               *string          `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
+	HorizontalScalingPolicies []*ScalingPolicy `json:"horizontalScalingPolicies" xml:"horizontalScalingPolicies" type:"Repeated"`
+	// example:
+	//
+	// 1
+	MinInstances *int64 `json:"minInstances,omitempty" xml:"minInstances,omitempty"`
+	// example:
+	//
+	// Balanced
+	RequestDispatchPolicy *string `json:"requestDispatchPolicy,omitempty" xml:"requestDispatchPolicy,omitempty"`
+	// example:
+	//
+	// fc-pool-a2b664c1f87171j4******
+	ResidentPoolId    *string            `json:"residentPoolId,omitempty" xml:"residentPoolId,omitempty"`
+	ScheduledPolicies []*ScheduledPolicy `json:"scheduledPolicies" xml:"scheduledPolicies" type:"Repeated"`
+	// example:
+	//
+	// 10
+	TargetInstances *int64 `json:"targetInstances,omitempty" xml:"targetInstances,omitempty"`
 }
 
 func (s ScalingConfigStatus) String() string {

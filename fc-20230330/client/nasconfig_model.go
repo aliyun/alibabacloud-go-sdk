@@ -18,11 +18,16 @@ type iNASConfig interface {
 }
 
 type NASConfig struct {
+	// The group ID.
+	//
 	// example:
 	//
 	// 100
-	GroupId     *int32            `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	GroupId *int32 `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// The mount targets.
 	MountPoints []*NASMountConfig `json:"mountPoints" xml:"mountPoints" type:"Repeated"`
+	// The account ID.
+	//
 	// example:
 	//
 	// 100

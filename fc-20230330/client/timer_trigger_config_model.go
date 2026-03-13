@@ -18,14 +18,20 @@ type iTimerTriggerConfig interface {
 }
 
 type TimerTriggerConfig struct {
+	// The trigger period expression. You can specify to trigger based on a time interval. For example, the expression @every 4m indicates that the triggering is performed every four minutes. You can also specify to trigger based on a cron expression, for example, 0 0 4 \\	- \\	- \\*.
+	//
 	// example:
 	//
 	// 0 0 4 	- 	- *
 	CronExpression *string `json:"cronExpression,omitempty" xml:"cronExpression,omitempty"`
+	// Specify whether to enable the trigger.
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// Enter custom parameters. The trigger message is used as the value of the payload in the event.
+	//
 	// example:
 	//
 	// {"workflowInstanceId":"39639"}

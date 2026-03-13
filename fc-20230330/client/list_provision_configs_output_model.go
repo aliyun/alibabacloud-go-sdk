@@ -16,10 +16,13 @@ type iListProvisionConfigsOutput interface {
 }
 
 type ListProvisionConfigsOutput struct {
+	// The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// next_token
-	NextToken        *string            `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The provisioned configurations of the function.
 	ProvisionConfigs []*ProvisionConfig `json:"provisionConfigs" xml:"provisionConfigs" type:"Repeated"`
 }
 

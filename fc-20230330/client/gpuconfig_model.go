@@ -16,13 +16,17 @@ type iGPUConfig interface {
 }
 
 type GPUConfig struct {
+	// The GPU memory size. Unit: MB. The value is a multiple of 1024 MB.
+	//
 	// example:
 	//
 	// 2048
 	GpuMemorySize *int32 `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
+	// The type of GPU cards. Valid values: fc.gpu.tesla.1: Tesla T4 fc.gpu.ampere.1: Ampere A10
+	//
 	// example:
 	//
-	// fc.gpu.tesla.1
+	// fc.gpu.ampere.1
 	GpuType *string `json:"gpuType,omitempty" xml:"gpuType,omitempty"`
 }
 

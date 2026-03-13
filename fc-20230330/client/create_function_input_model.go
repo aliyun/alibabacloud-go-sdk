@@ -80,14 +80,22 @@ type iCreateFunctionInput interface {
 }
 
 type CreateFunctionInput struct {
+	// The code package of the function. Configure either code or customContainerConfig.
 	Code *InputCodeLocation `json:"code,omitempty" xml:"code,omitempty"`
+	// The CPU power allocated to the function. Unit: vCPUs. The value must be a multiple of 0.05. The minimum value is 0.05 and the maximum value is 16. The ratio of cpu to memorySize (in GB) must be from 1:1 to 1:4.
+	//
 	// example:
 	//
 	// 1
-	Cpu                   *float32               `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The configurations of the Custom Container runtime. After you configure a Custom Container runtime for your function, Function Compute can execute the function in a custom container image. Configure either code or customContainerConfig.
 	CustomContainerConfig *CustomContainerConfig `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
-	CustomDNS             *CustomDNS             `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
-	CustomRuntimeConfig   *CustomRuntimeConfig   `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
+	// The custom DNS settings of the function.
+	CustomDNS *CustomDNS `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
+	// The configurations of the custom runtime.
+	CustomRuntimeConfig *CustomRuntimeConfig `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
+	// The description of the function.
+	//
 	// example:
 	//
 	// my function
@@ -95,20 +103,28 @@ type CreateFunctionInput struct {
 	DisableInjectCredentials *string `json:"disableInjectCredentials,omitempty" xml:"disableInjectCredentials,omitempty"`
 	// Deprecated
 	DisableOndemand *bool `json:"disableOndemand,omitempty" xml:"disableOndemand,omitempty"`
+	// The disk size of the function. Unit: MB. Valid values: 512 and 10240.
+	//
 	// example:
 	//
 	// 512
 	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
 	// Deprecated
-	EnableLongLiving     *bool              `json:"enableLongLiving,omitempty" xml:"enableLongLiving,omitempty"`
+	EnableLongLiving *bool `json:"enableLongLiving,omitempty" xml:"enableLongLiving,omitempty"`
+	// The environment variables of the function. You can access the specified environment variables in the runtime.
 	EnvironmentVariables map[string]*string `json:"environmentVariables" xml:"environmentVariables"`
+	// The name of the function. The name must be 1 to 64 characters in length, and can contain only letters, digits, underscores (_), and hyphens (-). It cannot begin with a digit or a hyphen (-).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// my-function-1
-	FunctionName *string    `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	GpuConfig    *GPUConfig `json:"gpuConfig,omitempty" xml:"gpuConfig,omitempty"`
+	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	// The GPU configurations of the function.
+	GpuConfig *GPUConfig `json:"gpuConfig,omitempty" xml:"gpuConfig,omitempty"`
+	// The handler of the function. The format of the handler is related to the runtime you use.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -119,30 +135,45 @@ type CreateFunctionInput struct {
 	//
 	// 100
 	IdleTimeout *int32 `json:"idleTimeout,omitempty" xml:"idleTimeout,omitempty"`
+	// The maximum number of requests that a function instance can process at a time.
+	//
 	// example:
 	//
 	// 1
-	InstanceConcurrency     *int32                   `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
-	InstanceIsolationMode   *string                  `json:"instanceIsolationMode,omitempty" xml:"instanceIsolationMode,omitempty"`
+	InstanceConcurrency   *int32  `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
+	InstanceIsolationMode *string `json:"instanceIsolationMode,omitempty" xml:"instanceIsolationMode,omitempty"`
+	// The configurations of instance lifecycle hooks.
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
+	// Specifies whether to allow the function to access the Internet. Default value: true.
+	//
 	// example:
 	//
 	// true
-	InternetAccess *bool      `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
-	Layers         []*string  `json:"layers" xml:"layers" type:"Repeated"`
-	LogConfig      *LogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	InternetAccess *bool `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	// The layers. Multiple layers are merged based on the order of array subscripts. If two layers have the same file name, the content of the layer with the smaller subscript will overwrite the content of the layer with the larger subscript.
+	Layers []*string `json:"layers" xml:"layers" type:"Repeated"`
+	// The logging configurations. Logs generated by the function are written to the specified Logstore.
+	LogConfig *LogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	// The memory capacity for the function. Unit: MB. The value must be a multiple of 64. The minimum capacity is 128 MB and the maximum capacity is 32 GB. The ratio of cpu to memorySize (in GB) must be from 1:1 to 1:4.
+	//
 	// example:
 	//
 	// 512
-	MemorySize      *int32          `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	NasConfig       *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	// The File Storage NAS (NAS) configurations. The configurations allow the function to access the specified NAS file system.
+	NasConfig *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	// The OSS mounting configurations.
 	OssMountConfig  *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
 	PolarFsConfig   *PolarFsConfig  `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
 	ResourceGroupId *string         `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The Resource Access Management (RAM) role that is assigned to the function. Function Compute assumes the role to obtain a Security Token Service (STS) token, which serves as a temporary key for your function to access other Alibaba Cloud services, such as Object Storage Service (OSS) and Tablestore.
+	//
 	// example:
 	//
 	// acs:ram::188077086902****:role/fc-test
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// The runtime of the function. Valid values: nodejs8, nodejs10, nodejs12, nodejs14, nodejs16, nodejs18, nodejs20, go1, python3, python3.9, python3.10, java8, java11, php7.2, dotnetcore3.1, custom, custom.debian10, and custom-container.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -154,13 +185,18 @@ type CreateFunctionInput struct {
 	// MCP_SSE
 	SessionAffinity       *string `json:"sessionAffinity,omitempty" xml:"sessionAffinity,omitempty"`
 	SessionAffinityConfig *string `json:"sessionAffinityConfig,omitempty" xml:"sessionAffinityConfig,omitempty"`
-	Tags                  []*Tag  `json:"tags" xml:"tags" type:"Repeated"`
+	// The tags.
+	Tags []*Tag `json:"tags" xml:"tags" type:"Repeated"`
+	// The timeout period for function execution. Unit: seconds. Default value: 3. Valid values: 1 to 86400. The execution of the function is terminated when the timeout period expires.
+	//
 	// example:
 	//
 	// 60
-	Timeout       *int32         `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	// The configurations of Managed Service for OpenTelemetry. After Function Compute is integrated with Managed Service for OpenTelemetry, you can record the invocation duration of a request, view the cold start duration of a function, and track the execution duration of the function.
 	TracingConfig *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VpcConfig     *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+	// The Virtual Private Cloud (VPC) configurations. The configurations allow the function to access the specified VPC resources.
+	VpcConfig *VPCConfig `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
 func (s CreateFunctionInput) String() string {

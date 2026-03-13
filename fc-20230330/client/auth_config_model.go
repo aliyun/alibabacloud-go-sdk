@@ -16,13 +16,17 @@ type iAuthConfig interface {
 }
 
 type AuthConfig struct {
+	// The authentication information.
+	//
 	// example:
 	//
 	// {}
 	AuthInfo *string `json:"authInfo,omitempty" xml:"authInfo,omitempty"`
+	// The authentication type. Valid values: anonymous, function, and jwt.
+	//
 	// example:
 	//
-	// anonymous, function, jwt
+	// anonymous
 	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
 }
 

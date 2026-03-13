@@ -26,13 +26,28 @@ type iPutScalingConfigInput interface {
 }
 
 type PutScalingConfigInput struct {
-	EnableMixMode             *bool              `json:"enableMixMode,omitempty" xml:"enableMixMode,omitempty"`
-	EnableOnDemandScaling     *bool              `json:"enableOnDemandScaling,omitempty" xml:"enableOnDemandScaling,omitempty"`
-	HorizontalScalingPolicies []*ScalingPolicy   `json:"horizontalScalingPolicies" xml:"horizontalScalingPolicies" type:"Repeated"`
-	MinInstances              *int64             `json:"minInstances,omitempty" xml:"minInstances,omitempty"`
-	RequestDispatchPolicy     *string            `json:"requestDispatchPolicy,omitempty" xml:"requestDispatchPolicy,omitempty"`
-	ResidentPoolId            *string            `json:"residentPoolId,omitempty" xml:"residentPoolId,omitempty"`
-	ScheduledPolicies         []*ScheduledPolicy `json:"scheduledPolicies" xml:"scheduledPolicies" type:"Repeated"`
+	// example:
+	//
+	// False
+	EnableMixMode *bool `json:"enableMixMode,omitempty" xml:"enableMixMode,omitempty"`
+	// example:
+	//
+	// True
+	EnableOnDemandScaling     *bool            `json:"enableOnDemandScaling,omitempty" xml:"enableOnDemandScaling,omitempty"`
+	HorizontalScalingPolicies []*ScalingPolicy `json:"horizontalScalingPolicies" xml:"horizontalScalingPolicies" type:"Repeated"`
+	// example:
+	//
+	// 1
+	MinInstances *int64 `json:"minInstances,omitempty" xml:"minInstances,omitempty"`
+	// example:
+	//
+	// Balanced
+	RequestDispatchPolicy *string `json:"requestDispatchPolicy,omitempty" xml:"requestDispatchPolicy,omitempty"`
+	// example:
+	//
+	// fc-pool-a2b664c1f87171j4******
+	ResidentPoolId    *string            `json:"residentPoolId,omitempty" xml:"residentPoolId,omitempty"`
+	ScheduledPolicies []*ScheduledPolicy `json:"scheduledPolicies" xml:"scheduledPolicies" type:"Repeated"`
 }
 
 func (s PutScalingConfigInput) String() string {

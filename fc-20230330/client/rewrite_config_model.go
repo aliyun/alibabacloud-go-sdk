@@ -18,8 +18,11 @@ type iRewriteConfig interface {
 }
 
 type RewriteConfig struct {
-	EqualRules    []*EqualRule    `json:"equalRules" xml:"equalRules" type:"Repeated"`
-	RegexRules    []*RegexRule    `json:"regexRules" xml:"regexRules" type:"Repeated"`
+	// The exact match rules.
+	EqualRules []*EqualRule `json:"equalRules" xml:"equalRules" type:"Repeated"`
+	// The regex matching rules.
+	RegexRules []*RegexRule `json:"regexRules" xml:"regexRules" type:"Repeated"`
+	// The wildcard matching rules.
 	WildcardRules []*WildcardRule `json:"wildcardRules" xml:"wildcardRules" type:"Repeated"`
 }
 

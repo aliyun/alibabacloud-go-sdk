@@ -28,22 +28,31 @@ type iCreateCustomDomainInput interface {
 }
 
 type CreateCustomDomainInput struct {
+	// The configuration of permission authentication.
 	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
+	// The configuration of the HTTPS certificate.
 	CertConfig *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
 	CorsConfig *CORSConfig `json:"corsConfig,omitempty" xml:"corsConfig,omitempty"`
+	// The domain name. Enter a custom domain name that has obtained an Internet content provider (ICP) filing in the Alibaba Cloud ICP Filing system, or a custom domain name whose ICP filing information includes Alibaba Cloud as a service provider.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	// The protocol type that is supported by the custom domain name. Valid values: HTTP HTTPS HTTP,HTTPS
+	//
 	// example:
 	//
 	// HTTP
-	Protocol    *string      `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The route table that maps paths to functions when the function is invoked by using the custom domain name.
 	RouteConfig *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
-	TlsConfig   *TLSConfig   `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
-	WafConfig   *WAFConfig   `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`
+	// The Transport Layer Security (TLS) configuration.
+	TlsConfig *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	// The Web Application Firewall (WAF) configuration.
+	WafConfig *WAFConfig `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`
 }
 
 func (s CreateCustomDomainInput) String() string {

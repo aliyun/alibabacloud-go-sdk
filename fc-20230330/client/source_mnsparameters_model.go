@@ -18,14 +18,20 @@ type iSourceMNSParameters interface {
 }
 
 type SourceMNSParameters struct {
+	// Specify whether to enable Base64 encoding. Default value: true. Valid values: true false
+	//
 	// example:
 	//
 	// true
 	IsBase64Decode *bool `json:"IsBase64Decode,omitempty" xml:"IsBase64Decode,omitempty"`
+	// The name of the queue of Simple Message Queue (formerly MNS).
+	//
 	// example:
 	//
 	// demo
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// The region to which the queue of Simple Message Queue (formerly MNS) belongs.
+	//
 	// example:
 	//
 	// cn-shanghai

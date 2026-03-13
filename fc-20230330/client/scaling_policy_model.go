@@ -28,14 +28,38 @@ type iScalingPolicy interface {
 }
 
 type ScalingPolicy struct {
-	EndTime      *string  `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	MaxInstances *int64   `json:"maxInstances,omitempty" xml:"maxInstances,omitempty"`
+	// example:
+	//
+	// 2024-03-10T10:10:10Z
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// 10
+	MaxInstances *int64 `json:"maxInstances,omitempty" xml:"maxInstances,omitempty"`
+	// example:
+	//
+	// 0.6
 	MetricTarget *float32 `json:"metricTarget,omitempty" xml:"metricTarget,omitempty"`
-	MetricType   *string  `json:"metricType,omitempty" xml:"metricType,omitempty"`
-	MinInstances *int64   `json:"minInstances,omitempty" xml:"minInstances,omitempty"`
-	Name         *string  `json:"name,omitempty" xml:"name,omitempty"`
-	StartTime    *string  `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	TimeZone     *string  `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+	// example:
+	//
+	// CPUUtilization
+	MetricType *string `json:"metricType,omitempty" xml:"metricType,omitempty"`
+	// example:
+	//
+	// 1
+	MinInstances *int64 `json:"minInstances,omitempty" xml:"minInstances,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 2023-03-10T10:10:10Z
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// Asia/Shanghai
+	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
 }
 
 func (s ScalingPolicy) String() string {

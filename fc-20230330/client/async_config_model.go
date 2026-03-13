@@ -26,27 +26,40 @@ type iAsyncConfig interface {
 }
 
 type AsyncConfig struct {
+	// Specifies whether to enable the asynchronous task feature.
+	//
 	// example:
 	//
 	// true
 	AsyncTask *bool `json:"asyncTask,omitempty" xml:"asyncTask,omitempty"`
+	// The time when the asynchronous invocation configuration was created.
+	//
 	// example:
 	//
 	// 2006-01-02T15:04:05Z07:00
-	CreatedTime       *string            `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	// The destination configuration.
 	DestinationConfig *DestinationConfig `json:"destinationConfig,omitempty" xml:"destinationConfig,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the function.
+	//
 	// example:
 	//
 	// acs:fc:cn-shanghai:1234/functions/my-func
 	FunctionArn *string `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
+	// The time when the asynchronous invocation was last modified.
+	//
 	// example:
 	//
 	// 2006-01-02T15:04:05Z07:00
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// The maximum time to live (TTL) value of an event.
+	//
 	// example:
 	//
 	// 3600
 	MaxAsyncEventAgeInSeconds *int64 `json:"maxAsyncEventAgeInSeconds,omitempty" xml:"maxAsyncEventAgeInSeconds,omitempty"`
+	// The number of times when an asynchronous invocation is retried.
+	//
 	// example:
 	//
 	// 3

@@ -16,7 +16,10 @@ type iListConcurrencyConfigsOutput interface {
 }
 
 type ListConcurrencyConfigsOutput struct {
+	// The list of concurrency configurations.
 	Configs []*ConcurrencyConfig `json:"configs" xml:"configs" type:"Repeated"`
+	// The pagination token that is used in the next request to retrieve a new page of results. If this parameter is not returned, all the concurrency configurations are returned.
+	//
 	// example:
 	//
 	// next_token

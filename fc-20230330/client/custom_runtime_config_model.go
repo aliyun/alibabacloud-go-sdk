@@ -20,9 +20,14 @@ type iCustomRuntimeConfig interface {
 }
 
 type CustomRuntimeConfig struct {
-	Args              []*string                `json:"args" xml:"args" type:"Repeated"`
-	Command           []*string                `json:"command" xml:"command" type:"Repeated"`
+	// The arguments that are passed to the startup command.
+	Args []*string `json:"args" xml:"args" type:"Repeated"`
+	// The startup commands.
+	Command []*string `json:"command" xml:"command" type:"Repeated"`
+	// The custom health check configuration of the function.
 	HealthCheckConfig *CustomHealthCheckConfig `json:"healthCheckConfig,omitempty" xml:"healthCheckConfig,omitempty"`
+	// The port on which the HTTP server is listening.
+	//
 	// example:
 	//
 	// 9000

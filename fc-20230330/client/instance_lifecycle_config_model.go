@@ -16,8 +16,10 @@ type iInstanceLifecycleConfig interface {
 }
 
 type InstanceLifecycleConfig struct {
+	// The configurations of the Initializer hook.
 	Initializer *LifecycleHook `json:"initializer,omitempty" xml:"initializer,omitempty"`
-	PreStop     *LifecycleHook `json:"preStop,omitempty" xml:"preStop,omitempty"`
+	// The configurations of the PreStop hook.
+	PreStop *LifecycleHook `json:"preStop,omitempty" xml:"preStop,omitempty"`
 }
 
 func (s InstanceLifecycleConfig) String() string {

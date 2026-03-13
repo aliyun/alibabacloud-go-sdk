@@ -20,18 +20,21 @@ type iCDNTriggerConfig interface {
 }
 
 type CDNTriggerConfig struct {
+	// The name of the trigger event. For more information, see [CDN events](https://help.aliyun.com/document_detail/2513636.html).
+	//
 	// example:
 	//
 	// CdnDomainStarted
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
+	// The version of the trigger event. Only the 1.0.0 event version is supported.
+	//
 	// example:
 	//
 	// 1.0.0
-	EventVersion *string              `json:"eventVersion,omitempty" xml:"eventVersion,omitempty"`
-	Filter       map[string][]*string `json:"filter" xml:"filter"`
-	// example:
-	//
-	// 缓存事件触发器
+	EventVersion *string `json:"eventVersion,omitempty" xml:"eventVersion,omitempty"`
+	// The details of the event filtering rules.
+	Filter map[string][]*string `json:"filter" xml:"filter"`
+	// The description of the trigger.
 	Notes *string `json:"notes,omitempty" xml:"notes,omitempty"`
 }
 

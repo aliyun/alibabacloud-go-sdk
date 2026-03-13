@@ -20,10 +20,19 @@ type iCookieSessionAffinityConfig interface {
 }
 
 type CookieSessionAffinityConfig struct {
-	DisableSessionIdReuse         *bool  `json:"disableSessionIdReuse,omitempty" xml:"disableSessionIdReuse,omitempty"`
+	DisableSessionIdReuse *bool `json:"disableSessionIdReuse,omitempty" xml:"disableSessionIdReuse,omitempty"`
+	// example:
+	//
+	// 20
 	SessionConcurrencyPerInstance *int64 `json:"sessionConcurrencyPerInstance,omitempty" xml:"sessionConcurrencyPerInstance,omitempty"`
-	SessionIdleTimeoutInSeconds   *int64 `json:"sessionIdleTimeoutInSeconds,omitempty" xml:"sessionIdleTimeoutInSeconds,omitempty"`
-	SessionTTLInSeconds           *int64 `json:"sessionTTLInSeconds,omitempty" xml:"sessionTTLInSeconds,omitempty"`
+	// example:
+	//
+	// 1800
+	SessionIdleTimeoutInSeconds *int64 `json:"sessionIdleTimeoutInSeconds,omitempty" xml:"sessionIdleTimeoutInSeconds,omitempty"`
+	// example:
+	//
+	// 21600
+	SessionTTLInSeconds *int64 `json:"sessionTTLInSeconds,omitempty" xml:"sessionTTLInSeconds,omitempty"`
 }
 
 func (s CookieSessionAffinityConfig) String() string {

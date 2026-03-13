@@ -14,11 +14,13 @@ type iCreateVpcBindingInput interface {
 }
 
 type CreateVpcBindingInput struct {
+	// The ID of the VPC.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// vpc-8vb8x8dggvr0axxxxxxxx
+	// vpc-8vb8x8dggvr0a****
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 

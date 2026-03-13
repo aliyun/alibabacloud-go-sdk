@@ -16,7 +16,10 @@ type iListAsyncInvokeConfigOutput interface {
 }
 
 type ListAsyncInvokeConfigOutput struct {
+	// The configurations of the asynchronous invocation.
 	Configs []*AsyncConfig `json:"configs" xml:"configs" type:"Repeated"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// 8bj81uI8n****

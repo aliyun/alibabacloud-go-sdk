@@ -14,6 +14,7 @@ type iEventSinkConfig interface {
 }
 
 type EventSinkConfig struct {
+  // The event push configurations.
   DeliveryOption *DeliveryOption `json:"deliveryOption,omitempty" xml:"deliveryOption,omitempty"`
 }
 

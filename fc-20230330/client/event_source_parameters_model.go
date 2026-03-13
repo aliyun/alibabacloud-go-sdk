@@ -24,11 +24,17 @@ type iEventSourceParameters interface {
 }
 
 type EventSourceParameters struct {
+  // The custom configurations when the event source is Data Transmission Service (DTS).
   SourceDTSParameters *SourceDTSParameters `json:"sourceDTSParameters,omitempty" xml:"sourceDTSParameters,omitempty"`
+  // The custom configurations when the event source is ApsaraMQ for Kafka.
   SourceKafkaParameters *SourceKafkaParameters `json:"sourceKafkaParameters,omitempty" xml:"sourceKafkaParameters,omitempty"`
+  // The custom configurations when the event source is Simple Message Queue (formerly MNS).
   SourceMNSParameters *SourceMNSParameters `json:"sourceMNSParameters,omitempty" xml:"sourceMNSParameters,omitempty"`
+  // The custom configurations when the event source is ApsaraMQ for MQTT.
   SourceMQTTParameters *SourceMQTTParameters `json:"sourceMQTTParameters,omitempty" xml:"sourceMQTTParameters,omitempty"`
+  // The custom configurations when the event source is ApsaraMQ for RabbitMQ.
   SourceRabbitMQParameters *SourceRabbitMQParameters `json:"sourceRabbitMQParameters,omitempty" xml:"sourceRabbitMQParameters,omitempty"`
+  // The custom configurations when the event source is ApsaraMQ for RocketMQ.
   SourceRocketMQParameters *SourceRocketMQParameters `json:"sourceRocketMQParameters,omitempty" xml:"sourceRocketMQParameters,omitempty"`
 }
 

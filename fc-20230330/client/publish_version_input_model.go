@@ -14,6 +14,8 @@ type iPublishVersionInput interface {
 }
 
 type PublishVersionInput struct {
+	// The description of the layer version.
+	//
 	// example:
 	//
 	// my version

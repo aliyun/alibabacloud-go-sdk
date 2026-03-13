@@ -22,20 +22,33 @@ type iHTTPTriggerConfig interface {
 }
 
 type HTTPTriggerConfig struct {
+	// The authentication configurations.
+	//
 	// example:
 	//
 	// {"JWKS":{"foo":"bar"},"TokenLookup":"header:Authorization:Bearer,cookie:AuthorizationCookie","ClaimPassBy":"query:uid:uid,header:name:name"}
 	AuthConfig *string `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
+	// The authentication type. Valid values:
+	//
+	// 	- **function**: requires authentication.
+	//
+	// 	- **anonymous**: does not require authentication.
+	//
+	// >  The default value is **function**
+	//
 	// example:
 	//
 	// anonymous
 	AuthType   *string     `json:"authType,omitempty" xml:"authType,omitempty"`
 	CorsConfig *CORSConfig `json:"corsConfig,omitempty" xml:"corsConfig,omitempty"`
+	// Specifies whether to disable access to the default Internet domain. If you set this parameter to true, a 403 error is returned if you access the default public URL provided by the function. A value of false does not have affect the running of the function.
+	//
 	// example:
 	//
 	// true
-	DisableURLInternet *bool     `json:"disableURLInternet,omitempty" xml:"disableURLInternet,omitempty"`
-	Methods            []*string `json:"methods" xml:"methods" type:"Repeated"`
+	DisableURLInternet *bool `json:"disableURLInternet,omitempty" xml:"disableURLInternet,omitempty"`
+	// The list of request methods. Multiple methods are supported.
+	Methods []*string `json:"methods" xml:"methods" type:"Repeated"`
 }
 
 func (s HTTPTriggerConfig) String() string {

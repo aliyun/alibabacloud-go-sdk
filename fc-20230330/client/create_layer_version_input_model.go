@@ -20,12 +20,18 @@ type iCreateLayerVersionInput interface {
 }
 
 type CreateLayerVersionInput struct {
-	Code              *InputCodeLocation `json:"code,omitempty" xml:"code,omitempty"`
-	CompatibleRuntime []*string          `json:"compatibleRuntime" xml:"compatibleRuntime" type:"Repeated"`
+	// The code information of the layer.
+	Code *InputCodeLocation `json:"code,omitempty" xml:"code,omitempty"`
+	// The runtimes that are supported by the layer.
+	CompatibleRuntime []*string `json:"compatibleRuntime" xml:"compatibleRuntime" type:"Repeated"`
+	// The description of the layer version.
+	//
 	// example:
 	//
 	// my first layer
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The license agreement for the layer.
+	//
 	// example:
 	//
 	// Apache

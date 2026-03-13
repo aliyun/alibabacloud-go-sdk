@@ -22,23 +22,31 @@ type iPathConfig interface {
 }
 
 type PathConfig struct {
+	// The name of the function.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// myFunction
-	FunctionName *string   `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	Methods      []*string `json:"methods" xml:"methods" type:"Repeated"`
+	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	// The supported methods.
+	Methods []*string `json:"methods" xml:"methods" type:"Repeated"`
+	// The route matching rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /api/*
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// The version or alias.
+	//
 	// example:
 	//
 	// myAlias
-	Qualifier     *string        `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	// The rewrite configuration.
 	RewriteConfig *RewriteConfig `json:"rewriteConfig,omitempty" xml:"rewriteConfig,omitempty"`
 }
 

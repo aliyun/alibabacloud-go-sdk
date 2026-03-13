@@ -24,23 +24,34 @@ type iAlias interface {
 }
 
 type Alias struct {
+	// The weight of the canary release version.
 	AdditionalVersionWeight map[string]*float32 `json:"additionalVersionWeight" xml:"additionalVersionWeight"`
+	// The name of the alias.
+	//
 	// example:
 	//
 	// prod
 	AliasName *string `json:"aliasName,omitempty" xml:"aliasName,omitempty"`
+	// The time when the alias was created.
+	//
 	// example:
 	//
 	// 2006-01-02T15:04:05Z07:00
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	// The description of the alias.
+	//
 	// example:
 	//
 	// alias for pre env
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The time when the alias was modified.
+	//
 	// example:
 	//
 	// 2006-01-02T15:04:05Z07:00
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// The version to which the alias points.
+	//
 	// example:
 	//
 	// 1

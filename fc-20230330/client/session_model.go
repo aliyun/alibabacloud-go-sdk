@@ -40,46 +40,67 @@ type iSession interface {
 }
 
 type Session struct {
+	// The ID of the function instance associated with the session.
+	//
 	// example:
 	//
 	// c-68999e02-16a1955c-d2a03d1ccs
 	ContainerId *string `json:"containerId,omitempty" xml:"containerId,omitempty"`
+	// The time when the session was created.
+	//
 	// example:
 	//
 	// 2025-04-01T08:15:27Z
 	CreatedTime           *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	DisableSessionIdReuse *bool   `json:"disableSessionIdReuse,omitempty" xml:"disableSessionIdReuse,omitempty"`
+	// The name of the function to which the session belongs.
+	//
 	// example:
 	//
 	// functionName1
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	// The time when the session was last updated.
+	//
 	// example:
 	//
 	// 2025-04-01T18:15:27Z
-	LastModifiedTime *string         `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	NasConfig        *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	OssMountConfig   *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
-	PolarFsConfig    *PolarFsConfig  `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
+	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// The File Storage NAS (NAS) configuration. Once configured, the instance associated with the session can access designated NAS resources.
+	NasConfig      *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	PolarFsConfig  *PolarFsConfig  `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
+	// The qualifier specified when creating a session. If not provided, the default value is LATEST.
+	//
 	// example:
 	//
 	// AliasName1
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	// The session affinity type.
+	//
 	// example:
 	//
 	// HEADER_FIELD
 	SessionAffinityType *string `json:"sessionAffinityType,omitempty" xml:"sessionAffinityType,omitempty"`
+	// The unique identifier of the function session.
+	//
 	// example:
 	//
 	// 81f70ae156904eb9b7d43e12f511fe58
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// The timeout period for idle sessions.
+	//
 	// example:
 	//
 	// 1800
 	SessionIdleTimeoutInSeconds *int64 `json:"sessionIdleTimeoutInSeconds,omitempty" xml:"sessionIdleTimeoutInSeconds,omitempty"`
+	// The session status, which can be either Active (session is valid) or Expired (session has expired).
+	//
 	// example:
 	//
 	// Active
 	SessionStatus *string `json:"sessionStatus,omitempty" xml:"sessionStatus,omitempty"`
+	// The maximum session lifecycle.
+	//
 	// example:
 	//
 	// 21600

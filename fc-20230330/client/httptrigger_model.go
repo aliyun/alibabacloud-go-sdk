@@ -16,10 +16,14 @@ type iHTTPTrigger interface {
 }
 
 type HTTPTrigger struct {
+	// The public domain address. You can access HTTP triggers over the Internet by using HTTP or HTTPS.
+	//
 	// example:
 	//
 	// https://svc-func-xxxxxxxx.cn-hangzhou.fcapp.run
 	UrlInternet *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
+	// The private endpoint. In a VPC, you can access HTTP triggers by using HTTP or HTTPS.
+	//
 	// example:
 	//
 	// https://svc-func-xxxxxxxx.cn-hangzhou-vpc.fcapp.run

@@ -14,6 +14,12 @@ type iRetryStrategy interface {
 }
 
 type RetryStrategy struct {
+	// The retry policy. Valid values:
+	//
+	// 	- **BACKOFF_RETRY**: retries with a fixed backoff interval.
+	//
+	// 	- **EXPONENTIAL_DECAY_RETRY**: retries with exponential backoff.
+	//
 	// example:
 	//
 	// BACKOFF_RETRY

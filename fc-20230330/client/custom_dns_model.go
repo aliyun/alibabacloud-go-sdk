@@ -18,9 +18,12 @@ type iCustomDNS interface {
 }
 
 type CustomDNS struct {
-	DnsOptions  []*DNSOption `json:"dnsOptions" xml:"dnsOptions" type:"Repeated"`
-	NameServers []*string    `json:"nameServers" xml:"nameServers" type:"Repeated"`
-	Searches    []*string    `json:"searches" xml:"searches" type:"Repeated"`
+	// The DNS resolution configurations in the resolv.conf file. Each item corresponds to a key-value pair in the key:value format, in which the key is required.
+	DnsOptions []*DNSOption `json:"dnsOptions" xml:"dnsOptions" type:"Repeated"`
+	// The IP addresses of the DNS server.
+	NameServers []*string `json:"nameServers" xml:"nameServers" type:"Repeated"`
+	// The search domains of DNS server.
+	Searches []*string `json:"searches" xml:"searches" type:"Repeated"`
 }
 
 func (s CustomDNS) String() string {

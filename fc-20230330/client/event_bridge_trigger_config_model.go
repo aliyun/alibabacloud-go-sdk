@@ -24,14 +24,38 @@ type iEventBridgeTriggerConfig interface {
 }
 
 type EventBridgeTriggerConfig struct {
+  // Whether to invoke the function in asynchronous mode. Valid values:
+  // 
+  // 	- **true**
+  // 
+  // 	- **false**
+  // 
+  // >  The default value is **false**.
+  // 
+  // example:
+  // 
+  // true
   AsyncInvocationType *bool `json:"asyncInvocationType,omitempty" xml:"asyncInvocationType,omitempty"`
+  // The event pattern. The value is in the JSON format. For more information, see [Event patterns](https://help.aliyun.com/document_detail/181432.html).
+  // 
   // example:
   // 
   // {}
   EventRuleFilterPattern *string `json:"eventRuleFilterPattern,omitempty" xml:"eventRuleFilterPattern,omitempty"`
+  // The event destination configurations.
   EventSinkConfig *EventSinkConfig `json:"eventSinkConfig,omitempty" xml:"eventSinkConfig,omitempty"`
+  // The event source configurations.
   EventSourceConfig *EventSourceConfig `json:"eventSourceConfig,omitempty" xml:"eventSourceConfig,omitempty"`
+  // The runtime configurations.
   RunOptions *RunOptions `json:"runOptions,omitempty" xml:"runOptions,omitempty"`
+  // Whether to enable the trigger. Valid values:
+  // 
+  // 	- **true**
+  // 
+  // 	- **false**
+  // 
+  // >  The default value is **true**.
+  // 
   // example:
   // 
   // true

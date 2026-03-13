@@ -14,6 +14,7 @@ type iFilter interface {
 }
 
 type Filter struct {
+	// The description of the event filtering rule.
 	Key *Key `json:"key,omitempty" xml:"key,omitempty"`
 }
 

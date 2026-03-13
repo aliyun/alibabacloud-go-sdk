@@ -20,18 +20,26 @@ type iVersion interface {
 }
 
 type Version struct {
+	// The time when the version was created.
+	//
 	// example:
 	//
 	// 2006-01-02T15:04:05Z07:00
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	// The description of the layer version.
+	//
 	// example:
 	//
 	// my version
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The time when the version was last updated.
+	//
 	// example:
 	//
 	// 2006-01-02T15:04:05Z07:00
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// The version ID.
+	//
 	// example:
 	//
 	// 1

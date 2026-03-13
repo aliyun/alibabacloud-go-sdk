@@ -16,10 +16,14 @@ type iOutputCodeLocation interface {
 }
 
 type OutputCodeLocation struct {
+	// The address of the code package.
+	//
 	// example:
 	//
 	// https://xyz.oss-cn-shanghai.aliyuncs.com/xxx/xxx/xxx
 	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// The type of the code package.
+	//
 	// example:
 	//
 	// OSS

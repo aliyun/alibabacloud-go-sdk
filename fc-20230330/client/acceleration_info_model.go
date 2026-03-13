@@ -14,9 +14,11 @@ type iAccelerationInfo interface {
 }
 
 type AccelerationInfo struct {
+	// The status of image acceleration.
+	//
 	// example:
 	//
-	// deprecated
+	// Ready
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 

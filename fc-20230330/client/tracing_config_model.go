@@ -16,7 +16,10 @@ type iTracingConfig interface {
 }
 
 type TracingConfig struct {
+	// The parameters of Managed Service for OpenTelemetry. Specify the value in the map[string]string format, where the key is "endpoint", and the value is the internal endpoint of Tracing Analysis. Example: endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/otlp/traces.
 	Params map[string]*string `json:"params" xml:"params"`
+	// The type of protocol for Managed Service for OpenTelemetry. Only Jaeger is supported.
+	//
 	// example:
 	//
 	// Jaeger

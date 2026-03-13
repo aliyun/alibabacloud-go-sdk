@@ -22,11 +22,23 @@ type iHeaderFieldSessionAffinityConfig interface {
 }
 
 type HeaderFieldSessionAffinityConfig struct {
-	AffinityHeaderFieldName       *string `json:"affinityHeaderFieldName,omitempty" xml:"affinityHeaderFieldName,omitempty"`
-	DisableSessionIdReuse         *bool   `json:"disableSessionIdReuse,omitempty" xml:"disableSessionIdReuse,omitempty"`
-	SessionConcurrencyPerInstance *int64  `json:"sessionConcurrencyPerInstance,omitempty" xml:"sessionConcurrencyPerInstance,omitempty"`
-	SessionIdleTimeoutInSeconds   *int64  `json:"sessionIdleTimeoutInSeconds,omitempty" xml:"sessionIdleTimeoutInSeconds,omitempty"`
-	SessionTTLInSeconds           *int64  `json:"sessionTTLInSeconds,omitempty" xml:"sessionTTLInSeconds,omitempty"`
+	// example:
+	//
+	// test-session-header1
+	AffinityHeaderFieldName *string `json:"affinityHeaderFieldName,omitempty" xml:"affinityHeaderFieldName,omitempty"`
+	DisableSessionIdReuse   *bool   `json:"disableSessionIdReuse,omitempty" xml:"disableSessionIdReuse,omitempty"`
+	// example:
+	//
+	// 20
+	SessionConcurrencyPerInstance *int64 `json:"sessionConcurrencyPerInstance,omitempty" xml:"sessionConcurrencyPerInstance,omitempty"`
+	// example:
+	//
+	// 1800
+	SessionIdleTimeoutInSeconds *int64 `json:"sessionIdleTimeoutInSeconds,omitempty" xml:"sessionIdleTimeoutInSeconds,omitempty"`
+	// example:
+	//
+	// 21600
+	SessionTTLInSeconds *int64 `json:"sessionTTLInSeconds,omitempty" xml:"sessionTTLInSeconds,omitempty"`
 }
 
 func (s HeaderFieldSessionAffinityConfig) String() string {

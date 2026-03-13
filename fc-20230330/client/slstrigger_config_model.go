@@ -22,14 +22,20 @@ type iSLSTriggerConfig interface {
 }
 
 type SLSTriggerConfig struct {
+	// Specifies whether to enable the trigger.
+	//
 	// example:
 	//
 	// true
-	Enable            *bool                `json:"enable,omitempty" xml:"enable,omitempty"`
-	FunctionParameter map[string]*string   `json:"functionParameter" xml:"functionParameter"`
-	JobConfig         *JobConfig           `json:"jobConfig,omitempty" xml:"jobConfig,omitempty"`
-	LogConfig         *SLSTriggerLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	SourceConfig      *SourceConfig        `json:"sourceConfig,omitempty" xml:"sourceConfig,omitempty"`
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The invocation configurations. Simple Log Service passes the configurations into the function as part of the event. The configuration content must be a JSON string.
+	FunctionParameter map[string]*string `json:"functionParameter" xml:"functionParameter"`
+	// The interval at which the trigger reads logs, and the retry configuration upon errors.
+	JobConfig *JobConfig `json:"jobConfig,omitempty" xml:"jobConfig,omitempty"`
+	// The log configurations of the trigger.
+	LogConfig *SLSTriggerLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	// The configurations of the trigger source.
+	SourceConfig *SourceConfig `json:"sourceConfig,omitempty" xml:"sourceConfig,omitempty"`
 }
 
 func (s SLSTriggerConfig) String() string {

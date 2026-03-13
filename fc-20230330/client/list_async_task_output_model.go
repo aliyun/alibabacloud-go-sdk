@@ -16,8 +16,14 @@ type iListAsyncTaskOutput interface {
 }
 
 type ListAsyncTaskOutput struct {
-	NextToken *string      `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	Tasks     []*AsyncTask `json:"tasks" xml:"tasks" type:"Repeated"`
+	// The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
+	// example:
+	//
+	// MTIzNCNhYmM=
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The asynchronous tasks.
+	Tasks []*AsyncTask `json:"tasks" xml:"tasks" type:"Repeated"`
 }
 
 func (s ListAsyncTaskOutput) String() string {

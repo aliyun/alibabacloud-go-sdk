@@ -16,7 +16,10 @@ type iRegistryCertConfig interface {
 }
 
 type RegistryCertConfig struct {
+	// Whether to skip certificate verification.
 	Insecure *bool `json:"insecure,omitempty" xml:"insecure,omitempty"`
+	// The certificate authority (CA) certificate of the image repository.
+	//
 	// example:
 	//
 	// cm9vdF9jYV9jZXJ0

@@ -18,11 +18,19 @@ type iListTagResourcesOutput interface {
 }
 
 type ListTagResourcesOutput struct {
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// next_token
-	NextToken    *string        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// xxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the queried resources and tags.
 	TagResources []*TagResource `json:"TagResources" xml:"TagResources" type:"Repeated"`
 }
 

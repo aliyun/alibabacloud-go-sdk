@@ -16,11 +16,14 @@ type iListSessionsOutput interface {
 }
 
 type ListSessionsOutput struct {
+	// The starting position for the next session list query.
+	//
 	// example:
 	//
 	// MTIzNCNhYmM=
-	NextToken *string    `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	Sessions  []*Session `json:"sessions" xml:"sessions" type:"Repeated"`
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The list of sessions.
+	Sessions []*Session `json:"sessions" xml:"sessions" type:"Repeated"`
 }
 
 func (s ListSessionsOutput) String() string {

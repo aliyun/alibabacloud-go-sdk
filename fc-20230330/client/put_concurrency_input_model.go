@@ -14,6 +14,8 @@ type iPutConcurrencyInput interface {
 }
 
 type PutConcurrencyInput struct {
+	// The reserved concurrency of the function. Other functions cannot use the concurrency. The reserved concurrency includes the total concurrency of provisioned instances and on-demand instances.
+	//
 	// This parameter is required.
 	//
 	// example:

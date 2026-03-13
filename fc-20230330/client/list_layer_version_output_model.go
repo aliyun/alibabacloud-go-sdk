@@ -16,7 +16,10 @@ type iListLayerVersionOutput interface {
 }
 
 type ListLayerVersionOutput struct {
+	// The list of layer versions.
 	Layers []*Layer `json:"layers" xml:"layers" type:"Repeated"`
+	// The next version, which is used to return more results.
+	//
 	// example:
 	//
 	// 10

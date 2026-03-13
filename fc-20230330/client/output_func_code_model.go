@@ -16,10 +16,14 @@ type iOutputFuncCode interface {
 }
 
 type OutputFuncCode struct {
+	// The CRC-64 value of the function code package.
+	//
 	// example:
 	//
 	// 1234567890
 	Checksum *string `json:"checksum,omitempty" xml:"checksum,omitempty"`
+	// The URL of the function code package.
+	//
 	// example:
 	//
 	// http://func-code.oss-cn-shanghai.aliyuncs.com/1a2b3c4d5e6f

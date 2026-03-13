@@ -18,11 +18,20 @@ type iNASMountConfig interface {
 }
 
 type NASMountConfig struct {
+	// Specifies whether to use the Transport Layer Security (TLS) protocol to secure data transmission. Note: Only General-purpose NAS supports transmission encryption.
+	//
+	// example:
+	//
+	// true
 	EnableTLS *bool `json:"enableTLS,omitempty" xml:"enableTLS,omitempty"`
+	// The local mount directory.
+	//
 	// example:
 	//
 	// /home/test
 	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	// The address of a NAS server.
+	//
 	// example:
 	//
 	// ***-uni85.cn-hangzhou.nas.com:/

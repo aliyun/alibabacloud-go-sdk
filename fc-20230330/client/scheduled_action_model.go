@@ -24,32 +24,44 @@ type iScheduledAction interface {
 }
 
 type ScheduledAction struct {
+	// The time when the policy expires.
+	//
 	// example:
 	//
-	// 2024-03-10T10:10:10
+	// 2024-03-10T10:10:10Z
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The policy name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The schedule expression.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cron(0 0 22 	- 	- *)
 	ScheduleExpression *string `json:"scheduleExpression,omitempty" xml:"scheduleExpression,omitempty"`
+	// The time when the policy takes effect.
+	//
 	// example:
 	//
-	// 2023-03-10T10:10:10
+	// 2023-03-10T10:10:10Z
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The number of target provisioned instances.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 50
 	Target *int64 `json:"target,omitempty" xml:"target,omitempty"`
+	// The time zone. If the time zone parameter is empty, the value of startTime, endTime, and scheduleExpression must be in UTC format.
+	//
 	// example:
 	//
 	// Asia/Shanghai

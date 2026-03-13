@@ -127,7 +127,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// 创建函数别名。
+// Creates an alias.
 //
 // @param request - CreateAliasRequest
 //
@@ -169,7 +169,7 @@ func (client *Client) CreateAliasWithOptions(functionName *string, request *Crea
 
 // Summary:
 //
-// 创建函数别名。
+// Creates an alias.
 //
 // @param request - CreateAliasRequest
 //
@@ -326,7 +326,7 @@ func (client *Client) CreateFunction(request *CreateFunctionRequest) (_result *C
 
 // Summary:
 //
-// 创建层版本。
+// Releases a layer version.
 //
 // @param request - CreateLayerVersionRequest
 //
@@ -368,7 +368,7 @@ func (client *Client) CreateLayerVersionWithOptions(layerName *string, request *
 
 // Summary:
 //
-// 创建层版本。
+// Releases a layer version.
 //
 // @param request - CreateLayerVersionRequest
 //
@@ -454,7 +454,7 @@ func (client *Client) CreateSession(functionName *string, request *CreateSession
 
 // Summary:
 //
-// 创建函数触发器。
+// Creates a trigger.
 //
 // @param request - CreateTriggerRequest
 //
@@ -496,7 +496,7 @@ func (client *Client) CreateTriggerWithOptions(functionName *string, request *Cr
 
 // Summary:
 //
-// 创建函数触发器。
+// Creates a trigger.
 //
 // @param request - CreateTriggerRequest
 //
@@ -842,7 +842,7 @@ func (client *Client) DeleteFunction(functionName *string) (_result *DeleteFunct
 
 // Summary:
 //
-// http://pre.hhht/#vpc
+// Deletes a function version.
 //
 // @param headers - map
 //
@@ -875,7 +875,7 @@ func (client *Client) DeleteFunctionVersionWithOptions(functionName *string, ver
 
 // Summary:
 //
-// http://pre.hhht/#vpc
+// Deletes a function version.
 //
 // @return DeleteFunctionVersionResponse
 func (client *Client) DeleteFunctionVersion(functionName *string, versionId *string) (_result *DeleteFunctionVersionResponse, _err error) {
@@ -2544,7 +2544,7 @@ func (client *Client) ListAsyncTasks(functionName *string, request *ListAsyncTas
 
 // Summary:
 //
-// 列出函数并发度配置。
+// Queries a list of concurrency configurations.
 //
 // @param request - ListConcurrencyConfigsRequest
 //
@@ -2599,7 +2599,7 @@ func (client *Client) ListConcurrencyConfigsWithOptions(request *ListConcurrency
 
 // Summary:
 //
-// 列出函数并发度配置。
+// Queries a list of concurrency configurations.
 //
 // @param request - ListConcurrencyConfigsRequest
 //
@@ -2766,7 +2766,7 @@ func (client *Client) ListFunctionVersions(functionName *string, request *ListFu
 
 // Summary:
 //
-// 列出函数。
+// Queries a list of functions.
 //
 // Description:
 //
@@ -2859,7 +2859,7 @@ func (client *Client) ListFunctionsWithOptions(tmpReq *ListFunctionsRequest, hea
 
 // Summary:
 //
-// 列出函数。
+// Queries a list of functions.
 //
 // Description:
 //
@@ -3584,6 +3584,72 @@ func (client *Client) ListVpcBindings(functionName *string) (_result *ListVpcBin
 
 // Summary:
 //
+// 暂停/保存会话
+//
+// @param request - PauseSessionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PauseSessionResponse
+func (client *Client) PauseSessionWithOptions(functionName *string, sessionId *string, request *PauseSessionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PauseSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Qualifier) {
+		query["qualifier"] = request.Qualifier
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PauseSession"),
+		Version:     dara.String("2023-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2023-03-30/functions/" + dara.PercentEncode(dara.StringValue(functionName)) + "/sessions/" + dara.PercentEncode(dara.StringValue(sessionId)) + "/pause"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PauseSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 暂停/保存会话
+//
+// @param request - PauseSessionRequest
+//
+// @return PauseSessionResponse
+func (client *Client) PauseSession(functionName *string, sessionId *string, request *PauseSessionRequest) (_result *PauseSessionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PauseSessionResponse{}
+	_body, _err := client.PauseSessionWithOptions(functionName, sessionId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Publishes a function version.
 //
 // @param request - PublishFunctionVersionRequest
@@ -3968,6 +4034,72 @@ func (client *Client) PutScalingConfig(functionName *string, request *PutScaling
 	headers := make(map[string]*string)
 	_result = &PutScalingConfigResponse{}
 	_body, _err := client.PutScalingConfigWithOptions(functionName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 恢复会话
+//
+// @param request - ResumeSessionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResumeSessionResponse
+func (client *Client) ResumeSessionWithOptions(functionName *string, sessionId *string, request *ResumeSessionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ResumeSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Qualifier) {
+		query["qualifier"] = request.Qualifier
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResumeSession"),
+		Version:     dara.String("2023-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2023-03-30/functions/" + dara.PercentEncode(dara.StringValue(functionName)) + "/sessions/" + dara.PercentEncode(dara.StringValue(sessionId)) + "/resume"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResumeSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 恢复会话
+//
+// @param request - ResumeSessionRequest
+//
+// @return ResumeSessionResponse
+func (client *Client) ResumeSession(functionName *string, sessionId *string, request *ResumeSessionRequest) (_result *ResumeSessionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ResumeSessionResponse{}
+	_body, _err := client.ResumeSessionWithOptions(functionName, sessionId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

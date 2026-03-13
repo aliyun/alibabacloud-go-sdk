@@ -14,6 +14,7 @@ type iDeadLetterQueue interface {
 }
 
 type DeadLetterQueue struct {
+	// The Alibaba Cloud Resource Name (ARN) of the dead-letter queue.
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 }
 

@@ -18,12 +18,18 @@ type iTagResourcesInput interface {
 }
 
 type TagResourcesInput struct {
+	// The resource IDs.
+	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId" xml:"ResourceId" type:"Repeated"`
+	// The type of the resource.
+	//
 	// example:
 	//
 	// FUNCTION
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags.
+	//
 	// This parameter is required.
 	Tag []*Tag `json:"Tag" xml:"Tag" type:"Repeated"`
 }
