@@ -392,18 +392,24 @@ func (client *Client) AsyncCreateClipsTask(request *AsyncCreateClipsTaskRequest)
 //
 // 智能剪辑timeline
 //
-// @param request - AsyncCreateClipsTimeLineRequest
+// @param tmpReq - AsyncCreateClipsTimeLineRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AsyncCreateClipsTimeLineResponse
-func (client *Client) AsyncCreateClipsTimeLineWithOptions(request *AsyncCreateClipsTimeLineRequest, runtime *dara.RuntimeOptions) (_result *AsyncCreateClipsTimeLineResponse, _err error) {
+func (client *Client) AsyncCreateClipsTimeLineWithOptions(tmpReq *AsyncCreateClipsTimeLineRequest, runtime *dara.RuntimeOptions) (_result *AsyncCreateClipsTimeLineResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &AsyncCreateClipsTimeLineShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.HighLightConfig) {
+		request.HighLightConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HighLightConfig, dara.String("HighLightConfig"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AdditionalContent) {
 		body["AdditionalContent"] = request.AdditionalContent
@@ -411,6 +417,10 @@ func (client *Client) AsyncCreateClipsTimeLineWithOptions(request *AsyncCreateCl
 
 	if !dara.IsNil(request.CustomContent) {
 		body["CustomContent"] = request.CustomContent
+	}
+
+	if !dara.IsNil(request.HighLightConfigShrink) {
+		body["HighLightConfig"] = request.HighLightConfigShrink
 	}
 
 	if !dara.IsNil(request.NoRefVideo) {
@@ -421,8 +431,16 @@ func (client *Client) AsyncCreateClipsTimeLineWithOptions(request *AsyncCreateCl
 		body["ProcessPrompt"] = request.ProcessPrompt
 	}
 
+	if !dara.IsNil(request.RecommendAudio) {
+		body["RecommendAudio"] = request.RecommendAudio
+	}
+
 	if !dara.IsNil(request.TaskId) {
 		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TimelineScene) {
+		body["TimelineScene"] = request.TimelineScene
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {

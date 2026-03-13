@@ -89,7 +89,10 @@ type RunBookIntroductionResponseBodyHeader struct {
 	// example:
 	//
 	// finished
-	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// 模型生成事件
 	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
 	// example:
 	//
@@ -226,8 +229,15 @@ func (s *RunBookIntroductionResponseBodyPayload) Validate() error {
 }
 
 type RunBookIntroductionResponseBodyPayloadOutput struct {
+	Introductions []*RunBookIntroductionResponseBodyPayloadOutputIntroductions `json:"Introductions,omitempty" xml:"Introductions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 卖点内容
 	KeyPoint *string `json:"KeyPoint,omitempty" xml:"KeyPoint,omitempty"`
-	Summary  *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// 简介内容
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 }
 
 func (s RunBookIntroductionResponseBodyPayloadOutput) String() string {
@@ -238,12 +248,21 @@ func (s RunBookIntroductionResponseBodyPayloadOutput) GoString() string {
 	return s.String()
 }
 
+func (s *RunBookIntroductionResponseBodyPayloadOutput) GetIntroductions() []*RunBookIntroductionResponseBodyPayloadOutputIntroductions {
+	return s.Introductions
+}
+
 func (s *RunBookIntroductionResponseBodyPayloadOutput) GetKeyPoint() *string {
 	return s.KeyPoint
 }
 
 func (s *RunBookIntroductionResponseBodyPayloadOutput) GetSummary() *string {
 	return s.Summary
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadOutput) SetIntroductions(v []*RunBookIntroductionResponseBodyPayloadOutputIntroductions) *RunBookIntroductionResponseBodyPayloadOutput {
+	s.Introductions = v
+	return s
 }
 
 func (s *RunBookIntroductionResponseBodyPayloadOutput) SetKeyPoint(v string) *RunBookIntroductionResponseBodyPayloadOutput {
@@ -257,6 +276,56 @@ func (s *RunBookIntroductionResponseBodyPayloadOutput) SetSummary(v string) *Run
 }
 
 func (s *RunBookIntroductionResponseBodyPayloadOutput) Validate() error {
+	if s.Introductions != nil {
+		for _, item := range s.Introductions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type RunBookIntroductionResponseBodyPayloadOutputIntroductions struct {
+	// example:
+	//
+	// 本段摘要内容
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// 本段标题内容
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s RunBookIntroductionResponseBodyPayloadOutputIntroductions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunBookIntroductionResponseBodyPayloadOutputIntroductions) GoString() string {
+	return s.String()
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductions) GetSummary() *string {
+	return s.Summary
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductions) GetTitle() *string {
+	return s.Title
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductions) SetSummary(v string) *RunBookIntroductionResponseBodyPayloadOutputIntroductions {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductions) SetTitle(v string) *RunBookIntroductionResponseBodyPayloadOutputIntroductions {
+	s.Title = &v
+	return s
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductions) Validate() error {
 	return dara.Validate(s)
 }
 
