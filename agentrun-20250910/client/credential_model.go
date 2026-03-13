@@ -17,8 +17,8 @@ type iCredential interface {
 	GetCredentialId() *string
 	SetCredentialName(v string) *Credential
 	GetCredentialName() *string
-	SetCredentialPublicConfig(v map[string]*string) *Credential
-	GetCredentialPublicConfig() map[string]*string
+	SetCredentialPublicConfig(v *CredentialPublicConfig) *Credential
+	GetCredentialPublicConfig() *CredentialPublicConfig
 	SetCredentialSecret(v string) *Credential
 	GetCredentialSecret() *string
 	SetCredentialSourceType(v string) *Credential
@@ -34,17 +34,17 @@ type iCredential interface {
 }
 
 type Credential struct {
-	CreatedAt              *string            `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CredentialAuthType     *string            `json:"credentialAuthType,omitempty" xml:"credentialAuthType,omitempty"`
-	CredentialId           *string            `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
-	CredentialName         *string            `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
-	CredentialPublicConfig map[string]*string `json:"credentialPublicConfig,omitempty" xml:"credentialPublicConfig,omitempty"`
-	CredentialSecret       *string            `json:"credentialSecret,omitempty" xml:"credentialSecret,omitempty"`
-	CredentialSourceType   *string            `json:"credentialSourceType,omitempty" xml:"credentialSourceType,omitempty"`
-	Description            *string            `json:"description,omitempty" xml:"description,omitempty"`
-	Enabled                *bool              `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	RelatedResources       []*RelatedResource `json:"relatedResources,omitempty" xml:"relatedResources,omitempty" type:"Repeated"`
-	UpdatedAt              *string            `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	CreatedAt              *string                 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	CredentialAuthType     *string                 `json:"credentialAuthType,omitempty" xml:"credentialAuthType,omitempty"`
+	CredentialId           *string                 `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
+	CredentialName         *string                 `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
+	CredentialPublicConfig *CredentialPublicConfig `json:"credentialPublicConfig,omitempty" xml:"credentialPublicConfig,omitempty"`
+	CredentialSecret       *string                 `json:"credentialSecret,omitempty" xml:"credentialSecret,omitempty"`
+	CredentialSourceType   *string                 `json:"credentialSourceType,omitempty" xml:"credentialSourceType,omitempty"`
+	Description            *string                 `json:"description,omitempty" xml:"description,omitempty"`
+	Enabled                *bool                   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	RelatedResources       []*RelatedResource      `json:"relatedResources,omitempty" xml:"relatedResources,omitempty" type:"Repeated"`
+	UpdatedAt              *string                 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
 }
 
 func (s Credential) String() string {
@@ -71,7 +71,7 @@ func (s *Credential) GetCredentialName() *string {
 	return s.CredentialName
 }
 
-func (s *Credential) GetCredentialPublicConfig() map[string]*string {
+func (s *Credential) GetCredentialPublicConfig() *CredentialPublicConfig {
 	return s.CredentialPublicConfig
 }
 
@@ -119,7 +119,7 @@ func (s *Credential) SetCredentialName(v string) *Credential {
 	return s
 }
 
-func (s *Credential) SetCredentialPublicConfig(v map[string]*string) *Credential {
+func (s *Credential) SetCredentialPublicConfig(v *CredentialPublicConfig) *Credential {
 	s.CredentialPublicConfig = v
 	return s
 }
@@ -155,6 +155,11 @@ func (s *Credential) SetUpdatedAt(v string) *Credential {
 }
 
 func (s *Credential) Validate() error {
+	if s.CredentialPublicConfig != nil {
+		if err := s.CredentialPublicConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.RelatedResources != nil {
 		for _, item := range s.RelatedResources {
 			if item != nil {

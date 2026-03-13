@@ -19,6 +19,8 @@ type iCredentialListItem interface {
 	GetCredentialName() *string
 	SetCredentialSourceType(v string) *CredentialListItem
 	GetCredentialSourceType() *string
+	SetDescription(v string) *CredentialListItem
+	GetDescription() *string
 	SetEnabled(v bool) *CredentialListItem
 	GetEnabled() *bool
 	SetRelatedResourceCount(v int32) *CredentialListItem
@@ -33,6 +35,7 @@ type CredentialListItem struct {
 	CredentialId         *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
 	CredentialName       *string `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
 	CredentialSourceType *string `json:"credentialSourceType,omitempty" xml:"credentialSourceType,omitempty"`
+	Description          *string `json:"description,omitempty" xml:"description,omitempty"`
 	Enabled              *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	RelatedResourceCount *int32  `json:"relatedResourceCount,omitempty" xml:"relatedResourceCount,omitempty"`
 	UpdatedAt            *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
@@ -64,6 +67,10 @@ func (s *CredentialListItem) GetCredentialName() *string {
 
 func (s *CredentialListItem) GetCredentialSourceType() *string {
 	return s.CredentialSourceType
+}
+
+func (s *CredentialListItem) GetDescription() *string {
+	return s.Description
 }
 
 func (s *CredentialListItem) GetEnabled() *bool {
@@ -100,6 +107,11 @@ func (s *CredentialListItem) SetCredentialName(v string) *CredentialListItem {
 
 func (s *CredentialListItem) SetCredentialSourceType(v string) *CredentialListItem {
 	s.CredentialSourceType = &v
+	return s
+}
+
+func (s *CredentialListItem) SetDescription(v string) *CredentialListItem {
+	s.Description = &v
 	return s
 }
 

@@ -15,6 +15,10 @@ type iCredentialPublicConfig interface {
 	GetAuthType() *string
 	SetHeaderKey(v string) *CredentialPublicConfig
 	GetHeaderKey() *string
+	SetJwks(v string) *CredentialPublicConfig
+	GetJwks() *string
+	SetPrefix(v string) *CredentialPublicConfig
+	GetPrefix() *string
 	SetProvider(v string) *CredentialPublicConfig
 	GetProvider() *string
 	SetRemoteConfig(v *CredentialPublicConfigRemoteConfig) *CredentialPublicConfig
@@ -27,6 +31,8 @@ type CredentialPublicConfig struct {
 	AuthConfig   map[string]*string                  `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
 	AuthType     *string                             `json:"authType,omitempty" xml:"authType,omitempty"`
 	HeaderKey    *string                             `json:"headerKey,omitempty" xml:"headerKey,omitempty"`
+	Jwks         *string                             `json:"jwks,omitempty" xml:"jwks,omitempty"`
+	Prefix       *string                             `json:"prefix,omitempty" xml:"prefix,omitempty"`
 	Provider     *string                             `json:"provider,omitempty" xml:"provider,omitempty"`
 	RemoteConfig *CredentialPublicConfigRemoteConfig `json:"remoteConfig,omitempty" xml:"remoteConfig,omitempty" type:"Struct"`
 	Users        []*CredentialPublicConfigUsers      `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
@@ -50,6 +56,14 @@ func (s *CredentialPublicConfig) GetAuthType() *string {
 
 func (s *CredentialPublicConfig) GetHeaderKey() *string {
 	return s.HeaderKey
+}
+
+func (s *CredentialPublicConfig) GetJwks() *string {
+	return s.Jwks
+}
+
+func (s *CredentialPublicConfig) GetPrefix() *string {
+	return s.Prefix
 }
 
 func (s *CredentialPublicConfig) GetProvider() *string {
@@ -76,6 +90,16 @@ func (s *CredentialPublicConfig) SetAuthType(v string) *CredentialPublicConfig {
 
 func (s *CredentialPublicConfig) SetHeaderKey(v string) *CredentialPublicConfig {
 	s.HeaderKey = &v
+	return s
+}
+
+func (s *CredentialPublicConfig) SetJwks(v string) *CredentialPublicConfig {
+	s.Jwks = &v
+	return s
+}
+
+func (s *CredentialPublicConfig) SetPrefix(v string) *CredentialPublicConfig {
+	s.Prefix = &v
 	return s
 }
 
