@@ -111,7 +111,12 @@ func (s *ElectronicItineraryGetApplyResultResponseBody) SetTraceId(v string) *El
 }
 
 func (s *ElectronicItineraryGetApplyResultResponseBody) Validate() error {
-  return dara.Validate(s)
+  if s.Module != nil {
+    if err := s.Module.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type ElectronicItineraryGetApplyResultResponseBodyModule struct {
@@ -146,7 +151,16 @@ func (s *ElectronicItineraryGetApplyResultResponseBodyModule) SetBatchApplyNo(v 
 }
 
 func (s *ElectronicItineraryGetApplyResultResponseBodyModule) Validate() error {
-  return dara.Validate(s)
+  if s.ApplyTicketList != nil {
+    for _, item := range s.ApplyTicketList {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type ElectronicItineraryGetApplyResultResponseBodyModuleApplyTicketList struct {

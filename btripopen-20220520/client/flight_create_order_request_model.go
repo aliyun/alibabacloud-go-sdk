@@ -310,7 +310,21 @@ func (s *FlightCreateOrderRequest) SetTripType(v int32) *FlightCreateOrderReques
 }
 
 func (s *FlightCreateOrderRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ContactInfo != nil {
+		if err := s.ContactInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TravelerInfoList != nil {
+		for _, item := range s.TravelerInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightCreateOrderRequestContactInfo struct {

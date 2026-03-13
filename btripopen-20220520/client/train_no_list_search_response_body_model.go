@@ -110,7 +110,12 @@ func (s *TrainNoListSearchResponseBody) SetTraceId(v string) *TrainNoListSearchR
 }
 
 func (s *TrainNoListSearchResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrainNoListSearchResponseBodyModule struct {
@@ -145,7 +150,25 @@ func (s *TrainNoListSearchResponseBodyModule) SetTrainTransferStationSearchVOs(v
 }
 
 func (s *TrainNoListSearchResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.TrainStationSearchVOS != nil {
+		for _, item := range s.TrainStationSearchVOS {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TrainTransferStationSearchVOs != nil {
+		for _, item := range s.TrainTransferStationSearchVOs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainNoListSearchResponseBodyModuleTrainStationSearchVOS struct {
@@ -369,7 +392,16 @@ func (s *TrainNoListSearchResponseBodyModuleTrainStationSearchVOS) SetTrainType(
 }
 
 func (s *TrainNoListSearchResponseBodyModuleTrainStationSearchVOS) Validate() error {
-	return dara.Validate(s)
+	if s.SeatInfos != nil {
+		for _, item := range s.SeatInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainNoListSearchResponseBodyModuleTrainStationSearchVOSSeatInfos struct {
@@ -508,7 +540,16 @@ func (s *TrainNoListSearchResponseBodyModuleTrainTransferStationSearchVOs) SetTr
 }
 
 func (s *TrainNoListSearchResponseBodyModuleTrainTransferStationSearchVOs) Validate() error {
-	return dara.Validate(s)
+	if s.TransferDetailList != nil {
+		for _, item := range s.TransferDetailList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainNoListSearchResponseBodyModuleTrainTransferStationSearchVOsTransferDetailList struct {
@@ -732,7 +773,16 @@ func (s *TrainNoListSearchResponseBodyModuleTrainTransferStationSearchVOsTransfe
 }
 
 func (s *TrainNoListSearchResponseBodyModuleTrainTransferStationSearchVOsTransferDetailList) Validate() error {
-	return dara.Validate(s)
+	if s.SeatInfos != nil {
+		for _, item := range s.SeatInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainNoListSearchResponseBodyModuleTrainTransferStationSearchVOsTransferDetailListSeatInfos struct {

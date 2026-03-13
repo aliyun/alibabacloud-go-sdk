@@ -189,7 +189,16 @@ func (s *FlightListingSearchV2Request) SetTripType(v int32) *FlightListingSearch
 }
 
 func (s *FlightListingSearchV2Request) Validate() error {
-	return dara.Validate(s)
+	if s.SearchJourneys != nil {
+		for _, item := range s.SearchJourneys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightListingSearchV2RequestSearchJourneys struct {
@@ -259,7 +268,16 @@ func (s *FlightListingSearchV2RequestSearchJourneys) SetSelectedFlights(v []*Fli
 }
 
 func (s *FlightListingSearchV2RequestSearchJourneys) Validate() error {
-	return dara.Validate(s)
+	if s.SelectedFlights != nil {
+		for _, item := range s.SelectedFlights {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightListingSearchV2RequestSearchJourneysSelectedFlights struct {

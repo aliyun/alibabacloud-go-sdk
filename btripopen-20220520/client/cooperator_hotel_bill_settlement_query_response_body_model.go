@@ -111,7 +111,12 @@ func (s *CooperatorHotelBillSettlementQueryResponseBody) SetTraceId(v string) *C
 }
 
 func (s *CooperatorHotelBillSettlementQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CooperatorHotelBillSettlementQueryResponseBodyModule struct {
@@ -211,7 +216,16 @@ func (s *CooperatorHotelBillSettlementQueryResponseBodyModule) SetTotalSize(v in
 }
 
 func (s *CooperatorHotelBillSettlementQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CooperatorHotelBillSettlementQueryResponseBodyModuleItems struct {

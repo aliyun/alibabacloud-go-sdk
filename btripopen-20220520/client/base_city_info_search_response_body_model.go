@@ -109,7 +109,16 @@ func (s *BaseCityInfoSearchResponseBody) SetTraceId(v string) *BaseCityInfoSearc
 }
 
 func (s *BaseCityInfoSearchResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		for _, item := range s.Module {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BaseCityInfoSearchResponseBodyModule struct {

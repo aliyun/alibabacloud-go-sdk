@@ -166,7 +166,35 @@ func (s *TrainOrderCreateRequest) SetPassengerOpenInfoS(v []*TrainOrderCreateReq
 }
 
 func (s *TrainOrderCreateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.BookTrainInfos != nil {
+		for _, item := range s.BookTrainInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BusinessInfo != nil {
+		if err := s.BusinessInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ContactInfo != nil {
+		if err := s.ContactInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PassengerOpenInfoS != nil {
+		for _, item := range s.PassengerOpenInfoS {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainOrderCreateRequestBookTrainInfos struct {
@@ -278,7 +306,16 @@ func (s *TrainOrderCreateRequestBookTrainInfos) SetTrainNo(v string) *TrainOrder
 }
 
 func (s *TrainOrderCreateRequestBookTrainInfos) Validate() error {
-	return dara.Validate(s)
+	if s.BookTicketInfos != nil {
+		for _, item := range s.BookTicketInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainOrderCreateRequestBookTrainInfosBookTicketInfos struct {
@@ -578,7 +615,12 @@ func (s *TrainOrderCreateRequestPassengerOpenInfoS) SetValidDateEnd(v string) *T
 }
 
 func (s *TrainOrderCreateRequestPassengerOpenInfoS) Validate() error {
-	return dara.Validate(s)
+	if s.CostCenterInfo != nil {
+		if err := s.CostCenterInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrainOrderCreateRequestPassengerOpenInfoSCostCenterInfo struct {

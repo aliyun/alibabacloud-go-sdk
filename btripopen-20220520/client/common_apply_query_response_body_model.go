@@ -107,7 +107,12 @@ func (s *CommonApplyQueryResponseBody) SetTraceId(v string) *CommonApplyQueryRes
 }
 
 func (s *CommonApplyQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CommonApplyQueryResponseBodyModule struct {
@@ -129,6 +134,7 @@ type CommonApplyQueryResponseBodyModule struct {
 	//
 	// 2021-03-18T20:26Z
 	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	OrderId   *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	// example:
 	//
 	// 0
@@ -179,6 +185,10 @@ func (s *CommonApplyQueryResponseBodyModule) GetExtendValue() *string {
 
 func (s *CommonApplyQueryResponseBodyModule) GetGmtCreate() *string {
 	return s.GmtCreate
+}
+
+func (s *CommonApplyQueryResponseBodyModule) GetOrderId() *int64 {
+	return s.OrderId
 }
 
 func (s *CommonApplyQueryResponseBodyModule) GetStatus() *int32 {
@@ -232,6 +242,11 @@ func (s *CommonApplyQueryResponseBodyModule) SetExtendValue(v string) *CommonApp
 
 func (s *CommonApplyQueryResponseBodyModule) SetGmtCreate(v string) *CommonApplyQueryResponseBodyModule {
 	s.GmtCreate = &v
+	return s
+}
+
+func (s *CommonApplyQueryResponseBodyModule) SetOrderId(v int64) *CommonApplyQueryResponseBodyModule {
+	s.OrderId = &v
 	return s
 }
 

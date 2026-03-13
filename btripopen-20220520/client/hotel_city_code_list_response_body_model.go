@@ -110,7 +110,16 @@ func (s *HotelCityCodeListResponseBody) SetTraceId(v string) *HotelCityCodeListR
 }
 
 func (s *HotelCityCodeListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		for _, item := range s.Module {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelCityCodeListResponseBodyModule struct {
@@ -158,7 +167,16 @@ func (s *HotelCityCodeListResponseBodyModule) SetProvinceName(v string) *HotelCi
 }
 
 func (s *HotelCityCodeListResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.Citys != nil {
+		for _, item := range s.Citys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelCityCodeListResponseBodyModuleCitys struct {
@@ -206,7 +224,16 @@ func (s *HotelCityCodeListResponseBodyModuleCitys) SetDistricts(v []*HotelCityCo
 }
 
 func (s *HotelCityCodeListResponseBodyModuleCitys) Validate() error {
-	return dara.Validate(s)
+	if s.Districts != nil {
+		for _, item := range s.Districts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelCityCodeListResponseBodyModuleCitysDistricts struct {

@@ -59,5 +59,10 @@ func (s *GroupCorpTokenResponse) SetBody(v *GroupCorpTokenResponseBody) *GroupCo
 }
 
 func (s *GroupCorpTokenResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

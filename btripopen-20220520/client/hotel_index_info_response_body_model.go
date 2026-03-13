@@ -110,7 +110,12 @@ func (s *HotelIndexInfoResponseBody) SetTraceId(v string) *HotelIndexInfoRespons
 }
 
 func (s *HotelIndexInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HotelIndexInfoResponseBodyModule struct {
@@ -161,7 +166,16 @@ func (s *HotelIndexInfoResponseBodyModule) SetPageToken(v string) *HotelIndexInf
 }
 
 func (s *HotelIndexInfoResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelIndexInfoResponseBodyModuleItems struct {

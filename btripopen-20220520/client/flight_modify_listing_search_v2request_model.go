@@ -185,7 +185,25 @@ func (s *FlightModifyListingSearchV2Request) SetVoluntary(v bool) *FlightModifyL
 }
 
 func (s *FlightModifyListingSearchV2Request) Validate() error {
-	return dara.Validate(s)
+	if s.PassengerSegmentRelations != nil {
+		for _, item := range s.PassengerSegmentRelations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SelectedSegments != nil {
+		for _, item := range s.SelectedSegments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightModifyListingSearchV2RequestPassengerSegmentRelations struct {

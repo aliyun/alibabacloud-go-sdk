@@ -107,7 +107,12 @@ func (s *InsureRefundDetailResponseBody) SetTraceId(v string) *InsureRefundDetai
 }
 
 func (s *InsureRefundDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InsureRefundDetailResponseBodyModule struct {
@@ -207,7 +212,21 @@ func (s *InsureRefundDetailResponseBodyModule) SetSubOrderRefundList(v []*Insure
 }
 
 func (s *InsureRefundDetailResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.InsureOrder != nil {
+		if err := s.InsureOrder.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubOrderRefundList != nil {
+		for _, item := range s.SubOrderRefundList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InsureRefundDetailResponseBodyModuleInsureOrder struct {
@@ -349,7 +368,12 @@ func (s *InsureRefundDetailResponseBodyModuleInsureOrder) SetStatus(v string) *I
 }
 
 func (s *InsureRefundDetailResponseBodyModuleInsureOrder) Validate() error {
-	return dara.Validate(s)
+	if s.Applicant != nil {
+		if err := s.Applicant.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InsureRefundDetailResponseBodyModuleInsureOrderApplicant struct {
@@ -614,7 +638,17 @@ func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundList) SetSubInsOrderI
 }
 
 func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundList) Validate() error {
-	return dara.Validate(s)
+	if s.InsureSegment != nil {
+		if err := s.InsureSegment.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Insured != nil {
+		if err := s.Insured.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InsureRefundDetailResponseBodyModuleSubOrderRefundListInsureSegment struct {

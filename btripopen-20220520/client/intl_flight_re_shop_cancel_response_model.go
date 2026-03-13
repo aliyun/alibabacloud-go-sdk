@@ -59,5 +59,10 @@ func (s *IntlFlightReShopCancelResponse) SetBody(v *IntlFlightReShopCancelRespon
 }
 
 func (s *IntlFlightReShopCancelResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

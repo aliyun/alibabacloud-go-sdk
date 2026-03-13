@@ -155,7 +155,21 @@ func (s *InsureOrderCreateRequest) SetSupplierCode(v string) *InsureOrderCreateR
 }
 
 func (s *InsureOrderCreateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Applicant != nil {
+		if err := s.Applicant.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InsPersonAndSegmentList != nil {
+		for _, item := range s.InsPersonAndSegmentList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InsureOrderCreateRequestApplicant struct {
@@ -306,7 +320,17 @@ func (s *InsureOrderCreateRequestInsPersonAndSegmentList) SetOutSubInsOrderId(v 
 }
 
 func (s *InsureOrderCreateRequestInsPersonAndSegmentList) Validate() error {
-	return dara.Validate(s)
+	if s.InsureSegment != nil {
+		if err := s.InsureSegment.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Insured != nil {
+		if err := s.Insured.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment struct {

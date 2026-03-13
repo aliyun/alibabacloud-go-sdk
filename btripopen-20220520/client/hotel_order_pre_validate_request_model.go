@@ -23,6 +23,8 @@ type iHotelOrderPreValidateRequest interface {
 	GetNumberOfAdultsPerRoom() *int32
 	SetOccupantInfoList(v []*HotelOrderPreValidateRequestOccupantInfoList) *HotelOrderPreValidateRequest
 	GetOccupantInfoList() []*HotelOrderPreValidateRequestOccupantInfoList
+	SetRateKey(v string) *HotelOrderPreValidateRequest
+	GetRateKey() *string
 	SetRatePlanId(v int64) *HotelOrderPreValidateRequest
 	GetRatePlanId() *int64
 	SetRoomId(v int64) *HotelOrderPreValidateRequest
@@ -69,6 +71,7 @@ type HotelOrderPreValidateRequest struct {
 	// 1
 	NumberOfAdultsPerRoom *int32                                          `json:"number_of_adults_per_room,omitempty" xml:"number_of_adults_per_room,omitempty"`
 	OccupantInfoList      []*HotelOrderPreValidateRequestOccupantInfoList `json:"occupant_info_list,omitempty" xml:"occupant_info_list,omitempty" type:"Repeated"`
+	RateKey               *string                                         `json:"rate_key,omitempty" xml:"rate_key,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -143,6 +146,10 @@ func (s *HotelOrderPreValidateRequest) GetOccupantInfoList() []*HotelOrderPreVal
 	return s.OccupantInfoList
 }
 
+func (s *HotelOrderPreValidateRequest) GetRateKey() *string {
+	return s.RateKey
+}
+
 func (s *HotelOrderPreValidateRequest) GetRatePlanId() *int64 {
 	return s.RatePlanId
 }
@@ -202,6 +209,11 @@ func (s *HotelOrderPreValidateRequest) SetOccupantInfoList(v []*HotelOrderPreVal
 	return s
 }
 
+func (s *HotelOrderPreValidateRequest) SetRateKey(v string) *HotelOrderPreValidateRequest {
+	s.RateKey = &v
+	return s
+}
+
 func (s *HotelOrderPreValidateRequest) SetRatePlanId(v int64) *HotelOrderPreValidateRequest {
 	s.RatePlanId = &v
 	return s
@@ -233,7 +245,25 @@ func (s *HotelOrderPreValidateRequest) SetShid(v int64) *HotelOrderPreValidateRe
 }
 
 func (s *HotelOrderPreValidateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DailyList != nil {
+		for _, item := range s.DailyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OccupantInfoList != nil {
+		for _, item := range s.OccupantInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelOrderPreValidateRequestDailyList struct {

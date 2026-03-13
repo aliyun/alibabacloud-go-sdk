@@ -110,7 +110,12 @@ func (s *TrainOrderDetailQueryResponseBody) SetTraceId(v string) *TrainOrderDeta
 }
 
 func (s *TrainOrderDetailQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrainOrderDetailQueryResponseBodyModule struct {
@@ -201,7 +206,48 @@ func (s *TrainOrderDetailQueryResponseBodyModule) SetRefundInfos(v []*TrainOrder
 }
 
 func (s *TrainOrderDetailQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.BookInfos != nil {
+		if err := s.BookInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ChangeInfos != nil {
+		for _, item := range s.ChangeInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OfflineRefundDetails != nil {
+		for _, item := range s.OfflineRefundDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PassengerInfoS != nil {
+		for _, item := range s.PassengerInfoS {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RefundInfos != nil {
+		for _, item := range s.RefundInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainOrderDetailQueryResponseBodyModuleBookInfos struct {
@@ -288,7 +334,16 @@ func (s *TrainOrderDetailQueryResponseBodyModuleBookInfos) SetTicketNo(v string)
 }
 
 func (s *TrainOrderDetailQueryResponseBodyModuleBookInfos) Validate() error {
-	return dara.Validate(s)
+	if s.BookTrainInfos != nil {
+		for _, item := range s.BookTrainInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainOrderDetailQueryResponseBodyModuleBookInfosBookTrainInfos struct {
@@ -398,7 +453,16 @@ func (s *TrainOrderDetailQueryResponseBodyModuleBookInfosBookTrainInfos) SetTrai
 }
 
 func (s *TrainOrderDetailQueryResponseBodyModuleBookInfosBookTrainInfos) Validate() error {
-	return dara.Validate(s)
+	if s.BookTicketInfos != nil {
+		for _, item := range s.BookTicketInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainOrderDetailQueryResponseBodyModuleBookInfosBookTrainInfosBookTicketInfos struct {
@@ -630,7 +694,16 @@ func (s *TrainOrderDetailQueryResponseBodyModuleChangeInfos) SetStatus(v string)
 }
 
 func (s *TrainOrderDetailQueryResponseBodyModuleChangeInfos) Validate() error {
-	return dara.Validate(s)
+	if s.ChangeTrainInfos != nil {
+		for _, item := range s.ChangeTrainInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainOrderDetailQueryResponseBodyModuleChangeInfosChangeTrainInfos struct {
@@ -740,7 +813,16 @@ func (s *TrainOrderDetailQueryResponseBodyModuleChangeInfosChangeTrainInfos) Set
 }
 
 func (s *TrainOrderDetailQueryResponseBodyModuleChangeInfosChangeTrainInfos) Validate() error {
-	return dara.Validate(s)
+	if s.ChangeTicketInfos != nil {
+		for _, item := range s.ChangeTicketInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainOrderDetailQueryResponseBodyModuleChangeInfosChangeTrainInfosChangeTicketInfos struct {
@@ -998,7 +1080,16 @@ func (s *TrainOrderDetailQueryResponseBodyModuleOfflineRefundDetails) SetRefundT
 }
 
 func (s *TrainOrderDetailQueryResponseBodyModuleOfflineRefundDetails) Validate() error {
-	return dara.Validate(s)
+	if s.OfflineRefundInfos != nil {
+		for _, item := range s.OfflineRefundInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainOrderDetailQueryResponseBodyModuleOfflineRefundDetailsOfflineRefundInfos struct {
@@ -1155,7 +1246,12 @@ func (s *TrainOrderDetailQueryResponseBodyModulePassengerInfoS) SetValidDateEnd(
 }
 
 func (s *TrainOrderDetailQueryResponseBodyModulePassengerInfoS) Validate() error {
-	return dara.Validate(s)
+	if s.CostCenterInfo != nil {
+		if err := s.CostCenterInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrainOrderDetailQueryResponseBodyModulePassengerInfoSCostCenterInfo struct {
@@ -1387,7 +1483,16 @@ func (s *TrainOrderDetailQueryResponseBodyModuleRefundInfos) SetStatus(v string)
 }
 
 func (s *TrainOrderDetailQueryResponseBodyModuleRefundInfos) Validate() error {
-	return dara.Validate(s)
+	if s.RefundTrainInfo != nil {
+		for _, item := range s.RefundTrainInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainOrderDetailQueryResponseBodyModuleRefundInfosRefundTrainInfo struct {
@@ -1484,7 +1589,16 @@ func (s *TrainOrderDetailQueryResponseBodyModuleRefundInfosRefundTrainInfo) SetT
 }
 
 func (s *TrainOrderDetailQueryResponseBodyModuleRefundInfosRefundTrainInfo) Validate() error {
-	return dara.Validate(s)
+	if s.RefundTicketInfos != nil {
+		for _, item := range s.RefundTicketInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainOrderDetailQueryResponseBodyModuleRefundInfosRefundTrainInfoRefundTicketInfos struct {

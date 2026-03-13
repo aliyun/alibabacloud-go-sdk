@@ -107,7 +107,12 @@ func (s *FlightRefundDetailResponseBody) SetTraceId(v string) *FlightRefundDetai
 }
 
 func (s *FlightRefundDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightRefundDetailResponseBodyModule struct {
@@ -246,7 +251,16 @@ func (s *FlightRefundDetailResponseBodyModule) SetStatus(v string) *FlightRefund
 }
 
 func (s *FlightRefundDetailResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.RefundFeeList != nil {
+		for _, item := range s.RefundFeeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightRefundDetailResponseBodyModuleRefundFeeList struct {

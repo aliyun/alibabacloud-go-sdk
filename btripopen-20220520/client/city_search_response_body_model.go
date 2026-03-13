@@ -108,7 +108,12 @@ func (s *CitySearchResponseBody) SetTraceId(v string) *CitySearchResponseBody {
 }
 
 func (s *CitySearchResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CitySearchResponseBodyModule struct {
@@ -133,7 +138,16 @@ func (s *CitySearchResponseBodyModule) SetCities(v []*CitySearchResponseBodyModu
 }
 
 func (s *CitySearchResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.Cities != nil {
+		for _, item := range s.Cities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CitySearchResponseBodyModuleCities struct {

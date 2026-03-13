@@ -107,7 +107,12 @@ func (s *TrainOrderQueryResponseBody) SetTraceId(v string) *TrainOrderQueryRespo
 }
 
 func (s *TrainOrderQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrainOrderQueryResponseBodyModule struct {
@@ -202,7 +207,67 @@ func (s *TrainOrderQueryResponseBodyModule) SetTrainInfo(v *TrainOrderQueryRespo
 }
 
 func (s *TrainOrderQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.ChangeTicketInfoList != nil {
+		for _, item := range s.ChangeTicketInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InvoiceInfo != nil {
+		if err := s.InvoiceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OrderBaseInfo != nil {
+		if err := s.OrderBaseInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PassengerInfoList != nil {
+		for _, item := range s.PassengerInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PriceInfoList != nil {
+		for _, item := range s.PriceInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RefundTicketInfoList != nil {
+		for _, item := range s.RefundTicketInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TicketInfoList != nil {
+		for _, item := range s.TicketInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TrainInfo != nil {
+		if err := s.TrainInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrainOrderQueryResponseBodyModuleChangeTicketInfoList struct {

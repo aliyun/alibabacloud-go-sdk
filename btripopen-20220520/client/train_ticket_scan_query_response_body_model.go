@@ -111,7 +111,12 @@ func (s *TrainTicketScanQueryResponseBody) SetTraceId(v string) *TrainTicketScan
 }
 
 func (s *TrainTicketScanQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrainTicketScanQueryResponseBodyModule struct {
@@ -188,7 +193,16 @@ func (s *TrainTicketScanQueryResponseBodyModule) SetTotalSize(v int32) *TrainTic
 }
 
 func (s *TrainTicketScanQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainTicketScanQueryResponseBodyModuleItems struct {
@@ -204,9 +218,11 @@ type TrainTicketScanQueryResponseBodyModuleItems struct {
 	// example:
 	//
 	// 2023-01-12 10:00:00
-	DepTime         *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	Department      *string `json:"department,omitempty" xml:"department,omitempty"`
-	FeeTypeShowCode *int32  `json:"fee_type_show_code,omitempty" xml:"fee_type_show_code,omitempty"`
+	DepTime            *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	Department         *string `json:"department,omitempty" xml:"department,omitempty"`
+	ElectronicTicketNo *string `json:"electronic_ticket_no,omitempty" xml:"electronic_ticket_no,omitempty"`
+	FeeTypeShowCode    *int32  `json:"fee_type_show_code,omitempty" xml:"fee_type_show_code,omitempty"`
+	HasChanged         *bool   `json:"has_changed,omitempty" xml:"has_changed,omitempty"`
 	// example:
 	//
 	// 71
@@ -218,7 +234,8 @@ type TrainTicketScanQueryResponseBodyModuleItems struct {
 	// example:
 	//
 	// 3137168772101111000
-	OrderId *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OrderId        *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OriginTicketNo *string `json:"origin_ticket_no,omitempty" xml:"origin_ticket_no,omitempty"`
 	// example:
 	//
 	// https://www.testurl.com
@@ -258,6 +275,7 @@ type TrainTicketScanQueryResponseBodyModuleItems struct {
 	//
 	// G99
 	TrainNo *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
+	XmlUrl  *string `json:"xml_url,omitempty" xml:"xml_url,omitempty"`
 }
 
 func (s TrainTicketScanQueryResponseBodyModuleItems) String() string {
@@ -300,8 +318,16 @@ func (s *TrainTicketScanQueryResponseBodyModuleItems) GetDepartment() *string {
 	return s.Department
 }
 
+func (s *TrainTicketScanQueryResponseBodyModuleItems) GetElectronicTicketNo() *string {
+	return s.ElectronicTicketNo
+}
+
 func (s *TrainTicketScanQueryResponseBodyModuleItems) GetFeeTypeShowCode() *int32 {
 	return s.FeeTypeShowCode
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) GetHasChanged() *bool {
+	return s.HasChanged
 }
 
 func (s *TrainTicketScanQueryResponseBodyModuleItems) GetId() *string {
@@ -326,6 +352,10 @@ func (s *TrainTicketScanQueryResponseBodyModuleItems) GetOfdUrl() *string {
 
 func (s *TrainTicketScanQueryResponseBodyModuleItems) GetOrderId() *int64 {
 	return s.OrderId
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) GetOriginTicketNo() *string {
+	return s.OriginTicketNo
 }
 
 func (s *TrainTicketScanQueryResponseBodyModuleItems) GetOssUrl() *string {
@@ -384,6 +414,10 @@ func (s *TrainTicketScanQueryResponseBodyModuleItems) GetTrainNo() *string {
 	return s.TrainNo
 }
 
+func (s *TrainTicketScanQueryResponseBodyModuleItems) GetXmlUrl() *string {
+	return s.XmlUrl
+}
+
 func (s *TrainTicketScanQueryResponseBodyModuleItems) SetApplyId(v string) *TrainTicketScanQueryResponseBodyModuleItems {
 	s.ApplyId = &v
 	return s
@@ -424,8 +458,18 @@ func (s *TrainTicketScanQueryResponseBodyModuleItems) SetDepartment(v string) *T
 	return s
 }
 
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetElectronicTicketNo(v string) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.ElectronicTicketNo = &v
+	return s
+}
+
 func (s *TrainTicketScanQueryResponseBodyModuleItems) SetFeeTypeShowCode(v int32) *TrainTicketScanQueryResponseBodyModuleItems {
 	s.FeeTypeShowCode = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetHasChanged(v bool) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.HasChanged = &v
 	return s
 }
 
@@ -456,6 +500,11 @@ func (s *TrainTicketScanQueryResponseBodyModuleItems) SetOfdUrl(v string) *Train
 
 func (s *TrainTicketScanQueryResponseBodyModuleItems) SetOrderId(v int64) *TrainTicketScanQueryResponseBodyModuleItems {
 	s.OrderId = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetOriginTicketNo(v string) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.OriginTicketNo = &v
 	return s
 }
 
@@ -526,6 +575,11 @@ func (s *TrainTicketScanQueryResponseBodyModuleItems) SetTicketNo(v string) *Tra
 
 func (s *TrainTicketScanQueryResponseBodyModuleItems) SetTrainNo(v string) *TrainTicketScanQueryResponseBodyModuleItems {
 	s.TrainNo = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetXmlUrl(v string) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.XmlUrl = &v
 	return s
 }
 

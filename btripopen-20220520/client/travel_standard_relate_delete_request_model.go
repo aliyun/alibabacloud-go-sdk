@@ -67,7 +67,16 @@ func (s *TravelStandardRelateDeleteRequest) SetRuleId(v int64) *TravelStandardRe
 }
 
 func (s *TravelStandardRelateDeleteRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RemoveList != nil {
+		for _, item := range s.RemoveList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TravelStandardRelateDeleteRequestRemoveList struct {

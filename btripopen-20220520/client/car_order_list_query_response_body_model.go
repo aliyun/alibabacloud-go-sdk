@@ -121,7 +121,21 @@ func (s *CarOrderListQueryResponseBody) SetTraceId(v string) *CarOrderListQueryR
 }
 
 func (s *CarOrderListQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		for _, item := range s.Module {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CarOrderListQueryResponseBodyModule struct {
@@ -771,7 +785,25 @@ func (s *CarOrderListQueryResponseBodyModule) SetUserName(v string) *CarOrderLis
 }
 
 func (s *CarOrderListQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.PriceInfoList != nil {
+		for _, item := range s.PriceInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserAffiliateList != nil {
+		for _, item := range s.UserAffiliateList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CarOrderListQueryResponseBodyModulePriceInfoList struct {

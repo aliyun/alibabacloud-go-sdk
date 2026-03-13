@@ -107,7 +107,16 @@ func (s *ExternalUserUpdateRequest) SetRealNameEn(v string) *ExternalUserUpdateR
 }
 
 func (s *ExternalUserUpdateRequest) Validate() error {
-  return dara.Validate(s)
+  if s.CertRequestList != nil {
+    for _, item := range s.CertRequestList {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type ExternalUserUpdateRequestCertRequestList struct {

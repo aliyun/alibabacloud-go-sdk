@@ -111,7 +111,12 @@ func (s *CarOrderQueryResponseBody) SetTraceId(v string) *CarOrderQueryResponseB
 }
 
 func (s *CarOrderQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CarOrderQueryResponseBodyModule struct {
@@ -176,7 +181,40 @@ func (s *CarOrderQueryResponseBodyModule) SetPriceInfoList(v []*CarOrderQueryRes
 }
 
 func (s *CarOrderQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.CarInfo != nil {
+		if err := s.CarInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InvoiceInfo != nil {
+		if err := s.InvoiceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OrderBaseInfo != nil {
+		if err := s.OrderBaseInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PassengerList != nil {
+		for _, item := range s.PassengerList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PriceInfoList != nil {
+		for _, item := range s.PriceInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CarOrderQueryResponseBodyModuleCarInfo struct {
@@ -517,7 +555,16 @@ func (s *CarOrderQueryResponseBodyModuleCarInfo) SetWayPoints(v []*CarOrderQuery
 }
 
 func (s *CarOrderQueryResponseBodyModuleCarInfo) Validate() error {
-	return dara.Validate(s)
+	if s.WayPoints != nil {
+		for _, item := range s.WayPoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CarOrderQueryResponseBodyModuleCarInfoWayPoints struct {
@@ -620,9 +667,10 @@ type CarOrderQueryResponseBodyModuleOrderBaseInfo struct {
 	// example:
 	//
 	// xxxxx
-	ApplyId    *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	BtripCause *string `json:"btrip_cause,omitempty" xml:"btrip_cause,omitempty"`
-	BtripTitle *string `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
+	ApplyId            *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	BtripCause         *string `json:"btrip_cause,omitempty" xml:"btrip_cause,omitempty"`
+	BtripTitle         *string `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
+	CarOrderSourceType *int64  `json:"car_order_source_type,omitempty" xml:"car_order_source_type,omitempty"`
 	// example:
 	//
 	// xxxxxxxx
@@ -695,6 +743,10 @@ func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) GetBtripCause() *string {
 
 func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) GetBtripTitle() *string {
 	return s.BtripTitle
+}
+
+func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) GetCarOrderSourceType() *int64 {
+	return s.CarOrderSourceType
 }
 
 func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) GetCorpId() *string {
@@ -773,6 +825,11 @@ func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) SetBtripCause(v string) *
 
 func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) SetBtripTitle(v string) *CarOrderQueryResponseBodyModuleOrderBaseInfo {
 	s.BtripTitle = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) SetCarOrderSourceType(v int64) *CarOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.CarOrderSourceType = &v
 	return s
 }
 

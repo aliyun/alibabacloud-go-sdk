@@ -111,7 +111,12 @@ func (s *FlightRefundApplyV2ResponseBody) SetTraceId(v string) *FlightRefundAppl
 }
 
 func (s *FlightRefundApplyV2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightRefundApplyV2ResponseBodyModule struct {

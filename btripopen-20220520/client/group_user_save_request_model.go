@@ -159,7 +159,25 @@ func (s *GroupUserSaveRequest) SetUserName(v string) *GroupUserSaveRequest {
 }
 
 func (s *GroupUserSaveRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CertList != nil {
+		for _, item := range s.CertList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SubCorpIdList != nil {
+		for _, item := range s.SubCorpIdList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GroupUserSaveRequestCertList struct {

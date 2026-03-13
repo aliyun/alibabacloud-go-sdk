@@ -119,7 +119,21 @@ func (s *TrainOrderListQueryResponseBody) SetTraceId(v string) *TrainOrderListQu
 }
 
 func (s *TrainOrderListQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		for _, item := range s.Module {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrainOrderListQueryResponseBodyModule struct {
@@ -572,7 +586,35 @@ func (s *TrainOrderListQueryResponseBodyModule) SetUserName(v string) *TrainOrde
 }
 
 func (s *TrainOrderListQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.CostCenter != nil {
+		if err := s.CostCenter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Invoice != nil {
+		if err := s.Invoice.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PriceInfoList != nil {
+		for _, item := range s.PriceInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserAffiliateList != nil {
+		for _, item := range s.UserAffiliateList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainOrderListQueryResponseBodyModuleCostCenter struct {

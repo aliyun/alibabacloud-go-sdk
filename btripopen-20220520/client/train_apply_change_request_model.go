@@ -132,7 +132,16 @@ func (s *TrainApplyChangeRequest) SetOutOrderId(v string) *TrainApplyChangeReque
 }
 
 func (s *TrainApplyChangeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ChangeTrainInfoS != nil {
+		for _, item := range s.ChangeTrainInfoS {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainApplyChangeRequestChangeTrainInfoS struct {
@@ -274,7 +283,16 @@ func (s *TrainApplyChangeRequestChangeTrainInfoS) SetTrainNo(v string) *TrainApp
 }
 
 func (s *TrainApplyChangeRequestChangeTrainInfoS) Validate() error {
-	return dara.Validate(s)
+	if s.ChangeTicketInfoS != nil {
+		for _, item := range s.ChangeTicketInfoS {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainApplyChangeRequestChangeTrainInfoSChangeTicketInfoS struct {
@@ -345,7 +363,12 @@ func (s *TrainApplyChangeRequestChangeTrainInfoSChangeTicketInfoS) SetTicketType
 }
 
 func (s *TrainApplyChangeRequestChangeTrainInfoSChangeTicketInfoS) Validate() error {
-	return dara.Validate(s)
+	if s.PassengerInfo != nil {
+		if err := s.PassengerInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrainApplyChangeRequestChangeTrainInfoSChangeTicketInfoSPassengerInfo struct {

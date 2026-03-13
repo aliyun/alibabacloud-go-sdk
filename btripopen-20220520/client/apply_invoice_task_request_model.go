@@ -53,7 +53,16 @@ func (s *ApplyInvoiceTaskRequest) SetInvoiceTaskList(v []*ApplyInvoiceTaskReques
 }
 
 func (s *ApplyInvoiceTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.InvoiceTaskList != nil {
+		for _, item := range s.InvoiceTaskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ApplyInvoiceTaskRequestInvoiceTaskList struct {
@@ -74,7 +83,8 @@ type ApplyInvoiceTaskRequestInvoiceTaskList struct {
 	// example:
 	//
 	// 100
-	HotelSpecialInvoiceFee *string `json:"hotel_special_invoice_fee,omitempty" xml:"hotel_special_invoice_fee,omitempty"`
+	HotelSpecialInvoiceFee    *string `json:"hotel_special_invoice_fee,omitempty" xml:"hotel_special_invoice_fee,omitempty"`
+	IeVehicleNormalInvoiceFee *string `json:"ie_vehicle_normal_invoice_fee,omitempty" xml:"ie_vehicle_normal_invoice_fee,omitempty"`
 	// example:
 	//
 	// 0
@@ -85,13 +95,14 @@ type ApplyInvoiceTaskRequestInvoiceTaskList struct {
 	// example:
 	//
 	// 123
-	InvoiceThirdPartId   *string `json:"invoice_third_part_id,omitempty" xml:"invoice_third_part_id,omitempty"`
-	InvoiceType          *int32  `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
-	MailAddress          *string `json:"mail_address,omitempty" xml:"mail_address,omitempty"`
-	MailCity             *string `json:"mail_city,omitempty" xml:"mail_city,omitempty"`
-	MailFullAddress      *string `json:"mail_full_address,omitempty" xml:"mail_full_address,omitempty"`
-	MailProvince         *string `json:"mail_province,omitempty" xml:"mail_province,omitempty"`
-	MealNormalInvoiceFee *string `json:"meal_normal_invoice_fee,omitempty" xml:"meal_normal_invoice_fee,omitempty"`
+	InvoiceThirdPartId      *string `json:"invoice_third_part_id,omitempty" xml:"invoice_third_part_id,omitempty"`
+	InvoiceType             *int32  `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
+	MailAddress             *string `json:"mail_address,omitempty" xml:"mail_address,omitempty"`
+	MailCity                *string `json:"mail_city,omitempty" xml:"mail_city,omitempty"`
+	MailFullAddress         *string `json:"mail_full_address,omitempty" xml:"mail_full_address,omitempty"`
+	MailProvince            *string `json:"mail_province,omitempty" xml:"mail_province,omitempty"`
+	MealNormalInvoiceFee    *string `json:"meal_normal_invoice_fee,omitempty" xml:"meal_normal_invoice_fee,omitempty"`
+	MealTc7NormalInvoiceFee *string `json:"meal_tc7_normal_invoice_fee,omitempty" xml:"meal_tc7_normal_invoice_fee,omitempty"`
 	// example:
 	//
 	// 0
@@ -151,6 +162,10 @@ func (s *ApplyInvoiceTaskRequestInvoiceTaskList) GetHotelSpecialInvoiceFee() *st
 	return s.HotelSpecialInvoiceFee
 }
 
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) GetIeVehicleNormalInvoiceFee() *string {
+	return s.IeVehicleNormalInvoiceFee
+}
+
 func (s *ApplyInvoiceTaskRequestInvoiceTaskList) GetInternationalFlightInvoiceFee() *string {
 	return s.InternationalFlightInvoiceFee
 }
@@ -185,6 +200,10 @@ func (s *ApplyInvoiceTaskRequestInvoiceTaskList) GetMailProvince() *string {
 
 func (s *ApplyInvoiceTaskRequestInvoiceTaskList) GetMealNormalInvoiceFee() *string {
 	return s.MealNormalInvoiceFee
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) GetMealTc7NormalInvoiceFee() *string {
+	return s.MealTc7NormalInvoiceFee
 }
 
 func (s *ApplyInvoiceTaskRequestInvoiceTaskList) GetPenaltyFee() *string {
@@ -257,6 +276,11 @@ func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetHotelSpecialInvoiceFee(v str
 	return s
 }
 
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetIeVehicleNormalInvoiceFee(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.IeVehicleNormalInvoiceFee = &v
+	return s
+}
+
 func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetInternationalFlightInvoiceFee(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
 	s.InternationalFlightInvoiceFee = &v
 	return s
@@ -299,6 +323,11 @@ func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetMailProvince(v string) *Appl
 
 func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetMealNormalInvoiceFee(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
 	s.MealNormalInvoiceFee = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetMealTc7NormalInvoiceFee(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.MealTc7NormalInvoiceFee = &v
 	return s
 }
 

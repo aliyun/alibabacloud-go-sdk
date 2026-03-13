@@ -13,6 +13,8 @@ type iMealApplyAddShrinkRequest interface {
 	GetApplyUserShrink() *string
 	SetCostCenterId(v int64) *MealApplyAddShrinkRequest
 	GetCostCenterId() *int64
+	SetExtendField(v string) *MealApplyAddShrinkRequest
+	GetExtendField() *string
 	SetInvoiceId(v int64) *MealApplyAddShrinkRequest
 	GetInvoiceId() *int64
 	SetItineraryListShrink(v string) *MealApplyAddShrinkRequest
@@ -41,7 +43,8 @@ type MealApplyAddShrinkRequest struct {
 	// example:
 	//
 	// 23
-	CostCenterId *int64 `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	CostCenterId *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	ExtendField  *string `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
 	// example:
 	//
 	// 123
@@ -97,6 +100,10 @@ func (s *MealApplyAddShrinkRequest) GetCostCenterId() *int64 {
 	return s.CostCenterId
 }
 
+func (s *MealApplyAddShrinkRequest) GetExtendField() *string {
+	return s.ExtendField
+}
+
 func (s *MealApplyAddShrinkRequest) GetInvoiceId() *int64 {
 	return s.InvoiceId
 }
@@ -144,6 +151,11 @@ func (s *MealApplyAddShrinkRequest) SetApplyUserShrink(v string) *MealApplyAddSh
 
 func (s *MealApplyAddShrinkRequest) SetCostCenterId(v int64) *MealApplyAddShrinkRequest {
 	s.CostCenterId = &v
+	return s
+}
+
+func (s *MealApplyAddShrinkRequest) SetExtendField(v string) *MealApplyAddShrinkRequest {
+	s.ExtendField = &v
 	return s
 }
 

@@ -59,5 +59,10 @@ func (s *UpdateDepartmentResponse) SetBody(v *UpdateDepartmentResponseBody) *Upd
 }
 
 func (s *UpdateDepartmentResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,6 +59,11 @@ func (s *ElectronicItineraryGetApplyResultResponse) SetBody(v *ElectronicItinera
 }
 
 func (s *ElectronicItineraryGetApplyResultResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

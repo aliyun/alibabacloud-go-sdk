@@ -112,7 +112,16 @@ func (s *HotelRoomInfoResponseBody) SetTraceId(v string) *HotelRoomInfoResponseB
 }
 
 func (s *HotelRoomInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		for _, item := range s.Module {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelRoomInfoResponseBodyModule struct {
@@ -370,7 +379,34 @@ func (s *HotelRoomInfoResponseBodyModule) SetWindowView(v string) *HotelRoomInfo
 }
 
 func (s *HotelRoomInfoResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.BedInfoGroupList != nil {
+		for _, item := range s.BedInfoGroupList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BedInfos != nil {
+		for _, item := range s.BedInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RoomImages != nil {
+		for _, item := range s.RoomImages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelRoomInfoResponseBodyModuleBedInfoGroupList struct {
@@ -395,7 +431,16 @@ func (s *HotelRoomInfoResponseBodyModuleBedInfoGroupList) SetBedInfos(v []*Hotel
 }
 
 func (s *HotelRoomInfoResponseBodyModuleBedInfoGroupList) Validate() error {
-	return dara.Validate(s)
+	if s.BedInfos != nil {
+		for _, item := range s.BedInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelRoomInfoResponseBodyModuleBedInfoGroupListBedInfos struct {

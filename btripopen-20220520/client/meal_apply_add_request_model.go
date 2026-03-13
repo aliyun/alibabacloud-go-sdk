@@ -13,6 +13,8 @@ type iMealApplyAddRequest interface {
 	GetApplyUser() *MealApplyAddRequestApplyUser
 	SetCostCenterId(v int64) *MealApplyAddRequest
 	GetCostCenterId() *int64
+	SetExtendField(v string) *MealApplyAddRequest
+	GetExtendField() *string
 	SetInvoiceId(v int64) *MealApplyAddRequest
 	GetInvoiceId() *int64
 	SetItineraryList(v []*MealApplyAddRequestItineraryList) *MealApplyAddRequest
@@ -41,7 +43,8 @@ type MealApplyAddRequest struct {
 	// example:
 	//
 	// 23
-	CostCenterId *int64 `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	CostCenterId *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	ExtendField  *string `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
 	// example:
 	//
 	// 123
@@ -97,6 +100,10 @@ func (s *MealApplyAddRequest) GetCostCenterId() *int64 {
 	return s.CostCenterId
 }
 
+func (s *MealApplyAddRequest) GetExtendField() *string {
+	return s.ExtendField
+}
+
 func (s *MealApplyAddRequest) GetInvoiceId() *int64 {
 	return s.InvoiceId
 }
@@ -144,6 +151,11 @@ func (s *MealApplyAddRequest) SetApplyUser(v *MealApplyAddRequestApplyUser) *Mea
 
 func (s *MealApplyAddRequest) SetCostCenterId(v int64) *MealApplyAddRequest {
 	s.CostCenterId = &v
+	return s
+}
+
+func (s *MealApplyAddRequest) SetExtendField(v string) *MealApplyAddRequest {
+	s.ExtendField = &v
 	return s
 }
 
@@ -198,7 +210,21 @@ func (s *MealApplyAddRequest) SetThirdPartInvoiceId(v string) *MealApplyAddReque
 }
 
 func (s *MealApplyAddRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ApplyUser != nil {
+		if err := s.ApplyUser.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ItineraryList != nil {
+		for _, item := range s.ItineraryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type MealApplyAddRequestApplyUser struct {
@@ -297,7 +323,16 @@ func (s *MealApplyAddRequestItineraryList) SetThirdpartItineraryId(v string) *Me
 }
 
 func (s *MealApplyAddRequestItineraryList) Validate() error {
-	return dara.Validate(s)
+	if s.Cities != nil {
+		for _, item := range s.Cities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type MealApplyAddRequestItineraryListCities struct {

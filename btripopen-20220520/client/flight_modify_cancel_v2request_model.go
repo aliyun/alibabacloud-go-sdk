@@ -22,11 +22,26 @@ type iFlightModifyCancelV2Request interface {
 }
 
 type FlightModifyCancelV2Request struct {
-	IsvName       *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	OrderId       *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	OutOrderId    *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	// example:
+	//
+	// name
+	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	// example:
+	//
+	// 1017002195370467138
+	OrderId *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// 1017002195370467137
+	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	// example:
+	//
+	// 1019195786853020
 	OutSubOrderId *string `json:"out_sub_order_id,omitempty" xml:"out_sub_order_id,omitempty"`
-	SubOrderId    *int64  `json:"sub_order_id,omitempty" xml:"sub_order_id,omitempty"`
+	// example:
+	//
+	// 1019195786853020
+	SubOrderId *int64 `json:"sub_order_id,omitempty" xml:"sub_order_id,omitempty"`
 }
 
 func (s FlightModifyCancelV2Request) String() string {

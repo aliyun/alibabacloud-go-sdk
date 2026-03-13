@@ -52,7 +52,16 @@ func (s *EntityAddRequest) SetThirdpartId(v string) *EntityAddRequest {
 }
 
 func (s *EntityAddRequest) Validate() error {
-  return dara.Validate(s)
+  if s.EntityDOList != nil {
+    for _, item := range s.EntityDOList {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type EntityAddRequestEntityDOList struct {

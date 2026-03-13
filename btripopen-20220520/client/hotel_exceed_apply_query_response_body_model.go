@@ -107,7 +107,12 @@ func (s *HotelExceedApplyQueryResponseBody) SetTraceId(v string) *HotelExceedApp
 }
 
 func (s *HotelExceedApplyQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HotelExceedApplyQueryResponseBodyModule struct {
@@ -279,7 +284,12 @@ func (s *HotelExceedApplyQueryResponseBodyModule) SetUserName(v string) *HotelEx
 }
 
 func (s *HotelExceedApplyQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.ApplyIntentionInfoDo != nil {
+		if err := s.ApplyIntentionInfoDo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HotelExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo struct {

@@ -59,5 +59,10 @@ func (s *HotelSuggestV2Response) SetBody(v *HotelSuggestV2ResponseBody) *HotelSu
 }
 
 func (s *HotelSuggestV2Response) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

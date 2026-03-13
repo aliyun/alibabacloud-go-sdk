@@ -19,9 +19,11 @@ import (
 //
 // @return AccessTokenResponse
 func (client *Client) AccessTokenWithContext(ctx context.Context, request *AccessTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AccessTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppSecret) {
@@ -64,9 +66,11 @@ func (client *Client) AccessTokenWithContext(ctx context.Context, request *Acces
 //
 // @return AddDepartmentResponse
 func (client *Client) AddDepartmentWithContext(ctx context.Context, tmpReq *AddDepartmentRequest, headers *AddDepartmentHeaders, runtime *dara.RuntimeOptions) (_result *AddDepartmentResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddDepartmentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -136,9 +140,11 @@ func (client *Client) AddDepartmentWithContext(ctx context.Context, tmpReq *AddD
 //
 // @return AddEmployeeResponse
 func (client *Client) AddEmployeeWithContext(ctx context.Context, tmpReq *AddEmployeeRequest, headers *AddEmployeeHeaders, runtime *dara.RuntimeOptions) (_result *AddEmployeeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddEmployeeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -304,9 +310,11 @@ func (client *Client) AddEmployeeWithContext(ctx context.Context, tmpReq *AddEmp
 //
 // @return AddEmployeesToCustomRoleResponse
 func (client *Client) AddEmployeesToCustomRoleWithContext(ctx context.Context, tmpReq *AddEmployeesToCustomRoleRequest, headers *AddEmployeesToCustomRoleHeaders, runtime *dara.RuntimeOptions) (_result *AddEmployeesToCustomRoleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddEmployeesToCustomRoleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -368,9 +376,11 @@ func (client *Client) AddEmployeesToCustomRoleWithContext(ctx context.Context, t
 //
 // @return AddInvoiceEntityResponse
 func (client *Client) AddInvoiceEntityWithContext(ctx context.Context, tmpReq *AddInvoiceEntityRequest, headers *AddInvoiceEntityHeaders, runtime *dara.RuntimeOptions) (_result *AddInvoiceEntityResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddInvoiceEntityShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -432,9 +442,11 @@ func (client *Client) AddInvoiceEntityWithContext(ctx context.Context, tmpReq *A
 //
 // @return AddressGetResponse
 func (client *Client) AddressGetWithContext(ctx context.Context, request *AddressGetRequest, headers *AddressGetHeaders, runtime *dara.RuntimeOptions) (_result *AddressGetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActionType) {
@@ -558,9 +570,11 @@ func (client *Client) AddressGetWithContext(ctx context.Context, request *Addres
 //
 // @return AirportSearchResponse
 func (client *Client) AirportSearchWithContext(ctx context.Context, request *AirportSearchRequest, headers *AirportSearchHeaders, runtime *dara.RuntimeOptions) (_result *AirportSearchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -658,9 +672,11 @@ func (client *Client) AllBaseCityInfoQueryWithContext(ctx context.Context, heade
 //
 // @return ApplyAddResponse
 func (client *Client) ApplyAddWithContext(ctx context.Context, tmpReq *ApplyAddRequest, headers *ApplyAddHeaders, runtime *dara.RuntimeOptions) (_result *ApplyAddResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ApplyAddShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -906,9 +922,11 @@ func (client *Client) ApplyAddWithContext(ctx context.Context, tmpReq *ApplyAddR
 //
 // @return ApplyApproveResponse
 func (client *Client) ApplyApproveWithContext(ctx context.Context, request *ApplyApproveRequest, headers *ApplyApproveHeaders, runtime *dara.RuntimeOptions) (_result *ApplyApproveResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ApplyId) {
@@ -984,9 +1002,11 @@ func (client *Client) ApplyApproveWithContext(ctx context.Context, request *Appl
 //
 // @return ApplyExternalNodeStatusUpdateResponse
 func (client *Client) ApplyExternalNodeStatusUpdateWithContext(ctx context.Context, tmpReq *ApplyExternalNodeStatusUpdateRequest, headers *ApplyExternalNodeStatusUpdateHeaders, runtime *dara.RuntimeOptions) (_result *ApplyExternalNodeStatusUpdateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ApplyExternalNodeStatusUpdateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1052,9 +1072,11 @@ func (client *Client) ApplyExternalNodeStatusUpdateWithContext(ctx context.Conte
 //
 // @return ApplyInvoiceTaskResponse
 func (client *Client) ApplyInvoiceTaskWithContext(ctx context.Context, tmpReq *ApplyInvoiceTaskRequest, headers *ApplyInvoiceTaskHeaders, runtime *dara.RuntimeOptions) (_result *ApplyInvoiceTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ApplyInvoiceTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1116,9 +1138,11 @@ func (client *Client) ApplyInvoiceTaskWithContext(ctx context.Context, tmpReq *A
 //
 // @return ApplyListQueryResponse
 func (client *Client) ApplyListQueryWithContext(ctx context.Context, request *ApplyListQueryRequest, headers *ApplyListQueryHeaders, runtime *dara.RuntimeOptions) (_result *ApplyListQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllApply) {
@@ -1214,9 +1238,11 @@ func (client *Client) ApplyListQueryWithContext(ctx context.Context, request *Ap
 //
 // @return ApplyModifyResponse
 func (client *Client) ApplyModifyWithContext(ctx context.Context, tmpReq *ApplyModifyRequest, headers *ApplyModifyHeaders, runtime *dara.RuntimeOptions) (_result *ApplyModifyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ApplyModifyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1454,9 +1480,11 @@ func (client *Client) ApplyModifyWithContext(ctx context.Context, tmpReq *ApplyM
 //
 // @return ApplyQueryResponse
 func (client *Client) ApplyQueryWithContext(ctx context.Context, request *ApplyQueryRequest, headers *ApplyQueryHeaders, runtime *dara.RuntimeOptions) (_result *ApplyQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplyId) {
@@ -1524,9 +1552,11 @@ func (client *Client) ApplyQueryWithContext(ctx context.Context, request *ApplyQ
 //
 // @return ApplyTripTaskExecuteResponse
 func (client *Client) ApplyTripTaskExecuteWithContext(ctx context.Context, request *ApplyTripTaskExecuteRequest, headers *ApplyTripTaskExecuteHeaders, runtime *dara.RuntimeOptions) (_result *ApplyTripTaskExecuteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ActionFrom) {
@@ -1598,9 +1628,11 @@ func (client *Client) ApplyTripTaskExecuteWithContext(ctx context.Context, reque
 //
 // @return BaseCityInfoSearchResponse
 func (client *Client) BaseCityInfoSearchWithContext(ctx context.Context, request *BaseCityInfoSearchRequest, headers *BaseCityInfoSearchHeaders, runtime *dara.RuntimeOptions) (_result *BaseCityInfoSearchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -1656,9 +1688,11 @@ func (client *Client) BaseCityInfoSearchWithContext(ctx context.Context, request
 //
 // @return BtripBillInfoAdjustResponse
 func (client *Client) BtripBillInfoAdjustWithContext(ctx context.Context, request *BtripBillInfoAdjustRequest, headers *BtripBillInfoAdjustHeaders, runtime *dara.RuntimeOptions) (_result *BtripBillInfoAdjustResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.PrimaryId) {
@@ -1730,9 +1764,11 @@ func (client *Client) BtripBillInfoAdjustWithContext(ctx context.Context, reques
 //
 // @return CarApplyAddResponse
 func (client *Client) CarApplyAddWithContext(ctx context.Context, tmpReq *CarApplyAddRequest, headers *CarApplyAddHeaders, runtime *dara.RuntimeOptions) (_result *CarApplyAddResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CarApplyAddShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1854,9 +1890,11 @@ func (client *Client) CarApplyAddWithContext(ctx context.Context, tmpReq *CarApp
 //
 // @return CarApplyModifyResponse
 func (client *Client) CarApplyModifyWithContext(ctx context.Context, request *CarApplyModifyRequest, headers *CarApplyModifyHeaders, runtime *dara.RuntimeOptions) (_result *CarApplyModifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.OperateTime) {
@@ -1924,9 +1962,11 @@ func (client *Client) CarApplyModifyWithContext(ctx context.Context, request *Ca
 //
 // @return CarApplyQueryResponse
 func (client *Client) CarApplyQueryWithContext(ctx context.Context, request *CarApplyQueryRequest, headers *CarApplyQueryHeaders, runtime *dara.RuntimeOptions) (_result *CarApplyQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreatedEndAt) {
@@ -1998,13 +2038,23 @@ func (client *Client) CarApplyQueryWithContext(ctx context.Context, request *Car
 //
 // @return CarBillSettlementQueryResponse
 func (client *Client) CarBillSettlementQueryWithContext(ctx context.Context, request *CarBillSettlementQueryRequest, headers *CarBillSettlementQueryHeaders, runtime *dara.RuntimeOptions) (_result *CarBillSettlementQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillRecordTimeEnd) {
+		query["bill_record_time_end"] = request.BillRecordTimeEnd
+	}
+
+	if !dara.IsNil(request.BillRecordTimeStart) {
+		query["bill_record_time_start"] = request.BillRecordTimeStart
 	}
 
 	if !dara.IsNil(request.OrderId) {
@@ -2080,9 +2130,11 @@ func (client *Client) CarBillSettlementQueryWithContext(ctx context.Context, req
 //
 // @return CarOrderListQueryResponse
 func (client *Client) CarOrderListQueryWithContext(ctx context.Context, request *CarOrderListQueryRequest, headers *CarOrderListQueryHeaders, runtime *dara.RuntimeOptions) (_result *CarOrderListQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllApply) {
@@ -2174,9 +2226,11 @@ func (client *Client) CarOrderListQueryWithContext(ctx context.Context, request 
 //
 // @return CarOrderQueryResponse
 func (client *Client) CarOrderQueryWithContext(ctx context.Context, request *CarOrderQueryRequest, headers *CarOrderQueryHeaders, runtime *dara.RuntimeOptions) (_result *CarOrderQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -2274,9 +2328,11 @@ func (client *Client) CarSceneQueryWithContext(ctx context.Context, headers *Car
 //
 // @return ChannelCorpCreateResponse
 func (client *Client) ChannelCorpCreateWithContext(ctx context.Context, request *ChannelCorpCreateRequest, headers *ChannelCorpCreateHeaders, runtime *dara.RuntimeOptions) (_result *ChannelCorpCreateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AdministratorName) {
@@ -2356,9 +2412,11 @@ func (client *Client) ChannelCorpCreateWithContext(ctx context.Context, request 
 //
 // @return CitySearchResponse
 func (client *Client) CitySearchWithContext(ctx context.Context, request *CitySearchRequest, headers *CitySearchHeaders, runtime *dara.RuntimeOptions) (_result *CitySearchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -2410,9 +2468,11 @@ func (client *Client) CitySearchWithContext(ctx context.Context, request *CitySe
 //
 // @return CommonApplyQueryResponse
 func (client *Client) CommonApplyQueryWithContext(ctx context.Context, request *CommonApplyQueryRequest, headers *CommonApplyQueryHeaders, runtime *dara.RuntimeOptions) (_result *CommonApplyQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplyId) {
@@ -2476,9 +2536,11 @@ func (client *Client) CommonApplyQueryWithContext(ctx context.Context, request *
 //
 // @return CommonApplySyncResponse
 func (client *Client) CommonApplySyncWithContext(ctx context.Context, request *CommonApplySyncRequest, headers *CommonApplySyncHeaders, runtime *dara.RuntimeOptions) (_result *CommonApplySyncResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplyId) {
@@ -2550,13 +2612,23 @@ func (client *Client) CommonApplySyncWithContext(ctx context.Context, request *C
 //
 // @return CooperatorFlightBillSettlementQueryResponse
 func (client *Client) CooperatorFlightBillSettlementQueryWithContext(ctx context.Context, request *CooperatorFlightBillSettlementQueryRequest, headers *CooperatorFlightBillSettlementQueryHeaders, runtime *dara.RuntimeOptions) (_result *CooperatorFlightBillSettlementQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillRecordTimeEnd) {
+		query["bill_record_time_end"] = request.BillRecordTimeEnd
+	}
+
+	if !dara.IsNil(request.BillRecordTimeStart) {
+		query["bill_record_time_start"] = request.BillRecordTimeStart
 	}
 
 	if !dara.IsNil(request.CooperatorId) {
@@ -2636,13 +2708,23 @@ func (client *Client) CooperatorFlightBillSettlementQueryWithContext(ctx context
 //
 // @return CooperatorHotelBillSettlementQueryResponse
 func (client *Client) CooperatorHotelBillSettlementQueryWithContext(ctx context.Context, request *CooperatorHotelBillSettlementQueryRequest, headers *CooperatorHotelBillSettlementQueryHeaders, runtime *dara.RuntimeOptions) (_result *CooperatorHotelBillSettlementQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillRecordTimeEnd) {
+		query["bill_record_time_end"] = request.BillRecordTimeEnd
+	}
+
+	if !dara.IsNil(request.BillRecordTimeStart) {
+		query["bill_record_time_start"] = request.BillRecordTimeStart
 	}
 
 	if !dara.IsNil(request.CooperatorId) {
@@ -2722,9 +2804,11 @@ func (client *Client) CooperatorHotelBillSettlementQueryWithContext(ctx context.
 //
 // @return CooperatorHotelEventPushResponse
 func (client *Client) CooperatorHotelEventPushWithContext(ctx context.Context, request *CooperatorHotelEventPushRequest, headers *CooperatorHotelEventPushHeaders, runtime *dara.RuntimeOptions) (_result *CooperatorHotelEventPushResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ChangeOrderStatus) {
@@ -2800,9 +2884,11 @@ func (client *Client) CooperatorHotelEventPushWithContext(ctx context.Context, r
 //
 // @return CooperatorSyncPayStatusResponse
 func (client *Client) CooperatorSyncPayStatusWithContext(ctx context.Context, request *CooperatorSyncPayStatusRequest, headers *CooperatorSyncPayStatusHeaders, runtime *dara.RuntimeOptions) (_result *CooperatorSyncPayStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CooperatorOrderId) {
@@ -2903,9 +2989,11 @@ func (client *Client) CorpAuthLinkInfoQueryWithContext(ctx context.Context, head
 //
 // @return CorpTokenResponse
 func (client *Client) CorpTokenWithContext(ctx context.Context, request *CorpTokenRequest, headers *CorpTokenHeaders, runtime *dara.RuntimeOptions) (_result *CorpTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppSecret) {
@@ -2965,9 +3053,11 @@ func (client *Client) CorpTokenWithContext(ctx context.Context, request *CorpTok
 //
 // @return CostCenterDeleteResponse
 func (client *Client) CostCenterDeleteWithContext(ctx context.Context, request *CostCenterDeleteRequest, headers *CostCenterDeleteHeaders, runtime *dara.RuntimeOptions) (_result *CostCenterDeleteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ThirdpartId) {
@@ -3019,9 +3109,11 @@ func (client *Client) CostCenterDeleteWithContext(ctx context.Context, request *
 //
 // @return CostCenterModifyResponse
 func (client *Client) CostCenterModifyWithContext(ctx context.Context, request *CostCenterModifyRequest, headers *CostCenterModifyHeaders, runtime *dara.RuntimeOptions) (_result *CostCenterModifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AlipayNo) {
@@ -3093,9 +3185,11 @@ func (client *Client) CostCenterModifyWithContext(ctx context.Context, request *
 //
 // @return CostCenterQueryResponse
 func (client *Client) CostCenterQueryWithContext(ctx context.Context, request *CostCenterQueryRequest, headers *CostCenterQueryHeaders, runtime *dara.RuntimeOptions) (_result *CostCenterQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Disable) {
@@ -3163,9 +3257,11 @@ func (client *Client) CostCenterQueryWithContext(ctx context.Context, request *C
 //
 // @return CostCenterSaveResponse
 func (client *Client) CostCenterSaveWithContext(ctx context.Context, request *CostCenterSaveRequest, headers *CostCenterSaveHeaders, runtime *dara.RuntimeOptions) (_result *CostCenterSaveResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AlipayNo) {
@@ -3237,9 +3333,11 @@ func (client *Client) CostCenterSaveWithContext(ctx context.Context, request *Co
 //
 // @return CreateCustomRoleResponse
 func (client *Client) CreateCustomRoleWithContext(ctx context.Context, request *CreateCustomRoleRequest, headers *CreateCustomRoleHeaders, runtime *dara.RuntimeOptions) (_result *CreateCustomRoleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RoleId) {
@@ -3295,9 +3393,11 @@ func (client *Client) CreateCustomRoleWithContext(ctx context.Context, request *
 //
 // @return CreateSubCorpResponse
 func (client *Client) CreateSubCorpWithContext(ctx context.Context, request *CreateSubCorpRequest, headers *CreateSubCorpHeaders, runtime *dara.RuntimeOptions) (_result *CreateSubCorpResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.OuterCorpId) {
@@ -3357,9 +3457,11 @@ func (client *Client) CreateSubCorpWithContext(ctx context.Context, request *Cre
 //
 // @return DeleteCustomRoleResponse
 func (client *Client) DeleteCustomRoleWithContext(ctx context.Context, request *DeleteCustomRoleRequest, headers *DeleteCustomRoleHeaders, runtime *dara.RuntimeOptions) (_result *DeleteCustomRoleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RoleId) {
@@ -3411,9 +3513,11 @@ func (client *Client) DeleteCustomRoleWithContext(ctx context.Context, request *
 //
 // @return DeleteDepartmentResponse
 func (client *Client) DeleteDepartmentWithContext(ctx context.Context, request *DeleteDepartmentRequest, headers *DeleteDepartmentHeaders, runtime *dara.RuntimeOptions) (_result *DeleteDepartmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.OutDeptId) {
@@ -3465,9 +3569,11 @@ func (client *Client) DeleteDepartmentWithContext(ctx context.Context, request *
 //
 // @return DeleteEmployeesFromCustomRoleResponse
 func (client *Client) DeleteEmployeesFromCustomRoleWithContext(ctx context.Context, tmpReq *DeleteEmployeesFromCustomRoleRequest, headers *DeleteEmployeesFromCustomRoleHeaders, runtime *dara.RuntimeOptions) (_result *DeleteEmployeesFromCustomRoleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteEmployeesFromCustomRoleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3529,9 +3635,11 @@ func (client *Client) DeleteEmployeesFromCustomRoleWithContext(ctx context.Conte
 //
 // @return DeleteInvoiceEntityResponse
 func (client *Client) DeleteInvoiceEntityWithContext(ctx context.Context, tmpReq *DeleteInvoiceEntityRequest, headers *DeleteInvoiceEntityHeaders, runtime *dara.RuntimeOptions) (_result *DeleteInvoiceEntityResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteInvoiceEntityShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3597,9 +3705,11 @@ func (client *Client) DeleteInvoiceEntityWithContext(ctx context.Context, tmpReq
 //
 // @return DepartmentSaveResponse
 func (client *Client) DepartmentSaveWithContext(ctx context.Context, tmpReq *DepartmentSaveRequest, headers *DepartmentSaveHeaders, runtime *dara.RuntimeOptions) (_result *DepartmentSaveResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DepartmentSaveShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3657,9 +3767,11 @@ func (client *Client) DepartmentSaveWithContext(ctx context.Context, tmpReq *Dep
 //
 // @return ElectronicItineraryBatchApplyResponse
 func (client *Client) ElectronicItineraryBatchApplyWithContext(ctx context.Context, tmpReq *ElectronicItineraryBatchApplyRequest, headers *ElectronicItineraryBatchApplyHeaders, runtime *dara.RuntimeOptions) (_result *ElectronicItineraryBatchApplyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ElectronicItineraryBatchApplyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3721,9 +3833,11 @@ func (client *Client) ElectronicItineraryBatchApplyWithContext(ctx context.Conte
 //
 // @return ElectronicItineraryGetApplyResultResponse
 func (client *Client) ElectronicItineraryGetApplyResultWithContext(ctx context.Context, request *ElectronicItineraryGetApplyResultRequest, headers *ElectronicItineraryGetApplyResultHeaders, runtime *dara.RuntimeOptions) (_result *ElectronicItineraryGetApplyResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BatchApplyNo) {
@@ -3775,9 +3889,11 @@ func (client *Client) ElectronicItineraryGetApplyResultWithContext(ctx context.C
 //
 // @return EntityAddResponse
 func (client *Client) EntityAddWithContext(ctx context.Context, tmpReq *EntityAddRequest, headers *EntityAddHeaders, runtime *dara.RuntimeOptions) (_result *EntityAddResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &EntityAddShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3839,9 +3955,11 @@ func (client *Client) EntityAddWithContext(ctx context.Context, tmpReq *EntityAd
 //
 // @return EntityDeleteResponse
 func (client *Client) EntityDeleteWithContext(ctx context.Context, tmpReq *EntityDeleteRequest, headers *EntityDeleteHeaders, runtime *dara.RuntimeOptions) (_result *EntityDeleteResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &EntityDeleteShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3909,9 +4027,11 @@ func (client *Client) EntityDeleteWithContext(ctx context.Context, tmpReq *Entit
 //
 // @return EntitySetResponse
 func (client *Client) EntitySetWithContext(ctx context.Context, tmpReq *EntitySetRequest, headers *EntitySetHeaders, runtime *dara.RuntimeOptions) (_result *EntitySetResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &EntitySetShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3973,9 +4093,11 @@ func (client *Client) EntitySetWithContext(ctx context.Context, tmpReq *EntitySe
 //
 // @return EstimatedPriceQueryResponse
 func (client *Client) EstimatedPriceQueryWithContext(ctx context.Context, request *EstimatedPriceQueryRequest, headers *EstimatedPriceQueryHeaders, runtime *dara.RuntimeOptions) (_result *EstimatedPriceQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ArrCity) {
@@ -4055,9 +4177,11 @@ func (client *Client) EstimatedPriceQueryWithContext(ctx context.Context, reques
 //
 // @return ExceedApplySyncResponse
 func (client *Client) ExceedApplySyncWithContext(ctx context.Context, request *ExceedApplySyncRequest, headers *ExceedApplySyncHeaders, runtime *dara.RuntimeOptions) (_result *ExceedApplySyncResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplyId) {
@@ -4129,9 +4253,11 @@ func (client *Client) ExceedApplySyncWithContext(ctx context.Context, request *E
 //
 // @return ExternalUserAddResponse
 func (client *Client) ExternalUserAddWithContext(ctx context.Context, tmpReq *ExternalUserAddRequest, headers *ExternalUserAddHeaders, runtime *dara.RuntimeOptions) (_result *ExternalUserAddResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ExternalUserAddShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4301,9 +4427,11 @@ func (client *Client) ExternalUserQueryWithContext(ctx context.Context, external
 //
 // @return ExternalUserUpdateResponse
 func (client *Client) ExternalUserUpdateWithContext(ctx context.Context, externalUserId *string, tmpReq *ExternalUserUpdateRequest, headers *ExternalUserUpdateHeaders, runtime *dara.RuntimeOptions) (_result *ExternalUserUpdateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ExternalUserUpdateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4381,13 +4509,23 @@ func (client *Client) ExternalUserUpdateWithContext(ctx context.Context, externa
 //
 // @return FlightBillSettlementQueryResponse
 func (client *Client) FlightBillSettlementQueryWithContext(ctx context.Context, request *FlightBillSettlementQueryRequest, headers *FlightBillSettlementQueryHeaders, runtime *dara.RuntimeOptions) (_result *FlightBillSettlementQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillRecordTimeEnd) {
+		query["bill_record_time_end"] = request.BillRecordTimeEnd
+	}
+
+	if !dara.IsNil(request.BillRecordTimeStart) {
+		query["bill_record_time_start"] = request.BillRecordTimeStart
 	}
 
 	if !dara.IsNil(request.OrderId) {
@@ -4463,9 +4601,11 @@ func (client *Client) FlightBillSettlementQueryWithContext(ctx context.Context, 
 //
 // @return FlightCancelOrderResponse
 func (client *Client) FlightCancelOrderWithContext(ctx context.Context, request *FlightCancelOrderRequest, headers *FlightCancelOrderHeaders, runtime *dara.RuntimeOptions) (_result *FlightCancelOrderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DisOrderId) {
@@ -4517,9 +4657,11 @@ func (client *Client) FlightCancelOrderWithContext(ctx context.Context, request 
 //
 // @return FlightCancelOrderV2Response
 func (client *Client) FlightCancelOrderV2WithContext(ctx context.Context, request *FlightCancelOrderV2Request, headers *FlightCancelOrderV2Headers, runtime *dara.RuntimeOptions) (_result *FlightCancelOrderV2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsvName) {
@@ -4579,9 +4721,11 @@ func (client *Client) FlightCancelOrderV2WithContext(ctx context.Context, reques
 //
 // @return FlightCreateOrderResponse
 func (client *Client) FlightCreateOrderWithContext(ctx context.Context, tmpReq *FlightCreateOrderRequest, headers *FlightCreateOrderHeaders, runtime *dara.RuntimeOptions) (_result *FlightCreateOrderResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightCreateOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4719,9 +4863,11 @@ func (client *Client) FlightCreateOrderWithContext(ctx context.Context, tmpReq *
 //
 // @return FlightCreateOrderV2Response
 func (client *Client) FlightCreateOrderV2WithContext(ctx context.Context, tmpReq *FlightCreateOrderV2Request, headers *FlightCreateOrderV2Headers, runtime *dara.RuntimeOptions) (_result *FlightCreateOrderV2Response, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightCreateOrderV2ShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4819,9 +4965,11 @@ func (client *Client) FlightCreateOrderV2WithContext(ctx context.Context, tmpReq
 //
 // @return FlightExceedApplyQueryResponse
 func (client *Client) FlightExceedApplyQueryWithContext(ctx context.Context, request *FlightExceedApplyQueryRequest, headers *FlightExceedApplyQueryHeaders, runtime *dara.RuntimeOptions) (_result *FlightExceedApplyQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplyId) {
@@ -4877,9 +5025,11 @@ func (client *Client) FlightExceedApplyQueryWithContext(ctx context.Context, req
 //
 // @return FlightItineraryScanQueryResponse
 func (client *Client) FlightItineraryScanQueryWithContext(ctx context.Context, request *FlightItineraryScanQueryRequest, headers *FlightItineraryScanQueryHeaders, runtime *dara.RuntimeOptions) (_result *FlightItineraryScanQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillDate) {
@@ -4896,6 +5046,10 @@ func (client *Client) FlightItineraryScanQueryWithContext(ctx context.Context, r
 
 	if !dara.IsNil(request.ItineraryNum) {
 		query["itinerary_num"] = request.ItineraryNum
+	}
+
+	if !dara.IsNil(request.OrderId) {
+		query["order_id"] = request.OrderId
 	}
 
 	if !dara.IsNil(request.PageNo) {
@@ -4955,9 +5109,11 @@ func (client *Client) FlightItineraryScanQueryWithContext(ctx context.Context, r
 //
 // @return FlightListingSearchResponse
 func (client *Client) FlightListingSearchWithContext(ctx context.Context, request *FlightListingSearchRequest, headers *FlightListingSearchHeaders, runtime *dara.RuntimeOptions) (_result *FlightListingSearchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AirlineCode) {
@@ -5025,9 +5181,11 @@ func (client *Client) FlightListingSearchWithContext(ctx context.Context, reques
 //
 // @return FlightListingSearchV2Response
 func (client *Client) FlightListingSearchV2WithContext(ctx context.Context, tmpReq *FlightListingSearchV2Request, headers *FlightListingSearchV2Headers, runtime *dara.RuntimeOptions) (_result *FlightListingSearchV2Response, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightListingSearchV2ShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5129,9 +5287,11 @@ func (client *Client) FlightListingSearchV2WithContext(ctx context.Context, tmpR
 //
 // @return FlightModifyApplyV2Response
 func (client *Client) FlightModifyApplyV2WithContext(ctx context.Context, tmpReq *FlightModifyApplyV2Request, headers *FlightModifyApplyV2Headers, runtime *dara.RuntimeOptions) (_result *FlightModifyApplyV2Response, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightModifyApplyV2ShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5229,9 +5389,11 @@ func (client *Client) FlightModifyApplyV2WithContext(ctx context.Context, tmpReq
 //
 // @return FlightModifyCancelV2Response
 func (client *Client) FlightModifyCancelV2WithContext(ctx context.Context, request *FlightModifyCancelV2Request, headers *FlightModifyCancelV2Headers, runtime *dara.RuntimeOptions) (_result *FlightModifyCancelV2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsvName) {
@@ -5299,9 +5461,11 @@ func (client *Client) FlightModifyCancelV2WithContext(ctx context.Context, reque
 //
 // @return FlightModifyListingSearchV2Response
 func (client *Client) FlightModifyListingSearchV2WithContext(ctx context.Context, tmpReq *FlightModifyListingSearchV2Request, headers *FlightModifyListingSearchV2Headers, runtime *dara.RuntimeOptions) (_result *FlightModifyListingSearchV2Response, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightModifyListingSearchV2ShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5415,9 +5579,11 @@ func (client *Client) FlightModifyListingSearchV2WithContext(ctx context.Context
 //
 // @return FlightModifyOrderDetailV2Response
 func (client *Client) FlightModifyOrderDetailV2WithContext(ctx context.Context, request *FlightModifyOrderDetailV2Request, headers *FlightModifyOrderDetailV2Headers, runtime *dara.RuntimeOptions) (_result *FlightModifyOrderDetailV2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsvName) {
@@ -5489,9 +5655,11 @@ func (client *Client) FlightModifyOrderDetailV2WithContext(ctx context.Context, 
 //
 // @return FlightModifyOtaSearchV2Response
 func (client *Client) FlightModifyOtaSearchV2WithContext(ctx context.Context, tmpReq *FlightModifyOtaSearchV2Request, headers *FlightModifyOtaSearchV2Headers, runtime *dara.RuntimeOptions) (_result *FlightModifyOtaSearchV2Response, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightModifyOtaSearchV2ShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5593,9 +5761,11 @@ func (client *Client) FlightModifyOtaSearchV2WithContext(ctx context.Context, tm
 //
 // @return FlightModifyPayV2Response
 func (client *Client) FlightModifyPayV2WithContext(ctx context.Context, tmpReq *FlightModifyPayV2Request, headers *FlightModifyPayV2Headers, runtime *dara.RuntimeOptions) (_result *FlightModifyPayV2Response, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightModifyPayV2ShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5677,9 +5847,11 @@ func (client *Client) FlightModifyPayV2WithContext(ctx context.Context, tmpReq *
 //
 // @return FlightOrderDetailInfoResponse
 func (client *Client) FlightOrderDetailInfoWithContext(ctx context.Context, request *FlightOrderDetailInfoRequest, headers *FlightOrderDetailInfoHeaders, runtime *dara.RuntimeOptions) (_result *FlightOrderDetailInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DisOrderId) {
@@ -5731,9 +5903,11 @@ func (client *Client) FlightOrderDetailInfoWithContext(ctx context.Context, requ
 //
 // @return FlightOrderDetailV2Response
 func (client *Client) FlightOrderDetailV2WithContext(ctx context.Context, request *FlightOrderDetailV2Request, headers *FlightOrderDetailV2Headers, runtime *dara.RuntimeOptions) (_result *FlightOrderDetailV2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsvName) {
@@ -5793,9 +5967,11 @@ func (client *Client) FlightOrderDetailV2WithContext(ctx context.Context, reques
 //
 // @return FlightOrderListQueryResponse
 func (client *Client) FlightOrderListQueryWithContext(ctx context.Context, request *FlightOrderListQueryRequest, headers *FlightOrderListQueryHeaders, runtime *dara.RuntimeOptions) (_result *FlightOrderListQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllApply) {
@@ -5887,9 +6063,11 @@ func (client *Client) FlightOrderListQueryWithContext(ctx context.Context, reque
 //
 // @return FlightOrderListQueryV2Response
 func (client *Client) FlightOrderListQueryV2WithContext(ctx context.Context, tmpReq *FlightOrderListQueryV2Request, headers *FlightOrderListQueryV2Headers, runtime *dara.RuntimeOptions) (_result *FlightOrderListQueryV2Response, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightOrderListQueryV2ShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6003,9 +6181,11 @@ func (client *Client) FlightOrderListQueryV2WithContext(ctx context.Context, tmp
 //
 // @return FlightOrderQueryResponse
 func (client *Client) FlightOrderQueryWithContext(ctx context.Context, request *FlightOrderQueryRequest, headers *FlightOrderQueryHeaders, runtime *dara.RuntimeOptions) (_result *FlightOrderQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -6061,17 +6241,27 @@ func (client *Client) FlightOrderQueryWithContext(ctx context.Context, request *
 //
 // @return FlightOtaItemDetailResponse
 func (client *Client) FlightOtaItemDetailWithContext(ctx context.Context, request *FlightOtaItemDetailRequest, headers *FlightOtaItemDetailHeaders, runtime *dara.RuntimeOptions) (_result *FlightOtaItemDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsvName) {
 		query["isv_name"] = request.IsvName
 	}
 
+	if !dara.IsNil(request.OrderId) {
+		query["order_id"] = request.OrderId
+	}
+
 	if !dara.IsNil(request.OtaItemId) {
 		query["ota_item_id"] = request.OtaItemId
+	}
+
+	if !dara.IsNil(request.OutOrderId) {
+		query["out_order_id"] = request.OutOrderId
 	}
 
 	realHeaders := make(map[string]*string)
@@ -6119,9 +6309,11 @@ func (client *Client) FlightOtaItemDetailWithContext(ctx context.Context, reques
 //
 // @return FlightOtaSearchResponse
 func (client *Client) FlightOtaSearchWithContext(ctx context.Context, request *FlightOtaSearchRequest, headers *FlightOtaSearchHeaders, runtime *dara.RuntimeOptions) (_result *FlightOtaSearchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AirlineCode) {
@@ -6197,9 +6389,11 @@ func (client *Client) FlightOtaSearchWithContext(ctx context.Context, request *F
 //
 // @return FlightOtaSearchV2Response
 func (client *Client) FlightOtaSearchV2WithContext(ctx context.Context, tmpReq *FlightOtaSearchV2Request, headers *FlightOtaSearchV2Headers, runtime *dara.RuntimeOptions) (_result *FlightOtaSearchV2Response, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightOtaSearchV2ShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6285,9 +6479,11 @@ func (client *Client) FlightOtaSearchV2WithContext(ctx context.Context, tmpReq *
 //
 // @return FlightPayOrderResponse
 func (client *Client) FlightPayOrderWithContext(ctx context.Context, tmpReq *FlightPayOrderRequest, headers *FlightPayOrderHeaders, runtime *dara.RuntimeOptions) (_result *FlightPayOrderResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightPayOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6361,9 +6557,11 @@ func (client *Client) FlightPayOrderWithContext(ctx context.Context, tmpReq *Fli
 //
 // @return FlightPayOrderV2Response
 func (client *Client) FlightPayOrderV2WithContext(ctx context.Context, request *FlightPayOrderV2Request, headers *FlightPayOrderV2Headers, runtime *dara.RuntimeOptions) (_result *FlightPayOrderV2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.IsvName) {
@@ -6431,9 +6629,11 @@ func (client *Client) FlightPayOrderV2WithContext(ctx context.Context, request *
 //
 // @return FlightRefundApplyResponse
 func (client *Client) FlightRefundApplyWithContext(ctx context.Context, tmpReq *FlightRefundApplyRequest, headers *FlightRefundApplyHeaders, runtime *dara.RuntimeOptions) (_result *FlightRefundApplyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightRefundApplyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6551,9 +6751,11 @@ func (client *Client) FlightRefundApplyWithContext(ctx context.Context, tmpReq *
 //
 // @return FlightRefundApplyV2Response
 func (client *Client) FlightRefundApplyV2WithContext(ctx context.Context, tmpReq *FlightRefundApplyV2Request, headers *FlightRefundApplyV2Headers, runtime *dara.RuntimeOptions) (_result *FlightRefundApplyV2Response, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightRefundApplyV2ShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6659,9 +6861,11 @@ func (client *Client) FlightRefundApplyV2WithContext(ctx context.Context, tmpReq
 //
 // @return FlightRefundDetailResponse
 func (client *Client) FlightRefundDetailWithContext(ctx context.Context, request *FlightRefundDetailRequest, headers *FlightRefundDetailHeaders, runtime *dara.RuntimeOptions) (_result *FlightRefundDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DisOrderId) {
@@ -6717,9 +6921,11 @@ func (client *Client) FlightRefundDetailWithContext(ctx context.Context, request
 //
 // @return FlightRefundDetailV2Response
 func (client *Client) FlightRefundDetailV2WithContext(ctx context.Context, request *FlightRefundDetailV2Request, headers *FlightRefundDetailV2Headers, runtime *dara.RuntimeOptions) (_result *FlightRefundDetailV2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsvName) {
@@ -6787,9 +6993,11 @@ func (client *Client) FlightRefundDetailV2WithContext(ctx context.Context, reque
 //
 // @return FlightRefundPreCalResponse
 func (client *Client) FlightRefundPreCalWithContext(ctx context.Context, tmpReq *FlightRefundPreCalRequest, headers *FlightRefundPreCalHeaders, runtime *dara.RuntimeOptions) (_result *FlightRefundPreCalResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightRefundPreCalShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6855,9 +7063,11 @@ func (client *Client) FlightRefundPreCalWithContext(ctx context.Context, tmpReq 
 //
 // @return FlightRefundPreCalV2Response
 func (client *Client) FlightRefundPreCalV2WithContext(ctx context.Context, tmpReq *FlightRefundPreCalV2Request, headers *FlightRefundPreCalV2Headers, runtime *dara.RuntimeOptions) (_result *FlightRefundPreCalV2Response, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightRefundPreCalV2ShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6943,9 +7153,11 @@ func (client *Client) FlightRefundPreCalV2WithContext(ctx context.Context, tmpRe
 //
 // @return FlightSearchListResponse
 func (client *Client) FlightSearchListWithContext(ctx context.Context, request *FlightSearchListRequest, headers *FlightSearchListHeaders, runtime *dara.RuntimeOptions) (_result *FlightSearchListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AirlineCode) {
@@ -7049,13 +7261,23 @@ func (client *Client) FlightSearchListWithContext(ctx context.Context, request *
 //
 // @return FuPointBillSettlementQueryResponse
 func (client *Client) FuPointBillSettlementQueryWithContext(ctx context.Context, request *FuPointBillSettlementQueryRequest, headers *FuPointBillSettlementQueryHeaders, runtime *dara.RuntimeOptions) (_result *FuPointBillSettlementQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillRecordTimeEnd) {
+		query["bill_record_time_end"] = request.BillRecordTimeEnd
+	}
+
+	if !dara.IsNil(request.BillRecordTimeStart) {
+		query["bill_record_time_start"] = request.BillRecordTimeStart
 	}
 
 	if !dara.IsNil(request.CooperatorId) {
@@ -7135,9 +7357,11 @@ func (client *Client) FuPointBillSettlementQueryWithContext(ctx context.Context,
 //
 // @return GroupCorpTokenResponse
 func (client *Client) GroupCorpTokenWithContext(ctx context.Context, request *GroupCorpTokenRequest, headers *GroupCorpTokenHeaders, runtime *dara.RuntimeOptions) (_result *GroupCorpTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppSecret) {
@@ -7197,9 +7421,11 @@ func (client *Client) GroupCorpTokenWithContext(ctx context.Context, request *Gr
 //
 // @return GroupDepartSaveResponse
 func (client *Client) GroupDepartSaveWithContext(ctx context.Context, tmpReq *GroupDepartSaveRequest, headers *GroupDepartSaveHeaders, runtime *dara.RuntimeOptions) (_result *GroupDepartSaveResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GroupDepartSaveShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7281,9 +7507,11 @@ func (client *Client) GroupDepartSaveWithContext(ctx context.Context, tmpReq *Gr
 //
 // @return GroupUserSaveResponse
 func (client *Client) GroupUserSaveWithContext(ctx context.Context, tmpReq *GroupUserSaveRequest, headers *GroupUserSaveHeaders, runtime *dara.RuntimeOptions) (_result *GroupUserSaveResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GroupUserSaveShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7381,9 +7609,11 @@ func (client *Client) GroupUserSaveWithContext(ctx context.Context, tmpReq *Grou
 //
 // @return HotelAskingPriceResponse
 func (client *Client) HotelAskingPriceWithContext(ctx context.Context, tmpReq *HotelAskingPriceRequest, headers *HotelAskingPriceHeaders, runtime *dara.RuntimeOptions) (_result *HotelAskingPriceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &HotelAskingPriceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7485,13 +7715,23 @@ func (client *Client) HotelAskingPriceWithContext(ctx context.Context, tmpReq *H
 //
 // @return HotelBillSettlementQueryResponse
 func (client *Client) HotelBillSettlementQueryWithContext(ctx context.Context, request *HotelBillSettlementQueryRequest, headers *HotelBillSettlementQueryHeaders, runtime *dara.RuntimeOptions) (_result *HotelBillSettlementQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillRecordTimeEnd) {
+		query["bill_record_time_end"] = request.BillRecordTimeEnd
+	}
+
+	if !dara.IsNil(request.BillRecordTimeStart) {
+		query["bill_record_time_start"] = request.BillRecordTimeStart
 	}
 
 	if !dara.IsNil(request.OrderId) {
@@ -7567,9 +7807,11 @@ func (client *Client) HotelBillSettlementQueryWithContext(ctx context.Context, r
 //
 // @return HotelCityCodeListResponse
 func (client *Client) HotelCityCodeListWithContext(ctx context.Context, request *HotelCityCodeListRequest, headers *HotelCityCodeListHeaders, runtime *dara.RuntimeOptions) (_result *HotelCityCodeListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CountryCode) {
@@ -7621,9 +7863,11 @@ func (client *Client) HotelCityCodeListWithContext(ctx context.Context, request 
 //
 // @return HotelExceedApplyQueryResponse
 func (client *Client) HotelExceedApplyQueryWithContext(ctx context.Context, request *HotelExceedApplyQueryRequest, headers *HotelExceedApplyQueryHeaders, runtime *dara.RuntimeOptions) (_result *HotelExceedApplyQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplyId) {
@@ -7679,9 +7923,11 @@ func (client *Client) HotelExceedApplyQueryWithContext(ctx context.Context, requ
 //
 // @return HotelGoodsQueryResponse
 func (client *Client) HotelGoodsQueryWithContext(ctx context.Context, request *HotelGoodsQueryRequest, headers *HotelGoodsQueryHeaders, runtime *dara.RuntimeOptions) (_result *HotelGoodsQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AdultNum) {
@@ -7777,9 +8023,11 @@ func (client *Client) HotelGoodsQueryWithContext(ctx context.Context, request *H
 //
 // @return HotelIndexInfoResponse
 func (client *Client) HotelIndexInfoWithContext(ctx context.Context, request *HotelIndexInfoRequest, headers *HotelIndexInfoHeaders, runtime *dara.RuntimeOptions) (_result *HotelIndexInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CityCode) {
@@ -7843,9 +8091,11 @@ func (client *Client) HotelIndexInfoWithContext(ctx context.Context, request *Ho
 //
 // @return HotelOrderCancelResponse
 func (client *Client) HotelOrderCancelWithContext(ctx context.Context, request *HotelOrderCancelRequest, headers *HotelOrderCancelHeaders, runtime *dara.RuntimeOptions) (_result *HotelOrderCancelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BtripOrderId) {
@@ -7901,9 +8151,11 @@ func (client *Client) HotelOrderCancelWithContext(ctx context.Context, request *
 //
 // @return HotelOrderChangeApplyResponse
 func (client *Client) HotelOrderChangeApplyWithContext(ctx context.Context, tmpReq *HotelOrderChangeApplyRequest, headers *HotelOrderChangeApplyHeaders, runtime *dara.RuntimeOptions) (_result *HotelOrderChangeApplyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &HotelOrderChangeApplyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7977,9 +8229,11 @@ func (client *Client) HotelOrderChangeApplyWithContext(ctx context.Context, tmpR
 //
 // @return HotelOrderChangeDetailResponse
 func (client *Client) HotelOrderChangeDetailWithContext(ctx context.Context, request *HotelOrderChangeDetailRequest, headers *HotelOrderChangeDetailHeaders, runtime *dara.RuntimeOptions) (_result *HotelOrderChangeDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BtripUserId) {
@@ -8043,14 +8297,20 @@ func (client *Client) HotelOrderChangeDetailWithContext(ctx context.Context, req
 //
 // @return HotelOrderCreateResponse
 func (client *Client) HotelOrderCreateWithContext(ctx context.Context, tmpReq *HotelOrderCreateRequest, headers *HotelOrderCreateHeaders, runtime *dara.RuntimeOptions) (_result *HotelOrderCreateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &HotelOrderCreateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
 	if !dara.IsNil(tmpReq.InvoiceInfo) {
 		request.InvoiceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InvoiceInfo, dara.String("invoice_info"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.MemberInfo) {
+		request.MemberInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MemberInfo, dara.String("member_info"), dara.String("json"))
 	}
 
 	if !dara.IsNil(tmpReq.OccupantInfoList) {
@@ -8108,6 +8368,10 @@ func (client *Client) HotelOrderCreateWithContext(ctx context.Context, tmpReq *H
 
 	if !dara.IsNil(request.ItineraryNo) {
 		body["itinerary_no"] = request.ItineraryNo
+	}
+
+	if !dara.IsNil(request.MemberInfoShrink) {
+		body["member_info"] = request.MemberInfoShrink
 	}
 
 	if !dara.IsNil(request.OccupantInfoListShrink) {
@@ -8195,9 +8459,11 @@ func (client *Client) HotelOrderCreateWithContext(ctx context.Context, tmpReq *H
 //
 // @return HotelOrderDetailInfoResponse
 func (client *Client) HotelOrderDetailInfoWithContext(ctx context.Context, request *HotelOrderDetailInfoRequest, headers *HotelOrderDetailInfoHeaders, runtime *dara.RuntimeOptions) (_result *HotelOrderDetailInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BtripOrderId) {
@@ -8295,9 +8561,11 @@ func (client *Client) HotelOrderInfoQueryWithContext(ctx context.Context, orderI
 //
 // @return HotelOrderListQueryResponse
 func (client *Client) HotelOrderListQueryWithContext(ctx context.Context, request *HotelOrderListQueryRequest, headers *HotelOrderListQueryHeaders, runtime *dara.RuntimeOptions) (_result *HotelOrderListQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllApply) {
@@ -8393,9 +8661,11 @@ func (client *Client) HotelOrderListQueryWithContext(ctx context.Context, reques
 //
 // @return HotelOrderPayResponse
 func (client *Client) HotelOrderPayWithContext(ctx context.Context, request *HotelOrderPayRequest, headers *HotelOrderPayHeaders, runtime *dara.RuntimeOptions) (_result *HotelOrderPayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BtripOrderId) {
@@ -8471,9 +8741,11 @@ func (client *Client) HotelOrderPayWithContext(ctx context.Context, request *Hot
 //
 // @return HotelOrderPreValidateResponse
 func (client *Client) HotelOrderPreValidateWithContext(ctx context.Context, tmpReq *HotelOrderPreValidateRequest, headers *HotelOrderPreValidateHeaders, runtime *dara.RuntimeOptions) (_result *HotelOrderPreValidateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &HotelOrderPreValidateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8512,6 +8784,10 @@ func (client *Client) HotelOrderPreValidateWithContext(ctx context.Context, tmpR
 
 	if !dara.IsNil(request.OccupantInfoListShrink) {
 		query["occupant_info_list"] = request.OccupantInfoListShrink
+	}
+
+	if !dara.IsNil(request.RateKey) {
+		query["rate_key"] = request.RateKey
 	}
 
 	if !dara.IsNil(request.RatePlanId) {
@@ -8583,9 +8859,11 @@ func (client *Client) HotelOrderPreValidateWithContext(ctx context.Context, tmpR
 //
 // @return HotelOrderQueryResponse
 func (client *Client) HotelOrderQueryWithContext(ctx context.Context, request *HotelOrderQueryRequest, headers *HotelOrderQueryHeaders, runtime *dara.RuntimeOptions) (_result *HotelOrderQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -8637,9 +8915,11 @@ func (client *Client) HotelOrderQueryWithContext(ctx context.Context, request *H
 //
 // @return HotelPricePullResponse
 func (client *Client) HotelPricePullWithContext(ctx context.Context, tmpReq *HotelPricePullRequest, headers *HotelPricePullHeaders, runtime *dara.RuntimeOptions) (_result *HotelPricePullResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &HotelPricePullShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8717,9 +8997,11 @@ func (client *Client) HotelPricePullWithContext(ctx context.Context, tmpReq *Hot
 //
 // @return HotelRoomInfoResponse
 func (client *Client) HotelRoomInfoWithContext(ctx context.Context, tmpReq *HotelRoomInfoRequest, headers *HotelRoomInfoHeaders, runtime *dara.RuntimeOptions) (_result *HotelRoomInfoResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &HotelRoomInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8777,9 +9059,11 @@ func (client *Client) HotelRoomInfoWithContext(ctx context.Context, tmpReq *Hote
 //
 // @return HotelSearchResponse
 func (client *Client) HotelSearchWithContext(ctx context.Context, tmpReq *HotelSearchRequest, headers *HotelSearchHeaders, runtime *dara.RuntimeOptions) (_result *HotelSearchResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &HotelSearchShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8925,9 +9209,11 @@ func (client *Client) HotelSearchWithContext(ctx context.Context, tmpReq *HotelS
 //
 // @return HotelStaticInfoResponse
 func (client *Client) HotelStaticInfoWithContext(ctx context.Context, tmpReq *HotelStaticInfoRequest, headers *HotelStaticInfoHeaders, runtime *dara.RuntimeOptions) (_result *HotelStaticInfoResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &HotelStaticInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8985,9 +9271,11 @@ func (client *Client) HotelStaticInfoWithContext(ctx context.Context, tmpReq *Ho
 //
 // @return HotelSuggestV2Response
 func (client *Client) HotelSuggestV2WithContext(ctx context.Context, request *HotelSuggestV2Request, headers *HotelSuggestV2Headers, runtime *dara.RuntimeOptions) (_result *HotelSuggestV2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BtripUserId) {
@@ -9049,7 +9337,7 @@ func (client *Client) HotelSuggestV2WithContext(ctx context.Context, request *Ho
 
 // Summary:
 //
-// 国际机票订单详情
+// # International Flight Order Details
 //
 // @param request - IFlightOrderDetailQueryRequest
 //
@@ -9059,9 +9347,11 @@ func (client *Client) HotelSuggestV2WithContext(ctx context.Context, request *Ho
 //
 // @return IFlightOrderDetailQueryResponse
 func (client *Client) IFlightOrderDetailQueryWithContext(ctx context.Context, request *IFlightOrderDetailQueryRequest, headers *IFlightOrderDetailQueryHeaders, runtime *dara.RuntimeOptions) (_result *IFlightOrderDetailQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -9113,9 +9403,11 @@ func (client *Client) IFlightOrderDetailQueryWithContext(ctx context.Context, re
 //
 // @return IFlightOrderListQueryResponse
 func (client *Client) IFlightOrderListQueryWithContext(ctx context.Context, tmpReq *IFlightOrderListQueryRequest, headers *IFlightOrderListQueryHeaders, runtime *dara.RuntimeOptions) (_result *IFlightOrderListQueryResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &IFlightOrderListQueryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9203,6 +9495,98 @@ func (client *Client) IFlightOrderListQueryWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
+// 查询国际/中国港澳台用车记账数据
+//
+// @param request - IeCarBillSettlementQueryRequest
+//
+// @param headers - IeCarBillSettlementQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IeCarBillSettlementQueryResponse
+func (client *Client) IeCarBillSettlementQueryWithContext(ctx context.Context, request *IeCarBillSettlementQueryRequest, headers *IeCarBillSettlementQueryHeaders, runtime *dara.RuntimeOptions) (_result *IeCarBillSettlementQueryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BillBatch) {
+		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillRecordTimeEnd) {
+		query["bill_record_time_end"] = request.BillRecordTimeEnd
+	}
+
+	if !dara.IsNil(request.BillRecordTimeStart) {
+		query["bill_record_time_start"] = request.BillRecordTimeStart
+	}
+
+	if !dara.IsNil(request.OrderId) {
+		query["order_id"] = request.OrderId
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["page_no"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["page_size"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PeriodEnd) {
+		query["period_end"] = request.PeriodEnd
+	}
+
+	if !dara.IsNil(request.PeriodStart) {
+		query["period_start"] = request.PeriodStart
+	}
+
+	if !dara.IsNil(request.ScrollId) {
+		query["scroll_id"] = request.ScrollId
+	}
+
+	if !dara.IsNil(request.ScrollMod) {
+		query["scroll_mod"] = request.ScrollMod
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XAcsBtripSoCorpToken) {
+		realHeaders["x-acs-btrip-so-corp-token"] = dara.String(dara.ToString(dara.StringValue(headers.XAcsBtripSoCorpToken)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("IeCarBillSettlementQuery"),
+		Version:     dara.String("2022-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/open/v1/ieCar-bill-settlement-query"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &IeCarBillSettlementQueryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询国际机票记账数据
 //
 // @param request - IeFlightBillSettlementQueryRequest
@@ -9213,13 +9597,23 @@ func (client *Client) IFlightOrderListQueryWithContext(ctx context.Context, tmpR
 //
 // @return IeFlightBillSettlementQueryResponse
 func (client *Client) IeFlightBillSettlementQueryWithContext(ctx context.Context, request *IeFlightBillSettlementQueryRequest, headers *IeFlightBillSettlementQueryHeaders, runtime *dara.RuntimeOptions) (_result *IeFlightBillSettlementQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillRecordTimeEnd) {
+		query["bill_record_time_end"] = request.BillRecordTimeEnd
+	}
+
+	if !dara.IsNil(request.BillRecordTimeStart) {
+		query["bill_record_time_start"] = request.BillRecordTimeStart
 	}
 
 	if !dara.IsNil(request.OrderId) {
@@ -9295,13 +9689,23 @@ func (client *Client) IeFlightBillSettlementQueryWithContext(ctx context.Context
 //
 // @return IeHotelBillSettlementQueryResponse
 func (client *Client) IeHotelBillSettlementQueryWithContext(ctx context.Context, request *IeHotelBillSettlementQueryRequest, headers *IeHotelBillSettlementQueryHeaders, runtime *dara.RuntimeOptions) (_result *IeHotelBillSettlementQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillRecordTimeEnd) {
+		query["bill_record_time_end"] = request.BillRecordTimeEnd
+	}
+
+	if !dara.IsNil(request.BillRecordTimeStart) {
+		query["bill_record_time_start"] = request.BillRecordTimeStart
 	}
 
 	if !dara.IsNil(request.Category) {
@@ -9381,9 +9785,11 @@ func (client *Client) IeHotelBillSettlementQueryWithContext(ctx context.Context,
 //
 // @return InsInvoiceScanQueryResponse
 func (client *Client) InsInvoiceScanQueryWithContext(ctx context.Context, request *InsInvoiceScanQueryRequest, headers *InsInvoiceScanQueryHeaders, runtime *dara.RuntimeOptions) (_result *InsInvoiceScanQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillDate) {
@@ -9451,9 +9857,11 @@ func (client *Client) InsInvoiceScanQueryWithContext(ctx context.Context, reques
 //
 // @return InsureOrderApplyResponse
 func (client *Client) InsureOrderApplyWithContext(ctx context.Context, request *InsureOrderApplyRequest, headers *InsureOrderApplyHeaders, runtime *dara.RuntimeOptions) (_result *InsureOrderApplyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BtripUserId) {
@@ -9529,9 +9937,11 @@ func (client *Client) InsureOrderApplyWithContext(ctx context.Context, request *
 //
 // @return InsureOrderCancelResponse
 func (client *Client) InsureOrderCancelWithContext(ctx context.Context, insOrderId *string, request *InsureOrderCancelRequest, headers *InsureOrderCancelHeaders, runtime *dara.RuntimeOptions) (_result *InsureOrderCancelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BtripUserId) {
@@ -9595,9 +10005,11 @@ func (client *Client) InsureOrderCancelWithContext(ctx context.Context, insOrder
 //
 // @return InsureOrderCreateResponse
 func (client *Client) InsureOrderCreateWithContext(ctx context.Context, tmpReq *InsureOrderCreateRequest, headers *InsureOrderCreateHeaders, runtime *dara.RuntimeOptions) (_result *InsureOrderCreateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &InsureOrderCreateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9691,9 +10103,11 @@ func (client *Client) InsureOrderCreateWithContext(ctx context.Context, tmpReq *
 //
 // @return InsureOrderDetailResponse
 func (client *Client) InsureOrderDetailWithContext(ctx context.Context, request *InsureOrderDetailRequest, headers *InsureOrderDetailHeaders, runtime *dara.RuntimeOptions) (_result *InsureOrderDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BtripUserId) {
@@ -9761,9 +10175,11 @@ func (client *Client) InsureOrderDetailWithContext(ctx context.Context, request 
 //
 // @return InsureOrderPayResponse
 func (client *Client) InsureOrderPayWithContext(ctx context.Context, insOrderId *string, request *InsureOrderPayRequest, headers *InsureOrderPayHeaders, runtime *dara.RuntimeOptions) (_result *InsureOrderPayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BtripUserId) {
@@ -9839,9 +10255,11 @@ func (client *Client) InsureOrderPayWithContext(ctx context.Context, insOrderId 
 //
 // @return InsureOrderRefundResponse
 func (client *Client) InsureOrderRefundWithContext(ctx context.Context, insOrderId *string, tmpReq *InsureOrderRefundRequest, headers *InsureOrderRefundHeaders, runtime *dara.RuntimeOptions) (_result *InsureOrderRefundResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &InsureOrderRefundShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9969,9 +10387,11 @@ func (client *Client) InsureOrderUrlDetailWithContext(ctx context.Context, insOr
 //
 // @return InsureRefundDetailResponse
 func (client *Client) InsureRefundDetailWithContext(ctx context.Context, request *InsureRefundDetailRequest, headers *InsureRefundDetailHeaders, runtime *dara.RuntimeOptions) (_result *InsureRefundDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplyId) {
@@ -10047,9 +10467,11 @@ func (client *Client) InsureRefundDetailWithContext(ctx context.Context, request
 //
 // @return IntlFlightCreateOrderResponse
 func (client *Client) IntlFlightCreateOrderWithContext(ctx context.Context, tmpReq *IntlFlightCreateOrderRequest, headers *IntlFlightCreateOrderHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightCreateOrderResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &IntlFlightCreateOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -10159,9 +10581,11 @@ func (client *Client) IntlFlightCreateOrderWithContext(ctx context.Context, tmpR
 //
 // @return IntlFlightInventoryPriceCheckResponse
 func (client *Client) IntlFlightInventoryPriceCheckWithContext(ctx context.Context, tmpReq *IntlFlightInventoryPriceCheckRequest, headers *IntlFlightInventoryPriceCheckHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightInventoryPriceCheckResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &IntlFlightInventoryPriceCheckShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -10239,9 +10663,11 @@ func (client *Client) IntlFlightInventoryPriceCheckWithContext(ctx context.Conte
 //
 // @return IntlFlightListingSearchResponse
 func (client *Client) IntlFlightListingSearchWithContext(ctx context.Context, tmpReq *IntlFlightListingSearchRequest, headers *IntlFlightListingSearchHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightListingSearchResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &IntlFlightListingSearchShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -10343,9 +10769,11 @@ func (client *Client) IntlFlightListingSearchWithContext(ctx context.Context, tm
 //
 // @return IntlFlightOrderCancelResponse
 func (client *Client) IntlFlightOrderCancelWithContext(ctx context.Context, request *IntlFlightOrderCancelRequest, headers *IntlFlightOrderCancelHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightOrderCancelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BtripUserId) {
@@ -10413,9 +10841,11 @@ func (client *Client) IntlFlightOrderCancelWithContext(ctx context.Context, requ
 //
 // @return IntlFlightOrderDetailResponse
 func (client *Client) IntlFlightOrderDetailWithContext(ctx context.Context, request *IntlFlightOrderDetailRequest, headers *IntlFlightOrderDetailHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightOrderDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BtripUserId) {
@@ -10483,9 +10913,11 @@ func (client *Client) IntlFlightOrderDetailWithContext(ctx context.Context, requ
 //
 // @return IntlFlightOrderPayResponse
 func (client *Client) IntlFlightOrderPayWithContext(ctx context.Context, request *IntlFlightOrderPayRequest, headers *IntlFlightOrderPayHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightOrderPayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BtripUserId) {
@@ -10557,9 +10989,11 @@ func (client *Client) IntlFlightOrderPayWithContext(ctx context.Context, request
 //
 // @return IntlFlightOrderPayCheckResponse
 func (client *Client) IntlFlightOrderPayCheckWithContext(ctx context.Context, request *IntlFlightOrderPayCheckRequest, headers *IntlFlightOrderPayCheckHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightOrderPayCheckResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BtripUserId) {
@@ -10627,9 +11061,11 @@ func (client *Client) IntlFlightOrderPayCheckWithContext(ctx context.Context, re
 //
 // @return IntlFlightOtaItemDetailResponse
 func (client *Client) IntlFlightOtaItemDetailWithContext(ctx context.Context, otaItemId *string, request *IntlFlightOtaItemDetailRequest, headers *IntlFlightOtaItemDetailHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightOtaItemDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BtripUserId) {
@@ -10697,9 +11133,11 @@ func (client *Client) IntlFlightOtaItemDetailWithContext(ctx context.Context, ot
 //
 // @return IntlFlightOtaSearchResponse
 func (client *Client) IntlFlightOtaSearchWithContext(ctx context.Context, tmpReq *IntlFlightOtaSearchRequest, headers *IntlFlightOtaSearchHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightOtaSearchResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &IntlFlightOtaSearchShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -10785,9 +11223,11 @@ func (client *Client) IntlFlightOtaSearchWithContext(ctx context.Context, tmpReq
 //
 // @return IntlFlightReShopApplyResponse
 func (client *Client) IntlFlightReShopApplyWithContext(ctx context.Context, tmpReq *IntlFlightReShopApplyRequest, headers *IntlFlightReShopApplyHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightReShopApplyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &IntlFlightReShopApplyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -10885,9 +11325,11 @@ func (client *Client) IntlFlightReShopApplyWithContext(ctx context.Context, tmpR
 //
 // @return IntlFlightReShopCancelResponse
 func (client *Client) IntlFlightReShopCancelWithContext(ctx context.Context, request *IntlFlightReShopCancelRequest, headers *IntlFlightReShopCancelHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightReShopCancelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -10951,9 +11393,11 @@ func (client *Client) IntlFlightReShopCancelWithContext(ctx context.Context, req
 //
 // @return IntlFlightReShopConsultResponse
 func (client *Client) IntlFlightReShopConsultWithContext(ctx context.Context, request *IntlFlightReShopConsultRequest, headers *IntlFlightReShopConsultHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightReShopConsultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -11009,9 +11453,11 @@ func (client *Client) IntlFlightReShopConsultWithContext(ctx context.Context, re
 //
 // @return IntlFlightReShopDetailResponse
 func (client *Client) IntlFlightReShopDetailWithContext(ctx context.Context, request *IntlFlightReShopDetailRequest, headers *IntlFlightReShopDetailHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightReShopDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -11075,9 +11521,11 @@ func (client *Client) IntlFlightReShopDetailWithContext(ctx context.Context, req
 //
 // @return IntlFlightReShopPayResponse
 func (client *Client) IntlFlightReShopPayWithContext(ctx context.Context, request *IntlFlightReShopPayRequest, headers *IntlFlightReShopPayHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightReShopPayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -11141,9 +11589,11 @@ func (client *Client) IntlFlightReShopPayWithContext(ctx context.Context, reques
 //
 // @return IntlFlightRefundApplyResponse
 func (client *Client) IntlFlightRefundApplyWithContext(ctx context.Context, tmpReq *IntlFlightRefundApplyRequest, headers *IntlFlightRefundApplyHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightRefundApplyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &IntlFlightRefundApplyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11229,9 +11679,11 @@ func (client *Client) IntlFlightRefundApplyWithContext(ctx context.Context, tmpR
 //
 // @return IntlFlightRefundConsultResponse
 func (client *Client) IntlFlightRefundConsultWithContext(ctx context.Context, request *IntlFlightRefundConsultRequest, headers *IntlFlightRefundConsultHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightRefundConsultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -11287,9 +11739,11 @@ func (client *Client) IntlFlightRefundConsultWithContext(ctx context.Context, re
 //
 // @return IntlFlightRefundDetailResponse
 func (client *Client) IntlFlightRefundDetailWithContext(ctx context.Context, request *IntlFlightRefundDetailRequest, headers *IntlFlightRefundDetailHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightRefundDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -11353,9 +11807,11 @@ func (client *Client) IntlFlightRefundDetailWithContext(ctx context.Context, req
 //
 // @return IntlFlightSegmentAvailableCertResponse
 func (client *Client) IntlFlightSegmentAvailableCertWithContext(ctx context.Context, otaItemId *string, request *IntlFlightSegmentAvailableCertRequest, headers *IntlFlightSegmentAvailableCertHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightSegmentAvailableCertResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsvName) {
@@ -11419,9 +11875,11 @@ func (client *Client) IntlFlightSegmentAvailableCertWithContext(ctx context.Cont
 //
 // @return InvoiceAddResponse
 func (client *Client) InvoiceAddWithContext(ctx context.Context, request *InvoiceAddRequest, headers *InvoiceAddHeaders, runtime *dara.RuntimeOptions) (_result *InvoiceAddResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Address) {
@@ -11434,6 +11892,10 @@ func (client *Client) InvoiceAddWithContext(ctx context.Context, request *Invoic
 
 	if !dara.IsNil(request.BankNo) {
 		body["bank_no"] = request.BankNo
+	}
+
+	if !dara.IsNil(request.MailThirdPartId) {
+		body["mail_third_part_id"] = request.MailThirdPartId
 	}
 
 	if !dara.IsNil(request.TaxNo) {
@@ -11505,9 +11967,11 @@ func (client *Client) InvoiceAddWithContext(ctx context.Context, request *Invoic
 //
 // @return InvoiceDeleteResponse
 func (client *Client) InvoiceDeleteWithContext(ctx context.Context, request *InvoiceDeleteRequest, headers *InvoiceDeleteHeaders, runtime *dara.RuntimeOptions) (_result *InvoiceDeleteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ThirdPartId) {
@@ -11559,9 +12023,11 @@ func (client *Client) InvoiceDeleteWithContext(ctx context.Context, request *Inv
 //
 // @return InvoiceModifyResponse
 func (client *Client) InvoiceModifyWithContext(ctx context.Context, request *InvoiceModifyRequest, headers *InvoiceModifyHeaders, runtime *dara.RuntimeOptions) (_result *InvoiceModifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Address) {
@@ -11574,6 +12040,10 @@ func (client *Client) InvoiceModifyWithContext(ctx context.Context, request *Inv
 
 	if !dara.IsNil(request.BankNo) {
 		body["bank_no"] = request.BankNo
+	}
+
+	if !dara.IsNil(request.MailThirdPartId) {
+		body["mail_third_part_id"] = request.MailThirdPartId
 	}
 
 	if !dara.IsNil(request.TaxNo) {
@@ -11645,9 +12115,11 @@ func (client *Client) InvoiceModifyWithContext(ctx context.Context, request *Inv
 //
 // @return InvoiceRuleAddResponse
 func (client *Client) InvoiceRuleAddWithContext(ctx context.Context, tmpReq *InvoiceRuleAddRequest, headers *InvoiceRuleAddHeaders, runtime *dara.RuntimeOptions) (_result *InvoiceRuleAddResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &InvoiceRuleAddShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11709,9 +12181,11 @@ func (client *Client) InvoiceRuleAddWithContext(ctx context.Context, tmpReq *Inv
 //
 // @return InvoiceRuleDeleteResponse
 func (client *Client) InvoiceRuleDeleteWithContext(ctx context.Context, tmpReq *InvoiceRuleDeleteRequest, headers *InvoiceRuleDeleteHeaders, runtime *dara.RuntimeOptions) (_result *InvoiceRuleDeleteResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &InvoiceRuleDeleteShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11777,9 +12251,11 @@ func (client *Client) InvoiceRuleDeleteWithContext(ctx context.Context, tmpReq *
 //
 // @return InvoiceRuleSaveResponse
 func (client *Client) InvoiceRuleSaveWithContext(ctx context.Context, tmpReq *InvoiceRuleSaveRequest, headers *InvoiceRuleSaveHeaders, runtime *dara.RuntimeOptions) (_result *InvoiceRuleSaveResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &InvoiceRuleSaveShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11849,9 +12325,11 @@ func (client *Client) InvoiceRuleSaveWithContext(ctx context.Context, tmpReq *In
 //
 // @return InvoiceSearchResponse
 func (client *Client) InvoiceSearchWithContext(ctx context.Context, request *InvoiceSearchRequest, headers *InvoiceSearchHeaders, runtime *dara.RuntimeOptions) (_result *InvoiceSearchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ThirdPartId) {
@@ -11911,9 +12389,11 @@ func (client *Client) InvoiceSearchWithContext(ctx context.Context, request *Inv
 //
 // @return IsvRuleSaveResponse
 func (client *Client) IsvRuleSaveWithContext(ctx context.Context, tmpReq *IsvRuleSaveRequest, headers *IsvRuleSaveHeaders, runtime *dara.RuntimeOptions) (_result *IsvRuleSaveResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &IsvRuleSaveShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11991,9 +12471,11 @@ func (client *Client) IsvRuleSaveWithContext(ctx context.Context, tmpReq *IsvRul
 //
 // @return IsvUserSaveResponse
 func (client *Client) IsvUserSaveWithContext(ctx context.Context, tmpReq *IsvUserSaveRequest, headers *IsvUserSaveHeaders, runtime *dara.RuntimeOptions) (_result *IsvUserSaveResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &IsvUserSaveShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12051,9 +12533,11 @@ func (client *Client) IsvUserSaveWithContext(ctx context.Context, tmpReq *IsvUse
 //
 // @return MealApplyAddResponse
 func (client *Client) MealApplyAddWithContext(ctx context.Context, tmpReq *MealApplyAddRequest, headers *MealApplyAddHeaders, runtime *dara.RuntimeOptions) (_result *MealApplyAddResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &MealApplyAddShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12072,6 +12556,10 @@ func (client *Client) MealApplyAddWithContext(ctx context.Context, tmpReq *MealA
 
 	if !dara.IsNil(request.CostCenterId) {
 		body["cost_center_id"] = request.CostCenterId
+	}
+
+	if !dara.IsNil(request.ExtendField) {
+		body["extend_field"] = request.ExtendField
 	}
 
 	if !dara.IsNil(request.InvoiceId) {
@@ -12159,9 +12647,11 @@ func (client *Client) MealApplyAddWithContext(ctx context.Context, tmpReq *MealA
 //
 // @return MealApplyApproveResponse
 func (client *Client) MealApplyApproveWithContext(ctx context.Context, request *MealApplyApproveRequest, headers *MealApplyApproveHeaders, runtime *dara.RuntimeOptions) (_result *MealApplyApproveResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.OperateTime) {
@@ -12229,9 +12719,11 @@ func (client *Client) MealApplyApproveWithContext(ctx context.Context, request *
 //
 // @return MealApplyQueryResponse
 func (client *Client) MealApplyQueryWithContext(ctx context.Context, request *MealApplyQueryRequest, headers *MealApplyQueryHeaders, runtime *dara.RuntimeOptions) (_result *MealApplyQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ThirdPartApplyId) {
@@ -12283,13 +12775,23 @@ func (client *Client) MealApplyQueryWithContext(ctx context.Context, request *Me
 //
 // @return MealBillSettlementQueryResponse
 func (client *Client) MealBillSettlementQueryWithContext(ctx context.Context, request *MealBillSettlementQueryRequest, headers *MealBillSettlementQueryHeaders, runtime *dara.RuntimeOptions) (_result *MealBillSettlementQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillRecordTimeEnd) {
+		query["bill_record_time_end"] = request.BillRecordTimeEnd
+	}
+
+	if !dara.IsNil(request.BillRecordTimeStart) {
+		query["bill_record_time_start"] = request.BillRecordTimeStart
 	}
 
 	if !dara.IsNil(request.OrderId) {
@@ -12365,9 +12867,11 @@ func (client *Client) MealBillSettlementQueryWithContext(ctx context.Context, re
 //
 // @return MealOrderDetailQueryResponse
 func (client *Client) MealOrderDetailQueryWithContext(ctx context.Context, orderId *string, request *MealOrderDetailQueryRequest, headers *MealOrderDetailQueryHeaders, runtime *dara.RuntimeOptions) (_result *MealOrderDetailQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.UserId) {
@@ -12419,9 +12923,11 @@ func (client *Client) MealOrderDetailQueryWithContext(ctx context.Context, order
 //
 // @return MealOrderListQueryResponse
 func (client *Client) MealOrderListQueryWithContext(ctx context.Context, request *MealOrderListQueryRequest, headers *MealOrderListQueryHeaders, runtime *dara.RuntimeOptions) (_result *MealOrderListQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.UserId) {
@@ -12473,9 +12979,11 @@ func (client *Client) MealOrderListQueryWithContext(ctx context.Context, request
 //
 // @return MonthBillConfirmResponse
 func (client *Client) MonthBillConfirmWithContext(ctx context.Context, request *MonthBillConfirmRequest, headers *MonthBillConfirmHeaders, runtime *dara.RuntimeOptions) (_result *MonthBillConfirmResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.MailBillDate) {
@@ -12531,9 +13039,11 @@ func (client *Client) MonthBillConfirmWithContext(ctx context.Context, request *
 //
 // @return MonthBillGetResponse
 func (client *Client) MonthBillGetWithContext(ctx context.Context, request *MonthBillGetRequest, headers *MonthBillGetHeaders, runtime *dara.RuntimeOptions) (_result *MonthBillGetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillBatch) {
@@ -12589,9 +13099,11 @@ func (client *Client) MonthBillGetWithContext(ctx context.Context, request *Mont
 //
 // @return MonthBillSplitGetResponse
 func (client *Client) MonthBillSplitGetWithContext(ctx context.Context, tmpReq *MonthBillSplitGetRequest, headers *MonthBillSplitGetHeaders, runtime *dara.RuntimeOptions) (_result *MonthBillSplitGetResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &MonthBillSplitGetShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12661,9 +13173,11 @@ func (client *Client) MonthBillSplitGetWithContext(ctx context.Context, tmpReq *
 //
 // @return OrderRefundDetailQueryResponse
 func (client *Client) OrderRefundDetailQueryWithContext(ctx context.Context, request *OrderRefundDetailQueryRequest, headers *OrderRefundDetailQueryHeaders, runtime *dara.RuntimeOptions) (_result *OrderRefundDetailQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CooperatorOrderId) {
@@ -12719,9 +13233,11 @@ func (client *Client) OrderRefundDetailQueryWithContext(ctx context.Context, req
 //
 // @return ProjectAddResponse
 func (client *Client) ProjectAddWithContext(ctx context.Context, request *ProjectAddRequest, headers *ProjectAddHeaders, runtime *dara.RuntimeOptions) (_result *ProjectAddResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Code) {
@@ -12789,9 +13305,11 @@ func (client *Client) ProjectAddWithContext(ctx context.Context, request *Projec
 //
 // @return ProjectDeleteResponse
 func (client *Client) ProjectDeleteWithContext(ctx context.Context, request *ProjectDeleteRequest, headers *ProjectDeleteHeaders, runtime *dara.RuntimeOptions) (_result *ProjectDeleteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ThirdPartId) {
@@ -12843,9 +13361,11 @@ func (client *Client) ProjectDeleteWithContext(ctx context.Context, request *Pro
 //
 // @return ProjectModifyResponse
 func (client *Client) ProjectModifyWithContext(ctx context.Context, request *ProjectModifyRequest, headers *ProjectModifyHeaders, runtime *dara.RuntimeOptions) (_result *ProjectModifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Code) {
@@ -12903,6 +13423,70 @@ func (client *Client) ProjectModifyWithContext(ctx context.Context, request *Pro
 
 // Summary:
 //
+// 查询赔付信息
+//
+// @param request - QueryCompenInfosForOpRequest
+//
+// @param headers - QueryCompenInfosForOpHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCompenInfosForOpResponse
+func (client *Client) QueryCompenInfosForOpWithContext(ctx context.Context, request *QueryCompenInfosForOpRequest, headers *QueryCompenInfosForOpHeaders, runtime *dara.RuntimeOptions) (_result *QueryCompenInfosForOpResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Category) {
+		query["category"] = request.Category
+	}
+
+	if !dara.IsNil(request.CompenId) {
+		query["compen_id"] = request.CompenId
+	}
+
+	if !dara.IsNil(request.OrderId) {
+		query["order_id"] = request.OrderId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XAcsBtripSoCorpToken) {
+		realHeaders["x-acs-btrip-so-corp-token"] = dara.String(dara.ToString(dara.StringValue(headers.XAcsBtripSoCorpToken)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryCompenInfosForOp"),
+		Version:     dara.String("2022-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/compen/v1/queryCompenInfosForOp"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryCompenInfosForOpResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询企业信息详情
 //
 // @param request - QueryCorpDetailInfoRequest
@@ -12913,9 +13497,11 @@ func (client *Client) ProjectModifyWithContext(ctx context.Context, request *Pro
 //
 // @return QueryCorpDetailInfoResponse
 func (client *Client) QueryCorpDetailInfoWithContext(ctx context.Context, request *QueryCorpDetailInfoRequest, headers *QueryCorpDetailInfoHeaders, runtime *dara.RuntimeOptions) (_result *QueryCorpDetailInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -12975,9 +13561,11 @@ func (client *Client) QueryCorpDetailInfoWithContext(ctx context.Context, reques
 //
 // @return QueryEmployeeDetailResponse
 func (client *Client) QueryEmployeeDetailWithContext(ctx context.Context, request *QueryEmployeeDetailRequest, headers *QueryEmployeeDetailHeaders, runtime *dara.RuntimeOptions) (_result *QueryEmployeeDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OutEmployeeId) {
@@ -13029,9 +13617,11 @@ func (client *Client) QueryEmployeeDetailWithContext(ctx context.Context, reques
 //
 // @return QueryGroupCorpListResponse
 func (client *Client) QueryGroupCorpListWithContext(ctx context.Context, request *QueryGroupCorpListRequest, headers *QueryGroupCorpListHeaders, runtime *dara.RuntimeOptions) (_result *QueryGroupCorpListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UserId) {
@@ -13083,9 +13673,11 @@ func (client *Client) QueryGroupCorpListWithContext(ctx context.Context, request
 //
 // @return QueryReimbursementOrderResponse
 func (client *Client) QueryReimbursementOrderWithContext(ctx context.Context, request *QueryReimbursementOrderRequest, headers *QueryReimbursementOrderHeaders, runtime *dara.RuntimeOptions) (_result *QueryReimbursementOrderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ReimbOrderNo) {
@@ -13141,9 +13733,11 @@ func (client *Client) QueryReimbursementOrderWithContext(ctx context.Context, re
 //
 // @return SyncSingleUserResponse
 func (client *Client) SyncSingleUserWithContext(ctx context.Context, tmpReq *SyncSingleUserRequest, headers *SyncSingleUserHeaders, runtime *dara.RuntimeOptions) (_result *SyncSingleUserResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SyncSingleUserShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -13241,9 +13835,11 @@ func (client *Client) SyncSingleUserWithContext(ctx context.Context, tmpReq *Syn
 //
 // @return SyncThirdUserMappingResponse
 func (client *Client) SyncThirdUserMappingWithContext(ctx context.Context, request *SyncThirdUserMappingRequest, headers *SyncThirdUserMappingHeaders, runtime *dara.RuntimeOptions) (_result *SyncThirdUserMappingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Status) {
@@ -13391,9 +13987,11 @@ func (client *Client) TBAccountUnbindWithContext(ctx context.Context, userId *st
 //
 // @return TicketChangingApplyResponse
 func (client *Client) TicketChangingApplyWithContext(ctx context.Context, tmpReq *TicketChangingApplyRequest, headers *TicketChangingApplyHeaders, runtime *dara.RuntimeOptions) (_result *TicketChangingApplyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TicketChangingApplyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -13479,9 +14077,11 @@ func (client *Client) TicketChangingApplyWithContext(ctx context.Context, tmpReq
 //
 // @return TicketChangingCancelResponse
 func (client *Client) TicketChangingCancelWithContext(ctx context.Context, request *TicketChangingCancelRequest, headers *TicketChangingCancelHeaders, runtime *dara.RuntimeOptions) (_result *TicketChangingCancelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DisOrderId) {
@@ -13537,9 +14137,11 @@ func (client *Client) TicketChangingCancelWithContext(ctx context.Context, reque
 //
 // @return TicketChangingDetailResponse
 func (client *Client) TicketChangingDetailWithContext(ctx context.Context, request *TicketChangingDetailRequest, headers *TicketChangingDetailHeaders, runtime *dara.RuntimeOptions) (_result *TicketChangingDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DisOrderId) {
@@ -13595,9 +14197,11 @@ func (client *Client) TicketChangingDetailWithContext(ctx context.Context, reque
 //
 // @return TicketChangingEnquiryResponse
 func (client *Client) TicketChangingEnquiryWithContext(ctx context.Context, request *TicketChangingEnquiryRequest, headers *TicketChangingEnquiryHeaders, runtime *dara.RuntimeOptions) (_result *TicketChangingEnquiryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ArrCity) {
@@ -13673,9 +14277,11 @@ func (client *Client) TicketChangingEnquiryWithContext(ctx context.Context, requ
 //
 // @return TicketChangingFlightListResponse
 func (client *Client) TicketChangingFlightListWithContext(ctx context.Context, tmpReq *TicketChangingFlightListRequest, headers *TicketChangingFlightListHeaders, runtime *dara.RuntimeOptions) (_result *TicketChangingFlightListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TicketChangingFlightListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -13753,9 +14359,11 @@ func (client *Client) TicketChangingFlightListWithContext(ctx context.Context, t
 //
 // @return TicketChangingPayResponse
 func (client *Client) TicketChangingPayWithContext(ctx context.Context, tmpReq *TicketChangingPayRequest, headers *TicketChangingPayHeaders, runtime *dara.RuntimeOptions) (_result *TicketChangingPayResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TicketChangingPayShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -13833,9 +14441,11 @@ func (client *Client) TicketChangingPayWithContext(ctx context.Context, tmpReq *
 //
 // @return TrainApplyChangeResponse
 func (client *Client) TrainApplyChangeWithContext(ctx context.Context, tmpReq *TrainApplyChangeRequest, headers *TrainApplyChangeHeaders, runtime *dara.RuntimeOptions) (_result *TrainApplyChangeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TrainApplyChangeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -13919,9 +14529,11 @@ func (client *Client) TrainApplyChangeWithContext(ctx context.Context, tmpReq *T
 //
 // @return TrainApplyRefundResponse
 func (client *Client) TrainApplyRefundWithContext(ctx context.Context, tmpReq *TrainApplyRefundRequest, headers *TrainApplyRefundHeaders, runtime *dara.RuntimeOptions) (_result *TrainApplyRefundResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TrainApplyRefundShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -13991,13 +14603,23 @@ func (client *Client) TrainApplyRefundWithContext(ctx context.Context, tmpReq *T
 //
 // @return TrainBillSettlementQueryResponse
 func (client *Client) TrainBillSettlementQueryWithContext(ctx context.Context, request *TrainBillSettlementQueryRequest, headers *TrainBillSettlementQueryHeaders, runtime *dara.RuntimeOptions) (_result *TrainBillSettlementQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillRecordTimeEnd) {
+		query["bill_record_time_end"] = request.BillRecordTimeEnd
+	}
+
+	if !dara.IsNil(request.BillRecordTimeStart) {
+		query["bill_record_time_start"] = request.BillRecordTimeStart
 	}
 
 	if !dara.IsNil(request.OrderId) {
@@ -14073,9 +14695,11 @@ func (client *Client) TrainBillSettlementQueryWithContext(ctx context.Context, r
 //
 // @return TrainExceedApplyQueryResponse
 func (client *Client) TrainExceedApplyQueryWithContext(ctx context.Context, request *TrainExceedApplyQueryRequest, headers *TrainExceedApplyQueryHeaders, runtime *dara.RuntimeOptions) (_result *TrainExceedApplyQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplyId) {
@@ -14131,9 +14755,11 @@ func (client *Client) TrainExceedApplyQueryWithContext(ctx context.Context, requ
 //
 // @return TrainFeeCalculateChangeResponse
 func (client *Client) TrainFeeCalculateChangeWithContext(ctx context.Context, tmpReq *TrainFeeCalculateChangeRequest, headers *TrainFeeCalculateChangeHeaders, runtime *dara.RuntimeOptions) (_result *TrainFeeCalculateChangeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TrainFeeCalculateChangeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14199,9 +14825,11 @@ func (client *Client) TrainFeeCalculateChangeWithContext(ctx context.Context, tm
 //
 // @return TrainFeeCalculateRefundResponse
 func (client *Client) TrainFeeCalculateRefundWithContext(ctx context.Context, tmpReq *TrainFeeCalculateRefundRequest, headers *TrainFeeCalculateRefundHeaders, runtime *dara.RuntimeOptions) (_result *TrainFeeCalculateRefundResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TrainFeeCalculateRefundShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14267,9 +14895,11 @@ func (client *Client) TrainFeeCalculateRefundWithContext(ctx context.Context, tm
 //
 // @return TrainNoInfoSearchResponse
 func (client *Client) TrainNoInfoSearchWithContext(ctx context.Context, request *TrainNoInfoSearchRequest, headers *TrainNoInfoSearchHeaders, runtime *dara.RuntimeOptions) (_result *TrainNoInfoSearchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ArrLocation) {
@@ -14349,9 +14979,11 @@ func (client *Client) TrainNoInfoSearchWithContext(ctx context.Context, request 
 //
 // @return TrainNoListSearchResponse
 func (client *Client) TrainNoListSearchWithContext(ctx context.Context, tmpReq *TrainNoListSearchRequest, headers *TrainNoListSearchHeaders, runtime *dara.RuntimeOptions) (_result *TrainNoListSearchResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TrainNoListSearchShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14425,9 +15057,11 @@ func (client *Client) TrainNoListSearchWithContext(ctx context.Context, tmpReq *
 //
 // @return TrainOrderCancelResponse
 func (client *Client) TrainOrderCancelWithContext(ctx context.Context, request *TrainOrderCancelRequest, headers *TrainOrderCancelHeaders, runtime *dara.RuntimeOptions) (_result *TrainOrderCancelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ChangeOrderId) {
@@ -14491,9 +15125,11 @@ func (client *Client) TrainOrderCancelWithContext(ctx context.Context, request *
 //
 // @return TrainOrderChangeConfirmResponse
 func (client *Client) TrainOrderChangeConfirmWithContext(ctx context.Context, request *TrainOrderChangeConfirmRequest, headers *TrainOrderChangeConfirmHeaders, runtime *dara.RuntimeOptions) (_result *TrainOrderChangeConfirmResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ChangeApplyId) {
@@ -14561,9 +15197,11 @@ func (client *Client) TrainOrderChangeConfirmWithContext(ctx context.Context, re
 //
 // @return TrainOrderCreateResponse
 func (client *Client) TrainOrderCreateWithContext(ctx context.Context, tmpReq *TrainOrderCreateRequest, headers *TrainOrderCreateHeaders, runtime *dara.RuntimeOptions) (_result *TrainOrderCreateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TrainOrderCreateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14669,9 +15307,11 @@ func (client *Client) TrainOrderCreateWithContext(ctx context.Context, tmpReq *T
 //
 // @return TrainOrderDetailQueryResponse
 func (client *Client) TrainOrderDetailQueryWithContext(ctx context.Context, request *TrainOrderDetailQueryRequest, headers *TrainOrderDetailQueryHeaders, runtime *dara.RuntimeOptions) (_result *TrainOrderDetailQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -14727,9 +15367,11 @@ func (client *Client) TrainOrderDetailQueryWithContext(ctx context.Context, requ
 //
 // @return TrainOrderListQueryResponse
 func (client *Client) TrainOrderListQueryWithContext(ctx context.Context, request *TrainOrderListQueryRequest, headers *TrainOrderListQueryHeaders, runtime *dara.RuntimeOptions) (_result *TrainOrderListQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllApply) {
@@ -14821,9 +15463,11 @@ func (client *Client) TrainOrderListQueryWithContext(ctx context.Context, reques
 //
 // @return TrainOrderPayResponse
 func (client *Client) TrainOrderPayWithContext(ctx context.Context, request *TrainOrderPayRequest, headers *TrainOrderPayHeaders, runtime *dara.RuntimeOptions) (_result *TrainOrderPayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -14883,9 +15527,11 @@ func (client *Client) TrainOrderPayWithContext(ctx context.Context, request *Tra
 //
 // @return TrainOrderQueryResponse
 func (client *Client) TrainOrderQueryWithContext(ctx context.Context, request *TrainOrderQueryRequest, headers *TrainOrderQueryHeaders, runtime *dara.RuntimeOptions) (_result *TrainOrderQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -14941,9 +15587,11 @@ func (client *Client) TrainOrderQueryWithContext(ctx context.Context, request *T
 //
 // @return TrainOrderQueryV2Response
 func (client *Client) TrainOrderQueryV2WithContext(ctx context.Context, request *TrainOrderQueryV2Request, headers *TrainOrderQueryV2Headers, runtime *dara.RuntimeOptions) (_result *TrainOrderQueryV2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -14999,9 +15647,11 @@ func (client *Client) TrainOrderQueryV2WithContext(ctx context.Context, request 
 //
 // @return TrainStationSearchResponse
 func (client *Client) TrainStationSearchWithContext(ctx context.Context, request *TrainStationSearchRequest, headers *TrainStationSearchHeaders, runtime *dara.RuntimeOptions) (_result *TrainStationSearchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -15053,9 +15703,11 @@ func (client *Client) TrainStationSearchWithContext(ctx context.Context, request
 //
 // @return TrainStopoverSearchResponse
 func (client *Client) TrainStopoverSearchWithContext(ctx context.Context, request *TrainStopoverSearchRequest, headers *TrainStopoverSearchHeaders, runtime *dara.RuntimeOptions) (_result *TrainStopoverSearchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ArrStation) {
@@ -15119,9 +15771,11 @@ func (client *Client) TrainStopoverSearchWithContext(ctx context.Context, reques
 //
 // @return TrainTicketScanQueryResponse
 func (client *Client) TrainTicketScanQueryWithContext(ctx context.Context, request *TrainTicketScanQueryRequest, headers *TrainTicketScanQueryHeaders, runtime *dara.RuntimeOptions) (_result *TrainTicketScanQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillDate) {
@@ -15132,8 +15786,20 @@ func (client *Client) TrainTicketScanQueryWithContext(ctx context.Context, reque
 		query["bill_id"] = request.BillId
 	}
 
+	if !dara.IsNil(request.InvoiceDateEnd) {
+		query["invoice_date_end"] = request.InvoiceDateEnd
+	}
+
+	if !dara.IsNil(request.InvoiceDateStart) {
+		query["invoice_date_start"] = request.InvoiceDateStart
+	}
+
 	if !dara.IsNil(request.InvoiceSubTaskId) {
 		query["invoice_sub_task_id"] = request.InvoiceSubTaskId
+	}
+
+	if !dara.IsNil(request.OrderId) {
+		query["order_id"] = request.OrderId
 	}
 
 	if !dara.IsNil(request.PageNo) {
@@ -15197,9 +15863,11 @@ func (client *Client) TrainTicketScanQueryWithContext(ctx context.Context, reque
 //
 // @return TravelStandardListQueryResponse
 func (client *Client) TravelStandardListQueryWithContext(ctx context.Context, request *TravelStandardListQueryRequest, headers *TravelStandardListQueryHeaders, runtime *dara.RuntimeOptions) (_result *TravelStandardListQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FromGroup) {
@@ -15263,9 +15931,11 @@ func (client *Client) TravelStandardListQueryWithContext(ctx context.Context, re
 //
 // @return TravelStandardQueryResponse
 func (client *Client) TravelStandardQueryWithContext(ctx context.Context, tmpReq *TravelStandardQueryRequest, headers *TravelStandardQueryHeaders, runtime *dara.RuntimeOptions) (_result *TravelStandardQueryResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TravelStandardQueryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -15331,9 +16001,11 @@ func (client *Client) TravelStandardQueryWithContext(ctx context.Context, tmpReq
 //
 // @return TravelStandardRelateAddResponse
 func (client *Client) TravelStandardRelateAddWithContext(ctx context.Context, tmpReq *TravelStandardRelateAddRequest, headers *TravelStandardRelateAddHeaders, runtime *dara.RuntimeOptions) (_result *TravelStandardRelateAddResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TravelStandardRelateAddShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -15399,9 +16071,11 @@ func (client *Client) TravelStandardRelateAddWithContext(ctx context.Context, tm
 //
 // @return TravelStandardRelateDeleteResponse
 func (client *Client) TravelStandardRelateDeleteWithContext(ctx context.Context, tmpReq *TravelStandardRelateDeleteRequest, headers *TravelStandardRelateDeleteHeaders, runtime *dara.RuntimeOptions) (_result *TravelStandardRelateDeleteResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TravelStandardRelateDeleteShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -15467,9 +16141,11 @@ func (client *Client) TravelStandardRelateDeleteWithContext(ctx context.Context,
 //
 // @return TravelStandardRelateQueryResponse
 func (client *Client) TravelStandardRelateQueryWithContext(ctx context.Context, request *TravelStandardRelateQueryRequest, headers *TravelStandardRelateQueryHeaders, runtime *dara.RuntimeOptions) (_result *TravelStandardRelateQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FromGroup) {
@@ -15525,9 +16201,11 @@ func (client *Client) TravelStandardRelateQueryWithContext(ctx context.Context, 
 //
 // @return TravelStandardScopeSaveResponse
 func (client *Client) TravelStandardScopeSaveWithContext(ctx context.Context, request *TravelStandardScopeSaveRequest, headers *TravelStandardScopeSaveHeaders, runtime *dara.RuntimeOptions) (_result *TravelStandardScopeSaveResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FromGroup) {
@@ -15587,9 +16265,11 @@ func (client *Client) TravelStandardScopeSaveWithContext(ctx context.Context, re
 //
 // @return TripBusinessInstanceQueryResponse
 func (client *Client) TripBusinessInstanceQueryWithContext(ctx context.Context, request *TripBusinessInstanceQueryRequest, headers *TripBusinessInstanceQueryHeaders, runtime *dara.RuntimeOptions) (_result *TripBusinessInstanceQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessInstanceId) {
@@ -15653,9 +16333,11 @@ func (client *Client) TripBusinessInstanceQueryWithContext(ctx context.Context, 
 //
 // @return TripCCInfoQueryResponse
 func (client *Client) TripCCInfoQueryWithContext(ctx context.Context, request *TripCCInfoQueryRequest, headers *TripCCInfoQueryHeaders, runtime *dara.RuntimeOptions) (_result *TripCCInfoQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessInstanceId) {
@@ -15715,9 +16397,11 @@ func (client *Client) TripCCInfoQueryWithContext(ctx context.Context, request *T
 //
 // @return TripTaskQueryResponse
 func (client *Client) TripTaskQueryWithContext(ctx context.Context, request *TripTaskQueryRequest, headers *TripTaskQueryHeaders, runtime *dara.RuntimeOptions) (_result *TripTaskQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessInstanceId) {
@@ -15781,9 +16465,11 @@ func (client *Client) TripTaskQueryWithContext(ctx context.Context, request *Tri
 //
 // @return UpdateCustomRoleResponse
 func (client *Client) UpdateCustomRoleWithContext(ctx context.Context, request *UpdateCustomRoleRequest, headers *UpdateCustomRoleHeaders, runtime *dara.RuntimeOptions) (_result *UpdateCustomRoleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RoleId) {
@@ -15839,9 +16525,11 @@ func (client *Client) UpdateCustomRoleWithContext(ctx context.Context, request *
 //
 // @return UpdateDepartmentResponse
 func (client *Client) UpdateDepartmentWithContext(ctx context.Context, tmpReq *UpdateDepartmentRequest, headers *UpdateDepartmentHeaders, runtime *dara.RuntimeOptions) (_result *UpdateDepartmentResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateDepartmentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -15911,9 +16599,11 @@ func (client *Client) UpdateDepartmentWithContext(ctx context.Context, tmpReq *U
 //
 // @return UpdateEmployeeResponse
 func (client *Client) UpdateEmployeeWithContext(ctx context.Context, tmpReq *UpdateEmployeeRequest, headers *UpdateEmployeeHeaders, runtime *dara.RuntimeOptions) (_result *UpdateEmployeeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateEmployeeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -16075,9 +16765,11 @@ func (client *Client) UpdateEmployeeWithContext(ctx context.Context, tmpReq *Upd
 //
 // @return UpdateEmployeeLeaveStatusResponse
 func (client *Client) UpdateEmployeeLeaveStatusWithContext(ctx context.Context, request *UpdateEmployeeLeaveStatusRequest, headers *UpdateEmployeeLeaveStatusHeaders, runtime *dara.RuntimeOptions) (_result *UpdateEmployeeLeaveStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.IsLeave) {
@@ -16133,9 +16825,11 @@ func (client *Client) UpdateEmployeeLeaveStatusWithContext(ctx context.Context, 
 //
 // @return UserQueryResponse
 func (client *Client) UserQueryWithContext(ctx context.Context, request *UserQueryRequest, headers *UserQueryHeaders, runtime *dara.RuntimeOptions) (_result *UserQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ModifiedTimeGreaterOrEqualThan) {
@@ -16199,13 +16893,23 @@ func (client *Client) UserQueryWithContext(ctx context.Context, request *UserQue
 //
 // @return VasBillSettlementQueryResponse
 func (client *Client) VasBillSettlementQueryWithContext(ctx context.Context, request *VasBillSettlementQueryRequest, headers *VasBillSettlementQueryHeaders, runtime *dara.RuntimeOptions) (_result *VasBillSettlementQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillRecordTimeEnd) {
+		query["bill_record_time_end"] = request.BillRecordTimeEnd
+	}
+
+	if !dara.IsNil(request.BillRecordTimeStart) {
+		query["bill_record_time_start"] = request.BillRecordTimeStart
 	}
 
 	if !dara.IsNil(request.CooperatorId) {
@@ -16285,9 +16989,11 @@ func (client *Client) VasBillSettlementQueryWithContext(ctx context.Context, req
 //
 // @return VatInvoiceScanQueryResponse
 func (client *Client) VatInvoiceScanQueryWithContext(ctx context.Context, request *VatInvoiceScanQueryRequest, headers *VatInvoiceScanQueryHeaders, runtime *dara.RuntimeOptions) (_result *VatInvoiceScanQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillDate) {
@@ -16355,9 +17061,11 @@ func (client *Client) VatInvoiceScanQueryWithContext(ctx context.Context, reques
 //
 // @return WaitApplyInvoiceTaskDetailQueryResponse
 func (client *Client) WaitApplyInvoiceTaskDetailQueryWithContext(ctx context.Context, request *WaitApplyInvoiceTaskDetailQueryRequest, headers *WaitApplyInvoiceTaskDetailQueryHeaders, runtime *dara.RuntimeOptions) (_result *WaitApplyInvoiceTaskDetailQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillDate) {

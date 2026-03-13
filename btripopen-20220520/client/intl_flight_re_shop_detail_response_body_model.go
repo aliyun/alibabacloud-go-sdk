@@ -110,7 +110,12 @@ func (s *IntlFlightReShopDetailResponseBody) SetTraceId(v string) *IntlFlightReS
 }
 
 func (s *IntlFlightReShopDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IntlFlightReShopDetailResponseBodyModule struct {
@@ -378,7 +383,67 @@ func (s *IntlFlightReShopDetailResponseBodyModule) SetUserIntentionMemo(v string
 }
 
 func (s *IntlFlightReShopDetailResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.BaggageRule != nil {
+		if err := s.BaggageRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.JourneyList != nil {
+		for _, item := range s.JourneyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OriginJourneyList != nil {
+		for _, item := range s.OriginJourneyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PassengerList != nil {
+		for _, item := range s.PassengerList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PassengerPriceInfoList != nil {
+		for _, item := range s.PassengerPriceInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PassengerTicketList != nil {
+		for _, item := range s.PassengerTicketList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PriceInfo != nil {
+		if err := s.PriceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RefundChangeRule != nil {
+		if err := s.RefundChangeRule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IntlFlightReShopDetailResponseBodyModuleBaggageRule struct {
@@ -539,7 +604,16 @@ func (s *IntlFlightReShopDetailResponseBodyModuleJourneyList) SetTransferTime(v 
 }
 
 func (s *IntlFlightReShopDetailResponseBodyModuleJourneyList) Validate() error {
-	return dara.Validate(s)
+	if s.FlightSegmentInfos != nil {
+		for _, item := range s.FlightSegmentInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IntlFlightReShopDetailResponseBodyModuleJourneyListFlightSegmentInfos struct {
@@ -876,7 +950,46 @@ func (s *IntlFlightReShopDetailResponseBodyModuleJourneyListFlightSegmentInfos) 
 }
 
 func (s *IntlFlightReShopDetailResponseBodyModuleJourneyListFlightSegmentInfos) Validate() error {
-	return dara.Validate(s)
+	if s.AirlineInfo != nil {
+		if err := s.AirlineInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ArrAirportInfo != nil {
+		if err := s.ArrAirportInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DepAirportInfo != nil {
+		if err := s.DepAirportInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FlightShareInfo != nil {
+		if err := s.FlightShareInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FlightStopInfoList != nil {
+		for _, item := range s.FlightStopInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LuggageDirectInfo != nil {
+		if err := s.LuggageDirectInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SegmentVisaRemark != nil {
+		if err := s.SegmentVisaRemark.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IntlFlightReShopDetailResponseBodyModuleJourneyListFlightSegmentInfosAirlineInfo struct {
@@ -1084,7 +1197,12 @@ func (s *IntlFlightReShopDetailResponseBodyModuleJourneyListFlightSegmentInfosFl
 }
 
 func (s *IntlFlightReShopDetailResponseBodyModuleJourneyListFlightSegmentInfosFlightShareInfo) Validate() error {
-	return dara.Validate(s)
+	if s.OperatingAirlineInfo != nil {
+		if err := s.OperatingAirlineInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IntlFlightReShopDetailResponseBodyModuleJourneyListFlightSegmentInfosFlightShareInfoOperatingAirlineInfo struct {
@@ -1493,7 +1611,16 @@ func (s *IntlFlightReShopDetailResponseBodyModuleOriginJourneyList) SetTransferT
 }
 
 func (s *IntlFlightReShopDetailResponseBodyModuleOriginJourneyList) Validate() error {
-	return dara.Validate(s)
+	if s.FlightSegmentInfos != nil {
+		for _, item := range s.FlightSegmentInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IntlFlightReShopDetailResponseBodyModuleOriginJourneyListFlightSegmentInfos struct {
@@ -1827,7 +1954,46 @@ func (s *IntlFlightReShopDetailResponseBodyModuleOriginJourneyListFlightSegmentI
 }
 
 func (s *IntlFlightReShopDetailResponseBodyModuleOriginJourneyListFlightSegmentInfos) Validate() error {
-	return dara.Validate(s)
+	if s.AirlineInfo != nil {
+		if err := s.AirlineInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ArrAirportInfo != nil {
+		if err := s.ArrAirportInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DepAirportInfo != nil {
+		if err := s.DepAirportInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FlightShareInfo != nil {
+		if err := s.FlightShareInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FlightStopInfoList != nil {
+		for _, item := range s.FlightStopInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LuggageDirectInfo != nil {
+		if err := s.LuggageDirectInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SegmentVisaRemark != nil {
+		if err := s.SegmentVisaRemark.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IntlFlightReShopDetailResponseBodyModuleOriginJourneyListFlightSegmentInfosAirlineInfo struct {
@@ -2035,7 +2201,12 @@ func (s *IntlFlightReShopDetailResponseBodyModuleOriginJourneyListFlightSegmentI
 }
 
 func (s *IntlFlightReShopDetailResponseBodyModuleOriginJourneyListFlightSegmentInfosFlightShareInfo) Validate() error {
-	return dara.Validate(s)
+	if s.OperatingAirlineInfo != nil {
+		if err := s.OperatingAirlineInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IntlFlightReShopDetailResponseBodyModuleOriginJourneyListFlightSegmentInfosFlightShareInfoOperatingAirlineInfo struct {
@@ -2475,7 +2646,12 @@ func (s *IntlFlightReShopDetailResponseBodyModulePassengerPriceInfoList) SetPric
 }
 
 func (s *IntlFlightReShopDetailResponseBodyModulePassengerPriceInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.PriceInfo != nil {
+		if err := s.PriceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IntlFlightReShopDetailResponseBodyModulePassengerPriceInfoListPriceInfo struct {
@@ -2580,7 +2756,16 @@ func (s *IntlFlightReShopDetailResponseBodyModulePassengerTicketList) SetTicketL
 }
 
 func (s *IntlFlightReShopDetailResponseBodyModulePassengerTicketList) Validate() error {
-	return dara.Validate(s)
+	if s.TicketList != nil {
+		for _, item := range s.TicketList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IntlFlightReShopDetailResponseBodyModulePassengerTicketListTicketList struct {
@@ -2654,7 +2839,16 @@ func (s *IntlFlightReShopDetailResponseBodyModulePassengerTicketListTicketList) 
 }
 
 func (s *IntlFlightReShopDetailResponseBodyModulePassengerTicketListTicketList) Validate() error {
-	return dara.Validate(s)
+	if s.TicketSegmentList != nil {
+		for _, item := range s.TicketSegmentList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IntlFlightReShopDetailResponseBodyModulePassengerTicketListTicketListTicketSegmentList struct {

@@ -112,7 +112,12 @@ func (s *FlightOtaItemDetailResponseBody) SetTraceId(v string) *FlightOtaItemDet
 }
 
 func (s *FlightOtaItemDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightOtaItemDetailResponseBodyModule struct {
@@ -193,7 +198,34 @@ func (s *FlightOtaItemDetailResponseBodyModule) SetTripType(v int32) *FlightOtaI
 }
 
 func (s *FlightOtaItemDetailResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.BaggageRule != nil {
+		for _, item := range s.BaggageRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ChangeRule != nil {
+		for _, item := range s.ChangeRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RefundRule != nil {
+		for _, item := range s.RefundRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightOtaItemDetailResponseBodyModuleBaggageRule struct {
@@ -277,7 +309,21 @@ func (s *FlightOtaItemDetailResponseBodyModuleBaggageRule) SetType(v int32) *Fli
 }
 
 func (s *FlightOtaItemDetailResponseBodyModuleBaggageRule) Validate() error {
-	return dara.Validate(s)
+	if s.BaggageSubItems != nil {
+		for _, item := range s.BaggageSubItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tips != nil {
+		if err := s.Tips.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItems struct {
@@ -348,7 +394,16 @@ func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItems) SetTit
 }
 
 func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItems) Validate() error {
-	return dara.Validate(s)
+	if s.BaggageSubContentVisualizes != nil {
+		for _, item := range s.BaggageSubContentVisualizes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizes struct {
@@ -430,7 +485,17 @@ func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageS
 }
 
 func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizes) Validate() error {
-	return dara.Validate(s)
+	if s.Description != nil {
+		if err := s.Description.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImageDO != nil {
+		if err := s.ImageDO.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesDescription struct {
@@ -743,7 +808,25 @@ func (s *FlightOtaItemDetailResponseBodyModuleChangeRule) SetType(v int32) *Flig
 }
 
 func (s *FlightOtaItemDetailResponseBodyModuleChangeRule) Validate() error {
-	return dara.Validate(s)
+	if s.ExtraContents != nil {
+		for _, item := range s.ExtraContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RefundSubItems != nil {
+		for _, item := range s.RefundSubItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightOtaItemDetailResponseBodyModuleChangeRuleExtraContents struct {
@@ -839,7 +922,16 @@ func (s *FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItems) SetTitle
 }
 
 func (s *FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItems) Validate() error {
-	return dara.Validate(s)
+	if s.RefundSubContents != nil {
+		for _, item := range s.RefundSubContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItemsRefundSubContents struct {
@@ -1021,7 +1113,25 @@ func (s *FlightOtaItemDetailResponseBodyModuleRefundRule) SetType(v int32) *Flig
 }
 
 func (s *FlightOtaItemDetailResponseBodyModuleRefundRule) Validate() error {
-	return dara.Validate(s)
+	if s.ExtraContents != nil {
+		for _, item := range s.ExtraContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RefundSubItems != nil {
+		for _, item := range s.RefundSubItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightOtaItemDetailResponseBodyModuleRefundRuleExtraContents struct {
@@ -1117,7 +1227,16 @@ func (s *FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItems) SetTitle
 }
 
 func (s *FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItems) Validate() error {
-	return dara.Validate(s)
+	if s.RefundSubContents != nil {
+		for _, item := range s.RefundSubContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItemsRefundSubContents struct {

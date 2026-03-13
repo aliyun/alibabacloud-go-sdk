@@ -110,7 +110,12 @@ func (s *TripTaskQueryResponseBody) SetTraceId(v string) *TripTaskQueryResponseB
 }
 
 func (s *TripTaskQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TripTaskQueryResponseBodyModule struct {
@@ -158,7 +163,25 @@ func (s *TripTaskQueryResponseBodyModule) SetRunningTasks(v []*TripTaskQueryResp
 }
 
 func (s *TripTaskQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.RecordTasks != nil {
+		for _, item := range s.RecordTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RunningTasks != nil {
+		for _, item := range s.RunningTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TripTaskQueryResponseBodyModuleRecordTasks struct {

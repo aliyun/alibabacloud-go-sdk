@@ -109,7 +109,12 @@ func (s *HotelOrderPreValidateResponseBody) SetTraceId(v string) *HotelOrderPreV
 }
 
 func (s *HotelOrderPreValidateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HotelOrderPreValidateResponseBodyModule struct {
@@ -216,7 +221,31 @@ func (s *HotelOrderPreValidateResponseBodyModule) SetValidateResKey(v string) *H
 }
 
 func (s *HotelOrderPreValidateResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.ItemInvoice != nil {
+		if err := s.ItemInvoice.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PromotionInfo != nil {
+		if err := s.PromotionInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RatePlanDaily != nil {
+		for _, item := range s.RatePlanDaily {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RatePlanInfo != nil {
+		if err := s.RatePlanInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HotelOrderPreValidateResponseBodyModuleItemInvoice struct {
@@ -289,7 +318,16 @@ func (s *HotelOrderPreValidateResponseBodyModulePromotionInfo) SetPromotionTotal
 }
 
 func (s *HotelOrderPreValidateResponseBodyModulePromotionInfo) Validate() error {
-	return dara.Validate(s)
+	if s.PromotionDetailInfoList != nil {
+		for _, item := range s.PromotionDetailInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelOrderPreValidateResponseBodyModulePromotionInfoPromotionDetailInfoList struct {
@@ -515,6 +553,7 @@ func (s *HotelOrderPreValidateResponseBodyModuleRatePlanDaily) Validate() error 
 type HotelOrderPreValidateResponseBodyModuleRatePlanInfo struct {
 	BedDesc                   *string                                                                       `json:"bed_desc,omitempty" xml:"bed_desc,omitempty"`
 	BtripHotelCancelPolicyDTO *HotelOrderPreValidateResponseBodyModuleRatePlanInfoBtripHotelCancelPolicyDTO `json:"btrip_hotel_cancel_policy_d_t_o,omitempty" xml:"btrip_hotel_cancel_policy_d_t_o,omitempty" type:"Struct"`
+	CertTypeList              []*string                                                                     `json:"cert_type_list,omitempty" xml:"cert_type_list,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 12:00
@@ -566,6 +605,10 @@ func (s *HotelOrderPreValidateResponseBodyModuleRatePlanInfo) GetBtripHotelCance
 	return s.BtripHotelCancelPolicyDTO
 }
 
+func (s *HotelOrderPreValidateResponseBodyModuleRatePlanInfo) GetCertTypeList() []*string {
+	return s.CertTypeList
+}
+
 func (s *HotelOrderPreValidateResponseBodyModuleRatePlanInfo) GetEarliestCheckInTime() *string {
 	return s.EarliestCheckInTime
 }
@@ -609,6 +652,11 @@ func (s *HotelOrderPreValidateResponseBodyModuleRatePlanInfo) SetBedDesc(v strin
 
 func (s *HotelOrderPreValidateResponseBodyModuleRatePlanInfo) SetBtripHotelCancelPolicyDTO(v *HotelOrderPreValidateResponseBodyModuleRatePlanInfoBtripHotelCancelPolicyDTO) *HotelOrderPreValidateResponseBodyModuleRatePlanInfo {
 	s.BtripHotelCancelPolicyDTO = v
+	return s
+}
+
+func (s *HotelOrderPreValidateResponseBodyModuleRatePlanInfo) SetCertTypeList(v []*string) *HotelOrderPreValidateResponseBodyModuleRatePlanInfo {
+	s.CertTypeList = v
 	return s
 }
 
@@ -658,7 +706,12 @@ func (s *HotelOrderPreValidateResponseBodyModuleRatePlanInfo) SetTotalRoomPrice(
 }
 
 func (s *HotelOrderPreValidateResponseBodyModuleRatePlanInfo) Validate() error {
-	return dara.Validate(s)
+	if s.BtripHotelCancelPolicyDTO != nil {
+		if err := s.BtripHotelCancelPolicyDTO.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HotelOrderPreValidateResponseBodyModuleRatePlanInfoBtripHotelCancelPolicyDTO struct {
@@ -713,7 +766,16 @@ func (s *HotelOrderPreValidateResponseBodyModuleRatePlanInfoBtripHotelCancelPoli
 }
 
 func (s *HotelOrderPreValidateResponseBodyModuleRatePlanInfoBtripHotelCancelPolicyDTO) Validate() error {
-	return dara.Validate(s)
+	if s.BtripHotelCancelPolicyInfoDTOList != nil {
+		for _, item := range s.BtripHotelCancelPolicyInfoDTOList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelOrderPreValidateResponseBodyModuleRatePlanInfoBtripHotelCancelPolicyDTOBtripHotelCancelPolicyInfoDTOList struct {

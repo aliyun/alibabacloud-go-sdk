@@ -107,7 +107,16 @@ func (s *ApplyListQueryResponseBody) SetTraceId(v string) *ApplyListQueryRespons
 }
 
 func (s *ApplyListQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleList != nil {
+		for _, item := range s.ModuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ApplyListQueryResponseBodyModuleList struct {
@@ -470,7 +479,57 @@ func (s *ApplyListQueryResponseBodyModuleList) SetUserName(v string) *ApplyListQ
 }
 
 func (s *ApplyListQueryResponseBodyModuleList) Validate() error {
-	return dara.Validate(s)
+	if s.ApproverList != nil {
+		for _, item := range s.ApproverList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.CarRule != nil {
+		if err := s.CarRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExternalTravelerList != nil {
+		for _, item := range s.ExternalTravelerList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ItineraryList != nil {
+		for _, item := range s.ItineraryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ItinerarySetList != nil {
+		for _, item := range s.ItinerarySetList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TravelerList != nil {
+		for _, item := range s.TravelerList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ApplyListQueryResponseBodyModuleListApproverList struct {
@@ -1191,7 +1250,16 @@ func (s *ApplyListQueryResponseBodyModuleListTravelerList) SetUserName(v string)
 }
 
 func (s *ApplyListQueryResponseBodyModuleListTravelerList) Validate() error {
-	return dara.Validate(s)
+	if s.CarCitySet != nil {
+		for _, item := range s.CarCitySet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ApplyListQueryResponseBodyModuleListTravelerListCarCitySet struct {

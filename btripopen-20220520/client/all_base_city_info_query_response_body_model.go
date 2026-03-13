@@ -112,7 +112,12 @@ func (s *AllBaseCityInfoQueryResponseBody) SetTraceId(v string) *AllBaseCityInfo
 }
 
 func (s *AllBaseCityInfoQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AllBaseCityInfoQueryResponseBodyModule struct {
@@ -137,7 +142,16 @@ func (s *AllBaseCityInfoQueryResponseBodyModule) SetAllCityBaseInfoList(v []*All
 }
 
 func (s *AllBaseCityInfoQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.AllCityBaseInfoList != nil {
+		for _, item := range s.AllCityBaseInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AllBaseCityInfoQueryResponseBodyModuleAllCityBaseInfoList struct {

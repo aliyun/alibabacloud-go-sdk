@@ -107,7 +107,12 @@ func (s *ApplyQueryResponseBody) SetTraceId(v string) *ApplyQueryResponseBody {
 }
 
 func (s *ApplyQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ApplyQueryResponseBodyModule struct {
@@ -606,7 +611,62 @@ func (s *ApplyQueryResponseBodyModule) SetVehicleBudget(v int64) *ApplyQueryResp
 }
 
 func (s *ApplyQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.ApproverList != nil {
+		for _, item := range s.ApproverList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.CarRule != nil {
+		if err := s.CarRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExternalTravelerList != nil {
+		for _, item := range s.ExternalTravelerList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HotelShare != nil {
+		if err := s.HotelShare.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ItineraryList != nil {
+		for _, item := range s.ItineraryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ItinerarySetList != nil {
+		for _, item := range s.ItinerarySetList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TravelerList != nil {
+		for _, item := range s.TravelerList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ApplyQueryResponseBodyModuleApproverList struct {
@@ -1044,7 +1104,25 @@ func (s *ApplyQueryResponseBodyModuleExternalTravelerList) SetUserName(v string)
 }
 
 func (s *ApplyQueryResponseBodyModuleExternalTravelerList) Validate() error {
-	return dara.Validate(s)
+	if s.HotelCitys != nil {
+		for _, item := range s.HotelCitys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HotelIntlCitys != nil {
+		for _, item := range s.HotelIntlCitys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ApplyQueryResponseBodyModuleExternalTravelerListHotelCitys struct {
@@ -1400,7 +1478,12 @@ func (s *ApplyQueryResponseBodyModuleItineraryList) SetTripWay(v int32) *ApplyQu
 }
 
 func (s *ApplyQueryResponseBodyModuleItineraryList) Validate() error {
-	return dara.Validate(s)
+	if s.ItineraryTravelStandard != nil {
+		if err := s.ItineraryTravelStandard.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ApplyQueryResponseBodyModuleItineraryListItineraryTravelStandard struct {
@@ -1608,7 +1691,12 @@ func (s *ApplyQueryResponseBodyModuleItinerarySetList) SetTrafficType(v int32) *
 }
 
 func (s *ApplyQueryResponseBodyModuleItinerarySetList) Validate() error {
-	return dara.Validate(s)
+	if s.ItineraryTravelStandard != nil {
+		if err := s.ItineraryTravelStandard.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ApplyQueryResponseBodyModuleItinerarySetListItineraryTravelStandard struct {
@@ -1952,7 +2040,34 @@ func (s *ApplyQueryResponseBodyModuleTravelerList) SetUserName(v string) *ApplyQ
 }
 
 func (s *ApplyQueryResponseBodyModuleTravelerList) Validate() error {
-	return dara.Validate(s)
+	if s.CarCitySet != nil {
+		for _, item := range s.CarCitySet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HotelCitys != nil {
+		for _, item := range s.HotelCitys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HotelIntlCitys != nil {
+		for _, item := range s.HotelIntlCitys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ApplyQueryResponseBodyModuleTravelerListCarCitySet struct {

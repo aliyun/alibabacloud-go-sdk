@@ -59,5 +59,10 @@ func (s *TravelStandardScopeSaveResponse) SetBody(v *TravelStandardScopeSaveResp
 }
 
 func (s *TravelStandardScopeSaveResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

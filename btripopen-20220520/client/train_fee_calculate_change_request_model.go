@@ -70,7 +70,16 @@ func (s *TrainFeeCalculateChangeRequest) SetOrderId(v string) *TrainFeeCalculate
 }
 
 func (s *TrainFeeCalculateChangeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ChangeTrainDetails != nil {
+		for _, item := range s.ChangeTrainDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainFeeCalculateChangeRequestChangeTrainDetails struct {
@@ -201,7 +210,12 @@ func (s *TrainFeeCalculateChangeRequestChangeTrainDetails) SetTrainNo(v string) 
 }
 
 func (s *TrainFeeCalculateChangeRequestChangeTrainDetails) Validate() error {
-	return dara.Validate(s)
+	if s.PassengerInfo != nil {
+		if err := s.PassengerInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrainFeeCalculateChangeRequestChangeTrainDetailsPassengerInfo struct {

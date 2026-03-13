@@ -35,7 +35,16 @@ func (s *DepartmentSaveRequest) SetDepartList(v []*DepartmentSaveRequestDepartLi
 }
 
 func (s *DepartmentSaveRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DepartList != nil {
+		for _, item := range s.DepartList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DepartmentSaveRequestDepartList struct {

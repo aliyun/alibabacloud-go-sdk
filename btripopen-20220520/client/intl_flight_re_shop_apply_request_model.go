@@ -172,7 +172,25 @@ func (s *IntlFlightReShopApplyRequest) SetUserIntentionMemo(v string) *IntlFligh
 }
 
 func (s *IntlFlightReShopApplyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SelectedJourneys != nil {
+		for _, item := range s.SelectedJourneys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SelectedPassengers != nil {
+		for _, item := range s.SelectedPassengers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IntlFlightReShopApplyRequestSelectedJourneys struct {
@@ -243,7 +261,16 @@ func (s *IntlFlightReShopApplyRequestSelectedJourneys) SetSelectedFlights(v []*I
 }
 
 func (s *IntlFlightReShopApplyRequestSelectedJourneys) Validate() error {
-	return dara.Validate(s)
+	if s.SelectedFlights != nil {
+		for _, item := range s.SelectedFlights {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IntlFlightReShopApplyRequestSelectedJourneysSelectedFlights struct {

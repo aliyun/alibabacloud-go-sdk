@@ -107,7 +107,12 @@ func (s *IntlFlightSegmentAvailableCertResponseBody) SetTraceId(v string) *IntlF
 }
 
 func (s *IntlFlightSegmentAvailableCertResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IntlFlightSegmentAvailableCertResponseBodyModule struct {
@@ -132,7 +137,16 @@ func (s *IntlFlightSegmentAvailableCertResponseBodyModule) SetSegmentAvailableCe
 }
 
 func (s *IntlFlightSegmentAvailableCertResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.SegmentAvailableCertList != nil {
+		for _, item := range s.SegmentAvailableCertList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IntlFlightSegmentAvailableCertResponseBodyModuleSegmentAvailableCertList struct {
@@ -167,7 +181,12 @@ func (s *IntlFlightSegmentAvailableCertResponseBodyModuleSegmentAvailableCertLis
 }
 
 func (s *IntlFlightSegmentAvailableCertResponseBodyModuleSegmentAvailableCertList) Validate() error {
-	return dara.Validate(s)
+	if s.SegmentPosition != nil {
+		if err := s.SegmentPosition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IntlFlightSegmentAvailableCertResponseBodyModuleSegmentAvailableCertListSegmentPosition struct {

@@ -109,7 +109,12 @@ func (s *TravelStandardRelateQueryResponseBody) SetTraceId(v string) *TravelStan
 }
 
 func (s *TravelStandardRelateQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TravelStandardRelateQueryResponseBodyModule struct {
@@ -147,7 +152,16 @@ func (s *TravelStandardRelateQueryResponseBodyModule) SetTotal(v int32) *TravelS
 }
 
 func (s *TravelStandardRelateQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.ReserveBindEntityList != nil {
+		for _, item := range s.ReserveBindEntityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TravelStandardRelateQueryResponseBodyModuleReserveBindEntityList struct {

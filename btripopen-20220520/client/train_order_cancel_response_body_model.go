@@ -107,7 +107,12 @@ func (s *TrainOrderCancelResponseBody) SetTraceId(v string) *TrainOrderCancelRes
 }
 
 func (s *TrainOrderCancelResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrainOrderCancelResponseBodyModule struct {

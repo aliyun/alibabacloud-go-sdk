@@ -112,7 +112,12 @@ func (s *FlightModifyOtaSearchV2ResponseBody) SetTraceId(v string) *FlightModify
 }
 
 func (s *FlightModifyOtaSearchV2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightModifyOtaSearchV2ResponseBodyModule struct {
@@ -193,7 +198,26 @@ func (s *FlightModifyOtaSearchV2ResponseBodyModule) SetSessionId(v string) *Flig
 }
 
 func (s *FlightModifyOtaSearchV2ResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.AgentInfos != nil {
+		for _, item := range s.AgentInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AgentInfo != nil {
+		if err := s.AgentInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PassengerCount != nil {
+		if err := s.PassengerCount.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos struct {
@@ -318,7 +342,17 @@ func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos) SetSupportChildTic
 }
 
 func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos) Validate() error {
-	return dara.Validate(s)
+	if s.CabinClassInfo != nil {
+		if err := s.CabinClassInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PriceInfoDTO != nil {
+		if err := s.PriceInfoDTO.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosCabinClassInfo struct {
@@ -518,7 +552,12 @@ func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO) SetReS
 }
 
 func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO) Validate() error {
-	return dara.Validate(s)
+	if s.ReShopPriceInfoDTO != nil {
+		if err := s.ReShopPriceInfoDTO.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTOReShopPriceInfoDTO struct {
@@ -765,7 +804,17 @@ func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfo) SetSupportChildTick
 }
 
 func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfo) Validate() error {
-	return dara.Validate(s)
+	if s.CabinClassInfo != nil {
+		if err := s.CabinClassInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PriceInfoDTO != nil {
+		if err := s.PriceInfoDTO.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightModifyOtaSearchV2ResponseBodyModuleAgentInfoCabinClassInfo struct {
@@ -1006,7 +1055,12 @@ func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfoPriceInfoDTO) SetReSh
 }
 
 func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfoPriceInfoDTO) Validate() error {
-	return dara.Validate(s)
+	if s.ReShopPriceInfoDTO != nil {
+		if err := s.ReShopPriceInfoDTO.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightModifyOtaSearchV2ResponseBodyModuleAgentInfoPriceInfoDTOReShopPriceInfoDTO struct {
@@ -1419,7 +1473,32 @@ func (s *FlightModifyOtaSearchV2ResponseBodyModuleFlightSegmentInfos) SetOnTimeR
 }
 
 func (s *FlightModifyOtaSearchV2ResponseBodyModuleFlightSegmentInfos) Validate() error {
-	return dara.Validate(s)
+	if s.DepAirportInfo != nil {
+		if err := s.DepAirportInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ArrAirportInfo != nil {
+		if err := s.ArrAirportInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AirlineInfo != nil {
+		if err := s.AirlineInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FlightSharedInfo != nil {
+		if err := s.FlightSharedInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FlightStopInfo != nil {
+		if err := s.FlightStopInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightModifyOtaSearchV2ResponseBodyModuleFlightSegmentInfosDepAirportInfo struct {
@@ -1650,7 +1729,12 @@ func (s *FlightModifyOtaSearchV2ResponseBodyModuleFlightSegmentInfosFlightShared
 }
 
 func (s *FlightModifyOtaSearchV2ResponseBodyModuleFlightSegmentInfosFlightSharedInfo) Validate() error {
-	return dara.Validate(s)
+	if s.OperatingAirlineInfo != nil {
+		if err := s.OperatingAirlineInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightModifyOtaSearchV2ResponseBodyModuleFlightSegmentInfosFlightSharedInfoOperatingAirlineInfo struct {

@@ -115,7 +115,16 @@ func (s *IntlFlightInventoryPriceCheckRequest) SetPassengerList(v []*IntlFlightI
 }
 
 func (s *IntlFlightInventoryPriceCheckRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PassengerList != nil {
+		for _, item := range s.PassengerList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IntlFlightInventoryPriceCheckRequestPassengerList struct {
@@ -285,7 +294,12 @@ func (s *IntlFlightInventoryPriceCheckRequestPassengerList) SetUserType(v int32)
 }
 
 func (s *IntlFlightInventoryPriceCheckRequestPassengerList) Validate() error {
-	return dara.Validate(s)
+	if s.CertInfo != nil {
+		if err := s.CertInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IntlFlightInventoryPriceCheckRequestPassengerListCertInfo struct {

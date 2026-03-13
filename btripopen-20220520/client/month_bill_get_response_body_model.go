@@ -107,7 +107,16 @@ func (s *MonthBillGetResponseBody) SetTraceId(v string) *MonthBillGetResponseBod
 }
 
 func (s *MonthBillGetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		for _, item := range s.Module {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type MonthBillGetResponseBodyModule struct {
@@ -166,7 +175,12 @@ func (s *MonthBillGetResponseBodyModule) SetUrl(v string) *MonthBillGetResponseB
 }
 
 func (s *MonthBillGetResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.MonthAccountBillDetail != nil {
+		if err := s.MonthAccountBillDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MonthBillGetResponseBodyModuleMonthAccountBillDetail struct {

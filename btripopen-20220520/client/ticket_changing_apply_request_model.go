@@ -143,7 +143,16 @@ func (s *TicketChangingApplyRequest) SetWhetherRetry(v bool) *TicketChangingAppl
 }
 
 func (s *TicketChangingApplyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ModifyFlightInfoList != nil {
+		for _, item := range s.ModifyFlightInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TicketChangingApplyRequestModifyFlightInfoList struct {
@@ -242,7 +251,16 @@ func (s *TicketChangingApplyRequestModifyFlightInfoList) SetPassengerInfoList(v 
 }
 
 func (s *TicketChangingApplyRequestModifyFlightInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.PassengerInfoList != nil {
+		for _, item := range s.PassengerInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TicketChangingApplyRequestModifyFlightInfoListPassengerInfoList struct {

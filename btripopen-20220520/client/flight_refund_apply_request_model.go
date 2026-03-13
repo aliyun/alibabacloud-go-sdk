@@ -235,7 +235,16 @@ func (s *FlightRefundApplyRequest) SetTotalRefundPrice(v int64) *FlightRefundApp
 }
 
 func (s *FlightRefundApplyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PassengerSegmentInfoList != nil {
+		for _, item := range s.PassengerSegmentInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightRefundApplyRequestPassengerSegmentInfoList struct {

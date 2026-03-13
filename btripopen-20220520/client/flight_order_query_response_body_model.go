@@ -107,7 +107,12 @@ func (s *FlightOrderQueryResponseBody) SetTraceId(v string) *FlightOrderQueryRes
 }
 
 func (s *FlightOrderQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightOrderQueryResponseBodyModule struct {
@@ -212,7 +217,80 @@ func (s *FlightOrderQueryResponseBodyModule) SetPriceInfoList(v []*FlightOrderQu
 }
 
 func (s *FlightOrderQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.FlightChangeTicketInfoList != nil {
+		for _, item := range s.FlightChangeTicketInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FlightInfoList != nil {
+		for _, item := range s.FlightInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FlightRefundTicketInfoList != nil {
+		for _, item := range s.FlightRefundTicketInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FlightTicketInfoList != nil {
+		for _, item := range s.FlightTicketInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InsuranceInfoList != nil {
+		for _, item := range s.InsuranceInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InvoiceInfo != nil {
+		if err := s.InvoiceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OrderBaseInfo != nil {
+		if err := s.OrderBaseInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PassengerInfoList != nil {
+		for _, item := range s.PassengerInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PriceInfoList != nil {
+		for _, item := range s.PriceInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList struct {
@@ -874,7 +952,26 @@ func (s *FlightOrderQueryResponseBodyModuleFlightInfoList) SetStopCityInfoList(v
 }
 
 func (s *FlightOrderQueryResponseBodyModuleFlightInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.ArrAirportCityCounty != nil {
+		if err := s.ArrAirportCityCounty.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DepAirportCityCounty != nil {
+		if err := s.DepAirportCityCounty.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StopCityInfoList != nil {
+		for _, item := range s.StopCityInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightOrderQueryResponseBodyModuleFlightInfoListArrAirportCityCounty struct {
@@ -1139,7 +1236,12 @@ func (s *FlightOrderQueryResponseBodyModuleFlightInfoListStopCityInfoList) SetSt
 }
 
 func (s *FlightOrderQueryResponseBodyModuleFlightInfoListStopCityInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.StopAirportCityCounty != nil {
+		if err := s.StopAirportCityCounty.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightOrderQueryResponseBodyModuleFlightInfoListStopCityInfoListStopAirportCityCounty struct {

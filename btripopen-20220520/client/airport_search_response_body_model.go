@@ -108,7 +108,12 @@ func (s *AirportSearchResponseBody) SetTraceId(v string) *AirportSearchResponseB
 }
 
 func (s *AirportSearchResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AirportSearchResponseBodyModule struct {
@@ -146,7 +151,16 @@ func (s *AirportSearchResponseBodyModule) SetNearby(v bool) *AirportSearchRespon
 }
 
 func (s *AirportSearchResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.Cities != nil {
+		for _, item := range s.Cities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AirportSearchResponseBodyModuleCities struct {

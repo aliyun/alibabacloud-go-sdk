@@ -107,7 +107,12 @@ func (s *TrainBillSettlementQueryResponseBody) SetTraceId(v string) *TrainBillSe
 }
 
 func (s *TrainBillSettlementQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrainBillSettlementQueryResponseBodyModule struct {
@@ -204,7 +209,16 @@ func (s *TrainBillSettlementQueryResponseBodyModule) SetTotalNum(v int64) *Train
 }
 
 func (s *TrainBillSettlementQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.DataList != nil {
+		for _, item := range s.DataList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainBillSettlementQueryResponseBodyModuleDataList struct {

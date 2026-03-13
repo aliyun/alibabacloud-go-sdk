@@ -41,23 +41,17 @@ type KeywordSuggestInfo struct {
 	// example:
 	//
 	// 300100
-	CityCode *int32 `json:"city_code,omitempty" xml:"city_code,omitempty"`
-	// example:
-	//
-	// 杭州
-	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
-	// example:
-	//
-	// 杭州东站
+	CityCode    *int32  `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName    *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
 	DisplayName *string `json:"display_name,omitempty" xml:"display_name,omitempty"`
 	// example:
 	//
 	// 53853318
 	HotelId *string `json:"hotel_id,omitempty" xml:"hotel_id,omitempty"`
-	Icon    *string `json:"icon,omitempty" xml:"icon,omitempty"`
 	// example:
 	//
-	// 4.8分
+	// https://gw.alicdn.com/imgextra/i3/O1CN01qKg25r1rKLOKxT3vB_!!6000000005612-2-tps-32-32.png
+	Icon  *string `json:"icon,omitempty" xml:"icon,omitempty"`
 	Point *string `json:"point,omitempty" xml:"point,omitempty"`
 	// example:
 	//
@@ -67,10 +61,10 @@ type KeywordSuggestInfo struct {
 	//
 	// 0
 	Region *int32 `json:"region,omitempty" xml:"region,omitempty"`
-	Type   *int32 `json:"type,omitempty" xml:"type,omitempty"`
 	// example:
 	//
-	// 景点
+	// 10
+	Type     *int32  `json:"type,omitempty" xml:"type,omitempty"`
 	TypeDesc *string `json:"type_desc,omitempty" xml:"type_desc,omitempty"`
 }
 
@@ -191,5 +185,10 @@ func (s *KeywordSuggestInfo) SetTypeDesc(v string) *KeywordSuggestInfo {
 }
 
 func (s *KeywordSuggestInfo) Validate() error {
-	return dara.Validate(s)
+	if s.BusinessAreaWithCity != nil {
+		if err := s.BusinessAreaWithCity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

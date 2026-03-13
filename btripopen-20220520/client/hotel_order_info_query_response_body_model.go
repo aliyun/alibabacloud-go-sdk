@@ -107,7 +107,12 @@ func (s *HotelOrderInfoQueryResponseBody) SetTraceId(v string) *HotelOrderInfoQu
 }
 
 func (s *HotelOrderInfoQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HotelOrderInfoQueryResponseBodyModule struct {
@@ -182,7 +187,45 @@ func (s *HotelOrderInfoQueryResponseBodyModule) SetRoomTraverInfo(v []*HotelOrde
 }
 
 func (s *HotelOrderInfoQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.BaseOrderInfo != nil {
+		if err := s.BaseOrderInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BookerInfo != nil {
+		if err := s.BookerInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HotelInfo != nil {
+		if err := s.HotelInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HotelOrderFeeInfo != nil {
+		if err := s.HotelOrderFeeInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HotelOrderRefundInfo != nil {
+		for _, item := range s.HotelOrderRefundInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RoomTraverInfo != nil {
+		for _, item := range s.RoomTraverInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo struct {
@@ -564,7 +607,12 @@ func (s *HotelOrderInfoQueryResponseBodyModuleBookerInfo) SetUserId(v string) *H
 }
 
 func (s *HotelOrderInfoQueryResponseBodyModuleBookerInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Department != nil {
+		if err := s.Department.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HotelOrderInfoQueryResponseBodyModuleBookerInfoDepartment struct {
@@ -1048,7 +1096,16 @@ func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfo) SetTraverInfos(v [
 }
 
 func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfo) Validate() error {
-	return dara.Validate(s)
+	if s.TraverInfos != nil {
+		for _, item := range s.TraverInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos struct {
@@ -1194,7 +1251,22 @@ func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos) SetUser
 }
 
 func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos) Validate() error {
-	return dara.Validate(s)
+	if s.ApplyInfo != nil {
+		if err := s.ApplyInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Department != nil {
+		if err := s.Department.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TripCostCenter != nil {
+		if err := s.TripCostCenter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfo struct {
@@ -1268,7 +1340,16 @@ func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfo
 }
 
 func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ExceedApply != nil {
+		for _, item := range s.ExceedApply {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfoExceedApply struct {

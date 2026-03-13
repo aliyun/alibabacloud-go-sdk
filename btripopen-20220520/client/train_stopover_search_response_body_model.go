@@ -110,7 +110,16 @@ func (s *TrainStopoverSearchResponseBody) SetTraceId(v string) *TrainStopoverSea
 }
 
 func (s *TrainStopoverSearchResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		for _, item := range s.Module {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainStopoverSearchResponseBodyModule struct {

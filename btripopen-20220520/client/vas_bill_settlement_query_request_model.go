@@ -11,6 +11,10 @@ type iVasBillSettlementQueryRequest interface {
 	GoString() string
 	SetBillBatch(v string) *VasBillSettlementQueryRequest
 	GetBillBatch() *string
+	SetBillRecordTimeEnd(v string) *VasBillSettlementQueryRequest
+	GetBillRecordTimeEnd() *string
+	SetBillRecordTimeStart(v string) *VasBillSettlementQueryRequest
+	GetBillRecordTimeStart() *string
 	SetCooperatorId(v string) *VasBillSettlementQueryRequest
 	GetCooperatorId() *string
 	SetOrderId(v int64) *VasBillSettlementQueryRequest
@@ -33,7 +37,9 @@ type VasBillSettlementQueryRequest struct {
 	// example:
 	//
 	// 20250501
-	BillBatch *string `json:"bill_batch,omitempty" xml:"bill_batch,omitempty"`
+	BillBatch           *string `json:"bill_batch,omitempty" xml:"bill_batch,omitempty"`
+	BillRecordTimeEnd   *string `json:"bill_record_time_end,omitempty" xml:"bill_record_time_end,omitempty"`
+	BillRecordTimeStart *string `json:"bill_record_time_start,omitempty" xml:"bill_record_time_start,omitempty"`
 	// example:
 	//
 	// cooperator_alibtrip
@@ -84,6 +90,14 @@ func (s *VasBillSettlementQueryRequest) GetBillBatch() *string {
 	return s.BillBatch
 }
 
+func (s *VasBillSettlementQueryRequest) GetBillRecordTimeEnd() *string {
+	return s.BillRecordTimeEnd
+}
+
+func (s *VasBillSettlementQueryRequest) GetBillRecordTimeStart() *string {
+	return s.BillRecordTimeStart
+}
+
 func (s *VasBillSettlementQueryRequest) GetCooperatorId() *string {
 	return s.CooperatorId
 }
@@ -118,6 +132,16 @@ func (s *VasBillSettlementQueryRequest) GetScrollMod() *bool {
 
 func (s *VasBillSettlementQueryRequest) SetBillBatch(v string) *VasBillSettlementQueryRequest {
 	s.BillBatch = &v
+	return s
+}
+
+func (s *VasBillSettlementQueryRequest) SetBillRecordTimeEnd(v string) *VasBillSettlementQueryRequest {
+	s.BillRecordTimeEnd = &v
+	return s
+}
+
+func (s *VasBillSettlementQueryRequest) SetBillRecordTimeStart(v string) *VasBillSettlementQueryRequest {
+	s.BillRecordTimeStart = &v
 	return s
 }
 

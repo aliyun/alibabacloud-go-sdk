@@ -112,7 +112,12 @@ func (s *FlightOtaSearchV2ResponseBody) SetTraceId(v string) *FlightOtaSearchV2R
 }
 
 func (s *FlightOtaSearchV2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightOtaSearchV2ResponseBodyModule struct {
@@ -173,7 +178,25 @@ func (s *FlightOtaSearchV2ResponseBodyModule) SetTripType(v int32) *FlightOtaSea
 }
 
 func (s *FlightOtaSearchV2ResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.FlightJourneyInfos != nil {
+		for _, item := range s.FlightJourneyInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ItemList != nil {
+		for _, item := range s.ItemList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos struct {
@@ -319,7 +342,16 @@ func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos) SetTransferTime(
 }
 
 func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos) Validate() error {
-	return dara.Validate(s)
+	if s.FlightSegmentInfos != nil {
+		for _, item := range s.FlightSegmentInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos struct {
@@ -669,7 +701,32 @@ func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos
 }
 
 func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) Validate() error {
-	return dara.Validate(s)
+	if s.AirlineInfo != nil {
+		if err := s.AirlineInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ArrAirportInfo != nil {
+		if err := s.ArrAirportInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DepAirportInfo != nil {
+		if err := s.DepAirportInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FlightShareInfo != nil {
+		if err := s.FlightShareInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FlightStopInfo != nil {
+		if err := s.FlightStopInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosAirlineInfo struct {
@@ -929,7 +986,12 @@ func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos
 }
 
 func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfo) Validate() error {
-	return dara.Validate(s)
+	if s.OperatingAirlineInfo != nil {
+		if err := s.OperatingAirlineInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo struct {
@@ -1207,7 +1269,16 @@ func (s *FlightOtaSearchV2ResponseBodyModuleItemList) SetSubItems(v []*FlightOta
 }
 
 func (s *FlightOtaSearchV2ResponseBodyModuleItemList) Validate() error {
-	return dara.Validate(s)
+	if s.SubItems != nil {
+		for _, item := range s.SubItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightOtaSearchV2ResponseBodyModuleItemListSubItems struct {

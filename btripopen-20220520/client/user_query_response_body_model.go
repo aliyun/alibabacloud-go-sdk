@@ -109,7 +109,12 @@ func (s *UserQueryResponseBody) SetTraceId(v string) *UserQueryResponseBody {
 }
 
 func (s *UserQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UserQueryResponseBodyModule struct {
@@ -173,7 +178,16 @@ func (s *UserQueryResponseBodyModule) SetTotal(v int64) *UserQueryResponseBodyMo
 }
 
 func (s *UserQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UserQueryResponseBodyModuleItems struct {

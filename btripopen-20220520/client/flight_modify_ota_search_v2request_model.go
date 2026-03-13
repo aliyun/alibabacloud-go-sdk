@@ -146,7 +146,25 @@ func (s *FlightModifyOtaSearchV2Request) SetVoluntary(v bool) *FlightModifyOtaSe
 }
 
 func (s *FlightModifyOtaSearchV2Request) Validate() error {
-	return dara.Validate(s)
+	if s.PassengerSegmentRelations != nil {
+		for _, item := range s.PassengerSegmentRelations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SelectedSegments != nil {
+		for _, item := range s.SelectedSegments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightModifyOtaSearchV2RequestPassengerSegmentRelations struct {

@@ -59,5 +59,10 @@ func (s *CommonApplyQueryResponse) SetBody(v *CommonApplyQueryResponseBody) *Com
 }
 
 func (s *CommonApplyQueryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

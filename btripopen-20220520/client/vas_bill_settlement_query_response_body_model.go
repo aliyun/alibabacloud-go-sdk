@@ -112,7 +112,12 @@ func (s *VasBillSettlementQueryResponseBody) SetTraceId(v string) *VasBillSettle
 }
 
 func (s *VasBillSettlementQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type VasBillSettlementQueryResponseBodyModule struct {
@@ -212,7 +217,16 @@ func (s *VasBillSettlementQueryResponseBodyModule) SetTotalSize(v int64) *VasBil
 }
 
 func (s *VasBillSettlementQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type VasBillSettlementQueryResponseBodyModuleItems struct {

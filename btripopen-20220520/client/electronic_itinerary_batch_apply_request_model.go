@@ -51,7 +51,16 @@ func (s *ElectronicItineraryBatchApplyRequest) SetCanReprint(v bool) *Electronic
 }
 
 func (s *ElectronicItineraryBatchApplyRequest) Validate() error {
-  return dara.Validate(s)
+  if s.ApplyItineraryList != nil {
+    for _, item := range s.ApplyItineraryList {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type ElectronicItineraryBatchApplyRequestApplyItineraryList struct {

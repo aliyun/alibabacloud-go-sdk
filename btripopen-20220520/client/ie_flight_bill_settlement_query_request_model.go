@@ -11,6 +11,10 @@ type iIeFlightBillSettlementQueryRequest interface {
 	GoString() string
 	SetBillBatch(v string) *IeFlightBillSettlementQueryRequest
 	GetBillBatch() *string
+	SetBillRecordTimeEnd(v string) *IeFlightBillSettlementQueryRequest
+	GetBillRecordTimeEnd() *string
+	SetBillRecordTimeStart(v string) *IeFlightBillSettlementQueryRequest
+	GetBillRecordTimeStart() *string
 	SetOrderId(v int64) *IeFlightBillSettlementQueryRequest
 	GetOrderId() *int64
 	SetPageNo(v int32) *IeFlightBillSettlementQueryRequest
@@ -28,8 +32,10 @@ type iIeFlightBillSettlementQueryRequest interface {
 }
 
 type IeFlightBillSettlementQueryRequest struct {
-	BillBatch *string `json:"bill_batch,omitempty" xml:"bill_batch,omitempty"`
-	OrderId   *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	BillBatch           *string `json:"bill_batch,omitempty" xml:"bill_batch,omitempty"`
+	BillRecordTimeEnd   *string `json:"bill_record_time_end,omitempty" xml:"bill_record_time_end,omitempty"`
+	BillRecordTimeStart *string `json:"bill_record_time_start,omitempty" xml:"bill_record_time_start,omitempty"`
+	OrderId             *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -66,6 +72,14 @@ func (s *IeFlightBillSettlementQueryRequest) GetBillBatch() *string {
 	return s.BillBatch
 }
 
+func (s *IeFlightBillSettlementQueryRequest) GetBillRecordTimeEnd() *string {
+	return s.BillRecordTimeEnd
+}
+
+func (s *IeFlightBillSettlementQueryRequest) GetBillRecordTimeStart() *string {
+	return s.BillRecordTimeStart
+}
+
 func (s *IeFlightBillSettlementQueryRequest) GetOrderId() *int64 {
 	return s.OrderId
 }
@@ -96,6 +110,16 @@ func (s *IeFlightBillSettlementQueryRequest) GetScrollMod() *bool {
 
 func (s *IeFlightBillSettlementQueryRequest) SetBillBatch(v string) *IeFlightBillSettlementQueryRequest {
 	s.BillBatch = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryRequest) SetBillRecordTimeEnd(v string) *IeFlightBillSettlementQueryRequest {
+	s.BillRecordTimeEnd = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryRequest) SetBillRecordTimeStart(v string) *IeFlightBillSettlementQueryRequest {
+	s.BillRecordTimeStart = &v
 	return s
 }
 

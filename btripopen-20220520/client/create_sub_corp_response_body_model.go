@@ -107,7 +107,12 @@ func (s *CreateSubCorpResponseBody) SetTraceId(v string) *CreateSubCorpResponseB
 }
 
 func (s *CreateSubCorpResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateSubCorpResponseBodyModule struct {

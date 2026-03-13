@@ -130,7 +130,25 @@ func (s *IntlFlightRefundApplyRequest) SetSelectedPassengers(v []*IntlFlightRefu
 }
 
 func (s *IntlFlightRefundApplyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RefundSegmentList != nil {
+		for _, item := range s.RefundSegmentList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SelectedPassengers != nil {
+		for _, item := range s.SelectedPassengers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IntlFlightRefundApplyRequestRefundSegmentList struct {

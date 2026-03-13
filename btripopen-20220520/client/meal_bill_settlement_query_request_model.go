@@ -11,6 +11,10 @@ type iMealBillSettlementQueryRequest interface {
 	GoString() string
 	SetBillBatch(v string) *MealBillSettlementQueryRequest
 	GetBillBatch() *string
+	SetBillRecordTimeEnd(v string) *MealBillSettlementQueryRequest
+	GetBillRecordTimeEnd() *string
+	SetBillRecordTimeStart(v string) *MealBillSettlementQueryRequest
+	GetBillRecordTimeStart() *string
 	SetOrderId(v int64) *MealBillSettlementQueryRequest
 	GetOrderId() *int64
 	SetPageNo(v int32) *MealBillSettlementQueryRequest
@@ -28,8 +32,10 @@ type iMealBillSettlementQueryRequest interface {
 }
 
 type MealBillSettlementQueryRequest struct {
-	BillBatch *string `json:"bill_batch,omitempty" xml:"bill_batch,omitempty"`
-	OrderId   *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	BillBatch           *string `json:"bill_batch,omitempty" xml:"bill_batch,omitempty"`
+	BillRecordTimeEnd   *string `json:"bill_record_time_end,omitempty" xml:"bill_record_time_end,omitempty"`
+	BillRecordTimeStart *string `json:"bill_record_time_start,omitempty" xml:"bill_record_time_start,omitempty"`
+	OrderId             *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -66,6 +72,14 @@ func (s *MealBillSettlementQueryRequest) GetBillBatch() *string {
 	return s.BillBatch
 }
 
+func (s *MealBillSettlementQueryRequest) GetBillRecordTimeEnd() *string {
+	return s.BillRecordTimeEnd
+}
+
+func (s *MealBillSettlementQueryRequest) GetBillRecordTimeStart() *string {
+	return s.BillRecordTimeStart
+}
+
 func (s *MealBillSettlementQueryRequest) GetOrderId() *int64 {
 	return s.OrderId
 }
@@ -96,6 +110,16 @@ func (s *MealBillSettlementQueryRequest) GetScrollMod() *bool {
 
 func (s *MealBillSettlementQueryRequest) SetBillBatch(v string) *MealBillSettlementQueryRequest {
 	s.BillBatch = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryRequest) SetBillRecordTimeEnd(v string) *MealBillSettlementQueryRequest {
+	s.BillRecordTimeEnd = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryRequest) SetBillRecordTimeStart(v string) *MealBillSettlementQueryRequest {
+	s.BillRecordTimeStart = &v
 	return s
 }
 

@@ -110,7 +110,12 @@ func (s *HotelAskingPriceResponseBody) SetTraceId(v string) *HotelAskingPriceRes
 }
 
 func (s *HotelAskingPriceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HotelAskingPriceResponseBodyModule struct {
@@ -135,7 +140,16 @@ func (s *HotelAskingPriceResponseBodyModule) SetHotelAskingPriceDetails(v []*Hot
 }
 
 func (s *HotelAskingPriceResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.HotelAskingPriceDetails != nil {
+		for _, item := range s.HotelAskingPriceDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelAskingPriceResponseBodyModuleHotelAskingPriceDetails struct {

@@ -59,5 +59,10 @@ func (s *CitySearchResponse) SetBody(v *CitySearchResponseBody) *CitySearchRespo
 }
 
 func (s *CitySearchResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

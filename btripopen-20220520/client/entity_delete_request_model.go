@@ -69,7 +69,16 @@ func (s *EntityDeleteRequest) SetThirdpartId(v string) *EntityDeleteRequest {
 }
 
 func (s *EntityDeleteRequest) Validate() error {
-  return dara.Validate(s)
+  if s.EntityDOList != nil {
+    for _, item := range s.EntityDOList {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type EntityDeleteRequestEntityDOList struct {

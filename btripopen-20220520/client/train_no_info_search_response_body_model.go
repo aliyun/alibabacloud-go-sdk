@@ -112,7 +112,12 @@ func (s *TrainNoInfoSearchResponseBody) SetTraceId(v string) *TrainNoInfoSearchR
 }
 
 func (s *TrainNoInfoSearchResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrainNoInfoSearchResponseBodyModule struct {
@@ -147,7 +152,17 @@ func (s *TrainNoInfoSearchResponseBodyModule) SetTrainTransferStationSearchVO(v 
 }
 
 func (s *TrainNoInfoSearchResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.TrainStationSearchVO != nil {
+		if err := s.TrainStationSearchVO.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TrainTransferStationSearchVO != nil {
+		if err := s.TrainTransferStationSearchVO.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrainNoInfoSearchResponseBodyModuleTrainStationSearchVO struct {
@@ -348,7 +363,16 @@ func (s *TrainNoInfoSearchResponseBodyModuleTrainStationSearchVO) SetTrainType(v
 }
 
 func (s *TrainNoInfoSearchResponseBodyModuleTrainStationSearchVO) Validate() error {
-	return dara.Validate(s)
+	if s.SeatInfos != nil {
+		for _, item := range s.SeatInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainNoInfoSearchResponseBodyModuleTrainStationSearchVOSeatInfos struct {
@@ -447,7 +471,16 @@ func (s *TrainNoInfoSearchResponseBodyModuleTrainTransferStationSearchVO) SetTra
 }
 
 func (s *TrainNoInfoSearchResponseBodyModuleTrainTransferStationSearchVO) Validate() error {
-	return dara.Validate(s)
+	if s.TransferDetailList != nil {
+		for _, item := range s.TransferDetailList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainNoInfoSearchResponseBodyModuleTrainTransferStationSearchVOTransferDetailList struct {
@@ -648,7 +681,16 @@ func (s *TrainNoInfoSearchResponseBodyModuleTrainTransferStationSearchVOTransfer
 }
 
 func (s *TrainNoInfoSearchResponseBodyModuleTrainTransferStationSearchVOTransferDetailList) Validate() error {
-	return dara.Validate(s)
+	if s.SeatInfos != nil {
+		for _, item := range s.SeatInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainNoInfoSearchResponseBodyModuleTrainTransferStationSearchVOTransferDetailListSeatInfos struct {

@@ -11,6 +11,10 @@ type iIeHotelBillSettlementQueryRequest interface {
 	GoString() string
 	SetBillBatch(v string) *IeHotelBillSettlementQueryRequest
 	GetBillBatch() *string
+	SetBillRecordTimeEnd(v string) *IeHotelBillSettlementQueryRequest
+	GetBillRecordTimeEnd() *string
+	SetBillRecordTimeStart(v string) *IeHotelBillSettlementQueryRequest
+	GetBillRecordTimeStart() *string
 	SetCategory(v int32) *IeHotelBillSettlementQueryRequest
 	GetCategory() *int32
 	SetOrderId(v int64) *IeHotelBillSettlementQueryRequest
@@ -30,7 +34,9 @@ type iIeHotelBillSettlementQueryRequest interface {
 }
 
 type IeHotelBillSettlementQueryRequest struct {
-	BillBatch *string `json:"bill_batch,omitempty" xml:"bill_batch,omitempty"`
+	BillBatch           *string `json:"bill_batch,omitempty" xml:"bill_batch,omitempty"`
+	BillRecordTimeEnd   *string `json:"bill_record_time_end,omitempty" xml:"bill_record_time_end,omitempty"`
+	BillRecordTimeStart *string `json:"bill_record_time_start,omitempty" xml:"bill_record_time_start,omitempty"`
 	// example:
 	//
 	// 12
@@ -70,6 +76,14 @@ func (s *IeHotelBillSettlementQueryRequest) GetBillBatch() *string {
 	return s.BillBatch
 }
 
+func (s *IeHotelBillSettlementQueryRequest) GetBillRecordTimeEnd() *string {
+	return s.BillRecordTimeEnd
+}
+
+func (s *IeHotelBillSettlementQueryRequest) GetBillRecordTimeStart() *string {
+	return s.BillRecordTimeStart
+}
+
 func (s *IeHotelBillSettlementQueryRequest) GetCategory() *int32 {
 	return s.Category
 }
@@ -104,6 +118,16 @@ func (s *IeHotelBillSettlementQueryRequest) GetScrollMod() *bool {
 
 func (s *IeHotelBillSettlementQueryRequest) SetBillBatch(v string) *IeHotelBillSettlementQueryRequest {
 	s.BillBatch = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryRequest) SetBillRecordTimeEnd(v string) *IeHotelBillSettlementQueryRequest {
+	s.BillRecordTimeEnd = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryRequest) SetBillRecordTimeStart(v string) *IeHotelBillSettlementQueryRequest {
+	s.BillRecordTimeStart = &v
 	return s
 }
 

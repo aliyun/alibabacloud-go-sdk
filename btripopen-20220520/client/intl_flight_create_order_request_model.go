@@ -36,8 +36,14 @@ type iIntlFlightCreateOrderRequest interface {
 }
 
 type IntlFlightCreateOrderRequest struct {
-	AsyncCreateOrderKey  *string `json:"async_create_order_key,omitempty" xml:"async_create_order_key,omitempty"`
-	AsyncCreateOrderMode *bool   `json:"async_create_order_mode,omitempty" xml:"async_create_order_mode,omitempty"`
+	// example:
+	//
+	// fcoid_deb6372db8194f1c94c23bc4fadc508d
+	AsyncCreateOrderKey *string `json:"async_create_order_key,omitempty" xml:"async_create_order_key,omitempty"`
+	// example:
+	//
+	// false
+	AsyncCreateOrderMode *bool `json:"async_create_order_mode,omitempty" xml:"async_create_order_mode,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -53,14 +59,27 @@ type IntlFlightCreateOrderRequest struct {
 	// This parameter is required.
 	ContactInfo *IntlFlightCreateOrderRequestContactInfo `json:"contact_info,omitempty" xml:"contact_info,omitempty" type:"Struct"`
 	ExtraInfo   map[string]*string                       `json:"extra_info,omitempty" xml:"extra_info,omitempty"`
-	IsvName     *string                                  `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	OrderPrice  *int64                                   `json:"order_price,omitempty" xml:"order_price,omitempty"`
+	// example:
+	//
+	// open12k0lclldfdc7v10E2HaRrOr00
+	IsvName    *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	OrderPrice *int64  `json:"order_price,omitempty" xml:"order_price,omitempty"`
 	// This parameter is required.
-	OtaItemId  *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
+	//
+	// example:
+	//
+	// 56319a175bdf4b1898190bd7edb603b5_0
+	OtaItemId *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
+	// example:
+	//
+	// F11380075736888770560
 	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 	// This parameter is required.
 	PassengerList []*IntlFlightCreateOrderRequestPassengerList `json:"passenger_list,omitempty" xml:"passenger_list,omitempty" type:"Repeated"`
-	RenderKey     *string                                      `json:"render_key,omitempty" xml:"render_key,omitempty"`
+	// example:
+	//
+	// fcoid_deb6372db8194f1c94c23bc4fadc508d
+	RenderKey *string `json:"render_key,omitempty" xml:"render_key,omitempty"`
 }
 
 func (s IntlFlightCreateOrderRequest) String() string {
@@ -180,15 +199,37 @@ func (s *IntlFlightCreateOrderRequest) SetRenderKey(v string) *IntlFlightCreateO
 }
 
 func (s *IntlFlightCreateOrderRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ContactInfo != nil {
+		if err := s.ContactInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PassengerList != nil {
+		for _, item := range s.PassengerList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IntlFlightCreateOrderRequestContactInfo struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// XXX@aliyun.com
 	ContactEmail *string `json:"contact_email,omitempty" xml:"contact_email,omitempty"`
 	// This parameter is required.
 	ContactName *string `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 13812341234
 	ContactPhone *string `json:"contact_phone,omitempty" xml:"contact_phone,omitempty"`
 }
 
@@ -236,7 +277,7 @@ type IntlFlightCreateOrderRequestPassengerList struct {
 	//
 	// example:
 	//
-	// 1998-12-28
+	// 2020-01-01
 	Birthday *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
 	// This parameter is required.
 	CertInfo *IntlFlightCreateOrderRequestPassengerListCertInfo `json:"cert_info,omitempty" xml:"cert_info,omitempty" type:"Struct"`
@@ -254,7 +295,7 @@ type IntlFlightCreateOrderRequestPassengerList struct {
 	Gender *int32 `json:"gender,omitempty" xml:"gender,omitempty"`
 	// example:
 	//
-	// L5000924
+	// ZNW0525
 	JobNo *string `json:"job_no,omitempty" xml:"job_no,omitempty"`
 	// This parameter is required.
 	//
@@ -263,12 +304,16 @@ type IntlFlightCreateOrderRequestPassengerList struct {
 	// 中国大陆
 	Nationality *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// CN
 	NationalityCode *string `json:"nationality_code,omitempty" xml:"nationality_code,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 13100008888
+	// 18012341234
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
 	// This parameter is required.
 	//
@@ -280,7 +325,7 @@ type IntlFlightCreateOrderRequestPassengerList struct {
 	//
 	// example:
 	//
-	// 12292812036903456
+	// 13123123212
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 	// example:
 	//
@@ -396,7 +441,12 @@ func (s *IntlFlightCreateOrderRequestPassengerList) SetUserType(v int32) *IntlFl
 }
 
 func (s *IntlFlightCreateOrderRequestPassengerList) Validate() error {
-	return dara.Validate(s)
+	if s.CertInfo != nil {
+		if err := s.CertInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IntlFlightCreateOrderRequestPassengerListCertInfo struct {
@@ -404,7 +454,7 @@ type IntlFlightCreateOrderRequestPassengerListCertInfo struct {
 	//
 	// example:
 	//
-	// E1234567
+	// H123456
 	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
 	// This parameter is required.
 	//
@@ -416,7 +466,7 @@ type IntlFlightCreateOrderRequestPassengerListCertInfo struct {
 	//
 	// example:
 	//
-	// 2029-12-31
+	// 2030-01-01
 	CertValidDate *string `json:"cert_valid_date,omitempty" xml:"cert_valid_date,omitempty"`
 	// This parameter is required.
 	//

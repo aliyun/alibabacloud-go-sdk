@@ -59,5 +59,10 @@ func (s *TrainNoListSearchResponse) SetBody(v *TrainNoListSearchResponseBody) *T
 }
 
 func (s *TrainNoListSearchResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

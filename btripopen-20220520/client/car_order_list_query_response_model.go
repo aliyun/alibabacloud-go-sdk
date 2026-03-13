@@ -59,5 +59,10 @@ func (s *CarOrderListQueryResponse) SetBody(v *CarOrderListQueryResponseBody) *C
 }
 
 func (s *CarOrderListQueryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

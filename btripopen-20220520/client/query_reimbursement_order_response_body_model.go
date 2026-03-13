@@ -111,7 +111,12 @@ func (s *QueryReimbursementOrderResponseBody) SetTraceId(v string) *QueryReimbur
 }
 
 func (s *QueryReimbursementOrderResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryReimbursementOrderResponseBodyModule struct {
@@ -410,7 +415,34 @@ func (s *QueryReimbursementOrderResponseBodyModule) SetUserName(v string) *Query
 }
 
 func (s *QueryReimbursementOrderResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.Expenses != nil {
+		for _, item := range s.Expenses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Itineraries != nil {
+		for _, item := range s.Itineraries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PaymentInfos != nil {
+		for _, item := range s.PaymentInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryReimbursementOrderResponseBodyModuleExpenses struct {
@@ -544,7 +576,25 @@ func (s *QueryReimbursementOrderResponseBodyModuleExpenses) SetSettlementType(v 
 }
 
 func (s *QueryReimbursementOrderResponseBodyModuleExpenses) Validate() error {
-	return dara.Validate(s)
+	if s.ExpenseCompositions != nil {
+		for _, item := range s.ExpenseCompositions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InvoiceInfos != nil {
+		for _, item := range s.InvoiceInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions struct {
@@ -815,7 +865,8 @@ type QueryReimbursementOrderResponseBodyModulePaymentInfos struct {
 	// example:
 	//
 	// 20.00
-	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
+	Amount             *string `json:"amount,omitempty" xml:"amount,omitempty"`
+	PayeeAccountNumber *string `json:"payee_account_number,omitempty" xml:"payee_account_number,omitempty"`
 	// example:
 	//
 	// userId
@@ -834,12 +885,21 @@ func (s *QueryReimbursementOrderResponseBodyModulePaymentInfos) GetAmount() *str
 	return s.Amount
 }
 
+func (s *QueryReimbursementOrderResponseBodyModulePaymentInfos) GetPayeeAccountNumber() *string {
+	return s.PayeeAccountNumber
+}
+
 func (s *QueryReimbursementOrderResponseBodyModulePaymentInfos) GetPayeeUserId() *string {
 	return s.PayeeUserId
 }
 
 func (s *QueryReimbursementOrderResponseBodyModulePaymentInfos) SetAmount(v string) *QueryReimbursementOrderResponseBodyModulePaymentInfos {
 	s.Amount = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModulePaymentInfos) SetPayeeAccountNumber(v string) *QueryReimbursementOrderResponseBodyModulePaymentInfos {
+	s.PayeeAccountNumber = &v
 	return s
 }
 

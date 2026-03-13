@@ -100,7 +100,30 @@ func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValue) SetSegmentPrice(
 }
 
 func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValue) Validate() error {
-	return dara.Validate(s)
+	if s.CabinQuantityList != nil {
+		for _, item := range s.CabinQuantityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SearchPrice != nil {
+		if err := s.SearchPrice.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SegmentPriceList != nil {
+		for _, item := range s.SegmentPriceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityList struct {
@@ -135,7 +158,17 @@ func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityList)
 }
 
 func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityList) Validate() error {
-	return dara.Validate(s)
+	if s.SegmentPosition != nil {
+		if err := s.SegmentPosition.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CabinInfo != nil {
+		if err := s.CabinInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityListSegmentPosition struct {
@@ -524,7 +557,12 @@ func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetPr
 }
 
 func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) Validate() error {
-	return dara.Validate(s)
+	if s.PriceShowInfo != nil {
+		if err := s.PriceShowInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPricePriceShowInfo struct {
@@ -610,7 +648,17 @@ func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceList) 
 }
 
 func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceList) Validate() error {
-	return dara.Validate(s)
+	if s.SegmentPosition != nil {
+		if err := s.SegmentPosition.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SearchPrice != nil {
+		if err := s.SearchPrice.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceListSegmentPosition struct {

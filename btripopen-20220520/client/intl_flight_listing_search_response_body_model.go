@@ -107,7 +107,12 @@ func (s *IntlFlightListingSearchResponseBody) SetTraceId(v string) *IntlFlightLi
 }
 
 func (s *IntlFlightListingSearchResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IntlFlightListingSearchResponseBodyModule struct {
@@ -171,7 +176,16 @@ func (s *IntlFlightListingSearchResponseBodyModule) SetToken(v string) *IntlFlig
 }
 
 func (s *IntlFlightListingSearchResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.FlightItemList != nil {
+		for _, item := range s.FlightItemList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IntlFlightListingSearchResponseBodyModuleFlightItemList struct {
@@ -206,7 +220,21 @@ func (s *IntlFlightListingSearchResponseBodyModuleFlightItemList) SetFlightJourn
 }
 
 func (s *IntlFlightListingSearchResponseBodyModuleFlightItemList) Validate() error {
-	return dara.Validate(s)
+	if s.BestPriceItem != nil {
+		if err := s.BestPriceItem.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FlightJourneyInfos != nil {
+		for _, item := range s.FlightJourneyInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IntlFlightListingSearchResponseBodyModuleFlightItemListBestPriceItem struct {
@@ -261,7 +289,25 @@ func (s *IntlFlightListingSearchResponseBodyModuleFlightItemListBestPriceItem) S
 }
 
 func (s *IntlFlightListingSearchResponseBodyModuleFlightItemListBestPriceItem) Validate() error {
-	return dara.Validate(s)
+	if s.AgreementPriceCodes != nil {
+		for _, item := range s.AgreementPriceCodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LabelList != nil {
+		for _, item := range s.LabelList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IntlFlightListingSearchResponseBodyModuleFlightItemListBestPriceItemAgreementPriceCodes struct {
@@ -467,7 +513,16 @@ func (s *IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInf
 }
 
 func (s *IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfos) Validate() error {
-	return dara.Validate(s)
+	if s.FlightSegmentInfos != nil {
+		for _, item := range s.FlightSegmentInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos struct {
@@ -770,7 +825,36 @@ func (s *IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInf
 }
 
 func (s *IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) Validate() error {
-	return dara.Validate(s)
+	if s.AirlineInfo != nil {
+		if err := s.AirlineInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ArrAirportInfo != nil {
+		if err := s.ArrAirportInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DepAirportInfo != nil {
+		if err := s.DepAirportInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FlightShareInfo != nil {
+		if err := s.FlightShareInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FlightStopInfoList != nil {
+		for _, item := range s.FlightStopInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosAirlineInfo struct {
@@ -978,7 +1062,12 @@ func (s *IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInf
 }
 
 func (s *IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfo) Validate() error {
-	return dara.Validate(s)
+	if s.OperatingAirlineInfo != nil {
+		if err := s.OperatingAirlineInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo struct {

@@ -107,7 +107,12 @@ func (s *TicketChangingDetailResponseBody) SetTraceId(v string) *TicketChangingD
 }
 
 func (s *TicketChangingDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TicketChangingDetailResponseBodyModule struct {
@@ -328,7 +333,25 @@ func (s *TicketChangingDetailResponseBodyModule) SetTravelerInfoList(v []*Ticket
 }
 
 func (s *TicketChangingDetailResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.FlightInfoList != nil {
+		for _, item := range s.FlightInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TravelerInfoList != nil {
+		for _, item := range s.TravelerInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TicketChangingDetailResponseBodyModuleFlightInfoList struct {

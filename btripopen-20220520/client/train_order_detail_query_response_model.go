@@ -59,5 +59,10 @@ func (s *TrainOrderDetailQueryResponse) SetBody(v *TrainOrderDetailQueryResponse
 }
 
 func (s *TrainOrderDetailQueryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -122,7 +122,16 @@ func (s *FlightRefundPreCalV2Request) SetVoluntary(v bool) *FlightRefundPreCalV2
 }
 
 func (s *FlightRefundPreCalV2Request) Validate() error {
-	return dara.Validate(s)
+	if s.PassengerSegmentRelations != nil {
+		for _, item := range s.PassengerSegmentRelations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightRefundPreCalV2RequestPassengerSegmentRelations struct {

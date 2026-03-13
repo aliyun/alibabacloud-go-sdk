@@ -110,7 +110,12 @@ func (s *HotelGoodsQueryResponseBody) SetTraceId(v string) *HotelGoodsQueryRespo
 }
 
 func (s *HotelGoodsQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HotelGoodsQueryResponseBodyModule struct {
@@ -134,6 +139,7 @@ type HotelGoodsQueryResponseBodyModule struct {
 	//
 	// 17:00
 	EarlyArrivalTime *string `json:"early_arrival_time,omitempty" xml:"early_arrival_time,omitempty"`
+	HotelGroupDesc   *string `json:"hotel_group_desc,omitempty" xml:"hotel_group_desc,omitempty"`
 	// example:
 	//
 	// 29382
@@ -188,6 +194,10 @@ func (s *HotelGoodsQueryResponseBodyModule) GetDinamicBannerPicUrls() []*string 
 
 func (s *HotelGoodsQueryResponseBodyModule) GetEarlyArrivalTime() *string {
 	return s.EarlyArrivalTime
+}
+
+func (s *HotelGoodsQueryResponseBodyModule) GetHotelGroupDesc() *string {
+	return s.HotelGroupDesc
 }
 
 func (s *HotelGoodsQueryResponseBodyModule) GetHotelId() *int64 {
@@ -250,6 +260,11 @@ func (s *HotelGoodsQueryResponseBodyModule) SetEarlyArrivalTime(v string) *Hotel
 	return s
 }
 
+func (s *HotelGoodsQueryResponseBodyModule) SetHotelGroupDesc(v string) *HotelGoodsQueryResponseBodyModule {
+	s.HotelGroupDesc = &v
+	return s
+}
+
 func (s *HotelGoodsQueryResponseBodyModule) SetHotelId(v int64) *HotelGoodsQueryResponseBodyModule {
 	s.HotelId = &v
 	return s
@@ -276,7 +291,16 @@ func (s *HotelGoodsQueryResponseBodyModule) SetSearchId(v string) *HotelGoodsQue
 }
 
 func (s *HotelGoodsQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.Rooms != nil {
+		for _, item := range s.Rooms {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelGoodsQueryResponseBodyModuleRooms struct {
@@ -475,7 +499,25 @@ func (s *HotelGoodsQueryResponseBodyModuleRooms) SetWindowType(v string) *HotelG
 }
 
 func (s *HotelGoodsQueryResponseBodyModuleRooms) Validate() error {
-	return dara.Validate(s)
+	if s.Rates != nil {
+		for _, item := range s.Rates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RoomService != nil {
+		for _, item := range s.RoomService {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelGoodsQueryResponseBodyModuleRoomsRates struct {
@@ -496,7 +538,8 @@ type HotelGoodsQueryResponseBodyModuleRoomsRates struct {
 	// example:
 	//
 	// 0
-	CompanyAassist *string `json:"company_aassist,omitempty" xml:"company_aassist,omitempty"`
+	CompanyAassist    *string `json:"company_aassist,omitempty" xml:"company_aassist,omitempty"`
+	CompanyAssistType *string `json:"company_assist_type,omitempty" xml:"company_assist_type,omitempty"`
 	// example:
 	//
 	// 0
@@ -519,6 +562,7 @@ type HotelGoodsQueryResponseBodyModuleRoomsRates struct {
 	// demo
 	EndTimeDaily            *string                                                               `json:"end_time_daily,omitempty" xml:"end_time_daily,omitempty"`
 	HotelDetailRatePriceDTO []*HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO `json:"hotel_detail_rate_price_d_t_o,omitempty" xml:"hotel_detail_rate_price_d_t_o,omitempty" type:"Repeated"`
+	HotelMemberBenefit      map[string]*string                                                    `json:"hotel_member_benefit,omitempty" xml:"hotel_member_benefit,omitempty"`
 	// example:
 	//
 	// true
@@ -556,7 +600,8 @@ type HotelGoodsQueryResponseBodyModuleRoomsRates struct {
 	// example:
 	//
 	// 3
-	MinDays *int32 `json:"min_days,omitempty" xml:"min_days,omitempty"`
+	MinDays         *int32 `json:"min_days,omitempty" xml:"min_days,omitempty"`
+	NeedCertificate *bool  `json:"need_certificate,omitempty" xml:"need_certificate,omitempty"`
 	// example:
 	//
 	// 1
@@ -585,6 +630,7 @@ type HotelGoodsQueryResponseBodyModuleRoomsRates struct {
 	//
 	// 4509447432148
 	RateId       *int64  `json:"rate_id,omitempty" xml:"rate_id,omitempty"`
+	RateKey      *string `json:"rate_key,omitempty" xml:"rate_key,omitempty"`
 	RatePlanName *string `json:"rate_plan_name,omitempty" xml:"rate_plan_name,omitempty"`
 	// example:
 	//
@@ -664,6 +710,10 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) GetCompanyAassist() *strin
 	return s.CompanyAassist
 }
 
+func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) GetCompanyAssistType() *string {
+	return s.CompanyAssistType
+}
+
 func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) GetConfirmType() *int32 {
 	return s.ConfirmType
 }
@@ -690,6 +740,10 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) GetEndTimeDaily() *string 
 
 func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) GetHotelDetailRatePriceDTO() []*HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO {
 	return s.HotelDetailRatePriceDTO
+}
+
+func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) GetHotelMemberBenefit() map[string]*string {
+	return s.HotelMemberBenefit
 }
 
 func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) GetInstantConfirm() *bool {
@@ -736,6 +790,10 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) GetMinDays() *int32 {
 	return s.MinDays
 }
 
+func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) GetNeedCertificate() *bool {
+	return s.NeedCertificate
+}
+
 func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) GetNod() *int32 {
 	return s.Nod
 }
@@ -762,6 +820,10 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) GetPromotionInfo() *string
 
 func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) GetRateId() *int64 {
 	return s.RateId
+}
+
+func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) GetRateKey() *string {
+	return s.RateKey
 }
 
 func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) GetRatePlanName() *string {
@@ -845,6 +907,11 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) SetCompanyAassist(v string
 	return s
 }
 
+func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) SetCompanyAssistType(v string) *HotelGoodsQueryResponseBodyModuleRoomsRates {
+	s.CompanyAssistType = &v
+	return s
+}
+
 func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) SetConfirmType(v int32) *HotelGoodsQueryResponseBodyModuleRoomsRates {
 	s.ConfirmType = &v
 	return s
@@ -877,6 +944,11 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) SetEndTimeDaily(v string) 
 
 func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) SetHotelDetailRatePriceDTO(v []*HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO) *HotelGoodsQueryResponseBodyModuleRoomsRates {
 	s.HotelDetailRatePriceDTO = v
+	return s
+}
+
+func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) SetHotelMemberBenefit(v map[string]*string) *HotelGoodsQueryResponseBodyModuleRoomsRates {
+	s.HotelMemberBenefit = v
 	return s
 }
 
@@ -935,6 +1007,11 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) SetMinDays(v int32) *Hotel
 	return s
 }
 
+func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) SetNeedCertificate(v bool) *HotelGoodsQueryResponseBodyModuleRoomsRates {
+	s.NeedCertificate = &v
+	return s
+}
+
 func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) SetNod(v int32) *HotelGoodsQueryResponseBodyModuleRoomsRates {
 	s.Nod = &v
 	return s
@@ -967,6 +1044,11 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) SetPromotionInfo(v string)
 
 func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) SetRateId(v int64) *HotelGoodsQueryResponseBodyModuleRoomsRates {
 	s.RateId = &v
+	return s
+}
+
+func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) SetRateKey(v string) *HotelGoodsQueryResponseBodyModuleRoomsRates {
+	s.RateKey = &v
 	return s
 }
 
@@ -1016,7 +1098,35 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) SetUnroundingDailyPriceFor
 }
 
 func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) Validate() error {
-	return dara.Validate(s)
+	if s.BtripCancelRule != nil {
+		if err := s.BtripCancelRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BtripHotelCancelDesc != nil {
+		for _, item := range s.BtripHotelCancelDesc {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DiscountDesc != nil {
+		if err := s.DiscountDesc.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HotelDetailRatePriceDTO != nil {
+		for _, item := range s.HotelDetailRatePriceDTO {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelGoodsQueryResponseBodyModuleRoomsRatesBtripCancelRule struct {
@@ -1064,7 +1174,12 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesBtripCancelRule) SetCheckIn(
 }
 
 func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesBtripCancelRule) Validate() error {
-	return dara.Validate(s)
+	if s.BtripHotelCancelPolicyDTO != nil {
+		if err := s.BtripHotelCancelPolicyDTO.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HotelGoodsQueryResponseBodyModuleRoomsRatesBtripCancelRuleBtripHotelCancelPolicyDTO struct {
@@ -1102,7 +1217,16 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesBtripCancelRuleBtripHotelCan
 }
 
 func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesBtripCancelRuleBtripHotelCancelPolicyDTO) Validate() error {
-	return dara.Validate(s)
+	if s.BtripHotelCancelPolicyInfoDTOList != nil {
+		for _, item := range s.BtripHotelCancelPolicyInfoDTOList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelGoodsQueryResponseBodyModuleRoomsRatesBtripCancelRuleBtripHotelCancelPolicyDTOBtripHotelCancelPolicyInfoDTOList struct {
@@ -1243,7 +1367,16 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc) SetTitle(v str
 }
 
 func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc) Validate() error {
-	return dara.Validate(s)
+	if s.DiscountDetail != nil {
+		for _, item := range s.DiscountDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDescDiscountDetail struct {

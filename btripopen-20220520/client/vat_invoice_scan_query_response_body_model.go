@@ -111,7 +111,12 @@ func (s *VatInvoiceScanQueryResponseBody) SetTraceId(v string) *VatInvoiceScanQu
 }
 
 func (s *VatInvoiceScanQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type VatInvoiceScanQueryResponseBodyModule struct {
@@ -188,7 +193,16 @@ func (s *VatInvoiceScanQueryResponseBodyModule) SetTotalSize(v int32) *VatInvoic
 }
 
 func (s *VatInvoiceScanQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type VatInvoiceScanQueryResponseBodyModuleItems struct {
@@ -619,7 +633,16 @@ func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetXmlOssUrl(v string) *Vat
 }
 
 func (s *VatInvoiceScanQueryResponseBodyModuleItems) Validate() error {
-	return dara.Validate(s)
+	if s.InvoiceDetails != nil {
+		for _, item := range s.InvoiceDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails struct {

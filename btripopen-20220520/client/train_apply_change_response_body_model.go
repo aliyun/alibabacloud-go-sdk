@@ -110,7 +110,12 @@ func (s *TrainApplyChangeResponseBody) SetTraceId(v string) *TrainApplyChangeRes
 }
 
 func (s *TrainApplyChangeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrainApplyChangeResponseBodyModule struct {

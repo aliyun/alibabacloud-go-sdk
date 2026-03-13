@@ -59,5 +59,10 @@ func (s *GroupDepartSaveResponse) SetBody(v *GroupDepartSaveResponseBody) *Group
 }
 
 func (s *GroupDepartSaveResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

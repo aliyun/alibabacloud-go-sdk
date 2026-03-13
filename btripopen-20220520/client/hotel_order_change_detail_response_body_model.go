@@ -110,7 +110,12 @@ func (s *HotelOrderChangeDetailResponseBody) SetTraceId(v string) *HotelOrderCha
 }
 
 func (s *HotelOrderChangeDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HotelOrderChangeDetailResponseBodyModule struct {
@@ -285,7 +290,16 @@ func (s *HotelOrderChangeDetailResponseBodyModule) SetWorkOrderId(v string) *Hot
 }
 
 func (s *HotelOrderChangeDetailResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.RoomInfoList != nil {
+		for _, item := range s.RoomInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelOrderChangeDetailResponseBodyModuleRoomInfoList struct {
@@ -333,7 +347,16 @@ func (s *HotelOrderChangeDetailResponseBodyModuleRoomInfoList) SetRoomNo(v int32
 }
 
 func (s *HotelOrderChangeDetailResponseBodyModuleRoomInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.RoomDailyRefundInfos != nil {
+		for _, item := range s.RoomDailyRefundInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelOrderChangeDetailResponseBodyModuleRoomInfoListRoomDailyRefundInfos struct {

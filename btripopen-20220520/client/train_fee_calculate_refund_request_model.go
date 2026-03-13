@@ -70,7 +70,16 @@ func (s *TrainFeeCalculateRefundRequest) SetRefundTrainInfos(v []*TrainFeeCalcul
 }
 
 func (s *TrainFeeCalculateRefundRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RefundTrainInfos != nil {
+		for _, item := range s.RefundTrainInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainFeeCalculateRefundRequestRefundTrainInfos struct {
@@ -156,7 +165,16 @@ func (s *TrainFeeCalculateRefundRequestRefundTrainInfos) SetTrainNo(v string) *T
 }
 
 func (s *TrainFeeCalculateRefundRequestRefundTrainInfos) Validate() error {
-	return dara.Validate(s)
+	if s.RefundPassengerInfos != nil {
+		for _, item := range s.RefundPassengerInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainFeeCalculateRefundRequestRefundTrainInfosRefundPassengerInfos struct {

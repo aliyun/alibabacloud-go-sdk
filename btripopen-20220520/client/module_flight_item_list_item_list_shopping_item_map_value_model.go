@@ -76,7 +76,12 @@ func (s *ModuleFlightItemListItemListShoppingItemMapValue) SetSegmentPrice(v map
 }
 
 func (s *ModuleFlightItemListItemListShoppingItemMapValue) Validate() error {
-	return dara.Validate(s)
+	if s.SearchPrice != nil {
+		if err := s.SearchPrice.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModuleFlightItemListItemListShoppingItemMapValueSearchPrice struct {
@@ -369,7 +374,12 @@ func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetPriceSh
 }
 
 func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) Validate() error {
-	return dara.Validate(s)
+	if s.PriceShowInfo != nil {
+		if err := s.PriceShowInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModuleFlightItemListItemListShoppingItemMapValueSearchPricePriceShowInfo struct {

@@ -119,29 +119,47 @@ func (s *FlightOrderListQueryResponseBody) SetTraceId(v string) *FlightOrderList
 }
 
 func (s *FlightOrderListQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		for _, item := range s.Module {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightOrderListQueryResponseBodyModule struct {
 	// example:
 	//
 	// 11774
-	ApplyId       *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	ArrAirport    *string `json:"arr_airport,omitempty" xml:"arr_airport,omitempty"`
-	ArrCity       *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	ArrCityAdCode *string `json:"arr_city_ad_code,omitempty" xml:"arr_city_ad_code,omitempty"`
-	BtripTitle    *string `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
+	ApplyId                *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ArrAirport             *string `json:"arr_airport,omitempty" xml:"arr_airport,omitempty"`
+	ArrAptPrefectureAdCode *string `json:"arr_apt_prefecture_ad_code,omitempty" xml:"arr_apt_prefecture_ad_code,omitempty"`
+	ArrAptPrefectureName   *string `json:"arr_apt_prefecture_name,omitempty" xml:"arr_apt_prefecture_name,omitempty"`
+	ArrCity                *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrCityAdCode          *string `json:"arr_city_ad_code,omitempty" xml:"arr_city_ad_code,omitempty"`
+	BtripTitle             *string `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
 	// example:
 	//
 	// Y
-	CabinClass    *string                                           `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-	ContactName   *string                                           `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
-	CorpId        *string                                           `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	CorpName      *string                                           `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	CostCenter    *FlightOrderListQueryResponseBodyModuleCostCenter `json:"cost_center,omitempty" xml:"cost_center,omitempty" type:"Struct"`
-	DepAirport    *string                                           `json:"dep_airport,omitempty" xml:"dep_airport,omitempty"`
-	DepCity       *string                                           `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
-	DepCityAdCode *string                                           `json:"dep_city_ad_code,omitempty" xml:"dep_city_ad_code,omitempty"`
+	CabinClass             *string                                           `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	ContactName            *string                                           `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
+	CorpId                 *string                                           `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	CorpName               *string                                           `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	CostCenter             *FlightOrderListQueryResponseBodyModuleCostCenter `json:"cost_center,omitempty" xml:"cost_center,omitempty" type:"Struct"`
+	DepAirport             *string                                           `json:"dep_airport,omitempty" xml:"dep_airport,omitempty"`
+	DepAptPrefectureAdCode *string                                           `json:"dep_apt_prefecture_ad_code,omitempty" xml:"dep_apt_prefecture_ad_code,omitempty"`
+	DepAptPrefectureName   *string                                           `json:"dep_apt_prefecture_name,omitempty" xml:"dep_apt_prefecture_name,omitempty"`
+	DepCity                *string                                           `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	DepCityAdCode          *string                                           `json:"dep_city_ad_code,omitempty" xml:"dep_city_ad_code,omitempty"`
 	// example:
 	//
 	// 2022-07-20T10:40Z
@@ -231,6 +249,14 @@ func (s *FlightOrderListQueryResponseBodyModule) GetArrAirport() *string {
 	return s.ArrAirport
 }
 
+func (s *FlightOrderListQueryResponseBodyModule) GetArrAptPrefectureAdCode() *string {
+	return s.ArrAptPrefectureAdCode
+}
+
+func (s *FlightOrderListQueryResponseBodyModule) GetArrAptPrefectureName() *string {
+	return s.ArrAptPrefectureName
+}
+
 func (s *FlightOrderListQueryResponseBodyModule) GetArrCity() *string {
 	return s.ArrCity
 }
@@ -265,6 +291,14 @@ func (s *FlightOrderListQueryResponseBodyModule) GetCostCenter() *FlightOrderLis
 
 func (s *FlightOrderListQueryResponseBodyModule) GetDepAirport() *string {
 	return s.DepAirport
+}
+
+func (s *FlightOrderListQueryResponseBodyModule) GetDepAptPrefectureAdCode() *string {
+	return s.DepAptPrefectureAdCode
+}
+
+func (s *FlightOrderListQueryResponseBodyModule) GetDepAptPrefectureName() *string {
+	return s.DepAptPrefectureName
 }
 
 func (s *FlightOrderListQueryResponseBodyModule) GetDepCity() *string {
@@ -389,6 +423,16 @@ func (s *FlightOrderListQueryResponseBodyModule) SetArrAirport(v string) *Flight
 	return s
 }
 
+func (s *FlightOrderListQueryResponseBodyModule) SetArrAptPrefectureAdCode(v string) *FlightOrderListQueryResponseBodyModule {
+	s.ArrAptPrefectureAdCode = &v
+	return s
+}
+
+func (s *FlightOrderListQueryResponseBodyModule) SetArrAptPrefectureName(v string) *FlightOrderListQueryResponseBodyModule {
+	s.ArrAptPrefectureName = &v
+	return s
+}
+
 func (s *FlightOrderListQueryResponseBodyModule) SetArrCity(v string) *FlightOrderListQueryResponseBodyModule {
 	s.ArrCity = &v
 	return s
@@ -431,6 +475,16 @@ func (s *FlightOrderListQueryResponseBodyModule) SetCostCenter(v *FlightOrderLis
 
 func (s *FlightOrderListQueryResponseBodyModule) SetDepAirport(v string) *FlightOrderListQueryResponseBodyModule {
 	s.DepAirport = &v
+	return s
+}
+
+func (s *FlightOrderListQueryResponseBodyModule) SetDepAptPrefectureAdCode(v string) *FlightOrderListQueryResponseBodyModule {
+	s.DepAptPrefectureAdCode = &v
+	return s
+}
+
+func (s *FlightOrderListQueryResponseBodyModule) SetDepAptPrefectureName(v string) *FlightOrderListQueryResponseBodyModule {
+	s.DepAptPrefectureName = &v
 	return s
 }
 
@@ -575,7 +629,44 @@ func (s *FlightOrderListQueryResponseBodyModule) SetUserName(v string) *FlightOr
 }
 
 func (s *FlightOrderListQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.CostCenter != nil {
+		if err := s.CostCenter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InsureInfoList != nil {
+		for _, item := range s.InsureInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Invoice != nil {
+		if err := s.Invoice.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PriceInfoList != nil {
+		for _, item := range s.PriceInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserAffiliateList != nil {
+		for _, item := range s.UserAffiliateList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightOrderListQueryResponseBodyModuleCostCenter struct {

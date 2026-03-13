@@ -59,5 +59,10 @@ func (s *FlightPayOrderResponse) SetBody(v *FlightPayOrderResponseBody) *FlightP
 }
 
 func (s *FlightPayOrderResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -123,8 +123,11 @@ type ApplyAddShrinkRequest struct {
 	// example:
 	//
 	// 1000
-	HotelBudget               *int64  `json:"hotel_budget,omitempty" xml:"hotel_budget,omitempty"`
-	HotelShareShrink          *string `json:"hotel_share,omitempty" xml:"hotel_share,omitempty"`
+	HotelBudget      *int64  `json:"hotel_budget,omitempty" xml:"hotel_budget,omitempty"`
+	HotelShareShrink *string `json:"hotel_share,omitempty" xml:"hotel_share,omitempty"`
+	// example:
+	//
+	// Y
 	InternationalFlightCabins *string `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
 	IntlFlightBudget          *int64  `json:"intl_flight_budget,omitempty" xml:"intl_flight_budget,omitempty"`
 	IntlHotelBudget           *int64  `json:"intl_hotel_budget,omitempty" xml:"intl_hotel_budget,omitempty"`

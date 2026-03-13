@@ -33,6 +33,8 @@ type iHotelOrderCreateShrinkRequest interface {
 	GetItemId() *int64
 	SetItineraryNo(v string) *HotelOrderCreateShrinkRequest
 	GetItineraryNo() *string
+	SetMemberInfoShrink(v string) *HotelOrderCreateShrinkRequest
+	GetMemberInfoShrink() *string
 	SetOccupantInfoListShrink(v string) *HotelOrderCreateShrinkRequest
 	GetOccupantInfoListShrink() *string
 	SetPersonPayPrice(v int64) *HotelOrderCreateShrinkRequest
@@ -110,7 +112,8 @@ type HotelOrderCreateShrinkRequest struct {
 	// example:
 	//
 	// fb5e1abf33924b6c912bd6d80deec0eb-1
-	ItineraryNo *string `json:"itinerary_no,omitempty" xml:"itinerary_no,omitempty"`
+	ItineraryNo      *string `json:"itinerary_no,omitempty" xml:"itinerary_no,omitempty"`
+	MemberInfoShrink *string `json:"member_info,omitempty" xml:"member_info,omitempty"`
 	// This parameter is required.
 	OccupantInfoListShrink *string `json:"occupant_info_list,omitempty" xml:"occupant_info_list,omitempty"`
 	// This parameter is required.
@@ -220,6 +223,10 @@ func (s *HotelOrderCreateShrinkRequest) GetItineraryNo() *string {
 	return s.ItineraryNo
 }
 
+func (s *HotelOrderCreateShrinkRequest) GetMemberInfoShrink() *string {
+	return s.MemberInfoShrink
+}
+
 func (s *HotelOrderCreateShrinkRequest) GetOccupantInfoListShrink() *string {
 	return s.OccupantInfoListShrink
 }
@@ -317,6 +324,11 @@ func (s *HotelOrderCreateShrinkRequest) SetItemId(v int64) *HotelOrderCreateShri
 
 func (s *HotelOrderCreateShrinkRequest) SetItineraryNo(v string) *HotelOrderCreateShrinkRequest {
 	s.ItineraryNo = &v
+	return s
+}
+
+func (s *HotelOrderCreateShrinkRequest) SetMemberInfoShrink(v string) *HotelOrderCreateShrinkRequest {
+	s.MemberInfoShrink = &v
 	return s
 }
 

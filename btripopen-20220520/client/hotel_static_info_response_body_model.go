@@ -111,7 +111,12 @@ func (s *HotelStaticInfoResponseBody) SetTraceId(v string) *HotelStaticInfoRespo
 }
 
 func (s *HotelStaticInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HotelStaticInfoResponseBodyModule struct {
@@ -136,7 +141,16 @@ func (s *HotelStaticInfoResponseBodyModule) SetHotelStaticInfos(v []*HotelStatic
 }
 
 func (s *HotelStaticInfoResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.HotelStaticInfos != nil {
+		for _, item := range s.HotelStaticInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelStaticInfoResponseBodyModuleHotelStaticInfos struct {
@@ -554,7 +568,30 @@ func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfos) SetVisaReminding(v b
 }
 
 func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfos) Validate() error {
-	return dara.Validate(s)
+	if s.ExpandInfo != nil {
+		if err := s.ExpandInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Imageinfos != nil {
+		for _, item := range s.Imageinfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RoomInfos != nil {
+		for _, item := range s.RoomInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelStaticInfoResponseBodyModuleHotelStaticInfosExpandInfo struct {
@@ -980,7 +1017,25 @@ func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfos) SetWindowVi
 }
 
 func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfos) Validate() error {
-	return dara.Validate(s)
+	if s.BedInfoGroupList != nil {
+		for _, item := range s.BedInfoGroupList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BedInfos != nil {
+		for _, item := range s.BedInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupList struct {
@@ -1005,7 +1060,16 @@ func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupL
 }
 
 func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupList) Validate() error {
-	return dara.Validate(s)
+	if s.BedInfos != nil {
+		for _, item := range s.BedInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupListBedInfos struct {

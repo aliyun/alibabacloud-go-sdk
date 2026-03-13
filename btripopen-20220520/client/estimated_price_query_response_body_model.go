@@ -112,7 +112,12 @@ func (s *EstimatedPriceQueryResponseBody) SetTraceId(v string) *EstimatedPriceQu
 }
 
 func (s *EstimatedPriceQueryResponseBody) Validate() error {
-  return dara.Validate(s)
+  if s.Module != nil {
+    if err := s.Module.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type EstimatedPriceQueryResponseBodyModule struct {
@@ -162,7 +167,21 @@ func (s *EstimatedPriceQueryResponseBodyModule) SetTrafficFee(v *EstimatedPriceQ
 }
 
 func (s *EstimatedPriceQueryResponseBodyModule) Validate() error {
-  return dara.Validate(s)
+  if s.HotelFeeDetail != nil {
+    for _, item := range s.HotelFeeDetail {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  if s.TrafficFee != nil {
+    if err := s.TrafficFee.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type EstimatedPriceQueryResponseBodyModuleHotelFeeDetail struct {
@@ -316,7 +335,16 @@ func (s *EstimatedPriceQueryResponseBodyModuleTrafficFee) SetSuccess(v bool) *Es
 }
 
 func (s *EstimatedPriceQueryResponseBodyModuleTrafficFee) Validate() error {
-  return dara.Validate(s)
+  if s.BtripRoutes != nil {
+    for _, item := range s.BtripRoutes {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes struct {
@@ -430,7 +458,17 @@ func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetSuccess(
 }
 
 func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) Validate() error {
-  return dara.Validate(s)
+  if s.Cheapest != nil {
+    if err := s.Cheapest.Validate(); err != nil {
+      return err
+    }
+  }
+  if s.MostExpensive != nil {
+    if err := s.MostExpensive.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesCheapest struct {

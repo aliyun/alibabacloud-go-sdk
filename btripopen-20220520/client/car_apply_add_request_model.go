@@ -277,7 +277,16 @@ func (s *CarApplyAddRequest) SetUserId(v string) *CarApplyAddRequest {
 }
 
 func (s *CarApplyAddRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TravelerStandard != nil {
+		for _, item := range s.TravelerStandard {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CarApplyAddRequestTravelerStandard struct {
@@ -313,7 +322,16 @@ func (s *CarApplyAddRequestTravelerStandard) SetUserId(v string) *CarApplyAddReq
 }
 
 func (s *CarApplyAddRequestTravelerStandard) Validate() error {
-	return dara.Validate(s)
+	if s.CarCitySet != nil {
+		for _, item := range s.CarCitySet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CarApplyAddRequestTravelerStandardCarCitySet struct {

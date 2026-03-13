@@ -112,7 +112,12 @@ func (s *FlightModifyOrderDetailV2ResponseBody) SetTraceId(v string) *FlightModi
 }
 
 func (s *FlightModifyOrderDetailV2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightModifyOrderDetailV2ResponseBodyModule struct {
@@ -366,7 +371,35 @@ func (s *FlightModifyOrderDetailV2ResponseBodyModule) SetTravelerInfoDTOS(v []*F
 }
 
 func (s *FlightModifyOrderDetailV2ResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.Attributes != nil {
+		if err := s.Attributes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ContactInfoDTO != nil {
+		if err := s.ContactInfoDTO.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DestFlightInfoDTOS != nil {
+		for _, item := range s.DestFlightInfoDTOS {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TravelerInfoDTOS != nil {
+		for _, item := range s.TravelerInfoDTOS {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightModifyOrderDetailV2ResponseBodyModuleAttributes struct {
@@ -866,7 +899,17 @@ func (s *FlightModifyOrderDetailV2ResponseBodyModuleDestFlightInfoDTOS) SetStopD
 }
 
 func (s *FlightModifyOrderDetailV2ResponseBodyModuleDestFlightInfoDTOS) Validate() error {
-	return dara.Validate(s)
+	if s.FlightChange != nil {
+		if err := s.FlightChange.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SegmentPosition != nil {
+		if err := s.SegmentPosition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightModifyOrderDetailV2ResponseBodyModuleDestFlightInfoDTOSFlightChange struct {
@@ -1141,7 +1184,12 @@ func (s *FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOS) SetTicketN
 }
 
 func (s *FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOS) Validate() error {
-	return dara.Validate(s)
+	if s.ChangeFee != nil {
+		if err := s.ChangeFee.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOSChangeFee struct {

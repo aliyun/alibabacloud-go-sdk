@@ -112,7 +112,12 @@ func (s *FlightRefundDetailV2ResponseBody) SetTraceId(v string) *FlightRefundDet
 }
 
 func (s *FlightRefundDetailV2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightRefundDetailV2ResponseBodyModule struct {
@@ -314,7 +319,30 @@ func (s *FlightRefundDetailV2ResponseBodyModule) SetTravelerInfoDTOS(v []*Flight
 }
 
 func (s *FlightRefundDetailV2ResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.ContactInfoDTO != nil {
+		if err := s.ContactInfoDTO.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FlightInfoDTOS != nil {
+		for _, item := range s.FlightInfoDTOS {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TravelerInfoDTOS != nil {
+		for _, item := range s.TravelerInfoDTOS {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightRefundDetailV2ResponseBodyModuleContactInfoDTO struct {
@@ -739,7 +767,12 @@ func (s *FlightRefundDetailV2ResponseBodyModuleFlightInfoDTOS) SetStopDepTime(v 
 }
 
 func (s *FlightRefundDetailV2ResponseBodyModuleFlightInfoDTOS) Validate() error {
-	return dara.Validate(s)
+	if s.SegmentPosition != nil {
+		if err := s.SegmentPosition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightRefundDetailV2ResponseBodyModuleFlightInfoDTOSSegmentPosition struct {

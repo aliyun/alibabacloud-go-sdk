@@ -110,7 +110,12 @@ func (s *IntlFlightCreateOrderResponseBody) SetTraceId(v string) *IntlFlightCrea
 }
 
 func (s *IntlFlightCreateOrderResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IntlFlightCreateOrderResponseBodyModule struct {

@@ -107,7 +107,12 @@ func (s *FlightExceedApplyQueryResponseBody) SetTraceId(v string) *FlightExceedA
 }
 
 func (s *FlightExceedApplyQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightExceedApplyQueryResponseBodyModule struct {
@@ -296,7 +301,26 @@ func (s *FlightExceedApplyQueryResponseBodyModule) SetUserName(v string) *Flight
 }
 
 func (s *FlightExceedApplyQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.ApplyIntentionInfoDo != nil {
+		if err := s.ApplyIntentionInfoDo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ApplyIntentionInfoDoList != nil {
+		for _, item := range s.ApplyIntentionInfoDoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ApplyRecommendFlights != nil {
+		if err := s.ApplyRecommendFlights.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo struct {

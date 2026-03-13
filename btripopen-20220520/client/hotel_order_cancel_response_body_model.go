@@ -111,7 +111,12 @@ func (s *HotelOrderCancelResponseBody) SetTraceId(v string) *HotelOrderCancelRes
 }
 
 func (s *HotelOrderCancelResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HotelOrderCancelResponseBodyModule struct {

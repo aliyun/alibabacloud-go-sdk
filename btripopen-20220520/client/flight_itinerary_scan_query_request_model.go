@@ -17,6 +17,8 @@ type iFlightItineraryScanQueryRequest interface {
 	GetInvoiceSubTaskId() *int64
 	SetItineraryNum(v string) *FlightItineraryScanQueryRequest
 	GetItineraryNum() *string
+	SetOrderId(v int64) *FlightItineraryScanQueryRequest
+	GetOrderId() *int64
 	SetPageNo(v int32) *FlightItineraryScanQueryRequest
 	GetPageNo() *int32
 	SetPageSize(v int32) *FlightItineraryScanQueryRequest
@@ -39,6 +41,7 @@ type FlightItineraryScanQueryRequest struct {
 	// 456
 	InvoiceSubTaskId *int64  `json:"invoice_sub_task_id,omitempty" xml:"invoice_sub_task_id,omitempty"`
 	ItineraryNum     *string `json:"itinerary_num,omitempty" xml:"itinerary_num,omitempty"`
+	OrderId          *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	// example:
 	//
 	// 1
@@ -74,6 +77,10 @@ func (s *FlightItineraryScanQueryRequest) GetItineraryNum() *string {
 	return s.ItineraryNum
 }
 
+func (s *FlightItineraryScanQueryRequest) GetOrderId() *int64 {
+	return s.OrderId
+}
+
 func (s *FlightItineraryScanQueryRequest) GetPageNo() *int32 {
 	return s.PageNo
 }
@@ -103,6 +110,11 @@ func (s *FlightItineraryScanQueryRequest) SetInvoiceSubTaskId(v int64) *FlightIt
 
 func (s *FlightItineraryScanQueryRequest) SetItineraryNum(v string) *FlightItineraryScanQueryRequest {
 	s.ItineraryNum = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryRequest) SetOrderId(v int64) *FlightItineraryScanQueryRequest {
+	s.OrderId = &v
 	return s
 }
 

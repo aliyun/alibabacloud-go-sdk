@@ -112,7 +112,12 @@ func (s *FlightOrderDetailV2ResponseBody) SetTraceId(v string) *FlightOrderDetai
 }
 
 func (s *FlightOrderDetailV2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightOrderDetailV2ResponseBodyModule struct {
@@ -411,7 +416,26 @@ func (s *FlightOrderDetailV2ResponseBodyModule) SetTotalServiceFeePrice(v int64)
 }
 
 func (s *FlightOrderDetailV2ResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.ContactInfoDTO != nil {
+		if err := s.ContactInfoDTO.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FlightTaleInfoDTO != nil {
+		if err := s.FlightTaleInfoDTO.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PassengerList != nil {
+		for _, item := range s.PassengerList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightOrderDetailV2ResponseBodyModuleContactInfoDTO struct {
@@ -533,7 +557,16 @@ func (s *FlightOrderDetailV2ResponseBodyModuleFlightTaleInfoDTO) SetTripTypeCode
 }
 
 func (s *FlightOrderDetailV2ResponseBodyModuleFlightTaleInfoDTO) Validate() error {
-	return dara.Validate(s)
+	if s.Journeys != nil {
+		for _, item := range s.Journeys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightOrderDetailV2ResponseBodyModuleFlightTaleInfoDTOJourneys struct {
@@ -741,7 +774,16 @@ func (s *FlightOrderDetailV2ResponseBodyModuleFlightTaleInfoDTOJourneys) SetSegm
 }
 
 func (s *FlightOrderDetailV2ResponseBodyModuleFlightTaleInfoDTOJourneys) Validate() error {
-	return dara.Validate(s)
+	if s.SegmentList != nil {
+		for _, item := range s.SegmentList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightOrderDetailV2ResponseBodyModuleFlightTaleInfoDTOJourneysSegmentList struct {
@@ -1323,7 +1365,17 @@ func (s *FlightOrderDetailV2ResponseBodyModuleFlightTaleInfoDTOJourneysSegmentLi
 }
 
 func (s *FlightOrderDetailV2ResponseBodyModuleFlightTaleInfoDTOJourneysSegmentList) Validate() error {
-	return dara.Validate(s)
+	if s.FlightChange != nil {
+		if err := s.FlightChange.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SegmentPosition != nil {
+		if err := s.SegmentPosition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightOrderDetailV2ResponseBodyModuleFlightTaleInfoDTOJourneysSegmentListFlightChange struct {
@@ -1781,7 +1833,30 @@ func (s *FlightOrderDetailV2ResponseBodyModulePassengerList) SetUserId(v string)
 }
 
 func (s *FlightOrderDetailV2ResponseBodyModulePassengerList) Validate() error {
-	return dara.Validate(s)
+	if s.Credential != nil {
+		if err := s.Credential.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Credentials != nil {
+		for _, item := range s.Credentials {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tickets != nil {
+		for _, item := range s.Tickets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightOrderDetailV2ResponseBodyModulePassengerListCredential struct {
@@ -2204,7 +2279,16 @@ func (s *FlightOrderDetailV2ResponseBodyModulePassengerListTickets) SetTicketSta
 }
 
 func (s *FlightOrderDetailV2ResponseBodyModulePassengerListTickets) Validate() error {
-	return dara.Validate(s)
+	if s.SegmentOpenTicketList != nil {
+		for _, item := range s.SegmentOpenTicketList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightOrderDetailV2ResponseBodyModulePassengerListTicketsSegmentOpenTicketList struct {

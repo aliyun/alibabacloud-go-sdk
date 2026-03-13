@@ -19,8 +19,18 @@ type iFlightCancelOrderV2Request interface {
 
 type FlightCancelOrderV2Request struct {
 	// This parameter is required.
-	IsvName    *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	OrderId    *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	//
+	// example:
+	//
+	// cheshiapi
+	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	// example:
+	//
+	// 1017002195798359369
+	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// cheshiapi002kwl
 	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 }
 

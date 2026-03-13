@@ -59,5 +59,10 @@ func (s *TicketChangingPayResponse) SetBody(v *TicketChangingPayResponseBody) *T
 }
 
 func (s *TicketChangingPayResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

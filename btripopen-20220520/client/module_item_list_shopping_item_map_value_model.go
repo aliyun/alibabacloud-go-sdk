@@ -100,7 +100,30 @@ func (s *ModuleItemListShoppingItemMapValue) SetSegmentPrice(v map[string]*Modul
 }
 
 func (s *ModuleItemListShoppingItemMapValue) Validate() error {
-	return dara.Validate(s)
+	if s.CabinQuantityList != nil {
+		for _, item := range s.CabinQuantityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SearchPrice != nil {
+		if err := s.SearchPrice.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SegmentPriceList != nil {
+		for _, item := range s.SegmentPriceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModuleItemListShoppingItemMapValueCabinQuantityList struct {
@@ -135,7 +158,17 @@ func (s *ModuleItemListShoppingItemMapValueCabinQuantityList) SetCabinInfo(v *Mo
 }
 
 func (s *ModuleItemListShoppingItemMapValueCabinQuantityList) Validate() error {
-	return dara.Validate(s)
+	if s.SegmentPosition != nil {
+		if err := s.SegmentPosition.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CabinInfo != nil {
+		if err := s.CabinInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModuleItemListShoppingItemMapValueCabinQuantityListSegmentPosition struct {
@@ -524,7 +557,12 @@ func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetPriceShowInfo(v *Modu
 }
 
 func (s *ModuleItemListShoppingItemMapValueSearchPrice) Validate() error {
-	return dara.Validate(s)
+	if s.PriceShowInfo != nil {
+		if err := s.PriceShowInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModuleItemListShoppingItemMapValueSearchPricePriceShowInfo struct {
@@ -610,7 +648,17 @@ func (s *ModuleItemListShoppingItemMapValueSegmentPriceList) SetSearchPrice(v *M
 }
 
 func (s *ModuleItemListShoppingItemMapValueSegmentPriceList) Validate() error {
-	return dara.Validate(s)
+	if s.SegmentPosition != nil {
+		if err := s.SegmentPosition.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SearchPrice != nil {
+		if err := s.SearchPrice.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModuleItemListShoppingItemMapValueSegmentPriceListSegmentPosition struct {

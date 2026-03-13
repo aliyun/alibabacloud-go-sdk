@@ -13,8 +13,14 @@ type iTrainTicketScanQueryRequest interface {
 	GetBillDate() *string
 	SetBillId(v int64) *TrainTicketScanQueryRequest
 	GetBillId() *int64
+	SetInvoiceDateEnd(v string) *TrainTicketScanQueryRequest
+	GetInvoiceDateEnd() *string
+	SetInvoiceDateStart(v string) *TrainTicketScanQueryRequest
+	GetInvoiceDateStart() *string
 	SetInvoiceSubTaskId(v int64) *TrainTicketScanQueryRequest
 	GetInvoiceSubTaskId() *int64
+	SetOrderId(v int64) *TrainTicketScanQueryRequest
+	GetOrderId() *int64
 	SetPageNo(v int32) *TrainTicketScanQueryRequest
 	GetPageNo() *int32
 	SetPageSize(v int32) *TrainTicketScanQueryRequest
@@ -26,8 +32,6 @@ type iTrainTicketScanQueryRequest interface {
 }
 
 type TrainTicketScanQueryRequest struct {
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 2022-12-01
@@ -35,11 +39,14 @@ type TrainTicketScanQueryRequest struct {
 	// example:
 	//
 	// 123
-	BillId *int64 `json:"bill_id,omitempty" xml:"bill_id,omitempty"`
+	BillId           *int64  `json:"bill_id,omitempty" xml:"bill_id,omitempty"`
+	InvoiceDateEnd   *string `json:"invoice_date_end,omitempty" xml:"invoice_date_end,omitempty"`
+	InvoiceDateStart *string `json:"invoice_date_start,omitempty" xml:"invoice_date_start,omitempty"`
 	// example:
 	//
 	// 456
 	InvoiceSubTaskId *int64 `json:"invoice_sub_task_id,omitempty" xml:"invoice_sub_task_id,omitempty"`
+	OrderId          *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	// example:
 	//
 	// 1
@@ -68,8 +75,20 @@ func (s *TrainTicketScanQueryRequest) GetBillId() *int64 {
 	return s.BillId
 }
 
+func (s *TrainTicketScanQueryRequest) GetInvoiceDateEnd() *string {
+	return s.InvoiceDateEnd
+}
+
+func (s *TrainTicketScanQueryRequest) GetInvoiceDateStart() *string {
+	return s.InvoiceDateStart
+}
+
 func (s *TrainTicketScanQueryRequest) GetInvoiceSubTaskId() *int64 {
 	return s.InvoiceSubTaskId
+}
+
+func (s *TrainTicketScanQueryRequest) GetOrderId() *int64 {
+	return s.OrderId
 }
 
 func (s *TrainTicketScanQueryRequest) GetPageNo() *int32 {
@@ -98,8 +117,23 @@ func (s *TrainTicketScanQueryRequest) SetBillId(v int64) *TrainTicketScanQueryRe
 	return s
 }
 
+func (s *TrainTicketScanQueryRequest) SetInvoiceDateEnd(v string) *TrainTicketScanQueryRequest {
+	s.InvoiceDateEnd = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryRequest) SetInvoiceDateStart(v string) *TrainTicketScanQueryRequest {
+	s.InvoiceDateStart = &v
+	return s
+}
+
 func (s *TrainTicketScanQueryRequest) SetInvoiceSubTaskId(v int64) *TrainTicketScanQueryRequest {
 	s.InvoiceSubTaskId = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryRequest) SetOrderId(v int64) *TrainTicketScanQueryRequest {
+	s.OrderId = &v
 	return s
 }
 

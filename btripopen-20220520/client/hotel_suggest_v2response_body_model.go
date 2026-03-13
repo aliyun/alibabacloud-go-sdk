@@ -110,7 +110,12 @@ func (s *HotelSuggestV2ResponseBody) SetTraceId(v string) *HotelSuggestV2Respons
 }
 
 func (s *HotelSuggestV2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HotelSuggestV2ResponseBodyModule struct {
@@ -165,7 +170,34 @@ func (s *HotelSuggestV2ResponseBodyModule) SetTips(v string) *HotelSuggestV2Resp
 }
 
 func (s *HotelSuggestV2ResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.GuessSuggestInfos != nil {
+		for _, item := range s.GuessSuggestInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.KeywordSuggestInfos != nil {
+		for _, item := range s.KeywordSuggestInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PopularSuggestInfos != nil {
+		for _, item := range s.PopularSuggestInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelSuggestV2ResponseBodyModuleGuessSuggestInfos struct {
@@ -461,7 +493,16 @@ func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos) SetTypeDesc(v stri
 }
 
 func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos) Validate() error {
-	return dara.Validate(s)
+	if s.BusinessAreaWithCity != nil {
+		for _, item := range s.BusinessAreaWithCity {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity struct {
@@ -652,7 +693,16 @@ func (s *HotelSuggestV2ResponseBodyModulePopularSuggestInfos) SetTitle(v string)
 }
 
 func (s *HotelSuggestV2ResponseBodyModulePopularSuggestInfos) Validate() error {
-	return dara.Validate(s)
+	if s.PopularInfos != nil {
+		for _, item := range s.PopularInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelSuggestV2ResponseBodyModulePopularSuggestInfosPopularInfos struct {

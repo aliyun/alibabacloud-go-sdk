@@ -67,7 +67,16 @@ func (s *DeleteInvoiceEntityRequest) SetThirdPartId(v string) *DeleteInvoiceEnti
 }
 
 func (s *DeleteInvoiceEntityRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Entities != nil {
+		for _, item := range s.Entities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteInvoiceEntityRequestEntities struct {

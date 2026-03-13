@@ -112,7 +112,12 @@ func (s *FlightRefundPreCalV2ResponseBody) SetTraceId(v string) *FlightRefundPre
 }
 
 func (s *FlightRefundPreCalV2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightRefundPreCalV2ResponseBodyModule struct {
@@ -186,7 +191,25 @@ func (s *FlightRefundPreCalV2ResponseBodyModule) SetServiceChargeFee(v int64) *F
 }
 
 func (s *FlightRefundPreCalV2ResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.MultiRefundFeeDTOS != nil {
+		for _, item := range s.MultiRefundFeeDTOS {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RefundReasonOptionDTOS != nil {
+		for _, item := range s.RefundReasonOptionDTOS {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightRefundPreCalV2ResponseBodyModuleMultiRefundFeeDTOS struct {

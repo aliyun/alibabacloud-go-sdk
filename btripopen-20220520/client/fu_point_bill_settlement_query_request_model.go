@@ -11,6 +11,10 @@ type iFuPointBillSettlementQueryRequest interface {
 	GoString() string
 	SetBillBatch(v string) *FuPointBillSettlementQueryRequest
 	GetBillBatch() *string
+	SetBillRecordTimeEnd(v string) *FuPointBillSettlementQueryRequest
+	GetBillRecordTimeEnd() *string
+	SetBillRecordTimeStart(v string) *FuPointBillSettlementQueryRequest
+	GetBillRecordTimeStart() *string
 	SetCooperatorId(v string) *FuPointBillSettlementQueryRequest
 	GetCooperatorId() *string
 	SetOrderId(v int64) *FuPointBillSettlementQueryRequest
@@ -33,7 +37,9 @@ type FuPointBillSettlementQueryRequest struct {
 	// example:
 	//
 	// 20240101
-	BillBatch *string `json:"bill_batch,omitempty" xml:"bill_batch,omitempty"`
+	BillBatch           *string `json:"bill_batch,omitempty" xml:"bill_batch,omitempty"`
+	BillRecordTimeEnd   *string `json:"bill_record_time_end,omitempty" xml:"bill_record_time_end,omitempty"`
+	BillRecordTimeStart *string `json:"bill_record_time_start,omitempty" xml:"bill_record_time_start,omitempty"`
 	// example:
 	//
 	// cooperator_alibtrip
@@ -81,6 +87,14 @@ func (s *FuPointBillSettlementQueryRequest) GetBillBatch() *string {
 	return s.BillBatch
 }
 
+func (s *FuPointBillSettlementQueryRequest) GetBillRecordTimeEnd() *string {
+	return s.BillRecordTimeEnd
+}
+
+func (s *FuPointBillSettlementQueryRequest) GetBillRecordTimeStart() *string {
+	return s.BillRecordTimeStart
+}
+
 func (s *FuPointBillSettlementQueryRequest) GetCooperatorId() *string {
 	return s.CooperatorId
 }
@@ -115,6 +129,16 @@ func (s *FuPointBillSettlementQueryRequest) GetScrollMod() *bool {
 
 func (s *FuPointBillSettlementQueryRequest) SetBillBatch(v string) *FuPointBillSettlementQueryRequest {
 	s.BillBatch = &v
+	return s
+}
+
+func (s *FuPointBillSettlementQueryRequest) SetBillRecordTimeEnd(v string) *FuPointBillSettlementQueryRequest {
+	s.BillRecordTimeEnd = &v
+	return s
+}
+
+func (s *FuPointBillSettlementQueryRequest) SetBillRecordTimeStart(v string) *FuPointBillSettlementQueryRequest {
+	s.BillRecordTimeStart = &v
 	return s
 }
 

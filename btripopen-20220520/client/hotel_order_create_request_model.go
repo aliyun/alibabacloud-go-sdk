@@ -33,6 +33,8 @@ type iHotelOrderCreateRequest interface {
 	GetItemId() *int64
 	SetItineraryNo(v string) *HotelOrderCreateRequest
 	GetItineraryNo() *string
+	SetMemberInfo(v *HotelOrderCreateRequestMemberInfo) *HotelOrderCreateRequest
+	GetMemberInfo() *HotelOrderCreateRequestMemberInfo
 	SetOccupantInfoList(v []*HotelOrderCreateRequestOccupantInfoList) *HotelOrderCreateRequest
 	GetOccupantInfoList() []*HotelOrderCreateRequestOccupantInfoList
 	SetPersonPayPrice(v int64) *HotelOrderCreateRequest
@@ -110,7 +112,8 @@ type HotelOrderCreateRequest struct {
 	// example:
 	//
 	// fb5e1abf33924b6c912bd6d80deec0eb-1
-	ItineraryNo *string `json:"itinerary_no,omitempty" xml:"itinerary_no,omitempty"`
+	ItineraryNo *string                            `json:"itinerary_no,omitempty" xml:"itinerary_no,omitempty"`
+	MemberInfo  *HotelOrderCreateRequestMemberInfo `json:"member_info,omitempty" xml:"member_info,omitempty" type:"Struct"`
 	// This parameter is required.
 	OccupantInfoList []*HotelOrderCreateRequestOccupantInfoList `json:"occupant_info_list,omitempty" xml:"occupant_info_list,omitempty" type:"Repeated"`
 	// This parameter is required.
@@ -220,6 +223,10 @@ func (s *HotelOrderCreateRequest) GetItineraryNo() *string {
 	return s.ItineraryNo
 }
 
+func (s *HotelOrderCreateRequest) GetMemberInfo() *HotelOrderCreateRequestMemberInfo {
+	return s.MemberInfo
+}
+
 func (s *HotelOrderCreateRequest) GetOccupantInfoList() []*HotelOrderCreateRequestOccupantInfoList {
 	return s.OccupantInfoList
 }
@@ -320,6 +327,11 @@ func (s *HotelOrderCreateRequest) SetItineraryNo(v string) *HotelOrderCreateRequ
 	return s
 }
 
+func (s *HotelOrderCreateRequest) SetMemberInfo(v *HotelOrderCreateRequestMemberInfo) *HotelOrderCreateRequest {
+	s.MemberInfo = v
+	return s
+}
+
 func (s *HotelOrderCreateRequest) SetOccupantInfoList(v []*HotelOrderCreateRequestOccupantInfoList) *HotelOrderCreateRequest {
 	s.OccupantInfoList = v
 	return s
@@ -371,7 +383,31 @@ func (s *HotelOrderCreateRequest) SetValidateResKey(v string) *HotelOrderCreateR
 }
 
 func (s *HotelOrderCreateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.InvoiceInfo != nil {
+		if err := s.InvoiceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MemberInfo != nil {
+		if err := s.MemberInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OccupantInfoList != nil {
+		for _, item := range s.OccupantInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PromotionInfo != nil {
+		if err := s.PromotionInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HotelOrderCreateRequestInvoiceInfo struct {
@@ -592,6 +628,41 @@ func (s *HotelOrderCreateRequestInvoiceInfo) Validate() error {
 	return dara.Validate(s)
 }
 
+type HotelOrderCreateRequestMemberInfo struct {
+	CardNo   *string `json:"card_no,omitempty" xml:"card_no,omitempty"`
+	RealName *string `json:"real_name,omitempty" xml:"real_name,omitempty"`
+}
+
+func (s HotelOrderCreateRequestMemberInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s HotelOrderCreateRequestMemberInfo) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderCreateRequestMemberInfo) GetCardNo() *string {
+	return s.CardNo
+}
+
+func (s *HotelOrderCreateRequestMemberInfo) GetRealName() *string {
+	return s.RealName
+}
+
+func (s *HotelOrderCreateRequestMemberInfo) SetCardNo(v string) *HotelOrderCreateRequestMemberInfo {
+	s.CardNo = &v
+	return s
+}
+
+func (s *HotelOrderCreateRequestMemberInfo) SetRealName(v string) *HotelOrderCreateRequestMemberInfo {
+	s.RealName = &v
+	return s
+}
+
+func (s *HotelOrderCreateRequestMemberInfo) Validate() error {
+	return dara.Validate(s)
+}
+
 type HotelOrderCreateRequestOccupantInfoList struct {
 	// example:
 	//
@@ -600,7 +671,9 @@ type HotelOrderCreateRequestOccupantInfoList struct {
 	// example:
 	//
 	// 1
-	CardType *int32 `json:"card_type,omitempty" xml:"card_type,omitempty"`
+	CardType        *int32                                                 `json:"card_type,omitempty" xml:"card_type,omitempty"`
+	CascadeDeptName *string                                                `json:"cascade_dept_name,omitempty" xml:"cascade_dept_name,omitempty"`
+	CostCenterInfo  *HotelOrderCreateRequestOccupantInfoListCostCenterInfo `json:"cost_center_info,omitempty" xml:"cost_center_info,omitempty" type:"Struct"`
 	// example:
 	//
 	// 1
@@ -622,6 +695,7 @@ type HotelOrderCreateRequestOccupantInfoList struct {
 	//
 	// san
 	FirstName *string `json:"first_name,omitempty" xml:"first_name,omitempty"`
+	IsBooker  *bool   `json:"is_booker,omitempty" xml:"is_booker,omitempty"`
 	// example:
 	//
 	// zhang
@@ -661,6 +735,14 @@ func (s *HotelOrderCreateRequestOccupantInfoList) GetCardType() *int32 {
 	return s.CardType
 }
 
+func (s *HotelOrderCreateRequestOccupantInfoList) GetCascadeDeptName() *string {
+	return s.CascadeDeptName
+}
+
+func (s *HotelOrderCreateRequestOccupantInfoList) GetCostCenterInfo() *HotelOrderCreateRequestOccupantInfoListCostCenterInfo {
+	return s.CostCenterInfo
+}
+
 func (s *HotelOrderCreateRequestOccupantInfoList) GetCustomerType() *int32 {
 	return s.CustomerType
 }
@@ -683,6 +765,10 @@ func (s *HotelOrderCreateRequestOccupantInfoList) GetEmployeeType() *int32 {
 
 func (s *HotelOrderCreateRequestOccupantInfoList) GetFirstName() *string {
 	return s.FirstName
+}
+
+func (s *HotelOrderCreateRequestOccupantInfoList) GetIsBooker() *bool {
+	return s.IsBooker
 }
 
 func (s *HotelOrderCreateRequestOccupantInfoList) GetLastName() *string {
@@ -719,6 +805,16 @@ func (s *HotelOrderCreateRequestOccupantInfoList) SetCardType(v int32) *HotelOrd
 	return s
 }
 
+func (s *HotelOrderCreateRequestOccupantInfoList) SetCascadeDeptName(v string) *HotelOrderCreateRequestOccupantInfoList {
+	s.CascadeDeptName = &v
+	return s
+}
+
+func (s *HotelOrderCreateRequestOccupantInfoList) SetCostCenterInfo(v *HotelOrderCreateRequestOccupantInfoListCostCenterInfo) *HotelOrderCreateRequestOccupantInfoList {
+	s.CostCenterInfo = v
+	return s
+}
+
 func (s *HotelOrderCreateRequestOccupantInfoList) SetCustomerType(v int32) *HotelOrderCreateRequestOccupantInfoList {
 	s.CustomerType = &v
 	return s
@@ -746,6 +842,11 @@ func (s *HotelOrderCreateRequestOccupantInfoList) SetEmployeeType(v int32) *Hote
 
 func (s *HotelOrderCreateRequestOccupantInfoList) SetFirstName(v string) *HotelOrderCreateRequestOccupantInfoList {
 	s.FirstName = &v
+	return s
+}
+
+func (s *HotelOrderCreateRequestOccupantInfoList) SetIsBooker(v bool) *HotelOrderCreateRequestOccupantInfoList {
+	s.IsBooker = &v
 	return s
 }
 
@@ -780,6 +881,96 @@ func (s *HotelOrderCreateRequestOccupantInfoList) SetUserType(v int32) *HotelOrd
 }
 
 func (s *HotelOrderCreateRequestOccupantInfoList) Validate() error {
+	if s.CostCenterInfo != nil {
+		if err := s.CostCenterInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type HotelOrderCreateRequestOccupantInfoListCostCenterInfo struct {
+	CostCenterId   *string `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	CostCenterName *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	CostCenterNo   *string `json:"cost_center_no,omitempty" xml:"cost_center_no,omitempty"`
+	InvoiceId      *string `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	InvoiceTitle   *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	ProjectCode    *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle   *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+}
+
+func (s HotelOrderCreateRequestOccupantInfoListCostCenterInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s HotelOrderCreateRequestOccupantInfoListCostCenterInfo) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderCreateRequestOccupantInfoListCostCenterInfo) GetCostCenterId() *string {
+	return s.CostCenterId
+}
+
+func (s *HotelOrderCreateRequestOccupantInfoListCostCenterInfo) GetCostCenterName() *string {
+	return s.CostCenterName
+}
+
+func (s *HotelOrderCreateRequestOccupantInfoListCostCenterInfo) GetCostCenterNo() *string {
+	return s.CostCenterNo
+}
+
+func (s *HotelOrderCreateRequestOccupantInfoListCostCenterInfo) GetInvoiceId() *string {
+	return s.InvoiceId
+}
+
+func (s *HotelOrderCreateRequestOccupantInfoListCostCenterInfo) GetInvoiceTitle() *string {
+	return s.InvoiceTitle
+}
+
+func (s *HotelOrderCreateRequestOccupantInfoListCostCenterInfo) GetProjectCode() *string {
+	return s.ProjectCode
+}
+
+func (s *HotelOrderCreateRequestOccupantInfoListCostCenterInfo) GetProjectTitle() *string {
+	return s.ProjectTitle
+}
+
+func (s *HotelOrderCreateRequestOccupantInfoListCostCenterInfo) SetCostCenterId(v string) *HotelOrderCreateRequestOccupantInfoListCostCenterInfo {
+	s.CostCenterId = &v
+	return s
+}
+
+func (s *HotelOrderCreateRequestOccupantInfoListCostCenterInfo) SetCostCenterName(v string) *HotelOrderCreateRequestOccupantInfoListCostCenterInfo {
+	s.CostCenterName = &v
+	return s
+}
+
+func (s *HotelOrderCreateRequestOccupantInfoListCostCenterInfo) SetCostCenterNo(v string) *HotelOrderCreateRequestOccupantInfoListCostCenterInfo {
+	s.CostCenterNo = &v
+	return s
+}
+
+func (s *HotelOrderCreateRequestOccupantInfoListCostCenterInfo) SetInvoiceId(v string) *HotelOrderCreateRequestOccupantInfoListCostCenterInfo {
+	s.InvoiceId = &v
+	return s
+}
+
+func (s *HotelOrderCreateRequestOccupantInfoListCostCenterInfo) SetInvoiceTitle(v string) *HotelOrderCreateRequestOccupantInfoListCostCenterInfo {
+	s.InvoiceTitle = &v
+	return s
+}
+
+func (s *HotelOrderCreateRequestOccupantInfoListCostCenterInfo) SetProjectCode(v string) *HotelOrderCreateRequestOccupantInfoListCostCenterInfo {
+	s.ProjectCode = &v
+	return s
+}
+
+func (s *HotelOrderCreateRequestOccupantInfoListCostCenterInfo) SetProjectTitle(v string) *HotelOrderCreateRequestOccupantInfoListCostCenterInfo {
+	s.ProjectTitle = &v
+	return s
+}
+
+func (s *HotelOrderCreateRequestOccupantInfoListCostCenterInfo) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -818,7 +1009,16 @@ func (s *HotelOrderCreateRequestPromotionInfo) SetPromotionTotalPrice(v int64) *
 }
 
 func (s *HotelOrderCreateRequestPromotionInfo) Validate() error {
-	return dara.Validate(s)
+	if s.PromotionDetailInfoList != nil {
+		for _, item := range s.PromotionDetailInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelOrderCreateRequestPromotionInfoPromotionDetailInfoList struct {

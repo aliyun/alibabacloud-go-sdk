@@ -111,7 +111,12 @@ func (s *TrainOrderQueryV2ResponseBody) SetTraceId(v string) *TrainOrderQueryV2R
 }
 
 func (s *TrainOrderQueryV2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrainOrderQueryV2ResponseBodyModule struct {
@@ -196,7 +201,58 @@ func (s *TrainOrderQueryV2ResponseBodyModule) SetTrainOrderInfo(v *TrainOrderQue
 }
 
 func (s *TrainOrderQueryV2ResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.ChangeTicketInfoList != nil {
+		for _, item := range s.ChangeTicketInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InvoiceInfo != nil {
+		if err := s.InvoiceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OrderBaseInfo != nil {
+		if err := s.OrderBaseInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PassengerInfoList != nil {
+		for _, item := range s.PassengerInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PriceInfoList != nil {
+		for _, item := range s.PriceInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RefundTicketInfoList != nil {
+		for _, item := range s.RefundTicketInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TrainOrderInfo != nil {
+		if err := s.TrainOrderInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList struct {
@@ -610,8 +666,10 @@ type TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo struct {
 	// example:
 	//
 	// 4
-	OrderStatus         *int32  `json:"order_status,omitempty" xml:"order_status,omitempty"`
-	ThirdPartBusinessId *string `json:"thirdPart_business_id,omitempty" xml:"thirdPart_business_id,omitempty"`
+	OrderStatus              *int32  `json:"order_status,omitempty" xml:"order_status,omitempty"`
+	ReplenishOrderIds        *string `json:"replenish_order_ids,omitempty" xml:"replenish_order_ids,omitempty"`
+	ReplenishOriginalOrderId *string `json:"replenish_original_order_id,omitempty" xml:"replenish_original_order_id,omitempty"`
+	ThirdPartBusinessId      *string `json:"thirdPart_business_id,omitempty" xml:"thirdPart_business_id,omitempty"`
 	// example:
 	//
 	// 01-2023-01214
@@ -701,6 +759,14 @@ func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) GetOrderId() *int64 {
 
 func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) GetOrderStatus() *int32 {
 	return s.OrderStatus
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) GetReplenishOrderIds() *string {
+	return s.ReplenishOrderIds
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) GetReplenishOriginalOrderId() *string {
+	return s.ReplenishOriginalOrderId
 }
 
 func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) GetThirdPartBusinessId() *string {
@@ -803,6 +869,16 @@ func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetOrderId(v int64) *
 
 func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetOrderStatus(v int32) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
 	s.OrderStatus = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetReplenishOrderIds(v string) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
+	s.ReplenishOrderIds = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetReplenishOriginalOrderId(v string) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
+	s.ReplenishOriginalOrderId = &v
 	return s
 }
 
@@ -1220,7 +1296,21 @@ func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfo) SetTrainTransferInfo
 }
 
 func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfo) Validate() error {
-	return dara.Validate(s)
+	if s.TrainInfoList != nil {
+		for _, item := range s.TrainInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TrainTransferInfo != nil {
+		if err := s.TrainTransferInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList struct {
@@ -1406,7 +1496,16 @@ func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList) SetTrai
 }
 
 func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.TrainTicketInfos != nil {
+		for _, item := range s.TrainTicketInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos struct {

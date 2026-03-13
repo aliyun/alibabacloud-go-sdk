@@ -108,7 +108,12 @@ func (s *FlightListingSearchResponseBody) SetTraceId(v string) *FlightListingSea
 }
 
 func (s *FlightListingSearchResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightListingSearchResponseBodyModule struct {
@@ -133,7 +138,16 @@ func (s *FlightListingSearchResponseBodyModule) SetFlightList(v []*FlightListing
 }
 
 func (s *FlightListingSearchResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.FlightList != nil {
+		for _, item := range s.FlightList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightListingSearchResponseBodyModuleFlightList struct {
@@ -634,7 +648,31 @@ func (s *FlightListingSearchResponseBodyModuleFlightList) SetTripType(v int32) *
 }
 
 func (s *FlightListingSearchResponseBodyModuleFlightList) Validate() error {
-	return dara.Validate(s)
+	if s.AirlineInfo != nil {
+		if err := s.AirlineInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ArrAirportInfo != nil {
+		if err := s.ArrAirportInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DepAirportInfo != nil {
+		if err := s.DepAirportInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FlightRuleList != nil {
+		for _, item := range s.FlightRuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightListingSearchResponseBodyModuleFlightListAirlineInfo struct {
@@ -951,7 +989,42 @@ func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleList) SetUpgra
 }
 
 func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleList) Validate() error {
-	return dara.Validate(s)
+	if s.BaggageItem != nil {
+		if err := s.BaggageItem.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ChangeRule != nil {
+		if err := s.ChangeRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ChangeRuleItem != nil {
+		if err := s.ChangeRuleItem.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RefundRule != nil {
+		if err := s.RefundRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RefundRuleItem != nil {
+		if err := s.RefundRuleItem.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SignRule != nil {
+		if err := s.SignRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UpgradeRule != nil {
+		if err := s.UpgradeRule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItem struct {
@@ -1032,7 +1105,21 @@ func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageIte
 }
 
 func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItem) Validate() error {
-	return dara.Validate(s)
+	if s.BaggageSubItems != nil {
+		for _, item := range s.BaggageSubItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tips != nil {
+		if err := s.Tips.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems struct {
@@ -1105,7 +1192,16 @@ func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageIte
 }
 
 func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems) Validate() error {
-	return dara.Validate(s)
+	if s.BaggageSubContentVisualizes != nil {
+		for _, item := range s.BaggageSubContentVisualizes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes struct {
@@ -1186,7 +1282,17 @@ func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageIte
 }
 
 func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) Validate() error {
-	return dara.Validate(s)
+	if s.Description != nil {
+		if err := s.Description.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImageDO != nil {
+		if err := s.ImageDO.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription struct {
@@ -1403,7 +1509,16 @@ func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRule
 }
 
 func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRule) Validate() error {
-	return dara.Validate(s)
+	if s.Info != nil {
+		for _, item := range s.Info {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo struct {
@@ -1581,7 +1696,25 @@ func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRule
 }
 
 func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem) Validate() error {
-	return dara.Validate(s)
+	if s.ExtraContents != nil {
+		for _, item := range s.ExtraContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RefundSubItems != nil {
+		for _, item := range s.RefundSubItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemExtraContents struct {
@@ -1681,7 +1814,16 @@ func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRule
 }
 
 func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems) Validate() error {
-	return dara.Validate(s)
+	if s.RefundSubContents != nil {
+		for _, item := range s.RefundSubContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents struct {
@@ -1767,7 +1909,16 @@ func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRule
 }
 
 func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRule) Validate() error {
-	return dara.Validate(s)
+	if s.Info != nil {
+		for _, item := range s.Info {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo struct {
@@ -1945,7 +2096,25 @@ func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRule
 }
 
 func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem) Validate() error {
-	return dara.Validate(s)
+	if s.ExtraContents != nil {
+		for _, item := range s.ExtraContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RefundSubItems != nil {
+		for _, item := range s.RefundSubItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemExtraContents struct {
@@ -2049,7 +2218,16 @@ func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRule
 }
 
 func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems) Validate() error {
-	return dara.Validate(s)
+	if s.RefundSubContents != nil {
+		for _, item := range s.RefundSubContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents struct {
@@ -2135,7 +2313,16 @@ func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRule) 
 }
 
 func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRule) Validate() error {
-	return dara.Validate(s)
+	if s.Info != nil {
+		for _, item := range s.Info {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo struct {
@@ -2260,7 +2447,16 @@ func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRul
 }
 
 func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRule) Validate() error {
-	return dara.Validate(s)
+	if s.Info != nil {
+		for _, item := range s.Info {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo struct {

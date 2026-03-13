@@ -94,7 +94,12 @@ func (s *TrainNoListSearchRequest) SetOrderId(v string) *TrainNoListSearchReques
 }
 
 func (s *TrainNoListSearchRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Option != nil {
+		if err := s.Option.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrainNoListSearchRequestOption struct {

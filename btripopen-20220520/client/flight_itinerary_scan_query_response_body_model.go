@@ -111,7 +111,12 @@ func (s *FlightItineraryScanQueryResponseBody) SetTraceId(v string) *FlightItine
 }
 
 func (s *FlightItineraryScanQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightItineraryScanQueryResponseBodyModule struct {
@@ -188,7 +193,16 @@ func (s *FlightItineraryScanQueryResponseBodyModule) SetTotalSize(v int32) *Flig
 }
 
 func (s *FlightItineraryScanQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightItineraryScanQueryResponseBodyModuleItems struct {
@@ -202,7 +216,8 @@ type FlightItineraryScanQueryResponseBodyModuleItems struct {
 	// example:
 	//
 	// 2022-12-01
-	BillDate *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	BillDate  *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	BlueOrRed *int32  `json:"blue_or_red,omitempty" xml:"blue_or_red,omitempty"`
 	// example:
 	//
 	// 50
@@ -248,6 +263,7 @@ type FlightItineraryScanQueryResponseBodyModuleItems struct {
 	//
 	// https://www.testurl.com
 	OssUrl        *string `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
+	OtherTaxes    *string `json:"other_taxes,omitempty" xml:"other_taxes,omitempty"`
 	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
 	PdfOssUrl     *string `json:"pdf_oss_url,omitempty" xml:"pdf_oss_url,omitempty"`
 	Project       *string `json:"project,omitempty" xml:"project,omitempty"`
@@ -282,6 +298,7 @@ type FlightItineraryScanQueryResponseBodyModuleItems struct {
 	//
 	// 9817
 	ValidationCode *string `json:"validation_code,omitempty" xml:"validation_code,omitempty"`
+	XmlOssUrl      *string `json:"xml_oss_url,omitempty" xml:"xml_oss_url,omitempty"`
 }
 
 func (s FlightItineraryScanQueryResponseBodyModuleItems) String() string {
@@ -302,6 +319,10 @@ func (s *FlightItineraryScanQueryResponseBodyModuleItems) GetApplyId() *string {
 
 func (s *FlightItineraryScanQueryResponseBodyModuleItems) GetBillDate() *string {
 	return s.BillDate
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) GetBlueOrRed() *int32 {
+	return s.BlueOrRed
 }
 
 func (s *FlightItineraryScanQueryResponseBodyModuleItems) GetBuild() *string {
@@ -364,6 +385,10 @@ func (s *FlightItineraryScanQueryResponseBodyModuleItems) GetOssUrl() *string {
 	return s.OssUrl
 }
 
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) GetOtherTaxes() *string {
+	return s.OtherTaxes
+}
+
 func (s *FlightItineraryScanQueryResponseBodyModuleItems) GetPassengerName() *string {
 	return s.PassengerName
 }
@@ -416,6 +441,10 @@ func (s *FlightItineraryScanQueryResponseBodyModuleItems) GetValidationCode() *s
 	return s.ValidationCode
 }
 
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) GetXmlOssUrl() *string {
+	return s.XmlOssUrl
+}
+
 func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetAgentCode(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
 	s.AgentCode = &v
 	return s
@@ -428,6 +457,11 @@ func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetApplyId(v string) *
 
 func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetBillDate(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
 	s.BillDate = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetBlueOrRed(v int32) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.BlueOrRed = &v
 	return s
 }
 
@@ -506,6 +540,11 @@ func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetOssUrl(v string) *F
 	return s
 }
 
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetOtherTaxes(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.OtherTaxes = &v
+	return s
+}
+
 func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetPassengerName(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
 	s.PassengerName = &v
 	return s
@@ -571,8 +610,22 @@ func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetValidationCode(v st
 	return s
 }
 
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetXmlOssUrl(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.XmlOssUrl = &v
+	return s
+}
+
 func (s *FlightItineraryScanQueryResponseBodyModuleItems) Validate() error {
-	return dara.Validate(s)
+	if s.Flights != nil {
+		for _, item := range s.Flights {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightItineraryScanQueryResponseBodyModuleItemsFlights struct {

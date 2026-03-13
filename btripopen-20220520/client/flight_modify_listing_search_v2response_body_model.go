@@ -112,7 +112,12 @@ func (s *FlightModifyListingSearchV2ResponseBody) SetTraceId(v string) *FlightMo
 }
 
 func (s *FlightModifyListingSearchV2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightModifyListingSearchV2ResponseBodyModule struct {
@@ -200,7 +205,25 @@ func (s *FlightModifyListingSearchV2ResponseBodyModule) SetTransferTitle(v strin
 }
 
 func (s *FlightModifyListingSearchV2ResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.DirectFlightList != nil {
+		for _, item := range s.DirectFlightList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TransferFlightList != nil {
+		for _, item := range s.TransferFlightList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightModifyListingSearchV2ResponseBodyModuleDirectFlightList struct {
@@ -524,7 +547,42 @@ func (s *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightList) SetTrans
 }
 
 func (s *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightList) Validate() error {
-	return dara.Validate(s)
+	if s.AirlineInfo != nil {
+		if err := s.AirlineInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ArrAirportInfo != nil {
+		if err := s.ArrAirportInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DepAirportInfo != nil {
+		if err := s.DepAirportInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FlightShareInfo != nil {
+		if err := s.FlightShareInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FlightStopInfo != nil {
+		if err := s.FlightStopInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FlightTransferInfo != nil {
+		if err := s.FlightTransferInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PriceInfoDTO != nil {
+		if err := s.PriceInfoDTO.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListAirlineInfo struct {
@@ -755,7 +813,12 @@ func (s *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListFlightShar
 }
 
 func (s *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListFlightShareInfo) Validate() error {
-	return dara.Validate(s)
+	if s.OperatingAirlineInfo != nil {
+		if err := s.OperatingAirlineInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListFlightShareInfoOperatingAirlineInfo struct {
@@ -1009,7 +1072,12 @@ func (s *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListFlightTran
 }
 
 func (s *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListFlightTransferInfo) Validate() error {
-	return dara.Validate(s)
+	if s.TransferAirlineInfo != nil {
+		if err := s.TransferAirlineInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListFlightTransferInfoTransferAirlineInfo struct {
@@ -1258,7 +1326,12 @@ func (s *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListPriceInfoD
 }
 
 func (s *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListPriceInfoDTO) Validate() error {
-	return dara.Validate(s)
+	if s.ReShopPriceInfoDTO != nil {
+		if err := s.ReShopPriceInfoDTO.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListPriceInfoDTOReShopPriceInfoDTO struct {
@@ -1696,7 +1769,42 @@ func (s *FlightModifyListingSearchV2ResponseBodyModuleTransferFlightList) SetTra
 }
 
 func (s *FlightModifyListingSearchV2ResponseBodyModuleTransferFlightList) Validate() error {
-	return dara.Validate(s)
+	if s.AirlineInfo != nil {
+		if err := s.AirlineInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ArrAirportInfo != nil {
+		if err := s.ArrAirportInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DepAirportInfo != nil {
+		if err := s.DepAirportInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FlightShareInfo != nil {
+		if err := s.FlightShareInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FlightStopInfo != nil {
+		if err := s.FlightStopInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FlightTransferInfo != nil {
+		if err := s.FlightTransferInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PriceInfoDTO != nil {
+		if err := s.PriceInfoDTO.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListAirlineInfo struct {
@@ -1906,7 +2014,12 @@ func (s *FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListFlightSh
 }
 
 func (s *FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListFlightShareInfo) Validate() error {
-	return dara.Validate(s)
+	if s.OperatingAirlineInfo != nil {
+		if err := s.OperatingAirlineInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListFlightShareInfoOperatingAirlineInfo struct {
@@ -2160,7 +2273,12 @@ func (s *FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListFlightTr
 }
 
 func (s *FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListFlightTransferInfo) Validate() error {
-	return dara.Validate(s)
+	if s.TransferAirlineInfo != nil {
+		if err := s.TransferAirlineInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListFlightTransferInfoTransferAirlineInfo struct {
@@ -2409,7 +2527,12 @@ func (s *FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListPriceInf
 }
 
 func (s *FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListPriceInfoDTO) Validate() error {
-	return dara.Validate(s)
+	if s.ReShopPriceInfoDTO != nil {
+		if err := s.ReShopPriceInfoDTO.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListPriceInfoDTOReShopPriceInfoDTO struct {

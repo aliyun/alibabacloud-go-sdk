@@ -79,7 +79,16 @@ func (s *InvoiceRuleSaveRequest) SetThirdPartId(v string) *InvoiceRuleSaveReques
 }
 
 func (s *InvoiceRuleSaveRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Entities != nil {
+		for _, item := range s.Entities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InvoiceRuleSaveRequestEntities struct {

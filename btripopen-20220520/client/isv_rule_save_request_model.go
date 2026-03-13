@@ -106,7 +106,16 @@ func (s *IsvRuleSaveRequest) SetUserId(v string) *IsvRuleSaveRequest {
 }
 
 func (s *IsvRuleSaveRequest) Validate() error {
-	return dara.Validate(s)
+	if s.BookuserList != nil {
+		for _, item := range s.BookuserList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IsvRuleSaveRequestBookuserList struct {

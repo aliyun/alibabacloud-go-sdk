@@ -108,7 +108,12 @@ func (s *TrainStationSearchResponseBody) SetTraceId(v string) *TrainStationSearc
 }
 
 func (s *TrainStationSearchResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrainStationSearchResponseBodyModule struct {
@@ -133,7 +138,16 @@ func (s *TrainStationSearchResponseBodyModule) SetCities(v []*TrainStationSearch
 }
 
 func (s *TrainStationSearchResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.Cities != nil {
+		for _, item := range s.Cities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainStationSearchResponseBodyModuleCities struct {

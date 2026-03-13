@@ -112,7 +112,12 @@ func (s *HotelPricePullResponseBody) SetTraceId(v string) *HotelPricePullRespons
 }
 
 func (s *HotelPricePullResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HotelPricePullResponseBodyModule struct {
@@ -137,7 +142,16 @@ func (s *HotelPricePullResponseBodyModule) SetHotelPriceInfos(v []*HotelPricePul
 }
 
 func (s *HotelPricePullResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.HotelPriceInfos != nil {
+		for _, item := range s.HotelPriceInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelPricePullResponseBodyModuleHotelPriceInfos struct {
@@ -208,7 +222,16 @@ func (s *HotelPricePullResponseBodyModuleHotelPriceInfos) SetSearchId(v string) 
 }
 
 func (s *HotelPricePullResponseBodyModuleHotelPriceInfos) Validate() error {
-	return dara.Validate(s)
+	if s.Rooms != nil {
+		for _, item := range s.Rooms {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelPricePullResponseBodyModuleHotelPriceInfosRooms struct {
@@ -377,7 +400,16 @@ func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRooms) SetWindowType(v s
 }
 
 func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRooms) Validate() error {
-	return dara.Validate(s)
+	if s.Rates != nil {
+		for _, item := range s.Rates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates struct {
@@ -692,7 +724,21 @@ func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetSupportSp
 }
 
 func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) Validate() error {
-	return dara.Validate(s)
+	if s.BtripHotelCancelPolicy != nil {
+		if err := s.BtripHotelCancelPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RateDailys != nil {
+		for _, item := range s.RateDailys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicy struct {
@@ -730,7 +776,16 @@ func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCanc
 }
 
 func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.BtripHotelCancelPolicyInfoDTOList != nil {
+		for _, item := range s.BtripHotelCancelPolicyInfoDTOList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicyBtripHotelCancelPolicyInfoDTOList struct {

@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -67,9 +68,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AccessTokenResponse
 func (client *Client) AccessTokenWithOptions(request *AccessTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AccessTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppSecret) {
@@ -131,9 +134,11 @@ func (client *Client) AccessToken(request *AccessTokenRequest) (_result *AccessT
 //
 // @return AddDepartmentResponse
 func (client *Client) AddDepartmentWithOptions(tmpReq *AddDepartmentRequest, headers *AddDepartmentHeaders, runtime *dara.RuntimeOptions) (_result *AddDepartmentResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddDepartmentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -222,9 +227,11 @@ func (client *Client) AddDepartment(request *AddDepartmentRequest) (_result *Add
 //
 // @return AddEmployeeResponse
 func (client *Client) AddEmployeeWithOptions(tmpReq *AddEmployeeRequest, headers *AddEmployeeHeaders, runtime *dara.RuntimeOptions) (_result *AddEmployeeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddEmployeeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -409,9 +416,11 @@ func (client *Client) AddEmployee(request *AddEmployeeRequest) (_result *AddEmpl
 //
 // @return AddEmployeesToCustomRoleResponse
 func (client *Client) AddEmployeesToCustomRoleWithOptions(tmpReq *AddEmployeesToCustomRoleRequest, headers *AddEmployeesToCustomRoleHeaders, runtime *dara.RuntimeOptions) (_result *AddEmployeesToCustomRoleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddEmployeesToCustomRoleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -492,9 +501,11 @@ func (client *Client) AddEmployeesToCustomRole(request *AddEmployeesToCustomRole
 //
 // @return AddInvoiceEntityResponse
 func (client *Client) AddInvoiceEntityWithOptions(tmpReq *AddInvoiceEntityRequest, headers *AddInvoiceEntityHeaders, runtime *dara.RuntimeOptions) (_result *AddInvoiceEntityResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddInvoiceEntityShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -575,9 +586,11 @@ func (client *Client) AddInvoiceEntity(request *AddInvoiceEntityRequest) (_resul
 //
 // @return AddressGetResponse
 func (client *Client) AddressGetWithOptions(request *AddressGetRequest, headers *AddressGetHeaders, runtime *dara.RuntimeOptions) (_result *AddressGetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActionType) {
@@ -720,9 +733,11 @@ func (client *Client) AddressGet(request *AddressGetRequest) (_result *AddressGe
 //
 // @return AirportSearchResponse
 func (client *Client) AirportSearchWithOptions(request *AirportSearchRequest, headers *AirportSearchHeaders, runtime *dara.RuntimeOptions) (_result *AirportSearchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -856,9 +871,11 @@ func (client *Client) AllBaseCityInfoQuery() (_result *AllBaseCityInfoQueryRespo
 //
 // @return ApplyAddResponse
 func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers *ApplyAddHeaders, runtime *dara.RuntimeOptions) (_result *ApplyAddResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ApplyAddShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1123,9 +1140,11 @@ func (client *Client) ApplyAdd(request *ApplyAddRequest) (_result *ApplyAddRespo
 //
 // @return ApplyApproveResponse
 func (client *Client) ApplyApproveWithOptions(request *ApplyApproveRequest, headers *ApplyApproveHeaders, runtime *dara.RuntimeOptions) (_result *ApplyApproveResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ApplyId) {
@@ -1220,9 +1239,11 @@ func (client *Client) ApplyApprove(request *ApplyApproveRequest) (_result *Apply
 //
 // @return ApplyExternalNodeStatusUpdateResponse
 func (client *Client) ApplyExternalNodeStatusUpdateWithOptions(tmpReq *ApplyExternalNodeStatusUpdateRequest, headers *ApplyExternalNodeStatusUpdateHeaders, runtime *dara.RuntimeOptions) (_result *ApplyExternalNodeStatusUpdateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ApplyExternalNodeStatusUpdateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1307,9 +1328,11 @@ func (client *Client) ApplyExternalNodeStatusUpdate(request *ApplyExternalNodeSt
 //
 // @return ApplyInvoiceTaskResponse
 func (client *Client) ApplyInvoiceTaskWithOptions(tmpReq *ApplyInvoiceTaskRequest, headers *ApplyInvoiceTaskHeaders, runtime *dara.RuntimeOptions) (_result *ApplyInvoiceTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ApplyInvoiceTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1390,9 +1413,11 @@ func (client *Client) ApplyInvoiceTask(request *ApplyInvoiceTaskRequest) (_resul
 //
 // @return ApplyListQueryResponse
 func (client *Client) ApplyListQueryWithOptions(request *ApplyListQueryRequest, headers *ApplyListQueryHeaders, runtime *dara.RuntimeOptions) (_result *ApplyListQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllApply) {
@@ -1507,9 +1532,11 @@ func (client *Client) ApplyListQuery(request *ApplyListQueryRequest) (_result *A
 //
 // @return ApplyModifyResponse
 func (client *Client) ApplyModifyWithOptions(tmpReq *ApplyModifyRequest, headers *ApplyModifyHeaders, runtime *dara.RuntimeOptions) (_result *ApplyModifyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ApplyModifyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1766,9 +1793,11 @@ func (client *Client) ApplyModify(request *ApplyModifyRequest) (_result *ApplyMo
 //
 // @return ApplyQueryResponse
 func (client *Client) ApplyQueryWithOptions(request *ApplyQueryRequest, headers *ApplyQueryHeaders, runtime *dara.RuntimeOptions) (_result *ApplyQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplyId) {
@@ -1855,9 +1884,11 @@ func (client *Client) ApplyQuery(request *ApplyQueryRequest) (_result *ApplyQuer
 //
 // @return ApplyTripTaskExecuteResponse
 func (client *Client) ApplyTripTaskExecuteWithOptions(request *ApplyTripTaskExecuteRequest, headers *ApplyTripTaskExecuteHeaders, runtime *dara.RuntimeOptions) (_result *ApplyTripTaskExecuteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ActionFrom) {
@@ -1948,9 +1979,11 @@ func (client *Client) ApplyTripTaskExecute(request *ApplyTripTaskExecuteRequest)
 //
 // @return BaseCityInfoSearchResponse
 func (client *Client) BaseCityInfoSearchWithOptions(request *BaseCityInfoSearchRequest, headers *BaseCityInfoSearchHeaders, runtime *dara.RuntimeOptions) (_result *BaseCityInfoSearchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -2025,9 +2058,11 @@ func (client *Client) BaseCityInfoSearch(request *BaseCityInfoSearchRequest) (_r
 //
 // @return BtripBillInfoAdjustResponse
 func (client *Client) BtripBillInfoAdjustWithOptions(request *BtripBillInfoAdjustRequest, headers *BtripBillInfoAdjustHeaders, runtime *dara.RuntimeOptions) (_result *BtripBillInfoAdjustResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.PrimaryId) {
@@ -2118,9 +2153,11 @@ func (client *Client) BtripBillInfoAdjust(request *BtripBillInfoAdjustRequest) (
 //
 // @return CarApplyAddResponse
 func (client *Client) CarApplyAddWithOptions(tmpReq *CarApplyAddRequest, headers *CarApplyAddHeaders, runtime *dara.RuntimeOptions) (_result *CarApplyAddResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CarApplyAddShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2261,9 +2298,11 @@ func (client *Client) CarApplyAdd(request *CarApplyAddRequest) (_result *CarAppl
 //
 // @return CarApplyModifyResponse
 func (client *Client) CarApplyModifyWithOptions(request *CarApplyModifyRequest, headers *CarApplyModifyHeaders, runtime *dara.RuntimeOptions) (_result *CarApplyModifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.OperateTime) {
@@ -2350,9 +2389,11 @@ func (client *Client) CarApplyModify(request *CarApplyModifyRequest) (_result *C
 //
 // @return CarApplyQueryResponse
 func (client *Client) CarApplyQueryWithOptions(request *CarApplyQueryRequest, headers *CarApplyQueryHeaders, runtime *dara.RuntimeOptions) (_result *CarApplyQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreatedEndAt) {
@@ -2443,13 +2484,23 @@ func (client *Client) CarApplyQuery(request *CarApplyQueryRequest) (_result *Car
 //
 // @return CarBillSettlementQueryResponse
 func (client *Client) CarBillSettlementQueryWithOptions(request *CarBillSettlementQueryRequest, headers *CarBillSettlementQueryHeaders, runtime *dara.RuntimeOptions) (_result *CarBillSettlementQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillRecordTimeEnd) {
+		query["bill_record_time_end"] = request.BillRecordTimeEnd
+	}
+
+	if !dara.IsNil(request.BillRecordTimeStart) {
+		query["bill_record_time_start"] = request.BillRecordTimeStart
 	}
 
 	if !dara.IsNil(request.OrderId) {
@@ -2544,9 +2595,11 @@ func (client *Client) CarBillSettlementQuery(request *CarBillSettlementQueryRequ
 //
 // @return CarOrderListQueryResponse
 func (client *Client) CarOrderListQueryWithOptions(request *CarOrderListQueryRequest, headers *CarOrderListQueryHeaders, runtime *dara.RuntimeOptions) (_result *CarOrderListQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllApply) {
@@ -2657,9 +2710,11 @@ func (client *Client) CarOrderListQuery(request *CarOrderListQueryRequest) (_res
 //
 // @return CarOrderQueryResponse
 func (client *Client) CarOrderQueryWithOptions(request *CarOrderQueryRequest, headers *CarOrderQueryHeaders, runtime *dara.RuntimeOptions) (_result *CarOrderQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -2793,9 +2848,11 @@ func (client *Client) CarSceneQuery() (_result *CarSceneQueryResponse, _err erro
 //
 // @return ChannelCorpCreateResponse
 func (client *Client) ChannelCorpCreateWithOptions(request *ChannelCorpCreateRequest, headers *ChannelCorpCreateHeaders, runtime *dara.RuntimeOptions) (_result *ChannelCorpCreateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AdministratorName) {
@@ -2894,9 +2951,11 @@ func (client *Client) ChannelCorpCreate(request *ChannelCorpCreateRequest) (_res
 //
 // @return CitySearchResponse
 func (client *Client) CitySearchWithOptions(request *CitySearchRequest, headers *CitySearchHeaders, runtime *dara.RuntimeOptions) (_result *CitySearchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -2967,9 +3026,11 @@ func (client *Client) CitySearch(request *CitySearchRequest) (_result *CitySearc
 //
 // @return CommonApplyQueryResponse
 func (client *Client) CommonApplyQueryWithOptions(request *CommonApplyQueryRequest, headers *CommonApplyQueryHeaders, runtime *dara.RuntimeOptions) (_result *CommonApplyQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplyId) {
@@ -3052,9 +3113,11 @@ func (client *Client) CommonApplyQuery(request *CommonApplyQueryRequest) (_resul
 //
 // @return CommonApplySyncResponse
 func (client *Client) CommonApplySyncWithOptions(request *CommonApplySyncRequest, headers *CommonApplySyncHeaders, runtime *dara.RuntimeOptions) (_result *CommonApplySyncResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplyId) {
@@ -3145,13 +3208,23 @@ func (client *Client) CommonApplySync(request *CommonApplySyncRequest) (_result 
 //
 // @return CooperatorFlightBillSettlementQueryResponse
 func (client *Client) CooperatorFlightBillSettlementQueryWithOptions(request *CooperatorFlightBillSettlementQueryRequest, headers *CooperatorFlightBillSettlementQueryHeaders, runtime *dara.RuntimeOptions) (_result *CooperatorFlightBillSettlementQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillRecordTimeEnd) {
+		query["bill_record_time_end"] = request.BillRecordTimeEnd
+	}
+
+	if !dara.IsNil(request.BillRecordTimeStart) {
+		query["bill_record_time_start"] = request.BillRecordTimeStart
 	}
 
 	if !dara.IsNil(request.CooperatorId) {
@@ -3250,13 +3323,23 @@ func (client *Client) CooperatorFlightBillSettlementQuery(request *CooperatorFli
 //
 // @return CooperatorHotelBillSettlementQueryResponse
 func (client *Client) CooperatorHotelBillSettlementQueryWithOptions(request *CooperatorHotelBillSettlementQueryRequest, headers *CooperatorHotelBillSettlementQueryHeaders, runtime *dara.RuntimeOptions) (_result *CooperatorHotelBillSettlementQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillRecordTimeEnd) {
+		query["bill_record_time_end"] = request.BillRecordTimeEnd
+	}
+
+	if !dara.IsNil(request.BillRecordTimeStart) {
+		query["bill_record_time_start"] = request.BillRecordTimeStart
 	}
 
 	if !dara.IsNil(request.CooperatorId) {
@@ -3355,9 +3438,11 @@ func (client *Client) CooperatorHotelBillSettlementQuery(request *CooperatorHote
 //
 // @return CooperatorHotelEventPushResponse
 func (client *Client) CooperatorHotelEventPushWithOptions(request *CooperatorHotelEventPushRequest, headers *CooperatorHotelEventPushHeaders, runtime *dara.RuntimeOptions) (_result *CooperatorHotelEventPushResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ChangeOrderStatus) {
@@ -3452,9 +3537,11 @@ func (client *Client) CooperatorHotelEventPush(request *CooperatorHotelEventPush
 //
 // @return CooperatorSyncPayStatusResponse
 func (client *Client) CooperatorSyncPayStatusWithOptions(request *CooperatorSyncPayStatusRequest, headers *CooperatorSyncPayStatusHeaders, runtime *dara.RuntimeOptions) (_result *CooperatorSyncPayStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CooperatorOrderId) {
@@ -3591,9 +3678,11 @@ func (client *Client) CorpAuthLinkInfoQuery() (_result *CorpAuthLinkInfoQueryRes
 //
 // @return CorpTokenResponse
 func (client *Client) CorpTokenWithOptions(request *CorpTokenRequest, headers *CorpTokenHeaders, runtime *dara.RuntimeOptions) (_result *CorpTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppSecret) {
@@ -3672,9 +3761,11 @@ func (client *Client) CorpToken(request *CorpTokenRequest) (_result *CorpTokenRe
 //
 // @return CostCenterDeleteResponse
 func (client *Client) CostCenterDeleteWithOptions(request *CostCenterDeleteRequest, headers *CostCenterDeleteHeaders, runtime *dara.RuntimeOptions) (_result *CostCenterDeleteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ThirdpartId) {
@@ -3745,9 +3836,11 @@ func (client *Client) CostCenterDelete(request *CostCenterDeleteRequest) (_resul
 //
 // @return CostCenterModifyResponse
 func (client *Client) CostCenterModifyWithOptions(request *CostCenterModifyRequest, headers *CostCenterModifyHeaders, runtime *dara.RuntimeOptions) (_result *CostCenterModifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AlipayNo) {
@@ -3838,9 +3931,11 @@ func (client *Client) CostCenterModify(request *CostCenterModifyRequest) (_resul
 //
 // @return CostCenterQueryResponse
 func (client *Client) CostCenterQueryWithOptions(request *CostCenterQueryRequest, headers *CostCenterQueryHeaders, runtime *dara.RuntimeOptions) (_result *CostCenterQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Disable) {
@@ -3927,9 +4022,11 @@ func (client *Client) CostCenterQuery(request *CostCenterQueryRequest) (_result 
 //
 // @return CostCenterSaveResponse
 func (client *Client) CostCenterSaveWithOptions(request *CostCenterSaveRequest, headers *CostCenterSaveHeaders, runtime *dara.RuntimeOptions) (_result *CostCenterSaveResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AlipayNo) {
@@ -4020,9 +4117,11 @@ func (client *Client) CostCenterSave(request *CostCenterSaveRequest) (_result *C
 //
 // @return CreateCustomRoleResponse
 func (client *Client) CreateCustomRoleWithOptions(request *CreateCustomRoleRequest, headers *CreateCustomRoleHeaders, runtime *dara.RuntimeOptions) (_result *CreateCustomRoleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RoleId) {
@@ -4097,9 +4196,11 @@ func (client *Client) CreateCustomRole(request *CreateCustomRoleRequest) (_resul
 //
 // @return CreateSubCorpResponse
 func (client *Client) CreateSubCorpWithOptions(request *CreateSubCorpRequest, headers *CreateSubCorpHeaders, runtime *dara.RuntimeOptions) (_result *CreateSubCorpResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.OuterCorpId) {
@@ -4178,9 +4279,11 @@ func (client *Client) CreateSubCorp(request *CreateSubCorpRequest) (_result *Cre
 //
 // @return DeleteCustomRoleResponse
 func (client *Client) DeleteCustomRoleWithOptions(request *DeleteCustomRoleRequest, headers *DeleteCustomRoleHeaders, runtime *dara.RuntimeOptions) (_result *DeleteCustomRoleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RoleId) {
@@ -4251,9 +4354,11 @@ func (client *Client) DeleteCustomRole(request *DeleteCustomRoleRequest) (_resul
 //
 // @return DeleteDepartmentResponse
 func (client *Client) DeleteDepartmentWithOptions(request *DeleteDepartmentRequest, headers *DeleteDepartmentHeaders, runtime *dara.RuntimeOptions) (_result *DeleteDepartmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.OutDeptId) {
@@ -4324,9 +4429,11 @@ func (client *Client) DeleteDepartment(request *DeleteDepartmentRequest) (_resul
 //
 // @return DeleteEmployeesFromCustomRoleResponse
 func (client *Client) DeleteEmployeesFromCustomRoleWithOptions(tmpReq *DeleteEmployeesFromCustomRoleRequest, headers *DeleteEmployeesFromCustomRoleHeaders, runtime *dara.RuntimeOptions) (_result *DeleteEmployeesFromCustomRoleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteEmployeesFromCustomRoleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4407,9 +4514,11 @@ func (client *Client) DeleteEmployeesFromCustomRole(request *DeleteEmployeesFrom
 //
 // @return DeleteInvoiceEntityResponse
 func (client *Client) DeleteInvoiceEntityWithOptions(tmpReq *DeleteInvoiceEntityRequest, headers *DeleteInvoiceEntityHeaders, runtime *dara.RuntimeOptions) (_result *DeleteInvoiceEntityResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteInvoiceEntityShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4494,9 +4603,11 @@ func (client *Client) DeleteInvoiceEntity(request *DeleteInvoiceEntityRequest) (
 //
 // @return DepartmentSaveResponse
 func (client *Client) DepartmentSaveWithOptions(tmpReq *DepartmentSaveRequest, headers *DepartmentSaveHeaders, runtime *dara.RuntimeOptions) (_result *DepartmentSaveResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DepartmentSaveShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4573,9 +4684,11 @@ func (client *Client) DepartmentSave(request *DepartmentSaveRequest) (_result *D
 //
 // @return ElectronicItineraryBatchApplyResponse
 func (client *Client) ElectronicItineraryBatchApplyWithOptions(tmpReq *ElectronicItineraryBatchApplyRequest, headers *ElectronicItineraryBatchApplyHeaders, runtime *dara.RuntimeOptions) (_result *ElectronicItineraryBatchApplyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ElectronicItineraryBatchApplyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4656,9 +4769,11 @@ func (client *Client) ElectronicItineraryBatchApply(request *ElectronicItinerary
 //
 // @return ElectronicItineraryGetApplyResultResponse
 func (client *Client) ElectronicItineraryGetApplyResultWithOptions(request *ElectronicItineraryGetApplyResultRequest, headers *ElectronicItineraryGetApplyResultHeaders, runtime *dara.RuntimeOptions) (_result *ElectronicItineraryGetApplyResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BatchApplyNo) {
@@ -4729,9 +4844,11 @@ func (client *Client) ElectronicItineraryGetApplyResult(request *ElectronicItine
 //
 // @return EntityAddResponse
 func (client *Client) EntityAddWithOptions(tmpReq *EntityAddRequest, headers *EntityAddHeaders, runtime *dara.RuntimeOptions) (_result *EntityAddResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &EntityAddShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4812,9 +4929,11 @@ func (client *Client) EntityAdd(request *EntityAddRequest) (_result *EntityAddRe
 //
 // @return EntityDeleteResponse
 func (client *Client) EntityDeleteWithOptions(tmpReq *EntityDeleteRequest, headers *EntityDeleteHeaders, runtime *dara.RuntimeOptions) (_result *EntityDeleteResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &EntityDeleteShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4901,9 +5020,11 @@ func (client *Client) EntityDelete(request *EntityDeleteRequest) (_result *Entit
 //
 // @return EntitySetResponse
 func (client *Client) EntitySetWithOptions(tmpReq *EntitySetRequest, headers *EntitySetHeaders, runtime *dara.RuntimeOptions) (_result *EntitySetResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &EntitySetShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4984,9 +5105,11 @@ func (client *Client) EntitySet(request *EntitySetRequest) (_result *EntitySetRe
 //
 // @return EstimatedPriceQueryResponse
 func (client *Client) EstimatedPriceQueryWithOptions(request *EstimatedPriceQueryRequest, headers *EstimatedPriceQueryHeaders, runtime *dara.RuntimeOptions) (_result *EstimatedPriceQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ArrCity) {
@@ -5085,9 +5208,11 @@ func (client *Client) EstimatedPriceQuery(request *EstimatedPriceQueryRequest) (
 //
 // @return ExceedApplySyncResponse
 func (client *Client) ExceedApplySyncWithOptions(request *ExceedApplySyncRequest, headers *ExceedApplySyncHeaders, runtime *dara.RuntimeOptions) (_result *ExceedApplySyncResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplyId) {
@@ -5178,9 +5303,11 @@ func (client *Client) ExceedApplySync(request *ExceedApplySyncRequest) (_result 
 //
 // @return ExternalUserAddResponse
 func (client *Client) ExternalUserAddWithOptions(tmpReq *ExternalUserAddRequest, headers *ExternalUserAddHeaders, runtime *dara.RuntimeOptions) (_result *ExternalUserAddResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ExternalUserAddShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5403,9 +5530,11 @@ func (client *Client) ExternalUserQuery(externalUserId *string) (_result *Extern
 //
 // @return ExternalUserUpdateResponse
 func (client *Client) ExternalUserUpdateWithOptions(externalUserId *string, tmpReq *ExternalUserUpdateRequest, headers *ExternalUserUpdateHeaders, runtime *dara.RuntimeOptions) (_result *ExternalUserUpdateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ExternalUserUpdateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5502,13 +5631,23 @@ func (client *Client) ExternalUserUpdate(externalUserId *string, request *Extern
 //
 // @return FlightBillSettlementQueryResponse
 func (client *Client) FlightBillSettlementQueryWithOptions(request *FlightBillSettlementQueryRequest, headers *FlightBillSettlementQueryHeaders, runtime *dara.RuntimeOptions) (_result *FlightBillSettlementQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillRecordTimeEnd) {
+		query["bill_record_time_end"] = request.BillRecordTimeEnd
+	}
+
+	if !dara.IsNil(request.BillRecordTimeStart) {
+		query["bill_record_time_start"] = request.BillRecordTimeStart
 	}
 
 	if !dara.IsNil(request.OrderId) {
@@ -5603,9 +5742,11 @@ func (client *Client) FlightBillSettlementQuery(request *FlightBillSettlementQue
 //
 // @return FlightCancelOrderResponse
 func (client *Client) FlightCancelOrderWithOptions(request *FlightCancelOrderRequest, headers *FlightCancelOrderHeaders, runtime *dara.RuntimeOptions) (_result *FlightCancelOrderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DisOrderId) {
@@ -5676,9 +5817,11 @@ func (client *Client) FlightCancelOrder(request *FlightCancelOrderRequest) (_res
 //
 // @return FlightCancelOrderV2Response
 func (client *Client) FlightCancelOrderV2WithOptions(request *FlightCancelOrderV2Request, headers *FlightCancelOrderV2Headers, runtime *dara.RuntimeOptions) (_result *FlightCancelOrderV2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsvName) {
@@ -5757,9 +5900,11 @@ func (client *Client) FlightCancelOrderV2(request *FlightCancelOrderV2Request) (
 //
 // @return FlightCreateOrderResponse
 func (client *Client) FlightCreateOrderWithOptions(tmpReq *FlightCreateOrderRequest, headers *FlightCreateOrderHeaders, runtime *dara.RuntimeOptions) (_result *FlightCreateOrderResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightCreateOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5916,9 +6061,11 @@ func (client *Client) FlightCreateOrder(request *FlightCreateOrderRequest) (_res
 //
 // @return FlightCreateOrderV2Response
 func (client *Client) FlightCreateOrderV2WithOptions(tmpReq *FlightCreateOrderV2Request, headers *FlightCreateOrderV2Headers, runtime *dara.RuntimeOptions) (_result *FlightCreateOrderV2Response, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightCreateOrderV2ShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6035,9 +6182,11 @@ func (client *Client) FlightCreateOrderV2(request *FlightCreateOrderV2Request) (
 //
 // @return FlightExceedApplyQueryResponse
 func (client *Client) FlightExceedApplyQueryWithOptions(request *FlightExceedApplyQueryRequest, headers *FlightExceedApplyQueryHeaders, runtime *dara.RuntimeOptions) (_result *FlightExceedApplyQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplyId) {
@@ -6112,9 +6261,11 @@ func (client *Client) FlightExceedApplyQuery(request *FlightExceedApplyQueryRequ
 //
 // @return FlightItineraryScanQueryResponse
 func (client *Client) FlightItineraryScanQueryWithOptions(request *FlightItineraryScanQueryRequest, headers *FlightItineraryScanQueryHeaders, runtime *dara.RuntimeOptions) (_result *FlightItineraryScanQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillDate) {
@@ -6131,6 +6282,10 @@ func (client *Client) FlightItineraryScanQueryWithOptions(request *FlightItinera
 
 	if !dara.IsNil(request.ItineraryNum) {
 		query["itinerary_num"] = request.ItineraryNum
+	}
+
+	if !dara.IsNil(request.OrderId) {
+		query["order_id"] = request.OrderId
 	}
 
 	if !dara.IsNil(request.PageNo) {
@@ -6209,9 +6364,11 @@ func (client *Client) FlightItineraryScanQuery(request *FlightItineraryScanQuery
 //
 // @return FlightListingSearchResponse
 func (client *Client) FlightListingSearchWithOptions(request *FlightListingSearchRequest, headers *FlightListingSearchHeaders, runtime *dara.RuntimeOptions) (_result *FlightListingSearchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AirlineCode) {
@@ -6298,9 +6455,11 @@ func (client *Client) FlightListingSearch(request *FlightListingSearchRequest) (
 //
 // @return FlightListingSearchV2Response
 func (client *Client) FlightListingSearchV2WithOptions(tmpReq *FlightListingSearchV2Request, headers *FlightListingSearchV2Headers, runtime *dara.RuntimeOptions) (_result *FlightListingSearchV2Response, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightListingSearchV2ShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6421,9 +6580,11 @@ func (client *Client) FlightListingSearchV2(request *FlightListingSearchV2Reques
 //
 // @return FlightModifyApplyV2Response
 func (client *Client) FlightModifyApplyV2WithOptions(tmpReq *FlightModifyApplyV2Request, headers *FlightModifyApplyV2Headers, runtime *dara.RuntimeOptions) (_result *FlightModifyApplyV2Response, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightModifyApplyV2ShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6540,9 +6701,11 @@ func (client *Client) FlightModifyApplyV2(request *FlightModifyApplyV2Request) (
 //
 // @return FlightModifyCancelV2Response
 func (client *Client) FlightModifyCancelV2WithOptions(request *FlightModifyCancelV2Request, headers *FlightModifyCancelV2Headers, runtime *dara.RuntimeOptions) (_result *FlightModifyCancelV2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsvName) {
@@ -6629,9 +6792,11 @@ func (client *Client) FlightModifyCancelV2(request *FlightModifyCancelV2Request)
 //
 // @return FlightModifyListingSearchV2Response
 func (client *Client) FlightModifyListingSearchV2WithOptions(tmpReq *FlightModifyListingSearchV2Request, headers *FlightModifyListingSearchV2Headers, runtime *dara.RuntimeOptions) (_result *FlightModifyListingSearchV2Response, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightModifyListingSearchV2ShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6764,9 +6929,11 @@ func (client *Client) FlightModifyListingSearchV2(request *FlightModifyListingSe
 //
 // @return FlightModifyOrderDetailV2Response
 func (client *Client) FlightModifyOrderDetailV2WithOptions(request *FlightModifyOrderDetailV2Request, headers *FlightModifyOrderDetailV2Headers, runtime *dara.RuntimeOptions) (_result *FlightModifyOrderDetailV2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsvName) {
@@ -6857,9 +7024,11 @@ func (client *Client) FlightModifyOrderDetailV2(request *FlightModifyOrderDetail
 //
 // @return FlightModifyOtaSearchV2Response
 func (client *Client) FlightModifyOtaSearchV2WithOptions(tmpReq *FlightModifyOtaSearchV2Request, headers *FlightModifyOtaSearchV2Headers, runtime *dara.RuntimeOptions) (_result *FlightModifyOtaSearchV2Response, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightModifyOtaSearchV2ShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6980,9 +7149,11 @@ func (client *Client) FlightModifyOtaSearchV2(request *FlightModifyOtaSearchV2Re
 //
 // @return FlightModifyPayV2Response
 func (client *Client) FlightModifyPayV2WithOptions(tmpReq *FlightModifyPayV2Request, headers *FlightModifyPayV2Headers, runtime *dara.RuntimeOptions) (_result *FlightModifyPayV2Response, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightModifyPayV2ShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7083,9 +7254,11 @@ func (client *Client) FlightModifyPayV2(request *FlightModifyPayV2Request) (_res
 //
 // @return FlightOrderDetailInfoResponse
 func (client *Client) FlightOrderDetailInfoWithOptions(request *FlightOrderDetailInfoRequest, headers *FlightOrderDetailInfoHeaders, runtime *dara.RuntimeOptions) (_result *FlightOrderDetailInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DisOrderId) {
@@ -7156,9 +7329,11 @@ func (client *Client) FlightOrderDetailInfo(request *FlightOrderDetailInfoReques
 //
 // @return FlightOrderDetailV2Response
 func (client *Client) FlightOrderDetailV2WithOptions(request *FlightOrderDetailV2Request, headers *FlightOrderDetailV2Headers, runtime *dara.RuntimeOptions) (_result *FlightOrderDetailV2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsvName) {
@@ -7237,9 +7412,11 @@ func (client *Client) FlightOrderDetailV2(request *FlightOrderDetailV2Request) (
 //
 // @return FlightOrderListQueryResponse
 func (client *Client) FlightOrderListQueryWithOptions(request *FlightOrderListQueryRequest, headers *FlightOrderListQueryHeaders, runtime *dara.RuntimeOptions) (_result *FlightOrderListQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllApply) {
@@ -7350,9 +7527,11 @@ func (client *Client) FlightOrderListQuery(request *FlightOrderListQueryRequest)
 //
 // @return FlightOrderListQueryV2Response
 func (client *Client) FlightOrderListQueryV2WithOptions(tmpReq *FlightOrderListQueryV2Request, headers *FlightOrderListQueryV2Headers, runtime *dara.RuntimeOptions) (_result *FlightOrderListQueryV2Response, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightOrderListQueryV2ShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7485,9 +7664,11 @@ func (client *Client) FlightOrderListQueryV2(request *FlightOrderListQueryV2Requ
 //
 // @return FlightOrderQueryResponse
 func (client *Client) FlightOrderQueryWithOptions(request *FlightOrderQueryRequest, headers *FlightOrderQueryHeaders, runtime *dara.RuntimeOptions) (_result *FlightOrderQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -7562,17 +7743,27 @@ func (client *Client) FlightOrderQuery(request *FlightOrderQueryRequest) (_resul
 //
 // @return FlightOtaItemDetailResponse
 func (client *Client) FlightOtaItemDetailWithOptions(request *FlightOtaItemDetailRequest, headers *FlightOtaItemDetailHeaders, runtime *dara.RuntimeOptions) (_result *FlightOtaItemDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsvName) {
 		query["isv_name"] = request.IsvName
 	}
 
+	if !dara.IsNil(request.OrderId) {
+		query["order_id"] = request.OrderId
+	}
+
 	if !dara.IsNil(request.OtaItemId) {
 		query["ota_item_id"] = request.OtaItemId
+	}
+
+	if !dara.IsNil(request.OutOrderId) {
+		query["out_order_id"] = request.OutOrderId
 	}
 
 	realHeaders := make(map[string]*string)
@@ -7639,9 +7830,11 @@ func (client *Client) FlightOtaItemDetail(request *FlightOtaItemDetailRequest) (
 //
 // @return FlightOtaSearchResponse
 func (client *Client) FlightOtaSearchWithOptions(request *FlightOtaSearchRequest, headers *FlightOtaSearchHeaders, runtime *dara.RuntimeOptions) (_result *FlightOtaSearchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AirlineCode) {
@@ -7736,9 +7929,11 @@ func (client *Client) FlightOtaSearch(request *FlightOtaSearchRequest) (_result 
 //
 // @return FlightOtaSearchV2Response
 func (client *Client) FlightOtaSearchV2WithOptions(tmpReq *FlightOtaSearchV2Request, headers *FlightOtaSearchV2Headers, runtime *dara.RuntimeOptions) (_result *FlightOtaSearchV2Response, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightOtaSearchV2ShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7843,9 +8038,11 @@ func (client *Client) FlightOtaSearchV2(request *FlightOtaSearchV2Request) (_res
 //
 // @return FlightPayOrderResponse
 func (client *Client) FlightPayOrderWithOptions(tmpReq *FlightPayOrderRequest, headers *FlightPayOrderHeaders, runtime *dara.RuntimeOptions) (_result *FlightPayOrderResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightPayOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7938,9 +8135,11 @@ func (client *Client) FlightPayOrder(request *FlightPayOrderRequest) (_result *F
 //
 // @return FlightPayOrderV2Response
 func (client *Client) FlightPayOrderV2WithOptions(request *FlightPayOrderV2Request, headers *FlightPayOrderV2Headers, runtime *dara.RuntimeOptions) (_result *FlightPayOrderV2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.IsvName) {
@@ -8027,9 +8226,11 @@ func (client *Client) FlightPayOrderV2(request *FlightPayOrderV2Request) (_resul
 //
 // @return FlightRefundApplyResponse
 func (client *Client) FlightRefundApplyWithOptions(tmpReq *FlightRefundApplyRequest, headers *FlightRefundApplyHeaders, runtime *dara.RuntimeOptions) (_result *FlightRefundApplyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightRefundApplyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8166,9 +8367,11 @@ func (client *Client) FlightRefundApply(request *FlightRefundApplyRequest) (_res
 //
 // @return FlightRefundApplyV2Response
 func (client *Client) FlightRefundApplyV2WithOptions(tmpReq *FlightRefundApplyV2Request, headers *FlightRefundApplyV2Headers, runtime *dara.RuntimeOptions) (_result *FlightRefundApplyV2Response, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightRefundApplyV2ShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8293,9 +8496,11 @@ func (client *Client) FlightRefundApplyV2(request *FlightRefundApplyV2Request) (
 //
 // @return FlightRefundDetailResponse
 func (client *Client) FlightRefundDetailWithOptions(request *FlightRefundDetailRequest, headers *FlightRefundDetailHeaders, runtime *dara.RuntimeOptions) (_result *FlightRefundDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DisOrderId) {
@@ -8370,9 +8575,11 @@ func (client *Client) FlightRefundDetail(request *FlightRefundDetailRequest) (_r
 //
 // @return FlightRefundDetailV2Response
 func (client *Client) FlightRefundDetailV2WithOptions(request *FlightRefundDetailV2Request, headers *FlightRefundDetailV2Headers, runtime *dara.RuntimeOptions) (_result *FlightRefundDetailV2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsvName) {
@@ -8459,9 +8666,11 @@ func (client *Client) FlightRefundDetailV2(request *FlightRefundDetailV2Request)
 //
 // @return FlightRefundPreCalResponse
 func (client *Client) FlightRefundPreCalWithOptions(tmpReq *FlightRefundPreCalRequest, headers *FlightRefundPreCalHeaders, runtime *dara.RuntimeOptions) (_result *FlightRefundPreCalResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightRefundPreCalShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8546,9 +8755,11 @@ func (client *Client) FlightRefundPreCal(request *FlightRefundPreCalRequest) (_r
 //
 // @return FlightRefundPreCalV2Response
 func (client *Client) FlightRefundPreCalV2WithOptions(tmpReq *FlightRefundPreCalV2Request, headers *FlightRefundPreCalV2Headers, runtime *dara.RuntimeOptions) (_result *FlightRefundPreCalV2Response, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlightRefundPreCalV2ShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8653,9 +8864,11 @@ func (client *Client) FlightRefundPreCalV2(request *FlightRefundPreCalV2Request)
 //
 // @return FlightSearchListResponse
 func (client *Client) FlightSearchListWithOptions(request *FlightSearchListRequest, headers *FlightSearchListHeaders, runtime *dara.RuntimeOptions) (_result *FlightSearchListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AirlineCode) {
@@ -8778,13 +8991,23 @@ func (client *Client) FlightSearchList(request *FlightSearchListRequest) (_resul
 //
 // @return FuPointBillSettlementQueryResponse
 func (client *Client) FuPointBillSettlementQueryWithOptions(request *FuPointBillSettlementQueryRequest, headers *FuPointBillSettlementQueryHeaders, runtime *dara.RuntimeOptions) (_result *FuPointBillSettlementQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillRecordTimeEnd) {
+		query["bill_record_time_end"] = request.BillRecordTimeEnd
+	}
+
+	if !dara.IsNil(request.BillRecordTimeStart) {
+		query["bill_record_time_start"] = request.BillRecordTimeStart
 	}
 
 	if !dara.IsNil(request.CooperatorId) {
@@ -8883,9 +9106,11 @@ func (client *Client) FuPointBillSettlementQuery(request *FuPointBillSettlementQ
 //
 // @return GroupCorpTokenResponse
 func (client *Client) GroupCorpTokenWithOptions(request *GroupCorpTokenRequest, headers *GroupCorpTokenHeaders, runtime *dara.RuntimeOptions) (_result *GroupCorpTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppSecret) {
@@ -8964,9 +9189,11 @@ func (client *Client) GroupCorpToken(request *GroupCorpTokenRequest) (_result *G
 //
 // @return GroupDepartSaveResponse
 func (client *Client) GroupDepartSaveWithOptions(tmpReq *GroupDepartSaveRequest, headers *GroupDepartSaveHeaders, runtime *dara.RuntimeOptions) (_result *GroupDepartSaveResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GroupDepartSaveShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9067,9 +9294,11 @@ func (client *Client) GroupDepartSave(request *GroupDepartSaveRequest) (_result 
 //
 // @return GroupUserSaveResponse
 func (client *Client) GroupUserSaveWithOptions(tmpReq *GroupUserSaveRequest, headers *GroupUserSaveHeaders, runtime *dara.RuntimeOptions) (_result *GroupUserSaveResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GroupUserSaveShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9186,9 +9415,11 @@ func (client *Client) GroupUserSave(request *GroupUserSaveRequest) (_result *Gro
 //
 // @return HotelAskingPriceResponse
 func (client *Client) HotelAskingPriceWithOptions(tmpReq *HotelAskingPriceRequest, headers *HotelAskingPriceHeaders, runtime *dara.RuntimeOptions) (_result *HotelAskingPriceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &HotelAskingPriceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9309,13 +9540,23 @@ func (client *Client) HotelAskingPrice(request *HotelAskingPriceRequest) (_resul
 //
 // @return HotelBillSettlementQueryResponse
 func (client *Client) HotelBillSettlementQueryWithOptions(request *HotelBillSettlementQueryRequest, headers *HotelBillSettlementQueryHeaders, runtime *dara.RuntimeOptions) (_result *HotelBillSettlementQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillRecordTimeEnd) {
+		query["bill_record_time_end"] = request.BillRecordTimeEnd
+	}
+
+	if !dara.IsNil(request.BillRecordTimeStart) {
+		query["bill_record_time_start"] = request.BillRecordTimeStart
 	}
 
 	if !dara.IsNil(request.OrderId) {
@@ -9410,9 +9651,11 @@ func (client *Client) HotelBillSettlementQuery(request *HotelBillSettlementQuery
 //
 // @return HotelCityCodeListResponse
 func (client *Client) HotelCityCodeListWithOptions(request *HotelCityCodeListRequest, headers *HotelCityCodeListHeaders, runtime *dara.RuntimeOptions) (_result *HotelCityCodeListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CountryCode) {
@@ -9483,9 +9726,11 @@ func (client *Client) HotelCityCodeList(request *HotelCityCodeListRequest) (_res
 //
 // @return HotelExceedApplyQueryResponse
 func (client *Client) HotelExceedApplyQueryWithOptions(request *HotelExceedApplyQueryRequest, headers *HotelExceedApplyQueryHeaders, runtime *dara.RuntimeOptions) (_result *HotelExceedApplyQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplyId) {
@@ -9560,9 +9805,11 @@ func (client *Client) HotelExceedApplyQuery(request *HotelExceedApplyQueryReques
 //
 // @return HotelGoodsQueryResponse
 func (client *Client) HotelGoodsQueryWithOptions(request *HotelGoodsQueryRequest, headers *HotelGoodsQueryHeaders, runtime *dara.RuntimeOptions) (_result *HotelGoodsQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AdultNum) {
@@ -9677,9 +9924,11 @@ func (client *Client) HotelGoodsQuery(request *HotelGoodsQueryRequest) (_result 
 //
 // @return HotelIndexInfoResponse
 func (client *Client) HotelIndexInfoWithOptions(request *HotelIndexInfoRequest, headers *HotelIndexInfoHeaders, runtime *dara.RuntimeOptions) (_result *HotelIndexInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CityCode) {
@@ -9762,9 +10011,11 @@ func (client *Client) HotelIndexInfo(request *HotelIndexInfoRequest) (_result *H
 //
 // @return HotelOrderCancelResponse
 func (client *Client) HotelOrderCancelWithOptions(request *HotelOrderCancelRequest, headers *HotelOrderCancelHeaders, runtime *dara.RuntimeOptions) (_result *HotelOrderCancelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BtripOrderId) {
@@ -9839,9 +10090,11 @@ func (client *Client) HotelOrderCancel(request *HotelOrderCancelRequest) (_resul
 //
 // @return HotelOrderChangeApplyResponse
 func (client *Client) HotelOrderChangeApplyWithOptions(tmpReq *HotelOrderChangeApplyRequest, headers *HotelOrderChangeApplyHeaders, runtime *dara.RuntimeOptions) (_result *HotelOrderChangeApplyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &HotelOrderChangeApplyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9934,9 +10187,11 @@ func (client *Client) HotelOrderChangeApply(request *HotelOrderChangeApplyReques
 //
 // @return HotelOrderChangeDetailResponse
 func (client *Client) HotelOrderChangeDetailWithOptions(request *HotelOrderChangeDetailRequest, headers *HotelOrderChangeDetailHeaders, runtime *dara.RuntimeOptions) (_result *HotelOrderChangeDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BtripUserId) {
@@ -10019,14 +10274,20 @@ func (client *Client) HotelOrderChangeDetail(request *HotelOrderChangeDetailRequ
 //
 // @return HotelOrderCreateResponse
 func (client *Client) HotelOrderCreateWithOptions(tmpReq *HotelOrderCreateRequest, headers *HotelOrderCreateHeaders, runtime *dara.RuntimeOptions) (_result *HotelOrderCreateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &HotelOrderCreateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
 	if !dara.IsNil(tmpReq.InvoiceInfo) {
 		request.InvoiceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InvoiceInfo, dara.String("invoice_info"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.MemberInfo) {
+		request.MemberInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MemberInfo, dara.String("member_info"), dara.String("json"))
 	}
 
 	if !dara.IsNil(tmpReq.OccupantInfoList) {
@@ -10084,6 +10345,10 @@ func (client *Client) HotelOrderCreateWithOptions(tmpReq *HotelOrderCreateReques
 
 	if !dara.IsNil(request.ItineraryNo) {
 		body["itinerary_no"] = request.ItineraryNo
+	}
+
+	if !dara.IsNil(request.MemberInfoShrink) {
+		body["member_info"] = request.MemberInfoShrink
 	}
 
 	if !dara.IsNil(request.OccupantInfoListShrink) {
@@ -10190,9 +10455,11 @@ func (client *Client) HotelOrderCreate(request *HotelOrderCreateRequest) (_resul
 //
 // @return HotelOrderDetailInfoResponse
 func (client *Client) HotelOrderDetailInfoWithOptions(request *HotelOrderDetailInfoRequest, headers *HotelOrderDetailInfoHeaders, runtime *dara.RuntimeOptions) (_result *HotelOrderDetailInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BtripOrderId) {
@@ -10326,9 +10593,11 @@ func (client *Client) HotelOrderInfoQuery(orderId *string) (_result *HotelOrderI
 //
 // @return HotelOrderListQueryResponse
 func (client *Client) HotelOrderListQueryWithOptions(request *HotelOrderListQueryRequest, headers *HotelOrderListQueryHeaders, runtime *dara.RuntimeOptions) (_result *HotelOrderListQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllApply) {
@@ -10443,9 +10712,11 @@ func (client *Client) HotelOrderListQuery(request *HotelOrderListQueryRequest) (
 //
 // @return HotelOrderPayResponse
 func (client *Client) HotelOrderPayWithOptions(request *HotelOrderPayRequest, headers *HotelOrderPayHeaders, runtime *dara.RuntimeOptions) (_result *HotelOrderPayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BtripOrderId) {
@@ -10540,9 +10811,11 @@ func (client *Client) HotelOrderPay(request *HotelOrderPayRequest) (_result *Hot
 //
 // @return HotelOrderPreValidateResponse
 func (client *Client) HotelOrderPreValidateWithOptions(tmpReq *HotelOrderPreValidateRequest, headers *HotelOrderPreValidateHeaders, runtime *dara.RuntimeOptions) (_result *HotelOrderPreValidateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &HotelOrderPreValidateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -10581,6 +10854,10 @@ func (client *Client) HotelOrderPreValidateWithOptions(tmpReq *HotelOrderPreVali
 
 	if !dara.IsNil(request.OccupantInfoListShrink) {
 		query["occupant_info_list"] = request.OccupantInfoListShrink
+	}
+
+	if !dara.IsNil(request.RateKey) {
+		query["rate_key"] = request.RateKey
 	}
 
 	if !dara.IsNil(request.RatePlanId) {
@@ -10671,9 +10948,11 @@ func (client *Client) HotelOrderPreValidate(request *HotelOrderPreValidateReques
 //
 // @return HotelOrderQueryResponse
 func (client *Client) HotelOrderQueryWithOptions(request *HotelOrderQueryRequest, headers *HotelOrderQueryHeaders, runtime *dara.RuntimeOptions) (_result *HotelOrderQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -10744,9 +11023,11 @@ func (client *Client) HotelOrderQuery(request *HotelOrderQueryRequest) (_result 
 //
 // @return HotelPricePullResponse
 func (client *Client) HotelPricePullWithOptions(tmpReq *HotelPricePullRequest, headers *HotelPricePullHeaders, runtime *dara.RuntimeOptions) (_result *HotelPricePullResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &HotelPricePullShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -10843,9 +11124,11 @@ func (client *Client) HotelPricePull(request *HotelPricePullRequest) (_result *H
 //
 // @return HotelRoomInfoResponse
 func (client *Client) HotelRoomInfoWithOptions(tmpReq *HotelRoomInfoRequest, headers *HotelRoomInfoHeaders, runtime *dara.RuntimeOptions) (_result *HotelRoomInfoResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &HotelRoomInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -10922,9 +11205,11 @@ func (client *Client) HotelRoomInfo(request *HotelRoomInfoRequest) (_result *Hot
 //
 // @return HotelSearchResponse
 func (client *Client) HotelSearchWithOptions(tmpReq *HotelSearchRequest, headers *HotelSearchHeaders, runtime *dara.RuntimeOptions) (_result *HotelSearchResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &HotelSearchShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11089,9 +11374,11 @@ func (client *Client) HotelSearch(request *HotelSearchRequest) (_result *HotelSe
 //
 // @return HotelStaticInfoResponse
 func (client *Client) HotelStaticInfoWithOptions(tmpReq *HotelStaticInfoRequest, headers *HotelStaticInfoHeaders, runtime *dara.RuntimeOptions) (_result *HotelStaticInfoResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &HotelStaticInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11168,9 +11455,11 @@ func (client *Client) HotelStaticInfo(request *HotelStaticInfoRequest) (_result 
 //
 // @return HotelSuggestV2Response
 func (client *Client) HotelSuggestV2WithOptions(request *HotelSuggestV2Request, headers *HotelSuggestV2Headers, runtime *dara.RuntimeOptions) (_result *HotelSuggestV2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BtripUserId) {
@@ -11251,7 +11540,7 @@ func (client *Client) HotelSuggestV2(request *HotelSuggestV2Request) (_result *H
 
 // Summary:
 //
-// 国际机票订单详情
+// # International Flight Order Details
 //
 // @param request - IFlightOrderDetailQueryRequest
 //
@@ -11261,9 +11550,11 @@ func (client *Client) HotelSuggestV2(request *HotelSuggestV2Request) (_result *H
 //
 // @return IFlightOrderDetailQueryResponse
 func (client *Client) IFlightOrderDetailQueryWithOptions(request *IFlightOrderDetailQueryRequest, headers *IFlightOrderDetailQueryHeaders, runtime *dara.RuntimeOptions) (_result *IFlightOrderDetailQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -11305,7 +11596,7 @@ func (client *Client) IFlightOrderDetailQueryWithOptions(request *IFlightOrderDe
 
 // Summary:
 //
-// 国际机票订单详情
+// # International Flight Order Details
 //
 // @param request - IFlightOrderDetailQueryRequest
 //
@@ -11334,9 +11625,11 @@ func (client *Client) IFlightOrderDetailQuery(request *IFlightOrderDetailQueryRe
 //
 // @return IFlightOrderListQueryResponse
 func (client *Client) IFlightOrderListQueryWithOptions(tmpReq *IFlightOrderListQueryRequest, headers *IFlightOrderListQueryHeaders, runtime *dara.RuntimeOptions) (_result *IFlightOrderListQueryResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &IFlightOrderListQueryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11443,6 +11736,117 @@ func (client *Client) IFlightOrderListQuery(request *IFlightOrderListQueryReques
 
 // Summary:
 //
+// 查询国际/中国港澳台用车记账数据
+//
+// @param request - IeCarBillSettlementQueryRequest
+//
+// @param headers - IeCarBillSettlementQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IeCarBillSettlementQueryResponse
+func (client *Client) IeCarBillSettlementQueryWithOptions(request *IeCarBillSettlementQueryRequest, headers *IeCarBillSettlementQueryHeaders, runtime *dara.RuntimeOptions) (_result *IeCarBillSettlementQueryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BillBatch) {
+		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillRecordTimeEnd) {
+		query["bill_record_time_end"] = request.BillRecordTimeEnd
+	}
+
+	if !dara.IsNil(request.BillRecordTimeStart) {
+		query["bill_record_time_start"] = request.BillRecordTimeStart
+	}
+
+	if !dara.IsNil(request.OrderId) {
+		query["order_id"] = request.OrderId
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["page_no"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["page_size"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PeriodEnd) {
+		query["period_end"] = request.PeriodEnd
+	}
+
+	if !dara.IsNil(request.PeriodStart) {
+		query["period_start"] = request.PeriodStart
+	}
+
+	if !dara.IsNil(request.ScrollId) {
+		query["scroll_id"] = request.ScrollId
+	}
+
+	if !dara.IsNil(request.ScrollMod) {
+		query["scroll_mod"] = request.ScrollMod
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XAcsBtripSoCorpToken) {
+		realHeaders["x-acs-btrip-so-corp-token"] = dara.String(dara.ToString(dara.StringValue(headers.XAcsBtripSoCorpToken)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("IeCarBillSettlementQuery"),
+		Version:     dara.String("2022-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/open/v1/ieCar-bill-settlement-query"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &IeCarBillSettlementQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询国际/中国港澳台用车记账数据
+//
+// @param request - IeCarBillSettlementQueryRequest
+//
+// @return IeCarBillSettlementQueryResponse
+func (client *Client) IeCarBillSettlementQuery(request *IeCarBillSettlementQueryRequest) (_result *IeCarBillSettlementQueryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &IeCarBillSettlementQueryHeaders{}
+	_result = &IeCarBillSettlementQueryResponse{}
+	_body, _err := client.IeCarBillSettlementQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询国际机票记账数据
 //
 // @param request - IeFlightBillSettlementQueryRequest
@@ -11453,13 +11857,23 @@ func (client *Client) IFlightOrderListQuery(request *IFlightOrderListQueryReques
 //
 // @return IeFlightBillSettlementQueryResponse
 func (client *Client) IeFlightBillSettlementQueryWithOptions(request *IeFlightBillSettlementQueryRequest, headers *IeFlightBillSettlementQueryHeaders, runtime *dara.RuntimeOptions) (_result *IeFlightBillSettlementQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillRecordTimeEnd) {
+		query["bill_record_time_end"] = request.BillRecordTimeEnd
+	}
+
+	if !dara.IsNil(request.BillRecordTimeStart) {
+		query["bill_record_time_start"] = request.BillRecordTimeStart
 	}
 
 	if !dara.IsNil(request.OrderId) {
@@ -11554,13 +11968,23 @@ func (client *Client) IeFlightBillSettlementQuery(request *IeFlightBillSettlemen
 //
 // @return IeHotelBillSettlementQueryResponse
 func (client *Client) IeHotelBillSettlementQueryWithOptions(request *IeHotelBillSettlementQueryRequest, headers *IeHotelBillSettlementQueryHeaders, runtime *dara.RuntimeOptions) (_result *IeHotelBillSettlementQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillRecordTimeEnd) {
+		query["bill_record_time_end"] = request.BillRecordTimeEnd
+	}
+
+	if !dara.IsNil(request.BillRecordTimeStart) {
+		query["bill_record_time_start"] = request.BillRecordTimeStart
 	}
 
 	if !dara.IsNil(request.Category) {
@@ -11659,9 +12083,11 @@ func (client *Client) IeHotelBillSettlementQuery(request *IeHotelBillSettlementQ
 //
 // @return InsInvoiceScanQueryResponse
 func (client *Client) InsInvoiceScanQueryWithOptions(request *InsInvoiceScanQueryRequest, headers *InsInvoiceScanQueryHeaders, runtime *dara.RuntimeOptions) (_result *InsInvoiceScanQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillDate) {
@@ -11748,9 +12174,11 @@ func (client *Client) InsInvoiceScanQuery(request *InsInvoiceScanQueryRequest) (
 //
 // @return InsureOrderApplyResponse
 func (client *Client) InsureOrderApplyWithOptions(request *InsureOrderApplyRequest, headers *InsureOrderApplyHeaders, runtime *dara.RuntimeOptions) (_result *InsureOrderApplyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BtripUserId) {
@@ -11845,9 +12273,11 @@ func (client *Client) InsureOrderApply(request *InsureOrderApplyRequest) (_resul
 //
 // @return InsureOrderCancelResponse
 func (client *Client) InsureOrderCancelWithOptions(insOrderId *string, request *InsureOrderCancelRequest, headers *InsureOrderCancelHeaders, runtime *dara.RuntimeOptions) (_result *InsureOrderCancelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BtripUserId) {
@@ -11930,9 +12360,11 @@ func (client *Client) InsureOrderCancel(insOrderId *string, request *InsureOrder
 //
 // @return InsureOrderCreateResponse
 func (client *Client) InsureOrderCreateWithOptions(tmpReq *InsureOrderCreateRequest, headers *InsureOrderCreateHeaders, runtime *dara.RuntimeOptions) (_result *InsureOrderCreateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &InsureOrderCreateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12045,9 +12477,11 @@ func (client *Client) InsureOrderCreate(request *InsureOrderCreateRequest) (_res
 //
 // @return InsureOrderDetailResponse
 func (client *Client) InsureOrderDetailWithOptions(request *InsureOrderDetailRequest, headers *InsureOrderDetailHeaders, runtime *dara.RuntimeOptions) (_result *InsureOrderDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BtripUserId) {
@@ -12134,9 +12568,11 @@ func (client *Client) InsureOrderDetail(request *InsureOrderDetailRequest) (_res
 //
 // @return InsureOrderPayResponse
 func (client *Client) InsureOrderPayWithOptions(insOrderId *string, request *InsureOrderPayRequest, headers *InsureOrderPayHeaders, runtime *dara.RuntimeOptions) (_result *InsureOrderPayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BtripUserId) {
@@ -12231,9 +12667,11 @@ func (client *Client) InsureOrderPay(insOrderId *string, request *InsureOrderPay
 //
 // @return InsureOrderRefundResponse
 func (client *Client) InsureOrderRefundWithOptions(insOrderId *string, tmpReq *InsureOrderRefundRequest, headers *InsureOrderRefundHeaders, runtime *dara.RuntimeOptions) (_result *InsureOrderRefundResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &InsureOrderRefundShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12397,9 +12835,11 @@ func (client *Client) InsureOrderUrlDetail(insOrderId *string) (_result *InsureO
 //
 // @return InsureRefundDetailResponse
 func (client *Client) InsureRefundDetailWithOptions(request *InsureRefundDetailRequest, headers *InsureRefundDetailHeaders, runtime *dara.RuntimeOptions) (_result *InsureRefundDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplyId) {
@@ -12494,9 +12934,11 @@ func (client *Client) InsureRefundDetail(request *InsureRefundDetailRequest) (_r
 //
 // @return IntlFlightCreateOrderResponse
 func (client *Client) IntlFlightCreateOrderWithOptions(tmpReq *IntlFlightCreateOrderRequest, headers *IntlFlightCreateOrderHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightCreateOrderResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &IntlFlightCreateOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12625,9 +13067,11 @@ func (client *Client) IntlFlightCreateOrder(request *IntlFlightCreateOrderReques
 //
 // @return IntlFlightInventoryPriceCheckResponse
 func (client *Client) IntlFlightInventoryPriceCheckWithOptions(tmpReq *IntlFlightInventoryPriceCheckRequest, headers *IntlFlightInventoryPriceCheckHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightInventoryPriceCheckResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &IntlFlightInventoryPriceCheckShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12724,9 +13168,11 @@ func (client *Client) IntlFlightInventoryPriceCheck(request *IntlFlightInventory
 //
 // @return IntlFlightListingSearchResponse
 func (client *Client) IntlFlightListingSearchWithOptions(tmpReq *IntlFlightListingSearchRequest, headers *IntlFlightListingSearchHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightListingSearchResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &IntlFlightListingSearchShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12847,9 +13293,11 @@ func (client *Client) IntlFlightListingSearch(request *IntlFlightListingSearchRe
 //
 // @return IntlFlightOrderCancelResponse
 func (client *Client) IntlFlightOrderCancelWithOptions(request *IntlFlightOrderCancelRequest, headers *IntlFlightOrderCancelHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightOrderCancelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BtripUserId) {
@@ -12936,9 +13384,11 @@ func (client *Client) IntlFlightOrderCancel(request *IntlFlightOrderCancelReques
 //
 // @return IntlFlightOrderDetailResponse
 func (client *Client) IntlFlightOrderDetailWithOptions(request *IntlFlightOrderDetailRequest, headers *IntlFlightOrderDetailHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightOrderDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BtripUserId) {
@@ -13025,9 +13475,11 @@ func (client *Client) IntlFlightOrderDetail(request *IntlFlightOrderDetailReques
 //
 // @return IntlFlightOrderPayResponse
 func (client *Client) IntlFlightOrderPayWithOptions(request *IntlFlightOrderPayRequest, headers *IntlFlightOrderPayHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightOrderPayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BtripUserId) {
@@ -13118,9 +13570,11 @@ func (client *Client) IntlFlightOrderPay(request *IntlFlightOrderPayRequest) (_r
 //
 // @return IntlFlightOrderPayCheckResponse
 func (client *Client) IntlFlightOrderPayCheckWithOptions(request *IntlFlightOrderPayCheckRequest, headers *IntlFlightOrderPayCheckHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightOrderPayCheckResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BtripUserId) {
@@ -13207,9 +13661,11 @@ func (client *Client) IntlFlightOrderPayCheck(request *IntlFlightOrderPayCheckRe
 //
 // @return IntlFlightOtaItemDetailResponse
 func (client *Client) IntlFlightOtaItemDetailWithOptions(otaItemId *string, request *IntlFlightOtaItemDetailRequest, headers *IntlFlightOtaItemDetailHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightOtaItemDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BtripUserId) {
@@ -13296,9 +13752,11 @@ func (client *Client) IntlFlightOtaItemDetail(otaItemId *string, request *IntlFl
 //
 // @return IntlFlightOtaSearchResponse
 func (client *Client) IntlFlightOtaSearchWithOptions(tmpReq *IntlFlightOtaSearchRequest, headers *IntlFlightOtaSearchHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightOtaSearchResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &IntlFlightOtaSearchShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -13403,9 +13861,11 @@ func (client *Client) IntlFlightOtaSearch(request *IntlFlightOtaSearchRequest) (
 //
 // @return IntlFlightReShopApplyResponse
 func (client *Client) IntlFlightReShopApplyWithOptions(tmpReq *IntlFlightReShopApplyRequest, headers *IntlFlightReShopApplyHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightReShopApplyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &IntlFlightReShopApplyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -13522,9 +13982,11 @@ func (client *Client) IntlFlightReShopApply(request *IntlFlightReShopApplyReques
 //
 // @return IntlFlightReShopCancelResponse
 func (client *Client) IntlFlightReShopCancelWithOptions(request *IntlFlightReShopCancelRequest, headers *IntlFlightReShopCancelHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightReShopCancelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -13607,9 +14069,11 @@ func (client *Client) IntlFlightReShopCancel(request *IntlFlightReShopCancelRequ
 //
 // @return IntlFlightReShopConsultResponse
 func (client *Client) IntlFlightReShopConsultWithOptions(request *IntlFlightReShopConsultRequest, headers *IntlFlightReShopConsultHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightReShopConsultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -13684,9 +14148,11 @@ func (client *Client) IntlFlightReShopConsult(request *IntlFlightReShopConsultRe
 //
 // @return IntlFlightReShopDetailResponse
 func (client *Client) IntlFlightReShopDetailWithOptions(request *IntlFlightReShopDetailRequest, headers *IntlFlightReShopDetailHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightReShopDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -13769,9 +14235,11 @@ func (client *Client) IntlFlightReShopDetail(request *IntlFlightReShopDetailRequ
 //
 // @return IntlFlightReShopPayResponse
 func (client *Client) IntlFlightReShopPayWithOptions(request *IntlFlightReShopPayRequest, headers *IntlFlightReShopPayHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightReShopPayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -13854,9 +14322,11 @@ func (client *Client) IntlFlightReShopPay(request *IntlFlightReShopPayRequest) (
 //
 // @return IntlFlightRefundApplyResponse
 func (client *Client) IntlFlightRefundApplyWithOptions(tmpReq *IntlFlightRefundApplyRequest, headers *IntlFlightRefundApplyHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightRefundApplyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &IntlFlightRefundApplyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -13961,9 +14431,11 @@ func (client *Client) IntlFlightRefundApply(request *IntlFlightRefundApplyReques
 //
 // @return IntlFlightRefundConsultResponse
 func (client *Client) IntlFlightRefundConsultWithOptions(request *IntlFlightRefundConsultRequest, headers *IntlFlightRefundConsultHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightRefundConsultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -14038,9 +14510,11 @@ func (client *Client) IntlFlightRefundConsult(request *IntlFlightRefundConsultRe
 //
 // @return IntlFlightRefundDetailResponse
 func (client *Client) IntlFlightRefundDetailWithOptions(request *IntlFlightRefundDetailRequest, headers *IntlFlightRefundDetailHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightRefundDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -14123,9 +14597,11 @@ func (client *Client) IntlFlightRefundDetail(request *IntlFlightRefundDetailRequ
 //
 // @return IntlFlightSegmentAvailableCertResponse
 func (client *Client) IntlFlightSegmentAvailableCertWithOptions(otaItemId *string, request *IntlFlightSegmentAvailableCertRequest, headers *IntlFlightSegmentAvailableCertHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightSegmentAvailableCertResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsvName) {
@@ -14208,9 +14684,11 @@ func (client *Client) IntlFlightSegmentAvailableCert(otaItemId *string, request 
 //
 // @return InvoiceAddResponse
 func (client *Client) InvoiceAddWithOptions(request *InvoiceAddRequest, headers *InvoiceAddHeaders, runtime *dara.RuntimeOptions) (_result *InvoiceAddResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Address) {
@@ -14223,6 +14701,10 @@ func (client *Client) InvoiceAddWithOptions(request *InvoiceAddRequest, headers 
 
 	if !dara.IsNil(request.BankNo) {
 		body["bank_no"] = request.BankNo
+	}
+
+	if !dara.IsNil(request.MailThirdPartId) {
+		body["mail_third_part_id"] = request.MailThirdPartId
 	}
 
 	if !dara.IsNil(request.TaxNo) {
@@ -14313,9 +14795,11 @@ func (client *Client) InvoiceAdd(request *InvoiceAddRequest) (_result *InvoiceAd
 //
 // @return InvoiceDeleteResponse
 func (client *Client) InvoiceDeleteWithOptions(request *InvoiceDeleteRequest, headers *InvoiceDeleteHeaders, runtime *dara.RuntimeOptions) (_result *InvoiceDeleteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ThirdPartId) {
@@ -14386,9 +14870,11 @@ func (client *Client) InvoiceDelete(request *InvoiceDeleteRequest) (_result *Inv
 //
 // @return InvoiceModifyResponse
 func (client *Client) InvoiceModifyWithOptions(request *InvoiceModifyRequest, headers *InvoiceModifyHeaders, runtime *dara.RuntimeOptions) (_result *InvoiceModifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Address) {
@@ -14401,6 +14887,10 @@ func (client *Client) InvoiceModifyWithOptions(request *InvoiceModifyRequest, he
 
 	if !dara.IsNil(request.BankNo) {
 		body["bank_no"] = request.BankNo
+	}
+
+	if !dara.IsNil(request.MailThirdPartId) {
+		body["mail_third_part_id"] = request.MailThirdPartId
 	}
 
 	if !dara.IsNil(request.TaxNo) {
@@ -14491,9 +14981,11 @@ func (client *Client) InvoiceModify(request *InvoiceModifyRequest) (_result *Inv
 //
 // @return InvoiceRuleAddResponse
 func (client *Client) InvoiceRuleAddWithOptions(tmpReq *InvoiceRuleAddRequest, headers *InvoiceRuleAddHeaders, runtime *dara.RuntimeOptions) (_result *InvoiceRuleAddResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &InvoiceRuleAddShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14574,9 +15066,11 @@ func (client *Client) InvoiceRuleAdd(request *InvoiceRuleAddRequest) (_result *I
 //
 // @return InvoiceRuleDeleteResponse
 func (client *Client) InvoiceRuleDeleteWithOptions(tmpReq *InvoiceRuleDeleteRequest, headers *InvoiceRuleDeleteHeaders, runtime *dara.RuntimeOptions) (_result *InvoiceRuleDeleteResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &InvoiceRuleDeleteShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14661,9 +15155,11 @@ func (client *Client) InvoiceRuleDelete(request *InvoiceRuleDeleteRequest) (_res
 //
 // @return InvoiceRuleSaveResponse
 func (client *Client) InvoiceRuleSaveWithOptions(tmpReq *InvoiceRuleSaveRequest, headers *InvoiceRuleSaveHeaders, runtime *dara.RuntimeOptions) (_result *InvoiceRuleSaveResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &InvoiceRuleSaveShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14752,9 +15248,11 @@ func (client *Client) InvoiceRuleSave(request *InvoiceRuleSaveRequest) (_result 
 //
 // @return InvoiceSearchResponse
 func (client *Client) InvoiceSearchWithOptions(request *InvoiceSearchRequest, headers *InvoiceSearchHeaders, runtime *dara.RuntimeOptions) (_result *InvoiceSearchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ThirdPartId) {
@@ -14833,9 +15331,11 @@ func (client *Client) InvoiceSearch(request *InvoiceSearchRequest) (_result *Inv
 //
 // @return IsvRuleSaveResponse
 func (client *Client) IsvRuleSaveWithOptions(tmpReq *IsvRuleSaveRequest, headers *IsvRuleSaveHeaders, runtime *dara.RuntimeOptions) (_result *IsvRuleSaveResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &IsvRuleSaveShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14932,9 +15432,11 @@ func (client *Client) IsvRuleSave(request *IsvRuleSaveRequest) (_result *IsvRule
 //
 // @return IsvUserSaveResponse
 func (client *Client) IsvUserSaveWithOptions(tmpReq *IsvUserSaveRequest, headers *IsvUserSaveHeaders, runtime *dara.RuntimeOptions) (_result *IsvUserSaveResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &IsvUserSaveShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -15011,9 +15513,11 @@ func (client *Client) IsvUserSave(request *IsvUserSaveRequest) (_result *IsvUser
 //
 // @return MealApplyAddResponse
 func (client *Client) MealApplyAddWithOptions(tmpReq *MealApplyAddRequest, headers *MealApplyAddHeaders, runtime *dara.RuntimeOptions) (_result *MealApplyAddResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &MealApplyAddShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -15032,6 +15536,10 @@ func (client *Client) MealApplyAddWithOptions(tmpReq *MealApplyAddRequest, heade
 
 	if !dara.IsNil(request.CostCenterId) {
 		body["cost_center_id"] = request.CostCenterId
+	}
+
+	if !dara.IsNil(request.ExtendField) {
+		body["extend_field"] = request.ExtendField
 	}
 
 	if !dara.IsNil(request.InvoiceId) {
@@ -15138,9 +15646,11 @@ func (client *Client) MealApplyAdd(request *MealApplyAddRequest) (_result *MealA
 //
 // @return MealApplyApproveResponse
 func (client *Client) MealApplyApproveWithOptions(request *MealApplyApproveRequest, headers *MealApplyApproveHeaders, runtime *dara.RuntimeOptions) (_result *MealApplyApproveResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.OperateTime) {
@@ -15227,9 +15737,11 @@ func (client *Client) MealApplyApprove(request *MealApplyApproveRequest) (_resul
 //
 // @return MealApplyQueryResponse
 func (client *Client) MealApplyQueryWithOptions(request *MealApplyQueryRequest, headers *MealApplyQueryHeaders, runtime *dara.RuntimeOptions) (_result *MealApplyQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ThirdPartApplyId) {
@@ -15300,13 +15812,23 @@ func (client *Client) MealApplyQuery(request *MealApplyQueryRequest) (_result *M
 //
 // @return MealBillSettlementQueryResponse
 func (client *Client) MealBillSettlementQueryWithOptions(request *MealBillSettlementQueryRequest, headers *MealBillSettlementQueryHeaders, runtime *dara.RuntimeOptions) (_result *MealBillSettlementQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillRecordTimeEnd) {
+		query["bill_record_time_end"] = request.BillRecordTimeEnd
+	}
+
+	if !dara.IsNil(request.BillRecordTimeStart) {
+		query["bill_record_time_start"] = request.BillRecordTimeStart
 	}
 
 	if !dara.IsNil(request.OrderId) {
@@ -15401,9 +15923,11 @@ func (client *Client) MealBillSettlementQuery(request *MealBillSettlementQueryRe
 //
 // @return MealOrderDetailQueryResponse
 func (client *Client) MealOrderDetailQueryWithOptions(orderId *string, request *MealOrderDetailQueryRequest, headers *MealOrderDetailQueryHeaders, runtime *dara.RuntimeOptions) (_result *MealOrderDetailQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.UserId) {
@@ -15474,9 +15998,11 @@ func (client *Client) MealOrderDetailQuery(orderId *string, request *MealOrderDe
 //
 // @return MealOrderListQueryResponse
 func (client *Client) MealOrderListQueryWithOptions(request *MealOrderListQueryRequest, headers *MealOrderListQueryHeaders, runtime *dara.RuntimeOptions) (_result *MealOrderListQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.UserId) {
@@ -15547,9 +16073,11 @@ func (client *Client) MealOrderListQuery(request *MealOrderListQueryRequest) (_r
 //
 // @return MonthBillConfirmResponse
 func (client *Client) MonthBillConfirmWithOptions(request *MonthBillConfirmRequest, headers *MonthBillConfirmHeaders, runtime *dara.RuntimeOptions) (_result *MonthBillConfirmResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.MailBillDate) {
@@ -15624,9 +16152,11 @@ func (client *Client) MonthBillConfirm(request *MonthBillConfirmRequest) (_resul
 //
 // @return MonthBillGetResponse
 func (client *Client) MonthBillGetWithOptions(request *MonthBillGetRequest, headers *MonthBillGetHeaders, runtime *dara.RuntimeOptions) (_result *MonthBillGetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillBatch) {
@@ -15701,9 +16231,11 @@ func (client *Client) MonthBillGet(request *MonthBillGetRequest) (_result *Month
 //
 // @return MonthBillSplitGetResponse
 func (client *Client) MonthBillSplitGetWithOptions(tmpReq *MonthBillSplitGetRequest, headers *MonthBillSplitGetHeaders, runtime *dara.RuntimeOptions) (_result *MonthBillSplitGetResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &MonthBillSplitGetShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -15792,9 +16324,11 @@ func (client *Client) MonthBillSplitGet(request *MonthBillSplitGetRequest) (_res
 //
 // @return OrderRefundDetailQueryResponse
 func (client *Client) OrderRefundDetailQueryWithOptions(request *OrderRefundDetailQueryRequest, headers *OrderRefundDetailQueryHeaders, runtime *dara.RuntimeOptions) (_result *OrderRefundDetailQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CooperatorOrderId) {
@@ -15869,9 +16403,11 @@ func (client *Client) OrderRefundDetailQuery(request *OrderRefundDetailQueryRequ
 //
 // @return ProjectAddResponse
 func (client *Client) ProjectAddWithOptions(request *ProjectAddRequest, headers *ProjectAddHeaders, runtime *dara.RuntimeOptions) (_result *ProjectAddResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Code) {
@@ -15958,9 +16494,11 @@ func (client *Client) ProjectAdd(request *ProjectAddRequest) (_result *ProjectAd
 //
 // @return ProjectDeleteResponse
 func (client *Client) ProjectDeleteWithOptions(request *ProjectDeleteRequest, headers *ProjectDeleteHeaders, runtime *dara.RuntimeOptions) (_result *ProjectDeleteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ThirdPartId) {
@@ -16031,9 +16569,11 @@ func (client *Client) ProjectDelete(request *ProjectDeleteRequest) (_result *Pro
 //
 // @return ProjectModifyResponse
 func (client *Client) ProjectModifyWithOptions(request *ProjectModifyRequest, headers *ProjectModifyHeaders, runtime *dara.RuntimeOptions) (_result *ProjectModifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Code) {
@@ -16110,6 +16650,89 @@ func (client *Client) ProjectModify(request *ProjectModifyRequest) (_result *Pro
 
 // Summary:
 //
+// 查询赔付信息
+//
+// @param request - QueryCompenInfosForOpRequest
+//
+// @param headers - QueryCompenInfosForOpHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCompenInfosForOpResponse
+func (client *Client) QueryCompenInfosForOpWithOptions(request *QueryCompenInfosForOpRequest, headers *QueryCompenInfosForOpHeaders, runtime *dara.RuntimeOptions) (_result *QueryCompenInfosForOpResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Category) {
+		query["category"] = request.Category
+	}
+
+	if !dara.IsNil(request.CompenId) {
+		query["compen_id"] = request.CompenId
+	}
+
+	if !dara.IsNil(request.OrderId) {
+		query["order_id"] = request.OrderId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XAcsBtripSoCorpToken) {
+		realHeaders["x-acs-btrip-so-corp-token"] = dara.String(dara.ToString(dara.StringValue(headers.XAcsBtripSoCorpToken)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryCompenInfosForOp"),
+		Version:     dara.String("2022-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/compen/v1/queryCompenInfosForOp"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryCompenInfosForOpResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询赔付信息
+//
+// @param request - QueryCompenInfosForOpRequest
+//
+// @return QueryCompenInfosForOpResponse
+func (client *Client) QueryCompenInfosForOp(request *QueryCompenInfosForOpRequest) (_result *QueryCompenInfosForOpResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &QueryCompenInfosForOpHeaders{}
+	_result = &QueryCompenInfosForOpResponse{}
+	_body, _err := client.QueryCompenInfosForOpWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询企业信息详情
 //
 // @param request - QueryCorpDetailInfoRequest
@@ -16120,9 +16743,11 @@ func (client *Client) ProjectModify(request *ProjectModifyRequest) (_result *Pro
 //
 // @return QueryCorpDetailInfoResponse
 func (client *Client) QueryCorpDetailInfoWithOptions(request *QueryCorpDetailInfoRequest, headers *QueryCorpDetailInfoHeaders, runtime *dara.RuntimeOptions) (_result *QueryCorpDetailInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -16201,9 +16826,11 @@ func (client *Client) QueryCorpDetailInfo(request *QueryCorpDetailInfoRequest) (
 //
 // @return QueryEmployeeDetailResponse
 func (client *Client) QueryEmployeeDetailWithOptions(request *QueryEmployeeDetailRequest, headers *QueryEmployeeDetailHeaders, runtime *dara.RuntimeOptions) (_result *QueryEmployeeDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OutEmployeeId) {
@@ -16274,9 +16901,11 @@ func (client *Client) QueryEmployeeDetail(request *QueryEmployeeDetailRequest) (
 //
 // @return QueryGroupCorpListResponse
 func (client *Client) QueryGroupCorpListWithOptions(request *QueryGroupCorpListRequest, headers *QueryGroupCorpListHeaders, runtime *dara.RuntimeOptions) (_result *QueryGroupCorpListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UserId) {
@@ -16347,9 +16976,11 @@ func (client *Client) QueryGroupCorpList(request *QueryGroupCorpListRequest) (_r
 //
 // @return QueryReimbursementOrderResponse
 func (client *Client) QueryReimbursementOrderWithOptions(request *QueryReimbursementOrderRequest, headers *QueryReimbursementOrderHeaders, runtime *dara.RuntimeOptions) (_result *QueryReimbursementOrderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ReimbOrderNo) {
@@ -16424,9 +17055,11 @@ func (client *Client) QueryReimbursementOrder(request *QueryReimbursementOrderRe
 //
 // @return SyncSingleUserResponse
 func (client *Client) SyncSingleUserWithOptions(tmpReq *SyncSingleUserRequest, headers *SyncSingleUserHeaders, runtime *dara.RuntimeOptions) (_result *SyncSingleUserResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SyncSingleUserShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -16543,9 +17176,11 @@ func (client *Client) SyncSingleUser(request *SyncSingleUserRequest) (_result *S
 //
 // @return SyncThirdUserMappingResponse
 func (client *Client) SyncThirdUserMappingWithOptions(request *SyncThirdUserMappingRequest, headers *SyncThirdUserMappingHeaders, runtime *dara.RuntimeOptions) (_result *SyncThirdUserMappingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Status) {
@@ -16746,9 +17381,11 @@ func (client *Client) TBAccountUnbind(userId *string) (_result *TBAccountUnbindR
 //
 // @return TicketChangingApplyResponse
 func (client *Client) TicketChangingApplyWithOptions(tmpReq *TicketChangingApplyRequest, headers *TicketChangingApplyHeaders, runtime *dara.RuntimeOptions) (_result *TicketChangingApplyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TicketChangingApplyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -16853,9 +17490,11 @@ func (client *Client) TicketChangingApply(request *TicketChangingApplyRequest) (
 //
 // @return TicketChangingCancelResponse
 func (client *Client) TicketChangingCancelWithOptions(request *TicketChangingCancelRequest, headers *TicketChangingCancelHeaders, runtime *dara.RuntimeOptions) (_result *TicketChangingCancelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DisOrderId) {
@@ -16930,9 +17569,11 @@ func (client *Client) TicketChangingCancel(request *TicketChangingCancelRequest)
 //
 // @return TicketChangingDetailResponse
 func (client *Client) TicketChangingDetailWithOptions(request *TicketChangingDetailRequest, headers *TicketChangingDetailHeaders, runtime *dara.RuntimeOptions) (_result *TicketChangingDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DisOrderId) {
@@ -17007,9 +17648,11 @@ func (client *Client) TicketChangingDetail(request *TicketChangingDetailRequest)
 //
 // @return TicketChangingEnquiryResponse
 func (client *Client) TicketChangingEnquiryWithOptions(request *TicketChangingEnquiryRequest, headers *TicketChangingEnquiryHeaders, runtime *dara.RuntimeOptions) (_result *TicketChangingEnquiryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ArrCity) {
@@ -17104,9 +17747,11 @@ func (client *Client) TicketChangingEnquiry(request *TicketChangingEnquiryReques
 //
 // @return TicketChangingFlightListResponse
 func (client *Client) TicketChangingFlightListWithOptions(tmpReq *TicketChangingFlightListRequest, headers *TicketChangingFlightListHeaders, runtime *dara.RuntimeOptions) (_result *TicketChangingFlightListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TicketChangingFlightListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17203,9 +17848,11 @@ func (client *Client) TicketChangingFlightList(request *TicketChangingFlightList
 //
 // @return TicketChangingPayResponse
 func (client *Client) TicketChangingPayWithOptions(tmpReq *TicketChangingPayRequest, headers *TicketChangingPayHeaders, runtime *dara.RuntimeOptions) (_result *TicketChangingPayResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TicketChangingPayShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17302,9 +17949,11 @@ func (client *Client) TicketChangingPay(request *TicketChangingPayRequest) (_res
 //
 // @return TrainApplyChangeResponse
 func (client *Client) TrainApplyChangeWithOptions(tmpReq *TrainApplyChangeRequest, headers *TrainApplyChangeHeaders, runtime *dara.RuntimeOptions) (_result *TrainApplyChangeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TrainApplyChangeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17407,9 +18056,11 @@ func (client *Client) TrainApplyChange(request *TrainApplyChangeRequest) (_resul
 //
 // @return TrainApplyRefundResponse
 func (client *Client) TrainApplyRefundWithOptions(tmpReq *TrainApplyRefundRequest, headers *TrainApplyRefundHeaders, runtime *dara.RuntimeOptions) (_result *TrainApplyRefundResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TrainApplyRefundShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17498,13 +18149,23 @@ func (client *Client) TrainApplyRefund(request *TrainApplyRefundRequest) (_resul
 //
 // @return TrainBillSettlementQueryResponse
 func (client *Client) TrainBillSettlementQueryWithOptions(request *TrainBillSettlementQueryRequest, headers *TrainBillSettlementQueryHeaders, runtime *dara.RuntimeOptions) (_result *TrainBillSettlementQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillRecordTimeEnd) {
+		query["bill_record_time_end"] = request.BillRecordTimeEnd
+	}
+
+	if !dara.IsNil(request.BillRecordTimeStart) {
+		query["bill_record_time_start"] = request.BillRecordTimeStart
 	}
 
 	if !dara.IsNil(request.OrderId) {
@@ -17599,9 +18260,11 @@ func (client *Client) TrainBillSettlementQuery(request *TrainBillSettlementQuery
 //
 // @return TrainExceedApplyQueryResponse
 func (client *Client) TrainExceedApplyQueryWithOptions(request *TrainExceedApplyQueryRequest, headers *TrainExceedApplyQueryHeaders, runtime *dara.RuntimeOptions) (_result *TrainExceedApplyQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplyId) {
@@ -17676,9 +18339,11 @@ func (client *Client) TrainExceedApplyQuery(request *TrainExceedApplyQueryReques
 //
 // @return TrainFeeCalculateChangeResponse
 func (client *Client) TrainFeeCalculateChangeWithOptions(tmpReq *TrainFeeCalculateChangeRequest, headers *TrainFeeCalculateChangeHeaders, runtime *dara.RuntimeOptions) (_result *TrainFeeCalculateChangeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TrainFeeCalculateChangeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17763,9 +18428,11 @@ func (client *Client) TrainFeeCalculateChange(request *TrainFeeCalculateChangeRe
 //
 // @return TrainFeeCalculateRefundResponse
 func (client *Client) TrainFeeCalculateRefundWithOptions(tmpReq *TrainFeeCalculateRefundRequest, headers *TrainFeeCalculateRefundHeaders, runtime *dara.RuntimeOptions) (_result *TrainFeeCalculateRefundResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TrainFeeCalculateRefundShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17850,9 +18517,11 @@ func (client *Client) TrainFeeCalculateRefund(request *TrainFeeCalculateRefundRe
 //
 // @return TrainNoInfoSearchResponse
 func (client *Client) TrainNoInfoSearchWithOptions(request *TrainNoInfoSearchRequest, headers *TrainNoInfoSearchHeaders, runtime *dara.RuntimeOptions) (_result *TrainNoInfoSearchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ArrLocation) {
@@ -17951,9 +18620,11 @@ func (client *Client) TrainNoInfoSearch(request *TrainNoInfoSearchRequest) (_res
 //
 // @return TrainNoListSearchResponse
 func (client *Client) TrainNoListSearchWithOptions(tmpReq *TrainNoListSearchRequest, headers *TrainNoListSearchHeaders, runtime *dara.RuntimeOptions) (_result *TrainNoListSearchResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TrainNoListSearchShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -18046,9 +18717,11 @@ func (client *Client) TrainNoListSearch(request *TrainNoListSearchRequest) (_res
 //
 // @return TrainOrderCancelResponse
 func (client *Client) TrainOrderCancelWithOptions(request *TrainOrderCancelRequest, headers *TrainOrderCancelHeaders, runtime *dara.RuntimeOptions) (_result *TrainOrderCancelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ChangeOrderId) {
@@ -18131,9 +18804,11 @@ func (client *Client) TrainOrderCancel(request *TrainOrderCancelRequest) (_resul
 //
 // @return TrainOrderChangeConfirmResponse
 func (client *Client) TrainOrderChangeConfirmWithOptions(request *TrainOrderChangeConfirmRequest, headers *TrainOrderChangeConfirmHeaders, runtime *dara.RuntimeOptions) (_result *TrainOrderChangeConfirmResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ChangeApplyId) {
@@ -18220,9 +18895,11 @@ func (client *Client) TrainOrderChangeConfirm(request *TrainOrderChangeConfirmRe
 //
 // @return TrainOrderCreateResponse
 func (client *Client) TrainOrderCreateWithOptions(tmpReq *TrainOrderCreateRequest, headers *TrainOrderCreateHeaders, runtime *dara.RuntimeOptions) (_result *TrainOrderCreateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TrainOrderCreateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -18347,9 +19024,11 @@ func (client *Client) TrainOrderCreate(request *TrainOrderCreateRequest) (_resul
 //
 // @return TrainOrderDetailQueryResponse
 func (client *Client) TrainOrderDetailQueryWithOptions(request *TrainOrderDetailQueryRequest, headers *TrainOrderDetailQueryHeaders, runtime *dara.RuntimeOptions) (_result *TrainOrderDetailQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -18424,9 +19103,11 @@ func (client *Client) TrainOrderDetailQuery(request *TrainOrderDetailQueryReques
 //
 // @return TrainOrderListQueryResponse
 func (client *Client) TrainOrderListQueryWithOptions(request *TrainOrderListQueryRequest, headers *TrainOrderListQueryHeaders, runtime *dara.RuntimeOptions) (_result *TrainOrderListQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllApply) {
@@ -18537,9 +19218,11 @@ func (client *Client) TrainOrderListQuery(request *TrainOrderListQueryRequest) (
 //
 // @return TrainOrderPayResponse
 func (client *Client) TrainOrderPayWithOptions(request *TrainOrderPayRequest, headers *TrainOrderPayHeaders, runtime *dara.RuntimeOptions) (_result *TrainOrderPayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -18618,9 +19301,11 @@ func (client *Client) TrainOrderPay(request *TrainOrderPayRequest) (_result *Tra
 //
 // @return TrainOrderQueryResponse
 func (client *Client) TrainOrderQueryWithOptions(request *TrainOrderQueryRequest, headers *TrainOrderQueryHeaders, runtime *dara.RuntimeOptions) (_result *TrainOrderQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -18695,9 +19380,11 @@ func (client *Client) TrainOrderQuery(request *TrainOrderQueryRequest) (_result 
 //
 // @return TrainOrderQueryV2Response
 func (client *Client) TrainOrderQueryV2WithOptions(request *TrainOrderQueryV2Request, headers *TrainOrderQueryV2Headers, runtime *dara.RuntimeOptions) (_result *TrainOrderQueryV2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -18772,9 +19459,11 @@ func (client *Client) TrainOrderQueryV2(request *TrainOrderQueryV2Request) (_res
 //
 // @return TrainStationSearchResponse
 func (client *Client) TrainStationSearchWithOptions(request *TrainStationSearchRequest, headers *TrainStationSearchHeaders, runtime *dara.RuntimeOptions) (_result *TrainStationSearchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -18845,9 +19534,11 @@ func (client *Client) TrainStationSearch(request *TrainStationSearchRequest) (_r
 //
 // @return TrainStopoverSearchResponse
 func (client *Client) TrainStopoverSearchWithOptions(request *TrainStopoverSearchRequest, headers *TrainStopoverSearchHeaders, runtime *dara.RuntimeOptions) (_result *TrainStopoverSearchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ArrStation) {
@@ -18930,9 +19621,11 @@ func (client *Client) TrainStopoverSearch(request *TrainStopoverSearchRequest) (
 //
 // @return TrainTicketScanQueryResponse
 func (client *Client) TrainTicketScanQueryWithOptions(request *TrainTicketScanQueryRequest, headers *TrainTicketScanQueryHeaders, runtime *dara.RuntimeOptions) (_result *TrainTicketScanQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillDate) {
@@ -18943,8 +19636,20 @@ func (client *Client) TrainTicketScanQueryWithOptions(request *TrainTicketScanQu
 		query["bill_id"] = request.BillId
 	}
 
+	if !dara.IsNil(request.InvoiceDateEnd) {
+		query["invoice_date_end"] = request.InvoiceDateEnd
+	}
+
+	if !dara.IsNil(request.InvoiceDateStart) {
+		query["invoice_date_start"] = request.InvoiceDateStart
+	}
+
 	if !dara.IsNil(request.InvoiceSubTaskId) {
 		query["invoice_sub_task_id"] = request.InvoiceSubTaskId
+	}
+
+	if !dara.IsNil(request.OrderId) {
+		query["order_id"] = request.OrderId
 	}
 
 	if !dara.IsNil(request.PageNo) {
@@ -19027,9 +19732,11 @@ func (client *Client) TrainTicketScanQuery(request *TrainTicketScanQueryRequest)
 //
 // @return TravelStandardListQueryResponse
 func (client *Client) TravelStandardListQueryWithOptions(request *TravelStandardListQueryRequest, headers *TravelStandardListQueryHeaders, runtime *dara.RuntimeOptions) (_result *TravelStandardListQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FromGroup) {
@@ -19112,9 +19819,11 @@ func (client *Client) TravelStandardListQuery(request *TravelStandardListQueryRe
 //
 // @return TravelStandardQueryResponse
 func (client *Client) TravelStandardQueryWithOptions(tmpReq *TravelStandardQueryRequest, headers *TravelStandardQueryHeaders, runtime *dara.RuntimeOptions) (_result *TravelStandardQueryResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TravelStandardQueryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19199,9 +19908,11 @@ func (client *Client) TravelStandardQuery(request *TravelStandardQueryRequest) (
 //
 // @return TravelStandardRelateAddResponse
 func (client *Client) TravelStandardRelateAddWithOptions(tmpReq *TravelStandardRelateAddRequest, headers *TravelStandardRelateAddHeaders, runtime *dara.RuntimeOptions) (_result *TravelStandardRelateAddResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TravelStandardRelateAddShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19286,9 +19997,11 @@ func (client *Client) TravelStandardRelateAdd(request *TravelStandardRelateAddRe
 //
 // @return TravelStandardRelateDeleteResponse
 func (client *Client) TravelStandardRelateDeleteWithOptions(tmpReq *TravelStandardRelateDeleteRequest, headers *TravelStandardRelateDeleteHeaders, runtime *dara.RuntimeOptions) (_result *TravelStandardRelateDeleteResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TravelStandardRelateDeleteShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19373,9 +20086,11 @@ func (client *Client) TravelStandardRelateDelete(request *TravelStandardRelateDe
 //
 // @return TravelStandardRelateQueryResponse
 func (client *Client) TravelStandardRelateQueryWithOptions(request *TravelStandardRelateQueryRequest, headers *TravelStandardRelateQueryHeaders, runtime *dara.RuntimeOptions) (_result *TravelStandardRelateQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FromGroup) {
@@ -19450,9 +20165,11 @@ func (client *Client) TravelStandardRelateQuery(request *TravelStandardRelateQue
 //
 // @return TravelStandardScopeSaveResponse
 func (client *Client) TravelStandardScopeSaveWithOptions(request *TravelStandardScopeSaveRequest, headers *TravelStandardScopeSaveHeaders, runtime *dara.RuntimeOptions) (_result *TravelStandardScopeSaveResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FromGroup) {
@@ -19531,9 +20248,11 @@ func (client *Client) TravelStandardScopeSave(request *TravelStandardScopeSaveRe
 //
 // @return TripBusinessInstanceQueryResponse
 func (client *Client) TripBusinessInstanceQueryWithOptions(request *TripBusinessInstanceQueryRequest, headers *TripBusinessInstanceQueryHeaders, runtime *dara.RuntimeOptions) (_result *TripBusinessInstanceQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessInstanceId) {
@@ -19616,9 +20335,11 @@ func (client *Client) TripBusinessInstanceQuery(request *TripBusinessInstanceQue
 //
 // @return TripCCInfoQueryResponse
 func (client *Client) TripCCInfoQueryWithOptions(request *TripCCInfoQueryRequest, headers *TripCCInfoQueryHeaders, runtime *dara.RuntimeOptions) (_result *TripCCInfoQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessInstanceId) {
@@ -19697,9 +20418,11 @@ func (client *Client) TripCCInfoQuery(request *TripCCInfoQueryRequest) (_result 
 //
 // @return TripTaskQueryResponse
 func (client *Client) TripTaskQueryWithOptions(request *TripTaskQueryRequest, headers *TripTaskQueryHeaders, runtime *dara.RuntimeOptions) (_result *TripTaskQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessInstanceId) {
@@ -19782,9 +20505,11 @@ func (client *Client) TripTaskQuery(request *TripTaskQueryRequest) (_result *Tri
 //
 // @return UpdateCustomRoleResponse
 func (client *Client) UpdateCustomRoleWithOptions(request *UpdateCustomRoleRequest, headers *UpdateCustomRoleHeaders, runtime *dara.RuntimeOptions) (_result *UpdateCustomRoleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RoleId) {
@@ -19859,9 +20584,11 @@ func (client *Client) UpdateCustomRole(request *UpdateCustomRoleRequest) (_resul
 //
 // @return UpdateDepartmentResponse
 func (client *Client) UpdateDepartmentWithOptions(tmpReq *UpdateDepartmentRequest, headers *UpdateDepartmentHeaders, runtime *dara.RuntimeOptions) (_result *UpdateDepartmentResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateDepartmentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19950,9 +20677,11 @@ func (client *Client) UpdateDepartment(request *UpdateDepartmentRequest) (_resul
 //
 // @return UpdateEmployeeResponse
 func (client *Client) UpdateEmployeeWithOptions(tmpReq *UpdateEmployeeRequest, headers *UpdateEmployeeHeaders, runtime *dara.RuntimeOptions) (_result *UpdateEmployeeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateEmployeeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -20133,9 +20862,11 @@ func (client *Client) UpdateEmployee(request *UpdateEmployeeRequest) (_result *U
 //
 // @return UpdateEmployeeLeaveStatusResponse
 func (client *Client) UpdateEmployeeLeaveStatusWithOptions(request *UpdateEmployeeLeaveStatusRequest, headers *UpdateEmployeeLeaveStatusHeaders, runtime *dara.RuntimeOptions) (_result *UpdateEmployeeLeaveStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.IsLeave) {
@@ -20210,9 +20941,11 @@ func (client *Client) UpdateEmployeeLeaveStatus(request *UpdateEmployeeLeaveStat
 //
 // @return UserQueryResponse
 func (client *Client) UserQueryWithOptions(request *UserQueryRequest, headers *UserQueryHeaders, runtime *dara.RuntimeOptions) (_result *UserQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ModifiedTimeGreaterOrEqualThan) {
@@ -20295,13 +21028,23 @@ func (client *Client) UserQuery(request *UserQueryRequest) (_result *UserQueryRe
 //
 // @return VasBillSettlementQueryResponse
 func (client *Client) VasBillSettlementQueryWithOptions(request *VasBillSettlementQueryRequest, headers *VasBillSettlementQueryHeaders, runtime *dara.RuntimeOptions) (_result *VasBillSettlementQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillRecordTimeEnd) {
+		query["bill_record_time_end"] = request.BillRecordTimeEnd
+	}
+
+	if !dara.IsNil(request.BillRecordTimeStart) {
+		query["bill_record_time_start"] = request.BillRecordTimeStart
 	}
 
 	if !dara.IsNil(request.CooperatorId) {
@@ -20400,9 +21143,11 @@ func (client *Client) VasBillSettlementQuery(request *VasBillSettlementQueryRequ
 //
 // @return VatInvoiceScanQueryResponse
 func (client *Client) VatInvoiceScanQueryWithOptions(request *VatInvoiceScanQueryRequest, headers *VatInvoiceScanQueryHeaders, runtime *dara.RuntimeOptions) (_result *VatInvoiceScanQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillDate) {
@@ -20489,9 +21234,11 @@ func (client *Client) VatInvoiceScanQuery(request *VatInvoiceScanQueryRequest) (
 //
 // @return WaitApplyInvoiceTaskDetailQueryResponse
 func (client *Client) WaitApplyInvoiceTaskDetailQueryWithOptions(request *WaitApplyInvoiceTaskDetailQueryRequest, headers *WaitApplyInvoiceTaskDetailQueryHeaders, runtime *dara.RuntimeOptions) (_result *WaitApplyInvoiceTaskDetailQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillDate) {

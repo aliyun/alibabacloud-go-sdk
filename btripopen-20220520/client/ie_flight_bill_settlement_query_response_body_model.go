@@ -122,7 +122,12 @@ func (s *IeFlightBillSettlementQueryResponseBody) SetTraceId(v string) *IeFlight
 }
 
 func (s *IeFlightBillSettlementQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IeFlightBillSettlementQueryResponseBodyModule struct {
@@ -222,7 +227,16 @@ func (s *IeFlightBillSettlementQueryResponseBodyModule) SetTotalNum(v int64) *Ie
 }
 
 func (s *IeFlightBillSettlementQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.DataList != nil {
+		for _, item := range s.DataList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IeFlightBillSettlementQueryResponseBodyModuleDataList struct {
@@ -443,6 +457,7 @@ type IeFlightBillSettlementQueryResponseBodyModuleDataList struct {
 	//
 	// 410
 	SealPrice   *float64 `json:"seal_price,omitempty" xml:"seal_price,omitempty"`
+	SegmentList *string  `json:"segment_list,omitempty" xml:"segment_list,omitempty"`
 	SegmentType *string  `json:"segment_type,omitempty" xml:"segment_type,omitempty"`
 	// example:
 	//
@@ -894,6 +909,10 @@ func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetRepeatRefund(
 
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetSealPrice() *float64 {
 	return s.SealPrice
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetSegmentList() *string {
+	return s.SegmentList
 }
 
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetSegmentType() *string {
@@ -1466,6 +1485,11 @@ func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetRepeatRefund(
 
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetSealPrice(v float64) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
 	s.SealPrice = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetSegmentList(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.SegmentList = &v
 	return s
 }
 

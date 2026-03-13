@@ -59,5 +59,10 @@ func (s *AddEmployeeResponse) SetBody(v *AddEmployeeResponseBody) *AddEmployeeRe
 }
 
 func (s *AddEmployeeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

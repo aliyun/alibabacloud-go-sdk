@@ -112,7 +112,12 @@ func (s *MealOrderListQueryResponseBody) SetTraceId(v string) *MealOrderListQuer
 }
 
 func (s *MealOrderListQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MealOrderListQueryResponseBodyModule struct {
@@ -137,7 +142,16 @@ func (s *MealOrderListQueryResponseBodyModule) SetOrderList(v []*MealOrderListQu
 }
 
 func (s *MealOrderListQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.OrderList != nil {
+		for _, item := range s.OrderList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type MealOrderListQueryResponseBodyModuleOrderList struct {

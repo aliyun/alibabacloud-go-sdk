@@ -346,7 +346,12 @@ func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue)
 }
 
 func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) Validate() error {
-	return dara.Validate(s)
+	if s.PriceShowInfo != nil {
+		if err := s.PriceShowInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValuePriceShowInfo struct {

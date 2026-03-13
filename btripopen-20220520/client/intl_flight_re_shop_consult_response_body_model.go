@@ -110,7 +110,12 @@ func (s *IntlFlightReShopConsultResponseBody) SetTraceId(v string) *IntlFlightRe
 }
 
 func (s *IntlFlightReShopConsultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IntlFlightReShopConsultResponseBodyModule struct {
@@ -135,7 +140,16 @@ func (s *IntlFlightReShopConsultResponseBodyModule) SetPassengerJourneyGroupInfo
 }
 
 func (s *IntlFlightReShopConsultResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.PassengerJourneyGroupInfoList != nil {
+		for _, item := range s.PassengerJourneyGroupInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IntlFlightReShopConsultResponseBodyModulePassengerJourneyGroupInfoList struct {
@@ -200,7 +214,43 @@ func (s *IntlFlightReShopConsultResponseBodyModulePassengerJourneyGroupInfoList)
 }
 
 func (s *IntlFlightReShopConsultResponseBodyModulePassengerJourneyGroupInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.PassengerList != nil {
+		for _, item := range s.PassengerList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PassengerSegmentStatusInfoList != nil {
+		for _, item := range s.PassengerSegmentStatusInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ReShopReasonInfoList != nil {
+		for _, item := range s.ReShopReasonInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SegmentList != nil {
+		for _, item := range s.SegmentList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IntlFlightReShopConsultResponseBodyModulePassengerJourneyGroupInfoListPassengerList struct {

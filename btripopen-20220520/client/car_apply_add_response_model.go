@@ -59,5 +59,10 @@ func (s *CarApplyAddResponse) SetBody(v *CarApplyAddResponseBody) *CarApplyAddRe
 }
 
 func (s *CarApplyAddResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

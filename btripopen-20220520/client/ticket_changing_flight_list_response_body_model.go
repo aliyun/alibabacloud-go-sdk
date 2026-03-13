@@ -107,7 +107,12 @@ func (s *TicketChangingFlightListResponseBody) SetTraceId(v string) *TicketChang
 }
 
 func (s *TicketChangingFlightListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TicketChangingFlightListResponseBodyModule struct {
@@ -132,7 +137,16 @@ func (s *TicketChangingFlightListResponseBodyModule) SetFlightInfoList(v []*Tick
 }
 
 func (s *TicketChangingFlightListResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.FlightInfoList != nil {
+		for _, item := range s.FlightInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TicketChangingFlightListResponseBodyModuleFlightInfoList struct {
@@ -442,7 +456,40 @@ func (s *TicketChangingFlightListResponseBodyModuleFlightInfoList) SetStopDepTim
 }
 
 func (s *TicketChangingFlightListResponseBodyModuleFlightInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.AirlineInfo != nil {
+		if err := s.AirlineInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ArrAirportInfo != nil {
+		if err := s.ArrAirportInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CabinList != nil {
+		for _, item := range s.CabinList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DepAirportInfo != nil {
+		if err := s.DepAirportInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LowestCabinPrice != nil {
+		for _, item := range s.LowestCabinPrice {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TicketChangingFlightListResponseBodyModuleFlightInfoListAirlineInfo struct {
@@ -677,7 +724,16 @@ func (s *TicketChangingFlightListResponseBodyModuleFlightInfoListCabinList) SetO
 }
 
 func (s *TicketChangingFlightListResponseBodyModuleFlightInfoListCabinList) Validate() error {
-	return dara.Validate(s)
+	if s.ModifyPriceList != nil {
+		for _, item := range s.ModifyPriceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TicketChangingFlightListResponseBodyModuleFlightInfoListCabinListModifyPriceList struct {

@@ -11,6 +11,10 @@ type iCooperatorHotelBillSettlementQueryRequest interface {
 	GoString() string
 	SetBillBatch(v string) *CooperatorHotelBillSettlementQueryRequest
 	GetBillBatch() *string
+	SetBillRecordTimeEnd(v string) *CooperatorHotelBillSettlementQueryRequest
+	GetBillRecordTimeEnd() *string
+	SetBillRecordTimeStart(v string) *CooperatorHotelBillSettlementQueryRequest
+	GetBillRecordTimeStart() *string
 	SetCooperatorId(v string) *CooperatorHotelBillSettlementQueryRequest
 	GetCooperatorId() *string
 	SetOrderId(v int64) *CooperatorHotelBillSettlementQueryRequest
@@ -30,7 +34,9 @@ type iCooperatorHotelBillSettlementQueryRequest interface {
 }
 
 type CooperatorHotelBillSettlementQueryRequest struct {
-	BillBatch *string `json:"bill_batch,omitempty" xml:"bill_batch,omitempty"`
+	BillBatch           *string `json:"bill_batch,omitempty" xml:"bill_batch,omitempty"`
+	BillRecordTimeEnd   *string `json:"bill_record_time_end,omitempty" xml:"bill_record_time_end,omitempty"`
+	BillRecordTimeStart *string `json:"bill_record_time_start,omitempty" xml:"bill_record_time_start,omitempty"`
 	// example:
 	//
 	// cooperator_alibtrip
@@ -72,6 +78,14 @@ func (s *CooperatorHotelBillSettlementQueryRequest) GetBillBatch() *string {
 	return s.BillBatch
 }
 
+func (s *CooperatorHotelBillSettlementQueryRequest) GetBillRecordTimeEnd() *string {
+	return s.BillRecordTimeEnd
+}
+
+func (s *CooperatorHotelBillSettlementQueryRequest) GetBillRecordTimeStart() *string {
+	return s.BillRecordTimeStart
+}
+
 func (s *CooperatorHotelBillSettlementQueryRequest) GetCooperatorId() *string {
 	return s.CooperatorId
 }
@@ -106,6 +120,16 @@ func (s *CooperatorHotelBillSettlementQueryRequest) GetScrollMod() *bool {
 
 func (s *CooperatorHotelBillSettlementQueryRequest) SetBillBatch(v string) *CooperatorHotelBillSettlementQueryRequest {
 	s.BillBatch = &v
+	return s
+}
+
+func (s *CooperatorHotelBillSettlementQueryRequest) SetBillRecordTimeEnd(v string) *CooperatorHotelBillSettlementQueryRequest {
+	s.BillRecordTimeEnd = &v
+	return s
+}
+
+func (s *CooperatorHotelBillSettlementQueryRequest) SetBillRecordTimeStart(v string) *CooperatorHotelBillSettlementQueryRequest {
+	s.BillRecordTimeStart = &v
 	return s
 }
 

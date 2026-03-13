@@ -124,7 +124,16 @@ func (s *CostCenterQueryResponseBody) SetTraceId(v string) *CostCenterQueryRespo
 }
 
 func (s *CostCenterQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		for _, item := range s.Module {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CostCenterQueryResponseBodyModule struct {
@@ -262,7 +271,16 @@ func (s *CostCenterQueryResponseBodyModule) SetTitle(v string) *CostCenterQueryR
 }
 
 func (s *CostCenterQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.EntityDOS != nil {
+		for _, item := range s.EntityDOS {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CostCenterQueryResponseBodyModuleEntityDOS struct {

@@ -83,7 +83,12 @@ func (s *CorpAuthLinkInfoQueryResponseBody) SetTraceId(v string) *CorpAuthLinkIn
 }
 
 func (s *CorpAuthLinkInfoQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CorpAuthLinkInfoQueryResponseBodyModule struct {
@@ -118,7 +123,21 @@ func (s *CorpAuthLinkInfoQueryResponseBodyModule) SetOrgCorp(v *CorpAuthLinkInfo
 }
 
 func (s *CorpAuthLinkInfoQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.LinkCorps != nil {
+		for _, item := range s.LinkCorps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OrgCorp != nil {
+		if err := s.OrgCorp.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CorpAuthLinkInfoQueryResponseBodyModuleLinkCorps struct {

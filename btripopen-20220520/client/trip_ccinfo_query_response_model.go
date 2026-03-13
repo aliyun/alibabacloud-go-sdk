@@ -59,5 +59,10 @@ func (s *TripCCInfoQueryResponse) SetBody(v *TripCCInfoQueryResponseBody) *TripC
 }
 
 func (s *TripCCInfoQueryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

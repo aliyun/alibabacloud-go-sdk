@@ -109,7 +109,16 @@ func (s *InvoiceSearchResponseBody) SetTraceId(v string) *InvoiceSearchResponseB
 }
 
 func (s *InvoiceSearchResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		for _, item := range s.Module {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InvoiceSearchResponseBodyModule struct {

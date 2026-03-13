@@ -159,7 +159,21 @@ func (s *FlightCreateOrderV2Request) SetTravelers(v []*FlightCreateOrderV2Reques
 }
 
 func (s *FlightCreateOrderV2Request) Validate() error {
-	return dara.Validate(s)
+	if s.ContactInfo != nil {
+		if err := s.ContactInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Travelers != nil {
+		for _, item := range s.Travelers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightCreateOrderV2RequestContactInfo struct {

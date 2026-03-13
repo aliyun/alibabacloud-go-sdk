@@ -35,7 +35,12 @@ func (s *ModuleGroupItemSubItemsShoppingItemMapValue) SetSearchPrice(v *ModuleGr
 }
 
 func (s *ModuleGroupItemSubItemsShoppingItemMapValue) Validate() error {
-	return dara.Validate(s)
+	if s.SearchPrice != nil {
+		if err := s.SearchPrice.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModuleGroupItemSubItemsShoppingItemMapValueSearchPrice struct {

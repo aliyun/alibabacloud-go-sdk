@@ -109,7 +109,12 @@ func (s *TravelStandardQueryResponseBody) SetTraceId(v string) *TravelStandardQu
 }
 
 func (s *TravelStandardQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TravelStandardQueryResponseBodyModule struct {
@@ -144,7 +149,12 @@ func (s *TravelStandardQueryResponseBodyModule) SetReserveRule(v *TravelStandard
 }
 
 func (s *TravelStandardQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.ReserveRule != nil {
+		if err := s.ReserveRule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TravelStandardQueryResponseBodyModuleReserveRule struct {
@@ -179,7 +189,21 @@ func (s *TravelStandardQueryResponseBodyModuleReserveRule) SetModuleConfigList(v
 }
 
 func (s *TravelStandardQueryResponseBodyModuleReserveRule) Validate() error {
-	return dara.Validate(s)
+	if s.MainReserveRule != nil {
+		if err := s.MainReserveRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ModuleConfigList != nil {
+		for _, item := range s.ModuleConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TravelStandardQueryResponseBodyModuleReserveRuleMainReserveRule struct {

@@ -107,7 +107,12 @@ func (s *InsureOrderApplyResponseBody) SetTraceId(v string) *InsureOrderApplyRes
 }
 
 func (s *InsureOrderApplyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InsureOrderApplyResponseBodyModule struct {
@@ -145,7 +150,16 @@ func (s *InsureOrderApplyResponseBodyModule) SetInsOrderPolicyList(v []*InsureOr
 }
 
 func (s *InsureOrderApplyResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.InsOrderPolicyList != nil {
+		for _, item := range s.InsOrderPolicyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InsureOrderApplyResponseBodyModuleInsOrderPolicyList struct {

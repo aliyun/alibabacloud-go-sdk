@@ -107,7 +107,12 @@ func (s *TicketChangingEnquiryResponseBody) SetTraceId(v string) *TicketChanging
 }
 
 func (s *TicketChangingEnquiryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TicketChangingEnquiryResponseBodyModule struct {
@@ -132,7 +137,16 @@ func (s *TicketChangingEnquiryResponseBodyModule) SetFlightInfoList(v []*TicketC
 }
 
 func (s *TicketChangingEnquiryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.FlightInfoList != nil {
+		for _, item := range s.FlightInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TicketChangingEnquiryResponseBodyModuleFlightInfoList struct {
@@ -363,7 +377,40 @@ func (s *TicketChangingEnquiryResponseBodyModuleFlightInfoList) SetSessionId(v s
 }
 
 func (s *TicketChangingEnquiryResponseBodyModuleFlightInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.AirlineInfo != nil {
+		if err := s.AirlineInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ArrAirportInfo != nil {
+		if err := s.ArrAirportInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CabinList != nil {
+		for _, item := range s.CabinList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DepAirportInfo != nil {
+		if err := s.DepAirportInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LowestCabinPrice != nil {
+		for _, item := range s.LowestCabinPrice {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TicketChangingEnquiryResponseBodyModuleFlightInfoListAirlineInfo struct {
@@ -608,7 +655,21 @@ func (s *TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinList) SetOtaI
 }
 
 func (s *TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinList) Validate() error {
-	return dara.Validate(s)
+	if s.ChangeOtaItemRuleRq != nil {
+		if err := s.ChangeOtaItemRuleRq.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ModifyPriceList != nil {
+		for _, item := range s.ModifyPriceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOtaItemRuleRq struct {
@@ -653,7 +714,34 @@ func (s *TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOta
 }
 
 func (s *TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOtaItemRuleRq) Validate() error {
-	return dara.Validate(s)
+	if s.BaggageDetails != nil {
+		for _, item := range s.BaggageDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ChangeDetails != nil {
+		for _, item := range s.ChangeDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RefundDetails != nil {
+		for _, item := range s.RefundDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOtaItemRuleRqBaggageDetails struct {
@@ -734,7 +822,21 @@ func (s *TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOta
 }
 
 func (s *TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOtaItemRuleRqBaggageDetails) Validate() error {
-	return dara.Validate(s)
+	if s.BaggageSubItems != nil {
+		for _, item := range s.BaggageSubItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tips != nil {
+		if err := s.Tips.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOtaItemRuleRqBaggageDetailsBaggageSubItems struct {
@@ -829,7 +931,25 @@ func (s *TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOta
 }
 
 func (s *TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOtaItemRuleRqBaggageDetailsBaggageSubItems) Validate() error {
-	return dara.Validate(s)
+	if s.BaggageSubContentVisualizes != nil {
+		for _, item := range s.BaggageSubContentVisualizes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BaggageSubContents != nil {
+		for _, item := range s.BaggageSubContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOtaItemRuleRqBaggageDetailsBaggageSubItemsBaggageSubContentVisualizes struct {
@@ -910,7 +1030,17 @@ func (s *TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOta
 }
 
 func (s *TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOtaItemRuleRqBaggageDetailsBaggageSubItemsBaggageSubContentVisualizes) Validate() error {
-	return dara.Validate(s)
+	if s.Description != nil {
+		if err := s.Description.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImageDO != nil {
+		if err := s.ImageDO.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOtaItemRuleRqBaggageDetailsBaggageSubItemsBaggageSubContentVisualizesDescription struct {
@@ -1228,7 +1358,25 @@ func (s *TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOta
 }
 
 func (s *TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOtaItemRuleRqChangeDetails) Validate() error {
-	return dara.Validate(s)
+	if s.ExtraContents != nil {
+		for _, item := range s.ExtraContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RefundSubItems != nil {
+		for _, item := range s.RefundSubItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOtaItemRuleRqChangeDetailsExtraContents struct {
@@ -1350,7 +1498,16 @@ func (s *TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOta
 }
 
 func (s *TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOtaItemRuleRqChangeDetailsRefundSubItems) Validate() error {
-	return dara.Validate(s)
+	if s.RefundSubContents != nil {
+		for _, item := range s.RefundSubContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOtaItemRuleRqChangeDetailsRefundSubItemsRefundSubContents struct {
@@ -1479,7 +1636,25 @@ func (s *TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOta
 }
 
 func (s *TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOtaItemRuleRqRefundDetails) Validate() error {
-	return dara.Validate(s)
+	if s.ExtraContents != nil {
+		for _, item := range s.ExtraContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RefundSubItems != nil {
+		for _, item := range s.RefundSubItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOtaItemRuleRqRefundDetailsExtraContents struct {
@@ -1601,7 +1776,16 @@ func (s *TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOta
 }
 
 func (s *TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOtaItemRuleRqRefundDetailsRefundSubItems) Validate() error {
-	return dara.Validate(s)
+	if s.RefundSubContents != nil {
+		for _, item := range s.RefundSubContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOtaItemRuleRqRefundDetailsRefundSubItemsRefundSubContents struct {

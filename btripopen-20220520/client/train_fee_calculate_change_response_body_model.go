@@ -110,7 +110,12 @@ func (s *TrainFeeCalculateChangeResponseBody) SetTraceId(v string) *TrainFeeCalc
 }
 
 func (s *TrainFeeCalculateChangeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrainFeeCalculateChangeResponseBodyModule struct {
@@ -161,7 +166,16 @@ func (s *TrainFeeCalculateChangeResponseBodyModule) SetOrderId(v string) *TrainF
 }
 
 func (s *TrainFeeCalculateChangeResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.ChangeTrainDetails != nil {
+		for _, item := range s.ChangeTrainDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainFeeCalculateChangeResponseBodyModuleChangeTrainDetails struct {
@@ -238,7 +252,16 @@ func (s *TrainFeeCalculateChangeResponseBodyModuleChangeTrainDetails) SetTrainNo
 }
 
 func (s *TrainFeeCalculateChangeResponseBodyModuleChangeTrainDetails) Validate() error {
-	return dara.Validate(s)
+	if s.ChangeTicketDetails != nil {
+		for _, item := range s.ChangeTicketDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TrainFeeCalculateChangeResponseBodyModuleChangeTrainDetailsChangeTicketDetails struct {
@@ -341,7 +364,12 @@ func (s *TrainFeeCalculateChangeResponseBodyModuleChangeTrainDetailsChangeTicket
 }
 
 func (s *TrainFeeCalculateChangeResponseBodyModuleChangeTrainDetailsChangeTicketDetails) Validate() error {
-	return dara.Validate(s)
+	if s.PassengerInfo != nil {
+		if err := s.PassengerInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrainFeeCalculateChangeResponseBodyModuleChangeTrainDetailsChangeTicketDetailsPassengerInfo struct {

@@ -107,7 +107,12 @@ func (s *InsureOrderCreateResponseBody) SetTraceId(v string) *InsureOrderCreateR
 }
 
 func (s *InsureOrderCreateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InsureOrderCreateResponseBodyModule struct {
@@ -171,7 +176,16 @@ func (s *InsureOrderCreateResponseBodyModule) SetPremium(v int64) *InsureOrderCr
 }
 
 func (s *InsureOrderCreateResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.InsureOrderDetailList != nil {
+		for _, item := range s.InsureOrderDetailList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InsureOrderCreateResponseBodyModuleInsureOrderDetailList struct {

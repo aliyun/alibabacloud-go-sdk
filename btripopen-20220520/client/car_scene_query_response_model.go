@@ -59,5 +59,10 @@ func (s *CarSceneQueryResponse) SetBody(v *CarSceneQueryResponseBody) *CarSceneQ
 }
 
 func (s *CarSceneQueryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

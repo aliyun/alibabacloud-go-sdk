@@ -59,5 +59,10 @@ func (s *HotelPricePullResponse) SetBody(v *HotelPricePullResponseBody) *HotelPr
 }
 
 func (s *HotelPricePullResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

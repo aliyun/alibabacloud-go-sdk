@@ -110,7 +110,12 @@ func (s *IntlFlightRefundDetailResponseBody) SetTraceId(v string) *IntlFlightRef
 }
 
 func (s *IntlFlightRefundDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IntlFlightRefundDetailResponseBodyModule struct {
@@ -165,7 +170,39 @@ func (s *IntlFlightRefundDetailResponseBodyModule) SetSegmentList(v []*IntlFligh
 }
 
 func (s *IntlFlightRefundDetailResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.PassengeRefundFeeDetailList != nil {
+		for _, item := range s.PassengeRefundFeeDetailList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PassengerList != nil {
+		for _, item := range s.PassengerList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RefundOrderInfo != nil {
+		if err := s.RefundOrderInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SegmentList != nil {
+		for _, item := range s.SegmentList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IntlFlightRefundDetailResponseBodyModulePassengeRefundFeeDetailList struct {
@@ -213,7 +250,21 @@ func (s *IntlFlightRefundDetailResponseBodyModulePassengeRefundFeeDetailList) Se
 }
 
 func (s *IntlFlightRefundDetailResponseBodyModulePassengeRefundFeeDetailList) Validate() error {
-	return dara.Validate(s)
+	if s.RefundFeeDetail != nil {
+		if err := s.RefundFeeDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TicketList != nil {
+		for _, item := range s.TicketList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IntlFlightRefundDetailResponseBodyModulePassengeRefundFeeDetailListRefundFeeDetail struct {
@@ -398,7 +449,16 @@ func (s *IntlFlightRefundDetailResponseBodyModulePassengeRefundFeeDetailListRefu
 }
 
 func (s *IntlFlightRefundDetailResponseBodyModulePassengeRefundFeeDetailListRefundFeeDetail) Validate() error {
-	return dara.Validate(s)
+	if s.RefundReShopFeeDetailList != nil {
+		for _, item := range s.RefundReShopFeeDetailList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IntlFlightRefundDetailResponseBodyModulePassengeRefundFeeDetailListRefundFeeDetailRefundReShopFeeDetailList struct {
@@ -1196,7 +1256,46 @@ func (s *IntlFlightRefundDetailResponseBodyModuleSegmentList) SetTotalTime(v str
 }
 
 func (s *IntlFlightRefundDetailResponseBodyModuleSegmentList) Validate() error {
-	return dara.Validate(s)
+	if s.AirlineInfo != nil {
+		if err := s.AirlineInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ArrAirportInfo != nil {
+		if err := s.ArrAirportInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DepAirportInfo != nil {
+		if err := s.DepAirportInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FlightShareInfo != nil {
+		if err := s.FlightShareInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FlightStopInfoList != nil {
+		for _, item := range s.FlightStopInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LuggageDirectInfo != nil {
+		if err := s.LuggageDirectInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SegmentVisaRemark != nil {
+		if err := s.SegmentVisaRemark.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IntlFlightRefundDetailResponseBodyModuleSegmentListAirlineInfo struct {
@@ -1404,7 +1503,12 @@ func (s *IntlFlightRefundDetailResponseBodyModuleSegmentListFlightShareInfo) Set
 }
 
 func (s *IntlFlightRefundDetailResponseBodyModuleSegmentListFlightShareInfo) Validate() error {
-	return dara.Validate(s)
+	if s.OperatingAirlineInfo != nil {
+		if err := s.OperatingAirlineInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IntlFlightRefundDetailResponseBodyModuleSegmentListFlightShareInfoOperatingAirlineInfo struct {

@@ -11,6 +11,10 @@ type iCooperatorFlightBillSettlementQueryRequest interface {
 	GoString() string
 	SetBillBatch(v string) *CooperatorFlightBillSettlementQueryRequest
 	GetBillBatch() *string
+	SetBillRecordTimeEnd(v string) *CooperatorFlightBillSettlementQueryRequest
+	GetBillRecordTimeEnd() *string
+	SetBillRecordTimeStart(v string) *CooperatorFlightBillSettlementQueryRequest
+	GetBillRecordTimeStart() *string
 	SetCooperatorId(v string) *CooperatorFlightBillSettlementQueryRequest
 	GetCooperatorId() *string
 	SetOrderId(v int64) *CooperatorFlightBillSettlementQueryRequest
@@ -30,7 +34,9 @@ type iCooperatorFlightBillSettlementQueryRequest interface {
 }
 
 type CooperatorFlightBillSettlementQueryRequest struct {
-	BillBatch *string `json:"bill_batch,omitempty" xml:"bill_batch,omitempty"`
+	BillBatch           *string `json:"bill_batch,omitempty" xml:"bill_batch,omitempty"`
+	BillRecordTimeEnd   *string `json:"bill_record_time_end,omitempty" xml:"bill_record_time_end,omitempty"`
+	BillRecordTimeStart *string `json:"bill_record_time_start,omitempty" xml:"bill_record_time_start,omitempty"`
 	// example:
 	//
 	// cooperator_alibtrip
@@ -72,6 +78,14 @@ func (s *CooperatorFlightBillSettlementQueryRequest) GetBillBatch() *string {
 	return s.BillBatch
 }
 
+func (s *CooperatorFlightBillSettlementQueryRequest) GetBillRecordTimeEnd() *string {
+	return s.BillRecordTimeEnd
+}
+
+func (s *CooperatorFlightBillSettlementQueryRequest) GetBillRecordTimeStart() *string {
+	return s.BillRecordTimeStart
+}
+
 func (s *CooperatorFlightBillSettlementQueryRequest) GetCooperatorId() *string {
 	return s.CooperatorId
 }
@@ -106,6 +120,16 @@ func (s *CooperatorFlightBillSettlementQueryRequest) GetScrollMod() *bool {
 
 func (s *CooperatorFlightBillSettlementQueryRequest) SetBillBatch(v string) *CooperatorFlightBillSettlementQueryRequest {
 	s.BillBatch = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryRequest) SetBillRecordTimeEnd(v string) *CooperatorFlightBillSettlementQueryRequest {
+	s.BillRecordTimeEnd = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryRequest) SetBillRecordTimeStart(v string) *CooperatorFlightBillSettlementQueryRequest {
+	s.BillRecordTimeStart = &v
 	return s
 }
 

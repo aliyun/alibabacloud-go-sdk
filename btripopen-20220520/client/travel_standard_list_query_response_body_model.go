@@ -109,7 +109,12 @@ func (s *TravelStandardListQueryResponseBody) SetTraceId(v string) *TravelStanda
 }
 
 func (s *TravelStandardListQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TravelStandardListQueryResponseBodyModule struct {
@@ -147,7 +152,16 @@ func (s *TravelStandardListQueryResponseBodyModule) SetTotalSize(v int32) *Trave
 }
 
 func (s *TravelStandardListQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TravelStandardListQueryResponseBodyModuleItems struct {
@@ -195,7 +209,21 @@ func (s *TravelStandardListQueryResponseBodyModuleItems) SetScope(v int32) *Trav
 }
 
 func (s *TravelStandardListQueryResponseBodyModuleItems) Validate() error {
-	return dara.Validate(s)
+	if s.MainReserveRule != nil {
+		if err := s.MainReserveRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReserveRuleDesc != nil {
+		for _, item := range s.ReserveRuleDesc {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TravelStandardListQueryResponseBodyModuleItemsMainReserveRule struct {
@@ -314,7 +342,16 @@ func (s *TravelStandardListQueryResponseBodyModuleItemsReserveRuleDesc) SetType(
 }
 
 func (s *TravelStandardListQueryResponseBodyModuleItemsReserveRuleDesc) Validate() error {
-	return dara.Validate(s)
+	if s.DataList != nil {
+		for _, item := range s.DataList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TravelStandardListQueryResponseBodyModuleItemsReserveRuleDescDataList struct {

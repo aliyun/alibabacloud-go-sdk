@@ -110,11 +110,17 @@ func (s *TripBusinessInstanceQueryResponseBody) SetTraceId(v string) *TripBusine
 }
 
 func (s *TripBusinessInstanceQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TripBusinessInstanceQueryResponseBodyModule struct {
-	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	BusinessData *string `json:"business_data,omitempty" xml:"business_data,omitempty"`
+	Creator      *string `json:"creator,omitempty" xml:"creator,omitempty"`
 	// example:
 	//
 	// 1525104000
@@ -137,6 +143,10 @@ func (s TripBusinessInstanceQueryResponseBodyModule) GoString() string {
 	return s.String()
 }
 
+func (s *TripBusinessInstanceQueryResponseBodyModule) GetBusinessData() *string {
+	return s.BusinessData
+}
+
 func (s *TripBusinessInstanceQueryResponseBodyModule) GetCreator() *string {
 	return s.Creator
 }
@@ -151,6 +161,11 @@ func (s *TripBusinessInstanceQueryResponseBodyModule) GetGmtModified() *int64 {
 
 func (s *TripBusinessInstanceQueryResponseBodyModule) GetStatus() *string {
 	return s.Status
+}
+
+func (s *TripBusinessInstanceQueryResponseBodyModule) SetBusinessData(v string) *TripBusinessInstanceQueryResponseBodyModule {
+	s.BusinessData = &v
+	return s
 }
 
 func (s *TripBusinessInstanceQueryResponseBodyModule) SetCreator(v string) *TripBusinessInstanceQueryResponseBodyModule {

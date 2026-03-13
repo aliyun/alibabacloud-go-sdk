@@ -123,8 +123,11 @@ type ApplyAddRequest struct {
 	// example:
 	//
 	// 1000
-	HotelBudget               *int64                          `json:"hotel_budget,omitempty" xml:"hotel_budget,omitempty"`
-	HotelShare                *ApplyAddRequestHotelShare      `json:"hotel_share,omitempty" xml:"hotel_share,omitempty" type:"Struct"`
+	HotelBudget *int64                     `json:"hotel_budget,omitempty" xml:"hotel_budget,omitempty"`
+	HotelShare  *ApplyAddRequestHotelShare `json:"hotel_share,omitempty" xml:"hotel_share,omitempty" type:"Struct"`
+	// example:
+	//
+	// Y
 	InternationalFlightCabins *string                         `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
 	IntlFlightBudget          *int64                          `json:"intl_flight_budget,omitempty" xml:"intl_flight_budget,omitempty"`
 	IntlHotelBudget           *int64                          `json:"intl_hotel_budget,omitempty" xml:"intl_hotel_budget,omitempty"`
@@ -565,7 +568,72 @@ func (s *ApplyAddRequest) SetVehicleBudget(v int64) *ApplyAddRequest {
 }
 
 func (s *ApplyAddRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CarRule != nil {
+		if err := s.CarRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DefaultStandard != nil {
+		if err := s.DefaultStandard.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExternalTravelerList != nil {
+		for _, item := range s.ExternalTravelerList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ExternalTravelerStandard != nil {
+		if err := s.ExternalTravelerStandard.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HotelShare != nil {
+		if err := s.HotelShare.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ItineraryList != nil {
+		for _, item := range s.ItineraryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ItinerarySetList != nil {
+		for _, item := range s.ItinerarySetList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TravelerList != nil {
+		for _, item := range s.TravelerList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TravelerStandard != nil {
+		for _, item := range s.TravelerStandard {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ApplyAddRequestCarRule struct {
@@ -768,7 +836,25 @@ func (s *ApplyAddRequestDefaultStandard) SetTrainSeats(v string) *ApplyAddReques
 }
 
 func (s *ApplyAddRequestDefaultStandard) Validate() error {
-	return dara.Validate(s)
+	if s.HotelCitys != nil {
+		for _, item := range s.HotelCitys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HotelIntlCitys != nil {
+		for _, item := range s.HotelIntlCitys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ApplyAddRequestDefaultStandardHotelCitys struct {
@@ -1192,7 +1278,25 @@ func (s *ApplyAddRequestExternalTravelerStandard) SetTrainSeats(v string) *Apply
 }
 
 func (s *ApplyAddRequestExternalTravelerStandard) Validate() error {
-	return dara.Validate(s)
+	if s.HotelCitys != nil {
+		for _, item := range s.HotelCitys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HotelIntlCitys != nil {
+		for _, item := range s.HotelIntlCitys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ApplyAddRequestExternalTravelerStandardHotelCitys struct {
@@ -1594,7 +1698,12 @@ func (s *ApplyAddRequestItineraryList) SetTripWay(v int32) *ApplyAddRequestItine
 }
 
 func (s *ApplyAddRequestItineraryList) Validate() error {
-	return dara.Validate(s)
+	if s.ItineraryTravelStandard != nil {
+		if err := s.ItineraryTravelStandard.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ApplyAddRequestItineraryListItineraryTravelStandard struct {
@@ -1825,7 +1934,12 @@ func (s *ApplyAddRequestItinerarySetList) SetTrafficType(v int32) *ApplyAddReque
 }
 
 func (s *ApplyAddRequestItinerarySetList) Validate() error {
-	return dara.Validate(s)
+	if s.ItineraryTravelStandard != nil {
+		if err := s.ItineraryTravelStandard.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ApplyAddRequestItinerarySetListItineraryTravelStandard struct {
@@ -2200,7 +2314,34 @@ func (s *ApplyAddRequestTravelerStandard) SetUserId(v string) *ApplyAddRequestTr
 }
 
 func (s *ApplyAddRequestTravelerStandard) Validate() error {
-	return dara.Validate(s)
+	if s.CarCitySet != nil {
+		for _, item := range s.CarCitySet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HotelCitys != nil {
+		for _, item := range s.HotelCitys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HotelIntlCitys != nil {
+		for _, item := range s.HotelIntlCitys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ApplyAddRequestTravelerStandardCarCitySet struct {

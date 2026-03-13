@@ -112,7 +112,12 @@ func (s *HotelOrderQueryResponseBody) SetTraceId(v string) *HotelOrderQueryRespo
 }
 
 func (s *HotelOrderQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HotelOrderQueryResponseBodyModule struct {
@@ -177,7 +182,40 @@ func (s *HotelOrderQueryResponseBodyModule) SetPriceInfoList(v []*HotelOrderQuer
 }
 
 func (s *HotelOrderQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.HotelInfo != nil {
+		if err := s.HotelInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InvoiceInfo != nil {
+		if err := s.InvoiceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OrderBaseInfo != nil {
+		if err := s.OrderBaseInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PassengerList != nil {
+		for _, item := range s.PassengerList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PriceInfoList != nil {
+		for _, item := range s.PriceInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelOrderQueryResponseBodyModuleHotelInfo struct {
@@ -212,6 +250,7 @@ type HotelOrderQueryResponseBodyModuleHotelInfo struct {
 	// 1
 	RoomNum  *int32  `json:"room_num,omitempty" xml:"room_num,omitempty"`
 	RoomType *string `json:"room_type,omitempty" xml:"room_type,omitempty"`
+	Star     *string `json:"star,omitempty" xml:"star,omitempty"`
 }
 
 func (s HotelOrderQueryResponseBodyModuleHotelInfo) String() string {
@@ -284,6 +323,10 @@ func (s *HotelOrderQueryResponseBodyModuleHotelInfo) GetRoomNum() *int32 {
 
 func (s *HotelOrderQueryResponseBodyModuleHotelInfo) GetRoomType() *string {
 	return s.RoomType
+}
+
+func (s *HotelOrderQueryResponseBodyModuleHotelInfo) GetStar() *string {
+	return s.Star
 }
 
 func (s *HotelOrderQueryResponseBodyModuleHotelInfo) SetBrandCode(v string) *HotelOrderQueryResponseBodyModuleHotelInfo {
@@ -363,6 +406,11 @@ func (s *HotelOrderQueryResponseBodyModuleHotelInfo) SetRoomNum(v int32) *HotelO
 
 func (s *HotelOrderQueryResponseBodyModuleHotelInfo) SetRoomType(v string) *HotelOrderQueryResponseBodyModuleHotelInfo {
 	s.RoomType = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleHotelInfo) SetStar(v string) *HotelOrderQueryResponseBodyModuleHotelInfo {
+	s.Star = &v
 	return s
 }
 

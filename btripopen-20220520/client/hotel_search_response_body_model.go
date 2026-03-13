@@ -110,7 +110,12 @@ func (s *HotelSearchResponseBody) SetTraceId(v string) *HotelSearchResponseBody 
 }
 
 func (s *HotelSearchResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HotelSearchResponseBodyModule struct {
@@ -145,7 +150,16 @@ func (s *HotelSearchResponseBodyModule) SetItems(v []*HotelSearchResponseBodyMod
 }
 
 func (s *HotelSearchResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelSearchResponseBodyModuleItems struct {
@@ -392,7 +406,12 @@ func (s *HotelSearchResponseBodyModuleItems) SetTel(v string) *HotelSearchRespon
 }
 
 func (s *HotelSearchResponseBodyModuleItems) Validate() error {
-	return dara.Validate(s)
+	if s.DiscountDesc != nil {
+		if err := s.DiscountDesc.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HotelSearchResponseBodyModuleItemsDiscountDesc struct {
@@ -457,7 +476,16 @@ func (s *HotelSearchResponseBodyModuleItemsDiscountDesc) SetTitle(v string) *Hot
 }
 
 func (s *HotelSearchResponseBodyModuleItemsDiscountDesc) Validate() error {
-	return dara.Validate(s)
+	if s.DiscountDetail != nil {
+		for _, item := range s.DiscountDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelSearchResponseBodyModuleItemsDiscountDescDiscountDetail struct {

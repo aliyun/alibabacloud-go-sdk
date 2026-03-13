@@ -11,6 +11,10 @@ type iTrainBillSettlementQueryRequest interface {
 	GoString() string
 	SetBillBatch(v string) *TrainBillSettlementQueryRequest
 	GetBillBatch() *string
+	SetBillRecordTimeEnd(v string) *TrainBillSettlementQueryRequest
+	GetBillRecordTimeEnd() *string
+	SetBillRecordTimeStart(v string) *TrainBillSettlementQueryRequest
+	GetBillRecordTimeStart() *string
 	SetOrderId(v int64) *TrainBillSettlementQueryRequest
 	GetOrderId() *int64
 	SetPageNo(v int32) *TrainBillSettlementQueryRequest
@@ -28,8 +32,10 @@ type iTrainBillSettlementQueryRequest interface {
 }
 
 type TrainBillSettlementQueryRequest struct {
-	BillBatch *string `json:"bill_batch,omitempty" xml:"bill_batch,omitempty"`
-	OrderId   *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	BillBatch           *string `json:"bill_batch,omitempty" xml:"bill_batch,omitempty"`
+	BillRecordTimeEnd   *string `json:"bill_record_time_end,omitempty" xml:"bill_record_time_end,omitempty"`
+	BillRecordTimeStart *string `json:"bill_record_time_start,omitempty" xml:"bill_record_time_start,omitempty"`
+	OrderId             *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -66,6 +72,14 @@ func (s *TrainBillSettlementQueryRequest) GetBillBatch() *string {
 	return s.BillBatch
 }
 
+func (s *TrainBillSettlementQueryRequest) GetBillRecordTimeEnd() *string {
+	return s.BillRecordTimeEnd
+}
+
+func (s *TrainBillSettlementQueryRequest) GetBillRecordTimeStart() *string {
+	return s.BillRecordTimeStart
+}
+
 func (s *TrainBillSettlementQueryRequest) GetOrderId() *int64 {
 	return s.OrderId
 }
@@ -96,6 +110,16 @@ func (s *TrainBillSettlementQueryRequest) GetScrollMod() *bool {
 
 func (s *TrainBillSettlementQueryRequest) SetBillBatch(v string) *TrainBillSettlementQueryRequest {
 	s.BillBatch = &v
+	return s
+}
+
+func (s *TrainBillSettlementQueryRequest) SetBillRecordTimeEnd(v string) *TrainBillSettlementQueryRequest {
+	s.BillRecordTimeEnd = &v
+	return s
+}
+
+func (s *TrainBillSettlementQueryRequest) SetBillRecordTimeStart(v string) *TrainBillSettlementQueryRequest {
+	s.BillRecordTimeStart = &v
 	return s
 }
 

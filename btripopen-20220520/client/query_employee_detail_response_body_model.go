@@ -127,7 +127,12 @@ func (s *QueryEmployeeDetailResponseBody) SetTraceId(v string) *QueryEmployeeDet
 }
 
 func (s *QueryEmployeeDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryEmployeeDetailResponseBodyModule struct {

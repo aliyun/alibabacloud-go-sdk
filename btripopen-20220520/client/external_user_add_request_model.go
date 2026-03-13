@@ -141,7 +141,16 @@ func (s *ExternalUserAddRequest) SetUserType(v int32) *ExternalUserAddRequest {
 }
 
 func (s *ExternalUserAddRequest) Validate() error {
-  return dara.Validate(s)
+  if s.CertRequestList != nil {
+    for _, item := range s.CertRequestList {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type ExternalUserAddRequestCertRequestList struct {

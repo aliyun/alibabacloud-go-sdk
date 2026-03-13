@@ -546,7 +546,72 @@ func (s *ApplyModifyRequest) SetVehicleBudget(v int64) *ApplyModifyRequest {
 }
 
 func (s *ApplyModifyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CarRule != nil {
+		if err := s.CarRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DefaultStandard != nil {
+		if err := s.DefaultStandard.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExternalTravelerList != nil {
+		for _, item := range s.ExternalTravelerList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ExternalTravelerStandard != nil {
+		if err := s.ExternalTravelerStandard.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HotelShare != nil {
+		if err := s.HotelShare.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ItineraryList != nil {
+		for _, item := range s.ItineraryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ItinerarySetList != nil {
+		for _, item := range s.ItinerarySetList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TravelerList != nil {
+		for _, item := range s.TravelerList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TravelerStandard != nil {
+		for _, item := range s.TravelerStandard {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ApplyModifyRequestCarRule struct {
@@ -736,7 +801,25 @@ func (s *ApplyModifyRequestDefaultStandard) SetTrainSeats(v string) *ApplyModify
 }
 
 func (s *ApplyModifyRequestDefaultStandard) Validate() error {
-	return dara.Validate(s)
+	if s.HotelCitys != nil {
+		for _, item := range s.HotelCitys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HotelIntlCitys != nil {
+		for _, item := range s.HotelIntlCitys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ApplyModifyRequestDefaultStandardHotelCitys struct {
@@ -1149,7 +1232,25 @@ func (s *ApplyModifyRequestExternalTravelerStandard) SetTrainSeats(v string) *Ap
 }
 
 func (s *ApplyModifyRequestExternalTravelerStandard) Validate() error {
-	return dara.Validate(s)
+	if s.HotelCitys != nil {
+		for _, item := range s.HotelCitys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HotelIntlCitys != nil {
+		for _, item := range s.HotelIntlCitys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ApplyModifyRequestExternalTravelerStandardHotelCitys struct {
@@ -1555,7 +1656,12 @@ func (s *ApplyModifyRequestItineraryList) SetTripWay(v int32) *ApplyModifyReques
 }
 
 func (s *ApplyModifyRequestItineraryList) Validate() error {
-	return dara.Validate(s)
+	if s.ItineraryTravelStandard != nil {
+		if err := s.ItineraryTravelStandard.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ApplyModifyRequestItineraryListItineraryTravelStandard struct {
@@ -1775,7 +1881,12 @@ func (s *ApplyModifyRequestItinerarySetList) SetTrafficType(v int32) *ApplyModif
 }
 
 func (s *ApplyModifyRequestItinerarySetList) Validate() error {
-	return dara.Validate(s)
+	if s.ItineraryTravelStandard != nil {
+		if err := s.ItineraryTravelStandard.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ApplyModifyRequestItinerarySetListItineraryTravelStandard struct {
@@ -2139,7 +2250,34 @@ func (s *ApplyModifyRequestTravelerStandard) SetUserId(v string) *ApplyModifyReq
 }
 
 func (s *ApplyModifyRequestTravelerStandard) Validate() error {
-	return dara.Validate(s)
+	if s.CarCitySet != nil {
+		for _, item := range s.CarCitySet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HotelCitys != nil {
+		for _, item := range s.HotelCitys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HotelIntlCitys != nil {
+		for _, item := range s.HotelIntlCitys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ApplyModifyRequestTravelerStandardCarCitySet struct {

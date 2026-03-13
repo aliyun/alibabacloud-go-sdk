@@ -108,7 +108,12 @@ func (s *IeHotelBillSettlementQueryResponseBody) SetTraceId(v string) *IeHotelBi
 }
 
 func (s *IeHotelBillSettlementQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IeHotelBillSettlementQueryResponseBodyModule struct {
@@ -221,7 +226,16 @@ func (s *IeHotelBillSettlementQueryResponseBodyModule) SetTotalSize(v int64) *Ie
 }
 
 func (s *IeHotelBillSettlementQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.DataList != nil {
+		for _, item := range s.DataList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IeHotelBillSettlementQueryResponseBodyModuleDataList struct {

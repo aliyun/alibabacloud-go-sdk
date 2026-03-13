@@ -123,7 +123,17 @@ func (s *CorpTokenResponseBody) SetTraceId(v string) *CorpTokenResponseBody {
 }
 
 func (s *CorpTokenResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CorpTokenResponseBodyData struct {

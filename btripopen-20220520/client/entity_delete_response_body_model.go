@@ -124,7 +124,12 @@ func (s *EntityDeleteResponseBody) SetTraceId(v string) *EntityDeleteResponseBod
 }
 
 func (s *EntityDeleteResponseBody) Validate() error {
-  return dara.Validate(s)
+  if s.Module != nil {
+    if err := s.Module.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type EntityDeleteResponseBodyModule struct {

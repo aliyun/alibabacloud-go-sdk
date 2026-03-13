@@ -95,7 +95,12 @@ func (s *OrderRefundDetailQueryResponseBody) SetSuccess(v bool) *OrderRefundDeta
 }
 
 func (s *OrderRefundDetailQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type OrderRefundDetailQueryResponseBodyModule struct {
@@ -146,7 +151,16 @@ func (s *OrderRefundDetailQueryResponseBodyModule) SetTotalAmount(v int64) *Orde
 }
 
 func (s *OrderRefundDetailQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.RefundDetails != nil {
+		for _, item := range s.RefundDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type OrderRefundDetailQueryResponseBodyModuleRefundDetails struct {

@@ -107,7 +107,12 @@ func (s *FlightBillSettlementQueryResponseBody) SetTraceId(v string) *FlightBill
 }
 
 func (s *FlightBillSettlementQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightBillSettlementQueryResponseBodyModule struct {
@@ -204,7 +209,16 @@ func (s *FlightBillSettlementQueryResponseBodyModule) SetTotalNum(v int64) *Flig
 }
 
 func (s *FlightBillSettlementQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.DataList != nil {
+		for _, item := range s.DataList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FlightBillSettlementQueryResponseBodyModuleDataList struct {
@@ -250,8 +264,9 @@ type FlightBillSettlementQueryResponseBodyModuleDataList struct {
 	// example:
 	//
 	// 13:30:00
-	ArrTime      *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	BaseLocation *string `json:"base_location,omitempty" xml:"base_location,omitempty"`
+	ArrTime        *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	BaseLocation   *string `json:"base_location,omitempty" xml:"base_location,omitempty"`
+	BeforeTicketNo *string `json:"before_ticket_no,omitempty" xml:"before_ticket_no,omitempty"`
 	// example:
 	//
 	// 2020-12-23T20:18Z
@@ -442,7 +457,8 @@ type FlightBillSettlementQueryResponseBodyModuleDataList struct {
 	// example:
 	//
 	// 410
-	SealPrice *float64 `json:"seal_price,omitempty" xml:"seal_price,omitempty"`
+	SealPrice   *float64 `json:"seal_price,omitempty" xml:"seal_price,omitempty"`
+	SegmentList *string  `json:"segment_list,omitempty" xml:"segment_list,omitempty"`
 	// example:
 	//
 	// 23.9
@@ -598,6 +614,10 @@ func (s *FlightBillSettlementQueryResponseBodyModuleDataList) GetArrTime() *stri
 
 func (s *FlightBillSettlementQueryResponseBodyModuleDataList) GetBaseLocation() *string {
 	return s.BaseLocation
+}
+
+func (s *FlightBillSettlementQueryResponseBodyModuleDataList) GetBeforeTicketNo() *string {
+	return s.BeforeTicketNo
 }
 
 func (s *FlightBillSettlementQueryResponseBodyModuleDataList) GetBillRecordTime() *string {
@@ -944,6 +964,10 @@ func (s *FlightBillSettlementQueryResponseBodyModuleDataList) GetSealPrice() *fl
 	return s.SealPrice
 }
 
+func (s *FlightBillSettlementQueryResponseBodyModuleDataList) GetSegmentList() *string {
+	return s.SegmentList
+}
+
 func (s *FlightBillSettlementQueryResponseBodyModuleDataList) GetServiceFee() *float64 {
 	return s.ServiceFee
 }
@@ -1147,6 +1171,11 @@ func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetArrTime(v strin
 
 func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetBaseLocation(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
 	s.BaseLocation = &v
+	return s
+}
+
+func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetBeforeTicketNo(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
+	s.BeforeTicketNo = &v
 	return s
 }
 
@@ -1577,6 +1606,11 @@ func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetSceneName(v str
 
 func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetSealPrice(v float64) *FlightBillSettlementQueryResponseBodyModuleDataList {
 	s.SealPrice = &v
+	return s
+}
+
+func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetSegmentList(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
+	s.SegmentList = &v
 	return s
 }
 

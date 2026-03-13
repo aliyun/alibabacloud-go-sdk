@@ -107,7 +107,12 @@ func (s *InsureOrderDetailResponseBody) SetTraceId(v string) *InsureOrderDetailR
 }
 
 func (s *InsureOrderDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InsureOrderDetailResponseBodyModule struct {
@@ -168,7 +173,21 @@ func (s *InsureOrderDetailResponseBodyModule) SetStatus(v string) *InsureOrderDe
 }
 
 func (s *InsureOrderDetailResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.Applicant != nil {
+		if err := s.Applicant.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InsureOrderDetailList != nil {
+		for _, item := range s.InsureOrderDetailList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InsureOrderDetailResponseBodyModuleApplicant struct {
@@ -394,7 +413,17 @@ func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailList) SetSubInsOrde
 }
 
 func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailList) Validate() error {
-	return dara.Validate(s)
+	if s.InsureSegment != nil {
+		if err := s.InsureSegment.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Insured != nil {
+		if err := s.Insured.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment struct {

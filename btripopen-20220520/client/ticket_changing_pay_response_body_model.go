@@ -107,7 +107,12 @@ func (s *TicketChangingPayResponseBody) SetTraceId(v string) *TicketChangingPayR
 }
 
 func (s *TicketChangingPayResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TicketChangingPayResponseBodyModule struct {

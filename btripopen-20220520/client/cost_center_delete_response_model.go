@@ -59,5 +59,10 @@ func (s *CostCenterDeleteResponse) SetBody(v *CostCenterDeleteResponseBody) *Cos
 }
 
 func (s *CostCenterDeleteResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

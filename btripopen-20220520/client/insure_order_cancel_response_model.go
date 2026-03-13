@@ -59,5 +59,10 @@ func (s *InsureOrderCancelResponse) SetBody(v *InsureOrderCancelResponseBody) *I
 }
 
 func (s *InsureOrderCancelResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

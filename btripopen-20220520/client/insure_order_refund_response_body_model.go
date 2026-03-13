@@ -107,7 +107,12 @@ func (s *InsureOrderRefundResponseBody) SetTraceId(v string) *InsureOrderRefundR
 }
 
 func (s *InsureOrderRefundResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InsureOrderRefundResponseBodyModule struct {
@@ -171,7 +176,16 @@ func (s *InsureOrderRefundResponseBodyModule) SetOutApplyId(v string) *InsureOrd
 }
 
 func (s *InsureOrderRefundResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.InsRefundList != nil {
+		for _, item := range s.InsRefundList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InsureOrderRefundResponseBodyModuleInsRefundList struct {

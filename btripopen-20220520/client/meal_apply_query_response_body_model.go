@@ -109,7 +109,12 @@ func (s *MealApplyQueryResponseBody) SetTraceId(v string) *MealApplyQueryRespons
 }
 
 func (s *MealApplyQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MealApplyQueryResponseBodyModule struct {
@@ -117,7 +122,8 @@ type MealApplyQueryResponseBodyModule struct {
 	// example:
 	//
 	// 11376
-	CostCenterId *int64 `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	CostCenterId *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	ExtendField  *string `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
 	// example:
 	//
 	// 2022-07-04T16:13Z
@@ -171,6 +177,10 @@ func (s *MealApplyQueryResponseBodyModule) GetCostCenterId() *int64 {
 	return s.CostCenterId
 }
 
+func (s *MealApplyQueryResponseBodyModule) GetExtendField() *string {
+	return s.ExtendField
+}
+
 func (s *MealApplyQueryResponseBodyModule) GetGmtCreate() *string {
 	return s.GmtCreate
 }
@@ -222,6 +232,11 @@ func (s *MealApplyQueryResponseBodyModule) SetApplyUser(v *MealApplyQueryRespons
 
 func (s *MealApplyQueryResponseBodyModule) SetCostCenterId(v int64) *MealApplyQueryResponseBodyModule {
 	s.CostCenterId = &v
+	return s
+}
+
+func (s *MealApplyQueryResponseBodyModule) SetExtendField(v string) *MealApplyQueryResponseBodyModule {
+	s.ExtendField = &v
 	return s
 }
 
@@ -281,7 +296,21 @@ func (s *MealApplyQueryResponseBodyModule) SetThirdPartProjectId(v string) *Meal
 }
 
 func (s *MealApplyQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.ApplyUser != nil {
+		if err := s.ApplyUser.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ItineraryList != nil {
+		for _, item := range s.ItineraryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type MealApplyQueryResponseBodyModuleApplyUser struct {
@@ -374,7 +403,16 @@ func (s *MealApplyQueryResponseBodyModuleItineraryList) SetThirdpartItineraryId(
 }
 
 func (s *MealApplyQueryResponseBodyModuleItineraryList) Validate() error {
-	return dara.Validate(s)
+	if s.Cities != nil {
+		for _, item := range s.Cities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type MealApplyQueryResponseBodyModuleItineraryListCities struct {

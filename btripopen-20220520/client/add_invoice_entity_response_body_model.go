@@ -109,7 +109,12 @@ func (s *AddInvoiceEntityResponseBody) SetTraceId(v string) *AddInvoiceEntityRes
 }
 
 func (s *AddInvoiceEntityResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddInvoiceEntityResponseBodyModule struct {

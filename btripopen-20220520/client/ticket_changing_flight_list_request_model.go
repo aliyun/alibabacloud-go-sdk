@@ -111,7 +111,16 @@ func (s *TicketChangingFlightListRequest) SetTravelerInfoList(v []*TicketChangin
 }
 
 func (s *TicketChangingFlightListRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TravelerInfoList != nil {
+		for _, item := range s.TravelerInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TicketChangingFlightListRequestTravelerInfoList struct {

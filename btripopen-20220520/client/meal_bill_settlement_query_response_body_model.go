@@ -107,7 +107,12 @@ func (s *MealBillSettlementQueryResponseBody) SetTraceId(v string) *MealBillSett
 }
 
 func (s *MealBillSettlementQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MealBillSettlementQueryResponseBodyModule struct {
@@ -230,7 +235,16 @@ func (s *MealBillSettlementQueryResponseBodyModule) SetTotalSize(v int64) *MealB
 }
 
 func (s *MealBillSettlementQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type MealBillSettlementQueryResponseBodyModuleItems struct {

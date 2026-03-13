@@ -15,6 +15,8 @@ type iInvoiceModifyRequest interface {
 	GetBankName() *string
 	SetBankNo(v string) *InvoiceModifyRequest
 	GetBankNo() *string
+	SetMailThirdPartId(v string) *InvoiceModifyRequest
+	GetMailThirdPartId() *string
 	SetTaxNo(v string) *InvoiceModifyRequest
 	GetTaxNo() *string
 	SetTel(v string) *InvoiceModifyRequest
@@ -38,7 +40,8 @@ type InvoiceModifyRequest struct {
 	// example:
 	//
 	// 2222
-	BankNo *string `json:"bank_no,omitempty" xml:"bank_no,omitempty"`
+	BankNo          *string `json:"bank_no,omitempty" xml:"bank_no,omitempty"`
+	MailThirdPartId *string `json:"mail_third_part_id,omitempty" xml:"mail_third_part_id,omitempty"`
 	// example:
 	//
 	// 122333121
@@ -84,6 +87,10 @@ func (s *InvoiceModifyRequest) GetBankNo() *string {
 	return s.BankNo
 }
 
+func (s *InvoiceModifyRequest) GetMailThirdPartId() *string {
+	return s.MailThirdPartId
+}
+
 func (s *InvoiceModifyRequest) GetTaxNo() *string {
 	return s.TaxNo
 }
@@ -120,6 +127,11 @@ func (s *InvoiceModifyRequest) SetBankName(v string) *InvoiceModifyRequest {
 
 func (s *InvoiceModifyRequest) SetBankNo(v string) *InvoiceModifyRequest {
 	s.BankNo = &v
+	return s
+}
+
+func (s *InvoiceModifyRequest) SetMailThirdPartId(v string) *InvoiceModifyRequest {
+	s.MailThirdPartId = &v
 	return s
 }
 

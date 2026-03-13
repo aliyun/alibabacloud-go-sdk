@@ -112,7 +112,12 @@ func (s *FlightCancelOrderV2ResponseBody) SetTraceId(v string) *FlightCancelOrde
 }
 
 func (s *FlightCancelOrderV2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FlightCancelOrderV2ResponseBodyModule struct {

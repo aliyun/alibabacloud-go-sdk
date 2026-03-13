@@ -59,5 +59,10 @@ func (s *FlightOtaSearchV2Response) SetBody(v *FlightOtaSearchV2ResponseBody) *F
 }
 
 func (s *FlightOtaSearchV2Response) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

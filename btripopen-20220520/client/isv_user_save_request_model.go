@@ -35,7 +35,16 @@ func (s *IsvUserSaveRequest) SetUserList(v []*IsvUserSaveRequestUserList) *IsvUs
 }
 
 func (s *IsvUserSaveRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UserList != nil {
+		for _, item := range s.UserList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IsvUserSaveRequestUserList struct {
@@ -283,7 +292,16 @@ func (s *IsvUserSaveRequestUserList) SetUserNick(v string) *IsvUserSaveRequestUs
 }
 
 func (s *IsvUserSaveRequestUserList) Validate() error {
-	return dara.Validate(s)
+	if s.CertList != nil {
+		for _, item := range s.CertList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IsvUserSaveRequestUserListCertList struct {

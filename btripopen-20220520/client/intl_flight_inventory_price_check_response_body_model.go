@@ -110,7 +110,12 @@ func (s *IntlFlightInventoryPriceCheckResponseBody) SetTraceId(v string) *IntlFl
 }
 
 func (s *IntlFlightInventoryPriceCheckResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IntlFlightInventoryPriceCheckResponseBodyModule struct {
@@ -174,7 +179,16 @@ func (s *IntlFlightInventoryPriceCheckResponseBodyModule) SetRenderKey(v string)
 }
 
 func (s *IntlFlightInventoryPriceCheckResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.PassengerChangedPriceInfoList != nil {
+		for _, item := range s.PassengerChangedPriceInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoList struct {
@@ -235,7 +249,17 @@ func (s *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInf
 }
 
 func (s *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.ChangedPrice != nil {
+		if err := s.ChangedPrice.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OriginalPrice != nil {
+		if err := s.OriginalPrice.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListChangedPrice struct {

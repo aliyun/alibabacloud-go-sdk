@@ -122,7 +122,25 @@ func (s *IntlFlightOtaSearchRequest) SetTripType(v int32) *IntlFlightOtaSearchRe
 }
 
 func (s *IntlFlightOtaSearchRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SearchJourneys != nil {
+		for _, item := range s.SearchJourneys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SearchPassengerList != nil {
+		for _, item := range s.SearchPassengerList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IntlFlightOtaSearchRequestSearchJourneys struct {
@@ -193,7 +211,16 @@ func (s *IntlFlightOtaSearchRequestSearchJourneys) SetSelectedFlights(v []*IntlF
 }
 
 func (s *IntlFlightOtaSearchRequestSearchJourneys) Validate() error {
-	return dara.Validate(s)
+	if s.SelectedFlights != nil {
+		for _, item := range s.SelectedFlights {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IntlFlightOtaSearchRequestSearchJourneysSelectedFlights struct {

@@ -11,6 +11,10 @@ type iHotelBillSettlementQueryRequest interface {
 	GoString() string
 	SetBillBatch(v string) *HotelBillSettlementQueryRequest
 	GetBillBatch() *string
+	SetBillRecordTimeEnd(v string) *HotelBillSettlementQueryRequest
+	GetBillRecordTimeEnd() *string
+	SetBillRecordTimeStart(v string) *HotelBillSettlementQueryRequest
+	GetBillRecordTimeStart() *string
 	SetOrderId(v int64) *HotelBillSettlementQueryRequest
 	GetOrderId() *int64
 	SetPageNo(v int32) *HotelBillSettlementQueryRequest
@@ -28,8 +32,10 @@ type iHotelBillSettlementQueryRequest interface {
 }
 
 type HotelBillSettlementQueryRequest struct {
-	BillBatch *string `json:"bill_batch,omitempty" xml:"bill_batch,omitempty"`
-	OrderId   *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	BillBatch           *string `json:"bill_batch,omitempty" xml:"bill_batch,omitempty"`
+	BillRecordTimeEnd   *string `json:"bill_record_time_end,omitempty" xml:"bill_record_time_end,omitempty"`
+	BillRecordTimeStart *string `json:"bill_record_time_start,omitempty" xml:"bill_record_time_start,omitempty"`
+	OrderId             *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -66,6 +72,14 @@ func (s *HotelBillSettlementQueryRequest) GetBillBatch() *string {
 	return s.BillBatch
 }
 
+func (s *HotelBillSettlementQueryRequest) GetBillRecordTimeEnd() *string {
+	return s.BillRecordTimeEnd
+}
+
+func (s *HotelBillSettlementQueryRequest) GetBillRecordTimeStart() *string {
+	return s.BillRecordTimeStart
+}
+
 func (s *HotelBillSettlementQueryRequest) GetOrderId() *int64 {
 	return s.OrderId
 }
@@ -96,6 +110,16 @@ func (s *HotelBillSettlementQueryRequest) GetScrollMod() *bool {
 
 func (s *HotelBillSettlementQueryRequest) SetBillBatch(v string) *HotelBillSettlementQueryRequest {
 	s.BillBatch = &v
+	return s
+}
+
+func (s *HotelBillSettlementQueryRequest) SetBillRecordTimeEnd(v string) *HotelBillSettlementQueryRequest {
+	s.BillRecordTimeEnd = &v
+	return s
+}
+
+func (s *HotelBillSettlementQueryRequest) SetBillRecordTimeStart(v string) *HotelBillSettlementQueryRequest {
+	s.BillRecordTimeStart = &v
 	return s
 }
 

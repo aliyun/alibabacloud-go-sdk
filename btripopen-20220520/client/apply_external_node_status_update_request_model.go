@@ -69,7 +69,16 @@ func (s *ApplyExternalNodeStatusUpdateRequest) SetProcessActionResult(v string) 
 }
 
 func (s *ApplyExternalNodeStatusUpdateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.OperationRecords != nil {
+		for _, item := range s.OperationRecords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ApplyExternalNodeStatusUpdateRequestOperationRecords struct {

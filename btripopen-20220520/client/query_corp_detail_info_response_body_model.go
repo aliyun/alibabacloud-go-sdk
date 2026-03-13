@@ -107,7 +107,12 @@ func (s *QueryCorpDetailInfoResponseBody) SetTraceId(v string) *QueryCorpDetailI
 }
 
 func (s *QueryCorpDetailInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryCorpDetailInfoResponseBodyModule struct {

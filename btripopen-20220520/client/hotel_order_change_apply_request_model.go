@@ -98,7 +98,16 @@ func (s *HotelOrderChangeApplyRequest) SetSaleOrderId(v string) *HotelOrderChang
 }
 
 func (s *HotelOrderChangeApplyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RoomInfoList != nil {
+		for _, item := range s.RoomInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotelOrderChangeApplyRequestRoomInfoList struct {

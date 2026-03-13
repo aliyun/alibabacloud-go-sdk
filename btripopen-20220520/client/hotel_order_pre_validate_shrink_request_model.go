@@ -23,6 +23,8 @@ type iHotelOrderPreValidateShrinkRequest interface {
 	GetNumberOfAdultsPerRoom() *int32
 	SetOccupantInfoListShrink(v string) *HotelOrderPreValidateShrinkRequest
 	GetOccupantInfoListShrink() *string
+	SetRateKey(v string) *HotelOrderPreValidateShrinkRequest
+	GetRateKey() *string
 	SetRatePlanId(v int64) *HotelOrderPreValidateShrinkRequest
 	GetRatePlanId() *int64
 	SetRoomId(v int64) *HotelOrderPreValidateShrinkRequest
@@ -69,6 +71,7 @@ type HotelOrderPreValidateShrinkRequest struct {
 	// 1
 	NumberOfAdultsPerRoom  *int32  `json:"number_of_adults_per_room,omitempty" xml:"number_of_adults_per_room,omitempty"`
 	OccupantInfoListShrink *string `json:"occupant_info_list,omitempty" xml:"occupant_info_list,omitempty"`
+	RateKey                *string `json:"rate_key,omitempty" xml:"rate_key,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -143,6 +146,10 @@ func (s *HotelOrderPreValidateShrinkRequest) GetOccupantInfoListShrink() *string
 	return s.OccupantInfoListShrink
 }
 
+func (s *HotelOrderPreValidateShrinkRequest) GetRateKey() *string {
+	return s.RateKey
+}
+
 func (s *HotelOrderPreValidateShrinkRequest) GetRatePlanId() *int64 {
 	return s.RatePlanId
 }
@@ -199,6 +206,11 @@ func (s *HotelOrderPreValidateShrinkRequest) SetNumberOfAdultsPerRoom(v int32) *
 
 func (s *HotelOrderPreValidateShrinkRequest) SetOccupantInfoListShrink(v string) *HotelOrderPreValidateShrinkRequest {
 	s.OccupantInfoListShrink = &v
+	return s
+}
+
+func (s *HotelOrderPreValidateShrinkRequest) SetRateKey(v string) *HotelOrderPreValidateShrinkRequest {
+	s.RateKey = &v
 	return s
 }
 

@@ -109,7 +109,12 @@ func (s *CooperatorFlightBillSettlementQueryResponseBody) SetTraceId(v string) *
 }
 
 func (s *CooperatorFlightBillSettlementQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CooperatorFlightBillSettlementQueryResponseBodyModule struct {
@@ -209,7 +214,16 @@ func (s *CooperatorFlightBillSettlementQueryResponseBodyModule) SetTotalSize(v i
 }
 
 func (s *CooperatorFlightBillSettlementQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CooperatorFlightBillSettlementQueryResponseBodyModuleItems struct {
@@ -266,8 +280,9 @@ type CooperatorFlightBillSettlementQueryResponseBodyModuleItems struct {
 	// example:
 	//
 	// 12:00:00
-	ArrTime      *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	BaseLocation *string `json:"base_location,omitempty" xml:"base_location,omitempty"`
+	ArrTime        *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	BaseLocation   *string `json:"base_location,omitempty" xml:"base_location,omitempty"`
+	BeforeTicketNo *string `json:"before_ticket_no,omitempty" xml:"before_ticket_no,omitempty"`
 	// example:
 	//
 	// 2023-01-01 00:00:00
@@ -484,7 +499,8 @@ type CooperatorFlightBillSettlementQueryResponseBodyModuleItems struct {
 	// example:
 	//
 	// 100.0
-	SealPrice *float64 `json:"seal_price,omitempty" xml:"seal_price,omitempty"`
+	SealPrice   *float64 `json:"seal_price,omitempty" xml:"seal_price,omitempty"`
+	SegmentList *string  `json:"segment_list,omitempty" xml:"segment_list,omitempty"`
 	// example:
 	//
 	// 0.0
@@ -652,6 +668,10 @@ func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) GetArrTime(
 
 func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) GetBaseLocation() *string {
 	return s.BaseLocation
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) GetBeforeTicketNo() *string {
+	return s.BeforeTicketNo
 }
 
 func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) GetBillRecordTime() *string {
@@ -982,6 +1002,10 @@ func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) GetSealPric
 	return s.SealPrice
 }
 
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) GetSegmentList() *string {
+	return s.SegmentList
+}
+
 func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) GetServiceFee() *float64 {
 	return s.ServiceFee
 }
@@ -1193,6 +1217,11 @@ func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetArrTime(
 
 func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetBaseLocation(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
 	s.BaseLocation = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetBeforeTicketNo(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.BeforeTicketNo = &v
 	return s
 }
 
@@ -1603,6 +1632,11 @@ func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetRepeatRe
 
 func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetSealPrice(v float64) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
 	s.SealPrice = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetSegmentList(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.SegmentList = &v
 	return s
 }
 

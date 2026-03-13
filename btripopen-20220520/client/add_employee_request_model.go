@@ -356,7 +356,25 @@ func (s *AddEmployeeRequest) SetUserNick(v string) *AddEmployeeRequest {
 }
 
 func (s *AddEmployeeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.BaseLocationList != nil {
+		for _, item := range s.BaseLocationList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.CertList != nil {
+		for _, item := range s.CertList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddEmployeeRequestBaseLocationList struct {

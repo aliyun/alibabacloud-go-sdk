@@ -111,7 +111,12 @@ func (s *InsInvoiceScanQueryResponseBody) SetTraceId(v string) *InsInvoiceScanQu
 }
 
 func (s *InsInvoiceScanQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InsInvoiceScanQueryResponseBodyModule struct {
@@ -188,7 +193,16 @@ func (s *InsInvoiceScanQueryResponseBodyModule) SetTotalSize(v int32) *InsInvoic
 }
 
 func (s *InsInvoiceScanQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InsInvoiceScanQueryResponseBodyModuleItems struct {
@@ -699,7 +713,16 @@ func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetXmlOssUrl(v string) *Ins
 }
 
 func (s *InsInvoiceScanQueryResponseBodyModuleItems) Validate() error {
-	return dara.Validate(s)
+	if s.InvoiceDetails != nil {
+		for _, item := range s.InvoiceDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails struct {

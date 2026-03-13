@@ -67,7 +67,16 @@ func (s *TravelStandardRelateAddRequest) SetRuleId(v int64) *TravelStandardRelat
 }
 
 func (s *TravelStandardRelateAddRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AddList != nil {
+		for _, item := range s.AddList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TravelStandardRelateAddRequestAddList struct {

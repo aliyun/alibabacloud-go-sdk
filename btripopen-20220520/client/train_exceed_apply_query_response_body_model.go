@@ -107,7 +107,12 @@ func (s *TrainExceedApplyQueryResponseBody) SetTraceId(v string) *TrainExceedApp
 }
 
 func (s *TrainExceedApplyQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrainExceedApplyQueryResponseBodyModule struct {
@@ -279,7 +284,12 @@ func (s *TrainExceedApplyQueryResponseBodyModule) SetUserName(v string) *TrainEx
 }
 
 func (s *TrainExceedApplyQueryResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.ApplyIntentionInfoDO != nil {
+		if err := s.ApplyIntentionInfoDO.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrainExceedApplyQueryResponseBodyModuleApplyIntentionInfoDO struct {

@@ -59,7 +59,30 @@ func (s *ModuleGroupItemShoppingItemMapValue) SetSegmentPriceList(v []*ModuleGro
 }
 
 func (s *ModuleGroupItemShoppingItemMapValue) Validate() error {
-	return dara.Validate(s)
+	if s.CabinQuantityList != nil {
+		for _, item := range s.CabinQuantityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SearchPrice != nil {
+		if err := s.SearchPrice.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SegmentPriceList != nil {
+		for _, item := range s.SegmentPriceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModuleGroupItemShoppingItemMapValueCabinQuantityList struct {
@@ -94,7 +117,17 @@ func (s *ModuleGroupItemShoppingItemMapValueCabinQuantityList) SetCabin(v *Modul
 }
 
 func (s *ModuleGroupItemShoppingItemMapValueCabinQuantityList) Validate() error {
-	return dara.Validate(s)
+	if s.SegmentPosition != nil {
+		if err := s.SegmentPosition.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Cabin != nil {
+		if err := s.Cabin.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModuleGroupItemShoppingItemMapValueCabinQuantityListSegmentPosition struct {
@@ -288,7 +321,17 @@ func (s *ModuleGroupItemShoppingItemMapValueSegmentPriceList) SetSearchPrice(v *
 }
 
 func (s *ModuleGroupItemShoppingItemMapValueSegmentPriceList) Validate() error {
-	return dara.Validate(s)
+	if s.SegmentPosition != nil {
+		if err := s.SegmentPosition.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SearchPrice != nil {
+		if err := s.SearchPrice.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModuleGroupItemShoppingItemMapValueSegmentPriceListSegmentPosition struct {

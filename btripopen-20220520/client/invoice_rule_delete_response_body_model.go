@@ -109,7 +109,12 @@ func (s *InvoiceRuleDeleteResponseBody) SetTraceId(v string) *InvoiceRuleDeleteR
 }
 
 func (s *InvoiceRuleDeleteResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InvoiceRuleDeleteResponseBodyModule struct {

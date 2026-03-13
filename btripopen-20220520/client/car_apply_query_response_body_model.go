@@ -122,7 +122,16 @@ func (s *CarApplyQueryResponseBody) SetTraceId(v string) *CarApplyQueryResponseB
 }
 
 func (s *CarApplyQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApplyList != nil {
+		for _, item := range s.ApplyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CarApplyQueryResponseBodyApplyList struct {
@@ -325,7 +334,34 @@ func (s *CarApplyQueryResponseBodyApplyList) SetUserName(v string) *CarApplyQuer
 }
 
 func (s *CarApplyQueryResponseBodyApplyList) Validate() error {
-	return dara.Validate(s)
+	if s.ApproverList != nil {
+		for _, item := range s.ApproverList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ItineraryList != nil {
+		for _, item := range s.ItineraryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TravelerStandard != nil {
+		for _, item := range s.TravelerStandard {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CarApplyQueryResponseBodyApplyListApproverList struct {
@@ -639,7 +675,16 @@ func (s *CarApplyQueryResponseBodyApplyListTravelerStandard) SetUserId(v string)
 }
 
 func (s *CarApplyQueryResponseBodyApplyListTravelerStandard) Validate() error {
-	return dara.Validate(s)
+	if s.CarCitySet != nil {
+		for _, item := range s.CarCitySet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CarApplyQueryResponseBodyApplyListTravelerStandardCarCitySet struct {
