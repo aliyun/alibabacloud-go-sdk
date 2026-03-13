@@ -267,6 +267,68 @@ func (client *Client) EnrollAccountWithContext(ctx context.Context, tmpReq *Enro
 
 // Summary:
 //
+// 生成治理检测报告
+//
+// @param tmpReq - GenerateEvaluationReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateEvaluationReportResponse
+func (client *Client) GenerateEvaluationReportWithContext(ctx context.Context, tmpReq *GenerateEvaluationReportRequest, runtime *dara.RuntimeOptions) (_result *GenerateEvaluationReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GenerateEvaluationReportShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AccountIds) {
+		request.AccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AccountIds, dara.String("AccountIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountId) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !dara.IsNil(request.AccountIdsShrink) {
+		query["AccountIds"] = request.AccountIdsShrink
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ReportType) {
+		query["ReportType"] = request.ReportType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GenerateEvaluationReport"),
+		Version:     dara.String("2021-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GenerateEvaluationReportResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtains the details of an account factory baseline.
 //
 // @param request - GetAccountFactoryBaselineRequest
