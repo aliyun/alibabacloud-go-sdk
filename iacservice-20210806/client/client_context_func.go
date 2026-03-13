@@ -4359,6 +4359,71 @@ func (client *Client) UpdateTaskAttributeWithContext(ctx context.Context, taskId
 
 // Summary:
 //
+// 模版上传
+//
+// @param request - UploadModuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadModuleResponse
+func (client *Client) UploadModuleWithContext(ctx context.Context, resourceType *string, request *UploadModuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UploadModuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ModuleId) {
+		query["moduleId"] = request.ModuleId
+	}
+
+	if !dara.IsNil(request.ModuleName) {
+		query["moduleName"] = request.ModuleName
+	}
+
+	if !dara.IsNil(request.NamespaceName) {
+		query["namespaceName"] = request.NamespaceName
+	}
+
+	if !dara.IsNil(request.Url) {
+		query["url"] = request.Url
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Code) {
+		body["code"] = request.Code
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UploadModule"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/modules/upload/" + dara.PercentEncode(dara.StringValue(resourceType))),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UploadModuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 模版预检
 //
 // @param request - ValidateModuleRequest
