@@ -1930,7 +1930,19 @@ func (client *Client) DescribePopApiWithOptions(request *DescribePopApiRequest, 
 			return _result, _err
 		}
 	}
-	query := openapiutil.Query(dara.ToMap(request))
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiName) {
+		query["ApiName"] = request.ApiName
+	}
+
+	if !dara.IsNil(request.ApiVersion) {
+		query["ApiVersion"] = request.ApiVersion
+	}
+
+	if !dara.IsNil(request.PopCode) {
+		query["PopCode"] = request.PopCode
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1939,7 +1951,7 @@ func (client *Client) DescribePopApiWithOptions(request *DescribePopApiRequest, 
 		Version:     dara.String("2022-07-28"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
+		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("RPC"),
 		ReqBodyType: dara.String("formData"),
@@ -2546,7 +2558,7 @@ func (client *Client) DescribeSophonCommands(request *DescribeSophonCommandsRequ
 
 // Summary:
 //
-// Query OpenApi List of Cloud Vendors.
+// Queries the API operations of a cloud service provider.
 //
 // Description:
 //
@@ -2614,7 +2626,7 @@ func (client *Client) DescribeVendorApiListWithOptions(request *DescribeVendorAp
 
 // Summary:
 //
-// Query OpenApi List of Cloud Vendors.
+// Queries the API operations of a cloud service provider.
 //
 // Description:
 //

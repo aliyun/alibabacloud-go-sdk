@@ -40,7 +40,7 @@ type CreatePlaybookRequest struct {
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// example:
 	//
-	// {\"key1\": \"value1\", \"key2\": \"value2\"}
+	// {\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\"}
 	InputParams *string `json:"InputParams,omitempty" xml:"InputParams,omitempty"`
 	// Language type for receiving messages. Values:
 	//
@@ -54,7 +54,7 @@ type CreatePlaybookRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// example:
 	//
-	// {\"result\": \"success\"}
+	// {\\"result\\": \\"success\\"}
 	OutputParams *string `json:"OutputParams,omitempty" xml:"OutputParams,omitempty"`
 	// Playbook TaskFlow type.
 	//

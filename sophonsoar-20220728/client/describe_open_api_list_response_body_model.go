@@ -83,7 +83,8 @@ type DescribeOpenApiListResponseBodyData struct {
 	// example:
 	//
 	// 2018-12-03
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Version  *string     `json:"Version,omitempty" xml:"Version,omitempty"`
+	Versions interface{} `json:"Versions,omitempty" xml:"Versions,omitempty"`
 }
 
 func (s DescribeOpenApiListResponseBodyData) String() string {
@@ -106,6 +107,10 @@ func (s *DescribeOpenApiListResponseBodyData) GetVersion() *string {
 	return s.Version
 }
 
+func (s *DescribeOpenApiListResponseBodyData) GetVersions() interface{} {
+	return s.Versions
+}
+
 func (s *DescribeOpenApiListResponseBodyData) SetCode(v string) *DescribeOpenApiListResponseBodyData {
 	s.Code = &v
 	return s
@@ -118,6 +123,11 @@ func (s *DescribeOpenApiListResponseBodyData) SetDirectories(v interface{}) *Des
 
 func (s *DescribeOpenApiListResponseBodyData) SetVersion(v string) *DescribeOpenApiListResponseBodyData {
 	s.Version = &v
+	return s
+}
+
+func (s *DescribeOpenApiListResponseBodyData) SetVersions(v interface{}) *DescribeOpenApiListResponseBodyData {
+	s.Versions = v
 	return s
 }
 

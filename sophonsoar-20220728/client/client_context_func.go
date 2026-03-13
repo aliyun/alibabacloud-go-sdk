@@ -1331,7 +1331,19 @@ func (client *Client) DescribePopApiWithContext(ctx context.Context, request *De
 			return _result, _err
 		}
 	}
-	query := openapiutil.Query(dara.ToMap(request))
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiName) {
+		query["ApiName"] = request.ApiName
+	}
+
+	if !dara.IsNil(request.ApiVersion) {
+		query["ApiVersion"] = request.ApiVersion
+	}
+
+	if !dara.IsNil(request.PopCode) {
+		query["PopCode"] = request.PopCode
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1340,7 +1352,7 @@ func (client *Client) DescribePopApiWithContext(ctx context.Context, request *De
 		Version:     dara.String("2022-07-28"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
+		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("RPC"),
 		ReqBodyType: dara.String("formData"),
@@ -1777,7 +1789,7 @@ func (client *Client) DescribeSophonCommandsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Query OpenApi List of Cloud Vendors.
+// Queries the API operations of a cloud service provider.
 //
 // Description:
 //
