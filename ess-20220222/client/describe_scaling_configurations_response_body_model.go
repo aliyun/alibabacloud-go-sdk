@@ -296,7 +296,8 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	// example:
 	//
 	// ecs.g6.large
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceType                 *string                                                                                     `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceTypeCandidateOptions *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions `json:"InstanceTypeCandidateOptions,omitempty" xml:"InstanceTypeCandidateOptions,omitempty" type:"Struct"`
 	// The ECS instance types.
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
 	// The billing method for network usage. Valid values:
@@ -382,8 +383,24 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	// example:
 	//
 	// false
-	PasswordSetted                   *bool   `json:"PasswordSetted,omitempty" xml:"PasswordSetted,omitempty"`
-	PrivatePoolOptions_id            *string `json:"PrivatePoolOptions.Id,omitempty" xml:"PrivatePoolOptions.Id,omitempty"`
+	PasswordSetted *bool `json:"PasswordSetted,omitempty" xml:"PasswordSetted,omitempty"`
+	// The ID of the private pool, which is the same as the ID of the elasticity assurance or capacity reservation for which the private pool is generated.
+	//
+	// example:
+	//
+	// eap-bp67acfmxazb4****
+	PrivatePoolOptions_id *string `json:"PrivatePoolOptions.Id,omitempty" xml:"PrivatePoolOptions.Id,omitempty"`
+	// The type of the private pool. A private pool is generated when an elasticity assurance or a capacity reservation takes effect. You can specify a private pool for Auto Scaling to start instances. Valid values:
+	//
+	// 	- Open: open private pool. Auto Scaling selects a matching open private pool to start instances. If no matching open private pools exist, Auto Scaling uses the resources in the public pool to start instances.
+	//
+	// 	- Target: specified private pool. Auto Scaling uses the resources in the specified private pool to start instances. If the resources in the specified private pool are insufficient, instances cannot be started.
+	//
+	// 	- None: no private pool. Auto Scaling does not use the resources in private pools to start instances.
+	//
+	// example:
+	//
+	// Open
 	PrivatePoolOptions_matchCriteria *string `json:"PrivatePoolOptions.MatchCriteria,omitempty" xml:"PrivatePoolOptions.MatchCriteria,omitempty"`
 	// The name of the Resource Access Management (RAM) role assumed by the ECS instances. This name is provided and maintained by RAM. You can call the ListRoles operation to query the available RAM roles.
 	//
@@ -716,6 +733,10 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) GetInst
 	return s.InstanceType
 }
 
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) GetInstanceTypeCandidateOptions() *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions {
+	return s.InstanceTypeCandidateOptions
+}
+
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) GetInstanceTypes() []*string {
 	return s.InstanceTypes
 }
@@ -1032,6 +1053,11 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetInst
 	return s
 }
 
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetInstanceTypeCandidateOptions(v *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions) *DescribeScalingConfigurationsResponseBodyScalingConfigurations {
+	s.InstanceTypeCandidateOptions = v
+	return s
+}
+
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetInstanceTypes(v []*string) *DescribeScalingConfigurationsResponseBodyScalingConfigurations {
 	s.InstanceTypes = v
 	return s
@@ -1303,6 +1329,11 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) Validat
 					return err
 				}
 			}
+		}
+	}
+	if s.InstanceTypeCandidateOptions != nil {
+		if err := s.InstanceTypeCandidateOptions.Validate(); err != nil {
+			return err
 		}
 	}
 	if s.NetworkInterfaces != nil {
@@ -2057,6 +2088,71 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceP
 }
 
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstancePatternInfos) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions struct {
+	AllowCidrBlocks          []*string `json:"AllowCidrBlocks,omitempty" xml:"AllowCidrBlocks,omitempty" type:"Repeated"`
+	AllowCrossAz             *bool     `json:"AllowCrossAz,omitempty" xml:"AllowCrossAz,omitempty"`
+	AllowDifferentGeneration *bool     `json:"AllowDifferentGeneration,omitempty" xml:"AllowDifferentGeneration,omitempty"`
+	Enabled                  *bool     `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	MaxPrice                 *float32  `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
+}
+
+func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions) GetAllowCidrBlocks() []*string {
+	return s.AllowCidrBlocks
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions) GetAllowCrossAz() *bool {
+	return s.AllowCrossAz
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions) GetAllowDifferentGeneration() *bool {
+	return s.AllowDifferentGeneration
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions) GetMaxPrice() *float32 {
+	return s.MaxPrice
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions) SetAllowCidrBlocks(v []*string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions {
+	s.AllowCidrBlocks = v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions) SetAllowCrossAz(v bool) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions {
+	s.AllowCrossAz = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions) SetAllowDifferentGeneration(v bool) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions {
+	s.AllowDifferentGeneration = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions) SetEnabled(v bool) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions {
+	s.Enabled = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions) SetMaxPrice(v float32) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions {
+	s.MaxPrice = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions) Validate() error {
 	return dara.Validate(s)
 }
 

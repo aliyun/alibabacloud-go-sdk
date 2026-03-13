@@ -72,12 +72,7 @@ type ApplyScalingGroupRequest struct {
 	//
 	//         - containerPort: 80
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Optional. The format of the configuration file. Default value: YAML. Set the value to YAML.
-	//
-	// example:
-	//
-	// YAML
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	Format  *string `json:"Format,omitempty" xml:"Format,omitempty"`
 	// The region ID.
 	//
 	// example:

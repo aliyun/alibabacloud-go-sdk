@@ -23,11 +23,9 @@ type DescribeScalingActivityStatisticsResponseBody struct {
 	// example:
 	//
 	// A8F44B4D-BAB4-5176-8705-5984xxxxx
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The error message statistics of the scaling activity.
+	RequestId                          *string                                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScalingActivityErrorCodeStatistics *DescribeScalingActivityStatisticsResponseBodyScalingActivityErrorCodeStatistics `json:"ScalingActivityErrorCodeStatistics,omitempty" xml:"ScalingActivityErrorCodeStatistics,omitempty" type:"Struct"`
-	// The statistical metrics of the scaling activity status.
-	ScalingActivityStatusStatistics *DescribeScalingActivityStatisticsResponseBodyScalingActivityStatusStatistics `json:"ScalingActivityStatusStatistics,omitempty" xml:"ScalingActivityStatusStatistics,omitempty" type:"Struct"`
+	ScalingActivityStatusStatistics    *DescribeScalingActivityStatisticsResponseBodyScalingActivityStatusStatistics    `json:"ScalingActivityStatusStatistics,omitempty" xml:"ScalingActivityStatusStatistics,omitempty" type:"Struct"`
 }
 
 func (s DescribeScalingActivityStatisticsResponseBody) String() string {
@@ -114,24 +112,9 @@ func (s *DescribeScalingActivityStatisticsResponseBodyScalingActivityErrorCodeSt
 }
 
 type DescribeScalingActivityStatisticsResponseBodyScalingActivityErrorCodeStatisticsErrorStatistic struct {
-	// The number of failed scaling activities.
-	//
-	// example:
-	//
-	// 4
-	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// Scaling Activity Error Codes
-	//
-	// example:
-	//
-	// QuotaExceeded.PrivateIpAddress
+	Count     *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The time when the statistics are generated. The time is in UTC. Format: yyyyMMddHH.
-	//
-	// example:
-	//
-	// 2025121623
-	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	Time      *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s DescribeScalingActivityStatisticsResponseBodyScalingActivityErrorCodeStatisticsErrorStatistic) String() string {
@@ -208,30 +191,10 @@ func (s *DescribeScalingActivityStatisticsResponseBodyScalingActivityStatusStati
 }
 
 type DescribeScalingActivityStatisticsResponseBodyScalingActivityStatusStatisticsStatistic struct {
-	// The number of failed scaling activities.
-	//
-	// example:
-	//
-	// 1
-	FailedActivityCount *int32 `json:"FailedActivityCount,omitempty" xml:"FailedActivityCount,omitempty"`
-	// The number of successful scaling activities.
-	//
-	// example:
-	//
-	// 10
-	SuccessActivityCount *int32 `json:"SuccessActivityCount,omitempty" xml:"SuccessActivityCount,omitempty"`
-	// The time when the statistics are generated. The time is in UTC. Format: yyyyMMddHH.
-	//
-	// example:
-	//
-	// 2025121623
-	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The number of partially executed scaling activities.
-	//
-	// example:
-	//
-	// 2
-	WarningActivityCount *int32 `json:"WarningActivityCount,omitempty" xml:"WarningActivityCount,omitempty"`
+	FailedActivityCount  *int32  `json:"FailedActivityCount,omitempty" xml:"FailedActivityCount,omitempty"`
+	SuccessActivityCount *int32  `json:"SuccessActivityCount,omitempty" xml:"SuccessActivityCount,omitempty"`
+	Time                 *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	WarningActivityCount *int32  `json:"WarningActivityCount,omitempty" xml:"WarningActivityCount,omitempty"`
 }
 
 func (s DescribeScalingActivityStatisticsResponseBodyScalingActivityStatusStatisticsStatistic) String() string {

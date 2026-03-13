@@ -53,6 +53,8 @@ type iModifyScalingConfigurationShrinkRequest interface {
 	GetInstanceName() *string
 	SetInstancePatternInfos(v []*ModifyScalingConfigurationShrinkRequestInstancePatternInfos) *ModifyScalingConfigurationShrinkRequest
 	GetInstancePatternInfos() []*ModifyScalingConfigurationShrinkRequestInstancePatternInfos
+	SetInstanceTypeCandidateOptions(v *ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions) *ModifyScalingConfigurationShrinkRequest
+	GetInstanceTypeCandidateOptions() *ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions
 	SetInstanceTypeOverrides(v []*ModifyScalingConfigurationShrinkRequestInstanceTypeOverrides) *ModifyScalingConfigurationShrinkRequest
 	GetInstanceTypeOverrides() []*ModifyScalingConfigurationShrinkRequestInstanceTypeOverrides
 	SetInstanceTypes(v []*string) *ModifyScalingConfigurationShrinkRequest
@@ -286,7 +288,8 @@ type ModifyScalingConfigurationShrinkRequest struct {
 	// inst****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The intelligent configuration settings, which determine the available instance types.
-	InstancePatternInfos []*ModifyScalingConfigurationShrinkRequestInstancePatternInfos `json:"InstancePatternInfos,omitempty" xml:"InstancePatternInfos,omitempty" type:"Repeated"`
+	InstancePatternInfos         []*ModifyScalingConfigurationShrinkRequestInstancePatternInfos       `json:"InstancePatternInfos,omitempty" xml:"InstancePatternInfos,omitempty" type:"Repeated"`
+	InstanceTypeCandidateOptions *ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions `json:"InstanceTypeCandidateOptions,omitempty" xml:"InstanceTypeCandidateOptions,omitempty" type:"Struct"`
 	// Details of the instance types.
 	InstanceTypeOverrides []*ModifyScalingConfigurationShrinkRequestInstanceTypeOverrides `json:"InstanceTypeOverrides,omitempty" xml:"InstanceTypeOverrides,omitempty" type:"Repeated"`
 	// The instance types. If you specify InstanceTypes, InstanceType is ignored.
@@ -629,6 +632,10 @@ func (s *ModifyScalingConfigurationShrinkRequest) GetInstancePatternInfos() []*M
 	return s.InstancePatternInfos
 }
 
+func (s *ModifyScalingConfigurationShrinkRequest) GetInstanceTypeCandidateOptions() *ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions {
+	return s.InstanceTypeCandidateOptions
+}
+
 func (s *ModifyScalingConfigurationShrinkRequest) GetInstanceTypeOverrides() []*ModifyScalingConfigurationShrinkRequestInstanceTypeOverrides {
 	return s.InstanceTypeOverrides
 }
@@ -887,6 +894,11 @@ func (s *ModifyScalingConfigurationShrinkRequest) SetInstancePatternInfos(v []*M
 	return s
 }
 
+func (s *ModifyScalingConfigurationShrinkRequest) SetInstanceTypeCandidateOptions(v *ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions) *ModifyScalingConfigurationShrinkRequest {
+	s.InstanceTypeCandidateOptions = v
+	return s
+}
+
 func (s *ModifyScalingConfigurationShrinkRequest) SetInstanceTypeOverrides(v []*ModifyScalingConfigurationShrinkRequestInstanceTypeOverrides) *ModifyScalingConfigurationShrinkRequest {
 	s.InstanceTypeOverrides = v
 	return s
@@ -1113,6 +1125,11 @@ func (s *ModifyScalingConfigurationShrinkRequest) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.InstanceTypeCandidateOptions != nil {
+		if err := s.InstanceTypeCandidateOptions.Validate(); err != nil {
+			return err
 		}
 	}
 	if s.InstanceTypeOverrides != nil {
@@ -2225,6 +2242,71 @@ func (s *ModifyScalingConfigurationShrinkRequestInstancePatternInfos) SetPhysica
 }
 
 func (s *ModifyScalingConfigurationShrinkRequestInstancePatternInfos) Validate() error {
+	return dara.Validate(s)
+}
+
+type ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions struct {
+	AllowCidrBlocks          []*string `json:"AllowCidrBlocks,omitempty" xml:"AllowCidrBlocks,omitempty" type:"Repeated"`
+	AllowCrossAz             *bool     `json:"AllowCrossAz,omitempty" xml:"AllowCrossAz,omitempty"`
+	AllowDifferentGeneration *bool     `json:"AllowDifferentGeneration,omitempty" xml:"AllowDifferentGeneration,omitempty"`
+	Enabled                  *bool     `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	MaxPrice                 *float32  `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
+}
+
+func (s ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions) GetAllowCidrBlocks() []*string {
+	return s.AllowCidrBlocks
+}
+
+func (s *ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions) GetAllowCrossAz() *bool {
+	return s.AllowCrossAz
+}
+
+func (s *ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions) GetAllowDifferentGeneration() *bool {
+	return s.AllowDifferentGeneration
+}
+
+func (s *ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions) GetMaxPrice() *float32 {
+	return s.MaxPrice
+}
+
+func (s *ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions) SetAllowCidrBlocks(v []*string) *ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions {
+	s.AllowCidrBlocks = v
+	return s
+}
+
+func (s *ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions) SetAllowCrossAz(v bool) *ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions {
+	s.AllowCrossAz = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions) SetAllowDifferentGeneration(v bool) *ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions {
+	s.AllowDifferentGeneration = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions) SetEnabled(v bool) *ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions) SetMaxPrice(v float32) *ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions {
+	s.MaxPrice = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationShrinkRequestInstanceTypeCandidateOptions) Validate() error {
 	return dara.Validate(s)
 }
 

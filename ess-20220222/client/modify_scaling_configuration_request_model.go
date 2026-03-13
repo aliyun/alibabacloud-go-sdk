@@ -53,6 +53,8 @@ type iModifyScalingConfigurationRequest interface {
 	GetInstanceName() *string
 	SetInstancePatternInfos(v []*ModifyScalingConfigurationRequestInstancePatternInfos) *ModifyScalingConfigurationRequest
 	GetInstancePatternInfos() []*ModifyScalingConfigurationRequestInstancePatternInfos
+	SetInstanceTypeCandidateOptions(v *ModifyScalingConfigurationRequestInstanceTypeCandidateOptions) *ModifyScalingConfigurationRequest
+	GetInstanceTypeCandidateOptions() *ModifyScalingConfigurationRequestInstanceTypeCandidateOptions
 	SetInstanceTypeOverrides(v []*ModifyScalingConfigurationRequestInstanceTypeOverrides) *ModifyScalingConfigurationRequest
 	GetInstanceTypeOverrides() []*ModifyScalingConfigurationRequestInstanceTypeOverrides
 	SetInstanceTypes(v []*string) *ModifyScalingConfigurationRequest
@@ -286,7 +288,8 @@ type ModifyScalingConfigurationRequest struct {
 	// inst****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The intelligent configuration settings, which determine the available instance types.
-	InstancePatternInfos []*ModifyScalingConfigurationRequestInstancePatternInfos `json:"InstancePatternInfos,omitempty" xml:"InstancePatternInfos,omitempty" type:"Repeated"`
+	InstancePatternInfos         []*ModifyScalingConfigurationRequestInstancePatternInfos       `json:"InstancePatternInfos,omitempty" xml:"InstancePatternInfos,omitempty" type:"Repeated"`
+	InstanceTypeCandidateOptions *ModifyScalingConfigurationRequestInstanceTypeCandidateOptions `json:"InstanceTypeCandidateOptions,omitempty" xml:"InstanceTypeCandidateOptions,omitempty" type:"Struct"`
 	// Details of the instance types.
 	InstanceTypeOverrides []*ModifyScalingConfigurationRequestInstanceTypeOverrides `json:"InstanceTypeOverrides,omitempty" xml:"InstanceTypeOverrides,omitempty" type:"Repeated"`
 	// The instance types. If you specify InstanceTypes, InstanceType is ignored.
@@ -629,6 +632,10 @@ func (s *ModifyScalingConfigurationRequest) GetInstancePatternInfos() []*ModifyS
 	return s.InstancePatternInfos
 }
 
+func (s *ModifyScalingConfigurationRequest) GetInstanceTypeCandidateOptions() *ModifyScalingConfigurationRequestInstanceTypeCandidateOptions {
+	return s.InstanceTypeCandidateOptions
+}
+
 func (s *ModifyScalingConfigurationRequest) GetInstanceTypeOverrides() []*ModifyScalingConfigurationRequestInstanceTypeOverrides {
 	return s.InstanceTypeOverrides
 }
@@ -887,6 +894,11 @@ func (s *ModifyScalingConfigurationRequest) SetInstancePatternInfos(v []*ModifyS
 	return s
 }
 
+func (s *ModifyScalingConfigurationRequest) SetInstanceTypeCandidateOptions(v *ModifyScalingConfigurationRequestInstanceTypeCandidateOptions) *ModifyScalingConfigurationRequest {
+	s.InstanceTypeCandidateOptions = v
+	return s
+}
+
 func (s *ModifyScalingConfigurationRequest) SetInstanceTypeOverrides(v []*ModifyScalingConfigurationRequestInstanceTypeOverrides) *ModifyScalingConfigurationRequest {
 	s.InstanceTypeOverrides = v
 	return s
@@ -1113,6 +1125,11 @@ func (s *ModifyScalingConfigurationRequest) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.InstanceTypeCandidateOptions != nil {
+		if err := s.InstanceTypeCandidateOptions.Validate(); err != nil {
+			return err
 		}
 	}
 	if s.InstanceTypeOverrides != nil {
@@ -2225,6 +2242,71 @@ func (s *ModifyScalingConfigurationRequestInstancePatternInfos) SetPhysicalProce
 }
 
 func (s *ModifyScalingConfigurationRequestInstancePatternInfos) Validate() error {
+	return dara.Validate(s)
+}
+
+type ModifyScalingConfigurationRequestInstanceTypeCandidateOptions struct {
+	AllowCidrBlocks          []*string `json:"AllowCidrBlocks,omitempty" xml:"AllowCidrBlocks,omitempty" type:"Repeated"`
+	AllowCrossAz             *bool     `json:"AllowCrossAz,omitempty" xml:"AllowCrossAz,omitempty"`
+	AllowDifferentGeneration *bool     `json:"AllowDifferentGeneration,omitempty" xml:"AllowDifferentGeneration,omitempty"`
+	Enabled                  *bool     `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	MaxPrice                 *float32  `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
+}
+
+func (s ModifyScalingConfigurationRequestInstanceTypeCandidateOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyScalingConfigurationRequestInstanceTypeCandidateOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyScalingConfigurationRequestInstanceTypeCandidateOptions) GetAllowCidrBlocks() []*string {
+	return s.AllowCidrBlocks
+}
+
+func (s *ModifyScalingConfigurationRequestInstanceTypeCandidateOptions) GetAllowCrossAz() *bool {
+	return s.AllowCrossAz
+}
+
+func (s *ModifyScalingConfigurationRequestInstanceTypeCandidateOptions) GetAllowDifferentGeneration() *bool {
+	return s.AllowDifferentGeneration
+}
+
+func (s *ModifyScalingConfigurationRequestInstanceTypeCandidateOptions) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *ModifyScalingConfigurationRequestInstanceTypeCandidateOptions) GetMaxPrice() *float32 {
+	return s.MaxPrice
+}
+
+func (s *ModifyScalingConfigurationRequestInstanceTypeCandidateOptions) SetAllowCidrBlocks(v []*string) *ModifyScalingConfigurationRequestInstanceTypeCandidateOptions {
+	s.AllowCidrBlocks = v
+	return s
+}
+
+func (s *ModifyScalingConfigurationRequestInstanceTypeCandidateOptions) SetAllowCrossAz(v bool) *ModifyScalingConfigurationRequestInstanceTypeCandidateOptions {
+	s.AllowCrossAz = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationRequestInstanceTypeCandidateOptions) SetAllowDifferentGeneration(v bool) *ModifyScalingConfigurationRequestInstanceTypeCandidateOptions {
+	s.AllowDifferentGeneration = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationRequestInstanceTypeCandidateOptions) SetEnabled(v bool) *ModifyScalingConfigurationRequestInstanceTypeCandidateOptions {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationRequestInstanceTypeCandidateOptions) SetMaxPrice(v float32) *ModifyScalingConfigurationRequestInstanceTypeCandidateOptions {
+	s.MaxPrice = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationRequestInstanceTypeCandidateOptions) Validate() error {
 	return dara.Validate(s)
 }
 

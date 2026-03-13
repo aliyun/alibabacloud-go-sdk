@@ -16,7 +16,6 @@ type iQueryPredictiveMetricResponseBody interface {
 }
 
 type QueryPredictiveMetricResponseBody struct {
-	// Predicted monitoring metrics.
 	PredictiveMetrics *QueryPredictiveMetricResponseBodyPredictiveMetrics `json:"PredictiveMetrics,omitempty" xml:"PredictiveMetrics,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,18 +95,8 @@ func (s *QueryPredictiveMetricResponseBodyPredictiveMetrics) Validate() error {
 }
 
 type QueryPredictiveMetricResponseBodyPredictiveMetricsPredictiveMetric struct {
-	// Predicted monitoring value.
-	//
-	// example:
-	//
-	// 10.0
 	MetricValue *string `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mmZ format. The time must be in UTC.
-	//
-	// example:
-	//
-	// 2025-12-17T16:00Z
-	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	Time        *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s QueryPredictiveMetricResponseBodyPredictiveMetricsPredictiveMetric) String() string {

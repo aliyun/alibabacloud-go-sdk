@@ -2261,6 +2261,10 @@ func (client *Client) CreateScalingConfigurationWithOptions(tmpReq *CreateScalin
 		query["InstanceType"] = request.InstanceType
 	}
 
+	if !dara.IsNil(request.InstanceTypeCandidateOptions) {
+		query["InstanceTypeCandidateOptions"] = request.InstanceTypeCandidateOptions
+	}
+
 	if !dara.IsNil(request.InstanceTypeOverrides) {
 		query["InstanceTypeOverrides"] = request.InstanceTypeOverrides
 	}
@@ -8799,6 +8803,10 @@ func (client *Client) ModifyScalingConfigurationWithOptions(tmpReq *ModifyScalin
 		query["InstancePatternInfos"] = request.InstancePatternInfos
 	}
 
+	if !dara.IsNil(request.InstanceTypeCandidateOptions) {
+		query["InstanceTypeCandidateOptions"] = request.InstanceTypeCandidateOptions
+	}
+
 	if !dara.IsNil(request.InstanceTypeOverrides) {
 		query["InstanceTypeOverrides"] = request.InstanceTypeOverrides
 	}
@@ -10782,7 +10790,7 @@ func (client *Client) SetGroupDeletionProtection(request *SetGroupDeletionProtec
 
 // Summary:
 //
-// Sets instance health. At times, the automatic health check system might not sufficiently determine the precise health status of your Elastic Compute Service (ECS) instances or elastic container instances. To overcome this, you can call the SetInstanceHealth operation to swiftly pinpoint problematic instances and resolve issues. This operation is designed to more precisely align with real-world business requirements and tackle O\\&M hurdles efficiently.
+// Sets instance health. At times, the automatic health check system might not sufficiently determine the precise health status of your Elastic Compute Service (ECS) instances or elastic container instances. To overcome this, you can call the SetInstanceHealth operation to swiftly pinpoint problematic instances and resolve issues. This operation is designed to more precisely align with real-world business requirements and tackle O\\\\\\&M hurdles efficiently.
 //
 // Description:
 //
@@ -10842,7 +10850,7 @@ func (client *Client) SetInstanceHealthWithOptions(request *SetInstanceHealthReq
 
 // Summary:
 //
-// Sets instance health. At times, the automatic health check system might not sufficiently determine the precise health status of your Elastic Compute Service (ECS) instances or elastic container instances. To overcome this, you can call the SetInstanceHealth operation to swiftly pinpoint problematic instances and resolve issues. This operation is designed to more precisely align with real-world business requirements and tackle O\\&M hurdles efficiently.
+// Sets instance health. At times, the automatic health check system might not sufficiently determine the precise health status of your Elastic Compute Service (ECS) instances or elastic container instances. To overcome this, you can call the SetInstanceHealth operation to swiftly pinpoint problematic instances and resolve issues. This operation is designed to more precisely align with real-world business requirements and tackle O\\\\\\&M hurdles efficiently.
 //
 // Description:
 //

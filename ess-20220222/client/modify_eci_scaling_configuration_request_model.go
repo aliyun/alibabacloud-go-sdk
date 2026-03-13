@@ -1599,14 +1599,41 @@ func (s *ModifyEciScalingConfigurationRequestContainers) Validate() error {
 }
 
 type ModifyEciScalingConfigurationRequestContainersLivenessProbe struct {
-	Exec                *ModifyEciScalingConfigurationRequestContainersLivenessProbeExec      `json:"Exec,omitempty" xml:"Exec,omitempty" type:"Struct"`
-	FailureThreshold    *int32                                                                `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
-	HttpGet             *ModifyEciScalingConfigurationRequestContainersLivenessProbeHttpGet   `json:"HttpGet,omitempty" xml:"HttpGet,omitempty" type:"Struct"`
-	InitialDelaySeconds *int32                                                                `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
-	PeriodSeconds       *int32                                                                `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
-	SuccessThreshold    *int32                                                                `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
-	TcpSocket           *ModifyEciScalingConfigurationRequestContainersLivenessProbeTcpSocket `json:"TcpSocket,omitempty" xml:"TcpSocket,omitempty" type:"Struct"`
-	TimeoutSeconds      *int32                                                                `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+	Exec *ModifyEciScalingConfigurationRequestContainersLivenessProbeExec `json:"Exec,omitempty" xml:"Exec,omitempty" type:"Struct"`
+	// The minimum number of consecutive failures that must occur for a liveness probe to be considered failed.
+	//
+	// Default value: 3.
+	//
+	// example:
+	//
+	// 3
+	FailureThreshold *int32                                                              `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
+	HttpGet          *ModifyEciScalingConfigurationRequestContainersLivenessProbeHttpGet `json:"HttpGet,omitempty" xml:"HttpGet,omitempty" type:"Struct"`
+	// The interval between the launch of the container and the onset of a liveness probe. Unit: seconds.
+	//
+	// example:
+	//
+	// 5
+	InitialDelaySeconds *int32 `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
+	// The interval between consecutive liveness probes. Unit: seconds. Default value: 10. Minimum value: 1.
+	//
+	// example:
+	//
+	// 5
+	PeriodSeconds *int32 `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	// The minimum number of consecutive successes that must occur to consider a failed liveness probe successful. Default value: 1. Set the value to 1.
+	//
+	// example:
+	//
+	// 1
+	SuccessThreshold *int32                                                                `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
+	TcpSocket        *ModifyEciScalingConfigurationRequestContainersLivenessProbeTcpSocket `json:"TcpSocket,omitempty" xml:"TcpSocket,omitempty" type:"Struct"`
+	// The timeout limit for a liveness probe to be complete. Unit: seconds. Default value: 1. Minimum value: 1.
+	//
+	// example:
+	//
+	// 1
+	TimeoutSeconds *int32 `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
 }
 
 func (s ModifyEciScalingConfigurationRequestContainersLivenessProbe) String() string {
@@ -1709,6 +1736,7 @@ func (s *ModifyEciScalingConfigurationRequestContainersLivenessProbe) Validate()
 }
 
 type ModifyEciScalingConfigurationRequestContainersLivenessProbeExec struct {
+	// The command executed in the container when using the command line to perform the health check.
 	Commands []*string `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
 }
 
@@ -1734,8 +1762,27 @@ func (s *ModifyEciScalingConfigurationRequestContainersLivenessProbeExec) Valida
 }
 
 type ModifyEciScalingConfigurationRequestContainersLivenessProbeHttpGet struct {
-	Path   *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Port   *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The path to which you want to send the HTTP GET request to perform a liveness probe.
+	//
+	// example:
+	//
+	// /healthyz
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The port over which you want to send the HTTP GET request to perform a liveness probe.
+	//
+	// example:
+	//
+	// 8888
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The protocol type of the HTTP GET request that you use to perform a liveness probe. Valid values:
+	//
+	// 	- HTTP
+	//
+	// 	- HTTPS
+	//
+	// example:
+	//
+	// HTTP
 	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
 }
 
@@ -1779,6 +1826,11 @@ func (s *ModifyEciScalingConfigurationRequestContainersLivenessProbeHttpGet) Val
 }
 
 type ModifyEciScalingConfigurationRequestContainersLivenessProbeTcpSocket struct {
+	// The port detected by the TCP socket when you perform a liveness probe.
+	//
+	// example:
+	//
+	// 1
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
@@ -1804,14 +1856,41 @@ func (s *ModifyEciScalingConfigurationRequestContainersLivenessProbeTcpSocket) V
 }
 
 type ModifyEciScalingConfigurationRequestContainersReadinessProbe struct {
-	Exec                *ModifyEciScalingConfigurationRequestContainersReadinessProbeExec      `json:"Exec,omitempty" xml:"Exec,omitempty" type:"Struct"`
-	FailureThreshold    *int32                                                                 `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
-	HttpGet             *ModifyEciScalingConfigurationRequestContainersReadinessProbeHttpGet   `json:"HttpGet,omitempty" xml:"HttpGet,omitempty" type:"Struct"`
-	InitialDelaySeconds *int32                                                                 `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
-	PeriodSeconds       *int32                                                                 `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
-	SuccessThreshold    *int32                                                                 `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
-	TcpSocket           *ModifyEciScalingConfigurationRequestContainersReadinessProbeTcpSocket `json:"TcpSocket,omitempty" xml:"TcpSocket,omitempty" type:"Struct"`
-	TimeoutSeconds      *int32                                                                 `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+	Exec *ModifyEciScalingConfigurationRequestContainersReadinessProbeExec `json:"Exec,omitempty" xml:"Exec,omitempty" type:"Struct"`
+	// The minimum number of consecutive failures that must occur for a readiness probe to be considered failed.
+	//
+	// Default value: 3.
+	//
+	// example:
+	//
+	// 3
+	FailureThreshold *int32                                                               `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
+	HttpGet          *ModifyEciScalingConfigurationRequestContainersReadinessProbeHttpGet `json:"HttpGet,omitempty" xml:"HttpGet,omitempty" type:"Struct"`
+	// The interval between the launch of the container and the onset of a readiness probe. Unit: seconds.
+	//
+	// example:
+	//
+	// 3
+	InitialDelaySeconds *int32 `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
+	// The interval between consecutive readiness probes. Unit: seconds. Default value: 10. Minimum value: 1.
+	//
+	// example:
+	//
+	// 3
+	PeriodSeconds *int32 `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	// The minimum number of consecutive successes that must occur for a failed readiness probe to be considered successful. Default value: 1. Set the value to 1.
+	//
+	// example:
+	//
+	// 1
+	SuccessThreshold *int32                                                                 `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
+	TcpSocket        *ModifyEciScalingConfigurationRequestContainersReadinessProbeTcpSocket `json:"TcpSocket,omitempty" xml:"TcpSocket,omitempty" type:"Struct"`
+	// The timeout limit for a readiness probe to be complete. Unit: seconds. Default value: 1. Minimum value: 1.
+	//
+	// example:
+	//
+	// 1
+	TimeoutSeconds *int32 `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
 }
 
 func (s ModifyEciScalingConfigurationRequestContainersReadinessProbe) String() string {
@@ -1914,6 +1993,7 @@ func (s *ModifyEciScalingConfigurationRequestContainersReadinessProbe) Validate(
 }
 
 type ModifyEciScalingConfigurationRequestContainersReadinessProbeExec struct {
+	// The commands executed in the container when using the command line to perform the health check.
 	Commands []*string `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
 }
 
@@ -1939,8 +2019,27 @@ func (s *ModifyEciScalingConfigurationRequestContainersReadinessProbeExec) Valid
 }
 
 type ModifyEciScalingConfigurationRequestContainersReadinessProbeHttpGet struct {
-	Path   *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Port   *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The path to which you want to send the HTTP GET request to perform a readiness probe.
+	//
+	// example:
+	//
+	// /healthz
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The port over which you want to send the HTTP GET request to perform a readiness probe.
+	//
+	// example:
+	//
+	// 8080
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The protocol type of the HTTP GET request that you use to perform a readiness probe. Valid values:
+	//
+	// 	- HTTP
+	//
+	// 	- HTTPS
+	//
+	// example:
+	//
+	// HTTP
 	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
 }
 
@@ -1984,6 +2083,11 @@ func (s *ModifyEciScalingConfigurationRequestContainersReadinessProbeHttpGet) Va
 }
 
 type ModifyEciScalingConfigurationRequestContainersReadinessProbeTcpSocket struct {
+	// The port detected by the TCP socket when you perform a readiness probe.
+	//
+	// example:
+	//
+	// 8000
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
@@ -2009,9 +2113,19 @@ func (s *ModifyEciScalingConfigurationRequestContainersReadinessProbeTcpSocket) 
 }
 
 type ModifyEciScalingConfigurationRequestContainersSecurityContext struct {
-	Capability             *ModifyEciScalingConfigurationRequestContainersSecurityContextCapability `json:"Capability,omitempty" xml:"Capability,omitempty" type:"Struct"`
-	ReadOnlyRootFilesystem *bool                                                                    `json:"ReadOnlyRootFilesystem,omitempty" xml:"ReadOnlyRootFilesystem,omitempty"`
-	RunAsUser              *int64                                                                   `json:"RunAsUser,omitempty" xml:"RunAsUser,omitempty"`
+	Capability *ModifyEciScalingConfigurationRequestContainersSecurityContextCapability `json:"Capability,omitempty" xml:"Capability,omitempty" type:"Struct"`
+	// Specifies whether the root file system is read-only. Set the value to true.
+	//
+	// example:
+	//
+	// true
+	ReadOnlyRootFilesystem *bool `json:"ReadOnlyRootFilesystem,omitempty" xml:"ReadOnlyRootFilesystem,omitempty"`
+	// The ID of the user that runs the container.
+	//
+	// example:
+	//
+	// 1000
+	RunAsUser *int64 `json:"RunAsUser,omitempty" xml:"RunAsUser,omitempty"`
 }
 
 func (s ModifyEciScalingConfigurationRequestContainersSecurityContext) String() string {
@@ -2059,6 +2173,9 @@ func (s *ModifyEciScalingConfigurationRequestContainersSecurityContext) Validate
 }
 
 type ModifyEciScalingConfigurationRequestContainersSecurityContextCapability struct {
+	// The permissions that you want to grant to the processes in the container. Valid values: NET_ADMIN and NET_RAW.
+	//
+	// >  To use NET_RAW, submit a ticket.
 	Adds []*string `json:"Adds,omitempty" xml:"Adds,omitempty" type:"Repeated"`
 }
 
@@ -2144,6 +2261,11 @@ func (s *ModifyEciScalingConfigurationRequestContainersEnvironmentVars) Validate
 }
 
 type ModifyEciScalingConfigurationRequestContainersEnvironmentVarsFieldRef struct {
+	// >  This parameter is unavailable.
+	//
+	// example:
+	//
+	// path
 	FieldPath *string `json:"FieldPath,omitempty" xml:"FieldPath,omitempty"`
 }
 
@@ -2687,9 +2809,19 @@ func (s *ModifyEciScalingConfigurationRequestInitContainers) Validate() error {
 }
 
 type ModifyEciScalingConfigurationRequestInitContainersSecurityContext struct {
-	Capability             *ModifyEciScalingConfigurationRequestInitContainersSecurityContextCapability `json:"Capability,omitempty" xml:"Capability,omitempty" type:"Struct"`
-	ReadOnlyRootFilesystem *bool                                                                        `json:"ReadOnlyRootFilesystem,omitempty" xml:"ReadOnlyRootFilesystem,omitempty"`
-	RunAsUser              *int64                                                                       `json:"RunAsUser,omitempty" xml:"RunAsUser,omitempty"`
+	Capability *ModifyEciScalingConfigurationRequestInitContainersSecurityContextCapability `json:"Capability,omitempty" xml:"Capability,omitempty" type:"Struct"`
+	// >  This parameter is unavailable.
+	//
+	// example:
+	//
+	// false
+	ReadOnlyRootFilesystem *bool `json:"ReadOnlyRootFilesystem,omitempty" xml:"ReadOnlyRootFilesystem,omitempty"`
+	// The ID of the user who runs the init container.
+	//
+	// example:
+	//
+	// 587
+	RunAsUser *int64 `json:"RunAsUser,omitempty" xml:"RunAsUser,omitempty"`
 }
 
 func (s ModifyEciScalingConfigurationRequestInitContainersSecurityContext) String() string {
@@ -2737,6 +2869,9 @@ func (s *ModifyEciScalingConfigurationRequestInitContainersSecurityContext) Vali
 }
 
 type ModifyEciScalingConfigurationRequestInitContainersSecurityContextCapability struct {
+	// The permissions that you want to grant to the processes in the init container. Valid values: NET_ADMIN and NET_RAW.
+	//
+	// >  To use NET_RAW, submit a ticket.
 	Adds []*string `json:"Adds,omitempty" xml:"Adds,omitempty" type:"Repeated"`
 }
 
@@ -2822,6 +2957,11 @@ func (s *ModifyEciScalingConfigurationRequestInitContainersInitContainerEnvironm
 }
 
 type ModifyEciScalingConfigurationRequestInitContainersInitContainerEnvironmentVarsFieldRef struct {
+	// >  This parameter is unavailable.
+	//
+	// example:
+	//
+	// path
 	FieldPath *string `json:"FieldPath,omitempty" xml:"FieldPath,omitempty"`
 }
 
@@ -3243,9 +3383,24 @@ func (s *ModifyEciScalingConfigurationRequestVolumes) Validate() error {
 }
 
 type ModifyEciScalingConfigurationRequestVolumesDiskVolume struct {
-	DiskId   *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	DiskSize *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	FsType   *string `json:"FsType,omitempty" xml:"FsType,omitempty"`
+	// The ID of the disk volume.
+	//
+	// example:
+	//
+	// d-xx
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The volume size. Unit: GiB.
+	//
+	// example:
+	//
+	// 15
+	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// We recommend that you specify `FlexVolume.FsType` instead of DiskVolume.FsType.
+	//
+	// example:
+	//
+	// xfs
+	FsType *string `json:"FsType,omitempty" xml:"FsType,omitempty"`
 }
 
 func (s ModifyEciScalingConfigurationRequestVolumesDiskVolume) String() string {
@@ -3288,7 +3443,17 @@ func (s *ModifyEciScalingConfigurationRequestVolumesDiskVolume) Validate() error
 }
 
 type ModifyEciScalingConfigurationRequestVolumesEmptyDirVolume struct {
-	Medium    *string `json:"Medium,omitempty" xml:"Medium,omitempty"`
+	// The storage medium of the emptyDir volume. If you do not specify a storage medium for the emptyDir volume, the emptyDir volume stores data in the file system of a node. A value of memory specifies that the emptyDir volume stores data in the memory.
+	//
+	// example:
+	//
+	// memory
+	Medium *string `json:"Medium,omitempty" xml:"Medium,omitempty"`
+	// The size of the emptyDir volume. The value contains a unit. We recommend that you use Gi or Mi as the unit.
+	//
+	// example:
+	//
+	// 256Mi
 	SizeLimit *string `json:"SizeLimit,omitempty" xml:"SizeLimit,omitempty"`
 }
 
@@ -3323,8 +3488,25 @@ func (s *ModifyEciScalingConfigurationRequestVolumesEmptyDirVolume) Validate() e
 }
 
 type ModifyEciScalingConfigurationRequestVolumesFlexVolume struct {
-	Driver  *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
-	FsType  *string `json:"FsType,omitempty" xml:"FsType,omitempty"`
+	// The name of the FlexVolume driver.
+	//
+	// example:
+	//
+	// flexvolume
+	Driver *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
+	// The type of the mounted file system. The default value is determined by the script of FlexVolume.
+	//
+	// example:
+	//
+	// ext4
+	FsType *string `json:"FsType,omitempty" xml:"FsType,omitempty"`
+	// The FlexVolume options. Each option is a key-value pair in a JSON string.
+	//
+	// For example, if you use FlexVolume to mount a disk, the format of Options is `{"volumeId":"d-2zehdahrwoa7srg****","performanceLevel": "PL2"}`.
+	//
+	// example:
+	//
+	// {"volumeId":"d-2zehdahrwoa7srg****","performanceLevel": "PL2"}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 }
 
@@ -3368,7 +3550,17 @@ func (s *ModifyEciScalingConfigurationRequestVolumesFlexVolume) Validate() error
 }
 
 type ModifyEciScalingConfigurationRequestVolumesHostPathVolume struct {
+	// The absolute path on the host.
+	//
+	// example:
+	//
+	// /xx/xx/name
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The type of host directory. For example: File, Directory, Socket, etc.
+	//
+	// example:
+	//
+	// Directory
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -3403,9 +3595,26 @@ func (s *ModifyEciScalingConfigurationRequestVolumesHostPathVolume) Validate() e
 }
 
 type ModifyEciScalingConfigurationRequestVolumesNFSVolume struct {
-	Path     *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	ReadOnly *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	Server   *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// The path to the Network File System (NFS) volume.
+	//
+	// example:
+	//
+	// /share
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// Specifies whether the permissions on the NFS volume are read-only.
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// false
+	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	// The endpoint of the NFS server.
+	//
+	// example:
+	//
+	// 3f9cd4a596-naw76.cn-shanghai.nas.aliyuncs.com
+	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
 }
 
 func (s ModifyEciScalingConfigurationRequestVolumesNFSVolume) String() string {

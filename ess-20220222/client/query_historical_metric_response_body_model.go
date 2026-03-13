@@ -16,7 +16,6 @@ type iQueryHistoricalMetricResponseBody interface {
 }
 
 type QueryHistoricalMetricResponseBody struct {
-	// The monitoring metrics of the prediction rule.
 	HistoricalMetrics *QueryHistoricalMetricResponseBodyHistoricalMetrics `json:"HistoricalMetrics,omitempty" xml:"HistoricalMetrics,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,18 +95,8 @@ func (s *QueryHistoricalMetricResponseBodyHistoricalMetrics) Validate() error {
 }
 
 type QueryHistoricalMetricResponseBodyHistoricalMetricsHistoricalMetric struct {
-	// The value of the metric.
-	//
-	// example:
-	//
-	// 10.0
 	MetricValue *string `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
-	// The point in time of the monitoring metric. The value must be in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format.
-	//
-	// example:
-	//
-	// 2025-12-17T16:00Z
-	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	Time        *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s QueryHistoricalMetricResponseBodyHistoricalMetricsHistoricalMetric) String() string {

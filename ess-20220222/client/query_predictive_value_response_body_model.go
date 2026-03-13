@@ -16,7 +16,6 @@ type iQueryPredictiveValueResponseBody interface {
 }
 
 type QueryPredictiveValueResponseBody struct {
-	// The number of predicted instances in the scaling group.
 	PredictiveValues *QueryPredictiveValueResponseBodyPredictiveValues `json:"PredictiveValues,omitempty" xml:"PredictiveValues,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,18 +95,8 @@ func (s *QueryPredictiveValueResponseBodyPredictiveValues) Validate() error {
 }
 
 type QueryPredictiveValueResponseBodyPredictiveValuesPredictiveValue struct {
-	// The point in time, in the ISO 8601 standard, in the yyyy-MM-ddTHH:mmZ format.
-	//
-	// example:
-	//
-	// 2025-12-17T10:00Z
-	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The number of instances.
-	//
-	// example:
-	//
-	// 3
-	Value *int32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	Time  *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	Value *int32  `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s QueryPredictiveValueResponseBodyPredictiveValuesPredictiveValue) String() string {
