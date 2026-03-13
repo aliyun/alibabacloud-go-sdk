@@ -242,7 +242,7 @@ func (client *Client) AddFilesFromAuthorizedOssWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Applies for a document upload lease to upload a document.
+// Applies for a document upload lease to upload a document. You cannot use the API to upload structured documents. Use the console instead.
 //
 // Description:
 //
@@ -649,6 +649,10 @@ func (client *Client) CreateIndexWithContext(ctx context.Context, WorkspaceId *s
 		query["TableIds"] = request.TableIdsShrink
 	}
 
+	if !dara.IsNil(request.ChannelType) {
+		query["channelType"] = request.ChannelType
+	}
+
 	if !dara.IsNil(request.ChunkMode) {
 		query["chunkMode"] = request.ChunkMode
 	}
@@ -897,7 +901,7 @@ func (client *Client) DeleteAgentWithContext(ctx context.Context, workspaceId *s
 
 // Summary:
 //
-// 删除类目
+// Deletes a specified category permanently.
 //
 // @param headers - map
 //
@@ -1007,7 +1011,7 @@ func (client *Client) DeleteChunkWithContext(ctx context.Context, WorkspaceId *s
 
 // Summary:
 //
-// 删除文档
+// Deletes a specified unstructured document permanently. You cannot use the API to delete structured documents, see the Usage notes section of this topic.
 //
 // @param headers - map
 //
@@ -1099,7 +1103,7 @@ func (client *Client) DeleteIndexWithContext(ctx context.Context, WorkspaceId *s
 
 // Summary:
 //
-// Deletes one or more documents from a specified unstructured knowledge base permanently.
+// Deletes one or more documents from a specified unstructured knowledge base permanently. You cannot use the API to delete structured documents, see the Usage notes section of this topic.
 //
 // Description:
 //
@@ -1267,7 +1271,7 @@ func (client *Client) DeletePromptTemplateWithContext(ctx context.Context, works
 
 // Summary:
 //
-// Queries the details of an unstructured document.
+// Obtains the basic information of a document, including the document name, type, and status.
 //
 // Description:
 //
@@ -1526,7 +1530,7 @@ func (client *Client) GetIndexJobStatusWithContext(ctx context.Context, Workspac
 
 // Summary:
 //
-// 获取索引监控情况
+// \\<props="intl">Currently, this API is not supported.\\
 //
 // @param request - GetIndexMonitorRequest
 //
@@ -1827,7 +1831,7 @@ func (client *Client) HighCodeDeployWithContext(ctx context.Context, workspaceId
 
 // Summary:
 //
-// # ListCategory
+// Lists the details about the next or multiple categories in a specified workspace.
 //
 // @param request - ListCategoryRequest
 //
@@ -2172,7 +2176,7 @@ func (client *Client) ListIndexFileDetailsWithContext(ctx context.Context, Works
 
 // Summary:
 //
-// Lists knowledge bases in a specified workspace.
+// Lists the details about the next or multiple knowledge bases in a specified workspace.
 //
 // Description:
 //
@@ -2572,7 +2576,7 @@ func (client *Client) RetrieveWithContext(ctx context.Context, WorkspaceId *stri
 
 // Summary:
 //
-// Adds parsed documents to an unstructured knowledge base.
+// Adds parsed documents to an unstructured knowledge base. You cannot use the API to add knowledge to structured knowledge bases, see the Usage notes section of this topic.
 //
 // Description:
 //
@@ -2959,7 +2963,7 @@ func (client *Client) UpdateChunkWithContext(ctx context.Context, WorkspaceId *s
 
 // Summary:
 //
-// 更新文档Tag
+// Updates the tags of a specified document.
 //
 // @param tmpReq - UpdateFileTagRequest
 //
@@ -3012,7 +3016,7 @@ func (client *Client) UpdateFileTagWithContext(ctx context.Context, WorkspaceId 
 
 // Summary:
 //
-// 更新索引任务
+// \\<props="intl">Currently, this API is not supported.\\
 //
 // @param request - UpdateIndexRequest
 //

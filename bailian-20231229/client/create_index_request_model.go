@@ -49,6 +49,8 @@ type iCreateIndexRequest interface {
 	GetStructureType() *string
 	SetTableIds(v []*string) *CreateIndexRequest
 	GetTableIds() []*string
+	SetChannelType(v string) *CreateIndexRequest
+	GetChannelType() *string
 	SetChunkMode(v string) *CreateIndexRequest
 	GetChunkMode() *string
 	SetConnectId(v string) *CreateIndexRequest
@@ -85,8 +87,9 @@ type CreateIndexRequest struct {
 	// example:
 	//
 	// 128
-	ChunkSize *int32                       `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
-	Columns   []*CreateIndexRequestColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	ChunkSize *int32 `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	// > This parameter is not available. Do not specify this parameter.
+	Columns []*CreateIndexRequestColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
 	// > This parameter is not available. Do not specify this parameter.
 	CreateIndexType *string `json:"CreateIndexType,omitempty" xml:"CreateIndexType,omitempty"`
 	// >  This parameter is not available. Do not specify this parameter.
@@ -218,12 +221,19 @@ type CreateIndexRequest struct {
 	StructureType *string `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
 	// > This parameter is not available. Do not specify this parameter.
 	TableIds []*string `json:"TableIds,omitempty" xml:"TableIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// connector
+	ChannelType *string `json:"channelType,omitempty" xml:"channelType,omitempty"`
 	// > This parameter is not available. Do not specify this parameter.
 	//
 	// example:
 	//
 	// regex
-	ChunkMode      *string `json:"chunkMode,omitempty" xml:"chunkMode,omitempty"`
+	ChunkMode *string `json:"chunkMode,omitempty" xml:"chunkMode,omitempty"`
+	// example:
+	//
+	// conn_mysql_xxx_xxx
 	ConnectId      *string `json:"connectId,omitempty" xml:"connectId,omitempty"`
 	Database       *string `json:"database,omitempty" xml:"database,omitempty"`
 	DatasourceCode *string `json:"datasourceCode,omitempty" xml:"datasourceCode,omitempty"`
@@ -347,6 +357,10 @@ func (s *CreateIndexRequest) GetStructureType() *string {
 
 func (s *CreateIndexRequest) GetTableIds() []*string {
 	return s.TableIds
+}
+
+func (s *CreateIndexRequest) GetChannelType() *string {
+	return s.ChannelType
 }
 
 func (s *CreateIndexRequest) GetChunkMode() *string {
@@ -493,6 +507,11 @@ func (s *CreateIndexRequest) SetTableIds(v []*string) *CreateIndexRequest {
 	return s
 }
 
+func (s *CreateIndexRequest) SetChannelType(v string) *CreateIndexRequest {
+	s.ChannelType = &v
+	return s
+}
+
 func (s *CreateIndexRequest) SetChunkMode(v string) *CreateIndexRequest {
 	s.ChunkMode = &v
 	return s
@@ -576,11 +595,36 @@ func (s *CreateIndexRequest) Validate() error {
 }
 
 type CreateIndexRequestColumns struct {
-	Column   *string `json:"Column,omitempty" xml:"Column,omitempty"`
-	IsRecall *bool   `json:"IsRecall,omitempty" xml:"IsRecall,omitempty"`
-	IsSearch *bool   `json:"IsSearch,omitempty" xml:"IsSearch,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// > This parameter is not available. Do not specify this parameter.
+	//
+	// example:
+	//
+	// source_column_name1
+	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
+	// > This parameter is not available. Do not specify this parameter.
+	//
+	// example:
+	//
+	// true
+	IsRecall *bool `json:"IsRecall,omitempty" xml:"IsRecall,omitempty"`
+	// > This parameter is not available. Do not specify this parameter.
+	//
+	// example:
+	//
+	// true
+	IsSearch *bool `json:"IsSearch,omitempty" xml:"IsSearch,omitempty"`
+	// > This parameter is not available. Do not specify this parameter.
+	//
+	// example:
+	//
+	// index_column_name1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// > This parameter is not available. Do not specify this parameter.
+	//
+	// example:
+	//
+	// string
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateIndexRequestColumns) String() string {

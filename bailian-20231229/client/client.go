@@ -372,7 +372,7 @@ func (client *Client) AddFilesFromAuthorizedOss(WorkspaceId *string, request *Ad
 
 // Summary:
 //
-// Applies for a document upload lease to upload a document.
+// Applies for a document upload lease to upload a document. You cannot use the API to upload structured documents. Use the console instead.
 //
 // Description:
 //
@@ -445,7 +445,7 @@ func (client *Client) ApplyFileUploadLeaseWithOptions(CategoryId *string, Worksp
 
 // Summary:
 //
-// Applies for a document upload lease to upload a document.
+// Applies for a document upload lease to upload a document. You cannot use the API to upload structured documents. Use the console instead.
 //
 // Description:
 //
@@ -869,6 +869,10 @@ func (client *Client) CreateIndexWithOptions(WorkspaceId *string, tmpReq *Create
 		query["TableIds"] = request.TableIdsShrink
 	}
 
+	if !dara.IsNil(request.ChannelType) {
+		query["channelType"] = request.ChannelType
+	}
+
 	if !dara.IsNil(request.ChunkMode) {
 		query["chunkMode"] = request.ChunkMode
 	}
@@ -1228,7 +1232,7 @@ func (client *Client) DeleteAgent(workspaceId *string, appCode *string) (_result
 
 // Summary:
 //
-// 删除类目
+// Deletes a specified category permanently.
 //
 // @param headers - map
 //
@@ -1261,7 +1265,7 @@ func (client *Client) DeleteCategoryWithOptions(CategoryId *string, WorkspaceId 
 
 // Summary:
 //
-// 删除类目
+// Deletes a specified category permanently.
 //
 // @return DeleteCategoryResponse
 func (client *Client) DeleteCategory(CategoryId *string, WorkspaceId *string) (_result *DeleteCategoryResponse, _err error) {
@@ -1394,7 +1398,7 @@ func (client *Client) DeleteChunk(WorkspaceId *string, request *DeleteChunkReque
 
 // Summary:
 //
-// 删除文档
+// Deletes a specified unstructured document permanently. You cannot use the API to delete structured documents, see the Usage notes section of this topic.
 //
 // @param headers - map
 //
@@ -1427,7 +1431,7 @@ func (client *Client) DeleteFileWithOptions(FileId *string, WorkspaceId *string,
 
 // Summary:
 //
-// 删除文档
+// Deletes a specified unstructured document permanently. You cannot use the API to delete structured documents, see the Usage notes section of this topic.
 //
 // @return DeleteFileResponse
 func (client *Client) DeleteFile(FileId *string, WorkspaceId *string) (_result *DeleteFileResponse, _err error) {
@@ -1534,7 +1538,7 @@ func (client *Client) DeleteIndex(WorkspaceId *string, request *DeleteIndexReque
 
 // Summary:
 //
-// Deletes one or more documents from a specified unstructured knowledge base permanently.
+// Deletes one or more documents from a specified unstructured knowledge base permanently. You cannot use the API to delete structured documents, see the Usage notes section of this topic.
 //
 // Description:
 //
@@ -1603,7 +1607,7 @@ func (client *Client) DeleteIndexDocumentWithOptions(WorkspaceId *string, tmpReq
 
 // Summary:
 //
-// Deletes one or more documents from a specified unstructured knowledge base permanently.
+// Deletes one or more documents from a specified unstructured knowledge base permanently. You cannot use the API to delete structured documents, see the Usage notes section of this topic.
 //
 // Description:
 //
@@ -1784,7 +1788,7 @@ func (client *Client) DeletePromptTemplate(workspaceId *string, promptTemplateId
 
 // Summary:
 //
-// Queries the details of an unstructured document.
+// Obtains the basic information of a document, including the document name, type, and status.
 //
 // Description:
 //
@@ -1827,7 +1831,7 @@ func (client *Client) DescribeFileWithOptions(WorkspaceId *string, FileId *strin
 
 // Summary:
 //
-// Queries the details of an unstructured document.
+// Obtains the basic information of a document, including the document name, type, and status.
 //
 // Description:
 //
@@ -2154,7 +2158,7 @@ func (client *Client) GetIndexJobStatus(WorkspaceId *string, request *GetIndexJo
 
 // Summary:
 //
-// 获取索引监控情况
+// \\<props="intl">Currently, this API is not supported.\\
 //
 // @param request - GetIndexMonitorRequest
 //
@@ -2209,7 +2213,7 @@ func (client *Client) GetIndexMonitorWithOptions(WorkspaceId *string, request *G
 
 // Summary:
 //
-// 获取索引监控情况
+// \\<props="intl">Currently, this API is not supported.\\
 //
 // @param request - GetIndexMonitorRequest
 //
@@ -2580,7 +2584,7 @@ func (client *Client) HighCodeDeploy(workspaceId *string, request *HighCodeDeplo
 
 // Summary:
 //
-// # ListCategory
+// Lists the details about the next or multiple categories in a specified workspace.
 //
 // @param request - ListCategoryRequest
 //
@@ -2643,7 +2647,7 @@ func (client *Client) ListCategoryWithOptions(WorkspaceId *string, request *List
 
 // Summary:
 //
-// # ListCategory
+// Lists the details about the next or multiple categories in a specified workspace.
 //
 // @param request - ListCategoryRequest
 //
@@ -3042,7 +3046,7 @@ func (client *Client) ListIndexFileDetails(WorkspaceId *string, request *ListInd
 
 // Summary:
 //
-// Lists knowledge bases in a specified workspace.
+// Lists the details about the next or multiple knowledge bases in a specified workspace.
 //
 // Description:
 //
@@ -3101,7 +3105,7 @@ func (client *Client) ListIndicesWithOptions(WorkspaceId *string, request *ListI
 
 // Summary:
 //
-// Lists knowledge bases in a specified workspace.
+// Lists the details about the next or multiple knowledge bases in a specified workspace.
 //
 // Description:
 //
@@ -3568,7 +3572,7 @@ func (client *Client) Retrieve(WorkspaceId *string, request *RetrieveRequest) (_
 
 // Summary:
 //
-// Adds parsed documents to an unstructured knowledge base.
+// Adds parsed documents to an unstructured knowledge base. You cannot use the API to add knowledge to structured knowledge bases, see the Usage notes section of this topic.
 //
 // Description:
 //
@@ -3667,7 +3671,7 @@ func (client *Client) SubmitIndexAddDocumentsJobWithOptions(WorkspaceId *string,
 
 // Summary:
 //
-// Adds parsed documents to an unstructured knowledge base.
+// Adds parsed documents to an unstructured knowledge base. You cannot use the API to add knowledge to structured knowledge bases, see the Usage notes section of this topic.
 //
 // Description:
 //
@@ -4088,7 +4092,7 @@ func (client *Client) UpdateChunk(WorkspaceId *string, request *UpdateChunkReque
 
 // Summary:
 //
-// 更新文档Tag
+// Updates the tags of a specified document.
 //
 // @param tmpReq - UpdateFileTagRequest
 //
@@ -4141,7 +4145,7 @@ func (client *Client) UpdateFileTagWithOptions(WorkspaceId *string, FileId *stri
 
 // Summary:
 //
-// 更新文档Tag
+// Updates the tags of a specified document.
 //
 // @param request - UpdateFileTagRequest
 //
@@ -4160,7 +4164,7 @@ func (client *Client) UpdateFileTag(WorkspaceId *string, FileId *string, request
 
 // Summary:
 //
-// 更新索引任务
+// \\<props="intl">Currently, this API is not supported.\\
 //
 // @param request - UpdateIndexRequest
 //
@@ -4235,7 +4239,7 @@ func (client *Client) UpdateIndexWithOptions(WorkspaceId *string, request *Updat
 
 // Summary:
 //
-// 更新索引任务
+// \\<props="intl">Currently, this API is not supported.\\
 //
 // @param request - UpdateIndexRequest
 //

@@ -22,7 +22,7 @@ type iHighCodeDeployResponseBody interface {
 type HighCodeDeployResponseBody struct {
 	// example:
 	//
-	// {\"key\": \"value\"}
+	// {\\"key\\": \\"value\\"}
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
 	// example:
 	//

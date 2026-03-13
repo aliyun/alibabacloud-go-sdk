@@ -49,6 +49,8 @@ type iCreateIndexShrinkRequest interface {
 	GetStructureType() *string
 	SetTableIdsShrink(v string) *CreateIndexShrinkRequest
 	GetTableIdsShrink() *string
+	SetChannelType(v string) *CreateIndexShrinkRequest
+	GetChannelType() *string
 	SetChunkMode(v string) *CreateIndexShrinkRequest
 	GetChunkMode() *string
 	SetConnectId(v string) *CreateIndexShrinkRequest
@@ -85,7 +87,8 @@ type CreateIndexShrinkRequest struct {
 	// example:
 	//
 	// 128
-	ChunkSize     *int32  `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	ChunkSize *int32 `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	// > This parameter is not available. Do not specify this parameter.
 	ColumnsShrink *string `json:"Columns,omitempty" xml:"Columns,omitempty"`
 	// > This parameter is not available. Do not specify this parameter.
 	CreateIndexType *string `json:"CreateIndexType,omitempty" xml:"CreateIndexType,omitempty"`
@@ -218,12 +221,19 @@ type CreateIndexShrinkRequest struct {
 	StructureType *string `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
 	// > This parameter is not available. Do not specify this parameter.
 	TableIdsShrink *string `json:"TableIds,omitempty" xml:"TableIds,omitempty"`
+	// example:
+	//
+	// connector
+	ChannelType *string `json:"channelType,omitempty" xml:"channelType,omitempty"`
 	// > This parameter is not available. Do not specify this parameter.
 	//
 	// example:
 	//
 	// regex
-	ChunkMode      *string `json:"chunkMode,omitempty" xml:"chunkMode,omitempty"`
+	ChunkMode *string `json:"chunkMode,omitempty" xml:"chunkMode,omitempty"`
+	// example:
+	//
+	// conn_mysql_xxx_xxx
 	ConnectId      *string `json:"connectId,omitempty" xml:"connectId,omitempty"`
 	Database       *string `json:"database,omitempty" xml:"database,omitempty"`
 	DatasourceCode *string `json:"datasourceCode,omitempty" xml:"datasourceCode,omitempty"`
@@ -347,6 +357,10 @@ func (s *CreateIndexShrinkRequest) GetStructureType() *string {
 
 func (s *CreateIndexShrinkRequest) GetTableIdsShrink() *string {
 	return s.TableIdsShrink
+}
+
+func (s *CreateIndexShrinkRequest) GetChannelType() *string {
+	return s.ChannelType
 }
 
 func (s *CreateIndexShrinkRequest) GetChunkMode() *string {
@@ -490,6 +504,11 @@ func (s *CreateIndexShrinkRequest) SetStructureType(v string) *CreateIndexShrink
 
 func (s *CreateIndexShrinkRequest) SetTableIdsShrink(v string) *CreateIndexShrinkRequest {
 	s.TableIdsShrink = &v
+	return s
+}
+
+func (s *CreateIndexShrinkRequest) SetChannelType(v string) *CreateIndexShrinkRequest {
+	s.ChannelType = &v
 	return s
 }
 
