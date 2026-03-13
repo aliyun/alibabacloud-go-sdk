@@ -5612,6 +5612,88 @@ func (client *Client) DescribeApisecUserOperations(request *DescribeApisecUserOp
 
 // Summary:
 //
+// 分页查询基础防护规则集变化记录
+//
+// @param request - DescribeBaseRuleChangeLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBaseRuleChangeLogResponse
+func (client *Client) DescribeBaseRuleChangeLogWithOptions(request *DescribeBaseRuleChangeLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeBaseRuleChangeLogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeBaseRuleChangeLog"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeBaseRuleChangeLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询基础防护规则集变化记录
+//
+// @param request - DescribeBaseRuleChangeLogRequest
+//
+// @return DescribeBaseRuleChangeLogResponse
+func (client *Client) DescribeBaseRuleChangeLog(request *DescribeBaseRuleChangeLogRequest) (_result *DescribeBaseRuleChangeLogResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeBaseRuleChangeLogResponse{}
+	_body, _err := client.DescribeBaseRuleChangeLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询基础防护系统规则集
 //
 // @param request - DescribeBaseSystemRulesRequest
@@ -8692,6 +8774,84 @@ func (client *Client) DescribeDomains(request *DescribeDomainsRequest) (_result 
 
 // Summary:
 //
+// Queries the daily billing information of a pay-as-you-go Web Application Firewall (WAF) instance. This allows you to check the daily security capacity unit (SeCU) usage. You can query only data in the previous seven days.
+//
+// @param request - DescribeElasticBillsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeElasticBillsResponse
+func (client *Client) DescribeElasticBillsWithOptions(request *DescribeElasticBillsRequest, runtime *dara.RuntimeOptions) (_result *DescribeElasticBillsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeElasticBills"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeElasticBillsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the daily billing information of a pay-as-you-go Web Application Firewall (WAF) instance. This allows you to check the daily security capacity unit (SeCU) usage. You can query only data in the previous seven days.
+//
+// @param request - DescribeElasticBillsRequest
+//
+// @return DescribeElasticBillsResponse
+func (client *Client) DescribeElasticBills(request *DescribeElasticBillsRequest) (_result *DescribeElasticBillsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeElasticBillsResponse{}
+	_body, _err := client.DescribeElasticBillsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the traffic statistics of requests that are forwarded to Web Application Firewall (WAF).
 //
 // @param request - DescribeFlowChartRequest
@@ -11375,6 +11535,84 @@ func (client *Client) DescribePocFunctions(request *DescribePocFunctionsRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribePocFunctionsResponse{}
 	_body, _err := client.DescribePocFunctionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the bills of the burstable QPS (pay-as-you-go) feature. The feature is supported only by subscription Web Application Firewall (WAF) instances.
+//
+// @param request - DescribePrepayDailyBillsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePrepayDailyBillsResponse
+func (client *Client) DescribePrepayDailyBillsWithOptions(request *DescribePrepayDailyBillsRequest, runtime *dara.RuntimeOptions) (_result *DescribePrepayDailyBillsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePrepayDailyBills"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePrepayDailyBillsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the bills of the burstable QPS (pay-as-you-go) feature. The feature is supported only by subscription Web Application Firewall (WAF) instances.
+//
+// @param request - DescribePrepayDailyBillsRequest
+//
+// @return DescribePrepayDailyBillsResponse
+func (client *Client) DescribePrepayDailyBills(request *DescribePrepayDailyBillsRequest) (_result *DescribePrepayDailyBillsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribePrepayDailyBillsResponse{}
+	_body, _err := client.DescribePrepayDailyBillsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
