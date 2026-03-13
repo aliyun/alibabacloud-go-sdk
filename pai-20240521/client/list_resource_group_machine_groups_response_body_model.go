@@ -1,0 +1,72 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iListResourceGroupMachineGroupsResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetMachineGroups(v []*MachineGroup) *ListResourceGroupMachineGroupsResponseBody
+	GetMachineGroups() []*MachineGroup
+	SetRequestId(v string) *ListResourceGroupMachineGroupsResponseBody
+	GetRequestId() *string
+	SetTotalCount(v string) *ListResourceGroupMachineGroupsResponseBody
+	GetTotalCount() *string
+}
+
+type ListResourceGroupMachineGroupsResponseBody struct {
+	MachineGroups []*MachineGroup `json:"MachineGroups,omitempty" xml:"MachineGroups,omitempty" type:"Repeated"`
+	RequestId     *string         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount    *string         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListResourceGroupMachineGroupsResponseBody) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListResourceGroupMachineGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceGroupMachineGroupsResponseBody) GetMachineGroups() []*MachineGroup {
+	return s.MachineGroups
+}
+
+func (s *ListResourceGroupMachineGroupsResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *ListResourceGroupMachineGroupsResponseBody) GetTotalCount() *string {
+	return s.TotalCount
+}
+
+func (s *ListResourceGroupMachineGroupsResponseBody) SetMachineGroups(v []*MachineGroup) *ListResourceGroupMachineGroupsResponseBody {
+	s.MachineGroups = v
+	return s
+}
+
+func (s *ListResourceGroupMachineGroupsResponseBody) SetRequestId(v string) *ListResourceGroupMachineGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListResourceGroupMachineGroupsResponseBody) SetTotalCount(v string) *ListResourceGroupMachineGroupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListResourceGroupMachineGroupsResponseBody) Validate() error {
+	if s.MachineGroups != nil {
+		for _, item := range s.MachineGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
