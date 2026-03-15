@@ -19,6 +19,8 @@ type iBatchGetAcpConnectionTicketRequest interface {
 	GetInstanceIds() []*string
 	SetInstanceTasks(v []*BatchGetAcpConnectionTicketRequestInstanceTasks) *BatchGetAcpConnectionTicketRequest
 	GetInstanceTasks() []*BatchGetAcpConnectionTicketRequestInstanceTasks
+	SetPorts(v []*string) *BatchGetAcpConnectionTicketRequest
+	GetPorts() []*string
 }
 
 type BatchGetAcpConnectionTicketRequest struct {
@@ -39,6 +41,7 @@ type BatchGetAcpConnectionTicketRequest struct {
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The instance connection tasks.
 	InstanceTasks []*BatchGetAcpConnectionTicketRequestInstanceTasks `json:"InstanceTasks,omitempty" xml:"InstanceTasks,omitempty" type:"Repeated"`
+	Ports         []*string                                          `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
 }
 
 func (s BatchGetAcpConnectionTicketRequest) String() string {
@@ -69,6 +72,10 @@ func (s *BatchGetAcpConnectionTicketRequest) GetInstanceTasks() []*BatchGetAcpCo
 	return s.InstanceTasks
 }
 
+func (s *BatchGetAcpConnectionTicketRequest) GetPorts() []*string {
+	return s.Ports
+}
+
 func (s *BatchGetAcpConnectionTicketRequest) SetConnectionMode(v string) *BatchGetAcpConnectionTicketRequest {
 	s.ConnectionMode = &v
 	return s
@@ -91,6 +98,11 @@ func (s *BatchGetAcpConnectionTicketRequest) SetInstanceIds(v []*string) *BatchG
 
 func (s *BatchGetAcpConnectionTicketRequest) SetInstanceTasks(v []*BatchGetAcpConnectionTicketRequestInstanceTasks) *BatchGetAcpConnectionTicketRequest {
 	s.InstanceTasks = v
+	return s
+}
+
+func (s *BatchGetAcpConnectionTicketRequest) SetPorts(v []*string) *BatchGetAcpConnectionTicketRequest {
+	s.Ports = v
 	return s
 }
 

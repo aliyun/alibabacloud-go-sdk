@@ -224,8 +224,9 @@ type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
 	// example:
 	//
 	// RUNNING
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SwapSize *int32  `json:"SwapSize,omitempty" xml:"SwapSize,omitempty"`
+	Status   *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	SwapSize *int32                                              `json:"SwapSize,omitempty" xml:"SwapSize,omitempty"`
+	Tags     []*DescribeCloudPhoneNodesResponseBodyNodeModelTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The vSwitch ID.
 	//
 	// example:
@@ -340,6 +341,10 @@ func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) GetStatus() *string {
 
 func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) GetSwapSize() *int32 {
 	return s.SwapSize
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) GetTags() []*DescribeCloudPhoneNodesResponseBodyNodeModelTags {
+	return s.Tags
 }
 
 func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) GetVSwitchId() *string {
@@ -471,6 +476,11 @@ func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetSwapSize(v int32) *Des
 	return s
 }
 
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetTags(v []*DescribeCloudPhoneNodesResponseBodyNodeModelTags) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetVSwitchId(v string) *DescribeCloudPhoneNodesResponseBodyNodeModel {
 	s.VSwitchId = &v
 	return s
@@ -498,6 +508,15 @@ func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) Validate() error {
 	if s.PhoneDataInfo != nil {
 		if err := s.PhoneDataInfo.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil
@@ -635,5 +654,40 @@ func (s *DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo) SetPhoneData
 }
 
 func (s *DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeCloudPhoneNodesResponseBodyNodeModelTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeCloudPhoneNodesResponseBodyNodeModelTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeCloudPhoneNodesResponseBodyNodeModelTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModelTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModelTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModelTags) SetKey(v string) *DescribeCloudPhoneNodesResponseBodyNodeModelTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModelTags) SetValue(v string) *DescribeCloudPhoneNodesResponseBodyNodeModelTags {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModelTags) Validate() error {
 	return dara.Validate(s)
 }

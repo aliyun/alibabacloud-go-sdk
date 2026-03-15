@@ -47,6 +47,8 @@ type iCreateAndroidInstanceGroupRequest interface {
 	GetNumberOfInstances() *int32
 	SetOfficeSiteId(v string) *CreateAndroidInstanceGroupRequest
 	GetOfficeSiteId() *string
+	SetPaidCallBackUrl(v string) *CreateAndroidInstanceGroupRequest
+	GetPaidCallBackUrl() *string
 	SetPeriod(v int32) *CreateAndroidInstanceGroupRequest
 	GetPeriod() *int32
 	SetPeriodUnit(v string) *CreateAndroidInstanceGroupRequest
@@ -218,6 +220,10 @@ type CreateAndroidInstanceGroupRequest struct {
 	//
 	// cn-hangzhou+dir-745976****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// example:
+	//
+	// wya.wuying.aliyun.com/instanceGroup
+	PaidCallBackUrl *string `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
 	// The subscription duration. The unit is specified by PeriodUnit.
 	//
 	// example:
@@ -344,6 +350,10 @@ func (s *CreateAndroidInstanceGroupRequest) GetOfficeSiteId() *string {
 	return s.OfficeSiteId
 }
 
+func (s *CreateAndroidInstanceGroupRequest) GetPaidCallBackUrl() *string {
+	return s.PaidCallBackUrl
+}
+
 func (s *CreateAndroidInstanceGroupRequest) GetPeriod() *int32 {
 	return s.Period
 }
@@ -464,6 +474,11 @@ func (s *CreateAndroidInstanceGroupRequest) SetNumberOfInstances(v int32) *Creat
 
 func (s *CreateAndroidInstanceGroupRequest) SetOfficeSiteId(v string) *CreateAndroidInstanceGroupRequest {
 	s.OfficeSiteId = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequest) SetPaidCallBackUrl(v string) *CreateAndroidInstanceGroupRequest {
+	s.PaidCallBackUrl = &v
 	return s
 }
 

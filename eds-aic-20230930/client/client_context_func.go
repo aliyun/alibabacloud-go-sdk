@@ -364,6 +364,10 @@ func (client *Client) BatchGetAcpConnectionTicketWithContext(ctx context.Context
 		query["InstanceTasks"] = request.InstanceTasks
 	}
 
+	if !dara.IsNil(request.Ports) {
+		query["Ports"] = request.Ports
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -636,6 +640,10 @@ func (client *Client) CreateAndroidInstanceGroupWithContext(ctx context.Context,
 
 	if !dara.IsNil(request.OfficeSiteId) {
 		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.PaidCallBackUrl) {
+		query["PaidCallBackUrl"] = request.PaidCallBackUrl
 	}
 
 	if !dara.IsNil(request.Period) {
@@ -2154,6 +2162,10 @@ func (client *Client) DescribeCloudPhoneNodesWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.Status) {
 		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
 	}
 
 	req := &openapiutil.OpenApiRequest{

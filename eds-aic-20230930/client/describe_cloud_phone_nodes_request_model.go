@@ -29,6 +29,8 @@ type iDescribeCloudPhoneNodesRequest interface {
 	GetServerType() *string
 	SetStatus(v string) *DescribeCloudPhoneNodesRequest
 	GetStatus() *string
+	SetTags(v []*DescribeCloudPhoneNodesRequestTags) *DescribeCloudPhoneNodesRequest
+	GetTags() []*DescribeCloudPhoneNodesRequestTags
 }
 
 type DescribeCloudPhoneNodesRequest struct {
@@ -95,7 +97,8 @@ type DescribeCloudPhoneNodesRequest struct {
 	// example:
 	//
 	// CREATING
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*DescribeCloudPhoneNodesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCloudPhoneNodesRequest) String() string {
@@ -144,6 +147,10 @@ func (s *DescribeCloudPhoneNodesRequest) GetServerType() *string {
 
 func (s *DescribeCloudPhoneNodesRequest) GetStatus() *string {
 	return s.Status
+}
+
+func (s *DescribeCloudPhoneNodesRequest) GetTags() []*DescribeCloudPhoneNodesRequestTags {
+	return s.Tags
 }
 
 func (s *DescribeCloudPhoneNodesRequest) SetBandwidthPackageId(v string) *DescribeCloudPhoneNodesRequest {
@@ -196,6 +203,55 @@ func (s *DescribeCloudPhoneNodesRequest) SetStatus(v string) *DescribeCloudPhone
 	return s
 }
 
+func (s *DescribeCloudPhoneNodesRequest) SetTags(v []*DescribeCloudPhoneNodesRequestTags) *DescribeCloudPhoneNodesRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeCloudPhoneNodesRequest) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeCloudPhoneNodesRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeCloudPhoneNodesRequestTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeCloudPhoneNodesRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudPhoneNodesRequestTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeCloudPhoneNodesRequestTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeCloudPhoneNodesRequestTags) SetKey(v string) *DescribeCloudPhoneNodesRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesRequestTags) SetValue(v string) *DescribeCloudPhoneNodesRequestTags {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesRequestTags) Validate() error {
 	return dara.Validate(s)
 }

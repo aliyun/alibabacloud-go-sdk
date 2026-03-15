@@ -47,6 +47,8 @@ type iCreateAndroidInstanceGroupShrinkRequest interface {
 	GetNumberOfInstances() *int32
 	SetOfficeSiteId(v string) *CreateAndroidInstanceGroupShrinkRequest
 	GetOfficeSiteId() *string
+	SetPaidCallBackUrl(v string) *CreateAndroidInstanceGroupShrinkRequest
+	GetPaidCallBackUrl() *string
 	SetPeriod(v int32) *CreateAndroidInstanceGroupShrinkRequest
 	GetPeriod() *int32
 	SetPeriodUnit(v string) *CreateAndroidInstanceGroupShrinkRequest
@@ -218,6 +220,10 @@ type CreateAndroidInstanceGroupShrinkRequest struct {
 	//
 	// cn-hangzhou+dir-745976****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// example:
+	//
+	// wya.wuying.aliyun.com/instanceGroup
+	PaidCallBackUrl *string `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
 	// The subscription duration. The unit is specified by PeriodUnit.
 	//
 	// example:
@@ -344,6 +350,10 @@ func (s *CreateAndroidInstanceGroupShrinkRequest) GetOfficeSiteId() *string {
 	return s.OfficeSiteId
 }
 
+func (s *CreateAndroidInstanceGroupShrinkRequest) GetPaidCallBackUrl() *string {
+	return s.PaidCallBackUrl
+}
+
 func (s *CreateAndroidInstanceGroupShrinkRequest) GetPeriod() *int32 {
 	return s.Period
 }
@@ -464,6 +474,11 @@ func (s *CreateAndroidInstanceGroupShrinkRequest) SetNumberOfInstances(v int32) 
 
 func (s *CreateAndroidInstanceGroupShrinkRequest) SetOfficeSiteId(v string) *CreateAndroidInstanceGroupShrinkRequest {
 	s.OfficeSiteId = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupShrinkRequest) SetPaidCallBackUrl(v string) *CreateAndroidInstanceGroupShrinkRequest {
+	s.PaidCallBackUrl = &v
 	return s
 }
 
