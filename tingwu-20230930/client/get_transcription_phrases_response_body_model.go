@@ -82,7 +82,12 @@ func (s *GetTranscriptionPhrasesResponseBody) SetRequestId(v string) *GetTranscr
 }
 
 func (s *GetTranscriptionPhrasesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTranscriptionPhrasesResponseBodyData struct {
@@ -146,7 +151,16 @@ func (s *GetTranscriptionPhrasesResponseBodyData) SetStatus(v string) *GetTransc
 }
 
 func (s *GetTranscriptionPhrasesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Phrases != nil {
+		for _, item := range s.Phrases {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTranscriptionPhrasesResponseBodyDataPhrases struct {

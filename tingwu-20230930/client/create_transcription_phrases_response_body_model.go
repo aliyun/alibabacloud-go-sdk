@@ -82,7 +82,12 @@ func (s *CreateTranscriptionPhrasesResponseBody) SetRequestId(v string) *CreateT
 }
 
 func (s *CreateTranscriptionPhrasesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateTranscriptionPhrasesResponseBodyData struct {

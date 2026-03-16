@@ -80,7 +80,12 @@ func (s *GetTaskInfoResponseBody) SetRequestId(v string) *GetTaskInfoResponseBod
 }
 
 func (s *GetTaskInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTaskInfoResponseBodyData struct {
@@ -204,7 +209,12 @@ func (s *GetTaskInfoResponseBodyData) SetTaskStatus(v string) *GetTaskInfoRespon
 }
 
 func (s *GetTaskInfoResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTaskInfoResponseBodyDataResult struct {

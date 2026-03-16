@@ -19,9 +19,11 @@ import (
 //
 // @return CreateTaskResponse
 func (client *Client) CreateTaskWithContext(ctx context.Context, request *CreateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Operation) {
@@ -82,9 +84,11 @@ func (client *Client) CreateTaskWithContext(ctx context.Context, request *Create
 //
 // @return CreateTranscriptionPhrasesResponse
 func (client *Client) CreateTranscriptionPhrasesWithContext(ctx context.Context, request *CreateTranscriptionPhrasesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTranscriptionPhrasesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -267,9 +271,11 @@ func (client *Client) ListTranscriptionPhrasesWithContext(ctx context.Context, h
 //
 // @return UpdateTranscriptionPhrasesResponse
 func (client *Client) UpdateTranscriptionPhrasesWithContext(ctx context.Context, PhraseId *string, request *UpdateTranscriptionPhrasesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTranscriptionPhrasesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {

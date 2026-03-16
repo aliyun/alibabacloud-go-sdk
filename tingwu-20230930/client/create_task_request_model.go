@@ -94,7 +94,17 @@ func (s *CreateTaskRequest) SetType(v string) *CreateTaskRequest {
 }
 
 func (s *CreateTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Parameters != nil {
+		if err := s.Parameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateTaskRequestInput struct {
@@ -493,7 +503,62 @@ func (s *CreateTaskRequestParameters) SetTranslationEnabled(v bool) *CreateTaskR
 }
 
 func (s *CreateTaskRequestParameters) Validate() error {
-	return dara.Validate(s)
+	if s.AutoChapters != nil {
+		if err := s.AutoChapters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ContentExtraction != nil {
+		if err := s.ContentExtraction.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomPrompt != nil {
+		if err := s.CustomPrompt.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExtraParams != nil {
+		if err := s.ExtraParams.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IdentityRecognition != nil {
+		if err := s.IdentityRecognition.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MeetingAssistance != nil {
+		if err := s.MeetingAssistance.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServiceInspection != nil {
+		if err := s.ServiceInspection.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Summarization != nil {
+		if err := s.Summarization.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Transcoding != nil {
+		if err := s.Transcoding.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Transcription != nil {
+		if err := s.Transcription.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Translation != nil {
+		if err := s.Translation.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateTaskRequestParametersAutoChapters struct {
@@ -563,7 +628,16 @@ func (s *CreateTaskRequestParametersContentExtraction) SetSpeakerMap(v map[strin
 }
 
 func (s *CreateTaskRequestParametersContentExtraction) Validate() error {
-	return dara.Validate(s)
+	if s.ExtractionContents != nil {
+		for _, item := range s.ExtractionContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateTaskRequestParametersContentExtractionExtractionContents struct {
@@ -633,7 +707,16 @@ func (s *CreateTaskRequestParametersCustomPrompt) SetContents(v []*CreateTaskReq
 }
 
 func (s *CreateTaskRequestParametersCustomPrompt) Validate() error {
-	return dara.Validate(s)
+	if s.Contents != nil {
+		for _, item := range s.Contents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateTaskRequestParametersCustomPromptContents struct {
@@ -694,12 +777,13 @@ func (s *CreateTaskRequestParametersCustomPromptContents) Validate() error {
 }
 
 type CreateTaskRequestParametersExtraParams struct {
-	DomainEducationEnabled   *bool   `json:"DomainEducationEnabled,omitempty" xml:"DomainEducationEnabled,omitempty"`
-	FullTextSummaryFormat    *string `json:"FullTextSummaryFormat,omitempty" xml:"FullTextSummaryFormat,omitempty"`
-	MaxKeywords              *int32  `json:"MaxKeywords,omitempty" xml:"MaxKeywords,omitempty"`
-	NfixEnabled              *bool   `json:"NfixEnabled,omitempty" xml:"NfixEnabled,omitempty"`
-	OcrAuxiliaryEnabled      *bool   `json:"OcrAuxiliaryEnabled,omitempty" xml:"OcrAuxiliaryEnabled,omitempty"`
-	TranslateLlmSceneEnabled *bool   `json:"TranslateLlmSceneEnabled,omitempty" xml:"TranslateLlmSceneEnabled,omitempty"`
+	DomainEducationEnabled   *bool                                                        `json:"DomainEducationEnabled,omitempty" xml:"DomainEducationEnabled,omitempty"`
+	FullTextSummaryFormat    *string                                                      `json:"FullTextSummaryFormat,omitempty" xml:"FullTextSummaryFormat,omitempty"`
+	MaxKeywords              *int32                                                       `json:"MaxKeywords,omitempty" xml:"MaxKeywords,omitempty"`
+	NfixEnabled              *bool                                                        `json:"NfixEnabled,omitempty" xml:"NfixEnabled,omitempty"`
+	OcrAuxiliaryEnabled      *bool                                                        `json:"OcrAuxiliaryEnabled,omitempty" xml:"OcrAuxiliaryEnabled,omitempty"`
+	TranslateLlmSceneEnabled *bool                                                        `json:"TranslateLlmSceneEnabled,omitempty" xml:"TranslateLlmSceneEnabled,omitempty"`
+	TranslationHotwordMap    *CreateTaskRequestParametersExtraParamsTranslationHotwordMap `json:"TranslationHotwordMap,omitempty" xml:"TranslationHotwordMap,omitempty" type:"Struct"`
 }
 
 func (s CreateTaskRequestParametersExtraParams) String() string {
@@ -734,6 +818,10 @@ func (s *CreateTaskRequestParametersExtraParams) GetTranslateLlmSceneEnabled() *
 	return s.TranslateLlmSceneEnabled
 }
 
+func (s *CreateTaskRequestParametersExtraParams) GetTranslationHotwordMap() *CreateTaskRequestParametersExtraParamsTranslationHotwordMap {
+	return s.TranslationHotwordMap
+}
+
 func (s *CreateTaskRequestParametersExtraParams) SetDomainEducationEnabled(v bool) *CreateTaskRequestParametersExtraParams {
 	s.DomainEducationEnabled = &v
 	return s
@@ -764,7 +852,52 @@ func (s *CreateTaskRequestParametersExtraParams) SetTranslateLlmSceneEnabled(v b
 	return s
 }
 
+func (s *CreateTaskRequestParametersExtraParams) SetTranslationHotwordMap(v *CreateTaskRequestParametersExtraParamsTranslationHotwordMap) *CreateTaskRequestParametersExtraParams {
+	s.TranslationHotwordMap = v
+	return s
+}
+
 func (s *CreateTaskRequestParametersExtraParams) Validate() error {
+	if s.TranslationHotwordMap != nil {
+		if err := s.TranslationHotwordMap.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateTaskRequestParametersExtraParamsTranslationHotwordMap struct {
+	BizType   *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
+	BizUserId *string `json:"bizUserId,omitempty" xml:"bizUserId,omitempty"`
+}
+
+func (s CreateTaskRequestParametersExtraParamsTranslationHotwordMap) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateTaskRequestParametersExtraParamsTranslationHotwordMap) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequestParametersExtraParamsTranslationHotwordMap) GetBizType() *string {
+	return s.BizType
+}
+
+func (s *CreateTaskRequestParametersExtraParamsTranslationHotwordMap) GetBizUserId() *string {
+	return s.BizUserId
+}
+
+func (s *CreateTaskRequestParametersExtraParamsTranslationHotwordMap) SetBizType(v string) *CreateTaskRequestParametersExtraParamsTranslationHotwordMap {
+	s.BizType = &v
+	return s
+}
+
+func (s *CreateTaskRequestParametersExtraParamsTranslationHotwordMap) SetBizUserId(v string) *CreateTaskRequestParametersExtraParamsTranslationHotwordMap {
+	s.BizUserId = &v
+	return s
+}
+
+func (s *CreateTaskRequestParametersExtraParamsTranslationHotwordMap) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -800,7 +933,16 @@ func (s *CreateTaskRequestParametersIdentityRecognition) SetSceneIntroduction(v 
 }
 
 func (s *CreateTaskRequestParametersIdentityRecognition) Validate() error {
-	return dara.Validate(s)
+	if s.IdentityContents != nil {
+		for _, item := range s.IdentityContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateTaskRequestParametersIdentityRecognitionIdentityContents struct {
@@ -915,7 +1057,16 @@ func (s *CreateTaskRequestParametersServiceInspection) SetSpeakerMap(v map[strin
 }
 
 func (s *CreateTaskRequestParametersServiceInspection) Validate() error {
-	return dara.Validate(s)
+	if s.InspectionContents != nil {
+		for _, item := range s.InspectionContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateTaskRequestParametersServiceInspectionInspectionContents struct {
@@ -1156,7 +1307,12 @@ func (s *CreateTaskRequestParametersTranscription) SetRealtimeDiarizationEnabled
 }
 
 func (s *CreateTaskRequestParametersTranscription) Validate() error {
-	return dara.Validate(s)
+	if s.Diarization != nil {
+		if err := s.Diarization.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateTaskRequestParametersTranscriptionDiarization struct {

@@ -82,7 +82,12 @@ func (s *ListTranscriptionPhrasesResponseBody) SetRequestId(v string) *ListTrans
 }
 
 func (s *ListTranscriptionPhrasesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTranscriptionPhrasesResponseBodyData struct {
@@ -146,7 +151,16 @@ func (s *ListTranscriptionPhrasesResponseBodyData) SetStatus(v string) *ListTran
 }
 
 func (s *ListTranscriptionPhrasesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Phrases != nil {
+		for _, item := range s.Phrases {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTranscriptionPhrasesResponseBodyDataPhrases struct {
