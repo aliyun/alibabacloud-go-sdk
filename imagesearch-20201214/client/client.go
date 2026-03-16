@@ -386,6 +386,76 @@ func (client *Client) AddImageAdvance(request *AddImageAdvanceRequest, runtime *
 
 // Summary:
 //
+// # CheckImageExists
+//
+// @param request - CheckImageExistsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckImageExistsResponse
+func (client *Client) CheckImageExistsWithOptions(request *CheckImageExistsRequest, runtime *dara.RuntimeOptions) (_result *CheckImageExistsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceName) {
+		body["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.PicName) {
+		body["PicName"] = request.PicName
+	}
+
+	if !dara.IsNil(request.ProductId) {
+		body["ProductId"] = request.ProductId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckImageExists"),
+		Version:     dara.String("2020-12-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckImageExistsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # CheckImageExists
+//
+// @param request - CheckImageExistsRequest
+//
+// @return CheckImageExistsResponse
+func (client *Client) CheckImageExists(request *CheckImageExistsRequest) (_result *CheckImageExistsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CheckImageExistsResponse{}
+	_body, _err := client.CheckImageExistsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 对比图片相似值
 //
 // @param request - CompareSimilarByImageRequest

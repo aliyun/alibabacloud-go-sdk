@@ -62,7 +62,6 @@ func (s *IncreaseListResponseBody) Validate() error {
 }
 
 type IncreaseListResponseBodyData struct {
-	// A list of batch tasks.
 	Increments *IncreaseListResponseBodyDataIncrements `json:"Increments,omitempty" xml:"Increments,omitempty" type:"Struct"`
 	// The number of the page to return.
 	//
@@ -172,76 +171,16 @@ func (s *IncreaseListResponseBodyDataIncrements) Validate() error {
 }
 
 type IncreaseListResponseBodyDataIncrementsInstance struct {
-	// The name of the Object Storage Service (OSS) bucket.
-	//
-	// example:
-	//
-	// bucketName
-	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The callback address.
-	//
-	// example:
-	//
-	// http://xxxxx
+	BucketName      *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
 	CallbackAddress *string `json:"CallbackAddress,omitempty" xml:"CallbackAddress,omitempty"`
-	// The error code returned.
-	//
-	// 	- A value of 0 indicates that the operation is successful.
-	//
-	// 	- Values other than 0 indicate errors.
-	//
-	// example:
-	//
-	// 0
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The address where you can download the result. The address is valid for 2 hours.
-	//
-	// example:
-	//
-	// https://imagesearchname.oss-cn-shanghai.aliyuncs.com/xxx
-	ErrorUrl *string `json:"ErrorUrl,omitempty" xml:"ErrorUrl,omitempty"`
-	// The ID of the task.
-	//
-	// example:
-	//
-	// 500
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The error message returned.
-	//
-	// example:
-	//
-	// sucess
-	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The absolute path to the increment.meta file in the bucket. The path must start with a forward slash (/) and cannot end with a forward slash (/).
-	//
-	// example:
-	//
-	// /xx/xx
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The status of the batch task.
-	//
-	// 	- PROCESSING: in progress
-	//
-	// 	- FAIL: failed
-	//
-	// 	- SUCCESS: successful
-	//
-	// example:
-	//
-	// SUCCESS
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the task was created. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1629095713000
-	UtcCreate *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
-	// The time when the task was updated. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1629095760000
-	UtcModified *int64 `json:"UtcModified,omitempty" xml:"UtcModified,omitempty"`
+	Code            *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorUrl        *string `json:"ErrorUrl,omitempty" xml:"ErrorUrl,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Msg             *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	Path            *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UtcCreate       *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
+	UtcModified     *int64  `json:"UtcModified,omitempty" xml:"UtcModified,omitempty"`
 }
 
 func (s IncreaseListResponseBodyDataIncrementsInstance) String() string {
