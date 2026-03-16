@@ -90,7 +90,10 @@ type ListUserDevicesResponseBodyDevices struct {
 	// example:
 	//
 	// Apple M1
-	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	CPU       *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	City      *string `json:"City,omitempty" xml:"City,omitempty"`
+	Continent *string `json:"Continent,omitempty" xml:"Continent,omitempty"`
+	Country   *string `json:"Country,omitempty" xml:"Country,omitempty"`
 	// example:
 	//
 	// 2023-07-17 18:46:55
@@ -127,8 +130,9 @@ type ListUserDevicesResponseBodyDevices struct {
 	// example:
 	//
 	// Enabled
-	DlpStatus *string `json:"DlpStatus,omitempty" xml:"DlpStatus,omitempty"`
-	EdrStatus *string `json:"EdrStatus,omitempty" xml:"EdrStatus,omitempty"`
+	DlpStatus      *string   `json:"DlpStatus,omitempty" xml:"DlpStatus,omitempty"`
+	EdrStatus      *string   `json:"EdrStatus,omitempty" xml:"EdrStatus,omitempty"`
+	FullDepartment []*string `json:"FullDepartment,omitempty" xml:"FullDepartment,omitempty" type:"Repeated"`
 	// example:
 	//
 	// win10-64bit
@@ -140,7 +144,8 @@ type ListUserDevicesResponseBodyDevices struct {
 	// example:
 	//
 	// 192.168.XX.XX
-	InnerIP *string `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
+	InnerIP      *string `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
+	JoinAdDomain *bool   `json:"JoinAdDomain,omitempty" xml:"JoinAdDomain,omitempty"`
 	// example:
 	//
 	// 00:16:XX:XX:7c:46
@@ -159,6 +164,7 @@ type ListUserDevicesResponseBodyDevices struct {
 	//
 	// Enabled
 	PaStatus *string `json:"PaStatus,omitempty" xml:"PaStatus,omitempty"`
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
@@ -208,6 +214,18 @@ func (s *ListUserDevicesResponseBodyDevices) GetCPU() *string {
 	return s.CPU
 }
 
+func (s *ListUserDevicesResponseBodyDevices) GetCity() *string {
+	return s.City
+}
+
+func (s *ListUserDevicesResponseBodyDevices) GetContinent() *string {
+	return s.Continent
+}
+
+func (s *ListUserDevicesResponseBodyDevices) GetCountry() *string {
+	return s.Country
+}
+
 func (s *ListUserDevicesResponseBodyDevices) GetCreateTime() *string {
 	return s.CreateTime
 }
@@ -252,6 +270,10 @@ func (s *ListUserDevicesResponseBodyDevices) GetEdrStatus() *string {
 	return s.EdrStatus
 }
 
+func (s *ListUserDevicesResponseBodyDevices) GetFullDepartment() []*string {
+	return s.FullDepartment
+}
+
 func (s *ListUserDevicesResponseBodyDevices) GetHostname() *string {
 	return s.Hostname
 }
@@ -262,6 +284,10 @@ func (s *ListUserDevicesResponseBodyDevices) GetIaStatus() *string {
 
 func (s *ListUserDevicesResponseBodyDevices) GetInnerIP() *string {
 	return s.InnerIP
+}
+
+func (s *ListUserDevicesResponseBodyDevices) GetJoinAdDomain() *bool {
+	return s.JoinAdDomain
 }
 
 func (s *ListUserDevicesResponseBodyDevices) GetMac() *string {
@@ -286,6 +312,10 @@ func (s *ListUserDevicesResponseBodyDevices) GetNetInterfaceInfo() []*ListUserDe
 
 func (s *ListUserDevicesResponseBodyDevices) GetPaStatus() *string {
 	return s.PaStatus
+}
+
+func (s *ListUserDevicesResponseBodyDevices) GetProvince() *string {
+	return s.Province
 }
 
 func (s *ListUserDevicesResponseBodyDevices) GetSaseUserId() *string {
@@ -352,6 +382,21 @@ func (s *ListUserDevicesResponseBodyDevices) SetCPU(v string) *ListUserDevicesRe
 	return s
 }
 
+func (s *ListUserDevicesResponseBodyDevices) SetCity(v string) *ListUserDevicesResponseBodyDevices {
+	s.City = &v
+	return s
+}
+
+func (s *ListUserDevicesResponseBodyDevices) SetContinent(v string) *ListUserDevicesResponseBodyDevices {
+	s.Continent = &v
+	return s
+}
+
+func (s *ListUserDevicesResponseBodyDevices) SetCountry(v string) *ListUserDevicesResponseBodyDevices {
+	s.Country = &v
+	return s
+}
+
 func (s *ListUserDevicesResponseBodyDevices) SetCreateTime(v string) *ListUserDevicesResponseBodyDevices {
 	s.CreateTime = &v
 	return s
@@ -407,6 +452,11 @@ func (s *ListUserDevicesResponseBodyDevices) SetEdrStatus(v string) *ListUserDev
 	return s
 }
 
+func (s *ListUserDevicesResponseBodyDevices) SetFullDepartment(v []*string) *ListUserDevicesResponseBodyDevices {
+	s.FullDepartment = v
+	return s
+}
+
 func (s *ListUserDevicesResponseBodyDevices) SetHostname(v string) *ListUserDevicesResponseBodyDevices {
 	s.Hostname = &v
 	return s
@@ -419,6 +469,11 @@ func (s *ListUserDevicesResponseBodyDevices) SetIaStatus(v string) *ListUserDevi
 
 func (s *ListUserDevicesResponseBodyDevices) SetInnerIP(v string) *ListUserDevicesResponseBodyDevices {
 	s.InnerIP = &v
+	return s
+}
+
+func (s *ListUserDevicesResponseBodyDevices) SetJoinAdDomain(v bool) *ListUserDevicesResponseBodyDevices {
+	s.JoinAdDomain = &v
 	return s
 }
 
@@ -449,6 +504,11 @@ func (s *ListUserDevicesResponseBodyDevices) SetNetInterfaceInfo(v []*ListUserDe
 
 func (s *ListUserDevicesResponseBodyDevices) SetPaStatus(v string) *ListUserDevicesResponseBodyDevices {
 	s.PaStatus = &v
+	return s
+}
+
+func (s *ListUserDevicesResponseBodyDevices) SetProvince(v string) *ListUserDevicesResponseBodyDevices {
+	s.Province = &v
 	return s
 }
 

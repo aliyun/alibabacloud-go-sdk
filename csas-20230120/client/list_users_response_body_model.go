@@ -82,8 +82,9 @@ type ListUsersResponseBodyUsers struct {
 	// example:
 	//
 	// a***@example.net
-	Email   *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	IdpName *string `json:"IdpName,omitempty" xml:"IdpName,omitempty"`
+	Email          *string   `json:"Email,omitempty" xml:"Email,omitempty"`
+	FullDepartment []*string `json:"FullDepartment,omitempty" xml:"FullDepartment,omitempty" type:"Repeated"`
+	IdpName        *string   `json:"IdpName,omitempty" xml:"IdpName,omitempty"`
 	// example:
 	//
 	// 1381111****
@@ -115,6 +116,10 @@ func (s *ListUsersResponseBodyUsers) GetEmail() *string {
 	return s.Email
 }
 
+func (s *ListUsersResponseBodyUsers) GetFullDepartment() []*string {
+	return s.FullDepartment
+}
+
 func (s *ListUsersResponseBodyUsers) GetIdpName() *string {
 	return s.IdpName
 }
@@ -142,6 +147,11 @@ func (s *ListUsersResponseBodyUsers) SetDepartment(v string) *ListUsersResponseB
 
 func (s *ListUsersResponseBodyUsers) SetEmail(v string) *ListUsersResponseBodyUsers {
 	s.Email = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyUsers) SetFullDepartment(v []*string) *ListUsersResponseBodyUsers {
+	s.FullDepartment = v
 	return s
 }
 

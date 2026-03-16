@@ -94,7 +94,8 @@ type ListUninstallApplicationsResponseBodyApplications struct {
 	// example:
 	//
 	// Windows
-	DevType *string `json:"DevType,omitempty" xml:"DevType,omitempty"`
+	DevType        *string   `json:"DevType,omitempty" xml:"DevType,omitempty"`
+	FullDepartment []*string `json:"FullDepartment,omitempty" xml:"FullDepartment,omitempty" type:"Repeated"`
 	// example:
 	//
 	// win10-64bit
@@ -146,6 +147,10 @@ func (s *ListUninstallApplicationsResponseBodyApplications) GetDevTag() *string 
 
 func (s *ListUninstallApplicationsResponseBodyApplications) GetDevType() *string {
 	return s.DevType
+}
+
+func (s *ListUninstallApplicationsResponseBodyApplications) GetFullDepartment() []*string {
+	return s.FullDepartment
 }
 
 func (s *ListUninstallApplicationsResponseBodyApplications) GetHostname() *string {
@@ -202,6 +207,11 @@ func (s *ListUninstallApplicationsResponseBodyApplications) SetDevTag(v string) 
 
 func (s *ListUninstallApplicationsResponseBodyApplications) SetDevType(v string) *ListUninstallApplicationsResponseBodyApplications {
 	s.DevType = &v
+	return s
+}
+
+func (s *ListUninstallApplicationsResponseBodyApplications) SetFullDepartment(v []*string) *ListUninstallApplicationsResponseBodyApplications {
+	s.FullDepartment = v
 	return s
 }
 

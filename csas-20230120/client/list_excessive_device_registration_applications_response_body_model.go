@@ -95,7 +95,8 @@ type ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications struct 
 	// example:
 	//
 	// Windows
-	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	DeviceType     *string   `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	FullDepartment []*string `json:"FullDepartment,omitempty" xml:"FullDepartment,omitempty" type:"Repeated"`
 	// example:
 	//
 	// win10-64bit
@@ -151,6 +152,10 @@ func (s *ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications) Ge
 	return s.DeviceType
 }
 
+func (s *ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications) GetFullDepartment() []*string {
+	return s.FullDepartment
+}
+
 func (s *ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications) GetHostname() *string {
 	return s.Hostname
 }
@@ -202,6 +207,11 @@ func (s *ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications) Se
 
 func (s *ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications) SetDeviceType(v string) *ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications {
 	s.DeviceType = &v
+	return s
+}
+
+func (s *ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications) SetFullDepartment(v []*string) *ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications {
+	s.FullDepartment = v
 	return s
 }
 

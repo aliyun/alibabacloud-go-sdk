@@ -66,12 +66,17 @@ type GetUserDeviceResponseBodyDevice struct {
 	// example:
 	//
 	// 2.2.0
-	AppVersion      *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	AutoLoginStatus *string `json:"AutoLoginStatus,omitempty" xml:"AutoLoginStatus,omitempty"`
+	AppVersion                 *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	AutoLoginStatus            *string `json:"AutoLoginStatus,omitempty" xml:"AutoLoginStatus,omitempty"`
+	BatteryHealthPercentage    *int32  `json:"BatteryHealthPercentage,omitempty" xml:"BatteryHealthPercentage,omitempty"`
+	BatteryRemainingPercentage *int32  `json:"BatteryRemainingPercentage,omitempty" xml:"BatteryRemainingPercentage,omitempty"`
 	// example:
 	//
 	// Apple M1
-	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	CPU       *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	City      *string `json:"City,omitempty" xml:"City,omitempty"`
+	Continent *string `json:"Continent,omitempty" xml:"Continent,omitempty"`
+	Country   *string `json:"Country,omitempty" xml:"Country,omitempty"`
 	// example:
 	//
 	// 2023-05-16 17:18:46
@@ -104,7 +109,9 @@ type GetUserDeviceResponseBodyDevice struct {
 	// example:
 	//
 	// APPLE SSD AP0512Q Media
-	Disk *string `json:"Disk,omitempty" xml:"Disk,omitempty"`
+	Disk          *string `json:"Disk,omitempty" xml:"Disk,omitempty"`
+	DiskAvailable *int32  `json:"DiskAvailable,omitempty" xml:"DiskAvailable,omitempty"`
+	DiskUsed      *int32  `json:"DiskUsed,omitempty" xml:"DiskUsed,omitempty"`
 	// example:
 	//
 	// Unauthorized
@@ -122,7 +129,8 @@ type GetUserDeviceResponseBodyDevice struct {
 	// example:
 	//
 	// 172.16.XX.XX
-	InnerIP *string `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
+	InnerIP      *string `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
+	JoinAdDomain *bool   `json:"JoinAdDomain,omitempty" xml:"JoinAdDomain,omitempty"`
 	// example:
 	//
 	// 48:9e:XX:XX:02:80
@@ -140,7 +148,9 @@ type GetUserDeviceResponseBodyDevice struct {
 	// example:
 	//
 	// Enabled
-	PaStatus *string `json:"PaStatus,omitempty" xml:"PaStatus,omitempty"`
+	PaStatus  *string                                     `json:"PaStatus,omitempty" xml:"PaStatus,omitempty"`
+	Processes []*GetUserDeviceResponseBodyDeviceProcesses `json:"Processes,omitempty" xml:"Processes,omitempty" type:"Repeated"`
+	Province  *string                                     `json:"Province,omitempty" xml:"Province,omitempty"`
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
@@ -157,7 +167,8 @@ type GetUserDeviceResponseBodyDevice struct {
 	// example:
 	//
 	// 106.14.XX.XX
-	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
+	SrcIP                   *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
+	TerminalInfoCollectTime *int64  `json:"TerminalInfoCollectTime,omitempty" xml:"TerminalInfoCollectTime,omitempty"`
 	// example:
 	//
 	// 2023-08-24 19:04:42
@@ -186,8 +197,28 @@ func (s *GetUserDeviceResponseBodyDevice) GetAutoLoginStatus() *string {
 	return s.AutoLoginStatus
 }
 
+func (s *GetUserDeviceResponseBodyDevice) GetBatteryHealthPercentage() *int32 {
+	return s.BatteryHealthPercentage
+}
+
+func (s *GetUserDeviceResponseBodyDevice) GetBatteryRemainingPercentage() *int32 {
+	return s.BatteryRemainingPercentage
+}
+
 func (s *GetUserDeviceResponseBodyDevice) GetCPU() *string {
 	return s.CPU
+}
+
+func (s *GetUserDeviceResponseBodyDevice) GetCity() *string {
+	return s.City
+}
+
+func (s *GetUserDeviceResponseBodyDevice) GetContinent() *string {
+	return s.Continent
+}
+
+func (s *GetUserDeviceResponseBodyDevice) GetCountry() *string {
+	return s.Country
 }
 
 func (s *GetUserDeviceResponseBodyDevice) GetCreateTime() *string {
@@ -226,6 +257,14 @@ func (s *GetUserDeviceResponseBodyDevice) GetDisk() *string {
 	return s.Disk
 }
 
+func (s *GetUserDeviceResponseBodyDevice) GetDiskAvailable() *int32 {
+	return s.DiskAvailable
+}
+
+func (s *GetUserDeviceResponseBodyDevice) GetDiskUsed() *int32 {
+	return s.DiskUsed
+}
+
 func (s *GetUserDeviceResponseBodyDevice) GetDlpStatus() *string {
 	return s.DlpStatus
 }
@@ -250,6 +289,10 @@ func (s *GetUserDeviceResponseBodyDevice) GetInnerIP() *string {
 	return s.InnerIP
 }
 
+func (s *GetUserDeviceResponseBodyDevice) GetJoinAdDomain() *bool {
+	return s.JoinAdDomain
+}
+
 func (s *GetUserDeviceResponseBodyDevice) GetMac() *string {
 	return s.Mac
 }
@@ -272,6 +315,14 @@ func (s *GetUserDeviceResponseBodyDevice) GetNetInterfaceInfo() []*GetUserDevice
 
 func (s *GetUserDeviceResponseBodyDevice) GetPaStatus() *string {
 	return s.PaStatus
+}
+
+func (s *GetUserDeviceResponseBodyDevice) GetProcesses() []*GetUserDeviceResponseBodyDeviceProcesses {
+	return s.Processes
+}
+
+func (s *GetUserDeviceResponseBodyDevice) GetProvince() *string {
+	return s.Province
 }
 
 func (s *GetUserDeviceResponseBodyDevice) GetSaseUserId() *string {
@@ -306,6 +357,10 @@ func (s *GetUserDeviceResponseBodyDevice) GetSrcIP() *string {
 	return s.SrcIP
 }
 
+func (s *GetUserDeviceResponseBodyDevice) GetTerminalInfoCollectTime() *int64 {
+	return s.TerminalInfoCollectTime
+}
+
 func (s *GetUserDeviceResponseBodyDevice) GetUpdateTime() *string {
 	return s.UpdateTime
 }
@@ -333,8 +388,33 @@ func (s *GetUserDeviceResponseBodyDevice) SetAutoLoginStatus(v string) *GetUserD
 	return s
 }
 
+func (s *GetUserDeviceResponseBodyDevice) SetBatteryHealthPercentage(v int32) *GetUserDeviceResponseBodyDevice {
+	s.BatteryHealthPercentage = &v
+	return s
+}
+
+func (s *GetUserDeviceResponseBodyDevice) SetBatteryRemainingPercentage(v int32) *GetUserDeviceResponseBodyDevice {
+	s.BatteryRemainingPercentage = &v
+	return s
+}
+
 func (s *GetUserDeviceResponseBodyDevice) SetCPU(v string) *GetUserDeviceResponseBodyDevice {
 	s.CPU = &v
+	return s
+}
+
+func (s *GetUserDeviceResponseBodyDevice) SetCity(v string) *GetUserDeviceResponseBodyDevice {
+	s.City = &v
+	return s
+}
+
+func (s *GetUserDeviceResponseBodyDevice) SetContinent(v string) *GetUserDeviceResponseBodyDevice {
+	s.Continent = &v
+	return s
+}
+
+func (s *GetUserDeviceResponseBodyDevice) SetCountry(v string) *GetUserDeviceResponseBodyDevice {
+	s.Country = &v
 	return s
 }
 
@@ -383,6 +463,16 @@ func (s *GetUserDeviceResponseBodyDevice) SetDisk(v string) *GetUserDeviceRespon
 	return s
 }
 
+func (s *GetUserDeviceResponseBodyDevice) SetDiskAvailable(v int32) *GetUserDeviceResponseBodyDevice {
+	s.DiskAvailable = &v
+	return s
+}
+
+func (s *GetUserDeviceResponseBodyDevice) SetDiskUsed(v int32) *GetUserDeviceResponseBodyDevice {
+	s.DiskUsed = &v
+	return s
+}
+
 func (s *GetUserDeviceResponseBodyDevice) SetDlpStatus(v string) *GetUserDeviceResponseBodyDevice {
 	s.DlpStatus = &v
 	return s
@@ -413,6 +503,11 @@ func (s *GetUserDeviceResponseBodyDevice) SetInnerIP(v string) *GetUserDeviceRes
 	return s
 }
 
+func (s *GetUserDeviceResponseBodyDevice) SetJoinAdDomain(v bool) *GetUserDeviceResponseBodyDevice {
+	s.JoinAdDomain = &v
+	return s
+}
+
 func (s *GetUserDeviceResponseBodyDevice) SetMac(v string) *GetUserDeviceResponseBodyDevice {
 	s.Mac = &v
 	return s
@@ -440,6 +535,16 @@ func (s *GetUserDeviceResponseBodyDevice) SetNetInterfaceInfo(v []*GetUserDevice
 
 func (s *GetUserDeviceResponseBodyDevice) SetPaStatus(v string) *GetUserDeviceResponseBodyDevice {
 	s.PaStatus = &v
+	return s
+}
+
+func (s *GetUserDeviceResponseBodyDevice) SetProcesses(v []*GetUserDeviceResponseBodyDeviceProcesses) *GetUserDeviceResponseBodyDevice {
+	s.Processes = v
+	return s
+}
+
+func (s *GetUserDeviceResponseBodyDevice) SetProvince(v string) *GetUserDeviceResponseBodyDevice {
+	s.Province = &v
 	return s
 }
 
@@ -483,6 +588,11 @@ func (s *GetUserDeviceResponseBodyDevice) SetSrcIP(v string) *GetUserDeviceRespo
 	return s
 }
 
+func (s *GetUserDeviceResponseBodyDevice) SetTerminalInfoCollectTime(v int64) *GetUserDeviceResponseBodyDevice {
+	s.TerminalInfoCollectTime = &v
+	return s
+}
+
 func (s *GetUserDeviceResponseBodyDevice) SetUpdateTime(v string) *GetUserDeviceResponseBodyDevice {
 	s.UpdateTime = &v
 	return s
@@ -510,6 +620,15 @@ func (s *GetUserDeviceResponseBodyDevice) Validate() error {
 	}
 	if s.NetInterfaceInfo != nil {
 		for _, item := range s.NetInterfaceInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Processes != nil {
+		for _, item := range s.Processes {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -590,5 +709,60 @@ func (s *GetUserDeviceResponseBodyDeviceNetInterfaceInfo) SetName(v string) *Get
 }
 
 func (s *GetUserDeviceResponseBodyDeviceNetInterfaceInfo) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetUserDeviceResponseBodyDeviceProcesses struct {
+	Cpu         *float64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Memory      *int32   `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetUserDeviceResponseBodyDeviceProcesses) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetUserDeviceResponseBodyDeviceProcesses) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserDeviceResponseBodyDeviceProcesses) GetCpu() *float64 {
+	return s.Cpu
+}
+
+func (s *GetUserDeviceResponseBodyDeviceProcesses) GetDescription() *string {
+	return s.Description
+}
+
+func (s *GetUserDeviceResponseBodyDeviceProcesses) GetMemory() *int32 {
+	return s.Memory
+}
+
+func (s *GetUserDeviceResponseBodyDeviceProcesses) GetName() *string {
+	return s.Name
+}
+
+func (s *GetUserDeviceResponseBodyDeviceProcesses) SetCpu(v float64) *GetUserDeviceResponseBodyDeviceProcesses {
+	s.Cpu = &v
+	return s
+}
+
+func (s *GetUserDeviceResponseBodyDeviceProcesses) SetDescription(v string) *GetUserDeviceResponseBodyDeviceProcesses {
+	s.Description = &v
+	return s
+}
+
+func (s *GetUserDeviceResponseBodyDeviceProcesses) SetMemory(v int32) *GetUserDeviceResponseBodyDeviceProcesses {
+	s.Memory = &v
+	return s
+}
+
+func (s *GetUserDeviceResponseBodyDeviceProcesses) SetName(v string) *GetUserDeviceResponseBodyDeviceProcesses {
+	s.Name = &v
+	return s
+}
+
+func (s *GetUserDeviceResponseBodyDeviceProcesses) Validate() error {
 	return dara.Validate(s)
 }
