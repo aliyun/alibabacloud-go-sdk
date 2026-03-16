@@ -43,6 +43,8 @@ type iCreateTemplateInput interface {
 	GetSandboxIdleTimeoutInSeconds() *int32
 	SetSandboxTTLInSeconds(v int32) *CreateTemplateInput
 	GetSandboxTTLInSeconds() *int32
+	SetScalingConfig(v *ScalingConfig) *CreateTemplateInput
+	GetScalingConfig() *ScalingConfig
 	SetTemplateConfiguration(v map[string]interface{}) *CreateTemplateInput
 	GetTemplateConfiguration() map[string]interface{}
 	SetTemplateName(v string) *CreateTemplateInput
@@ -110,7 +112,8 @@ type CreateTemplateInput struct {
 	// example:
 	//
 	// 26000
-	SandboxTTLInSeconds *int32 `json:"sandboxTTLInSeconds,omitempty" xml:"sandboxTTLInSeconds,omitempty"`
+	SandboxTTLInSeconds *int32         `json:"sandboxTTLInSeconds,omitempty" xml:"sandboxTTLInSeconds,omitempty"`
+	ScalingConfig       *ScalingConfig `json:"scalingConfig,omitempty" xml:"scalingConfig,omitempty"`
 	// 模板配置（灵活的对象结构，根据 templateType 不同而不同）
 	TemplateConfiguration map[string]interface{} `json:"templateConfiguration,omitempty" xml:"templateConfiguration,omitempty"`
 	// 模板名称（要求账号唯一的）
@@ -204,6 +207,10 @@ func (s *CreateTemplateInput) GetSandboxIdleTimeoutInSeconds() *int32 {
 
 func (s *CreateTemplateInput) GetSandboxTTLInSeconds() *int32 {
 	return s.SandboxTTLInSeconds
+}
+
+func (s *CreateTemplateInput) GetScalingConfig() *ScalingConfig {
+	return s.ScalingConfig
 }
 
 func (s *CreateTemplateInput) GetTemplateConfiguration() map[string]interface{} {
@@ -307,6 +314,11 @@ func (s *CreateTemplateInput) SetSandboxTTLInSeconds(v int32) *CreateTemplateInp
 	return s
 }
 
+func (s *CreateTemplateInput) SetScalingConfig(v *ScalingConfig) *CreateTemplateInput {
+	s.ScalingConfig = v
+	return s
+}
+
 func (s *CreateTemplateInput) SetTemplateConfiguration(v map[string]interface{}) *CreateTemplateInput {
 	s.TemplateConfiguration = v
 	return s
@@ -365,6 +377,11 @@ func (s *CreateTemplateInput) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.ScalingConfig != nil {
+		if err := s.ScalingConfig.Validate(); err != nil {
+			return err
 		}
 	}
 	return nil

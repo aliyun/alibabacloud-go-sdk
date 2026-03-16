@@ -51,6 +51,8 @@ type iTemplate interface {
 	GetSandboxIdleTimeoutInSeconds() *string
 	SetSandboxTTLInSeconds(v string) *Template
 	GetSandboxTTLInSeconds() *string
+	SetScalingStatus(v *ScalingStatus) *Template
+	GetScalingStatus() *ScalingStatus
 	SetStatus(v string) *Template
 	GetStatus() *string
 	SetStatusReason(v string) *Template
@@ -96,6 +98,7 @@ type Template struct {
 	SandboxIdleTimeoutInSeconds *string               `json:"sandboxIdleTimeoutInSeconds,omitempty" xml:"sandboxIdleTimeoutInSeconds,omitempty"`
 	// Deprecated
 	SandboxTTLInSeconds   *string                `json:"sandboxTTLInSeconds,omitempty" xml:"sandboxTTLInSeconds,omitempty"`
+	ScalingStatus         *ScalingStatus         `json:"scalingStatus,omitempty" xml:"scalingStatus,omitempty"`
 	Status                *string                `json:"status,omitempty" xml:"status,omitempty"`
 	StatusReason          *string                `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
 	TemplateArn           *string                `json:"templateArn,omitempty" xml:"templateArn,omitempty"`
@@ -199,6 +202,10 @@ func (s *Template) GetSandboxIdleTimeoutInSeconds() *string {
 
 func (s *Template) GetSandboxTTLInSeconds() *string {
 	return s.SandboxTTLInSeconds
+}
+
+func (s *Template) GetScalingStatus() *ScalingStatus {
+	return s.ScalingStatus
 }
 
 func (s *Template) GetStatus() *string {
@@ -342,6 +349,11 @@ func (s *Template) SetSandboxTTLInSeconds(v string) *Template {
 	return s
 }
 
+func (s *Template) SetScalingStatus(v *ScalingStatus) *Template {
+	s.ScalingStatus = v
+	return s
+}
+
 func (s *Template) SetStatus(v string) *Template {
 	s.Status = &v
 	return s
@@ -430,6 +442,11 @@ func (s *Template) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.ScalingStatus != nil {
+		if err := s.ScalingStatus.Validate(); err != nil {
+			return err
 		}
 	}
 	return nil

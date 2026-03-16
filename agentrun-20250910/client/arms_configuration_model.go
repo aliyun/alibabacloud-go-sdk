@@ -11,6 +11,8 @@ type iArmsConfiguration interface {
 	GoString() string
 	SetArmsLicenseKey(v string) *ArmsConfiguration
 	GetArmsLicenseKey() *string
+	SetCmsWorkspace(v string) *ArmsConfiguration
+	GetCmsWorkspace() *string
 	SetEnableArms(v bool) *ArmsConfiguration
 	GetEnableArms() *bool
 }
@@ -22,6 +24,7 @@ type ArmsConfiguration struct {
 	//
 	// arms-license-key-123456
 	ArmsLicenseKey *string `json:"armsLicenseKey,omitempty" xml:"armsLicenseKey,omitempty"`
+	CmsWorkspace   *string `json:"cmsWorkspace,omitempty" xml:"cmsWorkspace,omitempty"`
 	// 是否启用应用实时监控服务（ARMS）
 	//
 	// example:
@@ -42,12 +45,21 @@ func (s *ArmsConfiguration) GetArmsLicenseKey() *string {
 	return s.ArmsLicenseKey
 }
 
+func (s *ArmsConfiguration) GetCmsWorkspace() *string {
+	return s.CmsWorkspace
+}
+
 func (s *ArmsConfiguration) GetEnableArms() *bool {
 	return s.EnableArms
 }
 
 func (s *ArmsConfiguration) SetArmsLicenseKey(v string) *ArmsConfiguration {
 	s.ArmsLicenseKey = &v
+	return s
+}
+
+func (s *ArmsConfiguration) SetCmsWorkspace(v string) *ArmsConfiguration {
+	s.CmsWorkspace = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iAgentEndpointConfig interface {
 	GetAgentName() *string
 	SetCustomDomainUrl(v string) *AgentEndpointConfig
 	GetCustomDomainUrl() *string
+	SetEndpointName(v string) *AgentEndpointConfig
+	GetEndpointName() *string
 	SetEndpointUrl(v string) *AgentEndpointConfig
 	GetEndpointUrl() *string
 }
@@ -20,7 +22,9 @@ type iAgentEndpointConfig interface {
 type AgentEndpointConfig struct {
 	AgentName       *string `json:"agentName,omitempty" xml:"agentName,omitempty"`
 	CustomDomainUrl *string `json:"customDomainUrl,omitempty" xml:"customDomainUrl,omitempty"`
-	EndpointUrl     *string `json:"endpointUrl,omitempty" xml:"endpointUrl,omitempty"`
+	// 端点名称
+	EndpointName *string `json:"endpointName,omitempty" xml:"endpointName,omitempty"`
+	EndpointUrl  *string `json:"endpointUrl,omitempty" xml:"endpointUrl,omitempty"`
 }
 
 func (s AgentEndpointConfig) String() string {
@@ -39,6 +43,10 @@ func (s *AgentEndpointConfig) GetCustomDomainUrl() *string {
 	return s.CustomDomainUrl
 }
 
+func (s *AgentEndpointConfig) GetEndpointName() *string {
+	return s.EndpointName
+}
+
 func (s *AgentEndpointConfig) GetEndpointUrl() *string {
 	return s.EndpointUrl
 }
@@ -50,6 +58,11 @@ func (s *AgentEndpointConfig) SetAgentName(v string) *AgentEndpointConfig {
 
 func (s *AgentEndpointConfig) SetCustomDomainUrl(v string) *AgentEndpointConfig {
 	s.CustomDomainUrl = &v
+	return s
+}
+
+func (s *AgentEndpointConfig) SetEndpointName(v string) *AgentEndpointConfig {
+	s.EndpointName = &v
 	return s
 }
 

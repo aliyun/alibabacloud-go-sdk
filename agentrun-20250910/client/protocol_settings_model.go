@@ -15,6 +15,8 @@ type iProtocolSettings interface {
 	GetA2aAgentCard() *string
 	SetA2aAgentCardUrl(v string) *ProtocolSettings
 	GetA2aAgentCardUrl() *string
+	SetConfig(v string) *ProtocolSettings
+	GetConfig() *string
 	SetHeaders(v string) *ProtocolSettings
 	GetHeaders() *string
 	SetInputBodyJsonSchema(v string) *ProtocolSettings
@@ -33,33 +35,55 @@ type iProtocolSettings interface {
 	GetRequestContentType() *string
 	SetResponseContentType(v string) *ProtocolSettings
 	GetResponseContentType() *string
+	SetType(v string) *ProtocolSettings
+	GetType() *string
 }
 
 type ProtocolSettings struct {
 	// Deprecated
-	//
-	// A2A Agent Card
-	A2AAgentCard    *string `json:"A2AAgentCard,omitempty" xml:"A2AAgentCard,omitempty"`
-	A2aAgentCard    *string `json:"a2aAgentCard,omitempty" xml:"a2aAgentCard,omitempty"`
+	A2AAgentCard *string `json:"A2AAgentCard,omitempty" xml:"A2AAgentCard,omitempty"`
+	// Deprecated
+	A2aAgentCard *string `json:"a2aAgentCard,omitempty" xml:"a2aAgentCard,omitempty"`
+	// Deprecated
 	A2aAgentCardUrl *string `json:"a2aAgentCardUrl,omitempty" xml:"a2aAgentCardUrl,omitempty"`
+	// 协议配置的 JSON 字符串
+	Config *string `json:"config,omitempty" xml:"config,omitempty"`
+	// Deprecated
+	//
 	// 请求头
 	Headers *string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// Deprecated
+	//
 	// 请求体JSON模式
 	InputBodyJsonSchema *string `json:"inputBodyJsonSchema,omitempty" xml:"inputBodyJsonSchema,omitempty"`
+	// Deprecated
+	//
 	// HTTP方法
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	// 协议名称
+	// 可选展示名/别名，不再作为协议类型标识
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Deprecated
+	//
 	// 响应体JSON模式
 	OutputBodyJsonSchema *string `json:"outputBodyJsonSchema,omitempty" xml:"outputBodyJsonSchema,omitempty"`
+	// Deprecated
+	//
 	// 协议路径
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// 协议路径前缀
+	// Deprecated
+	//
+	// 协议路径前缀，建议使用 config
 	PathPrefix *string `json:"pathPrefix,omitempty" xml:"pathPrefix,omitempty"`
+	// Deprecated
+	//
 	// 请求内容类型
 	RequestContentType *string `json:"requestContentType,omitempty" xml:"requestContentType,omitempty"`
+	// Deprecated
+	//
 	// 响应内容类型
 	ResponseContentType *string `json:"responseContentType,omitempty" xml:"responseContentType,omitempty"`
+	// 协议类型标识，用于校验与去重；合法取值由后端校验
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ProtocolSettings) String() string {
@@ -80,6 +104,10 @@ func (s *ProtocolSettings) GetA2aAgentCard() *string {
 
 func (s *ProtocolSettings) GetA2aAgentCardUrl() *string {
 	return s.A2aAgentCardUrl
+}
+
+func (s *ProtocolSettings) GetConfig() *string {
+	return s.Config
 }
 
 func (s *ProtocolSettings) GetHeaders() *string {
@@ -118,6 +146,10 @@ func (s *ProtocolSettings) GetResponseContentType() *string {
 	return s.ResponseContentType
 }
 
+func (s *ProtocolSettings) GetType() *string {
+	return s.Type
+}
+
 func (s *ProtocolSettings) SetA2AAgentCard(v string) *ProtocolSettings {
 	s.A2AAgentCard = &v
 	return s
@@ -130,6 +162,11 @@ func (s *ProtocolSettings) SetA2aAgentCard(v string) *ProtocolSettings {
 
 func (s *ProtocolSettings) SetA2aAgentCardUrl(v string) *ProtocolSettings {
 	s.A2aAgentCardUrl = &v
+	return s
+}
+
+func (s *ProtocolSettings) SetConfig(v string) *ProtocolSettings {
+	s.Config = &v
 	return s
 }
 
@@ -175,6 +212,11 @@ func (s *ProtocolSettings) SetRequestContentType(v string) *ProtocolSettings {
 
 func (s *ProtocolSettings) SetResponseContentType(v string) *ProtocolSettings {
 	s.ResponseContentType = &v
+	return s
+}
+
+func (s *ProtocolSettings) SetType(v string) *ProtocolSettings {
+	s.Type = &v
 	return s
 }
 

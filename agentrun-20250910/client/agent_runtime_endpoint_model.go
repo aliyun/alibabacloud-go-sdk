@@ -19,6 +19,8 @@ type iAgentRuntimeEndpoint interface {
 	GetAgentRuntimeId() *string
 	SetDescription(v string) *AgentRuntimeEndpoint
 	GetDescription() *string
+	SetDisablePublicNetworkAccess(v bool) *AgentRuntimeEndpoint
+	GetDisablePublicNetworkAccess() *bool
 	SetEndpointPublicUrl(v string) *AgentRuntimeEndpoint
 	GetEndpointPublicUrl() *string
 	SetRoutingConfiguration(v *RoutingConfiguration) *AgentRuntimeEndpoint
@@ -52,6 +54,8 @@ type AgentRuntimeEndpoint struct {
 	//
 	// Production endpoint for customer service agent
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 是否禁用该端点的公网访问
+	DisablePublicNetworkAccess *bool `json:"disablePublicNetworkAccess,omitempty" xml:"disablePublicNetworkAccess,omitempty"`
 	// 智能体运行时端点的公网访问地址
 	//
 	// example:
@@ -102,6 +106,10 @@ func (s *AgentRuntimeEndpoint) GetDescription() *string {
 	return s.Description
 }
 
+func (s *AgentRuntimeEndpoint) GetDisablePublicNetworkAccess() *bool {
+	return s.DisablePublicNetworkAccess
+}
+
 func (s *AgentRuntimeEndpoint) GetEndpointPublicUrl() *string {
 	return s.EndpointPublicUrl
 }
@@ -144,6 +152,11 @@ func (s *AgentRuntimeEndpoint) SetAgentRuntimeId(v string) *AgentRuntimeEndpoint
 
 func (s *AgentRuntimeEndpoint) SetDescription(v string) *AgentRuntimeEndpoint {
 	s.Description = &v
+	return s
+}
+
+func (s *AgentRuntimeEndpoint) SetDisablePublicNetworkAccess(v bool) *AgentRuntimeEndpoint {
+	s.DisablePublicNetworkAccess = &v
 	return s
 }
 

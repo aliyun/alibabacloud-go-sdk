@@ -41,6 +41,8 @@ type iUpdateTemplateInput interface {
 	GetSandboxIdleTimeoutInSeconds() *int32
 	SetSandboxTTLInSeconds(v int32) *UpdateTemplateInput
 	GetSandboxTTLInSeconds() *int32
+	SetScalingConfig(v *ScalingConfig) *UpdateTemplateInput
+	GetScalingConfig() *ScalingConfig
 	SetTemplateConfiguration(v map[string]interface{}) *UpdateTemplateInput
 	GetTemplateConfiguration() map[string]interface{}
 	SetWorkspaceId(v string) *UpdateTemplateInput
@@ -72,7 +74,8 @@ type UpdateTemplateInput struct {
 	// Deprecated
 	//
 	// 沙箱存活时间（秒）
-	SandboxTTLInSeconds *int32 `json:"sandboxTTLInSeconds,omitempty" xml:"sandboxTTLInSeconds,omitempty"`
+	SandboxTTLInSeconds *int32         `json:"sandboxTTLInSeconds,omitempty" xml:"sandboxTTLInSeconds,omitempty"`
+	ScalingConfig       *ScalingConfig `json:"scalingConfig,omitempty" xml:"scalingConfig,omitempty"`
 	// 模板配置（灵活的对象结构，根据 templateType 不同而不同）
 	TemplateConfiguration map[string]interface{} `json:"templateConfiguration,omitempty" xml:"templateConfiguration,omitempty"`
 	WorkspaceId           *string                `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
@@ -148,6 +151,10 @@ func (s *UpdateTemplateInput) GetSandboxIdleTimeoutInSeconds() *int32 {
 
 func (s *UpdateTemplateInput) GetSandboxTTLInSeconds() *int32 {
 	return s.SandboxTTLInSeconds
+}
+
+func (s *UpdateTemplateInput) GetScalingConfig() *ScalingConfig {
+	return s.ScalingConfig
 }
 
 func (s *UpdateTemplateInput) GetTemplateConfiguration() map[string]interface{} {
@@ -238,6 +245,11 @@ func (s *UpdateTemplateInput) SetSandboxTTLInSeconds(v int32) *UpdateTemplateInp
 	return s
 }
 
+func (s *UpdateTemplateInput) SetScalingConfig(v *ScalingConfig) *UpdateTemplateInput {
+	s.ScalingConfig = v
+	return s
+}
+
 func (s *UpdateTemplateInput) SetTemplateConfiguration(v map[string]interface{}) *UpdateTemplateInput {
 	s.TemplateConfiguration = v
 	return s
@@ -286,6 +298,11 @@ func (s *UpdateTemplateInput) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.ScalingConfig != nil {
+		if err := s.ScalingConfig.Validate(); err != nil {
+			return err
 		}
 	}
 	return nil

@@ -13,6 +13,8 @@ type iUpdateAgentRuntimeEndpointInput interface {
 	GetAgentRuntimeEndpointName() *string
 	SetDescription(v string) *UpdateAgentRuntimeEndpointInput
 	GetDescription() *string
+	SetDisablePublicNetworkAccess(v bool) *UpdateAgentRuntimeEndpointInput
+	GetDisablePublicNetworkAccess() *bool
 	SetRoutingConfiguration(v *RoutingConfiguration) *UpdateAgentRuntimeEndpointInput
 	GetRoutingConfiguration() *RoutingConfiguration
 	SetTargetVersion(v string) *UpdateAgentRuntimeEndpointInput
@@ -28,6 +30,8 @@ type UpdateAgentRuntimeEndpointInput struct {
 	//
 	// Updated endpoint configuration
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 是否禁用该端点的公网访问
+	DisablePublicNetworkAccess *bool `json:"disablePublicNetworkAccess,omitempty" xml:"disablePublicNetworkAccess,omitempty"`
 	// 智能体运行时端点的路由配置，支持多版本权重分配
 	//
 	// example:
@@ -58,6 +62,10 @@ func (s *UpdateAgentRuntimeEndpointInput) GetDescription() *string {
 	return s.Description
 }
 
+func (s *UpdateAgentRuntimeEndpointInput) GetDisablePublicNetworkAccess() *bool {
+	return s.DisablePublicNetworkAccess
+}
+
 func (s *UpdateAgentRuntimeEndpointInput) GetRoutingConfiguration() *RoutingConfiguration {
 	return s.RoutingConfiguration
 }
@@ -73,6 +81,11 @@ func (s *UpdateAgentRuntimeEndpointInput) SetAgentRuntimeEndpointName(v string) 
 
 func (s *UpdateAgentRuntimeEndpointInput) SetDescription(v string) *UpdateAgentRuntimeEndpointInput {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateAgentRuntimeEndpointInput) SetDisablePublicNetworkAccess(v bool) *UpdateAgentRuntimeEndpointInput {
+	s.DisablePublicNetworkAccess = &v
 	return s
 }
 
