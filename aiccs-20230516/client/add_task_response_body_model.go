@@ -26,6 +26,9 @@ type iAddTaskResponseBody interface {
 }
 
 type AddTaskResponseBody struct {
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//

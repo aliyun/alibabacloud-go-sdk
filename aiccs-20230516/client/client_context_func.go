@@ -227,6 +227,10 @@ func (client *Client) AddTaskWithContext(ctx context.Context, tmpReq *AddTaskReq
 		request.CallTimeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CallTimeList, dara.String("CallTimeList"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.CallTimeStrList) {
+		request.CallTimeStrListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CallTimeStrList, dara.String("CallTimeStrList"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.RepeatReason) {
 		request.RepeatReasonShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RepeatReason, dara.String("RepeatReason"), dara.String("json"))
 	}
@@ -242,6 +246,10 @@ func (client *Client) AddTaskWithContext(ctx context.Context, tmpReq *AddTaskReq
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CallTimeListShrink) {
 		query["CallTimeList"] = request.CallTimeListShrink
+	}
+
+	if !dara.IsNil(request.CallTimeStrListShrink) {
+		query["CallTimeStrList"] = request.CallTimeStrListShrink
 	}
 
 	if !dara.IsNil(request.CallbackUrl) {
@@ -999,6 +1007,10 @@ func (client *Client) EditTaskWithContext(ctx context.Context, tmpReq *EditTaskR
 		request.CallTimeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CallTimeList, dara.String("CallTimeList"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.CallTimeStrList) {
+		request.CallTimeStrListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CallTimeStrList, dara.String("CallTimeStrList"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.RepeatReason) {
 		request.RepeatReasonShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RepeatReason, dara.String("RepeatReason"), dara.String("json"))
 	}
@@ -1014,6 +1026,10 @@ func (client *Client) EditTaskWithContext(ctx context.Context, tmpReq *EditTaskR
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CallTimeListShrink) {
 		query["CallTimeList"] = request.CallTimeListShrink
+	}
+
+	if !dara.IsNil(request.CallTimeStrListShrink) {
+		query["CallTimeStrList"] = request.CallTimeStrListShrink
 	}
 
 	if !dara.IsNil(request.CallbackUrl) {
@@ -1491,6 +1507,10 @@ func (client *Client) QuickAddTaskWithContext(ctx context.Context, tmpReq *Quick
 		request.CallTimeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CallTimeList, dara.String("CallTimeList"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.CallTimeStrList) {
+		request.CallTimeStrListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CallTimeStrList, dara.String("CallTimeStrList"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentGroupId) {
 		query["AgentGroupId"] = request.AgentGroupId
@@ -1498,6 +1518,10 @@ func (client *Client) QuickAddTaskWithContext(ctx context.Context, tmpReq *Quick
 
 	if !dara.IsNil(request.CallTimeListShrink) {
 		query["CallTimeList"] = request.CallTimeListShrink
+	}
+
+	if !dara.IsNil(request.CallTimeStrListShrink) {
+		query["CallTimeStrList"] = request.CallTimeStrListShrink
 	}
 
 	if !dara.IsNil(request.Name) {

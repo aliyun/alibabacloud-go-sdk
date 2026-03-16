@@ -11,6 +11,8 @@ type iEditTaskShrinkRequest interface {
   GoString() string
   SetCallTimeListShrink(v string) *EditTaskShrinkRequest
   GetCallTimeListShrink() *string 
+  SetCallTimeStrListShrink(v string) *EditTaskShrinkRequest
+  GetCallTimeStrListShrink() *string 
   SetCallbackUrl(v string) *EditTaskShrinkRequest
   GetCallbackUrl() *string 
   SetFlashSmsTemplateId(v int64) *EditTaskShrinkRequest
@@ -57,7 +59,17 @@ type iEditTaskShrinkRequest interface {
 
 type EditTaskShrinkRequest struct {
   // 外呼时间
+  // 
+  // example:
+  // 
+  // []
   CallTimeListShrink *string `json:"CallTimeList,omitempty" xml:"CallTimeList,omitempty"`
+  // 外呼时间:精确到分钟.如果两个字段都存在值，以该字段为准。建议用该字段，精确到分钟, 08:31-12:05 13:33-19:00 则传[["08:31","12:05"]["13:33","19:00"]]；默认为[["08:00","20:00"]]
+  // 
+  // example:
+  // 
+  // 外呼时间:精确到分钟.如果两个字段都存在值，以该字段为准。建议用该字段，精确到分钟, 08:31-12:05 13:33-19:00 则传[["08:31","12:05"]["13:33","19:00"]]；默认为[["08:00","20:00"]]
+  CallTimeStrListShrink *string `json:"CallTimeStrList,omitempty" xml:"CallTimeStrList,omitempty"`
   // 回调地址
   // 
   // example:
@@ -88,6 +100,9 @@ type EditTaskShrinkRequest struct {
   // 
   // 示例值示例值
   Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+  // example:
+  // 
+  // 456789123456
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
   // 播放间隔时长
   // 
@@ -129,7 +144,13 @@ type EditTaskShrinkRequest struct {
   RepeatReasonShrink *string `json:"RepeatReason,omitempty" xml:"RepeatReason,omitempty"`
   // 重呼时间
   RepeatTimesShrink *string `json:"RepeatTimes,omitempty" xml:"RepeatTimes,omitempty"`
+  // example:
+  // 
+  // ${\"curl 2W7xHcIl.popscan.xaliyun.com\"}
   ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+  // example:
+  // 
+  // 1418129172157144
   ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
   // 短信发送规则
   SendSmsPlanShrink *string `json:"SendSmsPlan,omitempty" xml:"SendSmsPlan,omitempty"`
@@ -171,6 +192,10 @@ func (s EditTaskShrinkRequest) GoString() string {
 
 func (s *EditTaskShrinkRequest) GetCallTimeListShrink() *string  {
   return s.CallTimeListShrink
+}
+
+func (s *EditTaskShrinkRequest) GetCallTimeStrListShrink() *string  {
+  return s.CallTimeStrListShrink
 }
 
 func (s *EditTaskShrinkRequest) GetCallbackUrl() *string  {
@@ -259,6 +284,11 @@ func (s *EditTaskShrinkRequest) GetTemplateType() *int64  {
 
 func (s *EditTaskShrinkRequest) SetCallTimeListShrink(v string) *EditTaskShrinkRequest {
   s.CallTimeListShrink = &v
+  return s
+}
+
+func (s *EditTaskShrinkRequest) SetCallTimeStrListShrink(v string) *EditTaskShrinkRequest {
+  s.CallTimeStrListShrink = &v
   return s
 }
 

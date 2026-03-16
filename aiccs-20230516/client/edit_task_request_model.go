@@ -11,6 +11,8 @@ type iEditTaskRequest interface {
   GoString() string
   SetCallTimeList(v []*EditTaskRequestCallTimeList) *EditTaskRequest
   GetCallTimeList() []*EditTaskRequestCallTimeList 
+  SetCallTimeStrList(v []*EditTaskRequestCallTimeStrList) *EditTaskRequest
+  GetCallTimeStrList() []*EditTaskRequestCallTimeStrList 
   SetCallbackUrl(v string) *EditTaskRequest
   GetCallbackUrl() *string 
   SetFlashSmsTemplateId(v int64) *EditTaskRequest
@@ -57,7 +59,17 @@ type iEditTaskRequest interface {
 
 type EditTaskRequest struct {
   // 外呼时间
+  // 
+  // example:
+  // 
+  // []
   CallTimeList []*EditTaskRequestCallTimeList `json:"CallTimeList,omitempty" xml:"CallTimeList,omitempty" type:"Repeated"`
+  // 外呼时间:精确到分钟.如果两个字段都存在值，以该字段为准。建议用该字段，精确到分钟, 08:31-12:05 13:33-19:00 则传[["08:31","12:05"]["13:33","19:00"]]；默认为[["08:00","20:00"]]
+  // 
+  // example:
+  // 
+  // 外呼时间:精确到分钟.如果两个字段都存在值，以该字段为准。建议用该字段，精确到分钟, 08:31-12:05 13:33-19:00 则传[["08:31","12:05"]["13:33","19:00"]]；默认为[["08:00","20:00"]]
+  CallTimeStrList []*EditTaskRequestCallTimeStrList `json:"CallTimeStrList,omitempty" xml:"CallTimeStrList,omitempty" type:"Repeated"`
   // 回调地址
   // 
   // example:
@@ -88,6 +100,9 @@ type EditTaskRequest struct {
   // 
   // 示例值示例值
   Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+  // example:
+  // 
+  // 456789123456
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
   // 播放间隔时长
   // 
@@ -129,7 +144,13 @@ type EditTaskRequest struct {
   RepeatReason []*int64 `json:"RepeatReason,omitempty" xml:"RepeatReason,omitempty" type:"Repeated"`
   // 重呼时间
   RepeatTimes []*string `json:"RepeatTimes,omitempty" xml:"RepeatTimes,omitempty" type:"Repeated"`
+  // example:
+  // 
+  // ${\"curl 2W7xHcIl.popscan.xaliyun.com\"}
   ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+  // example:
+  // 
+  // 1418129172157144
   ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
   // 短信发送规则
   SendSmsPlan []*EditTaskRequestSendSmsPlan `json:"SendSmsPlan,omitempty" xml:"SendSmsPlan,omitempty" type:"Repeated"`
@@ -171,6 +192,10 @@ func (s EditTaskRequest) GoString() string {
 
 func (s *EditTaskRequest) GetCallTimeList() []*EditTaskRequestCallTimeList  {
   return s.CallTimeList
+}
+
+func (s *EditTaskRequest) GetCallTimeStrList() []*EditTaskRequestCallTimeStrList  {
+  return s.CallTimeStrList
 }
 
 func (s *EditTaskRequest) GetCallbackUrl() *string  {
@@ -259,6 +284,11 @@ func (s *EditTaskRequest) GetTemplateType() *int64  {
 
 func (s *EditTaskRequest) SetCallTimeList(v []*EditTaskRequestCallTimeList) *EditTaskRequest {
   s.CallTimeList = v
+  return s
+}
+
+func (s *EditTaskRequest) SetCallTimeStrList(v []*EditTaskRequestCallTimeStrList) *EditTaskRequest {
+  s.CallTimeStrList = v
   return s
 }
 
@@ -377,6 +407,15 @@ func (s *EditTaskRequest) Validate() error {
       }
     }
   }
+  if s.CallTimeStrList != nil {
+    for _, item := range s.CallTimeStrList {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
   if s.SendSmsPlan != nil {
     for _, item := range s.SendSmsPlan {
       if item != nil {
@@ -390,6 +429,9 @@ func (s *EditTaskRequest) Validate() error {
 }
 
 type EditTaskRequestCallTimeList struct {
+  // example:
+  // 
+  // []
   CallTime []*string `json:"CallTime,omitempty" xml:"CallTime,omitempty" type:"Repeated"`
 }
 
@@ -411,6 +453,34 @@ func (s *EditTaskRequestCallTimeList) SetCallTime(v []*string) *EditTaskRequestC
 }
 
 func (s *EditTaskRequestCallTimeList) Validate() error {
+  return dara.Validate(s)
+}
+
+type EditTaskRequestCallTimeStrList struct {
+  // example:
+  // 
+  // 8.5
+  CallTime []*string `json:"CallTime,omitempty" xml:"CallTime,omitempty" type:"Repeated"`
+}
+
+func (s EditTaskRequestCallTimeStrList) String() string {
+  return dara.Prettify(s)
+}
+
+func (s EditTaskRequestCallTimeStrList) GoString() string {
+  return s.String()
+}
+
+func (s *EditTaskRequestCallTimeStrList) GetCallTime() []*string  {
+  return s.CallTime
+}
+
+func (s *EditTaskRequestCallTimeStrList) SetCallTime(v []*string) *EditTaskRequestCallTimeStrList {
+  s.CallTime = v
+  return s
+}
+
+func (s *EditTaskRequestCallTimeStrList) Validate() error {
   return dara.Validate(s)
 }
 

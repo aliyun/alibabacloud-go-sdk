@@ -11,6 +11,8 @@ type iAddTaskRequest interface {
 	GoString() string
 	SetCallTimeList(v []*AddTaskRequestCallTimeList) *AddTaskRequest
 	GetCallTimeList() []*AddTaskRequestCallTimeList
+	SetCallTimeStrList(v []*AddTaskRequestCallTimeStrList) *AddTaskRequest
+	GetCallTimeStrList() []*AddTaskRequestCallTimeStrList
 	SetCallbackUrl(v string) *AddTaskRequest
 	GetCallbackUrl() *string
 	SetFlashSmsTemplateId(v int64) *AddTaskRequest
@@ -58,6 +60,12 @@ type iAddTaskRequest interface {
 type AddTaskRequest struct {
 	// 外呼时间
 	CallTimeList []*AddTaskRequestCallTimeList `json:"CallTimeList,omitempty" xml:"CallTimeList,omitempty" type:"Repeated"`
+	// 外呼时间:精确到分钟.如果两个字段都存在值，以该字段为准。建议用该字段，精确到分钟, 08:31-12:05 13:33-19:00 则传[["08:31","12:05"]["13:33","19:00"]]；默认为[["08:00","20:00"]]
+	//
+	// example:
+	//
+	// [["08:31","12:05"]["13:33","19:00"]]
+	CallTimeStrList []*AddTaskRequestCallTimeStrList `json:"CallTimeStrList,omitempty" xml:"CallTimeStrList,omitempty" type:"Repeated"`
 	// 回调地址
 	//
 	// example:
@@ -89,8 +97,11 @@ type AddTaskRequest struct {
 	// example:
 	//
 	// 示例值示例值示例值
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1234567890
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// 播放间隔时长
 	//
 	// example:
@@ -130,9 +141,15 @@ type AddTaskRequest struct {
 	// 重呼条件
 	RepeatReason []*string `json:"RepeatReason,omitempty" xml:"RepeatReason,omitempty" type:"Repeated"`
 	// 重呼时间
-	RepeatTimes          []*string `json:"RepeatTimes,omitempty" xml:"RepeatTimes,omitempty" type:"Repeated"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RepeatTimes []*string `json:"RepeatTimes,omitempty" xml:"RepeatTimes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// example@aliyun.com
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	// example:
+	//
+	// 1885017412614451
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// 短信发送规则
 	SendSmsPlan []*AddTaskRequestSendSmsPlan `json:"SendSmsPlan,omitempty" xml:"SendSmsPlan,omitempty" type:"Repeated"`
 	// 任务启动日期
@@ -173,6 +190,10 @@ func (s AddTaskRequest) GoString() string {
 
 func (s *AddTaskRequest) GetCallTimeList() []*AddTaskRequestCallTimeList {
 	return s.CallTimeList
+}
+
+func (s *AddTaskRequest) GetCallTimeStrList() []*AddTaskRequestCallTimeStrList {
+	return s.CallTimeStrList
 }
 
 func (s *AddTaskRequest) GetCallbackUrl() *string {
@@ -261,6 +282,11 @@ func (s *AddTaskRequest) GetTemplateType() *int64 {
 
 func (s *AddTaskRequest) SetCallTimeList(v []*AddTaskRequestCallTimeList) *AddTaskRequest {
 	s.CallTimeList = v
+	return s
+}
+
+func (s *AddTaskRequest) SetCallTimeStrList(v []*AddTaskRequestCallTimeStrList) *AddTaskRequest {
+	s.CallTimeStrList = v
 	return s
 }
 
@@ -379,6 +405,15 @@ func (s *AddTaskRequest) Validate() error {
 			}
 		}
 	}
+	if s.CallTimeStrList != nil {
+		for _, item := range s.CallTimeStrList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.SendSmsPlan != nil {
 		for _, item := range s.SendSmsPlan {
 			if item != nil {
@@ -413,6 +448,34 @@ func (s *AddTaskRequestCallTimeList) SetCallTime(v []*string) *AddTaskRequestCal
 }
 
 func (s *AddTaskRequestCallTimeList) Validate() error {
+	return dara.Validate(s)
+}
+
+type AddTaskRequestCallTimeStrList struct {
+	// example:
+	//
+	// ["08:31","12:05"]
+	CallTime []*string `json:"CallTime,omitempty" xml:"CallTime,omitempty" type:"Repeated"`
+}
+
+func (s AddTaskRequestCallTimeStrList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AddTaskRequestCallTimeStrList) GoString() string {
+	return s.String()
+}
+
+func (s *AddTaskRequestCallTimeStrList) GetCallTime() []*string {
+	return s.CallTime
+}
+
+func (s *AddTaskRequestCallTimeStrList) SetCallTime(v []*string) *AddTaskRequestCallTimeStrList {
+	s.CallTime = v
+	return s
+}
+
+func (s *AddTaskRequestCallTimeStrList) Validate() error {
 	return dara.Validate(s)
 }
 

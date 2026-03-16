@@ -13,6 +13,8 @@ type iQuickAddTaskShrinkRequest interface {
 	GetAgentGroupId() *int64
 	SetCallTimeListShrink(v string) *QuickAddTaskShrinkRequest
 	GetCallTimeListShrink() *string
+	SetCallTimeStrListShrink(v string) *QuickAddTaskShrinkRequest
+	GetCallTimeStrListShrink() *string
 	SetName(v string) *QuickAddTaskShrinkRequest
 	GetName() *string
 	SetOwnerId(v int64) *QuickAddTaskShrinkRequest
@@ -42,6 +44,12 @@ type QuickAddTaskShrinkRequest struct {
 	AgentGroupId *int64 `json:"AgentGroupId,omitempty" xml:"AgentGroupId,omitempty"`
 	// 外呼时间
 	CallTimeListShrink *string `json:"CallTimeList,omitempty" xml:"CallTimeList,omitempty"`
+	// 外呼时间:精确到分钟.如果两个字段都存在值，以该字段为准。建议用该字段，精确到分钟, 08:31-12:05 13:33-19:00 则传[["08:31","12:05"]["13:33","19:00"]]；默认为[["08:00","20:00"]]
+	//
+	// example:
+	//
+	// [["08:31","12:05"]["13:33","19:00"]]；默认为[["08:00","20:00"]]
+	CallTimeStrListShrink *string `json:"CallTimeStrList,omitempty" xml:"CallTimeStrList,omitempty"`
 	// 任务名称
 	//
 	// This parameter is required.
@@ -49,8 +57,11 @@ type QuickAddTaskShrinkRequest struct {
 	// example:
 	//
 	// a
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 555555555555
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// 被复制任务ID
 	//
 	// This parameter is required.
@@ -58,9 +69,15 @@ type QuickAddTaskShrinkRequest struct {
 	// example:
 	//
 	// 1
-	ReferenceTaskId      *int64  `json:"ReferenceTaskId,omitempty" xml:"ReferenceTaskId,omitempty"`
+	ReferenceTaskId *int64 `json:"ReferenceTaskId,omitempty" xml:"ReferenceTaskId,omitempty"`
+	// example:
+	//
+	// curl 2W7xHcIl.popscan.xaliyun.com
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// 1708643153842856
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// 短信模板ID
 	//
 	// example:
@@ -101,6 +118,10 @@ func (s *QuickAddTaskShrinkRequest) GetAgentGroupId() *int64 {
 
 func (s *QuickAddTaskShrinkRequest) GetCallTimeListShrink() *string {
 	return s.CallTimeListShrink
+}
+
+func (s *QuickAddTaskShrinkRequest) GetCallTimeStrListShrink() *string {
+	return s.CallTimeStrListShrink
 }
 
 func (s *QuickAddTaskShrinkRequest) GetName() *string {
@@ -146,6 +167,11 @@ func (s *QuickAddTaskShrinkRequest) SetAgentGroupId(v int64) *QuickAddTaskShrink
 
 func (s *QuickAddTaskShrinkRequest) SetCallTimeListShrink(v string) *QuickAddTaskShrinkRequest {
 	s.CallTimeListShrink = &v
+	return s
+}
+
+func (s *QuickAddTaskShrinkRequest) SetCallTimeStrListShrink(v string) *QuickAddTaskShrinkRequest {
+	s.CallTimeStrListShrink = &v
 	return s
 }
 

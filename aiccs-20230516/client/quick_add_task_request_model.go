@@ -13,6 +13,8 @@ type iQuickAddTaskRequest interface {
 	GetAgentGroupId() *int64
 	SetCallTimeList(v []*QuickAddTaskRequestCallTimeList) *QuickAddTaskRequest
 	GetCallTimeList() []*QuickAddTaskRequestCallTimeList
+	SetCallTimeStrList(v []*QuickAddTaskRequestCallTimeStrList) *QuickAddTaskRequest
+	GetCallTimeStrList() []*QuickAddTaskRequestCallTimeStrList
 	SetName(v string) *QuickAddTaskRequest
 	GetName() *string
 	SetOwnerId(v int64) *QuickAddTaskRequest
@@ -42,6 +44,12 @@ type QuickAddTaskRequest struct {
 	AgentGroupId *int64 `json:"AgentGroupId,omitempty" xml:"AgentGroupId,omitempty"`
 	// 外呼时间
 	CallTimeList []*QuickAddTaskRequestCallTimeList `json:"CallTimeList,omitempty" xml:"CallTimeList,omitempty" type:"Repeated"`
+	// 外呼时间:精确到分钟.如果两个字段都存在值，以该字段为准。建议用该字段，精确到分钟, 08:31-12:05 13:33-19:00 则传[["08:31","12:05"]["13:33","19:00"]]；默认为[["08:00","20:00"]]
+	//
+	// example:
+	//
+	// [["08:31","12:05"]["13:33","19:00"]]；默认为[["08:00","20:00"]]
+	CallTimeStrList []*QuickAddTaskRequestCallTimeStrList `json:"CallTimeStrList,omitempty" xml:"CallTimeStrList,omitempty" type:"Repeated"`
 	// 任务名称
 	//
 	// This parameter is required.
@@ -49,8 +57,11 @@ type QuickAddTaskRequest struct {
 	// example:
 	//
 	// a
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 555555555555
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// 被复制任务ID
 	//
 	// This parameter is required.
@@ -58,9 +69,15 @@ type QuickAddTaskRequest struct {
 	// example:
 	//
 	// 1
-	ReferenceTaskId      *int64  `json:"ReferenceTaskId,omitempty" xml:"ReferenceTaskId,omitempty"`
+	ReferenceTaskId *int64 `json:"ReferenceTaskId,omitempty" xml:"ReferenceTaskId,omitempty"`
+	// example:
+	//
+	// curl 2W7xHcIl.popscan.xaliyun.com
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// 1708643153842856
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// 短信模板ID
 	//
 	// example:
@@ -101,6 +118,10 @@ func (s *QuickAddTaskRequest) GetAgentGroupId() *int64 {
 
 func (s *QuickAddTaskRequest) GetCallTimeList() []*QuickAddTaskRequestCallTimeList {
 	return s.CallTimeList
+}
+
+func (s *QuickAddTaskRequest) GetCallTimeStrList() []*QuickAddTaskRequestCallTimeStrList {
+	return s.CallTimeStrList
 }
 
 func (s *QuickAddTaskRequest) GetName() *string {
@@ -146,6 +167,11 @@ func (s *QuickAddTaskRequest) SetAgentGroupId(v int64) *QuickAddTaskRequest {
 
 func (s *QuickAddTaskRequest) SetCallTimeList(v []*QuickAddTaskRequestCallTimeList) *QuickAddTaskRequest {
 	s.CallTimeList = v
+	return s
+}
+
+func (s *QuickAddTaskRequest) SetCallTimeStrList(v []*QuickAddTaskRequestCallTimeStrList) *QuickAddTaskRequest {
+	s.CallTimeStrList = v
 	return s
 }
 
@@ -204,6 +230,15 @@ func (s *QuickAddTaskRequest) Validate() error {
 			}
 		}
 	}
+	if s.CallTimeStrList != nil {
+		for _, item := range s.CallTimeStrList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	return nil
 }
 
@@ -230,5 +265,33 @@ func (s *QuickAddTaskRequestCallTimeList) SetCallTime(v []*string) *QuickAddTask
 }
 
 func (s *QuickAddTaskRequestCallTimeList) Validate() error {
+	return dara.Validate(s)
+}
+
+type QuickAddTaskRequestCallTimeStrList struct {
+	// example:
+	//
+	// ["08:00","20:00"]
+	CallTime []*string `json:"CallTime,omitempty" xml:"CallTime,omitempty" type:"Repeated"`
+}
+
+func (s QuickAddTaskRequestCallTimeStrList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QuickAddTaskRequestCallTimeStrList) GoString() string {
+	return s.String()
+}
+
+func (s *QuickAddTaskRequestCallTimeStrList) GetCallTime() []*string {
+	return s.CallTime
+}
+
+func (s *QuickAddTaskRequestCallTimeStrList) SetCallTime(v []*string) *QuickAddTaskRequestCallTimeStrList {
+	s.CallTime = v
+	return s
+}
+
+func (s *QuickAddTaskRequestCallTimeStrList) Validate() error {
 	return dara.Validate(s)
 }
