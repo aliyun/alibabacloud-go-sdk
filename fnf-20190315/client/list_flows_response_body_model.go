@@ -126,6 +126,10 @@ type ListFlowsResponseBodyFlows struct {
 	//
 	// flow
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// rg-xxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The Alibaba Cloud resource name (ARN) of the specified Resource Access Management (RAM) role that Serverless Workflow assumes to invoke resources when the flow is executed.
 	//
 	// example:
@@ -180,6 +184,10 @@ func (s *ListFlowsResponseBodyFlows) GetName() *string {
 	return s.Name
 }
 
+func (s *ListFlowsResponseBodyFlows) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *ListFlowsResponseBodyFlows) GetRoleArn() *string {
 	return s.RoleArn
 }
@@ -225,6 +233,11 @@ func (s *ListFlowsResponseBodyFlows) SetLastModifiedTime(v string) *ListFlowsRes
 
 func (s *ListFlowsResponseBodyFlows) SetName(v string) *ListFlowsResponseBodyFlows {
 	s.Name = &v
+	return s
+}
+
+func (s *ListFlowsResponseBodyFlows) SetResourceGroupId(v string) *ListFlowsResponseBodyFlows {
+	s.ResourceGroupId = &v
 	return s
 }
 

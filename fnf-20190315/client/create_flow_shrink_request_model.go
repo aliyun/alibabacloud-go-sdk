@@ -21,6 +21,8 @@ type iCreateFlowShrinkRequest interface {
 	GetExternalStorageLocation() *string
 	SetName(v string) *CreateFlowShrinkRequest
 	GetName() *string
+	SetResourceGroupId(v string) *CreateFlowShrinkRequest
+	GetResourceGroupId() *string
 	SetRoleArn(v string) *CreateFlowShrinkRequest
 	GetRoleArn() *string
 	SetType(v string) *CreateFlowShrinkRequest
@@ -74,7 +76,8 @@ type CreateFlowShrinkRequest struct {
 	// example:
 	//
 	// flow
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The Alibaba Cloud resource name (ARN) of the authorized role on which the execution of the flow relies. During the execution of the flow, CloudFlow assumes the role to call API operations of relevant services.
 	//
 	// example:
@@ -123,6 +126,10 @@ func (s *CreateFlowShrinkRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateFlowShrinkRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *CreateFlowShrinkRequest) GetRoleArn() *string {
 	return s.RoleArn
 }
@@ -158,6 +165,11 @@ func (s *CreateFlowShrinkRequest) SetExternalStorageLocation(v string) *CreateFl
 
 func (s *CreateFlowShrinkRequest) SetName(v string) *CreateFlowShrinkRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateFlowShrinkRequest) SetResourceGroupId(v string) *CreateFlowShrinkRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 

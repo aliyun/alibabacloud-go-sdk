@@ -62,6 +62,10 @@ func (client *Client) CreateFlowWithContext(ctx context.Context, tmpReq *CreateF
 		body["Name"] = request.Name
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !dara.IsNil(request.RoleArn) {
 		body["RoleArn"] = request.RoleArn
 	}
@@ -581,7 +585,7 @@ func (client *Client) DescribeMapRunWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// 查询地域信息列表
+// Queries the regions where CloudFlow is available.
 //
 // @param request - DescribeRegionsRequest
 //

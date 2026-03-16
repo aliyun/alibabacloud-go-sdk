@@ -27,6 +27,8 @@ type iCreateFlowResponseBody interface {
 	GetName() *string
 	SetRequestId(v string) *CreateFlowResponseBody
 	GetRequestId() *string
+	SetResourceGroupId(v string) *CreateFlowResponseBody
+	GetResourceGroupId() *string
 	SetRoleArn(v string) *CreateFlowResponseBody
 	GetRoleArn() *string
 	SetType(v string) *CreateFlowResponseBody
@@ -83,6 +85,10 @@ type CreateFlowResponseBody struct {
 	//
 	// testRequestID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// rg-xxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The Alibaba Cloud resource name (ARN) of the authorized role on which the execution of the flow relies. During the execution of the flow, CloudFlow assumes the role to call API operations of relevant services.
 	//
 	// example:
@@ -151,6 +157,10 @@ func (s *CreateFlowResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *CreateFlowResponseBody) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *CreateFlowResponseBody) GetRoleArn() *string {
 	return s.RoleArn
 }
@@ -201,6 +211,11 @@ func (s *CreateFlowResponseBody) SetName(v string) *CreateFlowResponseBody {
 
 func (s *CreateFlowResponseBody) SetRequestId(v string) *CreateFlowResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateFlowResponseBody) SetResourceGroupId(v string) *CreateFlowResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 

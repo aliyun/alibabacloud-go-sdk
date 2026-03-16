@@ -13,6 +13,8 @@ type iListFlowsRequest interface {
 	GetLimit() *int32
 	SetNextToken(v string) *ListFlowsRequest
 	GetNextToken() *string
+	SetResourceGroupId(v string) *ListFlowsRequest
+	GetResourceGroupId() *string
 }
 
 type ListFlowsRequest struct {
@@ -28,6 +30,10 @@ type ListFlowsRequest struct {
 	//
 	// flow_nextxxx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// rg-xxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ListFlowsRequest) String() string {
@@ -46,6 +52,10 @@ func (s *ListFlowsRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *ListFlowsRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *ListFlowsRequest) SetLimit(v int32) *ListFlowsRequest {
 	s.Limit = &v
 	return s
@@ -53,6 +63,11 @@ func (s *ListFlowsRequest) SetLimit(v int32) *ListFlowsRequest {
 
 func (s *ListFlowsRequest) SetNextToken(v string) *ListFlowsRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListFlowsRequest) SetResourceGroupId(v string) *ListFlowsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 

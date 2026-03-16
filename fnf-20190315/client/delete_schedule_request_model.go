@@ -16,9 +16,21 @@ type iDeleteScheduleRequest interface {
 }
 
 type DeleteScheduleRequest struct {
+	// The name of the workflow with which the scheduling task that you want to delete is associated.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// testFlowName
 	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The name of the scheduling task that you want to delete.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// testScheduleName
 	ScheduleName *string `json:"ScheduleName,omitempty" xml:"ScheduleName,omitempty"`
 }
 

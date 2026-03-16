@@ -118,6 +118,10 @@ func (client *Client) CreateFlowWithOptions(tmpReq *CreateFlowRequest, runtime *
 		body["Name"] = request.Name
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !dara.IsNil(request.RoleArn) {
 		body["RoleArn"] = request.RoleArn
 	}
@@ -849,7 +853,7 @@ func (client *Client) DescribeMapRun(request *DescribeMapRunRequest) (_result *D
 
 // Summary:
 //
-// 查询地域信息列表
+// Queries the regions where CloudFlow is available.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -893,7 +897,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 // Summary:
 //
-// 查询地域信息列表
+// Queries the regions where CloudFlow is available.
 //
 // @param request - DescribeRegionsRequest
 //

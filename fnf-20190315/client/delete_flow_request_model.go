@@ -14,7 +14,13 @@ type iDeleteFlowRequest interface {
 }
 
 type DeleteFlowRequest struct {
+	// The name of the workflow that you want to delete.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// flow
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

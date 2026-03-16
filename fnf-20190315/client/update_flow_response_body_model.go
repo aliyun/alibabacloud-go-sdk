@@ -27,6 +27,8 @@ type iUpdateFlowResponseBody interface {
 	GetName() *string
 	SetRequestId(v string) *UpdateFlowResponseBody
 	GetRequestId() *string
+	SetResourceGroupId(v string) *UpdateFlowResponseBody
+	GetResourceGroupId() *string
 	SetRoleArn(v string) *UpdateFlowResponseBody
 	GetRoleArn() *string
 	SetType(v string) *UpdateFlowResponseBody
@@ -83,6 +85,10 @@ type UpdateFlowResponseBody struct {
 	//
 	// testRequestID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// rg-xxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The Alibaba Cloud resource name (ARN) of the authorized role on which the execution of the flow relies. During the execution of the flow, the flow execution engine assumes the role to call API operations of relevant services.
 	//
 	// example:
@@ -141,6 +147,10 @@ func (s *UpdateFlowResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *UpdateFlowResponseBody) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *UpdateFlowResponseBody) GetRoleArn() *string {
 	return s.RoleArn
 }
@@ -191,6 +201,11 @@ func (s *UpdateFlowResponseBody) SetName(v string) *UpdateFlowResponseBody {
 
 func (s *UpdateFlowResponseBody) SetRequestId(v string) *UpdateFlowResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateFlowResponseBody) SetResourceGroupId(v string) *UpdateFlowResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
