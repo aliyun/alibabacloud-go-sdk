@@ -132,7 +132,7 @@ func (client *Client) CancelServiceUsage(request *CancelServiceUsageRequest) (_r
 
 // Summary:
 //
-// Changes the resource group to which a cloud resource belongs.
+// Changes the resource group of a cloud resource based on the resource ID.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -188,7 +188,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// Changes the resource group to which a cloud resource belongs.
+// Changes the resource group of a cloud resource based on the resource ID.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -206,7 +206,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// 服务实例部署前的预检查
+// Performs a precheck before deploying a service instance.
 //
 // @param request - CheckServiceDeployableRequest
 //
@@ -274,7 +274,7 @@ func (client *Client) CheckServiceDeployableWithOptions(request *CheckServiceDep
 
 // Summary:
 //
-// 服务实例部署前的预检查
+// Performs a precheck before deploying a service instance.
 //
 // @param request - CheckServiceDeployableRequest
 //
@@ -836,7 +836,7 @@ func (client *Client) DeleteBackup(request *DeleteBackupRequest) (_result *Delet
 
 // Summary:
 //
-// Delete service instances.
+// Deletes service instances based on the region ID and service instance IDs.
 //
 // @param request - DeleteServiceInstancesRequest
 //
@@ -888,7 +888,7 @@ func (client *Client) DeleteServiceInstancesWithOptions(request *DeleteServiceIn
 
 // Summary:
 //
-// Delete service instances.
+// Deletes service instances based on the region ID and service instance IDs.
 //
 // @param request - DeleteServiceInstancesRequest
 //
@@ -906,7 +906,7 @@ func (client *Client) DeleteServiceInstances(request *DeleteServiceInstancesRequ
 
 // Summary:
 //
-// Deploy service instance in Created status.
+// Deploys the created service instance.
 //
 // @param request - DeployServiceInstanceRequest
 //
@@ -958,7 +958,7 @@ func (client *Client) DeployServiceInstanceWithOptions(request *DeployServiceIns
 
 // Summary:
 //
-// Deploy service instance in Created status.
+// Deploys the created service instance.
 //
 // @param request - DeployServiceInstanceRequest
 //
@@ -1038,7 +1038,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// 生成并校验服务创建stack所需要的权限
+// Queries the missing policies before creating a service instance.
 //
 // @param request - GenerateServicePolicyRequest
 //
@@ -1102,7 +1102,7 @@ func (client *Client) GenerateServicePolicyWithOptions(request *GenerateServiceP
 
 // Summary:
 //
-// 生成并校验服务创建stack所需要的权限
+// Queries the missing policies before creating a service instance.
 //
 // @param request - GenerateServicePolicyRequest
 //
@@ -1548,7 +1548,7 @@ func (client *Client) GetServiceInstance(request *GetServiceInstanceRequest) (_r
 
 // Summary:
 //
-// Query renewal prices for prepaid resources of private deployment service instance. You can query renewal prices for all prepaid resources included in a service instance, or query renewal prices for specified resources. Only one of the two methods can be used.
+// Inquiries the prices of subscription resources for private service instances. Renewal price inquiry is supported. You can make a unified renewal price inquiry for all subscription resources based on a specific service instance ID or make a renewal price inquiry for a specific resource. You can specify a service instance ID or a resource in a request, but cannot specify both of them.
 //
 // @param request - GetServiceInstanceSubscriptionEstimateCostRequest
 //
@@ -1616,7 +1616,7 @@ func (client *Client) GetServiceInstanceSubscriptionEstimateCostWithOptions(requ
 
 // Summary:
 //
-// Query renewal prices for prepaid resources of private deployment service instance. You can query renewal prices for all prepaid resources included in a service instance, or query renewal prices for specified resources. Only one of the two methods can be used.
+// Inquiries the prices of subscription resources for private service instances. Renewal price inquiry is supported. You can make a unified renewal price inquiry for all subscription resources based on a specific service instance ID or make a renewal price inquiry for a specific resource. You can specify a service instance ID or a resource in a request, but cannot specify both of them.
 //
 // @param request - GetServiceInstanceSubscriptionEstimateCostRequest
 //
@@ -1722,7 +1722,7 @@ func (client *Client) GetServiceProvisions(request *GetServiceProvisionsRequest)
 
 // Summary:
 //
-// Queries the constraints on the parameters in an Resource Orchestration Service (ROS) template.
+// Queries the constraints on the parameters in a Resource Orchestration Service (ROS) template in a region based on the template name and service ID.
 //
 // @param request - GetServiceTemplateParameterConstraintsRequest
 //
@@ -1806,7 +1806,7 @@ func (client *Client) GetServiceTemplateParameterConstraintsWithOptions(request 
 
 // Summary:
 //
-// Queries the constraints on the parameters in an Resource Orchestration Service (ROS) template.
+// Queries the constraints on the parameters in a Resource Orchestration Service (ROS) template in a region based on the template name and service ID.
 //
 // @param request - GetServiceTemplateParameterConstraintsRequest
 //
@@ -1968,7 +1968,7 @@ func (client *Client) ListBackups(request *ListBackupsRequest) (_result *ListBac
 
 // Summary:
 //
-// # Query Permission Policy List
+// Queires the permissions.
 //
 // @param request - ListPoliciesRequest
 //
@@ -2020,7 +2020,7 @@ func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, runt
 
 // Summary:
 //
-// # Query Permission Policy List
+// Queires the permissions.
 //
 // @param request - ListPoliciesRequest
 //
@@ -2120,7 +2120,7 @@ func (client *Client) ListRestoreTasks(request *ListRestoreTasksRequest) (_resul
 
 // Summary:
 //
-// 查询服务类别
+// Queries service categories.
 //
 // @param request - ListServiceCategoriesRequest
 //
@@ -2151,7 +2151,7 @@ func (client *Client) ListServiceCategoriesWithOptions(runtime *dara.RuntimeOpti
 
 // Summary:
 //
-// 查询服务类别
+// Queries service categories.
 //
 // @return ListServiceCategoriesResponse
 func (client *Client) ListServiceCategories() (_result *ListServiceCategoriesResponse, _err error) {
@@ -2167,7 +2167,7 @@ func (client *Client) ListServiceCategories() (_result *ListServiceCategoriesRes
 
 // Summary:
 //
-// 展示服务实例账单
+// Queries instance bills.
 //
 // @param request - ListServiceInstanceBillRequest
 //
@@ -2231,7 +2231,7 @@ func (client *Client) ListServiceInstanceBillWithOptions(request *ListServiceIns
 
 // Summary:
 //
-// 展示服务实例账单
+// Queries instance bills.
 //
 // @param request - ListServiceInstanceBillRequest
 //
@@ -2749,7 +2749,7 @@ func (client *Client) ListServices(request *ListServicesRequest) (_result *ListS
 
 // Summary:
 //
-// 查询标签键列表
+// Queries the existing tag keys.
 //
 // @param request - ListTagKeysRequest
 //
@@ -2801,7 +2801,7 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 
 // Summary:
 //
-// 查询标签键列表
+// Queries the existing tag keys.
 //
 // @param request - ListTagKeysRequest
 //
@@ -2819,7 +2819,7 @@ func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTag
 
 // Summary:
 //
-// 查询标签资源列表
+// # Query tag resource list
 //
 // @param request - ListTagResourcesRequest
 //
@@ -2879,7 +2879,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// 查询标签资源列表
+// # Query tag resource list
 //
 // @param request - ListTagResourcesRequest
 //
@@ -2897,7 +2897,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// 查询标签值列表
+// Queries the tag values of a tag key.
 //
 // @param request - ListTagValuesRequest
 //
@@ -2953,7 +2953,7 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 
 // Summary:
 //
-// 查询标签值列表
+// Queries the tag values of a tag key.
 //
 // @param request - ListTagValuesRequest
 //
@@ -2971,7 +2971,7 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 
 // Summary:
 //
-// Renew the prepaid resources included in the private deployment service instance. You can renew all prepaid resources under the specified service instance ID, or you can renew the specified resources. Only one of the two renewal methods can be used.
+// Renews the subscription resources that are included in a private service instance. You can renew all subscription resources included in a private service instance based on the ID of the private service instance. You can also renew specific resources included in a private service instance. You can use only one of the preceding renewal methods.
 //
 // @param request - RenewServiceInstanceResourcesRequest
 //
@@ -3035,7 +3035,7 @@ func (client *Client) RenewServiceInstanceResourcesWithOptions(request *RenewSer
 
 // Summary:
 //
-// Renew the prepaid resources included in the private deployment service instance. You can renew all prepaid resources under the specified service instance ID, or you can renew the specified resources. Only one of the two renewal methods can be used.
+// Renews the subscription resources that are included in a private service instance. You can renew all subscription resources included in a private service instance based on the ID of the private service instance. You can also renew specific resources included in a private service instance. You can use only one of the preceding renewal methods.
 //
 // @param request - RenewServiceInstanceResourcesRequest
 //
@@ -3053,7 +3053,7 @@ func (client *Client) RenewServiceInstanceResources(request *RenewServiceInstanc
 
 // Summary:
 //
-// When the service instance is Deployed, call the RestartServiceInstance interface to restart the service instance.
+// Restarts a service instance that is in the Deployed state.
 //
 // @param request - RestartServiceInstanceRequest
 //
@@ -3105,7 +3105,7 @@ func (client *Client) RestartServiceInstanceWithOptions(request *RestartServiceI
 
 // Summary:
 //
-// When the service instance is Deployed, call the RestartServiceInstance interface to restart the service instance.
+// Restarts a service instance that is in the Deployed state.
 //
 // @param request - RestartServiceInstanceRequest
 //
@@ -3193,7 +3193,7 @@ func (client *Client) RollbackServiceInstance(request *RollbackServiceInstanceRe
 
 // Summary:
 //
-// When the service instance status is Stopped (Stopped) or StartFailed (Startup failed), the StartServiceInstance interface is invoked to start the service instance.
+// Starts a service instance that is in the Stopped or StartFailed state.
 //
 // @param request - StartServiceInstanceRequest
 //
@@ -3245,7 +3245,7 @@ func (client *Client) StartServiceInstanceWithOptions(request *StartServiceInsta
 
 // Summary:
 //
-// When the service instance status is Stopped (Stopped) or StartFailed (Startup failed), the StartServiceInstance interface is invoked to start the service instance.
+// Starts a service instance that is in the Stopped or StartFailed state.
 //
 // @param request - StartServiceInstanceRequest
 //
@@ -3263,7 +3263,7 @@ func (client *Client) StartServiceInstance(request *StartServiceInstanceRequest)
 
 // Summary:
 //
-// When the service instance is Deployed and StopFailed, call the StopServiceInstance interface to stop the service instance.
+// Stops a service instance that is in the Deployed or StopFailed state.
 //
 // @param request - StopServiceInstanceRequest
 //
@@ -3315,7 +3315,7 @@ func (client *Client) StopServiceInstanceWithOptions(request *StopServiceInstanc
 
 // Summary:
 //
-// When the service instance is Deployed and StopFailed, call the StopServiceInstance interface to stop the service instance.
+// Stops a service instance that is in the Deployed or StopFailed state.
 //
 // @param request - StopServiceInstanceRequest
 //
@@ -3333,7 +3333,7 @@ func (client *Client) StopServiceInstance(request *StopServiceInstanceRequest) (
 
 // Summary:
 //
-// 给资源打标签
+// Creates and adds tags to a specified resource list.
 //
 // @param request - TagResourcesRequest
 //
@@ -3389,7 +3389,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 
 // Summary:
 //
-// 给资源打标签
+// Creates and adds tags to a specified resource list.
 //
 // @param request - TagResourcesRequest
 //
@@ -3407,7 +3407,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// 给资源解除标签
+// Removes tags from resources.
 //
 // @param request - UnTagResourcesRequest
 //
@@ -3467,7 +3467,7 @@ func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, 
 
 // Summary:
 //
-// 给资源解除标签
+// Removes tags from resources.
 //
 // @param request - UnTagResourcesRequest
 //

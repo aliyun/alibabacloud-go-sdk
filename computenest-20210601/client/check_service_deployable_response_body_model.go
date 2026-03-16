@@ -71,7 +71,8 @@ type CheckServiceDeployableResponseBodyCheckResults struct {
 	// example:
 	//
 	// ""
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Skippable *bool   `json:"Skippable,omitempty" xml:"Skippable,omitempty"`
 	// Check type, invalid values:
 	//
 	// - Balance ：Account balance.
@@ -102,6 +103,10 @@ func (s *CheckServiceDeployableResponseBodyCheckResults) GetMessage() *string {
 	return s.Message
 }
 
+func (s *CheckServiceDeployableResponseBodyCheckResults) GetSkippable() *bool {
+	return s.Skippable
+}
+
 func (s *CheckServiceDeployableResponseBodyCheckResults) GetType() *string {
 	return s.Type
 }
@@ -112,6 +117,11 @@ func (s *CheckServiceDeployableResponseBodyCheckResults) GetValue() *string {
 
 func (s *CheckServiceDeployableResponseBodyCheckResults) SetMessage(v string) *CheckServiceDeployableResponseBodyCheckResults {
 	s.Message = &v
+	return s
+}
+
+func (s *CheckServiceDeployableResponseBodyCheckResults) SetSkippable(v bool) *CheckServiceDeployableResponseBodyCheckResults {
+	s.Skippable = &v
 	return s
 }
 

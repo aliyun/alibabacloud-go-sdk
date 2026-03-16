@@ -65,7 +65,7 @@ func (client *Client) CancelServiceUsageWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Changes the resource group to which a cloud resource belongs.
+// Changes the resource group of a cloud resource based on the resource ID.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -121,7 +121,7 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 服务实例部署前的预检查
+// Performs a precheck before deploying a service instance.
 //
 // @param request - CheckServiceDeployableRequest
 //
@@ -603,7 +603,7 @@ func (client *Client) DeleteBackupWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// Delete service instances.
+// Deletes service instances based on the region ID and service instance IDs.
 //
 // @param request - DeleteServiceInstancesRequest
 //
@@ -655,7 +655,7 @@ func (client *Client) DeleteServiceInstancesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Deploy service instance in Created status.
+// Deploys the created service instance.
 //
 // @param request - DeployServiceInstanceRequest
 //
@@ -751,7 +751,7 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 生成并校验服务创建stack所需要的权限
+// Queries the missing policies before creating a service instance.
 //
 // @param request - GenerateServicePolicyRequest
 //
@@ -1147,7 +1147,7 @@ func (client *Client) GetServiceInstanceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Query renewal prices for prepaid resources of private deployment service instance. You can query renewal prices for all prepaid resources included in a service instance, or query renewal prices for specified resources. Only one of the two methods can be used.
+// Inquiries the prices of subscription resources for private service instances. Renewal price inquiry is supported. You can make a unified renewal price inquiry for all subscription resources based on a specific service instance ID or make a renewal price inquiry for a specific resource. You can specify a service instance ID or a resource in a request, but cannot specify both of them.
 //
 // @param request - GetServiceInstanceSubscriptionEstimateCostRequest
 //
@@ -1285,7 +1285,7 @@ func (client *Client) GetServiceProvisionsWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Queries the constraints on the parameters in an Resource Orchestration Service (ROS) template.
+// Queries the constraints on the parameters in a Resource Orchestration Service (ROS) template in a region based on the template name and service ID.
 //
 // @param request - GetServiceTemplateParameterConstraintsRequest
 //
@@ -1471,7 +1471,7 @@ func (client *Client) ListBackupsWithContext(ctx context.Context, request *ListB
 
 // Summary:
 //
-// # Query Permission Policy List
+// Queires the permissions.
 //
 // @param request - ListPoliciesRequest
 //
@@ -1581,7 +1581,7 @@ func (client *Client) ListRestoreTasksWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 展示服务实例账单
+// Queries instance bills.
 //
 // @param request - ListServiceInstanceBillRequest
 //
@@ -2037,7 +2037,7 @@ func (client *Client) ListServicesWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 查询标签键列表
+// Queries the existing tag keys.
 //
 // @param request - ListTagKeysRequest
 //
@@ -2089,7 +2089,7 @@ func (client *Client) ListTagKeysWithContext(ctx context.Context, request *ListT
 
 // Summary:
 //
-// 查询标签资源列表
+// # Query tag resource list
 //
 // @param request - ListTagResourcesRequest
 //
@@ -2149,7 +2149,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询标签值列表
+// Queries the tag values of a tag key.
 //
 // @param request - ListTagValuesRequest
 //
@@ -2205,7 +2205,7 @@ func (client *Client) ListTagValuesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Renew the prepaid resources included in the private deployment service instance. You can renew all prepaid resources under the specified service instance ID, or you can renew the specified resources. Only one of the two renewal methods can be used.
+// Renews the subscription resources that are included in a private service instance. You can renew all subscription resources included in a private service instance based on the ID of the private service instance. You can also renew specific resources included in a private service instance. You can use only one of the preceding renewal methods.
 //
 // @param request - RenewServiceInstanceResourcesRequest
 //
@@ -2269,7 +2269,7 @@ func (client *Client) RenewServiceInstanceResourcesWithContext(ctx context.Conte
 
 // Summary:
 //
-// When the service instance is Deployed, call the RestartServiceInstance interface to restart the service instance.
+// Restarts a service instance that is in the Deployed state.
 //
 // @param request - RestartServiceInstanceRequest
 //
@@ -2373,7 +2373,7 @@ func (client *Client) RollbackServiceInstanceWithContext(ctx context.Context, re
 
 // Summary:
 //
-// When the service instance status is Stopped (Stopped) or StartFailed (Startup failed), the StartServiceInstance interface is invoked to start the service instance.
+// Starts a service instance that is in the Stopped or StartFailed state.
 //
 // @param request - StartServiceInstanceRequest
 //
@@ -2425,7 +2425,7 @@ func (client *Client) StartServiceInstanceWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// When the service instance is Deployed and StopFailed, call the StopServiceInstance interface to stop the service instance.
+// Stops a service instance that is in the Deployed or StopFailed state.
 //
 // @param request - StopServiceInstanceRequest
 //
@@ -2477,7 +2477,7 @@ func (client *Client) StopServiceInstanceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 给资源打标签
+// Creates and adds tags to a specified resource list.
 //
 // @param request - TagResourcesRequest
 //
@@ -2533,7 +2533,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// 给资源解除标签
+// Removes tags from resources.
 //
 // @param request - UnTagResourcesRequest
 //
