@@ -6968,8 +6968,28 @@ func (client *Client) SwitchGdnMemberRoleWithContext(ctx context.Context, reques
 		query["DBInstanceName"] = request.DBInstanceName
 	}
 
+	if !dara.IsNil(request.DstMainConnectString) {
+		query["DstMainConnectString"] = request.DstMainConnectString
+	}
+
+	if !dara.IsNil(request.DstMainPort) {
+		query["DstMainPort"] = request.DstMainPort
+	}
+
+	if !dara.IsNil(request.IsModifyEndpoint) {
+		query["IsModifyEndpoint"] = request.IsModifyEndpoint
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SrcMainConnectString) {
+		query["SrcMainConnectString"] = request.SrcMainConnectString
+	}
+
+	if !dara.IsNil(request.SrcMainPort) {
+		query["SrcMainPort"] = request.SrcMainPort
 	}
 
 	if !dara.IsNil(request.SwitchMode) {
