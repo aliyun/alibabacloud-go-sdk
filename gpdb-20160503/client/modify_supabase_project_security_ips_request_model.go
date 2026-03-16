@@ -15,6 +15,10 @@ type iModifySupabaseProjectSecurityIpsRequest interface {
 	GetRegionId() *string
 	SetSecurityIPList(v string) *ModifySupabaseProjectSecurityIpsRequest
 	GetSecurityIPList() *string
+	SetUpdateDb(v bool) *ModifySupabaseProjectSecurityIpsRequest
+	GetUpdateDb() *bool
+	SetUpdateWeb(v bool) *ModifySupabaseProjectSecurityIpsRequest
+	GetUpdateWeb() *bool
 }
 
 type ModifySupabaseProjectSecurityIpsRequest struct {
@@ -46,6 +50,8 @@ type ModifySupabaseProjectSecurityIpsRequest struct {
 	//
 	// 127.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	UpdateDb       *bool   `json:"UpdateDb,omitempty" xml:"UpdateDb,omitempty"`
+	UpdateWeb      *bool   `json:"UpdateWeb,omitempty" xml:"UpdateWeb,omitempty"`
 }
 
 func (s ModifySupabaseProjectSecurityIpsRequest) String() string {
@@ -68,6 +74,14 @@ func (s *ModifySupabaseProjectSecurityIpsRequest) GetSecurityIPList() *string {
 	return s.SecurityIPList
 }
 
+func (s *ModifySupabaseProjectSecurityIpsRequest) GetUpdateDb() *bool {
+	return s.UpdateDb
+}
+
+func (s *ModifySupabaseProjectSecurityIpsRequest) GetUpdateWeb() *bool {
+	return s.UpdateWeb
+}
+
 func (s *ModifySupabaseProjectSecurityIpsRequest) SetProjectId(v string) *ModifySupabaseProjectSecurityIpsRequest {
 	s.ProjectId = &v
 	return s
@@ -80,6 +94,16 @@ func (s *ModifySupabaseProjectSecurityIpsRequest) SetRegionId(v string) *ModifyS
 
 func (s *ModifySupabaseProjectSecurityIpsRequest) SetSecurityIPList(v string) *ModifySupabaseProjectSecurityIpsRequest {
 	s.SecurityIPList = &v
+	return s
+}
+
+func (s *ModifySupabaseProjectSecurityIpsRequest) SetUpdateDb(v bool) *ModifySupabaseProjectSecurityIpsRequest {
+	s.UpdateDb = &v
+	return s
+}
+
+func (s *ModifySupabaseProjectSecurityIpsRequest) SetUpdateWeb(v bool) *ModifySupabaseProjectSecurityIpsRequest {
+	s.UpdateWeb = &v
 	return s
 }
 

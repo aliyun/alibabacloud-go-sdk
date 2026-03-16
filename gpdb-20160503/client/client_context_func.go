@@ -13624,6 +13624,14 @@ func (client *Client) ModifySupabaseProjectSecurityIpsWithContext(ctx context.Co
 		query["SecurityIPList"] = request.SecurityIPList
 	}
 
+	if !dara.IsNil(request.UpdateDb) {
+		query["UpdateDb"] = request.UpdateDb
+	}
+
+	if !dara.IsNil(request.UpdateWeb) {
+		query["UpdateWeb"] = request.UpdateWeb
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}

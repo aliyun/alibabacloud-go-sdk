@@ -11,6 +11,8 @@ type iGetSupabaseProjectResponseBody interface {
 	GoString() string
 	SetCreateTime(v string) *GetSupabaseProjectResponseBody
 	GetCreateTime() *string
+	SetDBSecurityIpList(v string) *GetSupabaseProjectResponseBody
+	GetDBSecurityIpList() *string
 	SetDashboardPassword(v string) *GetSupabaseProjectResponseBody
 	GetDashboardPassword() *string
 	SetDashboardUserName(v string) *GetSupabaseProjectResponseBody
@@ -63,7 +65,8 @@ type GetSupabaseProjectResponseBody struct {
 	// example:
 	//
 	// 2019-09-08T16:00:00Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DBSecurityIpList *string `json:"DBSecurityIpList,omitempty" xml:"DBSecurityIpList,omitempty"`
 	// The Supabase Dashboard password (Not Used)
 	//
 	// example:
@@ -204,6 +207,10 @@ func (s *GetSupabaseProjectResponseBody) GetCreateTime() *string {
 	return s.CreateTime
 }
 
+func (s *GetSupabaseProjectResponseBody) GetDBSecurityIpList() *string {
+	return s.DBSecurityIpList
+}
+
 func (s *GetSupabaseProjectResponseBody) GetDashboardPassword() *string {
 	return s.DashboardPassword
 }
@@ -294,6 +301,11 @@ func (s *GetSupabaseProjectResponseBody) GetZoneId() *string {
 
 func (s *GetSupabaseProjectResponseBody) SetCreateTime(v string) *GetSupabaseProjectResponseBody {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetDBSecurityIpList(v string) *GetSupabaseProjectResponseBody {
+	s.DBSecurityIpList = &v
 	return s
 }
 
