@@ -9,14 +9,20 @@ type iFilterUsersShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *FilterUsersShrinkRequest
+	GetBusinessChannel() *string
 	SetExcludeEndUserIds(v []*string) *FilterUsersShrinkRequest
 	GetExcludeEndUserIds() []*string
 	SetFilter(v string) *FilterUsersShrinkRequest
 	GetFilter() *string
+	SetFilterMapShrink(v string) *FilterUsersShrinkRequest
+	GetFilterMapShrink() *string
 	SetIncludeDesktopCount(v bool) *FilterUsersShrinkRequest
 	GetIncludeDesktopCount() *bool
 	SetIncludeDesktopGroupCount(v bool) *FilterUsersShrinkRequest
 	GetIncludeDesktopGroupCount() *bool
+	SetIncludeEndUserIds(v []*string) *FilterUsersShrinkRequest
+	GetIncludeEndUserIds() []*string
 	SetIncludeOrgInfo(v bool) *FilterUsersShrinkRequest
 	GetIncludeOrgInfo() *bool
 	SetIncludeSupportIdps(v bool) *FilterUsersShrinkRequest
@@ -42,6 +48,10 @@ type iFilterUsersShrinkRequest interface {
 }
 
 type FilterUsersShrinkRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The list of usernames to be precisely excluded.
 	ExcludeEndUserIds []*string `json:"ExcludeEndUserIds,omitempty" xml:"ExcludeEndUserIds,omitempty" type:"Repeated"`
 	// The string that is used for fuzzy search. You can use usernames and email addresses to perform fuzzy search. Wildcard characters (\\*) are supported for this parameter. For example, if you set this parameter to a\\*m, the usernames or an email addresses that start with a or end with m are returned.
@@ -49,7 +59,8 @@ type FilterUsersShrinkRequest struct {
 	// example:
 	//
 	// test
-	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Filter          *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	FilterMapShrink *string `json:"FilterMap,omitempty" xml:"FilterMap,omitempty"`
 	// Specifies whether to return the number of cloud desktops that are assigned to the convenience user.
 	//
 	// Valid values:
@@ -97,7 +108,8 @@ type FilterUsersShrinkRequest struct {
 	// example:
 	//
 	// false
-	IncludeDesktopGroupCount *bool `json:"IncludeDesktopGroupCount,omitempty" xml:"IncludeDesktopGroupCount,omitempty"`
+	IncludeDesktopGroupCount *bool     `json:"IncludeDesktopGroupCount,omitempty" xml:"IncludeDesktopGroupCount,omitempty"`
+	IncludeEndUserIds        []*string `json:"IncludeEndUserIds,omitempty" xml:"IncludeEndUserIds,omitempty" type:"Repeated"`
 	// Specifies whether to return the organization information.
 	IncludeOrgInfo *bool `json:"IncludeOrgInfo,omitempty" xml:"IncludeOrgInfo,omitempty"`
 	// Specifies whether to return the supported logon types.
@@ -156,6 +168,10 @@ func (s FilterUsersShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *FilterUsersShrinkRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *FilterUsersShrinkRequest) GetExcludeEndUserIds() []*string {
 	return s.ExcludeEndUserIds
 }
@@ -164,12 +180,20 @@ func (s *FilterUsersShrinkRequest) GetFilter() *string {
 	return s.Filter
 }
 
+func (s *FilterUsersShrinkRequest) GetFilterMapShrink() *string {
+	return s.FilterMapShrink
+}
+
 func (s *FilterUsersShrinkRequest) GetIncludeDesktopCount() *bool {
 	return s.IncludeDesktopCount
 }
 
 func (s *FilterUsersShrinkRequest) GetIncludeDesktopGroupCount() *bool {
 	return s.IncludeDesktopGroupCount
+}
+
+func (s *FilterUsersShrinkRequest) GetIncludeEndUserIds() []*string {
+	return s.IncludeEndUserIds
 }
 
 func (s *FilterUsersShrinkRequest) GetIncludeOrgInfo() *bool {
@@ -216,6 +240,11 @@ func (s *FilterUsersShrinkRequest) GetStatus() *int32 {
 	return s.Status
 }
 
+func (s *FilterUsersShrinkRequest) SetBusinessChannel(v string) *FilterUsersShrinkRequest {
+	s.BusinessChannel = &v
+	return s
+}
+
 func (s *FilterUsersShrinkRequest) SetExcludeEndUserIds(v []*string) *FilterUsersShrinkRequest {
 	s.ExcludeEndUserIds = v
 	return s
@@ -226,6 +255,11 @@ func (s *FilterUsersShrinkRequest) SetFilter(v string) *FilterUsersShrinkRequest
 	return s
 }
 
+func (s *FilterUsersShrinkRequest) SetFilterMapShrink(v string) *FilterUsersShrinkRequest {
+	s.FilterMapShrink = &v
+	return s
+}
+
 func (s *FilterUsersShrinkRequest) SetIncludeDesktopCount(v bool) *FilterUsersShrinkRequest {
 	s.IncludeDesktopCount = &v
 	return s
@@ -233,6 +267,11 @@ func (s *FilterUsersShrinkRequest) SetIncludeDesktopCount(v bool) *FilterUsersSh
 
 func (s *FilterUsersShrinkRequest) SetIncludeDesktopGroupCount(v bool) *FilterUsersShrinkRequest {
 	s.IncludeDesktopGroupCount = &v
+	return s
+}
+
+func (s *FilterUsersShrinkRequest) SetIncludeEndUserIds(v []*string) *FilterUsersShrinkRequest {
+	s.IncludeEndUserIds = v
 	return s
 }
 

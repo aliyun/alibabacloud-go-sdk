@@ -9,6 +9,8 @@ type iCreateResourceGroupRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *CreateResourceGroupRequest
+	GetBusinessChannel() *string
 	SetIsResourceGroupWithOfficeSite(v int64) *CreateResourceGroupRequest
 	GetIsResourceGroupWithOfficeSite() *int64
 	SetPlatform(v string) *CreateResourceGroupRequest
@@ -18,6 +20,10 @@ type iCreateResourceGroupRequest interface {
 }
 
 type CreateResourceGroupRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// >  This parameter is not publicly available.
 	//
 	// example:
@@ -44,6 +50,10 @@ func (s CreateResourceGroupRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateResourceGroupRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *CreateResourceGroupRequest) GetIsResourceGroupWithOfficeSite() *int64 {
 	return s.IsResourceGroupWithOfficeSite
 }
@@ -54,6 +64,11 @@ func (s *CreateResourceGroupRequest) GetPlatform() *string {
 
 func (s *CreateResourceGroupRequest) GetResourceGroupName() *string {
 	return s.ResourceGroupName
+}
+
+func (s *CreateResourceGroupRequest) SetBusinessChannel(v string) *CreateResourceGroupRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *CreateResourceGroupRequest) SetIsResourceGroupWithOfficeSite(v int64) *CreateResourceGroupRequest {

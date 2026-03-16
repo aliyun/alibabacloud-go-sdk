@@ -11,6 +11,8 @@ type iDescribeMfaDevicesRequest interface {
 	GoString() string
 	SetAdDomain(v string) *DescribeMfaDevicesRequest
 	GetAdDomain() *string
+	SetBusinessChannel(v string) *DescribeMfaDevicesRequest
+	GetBusinessChannel() *string
 	SetEndUserIds(v []*string) *DescribeMfaDevicesRequest
 	GetEndUserIds() []*string
 	SetFilter(v string) *DescribeMfaDevicesRequest
@@ -30,6 +32,10 @@ type DescribeMfaDevicesRequest struct {
 	//
 	// cn.misumi.pri
 	AdDomain *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The usernames of the convenience accounts.
 	//
 	// example:
@@ -71,6 +77,10 @@ func (s *DescribeMfaDevicesRequest) GetAdDomain() *string {
 	return s.AdDomain
 }
 
+func (s *DescribeMfaDevicesRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *DescribeMfaDevicesRequest) GetEndUserIds() []*string {
 	return s.EndUserIds
 }
@@ -93,6 +103,11 @@ func (s *DescribeMfaDevicesRequest) GetSerialNumbers() []*string {
 
 func (s *DescribeMfaDevicesRequest) SetAdDomain(v string) *DescribeMfaDevicesRequest {
 	s.AdDomain = &v
+	return s
+}
+
+func (s *DescribeMfaDevicesRequest) SetBusinessChannel(v string) *DescribeMfaDevicesRequest {
+	s.BusinessChannel = &v
 	return s
 }
 

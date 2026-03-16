@@ -11,6 +11,8 @@ type iDescribeUsersShrinkRequest interface {
 	GoString() string
 	SetBizType(v string) *DescribeUsersShrinkRequest
 	GetBizType() *string
+	SetBusinessChannel(v string) *DescribeUsersShrinkRequest
+	GetBusinessChannel() *string
 	SetEndUserIds(v []*string) *DescribeUsersShrinkRequest
 	GetEndUserIds() []*string
 	SetExcludeEndUserIds(v []*string) *DescribeUsersShrinkRequest
@@ -19,6 +21,8 @@ type iDescribeUsersShrinkRequest interface {
 	GetExcludeGroupId() *string
 	SetFilter(v string) *DescribeUsersShrinkRequest
 	GetFilter() *string
+	SetFilterMapShrink(v string) *DescribeUsersShrinkRequest
+	GetFilterMapShrink() *string
 	SetFilterWithAssignedResourceShrink(v string) *DescribeUsersShrinkRequest
 	GetFilterWithAssignedResourceShrink() *string
 	SetFilterWithAssignedResourcesShrink(v string) *DescribeUsersShrinkRequest
@@ -46,6 +50,10 @@ type DescribeUsersShrinkRequest struct {
 	//
 	// null
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The usernames that must be exactly matched.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
 	// The usernames that must be exactly excluded.
@@ -57,6 +65,7 @@ type DescribeUsersShrinkRequest struct {
 	//
 	// a*m
 	Filter                            *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	FilterMapShrink                   *string `json:"FilterMap,omitempty" xml:"FilterMap,omitempty"`
 	FilterWithAssignedResourceShrink  *string `json:"FilterWithAssignedResource,omitempty" xml:"FilterWithAssignedResource,omitempty"`
 	FilterWithAssignedResourcesShrink *string `json:"FilterWithAssignedResources,omitempty" xml:"FilterWithAssignedResources,omitempty"`
 	// The ID of the organization in which you want to query convenience users.
@@ -114,6 +123,10 @@ func (s *DescribeUsersShrinkRequest) GetBizType() *string {
 	return s.BizType
 }
 
+func (s *DescribeUsersShrinkRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *DescribeUsersShrinkRequest) GetEndUserIds() []*string {
 	return s.EndUserIds
 }
@@ -128,6 +141,10 @@ func (s *DescribeUsersShrinkRequest) GetExcludeGroupId() *string {
 
 func (s *DescribeUsersShrinkRequest) GetFilter() *string {
 	return s.Filter
+}
+
+func (s *DescribeUsersShrinkRequest) GetFilterMapShrink() *string {
+	return s.FilterMapShrink
 }
 
 func (s *DescribeUsersShrinkRequest) GetFilterWithAssignedResourceShrink() *string {
@@ -175,6 +192,11 @@ func (s *DescribeUsersShrinkRequest) SetBizType(v string) *DescribeUsersShrinkRe
 	return s
 }
 
+func (s *DescribeUsersShrinkRequest) SetBusinessChannel(v string) *DescribeUsersShrinkRequest {
+	s.BusinessChannel = &v
+	return s
+}
+
 func (s *DescribeUsersShrinkRequest) SetEndUserIds(v []*string) *DescribeUsersShrinkRequest {
 	s.EndUserIds = v
 	return s
@@ -192,6 +214,11 @@ func (s *DescribeUsersShrinkRequest) SetExcludeGroupId(v string) *DescribeUsersS
 
 func (s *DescribeUsersShrinkRequest) SetFilter(v string) *DescribeUsersShrinkRequest {
 	s.Filter = &v
+	return s
+}
+
+func (s *DescribeUsersShrinkRequest) SetFilterMapShrink(v string) *DescribeUsersShrinkRequest {
+	s.FilterMapShrink = &v
 	return s
 }
 

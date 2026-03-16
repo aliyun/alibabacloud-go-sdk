@@ -9,6 +9,8 @@ type iSetUserPropertyValueRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *SetUserPropertyValueRequest
+	GetBusinessChannel() *string
 	SetPropertyId(v int64) *SetUserPropertyValueRequest
 	GetPropertyId() *int64
 	SetPropertyValueId(v int64) *SetUserPropertyValueRequest
@@ -20,6 +22,10 @@ type iSetUserPropertyValueRequest interface {
 }
 
 type SetUserPropertyValueRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The property ID. You can call the [ListProperty](~~ListProperty~~) operation to query the property ID.
 	//
 	// This parameter is required.
@@ -62,6 +68,10 @@ func (s SetUserPropertyValueRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SetUserPropertyValueRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *SetUserPropertyValueRequest) GetPropertyId() *int64 {
 	return s.PropertyId
 }
@@ -76,6 +86,11 @@ func (s *SetUserPropertyValueRequest) GetUserId() *int64 {
 
 func (s *SetUserPropertyValueRequest) GetUserName() *string {
 	return s.UserName
+}
+
+func (s *SetUserPropertyValueRequest) SetBusinessChannel(v string) *SetUserPropertyValueRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *SetUserPropertyValueRequest) SetPropertyId(v int64) *SetUserPropertyValueRequest {

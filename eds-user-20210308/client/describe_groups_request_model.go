@@ -11,6 +11,8 @@ type iDescribeGroupsRequest interface {
 	GoString() string
 	SetBizType(v string) *DescribeGroupsRequest
 	GetBizType() *string
+	SetBusinessChannel(v string) *DescribeGroupsRequest
+	GetBusinessChannel() *string
 	SetExcludeAttachedLoginPolicyGroups(v bool) *DescribeGroupsRequest
 	GetExcludeAttachedLoginPolicyGroups() *bool
 	SetGroupId(v string) *DescribeGroupsRequest
@@ -37,7 +39,8 @@ type DescribeGroupsRequest struct {
 	// example:
 	//
 	// ENTERPRISE
-	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	BizType         *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// 是否排除已关联登录策略的用户组。
 	ExcludeAttachedLoginPolicyGroups *bool `json:"ExcludeAttachedLoginPolicyGroups,omitempty" xml:"ExcludeAttachedLoginPolicyGroups,omitempty"`
 	// The ID of the user group.
@@ -93,6 +96,10 @@ func (s *DescribeGroupsRequest) GetBizType() *string {
 	return s.BizType
 }
 
+func (s *DescribeGroupsRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *DescribeGroupsRequest) GetExcludeAttachedLoginPolicyGroups() *bool {
 	return s.ExcludeAttachedLoginPolicyGroups
 }
@@ -131,6 +138,11 @@ func (s *DescribeGroupsRequest) GetTransferFileNeedApproval() *bool {
 
 func (s *DescribeGroupsRequest) SetBizType(v string) *DescribeGroupsRequest {
 	s.BizType = &v
+	return s
+}
+
+func (s *DescribeGroupsRequest) SetBusinessChannel(v string) *DescribeGroupsRequest {
+	s.BusinessChannel = &v
 	return s
 }
 

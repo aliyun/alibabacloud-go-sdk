@@ -9,6 +9,8 @@ type iChangeUserPasswordRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *ChangeUserPasswordRequest
+	GetBusinessChannel() *string
 	SetEndUserId(v string) *ChangeUserPasswordRequest
 	GetEndUserId() *string
 	SetNewPassword(v string) *ChangeUserPasswordRequest
@@ -16,6 +18,10 @@ type iChangeUserPasswordRequest interface {
 }
 
 type ChangeUserPasswordRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// example:
 	//
 	// alice***
@@ -34,12 +40,21 @@ func (s ChangeUserPasswordRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ChangeUserPasswordRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *ChangeUserPasswordRequest) GetEndUserId() *string {
 	return s.EndUserId
 }
 
 func (s *ChangeUserPasswordRequest) GetNewPassword() *string {
 	return s.NewPassword
+}
+
+func (s *ChangeUserPasswordRequest) SetBusinessChannel(v string) *ChangeUserPasswordRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *ChangeUserPasswordRequest) SetEndUserId(v string) *ChangeUserPasswordRequest {

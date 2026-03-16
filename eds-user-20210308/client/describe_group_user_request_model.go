@@ -11,6 +11,8 @@ type iDescribeGroupUserRequest interface {
 	GoString() string
 	SetBizType(v string) *DescribeGroupUserRequest
 	GetBizType() *string
+	SetBusinessChannel(v string) *DescribeGroupUserRequest
+	GetBusinessChannel() *string
 	SetFilter(v string) *DescribeGroupUserRequest
 	GetFilter() *string
 	SetGroupId(v string) *DescribeGroupUserRequest
@@ -30,6 +32,10 @@ type DescribeGroupUserRequest struct {
 	//
 	// ENTERPRISE
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The fuzzy search string that matches the username (EndUserId) and email address (Email) of the regular user.
 	//
 	// example:
@@ -74,6 +80,10 @@ func (s *DescribeGroupUserRequest) GetBizType() *string {
 	return s.BizType
 }
 
+func (s *DescribeGroupUserRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *DescribeGroupUserRequest) GetFilter() *string {
 	return s.Filter
 }
@@ -96,6 +106,11 @@ func (s *DescribeGroupUserRequest) GetSolutionId() *string {
 
 func (s *DescribeGroupUserRequest) SetBizType(v string) *DescribeGroupUserRequest {
 	s.BizType = &v
+	return s
+}
+
+func (s *DescribeGroupUserRequest) SetBusinessChannel(v string) *DescribeGroupUserRequest {
+	s.BusinessChannel = &v
 	return s
 }
 

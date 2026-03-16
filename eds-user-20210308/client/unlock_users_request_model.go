@@ -11,6 +11,8 @@ type iUnlockUsersRequest interface {
 	GoString() string
 	SetAutoLockTime(v string) *UnlockUsersRequest
 	GetAutoLockTime() *string
+	SetBusinessChannel(v string) *UnlockUsersRequest
+	GetBusinessChannel() *string
 	SetUsers(v []*string) *UnlockUsersRequest
 	GetUsers() []*string
 }
@@ -22,6 +24,10 @@ type UnlockUsersRequest struct {
 	//
 	// 2023-03-03
 	AutoLockTime *string `json:"AutoLockTime,omitempty" xml:"AutoLockTime,omitempty"`
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The usernames of the convenience users that you want to unlock.
 	//
 	// This parameter is required.
@@ -44,12 +50,21 @@ func (s *UnlockUsersRequest) GetAutoLockTime() *string {
 	return s.AutoLockTime
 }
 
+func (s *UnlockUsersRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *UnlockUsersRequest) GetUsers() []*string {
 	return s.Users
 }
 
 func (s *UnlockUsersRequest) SetAutoLockTime(v string) *UnlockUsersRequest {
 	s.AutoLockTime = &v
+	return s
+}
+
+func (s *UnlockUsersRequest) SetBusinessChannel(v string) *UnlockUsersRequest {
+	s.BusinessChannel = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iUnlockMfaDeviceRequest interface {
 	GoString() string
 	SetAdDomain(v string) *UnlockMfaDeviceRequest
 	GetAdDomain() *string
+	SetBusinessChannel(v string) *UnlockMfaDeviceRequest
+	GetBusinessChannel() *string
 	SetSerialNumber(v string) *UnlockMfaDeviceRequest
 	GetSerialNumber() *string
 }
@@ -22,6 +24,10 @@ type UnlockMfaDeviceRequest struct {
 	//
 	// welab.co.id
 	AdDomain *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The serial number of the virtual MFA device. The serial number is unique for each device.
 	//
 	// This parameter is required.
@@ -44,12 +50,21 @@ func (s *UnlockMfaDeviceRequest) GetAdDomain() *string {
 	return s.AdDomain
 }
 
+func (s *UnlockMfaDeviceRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *UnlockMfaDeviceRequest) GetSerialNumber() *string {
 	return s.SerialNumber
 }
 
 func (s *UnlockMfaDeviceRequest) SetAdDomain(v string) *UnlockMfaDeviceRequest {
 	s.AdDomain = &v
+	return s
+}
+
+func (s *UnlockMfaDeviceRequest) SetBusinessChannel(v string) *UnlockMfaDeviceRequest {
+	s.BusinessChannel = &v
 	return s
 }
 

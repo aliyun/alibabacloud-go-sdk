@@ -9,6 +9,8 @@ type iCreatePropertyRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *CreatePropertyRequest
+	GetBusinessChannel() *string
 	SetPropertyKey(v string) *CreatePropertyRequest
 	GetPropertyKey() *string
 	SetPropertyValues(v []*string) *CreatePropertyRequest
@@ -16,6 +18,10 @@ type iCreatePropertyRequest interface {
 }
 
 type CreatePropertyRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The property name.
 	//
 	// This parameter is required.
@@ -36,12 +42,21 @@ func (s CreatePropertyRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreatePropertyRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *CreatePropertyRequest) GetPropertyKey() *string {
 	return s.PropertyKey
 }
 
 func (s *CreatePropertyRequest) GetPropertyValues() []*string {
 	return s.PropertyValues
+}
+
+func (s *CreatePropertyRequest) SetBusinessChannel(v string) *CreatePropertyRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *CreatePropertyRequest) SetPropertyKey(v string) *CreatePropertyRequest {

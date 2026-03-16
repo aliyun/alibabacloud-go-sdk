@@ -9,11 +9,17 @@ type iCheckUsedPropertyRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *CheckUsedPropertyRequest
+	GetBusinessChannel() *string
 	SetPropertyId(v int64) *CheckUsedPropertyRequest
 	GetPropertyId() *int64
 }
 
 type CheckUsedPropertyRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The ID of the property. You can call the [ListProperty](https://help.aliyun.com/document_detail/410890.html) operation to query the property ID.
 	//
 	// This parameter is required.
@@ -32,8 +38,17 @@ func (s CheckUsedPropertyRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CheckUsedPropertyRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *CheckUsedPropertyRequest) GetPropertyId() *int64 {
 	return s.PropertyId
+}
+
+func (s *CheckUsedPropertyRequest) SetBusinessChannel(v string) *CheckUsedPropertyRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *CheckUsedPropertyRequest) SetPropertyId(v int64) *CheckUsedPropertyRequest {

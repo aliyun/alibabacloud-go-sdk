@@ -11,6 +11,8 @@ type iDescribeUsersRequest interface {
 	GoString() string
 	SetBizType(v string) *DescribeUsersRequest
 	GetBizType() *string
+	SetBusinessChannel(v string) *DescribeUsersRequest
+	GetBusinessChannel() *string
 	SetEndUserIds(v []*string) *DescribeUsersRequest
 	GetEndUserIds() []*string
 	SetExcludeEndUserIds(v []*string) *DescribeUsersRequest
@@ -19,6 +21,8 @@ type iDescribeUsersRequest interface {
 	GetExcludeGroupId() *string
 	SetFilter(v string) *DescribeUsersRequest
 	GetFilter() *string
+	SetFilterMap(v map[string]*string) *DescribeUsersRequest
+	GetFilterMap() map[string]*string
 	SetFilterWithAssignedResource(v map[string]*string) *DescribeUsersRequest
 	GetFilterWithAssignedResource() map[string]*string
 	SetFilterWithAssignedResources(v map[string]*bool) *DescribeUsersRequest
@@ -46,6 +50,10 @@ type DescribeUsersRequest struct {
 	//
 	// null
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The usernames that must be exactly matched.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
 	// The usernames that must be exactly excluded.
@@ -57,6 +65,7 @@ type DescribeUsersRequest struct {
 	//
 	// a*m
 	Filter                      *string            `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	FilterMap                   map[string]*string `json:"FilterMap,omitempty" xml:"FilterMap,omitempty"`
 	FilterWithAssignedResource  map[string]*string `json:"FilterWithAssignedResource,omitempty" xml:"FilterWithAssignedResource,omitempty"`
 	FilterWithAssignedResources map[string]*bool   `json:"FilterWithAssignedResources,omitempty" xml:"FilterWithAssignedResources,omitempty"`
 	// The ID of the organization in which you want to query convenience users.
@@ -114,6 +123,10 @@ func (s *DescribeUsersRequest) GetBizType() *string {
 	return s.BizType
 }
 
+func (s *DescribeUsersRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *DescribeUsersRequest) GetEndUserIds() []*string {
 	return s.EndUserIds
 }
@@ -128,6 +141,10 @@ func (s *DescribeUsersRequest) GetExcludeGroupId() *string {
 
 func (s *DescribeUsersRequest) GetFilter() *string {
 	return s.Filter
+}
+
+func (s *DescribeUsersRequest) GetFilterMap() map[string]*string {
+	return s.FilterMap
 }
 
 func (s *DescribeUsersRequest) GetFilterWithAssignedResource() map[string]*string {
@@ -175,6 +192,11 @@ func (s *DescribeUsersRequest) SetBizType(v string) *DescribeUsersRequest {
 	return s
 }
 
+func (s *DescribeUsersRequest) SetBusinessChannel(v string) *DescribeUsersRequest {
+	s.BusinessChannel = &v
+	return s
+}
+
 func (s *DescribeUsersRequest) SetEndUserIds(v []*string) *DescribeUsersRequest {
 	s.EndUserIds = v
 	return s
@@ -192,6 +214,11 @@ func (s *DescribeUsersRequest) SetExcludeGroupId(v string) *DescribeUsersRequest
 
 func (s *DescribeUsersRequest) SetFilter(v string) *DescribeUsersRequest {
 	s.Filter = &v
+	return s
+}
+
+func (s *DescribeUsersRequest) SetFilterMap(v map[string]*string) *DescribeUsersRequest {
+	s.FilterMap = v
 	return s
 }
 

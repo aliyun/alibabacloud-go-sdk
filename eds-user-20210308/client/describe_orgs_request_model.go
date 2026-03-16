@@ -9,6 +9,8 @@ type iDescribeOrgsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *DescribeOrgsRequest
+	GetBusinessChannel() *string
 	SetMaxResults(v int64) *DescribeOrgsRequest
 	GetMaxResults() *int64
 	SetNextToken(v string) *DescribeOrgsRequest
@@ -22,6 +24,10 @@ type iDescribeOrgsRequest interface {
 }
 
 type DescribeOrgsRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The maximum number of entries to return. Valid values: 1 to 100.\\
 	//
 	// Default value: 100.
@@ -59,6 +65,10 @@ func (s DescribeOrgsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeOrgsRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *DescribeOrgsRequest) GetMaxResults() *int64 {
 	return s.MaxResults
 }
@@ -77,6 +87,11 @@ func (s *DescribeOrgsRequest) GetParentOrgId() *string {
 
 func (s *DescribeOrgsRequest) GetShowExtras() map[string]interface{} {
 	return s.ShowExtras
+}
+
+func (s *DescribeOrgsRequest) SetBusinessChannel(v string) *DescribeOrgsRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *DescribeOrgsRequest) SetMaxResults(v int64) *DescribeOrgsRequest {

@@ -9,6 +9,8 @@ type iModifyOrgRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *ModifyOrgRequest
+	GetBusinessChannel() *string
 	SetOrgId(v string) *ModifyOrgRequest
 	GetOrgId() *string
 	SetOrgName(v string) *ModifyOrgRequest
@@ -16,6 +18,10 @@ type iModifyOrgRequest interface {
 }
 
 type ModifyOrgRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The ID of the organization.
 	//
 	// This parameter is required.
@@ -38,12 +44,21 @@ func (s ModifyOrgRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyOrgRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *ModifyOrgRequest) GetOrgId() *string {
 	return s.OrgId
 }
 
 func (s *ModifyOrgRequest) GetOrgName() *string {
 	return s.OrgName
+}
+
+func (s *ModifyOrgRequest) SetBusinessChannel(v string) *ModifyOrgRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *ModifyOrgRequest) SetOrgId(v string) *ModifyOrgRequest {

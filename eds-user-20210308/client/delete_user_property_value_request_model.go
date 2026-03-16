@@ -9,6 +9,8 @@ type iDeleteUserPropertyValueRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *DeleteUserPropertyValueRequest
+	GetBusinessChannel() *string
 	SetPropertyId(v int64) *DeleteUserPropertyValueRequest
 	GetPropertyId() *int64
 	SetPropertyValueId(v int64) *DeleteUserPropertyValueRequest
@@ -18,6 +20,10 @@ type iDeleteUserPropertyValueRequest interface {
 }
 
 type DeleteUserPropertyValueRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The property ID. You can call the [ListProperty](~~ListProperty~~) operation to query the property ID.
 	//
 	// This parameter is required.
@@ -52,6 +58,10 @@ func (s DeleteUserPropertyValueRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteUserPropertyValueRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *DeleteUserPropertyValueRequest) GetPropertyId() *int64 {
 	return s.PropertyId
 }
@@ -62,6 +72,11 @@ func (s *DeleteUserPropertyValueRequest) GetPropertyValueId() *int64 {
 
 func (s *DeleteUserPropertyValueRequest) GetUserId() *int64 {
 	return s.UserId
+}
+
+func (s *DeleteUserPropertyValueRequest) SetBusinessChannel(v string) *DeleteUserPropertyValueRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *DeleteUserPropertyValueRequest) SetPropertyId(v int64) *DeleteUserPropertyValueRequest {

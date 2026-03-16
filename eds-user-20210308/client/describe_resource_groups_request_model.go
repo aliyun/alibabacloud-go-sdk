@@ -9,6 +9,10 @@ type iDescribeResourceGroupsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAliyunResourceGroupIds(v []*string) *DescribeResourceGroupsRequest
+	GetAliyunResourceGroupIds() []*string
+	SetBusinessChannel(v string) *DescribeResourceGroupsRequest
+	GetBusinessChannel() *string
 	SetNeedContainResourceGroupWithOfficeSite(v int64) *DescribeResourceGroupsRequest
 	GetNeedContainResourceGroupWithOfficeSite() *int64
 	SetPageNumber(v int32) *DescribeResourceGroupsRequest
@@ -24,6 +28,11 @@ type iDescribeResourceGroupsRequest interface {
 }
 
 type DescribeResourceGroupsRequest struct {
+	AliyunResourceGroupIds []*string `json:"AliyunResourceGroupIds,omitempty" xml:"AliyunResourceGroupIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// >  This parameter is not publicly available.
 	//
 	// example:
@@ -64,6 +73,14 @@ func (s DescribeResourceGroupsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeResourceGroupsRequest) GetAliyunResourceGroupIds() []*string {
+	return s.AliyunResourceGroupIds
+}
+
+func (s *DescribeResourceGroupsRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *DescribeResourceGroupsRequest) GetNeedContainResourceGroupWithOfficeSite() *int64 {
 	return s.NeedContainResourceGroupWithOfficeSite
 }
@@ -86,6 +103,16 @@ func (s *DescribeResourceGroupsRequest) GetResourceGroupIds() []*string {
 
 func (s *DescribeResourceGroupsRequest) GetResourceGroupName() *string {
 	return s.ResourceGroupName
+}
+
+func (s *DescribeResourceGroupsRequest) SetAliyunResourceGroupIds(v []*string) *DescribeResourceGroupsRequest {
+	s.AliyunResourceGroupIds = v
+	return s
+}
+
+func (s *DescribeResourceGroupsRequest) SetBusinessChannel(v string) *DescribeResourceGroupsRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *DescribeResourceGroupsRequest) SetNeedContainResourceGroupWithOfficeSite(v int64) *DescribeResourceGroupsRequest {

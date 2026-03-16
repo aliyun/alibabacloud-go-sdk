@@ -11,6 +11,8 @@ type iLockMfaDeviceRequest interface {
 	GoString() string
 	SetAdDomain(v string) *LockMfaDeviceRequest
 	GetAdDomain() *string
+	SetBusinessChannel(v string) *LockMfaDeviceRequest
+	GetBusinessChannel() *string
 	SetSerialNumber(v string) *LockMfaDeviceRequest
 	GetSerialNumber() *string
 }
@@ -22,6 +24,10 @@ type LockMfaDeviceRequest struct {
 	//
 	// pg-jifenn.com
 	AdDomain *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The serial number of the virtual MFA device. The serial number is unique for each device.
 	//
 	// example:
@@ -42,12 +48,21 @@ func (s *LockMfaDeviceRequest) GetAdDomain() *string {
 	return s.AdDomain
 }
 
+func (s *LockMfaDeviceRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *LockMfaDeviceRequest) GetSerialNumber() *string {
 	return s.SerialNumber
 }
 
 func (s *LockMfaDeviceRequest) SetAdDomain(v string) *LockMfaDeviceRequest {
 	s.AdDomain = &v
+	return s
+}
+
+func (s *LockMfaDeviceRequest) SetBusinessChannel(v string) *LockMfaDeviceRequest {
+	s.BusinessChannel = &v
 	return s
 }
 

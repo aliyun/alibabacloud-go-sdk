@@ -11,6 +11,8 @@ type iCreateUsersRequest interface {
 	GoString() string
 	SetAutoLockTime(v string) *CreateUsersRequest
 	GetAutoLockTime() *string
+	SetBusinessChannel(v string) *CreateUsersRequest
+	GetBusinessChannel() *string
 	SetIsLocalAdmin(v bool) *CreateUsersRequest
 	GetIsLocalAdmin() *bool
 	SetPassword(v string) *CreateUsersRequest
@@ -28,7 +30,11 @@ type CreateUsersRequest struct {
 	//
 	// 2023-03-03
 	AutoLockTime *string `json:"AutoLockTime,omitempty" xml:"AutoLockTime,omitempty"`
-	IsLocalAdmin *bool   `json:"IsLocalAdmin,omitempty" xml:"IsLocalAdmin,omitempty"`
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
+	IsLocalAdmin    *bool   `json:"IsLocalAdmin,omitempty" xml:"IsLocalAdmin,omitempty"`
 	// The initial password. If this parameter is left empty, an email for password reset is sent to the specified email address.
 	//
 	// example:
@@ -58,6 +64,10 @@ func (s *CreateUsersRequest) GetAutoLockTime() *string {
 	return s.AutoLockTime
 }
 
+func (s *CreateUsersRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *CreateUsersRequest) GetIsLocalAdmin() *bool {
 	return s.IsLocalAdmin
 }
@@ -76,6 +86,11 @@ func (s *CreateUsersRequest) GetUsers() []*CreateUsersRequestUsers {
 
 func (s *CreateUsersRequest) SetAutoLockTime(v string) *CreateUsersRequest {
 	s.AutoLockTime = &v
+	return s
+}
+
+func (s *CreateUsersRequest) SetBusinessChannel(v string) *CreateUsersRequest {
+	s.BusinessChannel = &v
 	return s
 }
 

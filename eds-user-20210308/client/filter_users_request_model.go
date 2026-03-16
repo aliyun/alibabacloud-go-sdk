@@ -9,14 +9,20 @@ type iFilterUsersRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *FilterUsersRequest
+	GetBusinessChannel() *string
 	SetExcludeEndUserIds(v []*string) *FilterUsersRequest
 	GetExcludeEndUserIds() []*string
 	SetFilter(v string) *FilterUsersRequest
 	GetFilter() *string
+	SetFilterMap(v map[string]*string) *FilterUsersRequest
+	GetFilterMap() map[string]*string
 	SetIncludeDesktopCount(v bool) *FilterUsersRequest
 	GetIncludeDesktopCount() *bool
 	SetIncludeDesktopGroupCount(v bool) *FilterUsersRequest
 	GetIncludeDesktopGroupCount() *bool
+	SetIncludeEndUserIds(v []*string) *FilterUsersRequest
+	GetIncludeEndUserIds() []*string
 	SetIncludeOrgInfo(v bool) *FilterUsersRequest
 	GetIncludeOrgInfo() *bool
 	SetIncludeSupportIdps(v bool) *FilterUsersRequest
@@ -42,6 +48,10 @@ type iFilterUsersRequest interface {
 }
 
 type FilterUsersRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The list of usernames to be precisely excluded.
 	ExcludeEndUserIds []*string `json:"ExcludeEndUserIds,omitempty" xml:"ExcludeEndUserIds,omitempty" type:"Repeated"`
 	// The string that is used for fuzzy search. You can use usernames and email addresses to perform fuzzy search. Wildcard characters (\\*) are supported for this parameter. For example, if you set this parameter to a\\*m, the usernames or an email addresses that start with a or end with m are returned.
@@ -49,7 +59,8 @@ type FilterUsersRequest struct {
 	// example:
 	//
 	// test
-	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Filter    *string            `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	FilterMap map[string]*string `json:"FilterMap,omitempty" xml:"FilterMap,omitempty"`
 	// Specifies whether to return the number of cloud desktops that are assigned to the convenience user.
 	//
 	// Valid values:
@@ -97,7 +108,8 @@ type FilterUsersRequest struct {
 	// example:
 	//
 	// false
-	IncludeDesktopGroupCount *bool `json:"IncludeDesktopGroupCount,omitempty" xml:"IncludeDesktopGroupCount,omitempty"`
+	IncludeDesktopGroupCount *bool     `json:"IncludeDesktopGroupCount,omitempty" xml:"IncludeDesktopGroupCount,omitempty"`
+	IncludeEndUserIds        []*string `json:"IncludeEndUserIds,omitempty" xml:"IncludeEndUserIds,omitempty" type:"Repeated"`
 	// Specifies whether to return the organization information.
 	IncludeOrgInfo *bool `json:"IncludeOrgInfo,omitempty" xml:"IncludeOrgInfo,omitempty"`
 	// Specifies whether to return the supported logon types.
@@ -156,6 +168,10 @@ func (s FilterUsersRequest) GoString() string {
 	return s.String()
 }
 
+func (s *FilterUsersRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *FilterUsersRequest) GetExcludeEndUserIds() []*string {
 	return s.ExcludeEndUserIds
 }
@@ -164,12 +180,20 @@ func (s *FilterUsersRequest) GetFilter() *string {
 	return s.Filter
 }
 
+func (s *FilterUsersRequest) GetFilterMap() map[string]*string {
+	return s.FilterMap
+}
+
 func (s *FilterUsersRequest) GetIncludeDesktopCount() *bool {
 	return s.IncludeDesktopCount
 }
 
 func (s *FilterUsersRequest) GetIncludeDesktopGroupCount() *bool {
 	return s.IncludeDesktopGroupCount
+}
+
+func (s *FilterUsersRequest) GetIncludeEndUserIds() []*string {
+	return s.IncludeEndUserIds
 }
 
 func (s *FilterUsersRequest) GetIncludeOrgInfo() *bool {
@@ -216,6 +240,11 @@ func (s *FilterUsersRequest) GetStatus() *int32 {
 	return s.Status
 }
 
+func (s *FilterUsersRequest) SetBusinessChannel(v string) *FilterUsersRequest {
+	s.BusinessChannel = &v
+	return s
+}
+
 func (s *FilterUsersRequest) SetExcludeEndUserIds(v []*string) *FilterUsersRequest {
 	s.ExcludeEndUserIds = v
 	return s
@@ -226,6 +255,11 @@ func (s *FilterUsersRequest) SetFilter(v string) *FilterUsersRequest {
 	return s
 }
 
+func (s *FilterUsersRequest) SetFilterMap(v map[string]*string) *FilterUsersRequest {
+	s.FilterMap = v
+	return s
+}
+
 func (s *FilterUsersRequest) SetIncludeDesktopCount(v bool) *FilterUsersRequest {
 	s.IncludeDesktopCount = &v
 	return s
@@ -233,6 +267,11 @@ func (s *FilterUsersRequest) SetIncludeDesktopCount(v bool) *FilterUsersRequest 
 
 func (s *FilterUsersRequest) SetIncludeDesktopGroupCount(v bool) *FilterUsersRequest {
 	s.IncludeDesktopGroupCount = &v
+	return s
+}
+
+func (s *FilterUsersRequest) SetIncludeEndUserIds(v []*string) *FilterUsersRequest {
+	s.IncludeEndUserIds = v
 	return s
 }
 

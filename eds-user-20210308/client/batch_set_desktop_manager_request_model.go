@@ -9,6 +9,8 @@ type iBatchSetDesktopManagerRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *BatchSetDesktopManagerRequest
+	GetBusinessChannel() *string
 	SetIsDesktopManager(v string) *BatchSetDesktopManagerRequest
 	GetIsDesktopManager() *string
 	SetUsers(v []*string) *BatchSetDesktopManagerRequest
@@ -16,6 +18,10 @@ type iBatchSetDesktopManagerRequest interface {
 }
 
 type BatchSetDesktopManagerRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// Whether the convenience account has the local administrator permissions on cloud computers.
 	//
 	// Valid values:
@@ -42,12 +48,21 @@ func (s BatchSetDesktopManagerRequest) GoString() string {
 	return s.String()
 }
 
+func (s *BatchSetDesktopManagerRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *BatchSetDesktopManagerRequest) GetIsDesktopManager() *string {
 	return s.IsDesktopManager
 }
 
 func (s *BatchSetDesktopManagerRequest) GetUsers() []*string {
 	return s.Users
+}
+
+func (s *BatchSetDesktopManagerRequest) SetBusinessChannel(v string) *BatchSetDesktopManagerRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *BatchSetDesktopManagerRequest) SetIsDesktopManager(v string) *BatchSetDesktopManagerRequest {

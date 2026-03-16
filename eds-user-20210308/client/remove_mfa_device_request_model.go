@@ -11,6 +11,8 @@ type iRemoveMfaDeviceRequest interface {
 	GoString() string
 	SetAdDomain(v string) *RemoveMfaDeviceRequest
 	GetAdDomain() *string
+	SetBusinessChannel(v string) *RemoveMfaDeviceRequest
+	GetBusinessChannel() *string
 	SetSerialNumber(v string) *RemoveMfaDeviceRequest
 	GetSerialNumber() *string
 }
@@ -22,6 +24,10 @@ type RemoveMfaDeviceRequest struct {
 	//
 	// alpha.lftltd.net
 	AdDomain *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The serial number of the virtual MFA device. You can call the [DescribeMfaDevices](~~DescribeMfaDevices~~) operation to get this information.
 	//
 	// This parameter is required.
@@ -44,12 +50,21 @@ func (s *RemoveMfaDeviceRequest) GetAdDomain() *string {
 	return s.AdDomain
 }
 
+func (s *RemoveMfaDeviceRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *RemoveMfaDeviceRequest) GetSerialNumber() *string {
 	return s.SerialNumber
 }
 
 func (s *RemoveMfaDeviceRequest) SetAdDomain(v string) *RemoveMfaDeviceRequest {
 	s.AdDomain = &v
+	return s
+}
+
+func (s *RemoveMfaDeviceRequest) SetBusinessChannel(v string) *RemoveMfaDeviceRequest {
+	s.BusinessChannel = &v
 	return s
 }
 

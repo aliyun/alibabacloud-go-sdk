@@ -9,6 +9,8 @@ type iRemoveGroupRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *RemoveGroupRequest
+	GetBusinessChannel() *string
 	SetGroupId(v string) *RemoveGroupRequest
 	GetGroupId() *string
 	SetGroupIds(v []*string) *RemoveGroupRequest
@@ -16,6 +18,10 @@ type iRemoveGroupRequest interface {
 }
 
 type RemoveGroupRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The ID of the user group to be deleted.
 	//
 	// example:
@@ -34,12 +40,21 @@ func (s RemoveGroupRequest) GoString() string {
 	return s.String()
 }
 
+func (s *RemoveGroupRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *RemoveGroupRequest) GetGroupId() *string {
 	return s.GroupId
 }
 
 func (s *RemoveGroupRequest) GetGroupIds() []*string {
 	return s.GroupIds
+}
+
+func (s *RemoveGroupRequest) SetBusinessChannel(v string) *RemoveGroupRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *RemoveGroupRequest) SetGroupId(v string) *RemoveGroupRequest {

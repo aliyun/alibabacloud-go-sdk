@@ -9,6 +9,8 @@ type iDeleteResourceGroupRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *DeleteResourceGroupRequest
+	GetBusinessChannel() *string
 	SetResourceGroupId(v string) *DeleteResourceGroupRequest
 	GetResourceGroupId() *string
 	SetResourceGroupIds(v []*string) *DeleteResourceGroupRequest
@@ -16,6 +18,10 @@ type iDeleteResourceGroupRequest interface {
 }
 
 type DeleteResourceGroupRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// >  The ID of the resource group that you want to delete.
 	//
 	// 	- If you also specify ResourceGroupIds, both parameters take effect.
@@ -38,12 +44,21 @@ func (s DeleteResourceGroupRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteResourceGroupRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *DeleteResourceGroupRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
 
 func (s *DeleteResourceGroupRequest) GetResourceGroupIds() []*string {
 	return s.ResourceGroupIds
+}
+
+func (s *DeleteResourceGroupRequest) SetBusinessChannel(v string) *DeleteResourceGroupRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *DeleteResourceGroupRequest) SetResourceGroupId(v string) *DeleteResourceGroupRequest {

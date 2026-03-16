@@ -9,6 +9,8 @@ type iUpdatePropertyRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *UpdatePropertyRequest
+	GetBusinessChannel() *string
 	SetPropertyId(v int64) *UpdatePropertyRequest
 	GetPropertyId() *int64
 	SetPropertyKey(v string) *UpdatePropertyRequest
@@ -18,6 +20,10 @@ type iUpdatePropertyRequest interface {
 }
 
 type UpdatePropertyRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The ID of the property that you want to modify. You can call the [ListProperty](https://help.aliyun.com/document_detail/410890.html) operation to query the property ID.
 	//
 	// This parameter is required.
@@ -46,6 +52,10 @@ func (s UpdatePropertyRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdatePropertyRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *UpdatePropertyRequest) GetPropertyId() *int64 {
 	return s.PropertyId
 }
@@ -56,6 +66,11 @@ func (s *UpdatePropertyRequest) GetPropertyKey() *string {
 
 func (s *UpdatePropertyRequest) GetPropertyValues() []*UpdatePropertyRequestPropertyValues {
 	return s.PropertyValues
+}
+
+func (s *UpdatePropertyRequest) SetBusinessChannel(v string) *UpdatePropertyRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *UpdatePropertyRequest) SetPropertyId(v int64) *UpdatePropertyRequest {

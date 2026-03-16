@@ -9,6 +9,8 @@ type iModifyUserRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *ModifyUserRequest
+	GetBusinessChannel() *string
 	SetEmail(v string) *ModifyUserRequest
 	GetEmail() *string
 	SetEndUserId(v string) *ModifyUserRequest
@@ -18,6 +20,10 @@ type iModifyUserRequest interface {
 }
 
 type ModifyUserRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The email address of the convenience user. For a user-activated convenience user, the email address or mobile number must be verified. You can choose to verify the email address or the mobile number. For an administrator-activated convenience user, the email address and mobile number can be left empty.
 	//
 	// example:
@@ -50,6 +56,10 @@ func (s ModifyUserRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyUserRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *ModifyUserRequest) GetEmail() *string {
 	return s.Email
 }
@@ -60,6 +70,11 @@ func (s *ModifyUserRequest) GetEndUserId() *string {
 
 func (s *ModifyUserRequest) GetPhone() *string {
 	return s.Phone
+}
+
+func (s *ModifyUserRequest) SetBusinessChannel(v string) *ModifyUserRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *ModifyUserRequest) SetEmail(v string) *ModifyUserRequest {

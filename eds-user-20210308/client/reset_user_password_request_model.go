@@ -9,6 +9,8 @@ type iResetUserPasswordRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *ResetUserPasswordRequest
+	GetBusinessChannel() *string
 	SetNotifyType(v int32) *ResetUserPasswordRequest
 	GetNotifyType() *int32
 	SetUsers(v []*string) *ResetUserPasswordRequest
@@ -16,6 +18,10 @@ type iResetUserPasswordRequest interface {
 }
 
 type ResetUserPasswordRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The method to notify the user after the password is reset.
 	//
 	// > Alibaba Cloud accounts of the international site do not support sending notification through text messages.
@@ -42,12 +48,21 @@ func (s ResetUserPasswordRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ResetUserPasswordRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *ResetUserPasswordRequest) GetNotifyType() *int32 {
 	return s.NotifyType
 }
 
 func (s *ResetUserPasswordRequest) GetUsers() []*string {
 	return s.Users
+}
+
+func (s *ResetUserPasswordRequest) SetBusinessChannel(v string) *ResetUserPasswordRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *ResetUserPasswordRequest) SetNotifyType(v int32) *ResetUserPasswordRequest {

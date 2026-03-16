@@ -11,6 +11,8 @@ type iCreateGroupRequest interface {
 	GoString() string
 	SetBizType(v string) *CreateGroupRequest
 	GetBizType() *string
+	SetBusinessChannel(v string) *CreateGroupRequest
+	GetBusinessChannel() *string
 	SetDescription(v string) *CreateGroupRequest
 	GetDescription() *string
 	SetGroupName(v string) *CreateGroupRequest
@@ -26,6 +28,10 @@ type CreateGroupRequest struct {
 	//
 	// ENTERPRISE
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The description of the user group.
 	//
 	// example:
@@ -59,6 +65,10 @@ func (s *CreateGroupRequest) GetBizType() *string {
 	return s.BizType
 }
 
+func (s *CreateGroupRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *CreateGroupRequest) GetDescription() *string {
 	return s.Description
 }
@@ -77,6 +87,11 @@ func (s *CreateGroupRequest) GetSolutionId() *string {
 
 func (s *CreateGroupRequest) SetBizType(v string) *CreateGroupRequest {
 	s.BizType = &v
+	return s
+}
+
+func (s *CreateGroupRequest) SetBusinessChannel(v string) *CreateGroupRequest {
+	s.BusinessChannel = &v
 	return s
 }
 

@@ -9,6 +9,8 @@ type iModifyGroupRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *ModifyGroupRequest
+	GetBusinessChannel() *string
 	SetDescription(v string) *ModifyGroupRequest
 	GetDescription() *string
 	SetGroupId(v string) *ModifyGroupRequest
@@ -18,6 +20,10 @@ type iModifyGroupRequest interface {
 }
 
 type ModifyGroupRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The new description of the user group.
 	//
 	// example:
@@ -46,6 +52,10 @@ func (s ModifyGroupRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyGroupRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *ModifyGroupRequest) GetDescription() *string {
 	return s.Description
 }
@@ -56,6 +66,11 @@ func (s *ModifyGroupRequest) GetGroupId() *string {
 
 func (s *ModifyGroupRequest) GetNewGroupName() *string {
 	return s.NewGroupName
+}
+
+func (s *ModifyGroupRequest) SetBusinessChannel(v string) *ModifyGroupRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *ModifyGroupRequest) SetDescription(v string) *ModifyGroupRequest {

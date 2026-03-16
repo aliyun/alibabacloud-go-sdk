@@ -9,6 +9,8 @@ type iUserBatchQuitGroupRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *UserBatchQuitGroupRequest
+	GetBusinessChannel() *string
 	SetEndUserIds(v []*string) *UserBatchQuitGroupRequest
 	GetEndUserIds() []*string
 	SetGroupId(v string) *UserBatchQuitGroupRequest
@@ -16,6 +18,10 @@ type iUserBatchQuitGroupRequest interface {
 }
 
 type UserBatchQuitGroupRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The user IDs.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
 	// The ID of the user group.
@@ -34,12 +40,21 @@ func (s UserBatchQuitGroupRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UserBatchQuitGroupRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *UserBatchQuitGroupRequest) GetEndUserIds() []*string {
 	return s.EndUserIds
 }
 
 func (s *UserBatchQuitGroupRequest) GetGroupId() *string {
 	return s.GroupId
+}
+
+func (s *UserBatchQuitGroupRequest) SetBusinessChannel(v string) *UserBatchQuitGroupRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *UserBatchQuitGroupRequest) SetEndUserIds(v []*string) *UserBatchQuitGroupRequest {

@@ -9,6 +9,8 @@ type iMoveOrgRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *MoveOrgRequest
+	GetBusinessChannel() *string
 	SetNewParentOrgId(v string) *MoveOrgRequest
 	GetNewParentOrgId() *string
 	SetOrgId(v string) *MoveOrgRequest
@@ -16,6 +18,10 @@ type iMoveOrgRequest interface {
 }
 
 type MoveOrgRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The ID of the parent organization.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s MoveOrgRequest) GoString() string {
 	return s.String()
 }
 
+func (s *MoveOrgRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *MoveOrgRequest) GetNewParentOrgId() *string {
 	return s.NewParentOrgId
 }
 
 func (s *MoveOrgRequest) GetOrgId() *string {
 	return s.OrgId
+}
+
+func (s *MoveOrgRequest) SetBusinessChannel(v string) *MoveOrgRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *MoveOrgRequest) SetNewParentOrgId(v string) *MoveOrgRequest {

@@ -9,6 +9,8 @@ type iUserBatchJoinGroupRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *UserBatchJoinGroupRequest
+	GetBusinessChannel() *string
 	SetEndUserIds(v []*string) *UserBatchJoinGroupRequest
 	GetEndUserIds() []*string
 	SetGroupId(v string) *UserBatchJoinGroupRequest
@@ -16,6 +18,10 @@ type iUserBatchJoinGroupRequest interface {
 }
 
 type UserBatchJoinGroupRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The list of user IDs.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
 	// The ID of the user group.
@@ -36,12 +42,21 @@ func (s UserBatchJoinGroupRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UserBatchJoinGroupRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *UserBatchJoinGroupRequest) GetEndUserIds() []*string {
 	return s.EndUserIds
 }
 
 func (s *UserBatchJoinGroupRequest) GetGroupId() *string {
 	return s.GroupId
+}
+
+func (s *UserBatchJoinGroupRequest) SetBusinessChannel(v string) *UserBatchJoinGroupRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *UserBatchJoinGroupRequest) SetEndUserIds(v []*string) *UserBatchJoinGroupRequest {

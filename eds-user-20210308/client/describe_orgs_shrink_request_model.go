@@ -9,6 +9,8 @@ type iDescribeOrgsShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *DescribeOrgsShrinkRequest
+	GetBusinessChannel() *string
 	SetMaxResults(v int64) *DescribeOrgsShrinkRequest
 	GetMaxResults() *int64
 	SetNextToken(v string) *DescribeOrgsShrinkRequest
@@ -22,6 +24,10 @@ type iDescribeOrgsShrinkRequest interface {
 }
 
 type DescribeOrgsShrinkRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The maximum number of entries to return. Valid values: 1 to 100.\\
 	//
 	// Default value: 100.
@@ -59,6 +65,10 @@ func (s DescribeOrgsShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeOrgsShrinkRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *DescribeOrgsShrinkRequest) GetMaxResults() *int64 {
 	return s.MaxResults
 }
@@ -77,6 +87,11 @@ func (s *DescribeOrgsShrinkRequest) GetParentOrgId() *string {
 
 func (s *DescribeOrgsShrinkRequest) GetShowExtrasShrink() *string {
 	return s.ShowExtrasShrink
+}
+
+func (s *DescribeOrgsShrinkRequest) SetBusinessChannel(v string) *DescribeOrgsShrinkRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *DescribeOrgsShrinkRequest) SetMaxResults(v int64) *DescribeOrgsShrinkRequest {

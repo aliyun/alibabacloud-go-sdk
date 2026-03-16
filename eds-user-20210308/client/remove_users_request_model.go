@@ -9,11 +9,17 @@ type iRemoveUsersRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *RemoveUsersRequest
+	GetBusinessChannel() *string
 	SetUsers(v []*string) *RemoveUsersRequest
 	GetUsers() []*string
 }
 
 type RemoveUsersRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The usernames of the convenience users that you want to remove.
 	//
 	// This parameter is required.
@@ -32,8 +38,17 @@ func (s RemoveUsersRequest) GoString() string {
 	return s.String()
 }
 
+func (s *RemoveUsersRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *RemoveUsersRequest) GetUsers() []*string {
 	return s.Users
+}
+
+func (s *RemoveUsersRequest) SetBusinessChannel(v string) *RemoveUsersRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *RemoveUsersRequest) SetUsers(v []*string) *RemoveUsersRequest {

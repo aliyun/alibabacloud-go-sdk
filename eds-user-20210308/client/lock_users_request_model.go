@@ -9,6 +9,8 @@ type iLockUsersRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *LockUsersRequest
+	GetBusinessChannel() *string
 	SetLogoutSession(v bool) *LockUsersRequest
 	GetLogoutSession() *bool
 	SetUsers(v []*string) *LockUsersRequest
@@ -16,7 +18,11 @@ type iLockUsersRequest interface {
 }
 
 type LockUsersRequest struct {
-	LogoutSession *bool `json:"LogoutSession,omitempty" xml:"LogoutSession,omitempty"`
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
+	LogoutSession   *bool   `json:"LogoutSession,omitempty" xml:"LogoutSession,omitempty"`
 	// The usernames of the convenience users that you want to lock.
 	//
 	// This parameter is required.
@@ -35,12 +41,21 @@ func (s LockUsersRequest) GoString() string {
 	return s.String()
 }
 
+func (s *LockUsersRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *LockUsersRequest) GetLogoutSession() *bool {
 	return s.LogoutSession
 }
 
 func (s *LockUsersRequest) GetUsers() []*string {
 	return s.Users
+}
+
+func (s *LockUsersRequest) SetBusinessChannel(v string) *LockUsersRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *LockUsersRequest) SetLogoutSession(v bool) *LockUsersRequest {

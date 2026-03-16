@@ -9,6 +9,8 @@ type iCheckUsedPropertyValueRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *CheckUsedPropertyValueRequest
+	GetBusinessChannel() *string
 	SetPropertyId(v int64) *CheckUsedPropertyValueRequest
 	GetPropertyId() *int64
 	SetPropertyValueId(v int64) *CheckUsedPropertyValueRequest
@@ -16,6 +18,10 @@ type iCheckUsedPropertyValueRequest interface {
 }
 
 type CheckUsedPropertyValueRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The property ID. You can call the [ListProperty](~~ListProperty~~) operation to query property ID.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s CheckUsedPropertyValueRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CheckUsedPropertyValueRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *CheckUsedPropertyValueRequest) GetPropertyId() *int64 {
 	return s.PropertyId
 }
 
 func (s *CheckUsedPropertyValueRequest) GetPropertyValueId() *int64 {
 	return s.PropertyValueId
+}
+
+func (s *CheckUsedPropertyValueRequest) SetBusinessChannel(v string) *CheckUsedPropertyValueRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *CheckUsedPropertyValueRequest) SetPropertyId(v int64) *CheckUsedPropertyValueRequest {

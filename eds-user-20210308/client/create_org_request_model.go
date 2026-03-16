@@ -9,6 +9,8 @@ type iCreateOrgRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *CreateOrgRequest
+	GetBusinessChannel() *string
 	SetOrgName(v string) *CreateOrgRequest
 	GetOrgName() *string
 	SetParentOrgId(v string) *CreateOrgRequest
@@ -16,6 +18,10 @@ type iCreateOrgRequest interface {
 }
 
 type CreateOrgRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The name of the organization.
 	//
 	// This parameter is required.
@@ -38,12 +44,21 @@ func (s CreateOrgRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateOrgRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *CreateOrgRequest) GetOrgName() *string {
 	return s.OrgName
 }
 
 func (s *CreateOrgRequest) GetParentOrgId() *string {
 	return s.ParentOrgId
+}
+
+func (s *CreateOrgRequest) SetBusinessChannel(v string) *CreateOrgRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *CreateOrgRequest) SetOrgName(v string) *CreateOrgRequest {

@@ -83,7 +83,11 @@ func (s *DescribeResourceGroupsResponseBody) Validate() error {
 }
 
 type DescribeResourceGroupsResponseBodyResourceGroup struct {
-	AppRules []*DescribeResourceGroupsResponseBodyResourceGroupAppRules `json:"AppRules,omitempty" xml:"AppRules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// rg-123456
+	AliyunResourceGroupId *string                                                    `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
+	AppRules              []*DescribeResourceGroupsResponseBodyResourceGroupAppRules `json:"AppRules,omitempty" xml:"AppRules,omitempty" type:"Repeated"`
 	// The number of administrators that are authorized to access the resource group.
 	//
 	// example:
@@ -130,6 +134,10 @@ func (s DescribeResourceGroupsResponseBodyResourceGroup) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeResourceGroupsResponseBodyResourceGroup) GetAliyunResourceGroupId() *string {
+	return s.AliyunResourceGroupId
+}
+
 func (s *DescribeResourceGroupsResponseBodyResourceGroup) GetAppRules() []*DescribeResourceGroupsResponseBodyResourceGroupAppRules {
 	return s.AppRules
 }
@@ -160,6 +168,11 @@ func (s *DescribeResourceGroupsResponseBodyResourceGroup) GetResourceGroupName()
 
 func (s *DescribeResourceGroupsResponseBodyResourceGroup) GetTimers() []*DescribeResourceGroupsResponseBodyResourceGroupTimers {
 	return s.Timers
+}
+
+func (s *DescribeResourceGroupsResponseBodyResourceGroup) SetAliyunResourceGroupId(v string) *DescribeResourceGroupsResponseBodyResourceGroup {
+	s.AliyunResourceGroupId = &v
+	return s
 }
 
 func (s *DescribeResourceGroupsResponseBodyResourceGroup) SetAppRules(v []*DescribeResourceGroupsResponseBodyResourceGroupAppRules) *DescribeResourceGroupsResponseBodyResourceGroup {

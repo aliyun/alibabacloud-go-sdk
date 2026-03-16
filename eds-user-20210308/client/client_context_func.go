@@ -28,6 +28,10 @@ func (client *Client) BatchSetDesktopManagerWithContext(ctx context.Context, req
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		body["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.IsDesktopManager) {
 		body["IsDesktopManager"] = request.IsDesktopManager
 	}
@@ -61,7 +65,7 @@ func (client *Client) BatchSetDesktopManagerWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 管理员修改用户密码
+// If the user is in administrator-activated mode, you can change the user logon password through this operation.
 //
 // @param request - ChangeUserPasswordRequest
 //
@@ -76,6 +80,10 @@ func (client *Client) ChangeUserPasswordWithContext(ctx context.Context, request
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		body["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.EndUserId) {
 		body["EndUserId"] = request.EndUserId
 	}
@@ -124,6 +132,10 @@ func (client *Client) CheckUsedPropertyWithContext(ctx context.Context, request 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.PropertyId) {
 		query["PropertyId"] = request.PropertyId
 	}
@@ -172,6 +184,10 @@ func (client *Client) CheckUsedPropertyValueWithContext(ctx context.Context, req
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.PropertyId) {
 		query["PropertyId"] = request.PropertyId
 	}
@@ -222,6 +238,10 @@ func (client *Client) CreateGroupWithContext(ctx context.Context, request *Creat
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
 		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
 	}
 
 	if !dara.IsNil(request.Description) {
@@ -280,6 +300,10 @@ func (client *Client) CreateOrgWithContext(ctx context.Context, request *CreateO
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.OrgName) {
 		query["OrgName"] = request.OrgName
 	}
@@ -328,6 +352,10 @@ func (client *Client) CreatePropertyWithContext(ctx context.Context, request *Cr
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		body["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.PropertyKey) {
 		body["PropertyKey"] = request.PropertyKey
 	}
@@ -376,6 +404,10 @@ func (client *Client) CreateResourceGroupWithContext(ctx context.Context, reques
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.IsResourceGroupWithOfficeSite) {
 		query["IsResourceGroupWithOfficeSite"] = request.IsResourceGroupWithOfficeSite
 	}
@@ -436,6 +468,10 @@ func (client *Client) CreateUsersWithContext(ctx context.Context, request *Creat
 		query["AutoLockTime"] = request.AutoLockTime
 	}
 
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.IsLocalAdmin) {
 		query["IsLocalAdmin"] = request.IsLocalAdmin
 	}
@@ -494,6 +530,10 @@ func (client *Client) DeleteResourceGroupWithContext(ctx context.Context, reques
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.ResourceGroupId) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -546,6 +586,10 @@ func (client *Client) DeleteUserPropertyValueWithContext(ctx context.Context, re
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		body["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.PropertyId) {
 		body["PropertyId"] = request.PropertyId
 	}
@@ -600,6 +644,10 @@ func (client *Client) DescribeGroupUserWithContext(ctx context.Context, request 
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
 		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
 	}
 
 	if !dara.IsNil(request.Filter) {
@@ -664,6 +712,10 @@ func (client *Client) DescribeGroupsWithContext(ctx context.Context, request *De
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
 		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
 	}
 
 	if !dara.IsNil(request.ExcludeAttachedLoginPolicyGroups) {
@@ -746,6 +798,10 @@ func (client *Client) DescribeMfaDevicesWithContext(ctx context.Context, request
 		query["AdDomain"] = request.AdDomain
 	}
 
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.EndUserIds) {
 		query["EndUserIds"] = request.EndUserIds
 	}
@@ -806,6 +862,10 @@ func (client *Client) DescribeOrgByLayerWithContext(ctx context.Context, request
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		body["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.OrgName) {
 		body["OrgName"] = request.OrgName
 	}
@@ -864,6 +924,10 @@ func (client *Client) DescribeOrgsWithContext(ctx context.Context, tmpReq *Descr
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		query["MaxResults"] = request.MaxResults
 	}
@@ -924,6 +988,14 @@ func (client *Client) DescribeResourceGroupsWithContext(ctx context.Context, req
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AliyunResourceGroupIds) {
+		query["AliyunResourceGroupIds"] = request.AliyunResourceGroupIds
+	}
+
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.NeedContainResourceGroupWithOfficeSite) {
 		query["NeedContainResourceGroupWithOfficeSite"] = request.NeedContainResourceGroupWithOfficeSite
 	}
@@ -989,6 +1061,10 @@ func (client *Client) DescribeUsersWithContext(ctx context.Context, tmpReq *Desc
 	}
 	request := &DescribeUsersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.FilterMap) {
+		request.FilterMapShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterMap, dara.String("FilterMap"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.FilterWithAssignedResource) {
 		request.FilterWithAssignedResourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterWithAssignedResource, dara.String("FilterWithAssignedResource"), dara.String("json"))
 	}
@@ -1002,8 +1078,16 @@ func (client *Client) DescribeUsersWithContext(ctx context.Context, tmpReq *Desc
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.Filter) {
 		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.FilterMapShrink) {
+		query["FilterMap"] = request.FilterMapShrink
 	}
 
 	if !dara.IsNil(request.MaxResults) {
@@ -1105,11 +1189,19 @@ func (client *Client) FilterUsersWithContext(ctx context.Context, tmpReq *Filter
 	}
 	request := &FilterUsersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.FilterMap) {
+		request.FilterMapShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterMap, dara.String("FilterMap"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.OrderParam) {
 		request.OrderParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OrderParam, dara.String("OrderParam"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.ExcludeEndUserIds) {
 		query["ExcludeEndUserIds"] = request.ExcludeEndUserIds
 	}
@@ -1118,12 +1210,20 @@ func (client *Client) FilterUsersWithContext(ctx context.Context, tmpReq *Filter
 		query["Filter"] = request.Filter
 	}
 
+	if !dara.IsNil(request.FilterMapShrink) {
+		query["FilterMap"] = request.FilterMapShrink
+	}
+
 	if !dara.IsNil(request.IncludeDesktopCount) {
 		query["IncludeDesktopCount"] = request.IncludeDesktopCount
 	}
 
 	if !dara.IsNil(request.IncludeDesktopGroupCount) {
 		query["IncludeDesktopGroupCount"] = request.IncludeDesktopGroupCount
+	}
+
+	if !dara.IsNil(request.IncludeEndUserIds) {
+		query["IncludeEndUserIds"] = request.IncludeEndUserIds
 	}
 
 	if !dara.IsNil(request.IncludeOrgInfo) {
@@ -1239,6 +1339,94 @@ func (client *Client) GetManagerInfoByAuthCodeWithContext(ctx context.Context, r
 
 // Summary:
 //
+// Initializes an organization ID.
+//
+// @param request - InitTenantAliasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InitTenantAliasResponse
+func (client *Client) InitTenantAliasWithContext(ctx context.Context, request *InitTenantAliasRequest, runtime *dara.RuntimeOptions) (_result *InitTenantAliasResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InitTenantAlias"),
+		Version:     dara.String("2021-03-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InitTenantAliasResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries all user properties within an Alibaba Cloud account.
+//
+// @param request - ListPropertyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPropertyResponse
+func (client *Client) ListPropertyWithContext(ctx context.Context, request *ListPropertyRequest, runtime *dara.RuntimeOptions) (_result *ListPropertyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListProperty"),
+		Version:     dara.String("2021-03-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPropertyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries property values of a user property.
 //
 // @param request - ListPropertyValueRequest
@@ -1254,6 +1442,10 @@ func (client *Client) ListPropertyValueWithContext(ctx context.Context, request 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.PropertyId) {
 		query["PropertyId"] = request.PropertyId
 	}
@@ -1306,6 +1498,10 @@ func (client *Client) LockMfaDeviceWithContext(ctx context.Context, request *Loc
 		query["AdDomain"] = request.AdDomain
 	}
 
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.SerialNumber) {
 		query["SerialNumber"] = request.SerialNumber
 	}
@@ -1350,6 +1546,10 @@ func (client *Client) LockUsersWithContext(ctx context.Context, request *LockUse
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.LogoutSession) {
 		query["LogoutSession"] = request.LogoutSession
 	}
@@ -1400,6 +1600,10 @@ func (client *Client) ModifyGroupWithContext(ctx context.Context, request *Modif
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
 	}
@@ -1452,6 +1656,10 @@ func (client *Client) ModifyOrgWithContext(ctx context.Context, request *ModifyO
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.OrgId) {
 		query["OrgId"] = request.OrgId
 	}
@@ -1485,7 +1693,7 @@ func (client *Client) ModifyOrgWithContext(ctx context.Context, request *ModifyO
 
 // Summary:
 //
-// Modifies user information.
+// Updates the contact information of a convenience account.
 //
 // @param request - ModifyUserRequest
 //
@@ -1500,6 +1708,10 @@ func (client *Client) ModifyUserWithContext(ctx context.Context, request *Modify
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.Email) {
 		query["Email"] = request.Email
 	}
@@ -1552,6 +1764,10 @@ func (client *Client) MoveOrgWithContext(ctx context.Context, request *MoveOrgRe
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		body["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.NewParentOrgId) {
 		body["NewParentOrgId"] = request.NewParentOrgId
 	}
@@ -1600,6 +1816,10 @@ func (client *Client) MoveUserOrgWithContext(ctx context.Context, request *MoveU
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		body["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.EndUserIds) {
 		body["EndUserIds"] = request.EndUserIds
 	}
@@ -1633,6 +1853,50 @@ func (client *Client) MoveUserOrgWithContext(ctx context.Context, request *MoveU
 
 // Summary:
 //
+// Queries user synchronization status.
+//
+// @param request - QuerySyncStatusByAliUidRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySyncStatusByAliUidResponse
+func (client *Client) QuerySyncStatusByAliUidWithContext(ctx context.Context, request *QuerySyncStatusByAliUidRequest, runtime *dara.RuntimeOptions) (_result *QuerySyncStatusByAliUidResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QuerySyncStatusByAliUid"),
+		Version:     dara.String("2021-03-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QuerySyncStatusByAliUidResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a single user group or multiple user groups at a time.
 //
 // @param request - RemoveGroupRequest
@@ -1648,6 +1912,10 @@ func (client *Client) RemoveGroupWithContext(ctx context.Context, request *Remov
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.GroupId) {
 		query["GroupId"] = request.GroupId
 	}
@@ -1704,6 +1972,10 @@ func (client *Client) RemoveMfaDeviceWithContext(ctx context.Context, request *R
 		query["AdDomain"] = request.AdDomain
 	}
 
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.SerialNumber) {
 		query["SerialNumber"] = request.SerialNumber
 	}
@@ -1748,6 +2020,10 @@ func (client *Client) RemoveOrgWithContext(ctx context.Context, request *RemoveO
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		body["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.OrgId) {
 		body["OrgId"] = request.OrgId
 	}
@@ -1791,13 +2067,19 @@ func (client *Client) RemovePropertyWithContext(ctx context.Context, request *Re
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.PropertyId) {
 		body["PropertyId"] = request.PropertyId
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("RemoveProperty"),
@@ -1836,6 +2118,10 @@ func (client *Client) RemoveUsersWithContext(ctx context.Context, request *Remov
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		body["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.Users) {
 		body["Users"] = request.Users
 	}
@@ -1880,6 +2166,10 @@ func (client *Client) ResetUserPasswordWithContext(ctx context.Context, request 
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		body["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.NotifyType) {
 		body["NotifyType"] = request.NotifyType
 	}
@@ -1928,6 +2218,10 @@ func (client *Client) SetUserPropertyValueWithContext(ctx context.Context, reque
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		body["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.PropertyId) {
 		body["PropertyId"] = request.PropertyId
 	}
@@ -1988,6 +2282,10 @@ func (client *Client) UnlockMfaDeviceWithContext(ctx context.Context, request *U
 		query["AdDomain"] = request.AdDomain
 	}
 
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.SerialNumber) {
 		query["SerialNumber"] = request.SerialNumber
 	}
@@ -2036,6 +2334,10 @@ func (client *Client) UnlockUsersWithContext(ctx context.Context, request *Unloc
 		query["AutoLockTime"] = request.AutoLockTime
 	}
 
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Users) {
 		body["Users"] = request.Users
@@ -2081,6 +2383,11 @@ func (client *Client) UpdatePropertyWithContext(ctx context.Context, request *Up
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.PropertyId) {
 		body["PropertyId"] = request.PropertyId
@@ -2095,7 +2402,8 @@ func (client *Client) UpdatePropertyWithContext(ctx context.Context, request *Up
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("UpdateProperty"),
@@ -2134,6 +2442,10 @@ func (client *Client) UserBatchJoinGroupWithContext(ctx context.Context, request
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		body["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.EndUserIds) {
 		body["EndUserIds"] = request.EndUserIds
 	}
@@ -2182,6 +2494,10 @@ func (client *Client) UserBatchQuitGroupWithContext(ctx context.Context, request
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		body["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.EndUserIds) {
 		body["EndUserIds"] = request.EndUserIds
 	}
