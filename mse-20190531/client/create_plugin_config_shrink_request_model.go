@@ -32,7 +32,18 @@ type CreatePluginConfigShrinkRequest struct {
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	Config         *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The plug-in configuration. The configuration content of the WebAssembly (Wasm) plug-in is in the YAML format. The configuration content of the Lua plug-in is Lua code.
+	//
+	// example:
+	//
+	// status_code: 200
+	//
+	// headers:
+	//
+	// - Content-Type=application/json
+	//
+	// body: "{\\"rule\\": \\"global\\"}"
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The application scope of the plug-in. Valid values:
 	//
 	// 	- 0: global

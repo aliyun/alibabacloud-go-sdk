@@ -63,7 +63,8 @@ type CreateOrUpdateSwimmingLaneRequest struct {
 	// example:
 	//
 	// {}
-	EntryRule  *string                                        `json:"EntryRule,omitempty" xml:"EntryRule,omitempty"`
+	EntryRule *string `json:"EntryRule,omitempty" xml:"EntryRule,omitempty"`
+	// The lane.
 	EntryRules []*CreateOrUpdateSwimmingLaneRequestEntryRules `json:"EntryRules,omitempty" xml:"EntryRules,omitempty" type:"Repeated"`
 	// The information about the routing rule for the gateway. This parameter is required when a cloud-native gateway is used as the ingress.
 	GatewaySwimmingLaneRouteJson *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson `json:"GatewaySwimmingLaneRouteJson,omitempty" xml:"GatewaySwimmingLaneRouteJson,omitempty" type:"Struct"`
@@ -256,12 +257,21 @@ func (s *CreateOrUpdateSwimmingLaneRequest) Validate() error {
 }
 
 type CreateOrUpdateSwimmingLaneRequestEntryRules struct {
+	// Specifies how RESTful items are combined into the final condition.
+	//
 	// example:
 	//
-	// AND
-	Condition *string                                                 `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	Paths     []*string                                               `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
-	Priority  *int32                                                  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// ""
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The paths.
+	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	// The priority.
+	//
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The matching list.
 	RestItems []*CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems `json:"RestItems,omitempty" xml:"RestItems,omitempty" type:"Repeated"`
 }
 
@@ -323,16 +333,62 @@ func (s *CreateOrUpdateSwimmingLaneRequestEntryRules) Validate() error {
 }
 
 type CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems struct {
-	Cond      *string   `json:"Cond,omitempty" xml:"Cond,omitempty"`
-	Datum     *string   `json:"Datum,omitempty" xml:"Datum,omitempty"`
-	Divisor   *int32    `json:"Divisor,omitempty" xml:"Divisor,omitempty"`
-	Name      *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	NameList  []*string `json:"NameList,omitempty" xml:"NameList,omitempty" type:"Repeated"`
-	Operator  *string   `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Rate      *int32    `json:"Rate,omitempty" xml:"Rate,omitempty"`
-	Remainder *int32    `json:"Remainder,omitempty" xml:"Remainder,omitempty"`
-	Type      *string   `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value     *string   `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The matching character.
+	//
+	// example:
+	//
+	// =
+	Cond *string `json:"Cond,omitempty" xml:"Cond,omitempty"`
+	// The value.
+	//
+	// example:
+	//
+	// .params[0]
+	Datum *string `json:"Datum,omitempty" xml:"Datum,omitempty"`
+	// The divisor.
+	//
+	// example:
+	//
+	// 10
+	Divisor *int32 `json:"Divisor,omitempty" xml:"Divisor,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// ""
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The matching list.
+	NameList []*string `json:"NameList,omitempty" xml:"NameList,omitempty" type:"Repeated"`
+	// The operator.
+	//
+	// example:
+	//
+	// mod
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The percentage.
+	//
+	// example:
+	//
+	// 10
+	Rate *int32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// The remainder.
+	//
+	// example:
+	//
+	// 3
+	Remainder *int32 `json:"Remainder,omitempty" xml:"Remainder,omitempty"`
+	// The matching type.
+	//
+	// example:
+	//
+	// header
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The value.
+	//
+	// example:
+	//
+	// ""
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) String() string {

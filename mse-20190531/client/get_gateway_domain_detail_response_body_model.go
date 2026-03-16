@@ -151,7 +151,8 @@ type GetGatewayDomainDetailResponseBodyData struct {
 	// example:
 	//
 	// 2021-04-01 02:35:12
-	BeforeDate *int64 `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
+	BeforeDate       *int64  `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
+	CaCertIdentifier *string `json:"CaCertIdentifier,omitempty" xml:"CaCertIdentifier,omitempty"`
 	// The ID of the certificate.
 	//
 	// example:
@@ -230,7 +231,8 @@ type GetGatewayDomainDetailResponseBodyData struct {
 	// example:
 	//
 	// Istio
-	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	Issuer      *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	MtlsEnabled *bool   `json:"MtlsEnabled,omitempty" xml:"MtlsEnabled,omitempty"`
 	// Indicates whether HTTPS is forcibly used.
 	//
 	// example:
@@ -290,6 +292,10 @@ func (s *GetGatewayDomainDetailResponseBodyData) GetBeforeDate() *int64 {
 	return s.BeforeDate
 }
 
+func (s *GetGatewayDomainDetailResponseBodyData) GetCaCertIdentifier() *string {
+	return s.CaCertIdentifier
+}
+
 func (s *GetGatewayDomainDetailResponseBodyData) GetCertIdentifier() *string {
 	return s.CertIdentifier
 }
@@ -342,6 +348,10 @@ func (s *GetGatewayDomainDetailResponseBodyData) GetIssuer() *string {
 	return s.Issuer
 }
 
+func (s *GetGatewayDomainDetailResponseBodyData) GetMtlsEnabled() *bool {
+	return s.MtlsEnabled
+}
+
 func (s *GetGatewayDomainDetailResponseBodyData) GetMustHttps() *bool {
 	return s.MustHttps
 }
@@ -382,6 +392,11 @@ func (s *GetGatewayDomainDetailResponseBodyData) SetAlgorithm(v string) *GetGate
 
 func (s *GetGatewayDomainDetailResponseBodyData) SetBeforeDate(v int64) *GetGatewayDomainDetailResponseBodyData {
 	s.BeforeDate = &v
+	return s
+}
+
+func (s *GetGatewayDomainDetailResponseBodyData) SetCaCertIdentifier(v string) *GetGatewayDomainDetailResponseBodyData {
+	s.CaCertIdentifier = &v
 	return s
 }
 
@@ -447,6 +462,11 @@ func (s *GetGatewayDomainDetailResponseBodyData) SetIsManaged(v bool) *GetGatewa
 
 func (s *GetGatewayDomainDetailResponseBodyData) SetIssuer(v string) *GetGatewayDomainDetailResponseBodyData {
 	s.Issuer = &v
+	return s
+}
+
+func (s *GetGatewayDomainDetailResponseBodyData) SetMtlsEnabled(v bool) *GetGatewayDomainDetailResponseBodyData {
+	s.MtlsEnabled = &v
 	return s
 }
 

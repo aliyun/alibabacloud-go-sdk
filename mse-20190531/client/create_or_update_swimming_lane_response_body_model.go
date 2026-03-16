@@ -155,20 +155,81 @@ func (s *CreateOrUpdateSwimmingLaneResponseBody) Validate() error {
 }
 
 type CreateOrUpdateSwimmingLaneResponseBodyData struct {
-	Enable                          *bool                                                   `json:"enable,omitempty" xml:"enable,omitempty"`
-	EnableRules                     *bool                                                   `json:"enableRules,omitempty" xml:"enableRules,omitempty"`
-	EntryRule                       *string                                                 `json:"entryRule,omitempty" xml:"entryRule,omitempty"`
-	EntryRules                      []*CreateOrUpdateSwimmingLaneResponseBodyDataEntryRules `json:"entryRules,omitempty" xml:"entryRules,omitempty" type:"Repeated"`
-	GatewaySwimmingLaneRouteJson    *string                                                 `json:"gatewaySwimmingLaneRouteJson,omitempty" xml:"gatewaySwimmingLaneRouteJson,omitempty"`
-	GmtCreate                       *string                                                 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	GmtModified                     *string                                                 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	GroupId                         *int64                                                  `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	Id                              *int64                                                  `json:"id,omitempty" xml:"id,omitempty"`
-	Name                            *string                                                 `json:"name,omitempty" xml:"name,omitempty"`
-	PathIndependentPercentageEnable *bool                                                   `json:"pathIndependentPercentageEnable,omitempty" xml:"pathIndependentPercentageEnable,omitempty"`
-	RegionId                        *string                                                 `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	Status                          *int32                                                  `json:"status,omitempty" xml:"status,omitempty"`
-	Tag                             *string                                                 `json:"tag,omitempty" xml:"tag,omitempty"`
+	// Indicates whether the lane was enabled.
+	//
+	// example:
+	//
+	// true
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// Indicates whether the rule is enabled.
+	//
+	// example:
+	//
+	// true
+	EnableRules *bool `json:"enableRules,omitempty" xml:"enableRules,omitempty"`
+	// The rule for the ingress application.
+	//
+	// example:
+	//
+	// {}
+	EntryRule *string `json:"entryRule,omitempty" xml:"entryRule,omitempty"`
+	// The name.
+	EntryRules []*CreateOrUpdateSwimmingLaneResponseBodyDataEntryRules `json:"entryRules,omitempty" xml:"entryRules,omitempty" type:"Repeated"`
+	// The routing rule for the MSE gateway.
+	//
+	// example:
+	//
+	// {}
+	GatewaySwimmingLaneRouteJson *string `json:"gatewaySwimmingLaneRouteJson,omitempty" xml:"gatewaySwimmingLaneRouteJson,omitempty"`
+	// The time when the lane was created.
+	//
+	// example:
+	//
+	// 1545726028000
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The time when the lane was updated.
+	//
+	// example:
+	//
+	// 1565701886000
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// The ID of the lane group.
+	//
+	// example:
+	//
+	// 72586
+	GroupId *int64 `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// The ID of the lane.
+	//
+	// example:
+	//
+	// 94765
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The name of the lane.
+	//
+	// example:
+	//
+	// test
+	Name                            *string `json:"name,omitempty" xml:"name,omitempty"`
+	PathIndependentPercentageEnable *bool   `json:"pathIndependentPercentageEnable,omitempty" xml:"pathIndependentPercentageEnable,omitempty"`
+	// The ID of the region where the application is deployed.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The status of the lane.
+	//
+	// example:
+	//
+	// 0
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// The tag of the lane.
+	//
+	// example:
+	//
+	// release
+	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
 }
 
 func (s CreateOrUpdateSwimmingLaneResponseBodyData) String() string {
@@ -319,9 +380,21 @@ func (s *CreateOrUpdateSwimmingLaneResponseBodyData) Validate() error {
 }
 
 type CreateOrUpdateSwimmingLaneResponseBodyDataEntryRules struct {
-	Condition *string                                                          `json:"condition,omitempty" xml:"condition,omitempty"`
-	Path      *string                                                          `json:"path,omitempty" xml:"path,omitempty"`
-	Paths     []*string                                                        `json:"paths,omitempty" xml:"paths,omitempty" type:"Repeated"`
+	// The condition.
+	//
+	// example:
+	//
+	// AND
+	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
+	// The path of the code group.
+	//
+	// example:
+	//
+	// /adump/wxb/prod
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// The paths.
+	Paths []*string `json:"paths,omitempty" xml:"paths,omitempty" type:"Repeated"`
+	// The conditions to be met.
 	RestItems []*CreateOrUpdateSwimmingLaneResponseBodyDataEntryRulesRestItems `json:"restItems,omitempty" xml:"restItems,omitempty" type:"Repeated"`
 }
 
@@ -383,16 +456,62 @@ func (s *CreateOrUpdateSwimmingLaneResponseBodyDataEntryRules) Validate() error 
 }
 
 type CreateOrUpdateSwimmingLaneResponseBodyDataEntryRulesRestItems struct {
-	Cond      *string   `json:"cond,omitempty" xml:"cond,omitempty"`
-	Datum     *string   `json:"datum,omitempty" xml:"datum,omitempty"`
-	Divisor   *int32    `json:"divisor,omitempty" xml:"divisor,omitempty"`
-	Name      *string   `json:"name,omitempty" xml:"name,omitempty"`
-	NameList  []*string `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
-	Operator  *string   `json:"operator,omitempty" xml:"operator,omitempty"`
-	Rate      *int32    `json:"rate,omitempty" xml:"rate,omitempty"`
-	Remainder *int32    `json:"remainder,omitempty" xml:"remainder,omitempty"`
-	Type      *string   `json:"type,omitempty" xml:"type,omitempty"`
-	Value     *string   `json:"value,omitempty" xml:"value,omitempty"`
+	// The matching character.
+	//
+	// example:
+	//
+	// ==
+	Cond *string `json:"cond,omitempty" xml:"cond,omitempty"`
+	// The value.
+	//
+	// example:
+	//
+	// x
+	Datum *string `json:"datum,omitempty" xml:"datum,omitempty"`
+	// The divisor.
+	//
+	// example:
+	//
+	// 10
+	Divisor *int32 `json:"divisor,omitempty" xml:"divisor,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The names.
+	NameList []*string `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
+	// The operator.
+	//
+	// example:
+	//
+	// rawvalue
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// The percentage.
+	//
+	// example:
+	//
+	// 30
+	Rate *int32 `json:"rate,omitempty" xml:"rate,omitempty"`
+	// The remainder.
+	//
+	// example:
+	//
+	// 10
+	Remainder *int32 `json:"remainder,omitempty" xml:"remainder,omitempty"`
+	// The matching type.
+	//
+	// example:
+	//
+	// cookie
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The value.
+	//
+	// example:
+	//
+	// 9
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s CreateOrUpdateSwimmingLaneResponseBodyDataEntryRulesRestItems) String() string {

@@ -28,14 +28,22 @@ type iGatewayService interface {
 }
 
 type GatewayService struct {
+	// The traffic policy of the service.
 	GatewayTrafficPolicy *TrafficPolicy `json:"GatewayTrafficPolicy,omitempty" xml:"GatewayTrafficPolicy,omitempty"`
-	GatewayUniqueId      *string        `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	GroupName            *string        `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Id                   *int64         `json:"Id,omitempty" xml:"Id,omitempty"`
-	MetaInfo             *string        `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
-	Name                 *string        `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace            *string        `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	SourceType           *string        `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The unique ID of the gateway.
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The name of the group to which the service belongs.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the service.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The metadata of the service.
+	MetaInfo *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
+	// The name of the service.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace to which the service belongs.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The source type of the service.
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
 func (s GatewayService) String() string {

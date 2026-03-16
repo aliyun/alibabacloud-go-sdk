@@ -119,6 +119,8 @@ func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) Validate() error {
 }
 
 type CreateOrUpdateSwimmingLaneGroupResponseBodyData struct {
+	// The list of application IDs that are separated by commas (,).
+	//
 	// example:
 	//
 	// abcd1@abcde123,abcd1@abcde124
@@ -128,30 +130,55 @@ type CreateOrUpdateSwimmingLaneGroupResponseBodyData struct {
 	//
 	// true
 	DbGrayEnable *string `json:"DbGrayEnable,omitempty" xml:"DbGrayEnable,omitempty"`
+	// The ingress application.
+	//
 	// example:
 	//
 	// mse:abcd1@a2345
 	EntryApp *string `json:"EntryApp,omitempty" xml:"EntryApp,omitempty"`
-	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the lane group.
+	//
+	// example:
+	//
+	// 2047
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The side for message filtering when the canary release for messaging feature is enabled.
+	//
 	// example:
 	//
 	// Client
 	MessageQueueFilterSide *string `json:"MessageQueueFilterSide,omitempty" xml:"MessageQueueFilterSide,omitempty"`
-	MessageQueueGrayEnable *bool   `json:"MessageQueueGrayEnable,omitempty" xml:"MessageQueueGrayEnable,omitempty"`
+	// Specifies whether to enable canary release for messaging.
+	//
+	// example:
+	//
+	// true
+	MessageQueueGrayEnable *bool `json:"MessageQueueGrayEnable,omitempty" xml:"MessageQueueGrayEnable,omitempty"`
 	// example:
 	//
 	// example-app
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the MSE namespace.
+	//
 	// example:
 	//
 	// prod
-	Namespace          *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	Paths              *string `json:"Paths,omitempty" xml:"Paths,omitempty"`
-	RecordCanaryDetail *bool   `json:"RecordCanaryDetail,omitempty" xml:"RecordCanaryDetail,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Paths     *string `json:"Paths,omitempty" xml:"Paths,omitempty"`
+	// Specifies whether to record request details.
+	//
+	// example:
+	//
+	// true
+	RecordCanaryDetail *bool `json:"RecordCanaryDetail,omitempty" xml:"RecordCanaryDetail,omitempty"`
+	// The region where the application resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the user to which the application belongs.
+	//
 	// example:
 	//
 	// 12345

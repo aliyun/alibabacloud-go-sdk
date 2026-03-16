@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 新增服务鉴权规则
+// Creates a service authentication rule.
 //
 // @param request - AddAuthPolicyRequest
 //
@@ -142,7 +142,7 @@ func (client *Client) AddAuthPolicyWithOptions(request *AddAuthPolicyRequest, ru
 
 // Summary:
 //
-// 新增服务鉴权规则
+// Creates a service authentication rule.
 //
 // @param request - AddAuthPolicyRequest
 //
@@ -160,7 +160,7 @@ func (client *Client) AddAuthPolicy(request *AddAuthPolicyRequest) (_result *Add
 
 // Summary:
 //
-// Creates authorization information for a gateway.
+// Adds authorization information for a gateway.
 //
 // @param tmpReq - AddAuthResourceRequest
 //
@@ -238,7 +238,7 @@ func (client *Client) AddAuthResourceWithOptions(tmpReq *AddAuthResourceRequest,
 
 // Summary:
 //
-// Creates authorization information for a gateway.
+// Adds authorization information for a gateway.
 //
 // @param request - AddAuthResourceRequest
 //
@@ -813,6 +813,10 @@ func (client *Client) AddGatewayDomainWithOptions(tmpReq *AddGatewayDomainReques
 		query["AcceptLanguage"] = request.AcceptLanguage
 	}
 
+	if !dara.IsNil(request.CaCertIdentifier) {
+		query["CaCertIdentifier"] = request.CaCertIdentifier
+	}
+
 	if !dara.IsNil(request.CertIdentifier) {
 		query["CertIdentifier"] = request.CertIdentifier
 	}
@@ -823,6 +827,10 @@ func (client *Client) AddGatewayDomainWithOptions(tmpReq *AddGatewayDomainReques
 
 	if !dara.IsNil(request.Http2) {
 		query["Http2"] = request.Http2
+	}
+
+	if !dara.IsNil(request.MtlsEnabled) {
+		query["MtlsEnabled"] = request.MtlsEnabled
 	}
 
 	if !dara.IsNil(request.MustHttps) {
@@ -1044,7 +1052,7 @@ func (client *Client) AddGatewayRoute(request *AddGatewayRouteRequest) (_result 
 
 // Summary:
 //
-// Adds a service version.
+// Adds a service version for a gateway.
 //
 // @param request - AddGatewayServiceVersionRequest
 //
@@ -1100,7 +1108,7 @@ func (client *Client) AddGatewayServiceVersionWithOptions(request *AddGatewaySer
 
 // Summary:
 //
-// Adds a service version.
+// Adds a service version for a gateway.
 //
 // @param request - AddGatewayServiceVersionRequest
 //
@@ -1324,7 +1332,7 @@ func (client *Client) AddMigrationTask(request *AddMigrationTaskRequest) (_resul
 
 // Summary:
 //
-// Creates a mock rule.
+// Creates a service mocking rule.
 //
 // @param request - AddMockRuleRequest
 //
@@ -1412,7 +1420,7 @@ func (client *Client) AddMockRuleWithOptions(request *AddMockRuleRequest, runtim
 
 // Summary:
 //
-// Creates a mock rule.
+// Creates a service mocking rule.
 //
 // @param request - AddMockRuleRequest
 //
@@ -2768,7 +2776,7 @@ func (client *Client) CreateFlowRule(request *CreateFlowRuleRequest) (_result *C
 
 // Summary:
 //
-// 创建网关路由熔断规则
+// Creates a gateway circuit breaking rule.
 //
 // @param request - CreateGatewayCircuitBreakerRuleRequest
 //
@@ -2876,7 +2884,7 @@ func (client *Client) CreateGatewayCircuitBreakerRuleWithOptions(request *Create
 
 // Summary:
 //
-// 创建网关路由熔断规则
+// Creates a gateway circuit breaking rule.
 //
 // @param request - CreateGatewayCircuitBreakerRuleRequest
 //
@@ -3000,7 +3008,7 @@ func (client *Client) CreateGatewayFlowRule(request *CreateGatewayFlowRuleReques
 
 // Summary:
 //
-// 创建网关路由隔离规则
+// Creates a concurrency rule for a gateway.
 //
 // @param request - CreateGatewayIsolationRuleRequest
 //
@@ -3088,7 +3096,7 @@ func (client *Client) CreateGatewayIsolationRuleWithOptions(request *CreateGatew
 
 // Summary:
 //
-// 创建网关路由隔离规则
+// Creates a concurrency rule for a gateway.
 //
 // @param request - CreateGatewayIsolationRuleRequest
 //
@@ -3106,7 +3114,7 @@ func (client *Client) CreateGatewayIsolationRule(request *CreateGatewayIsolation
 
 // Summary:
 //
-// 创建隔离规则
+// Creates an isolation rule.
 //
 // @param request - CreateIsolationRuleRequest
 //
@@ -3182,7 +3190,7 @@ func (client *Client) CreateIsolationRuleWithOptions(request *CreateIsolationRul
 
 // Summary:
 //
-// 创建隔离规则
+// Creates an isolation rule.
 //
 // @param request - CreateIsolationRuleRequest
 //
@@ -3721,7 +3729,7 @@ func (client *Client) CreateNacosService(request *CreateNacosServiceRequest) (_r
 
 // Summary:
 //
-// # CreateNamespace
+// Creates a namespace for Microservices Governance.
 //
 // @param tmpReq - CreateNamespaceRequest
 //
@@ -3783,7 +3791,7 @@ func (client *Client) CreateNamespaceWithOptions(tmpReq *CreateNamespaceRequest,
 
 // Summary:
 //
-// # CreateNamespace
+// Creates a namespace for Microservices Governance.
 //
 // @param request - CreateNamespaceRequest
 //
@@ -4247,7 +4255,7 @@ func (client *Client) CreateSentinelBlockFallbackDefinition(request *CreateSenti
 
 // Summary:
 //
-// 创建热点参数防护规则（HTTP 请求）
+// Creates a hot parameter protection rule for HTTP requests.
 //
 // @param request - CreateWebFlowRuleRequest
 //
@@ -4351,7 +4359,7 @@ func (client *Client) CreateWebFlowRuleWithOptions(request *CreateWebFlowRuleReq
 
 // Summary:
 //
-// 创建热点参数防护规则（HTTP 请求）
+// Creates a hot parameter protection rule for HTTP requests.
 //
 // @param request - CreateWebFlowRuleRequest
 //
@@ -5171,7 +5179,7 @@ func (client *Client) DeleteGatewayAuthConsumerResource(request *DeleteGatewayAu
 
 // Summary:
 //
-// 删除网关路由熔断规则
+// Deletes a gateway circuit breaking rule.
 //
 // @param request - DeleteGatewayCircuitBreakerRuleRequest
 //
@@ -5227,7 +5235,7 @@ func (client *Client) DeleteGatewayCircuitBreakerRuleWithOptions(request *Delete
 
 // Summary:
 //
-// 删除网关路由熔断规则
+// Deletes a gateway circuit breaking rule.
 //
 // @param request - DeleteGatewayCircuitBreakerRuleRequest
 //
@@ -5245,7 +5253,7 @@ func (client *Client) DeleteGatewayCircuitBreakerRule(request *DeleteGatewayCirc
 
 // Summary:
 //
-// Disassociates a domain name from a gateway.
+// Deletes a domain name that is associated with a gateway.
 //
 // @param request - DeleteGatewayDomainRequest
 //
@@ -5297,7 +5305,7 @@ func (client *Client) DeleteGatewayDomainWithOptions(request *DeleteGatewayDomai
 
 // Summary:
 //
-// Disassociates a domain name from a gateway.
+// Deletes a domain name that is associated with a gateway.
 //
 // @param request - DeleteGatewayDomainRequest
 //
@@ -5315,7 +5323,7 @@ func (client *Client) DeleteGatewayDomain(request *DeleteGatewayDomainRequest) (
 
 // Summary:
 //
-// 删除网关路由流控规则
+// Deletes a throttling rule for a gateway.
 //
 // @param request - DeleteGatewayFlowRuleRequest
 //
@@ -5371,7 +5379,7 @@ func (client *Client) DeleteGatewayFlowRuleWithOptions(request *DeleteGatewayFlo
 
 // Summary:
 //
-// 删除网关路由流控规则
+// Deletes a throttling rule for a gateway.
 //
 // @param request - DeleteGatewayFlowRuleRequest
 //
@@ -5389,7 +5397,7 @@ func (client *Client) DeleteGatewayFlowRule(request *DeleteGatewayFlowRuleReques
 
 // Summary:
 //
-// 删除网关路由隔离规则
+// Deletes the gateway concurrency rule.
 //
 // @param request - DeleteGatewayIsolationRuleRequest
 //
@@ -5445,7 +5453,7 @@ func (client *Client) DeleteGatewayIsolationRuleWithOptions(request *DeleteGatew
 
 // Summary:
 //
-// 删除网关路由隔离规则
+// Deletes the gateway concurrency rule.
 //
 // @param request - DeleteGatewayIsolationRuleRequest
 //
@@ -5533,7 +5541,7 @@ func (client *Client) DeleteGatewayRoute(request *DeleteGatewayRouteRequest) (_r
 
 // Summary:
 //
-// Deletes a service from a gateway.
+// # Deletes a service from a gateway
 //
 // @param request - DeleteGatewayServiceRequest
 //
@@ -5589,7 +5597,7 @@ func (client *Client) DeleteGatewayServiceWithOptions(request *DeleteGatewayServ
 
 // Summary:
 //
-// Deletes a service from a gateway.
+// # Deletes a service from a gateway
 //
 // @param request - DeleteGatewayServiceRequest
 //
@@ -5759,7 +5767,7 @@ func (client *Client) DeleteGatewaySlb(request *DeleteGatewaySlbRequest) (_resul
 
 // Summary:
 //
-// 删除隔离规则
+// Deletes isolation rules.
 //
 // @param tmpReq - DeleteIsolationRulesRequest
 //
@@ -5821,7 +5829,7 @@ func (client *Client) DeleteIsolationRulesWithOptions(tmpReq *DeleteIsolationRul
 
 // Summary:
 //
-// 删除隔离规则
+// Deletes isolation rules.
 //
 // @param request - DeleteIsolationRulesRequest
 //
@@ -6771,7 +6779,7 @@ func (client *Client) DeleteSwimmingLaneGroup(request *DeleteSwimmingLaneGroupRe
 
 // Summary:
 //
-// 删除热点参数防护规则（HTTP 请求）
+// Deletes a hot parameter protection rule for HTTP requests.
 //
 // @param request - DeleteWebFlowRulesRequest
 //
@@ -6827,7 +6835,7 @@ func (client *Client) DeleteWebFlowRulesWithOptions(request *DeleteWebFlowRulesR
 
 // Summary:
 //
-// 删除热点参数防护规则（HTTP 请求）
+// Deletes a hot parameter protection rule for HTTP requests.
 //
 // @param request - DeleteWebFlowRulesRequest
 //
@@ -7998,7 +8006,7 @@ func (client *Client) GetGatewayAuthConsumerDetail(request *GetGatewayAuthConsum
 
 // Summary:
 //
-// 查询网关认证详情
+// Obtains the authentication details of a gateway.
 //
 // @param request - GetGatewayAuthDetailRequest
 //
@@ -8054,7 +8062,7 @@ func (client *Client) GetGatewayAuthDetailWithOptions(request *GetGatewayAuthDet
 
 // Summary:
 //
-// 查询网关认证详情
+// Obtains the authentication details of a gateway.
 //
 // @param request - GetGatewayAuthDetailRequest
 //
@@ -8072,7 +8080,7 @@ func (client *Client) GetGatewayAuthDetail(request *GetGatewayAuthDetailRequest)
 
 // Summary:
 //
-// 获取网关全局配置
+// Obtains the parameter configurations of a gateway.
 //
 // @param request - GetGatewayConfigRequest
 //
@@ -8120,7 +8128,7 @@ func (client *Client) GetGatewayConfigWithOptions(request *GetGatewayConfigReque
 
 // Summary:
 //
-// 获取网关全局配置
+// Obtains the parameter configurations of a gateway.
 //
 // @param request - GetGatewayConfigRequest
 //
@@ -8710,7 +8718,7 @@ func (client *Client) GetKubernetesSource(request *GetKubernetesSourceRequest) (
 
 // Summary:
 //
-// 获取同AZ路由规则
+// Obtains the Intra-zone Provider First rules.
 //
 // @param request - GetLocalityRuleRequest
 //
@@ -8774,7 +8782,7 @@ func (client *Client) GetLocalityRuleWithOptions(request *GetLocalityRuleRequest
 
 // Summary:
 //
-// 获取同AZ路由规则
+// Obtains the Intra-zone Provider First rules.
 //
 // @param request - GetLocalityRuleRequest
 //
@@ -9280,7 +9288,7 @@ func (client *Client) GetNacosMcpServer(request *GetNacosMcpServerRequest) (_res
 
 // Summary:
 //
-// Queries information about service governance.
+// Queries overview information about Microservices Governance.
 //
 // Description:
 //
@@ -9336,7 +9344,7 @@ func (client *Client) GetOverviewWithOptions(request *GetOverviewRequest, runtim
 
 // Summary:
 //
-// Queries information about service governance.
+// Queries overview information about Microservices Governance.
 //
 // Description:
 //
@@ -9792,7 +9800,7 @@ func (client *Client) GetServiceListeners(request *GetServiceListenersRequest) (
 
 // Summary:
 //
-// 获取服务接口列表
+// Queries a list of service interfaces.
 //
 // @param request - GetServiceMethodPageRequest
 //
@@ -9892,7 +9900,7 @@ func (client *Client) GetServiceMethodPageWithOptions(request *GetServiceMethodP
 
 // Summary:
 //
-// 获取服务接口列表
+// Queries a list of service interfaces.
 //
 // @param request - GetServiceMethodPageRequest
 //
@@ -10326,7 +10334,7 @@ func (client *Client) ImportZookeeperData(request *ImportZookeeperDataRequest) (
 
 // Summary:
 //
-// 用户授权mseSLR
+// Creates a Microservices Engine (MSE) service-linked role.
 //
 // @param request - InitializeServiceLinkRoleRequest
 //
@@ -10378,7 +10386,7 @@ func (client *Client) InitializeServiceLinkRoleWithOptions(request *InitializeSe
 
 // Summary:
 //
-// 用户授权mseSLR
+// Creates a Microservices Engine (MSE) service-linked role.
 //
 // @param request - InitializeServiceLinkRoleRequest
 //
@@ -12305,7 +12313,7 @@ func (client *Client) ListGatewayAuthConsumerResource(request *ListGatewayAuthCo
 
 // Summary:
 //
-// 查看网关路由熔断规则
+// Queries a gateway circuit breaking rule.
 //
 // @param request - ListGatewayCircuitBreakerRuleRequest
 //
@@ -12353,7 +12361,7 @@ func (client *Client) ListGatewayCircuitBreakerRuleWithOptions(request *ListGate
 
 // Summary:
 //
-// 查看网关路由熔断规则
+// Queries a gateway circuit breaking rule.
 //
 // @param request - ListGatewayCircuitBreakerRuleRequest
 //
@@ -12445,7 +12453,7 @@ func (client *Client) ListGatewayDomain(request *ListGatewayDomainRequest) (_res
 
 // Summary:
 //
-// 查看网关路由流控规则
+// Queries throttling rules of a gateway.
 //
 // @param request - ListGatewayFlowRuleRequest
 //
@@ -12493,7 +12501,7 @@ func (client *Client) ListGatewayFlowRuleWithOptions(request *ListGatewayFlowRul
 
 // Summary:
 //
-// 查看网关路由流控规则
+// Queries throttling rules of a gateway.
 //
 // @param request - ListGatewayFlowRuleRequest
 //
@@ -12511,7 +12519,7 @@ func (client *Client) ListGatewayFlowRule(request *ListGatewayFlowRuleRequest) (
 
 // Summary:
 //
-// 查看网关路由隔离规则
+// Queries the concurrency rule of a gateway.
 //
 // @param request - ListGatewayIsolationRuleRequest
 //
@@ -12559,7 +12567,7 @@ func (client *Client) ListGatewayIsolationRuleWithOptions(request *ListGatewayIs
 
 // Summary:
 //
-// 查看网关路由隔离规则
+// Queries the concurrency rule of a gateway.
 //
 // @param request - ListGatewayIsolationRuleRequest
 //
@@ -12735,7 +12743,7 @@ func (client *Client) ListGatewayRouteOnAuth(request *ListGatewayRouteOnAuthRequ
 
 // Summary:
 //
-// Queries a list of services that are subscribed with a gateway.
+// Queries a list of services that are subscribed to by a gateway.
 //
 // @param tmpReq - ListGatewayServiceRequest
 //
@@ -12805,7 +12813,7 @@ func (client *Client) ListGatewayServiceWithOptions(tmpReq *ListGatewayServiceRe
 
 // Summary:
 //
-// Queries a list of services that are subscribed with a gateway.
+// Queries a list of services that are subscribed to by a gateway.
 //
 // @param request - ListGatewayServiceRequest
 //
@@ -13029,7 +13037,7 @@ func (client *Client) ListInstanceCount(request *ListInstanceCountRequest) (_res
 
 // Summary:
 //
-// 查询隔离规则
+// Queries isolation rules.
 //
 // @param request - ListIsolationRulesRequest
 //
@@ -13101,7 +13109,7 @@ func (client *Client) ListIsolationRulesWithOptions(request *ListIsolationRulesR
 
 // Summary:
 //
-// 查询隔离规则
+// Queries isolation rules.
 //
 // @param request - ListIsolationRulesRequest
 //
@@ -13681,7 +13689,7 @@ func (client *Client) ListNacosMcpServers(request *ListNacosMcpServersRequest) (
 
 // Summary:
 //
-// 展示命名空间列表
+// Displays the list of namespaces, the number of online nodes in each namespace, and the total number of applications in each namespace. You can also call this operation to perform fuzzy queries based on the namespace name.
 //
 // @param tmpReq - ListNamespacesRequest
 //
@@ -13751,7 +13759,7 @@ func (client *Client) ListNamespacesWithOptions(tmpReq *ListNamespacesRequest, r
 
 // Summary:
 //
-// 展示命名空间列表
+// Displays the list of namespaces, the number of online nodes in each namespace, and the total number of applications in each namespace. You can also call this operation to perform fuzzy queries based on the namespace name.
 //
 // @param request - ListNamespacesRequest
 //
@@ -14261,7 +14269,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// 查询热点参数防护规则（HTTP 请求）
+// Queries hot parameter protection rules for HTTP requests.
 //
 // @param request - ListWebFlowRulesRequest
 //
@@ -14333,7 +14341,7 @@ func (client *Client) ListWebFlowRulesWithOptions(request *ListWebFlowRulesReque
 
 // Summary:
 //
-// 查询热点参数防护规则（HTTP 请求）
+// Queries hot parameter protection rules for HTTP requests.
 //
 // @param request - ListWebFlowRulesRequest
 //
@@ -14711,7 +14719,7 @@ func (client *Client) ModifyLosslessRule(request *ModifyLosslessRuleRequest) (_r
 
 // Summary:
 //
-// Unpublishes a route for a gateway.
+// Disables a route for a gateway.
 //
 // @param request - OfflineGatewayRouteRequest
 //
@@ -14763,7 +14771,7 @@ func (client *Client) OfflineGatewayRouteWithOptions(request *OfflineGatewayRout
 
 // Summary:
 //
-// Unpublishes a route for a gateway.
+// Disables a route for a gateway.
 //
 // @param request - OfflineGatewayRouteRequest
 //
@@ -16023,7 +16031,7 @@ func (client *Client) QueryMonitor(request *QueryMonitorRequest) (_result *Query
 
 // Summary:
 //
-// 查询nacos灰度配置
+// Queries canary configurations of a Nacos instance.
 //
 // @param request - QueryNacosGrayConfigRequest
 //
@@ -16095,7 +16103,7 @@ func (client *Client) QueryNacosGrayConfigWithOptions(request *QueryNacosGrayCon
 
 // Summary:
 //
-// 查询nacos灰度配置
+// Queries canary configurations of a Nacos instance.
 //
 // @param request - QueryNacosGrayConfigRequest
 //
@@ -16389,7 +16397,7 @@ func (client *Client) QueryZnodeDetail(request *QueryZnodeDetailRequest) (_resul
 
 // Summary:
 //
-// 删除单个应用
+// Deletes a single application.
 //
 // @param request - RemoveApplicationRequest
 //
@@ -16449,7 +16457,7 @@ func (client *Client) RemoveApplicationWithOptions(request *RemoveApplicationReq
 
 // Summary:
 //
-// 删除单个应用
+// Deletes a single application.
 //
 // @param request - RemoveApplicationRequest
 //
@@ -16465,6 +16473,10 @@ func (client *Client) RemoveApplication(request *RemoveApplicationRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a service authentication rule.
+//
 // @param request - RemoveAuthPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -16509,6 +16521,10 @@ func (client *Client) RemoveAuthPolicyWithOptions(request *RemoveAuthPolicyReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a service authentication rule.
+//
 // @param request - RemoveAuthPolicyRequest
 //
 // @return RemoveAuthPolicyResponse
@@ -18345,7 +18361,7 @@ func (client *Client) UpdateGatewayAuthConsumerStatus(request *UpdateGatewayAuth
 
 // Summary:
 //
-// 更新网关路由熔断规则
+// Updates a gateway circuit breaking rule.
 //
 // @param request - UpdateGatewayCircuitBreakerRuleRequest
 //
@@ -18457,7 +18473,7 @@ func (client *Client) UpdateGatewayCircuitBreakerRuleWithOptions(request *Update
 
 // Summary:
 //
-// 更新网关路由熔断规则
+// Updates a gateway circuit breaking rule.
 //
 // @param request - UpdateGatewayCircuitBreakerRuleRequest
 //
@@ -18475,7 +18491,7 @@ func (client *Client) UpdateGatewayCircuitBreakerRule(request *UpdateGatewayCirc
 
 // Summary:
 //
-// 更新网关配置
+// Updates gateway configurations.
 //
 // @param request - UpdateGatewayConfigRequest
 //
@@ -18531,7 +18547,7 @@ func (client *Client) UpdateGatewayConfigWithOptions(request *UpdateGatewayConfi
 
 // Summary:
 //
-// 更新网关配置
+// Updates gateway configurations.
 //
 // @param request - UpdateGatewayConfigRequest
 //
@@ -18574,6 +18590,10 @@ func (client *Client) UpdateGatewayDomainWithOptions(tmpReq *UpdateGatewayDomain
 		query["AcceptLanguage"] = request.AcceptLanguage
 	}
 
+	if !dara.IsNil(request.CaCertIdentifier) {
+		query["CaCertIdentifier"] = request.CaCertIdentifier
+	}
+
 	if !dara.IsNil(request.CertIdentifier) {
 		query["CertIdentifier"] = request.CertIdentifier
 	}
@@ -18588,6 +18608,10 @@ func (client *Client) UpdateGatewayDomainWithOptions(tmpReq *UpdateGatewayDomain
 
 	if !dara.IsNil(request.Id) {
 		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.MtlsEnabled) {
+		query["MtlsEnabled"] = request.MtlsEnabled
 	}
 
 	if !dara.IsNil(request.MustHttps) {
@@ -18653,7 +18677,7 @@ func (client *Client) UpdateGatewayDomain(request *UpdateGatewayDomainRequest) (
 
 // Summary:
 //
-// 更新网关路由流控规则
+// Queries throttling rules of a gateway.
 //
 // @param request - UpdateGatewayFlowRuleRequest
 //
@@ -18745,7 +18769,7 @@ func (client *Client) UpdateGatewayFlowRuleWithOptions(request *UpdateGatewayFlo
 
 // Summary:
 //
-// 更新网关路由流控规则
+// Queries throttling rules of a gateway.
 //
 // @param request - UpdateGatewayFlowRuleRequest
 //
@@ -18763,7 +18787,7 @@ func (client *Client) UpdateGatewayFlowRule(request *UpdateGatewayFlowRuleReques
 
 // Summary:
 //
-// 更新网关路由隔离规则
+// Updates the concurrency rule of a gateway.
 //
 // @param request - UpdateGatewayIsolationRuleRequest
 //
@@ -18855,7 +18879,7 @@ func (client *Client) UpdateGatewayIsolationRuleWithOptions(request *UpdateGatew
 
 // Summary:
 //
-// 更新网关路由隔离规则
+// Updates the concurrency rule of a gateway.
 //
 // @param request - UpdateGatewayIsolationRuleRequest
 //
@@ -18873,7 +18897,7 @@ func (client *Client) UpdateGatewayIsolationRule(request *UpdateGatewayIsolation
 
 // Summary:
 //
-// Renames a gateway.
+// Updates the name of a gateway.
 //
 // @param request - UpdateGatewayNameRequest
 //
@@ -18925,7 +18949,7 @@ func (client *Client) UpdateGatewayNameWithOptions(request *UpdateGatewayNameReq
 
 // Summary:
 //
-// Renames a gateway.
+// Updates the name of a gateway.
 //
 // @param request - UpdateGatewayNameRequest
 //
@@ -19733,7 +19757,7 @@ func (client *Client) UpdateGatewayRouteWafStatus(request *UpdateGatewayRouteWaf
 
 // Summary:
 //
-// 更新服务
+// Updates gateways for fixed address services or DNS services.
 //
 // @param tmpReq - UpdateGatewayServiceRequest
 //
@@ -19823,7 +19847,7 @@ func (client *Client) UpdateGatewayServiceWithOptions(tmpReq *UpdateGatewayServi
 
 // Summary:
 //
-// 更新服务
+// Updates gateways for fixed address services or DNS services.
 //
 // @param request - UpdateGatewayServiceRequest
 //
@@ -20037,7 +20061,7 @@ func (client *Client) UpdateGatewayServiceTrafficPolicy(request *UpdateGatewaySe
 
 // Summary:
 //
-// Modifies the version of a service.
+// Updates the service version of a gateway.
 //
 // @param request - UpdateGatewayServiceVersionRequest
 //
@@ -20093,7 +20117,7 @@ func (client *Client) UpdateGatewayServiceVersionWithOptions(request *UpdateGate
 
 // Summary:
 //
-// Modifies the version of a service.
+// Updates the service version of a gateway.
 //
 // @param request - UpdateGatewayServiceVersionRequest
 //
@@ -20263,7 +20287,7 @@ func (client *Client) UpdateImage(request *UpdateImageRequest) (_result *UpdateI
 
 // Summary:
 //
-// 更新隔离规则
+// Updates an isolation rule.
 //
 // @param request - UpdateIsolationRuleRequest
 //
@@ -20335,7 +20359,7 @@ func (client *Client) UpdateIsolationRuleWithOptions(request *UpdateIsolationRul
 
 // Summary:
 //
-// 更新隔离规则
+// Updates an isolation rule.
 //
 // @param request - UpdateIsolationRuleRequest
 //
@@ -20353,7 +20377,7 @@ func (client *Client) UpdateIsolationRule(request *UpdateIsolationRuleRequest) (
 
 // Summary:
 //
-// 更新同AZ路由规则
+// Updates the Intra-zone Provider First rules.
 //
 // @param request - UpdateLocalityRuleRequest
 //
@@ -20429,7 +20453,7 @@ func (client *Client) UpdateLocalityRuleWithOptions(request *UpdateLocalityRuleR
 
 // Summary:
 //
-// 更新同AZ路由规则
+// Updates the Intra-zone Provider First rules.
 //
 // @param request - UpdateLocalityRuleRequest
 //
@@ -20871,7 +20895,7 @@ func (client *Client) UpdateNacosConfig(request *UpdateNacosConfigRequest) (_res
 
 // Summary:
 //
-// 更新nacos灰度配置
+// Updates the canary release settings, which include beta release and tag-based canary release.
 //
 // @param request - UpdateNacosGrayConfigRequest
 //
@@ -20971,7 +20995,7 @@ func (client *Client) UpdateNacosGrayConfigWithOptions(request *UpdateNacosGrayC
 
 // Summary:
 //
-// 更新nacos灰度配置
+// Updates the canary release settings, which include beta release and tag-based canary release.
 //
 // @param request - UpdateNacosGrayConfigRequest
 //
@@ -21199,7 +21223,7 @@ func (client *Client) UpdateNacosService(request *UpdateNacosServiceRequest) (_r
 
 // Summary:
 //
-// Updates the configuration of a plug-in.
+// Updates plug-in configurations.
 //
 // @param tmpReq - UpdatePluginConfigRequest
 //
@@ -21291,7 +21315,7 @@ func (client *Client) UpdatePluginConfigWithOptions(tmpReq *UpdatePluginConfigRe
 
 // Summary:
 //
-// Updates the configuration of a plug-in.
+// Updates plug-in configurations.
 //
 // @param request - UpdatePluginConfigRequest
 //
@@ -21491,7 +21515,7 @@ func (client *Client) UpdateServiceSource(request *UpdateServiceSourceRequest) (
 
 // Summary:
 //
-// 更新热点参数防护规则（HTTP 请求）
+// Updates a hot parameter protection rule for HTTP requests.
 //
 // @param request - UpdateWebFlowRuleRequest
 //
@@ -21591,7 +21615,7 @@ func (client *Client) UpdateWebFlowRuleWithOptions(request *UpdateWebFlowRuleReq
 
 // Summary:
 //
-// 更新热点参数防护规则（HTTP 请求）
+// Updates a hot parameter protection rule for HTTP requests.
 //
 // @param request - UpdateWebFlowRuleRequest
 //

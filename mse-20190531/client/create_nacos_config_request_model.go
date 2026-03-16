@@ -56,6 +56,11 @@ type CreateNacosConfigRequest struct {
 	//
 	// 100.117.XX.XX,100.117.XX.XX
 	BetaIps *string `json:"BetaIps,omitempty" xml:"BetaIps,omitempty"`
+	// The content of the configuration.
+	//
+	// example:
+	//
+	// asdf
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the data.
 	//

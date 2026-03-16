@@ -11,6 +11,8 @@ type iUpdateGatewayDomainShrinkRequest interface {
 	GoString() string
 	SetAcceptLanguage(v string) *UpdateGatewayDomainShrinkRequest
 	GetAcceptLanguage() *string
+	SetCaCertIdentifier(v string) *UpdateGatewayDomainShrinkRequest
+	GetCaCertIdentifier() *string
 	SetCertIdentifier(v string) *UpdateGatewayDomainShrinkRequest
 	GetCertIdentifier() *string
 	SetGatewayUniqueId(v string) *UpdateGatewayDomainShrinkRequest
@@ -19,6 +21,8 @@ type iUpdateGatewayDomainShrinkRequest interface {
 	GetHttp2() *string
 	SetId(v int64) *UpdateGatewayDomainShrinkRequest
 	GetId() *int64
+	SetMtlsEnabled(v bool) *UpdateGatewayDomainShrinkRequest
+	GetMtlsEnabled() *bool
 	SetMustHttps(v bool) *UpdateGatewayDomainShrinkRequest
 	GetMustHttps() *bool
 	SetProtocol(v string) *UpdateGatewayDomainShrinkRequest
@@ -41,7 +45,8 @@ type UpdateGatewayDomainShrinkRequest struct {
 	// example:
 	//
 	// zh
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AcceptLanguage   *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	CaCertIdentifier *string `json:"CaCertIdentifier,omitempty" xml:"CaCertIdentifier,omitempty"`
 	// The ID of the certificate.
 	//
 	// example:
@@ -71,7 +76,8 @@ type UpdateGatewayDomainShrinkRequest struct {
 	// example:
 	//
 	// 94
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id          *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	MtlsEnabled *bool  `json:"MtlsEnabled,omitempty" xml:"MtlsEnabled,omitempty"`
 	// Specifies whether to forcibly use HTTPS.
 	//
 	// example:
@@ -115,6 +121,10 @@ func (s *UpdateGatewayDomainShrinkRequest) GetAcceptLanguage() *string {
 	return s.AcceptLanguage
 }
 
+func (s *UpdateGatewayDomainShrinkRequest) GetCaCertIdentifier() *string {
+	return s.CaCertIdentifier
+}
+
 func (s *UpdateGatewayDomainShrinkRequest) GetCertIdentifier() *string {
 	return s.CertIdentifier
 }
@@ -129,6 +139,10 @@ func (s *UpdateGatewayDomainShrinkRequest) GetHttp2() *string {
 
 func (s *UpdateGatewayDomainShrinkRequest) GetId() *int64 {
 	return s.Id
+}
+
+func (s *UpdateGatewayDomainShrinkRequest) GetMtlsEnabled() *bool {
+	return s.MtlsEnabled
 }
 
 func (s *UpdateGatewayDomainShrinkRequest) GetMustHttps() *bool {
@@ -156,6 +170,11 @@ func (s *UpdateGatewayDomainShrinkRequest) SetAcceptLanguage(v string) *UpdateGa
 	return s
 }
 
+func (s *UpdateGatewayDomainShrinkRequest) SetCaCertIdentifier(v string) *UpdateGatewayDomainShrinkRequest {
+	s.CaCertIdentifier = &v
+	return s
+}
+
 func (s *UpdateGatewayDomainShrinkRequest) SetCertIdentifier(v string) *UpdateGatewayDomainShrinkRequest {
 	s.CertIdentifier = &v
 	return s
@@ -173,6 +192,11 @@ func (s *UpdateGatewayDomainShrinkRequest) SetHttp2(v string) *UpdateGatewayDoma
 
 func (s *UpdateGatewayDomainShrinkRequest) SetId(v int64) *UpdateGatewayDomainShrinkRequest {
 	s.Id = &v
+	return s
+}
+
+func (s *UpdateGatewayDomainShrinkRequest) SetMtlsEnabled(v bool) *UpdateGatewayDomainShrinkRequest {
+	s.MtlsEnabled = &v
 	return s
 }
 

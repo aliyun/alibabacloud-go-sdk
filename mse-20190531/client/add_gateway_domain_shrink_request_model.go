@@ -11,12 +11,16 @@ type iAddGatewayDomainShrinkRequest interface {
 	GoString() string
 	SetAcceptLanguage(v string) *AddGatewayDomainShrinkRequest
 	GetAcceptLanguage() *string
+	SetCaCertIdentifier(v string) *AddGatewayDomainShrinkRequest
+	GetCaCertIdentifier() *string
 	SetCertIdentifier(v string) *AddGatewayDomainShrinkRequest
 	GetCertIdentifier() *string
 	SetGatewayUniqueId(v string) *AddGatewayDomainShrinkRequest
 	GetGatewayUniqueId() *string
 	SetHttp2(v string) *AddGatewayDomainShrinkRequest
 	GetHttp2() *string
+	SetMtlsEnabled(v bool) *AddGatewayDomainShrinkRequest
+	GetMtlsEnabled() *bool
 	SetMustHttps(v bool) *AddGatewayDomainShrinkRequest
 	GetMustHttps() *bool
 	SetName(v string) *AddGatewayDomainShrinkRequest
@@ -41,7 +45,8 @@ type AddGatewayDomainShrinkRequest struct {
 	// example:
 	//
 	// zh
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AcceptLanguage   *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	CaCertIdentifier *string `json:"CaCertIdentifier,omitempty" xml:"CaCertIdentifier,omitempty"`
 	// The ID of the certificate.
 	//
 	// example:
@@ -65,7 +70,8 @@ type AddGatewayDomainShrinkRequest struct {
 	// example:
 	//
 	// close
-	Http2 *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
+	Http2       *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
+	MtlsEnabled *bool   `json:"MtlsEnabled,omitempty" xml:"MtlsEnabled,omitempty"`
 	// Specifies whether to enable HTTPS.
 	//
 	// example:
@@ -115,6 +121,10 @@ func (s *AddGatewayDomainShrinkRequest) GetAcceptLanguage() *string {
 	return s.AcceptLanguage
 }
 
+func (s *AddGatewayDomainShrinkRequest) GetCaCertIdentifier() *string {
+	return s.CaCertIdentifier
+}
+
 func (s *AddGatewayDomainShrinkRequest) GetCertIdentifier() *string {
 	return s.CertIdentifier
 }
@@ -125,6 +135,10 @@ func (s *AddGatewayDomainShrinkRequest) GetGatewayUniqueId() *string {
 
 func (s *AddGatewayDomainShrinkRequest) GetHttp2() *string {
 	return s.Http2
+}
+
+func (s *AddGatewayDomainShrinkRequest) GetMtlsEnabled() *bool {
+	return s.MtlsEnabled
 }
 
 func (s *AddGatewayDomainShrinkRequest) GetMustHttps() *bool {
@@ -156,6 +170,11 @@ func (s *AddGatewayDomainShrinkRequest) SetAcceptLanguage(v string) *AddGatewayD
 	return s
 }
 
+func (s *AddGatewayDomainShrinkRequest) SetCaCertIdentifier(v string) *AddGatewayDomainShrinkRequest {
+	s.CaCertIdentifier = &v
+	return s
+}
+
 func (s *AddGatewayDomainShrinkRequest) SetCertIdentifier(v string) *AddGatewayDomainShrinkRequest {
 	s.CertIdentifier = &v
 	return s
@@ -168,6 +187,11 @@ func (s *AddGatewayDomainShrinkRequest) SetGatewayUniqueId(v string) *AddGateway
 
 func (s *AddGatewayDomainShrinkRequest) SetHttp2(v string) *AddGatewayDomainShrinkRequest {
 	s.Http2 = &v
+	return s
+}
+
+func (s *AddGatewayDomainShrinkRequest) SetMtlsEnabled(v bool) *AddGatewayDomainShrinkRequest {
+	s.MtlsEnabled = &v
 	return s
 }
 

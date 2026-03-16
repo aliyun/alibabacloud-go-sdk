@@ -22,11 +22,28 @@ type iGatewayOption interface {
 }
 
 type GatewayOption struct {
-	DisableHttp2Alpn           *bool                          `json:"DisableHttp2Alpn,omitempty" xml:"DisableHttp2Alpn,omitempty"`
-	EnableHardwareAcceleration *bool                          `json:"EnableHardwareAcceleration,omitempty" xml:"EnableHardwareAcceleration,omitempty"`
-	EnableWaf                  *bool                          `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
-	LogConfigDetails           *GatewayOptionLogConfigDetails `json:"LogConfigDetails,omitempty" xml:"LogConfigDetails,omitempty" type:"Struct"`
-	TraceDetails               *GatewayOptionTraceDetails     `json:"TraceDetails,omitempty" xml:"TraceDetails,omitempty" type:"Struct"`
+	// Specifies whether to disable the HTTP/2 protocol.
+	//
+	// example:
+	//
+	// true
+	DisableHttp2Alpn *bool `json:"DisableHttp2Alpn,omitempty" xml:"DisableHttp2Alpn,omitempty"`
+	// Specifies whether to enable hardware acceleration.
+	//
+	// example:
+	//
+	// true
+	EnableHardwareAcceleration *bool `json:"EnableHardwareAcceleration,omitempty" xml:"EnableHardwareAcceleration,omitempty"`
+	// Specifies whether to enable Web Application Firewall (WAF).
+	//
+	// example:
+	//
+	// true
+	EnableWaf *bool `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
+	// The description of Simple Log Service.
+	LogConfigDetails *GatewayOptionLogConfigDetails `json:"LogConfigDetails,omitempty" xml:"LogConfigDetails,omitempty" type:"Struct"`
+	// The data structure.
+	TraceDetails *GatewayOptionTraceDetails `json:"TraceDetails,omitempty" xml:"TraceDetails,omitempty" type:"Struct"`
 }
 
 func (s GatewayOption) String() string {
@@ -97,10 +114,44 @@ func (s *GatewayOption) Validate() error {
 }
 
 type GatewayOptionLogConfigDetails struct {
+	// Specifies whether to activate Simple Log Service.
+	//
+	// Valid value:
+	//
+	// 	- true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
 	// This parameter is required.
-	LogEnabled   *bool   `json:"LogEnabled,omitempty" xml:"LogEnabled,omitempty"`
+	//
+	// example:
+	//
+	// true
+	LogEnabled *bool `json:"LogEnabled,omitempty" xml:"LogEnabled,omitempty"`
+	// The name of the Logstore.
+	//
+	// example:
+	//
+	// name
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The name of the destination Simple Log Service project.
+	//
+	// example:
+	//
+	// project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s GatewayOptionLogConfigDetails) String() string {
@@ -143,11 +194,52 @@ func (s *GatewayOptionLogConfigDetails) Validate() error {
 }
 
 type GatewayOptionTraceDetails struct {
-	Sample      *int64  `json:"Sample,omitempty" xml:"Sample,omitempty"`
-	ServiceId   *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The sampling rate of Tracing Analysis.
+	//
+	// example:
+	//
+	// 10
+	Sample *int64 `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	// The ID of the SkyWalking service. This parameter is required if TraceType is set to SKYWALKING.
+	//
+	// example:
+	//
+	// 10458
+	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The port of the SkyWalking service. This parameter is required if TraceType is set to SKYWALKING.
+	//
+	// example:
+	//
+	// 80
 	ServicePort *string `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
+	// Specifies whether to activate Tracing Analysis.
+	//
+	// Valid value:
+	//
+	// 	- false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// true
 	TraceEnabled *bool `json:"TraceEnabled,omitempty" xml:"TraceEnabled,omitempty"`
+	// The type of Tracing Analysis. Valid values: XTRACE and SKYWALKING.
+	//
 	// example:
 	//
 	// XTRACE

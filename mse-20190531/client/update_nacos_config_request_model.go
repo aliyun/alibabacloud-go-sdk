@@ -60,6 +60,11 @@ type UpdateNacosConfigRequest struct {
 	//
 	// 196.168.XX.XX
 	BetaIps *string `json:"BetaIps,omitempty" xml:"BetaIps,omitempty"`
+	// The content of the configuration.
+	//
+	// example:
+	//
+	// attribute1=1221111\\r\\nattribute2=Chinese\\r\\nattribute3=abc11\\r\\nattribute4=1.00111
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the configuration.
 	//

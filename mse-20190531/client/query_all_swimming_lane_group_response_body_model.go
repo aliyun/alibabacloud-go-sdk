@@ -180,39 +180,65 @@ func (s *QueryAllSwimmingLaneGroupResponseBody) Validate() error {
 }
 
 type QueryAllSwimmingLaneGroupResponseBodyData struct {
+	// The application IDs.
+	//
 	// example:
 	//
 	// abcde@abcde,abcde@abcde
 	AppIds      *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
 	CanaryModel *int32  `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
+	// The type and ID of the ingress application.
+	//
 	// example:
 	//
 	// mse:abcde@abcde
 	EntryApp *string `json:"EntryApp,omitempty" xml:"EntryApp,omitempty"`
+	// The ID of the lane group.
+	//
 	// example:
 	//
 	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The side at which canary release for messaging was enabled.
+	//
 	// example:
 	//
 	// Client
 	MessageQueueFilterSide *string `json:"MessageQueueFilterSide,omitempty" xml:"MessageQueueFilterSide,omitempty"`
-	MessageQueueGrayEnable *bool   `json:"MessageQueueGrayEnable,omitempty" xml:"MessageQueueGrayEnable,omitempty"`
+	// Indicates whether canary release for messaging is enabled.
+	//
+	// example:
+	//
+	// true
+	MessageQueueGrayEnable *bool `json:"MessageQueueGrayEnable,omitempty" xml:"MessageQueueGrayEnable,omitempty"`
+	// The name of the lane group.
+	//
 	// example:
 	//
 	// swimmingGroup
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The MSE namespace to which the lane belongs.
+	//
 	// example:
 	//
 	// default
-	Namespace          *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	Paths              *string `json:"Paths,omitempty" xml:"Paths,omitempty"`
-	RecordCanaryDetail *bool   `json:"RecordCanaryDetail,omitempty" xml:"RecordCanaryDetail,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Paths     *string `json:"Paths,omitempty" xml:"Paths,omitempty"`
+	// Indicates whether the request details (metrics of end-to-end canary release) were recorded.
+	//
+	// example:
+	//
+	// false
+	RecordCanaryDetail *bool `json:"RecordCanaryDetail,omitempty" xml:"RecordCanaryDetail,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	Region      *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	SwimVersion *int32  `json:"SwimVersion,omitempty" xml:"SwimVersion,omitempty"`
+	// The ID of the user to which the lane belongs.
+	//
 	// example:
 	//
 	// 12345

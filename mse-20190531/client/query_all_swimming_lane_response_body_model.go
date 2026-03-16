@@ -125,44 +125,101 @@ func (s *QueryAllSwimmingLaneResponseBody) Validate() error {
 }
 
 type QueryAllSwimmingLaneResponseBodyData struct {
+	// 是否开启。
+	//
 	// example:
 	//
 	// true
-	Enable                       *string                                                       `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	EntryRules                   []*QueryAllSwimmingLaneResponseBodyDataEntryRules             `json:"EntryRules,omitempty" xml:"EntryRules,omitempty" type:"Repeated"`
-	GatewaySwimmingLaneRoute     *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute `json:"GatewaySwimmingLaneRoute,omitempty" xml:"GatewaySwimmingLaneRoute,omitempty" type:"Struct"`
-	GatewaySwimmingLaneRouteJson *string                                                       `json:"GatewaySwimmingLaneRouteJson,omitempty" xml:"GatewaySwimmingLaneRouteJson,omitempty"`
-	GroupId                      *string                                                       `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The ingress application rules.
+	EntryRules []*QueryAllSwimmingLaneResponseBodyDataEntryRules `json:"EntryRules,omitempty" xml:"EntryRules,omitempty" type:"Repeated"`
+	// 网关路由信息（使用云原生网关为入口时使用）
+	GatewaySwimmingLaneRoute *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute `json:"GatewaySwimmingLaneRoute,omitempty" xml:"GatewaySwimmingLaneRoute,omitempty" type:"Struct"`
+	// example:
+	//
+	// {\\"GatewayUniqueId\\":\\"gw-cf815503e0a8441b8956d8e349fa8fb5\\",\\"Percentage\\":0,\\"RouteIdList\\":[32295,32298,32297,32309,32307,32294,32303,32292,32299,35278],\\"CanaryModel\\":1,\\"Conditions\\":[]}
+	GatewaySwimmingLaneRouteJson *string `json:"GatewaySwimmingLaneRouteJson,omitempty" xml:"GatewaySwimmingLaneRouteJson,omitempty"`
+	// The ID of the lane group.
+	//
+	// example:
+	//
+	// 6859
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the lane group.
+	//
 	// example:
 	//
 	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The side on which canary release for messaging is implemented.
+	//
 	// example:
 	//
 	// Client
 	MessageQueueFilterSide *string `json:"MessageQueueFilterSide,omitempty" xml:"MessageQueueFilterSide,omitempty"`
-	MessageQueueGrayEnable *bool   `json:"MessageQueueGrayEnable,omitempty" xml:"MessageQueueGrayEnable,omitempty"`
+	// Indicates whether canary release for messaging is enabled.
+	//
+	// example:
+	//
+	// false
+	MessageQueueGrayEnable *bool `json:"MessageQueueGrayEnable,omitempty" xml:"MessageQueueGrayEnable,omitempty"`
+	// The name of the lane group.
+	//
 	// example:
 	//
 	// swimmingGroup
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Microservices Engine (MSE) namespace to which the lane belongs.
+	//
 	// example:
 	//
 	// default
-	Namespace                       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	PathIndependentPercentageEnable *bool   `json:"PathIndependentPercentageEnable,omitempty" xml:"PathIndependentPercentageEnable,omitempty"`
-	RecordCanaryDetail              *bool   `json:"RecordCanaryDetail,omitempty" xml:"RecordCanaryDetail,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// true
+	PathIndependentPercentageEnable *bool `json:"PathIndependentPercentageEnable,omitempty" xml:"PathIndependentPercentageEnable,omitempty"`
+	// Indicates whether request details were recorded (metrics of end-to-end canary release).
+	//
+	// example:
+	//
+	// false
+	RecordCanaryDetail *bool `json:"RecordCanaryDetail,omitempty" xml:"RecordCanaryDetail,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tag      *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tag of the lane.
+	//
+	// example:
+	//
+	// gray
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The user ID of the lane group.
+	//
 	// example:
 	//
 	// 12345
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	EnableRules *bool   `json:"enableRules,omitempty" xml:"enableRules,omitempty"`
-	GmtCreate   *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Indicates whether the rule is enabled.
+	//
+	// example:
+	//
+	// true
+	EnableRules *bool `json:"enableRules,omitempty" xml:"enableRules,omitempty"`
+	// The time when the lane was created.
+	//
+	// example:
+	//
+	// 1683598484000
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The time when the lane was updated.
+	//
+	// example:
+	//
+	// 1683598484000
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
 }
 
@@ -355,9 +412,21 @@ func (s *QueryAllSwimmingLaneResponseBodyData) Validate() error {
 }
 
 type QueryAllSwimmingLaneResponseBodyDataEntryRules struct {
-	Condition *string                                                    `json:"condition,omitempty" xml:"condition,omitempty"`
-	Path      *string                                                    `json:"path,omitempty" xml:"path,omitempty"`
-	Paths     []*string                                                  `json:"paths,omitempty" xml:"paths,omitempty" type:"Repeated"`
+	// The condition.
+	//
+	// example:
+	//
+	// AND
+	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
+	// The path.
+	//
+	// example:
+	//
+	// /adump/wxb/prod
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// The paths.
+	Paths []*string `json:"paths,omitempty" xml:"paths,omitempty" type:"Repeated"`
+	// The RESTful matching rules.
 	RestItems []*QueryAllSwimmingLaneResponseBodyDataEntryRulesRestItems `json:"restItems,omitempty" xml:"restItems,omitempty" type:"Repeated"`
 }
 
@@ -419,16 +488,62 @@ func (s *QueryAllSwimmingLaneResponseBodyDataEntryRules) Validate() error {
 }
 
 type QueryAllSwimmingLaneResponseBodyDataEntryRulesRestItems struct {
-	Cond      *string   `json:"cond,omitempty" xml:"cond,omitempty"`
-	Datum     *string   `json:"datum,omitempty" xml:"datum,omitempty"`
-	Divisor   *int32    `json:"divisor,omitempty" xml:"divisor,omitempty"`
-	Name      *string   `json:"name,omitempty" xml:"name,omitempty"`
-	NameList  []*string `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
-	Operator  *string   `json:"operator,omitempty" xml:"operator,omitempty"`
-	Rate      *int32    `json:"rate,omitempty" xml:"rate,omitempty"`
-	Remainder *int32    `json:"remainder,omitempty" xml:"remainder,omitempty"`
-	Type      *string   `json:"type,omitempty" xml:"type,omitempty"`
-	Value     *string   `json:"value,omitempty" xml:"value,omitempty"`
+	// The matching character.
+	//
+	// example:
+	//
+	// ==
+	Cond *string `json:"cond,omitempty" xml:"cond,omitempty"`
+	// The value.
+	//
+	// example:
+	//
+	// x
+	Datum *string `json:"datum,omitempty" xml:"datum,omitempty"`
+	// The divisor.
+	//
+	// example:
+	//
+	// 10
+	Divisor *int32 `json:"divisor,omitempty" xml:"divisor,omitempty"`
+	// The name of the matching rule.
+	//
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The matching list.
+	NameList []*string `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
+	// The operator.
+	//
+	// example:
+	//
+	// rawvalue
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// The percentage.
+	//
+	// example:
+	//
+	// 30
+	Rate *int32 `json:"rate,omitempty" xml:"rate,omitempty"`
+	// The remainder.
+	//
+	// example:
+	//
+	// 10
+	Remainder *int32 `json:"remainder,omitempty" xml:"remainder,omitempty"`
+	// The matching type.
+	//
+	// example:
+	//
+	// cookie
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The value.
+	//
+	// example:
+	//
+	// test
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s QueryAllSwimmingLaneResponseBodyDataEntryRulesRestItems) String() string {
@@ -534,25 +649,45 @@ func (s *QueryAllSwimmingLaneResponseBodyDataEntryRulesRestItems) Validate() err
 }
 
 type QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute struct {
+	// 全链路灰度模式：
+	//
+	// - 0: 按请求内容路由
+	//
+	// - 1: 按比例路由
+	//
 	// example:
 	//
 	// 0
-	CanaryModel *int32                                                                    `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
-	Condition   *string                                                                   `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	Conditions  []*QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	CanaryModel *int32 `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
+	// example:
+	//
+	// AND、OR
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// 匹配条件列表（按内容路由使用）
+	Conditions []*QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// 网关ID
+	//
 	// example:
 	//
 	// 1
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// 网关唯一ID
+	//
 	// example:
 	//
 	// gw-84efde2ee1464260bdb17a5b****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// 流量比例（按比例路由使用，取值0-100）
+	//
 	// example:
 	//
 	// 20
-	Percentage                       *int32                                                                                        `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	RouteIdList                      []*int64                                                                                      `json:"RouteIdList,omitempty" xml:"RouteIdList,omitempty" type:"Repeated"`
+	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// 路由ID列表
+	RouteIdList []*int64 `json:"RouteIdList,omitempty" xml:"RouteIdList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
 	RouteIndependentPercentageEnable *string                                                                                       `json:"RouteIndependentPercentageEnable,omitempty" xml:"RouteIndependentPercentageEnable,omitempty"`
 	RouteIndependentPercentageList   []*QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteRouteIndependentPercentageList `json:"RouteIndependentPercentageList,omitempty" xml:"RouteIndependentPercentageList,omitempty" type:"Repeated"`
 }
@@ -669,19 +804,38 @@ func (s *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute) Validate(
 }
 
 type QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions struct {
+	// 条件：
+	//
+	// - PRE：前缀匹配
+	//
+	// - EQUAL：精确匹配
+	//
+	// - ERGULAR：正则匹配
+	//
 	// example:
 	//
 	// PRE
 	Cond *string `json:"Cond,omitempty" xml:"Cond,omitempty"`
+	// 参数名称
+	//
 	// example:
 	//
 	// name
-	Name     *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// NameList
 	NameList []*string `json:"NameList,omitempty" xml:"NameList,omitempty" type:"Repeated"`
+	// 参数类型：
+	//
+	// - header：Header
+	//
+	// - param：Parameter
+	//
 	// example:
 	//
 	// header
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 参数值
+	//
 	// example:
 	//
 	// xiaoming
@@ -746,8 +900,14 @@ func (s *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions)
 }
 
 type QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteRouteIndependentPercentageList struct {
+	// example:
+	//
+	// 60
 	Percentage *string `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	RouteId    *string `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	// example:
+	//
+	// 12345
+	RouteId *string `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
 }
 
 func (s QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteRouteIndependentPercentageList) String() string {

@@ -28,17 +28,94 @@ type iRulesValue interface {
 }
 
 type RulesValue struct {
-	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Rate   *int32  `json:"Rate,omitempty" xml:"Rate,omitempty"`
-	Enable *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	Tag    *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The status.
+	//
+	// Valid values:
+	//
+	// 	- 0
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The routing rule does not take effect
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// 	- 1
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The routing rule takes effect
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// 	- 2
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The routing rule is invalid
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The percentage.
+	//
+	// example:
+	//
+	// 10
+	Rate *int32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// Specifies whether to enable the routing rule.
+	//
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The environment of the routing rule.
+	//
 	// example:
 	//
 	// gray
-	Name        *string          `json:"Name,omitempty" xml:"Name,omitempty"`
-	Id          *int64           `json:"Id,omitempty" xml:"Id,omitempty"`
-	InstanceNum *int32           `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
-	Rules       *RulesValueRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The name of the routing rule.
+	//
+	// example:
+	//
+	// gray
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the routing rule.
+	//
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The number of instances.
+	//
+	// example:
+	//
+	// 10
+	InstanceNum *int32 `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
+	// The details of the routing rule.
+	Rules *RulesValueRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 }
 
 func (s RulesValue) String() string {
@@ -131,8 +208,10 @@ func (s *RulesValue) Validate() error {
 }
 
 type RulesValueRules struct {
+	// The rule of the Spring Cloud application.
 	Springcloud []*RulesValueRulesSpringcloud `json:"springcloud,omitempty" xml:"springcloud,omitempty" type:"Repeated"`
-	Dubbo       []*RulesValueRulesDubbo       `json:"dubbo,omitempty" xml:"dubbo,omitempty" type:"Repeated"`
+	// The rules of the Dubbo application.
+	Dubbo []*RulesValueRulesDubbo `json:"dubbo,omitempty" xml:"dubbo,omitempty" type:"Repeated"`
 }
 
 func (s RulesValueRules) String() string {
@@ -184,15 +263,65 @@ func (s *RulesValueRules) Validate() error {
 }
 
 type RulesValueRulesSpringcloud struct {
-	Condition     *string                                `json:"condition,omitempty" xml:"condition,omitempty"`
-	RestItems     []*RulesValueRulesSpringcloudRestItems `json:"restItems,omitempty" xml:"restItems,omitempty" type:"Repeated"`
-	TriggerPolicy *string                                `json:"triggerPolicy,omitempty" xml:"triggerPolicy,omitempty"`
-	Enable        *bool                                  `json:"enable,omitempty" xml:"enable,omitempty"`
-	AppId         *string                                `json:"appId,omitempty" xml:"appId,omitempty"`
-	Priority      *int32                                 `json:"priority,omitempty" xml:"priority,omitempty"`
-	Tags          []*string                              `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	Paths         []*string                              `json:"paths,omitempty" xml:"paths,omitempty" type:"Repeated"`
-	Path          *string                                `json:"path,omitempty" xml:"path,omitempty"`
+	// The logical operation relationships. Valid values: AND and OR.
+	//
+	// example:
+	//
+	// AND
+	Condition *string                                `json:"condition,omitempty" xml:"condition,omitempty"`
+	RestItems []*RulesValueRulesSpringcloudRestItems `json:"restItems,omitempty" xml:"restItems,omitempty" type:"Repeated"`
+	// The policy type.
+	//
+	// Valid values:
+	//
+	// 	- PERCENT
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- CONTENT
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// CONTENT
+	TriggerPolicy *string `json:"triggerPolicy,omitempty" xml:"triggerPolicy,omitempty"`
+	// Specifies whether to enable the routing rule.
+	//
+	// example:
+	//
+	// true
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The ID of the application.
+	//
+	// example:
+	//
+	// ***@***
+	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// The priority.
+	//
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"priority,omitempty" xml:"priority,omitempty"`
+	// The tags.
+	Tags []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The list of paths.
+	Paths []*string `json:"paths,omitempty" xml:"paths,omitempty" type:"Repeated"`
+	// The path.
+	//
+	// example:
+	//
+	// /hello
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
 }
 
 func (s RulesValueRulesSpringcloud) String() string {
@@ -298,18 +427,61 @@ func (s *RulesValueRulesSpringcloud) Validate() error {
 }
 
 type RulesValueRulesSpringcloudRestItems struct {
-	Datum     *string   `json:"datum,omitempty" xml:"datum,omitempty"`
-	Operator  *string   `json:"operator,omitempty" xml:"operator,omitempty"`
-	NameList  []*string `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
-	Cond      *string   `json:"cond,omitempty" xml:"cond,omitempty"`
-	Divisor   *int32    `json:"divisor,omitempty" xml:"divisor,omitempty"`
-	Remainder *int32    `json:"remainder,omitempty" xml:"remainder,omitempty"`
+	// The value on which operators such as rawvalue are performed.
+	//
+	// example:
+	//
+	// 10
+	Datum *string `json:"datum,omitempty" xml:"datum,omitempty"`
+	// The operator. A value of rawvalue indicates direct comparison. A value of mode indicates the modulo operation. A value of list indicates using a whitelist.
+	//
+	// example:
+	//
+	// rawvalue
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// Information about the fields that are required by the list operator.
+	NameList []*string `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
+	// The comparison operator. Valid values: >=, <=, >, <, and ==.
+	//
+	// example:
+	//
+	// ==
+	Cond *string `json:"cond,omitempty" xml:"cond,omitempty"`
+	// The divisor that is required by the mod operator.
+	//
+	// example:
+	//
+	// 30
+	Divisor *int32 `json:"divisor,omitempty" xml:"divisor,omitempty"`
+	// The remainder.
+	//
+	// example:
+	//
+	// 30
+	Remainder *int32 `json:"remainder,omitempty" xml:"remainder,omitempty"`
+	// The rate. A value of 20 indicates that 20% of the traffic is routed to the tagged node.
+	//
 	// example:
 	//
 	// 20
-	Rate  *int32      `json:"rate,omitempty" xml:"rate,omitempty"`
-	Type  *string     `json:"type,omitempty" xml:"type,omitempty"`
-	Name  *string     `json:"name,omitempty" xml:"name,omitempty"`
+	Rate *int32 `json:"rate,omitempty" xml:"rate,omitempty"`
+	// The type.
+	//
+	// example:
+	//
+	// test
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// key
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The value.
+	//
+	// example:
+	//
+	// test
 	Value interface{} `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -416,18 +588,53 @@ func (s *RulesValueRulesSpringcloudRestItems) Validate() error {
 }
 
 type RulesValueRulesDubbo struct {
-	AppId         *string   `json:"appId,omitempty" xml:"appId,omitempty"`
-	Tags          []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	TriggerPolicy *string   `json:"triggerPolicy,omitempty" xml:"triggerPolicy,omitempty"`
-	ServiceName   *string   `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	Group         *string   `json:"group,omitempty" xml:"group,omitempty"`
-	Version       *string   `json:"version,omitempty" xml:"version,omitempty"`
-	MethodName    *string   `json:"methodName,omitempty" xml:"methodName,omitempty"`
-	ParamTypes    []*string `json:"paramTypes,omitempty" xml:"paramTypes,omitempty" type:"Repeated"`
+	// The ID of the application.
+	//
+	// example:
+	//
+	// ***@***
+	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// The tags.
+	Tags []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The policy type.
+	//
+	// example:
+	//
+	// CONTENT
+	TriggerPolicy *string `json:"triggerPolicy,omitempty" xml:"triggerPolicy,omitempty"`
+	// The service name (interface).
+	//
+	// example:
+	//
+	// HelloService
+	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	// The group of the Dubbo application.
+	//
+	// example:
+	//
+	// default
+	Group *string `json:"group,omitempty" xml:"group,omitempty"`
+	// The version of the Dubbo application.
+	//
+	// example:
+	//
+	// 1.0.0
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The method name of the Dubbo application.
+	//
+	// example:
+	//
+	// hello
+	MethodName *string `json:"methodName,omitempty" xml:"methodName,omitempty"`
+	// The list of parameter data types.
+	ParamTypes []*string `json:"paramTypes,omitempty" xml:"paramTypes,omitempty" type:"Repeated"`
+	// The logical operation relationships. Valid values: AND and OR.
+	//
 	// example:
 	//
 	// AND
-	Condition     *string                              `json:"condition,omitempty" xml:"condition,omitempty"`
+	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
+	// The list of parameter contents.
 	ArgumentItems []*RulesValueRulesDubboArgumentItems `json:"argumentItems,omitempty" xml:"argumentItems,omitempty" type:"Repeated"`
 }
 
@@ -543,16 +750,58 @@ func (s *RulesValueRulesDubbo) Validate() error {
 }
 
 type RulesValueRulesDubboArgumentItems struct {
-	Operator  *string     `json:"operator,omitempty" xml:"operator,omitempty"`
-	NameList  []*string   `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
-	Datum     *string     `json:"datum,omitempty" xml:"datum,omitempty"`
-	Cond      *string     `json:"cond,omitempty" xml:"cond,omitempty"`
-	Divisor   *int32      `json:"divisor,omitempty" xml:"divisor,omitempty"`
-	Remainder *int32      `json:"remainder,omitempty" xml:"remainder,omitempty"`
-	Rate      *int32      `json:"rate,omitempty" xml:"rate,omitempty"`
-	Index     *int32      `json:"index,omitempty" xml:"index,omitempty"`
-	Expr      *string     `json:"expr,omitempty" xml:"expr,omitempty"`
-	Value     interface{} `json:"value,omitempty" xml:"value,omitempty"`
+	// The operator. A value of rawvalue indicates direct comparison. A value of mode indicates the modulo operation. A value of list indicates using a whitelist.
+	//
+	// example:
+	//
+	// rawvalue
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// The list of names.
+	NameList []*string `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
+	// The value on which operators such as rawvalue are performed.
+	//
+	// example:
+	//
+	// 30
+	Datum *string `json:"datum,omitempty" xml:"datum,omitempty"`
+	// The comparison operator. Valid values: >=, <=, >, <, and ==.
+	//
+	// example:
+	//
+	// ==
+	Cond *string `json:"cond,omitempty" xml:"cond,omitempty"`
+	// The divisor that is required by the mod operator.
+	//
+	// example:
+	//
+	// 30
+	Divisor *int32 `json:"divisor,omitempty" xml:"divisor,omitempty"`
+	// The remainder.
+	//
+	// example:
+	//
+	// 30
+	Remainder *int32 `json:"remainder,omitempty" xml:"remainder,omitempty"`
+	// The rate. A value of 20 indicates that 20% of the traffic is routed to the tagged node.
+	//
+	// example:
+	//
+	// 10
+	Rate *int32 `json:"rate,omitempty" xml:"rate,omitempty"`
+	// The position of the parameter, which starts from 0.
+	//
+	// example:
+	//
+	// 0
+	Index *int32 `json:"index,omitempty" xml:"index,omitempty"`
+	// The expression.
+	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
+	// The value that is used for comparison. The value obtained by the expression is compared with this value. If the list operator is used, data of the value parameter is separated by commas (,). For example, 1,2,3.
+	//
+	// example:
+	//
+	// 1,2,3
+	Value interface{} `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s RulesValueRulesDubboArgumentItems) String() string {

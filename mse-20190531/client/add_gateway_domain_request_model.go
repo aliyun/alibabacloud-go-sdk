@@ -11,12 +11,16 @@ type iAddGatewayDomainRequest interface {
 	GoString() string
 	SetAcceptLanguage(v string) *AddGatewayDomainRequest
 	GetAcceptLanguage() *string
+	SetCaCertIdentifier(v string) *AddGatewayDomainRequest
+	GetCaCertIdentifier() *string
 	SetCertIdentifier(v string) *AddGatewayDomainRequest
 	GetCertIdentifier() *string
 	SetGatewayUniqueId(v string) *AddGatewayDomainRequest
 	GetGatewayUniqueId() *string
 	SetHttp2(v string) *AddGatewayDomainRequest
 	GetHttp2() *string
+	SetMtlsEnabled(v bool) *AddGatewayDomainRequest
+	GetMtlsEnabled() *bool
 	SetMustHttps(v bool) *AddGatewayDomainRequest
 	GetMustHttps() *bool
 	SetName(v string) *AddGatewayDomainRequest
@@ -41,7 +45,8 @@ type AddGatewayDomainRequest struct {
 	// example:
 	//
 	// zh
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AcceptLanguage   *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	CaCertIdentifier *string `json:"CaCertIdentifier,omitempty" xml:"CaCertIdentifier,omitempty"`
 	// The ID of the certificate.
 	//
 	// example:
@@ -65,7 +70,8 @@ type AddGatewayDomainRequest struct {
 	// example:
 	//
 	// close
-	Http2 *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
+	Http2       *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
+	MtlsEnabled *bool   `json:"MtlsEnabled,omitempty" xml:"MtlsEnabled,omitempty"`
 	// Specifies whether to enable HTTPS.
 	//
 	// example:
@@ -115,6 +121,10 @@ func (s *AddGatewayDomainRequest) GetAcceptLanguage() *string {
 	return s.AcceptLanguage
 }
 
+func (s *AddGatewayDomainRequest) GetCaCertIdentifier() *string {
+	return s.CaCertIdentifier
+}
+
 func (s *AddGatewayDomainRequest) GetCertIdentifier() *string {
 	return s.CertIdentifier
 }
@@ -125,6 +135,10 @@ func (s *AddGatewayDomainRequest) GetGatewayUniqueId() *string {
 
 func (s *AddGatewayDomainRequest) GetHttp2() *string {
 	return s.Http2
+}
+
+func (s *AddGatewayDomainRequest) GetMtlsEnabled() *bool {
+	return s.MtlsEnabled
 }
 
 func (s *AddGatewayDomainRequest) GetMustHttps() *bool {
@@ -156,6 +170,11 @@ func (s *AddGatewayDomainRequest) SetAcceptLanguage(v string) *AddGatewayDomainR
 	return s
 }
 
+func (s *AddGatewayDomainRequest) SetCaCertIdentifier(v string) *AddGatewayDomainRequest {
+	s.CaCertIdentifier = &v
+	return s
+}
+
 func (s *AddGatewayDomainRequest) SetCertIdentifier(v string) *AddGatewayDomainRequest {
 	s.CertIdentifier = &v
 	return s
@@ -168,6 +187,11 @@ func (s *AddGatewayDomainRequest) SetGatewayUniqueId(v string) *AddGatewayDomain
 
 func (s *AddGatewayDomainRequest) SetHttp2(v string) *AddGatewayDomainRequest {
 	s.Http2 = &v
+	return s
+}
+
+func (s *AddGatewayDomainRequest) SetMtlsEnabled(v bool) *AddGatewayDomainRequest {
+	s.MtlsEnabled = &v
 	return s
 }
 

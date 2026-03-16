@@ -32,16 +32,66 @@ type iGatewayDomain interface {
 }
 
 type GatewayDomain struct {
-	CertIdentifier  *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
-	GatewayId       *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	GatewayName     *string `json:"GatewayName,omitempty" xml:"GatewayName,omitempty"`
+	// The ID of the certificate in use.
+	//
+	// example:
+	//
+	// 595xx36-cn-hangzhou
+	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
+	// The gateway ID.
+	//
+	// example:
+	//
+	// 1
+	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The name of the gateway.
+	//
+	// example:
+	//
+	// test
+	GatewayName *string `json:"GatewayName,omitempty" xml:"GatewayName,omitempty"`
+	// The unique ID of the gateway.
+	//
+	// example:
+	//
+	// gw-c9bc5afd61014165bd58f621b491****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	GmtCreate       *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified     *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	MustHttps       *string `json:"MustHttps,omitempty" xml:"MustHttps,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Protocol        *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The time when the gateway was created.
+	//
+	// example:
+	//
+	// 2022-07-31 10:16:46
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the gateway was modified.
+	//
+	// example:
+	//
+	// 2022-08-11 15:28:47
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The domain ID.
+	//
+	// example:
+	//
+	// 36
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether HTTPS is forcibly used.
+	//
+	// example:
+	//
+	// true
+	MustHttps *string `json:"MustHttps,omitempty" xml:"MustHttps,omitempty"`
+	// The domain name.
+	//
+	// example:
+	//
+	// test.com
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The domain protocol.
+	//
+	// example:
+	//
+	// HTTPS
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
 func (s GatewayDomain) String() string {

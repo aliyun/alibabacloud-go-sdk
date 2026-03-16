@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 新增服务鉴权规则
+// Creates a service authentication rule.
 //
 // @param request - AddAuthPolicyRequest
 //
@@ -93,7 +93,7 @@ func (client *Client) AddAuthPolicyWithContext(ctx context.Context, request *Add
 
 // Summary:
 //
-// Creates authorization information for a gateway.
+// Adds authorization information for a gateway.
 //
 // @param tmpReq - AddAuthResourceRequest
 //
@@ -656,6 +656,10 @@ func (client *Client) AddGatewayDomainWithContext(ctx context.Context, tmpReq *A
 		query["AcceptLanguage"] = request.AcceptLanguage
 	}
 
+	if !dara.IsNil(request.CaCertIdentifier) {
+		query["CaCertIdentifier"] = request.CaCertIdentifier
+	}
+
 	if !dara.IsNil(request.CertIdentifier) {
 		query["CertIdentifier"] = request.CertIdentifier
 	}
@@ -666,6 +670,10 @@ func (client *Client) AddGatewayDomainWithContext(ctx context.Context, tmpReq *A
 
 	if !dara.IsNil(request.Http2) {
 		query["Http2"] = request.Http2
+	}
+
+	if !dara.IsNil(request.MtlsEnabled) {
+		query["MtlsEnabled"] = request.MtlsEnabled
 	}
 
 	if !dara.IsNil(request.MustHttps) {
@@ -851,7 +859,7 @@ func (client *Client) AddGatewayRouteWithContext(ctx context.Context, tmpReq *Ad
 
 // Summary:
 //
-// Adds a service version.
+// Adds a service version for a gateway.
 //
 // @param request - AddGatewayServiceVersionRequest
 //
@@ -1077,7 +1085,7 @@ func (client *Client) AddMigrationTaskWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Creates a mock rule.
+// Creates a service mocking rule.
 //
 // @param request - AddMockRuleRequest
 //
@@ -2243,7 +2251,7 @@ func (client *Client) CreateFlowRuleWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建网关路由熔断规则
+// Creates a gateway circuit breaking rule.
 //
 // @param request - CreateGatewayCircuitBreakerRuleRequest
 //
@@ -2439,7 +2447,7 @@ func (client *Client) CreateGatewayFlowRuleWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 创建网关路由隔离规则
+// Creates a concurrency rule for a gateway.
 //
 // @param request - CreateGatewayIsolationRuleRequest
 //
@@ -2527,7 +2535,7 @@ func (client *Client) CreateGatewayIsolationRuleWithContext(ctx context.Context,
 
 // Summary:
 //
-// 创建隔离规则
+// Creates an isolation rule.
 //
 // @param request - CreateIsolationRuleRequest
 //
@@ -3019,7 +3027,7 @@ func (client *Client) CreateNacosServiceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # CreateNamespace
+// Creates a namespace for Microservices Governance.
 //
 // @param tmpReq - CreateNamespaceRequest
 //
@@ -3455,7 +3463,7 @@ func (client *Client) CreateSentinelBlockFallbackDefinitionWithContext(ctx conte
 
 // Summary:
 //
-// 创建热点参数防护规则（HTTP 请求）
+// Creates a hot parameter protection rule for HTTP requests.
 //
 // @param request - CreateWebFlowRuleRequest
 //
@@ -4163,7 +4171,7 @@ func (client *Client) DeleteGatewayAuthConsumerResourceWithContext(ctx context.C
 
 // Summary:
 //
-// 删除网关路由熔断规则
+// Deletes a gateway circuit breaking rule.
 //
 // @param request - DeleteGatewayCircuitBreakerRuleRequest
 //
@@ -4219,7 +4227,7 @@ func (client *Client) DeleteGatewayCircuitBreakerRuleWithContext(ctx context.Con
 
 // Summary:
 //
-// Disassociates a domain name from a gateway.
+// Deletes a domain name that is associated with a gateway.
 //
 // @param request - DeleteGatewayDomainRequest
 //
@@ -4271,7 +4279,7 @@ func (client *Client) DeleteGatewayDomainWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 删除网关路由流控规则
+// Deletes a throttling rule for a gateway.
 //
 // @param request - DeleteGatewayFlowRuleRequest
 //
@@ -4327,7 +4335,7 @@ func (client *Client) DeleteGatewayFlowRuleWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 删除网关路由隔离规则
+// Deletes the gateway concurrency rule.
 //
 // @param request - DeleteGatewayIsolationRuleRequest
 //
@@ -4435,7 +4443,7 @@ func (client *Client) DeleteGatewayRouteWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes a service from a gateway.
+// # Deletes a service from a gateway
 //
 // @param request - DeleteGatewayServiceRequest
 //
@@ -4607,7 +4615,7 @@ func (client *Client) DeleteGatewaySlbWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除隔离规则
+// Deletes isolation rules.
 //
 // @param tmpReq - DeleteIsolationRulesRequest
 //
@@ -5369,7 +5377,7 @@ func (client *Client) DeleteSwimmingLaneGroupWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 删除热点参数防护规则（HTTP 请求）
+// Deletes a hot parameter protection rule for HTTP requests.
 //
 // @param request - DeleteWebFlowRulesRequest
 //
@@ -6311,7 +6319,7 @@ func (client *Client) GetGatewayAuthConsumerDetailWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询网关认证详情
+// Obtains the authentication details of a gateway.
 //
 // @param request - GetGatewayAuthDetailRequest
 //
@@ -6367,7 +6375,7 @@ func (client *Client) GetGatewayAuthDetailWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取网关全局配置
+// Obtains the parameter configurations of a gateway.
 //
 // @param request - GetGatewayConfigRequest
 //
@@ -6839,7 +6847,7 @@ func (client *Client) GetKubernetesSourceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取同AZ路由规则
+// Obtains the Intra-zone Provider First rules.
 //
 // @param request - GetLocalityRuleRequest
 //
@@ -7267,7 +7275,7 @@ func (client *Client) GetNacosMcpServerWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries information about service governance.
+// Queries overview information about Microservices Governance.
 //
 // Description:
 //
@@ -7667,7 +7675,7 @@ func (client *Client) GetServiceListenersWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取服务接口列表
+// Queries a list of service interfaces.
 //
 // @param request - GetServiceMethodPageRequest
 //
@@ -8085,7 +8093,7 @@ func (client *Client) ImportZookeeperDataWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 用户授权mseSLR
+// Creates a Microservices Engine (MSE) service-linked role.
 //
 // @param request - InitializeServiceLinkRoleRequest
 //
@@ -9617,7 +9625,7 @@ func (client *Client) ListGatewayAuthConsumerResourceWithContext(ctx context.Con
 
 // Summary:
 //
-// 查看网关路由熔断规则
+// Queries a gateway circuit breaking rule.
 //
 // @param request - ListGatewayCircuitBreakerRuleRequest
 //
@@ -9721,7 +9729,7 @@ func (client *Client) ListGatewayDomainWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查看网关路由流控规则
+// Queries throttling rules of a gateway.
 //
 // @param request - ListGatewayFlowRuleRequest
 //
@@ -9769,7 +9777,7 @@ func (client *Client) ListGatewayFlowRuleWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查看网关路由隔离规则
+// Queries the concurrency rule of a gateway.
 //
 // @param request - ListGatewayIsolationRuleRequest
 //
@@ -9939,7 +9947,7 @@ func (client *Client) ListGatewayRouteOnAuthWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries a list of services that are subscribed with a gateway.
+// Queries a list of services that are subscribed to by a gateway.
 //
 // @param tmpReq - ListGatewayServiceRequest
 //
@@ -10161,7 +10169,7 @@ func (client *Client) ListInstanceCountWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询隔离规则
+// Queries isolation rules.
 //
 // @param request - ListIsolationRulesRequest
 //
@@ -10671,7 +10679,7 @@ func (client *Client) ListNacosMcpServersWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 展示命名空间列表
+// Displays the list of namespaces, the number of online nodes in each namespace, and the total number of applications in each namespace. You can also call this operation to perform fuzzy queries based on the namespace name.
 //
 // @param tmpReq - ListNamespacesRequest
 //
@@ -11107,7 +11115,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询热点参数防护规则（HTTP 请求）
+// Queries hot parameter protection rules for HTTP requests.
 //
 // @param request - ListWebFlowRulesRequest
 //
@@ -11467,7 +11475,7 @@ func (client *Client) ModifyLosslessRuleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Unpublishes a route for a gateway.
+// Disables a route for a gateway.
 //
 // @param request - OfflineGatewayRouteRequest
 //
@@ -12455,7 +12463,7 @@ func (client *Client) QueryMonitorWithContext(ctx context.Context, request *Quer
 
 // Summary:
 //
-// 查询nacos灰度配置
+// Queries canary configurations of a Nacos instance.
 //
 // @param request - QueryNacosGrayConfigRequest
 //
@@ -12731,7 +12739,7 @@ func (client *Client) QueryZnodeDetailWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除单个应用
+// Deletes a single application.
 //
 // @param request - RemoveApplicationRequest
 //
@@ -12789,6 +12797,10 @@ func (client *Client) RemoveApplicationWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a service authentication rule.
+//
 // @param request - RemoveAuthPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14309,7 +14321,7 @@ func (client *Client) UpdateGatewayAuthConsumerStatusWithContext(ctx context.Con
 
 // Summary:
 //
-// 更新网关路由熔断规则
+// Updates a gateway circuit breaking rule.
 //
 // @param request - UpdateGatewayCircuitBreakerRuleRequest
 //
@@ -14421,7 +14433,7 @@ func (client *Client) UpdateGatewayCircuitBreakerRuleWithContext(ctx context.Con
 
 // Summary:
 //
-// 更新网关配置
+// Updates gateway configurations.
 //
 // @param request - UpdateGatewayConfigRequest
 //
@@ -14502,6 +14514,10 @@ func (client *Client) UpdateGatewayDomainWithContext(ctx context.Context, tmpReq
 		query["AcceptLanguage"] = request.AcceptLanguage
 	}
 
+	if !dara.IsNil(request.CaCertIdentifier) {
+		query["CaCertIdentifier"] = request.CaCertIdentifier
+	}
+
 	if !dara.IsNil(request.CertIdentifier) {
 		query["CertIdentifier"] = request.CertIdentifier
 	}
@@ -14516,6 +14532,10 @@ func (client *Client) UpdateGatewayDomainWithContext(ctx context.Context, tmpReq
 
 	if !dara.IsNil(request.Id) {
 		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.MtlsEnabled) {
+		query["MtlsEnabled"] = request.MtlsEnabled
 	}
 
 	if !dara.IsNil(request.MustHttps) {
@@ -14563,7 +14583,7 @@ func (client *Client) UpdateGatewayDomainWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 更新网关路由流控规则
+// Queries throttling rules of a gateway.
 //
 // @param request - UpdateGatewayFlowRuleRequest
 //
@@ -14655,7 +14675,7 @@ func (client *Client) UpdateGatewayFlowRuleWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 更新网关路由隔离规则
+// Updates the concurrency rule of a gateway.
 //
 // @param request - UpdateGatewayIsolationRuleRequest
 //
@@ -14747,7 +14767,7 @@ func (client *Client) UpdateGatewayIsolationRuleWithContext(ctx context.Context,
 
 // Summary:
 //
-// Renames a gateway.
+// Updates the name of a gateway.
 //
 // @param request - UpdateGatewayNameRequest
 //
@@ -15427,7 +15447,7 @@ func (client *Client) UpdateGatewayRouteWafStatusWithContext(ctx context.Context
 
 // Summary:
 //
-// 更新服务
+// Updates gateways for fixed address services or DNS services.
 //
 // @param tmpReq - UpdateGatewayServiceRequest
 //
@@ -15677,7 +15697,7 @@ func (client *Client) UpdateGatewayServiceTrafficPolicyWithContext(ctx context.C
 
 // Summary:
 //
-// Modifies the version of a service.
+// Updates the service version of a gateway.
 //
 // @param request - UpdateGatewayServiceVersionRequest
 //
@@ -15845,7 +15865,7 @@ func (client *Client) UpdateImageWithContext(ctx context.Context, request *Updat
 
 // Summary:
 //
-// 更新隔离规则
+// Updates an isolation rule.
 //
 // @param request - UpdateIsolationRuleRequest
 //
@@ -15917,7 +15937,7 @@ func (client *Client) UpdateIsolationRuleWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 更新同AZ路由规则
+// Updates the Intra-zone Provider First rules.
 //
 // @param request - UpdateLocalityRuleRequest
 //
@@ -16341,7 +16361,7 @@ func (client *Client) UpdateNacosConfigWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 更新nacos灰度配置
+// Updates the canary release settings, which include beta release and tag-based canary release.
 //
 // @param request - UpdateNacosGrayConfigRequest
 //
@@ -16607,7 +16627,7 @@ func (client *Client) UpdateNacosServiceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Updates the configuration of a plug-in.
+// Updates plug-in configurations.
 //
 // @param tmpReq - UpdatePluginConfigRequest
 //
@@ -16845,7 +16865,7 @@ func (client *Client) UpdateServiceSourceWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 更新热点参数防护规则（HTTP 请求）
+// Updates a hot parameter protection rule for HTTP requests.
 //
 // @param request - UpdateWebFlowRuleRequest
 //
