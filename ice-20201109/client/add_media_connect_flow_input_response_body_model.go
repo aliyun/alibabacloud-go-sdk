@@ -96,6 +96,7 @@ func (s *AddMediaConnectFlowInputResponseBody) Validate() error {
 }
 
 type AddMediaConnectFlowInputResponseBodyContent struct {
+	InnerInputUrl *string `json:"InnerInputUrl,omitempty" xml:"InnerInputUrl,omitempty"`
 	// The source URL.
 	//
 	// example:
@@ -112,8 +113,17 @@ func (s AddMediaConnectFlowInputResponseBodyContent) GoString() string {
 	return s.String()
 }
 
+func (s *AddMediaConnectFlowInputResponseBodyContent) GetInnerInputUrl() *string {
+	return s.InnerInputUrl
+}
+
 func (s *AddMediaConnectFlowInputResponseBodyContent) GetInputUrl() *string {
 	return s.InputUrl
+}
+
+func (s *AddMediaConnectFlowInputResponseBodyContent) SetInnerInputUrl(v string) *AddMediaConnectFlowInputResponseBodyContent {
+	s.InnerInputUrl = &v
+	return s
 }
 
 func (s *AddMediaConnectFlowInputResponseBodyContent) SetInputUrl(v string) *AddMediaConnectFlowInputResponseBodyContent {

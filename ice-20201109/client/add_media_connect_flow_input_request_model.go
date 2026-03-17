@@ -31,6 +31,8 @@ type iAddMediaConnectFlowInputRequest interface {
 	GetSrtPassphrase() *string
 	SetSrtPbkeyLen(v string) *AddMediaConnectFlowInputRequest
 	GetSrtPbkeyLen() *string
+	SetWithInternalVip(v string) *AddMediaConnectFlowInputRequest
+	GetWithInternalVip() *string
 }
 
 type AddMediaConnectFlowInputRequest struct {
@@ -127,7 +129,8 @@ type AddMediaConnectFlowInputRequest struct {
 	// example:
 	//
 	// 32
-	SrtPbkeyLen *string `json:"SrtPbkeyLen,omitempty" xml:"SrtPbkeyLen,omitempty"`
+	SrtPbkeyLen     *string `json:"SrtPbkeyLen,omitempty" xml:"SrtPbkeyLen,omitempty"`
+	WithInternalVip *string `json:"WithInternalVip,omitempty" xml:"WithInternalVip,omitempty"`
 }
 
 func (s AddMediaConnectFlowInputRequest) String() string {
@@ -182,6 +185,10 @@ func (s *AddMediaConnectFlowInputRequest) GetSrtPbkeyLen() *string {
 	return s.SrtPbkeyLen
 }
 
+func (s *AddMediaConnectFlowInputRequest) GetWithInternalVip() *string {
+	return s.WithInternalVip
+}
+
 func (s *AddMediaConnectFlowInputRequest) SetCidrs(v string) *AddMediaConnectFlowInputRequest {
 	s.Cidrs = &v
 	return s
@@ -234,6 +241,11 @@ func (s *AddMediaConnectFlowInputRequest) SetSrtPassphrase(v string) *AddMediaCo
 
 func (s *AddMediaConnectFlowInputRequest) SetSrtPbkeyLen(v string) *AddMediaConnectFlowInputRequest {
 	s.SrtPbkeyLen = &v
+	return s
+}
+
+func (s *AddMediaConnectFlowInputRequest) SetWithInternalVip(v string) *AddMediaConnectFlowInputRequest {
+	s.WithInternalVip = &v
 	return s
 }
 

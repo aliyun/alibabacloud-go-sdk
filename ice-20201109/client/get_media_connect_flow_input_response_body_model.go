@@ -98,6 +98,7 @@ func (s *GetMediaConnectFlowInputResponseBody) Validate() error {
 type GetMediaConnectFlowInputResponseBodyContent struct {
 	BackupCidrs         *string `json:"BackupCidrs,omitempty" xml:"BackupCidrs,omitempty"`
 	BackupCreateTime    *string `json:"BackupCreateTime,omitempty" xml:"BackupCreateTime,omitempty"`
+	BackupInnerInputUrl *string `json:"BackupInnerInputUrl,omitempty" xml:"BackupInnerInputUrl,omitempty"`
 	BackupInputName     *string `json:"BackupInputName,omitempty" xml:"BackupInputName,omitempty"`
 	BackupInputStatus   *string `json:"BackupInputStatus,omitempty" xml:"BackupInputStatus,omitempty"`
 	BackupInputUrl      *string `json:"BackupInputUrl,omitempty" xml:"BackupInputUrl,omitempty"`
@@ -116,7 +117,8 @@ type GetMediaConnectFlowInputResponseBodyContent struct {
 	// example:
 	//
 	// 2024-07-18T01:29:24Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	InnerInputUrl *string `json:"InnerInputUrl,omitempty" xml:"InnerInputUrl,omitempty"`
 	// The source name.
 	//
 	// example:
@@ -212,6 +214,10 @@ func (s *GetMediaConnectFlowInputResponseBodyContent) GetBackupCreateTime() *str
 	return s.BackupCreateTime
 }
 
+func (s *GetMediaConnectFlowInputResponseBodyContent) GetBackupInnerInputUrl() *string {
+	return s.BackupInnerInputUrl
+}
+
 func (s *GetMediaConnectFlowInputResponseBodyContent) GetBackupInputName() *string {
 	return s.BackupInputName
 }
@@ -246,6 +252,10 @@ func (s *GetMediaConnectFlowInputResponseBodyContent) GetCidrs() *string {
 
 func (s *GetMediaConnectFlowInputResponseBodyContent) GetCreateTime() *string {
 	return s.CreateTime
+}
+
+func (s *GetMediaConnectFlowInputResponseBodyContent) GetInnerInputUrl() *string {
+	return s.InnerInputUrl
 }
 
 func (s *GetMediaConnectFlowInputResponseBodyContent) GetInputName() *string {
@@ -298,6 +308,11 @@ func (s *GetMediaConnectFlowInputResponseBodyContent) SetBackupCreateTime(v stri
 	return s
 }
 
+func (s *GetMediaConnectFlowInputResponseBodyContent) SetBackupInnerInputUrl(v string) *GetMediaConnectFlowInputResponseBodyContent {
+	s.BackupInnerInputUrl = &v
+	return s
+}
+
 func (s *GetMediaConnectFlowInputResponseBodyContent) SetBackupInputName(v string) *GetMediaConnectFlowInputResponseBodyContent {
 	s.BackupInputName = &v
 	return s
@@ -340,6 +355,11 @@ func (s *GetMediaConnectFlowInputResponseBodyContent) SetCidrs(v string) *GetMed
 
 func (s *GetMediaConnectFlowInputResponseBodyContent) SetCreateTime(v string) *GetMediaConnectFlowInputResponseBodyContent {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponseBodyContent) SetInnerInputUrl(v string) *GetMediaConnectFlowInputResponseBodyContent {
+	s.InnerInputUrl = &v
 	return s
 }
 

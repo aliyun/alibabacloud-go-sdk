@@ -11,6 +11,8 @@ type iCreateYikeAssetUploadRequest interface {
 	GoString() string
 	SetFileExt(v string) *CreateYikeAssetUploadRequest
 	GetFileExt() *string
+	SetFileType(v string) *CreateYikeAssetUploadRequest
+	GetFileType() *string
 }
 
 type CreateYikeAssetUploadRequest struct {
@@ -20,6 +22,10 @@ type CreateYikeAssetUploadRequest struct {
 	//
 	// mp4
 	FileExt *string `json:"FileExt,omitempty" xml:"FileExt,omitempty"`
+	// example:
+	//
+	// StoryboardInput
+	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
 }
 
 func (s CreateYikeAssetUploadRequest) String() string {
@@ -34,8 +40,17 @@ func (s *CreateYikeAssetUploadRequest) GetFileExt() *string {
 	return s.FileExt
 }
 
+func (s *CreateYikeAssetUploadRequest) GetFileType() *string {
+	return s.FileType
+}
+
 func (s *CreateYikeAssetUploadRequest) SetFileExt(v string) *CreateYikeAssetUploadRequest {
 	s.FileExt = &v
+	return s
+}
+
+func (s *CreateYikeAssetUploadRequest) SetFileType(v string) *CreateYikeAssetUploadRequest {
+	s.FileType = &v
 	return s
 }
 
