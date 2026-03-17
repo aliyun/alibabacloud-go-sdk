@@ -9,6 +9,8 @@ type iCreateApplicationShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAIDBClusterId(v string) *CreateApplicationShrinkRequest
+	GetAIDBClusterId() *string
 	SetApplicationType(v string) *CreateApplicationShrinkRequest
 	GetApplicationType() *string
 	SetArchitecture(v string) *CreateApplicationShrinkRequest
@@ -31,6 +33,16 @@ type iCreateApplicationShrinkRequest interface {
 	GetEndpointsShrink() *string
 	SetMemApplicationSpecShrink(v string) *CreateApplicationShrinkRequest
 	GetMemApplicationSpecShrink() *string
+	SetModelApi(v string) *CreateApplicationShrinkRequest
+	GetModelApi() *string
+	SetModelApiKey(v string) *CreateApplicationShrinkRequest
+	GetModelApiKey() *string
+	SetModelBaseUrl(v string) *CreateApplicationShrinkRequest
+	GetModelBaseUrl() *string
+	SetModelFrom(v string) *CreateApplicationShrinkRequest
+	GetModelFrom() *string
+	SetModelName(v string) *CreateApplicationShrinkRequest
+	GetModelName() *string
 	SetPayType(v string) *CreateApplicationShrinkRequest
 	GetPayType() *string
 	SetPeriod(v string) *CreateApplicationShrinkRequest
@@ -56,6 +68,10 @@ type iCreateApplicationShrinkRequest interface {
 }
 
 type CreateApplicationShrinkRequest struct {
+	// example:
+	//
+	// pm-xxxxxx
+	AIDBClusterId *string `json:"AIDBClusterId,omitempty" xml:"AIDBClusterId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -89,6 +105,26 @@ type CreateApplicationShrinkRequest struct {
 	DryRun                   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	EndpointsShrink          *string `json:"Endpoints,omitempty" xml:"Endpoints,omitempty"`
 	MemApplicationSpecShrink *string `json:"MemApplicationSpec,omitempty" xml:"MemApplicationSpec,omitempty"`
+	// example:
+	//
+	// openai-completions
+	ModelApi *string `json:"ModelApi,omitempty" xml:"ModelApi,omitempty"`
+	// example:
+	//
+	// sk-xxxxxx
+	ModelApiKey *string `json:"ModelApiKey,omitempty" xml:"ModelApiKey,omitempty"`
+	// example:
+	//
+	// https://dashscope.aliyuncs.com/compatible-mode/v1
+	ModelBaseUrl *string `json:"ModelBaseUrl,omitempty" xml:"ModelBaseUrl,omitempty"`
+	// example:
+	//
+	// bailian
+	ModelFrom *string `json:"ModelFrom,omitempty" xml:"ModelFrom,omitempty"`
+	// example:
+	//
+	// qwen3-max
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	// example:
 	//
 	// Postpaid
@@ -137,6 +173,10 @@ func (s CreateApplicationShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateApplicationShrinkRequest) GetAIDBClusterId() *string {
+	return s.AIDBClusterId
+}
+
 func (s *CreateApplicationShrinkRequest) GetApplicationType() *string {
 	return s.ApplicationType
 }
@@ -181,6 +221,26 @@ func (s *CreateApplicationShrinkRequest) GetMemApplicationSpecShrink() *string {
 	return s.MemApplicationSpecShrink
 }
 
+func (s *CreateApplicationShrinkRequest) GetModelApi() *string {
+	return s.ModelApi
+}
+
+func (s *CreateApplicationShrinkRequest) GetModelApiKey() *string {
+	return s.ModelApiKey
+}
+
+func (s *CreateApplicationShrinkRequest) GetModelBaseUrl() *string {
+	return s.ModelBaseUrl
+}
+
+func (s *CreateApplicationShrinkRequest) GetModelFrom() *string {
+	return s.ModelFrom
+}
+
+func (s *CreateApplicationShrinkRequest) GetModelName() *string {
+	return s.ModelName
+}
+
 func (s *CreateApplicationShrinkRequest) GetPayType() *string {
 	return s.PayType
 }
@@ -223,6 +283,11 @@ func (s *CreateApplicationShrinkRequest) GetVpcId() *string {
 
 func (s *CreateApplicationShrinkRequest) GetZoneId() *string {
 	return s.ZoneId
+}
+
+func (s *CreateApplicationShrinkRequest) SetAIDBClusterId(v string) *CreateApplicationShrinkRequest {
+	s.AIDBClusterId = &v
+	return s
 }
 
 func (s *CreateApplicationShrinkRequest) SetApplicationType(v string) *CreateApplicationShrinkRequest {
@@ -277,6 +342,31 @@ func (s *CreateApplicationShrinkRequest) SetEndpointsShrink(v string) *CreateApp
 
 func (s *CreateApplicationShrinkRequest) SetMemApplicationSpecShrink(v string) *CreateApplicationShrinkRequest {
 	s.MemApplicationSpecShrink = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetModelApi(v string) *CreateApplicationShrinkRequest {
+	s.ModelApi = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetModelApiKey(v string) *CreateApplicationShrinkRequest {
+	s.ModelApiKey = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetModelBaseUrl(v string) *CreateApplicationShrinkRequest {
+	s.ModelBaseUrl = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetModelFrom(v string) *CreateApplicationShrinkRequest {
+	s.ModelFrom = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetModelName(v string) *CreateApplicationShrinkRequest {
+	s.ModelName = &v
 	return s
 }
 

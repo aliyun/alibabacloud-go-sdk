@@ -9,6 +9,8 @@ type iCreateApplicationRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAIDBClusterId(v string) *CreateApplicationRequest
+	GetAIDBClusterId() *string
 	SetApplicationType(v string) *CreateApplicationRequest
 	GetApplicationType() *string
 	SetArchitecture(v string) *CreateApplicationRequest
@@ -31,6 +33,16 @@ type iCreateApplicationRequest interface {
 	GetEndpoints() []*CreateApplicationRequestEndpoints
 	SetMemApplicationSpec(v *CreateApplicationRequestMemApplicationSpec) *CreateApplicationRequest
 	GetMemApplicationSpec() *CreateApplicationRequestMemApplicationSpec
+	SetModelApi(v string) *CreateApplicationRequest
+	GetModelApi() *string
+	SetModelApiKey(v string) *CreateApplicationRequest
+	GetModelApiKey() *string
+	SetModelBaseUrl(v string) *CreateApplicationRequest
+	GetModelBaseUrl() *string
+	SetModelFrom(v string) *CreateApplicationRequest
+	GetModelFrom() *string
+	SetModelName(v string) *CreateApplicationRequest
+	GetModelName() *string
 	SetPayType(v string) *CreateApplicationRequest
 	GetPayType() *string
 	SetPeriod(v string) *CreateApplicationRequest
@@ -56,6 +68,10 @@ type iCreateApplicationRequest interface {
 }
 
 type CreateApplicationRequest struct {
+	// example:
+	//
+	// pm-xxxxxx
+	AIDBClusterId *string `json:"AIDBClusterId,omitempty" xml:"AIDBClusterId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -89,6 +105,26 @@ type CreateApplicationRequest struct {
 	DryRun             *bool                                       `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	Endpoints          []*CreateApplicationRequestEndpoints        `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 	MemApplicationSpec *CreateApplicationRequestMemApplicationSpec `json:"MemApplicationSpec,omitempty" xml:"MemApplicationSpec,omitempty" type:"Struct"`
+	// example:
+	//
+	// openai-completions
+	ModelApi *string `json:"ModelApi,omitempty" xml:"ModelApi,omitempty"`
+	// example:
+	//
+	// sk-xxxxxx
+	ModelApiKey *string `json:"ModelApiKey,omitempty" xml:"ModelApiKey,omitempty"`
+	// example:
+	//
+	// https://dashscope.aliyuncs.com/compatible-mode/v1
+	ModelBaseUrl *string `json:"ModelBaseUrl,omitempty" xml:"ModelBaseUrl,omitempty"`
+	// example:
+	//
+	// bailian
+	ModelFrom *string `json:"ModelFrom,omitempty" xml:"ModelFrom,omitempty"`
+	// example:
+	//
+	// qwen3-max
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	// example:
 	//
 	// Postpaid
@@ -137,6 +173,10 @@ func (s CreateApplicationRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateApplicationRequest) GetAIDBClusterId() *string {
+	return s.AIDBClusterId
+}
+
 func (s *CreateApplicationRequest) GetApplicationType() *string {
 	return s.ApplicationType
 }
@@ -181,6 +221,26 @@ func (s *CreateApplicationRequest) GetMemApplicationSpec() *CreateApplicationReq
 	return s.MemApplicationSpec
 }
 
+func (s *CreateApplicationRequest) GetModelApi() *string {
+	return s.ModelApi
+}
+
+func (s *CreateApplicationRequest) GetModelApiKey() *string {
+	return s.ModelApiKey
+}
+
+func (s *CreateApplicationRequest) GetModelBaseUrl() *string {
+	return s.ModelBaseUrl
+}
+
+func (s *CreateApplicationRequest) GetModelFrom() *string {
+	return s.ModelFrom
+}
+
+func (s *CreateApplicationRequest) GetModelName() *string {
+	return s.ModelName
+}
+
 func (s *CreateApplicationRequest) GetPayType() *string {
 	return s.PayType
 }
@@ -223,6 +283,11 @@ func (s *CreateApplicationRequest) GetVpcId() *string {
 
 func (s *CreateApplicationRequest) GetZoneId() *string {
 	return s.ZoneId
+}
+
+func (s *CreateApplicationRequest) SetAIDBClusterId(v string) *CreateApplicationRequest {
+	s.AIDBClusterId = &v
+	return s
 }
 
 func (s *CreateApplicationRequest) SetApplicationType(v string) *CreateApplicationRequest {
@@ -277,6 +342,31 @@ func (s *CreateApplicationRequest) SetEndpoints(v []*CreateApplicationRequestEnd
 
 func (s *CreateApplicationRequest) SetMemApplicationSpec(v *CreateApplicationRequestMemApplicationSpec) *CreateApplicationRequest {
 	s.MemApplicationSpec = v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetModelApi(v string) *CreateApplicationRequest {
+	s.ModelApi = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetModelApiKey(v string) *CreateApplicationRequest {
+	s.ModelApiKey = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetModelBaseUrl(v string) *CreateApplicationRequest {
+	s.ModelBaseUrl = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetModelFrom(v string) *CreateApplicationRequest {
+	s.ModelFrom = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetModelName(v string) *CreateApplicationRequest {
+	s.ModelName = &v
 	return s
 }
 

@@ -1699,6 +1699,10 @@ func (client *Client) CreateApplicationWithContext(ctx context.Context, tmpReq *
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AIDBClusterId) {
+		query["AIDBClusterId"] = request.AIDBClusterId
+	}
+
 	if !dara.IsNil(request.ApplicationType) {
 		query["ApplicationType"] = request.ApplicationType
 	}
@@ -1741,6 +1745,26 @@ func (client *Client) CreateApplicationWithContext(ctx context.Context, tmpReq *
 
 	if !dara.IsNil(request.MemApplicationSpecShrink) {
 		query["MemApplicationSpec"] = request.MemApplicationSpecShrink
+	}
+
+	if !dara.IsNil(request.ModelApi) {
+		query["ModelApi"] = request.ModelApi
+	}
+
+	if !dara.IsNil(request.ModelApiKey) {
+		query["ModelApiKey"] = request.ModelApiKey
+	}
+
+	if !dara.IsNil(request.ModelBaseUrl) {
+		query["ModelBaseUrl"] = request.ModelBaseUrl
+	}
+
+	if !dara.IsNil(request.ModelFrom) {
+		query["ModelFrom"] = request.ModelFrom
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		query["ModelName"] = request.ModelName
 	}
 
 	if !dara.IsNil(request.PayType) {
