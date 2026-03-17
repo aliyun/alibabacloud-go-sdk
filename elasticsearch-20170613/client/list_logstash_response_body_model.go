@@ -128,6 +128,10 @@ type ListLogstashResponseBodyResult struct {
 	//
 	// ls-cn-abc
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// 4928745600000
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	// The tag value of the cloud disk.
 	//
 	// example:
@@ -195,6 +199,10 @@ func (s *ListLogstashResponseBodyResult) GetDescription() *string {
 	return s.Description
 }
 
+func (s *ListLogstashResponseBodyResult) GetEndTime() *int64 {
+	return s.EndTime
+}
+
 func (s *ListLogstashResponseBodyResult) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -243,6 +251,11 @@ func (s *ListLogstashResponseBodyResult) SetCreatedAt(v string) *ListLogstashRes
 
 func (s *ListLogstashResponseBodyResult) SetDescription(v string) *ListLogstashResponseBodyResult {
 	s.Description = &v
+	return s
+}
+
+func (s *ListLogstashResponseBodyResult) SetEndTime(v int64) *ListLogstashResponseBodyResult {
+	s.EndTime = &v
 	return s
 }
 

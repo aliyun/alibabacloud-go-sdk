@@ -108,6 +108,7 @@ type DescribeLogstashResponseBodyResult struct {
 	//
 	// ls-cn-abc
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	EndTime     *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	// The ID of the zone where the node resides.
 	EndpointList []*DescribeLogstashResponseBodyResultEndpointList `json:"endpointList,omitempty" xml:"endpointList,omitempty" type:"Repeated"`
 	// The access information of the node.
@@ -194,6 +195,10 @@ func (s *DescribeLogstashResponseBodyResult) GetDescription() *string {
 	return s.Description
 }
 
+func (s *DescribeLogstashResponseBodyResult) GetEndTime() *int64 {
+	return s.EndTime
+}
+
 func (s *DescribeLogstashResponseBodyResult) GetEndpointList() []*DescribeLogstashResponseBodyResultEndpointList {
 	return s.EndpointList
 }
@@ -266,6 +271,11 @@ func (s *DescribeLogstashResponseBodyResult) SetCreatedAt(v string) *DescribeLog
 
 func (s *DescribeLogstashResponseBodyResult) SetDescription(v string) *DescribeLogstashResponseBodyResult {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeLogstashResponseBodyResult) SetEndTime(v int64) *DescribeLogstashResponseBodyResult {
+	s.EndTime = &v
 	return s
 }
 
