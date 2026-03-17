@@ -355,6 +355,7 @@ type QueryInspirationAccountDetailsResponseBodyModuleData struct {
 	//
 	// FREE_TRIAL_GIFT
 	SourceTypeName *string `json:"SourceTypeName,omitempty" xml:"SourceTypeName,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryInspirationAccountDetailsResponseBodyModuleData) String() string {
@@ -393,6 +394,10 @@ func (s *QueryInspirationAccountDetailsResponseBodyModuleData) GetSourceTypeName
 	return s.SourceTypeName
 }
 
+func (s *QueryInspirationAccountDetailsResponseBodyModuleData) GetStatus() *string {
+	return s.Status
+}
+
 func (s *QueryInspirationAccountDetailsResponseBodyModuleData) SetAcquisitionTime(v string) *QueryInspirationAccountDetailsResponseBodyModuleData {
 	s.AcquisitionTime = &v
 	return s
@@ -425,6 +430,11 @@ func (s *QueryInspirationAccountDetailsResponseBodyModuleData) SetSourceType(v s
 
 func (s *QueryInspirationAccountDetailsResponseBodyModuleData) SetSourceTypeName(v string) *QueryInspirationAccountDetailsResponseBodyModuleData {
 	s.SourceTypeName = &v
+	return s
+}
+
+func (s *QueryInspirationAccountDetailsResponseBodyModuleData) SetStatus(v string) *QueryInspirationAccountDetailsResponseBodyModuleData {
+	s.Status = &v
 	return s
 }
 
