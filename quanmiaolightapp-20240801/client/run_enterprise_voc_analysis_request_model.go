@@ -23,6 +23,8 @@ type iRunEnterpriseVocAnalysisRequest interface {
 	GetModelId() *string
 	SetOutputFormat(v string) *RunEnterpriseVocAnalysisRequest
 	GetOutputFormat() *string
+	SetPositiveFilter(v bool) *RunEnterpriseVocAnalysisRequest
+	GetPositiveFilter() *bool
 	SetSourceTrace(v bool) *RunEnterpriseVocAnalysisRequest
 	GetSourceTrace() *bool
 	SetTags(v []*RunEnterpriseVocAnalysisRequestTags) *RunEnterpriseVocAnalysisRequest
@@ -52,8 +54,9 @@ type RunEnterpriseVocAnalysisRequest struct {
 	// example:
 	//
 	// 按照如下格式输出：{"text1": "xxxx", "text2": "xxxx"}
-	OutputFormat *string `json:"outputFormat,omitempty" xml:"outputFormat,omitempty"`
-	SourceTrace  *bool   `json:"sourceTrace,omitempty" xml:"sourceTrace,omitempty"`
+	OutputFormat   *string `json:"outputFormat,omitempty" xml:"outputFormat,omitempty"`
+	PositiveFilter *bool   `json:"positiveFilter,omitempty" xml:"positiveFilter,omitempty"`
+	SourceTrace    *bool   `json:"sourceTrace,omitempty" xml:"sourceTrace,omitempty"`
 	// 业务标签体系，用于对文本内容进行分类和分析。
 	Tags []*RunEnterpriseVocAnalysisRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// example:
@@ -110,6 +113,10 @@ func (s *RunEnterpriseVocAnalysisRequest) GetOutputFormat() *string {
 	return s.OutputFormat
 }
 
+func (s *RunEnterpriseVocAnalysisRequest) GetPositiveFilter() *bool {
+	return s.PositiveFilter
+}
+
 func (s *RunEnterpriseVocAnalysisRequest) GetSourceTrace() *bool {
 	return s.SourceTrace
 }
@@ -154,6 +161,11 @@ func (s *RunEnterpriseVocAnalysisRequest) SetModelId(v string) *RunEnterpriseVoc
 
 func (s *RunEnterpriseVocAnalysisRequest) SetOutputFormat(v string) *RunEnterpriseVocAnalysisRequest {
 	s.OutputFormat = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisRequest) SetPositiveFilter(v bool) *RunEnterpriseVocAnalysisRequest {
+	s.PositiveFilter = &v
 	return s
 }
 

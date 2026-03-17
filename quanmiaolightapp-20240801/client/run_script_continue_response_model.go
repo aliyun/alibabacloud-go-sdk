@@ -13,6 +13,10 @@ type iRunScriptContinueResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunScriptContinueResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunScriptContinueResponse
+	GetId() *string
+	SetEvent(v string) *RunScriptContinueResponse
+	GetEvent() *string
 	SetBody(v *RunScriptContinueResponseBody) *RunScriptContinueResponse
 	GetBody() *RunScriptContinueResponseBody
 }
@@ -20,6 +24,8 @@ type iRunScriptContinueResponse interface {
 type RunScriptContinueResponse struct {
 	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                        `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                        `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunScriptContinueResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunScriptContinueResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunScriptContinueResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunScriptContinueResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunScriptContinueResponse) GetBody() *RunScriptContinueResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunScriptContinueResponse) SetHeaders(v map[string]*string) *RunScriptC
 
 func (s *RunScriptContinueResponse) SetStatusCode(v int32) *RunScriptContinueResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunScriptContinueResponse) SetId(v string) *RunScriptContinueResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunScriptContinueResponse) SetEvent(v string) *RunScriptContinueResponse {
+	s.Event = &v
 	return s
 }
 

@@ -13,6 +13,10 @@ type iRunStyleWritingResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunStyleWritingResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunStyleWritingResponse
+	GetId() *string
+	SetEvent(v string) *RunStyleWritingResponse
+	GetEvent() *string
 	SetBody(v *RunStyleWritingResponseBody) *RunStyleWritingResponse
 	GetBody() *RunStyleWritingResponseBody
 }
@@ -20,6 +24,8 @@ type iRunStyleWritingResponse interface {
 type RunStyleWritingResponse struct {
 	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                      `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                      `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunStyleWritingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunStyleWritingResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunStyleWritingResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunStyleWritingResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunStyleWritingResponse) GetBody() *RunStyleWritingResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunStyleWritingResponse) SetHeaders(v map[string]*string) *RunStyleWrit
 
 func (s *RunStyleWritingResponse) SetStatusCode(v int32) *RunStyleWritingResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunStyleWritingResponse) SetId(v string) *RunStyleWritingResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunStyleWritingResponse) SetEvent(v string) *RunStyleWritingResponse {
+	s.Event = &v
 	return s
 }
 

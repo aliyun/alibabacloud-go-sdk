@@ -819,6 +819,10 @@ func (client *Client) RunEnterpriseVocAnalysisWithContext(ctx context.Context, w
 		body["outputFormat"] = request.OutputFormat
 	}
 
+	if !dara.IsNil(request.PositiveFilter) {
+		body["positiveFilter"] = request.PositiveFilter
+	}
+
 	if !dara.IsNil(request.SourceTrace) {
 		body["sourceTrace"] = request.SourceTrace
 	}
@@ -2366,6 +2370,10 @@ func (client *Client) SubmitEnterpriseVocAnalysisTaskWithContext(ctx context.Con
 		body["apiKey"] = request.ApiKey
 	}
 
+	if !dara.IsNil(request.BatchTask) {
+		body["batchTask"] = request.BatchTask
+	}
+
 	if !dara.IsNil(request.ContentsShrink) {
 		body["contents"] = request.ContentsShrink
 	}
@@ -2388,6 +2396,10 @@ func (client *Client) SubmitEnterpriseVocAnalysisTaskWithContext(ctx context.Con
 
 	if !dara.IsNil(request.OutputFormat) {
 		body["outputFormat"] = request.OutputFormat
+	}
+
+	if !dara.IsNil(request.PositiveFilter) {
+		body["positiveFilter"] = request.PositiveFilter
 	}
 
 	if !dara.IsNil(request.SourceTrace) {
@@ -2538,6 +2550,10 @@ func (client *Client) SubmitTagMiningAnalysisTaskWithContext(ctx context.Context
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ApiKey) {
 		body["apiKey"] = request.ApiKey
+	}
+
+	if !dara.IsNil(request.BatchTask) {
+		body["batchTask"] = request.BatchTask
 	}
 
 	if !dara.IsNil(request.BusinessType) {
@@ -3178,6 +3194,10 @@ func (client *Client) runEnterpriseVocAnalysisWithSSECtx_opYieldFunc(_yield chan
 		body["outputFormat"] = request.OutputFormat
 	}
 
+	if !dara.IsNil(request.PositiveFilter) {
+		body["positiveFilter"] = request.PositiveFilter
+	}
+
 	if !dara.IsNil(request.SourceTrace) {
 		body["sourceTrace"] = request.SourceTrace
 	}
@@ -3208,19 +3228,21 @@ func (client *Client) runEnterpriseVocAnalysisWithSSECtx_opYieldFunc(_yield chan
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }
 
@@ -3279,19 +3301,21 @@ func (client *Client) runEssayCorrectionWithSSECtx_opYieldFunc(_yield chan *RunE
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }
 
@@ -3388,19 +3412,21 @@ func (client *Client) runHotTopicChatWithSSECtx_opYieldFunc(_yield chan *RunHotT
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }
 
@@ -3453,19 +3479,21 @@ func (client *Client) runHotTopicSummaryWithSSECtx_opYieldFunc(_yield chan *RunH
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }
 
@@ -3518,19 +3546,21 @@ func (client *Client) runMarketingInformationExtractWithSSECtx_opYieldFunc(_yiel
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }
 
@@ -3627,19 +3657,21 @@ func (client *Client) runMarketingInformationWritingWithSSECtx_opYieldFunc(_yiel
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }
 
@@ -3708,19 +3740,21 @@ func (client *Client) runNetworkContentAuditWithSSECtx_opYieldFunc(_yield chan *
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }
 
@@ -3763,19 +3797,21 @@ func (client *Client) runOcrParseWithSSECtx_opYieldFunc(_yield chan *RunOcrParse
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }
 
@@ -3814,19 +3850,21 @@ func (client *Client) runScriptChatWithSSECtx_opYieldFunc(_yield chan *RunScript
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }
 
@@ -3869,19 +3907,21 @@ func (client *Client) runScriptContinueWithSSECtx_opYieldFunc(_yield chan *RunSc
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }
 
@@ -3940,19 +3980,21 @@ func (client *Client) runScriptPlanningWithSSECtx_opYieldFunc(_yield chan *RunSc
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }
 
@@ -3987,19 +4029,21 @@ func (client *Client) runScriptRefineWithSSECtx_opYieldFunc(_yield chan *RunScri
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }
 
@@ -4064,19 +4108,21 @@ func (client *Client) runStyleWritingWithSSECtx_opYieldFunc(_yield chan *RunStyl
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }
 
@@ -4145,19 +4191,21 @@ func (client *Client) runTagMiningAnalysisWithSSECtx_opYieldFunc(_yield chan *Ru
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }
 
@@ -4318,19 +4366,21 @@ func (client *Client) runVideoAnalysisWithSSECtx_opYieldFunc(_yield chan *RunVid
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }
 
@@ -4427,18 +4477,20 @@ func (client *Client) runVideoDetectShotWithSSECtx_opYieldFunc(_yield chan *RunV
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }

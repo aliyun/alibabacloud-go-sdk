@@ -13,6 +13,10 @@ type iRunMarketingInformationWritingResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunMarketingInformationWritingResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunMarketingInformationWritingResponse
+	GetId() *string
+	SetEvent(v string) *RunMarketingInformationWritingResponse
+	GetEvent() *string
 	SetBody(v *RunMarketingInformationWritingResponseBody) *RunMarketingInformationWritingResponse
 	GetBody() *RunMarketingInformationWritingResponseBody
 }
@@ -20,6 +24,8 @@ type iRunMarketingInformationWritingResponse interface {
 type RunMarketingInformationWritingResponse struct {
 	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                                     `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                                     `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunMarketingInformationWritingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunMarketingInformationWritingResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunMarketingInformationWritingResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunMarketingInformationWritingResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunMarketingInformationWritingResponse) GetBody() *RunMarketingInformationWritingResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunMarketingInformationWritingResponse) SetHeaders(v map[string]*string
 
 func (s *RunMarketingInformationWritingResponse) SetStatusCode(v int32) *RunMarketingInformationWritingResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunMarketingInformationWritingResponse) SetId(v string) *RunMarketingInformationWritingResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunMarketingInformationWritingResponse) SetEvent(v string) *RunMarketingInformationWritingResponse {
+	s.Event = &v
 	return s
 }
 

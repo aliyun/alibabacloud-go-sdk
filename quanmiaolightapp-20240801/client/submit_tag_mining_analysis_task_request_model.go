@@ -11,6 +11,8 @@ type iSubmitTagMiningAnalysisTaskRequest interface {
 	GoString() string
 	SetApiKey(v string) *SubmitTagMiningAnalysisTaskRequest
 	GetApiKey() *string
+	SetBatchTask(v bool) *SubmitTagMiningAnalysisTaskRequest
+	GetBatchTask() *bool
 	SetBusinessType(v string) *SubmitTagMiningAnalysisTaskRequest
 	GetBusinessType() *string
 	SetContents(v []*string) *SubmitTagMiningAnalysisTaskRequest
@@ -30,7 +32,8 @@ type iSubmitTagMiningAnalysisTaskRequest interface {
 }
 
 type SubmitTagMiningAnalysisTaskRequest struct {
-	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	ApiKey    *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	BatchTask *bool   `json:"batchTask,omitempty" xml:"batchTask,omitempty"`
 	// example:
 	//
 	// clueMining
@@ -71,6 +74,10 @@ func (s *SubmitTagMiningAnalysisTaskRequest) GetApiKey() *string {
 	return s.ApiKey
 }
 
+func (s *SubmitTagMiningAnalysisTaskRequest) GetBatchTask() *bool {
+	return s.BatchTask
+}
+
 func (s *SubmitTagMiningAnalysisTaskRequest) GetBusinessType() *string {
 	return s.BusinessType
 }
@@ -105,6 +112,11 @@ func (s *SubmitTagMiningAnalysisTaskRequest) GetUrl() *string {
 
 func (s *SubmitTagMiningAnalysisTaskRequest) SetApiKey(v string) *SubmitTagMiningAnalysisTaskRequest {
 	s.ApiKey = &v
+	return s
+}
+
+func (s *SubmitTagMiningAnalysisTaskRequest) SetBatchTask(v bool) *SubmitTagMiningAnalysisTaskRequest {
+	s.BatchTask = &v
 	return s
 }
 

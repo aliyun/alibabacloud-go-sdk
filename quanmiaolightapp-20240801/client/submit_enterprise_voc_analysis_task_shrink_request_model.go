@@ -11,6 +11,8 @@ type iSubmitEnterpriseVocAnalysisTaskShrinkRequest interface {
 	GoString() string
 	SetApiKey(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest
 	GetApiKey() *string
+	SetBatchTask(v bool) *SubmitEnterpriseVocAnalysisTaskShrinkRequest
+	GetBatchTask() *bool
 	SetContentsShrink(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest
 	GetContentsShrink() *string
 	SetExtraInfo(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest
@@ -23,6 +25,8 @@ type iSubmitEnterpriseVocAnalysisTaskShrinkRequest interface {
 	GetModelId() *string
 	SetOutputFormat(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest
 	GetOutputFormat() *string
+	SetPositiveFilter(v bool) *SubmitEnterpriseVocAnalysisTaskShrinkRequest
+	GetPositiveFilter() *bool
 	SetSourceTrace(v bool) *SubmitEnterpriseVocAnalysisTaskShrinkRequest
 	GetSourceTrace() *bool
 	SetTagsShrink(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest
@@ -35,6 +39,7 @@ type iSubmitEnterpriseVocAnalysisTaskShrinkRequest interface {
 
 type SubmitEnterpriseVocAnalysisTaskShrinkRequest struct {
 	ApiKey         *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	BatchTask      *bool   `json:"batchTask,omitempty" xml:"batchTask,omitempty"`
 	ContentsShrink *string `json:"contents,omitempty" xml:"contents,omitempty"`
 	ExtraInfo      *string `json:"extraInfo,omitempty" xml:"extraInfo,omitempty"`
 	// example:
@@ -47,6 +52,7 @@ type SubmitEnterpriseVocAnalysisTaskShrinkRequest struct {
 	// qwen-max
 	ModelId         *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
 	OutputFormat    *string `json:"outputFormat,omitempty" xml:"outputFormat,omitempty"`
+	PositiveFilter  *bool   `json:"positiveFilter,omitempty" xml:"positiveFilter,omitempty"`
 	SourceTrace     *bool   `json:"sourceTrace,omitempty" xml:"sourceTrace,omitempty"`
 	TagsShrink      *string `json:"tags,omitempty" xml:"tags,omitempty"`
 	TaskDescription *string `json:"taskDescription,omitempty" xml:"taskDescription,omitempty"`
@@ -66,6 +72,10 @@ func (s SubmitEnterpriseVocAnalysisTaskShrinkRequest) GoString() string {
 
 func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) GetApiKey() *string {
 	return s.ApiKey
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) GetBatchTask() *bool {
+	return s.BatchTask
 }
 
 func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) GetContentsShrink() *string {
@@ -92,6 +102,10 @@ func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) GetOutputFormat() *string
 	return s.OutputFormat
 }
 
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) GetPositiveFilter() *bool {
+	return s.PositiveFilter
+}
+
 func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) GetSourceTrace() *bool {
 	return s.SourceTrace
 }
@@ -110,6 +124,11 @@ func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) GetUrl() *string {
 
 func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetApiKey(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
 	s.ApiKey = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetBatchTask(v bool) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
+	s.BatchTask = &v
 	return s
 }
 
@@ -140,6 +159,11 @@ func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetModelId(v string) *Sub
 
 func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetOutputFormat(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
 	s.OutputFormat = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetPositiveFilter(v bool) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
+	s.PositiveFilter = &v
 	return s
 }
 

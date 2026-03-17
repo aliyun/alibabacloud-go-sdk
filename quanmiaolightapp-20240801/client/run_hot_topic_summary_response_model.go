@@ -13,6 +13,10 @@ type iRunHotTopicSummaryResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunHotTopicSummaryResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunHotTopicSummaryResponse
+	GetId() *string
+	SetEvent(v string) *RunHotTopicSummaryResponse
+	GetEvent() *string
 	SetBody(v *RunHotTopicSummaryResponseBody) *RunHotTopicSummaryResponse
 	GetBody() *RunHotTopicSummaryResponseBody
 }
@@ -20,6 +24,8 @@ type iRunHotTopicSummaryResponse interface {
 type RunHotTopicSummaryResponse struct {
 	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                         `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                         `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunHotTopicSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunHotTopicSummaryResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunHotTopicSummaryResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunHotTopicSummaryResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunHotTopicSummaryResponse) GetBody() *RunHotTopicSummaryResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunHotTopicSummaryResponse) SetHeaders(v map[string]*string) *RunHotTop
 
 func (s *RunHotTopicSummaryResponse) SetStatusCode(v int32) *RunHotTopicSummaryResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunHotTopicSummaryResponse) SetId(v string) *RunHotTopicSummaryResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunHotTopicSummaryResponse) SetEvent(v string) *RunHotTopicSummaryResponse {
+	s.Event = &v
 	return s
 }
 

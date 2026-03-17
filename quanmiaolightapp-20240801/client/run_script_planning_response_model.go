@@ -13,6 +13,10 @@ type iRunScriptPlanningResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunScriptPlanningResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunScriptPlanningResponse
+	GetId() *string
+	SetEvent(v string) *RunScriptPlanningResponse
+	GetEvent() *string
 	SetBody(v *RunScriptPlanningResponseBody) *RunScriptPlanningResponse
 	GetBody() *RunScriptPlanningResponseBody
 }
@@ -20,6 +24,8 @@ type iRunScriptPlanningResponse interface {
 type RunScriptPlanningResponse struct {
 	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                        `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                        `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunScriptPlanningResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunScriptPlanningResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunScriptPlanningResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunScriptPlanningResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunScriptPlanningResponse) GetBody() *RunScriptPlanningResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunScriptPlanningResponse) SetHeaders(v map[string]*string) *RunScriptP
 
 func (s *RunScriptPlanningResponse) SetStatusCode(v int32) *RunScriptPlanningResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunScriptPlanningResponse) SetId(v string) *RunScriptPlanningResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunScriptPlanningResponse) SetEvent(v string) *RunScriptPlanningResponse {
+	s.Event = &v
 	return s
 }
 

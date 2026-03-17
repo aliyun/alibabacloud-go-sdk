@@ -13,6 +13,10 @@ type iRunVideoDetectShotResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunVideoDetectShotResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunVideoDetectShotResponse
+	GetId() *string
+	SetEvent(v string) *RunVideoDetectShotResponse
+	GetEvent() *string
 	SetBody(v *RunVideoDetectShotResponseBody) *RunVideoDetectShotResponse
 	GetBody() *RunVideoDetectShotResponseBody
 }
@@ -20,6 +24,8 @@ type iRunVideoDetectShotResponse interface {
 type RunVideoDetectShotResponse struct {
 	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                         `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                         `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunVideoDetectShotResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunVideoDetectShotResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunVideoDetectShotResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunVideoDetectShotResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunVideoDetectShotResponse) GetBody() *RunVideoDetectShotResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunVideoDetectShotResponse) SetHeaders(v map[string]*string) *RunVideoD
 
 func (s *RunVideoDetectShotResponse) SetStatusCode(v int32) *RunVideoDetectShotResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunVideoDetectShotResponse) SetId(v string) *RunVideoDetectShotResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunVideoDetectShotResponse) SetEvent(v string) *RunVideoDetectShotResponse {
+	s.Event = &v
 	return s
 }
 

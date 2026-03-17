@@ -13,6 +13,10 @@ type iRunScriptRefineResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunScriptRefineResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunScriptRefineResponse
+	GetId() *string
+	SetEvent(v string) *RunScriptRefineResponse
+	GetEvent() *string
 	SetBody(v *RunScriptRefineResponseBody) *RunScriptRefineResponse
 	GetBody() *RunScriptRefineResponseBody
 }
@@ -20,6 +24,8 @@ type iRunScriptRefineResponse interface {
 type RunScriptRefineResponse struct {
 	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                      `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                      `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunScriptRefineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunScriptRefineResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunScriptRefineResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunScriptRefineResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunScriptRefineResponse) GetBody() *RunScriptRefineResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunScriptRefineResponse) SetHeaders(v map[string]*string) *RunScriptRef
 
 func (s *RunScriptRefineResponse) SetStatusCode(v int32) *RunScriptRefineResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunScriptRefineResponse) SetId(v string) *RunScriptRefineResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunScriptRefineResponse) SetEvent(v string) *RunScriptRefineResponse {
+	s.Event = &v
 	return s
 }
 

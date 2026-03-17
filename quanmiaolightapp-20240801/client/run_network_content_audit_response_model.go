@@ -13,6 +13,10 @@ type iRunNetworkContentAuditResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunNetworkContentAuditResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunNetworkContentAuditResponse
+	GetId() *string
+	SetEvent(v string) *RunNetworkContentAuditResponse
+	GetEvent() *string
 	SetBody(v *RunNetworkContentAuditResponseBody) *RunNetworkContentAuditResponse
 	GetBody() *RunNetworkContentAuditResponseBody
 }
@@ -20,6 +24,8 @@ type iRunNetworkContentAuditResponse interface {
 type RunNetworkContentAuditResponse struct {
 	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                             `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                             `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunNetworkContentAuditResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunNetworkContentAuditResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunNetworkContentAuditResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunNetworkContentAuditResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunNetworkContentAuditResponse) GetBody() *RunNetworkContentAuditResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunNetworkContentAuditResponse) SetHeaders(v map[string]*string) *RunNe
 
 func (s *RunNetworkContentAuditResponse) SetStatusCode(v int32) *RunNetworkContentAuditResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunNetworkContentAuditResponse) SetId(v string) *RunNetworkContentAuditResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunNetworkContentAuditResponse) SetEvent(v string) *RunNetworkContentAuditResponse {
+	s.Event = &v
 	return s
 }
 

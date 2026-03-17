@@ -11,6 +11,8 @@ type iSubmitEnterpriseVocAnalysisTaskRequest interface {
 	GoString() string
 	SetApiKey(v string) *SubmitEnterpriseVocAnalysisTaskRequest
 	GetApiKey() *string
+	SetBatchTask(v bool) *SubmitEnterpriseVocAnalysisTaskRequest
+	GetBatchTask() *bool
 	SetContents(v []*SubmitEnterpriseVocAnalysisTaskRequestContents) *SubmitEnterpriseVocAnalysisTaskRequest
 	GetContents() []*SubmitEnterpriseVocAnalysisTaskRequestContents
 	SetExtraInfo(v string) *SubmitEnterpriseVocAnalysisTaskRequest
@@ -23,6 +25,8 @@ type iSubmitEnterpriseVocAnalysisTaskRequest interface {
 	GetModelId() *string
 	SetOutputFormat(v string) *SubmitEnterpriseVocAnalysisTaskRequest
 	GetOutputFormat() *string
+	SetPositiveFilter(v bool) *SubmitEnterpriseVocAnalysisTaskRequest
+	GetPositiveFilter() *bool
 	SetSourceTrace(v bool) *SubmitEnterpriseVocAnalysisTaskRequest
 	GetSourceTrace() *bool
 	SetTags(v []*SubmitEnterpriseVocAnalysisTaskRequestTags) *SubmitEnterpriseVocAnalysisTaskRequest
@@ -35,6 +39,7 @@ type iSubmitEnterpriseVocAnalysisTaskRequest interface {
 
 type SubmitEnterpriseVocAnalysisTaskRequest struct {
 	ApiKey    *string                                           `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	BatchTask *bool                                             `json:"batchTask,omitempty" xml:"batchTask,omitempty"`
 	Contents  []*SubmitEnterpriseVocAnalysisTaskRequestContents `json:"contents,omitempty" xml:"contents,omitempty" type:"Repeated"`
 	ExtraInfo *string                                           `json:"extraInfo,omitempty" xml:"extraInfo,omitempty"`
 	// example:
@@ -47,6 +52,7 @@ type SubmitEnterpriseVocAnalysisTaskRequest struct {
 	// qwen-max
 	ModelId         *string                                       `json:"modelId,omitempty" xml:"modelId,omitempty"`
 	OutputFormat    *string                                       `json:"outputFormat,omitempty" xml:"outputFormat,omitempty"`
+	PositiveFilter  *bool                                         `json:"positiveFilter,omitempty" xml:"positiveFilter,omitempty"`
 	SourceTrace     *bool                                         `json:"sourceTrace,omitempty" xml:"sourceTrace,omitempty"`
 	Tags            []*SubmitEnterpriseVocAnalysisTaskRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	TaskDescription *string                                       `json:"taskDescription,omitempty" xml:"taskDescription,omitempty"`
@@ -66,6 +72,10 @@ func (s SubmitEnterpriseVocAnalysisTaskRequest) GoString() string {
 
 func (s *SubmitEnterpriseVocAnalysisTaskRequest) GetApiKey() *string {
 	return s.ApiKey
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) GetBatchTask() *bool {
+	return s.BatchTask
 }
 
 func (s *SubmitEnterpriseVocAnalysisTaskRequest) GetContents() []*SubmitEnterpriseVocAnalysisTaskRequestContents {
@@ -92,6 +102,10 @@ func (s *SubmitEnterpriseVocAnalysisTaskRequest) GetOutputFormat() *string {
 	return s.OutputFormat
 }
 
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) GetPositiveFilter() *bool {
+	return s.PositiveFilter
+}
+
 func (s *SubmitEnterpriseVocAnalysisTaskRequest) GetSourceTrace() *bool {
 	return s.SourceTrace
 }
@@ -110,6 +124,11 @@ func (s *SubmitEnterpriseVocAnalysisTaskRequest) GetUrl() *string {
 
 func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetApiKey(v string) *SubmitEnterpriseVocAnalysisTaskRequest {
 	s.ApiKey = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetBatchTask(v bool) *SubmitEnterpriseVocAnalysisTaskRequest {
+	s.BatchTask = &v
 	return s
 }
 
@@ -140,6 +159,11 @@ func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetModelId(v string) *SubmitEnt
 
 func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetOutputFormat(v string) *SubmitEnterpriseVocAnalysisTaskRequest {
 	s.OutputFormat = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetPositiveFilter(v bool) *SubmitEnterpriseVocAnalysisTaskRequest {
+	s.PositiveFilter = &v
 	return s
 }
 

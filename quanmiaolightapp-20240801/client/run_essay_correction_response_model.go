@@ -13,6 +13,10 @@ type iRunEssayCorrectionResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunEssayCorrectionResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunEssayCorrectionResponse
+	GetId() *string
+	SetEvent(v string) *RunEssayCorrectionResponse
+	GetEvent() *string
 	SetBody(v *RunEssayCorrectionResponseBody) *RunEssayCorrectionResponse
 	GetBody() *RunEssayCorrectionResponseBody
 }
@@ -20,6 +24,8 @@ type iRunEssayCorrectionResponse interface {
 type RunEssayCorrectionResponse struct {
 	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                         `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                         `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunEssayCorrectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunEssayCorrectionResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunEssayCorrectionResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunEssayCorrectionResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunEssayCorrectionResponse) GetBody() *RunEssayCorrectionResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunEssayCorrectionResponse) SetHeaders(v map[string]*string) *RunEssayC
 
 func (s *RunEssayCorrectionResponse) SetStatusCode(v int32) *RunEssayCorrectionResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunEssayCorrectionResponse) SetId(v string) *RunEssayCorrectionResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunEssayCorrectionResponse) SetEvent(v string) *RunEssayCorrectionResponse {
+	s.Event = &v
 	return s
 }
 

@@ -23,6 +23,8 @@ type iRunEnterpriseVocAnalysisShrinkRequest interface {
 	GetModelId() *string
 	SetOutputFormat(v string) *RunEnterpriseVocAnalysisShrinkRequest
 	GetOutputFormat() *string
+	SetPositiveFilter(v bool) *RunEnterpriseVocAnalysisShrinkRequest
+	GetPositiveFilter() *bool
 	SetSourceTrace(v bool) *RunEnterpriseVocAnalysisShrinkRequest
 	GetSourceTrace() *bool
 	SetTagsShrink(v string) *RunEnterpriseVocAnalysisShrinkRequest
@@ -52,8 +54,9 @@ type RunEnterpriseVocAnalysisShrinkRequest struct {
 	// example:
 	//
 	// 按照如下格式输出：{"text1": "xxxx", "text2": "xxxx"}
-	OutputFormat *string `json:"outputFormat,omitempty" xml:"outputFormat,omitempty"`
-	SourceTrace  *bool   `json:"sourceTrace,omitempty" xml:"sourceTrace,omitempty"`
+	OutputFormat   *string `json:"outputFormat,omitempty" xml:"outputFormat,omitempty"`
+	PositiveFilter *bool   `json:"positiveFilter,omitempty" xml:"positiveFilter,omitempty"`
+	SourceTrace    *bool   `json:"sourceTrace,omitempty" xml:"sourceTrace,omitempty"`
 	// 业务标签体系，用于对文本内容进行分类和分析。
 	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
 	// example:
@@ -110,6 +113,10 @@ func (s *RunEnterpriseVocAnalysisShrinkRequest) GetOutputFormat() *string {
 	return s.OutputFormat
 }
 
+func (s *RunEnterpriseVocAnalysisShrinkRequest) GetPositiveFilter() *bool {
+	return s.PositiveFilter
+}
+
 func (s *RunEnterpriseVocAnalysisShrinkRequest) GetSourceTrace() *bool {
 	return s.SourceTrace
 }
@@ -154,6 +161,11 @@ func (s *RunEnterpriseVocAnalysisShrinkRequest) SetModelId(v string) *RunEnterpr
 
 func (s *RunEnterpriseVocAnalysisShrinkRequest) SetOutputFormat(v string) *RunEnterpriseVocAnalysisShrinkRequest {
 	s.OutputFormat = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisShrinkRequest) SetPositiveFilter(v bool) *RunEnterpriseVocAnalysisShrinkRequest {
+	s.PositiveFilter = &v
 	return s
 }
 

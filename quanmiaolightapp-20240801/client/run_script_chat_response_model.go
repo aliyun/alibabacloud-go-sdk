@@ -13,6 +13,10 @@ type iRunScriptChatResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunScriptChatResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunScriptChatResponse
+	GetId() *string
+	SetEvent(v string) *RunScriptChatResponse
+	GetEvent() *string
 	SetBody(v *RunScriptChatResponseBody) *RunScriptChatResponse
 	GetBody() *RunScriptChatResponseBody
 }
@@ -20,6 +24,8 @@ type iRunScriptChatResponse interface {
 type RunScriptChatResponse struct {
 	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                    `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                    `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunScriptChatResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunScriptChatResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunScriptChatResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunScriptChatResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunScriptChatResponse) GetBody() *RunScriptChatResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunScriptChatResponse) SetHeaders(v map[string]*string) *RunScriptChatR
 
 func (s *RunScriptChatResponse) SetStatusCode(v int32) *RunScriptChatResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunScriptChatResponse) SetId(v string) *RunScriptChatResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunScriptChatResponse) SetEvent(v string) *RunScriptChatResponse {
+	s.Event = &v
 	return s
 }
 

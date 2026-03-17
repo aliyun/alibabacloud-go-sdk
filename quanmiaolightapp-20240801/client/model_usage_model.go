@@ -18,9 +18,18 @@ type iModelUsage interface {
 }
 
 type ModelUsage struct {
-	InputTokens  *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// example:
+	//
+	// 951
+	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// example:
+	//
+	// 13
 	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
-	TotalTokens  *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+	// example:
+	//
+	// 964
+	TotalTokens *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
 }
 
 func (s ModelUsage) String() string {
