@@ -6099,6 +6099,10 @@ func (client *Client) ListDatasetDocumentsWithContext(ctx context.Context, tmpRe
 		body["IncludeFields"] = request.IncludeFieldsShrink
 	}
 
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		body["PageNumber"] = request.PageNumber
 	}
@@ -11513,6 +11517,58 @@ func (client *Client) SaveMaterialDocumentWithContext(ctx context.Context, tmpRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveMaterialDocumentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置oss访问参数
+//
+// @param request - SaveOrUpdateOssConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveOrUpdateOssConfigResponse
+func (client *Client) SaveOrUpdateOssConfigWithContext(ctx context.Context, request *SaveOrUpdateOssConfigRequest, runtime *dara.RuntimeOptions) (_result *SaveOrUpdateOssConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BucketName) {
+		body["BucketName"] = request.BucketName
+	}
+
+	if !dara.IsNil(request.EndPoint) {
+		body["EndPoint"] = request.EndPoint
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SaveOrUpdateOssConfig"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SaveOrUpdateOssConfigResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

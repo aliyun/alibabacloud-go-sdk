@@ -39,6 +39,8 @@ type iListDatasetDocumentsShrinkRequest interface {
 	GetExtend3() *string
 	SetIncludeFieldsShrink(v string) *ListDatasetDocumentsShrinkRequest
 	GetIncludeFieldsShrink() *string
+	SetNextToken(v string) *ListDatasetDocumentsShrinkRequest
+	GetNextToken() *string
 	SetPageNumber(v int32) *ListDatasetDocumentsShrinkRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListDatasetDocumentsShrinkRequest
@@ -85,6 +87,10 @@ type ListDatasetDocumentsShrinkRequest struct {
 	Extend2             *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
 	Extend3             *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
 	IncludeFieldsShrink *string `json:"IncludeFields,omitempty" xml:"IncludeFields,omitempty"`
+	// example:
+	//
+	// xxx
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// example:
 	//
 	// 1
@@ -178,6 +184,10 @@ func (s *ListDatasetDocumentsShrinkRequest) GetExtend3() *string {
 
 func (s *ListDatasetDocumentsShrinkRequest) GetIncludeFieldsShrink() *string {
 	return s.IncludeFieldsShrink
+}
+
+func (s *ListDatasetDocumentsShrinkRequest) GetNextToken() *string {
+	return s.NextToken
 }
 
 func (s *ListDatasetDocumentsShrinkRequest) GetPageNumber() *int32 {
@@ -284,6 +294,11 @@ func (s *ListDatasetDocumentsShrinkRequest) SetExtend3(v string) *ListDatasetDoc
 
 func (s *ListDatasetDocumentsShrinkRequest) SetIncludeFieldsShrink(v string) *ListDatasetDocumentsShrinkRequest {
 	s.IncludeFieldsShrink = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsShrinkRequest) SetNextToken(v string) *ListDatasetDocumentsShrinkRequest {
+	s.NextToken = &v
 	return s
 }
 

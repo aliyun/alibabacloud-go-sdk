@@ -39,6 +39,8 @@ type iListDatasetDocumentsRequest interface {
 	GetExtend3() *string
 	SetIncludeFields(v []*string) *ListDatasetDocumentsRequest
 	GetIncludeFields() []*string
+	SetNextToken(v string) *ListDatasetDocumentsRequest
+	GetNextToken() *string
 	SetPageNumber(v int32) *ListDatasetDocumentsRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListDatasetDocumentsRequest
@@ -85,6 +87,10 @@ type ListDatasetDocumentsRequest struct {
 	Extend2       *string   `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
 	Extend3       *string   `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
 	IncludeFields []*string `json:"IncludeFields,omitempty" xml:"IncludeFields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xxx
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// example:
 	//
 	// 1
@@ -178,6 +184,10 @@ func (s *ListDatasetDocumentsRequest) GetExtend3() *string {
 
 func (s *ListDatasetDocumentsRequest) GetIncludeFields() []*string {
 	return s.IncludeFields
+}
+
+func (s *ListDatasetDocumentsRequest) GetNextToken() *string {
+	return s.NextToken
 }
 
 func (s *ListDatasetDocumentsRequest) GetPageNumber() *int32 {
@@ -284,6 +294,11 @@ func (s *ListDatasetDocumentsRequest) SetExtend3(v string) *ListDatasetDocuments
 
 func (s *ListDatasetDocumentsRequest) SetIncludeFields(v []*string) *ListDatasetDocumentsRequest {
 	s.IncludeFields = v
+	return s
+}
+
+func (s *ListDatasetDocumentsRequest) SetNextToken(v string) *ListDatasetDocumentsRequest {
+	s.NextToken = &v
 	return s
 }
 

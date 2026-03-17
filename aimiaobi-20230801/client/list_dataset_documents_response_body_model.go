@@ -17,6 +17,8 @@ type iListDatasetDocumentsResponseBody interface {
 	GetHttpStatusCode() *int32
 	SetMessage(v string) *ListDatasetDocumentsResponseBody
 	GetMessage() *string
+	SetNextToken(v string) *ListDatasetDocumentsResponseBody
+	GetNextToken() *string
 	SetPageNumber(v int32) *ListDatasetDocumentsResponseBody
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListDatasetDocumentsResponseBody
@@ -43,6 +45,10 @@ type ListDatasetDocumentsResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// xxx
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// example:
 	//
 	// 1
@@ -89,6 +95,10 @@ func (s *ListDatasetDocumentsResponseBody) GetMessage() *string {
 	return s.Message
 }
 
+func (s *ListDatasetDocumentsResponseBody) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *ListDatasetDocumentsResponseBody) GetPageNumber() *int32 {
 	return s.PageNumber
 }
@@ -126,6 +136,11 @@ func (s *ListDatasetDocumentsResponseBody) SetHttpStatusCode(v int32) *ListDatas
 
 func (s *ListDatasetDocumentsResponseBody) SetMessage(v string) *ListDatasetDocumentsResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBody) SetNextToken(v string) *ListDatasetDocumentsResponseBody {
+	s.NextToken = &v
 	return s
 }
 
