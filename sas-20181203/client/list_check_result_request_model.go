@@ -163,6 +163,10 @@ type ListCheckResultRequest struct {
 	// The Alibaba Cloud account ID of the member in the resource directory.
 	//
 	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+	//
+	// example:
+	//
+	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The risk levels of check items. Separate multiple risk levels with commas (,). Valid values:
 	//

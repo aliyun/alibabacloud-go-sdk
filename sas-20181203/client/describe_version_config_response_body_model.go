@@ -108,199 +108,215 @@ type iDescribeVersionConfigResponseBody interface {
 }
 
 type DescribeVersionConfigResponseBody struct {
-	// The quota for agentless detection.
+	// Number of agentless detections.
 	//
-	// >  The agentless detection feature is unavailable for purchase. You can ignore this parameter.
+	// >Agentless detection is not yet available for sale, so there\\"s no need to pay attention to this field at the moment.
 	//
 	// example:
 	//
 	// 10
 	AgentlessCapacity *int64 `json:"AgentlessCapacity,omitempty" xml:"AgentlessCapacity,omitempty"`
-	// Indicates whether the pay-as-you-go billing method is supported.
+	// Whether to allow pay-as-you-go purchases.
 	//
-	// 	- **0**: no
+	// - **0**: Not allowed
 	//
-	// 	- **1**: yes
+	// - **1**: Allowed
 	//
 	// example:
 	//
 	// 1
 	AllowPartialBuy *int32 `json:"AllowPartialBuy,omitempty" xml:"AllowPartialBuy,omitempty"`
-	// 防勒索备份容量，单位GB。
+	// Ransomware protection backup capacity, in GB.
 	//
 	// example:
 	//
 	// 160
 	AntiRansomwareCapacity *int32 `json:"AntiRansomwareCapacity,omitempty" xml:"AntiRansomwareCapacity,omitempty"`
-	// Switch of anti-ransomware hosting service. Valid values:
+	// Ransomware Guardian Service. Values:
 	//
-	// 	- **0**: off
+	//  - **0**: Not activated
 	//
-	// 	- **1**: on
+	//  - **1**: Activated
 	//
 	// example:
 	//
 	// 1
 	AntiRansomwareService *int32 `json:"AntiRansomwareService,omitempty" xml:"AntiRansomwareService,omitempty"`
-	// Indicates whether the application whitelist feature is enabled. Valid values:
+	// Whether to enable the application whitelist. Values:
 	//
-	// 	- **0**: no
+	// - **0**: Not enabled
 	//
-	// 	- **2**: yes
+	// - **2**: Enabled
 	//
 	// example:
 	//
 	// 2
 	AppWhiteList *int32 `json:"AppWhiteList,omitempty" xml:"AppWhiteList,omitempty"`
-	// The quota for the application whitelist feature.
+	// Number of application whitelist authorizations.
 	//
-	// >  The quantity of servers that are allowed by the quota is deducted by one each time you apply an application whitelist to a server. After you enable the application whitelist feature, the quota is 20 by default.
+	// > One authorization allows the application of a whitelist policy to one server. After enabling the application whitelist function, the account will have 20 authorizations by default.
 	//
 	// example:
 	//
 	// 20
 	AppWhiteListAuthCount *int64 `json:"AppWhiteListAuthCount,omitempty" xml:"AppWhiteListAuthCount,omitempty"`
-	// The quota for servers that can be protected.
+	// Number of purchased server licenses.
 	//
 	// example:
 	//
 	// 30
 	AssetLevel *int32 `json:"AssetLevel,omitempty" xml:"AssetLevel,omitempty"`
-	// Whether it supports the activation of a postpaid trial package. Values:
+	// Whether it supports the activation of a post-paid trial package. Values:
 	//
-	//  - **0**: Not supported
+	// - **0**: Not supported
 	//
-	// - **1**: Supported
+	//  - **1**: Supported
 	//
 	// example:
 	//
 	// 1
 	CanTryPostPaidPackage *int32 `json:"CanTryPostPaidPackage,omitempty" xml:"CanTryPostPaidPackage,omitempty"`
-	// The purchased quota for configuration assessment. Unit: times/month.
+	// Purchased cloud platform configuration check scan count. Unit: times/month.
 	//
 	// example:
 	//
 	// 10
 	CspmCapacity *int64 `json:"CspmCapacity,omitempty" xml:"CspmCapacity,omitempty"`
-	// The most advanced edition that is used. Valid values:
+	// Purchase the highest version of the Security Center. Values:
 	//
-	// 	- **1**: Basic edition
+	//  - **1**: Free Edition
 	//
-	// 	- **3**: Enterprise edition
+	// - **3**: Enterprise Edition
 	//
-	// 	- **5**: Advanced edition
+	// - **5**: Advanced Edition
 	//
-	// 	- **6**: Anti-virus edition
+	// - **6**: Anti-Virus Edition
 	//
-	// 	- **7**: Ultimate edition
+	//  - **7**: Flagship Edition
 	//
-	// 	- **10**: Value-added Plan edition
+	// - **10**: Purchase Additional Services Only
 	//
-	// >  If you purchase the Multi-version edition of Security Center, the value indicates the most advanced edition that is used in the Multi-version edition. If you do not purchase the Multi-version edition of Security Center, the value indicates the edition of Security Center.
+	// > When purchasing a single version, it indicates the corresponding version. When purchasing multiple versions, this value represents the highest version among the purchased multi-versions of Cloud Security Center.
 	//
 	// example:
 	//
 	// 1
 	HighestVersion *int32 `json:"HighestVersion,omitempty" xml:"HighestVersion,omitempty"`
-	// The purchased quota for the cloud honeypot feature.
+	// Number of purchased honeypot licenses.
 	//
 	// example:
 	//
 	// 20
 	HoneypotCapacity *int64 `json:"HoneypotCapacity,omitempty" xml:"HoneypotCapacity,omitempty"`
-	// The purchased quota for the container image scan feature.
+	// Number of purchased image scanning authorizations.
 	//
 	// example:
 	//
 	// 8954
 	ImageScanCapacity *int64 `json:"ImageScanCapacity,omitempty" xml:"ImageScanCapacity,omitempty"`
-	// Instance purchase type. Values: - **0**: Self-purchased - **1**: Multi-account allocation
+	// Instance purchase type. Values:
+	//
+	// - **0**: Self-purchased
+	//
+	//  - **1**: Allocated from multiple accounts
 	//
 	// example:
 	//
 	// 0
 	InstanceBuyType *int32 `json:"InstanceBuyType,omitempty" xml:"InstanceBuyType,omitempty"`
-	// The ID of purchased Security Center.
+	// ID of the purchased Cloud Security Center instance.
 	//
 	// example:
 	//
 	// sas-vg6hafdsafs****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// AI digital human analyzes traffic
+	//
 	// example:
 	//
 	// 100
 	IntelligentAnalysisFlow *int32 `json:"IntelligentAnalysisFlow,omitempty" xml:"IntelligentAnalysisFlow,omitempty"`
-	// Indicates whether Security Center runs the latest version of the Ultimate edition.
+	// Whether it is the new flagship version.
 	//
-	// 	- **true**: yes
+	// - **true**: It is the latest version
 	//
-	// 	- **false**: no
+	// - **false**: It is not the latest version
 	//
 	// example:
 	//
 	// true
 	IsNewContainerVersion *bool `json:"IsNewContainerVersion,omitempty" xml:"IsNewContainerVersion,omitempty"`
-	// Indicates whether Security Center runs the latest version of the Multi-version edition. Valid values:
+	// Whether it is the latest multi-version.
 	//
-	// 	- **true**
+	// - **true**: It is the latest multi-version
 	//
-	// 	- **false**
+	// - **false**: It is not the latest multi-version
 	//
 	// example:
 	//
 	// true
 	IsNewMultiVersion *bool `json:"IsNewMultiVersion,omitempty" xml:"IsNewMultiVersion,omitempty"`
-	// Indicates whether the number of existing servers exceeds the purchased quota. Valid values:
+	// Whether the number of existing servers exceeds the maximum authorized purchase quantity. Values:
 	//
-	// 	- **false**: no
+	// - **false**: Not exceeded
 	//
-	// 	- **true**: yes
+	// - **true**: Exceeded
 	//
-	// 	Notice: This parameter is deprecated. You can ignore it.
+	// 	Notice: This parameter is deprecated, and you do not need to pay attention to it.
 	//
 	// example:
 	//
 	// false
 	IsOverBalance *bool `json:"IsOverBalance,omitempty" xml:"IsOverBalance,omitempty"`
-	// Indicates whether the pay-as-you-go billing method is used. Valid values:
+	// Whether to enable pay-as-you-go. Values:
 	//
-	// 	- **false**
+	// - **false**: Not enabled
 	//
-	// 	- **true**
+	// - **true**: Enabled
 	//
 	// example:
 	//
 	// true
 	IsPostpay *bool `json:"IsPostpay,omitempty" xml:"IsPostpay,omitempty"`
-	// Indicates whether Security Center runs the free trial edition. Valid values:
+	// Indicates whether the current Cloud Security Center version is a trial version. Values:
 	//
-	// 	- **0**: no
+	// - **0**: Not a trial version
 	//
-	// 	- **1**: yes
+	// - **1**: Trial version
 	//
 	// example:
 	//
 	// 0
 	IsTrialVersion *int32 `json:"IsTrialVersion,omitempty" xml:"IsTrialVersion,omitempty"`
-	// The timestamp when the last trial of Security Center ends. Unit: milliseconds.
+	// The timestamp of the last trial expiration for Cloud Security Center, in milliseconds.
 	//
 	// example:
 	//
 	// 1603934844000
 	LastTrailEndTime *int64 `json:"LastTrailEndTime,omitempty" xml:"LastTrailEndTime,omitempty"`
-	// The total quota in the Multi-version edition of purchased Security Center.
+	// Total number of licenses when purchasing multiple versions.
 	//
 	// example:
 	//
 	// 5000
 	MVAuthCount *int32 `json:"MVAuthCount,omitempty" xml:"MVAuthCount,omitempty"`
-	// The total remaining quota in the Multi-version edition of purchased Security Center.
+	// Total remaining licenses when purchasing multiple versions.
 	//
 	// example:
 	//
 	// 40
 	MVUnusedAuthCount *int32 `json:"MVUnusedAuthCount,omitempty" xml:"MVUnusedAuthCount,omitempty"`
-	// When both the annual/monthly and pay-as-you-go services of Cloud Security Center\\"s host and container security are activated, the higher protection version among the two is selected. Values: - **1**: Free Edition - **6**: Anti-Virus Edition - **5**: Advanced Edition - **3**: Enterprise Edition - **7**: Ultimate Edition
+	// When both the annual/monthly and pay-as-you-go services for Cloud Security Center\\"s host and container security are activated, the higher protection version of the two is selected. Values:
+	//
+	// - **1**: Free Edition
+	//
+	//  - **6**: Anti-Virus Edition
+	//
+	// - **5**: Advanced Edition
+	//
+	// - **3**: Enterprise Edition
+	//
+	// - **7**: Ultimate Edition
 	//
 	// example:
 	//
@@ -312,181 +328,211 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// null
 	MultiVersion *string `json:"MultiVersion,omitempty" xml:"MultiVersion,omitempty"`
-	// Indicates whether the new version of the threat analysis and response feature is enabled. With the new version, you can purchase the amount of log data that you want to add to the feature and log storage capacity. Valid values:
+	// Whether to enable the new version of Threat Analysis and Response service. The new version of Threat Analysis and Response service refers to the one that supports purchasing access traffic and log storage capacity. Values:
 	//
-	// 	- **0**: no
+	// - **0**: No
 	//
-	// 	- **1**: yes
+	// - **1**: Yes
 	//
 	// example:
 	//
 	// 1
 	NewThreatAnalysis *int32 `json:"NewThreatAnalysis,omitempty" xml:"NewThreatAnalysis,omitempty"`
+	// AI Digital Human Management Instance
+	//
 	// example:
 	//
 	// 10
 	OnboardedAssets *int32 `json:"OnboardedAssets,omitempty" xml:"OnboardedAssets,omitempty"`
-	// The timestamp when Security Center is purchased. Unit: milliseconds.
+	// Service activation timestamp, unit: milliseconds.
 	//
 	// example:
 	//
 	// 1657244824669
 	OpenTime *int64 `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
-	// When activating the pay-as-you-go service for host and container security, this represents the highest protection version for the already bound assets. The values are as follows: - **1**: Free Edition - **3**: Enterprise Edition - **5**: Advanced Edition - **6**: Anti-Virus Edition - **7**: Flagship Edition
+	// When activating the pay-as-you-go service for host and container security, it represents the highest protection version of the already bound assets. Values:
+	//
+	// - **1**: Free Edition
+	//
+	//  - **3**: Enterprise Edition
+	//
+	//  - **5**: Advanced Edition
+	//
+	//  - **6**: Anti-Virus Edition
+	//
+	// - **7**: Flagship Edition
 	//
 	// example:
 	//
 	// 7
 	PostPayHostVersion *int32 `json:"PostPayHostVersion,omitempty" xml:"PostPayHostVersion,omitempty"`
-	// The instance ID of Security Center that uses the pay-as-you-go billing method.
+	// Pay-As-You-Go instance ID.
 	//
 	// example:
 	//
 	// postpay-sas-**
 	PostPayInstanceId *string `json:"PostPayInstanceId,omitempty" xml:"PostPayInstanceId,omitempty"`
-	// The configuration of the pay-as-you-go module. Valid values:
+	// Pay-as-you-go module switch status, in the format of JsonString, with values as follows:
 	//
-	// 	- **VUL**: vulnerability fixing module
+	//  - Key:
+	//
+	//    	- **VUL**: Vulnerability Repair Module
+	//
+	//    	- **CSPM**: Cloud Security Posture Management Module
+	//
+	//    	- **AGENTLESS**: Agentless Detection Module
+	//
+	//    	- **SERVERLESS**: Serverless Security Module
+	//
+	//    	- **CTDR**: Threat Analysis and Response Module
+	//
+	//    	- **POST_HOST**: Host and Container Security Module
+	//
+	//    	- **SDK**: Malicious File Detection SDK Module
+	//
+	//    	- **RASP**: Application Protection Module
+	//
+	//  - Value: 0 indicates off, 1 indicates on
 	//
 	// example:
 	//
 	// {"VUL":1}
 	PostPayModuleSwitch *string `json:"PostPayModuleSwitch,omitempty" xml:"PostPayModuleSwitch,omitempty"`
-	// The creation time of Security Center that uses the pay-as-you-go billing method.
+	// Pay-as-you-go activation time
 	//
 	// example:
 	//
 	// 1698915219000
 	PostPayOpenTime *int64 `json:"PostPayOpenTime,omitempty" xml:"PostPayOpenTime,omitempty"`
-	// The status of Security Center that uses the pay-as-you-go billing method. Valid values:
+	// Pay-As-You-Go instance status. Values:
 	//
-	// 	- **1**: The instance runs as expected.
+	// - **1**: Normal
 	//
-	// 	- **2**: The instance is stopped due to overdue payments.
+	// - **2**: Stopped due to unpaid bills
 	//
 	// example:
 	//
 	// 1
 	PostPayStatus *int32 `json:"PostPayStatus,omitempty" xml:"PostPayStatus,omitempty"`
-	// The purchased quota for application protection. Unit: process/month.
+	// Number of purchased application protections. Unit: per month.
 	//
 	// example:
 	//
 	// 10
 	RaspCapacity *int64 `json:"RaspCapacity,omitempty" xml:"RaspCapacity,omitempty"`
-	// The timestamp when the Security Center subscription ends. Unit: milliseconds.
+	// The timestamp of when the Cloud Security Center instance will expire, in milliseconds.
 	//
-	// >  If you do not renew the subscription within seven days after the expiration date, Security Center of a paid edition is automatically downgraded to Security Center Basic. In this case, you can no longer use the features of the paid edition or view the existing configurations or statistics such as DDoS alerts in Security Center. You must purchase Security Center of a paid edition to use relevant features. For more information, see [Purchase Security Center](https://help.aliyun.com/document_detail/42308.html).
+	// > If you do not renew the service within 7 days after it expires, your paid instance will be downgraded to a free version, and you will no longer be able to use the features of the paid version. Your previous Cloud Security Center configuration data and historical alert data (e.g., DDoS alerts) will become inaccessible. At this point, you can only re-enable the paid version of Cloud Security Center by repurchasing it. For more information, see [Purchasing Cloud Security Center](https://help.aliyun.com/document_detail/42308.html).
 	//
 	// example:
 	//
 	// 1625846400000
 	ReleaseTime *int64 `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
-	// The ID of the request.
+	// The unique identifier generated by Alibaba Cloud for this request.
 	//
 	// example:
 	//
 	// C2DC96D2-DD2E-49D9-A28E-85590475DF55
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether log analysis is purchased. Valid values:
+	// Whether log analysis has been purchased. Values:
 	//
-	// 	- **0**: no
+	// - **0**: Not purchased
 	//
-	// 	- **1**: yes
+	// - **1**: Purchased
 	//
 	// example:
 	//
 	// 1
 	SasLog *int32 `json:"SasLog,omitempty" xml:"SasLog,omitempty"`
-	// Indicates whether the security screen feature is purchased. Valid values:
+	// Whether the security dashboard has been purchased. Values:
 	//
-	// 	- **0**: no
+	// - **0**: Not purchased
 	//
-	// 	- **1**: yes
+	// - **1**: Purchased
 	//
 	// example:
 	//
 	// 0
 	SasScreen *int32 `json:"SasScreen,omitempty" xml:"SasScreen,omitempty"`
-	// The purchased quota for malicious file detection SDK. Unit: process/month.
+	// Number of SDK authorizations for malicious file detection
 	//
 	// example:
 	//
-	// 100
+	// 10
 	SdkCapacity *int64 `json:"SdkCapacity,omitempty" xml:"SdkCapacity,omitempty"`
-	// The log storage capacity that you purchase. Unit: GB. Valid values: 0 to 200000.
+	// Purchased log storage capacity in GB. Range: 0 to 200000.
 	//
 	// example:
 	//
 	// 10240
 	SlsCapacity *int64 `json:"SlsCapacity,omitempty" xml:"SlsCapacity,omitempty"`
-	// The purchased log storage capacity for threat analysis. Unit: GB.
+	// Purchased threat analysis capacity. Unit: GB.
 	//
 	// example:
 	//
 	// 25
 	ThreatAnalysisCapacity *int64 `json:"ThreatAnalysisCapacity,omitempty" xml:"ThreatAnalysisCapacity,omitempty"`
-	// The amount of log data that you purchase for the threat analysis and response feature. Unit: GB-day.
+	// Purchased threat analysis and response log access traffic. Unit is GB/day.
 	//
 	// example:
 	//
 	// 10
 	ThreatAnalysisFlow *int32 `json:"ThreatAnalysisFlow,omitempty" xml:"ThreatAnalysisFlow,omitempty"`
-	// Indicates whether the custom alert feature is enabled. Valid values:
+	// Whether to enable the custom alarm function. Values:
 	//
-	// 	- **0**: no
+	//  - **0**: Not enabled
 	//
-	// 	- **2**: yes
+	// - **2**: Enabled
 	//
 	// example:
 	//
 	// 0
 	UserDefinedAlarms *int32 `json:"UserDefinedAlarms,omitempty" xml:"UserDefinedAlarms,omitempty"`
-	// The edition of purchased Security Center. Valid values:
+	// Purchased Cloud Security Center version. Values:
 	//
-	// 	- **1**: Basic edition
+	// - **1**: Free Edition
 	//
-	// 	- **3**: Enterprise edition
+	//  - **3**: Enterprise Edition
 	//
-	// 	- **5**: Advanced edition
+	// - **5**: Advanced Edition
 	//
-	// 	- **6**: Anti-virus edition
+	// - **6**: Anti-Virus Edition
 	//
-	// 	- **7**: Ultimate edition
+	// - **7**: Flagship Edition
 	//
-	// 	- **8**: Multi-version edition
+	//  - **8**: Multi-Edition
 	//
-	// 	- **10**: Value-added Plan edition
+	//   - **10**: Value-Added Services Only
 	//
 	// example:
 	//
 	// 3
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The quota for the cores of servers that can be protected.
+	// Number of authorized cores purchased.
 	//
 	// example:
 	//
 	// 10
 	VmCores *int32 `json:"VmCores,omitempty" xml:"VmCores,omitempty"`
-	// The purchased quota for vulnerability fixing. Unit: times/month.
+	// Number of purchased vulnerability fixes. Unit: times/month.
 	//
 	// example:
 	//
 	// 10
 	VulFixCapacity *int64 `json:"VulFixCapacity,omitempty" xml:"VulFixCapacity,omitempty"`
-	// Indicates whether the web tamper proofing feature is enabled. Valid values:
+	// Indicates whether the web tamper-proof service is enabled. Values:
 	//
-	// 	- **0**: no
+	// - **0**: Not enabled
 	//
-	// 	- **1**: yes
+	// - **1**: Enabled
 	//
 	// example:
 	//
 	// 0
 	WebLock *int32 `json:"WebLock,omitempty" xml:"WebLock,omitempty"`
-	// The quota for the web tamper proofing feature. The quantity of servers that are allowed by the quota is deducted by one each time a server is protected by the web tamper proofing feature. Valid values: 0 to N.
+	// The number of purchased web tamper-proof licenses. One license can enable web tamper protection for one server. Value range: 0~N.
 	//
-	// >  N indicates the number of servers that you own.
+	//  >N is the number of servers you have.
 	//
 	// example:
 	//

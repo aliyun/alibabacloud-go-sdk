@@ -290,6 +290,8 @@ type ListCheckResultResponseBodyChecks struct {
 	//
 	// 	- **WHITELIST**: added to the whitelist
 	//
+	// 	- **FAILED**: failed
+	//
 	// example:
 	//
 	// PASS

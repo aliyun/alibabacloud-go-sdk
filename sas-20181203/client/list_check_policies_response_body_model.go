@@ -84,7 +84,7 @@ func (s *ListCheckPoliciesResponseBody) Validate() error {
 }
 
 type ListCheckPoliciesResponseBodyPageInfo struct {
-	// 分页查询时，当前页显示的数据条数。
+	// The number of data entries displayed on the current page when performing a paginated query.
 	//
 	// example:
 	//
@@ -201,17 +201,17 @@ type ListCheckPoliciesResponseBodyPolicies struct {
 	//
 	// STANDARD
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// 关联的策略大类的名称（PolicyType取值为STANDARD时为必填）：
+	// Name of the associated major policy category (required when PolicyType is STANDARD):
 	//
-	// - **AISPM**：AI配置管理（AI-SPM）
+	// - **AISPM**: AI Configuration Management (AI-SPM)
 	//
-	// - **KISPM**：Kubernetes配置管理(KSPM)
+	// - **KISPM**: Kubernetes Configuration Management (KSPM)
 	//
-	// - **IDENTITY_PERMISSION**：身份权限管理(CIEM)
+	// - **IDENTITY_PERMISSION**: Identity and Permission Management (CIEM)
 	//
-	// - **RISK**：安全风险
+	//  - **RISK**: Security Risk
 	//
-	// - **COMPLIANCE**：合规风险
+	//  - **COMPLIANCE**: Compliance Risk
 	//
 	// example:
 	//

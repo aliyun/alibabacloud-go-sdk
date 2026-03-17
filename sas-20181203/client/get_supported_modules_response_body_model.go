@@ -137,7 +137,8 @@ type GetSupportedModulesResponseBodySupportedModuleResponseSupportedModules stru
 	// example:
 	//
 	// HOST
-	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	Module     *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	ModuleAuth *bool   `json:"ModuleAuth,omitempty" xml:"ModuleAuth,omitempty"`
 	// The display name of the module.
 	//
 	// example:
@@ -158,12 +159,21 @@ func (s *GetSupportedModulesResponseBodySupportedModuleResponseSupportedModules)
 	return s.Module
 }
 
+func (s *GetSupportedModulesResponseBodySupportedModuleResponseSupportedModules) GetModuleAuth() *bool {
+	return s.ModuleAuth
+}
+
 func (s *GetSupportedModulesResponseBodySupportedModuleResponseSupportedModules) GetModuleDisp() *string {
 	return s.ModuleDisp
 }
 
 func (s *GetSupportedModulesResponseBodySupportedModuleResponseSupportedModules) SetModule(v string) *GetSupportedModulesResponseBodySupportedModuleResponseSupportedModules {
 	s.Module = &v
+	return s
+}
+
+func (s *GetSupportedModulesResponseBodySupportedModuleResponseSupportedModules) SetModuleAuth(v bool) *GetSupportedModulesResponseBodySupportedModuleResponseSupportedModules {
+	s.ModuleAuth = &v
 	return s
 }
 

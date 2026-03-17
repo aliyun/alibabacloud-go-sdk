@@ -24,34 +24,34 @@ type iDescribeAntiBruteForceRulesRequest interface {
 }
 
 type DescribeAntiBruteForceRulesRequest struct {
-	// The number of the page to return. Default value: **1**.
+	// Set which page of the returned results to start displaying the query results. The default value is **1**, indicating that the display starts from the first page.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The ID of the defense rule.
+	// The ID of the anti-brute force rule.
 	//
-	// > You can call the [DescribeAntiBruteForceRules](~~DescribeAntiBruteForceRules~~) operation to query the IDs of defense rules.
+	// > You can obtain this parameter by calling the [DescribeAntiBruteForceRules](~~DescribeAntiBruteForceRules~~) interface.
 	//
 	// example:
 	//
 	// 1141****
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the rule.
+	// The name of the brute force rule.
 	//
 	// example:
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of data entries displayed per page during a paginated query.
 	//
 	// example:
 	//
 	// 10
 	PageSize        *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//

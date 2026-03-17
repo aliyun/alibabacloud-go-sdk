@@ -94,7 +94,7 @@ type ListCheckItemsResponseBodyCheckItems struct {
 	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
 	// A list of standard, regulation, and section information associated with the check result.
 	CheckPolicies []*ListCheckItemsResponseBodyCheckItemsCheckPolicies `json:"CheckPolicies,omitempty" xml:"CheckPolicies,omitempty" type:"Repeated"`
-	// 自定义检查项定义规则。
+	// Define rules for custom inspection items.
 	//
 	// example:
 	//
@@ -402,7 +402,7 @@ type ListCheckItemsResponseBodyCheckItemsCheckPolicies struct {
 	//
 	// testSectionShowName
 	SectionShowName *string `json:"SectionShowName,omitempty" xml:"SectionShowName,omitempty"`
-	// 检查项的标准ID。
+	// Standard ID of the inspection item.
 	//
 	// example:
 	//

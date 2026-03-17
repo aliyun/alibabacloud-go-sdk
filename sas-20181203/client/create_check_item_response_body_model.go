@@ -62,7 +62,7 @@ func (s *CreateCheckItemResponseBody) Validate() error {
 }
 
 type CreateCheckItemResponseBodyData struct {
-	// 创建成功返回的检查项ID。
+	// The ID of the inspection item returned upon successful creation.
 	//
 	// example:
 	//

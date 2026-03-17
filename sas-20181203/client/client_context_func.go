@@ -9157,7 +9157,7 @@ func (client *Client) DescribeAllRegionsStatisticsWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries created defense rules against brute-force attacks.
+// # Query the list of anti-brute force rules
 //
 // @param request - DescribeAntiBruteForceRulesRequest
 //
@@ -19649,7 +19649,7 @@ func (client *Client) DescribeRestorePlansWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// 该接口已下线，使用升级接口ListCheckInstanceResult替换。
+// This interface has been deprecated. Use the upgraded interface ListCheckInstanceResult instead.
 //
 // @param request - DescribeRiskCheckItemResultRequest
 //
@@ -27589,7 +27589,7 @@ func (client *Client) GetCloudAssetDetailWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取云资产概要
+// # Get Cloud Asset Summary
 //
 // @param request - GetCloudAssetSummaryRequest
 //
@@ -28441,7 +28441,7 @@ func (client *Client) GetHoneyPotUploadPolicyInfoWithContext(ctx context.Context
 
 // Summary:
 //
-// 获取蜜罐攻击事件的统计数据。
+// # Get honeypot attack statistics
 //
 // @param request - GetHoneypotAttackStatisticsRequest
 //
@@ -33651,7 +33651,7 @@ func (client *Client) ListCloudAssetMatchOperatorsWithContext(ctx context.Contex
 
 // Summary:
 //
-// 获取云产品资产结构列表
+// # Get the list of cloud product asset structure
 //
 // @param request - ListCloudAssetSchemasRequest
 //

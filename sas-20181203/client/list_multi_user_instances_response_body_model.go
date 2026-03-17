@@ -2193,7 +2193,7 @@ func (s *ListMultiUserInstancesResponseBodySaleInstanceListVersionSummaryCoreCou
 }
 
 type ListMultiUserInstancesResponseBodySaleInstanceListVersionSummaryEcsCount struct {
-	// 已分配已购授权台数。
+	// Number of purchased licenses allocated.
 	//
 	// example:
 	//

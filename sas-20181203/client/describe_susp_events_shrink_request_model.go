@@ -381,7 +381,7 @@ type DescribeSuspEventsShrinkRequest struct {
 	//
 	// Y
 	StrictMode *string `json:"StrictMode,omitempty" xml:"StrictMode,omitempty"`
-	// 告警支持的操作类型列表。
+	// List of supported alarm operation types
 	SupportOperateCodeList []*string `json:"SupportOperateCodeList,omitempty" xml:"SupportOperateCodeList,omitempty" type:"Repeated"`
 	// The tactic ID of ATT\\&CK.
 	//

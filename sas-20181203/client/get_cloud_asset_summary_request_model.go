@@ -62,119 +62,117 @@ func (s *GetCloudAssetSummaryRequest) Validate() error {
 }
 
 type GetCloudAssetSummaryRequestCloudAssetTypes struct {
-	// 云产品的子类型。
+	// Subtypes of cloud products. Asset type-subtype. Values:
 	//
-	// 资产的类型-子类型。取值：
+	// - **0**: ECS (Elastic Compute Service)
 	//
-	// - **0**：云服务器 ECS
+	//   	- **1**: Disk (Storage)
 	//
-	//     	- **1**：磁盘（存储）
+	//   	- **2**: Security Group
 	//
-	//     	- **2**：安全组
+	//   	- **100**: Instance
 	//
-	//     	- **100**：实例
+	// - **1**: Load Balancer
 	//
-	// - **1**：负载均衡
+	//   	- **0**: Load Balancer
 	//
-	//     	- **0**：负载均衡
+	//   	- **1**: Application Load Balancer
 	//
-	//     	- **1**：应用型负载均衡
+	// - **3**: ApsaraDB RDS
 	//
-	// - **3**：云数据库 RDS
+	//   	- **0**: Instance
 	//
-	//     	- **0**：实例
+	// - **4**: ApsaraDB for MongoDB
 	//
-	// - **4**：云数据库 MongoDB 版
+	//   	- **0**: Instance
 	//
-	//     	- **0**：实例
+	// - **5**: ApsaraDB Tair (Redis Compatible)
 	//
-	// - **5**：云数据库 Tair（兼容 Redis）
+	//   	- **0**: Instance
 	//
-	//     	- **0**：实例
+	// - **6**: Container Registry
 	//
-	// - **6**：容器镜像服务
+	//   	- **1**: Enterprise Edition
 	//
-	//     	- **1**：企业版
+	//   	- **2**: Personal Edition
 	//
-	//     	- **2**：个人版
+	// - **8**: Container Service for Kubernetes
 	//
-	// - **8**：容器服务Kubernetes版
+	//   	- **0**: Cluster
 	//
-	//     	- **0**：集群
+	// - **9**: Virtual Private Cloud (VPC)
 	//
-	// - **9**：专有网络VPC
+	//   	- **0**: NAT Gateway
 	//
-	//     	- **0**：NAT网关
+	//   	- **1**: EIP (Elastic IP)
 	//
-	//     	- **1**：EIP
+	//   	- **2**: VPN
 	//
-	//     	- **2**：VPN
+	//   	- **3**: FLOW_LOG
 	//
-	//     	- **3**：FLOW_LOG
+	// - **11**: ActionTrail
 	//
-	// - **11**：操作审计
+	//   	- **0**: Trail
 	//
-	//     	- **0**：跟踪
+	// - **12**: CDN
 	//
-	// - **12**：CDN
+	//   	- **0**: Instance
 	//
-	//     	- **0**：实例
+	// - **13**: Digital Certificate Management Service (formerly SSL Certificates)
 	//
-	// - **13**：数字证书管理服务（原SSL证书）
+	//   	- **0**: Certificate
 	//
-	//     	- **0**：证书
+	// - **14**: DevOps
 	//
-	// - **14**：云效
+	//   	- **0**: Organization
 	//
-	//     	- **0**：组织
+	// - **16**: DDoS Protection
 	//
-	// - **16**：DDoS防护
+	//   	- **0**: Instance
 	//
-	//     	- **0**：实例
+	// - **17**: Web Application Firewall
 	//
-	// - **17**：Web应用防火墙
+	//   	- **0**: Domain
 	//
-	//     	- **0**：域名
+	// - **18**: Object Storage
 	//
-	// - **18**：对象存储
+	//   	- **0**: Bucket
 	//
-	//     	- **0**：Bucket
+	// - **19**: PolarDB (Cloud-Native Relational Database)
 	//
-	// - **19**：云原生关系型数据库 PolarDB
+	//   	- **0**: Cluster
 	//
-	//     	- **0**：集群
+	// - **20**: ApsaraDB for PostgreSQL
 	//
-	// - **20**：云数据库 PostgreSQL 版
+	//   	- **0**: Instance
 	//
-	//     	- **0**：实例
+	// - **21**: Microservices Engine
 	//
-	// - **21**：微服务引擎
+	//   	- **0**: Cluster
 	//
-	//     	- **0**：集群
+	// - **22**: File Storage NAS
 	//
-	// - **22**：文件存储NAS
+	//   	- **0**: File System
 	//
-	//     	- **0**：文件系统
+	// - **23**: Data Security Center
 	//
-	// - **23**：数据安全中心
+	//   	- **0**: Instance
 	//
-	//     	- **0**：实例
+	// - **24**: Elastic Public IP
 	//
-	// - **24**：弹性公网IP
+	//   	- **0**: Anycast Elastic Public IP
 	//
-	//     	- **0**：任播弹性公网IP
+	// - **25**: Cloud Identity Service - EIAM
 	//
-	// - **25**：云身份服务-EIAM
+	//   	- **0**: Instance
 	//
-	//     	- **0**：实例
+	// - **26**: PolarDB-X
 	//
-	// - **26**：PolarDB-X
+	//   	- **0**: Instance
 	//
-	//     	- **0**：实例
+	// - **27**: Elasticsearch
 	//
-	// - **27**：Elasticsearch
-	//
-	//     	- **0**：实例
+	//   	- **0**: Instance
 	//
 	// example:
 	//

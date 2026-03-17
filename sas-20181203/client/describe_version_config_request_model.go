@@ -16,15 +16,15 @@ type iDescribeVersionConfigRequest interface {
 }
 
 type DescribeVersionConfigRequest struct {
-	// The ID of the Alibaba Cloud account that uses Security Center.
+	// The Alibaba Cloud account ID using the Cloud Security Center service.
 	//
-	// >  You can call the [GetUser](https://help.aliyun.com/document_detail/28681.html) operation to query the IDs of Alibaba Cloud accounts.
+	// > Call the [GetUser](https://help.aliyun.com/document_detail/28681.html) API to obtain this parameter.
 	//
 	// example:
 	//
 	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//

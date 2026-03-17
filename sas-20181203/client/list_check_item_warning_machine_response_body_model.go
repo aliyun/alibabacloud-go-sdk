@@ -84,7 +84,7 @@ func (s *ListCheckItemWarningMachineResponseBody) Validate() error {
 }
 
 type ListCheckItemWarningMachineResponseBodyList struct {
-	// 云产品资产的类型。
+	// Type of cloud product assets
 	//
 	// example:
 	//

@@ -28,37 +28,37 @@ type iGetHoneypotAttackStatisticsRequest interface {
 }
 
 type GetHoneypotAttackStatisticsRequest struct {
-	// The page number. Pages start from page **1**. Default value: **1**.
+	// Set the page number from which to start displaying the query results. The starting value is **1**. The default value is **1**, indicating that the display starts from the **1st*	- page.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end time. The value is a UNIX timestamp.
+	// End time, in timestamp format.
 	//
 	// example:
 	//
 	// 1675058931215
 	EndTimeStamp *int64 `json:"EndTimeStamp,omitempty" xml:"EndTimeStamp,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// Sets the language type for requests and received messages, default is **zh**. Values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page. We recommend that you do not leave this parameter empty.
+	// Specifies the maximum number of data entries displayed per page for paginated queries. The default number of entries displayed per page is 20. If the pagesize parameter is empty, 20 entries will be returned by default. It is recommended that the pagesize value should not be empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The risk levels.
+	// List of risk levels
 	RiskLevelList []*string `json:"RiskLevelList,omitempty" xml:"RiskLevelList,omitempty" type:"Repeated"`
-	// The source IP address of the attack.
+	// Attacker\\"s IP
 	//
 	// This parameter is required.
 	//
@@ -66,21 +66,21 @@ type GetHoneypotAttackStatisticsRequest struct {
 	//
 	// 47.92.139.**
 	SrcIp *string `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
-	// The start time. The value is a UNIX timestamp.
+	// Start time, in timestamp format.
 	//
 	// example:
 	//
 	// 1681624877761
 	StartTimeStamp *int64 `json:"StartTimeStamp,omitempty" xml:"StartTimeStamp,omitempty"`
-	// The type of the attack source statistics. Valid values:
+	// The type of attack source statistics. Values:
 	//
-	// 	- **TOP_ATTACKED_AGENT**: the top 5 probes that are attacked the most frequently
+	// - **TOP_ATTACKED_AGENT**: Top 5 most attacked probes.
 	//
-	// 	- **TOP_ATTACKED_IP**: the top 5 IP addresses that are attacked the most frequently
+	// - **TOP_ATTACKED_IP**: Top 5 most attacked IP addresses.
 	//
-	// 	- **ATTACK_EVENT_TYPE**: the type of the intrusion event
+	//  - **ATTACK_EVENT_TYPE**: Type of intrusion event.
 	//
-	// 	- **ATTACK_HONEYPOT_TYPE**: the type of the attacked honeypot
+	// - **ATTACK_HONEYPOT_TYPE**: Type of compromised honeypot.
 	//
 	// This parameter is required.
 	//
