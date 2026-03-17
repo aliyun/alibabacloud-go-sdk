@@ -13,6 +13,8 @@ type iGetYaoChiAgentResponseBody interface {
 	GetContent() *string
 	SetFunctionCall(v []*GetYaoChiAgentResponseBodyFunctionCall) *GetYaoChiAgentResponseBody
 	GetFunctionCall() []*GetYaoChiAgentResponseBodyFunctionCall
+	SetParentId(v string) *GetYaoChiAgentResponseBody
+	GetParentId() *string
 	SetProduct(v string) *GetYaoChiAgentResponseBody
 	GetProduct() *string
 	SetQueryId(v string) *GetYaoChiAgentResponseBody
@@ -23,6 +25,8 @@ type iGetYaoChiAgentResponseBody interface {
 	GetRequestId() *string
 	SetSessionId(v string) *GetYaoChiAgentResponseBody
 	GetSessionId() *string
+	SetSubAgentCall(v []*GetYaoChiAgentResponseBodySubAgentCall) *GetYaoChiAgentResponseBody
+	GetSubAgentCall() []*GetYaoChiAgentResponseBodySubAgentCall
 	SetUiFunctionCall(v []*GetYaoChiAgentResponseBodyUiFunctionCall) *GetYaoChiAgentResponseBody
 	GetUiFunctionCall() []*GetYaoChiAgentResponseBodyUiFunctionCall
 }
@@ -33,6 +37,7 @@ type GetYaoChiAgentResponseBody struct {
 	// xxx
 	Content      *string                                   `json:"Content,omitempty" xml:"Content,omitempty"`
 	FunctionCall []*GetYaoChiAgentResponseBodyFunctionCall `json:"FunctionCall,omitempty" xml:"FunctionCall,omitempty" type:"Repeated"`
+	ParentId     *string                                   `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	// example:
 	//
 	// polardb
@@ -53,6 +58,7 @@ type GetYaoChiAgentResponseBody struct {
 	//
 	// 123e4567-e89b-12d3-a456-xxxxxxxxxxxx
 	SessionId      *string                                     `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SubAgentCall   []*GetYaoChiAgentResponseBodySubAgentCall   `json:"SubAgentCall,omitempty" xml:"SubAgentCall,omitempty" type:"Repeated"`
 	UiFunctionCall []*GetYaoChiAgentResponseBodyUiFunctionCall `json:"UiFunctionCall,omitempty" xml:"UiFunctionCall,omitempty" type:"Repeated"`
 }
 
@@ -70,6 +76,10 @@ func (s *GetYaoChiAgentResponseBody) GetContent() *string {
 
 func (s *GetYaoChiAgentResponseBody) GetFunctionCall() []*GetYaoChiAgentResponseBodyFunctionCall {
 	return s.FunctionCall
+}
+
+func (s *GetYaoChiAgentResponseBody) GetParentId() *string {
+	return s.ParentId
 }
 
 func (s *GetYaoChiAgentResponseBody) GetProduct() *string {
@@ -92,6 +102,10 @@ func (s *GetYaoChiAgentResponseBody) GetSessionId() *string {
 	return s.SessionId
 }
 
+func (s *GetYaoChiAgentResponseBody) GetSubAgentCall() []*GetYaoChiAgentResponseBodySubAgentCall {
+	return s.SubAgentCall
+}
+
 func (s *GetYaoChiAgentResponseBody) GetUiFunctionCall() []*GetYaoChiAgentResponseBodyUiFunctionCall {
 	return s.UiFunctionCall
 }
@@ -103,6 +117,11 @@ func (s *GetYaoChiAgentResponseBody) SetContent(v string) *GetYaoChiAgentRespons
 
 func (s *GetYaoChiAgentResponseBody) SetFunctionCall(v []*GetYaoChiAgentResponseBodyFunctionCall) *GetYaoChiAgentResponseBody {
 	s.FunctionCall = v
+	return s
+}
+
+func (s *GetYaoChiAgentResponseBody) SetParentId(v string) *GetYaoChiAgentResponseBody {
+	s.ParentId = &v
 	return s
 }
 
@@ -131,6 +150,11 @@ func (s *GetYaoChiAgentResponseBody) SetSessionId(v string) *GetYaoChiAgentRespo
 	return s
 }
 
+func (s *GetYaoChiAgentResponseBody) SetSubAgentCall(v []*GetYaoChiAgentResponseBodySubAgentCall) *GetYaoChiAgentResponseBody {
+	s.SubAgentCall = v
+	return s
+}
+
 func (s *GetYaoChiAgentResponseBody) SetUiFunctionCall(v []*GetYaoChiAgentResponseBodyUiFunctionCall) *GetYaoChiAgentResponseBody {
 	s.UiFunctionCall = v
 	return s
@@ -139,6 +163,15 @@ func (s *GetYaoChiAgentResponseBody) SetUiFunctionCall(v []*GetYaoChiAgentRespon
 func (s *GetYaoChiAgentResponseBody) Validate() error {
 	if s.FunctionCall != nil {
 		for _, item := range s.FunctionCall {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SubAgentCall != nil {
+		for _, item := range s.SubAgentCall {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -222,6 +255,51 @@ func (s *GetYaoChiAgentResponseBodyFunctionCall) SetStatus(v string) *GetYaoChiA
 }
 
 func (s *GetYaoChiAgentResponseBodyFunctionCall) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetYaoChiAgentResponseBodySubAgentCall struct {
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubAgentId   *string `json:"SubAgentId,omitempty" xml:"SubAgentId,omitempty"`
+	SubAgentName *string `json:"SubAgentName,omitempty" xml:"SubAgentName,omitempty"`
+}
+
+func (s GetYaoChiAgentResponseBodySubAgentCall) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetYaoChiAgentResponseBodySubAgentCall) GoString() string {
+	return s.String()
+}
+
+func (s *GetYaoChiAgentResponseBodySubAgentCall) GetStatus() *string {
+	return s.Status
+}
+
+func (s *GetYaoChiAgentResponseBodySubAgentCall) GetSubAgentId() *string {
+	return s.SubAgentId
+}
+
+func (s *GetYaoChiAgentResponseBodySubAgentCall) GetSubAgentName() *string {
+	return s.SubAgentName
+}
+
+func (s *GetYaoChiAgentResponseBodySubAgentCall) SetStatus(v string) *GetYaoChiAgentResponseBodySubAgentCall {
+	s.Status = &v
+	return s
+}
+
+func (s *GetYaoChiAgentResponseBodySubAgentCall) SetSubAgentId(v string) *GetYaoChiAgentResponseBodySubAgentCall {
+	s.SubAgentId = &v
+	return s
+}
+
+func (s *GetYaoChiAgentResponseBodySubAgentCall) SetSubAgentName(v string) *GetYaoChiAgentResponseBodySubAgentCall {
+	s.SubAgentName = &v
+	return s
+}
+
+func (s *GetYaoChiAgentResponseBodySubAgentCall) Validate() error {
 	return dara.Validate(s)
 }
 
