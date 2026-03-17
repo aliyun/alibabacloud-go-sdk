@@ -10,6 +10,12 @@
 - Update API ListWorkspaces: add response parameters Body.workspaces.$.resourceGroupId.
 
 
+2026-03-17 Version: v1.20.1
+- Update API CreateWorkspace: add request parameters body.resourceGroupId.
+- Update API ListWorkspaces: add request parameters resourceGroupId.
+- Update API ListWorkspaces: add response parameters Body.workspaces.$.resourceGroupId.
+
+
 2026-01-29 Version: v1.20.0
 - Support API CreateRayCluster.
 - Support API DeleteRayCluster.
