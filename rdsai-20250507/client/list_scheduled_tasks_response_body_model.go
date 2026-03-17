@@ -187,7 +187,9 @@ type ListScheduledTasksResponseBodySchedules struct {
 	InstanceCount *int64 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
 	// The name of the task.
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
+	ReportType     *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
 	// The ID of the scheduled inspection configuration.
 	//
 	// example:
@@ -232,8 +234,16 @@ func (s *ListScheduledTasksResponseBodySchedules) GetName() *string {
 	return s.Name
 }
 
+func (s *ListScheduledTasksResponseBodySchedules) GetRegionId() *string {
+	return s.RegionId
+}
+
 func (s *ListScheduledTasksResponseBodySchedules) GetReportLanguage() *string {
 	return s.ReportLanguage
+}
+
+func (s *ListScheduledTasksResponseBodySchedules) GetReportType() *string {
+	return s.ReportType
 }
 
 func (s *ListScheduledTasksResponseBodySchedules) GetScheduledId() *string {
@@ -273,8 +283,18 @@ func (s *ListScheduledTasksResponseBodySchedules) SetName(v string) *ListSchedul
 	return s
 }
 
+func (s *ListScheduledTasksResponseBodySchedules) SetRegionId(v string) *ListScheduledTasksResponseBodySchedules {
+	s.RegionId = &v
+	return s
+}
+
 func (s *ListScheduledTasksResponseBodySchedules) SetReportLanguage(v string) *ListScheduledTasksResponseBodySchedules {
 	s.ReportLanguage = &v
+	return s
+}
+
+func (s *ListScheduledTasksResponseBodySchedules) SetReportType(v string) *ListScheduledTasksResponseBodySchedules {
+	s.ReportType = &v
 	return s
 }
 

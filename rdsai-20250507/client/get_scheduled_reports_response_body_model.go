@@ -159,7 +159,9 @@ type GetScheduledReportsResponseBodyReports struct {
 	//
 	// 2025-01-01T23:59:59Z
 	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
+	ReportType     *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
 	// The start time of the inspection task. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
@@ -196,8 +198,16 @@ func (s *GetScheduledReportsResponseBodyReports) GetEndTime() *string {
 	return s.EndTime
 }
 
+func (s *GetScheduledReportsResponseBodyReports) GetRegionId() *string {
+	return s.RegionId
+}
+
 func (s *GetScheduledReportsResponseBodyReports) GetReportLanguage() *string {
 	return s.ReportLanguage
+}
+
+func (s *GetScheduledReportsResponseBodyReports) GetReportType() *string {
+	return s.ReportType
 }
 
 func (s *GetScheduledReportsResponseBodyReports) GetStartTime() *string {
@@ -222,8 +232,18 @@ func (s *GetScheduledReportsResponseBodyReports) SetEndTime(v string) *GetSchedu
 	return s
 }
 
+func (s *GetScheduledReportsResponseBodyReports) SetRegionId(v string) *GetScheduledReportsResponseBodyReports {
+	s.RegionId = &v
+	return s
+}
+
 func (s *GetScheduledReportsResponseBodyReports) SetReportLanguage(v string) *GetScheduledReportsResponseBodyReports {
 	s.ReportLanguage = &v
+	return s
+}
+
+func (s *GetScheduledReportsResponseBodyReports) SetReportType(v string) *GetScheduledReportsResponseBodyReports {
+	s.ReportType = &v
 	return s
 }
 

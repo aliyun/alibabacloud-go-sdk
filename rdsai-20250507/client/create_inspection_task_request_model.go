@@ -15,8 +15,12 @@ type iCreateInspectionTaskRequest interface {
 	GetInspectionItems() *string
 	SetInstanceIds(v string) *CreateInspectionTaskRequest
 	GetInstanceIds() *string
+	SetRegionId(v string) *CreateInspectionTaskRequest
+	GetRegionId() *string
 	SetReportLanguage(v string) *CreateInspectionTaskRequest
 	GetReportLanguage() *string
+	SetReportType(v string) *CreateInspectionTaskRequest
+	GetReportType() *string
 	SetStartTime(v string) *CreateInspectionTaskRequest
 	GetStartTime() *string
 }
@@ -62,13 +66,13 @@ type CreateInspectionTaskRequest struct {
 	InspectionItems *string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty"`
 	// The instances covered by the task. Separates multiple instance IDs with commas (,).
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// rm-2ze6mk259v322****,rm-2zef3b65430j0****
 	InstanceIds    *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
+	ReportType     *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
 	// The start time of the inspection task. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. By default, the time range of the task is the latest 24 hours.
 	//
 	// example:
@@ -97,8 +101,16 @@ func (s *CreateInspectionTaskRequest) GetInstanceIds() *string {
 	return s.InstanceIds
 }
 
+func (s *CreateInspectionTaskRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
 func (s *CreateInspectionTaskRequest) GetReportLanguage() *string {
 	return s.ReportLanguage
+}
+
+func (s *CreateInspectionTaskRequest) GetReportType() *string {
+	return s.ReportType
 }
 
 func (s *CreateInspectionTaskRequest) GetStartTime() *string {
@@ -120,8 +132,18 @@ func (s *CreateInspectionTaskRequest) SetInstanceIds(v string) *CreateInspection
 	return s
 }
 
+func (s *CreateInspectionTaskRequest) SetRegionId(v string) *CreateInspectionTaskRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *CreateInspectionTaskRequest) SetReportLanguage(v string) *CreateInspectionTaskRequest {
 	s.ReportLanguage = &v
+	return s
+}
+
+func (s *CreateInspectionTaskRequest) SetReportType(v string) *CreateInspectionTaskRequest {
+	s.ReportType = &v
 	return s
 }
 

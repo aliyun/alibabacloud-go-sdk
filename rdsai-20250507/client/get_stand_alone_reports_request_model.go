@@ -15,6 +15,8 @@ type iGetStandAloneReportsRequest interface {
 	GetPageNumber() *int64
 	SetPageSize(v int64) *GetStandAloneReportsRequest
 	GetPageSize() *int64
+	SetReportType(v string) *GetStandAloneReportsRequest
+	GetReportType() *string
 	SetStartTime(v string) *GetStandAloneReportsRequest
 	GetStartTime() *string
 }
@@ -37,7 +39,8 @@ type GetStandAloneReportsRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
 	// The task start time based on which the reports are filtered. If you do not specify this parameter, all reports are returned.
 	//
 	// example:
@@ -66,6 +69,10 @@ func (s *GetStandAloneReportsRequest) GetPageSize() *int64 {
 	return s.PageSize
 }
 
+func (s *GetStandAloneReportsRequest) GetReportType() *string {
+	return s.ReportType
+}
+
 func (s *GetStandAloneReportsRequest) GetStartTime() *string {
 	return s.StartTime
 }
@@ -82,6 +89,11 @@ func (s *GetStandAloneReportsRequest) SetPageNumber(v int64) *GetStandAloneRepor
 
 func (s *GetStandAloneReportsRequest) SetPageSize(v int64) *GetStandAloneReportsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *GetStandAloneReportsRequest) SetReportType(v string) *GetStandAloneReportsRequest {
+	s.ReportType = &v
 	return s
 }
 

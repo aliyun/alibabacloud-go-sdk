@@ -323,6 +323,88 @@ func (client *Client) CreateCustomAgentWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
+// 创建边缘函数
+//
+// @param tmpReq - CreateEdgeFunctionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEdgeFunctionResponse
+func (client *Client) CreateEdgeFunctionWithContext(ctx context.Context, tmpReq *CreateEdgeFunctionRequest, runtime *dara.RuntimeOptions) (_result *CreateEdgeFunctionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateEdgeFunctionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Code) {
+		request.CodeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Code, dara.String("Code"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.CustomConfig) {
+		request.CustomConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomConfig, dara.String("CustomConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Envs) {
+		request.EnvsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Envs, dara.String("Envs"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CodeShrink) {
+		query["Code"] = request.CodeShrink
+	}
+
+	if !dara.IsNil(request.CustomConfigShrink) {
+		query["CustomConfig"] = request.CustomConfigShrink
+	}
+
+	if !dara.IsNil(request.EdgeFunctionName) {
+		query["EdgeFunctionName"] = request.EdgeFunctionName
+	}
+
+	if !dara.IsNil(request.EnvsShrink) {
+		query["Envs"] = request.EnvsShrink
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateEdgeFunction"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateEdgeFunctionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an inspection task for multiple instances.
 //
 // @param request - CreateInspectionTaskRequest
@@ -350,8 +432,16 @@ func (client *Client) CreateInspectionTaskWithContext(ctx context.Context, reque
 		query["InstanceIds"] = request.InstanceIds
 	}
 
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !dara.IsNil(request.ReportLanguage) {
 		query["ReportLanguage"] = request.ReportLanguage
+	}
+
+	if !dara.IsNil(request.ReportType) {
+		query["ReportType"] = request.ReportType
 	}
 
 	if !dara.IsNil(request.StartTime) {
@@ -414,8 +504,16 @@ func (client *Client) CreateScheduledTaskWithContext(ctx context.Context, reques
 		query["Name"] = request.Name
 	}
 
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !dara.IsNil(request.ReportLanguage) {
 		query["ReportLanguage"] = request.ReportLanguage
+	}
+
+	if !dara.IsNil(request.ReportType) {
+		query["ReportType"] = request.ReportType
 	}
 
 	if !dara.IsNil(request.StartTime) {
@@ -617,6 +715,62 @@ func (client *Client) DeleteCustomAgentWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCustomAgentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除边缘函数
+//
+// @param request - DeleteEdgeFunctionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEdgeFunctionResponse
+func (client *Client) DeleteEdgeFunctionWithContext(ctx context.Context, request *DeleteEdgeFunctionRequest, runtime *dara.RuntimeOptions) (_result *DeleteEdgeFunctionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.EdgeFunctionName) {
+		query["EdgeFunctionName"] = request.EdgeFunctionName
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteEdgeFunction"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteEdgeFunctionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -833,6 +987,62 @@ func (client *Client) DescribeAppInstancesWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAppInstancesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询边缘函数列表
+//
+// @param request - DescribeEdgeFunctionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEdgeFunctionsResponse
+func (client *Client) DescribeEdgeFunctionsWithContext(ctx context.Context, request *DescribeEdgeFunctionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeEdgeFunctionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.EdgeFunctionName) {
+		query["EdgeFunctionName"] = request.EdgeFunctionName
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeEdgeFunctions"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeEdgeFunctionsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1370,6 +1580,10 @@ func (client *Client) GetInspectionReportWithContext(ctx context.Context, reques
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.ReportType) {
+		query["ReportType"] = request.ReportType
+	}
+
 	if !dara.IsNil(request.TaskId) {
 		query["TaskId"] = request.TaskId
 	}
@@ -1640,6 +1854,10 @@ func (client *Client) GetStandAloneReportsWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ReportType) {
+		query["ReportType"] = request.ReportType
 	}
 
 	if !dara.IsNil(request.StartTime) {
@@ -2749,6 +2967,88 @@ func (client *Client) UpdateCustomAgentWithContext(ctx context.Context, tmpReq *
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateCustomAgentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新边缘函数
+//
+// @param tmpReq - UpdateEdgeFunctionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateEdgeFunctionResponse
+func (client *Client) UpdateEdgeFunctionWithContext(ctx context.Context, tmpReq *UpdateEdgeFunctionRequest, runtime *dara.RuntimeOptions) (_result *UpdateEdgeFunctionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateEdgeFunctionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Code) {
+		request.CodeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Code, dara.String("Code"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.CustomConfig) {
+		request.CustomConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomConfig, dara.String("CustomConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Envs) {
+		request.EnvsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Envs, dara.String("Envs"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CodeShrink) {
+		query["Code"] = request.CodeShrink
+	}
+
+	if !dara.IsNil(request.CustomConfigShrink) {
+		query["CustomConfig"] = request.CustomConfigShrink
+	}
+
+	if !dara.IsNil(request.EdgeFunctionName) {
+		query["EdgeFunctionName"] = request.EdgeFunctionName
+	}
+
+	if !dara.IsNil(request.EnvsShrink) {
+		query["Envs"] = request.EnvsShrink
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateEdgeFunction"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateEdgeFunctionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

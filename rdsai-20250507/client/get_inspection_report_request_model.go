@@ -11,6 +11,8 @@ type iGetInspectionReportRequest interface {
 	GoString() string
 	SetInstanceId(v string) *GetInspectionReportRequest
 	GetInstanceId() *string
+	SetReportType(v string) *GetInspectionReportRequest
+	GetReportType() *string
 	SetTaskId(v string) *GetInspectionReportRequest
 	GetTaskId() *string
 }
@@ -22,6 +24,7 @@ type GetInspectionReportRequest struct {
 	//
 	// rm-2zep6e5u6l2yu****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
 	// The ID of the inspection report.
 	//
 	// This parameter is required.
@@ -44,12 +47,21 @@ func (s *GetInspectionReportRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *GetInspectionReportRequest) GetReportType() *string {
+	return s.ReportType
+}
+
 func (s *GetInspectionReportRequest) GetTaskId() *string {
 	return s.TaskId
 }
 
 func (s *GetInspectionReportRequest) SetInstanceId(v string) *GetInspectionReportRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetInspectionReportRequest) SetReportType(v string) *GetInspectionReportRequest {
+	s.ReportType = &v
 	return s
 }
 

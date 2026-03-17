@@ -17,8 +17,12 @@ type iCreateScheduledTaskRequest interface {
 	GetInstanceIds() *string
 	SetName(v string) *CreateScheduledTaskRequest
 	GetName() *string
+	SetRegionId(v string) *CreateScheduledTaskRequest
+	GetRegionId() *string
 	SetReportLanguage(v string) *CreateScheduledTaskRequest
 	GetReportLanguage() *string
+	SetReportType(v string) *CreateScheduledTaskRequest
+	GetReportType() *string
 	SetStartTime(v string) *CreateScheduledTaskRequest
 	GetStartTime() *string
 	SetTimeRange(v string) *CreateScheduledTaskRequest
@@ -52,8 +56,6 @@ type CreateScheduledTaskRequest struct {
 	Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
 	// The IDs of the related instances. Separate multiple IDs with commas (,).
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// rm-2ze6mk259v322****,rm-2zef3b65430j0****
@@ -62,7 +64,9 @@ type CreateScheduledTaskRequest struct {
 	//
 	// This parameter is required.
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
+	ReportType     *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
 	// The time when the inspection task is executed. Specify the time in the ISO 8601 standard in the HH:mm:ssZ format. The time must be in UTC. Default value: 02:00 AM.
 	//
 	// example:
@@ -101,8 +105,16 @@ func (s *CreateScheduledTaskRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateScheduledTaskRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
 func (s *CreateScheduledTaskRequest) GetReportLanguage() *string {
 	return s.ReportLanguage
+}
+
+func (s *CreateScheduledTaskRequest) GetReportType() *string {
+	return s.ReportType
 }
 
 func (s *CreateScheduledTaskRequest) GetStartTime() *string {
@@ -133,8 +145,18 @@ func (s *CreateScheduledTaskRequest) SetName(v string) *CreateScheduledTaskReque
 	return s
 }
 
+func (s *CreateScheduledTaskRequest) SetRegionId(v string) *CreateScheduledTaskRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *CreateScheduledTaskRequest) SetReportLanguage(v string) *CreateScheduledTaskRequest {
 	s.ReportLanguage = &v
+	return s
+}
+
+func (s *CreateScheduledTaskRequest) SetReportType(v string) *CreateScheduledTaskRequest {
+	s.ReportType = &v
 	return s
 }
 
