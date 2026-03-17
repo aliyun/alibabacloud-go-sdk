@@ -705,6 +705,113 @@ func (client *Client) GenerateTokenWithContext(ctx context.Context, instanceId *
 
 // Summary:
 //
+// 实例级授权服务器 Token 端点
+//
+// @param request - GenerateTokenByAuthorizationServerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateTokenByAuthorizationServerResponse
+func (client *Client) GenerateTokenByAuthorizationServerWithContext(ctx context.Context, instanceId *string, authorizationServerId *string, request *GenerateTokenByAuthorizationServerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GenerateTokenByAuthorizationServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationFederatedCredentialName) {
+		query["application_federated_credential_name"] = request.ApplicationFederatedCredentialName
+	}
+
+	if !dara.IsNil(request.ClientAssertion) {
+		query["client_assertion"] = request.ClientAssertion
+	}
+
+	if !dara.IsNil(request.ClientAssertionType) {
+		query["client_assertion_type"] = request.ClientAssertionType
+	}
+
+	if !dara.IsNil(request.ClientId) {
+		query["client_id"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.ClientSecret) {
+		query["client_secret"] = request.ClientSecret
+	}
+
+	if !dara.IsNil(request.ClientX509) {
+		query["client_x509"] = request.ClientX509
+	}
+
+	if !dara.IsNil(request.ClientX509Chain) {
+		query["client_x509_chain"] = request.ClientX509Chain
+	}
+
+	if !dara.IsNil(request.Code) {
+		query["code"] = request.Code
+	}
+
+	if !dara.IsNil(request.CodeVerifier) {
+		query["code_verifier"] = request.CodeVerifier
+	}
+
+	if !dara.IsNil(request.DeviceCode) {
+		query["device_code"] = request.DeviceCode
+	}
+
+	if !dara.IsNil(request.GrantType) {
+		query["grant_type"] = request.GrantType
+	}
+
+	if !dara.IsNil(request.Password) {
+		query["password"] = request.Password
+	}
+
+	if !dara.IsNil(request.RedirectUri) {
+		query["redirect_uri"] = request.RedirectUri
+	}
+
+	if !dara.IsNil(request.RefreshToken) {
+		query["refresh_token"] = request.RefreshToken
+	}
+
+	if !dara.IsNil(request.Scope) {
+		query["scope"] = request.Scope
+	}
+
+	if !dara.IsNil(request.Username) {
+		query["username"] = request.Username
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GenerateTokenByAuthorizationServer"),
+		Version:     dara.String("2022-02-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/authorizationServer/" + dara.PercentEncode(dara.StringValue(authorizationServerId)) + "/oauth2/token"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("Anonymous"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GenerateTokenByAuthorizationServerResponse{}
+	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the synchronization scope of an application in an instance.
 //
 // Description:
