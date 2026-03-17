@@ -149,6 +149,7 @@ type SubmitDocTranslateTaskRequestExt struct {
 	DomainHint    *string                                          `json:"domainHint,omitempty" xml:"domainHint,omitempty"`
 	ParamMap      interface{}                                      `json:"paramMap,omitempty" xml:"paramMap,omitempty"`
 	Terminologies []*SubmitDocTranslateTaskRequestExtTerminologies `json:"terminologies,omitempty" xml:"terminologies,omitempty" type:"Repeated"`
+	TrackingData  *string                                          `json:"trackingData,omitempty" xml:"trackingData,omitempty"`
 }
 
 func (s SubmitDocTranslateTaskRequestExt) String() string {
@@ -175,6 +176,10 @@ func (s *SubmitDocTranslateTaskRequestExt) GetTerminologies() []*SubmitDocTransl
 	return s.Terminologies
 }
 
+func (s *SubmitDocTranslateTaskRequestExt) GetTrackingData() *string {
+	return s.TrackingData
+}
+
 func (s *SubmitDocTranslateTaskRequestExt) SetConfig(v *SubmitDocTranslateTaskRequestExtConfig) *SubmitDocTranslateTaskRequestExt {
 	s.Config = v
 	return s
@@ -192,6 +197,11 @@ func (s *SubmitDocTranslateTaskRequestExt) SetParamMap(v interface{}) *SubmitDoc
 
 func (s *SubmitDocTranslateTaskRequestExt) SetTerminologies(v []*SubmitDocTranslateTaskRequestExtTerminologies) *SubmitDocTranslateTaskRequestExt {
 	s.Terminologies = v
+	return s
+}
+
+func (s *SubmitDocTranslateTaskRequestExt) SetTrackingData(v string) *SubmitDocTranslateTaskRequestExt {
+	s.TrackingData = &v
 	return s
 }
 

@@ -145,6 +145,7 @@ type SubmitImageTranslateTaskRequestExt struct {
 	Sensitives    []*string                                          `json:"sensitives,omitempty" xml:"sensitives,omitempty" type:"Repeated"`
 	Terminologies []*SubmitImageTranslateTaskRequestExtTerminologies `json:"terminologies,omitempty" xml:"terminologies,omitempty" type:"Repeated"`
 	TextTransform *SubmitImageTranslateTaskRequestExtTextTransform   `json:"textTransform,omitempty" xml:"textTransform,omitempty" type:"Struct"`
+	TrackingData  *string                                            `json:"trackingData,omitempty" xml:"trackingData,omitempty"`
 }
 
 func (s SubmitImageTranslateTaskRequestExt) String() string {
@@ -179,6 +180,10 @@ func (s *SubmitImageTranslateTaskRequestExt) GetTextTransform() *SubmitImageTran
 	return s.TextTransform
 }
 
+func (s *SubmitImageTranslateTaskRequestExt) GetTrackingData() *string {
+	return s.TrackingData
+}
+
 func (s *SubmitImageTranslateTaskRequestExt) SetDomainHint(v string) *SubmitImageTranslateTaskRequestExt {
 	s.DomainHint = &v
 	return s
@@ -206,6 +211,11 @@ func (s *SubmitImageTranslateTaskRequestExt) SetTerminologies(v []*SubmitImageTr
 
 func (s *SubmitImageTranslateTaskRequestExt) SetTextTransform(v *SubmitImageTranslateTaskRequestExtTextTransform) *SubmitImageTranslateTaskRequestExt {
 	s.TextTransform = v
+	return s
+}
+
+func (s *SubmitImageTranslateTaskRequestExt) SetTrackingData(v string) *SubmitImageTranslateTaskRequestExt {
+	s.TrackingData = &v
 	return s
 }
 

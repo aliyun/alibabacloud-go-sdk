@@ -143,6 +143,7 @@ type SubmitHtmlTranslateTaskRequestExt struct {
 	Sensitives    []*string                                         `json:"sensitives,omitempty" xml:"sensitives,omitempty" type:"Repeated"`
 	Terminologies []*SubmitHtmlTranslateTaskRequestExtTerminologies `json:"terminologies,omitempty" xml:"terminologies,omitempty" type:"Repeated"`
 	TextTransform *SubmitHtmlTranslateTaskRequestExtTextTransform   `json:"textTransform,omitempty" xml:"textTransform,omitempty" type:"Struct"`
+	TrackingData  *string                                           `json:"trackingData,omitempty" xml:"trackingData,omitempty"`
 }
 
 func (s SubmitHtmlTranslateTaskRequestExt) String() string {
@@ -181,6 +182,10 @@ func (s *SubmitHtmlTranslateTaskRequestExt) GetTextTransform() *SubmitHtmlTransl
 	return s.TextTransform
 }
 
+func (s *SubmitHtmlTranslateTaskRequestExt) GetTrackingData() *string {
+	return s.TrackingData
+}
+
 func (s *SubmitHtmlTranslateTaskRequestExt) SetConfig(v *SubmitHtmlTranslateTaskRequestExtConfig) *SubmitHtmlTranslateTaskRequestExt {
 	s.Config = v
 	return s
@@ -213,6 +218,11 @@ func (s *SubmitHtmlTranslateTaskRequestExt) SetTerminologies(v []*SubmitHtmlTran
 
 func (s *SubmitHtmlTranslateTaskRequestExt) SetTextTransform(v *SubmitHtmlTranslateTaskRequestExtTextTransform) *SubmitHtmlTranslateTaskRequestExt {
 	s.TextTransform = v
+	return s
+}
+
+func (s *SubmitHtmlTranslateTaskRequestExt) SetTrackingData(v string) *SubmitHtmlTranslateTaskRequestExt {
+	s.TrackingData = &v
 	return s
 }
 

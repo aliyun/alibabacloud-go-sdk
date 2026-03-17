@@ -128,7 +128,8 @@ type SubmitLongTextTranslateTaskResponseBodyData struct {
 	// example:
 	//
 	// 2746f4be-cff2-465e-a2c6-12bff30ce0f9
-	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	TaskId       *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	TrackingData *string `json:"trackingData,omitempty" xml:"trackingData,omitempty"`
 }
 
 func (s SubmitLongTextTranslateTaskResponseBodyData) String() string {
@@ -147,6 +148,10 @@ func (s *SubmitLongTextTranslateTaskResponseBodyData) GetTaskId() *string {
 	return s.TaskId
 }
 
+func (s *SubmitLongTextTranslateTaskResponseBodyData) GetTrackingData() *string {
+	return s.TrackingData
+}
+
 func (s *SubmitLongTextTranslateTaskResponseBodyData) SetStatus(v string) *SubmitLongTextTranslateTaskResponseBodyData {
 	s.Status = &v
 	return s
@@ -154,6 +159,11 @@ func (s *SubmitLongTextTranslateTaskResponseBodyData) SetStatus(v string) *Submi
 
 func (s *SubmitLongTextTranslateTaskResponseBodyData) SetTaskId(v string) *SubmitLongTextTranslateTaskResponseBodyData {
 	s.TaskId = &v
+	return s
+}
+
+func (s *SubmitLongTextTranslateTaskResponseBodyData) SetTrackingData(v string) *SubmitLongTextTranslateTaskResponseBodyData {
+	s.TrackingData = &v
 	return s
 }
 

@@ -126,7 +126,8 @@ type SubmitImageTranslateTaskResponseBodyData struct {
 	// example:
 	//
 	// 2746f4be-cff2-465e-a2c6-12bff30ce0f9
-	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	TaskId       *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	TrackingData *string `json:"trackingData,omitempty" xml:"trackingData,omitempty"`
 }
 
 func (s SubmitImageTranslateTaskResponseBodyData) String() string {
@@ -145,6 +146,10 @@ func (s *SubmitImageTranslateTaskResponseBodyData) GetTaskId() *string {
 	return s.TaskId
 }
 
+func (s *SubmitImageTranslateTaskResponseBodyData) GetTrackingData() *string {
+	return s.TrackingData
+}
+
 func (s *SubmitImageTranslateTaskResponseBodyData) SetStatus(v string) *SubmitImageTranslateTaskResponseBodyData {
 	s.Status = &v
 	return s
@@ -152,6 +157,11 @@ func (s *SubmitImageTranslateTaskResponseBodyData) SetStatus(v string) *SubmitIm
 
 func (s *SubmitImageTranslateTaskResponseBodyData) SetTaskId(v string) *SubmitImageTranslateTaskResponseBodyData {
 	s.TaskId = &v
+	return s
+}
+
+func (s *SubmitImageTranslateTaskResponseBodyData) SetTrackingData(v string) *SubmitImageTranslateTaskResponseBodyData {
+	s.TrackingData = &v
 	return s
 }
 

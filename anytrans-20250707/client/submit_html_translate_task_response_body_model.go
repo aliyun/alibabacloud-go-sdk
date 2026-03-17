@@ -126,7 +126,8 @@ type SubmitHtmlTranslateTaskResponseBodyData struct {
 	// example:
 	//
 	// 2746f4be-cff2-465e-a2c6-12bff30ce0f9
-	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	TaskId       *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	TrackingData *string `json:"trackingData,omitempty" xml:"trackingData,omitempty"`
 }
 
 func (s SubmitHtmlTranslateTaskResponseBodyData) String() string {
@@ -145,6 +146,10 @@ func (s *SubmitHtmlTranslateTaskResponseBodyData) GetTaskId() *string {
 	return s.TaskId
 }
 
+func (s *SubmitHtmlTranslateTaskResponseBodyData) GetTrackingData() *string {
+	return s.TrackingData
+}
+
 func (s *SubmitHtmlTranslateTaskResponseBodyData) SetStatus(v string) *SubmitHtmlTranslateTaskResponseBodyData {
 	s.Status = &v
 	return s
@@ -152,6 +157,11 @@ func (s *SubmitHtmlTranslateTaskResponseBodyData) SetStatus(v string) *SubmitHtm
 
 func (s *SubmitHtmlTranslateTaskResponseBodyData) SetTaskId(v string) *SubmitHtmlTranslateTaskResponseBodyData {
 	s.TaskId = &v
+	return s
+}
+
+func (s *SubmitHtmlTranslateTaskResponseBodyData) SetTrackingData(v string) *SubmitHtmlTranslateTaskResponseBodyData {
+	s.TrackingData = &v
 	return s
 }
 

@@ -143,6 +143,7 @@ type SubmitLongTextTranslateTaskRequestExt struct {
 	Sensitives    []*string                                             `json:"sensitives,omitempty" xml:"sensitives,omitempty" type:"Repeated"`
 	Terminologies []*SubmitLongTextTranslateTaskRequestExtTerminologies `json:"terminologies,omitempty" xml:"terminologies,omitempty" type:"Repeated"`
 	TextTransform *SubmitLongTextTranslateTaskRequestExtTextTransform   `json:"textTransform,omitempty" xml:"textTransform,omitempty" type:"Struct"`
+	TrackingData  *string                                               `json:"trackingData,omitempty" xml:"trackingData,omitempty"`
 }
 
 func (s SubmitLongTextTranslateTaskRequestExt) String() string {
@@ -181,6 +182,10 @@ func (s *SubmitLongTextTranslateTaskRequestExt) GetTextTransform() *SubmitLongTe
 	return s.TextTransform
 }
 
+func (s *SubmitLongTextTranslateTaskRequestExt) GetTrackingData() *string {
+	return s.TrackingData
+}
+
 func (s *SubmitLongTextTranslateTaskRequestExt) SetConfig(v *SubmitLongTextTranslateTaskRequestExtConfig) *SubmitLongTextTranslateTaskRequestExt {
 	s.Config = v
 	return s
@@ -213,6 +218,11 @@ func (s *SubmitLongTextTranslateTaskRequestExt) SetTerminologies(v []*SubmitLong
 
 func (s *SubmitLongTextTranslateTaskRequestExt) SetTextTransform(v *SubmitLongTextTranslateTaskRequestExtTextTransform) *SubmitLongTextTranslateTaskRequestExt {
 	s.TextTransform = v
+	return s
+}
+
+func (s *SubmitLongTextTranslateTaskRequestExt) SetTrackingData(v string) *SubmitLongTextTranslateTaskRequestExt {
+	s.TrackingData = &v
 	return s
 }
 
