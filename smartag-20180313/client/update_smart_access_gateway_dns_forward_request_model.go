@@ -1,0 +1,258 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iUpdateSmartAccessGatewayDnsForwardRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetDomain(v string) *UpdateSmartAccessGatewayDnsForwardRequest
+	GetDomain() *string
+	SetInstanceId(v string) *UpdateSmartAccessGatewayDnsForwardRequest
+	GetInstanceId() *string
+	SetMasterIp(v string) *UpdateSmartAccessGatewayDnsForwardRequest
+	GetMasterIp() *string
+	SetMode(v string) *UpdateSmartAccessGatewayDnsForwardRequest
+	GetMode() *string
+	SetOutboundPortIndex(v int32) *UpdateSmartAccessGatewayDnsForwardRequest
+	GetOutboundPortIndex() *int32
+	SetOutboundPortName(v string) *UpdateSmartAccessGatewayDnsForwardRequest
+	GetOutboundPortName() *string
+	SetOutboundPortType(v string) *UpdateSmartAccessGatewayDnsForwardRequest
+	GetOutboundPortType() *string
+	SetRegionId(v string) *UpdateSmartAccessGatewayDnsForwardRequest
+	GetRegionId() *string
+	SetSagInsId(v string) *UpdateSmartAccessGatewayDnsForwardRequest
+	GetSagInsId() *string
+	SetSagSn(v string) *UpdateSmartAccessGatewayDnsForwardRequest
+	GetSagSn() *string
+	SetSlaveIp(v string) *UpdateSmartAccessGatewayDnsForwardRequest
+	GetSlaveIp() *string
+}
+
+type UpdateSmartAccessGatewayDnsForwardRequest struct {
+	// The domain name.
+	//
+	// >
+	//
+	// 	- Wildcard domain names are supported. You can use the wildcard character asterisk (\\*) to specify a wildcard domain name.
+	//
+	// For example, you can enter \\*.baidu.com to specify the domain name baidu.com.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sagv3dnsforward-nc7qabskj17werc7su
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The primary DNS server.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 114.114.114.114
+	MasterIp *string `json:"MasterIp,omitempty" xml:"MasterIp,omitempty"`
+	// The forwarding mode.
+	//
+	// >
+	//
+	// 	- This parameter is not in use. Ignore this parameter.
+	//
+	// example:
+	//
+	// first
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The number of the egress port.
+	//
+	// >
+	//
+	// 	- This parameter is optional if OutboundPortType is set to PhysicalPort. Ignore this parameter if OutboundPortType is set to Tunnel.
+	//
+	// 	- The value of OutboundPortIndex is the unique index of the port name specified by poOutboundPortName. For example, 0 is the index for the port named eth0, and 2 is the index for the port named lte.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 0
+	OutboundPortIndex *int32 `json:"OutboundPortIndex,omitempty" xml:"OutboundPortIndex,omitempty"`
+	// The egress port.
+	//
+	// >
+	//
+	// 	- This parameter is optional if OutboundPortType is set to PhysicalPort. Ignore this parameter if OutboundPortType is set to Tunnel.
+	//
+	// 	- The value of OutboundPortIndex is the unique index of the port name specified by poOutboundPortName. For example, 0 is the index for the port named eth0, and 2 is the index for the port named lte.
+	//
+	// example:
+	//
+	// eth0
+	OutboundPortName *string `json:"OutboundPortName,omitempty" xml:"OutboundPortName,omitempty"`
+	// The type of the egress port.
+	//
+	// >
+	//
+	// 	- A value of Tunnel specifies a tunnel, and a value of PhysicalPort specifies a physical port.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// PhysicalPort
+	OutboundPortType *string `json:"OutboundPortType,omitempty" xml:"OutboundPortType,omitempty"`
+	// The ID of the region in which the SAG instance resides.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sag-v9un1ccz22owd76lf8
+	SagInsId *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
+	// The serial number (SN) of the device.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sagf4dkqh78
+	SagSn *string `json:"SagSn,omitempty" xml:"SagSn,omitempty"`
+	// The secondary DNS server.
+	//
+	// example:
+	//
+	// 172.16.0.14
+	SlaveIp *string `json:"SlaveIp,omitempty" xml:"SlaveIp,omitempty"`
+}
+
+func (s UpdateSmartAccessGatewayDnsForwardRequest) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayDnsForwardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) GetDomain() *string {
+	return s.Domain
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) GetMasterIp() *string {
+	return s.MasterIp
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) GetMode() *string {
+	return s.Mode
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) GetOutboundPortIndex() *int32 {
+	return s.OutboundPortIndex
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) GetOutboundPortName() *string {
+	return s.OutboundPortName
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) GetOutboundPortType() *string {
+	return s.OutboundPortType
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) GetSagInsId() *string {
+	return s.SagInsId
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) GetSagSn() *string {
+	return s.SagSn
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) GetSlaveIp() *string {
+	return s.SlaveIp
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) SetDomain(v string) *UpdateSmartAccessGatewayDnsForwardRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) SetInstanceId(v string) *UpdateSmartAccessGatewayDnsForwardRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) SetMasterIp(v string) *UpdateSmartAccessGatewayDnsForwardRequest {
+	s.MasterIp = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) SetMode(v string) *UpdateSmartAccessGatewayDnsForwardRequest {
+	s.Mode = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) SetOutboundPortIndex(v int32) *UpdateSmartAccessGatewayDnsForwardRequest {
+	s.OutboundPortIndex = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) SetOutboundPortName(v string) *UpdateSmartAccessGatewayDnsForwardRequest {
+	s.OutboundPortName = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) SetOutboundPortType(v string) *UpdateSmartAccessGatewayDnsForwardRequest {
+	s.OutboundPortType = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) SetRegionId(v string) *UpdateSmartAccessGatewayDnsForwardRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) SetSagInsId(v string) *UpdateSmartAccessGatewayDnsForwardRequest {
+	s.SagInsId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) SetSagSn(v string) *UpdateSmartAccessGatewayDnsForwardRequest {
+	s.SagSn = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) SetSlaveIp(v string) *UpdateSmartAccessGatewayDnsForwardRequest {
+	s.SlaveIp = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) Validate() error {
+	return dara.Validate(s)
+}
