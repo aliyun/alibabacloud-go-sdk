@@ -7287,7 +7287,7 @@ func (client *Client) ListFlowWithContext(ctx context.Context, tmpReq *ListFlowR
 
 // Summary:
 //
-// # ListFlowNodeGroup
+// 列举流程组件分组
 //
 // @param request - ListFlowNodeGroupRequest
 //
@@ -9938,6 +9938,10 @@ func (client *Client) SendChatappMessageWithContext(ctx context.Context, tmpReq 
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AdAccountId) {
 		query["AdAccountId"] = request.AdAccountId
+	}
+
+	if !dara.IsNil(request.Category) {
+		query["Category"] = request.Category
 	}
 
 	if !dara.IsNil(request.ChannelType) {

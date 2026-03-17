@@ -24,22 +24,44 @@ type iUpdatePhoneEncryptionPublicKeyRequest interface {
 }
 
 type UpdatePhoneEncryptionPublicKeyRequest struct {
+	// SpaceId/instanceId of ISV sub clients.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 399382882
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// Encrypt the public key.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// -----BEGIN PUBLIC KEY-----
+	//
+	// AAA
+	//
+	// BBB
+	//
+	// CCC
+	//
+	// DDD
+	//
+	// EEE
+	//
+	// FFF
+	//
+	// GGG
+	//
+	// -----END PUBLIC KEY-----
 	EncryptionPublicKey *string `json:"EncryptionPublicKey,omitempty" xml:"EncryptionPublicKey,omitempty"`
 	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The phone number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 86138000
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

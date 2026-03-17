@@ -24,6 +24,8 @@ type iChatappVerifyAndRegisterRequest interface {
 }
 
 type ChatappVerifyAndRegisterRequest struct {
+	// The space ID of the RAM user within the ISV account.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -31,19 +33,23 @@ type ChatappVerifyAndRegisterRequest struct {
 	// 29389299388383
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The phone number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 86138000000
+	// 8613800001234
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The verification code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 123466
+	// 223222
 	VerifyCode *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
 }
 

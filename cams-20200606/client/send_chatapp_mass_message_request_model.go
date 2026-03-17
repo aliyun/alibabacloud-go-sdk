@@ -52,80 +52,132 @@ type iSendChatappMassMessageRequest interface {
 }
 
 type SendChatappMassMessageRequest struct {
+	// The type of the channel. Valid values:
+	//
+	// 	- **whatsapp**
+	//
+	// 	- **viber**
+	//
+	// 	- **line*	- (under development)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// whatsapp
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// The space ID of the user.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 28251486512358****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// Deprecated
 	//
+	// The WhatsApp Business Account (WABA) ID of the RAM user within the independent software vendor (ISV) account.
+	//
+	// >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 65921621816****
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
+	// The content of the fallback message.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
-	FallBackContent  *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
-	FallBackDuration *int32  `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
+	// Fallback message
+	FallBackContent *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
+	// Specifies the period of time after which the fallback message is sent if the message receipt that indicates the message is delivered to clients is not received. If this parameter is left empty, the fallback message is sent only when the message fails to be sent or the message receipt that indicates the message is not delivered to clients is received. Unit: seconds. Valid values: 60 to 43200.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 120
+	FallBackDuration *int32 `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
+	// The ID of the fallback policy.
+	//
+	// example:
+	//
+	// S00001
 	FallBackId *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
+	// The fallback rule. Valid values:
+	//
+	// 	- **undelivered**: A fallback is triggered if the message is not delivered to clients. When the message is being sent, the template parameters are verified. If the parameters fail to pass the verification, the message fails to be sent. Whether the template and phone number are prohibited is not verified. By default, this value is used when FallBackRule is left empty.
+	//
+	// 	- **sentFailed**: A fallback is triggered even if the template parameters including variables fail to pass the verification. If the channelType, type, messageType, to, and from parameters fail to pass the verification, a fallback is not triggered.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// undelivered
 	FallBackRule *string `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
+	// The mobile phone number of the message sender.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 861387777****
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
 	// Deprecated
 	//
+	// The ISV verification code. This parameter is used to verify whether the RAM user is authorized by the ISV account.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// skdi3kksloslikdkkdk
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
+	// The type of the Viber message. Valid values:
+	//
+	// 	- **promotion**
+	//
+	// 	- **transaction**
+	//
 	// example:
 	//
-	// 示例值示例值
+	// promotion
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The language. For more information about language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
-	Language             *string                                    `json:"Language,omitempty" xml:"Language,omitempty"`
-	OwnerId              *int64                                     `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string                                    `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                     `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SenderList           []*SendChatappMassMessageRequestSenderList `json:"SenderList,omitempty" xml:"SenderList,omitempty" type:"Repeated"`
+	// en
+	Language             *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The mobile phone numbers of the message receivers.
+	SenderList []*SendChatappMassMessageRequestSenderList `json:"SenderList,omitempty" xml:"SenderList,omitempty" type:"Repeated"`
+	// The tag information when the ChannelType parameter is set to viber.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// tag
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 100000001
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The template code.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 744c4b5c79c9432497a075bdfca36bf5
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The name of the message template.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// test_name
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The timeout period for sending messages when the ChannelType parameter is set to viber. Valid values: 30 to 1209600. Unit: seconds.
+	//
 	// example:
 	//
-	// 46
+	// 50
 	Ttl *int64 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 }
 
@@ -331,13 +383,19 @@ func (s *SendChatappMassMessageRequest) Validate() error {
 }
 
 type SendChatappMassMessageRequestSenderList struct {
-	FlowAction     *SendChatappMassMessageRequestSenderListFlowAction    `json:"FlowAction,omitempty" xml:"FlowAction,omitempty" type:"Struct"`
-	Payload        []*string                                             `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Repeated"`
-	ProductAction  *SendChatappMassMessageRequestSenderListProductAction `json:"ProductAction,omitempty" xml:"ProductAction,omitempty" type:"Struct"`
-	TemplateParams map[string]*string                                    `json:"TemplateParams,omitempty" xml:"TemplateParams,omitempty"`
+	// The Flow action.
+	FlowAction *SendChatappMassMessageRequestSenderListFlowAction `json:"FlowAction,omitempty" xml:"FlowAction,omitempty" type:"Struct"`
+	// The payload of the button.
+	Payload []*string `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Repeated"`
+	// The information about the product.
+	ProductAction *SendChatappMassMessageRequestSenderListProductAction `json:"ProductAction,omitempty" xml:"ProductAction,omitempty" type:"Struct"`
+	// The parameters of the template.
+	TemplateParams map[string]*string `json:"TemplateParams,omitempty" xml:"TemplateParams,omitempty"`
+	// The mobile phone number of the message receiver.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 861388988****
 	To *string `json:"To,omitempty" xml:"To,omitempty"`
 }
 
@@ -409,10 +467,13 @@ func (s *SendChatappMassMessageRequestSenderList) Validate() error {
 }
 
 type SendChatappMassMessageRequestSenderListFlowAction struct {
+	// The default parameter of the Flow.
 	FlowActionData map[string]interface{} `json:"FlowActionData,omitempty" xml:"FlowActionData,omitempty"`
+	// The information about the Flow token.
+	//
 	// example:
 	//
-	// 示例值
+	// kde****
 	FlowToken *string `json:"FlowToken,omitempty" xml:"FlowToken,omitempty"`
 }
 
@@ -447,10 +508,13 @@ func (s *SendChatappMassMessageRequestSenderListFlowAction) Validate() error {
 }
 
 type SendChatappMassMessageRequestSenderListProductAction struct {
+	// The products. Up to 30 products and 10 categories can be added.
 	Sections []*SendChatappMassMessageRequestSenderListProductActionSections `json:"Sections,omitempty" xml:"Sections,omitempty" type:"Repeated"`
+	// The retailer ID of the product.
+	//
 	// example:
 	//
-	// 示例值
+	// skkks999393
 	ThumbnailProductRetailerId *string `json:"ThumbnailProductRetailerId,omitempty" xml:"ThumbnailProductRetailerId,omitempty"`
 }
 
@@ -494,10 +558,13 @@ func (s *SendChatappMassMessageRequestSenderListProductAction) Validate() error 
 }
 
 type SendChatappMassMessageRequestSenderListProductActionSections struct {
+	// The products.
 	ProductItems []*SendChatappMassMessageRequestSenderListProductActionSectionsProductItems `json:"ProductItems,omitempty" xml:"ProductItems,omitempty" type:"Repeated"`
+	// The name of the category.
+	//
 	// example:
 	//
-	// 示例值
+	// abcd
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -541,9 +608,11 @@ func (s *SendChatappMassMessageRequestSenderListProductActionSections) Validate(
 }
 
 type SendChatappMassMessageRequestSenderListProductActionSectionsProductItems struct {
+	// The retailer ID of the product.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// ksi399d8
 	ProductRetailerId *string `json:"ProductRetailerId,omitempty" xml:"ProductRetailerId,omitempty"`
 }
 

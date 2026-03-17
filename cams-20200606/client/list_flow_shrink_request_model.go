@@ -24,15 +24,20 @@ type iListFlowShrinkRequest interface {
 }
 
 type ListFlowShrinkRequest struct {
+	// The space ID of the RAM user within the independent software vendor (ISV) account.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 99948484
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The name of the Flow that you want to query. If FlowName is left empty, the information about all Flows is queried.
+	//
 	// example:
 	//
-	// 示例值
-	FlowName             *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// flow_001
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The returned pages.
 	PageShrink           *string `json:"Page,omitempty" xml:"Page,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

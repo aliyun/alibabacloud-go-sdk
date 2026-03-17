@@ -28,34 +28,44 @@ type iUpdatePhoneMessageQrdlRequest interface {
 }
 
 type UpdatePhoneMessageQrdlRequest struct {
+	// SpaceId/instance ID of ISV sub customer.
+	//
 	// example:
 	//
-	// 示例值
+	// 9383884
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// Produce QR code image format.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值
+	// PNG
 	GenerateQrImage *string `json:"GenerateQrImage,omitempty" xml:"GenerateQrImage,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Number, enter the country/region code+number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 861380000
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// Message content.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// Hello
 	PrefilledMessage *string `json:"PrefilledMessage,omitempty" xml:"PrefilledMessage,omitempty"`
+	// QR code encoding.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 29338838
 	QrdlCode             *string `json:"QrdlCode,omitempty" xml:"QrdlCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

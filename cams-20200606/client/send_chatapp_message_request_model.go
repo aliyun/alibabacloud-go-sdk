@@ -11,6 +11,8 @@ type iSendChatappMessageRequest interface {
 	GoString() string
 	SetAdAccountId(v string) *SendChatappMessageRequest
 	GetAdAccountId() *string
+	SetCategory(v string) *SendChatappMessageRequest
+	GetCategory() *string
 	SetChannelType(v string) *SendChatappMessageRequest
 	GetChannelType() *string
 	SetContent(v string) *SendChatappMessageRequest
@@ -82,11 +84,23 @@ type SendChatappMessageRequest struct {
 	//
 	// 示例值示例值
 	AdAccountId *string `json:"AdAccountId,omitempty" xml:"AdAccountId,omitempty"`
+	// example:
+	//
+	// UTILITY
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The channel type. Valid values:
+	//
+	// 	- **whatsapp**
+	//
+	// 	- **viber**
+	//
+	// 	- **line*	- (under development)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// whatsapp
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
 	// The message content.
 	//
@@ -134,61 +148,145 @@ type SendChatappMessageRequest struct {
 	//
 	// {\\"text\\": \\"hello whatsapp\\", \\"link\\": \\"\\", \\"caption\\": \\"\\", \\"fileName\\": \\"\\" }
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The ID of the reply message.
+	//
 	// example:
 	//
-	// 示例值
+	// 61851ccb2f1365b16aee****
 	ContextMessageId *string `json:"ContextMessageId,omitempty" xml:"ContextMessageId,omitempty"`
+	// The space ID of the user.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 28251486512358****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// Deprecated
 	//
+	// The WhatsApp Business Account (WABA) ID of the RAM user within the independent software vendor (ISV) account.
+	//
+	// >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 65921621816****
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
+	// The content of the fallback message.
+	//
 	// example:
 	//
-	// 示例值
-	FallBackContent  *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
-	FallBackDuration *int32  `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
+	// This is a fallback message.
+	FallBackContent *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
+	// Specifies the period of time after which the fallback message is sent if the message receipt that indicates the message is delivered to clients is not received. If this parameter is left empty, the fallback message is sent only when the **message fails to be sent*	- or **the message receipt that indicates the message is not delivered to clients*	- is received. Unit: seconds. Valid values: 60 to 43200.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 120
+	FallBackDuration *int32 `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
+	// The ID of the fallback policy. You can create a fallback policy and view the information in the Chat App Message Service console.
+	//
+	// example:
+	//
+	// S_000001
 	FallBackId *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
+	// The fallback rule. Valid values:
+	//
+	// 	- **undelivered**: A fallback is triggered if the message is not delivered to clients. When the message is being sent, the template parameters are verified. If the parameters fail to pass the verification, the message fails to be sent. Whether the template and phone number are prohibited is not verified. By default, this value is used when FallBackRule is left empty.
+	//
+	// 	- **sentFailed**: A fallback is triggered even if the template parameters including variables fail to pass the verification. If the channelType, type, messageType, to, and from parameters fail to pass the verification, a fallback is not triggered.
+	//
 	// example:
 	//
-	// 示例值示例值
-	FallBackRule *string                              `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
-	FlowAction   *SendChatappMessageRequestFlowAction `json:"FlowAction,omitempty" xml:"FlowAction,omitempty" type:"Struct"`
+	// undelivered
+	FallBackRule *string `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
+	// The Flow action.
+	FlowAction *SendChatappMessageRequestFlowAction `json:"FlowAction,omitempty" xml:"FlowAction,omitempty" type:"Struct"`
+	// The mobile phone number of the message sender.
+	//
+	// >  You can specify a mobile phone number that is registered for a WhatsApp account and is approved in the Chat App Message Service console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 1360000****
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
 	// Deprecated
 	//
+	// The ISV verification code. This parameter is used to verify whether the RAM user is authorized by the ISV account.
+	//
 	// example:
 	//
-	// 示例值
+	// skdi3kksloslikdkkdk
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
+	// The type of the Viber message. This parameter is required if ChannelType is set to viber. Valid values:
+	//
+	// 	- **promotion**
+	//
+	// 	- **transaction**
+	//
 	// example:
 	//
-	// 示例值
+	// promotion
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The language that is used in the message template. This parameter is required only if you set the Type parameter to **template**. For more information about language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// example:
 	//
 	// 示例值示例值示例值
 	MessageCampaignId *string `json:"MessageCampaignId,omitempty" xml:"MessageCampaignId,omitempty"`
+	// The specific type of the message. This parameter is required only if you set the Type parameter to **message**.
+	//
+	// **Valid values of MessageType when you set the ChannelType parameter to whatsapp:**
+	//
+	// 	- **text**: a text message.
+	//
+	// 	- **image**: an image message.
+	//
+	// 	- **video**: a video message.
+	//
+	// 	- **audio**: an audio message.
+	//
+	// 	- **document**: a document message.
+	//
+	// 	- **interactive**: an interactive message.
+	//
+	// 	- **contacts**: a contact message.
+	//
+	// 	- **location**: a location message.
+	//
+	// 	- **sticker**: a sticker message.
+	//
+	// 	- **reaction**: a reaction message.
+	//
+	// **Valid values of MessageType when you set the ChannelType parameter to viber:**
+	//
+	// 	- **text**: a text message.
+	//
+	// 	- **image**: an image message.
+	//
+	// 	- **video**: a video message.
+	//
+	// 	- **document**: a document message.
+	//
+	// 	- **text_button**: a message that contains the text and button media objects.
+	//
+	// 	- **text_image_button**: a message that contains multiple media objects, including the text, image, and button.
+	//
+	// 	- **text_video**: a message that contains the text and video media objects.
+	//
+	// 	- **text_video_button**: a message that contains multiple media objects, including text, video, and button.
+	//
+	// 	- **text_image**: a message that contains the text and image media objects.
+	//
+	// > For more information, see [Parameters of a message template](https://help.aliyun.com/document_detail/454530.html).
+	//
 	// example:
 	//
-	// 示例值
+	// text
 	MessageType *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The payload of the button.
@@ -196,7 +294,8 @@ type SendChatappMessageRequest struct {
 	// example:
 	//
 	// payloadtext1,payloadtext2,payloadtext3
-	Payload       []*string                               `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Repeated"`
+	Payload []*string `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Repeated"`
+	// The information about the products included in the WhatsApp catalog message or multi-product message (MPM).
 	ProductAction *SendChatappMessageRequestProductAction `json:"ProductAction,omitempty" xml:"ProductAction,omitempty" type:"Struct"`
 	// example:
 	//
@@ -204,43 +303,67 @@ type SendChatappMessageRequest struct {
 	RecipientType        *string `json:"RecipientType,omitempty" xml:"RecipientType,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The tag information of the Viber message.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// tag
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 100000001
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The code of the message template. This parameter is required only if you set the Type parameter to **template**.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 744c4b5c79c9432497a075bdfca3****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The name of the message template.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
-	TemplateName   *string            `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// test_name
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The variables of the message template.
 	TemplateParams map[string]*string `json:"TemplateParams,omitempty" xml:"TemplateParams,omitempty"`
+	// The mobile phone number of the message receiver.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 1390000****
 	To *string `json:"To,omitempty" xml:"To,omitempty"`
 	// example:
 	//
 	// 示例值
 	TokenType *string `json:"TokenType,omitempty" xml:"TokenType,omitempty"`
+	// The tracking data of the Viber message.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// tracking_id:123456
 	TrackingData *string `json:"TrackingData,omitempty" xml:"TrackingData,omitempty"`
-	Ttl          *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The timeout period for sending the Viber message. Valid values: 30 to 1209600. Unit: seconds.
+	//
+	// example:
+	//
+	// 50
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The message type. Valid values:
+	//
+	// 	- **template**: the template message. A template message is sent based on a template that is created and approved in the Chat App Message Service console. You can send template messages based on your business requirements.
+	//
+	// 	- **message**: the custom message. You can send a custom WhatsApp message to a user only within 24 hours after you receive the last message from the user. This limit does not apply to custom Viber messages.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值
+	// template
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -254,6 +377,10 @@ func (s SendChatappMessageRequest) GoString() string {
 
 func (s *SendChatappMessageRequest) GetAdAccountId() *string {
 	return s.AdAccountId
+}
+
+func (s *SendChatappMessageRequest) GetCategory() *string {
+	return s.Category
 }
 
 func (s *SendChatappMessageRequest) GetChannelType() *string {
@@ -386,6 +513,11 @@ func (s *SendChatappMessageRequest) GetType() *string {
 
 func (s *SendChatappMessageRequest) SetAdAccountId(v string) *SendChatappMessageRequest {
 	s.AdAccountId = &v
+	return s
+}
+
+func (s *SendChatappMessageRequest) SetCategory(v string) *SendChatappMessageRequest {
+	s.Category = &v
 	return s
 }
 
@@ -564,10 +696,13 @@ func (s *SendChatappMessageRequest) Validate() error {
 }
 
 type SendChatappMessageRequestFlowAction struct {
+	// The default parameter of the Flow.
 	FlowActionData map[string]interface{} `json:"FlowActionData,omitempty" xml:"FlowActionData,omitempty"`
+	// The Flow token.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 1122***
 	FlowToken *string `json:"FlowToken,omitempty" xml:"FlowToken,omitempty"`
 }
 
@@ -602,10 +737,13 @@ func (s *SendChatappMessageRequestFlowAction) Validate() error {
 }
 
 type SendChatappMessageRequestProductAction struct {
+	// The products. Up to 30 products and 10 categories can be added.
 	Sections []*SendChatappMessageRequestProductActionSections `json:"Sections,omitempty" xml:"Sections,omitempty" type:"Repeated"`
+	// The retailer ID of the product.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// S238SK
 	ThumbnailProductRetailerId *string `json:"ThumbnailProductRetailerId,omitempty" xml:"ThumbnailProductRetailerId,omitempty"`
 }
 
@@ -649,10 +787,13 @@ func (s *SendChatappMessageRequestProductAction) Validate() error {
 }
 
 type SendChatappMessageRequestProductActionSections struct {
+	// The products.
 	ProductItems []*SendChatappMessageRequestProductActionSectionsProductItems `json:"ProductItems,omitempty" xml:"ProductItems,omitempty" type:"Repeated"`
+	// The name of the category.
+	//
 	// example:
 	//
-	// 示例值
+	// Test
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -696,9 +837,11 @@ func (s *SendChatappMessageRequestProductActionSections) Validate() error {
 }
 
 type SendChatappMessageRequestProductActionSectionsProductItems struct {
+	// The retailer ID of the product.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 9I39E9E
 	ProductRetailerId *string `json:"ProductRetailerId,omitempty" xml:"ProductRetailerId,omitempty"`
 }
 

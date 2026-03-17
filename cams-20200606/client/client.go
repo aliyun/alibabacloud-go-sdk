@@ -9338,7 +9338,7 @@ func (client *Client) ListFlow(request *ListFlowRequest) (_result *ListFlowRespo
 
 // Summary:
 //
-// # ListFlowNodeGroup
+// 列举流程组件分组
 //
 // @param request - ListFlowNodeGroupRequest
 //
@@ -9398,7 +9398,7 @@ func (client *Client) ListFlowNodeGroupWithOptions(request *ListFlowNodeGroupReq
 
 // Summary:
 //
-// # ListFlowNodeGroup
+// 列举流程组件分组
 //
 // @param request - ListFlowNodeGroupRequest
 //
@@ -12683,6 +12683,10 @@ func (client *Client) SendChatappMessageWithOptions(tmpReq *SendChatappMessageRe
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AdAccountId) {
 		query["AdAccountId"] = request.AdAccountId
+	}
+
+	if !dara.IsNil(request.Category) {
+		query["Category"] = request.Category
 	}
 
 	if !dara.IsNil(request.ChannelType) {

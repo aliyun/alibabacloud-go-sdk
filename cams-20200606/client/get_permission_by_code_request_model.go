@@ -24,17 +24,22 @@ type iGetPermissionByCodeRequest interface {
 }
 
 type GetPermissionByCodeRequest struct {
+	// Authorize code information.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// flow_001
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The space ID of the RAM user within the independent software vendor (ISV) account.
+	//
 	// example:
 	//
-	// 示例值
-	CustSpaceId          *string   `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 393847477
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The permissions.
 	Permissions          []*string `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

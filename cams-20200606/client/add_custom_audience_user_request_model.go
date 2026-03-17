@@ -185,11 +185,11 @@ func (s *AddCustomAudienceUserRequest) Validate() error {
 type AddCustomAudienceUserRequestUsers struct {
 	// example:
 	//
-	// 示例值示例值示例值
+	// a@test.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// example:
 	//
-	// 示例值示例值示例值
+	// 86138***
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 }
 

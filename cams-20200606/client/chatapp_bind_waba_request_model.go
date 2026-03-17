@@ -23,11 +23,13 @@ type ChatappBindWabaRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the WhatsApp Business account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 33993***
+	// 2293938222343****
 	WabaId *string `json:"WabaId,omitempty" xml:"WabaId,omitempty"`
 }
 

@@ -26,21 +26,27 @@ type iCreateFlowRequest interface {
 }
 
 type CreateFlowRequest struct {
+	// The categories of the Flow.
+	//
 	// This parameter is required.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// The space ID of the user within the independent software vendor (ISV) account.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 93994848
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// example:
 	//
 	// http://www.***.com
 	EndpointUri *string `json:"EndpointUri,omitempty" xml:"EndpointUri,omitempty"`
+	// The name of the Flow.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// flow_001
 	FlowName             *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

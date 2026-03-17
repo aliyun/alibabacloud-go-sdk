@@ -29,17 +29,29 @@ type IsvGetAppIdRequest struct {
 	// 示例值示例值示例值
 	IntlVersion *string `json:"IntlVersion,omitempty" xml:"IntlVersion,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The permission.
+	//
+	// Valid values:
+	//
+	// 	- whatsapp_business_messaging: sending permission on WhatsApp messages
+	//
+	// 	- ads_management: management permission on advertisements
+	//
+	// 	- catalog_management: management permission on catalogs
+	//
 	// example:
 	//
-	// 示例值示例值
+	// catalog_management
 	Permissions          *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The type of the app. Valid value: WHATSAPP.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// WHATSAPP
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
