@@ -9,6 +9,8 @@ type iModifyCustomAgentShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCallbackConfigShrink(v string) *ModifyCustomAgentShrinkRequest
+	GetCallbackConfigShrink() *string
 	SetCustomAgentId(v string) *ModifyCustomAgentShrinkRequest
 	GetCustomAgentId() *string
 	SetDMSUnit(v string) *ModifyCustomAgentShrinkRequest
@@ -38,6 +40,7 @@ type iModifyCustomAgentShrinkRequest interface {
 }
 
 type ModifyCustomAgentShrinkRequest struct {
+	CallbackConfigShrink *string `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -70,6 +73,10 @@ func (s ModifyCustomAgentShrinkRequest) String() string {
 
 func (s ModifyCustomAgentShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyCustomAgentShrinkRequest) GetCallbackConfigShrink() *string {
+	return s.CallbackConfigShrink
 }
 
 func (s *ModifyCustomAgentShrinkRequest) GetCustomAgentId() *string {
@@ -122,6 +129,11 @@ func (s *ModifyCustomAgentShrinkRequest) GetWebReportConfig() *string {
 
 func (s *ModifyCustomAgentShrinkRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *ModifyCustomAgentShrinkRequest) SetCallbackConfigShrink(v string) *ModifyCustomAgentShrinkRequest {
+	s.CallbackConfigShrink = &v
+	return s
 }
 
 func (s *ModifyCustomAgentShrinkRequest) SetCustomAgentId(v string) *ModifyCustomAgentShrinkRequest {

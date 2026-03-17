@@ -9,6 +9,8 @@ type iCreateCustomAgentRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCallbackConfig(v *CreateCustomAgentRequestCallbackConfig) *CreateCustomAgentRequest
+	GetCallbackConfig() *CreateCustomAgentRequestCallbackConfig
 	SetDMSUnit(v string) *CreateCustomAgentRequest
 	GetDMSUnit() *string
 	SetDataJson(v string) *CreateCustomAgentRequest
@@ -36,6 +38,7 @@ type iCreateCustomAgentRequest interface {
 }
 
 type CreateCustomAgentRequest struct {
+	CallbackConfig *CreateCustomAgentRequestCallbackConfig `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// cn-hangzhou
@@ -62,6 +65,10 @@ func (s CreateCustomAgentRequest) String() string {
 
 func (s CreateCustomAgentRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCustomAgentRequest) GetCallbackConfig() *CreateCustomAgentRequestCallbackConfig {
+	return s.CallbackConfig
 }
 
 func (s *CreateCustomAgentRequest) GetDMSUnit() *string {
@@ -110,6 +117,11 @@ func (s *CreateCustomAgentRequest) GetWebReportConfig() *string {
 
 func (s *CreateCustomAgentRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *CreateCustomAgentRequest) SetCallbackConfig(v *CreateCustomAgentRequestCallbackConfig) *CreateCustomAgentRequest {
+	s.CallbackConfig = v
+	return s
 }
 
 func (s *CreateCustomAgentRequest) SetDMSUnit(v string) *CreateCustomAgentRequest {
@@ -173,6 +185,11 @@ func (s *CreateCustomAgentRequest) SetWorkspaceId(v string) *CreateCustomAgentRe
 }
 
 func (s *CreateCustomAgentRequest) Validate() error {
+	if s.CallbackConfig != nil {
+		if err := s.CallbackConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.ExecutionConfig != nil {
 		if err := s.ExecutionConfig.Validate(); err != nil {
 			return err
@@ -193,6 +210,71 @@ func (s *CreateCustomAgentRequest) Validate() error {
 		}
 	}
 	return nil
+}
+
+type CreateCustomAgentRequestCallbackConfig struct {
+	CallbackArgs   *string `json:"CallbackArgs,omitempty" xml:"CallbackArgs,omitempty"`
+	CallbackPrompt *string `json:"CallbackPrompt,omitempty" xml:"CallbackPrompt,omitempty"`
+	CallbackTime   *int32  `json:"CallbackTime,omitempty" xml:"CallbackTime,omitempty"`
+	ToolId         *string `json:"ToolId,omitempty" xml:"ToolId,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateCustomAgentRequestCallbackConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateCustomAgentRequestCallbackConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomAgentRequestCallbackConfig) GetCallbackArgs() *string {
+	return s.CallbackArgs
+}
+
+func (s *CreateCustomAgentRequestCallbackConfig) GetCallbackPrompt() *string {
+	return s.CallbackPrompt
+}
+
+func (s *CreateCustomAgentRequestCallbackConfig) GetCallbackTime() *int32 {
+	return s.CallbackTime
+}
+
+func (s *CreateCustomAgentRequestCallbackConfig) GetToolId() *string {
+	return s.ToolId
+}
+
+func (s *CreateCustomAgentRequestCallbackConfig) GetType() *string {
+	return s.Type
+}
+
+func (s *CreateCustomAgentRequestCallbackConfig) SetCallbackArgs(v string) *CreateCustomAgentRequestCallbackConfig {
+	s.CallbackArgs = &v
+	return s
+}
+
+func (s *CreateCustomAgentRequestCallbackConfig) SetCallbackPrompt(v string) *CreateCustomAgentRequestCallbackConfig {
+	s.CallbackPrompt = &v
+	return s
+}
+
+func (s *CreateCustomAgentRequestCallbackConfig) SetCallbackTime(v int32) *CreateCustomAgentRequestCallbackConfig {
+	s.CallbackTime = &v
+	return s
+}
+
+func (s *CreateCustomAgentRequestCallbackConfig) SetToolId(v string) *CreateCustomAgentRequestCallbackConfig {
+	s.ToolId = &v
+	return s
+}
+
+func (s *CreateCustomAgentRequestCallbackConfig) SetType(v string) *CreateCustomAgentRequestCallbackConfig {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateCustomAgentRequestCallbackConfig) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateCustomAgentRequestExecutionConfig struct {

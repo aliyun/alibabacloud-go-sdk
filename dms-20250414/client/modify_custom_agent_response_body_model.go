@@ -113,7 +113,8 @@ type ModifyCustomAgentResponseBodyData struct {
 	// example:
 	//
 	// 20372822********
-	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	AliyunUid      *string                                          `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	CallbackConfig *ModifyCustomAgentResponseBodyDataCallbackConfig `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// HaoY*****
@@ -200,6 +201,10 @@ func (s *ModifyCustomAgentResponseBodyData) GetAliyunParentUid() *string {
 
 func (s *ModifyCustomAgentResponseBodyData) GetAliyunUid() *string {
 	return s.AliyunUid
+}
+
+func (s *ModifyCustomAgentResponseBodyData) GetCallbackConfig() *ModifyCustomAgentResponseBodyDataCallbackConfig {
+	return s.CallbackConfig
 }
 
 func (s *ModifyCustomAgentResponseBodyData) GetCreatorUserName() *string {
@@ -309,6 +314,11 @@ func (s *ModifyCustomAgentResponseBodyData) SetAliyunParentUid(v string) *Modify
 
 func (s *ModifyCustomAgentResponseBodyData) SetAliyunUid(v string) *ModifyCustomAgentResponseBodyData {
 	s.AliyunUid = &v
+	return s
+}
+
+func (s *ModifyCustomAgentResponseBodyData) SetCallbackConfig(v *ModifyCustomAgentResponseBodyDataCallbackConfig) *ModifyCustomAgentResponseBodyData {
+	s.CallbackConfig = v
 	return s
 }
 
@@ -438,6 +448,11 @@ func (s *ModifyCustomAgentResponseBodyData) SetWorkspaceId(v string) *ModifyCust
 }
 
 func (s *ModifyCustomAgentResponseBodyData) Validate() error {
+	if s.CallbackConfig != nil {
+		if err := s.CallbackConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.ExecutionConfig != nil {
 		if err := s.ExecutionConfig.Validate(); err != nil {
 			return err
@@ -458,6 +473,71 @@ func (s *ModifyCustomAgentResponseBodyData) Validate() error {
 		}
 	}
 	return nil
+}
+
+type ModifyCustomAgentResponseBodyDataCallbackConfig struct {
+	CallbackArgs   *string `json:"CallbackArgs,omitempty" xml:"CallbackArgs,omitempty"`
+	CallbackPrompt *string `json:"CallbackPrompt,omitempty" xml:"CallbackPrompt,omitempty"`
+	CallbackTime   *int32  `json:"CallbackTime,omitempty" xml:"CallbackTime,omitempty"`
+	ToolId         *string `json:"ToolId,omitempty" xml:"ToolId,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ModifyCustomAgentResponseBodyDataCallbackConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyCustomAgentResponseBodyDataCallbackConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCustomAgentResponseBodyDataCallbackConfig) GetCallbackArgs() *string {
+	return s.CallbackArgs
+}
+
+func (s *ModifyCustomAgentResponseBodyDataCallbackConfig) GetCallbackPrompt() *string {
+	return s.CallbackPrompt
+}
+
+func (s *ModifyCustomAgentResponseBodyDataCallbackConfig) GetCallbackTime() *int32 {
+	return s.CallbackTime
+}
+
+func (s *ModifyCustomAgentResponseBodyDataCallbackConfig) GetToolId() *string {
+	return s.ToolId
+}
+
+func (s *ModifyCustomAgentResponseBodyDataCallbackConfig) GetType() *string {
+	return s.Type
+}
+
+func (s *ModifyCustomAgentResponseBodyDataCallbackConfig) SetCallbackArgs(v string) *ModifyCustomAgentResponseBodyDataCallbackConfig {
+	s.CallbackArgs = &v
+	return s
+}
+
+func (s *ModifyCustomAgentResponseBodyDataCallbackConfig) SetCallbackPrompt(v string) *ModifyCustomAgentResponseBodyDataCallbackConfig {
+	s.CallbackPrompt = &v
+	return s
+}
+
+func (s *ModifyCustomAgentResponseBodyDataCallbackConfig) SetCallbackTime(v int32) *ModifyCustomAgentResponseBodyDataCallbackConfig {
+	s.CallbackTime = &v
+	return s
+}
+
+func (s *ModifyCustomAgentResponseBodyDataCallbackConfig) SetToolId(v string) *ModifyCustomAgentResponseBodyDataCallbackConfig {
+	s.ToolId = &v
+	return s
+}
+
+func (s *ModifyCustomAgentResponseBodyDataCallbackConfig) SetType(v string) *ModifyCustomAgentResponseBodyDataCallbackConfig {
+	s.Type = &v
+	return s
+}
+
+func (s *ModifyCustomAgentResponseBodyDataCallbackConfig) Validate() error {
+	return dara.Validate(s)
 }
 
 type ModifyCustomAgentResponseBodyDataExecutionConfig struct {

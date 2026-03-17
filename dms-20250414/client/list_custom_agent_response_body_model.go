@@ -199,7 +199,8 @@ type ListCustomAgentResponseBodyDataContent struct {
 	// example:
 	//
 	// 20372822********
-	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	AliyunUid      *string                                               `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	CallbackConfig *ListCustomAgentResponseBodyDataContentCallbackConfig `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// HaoY*****
@@ -281,6 +282,10 @@ func (s *ListCustomAgentResponseBodyDataContent) GetAliyunParentId() *string {
 
 func (s *ListCustomAgentResponseBodyDataContent) GetAliyunUid() *string {
 	return s.AliyunUid
+}
+
+func (s *ListCustomAgentResponseBodyDataContent) GetCallbackConfig() *ListCustomAgentResponseBodyDataContentCallbackConfig {
+	return s.CallbackConfig
 }
 
 func (s *ListCustomAgentResponseBodyDataContent) GetCreatorUserName() *string {
@@ -394,6 +399,11 @@ func (s *ListCustomAgentResponseBodyDataContent) SetAliyunParentId(v string) *Li
 
 func (s *ListCustomAgentResponseBodyDataContent) SetAliyunUid(v string) *ListCustomAgentResponseBodyDataContent {
 	s.AliyunUid = &v
+	return s
+}
+
+func (s *ListCustomAgentResponseBodyDataContent) SetCallbackConfig(v *ListCustomAgentResponseBodyDataContentCallbackConfig) *ListCustomAgentResponseBodyDataContent {
+	s.CallbackConfig = v
 	return s
 }
 
@@ -528,6 +538,11 @@ func (s *ListCustomAgentResponseBodyDataContent) SetWorkspaceId(v string) *ListC
 }
 
 func (s *ListCustomAgentResponseBodyDataContent) Validate() error {
+	if s.CallbackConfig != nil {
+		if err := s.CallbackConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.ExecutionConfig != nil {
 		if err := s.ExecutionConfig.Validate(); err != nil {
 			return err
@@ -548,6 +563,71 @@ func (s *ListCustomAgentResponseBodyDataContent) Validate() error {
 		}
 	}
 	return nil
+}
+
+type ListCustomAgentResponseBodyDataContentCallbackConfig struct {
+	CallbackArgs   *string `json:"CallbackArgs,omitempty" xml:"CallbackArgs,omitempty"`
+	CallbackPrompt *string `json:"CallbackPrompt,omitempty" xml:"CallbackPrompt,omitempty"`
+	CallbackTime   *int32  `json:"CallbackTime,omitempty" xml:"CallbackTime,omitempty"`
+	ToolId         *string `json:"ToolId,omitempty" xml:"ToolId,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListCustomAgentResponseBodyDataContentCallbackConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListCustomAgentResponseBodyDataContentCallbackConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomAgentResponseBodyDataContentCallbackConfig) GetCallbackArgs() *string {
+	return s.CallbackArgs
+}
+
+func (s *ListCustomAgentResponseBodyDataContentCallbackConfig) GetCallbackPrompt() *string {
+	return s.CallbackPrompt
+}
+
+func (s *ListCustomAgentResponseBodyDataContentCallbackConfig) GetCallbackTime() *int32 {
+	return s.CallbackTime
+}
+
+func (s *ListCustomAgentResponseBodyDataContentCallbackConfig) GetToolId() *string {
+	return s.ToolId
+}
+
+func (s *ListCustomAgentResponseBodyDataContentCallbackConfig) GetType() *string {
+	return s.Type
+}
+
+func (s *ListCustomAgentResponseBodyDataContentCallbackConfig) SetCallbackArgs(v string) *ListCustomAgentResponseBodyDataContentCallbackConfig {
+	s.CallbackArgs = &v
+	return s
+}
+
+func (s *ListCustomAgentResponseBodyDataContentCallbackConfig) SetCallbackPrompt(v string) *ListCustomAgentResponseBodyDataContentCallbackConfig {
+	s.CallbackPrompt = &v
+	return s
+}
+
+func (s *ListCustomAgentResponseBodyDataContentCallbackConfig) SetCallbackTime(v int32) *ListCustomAgentResponseBodyDataContentCallbackConfig {
+	s.CallbackTime = &v
+	return s
+}
+
+func (s *ListCustomAgentResponseBodyDataContentCallbackConfig) SetToolId(v string) *ListCustomAgentResponseBodyDataContentCallbackConfig {
+	s.ToolId = &v
+	return s
+}
+
+func (s *ListCustomAgentResponseBodyDataContentCallbackConfig) SetType(v string) *ListCustomAgentResponseBodyDataContentCallbackConfig {
+	s.Type = &v
+	return s
+}
+
+func (s *ListCustomAgentResponseBodyDataContentCallbackConfig) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListCustomAgentResponseBodyDataContentExecutionConfig struct {

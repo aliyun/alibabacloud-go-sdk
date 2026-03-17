@@ -450,6 +450,10 @@ func (client *Client) CreateCustomAgentWithContext(ctx context.Context, tmpReq *
 	}
 	request := &CreateCustomAgentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CallbackConfig) {
+		request.CallbackConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CallbackConfig, dara.String("CallbackConfig"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.ExecutionConfig) {
 		request.ExecutionConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExecutionConfig, dara.String("ExecutionConfig"), dara.String("json"))
 	}
@@ -463,6 +467,10 @@ func (client *Client) CreateCustomAgentWithContext(ctx context.Context, tmpReq *
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CallbackConfigShrink) {
+		query["CallbackConfig"] = request.CallbackConfigShrink
+	}
+
 	if !dara.IsNil(request.DMSUnit) {
 		query["DMSUnit"] = request.DMSUnit
 	}
@@ -3499,6 +3507,10 @@ func (client *Client) ModifyCustomAgentWithContext(ctx context.Context, tmpReq *
 	}
 	request := &ModifyCustomAgentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CallbackConfig) {
+		request.CallbackConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CallbackConfig, dara.String("CallbackConfig"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.ExecutionConfig) {
 		request.ExecutionConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExecutionConfig, dara.String("ExecutionConfig"), dara.String("json"))
 	}
@@ -3512,6 +3524,10 @@ func (client *Client) ModifyCustomAgentWithContext(ctx context.Context, tmpReq *
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CallbackConfigShrink) {
+		query["CallbackConfig"] = request.CallbackConfigShrink
+	}
+
 	if !dara.IsNil(request.CustomAgentId) {
 		query["CustomAgentId"] = request.CustomAgentId
 	}

@@ -113,7 +113,8 @@ type DescribeCustomAgentResponseBodyData struct {
 	// example:
 	//
 	// 20372822********
-	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	AliyunUid      *string                                            `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	CallbackConfig *DescribeCustomAgentResponseBodyDataCallbackConfig `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// HaoY*****
@@ -195,6 +196,10 @@ func (s *DescribeCustomAgentResponseBodyData) GetAliyunParentUid() *string {
 
 func (s *DescribeCustomAgentResponseBodyData) GetAliyunUid() *string {
 	return s.AliyunUid
+}
+
+func (s *DescribeCustomAgentResponseBodyData) GetCallbackConfig() *DescribeCustomAgentResponseBodyDataCallbackConfig {
+	return s.CallbackConfig
 }
 
 func (s *DescribeCustomAgentResponseBodyData) GetCreatorUserName() *string {
@@ -308,6 +313,11 @@ func (s *DescribeCustomAgentResponseBodyData) SetAliyunParentUid(v string) *Desc
 
 func (s *DescribeCustomAgentResponseBodyData) SetAliyunUid(v string) *DescribeCustomAgentResponseBodyData {
 	s.AliyunUid = &v
+	return s
+}
+
+func (s *DescribeCustomAgentResponseBodyData) SetCallbackConfig(v *DescribeCustomAgentResponseBodyDataCallbackConfig) *DescribeCustomAgentResponseBodyData {
+	s.CallbackConfig = v
 	return s
 }
 
@@ -442,6 +452,11 @@ func (s *DescribeCustomAgentResponseBodyData) SetWorkspaceId(v string) *Describe
 }
 
 func (s *DescribeCustomAgentResponseBodyData) Validate() error {
+	if s.CallbackConfig != nil {
+		if err := s.CallbackConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.ExecutionConfig != nil {
 		if err := s.ExecutionConfig.Validate(); err != nil {
 			return err
@@ -462,6 +477,71 @@ func (s *DescribeCustomAgentResponseBodyData) Validate() error {
 		}
 	}
 	return nil
+}
+
+type DescribeCustomAgentResponseBodyDataCallbackConfig struct {
+	CallbackArgs   *string `json:"CallbackArgs,omitempty" xml:"CallbackArgs,omitempty"`
+	CallbackPrompt *string `json:"CallbackPrompt,omitempty" xml:"CallbackPrompt,omitempty"`
+	CallbackTime   *int32  `json:"CallbackTime,omitempty" xml:"CallbackTime,omitempty"`
+	ToolId         *string `json:"ToolId,omitempty" xml:"ToolId,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeCustomAgentResponseBodyDataCallbackConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeCustomAgentResponseBodyDataCallbackConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomAgentResponseBodyDataCallbackConfig) GetCallbackArgs() *string {
+	return s.CallbackArgs
+}
+
+func (s *DescribeCustomAgentResponseBodyDataCallbackConfig) GetCallbackPrompt() *string {
+	return s.CallbackPrompt
+}
+
+func (s *DescribeCustomAgentResponseBodyDataCallbackConfig) GetCallbackTime() *int32 {
+	return s.CallbackTime
+}
+
+func (s *DescribeCustomAgentResponseBodyDataCallbackConfig) GetToolId() *string {
+	return s.ToolId
+}
+
+func (s *DescribeCustomAgentResponseBodyDataCallbackConfig) GetType() *string {
+	return s.Type
+}
+
+func (s *DescribeCustomAgentResponseBodyDataCallbackConfig) SetCallbackArgs(v string) *DescribeCustomAgentResponseBodyDataCallbackConfig {
+	s.CallbackArgs = &v
+	return s
+}
+
+func (s *DescribeCustomAgentResponseBodyDataCallbackConfig) SetCallbackPrompt(v string) *DescribeCustomAgentResponseBodyDataCallbackConfig {
+	s.CallbackPrompt = &v
+	return s
+}
+
+func (s *DescribeCustomAgentResponseBodyDataCallbackConfig) SetCallbackTime(v int32) *DescribeCustomAgentResponseBodyDataCallbackConfig {
+	s.CallbackTime = &v
+	return s
+}
+
+func (s *DescribeCustomAgentResponseBodyDataCallbackConfig) SetToolId(v string) *DescribeCustomAgentResponseBodyDataCallbackConfig {
+	s.ToolId = &v
+	return s
+}
+
+func (s *DescribeCustomAgentResponseBodyDataCallbackConfig) SetType(v string) *DescribeCustomAgentResponseBodyDataCallbackConfig {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeCustomAgentResponseBodyDataCallbackConfig) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeCustomAgentResponseBodyDataExecutionConfig struct {
