@@ -17,6 +17,8 @@ type iListWorkspacesRequest interface {
 	GetNextToken() *string
 	SetRegionId(v string) *ListWorkspacesRequest
 	GetRegionId() *string
+	SetResourceGroupId(v string) *ListWorkspacesRequest
+	GetResourceGroupId() *string
 	SetState(v string) *ListWorkspacesRequest
 	GetState() *string
 	SetTag(v []*ListWorkspacesRequestTag) *ListWorkspacesRequest
@@ -48,6 +50,10 @@ type ListWorkspacesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// rg-aek2thxggoqhmhq
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The state of the workspace.
 	//
 	// example:
@@ -81,6 +87,10 @@ func (s *ListWorkspacesRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *ListWorkspacesRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *ListWorkspacesRequest) GetState() *string {
 	return s.State
 }
@@ -109,6 +119,11 @@ func (s *ListWorkspacesRequest) SetRegionId(v string) *ListWorkspacesRequest {
 	return s
 }
 
+func (s *ListWorkspacesRequest) SetResourceGroupId(v string) *ListWorkspacesRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListWorkspacesRequest) SetState(v string) *ListWorkspacesRequest {
 	s.State = &v
 	return s
@@ -133,7 +148,13 @@ func (s *ListWorkspacesRequest) Validate() error {
 }
 
 type ListWorkspacesRequestTag struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// cn-shenzhen-finance.edas.config.server
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// iphone磁盘空间剩余率
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

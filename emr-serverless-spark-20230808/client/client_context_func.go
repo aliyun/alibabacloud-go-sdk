@@ -922,6 +922,10 @@ func (client *Client) CreateWorkspaceWithContext(ctx context.Context, request *C
 		body["releaseType"] = request.ReleaseType
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !dara.IsNil(request.ResourceSpec) {
 		body["resourceSpec"] = request.ResourceSpec
 	}
@@ -2140,7 +2144,7 @@ func (client *Client) ListJobRunsWithContext(ctx context.Context, workspaceId *s
 
 // Summary:
 //
-// # ListKyuubiServices
+// # Gets the list of KyuubiServers
 //
 // @param headers - map
 //
@@ -2309,7 +2313,7 @@ func (client *Client) ListKyuubiTokenWithContext(ctx context.Context, workspaceI
 
 // Summary:
 //
-// 列出livy compute
+// List the Livy Gateway.
 //
 // @param request - ListLivyComputeRequest
 //
@@ -2951,6 +2955,10 @@ func (client *Client) ListWorkspacesWithContext(ctx context.Context, tmpReq *Lis
 
 	if !dara.IsNil(request.RegionId) {
 		query["regionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["resourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !dara.IsNil(request.State) {

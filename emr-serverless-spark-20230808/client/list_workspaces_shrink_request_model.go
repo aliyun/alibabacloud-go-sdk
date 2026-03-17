@@ -17,6 +17,8 @@ type iListWorkspacesShrinkRequest interface {
 	GetNextToken() *string
 	SetRegionId(v string) *ListWorkspacesShrinkRequest
 	GetRegionId() *string
+	SetResourceGroupId(v string) *ListWorkspacesShrinkRequest
+	GetResourceGroupId() *string
 	SetState(v string) *ListWorkspacesShrinkRequest
 	GetState() *string
 	SetTagShrink(v string) *ListWorkspacesShrinkRequest
@@ -48,6 +50,10 @@ type ListWorkspacesShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// rg-aek2thxggoqhmhq
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The state of the workspace.
 	//
 	// example:
@@ -81,6 +87,10 @@ func (s *ListWorkspacesShrinkRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *ListWorkspacesShrinkRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *ListWorkspacesShrinkRequest) GetState() *string {
 	return s.State
 }
@@ -106,6 +116,11 @@ func (s *ListWorkspacesShrinkRequest) SetNextToken(v string) *ListWorkspacesShri
 
 func (s *ListWorkspacesShrinkRequest) SetRegionId(v string) *ListWorkspacesShrinkRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListWorkspacesShrinkRequest) SetResourceGroupId(v string) *ListWorkspacesShrinkRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 

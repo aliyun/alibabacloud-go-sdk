@@ -16,9 +16,21 @@ type iSparkConf interface {
 }
 
 type SparkConf struct {
+	// The key of the SparkConf object.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// spark.app.name
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The value of the SparkConf object.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test_application
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

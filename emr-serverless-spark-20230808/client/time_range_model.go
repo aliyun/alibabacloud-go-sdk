@@ -16,13 +16,13 @@ type iTimeRange interface {
 }
 
 type TimeRange struct {
-	// 时间范围结束时间。
+	// The end time of the time range.
 	//
 	// example:
 	//
 	// 1688370894339
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 时间范围开始时间。
+	// The start time of the time range.
 	//
 	// example:
 	//

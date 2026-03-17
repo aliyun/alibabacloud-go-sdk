@@ -20,10 +20,30 @@ type iRunLog interface {
 }
 
 type RunLog struct {
-	DriverStartup  *string `json:"driverStartup,omitempty" xml:"driverStartup,omitempty"`
+	// The path of the startup file.
+	//
+	// example:
+	//
+	// oss://bucket/path/to/startup
+	DriverStartup *string `json:"driverStartup,omitempty" xml:"driverStartup,omitempty"`
+	// The path of the stderr file.
+	//
+	// example:
+	//
+	// oss://bucket/path/to/stderr
 	DriverStdError *string `json:"driverStdError,omitempty" xml:"driverStdError,omitempty"`
-	DriverStdOut   *string `json:"driverStdOut,omitempty" xml:"driverStdOut,omitempty"`
-	DriverSyslog   *string `json:"driverSyslog,omitempty" xml:"driverSyslog,omitempty"`
+	// The path of the stdout file.
+	//
+	// example:
+	//
+	// oss://bucket/path/to/stdout
+	DriverStdOut *string `json:"driverStdOut,omitempty" xml:"driverStdOut,omitempty"`
+	// The path of the syslog file.
+	//
+	// example:
+	//
+	// oss://bucket/path/to/syslog
+	DriverSyslog *string `json:"driverSyslog,omitempty" xml:"driverSyslog,omitempty"`
 }
 
 func (s RunLog) String() string {

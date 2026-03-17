@@ -35,6 +35,8 @@ type iCreateWorkspaceRequest interface {
 	GetRamRoleName() *string
 	SetReleaseType(v string) *CreateWorkspaceRequest
 	GetReleaseType() *string
+	SetResourceGroupId(v string) *CreateWorkspaceRequest
+	GetResourceGroupId() *string
 	SetResourceSpec(v *CreateWorkspaceRequestResourceSpec) *CreateWorkspaceRequest
 	GetResourceSpec() *CreateWorkspaceRequestResourceSpec
 	SetTag(v []*CreateWorkspaceRequestTag) *CreateWorkspaceRequest
@@ -128,6 +130,10 @@ type CreateWorkspaceRequest struct {
 	//
 	// pro
 	ReleaseType *string `json:"releaseType,omitempty" xml:"releaseType,omitempty"`
+	// example:
+	//
+	// rg-xxxxxxx
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The resource specifications.
 	ResourceSpec *CreateWorkspaceRequestResourceSpec `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty" type:"Struct"`
 	// if can be null:
@@ -205,6 +211,10 @@ func (s *CreateWorkspaceRequest) GetRamRoleName() *string {
 
 func (s *CreateWorkspaceRequest) GetReleaseType() *string {
 	return s.ReleaseType
+}
+
+func (s *CreateWorkspaceRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
 }
 
 func (s *CreateWorkspaceRequest) GetResourceSpec() *CreateWorkspaceRequestResourceSpec {
@@ -285,6 +295,11 @@ func (s *CreateWorkspaceRequest) SetRamRoleName(v string) *CreateWorkspaceReques
 
 func (s *CreateWorkspaceRequest) SetReleaseType(v string) *CreateWorkspaceRequest {
 	s.ReleaseType = &v
+	return s
+}
+
+func (s *CreateWorkspaceRequest) SetResourceGroupId(v string) *CreateWorkspaceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 

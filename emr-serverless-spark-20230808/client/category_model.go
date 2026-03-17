@@ -28,20 +28,67 @@ type iCategory interface {
 }
 
 type Category struct {
+	// The folder ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// w-d8********
 	BizId *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
+	// The ID of the user who creates the folder.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 150978934701****
 	Creator *int64 `json:"creator,omitempty" xml:"creator,omitempty"`
+	// The time when the folder was created.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2025-03-10T02:02:41.000+00:00
 	GmtCreated *string `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
+	// The time when the folder was last updated.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2025-03-10T02:02:41.000+00:00
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// The ID of the user who last modifies the folder.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 150978934701****
 	Modifier *int64 `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// The name of the folder.
+	//
 	// This parameter is required.
-	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	//
+	// example:
+	//
+	// name
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The parent folder ID.
+	//
+	// example:
+	//
+	// w-d6********
 	ParentBizId *string `json:"parentBizId,omitempty" xml:"parentBizId,omitempty"`
+	// The type of the folder.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// TASK
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 

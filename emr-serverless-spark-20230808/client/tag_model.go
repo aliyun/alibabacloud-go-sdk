@@ -16,13 +16,13 @@ type iTag interface {
 }
 
 type Tag struct {
-	// 标签key值。
+	// The tag key.
 	//
 	// example:
 	//
 	// workflowId
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// 标签key值。
+	// The tag value.
 	//
 	// example:
 	//

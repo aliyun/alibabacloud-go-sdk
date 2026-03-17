@@ -207,6 +207,10 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	//
 	// SERVICE_RELEASE
 	ReleaseType *string `json:"releaseType,omitempty" xml:"releaseType,omitempty"`
+	// example:
+	//
+	// rg-xxxxxxxxxx
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The resource specifications.
 	//
 	// example:
@@ -310,6 +314,10 @@ func (s *ListWorkspacesResponseBodyWorkspaces) GetReleaseType() *string {
 	return s.ReleaseType
 }
 
+func (s *ListWorkspacesResponseBodyWorkspaces) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *ListWorkspacesResponseBodyWorkspaces) GetResourceSpec() *string {
 	return s.ResourceSpec
 }
@@ -410,6 +418,11 @@ func (s *ListWorkspacesResponseBodyWorkspaces) SetRegionId(v string) *ListWorksp
 
 func (s *ListWorkspacesResponseBodyWorkspaces) SetReleaseType(v string) *ListWorkspacesResponseBodyWorkspaces {
 	s.ReleaseType = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetResourceGroupId(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.ResourceGroupId = &v
 	return s
 }
 

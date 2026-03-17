@@ -18,8 +18,23 @@ type iConfiguration interface {
 }
 
 type Configuration struct {
-	ConfigFileName  *string `json:"configFileName,omitempty" xml:"configFileName,omitempty"`
-	ConfigItemKey   *string `json:"configItemKey,omitempty" xml:"configItemKey,omitempty"`
+	// The name of the configuration file.
+	//
+	// example:
+	//
+	// common.conf
+	ConfigFileName *string `json:"configFileName,omitempty" xml:"configFileName,omitempty"`
+	// The name of the configuration item.
+	//
+	// example:
+	//
+	// hive.metastore.type
+	ConfigItemKey *string `json:"configItemKey,omitempty" xml:"configItemKey,omitempty"`
+	// The value of the configuration item.
+	//
+	// example:
+	//
+	// USER_RDS
 	ConfigItemValue *string `json:"configItemValue,omitempty" xml:"configItemValue,omitempty"`
 }
 
