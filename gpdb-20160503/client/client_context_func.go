@@ -13817,6 +13817,54 @@ func (client *Client) PauseInstanceWithContext(ctx context.Context, request *Pau
 
 // Summary:
 //
+// 暂停Supabase实例
+//
+// @param request - PauseSupabaseProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PauseSupabaseProjectResponse
+func (client *Client) PauseSupabaseProjectWithContext(ctx context.Context, request *PauseSupabaseProjectRequest, runtime *dara.RuntimeOptions) (_result *PauseSupabaseProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PauseSupabaseProject"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PauseSupabaseProjectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Query Vector Data
 //
 // @param tmpReq - QueryCollectionDataRequest
@@ -14697,6 +14745,54 @@ func (client *Client) ResumeInstanceWithContext(ctx context.Context, request *Re
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResumeInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 恢复Supabase实例
+//
+// @param request - ResumeSupabaseProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResumeSupabaseProjectResponse
+func (client *Client) ResumeSupabaseProjectWithContext(ctx context.Context, request *ResumeSupabaseProjectRequest, runtime *dara.RuntimeOptions) (_result *ResumeSupabaseProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResumeSupabaseProject"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResumeSupabaseProjectResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
