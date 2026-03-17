@@ -17,15 +17,17 @@ type iCreateThreadRequest interface {
 	GetExtLoginUser() *CreateThreadRequestExtLoginUser
 	SetOriginalAssistantId(v string) *CreateThreadRequest
 	GetOriginalAssistantId() *string
+	SetSourceIdOfAssistantId(v string) *CreateThreadRequest
+	GetSourceIdOfAssistantId() *string
 	SetSourceIdOfOriginalAssistantId(v string) *CreateThreadRequest
 	GetSourceIdOfOriginalAssistantId() *string
+	SetSourceTypeOfAssistantId(v int32) *CreateThreadRequest
+	GetSourceTypeOfAssistantId() *int32
 	SetSourceTypeOfOriginalAssistantId(v int32) *CreateThreadRequest
 	GetSourceTypeOfOriginalAssistantId() *int32
 }
 
 type CreateThreadRequest struct {
-	// This parameter is required.
-	//
 	// example:
 	//
 	// assistantId1
@@ -39,7 +41,12 @@ type CreateThreadRequest struct {
 	// example:
 	//
 	// agentKey1
+	SourceIdOfAssistantId *string `json:"sourceIdOfAssistantId,omitempty" xml:"sourceIdOfAssistantId,omitempty"`
+	// example:
+	//
+	// agentKey1
 	SourceIdOfOriginalAssistantId   *string `json:"sourceIdOfOriginalAssistantId,omitempty" xml:"sourceIdOfOriginalAssistantId,omitempty"`
+	SourceTypeOfAssistantId         *int32  `json:"sourceTypeOfAssistantId,omitempty" xml:"sourceTypeOfAssistantId,omitempty"`
 	SourceTypeOfOriginalAssistantId *int32  `json:"sourceTypeOfOriginalAssistantId,omitempty" xml:"sourceTypeOfOriginalAssistantId,omitempty"`
 }
 
@@ -67,8 +74,16 @@ func (s *CreateThreadRequest) GetOriginalAssistantId() *string {
 	return s.OriginalAssistantId
 }
 
+func (s *CreateThreadRequest) GetSourceIdOfAssistantId() *string {
+	return s.SourceIdOfAssistantId
+}
+
 func (s *CreateThreadRequest) GetSourceIdOfOriginalAssistantId() *string {
 	return s.SourceIdOfOriginalAssistantId
+}
+
+func (s *CreateThreadRequest) GetSourceTypeOfAssistantId() *int32 {
+	return s.SourceTypeOfAssistantId
 }
 
 func (s *CreateThreadRequest) GetSourceTypeOfOriginalAssistantId() *int32 {
@@ -95,8 +110,18 @@ func (s *CreateThreadRequest) SetOriginalAssistantId(v string) *CreateThreadRequ
 	return s
 }
 
+func (s *CreateThreadRequest) SetSourceIdOfAssistantId(v string) *CreateThreadRequest {
+	s.SourceIdOfAssistantId = &v
+	return s
+}
+
 func (s *CreateThreadRequest) SetSourceIdOfOriginalAssistantId(v string) *CreateThreadRequest {
 	s.SourceIdOfOriginalAssistantId = &v
+	return s
+}
+
+func (s *CreateThreadRequest) SetSourceTypeOfAssistantId(v int32) *CreateThreadRequest {
+	s.SourceTypeOfAssistantId = &v
 	return s
 }
 

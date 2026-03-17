@@ -1328,6 +1328,10 @@ type CreateRunResponseBodyMessagesContentStructParts struct {
 	Finish   *bool                                                    `json:"finish,omitempty" xml:"finish,omitempty"`
 	// example:
 	//
+	// {}
+	InfoPart *CreateRunResponseBodyMessagesContentStructPartsInfoPart `json:"infoPart,omitempty" xml:"infoPart,omitempty" type:"Struct"`
+	// example:
+	//
 	// 这是正文内容部分
 	PartDesc *string `json:"partDesc,omitempty" xml:"partDesc,omitempty"`
 	// example:
@@ -1378,6 +1382,10 @@ func (s *CreateRunResponseBodyMessagesContentStructParts) GetFinish() *bool {
 	return s.Finish
 }
 
+func (s *CreateRunResponseBodyMessagesContentStructParts) GetInfoPart() *CreateRunResponseBodyMessagesContentStructPartsInfoPart {
+	return s.InfoPart
+}
+
 func (s *CreateRunResponseBodyMessagesContentStructParts) GetPartDesc() *string {
 	return s.PartDesc
 }
@@ -1421,6 +1429,11 @@ func (s *CreateRunResponseBodyMessagesContentStructParts) SetFinish(v bool) *Cre
 	return s
 }
 
+func (s *CreateRunResponseBodyMessagesContentStructParts) SetInfoPart(v *CreateRunResponseBodyMessagesContentStructPartsInfoPart) *CreateRunResponseBodyMessagesContentStructParts {
+	s.InfoPart = v
+	return s
+}
+
 func (s *CreateRunResponseBodyMessagesContentStructParts) SetPartDesc(v string) *CreateRunResponseBodyMessagesContentStructParts {
 	s.PartDesc = &v
 	return s
@@ -1459,6 +1472,11 @@ func (s *CreateRunResponseBodyMessagesContentStructParts) SetType(v string) *Cre
 func (s *CreateRunResponseBodyMessagesContentStructParts) Validate() error {
 	if s.DataPart != nil {
 		if err := s.DataPart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InfoPart != nil {
+		if err := s.InfoPart.Validate(); err != nil {
 			return err
 		}
 	}
@@ -1507,6 +1525,51 @@ func (s *CreateRunResponseBodyMessagesContentStructPartsDataPart) SetData(v inte
 }
 
 func (s *CreateRunResponseBodyMessagesContentStructPartsDataPart) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateRunResponseBodyMessagesContentStructPartsInfoPart struct {
+	CateIdList   []*string `json:"cateIdList,omitempty" xml:"cateIdList,omitempty" type:"Repeated"`
+	NeedFeedback *bool     `json:"needFeedback,omitempty" xml:"needFeedback,omitempty"`
+	Origin       *string   `json:"origin,omitempty" xml:"origin,omitempty"`
+}
+
+func (s CreateRunResponseBodyMessagesContentStructPartsInfoPart) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateRunResponseBodyMessagesContentStructPartsInfoPart) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructPartsInfoPart) GetCateIdList() []*string {
+	return s.CateIdList
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructPartsInfoPart) GetNeedFeedback() *bool {
+	return s.NeedFeedback
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructPartsInfoPart) GetOrigin() *string {
+	return s.Origin
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructPartsInfoPart) SetCateIdList(v []*string) *CreateRunResponseBodyMessagesContentStructPartsInfoPart {
+	s.CateIdList = v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructPartsInfoPart) SetNeedFeedback(v bool) *CreateRunResponseBodyMessagesContentStructPartsInfoPart {
+	s.NeedFeedback = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructPartsInfoPart) SetOrigin(v string) *CreateRunResponseBodyMessagesContentStructPartsInfoPart {
+	s.Origin = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructPartsInfoPart) Validate() error {
 	return dara.Validate(s)
 }
 

@@ -13,6 +13,8 @@ type iGetAssistantCapabilityHeaders interface {
 	GetCommonHeaders() map[string]*string
 	SetAccountId(v string) *GetAssistantCapabilityHeaders
 	GetAccountId() *string
+	SetAiLogContextJson(v string) *GetAssistantCapabilityHeaders
+	GetAiLogContextJson() *string
 }
 
 type GetAssistantCapabilityHeaders struct {
@@ -20,7 +22,8 @@ type GetAssistantCapabilityHeaders struct {
 	// example:
 	//
 	// 123456
-	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	AccountId        *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	AiLogContextJson *string `json:"aiLogContextJson,omitempty" xml:"aiLogContextJson,omitempty"`
 }
 
 func (s GetAssistantCapabilityHeaders) String() string {
@@ -39,6 +42,10 @@ func (s *GetAssistantCapabilityHeaders) GetAccountId() *string {
 	return s.AccountId
 }
 
+func (s *GetAssistantCapabilityHeaders) GetAiLogContextJson() *string {
+	return s.AiLogContextJson
+}
+
 func (s *GetAssistantCapabilityHeaders) SetCommonHeaders(v map[string]*string) *GetAssistantCapabilityHeaders {
 	s.CommonHeaders = v
 	return s
@@ -46,6 +53,11 @@ func (s *GetAssistantCapabilityHeaders) SetCommonHeaders(v map[string]*string) *
 
 func (s *GetAssistantCapabilityHeaders) SetAccountId(v string) *GetAssistantCapabilityHeaders {
 	s.AccountId = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityHeaders) SetAiLogContextJson(v string) *GetAssistantCapabilityHeaders {
+	s.AiLogContextJson = &v
 	return s
 }
 

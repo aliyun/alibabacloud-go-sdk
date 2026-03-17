@@ -3275,8 +3275,16 @@ func (client *Client) CreateMessageWithContext(ctx context.Context, request *Cre
 		body["originalAssistantId"] = request.OriginalAssistantId
 	}
 
+	if !dara.IsNil(request.SourceIdOfAssistantId) {
+		body["sourceIdOfAssistantId"] = request.SourceIdOfAssistantId
+	}
+
 	if !dara.IsNil(request.SourceIdOfOriginalAssistantId) {
 		body["sourceIdOfOriginalAssistantId"] = request.SourceIdOfOriginalAssistantId
+	}
+
+	if !dara.IsNil(request.SourceTypeOfAssistantId) {
+		body["sourceTypeOfAssistantId"] = request.SourceTypeOfAssistantId
 	}
 
 	if !dara.IsNil(request.SourceTypeOfOriginalAssistantId) {
@@ -3858,8 +3866,16 @@ func (client *Client) CreateRunWithContext(ctx context.Context, request *CreateR
 		body["originalAssistantId"] = request.OriginalAssistantId
 	}
 
+	if !dara.IsNil(request.SourceIdOfAssistantId) {
+		body["sourceIdOfAssistantId"] = request.SourceIdOfAssistantId
+	}
+
 	if !dara.IsNil(request.SourceIdOfOriginalAssistantId) {
 		body["sourceIdOfOriginalAssistantId"] = request.SourceIdOfOriginalAssistantId
+	}
+
+	if !dara.IsNil(request.SourceTypeOfAssistantId) {
+		body["sourceTypeOfAssistantId"] = request.SourceTypeOfAssistantId
 	}
 
 	if !dara.IsNil(request.SourceTypeOfOriginalAssistantId) {
@@ -4512,8 +4528,16 @@ func (client *Client) CreateThreadWithContext(ctx context.Context, request *Crea
 		body["originalAssistantId"] = request.OriginalAssistantId
 	}
 
+	if !dara.IsNil(request.SourceIdOfAssistantId) {
+		body["sourceIdOfAssistantId"] = request.SourceIdOfAssistantId
+	}
+
 	if !dara.IsNil(request.SourceIdOfOriginalAssistantId) {
 		body["sourceIdOfOriginalAssistantId"] = request.SourceIdOfOriginalAssistantId
+	}
+
+	if !dara.IsNil(request.SourceTypeOfAssistantId) {
+		body["sourceTypeOfAssistantId"] = request.SourceTypeOfAssistantId
 	}
 
 	if !dara.IsNil(request.SourceTypeOfOriginalAssistantId) {
@@ -7615,6 +7639,10 @@ func (client *Client) GetAssistantCapabilityWithContext(ctx context.Context, req
 
 	if !dara.IsNil(headers.AccountId) {
 		realHeaders["accountId"] = dara.String(dara.ToString(dara.StringValue(headers.AccountId)))
+	}
+
+	if !dara.IsNil(headers.AiLogContextJson) {
+		realHeaders["aiLogContextJson"] = dara.String(dara.ToString(dara.StringValue(headers.AiLogContextJson)))
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -13885,6 +13913,10 @@ func (client *Client) InvokeAssistantWithContext(ctx context.Context, request *I
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AllowStructViewContent) {
+		body["allowStructViewContent"] = request.AllowStructViewContent
+	}
+
 	if !dara.IsNil(request.AssistantId) {
 		body["assistantId"] = request.AssistantId
 	}
@@ -13909,8 +13941,16 @@ func (client *Client) InvokeAssistantWithContext(ctx context.Context, request *I
 		body["sessionId"] = request.SessionId
 	}
 
+	if !dara.IsNil(request.SourceIdOfAssistantId) {
+		body["sourceIdOfAssistantId"] = request.SourceIdOfAssistantId
+	}
+
 	if !dara.IsNil(request.SourceIdOfOriginalAssistantId) {
 		body["sourceIdOfOriginalAssistantId"] = request.SourceIdOfOriginalAssistantId
+	}
+
+	if !dara.IsNil(request.SourceTypeOfAssistantId) {
+		body["sourceTypeOfAssistantId"] = request.SourceTypeOfAssistantId
 	}
 
 	if !dara.IsNil(request.SourceTypeOfOriginalAssistantId) {
@@ -13928,6 +13968,10 @@ func (client *Client) InvokeAssistantWithContext(ctx context.Context, request *I
 
 	if !dara.IsNil(headers.AccountId) {
 		realHeaders["accountId"] = dara.String(dara.ToString(dara.StringValue(headers.AccountId)))
+	}
+
+	if !dara.IsNil(headers.AiLogContextJson) {
+		realHeaders["aiLogContextJson"] = dara.String(dara.ToString(dara.StringValue(headers.AiLogContextJson)))
 	}
 
 	if !dara.IsNil(headers.AlidingSsoTicket) {
@@ -23171,8 +23215,16 @@ func (client *Client) createRunWithSSECtx_opYieldFunc(_yield chan *CreateRunResp
 		body["originalAssistantId"] = request.OriginalAssistantId
 	}
 
+	if !dara.IsNil(request.SourceIdOfAssistantId) {
+		body["sourceIdOfAssistantId"] = request.SourceIdOfAssistantId
+	}
+
 	if !dara.IsNil(request.SourceIdOfOriginalAssistantId) {
 		body["sourceIdOfOriginalAssistantId"] = request.SourceIdOfOriginalAssistantId
+	}
+
+	if !dara.IsNil(request.SourceTypeOfAssistantId) {
+		body["sourceTypeOfAssistantId"] = request.SourceTypeOfAssistantId
 	}
 
 	if !dara.IsNil(request.SourceTypeOfOriginalAssistantId) {
@@ -23241,6 +23293,10 @@ func (client *Client) invokeAssistantWithSSECtx_opYieldFunc(_yield chan *InvokeA
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AllowStructViewContent) {
+		body["allowStructViewContent"] = request.AllowStructViewContent
+	}
+
 	if !dara.IsNil(request.AssistantId) {
 		body["assistantId"] = request.AssistantId
 	}
@@ -23265,8 +23321,16 @@ func (client *Client) invokeAssistantWithSSECtx_opYieldFunc(_yield chan *InvokeA
 		body["sessionId"] = request.SessionId
 	}
 
+	if !dara.IsNil(request.SourceIdOfAssistantId) {
+		body["sourceIdOfAssistantId"] = request.SourceIdOfAssistantId
+	}
+
 	if !dara.IsNil(request.SourceIdOfOriginalAssistantId) {
 		body["sourceIdOfOriginalAssistantId"] = request.SourceIdOfOriginalAssistantId
+	}
+
+	if !dara.IsNil(request.SourceTypeOfAssistantId) {
+		body["sourceTypeOfAssistantId"] = request.SourceTypeOfAssistantId
 	}
 
 	if !dara.IsNil(request.SourceTypeOfOriginalAssistantId) {
@@ -23284,6 +23348,10 @@ func (client *Client) invokeAssistantWithSSECtx_opYieldFunc(_yield chan *InvokeA
 
 	if !dara.IsNil(headers.AccountId) {
 		realHeaders["accountId"] = dara.String(dara.ToString(dara.StringValue(headers.AccountId)))
+	}
+
+	if !dara.IsNil(headers.AiLogContextJson) {
+		realHeaders["aiLogContextJson"] = dara.String(dara.ToString(dara.StringValue(headers.AiLogContextJson)))
 	}
 
 	if !dara.IsNil(headers.AlidingSsoTicket) {

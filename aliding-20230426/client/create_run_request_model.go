@@ -17,10 +17,14 @@ type iCreateRunRequest interface {
 	GetExtLoginUser() *CreateRunRequestExtLoginUser
 	SetOriginalAssistantId(v string) *CreateRunRequest
 	GetOriginalAssistantId() *string
+	SetSourceIdOfAssistantId(v string) *CreateRunRequest
+	GetSourceIdOfAssistantId() *string
 	SetSourceIdOfOriginalAssistantId(v string) *CreateRunRequest
 	GetSourceIdOfOriginalAssistantId() *string
-	SetSourceTypeOfOriginalAssistantId(v string) *CreateRunRequest
-	GetSourceTypeOfOriginalAssistantId() *string
+	SetSourceTypeOfAssistantId(v int32) *CreateRunRequest
+	GetSourceTypeOfAssistantId() *int32
+	SetSourceTypeOfOriginalAssistantId(v int32) *CreateRunRequest
+	GetSourceTypeOfOriginalAssistantId() *int32
 	SetStream(v bool) *CreateRunRequest
 	GetStream() *bool
 	SetThreadId(v string) *CreateRunRequest
@@ -29,8 +33,6 @@ type iCreateRunRequest interface {
 
 type CreateRunRequest struct {
 	AllowStructViewContent *bool `json:"allowStructViewContent,omitempty" xml:"allowStructViewContent,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// assistantId1
@@ -43,11 +45,13 @@ type CreateRunRequest struct {
 	// example:
 	//
 	// agentKey1
-	SourceIdOfOriginalAssistantId *string `json:"sourceIdOfOriginalAssistantId,omitempty" xml:"sourceIdOfOriginalAssistantId,omitempty"`
+	SourceIdOfAssistantId *string `json:"sourceIdOfAssistantId,omitempty" xml:"sourceIdOfAssistantId,omitempty"`
 	// example:
 	//
-	// 1
-	SourceTypeOfOriginalAssistantId *string `json:"sourceTypeOfOriginalAssistantId,omitempty" xml:"sourceTypeOfOriginalAssistantId,omitempty"`
+	// agentKey1
+	SourceIdOfOriginalAssistantId   *string `json:"sourceIdOfOriginalAssistantId,omitempty" xml:"sourceIdOfOriginalAssistantId,omitempty"`
+	SourceTypeOfAssistantId         *int32  `json:"sourceTypeOfAssistantId,omitempty" xml:"sourceTypeOfAssistantId,omitempty"`
+	SourceTypeOfOriginalAssistantId *int32  `json:"sourceTypeOfOriginalAssistantId,omitempty" xml:"sourceTypeOfOriginalAssistantId,omitempty"`
 	// example:
 	//
 	// false
@@ -84,11 +88,19 @@ func (s *CreateRunRequest) GetOriginalAssistantId() *string {
 	return s.OriginalAssistantId
 }
 
+func (s *CreateRunRequest) GetSourceIdOfAssistantId() *string {
+	return s.SourceIdOfAssistantId
+}
+
 func (s *CreateRunRequest) GetSourceIdOfOriginalAssistantId() *string {
 	return s.SourceIdOfOriginalAssistantId
 }
 
-func (s *CreateRunRequest) GetSourceTypeOfOriginalAssistantId() *string {
+func (s *CreateRunRequest) GetSourceTypeOfAssistantId() *int32 {
+	return s.SourceTypeOfAssistantId
+}
+
+func (s *CreateRunRequest) GetSourceTypeOfOriginalAssistantId() *int32 {
 	return s.SourceTypeOfOriginalAssistantId
 }
 
@@ -120,12 +132,22 @@ func (s *CreateRunRequest) SetOriginalAssistantId(v string) *CreateRunRequest {
 	return s
 }
 
+func (s *CreateRunRequest) SetSourceIdOfAssistantId(v string) *CreateRunRequest {
+	s.SourceIdOfAssistantId = &v
+	return s
+}
+
 func (s *CreateRunRequest) SetSourceIdOfOriginalAssistantId(v string) *CreateRunRequest {
 	s.SourceIdOfOriginalAssistantId = &v
 	return s
 }
 
-func (s *CreateRunRequest) SetSourceTypeOfOriginalAssistantId(v string) *CreateRunRequest {
+func (s *CreateRunRequest) SetSourceTypeOfAssistantId(v int32) *CreateRunRequest {
+	s.SourceTypeOfAssistantId = &v
+	return s
+}
+
+func (s *CreateRunRequest) SetSourceTypeOfOriginalAssistantId(v int32) *CreateRunRequest {
 	s.SourceTypeOfOriginalAssistantId = &v
 	return s
 }

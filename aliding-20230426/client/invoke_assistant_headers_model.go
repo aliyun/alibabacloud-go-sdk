@@ -13,6 +13,8 @@ type iInvokeAssistantHeaders interface {
 	GetCommonHeaders() map[string]*string
 	SetAccountId(v string) *InvokeAssistantHeaders
 	GetAccountId() *string
+	SetAiLogContextJson(v string) *InvokeAssistantHeaders
+	GetAiLogContextJson() *string
 	SetAlidingSsoTicket(v string) *InvokeAssistantHeaders
 	GetAlidingSsoTicket() *string
 }
@@ -23,6 +25,7 @@ type InvokeAssistantHeaders struct {
 	//
 	// 123456
 	AccountId        *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	AiLogContextJson *string `json:"aiLogContextJson,omitempty" xml:"aiLogContextJson,omitempty"`
 	AlidingSsoTicket *string `json:"alidingSsoTicket,omitempty" xml:"alidingSsoTicket,omitempty"`
 }
 
@@ -42,6 +45,10 @@ func (s *InvokeAssistantHeaders) GetAccountId() *string {
 	return s.AccountId
 }
 
+func (s *InvokeAssistantHeaders) GetAiLogContextJson() *string {
+	return s.AiLogContextJson
+}
+
 func (s *InvokeAssistantHeaders) GetAlidingSsoTicket() *string {
 	return s.AlidingSsoTicket
 }
@@ -53,6 +60,11 @@ func (s *InvokeAssistantHeaders) SetCommonHeaders(v map[string]*string) *InvokeA
 
 func (s *InvokeAssistantHeaders) SetAccountId(v string) *InvokeAssistantHeaders {
 	s.AccountId = &v
+	return s
+}
+
+func (s *InvokeAssistantHeaders) SetAiLogContextJson(v string) *InvokeAssistantHeaders {
+	s.AiLogContextJson = &v
 	return s
 }
 

@@ -112,11 +112,13 @@ type InvokeAssistantResponseBodyMessages struct {
 	// example:
 	//
 	// 这是一张小猫钓鱼图
-	ContentDesc *string `json:"contentDesc,omitempty" xml:"contentDesc,omitempty"`
+	ContentDesc   *string                                           `json:"contentDesc,omitempty" xml:"contentDesc,omitempty"`
+	ContentStruct *InvokeAssistantResponseBodyMessagesContentStruct `json:"contentStruct,omitempty" xml:"contentStruct,omitempty" type:"Struct"`
 	// example:
 	//
 	// 1642448000000
-	CreateAt *int64 `json:"createAt,omitempty" xml:"createAt,omitempty"`
+	CreateAt *int64  `json:"createAt,omitempty" xml:"createAt,omitempty"`
+	Id       *string `json:"id,omitempty" xml:"id,omitempty"`
 	// example:
 	//
 	// user
@@ -139,8 +141,16 @@ func (s *InvokeAssistantResponseBodyMessages) GetContentDesc() *string {
 	return s.ContentDesc
 }
 
+func (s *InvokeAssistantResponseBodyMessages) GetContentStruct() *InvokeAssistantResponseBodyMessagesContentStruct {
+	return s.ContentStruct
+}
+
 func (s *InvokeAssistantResponseBodyMessages) GetCreateAt() *int64 {
 	return s.CreateAt
+}
+
+func (s *InvokeAssistantResponseBodyMessages) GetId() *string {
+	return s.Id
 }
 
 func (s *InvokeAssistantResponseBodyMessages) GetRole() *string {
@@ -157,8 +167,18 @@ func (s *InvokeAssistantResponseBodyMessages) SetContentDesc(v string) *InvokeAs
 	return s
 }
 
+func (s *InvokeAssistantResponseBodyMessages) SetContentStruct(v *InvokeAssistantResponseBodyMessagesContentStruct) *InvokeAssistantResponseBodyMessages {
+	s.ContentStruct = v
+	return s
+}
+
 func (s *InvokeAssistantResponseBodyMessages) SetCreateAt(v int64) *InvokeAssistantResponseBodyMessages {
 	s.CreateAt = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessages) SetId(v string) *InvokeAssistantResponseBodyMessages {
+	s.Id = &v
 	return s
 }
 
@@ -170,6 +190,11 @@ func (s *InvokeAssistantResponseBodyMessages) SetRole(v string) *InvokeAssistant
 func (s *InvokeAssistantResponseBodyMessages) Validate() error {
 	if s.Content != nil {
 		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ContentStruct != nil {
+		if err := s.ContentStruct.Validate(); err != nil {
 			return err
 		}
 	}
@@ -1239,5 +1264,565 @@ func (s *InvokeAssistantResponseBodyMessagesContentText) SetValue(v string) *Inv
 }
 
 func (s *InvokeAssistantResponseBodyMessagesContentText) Validate() error {
+	return dara.Validate(s)
+}
+
+type InvokeAssistantResponseBodyMessagesContentStruct struct {
+	Parts []*InvokeAssistantResponseBodyMessagesContentStructParts `json:"parts,omitempty" xml:"parts,omitempty" type:"Repeated"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStruct) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStruct) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStruct) GetParts() []*InvokeAssistantResponseBodyMessagesContentStructParts {
+	return s.Parts
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStruct) SetParts(v []*InvokeAssistantResponseBodyMessagesContentStructParts) *InvokeAssistantResponseBodyMessagesContentStruct {
+	s.Parts = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStruct) Validate() error {
+	if s.Parts != nil {
+		for _, item := range s.Parts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type InvokeAssistantResponseBodyMessagesContentStructParts struct {
+	Append *bool `json:"append,omitempty" xml:"append,omitempty"`
+	// example:
+	//
+	// {}
+	DataPart *InvokeAssistantResponseBodyMessagesContentStructPartsDataPart `json:"dataPart,omitempty" xml:"dataPart,omitempty" type:"Struct"`
+	Finish   *bool                                                          `json:"finish,omitempty" xml:"finish,omitempty"`
+	// example:
+	//
+	// {}
+	InfoPart *InvokeAssistantResponseBodyMessagesContentStructPartsInfoPart `json:"infoPart,omitempty" xml:"infoPart,omitempty" type:"Struct"`
+	// example:
+	//
+	// 这是正文内容部分
+	PartDesc *string `json:"partDesc,omitempty" xml:"partDesc,omitempty"`
+	// example:
+	//
+	// artifactId123
+	PartId *string `json:"partId,omitempty" xml:"partId,omitempty"`
+	// example:
+	//
+	// {}
+	ReasonPart *InvokeAssistantResponseBodyMessagesContentStructPartsReasonPart `json:"reasonPart,omitempty" xml:"reasonPart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	RecommendPart *InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPart `json:"recommendPart,omitempty" xml:"recommendPart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	ReferencePart *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePart `json:"referencePart,omitempty" xml:"referencePart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	TextPart *InvokeAssistantResponseBodyMessagesContentStructPartsTextPart `json:"textPart,omitempty" xml:"textPart,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// textPart
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructParts) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructParts) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructParts) GetAppend() *bool {
+	return s.Append
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructParts) GetDataPart() *InvokeAssistantResponseBodyMessagesContentStructPartsDataPart {
+	return s.DataPart
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructParts) GetFinish() *bool {
+	return s.Finish
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructParts) GetInfoPart() *InvokeAssistantResponseBodyMessagesContentStructPartsInfoPart {
+	return s.InfoPart
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructParts) GetPartDesc() *string {
+	return s.PartDesc
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructParts) GetPartId() *string {
+	return s.PartId
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructParts) GetReasonPart() *InvokeAssistantResponseBodyMessagesContentStructPartsReasonPart {
+	return s.ReasonPart
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructParts) GetRecommendPart() *InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPart {
+	return s.RecommendPart
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructParts) GetReferencePart() *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePart {
+	return s.ReferencePart
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructParts) GetTextPart() *InvokeAssistantResponseBodyMessagesContentStructPartsTextPart {
+	return s.TextPart
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructParts) GetType() *string {
+	return s.Type
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructParts) SetAppend(v bool) *InvokeAssistantResponseBodyMessagesContentStructParts {
+	s.Append = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructParts) SetDataPart(v *InvokeAssistantResponseBodyMessagesContentStructPartsDataPart) *InvokeAssistantResponseBodyMessagesContentStructParts {
+	s.DataPart = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructParts) SetFinish(v bool) *InvokeAssistantResponseBodyMessagesContentStructParts {
+	s.Finish = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructParts) SetInfoPart(v *InvokeAssistantResponseBodyMessagesContentStructPartsInfoPart) *InvokeAssistantResponseBodyMessagesContentStructParts {
+	s.InfoPart = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructParts) SetPartDesc(v string) *InvokeAssistantResponseBodyMessagesContentStructParts {
+	s.PartDesc = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructParts) SetPartId(v string) *InvokeAssistantResponseBodyMessagesContentStructParts {
+	s.PartId = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructParts) SetReasonPart(v *InvokeAssistantResponseBodyMessagesContentStructPartsReasonPart) *InvokeAssistantResponseBodyMessagesContentStructParts {
+	s.ReasonPart = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructParts) SetRecommendPart(v *InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPart) *InvokeAssistantResponseBodyMessagesContentStructParts {
+	s.RecommendPart = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructParts) SetReferencePart(v *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePart) *InvokeAssistantResponseBodyMessagesContentStructParts {
+	s.ReferencePart = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructParts) SetTextPart(v *InvokeAssistantResponseBodyMessagesContentStructPartsTextPart) *InvokeAssistantResponseBodyMessagesContentStructParts {
+	s.TextPart = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructParts) SetType(v string) *InvokeAssistantResponseBodyMessagesContentStructParts {
+	s.Type = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructParts) Validate() error {
+	if s.DataPart != nil {
+		if err := s.DataPart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InfoPart != nil {
+		if err := s.InfoPart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReasonPart != nil {
+		if err := s.ReasonPart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RecommendPart != nil {
+		if err := s.RecommendPart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReferencePart != nil {
+		if err := s.ReferencePart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TextPart != nil {
+		if err := s.TextPart.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type InvokeAssistantResponseBodyMessagesContentStructPartsDataPart struct {
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructPartsDataPart) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructPartsDataPart) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsDataPart) GetData() interface{} {
+	return s.Data
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsDataPart) SetData(v interface{}) *InvokeAssistantResponseBodyMessagesContentStructPartsDataPart {
+	s.Data = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsDataPart) Validate() error {
+	return dara.Validate(s)
+}
+
+type InvokeAssistantResponseBodyMessagesContentStructPartsInfoPart struct {
+	CateIdList   []*string `json:"cateIdList,omitempty" xml:"cateIdList,omitempty" type:"Repeated"`
+	NeedFeedback *bool     `json:"needFeedback,omitempty" xml:"needFeedback,omitempty"`
+	Origin       *string   `json:"origin,omitempty" xml:"origin,omitempty"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructPartsInfoPart) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructPartsInfoPart) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsInfoPart) GetCateIdList() []*string {
+	return s.CateIdList
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsInfoPart) GetNeedFeedback() *bool {
+	return s.NeedFeedback
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsInfoPart) GetOrigin() *string {
+	return s.Origin
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsInfoPart) SetCateIdList(v []*string) *InvokeAssistantResponseBodyMessagesContentStructPartsInfoPart {
+	s.CateIdList = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsInfoPart) SetNeedFeedback(v bool) *InvokeAssistantResponseBodyMessagesContentStructPartsInfoPart {
+	s.NeedFeedback = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsInfoPart) SetOrigin(v string) *InvokeAssistantResponseBodyMessagesContentStructPartsInfoPart {
+	s.Origin = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsInfoPart) Validate() error {
+	return dara.Validate(s)
+}
+
+type InvokeAssistantResponseBodyMessagesContentStructPartsReasonPart struct {
+	// example:
+	//
+	// 123123
+	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructPartsReasonPart) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructPartsReasonPart) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsReasonPart) GetReason() *string {
+	return s.Reason
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsReasonPart) SetReason(v string) *InvokeAssistantResponseBodyMessagesContentStructPartsReasonPart {
+	s.Reason = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsReasonPart) Validate() error {
+	return dara.Validate(s)
+}
+
+type InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPart struct {
+	Recommends []*InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPartRecommends `json:"recommends,omitempty" xml:"recommends,omitempty" type:"Repeated"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPart) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPart) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPart) GetRecommends() []*InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPartRecommends {
+	return s.Recommends
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPart) SetRecommends(v []*InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPartRecommends) *InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPart {
+	s.Recommends = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPart) Validate() error {
+	if s.Recommends != nil {
+		for _, item := range s.Recommends {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPartRecommends struct {
+	MobileUrl *string `json:"mobileUrl,omitempty" xml:"mobileUrl,omitempty"`
+	Text      *string `json:"text,omitempty" xml:"text,omitempty"`
+	Url       *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPartRecommends) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPartRecommends) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPartRecommends) GetMobileUrl() *string {
+	return s.MobileUrl
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPartRecommends) GetText() *string {
+	return s.Text
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPartRecommends) GetUrl() *string {
+	return s.Url
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPartRecommends) SetMobileUrl(v string) *InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPartRecommends {
+	s.MobileUrl = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPartRecommends) SetText(v string) *InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPartRecommends {
+	s.Text = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPartRecommends) SetUrl(v string) *InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPartRecommends {
+	s.Url = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsRecommendPartRecommends) Validate() error {
+	return dara.Validate(s)
+}
+
+type InvokeAssistantResponseBodyMessagesContentStructPartsReferencePart struct {
+	References []*InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences `json:"references,omitempty" xml:"references,omitempty" type:"Repeated"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructPartsReferencePart) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructPartsReferencePart) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePart) GetReferences() []*InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences {
+	return s.References
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePart) SetReferences(v []*InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences) *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePart {
+	s.References = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePart) Validate() error {
+	if s.References != nil {
+		for _, item := range s.References {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences struct {
+	// example:
+	//
+	// 0
+	Index *string `json:"index,omitempty" xml:"index,omitempty"`
+	// example:
+	//
+	// mcp是....
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// ata
+	SourceCode *string `json:"sourceCode,omitempty" xml:"sourceCode,omitempty"`
+	SourceIcon *string `json:"sourceIcon,omitempty" xml:"sourceIcon,omitempty"`
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
+	// example:
+	//
+	// 《mcp原理介绍》
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// https://taobao.com
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences) GetIndex() *string {
+	return s.Index
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences) GetName() *string {
+	return s.Name
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences) GetSourceCode() *string {
+	return s.SourceCode
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences) GetSourceIcon() *string {
+	return s.SourceIcon
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences) GetSummary() *string {
+	return s.Summary
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences) GetTitle() *string {
+	return s.Title
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences) GetUrl() *string {
+	return s.Url
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences) SetIndex(v string) *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences {
+	s.Index = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences) SetName(v string) *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences {
+	s.Name = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences) SetSourceCode(v string) *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences {
+	s.SourceCode = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences) SetSourceIcon(v string) *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences {
+	s.SourceIcon = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences) SetSummary(v string) *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences {
+	s.Summary = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences) SetTitle(v string) *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences {
+	s.Title = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences) SetUrl(v string) *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences {
+	s.Url = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsReferencePartReferences) Validate() error {
+	return dara.Validate(s)
+}
+
+type InvokeAssistantResponseBodyMessagesContentStructPartsTextPart struct {
+	// example:
+	//
+	// 123123
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructPartsTextPart) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructPartsTextPart) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsTextPart) GetText() *string {
+	return s.Text
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsTextPart) SetText(v string) *InvokeAssistantResponseBodyMessagesContentStructPartsTextPart {
+	s.Text = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructPartsTextPart) Validate() error {
 	return dara.Validate(s)
 }

@@ -17,17 +17,19 @@ type iCreateMessageRequest interface {
 	GetMessages() []*CreateMessageRequestMessages
 	SetOriginalAssistantId(v string) *CreateMessageRequest
 	GetOriginalAssistantId() *string
+	SetSourceIdOfAssistantId(v string) *CreateMessageRequest
+	GetSourceIdOfAssistantId() *string
 	SetSourceIdOfOriginalAssistantId(v string) *CreateMessageRequest
 	GetSourceIdOfOriginalAssistantId() *string
-	SetSourceTypeOfOriginalAssistantId(v string) *CreateMessageRequest
-	GetSourceTypeOfOriginalAssistantId() *string
+	SetSourceTypeOfAssistantId(v int32) *CreateMessageRequest
+	GetSourceTypeOfAssistantId() *int32
+	SetSourceTypeOfOriginalAssistantId(v int32) *CreateMessageRequest
+	GetSourceTypeOfOriginalAssistantId() *int32
 	SetThreadId(v string) *CreateMessageRequest
 	GetThreadId() *string
 }
 
 type CreateMessageRequest struct {
-	// This parameter is required.
-	//
 	// example:
 	//
 	// assistantId1
@@ -42,11 +44,13 @@ type CreateMessageRequest struct {
 	// example:
 	//
 	// agentKey1
-	SourceIdOfOriginalAssistantId *string `json:"sourceIdOfOriginalAssistantId,omitempty" xml:"sourceIdOfOriginalAssistantId,omitempty"`
+	SourceIdOfAssistantId *string `json:"sourceIdOfAssistantId,omitempty" xml:"sourceIdOfAssistantId,omitempty"`
 	// example:
 	//
-	// 1
-	SourceTypeOfOriginalAssistantId *string `json:"sourceTypeOfOriginalAssistantId,omitempty" xml:"sourceTypeOfOriginalAssistantId,omitempty"`
+	// agentKey1
+	SourceIdOfOriginalAssistantId   *string `json:"sourceIdOfOriginalAssistantId,omitempty" xml:"sourceIdOfOriginalAssistantId,omitempty"`
+	SourceTypeOfAssistantId         *int32  `json:"sourceTypeOfAssistantId,omitempty" xml:"sourceTypeOfAssistantId,omitempty"`
+	SourceTypeOfOriginalAssistantId *int32  `json:"sourceTypeOfOriginalAssistantId,omitempty" xml:"sourceTypeOfOriginalAssistantId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -79,11 +83,19 @@ func (s *CreateMessageRequest) GetOriginalAssistantId() *string {
 	return s.OriginalAssistantId
 }
 
+func (s *CreateMessageRequest) GetSourceIdOfAssistantId() *string {
+	return s.SourceIdOfAssistantId
+}
+
 func (s *CreateMessageRequest) GetSourceIdOfOriginalAssistantId() *string {
 	return s.SourceIdOfOriginalAssistantId
 }
 
-func (s *CreateMessageRequest) GetSourceTypeOfOriginalAssistantId() *string {
+func (s *CreateMessageRequest) GetSourceTypeOfAssistantId() *int32 {
+	return s.SourceTypeOfAssistantId
+}
+
+func (s *CreateMessageRequest) GetSourceTypeOfOriginalAssistantId() *int32 {
 	return s.SourceTypeOfOriginalAssistantId
 }
 
@@ -111,12 +123,22 @@ func (s *CreateMessageRequest) SetOriginalAssistantId(v string) *CreateMessageRe
 	return s
 }
 
+func (s *CreateMessageRequest) SetSourceIdOfAssistantId(v string) *CreateMessageRequest {
+	s.SourceIdOfAssistantId = &v
+	return s
+}
+
 func (s *CreateMessageRequest) SetSourceIdOfOriginalAssistantId(v string) *CreateMessageRequest {
 	s.SourceIdOfOriginalAssistantId = &v
 	return s
 }
 
-func (s *CreateMessageRequest) SetSourceTypeOfOriginalAssistantId(v string) *CreateMessageRequest {
+func (s *CreateMessageRequest) SetSourceTypeOfAssistantId(v int32) *CreateMessageRequest {
+	s.SourceTypeOfAssistantId = &v
+	return s
+}
+
+func (s *CreateMessageRequest) SetSourceTypeOfOriginalAssistantId(v int32) *CreateMessageRequest {
 	s.SourceTypeOfOriginalAssistantId = &v
 	return s
 }

@@ -9,6 +9,8 @@ type iInvokeAssistantRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAllowStructViewContent(v bool) *InvokeAssistantRequest
+	GetAllowStructViewContent() *bool
 	SetAssistantId(v string) *InvokeAssistantRequest
 	GetAssistantId() *string
 	SetClientEnum(v string) *InvokeAssistantRequest
@@ -21,17 +23,20 @@ type iInvokeAssistantRequest interface {
 	GetOriginalAssistantId() *string
 	SetSessionId(v string) *InvokeAssistantRequest
 	GetSessionId() *string
+	SetSourceIdOfAssistantId(v string) *InvokeAssistantRequest
+	GetSourceIdOfAssistantId() *string
 	SetSourceIdOfOriginalAssistantId(v string) *InvokeAssistantRequest
 	GetSourceIdOfOriginalAssistantId() *string
-	SetSourceTypeOfOriginalAssistantId(v string) *InvokeAssistantRequest
-	GetSourceTypeOfOriginalAssistantId() *string
+	SetSourceTypeOfAssistantId(v int32) *InvokeAssistantRequest
+	GetSourceTypeOfAssistantId() *int32
+	SetSourceTypeOfOriginalAssistantId(v int32) *InvokeAssistantRequest
+	GetSourceTypeOfOriginalAssistantId() *int32
 	SetStream(v bool) *InvokeAssistantRequest
 	GetStream() *bool
 }
 
 type InvokeAssistantRequest struct {
-	// This parameter is required.
-	//
+	AllowStructViewContent *bool `json:"allowStructViewContent,omitempty" xml:"allowStructViewContent,omitempty"`
 	// example:
 	//
 	// assistantId1
@@ -51,11 +56,13 @@ type InvokeAssistantRequest struct {
 	// example:
 	//
 	// agentKey1
-	SourceIdOfOriginalAssistantId *string `json:"sourceIdOfOriginalAssistantId,omitempty" xml:"sourceIdOfOriginalAssistantId,omitempty"`
+	SourceIdOfAssistantId *string `json:"sourceIdOfAssistantId,omitempty" xml:"sourceIdOfAssistantId,omitempty"`
 	// example:
 	//
-	// 1
-	SourceTypeOfOriginalAssistantId *string `json:"sourceTypeOfOriginalAssistantId,omitempty" xml:"sourceTypeOfOriginalAssistantId,omitempty"`
+	// agentKey1
+	SourceIdOfOriginalAssistantId   *string `json:"sourceIdOfOriginalAssistantId,omitempty" xml:"sourceIdOfOriginalAssistantId,omitempty"`
+	SourceTypeOfAssistantId         *int32  `json:"sourceTypeOfAssistantId,omitempty" xml:"sourceTypeOfAssistantId,omitempty"`
+	SourceTypeOfOriginalAssistantId *int32  `json:"sourceTypeOfOriginalAssistantId,omitempty" xml:"sourceTypeOfOriginalAssistantId,omitempty"`
 	// example:
 	//
 	// false
@@ -68,6 +75,10 @@ func (s InvokeAssistantRequest) String() string {
 
 func (s InvokeAssistantRequest) GoString() string {
 	return s.String()
+}
+
+func (s *InvokeAssistantRequest) GetAllowStructViewContent() *bool {
+	return s.AllowStructViewContent
 }
 
 func (s *InvokeAssistantRequest) GetAssistantId() *string {
@@ -94,16 +105,29 @@ func (s *InvokeAssistantRequest) GetSessionId() *string {
 	return s.SessionId
 }
 
+func (s *InvokeAssistantRequest) GetSourceIdOfAssistantId() *string {
+	return s.SourceIdOfAssistantId
+}
+
 func (s *InvokeAssistantRequest) GetSourceIdOfOriginalAssistantId() *string {
 	return s.SourceIdOfOriginalAssistantId
 }
 
-func (s *InvokeAssistantRequest) GetSourceTypeOfOriginalAssistantId() *string {
+func (s *InvokeAssistantRequest) GetSourceTypeOfAssistantId() *int32 {
+	return s.SourceTypeOfAssistantId
+}
+
+func (s *InvokeAssistantRequest) GetSourceTypeOfOriginalAssistantId() *int32 {
 	return s.SourceTypeOfOriginalAssistantId
 }
 
 func (s *InvokeAssistantRequest) GetStream() *bool {
 	return s.Stream
+}
+
+func (s *InvokeAssistantRequest) SetAllowStructViewContent(v bool) *InvokeAssistantRequest {
+	s.AllowStructViewContent = &v
+	return s
 }
 
 func (s *InvokeAssistantRequest) SetAssistantId(v string) *InvokeAssistantRequest {
@@ -136,12 +160,22 @@ func (s *InvokeAssistantRequest) SetSessionId(v string) *InvokeAssistantRequest 
 	return s
 }
 
+func (s *InvokeAssistantRequest) SetSourceIdOfAssistantId(v string) *InvokeAssistantRequest {
+	s.SourceIdOfAssistantId = &v
+	return s
+}
+
 func (s *InvokeAssistantRequest) SetSourceIdOfOriginalAssistantId(v string) *InvokeAssistantRequest {
 	s.SourceIdOfOriginalAssistantId = &v
 	return s
 }
 
-func (s *InvokeAssistantRequest) SetSourceTypeOfOriginalAssistantId(v string) *InvokeAssistantRequest {
+func (s *InvokeAssistantRequest) SetSourceTypeOfAssistantId(v int32) *InvokeAssistantRequest {
+	s.SourceTypeOfAssistantId = &v
+	return s
+}
+
+func (s *InvokeAssistantRequest) SetSourceTypeOfOriginalAssistantId(v int32) *InvokeAssistantRequest {
 	s.SourceTypeOfOriginalAssistantId = &v
 	return s
 }
