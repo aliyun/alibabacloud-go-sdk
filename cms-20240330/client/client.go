@@ -1658,6 +1658,10 @@ func (client *Client) CreateThreadWithOptions(name *string, request *CreateThrea
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Attributes) {
+		body["attributes"] = request.Attributes
+	}
+
 	if !dara.IsNil(request.Title) {
 		body["title"] = request.Title
 	}
@@ -8785,6 +8789,10 @@ func (client *Client) UpdateThreadWithOptions(name *string, threadId *string, re
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Attributes) {
+		body["attributes"] = request.Attributes
+	}
+
 	if !dara.IsNil(request.Status) {
 		body["status"] = request.Status
 	}

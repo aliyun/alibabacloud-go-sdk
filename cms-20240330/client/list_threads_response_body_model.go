@@ -125,6 +125,7 @@ func (s *ListThreadsResponseBody) Validate() error {
 }
 
 type ListThreadsResponseBodyThreads struct {
+	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
 	// example:
 	//
 	// 2025-04-22T12:46:34Z
@@ -164,6 +165,10 @@ func (s ListThreadsResponseBodyThreads) GoString() string {
 	return s.String()
 }
 
+func (s *ListThreadsResponseBodyThreads) GetAttributes() map[string]*string {
+	return s.Attributes
+}
+
 func (s *ListThreadsResponseBodyThreads) GetCreateTime() *string {
 	return s.CreateTime
 }
@@ -194,6 +199,11 @@ func (s *ListThreadsResponseBodyThreads) GetVariables() *ListThreadsResponseBody
 
 func (s *ListThreadsResponseBodyThreads) GetVersion() *int64 {
 	return s.Version
+}
+
+func (s *ListThreadsResponseBodyThreads) SetAttributes(v map[string]*string) *ListThreadsResponseBodyThreads {
+	s.Attributes = v
+	return s
 }
 
 func (s *ListThreadsResponseBodyThreads) SetCreateTime(v string) *ListThreadsResponseBodyThreads {

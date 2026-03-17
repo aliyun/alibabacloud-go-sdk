@@ -11,8 +11,6 @@ type iEvaluator interface {
   GoString() string
   SetConfig(v map[string]interface{}) *Evaluator
   GetConfig() map[string]interface{} 
-  SetDataScope(v string) *Evaluator
-  GetDataScope() *string 
   SetFilters(v map[string]*string) *Evaluator
   GetFilters() map[string]*string 
   SetName(v string) *Evaluator
@@ -27,7 +25,6 @@ type iEvaluator interface {
 
 type Evaluator struct {
   Config map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
-  DataScope *string `json:"dataScope,omitempty" xml:"dataScope,omitempty"`
   Filters map[string]*string `json:"filters,omitempty" xml:"filters,omitempty"`
   Name *string `json:"name,omitempty" xml:"name,omitempty"`
   ResultName *string `json:"resultName,omitempty" xml:"resultName,omitempty"`
@@ -45,10 +42,6 @@ func (s Evaluator) GoString() string {
 
 func (s *Evaluator) GetConfig() map[string]interface{}  {
   return s.Config
-}
-
-func (s *Evaluator) GetDataScope() *string  {
-  return s.DataScope
 }
 
 func (s *Evaluator) GetFilters() map[string]*string  {
@@ -73,11 +66,6 @@ func (s *Evaluator) GetVariableMapping() map[string]*string  {
 
 func (s *Evaluator) SetConfig(v map[string]interface{}) *Evaluator {
   s.Config = v
-  return s
-}
-
-func (s *Evaluator) SetDataScope(v string) *Evaluator {
-  s.DataScope = &v
   return s
 }
 

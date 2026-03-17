@@ -9,6 +9,8 @@ type iUpdateThreadRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAttributes(v map[string]*string) *UpdateThreadRequest
+	GetAttributes() map[string]*string
 	SetStatus(v string) *UpdateThreadRequest
 	GetStatus() *string
 	SetTitle(v string) *UpdateThreadRequest
@@ -16,6 +18,7 @@ type iUpdateThreadRequest interface {
 }
 
 type UpdateThreadRequest struct {
+	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
 	// example:
 	//
 	// active
@@ -34,12 +37,21 @@ func (s UpdateThreadRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateThreadRequest) GetAttributes() map[string]*string {
+	return s.Attributes
+}
+
 func (s *UpdateThreadRequest) GetStatus() *string {
 	return s.Status
 }
 
 func (s *UpdateThreadRequest) GetTitle() *string {
 	return s.Title
+}
+
+func (s *UpdateThreadRequest) SetAttributes(v map[string]*string) *UpdateThreadRequest {
+	s.Attributes = v
+	return s
 }
 
 func (s *UpdateThreadRequest) SetStatus(v string) *UpdateThreadRequest {

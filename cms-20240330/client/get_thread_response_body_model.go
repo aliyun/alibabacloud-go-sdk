@@ -9,6 +9,8 @@ type iGetThreadResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAttributes(v map[string]*string) *GetThreadResponseBody
+	GetAttributes() map[string]*string
 	SetCreateTime(v string) *GetThreadResponseBody
 	GetCreateTime() *string
 	SetDigitalEmployeeName(v string) *GetThreadResponseBody
@@ -30,6 +32,7 @@ type iGetThreadResponseBody interface {
 }
 
 type GetThreadResponseBody struct {
+	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
 	// example:
 	//
 	// 2025-12-19T15:19:55.040403272+08:00
@@ -75,6 +78,10 @@ func (s GetThreadResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetThreadResponseBody) GetAttributes() map[string]*string {
+	return s.Attributes
+}
+
 func (s *GetThreadResponseBody) GetCreateTime() *string {
 	return s.CreateTime
 }
@@ -109,6 +116,11 @@ func (s *GetThreadResponseBody) GetVariables() *GetThreadResponseBodyVariables {
 
 func (s *GetThreadResponseBody) GetVersion() *int64 {
 	return s.Version
+}
+
+func (s *GetThreadResponseBody) SetAttributes(v map[string]*string) *GetThreadResponseBody {
+	s.Attributes = v
+	return s
 }
 
 func (s *GetThreadResponseBody) SetCreateTime(v string) *GetThreadResponseBody {

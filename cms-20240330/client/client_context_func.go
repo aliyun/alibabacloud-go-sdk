@@ -1258,6 +1258,10 @@ func (client *Client) CreateThreadWithContext(ctx context.Context, name *string,
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Attributes) {
+		body["attributes"] = request.Attributes
+	}
+
 	if !dara.IsNil(request.Title) {
 		body["title"] = request.Title
 	}
@@ -6467,6 +6471,10 @@ func (client *Client) UpdateThreadWithContext(ctx context.Context, name *string,
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Attributes) {
+		body["attributes"] = request.Attributes
+	}
+
 	if !dara.IsNil(request.Status) {
 		body["status"] = request.Status
 	}

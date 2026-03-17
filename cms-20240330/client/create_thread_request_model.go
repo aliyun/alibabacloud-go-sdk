@@ -9,6 +9,8 @@ type iCreateThreadRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAttributes(v map[string]*string) *CreateThreadRequest
+	GetAttributes() map[string]*string
 	SetTitle(v string) *CreateThreadRequest
 	GetTitle() *string
 	SetVariables(v *CreateThreadRequestVariables) *CreateThreadRequest
@@ -16,6 +18,7 @@ type iCreateThreadRequest interface {
 }
 
 type CreateThreadRequest struct {
+	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
 	// example:
 	//
 	// test
@@ -31,12 +34,21 @@ func (s CreateThreadRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateThreadRequest) GetAttributes() map[string]*string {
+	return s.Attributes
+}
+
 func (s *CreateThreadRequest) GetTitle() *string {
 	return s.Title
 }
 
 func (s *CreateThreadRequest) GetVariables() *CreateThreadRequestVariables {
 	return s.Variables
+}
+
+func (s *CreateThreadRequest) SetAttributes(v map[string]*string) *CreateThreadRequest {
+	s.Attributes = v
+	return s
 }
 
 func (s *CreateThreadRequest) SetTitle(v string) *CreateThreadRequest {
